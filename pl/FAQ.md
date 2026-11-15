@@ -22,7 +22,7 @@ Osobnej, natywnej aplikacji nie ma. Na telefonie lub tablecie korzystaj z aplika
 
 W systemie Android możesz też [pobrać najnowszy plik APK](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk). Uruchamia on aplikację Marinara Engine na telefonie przez środowisko Termux. Zobacz [Przewodnik instalacji na Android (Termux)](installation/android-termux.md). Na urządzeniach iPhone i iPad zobacz [Przewodnik po PWA na iOS / iPadOS](installation/ios-pwa.md).
 
-W aplikacji na system Android ekran uruchamiania oferuje opcje **Open in browser** (otwórz w przeglądarce), **Retry connection** (ponów połączenie) i **Install / Start Marinara**. Aby później zmienić wybór, użyj **Settings → General → App Behavior → Open Android launcher (app or browser)** (ustawienia, ogólne, zachowanie aplikacji, otwórz ekran uruchamiania Android: aplikacja lub przeglądarka). Starsze pliki APK logują się ręcznie pod adresem `/android-login`.
+W aplikacji na system Android ekran uruchamiania oferuje opcje **Open in browser** (otwórz w przeglądarce), **Retry connection** (ponów połączenie) i **Install / Start Marinara**. Aby później zmienić wybór, użyj **Ustawienia → Wygląd → Układ → Otwórz program uruchamiający dla Androida (aplikacja lub przeglądarka)**. Starsze pliki APK logują się ręcznie pod adresem `/android-login`.
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -82,11 +82,11 @@ Zobacz [Lorebooki](lorebooks/overview.md).
 
 ## Czym jest agent?
 
-Agent to opcjonalny pomocnik AI, który działa w trakcie czatu i zajmuje się jednym konkretnym zadaniem, na przykład śledzi scenę albo dodaje mapy. Świeża instalacja nie ma żadnych agentów. Otwórz **Agents → Agent Organizer** (agenci, organizowanie agentów), wybierz agenta i zainstaluj go. Potem włącz go osobno dla każdego czatu w **Chat Settings**. Zobacz [Agenci](agents/agents-overview.md).
+Agent to opcjonalny pomocnik AI, który działa w trakcie czatu i zajmuje się jednym konkretnym zadaniem, na przykład śledzi scenę albo dodaje mapy. Świeża instalacja nie ma żadnych agentów. Otwórz **Biblioteka → Agenci**, wybierz agenta i zainstaluj go. Potem włącz go osobno dla każdego czatu w **Chat Settings**. Zobacz [Agenci](agents/agents-overview.md).
 
 ## Jak skonfigurować Noodle?
 
-Noodle to lokalna, fikcyjna sieć społecznościowa dla twoich postaci. Zainstaluj **Noodle** z **Agents → Agent Organizer**, uruchom aplikację Marinara Engine ponownie, gdy pojawi się prośba, a potem otwórz **Home → Noodle** (ekran główny, Noodle). Zobacz [Noodle: wbudowana oś czasu społecznościowa](agents/noodle.md).
+Noodle to lokalna, fikcyjna sieć społecznościowa dla twoich postaci. Zainstaluj **Noodle** z **Biblioteka → Agenci**, uruchom aplikację Marinara Engine ponownie, gdy pojawi się prośba, a potem otwórz **Home → Noodle** (ekran główny, Noodle). Zobacz [Noodle: wbudowana oś czasu społecznościowa](agents/noodle.md).
 
 ## Dlaczego postać nie odpowiada?
 
@@ -98,11 +98,11 @@ Modele czytają naraz tylko ograniczoną ilość tekstu, więc w długich czatac
 
 ## Jak utworzyć kopię zapasową danych?
 
-Otwórz **Settings → Advanced → Backup & Export** (ustawienia, zaawansowane, kopie zapasowe i eksport) i kliknij **Download Backup** (pobranie kopii zapasowej). Zapisuje to plik `.zip` z twoimi danymi i wgranymi plikami. Żeby przywrócić dane, użyj funkcji **Import Profile (JSON/ZIP)** w **Settings → Imports** (ustawienia, import). Ta sama sekcja może też tworzyć kopię zapasową codziennie, co tydzień albo co miesiąc. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](data/backup-and-restore.md).
+Otwórz **Ustawienia → Dane → Kopie zapasowe i przywracanie** i kliknij **Download Backup** (pobranie kopii zapasowej). Zapisuje to plik `.zip` z twoimi danymi i wgranymi plikami. Żeby przywrócić dane, użyj funkcji **Import Profile (JSON/ZIP)** w tej samej sekcji. Ta sama sekcja może też tworzyć kopię zapasową codziennie, co tydzień albo co miesiąc. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](data/backup-and-restore.md).
 
 ## Jak działają rozszerzenia i czy da się importować kod z zewnątrz?
 
-Domyślnie szkice rozszerzeń Personal Extension tworzy tylko Professor Mari. Szkic na starcie jest wyłączony, a przed jego uruchomieniem zatwierdzasz dokładny kod. Import z zewnątrz jest ukryty, dopóki host nie ustawi `ENABLE_EXTERNAL_EXTENSIONS=true` w pliku `.env`, a ty nie zaakceptujesz ostrzeżenia w **Settings → Advanced → Danger Zone** (ustawienia, zaawansowane, strefa zagrożenia). Zobacz [Rozszerzenia osobiste](extending/personal-extensions.md).
+Domyślnie szkice rozszerzeń Personal Extension tworzy tylko Professor Mari. Szkic na starcie jest wyłączony, a przed jego uruchomieniem zatwierdzasz dokładny kod. Import z zewnątrz jest ukryty, dopóki host nie ustawi `ENABLE_EXTERNAL_EXTENSIONS=true` w pliku `.env`, a ty nie zaakceptujesz ostrzeżenia w **Ustawienia → Zaawansowane → Bezpieczeństwo**. Zobacz [Rozszerzenia osobiste](extending/personal-extensions.md).
 
 ## Gdzie przechowywane są moje dane?
 
@@ -118,7 +118,7 @@ Professor Mari to wbudowana asystentka na ekranie głównym. Wyjaśnia działani
 
 ## Czym jest agent Storyboard i jak go używać w trybie Game Mode?
 
-Zamienia gotowy tekst opowieści w obrazy. Zainstaluj agenta **Storyboard** z **Agents → Agent Organizer**, a potem włącz go w czacie. Zobacz [Przewodnik po agencie Storyboard](game/storyboard.md).
+Zamienia gotowy tekst opowieści w obrazy. Zainstaluj agenta **Storyboard** z **Biblioteka → Agenci**, a potem włącz go w czacie. Zobacz [Przewodnik po agencie Storyboard](game/storyboard.md).
 
 ## Czy postacie mogą mówić na głos w rozmowie?
 
@@ -130,7 +130,7 @@ Tak. Dodaj konto do generowania obrazów, na przykład **Pollinations** (bez klu
 
 ## Jak czytać dokumentację w aplikacji?
 
-Na ekranie głównym kliknij **Documentation** (dokumentacja) na pasku skrótów. Na telefonie najpierw otwórz menu skrótów. W sekcji FAQ na ekranie głównym możesz też kliknąć **Open Documentation** (otwarcie dokumentacji).
+Kliknij **Docs** na górnym pasku. Na telefonie dokumentacja znajduje się w bibliotece (przycisk ze stosem w prawym górnym rogu). W klasycznym układzie kliknij **Dokumentacja** w zakładkach ekranu głównego. W sekcji FAQ na ekranie głównym możesz też kliknąć **Otwórz dokumentację**.
 
 ## Gdzie szukać pomocy albo zgłosić błąd?
 

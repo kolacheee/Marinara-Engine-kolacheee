@@ -1,80 +1,144 @@
-# 自定义 CSS 主题（Theme Library）
+# 自定义 CSS 主题
 
-自定义 CSS 主题会给整个 Marinara 重新上色。在 **Theme Library**(主题库) 里可以创建、导入、导出和切换主题。本指南还会列出主题可用的 CSS 变量和类名，并说明主题和 Card CSS(角色卡 CSS) 之间是什么关系。不写 CSS 也想快速换个样子，见[现成的聊天窗口样式](#ready-made-chat-window-styles)。
+主题会改变 Marinara 的整体外观：颜色、字体、图片和面板形状。Marinara 的主题图库里有现成的入门主题可供下载。也可以导入别人分享的主题，或自己制作。
 
-开始之前：如果从另一台设备（比如手机）打开 Marinara，服务器需要先设置管理员密钥，你才能创建、编辑、导入、启用或删除主题。在运行服务器的那台电脑上不需要密钥。
-
-1. 在服务器上，于 `.env` 文件中设置 `ADMIN_SECRET`。
-2. 在应用里打开 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问)，填入同一个值。
-
-见[服务器配置参考](../CONFIGURATION.md)和[远程访问指南](../REMOTE_ACCESS.md)。要切换到别人给你的主题，直接看[启用主题](#activating-a-theme)。
+不使用主题也想快速换个样子，见[外观设置](appearance-settings.md)或[现成的聊天窗口样式](#ready-made-chat-window-styles)。想自己制作主题，[主题创作指南](theme-author-guide.md)会一步步带你完成。
 
 ## 什么是自定义主题
 
-CSS 全称 Cascading Style Sheets(层叠样式表)，是决定配色、边框和间距的代码。主题就是一段 CSS，可以改页面背景、强调色、卡片、边框、文字等等。
+主题由一段 CSS 以及附带的图片和字体组成；CSS 是网页用来设置颜色、字体和间距的代码。主题保存在 Marinara 服务器上，因此安装后，连接这台服务器的每台设备都能看到。同一时间只能启用一个主题，主题想存多少个都可以。
 
-主题存放在 Marinara 服务器上的 **Theme Library** 里，因此会同步到连接同一台服务器的每台设备。其他大多数外观设置只留在本机。同一时间只能启用一个主题，主题想存多少个都可以。
+## 在哪里找到主题
 
-## 在哪里找到 Theme Library
+打开 **Library → Settings → Appearance**(资料库 → 设置 → 外观)，点击区块导航栏里的 **CSS Themes**(CSS 主题)。经典布局中的路径是 **Settings → Addons → Theme Library**(设置 → 附加组件 → 主题库)。
 
-1. 打开 **Settings**(设置)。
-2. 打开 **Addons**(附加组件) 选项卡。
-3. 找到 **Theme Library** 区块。
+这个区块包含：
 
-## 创建主题
+- 顶部的 **Create Theme**(新建主题) 和 **Import File**(导入文件)。
+- **Allow themes with HTML (I accept the risk)**(允许含 HTML 的主题（我接受风险）)，默认关闭。见[含 HTML 的主题](#themes-with-html)。
+- **Installed Themes**(已安装主题)：先是 **Default Theme**(默认主题)，接着是自己的主题，最后是下载的入门主题。
+- **Browse the theme gallery**(浏览主题图库)：可供下载的入门主题。
 
-1. 在 **Theme Library** 区块里点击 **Create Theme**(创建主题)。
-2. 在名称输入框里填一个名字（框里显示“Theme name...”）。
-3. 在大文本框里写入或粘贴 CSS。
-4. 保持 **Preview**(预览) 开启，就能边写边看到实时效果。关闭它就停止实时预览。
-5. 点击 **Save**(保存)。
+## 入门主题
 
-新建的主题会带一个模板，模板把常用变量以注释形式列了出来。去掉注释符号，再填上自己的值。全新的主题保存后就会启用，并显示：Theme "My Theme" saved and activated.
+入门主题不随应用一起安装，需要时再下载，不会提前占用空间。它们放在主题图库里，Marinara 只会下载你选中的主题。
 
-之后想改主题，在 **Installed Themes**(已安装主题) 里找到它，点击代码图标（提示文字 **Edit theme CSS**），改完点击 **Save**。编辑不会改变当前启用的是哪个主题。
+1. 点击 **Installed Themes** 下方的 **Browse the theme gallery**。这一步需要 Marinara 能连接互联网。
+2. 每个主题都会显示预览、简短说明、大小和标签。
+3. 点击喜欢的主题旁边的 **Download**(下载)。下载后，它们会出现在 **Installed Themes** 的 **Starter themes**(入门主题) 下，可以直接启用。
 
-## 导入和导出主题
+| 主题 | 外观 |
+| --- | --- |
+| **Apogee Lounge** | 1970 年代太空客轮的观景休息室，窗外是气态巨行星，消息显示在模压面板上。 |
+| **Dewglass** | 2000 年代的亮面玻璃风格：消息像凝胶水滴，背景是阳光下的潟湖或极光夜空。 |
+| **Granite Watch** | 山体中的冷战指挥所：回复像电传打字机打印出的纸张，组件挂在写字夹板上。 |
+| **Gutterlight** | 犯罪漫画风格的雨中哥特城市，配有墨线分格和说明文字框。 |
+| **Lantern Meadow** | 安静、易读，没有动态效果。 |
+| **Lantern Path** | 带柔和动态效果的阅读栏。 |
+| **Maple's Bramble Cottage** | 温馨的小屋，配有适合长回复的阅读栏。 |
+| **NEON//GRID** | 霓虹赛博朋克风格，适合长回复。 |
+| **Petal OS** | 活泼的复古桌面，使用像素字体。 |
+| **Rosalind's Folio** | 带视觉小说元素的故事书布局。 |
+| **Swiss Poster** | 安静、简洁的海报设计，没有动态效果。 |
+| **Under Sail** | 航行在海上的帆船甲板：每条消息都是悬挂在木桁上的一面帆布船帆。 |
+| **Velvet Casket** | 白天是粉彩哥特风，夜晚是传统哥特风，消息框呈棺材形。 |
 
-导入主题的步骤：
+每个入门主题都有深色和浅色版本。名称下的小标签，例如 **No motion**(无动态效果) 或 **High legibility**(易读)，可以帮助了解主题特点。
 
-1. 在 **Theme Library** 区块里点击 **Import File**(导入文件)。
-2. 选择一个 `.css` 或 `.json` 文件。
-3. 看一下提示消息，上面会写明成功导入、跳过和失败的主题各有多少个。
+已下载的主题在图库中有新版本时，图库列表会显示 **Update**(更新)。点击即可获取新版本。
 
-一个 `.css` 文件会变成一个主题，名字取自文件名。一个 `.json` 文件可以装一个或多个主题。从 Marinara 导出的文件直接原样导入，也可以自己手写一个小文件：
+下载的入门主题是只读的，因此始终保持原作者的设计。每个主题都有四个按钮：
 
-```json
-{ "name": "My Theme", "css": "..." }
-```
+- **(i) Credits and licences**(鸣谢与许可证)：查看美术和字体的作者，以及允许怎样复用。
+- **Clone + Edit**(复制并编辑)（复制图标）：创建自己的副本，例如“Petal OS（我的副本）”，并在编辑器中打开。
+- **Export**(导出)（上传图标）：把主题保存为文件。
+- **Remove**(移除)（垃圾桶图标）：从当前安装中移除主题。之后随时可以从图库重新下载。
 
-导入的主题不会自动启用。如果服务器上已有一个同名、CSS 也完全相同的主题，导入时会跳过它。
-
-导出主题时，在 **Installed Themes** 里点击该主题那一行的上传图标（提示文字 **Export theme**）。Marinara 会下载一个 `.json` 文件，可以拿到别处导入。
-
-<a id="activating-a-theme"></a>
+不用应用也能获取主题文件：它们位于 GitHub 主题图库的 `themes` 文件夹中（[kolacheee-themes 分支](https://github.com/kolacheee/Marinara-Engine-kolacheee/tree/kolacheee-themes/themes)）。下载其中的 `.json` 文件，再使用 **Import File** 导入。
 
 ## 启用主题
 
-**Installed Themes** 会列出所有主题，顶部还有一项 **Default Theme**(默认主题)。
+1. 点击 **Installed Themes** 中的主题名称。主题会在当前浏览器标签页中启用。
+2. 一条提示栏会询问 **Keep this theme?**(要保留此主题吗？)，并从 15 秒开始倒计时。把鼠标移到提示栏上会暂停倒计时。
+3. 点击 **Keep theme**(保留主题) 即可保留，其他设备也会显示这个主题。点击 **Go back**(返回)，或等倒计时结束，就会恢复之前的外观。
 
-1. 点击某个主题的名字即可启用，当前启用的主题带一个对勾。
-2. 点击 **Default Theme** 就关闭自定义主题，回到自带的外观。
+点击 **Default Theme** 可以关闭自定义主题。**Settings → Appearance → Theme**(设置 → 外观 → 主题) 顶部的 **Reset Appearance**(重置外观) 也会关闭主题。
 
-**Reset Appearance**(重置外观) 位于 **App Style**(应用样式) 顶部（在 **Settings → Appearance**(设置 → 外观) 里），它同样会关闭当前启用的主题。
+如果只想在一台设备上使用不同的主题，先在 **Settings → Appearance → Theme** 中把 **Look on this device**(本设备外观) 设为 **Only this device**(仅此设备)。
 
-要删除主题，点击垃圾桶图标（提示文字 **Remove theme**），然后在 **Delete Theme**(删除主题) 窗口里确认。这会把它的 CSS 从服务器上永久删除。
+### 恢复正常外观
 
-如果没有成功：界面显示不正常时，把当前启用的主题和聊天里的 Card CSS 都查一查。见[主题与 Card CSS](#themes-and-card-css)。
+如果主题让 Marinara 难以使用，以下任一种方法都能在当前标签页中关闭它：
 
-<a id="ready-made-chat-window-styles"></a>
+- 按三次 <kbd>Esc</kbd>。
+- 在浏览器地址末尾加上 `?safe`。
+- 按 <kbd>Ctrl</kbd>+<kbd>K</kbd>，输入“自定义主题”。
+
+Marinara 还会保护顶栏、侧边栏、<kbd>Ctrl</kbd>+<kbd>K</kbd> 和消息输入框。主题可以改变它们的样式，但如果隐藏、移动或遮盖了其中任何一个，Marinara 就会在当前标签页中关闭主题，并说明原因。
+
+## 导入主题
+
+1. 点击 **Import File**。
+2. 选择一个 `.json` 或 `.css` 主题文件。
+3. 预览会显示主题的名称、作者、版本、图片、大小，以及鸣谢和许可证。还会列出安装前需要了解的事项，例如动态图片、主题添加的文字或无法生效的部分。
+4. 选择要一并导入的内容。预览会提供主题建议的设置，例如配色方案、强调色和字体，其中大部分默认勾选。也可以把主题的背景添加到聊天背景图库。
+5. 点击 **Install and try it**(安装并试用) 可立即切换到该主题，或点击 **Install**(安装) 将它添加到列表。
+
+如果已经有同名主题，预览会让你选择更新它或 **Keep both**(两者都保留)。试用主题后选择返回时，Marinara 也会恢复该主题改动过的设置。
+
+如果主题写入索要密码或密钥的文字，或冒充 Marinara，就无法安装。绝不要因为主题的要求而输入密钥或密码。
+
+### 含 HTML 的主题
+
+有些主题会为每条消息添加一个小 HTML 框，称为消息模板。Marinara 会移除其中的脚本、链接、图片和表单，但别人编写的 HTML 仍可能误导你。只有开启 **Allow themes with HTML (I accept the risk)** 时才能安装这些主题。关闭此开关后，已安装的主题也不会显示其中的 HTML。
+
+## 创建主题
+
+点击 **Create Theme**，或点击某个入门主题上的 **Clone + Edit**，从已有的好看设计开始。编辑器包含名称输入框、大 CSS 文本框、**Preview**(预览) 和 **Save**(保存)。新主题保存后会启用，并询问 **Keep this theme?**
+
+[主题创作指南](theme-author-guide.md#your-first-theme-step-by-step)会一步步带你制作第一个主题。
+
+### 和 Professor Mari 一起制作主题
+
+不必自己写 CSS。直接用日常语言向 Professor Mari 提出要求，例如“给我做一个温馨的秋日主题，要能在手机上用”或“我的 Harbor 主题有什么问题？”。她有一本设计和审查主题的手册，会按手册来做：
+
+1. **先和你确定想法。** 她会询问想要的氛围、浅色还是深色（或两者都要）、使用的设备，以及是否需要图片和天气，再用一句话概括一种外观，例如“海景背景上的磨砂玻璃胶囊”。
+2. **制作后先保持关闭。** 她会告诉你在哪里试用：在 **CSS Themes** 中选中它，并在 15 秒内点击 **Keep theme**。如果让她直接启用，当前标签页同样会询问 **Keep this theme?**，没人回应就会恢复原样。
+3. **请你查看效果。** Mari 看不到你的屏幕，因此会指出浅色和深色模式下具体要检查哪些位置，并请你提供显示不对的地方的截图。如果 Marinara 关闭了主题，把提示消息告诉她：消息会说明原因，她会据此修复。
+4. **她可以制作主题图片。** 在 Connections(连接) 中设置好图像模型后，她就能制作背景、边框和图标。每张图片都会先展示给你，得到同意后才保存到主题中。她也能给主题中绘制的装饰边框（SVG 图片）重新配色。见[让 Professor Mari 制作美术素材](theme-author-guide.md#ask-professor-mari-to-make-the-art)。
+
+审查主题时，她会逐个界面列出不协调的地方（混杂的圆角形状、阴影、难以看清的标签），等你指定要修哪些，再动手修改。
+
+Mari 只会修改你自己的主题。入门主题是只读的，先点击 **Clone + Edit**，再让她修改副本。字体、鸣谢和缩略图需要你在 **Pictures and sharing details**(图片和分享详情（作者、版本、缩略图、字体）) 中添加。
+
+## 编辑、导出和移除自己的主题
+
+自己的主题每行有三个按钮：
+
+- **Edit theme CSS**(编辑主题 CSS)（代码图标）打开编辑器。编辑不会改变当前启用的是哪个主题。
+- **Export**（上传图标）下载一个 `.json` 文件，可以分享或在别处导入。
+- **Remove**（垃圾桶图标）在确认后删除主题。这个操作无法撤销，如果以后可能还要用，先导出一份。
+
+## 为单个聊天设置主题
+
+聊天可以使用自己的主题：
+
+1. 打开聊天，再打开 **Chat Settings**(聊天设置)。
+2. 在 **Theme**(主题) 中选择主题。**Follow the app**(跟随应用) 使用应用主题，**Default look (no custom theme)**(默认外观（无自定义主题）) 则为这个聊天关闭主题。
+3. 在只有一个角色的聊天中，勾选 **Use it for every chat with this character**(用于此角色的所有聊天)，即可把它设为该角色的主题。
+
+设置和资料库始终使用应用主题。
+
+## 谁可以修改主题
+
+在运行 Marinara 的电脑上不需要密钥。从另一台设备（例如手机）创建、导入、复制、编辑或移除主题时，需要管理员密钥。在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 中输入即可。选择已经安装的主题不需要密钥。见[管理员密钥](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)。
 
 ## 现成的聊天窗口样式
 
 开始之前：这不需要写 CSS。
 
-1. 打开 **Settings → Appearance → App**(设置 → 外观 → 应用)。
-2. 在 **App Style** 底部找到 **Chat widget style**(聊天组件样式)。
-3. 选一个样式。
+1. 打开 **Settings → Appearance → Chat Buttons & Windows**(设置 → 外观 → 聊天按钮与窗口)。
+2. 在 **Chat widget style**(聊天组件样式) 下选择一个样式。
 
 | 样式 | 外观 |
 | --- | --- |
@@ -105,9 +169,11 @@ CSS 全称 Cascading Style Sheets(层叠样式表)，是决定配色、边框和
 
 历史按钮（**Load More**(加载更多)、**Show older**(显示更早内容)）和其他聊天控件一样遵循这些开关。在 Game Mode(游戏模式) 中，这些开关还作用于补充发言、HUD 组件、地图面板、人物卡、日志、物品栏、战斗面板和弹窗。也可以让 Professor Mari 为这些区域创建自定义主题。
 
-自定义主题仍可覆盖这些样式。下面的窗口和抽屉变量优先于样式自带的颜色。用 `--mari-window-font-family` 设置窗口字体，`--mari-drawer-radius` 设置区域圆角，`--mari-window-ornament: none` 隐藏标题装饰。想去掉所有样式装饰，先选择 **Default**。
+自定义主题仍可覆盖这些样式。[设置聊天窗口和抽屉的样式](#styling-chat-windows-and-drawers)中的窗口和抽屉变量优先于样式自带的颜色。用 `--mari-window-font-family` 设置窗口字体，`--mari-drawer-radius` 设置区域圆角，`--mari-window-ornament: none` 隐藏标题装饰。想去掉所有样式装饰，先选择 **Default**。
 
-<a id="themes-and-card-css"></a>
+## 致主题作者
+
+本指南余下部分供手写主题 CSS 的人参考。先读[主题创作指南](theme-author-guide.md)，其中列出了所有稳定的 Token、部件钩子和安全规则。
 
 ## 主题与 Card CSS
 
@@ -238,8 +304,6 @@ Marinara 用到的任何 CSS 变量，主题都可以设置，不限于这些。
 }
 ```
 
-<a id="styling-messages-input-boxes-and-chat-controls"></a>
-
 ## 为消息、输入框和聊天控件设置样式
 
 三个 **Apply preset** 开关也能让自定义主题把组件设计应用到聊天的其他区域。主题可以用以下变量覆盖各部分的样式。如果不想自己写 CSS，可以让 Professor Mari 创建一套风格一致的聊天主题。
@@ -284,7 +348,9 @@ Marinara 用到的任何 CSS 变量，主题都可以设置，不限于这些。
 
 ## 相关指南
 
+- [主题创作指南](theme-author-guide.md)
+- [主题中的天气](theme-weather.md)
 - [角色卡 CSS 主题指南](card-css-theming.md)
 - [外观设置](appearance-settings.md)
 - [服务器配置参考](../CONFIGURATION.md)
-- [远程访问：登录与 IP 允许列表](../REMOTE_ACCESS.md)
+- [远程访问](../REMOTE_ACCESS.md)

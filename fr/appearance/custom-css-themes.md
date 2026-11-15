@@ -1,80 +1,144 @@
-# Thèmes CSS personnalisés (Theme Library)
+# Thèmes CSS personnalisés
 
-Un thème CSS personnalisé repeint l'ensemble de Marinara. Utilise la **Theme Library** (bibliothèque de thèmes) pour créer, importer, exporter et changer de thème. Ce guide liste aussi les variables et les classes CSS qu'un thème peut utiliser, et explique comment les thèmes cohabitent avec le CSS de fiche. Pour un changement rapide sans CSS, voir [Styles de fenêtres de chat prêts à utiliser](#ready-made-chat-window-styles).
+Un thème change toute l'apparence de Marinara : les couleurs, les polices, les images et la forme des panneaux. Marinara propose une galerie de thèmes de départ prêts à l'emploi que tu peux télécharger. Tu peux aussi importer un thème partagé par quelqu'un ou créer le tien.
 
-Avant de commencer : si tu ouvres Marinara depuis un autre appareil, comme un téléphone, le serveur a besoin d'un secret d'administration avant que tu puisses créer, modifier, importer, activer ou supprimer des thèmes. Sur l'ordinateur qui fait tourner le serveur, aucun secret n'est nécessaire.
-
-1. Sur le serveur, définis `ADMIN_SECRET` dans le fichier `.env`.
-2. Dans l'application, ouvre **Settings → Advanced → Admin Access** (Paramètres → Avancé → Accès administrateur) et saisis la même valeur.
-
-Voir la [Référence de configuration du serveur](../CONFIGURATION.md) et le [guide d'accès à distance](../REMOTE_ACCESS.md). Pour passer à un thème que quelqu'un t'a donné, va à [Activer un thème](#activating-a-theme).
+Pour un changement rapide sans aucun thème, voir les [Réglages d'apparence](appearance-settings.md) ou les [Styles de fenêtres de chat prêts à utiliser](#ready-made-chat-window-styles). Pour créer ton propre thème, le [Guide de création de thèmes](theme-author-guide.md) t'accompagne pas à pas.
 
 ## Ce qu'est un thème personnalisé
 
-Le CSS, abréviation de Cascading Style Sheets, est le code qui définit les couleurs, les bordures et les espacements. Un thème est un bloc de CSS qui peut changer l'arrière-plan de la page, la couleur d'accentuation, les cartes, les bordures, le texte et plus encore.
+Un thème est un bloc de CSS, le code que les pages web utilisent pour les couleurs, les polices et les espacements, accompagné des images et des polices qu'il fournit. Les thèmes sont enregistrés sur ton serveur Marinara : un thème que tu installes apparaît donc sur tous les appareils qui s'y connectent. Un seul thème peut être actif à la fois, et tu peux en garder autant que tu veux.
 
-Les thèmes vivent dans la **Theme Library**, sur ton serveur Marinara : ils se synchronisent donc sur tous les appareils connectés au même serveur. La plupart des autres réglages d'apparence restent sur un seul appareil. Un seul thème peut être actif à la fois, et tu peux en garder autant que tu veux.
+## Où trouver les thèmes
 
-## Où trouver la Theme Library
+Ouvre **Library → Settings → Appearance** (Bibliothèque → Réglages → Apparence) et clique sur **CSS Themes** (thèmes CSS) dans la rangée de sections. Dans la disposition classique, le chemin est **Settings → Addons → Theme Library** (Réglages → Extensions → Bibliothèque de thèmes).
 
-1. Ouvre **Settings**.
-2. Ouvre l'onglet **Addons**.
-3. Repère la section **Theme Library**.
+La section contient :
 
-## Créer un thème
+- Les boutons **Create Theme** (créer un thème) et **Import File** (importer un fichier) en haut.
+- L'interrupteur **Allow themes with HTML (I accept the risk)** (autoriser les thèmes avec du HTML, j'accepte le risque), désactivé par défaut. Voir [Thèmes avec du HTML](#themes-with-html).
+- La liste **Installed Themes** (thèmes installés) : **Default Theme** (thème par défaut), puis tes propres thèmes, puis les thèmes de départ que tu as téléchargés.
+- L'option **Browse the theme gallery** (parcourir la galerie de thèmes) : les thèmes de départ que tu peux télécharger.
 
-1. Dans la section **Theme Library**, clique sur **Create Theme** (créer un thème).
-2. Saisis un nom dans le champ du nom (il affiche "Theme name...").
-3. Écris ou colle ton CSS dans la grande zone de texte.
-4. Laisse **Preview** (aperçu) activé pour voir tes changements en direct pendant que tu tapes. Désactive-le pour arrêter l'aperçu en direct.
-5. Clique sur **Save** (enregistrer).
+## Thèmes de départ
 
-Un nouveau thème part d'un modèle qui liste les variables courantes sous forme d'exemples mis en commentaire. Retire les marques de commentaire et donne tes propres valeurs. Un thème tout neuf est activé quand tu l'enregistres, et tu vois : Theme "My Theme" saved and activated.
+Les thèmes de départ ne font pas partie de l'installation et ne prennent donc aucune place avant que tu en choisisses un. Ils se trouvent dans la galerie de thèmes, et Marinara ne télécharge un thème que lorsque tu le sélectionnes.
 
-Pour modifier un thème plus tard, retrouve-le dans **Installed Themes** (thèmes installés), clique sur l'icône de code (infobulle **Edit theme CSS**), fais tes modifications et clique sur **Save**. La modification ne change pas le thème actif.
+1. Clique sur **Browse the theme gallery** sous **Installed Themes**. Marinara a besoin d'une connexion à Internet pour cette opération.
+2. Chaque thème affiche un aperçu, une courte description, sa taille et ses tags.
+3. Clique sur **Download** (télécharger) à côté de ceux qui te plaisent. Ils apparaissent sous **Starter themes** (thèmes de départ) dans **Installed Themes**, prêts à être activés.
 
-## Importer et exporter des thèmes
+| Thème | Apparence |
+| --- | --- |
+| **Apogee Lounge** | Le salon d'observation d'un paquebot spatial des années 1970, avec une géante gazeuse par la fenêtre et des messages sur des panneaux moulés. |
+| **Dewglass** | Du verre brillant des années 2000 : les messages sont des gouttes de gel sur un lagon ensoleillé ou une nuit d'aurore. |
+| **Granite Watch** | Un poste de commandement de la guerre froide sous la montagne : les réponses s'impriment sur du papier de téléimprimeur et les widgets sont accrochés à des planchettes. |
+| **Gutterlight** | Une ville gothique sous la pluie, dessinée comme une bande dessinée policière, avec des cases encrées et des cartouches de texte. |
+| **Lantern Meadow** | Calme et très lisible, sans animation. |
+| **Lantern Path** | Une colonne de lecture avec des animations douces. |
+| **Maple's Bramble Cottage** | Un chalet douillet, avec une colonne de lecture pour les longues réponses. |
+| **NEON//GRID** | Du cyberpunk néon, conçu pour les longues réponses. |
+| **Petal OS** | Un bureau rétro ludique avec des polices pixelisées. |
+| **Rosalind's Folio** | Une mise en page de livre de contes avec des touches de visual novel. |
+| **Swiss Poster** | Un design d'affiche sobre et épuré, sans animation. |
+| **Under Sail** | Le pont d'un voilier en mer : chaque message est une voile de toile suspendue à une vergue en bois. |
+| **Velvet Casket** | Goth pastel le jour et goth traditionnel la nuit, avec des messages en forme de cercueil. |
 
-Pour importer un thème :
+Chaque thème de départ propose une version Dark et une version Light. Les petits tags sous chaque nom, comme **No motion** (sans animation) ou **High legibility** (lisibilité élevée), t'indiquent à quoi t'attendre.
 
-1. Clique sur **Import File** (importer un fichier) dans la section **Theme Library**.
-2. Choisis un fichier `.css` ou `.json`.
-3. Lis le message. Il indique combien de thèmes ont été importés ou ignorés, et combien ont échoué.
+Quand la galerie propose une version plus récente d'un thème téléchargé, celui-ci affiche **Update** (mettre à jour) dans la liste de la galerie. Clique dessus pour obtenir la nouvelle version.
 
-Un fichier `.css` devient un seul thème, qui porte le nom du fichier. Un fichier `.json` peut contenir un ou plusieurs thèmes. Importe tel quel un fichier exporté depuis Marinara, ou écris-en un petit toi-même :
+Les thèmes de départ téléchargés sont en lecture seule, afin de toujours rester tels qu'ils ont été conçus. Chacun possède quatre boutons :
 
-```json
-{ "name": "My Theme", "css": "..." }
-```
+- **(i) Credits and licences** (crédits et licences) : les auteurs des illustrations et des polices, ainsi que les conditions de leur réutilisation.
+- **Clone + Edit** (cloner et modifier), l'icône de copie : crée ta propre copie, par exemple "Petal OS (my copy)", et l'ouvre dans l'éditeur.
+- **Export** (exporter), l'icône de téléversement : enregistre le thème dans un fichier.
+- **Remove** (supprimer), l'icône de corbeille : retire le thème de cette installation. Tu peux le retélécharger depuis la galerie à tout moment.
 
-Les thèmes importés ne s'activent pas d'eux-mêmes. Un thème qui a le même nom et le même CSS qu'un thème déjà présent sur le serveur est ignoré.
-
-Pour exporter un thème, clique sur l'icône de téléversement (infobulle **Export theme**) sur sa ligne dans **Installed Themes**. Marinara télécharge un fichier `.json` que tu peux importer ailleurs.
-
-<a id="activating-a-theme"></a>
+Tu peux aussi obtenir les fichiers de thèmes sans passer par l'application : ils se trouvent dans le dossier `themes` de la galerie de thèmes sur GitHub ([branche kolacheee-themes](https://github.com/kolacheee/Marinara-Engine-kolacheee/tree/kolacheee-themes/themes)). Télécharge un fichier `.json` depuis cette page et utilise **Import File**.
 
 ## Activer un thème
 
-La liste **Installed Themes** montre tous les thèmes, avec une entrée **Default Theme** (thème par défaut) en haut.
+1. Clique sur le nom d'un thème dans **Installed Themes**. Le thème s'active dans cet onglet du navigateur.
+2. Une barre affiche **Keep this theme?** (garder ce thème ?) et lance un compte à rebours de 15 secondes. Pointer la barre interrompt le compte à rebours.
+3. Clique sur **Keep theme** (garder le thème) pour le conserver. Il apparaît maintenant aussi sur tes autres appareils. Clique sur **Go back** (revenir), ou laisse le compte à rebours se terminer, pour retrouver ton apparence précédente.
 
-1. Clique sur le nom d'un thème pour l'activer. Une coche signale le thème actif.
-2. Clique sur **Default Theme** pour désactiver le thème personnalisé et revenir à l'apparence intégrée.
+Clique sur **Default Theme** pour désactiver les thèmes personnalisés. **Reset Appearance** (réinitialiser l'apparence), en haut de **Settings → Appearance → Theme** (Réglages → Apparence → Thème), désactive aussi le thème.
 
-Le bouton **Reset Appearance** (réinitialiser l'apparence), en haut de **App Style** (style de l'application) dans **Settings → Appearance** (Paramètres → Apparence), désactive lui aussi le thème actif.
+Pour utiliser un thème différent sur un seul appareil, règle d'abord **Look on this device** (apparence sur cet appareil) sur **Only this device** (cet appareil uniquement) dans **Settings → Appearance → Theme**.
 
-Pour supprimer un thème, clique sur l'icône de corbeille (infobulle **Remove theme**) et confirme dans la boîte de dialogue **Delete Theme**. Son CSS est alors supprimé définitivement du serveur.
+### Retrouver ton apparence habituelle
 
-Si ça n'a pas marché : quand l'application a une drôle d'allure, vérifie à la fois le thème actif et tout CSS de fiche présent dans le chat. Voir [Les thèmes et le CSS de fiche](#themes-and-card-css).
+Si un thème rend Marinara difficile à utiliser, chacune de ces actions le désactive dans l'onglet :
 
-<a id="ready-made-chat-window-styles"></a>
+- Appuie trois fois sur <kbd>Esc</kbd>.
+- Ajoute `?safe` à la fin de l'adresse dans ton navigateur.
+- Appuie sur <kbd>Ctrl</kbd>+<kbd>K</kbd> et saisis "Custom theme".
+
+Marinara protège aussi la barre supérieure, les barres latérales, <kbd>Ctrl</kbd>+<kbd>K</kbd> et la zone de message. Un thème peut les remettre en forme, mais s'il en masque, déplace ou recouvre un, Marinara désactive le thème dans cet onglet et t'en indique la raison.
+
+## Importer un thème
+
+1. Clique sur **Import File**.
+2. Choisis un fichier de thème `.json` ou `.css`.
+3. Un aperçu affiche le nom du thème, son auteur, sa version, ses images et sa taille, ainsi que ses crédits et sa licence. Il indique tout ce que tu dois savoir avant l'installation, comme la présence d'images animées, le texte ajouté par le thème ou les éléments qui ne fonctionneront pas.
+4. Choisis ce que tu veux importer avec lui. L'aperçu propose les réglages recommandés par le thème, tels que sa palette de couleurs, sa couleur d'accentuation et sa police, la plupart étant cochés. Il peut aussi ajouter les arrière-plans du thème à ta galerie d'arrière-plans de chat.
+5. Clique sur **Install and try it** (installer et essayer) pour l'activer immédiatement, ou sur **Install** (installer) pour l'ajouter à la liste.
+
+Si tu as déjà un thème du même nom, l'aperçu propose de le mettre à jour ou de **Keep both** (garder les deux). Quand tu reviens en arrière après avoir essayé un thème, Marinara rétablit aussi tous les réglages qu'il avait modifiés.
+
+Un thème ne peut pas être installé s'il écrit du texte qui demande des mots de passe ou des clés, ou s'il se fait passer pour Marinara. Ne saisis jamais une clé ou un mot de passe à la demande d'un thème.
+
+### Thèmes avec du HTML
+
+Certains thèmes ajoutent une petite boîte HTML à chaque message, appelée modèle de message. Marinara en retire les scripts, les liens, les images et les formulaires, mais le HTML provenant de quelqu'un d'autre pourrait tout de même t'induire en erreur. Ces thèmes ne s'installent que lorsque **Allow themes with HTML (I accept the risk)** est activé. Quand l'interrupteur est désactivé, un thème installé s'affiche sans son HTML.
+
+## Créer un thème
+
+Clique sur **Create Theme**, ou sur **Clone + Edit** pour un thème de départ afin de commencer à partir d'une apparence déjà réussie. L'éditeur contient un champ de nom, une grande zone de CSS, **Preview** (aperçu) et **Save** (enregistrer). Un nouveau thème s'active quand tu l'enregistres et affiche **Keep this theme?**.
+
+Le [Guide de création de thèmes](theme-author-guide.md#your-first-theme-step-by-step) propose une procédure pas à pas pour ton premier thème.
+
+### Créer un thème avec Professor Mari
+
+Tu n'as pas besoin d'écrire toi-même du CSS. Demande à Professor Mari avec des mots simples, par exemple "crée-moi un thème d'automne chaleureux qui fonctionne sur mon téléphone" ou "qu'est-ce qui ne va pas avec mon thème Harbor ?". Elle dispose d'un manuel pour concevoir et examiner les thèmes, et elle le suit :
+
+1. **Elle se met d'abord d'accord avec toi sur l'idée.** Elle te demande l'ambiance souhaitée, le mode clair ou sombre (ou les deux), tes appareils et si tu veux des images et de la météo, puis résume le style en une phrase, comme "des capsules de verre dépoli sur un décor marin".
+2. **Elle le crée sans l'activer.** Elle t'indique où l'essayer : sélectionne-le dans **Thèmes CSS** et appuie sur **Garder le thème** dans les 15 secondes. Si tu lui demandes de l'activer elle-même, ton onglet demande aussi **Garder ce thème ?** et revient en arrière si personne ne répond.
+3. **Elle te demande de regarder.** Professor Mari ne voit pas ton écran ; elle indique donc des endroits précis à vérifier, en mode clair et sombre, et demande une capture d'écran de tout ce qui semble anormal. Si Marinara a désactivé le thème, transmets-lui le message : il indique la raison, et elle corrige le problème.
+4. **Elle peut créer ses images.** Avec un modèle d'image configuré dans Connexions, elle crée des décors, des cadres et des icônes, te montre chacun d'eux d'abord et l'enregistre dans le thème quand tu acceptes. Elle peut aussi recolorer les ornements dessinés (images SVG) d'un thème. Voir [Demander à Professor Mari de créer les visuels](theme-author-guide.md#ask-professor-mari-to-make-the-art).
+
+Pour examiner un thème, elle liste ce qui manque de cohérence (formes de coins mélangées, ombres, libellés difficiles à lire), écran par écran, et ne change rien tant que tu n'as pas indiqué quoi corriger.
+
+Professor Mari travaille uniquement sur tes propres thèmes. Les thèmes de départ sont en lecture seule : clique d'abord sur **Cloner et modifier** sur l'un d'eux et demande-lui de travailler sur la copie. C'est toi qui ajoutes les polices, les crédits et les miniatures sous **Images et détails de partage (auteur, version, miniature, polices)**.
+
+## Modifier, exporter et supprimer tes thèmes
+
+Tes propres thèmes ont trois boutons sur leur ligne :
+
+- **Edit theme CSS** (modifier le CSS du thème), l'icône de code, ouvre l'éditeur. La modification ne change pas le thème actif.
+- **Export**, l'icône de téléversement, télécharge un fichier `.json` que tu peux partager ou importer ailleurs.
+- **Remove**, l'icône de corbeille, supprime le thème après confirmation. Cette action est irréversible : exporte-le d'abord si tu penses en avoir besoin plus tard.
+
+## Un thème pour un seul chat
+
+Un chat peut avoir son propre thème :
+
+1. Ouvre le chat, puis **Chat Settings** (réglages du chat).
+2. Dans **Theme** (thème), choisis un thème. **Follow the app** (suivre l'application) utilise le thème de ton application, tandis que **Default look (no custom theme)** (apparence par défaut, aucun thème personnalisé) désactive les thèmes pour ce chat.
+3. Dans un chat avec un seul personnage, coche **Use it for every chat with this character** (l'utiliser pour tous les chats avec ce personnage) afin d'en faire le thème de ce personnage.
+
+Les réglages et la bibliothèque utilisent toujours le thème de l'application.
+
+## Qui peut modifier les thèmes
+
+Sur l'ordinateur qui exécute Marinara, aucun secret n'est nécessaire. Depuis un autre appareil, comme un téléphone, il faut le secret d'administration pour créer, importer, cloner, modifier et supprimer des thèmes. Saisis-le dans **Settings → Advanced → Security** (Réglages → Avancé → Sécurité). Aucun secret n'est nécessaire pour choisir un thème déjà installé par quelqu'un. Voir [Le secret d'administration](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Styles de fenêtres de chat prêts à utiliser
 
 Avant de commencer : aucun CSS n'est nécessaire.
 
-1. Ouvre **Settings → Appearance → App** (Paramètres → Apparence → Application).
-2. En bas de **App Style**, repère **Chat widget style** (style des widgets du chat).
-3. Choisis un style.
+1. Ouvre **Settings → Appearance → Chat Buttons & Windows** (Réglages → Apparence → Boutons et fenêtres du chat).
+2. Sous **Chat widget style** (style des widgets du chat), choisis un style.
 
 | Style | Apparence |
 | --- | --- |
@@ -105,9 +169,11 @@ Trois interrupteurs sous les sélecteurs de couleur étendent le style. Chacun e
 
 Les boutons d'historique, **Load More** (en charger plus) et **Show older** (afficher les plus anciens), suivent les interrupteurs comme les autres contrôles du chat. En Game Mode, les interrupteurs s'appliquent aussi aux apartés, aux widgets du HUD, au panneau de carte, aux fiches de personnage, aux journaux, à l'inventaire, aux panneaux de combat et aux boîtes de dialogue. Professor Mari peut aussi créer des thèmes personnalisés pour ces zones.
 
-Un thème personnalisé peut toujours remplacer les styles. Les variables de fenêtres et de tiroirs ci-dessous ont la priorité sur les couleurs du style. Utilise `--mari-window-font-family` pour la police des fenêtres, `--mari-drawer-radius` pour les coins des sections et `--mari-window-ornament: none` pour masquer l'ornement du titre. Pour retirer toute la décoration du style, choisis d'abord **Default**.
+Un thème personnalisé peut toujours remplacer les styles. Les variables de fenêtres et de tiroirs de la section [Habiller les fenêtres et tiroirs du chat](#styling-chat-windows-and-drawers) ont la priorité sur les couleurs du style. Utilise `--mari-window-font-family` pour la police des fenêtres, `--mari-drawer-radius` pour les coins des sections et `--mari-window-ornament: none` pour masquer l'ornement du titre. Pour retirer toute la décoration du style, choisis d'abord **Default**.
 
-<a id="themes-and-card-css"></a>
+## Pour les créateurs de thèmes
+
+Le reste de ce guide est une référence pour les personnes qui écrivent le CSS de leurs thèmes à la main. Commence par le [Guide de création de thèmes](theme-author-guide.md), qui répertorie tous les tokens stables, les points d'ancrage des éléments et les règles de sécurité.
 
 ## Les thèmes et le CSS de fiche
 
@@ -282,6 +348,8 @@ Sur téléphone, le menu à trois points se déploie en boutons ronds. Son décl
 
 ## Guides associés
 
+- [Guide de création de thèmes](theme-author-guide.md)
+- [La météo dans ton thème](theme-weather.md)
 - [Guide du CSS de fiche](card-css-theming.md)
 - [Réglages d'apparence](appearance-settings.md)
 - [Référence de configuration du serveur](../CONFIGURATION.md)

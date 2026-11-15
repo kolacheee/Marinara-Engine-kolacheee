@@ -1,80 +1,144 @@
-# Własne motywy CSS (Theme Library)
+# Własne motywy CSS
 
-Własny motyw CSS przemalowuje całą aplikację Marinara Engine. W sekcji **Theme Library** (biblioteka motywów) możesz tworzyć, importować, eksportować i przełączać motywy. Ten przewodnik wymienia też zmienne i klasy CSS, z których może korzystać motyw, i wyjaśnia, jak motywy współpracują z Card CSS. Aby szybko zmienić wygląd bez CSS, zobacz [Gotowe style okien czatu](#ready-made-chat-window-styles).
+Motyw zmienia cały wygląd aplikacji Marinara Engine: kolory, czcionki, obrazy i kształt paneli. Marinara ma galerię gotowych motywów startowych do pobrania. Możesz też zaimportować motyw udostępniony przez kogoś albo stworzyć własny.
 
-Zanim zaczniesz: jeśli otwierasz aplikację Marinara Engine z innego urządzenia, na przykład z telefonu, serwer potrzebuje sekretu administratora, zanim będzie można tworzyć, edytować, importować, włączać lub usuwać motywy. Na komputerze, na którym działa serwer, sekret nie jest potrzebny.
-
-1. Na serwerze ustaw `ADMIN_SECRET` w pliku `.env`.
-2. W aplikacji otwórz **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny) i wpisz tę samą wartość.
-
-Zobacz dokument [Konfiguracja serwera](../CONFIGURATION.md) oraz przewodnik [Dostęp zdalny](../REMOTE_ACCESS.md). Aby przełączyć się na motyw, który ktoś ci przekazał, przejdź do sekcji [Włączanie motywu](#activating-a-theme).
+Aby szybko zmienić wygląd bez używania motywu, zobacz [Ustawienia wyglądu](appearance-settings.md) lub [Gotowe style okien czatu](#ready-made-chat-window-styles). Jeśli chcesz stworzyć własny motyw, [Przewodnik autora motywów](theme-author-guide.md) przeprowadzi cię przez to krok po kroku.
 
 ## Czym jest własny motyw
 
-CSS, czyli Cascading Style Sheets, to kod, który ustala kolory, obramowania i odstępy. Motyw to blok kodu CSS, który może zmienić tło strony, kolor akcentu, karty, obramowania, tekst i sporo więcej.
+Motyw to blok kodu CSS, którym strony internetowe określają kolory, czcionki i odstępy, oraz dołączone obrazy i czcionki. Motywy są zapisywane na twoim serwerze Marinara, więc zainstalowany motyw pojawia się na każdym urządzeniu połączonym z tym serwerem. Włączony może być tylko jeden motyw naraz, a przechowywać możesz ich dowolnie wiele.
 
-Motywy są przechowywane w sekcji **Theme Library** na twoim serwerze Marinara, więc synchronizują się z każdym urządzeniem połączonym z tym samym serwerem. Większość pozostałych ustawień wyglądu zostaje na jednym urządzeniu. Aktywny może być tylko jeden motyw naraz, a w bibliotece możesz trzymać dowolnie wiele motywów.
+## Gdzie znaleźć motywy
 
-## Gdzie znaleźć sekcję Theme Library
+Otwórz **Biblioteka → Ustawienia → Wygląd** i kliknij **Motywy CSS** w rzędzie sekcji. W klasycznym układzie jest to **Ustawienia → Dodatki → Biblioteka motywów**.
 
-1. Otwórz **Settings** (Ustawienia).
-2. Przejdź do zakładki **Addons** (dodatki).
-3. Znajdź sekcję **Theme Library**.
+Sekcja zawiera:
 
-## Tworzenie motywu
+- **Nowy motyw** i **Importuj plik** na górze.
+- **Zezwalaj na motywy z HTML (akceptuję ryzyko)**, domyślnie wyłączone. Zobacz [Motywy z HTML](#themes-with-html).
+- **Zainstalowane motywy**: **Domyślny motyw**, następnie twoje własne motywy, a potem pobrane motywy startowe.
+- **Przeglądaj galerię motywów**: motywy startowe do pobrania.
 
-1. W sekcji **Theme Library** kliknij przycisk **Create Theme** (utworzenie motywu).
-2. Wpisz nazwę w polu nazwy (widać w nim tekst "Theme name...").
-3. Wpisz lub wklej kod CSS w dużym polu tekstowym.
-4. Zostaw przełącznik **Preview** (podgląd) włączony, żeby widzieć zmiany na żywo podczas pisania. Wyłącz go, aby zatrzymać podgląd na żywo.
-5. Kliknij przycisk **Save**.
+## Motywy startowe
 
-Nowy motyw powstaje z szablonu, który wypisuje najczęściej używane zmienne jako zakomentowane przykłady. Usuń znaki komentarza i wpisz własne wartości. Zupełnie nowy motyw zostaje włączony od razu po zapisaniu, a na ekranie pojawia się komunikat: Theme "My Theme" saved and activated.
+Motywy startowe nie są częścią instalacji, więc nie zajmują miejsca, dopóki któregoś nie zechcesz. Znajdują się w galerii motywów, a Marinara pobiera motyw dopiero wtedy, gdy go wybierzesz.
 
-Aby zmienić motyw później, znajdź go na liście **Installed Themes** (zainstalowane motywy), kliknij ikonę kodu (jej podpowiedź brzmi **Edit theme CSS**), wprowadź zmiany i kliknij przycisk **Save**. Edycja nie zmienia tego, który motyw jest aktywny.
+1. Kliknij **Przeglądaj galerię motywów** pod sekcją **Zainstalowane motywy**. Marinara potrzebuje do tego połączenia z internetem.
+2. Przy każdym motywie widać podgląd, krótki opis, rozmiar i tagi.
+3. Kliknij **Pobierz** obok tych, które ci się podobają. Pojawią się w grupie **Motywy startowe** w sekcji **Zainstalowane motywy**, gotowe do włączenia.
 
-## Importowanie i eksportowanie motywów
+| Motyw | Wygląd |
+| --- | --- |
+| **Apogee Lounge** | Salon widokowy kosmicznego liniowca w stylu lat 70., z gazowym olbrzymem za oknem i wiadomościami na profilowanych panelach. |
+| **Dewglass** | Błyszczące szkło w stylu lat 2000.: wiadomości to żelowe krople na tle słonecznej laguny lub nocnej zorzy. |
+| **Granite Watch** | Zimnowojenne stanowisko dowodzenia pod górą: odpowiedzi drukują się na papierze dalekopisowym, a widgety wiszą na podkładkach z klipsem. |
+| **Gutterlight** | Deszczowe gotyckie miasto narysowane jak komiks kryminalny, z tuszowanymi kadrami i ramkami narracyjnymi. |
+| **Lantern Meadow** | Spokojny i bardzo czytelny, bez ruchu. |
+| **Lantern Path** | Kolumna do czytania z delikatnym ruchem. |
+| **Maple's Bramble Cottage** | Przytulny domek z kolumną do czytania długich odpowiedzi. |
+| **NEON//GRID** | Neonowy cyberpunk stworzony z myślą o długich odpowiedziach. |
+| **Petal OS** | Żartobliwy pulpit retro z pikselowymi czcionkami. |
+| **Rosalind's Folio** | Układ baśniowej książki z elementami visual novel. |
+| **Swiss Poster** | Spokojna, przejrzysta stylistyka plakatu, bez ruchu. |
+| **Under Sail** | Pokład żaglowca na morzu: każda wiadomość to płócienny żagiel zawieszony na drewnianej rei. |
+| **Velvet Casket** | Pastelowy gotyk za dnia i tradycyjny gotyk nocą, z wiadomościami w kształcie trumien. |
 
-Aby zaimportować motyw:
+Każdy motyw startowy ma wersję ciemną i jasną. Małe tagi pod nazwą, takie jak **No motion** (bez ruchu) czy **High legibility** (wysoka czytelność), podpowiadają, czego się spodziewać.
 
-1. Kliknij przycisk **Import File** (import pliku) w sekcji **Theme Library**.
-2. Wybierz plik `.css` albo `.json`.
-3. Przeczytaj komunikat. Podaje on, ile motywów zostało zaimportowanych, pominiętych lub odrzuconych.
+Gdy w galerii pojawi się nowsza wersja pobranego motywu, na liście galerii przy motywie zobaczysz **Aktualizuj**. Kliknij ten przycisk, aby pobrać nową wersję.
 
-Plik `.css` staje się jednym motywem, a jego nazwa pochodzi od nazwy pliku. Plik `.json` może zawierać jeden motyw lub więcej. Plik wyeksportowany z aplikacji Marinara Engine zaimportuj bez zmian albo samodzielnie napisz mały plik:
+Pobrane motywy startowe są tylko do odczytu, więc zawsze zachowują pierwotną postać. Każdy ma cztery przyciski:
 
-```json
-{ "name": "My Theme", "css": "..." }
-```
+- **(i) Autorzy i licencje**: kto stworzył grafikę i czcionki oraz jak możesz je ponownie wykorzystać.
+- **Klonuj i edytuj** (ikona kopiowania): tworzy twoją własną kopię, na przykład "Petal OS (moja kopia)", i otwiera ją w edytorze.
+- **Eksportuj** (ikona wysyłania): zapisuje motyw jako plik.
+- **Usuń** (ikona kosza): usuwa motyw z tej instalacji. W każdej chwili możesz pobrać go ponownie z galerii.
 
-Zaimportowane motywy nie włączają się same. Motyw o tej samej nazwie i z tym samym kodem CSS co motyw, który już jest na serwerze, zostaje pominięty.
-
-Aby wyeksportować motyw, kliknij ikonę wysyłania (jej podpowiedź brzmi **Export theme**) w jego wierszu na liście **Installed Themes**. Marinara pobiera plik `.json`, który da się zaimportować w innym miejscu.
-
-<a id="activating-a-theme"></a>
+Pliki motywów możesz też pobrać bez aplikacji: są w folderze `themes` galerii motywów w serwisie GitHub ([gałąź kolacheee-themes](https://github.com/kolacheee/Marinara-Engine-kolacheee/tree/kolacheee-themes/themes)). Pobierz stamtąd plik `.json` i użyj przycisku **Importuj plik**.
 
 ## Włączanie motywu
 
-Lista **Installed Themes** pokazuje wszystkie motywy, a na samej górze znajduje się pozycja **Default Theme** (motyw domyślny).
+1. Kliknij nazwę motywu w sekcji **Zainstalowane motywy**. Motyw włączy się w tej karcie przeglądarki.
+2. Pasek pyta **Zachować ten motyw?** i odlicza 15 sekund. Najechanie wskaźnikiem na pasek wstrzymuje odliczanie.
+3. Kliknij **Zachowaj motyw**, aby go zachować. Od tej pory pojawi się też na twoich innych urządzeniach. Kliknij **Wróć** lub poczekaj do końca odliczania, aby przywrócić poprzedni wygląd.
 
-1. Kliknij nazwę motywu, aby go włączyć. Aktywny motyw jest oznaczony haczykiem.
-2. Kliknij **Default Theme**, aby wyłączyć własne motywy i wrócić do wbudowanego wyglądu.
+Kliknij **Domyślny motyw**, aby wyłączyć własne motywy. Przycisk **Resetuj wygląd** na górze sekcji **Ustawienia → Wygląd → Motyw** także wyłącza motyw.
 
-Przycisk **Reset Appearance** (przywrócenie wyglądu) na górze sekcji **App Style** (styl aplikacji) w **Settings → Appearance** (ustawienia, wygląd) także wyłącza aktywny motyw.
+Aby używać innego motywu tylko na jednym urządzeniu, najpierw ustaw **Wygląd na tym urządzeniu** na **Tylko to urządzenie** w sekcji **Ustawienia → Wygląd → Motyw**.
 
-Aby usunąć motyw, kliknij ikonę kosza (jej podpowiedź brzmi **Remove theme**) i potwierdź w oknie **Delete Theme** (usunięcie motywu). To trwale kasuje kod CSS motywu z serwera.
+### Przywracanie zwykłego wyglądu
 
-Jeśli to nie zadziałało: gdy aplikacja wygląda źle, sprawdź zarówno aktywny motyw, jak i Card CSS w czacie. Zobacz [Motywy i Card CSS](#themes-and-card-css).
+Jeśli motyw utrudnia korzystanie z aplikacji Marinara Engine, każda z tych czynności wyłączy go w tej karcie:
 
-<a id="ready-made-chat-window-styles"></a>
+- Naciśnij <kbd>Esc</kbd> trzy razy.
+- Dodaj `?safe` na końcu adresu w przeglądarce.
+- Naciśnij <kbd>Ctrl</kbd>+<kbd>K</kbd> i wpisz "Własny motyw".
+
+Marinara chroni też górny pasek, paski boczne, <kbd>Ctrl</kbd>+<kbd>K</kbd> i pole wiadomości. Motyw może zmienić ich styl, ale jeśli któryś z tych elementów ukryje, przesunie lub zasłoni, Marinara wyłączy motyw w tej karcie i poda przyczynę.
+
+## Importowanie motywu
+
+1. Kliknij **Importuj plik**.
+2. Wybierz plik motywu `.json` lub `.css`.
+3. Podgląd pokazuje nazwę motywu, autora, wersję, obrazy i rozmiar oraz informacje o autorach i licencji. Wymienia wszystko, co warto wiedzieć przed instalacją, na przykład ruchome obrazy, tekst dodawany przez motyw lub części, które nie zadziałają.
+4. Wybierz, co dołączyć. Podgląd proponuje zalecane przez motyw ustawienia, takie jak schemat kolorów, kolor akcentu i czcionka; większość z nich jest zaznaczona. Może też dodać tła motywu do twojej galerii teł czatu.
+5. Kliknij **Zainstaluj i wypróbuj**, aby od razu włączyć motyw, lub **Zainstaluj**, aby dodać go do listy.
+
+Jeśli masz już motyw o tej samej nazwie, podgląd proponuje jego aktualizację lub opcję **Zachowaj oba**. Gdy rezygnujesz z wypróbowywanego motywu, Marinara przywraca też wszystkie ustawienia, które zmieniła.
+
+Nie można zainstalować motywu, który wyświetla tekst proszący o hasła lub klucze albo podszywa się pod aplikację Marinara Engine. Nigdy nie wpisuj klucza ani hasła na prośbę motywu.
+
+### Motywy z HTML
+
+Niektóre motywy dodają do każdej wiadomości mały blok HTML, nazywany szablonem wiadomości. Marinara usuwa z niego skrypty, linki, obrazy i formularze, ale HTML od kogoś innego nadal może wprowadzać w błąd. Takie motywy można instalować tylko przy włączonej opcji **Zezwalaj na motywy z HTML (akceptuję ryzyko)**. Gdy przełącznik jest wyłączony, zainstalowany motyw wyświetla się bez swojego HTML.
+
+## Tworzenie motywu
+
+Kliknij **Nowy motyw** lub **Klonuj i edytuj** przy motywie startowym, aby zacząć od czegoś, co już dobrze wygląda. Edytor ma pole nazwy, duże pole CSS, przełącznik **Podgląd** i przycisk **Zapisz**. Nowy motyw włącza się przy zapisie i pyta **Zachować ten motyw?**
+
+[Przewodnik autora motywów](theme-author-guide.md#your-first-theme-step-by-step) opisuje krok po kroku tworzenie pierwszego motywu.
+
+### Tworzenie motywu z Professor Mari
+
+Nie musisz samodzielnie pisać CSS. Poproś asystentkę Professor Mari zwykłymi słowami, na przykład "zrób mi przytulny jesienny motyw, który działa na moim telefonie" albo "co jest nie tak z moim motywem Harbor?". Ma podręcznik projektowania i przeglądania motywów, którego się trzyma:
+
+1. **Najpierw uzgadnia z tobą pomysł.** Pyta o nastrój, tryb jasny lub ciemny (albo oba), twoje urządzenia oraz o to, czy chcesz obrazy i pogodę, a potem podsumowuje jeden wygląd w zdaniu, na przykład "kapsuły z matowego szkła na tle morza".
+2. **Tworzy motyw, ale go nie włącza.** Mówi ci, gdzie go wypróbować: wybierz go w sekcji **Motywy CSS** i naciśnij **Zachowaj motyw** w ciągu 15 sekund. Jeśli poprosisz ją, aby sama go włączyła, twoja karta tak samo zapyta **Zachować ten motyw?** i przywróci poprzedni wygląd, jeśli nikt nie odpowie.
+3. **Prosi cię o sprawdzenie wyglądu.** Professor Mari nie widzi twojego ekranu, więc wskazuje konkretne miejsca do sprawdzenia w trybie jasnym i ciemnym oraz prosi o zrzut ekranu wszystkiego, co wygląda nie tak. Jeśli Marinara wyłączyła motyw, przekaż asystentce treść komunikatu: podaje on przyczynę, którą ona naprawi.
+4. **Może stworzyć obrazy do motywu.** Gdy w sekcji Połączenia jest skonfigurowany model obrazów, tworzy tła, ramki i ikony, najpierw pokazuje ci każdy obraz i zapisuje go w motywie, gdy wyrazisz zgodę. Może też zmienić kolory rysowanych ozdób (obrazów SVG) w motywie. Zobacz [Poproś asystentkę Professor Mari o stworzenie grafiki](theme-author-guide.md#ask-professor-mari-to-make-the-art).
+
+Podczas przeglądu motywu wymienia to, co do siebie nie pasuje (różne kształty narożników, cienie, nieczytelne etykiety), ekran po ekranie, i niczego nie zmienia, dopóki nie wskażesz, co poprawić.
+
+Professor Mari pracuje tylko nad twoimi własnymi motywami. Motywy startowe są tylko do odczytu, więc najpierw kliknij przy jednym z nich **Klonuj i edytuj**, a potem poproś ją o pracę nad kopią. Czcionki, informacje o autorach i miniatury dodajesz samodzielnie w sekcji **Obrazy i dane udostępniania (autor, wersja, miniatura, czcionki)**.
+
+## Edytowanie, eksportowanie i usuwanie własnych motywów
+
+Twoje własne motywy mają w swoim wierszu trzy przyciski:
+
+- **Edytuj CSS motywu** (ikona kodu) otwiera edytor. Edycja nie zmienia tego, który motyw jest włączony.
+- **Eksportuj** (ikona wysyłania) pobiera plik `.json`, który możesz udostępnić lub zaimportować w innym miejscu.
+- **Usuń** (ikona kosza) usuwa motyw po potwierdzeniu. Nie da się tego cofnąć, więc najpierw wyeksportuj motyw, jeśli może ci się jeszcze przydać.
+
+## Motyw dla jednego czatu
+
+Czat może mieć własny motyw:
+
+1. Otwórz czat i jego **Ustawienia czatu**.
+2. W sekcji **Motyw** wybierz motyw. Opcja **Zgodnie z aplikacją** używa motywu aplikacji, a **Wygląd domyślny (bez własnego motywu)** wyłącza motywy w tym czacie.
+3. W czacie z jedną postacią zaznacz **Używaj we wszystkich czatach z tą postacią**, aby ustawić ten motyw dla tej postaci.
+
+Ustawienia i Biblioteka zawsze używają motywu aplikacji.
+
+## Kto może zmieniać motywy
+
+Na komputerze, na którym działa Marinara, sekret nie jest potrzebny. Na innym urządzeniu, na przykład telefonie, tworzenie, importowanie, klonowanie, edytowanie i usuwanie motywów wymaga sekretu administratora. Wpisz go w sekcji **Ustawienia → Zaawansowane → Bezpieczeństwo**. Wybranie już zainstalowanego motywu nie wymaga sekretu. Zobacz [Sekret administratora](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Gotowe style okien czatu
 
 Zanim zaczniesz: do tego nie potrzeba CSS.
 
-1. Otwórz **Settings → Appearance → App** (ustawienia, wygląd, aplikacja).
-2. Na dole sekcji **App Style** znajdź **Chat widget style** (styl widgetów czatu).
-3. Wybierz styl.
+1. Otwórz **Ustawienia → Wygląd → Przyciski i okna czatu**.
+2. W sekcji **Styl widgetów czatu** wybierz styl.
 
 | Styl | Wygląd |
 | --- | --- |
@@ -105,9 +169,11 @@ Trzy przełączniki pod narzędziami wyboru kolorów rozszerzają działanie sty
 
 Przyciski historii, czyli **Load More** (wczytaj więcej) i **Show older** (pokaż starsze), stosują się do przełączników tak jak pozostałe kontrolki czatu. W trybie Game Mode przełączniki obejmują też uwagi poboczne, widgety paska HUD, panel mapy, karty postaci, dzienniki, ekwipunek, panele walki i okna dialogowe. Asystentka Professor Mari może też tworzyć własne motywy dla tych obszarów.
 
-Własny motyw nadal może nadpisywać style. Opisane niżej zmienne okien i rozwijanych sekcji mają pierwszeństwo przed kolorami stylu. Zmienna `--mari-window-font-family` ustawia czcionkę okien, `--mari-drawer-radius` zmienia narożniki sekcji, a `--mari-window-ornament: none` ukrywa ozdobę przy tytule. Aby usunąć wszystkie ozdoby stylu, najpierw wybierz **Default**.
+Własny motyw nadal może nadpisywać style. Zmienne okien i rozwijanych sekcji opisane w sekcji [Styl okien i rozwijanych sekcji czatu](#styling-chat-windows-and-drawers) mają pierwszeństwo przed kolorami stylu. Zmienna `--mari-window-font-family` ustawia czcionkę okien, `--mari-drawer-radius` zmienia narożniki sekcji, a `--mari-window-ornament: none` ukrywa ozdobę przy tytule. Aby usunąć wszystkie ozdoby stylu, najpierw wybierz **Default**.
 
-<a id="themes-and-card-css"></a>
+## Dla autorów motywów
+
+Dalsza część tego przewodnika to materiał referencyjny dla osób, które samodzielnie piszą CSS motywów. Zacznij od [Przewodnika autora motywów](theme-author-guide.md), który wymienia wszystkie stabilne tokeny, punkty zaczepienia elementów i zasady bezpieczeństwa.
 
 ## Motywy i Card CSS
 
@@ -282,7 +348,9 @@ Na telefonach menu z trzema kropkami rozwija się w okrągłe przyciski. Jego pr
 
 ## Powiązane przewodniki
 
+- [Przewodnik autora motywów](theme-author-guide.md)
+- [Pogoda w twoim motywie](theme-weather.md)
 - [Przewodnik po stylowaniu kart w CSS](card-css-theming.md)
 - [Ustawienia wyglądu](appearance-settings.md)
 - [Konfiguracja serwera](../CONFIGURATION.md)
-- [Dostęp zdalny: logowanie i lista dozwolonych adresów IP](../REMOTE_ACCESS.md)
+- [Dostęp zdalny](../REMOTE_ACCESS.md)

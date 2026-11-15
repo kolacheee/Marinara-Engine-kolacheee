@@ -4,15 +4,15 @@ Cambia la fuente que Marinara usa en toda la app. Elige la fuente incorporada, a
 
 ## Elegir una fuente para la app
 
-1. Abre **Settings** (Configuración) y haz clic en la pestaña **Appearance** (Apariencia) y luego en el botón **App**.
-2. Busca la sección **Text & Scale** (Texto y escala).
+1. Abre **Settings** (Configuración) y haz clic en la pestaña **Appearance** (Apariencia).
+2. Busca la sección **Fonts & Text Size** (Fuentes y tamaño del texto).
 3. Abre el menú desplegable **Font** (Fuente) y elige una fuente.
 
 La forma más fácil de conseguir una fuente nueva es [Google Fonts](#downloading-from-google-fonts). La opción predeterminada es **Default (Inter)**, una fuente limpia elegida para leer en pantalla. Las fuentes que añades aparecen en el mismo menú desplegable, debajo de ella.
 
 Tu elección de fuente se sincroniza entre dispositivos. Cada navegador conectado al mismo servidor de Marinara cambia a ella. Consulta [Resumen de Settings](../settings/settings-overview.md).
 
-Los widgets del chat tienen una opción **Font** aparte en **Chat widget style** (Estilo de widgets del chat). Activa allí **Apply preset font** (Aplicar fuente del preset) para usarla también en los mensajes, los campos de entrada y los controles del chat. Consulta [Estilos de ventanas de chat listos para usar](custom-css-themes.md#ready-made-chat-window-styles).
+Los widgets del chat tienen una opción **Font** aparte en **Chat Buttons & Windows** (Botones y ventanas del chat). Activa allí **Apply preset font** (Aplicar fuente del preset) para usarla también en los mensajes, los campos de entrada y los controles del chat. Consulta [Estilos de ventanas de chat listos para usar](appearance-settings.md#chat-buttons--windows).
 
 ## Añadir tus propias fuentes
 
@@ -20,7 +20,7 @@ Antes de empezar: las fuentes van en una carpeta del servidor. El servidor es la
 
 1. Haz clic en **Open Fonts Folder** (Abrir carpeta de fuentes), junto al menú desplegable **Font**, para abrir `data/fonts/` en el servidor. O busca tú mismo la carpeta `data/fonts/` en la carpeta de datos de Marinara.
 2. Copia tu archivo de fuente en ella.
-3. Ve a **Settings → Appearance → App → Text & Scale** (Configuración → Apariencia → App → Texto y escala).
+3. Ve a **Settings → Appearance → Fonts & Text Size** (Configuración → Apariencia → Fuentes y tamaño del texto).
 4. Abre el menú desplegable **Font**. Tu fuente está en la lista.
 5. Selecciónala. El texto de la app cambia al instante.
 
@@ -36,7 +36,7 @@ Si no funcionó: revisa el tipo de archivo y que el archivo esté en `data/fonts
 
 El servidor necesita acceso a internet para esto.
 
-1. Ve a **Settings → Appearance → App → Text & Scale**.
+1. Ve a **Settings → Appearance → Fonts & Text Size**.
 2. En el campo **Google Fonts**, escribe el nombre exacto de la fuente, por ejemplo `Fira Code` o `Lora`.
 3. Haz clic en **Add** (Añadir).
 4. Espera a que termine la descarga. La fuente aparece entonces en el menú desplegable **Font**.

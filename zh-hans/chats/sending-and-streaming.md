@@ -15,7 +15,7 @@
 
 ### Send on Enter
 
-它在 **Settings → General → Input & Editing**(设置 → 常规 → 输入与编辑) 里。每种聊天模式各有一个开关。
+它在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 里。每种聊天模式各有一个开关。
 
 | 聊天模式 | 默认 | 关闭时 |
 | --- | --- | --- |
@@ -23,7 +23,7 @@
 | Conversations | 开启 | 按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>Cmd</kbd>+<kbd>Enter</kbd>) 发送。 |
 | Game | 开启 | 按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>Cmd</kbd>+<kbd>Enter</kbd>) 发送。 |
 
-Roleplay(角色扮演) 默认关闭，因为角色扮演的消息往往很长，需要换行。Professor Mari 有她自己的开关 **Enter sends to Professor Mari**(按 Enter 发送给 Professor Mari)，在 **Settings → General → Search and Professor Mari settings**(设置 → 常规 → Search 与 Professor Mari 设置) 里。
+Roleplay(角色扮演) 默认关闭，因为角色扮演的消息往往很长，需要换行。Professor Mari 有她自己的开关 **Enter sends to Professor Mari**(按 Enter 发送给 Professor Mari)，在 **Settings → General → Professor Mari**(设置 → 常规 → Professor Mari) 里。
 
 ## 添加图片和文件附件
 
@@ -49,7 +49,7 @@ Marinara 接受图片、PDF 文件和纯文本文件（`.txt`、`.md`、`.markdo
 
 ## 回复的流式输出
 
-流式输出会把回复逐词显示出来，而不是一次性全部出现。这些设置在 **Settings → General → Responses**(设置 → 常规 → 回复) 里。
+流式输出会把回复逐词显示出来，而不是一次性全部出现。这些设置在 **Settings → Chatting → Responses**(设置 → 聊天中 → 回复) 里。
 
 | 设置 | 默认 | 作用 |
 | --- | --- | --- |
@@ -80,8 +80,6 @@ Marinara 接受图片、PDF 文件和纯文本文件（`.txt`、`.md`、`.markdo
 ## 中断回复
 
 点击停止按钮，也就是回复流式输出期间的 **Send** 按钮。已经输出的文字通常会保留。主动中断永远不会显示错误。
-
-<a id="retry-without-retyping"></a>
 
 ## 不用重打就能重试
 

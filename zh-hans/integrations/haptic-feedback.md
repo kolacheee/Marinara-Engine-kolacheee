@@ -76,7 +76,7 @@ ws://192.168.1.50:12345
 
 默认情况下，Marinara 只接受来自运行 Marinara 服务器那台电脑的触感命令，这样设备控制更私密。因此，从手机或其他设备打开 Marinara、去访问运行在别处的服务器时，触感反馈用不了，连接、扫描和发送命令都会被拒绝。
 
-要允许这样用，需要开启服务器设置 `HAPTICS_ALLOW_REMOTE`，并配好访问保护：登录或管理员密钥。见[服务器配置参考](../CONFIGURATION.md)和[远程访问指南](../REMOTE_ACCESS.md)。管理员访问信息在 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问) 里填写。
+要允许这样用，需要开启服务器设置 `HAPTICS_ALLOW_REMOTE`，并配好访问保护：登录或管理员密钥。见[服务器配置参考](../CONFIGURATION.md)和[远程访问指南](../REMOTE_ACCESS.md)。管理员访问信息在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 里填写。
 
 ## 遇到问题时
 

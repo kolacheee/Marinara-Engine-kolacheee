@@ -27,8 +27,8 @@ Pour Grok, l'application affiche cette commande d'installation. Si elle ne fonct
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. Dans Marinara, clique sur **Connections** (Connexions) dans la barre du haut, puis sur **Add** (ajouter).
-4. Sous **Chat**, clique sur ton service. Ces services portent l'étiquette **Sign in** (se connecter).
+3. Dans Marinara, ouvre **Library → Connections** (Bibliothèque → Connexions) et clique sur **Add connection** (ajouter une connexion).
+4. Dans l'onglet **Texte**, sous **Subscriptions** (abonnements), clique sur ton service. Ces services portent l'étiquette **Sign in** (se connecter).
 5. La fenêtre affiche **Sign in first** et indique la commande à lancer. Il n'y a pas de champ de clé. Clique sur **Connect** (connecter). Marinara teste l'identification. **Connected** veut dire qu'elle fonctionne.
 6. Choisis un modèle dans la liste, puis clique sur **Done** (terminé). Pour Grok CLI, tu peux aussi laisser le modèle vide, ce qui utilise le modèle par défaut du CLI (voir [Grok CLI (Subscription)](#grok-cli-subscription)).
 
@@ -65,6 +65,8 @@ Utilise **Diagnose model routing** quand tu as demandé un gros modèle comme Op
 ## OpenAI (ChatGPT)
 
 Ce service utilise ton compte ChatGPT via le CLI Codex. Marinara lit le fichier d'identification local de Codex et rafraîchit la session quand c'est possible.
+
+Contrairement aux abonnements Claude et Grok, une identification ChatGPT prend en charge les appels d'outils : Professor Mari, les outils personnalisés ainsi que les dés et les outils de Game Mode fonctionnent donc avec elle.
 
 Pour régler le temps de réflexion de Codex avant qu'il réponde, ouvre **Edit model**, active **Use custom defaults for this model** (utiliser des valeurs par défaut propres à ce modèle) et choisis un niveau dans **Reasoning Effort** (effort de raisonnement). Il démarre sur **Default** (par défaut), qui garde le niveau propre à Codex pour le modèle. Un chat peut choisir son propre niveau dans **Advanced Parameters** (paramètres avancés). Le niveau défini dans un preset, un modèle de prompt enregistré, ne le change pas. Un modèle Codex utilisé comme modèle de secours ne suit que son propre niveau, et les agents qui utilisent ce modèle suivent le niveau du modèle. Les niveaux proposés correspondent à ceux qui sont disponibles pour le modèle choisi.
 

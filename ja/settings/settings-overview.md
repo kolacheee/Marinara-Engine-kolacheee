@@ -2,136 +2,140 @@
 
 **Settings**(設定)のどこに目的のコントロールがあるのかを調べ、**General**タブを設定し、設定がデバイス間で同期する仕組みを学びます。
 
-## Settingsパネルと6つのタブ
+## Settingsを開く
 
-上部バーの歯車アイコンから**Settings**を開きます。パネルの上部にある**Search settings**ボックスで、名前から設定を探せます。`delete`、`streaming`、`quotes`のような語句を入力すると、Marinaraが該当するセクションまで移動します。画面の言語での名前でも英語の名前でも一致します。
+**Library → Settings**を開きます。右上の**Library**をクリックし、Libraryの一覧の下にある**Settings**をクリックしてください。<kbd>Ctrl</kbd>+<kbd>K</kbd>(Macでは<kbd>⌘</kbd>+<kbd>K</kbd>)を押して、`streaming`や`font`などの設定名を入力し、その設定へ直接移動することもできます。スマートフォンでは、右上のスタックボタンの奥にあるLibrary内にSettingsがあります。
 
-パネルには6つのタブがあります。各タブには、それぞれのセクションがあります。
+ページ上部の**Search all settings**では、名前から設定を探せます。`delete`、`streaming`、`quotes`のような語句を入力すると、Marinaraが該当するセクションまで移動します。画面の言語での名前でも英語の名前でも一致します。
+
+Settingsには9つのタブがあります。タブの下にあるボタンの列から、開いているタブの各セクションへ移動できます。このガイドで**Settings → Chatting → Message Box**のように書かれている場合は、**Chatting**タブの**Message Box**セクションという意味です。
 
 ### やりたいこと
 
 | やりたいこと | 移動先 |
 | --- | --- |
-| 言語を変える | **Settings → General → App Behavior → Language** |
-| 文字を大きくする | **Settings → Appearance → App → Text & Scale** |
-| テーマや色を変える | **Settings → Appearance → App → App Style** |
+| 言語を変える | **Settings → General → Language** |
+| 文字を大きくする | **Settings → Appearance → Fonts & Text Size** |
+| テーマや色を変える | **Settings → Appearance → Theme**、または**Settings → Appearance → CSS Themes**にある既製の外観 |
 | 通知音を設定する | **Settings → General → Notifications** |
-| 削除の確認を止める | **Settings → General → App Behavior** |
-| クイック返信を追加する | **Settings → General → Input & Editing** |
-| バックアップを取る | **Settings → Advanced → Backup & Export** |
-| データを削除する | **Settings → Advanced → Danger Zone** |
+| 削除の確認を止める | **Settings → General → Confirmations & Help** |
+| ツアーをもう一度見る | **Settings → General → Confirmations & Help → Walkthroughs** |
+| クイック返信を追加する | **Settings → Chatting → Message Box** |
+| 画面を触ってスワイプする操作をオフにする | **Settings → Chatting → Editing & Swipes** |
+| SillyTavernからインポートする | **Settings → Data → SillyTavern Import** |
+| バックアップを取る | **Settings → Data → Backup & Restore** |
+| データを削除する | **Settings → Data → Delete Data** |
 | Marinaraをアップデートする | **Settings → Advanced → Updates** |
+| スマートフォンからMarinaraを使う | **Settings → Advanced → Access**と**Security** |
+| タップの反応が遅い理由を調べる | **Settings → Advanced → Troubleshooting → Show tap timings**(設定 → 詳細設定 → トラブルシューティング → タップの所要時間を表示) |
+| スマートフォンでメッセージの横に表示される画像を変える | **Settings → Appearance → Conversation → Profile pictures on phones**(設定 → 外観 → Conversation → スマートフォンのプロフィール画像) |
 
 ### 各タブの内容
 
-**General**(このガイド)
+| タブ | セクション |
+| --- | --- |
+| **General** | **Language**、**Confirmations & Help**、**Extras**、**Professor Mari**、**Notifications** |
+| **Chatting** | **Responses**、**Message Box**、**Editing & Swipes**、**Thinking**、**Text Formatting**、**Message Info** |
+| **Appearance** | **Theme**、**Fonts & Text Size**、**Accessibility**、**Text Colors**、**Layout**、**Effects**、**Backgrounds**、**Chat Buttons & Windows**、**CSS Themes**。[外観の設定](../appearance/appearance-settings.md)を参照してください。 |
+| **Conversation** | **Conversation Layout**、**Conversation Background** |
+| **Roleplay** | **Tracker Panel**、**Roleplay Messages**、**Avatars**、**Visual Novel** |
+| **Game** | **Game Text**、**Game Art**、**Game Assets**。[Gameのアセット](../game/game-assets.md)を参照してください。 |
+| **Media** | **Generation Defaults**、**Image Generation**、**Video Generation**、**Prompt Overrides**。Illustratorエージェントをインストールするまで、このタブにはダウンロードの選択肢だけが表示されます。[スタイルプロファイル](../media/style-profiles.md)と[プロンプトの上書き](../prompts/prompt-overrides.md)を参照してください。 |
+| **Data** | **SillyTavern Import**、**Backup & Restore**、**Chat Exports**、**Storage Cleanup**、**Delete Data**。[Marinaraのバックアップと復元](../data/backup-and-restore.md)と[データの消去とリセット](../data/clearing-data.md)を参照してください。 |
+| **Advanced** | **Updates**、**Server**、**Timeouts & Retries**、**Custom Request Parameters**、**Lorebooks**、**Security**、**Access**、**Multiplayer**、**Troubleshooting**。[Advancedタブ](#the-advanced-tab)を参照してください。 |
 
-- **App Behavior**(**Search and Professor Mari settings**の行を含む)
-- **Notifications**
-- **Responses**
-- **Input & Editing**
-- **Text Rules**
-- **Game Playback**
+Personal ExtensionsとExternal ExtensionsはSettingsにはありません。専用ページの**Library → Extensions**にあります。[個人用拡張機能](../extending/personal-extensions.md)を参照してください。
 
-**Appearance**には4つのボタンがあります。[外観の設定](../appearance/appearance-settings.md)を参照してください。
+### 従来のレイアウト
 
-- **App**: **App Style**、**Text & Scale**、**Atmosphere**、**Backgrounds**
-- **Conversation**: **Conversation Display**、**Conversation Theme**
-- **Roleplay**: **Tracker Panel**、**Roleplay Presentation**
-- **Game**: **Game Presentation**
+**New layout**を**Settings → Appearance → Theme**でオフにしている場合、Settingsは6つのタブがあるパネルになり、同じセクションが別のまとまり方で表示されます。
 
-**Generations**には、**Overall Generations**、**Image Generation**、**Video Generation**、**Prompt Overrides**があります。Illustratorエージェントをインストールするまで、このタブにはダウンロードを促す表示だけが出ます。[スタイルプロファイル](../media/style-profiles.md)と[シーン動画](../media/scene-video.md)を参照してください。
-
-**Addons**には、拡張機能の変更履歴、**Personal Extensions**、**External Extensions**(解放した場合のみ)、**Theme Library**があります。[個人用拡張機能](../extending/personal-extensions.md)と[カスタムCSSテーマ](../appearance/custom-css-themes.md)を参照してください。
-
-**Imports**には、**Profile & Marinara**、**SillyTavern Import**、**Game Assets**があります。[Marinaraのバックアップと復元](../data/backup-and-restore.md)と[SillyTavernからのインポート](../data/importing-from-sillytavern.md)を参照してください。
-
-**Advanced**には、次のセクションが、この順序で並びます。[Advancedタブ](#the-advanced-tab)を参照してください。
-
-- **Multiplayer WIP**
-- **Access**
-- **Admin Access**
-- **Features**
-- **Updates**
-- **Support Diagnostics**
-- **Request timeouts**
-- **Parameters**
-- **Message Tools**
-- **Backup & Export**
-- **Storage Optimization**
-- **Danger Zone**
+| 従来のタブ | 新しいレイアウトでの内容 |
+| --- | --- |
+| **General** | Generalタブに加えて、**Responses**、**Message Box**、**Editing & Swipes**、**Thinking**、**Text Formatting**、**Game Text** |
+| **Appearance** | Appearance、Conversation、Roleplayの各タブに加えて、**Game Art**。**App**、**Conversation**、**Roleplay**、**Game**の4つのボタンの奥にあります |
+| **Generations** | Mediaタブ |
+| **Addons** | **CSS Themes**とPersonal Extensions |
+| **Imports** | **SillyTavern Import**、**Game Assets**、プロファイルのインポート |
+| **Advanced** | Advancedタブに加えて、**Message Info**、**Backup & Restore**、**Chat Exports**、**Storage Cleanup**、**Delete Data** |
 
 ## Generalタブ
 
-**General**タブの各セクションは、**Settings → General**にあります。
-
 | セクション | 制御する内容 |
 | --- | --- |
-| **App Behavior** | 言語、削除時の安全確認、表示と非表示のスイッチ、**Search and Professor Mari settings**の行。[App Behavior](#app-behavior)を参照してください。 |
-| **Notifications** | 通知音、ブラウザーとAndroidの通知。[Notifications](#notifications)を参照してください。 |
-| **Responses** | ストリーミング、トリミング、**Messages per page**。[メッセージの送信とストリーミング](../chats/sending-and-streaming.md)を参照してください。 |
-| **Input & Editing** | **Send on Enter**、**Quick replies**、スワイプと編集のショートカット。[Input and Editing](#input-and-editing)を参照してください。 |
-| **Text Rules** | チャットの文章の整形方法。[Text Rules](#text-rules)を参照してください。 |
-| **Game Playback** | Game Modeでの読み進め方と画面移動。[Game Mode: はじめに](../game/getting-started.md)を参照してください。 |
+| **Language** | 画面の表示言語と、このガイドの言語。[Language](#language)を参照してください。 |
+| **Confirmations & Help** | **Confirm before deleting**、**Hide chat Help button**、**Walkthroughs**。 |
+| **Extras** | **Achievements**、**Disable seasonal Marinara themes**、**Music Player**。 |
+| **Professor Mari** | **Search and Professor Mari settings**という1つの行があります。Search、クイック回答、Professor Mariの設定を開くには、**Open**をクリックします。[Professor Mari](../home/professor-mari.md)を参照してください。 |
+| **Notifications** | 通知の表示位置、通知音、ブラウザーとAndroidの通知。[Notifications](#notifications)を参照してください。 |
 
-### App Behavior
+### Language
 
 | 設定 | 働き |
 | --- | --- |
 | **Language** | 画面の表示言語を設定します。モデルへのプロンプトやチャットの内容は変わりません。まだ翻訳されていないテキストは英語で表示されます。アラビア語では右から左に読むレイアウトになります。デフォルトは英語です。 |
 | **Documentation Language** | 組み込みのガイドの言語を設定します。下記を参照してください。デフォルトは英語です。 |
-| **Confirm before deleting** | チャット、キャラクター、その他の項目を完全に削除する前に、Marinaraが確認します。デフォルトはオンです。 |
-| **Hide chat Help button** | Conversation、Roleplay、Gameのチャットから**Help**ボタンを隠します。デフォルトはオフです。 |
-| **Show Android status bar** | 時刻、バッテリー、通知アイコンをMarinaraの上に表示したままにします。Androidアプリでだけ働きます。デフォルトはオフです。 |
-| **Achievements** | 実績を記録し、解除の通知、ホームのブックマーク、ウィジェットを表示します。[実績](../home/achievements.md)を参照してください。デフォルトはオンです。 |
-| **Disable seasonal ME themes** | Marinaraの季節限定テーマをオフにします。デフォルトはオフです。 |
-| **Music Player** | コンパクトなMusic Playerを表示します。**Agents → Agent Organizer**の**Music DJ**エージェントが必要で、インストールするまでグレー表示のままです。[Music DJ](../media/music.md)を参照してください。デフォルトはオンです。 |
-
-**Search and Professor Mari settings**は、**App Behavior**の最下部にある行です。**Open**を選ぶと、Search、クイック回答、Professor Mariの設定ページに移動します。[Professor Mari](../home/professor-mari.md)を参照してください。
 
 画面の表示言語は、アラビア語、簡体字中国語、英語、フランス語、ドイツ語、ヒンディー語、日本語、韓国語、ポーランド語、ブラジルポルトガル語、ロシア語、スペイン語です。翻訳を改善したい場合や言語を追加したい場合は、[UIのローカライズ](../development/localization.md)を参照してください。
 
 **Documentation Language**では、英語は最初から入っています。別の言語を選んで**Download & Replace**をクリックします。Marinaraはその言語パックを一度だけダウンロードして、前のパックを削除します。そのため、ダウンロード済みの言語は1つだけです。まだ翻訳されていないガイドは、小さな`EN`バッジ付きで英語のまま開きます。ガイド検索は、選択中の言語で動作します。選んだ言語はアップデート後も引き継がれ、翻訳に変更があったパックは、アップデート後に再取得されます。ダウンロードしたガイドが失われたり壊れたりした場合は、**Fix documentation**ボタンが現れます。このボタンはパックを再ダウンロードします。ダウンロード元に接続できないときは、ガイドを英語に戻します。
+
+### 確認、ヘルプ、その他
+
+| 設定 | 働き |
+| --- | --- |
+| **Confirm before deleting** | チャット、キャラクター、その他の項目を完全に削除する前に、Marinaraが確認します。デフォルトはオンです。 |
+| **Hide chat Help button** | Conversation、Roleplay、Gameのチャットから**Help**ボタンを隠します。デフォルトはオフです。 |
+| **Walkthroughs** | **Replay the welcome tour**、このデバイスのウォークスルーの再表示、**Show chat mode tips again**を選べます。[初回チュートリアル](../home/tutorial.md)を参照してください。 |
+| **Achievements** | 実績を記録し、解除の通知とAchievementsウィジェットを表示します。[実績](../home/achievements.md)を参照してください。デフォルトはオンです。 |
+| **Disable seasonal Marinara themes** | Marinaraの季節限定の外観をオフにします。デフォルトはオフです。 |
+| **Music Player** | コンパクトなMusic Playerを表示します。**Music DJ**エージェントが必要です。このエージェントは**Library → Agents**にあり、インストールするまでグレー表示のままです。[音楽](../media/music.md)を参照してください。デフォルトはオンです。 |
+
+**Show Android status bar**と**Open Android launcher**は**Settings → Appearance → Layout**にあり、Androidアプリだけに表示されます。
 
 ### Notifications
 
 Marinaraは、通知に標準の音を鳴らします。自分の音を使うには、次の手順に従います。
 
 1. **Settings → General → Notifications**を開きます。
-2. **Custom sound**をアップロードします。MP3、WAV、OGG、M4A、MP4、WebMのいずれかで、10 MBまでです。
+2. **Choose sound**を**Custom sound**の下でクリックします。MP3、WAV、OGG、M4A、MP4、WebMのいずれかで、10 MBまでです。
 
 この音は、このサーバーに接続しているすべてのデバイスで鳴ります。試聴、差し替え、削除ができます。ファイルを読み込めない場合、Marinaraは標準の音を鳴らします。このファイルは、バックアップとプロファイルのエクスポートに含まれます。
 
-**Background Notifications**は、キャラクターが自分から送るConversationのメッセージが対象です。**Generation Completion Notifications**は、Conversation、Roleplay、Game Modeで自分から始めた返信が対象です。どちらも、Marinaraを開いていてもフォーカスが外れているときに動作します。メッセージの中身は表示しません。
+**Background Notifications**は、キャラクターが自分から送るConversationのメッセージが対象です。**Generation Completion Notifications**は、Conversation、Roleplay、Game Modeで自分から始めた返信が対象です。どちらも、Marinaraを開いていてもフォーカスが外れているときに動作します。メッセージの中身は表示しません。**Notification position**では、エラーメッセージなどの通知を上と下のどちらに表示するかを選びます。
 
-### Input and Editing
+## Chattingタブ
 
-**Settings → General → Input & Editing**の設定は次のとおりです。
+### Message BoxとEditing & Swipes
 
-| 設定 | 働き |
-| --- | --- |
-| **Send on Enter** | Enterキーを押したときに送信するモードを選びます。 |
-| **Keep guidance after regenerating** | ガイド付きの再生成の後も、指示をメッセージ入力欄に残します。デフォルトでオンです。 |
-| **Add CYOA choices to the message box instead of sending them** | クリックした選択肢をメッセージ入力欄に入れるので、送信する前に編集できます。 |
-| **Quick replies** | 送信ボタンの横に、下書きを作る操作を追加します。[ガイド付き生成とImpersonate](../chats/guided-and-impersonate.md)を参照してください。 |
-| **Speech-to-text microphone** | チャットの入力欄にマイクのボタンを表示します。 |
-| **Intuitive swipe navigation** | 矢印キーや画面のスワイプで、スワイプ(1つのメッセージに残した複数の回答)を切り替えます。 |
-| **Reroll past the newest swipe** | いちばん新しいスワイプの先へ進んだときに、新しい返信を生成します。 |
-| **Up Arrow edits last message** | 入力欄が空の状態でUp Arrowを押すと、直前のメッセージを編集できます。 |
-| **Double-click edits messages** | Roleplayのメッセージをダブルクリックすると編集できます。 |
+| 設定 | セクション | 働き |
+| --- | --- | --- |
+| **Send on Enter** | Message Box | Enterキーを押したときに送信するモードを選びます。 |
+| **Keep guidance after regenerating** | Message Box | ガイド付きの再生成の後も、指示をメッセージ入力欄に残します。デフォルトでオンです。 |
+| **Add CYOA choices to the message box instead of sending them** | Message Box | クリックした選択肢をメッセージ入力欄に入れるので、送信する前に編集できます。 |
+| **Quick replies** | Message Box | 送信ボタンの横に、下書きを作る操作を追加します。[ガイド付き生成とImpersonate](../chats/guided-and-impersonate.md)を参照してください。 |
+| **Speech-to-text microphone** | Message Box | チャットの入力欄にマイクのボタンを表示します。 |
+| **Show characters in Persona pickers** | Message Box | ペルソナの選択画面に自分のキャラクターも並べるので、キャラクターになりきってプレイできます。 |
+| **Up Arrow edits last message** | Editing & Swipes | 入力欄が空の状態でUp Arrowを押すと、直前のメッセージを編集できます。 |
+| **Double-click edits messages** | Editing & Swipes | Roleplayのメッセージをダブルクリックすると編集できます。 |
+| **Intuitive swipe navigation** | Editing & Swipes | 矢印キーや画面のスワイプで、スワイプ(1つのメッセージに残した複数の回答)を切り替えます。 |
+| **Reroll past the newest swipe** | Editing & Swipes | いちばん新しいスワイプの先へ進んだときに、新しい返信を生成します。 |
+| **Swipe gestures on touch screens** | Editing & Swipes | スマートフォンやタブレットで使う、新しいレイアウトのスワイプ操作です。[タッチ操作](../chats/messages.md#touch-gestures)を参照してください。デフォルトでオンです。 |
+| **Guide swipes/regens with chat input** | Editing & Swipes | 再生成のときに、入力欄の下書きを指示として使います。 |
+| **Always show swipe menu in Conversation** / **in Roleplay** | Editing & Swipes | マウスカーソルを重ねたときだけでなく、スワイプの矢印を常に表示します。 |
 
-**Responses**セクションには、**Enable streaming**、**Streaming speed**、**Trim incomplete sentences from the response**、**Add a new line before /continue text**(デフォルトでオン)、**Messages per page**があります。[メッセージの送信とストリーミング](../chats/sending-and-streaming.md)を参照してください。メッセージの操作については、[メッセージの操作](../chats/messages.md)を参照してください。
+**Responses**セクションには、**Type out replies as they arrive (streaming)**、**Streaming speed**、**Trim incomplete sentences from the response**、**Add a new line before /continue text**(デフォルトでオン)、**Messages per page**があります。[メッセージの送信とストリーミング](../chats/sending-and-streaming.md)を参照してください。**Thinking**には、**Show Thinking In Messages**と**Don't Collapse Thinking**があります。メッセージの操作については、[メッセージの操作](../chats/messages.md)を参照してください。
 
-### Text Rules
+### Text Formatting
 
-これらのルールは、**Settings → General → Text Rules**で、チャットの文章の扱い方を変えます。**Bold dialogue in quotes**と**Convert LaTeX symbols**は見た目だけを変えるので、保存済みのメッセージは変わりません。**Quote style**は、入力して保存する文章の引用符を書き換えます。
+これらのルールは、**Settings → Chatting → Text Formatting**で、チャットの文章の扱い方を変えます。**Bold dialogue in quotes**と**Convert LaTeX symbols**は見た目だけを変えるので、保存済みのメッセージは変わりません。**Quote style**は、入力して保存する文章の引用符を書き換えます。
 
 | 設定 | 働き |
 | --- | --- |
 | **Bold dialogue in quotes** | 引用符で囲まれた文章を太字で表示します。デフォルトでオンです。 |
 | **Convert LaTeX symbols** | LaTeXの数式コマンドを記号として表示します。コードはそのままです。デフォルトでオンです。 |
+| **Force Solid Colors for Inline Names** | メッセージ内のキャラクター名をグラデーションではなく1つの単色で表示します。 |
 | **Quote style** | **Straight**はまっすぐな記号のままにします(デフォルト)。**Typographic**は、曲がった引用符とアポストロフィーに書き換えます。 |
-| **Load images from other websites in messages** | ほかのWebサイトにある画像の扱いを決めます。デフォルトでオフです。 |
 
 #### Bold dialogue in quotes
 
@@ -143,40 +147,38 @@ Marinaraは、通知に標準の音を鳴らします。自分の音を使うに
 
 #### Load images from other websites in messages
 
-オフのあいだは、メッセージ、挨拶メッセージ、カードのプレビューにあるほかのWebサイトの画像の代わりに、そのWebサイトの名前と**Load image**ボタンが表示されます。これで、メッセージが勝手にほかのサイトへ接続することはなくなります。**Load image**を選ぶと、その画像が表示されます。Marinaraは、その選択をすべてのデバイスで記憶します。すべての画像をすぐに表示するには、この設定をオンにします。ギャラリーの画像、アバター、スプライトなど、Marinaraに保存されている画像は、常に表示されます。
+このスイッチは**Settings → Advanced → Security**にあり、デフォルトでオフです。オフのあいだは、メッセージ、挨拶メッセージ、カードのプレビューにあるほかのWebサイトの画像の代わりに、そのWebサイトの名前と**Load image**ボタンが表示されます。これで、メッセージが勝手にほかのサイトへ接続することはなくなります。**Load image**を選ぶと、その画像が表示されます。Marinaraは、その選択をすべてのデバイスで記憶します。すべての画像をすぐに表示するには、この設定をオンにします。ギャラリーの画像、アバター、スプライトなど、Marinaraに保存されている画像は、常に表示されます。
 
-<a id="the-advanced-tab"></a>
+### Message Info
 
-## Advancedタブ
-
-| セクション | 詳しい情報 |
-| --- | --- |
-| **Admin Access** | [リモートアクセス](../REMOTE_ACCESS.md) |
-| **Features** | [機能スイッチ](../configuration/features.md) |
-| **Updates** | [Marinara Engineのアップデート](../UPGRADING.md) |
-| **Message Tools** | [Message Tools](#message-tools) |
-| **Backup & Export** | [Marinaraのバックアップと復元](../data/backup-and-restore.md) |
-| **Danger Zone** | [データの消去とリセット](../data/clearing-data.md) |
-
-### Message Tools
-
-これらのスイッチは、**Settings → Advanced → Message Tools**にあります。**Show context usage**と**Show "older messages not sent" note**を除いて、すべてデフォルトでオフです。
+これらのスイッチは**Settings → Chatting → Message Info**にあります。**Show context usage**と**Show "older messages not sent" note**を除いて、すべてデフォルトでオフです。
 
 | スイッチ | 働き |
 | --- | --- |
 | **Show message timestamps** | メッセージごとに日付と時刻を表示します。 |
-| **Show characters in Persona pickers** | ペルソナの選択画面に自分のキャラクターも並べるので、キャラクターになりきってプレイできます。 |
 | **Show model name on messages** | 返信を書いたモデルの名前を表示します。 |
 | **Show token usage on messages** | メッセージごとに、プロンプトと返信のトークン数を表示します。 |
 | **Show context usage** | 最後に計測したリクエストで、コンテキストウィンドウがどれだけ埋まっていたかを、接続の切り替えメニューとGameのチャット設定に表示します。 |
 | **Show message numbers** | メッセージごとに番号を表示します。 |
 | **Show "older messages not sent" note** | 古いメッセージがプロンプトに収まらなかったときに、最新の返信の下に注記を表示します。途中で切れた返信や空の返信には、それぞれの注記が引き続き表示されます。 |
-| **Guide swipes/regens with chat input** | 再生成のときに、入力欄の下書きを指示として使います。 |
-| **Include reasoning in exports** | モデルの表に出ない思考を、チャットのエクスポートに含めます。 |
-| **Include private notes in exports** | メッセージに付けた非公開のメモを、JSONLとテキストのエクスポートに含めます。記録を共有するときは、オフのままにしてください。 |
-| **Debug mode** | サポート用に、モデルへ送ったデータをサーバーのコンソールに記録します。 |
 
-詳しくは、[メッセージの操作](../chats/messages.md)、[ペルソナ](../characters/personas.md)、[1つのチャットで使うモデルを選ぶ](../connections/connecting-to-a-provider.md#choosing-a-model-for-one-chat)、[Peek Prompt](../chats/peek-prompt.md)、[ガイド付き生成とImpersonate](../chats/guided-and-impersonate.md)、[チャットのエクスポートとインポート](../chats/export-import.md)、[トラブルシューティング](../TROUBLESHOOTING.md)を参照してください。
+**Include reasoning in exports**と**Include private notes in exports**は**Settings → Data → Chat Exports**にあります。[チャットのエクスポートとインポート](../chats/export-import.md)を参照してください。
+
+<a id="the-advanced-tab"></a>
+
+## Advancedタブ
+
+| セクション | 内容 | 詳しい情報 |
+| --- | --- | --- |
+| **Updates** | **Release Channel**、**Check for Updates**、**Refresh App** | [Marinara Engineのアップデート](../UPGRADING.md) |
+| **Server** | **Restart Server** | |
+| **Timeouts & Retries** | 低速なバックエンドを待つ時間と**Retry failed provider calls** | [サーバー設定リファレンス](../CONFIGURATION.md) |
+| **Custom Request Parameters** | プロバイダー固有のリクエスト項目に使える再利用可能なコントロール | [生成パラメーター](../prompts/generation-parameters.md) |
+| **Lorebooks** | **Stable lorebook picks**と**Lorebook activation stats** | [機能スイッチ](../configuration/features.md) |
+| **Security** | 管理者シークレット、**Allow custom Agent imports**、**Allow third-party extension imports**、**Load images from other websites in messages** | [リモートアクセス](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions) |
+| **Access** | リモートログイン、**Add a device**、このサーバーが許可する接続 | [リモートアクセス](../REMOTE_ACCESS.md) |
+| **Multiplayer** | 複数のデバイスから1つのチャットを一緒にプレイする機能(開発中) | [サーバー設定リファレンス](../CONFIGURATION.md) |
+| **Troubleshooting** | **Copy Support Diagnostics**、**Debug mode**(モデルのペイロードをサーバーのコンソールに記録)、**Open Console**、**Show tap timings**(タップの所要時間を表示) | [トラブルシューティング](../TROUBLESHOOTING.md#the-app-feels-slow-on-a-phone-or-tablet) |
 
 ## 設定がデバイス間で同期する仕組み
 
@@ -188,7 +190,7 @@ Marinaraはほとんどの設定をサーバーに保存します。そのため
 
 いちばん新しい変更が優先されます。変更の直後に2台目のデバイスでMarinaraを開くと、そちらの古いコピーが、変更内容を上書きすることがあります。デバイスを切り替える前に、少し待ってください。
 
-同期しない設定が2つあります。**Settings → Appearance → Text & Scale**で、使うデバイスごとに設定し直してください。
+同期しない設定が2つあります。**Settings → Appearance → Fonts & Text Size**で、使うデバイスごとに設定し直してください。
 
 - **Display Size**(画面のテキストの大きさ)
 - **Chat Font Size**(チャットのテキストの大きさ)

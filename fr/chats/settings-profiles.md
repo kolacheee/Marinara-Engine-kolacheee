@@ -4,7 +4,7 @@ Un profil de réglages est un lot nommé de réglages de chat réutilisables : c
 
 Les profils se trouvent en haut de **Chat Settings** (réglages du chat). Ils fonctionnent en Conversation et en Roleplay. Les chats Game n'affichent pas les contrôles de profil.
 
-Un **prompt preset** (preset de prompt) est autre chose. Il règle la structure du prompt système (le texte que Marinara envoie à l'IA) et les valeurs de génération, et tu le modifies dans le panneau Presets. Voir [Éditeur de presets et gestionnaire de prompts](../prompts/presets.md). Un profil de réglages est le lot plus large, et il peut inclure un preset de prompt parmi ses éléments.
+Un **prompt preset** (preset de prompt) est autre chose. Il règle la structure du prompt système (le texte que Marinara envoie à l'IA) et les valeurs de génération, et tu le modifies sur la page **Library → Presets** (Bibliothèque → Presets). Voir [Éditeur de presets et gestionnaire de prompts](../prompts/presets.md). Un profil de réglages est le lot plus large, et il peut inclure un preset de prompt parmi ses éléments.
 
 ## Appliquer un profil
 
@@ -92,7 +92,7 @@ Quand un nouveau chat utilise un profil par défaut qui a une disposition enregi
 Un profil enregistre la façon dont le chat dialogue avec le modèle :
 
 - La connexion.
-- Le preset de prompt (appelé source du prompt en Conversation).
+- Le preset de prompt (appelé source du prompt en Conversation) et ses [variables de preset](../prompts/preset-variables.md).
 - Les agents et les outils.
 - La traduction, Memory Recall et Advanced Parameters.
 - La disposition des fenêtres et des boutons : positions, tailles, épinglages, verrouillages, outils rangés dans Chat Settings ou détachés, fenêtres de contrôles ouvertes, et positions des boutons sur ordinateur et téléphone. Les profils sans disposition enregistrée, comme **Default**, laissent la disposition du chat telle quelle.

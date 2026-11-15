@@ -1,6 +1,12 @@
 # Funktionsschalter
 
-Manche Serververhaltensweisen sind optional. Du aktivierst sie unter **Settings > Advanced > Features** (Einstellungen > Erweitert > Funktionen). Jeder Schalter ist anfangs aus. Wird dieser Bereich nie geöffnet, verhält sich der Server wie zuvor.
+Manche Serververhaltensweisen sind optional. Jeder Schalter ist anfangs aus. Solange niemand sie einschaltet, verhält sich der Server wie zuvor. Du findest sie an verschiedenen Stellen in **Settings** (Einstellungen):
+
+- **Stable lorebook picks** (stabile Lorebook-Auswahl) und **Lorebook activation stats** (Lorebook-Aktivierungsstatistik): **Settings → Advanced → Lorebooks**.
+- **Retry failed provider calls** (fehlgeschlagene Anbieteraufrufe wiederholen): **Settings → Advanced → Timeouts & Retries**.
+- **Recover deleted chat messages** (gelöschte Chat-Nachrichten wiederherstellen): **Settings → Data → Backup & Restore**.
+
+Im klassischen Layout suchst du in Settings nach dem Namen des Schalters.
 
 Änderungen gelten sofort. Weder Serverneustart noch Neuladen der Seite ist nötig.
 
@@ -10,12 +16,12 @@ Manche Serververhaltensweisen sind optional. Du aktivierst sie unter **Settings 
 
 | Schalter | Einstellungsschlüssel | Standard | Umgebungsvariable |
 | --- | --- | --- | --- |
-| **Stable lorebook picks** (stabile Lorebook-Auswahl) | `stableLorebookGroupPicks` | Aus | `LOREBOOK_STABLE_GROUP_WINNERS` |
-| **Retry failed provider calls** (fehlgeschlagene Anbieteraufrufe wiederholen) | `providerRetry` | Aus | `PROVIDER_RETRY_TRANSIENT_ERRORS` |
-| **Lorebook activation stats** (Lorebook-Aktivierungsstatistik) | `usageAndActivationStats` | Aus | keine |
-| **Recover deleted chat messages** (gelöschte Chat-Nachrichten wiederherstellen) | `messageTrash` | Aus | keine |
+| **Stable lorebook picks** | `stableLorebookGroupPicks` | Aus | `LOREBOOK_STABLE_GROUP_WINNERS` |
+| **Retry failed provider calls** | `providerRetry` | Aus | `PROVIDER_RETRY_TRANSIENT_ERRORS` |
+| **Lorebook activation stats** | `usageAndActivationStats` | Aus | keine |
+| **Recover deleted chat messages** | `messageTrash` | Aus | keine |
 
-Die Einstellungssuche nach `features` führt zu diesem Bereich.
+Die Einstellungssuche nach dem Namen eines Schalters führt zu ihm.
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ Aus: Gelöschte Nachrichten werden sofort entfernt.
 ## Vorrang
 
 1. **Umgebungsvariable.** Ist sie gesetzt, überschreibt sie den gespeicherten Schalter sowohl beim Ein- als auch beim Ausschalten. Settings zeigt den Schalter mit dem Variablennamen gesperrt. Ein leerer Wert gilt als nicht gesetzt.
-2. **Gespeicherter Schalter.** Der Wert unter Settings > Advanced > Features.
+2. **Gespeicherter Schalter.** Der Wert unter Settings > Advanced > Lorebooks.
 3. **Standard.** Aus.
 
 | Variable | Steuert | Werte |

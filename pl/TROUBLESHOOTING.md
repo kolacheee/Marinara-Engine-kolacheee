@@ -38,9 +38,32 @@ Więcej przyczyn:
 - **Własna nazwa tego komputera.** Nazwa, która w `/etc/hosts` wskazuje na `127.0.0.1`, liczy się jako ruch przekazywany. Zamiast niej użyj `localhost`, `127.0.0.1`, nazwy hosta komputera albo nazwy `*.localhost`.
 - **Too many wrong passwords** (zbyt wiele błędnych haseł). Odczekaj 15 minut, a potem się zaloguj. Nie pamiętasz hasła? Uruchom `node scripts/reset-login.mjs` w folderze aplikacji Marinara na komputerze, na którym działa Marinara. W kontenerze Docker uruchom `docker exec <container> node scripts/reset-login.mjs`. Ponowną próbę umożliwia też restart serwera.
 - **Untrusted request host** (niezaufany host żądania). W przypadku domeny publicznej albo domeny odwrotnego proxy dopisz jej dokładną nazwę hosta do `TRUSTED_HOSTS` w pliku `.env`. Bezpośrednie adresy IP są nadal akceptowane.
-- **Zablokowane ryzykowne działania** (kopie zapasowe, czyszczenie danych, aktualizacje) z tego urządzenia. Na komputerze, na którym działa serwer, otwórz **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny) i kliknij **Make admin secret** (utworzenie sekretu administratora) albo ustaw `ADMIN_SECRET` w pliku `.env` serwera. Wpisz sekret w **Admin Access** na drugim urządzeniu i kliknij **Save** (zapis).
+- **Zablokowane ryzykowne działania** (kopie zapasowe, czyszczenie danych, aktualizacje) z tego urządzenia. Na komputerze, na którym działa serwer, otwórz **Ustawienia → Zaawansowane → Bezpieczeństwo** i kliknij **Make admin secret** (utworzenie sekretu administratora) albo ustaw `ADMIN_SECRET` w pliku `.env` serwera. Wpisz sekret w **Admin Access** na drugim urządzeniu i kliknij **Save** (zapis).
 
 Zobacz [Dostęp zdalny](REMOTE_ACCESS.md) i [Najczęściej zadawane pytania](FAQ.md). Jeśli po aktualizacji dostęp został zablokowany, zobacz [Zablokowany dostęp po aktualizacji](REMOTE_ACCESS.md#locked-out-after-updating).
+
+## Aplikacja działa wolno na telefonie lub tablecie
+
+Pierwsze otwarcie strony może chwilę potrwać, bo wczytują się obrazy i sama strona. Później dotknięcia powinny dawać szybką odpowiedź. Jeśli któreś nadal powoduje opóźnienie:
+
+1. Otwórz **Ustawienia → Zaawansowane → Rozwiązywanie problemów** i włącz **Show tap timings**. To ustawienie dotyczy tylko tego urządzenia.
+2. Korzystaj z aplikacji jak zwykle. Małe ciemne pole przy lewym dolnym rogu pokazuje ostatnie dotknięcia.
+3. Każdy wiersz podaje dotknięty element, a potem `shown · smooth · longest frame · server`, wszystko w milisekundach (ms, tysięcznych częściach sekundy).
+
+| Odczyt | Co oznacza |
+| --- | --- |
+| **shown** | Czas do pierwszej zmiany na ekranie po dotknięciu. |
+| **smooth** | Czas do zakończenia zmian na ekranie. Zielony oznacza dobry wynik; powyżej 400 zmienia się na czerwony, a oczekiwanie jest zauważalne. |
+| **longest frame** | Najdłuższe pojedyncze zacięcie po drodze. |
+| **server** | Ile żądań wywołało dotknięcie i kiedy zakończyło się ostatnie z nich. Kreska oznacza brak żądań. |
+
+Co możesz wypróbować:
+
+- Jeśli **server** stanowi większość czasu **smooth**, czekasz na serwer lub sieć, a nie na ekran. Serwer w tej samej sieci Wi-Fi działa szybciej niż serwer dostępny przez internet.
+- Jeśli **smooth** jest wysokie, a **server** pokazuje kreskę, opóźnienie powstaje na ekranie. Wyłącz na chwilę motyw (trzykrotnie naciśnij <kbd>Esc</kbd> albo dodaj `?safe` na końcu adresu) i ponownie dotknij tego samego elementu. Jeśli działa znacznie szybciej, przyczyną jest motyw. Powiadom jego autora albo zobacz [Jak zadbać o szybkość motywu](appearance/theme-author-guide.md#keeping-a-theme-fast).
+- W **Ustawienia → Wygląd → Efekty** znajdziesz **Ogranicz animacje i efekty otoczenia** i **Ograniczone efekty renderowania**. Obie opcje poprawiają płynność na wolniejszych urządzeniach.
+
+Zgłaszając powolne działanie, dołącz odpowiedni wiersz z pomiarem czasu dotknięcia. Po zakończeniu wyłącz **Show tap timings**.
 
 ## Zablokowany zapis lub ustawienia, które nie zostają
 
@@ -226,7 +249,7 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 **Built-in model** (model wbudowany) działa na twoim komputerze bez klucza API. Niektóre komunikaty o błędach nazywają go sidecar. Konfigurację opisuje przewodnik [Konfiguracja modelu wbudowanego](connections/local-model.md).
 
-- **Sidecar runtime install is disabled.** Na własnym komputerze ustaw `SIDECAR_RUNTIME_INSTALL_ENABLED=true` w pliku `.env`. Z innego urządzenia najpierw zapisz sekret administratora w **Settings → Advanced → Admin Access**.
+- **Sidecar runtime install is disabled.** Na własnym komputerze ustaw `SIDECAR_RUNTIME_INSTALL_ENABLED=true` w pliku `.env`. Z innego urządzenia najpierw zapisz sekret administratora w **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 - **Pobieranie modelu albo konfiguracja zawodzi z innego urządzenia** (adres sieciowy lub kontener Docker). Również tu może być potrzebny sekret administratora. Na własnym komputerze nie jest wymagany.
 - **Niezgodność rozmiaru lub sumy SHA-256** w dołączonym pliku llama.cpp, MLX albo uv. Marinara odrzuciła plik, zanim go użyła. Zaktualizuj albo zainstaluj ponownie aplikację Marinara i spróbuj jeszcze raz. Nie rozpakowuj, nie edytuj i nie omijaj tego pliku.
 
@@ -266,12 +289,12 @@ Podsumowania wymagają działającego konta tekstowego.
 
 ## Problemy z agentami do pobrania
 
-- **Katalog niedostępny w sekcji Agent Organizer.** Komputer, na którym działa serwer, a nie tylko przeglądarka, musi mieć dostęp do katalogu [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) przez HTTPS. Zainstalowani agenci działają dalej offline. Przywróć połączenie, a potem kliknij **Refresh** (odświeżenie) lub **Try again** (ponowna próba).
+- **Katalog agentów nie wczytuje się w sekcji Biblioteka → Agenci.** Komputer, na którym działa serwer, a nie tylko przeglądarka, musi mieć dostęp do katalogu [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) przez HTTPS. Zainstalowani agenci działają dalej offline. Przywróć połączenie, a potem kliknij **Refresh** (odświeżenie) lub **Try again** (ponowna próba).
 - **Zainstalowana mapa lub rozmowa się nie pojawia.** Zamknij aplikację Marinara całkowicie i uruchom ją ponownie. Te pakiety pozostają w stanie **Restart required** (wymagany restart) aż do następnego uruchomienia. Gry do trybu Conversation aktywują się od razu. Jeśli instalacja się nie powiodła, odśwież katalog i sprawdź, czy gra jest oznaczona jako gotowa. Dodawanie gry w ustawieniach **Commands** (komendy) czatu jest potrzebne tylko po to, żeby postacie mogły same ją rozpocząć, a nie do jej ręcznej komendy slash.
 - **Pierwsza migracja pakietów nie może się zakończyć.** Nie usuwaj folderu `data/capability-packages` ani danych czatów. Marinara ponowi migrację przy następnym uruchomieniu, a wybory w czatach pozostają zapisane.
 - **Duży folder `data/capability-runtime-snapshots` lub `data/capability-packages/versions`.** Czyszczenie nie jest potrzebne. Marinara usuwa stare kopie przy uruchomieniu i zachowuje bieżącą oraz poprzednią wersję każdego agenta.
 - **Pobierany pakiet zostaje odrzucony.** Suma kontrolna, lista plików, zakres wersji aplikacji Marinara albo ścieżki w archiwum nie zgadzają się z oficjalnym katalogiem. Zaktualizuj aplikację Marinara, odśwież katalog i spróbuj ponownie. Nie wypakowuj artefaktu ręcznie do folderu z danymi.
-- **Aktualizacje.** Aktualizacje agentów nigdy nie instalują się przy starcie. Marinara najpierw pyta. **Not now** (nie teraz) zachowuje zainstalowaną wersję, a przycisk **Update** (aktualizacja) pozostaje dostępny w **Agents → Agent Organizer** (agenci, organizowanie agentów). Nieudana aktualizacja zostawia zainstalowaną wersję na miejscu. Środowisko serwera, które nie przejdzie testu przy starcie, wraca do poprzedniej wersji.
+- **Aktualizacje.** Aktualizacje agentów nigdy nie instalują się przy starcie. Marinara najpierw pyta. **Not now** (nie teraz) zachowuje zainstalowaną wersję, a przycisk **Update** (aktualizacja) pozostaje dostępny w **Biblioteka → Agenci**. Nieudana aktualizacja zostawia zainstalowaną wersję na miejscu. Środowisko serwera, które nie przejdzie testu przy starcie, wraca do poprzedniej wersji.
 
 ## Problemy z panelem Card Browser
 
@@ -301,7 +324,7 @@ Potem uruchom aplikację Marinara ponownie i kliknij **Reapply Cleanup** (ponown
 
 Storyboardy zamieniają zakończoną narrację w obrazy klatek kluczowych i opcjonalne klipy. Zobacz [Przewodnik po agencie Storyboard](game/storyboard.md) i [Game Mode: pierwsze kroki](game/getting-started.md).
 
-- Zainstaluj agenta **Storyboard** z **Agents → Agent Organizer**, a potem włącz dla czatu **Enable Agents** (włączenie agentów) i **Enable Storyboards** (włączenie storyboardów).
+- Zainstaluj agenta **Storyboard** z **Biblioteka → Agenci**, a potem włącz dla czatu **Enable Agents** (włączenie agentów) i **Enable Storyboards** (włączenie storyboardów).
 - Klatki kluczowe wymagają konta do generowania obrazów. Klipy wymagają dodatkowo konta wideo.
 - Tryb Game Mode, storyboardy automatyczne: otwórz **Chat Settings → Agents → Storyboards** i sprawdź, czy **Automatic Storyboard Illustrations** jest włączone. Jeśli mają powstawać klipy, włącz **Automatic Storyboard Animations**.
 - Ręczne wideo sceny: otwórz **Chat Settings → Gallery** (ustawienia czatu, galeria), wygeneruj lub wgraj obraz, a potem użyj **Video** (wideo) albo **Animate** (animuj). Sprawdź zakładkę **Videos** (filmy).
@@ -320,9 +343,9 @@ Jeśli model zwróci uszkodzony JSON (ustrukturyzowany tekst), Marinara otwiera 
 
 ## Głos, rozmowy i TTS
 
-- **Postacie nie mówią podczas rozmowy.** Funkcja Text to Speech (synteza mowy) nie jest skonfigurowana. Otwórz **Connections → Text to Speech** (połączenia, synteza mowy), włącz ją, wybierz źródło, wpisz klucz, wybierz głos i zapisz. Postać bez głosu pojawia się wyłącznie jako tekst.
-- **Mowa urywa się z komunikatem "No audio after N s".** Twój serwer głosu działa wolniej, niż Marinara na niego czeka. Lokalny serwer na laptopie często tak działa. `N` to twój obecny limit czasu. Zwiększ **Request timeout (seconds)** (limit czasu żądania w sekundach) w **Connections → Text to Speech** albo w koncie audio wskazanym w komunikacie. Zobacz [Limit czasu żądania](media/tts-setup.md#request-timeout).
-- **Mikrofon nie działa.** Zainstaluj agenta **Calls** z **Agents → Agent Organizer**. Potem otwórz **Connections → Speech to text** (połączenia, zamiana mowy na tekst), znajdź **Local speech model** (lokalny model mowy) w grupie **On this device** (na tym urządzeniu), wybierz model Whisper i kliknij **Download Whisper** (pobranie modelu Whisper). Firefox tego wymaga, bo nie ma wbudowanego w przeglądarkę rozpoznawania mowy. Odinstalowanie agenta Calls usuwa jego modele Whisper. Możesz też użyć własnego serwera: zobacz [Użyj własnego serwera zamiany mowy na tekst](conversation/calls.md#use-your-own-speech-to-text-server).
+- **Postacie nie mówią podczas rozmowy.** Funkcja Text to Speech (synteza mowy) nie jest skonfigurowana. Otwórz **Połączenia → Zamiana tekstu na mowę**, włącz ją, wybierz źródło, wpisz klucz, wybierz głos i zapisz. Postać bez głosu pojawia się wyłącznie jako tekst.
+- **Mowa urywa się z komunikatem "No audio after N s".** Twój serwer głosu działa wolniej, niż Marinara na niego czeka. Lokalny serwer na laptopie często tak działa. `N` to twój obecny limit czasu. Zwiększ **Request timeout (seconds)** (limit czasu żądania w sekundach) w **Połączenia → Zamiana tekstu na mowę** albo w koncie audio wskazanym w komunikacie. Zobacz [Limit czasu żądania](media/tts-setup.md#request-timeout).
+- **Mikrofon nie działa.** Zainstaluj agenta **Calls** z **Biblioteka → Agenci**. Potem otwórz **Połączenia → Zamiana mowy na tekst**, znajdź **Local speech model** (lokalny model mowy) w grupie **On this device** (na tym urządzeniu), wybierz model Whisper i kliknij **Download Whisper** (pobranie modelu Whisper). Firefox tego wymaga, bo nie ma wbudowanego w przeglądarkę rozpoznawania mowy. Odinstalowanie agenta Calls usuwa jego modele Whisper. Możesz też użyć własnego serwera: zobacz [Użyj własnego serwera zamiany mowy na tekst](conversation/calls.md#use-your-own-speech-to-text-server).
 - **Local Whisper is disabled in Lite mode.** Obraz lite nie potrafi uruchomić lokalnego modelu mowy. Użyj pełnej instalacji.
 
 ### Logowanie do Spotify w agencie Music DJ zawodzi przy instalacji zdalnej lub sieciowej
@@ -358,7 +381,7 @@ Marinara samodzielnie usuwa dzierżawę pozostawioną przez proces, który uleg�
 
 ### Kopia zapasowa lub eksport zwraca błąd 403
 
-Sesje na tym samym komputerze mogą tworzyć kopie zapasowe bez sekretu administratora. Żądania z innego urządzenia, spod adresu sieciowego, z kontenera Docker albo przez proxy lub tunel na tym samym komputerze go wymagają. Utwórz go w **Settings → Advanced → Admin Access** na komputerze, na którym działa serwer, albo ustaw `ADMIN_SECRET` na serwerze, a potem zapisz tę samą wartość w **Admin Access** na drugim urządzeniu. Jeśli sekret ma być wymagany także na pętli zwrotnej, ustaw `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`. Przy `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false` przekazywani goście korzystają z lokalnego pominięcia. Przy publicznym proxy lub tunelu zostaw to zabezpieczenie włączone.
+Sesje na tym samym komputerze mogą tworzyć kopie zapasowe bez sekretu administratora. Żądania z innego urządzenia, spod adresu sieciowego, z kontenera Docker albo przez proxy lub tunel na tym samym komputerze go wymagają. Utwórz go w **Ustawienia → Zaawansowane → Bezpieczeństwo** na komputerze, na którym działa serwer, albo ustaw `ADMIN_SECRET` na serwerze, a potem zapisz tę samą wartość w **Admin Access** na drugim urządzeniu. Jeśli sekret ma być wymagany także na pętli zwrotnej, ustaw `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`. Przy `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false` przekazywani goście korzystają z lokalnego pominięcia. Przy publicznym proxy lub tunelu zostaw to zabezpieczenie włączone.
 
 ### Import zgłasza, że plik nie jest czytelnym archiwum ZIP
 
@@ -395,7 +418,7 @@ Instalacje środowiska Termux zarządzane przez plik APK chronią localhost pryw
 
 Błąd wymieniający źródło `null` oznacza starszą parę APK i serwera. Edycja `.env` tego nie naprawi. Zaktualizuj plik APK i aplikację Marinara.
 
-Żeby otworzyć przeglądarkę na tym samym telefonie, dotknij **Open in browser** (otwórz w przeglądarce) na ekranie uruchamiania Android, a potem **Retry connection** (ponów połączenie). Po restarcie serwera albo wygaśnięciu sesji otwórz ją ponownie w ten sam sposób. Aby wrócić na ekran uruchamiania, użyj **Settings → General → App Behavior → Open Android launcher (app or browser)** (ustawienia, ogólne, zachowanie aplikacji, otwórz ekran uruchamiania Android: aplikacja lub przeglądarka).
+Żeby otworzyć przeglądarkę na tym samym telefonie, dotknij **Open in browser** (otwórz w przeglądarce) na ekranie uruchamiania Android, a potem **Retry connection** (ponów połączenie). Po restarcie serwera albo wygaśnięciu sesji otwórz ją ponownie w ten sam sposób. Aby wrócić na ekran uruchamiania, użyj **Ustawienia → Wygląd → Układ → Otwórz program uruchamiający dla Androida (aplikacja lub przeglądarka)**.
 
 Starsze pliki APK logują się pod `/android-login` wartością z `cat ~/.marinara-engine/android-secret`. Odnośnik dla przeglądarki działa tylko raz i wygasa po minucie, więc otwórz nowy z ekranu uruchamiania.
 
@@ -422,7 +445,7 @@ W ustawieniach systemu Android zezwól aplikacji Termux na działanie w tle i wy
 
 ### Aplikacja Marinara przestaje odpowiadać, dopóki Termux nie jest na pierwszym planie
 
-Czaty zawieszają się na komunikacie "Opening chat...", aplikacja zgłasza **Server unreachable** (serwer nieosiągalny), kopia z sekcji Support Diagnostics pokazuje przy polach serwera **Unreachable (request timed out)** (nieosiągalny, przekroczono limit czasu żądania), a wszystko wraca do działania w chwili otwarcia Termux. Mechanizm zamrażania aplikacji w pamięci podręcznej w systemie Android wstrzymał proces Termux. Telefon przyjmuje połączenie, ale zamrożony serwer nigdy nie odpowiada. Blokada uśpienia temu nie zapobiega. W logu sesji zamiast błędu widać lukę w znacznikach czasu obejmującą okres zamrożenia.
+Czaty zawieszają się na komunikacie "Opening chat...", aplikacja zgłasza **Server unreachable** (serwer nieosiągalny), raport **Kopiuj diagnostykę wsparcia** pokazuje przy polach serwera **Unreachable (request timed out)** (nieosiągalny, przekroczono limit czasu żądania), a wszystko wraca do działania w chwili otwarcia Termux. Mechanizm zamrażania aplikacji w pamięci podręcznej w systemie Android wstrzymał proces Termux. Telefon przyjmuje połączenie, ale zamrożony serwer nigdy nie odpowiada. Blokada uśpienia temu nie zapobiega. W logu sesji zamiast błędu widać lukę w znacznikach czasu obejmującą okres zamrożenia.
 
 Wyłącz dla aplikacji Termux optymalizację baterii, zezwól jej na działanie w tle, zablokuj Termux na ekranie ostatnich aplikacji, jeśli telefon to obsługuje, i zostaw widoczne powiadomienie Termux. Jeśli zamrożenia się powtarzają, trzymaj Termux na pierwszym planie albo włączony ekran przez cały czas korzystania z aplikacji Marinara.
 
@@ -488,12 +511,12 @@ Systemy Windows, Android i inne nieobsługiwane hosty odmawiają uruchamiania ro
 
 ## Problemy z rozszerzeniami
 
-### W sekcji Addons brakuje External Extensions
+### W sekcji Rozszerzenia brakuje sekcji Rozszerzenia zewnętrzne
 
 Sekcja pozostaje ukryta, dopóki obie blokady nie zostaną otwarte.
 
 1. Ustaw `ENABLE_EXTERNAL_EXTENSIONS=true` w pliku `.env` hosta.
-2. Odczekaj chwilę, potem otwórz **Settings → Advanced → Danger Zone** (ustawienia, zaawansowane, strefa zagrożenia), przewiń poniżej opcji usuwania danych i włącz **Allow third-party extension imports** (zezwolenie na import rozszerzeń od osób trzecich).
+2. Odczekaj chwilę, potem otwórz **Ustawienia → Zaawansowane → Bezpieczeństwo** i włącz **Allow third-party extension imports** (zezwolenie na import rozszerzeń od osób trzecich).
 
 Jeśli przełącznik jest nieaktywny, flaga hosta nadal ma wartość false albo aplikacja nie zauważyła jeszcze zmiany. Upewnij się, że edytowany plik `.env` jest tym aktywnym, opisanym w przewodniku [Konfiguracja serwera](CONFIGURATION.md). W kontenerze Docker jest to zwykle `/app/data/.env`.
 
@@ -501,7 +524,7 @@ Gdy któraś blokada jest zamknięta, wpisy rozszerzeń zewnętrznych się nie p
 
 ### Zaimportowane rozszerzenie przeglądarki jest widoczne, ale nie działa
 
-Otwórz je w **Settings → Addons → External Extensions** (ustawienia, dodatki, rozszerzenia zewnętrzne) i przeczytaj pole **Requested access** (żądany zakres dostępu). Starsze pakiety `marinara.extension` v1 bez deklaracji uprawnień pokazują **Full page access** (pełny dostęp do strony). Zatwierdź wyłącznie ten dokładny skrót, który sprawdzono i któremu ufasz.
+Otwórz je w **Biblioteka → Rozszerzenia → Rozszerzenia zewnętrzne** i przeczytaj pole **Requested access** (żądany zakres dostępu). Starsze pakiety `marinara.extension` v1 bez deklaracji uprawnień pokazują **Full page access** (pełny dostęp do strony). Zatwierdź wyłącznie ten dokładny skrót, który sprawdzono i któremu ufasz.
 
 Pakiet ponownie wyeksportowany z pustą listą uprawnień jest traktowany jak bezpieczne rozszerzenie w piaskownicy, a kod, który potrzebuje struktury strony (DOM), nie zadziała. Dodaj `full_page_access` do jego manifestu tylko wtedy, gdy akceptujesz, że kod uzyska dostęp do całej strony, pamięci przeglądarki, sieciowych API i twojej sesji.
 
@@ -531,7 +554,7 @@ Użyj adresu HTTPS, zaloguj się i odśwież stronę po aktualizacji aplikacji M
 
 ## Uzyskiwanie dalszej pomocy
 
-1. Otwórz **Settings → Advanced → Message Tools** (ustawienia, zaawansowane, narzędzia wiadomości) i włącz **Debug mode**. Zapisuje on prompt i odpowiedź w konsoli serwera.
+1. Otwórz **Ustawienia → Zaawansowane → Rozwiązywanie problemów** i włącz **Debug mode**. Zapisuje on prompt i odpowiedź w konsoli serwera.
 2. Zanotuj system operacyjny, wersję Node.js i pełną treść błędu z konsoli.
 3. Zanim cokolwiek udostępnisz, usuń klucze API, tokeny dostępu, sekrety administratora i prywatną treść czatów.
 

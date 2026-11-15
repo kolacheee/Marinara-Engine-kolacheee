@@ -22,7 +22,7 @@ Não existe um aplicativo nativo separado. No celular ou no tablet, use o aplica
 
 No Android, também é possível [baixar o APK mais recente](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk). Ele roda Marinara no celular pelo Termux. Veja [Instalação no Android](installation/android-termux.md). No iPhone e no iPad, veja o [Guia do PWA para iOS](installation/ios-pwa.md).
 
-No aplicativo Android, o inicializador oferece **Open in browser** (abrir no navegador), **Retry connection** (tentar conectar novamente) e **Install / Start Marinara**. Para mudar a sua escolha depois, use **Settings → General → App Behavior → Open Android launcher (app or browser)** (Configurações → Geral → Comportamento do aplicativo → Abrir o inicializador Android: aplicativo ou navegador). APKs antigos fazem login manualmente em `/android-login`.
+No aplicativo Android, o inicializador oferece **Open in browser** (abrir no navegador), **Retry connection** (tentar conectar novamente) e **Install / Start Marinara**. Para mudar a sua escolha depois, use **Configurações → Aparência → Layout → Abrir o inicializador do Android (aplicativo ou navegador)**. APKs antigos fazem login manualmente em `/android-login`.
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -82,11 +82,11 @@ Veja [Lorebooks](lorebooks/overview.md).
 
 ## O que é um agente?
 
-Um agente é um ajudante de IA opcional que roda durante um chat para fazer uma tarefa bem definida, como acompanhar a cena ou acrescentar mapas. Instalações novas não vêm com nenhum. Abra **Agents → Agent Organizer** (agentes → Organizador de agentes), escolha um e instale. Depois, ative-o em cada chat, em **Chat Settings**. Veja [Agentes](agents/agents-overview.md).
+Um agente é um ajudante de IA opcional que roda durante um chat para fazer uma tarefa bem definida, como acompanhar a cena ou acrescentar mapas. Instalações novas não vêm com nenhum. Abra **Biblioteca → Agentes**, escolha um e instale. Depois, ative-o em cada chat, em **Chat Settings**. Veja [Agentes](agents/agents-overview.md).
 
 ## Como configuro Noodle?
 
-Noodle é uma rede social fictícia e local para os seus personagens. Instale o **Noodle** em **Agents → Agent Organizer**, reinicie Marinara quando o aplicativo pedir e depois abra **Home → Noodle**. Veja [Noodle: a linha do tempo social dentro do aplicativo](agents/noodle.md).
+Noodle é uma rede social fictícia e local para os seus personagens. Instale o **Noodle** em **Biblioteca → Agentes**, reinicie Marinara quando o aplicativo pedir e depois abra **Home → Noodle**. Veja [Noodle: a linha do tempo social dentro do aplicativo](agents/noodle.md).
 
 ## Por que o meu personagem não responde?
 
@@ -98,11 +98,11 @@ Os modelos só leem uma quantidade limitada de texto de uma vez, então as mensa
 
 ## Como faço backup dos meus dados?
 
-Abra **Settings → Advanced → Backup & Export** (Configurações → Avançado → Backup e exportação) e clique em **Download Backup** (baixar o backup). Isso salva um `.zip` com os seus dados e os arquivos que você enviou. Para restaurar, use **Import Profile (JSON/ZIP)** em **Settings → Imports** (Configurações → Importações). A mesma seção pode fazer um backup diário, semanal ou mensal. Veja [Fazer backup e restaurar](data/backup-and-restore.md).
+Abra **Configurações → Dados → Backup e restauração** e clique em **Download Backup** (baixar o backup). Isso salva um `.zip` com os seus dados e os arquivos que você enviou. Para restaurar, use **Import Profile (JSON/ZIP)** na mesma seção. A mesma seção pode fazer um backup diário, semanal ou mensal. Veja [Fazer backup e restaurar](data/backup-and-restore.md).
 
 ## Como funcionam as extensões e posso importar código de terceiros?
 
-Por padrão, só a Professor Mari cria rascunhos de Personal Extension. Um rascunho começa desativado, e você aprova o código exato dele antes que ele rode. As importações de terceiros ficam ocultas até o anfitrião definir `ENABLE_EXTERNAL_EXTENSIONS=true` no `.env` e você aceitar o aviso em **Settings → Advanced → Danger Zone** (Configurações → Avançado → Zona de perigo). Veja [Extensões pessoais](extending/personal-extensions.md).
+Por padrão, só a Professor Mari cria rascunhos de Personal Extension. Um rascunho começa desativado, e você aprova o código exato dele antes que ele rode. As importações de terceiros ficam ocultas até o anfitrião definir `ENABLE_EXTERNAL_EXTENSIONS=true` no `.env` e você aceitar o aviso em **Configurações → Avançado → Segurança**. Veja [Extensões pessoais](extending/personal-extensions.md).
 
 ## Onde meus dados ficam guardados?
 
@@ -118,7 +118,7 @@ Professor Mari é a assistente integrada da tela inicial. Ela explica o aplicati
 
 ## O que é o agente Storyboard e como usá-lo no Game Mode?
 
-Ele transforma o texto já concluído da história em imagens. Instale o **Storyboard** em **Agents → Agent Organizer** e depois ative-o no chat. Veja o [Guia do agente Storyboard](game/storyboard.md).
+Ele transforma o texto já concluído da história em imagens. Instale o **Storyboard** em **Biblioteca → Agentes** e depois ative-o no chat. Veja o [Guia do agente Storyboard](game/storyboard.md).
 
 ## Os personagens podem falar em voz alta em uma chamada?
 
@@ -130,7 +130,7 @@ Sim. Adicione uma conta de geração de imagens, como o **Pollinations** (dispen
 
 ## Como leio a documentação dentro do aplicativo?
 
-Na tela inicial, clique em **Documentation** (documentação) nos favoritos. No celular, abra primeiro o menu de favoritos. No FAQ da tela inicial, você também pode clicar em **Open Documentation** (abrir a documentação).
+Clique em **Documentação** na barra superior. No celular, a Documentação fica na Biblioteca (o botão de pilha no canto superior direito). No layout clássico, clique em **Documentação** nos favoritos da tela inicial. No FAQ da tela inicial, você também pode clicar em **Abrir a documentação**.
 
 ## Onde consigo ajuda ou relato um problema?
 

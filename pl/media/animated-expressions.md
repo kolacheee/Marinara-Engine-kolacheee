@@ -38,11 +38,11 @@ W trakcie pracy widać komunikat "Generating animated portrait GIFs...". Po zako
 
 Animowane wyrazy twarzy powstają dłużej niż nieruchome sprite'y, bo Marinara tworzy je po jednym. Zacznij od kilku.
 
-Gdy włączona jest opcja **Expose media prompts before sending** (pokazywanie promptów mediów przed wysłaniem) w **Settings → Generations → Overall Generations** (ustawienia, generowanie, ogólne ustawienia generowania), Marinara zatrzymuje się, żeby każdy prompt dało się przeczytać i poprawić, zanim trafi do usługi.
+Gdy włączona jest opcja **Expose media prompts before sending** (pokazywanie promptów mediów przed wysłaniem) w **Ustawienia → Media → Domyślne ustawienia generowania**, Marinara zatrzymuje się, żeby każdy prompt dało się przeczytać i poprawić, zanim trafi do usługi.
 
 ## Długość i proporcje
 
-Każdy animowany wyraz twarzy to pionowy klip portretowy w proporcjach 9:16, których nie da się zmienić. Aby zmienić długość każdego klipu, otwórz **Settings → Generations** (ustawienia, generowanie), znajdź **Video Generation** i ustaw **Animated expression length**. Wartość domyślna to 3 sekundy, a zakres to od 1 do 8 sekund. Marinara zapisuje mały zapętlony GIF o szerokości 512 pikseli. Krótszy klip daje mniejszy plik i zwartszą pętlę.
+Każdy animowany wyraz twarzy to pionowy klip portretowy w proporcjach 9:16, których nie da się zmienić. Aby zmienić długość każdego klipu, otwórz **Ustawienia → Media**, znajdź **Video Generation** i ustaw **Animated expression length**. Wartość domyślna to 3 sekundy, a zakres to od 1 do 8 sekund. Marinara zapisuje mały zapętlony GIF o szerokości 512 pikseli. Krótszy klip daje mniejszy plik i zwartszą pętlę.
 
 <a id="backgrounds-are-not-removed"></a>
 

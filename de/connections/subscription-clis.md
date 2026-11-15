@@ -27,8 +27,8 @@ Für Grok zeigt die App diesen Installationsbefehl. Läuft er auf deinem System 
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. Klick in Marinara in der oberen Leiste auf **Connections** (Verbindungen) und dann auf **Add** (Hinzufügen).
-4. Klick unter **Chat** auf deinen Dienst. Diese Dienste tragen die Markierung **Sign in**.
+3. Öffne in Marinara **Library → Connections** (Bibliothek → Verbindungen) und klick auf **Add connection** (Verbindung hinzufügen).
+4. Klick im Tab **Text** unter **Subscriptions** (Abonnements) auf deinen Dienst. Diese Dienste tragen die Markierung **Sign in**.
 5. Das Fenster zeigt **Sign in first** und nennt den Befehl. Ein Key-Feld gibt es nicht. Klick auf **Connect** (Verbinden). Marinara testet die Anmeldung. **Connected** bedeutet, dass sie funktioniert.
 6. Wähl ein Modell aus der Liste und klick dann auf **Done** (Fertig). Bei der Grok CLI kannst du das Modell auch leer lassen; dann gilt der eigene Standard der CLI (siehe [Grok CLI (Subscription)](#grok-cli-subscription)).
 
@@ -65,6 +65,8 @@ Nutze **Diagnose model routing**, wenn du ein großes Modell wie Opus angefragt 
 ## OpenAI (ChatGPT)
 
 Dieser Dienst nutzt dein ChatGPT-Konto über die Codex CLI. Marinara liest die lokale Codex-Anmeldedatei und frischt die Sitzung auf, wenn es möglich ist.
+
+Anders als die Abos von Claude und Grok unterstützt eine ChatGPT-Anmeldung Tool-Aufrufe. Deshalb funktionieren damit Professor Mari, eigene Tools sowie die Würfel und Tools von Game Mode.
 
 Wie lange Codex vor der Antwort nachdenkt, stellst du so ein: Öffne **Edit model**, schalte **Use custom defaults for this model** (eigene Standardwerte für dieses Modell verwenden) ein und wähl bei **Reasoning Effort** (Denkaufwand) eine Stufe. Anfangs steht dort **Default** (Standard); damit bleibt die Stufe, die Codex selbst für das Modell nutzt. Ein Chat kann unter **Advanced Parameters** (Erweiterte Parameter) eine eigene Stufe wählen. Die Stufe in einem Preset ändert daran nichts. Ein als Fallback genutztes Codex-Modell richtet sich nur nach seiner eigenen Stufe, und Agenten auf dem Modell verwenden die Stufe des Modells. Die angezeigten Stufen entsprechen denen, die für das gewählte Modell verfügbar sind.
 

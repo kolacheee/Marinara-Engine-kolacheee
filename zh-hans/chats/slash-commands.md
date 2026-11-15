@@ -29,7 +29,7 @@
 |---|---|
 | `/help` | 列出全部斜杠命令。 |
 | `/send` | 以你的用户角色身份发一条消息，不请求回复。宏会像用 **Send** 时一样被填入。格式：`/send [message]`。 |
-| `/continue` | 在最后一条 AI 回复后面接着写，不新发一条消息。也可以用 `/cont`。**Settings → General → Responses → Add a new line before /continue text**(设置 → 常规 → 回复 → 在 /continue 文本前另起一行) 决定续写内容是空一行再开始，还是紧接着断点继续。 |
+| `/continue` | 在最后一条 AI 回复后面接着写，不新发一条消息。也可以用 `/cont`。**Settings → Chatting → Responses → Add a new line before /continue text**(设置 → 聊天中 → 回复 → 在 /continue 文本前另起一行) 决定续写内容是空一行再开始，还是紧接着断点继续。 |
 | `/goto` | 把聊天滚动到指定编号的消息。也可以用 `/jump`、`/scroll`。格式：`/goto [number]`。 |
 | `/hide` | 在之后的回合里对模型隐藏消息。格式：`/hide [range] [name (optional)]`。 |
 | `/unhide` | 恢复全局隐藏的消息。格式：`/unhide [range]`。 |

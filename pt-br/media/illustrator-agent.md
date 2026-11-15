@@ -23,7 +23,7 @@ Se nenhum modelo de imagem for encontrado, a imagem falha e o aplicativo pede qu
 
 ## Como ativar o Illustrator
 
-Antes de começar: instale o **Illustrator** pelo **Agent Organizer** (organizador de agentes). Veja [Agentes: ajudantes de IA para os seus chats](../agents/agents-overview.md).
+Antes de começar: instale o **Illustrator** por **Library → Agents** (Biblioteca → Agentes). Veja [Agentes: ajudantes de IA para os seus chats](../agents/agents-overview.md).
 
 1. Abra o chat de Roleplay que você quer ilustrar.
 2. Abra **Chat Settings** (configurações do chat) e encontre **Agents**.
@@ -99,7 +99,7 @@ Os clipes usam o modelo de vídeo de **Scene Videos** (vídeos de cena), e cada 
 - Com **Clips only**, toda execução é um clipe, o **Video Run Interval** define a frequência com que o Illustrator roda, e o **Image Run Interval** fica oculto.
 - Um chat sem valor usa o **Video Run Interval** da tela **Open Setup**, ou 5.
 - **0**: nenhum clipe por conta própria, inclusive para as imagens de `[illustrate]`, que recebem a imagem no lugar.
-- Uma resposta recebe no máximo **Videos per reply** clipes (**Settings → Generations → Video Generation**).
+- Uma resposta recebe no máximo **Videos per reply** clipes (**Settings → Media → Video Generation**).
 - Você ainda pode animar uma imagem pela Gallery. Com **Clips only**, o botão **Illustrate** de uma mensagem cria um clipe.
 - Um swipe de uma resposta que recebeu um clipe conta como uma resposta nova e pode receber o próprio clipe. O swipe anterior mantém o clipe dele.
 
@@ -112,6 +112,16 @@ Os clipes usam o modelo de vídeo de **Scene Videos** (vídeos de cena), e cada 
 Um clipe sem imagem própria descreve todos que cita, incluindo a sua persona. O quadro inicial de avatar parte de quem for citado primeiro.
 
 Executar o Illustrator de novo pelo botão **Illustrate** de uma mensagem também segue **Illustrator makes** e **First frame**.
+
+## Planos de fundo e clima
+
+O Illustrator também cria planos de fundo. No cartão do Illustrator em **Chat Settings → Agents**:
+
+- **Generate Scene Backgrounds** (gerar planos de fundo de cena) cria um plano de fundo quando a história chega a um novo lugar, a menos que você já tenha uma imagem dele.
+- **Weather Versions of Backgrounds** (versões dos planos de fundo com clima) refaz o plano de fundo atual com o clima da história, desenhando a chuva ou a neve em movimento só nas janelas do ambiente.
+- **Decision Model Checks** (verificações do modelo de decisão) usa um modelo de decisão para verificar a cada resposta se há um novo lugar ou um novo clima, para que os planos de fundo não esperem pelo intervalo de execução.
+
+As três opções vêm desativadas por padrão. Veja [Planos de fundo criados pelo Illustrator](scene-backgrounds.md).
 
 ## Vários personagens na NovelAI
 
@@ -127,11 +137,11 @@ Não é preciso configurar nada. As descrições só aparecem com a NovelAI no p
 
 ## Salvar nas galerias e inspecionar o prompt
 
-Em **Settings → Generations → Image Generation** (configurações → gerações → geração de imagens), **Automatically save generated images to character galleries** (salvar automaticamente imagens geradas nas galerias dos personagens) vem ativado por padrão. Desative para não adicionar mais ilustrações e selfies do chat às galerias dos personagens e personas retratados. As imagens continuam aparecendo na conversa e na Gallery do chat, e os salvamentos explícitos na galeria continuam funcionando. As entradas existentes não mudam. As galerias compartilham arquivos de imagem, então a opção controla a presença nas galerias, não a exclusão.
+Em **Settings → Media → Image Generation** (Configurações → Mídia → Geração de imagens), **Automatically save generated images to character galleries** (salvar automaticamente imagens geradas nas galerias dos personagens) vem ativado por padrão. Desative para não adicionar mais ilustrações e selfies do chat às galerias dos personagens e personas retratados. As imagens continuam aparecendo na conversa e na Gallery do chat, e os salvamentos explícitos na galeria continuam funcionando. As entradas existentes não mudam. As galerias compartilham arquivos de imagem, então a opção controla a presença nas galerias, não a exclusão.
 
 Nas novas ilustrações da NovelAI, o inspetor de imagens mostra o prompt de cena e estilo seguido das descrições positivas de personagem, separadas por ` | `. O prompt salvo na galeria é o mesmo.
 
-Para desenhar uma ilustração de novo com um prompt alterado, sem gerar a resposta de novo, abra-a e use **Regenerate image** (gerar a imagem de novo). Veja [Gerar uma imagem de novo](scene-backgrounds.md#regenerating-an-image).
+Para desenhar uma ilustração de novo com um prompt alterado, sem gerar a resposta de novo, abra-a e use **Regenerate image** (gerar a imagem de novo). Veja [Gerar uma imagem de novo](../chats/chat-gallery.md#regenerating-an-image).
 
 Para ilustrar uma mensagem anterior de Roleplay ou um intervalo de mensagens, use `/illustrate range=12` ou `/illustrate range=12-18`. Veja [Comandos de barra](../chats/slash-commands.md).
 
@@ -139,6 +149,7 @@ Para ilustrar uma mensagem anterior de Roleplay ou um intervalo de mensagens, us
 
 - [Provedores de geração de imagens e configuração](image-providers.md)
 - [Perfis de estilo de imagem](style-profiles.md)
-- [Planos de fundo de cena e a galeria](scene-backgrounds.md)
+- [Planos de fundo criados pelo Illustrator](scene-backgrounds.md)
+- [A galeria do chat](../chats/chat-gallery.md)
 - [Agentes: ajudantes de IA para os seus chats](../agents/agents-overview.md)
 - [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md)

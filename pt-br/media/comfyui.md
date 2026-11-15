@@ -14,7 +14,7 @@ Um modelo de linguagem local e um modelo de imagem podem não caber juntos na me
 
 ## Crie a conexão no Marinara
 
-1. Clique em **Connections** (Conexões) e depois em **Add** (adicionar). Na janela **Add account** (adicionar conta), escolha **ComfyUI** para um servidor local ou **RunPod Serverless (ComfyUI)** para um endpoint do RunPod, em **Images & video** (imagens e vídeo).
+1. Abra **Library → Connections** (Biblioteca → Conexões) e clique em **Add connection** (adicionar conexão). Na aba **Image** (imagem), escolha **ComfyUI** para um servidor local ou **RunPod Serverless (ComfyUI)** para um endpoint do RunPod.
 2. No caso do ComfyUI local, informe o endereço dele (`http://127.0.0.1:8188`). Nenhuma chave de API é necessária, a menos que um proxy na frente do ComfyUI peça uma (veja [Use um proxy com autenticação](#use-an-authenticated-proxy)). Com o campo **ComfyUI workflow (optional)** (workflow do ComfyUI, opcional) vazio, Marinara usa um workflow básico embutido de texto para imagem.
 3. No caso do RunPod, informe a sua chave de API e o **RunPod endpoint ID** (ID do endpoint do RunPod). Um workflow personalizado é obrigatório.
 4. Ajuste **Local image defaults** (padrões de imagem local) no modelo de imagem. Esses valores substituem os marcadores correspondentes no seu workflow.

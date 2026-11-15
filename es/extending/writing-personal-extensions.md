@@ -6,9 +6,9 @@ El código que escribas e importes se trata como una **External Extension** (ext
 
 ## Antes de empezar
 
-Las External Extensions permanecen ocultas hasta que completes los dos pasos de seguridad de [Permitir importaciones de terceros](personal-extensions.md#allow-third-party-imports): `ENABLE_EXTERNAL_EXTENSIONS=true` en `.env` y **Allow third-party extension imports** (Permitir importaciones de extensiones de terceros) en **Settings → Advanced → Danger Zone** (Configuración → Avanzado → Zona de peligro).
+Las External Extensions permanecen ocultas hasta que completes los dos pasos de seguridad de [Permitir importaciones de terceros](personal-extensions.md#allow-third-party-imports): `ENABLE_EXTERNAL_EXTENSIONS=true` en `.env` y **Allow third-party extension imports** (Permitir importaciones de extensiones de terceros) en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad).
 
-Importar y administrar extensiones también requiere acceso por localhost o el secreto de administrador. Desde un teléfono, una dirección LAN o un navegador remoto, establece `ADMIN_SECRET` en el servidor e introduce el mismo valor en **Settings → Advanced → Admin Access** (Configuración → Avanzado → Acceso de administrador).
+Importar y administrar extensiones también requiere acceso por localhost o el secreto de administrador. Desde un teléfono, una dirección LAN o un navegador remoto, establece `ADMIN_SECRET` en el servidor e introduce el mismo valor en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad).
 
 Elige el entorno con menos privilegios que pueda realizar la tarea:
 
@@ -94,7 +94,7 @@ Usa este `extension.css` para aplicar estilos a la ventana iframe limitada que a
 
 Después, importa y ejecuta la extensión:
 
-1. Abre **Settings → Addons → External Extensions** (Configuración → Complementos → Extensiones externas).
+1. Abre **Library → Extensions → External Extensions** (Biblioteca → Extensiones → Extensiones externas).
 2. Elige **Import Extension Folder** (Importar carpeta de extensión) y selecciona `Hello Panel`, o comprime la carpeta e importa el ZIP con **Import Extension File** (Importar archivo de extensión).
 3. Abre el borrador desactivado e inspecciona su manifiesto y su JavaScript.
 4. Elige **Review and Run** y aprueba el hash exacto que se muestra.
@@ -342,7 +342,7 @@ Si una External Extension depende del acceso al DOM del host, puede solicitar:
 
 **Full page access no es una capacidad de la sandbox.** El JavaScript y el CSS aprobados se ejecutan dentro de la página de Marinara. El código puede leer o cambiar cualquier cosa visible para la sesión actual del navegador, inspeccionar chats y tarjetas, usar el almacenamiento del navegador, hacer solicitudes de red y llamar a las API de Marinara del mismo origen. En la práctica tiene los mismos permisos sobre la página que un código pegado en la consola del navegador. Los borradores de Professor Mari no pueden solicitarlo.
 
-Las extensiones de página completa deberían usar `marinara.fetch(...)` para las solicitudes de red. Tiene la misma firma y el mismo resultado que `window.fetch`, y permite que **Settings > Addons > External Extensions** muestre el número de solicitudes de esa extensión en la sesión, los bytes transferidos que indican las respuestas, la frecuencia reciente de solicitudes y una advertencia de tráfico elevado sostenido. La llamada directa a `window.fetch` sigue disponible porque el acceso a la página completa es código de confianza de la página, pero esas solicitudes no se pueden atribuir a la extensión.
+Las extensiones de página completa deberían usar `marinara.fetch(...)` para las solicitudes de red. Tiene la misma firma y el mismo resultado que `window.fetch`, y permite que **Library > Extensions > External Extensions** (Biblioteca > Extensiones > Extensiones externas) muestre el número de solicitudes de esa extensión en la sesión, los bytes transferidos que indican las respuestas, la frecuencia reciente de solicitudes y una advertencia de tráfico elevado sostenido. La llamada directa a `window.fetch` sigue disponible porque el acceso a la página completa es código de confianza de la página, pero esas solicitudes no se pueden atribuir a la extensión.
 
 Marinara reconoce el contenedor v1 más antiguo `kind: "marinara.extension"` sin un campo `capabilities` explícito como un paquete previo a la sandbox y le asigna **Full page access** durante la importación. Esto permite que paquetes antiguos como WeatherTweaker lleguen al flujo de revisión correcto en vez de fallar en silencio dentro de un Worker. Un paquete moderno que use ese contenedor pero quiera el entorno seguro debe incluir `"capabilities": []`.
 
@@ -445,13 +445,13 @@ Los límites del ZIP, la solicitud, el mensaje de la sandbox y el almacenamiento
 | Síntoma | Comprueba |
 | --- | --- |
 | No aparecen los controles de importación externa | Abre las dos barreras de External Extension descritas arriba |
-| La administración indica que se necesita localhost o Admin Access | Configura `ADMIN_SECRET` y guárdalo en **Admin Access** |
+| La administración indica que se necesita localhost o Admin Access | Configura `ADMIN_SECRET` y guárdalo en **Settings → Advanced → Security** |
 | La importación no encuentra ninguna extensión | Comprueba `manifest.json` y sus rutas relativas; Server necesita JS, mientras que Browser necesita CSS o JS |
 | La extensión se desactiva después de editarla | Es lo esperado: inspecciona y aprueba el hash exacto nuevo |
 | El código Browser no puede usar `document`, `window`, `fetch` ni almacenamiento local | Es lo esperado en la sandbox segura; usa las API intermediarias documentadas |
 | Server Extension no está disponible | Usa Seatbelt en macOS o Linux con Bubblewrap, o cambia a una Browser Extension |
 | Browser Extension genera una excepción | Abre las herramientas de desarrollo del navegador; `marinara.log` y los errores de inicio llevan el nombre de la extensión |
-| Server Extension genera una excepción | Comprueba su estado en **Settings → Addons** y el registro del servidor Marinara |
+| Server Extension genera una excepción | Comprueba su estado en **Library → Extensions** y el registro del servidor Marinara |
 
 El CSS, el almacenamiento privado, los archivos importados y los mensajes de ejecución mantienen límites de seguridad separados. Marinara debe indicar qué límite rechazó un paquete en vez de presentarlo como un fallo de ejecución.
 

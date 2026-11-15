@@ -11,7 +11,7 @@ Prompt Overridesでは、チャットモデルに送られるプロンプトは�
 ## エディターを探す
 
 1. **Settings**(設定)を開きます。
-2. **Generations**(生成)タブをクリックします。
+2. **Media**(メディア)タブをクリックします。Illustratorエージェントをインストールするまで、このタブにはIllustratorのダウンロード案内だけが表示されます。
 3. 「Reusable image and video prompt templates」と説明された**Prompt Overrides**までスクロールします。
 
 ここにエディターが2つあります。タイトルをクリックすると展開します。

@@ -15,7 +15,7 @@ Wenn es nicht funktioniert hat: Ist für den Chat kein Modell eingestellt, schl�
 
 ### Send on Enter
 
-Du findest die Einstellung unter **Settings → General → Input & Editing**. Pro Chat-Modus gibt es einen Schalter.
+Du findest die Einstellung unter **Settings → Chatting → Message Box**. Pro Chat-Modus gibt es einen Schalter.
 
 | Chat-Modus | Standard | Wenn aus |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ Du findest die Einstellung unter **Settings → General → Input & Editing**. P
 | Conversations | An | <kbd>Strg</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> auf dem Mac) sendet. |
 | Game | An | <kbd>Strg</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> auf dem Mac) sendet. |
 
-Bei Roleplay ist die Einstellung standardmäßig aus, weil Roleplay-Nachrichten oft lang sind und Zeilenumbrüche brauchen. Professor Mari hat einen eigenen Schalter, **Enter sends to Professor Mari** (Enter sendet an Professor Mari), unter **Settings → General → Search and Professor Mari settings**.
+Bei Roleplay ist die Einstellung standardmäßig aus, weil Roleplay-Nachrichten oft lang sind und Zeilenumbrüche brauchen. Professor Mari hat einen eigenen Schalter, **Enter sends to Professor Mari** (Enter sendet an Professor Mari), unter **Settings → General → Professor Mari**.
 
 ## Bilder und Dateien anhängen
 
@@ -49,7 +49,7 @@ Für die eigene Galerie eines Charakters nimm die portable Form `card://self/gal
 
 ## Die Antwort streamen
 
-Beim Streaming erscheint die Antwort Wort für Wort statt auf einmal. Diese Einstellungen liegen unter **Settings → General → Responses**.
+Beim Streaming erscheint die Antwort Wort für Wort statt auf einmal. Diese Einstellungen liegen unter **Settings → Chatting → Responses**.
 
 | Einstellung | Standard | Funktion |
 | --- | --- | --- |

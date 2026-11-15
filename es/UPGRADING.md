@@ -19,8 +19,8 @@ Actualiza Marinara Engine a una versión más reciente, busca actualizaciones en
 Haz una copia de seguridad antes de cualquier salto grande, y siempre antes de que puedas volver a una versión anterior.
 
 1. Abre **Settings** (Configuración).
-2. Ve a la pestaña **Advanced** (Avanzado).
-3. Busca la sección **Backup & Export** (Copia de seguridad y exportación).
+2. Ve a la pestaña **Data** (Datos).
+3. Busca la sección **Backup & Restore** (Copias de seguridad y restauración).
 4. Haz clic en **Download Backup** (Descargar copia de seguridad).
 5. Guarda el archivo `.zip` en un lugar seguro.
 
@@ -39,7 +39,7 @@ El lanzador actualiza Marinara cuando la inicias.
 
 El lanzador obtiene el código más reciente, reinstala lo que cambió, recompila y arranca la nueva versión. Si cambiaste el código tú mismo, aparta tus cambios y los vuelve a poner después de la actualización. Si no puede, mantiene tu versión actual e imprime una nota. Copia tus datos antes de actualizar, y omite una actualización que llevaría a una versión más antigua que tus datos (consulta [Volver a una versión anterior](#downgrading-to-an-older-version)).
 
-Para omitir la actualización una vez, ejecuta `start.bat --skip-update`. Para mantener la versión instalada entre inicios, define `AUTO_UPDATE_ENABLED=false` en el `.env` del proyecto. Esto solo desactiva las actualizaciones automáticas. Los comandos manuales y **Settings → Advanced → Check for Updates** siguen funcionando.
+Para omitir la actualización una vez, ejecuta `start.bat --skip-update`. Para mantener la versión instalada entre inicios, define `AUTO_UPDATE_ENABLED=false` en el `.env` del proyecto. Esto solo desactiva las actualizaciones automáticas. Los comandos manuales y **Settings → Advanced → Updates → Check for Updates** (Configuración → Avanzado → Actualizaciones → Buscar actualizaciones) siguen funcionando.
 
 Si el lanzador dice que Node.js es demasiado antiguo, instala Node.js 24 LTS (Long Term Support, soporte a largo plazo, la versión estable recomendada) y luego vuelve a iniciar Marinara. También puedes descargar el instalador más nuevo desde la página de GitHub Releases y ejecutarlo.
 
@@ -144,6 +144,7 @@ Marinara puede comprobar en GitHub si hay una versión más reciente. Algunas in
 
 - **Latest Stable:** los lanzamientos etiquetados como `vX.Y.Z`. Esta es la opción normal.
 - **Staging/UAT:** compilaciones de prueba previas al lanzamiento, que pueden estar sin terminar. Elegirla muestra el aviso "Staging builds are pre-release tester builds. Back up your app data before applying them."
+- **UI overhaul (playtest) (Renovación de la interfaz: prueba):** la rama `ui/kolacheee` con el nuevo diseño, para quienes lo prueban. Sigue a staging. Haz primero una copia de seguridad de los datos de la app: una vez que actualice tus datos, es posible que **Latest Stable** no pueda leerlos hasta la próxima versión. Las instalaciones con Git (Windows, macOS, Linux y Termux) pueden cambiar a ella aquí. Docker no tiene una imagen para ella, así que en un contenedor el canal solo muestra una indicación.
 
 Cuando eliges un canal distinto en un navegador de la propia computadora del servidor, el botón de actualización dice **Switch to** seguido del nombre del canal. Funciona incluso cuando las actualizaciones normales dentro de la app están desactivadas, y muestra **Switching…** mientras se ejecuta. Los dispositivos remotos no pueden hacerlo salvo que cumplan las condiciones de **Apply Update** de abajo.
 
@@ -179,7 +180,7 @@ Aplicar desde otro dispositivo está desactivado de forma predeterminada. Necesi
 
 - `UPDATES_ALLOW_REMOTE_APPLY=true` en el `.env` del servidor.
 - `ADMIN_SECRET` definido en el `.env` del servidor. Es una segunda contraseña para acciones arriesgadas.
-- El mismo secreto guardado en tu dispositivo en **Settings → Advanced → Admin Access** (Configuración → Avanzado → Acceso de administrador).
+- El mismo secreto guardado en tu dispositivo en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad).
 
 Haz clic en **Apply Update**. El botón muestra **Updating…** mientras el servidor obtiene el código, reinstala, recompila y se apaga. Luego ves "Update applied successfully. Please relaunch the app to use the new version." Vuelve a iniciar Marinara para terminar.
 
@@ -200,7 +201,7 @@ Si no funcionó: cuando falta **Apply Update**, Marinara muestra por qué.
 Actualizar reemplaza el código de la app, no tu carpeta de datos ni el volumen `marinara-data`. Tus chats, personajes, personas, lorebooks (libros de trasfondo), presets (ajustes guardados), conexiones y configuración se mantienen en su lugar. Para saber dónde viven los datos, lee [Copia de seguridad y restauración de Marinara](data/backup-and-restore.md).
 
 - **Paquetes opcionales.** Cuando actualizas desde una versión que traía agentes propios, mapas, llamadas o juegos de Conversation, el primer arranque descarga sus paquetes opcionales correspondientes. Tus selecciones, ajustes e historial se conservan. Mantén el servidor en línea durante ese primer arranque. Si no se puede llegar a la fuente de descarga, Marinara lo intenta de nuevo en el siguiente arranque y no borra nada.
-- **Idioma de las guías.** Si usas un idioma de documentación descargado (**Settings → General → Documentation Language**), el primer arranque después de una actualización lo actualiza. Si no se puede llegar a la fuente, Marinara conserva tu paquete instalado, muestra en inglés las guías que falten y lo intenta de nuevo en el siguiente arranque.
+- **Idioma de las guías.** Si usas un idioma de documentación descargado (**Settings → General → Language → Documentation Language**), el primer arranque después de una actualización lo actualiza. Si no se puede llegar a la fuente, Marinara conserva tu paquete instalado, muestra en inglés las guías que falten y lo intenta de nuevo en el siguiente arranque.
 - **Idioma de la interfaz.** Los paquetes de idioma de la interfaz son una descarga aparte y manual. En la primera actualización desde una versión con las traducciones incluidas, la interfaz vuelve al inglés. Elige de nuevo tu idioma en **Settings → General → Language** (Configuración → General → Idioma). Las actualizaciones posteriores conservan los paquetes descargados. Usa **Refresh language pack** (Actualizar el paquete de idioma) para obtener traducciones nuevas. Las traducciones que faltan se muestran en inglés.
 
 ## Actualizar desde 2.5.0
@@ -222,7 +223,7 @@ Los pasos de arriba son los mismos. Algunos cambios afectan a un servidor que us
 
 ## Volver a una versión anterior
 
-Volver atrás no siempre es posible. Las versiones nuevas guardan los datos en un formato de almacenamiento más reciente, y una compilación rechaza datos en un formato más reciente que el que conoce. Las compilaciones actuales usan el formato de almacenamiento 11. Los formatos 8, 9 y 10 añadieron los avatares MMD, los vínculos de conexiones con cuentas y los avatares GLB/FBX. El formato 11 guarda las personas en el mismo formato de tarjeta que los personajes. Una compilación que solo conoce un formato más antiguo no puede abrir datos guardados en ellos.
+Volver atrás no siempre es posible. Las versiones nuevas guardan los datos en un formato de almacenamiento más reciente, y una compilación rechaza datos en un formato más reciente que el que conoce. Las compilaciones actuales usan el formato de almacenamiento 10. Los formatos 8, 9 y 10 añadieron los avatares MMD, los vínculos de conexiones con cuentas y los avatares GLB/FBX. Una compilación que solo conoce un formato más antiguo no puede abrir datos guardados en ellos.
 
 El lanzador omite una actualización automática que llevaría a una versión incompatible, y el actualizador de la app se niega a aplicarla. Para volver a una compilación anterior, detén Marinara y restaura una copia de seguridad completa hecha antes de actualizar. El comando de conversión de archivos de chat de abajo no puede convertir los ajustes de los avatares MMD. No cambies el número de formato a mano.
 

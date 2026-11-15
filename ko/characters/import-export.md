@@ -38,6 +38,10 @@ Marinara 내보내기 파일이 정보를 가장 많이 담습니다. 나머지 
 | **Imported regex scripts**(가져온 정규식 스크립트) | **Character only**: 규칙이 이 캐릭터에 대해 작동합니다. 기본값입니다. |
 | | **Global**: 규칙이 **Presets → Regexes**(프리셋 → 정규식)에 추가되어 모든 채팅에서 작동합니다. |
 | **Split description into fields**(설명을 필드별로 분할) | 기본값은 꺼짐입니다. 체크하면 라벨이 붙은 성격, 외모 같은 텍스트를 **Description**(설명)에서 꺼내 각자의 필드로 옮깁니다. |
+| **Import tags**(가져오기 태그) | **Tag imported**(가져옴 태그 지정)(기본값 켜짐): **Imported**(가져옴) 태그를 추가합니다. |
+| | **Tag source**(출처 태그 지정)(기본값 켜짐): 파일의 출처를 추가합니다. SillyTavern 카드는 **ST**, `.charx`는 **CharX**, Marinara에서 내보낸 파일은 **Marinara**입니다. |
+
+가져온 항목은 원래 이름과 설명을 유지합니다. 가져온 항목을 모두 찾으려면 검색란 옆의 **Tags**(태그) 필터에서 **Imported**를 고르세요. Library의 모든 가져오기 창(Characters, Personas, Lorebooks, Presets)과 채팅 가져오기에 같은 **Import tags** 체크박스 두 개가 있습니다. [Bot Browser](bot-browser.md)는 **Chub**처럼 사이트 이름을 출처로 사용합니다.
 
 정규식 스크립트는 텍스트를 찾아 바꾸는 작은 규칙입니다. 규칙을 모든 곳에 적용하려는 것이 아니라면 **Character only**를 그대로 두세요. 분할은 내레이터 카드, 세계관 카드, 캐릭터 여러 명이 담긴 카드를 바꾸지 않고 그대로 둡니다.
 
@@ -50,12 +54,12 @@ Marinara 내보내기 파일이 정보를 가장 많이 담습니다. 나머지 
 
 ### SillyTavern 폴더 통째로 가져오기
 
-SillyTavern 설치본 전체를 옮기려면 **Settings**(설정)의 **Imports**(가져오기) 탭에 있는 일괄 가져오기 기능을 쓰세요. 캐릭터, 채팅, 프리셋, 로어북을 한꺼번에 가져옵니다. [SillyTavern에서 가져오기](../data/importing-from-sillytavern.md)를 참고하세요.
+SillyTavern 설치본 전체를 옮기려면 **Settings → Data → SillyTavern Import**(설정 → 데이터 → SillyTavern 가져오기)에 있는 일괄 가져오기 기능을 쓰세요. 캐릭터, 채팅, 프리셋, 로어북을 한꺼번에 가져옵니다. [SillyTavern에서 가져오기](../data/importing-from-sillytavern.md)를 참고하세요.
 
 ## 캐릭터 내보내기
 
 1. 편집기에서 캐릭터를 여세요.
-2. 헤더에서 **…**를 클릭한 다음 **Export character**(캐릭터 내보내기)를 클릭하세요. **Export Character** 창이 열립니다.
+2. 헤더에서 **Export character**(캐릭터 내보내기)를 클릭하세요. **Export Character** 창이 열립니다.
 3. 형식을 고르세요. Marinara가 파일을 다운로드합니다.
 
 | 형식 | 저장되는 내용 | 적합한 상황 |
@@ -70,8 +74,8 @@ SillyTavern 설치본 전체를 옮기려면 **Settings**(설정)의 **Imports**
 
 ## 캐릭터 여러 개 한꺼번에 내보내기
 
-1. 상단 바에서 **Characters**를 클릭하세요(보이지 않으면 먼저 **More**를 여세요).
-2. 툴바에서 체크 표시 아이콘인 **Select**(선택)를 클릭하고 내보낼 캐릭터에 체크하세요.
+1. **Library → Characters**(라이브러리 → 캐릭터)를 여세요.
+2. 페이지 제목 옆의 체크 아이콘인 **Select**(선택)를 클릭하고 원하는 캐릭터를 클릭하세요.
 3. 아래쪽 막대에서 **Export**(내보내기)를 클릭하세요. Marinara가 `marinara-characters.zip`을 다운로드합니다.
 
 zip 안에는 캐릭터마다 **Marinara Native** 파일이 하나씩 들어 있습니다. 일괄 내보내기에는 PNG나 JSON 선택지가 없습니다. 그 형식이 필요하면 캐릭터를 하나씩 내보내세요. 캐릭터를 선택하는 다른 방법은 [캐릭터 라이브러리 정리하기](library-organization.md#export-or-delete-many-characters)를 참고하세요.

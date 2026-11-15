@@ -46,7 +46,7 @@ New Chat 设置向导里有一个 **Your Persona**(你的用户角色) 字段，
 
 ## 扮演一个角色
 
-想把一张角色卡当作自己的身份，就在 **Settings → Advanced → Message Tools**(设置 → 高级 → 消息工具) 里打开 **Show characters in Persona pickers**(在用户角色选择器中显示角色)。之后选择器里会出现一个 **Play as a character**(扮演角色) 分组，列出你的角色。
+想把一张角色卡当作自己的身份，就在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 里打开 **Show characters in Persona pickers**(在用户角色选择器中显示角色)。之后选择器里会出现一个 **Play as a character**(扮演角色) 分组，列出你的角色。
 
 ## 相关指南
 

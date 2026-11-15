@@ -38,6 +38,10 @@ Jeśli to nie zadziałało: przeczytaj czerwony komunikat obok pliku. Pozostałe
 | **Imported regex scripts** (importowane skrypty regex) | **Character only** (domyślnie): reguły działają dla tej postaci. |
 | | **Global**: reguły trafiają do sekcji **Presets → Regexes** (presety, regexy) i działają w każdym czacie. |
 | **Split description into fields** (podział opisu na pola) | Domyślnie wyłączona. Zaznacz ją, żeby teksty opatrzone etykietami, takie jak osobowość czy wygląd, przenieść z pola **Description** (opis) do osobnych pól. |
+| **Tagi importu** | **Oznacz jako zaimportowane** (domyślnie włączone): dodaje tag **Zaimportowane**. |
+| | **Tag źródła** (domyślnie włączone): dodaje źródło pliku: **ST** dla karty z aplikacji SillyTavern, **CharX** dla pliku `.charx`, **Marinara** dla eksportu z aplikacji Marinara. |
+
+Zaimportowane elementy zachowują swoją nazwę i opis. Aby znaleźć wszystko, co zaimportowano, wybierz **Zaimportowane** w filtrze **Tagi** obok wyszukiwarki. Każde okno importu w bibliotece (postaci, person, lorebooków i presetów) oraz import czatu mają te same dwa pola wyboru w sekcji **Tagi importu**. [Przeglądarka kart](bot-browser.md) używa nazwy witryny jako źródła, na przykład **Chub**.
 
 Skrypty regex to małe reguły zamiany tekstu. Zostaw **Character only**, chyba że reguły mają działać wszędzie. Podział nie zmienia kart narratora, kart świata ani kart z wieloma postaciami.
 
@@ -50,12 +54,12 @@ Lorebook to zbiór faktów o tle historii, do których AI zagląda w trakcie cza
 
 ### Importowanie całego folderu SillyTavern
 
-Aby przenieść całą instalację SillyTavern, użyj importera zbiorczego w panelu **Settings** (Ustawienia), w zakładce **Imports** (import). Przenosi on jednocześnie postacie, czaty, presety i lorebooki. Zobacz [Importowanie z SillyTavern](../data/importing-from-sillytavern.md).
+Aby przenieść całą instalację aplikacji SillyTavern, użyj importu zbiorczego w **Ustawienia → Dane → Import z SillyTavern**. Przenosi on jednocześnie postacie, czaty, presety i lorebooki. Zobacz [Importowanie z SillyTavern](../data/importing-from-sillytavern.md).
 
 ## Eksportowanie postaci
 
 1. Otwórz postać w edytorze.
-2. Kliknij **…** w nagłówku, a potem **Export character** (eksport postaci). Otwiera się okno **Export Character**.
+2. Kliknij **Eksportuj postać** w nagłówku. Otwiera się okno **Export Character**.
 3. Wybierz format. Marinara pobiera plik.
 
 | Format | Co otrzymujesz | Najlepszy do |
@@ -70,8 +74,8 @@ Oba formaty **Compatible** dopisują niepuste pola **Backstory** (historia posta
 
 ## Eksportowanie wielu postaci naraz
 
-1. Kliknij **Characters** na górnym pasku nawigacji (albo najpierw **More**, jeśli tej pozycji nie widać).
-2. Kliknij **Select** (wybór) na pasku narzędzi (ikona znaku zaznaczenia) i zaznacz wybrane postacie.
+1. Otwórz **Biblioteka → Postacie**.
+2. Kliknij **Zaznacz** obok tytułu strony (ikona zaznaczenia) i kliknij wybrane postacie.
 3. Kliknij **Export** (eksport) na pasku na dole. Marinara pobiera plik `marinara-characters.zip`.
 
 W pliku zip jest jeden plik **Marinara Native** na każdą postać. Eksport zbiorczy nie ma opcji PNG ani JSON. Do tych formatów użyj eksportu pojedynczej postaci. Więcej sposobów zaznaczania postaci opisuje przewodnik [Porządkowanie biblioteki postaci](library-organization.md#export-or-delete-many-characters).

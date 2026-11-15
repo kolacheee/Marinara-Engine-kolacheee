@@ -10,8 +10,8 @@ Notre conseil : laisse-le sur **None** (aucun) si tu as un doute. Si tu veux des
 
 Avant de commencer, consulte [Lequel choisir](#which-one-to-pick).
 
-1. Clique sur **Connections** (Connexions) dans la barre du haut et ouvre l'encadré **Jobs** (tâches).
-2. Sous **Behind the scenes** (en coulisses), clique sur la ligne **Decision** (décision). Une liste s'ouvre.
+1. Ouvre **Library → Connections** (Bibliothèque → Connexions). L'encadré **Defaults** (tâches) se trouve en haut.
+2. Clique sur **Decision** (décision). Une liste s'ouvre.
 3. Choisis un modèle. La liste comprend trois groupes :
    - L'option **None (decisions off)** est le choix par défaut. Rien n'est demandé, et les champs des questions d'activation restent désactivés dans l'éditeur d'agents.
    - Le groupe **Built-in model** (modèle intégré) liste les modèles que Marinara exécute sur ton ordinateur : **Built-in model**, **Built-in model (utility)** et **Built-in model (decisions)**. Rien ne quitte ton ordinateur.
@@ -24,8 +24,6 @@ Si le test échoue, le message explique pourquoi. Causes fréquentes : la clé a
 
 Les entrées qui ne peuvent pas répondre pour l'instant restent dans la liste, grisées, avec la raison. Choisir **None** désactive les décisions sans supprimer aucune question d'activation ni aucun énoncé de décision.
 
-<a id="which-one-to-pick"></a>
-
 ### Lequel choisir
 
 - **Un modèle que tu exécutes déjà dans le modèle intégré.** Ne coûte rien de plus. Le meilleur choix pour la plupart des personnes qui utilisent le modèle intégré.
@@ -37,15 +35,15 @@ Si tu fais déjà tourner un modèle local, essaie-le d'abord, et teste des tour
 
 Jev et Open-Jev sont des modèles différents. Jev est le modèle hébergé de TypeSafe, disponible directement ou via OpenRouter. [Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B) est un modèle publié séparément, construit sur Qwen, que Marinara peut exécuter localement. Les tests d'Open-Jev ne mesurent pas Jev hébergé.
 
-Sur Android (Termux), le **Built-in decision model** (modèle de décision intégré) ne peut pas fonctionner, et un petit modèle local sur le processeur d'un téléphone peut être trop lent. Un compte hébergé est le choix pratique, par exemple Jev via OpenRouter. Consulte [Configurer une connexion Decision](#set-up-a-decision-connection).
+Sur Android (Termux), le **Built-in decision model** (modèle de décision intégré) ne peut pas fonctionner, et un petit modèle local sur le processeur d'un téléphone peut être trop lent. Un compte hébergé est le choix pratique, par exemple Jev via OpenRouter. Consulte [Configurer un compte de décision](#set-up-a-decision-account).
 
-Écris les presets, les fiches et les agents pour "un modèle de décision", jamais avec "nécessite Jev". Ils utilisent la même syntaxe d'énoncés avec n'importe quel modèle, mais les modèles peuvent donner des réponses différentes. Quand tu importes du contenu qui utilise des décisions, y compris des agents personnalisés et des installations depuis Agent Organizer, Marinara affiche un avis avec un lien vers ce guide. La restauration d'un profil complet depuis un ZIP ne l'affiche pas.
+Écris les presets, les fiches et les agents pour "un modèle de décision", jamais avec "nécessite Jev". Ils utilisent la même syntaxe d'énoncés avec n'importe quel modèle, mais les modèles peuvent donner des réponses différentes. Quand tu importes du contenu qui utilise des décisions, y compris des agents personnalisés et des installations d'agents officiels, Marinara affiche un avis avec un lien vers ce guide. La restauration d'un profil complet depuis un ZIP ne l'affiche pas.
 
 ## Utiliser le modèle intégré
 
 Si tu as téléchargé le modèle intégré, tu peux l'utiliser pour les décisions sans compte et sans frais. Consulte [Configuration du modèle intégré](local-model.md).
 
-1. Clique sur la ligne **Decision** sous **Behind the scenes** dans l'encadré **Jobs**.
+1. Clique sur **Decision** dans l'encadré **Defaults** de la page Connections.
 2. Choisis **Built-in model** (ou **Built-in model (utility)** si tu en as un).
 3. Clique sur l'engrenage **Decision settings**, puis sur **Test**.
 
@@ -63,37 +61,33 @@ Un modèle qui raisonne d'abord prend plusieurs secondes : par défaut, il ne r�
 
 Les probabilités oui/non d'un modèle de chat généraliste fonctionnent avec un seuil, mais elles n'ont pas été entraînées pour être calibrées comme celles d'un modèle conçu pour les décisions. Un environnement d'exécution qui ne renvoie pas de log-probabilités répond par un simple 1 ou 0. Ajuste les seuils sur tes propres chats.
 
-<a id="on-a-server-you-already-run"></a>
-
 ### Sur un serveur déjà en cours d'exécution
 
 Si ton modèle de chat tourne dans Ollama, LM Studio, llama.cpp ou un autre serveur compatible OpenAI, il peut répondre aux décisions sans que Marinara en charge une seconde copie.
 
-1. Clique sur **⋯** sur ce modèle dans le panneau **Connections** et choisis **Use this model for decisions** (utiliser ce modèle pour les décisions). La fenêtre **Add account** (ajouter un compte) s'ouvre sur l'étape de décision, avec la même adresse, le même modèle et la même clé.
+1. Ouvre **Library → Connections**, clique sur **Add connection** (ajouter un compte), ouvre l'onglet **Décision** et choisis **Own decision server** (ton propre serveur de décision). Saisis la même adresse et la même clé que celles utilisées par ton modèle de chat. (Dans la disposition classique, le menu **⋯** du modèle propose **Use this model for decisions** (utiliser ce modèle pour les décisions), qui remplit ces champs.)
 2. Choisis le modèle, puis clique sur **Test decision** (tester la décision). Un test réussi indique si le serveur a renvoyé des log-probabilités et si le modèle a dû raisonner d'abord. Clique sur **Done** (terminé).
-3. Clique sur la ligne **Decision** sous **Behind the scenes** et choisis le nouveau modèle.
+3. Clique sur **Decision** dans l'encadré **Defaults** et choisis le nouveau modèle.
 
 Tu peux aussi le créer toi-même. Utilise un compte Decision avec la source **OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**, la même adresse que ton compte de chat (par exemple `http://localhost:11434/v1` pour Ollama) et le nom de modèle qu'utilise le serveur.
 
 Il est interrogé comme le modèle intégré : un mot oui/non par énoncé. Les énoncés partent un par un, car Marinara ne peut pas savoir combien de requêtes ton serveur traite à la fois. **Thinking** est toujours sur **Auto** pour un compte. Un serveur sur un autre ordinateur nécessite `PROVIDER_LOCAL_URLS_ENABLED`. Consulte [Connecter un modèle local ou auto-hébergé](local-self-hosted.md).
 
-<a id="set-up-a-decision-connection"></a>
-
-## Configurer une connexion Decision
+## Configurer un compte de décision
 
 Un compte Decision hébergé envoie au service les messages récents sélectionnés et les énoncés, et peut coûter de l'argent. L'ordre de réponse Smart envoie aussi une [liste des personnages](#what-the-model-sees).
 
-1. Clique sur **Connections** dans la barre du haut, puis sur **Add** (ajouter).
-2. Sous **Decisions** (décisions), clique sur **TypeSafe** ou **Own decision server**. Pour OpenRouter, clique sur **OpenRouter** sous **Chat**, connecte-le, puis utilise **Use this key for decisions** (utiliser cette clé pour les décisions) dans le menu **⋯** du modèle.
-3. Saisis le champ **API key** (clé API) ou, pour **Own decision server**, le champ **Server address** (adresse du serveur). Clique sur **Connect** (connecter). La fenêtre se ferme et le panneau affiche le nouveau compte.
-4. Clique sur la ligne **Decision** sous **Behind the scenes** et choisis le nouveau modèle.
-5. Pour le tester, clique sur le modèle dans le panneau pour ouvrir **Edit model**, puis clique sur **Test provider** dans la carte **Provider tests** (tests du fournisseur). Un modèle **Own decision server** n'y a pas de bouton **Test provider**. Ouvre plutôt le menu **⋯** du compte dans le panneau et clique sur **Test**.
+1. Ouvre **Library → Connections** et clique sur **Add connection**.
+2. Dans l'onglet **Décision**, clique sur **TypeSafe** ou **Own decision server**. Pour OpenRouter, clique sur **OpenRouter** dans l'onglet **Texte**, connecte-le, puis utilise **Use this key for decisions** (utiliser cette clé pour les décisions) dans le menu **⋯** du modèle.
+3. Saisis le champ **API key** (clé API) ou, pour **Own decision server**, le champ **Server address** (adresse du serveur). Clique sur **Connect** (connecter). La fenêtre se ferme et la page Connections affiche le nouveau compte.
+4. Clique sur **Decision** dans l'encadré **Defaults** et choisis le nouveau modèle.
+5. Pour le tester, clique sur le modèle sur la page Connections pour ouvrir **Edit model**, puis clique sur **Test provider** dans la carte **Provider tests** (tests du fournisseur). Un modèle **Own decision server** n'y a pas de bouton **Test provider**. Clique plutôt sur **⋯** sur le compte, choisis **Edit account** (modifier le compte), puis clique sur **Test account** (tester le compte).
 
-Un **Test provider** réussi affiche la probabilité, la durée de la réponse et le délai du compte. Le **Test** du compte, dans le menu **⋯**, indique seulement s'il a fonctionné et combien de temps il a pris. Le test attend au moins 10 secondes, ou 5 secondes au-delà d'un délai plus long. Si la réponse a pris plus de temps que le délai, le résultat le signale : pendant un chat, cette réponse compterait comme une absence de réponse.
+Un **Test provider** réussi affiche la probabilité, la durée de la réponse et le délai du compte. **Test account** indique seulement s'il a fonctionné et combien de temps il a pris. Le test attend au moins 10 secondes, ou 5 secondes au-delà d'un délai plus long. Si la réponse a pris plus de temps que le délai, le résultat le signale : pendant un chat, cette réponse compterait comme une absence de réponse.
 
 En cas d'échec, consulte [Résolution des problèmes](#troubleshooting).
 
-L'éditeur Decision (**Edit model** sur un modèle de décision) contient ces champs :
+Un modèle de décision contient ces champs. Clique sur le modèle dans le panneau pour ouvrir **Modifier le modèle**, ou sur l'engrenage de la ligne **Décision** dans l'encadré **Tâches** pour ouvrir **Réglages de Décision** pour le modèle de décision actuel :
 
 | Champ | Effet |
 | --- | --- |
@@ -108,8 +102,6 @@ Certains services hébergés répondent parfois en plus de 1,5 seconde, ce qui d
 
 Supprimer un compte dont la clé sert aux décisions affiche un avertissement. Le compte Decision doit alors être relié de nouveau, et d'ici là les décisions ne donnent aucune réponse. Les fichiers de connexion importés ne contiennent jamais de clés API ni de liens vers des comptes empruntés : restaure-les à la main.
 
-<a id="where-marinara-uses-it"></a>
-
 ## Où Marinara l'utilise
 
 - Les [questions d'activation](../agents/custom-agents.md#activation-questions) décident si un agent personnalisé s'exécute. Sans réponse : la question ne l'arrête pas. Les mots-clés et **Trigger Cadence** (cadence d'activation) s'appliquent toujours.
@@ -117,11 +109,10 @@ Supprimer un compte dont la clé sert aux décisions affiche un avertissement. L
 - Les [champs Decision des lorebooks](../lorebooks/entries.md#decision-activation) vérifient Require ou Trigger pendant l'analyse des lorebooks. Sans réponse : Require ne peut pas admettre une nouvelle entrée et Trigger n'ajoute aucune voie d'activation. Les maintiens Sticky et les voies ordinaires de Trigger s'appliquent toujours.
 - L'[ordre de réponse Smart](../chats/group-chats.md#response-order-individual-only) évalue qui parle ensuite dans un chat de groupe, s'il est activé. Sans réponse : l'ordre Smart effectue son appel IA habituel.
 - [Automate active characters](../chats/group-chats.md#automate-active-characters-merged-only) demande qui est dans la scène avant chaque réponse dans un groupe Roleplay Merged, s'il est réglé sur **Decision model** (modèle de décision). Sans réponse : si aucun personnage n'obtient de réponse, il utilise la dernière scène de Character Tracker, ou conserve la liste.
+- Les [vérifications d'Illustrator par modèle de décision](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model) examinent chaque réponse de Roleplay pour détecter un nouveau lieu ou un changement de météo, si elles sont activées dans les réglages d'Illustrator du chat. Sans réponse : les arrière-plans ne changent que lorsque Illustrator ou le World State le demande, comme avant.
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model) peut utiliser son propre modèle de décision pour les limites de scène et la sélection des souvenirs en Roleplay. Active **Use Decision model** (utiliser le modèle de décision) dans les réglages Advanced Memory de ce chat. Sans réponse : les décisions échouées reviennent au rappel ou aux vérifications de scène habituels. Les résumés utilisent toujours le modèle auxiliaire.
 
 Une question d'activation décide si un agent s'exécute. Un énoncé de décision dans son prompt décide de ce qui est dit à cet agent pendant son exécution. Utilise `{{#if decision:"..."}}` pour les conditions oui/non et `{{#if decision_choice:"..." == "..."}}` pour un choix entre plusieurs réponses.
-
-<a id="what-the-model-sees"></a>
 
 ## Ce que voit le modèle
 
@@ -142,8 +133,6 @@ Un service de décision hébergé reçoit ces listes en plus des messages.
 
 **Advanced Memory** utilise son propre modèle de décision par chat, et non la règle des 5 derniers messages. Les vérifications de scène lisent la fenêtre concernée de l'historique. Le rappel envoie le texte de la conversation récente et jusqu'à 24 résumés archivés présélectionnés, ou davantage si **Maximum recalled scenes** (maximum de scènes rappelées) est plus élevé, puis les messages originaux des scènes choisies par le modèle, après vérification de l'accès des personnages. Les services hébergés reçoivent ces textes, parfois en plusieurs lots. Chaque passe de rappel dispose normalement de 10 à 25 secondes, selon la vitesse du modèle. Les deux passes partagent 40 secondes par réponse : une passe peut donc disposer de moins de 10 secondes. Les souvenirs sans réponse à temps reviennent au rappel habituel. Consulte [Modèle de décision facultatif](../agents/memory.md#optional-decision-model).
 
-<a id="thresholds"></a>
-
 ## Seuils
 
 Les probabilités ne sont pas comparables d'un modèle à l'autre. Le même exemple peut obtenir 0,99 sur l'un et 0,2 sur un autre. Le seuil oui/non par défaut dépend du modèle :
@@ -155,8 +144,6 @@ Les probabilités ne sont pas comparables d'un modèle à l'autre. Le même exem
 Le réglage **Run when probability is at least** (exécuter si la probabilité atteint au moins) d'un agent remplace cette valeur. L'éditeur propose de restaurer la recommandation du modèle quand la valeur enregistrée diffère. Vérifie-le chaque fois que tu changes de modèle. Les énoncés des prompts et les champs Decision des lorebooks utilisent la valeur par défaut du modèle, et le seuil d'un agent ne change pas le leur.
 
 Un Open-Jev auto-hébergé derrière un compte Custom System One utilise toujours 0,5, car Marinara ne peut pas calibrer n'importe quel point d'accès personnalisé. Ses résultats peuvent différer de ceux de l'Open-Jev intégré, notamment en interprétant comme non un résultat positif inférieur à 0,5.
-
-<a id="time-limits"></a>
 
 ## Délais
 
@@ -185,8 +172,6 @@ Tout modèle peut se tromper, et des "oui" corrects peuvent se situer tout près
 - Ne conditionne pas le consentement, les avertissements de contenu ou les instructions de sécurité à une décision.
 - Pour un agent qui ne s'exécute que sur une question d'activation, règle **Bypass the question after this many messages** (ignorer la question après ce nombre de messages), pour qu'un modèle qui répond sans cesse non ne puisse pas le réduire au silence pour toujours.
 
-<a id="troubleshooting"></a>
-
 ## Résolution des problèmes
 
 - **Le test échoue.** Le message explique pourquoi : la clé a été refusée, le service limite les requêtes, le modèle intégré ne tourne pas, le modèle de décision n'est pas installé, le modèle n'a pas répondu par oui ou non, ou le délai a été dépassé.
@@ -198,8 +183,6 @@ Tout modèle peut se tromper, et des "oui" corrects peuvent se situer tout près
 - **Automate active characters suit Character Tracker.** Le modèle n'a pas répondu pour chaque personnage, il raisonne d'abord et **Also gate agents that run before the reply** est désactivé, ou le casting est trop grand pour l'entrée du modèle, même avec les seuls noms.
 
 Pour voir les scores et les sorties des décisions pendant la génération, active Debug Mode ou règle le niveau de log sur debug. Consulte [Niveaux de log](../CONFIGURATION.md#logging-levels). Pour tester tes propres énoncés sans générer de réponse, ouvre **Peek Prompt → Decision diagnostics → Test decisions** (Peek Prompt → diagnostic des décisions → tester les décisions). Les tests explicites appellent le modèle sélectionné et peuvent coûter de l'argent avec un service hébergé. Consulte [Tester les énoncés de décision](../chats/peek-prompt.md#testing-decision-statements).
-
-<a id="let-marinara-install-a-decision-model"></a>
 
 ## Laisser Marinara installer un modèle de décision
 
@@ -214,7 +197,7 @@ Les modèles Open-Jev nécessitent Linux **x86-64**, un GPU NVIDIA de capacité 
 
 Ce sont les estimations du catalogue. Le modèle 9B laisse peu de marge sur un GPU de 24 Go. Consulte le verdict de l'installateur pour ta carte.
 
-1. Clique sur **Add** dans le panneau **Connections**, puis sur **Built-in model (decisions)** sous **Decisions**. Une fenêtre intitulée **Built-in decision model** s'ouvre. Tu peux aussi l'ouvrir depuis la page de la carte **Built-in model**.
+1. Clique sur **Add** dans le panneau **Connections**, puis sur **Built-in model (decisions)** dans l'onglet **Décision** (affiché quand cet ordinateur peut le faire fonctionner). Une fenêtre intitulée **Built-in decision model** s'ouvre. Tu peux aussi l'ouvrir depuis la page de la carte **Built-in model**.
 2. Lis l'avertissement, puis active **Use the built-in decision model** (utiliser le modèle de décision intégré). Une boîte de dialogue intitulée **Turn on the built-in decision model?** affiche le verdict pour ton ordinateur. Clique sur **Enable** (activer), ou sur **Enable anyway** (activer quand même) si le verdict est un avertissement.
 3. Sous **Available decision models** (modèles de décision disponibles), choisis **Open-Jev 2B** ou **Open-Jev 9B**. Clique sur **Download and install** (télécharger et installer) et confirme la taille, le verdict matériel et les licences. Rien n'est téléchargé avant cette étape.
 4. Clique sur la ligne **Decision** sous **Behind the scenes** et choisis **Built-in model (decisions)**.
@@ -228,8 +211,6 @@ Autres contrôles de la fenêtre :
 - Le bouton **Reinstall** (réinstaller) apparaît quand le modèle installé ne peut pas démarrer parce que ses fichiers ou son environnement d'exécution sont manquants ou obsolètes, généralement après une mise à jour. Le modèle est alors marqué **Needs reinstall**, et la ligne **Decision** affiche **Not set up**. La réinstallation conserve les fichiers déjà téléchargés et complets : en général, seuls les paquets Python de l'environnement d'exécution sont téléchargés de nouveau.
 
 La première réponse d'un modèle après son démarrage est plus lente : Marinara pose donc une question de préchauffage pendant le chargement. Si elle échoue, le modèle démarre quand même et la première vraie question subit le retard. Un tour avec beaucoup d'énoncés sur un long chat prend plus de temps. Open-Jev 2B prend environ un quart de seconde par énoncé sur un long chat.
-
-<a id="run-strands-decider-yourself"></a>
 
 ### Exécuter Strands decider toi-même
 

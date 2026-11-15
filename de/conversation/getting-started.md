@@ -6,7 +6,7 @@ Conversation Mode ist der Chat-Modus im Messenger-Stil: ein oder mehrere Charakt
 
 Bevor du anfängst: Füge unter **Connections** ein Konto hinzu (siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md)) und lege mindestens einen Charakter an. Eine Persona, die Charakterkarte, die dich vertritt, ist optional (siehe [Nutzer-Personas](../characters/personas.md)).
 
-1. Öffne in der Chat-Seitenleiste den Tab **CONVO** und klicke auf **New Conversation**. Ein Einrichtungsassistent mit vier Seiten öffnet sich.
+1. Öffne deine Chats (oben rechts **Bibliothek**, dann oben in der Seitenleiste **Chats**), öffne den Tab **Convo** und klick auf **Neu**. Ein Einrichtungsassistent mit vier Seiten öffnet sich.
 2. Gib auf der ersten Seite unter **Name & Connection** dem Chat einen Namen und wähle das Konto, das die Antworten schreibt.
 3. Wähle auf der zweiten Seite unter **Prompt Preset** das Preset für den Conversation-Prompt, oder behalte den Standard.
 4. Wähle auf der dritten Seite unter **Persona & Characters** deine Persona und einen oder mehrere Charaktere.
@@ -33,7 +33,9 @@ Du kannst das später unter **Chat Settings → Autonomous Messaging** ändern. 
 
 ## Wählen, welche Commands ein Charakter nutzen darf
 
-Commands sind Aktionen, die der Charakter selbst auszuführen beschließt. Du tippst sie nicht ein. Öffne nach der Einrichtung **Chat Settings → Agents → Commands**. Der Hauptschalter **Commands** steuert alle Familien: Ist er aus, funktioniert keine Familie. Jede Familie hat einen eigenen Schalter. Alle sind zunächst an, außer **Videos**, das du selbst einschalten musst. Familien, die zu einem optionalen Agenten gehören, erscheinen nur, wenn du diesen Agenten unter **Agents → Agent Organizer** installierst.
+Commands sind Aktionen, die der Charakter selbst auszuführen beschließt. Du tippst sie nicht ein. Öffne nach der Einrichtung **Chat Settings → Agents → Commands**. Der Hauptschalter **Commands** steuert alle Familien: Ist er aus, funktioniert keine Familie.
+
+Jede Familie hat einen eigenen Schalter. Alle sind zunächst an, außer **Videos**, das du selbst einschalten musst. Familien, die zu einem optionalen Agenten gehören, erscheinen nur, wenn du diesen Agenten unter **Library → Agents** (Bibliothek → Agenten) installierst.
 
 | Familie | Was ein Charakter tun kann | Braucht einen Agenten |
 | --- | --- | --- |
@@ -56,13 +58,13 @@ Commands sind Aktionen, die der Charakter selbst auszuführen beschließt. Du ti
 | **Tic-Tac-Toe** | Eine Tic-Tac-Toe-Partie annehmen. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Eine Partie annehmen. | Rock-Paper-Scissors |
 
-Zu **Influence** und **Notes** siehe [Eine Conversation mit einem Roleplay oder Game verknüpfen](../chats/connected-chats.md). Die letzte Spalte nennt den Agenten, den du im **Agent Organizer** installierst.
+Zu **Influence** und **Notes** siehe [Eine Conversation mit einem Roleplay oder Game verknüpfen](../chats/connected-chats.md). Die letzte Spalte nennt den Agenten, den du unter **Library → Agents** installierst.
 
 <a id="your-presence-status"></a>
 
 ## Dein Anwesenheitsstatus
 
-Dein Anwesenheitsstatus ist eine farbige Statusanzeige am Fuß der Seitenleiste. Er ist in jedem Chat gleich. Klicke darauf, um zu wählen:
+Dein Anwesenheitsstatus ist eine farbige Statusanzeige unten in der Chatliste. Er ist in jedem Chat gleich. Klicke darauf, um zu wählen:
 
 | Status | Bedeutung |
 | --- | --- |

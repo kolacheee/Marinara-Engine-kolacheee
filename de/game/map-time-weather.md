@@ -7,7 +7,7 @@ Im Karten-Panel siehst du, wo deine Party gerade ist, und bewegst sie weiter. Di
 Im Game Mode sitzt auf dem Spielbildschirm ein Karten-Panel. Es zeigt den Namen der aktuellen Karte, den Spieltag und ein Himmelssymbol für die Tageszeit.
 
 - **Am Computer** ist die Karte ein eingebettetes Panel, das du auf einen Blick erfassen kannst. Du kannst es verschieben und an Ort und Stelle fixieren. Wie verschiebbare Panels funktionieren, steht unter [Game Mode: HUD-Widgets](hud-widgets.md).
-- **Am Handy** tippst du auf **Map** (Karte), um das Panel zu öffnen. Seine Schaltfläche startet oben links und lässt sich im Chat herumziehen. Mit **Lock window** (Fenster sperren) bleibt die Schaltfläche an ihrem Platz, mit **Close** (Schließen) kehrst du zu ihr zurück. Die Position wird mit dem Chat gespeichert. Die Handy-Karte nutzt deinen Chat-Widget-Stil aus **Settings → Appearance → App** (Einstellungen → Darstellung → App), und ihre Schaltfläche bleibt vom Drei-Punkte-Menü **Chat tools** getrennt.
+- **Am Handy** tippst du auf **Map** (Karte), um das Panel zu öffnen. Seine Schaltfläche startet oben links und lässt sich im Chat herumziehen. Mit **Lock window** (Fenster sperren) bleibt die Schaltfläche an ihrem Platz, mit **Close** (Schließen) kehrst du zu ihr zurück. Die Position wird mit dem Chat gespeichert. Die Handy-Karte nutzt deinen Chat-Widget-Stil aus **Settings → Appearance → Chat Buttons & Windows** (Einstellungen → Darstellung → Chat-Schaltflächen & Fenster), und ihre Schaltfläche bleibt vom Drei-Punkte-Menü **Chat tools** getrennt.
 
 Ein VN-Spiel hat die hier beschriebene Szenenkarte. Oberwelt, Städte und Dungeon-Karten gehören zu Overworld-Spielen, die noch nicht verfügbar sind (siehe [VN oder Overworld](getting-started.md#vn-or-overworld)).
 
@@ -72,7 +72,30 @@ In einem Spiel mit Welt vergeht die Zeit außerdem von selbst:
 
 ## Wetter
 
-Das Spiel führt das Wetter mit festen Werten, nicht mit der KI. Es hängt vom Biom (der Art von Umgebung, in der die Party ist, etwa Wüste, Arktis, Küste oder Gebirge) und von der Jahreszeit ab. Beispiele sind klar, bewölkt, Regen, Sturm, Schnee, Blizzard, Nebel und Sandsturm. Am häufigsten ändert sich das Wetter, wenn du reist oder eine lange Rast machst, manchmal beim Erkunden und sonst nur selten. Es färbt darauf ab, wie der GM jede Szene beschreibt.
+Das Spiel führt das Wetter mit festen Werten, nicht mit der KI. Beispiele sind klar, bewölkt, Regen, Sturm, Schnee, Blizzard, Nebel, Hitzewelle und Sandsturm. Es färbt darauf ab, wie der GM jede Szene beschreibt.
+
+In einem Spiel mit generierter Welt richtet sich das Wetter nach dem Klima dort, wo die Party auf der Karte steht:
+
+- **Das Land um die Party.** Wüsten sind trocken, und es regnet selten. Dschungel sind feucht und warm, Schneefelder kalt und Gebirge kälter und nebliger als die Täler darunter.
+- **Breitengrad und Meer.** Auf einer Karte der ganzen Welt liegen der obere und untere Rand nahe den Polen und die Mitte nahe dem Äquator. Auch die Entfernung zum Meer zählt: Küsten haben milde Winter, weit im Landesinneren sind die Sommer heiß und die Winter bitterkalt.
+- **Die Jahreszeit vor Ort.** Südlich des Äquators fällt der Sommer in den Winter des Kalenders. Nahe dem Äquator gibt es statt eines Winters eine Regenzeit und eine Trockenzeit.
+- **Wetter, das weiterzieht.** Wettersysteme ziehen über Stunden und Tage über die Karte. So wechselt der Himmel nicht auf einen Schlag von einer Hitzewelle zu Nebel, und nahe gelegene Orte teilen sich ihr Wetter. In warmen Klimazonen bilden sich Schauer und Gewitter am Nachmittag.
+
+Verlangt die Geschichte oder der GM nach einem Wetter, das am Ort gerade nicht möglich ist, etwa Schnee in einer heißen Wüste im Sommer, nutzt das Spiel stattdessen das nächstliegende passende Wetter (in diesem Fall einen kalten, scharfen Wind). Der GM erfährt, welches Klima herrscht und was dort nicht möglich ist.
+
+Ein Spiel ohne generierte Welt schätzt das Klima anhand des Ortsnamens ein, etwa „Wüste“, „Hafen“ oder „Gebirge“.
+
+### Orte außerhalb der natürlichen Ordnung
+
+Ein Fluch, ein Gott oder eine andere große Macht kann die Umwelt eines Ortes festhalten: eine Stadt in ewiger Nacht, ein Wald im dauernden Herbst, ein Tal unter Schnee, der nie schmilzt. Der GM legt eine solche Bindung in der Geschichte fest. Sie hat Vorrang vor Klima und Uhrzeit, bis der GM sie aufhebt:
+
+- **Wetter.** Der Ort behält das festgelegte Wetter, auch wenn sein Klima es nie zuließe, etwa Schnee in einer Wüste.
+- **Jahreszeit.** Der Ort bleibt in einer Jahreszeit, während die übrige Welt weiterzieht.
+- **Licht.** Am Ort ist immer Nacht, Dämmerung oder Tag. Beleuchtung und Wettereffekte der Szene richten sich danach, und die Oberweltkarte schattiert das betroffene Land.
+
+Eine Welt kann bereits mit solchen Bindungen beginnen. Wenn du eine Welt aus deinen Lorebooks erstellst, gilt die Bindung für jeden laut Lore betroffenen Ort vom ersten Tag an, etwa „Im Sallow Vale ist immer Herbst“ oder „Gotham sieht nie die Sonne“. Dasselbe gilt für eine Bindung, die der Schauplatz beschreibt. Der GM erfährt von diesen Orten und kann eine Bindung weiterhin in der Geschichte aufheben.
+
+Eine Bindung gilt für den Ort und alles darin. Wird eine Region gebunden, gilt das auch für ihre Städte. Überschneiden sich Bindungen, hat der nächstgelegene Ort Vorrang. So kann eine Stadt in einer verfluchten Region ihr eigenes festgelegtes Wetter haben. Eine Bindung kann auch die ganze Welt umfassen. Die Szene kann sie nicht durch eine Bitte um anderes Wetter aufheben; das kann nur der GM.
 
 Damit du das Wetter auf dem Bildschirm siehst, schalte in den Darstellungseinstellungen **Dynamic weather effects (rain, snow, fog, etc.)** ein. Die Option ist standardmäßig an. Dann legen sich Regen-, Schnee- und Nebelpartikel über das Spiel, passend zu Wetter und Tageszeit. Siehe [Darstellungseinstellungen](../appearance/appearance-settings.md).
 
@@ -106,7 +129,7 @@ Zum Wechseln zwischen den Ansichten nutzt du **Show the scene** (Szene zeigen) u
 
 ### Tile-Packs
 
-Tile-Packs enthalten die Farbpalette und jedes Tile als Reihen von Pixeln: jede Bodenart, die Siedlungen nach Größe, die Party sowie die Straßen, Dächer und Bewohner einer Stadt. Jede Stilfamilie hat ein eingebautes Pack. Öffne das Panel **Agents** (Agenten) und such **Tile packs** (Tile-Packs). Dort kannst du:
+Tile-Packs enthalten die Farbpalette und jedes Tile als Reihen von Pixeln: jede Bodenart, die Siedlungen nach Größe, die Party sowie die Straßen, Dächer und Bewohner einer Stadt. Jede Stilfamilie hat ein eingebautes Pack. Öffne **Library → Agents** (Bibliothek → Agenten) und such **Tile packs** (Tile-Packs). Dort kannst du:
 
 - festlegen, mit welchem Pack jedes Setting gezeichnet wird; **Built in** (eingebaut) ist sein eigenes,
 - mit **Import a tile pack** (Tile-Pack importieren) ein Pack aus einer `.tilepack.json`-Datei importieren,

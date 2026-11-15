@@ -8,8 +8,6 @@
 2. サーバーコンソール(Marinaraを動かしているターミナルウィンドウ)に赤いエラー行が出ていないか確認します。たいていは、その行に本当の原因が書かれています。
 3. 助けを求めるときは、先に**Debug mode**(デバッグモード)をオンにしてください。[さらに助けを求める](#get-more-help)を参照してください。
 
-<a id="my-character-does-not-reply"></a>
-
 ## キャラクターが返信しない
 
 次の項目を順に確認してください。
@@ -38,9 +36,32 @@
 - **このコンピューターに付けた独自の名前。** `/etc/hosts`で`127.0.0.1`に対応付けた名前は、中継された通信と見なされます。代わりに`localhost`、`127.0.0.1`、マシンのホスト名、または`*.localhost`の名前を使ってください。
 - **Too many wrong passwords**と表示される。15分待ってから、サインインしてください。パスワードを忘れましたか?Marinaraを動かしているコンピューターで、Marinaraのフォルダーから`node scripts/reset-login.mjs`を実行します。Dockerでは、`docker exec <container> node scripts/reset-login.mjs`を実行します。サーバーを再起動しても、もう一度試せるようになります。
 - **Untrusted request host**と表示される。公開ドメインやリバースプロキシのドメインでは、`.env`の`TRUSTED_HOSTS`にそのホスト名を正確に追加してください。IPアドレスで直接アクセスする場合は、引き続き受け入れられます。
-- そのデバイスから**リスクのある操作がブロックされる**(バックアップ、データの消去、アップデート)。サーバーのコンピューター上で**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)を開いて**Make admin secret**(管理者用シークレットを作成)をクリックするか、サーバーの`.env`に`ADMIN_SECRET`を設定します。もう一方のデバイスで、そのシークレットを**Admin Access**に入力し、**Save**(保存)をクリックします。
+- そのデバイスから**リスクのある操作がブロックされる**(バックアップ、データの消去、アップデート)。サーバーのコンピューター上で**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)を開いて**Make admin secret**(管理者用シークレットを作成)をクリックするか、サーバーの`.env`に`ADMIN_SECRET`を設定します。もう一方のデバイスで、そのシークレットを**Admin Access**に入力し、**Save**(保存)をクリックします。
 
 [リモートアクセス](REMOTE_ACCESS.md)と[よくある質問](FAQ.md)を参照してください。アップデート後にサインインできなくなった場合は、[アップデート後にログインできなくなった場合](REMOTE_ACCESS.md#locked-out-after-updating)を参照してください。
+
+## スマートフォンやタブレットでアプリの動作が遅い
+
+初めてページを開くときは、画像とページ自体を読み込むため、少し時間がかかることがあります。その後は、タップにすぐ反応するはずです。何度使っても遅い操作がある場合は、次の手順で確認してください。
+
+1. **Settings → Advanced → Troubleshooting**(設定 → 詳細設定 → トラブルシューティング)を開き、**Show tap timings**(タップの所要時間を表示)をオンにします。このデバイスだけに適用されます。
+2. 普段どおりにアプリを使います。左下付近の小さな暗いボックスに、最近のタップが一覧表示されます。
+3. 各行には、タップした対象に続いて`shown · smooth · longest frame · server`が表示されます。時間の単位はすべてミリ秒(ms、1秒の1,000分の1)です。
+
+| 表示 | 意味 |
+| --- | --- |
+| **shown** | タップしてから画面が最初に変わるまでの時間です。 |
+| **smooth** | 画面の変化が終わるまでの時間です。緑なら問題ありません。400を超えると赤になり、待ち時間が気になるようになります。 |
+| **longest frame** | 途中で画面が止まった時間のうち、最も長いものです。 |
+| **server** | タップで発生したリクエストの数と、最後のリクエストが終わるまでの時間です。ダッシュはリクエストがないことを示します。 |
+
+試せることは次のとおりです。
+
+- **smooth**の大部分を**server**が占める場合、待ち時間の原因は画面ではなく、サーバーかネットワークです。同じWi-Fi上のサーバーのほうが、インターネット経由で接続するサーバーより速くなります。
+- **smooth**が大きく、**server**がダッシュなら、画面の処理が遅くなっています。テーマを一時的にオフにして(<kbd>Esc</kbd>を3回押すか、アドレスの末尾に`?safe`を付けます)、同じ対象をもう一度タップしてください。大幅に速くなれば、テーマが原因です。作成者に伝えるか、[テーマの動作を軽く保つ](appearance/theme-author-guide.md#keeping-a-theme-fast)を参照してください。
+- **Settings → Appearance → Effects**(設定 → 外観 → エフェクト)には、**Reduce Ambient Animations & Effects**(環境アニメーションとエフェクトを減らす)と**Reduced paint effects**(描画エフェクトを減らす)があります。どちらも、処理の遅いデバイスで動作を滑らかにします。
+
+動作が遅い箇所を報告するときは、その操作の所要時間の行を添えてください。確認が終わったら、**Show tap timings**を再びオフにしてください。
 
 ## 保存がブロックされる、または設定が保持されない
 
@@ -51,8 +72,6 @@
 ```bash
 CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 ```
-
-<a id="connection-and-generation-errors"></a>
 
 ## 接続と生成のエラー
 
@@ -77,8 +96,6 @@ CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 - チャットやプリセットが見当たらない: [アップデート後にデータがなくなったように見える](#data-seems-missing-after-an-update)を参照してください。データは、ほぼ確実にまだディスクに残っています。
 - 古いバージョンに戻したらチャットが空に見える: [古いバージョンへ切り替えたらチャットのメッセージが表示されない](#chats-show-no-messages-after-switching-to-an-older-version)を参照してください。
 
-<a id="blank-stale-or-old-looking-screen"></a>
-
 ### 画面が真っ白、古いまま、または古く見える
 
 サーバーは動いているのに、ブラウザーに真っ白なページが表示される、またはアップデート後もアプリが古いままに見えることがあります。ブラウザーがWebアプリのキャッシュを保持しているためです。
@@ -87,8 +104,6 @@ CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 2. それでも直らない場合は、**Settings → Advanced → Updates**(設定 → 詳細設定 → アップデート)を開き、**Refresh App**(アプリの再読み込み)をクリックします。
 
 **Refresh App**は、ブラウザーのサービスワーカー(アプリをキャッシュする、裏側で動くスクリプト)とキャッシュを消去してから、再読み込みします。データは変わらず、サーバーもアップデートされません。アプリ本体をアップデートするには、[Marinara Engineのアップデート](UPGRADING.md)を参照してください。
-
-<a id="blank-page-or-javascript-served-as-html-after-an-update"></a>
 
 ### アップデート後にページが真っ白になる、またはJavaScriptがHTMLとして返される
 
@@ -100,13 +115,9 @@ CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 
 それでも失敗する場合は、読み込めなかったファイルの完全なURL、HTTPステータス、Content-Type、応答の最初の行を、ランチャーの出力と一緒に報告してください。
 
-<a id="data-seems-missing-after-an-update"></a>
-
 ### アップデート後にデータがなくなったように見える
 
 データのフォルダーは削除しないでください。Marinaraは実際のデータを、データフォルダーの中の`storage`フォルダーに保存しています。`packages/server/data/`と`data/`の中で`storage`を探してください。サーバーは起動時に、解決したフォルダーを表示します。
-
-<a id="chats-show-no-messages-after-switching-to-an-older-version"></a>
 
 ### 古いバージョンへ切り替えたらチャットのメッセージが表示されない
 
@@ -116,7 +127,7 @@ Marinaraは明らかなダウングレードをブロックします。ランチ
 
 アップデートしてから古いバージョンに戻した場合は、アップデート前に作ったバックアップを復元してください。[古いバージョンへダウングレードする](UPGRADING.md#downgrading-to-an-older-version)を参照してください。以下は技術的な詳細です。
 
-現在のデータはストレージ形式11です。形式8、9、10では、3Dアバターの設定(MMD、続いてGLBとFBX)と接続のアカウントへの関連付けが追加されました。形式11ではペルソナをキャラクターカードとして保存します。古いビルドでは、これらを安全に読み込めません。形式11では、元のペルソナのファイルを`storage/tables/personas/`に`.pre-v11`のコピーとして残します。データが形式8以降に達している場合、古いビルドを使うには、そのアップグレードより前に作った完全なバックアップを復元してください。下のコマンドは、古いチャットファイルの配置だけを変換します。形式番号を手作業で変更しないでください。[古いバージョンへダウングレードする](UPGRADING.md#downgrading-to-an-older-version)を参照してください。
+現在のデータはストレージ形式10です。形式8、9、10では、古いビルドが安全に読めない3Dアバターの設定(MMD、続いてGLBとFBX)と、接続のアカウントへの関連付けが追加されています。データが形式8以降に達している場合、古いビルドを使うには、そのアップグレードより前に作った完全なバックアップを復元してください。下のコマンドは、古いチャットファイルの配置を変換するだけです。形式番号を手作業で変更しないでください。[古いバージョンへダウングレードする](UPGRADING.md#downgrading-to-an-older-version)を参照してください。
 
 形式8より前のデータでは、チャットファイルの配置を変換します。
 
@@ -178,8 +189,6 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=1 pnpm --config.trustPolicy=off --config.confirmModu
 
 チャットや設定には影響しません。それでもSharpを読み込めない場合、Marinaraは画像処理をオフにした状態で動き続けます。作成済みのサムネイルはそのまま表示され、新しいサムネイルにはフルサイズの画像が使われます。スプライトの生成と内蔵の背景除去は使えません。Sharpを別のバージョンに置き換えないでください。報告用に、エラー出力全体を残しておいてください。
 
-<a id="browser-opens-before-startup-finishes"></a>
-
 ### 起動が完了する前にブラウザーが開く
 
 アップデートして、ランチャーから再起動してください。ランチャーは、サーバーが準備完了を通知してからブラウザーを開きます。起動に失敗した場合はタブが開かないので、ターミナルのエラーを残しておいてください。アプリを自分で開きたい場合は、`AUTO_OPEN_BROWSER=false`を設定します。
@@ -226,7 +235,7 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 **Built-in model**(内蔵モデル)は、APIキーなしで自分のコンピューター上で動きます。エラーメッセージによっては、sidecarと呼ばれます。セットアップについては、[内蔵モデルのセットアップ](connections/local-model.md)を参照してください。
 
-- **Sidecar runtime install is disabled**と表示される。自分のコンピューターでは、`.env`に`SIDECAR_RUNTIME_INSTALL_ENABLED=true`を設定します。別のデバイスからは、先に管理者用のシークレットを**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)に保存してください。
+- **Sidecar runtime install is disabled**と表示される。自分のコンピューターでは、`.env`に`SIDECAR_RUNTIME_INSTALL_ENABLED=true`を設定します。別のデバイスからは、先に管理者用のシークレットを**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)に保存してください。
 - **別のデバイスからモデルのダウンロードやセットアップに失敗する**(ネットワークアドレスやDocker)。この場合も、管理者用のシークレットが必要なことがあります。自分のコンピューターでは不要です。
 - 同梱のllama.cpp、MLX、uvのファイルで**サイズまたはSHA-256の不一致**が出る。Marinaraは、そのファイルを使う前に拒否しました。Marinaraをアップデートまたは再インストールしてから、もう一度試してください。そのファイルを展開したり、編集したり、チェックを迂回して使ったりしないでください。
 
@@ -239,11 +248,9 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 1. **Chat Settings → Memory Recall**(チャット設定 → 記憶の呼び出し)を開き、**Enable Memory Recall**がオンになっているか確かめます。
 2. **Access memories for this chat**を開きます。**Memories for This Chat**で、各チャンクの状態を確認します。
 3. **Waiting for vector**は、その記憶がまだ処理中であることを示します。少し待ってから、もう一度チャットしてください。
-4. **Embedding unavailable**は、使える埋め込みの生成元が1つもないことを示します。埋め込み用のアカウントを設定するか、内蔵モデルを読み込ませてください。すべてのチャットで1つの生成元を使うには、**Connections**(接続)の**Defaults**(デフォルト)セクションにある**Embeddings**(埋め込み)で選びます。
+4. **Embedding unavailable**は、動作する埋め込みソースがないことを意味します。埋め込み用のアカウントを設定するか、内蔵モデルの読み込みを待ってください。すべてのチャットで同じソースを使うには、**Connections**(接続)の**Defaults**(デフォルト)ボックスにある**Embeddings**(埋め込み)の役割で選びます。
 
 記憶が作られるには、新しいメッセージが5件以上必要です。呼び出しでは新しいメッセージと強く一致する記憶だけが表示されるため、記憶があっても何も返らないことがあります。
-
-<a id="advanced-memory-says-scenes-need-attention"></a>
 
 ### Advanced Memoryでシーンに対応が必要と表示される
 
@@ -266,12 +273,12 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 ## ダウンロードできるエージェントの問題
 
-- **Agent Organizerでカタログを利用できない。** ブラウザーだけでなく、サーバーを動かしているコンピューターが、[Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)のカタログにHTTPSで到達できる必要があります。インストール済みのエージェントは、オフラインでも動き続けます。接続を回復してから、**Refresh**(更新)か**Try again**(もう一度試す)をクリックしてください。
+- **Library → Agentsでエージェントカタログが読み込まれない。** ブラウザーだけでなく、サーバーを動かしているコンピューターが、[Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)のカタログにHTTPSで到達できる必要があります。インストール済みのエージェントは、オフラインでも動き続けます。接続を回復してから、**Refresh**(更新)か**Try again**(もう一度試す)をクリックしてください。
 - **インストールしたマップや通話が表示されない。** Marinaraを完全に終了してから、もう一度起動してください。これらのパッケージは、次に起動するまで**Restart required**の状態のままです。Conversationのゲームは、すぐに有効になります。インストールに失敗した場合は、カタログを更新して、ゲームが準備完了と表示されているか確かめてください。チャットの**Commands**(コマンド)設定にゲームを追加する必要があるのは、キャラクター自身にゲームを始めさせたいときだけです。手動のスラッシュコマンドには必要ありません。
 - **最初のパッケージ移行が完了しない。** `data/capability-packages`やチャットのデータを削除しないでください。Marinaraは次回の起動時に再試行し、チャットの選択内容は保存されたままです。
 - **`data/capability-runtime-snapshots`や`data/capability-packages/versions`が大きい。** 整理は不要です。Marinaraは起動時に古いコピーを削除し、各エージェントの現在のバージョンと1つ前のバージョンを残します。
 - **パッケージのダウンロードが拒否される。** チェックサム、ファイル一覧、Marinaraのバージョン範囲、アーカイブ内のパスのいずれかが、公式カタログと一致していません。Marinaraをアップデートし、カタログを更新してから、もう一度試してください。成果物をデータフォルダーへ手動で展開しないでください。
-- **アップデート。** エージェントのアップデートが起動時に適用されることはありません。Marinaraが先に確認します。**Not now**(今はしない)を選ぶとインストール済みのバージョンが残り、**Update**(アップデート)は**Agents → Agent Organizer**に残ります。アップデートに失敗しても、インストール済みのバージョンはそのまま残ります。起動時のチェックに失敗したサーバーランタイムは、元に戻されます。
+- **アップデート。** エージェントのアップデートが起動時に適用されることはありません。Marinaraが先に確認します。**Not now**(今はしない)を選ぶとインストール済みのバージョンが残り、**Update**(アップデート)は**Library → Agents**に残ります。アップデートに失敗しても、インストール済みのバージョンはそのまま残ります。起動時のチェックに失敗したサーバーランタイムは、元に戻されます。
 
 ## Card Browserの問題
 
@@ -301,7 +308,7 @@ pnpm backgroundremover:install
 
 絵コンテは、書き終わった語りをキーフレーム画像と、任意の短い動画に変換します。[Storyboardエージェントガイド](game/storyboard.md)と[Game Mode: はじめに](game/getting-started.md)を参照してください。
 
-- **Agents → Agent Organizer**から**Storyboard**をインストールし、そのチャットで**Enable Agents**(エージェントを有効にする)と**Enable Storyboards**(絵コンテを有効にする)をオンにします。
+- **Library → Agents**から**Storyboard**をインストールし、そのチャットで**Enable Agents**(エージェントを有効にする)と**Enable Storyboards**(絵コンテを有効にする)をオンにします。
 - キーフレームには、画像用のアカウントが必要です。動画には、さらに動画用のアカウントも必要です。
 - Game(自動): **Chat Settings → Agents → Storyboards**(チャット設定 → エージェント → 絵コンテ)を開き、**Automatic Storyboard Illustrations**がオンになっているか確かめます。短い動画も作るには、**Automatic Storyboard Animations**をオンにします。
 - 手動のシーン動画: **Chat Settings → Gallery**(チャット設定 → ギャラリー)を開き、画像を生成またはアップロードしてから、**Video**か**Animate**を使います。**Videos**タブを確認してください。
@@ -322,7 +329,7 @@ pnpm backgroundremover:install
 
 - **通話中にキャラクターが話さない。** 音声合成が設定されていません。**Connections → Text to Speech**(接続 → 音声合成)を開いてオンにし、生成元を選び、キーを入力し、声を選んで保存します。声のないキャラクターは、テキストだけで表示されます。
 - **音声が「No audio after N s」で止まる。** 音声サーバーの応答が、Marinaraの待ち時間より遅くなっています。ノートパソコン上のローカルサーバーでは、よくあることです。`N`は、現在のタイムアウトの値です。**Connections → Text to Speech**、またはメッセージに示された音声のアカウントで、**Request timeout (seconds)**(リクエストのタイムアウト、秒単位)を大きくしてください。[リクエストのタイムアウト](media/tts-setup.md#request-timeout)を参照してください。
-- **マイクが動かない。** **Agents → Agent Organizer**から**Calls**をインストールします。次に**Connections → Speech to text**(接続 → 音声認識)を開き、**On this device**(このデバイス上)の下にある**Local speech model**(ローカル音声モデル)を探して、Whisperのモデルを選び、**Download Whisper**(Whisperをダウンロード)をクリックします。Firefoxにはブラウザーの音声認識がないため、この手順が必要です。Callsをアンインストールすると、そのWhisperのモデルも削除されます。自分のサーバーを使うこともできます。[自分の音声認識サーバーを使う](conversation/calls.md#use-your-own-speech-to-text-server)を参照してください。
+- **マイクが動かない。** **Library → Agents**から**Calls**をインストールします。次に**Connections → Speech to text**(接続 → 音声認識)を開き、**On this device**(このデバイス上)の下にある**Local speech model**(ローカル音声モデル)を探して、Whisperのモデルを選び、**Download Whisper**(Whisperをダウンロード)をクリックします。Firefoxにはブラウザーの音声認識がないため、この手順が必要です。Callsをアンインストールすると、そのWhisperのモデルも削除されます。自分のサーバーを使うこともできます。[自分の音声認識サーバーを使う](conversation/calls.md#use-your-own-speech-to-text-server)を参照してください。
 - **Local Whisper is disabled in Lite mode**と表示される。liteイメージでは、ローカルの音声認識モデルを動かせません。通常のインストールを使ってください。
 
 ### リモートやネットワーク越しのインストールでMusic DJのSpotifyログインが失敗する
@@ -358,7 +365,7 @@ Marinaraは`start.bat`、`start-local.bat`、`start.sh`、`start-termux.sh`、�
 
 ### バックアップやエクスポートが403を返す
 
-同じコンピューターからのセッションなら、管理者用のシークレットなしでバックアップできます。別のデバイス、ネットワークアドレス、Docker、または同じコンピューター上のプロキシやトンネルからのリクエストには、シークレットが必要です。サーバーのコンピューター上の**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)で作成するか、サーバーに`ADMIN_SECRET`を設定します。そのうえで、同じ値をもう一方のデバイスの**Admin Access**に保存してください。ループバックでも必須にするには、`MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`を設定します。`REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`の場合は、転送された訪問者にもローカルの免除が適用されます。公開しているプロキシやトンネルでは、この設定をオンのままにしてください。
+同じコンピューターからのセッションなら、管理者用のシークレットなしでバックアップできます。別のデバイス、ネットワークアドレス、Docker、または同じコンピューター上のプロキシやトンネルからのリクエストには、シークレットが必要です。サーバーのコンピューター上の**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)で作成するか、サーバーに`ADMIN_SECRET`を設定します。そのうえで、同じ値をもう一方のデバイスの**Admin Access**に保存してください。ループバックでも必須にするには、`MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`を設定します。`REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`の場合は、転送された訪問者にもローカルの免除が適用されます。公開しているプロキシやトンネルでは、この設定をオンのままにしてください。
 
 ### インポートでファイルが読み取れるZIPアーカイブではないと表示される
 
@@ -387,15 +394,13 @@ Androidアプリは、Termuxを包む小さな入れ物です。TermuxはAndroid
 
 アプリとTermuxが同じポートを使っているかも確認してください。デフォルトは`7860`です。別のポートでアプリをビルドした場合は、Termuxの`.env`に同じ`PORT`を設定します。
 
-<a id="android-localhost-opens-the-login-page-or-returns-401503"></a>
-
 ### Androidのlocalhostでログインページが開く、または401/503が返る
 
 APKが管理するTermuxのインストールでは、インストールごとの非公開のシークレットでlocalhostを保護し、アプリは自動的にサインインします。アプリ内にログインページが表示された場合は、[最新のAPK](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk)をインストールし、もう一度**Install / Start Marinara**(Marinaraのインストール/起動)をタップして、Termuxの処理が終わったらアプリに戻ってください。
 
 オリジン`null`を示すエラーは、古いAPKとサーバーの組み合わせであることを意味します。`.env`を編集しても直りません。APKとMarinaraをアップデートしてください。
 
-同じスマートフォンのブラウザーで開くには、Androidランチャーで**Open in browser**(ブラウザーで開く)をタップし、次に**Retry connection**(接続を再試行)をタップします。サーバーの再起動後やセッションの期限切れ後も、この方法で開き直してください。ランチャーに戻るには、**Settings → General → App Behavior → Open Android launcher (app or browser)**(設定 → 一般 → アプリの動作 → Androidランチャーを開く(アプリまたはブラウザー))を使います。
+同じスマートフォンのブラウザーで開くには、Androidランチャーで**Open in browser**(ブラウザーで開く)をタップし、次に**Retry connection**(接続を再試行)をタップします。サーバーの再起動後やセッションの期限切れ後も、この方法で開き直してください。ランチャーに戻るには、**Settings → Appearance → Layout → Open Android launcher (app or browser)**(設定 → 一般 → アプリの動作 → Androidランチャーを開く(アプリまたはブラウザー))を使います。
 
 古いAPKでは、`/android-login`で`cat ~/.marinara-engine/android-secret`の値を使ってサインインします。ブラウザー用のリンクは1回だけ使え、1分で期限が切れるため、ランチャーから新しいリンクを開いてください。
 
@@ -422,7 +427,7 @@ Androidの設定で、Termuxのバックグラウンド実行を許可し、バ�
 
 ### Termuxを前面に出すまでMarinaraが応答しなくなる
 
-チャットが「Opening chat...」のまま止まり、アプリが**Server unreachable**と表示し、Support Diagnosticsでコピーした内容ではサーバーの項目が**Unreachable (request timed out)**になり、Termuxを開いた瞬間にすべてが復旧します。Androidがキャッシュ状態のアプリを凍結する仕組み(cached app freezer)が、Termuxのプロセスを停止させています。スマートフォンは接続を受け付けますが、凍結されたサーバーが応答することはありません。wake lockでは防げません。セッションのログには、エラーではなく、凍結されていた時間帯のタイムスタンプの空白が残ります。
+チャットが「Opening chat...」のまま止まり、アプリが**Server unreachable**と表示し、**Copy Support Diagnostics**のレポートではサーバーの項目が**Unreachable (request timed out)**になり、Termuxを開いた瞬間にすべてが復旧します。Androidがキャッシュ状態のアプリを凍結する仕組み(cached app freezer)が、Termuxのプロセスを停止させています。スマートフォンは接続を受け付けますが、凍結されたサーバーが応答することはありません。wake lockでは防げません。セッションのログには、エラーではなく、凍結されていた時間帯のタイムスタンプの空白が残ります。
 
 Termuxをバッテリー最適化の対象から外し、バックグラウンドでの動作を許可し、端末が対応していれば最近使ったアプリの画面でTermuxをロックして、通知も表示したままにしてください。それでも凍結が続く場合は、Marinaraを使っている間、Termuxを前面に出したままにするか、画面をつけたままにしてください。
 
@@ -461,8 +466,6 @@ pnpm store prune
 
 Raspberry Pi 4などのARMデバイスで、AIへのリクエストを送るたびにliteイメージが再起動する場合は、終了コードを確認してください。終了コード132やSIGILL(CPUが実行できない命令に行き当たったこと)は、一部のARMチップでliteイメージのNodeビルドに起きる、既知の上流の問題を示しています。そのデバイスでは、通常のイメージを使ってください。
 
-<a id="a-server-extension-says-no-supported-sandbox-is-available"></a>
-
 ### Server Extensionが利用できるサンドボックスはないと表示される
 
 Server ExtensionとProfessor Mariの生のシェルコマンドは、macOSのSeatbeltかLinuxのBubblewrapがある場合にだけ動きます。ネイティブのLinuxホストでは、`bwrap`をインストールしてからMarinaraを再起動してください。公式のDockerイメージにはBubblewrapが含まれていますが、デフォルトのコンテナーでは入れ子の名前空間を作れないため、Marinaraはこれらの機能をオフのままにします。
@@ -488,12 +491,12 @@ Windows、Android、そのほかの非対応のホストでは、Server Extensio
 
 ## 拡張機能の問題
 
-### AddonsにExternal Extensionsが表示されない
+### ExtensionsにExternal Extensionsが表示されない
 
 このセクションは、2つの条件がどちらも満たされるまで表示されません。
 
 1. ホストの`.env`に`ENABLE_EXTERNAL_EXTENSIONS=true`を設定します。
-2. 少し待ってから、**Settings → Advanced → Danger Zone**(設定 → 詳細設定 → 危険な操作)を開き、データ削除の操作より下までスクロールして、**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)をオンにします。
+2. 少し待ってから、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)を開き、**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)をオンにします。
 
 スイッチが無効になっている場合は、ホスト側のフラグがまだfalseか、アプリが変更をまだ検知していません。[サーバー設定](CONFIGURATION.md)で説明している、実際に使われている`.env`を編集したか確認してください。Dockerでは通常`/app/data/.env`です。
 
@@ -501,13 +504,11 @@ Windows、Android、そのほかの非対応のホストでは、Server Extensio
 
 ### インポートしたブラウザー拡張機能は表示されるのに動かない
 
-**Settings → Addons → External Extensions**(設定 → アドオン → 外部拡張機能)でその拡張機能を開き、**Requested access**(要求されている権限)を読みます。機能の宣言がない`marinara.extension` v1形式の古いパッケージには、**Full page access**(ページ全体へのアクセス)と表示されます。承認するのは、自分で中身を確認して信頼できるハッシュだけにしてください。
+**Library → Extensions → External Extensions**(ライブラリー → 拡張機能 → 外部拡張機能)でその拡張機能を開き、**Requested access**(要求されている権限)を読みます。機能の宣言がない`marinara.extension` v1形式の古いパッケージには、**Full page access**(ページ全体へのアクセス)と表示されます。承認するのは、自分で中身を確認して信頼できるハッシュだけにしてください。
 
 機能の一覧を空にして再エクスポートされたパッケージは、安全なサンドボックス拡張機能として扱われるため、ページのDOMを必要とするコードは動きません。マニフェストに`full_page_access`を追加するのは、そのコードがページ全体、ブラウザーのストレージ、ネットワークAPI、セッションにアクセスできるようになることを受け入れる場合だけにしてください。
 
 ページ全体にアクセスする拡張機能を無効にしたあと、ツールバーの項目、オーバーレイ、リスナーが残っている場合は、Marinaraを再読み込みしてください。ページのコードはMarinaraが追跡しない副作用を起こすことがあるため、後片付けは可能な範囲でしか行われません。
-
-<a id="multiplayer-connection-or-turn-problems"></a>
 
 ## マルチプレイヤーの接続・ターンの問題
 
@@ -527,11 +528,9 @@ Windows、Android、そのほかの非対応のホストでは、Server Extensio
 
 HTTPSのアドレスを使ってサインインし、Marinaraをアップデートしたあとに再読み込みしてください。アプリは認証情報付きでマニフェストを要求するため、ログインはオンのままでかまいません。それでもインストールできない場合は、プロキシが`/manifest.json`を、ログインページやエラーではなくJSONとして返しているか確認してください。
 
-<a id="get-more-help"></a>
-
 ## さらに助けを求める
 
-1. **Settings → Advanced → Message Tools**(設定 → 詳細設定 → メッセージツール)を開き、**Debug mode**(デバッグモード)をオンにします。プロンプトと応答がサーバーコンソールに記録されます。
+1. **Settings → Advanced → Troubleshooting**(設定 → 詳細設定 → メッセージツール)を開き、**Debug mode**(デバッグモード)をオンにします。プロンプトと応答がサーバーコンソールに記録されます。
 2. 使っているオペレーティングシステム、Node.jsのバージョン、コンソールに出たエラーの全文を控えます。
 3. 何かを共有する前に、APIキー、アクセストークン、管理者用のシークレット、私的なチャットの内容を取り除きます。
 

@@ -140,7 +140,7 @@ Roleplay और Conversation का ढाँचा एक ही है। न�
 | `[data-card-css] p`, `[data-card-css] span` | टेक्स्ट के अंदर के पैराग्राफ़ और इनलाइन स्पैन। |
 | `[data-grouped]` | उसी कैरेक्टर के आगे के लगातार संदेश। सिर्फ़ Conversation में। किसी ग्रुप के पहले संदेश के लिए `[data-card-css]:not([data-grouped])` इस्तेमाल करें। |
 
-लेआउट बदलने के लिए **Settings → Appearance → Conversation** (सेटिंग्स → अपीयरेंस → Conversation) खोलें, फिर **Conversation Display** (Conversation की डिस्प्ले सेटिंग्स), फिर **Chat Layout** (चैट लेआउट)। **Linear** में बबल नहीं होता, इसलिए वहाँ `.mari-message-content` (टेक्स्ट) और `[data-card-css]` (रो) को स्टाइल करें।
+लेआउट बदलने के लिए **Settings → Conversation → Conversation Layout → Chat Layout** (सेटिंग्स → Conversation → Conversation लेआउट → चैट लेआउट) खोलें। **Linear** में बबल नहीं होता, इसलिए वहाँ `.mari-message-content` (टेक्स्ट) और `[data-card-css]` (रो) को स्टाइल करें।
 
 एक स्टाइल किया हुआ बबल:
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## मिलती-जुलती गाइड
 
 - [Appearance सेटिंग्स](appearance-settings.md)
-- [कस्टम CSS थीम (Theme Library)](custom-css-themes.md)
+- [कस्टम CSS थीम](custom-css-themes.md)
 - [कैरेक्टर बनाना और एडिट करना](../characters/creating-and-editing-characters.md)

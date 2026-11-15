@@ -6,7 +6,7 @@ Profil stylu to wielokrotnego użytku "styl firmowy", który kształtuje każdy 
 
 Każdy wygenerowany obraz zaczyna się od promptu tekstowego: awatary, portrety, selfie w trybie Conversation, tła scen, ilustracje i sprite'y. Profil stylu to zapisany zestaw reguł, które Marinara dokłada do tego promptu. Może dodać słowa pozytywne (czego oczekujesz), słowa negatywne (czego chcesz uniknąć) oraz preferowany styl zapisu promptu. Jeden profil wybierasz jako domyślny dla całej aplikacji. Da się go nadpisać dla jednego czatu albo jednego modelu obrazów.
 
-Żeby znaleźć edytor, otwórz **Settings → Generations → Image Generation** (ustawienia, generowanie, generowanie obrazów) i przewiń do sekcji **Style Profiles** (profile stylu).
+Żeby znaleźć edytor, otwórz **Ustawienia → Media → Generowanie obrazów** i przewiń do sekcji **Style Profiles** (profile stylu).
 
 ## Profile wbudowane
 
@@ -35,7 +35,7 @@ Oto profile wbudowane:
 
 Profil domyślny obowiązuje dla każdego obrazu, chyba że nadpisze go czat albo model obrazów.
 
-1. Otwórz **Settings → Generations → Image Generation → Style Profiles**.
+1. Otwórz **Ustawienia → Media → Generowanie obrazów → Profile stylu**.
 2. Rozwiń listę **Default style** (styl domyślny).
 3. Wybierz profil.
 

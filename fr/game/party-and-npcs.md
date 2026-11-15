@@ -18,7 +18,7 @@ Les détails des deux suivent.
 
 Pour retirer un compagnon, passe le pointeur sur son portrait sur ordinateur et clique sur le **X**. Cela fonctionne pour tout compagnon recruté par le GM, pendant la configuration ou plus tard. Ton propre persona (le personnage que tu incarnes) n'a pas de **X**.
 
-Tu peux faire glisser le bouton dans le chat, sur ordinateur comme sur téléphone. Ouvre-le et utilise **Lock window** (verrouiller la fenêtre) pour le garder en place. Sur ordinateur, tu peux aussi déplacer et redimensionner la fenêtre, et **Close** (fermer) la réduit de nouveau à son bouton. Sa position est enregistrée avec le chat, et il suit le style des widgets du chat choisi dans **Settings → Appearance → App** (Paramètres → Apparence → Application). Sur téléphone, il reste séparé du menu à trois points **Chat tools**.
+Tu peux faire glisser le bouton dans le chat, sur ordinateur comme sur téléphone. Ouvre-le et utilise **Lock window** (verrouiller la fenêtre) pour le garder en place. Sur ordinateur, tu peux aussi déplacer et redimensionner la fenêtre, et **Close** (fermer) la réduit de nouveau à son bouton. Sa position est enregistrée avec le chat, et il suit le style des widgets du chat choisi dans **Settings → Appearance → Chat Buttons & Windows** (Paramètres → Apparence → Boutons et fenêtres du chat). Sur téléphone, il reste séparé du menu à trois points **Chat tools**.
 
 ## Les feuilles de personnage
 

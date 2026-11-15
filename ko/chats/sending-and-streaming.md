@@ -15,7 +15,7 @@
 
 ### Send on Enter
 
-**Settings → General → Input & Editing**(설정 → 일반 → 입력 및 편집)에 있습니다. 채팅 모드마다 토글이 하나씩 있습니다.
+**Settings → Chatting → Message Box**(설정 → 채팅 중 → 메시지 입력창)에 있습니다. 채팅 모드마다 토글이 하나씩 있습니다.
 
 | 채팅 모드 | 기본값 | 꺼져 있을 때 |
 | --- | --- | --- |
@@ -23,7 +23,7 @@
 | Conversations | 켜짐 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac에서는 <kbd>Cmd</kbd>+<kbd>Enter</kbd>)로 보냅니다. |
 | Game | 켜짐 | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac에서는 <kbd>Cmd</kbd>+<kbd>Enter</kbd>)로 보냅니다. |
 
-Roleplay(롤플레이)는 메시지가 길고 줄바꿈이 자주 필요해서 기본값이 꺼짐입니다. Professor Mari에게는 별도의 토글인 **Enter sends to Professor Mari**(Enter로 Professor Mari에게 전송)가 **Settings → General → Search and Professor Mari settings**(설정 → 일반 → 검색 및 Professor Mari 설정)에 있습니다.
+Roleplay(롤플레이)는 메시지가 길고 줄바꿈이 자주 필요해서 기본값이 꺼짐입니다. Professor Mari에게는 별도의 토글인 **Enter sends to Professor Mari**(Enter로 Professor Mari에게 전송)가 **Settings → General → Professor Mari**(설정 → 일반 → Professor Mari)에 있습니다.
 
 ## 이미지와 파일 첨부
 
@@ -49,7 +49,7 @@ Roleplay에서는 채팅의 에셋 브라우저가 링크를 대신 넣어 줄 �
 
 ## 답변 스트리밍
 
-스트리밍은 답변을 한꺼번에 보여 주지 않고 단어 단위로 보여 줍니다. 이 설정은 **Settings → General → Responses**(설정 → 일반 → 응답)에 있습니다.
+스트리밍은 답변을 한꺼번에 보여 주지 않고 단어 단위로 보여 줍니다. 이 설정은 **Settings → Chatting → Responses**(설정 → 채팅 중 → 응답)에 있습니다.
 
 | 설정 | 기본값 | 하는 일 |
 | --- | --- | --- |

@@ -10,8 +10,8 @@ Decision 모델은 "Does the latest message move the scene to a new place?"처�
 
 시작하기 전에 [선택 기준](#which-one-to-pick)을 참고하세요.
 
-1. 상단 바에서 **Connections**(연결)를 클릭하고 **Jobs**(작업) 상자를 여세요.
-2. **Behind the scenes**(무대 뒤) 아래의 **Decision**(판단) 행을 클릭하세요. 목록이 열립니다.
+1. **Library → Connections**(라이브러리 → 연결)를 여세요. 위쪽에 **Defaults**(기본값) 상자가 있습니다.
+2. **Decision**(판단)을 클릭하세요. 목록이 열립니다.
 3. 모델을 고르세요. 목록에는 3개 그룹이 있습니다.
    - **None (decisions off)**(없음, 판단 끔)가 기본값입니다. 아무것도 묻지 않으며, 에이전트 편집기의 활성화 질문 필드는 비활성 상태로 남습니다.
    - **Built-in model**(내장 모델) 그룹에는 Marinara가 내 컴퓨터에서 실행하는 모델이 있습니다. **Built-in model**, **Built-in model (utility)**(내장 모델, 보조), **Built-in model (decisions)**(결정 사이드카, 실험적)입니다. 정보가 컴퓨터 밖으로 나가지 않습니다.
@@ -37,15 +37,15 @@ Decision 모델은 "Does the latest message move the scene to a new place?"처�
 
 Jev와 Open-Jev는 다른 모델입니다. Jev는 TypeSafe의 호스팅 모델이며 직접 또는 OpenRouter를 통해 이용할 수 있습니다. [Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B)는 Qwen 기반으로 별도 공개된 모델이며 Marinara가 로컬에서 실행할 수 있습니다. Open-Jev 테스트는 호스팅된 Jev를 측정하지 않습니다.
 
-Android(Termux)에서는 **Built-in decision model**을 실행할 수 없고, 휴대전화 프로세서에서 돌리는 작은 로컬 모델은 너무 느릴 수 있습니다. OpenRouter를 통한 Jev처럼 호스팅 계정이 실용적인 선택입니다. [Decision 연결 설정하기](#set-up-a-decision-connection)를 참고하세요.
+Android(Termux)에서는 **Built-in decision model**을 실행할 수 없고, 휴대전화 프로세서에서 돌리는 작은 로컬 모델은 너무 느릴 수 있습니다. OpenRouter를 통한 Jev처럼 호스팅 계정이 실용적인 선택입니다. [Decision 연결 설정하기](#set-up-a-decision-account)를 참고하세요.
 
-프리셋, 카드, 에이전트는 "Decision 모델"을 기준으로 작성하고 "Jev 필수"로 만들지 마세요. 어떤 모델에서든 같은 문장 구문을 쓰지만 모델마다 답이 다를 수 있습니다. 사용자 지정 에이전트와 Agent Organizer 설치를 포함해 판정을 사용하는 콘텐츠를 가져오면 Marinara가 이 가이드로 연결되는 알림을 표시합니다. 전체 프로필 ZIP을 복원할 때는 이 알림이 표시되지 않습니다.
+프리셋, 카드, 에이전트는 "Decision 모델"을 기준으로 작성하고 "Jev 필수"로 만들지 마세요. 어떤 모델에서든 같은 문장 구문을 쓰지만 모델마다 답이 다를 수 있습니다. 사용자 지정 에이전트와 공식 에이전트 설치를 포함해 판정을 사용하는 콘텐츠를 가져오면 Marinara가 이 가이드로 연결되는 알림을 표시합니다. 전체 프로필 ZIP을 복원할 때는 이 알림이 표시되지 않습니다.
 
 ## 내장 모델 사용하기
 
 내장 모델을 다운로드해 두었다면 계정도 비용도 없이 판정에 사용할 수 있습니다. [내장 모델 설정](local-model.md)을 참고하세요.
 
-1. **Jobs** 상자의 **Behind the scenes** 아래에 있는 **Decision** 행을 클릭하세요.
+1. Connections 페이지의 **Defaults** 상자에서 **Decision**을 클릭하세요.
 2. **Built-in model**을 고르세요. **Built-in model (utility)**가 있다면 그쪽을 골라도 됩니다.
 3. **Decision settings** 톱니바퀴를 클릭한 다음 **Test**를 클릭하세요.
 
@@ -69,9 +69,9 @@ Marinara는 모델에 예/아니요 질문 하나를 보내 토큰 하나를 쓰
 
 채팅 모델이 Ollama, LM Studio, llama.cpp 또는 다른 OpenAI 호환 서버에서 실행 중이라면, Marinara가 두 번째 사본을 로드하지 않고도 그 모델이 판정에 답할 수 있습니다.
 
-1. **Connections** 패널에서 그 모델의 **⋯**을 클릭하고 **Use this model for decisions**(이 모델을 결정에 사용)를 고르세요. **Add account**(계정 추가) 창이 판정 단계에서 열리며, 같은 주소, 모델, 키가 채워져 있습니다.
+1. **Library → Connections**를 열고 **Add connection**(연결 추가)을 클릭한 다음 **Decision** 탭을 열고 **Own decision server**를 고르세요. 채팅 모델이 쓰는 주소와 키를 그대로 입력하세요. (클래식 레이아웃에서는 모델의 **⋯**에 있는 **Use this model for decisions**(이 모델을 결정에 사용)가 이 값을 채워 줍니다.)
 2. 모델을 고른 다음 **Test decision**(판단 테스트)을 클릭하세요. 테스트에 성공하면 서버가 로그 확률을 반환했는지, 모델이 먼저 생각해야 했는지 알려 줍니다. **Done**(완료)을 클릭하세요.
-3. **Behind the scenes** 아래의 **Decision** 행을 클릭하고 새 모델을 고르세요.
+3. **Defaults** 상자에서 **Decision**을 클릭하고 새 모델을 고르세요.
 
 직접 만들 수도 있습니다. 소스가 **OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**(OpenAI 호환 채팅 모델, Ollama, LM Studio, llama.cpp)인 Decision 계정을 쓰고, 채팅 계정과 같은 주소(예: Ollama라면 `http://localhost:11434/v1`)와 서버가 쓰는 모델 이름을 입력하세요.
 
@@ -83,17 +83,17 @@ Marinara는 모델에 예/아니요 질문 하나를 보내 토큰 하나를 쓰
 
 호스팅된 Decision 계정은 선택한 최근 메시지와 판정문을 서비스로 보내며 비용이 발생할 수 있습니다. Smart 응답 순서는 [캐릭터 명단](#what-the-model-sees)도 보냅니다.
 
-1. 상단 바에서 **Connections**를 클릭한 다음 **Add**(추가)를 클릭하세요.
-2. **Decisions**(판단) 아래에서 **TypeSafe**나 **Own decision server**를 클릭하세요. OpenRouter라면 **Chat**(채팅) 아래의 **OpenRouter**를 클릭해 연결한 다음, 모델의 **⋯** 메뉴에서 **Use this key for decisions**(이 키를 판단에 사용)를 사용하세요.
-3. **API key**(API 키)를 입력하세요. **Own decision server**라면 **Server address**(서버 주소)를 입력하세요. **Connect**(연결)를 클릭하세요. 창이 닫히고 패널에 새 계정이 표시됩니다.
-4. **Behind the scenes** 아래의 **Decision** 행을 클릭하고 새 모델을 고르세요.
-5. 테스트하려면 패널에서 모델을 클릭해 **Edit model**을 연 다음 **Provider tests**(연결 테스트) 카드의 **Test provider**를 클릭하세요. **Own decision server** 모델에는 그곳에 **Test provider** 버튼이 없습니다. 대신 패널에서 계정의 **⋯** 메뉴를 열고 **Test**를 클릭하세요.
+1. **Library → Connections**를 열고 **Add connection**을 클릭하세요.
+2. **Decision** 탭에서 **TypeSafe**나 **Own decision server**를 클릭하세요. OpenRouter라면 **Text**(텍스트) 탭의 **OpenRouter**를 클릭해 연결한 다음, 모델의 **⋯** 메뉴에서 **Use this key for decisions**(이 키를 판단에 사용)를 사용하세요.
+3. **API key**(API 키)를 입력하세요. **Own decision server**라면 **Server address**(서버 주소)를 입력하세요. **Connect**(연결)를 클릭하세요. 창이 닫히고 Connections 페이지에 새 계정이 표시됩니다.
+4. **Defaults** 상자에서 **Decision**을 클릭하고 새 모델을 고르세요.
+5. 테스트하려면 Connections 페이지에서 모델을 클릭해 **Edit model**을 연 다음 **Provider tests**(연결 테스트) 카드의 **Test provider**를 클릭하세요. **Own decision server** 모델에는 그곳에 **Test provider** 버튼이 없습니다. 대신 계정의 **⋯**을 클릭하고 **Edit account**(계정 편집)를 고른 다음 **Test account**(계정 테스트)를 클릭하세요.
 
-**Test provider**가 성공하면 확률, 답하는 데 걸린 시간, 계정의 시간 제한이 표시됩니다. **⋯** 메뉴에 있는 계정의 **Test**는 작동 여부와 걸린 시간만 알려 줍니다. 테스트는 최소 10초를 기다리며, 시간 제한이 그보다 길면 제한보다 5초 더 기다립니다. 답이 제한보다 오래 걸렸다면 결과에 그렇게 표시됩니다. 채팅에서는 그 답이 답 없음으로 처리됩니다.
+**Test provider**가 성공하면 확률, 답하는 데 걸린 시간, 계정의 시간 제한이 표시됩니다. **Test account**는 작동 여부와 걸린 시간만 알려 줍니다. 테스트는 최소 10초를 기다리며, 시간 제한이 그보다 길면 제한보다 5초 더 기다립니다. 답이 제한보다 오래 걸렸다면 결과에 그렇게 표시됩니다. 채팅에서는 그 답이 답 없음으로 처리됩니다.
 
 실패했다면 [문제 해결](#troubleshooting)을 참고하세요.
 
-Decision 편집기(Decision 모델의 **Edit model**)에는 다음 필드가 있습니다.
+Decision 모델에는 다음 필드가 있습니다. 패널에서 모델을 클릭해 **Edit model**을 열거나, **Defaults** 상자의 **Decision** 행에서 톱니바퀴를 클릭해 현재 Decision 모델의 **Decision settings**를 여세요.
 
 | 필드 | 하는 일 |
 | --- | --- |
@@ -117,6 +117,7 @@ TypeSafe는 `https://api.typesafe.ai`로 요청을 보냅니다. **Base URL**(�
 - [로어북 Decision 필드](../lorebooks/entries.md#decision-activation)는 로어북 스캔 중 Require나 Trigger를 확인합니다. 답이 없으면 Require는 새 항목을 통과시키지 못하고 Trigger는 경로를 추가하지 않습니다. Sticky 유지와 일반 Trigger 경로는 계속 적용됩니다.
 - [Smart 응답 순서](../chats/group-chats.md#response-order-individual-only)는 켜져 있으면 그룹 채팅에서 다음에 누가 말할지 점수를 매깁니다. 답이 없으면 Smart 순서가 평소의 AI 호출을 합니다.
 - [활성 캐릭터 자동화](../chats/group-chats.md#automate-active-characters-merged-only)는 **Decision model**(결정 모델)로 설정되어 있으면 Merged Roleplay 그룹에서 답글마다 그 전에 장면에 누가 있는지 묻습니다. 답이 없는 경우, 어떤 캐릭터도 답을 받지 못하면 Character Tracker의 마지막 장면을 쓰거나 목록을 그대로 둡니다.
+- [Illustrator Decision 모델 검사](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)는 채팅의 Illustrator 설정에서 켜져 있으면 Roleplay 답글마다 새로운 장소나 날씨를 확인합니다. 답이 없으면 이전처럼 Illustrator나 World State가 요청할 때만 배경이 바뀝니다.
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model)은 Roleplay의 장면 경계와 기억 선택에 자체 Decision 모델을 쓸 수 있습니다. 해당 채팅의 Advanced Memory 설정에서 **Use Decision model**을 켜세요. 답이 없으면 실패한 판정은 일반 회상이나 장면 검사로 대체됩니다. 요약은 계속 보조 모델이 작성합니다.
 
 활성화 질문은 에이전트의 실행 여부를 정합니다. 프롬프트 안의 판정문은 실행 중인 에이전트에 무엇을 전달할지 정합니다. 예/아니요 조건에는 `{{#if decision:"..."}}`을, 여러 답 중 선택에는 `{{#if decision_choice:"..." == "..."}}`을 사용하세요.
@@ -214,7 +215,7 @@ Open-Jev 모델에는 Linux **x86-64**, 컴퓨트 기능 7.5 이상인 NVIDIA GP
 
 카탈로그의 추정치입니다. 9B 모델은 24 GB GPU에서 여유가 거의 없습니다. 내 카드에 대한 설치 프로그램의 평가 결과를 확인하세요.
 
-1. **Connections** 패널에서 **Add**를 클릭하고 **Decisions** 아래의 **Built-in model (decisions)**를 클릭하세요. **Built-in decision model**이라는 제목의 창이 열립니다. **Built-in model** 카드의 페이지에서도 열 수 있습니다.
+1. **Connections** 패널에서 **Add**를 클릭하고 **Decision** 탭(이 컴퓨터에서 실행할 수 있을 때 표시됩니다)의 **Built-in model (decisions)**를 클릭하세요. **Built-in decision model**이라는 제목의 창이 열립니다. **Built-in model** 카드의 페이지에서도 열 수 있습니다.
 2. 경고를 읽은 다음 **Use the built-in decision model**(결정 사이드카 활성화)을 켜세요. **Turn on the built-in decision model?**(결정 사이드카를 활성화하시겠습니까?)이라는 제목의 대화 상자에 내 컴퓨터에 대한 평가 결과가 표시됩니다. **Enable**(활성화)을 클릭하세요. 평가 결과가 경고라면 **Enable anyway**(그래도 활성화)를 클릭하세요.
 3. **Available decision models**(사용 가능한 결정 모델) 아래에서 **Open-Jev 2B**나 **Open-Jev 9B**를 고르세요. **Download and install**(다운로드 및 설치)을 클릭하고 크기, 하드웨어 평가 결과, 라이선스를 확인하세요. 그 전에는 아무것도 다운로드되지 않습니다.
 4. **Behind the scenes** 아래의 **Decision** 행을 클릭하고 **Built-in model (decisions)**를 고르세요.

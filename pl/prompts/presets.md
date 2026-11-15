@@ -21,12 +21,10 @@ Z **Chat Settings** (ustawienia czatu):
 
 Jeśli preset ma zmienne, otwiera się okno **Configure Preset Variables** (konfiguracja zmiennych presetu). Zobacz [Zmienne presetu](preset-variables.md). Przełączenie na inny preset kasuje wcześniejsze wybory zmiennych.
 
-<a id="create-a-preset"></a>
-
 ## Tworzenie presetu
 
-1. Otwórz panel **Presets** z paska bocznego.
-2. Kliknij **New** (nowy, ikona plusa). Otwiera się okno **Create Preset** (tworzenie presetu).
+1. Otwórz **Biblioteka → Presety**. Biblioteka znajduje się po prawej.
+2. Kliknij **Nowy preset**. Otwiera się okno **Utwórz preset**.
 3. Wpisz nazwę w polu **Name** (nazwa). To pole jest wymagane. Jeśli chcesz, dodaj opis w polu **Description** (opis).
 4. Kliknij **Create** (utwórz). Preset otwiera się w **Preset Editor**.
 5. Zbuduj prompt w zakładce **Sections** (sekcje).
@@ -36,9 +34,22 @@ Edytor nie zapisuje sam z siebie. Klikaj **Save** po każdej zmianie. Jeśli wyc
 
 Aby wyeksportować preset, kliknij ikonę strzałki w górę na górnym pasku (podpowiedź **Export preset**). Jeśli masz niezapisane zmiany, Marinara najpierw prosi o zapisanie. Aby usunąć preset, kliknij ikonę kosza.
 
-## Panel Presets
+## Strona Presety
 
-Panel ma trzy zakładki: **Presets** (presety), **Regexes** (skrypty regex) i **Functions** (funkcje). Każda ma u góry ten sam rząd przycisków, pole wyszukiwania oraz **New Folder**. W zakładce **Presets** kliknij **Create preset** (utwórz preset), aby utworzyć preset, **Import preset** (importuj preset), aby wczytać plik `.json`, lub **Select presets** (wybierz presety), aby wyeksportować lub usunąć kilka naraz. Zakładka **Regexes** zawiera skrypty regex. Zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts). Zakładka **Functions** zawiera własne narzędzia. Zobacz [Własne narzędzia](../extending/custom-tools.md).
+**Biblioteka → Presety** wyświetla presety w tabeli z kolumnami **Opis**, **Sekcje**, **Autor**, **Domyślny** i **Zaktualizowano**. U góry są przyciski **Importuj** (wczytanie pliku `.json`) i **Nowy preset**. **Wszystkie** / **Domyślne** zawęża listę, **Tagi** obok wyszukiwarki pokazuje tylko presety z wybranymi tagami (importowane presety mają tag **Zaimportowane** i tag źródła, na przykład **ST**), **Lista** / **Galeria** przełącza widok, a menu sortowania oferuje **Ostatnio edytowane**, **Od A do Z**, **Od Z do A** i **Moja kolejność**. Kliknij preset, żeby go otworzyć.
+
+Aby uporządkować presety:
+
+- **⋯** na końcu wiersza (albo kliknięcie wiersza prawym przyciskiem myszy) udostępnia **Duplikuj**, **Przenieś do folderu**, **Eksportuj**, **Zaznacz** i **Usuń**. **Duplikuj** tworzy edytowalną kopię i otwiera ją – w ten sposób dostosujesz wbudowany preset. Presetu domyślnego nie można usunąć.
+- Przeciągnij wiersz nad inny lub pod niego, żeby ustawić własną kolejność. Menu sortowania przełącza się na **Moja kolejność**.
+- **Nowy folder** (ikona folderu obok tytułu) grupuje presety. Przeciągnij preset na folder albo użyj **Przenieś do folderu**.
+- **Zaznacz** (ikona zaznaczenia obok tytułu) pozwala wybrać kilka presetów, a potem użyć **Przenieś do folderu**, **Eksportuj** (jeden plik `marinara-presets.zip`) albo **Usuń** na pasku u dołu.
+
+Skrypty regex mają własną stronę, [Biblioteka → Skrypty regex](../extending/regex-scripts.md), podobnie jak własne narzędzia: [Biblioteka → Własne narzędzia](../extending/custom-tools.md).
+
+## W układzie klasycznym: panel Presets
+
+Zakładka **Presety** zawiera **Prompty** i **Funkcje**. Użyj **Utwórz preset**, żeby utworzyć preset, **Importuj preset**, żeby wczytać plik `.json`, albo **Zaznacz presety**, żeby wyeksportować lub usunąć kilka naraz. W zakładce **Regexes** możesz porządkować skrypty w folderach albo włączać i wyłączać kilka naraz. Zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts).
 
 - Pole **Search presets** (wyszukiwanie presetów) filtruje listę.
 - Menu sortowania oferuje opcje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest** i **Oldest**. Przy **Manual order** przeciągnij wiersz albo naciśnij <kbd>Alt</kbd>+<kbd>Up</kbd> lub <kbd>Alt</kbd>+<kbd>Down</kbd> na zaznaczonym wierszu. Na ekranie dotykowym naciśnij i przytrzymaj wiersz, żeby go podnieść.
@@ -62,6 +73,7 @@ Każdy wiersz pokazuje nazwę, format opakowania, liczbę sekcji i autora. Plaki
 - **Description** to krótkie podsumowanie.
 - **Wrap Format** (format opakowania) decyduje o tym, jak sekcje są formatowane (zobacz [Formaty opakowania](#wrap-formats)).
 - **Author** (autor) to opcjonalna nazwa twórcy, przydatna przy udostępnianiu presetu.
+- **Tagi** porządkują presety dla filtra **Tagi** na stronie Presety. Wpisz tag i naciśnij Enter albo kliknij **×** przy tagu, żeby go usunąć.
 
 Dwa kafelki tylko do odczytu pokazują liczniki **Sections** i **Groups**.
 
@@ -70,6 +82,7 @@ Dwa kafelki tylko do odczytu pokazują liczniki **Sections** i **Groups**.
 - **Conversation Mode** to pole tekstowe na prompt trybu Conversation w tym presecie. Zostaw je puste, żeby używać wbudowanego promptu.
 - **Roleplay Mode** nie da się tu edytować. Tryb Roleplay korzysta z promptu złożonego z twoich sekcji w **Sections**.
 - **Game Mode** to pole tekstowe na prompt trybu Game w tym presecie. Zostaw je puste, żeby używać wbudowanego promptu.
+- **Ustawienia historii gry** określa styl historii, przemoc i granice treści w trybie Game Mode. Włącz **Przenieś ustawienia historii do gier korzystających z tego presetu**: wybranie presetu dla gry ustawi wtedy jej styl i przemoc oraz doda te granice do własnych granic gry. Zobacz [Treść i styl historii](../game/getting-started.md#content-and-story-style).
 
 Wbudowany **Marinara's Universal Preset** dostarcza tekst promptu, ale żadnych parametrów generowania. Jego starsze zapisane ustawienia próbkowania, rozumowania, formatowania i tokenów są ignorowane, a zamiast nich obowiązują ustawienia twojego konta, nadpisania czatu i wartości domyślne aplikacji. Aby go dostosować, utwórz edytowalną kopię.
 
@@ -137,8 +150,6 @@ Każda sekcja ma w swoim edytorze ustawienie **Position** (pozycja).
 - **Ordered (in sequence)** (po kolei) umieszcza sekcję tam, gdzie stoi na liście. To zwykły wybór.
 - **Depth (from end of chat)** (głębokość od końca czatu) umieszcza ją określoną liczbę wiadomości przed końcem czatu, według liczby **Depth**. Głębokość 0 oznacza miejsce za ostatnią wiadomością. Używaj tego do przypomnień, które model ma widzieć blisko najnowszych wiadomości.
 
-<a id="wrap-formats"></a>
-
 ## Formaty opakowania
 
 Pole **Wrap Format** w zakładce **Overview** ustala, jak opakowana jest każda sekcja.
@@ -152,8 +163,6 @@ Pole **Wrap Format** w zakładce **Overview** ustala, jak opakowana jest każda 
 XML pasuje do większości modeli. Pozostałe formaty wypróbuj tylko wtedy, gdy model lepiej odpowiada bez tagów.
 
 Aby wysłać jeden **Prompt Block** bez jego tagu lub nagłówka, rozwiń go i włącz przełącznik **Send without wrapper** (wysyłanie bez opakowania). Tag grupy nadal może go otaczać, więc jeśli blok ma być zupełnie bez opakowania, usuń go z grupy. Znaczniki zawsze zachowują swoje opakowanie, a przełącznik jest ukryty, gdy format to **NONE**.
-
-<a id="conversation-and-game-chats"></a>
 
 ## Czaty Conversation i Game
 
@@ -170,9 +179,7 @@ Pod listą rozwijaną plakietka pokazuje, skąd pochodzi prompt.
 
 Pole tekstowe pokazuje prompt, który jest w użyciu. Edytuj je, żeby utworzyć lokalną kopię dla tego czatu. Jeśli twój tekst dokładnie odpowiada presetowi lub wartości domyślnej, Marinara traktuje go jako niezmieniony. Dopóki istnieje własna zmiana, widać ikonę resetowania (podpowiedź **Reset to default prompt**).
 
-Czaty Game mają dwie dodatkowe kontrolki. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett."
-
-<a id="decision-blocks-and-prompt-caching"></a>
+Czaty Game mają więcej kontrolek. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett." **Wytyczne kategorii wiekowej**, **Styl historii**, **Przemoc** i **Granice treści** to ustawienia treści gry; zobacz [Treść i styl historii](../game/getting-started.md#content-and-story-style).
 
 ## Bloki decyzyjne i pamięć podręczna promptu
 

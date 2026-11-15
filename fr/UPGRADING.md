@@ -19,8 +19,8 @@ Passe Marinara Engine à une version plus récente, vérifie les mises à jour d
 Fais une sauvegarde avant tout grand saut de version, et toujours avant un éventuel retour à une version plus ancienne.
 
 1. Ouvre **Settings** (Paramètres).
-2. Va dans l'onglet **Advanced** (avancé).
-3. Repère la section **Backup & Export** (sauvegarde et export).
+2. Va dans l'onglet **Data** (données).
+3. Repère la section **Backup & Restore** (sauvegarde et restauration).
 4. Clique sur **Download Backup** (télécharger la sauvegarde).
 5. Enregistre le fichier `.zip` dans un endroit sûr.
 
@@ -39,7 +39,7 @@ Le lanceur met Marinara à jour à chaque démarrage.
 
 Le lanceur récupère le code le plus récent, réinstalle ce qui a changé, reconstruit et démarre la nouvelle version. Si tu as modifié le code toi-même, il met tes modifications de côté et les remet en place après la mise à jour. S'il n'y arrive pas, il garde ta version actuelle et affiche une note. Il copie tes données avant la mise à jour, et il saute une mise à jour qui mènerait à une version plus ancienne que tes données (voir [Revenir à une ancienne version](#downgrading-to-an-older-version)).
 
-Pour sauter la mise à jour une seule fois, lance `start.bat --skip-update`. Pour garder ta version installée d'un démarrage à l'autre, mets `AUTO_UPDATE_ENABLED=false` dans le fichier `.env` du projet. Cela désactive seulement les mises à jour automatiques. Les commandes manuelles et **Settings → Advanced → Check for Updates** (Paramètres → Avancé → Vérifier les mises à jour) fonctionnent toujours.
+Pour sauter la mise à jour une seule fois, lance `start.bat --skip-update`. Pour garder ta version installée d'un démarrage à l'autre, mets `AUTO_UPDATE_ENABLED=false` dans le fichier `.env` du projet. Cela désactive seulement les mises à jour automatiques. Les commandes manuelles et **Settings → Advanced → Updates → Check for Updates** (Paramètres → Avancé → Mises à jour → Vérifier les mises à jour) fonctionnent toujours.
 
 Si le lanceur indique que Node.js est trop ancien, installe Node.js 24 LTS (Long Term Support, la version stable recommandée), puis relance Marinara. Tu peux aussi télécharger le tout dernier installateur depuis la page GitHub Releases et l'exécuter.
 
@@ -144,6 +144,7 @@ Le menu déroulant **Release Channel** (canal de publication) détermine les bui
 
 - **Latest Stable** : les versions taguées `vX.Y.Z`. C'est le choix normal.
 - **Staging/UAT** : les builds de test pré-publication, qui peuvent être inachevées. Le choisir affiche l'avertissement "Staging builds are pre-release tester builds. Back up your app data before applying them."
+- **UI overhaul (playtest) :** la branche `ui/kolacheee` avec la nouvelle disposition, destinée aux testeurs. Elle suit staging. Sauvegarde d'abord les données de ton application : une fois les données mises à niveau, **Latest Stable** risque de ne plus pouvoir les lire jusqu'à la prochaine version. Les installations Git (Windows, macOS, Linux et Termux) peuvent passer à ce canal ici. Docker n'a pas d'image pour ce canal ; dans un conteneur, il n'affiche donc qu'une indication.
 
 Quand tu choisis un autre canal dans un navigateur situé sur l'ordinateur même du serveur, le bouton de mise à jour affiche **Switch to** (passer à) suivi du nom du canal. Il fonctionne même quand les mises à jour ordinaires depuis l'application sont désactivées, et affiche **Switching…** pendant l'opération. Les appareils distants ne peuvent pas le faire, sauf s'ils remplissent les conditions décrites plus bas pour **Apply Update** (appliquer la mise à jour).
 
@@ -179,7 +180,7 @@ Appliquer une mise à jour depuis un autre appareil est désactivé par défaut.
 
 - `UPDATES_ALLOW_REMOTE_APPLY=true` dans le `.env` du serveur.
 - `ADMIN_SECRET` défini dans le `.env` du serveur. C'est un second mot de passe pour les actions risquées.
-- Le même secret enregistré sur ton appareil dans **Settings → Advanced → Admin Access** (Paramètres → Avancé → Accès administrateur).
+- Le même secret enregistré sur ton appareil dans **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité).
 
 Clique sur **Apply Update**. Le bouton affiche **Updating…** pendant que le serveur récupère le code, réinstalle, reconstruit et s'arrête. Tu vois ensuite "Update applied successfully. Please relaunch the app to use the new version." Relance Marinara pour terminer.
 
@@ -200,7 +201,7 @@ Utilise-le quand l'application semble ancienne ou reste blanche alors que le ser
 Une mise à jour remplace le code de l'application, pas ton dossier de données ni le volume `marinara-data`. Tes chats, personnages, personas, lorebooks, presets, connexions et réglages restent en place. Pour savoir où se trouvent les données, lis [Sauvegarder et restaurer Marinara](data/backup-and-restore.md).
 
 - **Packages optionnels.** Quand tu mets à jour depuis une version qui embarquait les agents, cartes, appels ou jeux Conversation d'origine, le premier démarrage télécharge les packages optionnels correspondants. Tes sélections, tes réglages et ton historique restent. Garde le serveur connecté pour ce premier démarrage. Si la source de téléchargement est injoignable, Marinara réessaie au démarrage suivant et ne supprime rien.
-- **Langue des guides.** Si tu utilises une langue de documentation téléchargée, choisie dans **Settings → General → Documentation Language** (Paramètres → Général → Langue de la documentation), le premier démarrage après une mise à jour l'actualise. Si elle est injoignable, Marinara garde ton pack installé, affiche en anglais les guides manquants et réessaie au démarrage suivant.
+- **Langue des guides.** Si tu utilises une langue de documentation téléchargée, choisie dans **Settings → General → Language → Documentation Language** (Paramètres → Général → Langue → Langue de la documentation), le premier démarrage après une mise à jour l'actualise. Si elle est injoignable, Marinara garde ton pack installé, affiche en anglais les guides manquants et réessaie au démarrage suivant.
 - **Langue de l'interface.** Les packs de langue de l'interface sont un téléchargement séparé et manuel. Lors de la première mise à jour depuis une version qui incluait les traductions, l'interface revient à l'anglais. Choisis de nouveau ta langue dans **Settings → General → Language** (Paramètres → Général → Langue). Les mises à jour suivantes conservent les packs téléchargés. Utilise **Refresh language pack** (actualiser le pack de langue) pour obtenir les nouvelles traductions. Les traductions manquantes s'affichent en anglais.
 
 <a id="updating-from-250"></a>
@@ -224,7 +225,7 @@ Les étapes ci-dessus restent les mêmes. Quelques changements touchent un serve
 
 ## Revenir à une ancienne version
 
-Revenir en arrière n'est pas toujours possible. Les versions récentes enregistrent les données dans un format de stockage plus récent, et une build refuse les données dans un format plus récent que celui qu'elle connaît. Les builds actuelles utilisent le format de stockage 11. Les formats 8, 9 et 10 ont ajouté les avatars MMD, les liens entre connexions et comptes, et les avatars GLB/FBX. Le format 11 enregistre les personas dans le même format de fiche que les personnages. Une build qui ne connaît qu'un format plus ancien ne peut pas ouvrir les données enregistrées dans ces formats.
+Revenir en arrière n'est pas toujours possible. Les versions récentes enregistrent les données dans un format de stockage plus récent, et une build refuse les données dans un format plus récent que celui qu'elle connaît. Les builds actuelles utilisent le format de stockage 10. Les formats 8, 9 et 10 ont ajouté les avatars MMD, les liens entre connexions et comptes, et les avatars GLB/FBX. Une build qui ne connaît qu'un format plus ancien ne peut pas ouvrir les données enregistrées dans ces formats.
 
 Le lanceur saute une mise à jour automatique qui mènerait à une version incompatible, et le programme de mise à jour intégré refuse d'en appliquer une. Pour revenir à une build plus ancienne, arrête Marinara et restaure une sauvegarde complète faite avant ta mise à jour. La commande de conversion des fichiers de chat ci-dessous ne peut pas convertir les réglages des avatars MMD. Ne change pas le numéro de format à la main.
 

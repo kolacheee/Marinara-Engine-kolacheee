@@ -4,7 +4,7 @@
 
 ## 添加账号
 
-开始之前，先从想用的服务那里拿到一个 API 密钥。**Add account**(添加账号) 窗口为每个服务都提供了 **Where do I find my key?**(我的密钥在哪里找？) 链接。常见服务打开的是下面这些页面。
+开始之前，先从想用的服务那里拿到一个 API 密钥。选好服务后，填密钥的那一步会提供 **Where do I find my key?**(我的密钥在哪里找？) 链接。常见服务打开的是下面这些页面。
 
 - OpenRouter(有免费模型)：`openrouter.ai/keys`
 - NanoGPT：`nano-gpt.com/api`
@@ -14,16 +14,18 @@
 
 大多数服务要求先注册，有些还要求先充值，密钥才能用。其他服务见[支持的 AI 服务商](providers-reference.md)。想在自己的电脑上用模型、不要密钥，见[内置模型设置](local-model.md)。
 
-1. 点击顶栏里的 **Connections**(连接)。面板会在右侧打开。如果你还没有账号，它会问 **Where do your models come from?**，并列出几个服务。点击一个服务（不要点 **Built-in model**(内置模型)）。**Add account** 窗口会直接打开到填密钥的那一步。跳到第 4 步。
-2. 点击 **Add**(添加)。**Add account** 窗口随即打开。
-3. 点击你想用的服务。在标着 **Search providers**(搜索服务商) 的输入框里输入文字可以查找。列表分成 **Chat**(聊天)、**Images & video**(图像与视频)、**Voice**(声音) 和 **Decisions**(判定) 几个部分。普通的聊天模型在 **Chat** 下面找。
-4. 点击 **API key**(API 密钥)，粘贴密钥。点击眼睛按钮，确认密钥粘贴完整。
+1. 打开 **Library → Connections**(资料库 → 连接)。（点击右上角的 **Library**，再点击 **Connections**。也可以按 <kbd>Ctrl</kbd>+<kbd>K</kbd>，输入 `connections`。）
+2. 点击 **Add connection**(添加连接)（手机上是 **New**(新建)）。服务列表会打开，分为 **Text**(文本)、**Image**(图像)、**Video**(视频)、**Voice**(声音) 和 **Decision**(判定)。普通的聊天模型在 **Text** 里找。
+3. 点击你想用的服务。未列出的服务可以在 **Search services**(搜索服务) 里输入文字查找。
+4. 把密钥粘贴到 **API key**(API 密钥) 中。点击眼睛按钮，确认密钥粘贴完整。
 5. 点击 **Connect**(连接)。Marinara 会测试这个密钥。测试通过时，会显示 **Connected** 和找到的模型数量。
-6. 接下来怎样，取决于你是否已经有 Main 模型。Main 是写聊天回复的那项工作。
+6. 在 **Found in … — use it for:** 下，每行是一项工作，例如 **Main** 或 **Images**。勾选要使用 Marinara 找到的模型的工作。如果服务没有模型列表，就在那一行输入模型 ID。点击 **Done**，或点击 **Skip**(跳过)，保留账号但不分配工作。
+7. 接下来怎样，取决于你是否已经有 Main 模型。Main 是写聊天回复的那项工作。
    - **还没有 Main 模型，或者你是从新聊天里打开 Add 的：** 窗口会列出这个服务的模型。**Recommended**(推荐) 模型排在最上面。点击一个模型即可添加，也可以在 **Search or enter model ID…**(搜索或输入模型 ID…) 里输入名称。不知道选哪个，就选一个 **Recommended** 的，之后随时可以改。让 **Make … my Main model**(把……设为我的主模型) 保持勾选，只有在你还没有 Main 模型时才会显示这一项。如果你是从新聊天里打开 Add、并且已经有 Main 模型，就会改为显示 **Set … as Main**(把……设为主模型) 按钮。然后点击 **Done**(完成)；如果是从新聊天进来的，就点 **Start chatting**(开始聊天)。
+   - **从工作选择器打开 Add：** 窗口会关闭，Marinara 会返回那项工作，新模型已出现在它的列表里。
    - **已经有 Main 模型：** 窗口会关闭，并弹出一条消息，说明账号已添加以及它的模型数量。想添加更多模型，点击账号上的 **⋯**，选择 **Add model**(添加模型)。
 
-面板里会出现你的账号。第 5 步显示 **Connected**，就已经说明密钥可用。如果新模型就是你的 Main 模型，开一个聊天发条消息：收到回复就说明一切正常。如果你原本就有 Main 模型，新聊天仍然用原来那个。要用新账号，先给它添加一个模型（**⋯** → **Add model**），再把这个模型选给某个聊天或某项工作（见[为每项工作选择模型](#choosing-the-model-for-each-job)）。
+Connections 页面里会出现你的账号。第 5 步显示 **Connected**，就已经说明密钥可用。如果新模型就是你的 Main 模型，开一个聊天发条消息：收到回复就说明一切正常。如果你原本就有 Main 模型，新聊天仍然用原来那个。要用新账号，先给它添加一个模型（**⋯** → **Add model**），再把这个模型选给某个聊天或某项工作（见[为每项工作选择模型](#choosing-the-model-for-each-job)）。
 
 如果没有成功：
 
@@ -33,9 +35,9 @@
 
 ### 可选的账号字段
 
-填密钥的那一步还会显示下面这些字段。用不上就留空。
+在填密钥的那一步点击 **More options**(更多选项)，即可看到下面这些字段。用不上就留空。
 
-- **Name (optional)**(名称，可选)：面板里显示的名称。留空就用服务的名字。同一个服务的第二个账号，名字后面会带上密钥的最后 4 个字符，比如 `OpenAI · …a1b2`。
+- **Name (optional)**(名称，可选)：Connections 页面里显示的名称。留空就用服务的名字。同一个服务的第二个账号，名字后面会带上密钥的最后 4 个字符，比如 `OpenAI · …a1b2`。
 - **Address**(地址)：Marinara 发送请求的地址。留空时，Marinara 用服务自己的地址。只有使用代理、网关或你自己运行的服务器时才需要填写。在你电脑上登录的服务不显示这一项。
 - **Requests per minute**(每分钟请求数)：让 Marinara 放慢在这个账号上的请求速度。留空表示不限。允许的值是 1 到 600。
 - **Parallel jobs**(并行任务数)：同时运行多少个请求。留空表示不限。允许的值是 1 到 16。在 **Edit account**(编辑账号) 里，同一项设置叫 **Parallel requests**(并行请求数)。
@@ -46,23 +48,22 @@
 
 如果还没有模型就去开始聊天，Marinara 会先打开 **Add account** 窗口。点击 **Connect** 之后，点一个模型，再点击 **Start chatting**。
 
-## Connections 面板
+## Connections 页面
 
-账号在 **Connections** 面板里管理。面板从上到下依次是：
+账号在 **Connections** 页面（**Library → Connections**）里管理。从上到下依次是：
 
-- 一个搜索框，边输入边筛选列表。它的标签是 **Search models and accounts**(搜索模型和账号)。
-- **Add**：打开 **Add account**；**More actions**(更多操作，三个点)：里面有 **Import account**(导入账号)、**Export all accounts**(导出全部账号)、折叠和分组。面板较宽时，排序下拉菜单在搜索框旁边；面板较窄时，排序放在 **More actions** 里。
-- **Jobs**(分工) 框。它说明每项工作由哪个模型负责。
-- **Built-in model** 卡片。见[内置模型设置](local-model.md)。
-- 各个账号，每个账号下面是它保存的模型。见[整理连接](organizing-connections.md)。
+- **Import**(导入)（加载账号文件）和 **Add connection**。
+- **All kinds**(所有类型)，可把列表缩小到 **Chat**(聊天)、**Images**(图像)、**Video** 或 **Voice** 账号；搜索框（**Search accounts and models**(搜索账号和模型)）和排序菜单。
+- **Defaults**(默认值) 框，说明每项工作由哪个模型负责。见[为每项工作选择模型](#choosing-the-model-for-each-job)。
+- 账号表格，包含 **Models**(模型)、**Status**(状态) 和 **Balance**(余额) 列。**On this device**(在此设备上) 下列出[内置模型](local-model.md)。点击账号，会在下面显示它保存的模型。
+
+每个账号都有一个 **⋯** 按钮，里面有 **Edit account**、**Replace key**(更换密钥) 和 **Add model**。**Edit account** 里还有 **Test account**(测试账号)、**Use this account**(使用此账号)（关闭账号但不删除）以及[可选字段](#optional-account-fields)。要用文件夹给账号分组，见[整理连接](organizing-connections.md)。
 
 **account**(账号) 是为某个服务保存的一个密钥、一次登录或一个地址。同一个服务用了两个密钥，就是两个账号。**model**(模型) 是从某个账号里保存下来的一个 AI 模型。每个保存的模型都有自己的设置。
 
-<a id="choosing-the-model-for-each-job"></a>
-
 ## 为每项工作选择模型
 
-工作就是模型替你做的某件事。**Jobs** 框把它们分成四组列出：
+工作就是模型替你做的某件事。**Defaults** 框列出了这些工作：
 
 | 分组 | 工作 |
 | --- | --- |
@@ -71,9 +72,9 @@
 | **Pictures & sound**(画面与声音) | **Images**(图像)、**Video**(视频)、**Voice (Text to Speech)**(语音合成)，以及可用时的 **Dictation (Speech to Text)**(语音识别)。 |
 | **Behind the scenes**(幕后) | **Decision**(判定)、**Embeddings**(嵌入) 和 **Image reading**(读图)。 |
 
-每一行显示负责这项工作的模型；没有模型时，则显示这项工作会怎么处理，比如 **Follows Main**(跟随主模型) 或 **Off**(关闭)。必须有模型才能做的工作会显示 **Choose a model**(选择模型)。点击 **Jobs** 可以折叠这个框。
+每项工作都会显示负责它的模型；没有模型时，则显示这项工作会怎么处理，比如 **Follows Main**(跟随主模型) 或 **Off**(关闭)。需要模型的工作会显示 **Not set**(未设置)，框里还会统计有多少项需要处理。点击 **Defaults** 可以折叠这个框。
 
-要更改某项工作的模型，点击它那一行。除了三行以外，都会打开这项工作的 **Model for**(用于……的模型) 窗口。**Decision** 和 **Embeddings** 会打开它们自己的控件（见 [Decision 模型](decision-models.md)和[支持的 AI 服务商](providers-reference.md#embeddings)）。**Dictation (Speech to Text)** 会打开语音设置。
+要更改某项工作的模型，点击它。除了三行以外，都会打开这项工作的 **Model for**(用于……的模型) 窗口。**Decision** 和 **Embeddings** 会打开它们自己的控件（见 [Decision 模型](decision-models.md)和[支持的 AI 服务商](providers-reference.md#embeddings)）。**Dictation (Speech to Text)** 会打开语音设置。
 
 在 **Model for** 窗口里：
 
@@ -84,13 +85,11 @@
 
 ### 功能需要模型时
 
-缺了某类模型就没法工作的功能，会显示 **Needs an image model**(需要图像模型) 标签（也可能是视频、音频、判定或聊天模型）。这个标签会出现在 **Agents** 面板里的智能体卡片上、**Chat Settings**(聊天设置) 里、智能体编辑器里，以及图像和视频窗口里。点击旁边的 **Set up**(设置)，然后选一个模型，或者点击 **Add account**。这项工作有了模型，标签就会消失。
+缺了某类模型就没法工作的功能，会显示 **Needs an image model**(需要图像模型) 标签（也可能是视频、音频、判定或聊天模型）。这个标签会出现在 **Agents** 页面里的智能体卡片上、**Chat Settings**(聊天设置) 里、智能体编辑器里，以及图像和视频窗口里。点击旁边的 **Set up**(设置)，然后选一个模型，或者点击 **Add account**。这项工作有了模型，标签就会消失。
 
 ## 测试账号
 
-**Connect** 已经测试过密钥。之后想再测一次，打开面板里这个账号的 **⋯** 菜单，点击 **Test**(测试)。账号编辑器（**Edit account**）里有 **Test account**(测试账号)，它在保存之前，按当前填写的内容检查密钥和地址。
-
-<a id="choosing-a-model-for-one-chat"></a>
+**Connect** 已经测试过密钥。之后想再测一次，点击账号上的 **⋯**，选择 **Edit account**，再点击 **Test account**。它在保存之前，按当前填写的内容检查密钥和地址。
 
 ## 为单个聊天选择模型
 
@@ -108,7 +107,7 @@
 测试或消息发送失败时，先检查这几项：
 
 - 密钥填错了或者已经过期。点击账号上的 **⋯**，选择 **Replace key**(更换密钥)，重新粘贴密钥。没有密钥的账号会显示 **Needs key**。
-- 账号处于关闭状态。它会显示 **Off**。在它的 **⋯** 菜单里点击 **Turn on**(开启)。
+- 账号处于关闭状态。它会显示 **Off**。点击 **⋯**，选择 **Edit account**，再开启 **Use this account**。
 - 用了别的服务的密钥。每个服务都要用自己的密钥。
 - **Address** 被拦截。留空就会用服务自己的地址。
 

@@ -2,7 +2,7 @@
 
 通話とは、ボイスチャットアプリのようなライブ画面で、1人以上のキャラクターに、マイクまたは文字入力で話しかけるものです。実行中は、通常のConversationのチャットの上に重なって表示されます。通話は、Conversationモードでだけ使えます。
 
-通話は、任意のパッケージです。**Agents → Agent Organizer**から**Calls**をインストールしてください。カタログが再起動を求めた場合は、Marinaraを停止して、いつもの方法でもう一度起動します([インストール](../INSTALLATION.md)を参照)。
+通話は、任意のパッケージです。**Library → Agents**(ライブラリー → エージェント)から**Calls**をインストールしてください。カタログが再起動を求めた場合は、Marinaraを停止して、いつもの方法でもう一度起動します([インストール](../INSTALLATION.md)を参照)。
 
 通話中は、動作するText to Speech(TTS、テキストを音声に変える機能)の音声を持つキャラクターが、声に出して話します。音声のないキャラクターは、通話チャットに文字で返信します。静止したアバターの代わりに、キャラクターのAI生成のループ動画クリップを表示することもできます。
 
@@ -27,7 +27,9 @@ Marinaraは、ブラウザーでマイクまたはカメラを録音します。
 5. **Audio input mode**を選びます(下記を参照)。
 6. **Start call**をクリックします。
 
-うまくいかなかった場合: 「Conversation call audio is not enabled in Chat Settings」と表示されたら、**Call Audio Pipeline**がオフです。これはグローバルな設定なので、1つのチャットでオンにすると、すべてのConversationの通話でオンになります。新しいチャットでは、先にセットアップウィザードを完了してから、そのチャットの**Chat Settings**を開いてください。Callsの設定は、Callsをインストールしたときだけ表示されます。
+うまくいかなかった場合: 「Conversation call audio is not enabled in Chat Settings」と表示されたら、**Call Audio Pipeline**がオフです。これはグローバルな設定なので、1つのチャットでオンにすると、すべてのConversationの通話でオンになります。
+
+新しいチャットでは、先にセットアップウィザードを完了してから、そのチャットの**Chat Settings**を開いてください。Callsの設定は、Callsをインストールしたときだけ表示されます。
 
 似たスイッチが2つありますが、役割は違います。
 
@@ -40,14 +42,13 @@ Marinaraは、ブラウザーでマイクまたはカメラを録音します。
 
 ### Text to Speechの設定
 
-Text to Speechは、どのキャラクターが、どの声で話せるかを決めます。全体の手順は[Text to Speech(TTS)のセットアップ](../media/tts-setup.md)を読んでください。要点は次のとおりです。**Connections**を開き、**Add account**をクリックして、**Text to speech**を選びます。すでに**On this device**の下に一覧表示されている場合は、そこで開きます。そのうえで、次の手順に従います。
+Text to Speechは、どのキャラクターが、どの声で話せるかを決めます。全体の手順は[Text to Speech(TTS)のセットアップ](../media/tts-setup.md)を読んでください。要点は次のとおりです。
 
-1. Text to Speechをオンにします。
-2. ソースを選びます: **OpenAI-compatible**、**ElevenLabs**、**PocketTTS**、**xAI Voice**。
-3. そのソースのAPIキーかローカルサーバーのアドレスを入力します。
-4. モデルと声を選びます。
-5. **Voice option**を**One voice for all**または**Selected per character or persona**に設定します。キャラクターごとに声を決めると、グループ通話が聞き分けやすくなります。
-6. 保存してから、プレビューのボタンを使って、音声が聞こえることを確認します。
+1. **Connections**(接続)を開き、**Defaults**(用途)ボックスの**Voice**(音声)の行をクリックします。
+2. 音声モデルまたは音声サービスを選びます。選ぶとText to Speechがオンになります。そのモデルのアカウントからキーとアドレスが使われます。
+3. **Voice**の行の歯車をクリックして、**Voice settings**(音声の設定)を開きます。
+4. **Who speaks**(話すキャラクター)で**Shared voice**(共通の声)を選ぶか、**Character and persona voices**(キャラクターとペルソナの声)でそれぞれに声を設定します。キャラクターごとに声を決めると、グループ通話が聞き分けやすくなります。
+5. **Preview**(プレビュー)をクリックして、音声が聞こえることを確認します。
 
 キャラクターにMarinaraが特定できる声がない場合、そのキャラクターは、通話中は文字だけになります。
 
@@ -146,7 +147,7 @@ Local Whisperは、Marinaraを動かしているコンピューター上で、�
 
 Local Whisperが、自分の言語やアクセントで苦戦する場合は、代わりに別の音声認識サーバーに音声を送ります。OpenAIの音声認識の形式(`/audio/transcriptions`のアドレス)を受け付けるサーバーであれば、自分で動かしているものでも、OpenAIやGroqのようなサービスでも使えます。
 
-1. **Connections**を開き、**On this device**の下にある**Speech to text**を開きます。一覧にない場合は、**Add account**をクリックして、**Speech to text**を選びます。Callsがインストールされていないと、表示されません。
+1. **Connections**を開き、**Defaults**(用途)ボックスの**Dictation**(音声入力)の行の歯車をクリックします。そこに**Speech to text**(音声認識)サーバーの設定があります。Callsがインストールされていないと、表示されません。
 2. **Server URL**を入力します。例: `http://localhost:8000/v1`。
 3. サーバーが必要とする場合は、**API key**を入力します。暗号化されて保存され、伏せて表示されます。
 4. サーバーが使う**Model**名を入力します。空にすると、`whisper-1`を送ります。
@@ -154,9 +155,11 @@ Local Whisperが、自分の言語やアクセントで苦戦する場合は、�
 6. **Test**をクリックします。Marinaraは、1秒間の無音のクリップを送ります。「The server answered.」または「The test failed.」と表示されます。
 7. **Use your own speech-to-text server**をオンにします。
 
-オンのあいだは、**Mic recording + Local Whisper**が、音声をこのサーバーに送ります。Local Whisperをダウンロードする必要はありません。音声がそのサーバーに届くので、信頼できるものを使ってください。同じコンピューター上のサーバーは動作します。ネットワーク上の別のコンピューターのサーバーは、`.env`で`STT_LOCAL_URLS_ENABLED=true`を設定しない限り、拒否されます([サーバー設定リファレンス](../CONFIGURATION.md)を参照)。
+オンのあいだは、**Mic recording + Local Whisper**が、音声をこのサーバーに送ります。Local Whisperをダウンロードする必要はありません。音声がそのサーバーに届くので、信頼できるものを使ってください。
 
-うまくいかなかった場合: **Test**の下のメッセージを読んでください。「Could not reach the speech-to-text server」は、アドレスが違うか、サーバーが停止しているという意味です。`STT_LOCAL_URLS_ENABLED`を挙げているメッセージは、サーバーが別のコンピューター上にあるという意味です。サーバーから返る数字のうち、401はたいていAPIキーの誤り、404はアドレスかモデル名の誤りです。通話がそれでもLocal Whisperを使う場合は、**Agents → Agent Organizer**からCallsをアップデートしてください。
+同じコンピューター上のサーバーは動作します。ネットワーク上の別のコンピューターのサーバーは、`.env`で`STT_LOCAL_URLS_ENABLED=true`を設定しない限り、拒否されます([サーバー設定リファレンス](../CONFIGURATION.md)を参照)。
+
+うまくいかなかった場合: **Test**の下のメッセージを読んでください。「Could not reach the speech-to-text server」は、アドレスが違うか、サーバーが停止しているという意味です。`STT_LOCAL_URLS_ENABLED`を挙げているメッセージは、サーバーが別のコンピューター上にあるという意味です。サーバーから返る数字のうち、401はたいていAPIキーの誤り、404はアドレスかモデル名の誤りです。通話がそれでもLocal Whisperを使う場合は、**Library → Agents**(ライブラリー → エージェント)からCallsをアップデートしてください。
 
 ## 設定とデフォルト
 

@@ -11,11 +11,10 @@ Storyboard 패키지는 계획용 프롬프트와 기본값, 채팅별 설정 �
 
 ## 에이전트 설치
 
-1. **Agents**(에이전트) 패널(Sparkles 아이콘)을 여세요.
-2. **Agent Organizer**를 선택하세요.
-3. **Storyboard**를 열고 **Install**(설치)을 선택하세요.
-4. Game 채팅이나 Roleplay 채팅을 연 다음 **Chat Settings → Agents**(채팅 설정 → 에이전트)를 여세요.
-5. **Enable Agents**(에이전트 활성화)를 켠 다음, Storyboard 카드에서 **Enable Storyboards**(스토리보드 활성화)를 켜세요.
+1. **Library → Agents**(라이브러리 → 에이전트)를 열고 **Available**(사용 가능)을 클릭하세요.
+2. **Storyboard**를 찾고 **Get**(받기)을 클릭하세요.
+3. Game 채팅이나 Roleplay 채팅을 연 다음 **Chat Settings → Agents**(채팅 설정 → 에이전트)를 여세요.
+4. **Enable Agents**(에이전트 활성화)를 켠 다음, Storyboard 카드에서 **Enable Storyboards**(스토리보드 활성화)를 켜세요.
 
 설치하면 에이전트를 쓸 수 있게 될 뿐, 모든 채팅에서 켜지지는 않습니다. Marinara를 다시 시작하지 않아도 됩니다.
 
@@ -186,7 +185,7 @@ Storyboard는 Illustrator와 별개이며, Illustrator를 직접 실행하는 �
 
 ## Storyboard 에이전트 설정
 
-**Agents** 패널을 열고 **Storyboard**를 선택한 다음 설정 화면을 여세요. 여기서 정한 값은 따로 재정의하지 않은 채팅의 기본값입니다.
+**Library → Agents**를 열고 **Storyboard**를 클릭한 다음 설정 화면을 여세요. 여기서 정한 값은 따로 재정의하지 않은 채팅의 기본값입니다.
 
 | 설정 | 기본값 | 용도 |
 | --- | --- | --- |

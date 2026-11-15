@@ -14,7 +14,7 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 ## 로어북 만들고 항목 추가하기
 
-1. 사이드바에서 **Lorebooks**(로어북) 패널을 여세요.
+1. **Library**(라이브러리) > **Lorebooks**(로어북)를 여세요. Library는 오른쪽에 있습니다.
 2. 더하기 아이콘인 **New**를 클릭하세요. **Create Lorebook**(로어북 만들기) 창이 열립니다.
 3. **Name**(이름)을 입력하세요. 반드시 입력해야 하는 필드입니다.
 4. 원하면 **Description**(설명)을 추가하세요.
@@ -67,9 +67,26 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 스위치 아래의 **Semantic search (embeddings)**(시맨틱 검색) 패널은 [로어북 시맨틱 검색](semantic-search.md)에서 다룹니다.
 
-## Lorebooks 패널
+## Lorebooks 페이지
 
-패널 위쪽에는 아이콘 버튼이 3개 있으며, 마우스를 올리면 이름이 표시됩니다.
+**Library → Lorebooks**(라이브러리 → 로어북)를 여세요. 위쪽에는 **Import**([로어북 가져오기와 내보내기](import-export.md) 참고)와 **New lorebook**(새 로어북)이 있습니다. 그 아래에는 다음이 있습니다.
+
+- **All kinds**(모든 종류)로 목록을 **Global**, **World**, **Character**, **NPC**, **Spellbook** 로어북으로 좁힐 수 있습니다.
+- **List**(목록)와 **Gallery**(갤러리)로 표와 그림 타일 보기 사이를 전환합니다.
+- 정렬 메뉴에는 **Recently edited**(최근 편집순), **A to Z**(오름차순), **Z to A**(내림차순), **My order**(내 순서)가 있습니다.
+
+로어북을 클릭하면 열립니다.
+
+### 로어북 정리하기
+
+- 행 끝의 **⋯**을 누르거나 행을 오른쪽 클릭하면 **Duplicate**(복제), **Move to folder**(폴더로 이동), **Export**(내보내기), **Select**, **Delete**가 나옵니다. 터치 화면에서는 행을 길게 누르세요. **Duplicate**는 모든 항목을 포함해 로어북을 복제하고 사본을 엽니다.
+- 행을 다른 행 위나 아래로 끌어 원하는 순서로 배치하세요. 정렬 메뉴가 **My order**로 바뀝니다.
+- **New folder**(새 폴더)(제목 옆의 폴더 아이콘)는 라이브러리 폴더를 추가합니다. 로어북을 폴더 위로 끌어다 놓거나 **Move to folder**를 사용하세요. 이 폴더는 로어북 안의 항목 폴더와는 별개입니다. 폴더를 클릭하면 접히며, 폴더의 **⋯**으로 이름을 바꾸거나 삭제할 수 있습니다. 폴더를 삭제해도 로어북은 유지됩니다.
+- **Select**(제목 옆의 체크 아이콘)를 누르면 행마다 체크 상자가 나타납니다. 로어북을 고른 다음 아래쪽 바에서 **Move to folder**, **On or off**(켜기 또는 끄기), **Export**(`marinara-lorebooks.zip` 파일 하나로 내보내기), **Delete**를 사용하세요.
+
+## 클래식 레이아웃의 Lorebooks 패널
+
+클래식 패널은 같은 폴더와 순서를 목록으로 보여 줍니다. 패널 위쪽에는 아이콘 버튼이 3개 있으며, 마우스를 올리면 이름이 표시됩니다.
 
 - **New**는 **Create Lorebook** 창을 엽니다.
 - **Import**(가져오기)는 **Import Lorebook**(로어북 가져오기) 창을 엽니다. [로어북 가져오기와 내보내기](import-export.md)를 참고하세요.
@@ -77,7 +94,8 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 버튼 아래에는 다음이 있습니다.
 
-- **Search lorebooks**(로어북 검색)는 이름, 설명, 연결된 캐릭터나 페르소나 이름, 태그로 걸러 냅니다.
+- **Search lorebooks**(로어북 검색)는 이름, 설명, 연결된 캐릭터나 페르소나 이름, 태그로 걸러 냅니다. 여기서도 `tag:name`을 사용할 수 있습니다.
+- 검색 상자 옆의 **Tags**(태그)는 고른 태그가 모두 있는 로어북만 보여 주거나, **Untagged**(태그 없음)인 로어북만 보여 줍니다. [태그](../characters/library-organization.md#tags)를 참고하세요.
 - **Sort order**(정렬 순서)에는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Token Budget**이 있습니다. **Manual order**에서는 로어북을 원하는 자리로 끌어다 놓거나 <kbd>Alt</kbd>+<kbd>Up</kbd>과 <kbd>Alt</kbd>+<kbd>Down</kbd>을 사용하세요.
 - **New Folder**(새 폴더)는 라이브러리 폴더를 만듭니다. 로어북을 폴더 위로 끌어다 놓으세요. 휴대폰에서는 로어북을 길게 누른 다음 끌어다 놓으세요. 이 폴더는 로어북 안의 항목 폴더와는 별개입니다.
 

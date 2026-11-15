@@ -1,110 +1,111 @@
-# 场景背景与 Gallery 面板
+# Illustrator 生成的背景
 
-AI 生成的场景背景，是 Marinara Engine 在 **Gallery**(图库) 里为你生成的背景图。本指南介绍如何生成背景、Gallery 里有什么，以及如何重画或检查一张图像。手动挑选的上传图库见[聊天背景](../appearance/chat-backgrounds.md)。每回合自动挑背景的智能体见 [Roleplay 背景](../roleplay/backgrounds.md)。
+**Illustrator** 智能体可以为故事绘制背景：按需生成一张，每到新地点生成一张，或在天气变化时生成背景的雨、雪、雾版本。本指南介绍这三种用法，以及 Illustrator 如何复用已有图片，省去重新绘制。
 
-## 场景背景在哪些模式下可用
+手动上传和挑选的图片见[背景库](../appearance/chat-backgrounds.md)。聊天如何选择显示哪张图片（Background 智能体、固定地点和图库图片），见[跟随故事变化的背景](../roleplay/backgrounds.md)。
 
-场景背景在 Roleplay(角色扮演) 和 Game(游戏) 模式下可用，Conversation(对话模式) 下没有这个功能。在 Conversation 模式里尝试生成时，应用会显示这条消息：
+## 开始之前
 
-```
-Scene background generation is available in Roleplay and Game modes.
-```
+- 从 **Library → Agents**(资料库 → 智能体) 安装 **Illustrator**。见 [Illustrator 智能体](illustrator-agent.md)。
+- 为它指定图像模型：在 Connections 页面的 **Defaults**(默认值) 框里设置 **Images**(图像) 这项工作，或在 Illustrator 的 **Open Setup**(打开设置) 页面上选择一个。见[图像生成服务商与设置](image-providers.md)。
 
-开始之前：需要一个图像模型。还没配好的话先去配一个，见[图像生成服务商与设置](image-providers.md)。
+生成的背景适用于 Roleplay(角色扮演) 和 Game 聊天，不适用于 Conversation(对话模式)。在 Conversation 中，应用会提示“Scene background generation is available in Roleplay and Game modes.”
 
-## 在 Gallery 里生成并应用背景
+## 立即生成背景
 
-**Gallery** 保存聊天的图像和视频，是 **Chat Settings**(聊天设置) 里的一个区域。在电脑上可以把它弹出为独立窗口，见[聊天设置概览](../chats/chat-settings.md#popping-a-section-out-into-its-own-window)。它的 **Background**(背景) 按钮用于生成当前场景的背景图。
+1. 点击聊天里的滑块按钮，打开 **Chat Settings**(聊天设置)，展开 **Gallery**(图库)。
+2. 点击 **Background**(背景)。生成期间会显示 **Generating...**(正在生成...)。
+3. 完成后，新图片会加入背景库并显示在聊天后方，同时显示“Background generated.”确认。
 
-在 Roleplay 里，只要安装了 **Illustrator** 智能体，**Background** 按钮就会显示。不需要把这个智能体添加到聊天里，也不需要启用智能体。和 **Illustrate**(生成插图) 一样，它只运行一次，不会因此开始自动运行。
+不需要为此把 Illustrator 添加到聊天里。它只运行一次，不会开始自动运行。
 
-生成背景的步骤：
+Marinara 根据场景构建提示词：在游戏里，这包括题材、设定、地点、天气和时间。图片使用 **Backgrounds**(背景) 画布尺寸，默认为 1280 × 720 像素，可以在 **Settings → Media → Image Generation**(设置 → 媒体 → 图像生成) 下修改。
 
-1. 打开 **Chat Settings** 里的 **Gallery** 区域。
-2. 点击 **Background** 按钮。
-3. 出图期间按钮文字会变成 **Generating...**。
-4. 状态消息显示：“AI background generation is running. The new background will be applied when it finishes.”
-5. 生成完成后，新图会立刻应用到当前场景，并显示“Background generated.”确认。
+如果没有成功：“Choose an image generation connection for the Illustrator agent, or mark one as the default image connection.”表示没有找到图像模型。按**开始之前**的说明设置一个。如果没有 **Background** 按钮，说明尚未安装 Illustrator。
 
-背景是根据当前场景生成的。在游戏里，这包括题材、设定、地点、天气和时间。生成的背景使用 **Backgrounds** 画布尺寸，默认为 1280 × 720 像素。这个尺寸可以在 **Settings**(设置) → **Generations**(生成) → **Image Generation**(图像生成) 下修改。
+## 每到新地点生成新背景
 
-如果没有成功：如果 Marinara 找不到可用的图像模型，这一步会失败，并给出这条消息：
+开启后，故事来到没有背景的地点时，Illustrator 就会绘制背景，保存到背景库并显示。
 
-```
-Choose an image generation connection for the Illustrator agent, or mark one as the default image connection.
-```
+1. 将 **Illustrator** 添加到聊天：打开 **Chat Settings → Agents**(聊天设置 → 智能体)，开启 **Enable Agents**(启用智能体)，再从 **Misc Agents**(其他智能体) 添加 **Illustrator**。
+2. 在 **Illustrator** 卡片上开启 **Generate Scene Backgrounds**(生成场景背景)。
 
-解决办法：在 **Connections**(连接) 面板的 **Defaults**(默认) 下设置 **Images**(图像) 这项工作，或者给 **Illustrator** 智能体单独指定一个图像模型。
+Illustrator 按 **Image Run Interval**(图片运行间隔) 检查场景，默认每 5 条消息一次。想在每次回复后检查，使用 [Decision 模型检查](#check-every-reply-with-a-decision-model)。在 Game Mode(游戏模式) 中，**Game Illustrator**(游戏插画师) 开关也涵盖背景。
 
-## Gallery 区域
+### 复用已有图片
 
-**Gallery** 有 **Images** 和 **Videos**(视频) 两个选项卡，每个选项卡都会显示自己包含多少项。在 Roleplay 和 Game 聊天里，**Videos** 选项卡存放场景视频；在 Conversation 聊天里，它存放视频消息。
+为新地点绘图之前，Illustrator 按以下顺序查找已有图片：
 
-区域顶部的操作按钮只在对应功能适用于当前聊天时才显示：
+1. 在聊天或角色图库里固定到该地点的背景。见[把背景固定到地点](../roleplay/backgrounds.md#pin-a-background-to-a-place)。
+2. 背景库中名称或至少包含两个单词的标签出现在 World State 地点中的图片。例如，`generated-guest-bedroom.png` 或带 `guest bedroom` 标签的图片，都能用于“Smith House, guest bedroom”。
+3. 没有 World State 地点时，用同样的方法匹配 Illustrator 提示词模型写出的地点名。
 
-- **Illustrate**：运行 Illustrator 智能体，单独出一张场景图。见 [Illustrator 智能体](illustrator-agent.md)。
-- **Selfie**(自拍)：在 Conversation 模式下生成一张角色自拍。
-- **Background**：生成场景背景并应用，也就是上面讲的流程。
-- **Video**(视频)：用最近一张插图做一段场景视频。在 Conversation 模式下，它会改为让某个角色发送一条视频消息；见[视频消息](../conversation/selfies.md#video-messages)。
-- **Create storyboard**(创建分镜)：在 Storyboard 启用时，为最近一个 Game Mode 回合或已完成的 Roleplay 剧集生成关键帧。
-- **Browse Images**(浏览图像)：打开已保存图像的浏览器，从中插入图像。
-- **View storyboard**(查看分镜)：打开最近一份 Game Mode 分镜。
+找到匹配图片就会显示（如果有符合故事天气的版本，就显示那个版本），不会重新绘制。只有没有匹配图片的地点才会生成新图。给上传的图片打上地点标签（见[为背景添加标签](../appearance/chat-backgrounds.md#tag-a-background)），是节省图像请求最简单的办法。
 
-按钮下方是 **Upload Images**(上传图像) 拖放区。把图像拖上去，就能把自己的图片加进这个聊天的 Gallery。
+## 背景的天气版本
 
-### 单张图像的操作
+开启后，背景会跟随故事里的天气变化。旅店开始下雨时，Illustrator 会重绘旅店背景，让窗外下起雨。在室内，动态雨滴只出现在窗玻璃后面，不会落满房间。
 
-在 **Images** 选项卡里把指针移到一张图像上，手机端则点一下，就会看到它的操作项：
+1. 打开 **Chat Settings → Agents → Illustrator**(聊天设置 → 智能体 → Illustrator)。
+2. 开启 **Weather Versions of Backgrounds**(背景的天气版本)。
 
-- 以完整尺寸打开图像（**Open gallery image**）。
-- **Pin to chat**(固定到聊天)：把图像以浮动图片的形式固定在聊天里。拖动它可以移动位置，拖动它的角上手柄可以调整大小。在这个浏览器里重新加载页面时，它会保持原来的位置和大小。关闭按钮旁边的锁定按钮可以让它无法移动或调整大小，直到你解锁。
-- **Download image**(下载图像)：把图像保存到设备。
-- **Animate illustration**(让插图动起来)：把这张图变成一段场景视频。
-- **Copy prompt**(复制提示词)：复制随图保存的提示词。图像没有保存提示词时，这里显示 **No prompt saved** 并且不可点击。
-- **Delete gallery image**(删除图库图像)：确认后删除图像。
+这需要支持从图片开始生成的图像模型。大多数模型都支持，包括 OpenAI、Gemini、NovelAI，以及带图像输入的 ComfyUI。如果模型不支持，图片会保持原样。
 
-<a id="regenerating-an-image"></a>
+具体行为：
 
-### 重新生成图片
+- 每张图片的每种天气只绘制**一次**。天气变回去，或故事再次回到雨中的旅店时，会直接显示保存的版本，不再产生费用。
+- 天气版本保存在原图旁边，文件名如 `name--wx-rain.png`。其他类型有 `storm`、`snow`、`blizzard`、`hail`、`fog`、`sand`、`ash`、`embers`、`blossom` 和 `aurora`，以及 `clear`，用于把最初在恶劣天气下生成的图片变成无雨雪的版本。特殊天气会用故事中的原词命名：流星雨是 `name--wx-meteor-shower.png`。
+- 晴朗、阳光充足、多云、有风等较温和的天气继续使用普通图片。
+- 天气信息来自 **World State**(世界状态) 智能体，或下文的 Decision 模型检查。
+- 它涵盖背景库里的所有背景，无论是手动挑选、Background 智能体选择，还是 Illustrator 绘制的；也涵盖固定地点和随角色出现的图库背景。**Background** 智能体在普通图片中选择，有匹配的天气版本时就显示该版本。
 
-你可以重新生成一张图片，而不必重新生成它所属的回复。这适用于聊天 Gallery 里保存了提示词的图片，例如插图、自拍和分镜画面。
+### 窗户：动态天气出现的位置
 
-1. 从 Gallery 或图片所在的消息里，以原尺寸打开这张图片。
-2. 点击 **Regenerate image**(重新生成图片)（图片右上角的圆形箭头按钮）。
-3. 在图片下方的输入框里修改你想改的内容：**Prompt**(提示词)、**Negative prompt**(负面提示词)、图片带有角色提示词时 **Character prompts**(角色提示词) 下每个角色各一个输入框，以及图像模型。
-4. 点击 **Generate image**(生成图片)，或者点击 **Cancel**(取消) 保持图片不变。
+室内图片首次生成天气版本时，Illustrator 还会让图像模型找出图片中的窗户。它把结果保存为一张小型黑白蒙版，房间的所有天气版本共用这张蒙版。之后，动态天气（雨线、雪花、花瓣）只会绘制在玻璃上。
 
-新图片会替换消息里的旧图片。旧图片仍保留在 Gallery 里，所以你可以再次固定它。参考图会根据角色当前的头像重新发送。有些较早的图片没有保存负面提示词和角色提示词；遇到这种情况，编辑器会说明。
+- 没有窗户的房间不会显示动态天气，只保留天气色调和闪电。
+- 极光、流星雨等没有飘落物的天气保持静止：图片中会呈现这些天气，但上方没有动态效果。
+- 蒙版保存在数据文件夹的 `backgrounds/weather-masks` 中。
+
+### 重做天气图片或窗户
+
+聊天显示天气版本时，**Chat Settings → Agents → Illustrator** 的 **Weather Versions of Backgrounds** 下会出现一行，以天气命名，比如 **This rain picture**(这张雨天图片)：
+
+- **Remake picture**(重做图片) 从普通图片重新绘制这个天气版本。
+- **Remake windows**(重做窗户) 让图像模型重新生成窗户蒙版。雨落在坐垫上或漏掉了某扇窗户时，就用这个。
+- **No moving weather**(关闭动态天气) 关闭这个房间的蒙版。天气版本只显示天气色调和闪电。用 **Remake windows** 可以恢复。
+
+如果没有成功：检查聊天的 World State 是否显示 **Weather**(天气)（或是否开启了下文的天气检查），并确认已将 **Illustrator** 添加到聊天且指定了图像模型。
+
+## 用 Decision 模型检查每次回复
+
+Illustrator 通常只按运行间隔检查场景，所以到新地点后，可能要等几次回复才会生成背景。[Decision 模型](../connections/decision-models.md)是一个做是非判断的小模型，可以在每次回复后检查。
+
+开始之前：在 Connections 页面的 **Defaults** 框里选择 Decision 模型，并开启 **Generate Scene Backgrounds**、**Weather Versions of Backgrounds**，或同时开启两项。
+
+1. 打开 **Chat Settings → Agents → Illustrator**。
+2. 在 **Decision Model Checks**(Decision 模型检查) 下选择 **The scene moved to a new place**(场景移到了新地点)、**The weather changed**(天气变了) 或 **New place and weather changes**(新地点和天气变化)。默认是 **Off**(关闭)。
+
+每次回复之后：
+
+- 新地点检查会判断最新消息是否让场景移到了新地点。如果是，就为该地点配上背景，尽量复用已有图片。只有回答为“是”时，提示词模型才会撰写新背景的提示词。
+- 天气检查会判断最新消息中天气是否变化。如果是，就显示或绘制当前背景的天气版本。World State 没有天气信息时，Decision 模型还会选择天气类型。
+- 这些检查只增加触发机会。Illustrator 自身的运行和 World State 地点变化仍然有效。
+- 没有答案时（未设置模型、超时或出错），跳过这次检查。
+
+如果没有成功：未选择 Decision 模型时，列表会变灰，并提示去哪里选择。
 
 ## 在提示词发出前先检查一遍
 
-Marinara 把背景请求发给图像服务之前，可以先检查并修改提示词。
-
-1. 打开 **Settings** → **Generations** → **Overall Generations**(总体生成)。
+1. 打开 **Settings → Media → Generation Defaults**(设置 → 媒体 → 生成默认设置)。
 2. 开启 **Expose media prompts before sending**(发送前显示媒体提示词)。
 
-开启之后，每次请求发出前都会弹出 **Review Image Prompt**(检查图像提示词) 窗口，它的说明文字是：“Edit the prompt below before Marinara sends the image request to your provider.”
-
-在这个窗口里可以：
-
-- 修改提示词正文和负面提示词。
-- 查看图像类型和尺寸，以及实时的字符计数。
-- 点击 **Cancel** 中止，或点击 **Generate**(生成) 发送。
-
-只要有一个提示词框是空的，**Generate** 就不可点击，并显示这条提示：“Every image request needs a prompt.”输入什么就原样发送什么。
-
-## 管理保存下来的背景
-
-每张生成的场景背景都会存进背景库，自己的图像也可以加进同一个库。上传的背景支持 JPG、PNG、GIF、WebP 和 AVIF 文件，单张最大 20 MB。
-
-自己添加的背景可以打标签、改名和删除。标签一律小写，可以包含字母、数字、空格、连字符和下划线，每个最长 40 个字符。内置的游戏素材背景会和自己的背景显示在一起，但不能改名、打标签或删除。
-
-这个库的管理，以及给单个聊天或全局设置默认背景，都在外观设置里完成。完整的图库、选择器和 **Background Blur**(背景模糊) 请看[聊天背景](../appearance/chat-backgrounds.md)。
+之后每次图像请求发出前都会打开 **Review Image Prompt**(检查图像提示词) 窗口，包括生成背景。修改提示词和负面提示词，再点击 **Generate**(生成) 发送，或点击 **Cancel**(取消) 停止。输入的文字会原样发送。
 
 ## 相关指南
 
-- [聊天背景](../appearance/chat-backgrounds.md)：手动挑选的上传图库。
-- [Roleplay 背景](../roleplay/backgrounds.md)：每回合自动挑背景的智能体。
-- [Illustrator 智能体](illustrator-agent.md)：Roleplay 模式和 Game Mode 的场景插图。
-- [图像生成服务商与设置](image-providers.md)：配置图像模型。
-- [场景视频生成](scene-video.md)：把 Gallery 里的图像变成视频。
+- [跟随故事变化的背景](../roleplay/backgrounds.md)：聊天显示哪张图片、固定地点和图库背景。
+- [背景库](../appearance/chat-backgrounds.md)：上传、打标签、整理图片，以及模糊效果。
+- [Illustrator 智能体](illustrator-agent.md)：场景插图、短片和运行间隔。
+- [聊天图库](../chats/chat-gallery.md)：Gallery 区域及其按钮。
+- [Decision 模型](../connections/decision-models.md)

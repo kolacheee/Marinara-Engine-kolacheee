@@ -2,7 +2,7 @@
 
 Cada mensaje, tuyo o de la IA, tiene una barra de herramientas. Úsala para editar, borrar, regenerar, ocultar o crear una rama desde un mensaje.
 
-La barra de herramientas aparece cuando tocas un mensaje en un teléfono o una tableta, o cuando pasas el cursor sobre él en una computadora.
+En una computadora, pasa el cursor sobre un mensaje para que aparezca su barra de herramientas. En un teléfono o una tableta, mantén pulsado un mensaje: las mismas acciones se abren en un panel.
 
 ## La barra de herramientas del mensaje
 
@@ -42,7 +42,7 @@ Más: [Peek Prompt](peek-prompt.md), [Ramas de chat](branches.md), [Escenas](../
 3. Haz clic en **Save** (Guardar), o pulsa <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> en un Mac).
 4. Para parar sin guardar, haz clic en **Cancel** (Cancelar) o pulsa <kbd>Esc</kbd>.
 
-Dos ajustes de **Settings → General → Input & Editing** (Configuración → General → Entrada y edición) te permiten empezar a editar más rápido. Ambos están activados de forma predeterminada.
+Dos ajustes de **Settings → Chatting → Editing & Swipes** (Configuración → Chateando → Edición y swipes) te permiten empezar a editar más rápido. Ambos están activados de forma predeterminada.
 
 - **Up Arrow edits last message**: pulsa <kbd>Up</kbd> mientras la caja de entrada está vacía.
 - **Double-click edits messages**: haz doble clic o doble toque en un mensaje de Roleplay.
@@ -74,6 +74,20 @@ Un swipe es una versión de una respuesta de la IA. Un mensaje puede contener va
 
 No puedes borrar el último swipe. La app dice "Cannot delete the last remaining swipe" (No se puede borrar el único swipe restante). Usa **Delete this message** en su lugar.
 
+## Gestos táctiles
+
+En la nueva distribución de un teléfono o una tableta, los swipes y las pulsaciones largas reemplazan los botones que aparecen al pasar el cursor en una computadora.
+
+- **Desliza la respuesta más reciente** hacia la izquierda o la derecha para moverte entre sus swipes. Si deslizas hacia la izquierda más allá del último, pregunta "Generate a new reply?" (¿Generar una respuesta nueva?) antes de crearla, porque una respuesta nueva cuesta una solicitud.
+- **Desliza el título** de la barra superior hacia la izquierda o la derecha para moverte entre las pestañas abiertas. Inicio cuenta como la pestaña anterior a la primera. Esto funciona en la distribución para teléfonos, que usa una tableta cuando se sostiene en vertical; cuando se gira de lado, la tableta muestra la barra de pestañas en su lugar.
+- **Desliza un chat** de la lista de chats hacia la izquierda para mostrar **Pin** (Fijar), **Rename** (Renombrar), **Tags** (Etiquetas) y **Delete**.
+- **Mantén pulsado un mensaje** para ver sus acciones: Regenerate, Edit, Copy, Branch y las demás.
+- **Mantén pulsado un chat** de la lista de chats para ver las mismas acciones.
+
+Desactiva los swipes con **Swipe gestures on touch screens** (Gestos de swipe en pantallas táctiles), en Settings > Chatting > Editing & Swipes. Las pulsaciones largas siguen funcionando de cualquier forma.
+
+La primera vez que Marinara se abre en un teléfono, una tableta o una computadora, un tutorial breve muestra dónde está cada cosa en ese tipo de dispositivo, incluidos estos gestos en las pantallas táctiles. Cada modo de chat también muestra sus consejos la primera vez que se abre allí. Puedes repetir cualquiera de ellos desde Settings > General > Walkthroughs.
+
 ## Regenerar, continuar y reintentar
 
 Estas tres acciones se parecen y hacen cosas distintas.
@@ -92,7 +106,7 @@ Escribe `/continue` (o `/cont`) en la caja de entrada y envíalo. El modelo reto
 /continue
 ```
 
-Marinara añade una línea en blanco antes del texto nuevo. Para adjuntarlo directamente al último carácter, desactiva **Settings → General → Responses → Add a new line before /continue text** (Configuración → General → Respuestas → Añadir una línea nueva antes del texto de /continue).
+Marinara añade una línea en blanco antes del texto nuevo. Para adjuntarlo directamente al último carácter, desactiva **Settings → Chatting → Responses → Add a new line before /continue text** (Configuración → Chateando → Respuestas → Añadir una línea nueva antes del texto de /continue).
 
 ### Reintentar con un Send vacío
 
@@ -114,7 +128,7 @@ Cuando **Decide who sees new messages** (Decidir quién ve los mensajes nuevos) 
 
 ## Interruptores de visualización de mensajes
 
-Están en **Settings → Advanced → Message Tools** (Configuración → Avanzado → Herramientas de mensaje).
+Están en **Settings → Chatting → Message Info** (Configuración → Chateando → Información del mensaje).
 
 | Interruptor | Predeterminado | Qué muestra |
 | --- | --- | --- |

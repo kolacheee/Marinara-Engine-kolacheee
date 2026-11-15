@@ -1,6 +1,6 @@
 # 데이터 지우기와 초기화
 
-이 가이드에서는 **Danger Zone**(위험 구역)으로 데이터 일부 또는 전부를 완전히 삭제하는 방법을 설명합니다. 되돌릴 수 없습니다.
+이 가이드에서는 **Settings → Data → Delete Data**(설정 → 데이터 → 데이터 삭제)에 있는 **Delete Data**로 데이터 일부 또는 전부를 완전히 삭제하는 방법을 설명합니다. 되돌릴 수 없습니다.
 
 채팅 하나나 캐릭터 하나만 지우려면 각자의 삭제 버튼을 쓰세요. [채팅 관리하기](../chats/managing-chats.md)와 [캐릭터 만들기와 편집하기](../characters/creating-and-editing-characters.md)를 참고하세요.
 
@@ -8,7 +8,7 @@
 
 ## 일부 항목만 지우기
 
-1. **Settings**(설정) → **Advanced**(고급)를 열고 **Danger Zone**까지 스크롤하세요.
+1. **Settings → Data**(설정 → 데이터)를 열고 **Delete Data**로 이동하세요.
 2. 삭제할 항목마다 체크하세요. **Select All**(전체 선택)은 모든 체크박스를 체크합니다. 전부 체크된 상태에서는 같은 버튼이 **Clear Selection**으로 바뀌고 체크를 모두 해제합니다.
 3. **Clear Selected Data**(선택한 데이터 지우기)를 클릭하세요. 항목을 하나 이상 체크하기 전까지는 비활성화되어 있습니다.
 4. 경고를 읽으세요. 고른 항목이 몇 개인지 표시됩니다.
@@ -18,7 +18,7 @@
 
 ## 전부 지우기
 
-1. **Danger Zone**에서 **Clear All Data**(모든 데이터 지우기)를 클릭하세요. 체크박스를 미리 체크할 필요는 없습니다.
+1. **Delete Data**에서 **Clear All Data**(모든 데이터 지우기)를 클릭하세요. 체크박스를 미리 체크할 필요는 없습니다.
 2. 경고 창이 이렇게 묻습니다: "Delete all supported data categories except Professor Mari? There is no undo."
 3. **Confirm Delete**를 클릭하세요. 중단하려면 **Cancel**을 클릭하세요.
 
@@ -26,7 +26,7 @@
 
 ## 8가지 데이터 항목
 
-항목마다 해당 행에 적힌 것만 지웁니다. 단, 표 아래에서 설명하는 `gallery` 폴더는 예외입니다.
+항목마다 해당 행에 적힌 것만 지웁니다. 단, 표 아래에서 설명하는 갤러리 폴더는 예외입니다.
 
 | 항목 | 지워지는 대상 |
 | --- | --- |
@@ -47,7 +47,7 @@
 - **Connections**는 음성 합성(TTS)과 음성 인식 설정, 기능별로 고른 모델, **3D Avatars** 페이지에 저장해 둔 Tripo API 키도 함께 지웁니다.
 - **Automation & Addons**는 에이전트 결과, 에이전트 메모리, 에이전트 폴더, 에이전트 Home 위젯도 함께 삭제합니다.
 - **Media & Assets**는 에셋 목록과 채팅 이미지도 함께 삭제합니다.
-- 지식 소스 파일은 지식 에이전트용으로 업로드한 파일입니다. 동기화된 테마는 Marinara에 저장한 사용자 지정 테마입니다.
+- 지식 소스 파일은 지식 에이전트용으로 업로드한 파일입니다. 동기화된 테마는 다운로드한 시작 테마를 포함해 Marinara에 저장한 사용자 지정 테마입니다. 시작 테마는 테마 갤러리에서 다시 다운로드할 수 있습니다.
 
 일부 항목은 이름과 다른 파일까지 지웁니다. **Chats & Messages**는 **Characters**나 **Personas**를 체크하지 않았더라도 캐릭터와 페르소나의 갤러리 이미지를 포함한 `gallery` 폴더 전체를 삭제합니다.
 
@@ -55,7 +55,7 @@
 
 ## Professor Mari는 남습니다
 
-Professor Mari는 Home 화면에 있는 기본 내장 도우미입니다. **Danger Zone**은 **Clear All Data**를 써도 Professor Mari를 절대 삭제하지 않습니다.
+Professor Mari는 Home 화면에 있는 기본 내장 도우미입니다. **Delete Data**은 **Clear All Data**를 써도 Professor Mari를 절대 삭제하지 않습니다.
 
 ## 관련 가이드
 

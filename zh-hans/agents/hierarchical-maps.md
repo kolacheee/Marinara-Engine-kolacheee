@@ -2,7 +2,7 @@
 
 > **当前兼容性：** 本指南对应 World Maps **1.3.1**，它支持 Marinara Engine **2.3.5 到 3.x**，适用于 Roleplay 和 Game 聊天。Engine **2.4.1** 增加了移动流清理，便携导入后也会立即刷新 Lorebooks。Engine 2.3.5 到 2.4.0 仍然可用，但导入后需要手动刷新 Lorebooks。
 
-World Maps 给你的故事提供一张地图，上面的地点可以层层嵌套，比如一段海岸、一座城镇、一个城区和一家旅店。Marinara 始终知道队伍在哪里，AI 会据此保持前后一致。想试试的话：在 **Agent Organizer**(智能体管理器) 里安装 **World Maps**，重启，然后按[快速上手](#quick-start)操作。
+World Maps 给你的故事提供一张地图，上面的地点可以层层嵌套，比如一段海岸、一座城镇、一个城区和一家旅店。Marinara 始终知道队伍在哪里，AI 会据此保持前后一致。想试试的话：在 **Library → Agents**(资料库 → 智能体) 里安装 **World Maps**，重启，然后按[快速上手](#quick-start)操作。
 
 世界不再只是一段自由文本的位置，而是一组层层嵌套的地点：
 
@@ -52,7 +52,7 @@ World Maps 1.3.1 为你提供：
 
 ## 快速上手
 
-1. 打开 **Agents**(智能体)，点击 **Agent Organizer**，安装 **World Maps**。出现提示时重启 Marinara，因为这个包包含服务器端代码。
+1. 打开 **Library → Agents**，在 **Available**(可用) 下找到 **World Maps**，点击 **Get**(获取)。出现提示时重启 Marinara，因为这个包包含服务器端代码。
 2. 打开一个 Roleplay 或 Game 聊天。
 3. 打开 **Agents → World Maps**，或者在你的 Engine 提供 World Maps 地球仪按钮时点它，然后为这个聊天启用它。也可以在 **Chat Settings → Agents**(聊天设置 → 智能体) 里启用。
 4. 用 **Use template**、**Create with AI** 或 **Build manually** 创建地图。已有的聊天也可以导入地图文件。
@@ -341,7 +341,7 @@ Game 里可以同时存在两套地图系统：
 
 ## 自定义自动配图提示词
 
-打开 **Settings → Generations → Prompt Overrides**(设置 → 生成 → 提示词覆盖)，选择 **Maps location artwork**。这是 Maps 预览和生成自动地点配图时使用的全局模板。变量写作 `${variableName}` 的形式，可以从编辑器里插入。
+打开 **Settings → Media → Prompt Overrides**(设置 → 媒体 → 提示词覆盖)，选择 **Maps location artwork**。这是 Maps 预览和生成自动地点配图时使用的全局模板。变量写作 `${variableName}` 的形式，可以从编辑器里插入。
 
 | 变量 | 含义 |
 | --------------------------------------------------- | ---------------------------------------------------------- |
@@ -497,7 +497,7 @@ World Maps 用到世界设定的地方有两处：
 
 ### 自动配图提示词里带上了不想要的内容
 
-- 总是出现 Game 题材：打开 **Settings → Generations → Prompt Overrides → Maps location artwork**，删掉 `${genreLine}` 并保存。
+- 总是出现 Game 题材：打开 **Settings → Media → Prompt Overrides → Maps location artwork**，删掉 `${genreLine}` 并保存。
 - 战役画风该关的时候却出现了：检查 **Chat Settings → Illustrator → Use campaign art style**。关闭时，`${campaignArtStyle}` 和 `${campaignArtStyleLine}` 为空。
 - 每张子地点图里都冒出父级地标：除非确有必要，模板里别用 `${parentLocationDescription}` 和 `${locationPath}`。
 - 负向提示词里有意料之外的文字：确认之前先修改负向字段，然后检查全局负向图像设置。Maps 模板只负责拼正向提示词。

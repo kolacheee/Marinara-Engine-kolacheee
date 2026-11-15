@@ -6,9 +6,9 @@
 
 ## 开始之前
 
-只有完成[允许第三方导入](personal-extensions.md#allow-third-party-imports)中的两个安全步骤后，External Extensions 才会显示：在 `.env` 中设置 `ENABLE_EXTERNAL_EXTENSIONS=true`，并在 **Settings → Advanced → Danger Zone**(设置 → 高级 → 危险区域) 下启用 **Allow third-party extension imports**(允许导入第三方扩展)。
+只有完成[允许第三方导入](personal-extensions.md#allow-third-party-imports)中的两个安全步骤后，External Extensions 才会显示：在 `.env` 中设置 `ENABLE_EXTERNAL_EXTENSIONS=true`，并在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 下启用 **Allow third-party extension imports**(允许导入第三方扩展)。
 
-导入和管理扩展还需要通过 localhost 访问，或者提供管理员密钥。从手机、LAN 地址或远程浏览器访问时，在服务器上设置 `ADMIN_SECRET`，并在 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问) 中填入相同的值。
+导入和管理扩展还需要通过 localhost 访问，或者提供管理员密钥。从手机、LAN 地址或远程浏览器访问时，在服务器上设置 `ADMIN_SECRET`，并在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 中填入相同的值。
 
 选择能完成任务且权限最少的运行时：
 
@@ -94,7 +94,7 @@ marinara.onCleanup(() => panel.remove());
 
 然后导入并运行扩展：
 
-1. 打开 **Settings → Addons → External Extensions**(设置 → 插件 → 外部扩展)。
+1. 打开 **Library → Extensions → External Extensions**(资料库 → 扩展 → 外部扩展)。
 2. 选择 **Import Extension Folder**(导入扩展文件夹) 并指定 `Hello Panel`，或者把文件夹压缩成 ZIP，再用 **Import Extension File**(导入扩展文件) 导入这个 ZIP。
 3. 打开已禁用的草稿，检查其清单和 JavaScript。
 4. 选择 **Review and Run**(审查并运行)，批准界面显示的精确哈希。
@@ -342,7 +342,7 @@ marinara.onCleanup(() => format.remove());
 
 **整页访问权限不是一项沙箱能力。** 获批的 JavaScript 和 CSS 直接运行在 Marinara 的页面里。这些代码能读取或修改当前浏览器会话可见的一切，能查看聊天和角色卡，能使用浏览器存储、发起网络请求、调用同源的 Marinara API。它的实际页面权限，和你往浏览器控制台里粘贴一段代码没有区别。Professor Mari 的草稿不能申请这项权限。
 
-整页扩展应使用 `marinara.fetch(...)` 发送网络请求。它的签名和返回结果与 `window.fetch` 相同，同时让 **Settings > Addons > External Extensions**(设置 → 插件 → 外部扩展) 能够显示该扩展在当前会话中的请求数、响应所报告的传输字节数、近期请求频率，以及持续高流量警告。整页访问的代码属于受信任的页面代码，因此仍可直接调用原始的 `window.fetch`，但这些请求无法归属于该扩展。
+整页扩展应使用 `marinara.fetch(...)` 发送网络请求。它的签名和返回结果与 `window.fetch` 相同，同时让 **Library > Extensions > External Extensions**(资料库 → 扩展 → 外部扩展) 能够显示该扩展在当前会话中的请求数、响应所报告的传输字节数、近期请求频率，以及持续高流量警告。整页访问的代码属于受信任的页面代码，因此仍可直接调用原始的 `window.fetch`，但这些请求无法归属于该扩展。
 
 Marinara 会把不带显式 `capabilities` 字段的旧版 `kind: "marinara.extension"` v1 封装识别成沙箱之前的老扩展包，并在导入时给它分配 **Full page access**。这样 WeatherTweaker 这类旧扩展包就能走进正确的审查流程，而不是在 Worker 里悄无声息地失败。如果一个新扩展包用了这种封装、却想留在安全运行时里，就必须写上 `"capabilities": []`。
 
@@ -445,13 +445,13 @@ ZIP、请求、沙箱消息和存储限制分别保护不同的传输或运行�
 | 症状 | 检查项 |
 | --- | --- |
 | 外部导入控件未显示 | 打开上文介绍的两道 External Extension 安全门 |
-| 管理界面提示需要 localhost 或 Admin Access | 配置 `ADMIN_SECRET` 并保存到 **Admin Access** |
+| 管理界面提示需要 localhost 或 Admin Access | 配置 `ADMIN_SECRET` 并保存到 **Settings → Advanced → Security** |
 | 导入操作找不到扩展 | 检查 `manifest.json` 及其相对路径；Server 需要 JS，Browser 需要 CSS 或 JS |
 | 编辑后扩展被禁用 | 这是预期行为；检查并批准新的精确哈希 |
 | Browser 代码无法使用 `document`、`window`、`fetch` 或本地存储 | 在安全沙箱中属于预期行为；使用文档列出的代理 API |
 | Server Extension 不可用 | 使用 macOS Seatbelt 或装有 Bubblewrap 的 Linux，或者改用 Browser Extension |
 | Browser Extension 抛出异常 | 打开浏览器开发者工具；`marinara.log` 和启动错误会带有扩展名称标签 |
-| Server Extension 抛出异常 | 在 **Settings → Addons**(设置 → 插件) 中检查它的状态，并查看 Marinara 服务器日志 |
+| Server Extension 抛出异常 | 在 **Library → Extensions**(资料库 → 扩展) 中检查它的状态，并查看 Marinara 服务器日志 |
 
 CSS、私有存储、导入压缩包和运行时消息分别有独立的安全限制。Marinara 应报告拒绝包的具体边界，而不是把问题显示为执行失败。
 

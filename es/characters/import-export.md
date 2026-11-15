@@ -36,8 +36,12 @@ Si no funcionó: lee el mensaje rojo junto al archivo. Los demás archivos del l
 | | **No tags** (Sin etiquetas): las omite. |
 | | **Existing only** (Solo las existentes): conserva las etiquetas que ya están en tu biblioteca. |
 | **Imported regex scripts** (Scripts de regex importados) | **Character only** (Solo el personaje, predeterminado): las reglas se ejecutan para este personaje. |
-| | **Global**: las reglas van a **Presets → Regexes** y se ejecutan en cada chat. |
+| | **Global**: las reglas van a **Presets → Regexes** y pueden ejecutarse en varios chats. |
 | **Split description into fields** (Dividir la descripción en campos) | Desactivado de forma predeterminada. Márcalo para sacar de **Description** (Descripción) el texto etiquetado de personalidad, apariencia y similares, y llevarlo a sus propios campos. |
+| **Import tags** (Importar etiquetas) | **Tag imported** (Etiquetar como importado; activado de forma predeterminada): añade la etiqueta **Imported** (Importado). |
+| | **Tag source** (Etiquetar el origen; activado de forma predeterminada): añade de dónde procede el archivo: **ST** para una tarjeta de SillyTavern, **CharX** para un `.charx` y **Marinara** para una exportación de Marinara. |
+
+Los elementos importados conservan su propio nombre y descripción. Para encontrar todo lo que importaste, elige **Imported** en el filtro **Tags** (Etiquetas) junto a la búsqueda. Todas las ventanas de importación de la Library (Characters, Personas, Lorebooks y Presets) y la importación de chats tienen las mismas dos casillas **Import tags**. El [Card Browser](bot-browser.md) usa el nombre del sitio como origen, por ejemplo **Chub**.
 
 Los scripts de regex son pequeñas reglas de reemplazo de texto. Mantén **Character only** a menos que quieras las reglas en todas partes. La división deja tal cual las tarjetas de narrador, de mundo y de varios personajes.
 
@@ -50,12 +54,12 @@ Un lorebook (libro de trasfondo) es un conjunto de datos de fondo que la IA cons
 
 ### Importar una carpeta completa de SillyTavern
 
-Para mover una instalación entera de SillyTavern, usa el importador masivo de **Settings** (Configuración), en la pestaña **Imports** (Importaciones). Trae juntos los personajes, chats, presets y lorebooks. Consulta [Importar desde SillyTavern](../data/importing-from-sillytavern.md).
+Para mover una instalación entera de SillyTavern, usa el importador masivo de **Settings → Data → SillyTavern Import** (Configuración → Datos → Importación de SillyTavern). Trae juntos los personajes, chats, presets y lorebooks. Consulta [Importar desde SillyTavern](../data/importing-from-sillytavern.md).
 
 ## Exportar un personaje
 
 1. Abre el personaje en el editor.
-2. Haz clic en **…** y luego en **Export character** (Exportar personaje) en el encabezado. Se abre la ventana **Export Character**.
+2. Haz clic en **Export character** (Exportar personaje) en el encabezado. Se abre la ventana **Export Character**.
 3. Elige un formato. Marinara descarga el archivo.
 
 | Formato | Qué obtienes | Ideal para |
@@ -70,8 +74,8 @@ El [onboarding interactivo](interactive-onboarding.md) de una tarjeta se conserv
 
 ## Exportar muchos personajes a la vez
 
-1. Haz clic en **Characters** en la barra de navegación superior (o primero en **More**, si no aparece).
-2. Haz clic en **Select** (Seleccionar) en la barra de herramientas (el icono de marca de verificación) y marca los personajes que quieres.
+1. Abre **Library → Characters** (Biblioteca → Personajes).
+2. Haz clic en **Select** (Seleccionar), junto al título de la página (el icono de marca de verificación), y haz clic en los personajes que quieras.
 3. Haz clic en **Export** (Exportar) en la barra de abajo. Marinara descarga `marinara-characters.zip`.
 
 El zip contiene un archivo **Marinara Native** por personaje. La exportación masiva no tiene opción de PNG ni de JSON. Para esos formatos, usa la exportación de un solo personaje. Para más formas de seleccionar personajes, consulta [Organizar tu biblioteca de personajes](library-organization.md#export-or-delete-many-characters).

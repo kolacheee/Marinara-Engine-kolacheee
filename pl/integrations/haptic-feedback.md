@@ -76,7 +76,7 @@ Przełącznik **Incidental contact** (przypadkowy kontakt) z opisem "Tiny taps f
 
 Domyślnie Marinara przyjmuje komendy haptyczne tylko z komputera, na którym działa serwer Marinara Engine. Dzięki temu sterowanie urządzeniem pozostaje prywatne. Dlatego haptyczna informacja zwrotna nie działa, gdy otwierasz aplikację Marinara Engine na telefonie lub innym urządzeniu, które łączy się z serwerem działającym gdzie indziej. Połączenie, skanowanie i komendy są wtedy odrzucane.
 
-Aby na to zezwolić, włącz ustawienie serwera `HAPTICS_ALLOW_REMOTE` i skonfiguruj ochronę dostępu – logowanie albo sekret administratora. Zobacz [Konfiguracja serwera](../CONFIGURATION.md) i przewodnik [Dostęp zdalny](../REMOTE_ACCESS.md). Dostęp administratora wpisuje się w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny).
+Aby na to zezwolić, włącz ustawienie serwera `HAPTICS_ALLOW_REMOTE` i skonfiguruj ochronę dostępu – logowanie albo sekret administratora. Zobacz [Konfiguracja serwera](../CONFIGURATION.md) i przewodnik [Dostęp zdalny](../REMOTE_ACCESS.md). Dostęp administratora wpisuje się w **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 
 ## Kiedy coś nie działa
 

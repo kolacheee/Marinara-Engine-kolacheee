@@ -25,11 +25,11 @@
 
 メッセージ入力欄の文章を、再生成のための一度だけの指示として使います。
 
-1. **Settings → Advanced → Message Tools**(設定 → 詳細設定 → メッセージツール)を開き、**Guide swipes/regens with chat input**(チャットの入力でスワイプと再生成を導く)をオンにします。デフォルトではオフです。
+1. **Settings → Chatting → Editing & Swipes**(設定 → チャットの動作 → 編集とスワイプ)を開き、**Guide swipes/regens with chat input**(チャットの入力でスワイプと再生成を導く)をオンにします。デフォルトではオフです。
 2. チャットで、メッセージ入力欄に指示を入力します。送信はしません。
 3. AIのメッセージで**Regenerate**(再生成)をクリックします。入力欄に文章があるときは、ボタンのラベルが**Regenerate (guided)**になります。
 
-再生成の後も指示は入力欄に残るので、手直ししてもう一度再生成できます。指示を消したい場合は、**Settings → General → Input & Editing**(設定 → 一般 → 入力と編集)で**Keep guidance after regenerating**(再生成後も指示を残す)をオフにします。
+再生成の後も指示は入力欄に残るので、手直ししてもう一度再生成できます。指示を消したい場合は、**Settings → Chatting → Message Box**(設定 → チャットの動作 → メッセージ入力欄)で**Keep guidance after regenerating**(再生成後も指示を残す)をオフにします。
 
 うまくいかなかった場合: ボタンのラベルが**Regenerate (guided)**になっている必要があります。**Regenerate**としか表示されない場合は、設定がオフか、入力欄が空です。
 
@@ -71,7 +71,7 @@ Impersonateは、次の自分のメッセージを、ペルソナの口調でモ
 | **Preset** | impersonateの返信にだけ使うプロンプトプリセットです。デフォルトは**Use chat default**です。[プリセット](../prompts/presets.md)を参照してください。 |
 | **Connection** | impersonateの返信に使うモデルです。より安価なモデルや速いモデルなどを選べます。デフォルトは**Use chat default**です。**Random**も選べます。[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。 |
 | **Skip agents** | impersonateの実行中は、エージェント(トラッカー、ロアブックの振り分けなどの補助機能)を省略します。impersonateが速くなり、世界の状態も変わりません。デフォルトではオフです。[エージェント](../agents/agents-overview.md)を参照してください。 |
-| **Use CYOA as direction** | CYOA(choose your own adventure、選択肢で進む形式)の選択肢をクリックしたときに、それを投稿する代わりに、impersonateの指示として使います。デフォルトではオフです。**Settings → General → Input & Editing**で**Add CYOA choices to the message box instead of sending them**(CYOAの選択肢を送信せずメッセージ入力欄に追加する)がオンの場合、クリックしても文章がメッセージ欄に追加されるだけで、この設定は効果がありません。 |
+| **Use CYOA as direction** | CYOA(choose your own adventure、選択肢で進む形式)の選択肢をクリックしたときに、それを投稿する代わりに、impersonateの指示として使います。デフォルトではオフです。**Settings → Chatting → Message Box**(設定 → チャットの動作 → メッセージ入力欄)で**Add CYOA choices to the message box instead of sending them**(CYOAの選択肢を送信せずメッセージ入力欄に追加する)がオンの場合、クリックしても文章がメッセージ欄に追加されるだけで、この設定は効果がありません。 |
 
 ### 1つのチャットにプロンプトを設定する
 
@@ -88,7 +88,7 @@ Impersonateは、次の自分のメッセージを、ペルソナの口調でモ
 
 Quick repliesは、ワンクリックで使える、**Send**の代わりの操作を追加します。スラッシュコマンドを入力する必要はありません。
 
-1. **Settings → General → Input & Editing**(設定 → 一般 → 入力と編集)を開きます。
+1. **Settings → Chatting → Message Box**(設定 → チャットの動作 → メッセージ入力欄)を開きます。
 2. **Quick replies**をオンにします。デフォルトではオフです。
 3. 展開して、表示する操作を選びます。オンにすると、3つの操作はデフォルトですべてオンです。
 

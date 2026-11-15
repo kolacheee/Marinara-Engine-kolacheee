@@ -86,13 +86,13 @@ Cette page explique comment commencer, essayer et partager un ensemble de règle
 
 ## Essayer ton ensemble de règles
 
-Avant de commencer, active **Allow custom Agent imports** (autoriser l'importation d'agents personnalisés) dans **Settings → Advanced → Danger Zone** (Paramètres → Avancé → Zone de danger). Les ensembles de règles importés utilisent le même interrupteur de sécurité que les agents importés : il reste désactivé tant que tu ne l'actives pas. L'importation exige aussi un accès localhost ou le secret d'administration (**Settings → Advanced → Admin Access** (Paramètres → Avancé → Accès administrateur)).
+Avant de commencer, active **Allow custom Agent imports** (autoriser l'importation d'agents personnalisés) dans **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité). Les ensembles de règles importés utilisent le même interrupteur de sécurité que les agents importés : il reste désactivé tant que tu ne l'actives pas. L'importation exige aussi un accès localhost ou le secret d'administration (**Settings → Advanced → Security**).
 
-1. Ouvre le panneau **Agents** et choisis le bouton **Import agents** (importer des agents), l'icône de téléchargement dans la rangée de boutons en haut du panneau.
+1. Ouvre **Library → Agents** (Bibliothèque → Agents) et clique sur **Import agents** (importer des agents), l'icône de téléchargement à côté de **Starter kits** (kits de démarrage). Dans la disposition classique, c'est l'icône de téléchargement en haut du panneau **Agents**.
 2. Choisis **Game Mode ruleset** (ensemble de règles Game Mode) et sélectionne ton fichier JSON, ou un fichier de package d'ensemble de règles qui se termine par `.ruleset.json` (voir [Partager ton ensemble de règles](#sharing-your-ruleset)).
 3. Lis l'examen. Il montre le nom, la version, la licence, ce que couvre l'ensemble de règles et le texte du Game Master. Choisis **Import** (importer).
 
-Ton ensemble de règles apparaît dans la section **Rules** du panneau et dans le choix **Rules** de l'assistant de configuration des nouvelles parties. Un ensemble de règles importé depuis un fichier est classé sous `local/<your id>`, pour ne jamais être confondu avec un ensemble officiel ou celui de quelqu'un d'autre.
+Ton ensemble de règles apparaît dans le choix **Rules** de l'assistant de configuration des nouvelles parties et, dans la disposition classique, dans la section **Rules** du panneau **Agents**. Un ensemble de règles importé depuis un fichier est classé sous `local/<your id>`, pour ne jamais être confondu avec un ensemble officiel ou celui de quelqu'un d'autre.
 
 ### Modifier un ensemble de règles déjà importé
 
@@ -161,13 +161,13 @@ your-repository/
     another-system.json
 ```
 
-Un utilisateur ajoute ton dépôt une seule fois, examine son contenu et le synchronise plus tard pour recevoir les nouvelles versions. La liste des dépôts personnalisés est une fonction avancée. La personne qui gère le serveur l'active avec `ENABLE_CUSTOM_AGENT_REPOS=true`, puis ouvre **Agents → Agent Organizer → Custom Sources** (Agents → organisateur d'agents → sources personnalisées). Les ensembles de règles d'un dépôt sont classés sous le nom du propriétaire du dépôt, comme `alice/ember-roads`, pour que deux auteurs puissent chacun publier un ensemble de règles nommé `v20` sans conflit.
+Un utilisateur ajoute ton dépôt une seule fois, examine son contenu et le synchronise plus tard pour recevoir les nouvelles versions. La liste des dépôts personnalisés est une fonction avancée. La personne qui gère le serveur l'active avec `ENABLE_CUSTOM_AGENT_REPOS=true`, puis ouvre **Library → Agents → Custom Sources** (Bibliothèque → Agents → Sources personnalisées). Les ensembles de règles d'un dépôt sont classés sous le nom du propriétaire du dépôt, comme `alice/ember-roads`, pour que deux auteurs puissent chacun publier un ensemble de règles nommé `v20` sans conflit.
 
 Deux limites s'appliquent. Un dépôt peut contenir au maximum 32 fichiers JSON directement dans `rulesets`, et un dépôt qui en contient plus est refusé. Un compte nommé `local` ne peut pas publier d'ensembles de règles, car `local/` est réservé aux ensembles de règles importés depuis un fichier.
 
 ### Dans le catalogue officiel
 
-Un système largement joué, dont la licence est claire, peut être proposé à tous via **Agent Organizer**. Pour en proposer un, ouvre une pull request sur le dépôt [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Consulte le package `ruleset-5e-2014` qui s'y trouve pour sa structure.
+Un système largement joué, dont la licence est claire, peut être proposé à tous via **Library → Agents**. Pour en proposer un, ouvre une pull request sur le dépôt [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Consulte le package `ruleset-5e-2014` qui s'y trouve pour sa structure.
 
 ## Licences
 

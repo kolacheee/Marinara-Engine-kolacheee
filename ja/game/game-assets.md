@@ -31,7 +31,7 @@ Asset Browserの**Backgrounds**フォルダーと**Sprites**フォルダーは�
 **Asset Browser**は、ゲームアセット用のファイルマネージャーです。**Settings**(設定)から開く手順は次のとおりです。
 
 1. **Settings**を開きます。
-2. **Imports**(インポート)タブに移動します。
+2. **Game**タブに移動します。
 3. **Game Assets**(ゲームアセット)を探し、**Asset Browser**をクリックします。
 
 ゲームから開くこともできます。
@@ -57,7 +57,7 @@ Marinaraは、すべてのアップロードを[ファイル形式とサイズ](
 
 ### Settingsからアップロードする
 
-1. **Settings**を開き、**Imports**タブに移動します。
+1. **Settings**を開き、**Game**タブに移動します。
 2. **Game Assets**で、**Type**(種類)からカテゴリーを選びます。**Music**、**Ambient**、**Sound Effects**、**Sprites**、**Backgrounds**のどれかです。
 3. **Folder**(フォルダー)で保存先を指定するか、デフォルトのままにします。
 4. **Choose Files**(ファイルを選択)をクリックしてファイルを選びます。
@@ -155,7 +155,7 @@ Game Modeのチャットでは、アセットフォルダーの一部だけを�
 
 Game Modeは、**Music & Sound Effects**(音楽と効果音)のアカウントを通して効果音や音楽を生成できます。ElevenLabs、SunoAPI、カスタム互換サーバーから選んでください。新しい音やトラックを作るたびに、そのサービスのアカウントを使います。同梱の音声は、生成なしで引き続き使えます。
 
-**始める前に:** **Music & Sound Effects**のアカウントが必要です。**Add account**(アカウントの追加)ウィンドウには、このアカウント用のタイルはありません。これらのアカウントは、アップグレードかインポート(**Connections**(接続)の**Import a backup**(バックアップをインポート))によって作られます。[プロバイダーの設定と制限](../connections/providers-reference.md#music--sound-effects)を参照してください。
+**始める前に:** **Music & Sound Effects**のアカウントが必要です。**Add connection**(接続を追加)の一覧には、このアカウント用の項目はありません。これらのアカウントは、アップグレードかインポート(**Connections**(接続)ページの**Import**(インポート))によって作られます。[プロバイダーの設定と制限](../connections/providers-reference.md#music--sound-effects)を参照してください。
 
 1. **Connections**で、**Edit model**(モデルの編集)からそのアカウントのモデルを開きます。
 2. サービスを選び、キーを入力して、音楽と効果音のモデルを選びます。SunoAPIの音楽には、公開HTTPSコールバックURLも必要です。カスタムサーバーには、エンドポイントパスが必要です。

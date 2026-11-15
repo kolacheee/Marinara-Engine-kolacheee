@@ -12,7 +12,7 @@ Du brauchst genau eine Sache: ein KI-Konto für den Game Master. Falls du noch k
 
 Alles Weitere ist optional und standardmäßig aus. Du kannst es später ergänzen:
 
-- **Bilder.** Der Agent **Illustrator** zeichnet NPC-Porträts, Hintergründe für Orte und Szenenbilder. Lade ihn unter **Agents → Agent Organizer** (Agenten → Agentenverwaltung) herunter. Er braucht ein Bildkonto. Ohne ihn bekommst du weiterhin die Geschichte, die Zustandsverfolgung und den Kampf, aber die visuellen Flächen bleiben leer.
+- **Bilder.** Der Agent **Illustrator** zeichnet NPC-Porträts, Hintergründe für Orte und Szenenbilder. Lade ihn unter **Library → Agents** (Bibliothek → Agenten) herunter. Er braucht ein Bildkonto. Ohne ihn bekommst du weiterhin die Geschichte, die Zustandsverfolgung und den Kampf, aber die visuellen Flächen bleiben leer.
 - **Szeneneffekte vom eingebauten Modell.** Marinara kann ein kleines Modell auf deinem eigenen Computer laufen lassen, das kostenlos Hintergründe und Musik auswählt. Sobald du es heruntergeladen hast, wird es zum Standard für **Scene effects model** (Modell für Szeneneffekte). Bis dahin ist der Standard **Skip - use inline tags from GM** (überspringen, Inline-Tags des GM nutzen). Siehe [Eingebautes Modell einrichten](../connections/local-model.md).
 - **Storyboards.** Lade den Storyboard-Agenten herunter und schalte ihn dann für das Spiel ein. Siehe [Anleitung zum Storyboard-Agenten](storyboard.md).
 - **Video.** Ein Videokonto brauchst du nur für Szenenvideos oder animierte Storyboards.
@@ -20,7 +20,7 @@ Alles Weitere ist optional und standardmäßig aus. Du kannst es später ergänz
 
 ## Ein Spiel starten
 
-1. Öffne in der Chat-Seitenleiste den Tab **GM** und klick auf die Schaltfläche **+** (**New Game**). Oder klick auf dem Home-Bildschirm auf **Game**. Der Einrichtungsassistent öffnet sich. Siehe [Die Chatliste verwalten](../chats/managing-chats.md).
+1. Öffne in der Seitenleiste **Chats** den Tab **Game** (Spiel) und klick auf **Neu** (**New Game**). Oder klick auf dem Home-Bildschirm auf **Game**. Der Einrichtungsassistent öffnet sich. Siehe [Die Chatliste verwalten](../chats/managing-chats.md).
 2. Wähle im ersten Schritt das **Model** (Modell), auf dem der GM läuft. Nimm ein Konto, das du schon hinzugefügt hast. Ist die Liste leer, füge zuerst eines hinzu. Wähle für die Weltgenerierung ein starkes kostenpflichtiges Modell (siehe [Ein Modell auswählen](#choosing-a-model)).
 3. Klick bei jedem Schritt auf **Next** (Weiter). Alle anderen Felder haben einen Standardwert, du kannst also einfach durchklicken.
 4. Klick im letzten Schritt auf **Create world** (Welt erstellen). Die Schaltfläche zeigt **Generating World…**, während Marinara deine Welt baut. Das ist eine einzige große Anfrage an dein Modell, warte also, bis sie fertig ist.
@@ -37,7 +37,7 @@ Wenn es nicht funktioniert hat, siehe [Die Weltgenerierung scheitert mit einem J
 | Schritt | Was du festlegst |
 | --- | --- |
 | **Connection** | **Game Name** (Spielname), das **Model**, auf dem der GM läuft, und optional ein **Scene effects model**. Die Karte **Game Mode** zeigt vorerst nur **VN** (siehe [VN oder Overworld](#vn-or-overworld)). |
-| **World** | Genre, Schauplatz, Ton, Schwierigkeit, Inhaltsfreigabe und Sprache. **Combat Preference** (bevorzugte Kampfart) ist **Turn-Based** oder **Tactical**. Jedes neue Spiel nutzt **MRPG**-Klassen (Marinara RPG; siehe [MRPG-Klassen](mrpg-classes.md)). Ist ein Regelsatz installiert, erscheint eine Auswahl **Rules** (Regeln). Siehe [Regeln auswählen](#choose-rules). |
+| **World** | Genre, Schauplatz, Ton, Schwierigkeit, Inhaltsfreigabe, Erzählstil, Gewalt, inhaltliche Grenzen und Sprache. **Combat Preference** (bevorzugte Kampfart) ist **Turn-Based** oder **Tactical**. Jedes neue Spiel nutzt **MRPG**-Klassen (Marinara RPG; siehe [MRPG-Klassen](mrpg-classes.md)). Ist ein Regelsatz installiert, erscheint eine Auswahl **Rules** (Regeln). Siehe [Regeln auswählen](#choose-rules). |
 | **Party** | Deine Persona (der Charakter, den du spielst), **Game Master Mode**, Partymitglieder und **GM intro message** (Intro-Nachricht des GM). Siehe [Die Intro-Nachricht des GM](#the-gm-intro-message). Der MRPG-Startbaum jedes Mitglieds stammt aus dem Abschnitt **Game Mode** seiner Karte (siehe [Die Bäume eines Charakters wählen](mrpg-classes.md#choose-a-characters-trees)). |
 | **Goals** | Was du dir vom Abenteuer wünschst. |
 | **Lorebooks** | Lorebooks, die der GM als verbindlich behandelt. Ein Lorebook ist eine Sammlung von Hintergrundfakten zur Welt. Siehe [Lorebooks](../lorebooks/overview.md). |
@@ -57,7 +57,9 @@ Ist der Agent **Hierarchical Maps** heruntergeladen (er heißt jetzt World Maps,
 | Genre | Fantasy | Mehrfachauswahl, eigene Einträge möglich. Ein zuerst gewähltes Setting-Kit setzt sein eigenes. |
 | Tone | Heroic | Mehrfachauswahl. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** oder **Brutal**. Höhere Stufen machen Kämpfe schwieriger: In einem MRPG-Spiel gibt es mehr und stärkere Gegner (siehe [Kämpfe in einem MRPG-Spiel](combat.md#battles-in-an-mrpg-game)), in einem Legacy-Spiel treffen Gegner härter (siehe [Skalierung nach Schwierigkeit](combat.md#difficulty-scaling)). |
-| Content Rating | SFW | **SFW** oder **NSFW**. NSFW erlaubt Inhalte für Erwachsene, erzwingt sie aber nicht. |
+| Altersfreigabe (sexuelle Inhalte) | SFW | **SFW** oder **NSFW**. Sie entscheidet nur über sexuelle Inhalte. NSFW erlaubt explizite Szenen, erzwingt sie aber nicht. |
+| Erzählstil | Standard | **Standard** oder **Sanft**. Siehe [Inhalte und Erzählstil](#content-and-story-style). |
+| Gewalt | Ernst (Explizit bei NSFW) | **Mild**, **Ernst** oder **Explizit**. |
 | Language | English | Der gesamte Text im Spiel wird in dieser Sprache geschrieben. |
 | Game Master Mode | Standalone GM | **Character GM** nutzt eine deiner Charakterkarten als GM. |
 | Scene effects model | Built-in model | Erst, wenn du es heruntergeladen hast. Bis dahin ist der Standard **Skip - use inline tags from GM**. |
@@ -68,6 +70,18 @@ Ist der Agent **Hierarchical Maps** heruntergeladen (er heißt jetzt World Maps,
 | Quick Time Events | On | Für Screenreader oder Spiel ohne Zeitdruck ausschalten. |
 | Start Muted | Off | Startet das Spiel mit stummgeschaltetem Audio. |
 | Game Presentation | Standard | Siehe unten. |
+
+### Inhalte und Erzählstil
+
+Der Schritt **Welt** enthält diese Einstellungen dafür, was in der Geschichte vorkommen darf. In einem laufenden Spiel findest du sie alle unter **Chat-Einstellungen → Prompt-Preset**.
+
+- **Altersfreigabe (sexuelle Inhalte)**: **SFW** erlaubt Romantik und Zuneigung und blendet bei Sexszenen aus. **NSFW** erlaubt, sie explizit zu beschreiben. Über Gewalt oder Ton sagt die Einstellung nichts aus.
+- **Altersfreigabe-Richtlinien bearbeiten** unter der Freigabe zeigt den Text, den der Game Master als Inhaltsregeln des Spiels erhält. Passe ihn an dein Spiel an; **Auf Standard zurücksetzen** stellt den Standard der Freigabe wieder her. Unveränderter Text folgt dem Standard, sodass spätere Verbesserungen dein Spiel erreichen. In einem laufenden Spiel heißt die Einstellung **Altersfreigabe-Richtlinien**.
+- **Erzählstil**: **Standard** hält die Spannung hoch, sodass Fehler und Pech spürbare Folgen haben. **Sanft** ist für weniger belastende Geschichten gedacht: Rückschläge ohne Bestrafung oder Trauma, weniger Würfe für Dinge außerhalb der Kontrolle deines Charakters und Raum für Trost und Erholung.
+- **Gewalt**: **Mild**, **Ernst** oder **Explizit**, unabhängig von der Inhaltsfreigabe. Wenn du nichts wählst, gilt bei SFW **Ernst** und bei NSFW **Explizit**.
+- **Inhaltliche Grenzen**: Themen, die der Game Master aus der Geschichte heraushält, eines pro Zeile, etwa `harm to animals`. Sie sind feste Grenzen bei jedem Stil und jeder Freigabe, und deine eigenen Freigaberichtlinien können sie nicht aufheben. Da eine KI die Geschichte schreibt, lässt sich nicht garantieren, dass ein aufgeführtes Thema niemals vorkommt.
+
+Auch ein Prompt-Preset kann diese Einstellungen enthalten: im Tab **Prompts** unter **Game-Story-Einstellungen** mit **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden**. Seine Gewalteinstellung kann auch **Altersfreigabe folgen** sein. Wählst du das Preset für ein Spiel, legt es dessen Stil und Gewalt fest und ergänzt die eigenen Grenzen des Spiels. Eine aus einem Spiel gestartete Szene folgt dessen Freigabe, Richtlinien, Gewalt, Stil und Grenzen.
 
 <a id="choose-rules"></a>
 

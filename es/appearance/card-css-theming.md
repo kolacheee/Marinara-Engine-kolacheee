@@ -140,7 +140,7 @@ Roleplay y Conversation comparten el mismo esqueleto. Quédate con las clases `m
 | `[data-card-css] p`, `[data-card-css] span` | Párrafos y spans en línea dentro del texto. |
 | `[data-grouped]` | Mensajes de continuación del mismo personaje. Solo en Conversation. Usa `[data-card-css]:not([data-grouped])` para el primer mensaje de un grupo. |
 
-Para cambiar la disposición, abre **Settings → Appearance → Conversation** (Configuración → Apariencia → Conversation), luego **Conversation Display** y luego **Chat Layout**. En **Linear**, da estilo a `.mari-message-content` (el texto) y a `[data-card-css]` (la fila), ya que no hay burbuja.
+Para cambiar la disposición, abre **Settings → Conversation → Conversation Layout → Chat Layout** (Configuración → Conversation → Disposición de Conversation → Disposición del chat). En **Linear**, da estilo a `.mari-message-content` (el texto) y a `[data-card-css]` (la fila), ya que no hay burbuja.
 
 Una burbuja con estilo:
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## Guías relacionadas
 
 - [Configuración de apariencia](appearance-settings.md)
-- [Temas CSS personalizados (Biblioteca de temas)](custom-css-themes.md)
+- [Temas CSS personalizados](custom-css-themes.md)
 - [Crear y editar personajes](../characters/creating-and-editing-characters.md)

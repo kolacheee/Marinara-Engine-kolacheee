@@ -2,7 +2,7 @@
 
 이 가이드에서는 통화를 설명합니다. 통화는 음성 채팅 앱처럼 마이크나 타이핑으로 캐릭터 한 명 이상과 이야기하는 실시간 화면입니다. 통화하는 동안 일반 Conversation 채팅 위에 겹쳐 표시됩니다. 통화는 Conversation Mode에서만 쓸 수 있습니다.
 
-Calls는 선택 사항인 패키지입니다. **Agents**(에이전트) → **Agent Organizer**에서 **Calls**를 설치하세요. 카탈로그가 다시 시작하라고 하면 Marinara를 중지했다가 평소에 시작하던 방식으로 다시 시작하세요([설치](../INSTALLATION.md) 참고).
+Calls는 선택 사항인 패키지입니다. **Library → Agents**(라이브러리 → 에이전트)에서 **Calls**를 설치하세요. 카탈로그가 다시 시작하라고 하면 Marinara를 중지했다가 평소에 시작하던 방식으로 다시 시작하세요([설치](../INSTALLATION.md) 참고).
 
 통화 중에는 Text to Speech(TTS, 글을 음성으로 바꾸는 기능) 음성이 제대로 설정된 캐릭터가 소리 내어 말합니다. 음성이 없는 캐릭터는 통화 채팅에 입력한 메시지로 답합니다. 정지된 아바타 대신 캐릭터의 AI 생성 반복 영상 클립을 표시할 수도 있습니다.
 
@@ -42,14 +42,13 @@ Marinara는 브라우저에서 마이크나 카메라를 녹음합니다. 입력
 
 ### Text to Speech 설정하기
 
-Text to Speech는 어떤 캐릭터가 어떤 음성으로 말할 수 있는지 정합니다. 전체 안내는 [Text to Speech(TTS) 설정](../media/tts-setup.md)을 읽으세요. 간단히 말하면 **Connections**(연결)를 열고 **Add account**를 클릭한 다음 **Text to speech**를 고르세요. **On this device** 아래에 이미 있으면 그곳에서 여세요. 그다음 이렇게 하세요.
+Text to Speech는 어떤 캐릭터가 어떤 음성으로 말할 수 있는지 정합니다. 전체 안내는 [Text to Speech(TTS) 설정](../media/tts-setup.md)을 읽으세요. 간단한 절차는 다음과 같습니다.
 
-1. Text to Speech를 켜세요.
-2. 소스를 고르세요. **OpenAI-compatible**, **ElevenLabs**, **PocketTTS**, **xAI Voice** 중 하나입니다.
-3. 그 소스의 API 키나 로컬 서버 주소를 입력하세요.
-4. 모델과 음성을 고르세요.
-5. **Voice option**(음성 소스)을 **One voice for all**(모든 캐릭터에 하나의 음성 사용)이나 **Selected per character or persona**(캐릭터 개별 음성)로 정하세요. 캐릭터별 음성을 쓰면 그룹 통화에서 누가 말하는지 따라가기 쉽습니다.
-6. 저장한 다음 미리듣기 버튼으로 소리가 나는지 확인하세요.
+1. **Connections**(연결)를 열고 **Defaults**(기본값) 상자의 **Voice**(음성) 행을 클릭하세요.
+2. 음성 모델이나 음성 서비스를 고르세요. 하나를 고르면 Text to Speech가 켜집니다. 해당 모델의 계정에서 키와 주소를 가져옵니다.
+3. **Voice** 행의 톱니바퀴를 클릭해 **Voice settings**를 여세요.
+4. **Who speaks**에서 **Shared voice**를 고르거나, **Character and persona voices**에서 캐릭터와 페르소나마다 음성을 지정하세요. 캐릭터별 음성을 쓰면 그룹 통화에서 누가 말하는지 따라가기 쉽습니다.
+5. **Preview**(미리보기)를 클릭해 소리가 나는지 확인하세요.
 
 Marinara가 찾을 수 있는 음성이 없는 캐릭터는 이번 통화에서 텍스트로만 참여합니다.
 
@@ -148,7 +147,7 @@ Local Whisper는 Marinara를 실행하는 컴퓨터에서 내 음성을 텍스�
 
 Local Whisper가 내 언어나 억양을 잘 알아듣지 못하면 음성을 다른 음성 인식 서버로 보내세요. OpenAI 음성 인식 형식(`/audio/transcriptions` 주소)을 받는 서버라면 직접 운영하든 OpenAI나 Groq 같은 서비스를 쓰든 상관없이 작동합니다.
 
-1. **Connections**를 열고 **On this device** 아래의 **Speech to text**를 여세요. 목록에 없으면 **Add account**를 클릭하고 **Speech to text**를 고르세요. Calls를 설치하지 않으면 숨겨져 있습니다.
+1. **Connections**를 열고 **Defaults** 상자의 **Dictation**(받아쓰기) 행에서 톱니바퀴를 클릭하세요. **Speech to text**(음성 인식) 서버 설정이 그곳에 있습니다. Calls를 설치하지 않으면 숨겨져 있습니다.
 2. **Server URL**(서버 URL)을 입력하세요. 예를 들면 `http://localhost:8000/v1`입니다.
 3. 서버가 요구하면 **API key**(API 키)를 입력하세요. 암호화해서 저장하며 가려진 채로 표시됩니다.
 4. 서버가 쓰는 **Model**(모델) 이름을 입력하세요. 비워 두면 `whisper-1`을 보냅니다.
@@ -160,7 +159,7 @@ Local Whisper가 내 언어나 억양을 잘 알아듣지 못하면 음성을 �
 
 같은 컴퓨터에 있는 서버는 그대로 작동합니다. 네트워크의 다른 컴퓨터에 있는 서버는 `.env`에 `STT_LOCAL_URLS_ENABLED=true`를 설정하지 않으면 거부됩니다([서버 설정 참고 문서](../CONFIGURATION.md) 참고).
 
-작동하지 않는 경우: **Test** 아래의 메시지를 읽으세요. "Could not reach the speech-to-text server"는 주소가 잘못되었거나 서버가 꺼져 있다는 뜻입니다. `STT_LOCAL_URLS_ENABLED`가 들어 있는 메시지는 서버가 다른 컴퓨터에 있다는 뜻입니다. 숫자는 내 서버가 보낸 것입니다. 401은 보통 API 키가 틀렸다는 뜻이고, 404는 주소나 모델 이름이 틀렸다는 뜻입니다. 통화가 계속 Local Whisper를 쓴다면 **Agents** → **Agent Organizer**에서 Calls를 업데이트하세요.
+작동하지 않는 경우: **Test** 아래의 메시지를 읽으세요. "Could not reach the speech-to-text server"는 주소가 잘못되었거나 서버가 꺼져 있다는 뜻입니다. `STT_LOCAL_URLS_ENABLED`가 들어 있는 메시지는 서버가 다른 컴퓨터에 있다는 뜻입니다. 숫자는 내 서버가 보낸 것입니다. 401은 보통 API 키가 틀렸다는 뜻이고, 404는 주소나 모델 이름이 틀렸다는 뜻입니다. 통화가 계속 Local Whisper를 쓴다면 **Library → Agents**에서 Calls를 업데이트하세요.
 
 ## 설정과 기본값
 

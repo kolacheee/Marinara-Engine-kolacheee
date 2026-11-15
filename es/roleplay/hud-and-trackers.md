@@ -17,7 +17,7 @@ Si no funcionó: sin agentes tracker activados, el HUD no muestra widgets. Compr
 
 ## Dónde aparece el HUD
 
-En un teléfono, los trackers son los botones **World State** y **Player & Tracker**, que puedes mover. Toca uno para abrir su panel y **X** para cerrarlo. Cuando World State tiene detalles, su botón muestra un pequeño banner con la ubicación, el día, la hora, el clima y la temperatura. Arrastra los botones a cualquier lugar. Tu chat recuerda dónde los pusiste. Siguen tu **Chat widget style** (Estilo de widgets del chat) de **Settings → Appearance → App** (Configuración → Apariencia → App).
+En un teléfono, los trackers son los botones **World State** y **Player & Tracker**, que puedes mover. Toca uno para abrir su panel y **X** para cerrarlo. Cuando World State tiene detalles, su botón muestra un pequeño banner con la ubicación, el día, la hora, el clima y la temperatura. Arrastra los botones a cualquier lugar. Tu chat recuerda dónde los pusiste. Siguen tu **Chat widget style** (Estilo de widgets del chat) de **Settings → Appearance → Chat Buttons & Windows** (Configuración → Apariencia → Botones y ventanas del chat).
 
 En una computadora, los mismos trackers aparecen en uno de dos lugares:
 
@@ -61,8 +61,6 @@ Todos los campos son editables, así que puedes corregir un valor en el que la I
 
 Para corregir muchos valores a la vez, usa el [State Editor](#the-state-editor).
 
-<a id="lock-mode"></a>
-
 ## Modo de bloqueo
 
 Los agentes tracker sobrescriben los valores del HUD después de cada turno. El modo de bloqueo te permite fijar un valor. Cuando un campo está bloqueado, la siguiente ejecución automática lo deja en paz. Úsalo cuando un valor sigue desviándose mal.
@@ -85,8 +83,6 @@ Mientras haya al menos un tracker manual, aparece un botón de refresco: en la f
 
 > **Advertencia:** **Clear Trackers** borra todo el estado del mundo registrado del chat y no se puede deshacer.
 
-<a id="the-trackers-window"></a>
-
 ## La ventana Trackers
 
 En una computadora, los trackers usan la ventana **Trackers** cuando el Tracker Panel está desactivado. Si hay espacio junto a tus mensajes, se abre a la izquierda. Si no, empieza como un pequeño botón **Trackers** arriba a la izquierda del chat. Haz clic en el botón para abrirla. Un chat con un diseño guardado conserva tu disposición.
@@ -103,8 +99,6 @@ Cada tracker tiene una sección plegable. Haz clic en su encabezado para contrae
 
 Para dar a un tracker su propia ventana, haz clic en el botón para sacarlo junto a su flecha, o arrastra su título fuera de la ventana Trackers. La ventana nueva empieza sin fijar. Fíjala para mantenerla abierta. **X** la reduce a un botón pequeño con el icono del tracker. **World State**, en cambio, se reduce a un banner con la misma ubicación, fecha, hora y clima que en un teléfono, para que puedas arrastrarlo a cualquier lugar, como la parte superior central del chat. Para devolver el tracker, haz clic en **Put back in Trackers** (la flecha curva a la izquierda de **X**) o arrástralo sobre la ventana Trackers. Cada chat recuerda qué trackers están fuera y dónde.
 
-<a id="the-tracker-panel"></a>
-
 ## El Tracker Panel
 
 El **Tracker Panel** es un panel lateral más grande con los mismos datos. También muestra retratos y pensamientos de los personajes.
@@ -113,7 +107,7 @@ El **Tracker Panel** es un panel lateral más grande con los mismos datos. Tambi
 2. Haz clic en el botón **Tracker Panel** (el dado) de su barra de título, junto a fijar y bloquear. Queda resaltado mientras el panel está activado.
 3. Haz clic otra vez para ocultar el panel. En una computadora, los trackers pasan entonces a la ventana Trackers.
 
-En una computadora, el panel ocupa el espacio junto a tus mensajes, hasta el ancho que fija **Desktop size**. Cuando la ventana es demasiado estrecha para ambos, por ejemplo con la barra lateral de chats abierta, tus mensajes y el cuadro de mensaje se estrechan un poco. En un teléfono o una tableta, activarlo añade un botón Tracker Panel que puedes arrastrar. Tócalo para abrir el panel y vuelve a tocarlo para cerrarlo. Mientras el panel u otra pantalla cubre el chat, los botones móviles del chat se ocultan y vuelven a aparecer en los mismos lugares.
+En una computadora, el panel ocupa el espacio junto a tus mensajes, hasta el ancho que fija **Desktop size**. Cuando la ventana es demasiado estrecha para ambos, por ejemplo con la barra lateral abierta, tus mensajes y el cuadro de mensaje se estrechan un poco. En un teléfono o una tableta, activarlo añade un botón Tracker Panel que puedes arrastrar. Tócalo para abrir el panel y vuelve a tocarlo para cerrarlo. Mientras el panel u otra pantalla cubre el chat, los botones móviles del chat se ocultan y vuelven a aparecer en los mismos lugares.
 
 ### Personalizar los campos del tracker
 
@@ -132,7 +126,7 @@ La tarjeta grande de un personaje puede crear un retrato nuevo cuando el Charact
 
 ### Ajustes del Tracker Panel
 
-Abre **Settings → Appearance** (Configuración → Apariencia), abre el grupo **Roleplay** y busca la sección **Tracker Panel**.
+Abre **Settings → Roleplay** (Configuración → Roleplay) y busca la sección **Tracker Panel**.
 
 | Ajuste | Qué hace |
 | --- | --- |
@@ -145,8 +139,6 @@ Abre **Settings → Appearance** (Configuración → Apariencia), abre el grupo 
 | **Always show Docked thoughts** | Con **Docked**, mantiene visible el pensamiento de cada personaje destacado en lugar de esconderlo detrás de un botón. |
 | **Stat display mode** | Muestra las estadísticas como barras o como indicadores circulares. |
 | **Temperature unit** | **°C** (predeterminado) o **°F**. Esto cambia solo la visualización, no el valor guardado. |
-
-<a id="the-state-editor"></a>
 
 ## El State Editor
 

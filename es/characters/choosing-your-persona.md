@@ -36,7 +36,7 @@ En Game Mode esta sección se presenta como tu grupo dentro del juego, pero aún
 
 ### Colorear tu nombre en los mensajes
 
-En un chat de Roleplay, la sección **Persona** tiene la opción **Color Persona Name in Text** (Colorear el nombre de la persona en el texto). Aplica el color del nombre de tu persona a su nombre, su nombre visible en Conversation y sus **Other names** (Otros nombres) dentro de los mensajes. Hasta que la cambies, sigue el ajuste **Color Character Names in Text** (Colorear los nombres de los personajes en el texto) de la sección **Characters** (Personajes). Si un personaje del chat tiene el mismo nombre, conserva su propio color. Para que se vea, tu persona necesita un color de nombre en la pestaña **Colors** (Colores).
+En un chat de Roleplay, la sección **Persona** tiene **Color Persona Name in Text** (Colorear el nombre de la persona en el texto). Colorea el nombre de tu persona, su nombre visible de Conversation y sus **Other names** (Otros nombres) con el color del nombre de la persona dentro de los mensajes. Hasta que lo cambies, sigue **Color Character Names in Text** (Colorear los nombres de los personajes en el texto) en la sección **Characters** (Personajes). Un personaje del chat con el mismo nombre conserva su propio color. La persona necesita un color de nombre (pestaña **Colors**) para que se muestre.
 
 ## Cuando creas un chat
 
@@ -46,7 +46,7 @@ En un chat de Roleplay, el selector también puede ofrecer **Create your persona
 
 ## Jugar como un personaje
 
-Para usar una tarjeta de personaje como tu identidad, activa **Show characters in Persona pickers** (Mostrar personajes en los selectores de persona) en **Settings → Advanced → Message Tools** (Configuración → Avanzado → Herramientas de mensaje). Los selectores muestran entonces un grupo **Play as a character** (Jugar como un personaje) que enumera tus personajes.
+Para usar una tarjeta de personaje como tu identidad, activa **Show characters in Persona pickers** (Mostrar personajes en los selectores de persona) en **Settings → Chatting → Message Box** (Configuración → Chateando → Cuadro de mensaje). Los selectores muestran entonces un grupo **Play as a character** (Jugar como un personaje) que enumera tus personajes.
 
 ## Guías relacionadas
 

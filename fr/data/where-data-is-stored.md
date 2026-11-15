@@ -50,7 +50,7 @@ Certaines installations donnent la clé par la variable d'environnement `ENCRYPT
 
 ## Copier tes données depuis Android
 
-Sur Android, le dossier de données est dans le stockage de l'application, auquel tu ne peux pas accéder sans accès root. Tu ne peux donc pas le copier. Utilise **Settings → Advanced → Backup & Export → Download Backup** (Paramètres → Avancé → Sauvegarde et export → Télécharger la sauvegarde). Le `.zip` inclut le fichier `.encryption-key` quand il existe. Voir [Sauvegarder et restaurer Marinara](backup-and-restore.md).
+Sur Android, le dossier de données est dans le stockage de l'application, auquel tu ne peux pas accéder sans accès root. Tu ne peux donc pas le copier. Utilise **Settings → Data → Backup & Restore → Download Backup** (Paramètres → Données → Sauvegarde et restauration → Télécharger la sauvegarde). Le `.zip` inclut le fichier `.encryption-key` quand il existe. Voir [Sauvegarder et restaurer Marinara](backup-and-restore.md).
 
 Les sauvegardes automatiques sont enregistrées dans le même stockage de l'application. Si tu désinstalles ou réinitialises l'application, tu peux les perdre avec les données actives. Garde donc une copie ailleurs.
 

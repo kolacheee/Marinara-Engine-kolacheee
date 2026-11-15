@@ -24,7 +24,7 @@ Do jednego czatu można dodać obu agentów, ale ich działanie się pokrywa i p
 
 ## Dodawanie agenta wiedzy do czatu
 
-Zanim zaczniesz: zainstaluj agenta z sekcji **Agent Organizer** (organizowanie agentów). Zobacz [Agenci: pomocnicy AI w czatach](agents-overview.md).
+Zanim zaczniesz: zainstaluj agenta z sekcji **Biblioteka → Agenci**. Zobacz [Agenci: pomocnicy AI w czatach](agents-overview.md).
 
 1. W czacie Roleplay otwórz **Chat Settings** (ustawienia czatu).
 2. Znajdź sekcję **Agents** i włącz **Enable Agents** (włączenie agentów).
@@ -70,7 +70,7 @@ Kiedy wybierasz źródłowe lorebooki dla routera, obok opcji **Fixed source ove
 Knowledge Router potrafi też znajdować kandydatów na wpisy po znaczeniu, a nie tylko po słowach kluczowych. Służy do tego model embeddingów, czyli mały model, który zamienia tekst na liczby, żeby Marinara mogła porównywać znaczenie. Router działa także bez niego.
 
 1. Otwórz edytor lorebooka i znajdź **Semantic search (embeddings)**.
-2. Wybierz konto, które ma model embeddingów. Jeśli w **Connections → Defaults** (połączenia, ustawienia domyślne) ustawisz domyślne źródło dla **Embeddings** (embeddingi), zostanie ono wybrane automatycznie, chyba że wcześniej wybrano inne źródło.
+2. Wybierz konto, które ma model embeddingów. Jeśli ustawisz zadanie **Embeddingi** w sekcji **Domyślne** w **Połączenia**, zostanie ono wybrane automatycznie, chyba że wcześniej wybrano inne źródło.
 3. Używaj tego samego źródła embeddingów co konto czatu. Wektory o innym rozmiarze są pomijane.
 4. Kliknij przycisk wektoryzacji. Pokazuje on, ile wpisów nadal potrzebuje wektorów. **Re-vectorize all** przelicza od nowa każdy wpis.
 

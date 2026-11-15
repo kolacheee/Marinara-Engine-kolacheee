@@ -6,7 +6,7 @@
 
 | 名前 | 内容 |
 | --- | --- |
-| Personal Extension(個人用拡張機能) | Professor Mariが書いてくれた拡張機能です。**Settings → Addons**(設定 → アドオン)の下に下書きとして表示されます。 |
+| Personal Extension(個人用拡張機能) | Professor Mariが書いてくれた拡張機能です。**Library → Extensions**(ライブラリー → 拡張機能)の下に下書きとして表示されます。 |
 | External Extension(外部拡張機能) | 他の人が作った拡張機能、または自分で書いた拡張機能です。[サードパーティー製拡張機能のインポートを許可する](#allow-third-party-imports)の追加手順が必要です。 |
 | Browser Extension(ブラウザー拡張機能) | ブラウザーの中のサンドボックスで動きます。デフォルトのままで安全です。 |
 | Server Extension(サーバー拡張機能) | Marinaraを動かしているコンピューター上の、OSのサンドボックスの中で動きます。対応するプラットフォームが必要です。 |
@@ -16,7 +16,7 @@
 
 始める前に、[サードパーティー製拡張機能のインポートを許可する](#allow-third-party-imports)の2つの手順を済ませてください。済ませていないと、インポートのボタンは表示されません。
 
-1. **Settings → Addons**(設定 → アドオン)を開きます。**External Extensions**(外部拡張機能)の下で、`.zip`、`.json`、`.css`、`.js`のファイルなら**Import Extension File**(拡張機能のファイルをインポート)を、フォルダーなら**Import Extension Folder**(拡張機能のフォルダーをインポート)を選びます。
+1. **Library → Extensions**(ライブラリー → 拡張機能)を開きます。**External Extensions**(外部拡張機能)の下で、`.zip`、`.json`、`.css`、`.js`のファイルなら**Import Extension File**(拡張機能のファイルをインポート)を、フォルダーなら**Import Extension Folder**(拡張機能のフォルダーをインポート)を選びます。
 2. 新しい下書きを開きます。下書きは無効の状態で、コードとハッシュが表示されます。ハッシュとは、そのコードそのものを表す短いフィンガープリントです(MarinaraはSHA-256を使います)。
 3. コードと**Requested access**(要求されている権限)の一覧を読みます。
 4. そのバージョンをそのまま受け入れられる場合にだけ、**Review and Run**(確認して実行)を選びます。すると、拡張機能は有効と表示されます。
@@ -27,7 +27,7 @@
 
 始める前に、[Professor Mari](../home/professor-mari.md)に拡張機能の作成を頼んでください。Professor Mariはコードを保存できますが、承認したり有効にしたりはできません。このセクションには、New Draftボタンも、インポートの操作もありません。
 
-1. **Settings → Addons → Personal Extensions**(設定 → アドオン → 個人用拡張機能)を開きます。下書きがない場合は、「Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash.」と表示されます。
+1. **Library → Extensions**(ライブラリー → 拡張機能)を開きます。下書きがない場合は、「Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash.」と表示されます。
 2. 下書きを開いてコードを読みます。ハッシュと**Requested access**(要求されている権限)の一覧を確認します。
 3. そのバージョンをそのまま受け入れられる場合にだけ、**Review and Run**(確認して実行)を選びます。
 
@@ -78,9 +78,9 @@ WindowsとAndroidには対応するプロセスサンドボックスがないた
 サードパーティー製拡張機能のインポートは、他の人が書いたコードを実行するため、デフォルトではロックされ、表示もされません。次の2つの手順で使えるようになります。
 
 1. Marinaraを動かしているコンピューターで、`.env`ファイルに`ENABLE_EXTERNAL_EXTENSIONS=true`を設定し、Marinaraを再起動します。[サーバー設定リファレンス](../CONFIGURATION.md)を参照してください。
-2. **Settings → Advanced → Danger Zone**(設定 → 詳細設定 → 危険な操作)を開き、データ削除の操作より下までスクロールして、警告を読んでから**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)をオンにします。
+2. **Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)を開き、警告を読んでから**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)をオンにします。
 
-すると、**Settings → Addons**(設定 → アドオン)に**External Extensions**(外部拡張機能)が表示され、ファイルとフォルダーのインポート操作が使えるようになります。対応形式は次のとおりです。
+すると、**Library → Extensions**(ライブラリー → 拡張機能)に**External Extensions**(外部拡張機能)が表示され、ファイルとフォルダーのインポート操作が使えるようになります。対応形式は次のとおりです。
 
 - `.personal-extension.zip`と、互換性のある`.zip`パッケージ
 - `.json`のマニフェスト
@@ -99,13 +99,13 @@ WindowsとAndroidには対応するプロセスサンドボックスがないた
 
 どちらかの設定をオフにすると、インポートしたすべての拡張機能が無効になります。もう一度オンにしても、再び実行されることはありません。ページ全体へのアクセスを持つ拡張機能が変更を残した場合は、ページを再読み込みしてください。
 
-うまくいかなかった場合: インポートの操作が表示されないときは、2つの手順が両方とも済んでいることを確認してください。あわせて、サーバーのコンピューターで操作しているか、**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)に管理者用のシークレットを保存していることも確認してください。
+うまくいかなかった場合: インポートの操作が表示されないときは、2つの手順が両方とも済んでいることを確認してください。あわせて、サーバーのコンピューターで操作しているか、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)に管理者用のシークレットを保存していることも確認してください。
 
 ## エクスポート、リビジョン、トラブル時の対処
 
 拡張機能のエクスポート操作を使うと、持ち運べるパッケージをダウンロードできます。エクスポートしたパッケージも、復元したパッケージも無効のままです。リビジョンを復元した場合も、無効の下書きに戻ります。
 
-**Settings → Addons → Extension revision history**(設定 → アドオン → 拡張機能のリビジョン履歴)では、すべての個人用拡張機能と外部拡張機能について、以前のコードを何版保持するかを指定します。デフォルトは**10**です。**0**から**10**までを選べ、**0**にすると履歴を残しません。上限を下げると、古いリビジョンを完全に削除する前に確認が表示されます。現在のコード、承認、有効状態、保存済みの拡張機能データは保持されます。Professor Mariを通じた編集にも同じ上限が適用されます。
+**Library → Extensions → Extension revision history**(ライブラリー → 拡張機能 → 拡張機能のリビジョン履歴)では、すべての個人用拡張機能と外部拡張機能について、以前のコードを何版保持するかを指定します。デフォルトは**10**です。**0**から**10**までを選べ、**0**にすると履歴を残しません。上限を下げると、古いリビジョンを完全に削除する前に確認が表示されます。現在のコード、承認、有効状態、保存済みの拡張機能データは保持されます。Professor Mariを通じた編集にも同じ上限が適用されます。
 
 拡張機能の動作がおかしいときは、**Disable**(無効にする)を選びます。画面を操作できない場合は、Marinaraを停止し、該当する`installed_extensions`レコードの`enabled`の値を`"false"`にします。`approvedHash`は絶対に手作業で設定しないでください。
 

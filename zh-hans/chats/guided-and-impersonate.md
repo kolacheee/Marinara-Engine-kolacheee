@@ -25,11 +25,11 @@
 
 这种方式会把消息框里的文字当成一次性的方向说明，用于重新生成。
 
-1. 打开 **Settings → Advanced → Message Tools**(设置 → 高级 → 消息工具)，开启 **Guide swipes/regens with chat input**(用聊天输入引导备选回复和重新生成)。它默认关闭。
+1. 打开 **Settings → Chatting → Editing & Swipes**(设置 → 聊天中 → 编辑与备选回复)，开启 **Guide swipes/regens with chat input**(用聊天输入引导备选回复和重新生成)。它默认关闭。
 2. 在聊天里，往消息框里写下方向说明，但不要发送。
 3. 点击 AI 消息上的 **Regenerate**(重新生成)。输入框里有文字时，按钮的标签是 **Regenerate (guided)**(带引导的重新生成)。
 
-之后方向说明仍会留在输入框里，所以可以调整一下再重新生成一次。如果想让它自动清空，就在 **Settings → General → Input & Editing**(设置 → 常规 → 输入与编辑) 里关闭 **Keep guidance after regenerating**(重新生成后保留引导)。
+之后方向说明仍会留在输入框里，所以可以调整一下再重新生成一次。如果想让它自动清空，就在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 里关闭 **Keep guidance after regenerating**(重新生成后保留引导)。
 
 如果没有成功：按钮的标签必须是 **Regenerate (guided)**。如果只显示 **Regenerate**，说明设置是关闭的，或者输入框是空的。
 
@@ -71,7 +71,7 @@ Impersonate 让模型用你的用户角色的口吻写出你的下一条消息�
 | **Preset**(预设) | 只用于 impersonate 回复的提示词预设。默认：**Use chat default**(使用聊天默认值)。见[预设](../prompts/presets.md)。 |
 | **Connection**(连接) | 用于 impersonate 回复的模型，比如更便宜或更快的模型。默认：**Use chat default**。也可以选 **Random**(随机)。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。 |
 | **Skip agents**(跳过智能体) | 在 impersonate 期间跳过智能体（追踪器、世界书路由之类的辅助程序）。这样它会更快，也不会改动世界状态。默认关闭。见[智能体](../agents/agents-overview.md)。 |
-| **Use CYOA as direction**(把 CYOA 选项当作方向说明) | 点击一个 CYOA(自选冒险) 选项时，把它当作 impersonate 的方向说明，而不是直接发出去。默认关闭。如果在 **Settings → General → Input & Editing** 里开启了 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项加入消息框而不是直接发送)，点击只会把文字加进你的消息框，这个设置也就不起作用。 |
+| **Use CYOA as direction**(把 CYOA 选项当作方向说明) | 点击一个 CYOA(自选冒险) 选项时，把它当作 impersonate 的方向说明，而不是直接发出去。默认关闭。如果在 **Settings → Chatting → Message Box** 里开启了 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项加入消息框而不是直接发送)，点击只会把文字加进你的消息框，这个设置也就不起作用。 |
 
 ### 为单个聊天设置提示词
 
@@ -88,7 +88,7 @@ Impersonate 让模型用你的用户角色的口吻写出你的下一条消息�
 
 Quick replies 会加上几个一键使用的 **Send** 替代操作，让你不用输入斜杠命令。
 
-1. 打开 **Settings → General → Input & Editing**。
+1. 打开 **Settings → Chatting → Message Box**。
 2. 开启 **Quick replies**。它默认关闭。
 3. 展开它，挑选要显示哪些操作。开启后，三个操作默认都是开启的。
 

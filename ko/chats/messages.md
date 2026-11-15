@@ -2,7 +2,7 @@
 
 직접 쓴 메시지든 AI가 쓴 메시지든, 모든 메시지에는 툴바가 있습니다. 툴바로 메시지 하나를 편집, 삭제, 재생성하거나 숨길 수 있고, 그 메시지에서 분기를 만들 수도 있습니다.
 
-휴대폰이나 태블릿에서는 메시지를 탭하면, 컴퓨터에서는 메시지에 마우스를 올리면 툴바가 나타납니다.
+컴퓨터에서는 메시지에 마우스를 올리면 툴바가 나타납니다. 휴대폰이나 태블릿에서는 메시지를 길게 누르면 같은 동작이 시트에 표시됩니다.
 
 ## 메시지 툴바
 
@@ -42,7 +42,7 @@
 3. **Save**(저장)를 클릭하거나 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>를 누르세요(Mac에서는 <kbd>Cmd</kbd>+<kbd>Enter</kbd>).
 4. 저장하지 않고 그만두려면 **Cancel**(취소)을 클릭하거나 <kbd>Esc</kbd>를 누르세요.
 
-**Settings → General → Input & Editing**(설정 → 일반 → 입력 및 편집)에 있는 설정 2개를 쓰면 편집을 더 빨리 시작할 수 있습니다. 둘 다 기본값은 켜짐입니다.
+**Settings → Chatting → Editing & Swipes**(설정 → 채팅 중 → 편집 및 스와이프)에 있는 설정 2개를 쓰면 편집을 더 빨리 시작할 수 있습니다. 둘 다 기본값은 켜짐입니다.
 
 - **Up Arrow edits last message**(위쪽 화살표로 마지막 메시지 편집): 입력란이 비어 있을 때 <kbd>Up</kbd>을 누르세요.
 - **Double-click edits messages**(더블 클릭으로 메시지 편집): Roleplay 메시지를 더블 클릭하거나 두 번 탭하세요.
@@ -74,6 +74,20 @@
 
 마지막 스와이프는 삭제할 수 없습니다. 앱에 "Cannot delete the last remaining swipe"라는 안내가 표시됩니다. 대신 **Delete this message**를 쓰세요.
 
+## 터치 제스처
+
+휴대폰이나 태블릿의 새 레이아웃에서는 컴퓨터에서 마우스를 올릴 때 나타나는 버튼을 스와이프와 길게 누르기로 대신합니다.
+
+- **가장 최근 답변을 스와이프**하면 왼쪽이나 오른쪽으로 스와이프 간에 이동합니다. 마지막 스와이프를 지나 왼쪽으로 스와이프하면 새 답변을 만들기 전에 "Generate a new reply?"라고 묻습니다. 새 답변에는 요청이 한 번 필요하기 때문입니다.
+- 상단 바의 **제목을 스와이프**하면 왼쪽이나 오른쪽으로 열린 탭 간에 이동합니다. 홈은 첫 번째 탭 앞에 있는 탭으로 취급합니다. 휴대폰 레이아웃에서 작동하며, 태블릿도 세로로 들면 이 레이아웃을 씁니다. 태블릿을 가로로 돌리면 대신 탭 표시줄이 나타납니다.
+- 채팅 목록에서 **채팅을 왼쪽으로 스와이프**하면 **Pin**(고정), **Rename**(이름 바꾸기), **Tags**(태그), **Delete**가 표시됩니다.
+- **메시지를 길게 누르면** Regenerate, Edit, Copy, Branch 등의 동작이 표시됩니다.
+- 채팅 목록에서 **채팅을 길게 누르면** 같은 동작이 표시됩니다.
+
+Settings > Chatting > Editing & Swipes의 **Swipe gestures on touch screens**(터치 화면 스와이프 제스처)로 스와이프를 끌 수 있습니다. 길게 누르기는 이 설정과 관계없이 계속 작동합니다.
+
+휴대폰, 태블릿, 컴퓨터에서 Marinara를 처음 열면 해당 기기에서 각 기능이 어디에 있는지 짧은 안내가 표시됩니다. 터치 화면에서는 이러한 제스처도 안내합니다. 각 채팅 모드도 해당 기기에서 처음 열 때 도움말을 표시합니다. Settings > General > Walkthroughs에서 어느 안내든 다시 볼 수 있습니다.
+
 ## 재생성, 이어 쓰기, 다시 시도
 
 이 세 가지는 비슷해 보이지만 하는 일이 다릅니다.
@@ -92,7 +106,7 @@
 /continue
 ```
 
-Marinara는 새 텍스트 앞에 빈 줄을 하나 넣습니다. 마지막 글자에 곧바로 이어 붙이려면 **Settings → General → Responses → Add a new line before /continue text**(설정 → 일반 → 응답 → /continue 텍스트 앞에 새 줄 추가)를 끄세요.
+Marinara는 새 텍스트 앞에 빈 줄을 하나 넣습니다. 마지막 글자에 곧바로 이어 붙이려면 **Settings → Chatting → Responses → Add a new line before /continue text**(설정 → 채팅 중 → 응답 → /continue 텍스트 앞에 새 줄 추가)를 끄세요.
 
 ### 빈 Send로 다시 시도하기
 
@@ -114,7 +128,7 @@ Advanced Memory의 **Decide who sees new messages**(새 메시지를 볼 대상 
 
 ## 메시지 표시 토글
 
-이 토글은 **Settings → Advanced → Message Tools**(설정 → 고급 → 메시지 도구)에 있습니다.
+이 토글은 **Settings → Chatting → Message Info**(설정 → 채팅 중 → 메시지 정보)에 있습니다.
 
 | 토글 | 기본값 | 표시하는 내용 |
 | --- | --- | --- |

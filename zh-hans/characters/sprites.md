@@ -9,12 +9,12 @@
 - **Facial Expressions**(面部表情) 是对应不同心情的半身像，比如开心、难过或生气。
 - **Full-body**(全身) 是对应不同姿势的全身图，比如待机、行走或战斗姿态。
 
-立绘只在 Roleplay Mode 和 Game Mode(游戏模式) 里显示在屏幕上，Conversation(对话模式) 聊天里不显示。不过在任何模式下都可以上传立绘，因为角色的立绘在每个聊天里都跟着它。用户角色也有同样的 **Sprites**(立绘) 区域。
+立绘只在 Roleplay Mode 和 Game Mode(游戏模式) 里显示在屏幕上，Conversation(对话模式) 聊天里不显示。不过在任何模式下都可以上传立绘，因为角色的立绘在每个聊天里都跟着它。用户角色也有同样的 **Sprites**(立绘) 选项卡。
 
-## 找到立绘
+## 找到 Sprites 选项卡
 
 1. 在编辑器里打开一个角色（或用户角色）。
-2. 点击 **Images**(图像) 选项卡，再点击顶部的 **Sprites**。
+2. 点击 **Sprites** 选项卡。
 3. 在顶部选一个分类：**Facial Expressions**、**Full-body** 或 **Clips**(片段)。
 
 下面几节讲 **Facial Expressions** 和 **Full-body**。**Clips** 属于通话功能，参见 [Conversation 音频和视频通话](../conversation/calls.md)。
@@ -27,7 +27,7 @@
 
 ### 上传一张或多张立绘
 
-1. 打开 **Images → Sprites**，选择 **Facial Expressions** 或 **Full-body**。
+1. 打开 **Sprites** 选项卡，选择 **Facial Expressions** 或 **Full-body**。
 2. 点击 **Add sprites**(添加立绘)。
 3. 点击 **Upload images**(上传图片)，进入你的文件夹，选中里面的图片。可以一次选多个。
 4. 在 **Import images**(导入图片) 确认框里点击 **Import**(导入)。点击 **Cancel**(取消) 则什么都不会添加。
@@ -40,7 +40,7 @@
 
 用户角色编辑器可以上传整个文件夹。角色则用上面的 **Upload images**，选中文件夹里的图片。
 
-1. 打开用户角色的 **Images** 选项卡，然后点击 **Sprites**。
+1. 打开用户角色的 **Sprites** 选项卡。
 2. 在 **Add Sprite** 框里点击 **Upload Folder**(上传文件夹)。
 3. 选择存放图片的那个文件夹。
 
@@ -66,7 +66,7 @@ Expression Engine 既能看到表情（`happy`），也能看到完整名称（`
 
 ### Roleplay Mode
 
-在 Roleplay 里，立绘由 Expression Engine 智能体负责。智能体是和回复一起运行的帮手，参见[智能体：聊天里的 AI 帮手](../agents/agents-overview.md)。它会读取每条消息的情绪，挑一张对应的表情立绘。把它添加到聊天里；如果还没有，就先从 **Agent Organizer**(智能体管理器) 安装它。参见[可下载智能体参考](../agents/built-in-agents.md#expression-engine)。
+在 Roleplay 里，立绘由 Expression Engine 智能体负责。智能体是和回复一起运行的帮手，参见[智能体：聊天里的 AI 帮手](../agents/agents-overview.md)。它会读取每条消息的情绪，挑一张对应的表情立绘。把它添加到聊天里；如果还没有，就先从 **Library → Agents**(资料库 → 智能体) 安装它。参见[可下载智能体参考](../agents/built-in-agents.md#expression-engine)。
 
 要让立绘出现，下面几条必须同时成立：
 
@@ -162,11 +162,11 @@ Marinara 会保留一份安全副本。界面上会出现一行“Last cleanup h
 
 ### Character Sheet
 
-**Character Sheet** 位于 **Images** 选项卡顶部、立绘上方。点击 **Manage**(管理) 创建或上传设定图。打开 **Use as reference image**(用作参考图)，还原角色长相时就会优先使用它。
+点击角色编辑器中 **Character Sheet** 一行的 **Manage**(管理)，即可创建或上传设定图。打开 **Use as reference image**(用作参考图)，还原角色长相时就会优先使用它。
 
 ## 导出立绘
 
-1. 打开 **Images → Sprites**。
+1. 打开 **Sprites** 选项卡。
 2. 在角色网格上方，或在用户角色的 **Add Sprite** 框里，点击 **Export**(导出)。
 3. 选 **Expressions only**(仅表情) 或 **Full-body only**(仅全身) 导出当前分类，或者选 **All sprites**(全部立绘) 导出所有内容。
 

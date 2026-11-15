@@ -9,8 +9,8 @@ Marinara Engine 是一个用来和 AI 角色聊天、玩角色扮演的应用。
 1. 安装 Marinara Engine，然后在浏览器里打开它。到 [Marinara Engine 安装](../INSTALLATION.md)里选择你的平台。
 2. 添加一个账号。一个账号就是某个 AI 服务的一个 API 密钥。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
 3. 挑选这个账号要用的模型。同一篇指南里有操作方法。
-4. 创建或导入一个角色。打开 **Characters**(角色) 面板，点击 **New**(新建) 打开 **Create Character**(创建角色) 窗口，或者点击 **Import**(导入) 从文件导入一张角色卡。见[创建和编辑角色](../characters/creating-and-editing-characters.md)。
-5. 用侧边栏按钮打开聊天侧边栏。它的选项卡写着 **CONVO**、**RP** 和 **GM**。选一个，然后点击 **+** 按钮。这个按钮会随选项卡叫作 **New Conversation**、**New Roleplay** 或 **New Game**。
+4. 创建或导入一个角色。打开 **Library → Characters**(资料库 → 角色)（点击右上角的 **Library**(资料库)），然后点击 **New character**(新建角色)，或者点击 **Import**(导入) 从文件导入一张角色卡。见[创建和编辑角色](../characters/creating-and-editing-characters.md)。
+5. 点击主页上的 **Conversation**(对话模式)、**Roleplay**(角色扮演) 或 **Game**(游戏模式)。也可以打开聊天列表：点击右上角的 **Library**，在侧边栏顶部选择 **Chats**(聊天)，选中 **Convo**、**Roleplay** 或 **Game** 选项卡，再点击 **New**(新建)。
 6. 按照打开的设置窗口操作，然后点击 **Create Chat**(创建聊天)。
 
 你会看到：新聊天打开，你可以写第一条消息了。
@@ -21,15 +21,22 @@ Marinara 不自带在线 AI。多数人会连到在线服务。你也可以下�
 
 第一次打开 Marinara 时，会开始一段简短的引导。见[首次使用的引导教程](tutorial.md)。哪一步卡住了？问问内置助手 Professor Mari：[Professor Mari，你的应用内助手](professor-mari.md)。
 
+## 熟悉界面
+
+Marinara 有两个固定区域，无论使用什么主题，它们的位置都不变：
+
+- **顶栏。**左侧是 **Home**(主页)，以及每个已打开的聊天、角色或页面的标签页。右侧的搜索按钮（或 <kbd>Ctrl</kbd>+<kbd>K</kbd>，Mac 上是 <kbd>⌘</kbd>+<kbd>K</kbd>）可以查找或打开各种内容：聊天、角色、设置、指南，或向 Professor Mari 提问。旁边是打开聊天时显示的 **Chat settings**(聊天设置)、用于查看这些指南的 **Docs**(文档)，以及显示或隐藏侧边栏的 **Library**。
+- 右侧的**侧边栏**，顶部有 **Chats | Library**(聊天 | 资料库) 切换按钮。**Chats** 在 **Convo**、**Roleplay** 和 **Game** 选项卡下列出聊天（见[管理聊天列表](../chats/managing-chats.md)）。**Library** 列出 **Characters**(角色)、**Personas**(用户角色)、**Lorebooks**(世界书)、**Presets**(预设)、**Regex scripts**(正则脚本)、**Connections**(连接)、**Agents**(智能体) 和 **Custom tools**(自定义工具)，后面是 **Settings**(设置) 和 **Extensions**(扩展)。选择一项，就会在中间打开对应页面。
+
+在电脑上，还能并排显示两个页面。见[分屏视图](tabs-and-drafts.md#split-view-two-pages-at-once)。
+
+在手机或平板上，**Home** 在左上角，**Library**（堆叠按钮）在右上角。Library 会让侧边栏滑入并覆盖页面，同样带有 **Chats | Library** 切换按钮；资料库视图底部有 **Settings**、**Docs** 和 **All Tabs**(所有标签页)。点击顶栏里的标题可以搜索，点击数字按钮可以查看已打开的标签页。见[标签页、分屏视图和未保存的改动](tabs-and-drafts.md)和[触屏手势](../chats/messages.md#touch-gestures)。
+
 ## 主页一览
 
-没有打开任何聊天时，显示的就是主页。它看起来像一个网页浏览器：顶部是标签页和书签，下面是小组件。
+没有打开任何聊天时，显示的就是主页。顶部有问候语、版本号，以及 **Conversation**、**Roleplay** 和 **Game**，分别以对应模式新建一个聊天。还没设置模型时，**Connect a model to start chatting**(连接模型以开始聊天) 会打开连接页面。**Professor**(教授) 会在自己的标签页里打开 Professor Mari，已安装的应用（比如 Story Writer）也会在这里添加按钮，**Widgets**(小组件) 则用来排列下方的卡片。
 
-- **标签页。**主页面是 **Home**(主页)。**Professor**(教授) 会打开 Professor Mari。有些已安装的智能体会添加自己的标签页。
-- **搜索栏。**在电脑上，点击标签页下方的搜索栏，或者按 <kbd>Ctrl</kbd>+<kbd>K</kbd>(Mac 上是 <kbd>⌘</kbd>+<kbd>K</kbd>)，即可查找聊天、角色、设置等内容。手机、平板和窄窗口上不显示这个搜索栏。
-- **书签。**通往 **Discord**、**Support**(支持)、**Credits**(致谢)、**Documentation**(文档)、**Tutorial**(教程)、**FAQ**(常见问题)、**Achievements**(成就) 和 **Widgets**(小组件) 的快捷链接。**Achievements** 只有开启了成就设置才会显示。书签只在 **Home** 标签页上显示。在手机、平板或窄窗口上，点击标签页左侧的书签按钮（**Open bookmarks**(打开书签)），就能以列表形式查看它们。
-
-中间是应用图标、**Marinara Engine** 字样和版本号。下面的 **Conversation**(对话模式)、**Roleplay**(角色扮演) 和 **Game**(游戏模式) 按钮，分别以对应模式新建一个聊天。
+在经典布局中（在 **Settings → Appearance → Theme → New layout**(设置 → 外观 → 主题 → 新布局) 下关闭新布局），主页看起来像网页浏览器，有标签页、搜索栏，以及 **Discord**、**Support**(支持)、**Credits**(致谢)、**Documentation**(文档)、**Tutorial**(教程)、**FAQ**(常见问题)、**Achievements**(成就) 和 **Widgets** 书签。
 
 <a id="choose-a-chat-mode"></a>
 
@@ -47,11 +54,11 @@ Marinara 不自带在线 AI。多数人会连到在线服务。你也可以下�
 
 小组件是可以显示、隐藏和移动的小卡片。
 
-1. 点击书签里的 **Widgets**。**Home Widgets**(主页小组件) 窗口随即打开。它把小组件分别列在 **Built-in**(内置)、**Agents**(智能体) 和 **Personal**(个人) 下。
+1. 点击主页上的 **Widgets**。**Home Widgets**(主页小组件) 窗口随即打开。它把小组件分别列在 **Built-in**(内置)、**Agents**(智能体) 和 **Personal**(个人) 下。
 2. 点击小组件旁边的眼睛按钮即可显示或隐藏它。重新显示的小组件会放到主页上第一个空位。
 3. 要移动小组件，拖动它右上角的手柄。在电脑上，指针移到小组件上时手柄才会出现。
 
-你的布局保存在这个浏览器里。个人小组件还有编辑和删除按钮。窗口底部的 **Browser chrome**(浏览器外框) 有一个开关：**Show URL bar**(显示地址栏) 用来在电脑上显示或隐藏搜索栏。
+你的布局保存在这个浏览器里。个人小组件还有编辑和删除按钮。在经典布局中，窗口底部的 **Browser chrome**(浏览器外框) 有一个开关：**Show URL bar**(显示地址栏) 用来在电脑上显示或隐藏主页的搜索栏。
 
 你可以请 Professor Mari 为你做一个个人小组件。已安装的智能体也能添加小组件。
 
@@ -73,9 +80,9 @@ Marinara 不自带在线 AI。多数人会连到在线服务。你也可以下�
 ## 到哪里求助
 
 - 在主页上问 Professor Mari。
-- 打开 **FAQ** 书签，查看速查答案。
-- 打开 **Documentation** 书签，阅读应用内指南。
-- 点击 **Discord** 进入社区，或者点击 **Support** 支持这个项目。
+- 点击 **Learn the engine**(了解引擎) 小组件里的 **Read FAQ**(查看常见问题)，查看速查答案。
+- 点击顶栏里的 **Docs**，阅读应用内指南。
+- 点击 **Community**(社区) 小组件里的 **Discord** 进入社区，或者点击 **Support** 支持这个项目。
 
 如果哪里坏了，见 [Marinara Engine 故障排查](../TROUBLESHOOTING.md)。
 
@@ -85,4 +92,5 @@ Marinara 不自带在线 AI。多数人会连到在线服务。你也可以下�
 - [连接 AI 服务商](../connections/connecting-to-a-provider.md)
 - [创建和编辑角色](../characters/creating-and-editing-characters.md)
 - [首次使用的引导教程](tutorial.md)
+- [标签页、分屏视图和未保存的改动](tabs-and-drafts.md)
 - [Professor Mari，你的应用内助手](professor-mari.md)

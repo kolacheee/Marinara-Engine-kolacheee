@@ -27,8 +27,8 @@ Grok 的安装命令，应用里显示的是下面这条。如果它在你的系
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. 在 Marinara 里点击顶栏的 **Connections**(连接)，再点击 **Add**(添加)。
-4. 在 **Chat**(聊天) 下面点击你的服务。这些服务带有 **Sign in**(登录) 标签。
+3. 在 Marinara 里打开 **Library → Connections**(资料库 → 连接)，点击 **Add connection**(添加连接)。
+4. 在 **Text**(文本) 选项卡的 **Subscriptions**(订阅) 下点击你的服务。这些服务带有 **Sign in**(登录) 标签。
 5. 窗口会显示 **Sign in first**，并写出要运行的命令。这里没有密钥输入框。点击 **Connect**(连接)。Marinara 会测试登录。显示 **Connected** 就说明可用。
 6. 从列表里选一个模型，然后点击 **Done**(完成)。Grok CLI 也可以把模型留空，这样会用 CLI 自己的默认模型（见 [Grok CLI (Subscription)](#grok-cli-subscription)）。
 
@@ -65,6 +65,8 @@ curl -fsSL https://x.ai/cli/install.sh | bash
 ## OpenAI (ChatGPT)
 
 这个服务通过 Codex CLI 使用你的 ChatGPT 账号。Marinara 会读取本机的 Codex 登录文件，并在条件允许时刷新会话。
+
+与 Claude 和 Grok 订阅不同，ChatGPT 登录支持工具调用，因此 Professor Mari、自定义工具以及 Game Mode 的骰子和工具都能使用。
 
 要设置 Codex 回答前思考多久，打开 **Edit model**，开启 **Use custom defaults for this model**(为此模型使用自定义默认值)，然后选一个 **Reasoning Effort**(推理强度)。初始值是 **Default**(默认)，即沿用 Codex 对该模型的级别。单个聊天可以在 **Advanced Parameters**(高级参数) 里选自己的级别。预设里的级别不会改变它。作为备用模型使用的 Codex 模型只遵循它自己的级别，该模型上的智能体使用模型自己的级别。你看到的可选级别与所选模型实际提供的级别一致。
 

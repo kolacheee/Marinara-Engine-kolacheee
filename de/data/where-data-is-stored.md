@@ -50,7 +50,7 @@ Manche Installationen beziehen den Schlüssel stattdessen aus der Umgebungsvaria
 
 ## Daten von Android kopieren
 
-Unter Android liegt der Datenordner im App-Speicher. Ohne Root-Zugriff kannst du ihn nicht öffnen und daher nicht kopieren. Nutze **Settings → Advanced → Backup & Export → Download Backup**. Die `.zip` enthält die Datei `.encryption-key`, sofern vorhanden. Siehe [Marinara sichern und wiederherstellen](backup-and-restore.md).
+Unter Android liegt der Datenordner im App-Speicher. Ohne Root-Zugriff kannst du ihn nicht öffnen und daher nicht kopieren. Nutze **Settings → Data → Backup & Restore → Download Backup** (Einstellungen → Daten → Backup & Wiederherstellung → Backup herunterladen). Die `.zip` enthält die Datei `.encryption-key`, sofern vorhanden. Siehe [Marinara sichern und wiederherstellen](backup-and-restore.md).
 
 Automatische Backups liegen im selben App-Speicher. Wenn du die App deinstallierst oder zurücksetzt, können sie zusammen mit den aktiven Daten verloren gehen. Bewahre deshalb eine Kopie an einem anderen Ort auf.
 

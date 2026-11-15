@@ -27,8 +27,8 @@ Dla usługi Grok aplikacja pokazuje to polecenie instalacji. Jeśli nie działa 
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. W aplikacji Marinara Engine kliknij **Connections** (Połączenia) na górnym pasku, a potem **Add** (dodaj).
-4. W sekcji **Chat** (czat) kliknij swoją usługę. Te usługi mają etykietę **Sign in** (logowanie).
+3. W aplikacji Marinara Engine otwórz **Biblioteka → Połączenia** i kliknij **Dodaj połączenie**.
+4. W zakładce **Tekst**, w sekcji **Subskrypcje**, kliknij swoją usługę. Te usługi mają etykietę **Zaloguj się**.
 5. Okno pokazuje **Sign in first** (najpierw się zaloguj) i podaje polecenie. Nie ma pola klucza. Kliknij **Connect** (połącz). Marinara testuje logowanie. **Connected** oznacza, że działa.
 6. Wybierz model z listy, a potem kliknij **Done** (gotowe). W przypadku Grok CLI możesz też zostawić model pusty, co oznacza użycie domyślnego modelu narzędzia CLI (zobacz [Grok CLI (Subscription)](#grok-cli-subscription)).
 
@@ -65,6 +65,8 @@ Użyj przycisku **Diagnose model routing**, gdy wybrany jest duży model, na prz
 ## OpenAI (ChatGPT)
 
 Ta usługa korzysta z twojego konta ChatGPT przez Codex CLI. Marinara odczytuje lokalny plik logowania Codex i odświeża sesję, kiedy tylko może.
+
+W odróżnieniu od subskrypcji Claude i Grok logowanie do ChatGPT obsługuje wywołania narzędzi, więc działają z nim Professor Mari, własne narzędzia oraz kości i narzędzia trybu Game Mode.
 
 Aby ustawić, jak długo Codex myśli przed odpowiedzią, otwórz **Edit model**, włącz **Use custom defaults for this model** (własne wartości domyślne dla tego modelu) i wybierz **Reasoning Effort** (poziom rozumowania). Na start ustawiony jest poziom **Default** (domyślny), który zachowuje poziom, jakiego Codex używa dla danego modelu. Czat może wybrać własny poziom w **Advanced Parameters** (parametry zaawansowane). Poziom z presetu go nie zmienia. Model Codex użyty jako zapasowy kieruje się wyłącznie własnym poziomem, a agenci korzystający z modelu używają poziomu modelu. Dostępne poziomy odpowiadają tym, które oferuje wybrany model.
 

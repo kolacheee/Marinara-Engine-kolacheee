@@ -2,8 +2,6 @@
 
 Marinara Engineについてのよくある質問に、短く答えます。各回答から、詳しい手順を載せたガイドへ移動できます。
 
-<a id="how-do-i-access-marinara-engine-from-my-phone-or-another-device"></a>
-
 ## スマートフォンやほかのデバイスからMarinara Engineを使うには?
 
 Marinaraは1台のコンピューターでサーバーとして動き、ブラウザーで開いて使います。起動スクリプトはほかのデバイスからもサーバーに届くようにしますが、ホストのコンピューターでログイン(ユーザー名とパスワード)を設定するまでは、アクセス制御がブロックします。それまでは、離れたデバイスには**Access blocked**ページだけが表示されます。
@@ -22,9 +20,7 @@ Marinaraは1台のコンピューターでサーバーとして動き、ブラ�
 
 Androidでは、[最新のAPKをダウンロード](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk)することもできます。Termuxを通じて、スマートフォン上でMarinaraを動かします。[Androidのインストール](installation/android-termux.md)を参照してください。iPhoneとiPadについては、[iOS PWAガイド](installation/ios-pwa.md)を参照してください。
 
-Androidアプリでは、ランチャーに**Open in browser**(ブラウザーで開く)、**Retry connection**(接続を再試行)、**Install / Start Marinara**(Marinaraのインストール/起動)が表示されます。あとで選択を変えるには、**Settings → General → App Behavior → Open Android launcher (app or browser)**(設定 → 一般 → アプリの動作 → Androidランチャーを開く(アプリまたはブラウザー))を使います。古いAPKでは、`/android-login`で手動でサインインします。
-
-<a id="can-i-play-with-other-people"></a>
+Androidアプリでは、ランチャーに**Open in browser**(ブラウザーで開く)、**Retry connection**(接続を再試行)、**Install / Start Marinara**(Marinaraのインストール/起動)が表示されます。あとで選択を変えるには、**Settings → Appearance → Layout → Open Android launcher (app or browser)**(設定 → 外観 → レイアウト → Androidランチャーを開く(アプリまたはブラウザー))を使います。古いAPKでは、`/android-login`で手動でサインインします。
 
 ## ほかの人と一緒にプレイできますか?
 
@@ -82,11 +78,11 @@ Marinaraは無料です。費用は、使うAIサービスの料金だけです�
 
 ## エージェントとは?
 
-エージェントは、チャット中に動いて決まった役割をこなす、任意のAIの補助機能です。たとえば、シーンを追跡したり、マップを追加したりします。インストール直後の状態では、1つも入っていません。**Agents → Agent Organizer**を開き、エージェントを選んでインストールします。そのあと、**Chat Settings**(チャット設定)でチャットごとにオンにします。[エージェント](agents/agents-overview.md)を参照してください。
+エージェントは、チャット中に動いて決まった役割をこなす、任意のAIの補助機能です。たとえば、シーンを追跡したり、マップを追加したりします。インストール直後の状態では、1つも入っていません。**Library → Agents**を開き、エージェントを選んでインストールします。そのあと、**Chat Settings**(チャット設定)でチャットごとにオンにします。[エージェント](agents/agents-overview.md)を参照してください。
 
 ## Noodleを設定するには?
 
-Noodleは、キャラクターのための、ローカルで動く架空のソーシャルネットワークです。**Agents → Agent Organizer**から**Noodle**をインストールし、求められたらMarinaraを再起動してから、**Home → Noodle**(ホーム → Noodle)を開きます。[Noodle: アプリ内のソーシャルタイムライン](agents/noodle.md)を参照してください。
+Noodleは、キャラクターのための、ローカルで動く架空のソーシャルネットワークです。**Library → Agents**から**Noodle**をインストールし、求められたらMarinaraを再起動してから、**Home → Noodle**(ホーム → Noodle)を開きます。[Noodle: アプリ内のソーシャルタイムライン](agents/noodle.md)を参照してください。
 
 ## キャラクターが返信しないのはなぜ?
 
@@ -98,11 +94,11 @@ Noodleは、キャラクターのための、ローカルで動く架空のソ�
 
 ## データをバックアップするには?
 
-**Settings → Advanced → Backup & Export**(設定 → 詳細設定 → バックアップとエクスポート)を開き、**Download Backup**(バックアップのダウンロード)をクリックします。データとアップロードしたファイルをまとめた`.zip`が保存されます。復元するには、**Settings → Imports**(設定 → インポート)の**Import Profile (JSON/ZIP)**を使います。同じセクションでは、日次、週次、月次のバックアップを実行することもできます。[バックアップと復元](data/backup-and-restore.md)を参照してください。
+**Settings → Data → Backup & Restore**(設定 → データ → バックアップと復元)を開き、**Download Backup**(バックアップのダウンロード)をクリックします。データとアップロードしたファイルをまとめた`.zip`が保存されます。復元するには、同じセクションの**Import Profile (JSON/ZIP)**を使います。同じセクションでは、日次、週次、月次のバックアップを実行することもできます。[バックアップと復元](data/backup-and-restore.md)を参照してください。
 
 ## 拡張機能はどのような仕組みですか? 第三者のコードをインポートできますか?
 
-デフォルトでは、Personal Extensionの下書きを作れるのはProfessor Mariだけです。下書きは最初はオフで、実行する前に、そのコードそのものを自分で承認します。第三者のインポートは、ホストが`.env`で`ENABLE_EXTERNAL_EXTENSIONS=true`を設定し、**Settings → Advanced → Danger Zone**(設定 → 詳細設定 → 危険な操作)の警告に同意するまで表示されません。[個人用拡張機能](extending/personal-extensions.md)を参照してください。
+デフォルトでは、Personal Extensionの下書きを作れるのはProfessor Mariだけです。下書きは最初はオフで、実行する前に、そのコードそのものを自分で承認します。第三者のインポートは、ホストが`.env`で`ENABLE_EXTERNAL_EXTENSIONS=true`を設定し、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)の警告に同意するまで表示されません。[個人用拡張機能](extending/personal-extensions.md)を参照してください。
 
 ## データはどこに保存されますか?
 
@@ -118,11 +114,11 @@ Professor Mariは、ホーム画面に組み込まれたアシスタントです
 
 ## Storyboardエージェントとは何ですか? Game Modeではどう使いますか?
 
-できあがった物語の文章を、画像に変えるエージェントです。**Agents → Agent Organizer**から**Storyboard**をインストールし、チャットでオンにします。[Storyboardエージェントガイド](game/storyboard.md)を参照してください。
+できあがった物語の文章を、画像に変えるエージェントです。**Library → Agents**から**Storyboard**をインストールし、チャットでオンにします。[Storyboardエージェントガイド](game/storyboard.md)を参照してください。
 
 ## 通話でキャラクターに声を出してもらえますか?
 
-はい。Conversationモードで使えます。**Connections**(接続)で**Text to Speech**(音声合成)を設定しておく必要があります。マイクの音声認識を含む手順は、[通話](conversation/calls.md)を参照してください。
+はい、Conversationモードでできます。**Connections**(接続)の**Voice**(音声合成(Text to Speech))の役割にモデルを設定する必要があります。マイクの音声認識を含む手順は、[通話](conversation/calls.md)を参照してください。
 
 ## Marinaraは画像を生成できますか?
 
@@ -130,7 +126,7 @@ Professor Mariは、ホーム画面に組み込まれたアシスタントです
 
 ## アプリの中でドキュメントを読むには?
 
-ホーム画面で、ブックマークの**Documentation**(ドキュメント)をクリックします。スマートフォンでは、先にブックマークのメニューを開いてください。ホーム画面のFAQで、**Open Documentation**(ドキュメントを開く)をクリックすることもできます。
+上部バーの**Docs**(ドキュメント)をクリックします。スマートフォンでは、DocsはLibrary(右上にある重なったボタン)にあります。クラシックレイアウトでは、Homeのブックマークにある**Documentation**(ドキュメント)をクリックします。HomeのFAQで、**Open Documentation**(ドキュメントを開く)をクリックすることもできます。
 
 ## 助けを求めたり、バグを報告したりするには?
 

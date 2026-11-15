@@ -1,6 +1,6 @@
 # データの消去とリセット
 
-**Danger Zone**(危険な操作)を使って、データの一部またはすべてを完全に削除します。取り消しはできません。
+**Settings → Data → Delete Data**(設定 → データ → データの削除)にある**Delete Data**(データの削除)を使って、データの一部またはすべてを完全に削除します。取り消しはできません。
 
 チャット1つやキャラクター1つだけを削除するには、それぞれの削除ボタンを使ってください。[チャットの管理](../chats/managing-chats.md)と[キャラクターの作成と編集](../characters/creating-and-editing-characters.md)を参照してください。
 
@@ -8,7 +8,7 @@
 
 ## 一部のカテゴリーを消去する
 
-1. **Settings → Advanced**(設定 → 詳細設定)を開き、**Danger Zone**までスクロールします。
+1. **Settings → Data**(設定 → データ)を開き、**Delete Data**に移動します。
 2. 削除したいカテゴリーにチェックを入れます。**Select All**を使うと、すべてのボックスにチェックが入ります。すべてにチェックが入ると、同じボタンが**Clear Selection**に変わり、チェックを外します。
 3. **Clear Selected Data**をクリックします。カテゴリーにチェックを入れるまで、このボタンは無効のままです。
 4. 警告を読みます。選んだカテゴリーの数が表示されます。
@@ -18,7 +18,7 @@
 
 ## すべてを消去する
 
-1. **Danger Zone**で**Clear All Data**をクリックします。ボックスにチェックを入れる必要はありません。
+1. **Delete Data**で**Clear All Data**をクリックします。ボックスにチェックを入れる必要はありません。
 2. 警告に「Delete all supported data categories except Professor Mari? There is no undo.」と表示されます。
 3. **Confirm Delete**をクリックします。やめるときは**Cancel**をクリックします。
 
@@ -47,7 +47,7 @@
 - **Connections**は、音声合成と音声認識の設定、機能ごとに選んだモデル、**3D Avatars**のページに保存したTripoのAPIキーも消去します。
 - **Automation & Addons**は、エージェントの結果、エージェントの記憶、エージェントのフォルダー、エージェントのHomeウィジェットも削除します。
 - **Media & Assets**は、アセットの一覧とチャットの画像も削除します。
-- 知識ソースのファイルとは、知識エージェント用にアップロードしたファイルです。同期したテーマとは、Marinaraに保存したカスタムテーマです。
+- 知識ソースのファイルとは、知識エージェント用にアップロードしたファイルです。同期したテーマとは、Marinaraに保存したカスタムテーマで、ダウンロードしたスターターテーマも含みます。スターターテーマはテーマギャラリーから再びダウンロードできます。
 
 カテゴリー名の範囲を超えてファイルに及ぶものもあります。**Chats & Messages**は、**Characters**や**Personas**にチェックを入れていなくても、キャラクターとペルソナのギャラリー画像を含む`gallery`フォルダー全体を削除します。
 
@@ -55,7 +55,7 @@
 
 ## Professor Mariは残る
 
-Professor Mariは、Homeの画面にある組み込みのアシスタントです。**Danger Zone**は、**Clear All Data**を使っても、Professor Mariを削除しません。
+Professor Mariは、Homeの画面にある組み込みのアシスタントです。**Delete Data**は、**Clear All Data**を使っても、Professor Mariを削除しません。
 
 ## 関連ガイド
 

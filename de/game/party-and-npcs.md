@@ -18,7 +18,7 @@ Einzelheiten zu beidem folgen unten.
 
 Um einen Gefährten zu entfernen, zeig am Computer mit der Maus auf sein Porträt und klick auf das **X**. Das geht bei jedem Gefährten, den der GM angeworben hat, ob bei der Einrichtung oder später. Deine eigene Persona (der Charakter, den du spielst) hat kein **X**.
 
-Du kannst die Schaltfläche am Computer und am Handy im Chat herumziehen. Öffne sie und nutze **Lock window** (Fenster sperren), damit sie an ihrem Platz bleibt. Am Computer kannst du das Fenster außerdem verschieben und in der Größe ändern, und **Close** (Schließen) macht es wieder zur Schaltfläche. Seine Position wird mit dem Chat gespeichert, und es folgt deinem Chat-Widget-Stil aus **Settings → Appearance → App** (Einstellungen → Darstellung → App). Am Handy bleibt es vom Drei-Punkte-Menü **Chat tools** getrennt.
+Du kannst die Schaltfläche am Computer und am Handy im Chat herumziehen. Öffne sie und nutze **Lock window** (Fenster sperren), damit sie an ihrem Platz bleibt. Am Computer kannst du das Fenster außerdem verschieben und in der Größe ändern, und **Close** (Schließen) macht es wieder zur Schaltfläche. Seine Position wird mit dem Chat gespeichert, und es folgt deinem Chat-Widget-Stil aus **Settings → Appearance → Chat Buttons & Windows** (Einstellungen → Darstellung → Chat-Schaltflächen & Fenster). Am Handy bleibt es vom Drei-Punkte-Menü **Chat tools** getrennt.
 
 ## Charakterbögen
 

@@ -40,8 +40,8 @@ Marinara eksportuje wszystkie wiadomości od pierwszej do ostatniej z wybranych.
 
 ## Eksport wielu czatów naraz
 
-1. Na lewym pasku bocznym kliknij zakładkę odpowiedniego trybu: **CONVO**, **RP** lub **GM**. Każda zakładka eksportuje tylko własne czaty.
-2. Kliknij **Select chats** (zaznaczanie czatów) u góry listy.
+1. Na pasku bocznym **Czaty** kliknij zakładkę wybranego trybu: **Convo**, **Roleplay** albo **Game**. Każda zakładka eksportuje tylko własne czaty.
+2. Kliknij **Zaznacz czaty** (znak zaznaczenia) u góry paska bocznego.
 3. Kliknij każdy czat, który chcesz uwzględnić. Na dole pasek pokazuje licznik, na przykład "3 selected".
 4. Kliknij **Export** (eksport) na tym pasku.
 
@@ -51,9 +51,10 @@ Przeglądarka pobiera plik `.zip` z jednym zapisem JSONL na każdy czat. Eksport
 
 W ten sposób z pliku `.jsonl` zapisanego w aplikacji Marinara Engine lub wyeksportowanego z aplikacji SillyTavern powstaje nowy czat.
 
-1. Na lewym pasku bocznym kliknij zakładkę odpowiedniego trybu. Zaimportowany czat dostaje tryb otwartej zakładki, a nie tryb zapisany w pliku.
-2. Kliknij przycisk **Import** obok przycisku **+**. Jego etykieta to **Import SillyTavern or Marinara chat JSONL**.
-3. Wskaż plik `.jsonl`.
+1. Na pasku bocznym **Czaty** kliknij zakładkę wybranego trybu. Zaimportowany czat dostaje tryb otwartej zakładki, a nie tryb zapisany w pliku.
+2. Kliknij przycisk **Importuj** (strzałka pobierania) obok **Nowy**. Jego etykieta to **Import SillyTavern or Marinara chat JSONL**. Otwiera się okno **Importuj czat**.
+3. Zostaw zaznaczone **Oznacz jako zaimportowane** i **Tag źródła**, żeby dodać czatowi tagi **Zaimportowane** i **ST** (albo **Marinara** dla czatu wyeksportowanego z aplikacji Marinara), lub je odznacz.
+4. Upuść plik `.jsonl` na okno albo kliknij **Przeglądaj…** i go wybierz.
 
 Pojawia się komunikat "Imported N messages", a Marinara otwiera nowy czat. Więcej o plikach z aplikacji SillyTavern znajdziesz w przewodniku [Importowanie z SillyTavern](../data/importing-from-sillytavern.md).
 
@@ -71,7 +72,7 @@ Pojawia się komunikat "Imported N messages as a new branch". Gałąź przejmuje
 
 ## Dołączanie toku rozumowania i prywatnych notatek do eksportów
 
-Dwa ustawienia decydują o tym, czy ukryty tekst trafia do plików eksportu. Oba są przełącznikami w sekcji **Settings → Advanced → Message Tools** (ustawienia, zaawansowane, narzędzia wiadomości) i oba są domyślnie wyłączone. Działają przy eksporcie pojedynczego czatu i przy eksporcie do pliku `.zip`.
+Dwa ustawienia decydują o tym, czy ukryty tekst trafia do plików eksportu. Oba są przełącznikami w sekcji **Ustawienia → Dane → Eksport czatów** i oba są domyślnie wyłączone. Działają przy eksporcie pojedynczego czatu i przy eksporcie do pliku `.zip`.
 
 | Ustawienie | Gdy jest włączone |
 | --- | --- |

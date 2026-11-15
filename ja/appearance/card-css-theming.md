@@ -140,7 +140,7 @@ RoleplayとConversationは同じ骨組みを共有しています。下に挙げ
 | `[data-card-css] p`, `[data-card-css] span` | 本文の中の段落と、インラインのspan。 |
 | `[data-grouped]` | 同じキャラクターからの続きのメッセージ。Conversationのみ。グループの最初のメッセージには`[data-card-css]:not([data-grouped])`を使います。 |
 
-レイアウトを変えるには、**Settings → Appearance → Conversation**(設定 → 外観 → Conversation)を開き、**Conversation Display**、**Chat Layout**(チャットのレイアウト)の順に開きます。**Linear**にはバブルがないため、`.mari-message-content`(本文)と`[data-card-css]`(行)にスタイルを当てます。
+レイアウトを変えるには、**Settings → Conversation → Conversation Layout → Chat Layout**(設定 → Conversation → Conversationのレイアウト → チャットのレイアウト)を開きます。**Linear**にはバブルがないため、`.mari-message-content`(本文)と`[data-card-css]`(行)にスタイルを当てます。
 
 バブルにスタイルを当てた例です。
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## 関連ガイド
 
 - [外観の設定](appearance-settings.md)
-- [カスタムCSSテーマ(Theme Library)](custom-css-themes.md)
+- [カスタムCSSテーマ](custom-css-themes.md)
 - [キャラクターの作成と編集](../characters/creating-and-editing-characters.md)

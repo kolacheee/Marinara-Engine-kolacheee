@@ -1,32 +1,30 @@
-# Arrière-plans de chat
+# Bibliothèque d'arrière-plans
 
-La bibliothèque d'arrière-plans rassemble les images que tu téléverses et que tu choisis à la main pour les afficher derrière le chat. Pour l'agent **Background** (arrière-plan), qui choisit un décor à ta place à chaque tour, voir [Les arrière-plans en Roleplay](../roleplay/backgrounds.md). Pour les arrière-plans générés par IA depuis la galerie, voir [Les arrière-plans de scène et la galerie](../media/scene-backgrounds.md).
+La bibliothèque d'arrière-plans rassemble toutes les images qui peuvent s'afficher derrière un chat : celles que tu téléverses, celles qu'Illustrator peint pour toi et les visuels fournis avec Marinara. Ce guide explique le choix d'une image pour un chat, l'import, les tags, les dossiers, l'arrière-plan par défaut du Roleplay et le **Flou de l'arrière-plan**.
 
-Un arrière-plan de chat s'affiche dans tous les modes de chat. Dans les chats Conversation, le dégradé de **Conversation Theme** (thème de Conversation) reste par-dessus l'image, et **Conversation background image opacity** (opacité de l'image d'arrière-plan en Conversation) règle la visibilité de l'image. Voir [Réglages d'apparence](appearance-settings.md).
+Pour les arrière-plans qui changent avec l'histoire (l'agent Background, les lieux épinglés et les images qui suivent un personnage), voir [Des arrière-plans qui suivent l'histoire](../roleplay/backgrounds.md). Pour les images peintes par Illustrator, y compris leurs versions sous la pluie ou la neige, voir [Les arrière-plans créés par Illustrator](../media/scene-backgrounds.md).
 
-## Changer l'arrière-plan d'un chat
+Un arrière-plan de chat s'affiche dans tous les modes de chat. Dans les chats Conversation, le dégradé du réglage **Arrière-plan Conversation** reste par-dessus l'image, et **Opacité de l'image d'arrière-plan en Conversation** règle sa visibilité. Voir [Réglages d'apparence](appearance-settings.md).
 
-Avant de commencer : ouvre le chat que tu veux modifier. L'arrière-plan que tu choisis s'applique à ce chat.
+## Où la trouver
 
-1. Ouvre **Settings** (Paramètres), puis **Appearance** (apparence), puis le bouton **App**.
-2. Dans **Backgrounds** (arrière-plans), touche **Browse library** (parcourir la bibliothèque).
-3. Touche une image. Elle devient l'arrière-plan de ce chat, et la fenêtre se ferme.
+Ouvre **Paramètres → Apparence** et repère la section **Arrière-plans**. Elle contient le sélecteur **Fond du chat**, le curseur **Flou de l'arrière-plan**, ainsi que les contrôles **Opacité de l'image d'arrière-plan en Conversation** et **Fonds dans la liste des chats**.
+
+Le sélecteur affiche un aperçu de l'arrière-plan actuel, ou **Fond par défaut** quand aucun n'est choisi. En dessous, jusqu'à trois arrière-plans **Récents** sont accessibles d'une seule touche. **Parcourir la bibliothèque** ouvre la fenêtre **Bibliothèque de fonds**. Dans un chat, **Réglages du chat → Arrière-plan** ouvre la même bibliothèque pour ce chat.
+
+## Choisir un arrière-plan pour un chat
+
+Avant de commencer : ouvre le chat que tu veux modifier. L'image que tu choisis s'applique uniquement à ce chat.
+
+1. Ouvre **Paramètres → Apparence → Arrière-plans** et clique sur **Parcourir la bibliothèque**.
+2. Clique sur une image. Une coche apparaît, l'image devient l'arrière-plan de ce chat, et la fenêtre se ferme.
+3. Pour revenir à l'arrière-plan par défaut, clique de nouveau sur l'image sélectionnée, ou clique sur la croix (**Effacer la sélection**) sur l'aperçu.
 
 Pour utiliser ta propre image, importe-la d'abord (voir [Importer un arrière-plan](#import-a-background)).
 
-## Où trouver les arrière-plans
-
-1. Ouvre **Settings**.
-2. Choisis l'onglet **Appearance**, puis le bouton **App**.
-3. Repère la section **Backgrounds**.
-
-Elle contient le sélecteur **Chat Background** (arrière-plan du chat), le curseur **Background Blur** (flou d'arrière-plan), ainsi que les contrôles **Conversation background image opacity** et **Chat List Backgrounds** (arrière-plans de la liste des chats). Voir [Réglages d'apparence](appearance-settings.md).
-
-Le sélecteur affiche un aperçu de l'arrière-plan actuel, ou **Default background** quand aucun n'est choisi. En dessous, jusqu'à trois arrière-plans **Recent** (récents) sont accessibles d'une seule touche. Clique sur **Browse library** pour ouvrir la fenêtre **Background Library** (bibliothèque d'arrière-plans).
-
 ## La bibliothèque d'arrière-plans
 
-La bibliothèque mélange les images que tu as téléversées et les visuels livrés avec Marinara. Chaque image porte une étiquette.
+La bibliothèque mélange les images que tu as téléversées ou qu'Illustrator a peintes et les visuels livrés avec Marinara. Chaque image porte une étiquette.
 
 | Étiquette | Signification |
 | --- | --- |
@@ -46,12 +44,6 @@ Les boutons **Filter by source** (filtrer par source), **All sources**, **My upl
 Les nouvelles images apparaissent dans la grille avec l'étiquette **My upload**.
 
 Chaque fichier doit être au format JPG, PNG, GIF, WebP ou AVIF et peser au plus 20 Mo. Marinara vérifie le contenu du fichier, pas son nom. Un fichier qui n'est pas une image, renommé en `.png`, est refusé.
-
-### Choisir un arrière-plan pour le chat en cours
-
-1. Ouvre **Browse library**.
-2. Clique sur une miniature. Une coche apparaît, l'image devient l'arrière-plan de ce chat, et la fenêtre se ferme.
-3. Pour revenir à l'arrière-plan par défaut, clique de nouveau sur la miniature sélectionnée, ou clique sur la croix (**Clear selection**, effacer la sélection) sur l'aperçu.
 
 ### Chercher et filtrer
 
@@ -92,6 +84,10 @@ Seules les images **My upload** peuvent être taguées.
 Pour retirer un tag, clique dessus pendant la modification des tags.
 
 <a id="download-a-background"></a>
+
+Les tags sont en minuscules et peuvent contenir des lettres, des chiffres, des espaces, des traits d'union et des tirets bas, avec une limite de 40 caractères chacun.
+
+Ajoute aux images des tags qui nomment les lieux représentés, comme `guest bedroom` ou `harbor tavern`. L'agent **Background** lit les tags pour faire son choix, et Illustrator réutilise une image dont un tag d'au moins deux mots nomme le lieu de l'histoire, au lieu d'en peindre une nouvelle. Voir [Réutiliser les images que tu possèdes déjà](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 ### Télécharger un arrière-plan
 
@@ -136,6 +132,6 @@ Pour le détail du modèle de synchronisation, voir [Réglages d'apparence](appe
 
 ## Guides associés
 
-- [Les arrière-plans en Roleplay](../roleplay/backgrounds.md) : l'agent Background, qui choisit un décor à chaque tour.
-- [Les arrière-plans de scène et la galerie](../media/scene-backgrounds.md) : les arrière-plans de scène générés par IA depuis la galerie. Ils arrivent aussi dans cette bibliothèque.
+- [Des arrière-plans qui suivent l'histoire](../roleplay/backgrounds.md) : l'agent Background, les lieux épinglés et les arrière-plans des galeries.
+- [Les arrière-plans créés par Illustrator](../media/scene-backgrounds.md) : les arrière-plans peints et leurs versions météo. Ils arrivent aussi dans cette bibliothèque.
 - [Réglages d'apparence](appearance-settings.md) : tout l'onglet Appearance.

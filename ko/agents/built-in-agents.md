@@ -1,10 +1,10 @@
 # 다운로드 가능한 에이전트 레퍼런스
 
-이 가이드에서는 **Agents → Agent Organizer**(에이전트 → Agent Organizer)에 있는 Marinara의 공식 자체 제작 에이전트를 그룹별로 소개합니다. 새로 설치한 상태에는 에이전트가 들어 있지 않습니다. 에이전트의 소스와 카탈로그는 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)에 공개되어 있습니다. 항목마다 에이전트가 하는 일, 실행 시점, 사용 가능한 곳, 주요 설정을 적어 두었습니다. 에이전트를 설치하고 켜는 방법은 [에이전트: 채팅을 도와주는 AI](agents-overview.md)를 먼저 읽어 보세요. **staging only**(staging 전용)로 표시된 항목은 Engine staging 사용자가 쓸 수 있으며, 안정 버전 사용자에게는 패키지가 안정 버전으로 올라간 뒤 표시됩니다.
+이 가이드에서는 **Library → Agents**(라이브러리 → 에이전트)에 있는 Marinara의 공식 자체 제작 에이전트를 그룹별로 소개합니다. 새로 설치한 상태에는 에이전트가 들어 있지 않습니다. 에이전트의 소스와 카탈로그는 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)에 공개되어 있습니다. 항목마다 에이전트가 하는 일, 실행 시점, 사용 가능한 곳, 주요 설정을 적어 두었습니다. 에이전트를 설치하고 켜는 방법은 [에이전트: 채팅을 도와주는 AI](agents-overview.md)를 먼저 읽어 보세요. **staging only**(staging 전용)로 표시된 항목은 Engine staging 사용자가 쓸 수 있으며, 안정 버전 사용자에게는 패키지가 안정 버전으로 올라간 뒤 표시됩니다.
 
 ## 이 문서를 읽는 법
 
-**Agent Organizer**에서 에이전트를 설치한 다음, 원하는 채팅마다 추가하세요. 에이전트는 캐릭터 카드 단위가 아니라 채팅 단위로 설정합니다. 설치, 업데이트, 채팅별 설정, 비용은 [에이전트: 채팅을 도와주는 AI](agents-overview.md)에서 다룹니다.
+**Library → Agents**에서 에이전트를 설치한 다음, 원하는 채팅마다 추가하세요. 에이전트는 캐릭터 카드 단위가 아니라 채팅 단위로 설정합니다. 설치, 업데이트, 채팅별 설정, 비용은 [에이전트: 채팅을 도와주는 AI](agents-overview.md)에서 다룹니다.
 
 항목마다 같은 요약 정보를 보여 줍니다.
 
@@ -26,7 +26,7 @@ Apps는 **Home**에 전용 탭이 있습니다. 채팅에 추가하지 않고 �
 
 - **연동 방식**: 로컬 경로, 생성 및 미디어 흐름, 백그라운드 스케줄러를 갖춘 기능 패키지입니다.
 - **사용 가능한 곳**: Home. 필요하면 Conversation, Roleplay, Game 채팅의 컨텍스트를 가져올 수 있습니다.
-- **주요 설정**: **Agents → Agent Organizer**에서 설치하고 안내가 나오면 다시 시작하세요. Noodle 안에서 초대 계정, 텍스트와 이미지 연결, 타임라인 새로고침, 무작위 사용자, 채팅 내용 이어받기를 설정합니다.
+- **주요 설정**: **Library → Agents**에서 설치하고 안내가 나오면 다시 시작하세요. Noodle 안에서 초대 계정, 텍스트와 이미지 연결, 타임라인 새로고침, 무작위 사용자, 채팅 내용 이어받기를 설정합니다.
 - **데이터**: 제거하면 재시작 후 탭이 사라지고 스케줄러가 멈춥니다. Noodle 데이터는 나중에 다시 설치할 때를 위해 남아 있습니다.
 - **전체 가이드**: [Noodle: 앱 안의 소셜 타임라인](noodle.md).
 
@@ -322,7 +322,7 @@ Misc 에이전트는 이미지, 음악, 관객 반응, 카드 업데이트 같�
 
 - **단계**: Post-Processing.
 - **사용 가능한 곳**: Roleplay.
-- **주요 설정**: 선택지를 고쳐 쓰는 **Edit**(편집)와 새로 만드는 **Re-roll**(리롤). 클릭한 선택지를 메시지 입력란에 넣으려면 **Settings → General → Input & Editing**(설정 → 일반 → 입력 및 편집)에서 **Add CYOA choices to the message box instead of sending them**(CYOA 선택지를 전송하지 않고 메시지 입력란에 추가)을 켜세요.
+- **주요 설정**: 선택지를 고쳐 쓰는 **Edit**(편집)와 새로 만드는 **Re-roll**(리롤). 클릭한 선택지를 메시지 입력란에 넣으려면 **Settings → Chatting → Message Box**(설정 → 채팅 중 → 메시지 입력창)에서 **Add CYOA choices to the message box instead of sending them**(CYOA 선택지를 전송하지 않고 메시지 입력란에 추가)을 켜세요.
 
 ### Storyboard
 
@@ -340,7 +340,7 @@ Misc 에이전트는 이미지, 음악, 관객 반응, 카드 업데이트 같�
 
 - **연동 방식**: 에이전트 패키지입니다. Engine이 아바타를 그립니다. 채팅하는 동안 AI 연결에 추가 요청을 보내지 않습니다.
 - **사용 가능한 곳**: Roleplay, Game. 캐릭터와 페르소나에 쓸 수 있습니다.
-- **제공 범위**: 모든 설치에서 **Agent Organizer**에 있습니다. Marinara Engine 2.5.1 이상이 필요합니다.
+- **제공 범위**: 모든 설치에서 **Library → Agents**에 있습니다. Marinara Engine 2.5.1 이상이 필요합니다.
 - **주요 설정**: **Agents**의 에이전트 페이지에서 아바타를 하나씩 설정합니다. 이 에이전트에는 스프라이트로 눈 깜박임 그림과 말하는 그림, 메시 아바타를 만드는 프롬프트도 들어 있습니다.
 - **호환성**: Engine `2.5.0` 이상 `4.0.0` 미만, Capability API 1.73. 권한: `agent-runtime`, `chat-read`, `storage`, `ui`. 재시작은 필요하지 않습니다.
 - **전체 가이드**: [2D와 3D 아바타](avatars.md).
@@ -351,7 +351,7 @@ Misc 에이전트는 이미지, 음악, 관객 반응, 카드 업데이트 같�
 
 - **연동 방식**: 에이전트 패키지입니다. Engine이 아바타를 그립니다. 채팅하는 동안 AI 연결에 추가 요청을 보내지 않습니다.
 - **사용 가능한 곳**: Roleplay, Game. 캐릭터와 페르소나에 쓸 수 있습니다.
-- **제공 범위**: 모든 설치에서 **Agent Organizer**에 있습니다. Marinara Engine 2.5.1 이상이 필요합니다.
+- **제공 범위**: 모든 설치에서 **Library → Agents**에 있습니다. Marinara Engine 2.5.1 이상이 필요합니다.
 - **주요 설정**: **Agents**의 에이전트 페이지에서 아바타를 하나씩 설정합니다.
 - **호환성**: 2D Avatars와 같습니다.
 - **전체 가이드**: [2D와 3D 아바타](avatars.md).

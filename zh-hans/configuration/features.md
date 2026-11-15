@@ -1,10 +1,14 @@
 # 功能开关
 
-部分服务器行为是可选的，可在 **Settings > Advanced > Features**(设置 > 高级 > 功能) 中开启。所有开关初始都关闭，因此从未打开此页面的服务器会保持原有行为。
+部分服务器行为是可选的。所有开关初始都关闭，因此没有人开启这些开关的服务器会保持原有行为。它们位于 **Settings**(设置) 的不同位置：
+
+- **Stable lorebook picks**(稳定的世界书抽选) 和 **Lorebook activation stats**(世界书激活统计)：**Settings → Advanced → Lorebooks**(设置 → 高级 → 世界书)。
+- **Retry failed provider calls**(重试失败的服务商调用)：**Settings → Advanced → Timeouts & Retries**(设置 → 高级 → 超时与重试)。
+- **Recover deleted chat messages**(恢复已删除的聊天消息)：**Settings → Data → Backup & Restore**(设置 → 数据 → 备份与恢复)。
+
+在经典布局中，在设置里搜索开关名称即可。
 
 更改立即生效，无需重启服务器或刷新页面。
-
-<a id="overview"></a>
 
 ## 概览
 
@@ -15,9 +19,7 @@
 | **Lorebook activation stats**(世界书激活统计) | `usageAndActivationStats` | 关闭 | 无 |
 | **Recover deleted chat messages**(恢复已删除的聊天消息) | `messageTrash` | 关闭 | 无 |
 
-在设置中搜索 `features` 可找到此部分。
-
-<a id="where-the-settings-are-stored"></a>
+在设置中搜索开关名称即可找到它。
 
 ## 设置存储位置
 
@@ -27,11 +29,7 @@
 
 API 是 `GET` 和 `PUT /api/app-settings/features`。`PUT` 替换整个对象，拒绝未知键和非布尔值。
 
-<a id="switches"></a>
-
 ## 开关
-
-<a id="stable-lorebook-picks"></a>
 
 ### 固定世界书选择
 
@@ -40,8 +38,6 @@ API 是 `GET` 和 `PUT /api/app-settings/features`。`PUT` 替换整个对象，
 开启：只要匹配候选不变，世界书包含组在该聊天中就保留同一个胜出条目。其他聊天和候选集合仍可选择不同条目。
 
 关闭：每次生成都重新抽选胜出条目。
-
-<a id="retry-failed-provider-calls"></a>
 
 ### 重试失败的服务商调用
 
@@ -67,12 +63,10 @@ API 是 `GET` 和 `PUT /api/app-settings/features`。`PUT` 替换整个对象，
 
 关闭：删除的消息会立即移除。
 
-<a id="precedence"></a>
-
 ## 优先级
 
 1. **环境变量。**只要设置了开关对应变量，无论开启还是关闭都优先于已保存开关。Settings 显示锁定状态及变量名。空值视为未设置。
-2. **已保存开关。**Settings > Advanced > Features 中保存的值。
+2. **已保存开关。**Settings > Advanced > Lorebooks 中保存的值。
 3. **默认值。**关闭。
 
 | 变量 | 控制项 | 值 |
@@ -81,8 +75,6 @@ API 是 `GET` 和 `PUT /api/app-settings/features`。`PUT` 替换整个对象，
 | `PROVIDER_RETRY_TRANSIENT_ERRORS` | 重试失败的服务商调用 | `true`、`1`、`yes` 或 `on` 开启，其他值关闭。 |
 
 每次检查都会读取环境变量，因此 `.env` 更改无需重启即可生效。
-
-<a id="for-developers"></a>
 
 ## 开发者说明
 

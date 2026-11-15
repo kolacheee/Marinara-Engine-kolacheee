@@ -7,7 +7,7 @@ Panel mapy pokazuje, gdzie jest twoja drużyna, i pozwala ją przemieszczać. Te
 Game Mode pokazuje na ekranie gry panel mapy. Panel podaje nazwę bieżącej mapy, dzień gry i ikonę nieba oznaczającą porę dnia.
 
 - **Na komputerze** mapa jest wbudowanym panelem, który widać od razu. Panel da się przeciągać i zablokować w wybranym miejscu. Zasady działania przeciąganych paneli opisuje przewodnik [Game Mode: widgety HUD](hud-widgets.md).
-- **Na telefonie** dotknij **Map** (Mapa), żeby otworzyć panel. Jego przycisk zaczyna w pobliżu lewego górnego rogu i można go przeciągać po czacie. Użyj **Lock window** (Zablokuj okno), żeby przycisk pozostał na miejscu, a **Close** (Zamknij), żeby do niego wrócić. Położenie zapisuje się razem z czatem. Mapa na telefonie korzysta ze stylu widgetów czatu z **Settings → Appearance → App** (ustawienia, wygląd, aplikacja), a jej przycisk pozostaje osobno, poza menu **Chat tools** (narzędzia czatu) z trzema kropkami.
+- **Na telefonie** dotknij **Map** (Mapa), żeby otworzyć panel. Jego przycisk zaczyna w pobliżu lewego górnego rogu i można go przeciągać po czacie. Użyj **Lock window** (Zablokuj okno), żeby przycisk pozostał na miejscu, a **Close** (Zamknij), żeby do niego wrócić. Położenie zapisuje się razem z czatem. Mapa na telefonie korzysta ze stylu widgetów czatu z **Ustawienia → Wygląd → Przyciski i okna czatu**, a jej przycisk pozostaje osobno, poza menu **Chat tools** (narzędzia czatu) z trzema kropkami.
 
 Gra VN ma opisaną tu mapę sceny. Mapa świata, miasta i mapy lochów należą do gier Overworld, które nie są jeszcze dostępne (zobacz [VN czy Overworld](getting-started.md#vn-or-overworld)).
 
@@ -72,7 +72,30 @@ W grze ze światem czas płynie też sam:
 
 ## Pogoda
 
-Gra prowadzi pogodę na sztywnych obliczeniach, a nie przez AI. Pogoda zależy od biomu (rodzaju miejsca, w którym przebywa drużyna, na przykład pustyni, arktyki, wybrzeża albo gór) i pory roku. Przykłady to bezchmurne niebo, zachmurzenie, deszcz, burza, śnieg, zamieć, mgła i burza piaskowa. Pogoda zmienia się najczęściej podczas podróży i długiego odpoczynku, czasem przy eksploracji, a poza tym rzadko. Nadaje koloryt opisom scen tworzonym przez GM.
+Gra prowadzi pogodę na sztywnych obliczeniach, a nie przez AI. Przykłady to bezchmurne niebo, zachmurzenie, deszcz, burza, śnieg, zamieć, mgła, fala upałów i burza piaskowa. Pogoda nadaje koloryt opisom scen tworzonym przez GM.
+
+W grze z wygenerowanym światem pogoda wynika z klimatu miejsca na mapie, w którym stoi drużyna:
+
+- **Teren wokół drużyny.** Pustynie są suche i rzadko pada na nich deszcz, dżungle są wilgotne i ciepłe, pola śnieżne są zimne, a góry chłodniejsze i bardziej mgliste niż doliny poniżej.
+- **Szerokość geograficzna i morze.** Na mapie całego świata góra i dół leżą blisko biegunów, a środek blisko równika. Liczy się też odległość od morza: wybrzeża mają łagodne zimy, a miejsca w głębi lądu gorące lata i mroźne zimy.
+- **Miejscowa pora roku.** Na południe od równika lato przypada na kalendarzową zimę. Blisko równika rok ma porę deszczową i suchą zamiast zimy.
+- **Przemieszczająca się pogoda.** Układy pogodowe przesuwają się po mapie przez godziny i dni, więc niebo nie zmienia się z fali upałów we mgłę w jednym kroku, a pobliskie miejsca mają wspólną pogodę. W ciepłym klimacie przelotne deszcze i burze rozwijają się po południu.
+
+Gdy historia lub GM wymaga pogody niemożliwej w danym miejscu i czasie, na przykład śniegu na gorącej pustyni latem, gra używa najbliższej pasującej pogody (w tym przypadku zimnego, silnego wiatru). GM otrzymuje informacje o klimacie i o tym, co nie może się tam wydarzyć.
+
+Gra bez wygenerowanego świata zgaduje klimat na podstawie nazwy miejsca, np. "pustynia", "port" lub "góra".
+
+### Miejsca poza prawami natury
+
+Klątwa, bóg lub inna wielka moc może narzucić miejscu jeden stały stan: miasto pogrążone w wiecznej nocy, las zatrzymany w jesieni, dolinę pod śniegiem, który nigdy nie topnieje. GM ustanawia taką blokadę w historii i ma ona pierwszeństwo przed klimatem i zegarem, dopóki GM jej nie zniesie:
+
+- **Pogoda.** Miejsce zachowuje narzuconą pogodę, nawet taką, na którą jego klimat nigdy by nie pozwolił, np. śnieg na pustyni.
+- **Pora roku.** Miejsce pozostaje w jednej porze roku, podczas gdy reszta świata idzie dalej.
+- **Światło.** W miejscu zawsze panuje noc, zmierzch lub dzień. Oświetlenie sceny i efekty pogodowe dostosowują się do tego, a mapa świata cieniuje objęty blokadą teren.
+
+Świat może zaczynać z już istniejącymi blokadami. Gdy budujesz świat ze swoich lorebooków, każde miejsce, które według lore pozostaje poza prawami natury, np. "w Sallow Vale zawsze panuje jesień" lub "Gotham nigdy nie widzi słońca", ma blokadę od pierwszego dnia. To samo dotyczy blokady opisanej w realiach świata. GM dowiaduje się o tych miejscach i nadal może znieść blokadę w historii.
+
+Blokada obejmuje miejsce i wszystko w jego obrębie, więc blokada regionu obejmuje też jego miasta. Gdy blokady się nakładają, wygrywa najbliższe miejsce, więc miasto w przeklętym regionie może mieć własną narzuconą pogodę. Blokada może też obejmować cały świat. Scena nie może jej znieść, żądając innej pogody; może to zrobić tylko GM.
 
 Żeby zobaczyć pogodę na ekranie, włącz w ustawieniach wyglądu przełącznik **Dynamic weather effects (rain, snow, fog, etc.)**. Domyślnie jest włączony. Nad grą pojawiają się wtedy cząsteczki deszczu, śniegu i mgły, dopasowane do pogody i pory dnia. Zobacz [Ustawienia wyglądu](../appearance/appearance-settings.md).
 
@@ -85,8 +108,6 @@ Morale rośnie, gdy drużyna wygrywa walkę, kończy zadanie albo znajduje skarb
 ## Mapa świata i inne mapy Overworld
 
 Poniższe sekcje opisują gry **Overworld**, które nie są jeszcze dostępne. Dotyczą tylko sytuacji, w której na twoim serwerze włączono tę funkcję.
-
-<a id="the-overworld"></a>
 
 ### Mapa świata
 
@@ -106,15 +127,13 @@ Do przełączania widoków służą **Show the scene** (pokazanie sceny) i **Sho
 
 ### Pakiety kafelków
 
-Pakiety kafelków zawierają paletę i każdy kafelek (każdy rodzaj gruntu, osady według wielkości, drużynę oraz ulice, dachy i mieszkańców miasta) zapisany jako rzędy pikseli. Każda rodzina stylistyczna settingu ma wbudowany pakiet. Otwórz panel **Agents** (Agenci) i znajdź **Tile packs** (pakiety kafelków), żeby:
+Pakiety kafelków zawierają paletę i każdy kafelek (każdy rodzaj gruntu, osady według wielkości, drużynę oraz ulice, dachy i mieszkańców miasta) zapisany jako rzędy pikseli. Każda rodzina stylistyczna settingu ma wbudowany pakiet. Otwórz **Biblioteka → Agenci** i znajdź **Tile packs** (pakiety kafelków), żeby:
 
 - wybrać, którym pakietem rysowany jest każdy setting (**Built in** (wbudowany) to jego własny pakiet),
 - zaimportować pakiet przyciskiem **Import a tile pack** (import pakietu kafelków) z pliku `.tilepack.json`,
 - wyeksportować pakiet przyciskiem **Export** (eksport), żeby go udostępnić, albo usunąć go przyciskiem **Remove** (usunięcie), co przywraca każdemu settingowi rysowanemu tym pakietem jego własne kafelki.
 
 Pakiet potrzebuje tylko tych kafelków, które zmienia, a wszystko, czego nie zawiera, jest rysowane w zwykły sposób. Pakiet, który podaje kafelek nierysowany przez aplikację Marinara Engine, zachowuje resztę i informuje, co pominął.
-
-<a id="the-town"></a>
 
 ### Miasto
 
@@ -129,8 +148,6 @@ Miasto można **ułożyć ręcznie** w edytorze świata takim jak Pixelforge, w 
 - To, kto gdzie mieszka i pracuje, nigdy się nie zmienia, a czas dojścia do przeniesionego budynku liczy się od jego nowych drzwi.
 - Edytor odrzuca układ, który nie pasuje do miasta, i podaje powód. Miejsca dodane przez opowieść w trakcie gry nadal znajdują działkę.
 - Układ może też stawiać budynki poza działkami, malować pola, polne drogi, wodę z mostami i żywopłoty oraz rozmieszczać ozdoby. Widok miasta rysuje je wszystkie (ozdoby tylko z pakietem obrazów, który je zawiera).
-
-<a id="dungeons-caves-and-stations"></a>
 
 ### Lochy, jaskinie i stacje
 

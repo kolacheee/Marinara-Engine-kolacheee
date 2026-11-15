@@ -6,9 +6,9 @@ O código que você mesmo escreve e importa é tratado como uma **External Exten
 
 ## Antes de começar
 
-As External Extensions ficam ocultas até você abrir as duas etapas de segurança de [Permitir importações de terceiros](personal-extensions.md#allow-third-party-imports): `ENABLE_EXTERNAL_EXTENSIONS=true` no `.env` e **Allow third-party extension imports** (permitir a importação de extensões de terceiros) em **Settings → Advanced → Danger Zone** (Configurações → Avançado → Zona de perigo).
+As External Extensions ficam ocultas até você abrir as duas etapas de segurança de [Permitir importações de terceiros](personal-extensions.md#allow-third-party-imports): `ENABLE_EXTERNAL_EXTENSIONS=true` no `.env` e **Allow third-party extension imports** (permitir a importação de extensões de terceiros) em **Configurações → Avançado → Segurança**.
 
-Para importar e gerenciar extensões, também é necessário ter acesso por localhost ou o segredo de administrador. Pelo celular, por um endereço da LAN ou por um navegador remoto, defina `ADMIN_SECRET` no servidor e informe o mesmo valor em **Settings → Advanced → Admin Access** (Configurações → Avançado → acesso de administrador).
+Para importar e gerenciar extensões, também é necessário ter acesso por localhost ou o segredo de administrador. Pelo celular, por um endereço da LAN ou por um navegador remoto, defina `ADMIN_SECRET` no servidor e informe o mesmo valor em **Configurações → Avançado → Segurança**.
 
 Escolha o ambiente menos poderoso que dê conta da tarefa:
 
@@ -94,7 +94,7 @@ Use este `extension.css` para estilizar a janela iframe restrita que o botão ab
 
 Depois, importe e execute a extensão:
 
-1. Abra **Settings → Addons → External Extensions** (Configurações → Complementos → extensões externas).
+1. Abra **Biblioteca → Extensões → Extensões externas**.
 2. Escolha **Import Extension Folder** (importar pasta de extensão) e selecione `Hello Panel`, ou compacte a pasta e importe o ZIP com **Import Extension File** (importar arquivo de extensão).
 3. Abra o rascunho desativado e inspecione o manifesto e o JavaScript dele.
 4. Escolha **Review and Run** (revisar e executar) e aprove o hash exato exibido.
@@ -342,7 +342,7 @@ Se uma External Extension depender do acesso ao DOM do host, ela pode pedir:
 
 **A permissão Full page access não é uma capacidade da sandbox.** O JavaScript e o CSS aprovados rodam dentro da página do Marinara. O código pode ler ou alterar qualquer coisa visível na sessão atual do navegador, inspecionar chats e cards, usar o armazenamento do navegador, fazer requisições de rede e chamar as APIs do Marinara na mesma origem. Na prática, ele tem a mesma autoridade sobre a página que um código colado no console do navegador. Os rascunhos da Professor Mari não podem pedir essa permissão.
 
-As extensões de página inteira devem usar `marinara.fetch(...)` para as requisições de rede. A função tem a mesma assinatura e o mesmo resultado que `window.fetch` e, além disso, permite que **Settings > Addons > External Extensions** mostre a contagem de requisições dessa extensão na sessão, os bytes transferidos informados pelas respostas, a taxa recente de requisições e o aviso de tráfego alto contínuo. O `window.fetch` direto continua disponível porque o acesso à página inteira é código de página confiável, mas essas requisições não podem ser atribuídas à extensão.
+As extensões de página inteira devem usar `marinara.fetch(...)` para as requisições de rede. A função tem a mesma assinatura e o mesmo resultado que `window.fetch` e, além disso, permite que **Biblioteca > Extensões > Extensões externas** mostre a contagem de requisições dessa extensão na sessão, os bytes transferidos informados pelas respostas, a taxa recente de requisições e o aviso de tráfego alto contínuo. O `window.fetch` direto continua disponível porque o acesso à página inteira é código de página confiável, mas essas requisições não podem ser atribuídas à extensão.
 
 Marinara reconhece o envelope v1 mais antigo `kind: "marinara.extension"` sem um campo `capabilities` explícito como um pacote anterior à sandbox e atribui **Full page access** durante a importação. Assim, pacotes legados como o WeatherTweaker chegam ao fluxo de revisão correto, em vez de falhar em silêncio dentro de um Worker. Um pacote moderno que usa esse envelope mas quer o ambiente seguro precisa incluir `"capabilities": []`.
 
@@ -445,13 +445,13 @@ Os limites do ZIP, da requisição, da mensagem da sandbox e do armazenamento pr
 | Sintoma | Verifique |
 | --- | --- |
 | Os controles de importação externa não aparecem | Abra as duas barreiras de External Extension descritas acima |
-| O gerenciamento diz que é necessário localhost ou Admin Access | Configure `ADMIN_SECRET` e salve-o em **Admin Access** |
+| O gerenciamento diz que é necessário localhost ou Admin Access | Configure `ADMIN_SECRET` e salve-o em **Configurações → Avançado → Segurança** |
 | A importação não encontra nenhuma extensão | Verifique `manifest.json` e os caminhos relativos dele; Server precisa de JS, enquanto Browser precisa de CSS ou JS |
 | A extensão é desativada após uma edição | Isso é esperado: inspecione e aprove o novo hash exato |
 | O código Browser não pode usar `document`, `window`, `fetch` ou o armazenamento local | Isso é esperado na sandbox segura; use as APIs intermediárias documentadas |
 | A Server Extension não está disponível | Use o Seatbelt do macOS ou Linux com Bubblewrap, ou passe para uma Browser Extension |
 | A Browser Extension lança uma exceção | Abra as ferramentas de desenvolvimento do navegador; `marinara.log` e os erros de inicialização são identificados com o nome da extensão |
-| A Server Extension lança uma exceção | Verifique o status dela em **Settings → Addons** e o log do servidor do Marinara |
+| A Server Extension lança uma exceção | Verifique o status dela em **Biblioteca → Extensões** e o log do servidor do Marinara |
 
 O CSS, o armazenamento privado, os arquivos de importação e as mensagens do ambiente mantêm limites de segurança separados. Marinara deve informar o limite que rejeitou um pacote, em vez de apresentá-lo como uma falha de execução.
 

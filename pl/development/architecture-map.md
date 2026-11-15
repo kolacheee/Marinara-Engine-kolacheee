@@ -2,7 +2,7 @@
 
 Ten przewodnik to materiał dla osób rozwijających projekt. Opisuje organizację kodu aplikacji Marinara Engine: wspólne fundamenty, systemy funkcji, przypisanie kodu do trybów oraz miejsce każdego elementu. Wymienia też obecne duże pliki i kierunek przyszłych refaktoryzacji.
 
-Zakres: `packages/client/src`, `packages/server/src` i `packages/shared/src`. Repozytorium nie zawiera klasycznego zestawu testów `.test.ts`. Automatyczną weryfikację zapewniają śledzone skrypty regresyjne oraz przeglądarkowe testy dymne Playwright; tymczasowe pliki dowodowe `.test.ts` są w `.gitignore` i znikają po użyciu.
+Zakres: `packages/client/src`, `packages/server/src` i `packages/shared/src`. Repozytorium nie zawiera klasycznego zestawu testów `.test.ts`. Automatyczną weryfikację zapewniają śledzone skrypty regresyjne oraz przeglądarkowe testy dymne Playwright; tymczasowe pliki dowodowe `.test.ts` są ignorowane przez Git i znikają po użyciu.
 
 Liczba plików, linii i tras zmienia się wraz z repozytorium. Ta mapa podaje przybliżone kształty i nazwy. Dokładne liczby zawsze sprawdzaj w aktualnym drzewie plików.
 
@@ -41,7 +41,7 @@ Obecna zawartość:
 - `schemas`: schematy Zod dla utrwalanych i współdzielonych bytów.
 - `constants`: dostawcy, wartości domyślne, tryby czatu, listy modeli, prompty agentów.
 - `utils`: czyste funkcje pomocnicze, na przykład rozwijanie makr, opakowywanie w XML i dobór muzyki.
-- `features`: manifesty i rejestr agentów, definicje wywołań funkcji, pakiety folderów, kontrakt i rejestr silnika gier turowych (same gry pochodzą z opcjonalnych pakietów), zestawy zasad Game Mode i ich walka (`rulesets`, `ruleset-combat`, `tactical-combat` oraz pliki `combat-*`), a także generator świata z plikami do udostępniania (zestawy settingu, światy, paczki kafelków, plansz i stworzeń) w `world`. Pliki `marinara-*.ts` (`ai`, `bestiary`, `bestiary-threat`, `classes`, `combat`, `items`, `loot`, `party`) zawierają wyłącznie dane i obliczenia zestawu zasad Classic Marinara, wbudowanego w Engine.
+- `features`: manifesty i rejestr agentów, definicje wywołań funkcji, pakiety folderów, silniki gier turowych UNO, Chess i Poker, zestawy zasad Game Mode i ich walka (`rulesets`, `ruleset-combat`, `tactical-combat` oraz pliki `combat-*`), a także generator świata z plikami do udostępniania (zestawy settingu, światy, paczki kafelków, plansz i stworzeń) w `world`.
 
 Zasady:
 
@@ -64,12 +64,12 @@ Obecny kształt najwyższego poziomu:
 - `features`: wydzielone moduły funkcji, obecnie sekcje panelu **Chat Settings** (ustawienia czatu), elementy panelu trackera, gra wieloosobowa oraz kontrakt, konfiguracja, scena i renderery agentów awatarów (`features/avatars`).
 - `hooks`: hooki React Query i hooki czasu pracy aplikacji dla większości funkcji API.
 - `lib`: funkcje pomocnicze przeglądarki i klienta. Mieszają się tu obecnie pomocniki wspólne z pomocnikami tylko dla trybu Game Mode.
-- `stores`: magazyny stanu Zustand dla interfejsu, czatu, agentów, stanu gry, trybu Game Mode, zasobów, procesu sidecar, tłumaczenia, galerii, starć, ekranów walki i arkuszy Roleplay oraz gier w trybie Conversation.
+- `stores`: magazyny stanu Zustand dla interfejsu, czatu, agentów, stanu gry, trybu Game Mode, zasobów, procesu sidecar, tłumaczenia, galerii, starć oraz gier turowych.
 - `styles`: globalny arkusz stylów i CSS poszczególnych motywów.
 
 Ważne obecne powiązania między obszarami:
 
-- `components/game` importuje `components/chat` na potrzeby wspólnych elementów wizualnych, takich jak efekty pogody, nakładka z przypiętym obrazem, pasek narzędzi czatu i okna sterowania. Galeria jest w ustawieniach czatu (`features/chat-settings/ChatGalleryPanel.tsx`). Game Mode zasila ją przez `hooks/use-chat-gallery-actions.ts`.
+- `components/game` importuje `components/chat` na potrzeby wspólnych elementów wizualnych, takich jak pogoda i wysuwane panele galerii.
 - `components/chat` importuje stan gry i stan starcia na potrzeby funkcji trybu Roleplay.
 - `hooks/use-generate.ts` sięga do stanu czatu, agentów, gry, trybu Game Mode, tłumaczenia oraz ustawień interfejsu.
 - Pomocniki `lib/game-*` służą tylko trybowi Game Mode, ale leżą obok pomocników globalnych.
@@ -90,8 +90,6 @@ Obecny kształt najwyższego poziomu:
 - `services/sidecar`: lokalne środowisko uruchomieniowe, zarządzanie modelami, analiza sceny, obróbka sceny po analizie.
 - `services/agents`: wykonywanie agentów i kierowanie wiedzy.
 - Fundamenty funkcji: `services/import`, `services/lorebook`, `services/image`, `services/haptic`, `services/tools`, `services/regex`, `services/professor-mari`, `services/mari-db`, `services/turn-games`, `services/spotify`, `services/video`, `services/generation`, `services/chat-summary`, `services/achievements`, `services/prompt-overrides`, `services/setup`, `services/noodle`, `services/memory-recall`, `services/avatars` (przechowywanie modeli awatarów, ich generowanie i klasyfikator emocji dla agentów awatarów), `speech-to-text.service.ts` oraz `discord-webhook.ts`.
-- `bin/mari.ts`: narzędzie wiersza poleceń `mari` (jedyny wpis `bin` pakietu), które łączy się z działającym serwerem lokalnym.
-- `assets/`: dane dostarczane z serwerem, m.in. domyślne tła i zasoby gry, paczki plansz, kafelki mapy świata, umiejętności Mari, wtyczka Claude Code, pliki blokad zależności środowiska uruchomieniowego i skrypt uruchamiający osobiste rozszerzenia.
 - `db/schema`: definicje tabel plikowych dla danych zapisywanych w `DATA_DIR/storage`.
 - `db/file-schema.ts`, `db/file-query.ts`: metadane tabel natywnych i wyrażenia zapytań.
 - `db/file-backed-store.ts`: magazyn tabel w pamięci, granica transakcji, odzyskiwanie po awarii i utrwalanie migawek JSON. Zobacz [Przechowywanie danych w plikach](file-storage.md).
@@ -165,7 +163,7 @@ Te pliki najbardziej spowalniają dalszą pracę, bo mieszają wiele spraw w jed
 | `packages/server/src/routes/generate.routes.ts` | wspólne generowanie i agenci | Trasa, streaming, prompt, agenci, magazyn i efekty uboczne mieszkają w jednym pliku. |
 | `packages/server/src/routes/game.routes.ts` | `MODE-GAME` | Obsługa API, przepływ GM, analiza sceny, zasoby, walka i utrwalanie danych są ze sobą splecione. |
 | `packages/client/src/components/game/GameSurface.tsx` | `MODE-GAME` | Renderowanie, orkiestracja stanu, zasoby, logi, narracja, walka i efekty są ze sobą splecione. |
-| `packages/client/src/components/chat/ChatSettingsDrawer.tsx` | mieszane ustawienia czatu | Wydzielanie sekcji trwa w `features/chat-settings`, ale panel boczny wciąż jest duży. |
+| `packages/client/src/features/chat-settings/ChatSettingsDrawer.tsx` | mieszane ustawienia czatu | Wydzielanie sekcji trwa w `features/chat-settings/sections`, ale panel boczny wciąż jest duży. |
 | `packages/client/src/components/game/GameNarration.tsx` | `MODE-GAME` | Renderowanie widoku i formatowanie komend są ściśle powiązane. |
 | `packages/client/src/components/game/GameCombatUI.tsx` | `MODE-GAME` | Widok walki, sterowanie i logi mogą się rozpaść na mniejsze panele i hooki. |
 | `packages/client/src/components/chat/RoleplayHUD.tsx` | `MODE-ROLEPLAY` | Podział częściowo wykonano przez `RoleplayHUDActionsMenu.tsx` i `RoleplayHUDPanels.tsx`. |
@@ -279,7 +277,7 @@ Dawny płaski układ `types`, `schemas` i `constants` to już nie cała historia
 To dobre pierwsze porządki, bo zmniejszają powiązania bez zmiany zachowania.
 
 1. Podziel `components/chat` na grupy: wspólną, Conversation i Roleplay.
-   - Kandydaci do części wspólnej: `ChatCommonOverlays`, `ChatBranchesPanel` i `ChatGalleryPanel` (oba teraz w `features/chat-settings`), `WeatherEffects` oraz wspólne elementy wiadomości i pola wpisywania.
+   - Kandydaci do części wspólnej: `ChatCommonOverlays`, `ChatBranchSelector`, `ChatGalleryDrawer`, `WeatherEffects` oraz wspólne elementy wiadomości i pola wpisywania.
    - Kandydaci do trybu Conversation: `ChatConversationSurface`, `ConversationView`, `ConversationMessage`, `ConversationInput`.
    - Kandydaci do trybu Roleplay: `ChatRoleplaySurface`, `SpriteOverlay`, `SceneBanner`, `CyoaChoices`, `EncounterModal`. Podział paska HUD trybu Roleplay jest częściowo wykonany w `RoleplayHUDActionsMenu.tsx` i `RoleplayHUDPanels.tsx`.
 2. Przenieś klienckie pomocniki tylko dla trybu Game Mode do modułu gry.

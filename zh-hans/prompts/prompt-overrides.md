@@ -11,7 +11,7 @@ Prompt Overrides(提示词覆盖) 是一组编辑器，用来修改 Marinara 给
 ## 找到编辑器
 
 1. 打开 **Settings**(设置)。
-2. 点击 **Generations**(生成) 选项卡。
+2. 点击 **Media**(媒体) 选项卡。安装 Illustrator 智能体之前，这个选项卡只提供下载它的入口。
 3. 向下滚动到 **Prompt Overrides**，它的说明文字是“Reusable image and video prompt templates”。
 
 那里有两个编辑器。点击标题即可展开。

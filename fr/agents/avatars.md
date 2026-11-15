@@ -6,9 +6,9 @@ Les modèles Live2D ne sont pas pris en charge. La licence de Live2D exige un ac
 
 ## Installer les agents d'avatar
 
-Les deux agents sont dans **Agent Organizer** (organisateur d'agents) pour toutes les installations, sous les filtres **Roleplay** et **Game**. Ils nécessitent Marinara Engine 2.5.1 ou une version ultérieure. Une version plus ancienne refuse de les installer. Ils se téléchargent séparément : n'installe donc que celui que tu veux. Les deux fonctionnent pour les personnages et les personas dans les chats Roleplay et Game, et n'envoient aucune requête supplémentaire à tes modèles d'IA pendant que tu discutes.
+Les deux agents sont dans **Library → Agents** (Bibliothèque → Agents), sous **Available** (disponibles), pour toutes les installations, sous les filtres **Roleplay** et **Game**. Ils nécessitent Marinara Engine 2.5.1 ou une version ultérieure. Une version plus ancienne refuse de les installer. Ils se téléchargent séparément : n'installe donc que celui que tu veux. Les deux fonctionnent pour les personnages et les personas dans les chats Roleplay et Game, et n'envoient aucune requête supplémentaire à tes modèles d'IA pendant que tu discutes.
 
-1. Ouvre **Agents → Agent Organizer** et installe **2D Avatars**, **3D Avatars** ou les deux. Aucun des deux ne demande de redémarrage.
+1. Ouvre **Library → Agents** et installe **2D Avatars**, **3D Avatars** ou les deux. Aucun des deux ne demande de redémarrage.
 2. Configure chaque avatar sur la page de l'agent (voir [Configurer un avatar](#set-up-an-avatar)).
 3. Dans un chat Roleplay ou Game, ouvre **Chat Settings → Agents → Misc Agents** (réglages du chat → Agents → agents divers) et ajoute l'agent.
 
@@ -43,7 +43,7 @@ La disposition est enregistrée pour ce chat sur cet appareil. Elle ne se synchr
 
 ### Où se trouvent les fichiers d'avatar
 
-Les fichiers importés sont vérifiés avant d'être stockés. La seule limite de taille est la limite de téléversement habituelle du serveur. Les fichiers se trouvent dans le dossier de données, sous `avatar-models/<character or persona>/<id>/`, à côté d'un fichier `avatar.json` qui contient les réglages. Les sauvegardes et les exports de profil incluent ce dossier. Supprimer un personnage ou un persona supprime son avatar, tout comme vider entièrement **Characters** (personnages), **Personas** ou **Media & Assets** (médias et ressources) dans la Danger Zone des réglages. Les exports de fiches de personnage n'incluent jamais les avatars.
+Les fichiers importés sont vérifiés avant d'être stockés. La seule limite de taille est la limite de téléversement habituelle du serveur. Les fichiers se trouvent dans le dossier de données, sous `avatar-models/<character or persona>/<id>/`, à côté d'un fichier `avatar.json` qui contient les réglages. Les sauvegardes et les exports de profil incluent ce dossier. Supprimer un personnage ou un persona supprime son avatar, tout comme vider entièrement **Characters** (personnages), **Personas** ou **Media & Assets** (médias et ressources) dans **Settings → Data → Delete Data** (Paramètres → Données → Supprimer les données). Les exports de fiches de personnage n'incluent jamais les avatars.
 
 ### Chats de groupe
 
@@ -272,7 +272,7 @@ Un personnage ou un persona peut utiliser ses sprites d'expression comme avatar 
 
 | Ce que tu veux | Outil | Ce que tu obtiens |
 | --- | --- | --- |
-| Des sprites PNGTuber | N'importe quelle application de dessin, puis **Images → Sprites** du personnage | Les sprites |
+| Des sprites PNGTuber | N'importe quelle application de dessin, puis l'onglet **Sprites** du personnage | Les sprites |
 | Des sprites PNGTuber avec calques et costumes | [PNGTuber Plus](https://github.com/kaiakairos/PNGTuber-Plus) | Un fichier `.save` |
 | Un avatar mesh | [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio) | Un fichier `.mavatar` |
 | Un modèle 3D | [VRoid Studio](https://vroid.com/en/studio), ou Blender avec le [VRM Add-on for Blender](https://vrm-addon-for-blender.info/en-us/) | Un fichier `.vrm`, et en option une animation au repos `.vrma` |
@@ -281,7 +281,7 @@ Un personnage ou un persona peut utiliser ses sprites d'expression comme avatar 
 
 1. Dessine une image par émotion, toutes de la même taille, avec le personnage au même endroit. Nomme chacune d'après son émotion : `neutral`, `happy`, `angry`, `sad`, `relaxed`, `surprised`. Les noms qui contiennent un mot d'émotion fonctionnent aussi, comme `smile`, `cry`, `calm` ou `shock`. Pour les [émotions supplémentaires](#pngtuber-sprites) facultatives, nomme des images comme `amusement`, `fear` ou `gratitude`.
 2. Pour une bouche qui bouge, dessine la même image avec la bouche ouverte et ajoute `_talk`, par exemple `happy_talk`. Pour le clignement, ferme les yeux et ajoute `_blink`. Pour les deux, ajoute `_blink_talk`.
-3. Ajoute les images dans **Images → Sprites**, sous **Facial Expressions** (expressions du visage). Chaque nom de fichier devient le nom de son sprite. Voir [Sprites de personnage](../characters/sprites.md#upload-your-own-sprites).
+3. Ajoute les images dans l'onglet **Sprites**, sous **Facial Expressions** (expressions du visage). Chaque nom de fichier devient le nom de son sprite. Voir [Sprites de personnage](../characters/sprites.md#upload-your-own-sprites).
 4. Ouvre **2D Avatars** dans **Agents**, choisis le personnage ou le persona, puis active **Show this avatar in chats**.
 
 ### PNGTuber Plus

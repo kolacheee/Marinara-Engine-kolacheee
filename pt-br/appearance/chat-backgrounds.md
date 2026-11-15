@@ -1,32 +1,30 @@
-# Planos de fundo do chat
+# Biblioteca de planos de fundo
 
-A biblioteca de planos de fundo guarda as imagens que você envia e escolhe na mão para ficarem atrás do chat. Para o agente **Background**, que escolhe um cenário para você a cada turno, veja [Planos de fundo do Roleplay](../roleplay/backgrounds.md). Para planos de fundo gerados por IA a partir da galeria, veja [Planos de fundo de cena e a galeria](../media/scene-backgrounds.md).
+A Biblioteca de planos de fundo guarda todas as imagens que podem ficar atrás de um chat: as que você envia, as que o Illustrator pinta para você e as artes que já vêm com Marinara. Este guia explica como escolher uma imagem para um chat, importar, usar tags e pastas, definir o plano de fundo padrão do Roleplay e usar o **Desfoque do plano de fundo**.
 
-O plano de fundo do chat aparece em todos os modos de chat. Nos chats de Conversation, o gradiente do **Conversation Theme** (tema do Conversation) fica por cima da imagem, e **Conversation background image opacity** (opacidade da imagem de fundo no Conversation) define com que intensidade a imagem aparece. Veja [Configurações de aparência](appearance-settings.md).
+Para planos de fundo que mudam com a história (o agente Background, lugares fixados e imagens que acompanham um personagem), veja [Planos de fundo que acompanham a história](../roleplay/backgrounds.md). Para imagens que o Illustrator pinta, incluindo versões com chuva e neve, veja [Planos de fundo criados pelo Illustrator](../media/scene-backgrounds.md).
 
-## Como mudar o plano de fundo de um chat
+O plano de fundo do chat aparece em todos os modos de chat. Nos chats de Conversation, o gradiente do **Plano de fundo do Conversation** fica por cima da imagem, e **Opacidade da imagem de fundo do Conversation** define com que intensidade ela aparece. Veja [Configurações de aparência](appearance-settings.md).
 
-Antes de começar: abra o chat que você quer mudar. O plano de fundo escolhido vale para esse chat.
+## Onde encontrar
 
-1. Abra **Settings** (Configurações), depois **Appearance** (Aparência) e então o botão **App**.
-2. Em **Backgrounds** (planos de fundo), toque em **Browse library** (navegar pela biblioteca).
-3. Toque em uma imagem. Ela vira o plano de fundo deste chat, e a janela se fecha.
+Abra **Configurações → Aparência** e localize a seção **Planos de fundo**. Ela tem o seletor **Plano de fundo do chat**, o controle deslizante **Desfoque do plano de fundo** e os controles **Opacidade da imagem de fundo do Conversation** e **Planos de fundo na lista de chats**.
+
+O seletor mostra uma prévia do plano de fundo atual, ou **Plano de fundo padrão** quando nenhum foi escolhido. Abaixo dele, até três planos de fundo **Recentes** ficam a um toque de distância. **Navegar pela biblioteca** abre a janela **Biblioteca de planos de fundo**. Em um chat, **Configurações do chat → Plano de fundo** abre a mesma biblioteca para esse chat.
+
+## Escolher um plano de fundo para um chat
+
+Antes de começar: abra o chat que você quer mudar. A imagem escolhida vale só para esse chat.
+
+1. Abra **Configurações → Aparência → Planos de fundo** e clique em **Navegar pela biblioteca**.
+2. Clique em uma imagem. Aparece um sinal de confirmação, ela vira o plano de fundo deste chat e a janela se fecha.
+3. Para voltar ao padrão, clique de novo na imagem escolhida ou clique no X (**Limpar a seleção**) da prévia.
 
 Para usar uma imagem sua, importe-a primeiro (veja [Importar um plano de fundo](#import-a-background)).
 
-## Onde encontrar os planos de fundo
-
-1. Abra **Settings**.
-2. Escolha a aba **Appearance** e depois o botão **App**.
-3. Localize a seção **Backgrounds**.
-
-Ela tem o seletor **Chat Background** (plano de fundo do chat), o controle deslizante **Background Blur** (desfoque do plano de fundo) e os controles **Conversation background image opacity** e **Chat List Backgrounds** (veja [Configurações de aparência](appearance-settings.md)).
-
-O seletor mostra uma prévia do plano de fundo atual, ou **Default background** (plano de fundo padrão) quando nenhum foi escolhido. Abaixo dele, até três planos de fundo **Recent** (recentes) ficam a um toque de distância. Clique em **Browse library** para abrir a janela **Background Library** (biblioteca de planos de fundo).
-
 ## A biblioteca de planos de fundo
 
-A biblioteca mistura as imagens que você enviou com as artes que já vêm com Marinara. Cada imagem tem uma etiqueta.
+A biblioteca mistura as imagens que você enviou ou que o Illustrator pintou com as artes que já vêm com Marinara. Cada imagem tem uma etiqueta.
 
 | Etiqueta | Significado |
 | --- | --- |
@@ -46,12 +44,6 @@ Os botões **All sources**, **My uploads** e **Game assets**, de **Filter by sou
 As imagens novas aparecem na grade com a etiqueta **My upload**.
 
 Cada arquivo precisa ser JPG, PNG, GIF, WebP ou AVIF, com até 20 MB. Marinara verifica o que há dentro do arquivo, não o nome dele. Um arquivo que não é imagem renomeado para `.png` é recusado.
-
-### Escolher um plano de fundo para o chat atual
-
-1. Abra **Browse library**.
-2. Clique em uma miniatura. Aparece um sinal de confirmação, a imagem vira o plano de fundo deste chat e a janela se fecha.
-3. Para voltar ao padrão, clique de novo na miniatura escolhida ou clique no X (**Clear selection**) da prévia.
 
 ### Buscar e filtrar
 
@@ -90,6 +82,10 @@ Só as imagens **My upload** podem receber tags.
 3. Pressione <kbd>Enter</kbd> ou clique em **Add**.
 
 Para tirar uma tag, clique nela durante a edição de tags.
+
+As tags são escritas em minúsculas e podem conter letras, números, espaços, hífens e sublinhados, com até 40 caracteres cada.
+
+Marque as imagens com tags dos lugares que elas mostram, como `guest bedroom` ou `harbor tavern`. O agente **Background** lê as tags ao escolher, e o Illustrator reutiliza uma imagem cuja tag de duas ou mais palavras nomeia o lugar da história, em vez de pintar uma nova. Veja [Reutilizar imagens que você já tem](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 <a id="download-a-background"></a>
 
@@ -136,6 +132,6 @@ Para o modelo completo de sincronização, veja [Configurações de aparência](
 
 ## Guias relacionados
 
-- [Planos de fundo do Roleplay](../roleplay/backgrounds.md): o agente Background, que escolhe um cenário a cada turno.
-- [Planos de fundo de cena e a galeria](../media/scene-backgrounds.md): planos de fundo de cena gerados por IA a partir da galeria. Eles também vão parar nesta biblioteca.
+- [Planos de fundo que acompanham a história](../roleplay/backgrounds.md): o agente Background, lugares fixados e planos de fundo da galeria.
+- [Planos de fundo criados pelo Illustrator](../media/scene-backgrounds.md): planos de fundo pintados e versões com diferentes climas. Eles também vão parar nesta biblioteca.
 - [Configurações de aparência](appearance-settings.md): a aba Appearance inteira.

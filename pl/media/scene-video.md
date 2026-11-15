@@ -10,8 +10,8 @@ Wideo sceny korzysta z osobnego rodzaju konta, **Video Generation** (generowanie
 
 ## Konfiguracja usługi wideo
 
-1. Kliknij **Connections** (Połączenia) na górnym pasku, a potem **Add** (dodaj). Otwiera się okno **Add account** (dodanie konta).
-2. Wybierz usługę z sekcji **Images & video** (obrazy i wideo). Usługi są wymienione niżej.
+1. Otwórz **Biblioteka → Połączenia** i kliknij **Dodaj połączenie**. Otwiera się lista usług.
+2. Otwórz zakładkę **Wideo** i wybierz usługę. Usługi są wymienione niżej.
 3. Wklej klucz API dla usługi w chmurze. Lokalne ComfyUI go nie potrzebuje. SwarmUI potrzebuje Swarm Auth Token (token uwierzytelniający SwarmUI) tylko wtedy, gdy twój serwer wymaga konta.
 4. Kliknij **Connect** (połącz), a potem wybierz model albo zostaw domyślny. NanoGPT nie ma modelu domyślnego, więc wybierz model z jego listy. Przy ComfyUI zostaw model nieustawiony, chyba że workflow używa `%model%`. Przy SwarmUI model jest opcjonalny.
 5. Otwórz model wideo i kliknij **Test video** (test wideo), żeby go sprawdzić.
@@ -37,7 +37,7 @@ Przy **SwarmUI** Marinara wpisuje adres `http://127.0.0.1:7801`. Wklej workflow 
 
 ### Ustawienie domyślnego modelu wideo
 
-Żeby używać modelu wideo, gdy czat nie ma własnego, ustaw zadanie **Video** w sekcji **Defaults** (ustawienia domyślne) u góry panelu **Connections**. W **Chat Settings** (ustawienia czatu) widnieje ono jako **Default video provider** (domyślny dostawca wideo). Gdy nie ma ani modelu w czacie, ani domyślnego, akcje wideo pokazują ostrzeżenie z prośbą o wybór.
+Żeby używać modelu wideo, gdy czat nie ma własnego, ustaw zadanie **Video** w sekcji **Domyślne** u góry panelu **Connections**. W **Chat Settings** (ustawienia czatu) widnieje ono jako **Default video provider** (domyślny dostawca wideo). Gdy nie ma ani modelu w czacie, ani domyślnego, akcje wideo pokazują ostrzeżenie z prośbą o wybór.
 
 ### Instrukcje do promptów wideo
 
@@ -58,8 +58,6 @@ Domyślna długość, zakres, proporcje obrazu i rozdzielczość dla każdej us�
 - ComfyUI i SwarmUI: 5s, od 1 do 60s, 16:9, 720p.
 
 Gemini Omni nie ma pola rozdzielczości, a długość trafia do treści promptu. Google Veo wymusza 8 sekund zawsze, gdy animuje obraz referencyjny, bo tyle czasu potrzebuje na połączenie pierwszej i ostatniej klatki.
-
-<a id="seedance-reference-frames"></a>
 
 ### Klatki referencyjne w Seedance
 
@@ -83,7 +81,7 @@ Przycisk **Video** w rzędzie akcji na górze galerii tworzy klip z najnowszej o
 - **Awatar**: klip zaczyna się od osoby wymienionej jako pierwsza w opisie, także od twojej persony. Wystarczy część imienia lub nazwiska, której nie ma nikt inny, zapisana wielką literą ("Lena" dla "Dr. Lena Kowalski"). Bez wskazanej osoby klip zaczyna się od postaci czatu.
 - **Przegląd**: przy włączonej opcji **Expose media prompts before sending** (pokazywanie promptów mediów przed wysłaniem) możesz najpierw przejrzeć i poprawić prompt klipu.
 - **Kontekst**: AI czyta tyle ostatnich wiadomości, ile agent Illustrator przy tworzeniu obrazu (ustawienie **Context Size** (rozmiar kontekstu) agenta Illustrator w sekcji **Agent Budget** (budżet agenta) na jego ekranie konfiguracji).
-- **Bez obrazu**: gdy klip zaczyna się bez obrazu lub od awatara, AI samo opisuje scenę. Jego instrukcje to **Roleplay Clip Director** (reżyser klipów Roleplay) w **Settings → Generations → Video Generation Prompt Overrides** (ustawienia, generowanie, nadpisywanie promptów generowania wideo).
+- **Bez obrazu**: gdy klip zaczyna się bez obrazu lub od awatara, AI samo opisuje scenę. Jego instrukcje to **Roleplay Clip Director** (reżyser klipów Roleplay) w **Ustawienia → Media → Nadpisania promptów** (ustawienia, generowanie, nadpisywanie promptów generowania wideo).
 
 Gotowy klip odtwarza się bezpośrednio w czacie, pod najnowszą odpowiedzią, nawet jeśli obraz pochodzi z wcześniejszej. Klipy nie otwierają się same w pływającym okienku. Żeby wyświetlić klip w pływającym okienku, użyj przycisku **Pin video to chat** (przypięcie wideo do czatu) w zakładce **Videos**. Klip usuniesz z wiadomości jego przyciskiem **X**. Nadal zostaje w galerii.
 
@@ -91,7 +89,7 @@ Gotowy klip odtwarza się bezpośrednio w czacie, pod najnowszą odpowiedzią, n
 
 1. Sprawdź, czy w zakładce **Images** jest przynajmniej jeden obraz. Użyj przycisku **Illustrate** albo wgraj obraz.
 2. Kliknij przycisk **Video** w rzędzie akcji na górze galerii.
-3. Jeśli opcja **Expose media prompts before sending** jest włączona (**Settings → Generations → Overall Generations**), przejrzyj lub popraw prompt i kliknij **Generate**. Anulowanie nie wysyła żadnego żądania.
+3. Jeśli opcja **Expose media prompts before sending** jest włączona (**Ustawienia → Media → Domyślne ustawienia generowania**), przejrzyj lub popraw prompt i kliknij **Generate**. Anulowanie nie wysyła żadnego żądania.
 4. Przycisk pokazuje **Generating...**, a baner informuje, że generowanie wideo trwa.
 5. Po zakończeniu klip pojawia się w zakładce **Videos**.
 
@@ -103,7 +101,7 @@ Jeśli nie ma żadnego obrazu, Marinara pokazuje komunikat "Add or generate a ga
 2. Najedź kursorem na obraz.
 3. Kliknij **Animate illustration** (ikona kliszy filmowej).
 
-Przy włączonym przeglądaniu promptu okno pokazuje dokładny skompilowany prompt, czas trwania, proporcje obrazu i rozdzielczość dla tego obrazu. Twoja poprawka dotyczy tylko tego jednego klipu. W trybie Roleplay AI planujące ruch czyta tyle ostatnich wiadomości, ile agent Illustrator, kończąc na odpowiedzi, do której należy obraz. Jego instrukcje wielokrotnego użytku to **Roleplay Gallery Animation Director** w **Settings → Generations → Video Generation Prompt Overrides**.
+Przy włączonym przeglądaniu promptu okno pokazuje dokładny skompilowany prompt, czas trwania, proporcje obrazu i rozdzielczość dla tego obrazu. Twoja poprawka dotyczy tylko tego jednego klipu. W trybie Roleplay AI planujące ruch czyta tyle ostatnich wiadomości, ile agent Illustrator, kończąc na odpowiedzi, do której należy obraz. Jego instrukcje wielokrotnego użytku to **Roleplay Gallery Animation Director** w **Ustawienia → Media → Nadpisania promptów**.
 
 Każdy klip w zakładce **Videos** odtwarza się na miejscu i pokazuje swoją długość oraz nazwę modelu. Użyj przycisku **Pin video to chat** albo **Download scene video**. Dopóki nie ma żadnych klipów, zakładka pokazuje napis **No videos yet**.
 
@@ -169,7 +167,7 @@ Przy tworzeniu czatu w trybie Game Mode kreator konfiguracji ma wybór modelu wi
 
 ## Ustawienia generowania wideo
 
-Część ustawień domyślnych wideo obowiązuje w całej aplikacji. Otwórz **Settings → Generations** (ustawienia, generowanie) i znajdź sekcję **Video Generation** ("Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls").
+Część ustawień domyślnych wideo obowiązuje w całej aplikacji. Otwórz **Ustawienia → Media** i znajdź sekcję **Video Generation** ("Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls").
 
 - **Scene video fallback length** (zapasowa długość wideo sceny): używana tylko wtedy, gdy wybrany model wideo nie ma własnej długości. Wartość domyślna to 10 sekund. Zakres wynosi od 1 do 60.
 - **Video Generation Prompt Overrides**: edycja szablonów promptów wideo wielokrotnego użytku. **Roleplay Gallery Animation Director** ustala instrukcje wysyłane do modelu Prompt Model przed powstaniem klipu z galerii w trybie Roleplay. Jego zmienna `${durationSeconds}` zostaje zastąpiona długością klipu.

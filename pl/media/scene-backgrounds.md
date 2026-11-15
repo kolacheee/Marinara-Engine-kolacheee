@@ -1,110 +1,111 @@
-# Tła scen i galeria
+# Tła tworzone przez agenta Illustrator
 
-Tła scen generowane przez AI to obrazy tła, które aplikacja Marinara Engine tworzy z poziomu sekcji **Gallery** (galeria). Z tego przewodnika dowiesz się, jak utworzyć tło, co zawiera galeria i jak narysować obraz od nowa albo go sprawdzić. Bibliotekę wgranych obrazów wybieranych ręcznie opisuje przewodnik [Tła czatu](../appearance/chat-backgrounds.md). Agenta, który dobiera tło w każdej turze, opisuje przewodnik [Tła w trybie Roleplay](../roleplay/backgrounds.md).
+Agent **Illustrator** potrafi malować tła do twojej historii: na żądanie, za każdym razem, gdy historia przenosi się w nowe miejsce, oraz w wersjach z deszczem, śniegiem lub mgłą, gdy zmienia się pogoda. Ten przewodnik opisuje wszystkie trzy możliwości i wyjaśnia, jak Illustrator wykorzystuje obrazy, które już masz, zamiast malować nowe.
 
-## Gdzie działają tła scen
+Obrazy, które wgrywasz i wybierasz ręcznie, opisuje przewodnik [Biblioteka teł](../appearance/chat-backgrounds.md). O tym, jak czat wybiera wyświetlany obraz (agent Background, przypięte miejsca i obrazy z galerii), przeczytasz w przewodniku [Tła podążające za historią](../roleplay/backgrounds.md).
 
-Tła scen działają w trybie Roleplay i w trybie Game Mode. W trybie Conversation nie są dostępne. Przy próbie wygenerowania tła w trybie Conversation aplikacja pokazuje taki komunikat:
+## Zanim zaczniesz
 
-```
-Scene background generation is available in Roleplay and Game modes.
-```
+- Zainstaluj agenta **Illustrator** z **Biblioteka → Agenci**. Zobacz [Agent Illustrator](illustrator-agent.md).
+- Przypisz mu model obrazów: ustaw zadanie **Obrazy** w sekcji **Domyślne** na stronie Połączenia albo wybierz model na ekranie **Otwórz konfigurację** agenta Illustrator. Zobacz [Dostawcy generowania obrazów i konfiguracja](image-providers.md).
 
-Zanim zaczniesz: potrzebny jest model obrazów. Jeśli jeszcze go nie masz, najpierw go skonfiguruj. Zobacz [Dostawcy generowania obrazów i konfiguracja](image-providers.md).
+Malowane tła działają w czatach w trybie Roleplay i Game Mode, ale nie w trybie Conversation. W trybie Conversation aplikacja pokazuje komunikat "Scene background generation is available in Roleplay and Game modes."
 
-## Generowanie i ustawianie tła z poziomu sekcji Gallery
+## Namalowanie tła od razu
 
-**Gallery** zbiera obrazy i wideo z danego czatu. Jest sekcją w **Chat Settings** (ustawienia czatu). Na komputerze możesz otworzyć ją w osobnym oknie (zobacz [Panel **Chat Settings** – przegląd](../chats/chat-settings.md#popping-a-section-out-into-its-own-window)). Jej przycisk **Background** (tło) tworzy grafikę tła dla bieżącej sceny.
+1. Otwórz **Ustawienia czatu** przyciskiem z suwakami w czacie i rozwiń sekcję **Galeria**.
+2. Kliknij **Tło**. Podczas pracy przycisk pokazuje **Generowanie...**.
+3. Po zakończeniu nowy obraz trafia do biblioteki teł i pojawia się za czatem. Potwierdza to komunikat "Background generated."
 
-W trybie Roleplay przycisk **Background** pojawia się od razu po zainstalowaniu agenta **Illustrator**. Nie trzeba dodawać tego agenta do czatu ani włączać agentów. Podobnie jak przycisk **Illustrate** (zilustruj), przycisk **Background** uruchamia generowanie jednorazowo i nie włącza automatycznych uruchomień.
+Nie musisz w tym celu dodawać agenta Illustrator do czatu. Uruchamia się tylko raz i nie włącza automatycznych uruchomień.
 
-Jak wygenerować tło:
+Marinara buduje prompt na podstawie sceny: w grze obejmuje to gatunek, realia, miejsce, pogodę i porę dnia. Obraz używa rozmiaru obszaru roboczego **Tła**, czyli 1280 na 720 pikseli, chyba że zmienisz go w **Ustawienia → Media → Generowanie obrazów**.
 
-1. Otwórz sekcję **Gallery** w **Chat Settings**.
-2. Kliknij przycisk **Background**.
-3. Na czas tworzenia obrazu napis na przycisku zmienia się na **Generating...**.
-4. Komunikat o stanie brzmi: "AI background generation is running. The new background will be applied when it finishes."
-5. Po zakończeniu nowy obraz od razu trafia do bieżącej sceny, a potwierdza to komunikat "Background generated.".
+Jeśli się nie udało: komunikat "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection." oznacza, że nie znaleziono modelu obrazów. Ustaw go zgodnie z opisem w sekcji **Zanim zaczniesz**. Jeśli brakuje przycisku **Tło**, agent Illustrator nie jest zainstalowany.
 
-Tło powstaje na podstawie bieżącej sceny. W grze liczą się też gatunek, świat, lokalizacja, pogoda i pora dnia. Wygenerowane tła mają rozmiar obszaru roboczego **Backgrounds**, domyślnie 1280 na 720 pikseli. Rozmiar da się zmienić w sekcji **Settings** (ustawienia), dalej **Generations**, dalej **Image Generation**.
+## Nowe tło dla każdego nowego miejsca
 
-Jeśli się nie udało: gdy Marinara nie znajdzie modelu obrazów, którego mogłaby użyć, ten krok kończy się takim komunikatem:
+Po włączeniu tej opcji Illustrator maluje tło, gdy historia dociera do miejsca, które jeszcze go nie ma, zapisuje je w bibliotece i wyświetla.
 
-```
-Choose an image generation connection for the Illustrator agent, or mark one as the default image connection.
-```
+1. Dodaj agenta **Illustrator** do czatu: otwórz **Ustawienia czatu → Agenci**, włącz **Włącz agentów**, a potem dodaj agenta **Illustrator** z sekcji **Różni agenci**.
+2. Na karcie agenta **Illustrator** włącz **Generuj tła scen**.
 
-Aby to naprawić, ustaw zadanie **Images** (obrazy) w sekcji **Defaults** (ustawienia domyślne) panelu **Connections** (Połączenia) albo przypisz agentowi **Illustrator** jego własny model obrazów.
+Illustrator sprawdza scenę zgodnie z ustawieniem **Interwał generowania obrazów** (co 5 wiadomości, chyba że je zmienisz). Żeby sprawdzał każdą odpowiedź, użyj [sprawdzania przez model decyzyjny](#check-every-reply-with-a-decision-model). W trybie Game Mode przełącznik **Ilustrator gry** obejmuje także tła.
 
-## Sekcja Gallery
+### Ponowne używanie posiadanych obrazów
 
-Sekcja **Gallery** ma dwie zakładki: **Images** i **Videos**. Każda z nich pokazuje liczbę elementów, które zawiera. Zakładka **Videos** zawiera wideo ze scen w czatach Roleplay i Game oraz wiadomości wideo w czatach Conversation.
+Zanim Illustrator namaluje nowe miejsce, szuka obrazu, który już masz, w tej kolejności:
 
-Na górze sekcji przyciski akcji pojawiają się tylko wtedy, gdy dana funkcja dotyczy tego czatu:
+1. Tło przypięte do tego miejsca w czacie albo w galerii postaci. Zobacz [Przypinanie tła do miejsca](../roleplay/backgrounds.md#pin-a-background-to-a-place).
+2. Obraz z biblioteki, którego nazwa lub tag złożony z co najmniej dwóch słów występuje w lokalizacji z World State. Na przykład `generated-guest-bedroom.png` albo obraz z tagiem `guest bedroom` pasuje do lokalizacji "Smith House, guest bedroom".
+3. Jeśli World State nie podaje lokalizacji, w ten sam sposób dopasowywana jest nazwa miejsca zapisana przez model promptów agenta Illustrator.
 
-- **Illustrate**: uruchamia agenta Illustrator i tworzy pojedynczy obraz sceny. Zobacz [Agent Illustrator](illustrator-agent.md).
-- **Selfie**: generuje selfie postaci w trybie Conversation.
-- **Background**: generuje i ustawia tło sceny, tak jak opisano wyżej.
-- **Video**: tworzy wideo ze sceny na podstawie najnowszej ilustracji. W trybie Conversation zamiast tego wysyła wiadomość wideo od postaci; zobacz [Wiadomości wideo](../conversation/selfies.md#video-messages).
-- **Create storyboard**: generuje klatki kluczowe dla ostatniej tury w trybie Game Mode albo dla zakończonego odcinka w trybie Roleplay, gdy storyboard jest aktywny.
-- **Browse Images**: otwiera przeglądarkę zapisanych obrazów do wstawienia.
-- **View storyboard**: otwiera najnowszy storyboard z trybu Game Mode.
+Jeśli znajdzie pasujący obraz, wyświetla go (w wersji odpowiadającej pogodzie w historii, jeśli taka istnieje) i niczego nie maluje. Nowy obraz powstaje tylko dla miejsca bez dopasowania. Tagowanie wgranych obrazów nazwami miejsc (zobacz [Tagowanie tła](../appearance/chat-backgrounds.md#tag-a-background)) to najprostszy sposób na oszczędzanie żądań obrazów.
 
-Pod przyciskami znajduje się pole **Upload Images** (wgrywanie obrazów). Przeciągnij na nie obrazy, żeby dodać własne zdjęcia do sekcji **Gallery** tego czatu.
+## Wersje teł dopasowane do pogody
 
-### Akcje dla pojedynczego obrazu
+Po włączeniu tej opcji tło podąża za pogodą w historii. Gdy przy gospodzie zaczyna padać, Illustrator przemalowuje jej tło, dodając deszcz na oknach. We wnętrzach animowany deszcz pada tylko za szybami, nigdy w całym pokoju.
 
-Najedź kursorem na obraz w zakładce **Images** – albo dotknij go na telefonie – żeby zobaczyć jego akcje:
+1. Otwórz **Ustawienia czatu → Agenci → Illustrator**.
+2. Włącz **Weather Versions of Backgrounds** (wersje teł dopasowane do pogody).
 
-- Otwarcie obrazu w pełnym rozmiarze (**Open gallery image**).
-- **Pin to chat**: przypina obraz do czatu jako pływający obrazek. Przeciągnij go, żeby go przesunąć, a uchwytem w rogu zmień jego rozmiar. Po ponownym wczytaniu strony w tej przeglądarce zachowuje swoje miejsce i rozmiar. Przycisk kłódki obok przycisku zamykania blokuje przesuwanie i zmianę rozmiaru, dopóki go nie odblokujesz.
-- **Download image**: zapisuje obraz na urządzeniu.
-- **Animate illustration**: zamienia ten obraz w wideo ze sceny.
-- **Copy prompt**: kopiuje zapisany prompt obrazu, czyli tekst wysłany do AI. Jeśli obraz nie ma zapisanego promptu, przycisk jest nieaktywny i pokazuje **No prompt saved**.
-- **Delete gallery image**: usuwa obraz po potwierdzeniu.
+Potrzebny jest model obrazów, który potrafi zacząć od gotowego obrazu. Większość to potrafi, w tym OpenAI, Gemini, NovelAI i ComfyUI z wejściem obrazu. Przy modelu bez tej możliwości obraz pozostaje bez zmian.
 
-<a id="regenerating-an-image"></a>
+Co się dzieje:
 
-### Ponowne generowanie obrazu
+- Każda para obrazu i pogody jest malowana **raz**. Gdy wróci ta sama pogoda albo historia wróci do gospody w deszczu, zapisana wersja pojawi się ponownie bez dodatkowego kosztu.
+- Wersja zapisuje się obok oryginału jako `name--wx-rain.png`. Pozostałe rodzaje to `storm`, `snow`, `blizzard`, `hail`, `fog`, `sand`, `ash`, `embers`, `blossom` i `aurora`, a także `clear` dla suchej kopii obrazu utworzonego pierwotnie przy złej pogodzie. Nietypowa pogoda otrzymuje wersję nazwaną słowami z historii: deszcz meteorów to `name--wx-meteor-shower.png`.
+- Przy bezchmurnej, słonecznej, pochmurnej, wietrznej i innej łagodnej pogodzie pozostaje zwykły obraz.
+- Pogoda jest odczytywana od agenta **World State** albo ze sprawdzenia przez model decyzyjny (poniżej).
+- Opcja obejmuje każde tło w bibliotece – wybrane przez ciebie, przez agenta Background lub namalowane przez agenta Illustrator – a także przypięte miejsca i tła z galerii podążające za postacią. Agent **Background** wybiera spośród zwykłych obrazów, a pasująca wersja pogodowa pojawia się, jeśli istnieje.
 
-Wygenerowany obraz da się utworzyć jeszcze raz bez ponownego generowania odpowiedzi, do której należy. Działa to w przypadku obrazów z galerii czatu, które mają zapisany prompt, na przykład ilustracji, selfie i klatek storyboardu.
+### Okna: gdzie pada animowany deszcz lub śnieg
 
-1. Otwórz obraz w pełnym rozmiarze – z galerii albo z wiadomości, w której się znajduje.
-2. Kliknij **Regenerate image** (ponowne wygenerowanie obrazu, przycisk z okrągłą strzałką w prawym górnym rogu obrazu).
-3. Zmień, co chcesz, w polach pod obrazem: **Prompt**, **Negative prompt** (prompt negatywny), osobne pole dla każdej postaci w sekcji **Character prompts** (prompty postaci), jeśli obraz je miał, oraz model obrazów.
-4. Kliknij **Generate image** (wygenerowanie obrazu) albo **Cancel** (anuluj), żeby zostawić obraz bez zmian.
+Gdy obraz wnętrza po raz pierwszy otrzymuje wersję pogodową, Illustrator pyta też model obrazów, gdzie na obrazie są okna. Zapisuje odpowiedź jako niewielką czarno-białą maskę, wspólną dla wszystkich wersji pogodowych tego pokoju. Animowana pogoda (smugi deszczu, płatki śniegu, płatki kwiatów) jest wtedy rysowana tylko na szybach.
 
-Nowy obraz zastępuje stary w wiadomości. Stary zostaje w galerii, więc możesz go ponownie przypiąć. Obrazy referencyjne są wysyłane jeszcze raz na podstawie aktualnych awatarów postaci. Niektóre starsze obrazy nie zapisały promptu negatywnego ani promptów postaci; edytor informuje o tym w takim przypadku.
+- W pokoju bez okien nie ma animowanej pogody, tylko jej kolorystyka i błyski piorunów.
+- Zorza, deszcz meteorów i inne rodzaje pogody bez spadających cząsteczek pozostają nieruchome: widać je na obrazie, ale nic się nad nim nie porusza.
+- Maski są przechowywane w `backgrounds/weather-masks` w folderze danych.
 
-## Sprawdzanie promptu przed wysłaniem
+### Ponowne tworzenie obrazu pogody lub jego okien
 
-Prompt da się sprawdzić i poprawić, zanim Marinara wyśle żądanie tła do usługi generowania obrazów.
+Gdy czat pokazuje wersję pogodową, w **Ustawienia czatu → Agenci → Illustrator** pod opcją **Weather Versions of Backgrounds** pojawia się wiersz nazwany według pogody, na przykład **This rain picture** (ten obraz z deszczem):
 
-1. Otwórz **Settings**, dalej **Generations**, dalej **Overall Generations**.
-2. Włącz opcję **Expose media prompts before sending**.
+- **Remake picture** (utwórz obraz ponownie) maluje tę wersję pogodową od nowa na podstawie zwykłego obrazu.
+- **Remake windows** (utwórz okna ponownie) ponownie prosi model obrazów o maskę okien. Użyj tej opcji, gdy deszcz pada na poduszki albo omija okno.
+- **No moving weather** (bez animowanej pogody) wyłącza maskę dla tego pokoju. Jego wersje pogodowe pokazują tylko kolorystykę pogody i błyskawice. **Remake windows** przywraca maskę.
 
-Przy włączonej opcji przed każdym żądaniem otwiera się okno **Review Image Prompt**. Tekst pomocy brzmi: "Edit the prompt below before Marinara sends the image request to your provider."
+Jeśli się nie udało: sprawdź, czy World State czatu pokazuje **Pogoda** (albo czy włączone jest sprawdzanie pogody opisane poniżej) i czy agent **Illustrator** jest dodany do czatu z modelem obrazów.
 
-W tym oknie da się:
+## Sprawdzanie każdej odpowiedzi przez model decyzyjny
 
-- Poprawić treść promptu i prompt negatywny.
-- Zobaczyć rodzaj i rozmiar obrazu oraz licznik znaków aktualizowany na bieżąco.
-- Kliknąć przycisk **Cancel**, żeby przerwać, albo **Generate**, żeby wysłać.
+Illustrator zwykle sprawdza scenę tylko w swoim interwale uruchamiania, więc nowe miejsce może czekać na tło przez kilka odpowiedzi. [Model decyzyjny](../connections/decision-models.md), czyli mały model odpowiadający tak lub nie, może zamiast tego sprawdzać każdą odpowiedź.
 
-Jeśli któreś pole promptu jest puste, przycisk **Generate** pozostaje nieaktywny, a na ekranie widać uwagę: "Every image request needs a prompt." Wpisany tekst trafia dalej dokładnie w takiej postaci.
+Zanim zaczniesz: wybierz model decyzyjny w sekcji **Domyślne** na stronie Połączenia i włącz **Generuj tła scen**, **Weather Versions of Backgrounds** albo obie opcje.
 
-## Zarządzanie zapisanymi tłami
+1. Otwórz **Ustawienia czatu → Agenci → Illustrator**.
+2. W sekcji **Decision Model Checks** (sprawdzanie przez model decyzyjny) wybierz **The scene moved to a new place** (scena przeniosła się w nowe miejsce), **The weather changed** (pogoda się zmieniła) albo **New place and weather changes** (nowe miejsce i zmiany pogody). Domyślnie wybrane jest **Wyłączone**.
 
-Każde wygenerowane tło sceny trafia do biblioteki teł. Do tej samej biblioteki da się dodać własne obrazy. Wgrywane tła obsługują pliki JPG, PNG, GIF, WebP i AVIF o rozmiarze do 20 MB każdy.
+Po każdej odpowiedzi:
 
-Samodzielnie dodane tła da się tagować, przemianować i usuwać. Tagi zapisują się małymi literami i mogą zawierać litery, cyfry, spacje, łączniki oraz podkreślenia, maksymalnie 40 znaków każdy. Wbudowane tła z zasobów gier są widoczne obok własnych, ale nie da się ich przemianować, otagować ani usunąć.
+- Sprawdzenie nowego miejsca pyta, czy ostatnia wiadomość przenosi scenę w nowe miejsce. Odpowiedź twierdząca zapewnia temu miejscu tło, w miarę możliwości wykorzystując obraz, który już masz. Model promptów pisze prompt nowego tła tylko po odpowiedzi twierdzącej.
+- Sprawdzenie pogody pyta, czy pogoda zmienia się w ostatniej wiadomości. Odpowiedź twierdząca wyświetla lub maluje wersję pogodową bieżącego tła. Jeśli World State nie podaje pogody, model decyzyjny wybiera też jej rodzaj.
+- Sprawdzenia tylko dodają okazje do działania. Własne uruchomienia agenta Illustrator i zmiany lokalizacji w World State nadal się liczą.
+- Przy braku odpowiedzi (brak modelu, przekroczenie limitu czasu lub błąd) sprawdzenie jest pomijane.
 
-Biblioteką zarządza się w ustawieniach wyglądu – tam też ustawisz tło dla pojedynczego czatu lub tło domyślne. Pełny opis biblioteki, okna wyboru i opcji **Background Blur** znajdziesz w przewodniku [Tła czatu](../appearance/chat-backgrounds.md).
+Jeśli się nie udało: bez wybranego modelu decyzyjnego lista jest wyszarzona i podaje, gdzie go wybrać.
+
+## Sprawdzenie promptu przed wysłaniem
+
+1. Otwórz **Ustawienia → Media → Domyślne ustawienia generowania**.
+2. Włącz opcję **Pokazuj polecenia mediów przed wysłaniem**.
+
+Przed każdym żądaniem obrazu, także malowanego tła, otwiera się wtedy okno **Review Image Prompt** (przegląd promptu obrazu). Popraw prompt i prompt negatywny, a potem kliknij **Generuj**, żeby wysłać, albo **Anuluj**, żeby przerwać. Wpisany tekst jest wysyłany dokładnie w takiej postaci.
 
 ## Pokrewne przewodniki
 
-- [Tła czatu](../appearance/chat-backgrounds.md): biblioteka wgranych obrazów, z której wybierasz ręcznie.
-- [Tła w trybie Roleplay](../roleplay/backgrounds.md): agent, który sam dobiera tło w każdej turze.
-- [Agent Illustrator](illustrator-agent.md): ilustracje scen w trybie Roleplay i w trybie Game Mode.
-- [Dostawcy generowania obrazów i konfiguracja](image-providers.md): konfiguracja modelu obrazów.
-- [Generowanie wideo sceny](scene-video.md): zamiana obrazu z galerii w wideo.
+- [Tła podążające za historią](../roleplay/backgrounds.md): obraz wyświetlany w czacie, przypięte miejsca i tła z galerii.
+- [Biblioteka teł](../appearance/chat-backgrounds.md): wgrywanie, tagowanie i porządkowanie obrazów oraz rozmycie.
+- [Agent Illustrator](illustrator-agent.md): ilustracje scen, klipy i interwał uruchamiania.
+- [Galeria czatu](../chats/chat-gallery.md): sekcja galerii i jej przyciski.
+- [Modele decyzyjne](../connections/decision-models.md)

@@ -2,7 +2,7 @@
 
 Juega UNO, ajedrez, póker, billar 8-Ball, tres en raya y piedra, papel o tijera contra los personajes de un chat de Conversation. Marinara reparte las cartas o prepara el tablero, aplica todas las reglas y hace que cada personaje sentado narre sus jugadas con su personalidad. Mientras juegas aparece un tablero en vivo encima del cuadro de mensaje.
 
-Cada juego es un paquete opcional. Instala los que quieras desde **Agents → Agent Organizer** (Organizador de agentes) y reinicia Marinara si el catálogo lo pide. Un juego que no has instalado no tiene comando con barra, no aparece en el selector de juegos y su interruptor de **Commands** permanece oculto.
+Cada juego es un paquete opcional. Instala los que quieras desde **Library → Agents** (Biblioteca → Agentes) y reinicia Marinara si el catálogo lo pide. Un juego que no has instalado no tiene comando con barra, no aparece en el selector de juegos y su interruptor de **Commands** permanece oculto.
 
 Reglas que se aplican a todos los juegos:
 

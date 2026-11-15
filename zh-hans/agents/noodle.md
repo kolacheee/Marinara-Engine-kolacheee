@@ -23,10 +23,10 @@ Noodle 的活动默认关闭。在邀请角色（或者开启随机用户）并�
 
 Noodle 是一个可下载的智能体包，安装一次就行。
 
-1. 打开 **Agents**(智能体) 面板（右侧选项卡里的 Sparkles 图标），点击 **Agent Organizer**(智能体管理器)。
+1. 打开 **Library → Agents**(资料库 → 智能体)，进入 **Available**(可用)。
 2. 找到 **Noodle**，点击 **Get**(获取)。
 3. 按提示重启 Marinara Engine，让它的服务器代码能够加载。重启的方法是先关掉它，再按平常的方式重新启动。参见[安装指南](../INSTALLATION.md)。
-4. 打开 **Home**(主页)，点击 **Home** 和 **Professor**(教授) 旁边的 **Noodle** 标签页。
+4. 打开 **Home**(主页)，点击 **Professor**(教授) 旁边的 **Noodle**。它会在单独的标签页里打开。
 
 Noodle 时间线会在 Marinara 的主页浏览器里打开。想离开的话，选择另一个主页标签页，或者打开一个聊天。在手机上或者窗口较窄时，Noodle 会使用移动端布局（参见[手机上的 Noodle](#noodle-on-a-phone)）。
 
@@ -84,7 +84,7 @@ Noodle 时间线会在 Marinara 的主页浏览器里打开。想离开的话，
 
 编辑角色的资料时，字段下方还会多出两项设置，它们会立即保存。
 
-- **Use this character's image instructions in Noodle images**(在 Noodle 图片中使用这个角色的图片指令)：把角色编辑器 **Images**(图像) 选项卡中的 **Selfie instructions**(自拍指令) 加到这个角色的 Noodle 图片中。**Edit image instructions**(编辑图片指令) 会在角色编辑器中打开该字段。此操作需要 Noodle 1.5.17 或更高版本，以及支持 Capability API 1.826 或更高版本的 Marinara Engine。旧版 Noodle 会打开 **Convo** 选项卡。在你于 Slurp 里为这个角色单独设置之前，Slurp 也会沿用这个选择。需要 Noodle 1.5.4 或更高版本。
+- **Use this character's image instructions in Noodle images**(在 Noodle 图片中使用这个角色的图片指令)：把角色编辑器 **Convo**(对话) 选项卡中的 **Image generation instructions**(图片生成指令) 加到这个角色的 Noodle 图片中。**Edit image instructions**(编辑图片指令) 会打开该选项卡。在你于 Slurp 里为这个角色单独设置之前，Slurp 也会沿用这个选择。需要 Noodle 1.5.4 或更高版本。
 - **Image connection**(图像连接)：为这个角色的 Noodle 图片选择图像模型。**Use Noodle image connection**(使用 Noodle 的图像连接) 会沿用 [Noodle 设置](noodle-settings.md#image-generation)里的那个。需要 Noodle 1.5.5 或更高版本。
 
 个人资料还会显示 **Following** 和 **Followers**(粉丝) 的数量，以及三个选项卡：**Posts**(帖子)、**Likes** 和 **Media**(媒体，即带图片的帖子)。

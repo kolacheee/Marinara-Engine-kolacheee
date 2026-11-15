@@ -22,7 +22,7 @@ Marinara एक कंप्यूटर पर सर्वर की तरह
 
 Android पर आप [सबसे नया APK डाउनलोड](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk) भी कर सकते हैं। यह Termux के ज़रिए Marinara को फ़ोन पर ही चलाता है। [Android इंस्टॉलेशन](installation/android-termux.md) देखें। iPhone और iPad के लिए [iOS PWA गाइड](installation/ios-pwa.md) देखें।
 
-Android ऐप में लॉन्चर **Open in browser** (ब्राउज़र में खोलें), **Retry connection** (कनेक्शन फिर आज़माएँ) और **Install / Start Marinara** देता है। बाद में अपना चुनाव बदलने के लिए **Settings → General → App Behavior → Open Android launcher (app or browser)** (सेटिंग्स → जनरल → ऐप का व्यवहार → Android लॉन्चर खोलें (ऐप या ब्राउज़र)) इस्तेमाल करें। पुराने APK `/android-login` पर हाथ से साइन इन करते हैं।
+Android ऐप में लॉन्चर **Open in browser** (ब्राउज़र में खोलें), **Retry connection** (कनेक्शन फिर आज़माएँ) और **Install / Start Marinara** देता है। बाद में अपना चुनाव बदलने के लिए **Settings → Appearance → Layout → Open Android launcher (app or browser)** (सेटिंग्स → अपीयरेंस → लेआउट → Android लॉन्चर खोलें (ऐप या ब्राउज़र)) इस्तेमाल करें। पुराने APK `/android-login` पर हाथ से साइन इन करते हैं।
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -82,11 +82,11 @@ Marinara मुफ़्त है। आप उतना ही देते �
 
 ## एजेंट क्या है?
 
-एजेंट एक वैकल्पिक AI मददगार है, जो चैट के दौरान कोई एक तय काम करता है, जैसे सीन पर नज़र रखना या मैप जोड़ना। नई इंस्टॉलेशन में कोई एजेंट नहीं होता। **Agents → Agent Organizer** (एजेंट → एजेंट ऑर्गनाइज़र) खोलें, कोई एजेंट चुनें और उसे इंस्टॉल करें। फिर हर चैट में **Chat Settings** से उसे चालू करें। [एजेंट](agents/agents-overview.md) देखें।
+एजेंट एक वैकल्पिक AI मददगार है, जो चैट के दौरान कोई एक तय काम करता है, जैसे सीन पर नज़र रखना या मैप जोड़ना। नई इंस्टॉलेशन में कोई एजेंट नहीं होता। **Library → Agents** (लाइब्रेरी → एजेंट) खोलें, कोई एजेंट चुनें और उसे इंस्टॉल करें। फिर हर चैट में **Chat Settings** से उसे चालू करें। [एजेंट](agents/agents-overview.md) देखें।
 
 ## Noodle कैसे सेट करें?
 
-Noodle आपके कैरेक्टर के लिए एक लोकल, काल्पनिक सोशल नेटवर्क है। **Agents → Agent Organizer** से **Noodle** इंस्टॉल करें, कहे जाने पर Marinara रीस्टार्ट करें, फिर **Home → Noodle** (होम → Noodle) खोलें। [Noodle: ऐप के अंदर की सोशल टाइमलाइन](agents/noodle.md) देखें।
+Noodle आपके कैरेक्टर के लिए एक लोकल, काल्पनिक सोशल नेटवर्क है। **Library → Agents** से **Noodle** इंस्टॉल करें, कहे जाने पर Marinara रीस्टार्ट करें, फिर **Home → Noodle** (होम → Noodle) खोलें। [Noodle: ऐप के अंदर की सोशल टाइमलाइन](agents/noodle.md) देखें।
 
 ## मेरा कैरेक्टर जवाब क्यों नहीं देता?
 
@@ -98,11 +98,11 @@ Noodle आपके कैरेक्टर के लिए एक लोक�
 
 ## अपने डेटा का बैकअप कैसे लें?
 
-**Settings → Advanced → Backup & Export** (सेटिंग्स → एडवांस्ड → बैकअप और एक्सपोर्ट) खोलें और **Download Backup** (बैकअप डाउनलोड) पर क्लिक करें। इससे आपके डेटा और अपलोड की हुई फ़ाइलों की एक `.zip` सेव होती है। रिस्टोर करने के लिए **Settings → Imports** (सेटिंग्स → इंपोर्ट) में **Import Profile (JSON/ZIP)** इस्तेमाल करें। यही सेक्शन रोज़, हफ़्ते या महीने में एक बार बैकअप भी चला सकता है। [Marinara का बैकअप और रिस्टोर](data/backup-and-restore.md) देखें।
+**Settings → Data → Backup & Restore** (सेटिंग्स → डेटा → बैकअप और रिस्टोर) खोलें और **Download Backup** (बैकअप डाउनलोड) पर क्लिक करें। इससे आपके डेटा और अपलोड की हुई फ़ाइलों की एक `.zip` सेव होती है। रिस्टोर करने के लिए इसी सेक्शन में **Import Profile (JSON/ZIP)** इस्तेमाल करें। यही सेक्शन रोज़, हफ़्ते या महीने में एक बार बैकअप भी चला सकता है। [Marinara का बैकअप और रिस्टोर](data/backup-and-restore.md) देखें।
 
 ## एक्सटेंशन कैसे काम करते हैं, और क्या बाहरी कोड इंपोर्ट किया जा सकता है?
 
-डिफ़ॉल्ट रूप से Personal Extension के ड्राफ़्ट सिर्फ़ Professor Mari बनाती है। ड्राफ़्ट शुरू में बंद रहता है, और चलने से पहले आप उसके ठीक उसी कोड को मंज़ूरी देते हैं। थर्ड-पार्टी इंपोर्ट तब तक छिपे रहते हैं, जब तक होस्ट `.env` में `ENABLE_EXTERNAL_EXTENSIONS=true` सेट न करे और आप **Settings → Advanced → Danger Zone** (सेटिंग्स → एडवांस्ड → डेंजर ज़ोन) में चेतावनी स्वीकार न करें। [पर्सनल एक्सटेंशन](extending/personal-extensions.md) देखें।
+डिफ़ॉल्ट रूप से Personal Extension के ड्राफ़्ट सिर्फ़ Professor Mari बनाती है। ड्राफ़्ट शुरू में बंद रहता है, और चलने से पहले आप उसके ठीक उसी कोड को मंज़ूरी देते हैं। थर्ड-पार्टी इंपोर्ट तब तक छिपे रहते हैं, जब तक होस्ट `.env` में `ENABLE_EXTERNAL_EXTENSIONS=true` सेट न करे और आप **Settings → Advanced → Security** (सेटिंग्स → एडवांस्ड → सिक्योरिटी) में चेतावनी स्वीकार न करें। [पर्सनल एक्सटेंशन](extending/personal-extensions.md) देखें।
 
 ## मेरा डेटा कहाँ सेव होता है?
 
@@ -118,11 +118,11 @@ Professor Mari, Home स्क्रीन पर मौजूद बिल्�
 
 ## Storyboard एजेंट क्या है और Game Mode में इसे कैसे इस्तेमाल करें?
 
-यह पूरी हो चुकी कहानी के टेक्स्ट को इमेज में बदलता है। **Agents → Agent Organizer** से **Storyboard** इंस्टॉल करें, फिर उसे चैट में चालू करें। [Storyboard एजेंट गाइड](game/storyboard.md) देखें।
+यह पूरी हो चुकी कहानी के टेक्स्ट को इमेज में बदलता है। **Library → Agents** से **Storyboard** इंस्टॉल करें, फिर उसे चैट में चालू करें। [Storyboard एजेंट गाइड](game/storyboard.md) देखें।
 
 ## क्या कैरेक्टर कॉल में बोलकर बात कर सकते हैं?
 
-हाँ, Conversation मोड में। इसके लिए **Connections** में **Text to Speech** (टेक्स्ट टू स्पीच) सेट होना चाहिए। आपके माइक्रोफ़ोन के लिए स्पीच पहचान समेत सारे स्टेप के लिए [कॉल](conversation/calls.md) देखें।
+हाँ, Conversation मोड में। इसके लिए **Connections** में **Voice** (आवाज़ (टेक्स्ट टू स्पीच)) जॉब पर कोई मॉडल होना चाहिए। आपके माइक्रोफ़ोन के लिए स्पीच पहचान समेत सारे स्टेप के लिए [कॉल](conversation/calls.md) देखें।
 
 ## क्या Marinara इमेज बना सकता है?
 
@@ -130,7 +130,7 @@ Professor Mari, Home स्क्रीन पर मौजूद बिल्�
 
 ## ऐप के अंदर डॉक्यूमेंटेशन कैसे पढ़ें?
 
-Home स्क्रीन पर बुकमार्क में **Documentation** पर क्लिक करें। फ़ोन पर पहले बुकमार्क मेन्यू खोलें। Home के FAQ में आप **Open Documentation** पर भी क्लिक कर सकते हैं।
+ऊपरी पट्टी में **Docs** पर क्लिक करें। फ़ोन पर Docs, Library में है (ऊपर दाईं ओर स्टैक वाला बटन)। क्लासिक लेआउट में Home के बुकमार्क में **Documentation** पर क्लिक करें। Home के FAQ में आप **Open Documentation** पर भी क्लिक कर सकते हैं।
 
 ## मदद कहाँ से लें या बग कहाँ बताएँ?
 

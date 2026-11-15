@@ -6,11 +6,11 @@ Agenten sind kleine KI-Helfer, die rund um die Hauptantwort in deinem Chat mitla
 
 Agenten werden pro Chat eingeschaltet, nicht pro Charakter. Zwei Chats mit demselben Charakter können unterschiedliche Agenten nutzen.
 
-Eine frische Installation bringt keine optionalen Agenten mit. Du installierst sie über **Agent Organizer** (Agentenverwaltung), den Store für offizielle Pakete zur Installation per Klick. Quellcode und Katalog sind öffentlich unter [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) einsehbar. Installier über **Agent Organizer**, damit Marinara Kompatibilität, Berechtigungen und Datei-Hashes prüfen kann. Was jeder Agent macht, steht in der [Referenz der herunterladbaren Agenten](built-in-agents.md). Wie du eigene baust, zeigt [Eigene Agenten erstellen](custom-agents.md).
+Eine frische Installation bringt keine optionalen Agenten mit. Du installierst sie über **Library → Agents** (Bibliothek → Agenten), den Store für offizielle Pakete zur Installation per Klick. Im klassischen Layout heißt er **Agent Organizer** (Agentenverwaltung). Quellcode und Katalog sind öffentlich unter [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) einsehbar. Installier über diese Seite, damit Marinara Kompatibilität, Berechtigungen und Datei-Hashes prüfen kann. Was jeder Agent macht, steht in der [Referenz der herunterladbaren Agenten](built-in-agents.md). Wie du eigene baust, zeigt [Eigene Agenten erstellen](custom-agents.md).
 
 ## Einen Agenten zu einem Chat hinzufügen
 
-Bevor du loslegst: Installier zuerst den Agenten. Öffne das Panel **Agents** (Agenten) über das Symbol mit den Funkeln in den Tabs rechts, klick auf **Agent Organizer**, öffne die Seite des Agenten und klick auf **Get** (Herunterladen). Siehe [Agenten installieren und aktualisieren](#install-and-update-agents).
+Bevor du loslegst: Installier zuerst den Agenten. Öffne **Library → Agents**, such den Agenten unter **Available** (verfügbar) und klick auf **Get** (Herunterladen). Siehe [Agenten installieren und aktualisieren](#install-and-update-agents).
 
 1. Öffne den Chat.
 2. Öffne **Chat Settings** (Chat-Einstellungen) und such den Abschnitt **Agents**.
@@ -63,7 +63,7 @@ Jeder Agent läuft an einem bestimmten Punkt rund um die Antwort, seiner **pipel
 - Tracker-Agenten schreiben ins HUD und in die Tracker-Panels. Haben sich Zeit, Ort, Stimmung oder Werte geändert, ist ein Tracker gelaufen.
 - **Agent activity** (Agentenaktivität) in **Chat Settings** listet kurze Notizen der Agenten auf. Das Symbol dreht sich, während sie arbeiten, und zeigt einen Punkt, wenn einer fehlschlägt. Siehe [Agent activity](../roleplay/getting-started.md#agent-activity).
 - **Prose Guardian** und **Continuity Checker** verändern den Antworttext. Eine geglättete oder korrigierte Antwort heißt, dass sie gelaufen sind.
-- Für eine lückenlose Spur schalte **Debug mode** (Debug-Modus) unter **Settings → Advanced → Message Tools** ein. Er protokolliert Prompt und Antwort jedes Agenten in der Server-Konsole, und Debug-Einträge der Agenten erscheinen zusätzlich in der Browser-Konsole. Zwischengespeicherte Prompt-Injektionen zeigt der Tab **Injections** (Injektionen) von **Agent activity**.
+- Für eine lückenlose Spur schalte **Debug mode** (Debug-Modus) unter **Settings → Advanced → Troubleshooting** ein. Er protokolliert Prompt und Antwort jedes Agenten in der Server-Konsole, und Debug-Einträge der Agenten erscheinen zusätzlich in der Browser-Konsole. Zwischengespeicherte Prompt-Injektionen zeigt der Tab **Injections** (Injektionen) von **Agent activity**.
 
 ## Die Kosten im Blick behalten
 
@@ -77,11 +77,11 @@ Erscheint die Warnung, entferne Agenten, die du nicht brauchst, oder verschiebe 
 
 ## Agenten installieren und aktualisieren
 
-Öffne das Panel **Agents** über das Symbol mit den Funkeln in den Tabs rechts und klick auf **Agent Organizer**. Das funktioniert am Rechner wie am Handy.
+Öffne **Library → Agents**. Das funktioniert am Rechner wie am Handy.
 
-- **Home** (Startseite) zeigt empfohlene Agenten und eine Reihe für jeden Bereich: **Apps**, **Chat games** (Chat-Spiele), **Trackers** (Tracker) und **Writing help** (Schreibhilfe).
-- **Updates** listet installierte Agenten mit einer neueren Version auf. **Installed** (Installiert) listet alles, was du hast, mit Version und Größe.
-- Suche und Modusfilter grenzen jede Liste ein.
+- **Installed** (Installiert) listet alles, was du hast, **Available** (verfügbar) alles, was du herunterladen kannst, und **Updates** installierte Agenten mit einer neueren Version.
+- **All sections** (Alle Abschnitte) grenzt die Liste auf einen Bereich wie **Apps**, **Chat games** (Chat-Spiele), **Writing help** (Schreibhilfe) oder **Trackers** (Tracker) ein, **All modes** (Alle Modi) auf einen Chat-Modus. **Search agents** (Agenten durchsuchen), das Sortiermenü und **List** (Liste) / **Gallery** (Galerie) funktionieren in jeder Liste.
+- **Starter kits** (Einsteigerpakete) installiert einen fertigen Satz Agenten auf einmal. **New agent** (Neuer Agent) beginnt einen [eigenen Agenten](custom-agents.md).
 - Wähl einen Agenten aus, um Beschreibung, Download-Größe, Berechtigungen, Kompatibilität und **Version history** (Versionsverlauf) zu sehen. Klick auf **Get**, um ihn zu installieren. Das Menü **⋯** bietet **Uninstall** (Deinstallieren).
 - Das Menü **⋯** neben dem Titel enthält **Update all** (Alle aktualisieren), **Install all** (Alle installieren), **Refresh catalog** (Katalog neu laden) und **Uninstall all** (Alle deinstallieren).
 
@@ -100,7 +100,7 @@ Gibt es für ein installiertes Paket eine neuere kompatible Version, öffnet sic
 3. Klick auf **Update all** – oder auf **Update 2 of 3** (2 von 3 aktualisieren), wenn du einige Häkchen entfernt hast. Jede Zeile zeigt **Updated** oder **Failed**. Eine fehlgeschlagene Zeile nennt den Grund und zeigt **Retry** (wiederholen).
 4. Braucht ein Update einen Neustart, klick auf **Restart now** (Jetzt neu starten) oder starte Marinara später neu.
 
-Klick auf **Not now** (Jetzt nicht), um deine Versionen zu behalten. Zu einer übersprungenen Version fragt Marinara nicht noch einmal nach. Über **Agent Organizer** kannst du jederzeit aktualisieren. Installierte Pakete laufen in ihrer aktuellen Version weiter, auch wenn der Katalog nicht erreichbar ist. **See in Agent Organizer** (in der Agentenverwaltung ansehen) öffnet die Seite des Agenten.
+Klick auf **Not now** (Jetzt nicht), um deine Versionen zu behalten. Zu einer übersprungenen Version fragt Marinara nicht noch einmal nach. Über den Tab **Updates** unter **Library → Agents** kannst du jederzeit aktualisieren. Installierte Pakete laufen in ihrer aktuellen Version weiter, auch wenn der Katalog nicht erreichbar ist. **See in Agent Organizer** (in der Agentenverwaltung ansehen) öffnet die Seite des Agenten.
 
 Updates betreffen nur Pakete, die du installiert hast. Pakete liegen auf dem Marinara-Server, deshalb nutzen Browser-Clients, was der Server installiert hat.
 

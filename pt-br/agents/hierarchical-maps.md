@@ -2,7 +2,7 @@
 
 > **Compatibilidade atual:** este guia corresponde ao World Maps **1.3.1**, que é compatível com o Marinara Engine **2.3.5 a 3.x** em chats de Roleplay e Game. O Engine **2.4.1** acrescenta a limpeza do fluxo de movimento e a atualização imediata de Lorebooks após importações portáteis. O Engine 2.3.5 a 2.4.0 continua funcionando, mas exige atualizar Lorebooks manualmente depois de uma importação.
 
-O World Maps dá à sua história um mapa de lugares que podem ficar uns dentro dos outros, como um litoral, uma cidade, um bairro e uma estalagem. Marinara sempre sabe onde a equipe está, e a IA usa isso para se manter coerente. Para experimentar: instale o **World Maps** no **Agent Organizer** (organizador de agentes), reinicie e siga o [Início rápido](#quick-start).
+O World Maps dá à sua história um mapa de lugares que podem ficar uns dentro dos outros, como um litoral, uma cidade, um bairro e uma estalagem. Marinara sempre sabe onde a equipe está, e a IA usa isso para se manter coerente. Para experimentar: instale o **World Maps** em **Biblioteca → Agentes**, reinicie e siga o [Início rápido](#quick-start).
 
 Em vez de um único local em texto livre, o mundo é um conjunto de lugares aninhados:
 
@@ -52,7 +52,7 @@ Copiar não é vincular. As opções **Use template**, **Add to chat** e **Indep
 
 ## Início rápido
 
-1. Abra **Agents** (Agentes), clique em **Agent Organizer** e instale o **World Maps**. Reinicie Marinara quando o aviso aparecer, porque o pacote tem código de servidor.
+1. Abra **Biblioteca → Agentes**, encontre **World Maps** em **Disponíveis** e clique em **Obter**. Reinicie Marinara quando o aviso aparecer, porque o pacote tem código de servidor.
 2. Abra um chat de Roleplay ou Game.
 3. Abra **Agents → World Maps** (ou o globo do World Maps, quando o seu Engine tiver um) e ative-o para o chat. Você também pode ativá-lo em **Chat Settings → Agents** (configurações do chat → agentes).
 4. Crie o mapa com **Use template**, **Create with AI** ou **Build manually**. Chats já existentes também podem importar um arquivo de mapa.
@@ -341,7 +341,7 @@ Os prompts positivo e negativo exatos, já editados, que aparecem na revisão s�
 
 ## Personalizar o prompt automático de arte
 
-Abra **Settings → Generations → Prompt Overrides** (Configurações → Gerações → Substituições de prompt) e selecione **Maps location artwork**. Esse é o modelo de prompt global usado quando o Maps pré-visualiza e gera a arte automática de local. As variáveis usam a sintaxe `${variableName}` e podem ser inseridas pelo editor.
+Abra **Configurações → Mídia → Substituições de prompt** e selecione **Maps location artwork**. Esse é o modelo de prompt global usado quando o Maps pré-visualiza e gera a arte automática de local. As variáveis usam a sintaxe `${variableName}` e podem ser inseridas pelo editor.
 
 | Variável | Significado |
 | --- | --- |
@@ -497,7 +497,7 @@ Use **Plan route** se existir um caminho ativo de pais, filhos ou ligações. Se
 
 ### Os prompts automáticos de arte incluem material indesejado
 
-- O gênero do Game sempre aparece: abra **Settings → Generations → Prompt Overrides → Maps location artwork**, remova `${genreLine}` e salve.
+- O gênero do Game sempre aparece: abra **Configurações → Mídia → Substituições de prompt → Maps location artwork**, remova `${genreLine}` e salve.
 - O estilo da campanha aparece quando deveria estar desativado: verifique **Chat Settings → Illustrator → Use campaign art style**. Com a opção desativada, `${campaignArtStyle}` e `${campaignArtStyleLine}` ficam vazios.
 - Um marco do pai aparece em toda imagem de filho: evite `${parentLocationDescription}` e `${locationPath}` no modelo, a não ser que sejam necessários.
 - O prompt negativo tem texto inesperado: edite o campo negativo antes de confirmar e depois verifique a configuração global de imagem negativa. O modelo do Maps monta só o prompt positivo.

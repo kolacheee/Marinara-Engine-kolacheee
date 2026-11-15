@@ -42,7 +42,7 @@
 - **Agent activity**(에이전트 활동): 에이전트가 한 일을 보여 줍니다. 트래커를 다시 실행하고, 에이전트를 재시도하거나 중지하고, 트래커를 비울 수 있습니다. [에이전트 활동](../roleplay/getting-started.md#agent-activity)을 참고하세요. 에이전트나 Advanced Memory를 켠 Roleplay 채팅에 있습니다.
 - **Author's Notes**(작가노트): 모델이 매 턴 읽는 노트입니다. [Author's Notes](../roleplay/getting-started.md#authors-notes)를 참고하세요. Roleplay에 있습니다.
 - **Background**(배경): 채팅의 배경 그림입니다. Roleplay와 Game에 있습니다.
-- **Gallery**(갤러리): 채팅의 이미지와 동영상입니다. [장면 배경과 Gallery](../media/scene-backgrounds.md)를 참고하세요.
+- **Gallery**(갤러리): 채팅의 이미지와 동영상입니다. [채팅 갤러리](chat-gallery.md)를 참고하세요.
 - **Widgets**(위젯): 게임에 표시할 HUD 위젯을 정합니다. Game에 있습니다.
 - **Impersonate**: `/impersonate` 명령어의 설정입니다. Roleplay에 있습니다.
 - **Memory Recall**(기억 회상): 채팅의 앞부분을 기억합니다. [Memory Recall과 채팅 요약](../agents/memory.md)을 참고하세요. Lite 버전에는 없습니다.
@@ -100,10 +100,10 @@ Conversation 채팅에는 캐릭터가 먼저 메시지를 보내는 Autonomous 
 
 제목 표시줄에는 다음 버튼이 있습니다.
 
-- **Help**(**?**)는 채팅의 컨트롤을 설명하는 라벨을 보여 줍니다. 휴대폰에서는 먼저 Chat Settings를 닫습니다. 숨기려면 **Settings → General → App Behavior → Hide chat Help button**(설정 → 일반 → 앱 동작 → 채팅 도움말 버튼 숨기기)을 켜세요.
+- **Help**(**?**)는 채팅의 컨트롤을 설명하는 라벨을 보여 줍니다. 휴대폰에서는 먼저 Chat Settings를 닫습니다. 숨기려면 **Settings → General → Confirmations & Help → Hide chat Help button**(설정 → 일반 → 확인 및 도움말 → 채팅 도움말 버튼 숨기기)을 켜세요.
 - **Reset View**(보기 초기화, 원형 화살표)는 확인을 받은 뒤 이 채팅의 처음 배치를 복원합니다. 꺼낸 섹션은 제자리로 돌아가고, 창 크기와 위치, 고정, 잠금이 초기화됩니다.
 - **Favorite layout**(즐겨찾는 레이아웃, 별)은 이 배치를 새 채팅용으로 저장합니다. [새 채팅의 배치 고르기](#choosing-a-layout-for-new-chats)를 참고하세요.
-- **Tracker Panel**(주사위 아이콘)은 에이전트나 Advanced Memory를 쓰는 Roleplay 채팅에서 패널을 켜고 끕니다. 컴퓨터에서는 채팅 옆에 열립니다. 휴대폰이나 태블릿에서는 이동 가능한 버튼으로 엽니다. **Settings → Appearance**(설정 → 모양)의 Tracker Panel 환경설정도 함께 바뀝니다.
+- **Tracker Panel**(주사위 아이콘)은 에이전트나 Advanced Memory를 쓰는 Roleplay 채팅에서 패널을 켜고 끕니다. 컴퓨터에서는 채팅 옆에 열립니다. 휴대폰이나 태블릿에서는 이동 가능한 버튼으로 엽니다. **Settings → Roleplay → Tracker Panel**(설정 → 롤플레이 → 트래커 패널)의 Tracker Panel 환경설정도 함께 바뀝니다.
 
 Tracker Panel이 표시되지 않으면 컴퓨터의 트래커는 [Trackers 창](../roleplay/hud-and-trackers.md#the-trackers-window)을 씁니다. 메시지 옆 공간이 좁으면 처음에는 작은 **Trackers**(트래커) 버튼으로 시작합니다. Tracker Panel을 다시 표시하려면 주사위를 누르세요.
 
@@ -165,7 +165,7 @@ Tracker Panel이 표시되지 않으면 컴퓨터의 트래커는 [Trackers 창]
 
 ## 채팅 창의 모양 바꾸기
 
-**Settings → Appearance → App**(설정 → 모양 → 앱)을 열고 **App Style**(앱 스타일) 맨 아래의 **Chat widget style**(채팅 위젯 스타일)까지 스크롤하세요. **Default**(기본값)는 Marinara의 모양을 유지합니다. **Dottore**는 얼음빛 파란색, 옅은 금속색, 잘린 모서리를 씁니다. **Prof. Mari**는 보석 같은 파란색, 따뜻한 금색, 아치형 프레임을 씁니다. 두 스타일 모두 라이트 모드와 다크 모드를 따르며, 세 채팅 모드의 이동 가능한 버튼, 창, 섹션에 스타일을 입힙니다.
+**Settings → Appearance → Chat Buttons & Windows**(설정 → 모양 → 채팅 버튼 및 창)를 열고 **Chat widget style**(채팅 위젯 스타일)을 찾으세요. **Default**(기본값)는 Marinara의 모양을 유지합니다. **Dottore**는 얼음빛 파란색, 옅은 금속색, 잘린 모서리를 씁니다. **Prof. Mari**는 보석 같은 파란색, 따뜻한 금색, 아치형 프레임을 씁니다. 두 스타일 모두 라이트 모드와 다크 모드를 따르며, 세 채팅 모드의 이동 가능한 버튼, 창, 섹션에 스타일을 입힙니다.
 
 - 프리셋 아래의 **Font**(폰트), **Shape**(모양)와 세 가지 색상 선택기로 모양을 조합합니다. Marinara에 설치한 폰트도 폰트 목록에 나타납니다. 프리셋을 다시 고르면 폰트, 모양, 사용자 지정 색상이 초기화됩니다.
 - **Button size (px)**(버튼 크기, px)는 이동 가능한 채팅 버튼의 크기를 32부터 96까지 정합니다. 필드를 비우면 기본값을 유지합니다.

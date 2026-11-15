@@ -5,7 +5,10 @@ Les succès sont des badges décoratifs qui se débloquent au fil de ton utilisa
 ## Ouvrir la fenêtre Achievements
 
 1. Va sur l'écran d'accueil.
-2. Clique sur le marque-page **Achievements** (succès), avec son icône de trophée. Sur téléphone, touche d'abord le bouton des marque-pages à gauche des onglets.
+2. Clique sur **Widgets** et active le widget **Achievements** (succès).
+3. Clique sur le widget.
+
+Dans la disposition classique, l'accueil comporte aussi un marque-page **Achievements** avec une icône de trophée. Sur téléphone, touche d'abord le bouton des marque-pages à gauche des onglets.
 
 La fenêtre **Achievements** s'ouvre. En haut figure un résumé, par exemple **12 of 24 achievements unlocked in this profile.** Un profil, c'est l'ensemble de tes données Marinara enregistrées. En dessous s'affiche une grille de cartes.
 
@@ -13,7 +16,7 @@ La fenêtre **Achievements** s'ouvre. En haut figure un résumé, par exemple **
 - Une carte débloquée porte l'étiquette **unlocked**.
 - Une carte avec un objectif affiche aussi une ligne **Progress** (progression) et une barre.
 
-Tu peux aussi ajouter le widget **Achievements** à l'accueil. Clique sur **Widgets** dans les marque-pages et active-le. Il affiche un compteur du type **12 of 24 unlocked**, ton succès **Last obtained** (dernier obtenu) et ton succès **Closest next** (prochain le plus proche). Pendant le chargement, il indique **Checking the collection...**. Clique dessus pour ouvrir la fenêtre. Voir [Les widgets de l'accueil](welcome.md#home-widgets).
+Le widget **Achievements** affiche un compteur du type **12 of 24 unlocked**, ton succès **Last obtained** (dernier obtenu) et ton succès **Closest next** (prochain le plus proche). Pendant le chargement, il indique **Checking the collection...**. Clique dessus pour ouvrir la fenêtre. Voir [Les widgets de l'accueil](welcome.md#home-widgets).
 
 Si ça n'a pas marché : le marque-page, le widget et la fenêtre n'apparaissent que si le réglage **Achievements** est activé. Voir [Activer ou désactiver les succès](#turn-achievements-on-or-off).
 
@@ -53,7 +56,7 @@ Si tu supprimes un agent, sa section disparaît et tes déblocages sont conserv�
 ## Activer ou désactiver les succès
 
 1. Ouvre **Settings → General** (Paramètres → Général).
-2. Dans la section **App Behavior** (comportement de l'application), active ou désactive l'interrupteur **Achievements**. Il est activé par défaut.
+2. Dans la section **Extras**, active ou désactive l'interrupteur **Achievements**. Il est activé par défaut.
 
 - Activé : le marque-page et la fenêtre sont disponibles, et une notification apparaît à chaque déblocage.
 - Désactivé : le marque-page, le widget et les notifications sont masqués. L'application continue d'enregistrer les déblocages en arrière-plan : rien n'est donc perdu quand tu le réactives.

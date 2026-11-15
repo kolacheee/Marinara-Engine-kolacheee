@@ -4,15 +4,15 @@ Zmień czcionkę, której Marinara używa w całej aplikacji. Wybierz czcionkę 
 
 ## Wybór czcionki aplikacji
 
-1. Otwórz panel **Settings** (Ustawienia), kliknij zakładkę **Appearance** (Wygląd), a potem przycisk **App** (aplikacja).
-2. Znajdź sekcję **Text & Scale**.
+1. Otwórz **Ustawienia** i kliknij zakładkę **Wygląd**.
+2. Znajdź sekcję **Czcionki i rozmiar tekstu**.
 3. Rozwiń listę rozwijaną **Font** (czcionka) i wybierz czcionkę.
 
 Nową czcionkę najprościej zdobyć z serwisu [Google Fonts](#downloading-from-google-fonts). Domyślnie ustawiona jest opcja **Default (Inter)**, czysty krój wybrany z myślą o czytaniu z ekranu. Dodane czcionki pojawiają się na tej samej liście, pod nią.
 
 Wybór czcionki synchronizuje się między urządzeniami. Przełącza się na nią każda przeglądarka połączona z tym samym serwerem Marinara. Zobacz [Przegląd ustawień](../settings/settings-overview.md).
 
-Widgety czatu mają osobną opcję **Font** w sekcji **Chat widget style** (styl widgetów czatu). Włącz tam przełącznik **Apply preset font** (zastosowanie czcionki presetu), żeby ta czcionka była używana także w wiadomościach, polach wpisywania i kontrolkach czatu. Zobacz [Gotowe style okien czatu](custom-css-themes.md#ready-made-chat-window-styles).
+Widgety czatu mają osobną opcję **Font** w sekcji **Przyciski i okna czatu**. Włącz tam przełącznik **Apply preset font** (zastosowanie czcionki presetu), żeby ta czcionka była używana także w wiadomościach, polach wpisywania i kontrolkach czatu. Zobacz [Gotowe style okien czatu](appearance-settings.md#chat-buttons--windows).
 
 ## Dodawanie własnych czcionek
 
@@ -20,7 +20,7 @@ Zanim zaczniesz: czcionki trafiają do folderu na serwerze. Serwer to komputer, 
 
 1. Kliknij przycisk **Open Fonts Folder** (otwarcie folderu czcionek) obok listy rozwijanej **Font**, żeby otworzyć folder `data/fonts/` na serwerze. Możesz też samodzielnie znaleźć folder `data/fonts/` w folderze danych aplikacji Marinara Engine.
 2. Skopiuj do niego plik czcionki.
-3. Przejdź do **Settings → Appearance → App → Text & Scale**.
+3. Przejdź do **Ustawienia → Wygląd → Czcionki i rozmiar tekstu**.
 4. Rozwiń listę rozwijaną **Font**. Czcionka jest na liście.
 5. Zaznacz ją. Tekst aplikacji od razu się zmienia.
 
@@ -36,7 +36,7 @@ Jeśli to nie zadziałało: sprawdź typ pliku i to, czy plik leży w folderze `
 
 Serwer potrzebuje do tego dostępu do internetu.
 
-1. Przejdź do **Settings → Appearance → App → Text & Scale**.
+1. Przejdź do **Ustawienia → Wygląd → Czcionki i rozmiar tekstu**.
 2. W polu **Google Fonts** wpisz dokładną nazwę czcionki, na przykład `Fira Code` albo `Lora`.
 3. Kliknij przycisk **Add** (dodaj).
 4. Poczekaj na koniec pobierania. Czcionka pojawi się wtedy na liście rozwijanej **Font**.

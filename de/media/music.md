@@ -6,7 +6,7 @@
 
 **Music DJ** ist ein optionaler Agent zum Herunterladen. Ein Agent ist ein Helfer, der im Hintergrund eines Chats mitläuft. Nach jeder Antwort kann Music DJ die Stimmung der Szene lesen und passende Musik spielen.
 
-Bevor du loslegst: Öffne **Agents** (Agenten), wähle **Agent Organizer** (Agentenverwaltung) und installiere **Music DJ**. Nach der Installation ist er aus. Du schaltest ihn für einen Chat ein wie jeden anderen Agenten. Er funktioniert in Roleplay-Chats, im Game Mode über einen eigenen Schalter ([Music DJ im Game Mode](#music-dj-in-game-mode)) und in Conversation über den Befehl **Music** ([Der Music-Befehl in Conversation](#the-conversation-music-command)).
+Bevor du loslegst: Öffne **Library → Agents** (Bibliothek → Agenten) und installiere **Music DJ** unter **Available** (Verfügbar). Nach der Installation ist er aus. Du schaltest ihn für einen Chat ein wie jeden anderen Agenten. Er funktioniert in Roleplay-Chats, im Game Mode über einen eigenen Schalter ([Music DJ im Game Mode](#music-dj-in-game-mode)) und in Conversation über den Befehl **Music** ([Der Music-Befehl in Conversation](#the-conversation-music-command)).
 
 Er spielt aus drei Quellen.
 
@@ -18,7 +18,7 @@ Er spielt aus drei Quellen.
 
 Die aktive Quelle zeigt der kleine **Music Player** (Musikplayer), der oben in der Leiste angeheftet ist. Auf dem Handy und in schmalen Fenstern wird daraus ein kleines rundes, schwebendes Widget, das du verschieben kannst.
 
-Eingerichtet wird Music DJ an einer einzigen gemeinsamen Stelle. Öffne rechts das Panel **Agents** und dann **Music DJ**. Du kannst auch auf das Zahnrad im Miniplayer klicken (Tooltip **Music DJ setup**).
+Eingerichtet wird Music DJ an einer einzigen gemeinsamen Stelle. Öffne **Library → Agents** und dann **Music DJ**. Du kannst auch auf das Zahnrad im Miniplayer klicken (Tooltip **Music DJ setup**).
 
 ### Musikquelle auswählen
 
@@ -124,7 +124,7 @@ Dieselbe Auswahl **Apply to** erscheint, wenn du Music DJ zu einem Chat hinzufü
 
 ## Den Musikplayer bedienen
 
-Der **Music Player** ist am Desktop eine Plakette in der oberen Leiste und auf dem Handy ein verschiebbares Widget. Zum Ein- oder Ausblenden öffnest du **Settings → General → App Behavior** (Einstellungen → Allgemein → App-Verhalten) und schaltest **Music Player** um. Standardmäßig ist er an. Ist er an, ohne dass Music DJ installiert ist, zeigt der Player **Download Music DJ Agent to configure** und bietet eine Schaltfläche **Agent Organizer** an.
+Der **Music Player** ist am Desktop eine Plakette in der oberen Leiste und auf dem Handy ein verschiebbares Widget. Zum Ein- oder Ausblenden öffnest du **Settings → General → Extras** (Einstellungen → Allgemein → Extras) und schaltest **Music Player** um. Standardmäßig ist er an. Ist er an, ohne dass Music DJ installiert ist, zeigt der Player **Download Music DJ Agent to configure** und bietet eine Schaltfläche **Agent Organizer** an.
 
 In einem frischen Profil startet die Quelle als **YouTube**. Ändern lässt sie sich über den runden Quellen-Umschalter am Player (Tooltip „Switch to ... player“), über die Schaltflächen **Music Player** im Editor oder über die **Music DJ**-Einstellungen eines Chats.
 
@@ -166,7 +166,7 @@ Dann kann ein Charakter einen Song für Spotify nennen oder einen Titel für You
 
 ## Fehlerbehebung
 
-- **Der Miniplayer fehlt**: Schalte **Music Player** unter **Settings → General → App Behavior** ein.
+- **Der Miniplayer fehlt**: Schalte **Music Player** unter **Settings → General → Extras** ein.
 - **Spotify spielt nichts ab**: Die Wiedergabe braucht Spotify Premium und ein aktives Spotify-Gerät. Öffne die Desktop-App auf einem Gerät oder klick am Desktop auf **Enable Marinara player**.
 - **Das Spotify-Login-Fenster schlägt auf einem anderen Rechner fehl**: Nutze das Einfügefeld unter „Browser couldn't reach the callback?“ oder setze `SPOTIFY_REDIRECT_URI` auf dem Server.
 - **Die YouTube-Suche schlägt fehl**: Prüf, ob die **YouTube Data API v3** für dein Projekt aktiviert und der Key nicht nach HTTP-Referrer beschränkt ist. Ist das Tageskontingent erreicht, versuch es am nächsten Tag oder nimm einen anderen Key.

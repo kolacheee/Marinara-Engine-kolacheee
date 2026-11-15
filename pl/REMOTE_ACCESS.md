@@ -1,6 +1,6 @@
 # Dostęp zdalny: logowanie i lista dozwolonych adresów IP
 
-Z tego przewodnika dowiesz się, jak połączyć się z aplikacją Marinara Engine z innego urządzenia: telefonu, laptopa albo kontenera Docker. Opisuje główną opcję, czyli logowanie. Wyjaśnia też listę dozwolonych adresów IP, proxy logowania, HTTPS, sekcję **Admin Access** (dostęp administracyjny) oraz komunikat CSRF o zablokowanym zapisie. Prawie każde ustawienie z tego przewodnika znajduje się w pliku `.env` serwera, a nie w aplikacji.
+Z tego przewodnika dowiesz się, jak połączyć się z aplikacją Marinara Engine z innego urządzenia: telefonu, laptopa albo kontenera Docker. Opisuje główną opcję, czyli logowanie. Wyjaśnia też listę dozwolonych adresów IP, proxy logowania, HTTPS, sekret administratora oraz komunikat CSRF o zablokowanym zapisie. Prawie każde ustawienie z tego przewodnika znajduje się w pliku `.env` serwera, a nie w aplikacji.
 
 Kilka pojęć, które wracają w całym przewodniku:
 
@@ -24,7 +24,7 @@ Jeśli strona się nie wczytuje, sprawdź, czy na obu urządzeniach włączono T
 
 > **Uwaga:** To nie działa w instalacjach w kontenerze Docker. Ruch z sieci Tailscale dociera do kontenera przez bramę sieci Docker, więc Marinara nie widzi, że przyszedł z sieci Tailscale. Najpierw ustaw logowanie ([Opcja 1](#option-1-login-recommended)), a potem opublikuj port poza `127.0.0.1`.
 
-Ze zdalnego urządzenia kopie zapasowe, importy, aktualizacje i inne ryzykowne działania nadal wymagają sekretu administratora. Zobacz [Sekcja Admin Access i działania uprzywilejowane](#admin-access-and-privileged-actions).
+Ze zdalnego urządzenia kopie zapasowe, importy, aktualizacje i inne ryzykowne działania nadal wymagają sekretu administratora. Zobacz [Sekret administratora i działania uprzywilejowane](#the-admin-secret-and-privileged-actions).
 
 ## Co Marinara blokuje domyślnie
 
@@ -261,9 +261,9 @@ SSL_KEY=/path/to/key.pem
 
 Zanim ustawisz `SSL_CERT` i `SSL_KEY`, potrzebujesz certyfikatu i klucza. Do użytku lokalnego wygenerujesz je narzędziem `mkcert`, a dla publicznej domeny narzędziem `certbot`. Jeśli plików brakuje albo nie da się ich odczytać, serwer zatrzymuje się przy starcie i podaje dokładne ścieżki, których szukał.
 
-<a id="admin-access-and-privileged-actions"></a>
+<a id="the-admin-secret-and-privileged-actions"></a>
 
-## Sekcja Admin Access i działania uprzywilejowane
+## Sekret administratora i działania uprzywilejowane
 
 Część działań jest szczególnie wrażliwa: czyszczenie danych, tworzenie i pobieranie kopii zapasowych, import i eksport profili, instalowanie motywów i agentów oraz instalacja środowiska Local Model. Wymagają one osobnego wspólnego sekretu, nazywanego sekretem administratora, niezależnie od wybranej wyżej opcji dostępu.
 
@@ -273,9 +273,9 @@ Zainstalowani agenci, na przykład ci na ekranie głównym, nie wymagają sekret
 
 ### Tworzenie sekretu administratora w aplikacji
 
-1. Na komputerze, na którym działa aplikacja Marinara, otwórz sekcję **Settings** (Ustawienia), potem zakładkę **Advanced**, a następnie sekcję **Admin Access**.
+1. Na komputerze, na którym działa aplikacja Marinara, otwórz sekcję **Settings** (Ustawienia), potem zakładkę **Advanced**, a następnie sekcję **Bezpieczeństwo**.
 2. Kliknij **Make admin secret** (utworzenie sekretu administratora). Marinara pokazuje nowy sekret jeden raz i zapisuje go w tej przeglądarce.
-3. Na każdym zdalnym urządzeniu otwórz **Settings** → **Advanced** → **Admin Access**, wpisz sekret w pole i kliknij **Save** (Zapisz). Wielkość liter, spacje i myślniki nie mają znaczenia.
+3. Na każdym zdalnym urządzeniu otwórz **Settings** → **Advanced** → **Bezpieczeństwo**, wpisz sekret w pole i kliknij **Save** (Zapisz). Wielkość liter, spacje i myślniki nie mają znaczenia.
 
 Sekret może utworzyć także urządzenie, które już go ma. Urządzenie zalogowane tylko danymi logowania nie może tego zrobić. Dzięki temu skradziona sesja logowania nie przejmie kontroli nad ryzykownymi działaniami.
 
@@ -291,11 +291,11 @@ Aby zmienić sekret, kliknij **Replace admin secret** (zastąpienie sekretu admi
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. Na zdalnym urządzeniu otwórz **Settings** → **Advanced** → **Admin Access**.
+2. Na zdalnym urządzeniu otwórz **Settings** → **Advanced** → **Bezpieczeństwo**.
 3. Wklej tę samą wartość do pola (jego tekst zastępczy to **ADMIN_SECRET**) i kliknij przycisk **Save**.
 4. Powinien pojawić się komunikat **Admin secret saved for this browser**.
 
-`ADMIN_SECRET` w pliku `.env` ma pierwszeństwo przed sekretem utworzonym w aplikacji. Dopóki jest ustawiony, sekcja **Admin Access** to pokazuje, a sekret zmieniasz wyłącznie w pliku `.env`.
+`ADMIN_SECRET` w pliku `.env` ma pierwszeństwo przed sekretem utworzonym w aplikacji. Dopóki jest ustawiony, sekcja **Bezpieczeństwo** to pokazuje, a sekret zmieniasz wyłącznie w pliku `.env`.
 
 ### Warto wiedzieć
 

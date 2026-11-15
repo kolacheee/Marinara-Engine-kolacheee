@@ -38,11 +38,11 @@ Während des Vorgangs siehst du „Generating animated portrait GIFs...“. Ist 
 
 Animierte Gesichtsausdrücke dauern länger als statische Sprites, weil sie einzeln nacheinander entstehen. Fang mit wenigen an.
 
-Ist **Expose media prompts before sending** (Medien-Prompts vor dem Senden anzeigen) an – zu finden unter **Settings → Generations → Overall Generations** –, hält Marinara an, damit du jeden Prompt lesen und bearbeiten kannst, bevor er an den Dienst geht.
+Ist **Expose media prompts before sending** (Medien-Prompts vor dem Senden anzeigen) an – zu finden unter **Settings → Media → Generation Defaults** –, hält Marinara an, damit du jeden Prompt lesen und bearbeiten kannst, bevor er an den Dienst geht.
 
 ## Länge und Format
 
-Jeder animierte Gesichtsausdruck ist ein hochformatiger Porträtclip im Seitenverhältnis 9:16, das sich nicht ändern lässt. Um festzulegen, wie lange jeder Clip läuft, öffne **Settings → Generations**, such **Video Generation** und stell **Animated expression length** ein. Der Standard sind 3 Sekunden, möglich sind 1 bis 8 Sekunden. Marinara speichert ein kleines GIF in Endlosschleife, 512 Pixel breit. Ein kürzerer Clip ergibt eine kleinere Datei und eine knappere Schleife.
+Jeder animierte Gesichtsausdruck ist ein hochformatiger Porträtclip im Seitenverhältnis 9:16, das sich nicht ändern lässt. Um festzulegen, wie lange jeder Clip läuft, öffne **Settings → Media**, such **Video Generation** und stell **Animated expression length** ein. Der Standard sind 3 Sekunden, möglich sind 1 bis 8 Sekunden. Marinara speichert ein kleines GIF in Endlosschleife, 512 Pixel breit. Ein kürzerer Clip ergibt eine kleinere Datei und eine knappere Schleife.
 
 <a id="backgrounds-are-not-removed"></a>
 

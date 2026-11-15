@@ -50,7 +50,7 @@ Marinara는 저장한 API 키를 암호화합니다. 이때 쓰는 키는 데이
 
 ## Android에서 데이터 복사하기
 
-Android에서는 데이터 폴더가 루팅 없이는 접근할 수 없는 앱 저장 영역에 있으므로 폴더를 복사할 수 없습니다. **Settings** → **Advanced**(고급) → **Backup & Export**(백업 및 내보내기) → **Download Backup**을 사용하세요. `.zip`에는 `.encryption-key` 파일이 있으면 함께 들어갑니다. [Marinara 백업과 복원](backup-and-restore.md)을 참고하세요.
+Android에서는 데이터 폴더가 루팅 없이는 접근할 수 없는 앱 저장 영역에 있으므로 폴더를 복사할 수 없습니다. **Settings → Data → Backup & Restore → Download Backup**(설정 → 데이터 → 백업 및 복원 → 백업 다운로드)을 사용하세요. `.zip`에는 `.encryption-key` 파일이 있으면 함께 들어갑니다. [Marinara 백업과 복원](backup-and-restore.md)을 참고하세요.
 
 자동 백업도 같은 앱 저장 영역에 저장됩니다. 앱을 제거하거나 초기화하면 실제 데이터와 함께 사라질 수 있으니 사본을 다른 곳에도 보관하세요.
 

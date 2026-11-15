@@ -1,32 +1,30 @@
-# Tła czatu
+# Biblioteka teł
 
-Biblioteka teł zawiera obrazy, które wgrywasz i ręcznie wybierasz, żeby pojawiły się za czatem. Agenta **Background**, który sam dobiera tło w każdej turze, opisuje przewodnik [Tła w trybie Roleplay](../roleplay/backgrounds.md). Tła generowane przez AI w galerii opisuje [Tła scen i galeria](../media/scene-backgrounds.md).
+Biblioteka teł zawiera wszystkie obrazy, które mogą pojawić się za czatem: wgrane przez ciebie, namalowane przez agenta Illustrator oraz grafiki dołączone do aplikacji Marinara Engine. Ten przewodnik opisuje wybór obrazu dla czatu, import, tagowanie, foldery, domyślne tło trybu Roleplay i ustawienie **Rozmycie tła**.
 
-Tło czatu widać we wszystkich trybach czatu. W czatach w trybie Conversation gradient z sekcji **Conversation Theme** (motyw trybu Conversation) zostaje nad obrazem, a **Conversation background image opacity** (nieprzezroczystość obrazu tła w trybie Conversation) ustawia, jak mocno widać obraz. Zobacz [Ustawienia wyglądu](appearance-settings.md).
+Tła zmieniające się wraz z historią (agent Background, przypięte miejsca i obrazy podążające za postacią) opisuje przewodnik [Tła podążające za historią](../roleplay/backgrounds.md). Obrazy malowane przez agenta Illustrator, w tym wersje z deszczem i śniegiem, opisuje przewodnik [Tła tworzone przez agenta Illustrator](../media/scene-backgrounds.md).
 
-## Zmiana tła czatu
+Tło czatu widać we wszystkich trybach czatu. W czatach w trybie Conversation gradient z sekcji **Tło Conversation** zostaje nad obrazem, a **Przezroczystość obrazu tła w trybie Conversation** ustawia, jak mocno widać obraz. Zobacz [Ustawienia wyglądu](appearance-settings.md).
 
-Zanim zaczniesz: otwórz czat, który chcesz zmienić. Wybrane tło dotyczy tego czatu.
+## Gdzie znaleźć bibliotekę
 
-1. Otwórz **Settings** (Ustawienia), potem **Appearance** (wygląd), a potem przycisk **App** (aplikacja).
-2. W sekcji **Backgrounds** (tła) dotknij **Browse library** (przeglądanie biblioteki).
-3. Dotknij obrazu. Staje się tłem tego czatu, a okno się zamyka.
+Otwórz **Ustawienia → Wygląd** i znajdź sekcję **Tła**. Zawiera selektor **Tło czatu**, suwak **Rozmycie tła** oraz kontrolki **Przezroczystość obrazu tła w trybie Conversation** i **Tła na liście czatów**.
+
+Selektor pokazuje podgląd bieżącego tła albo napis **Domyślne tło**, gdy żadnego nie wybrano. Pod nim masz na jedno dotknięcie do trzech ostatnio używanych teł **Ostatnie**. Przycisk **Przeglądaj bibliotekę** otwiera okno **Biblioteka teł**. W czacie **Ustawienia czatu → Tło** otwiera tę samą bibliotekę dla tego czatu.
+
+## Wybór tła dla czatu
+
+Zanim zaczniesz: otwórz czat, który chcesz zmienić. Wybrany obraz dotyczy tylko tego czatu.
+
+1. Otwórz **Ustawienia → Wygląd → Tła** i kliknij **Przeglądaj bibliotekę**.
+2. Kliknij obraz. Pojawia się znacznik wyboru, obraz staje się tłem tego czatu, a okno się zamyka.
+3. Żeby wrócić do ustawienia domyślnego, kliknij wybrany obraz ponownie albo kliknij X (**Wyczyść zaznaczenie**) na podglądzie.
 
 Żeby użyć własnego obrazu, najpierw go zaimportuj (zobacz [Import tła](#import-a-background)).
 
-## Gdzie znaleźć tła
-
-1. Otwórz **Settings**.
-2. Wybierz zakładkę **Appearance**, a potem przycisk **App**.
-3. Znajdź sekcję **Backgrounds**.
-
-Sekcja zawiera selektor **Chat Background** (tło czatu), suwak **Background Blur** (rozmycie tła) oraz kontrolki **Conversation background image opacity** i **Chat List Backgrounds** (tła na liście czatów) (zobacz [Ustawienia wyglądu](appearance-settings.md)).
-
-Selektor pokazuje podgląd bieżącego tła albo napis **Default background** (tło domyślne), gdy żadnego nie wybrano. Pod nim masz na jedno dotknięcie do trzech ostatnio używanych teł **Recent** (ostatnie). Kliknij **Browse library**, żeby otworzyć okno **Background Library** (biblioteka teł).
-
 ## Biblioteka teł
 
-Biblioteka łączy obrazy wgrane przez ciebie z grafikami dołączonymi do aplikacji Marinara Engine. Każdy obraz ma etykietę.
+Biblioteka łączy obrazy wgrane przez ciebie lub namalowane przez agenta Illustrator z grafikami dołączonymi do aplikacji Marinara Engine. Każdy obraz ma etykietę.
 
 | Etykieta | Znaczenie |
 | --- | --- |
@@ -34,8 +32,6 @@ Biblioteka łączy obrazy wgrane przez ciebie z grafikami dołączonymi do aplik
 | **Game asset** (zasób gry) | Grafika wbudowana. Jest tylko do odczytu: nie da się zmienić jej nazwy, otagować jej ani usunąć. |
 
 Przyciski **Filter by source** (filtrowanie według źródła), czyli **All sources** (wszystkie źródła), **My uploads** (moje pliki) i **Game assets** (zasoby gry), pokazują, ile obrazów zawiera każda grupa.
-
-<a id="import-a-background"></a>
 
 ### Import tła
 
@@ -46,12 +42,6 @@ Przyciski **Filter by source** (filtrowanie według źródła), czyli **All sour
 Nowe obrazy pojawiają się w siatce z etykietą **My upload**.
 
 Każdy plik musi być w formacie JPG, PNG, GIF, WebP lub AVIF i mieć do 20 MB. Marinara sprawdza zawartość pliku, a nie jego nazwę. Plik, który nie jest obrazem, zostanie odrzucony nawet po zmianie nazwy na `.png`.
-
-### Wybór tła dla bieżącego czatu
-
-1. Otwórz **Browse library**.
-2. Kliknij miniaturę. Pojawia się znacznik wyboru, obraz staje się tłem tego czatu, a okno się zamyka.
-3. Żeby wrócić do ustawienia domyślnego, kliknij wybraną miniaturę ponownie albo kliknij X (**Clear selection**, wyczyszczenie zaznaczenia) na podglądzie.
 
 ### Wyszukiwanie i filtrowanie
 
@@ -91,7 +81,9 @@ Otagować można tylko obrazy z etykietą **My upload**.
 
 Żeby usunąć tag, kliknij go podczas edycji tagów.
 
-<a id="download-a-background"></a>
+Tagi zapisuje się małymi literami. Mogą zawierać litery, cyfry, spacje, łączniki i podkreślenia, do 40 znaków każdy.
+
+Oznaczaj obrazy tagami nazywającymi przedstawione miejsca, na przykład `guest bedroom` lub `harbor tavern`. Agent **Background** odczytuje tagi przy wyborze tła, a Illustrator ponownie używa obrazu, którego tag złożony z co najmniej dwóch słów nazywa miejsce z historii, zamiast malować nowy. Zobacz [Ponowne używanie posiadanych obrazów](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 ### Pobieranie tła
 
@@ -136,6 +128,6 @@ Pełny model synchronizacji opisują [Ustawienia wyglądu](appearance-settings.m
 
 ## Powiązane przewodniki
 
-- [Tła w trybie Roleplay](../roleplay/backgrounds.md): agent Background, który dobiera tło w każdej turze.
-- [Tła scen i galeria](../media/scene-backgrounds.md): tła scen generowane przez AI w galerii. One też trafiają do tej biblioteki.
+- [Tła podążające za historią](../roleplay/backgrounds.md): agent Background, przypięte miejsca i tła z galerii.
+- [Tła tworzone przez agenta Illustrator](../media/scene-backgrounds.md): malowane tła i wersje pogodowe. One też trafiają do tej biblioteki.
 - [Ustawienia wyglądu](appearance-settings.md): cała zakładka Appearance.

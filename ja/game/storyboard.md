@@ -11,11 +11,10 @@
 
 ## エージェントのインストール
 
-1. Sparklesのアイコンから**Agents**(エージェント)パネルを開きます。
-2. **Agent Organizer**(エージェント管理)を選びます。
-3. **Storyboard**を開いて**Install**を選びます。
-4. GameかRoleplayのチャットを開き、**Chat Settings → Agents**(チャット設定 → エージェント)を開きます。
-5. **Enable Agents**(エージェントを有効にする)をオンにし、続けてStoryboardカードの**Enable Storyboards**(絵コンテを有効にする)をオンにします。
+1. **Library → Agents**(ライブラリー → エージェント)を開き、**Available**(利用可能)をクリックします。
+2. **Storyboard**を探し、**Get**(入手)をクリックします。
+3. GameかRoleplayのチャットを開き、**Chat Settings → Agents**(チャット設定 → エージェント)を開きます。
+4. **Enable Agents**(エージェントを有効にする)をオンにし、続けてStoryboardカードの**Enable Storyboards**(絵コンテを有効にする)をオンにします。
 
 インストールするとエージェントを使えるようになりますが、すべてのチャットで有効になるわけではありません。Marinaraを再起動する必要はありません。
 
@@ -186,7 +185,7 @@ StoryboardはIllustratorとは別のエージェントで、Illustratorの手動
 
 ## Storyboardエージェントの設定
 
-**Agents**(エージェント)パネルを開き、**Storyboard**を選んで設定画面を開きます。ここでの値は、独自の上書きを持たないチャットのデフォルトになります。
+**Library → Agents**(ライブラリー → エージェント)を開き、**Storyboard**をクリックして設定画面を開きます。ここでの値は、独自の上書きを持たないチャットのデフォルトになります。
 
 | 設定 | デフォルト | 役割 |
 | --- | --- | --- |

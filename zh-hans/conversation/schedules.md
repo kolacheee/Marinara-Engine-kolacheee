@@ -37,7 +37,6 @@
 | 20 到 39 | 3 |
 | 低于 20 | 2 |
 
-<a id="turn-on-schedules"></a>
 ## 开启日程
 
 **开始之前：** 开启 **Autonomous Messages**。
@@ -50,7 +49,7 @@
 
 日程属于角色，会在每个 Conversation 聊天中复用。在某个聊天中关闭 **Schedules**，只会让该聊天中的日程保持关闭，日程本身会保留。
 
-除非你在 **Character Schedule Manager**(角色日程管理器) 中为该角色开启 **Renew weekly**(每周更新)，否则自动每周更新默认关闭。点击侧边栏底部状态框旁边的日历按钮即可打开它。
+除非你在 **Character Schedule Manager**(角色日程管理器) 中为该角色开启 **Renew weekly**(每周更新)，否则自动每周更新默认关闭。点击聊天列表底部状态框旁边的日历按钮即可打开它。
 
 每次加载应用页面时，Marinara 会对每个聊天尝试一次更新。如果失败，在你重新加载页面之前不会再次尝试。点击 **Generate** 即可重试。
 

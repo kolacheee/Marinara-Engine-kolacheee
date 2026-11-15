@@ -6,7 +6,7 @@
 
 每一张生成的图像最初都是一段文字提示词：头像、肖像、Conversation(对话模式) 里的自拍、场景背景、插图和立绘都是如此。风格方案是一组保存好的规则，Marinara 会把它加进那段提示词里。它可以加正向词（想要的效果）、负向词（想避开的效果），还能指定偏好的提示词写法。你选一个方案作为全应用默认，也可以给单个聊天或单个图像模型另行指定。
 
-要找到编辑器，打开 **Settings → Generations → Image Generation**(设置 → 生成 → 图像生成)，然后向下滚动到 **Style Profiles**(风格方案)。
+要找到编辑器，打开 **Settings → Media → Image Generation**(设置 → 媒体 → 图像生成)，然后向下滚动到 **Style Profiles**(风格方案)。
 
 ## 内置方案
 
@@ -35,7 +35,7 @@ Marinara 内置了 10 套风格方案，默认使用 **Auto**。每一套都可�
 
 除非聊天或图像模型另行指定，默认方案会作用于每一张图像。
 
-1. 打开 **Settings → Generations → Image Generation → Style Profiles**。
+1. 打开 **Settings → Media → Image Generation → Style Profiles**。
 2. 打开 **Default style**(默认风格) 列表。
 3. 选择一个方案。
 

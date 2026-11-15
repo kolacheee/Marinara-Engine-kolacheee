@@ -131,7 +131,7 @@ In einem Terminal gibt der Server lesbare Zeilen aus. Anderswo, etwa in Docker-L
 
 ## Zeitlimits
 
-Ein Zeitlimit ist die längste Zeit, die der Server auf einen langsamen Auftrag wartet. Unter **Settings → Advanced → Request timeouts** stellst du die Limits für Text, Agenten, Game-Bildprompts, Bilder, Videos, ComfyUI und Embeddings in Sekunden ein. Höhere Limits helfen langsamen lokalen Backends. Ein Limit, das der Dienst selbst setzt, können sie nicht aufheben. Zum Speichern brauchst du Administrationszugriff auf den Server.
+Ein Zeitlimit ist die längste Zeit, die der Server auf einen langsamen Auftrag wartet. Unter **Settings → Advanced → Timeouts & Retries** stellst du die Limits für Text, Agenten, Game-Bildprompts, Bilder, Videos, ComfyUI und Embeddings in Sekunden ein. Höhere Limits helfen langsamen lokalen Backends. Ein Limit, das der Dienst selbst setzt, können sie nicht aufheben. Zum Speichern brauchst du Administrationszugriff auf den Server.
 
 Diese Einstellungen gelten für alle Profile und werden neben der aktiven `.env` als `.env.timeouts.json` gespeichert (oder als `<custom-env-path>.timeouts.json`). Sie überschreiben die passenden Variablen, ohne `.env` zu ändern. Änderungen für Text, Agenten, Game-Bildprompts und Embeddings gelten für neue Anfragen. Medienänderungen und installierte Agentenpakete brauchen einen Neustart. Um wieder die Variablen zu nutzen, lösch diese Datei und starte neu.
 
@@ -154,13 +154,13 @@ Die Werte sind in Millisekunden angegeben, sofern der Name nichts anderes sagt. 
 
 ## Privilegierte APIs (ADMIN_SECRET)
 
-Zerstörerische oder riskante Aktionen wie Backups, das Löschen von Daten, das Einspielen von Updates und das Installieren von Themes brauchen zusätzlich zu den normalen Zugriffsprüfungen ein Geheimnis. Du kannst eines auf dem Server-Rechner selbst unter **Settings → Advanced → Admin Access** erstellen (siehe [Admin Access](REMOTE_ACCESS.md#admin-access-and-privileged-actions)) oder auf dem Server einen langen, zufälligen Wert setzen:
+Zerstörerische oder riskante Aktionen wie Backups, das Löschen von Daten, das Einspielen von Updates und das Installieren von Themes brauchen zusätzlich zu den normalen Zugriffsprüfungen ein Geheimnis. Du kannst eines auf dem Server-Rechner selbst unter **Settings → Advanced → Security** erstellen (siehe [Das Admin-Secret](REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)) oder auf dem Server einen langen, zufälligen Wert setzen:
 
 ```text
 ADMIN_SECRET=replace-this-with-a-long-random-secret
 ```
 
-Auf dem Rechner, auf dem der Server läuft, funktionieren diese Aktionen meist auch ohne das Geheimnis. Eine Anfrage, die ein Proxy oder Tunnel auf diesem Rechner weiterleitet, zählt als entfernt, außer bei `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`. Direkte Anfragen von einem anderen Gerät brauchen das Geheimnis. Füge denselben Wert unter **Settings → Advanced → Admin Access** ein, dann schickt die App ihn für dich mit. `ADMIN_SECRET` in der `.env` hat Vorrang vor einem in der App erstellten Geheimnis. Ohne Admin-Secret scheitern privilegierte Aktionen von jedem Gerät außer dem Server-Rechner selbst, und die Fehlermeldung fordert dich auf, eines einzurichten. Installierte Agenten funktionieren auf jedem Gerät, das mit der Anmeldung angemeldet ist; zum Installieren, Aktualisieren und Entfernen brauchst du das Geheimnis.
+Auf dem Rechner, auf dem der Server läuft, funktionieren diese Aktionen meist auch ohne das Geheimnis. Eine Anfrage, die ein Proxy oder Tunnel auf diesem Rechner weiterleitet, zählt als entfernt, außer bei `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`. Direkte Anfragen von einem anderen Gerät brauchen das Geheimnis. Füge denselben Wert unter **Settings → Advanced → Security** ein, dann schickt die App ihn für dich mit. `ADMIN_SECRET` in der `.env` hat Vorrang vor einem in der App erstellten Geheimnis. Ohne Admin-Secret scheitern privilegierte Aktionen von jedem Gerät außer dem Server-Rechner selbst, und die Fehlermeldung fordert dich auf, eines einzurichten. Installierte Agenten funktionieren auf jedem Gerät, das mit der Anmeldung angemeldet ist; zum Installieren, Aktualisieren und Entfernen brauchst du das Geheimnis.
 
 | Variable | Standard | Wirkung |
 | --- | --- | --- |
@@ -172,7 +172,7 @@ Auf dem Rechner, auf dem der Server läuft, funktionieren diese Aktionen meist a
 | `HAPTICS_ALLOW_REMOTE` | `false` | Erlaubt einem entfernten Gerät mit gültigem Geheimnis haptische Aktionen. |
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | Aktiviert eigene Skript-Tools. Bei nicht vertrauenswürdigen oder importierten Tools aus lassen. |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Lässt die Datenbank-Transformationsskripte von Professor Mari auch auf Hosts ohne Sandbox des Betriebssystems laufen (macOS Seatbelt oder Linux Bubblewrap, die genutzt werden, wo vorhanden). Lass das aus, solange du das Skript nicht geprüft hast. |
-| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Aktiviert die manuelle Vorschau und Synchronisierung von GitHub-Agent-Repositorys in Agent Organizer. Siehe [Eigene Agent-Repositorys](#custom-agent-repositories). |
+| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Aktiviert die manuelle Vorschau und Synchronisierung von GitHub-Agent-Repositorys auf der Agents-Seite. Siehe [Eigene Agent-Repositorys](#custom-agent-repositories). |
 | `MARINARA_OVERWORLD_GAMES` | `false` | Erlaubt Spielern, Overworld-Spiele (ein Setting-Kit und eine generierte Welt) anzulegen und ein älteres Spiel in eines umzuwandeln. Ist die Variable aus, bietet der Assistent nur VN-Spiele an. |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | Erste von zwei Sicherheitssperren für den Import von Erweiterungen Dritter. Siehe [External Extensions](#external-extensions). |
 | `IMPORT_ALLOWED_ROOTS` | leer | Ordner, die ein Massenimport ohne Auswahl-Token lesen darf. |
@@ -197,7 +197,7 @@ Wie du ein lokales oder selbst gehostetes Modell anbindest, steht unter [Ein lok
 
 ## Funktionsschalter
 
-Optionale Serverfunktionen, etwa das Wiederholen fehlgeschlagener Anbieteraufrufe oder stabile Lorebook-Gruppenauswahlen, findest du unter **Settings → Advanced → Features** (Einstellungen → Erweitert → Funktionen). Alle sind standardmäßig aus. Einige haben eine Variable, die Vorrang vor dem Schalter hat, wenn sie gesetzt ist. Siehe [Funktionsschalter](configuration/features.md).
+Optionale Serverfunktionen, etwa das Wiederholen fehlgeschlagener Anbieteraufrufe (**Settings → Advanced → Timeouts & Retries**) oder stabile Lorebook-Gruppenauswahlen (**Settings → Advanced → Lorebooks**), sind Schalter in den Einstellungen. Alle sind standardmäßig aus. Einige haben eine Variable, die Vorrang vor dem Schalter hat, wenn sie gesetzt ist. Siehe [Funktionsschalter](configuration/features.md).
 
 <a id="marinara-notices"></a>
 
@@ -248,16 +248,16 @@ Genaue Einschränkungen und getestete Plattformen nennt der [Kompatibilitäts- u
 
 ## Agenten und Erweiterungen
 
-Optionale offizielle Agenten installierst du in der App: **Agents → Agent Organizer** (Agenten → Agentenverwaltung). Marinara wählt den Katalog von [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents), der zu seiner Hauptversion passt.
+Optionale offizielle Agenten installierst du in der App: **Library → Agents** (Bibliothek → Agenten). Marinara wählt den Katalog von [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents), der zu seiner Hauptversion passt.
 
-- **Updates:** Marinara fragt nach, bevor es eine neue Version eines installierten Pakets herunterlädt. **Not now** (jetzt nicht) behält die aktuelle Version, und **Update** bleibt in Agent Organizer verfügbar. Eine frische Installation hat keine Pakete.
+- **Updates:** Marinara fragt nach, bevor es eine neue Version eines installierten Pakets herunterlädt. **Not now** (jetzt nicht) behält die aktuelle Version, und **Update** bleibt auf der Agents-Seite verfügbar. Eine frische Installation hat keine Pakete.
 - **Speicherort der Pakete:** `DATA_DIR/capability-packages`. Docker-Volumes, eigene Datenordner, Backups und normale Updates lassen sie unangetastet. Das gilt für Desktop, Docker und Termux. iOS und andere Browser nutzen die Pakete auf ihrem Host-Server.
 - **Speicherplatz:** Marinara behält von jedem Paket die aktuelle und die vorherige Version und löscht ältere Versionen sowie die temporären Kopien in `DATA_DIR/capability-runtime-snapshots`. Paketdaten werden nie gelöscht.
 - **Offline:** Installierte Pakete laufen in ihrer Version weiter, wenn GitHub nicht erreichbar ist, ein Update abgelehnt wird oder die Prüfung fehlschlägt.
 
 ### Import eigener Agenten
 
-Externe Agent-Dateien, -Ordner und -Repositorys sind gesperrt. Um sie zu erlauben, schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) unter **Settings → Advanced → Danger Zone** (Einstellungen → Erweitert → Gefahrenbereich) ein. Dafür brauchst du keine Umgebungsvariable. Bis dahin bleiben die Import-Bedienelemente ausgegraut.
+Externe Agent-Dateien, -Ordner und -Repositorys sind gesperrt. Um sie zu erlauben, schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) ein. Dafür brauchst du keine Umgebungsvariable. Bis dahin bleiben die Import-Bedienelemente ausgegraut.
 
 Jeder Import zeigt zuerst, welche Fähigkeiten der Agent anfordert. Berechtigungen musst du ausdrücklich bestätigen. Mitgelieferte Funktionen und Tool-Auswahlen werden nicht importiert, generiertes CSS wird bereinigt, und Ergebnis-Aktionen werden gegen die freigegebenen Fähigkeiten geprüft. Schaltest du die Freigabe aus, laufen importierte Agenten nicht mehr. In Marinara erstellte Agenten und offizielle Pakete sind davon nicht betroffen.
 
@@ -265,7 +265,7 @@ Jeder Import zeigt zuerst, welche Fähigkeiten der Agent anfordert. Berechtigung
 
 ### Eigene Agent-Repositorys
 
-Repositorys sind standardmäßig aus, weil ihre Prompts und Tools ungeprüft sind. Setze `ENABLE_CUSTOM_AGENT_REPOS=true`, schalte **Allow custom Agent imports** ein und öffne dann **Agents → Agent Organizer → Custom Sources**, um ein öffentliches GitHub-Repository in der Vorschau anzusehen. Sowohl das Hinzufügen einer Quelle als auch das Übernehmen späterer Änderungen musst du bestätigen. Die Synchronisierung läuft manuell, und Marinara klont Repositorys nie und fragt sie nie im Hintergrund ab. Akzeptiert werden nur GitHub-URLs zum Stammverzeichnis eines Repositorys.
+Repositorys sind standardmäßig aus, weil ihre Prompts und Tools ungeprüft sind. Setze `ENABLE_CUSTOM_AGENT_REPOS=true`, schalte **Allow custom Agent imports** ein und öffne dann **Library → Agents → Custom Sources**, um ein öffentliches GitHub-Repository in der Vorschau anzusehen. Sowohl das Hinzufügen einer Quelle als auch das Übernehmen späterer Änderungen musst du bestätigen. Die Synchronisierung läuft manuell, und Marinara klont Repositorys nie und fragt sie nie im Hintergrund ab. Akzeptiert werden nur GitHub-URLs zum Stammverzeichnis eines Repositorys.
 
 Ein Repository veröffentlicht Agenten, Game-Mode-Regelsätze oder beides. Im Stammverzeichnis:
 
@@ -295,12 +295,12 @@ Eigene Agenten können außerdem unter Context Sources die Option **Previous out
 
 ### External Extensions
 
-Der Import von Erweiterungen Dritter braucht zwei Freigaben. Die Umgebungsvariable ist die Erlaubnis des Server-Betreibers. Der Schalter in der Danger Zone ist die Zustimmung des Nutzers.
+Der Import von Erweiterungen Dritter braucht zwei Freigaben. Die Umgebungsvariable ist die Erlaubnis des Server-Betreibers. Der Schalter **Allow third-party extension imports** unter **Settings → Advanced → Security** ist die Zustimmung des Nutzers.
 
 1. Setze `ENABLE_EXTERNAL_EXTENSIONS=true` in `.env`.
-2. Öffne **Settings → Advanced → Danger Zone**, scrolle unter die Bedienelemente zum Löschen von Daten, lies die Warnung und schalte **Allow third-party extension imports** (Importe von Fremdanbietern erlauben) ein.
+2. Öffne **Settings → Advanced → Security**, lies die Warnung und schalte **Allow third-party extension imports** (Importe von Fremdanbietern erlauben) ein.
 
-Danach erscheint der Bereich **External Extensions** unter **Settings → Addons**. Wird eine der beiden Sicherheitssperren geschlossen, deaktiviert Marinara externe Einträge und stoppt ihren Code. Manuell abgelegte, alte und per Profil importierte Einträge gelten ebenso als extern wie solche unbekannter Herkunft; Dateien einfach in einen Ordner zu legen, umgeht die Sicherheitssperren also nicht. Für Entwürfe von Professor Mari muss keine der beiden Sicherheitssperren offen sein. Sie werden deaktiviert angelegt, und ihr exakter Code-Hash muss freigegeben werden.
+Danach erscheint der Bereich **External Extensions** unter **Library → Extensions**. Wird eine der beiden Sicherheitssperren geschlossen, deaktiviert Marinara externe Einträge und stoppt ihren Code. Manuell abgelegte, alte und per Profil importierte Einträge gelten ebenso als extern wie solche unbekannter Herkunft; Dateien einfach in einen Ordner zu legen, umgeht die Sicherheitssperren also nicht. Für Entwürfe von Professor Mari muss keine der beiden Sicherheitssperren offen sein. Sie werden deaktiviert angelegt, und ihr exakter Code-Hash muss freigegeben werden.
 
 Standard sind Browser-Erweiterungen in der Sandbox. Manche älteren Pakete zeigen **Full page access** (Vollzugriff auf die Seite), weil sie die Marinara-Seite brauchen. In diesem Modus läuft der freigegebene Code in der Marinara-Seite und hat Zugriff auf Seiteninhalte, Browser-Speicher, Netzwerk-APIs und deine Sitzung. Er steht nur External Extensions offen, wenn beide Sicherheitssperren offen sind, und verlangt eine eigene Bestätigung der Warnung. Lade die Seite neu, nachdem du ihn deaktiviert hast.
 
@@ -321,7 +321,7 @@ Die Tabellen weiter oben decken Zugriffskontrolle, Speicherung, Logging, Zeitlim
 | `MARINARA_NOTICES_ENABLED` | `true` | Ob der Server Hinweise der Maintainer abruft. Siehe [Marinara-Hinweise](#marinara-notices). |
 | `MARINARA_NOTICES_URL` | `notices.json` im Branch `notices` | Überschreibt die Hinweisdatei, für Forks und Spiegel. Sie wird genauso geprüft, und Links außerhalb von `https://github.com/Pasta-Devs/` werden verworfen. Der Hostname der URL muss in der Hosts-Datei oder im DNS stehen. Siehe [Marinara-Hinweise](#marinara-notices). |
 | `MARINARA_ENV_FILE` | `.env` im Projekt-Wurzelordner | Abweichender Pfad zur Datei `.env`. Vor dem Start setzen. |
-| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | Höchstzahl gleichzeitiger Bild- oder Videoanfragen auf dem ganzen Server. Senke sie auf 1–2, wenn einem lokalen ComfyUI oder SwarmUI der VRAM ausgeht. `0` hebt die Obergrenze auf. Ungültige Werte werden mit einer Warnung ignoriert. Stapelaufträge belegen nie den letzten Platz. Gilt zusätzlich zu **Queue media generation requests** (Anfragen zur Mediengenerierung in die Warteschlange stellen; **Settings → Generations → Overall Generations**, standardmäßig an), das Bild- und Videoaufträge pro Konto in die Warteschlange stellt. |
+| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | Höchstzahl gleichzeitiger Bild- oder Videoanfragen auf dem ganzen Server. Senke sie auf 1–2, wenn einem lokalen ComfyUI oder SwarmUI der VRAM ausgeht. `0` hebt die Obergrenze auf. Ungültige Werte werden mit einer Warnung ignoriert. Stapelaufträge belegen nie den letzten Platz. Gilt zusätzlich zu **Queue media generation requests** (Anfragen zur Mediengenerierung in die Warteschlange stellen; **Settings → Media → Generation Defaults**, standardmäßig an), das Bild- und Videoaufträge pro Konto in die Warteschlange stellt. |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000` (10 Minuten) | Wie lange eine Anfrage auf einen freien Platz wartet, bevor sie fehlschlägt. `0` wartet unbegrenzt. |
 | `MARINARA_SHARED_GPU_HOSTS` | leer | Kommagetrennte `host:port`-Liste für eine GPU, die sich ein lokales Modell und ein lokales Bild- oder Video-Backend teilen, etwa mit llama-swap. Text- und Medienanfragen an einen aufgeführten Host wechseln sich ab, sodass ein Bild nicht endlos hinter Chat-Antworten wartet. Ein Bild oder Clip wartet höchstens `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS`. Embeddings werden nicht aufgehalten. Gilt ohne Neustart für neue Anfragen. |
 | `MARINARA_ENV_WATCH` | `1` | Wie `.env` überwacht wird. Standard: Änderungsereignisse (rund 250 ms Entprellung) mit einer Prüfung alle 30 Sekunden als Rückfall. `poll`: immer die 30-Sekunden-Prüfung. `0`: aus. Siehe [Neustart oder Hot Reload](#restart-or-hot-reload). |
@@ -359,7 +359,7 @@ Video-Konten richtest du in der App ein. Diese Einstellungen justieren nur die A
 
 ### Lorebooks
 
-Beide Einstellungen sind standardmäßig aus und gelten nach einer `.env`-Änderung ab der nächsten Generierung. Ist `LOREBOOK_STABLE_GROUP_WINNERS` gesetzt, hat die Variable Vorrang vor dem Schalter **Stable lorebook picks** (stabile Lorebook-Auswahl) unter **Settings → Advanced → Features**. Sonst entscheidet der Schalter. Siehe [Funktionsschalter](configuration/features.md).
+Beide Einstellungen sind standardmäßig aus und gelten nach einer `.env`-Änderung ab der nächsten Generierung. Ist `LOREBOOK_STABLE_GROUP_WINNERS` gesetzt, hat die Variable Vorrang vor dem Schalter **Stable lorebook picks** (stabile Lorebook-Auswahl) unter **Settings → Advanced → Lorebooks**. Sonst entscheidet der Schalter. Siehe [Funktionsschalter](configuration/features.md).
 
 | Variable | Standard | Wirkung |
 | --- | --- | --- |
@@ -372,7 +372,7 @@ Beide Einstellungen sind standardmäßig aus und gelten nach einer `.env`-Änder
 
 ### Robustheit
 
-Alle sind standardmäßig aus und behalten so das bisherige Verhalten bei. `STORAGE_CACHE_WINDOWS_BOOT_ID`, `SHUTDOWN_WINDOWS_CONSOLE_SIGNALS` und `SHUTDOWN_FORCE_EXIT_ON_REPEAT` brauchen einen Neustart. Die übrigen gelten nach einer `.env`-Änderung. Ist `PROVIDER_RETRY_TRANSIENT_ERRORS` gesetzt, hat die Variable Vorrang vor dem Schalter **Retry failed provider calls** (fehlgeschlagene Anbieteraufrufe wiederholen) unter **Settings → Advanced → Features**. Sonst entscheidet der Schalter.
+Alle sind standardmäßig aus und behalten so das bisherige Verhalten bei. `STORAGE_CACHE_WINDOWS_BOOT_ID`, `SHUTDOWN_WINDOWS_CONSOLE_SIGNALS` und `SHUTDOWN_FORCE_EXIT_ON_REPEAT` brauchen einen Neustart. Die übrigen gelten nach einer `.env`-Änderung. Ist `PROVIDER_RETRY_TRANSIENT_ERRORS` gesetzt, hat die Variable Vorrang vor dem Schalter **Retry failed provider calls** (fehlgeschlagene Anbieteraufrufe wiederholen) unter **Settings → Advanced → Timeouts & Retries**. Sonst entscheidet der Schalter.
 
 | Variable | Standard | Wirkung |
 | --- | --- | --- |

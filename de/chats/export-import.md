@@ -40,8 +40,8 @@ Marinara exportiert alle Nachrichten von der ersten bis zur letzten, die du ausg
 
 ## Mehrere Chats auf einmal exportieren
 
-1. Klick in der linken Seitenleiste auf den Tab des gewünschten Modus: **CONVO**, **RP** oder **GM**. Jeder Tab exportiert nur seine eigenen Chats.
-2. Klick oben in der Liste auf **Select chats** (Chats auswählen).
+1. Klick in der Seitenleiste **Chats** auf den Tab des gewünschten Modus: **Convo**, **Roleplay** oder **Game**. Jeder Tab exportiert nur seine eigenen Chats.
+2. Klick oben in der Seitenleiste auf **Select chats** (Chats auswählen, das Häkchen).
 3. Klick jeden gewünschten Chat an. Eine Leiste unten zeigt die Anzahl, etwa „3 selected“.
 4. Klick in der Leiste auf **Export**.
 
@@ -51,9 +51,10 @@ Der Browser lädt eine `.zip`-Datei mit einem JSONL-Transkript pro Chat herunter
 
 So entsteht ein neuer Chat aus einer `.jsonl`-Datei, die Marinara gespeichert oder SillyTavern exportiert hat.
 
-1. Klick in der linken Seitenleiste auf den Tab des gewünschten Modus. Der importierte Chat übernimmt den Modus des geöffneten Tabs, nicht den Modus aus der Datei.
-2. Klick auf die Schaltfläche **Import** neben der Schaltfläche **+**. Ihre Beschriftung lautet **Import SillyTavern or Marinara chat JSONL**.
-3. Wähl deine `.jsonl`-Datei aus.
+1. Klick in der Seitenleiste **Chats** auf den Tab des gewünschten Modus. Der importierte Chat übernimmt den Modus des geöffneten Tabs, nicht den Modus aus der Datei.
+2. Klick neben **Neu** auf die Schaltfläche **Import** (Importieren, der Download-Pfeil). Ihre Beschriftung lautet **Import SillyTavern or Marinara chat JSONL**. Das Fenster **Import chat** (Chat importieren) öffnet sich.
+3. Lass **Tag imported** (als importiert markieren) und **Tag source** (Quelle markieren) angehakt, um den Chat mit **Imported** und **ST** (oder bei einem von Marinara exportierten Chat mit **Marinara**) zu taggen, oder entferne die Haken.
+4. Leg deine `.jsonl`-Datei auf dem Fenster ab oder klick auf **Browse…** (Durchsuchen…) und wähl sie aus.
 
 Es erscheint „Imported N messages“, und Marinara öffnet den neuen Chat. Ausführlicher zu SillyTavern-Dateien: [Aus SillyTavern importieren](../data/importing-from-sillytavern.md).
 
@@ -71,7 +72,7 @@ Es erscheint „Imported N messages as a new branch“. Die Verzweigung übernim
 
 ## Reasoning und private Notizen in Exporte übernehmen
 
-Zwei Einstellungen entscheiden, ob versteckter Text in Export-Dateien landet. Beide sind Schalter unter **Settings → Advanced → Message Tools**, und beide sind standardmäßig aus. Sie gelten für Exporte einzelner Chats und für `.zip`-Exporte.
+Zwei Einstellungen entscheiden, ob versteckter Text in Export-Dateien landet. Beide sind Schalter unter **Settings → Data → Chat Exports** (Einstellungen → Daten → Chat-Exporte), und beide sind standardmäßig aus. Sie gelten für Exporte einzelner Chats und für `.zip`-Exporte.
 
 | Einstellung | Wenn an |
 | --- | --- |

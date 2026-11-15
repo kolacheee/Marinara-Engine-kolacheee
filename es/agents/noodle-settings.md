@@ -96,7 +96,7 @@ Esta sección permite a Noodle adjuntar imágenes hechas por IA a algunas public
 
 Si no funcionó: con la generación de imágenes activada pero sin un modelo de imagen usable, un refresco se bloquea con "Choose an image generation connection for Noodle first." (Elige primero una conexión de generación de imágenes para Noodle). Una imagen fallida se reintenta una vez. Si vuelve a fallar, el refresco continúa y publica una publicación limpia de solo texto.
 
-La plantilla de estos prompts de imagen es **Noodle Post Image**. Edítala en **Settings → Generations → Image Generation Prompt Overrides**. Tus instrucciones de imagen entran en esa plantilla, y el resultado pasa por tu perfil de estilo. Consulta [Sobrescrituras de prompt para imagen y video](../prompts/prompt-overrides.md) y [Perfiles de estilo de imagen](../media/style-profiles.md). Professor Mari no tiene tarjeta de personaje, así que sus publicaciones con imagen usan su avatar integrado y su arte de referencia.
+La plantilla de estos prompts de imagen es **Noodle Post Image**. Edítala en **Settings → Media → Prompt Overrides** (Configuración → Medios → Anulaciones de prompts). Tus instrucciones de imagen entran en esa plantilla, y el resultado pasa por tu perfil de estilo. Consulta [Sobrescrituras de prompt para imagen y video](../prompts/prompt-overrides.md) y [Perfiles de estilo de imagen](../media/style-profiles.md). Professor Mari no tiene tarjeta de personaje, así que sus publicaciones con imagen usan su avatar integrado y su arte de referencia.
 
 ## Image Understanding
 
@@ -117,7 +117,7 @@ Esta sección ajusta el tono y la memoria del escritor del refresco.
 
 ### Personalizar la voz del escritor
 
-Puedes reescribir las instrucciones integradas de tono y libertad creativa del escritor en **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone**. La sección se titula "Image", pero la lista contiene todos los prompts de texto personalizables de Noodle y Conversation. El texto predeterminado que se muestra ahí sigue **Enhanced tone & continuity** hasta que guardes tu propio texto; a partir de entonces se usa el tuyo sin importar ese ajuste.
+Puedes reescribir las instrucciones integradas de tono y libertad creativa del escritor en **Settings → Media → Prompt Overrides → Noodle Timeline Voice & Tone**. La sección se titula "Image", pero la lista contiene todos los prompts de texto personalizables de Noodle y Conversation. El texto predeterminado que se muestra ahí sigue **Enhanced tone & continuity** hasta que guardes tu propio texto; a partir de entonces se usa el tuyo sin importar ese ajuste.
 
 Esta sobrescritura solo cubre voz y tono. Las reglas que mantienen válido un refresco, como qué acciones estructuradas están permitidas, siempre siguen en efecto.
 

@@ -42,7 +42,7 @@ Les sections visibles dépendent du mode du chat. La section **Impersonate** est
 - **Agent activity** (activité des agents) : montre ce que les agents ont fait. Relance les trackers, réessaie ou arrête les agents, efface les trackers. Voir [Agent activity](../roleplay/getting-started.md#agent-activity). (Roleplay, avec des agents ou Advanced Memory activés.)
 - **Author's Notes** (notes de l'auteur) : une note que le modèle lit à chaque tour. Voir [Author's Notes](../roleplay/getting-started.md#authors-notes). (Roleplay.)
 - **Background** (arrière-plan) : l'image d'arrière-plan du chat. (Roleplay, Game.)
-- **Gallery** (galerie) : les images et vidéos du chat. Voir [Arrière-plans de scène et galerie](../media/scene-backgrounds.md).
+- **Galerie** : les images et vidéos du chat. Voir [La galerie du chat](chat-gallery.md).
 - **Widgets** : les widgets du HUD affichés dans la partie. (Game.)
 - **Impersonate** : les réglages de la commande `/impersonate`. (Roleplay.)
 - **Memory Recall** : se souvient des parties plus anciennes du chat. Voir [Mémoire et résumés de chat](../agents/memory.md). (Absent de la version Lite.)
@@ -100,10 +100,10 @@ Les fenêtres restent dans la zone du chat. Une fenêtre ou un bouton peut se pl
 
 Ces boutons se trouvent dans la barre de titre.
 
-- **Help** (le **?**) affiche des étiquettes qui expliquent les contrôles du chat. Sur téléphone, il ferme d'abord Chat Settings. Pour le masquer, active **Settings → General → App Behavior → Hide chat Help button** (Paramètres → Général → Comportement de l'application → masquer le bouton Help du chat).
+- **Help** (le **?**) affiche des étiquettes qui expliquent les contrôles du chat. Sur téléphone, il ferme d'abord Chat Settings. Pour le masquer, active **Settings → General → Confirmations & Help → Hide chat Help button** (Paramètres → Général → Confirmations et aide → masquer le bouton Help du chat).
 - **Reset View** (réinitialiser la vue), la flèche circulaire, demande confirmation, puis rétablit la disposition de départ de ce chat : les sections détachées reprennent leur place, et les tailles, positions, épinglages et verrouillages des fenêtres sont réinitialisés.
 - **Favorite layout** (disposition favorite), l'étoile, enregistre cette disposition pour les nouveaux chats. Voir [Choisir une disposition pour les nouveaux chats](#choosing-a-layout-for-new-chats).
-- **Tracker Panel** (panneau des trackers), le dé, active ou désactive le panneau dans un chat Roleplay qui utilise des agents ou Advanced Memory. Sur ordinateur, il s'ouvre à côté du chat. Sur téléphone ou tablette, un bouton déplaçable l'ouvre. Il modifie aussi la préférence Tracker Panel dans **Settings → Appearance** (Paramètres → Apparence).
+- **Tracker Panel** (panneau des trackers), le dé, active ou désactive le panneau dans un chat Roleplay qui utilise des agents ou Advanced Memory. Sur ordinateur, il s'ouvre à côté du chat. Sur téléphone ou tablette, un bouton déplaçable l'ouvre. Il modifie aussi la préférence Tracker Panel dans **Settings → Roleplay → Tracker Panel** (Paramètres → Roleplay → Panneau des trackers).
 
 Quand le Tracker Panel n'est pas affiché, les trackers sur ordinateur utilisent la [fenêtre Trackers](../roleplay/hud-and-trackers.md#the-trackers-window). Si la place manque à côté de tes messages, elle commence sous forme de petit bouton **Trackers**. Utilise le dé pour afficher à nouveau le Tracker Panel.
 
@@ -165,7 +165,7 @@ Après une mise à jour depuis une ancienne version, ton ancienne disposition de
 
 ## Changer l'apparence des fenêtres de chat
 
-Ouvre **Settings → Appearance → App** (Paramètres → Apparence → Application) et descends jusqu'à **Chat widget style** (style des widgets du chat), en bas de **App Style** (style de l'application). **Default** garde l'apparence de Marinara. **Dottore** utilise des bleus glacés, du métal clair et des coins coupés. **Prof. Mari** utilise des bleus de pierres précieuses, de l'or chaud et des cadres cintrés. Les deux suivent les modes clair et sombre et habillent les boutons déplaçables, les fenêtres et les sections des trois modes de chat.
+Ouvre **Settings → Appearance → Chat Buttons & Windows** (Paramètres → Apparence → Boutons et fenêtres du chat) et repère **Chat widget style** (style des widgets du chat). **Default** garde l'apparence de Marinara. **Dottore** utilise des bleus glacés, du métal clair et des coins coupés. **Prof. Mari** utilise des bleus de pierres précieuses, de l'or chaud et des cadres cintrés. Les deux suivent les modes clair et sombre et habillent les boutons déplaçables, les fenêtres et les sections des trois modes de chat.
 
 - **Font** (police), **Shape** (forme) et trois sélecteurs de couleur sous les presets permettent de varier le style. Les polices installées dans Marinara apparaissent dans la liste des polices. Choisir à nouveau un preset réinitialise la police, la forme et les couleurs personnalisées.
 - **Button size (px)** (taille des boutons en pixels) règle la taille des boutons déplaçables du chat, de 32 à 96. Un champ vide garde la valeur par défaut.

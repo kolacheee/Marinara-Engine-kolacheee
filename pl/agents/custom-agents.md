@@ -1,22 +1,22 @@
 # Tworzenie własnych agentów
 
-Własny agent to pomocnik, którego piszesz samodzielnie: ustalasz jego instrukcje, to, kiedy działa, i to, co może zmieniać. Zbuduj go, gdy żaden [agent do pobrania](built-in-agents.md) nie robi tego, czego potrzebujesz. Jeśli któryś z zainstalowanych agentów jest blisko celu, najedź na jego kafelek w panelu **Agents** (Agenci) i kliknij **Copy agent** (kopiowanie agenta), żeby dostać kopię, którą da się edytować.
+Własny agent to pomocnik, którego piszesz samodzielnie: ustalasz jego instrukcje, to, kiedy działa, i to, co może zmieniać. Zbuduj go, gdy żaden [agent do pobrania](built-in-agents.md) nie robi tego, czego potrzebujesz. Jeśli któryś z zainstalowanych agentów jest blisko celu, najedź na jego kafelek na stronie **Agenci** i kliknij **Copy agent** (kopiowanie agenta), żeby dostać kopię, którą da się edytować.
 
 Zanim zaczniesz: przeczytaj przewodnik [Agenci: pomocnicy AI w czatach](agents-overview.md). Zbudowanie agenta nie uruchamia go. Do czatu dodaje się go dopiero potem. Własni agenci działają w każdym trybie czatu.
 
 ## Tworzenie własnego agenta
 
-1. Otwórz panel **Agents**.
-2. Kliknij **New** (nowy, ikona plusa) u góry. Otwiera się pełnoekranowy edytor agenta.
+1. Otwórz **Biblioteka → Agenci**.
+2. Kliknij **Nowy agent** w prawym górnym rogu. Otwiera się pełnoekranowy edytor agenta.
 3. Wpisz nazwę w polu tytułu, na przykład `Weather Reporter`.
 4. Uzupełnij pola **Description** (opis) i **Author** (autor).
 5. Wybierz fazę w sekcji **Pipeline Phase** (faza potoku). Szczegóły: [Pipeline Phase](#pipeline-phase).
 6. Włącz potrzebne uprawnienia w sekcji **Custom Agent Abilities** (uprawnienia własnego agenta).
 7. Wybierz w sekcji **Result Type** (typ wyniku) typ pasujący do tego, co agent wytwarza. Jeśli nie masz pewności, wybierz **Context Injection**. Nie wymaga on żadnego uprawnienia ani ścisłego formatu wyniku.
 8. Napisz instrukcje agenta w sekcji **Prompt Template** (szablon promptu).
-9. Kliknij **Save** (zapis) na górnym pasku. Pojawia się zielona plakietka **Saved**.
+9. Kliknij **Zapisz** u góry edytora albo naciśnij <kbd>Ctrl</kbd>+<kbd>S</kbd>.
 
-Agent pojawia się teraz w sekcji **Custom Agents** (agenci własni) panelu **Agents**. Żeby go użyć, otwórz czat, przejdź do **Chat Settings** (ustawienia czatu), włącz **Enable Agents** (włączenie agentów) i dodaj agenta z sekcji **Custom Agents**.
+Agent pojawia się teraz w sekcji **Twoi agenci** na stronie **Agenci**. Żeby go użyć, otwórz czat, przejdź do **Chat Settings** (ustawienia czatu), włącz **Enable Agents** (włączenie agentów) i dodaj agenta z sekcji **Custom Agents**.
 
 ## Pipeline Phase
 
@@ -160,23 +160,23 @@ Marinara podstawia `editedText` w odpowiedzi. Notatki z `changes` są widoczne j
 
 ## Import i eksport agentów
 
-Żeby wyeksportować jednego agenta, kliknij **Export agent** (eksport agenta, ikona wgrywania) na górnym pasku edytora. Plik zawiera prompt i ustawienia agenta, ale nigdy definicji własnych narzędzi. Żeby wyeksportować kilku, użyj **Select agents** (zaznaczanie agentów) w panelu **Agents**, zaznacz ich i wyeksportuj.
+Żeby wyeksportować jednego agenta, kliknij **Eksportuj agenta** (ikona wgrywania) na górnym pasku edytora albo wybierz **Eksportuj** w jego menu **⋯** w sekcji **Twoi agenci** na stronie **Biblioteka → Agenci**. Plik zawiera prompt i ustawienia agenta, ale nigdy definicji własnych narzędzi. Żeby wyeksportować kilku naraz, kliknij **Zaznacz** (ikona zaznaczenia obok tytułu **Agenci**), wybierz agentów w sekcji **Twoi agenci** i kliknij **Eksportuj** na dolnym pasku. To samo menu **⋯** zawiera też opcje **Duplikuj** i **Usuń**.
 
 Import z zewnątrz jest domyślnie zablokowany.
 
-1. Otwórz **Settings → Advanced → Danger Zone** (ustawienia, zaawansowane, strefa zagrożenia) i włącz **Allow custom Agent imports** (zezwolenie na import własnych agentów). Zmiana w pliku `.env` nie jest potrzebna.
-2. W panelu **Agents** kliknij **Import agents** (import agentów) i wybierz pliki agentów albo folder.
+1. Otwórz **Ustawienia → Zaawansowane → Bezpieczeństwo** i włącz **Allow custom Agent imports** (zezwolenie na import własnych agentów). Zmiana w pliku `.env` nie jest potrzebna.
+2. Otwórz **Biblioteka → Agenci**, kliknij **Importuj agentów** (ikona pobierania obok **Zestawy startowe**), wybierz **Wybierz pliki** albo **Wybierz folder** i wskaż pliki agentów.
 3. Przejrzyj listę uprawnień, którą pokazuje Marinara. Zatwierdź tylko to, czego agent potrzebuje. Niezaznaczone uprawnienia pozostają zablokowane.
 
-Ta blokada dotyczy tylko agentów z plików, folderów lub własnych repozytoriów. Agenci utworzeni przez ciebie i oficjalni agenci z katalogu **Agent Organizer** (organizowanie agentów) działają normalnie. Każdy zaimportowany plik dostaje nową, własną tożsamość, więc nie może zastąpić oficjalnego agenta.
+Ta blokada dotyczy tylko agentów z plików, folderów lub własnych repozytoriów. Agenci utworzeni przez ciebie i oficjalni agenci z katalogu **Biblioteka → Agenci** działają normalnie. Każdy zaimportowany plik dostaje nową, własną tożsamość, więc nie może zastąpić oficjalnego agenta.
 
-Dla bezpieczeństwa Marinara pomija dołączone funkcje, czyści wybór narzędzi, oczyszcza tymczasowy kod CSS i sprawdza zatwierdzone uprawnienia, zanim zaimportowany agent będzie mógł zmienić wiadomości, trackery, lorebooki, tła, sprite'y, multimedia, urządzenia haptyczne, dane About Me, prompty lub obrazy. Zaufane funkcje importuj osobno, przejrzyj je i samodzielnie podłącz do agenta. Wyłączenie przełącznika w **Danger Zone** powstrzymuje zaimportowanych agentów przed uruchamianiem.
+Dla bezpieczeństwa Marinara pomija dołączone funkcje, czyści wybór narzędzi, oczyszcza tymczasowy kod CSS i sprawdza zatwierdzone uprawnienia, zanim zaimportowany agent będzie mógł zmienić wiadomości, trackery, lorebooki, tła, sprite'y, multimedia, urządzenia haptyczne, dane About Me, prompty lub obrazy. Zaufane funkcje importuj osobno, przejrzyj je i samodzielnie podłącz do agenta. Wyłączenie przełącznika **Zezwalaj na import własnych agentów** powstrzymuje zaimportowanych agentów przed uruchamianiem.
 
 <a id="activation-questions"></a>
 
 ## Pytania aktywacyjne
 
-Pytanie aktywacyjne sprawdza, czy ostatnia scena potrzebuje twojego agenta. Wychwytuje parafrazy, które umykają słowom kluczowym. Wymaga ustawienia **Decision model** (model decyzyjny), czyli małego modelu, który odpowiada na pytania typu tak lub nie. Wybierz go w panelu Connections. Zobacz [Modele decyzyjne](../connections/decision-models.md). Gdy **Decision model** ma domyślną wartość **None** (brak), pola pytania pozostają wyłączone, a agent z pytaniem działa tak, jakby go nie miał.
+Pytanie aktywacyjne sprawdza, czy ostatnia scena potrzebuje twojego agenta. Wychwytuje parafrazy, które umykają słowom kluczowym. Wymaga ustawienia **Decision model** (model decyzyjny), czyli małego modelu, który odpowiada na pytania typu tak lub nie. Wybierz go w sekcji **Domyślne** na stronie Połączenia. Zobacz [Modele decyzyjne](../connections/decision-models.md). Gdy **Decision model** ma domyślną wartość **None** (brak), pola pytania pozostają wyłączone, a agent z pytaniem działa tak, jakby go nie miał.
 
 1. Otwórz własnego agenta.
 2. Wpisz **Question** (pytanie) o długości do 500 znaków. Działają w nim makra `{{user}}` i `{{char}}`.
@@ -193,7 +193,7 @@ Jak to działa:
 - Przekroczenie czasu, niedostępny model lub nieprawidłowa odpowiedź pozwalają agentowi działać normalnie. Limit czasu zależy od rodzaju modelu i od tego, czy model musi najpierw rozumować. Zobacz [Limity czasu](../connections/decision-models.md#time-limits).
 - Zaimportowani agenci z pytaniem aktywacyjnym lub stwierdzeniami decyzyjnymi pokazują informację z linkiem do przewodnika o modelach decyzyjnych. Bez modelu decyzyjnego agent uruchamia się zawsze, gdy pozwalają na to słowa kluczowe i **Trigger Cadence** (częstotliwość uruchamiania), a stwierdzenia w prompcie są odczytywane jako nie.
 
-Pytania aktywacyjne dotyczą wyłącznie własnych agentów.
+Pytania aktywacyjne dotyczą wyłącznie własnych agentów. Wbudowany agent Illustrator ma własne, stałe sprawdzenia nowych miejsc i pogody. Zobacz [Sprawdzanie modelem decyzyjnym](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

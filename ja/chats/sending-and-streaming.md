@@ -15,7 +15,7 @@
 
 ### Send on Enter
 
-**Settings → General → Input & Editing**(設定 → 一般 → 入力と編集)にあります。チャットモードごとに1つずつトグルがあります。
+**Settings → Chatting → Message Box**(設定 → チャットの動作 → メッセージ入力欄)にあります。チャットモードごとに1つずつトグルがあります。
 
 | チャットモード | デフォルト | オフのとき |
 | --- | --- | --- |
@@ -23,7 +23,7 @@
 | Conversations | オン | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Macでは<kbd>Cmd</kbd>+<kbd>Enter</kbd>)で送信します。 |
 | Game | オン | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Macでは<kbd>Cmd</kbd>+<kbd>Enter</kbd>)で送信します。 |
 
-Roleplayのメッセージは長くなりやすく、改行が必要になるため、Roleplayはデフォルトでオフです。Professor Mariには専用のトグル**Enter sends to Professor Mari**(EnterでProfessor Mariに送信)があり、**Settings → General → Search and Professor Mari settings**にあります。
+Roleplayのメッセージは長くなりやすく、改行が必要になるため、Roleplayはデフォルトでオフです。Professor Mariには専用のトグル**Enter sends to Professor Mari**(EnterでProfessor Mariに送信)があり、**Settings → General → Professor Mari**にあります。
 
 ## 画像やファイルを添付する
 
@@ -49,7 +49,7 @@ Roleplayでは、チャットのアセットブラウザーからリンクを挿
 
 ## 返信のストリーミング
 
-ストリーミングでは、返信を一度にではなく、少しずつ順に表示します。設定は**Settings → General → Responses**(設定 → 一般 → 応答)にあります。
+ストリーミングでは、返信を一度にではなく、少しずつ順に表示します。設定は**Settings → Chatting → Responses**(設定 → チャットの動作 → 返信)にあります。
 
 | 設定 | デフォルト | 動作 |
 | --- | --- | --- |

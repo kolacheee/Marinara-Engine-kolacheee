@@ -6,7 +6,7 @@
 
 연동 기능은 Home Assistant 안에 설치되어 Home Assistant와 Marinara 서버를 이어 주는 작은 프로그램입니다. 처음 설정할 때 다음 항목을 자동으로 만듭니다. 도구 주소를 복사하거나 도구를 직접 설정할 일은 없습니다.
 
-- Presets 패널의 **Functions**(기능) 탭에 들어가는 스마트홈 도구. [사용자 지정 도구](../extending/custom-tools.md)를 참고하세요.
+- 사용자 지정 도구에 추가되는 스마트홈 도구(채팅의 **Chat Settings → Function Calling**(채팅 설정 → 기능 호출)에 있는 **Functions**(기능) 목록). [사용자 지정 도구](../extending/custom-tools.md)를 참고하세요.
 - **Home Assistant**라는 이름의 에이전트 하나. 에이전트는 채팅과 함께 실행되는 AI 도우미입니다. [에이전트: 채팅을 도와주는 AI](../agents/agents-overview.md)를 참고하세요.
 - Home Assistant에서 Marinara를 살펴보고 제어할 수 있게 해 주는 Home Assistant 엔티티(기기, 센서, 컨트롤).
 
@@ -53,7 +53,7 @@ WEBHOOK_LOCAL_URLS_ENABLED=true
 
 작동하지 않는 경우: Home Assistant가 Marinara에 접근할 수 없으면 오류를 표시합니다. [문제 해결](#troubleshooting)을 참고하세요.
 
-설정에 성공하면 연동 기능이 Home Assistant에 비공개 웹훅을 등록하고, 그 웹훅을 가리키는 도구를 Marinara의 **Functions** 섹션에 만들고, 활성화된 도구를 모두 담은 **Home Assistant** 에이전트를 만들고, 아래에서 설명하는 엔티티를 만듭니다.
+설정에 성공하면 연동 기능이 Home Assistant에 비공개 웹훅을 등록하고, 그 웹훅을 가리키는 도구를 Marinara의 **Library → Custom tools**(라이브러리 → 사용자 지정 도구) 페이지에 만들고, 활성화된 도구를 모두 담은 **Home Assistant** 에이전트를 만들고, 아래에서 설명하는 엔티티를 만듭니다.
 
 ## 채팅에 에이전트 추가하기
 
@@ -160,7 +160,7 @@ Marinara가 실행 중인지, **Host**와 **Port**가 Marinara가 수신 중인 
 
 ### Functions에 도구가 나타나지 않습니다
 
-**Marinara Sync HA Tools**를 누르거나 Home Assistant를 다시 시작한 다음 Presets 패널의 **Functions** 탭을 확인하세요.
+**Marinara Sync HA Tools**를 누르거나 Home Assistant를 다시 시작한 다음 채팅에서 **Chat Settings → Function Calling → Add Functions**(채팅 설정 → 기능 호출 → 함수 추가)를 확인하세요.
 
 ### 채팅에 Home Assistant 에이전트가 없습니다
 
@@ -176,7 +176,7 @@ http://<homeassistant-ip>:8123/api/webhook/<webhook-id>
 
 ## 제거하기
 
-Home Assistant의 **Settings → Devices & Services → Marinara Engine**에서 연동을 삭제하세요. 그러면 엔티티가 사라집니다. Marinara의 **Functions** 섹션에 있는 도구와 **Home Assistant** 에이전트는 남습니다. 더 이상 필요 없다면 Marinara에서 직접 삭제하세요.
+Home Assistant의 **Settings → Devices & Services → Marinara Engine**에서 연동을 삭제하세요. 그러면 엔티티가 사라집니다. Marinara의 **Library → Custom tools** 페이지에 있는 도구와 **Home Assistant** 에이전트는 남습니다. 더 이상 필요 없다면 Marinara에서 직접 삭제하세요.
 
 ## 관련 가이드
 

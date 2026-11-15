@@ -2,7 +2,7 @@
 
 在 Conversation(对话模式) 聊天中，与角色玩 UNO、Chess(国际象棋)、Poker(扑克)、8-Ball Pool(美式八球)、Tic-Tac-Toe(井字棋) 和 Rock-Paper-Scissors(石头剪刀布)。Marinara 负责发牌或摆好棋盘，执行每一条规则，并让每个入座的角色以其角色的口吻讲述自己的走法。你游戏时，消息框上方会显示一块实时棋盘。
 
-每款游戏都是可选包。从 **Agents → Agent Organizer**(智能体管理器) 安装你想要的游戏；如果目录提示重启，请重启 Marinara。未安装的游戏没有斜杠命令，不会出现在游戏选择器中，它的 **Commands** 开关也会保持隐藏。
+每款游戏都是可选包。从 **Library → Agents**(资料库 → 智能体) 安装你想要的游戏；如果目录提示重启，请重启 Marinara。未安装的游戏没有斜杠命令，不会出现在游戏选择器中，它的 **Commands** 开关也会保持隐藏。
 
 适用于所有游戏的规则：
 
@@ -108,7 +108,6 @@
 
 提前结束游戏会删除其状态，并且不记录任何赢家。
 
-<a id="let-characters-start-games-on-their-own"></a>
 ## 让角色自己发起游戏
 
 打开 **Chat Settings → Agents → Commands**，或在创建聊天时使用 **Automation**(自动化) 步骤。总开关 **Commands** 管控所有由角色执行的动作，包括桌游、自拍和通话。关闭它后，角色不会自行发起任何事项。

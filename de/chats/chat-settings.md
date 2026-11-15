@@ -42,7 +42,7 @@ Welche Abschnitte du siehst, hängt vom Chat-Modus ab. Den Abschnitt **Impersona
 - **Agent activity** (Agentenaktivität): Zeigt, was Agenten getan haben. Tracker neu ausführen, Agenten erneut versuchen oder stoppen, Tracker leeren. Siehe [Agent activity](../roleplay/getting-started.md#agent-activity). (Roleplay, mit eingeschalteten Agenten oder Advanced Memory.)
 - **Author's Notes** (Autorennotizen): Eine Notiz, die das Modell in jedem Zug liest. Siehe [Author's Notes](../roleplay/getting-started.md#authors-notes). (Roleplay.)
 - **Background** (Hintergrund): Das Hintergrundbild des Chats. (Roleplay, Game.)
-- **Gallery** (Galerie): Die Bilder und Videos des Chats. Siehe [Szenen-Hintergründe und die Gallery](../media/scene-backgrounds.md).
+- **Galerie**: Die Bilder und Videos des Chats. Siehe [Die Chat-Galerie](chat-gallery.md).
 - **Widgets**: Welche HUD-Widgets im Spiel erscheinen. (Game.)
 - **Impersonate**: Einstellungen für den Befehl `/impersonate`. (Roleplay.)
 - **Memory Recall**: Erinnert sich an frühere Teile des Chats. Siehe [Memory Recall und Chat-Zusammenfassungen](../agents/memory.md). (Nicht in der Lite-Version.)
@@ -100,10 +100,10 @@ Fenster bleiben im Chatbereich. Ein Fenster oder eine Schaltfläche kann neben d
 
 Diese Schaltflächen sitzen in der Titelleiste.
 
-- **Help** (das **?**) blendet Beschriftungen ein, die die Bedienelemente des Chats erklären. Am Telefon schließt es zuerst Chat Settings. Zum Ausblenden schaltest du **Settings → General → App Behavior → Hide chat Help button** ein.
+- **Help** (das **?**) blendet Beschriftungen ein, die die Bedienelemente des Chats erklären. Am Telefon schließt es zuerst Chat Settings. Zum Ausblenden schaltest du **Settings → General → Confirmations & Help → Hide chat Help button** ein.
 - **Reset View** (Ansicht zurücksetzen, der kreisförmige Pfeil) fragt nach einer Bestätigung und stellt dann die Ausgangsanordnung dieses Chats wieder her: Herausgelöste Abschnitte kehren zurück, und Fenstergrößen, Positionen, Anheftungen und Sperren werden zurückgesetzt.
 - **Favorite layout** (Lieblingsanordnung, der Stern) speichert diese Anordnung für neue Chats. Siehe [Eine Anordnung für neue Chats wählen](#choosing-a-layout-for-new-chats).
-- **Tracker Panel** (der Würfel) schaltet das Panel in einem Roleplay-Chat mit Agenten oder Advanced Memory ein und aus. Am Computer öffnet es sich neben dem Chat. Am Telefon oder Tablet öffnet es eine verschiebbare Schaltfläche. Der Würfel ändert auch die Einstellung Tracker Panel unter **Settings → Appearance**.
+- **Tracker Panel** (der Würfel) schaltet das Panel in einem Roleplay-Chat mit Agenten oder Advanced Memory ein und aus. Am Computer öffnet es sich neben dem Chat. Am Telefon oder Tablet öffnet es eine verschiebbare Schaltfläche. Der Würfel ändert auch die Einstellung Tracker Panel unter **Settings → Roleplay → Tracker Panel**.
 
 Ist das Tracker Panel ausgeblendet, nutzen die Tracker am Computer das [Trackers-Fenster](../roleplay/hud-and-trackers.md#the-trackers-window). Ist neben deinen Nachrichten wenig Platz, erscheint es zunächst als kleine Schaltfläche **Trackers**. Mit dem Würfel blendest du das Tracker Panel wieder ein.
 
@@ -165,7 +165,7 @@ Nach einem Update von einer älteren Version ist deine bisherige Anordnung der T
 
 ## Das Aussehen der Chat-Fenster ändern
 
-Öffne **Settings → Appearance → App** und scrolle zu **Chat widget style** (Chat-Widget-Stil) unten in **App Style** (App-Stil). **Default** (Standard) behält das Marinara-Aussehen bei. **Dottore** nutzt Eisblau, helles Metall und abgeschrägte Ecken. **Prof. Mari** nutzt Edelsteinblau, warmes Gold und bogenförmige Rahmen. Beide folgen dem hellen und dunklen Modus und gestalten die verschiebbaren Schaltflächen, Fenster und Abschnitte in allen drei Chat-Modi.
+Öffne **Settings → Appearance → Chat Buttons & Windows** und such **Chat widget style** (Chat-Widget-Stil). **Default** (Standard) behält das Marinara-Aussehen bei. **Dottore** nutzt Eisblau, helles Metall und abgeschrägte Ecken. **Prof. Mari** nutzt Edelsteinblau, warmes Gold und bogenförmige Rahmen. Beide folgen dem hellen und dunklen Modus und gestalten die verschiebbaren Schaltflächen, Fenster und Abschnitte in allen drei Chat-Modi.
 
 - Mit **Font** (Schrift), **Shape** (Form) und drei Farbwählern unter den Presets mischst du das Aussehen. In Marinara installierte Schriften erscheinen in der Schriftliste. Wählst du ein Preset erneut, setzt es Schrift, Form und eigene Farben zurück.
 - **Button size (px)** legt die Größe verschiebbarer Chat-Schaltflächen fest, von 32 bis 96. Ein leeres Feld behält den Standard bei.

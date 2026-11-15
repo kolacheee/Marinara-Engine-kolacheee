@@ -1,6 +1,6 @@
 # 원격 접근: 로그인과 IP 허용 목록
 
-이 가이드에서는 휴대폰, 노트북, Docker 컨테이너처럼 다른 기기에서 Marinara Engine에 접근하는 방법을 설명합니다. 주된 선택지는 로그인입니다. IP 허용 목록, 로그인 프록시, HTTPS, Admin Access(관리자 접근), "save blocked" CSRF 메시지도 함께 다룹니다. 여기 나오는 설정은 거의 전부 앱이 아니라 서버의 `.env` 파일에 있습니다.
+이 가이드에서는 휴대폰, 노트북, Docker 컨테이너처럼 다른 기기에서 Marinara Engine에 접근하는 방법을 설명합니다. 주된 선택지는 로그인입니다. IP 허용 목록, 로그인 프록시, HTTPS, 관리자 시크릿, "save blocked" CSRF 메시지도 함께 다룹니다. 여기 나오는 설정은 거의 전부 앱이 아니라 서버의 `.env` 파일에 있습니다.
 
 이 가이드에서 반복해서 쓰는 용어를 먼저 정리합니다.
 
@@ -24,7 +24,7 @@
 
 > **참고:** Docker로 설치한 경우에는 이 방법이 통하지 않습니다. Tailscale 트래픽은 Docker 게이트웨이를 거쳐 컨테이너에 도착하므로, Marinara는 그 트래픽이 Tailscale에서 왔다는 것을 알 수 없습니다. 먼저 로그인을 설정한 다음([선택지 1](#option-1-login-recommended)), 포트를 `127.0.0.1` 밖으로 공개하세요.
 
-원격 기기에서 백업, 가져오기, 업데이트를 비롯한 위험한 작업을 하려면 여전히 관리자 시크릿이 필요합니다. [Admin Access와 권한이 필요한 작업](#admin-access-and-privileged-actions)을 참고하세요.
+원격 기기에서 백업, 가져오기, 업데이트를 비롯한 위험한 작업을 하려면 여전히 관리자 시크릿이 필요합니다. [관리자 시크릿과 권한이 필요한 작업](#the-admin-secret-and-privileged-actions)을 참고하세요.
 
 ## Marinara가 기본적으로 차단하는 것
 
@@ -261,9 +261,9 @@ SSL_KEY=/path/to/key.pem
 
 `SSL_CERT`와 `SSL_KEY`를 설정하려면 먼저 인증서와 키가 있어야 합니다. 로컬에서 쓸 때는 `mkcert`, 공개 도메인에는 `certbot` 같은 도구로 만들 수 있습니다. 파일이 없거나 읽을 수 없으면 서버가 시작하다가 멈추고, 어떤 경로를 찾아봤는지 정확히 알려 줍니다.
 
-<a id="admin-access-and-privileged-actions"></a>
+<a id="the-admin-secret-and-privileged-actions"></a>
 
-## Admin Access와 권한이 필요한 작업
+## 관리자 시크릿과 권한이 필요한 작업
 
 특히 민감한 작업이 있습니다. 데이터 삭제, 백업 생성과 다운로드, 프로필 가져오기와 내보내기, 테마와 에이전트 설치, Local Model 런타임 설치가 그렇습니다. 이런 작업에는 위에서 고른 접근 방식과 별개로, 관리자 시크릿이라고 부르는 공유 비밀 문자열이 따로 필요합니다.
 
@@ -273,9 +273,9 @@ SSL_KEY=/path/to/key.pem
 
 ### 앱에서 관리자 시크릿 만들기
 
-1. Marinara를 실행하는 컴퓨터에서 **Settings**(설정)를 열고 **Advanced**(고급) 탭을 연 다음 **Admin Access**(관리자 접근) 항목으로 이동하세요.
+1. Marinara를 실행하는 컴퓨터에서 **Settings**(설정)를 열고 **Advanced**(고급) 탭을 연 다음 **Security**(보안) 항목으로 이동하세요.
 2. **Make admin secret**(관리자 시크릿 만들기)을 클릭하세요. Marinara는 새 시크릿을 한 번만 보여 주고 이 브라우저에 저장합니다.
-3. 각 원격 기기에서 **Settings** → **Advanced** → **Admin Access**를 열고 입력란에 시크릿을 입력한 다음 **Save**(저장)를 클릭하세요. 대소문자, 공백, 대시는 상관없습니다.
+3. 각 원격 기기에서 **Settings** → **Advanced** → **Security**를 열고 입력란에 시크릿을 입력한 다음 **Save**(저장)를 클릭하세요. 대소문자, 공백, 대시는 상관없습니다.
 
 이미 시크릿이 있는 기기도 시크릿을 만들 수 있습니다. 로그인만 한 기기는 만들 수 없습니다. 이렇게 하면 로그인을 도용당하더라도 위험한 작업까지 빼앗기지 않습니다.
 
@@ -291,11 +291,11 @@ Docker에서는 브라우저가 Docker 네트워크를 거쳐 Marinara에 접속
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. 원격 기기에서 **Settings** → **Advanced** → **Admin Access**를 여세요.
+2. 원격 기기에서 **Settings** → **Advanced** → **Security**를 여세요.
 3. 같은 값을 입력란(플레이스홀더에 **ADMIN_SECRET**이 표시됩니다)에 붙여넣고 **Save**를 클릭하세요.
 4. **Admin secret saved for this browser** 메시지가 표시됩니다.
 
-`.env`의 `ADMIN_SECRET`은 앱에서 만든 시크릿보다 우선합니다. 이 값이 설정되어 있는 동안에는 **Admin Access**에 그 사실이 표시되며, 시크릿은 `.env`에서만 바꿀 수 있습니다.
+`.env`의 `ADMIN_SECRET`은 앱에서 만든 시크릿보다 우선합니다. 이 값이 설정되어 있는 동안에는 **Security**에 그 사실이 표시되며, 시크릿은 `.env`에서만 바꿀 수 있습니다.
 
 ### 알아 둘 점
 

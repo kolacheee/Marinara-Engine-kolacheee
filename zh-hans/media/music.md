@@ -6,7 +6,7 @@
 
 **Music DJ** 是一个可选的可下载智能体。智能体是在聊天后台运行的帮手。每条回复之后，它可以读出场景的情绪，播放相配的音乐。
 
-开始之前：打开 **Agents**(智能体)，选择 **Agent Organizer**(智能体管理器)，安装 **Music DJ**。装好后它默认是关闭的，要像其他智能体一样为聊天开启。它可以用在 Roleplay(角色扮演) 聊天里，在 Game Mode 里通过一个单独的开关使用（[Music DJ 在 Game Mode 中的用法](#music-dj-in-game-mode)），在 Conversation 里则通过 **Music**(音乐) 命令使用（[Conversation 的 Music 命令](#the-conversation-music-command)）。
+开始之前：打开 **Library → Agents**(资料库 → 智能体)，从 **Available**(可用) 安装 **Music DJ**。装好后它默认是关闭的，要像其他智能体一样为聊天开启。它可以用在 Roleplay(角色扮演) 聊天里，在 Game Mode 里通过一个单独的开关使用（[Music DJ 在 Game Mode 中的用法](#music-dj-in-game-mode)），在 Conversation 里则通过 **Music**(音乐) 命令使用（[Conversation 的 Music 命令](#the-conversation-music-command)）。
 
 它可以从三种来源播放。
 
@@ -18,7 +18,7 @@
 
 当前生效的来源会以一个小小的 **Music Player**(音乐播放器) 固定在顶栏里。在手机和窄窗口下，它会变成一个可以拖动的圆形浮动小组件。
 
-Music DJ 的设置集中在一个地方。打开右侧的 **Agents** 面板，再打开 **Music DJ**。也可以点迷你播放器上的齿轮图标（提示文字为 **Music DJ setup**）。
+Music DJ 的设置集中在一个地方。打开 **Library → Agents**，再打开 **Music DJ**。也可以点迷你播放器上的齿轮图标（提示文字为 **Music DJ setup**）。
 
 ### 选择音乐来源
 
@@ -124,7 +124,7 @@ Music DJ 使用它找到的第一个文件夹：先是这个聊天的文件夹�
 
 ## 使用音乐播放器
 
-**Music Player** 在电脑上是顶栏里的一个小胶囊，在手机上是可以拖动的小组件。要显示或隐藏它，打开 **Settings → General → App Behavior**(设置 → 常规 → 应用行为)，切换 **Music Player**。它默认开启。开着但没装 Music DJ 时，播放器会显示 **Download Music DJ Agent to configure**，并提供一个 **Agent Organizer** 按钮。
+**Music Player** 在电脑上是顶栏里的一个小胶囊，在手机上是可以拖动的小组件。要显示或隐藏它，打开 **Settings → General → Extras**(设置 → 常规 → 附加功能)，切换 **Music Player**。它默认开启。开着但没装 Music DJ 时，播放器会显示 **Download Music DJ Agent to configure**，并提供一个 **Agent Organizer** 按钮。
 
 在全新的配置里，来源一开始是 **YouTube**。可以用播放器上的圆形来源切换按钮（提示文字为“Switch to ... player”）、编辑器里的 **Music Player** 按钮，或某个聊天的 **Music DJ** 设置来更换。
 
@@ -166,7 +166,7 @@ Game Mode 有自己来自 Game Assets 的背景音乐。想改用 Music DJ，就
 
 ## 故障排查
 
-- **迷你播放器不见了**：在 **Settings → General → App Behavior** 里打开 **Music Player**。
+- **迷你播放器不见了**：在 **Settings → General → Extras** 里打开 **Music Player**。
 - **Spotify 什么都不播放**：播放需要 Spotify Premium 和一个活动中的 Spotify 设备。在某台设备上打开 Spotify 客户端，或者在电脑上点击 **Enable Marinara player**。
 - **在另一台机器上 Spotify 登录窗口失败**：用“Browser couldn't reach the callback?”粘贴框，或者在服务器上设置 `SPOTIFY_REDIRECT_URI`。
 - **YouTube 搜索失败**：确认项目已启用 **YouTube Data API v3**，并且密钥没有按 HTTP referrer 限制。如果用满了每日配额，第二天再试，或者换一个密钥。

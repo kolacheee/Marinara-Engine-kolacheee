@@ -14,7 +14,7 @@ ComfyUI를 설치하고, 워크플로에 필요한 체크포인트와 사용자 
 
 ## Marinara 연결 만들기
 
-1. **Connections**(연결)를 클릭한 다음 **Add**(추가)를 클릭하세요. **Add account**(계정 추가) 창의 **Images & video**(이미지 및 동영상) 아래에서 로컬 서버라면 **ComfyUI**를, RunPod 엔드포인트라면 **RunPod Serverless (ComfyUI)**를 고르세요.
+1. **Library → Connections**(라이브러리 → 연결)를 열고 **Add connection**(연결 추가)을 클릭하세요. **Image**(이미지) 탭에서 로컬 서버라면 **ComfyUI**를, RunPod 엔드포인트라면 **RunPod Serverless (ComfyUI)**를 고르세요.
 2. 로컬 ComfyUI라면 주소(`http://127.0.0.1:8188`)를 입력하세요. ComfyUI 앞에 있는 프록시가 요구하지 않는 한 API 키는 필요 없습니다([인증 프록시 사용하기](#use-an-authenticated-proxy) 참고). **ComfyUI workflow (optional)**(ComfyUI 워크플로, 선택 사항) 입력란을 비워 두면 Marinara가 내장된 기본 텍스트-이미지 워크플로를 씁니다.
 3. RunPod이라면 API 키와 **RunPod endpoint ID**(RunPod 엔드포인트 ID)를 입력하세요. 이때는 사용자 지정 워크플로가 반드시 필요합니다.
 4. 이미지 모델에서 **Local image defaults**(로컬 이미지 기본값)를 설정하세요. 여기서 정한 값이 워크플로 안의 대응되는 플레이스홀더를 대신합니다.

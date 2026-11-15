@@ -29,7 +29,7 @@
 |---|---|
 | `/help` | 모든 슬래시 명령어를 보여 줍니다. |
 | `/send` | 답변을 요청하지 않고 페르소나로 메시지를 게시합니다. **Send**와 마찬가지로 매크로가 채워집니다. 형식은 `/send [message]`입니다. |
-| `/continue` | 새 메시지 없이 마지막 AI 답변에 글을 더 붙입니다. 별칭은 `/cont`입니다. **Settings → General → Responses → Add a new line before /continue text**(설정 → 일반 → 응답 → /continue 텍스트 앞에 새 줄 추가)는 이어 쓴 글이 빈 줄 다음에서 시작할지, 끊긴 지점에서 바로 시작할지 정합니다. |
+| `/continue` | 새 메시지 없이 마지막 AI 답변에 글을 더 붙입니다. 별칭은 `/cont`입니다. **Settings → Chatting → Responses → Add a new line before /continue text**(설정 → 채팅 중 → 응답 → /continue 텍스트 앞에 새 줄 추가)는 이어 쓴 글이 빈 줄 다음에서 시작할지, 끊긴 지점에서 바로 시작할지 정합니다. |
 | `/goto` | 채팅을 지정한 번호의 메시지로 스크롤합니다. 별칭은 `/jump`, `/scroll`입니다. 형식은 `/goto [number]`입니다. |
 | `/hide` | 이후 턴에서 모델이 메시지를 보지 못하게 숨깁니다. 형식은 `/hide [range] [name (optional)]`입니다. |
 | `/unhide` | 전체 숨김 처리한 메시지를 되돌립니다. 형식은 `/unhide [range]`입니다. |

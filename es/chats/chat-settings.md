@@ -42,7 +42,7 @@ Las secciones que ves dependen del modo del chat. La sección **Impersonate** se
 - **Agent activity** (Actividad de los agentes): muestra lo que hicieron los agentes. Vuelve a ejecutar trackers, reintenta o detén agentes y borra trackers. Consulta [Agent activity](../roleplay/getting-started.md#agent-activity). (Roleplay, con agentes o Advanced Memory activados.)
 - **Author's Notes** (Notas del autor): una nota que el modelo lee en cada turno. Consulta [Author's Notes](../roleplay/getting-started.md#authors-notes). (Roleplay.)
 - **Background** (Fondo): la imagen de fondo del chat. (Roleplay, Game.)
-- **Gallery** (Galería): las imágenes y los videos del chat. Consulta [Fondos de escena y la galería](../media/scene-backgrounds.md).
+- **Gallery** (Galería): las imágenes y los videos del chat. Consulta [La galería del chat](chat-gallery.md).
 - **Widgets**: qué widgets del HUD se muestran en el juego. (Game.)
 - **Impersonate**: ajustes del comando `/impersonate`. (Roleplay.)
 - **Memory Recall**: recuerda partes anteriores del chat. Consulta [Memory Recall y resúmenes del chat](../agents/memory.md). (No está en la versión Lite.)
@@ -100,10 +100,10 @@ Las ventanas permanecen dentro del área del chat. Una ventana o un botón puede
 
 Estos botones están en la barra de título.
 
-- **Help** (el **?**) muestra etiquetas que explican los controles del chat. En un teléfono, primero cierra Chat Settings. Para ocultarlo, activa **Settings → General → App Behavior → Hide chat Help button** (Configuración → General → Comportamiento de la app → Ocultar el botón de ayuda del chat).
+- **Help** (el **?**) muestra etiquetas que explican los controles del chat. En un teléfono, primero cierra Chat Settings. Para ocultarlo, activa **Settings → General → Confirmations & Help → Hide chat Help button** (Configuración → General → Confirmaciones y ayuda → Ocultar el botón de ayuda del chat).
 - **Reset View** (la flecha circular) pide confirmación y luego restaura el diseño inicial de este chat: las secciones separadas vuelven a su sitio y se restablecen los tamaños, las posiciones, las fijaciones y los bloqueos de las ventanas.
 - **Favorite layout** (la estrella) guarda esta disposición para los chats nuevos. Consulta [Elegir un diseño para chats nuevos](#choosing-a-layout-for-new-chats).
-- **Tracker Panel** (el dado) activa o desactiva el panel en un chat de Roleplay que use agentes o Advanced Memory. En una computadora se abre junto al chat. En un teléfono o una tableta, lo abre un botón móvil. También cambia la preferencia de Tracker Panel en **Settings → Appearance** (Configuración → Apariencia).
+- **Tracker Panel** (el dado) activa o desactiva el panel en un chat de Roleplay que use agentes o Advanced Memory. En una computadora se abre junto al chat. En un teléfono o una tableta, lo abre un botón móvil. También cambia la preferencia de Tracker Panel en **Settings → Roleplay → Tracker Panel** (Configuración → Roleplay → Panel de trackers).
 
 Cuando el Tracker Panel no se muestra, los trackers de computadora usan la [ventana Trackers](../roleplay/hud-and-trackers.md#the-trackers-window). Si hay poco espacio junto a tus mensajes, empieza como un botón pequeño **Trackers**. Usa el dado para volver a mostrar el Tracker Panel.
 
@@ -165,7 +165,7 @@ Después de actualizar desde una versión anterior, tu antigua disposición de b
 
 ## Cambiar el aspecto de las ventanas del chat
 
-Abre **Settings → Appearance → App** (Configuración → Apariencia → App) y desplázate hasta **Chat widget style** (Estilo de widgets del chat), al final de **App Style**. **Default** conserva el aspecto de Marinara. **Dottore** usa azules de hielo, metal claro y esquinas recortadas. **Prof. Mari** usa azules de piedras preciosas, dorado cálido y marcos arqueados. Ambos se adaptan al modo claro y oscuro y dan estilo a los botones móviles, las ventanas y las secciones de los tres modos de chat.
+Abre **Settings → Appearance → Chat Buttons & Windows** (Configuración → Apariencia → Botones y ventanas del chat) y busca **Chat widget style** (Estilo de widgets del chat). **Default** conserva el aspecto de Marinara. **Dottore** usa azules de hielo, metal claro y esquinas recortadas. **Prof. Mari** usa azules de piedras preciosas, dorado cálido y marcos arqueados. Ambos se adaptan al modo claro y oscuro y dan estilo a los botones móviles, las ventanas y las secciones de los tres modos de chat.
 
 - **Font** (Fuente), **Shape** (Forma) y tres selectores de color debajo de los presets combinan el aspecto. Las fuentes instaladas en Marinara aparecen en la lista de fuentes. Elegir de nuevo un preset restablece la fuente, la forma y los colores personalizados.
 - **Button size (px)** (Tamaño del botón en píxeles) define el tamaño de los botones móviles del chat, de 32 a 96. Un campo vacío conserva el valor predeterminado.

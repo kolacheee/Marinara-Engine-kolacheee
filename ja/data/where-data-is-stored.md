@@ -50,7 +50,7 @@ Marinaraは、保存したAPIキーを暗号化します。そのためのキー
 
 ## Androidからのデータのコピー
 
-Androidでは、データフォルダーはroot権限なしでは手が届かないアプリのストレージにあるため、コピーできません。**Settings → Advanced → Backup & Export → Download Backup**を使ってください。`.zip`には、`.encryption-key`ファイルが存在すれば含まれます。[Marinaraのバックアップと復元](backup-and-restore.md)を参照してください。
+Androidでは、データフォルダーはroot権限なしでは手が届かないアプリのストレージにあるため、コピーできません。**Settings → Data → Backup & Restore → Download Backup**を使ってください。`.zip`には、`.encryption-key`ファイルが存在すれば含まれます。[Marinaraのバックアップと復元](backup-and-restore.md)を参照してください。
 
 自動バックアップは、同じアプリのストレージに保存されます。アプリをアンインストールしたりリセットしたりすると、実データと一緒に消えることがあります。コピーを別の場所にも置いてください。
 

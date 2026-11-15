@@ -22,7 +22,7 @@
 2. VRAM(그래픽 카드의 메모리)이 충분한 GPU. 8 GB 카드라면 480p, 키프레임 1개로 첫 테스트를 할 수 있습니다.
 3. 편집 가능한 `ltx-director-simple` 워크플로(또는 ComfyUI에서 끝까지 실행되는 동등한 LTX 2.3 이미지-투-비디오 그래프)와 그 API 형식 내보내기 파일인 `ltx-director-simple-api`.
 4. 첫 프레임 삽화를 만들 Marinara의 이미지 계정.
-5. **Agents → Agent Organizer**(에이전트 → Agent Organizer)에서 다운로드하고 **Chat Settings → Agents**(채팅 설정 → 에이전트)에서 해당 게임에 켠 **Storyboard** 에이전트. [스토리보드 에이전트 가이드](storyboard.md)를 참고하세요.
+5. **Library → Agents**(라이브러리 → 에이전트)에서 다운로드하고 **Chat Settings → Agents**(채팅 설정 → 에이전트)에서 해당 게임에 켠 **Storyboard** 에이전트. [스토리보드 에이전트 가이드](storyboard.md)를 참고하세요.
 
 편집용 워크플로와 API 내보내기 파일은 서로 다른 파일입니다. ComfyUI에서 `ltx-director-simple`을 열고, ComfyUI Manager가 누락되었다고 알려 주는 사용자 지정 노드를 모두 설치한 다음, 그래프를 그 자리에서 테스트하세요. Marinara에는 `ltx-director-simple-api`를 가져오세요. 노드나 모델을 바꿀 때마다 그래프를 API 형식으로 다시 내보내고 Marinara 계정에 저장된 JSON을 교체하세요. 일반 비주얼 편집기용 워크플로를 Marinara에 붙여넣지 마세요.
 
@@ -83,7 +83,7 @@ Marinara는 `%length_s%`, `%global_prompt%`, `%local_prompts%`, `%segment_length
 
 ## 동영상 계정 만들기
 
-1. **Settings → Connections**(설정 → 연결)를 여세요.
+1. **Library → Connections**(라이브러리 → 연결)를 여세요.
 2. **Add account**(계정 추가)를 클릭하고 **Video Generation**(동영상 생성) 계정을 고르세요.
 3. **ComfyUI**를 고르세요.
 4. **Base URL**(기본 URL)을 입력하세요. ComfyUI가 같은 컴퓨터에서 돌아간다면 보통 `http://127.0.0.1:8188`입니다.

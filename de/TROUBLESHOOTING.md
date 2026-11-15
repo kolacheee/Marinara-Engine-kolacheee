@@ -38,9 +38,32 @@ Weitere Ursachen:
 - **Eigener Name für diesen Computer.** Ein Name, der in `/etc/hosts` auf `127.0.0.1` zeigt, zählt als weitergeleitet. Verwende stattdessen `localhost`, `127.0.0.1`, den Hostnamen des Rechners oder einen `*.localhost`-Namen.
 - **Too many wrong passwords.** Warte 15 Minuten und melde dich dann an. Passwort vergessen? Führ `node scripts/reset-login.mjs` im Marinara-Ordner auf dem Computer aus, auf dem Marinara läuft. Unter Docker führst du `docker exec <container> node scripts/reset-login.mjs` aus. Auch nach einem Neustart des Servers kann das Gerät es erneut versuchen.
 - **Untrusted request host.** Bei einer öffentlichen Domain oder einer Domain hinter einem Reverse-Proxy trag ihren exakten Hostnamen in `TRUSTED_HOSTS` in der `.env` ein. Direkte IP-Adressen werden weiterhin akzeptiert.
-- **Riskante Aktionen blockiert** (Backups, Daten löschen, Updates) von diesem Gerät aus. Öffne auf dem Server-Rechner selbst **Settings → Advanced → Admin Access** und klick auf **Make admin secret** (Admin-Secret erstellen), oder setz `ADMIN_SECRET` in der `.env` des Servers. Tipp das Geheimnis auf dem anderen Gerät unter **Admin Access** ein und klick auf **Save** (Speichern).
+- **Riskante Aktionen blockiert** (Backups, Daten löschen, Updates) von diesem Gerät aus. Öffne auf dem Server-Rechner selbst **Settings → Advanced → Security** und klick auf **Make admin secret** (Admin-Secret erstellen), oder setz `ADMIN_SECRET` in der `.env` des Servers. Tipp das Geheimnis auf dem anderen Gerät unter **Admin Access** ein und klick auf **Save** (Speichern).
 
 Siehe [Fernzugriff](REMOTE_ACCESS.md) und die [Häufigen Fragen](FAQ.md). Wurdest du nach einem Update ausgesperrt, siehe [Ausgesperrt nach dem Update](REMOTE_ACCESS.md#locked-out-after-updating).
+
+## Die App ist auf einem Handy oder Tablet langsam
+
+Wenn du eine Seite zum ersten Mal öffnest, kann es einen Moment dauern, bis die Bilder und die Seite selbst geladen sind. Danach sollte die App schnell auf Tippen reagieren. Bleibt eine Aktion langsam:
+
+1. Öffne **Einstellungen → Erweitert → Fehlerbehebung** und schalte **Show tap timings** ein. Die Einstellung gilt nur für dieses Gerät.
+2. Nutze die App wie gewohnt. Ein kleines dunkles Feld unten links listet deine letzten Tippaktionen auf.
+3. Jede Zeile zeigt zuerst, worauf du getippt hast, dann `shown · smooth · longest frame · server`, alles in Millisekunden (ms, Tausendstelsekunden).
+
+| Messwert | Bedeutung |
+| --- | --- |
+| **shown** | Zeit bis zur ersten Änderung auf dem Bildschirm nach dem Tippen. |
+| **smooth** | Zeit, bis sich der Bildschirm nicht mehr verändert hat. Grün heißt, alles ist in Ordnung; über 400 wird der Wert rot, und du bemerkst die Wartezeit. |
+| **longest frame** | Der längste einzelne Ruckler währenddessen. |
+| **server** | Wie viele Anfragen das Tippen ausgelöst hat und wann die letzte fertig war. Ein Strich bedeutet, dass es keine gab. |
+
+Das kannst du versuchen:
+
+- Macht **server** den größten Teil von **smooth** aus, liegt die Wartezeit am Server oder Netzwerk, nicht an der Anzeige. Ein Server im selben WLAN ist schneller als einer, den du über das Internet erreichst.
+- Ist **smooth** hoch und steht bei **server** ein Strich, ist die Anzeige langsam. Schalte das Theme kurz aus (dreimal <kbd>Esc</kbd> oder `?safe` am Ende der Adresse) und tippe noch einmal auf dasselbe. Geht es deutlich schneller, ist das Theme die Ursache. Sag seinem Autor Bescheid oder lies [Ein Theme schnell halten](appearance/theme-author-guide.md#keeping-a-theme-fast).
+- Unter **Einstellungen → Erscheinungsbild → Effekte** findest du **Umgebungsanimationen & -effekte reduzieren** und **Reduzierte Paint-Effekte**. Beide sorgen auf langsameren Geräten für eine flüssigere Anzeige.
+
+Wenn du eine langsame Stelle meldest, füge die zugehörige Messzeile hinzu. Schalte **Show tap timings** danach wieder aus.
 
 ## Speichern blockiert oder Einstellungen bleiben nicht erhalten
 
@@ -116,7 +139,7 @@ Marinara verhindert offensichtliche Downgrades. Der Launcher überspringt ein Au
 
 Hast du aktualisiert und bist dann zu einer älteren Version zurückgekehrt, stell das Backup wieder her, das du vor dem Update angelegt hast. Siehe [Downgrade auf eine ältere Version](UPGRADING.md#downgrading-to-an-older-version). Die technischen Details folgen.
 
-Deine Daten haben jetzt Speicherformat 11. Die Formate 8, 9 und 10 fügen 3D-Avatar-Einstellungen (MMD, dann GLB und FBX) und die Verknüpfung von Verbindungen mit Konten hinzu. Format 11 speichert Personas als Charakterkarten. Ältere Builds können diese Daten nicht sicher lesen. Format 11 behält die ursprünglichen Persona-Dateien als `.pre-v11`-Kopien in `storage/tables/personas/`. Haben deine Daten Format 8 oder neuer erreicht, stell ein vollständiges Backup von vor diesem Upgrade wieder her, um einen älteren Build zu verwenden. Der folgende Befehl konvertiert nur ältere Chat-Dateilayouts. Ändere die Formatnummer nicht von Hand. Siehe [Downgrade auf eine ältere Version](UPGRADING.md#downgrading-to-an-older-version).
+Deine Daten haben jetzt Speicherformat 10. Die Formate 8, 9 und 10 fügen 3D-Avatar-Einstellungen (MMD, dann GLB und FBX) und die Verknüpfung von Verbindungen mit Konten hinzu, die ältere Builds nicht sicher lesen können. Haben deine Daten Format 8 oder neuer erreicht, stell ein vollständiges Backup von vor diesem Upgrade wieder her, um einen älteren Build zu verwenden. Der folgende Befehl konvertiert nur ältere Chat-Dateilayouts. Ändere die Formatnummer nicht von Hand. Siehe [Downgrade auf eine ältere Version](UPGRADING.md#downgrading-to-an-older-version).
 
 Bei Daten unter Format 8 konvertierst du das Chat-Dateilayout so:
 
@@ -226,7 +249,7 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 Das **Built-in model** (eingebautes Modell) läuft ohne API-Key auf deinem Computer. Manche Fehlermeldungen nennen es Sidecar. Die Einrichtung beschreibt [Eingebautes Modell einrichten](connections/local-model.md).
 
-- **Sidecar runtime install is disabled.** Auf deinem eigenen Computer setzt du `SIDECAR_RUNTIME_INSTALL_ENABLED=true` in der `.env`. Von einem anderen Gerät aus speicherst du zuerst dein Admin-Secret unter **Settings → Advanced → Admin Access**.
+- **Sidecar runtime install is disabled.** Auf deinem eigenen Computer setzt du `SIDECAR_RUNTIME_INSTALL_ENABLED=true` in der `.env`. Von einem anderen Gerät aus speicherst du zuerst dein Admin-Secret unter **Settings → Advanced → Security**.
 - **Modell-Download oder Einrichtung scheitert von einem anderen Gerät aus** (über eine Netzwerkadresse oder Docker). Dafür kann ebenfalls das Admin-Secret nötig sein. Auf deinem eigenen Computer nicht.
 - **Abweichende Größe oder SHA-256-Prüfsumme** bei einer mitgelieferten Datei von llama.cpp, MLX oder uv. Marinara hat die Datei abgelehnt, bevor sie verwendet wurde. Aktualisiere Marinara oder installier es neu und versuch es erneut. Entpack die Datei nicht, bearbeite sie nicht und umgeh die Prüfung nicht.
 
@@ -239,7 +262,7 @@ Das **Built-in model** (eingebautes Modell) läuft ohne API-Key auf deinem Compu
 1. Öffne **Chat Settings → Memory Recall** und prüf, ob **Enable Memory Recall** eingeschaltet ist.
 2. Öffne **Access memories for this chat**. Sieh dir unter **Memories for This Chat** den Status jedes Abschnitts an.
 3. **Waiting for vector** bedeutet, dass die Erinnerung noch verarbeitet wird. Warte und schreib dann weiter.
-4. **Embedding unavailable** bedeutet, dass keine Embedding-Quelle funktioniert. Richte ein Embedding-Konto ein oder lass das eingebaute Modell laden. Soll eine Quelle für jeden Chat gelten, wähl sie unter **Embeddings** im Bereich **Defaults** (Standardwerte) von **Connections** aus.
+4. **Embedding unavailable** bedeutet, dass keine Embedding-Quelle funktioniert. Richte ein Embedding-Konto ein oder lass das eingebaute Modell laden. Soll eine Quelle für jeden Chat gelten, wähl sie für die Aufgabe **Embeddings** im Kasten **Standardwerte** unter **Verbindungen** aus.
 
 Eine Erinnerung entsteht erst nach mindestens 5 neuen Nachrichten. Recall zeigt nur Erinnerungen, die eng zu deiner neuen Nachricht passen, und kann deshalb nichts liefern, obwohl Erinnerungen vorhanden sind.
 
@@ -266,12 +289,12 @@ Zusammenfassungen brauchen ein funktionierendes Konto für Text.
 
 ## Probleme mit herunterladbaren Agenten
 
-- **Katalog im Agent Organizer nicht verfügbar.** Der Computer, auf dem der Server läuft, und nicht nur dein Browser, muss den Katalog [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) über HTTPS erreichen. Installierte Agenten funktionieren offline weiter. Stell die Verbindung wieder her und klick dann auf **Refresh** (Aktualisieren) oder **Try again** (erneut versuchen).
+- **Der Agentenkatalog wird unter Library → Agents nicht geladen.** Der Computer, auf dem der Server läuft, und nicht nur dein Browser, muss den Katalog [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) über HTTPS erreichen. Installierte Agenten funktionieren offline weiter. Stell die Verbindung wieder her und klick dann auf **Refresh** (Aktualisieren) oder **Try again** (erneut versuchen).
 - **Eine installierte Karte oder ein installierter Anruf erscheint nicht.** Beende Marinara vollständig und starte es erneut. Diese Pakete bleiben bis zum nächsten Start im Zustand **Restart required**. Conversation-Spiele werden sofort aktiv. Ist die Installation fehlgeschlagen, lade den Katalog neu und prüf, ob das Spiel als bereit angezeigt wird. Ein Spiel unter **Commands** in den Einstellungen eines Chats hinzuzufügen, ist nur nötig, damit Charaktere es selbst starten können, nicht für seinen manuellen Slash-Befehl.
 - **Die erste Paket-Migration lässt sich nicht abschließen.** Lösch weder `data/capability-packages` noch deine Chat-Daten. Marinara versucht es beim nächsten Start erneut, und deine Auswahl in den Chats bleibt gespeichert.
 - **`data/capability-runtime-snapshots` oder `data/capability-packages/versions` ist groß.** Aufräumen ist nicht nötig. Marinara entfernt alte Kopien beim Start und behält von jedem Agenten die aktuelle und die vorherige Version.
 - **Ein Paket-Download wird abgelehnt.** Prüfsumme, Dateiliste, Marinara-Versionsbereich oder Archivpfade passen nicht zum offiziellen Katalog. Aktualisiere Marinara, lade den Katalog neu und versuch es erneut. Entpack ein Artefakt nicht von Hand in den Datenordner.
-- **Updates.** Agent-Updates werden nie beim Start eingespielt. Marinara fragt zuerst nach. **Not now** (Jetzt nicht) behält die installierte Version, und **Update** bleibt unter **Agents → Agent Organizer** verfügbar. Ein fehlgeschlagenes Update lässt die installierte Version an ihrem Platz. Eine Server-Laufzeit, die ihre Startprüfung nicht besteht, fällt auf die vorherige Version zurück.
+- **Updates.** Agent-Updates werden nie beim Start eingespielt. Marinara fragt zuerst nach. **Not now** (Jetzt nicht) behält die installierte Version, und **Update** bleibt unter **Library → Agents** verfügbar. Ein fehlgeschlagenes Update lässt die installierte Version an ihrem Platz. Eine Server-Laufzeit, die ihre Startprüfung nicht besteht, fällt auf die vorherige Version zurück.
 
 ## Probleme mit dem Card Browser
 
@@ -301,7 +324,7 @@ Starte Marinara danach neu und klick im Fenster für die Sprite-Generierung auf 
 
 Storyboards machen aus fertiger Erzählung Keyframe-Bilder und optional Clips. Siehe die [Anleitung zum Storyboard-Agenten](game/storyboard.md) und [Game Mode: Erste Schritte](game/getting-started.md).
 
-- Installier **Storyboard** über **Agents → Agent Organizer** und schalte dann **Enable Agents** (Agenten aktivieren) und **Enable Storyboards** (Storyboards aktivieren) für den Chat ein.
+- Installier **Storyboard** über **Library → Agents** und schalte dann **Enable Agents** (Agenten aktivieren) und **Enable Storyboards** (Storyboards aktivieren) für den Chat ein.
 - Keyframes brauchen ein Bildkonto. Clips brauchen zusätzlich ein Videokonto.
 - Game, automatisch: Öffne **Chat Settings → Agents → Storyboards** und prüf, ob **Automatic Storyboard Illustrations** eingeschaltet ist. Für Clips schaltest du **Automatic Storyboard Animations** ein.
 - Manuelles Szenenvideo: Öffne **Chat Settings → Gallery**, generier ein Bild oder lade eines hoch und nutz dann **Video** oder **Animate**. Sieh im Tab **Videos** nach.
@@ -322,7 +345,7 @@ Liefert das Modell fehlerhaftes JSON (strukturierten Text), öffnet Marinara das
 
 - **Charaktere sprechen in einem Anruf nicht.** Text to Speech (Sprachausgabe) ist nicht eingerichtet. Öffne **Connections → Text to Speech**, schalte es ein, wähl eine Quelle, trag deinen Key ein, such eine Stimme aus und speichere. Ein Charakter ohne Stimme erscheint nur als Text.
 - **Die Sprachausgabe bricht mit „No audio after N s“ ab.** Dein Sprachserver ist langsamer, als Marinara wartet, was bei einem lokalen Server auf einem Laptop häufig vorkommt. `N` ist dein aktuelles Zeitlimit. Erhöh **Request timeout (seconds)** unter **Connections → Text to Speech** oder in dem Audio-Konto, das die Meldung nennt. Siehe [Zeitlimit für Anfragen](media/tts-setup.md#request-timeout).
-- **Das Mikrofon funktioniert nicht.** Installier **Calls** über **Agents → Agent Organizer**. Öffne dann **Connections → Speech to text**, such unter **On this device** (auf diesem Gerät) nach **Local speech model**, wähl ein Whisper-Modell und klick auf **Download Whisper**. Firefox braucht das, weil ihm die Spracherkennung im Browser fehlt. Wenn du Calls deinstallierst, werden seine Whisper-Modelle gelöscht. Du kannst auch einen eigenen Server nutzen: Siehe [Einen eigenen Speech-to-Text-Server nutzen](conversation/calls.md#use-your-own-speech-to-text-server).
+- **Das Mikrofon funktioniert nicht.** Installier **Calls** über **Library → Agents**. Öffne dann **Connections → Speech to text**, such unter **On this device** (auf diesem Gerät) nach **Local speech model**, wähl ein Whisper-Modell und klick auf **Download Whisper**. Firefox braucht das, weil ihm die Spracherkennung im Browser fehlt. Wenn du Calls deinstallierst, werden seine Whisper-Modelle gelöscht. Du kannst auch einen eigenen Server nutzen: Siehe [Einen eigenen Speech-to-Text-Server nutzen](conversation/calls.md#use-your-own-speech-to-text-server).
 - **Local Whisper is disabled in Lite mode.** Das Lite-Image kann das lokale Sprachmodell nicht ausführen. Nutz eine vollständige Installation.
 
 ### Der Spotify-Login des Music DJ scheitert bei einer Remote- oder Netzwerkinstallation
@@ -358,7 +381,7 @@ Unter Linux, Android, in Containern und unter Windows räumt Marinara eine Lease
 
 ### Backup oder Export liefert 403
 
-Sitzungen auf demselben Computer können ohne Admin-Secret Backups anlegen. Anfragen von einem anderen Gerät, über eine Netzwerkadresse, aus Docker oder über einen Proxy oder Tunnel auf demselben Computer brauchen eines. Erstelle es auf dem Server-Rechner selbst unter **Settings → Advanced → Admin Access** oder setz `ADMIN_SECRET` auf dem Server, und speichere denselben Wert dann auf dem anderen Gerät unter **Admin Access**. Soll auch Loopback das Geheimnis verlangen, setz `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`. Ist `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false` gesetzt, bekommen weitergeleitete Besucher die lokale Ausnahme. Lass diese Option bei einem öffentlichen Proxy oder Tunnel eingeschaltet.
+Sitzungen auf demselben Computer können ohne Admin-Secret Backups anlegen. Anfragen von einem anderen Gerät, über eine Netzwerkadresse, aus Docker oder über einen Proxy oder Tunnel auf demselben Computer brauchen eines. Erstelle es auf dem Server-Rechner selbst unter **Settings → Advanced → Security** oder setz `ADMIN_SECRET` auf dem Server, und speichere denselben Wert dann auf dem anderen Gerät unter **Admin Access**. Soll auch Loopback das Geheimnis verlangen, setz `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`. Ist `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false` gesetzt, bekommen weitergeleitete Besucher die lokale Ausnahme. Lass diese Option bei einem öffentlichen Proxy oder Tunnel eingeschaltet.
 
 ### Import meldet, die Datei sei kein lesbares ZIP-Archiv
 
@@ -395,7 +418,7 @@ Von der APK verwaltete Termux-Installationen schützen localhost mit einem priva
 
 Ein Fehler, der den Ursprung `null` nennt, bedeutet, dass APK und Server ein älteres Paar bilden. Das lässt sich nicht durch Bearbeiten der `.env` beheben. Aktualisiere die APK und Marinara.
 
-Um einen Browser auf demselben Handy zu öffnen, tipp im Android-Launcher auf **Open in browser** (im Browser öffnen) und dann auf **Retry connection** (Verbindung erneut versuchen). Öffne ihn nach einem Serverneustart oder einer abgelaufenen Sitzung auf diesem Weg erneut. Zurück zum Launcher kommst du über **Settings → General → App Behavior → Open Android launcher (app or browser)**.
+Um einen Browser auf demselben Handy zu öffnen, tipp im Android-Launcher auf **Open in browser** (im Browser öffnen) und dann auf **Retry connection** (Verbindung erneut versuchen). Öffne ihn nach einem Serverneustart oder einer abgelaufenen Sitzung auf diesem Weg erneut. Zurück zum Launcher kommst du über **Settings → Appearance → Layout → Open Android launcher (app or browser)**.
 
 Ältere APKs melden sich unter `/android-login` mit dem Wert aus `cat ~/.marinara-engine/android-secret` an. Ein Browser-Link funktioniert einmal und läuft nach einer Minute ab, also öffne über den Launcher einen neuen.
 
@@ -422,7 +445,7 @@ Erlaub Termux in den Android-Einstellungen die Ausführung im Hintergrund und ni
 
 ### Marinara reagiert nicht mehr, bis Termux in den Vordergrund geholt wird
 
-Chats bleiben bei „Opening chat...“ hängen, die App meldet **Server unreachable**, die Kopie aus Support Diagnostics zeigt für die Server-Felder **Unreachable (request timed out)**, und alles läuft sofort wieder, sobald du Termux öffnest. Androids Cached-App-Freezer hat den Termux-Prozess angehalten. Das Handy nimmt die Verbindung an, aber der eingefrorene Server antwortet nie. Ein Wake-Lock verhindert das nicht. Das Sitzungslog zeigt für die eingefrorene Zeit eine Lücke in den Zeitstempeln, keinen Fehler.
+Chats bleiben bei „Opening chat...“ hängen, die App meldet **Server unreachable**, der Bericht **Copy Support Diagnostics** zeigt für die Server-Felder **Unreachable (request timed out)**, und alles läuft sofort wieder, sobald du Termux öffnest. Androids Cached-App-Freezer hat den Termux-Prozess angehalten. Das Handy nimmt die Verbindung an, aber der eingefrorene Server antwortet nie. Ein Wake-Lock verhindert das nicht. Das Sitzungslog zeigt für die eingefrorene Zeit eine Lücke in den Zeitstempeln, keinen Fehler.
 
 Nimm Termux von der Akkuoptimierung aus, erlaub ihm die Aktivität im Hintergrund, sperr Termux in der Übersicht der zuletzt genutzten Apps, falls dein Handy das unterstützt, und lass seine Benachrichtigung sichtbar. Friert es weiterhin ein, lass Termux im Vordergrund oder den Bildschirm an, solange du Marinara nutzt.
 
@@ -488,12 +511,12 @@ Windows, Android und andere nicht unterstützte Hosts verweigern die Ausführung
 
 ## Probleme mit Erweiterungen
 
-### External Extensions fehlt unter Addons
+### External Extensions fehlt unter Extensions
 
 Der Abschnitt bleibt verborgen, bis beide Sicherheitssperren offen sind.
 
 1. Setz `ENABLE_EXTERNAL_EXTENSIONS=true` in der `.env` des Hosts.
-2. Warte einen Moment, öffne dann **Settings → Advanced → Danger Zone**, scroll unter die Bedienelemente zum Löschen von Daten und schalte **Allow third-party extension imports** ein.
+2. Warte einen Moment, öffne dann **Settings → Advanced → Security** und schalte **Allow third-party extension imports** ein.
 
 Lässt sich der Schalter nicht bedienen, steht das Host-Flag noch auf false oder die App hat die Änderung noch nicht bemerkt. Prüf, ob du die aktive `.env` bearbeitet hast, wie unter [Server-Konfiguration](CONFIGURATION.md) beschrieben. Unter Docker ist das normalerweise `/app/data/.env`.
 
@@ -501,7 +524,7 @@ Solange eine der beiden Sicherheitssperren geschlossen ist, erscheinen Einträge
 
 ### Eine importierte Browser-Erweiterung erscheint, funktioniert aber nicht
 
-Öffne sie unter **Settings → Addons → External Extensions** und lies **Requested access** (angeforderter Zugriff). Ältere Pakete im Format `marinara.extension` v1 ohne Capabilities-Angabe zeigen **Full page access** (Vollzugriff auf die Seite). Bestätige nur genau den Hash, den du geprüft hast und dem du vertraust.
+Öffne sie unter **Library → Extensions → External Extensions** und lies **Requested access** (angeforderter Zugriff). Ältere Pakete im Format `marinara.extension` v1 ohne Capabilities-Angabe zeigen **Full page access** (Vollzugriff auf die Seite). Bestätige nur genau den Hash, den du geprüft hast und dem du vertraust.
 
 Ein Paket, das erneut mit einer leeren Capabilities-Liste exportiert wurde, gilt als sichere Sandbox-Erweiterung, und Code, der das DOM der Seite braucht, funktioniert dann nicht. Ergänze `full_page_access` nur dann in seinem Manifest, wenn du akzeptierst, dass der Code die gesamte Seite, den Browser-Speicher, Netzwerk-APIs und deine Sitzung erhält.
 
@@ -531,7 +554,7 @@ Verwende eine HTTPS-Adresse, melde dich an und lade nach einem Marinara-Update n
 
 ## Weitere Hilfe bekommen
 
-1. Öffne **Settings → Advanced → Message Tools** und schalte den **Debug mode** ein. Er schreibt Prompt und Antwort in die Server-Konsole.
+1. Öffne **Settings → Advanced → Troubleshooting** und schalte den **Debug mode** ein. Er schreibt Prompt und Antwort in die Server-Konsole.
 2. Notier dein Betriebssystem, deine Node.js-Version und den vollständigen Fehlertext aus der Konsole.
 3. Entfern API-Keys, Zugriffstokens, Admin-Secrets und private Chat-Inhalte, bevor du etwas teilst.
 

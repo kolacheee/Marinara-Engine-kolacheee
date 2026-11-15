@@ -1,53 +1,95 @@
-# Les arrière-plans en Roleplay
+# Des arrière-plans qui suivent l'histoire
 
-Un chat Roleplay affiche une image de scène en pleine page derrière tes messages. Tu peux laisser l'agent **Background** (arrière-plan) la choisir après chaque réponse, en créer une nouvelle à la main, ou fixer une image pour un seul chat. Quand l'image change, Marinara passe en fondu de l'ancienne à la nouvelle.
+Un chat Roleplay affiche une image de scène en pleine page derrière tes messages. Elle peut rester la même ou changer au fil de l'histoire : l'agent **Background** (arrière-plan) choisit parmi tes images, les lieux que tu épingles affichent toujours leur propre image, et les images de la galerie d'un personnage le suivent dans chaque chat. Quand l'image change, Marinara passe en fondu de l'ancienne à la nouvelle.
 
-La génération d'images n'est pas nécessaire. Sans compte de génération d'images, l'arrière-plan est une couleur unie et le chat fonctionne en texte.
+La génération d'images n'est nécessaire pour aucune de ces fonctions. Sans modèle d'images, tu choisis parmi les images que tu téléverses, et sans aucune image, l'arrière-plan est une couleur unie.
+
+## Les arrière-plans en bref
+
+| Tu veux | Utilise | Guide |
+| --- | --- | --- |
+| Une image derrière ce chat | **Fond du chat** | [Fixer un arrière-plan pour un seul chat](#set-a-background-for-one-chat) |
+| Que l'image change avec la scène | L'agent **Background** | [Laisser l'agent Background choisir](#let-the-background-agent-pick) |
+| Qu'un lieu ait toujours la même apparence | Un lieu épinglé | [Épingler un arrière-plan à un lieu](#pin-a-background-to-a-place) |
+| La chambre d'un personnage dans chaque chat où il figure | Un arrière-plan de galerie | [Des arrière-plans qui suivent un personnage](#backgrounds-that-follow-a-character) |
+| De nouvelles images pour de nouveaux lieux et de nouvelles conditions météo | L'agent **Illustrator** | [Arrière-plans créés par Illustrator](../media/scene-backgrounds.md) |
+| Téléverser, taguer et trier tes images, ou les flouter | La bibliothèque d'arrière-plans | [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md) |
+
+Quand l'histoire arrive quelque part, Marinara choisit dans cet ordre : une image épinglée à ce lieu dans ce chat, puis un arrière-plan de galerie qui porte le nom du lieu, puis le choix de l'agent Background. Illustrator ne crée une nouvelle image que si aucune ne convient. Quelle que soit l'image retenue, sa version météo s'affiche si elle en possède une pour les conditions météo de l'histoire.
 
 ## Fixer un arrière-plan pour un seul chat
 
-Sers-t'en pour garder une seule image derrière le chat ouvert, au lieu de laisser l'agent choisir. Cela ne modifie que ce chat.
+1. Ouvre le chat. Ouvre ensuite **Settings → Appearance → Backgrounds** (Paramètres → Apparence → Arrière-plans).
+2. Sous **Fond du chat**, clique sur **Parcourir la bibliothèque** et choisis une image.
 
-1. Ouvre le chat. Ouvre ensuite **Settings → Appearance** (Paramètres → Apparence) et repère **Backgrounds** (arrière-plans).
-2. Sous **Chat Background** (arrière-plan du chat), choisis une image téléversée ou l'un de tes arrière-plans issus des ressources de jeu.
+Cela ne modifie que ce chat. Pour revenir à l'arrière-plan par défaut, clique sur **Retirer** à côté de **Fond du chat**. Tu peux aussi en choisir un dans **Réglages du chat → Arrière-plan** dans le chat. Pas encore d'image ? Voir [Importer un arrière-plan](../appearance/chat-backgrounds.md#import-a-background).
 
-Tu vois l'image derrière tes messages. Pour revenir à l'arrière-plan par défaut, clique sur **Remove** (retirer) à côté de **Chat Background**.
+## Laisser l'agent Background choisir
 
-Pas encore d'image ? Téléverses-en une d'abord. Voir [Arrière-plans de chat](../appearance/chat-backgrounds.md).
+L'agent **Background** s'exécute après chaque réponse. Il lit la scène et choisit, parmi tous tes arrière-plans, l'image qui convient le mieux. Il ne choisit que des images que tu possèdes ; pour en créer de nouvelles, utilise Illustrator.
 
-## Laisser l'agent Background choisir l'arrière-plan
+1. Ouvre ton chat Roleplay et ouvre **Réglages du chat** avec le bouton de curseurs.
+2. Ouvre **Agents** et active **Enable Agents** (activer les agents).
+3. Ajoute l'agent **Background**.
 
-L'agent **Background** est un assistant qui travaille en parallèle des réponses. Après chaque réponse, il lit la scène en cours et choisit, parmi tous tes arrière-plans, l'image qui convient le mieux. Il ne choisit que des images existantes. C'est l'agent **Illustrator** (illustrateur) qui en crée de nouvelles automatiquement.
+L'arrière-plan change désormais tout seul quand l'histoire passe d'un lieu à l'autre. L'agent voit toutes les images de ta bibliothèque, y compris celles des dossiers, et utilise leurs noms et leurs tags pour choisir : des noms clairs et des tags de lieu l'aident donc.
 
-1. Ouvre ton chat Roleplay.
-2. Ouvre **Chat Settings** (réglages du chat) avec le bouton de curseurs dans le chat.
-3. Ouvre **Agents** et active **Enable Agents** (activer les agents).
-4. Ajoute l'agent **Background**.
+Si ça n'a pas marché : avec seulement un ou deux arrière-plans, l'agent continue de choisir ceux-là. Ajoutes-en d'autres à ta bibliothèque.
 
-L'arrière-plan change désormais tout seul quand l'histoire passe d'un lieu à l'autre.
+## Épingler un arrière-plan à un lieu
 
-Si ça n'a pas marché : avec seulement un ou deux arrière-plans, l'agent continue de choisir ceux-là. Ajoutes-en d'autres à ta bibliothèque. Voir [Arrière-plans de chat](../appearance/chat-backgrounds.md).
+Utilise cette fonction quand un lieu doit toujours avoir la même apparence : la chambre de John affiche toujours `john-bedroom`, et ta propre chambre affiche toujours `my-bedroom`. Quand l'histoire arrive dans un lieu épinglé, son image s'affiche, quel que soit le choix qu'aurait fait l'agent Background.
 
-## Générer un arrière-plan à la main
+1. Ouvre **Réglages du chat** avec le bouton de curseurs dans le chat, puis ouvre **Arrière-plan**.
+2. Sous **Pinned places** (lieux épinglés), clique sur **Add place** (ajouter un lieu).
+3. Clique sur l'image vide et choisis l'arrière-plan. Saisis le lieu tel que l'histoire l'écrit, par exemple `John's bedroom`.
+4. Facultatif : en dessous, ajoute d'autres noms que l'histoire pourrait utiliser, séparés par des virgules, par exemple `John's room, the master bedroom`.
 
-Marinara construit un prompt d'image – le texte que Marinara envoie à l'IA – à partir de la scène (genre, cadre, lieu, météo et moment de la journée), puis crée un nouvel arrière-plan.
+Plus rapide : quand l'histoire se déroule dans un lieu et que la bonne image est affichée, clique sur **Pin this picture to "John's bedroom"** (épingler cette image à la chambre de John).
 
-Avant de commencer : installe l'agent **Illustrator** et attribue-lui un compte de génération d'images, ou marque un compte de génération d'images comme compte par défaut. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md). Tu n'as pas besoin d'ajouter Illustrator au chat.
+Les images épinglées ont besoin de savoir où se déroule l'histoire : elles utilisent donc le lieu indiqué par l'agent **World State** (état du monde), ou par World Maps. Le bas de la liste affiche **Story is at** et le lieu, et **Here** marque l'image épinglée utilisée.
 
-1. Ouvre **Chat Settings** avec le bouton de curseurs dans le chat, et déplie **Gallery** (galerie).
-2. Clique sur **Background**. Le bouton affiche **Generating...** pendant le traitement, et la galerie indique "Illustrator is generating a background image for this scene."
-3. Attends la fin. La nouvelle image rejoint ta bibliothèque d'arrière-plans et s'applique à la scène.
+### Comment les lieux sont reconnus
 
-La génération manuelle utilise le compte d'images de l'agent Illustrator, puis ton compte de génération d'images par défaut. Elle fonctionne en Roleplay et en Game Mode, pas en mode Conversation.
+- Le nom le plus précis l'emporte. `John's bedroom` et `{{user}}'s bedroom` ne se mélangent jamais, et une image simplement épinglée à `bedroom` ne sert que pour les chambres auxquelles personne n'a épinglé d'image.
+- Un ou deux mots intercalés ne gênent pas la reconnaissance : "John's guest bedroom" correspond à `John's bedroom`, sauf si une autre image épinglée nomme exactement ce lieu. La correspondance ne franchit jamais une virgule ni le nom d'un autre propriétaire : "John's house, Mara's bedroom" n'est donc pas la chambre de John.
+- `{{user}}` est le nom de ton persona et `{{char}}` celui de n'importe quel personnage du chat : `{{user}}'s bedroom` correspond donc à "Alyssa's bedroom".
+- "My" et "our" renvoient à la personne qui a écrit le message. Quand la réponse de John situe l'histoire dans "my bedroom", il s'agit de sa chambre ; "your bedroom" dans sa réponse désigne la tienne. Dans ton propre message, "your bedroom" désigne celle du personnage quand le chat n'en compte qu'un.
+- Les majuscules, les accents et les apostrophes ne comptent pas. Les noms correspondent à des mots entiers : `John` ne correspond jamais à "Johnson".
+- Avec **World Maps**, choisis plutôt le lieu dans la liste **World Maps place** (lieu World Maps). Un bâtiment épinglé couvre aussi ses pièces qui n'ont pas leur propre image épinglée.
 
-Si ça n'a pas marché : le message "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection." signifie que Marinara n'a trouvé aucun compte d'images. Définis-en un, puis réessaie. Si le bouton **Background** est absent, Illustrator n'est pas installé.
+### Ce que change une image épinglée
 
-## Ta bibliothèque et le flou
+- L'image s'affiche une fois, à l'arrivée. Si tu choisis un autre arrière-plan à la main pendant que tu es sur place, ton choix reste jusqu'à ce que l'histoire passe à un autre lieu.
+- Dans un lieu épinglé, l'agent Background ne peut pas changer l'image, et Illustrator ne crée pas de nouvel arrière-plan pour ce lieu. Si **Weather Versions of Backgrounds** (versions météo des arrière-plans) est activé, l'image épinglée reçoit tout de même sa version de pluie, de neige ou de brouillard.
 
-Les images parmi lesquelles tu choisis se trouvent dans la même section **Backgrounds**. L'import, les tags, le renommage, la suppression, le curseur **Background Blur** (flou d'arrière-plan) et l'arrière-plan par défaut des nouveaux chats Roleplay sont décrits dans [Arrière-plans de chat](../appearance/chat-backgrounds.md).
+Si ça n'a pas marché : vérifie que **Story is at**, sous la liste, affiche le lieu et que l'un des noms associés à l'image épinglée y figure mot pour mot.
+
+## Des arrière-plans qui suivent un personnage
+
+Une image de la **Galerie** d'un personnage ou d'un persona peut être marquée comme arrière-plan. Elle apparaît alors dans chaque chat où figure ce personnage, sans avoir à épingler d'image dans chaque chat.
+
+1. Ouvre l'onglet **Galerie** du personnage. Clique sur le bouton de tag d'une image et choisis **Use as background** (utiliser comme arrière-plan).
+2. Saisis les lieux qu'elle représente, séparés par des virgules, par exemple `{{char}}'s bedroom, {{char}}'s room`. Dans la galerie d'un personnage, `{{char}}` désigne ce personnage ; dans celle d'un persona, `{{user}}` désigne ce persona. Laisse le champ vide si l'image ne représente pas un lieu précis.
+
+Le bouton de tag de l'image affiche alors **Background:** et ses lieux. Clique dessus pour choisir **Edit places** (modifier les lieux) ou **Remove background tag** (retirer le tag d'arrière-plan).
+
+Dans un chat avec ce personnage, **Réglages du chat → Arrière-plan** liste ces images sous **From character and persona galleries** (depuis les galeries des personnages et des personas). Clique sur l'une d'elles pour l'utiliser. Celles qui nomment des lieux fonctionnent aussi comme des lieux épinglés et figurent sous **Pinned places**, avec la mention "In John's gallery, follows them into every chat". Une image épinglée dans le chat lui-même l'emporte sur une image de galerie associée au même lieu.
+
+### Déplacer une image de chat dans la galerie d'un personnage
+
+Un arrière-plan créé par Illustrator dans un chat peut devenir définitivement celui d'un personnage :
+
+1. Ouvre **Réglages du chat → Galerie** dans le chat.
+2. Sur l'image, clique sur le bouton en forme de personne (**Add to a character's or persona's gallery**, ajouter à la galerie d'un personnage ou d'un persona) et choisis à qui elle appartient.
+
+Son étiquette d'arrière-plan et ses lieux sont conservés. L'image n'est pas copiée et reste dans cette galerie quand le chat est supprimé. Exporter un personnage au format **Marinara Native** conserve ces étiquettes.
+
+Les arrière-plans de galerie reçoivent aussi des versions météo. La version de pluie ou de neige est enregistrée dans ta bibliothèque d'arrière-plans sous le nom `gallery-…--wx-rain.png`.
 
 ## Guides associés
 
-- [Arrière-plans de chat](../appearance/chat-backgrounds.md) : la bibliothèque d'images téléversées et les réglages d'apparence.
-- [Arrière-plans de scène](../media/scene-backgrounds.md) : des illustrations de scène créées par l'IA à partir de ta galerie.
-- [Mode Roleplay : premiers pas](getting-started.md) : le plateau Roleplay, les sprites et le HUD.
+- [Arrière-plans créés par Illustrator](../media/scene-backgrounds.md) : nouveaux lieux, versions météo et pochoirs de fenêtre.
+- [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md) : téléversement, tags, dossiers et flou.
+- [Galeries des personnages et des personas](../characters/galleries.md)
+- [Mode Roleplay : premiers pas](getting-started.md)

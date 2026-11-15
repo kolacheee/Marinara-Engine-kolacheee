@@ -22,7 +22,7 @@ Il te faut :
 2. Un GPU avec assez de VRAM (la mémoire de ta carte graphique). Une carte de 8 Go peut suffire pour un premier test en 480p avec une seule image-clé.
 3. Le workflow modifiable `ltx-director-simple`, ou un graphe LTX 2.3 image-vers-vidéo équivalent qui s'exécute jusqu'au bout dans ComfyUI, ainsi que son export au format API `ltx-director-simple-api`.
 4. Un compte d'images dans Marinara pour les illustrations de première image.
-5. L'agent **Storyboard**, téléchargé depuis **Agents → Agent Organizer** et activé pour la partie dans **Chat Settings → Agents** (réglages du chat → Agents). Voir [Guide de l'agent Storyboard](storyboard.md).
+5. L'agent **Storyboard**, téléchargé depuis **Library → Agents** (Bibliothèque → Agents) et activé pour la partie dans **Chat Settings → Agents** (réglages du chat → Agents). Voir [Guide de l'agent Storyboard](storyboard.md).
 
 Le workflow modifiable et son export API sont deux fichiers différents. Ouvre `ltx-director-simple` dans ComfyUI, installe tous les nœuds personnalisés que ComfyUI Manager signale comme manquants, et teste le graphe sur place. Importe `ltx-director-simple-api` dans Marinara. Après chaque changement de nœud ou de modèle, réexporte le graphe au format API et remplace le JSON enregistré sur le compte dans Marinara. Ne colle pas le workflow classique de l'éditeur visuel dans Marinara.
 
@@ -83,7 +83,7 @@ Si tu supprimes un nœud tout en continuant d'utiliser un ancien export, il rest
 
 ## Créer le compte vidéo
 
-1. Ouvre **Settings → Connections** (Paramètres → Connexions).
+1. Ouvre **Library → Connections** (Bibliothèque → Connexions).
 2. Clique sur **Add account** (ajouter un compte) et choisis un compte **Video Generation** (génération de vidéos).
 3. Choisis **ComfyUI**.
 4. Renseigne le champ **Base URL** (URL de base), en général `http://127.0.0.1:8188` quand ComfyUI tourne sur le même ordinateur.

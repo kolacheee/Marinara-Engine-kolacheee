@@ -7,7 +7,7 @@ Utilise le panneau de carte pour voir où se trouve ton équipe et pour la dépl
 Le Game Mode affiche un panneau de carte sur l'écran de jeu. Il indique le nom de la carte en cours, le jour de jeu et une icône de ciel pour le moment de la journée.
 
 - **Sur un ordinateur**, la carte s'affiche directement dans un panneau, lisible d'un coup d'œil. Tu peux le faire glisser et le verrouiller en place. Pour le fonctionnement des panneaux déplaçables, voir [Game Mode : widgets HUD](hud-widgets.md).
-- **Sur un téléphone**, touche **Map** (carte) pour ouvrir le panneau. Son bouton commence près du coin supérieur gauche et peut être déplacé dans le chat. Utilise **Lock window** (verrouiller la fenêtre) pour garder le bouton en place, et **Close** (fermer) pour y revenir. La position est enregistrée avec le chat. La carte sur téléphone suit le style des widgets du chat choisi dans **Settings → Appearance → App** (Paramètres → Apparence → Application), et son bouton reste séparé du menu à trois points **Chat tools** (outils du chat).
+- **Sur un téléphone**, touche **Map** (carte) pour ouvrir le panneau. Son bouton commence près du coin supérieur gauche et peut être déplacé dans le chat. Utilise **Lock window** (verrouiller la fenêtre) pour garder le bouton en place, et **Close** (fermer) pour y revenir. La position est enregistrée avec le chat. La carte sur téléphone suit le style des widgets du chat choisi dans **Settings → Appearance → Chat Buttons & Windows** (Paramètres → Apparence → Boutons et fenêtres du chat), et son bouton reste séparé du menu à trois points **Chat tools** (outils du chat).
 
 Une partie VN a la carte de scène décrite ici. La carte du monde, les villes et les cartes de donjon appartiennent aux parties Overworld, qui ne sont pas encore disponibles (voir [VN ou Overworld](getting-started.md#vn-or-overworld)).
 
@@ -72,7 +72,30 @@ Dans une partie avec un monde, le temps passe aussi tout seul :
 
 ## La météo
 
-Le jeu suit la météo avec des calculs fixes, pas avec l'IA. La météo dépend du biome (le type de milieu où se trouve l'équipe, comme le désert, l'arctique, le littoral ou la montagne) et de la saison. On trouve par exemple le ciel dégagé, les nuages, la pluie, l'orage, la neige, le blizzard, le brouillard et la tempête de sable. La météo change le plus souvent lors d'un voyage ou d'un repos long, parfois quand tu explores, et rarement dans les autres cas. Elle influence la façon dont le GM décrit chaque scène.
+Le jeu suit la météo avec des calculs fixes, pas avec l'IA. On trouve par exemple le ciel dégagé, les nuages, la pluie, l'orage, la neige, le blizzard, le brouillard, la canicule et la tempête de sable. La météo influence la façon dont le GM décrit chaque scène.
+
+Dans une partie avec un monde généré, la météo vient du climat à l'endroit où l'équipe se trouve sur la carte :
+
+- **Le terrain autour de l'équipe.** Les déserts sont secs et il y pleut rarement, les jungles sont humides et chaudes, les étendues enneigées sont froides, et les montagnes sont plus froides et plus brumeuses que les vallées en contrebas.
+- **La latitude et la mer.** Sur une carte du monde entier, le haut et le bas sont proches des pôles, et le milieu est proche de l'équateur. La distance à la mer compte aussi : les côtes ont des hivers doux, et les lieux loin à l'intérieur des terres ont des étés chauds et des hivers rigoureux.
+- **La saison locale.** Au sud de l'équateur, l'été tombe pendant l'hiver du calendrier. Près de l'équateur, l'année comporte une saison humide et une saison sèche plutôt qu'un hiver.
+- **Une météo qui se déplace.** Les systèmes météorologiques traversent la carte au fil des heures et des jours : le ciel ne passe donc pas d'une canicule au brouillard d'un seul coup, et les lieux proches partagent la même météo. Dans les climats chauds, les averses et les orages se forment l'après-midi.
+
+Quand l'histoire ou le GM demande une météo que le lieu ne peut pas avoir à ce moment-là, comme de la neige dans un désert chaud en été, le jeu utilise la météo possible la plus proche (un vent froid et violent, dans ce cas). Le GM est informé du climat et de ce qui ne peut pas s'y produire.
+
+Une partie sans monde généré déduit le climat du nom du lieu, comme "désert", "port" ou "montagne".
+
+### Des lieux soustraits aux lois de la nature
+
+Une malédiction, un dieu ou une autre grande puissance peut figer l'environnement d'un lieu : une ville plongée dans une nuit sans fin, une forêt maintenue en automne, une vallée sous une neige qui ne fond jamais. Le GM impose ce verrouillage dans l'histoire, et il l'emporte sur le climat et l'horloge jusqu'à ce que le GM le lève :
+
+- **La météo.** Le lieu garde la météo imposée, même si son climat ne pourrait jamais la produire, comme de la neige dans un désert.
+- **La saison.** Le lieu reste dans une saison tandis que le reste du monde avance.
+- **La lumière.** Il y fait toujours nuit, jour ou crépuscule. L'éclairage de la scène et les effets météo suivent, et la carte du monde teinte les terres concernées.
+
+Un monde peut commencer avec des verrouillages déjà en place. Quand tu construis un monde à partir de tes lorebooks, tout lieu que le lore décrit comme soustrait aux lois de la nature, par exemple "Sallow Vale est toujours en automne" ou "Gotham ne voit jamais le soleil", est verrouillé dès le premier jour. Il en va de même pour un verrouillage décrit par l'univers. Le GM est informé de ces lieux et peut toujours lever un verrouillage dans l'histoire.
+
+Un verrouillage couvre le lieu et tout ce qu'il contient : verrouiller une région verrouille donc aussi ses villes. Quand plusieurs verrouillages se chevauchent, le lieu le plus proche l'emporte : une ville dans une région maudite peut ainsi garder sa propre météo. Un verrouillage peut aussi couvrir le monde entier. La scène ne peut pas lever un verrouillage en demandant une autre météo ; seul le GM le peut.
 
 Pour voir la météo à l'écran, active le réglage **Dynamic weather effects (rain, snow, fog, etc.)** dans les réglages d'apparence. Il est actif par défaut. Des particules de pluie, de neige et de brouillard apparaissent alors par-dessus le jeu et suivent la météo et le moment de la journée. Voir [Réglages d'apparence](../appearance/appearance-settings.md).
 
@@ -106,7 +129,7 @@ Pour changer de vue, utilise **Show the scene** (afficher la scène) et **Show t
 
 ### Les packs de tuiles
 
-Les packs de tuiles contiennent la palette et chaque tuile (chaque type de sol, les localités selon leur taille, l'équipe, ainsi que les rues, les toits et les habitants d'une ville) sous forme de rangées de pixels. Chaque famille d'univers a un pack intégré. Ouvre le panneau **Agents** et trouve **Tile packs** (packs de tuiles) pour :
+Les packs de tuiles contiennent la palette et chaque tuile (chaque type de sol, les localités selon leur taille, l'équipe, ainsi que les rues, les toits et les habitants d'une ville) sous forme de rangées de pixels. Chaque famille d'univers a un pack intégré. Ouvre **Library → Agents** (Bibliothèque → Agents) et trouve **Tile packs** (packs de tuiles) pour :
 
 - choisir le pack avec lequel chaque univers est dessiné : **Built in** (intégré) désigne son propre pack,
 - utiliser **Import a tile pack** (importer un pack de tuiles) avec un fichier `.tilepack.json`,

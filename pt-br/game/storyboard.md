@@ -11,11 +11,10 @@ Nos dois modos, as imagens dos quadros-chave são salvas na aba **Images** da Ga
 
 ## Instalar o agente
 
-1. Abra o painel **Agents** (agentes) pelo ícone de estrelinhas.
-2. Selecione **Agent Organizer** (organizador de agentes).
-3. Abra **Storyboard** e selecione **Install** (instalar).
-4. Abra um chat de Game ou de Roleplay e depois **Chat Settings → Agents** (configurações do chat → agentes).
-5. Ative **Enable Agents** (ativar agentes) e depois, no cartão do Storyboard, **Enable Storyboards** (ativar os storyboards).
+1. Abra **Biblioteca → Agentes** e clique em **Disponíveis**.
+2. Encontre **Storyboard** e clique em **Obter**.
+3. Abra um chat de Game ou de Roleplay e depois **Chat Settings → Agents** (configurações do chat → agentes).
+4. Ative **Enable Agents** (ativar agentes) e depois, no cartão do Storyboard, **Enable Storyboards** (ativar os storyboards).
 
 Instalar deixa o agente disponível, mas não o ativa em todos os chats. Não é preciso reiniciar o Marinara.
 
@@ -186,7 +185,7 @@ O Storyboard é separado do Illustrator, e as ações manuais do Illustrator con
 
 ## Configurações do agente Storyboard
 
-Abra o painel **Agents**, selecione **Storyboard** e abra a configuração dele. Esses valores são os padrões dos chats que não têm ajustes próprios.
+Abra **Biblioteca → Agentes**, clique em **Storyboard** e abra a configuração dele. Esses valores são os padrões dos chats que não têm ajustes próprios.
 
 | Configuração | Padrão | Para que serve |
 | --- | --- | --- |

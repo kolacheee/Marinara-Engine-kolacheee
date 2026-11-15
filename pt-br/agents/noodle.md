@@ -23,10 +23,10 @@ A atividade do Noodle vem desativada por padrão. Nada é gerado até você conv
 
 Noodle é um pacote de agente para download. Instale-o uma vez.
 
-1. Abra o painel **Agents** (agentes) pelo ícone de estrelinhas, nas abas do lado direito, e clique em **Agent Organizer** (organizador de agentes).
+1. Abra **Biblioteca → Agentes** e vá até **Disponíveis**.
 2. Encontre o **Noodle** e clique em **Get** (obter).
 3. Reinicie o Marinara Engine quando o aplicativo pedir, para que o código de servidor do Noodle possa carregar. Para reiniciar, feche o Marinara e inicie-o de novo do jeito que você costuma iniciá-lo. Veja [Instalação](../INSTALLATION.md).
-4. Abra **Home** (início) e clique na aba **Noodle**, ao lado de **Home** e **Professor**.
+4. Abra **Início** e clique em **Noodle**, ao lado de **Professor**. Ele abre em uma aba própria.
 
 A linha do tempo do Noodle abre dentro do navegador Home do Marinara. Para sair, escolha outra aba da Home ou abra um chat. No celular ou em uma janela estreita, Noodle usa um layout de celular (veja [Noodle no celular](#noodle-on-a-phone)).
 
@@ -84,7 +84,7 @@ O seu próprio perfil tem o botão **Edit Profile** (editar perfil). Mude os cam
 
 Quando você edita o perfil de um personagem, mais duas configurações aparecem abaixo dos campos. Elas são salvas na hora.
 
-- **Use this character's image instructions in Noodle images** (usar as instruções de imagem deste personagem nas imagens do Noodle): acrescenta às imagens dele no Noodle as **Selfie instructions** (instruções para selfies) do personagem, da aba **Images** (imagens) do editor de personagem. **Edit image instructions** (editar as instruções de imagem) abre esse campo no editor de personagem (Noodle 1.5.17 ou posterior no Marinara Engine com Capability API 1.826 ou mais recente). Versões anteriores do Noodle abrem a aba **Convo**. Slurp usa a mesma escolha até você definir uma para esse personagem no Slurp. Exige o Noodle 1.5.4 ou posterior.
+- **Use this character's image instructions in Noodle images** (usar as instruções de imagem deste personagem nas imagens do Noodle): acrescenta às imagens dele no Noodle as **Instruções de geração de imagens** do personagem, da aba **Convo** do editor de personagem. **Edit image instructions** (editar as instruções de imagem) abre essa aba. Slurp usa a mesma escolha até você definir uma para esse personagem no Slurp. Exige o Noodle 1.5.4 ou posterior.
 - **Image connection** (conexão de imagem): escolhe o modelo de imagem das imagens desse personagem no Noodle. **Use Noodle image connection** (usar a conexão de imagem do Noodle) mantém o das [configurações do Noodle](noodle-settings.md#image-generation). Exige o Noodle 1.5.5 ou posterior.
 
 Um perfil também mostra os números de **Following** e **Followers** e três abas: **Posts**, **Likes** e **Media** (as publicações que têm imagem).

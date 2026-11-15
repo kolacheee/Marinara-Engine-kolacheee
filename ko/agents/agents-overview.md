@@ -6,11 +6,11 @@
 
 에이전트는 캐릭터가 아니라 채팅 단위로 켭니다. 같은 캐릭터로 만든 채팅 두 개가 서로 다른 에이전트를 실행할 수 있습니다.
 
-새로 설치한 상태에는 선택형 에이전트가 하나도 없습니다. 공식 패키지를 한 번의 클릭으로 설치하는 스토어인 **Agent Organizer**에서 설치하세요. 소스와 카탈로그는 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)에 공개되어 있습니다. Marinara가 호환성, 권한, 파일 해시를 확인할 수 있도록 **Agent Organizer**를 통해 설치하세요. 에이전트별로 하는 일은 [다운로드 가능한 에이전트 레퍼런스](built-in-agents.md)를, 직접 만드는 방법은 [사용자 지정 에이전트 만들기](custom-agents.md)를 참고하세요.
+새로 설치한 상태에는 선택형 에이전트가 하나도 없습니다. 공식 패키지를 한 번의 클릭으로 설치하는 스토어인 **Library → Agents**(라이브러리 → 에이전트)에서 설치하세요. 클래식 레이아웃에서는 **Agent Organizer**라고 부릅니다. 소스와 카탈로그는 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)에 공개되어 있습니다. Marinara가 호환성, 권한, 파일 해시를 확인할 수 있도록 그 페이지를 통해 설치하세요. 에이전트별로 하는 일은 [다운로드 가능한 에이전트 레퍼런스](built-in-agents.md)를, 직접 만드는 방법은 [사용자 지정 에이전트 만들기](custom-agents.md)를 참고하세요.
 
 ## 채팅에 에이전트 추가하기
 
-시작하기 전에: 먼저 에이전트를 설치하세요. **Agents**(에이전트) 패널(오른쪽 탭의 Sparkles 아이콘)을 열고 **Agent Organizer**를 클릭한 다음, 에이전트 페이지를 열고 **Get**(받기)을 클릭하세요. [에이전트 설치와 업데이트](#install-and-update-agents)를 참고하세요.
+시작하기 전에: 먼저 에이전트를 설치하세요. **Library → Agents**를 열고 **Available**(사용 가능)에서 에이전트를 찾아 **Get**(받기)을 클릭하세요. [에이전트 설치와 업데이트](#install-and-update-agents)를 참고하세요.
 
 1. 채팅을 여세요.
 2. **Chat Settings**(채팅 설정)를 열고 **Agents** 섹션을 찾으세요.
@@ -63,7 +63,7 @@
 - 트래커 에이전트는 HUD와 트래커 패널에 내용을 씁니다. 시간, 장소, 기분, 능력치가 바뀌었다면 트래커가 실행된 것입니다.
 - **Chat Settings**의 **Agent activity**(에이전트 활동)에는 에이전트가 남긴 짧은 메모가 나열됩니다. 에이전트가 작업하는 동안에는 아이콘이 돌아가고, 하나라도 실패하면 아이콘에 점이 표시됩니다. [에이전트 활동](../roleplay/getting-started.md#agent-activity)을 참고하세요.
 - **Prose Guardian**과 **Continuity Checker**는 답변 텍스트를 바꿉니다. 답변이 다듬어지거나 바로잡혔다면 이 에이전트가 실행된 것입니다.
-- 전체 과정을 추적하려면 **Settings → Advanced → Message Tools**(설정 → 고급 → 메시지 도구)에서 **Debug mode**(디버그 모드)를 켜세요. 에이전트마다 프롬프트와 응답이 서버 콘솔에 기록되고, 에이전트 디버그 항목은 브라우저 콘솔에도 나타납니다. 캐시된 프롬프트 주입은 **Agent activity**의 **Injections**(삽입) 탭에 표시됩니다.
+- 전체 과정을 추적하려면 **Settings → Advanced → Troubleshooting**(설정 → 고급 → 문제 해결)에서 **Debug mode**(디버그 모드)를 켜세요. 에이전트마다 프롬프트와 응답이 서버 콘솔에 기록되고, 에이전트 디버그 항목은 브라우저 콘솔에도 나타납니다. 캐시된 프롬프트 주입은 **Agent activity**의 **Injections**(삽입) 탭에 표시됩니다.
 
 ## 비용 살피기
 
@@ -77,11 +77,11 @@
 
 ## 에이전트 설치와 업데이트
 
-**Agents** 패널(오른쪽 탭의 Sparkles 아이콘)을 열고 **Agent Organizer**를 클릭하세요. 데스크톱과 모바일 모두에서 쓸 수 있습니다.
+**Library → Agents**를 여세요. 데스크톱과 모바일 모두에서 쓸 수 있습니다.
 
-- **Home**(홈)에는 추천 에이전트와 섹션별 목록이 표시됩니다. 섹션은 **Apps**(앱), **Chat games**(채팅 게임), **Trackers**(트래커), **Writing help**(글쓰기 도움)입니다.
-- **Updates**(업데이트)에는 설치한 에이전트 중 새 버전이 있는 항목이 나열됩니다. **Installed**(설치됨)에는 설치한 모든 항목이 버전, 용량과 함께 나열됩니다.
-- 검색과 모드 필터로 모든 목록을 좁힐 수 있습니다.
+- **Installed**(설치됨)에는 설치한 모든 항목이, **Available**에는 다운로드할 수 있는 항목이, **Updates**(업데이트)에는 설치한 에이전트 중 새 버전이 있는 항목이 나열됩니다.
+- **All sections**(모든 섹션)로 **Apps**(앱), **Chat games**(채팅 게임), **Writing help**(글쓰기 도움), **Trackers**(트래커) 같은 섹션 하나로 목록을 좁히고, **All modes**(모든 모드)로 채팅 모드 하나로 좁힐 수 있습니다. **Search agents**(에이전트 검색...), 정렬 메뉴, **List**(목록) / **Gallery**(갤러리)는 모든 목록에서 쓸 수 있습니다.
+- **Starter kits**(시작 키트)는 미리 구성된 에이전트 모음을 한 번에 설치합니다. **New agent**(새 에이전트)는 [사용자 지정 에이전트](custom-agents.md) 만들기를 시작합니다.
 - 에이전트를 선택하면 설명, 다운로드 용량, 권한, 호환성, **Version history**(버전 기록)를 볼 수 있습니다. 설치하려면 **Get**을 클릭하세요. **⋯** 메뉴에는 **Uninstall**(제거)이 있습니다.
 - 제목 옆의 **⋯** 메뉴에는 **Update all**(모두 업데이트), **Install all**(모두 설치), **Refresh catalog**(카탈로그 새로고침), **Uninstall all**(모두 제거)이 있습니다.
 
@@ -100,7 +100,7 @@
 3. **Update all**을 클릭하세요. 일부를 해제했다면 **Update 2 of 3**(3개 중 2개 업데이트)를 클릭하세요. 각 행에는 **Updated**(업데이트됨)나 **Failed**(실패)가 표시됩니다. 실패한 행에는 이유와 **Retry**(재시도)가 표시됩니다.
 4. 업데이트에 재시작이 필요하면 **Restart now**(지금 재시작)를 클릭하거나 나중에 Marinara를 다시 시작하세요.
 
-현재 버전을 유지하려면 **Not now**(나중에)를 클릭하세요. 건너뛴 버전에 대해서는 Marinara가 다시 묻지 않습니다. **Agent Organizer**에서 언제든 업데이트할 수 있습니다. 설치한 패키지는 카탈로그에 연결할 수 없을 때도 현재 버전으로 계속 동작합니다. **See in Agent Organizer**(Agent Organizer에서 보기)는 에이전트 페이지를 엽니다.
+현재 버전을 유지하려면 **Not now**(나중에)를 클릭하세요. 건너뛴 버전에 대해서는 Marinara가 다시 묻지 않습니다. **Library → Agents**의 **Updates** 탭에서 언제든 업데이트할 수 있습니다. 설치한 패키지는 카탈로그에 연결할 수 없을 때도 현재 버전으로 계속 동작합니다. **See in Agent Organizer**(Agent Organizer에서 보기)는 에이전트 페이지를 엽니다.
 
 업데이트는 직접 설치한 패키지에만 적용됩니다. 패키지는 Marinara 서버에 있으므로 브라우저 클라이언트는 서버에 설치된 패키지를 사용합니다.
 

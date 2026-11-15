@@ -5,7 +5,10 @@ Osiągnięcia to ozdobne odznaki, które odblokowują się w trakcie korzystania
 ## Otwieranie okna Achievements
 
 1. Przejdź na ekran główny.
-2. Kliknij skrót **Achievements** (osiągnięcia, ikona pucharu). Na telefonie najpierw dotknij przycisku skrótów po lewej stronie zakładek.
+2. Kliknij **Widgety** i włącz widget **Osiągnięcia**.
+3. Kliknij widget.
+
+W klasycznym układzie ekran główny ma też skrót **Osiągnięcia** (ikona pucharu). Na telefonie najpierw dotknij przycisku skrótów po lewej stronie zakładek.
 
 Otworzy się okno **Achievements**. Na górze jest podsumowanie, na przykład **12 of 24 achievements unlocked in this profile.** Profil to twój zapisany zestaw danych aplikacji Marinara. Pod nim jest siatka kart.
 
@@ -13,7 +16,7 @@ Otworzy się okno **Achievements**. Na górze jest podsumowanie, na przykład **
 - Odblokowana karta pokazuje znacznik **unlocked** (odblokowane).
 - Karta z celem liczbowym pokazuje też wiersz **Progress** (postęp) i pasek postępu.
 
-Na ekranie głównym możesz też dodać widget **Achievements**. Kliknij **Widgets** (widgety) na pasku skrótów i włącz ten widget. Pokazuje on licznik, na przykład **12 of 24 unlocked**, twoje osiągnięcie **Last obtained** (ostatnio zdobyte) i to **Closest next** (najbliższe kolejne). Podczas wczytywania widnieje na nim napis **Checking the collection...**. Kliknij widget, żeby otworzyć okno. Zobacz [Widgety ekranu głównego](welcome.md#home-widgets).
+Widget **Osiągnięcia** pokazuje licznik, na przykład **12 of 24 unlocked**, twoje osiągnięcie **Last obtained** (ostatnio zdobyte) i to **Closest next** (najbliższe kolejne). Podczas wczytywania widnieje na nim napis **Checking the collection...**. Kliknij widget, żeby otworzyć okno. Zobacz [Widgety ekranu głównego](welcome.md#home-widgets).
 
 Jeśli to nie zadziałało: skrót, widget i okno pojawiają się tylko wtedy, gdy ustawienie **Achievements** jest włączone. Zobacz [Włączanie i wyłączanie osiągnięć](#turn-achievements-on-or-off).
 
@@ -53,7 +56,7 @@ Jeśli usuniesz agenta, jego sekcja zniknie, a twoje odblokowania zostaną zacho
 ## Włączanie i wyłączanie osiągnięć
 
 1. Otwórz **Settings → General** (ustawienia, ogólne).
-2. W sekcji **App Behavior** (zachowanie aplikacji) włącz albo wyłącz przełącznik **Achievements**. Domyślnie jest włączony.
+2. W sekcji **Dodatki** włącz albo wyłącz przełącznik **Achievements**. Domyślnie jest włączony.
 
 - Włączony: skrót i okno są dostępne, a po każdym odblokowaniu pojawia się podręczne powiadomienie.
 - Wyłączony: skrót, widget i podręczne powiadomienia są ukryte. Aplikacja nadal zapisuje odblokowania w tle, więc po ponownym włączeniu nic nie przepada.

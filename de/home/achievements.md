@@ -5,7 +5,10 @@ Errungenschaften sind kosmetische Abzeichen, die sich freischalten, während du 
 ## Das Fenster Achievements öffnen
 
 1. Geh auf den Home-Bildschirm.
-2. Klick auf das Lesezeichen **Achievements** (Errungenschaften) mit dem Pokal-Symbol. Auf dem Handy tippst du vorher links neben den Tabs auf die Lesezeichen-Schaltfläche.
+2. Klick auf **Widgets** und schalte das Widget **Achievements** (Errungenschaften) ein.
+3. Klick auf das Widget.
+
+Im klassischen Layout hat Home außerdem ein Lesezeichen **Achievements** mit dem Pokal-Symbol. Auf dem Handy tippst du vorher links neben den Tabs auf die Lesezeichen-Schaltfläche.
 
 Das Fenster **Achievements** öffnet sich. Ganz oben steht eine Übersicht wie **12 of 24 achievements unlocked in this profile.** Ein Profil ist dein gespeicherter Bestand an Marinara-Daten. Darunter liegt ein Raster aus Karten.
 
@@ -13,7 +16,7 @@ Das Fenster **Achievements** öffnet sich. Ganz oben steht eine Übersicht wie *
 - Eine freigeschaltete Karte trägt die Markierung **unlocked**.
 - Eine Karte mit Zielwert zeigt außerdem eine Zeile **Progress** (Fortschritt) und einen Balken.
 
-Du kannst Home auch das Widget **Achievements** hinzufügen. Klick in den Lesezeichen auf **Widgets** und schalte es ein. Es zeigt einen Zähler wie **12 of 24 unlocked**, deine Errungenschaft unter **Last obtained** (zuletzt erhalten) und die unter **Closest next** (als Nächstes in Reichweite). Solange es lädt, steht dort **Checking the collection...**. Ein Klick darauf öffnet das Fenster. Siehe [Home-Widgets](welcome.md#home-widgets).
+Das Widget **Achievements** zeigt einen Zähler wie **12 of 24 unlocked**, deine Errungenschaft unter **Last obtained** (zuletzt erhalten) und die unter **Closest next** (als Nächstes in Reichweite). Solange es lädt, steht dort **Checking the collection...**. Ein Klick darauf öffnet das Fenster. Siehe [Home-Widgets](welcome.md#home-widgets).
 
 Wenn es nicht funktioniert hat: Lesezeichen, Widget und Fenster erscheinen nur, wenn die Einstellung **Achievements** eingeschaltet ist. Siehe [Errungenschaften ein- oder ausschalten](#turn-achievements-on-or-off).
 
@@ -53,7 +56,7 @@ Entfernst du einen Agenten, verschwindet sein Abschnitt, und deine Freischaltung
 ## Errungenschaften ein- oder ausschalten
 
 1. Öffne **Settings → General** (Einstellungen → Allgemein).
-2. Schalte im Bereich **App Behavior** (App-Verhalten) den Schalter **Achievements** ein oder aus. Er ist standardmäßig eingeschaltet.
+2. Schalte im Bereich **Extras** den Schalter **Achievements** ein oder aus. Er ist standardmäßig eingeschaltet.
 
 - Ein: Lesezeichen und Fenster stehen bereit, und beim Freischalten erscheint eine Einblendung.
 - Aus: Lesezeichen, Widget und Einblendungen sind ausgeblendet. Die App zeichnet Freischaltungen im Hintergrund weiter auf, deshalb geht nichts verloren, wenn du die Einstellung wieder einschaltest.

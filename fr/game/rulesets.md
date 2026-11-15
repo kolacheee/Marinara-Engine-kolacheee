@@ -8,10 +8,9 @@ Un ensemble de règles explique à Game Mode le fonctionnement d'un système sur
 
 Pour installer un ensemble de règles officiel comme 5e (SRD 5.1) :
 
-1. Ouvre le panneau **Agents** (l'icône Sparkles).
-2. Choisis **Agent Organizer** (organisateur d'agents).
-3. Trouve l'ensemble de règles. Les ensembles de règles portent l'étiquette **Rules** (règles).
-4. Choisis **Install** (installer).
+1. Ouvre **Library → Agents** (Bibliothèque → Agents) et clique sur **Available** (disponibles).
+2. Trouve l'ensemble de règles. Les ensembles de règles portent l'étiquette **Rules** (règles).
+3. Clique sur **Get** (obtenir).
 
 Lance ensuite une nouvelle partie et choisis-le (voir plus bas). Les ensembles de règles viennent de deux endroits :
 

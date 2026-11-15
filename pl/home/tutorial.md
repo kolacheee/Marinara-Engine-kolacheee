@@ -4,53 +4,49 @@ Samouczek to oprowadzenie z przewodnikiem, które uruchamia się przy pierwszym 
 
 ## Ponowne uruchomienie samouczka
 
-1. Przejdź do ekranu głównego.
-2. Kliknij skrót **Tutorial** (samouczek) albo **Replay tutorial** (powtórz samouczek) w widgecie **Learn the engine** (poznaj aplikację).
+1. Otwórz **Ustawienia → Ogólne → Potwierdzenia i pomoc**.
+2. W sekcji **Przewodniki** kliknij **Odtwórz ponownie powitalny samouczek**.
 
-Samouczek zaczyna się od nowa, od pierwszego kroku. Na telefonie dotknij przycisku skrótów po lewej stronie zakładek, żeby zobaczyć skróty.
+Możesz też kliknąć **Powtórz samouczek** w widgecie **Poznaj silnik** na ekranie głównym. Samouczek zaczyna się od nowa, od pierwszego kroku.
+
+Sekcja **Przewodniki** ma jeszcze dwa przyciski. **Odtwórz ponownie przewodnik (komputer)** (albo tablet lub telefon) powtarza krótkie oprowadzenie dla rodzaju urządzenia, którego używasz, a **Pokaż ponownie wskazówki trybów czatu** przywraca wskazówki każdego trybu czatu. Zobacz [Oprowadzenie dla każdego urządzenia](#walkthroughs-for-each-device).
 
 ## Pomijanie samouczka
 
 Na każdej karcie jest przycisk pomijania. Na pierwszej karcie nosi nazwę **Skip Tutorial** (pomiń samouczek). Na kolejnych kartach nosi nazwę **Skip** (pomiń). Kliknij go, żeby od razu zakończyć samouczek.
 
-- Każdy z przycisków **Skip**, **Skip Tutorial** i **Get Started** (zaczynamy) oznacza samouczek jako ukończony, więc nie uruchomi się on już sam. Każdy z nich może też odblokować osiągnięcie **Diligent Student**.
-- Tylko **Get Started** zapisuje język przewodników wybrany na ostatniej karcie (język, w którym wyświetlają się przewodniki w aplikacji). **Skip** zostawia go bez zmian. Później możesz go zmienić w **Settings → General** (ustawienia, ogólne).
+- Przyciski **Pomiń**, **Pomiń samouczek** i przycisk na ostatniej karcie oznaczają samouczek jako ukończony, więc nie uruchomi się on już sam. Każdy z nich może też odblokować osiągnięcie **Pilna nauka**.
+- Na ostatniej karcie jest lista wyboru języka przewodników w aplikacji. Zapisuje go tylko przycisk na ostatniej karcie; **Pomiń** zostawia go bez zmian. Później możesz go zmienić w **Ustawienia → Ogólne → Język → Język dokumentacji**.
 
 ## Jak działa samouczek
 
-Samouczek pokazuje jedną kartę naraz. Każda karta ma tytuł, krótkie wyjaśnienie i kropki postępu. Na typowym ekranie komputera pulsująca obwódka podświetla przycisk, o którym mówi dana karta.
+Samouczek zaczyna się na ekranie głównym i pokazuje jedną kartę naraz. Każda karta ma tytuł, krótkie wyjaśnienie i kropki postępu. Obwódka podświetla część ekranu, o której mówi karta, a niektóre kroki otwierają ją za ciebie: krok Biblioteka otwiera widok **Biblioteka** na pasku bocznym (na komputerze także stronę Postacie), krok Czaty przełącza go na **Czaty**, a krok Połączenia otwiera stronę Połączenia.
 
-Niektóre kroki otwierają też za ciebie odpowiedni panel lub zakładkę. Na przykład krok **Connections** otwiera panel **Connections** (Połączenia).
+Kliknij **Dalej**, żeby przejść do następnej karty. Na telefonie lub tablecie karty i podświetlenia działają tak samo i pokazują, gdzie co jest na ekranie dotykowym.
 
-Kliknij **Next** (dalej), żeby przejść do następnej karty. Na ostatnim kroku ten przycisk nosi nazwę **Get Started**.
-
-Na telefonie i innych wąskich ekranach każda karta pojawia się na środku, pod górnym paskiem. Pulsująca obwódka się nie pojawia. Panele nadal się otwierają, jako nakładki na pełnym ekranie.
-
-## Zestawienie: 18 kroków
+## Zestawienie: kroki
 
 | # | Tytuł karty | Co obejmuje |
 | --- | --- | --- |
-| 1 | **Welcome to Marinara Engine!** | Wyśrodkowana karta powitalna. Professor Mari proponuje oprowadzenie po aplikacji. |
-| 2 | **Characters** | Przycisk panelu **Characters** (postacie), w którym mieszkają twoje postacie. |
-| 3 | **Personas** | Przycisk panelu **Personas** (persony), w którym określasz, kim jesteś na czacie. |
-| 4 | **Lorebooks** | Przycisk panelu **Lorebooks** (lorebooki), który przechowuje dodatkowe szczegóły o świecie i postaciach. |
-| 5 | **Presets** | Przycisk panelu **Presets** (presety), który steruje budowaniem promptu (prompt to tekst, który Marinara wysyła do AI). |
-| 6 | **Connections** | Przycisk panelu **Connections**. Połączenia to pierwsza rzecz do skonfigurowania przed rozpoczęciem czatu. |
-| 7 | **Agents** | Przycisk panelu **Agents** (agenci). Karta kieruje do **Agent Organizer** (organizowanie agentów), gdzie można zainstalować agentów. |
-| 8 | **Settings** | Przycisk panelu **Settings**. Otwiera panel **Settings** na zakładce **General**. |
-| 9 | **Chats** | Przełącznik paska bocznego. Otwiera pasek boczny z czatami. |
-| 10 | **Conversation Mode** | Zakładka trybu Conversation, oznaczona jako **CONVO**. |
-| 11 | **Roleplay Mode** | Zakładka trybu Roleplay, oznaczona jako **RP**. |
-| 12 | **Game Mode** | Zakładka trybu Game Mode, oznaczona jako **GM**. |
-| 13 | **Home: Your Story Hub** | Wraca do ekranu głównego. Na ekranie głównym można kontynuować czat, zacząć nowy i rozmieścić widgety. |
-| 14 | **Ask Me Where Things Are** | Pasek wyszukiwania u góry ekranu głównego. Na telefonie karta mówi, żeby przeciągnąć palcem w dół od górnego paska aplikacji. |
-| 15 | **Guides and Home Controls** | Skróty **Documentation** (dokumentacja), **Tutorial**, **FAQ** (najczęstsze pytania) i **Widgets** (widgety). |
-| 16 | **Migrating from SillyTavern?** | Ponownie przycisk **Settings**. Otwiera panel **Settings** na zakładce **Imports** (import). |
-| 17 | **You're All Set!** | Jeszcze raz przycisk panelu **Connections**. |
-| 18 | **One Last Thing: Guide Language** | Skrót **Documentation**. Lista **Documentation Language** (język dokumentacji) ustawia język przewodników w aplikacji. Przewodniki, które nie są jeszcze przetłumaczone, wyświetlają się po angielsku. |
+| 1 | **Witaj w Marinara Engine!** | Professor Mari proponuje oprowadzenie po aplikacji. |
+| 2 | **Biblioteka** | Pasek boczny po prawej i jego widok **Biblioteka**: Postacie, Persony, Księgi wiedzy, Presety i Skrypty regex. Przycisk **Biblioteka** na górnym pasku otwiera go i ukrywa. |
+| 3 | **Twoje czaty** | Widok **Czaty** na tym samym pasku bocznym oraz **Ustawienia czatu** wewnątrz czatu. |
+| 4 | **Trzy sposoby prowadzenia czatu** | Zakładki **Convo**, **Roleplay** i **Game** oraz przeznaczenie każdego trybu. |
+| 5 | **Połączenia: zacznij tutaj** | Otwiera stronę Połączenia. Dodaj połączenie, zanim zaczniesz czat. |
+| 6 | **Agenci** | Otwiera stronę Agenci, na której instalujesz opcjonalne funkcje. |
+| 7 | **Ustawienia (i import z SillyTavern)** | Otwiera **Ustawienia** na zakładce **Dane**, gdzie znajduje się import z aplikacji SillyTavern. |
+| 8 | **Zakładki i wyszukiwanie** | Zakładki na górnym pasku i przycisk wyszukiwania (<kbd>Ctrl</kbd>+<kbd>K</kbd>). |
+| 9 | **Docs – i wszystko gotowe!** | Przycisk **Docs** i lista wyboru języka przewodników. |
+
+Na telefonie lub tablecie samouczek dodaje kartę **Przydatne gesty** (łącznie dziesięć kroków). Biblioteka jest tam pod przyciskiem stosu w prawym górnym rogu, Czaty u góry tej samej strony, wyszukiwanie pod tytułem, a Docs w Bibliotece.
+
+## Oprowadzenie dla każdego urządzenia
+
+Każdy rodzaj urządzenia (komputer, tablet, telefon) ma krótkie oprowadzenie przy pierwszym otwarciu na nim aplikacji Marinara, nawet jeśli pełny samouczek został już ukończony gdzie indziej. Pokazuje ono, gdzie na tym urządzeniu są czaty, Biblioteka i wyszukiwanie, a na ekranie dotykowym także kartę **Przydatne gesty**. Każdy tryb czatu również pokazuje własne wskazówki przy pierwszym otwarciu na tym urządzeniu. Powtórz je z **Ustawienia → Ogólne → Potwierdzenia i pomoc → Przewodniki**.
 
 ## Powiązane przewodniki
 
 - [Pierwsze kroki z aplikacją Marinara Engine](welcome.md)
+- [Gesty dotykowe](../chats/messages.md#touch-gestures)
 - [Professor Mari, twoja asystentka w aplikacji](professor-mari.md)
 - [Osiągnięcia](achievements.md)

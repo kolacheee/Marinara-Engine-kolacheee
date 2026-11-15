@@ -86,13 +86,13 @@ Game Mode는 Marinara 자체 전투나 규칙 집합의 규칙 중 하나로 싸
 
 ## 규칙 집합 시험하기
 
-시작하기 전에 **Settings → Advanced → Danger Zone**(설정 → 고급 → 위험 구역)에서 **Allow custom Agent imports**(사용자 지정 에이전트 가져오기 허용)를 켜세요. 가져온 규칙 집합은 가져온 에이전트와 같은 안전 스위치를 쓰므로, 직접 켜기 전까지는 꺼져 있습니다. 가져오기에는 localhost 접근 또는 관리자 시크릿(**Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근))도 필요합니다.
+시작하기 전에 **Settings → Advanced → Security**(설정 → 고급 → 보안)에서 **Allow custom Agent imports**(사용자 지정 에이전트 가져오기 허용)를 켜세요. 가져온 규칙 집합은 가져온 에이전트와 같은 안전 스위치를 쓰므로, 직접 켜기 전까지는 꺼져 있습니다. 가져오기에는 localhost 접근 또는 관리자 시크릿(**Settings → Advanced → Security**)도 필요합니다.
 
-1. **Agents**(에이전트) 패널을 열고 **Import agents**(에이전트 가져오기) 버튼(패널 위쪽 버튼 줄의 다운로드 아이콘)을 고르세요.
+1. **Library → Agents**(라이브러리 → 에이전트)를 열고 **Import agents**(에이전트 가져오기)를 클릭하세요(**Starter kits**(시작 키트) 옆의 다운로드 아이콘). 클래식 레이아웃에서는 **Agents**(에이전트) 패널 상단의 다운로드 아이콘입니다.
 2. **Game Mode ruleset**(Game Mode 규칙 집합)을 선택하고 JSON 파일, 또는 `.ruleset.json`으로 끝나는 규칙 집합 패키지 파일을 고르세요([규칙 집합 공유하기](#sharing-your-ruleset) 참고).
 3. 검토 내용을 읽으세요. 이름, 버전, 라이선스, 규칙 집합의 지원 범위와 Game Master 텍스트가 표시됩니다. **Import**(가져오기)를 선택하세요.
 
-규칙 집합은 패널의 **Rules** 구역과 새 게임 설정 마법사의 **Rules** 선택지에 나타납니다. 파일에서 가져온 규칙 집합은 `local/<your id>`로 분류되므로 공식 규칙 집합이나 다른 사람의 규칙 집합과 혼동되지 않습니다.
+규칙 집합은 새 게임 설정 마법사의 **Rules** 선택지와 클래식 **Agents** 패널의 **Rules** 구역에 나타납니다. 파일에서 가져온 규칙 집합은 `local/<your id>`로 분류되므로 공식 규칙 집합이나 다른 사람의 규칙 집합과 혼동되지 않습니다.
 
 ### 이미 가져온 규칙 집합 변경하기
 
@@ -161,13 +161,13 @@ your-repository/
     another-system.json
 ```
 
-사용자는 저장소를 한 번 추가하고 내용을 검토한 뒤, 나중에 동기화하여 새 버전을 받습니다. 사용자 지정 저장소 목록은 고급 기능입니다. 서버 운영자가 `ENABLE_CUSTOM_AGENT_REPOS=true`로 켠 다음 **Agents → Agent Organizer → Custom Sources**(에이전트 → Agent Organizer → 사용자 지정 소스)를 엽니다. 저장소의 규칙 집합은 `alice/ember-roads`처럼 저장소 소유자 이름 아래 분류되므로, 두 작성자가 모두 `v20`이라는 규칙 집합을 게시해도 충돌하지 않습니다.
+사용자는 저장소를 한 번 추가하고 내용을 검토한 뒤, 나중에 동기화하여 새 버전을 받습니다. 사용자 지정 저장소 목록은 고급 기능입니다. 서버 운영자가 `ENABLE_CUSTOM_AGENT_REPOS=true`로 켠 다음 **Library → Agents → Custom Sources**(라이브러리 → 에이전트 → 사용자 지정 소스)를 엽니다. 저장소의 규칙 집합은 `alice/ember-roads`처럼 저장소 소유자 이름 아래 분류되므로, 두 작성자가 모두 `v20`이라는 규칙 집합을 게시해도 충돌하지 않습니다.
 
 제한은 두 가지입니다. 저장소의 `rulesets` 바로 안에는 JSON 파일을 최대 32개까지 둘 수 있으며, 그보다 많은 저장소는 거부됩니다. `local/`은 파일에서 가져온 규칙 집합용으로 예약되어 있으므로 `local`이라는 계정은 규칙 집합을 게시할 수 없습니다.
 
 ### 공식 카탈로그로
 
-널리 플레이되고 라이선스가 명확한 시스템은 **Agent Organizer**를 통해 모두에게 제공할 수 있습니다. 제안하려면 [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 저장소에 풀 리퀘스트를 여세요. 배치는 그곳의 `ruleset-5e-2014` 패키지를 참고하세요.
+널리 플레이되고 라이선스가 명확한 시스템은 **Library → Agents**를 통해 모두에게 제공할 수 있습니다. 제안하려면 [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 저장소에 풀 리퀘스트를 여세요. 배치는 그곳의 `ruleset-5e-2014` 패키지를 참고하세요.
 
 ## 라이선스
 

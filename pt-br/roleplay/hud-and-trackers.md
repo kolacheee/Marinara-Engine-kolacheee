@@ -17,7 +17,7 @@ Se não funcionou: sem nenhum agente de tracker ativado, o HUD não mostra widge
 
 ## Onde o HUD aparece
 
-No celular, os trackers são os botões móveis **World State** e **Player & Tracker**. Toque em um deles para abrir o painel e em **X** para fechá-lo. Assim que World State tem detalhes, o botão dele mostra um pequeno banner com o local, o dia, a hora, o clima e a temperatura. Arraste os botões para qualquer lugar. O seu chat lembra onde você os deixou. Eles seguem o **Chat widget style** (estilo dos widgets do chat) escolhido em **Settings → Appearance → App** (Configurações → Aparência → Aplicativo).
+No celular, os trackers são os botões móveis **World State** e **Player & Tracker**. Toque em um deles para abrir o painel e em **X** para fechá-lo. Assim que World State tem detalhes, o botão dele mostra um pequeno banner com o local, o dia, a hora, o clima e a temperatura. Arraste os botões para qualquer lugar. O seu chat lembra onde você os deixou. Eles seguem o **Chat widget style** (estilo dos widgets do chat) escolhido em **Configurações → Aparência → Botões e janelas do chat**.
 
 No computador, os mesmos trackers aparecem em um de dois lugares:
 
@@ -113,7 +113,7 @@ O **Tracker Panel** é um painel lateral maior, com os mesmos dados. Ele também
 2. Clique no botão **Tracker Panel** (o dado) na barra de título, ao lado de fixar e travar. Ele fica destacado enquanto o painel está ativado.
 3. Clique nele de novo para ocultar o painel. No computador, os trackers passam a aparecer na janela Trackers.
 
-No computador, o painel cabe ao lado das suas mensagens, até a largura definida em **Desktop size** (tamanho no computador). Quando a janela é estreita demais para os dois, por exemplo com a barra lateral de chats aberta, as suas mensagens e a caixa de mensagem ficam um pouco mais estreitas. No celular ou no tablet, ativar o painel acrescenta um botão Tracker Panel que você pode arrastar. Toque nele para abrir o painel e toque de novo para fechá-lo. Enquanto o painel ou outra tela cobre o chat, os botões móveis do chat ficam ocultos e voltam aos mesmos lugares.
+No computador, o painel cabe ao lado das suas mensagens, até a largura definida em **Desktop size** (tamanho no computador). Quando a janela é estreita demais para os dois, por exemplo com a barra lateral aberta, as suas mensagens e a caixa de mensagem ficam um pouco mais estreitas. No celular ou no tablet, ativar o painel acrescenta um botão Tracker Panel que você pode arrastar. Toque nele para abrir o painel e toque de novo para fechá-lo. Enquanto o painel ou outra tela cobre o chat, os botões móveis do chat ficam ocultos e voltam aos mesmos lugares.
 
 ### Personalizar os campos dos trackers
 
@@ -132,7 +132,7 @@ O cartão grande de um personagem pode criar um retrato novo assim que o Charact
 
 ### Configurações do Tracker Panel
 
-Abra **Settings → Appearance**, abra o grupo **Roleplay** e encontre a seção **Tracker Panel**.
+Abra **Configurações → Roleplay** e encontre a seção **Tracker Panel**.
 
 | Configuração | O que faz |
 | --- | --- |

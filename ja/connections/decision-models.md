@@ -10,8 +10,8 @@ Decisionモデルとは、「Does the latest message move the scene to a new pla
 
 始める前に、[選択の目安](#which-one-to-pick)を参照してください。
 
-1. 上部バーの**Connections**(接続)をクリックし、**Jobs**(役割)ボックスを開きます。
-2. **Behind the scenes**(裏方の処理)の下にある**Decision**の行をクリックします。リストが開きます。
+1. **Library → Connections**(ライブラリー → 接続)を開きます。上部に**Defaults**(用途)ボックスがあります。
+2. **Decision**をクリックします。リストが開きます。
 3. モデルを選びます。リストは3つのグループに分かれています。
    - **None (decisions off)**(なし、判定オフ)がデフォルトです。何も問い合わせず、エージェントエディターの起動質問欄は無効のままです。
    - **Built-in model**(内蔵モデル)には、Marinaraが自分のコンピューター上で動かすモデルが並びます。**Built-in model**、**Built-in model (utility)**(補助用の内蔵モデル)、**Built-in model (decisions)**(判定用の内蔵モデル)です。情報はコンピューターの外に出ません。
@@ -37,15 +37,15 @@ Decisionモデルとは、「Does the latest message move the scene to a new pla
 
 JevとOpen-Jevは別のモデルです。JevはTypeSafeのホスト型モデルで、直接またはOpenRouter経由で利用できます。[Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B)はQwenを基盤に別途公開されたモデルで、Marinaraでローカル実行できます。Open-Jevのテストは、ホスト型のJevを測定したものではありません。
 
-Android(Termux)では**Built-in decision model**は動作せず、スマートフォンのプロセッサーで動く小型のローカルモデルでは遅すぎることがあります。OpenRouter経由のJevなど、ホスト型のアカウントが実用的です。[Decision接続の設定](#set-up-a-decision-connection)を参照してください。
+Android(Termux)では**Built-in decision model**は動作せず、スマートフォンのプロセッサーで動く小型のローカルモデルでは遅すぎることがあります。OpenRouter経由のJevなど、ホスト型のアカウントが実用的です。[Decisionアカウントの設定](#set-up-a-decision-account)を参照してください。
 
-プリセット、カード、エージェントは「Decisionモデル」を前提に書き、「Jev必須」とはしないでください。どのモデルでも同じ判定文の構文を使いますが、モデルによって回答が異なることがあります。判定を使うコンテンツをインポートすると、カスタムエージェントやAgent Organizerからのインストールも含め、Marinaraはこのガイドへのリンク付きの通知を表示します。プロファイル全体のZIPを復元した場合は表示されません。
+プリセット、カード、エージェントは「Decisionモデル」を前提に書き、「Jev必須」とはしないでください。どのモデルでも同じ判定文の構文を使いますが、モデルによって回答が異なることがあります。判定を使うコンテンツをインポートすると、カスタムエージェントや公式エージェントのインストールも含め、Marinaraはこのガイドへのリンク付きの通知を表示します。プロファイル全体のZIPを復元した場合は表示されません。
 
 ## 内蔵モデルを使う
 
 内蔵モデルをダウンロード済みなら、アカウントも費用もなしで判定に使えます。[内蔵モデルのセットアップ](local-model.md)を参照してください。
 
-1. **Jobs**(役割)ボックスの**Behind the scenes**(裏方の処理)の下にある**Decision**の行をクリックします。
+1. Connectionsページの**Defaults**(用途)ボックスにある**Decision**をクリックします。
 2. **Built-in model**(内蔵モデル)を選びます(補助用のモデルがある場合は**Built-in model (utility)**(補助用の内蔵モデル)でもかまいません)。
 3. **Decision settings**(判定の設定)の歯車をクリックし、**Test**(テスト)をクリックします。
 
@@ -69,31 +69,31 @@ Marinaraはモデルにはい・いいえの質問を1つ送り、1トークン�
 
 チャットモデルをOllama、LM Studio、llama.cpp、またはほかのOpenAI互換サーバーで動かしているなら、Marinaraが2つ目のコピーを読み込まなくても、そのモデルが判定に回答できます。
 
-1. **Connections**(接続)パネルでそのモデルの**⋯**をクリックし、**Use this model for decisions**(このモデルを判断に使う)を選びます。**Add account**(アカウントの追加)ウィンドウが判定のステップで開き、同じアドレス、モデル、キーが入っています。
+1. **Library → Connections**(ライブラリー → 接続)を開き、**Add connection**(接続を追加)をクリックします。**Decision**(判断)タブを開いて**Own decision server**(独自の判断サーバー)を選びます。チャットモデルと同じアドレスとキーを入力してください。(クラシックレイアウトでは、モデルの**⋯**にある**Use this model for decisions**(このモデルを判断に使う)を使うと、これらが入力されます。)
 2. モデルを選び、**Test decision**(判定をテスト)をクリックします。テストに成功すると、サーバーが対数確率を返したかと、モデルが先に推論する必要があったかが表示されます。**Done**(完了)をクリックします。
-3. **Behind the scenes**(裏方の処理)の下にある**Decision**の行をクリックし、新しいモデルを選びます。
+3. **Defaults**(用途)ボックスの**Decision**をクリックし、新しいモデルを選びます。
 
 自分で作成することもできます。ソースを**OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**(OpenAI互換チャットモデル)にしたDecisionアカウントを使い、チャット用のアカウントと同じアドレス(Ollamaなら例えば`http://localhost:11434/v1`)と、サーバーが使うモデル名を指定します。
 
 問い合わせ方は内蔵モデルと同じで、判定文ごとにはい・いいえの1語を求めます。サーバーが同時にいくつのリクエストを処理できるかMarinaraには分からないため、判定文は1つずつ送ります。アカウントの**Thinking**(推論)は常に**Auto**です。別のコンピューター上のサーバーには`PROVIDER_LOCAL_URLS_ENABLED`が必要です。[ローカルモデルやセルフホストモデルへの接続](local-self-hosted.md)を参照してください。
 
-<a id="set-up-a-decision-connection"></a>
+<a id="set-up-a-decision-account"></a>
 
-## Decision接続の設定
+## Decisionアカウントの設定
 
 ホスト型のDecisionアカウントは、選択した最近のメッセージと判定文をサービスに送信し、料金が発生することがあります。Smart応答順では[キャラクター一覧](#what-the-model-sees)も送信します。
 
-1. 上部バーの**Connections**(接続)をクリックし、**Add**(追加)をクリックします。
-2. **Decisions**(判定)の下で、**TypeSafe**または**Own decision server**(自分の判定サーバー)をクリックします。OpenRouterの場合は、**Chat**(チャット)の下の**OpenRouter**をクリックして接続し、モデルの**⋯**メニューにある**Use this key for decisions**(このキーをDecisionに使用)を使います。
-3. **API key**(APIキー)を入力します。**Own decision server**の場合は**Server address**(サーバーのアドレス)を入力します。**Connect**(接続)をクリックします。ウィンドウが閉じ、パネルに新しいアカウントが表示されます。
-4. **Behind the scenes**(裏方の処理)の下にある**Decision**の行をクリックし、新しいモデルを選びます。
-5. テストするには、パネルでモデルをクリックして**Edit model**(モデルの編集)を開き、**Provider tests**(プロバイダーのテスト)カードの**Test provider**(プロバイダーをテスト)をクリックします。**Own decision server**のモデルには、そこに**Test provider**ボタンがありません。代わりに、パネルでアカウントの**⋯**メニューを開き、**Test**(テスト)をクリックします。
+1. **Library → Connections**(ライブラリー → 接続)を開き、**Add connection**(接続を追加)をクリックします。
+2. **Decision**(判断)タブで、**TypeSafe**または**Own decision server**(独自の判断サーバー)をクリックします。OpenRouterの場合は、**Text**(テキスト)タブで**OpenRouter**をクリックして接続し、モデルの**⋯**メニューにある**Use this key for decisions**(このキーをDecisionに使用)を使います。
+3. **API key**(APIキー)を入力します。**Own decision server**の場合は**Server address**(サーバーのアドレス)を入力します。**Connect**(接続)をクリックします。ウィンドウが閉じ、Connectionsページに新しいアカウントが表示されます。
+4. **Defaults**(用途)ボックスの**Decision**をクリックし、新しいモデルを選びます。
+5. テストするには、Connectionsページでモデルをクリックして**Edit model**(モデルの編集)を開き、**Provider tests**(プロバイダーのテスト)カードの**Test provider**(プロバイダーをテスト)をクリックします。**Own decision server**のモデルには、そこに**Test provider**ボタンがありません。代わりにアカウントの**⋯**をクリックし、**Edit account**(アカウントを編集)を選んで、**Test account**(アカウントをテスト)をクリックします。
 
-**Test provider**に成功すると、確率、回答にかかった時間、アカウントの制限時間が表示されます。**⋯**メニューにあるアカウントの**Test**では、動作したかどうかと、かかった時間だけが表示されます。テストは少なくとも10秒待ちます。制限時間がそれより長い場合は、その制限時間の5秒後まで待ちます。回答が制限時間より長くかかった場合は、結果にその旨が表示されます。チャットでは、その回答は回答なしとして扱われます。
+**Test provider**に成功すると、確率、回答にかかった時間、アカウントの制限時間が表示されます。**Test account**では、動作したかどうかと、かかった時間だけが表示されます。テストは少なくとも10秒待ちます。制限時間がそれより長い場合は、その制限時間の5秒後まで待ちます。回答が制限時間より長くかかった場合は、結果にその旨が表示されます。チャットでは、その回答は回答なしとして扱われます。
 
 うまくいかなかった場合は、[トラブルシューティング](#troubleshooting)を参照してください。
 
-Decisionエディター(判定モデルの**Edit model**)には、次の欄があります。
+Decisionモデルには、次の欄があります。パネルでモデルをクリックして**Edit model**(モデルの編集)を開くか、**Defaults**(用途)ボックスの**Decision**行にある歯車をクリックして、現在のDecisionモデルの**Decision settings**(判定の設定)を開きます。
 
 | 欄 | 内容 |
 | --- | --- |
@@ -117,6 +117,7 @@ TypeSafeは`https://api.typesafe.ai`に送信します。**Base URL**(ベースU
 - [ロアブックのDecision欄](../lorebooks/entries.md#decision-activation)は、ロアブックのスキャン中にRequireまたはTriggerを確認します。回答がない場合、Requireは新しいエントリーを通せず、Triggerは起動経路を追加しません。Stickyによる保持と、Triggerの通常の起動経路は引き続き適用されます。
 - [Smart応答順](../chats/group-chats.md#response-order-individual-only)は、オンにしている場合、グループチャットで次に誰が話すかを採点します。回答がない場合、Smart応答順は通常のAI呼び出しを行います。
 - [アクティブなキャラクターの自動化](../chats/group-chats.md#automate-active-characters-merged-only)は、**Decision model**に設定している場合、MergedのRoleplayグループで返信のたびに、シーンにいるのは誰かを尋ねます。回答がない場合、どのキャラクターについても回答が得られなければ、Character Trackerの直近のシーンを使うか、一覧をそのまま維持します。
+- [IllustratorのDecisionモデルによる確認](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)は、チャットのIllustrator設定でオンにすると、Roleplayの返信ごとに場所や天気が変わったかを確認します。回答がない場合: これまでどおり、IllustratorまたはWorld Stateが要求したときだけ背景が変わります。
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model)は、Roleplayのシーン境界と記憶の選択に、専用のDecisionモデルを使えます。そのチャットのAdvanced Memory設定で**Use Decision model**(判断モデルを使用)をオンにしてください。回答がない場合、失敗した判定は通常の記憶の呼び出しまたはシーン確認に戻ります。要約には引き続き補助モデルを使います。
 
 起動質問はエージェントを実行するかどうかを決め、プロンプト内の判定文は、実行中のそのエージェントに何を伝えるかを決めます。はい・いいえの条件には`{{#if decision:"..."}}`を、複数の回答からの選択には`{{#if decision_choice:"..." == "..."}}`を使います。
@@ -214,7 +215,7 @@ Open-JevモデルにはLinux **x86-64**、コンピュート能力7.5以降のNV
 
 これらはカタログの推定値です。9Bモデルでは、24 GBのGPUに余裕がほとんど残りません。自分のカードに対するインストーラーの診断結果を確認してください。
 
-1. **Connections**(接続)パネルで**Add**(追加)をクリックし、**Decisions**(判定)の下にある**Built-in model (decisions)**(判定用の内蔵モデル)をクリックします。**Built-in decision model**というタイトルのウィンドウが開きます。**Built-in model**(内蔵モデル)カードのページからも開けます。
+1. **Connections**(接続)パネルの**Add**(追加)をクリックし、**Decision**(判断)タブで**Built-in model (decisions)**(内蔵モデル、判定用)をクリックします(このコンピューターで実行できる場合に表示されます)。**Built-in decision model**というウィンドウが開きます。**Built-in model**カードのページからも開けます。
 2. 警告を読み、**Use the built-in decision model**(内蔵の判定モデルを使用)をオンにします。**Turn on the built-in decision model?**というタイトルのダイアログに、自分のコンピューターに対する診断結果が表示されます。**Enable**(有効化)をクリックします。診断結果が警告の場合は**Enable anyway**(それでも有効化)をクリックします。
 3. **Available decision models**(利用できる判定モデル)の下で、**Open-Jev 2B**または**Open-Jev 9B**を選びます。**Download and install**(ダウンロードしてインストール)をクリックし、サイズ、ハードウェアの診断結果、ライセンスを確認します。それまでは何もダウンロードされません。
 4. **Behind the scenes**(裏方の処理)の下にある**Decision**の行をクリックし、**Built-in model (decisions)**を選びます。

@@ -41,6 +41,85 @@ El significado del número depende del tipo: `dice-sum` lo suma a la tirada; `di
 - `unmodified`: caras de un único dado que el registro marca cuando el primer dado las muestra (1.136), para poder aplicar las tablas que tratan aparte "un 66 sin modificar": `[66, 100]`. El registro indica `unmodified="66"`, la tarjeta lo muestra y se indica al Game Master que aplique lo que dicen las reglas al respecto.
 - `difficultyLadder`: dificultades que se indica al GM que elija. `dc` es el número que debe alcanzar el total. El Game Master puede nombrar un peldaño en vez de escribir su número, como `difficulty="Hard"`, y el motor toma el número del peldaño.
 
+#### Dos dados con nombre
+
+Una prueba sumada puede tirar dos dados con un nombre cada uno, cuando la historia depende de cuál obtuvo el valor más alto (Capability API 1.821). Un conjunto de reglas comunitario no necesita nada; uno empaquetado declara 1.821.
+
+```json
+"dice": { "count": 2, "sides": 12 },
+"duality": {
+  "dice": [{ "id": "hope", "label": "Hope" }, { "id": "fear", "label": "Fear" }],
+  "tieIsCritical": true,
+  "text": "With Hope the player gains a Hope; with Fear the Game Master gains a Fear."
+}
+```
+
+- `dice`: los dos nombres, en el orden en que se tiran los dados. El primer dado de `rolls` es el primero que se nombra.
+- `tieIsCritical`: opcional, `true` salvo que indiques lo contrario. Un empate es entonces un éxito crítico sea cual sea el total.
+- `text`: opcional. Una línea que le dice al Game Master qué significa cada dado en la mesa.
+
+El total sigue siendo los dos dados más el modificador, comparado con la dificultad como siempre. El registro indica qué dado obtuvo el valor más alto, `duality="Hope"`, o `duality="tie"`, la tarjeta de dados lo muestra y se le indica al Game Master que narre la prueba con ese dado.
+
+`duality` necesita `dice.count` 2, caras normales (sin `faces`), ningún `openEnded` y `advantage` false, y los dos id deben ser distintos. Las dos etiquetas también deben ser distintas, y ninguna puede ser `tie`, porque el registro nombra al dado que va por delante mediante su etiqueta. Una sobrescritura puede establecerlo o quitarlo para algunas pruebas.
+
+#### Un dado de trama
+
+Una prueba sumada puede tirar un dado más cuyas caras llevan símbolos en lugar de números (Capability API 1.822). Un conjunto de reglas comunitario no necesita nada; uno empaquetado declara 1.822.
+
+```json
+"plotDie": {
+  "label": "Plot die",
+  "sides": 6,
+  "faces": [
+    { "face": 1, "symbol": "complication", "bonus": 2 },
+    { "face": 2, "symbol": "complication", "bonus": 4 },
+    { "face": 5, "symbol": "opportunity" },
+    { "face": 6, "symbol": "opportunity" }
+  ],
+  "text": "A complication goes wrong alongside the result; an opportunity offers something more."
+}
+```
+
+- `label`: cómo se llama el dado en la tarjeta y para el Game Master.
+- `sides`: de 2 a 20.
+- `faces`: las caras que llevan algo. Cada una tiene un `symbol`, `"complication"`, `"opportunity"` o `null`, y un `bonus` opcional (de -20 a 20) que se añade al total. Una cara que no incluyas está en blanco.
+- `text`: opcional. Una línea que le dice al Game Master qué significan los símbolos en la mesa.
+
+El dado se tira solo cuando el Game Master lo pide, añadiendo `plot="true"` a la prueba. Se tira después de los dados de la propia prueba y no es uno de `rolls`. El registro indica `plotFace="2" plotSymbol="complication" plotBonus="4" plotLabel="Plot die"`. La bonificación está dentro de `modifier`, así que los dados y el modificador siguen sumando el total. La tarjeta de dados indica qué salió en el dado.
+
+Cada cara de la lista debe existir en el dado y aparecer una sola vez.
+
+#### Un total natural y una franja desplazada
+
+Dos claves opcionales cubren los sistemas de suma que leen niveles a partir de más de un dado (Capability API 1.823). Un conjunto de reglas comunitario no necesita nada; uno empaquetado declara 1.823.
+
+```json
+"dice": { "count": 2, "sides": 10 },
+"naturalTotal": { "atLeast": 19 },
+"tierShift": { "max": 1, "text": "A double edge is +1, a double bane -1." }
+```
+
+- `naturalTotal`: el total de los propios dados, antes de añadir nada, que se considera crítico. `atLeast` es un éxito crítico y `atMost` un fracaso crítico; indica uno o ambos. Funciona con cualquier cantidad de dados, mientras que `naturals` necesita uno solo. Un crítico cae en la franja `on` de ese crítico o, si no la hay, en la mejor o la peor franja.
+- `tierShift`: permite al Game Master mover la franja de resultado de una prueba con `shift="+1"` o `shift="-1"`, hasta `max` franjas (de 1 a 3) y nunca más allá de los extremos. Necesita `outcomes`. El registro indica `shift="+1"` cuando la franja se ha movido, y la tarjeta de dados lo muestra. `text` es una línea opcional que le dice al Game Master cuándo usarlo.
+
+Una bonificación fija, como el +2 de una sola ventaja, es un número que añade el modificador de un estado. `tierShift` es para las reglas que mueven una franja entera.
+
+Cada límite de `naturalTotal` debe ser un total que puedan mostrar los dados (2d10 muestra de 2 a 20, leído mediante `dice.faces` cuando el conjunto de reglas lo define), y `atMost` debe estar por debajo de `atLeast`.
+
+#### Una prueba sin dados
+
+Algunos sistemas no tiran nada: en Amber y Nobilis, una prueba compara una puntuación con una dificultad, y gana la más alta (Capability API 1.825). Un conjunto de reglas comunitario no necesita nada; uno empaquetado declara 1.825.
+
+```json
+"kind": "dice-sum",
+"dice": { "count": 0, "sides": 6 },
+"abilityModifier": { "op": "identity" }
+```
+
+El total es el número de la propia ficha del personaje, comparado con la dificultad exactamente igual que en una prueba sumada: el mismo atributo, competencia, `adjust` y penalización por heridas, las mismas franjas de resultado, escalas y sobrescrituras. El registro indica `dice="0d6" rolls=""` con el modificador y el total, la tarjeta de dados muestra la comparación ("Warfare 4 vs 3") en lugar de un dado, y se le indica al Game Master que el motor compara en vez de tirar.
+
+Aquí se rechaza todo lo que lee un dado, de modo que una prueba sin dados no pueda ignorar silenciosamente una clave que lo necesita: `advantage`, `openEnded`, `unmodified`, `dice.faces`, `duality`, `plotDie`, `naturalTotal` y una política `naturals`. Una sobrescritura puede seguir dando sus propios dados a pruebas concretas.
+
 ### `dice-pool`: tirar los dados y contarlos
 
 El número de la ficha es el **tamaño de la reserva**, no una bonificación adicional. Una puntuación de 3 y un oficio que vale 2 tiran cinco dados. Esa es toda la idea: sin vocabulario ni editor de fichas nuevos, un sistema cuyas puntuaciones son puñados de dados usa las mismas `abilities`, `skills` y `proficiencyTiers` que cualquier otro.
@@ -79,6 +158,8 @@ El número de la ficha es el **tamaño de la reserva**, no una bonificación adi
 - `botch`: opcional. Si **ningún** dado tuvo éxito y salió una cara igual o inferior a `upTo`, hay fracaso crítico. Una reserva cuyo único éxito se canceló ha fallado, pero no es una pifia. `"rule": "halfOrMore"` lo interpreta de otra forma: caras iguales o inferiores a `upTo` en al menos la mitad de los dados tirados al principio (sin contar explosiones) son un fracaso crítico si ningún dado tuvo éxito; si no, el resultado se mantiene y se marca con `complication="true"`: algo sale mal a la vez. `"noSuccesses"` es el predeterminado.
 - `exceptional`: opcional. Esta cantidad de éxitos netos o más, en una prueba superada, es un éxito crítico.
 - `situationalDice`: opcional. Límites de dados que el GM puede añadir o quitar con `bonus=` por acrobacias, heridas o mala iluminación.
+- `pairs`: opcional (Capability API 1.824). `{ "from": 10, "successes": 4 }` hace que cada par de dados con `from` o más cuente `successes` entre ambos, cuando habrían contado uno cada uno, y una prueba superada con un par es un éxito crítico. Tres dieces son un par y uno más: cinco. `from` es igual o superior al objetivo más alto, y `pairs` no puede coexistir con `double` ni `stances`.
+- `hunger`: opcional (Capability API 1.824). `{ "label": "Hunger", "max": 5, "text": "..." }` permite que hasta `max` dados de la reserva sean especiales. El Game Master los pide en una prueba con `hunger="N"`, normalmente leído de un contador de la ficha. Son los primeros dados de `rolls`, forman parte de la reserva (nunca son dados extra) y ninguna repetición los afecta. Un éxito crítico con uno de ellos en la cara crítica (la cara de `pairs`, o la más alta del dado) se marca con `messy="true"`, y un fallo con uno de ellos mostrando 1 se marca con `bestial="true"`. El registro también indica `hunger="2" hungerLabel="Hunger"`, y la tarjeta de dados lo muestra todo. `max` no puede superar `pool.max`.
 - `reroll`: opcional. Repeticiones que concede el sistema sin que nadie las pague, hasta seis, cada una con un `id` que el GM nombra en una prueba con `reroll=`. Las caras iguales o inferiores a `upTo` se vuelven a tirar: con `"once"`, la cara nueva se queda sea cual sea; con `"until"`, se sigue tirando hasta que salgan más altas. `upTo` va de 1 a una cara menos que las del dado, porque repetir todas las caras no terminaría nunca, y un `until` se detiene de todos modos tras cien repeticiones en una prueba. No se tira ninguna salvo que la prueba la nombre. Una prueba hace una sola repetición: si un gasto o una entrada que usó el personaje también compró una, se tira la que alcanza más caras y, si alcanzan las mismas, `until` antes que `once`.
 - `difficultyLadder`: `successes` indica cuántos éxitos se necesitan. Un peldaño también puede definir `target`, pero solo si es ajustable y dentro de sus límites. Ese es el objetivo con el que cuenta una prueba en ese peldaño: cuando el GM nombra el peldaño con `difficulty=` o escribe un `dc=` que solo necesita exactamente un peldaño. Si varios peldaños necesitan la misma cantidad de éxitos, `dc=` por sí solo no indica cuál se quería, así que el objetivo sigue siendo el predeterminado; nombra el peldaño.
 

@@ -31,7 +31,7 @@ Mitgelieferte Dateien und Ordner sind geschützt. Im **Asset Browser** kannst du
 Der **Asset Browser** ist ein Dateimanager für Game-Assets. Öffne ihn über **Settings** (Einstellungen):
 
 1. Öffne **Settings**.
-2. Wechsle zum Tab **Imports**.
+2. Wechsle zum Tab **Game** (Spiel).
 3. Such **Game Assets** und klick auf **Asset Browser**.
 
 Oder öffne ihn aus einem Spiel:
@@ -57,7 +57,7 @@ Du musst dich in einem Kategorie-Ordner befinden. Legst du Dateien auf der obers
 
 ### Upload über Settings
 
-1. Öffne **Settings** und wechsle zum Tab **Imports**.
+1. Öffne **Settings** und wechsle zum Tab **Game**.
 2. Wähle in **Game Assets** unter **Type** (Typ) eine Kategorie: **Music**, **Ambient**, **Sound Effects**, **Sprites** oder **Backgrounds**.
 3. Leg unter **Folder** (Ordner) das Ziel fest, oder behalte den Standard.
 4. Klick auf **Choose Files** (Dateien auswählen) und wähle deine Dateien aus.
@@ -155,7 +155,7 @@ Die mitgelieferten Starter-Hintergründe gelten als gemeinsam, außer den Fantas
 
 Der Game Mode kann Soundeffekte und Musik über ein Konto vom Typ **Music & Sound Effects** (Musik und Soundeffekte) generieren. Wähle ElevenLabs, SunoAPI oder einen eigenen kompatiblen Server. Jeder neue Sound oder Titel nutzt dieses Dienstkonto. Mitgeliefertes Audio bleibt ohne Generierung verfügbar.
 
-**Bevor du anfängst:** Du brauchst ein Konto vom Typ **Music & Sound Effects**. Im Fenster **Add account** (Konto hinzufügen) gibt es keine Kachel dafür. Solche Konten entstehen durch ein Upgrade oder einen Import, mit **Import a backup** (Backup importieren) in **Connections** (Verbindungen). Siehe [Anbietereinrichtung und Grenzen](../connections/providers-reference.md#music--sound-effects).
+**Bevor du anfängst:** Du brauchst ein Konto vom Typ **Music & Sound Effects**. In der Liste **Add connection** (Verbindung hinzufügen) gibt es keinen Eintrag dafür. Solche Konten entstehen durch ein Upgrade oder einen Import, mit **Import** auf der Seite **Connections** (Verbindungen). Siehe [Anbietereinrichtung und Grenzen](../connections/providers-reference.md#music--sound-effects).
 
 1. Öffne in **Connections** das Modell des Kontos mit **Edit model** (Modell bearbeiten).
 2. Wähle den Dienst, trag seinen Key ein und wähle die Modelle für Musik und Soundeffekte. SunoAPI-Musik braucht außerdem eine öffentliche HTTPS-Callback-URL. Ein eigener Server braucht seine Endpunktpfade.

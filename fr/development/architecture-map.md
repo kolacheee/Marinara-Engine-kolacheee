@@ -41,7 +41,7 @@ Contenu actuel :
 - `schemas` : schémas Zod des entités persistées et partagées.
 - `constants` : fournisseurs, valeurs par défaut, modes de chat, listes de modèles, prompts d'agents.
 - `utils` : helpers purs, comme l'expansion des macros, l'encapsulation XML et le scoring musical.
-- `features` : manifestes et registre d'agents, définitions d'appels de fonction, packages de dossiers, le contrat et le registre du moteur de jeux au tour par tour (les jeux proviennent de packages facultatifs), ensembles de règles du Game Mode et leur combat (`rulesets`, `ruleset-combat`, `tactical-combat` et les fichiers `combat-*`), et le générateur de mondes avec ses fichiers de partage (kits d'univers, mondes, packs de tuiles, de plateaux et de créatures) dans `world`. Les fichiers `marinara-*.ts` (`ai`, `bestiary`, `bestiary-threat`, `classes`, `combat`, `items`, `loot`, `party`) contiennent les données et les calculs de Classic Marinara, l'ensemble de règles propre au moteur.
+- `features` : manifestes et registre d'agents, définitions d'appels de fonction, packages de dossiers, moteurs de jeux au tour par tour pour UNO, les échecs et le poker, ensembles de règles du Game Mode et leur combat (`rulesets`, `ruleset-combat`, `tactical-combat` et les fichiers `combat-*`), et le générateur de mondes avec ses fichiers de partage (kits d'univers, mondes, packs de tuiles, de plateaux et de créatures) dans `world`.
 
 Règles :
 
@@ -64,12 +64,12 @@ Structure actuelle de premier niveau :
 - `features` : modules de fonctionnalités extraits, aujourd'hui les sections de chat-settings, des morceaux du panneau de trackers, le multijoueur, ainsi que le contrat, la configuration, la scène et les moteurs de rendu des agents d'avatars (`features/avatars`).
 - `hooks` : hooks React Query et hooks d'exécution pour la plupart des fonctionnalités de l'API.
 - `lib` : helpers navigateur et client. Les helpers communs y côtoient pour l'instant des helpers propres à Game Mode.
-- `stores` : stores Zustand pour l'interface, l'exécution du chat, les agents, l'état du jeu, Game Mode, les assets, le sidecar, la traduction, la galerie, les rencontres, les écrans de combat et de fiches Roleplay, et les jeux de Conversation.
+- `stores` : stores Zustand pour l'interface, l'exécution du chat, les agents, l'état du jeu, Game Mode, les assets, le sidecar, la traduction, la galerie, les rencontres et les jeux au tour par tour.
 - `styles` : feuille de style globale et CSS propre aux thèmes.
 
 Recoupements notables aujourd'hui :
 
-- `components/game` importe `components/chat` pour réutiliser des éléments visuels comme les effets météo, la superposition de l'image épinglée, la barre d'outils du chat et ses fenêtres de commande. La galerie se trouve dans les réglages du chat (`features/chat-settings/ChatGalleryPanel.tsx`). Le Game Mode l'alimente via `hooks/use-chat-gallery-actions.ts`.
+- `components/game` importe `components/chat` pour réutiliser des éléments visuels comme les panneaux de météo et de galerie.
 - `components/chat` importe l'état du jeu et l'état des rencontres pour des fonctionnalités Roleplay.
 - `hooks/use-generate.ts` touche à l'état du chat, à l'état des agents, à l'état du jeu, à l'état de Game Mode, à l'état de traduction et aux réglages d'interface.
 - Les helpers `lib/game-*` sont propres à Game Mode mais vivent à côté des helpers globaux.
@@ -90,8 +90,6 @@ Structure actuelle de premier niveau :
 - `services/sidecar` : exécution locale, gestion des modèles, analyse de scène, post-traitement de scène.
 - `services/agents` : exécution des agents et routage des connaissances.
 - Fondations de fonctionnalités : `services/import`, `services/lorebook`, `services/image`, `services/haptic`, `services/tools`, `services/regex`, `services/professor-mari`, `services/mari-db`, `services/turn-games`, `services/spotify`, `services/video`, `services/generation`, `services/chat-summary`, `services/achievements`, `services/prompt-overrides`, `services/setup`, `services/noodle`, `services/memory-recall`, `services/avatars` (stockage et génération des modèles d'avatars, et classificateur d'émotions des agents d'avatars), `speech-to-text.service.ts` et `discord-webhook.ts`.
-- `bin/mari.ts` : l'outil en ligne de commande `mari` (la seule entrée `bin` du package), qui communique avec un serveur local en cours d'exécution.
-- `assets/` : les données fournies avec le serveur, dont les arrière-plans et ressources de jeu par défaut, les packs de plateaux et les tuiles de la carte du monde, les compétences de Mari, le plugin Claude Code, les fichiers de verrouillage des dépendances d'exécution et le script qui lance les extensions personnelles.
 - `db/schema` : définitions des tables fichier pour les données stockées sous `DATA_DIR/storage`.
 - `db/file-schema.ts`, `db/file-query.ts` : métadonnées des tables natives et expressions de requête.
 - `db/file-backed-store.ts` : store de tables en mémoire, frontière transactionnelle, reprise après crash et persistance par instantanés JSON. Voir [Stockage natif sur fichiers (développeurs)](file-storage.md).
@@ -165,7 +163,7 @@ Ces fichiers risquent le plus de ralentir les travaux à venir, parce qu'ils mé
 | `packages/server/src/routes/generate.routes.ts` | génération partagée et agents | Route, streaming, prompt, agents, stockage et effets de bord cohabitent dans un seul fichier. |
 | `packages/server/src/routes/game.routes.ts` | `MODE-GAME` | Handlers d'API, flux du GM, analyse de scène, assets, combat et persistance sont couplés. |
 | `packages/client/src/components/game/GameSurface.tsx` | `MODE-GAME` | Rendu, orchestration de l'état, assets, logs, narration, combat et effets sont couplés. |
-| `packages/client/src/components/chat/ChatSettingsDrawer.tsx` | réglages de chat mélangés | L'extraction des sections est en cours dans `features/chat-settings`, mais le panneau latéral reste gros. |
+| `packages/client/src/features/chat-settings/ChatSettingsDrawer.tsx` | réglages de chat mélangés | L'extraction des sections est en cours dans `features/chat-settings/sections`, mais le panneau latéral reste gros. |
 | `packages/client/src/components/game/GameNarration.tsx` | `MODE-GAME` | Le rendu de l'affichage et le formatage des commandes sont étroitement couplés. |
 | `packages/client/src/components/game/GameCombatUI.tsx` | `MODE-GAME` | L'affichage du combat, les contrôles et les logs peuvent devenir des panneaux et des hooks plus petits. |
 | `packages/client/src/components/chat/RoleplayHUD.tsx` | `MODE-ROLEPLAY` | Une découpe est en partie faite via `RoleplayHUDActionsMenu.tsx` et `RoleplayHUDPanels.tsx`. |
@@ -254,7 +252,7 @@ packages/shared/src/
   utils/
 ```
 
-L'ancienne organisation à plat en `types`, `schemas` et `constants` ne raconte plus toute l'histoire. `packages/shared/src/features/` héberge désormais les agents, les appels de fonction, les packages de dossiers, les jeux au tour par tour, les ensembles de règles et le combat, ainsi que le générateur de mondes. Le premier nettoyage de `shared` doit se limiter aux types et se faire par petites touches, pas par un déplacement massif de fichiers.
+L'ancienne organisation à plat en `types`, `schemas` et `constants` ne raconte plus toute l'histoire. `packages/shared/src/features/` héberge désormais les agents, les appels de fonction, les packages de dossiers, les jeux au tour par tour, les ensembles de règles et le combat, ainsi que le générateur de mondes. Le premier nettoyage de shared doit se limiter aux types et se faire par petites touches, pas par un déplacement massif de fichiers.
 
 ## Règles de migration
 
@@ -279,7 +277,7 @@ L'ancienne organisation à plat en `types`, `schemas` et `constants` ne raconte 
 Ces passes de nettoyage sont de bons points de départ : elles réduisent le couplage sans changer le comportement.
 
 1. Découper `components/chat` en groupes commun, Conversation et Roleplay.
-   - Candidats communs : `ChatCommonOverlays`, `ChatBranchesPanel` et `ChatGalleryPanel` (désormais tous deux dans `features/chat-settings`), `WeatherEffects`, et les primitives de message et de saisie partagées.
+   - Candidats communs : `ChatCommonOverlays`, `ChatBranchSelector`, `ChatGalleryDrawer`, `WeatherEffects`, et les primitives de message et de saisie partagées.
    - Candidats Conversation : `ChatConversationSurface`, `ConversationView`, `ConversationMessage`, `ConversationInput`.
    - Candidats Roleplay : `ChatRoleplaySurface`, `SpriteOverlay`, `SceneBanner`, `CyoaChoices`, `EncounterModal`. La découpe du HUD de Roleplay est en partie faite dans `RoleplayHUDActionsMenu.tsx` et `RoleplayHUDPanels.tsx`.
 2. Déplacer sous un module de jeu les helpers client réservés à Game Mode.

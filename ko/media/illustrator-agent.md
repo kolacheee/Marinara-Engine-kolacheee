@@ -23,7 +23,7 @@ Illustrator는 프롬프트를 쓰지만, 그림은 별도의 이미지 모델�
 
 ## Illustrator 켜기
 
-시작하기 전에 **Agent Organizer**에서 **Illustrator**를 설치하세요. [에이전트: 채팅을 도와주는 AI](../agents/agents-overview.md)를 참고하세요.
+시작하기 전에 **Library → Agents**(라이브러리 → 에이전트)에서 **Illustrator**를 설치하세요. [에이전트: 채팅을 도와주는 AI](../agents/agents-overview.md)를 참고하세요.
 
 1. 그림을 넣을 Roleplay 채팅을 여세요.
 2. **Chat Settings**(채팅 설정)를 열고 **Agents**(에이전트)를 찾으세요.
@@ -99,7 +99,7 @@ Roleplay 채팅의 **Chat Settings → Agents → Illustrator**에는 **Illustra
 - **Clips only**에서는 모든 실행이 클립이 되고, **Video Run Interval**이 Illustrator의 실행 빈도를 정하며, **Image Run Interval**은 숨겨집니다.
 - 값이 없는 채팅은 **Open Setup** 화면의 **Video Run Interval**을 쓰고, 거기에도 없으면 5를 씁니다.
 - **0**: 스스로 클립을 만들지 않습니다. `[illustrate]` 그림도 마찬가지이며, 이때는 그림이 대신 나옵니다.
-- 답변 하나가 받는 클립은 최대 **Videos per reply**(응답당 동영상 수)개입니다. 이 값은 **Settings → Generations → Video Generation**(설정 → 생성 → 동영상 생성)에 있습니다.
+- 답변 하나가 받는 클립은 최대 **Videos per reply**(응답당 동영상 수)개입니다. 이 값은 **Settings → Media → Video Generation**(설정 → 미디어 → 동영상 생성)에 있습니다.
 - Gallery에서 그림을 애니메이션으로 만드는 기능은 계속 쓸 수 있습니다. **Clips only**에서는 메시지의 **Illustrate** 버튼이 클립을 만듭니다.
 - 클립을 받은 답변을 스와이프하면 새 답변으로 계산되어 자체 클립을 받을 수 있습니다. 이전 스와이프는 기존 클립을 유지합니다.
 
@@ -112,6 +112,16 @@ Roleplay 채팅의 **Chat Settings → Agents → Illustrator**에는 **Illustra
 자체 그림이 없는 클립은 페르소나를 포함해 이름이 나온 모든 인물을 묘사합니다. 아바타 첫 프레임은 처음 이름이 나온 인물에서 시작합니다.
 
 메시지의 **Illustrate** 버튼으로 Illustrator를 다시 실행해도 **Illustrator makes**와 **First frame**을 따릅니다.
+
+## 배경과 날씨
+
+Illustrator는 배경도 그립니다. **Chat Settings → Agents**(채팅 설정 → 에이전트)의 Illustrator 카드에서 설정하세요.
+
+- **Generate Scene Backgrounds**(장면 배경 생성)는 이야기가 새로운 장소로 이동하면 배경을 그립니다. 그 장소의 그림이 이미 있으면 그리지 않습니다.
+- **Weather Versions of Backgrounds**는 현재 배경을 이야기 속 날씨에 맞춰 다시 그립니다. 움직이는 비나 눈은 방의 창문에만 표시합니다.
+- **Decision Model Checks**는 Decision 모델이 답변마다 새로운 장소나 날씨를 확인하게 하므로, 실행 간격을 기다리지 않고 배경을 만듭니다.
+
+세 가지 모두 기본값은 꺼짐입니다. [Illustrator가 만드는 배경](scene-backgrounds.md)을 참고하세요.
 
 ## NovelAI의 여러 캐릭터 장면
 
@@ -127,11 +137,11 @@ V5는 최대 22명, V4와 V4.5는 최대 6명을 받습니다. 보이는 캐릭�
 
 ## 갤러리 저장과 프롬프트 확인
 
-**Settings → Generations → Image Generation**(설정 → 생성 → 이미지 생성)의 **Automatically save generated images to character galleries**(생성한 이미지를 캐릭터 갤러리에 자동 저장)는 기본적으로 켜져 있습니다. 끄면 채팅 일러스트와 셀카가 이미지에 나온 캐릭터와 페르소나의 갤러리에 더 이상 추가되지 않습니다. 이미지는 대화와 채팅 Gallery에 계속 표시되며, 갤러리에 직접 저장하는 기능도 계속 동작합니다. 기존 항목은 바뀌지 않습니다. 갤러리는 이미지 파일을 공유하므로 이 설정은 갤러리 포함 여부를 정할 뿐 파일을 삭제하지 않습니다.
+**Settings → Media → Image Generation**(설정 → 미디어 → 이미지 생성)의 **Automatically save generated images to character galleries**(생성한 이미지를 캐릭터 갤러리에 자동 저장)는 기본적으로 켜져 있습니다. 끄면 채팅 일러스트와 셀카가 이미지에 나온 캐릭터와 페르소나의 갤러리에 더 이상 추가되지 않습니다. 이미지는 대화와 채팅 Gallery에 계속 표시되며, 갤러리에 직접 저장하는 기능도 계속 동작합니다. 기존 항목은 바뀌지 않습니다. 갤러리는 이미지 파일을 공유하므로 이 설정은 갤러리 포함 여부를 정할 뿐 파일을 삭제하지 않습니다.
 
 새 NovelAI 일러스트의 경우 이미지 검사기에 장면 및 스타일 프롬프트가 표시되고, 그 뒤에 캐릭터별 긍정 설명이 ` | `로 구분되어 이어집니다. 갤러리에 저장되는 프롬프트도 같습니다.
 
-답변을 재생성하지 않고 프롬프트를 바꿔 일러스트를 다시 그리려면 일러스트를 열고 **Regenerate image**(이미지 재생성)를 사용하세요. [이미지 다시 만들기](scene-backgrounds.md#regenerating-an-image)를 참고하세요.
+답변을 재생성하지 않고 프롬프트를 바꿔 일러스트를 다시 그리려면 일러스트를 열고 **Regenerate image**(이미지 재생성)를 사용하세요. [이미지 다시 만들기](../chats/chat-gallery.md#regenerating-an-image)를 참고하세요.
 
 Roleplay의 이전 메시지나 범위를 그림으로 만들려면 `/illustrate range=12` 또는 `/illustrate range=12-18`을 사용하세요. [슬래시 명령어](../chats/slash-commands.md)를 참고하세요.
 
@@ -139,6 +149,7 @@ Roleplay의 이전 메시지나 범위를 그림으로 만들려면 `/illustrate
 
 - [이미지 생성 제공자와 설정](image-providers.md)
 - [이미지 스타일 프로필](style-profiles.md)
-- [장면 배경과 Gallery](scene-backgrounds.md)
+- [Illustrator가 만드는 배경](scene-backgrounds.md)
+- [채팅 Gallery](../chats/chat-gallery.md)
 - [에이전트: 채팅을 도와주는 AI](../agents/agents-overview.md)
 - [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)

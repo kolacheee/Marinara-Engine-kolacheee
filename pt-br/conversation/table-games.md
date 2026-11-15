@@ -2,7 +2,7 @@
 
 Jogue UNO, xadrez, pôquer, sinuca 8-Ball Pool, jogo da velha e pedra, papel e tesoura contra os personagens de um chat de Conversation. O Marinara distribui as cartas ou monta o tabuleiro, aplica todas as regras e faz cada personagem sentado narrar as suas jogadas no papel dele. Um tabuleiro ao vivo aparece acima da caixa de mensagem enquanto você joga.
 
-Cada jogo é um pacote opcional. Instale os que você quer em **Agents → Agent Organizer** e reinicie o Marinara quando o catálogo pedir. Um jogo que você não instalou não tem comando de barra, não aparece no seletor de jogos e a chave **Commands** dele fica escondida.
+Cada jogo é um pacote opcional. Instale os que você quer em **Biblioteca → Agentes** e reinicie o Marinara quando o catálogo pedir. Um jogo que você não instalou não tem comando de barra, não aparece no seletor de jogos e a chave **Commands** dele fica escondida.
 
 Regras que valem para todo jogo:
 

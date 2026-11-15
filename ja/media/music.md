@@ -6,7 +6,7 @@
 
 **Music DJ**は、任意でダウンロードするエージェントです。エージェントとは、チャットの裏側で動くヘルパーです。Music DJは返信のたびにシーンの雰囲気を読み取り、それに合った音楽を流せます。
 
-始める前に: **Agents**(エージェント)を開き、**Agent Organizer**を選んで**Music DJ**をインストールしてください。インストール直後はオフです。ほかのエージェントと同じように、チャットごとにオンにします。Roleplayのチャットで使えるほか、Game Modeでは専用のトグルで([Game ModeでのMusic DJ](#music-dj-in-game-mode))、Conversationでは**Music**コマンドで([ConversationのMusicコマンド](#the-conversation-music-command))使えます。
+始める前に: **Library → Agents**(ライブラリー → エージェント)を開き、**Available**(利用可能)から**Music DJ**をインストールしてください。インストール直後はオフです。ほかのエージェントと同じように、チャットごとにオンにします。Roleplayのチャットで使えるほか、Game Modeでは専用のトグルで([Game ModeでのMusic DJ](#music-dj-in-game-mode))、Conversationでは**Music**コマンドで([ConversationのMusicコマンド](#the-conversation-music-command))使えます。
 
 再生するソースは3つあります。
 
@@ -18,7 +18,7 @@
 
 有効なソースは、上部バーに固定される小さな**Music Player**(音楽プレイヤー)として表示されます。スマートフォンや幅の狭いウィンドウでは、ドラッグして動かせる小さな丸いウィジェットになります。
 
-Music DJの設定は、共通の1か所で行います。右側の**Agents**パネルを開き、**Music DJ**を開きます。ミニプレイヤーの歯車アイコン(ツールチップは**Music DJ setup**)をクリックしても開けます。
+Music DJの設定は、共通の1か所で行います。**Library → Agents**(ライブラリー → エージェント)を開き、**Music DJ**を開きます。ミニプレイヤーの歯車アイコン(ツールチップは**Music DJ setup**)をクリックしても開けます。
 
 ### 音楽ソースの選択
 
@@ -124,7 +124,7 @@ Music DJは、最初に見つかったフォルダーを使います。探す順
 
 ## 音楽プレイヤーの使い方
 
-**Music Player**は、デスクトップでは上部バーの小さなバッジ、モバイルではドラッグできるウィジェットです。表示と非表示を切り替えるには、**Settings → General → App Behavior**(設定 → 一般 → アプリの動作)を開き、**Music Player**をオンまたはオフにします。デフォルトではオンです。オンの状態でMusic DJをインストールしていないと、プレイヤーの表示は**Download Music DJ Agent to configure**になり、**Agent Organizer**ボタンが表示されます。
+**Music Player**は、デスクトップでは上部バーの小さなバッジ、モバイルではドラッグできるウィジェットです。表示と非表示を切り替えるには、**Settings → General → Extras**(設定 → 一般 → 追加機能)を開き、**Music Player**をオンまたはオフにします。デフォルトではオンです。オンの状態でMusic DJをインストールしていないと、プレイヤーの表示は**Download Music DJ Agent to configure**になり、**Agent Organizer**ボタンが表示されます。
 
 新しいプロファイルでは、ソースは最初**YouTube**になっています。ソースは、プレイヤーの丸いソース切り替えボタン(ツールチップは「Switch to ... player」)、編集画面の**Music Player**のボタン、チャットの**Music DJ**設定のどれかで変更できます。
 
@@ -166,7 +166,7 @@ Conversationでは、Music DJをエージェントとして追加できません
 
 ## トラブルシューティング
 
-- **ミニプレイヤーが見当たらない**: **Settings → General → App Behavior**(設定 → 一般 → アプリの動作)で**Music Player**をオンにします。
+- **ミニプレイヤーが見当たらない**: **Settings → General → Extras**(設定 → 一般 → 追加機能)で**Music Player**をオンにします。
 - **Spotifyで何も再生されない**: 再生にはSpotify Premiumと、動作中のSpotifyデバイスが必要です。どれかのデバイスでデスクトップアプリを開くか、デスクトップで**Enable Marinara player**をクリックします。
 - **別のコンピューターでSpotifyのログインウィンドウが失敗する**: 「Browser couldn't reach the callback?」の貼り付けボックスを使うか、サーバーに`SPOTIFY_REDIRECT_URI`を設定します。
 - **YouTubeの検索が失敗する**: プロジェクトで**YouTube Data API v3**が有効になっていること、キーにHTTPリファラー制限がかかっていないことを確認します。1日のクォータに達した場合は、翌日にやり直すか、別のキーを使います。

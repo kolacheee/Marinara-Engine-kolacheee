@@ -10,8 +10,8 @@ Les vidéos de scène passent par un type de compte à part, **Video Generation*
 
 ## Configurer un service vidéo
 
-1. Clique sur **Connections** (Connexions) dans la barre du haut, puis sur **Add** (ajouter). La fenêtre **Add account** (ajouter un compte) s'ouvre.
-2. Choisis un service dans la section **Images & video** (images et vidéo). Les services sont listés ci-dessous.
+1. Ouvre **Library → Connections** (Bibliothèque → Connexions) et clique sur **Add connection** (ajouter une connexion). La liste des services s'ouvre.
+2. Ouvre l'onglet **Vidéo** et choisis un service. Les services sont listés ci-dessous.
 3. Colle la clé API – un code secret, un peu comme un mot de passe – d'un service cloud. ComfyUI en local n'en a pas besoin. SwarmUI n'a besoin d'un Swarm Auth Token que si ton serveur exige un compte.
 4. Clique sur **Connect** (connecter), puis choisis un modèle ou garde celui par défaut. NanoGPT n'a pas de modèle par défaut : choisis-en un dans sa liste. Pour ComfyUI, laisse le modèle non défini, sauf si le workflow utilise `%model%`. Pour SwarmUI, le modèle est facultatif.
 5. Ouvre le modèle vidéo et clique sur **Test video** (tester la vidéo) pour le vérifier.
@@ -37,7 +37,7 @@ Pour **SwarmUI**, Marinara remplit `http://127.0.0.1:7801`. Colle un workflow vi
 
 ### En faire le modèle vidéo par défaut
 
-Pour utiliser un modèle vidéo quand un chat n'a pas le sien, règle la tâche **Video** sous **Defaults** (valeurs par défaut), en haut du panneau **Connections**. Dans Chat Settings, elle apparaît sous le nom **Default video provider** (fournisseur vidéo par défaut). Sans modèle de chat ni modèle par défaut, les actions vidéo t'avertissent pour que tu en choisisses un.
+Pour utiliser un modèle vidéo quand un chat n'a pas le sien, règle la tâche **Vidéo** dans l'encadré **Tâches**, en haut du panneau **Connexions**. Dans Chat Settings, elle apparaît sous le nom **Default video provider** (fournisseur vidéo par défaut). Sans modèle de chat ni modèle par défaut, les actions vidéo t'avertissent pour que tu en choisisses un.
 
 ### Instructions pour les prompts vidéo
 
@@ -58,8 +58,6 @@ Durée par défaut, plage de durée, format d'image et résolution de chaque ser
 - ComfyUI et SwarmUI : 5 s, de 1 à 60 s, 16:9, 720p.
 
 Gemini Omni n'a pas de champ de résolution, et sa durée est écrite dans le texte du prompt. Google Veo impose 8 secondes dès qu'il anime une image de référence, car il lui faut 8 secondes pour fondre la première et la dernière image.
-
-<a id="seedance-reference-frames"></a>
 
 ### Images de référence de Seedance
 
@@ -83,7 +81,7 @@ Le bouton **Video**, dans la rangée d'actions en haut de la galerie, crée un c
 - **Avatar** : le clip part de la première personne que ta description nomme, y compris ton persona. Une partie de nom que personne d'autre ne partage suffit, avec une majuscule ("Lena" pour "Dr. Lena Kowalski"). Si personne n'est nommé, il part du personnage du chat.
 - **Relecture** : si **Expose media prompts before sending** (afficher les prompts médias avant l'envoi) est activé, tu peux d'abord relire et modifier le prompt du clip.
 - **Contexte** : l'IA lit autant de messages récents qu'Illustrator pour une image (le réglage **Context Size** (taille du contexte) d'Illustrator, sous **Agent Budget** (budget de l'agent) sur son écran de configuration).
-- **Sans image** : quand le clip part d'aucune image ou d'un avatar, l'IA décrit elle-même la scène. Ses instructions sont **Roleplay Clip Director** (réalisation des clips Roleplay), sous **Settings → Generations → Video Generation Prompt Overrides** (Paramètres → Générations → redéfinitions des prompts de génération vidéo).
+- **Sans image** : quand le clip part d'aucune image ou d'un avatar, l'IA décrit elle-même la scène. Ses instructions sont **Roleplay Clip Director** (réalisation des clips Roleplay), sous **Settings → Media → Prompt Overrides** (Paramètres → Médias → remplacements de prompt).
 
 Le clip terminé se lit directement sous la dernière réponse, même si l'image vient d'une réponse plus ancienne. Les clips ne s'ouvrent pas d'eux-mêmes dans une fenêtre flottante. Pour en faire flotter un, utilise **Pin video to chat** (épingler la vidéo au chat) sous **Videos**. Retire un clip d'un message avec son bouton **X**. Il reste dans la galerie.
 
@@ -91,7 +89,7 @@ Le clip terminé se lit directement sous la dernière réponse, même si l'image
 
 1. Vérifie qu'au moins une image se trouve sous **Images**. Utilise **Illustrate** (illustrer) ou téléverse une image.
 2. Clique sur **Video** dans la rangée d'actions en haut de la galerie.
-3. Si **Expose media prompts before sending** est activé (**Settings → Generations → Overall Generations** (Paramètres → Générations → Générations globales)), relis ou modifie le prompt et clique sur **Generate** (générer). Annuler ne lance aucune requête.
+3. Si **Expose media prompts before sending** est activé (**Settings → Media → Generation Defaults** (Paramètres → Médias → valeurs de génération par défaut)), relis ou modifie le prompt et clique sur **Generate** (générer). Annuler ne lance aucune requête.
 4. Le bouton affiche **Generating...** et une bannière indique que la génération de vidéo est en cours.
 5. Une fois terminé, le clip apparaît sous **Videos**.
 
@@ -103,7 +101,7 @@ S'il n'y a aucune image, Marinara affiche "Add or generate a gallery image befor
 2. Passe le pointeur sur l'image.
 3. Clique sur **Animate illustration**, l'icône de pellicule.
 
-Quand la relecture des prompts est activée, une fenêtre affiche le prompt compilé exact, la durée, le format d'image et la résolution pour cette image. Ta modification ne vaut que pour ce clip. En Roleplay, l'IA qui planifie le mouvement lit autant de messages récents qu'Illustrator, jusqu'à la réponse à laquelle l'image appartient. Ses instructions réutilisables sont **Roleplay Gallery Animation Director** (réalisation des animations de galerie Roleplay), sous **Settings → Generations → Video Generation Prompt Overrides**.
+Quand la relecture des prompts est activée, une fenêtre affiche le prompt compilé exact, la durée, le format d'image et la résolution pour cette image. Ta modification ne vaut que pour ce clip. En Roleplay, l'IA qui planifie le mouvement lit autant de messages récents qu'Illustrator, jusqu'à la réponse à laquelle l'image appartient. Ses instructions réutilisables sont **Roleplay Gallery Animation Director** (réalisation des animations de galerie Roleplay), sous **Settings → Media → Prompt Overrides**.
 
 Chaque clip sous **Videos** se lit directement dans la page, avec sa durée et le nom du modèle. Utilise **Pin video to chat** ou **Download scene video** (télécharger la vidéo de scène). Sans clip, l'onglet affiche **No videos yet**.
 
@@ -169,7 +167,7 @@ Quand tu crées un chat Game Mode, l'assistant de configuration propose un séle
 
 ## Réglages de génération de vidéos
 
-Certains réglages vidéo par défaut valent pour toute l'application. Ouvre **Settings → Generations** et repère **Video Generation** ("Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls").
+Certains réglages vidéo par défaut valent pour toute l'application. Ouvre **Settings → Media** et repère **Video Generation** ("Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls").
 
 - **Scene video fallback length** (durée de repli des vidéos de scène) : ne sert que si le modèle vidéo sélectionné n'a pas de durée propre. La valeur par défaut est de 10 secondes. La plage va de 1 à 60.
 - **Video Generation Prompt Overrides** : modifie les modèles de prompt vidéo réutilisables. **Roleplay Gallery Animation Director** définit les instructions envoyées au Prompt Model avant un clip de galerie en Roleplay. Sa variable `${durationSeconds}` devient la durée du clip.

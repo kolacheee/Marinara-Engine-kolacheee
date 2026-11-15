@@ -1,6 +1,12 @@
 # Interruptores de funciones
 
-Algunos comportamientos del servidor son opcionales. Actívalos en **Settings > Advanced > Features** (configuración > avanzado > funciones). Todos empiezan desactivados, así que un servidor donde nadie abre esta sección funciona igual que antes.
+Algunos comportamientos del servidor son opcionales. Todos los interruptores empiezan desactivados, así que un servidor donde nadie los activa funciona igual que antes. Están en distintos lugares de **Settings** (Configuración):
+
+- **Stable lorebook picks** (Selecciones estables del lorebook) y **Lorebook activation stats** (Estadísticas de activación del lorebook): **Settings → Advanced → Lorebooks** (Configuración → Avanzado → Lorebooks).
+- **Retry failed provider calls** (Reintentar llamadas fallidas al proveedor): **Settings → Advanced → Timeouts & Retries** (Configuración → Avanzado → Tiempos de espera y reintentos).
+- **Recover deleted chat messages** (Recuperar mensajes de chat eliminados): **Settings → Data → Backup & Restore** (Configuración → Datos → Copias de seguridad y restauración).
+
+En la distribución clásica, busca el nombre del interruptor en Settings.
 
 Los cambios se aplican de inmediato. No hace falta reiniciar el servidor ni recargar la página.
 
@@ -15,7 +21,7 @@ Los cambios se aplican de inmediato. No hace falta reiniciar el servidor ni reca
 | **Lorebook activation stats** (estadísticas de activación del lorebook) | `usageAndActivationStats` | Desactivado | ninguna |
 | **Recover deleted chat messages** (recuperar mensajes de chat eliminados) | `messageTrash` | Desactivado | ninguna |
 
-Buscar `features` en los ajustes lleva a esta sección.
+Buscar el nombre de un interruptor en los ajustes te lleva hasta él.
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ Desactivado: los mensajes eliminados se borran de inmediato.
 ## Prioridad
 
 1. **Variable de entorno.** Cuando está definida, prevalece sobre el interruptor guardado tanto para activarlo como para desactivarlo. Settings muestra el interruptor bloqueado con el nombre de la variable. Un valor vacío cuenta como no definido.
-2. **Interruptor guardado.** El valor de Settings > Advanced > Features.
+2. **Interruptor guardado.** El valor guardado en Settings > Advanced > Lorebooks.
 3. **Valor predeterminado.** Desactivado.
 
 | Variable | Controla | Valores |

@@ -1,6 +1,6 @@
 # Accès à distance : connexion et liste d'autorisation d'IP
 
-Ce guide explique comment ouvrir Marinara Engine depuis un autre appareil : un téléphone, un ordinateur portable ou un conteneur Docker. Il couvre l'option principale, une connexion. Il couvre aussi la liste d'autorisation d'IP, les proxys de connexion, le HTTPS, la section **Admin Access** (accès administrateur) et le message CSRF "save blocked". Presque tous les réglages décrits ici se trouvent dans le fichier `.env` du serveur, pas dans l'application.
+Ce guide explique comment ouvrir Marinara Engine depuis un autre appareil : un téléphone, un ordinateur portable ou un conteneur Docker. Il couvre l'option principale, une connexion. Il couvre aussi la liste d'autorisation d'IP, les proxys de connexion, le HTTPS, le secret d'administration et le message CSRF "save blocked". Presque tous les réglages décrits ici se trouvent dans le fichier `.env` du serveur, pas dans l'application.
 
 Un petit lexique utilisé tout au long de ce guide :
 
@@ -24,7 +24,7 @@ Si la page ne se charge pas, vérifie que Tailscale est activé sur les deux app
 
 > **Remarque :** cela ne fonctionne pas pour les installations Docker. Le trafic Tailscale atteint le conteneur par la passerelle Docker : Marinara ne peut donc pas voir qu'il vient de Tailscale. Définis d'abord une connexion ([option 1](#option-1-login-recommended)), puis publie le port au-delà de `127.0.0.1`.
 
-Les sauvegardes, les imports, les mises à jour et les autres actions risquées exigent toujours le secret d'administration depuis un appareil distant. Voir [Admin Access et actions privilégiées](#admin-access-and-privileged-actions).
+Les sauvegardes, les imports, les mises à jour et les autres actions risquées exigent toujours le secret d'administration depuis un appareil distant. Voir [Le secret d'administration et les actions privilégiées](#the-admin-secret-and-privileged-actions).
 
 ## Ce que Marinara bloque par défaut
 
@@ -263,7 +263,7 @@ Il te faut un certificat et une clé avant de définir les variables `SSL_CERT` 
 
 <a id="admin-access-and-privileged-actions"></a>
 
-## Admin Access et actions privilégiées
+## Le secret d'administration et les actions privilégiées
 
 Certaines actions sont particulièrement sensibles : effacer les données, créer ou télécharger des sauvegardes, importer et exporter des profils, installer des thèmes et des agents, et installer le runtime Local Model. Elles exigent un secret partagé à part, appelé le secret d'administration, en plus de l'option d'accès que tu as choisie plus haut.
 
@@ -273,9 +273,9 @@ Les agents installés, comme ceux de l'écran d'accueil, n'ont pas besoin du sec
 
 ### Créer le secret d'administration dans l'application
 
-1. Sur l'ordinateur qui fait tourner Marinara, ouvre **Settings**, puis l'onglet **Advanced**, puis la section **Admin Access**.
+1. Sur l'ordinateur qui fait tourner Marinara, ouvre **Settings**, puis l'onglet **Advanced**, puis la section **Security**.
 2. Clique sur **Make admin secret** (créer un secret d'administration). Marinara affiche le nouveau secret une seule fois et l'enregistre dans ce navigateur.
-3. Sur chaque appareil distant, ouvre **Settings** → **Advanced** → **Admin Access**, saisis le secret dans le champ, puis clique sur **Save**. Les majuscules, les espaces et les tirets n'ont pas d'importance.
+3. Sur chaque appareil distant, ouvre **Settings** → **Advanced** → **Security**, saisis le secret dans le champ, puis clique sur **Save**. Les majuscules, les espaces et les tirets n'ont pas d'importance.
 
 Un appareil qui a déjà le secret peut aussi le créer. Un appareil seulement connecté avec la connexion ne le peut pas. Cela empêche qu'une connexion volée prenne le contrôle des actions risquées.
 
@@ -291,11 +291,11 @@ Pour changer le secret, clique sur **Replace admin secret** (remplacer le secret
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. Sur l'appareil distant, ouvre **Settings** → **Advanced** → **Admin Access**.
+2. Sur l'appareil distant, ouvre **Settings** → **Advanced** → **Security**.
 3. Colle la même valeur dans le champ (son texte indicatif affiche **ADMIN_SECRET**), puis clique sur **Save**.
 4. Le message **Admin secret saved for this browser** doit apparaître.
 
-`ADMIN_SECRET` dans `.env` l'emporte sur un secret créé dans l'application. Tant qu'il est défini, **Admin Access** l'indique, et tu ne changes le secret que dans `.env`.
+`ADMIN_SECRET` dans `.env` l'emporte sur un secret créé dans l'application. Tant qu'il est défini, **Security** l'indique, et tu ne changes le secret que dans `.env`.
 
 ### Bon à savoir
 

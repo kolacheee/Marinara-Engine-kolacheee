@@ -9,16 +9,15 @@ Guarda una copia de los datos de tu Marinara Engine y vuelve a ponerla más tard
 | **Download Backup** (Descargar copia de seguridad) | Un `.zip` con todos tus datos y archivos. | Una copia completa de todo. |
 | **Export Profile** (Exportar perfil) | Un archivo más pequeño con los datos de tu cuenta (personajes, chats, lorebooks y más). | Una copia sin secretos, o archivos para otras herramientas. |
 
-Un `.zip` es un solo archivo que contiene muchos archivos. Las dos opciones están en **Settings → Advanced → Backup & Export**. La restauración está en **Settings → Imports → Profile & Marinara**.
+Un `.zip` es un solo archivo que contiene muchos archivos. Las dos opciones y la restauración están en **Settings → Data → Backup & Restore** (Configuración → Datos → Copias de seguridad y restauración).
 
-**Antes de empezar:** en la computadora que ejecuta Marinara, estas herramientas funcionan de inmediato. Desde un teléfono, una tableta o cualquier otro dispositivo, define el secreto de administrador en el servidor y escribe el mismo valor en **Settings → Advanced → Admin Access**. El secreto de administrador es una contraseña que va en el archivo `.env` del servidor, como el ajuste `ADMIN_SECRET`. Consulta la sección "Privileged APIs (ADMIN_SECRET)" de la [Referencia de configuración del servidor](../CONFIGURATION.md) y de [Acceso remoto](../REMOTE_ACCESS.md).
+**Antes de empezar:** en la computadora que ejecuta Marinara, estas herramientas funcionan de inmediato. Desde un teléfono, una tableta o cualquier otro dispositivo, define el secreto de administrador en el servidor y escribe el mismo valor en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad). El secreto de administrador es una contraseña que va en el archivo `.env` del servidor, como el ajuste `ADMIN_SECRET`. Consulta la sección "Privileged APIs (ADMIN_SECRET)" de la [Referencia de configuración del servidor](../CONFIGURATION.md) y de [Acceso remoto](../REMOTE_ACCESS.md).
 
 ## Download Backup
 
-1. Abre **Settings**.
-2. Ve a **Advanced**.
-3. En **Backup & Export**, haz clic en **Download Backup**. El botón muestra **Creating backup...**.
-4. Guarda el archivo cuando el navegador lo pida, o búscalo en tu carpeta de descargas.
+1. Abre **Settings → Data**.
+2. En **Backup & Restore**, haz clic en **Download Backup**. El botón muestra **Creating backup…**.
+3. Guarda el archivo cuando el navegador lo pida, o búscalo en tu carpeta de descargas.
 
 El `.zip` contiene:
 
@@ -33,7 +32,7 @@ Para ver los nombres de las carpetas, consulta [Dónde guarda Marinara tus datos
 
 En Android no puedes acceder a la carpeta de datos de la app, así que **Download Backup** es la forma de sacar una copia del dispositivo.
 
-Si no funcionó: si ves "Backup preparation timed out after one hour.", inténtalo de nuevo. Si otro dispositivo no puede descargar, revisa **Admin Access** (consulta arriba).
+Si no funcionó: si ves "Backup preparation timed out after one hour.", inténtalo de nuevo. Si otro dispositivo no puede descargar, revisa el secreto de administrador (consulta arriba).
 
 <a id="automatic-backups"></a>
 
@@ -41,7 +40,7 @@ Si no funcionó: si ves "Backup preparation timed out after one hour.", inténta
 
 Marinara puede hacer una copia de seguridad completa según un calendario, en la computadora que la ejecuta.
 
-1. Abre **Settings → Advanced → Backup & Export**.
+1. Abre **Settings → Data → Backup & Restore**.
 2. Activa **Automatic backups**.
 3. Elige **Daily**, **Weekly** o **Monthly**.
 4. Define **Automatic backups kept** con un valor de 1 a 9999.
@@ -56,7 +55,7 @@ Cada ejecución necesita espacio libre para una copia completa más, porque la c
 
 ## Exportar un perfil
 
-1. Abre **Settings → Advanced → Backup & Export**.
+1. Abre **Settings → Data → Backup & Restore**.
 2. Haz clic en **Export Profile**. Se abre un cuadro de diálogo con el mismo título.
 3. Elige un formato.
 4. Tu navegador descarga el archivo.
@@ -66,17 +65,20 @@ Cada ejecución necesita espacio libre para una copia completa más, porque la c
 
 Un perfil nativo se descarga como `marinara-profile.json`. Si es demasiado grande, Marinara ofrece un archivo ZIP en su lugar. Haz clic en **Export ZIP** para descargar `marinara-profile.zip`.
 
-Un perfil nativo conserva el código de Personal Extension, pero no si está activada ni aprobada. Cada extensión restaurada llega desactivada. Revísala de nuevo en **Settings → Addons**.
+Un perfil nativo conserva los scripts de regex, sus carpetas y el ajuste de pausa de cada carpeta. Para compartir scripts individuales como JSON, consulta [Scripts de regex](../extending/regex-scripts.md#import-and-replace-scripts).
+
+Un perfil nativo conserva el código de Personal Extension, pero no si está activada ni aprobada. Cada extensión restaurada llega desactivada. Revísala de nuevo en **Library → Extensions** (Biblioteca → Extensiones).
 
 ## Restaurar con Import Profile
 
 **Import Profile** carga un archivo de perfil o un `.zip` de **Download Backup**.
 
-1. Abre **Settings → Imports**.
-2. En **Profile & Marinara**, haz clic en **Import Profile (JSON/ZIP)**.
-3. Elige `marinara-profile.json`, `marinara-profile.zip` o un `.zip` de copia de seguridad. El botón muestra **Scanning Profile...**.
-4. Lee el cuadro de diálogo **Import Profile**. Enumera lo que Marinara encontró y avisa de que no puedes deshacer la importación.
-5. Haz clic en **Import** para continuar, o en **Cancel** para detenerla. El botón muestra **Importing Profile...** y aparece una barra de progreso. Cuando termina, un mensaje indica que se importó el perfil.
+1. Abre **Settings → Data → Backup & Restore**.
+2. Debajo del botón, deja marcadas **Tag imported** (Etiquetar lo importado) y **Tag source** (Etiquetar el origen) para etiquetar los personajes, las personas, los lorebooks, los presets y los chats que incorpora con **Imported** (Importado) y **Backup** (Copia de seguridad). Desmárcalas para restaurarlo todo exactamente como estaba.
+3. Haz clic en **Import Profile (JSON/ZIP)**.
+4. Elige `marinara-profile.json`, `marinara-profile.zip` o un `.zip` de copia de seguridad. El botón muestra **Scanning Profile...**.
+5. Lee el cuadro de diálogo **Import Profile**. Enumera lo que Marinara encontró y avisa de que no puedes deshacer la importación.
+6. Haz clic en **Import** para continuar, o en **Cancel** para detenerla. El botón muestra **Importing Profile...** y aparece una barra de progreso. Cuando termina, un mensaje indica que se importó el perfil.
 
 Si no funcionó:
 
@@ -91,7 +93,7 @@ Si importas el mismo perfil dos veces, Marinara actualiza tus elementos y no los
 
 **Import Profile** nunca recupera las API keys ni los enlaces de webhook, ni siquiera de un `.zip` de **Download Backup**. Una API key (clave de API) es el código secreto que te da un servicio. El archivo de perfil y el perfil dentro de una copia de seguridad tienen estos valores en blanco. Por eso, tras importar en una computadora nueva, debes escribirlos de nuevo:
 
-1. Abre **Connections** (Conexiones) desde la barra superior.
+1. Abre **Library → Connections** (Biblioteca → Conexiones).
 2. Abre cada cuenta que uses, escribe su API key y guárdala. Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md).
 3. Escribe el enlace de webhook en cada herramienta personalizada que lo use.
 
@@ -102,7 +104,7 @@ Importar nunca borra las claves que ya tienes en la misma instalación.
 ## Mudarte a una computadora nueva
 
 1. Instala Marinara en la computadora nueva y ábrela. Consulta [Instalación](../INSTALLATION.md).
-2. Abre **Settings → Imports → Profile & Marinara** y haz clic en **Import Profile (JSON/ZIP)**.
+2. Abre **Settings → Data → Backup & Restore** y haz clic en **Import Profile (JSON/ZIP)**.
 3. Elige tu `.zip` de **Download Backup** o tu archivo de perfil, y luego haz clic en **Import**.
 4. Vuelve a escribir tus API keys, como se describe arriba.
 
@@ -121,7 +123,7 @@ Usa esto solo si no puedes usar **Import Profile**. El `.zip` tiene una carpeta 
 
 Mantén el archivo `.encryption-key` en la carpeta `storage`, o no se podrán leer las API keys guardadas.
 
-La lista **Existing backups** de **Backup & Export** normalmente está vacía. No la necesitas.
+La lista **Existing backups** de **Backup & Restore** normalmente está vacía. No la necesitas.
 
 ## Guías relacionadas
 

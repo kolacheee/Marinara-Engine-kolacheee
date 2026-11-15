@@ -6,11 +6,11 @@ Agenci to niewielcy pomocnicy AI, którzy działają wokół głównej odpowiedz
 
 Agentów włącza się osobno w każdym czacie, a nie przy postaci. Dwa czaty z tą samą postacią mogą korzystać z różnych agentów.
 
-Świeża instalacja nie zawiera opcjonalnych agentów. Instaluje się ich przez **Agent Organizer** (organizowanie agentów), czyli sklep z oficjalnymi pakietami instalowanymi jednym kliknięciem. Kod źródłowy i katalog są publicznie dostępne w repozytorium [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Instaluj przez **Agent Organizer**, żeby Marinara mogła sprawdzić zgodność, uprawnienia i sumy kontrolne plików. Co robi każdy agent, opisuje przewodnik [Agenci do pobrania: przegląd pakietów](built-in-agents.md). Jak zrobić własnego, wyjaśnia [Tworzenie własnych agentów](custom-agents.md).
+Świeża instalacja nie zawiera opcjonalnych agentów. Instaluje się ich przez **Biblioteka → Agenci**, czyli sklep z oficjalnymi pakietami instalowanymi jednym kliknięciem. W klasycznym układzie nosi on nazwę **Agent Organizer**. Kod źródłowy i katalog są publicznie dostępne w repozytorium [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Instaluj przez tę stronę, żeby Marinara mogła sprawdzić zgodność, uprawnienia i sumy kontrolne plików. Co robi każdy agent, opisuje przewodnik [Agenci do pobrania: przegląd pakietów](built-in-agents.md). Jak zrobić własnego, wyjaśnia [Tworzenie własnych agentów](custom-agents.md).
 
 ## Dodawanie agenta do czatu
 
-Zanim zaczniesz: najpierw zainstaluj agenta. Otwórz panel **Agents** (agenci, ikona Sparkles w zakładkach po prawej stronie), kliknij **Agent Organizer**, otwórz stronę agenta i kliknij **Get** (pobranie). Zobacz [Instalowanie i aktualizowanie agentów](#install-and-update-agents).
+Zanim zaczniesz: najpierw zainstaluj agenta. Otwórz **Biblioteka → Agenci**, znajdź agenta w sekcji **Dostępne** i kliknij **Pobierz**. Zobacz [Instalowanie i aktualizowanie agentów](#install-and-update-agents).
 
 1. Otwórz czat.
 2. Otwórz **Chat Settings** (ustawienia czatu) i znajdź sekcję **Agents**.
@@ -63,7 +63,7 @@ Każdy agent działa w jednym punkcie wokół odpowiedzi, nazywanym jego **pipel
 - Agenci trackerów zapisują dane na pasku HUD i w panelach trackerów. Jeśli godzina, miejsce, nastrój albo statystyki się zmieniły, tracker zadziałał.
 - Sekcja **Agent activity** (aktywność agentów) w **Chat Settings** wymienia krótkie notatki od agentów. Jej ikona kręci się, gdy agenci pracują, a gdy któryś zawiedzie, pokazuje kropkę. Zobacz [Agent activity](../roleplay/getting-started.md#agent-activity).
 - Agenci **Prose Guardian** i **Continuity Checker** zmieniają tekst odpowiedzi. Oczyszczona albo poprawiona odpowiedź oznacza, że zadziałali.
-- Pełny ślad daje przełącznik **Debug mode** (tryb diagnostyczny) w **Settings → Advanced → Message Tools** (ustawienia, zaawansowane, narzędzia wiadomości). Zapisuje on prompt i odpowiedź każdego agenta w konsoli serwera, a wpisy diagnostyczne agentów pojawiają się też w konsoli przeglądarki. Panel Cached prompt injections widać w zakładce **Injections** (wstawienia do promptu) w sekcji **Agent activity**.
+- Pełny ślad daje przełącznik **Debug mode** (tryb diagnostyczny) w **Ustawienia → Zaawansowane → Rozwiązywanie problemów**. Zapisuje on prompt i odpowiedź każdego agenta w konsoli serwera, a wpisy diagnostyczne agentów pojawiają się też w konsoli przeglądarki. Panel Cached prompt injections widać w zakładce **Injections** (wstawienia do promptu) w sekcji **Agent activity**.
 
 ## Pilnowanie kosztów
 
@@ -77,11 +77,11 @@ Jeśli widzisz ostrzeżenie, usuń niepotrzebnych agentów albo przenieś częś
 
 ## Instalowanie i aktualizowanie agentów
 
-Otwórz panel **Agents** (ikona Sparkles w zakładkach po prawej stronie) i kliknij **Agent Organizer**. Działa on na komputerze i na telefonie.
+Otwórz **Biblioteka → Agenci**. Działa na komputerze i na telefonie.
 
-- **Home** (strona główna) pokazuje wyróżnionych agentów i półkę dla każdej sekcji: **Apps** (aplikacje), **Chat games** (gry czatu), **Trackers** (trackery) i **Writing help** (pomoc w pisaniu).
-- **Updates** (aktualizacje) wymienia zainstalowanych agentów, dla których jest nowsza wersja. **Installed** (zainstalowane) pokazuje wszystko, co masz, z wersją i rozmiarem.
-- Wyszukiwanie i filtr trybu zawężają każdą listę.
+- **Zainstalowane** pokazuje wszystko, co masz, **Dostępne** pokazuje agentów do pobrania, a **Aktualizacje** wymienia zainstalowanych agentów, dla których jest nowsza wersja.
+- **Wszystkie sekcje** zawęża listę do jednej sekcji, takiej jak **Aplikacje**, **Gry na czacie**, **Pomoc w pisaniu** albo **Trackery**, a **Wszystkie tryby** do jednego trybu czatu. **Szukaj agentów**, menu sortowania oraz **Lista** / **Galeria** działają na każdej liście.
+- **Zestawy startowe** instaluje gotowy zestaw agentów naraz. **Nowy agent** rozpoczyna tworzenie [własnego agenta](custom-agents.md).
 - Wybierz agenta, żeby zobaczyć jego opis, rozmiar pliku do pobrania, uprawnienia, zgodność i **Version history** (historia wersji). Kliknij **Get**, aby go zainstalować. Menu **⋯** zawiera opcję **Uninstall** (odinstalowanie).
 - Menu **⋯** obok tytułu zawiera opcje **Update all** (aktualizacja wszystkich), **Install all** (instalacja wszystkich), **Refresh catalog** (odświeżenie katalogu) i **Uninstall all** (odinstalowanie wszystkich).
 
@@ -100,7 +100,7 @@ Gdy jest dostępna nowsza zgodna wersja zainstalowanego pakietu, otwiera się ok
 3. Kliknij **Update all** (albo **Update 2 of 3** (aktualizacja 2 z 3), gdy część pól odznaczono). Każdy wiersz pokazuje **Updated** (zaktualizowano) albo **Failed** (niepowodzenie). Wiersz nieudanej aktualizacji pokazuje przyczynę i przycisk **Retry** (ponów).
 4. Jeśli aktualizacja wymaga restartu, kliknij **Restart now** (uruchom ponownie teraz) albo uruchom ponownie aplikację Marinara Engine później.
 
-Kliknij **Not now** (nie teraz), żeby zachować swoje wersje. Marinara nie pyta ponownie o pominiętą wersję. Aktualizować można w każdej chwili przez **Agent Organizer**. Zainstalowane pakiety działają w obecnej wersji, nawet gdy katalog jest nieosiągalny. **See in Agent Organizer** (otwarcie w Agent Organizer) otwiera stronę agenta.
+Kliknij **Not now** (nie teraz), żeby zachować swoje wersje. Marinara nie pyta ponownie o pominiętą wersję. Aktualizować można w każdej chwili z zakładki **Aktualizacje** w **Biblioteka → Agenci**. Zainstalowane pakiety działają w obecnej wersji, nawet gdy katalog jest nieosiągalny. **See in Agent Organizer** (otwarcie w Agent Organizer) otwiera stronę agenta.
 
 Aktualizacje dotyczą wyłącznie zainstalowanych pakietów. Pakiety znajdują się na serwerze Marinara, więc klienty w przeglądarce korzystają z tego, co jest zainstalowane na serwerze.
 

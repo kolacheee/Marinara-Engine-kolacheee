@@ -22,7 +22,7 @@
 2. 一块显存够用的 GPU(显存就是显卡上的内存)。8 GB 显存的显卡可以做第一次测试，用 480p 和 1 个关键帧。
 3. 可编辑的 `ltx-director-simple` 工作流（或者任何一张能在 ComfyUI 里完整跑通的等价 LTX 2.3 图生视频流程图），以及它的 API 格式导出文件 `ltx-director-simple-api`。
 4. Marinara 里一个用来生成首帧插图的图像账号。
-5. **Storyboard** 智能体：从 **Agents → Agent Organizer**(智能体 → 智能体管理器) 下载，并在 **Chat Settings → Agents**(聊天设置 → 智能体) 里为这局游戏开启。见 [Storyboard 智能体指南](storyboard.md)。
+5. **Storyboard** 智能体：从 **Library → Agents**(资料库 → 智能体) 下载，并在 **Chat Settings → Agents**(聊天设置 → 智能体) 里为这局游戏开启。见 [Storyboard 智能体指南](storyboard.md)。
 
 可编辑的工作流和它的 API 导出是两个不同的文件。先在 ComfyUI 里打开 `ltx-director-simple`，把 ComfyUI Manager 报告缺失的自定义节点全部装上，并在 ComfyUI 里测通这张流程图。然后把 `ltx-director-simple-api` 导入 Marinara。之后每改一次节点或模型，都要重新按 API 格式导出流程图，并替换 Marinara 账号里保存的 JSON。不要把普通的可视化编辑器工作流粘贴进 Marinara。
 
@@ -83,7 +83,7 @@ Marinara 还可以填 `%length_s%`、`%global_prompt%`、`%local_prompts%` 和 `
 
 ## 创建视频账号
 
-1. 打开 **Settings → Connections**(设置 → 连接)。
+1. 打开 **Library → Connections**(资料库 → 连接)。
 2. 点击 **Add account**(添加账号)，选择 **Video Generation**(视频生成) 账号。
 3. 选择 **ComfyUI**。
 4. 填入 **Base URL**(基础 URL)。ComfyUI 跑在同一台电脑上时，通常是 `http://127.0.0.1:8188`。

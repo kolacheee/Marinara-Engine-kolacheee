@@ -34,7 +34,7 @@ Instalator tworzy kopię Git najnowszego stabilnego wydania, więc aplikacja Mar
 - **Uruchamianie:** kliknij dwukrotnie skrót na pulpicie albo pozycję w menu Start. Przy instalacji ze źródeł uruchom `start.bat` w folderze aplikacji Marinara.
 - **Zatrzymywanie:** skrót otwiera okno konsoli. Naciśnij w nim <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
-Jeśli aplikacja Marinara już działa, skrót ponownie otwiera ją w przeglądarce.
+Jeśli aplikacja Marinara już działa, skrót ponownie otwiera ją w przeglądarce. Jeśli uruchomiona kopia ma inną wersję niż ta w folderze (na przykład po zmianie wersji), program uruchamiający pokazuje komunikat *"A different version of Marinara Engine is still running"* i prosi o zamknięcie starego okna konsoli, żeby nie otworzyć przypadkiem niewłaściwej wersji. Gałąź testowa, taka jak `staging` lub `ui/...`, aktualizuje się ze swojej własnej kopii w serwisie GitHub.
 
 ## Instalacja ze źródeł
 
@@ -84,6 +84,9 @@ Jeśli to nie zadziałało: komunikat `[ERROR] Node.js 24 LTS or newer is requir
 ### Konfiguracja ręczna bez programu uruchamiającego
 
 Ta droga wymaga polecenia `pnpm`. Uruchamiaj te polecenia wewnątrz folderu `Marinara-Engine`.
+
+> [!TIP]
+> W powłoce PowerShell wpisuj `npm.cmd` i `pnpm.cmd` zamiast `npm` i `pnpm` (na przykład `pnpm.cmd install --force`). Na wielu komputerach PowerShell blokuje ich skróty komunikatem "running scripts is disabled on this system". Nie dotyczy to wiersza polecenia. Możesz też pominąć tę sekcję i uruchomić `.\start.bat`, który instaluje i buduje wszystko za ciebie.
 
 1. Zainstaluj pnpm (wystarczy raz).
 

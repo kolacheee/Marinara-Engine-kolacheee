@@ -29,7 +29,7 @@
 | --- | --- |
 | `/help` | すべてのスラッシュコマンドを一覧表示します。 |
 | `/send` | 返信を求めずに、自分のペルソナとしてメッセージを投稿します。**Send**と同じように、マクロが展開されます。書式は`/send [message]`です。 |
-| `/continue` | 新しいメッセージを作らずに、直前のAIの返信に続きの文章を足します。別名は`/cont`です。**Settings → General → Responses → Add a new line before /continue text**(設定 → 一般 → 応答 → /continueの文章の前に改行を追加)で、続きを空行のあとから始めるか、途切れた位置から始めるかを決めます。 |
+| `/continue` | 新しいメッセージを作らずに、直前のAIの返信に続きの文章を足します。別名は`/cont`です。**Settings → Chatting → Responses → Add a new line before /continue text**(設定 → チャットの動作 → 返信 → /continueの文章の前に改行を追加)で、続きを空行のあとから始めるか、途切れた位置から始めるかを決めます。 |
 | `/goto` | 指定した番号のメッセージまでチャットをスクロールします。別名は`/jump`、`/scroll`です。書式は`/goto [number]`です。 |
 | `/hide` | 以降のターンで、メッセージをモデルから隠します。書式は`/hide [range] [name (optional)]`です。 |
 | `/unhide` | 全体に対して隠したメッセージを元に戻します。書式は`/unhide [range]`です。 |

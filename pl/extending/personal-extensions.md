@@ -6,7 +6,7 @@ Rozszerzenie osobiste to niewielki fragment kodu, który dodaje do aplikacji Mar
 
 | Nazwa | Co to jest |
 | --- | --- |
-| Personal Extension (rozszerzenie osobiste) | Rozszerzenie napisane dla ciebie przez Professor Mari. Pojawia się jako szkic w **Settings → Addons** (ustawienia, dodatki). |
+| Personal Extension (rozszerzenie osobiste) | Rozszerzenie napisane dla ciebie przez Professor Mari. Pojawia się jako szkic w **Biblioteka → Rozszerzenia**. |
 | External Extension (rozszerzenie zewnętrzne) | Rozszerzenie od kogoś innego albo napisane przez ciebie. Wymaga dodatkowych kroków z sekcji [Zezwolenie na import rozszerzeń od osób trzecich](#allow-third-party-imports). |
 | Browser Extension (rozszerzenie przeglądarkowe) | Działa wewnątrz twojej przeglądarki, w piaskownicy. Domyślnie bezpieczne. |
 | Server Extension (rozszerzenie serwerowe) | Działa na komputerze, na którym uruchomiona jest aplikacja Marinara Engine, w piaskownicy systemu operacyjnego. Wymaga obsługiwanej platformy. |
@@ -16,7 +16,7 @@ Rozszerzenie osobiste to niewielki fragment kodu, który dodaje do aplikacji Mar
 
 Zanim zaczniesz: wykonaj dwa kroki z sekcji [Zezwolenie na import rozszerzeń od osób trzecich](#allow-third-party-imports). Bez nich przyciski importu są ukryte.
 
-1. Otwórz **Settings → Addons**. W sekcji **External Extensions** (rozszerzenia zewnętrzne) wybierz **Import Extension File** (import pliku rozszerzenia) dla pliku `.zip`, `.json`, `.css` lub `.js` albo **Import Extension Folder** (import folderu rozszerzenia) dla folderu.
+1. Otwórz **Biblioteka → Rozszerzenia**. W sekcji **External Extensions** (rozszerzenia zewnętrzne) wybierz **Import Extension File** (import pliku rozszerzenia) dla pliku `.zip`, `.json`, `.css` lub `.js` albo **Import Extension Folder** (import folderu rozszerzenia) dla folderu.
 2. Otwórz nowy szkic. Jest wyłączony i pokazuje swój kod oraz skrót (hash), czyli krótki odcisk dokładnie tego kodu (Marinara używa algorytmu SHA-256).
 3. Przeczytaj kod i listę **Requested access** (żądany zakres dostępu).
 4. Wybierz **Review and Run** (przegląd i uruchomienie) tylko wtedy, gdy akceptujesz dokładnie tę wersję. Rozszerzenie jest wtedy widoczne jako włączone.
@@ -27,7 +27,7 @@ Jeśli to nie zadziałało: gdy brakuje przycisków importu, jeden z dwóch krok
 
 Zanim zaczniesz: poproś [Professor Mari](../home/professor-mari.md) o utworzenie rozszerzenia. Asystentka może zapisać kod, ale nie może go zatwierdzić ani włączyć. W tej sekcji nie ma przycisku New Draft ani kontrolki importu.
 
-1. Otwórz **Settings → Addons → Personal Extensions** (ustawienia, dodatki, rozszerzenia osobiste). Gdy nie ma żadnych szkiców, widać komunikat: "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."
+1. Otwórz **Biblioteka → Rozszerzenia**. Gdy nie ma żadnych szkiców, widać komunikat: "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."
 2. Otwórz szkic i przeczytaj kod. Sprawdź skrót i listę **Requested access**.
 3. Wybierz **Review and Run** tylko wtedy, gdy akceptujesz dokładnie tę wersję.
 
@@ -50,8 +50,6 @@ Pełna lista jest w przewodniku [Pisanie własnych rozszerzeń](writing-personal
 
 Rozszerzenie serwerowe działa w osobnym procesie Node (programie na komputerze z serwerem) wewnątrz piaskownicy systemu operacyjnego. Nie ma dostępu do plików aplikacji Marinara Engine, twoich plików, sekretów serwera, sieci, procesów potomnych, wątków roboczych ani modułów natywnych.
 
-<a id="platform-support"></a>
-
 ### Obsługiwane platformy
 
 Rozszerzenia przeglądarkowe zamyka w piaskownicy sama przeglądarka, więc działają wszędzie. Rozszerzenia serwerowe wymagają obsługiwanej piaskownicy systemu operacyjnego. Tam, gdzie jej nie ma, pozostają wyłączone, a Marinara nigdy nie uruchamia ich bez niej.
@@ -71,16 +69,14 @@ Oficjalny obraz Docker zawiera Bubblewrap, ale jego domyślny kontener nie może
 
 W systemach Windows i Android nie ma obsługiwanej piaskownicy procesów, więc rozszerzenia serwerowe są niedostępne. Użyj rozszerzenia przeglądarkowego albo uruchom serwer Marinara Engine w systemie macOS lub Linux z `bwrap`.
 
-<a id="allow-third-party-imports"></a>
-
 ## Zezwolenie na import rozszerzeń od osób trzecich
 
 Import rozszerzeń od osób trzecich jest domyślnie zablokowany i ukryty, ponieważ uruchamia kod napisany przez inne osoby. Odblokowują go dwa kroki:
 
 1. Na komputerze, na którym działa aplikacja Marinara Engine, ustaw `ENABLE_EXTERNAL_EXTENSIONS=true` w pliku `.env`, a potem uruchom aplikację Marinara Engine ponownie. Zobacz przewodnik [Konfiguracja serwera](../CONFIGURATION.md).
-2. Otwórz **Settings → Advanced → Danger Zone** (ustawienia, zaawansowane, strefa zagrożenia), przewiń poniżej kontrolek usuwania danych, przeczytaj ostrzeżenie i włącz **Allow third-party extension imports** (zezwolenie na import rozszerzeń od osób trzecich).
+2. Otwórz **Ustawienia → Zaawansowane → Bezpieczeństwo**, przeczytaj ostrzeżenie i włącz **Allow third-party extension imports** (zezwolenie na import rozszerzeń od osób trzecich).
 
-Wtedy w **Settings → Addons** pojawia się sekcja **External Extensions** z kontrolkami importu plików i folderów. Obsługiwane formaty:
+Wtedy w **Biblioteka → Rozszerzenia** pojawia się sekcja **External Extensions** z kontrolkami importu plików i folderów. Obsługiwane formaty:
 
 - `.personal-extension.zip` oraz zgodne paczki `.zip`
 - manifesty `.json`
@@ -99,13 +95,13 @@ Wpisy starsze, zaimportowane z profilu, zapisane ręcznie oraz te o nieznanym po
 
 Cofnięcie któregokolwiek z tych kroków wyłącza wszystkie zaimportowane rozszerzenia. Ponowne włączenie nie uruchamia ich znowu. Jeśli rozszerzenie z pełnym dostępem do strony zostawiło po sobie zmiany, odśwież stronę.
 
-Jeśli to nie zadziałało: gdy kontrolki importu się nie pojawiają, sprawdź, czy oba kroki są wykonane i czy korzystasz z komputera z serwerem albo masz zapisany sekret administratora w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny).
+Jeśli to nie zadziałało: gdy kontrolki importu się nie pojawiają, sprawdź, czy oba kroki są wykonane i czy korzystasz z komputera z serwerem albo masz zapisany sekret administratora w **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 
 ## Eksport, wersje i odzyskiwanie
 
 Użyj akcji eksportu rozszerzenia, aby pobrać przenośną paczkę. Paczki wyeksportowane i przywrócone pozostają wyłączone. Przywrócenie wcześniejszej wersji też zamienia rozszerzenie z powrotem w wyłączony szkic.
 
-**Settings → Addons → Extension revision history** (ustawienia, dodatki, historia wersji rozszerzeń) określa, ile poprzednich wersji kodu jest przechowywanych dla każdego rozszerzenia osobistego i zewnętrznego. Domyślna wartość to **10**. Wybierz od **0** do **10**, przy czym **0** wyłącza historię. Przy zmniejszeniu limitu aplikacja prosi o potwierdzenie, zanim trwale usunie starsze wersje. Bieżący kod, zatwierdzenia, stan włączenia i zapisane dane rozszerzeń zostają zachowane. Zmiany wprowadzane przez Professor Mari podlegają temu samemu limitowi.
+**Biblioteka → Rozszerzenia → Historia wersji rozszerzeń** określa, ile poprzednich wersji kodu jest przechowywanych dla każdego rozszerzenia osobistego i zewnętrznego. Domyślna wartość to **10**. Wybierz od **0** do **10**, przy czym **0** wyłącza historię. Przy zmniejszeniu limitu aplikacja prosi o potwierdzenie, zanim trwale usunie starsze wersje. Bieżący kod, zatwierdzenia, stan włączenia i zapisane dane rozszerzeń zostają zachowane. Zmiany wprowadzane przez Professor Mari podlegają temu samemu limitowi.
 
 Jeśli rozszerzenie zachowuje się nieprawidłowo, wybierz **Disable** (wyłączenie). Jeśli interfejs jest niedostępny, zatrzymaj aplikację Marinara Engine i ustaw wartość `enabled` we właściwym wpisie `installed_extensions` na `"false"`. Nigdy nie ustawiaj `approvedHash` ręcznie.
 

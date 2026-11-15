@@ -40,8 +40,8 @@ Marinara exporta todas as mensagens, da primeira à última que você escolheu. 
 
 ## Exportar vários chats de uma vez
 
-1. Na barra lateral esquerda, clique na aba do modo que você quer: **CONVO**, **RP** ou **GM**. Cada aba exporta somente os próprios chats.
-2. Clique em **Select chats** (selecionar chats), no topo da lista.
+1. Na barra lateral **Chats**, clique na aba do modo que você quer: **Convo**, **Roleplay** ou **Game**. Cada aba exporta só os próprios chats.
+2. Clique em **Selecionar chats** (a marca de seleção) no topo da barra lateral.
 3. Clique em cada chat que você quer. Uma barra na parte de baixo mostra a contagem, por exemplo "3 selected".
 4. Clique em **Export** (exportar) na barra.
 
@@ -51,9 +51,10 @@ O navegador baixa um arquivo `.zip` com uma transcrição em JSONL por chat. A e
 
 Isso cria um chat novo a partir de um arquivo `.jsonl` salvo pelo Marinara ou exportado do SillyTavern.
 
-1. Na barra lateral esquerda, clique na aba do modo que você quer. O chat importado usa o modo da aba que está aberta, não o modo que está no arquivo.
-2. Clique no botão **Import** (importar), ao lado do botão **+**. O rótulo dele é **Import SillyTavern or Marinara chat JSONL**.
-3. Escolha o seu arquivo `.jsonl`.
+1. Na barra lateral **Chats**, clique na aba do modo que você quer. O chat importado usa o modo da aba aberta, não o modo do arquivo.
+2. Clique no botão **Importar** (a seta de download) ao lado de **Novo**. O rótulo é **Importar JSONL de chat do SillyTavern ou do Marinara**. A janela **Importar chat** abre.
+3. Deixe **Tag de importado** e **Tag de origem** marcadas para adicionar ao chat as tags **Imported** e **ST** (ou **Marinara** para um chat exportado pelo Marinara), ou desmarque-as.
+4. Solte o arquivo `.jsonl` na janela ou clique em **Procurar…** e escolha o arquivo.
 
 Aparece a mensagem "Imported N messages", e Marinara abre o chat novo. Para mais detalhes sobre arquivos do SillyTavern, veja [Importar do SillyTavern](../data/importing-from-sillytavern.md).
 
@@ -71,7 +72,7 @@ Aparece a mensagem "Imported N messages as a new branch". A ramificação reapro
 
 ## Incluir o raciocínio e as notas privadas nas exportações
 
-Duas configurações decidem se o texto oculto vai para os arquivos exportados. As duas são botões liga/desliga em **Settings → Advanced → Message Tools** (Configurações → Avançado → Ferramentas de mensagem), e as duas vêm desativadas por padrão. Elas valem para a exportação de um único chat e para a exportação em `.zip`.
+Duas configurações decidem se o texto oculto entra nos arquivos de exportação. As duas são botões liga/desliga em **Configurações → Dados → Exportações de chats**, e ambas vêm desativadas por padrão. Elas afetam as exportações de um único chat e em `.zip`.
 
 | Configuração | Quando está ativada |
 | --- | --- |

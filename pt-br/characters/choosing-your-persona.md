@@ -46,7 +46,7 @@ Em um chat de Roleplay, o seletor também pode oferecer **Create your persona**,
 
 ## Jogar como um personagem
 
-Para usar um card de personagem como a sua identidade, ative **Show characters in Persona pickers** (mostrar personagens nos seletores de persona) em **Settings → Advanced → Message Tools** (Configurações → Avançado → Ferramentas de mensagem). Os seletores passam a mostrar um grupo **Play as a character** (jogar como um personagem) que lista os seus personagens.
+Para usar um card de personagem como a sua identidade, ative **Mostrar os personagens nos seletores de persona** em **Configurações → Conversando → Caixa de mensagem**. Os seletores passam a mostrar um grupo **Jogar como um personagem** que lista os seus personagens.
 
 ## Guias relacionados
 

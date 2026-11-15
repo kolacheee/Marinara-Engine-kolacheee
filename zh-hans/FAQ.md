@@ -22,7 +22,7 @@ Marinara 以服务器的形式跑在一台电脑上，用浏览器打开使用�
 
 Android 上还可以[下载最新 APK](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk)。它通过 Termux 在手机上运行 Marinara。见 [Android 安装](installation/android-termux.md)。iPhone 和 iPad 见 [iOS PWA 指南](installation/ios-pwa.md)。
 
-在 Android 应用里，启动界面提供 **Open in browser**(在浏览器中打开)、**Retry connection**(重试连接) 和 **Install / Start Marinara**。以后想改选择，用 **Settings → General → App Behavior → Open Android launcher (app or browser)**(设置 → 常规 → 应用行为 → 打开 Android 启动界面（应用或浏览器）)。旧版 APK 在 `/android-login` 手动登录。
+在 Android 应用里，启动界面提供 **Open in browser**(在浏览器中打开)、**Retry connection**(重试连接) 和 **Install / Start Marinara**。以后想改选择，用 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(设置 → 外观 → 布局 → 打开 Android 启动界面（应用或浏览器）)。旧版 APK 在 `/android-login` 手动登录。
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -82,11 +82,11 @@ Marinara 本身免费。你付的是 AI 服务收的费用。有些选项试起�
 
 ## 智能体是什么？
 
-智能体是聊天过程中运行的可选 AI 帮手，各自负责一件具体的事，比如追踪场景或添加地图。全新安装不带任何智能体。打开 **Agents → Agent Organizer**(智能体 → 智能体管理器)，选一个安装。然后在 **Chat Settings** 里按聊天启用它。见[智能体](agents/agents-overview.md)。
+智能体是聊天过程中运行的可选 AI 帮手，各自负责一件具体的事，比如追踪场景或添加地图。全新安装不带任何智能体。打开 **Library → Agents**(资料库 → 智能体)，选一个安装。然后在 **Chat Settings** 里按聊天启用它。见[智能体](agents/agents-overview.md)。
 
 ## Noodle 怎么配置？
 
-Noodle 是专给你的角色用的本地虚构社交网络。从 **Agents → Agent Organizer** 安装 **Noodle**，按提示重启 Marinara，然后打开 **Home → Noodle**(主页 → Noodle)。见 [Noodle：应用内的社交时间线](agents/noodle.md)。
+Noodle 是专给你的角色用的本地虚构社交网络。从 **Library → Agents** 安装 **Noodle**，按提示重启 Marinara，然后打开 **Home → Noodle**(主页 → Noodle)。见 [Noodle：应用内的社交时间线](agents/noodle.md)。
 
 ## 角色为什么不回复？
 
@@ -98,11 +98,11 @@ Noodle 是专给你的角色用的本地虚构社交网络。从 **Agents → Ag
 
 ## 数据怎么备份？
 
-打开 **Settings → Advanced → Backup & Export**(设置 → 高级 → 备份与导出)，点击 **Download Backup**(下载备份)。这会保存一个 `.zip`，里面是你的数据和上传过的文件。要恢复，用 **Settings → Imports**(设置 → 导入) 下的 **Import Profile (JSON/ZIP)**。同一节里还能设置按日、按周或按月自动备份。见[备份与恢复](data/backup-and-restore.md)。
+打开 **Settings → Data → Backup & Restore**(设置 → 数据 → 备份与恢复)，点击 **Download Backup**(下载备份)。这会保存一个 `.zip`，里面是你的数据和上传过的文件。要恢复，用同一节里的 **Import Profile (JSON/ZIP)**。同一节里还能设置按日、按周或按月自动备份。见[备份与恢复](data/backup-and-restore.md)。
 
 ## 扩展是怎么运作的？能导入第三方代码吗？
 
-默认情况下，只有 Professor Mari 能创建 Personal Extension(个人扩展) 草稿。草稿一开始是关闭的，你要先批准它的确切代码，它才会运行。第三方导入默认隐藏，直到主机管理者在 `.env` 里设置 `ENABLE_EXTERNAL_EXTENSIONS=true`，并且你在 **Settings → Advanced → Danger Zone**(设置 → 高级 → 危险区域) 下接受警告。见[个人扩展](extending/personal-extensions.md)。
+默认情况下，只有 Professor Mari 能创建 Personal Extension(个人扩展) 草稿。草稿一开始是关闭的，你要先批准它的确切代码，它才会运行。第三方导入默认隐藏，直到主机管理者在 `.env` 里设置 `ENABLE_EXTERNAL_EXTENSIONS=true`，并且你在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 下接受警告。见[个人扩展](extending/personal-extensions.md)。
 
 ## 数据存在哪里？
 
@@ -118,7 +118,7 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用，也能�
 
 ## Storyboard 智能体是什么？在 Game Mode 里怎么用？
 
-它把写完的剧情文字变成图像。从 **Agents → Agent Organizer** 安装 **Storyboard**(分镜)，然后在聊天里开启它。见 [Storyboard 智能体指南](game/storyboard.md)。
+它把写完的剧情文字变成图像。从 **Library → Agents** 安装 **Storyboard**(分镜)，然后在聊天里开启它。见 [Storyboard 智能体指南](game/storyboard.md)。
 
 ## 角色能在通话里出声说话吗？
 
@@ -130,7 +130,7 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用，也能�
 
 ## 在应用里怎么看文档？
 
-在主页上，点击书签里的 **Documentation**(文档)。手机上要先打开书签菜单。在主页的常见问题里，也可以点击 **Open Documentation**(打开文档)。
+点击顶栏的 **Docs**(文档)。手机上的文档在 Library(资料库) 里（右上角的叠层按钮）。经典布局中，点击主页书签里的 **Documentation**(文档)。在主页的常见问题里，也可以点击 **Open Documentation**(打开文档)。
 
 ## 去哪里求助或者报 Bug？
 

@@ -9,14 +9,14 @@
 | **Download Backup**(백업 다운로드) | 모든 데이터와 파일이 든 `.zip` 파일 하나. | 모든 것을 한 번에 담은 완전한 사본이 필요할 때. |
 | **Export Profile**(프로필 내보내기) | 계정 데이터(캐릭터, 채팅, 로어북 등)를 담은 더 작은 파일. | 비밀 값이 없는 사본이나 다른 도구용 파일이 필요할 때. |
 
-`.zip`은 여러 파일을 담고 있는 파일 하나입니다. 두 방법 모두 **Settings**(설정) → **Advanced**(고급) → **Backup & Export**(백업 및 내보내기)에 있습니다. 복원은 **Settings** → **Imports**(가져오기) → **Profile & Marinara**(프로필 및 Marinara)에서 합니다.
+`.zip`은 여러 파일을 담고 있는 파일 하나입니다. 두 방법과 복원 기능 모두 **Settings → Data → Backup & Restore**(설정 → 데이터 → 백업 및 복원)에 있습니다.
 
-**시작하기 전에:** Marinara를 실행하는 컴퓨터에서는 이 도구들을 바로 쓸 수 있습니다. 휴대폰, 태블릿 등 다른 기기에서는 서버에 관리자 시크릿을 설정하고, 같은 값을 **Settings** → **Advanced** → **Admin Access**(관리자 접근)에 입력하세요. 관리자 시크릿은 서버의 `.env` 파일에 `ADMIN_SECRET` 설정으로 넣는 비밀번호입니다. [서버 설정 참고 문서](../CONFIGURATION.md)의 "관리자 권한 API(ADMIN_SECRET)" 섹션과 [원격 접근](../REMOTE_ACCESS.md)을 참고하세요.
+**시작하기 전에:** Marinara를 실행하는 컴퓨터에서는 이 도구들을 바로 쓸 수 있습니다. 휴대폰, 태블릿 등 다른 기기에서는 서버에 관리자 시크릿을 설정하고, 같은 값을 **Settings → Advanced → Security**(설정 → 고급 → 보안)에 입력하세요. 관리자 시크릿은 서버의 `.env` 파일에 `ADMIN_SECRET` 설정으로 넣는 비밀번호입니다. [서버 설정 참고 문서](../CONFIGURATION.md)의 "관리자 권한 API(ADMIN_SECRET)" 섹션과 [원격 접근](../REMOTE_ACCESS.md)을 참고하세요.
 
 ## Download Backup
 
-1. **Settings** → **Advanced**를 여세요.
-2. **Backup & Export**에서 **Download Backup**을 클릭하세요. 버튼에 **Creating backup…**(백업 만드는 중…)이 표시됩니다.
+1. **Settings → Data**(설정 → 데이터)를 여세요.
+2. **Backup & Restore**(백업 및 복원)에서 **Download Backup**을 클릭하세요. 버튼에 **Creating backup…**(백업 만드는 중…)이 표시됩니다.
 3. 브라우저가 물으면 파일을 저장하세요. 묻지 않으면 다운로드 폴더에서 찾으세요.
 
 `.zip`에는 다음이 들어 있습니다.
@@ -32,7 +32,7 @@
 
 Android에서는 앱의 데이터 폴더에 접근할 수 없으므로, 기기 밖으로 사본을 꺼내는 방법은 **Download Backup**뿐입니다.
 
-작동하지 않는 경우: "Backup preparation timed out after one hour."라는 메시지가 보이면 다시 시도하세요. 다른 기기에서 다운로드할 수 없다면 **Admin Access**를 확인하세요(위 내용 참고).
+작동하지 않는 경우: "Backup preparation timed out after one hour."라는 메시지가 보이면 다시 시도하세요. 다른 기기에서 다운로드할 수 없다면 관리자 시크릿을 확인하세요(위 내용 참고).
 
 <a id="automatic-backups"></a>
 
@@ -40,7 +40,7 @@ Android에서는 앱의 데이터 폴더에 접근할 수 없으므로, 기기 �
 
 Marinara는 Marinara를 실행하는 컴퓨터에서 일정에 맞춰 전체 백업을 만들 수 있습니다.
 
-1. **Settings** → **Advanced** → **Backup & Export**를 여세요.
+1. **Settings → Data → Backup & Restore**를 여세요.
 2. **Automatic backups**(자동 백업)를 켜세요.
 3. **Daily**(매일), **Weekly**(매주), **Monthly**(매달) 중 하나를 고르세요.
 4. **Automatic backups kept**(보관할 자동 백업 수)를 1에서 9999 사이로 정하세요.
@@ -55,7 +55,7 @@ Marinara는 이 기능을 켠 직후에 첫 백업을 만듭니다. 실행이 �
 
 ## 프로필 내보내기
 
-1. **Settings** → **Advanced** → **Backup & Export**를 여세요.
+1. **Settings → Data → Backup & Restore**를 여세요.
 2. **Export Profile**을 클릭하세요. 같은 제목의 창이 열립니다.
 3. 형식을 고르세요.
 4. 브라우저가 파일을 다운로드합니다.
@@ -65,17 +65,20 @@ Marinara는 이 기능을 켠 직후에 첫 백업을 만듭니다. 실행이 �
 
 네이티브 프로필은 `marinara-profile.json`으로 다운로드됩니다. 너무 크면 Marinara가 대신 ZIP 파일을 제안합니다. **Export ZIP**(ZIP 추출)을 클릭하면 `marinara-profile.zip`을 다운로드합니다.
 
-네이티브 프로필은 Personal Extension 코드는 유지하지만, 활성화 여부와 승인 여부는 유지하지 않습니다. 복원한 확장은 모두 비활성화된 채로 들어옵니다. **Settings** → **Addons**(애드온)에서 다시 검토하세요.
+네이티브 프로필은 정규식 스크립트, 해당 폴더, 각 폴더의 일시 중지 설정을 유지합니다. 개별 스크립트를 JSON으로 공유하려면 [정규식 스크립트](../extending/regex-scripts.md#import-and-replace-scripts)를 참고하세요.
+
+네이티브 프로필은 Personal Extension 코드는 유지하지만, 활성화 여부와 승인 여부는 유지하지 않습니다. 복원한 확장은 모두 비활성화된 채로 들어옵니다. **Library → Extensions**(라이브러리 → 확장)에서 다시 검토하세요.
 
 ## Import Profile로 복원하기
 
 **Import Profile**(프로필 가져오기)은 프로필 파일이나 **Download Backup** `.zip`을 불러옵니다.
 
-1. **Settings** → **Imports**를 여세요.
-2. **Profile & Marinara**에서 **Import Profile (JSON/ZIP)**(프로필 가져오기 (JSON/ZIP))을 클릭하세요.
-3. `marinara-profile.json`, `marinara-profile.zip`, 백업 `.zip` 중 하나를 고르세요. 버튼에 **Scanning Profile...**(프로필 스캔 중...)이 표시됩니다.
-4. **Import Profile** 창을 읽으세요. Marinara가 찾은 내용을 보여 주고, 가져오기를 되돌릴 수 없다고 경고합니다.
-5. **Import**(가져오기)를 클릭하세요. 중단하려면 **Cancel**(취소)을 클릭하세요. 버튼에 **Importing Profile...**(프로필 가져오는 중...)이 표시되고 진행 막대가 따라옵니다. 끝나면 프로필을 가져왔다는 메시지가 나타납니다.
+1. **Settings → Data → Backup & Restore**를 여세요.
+2. 가져오는 캐릭터, 페르소나, 로어북, 프리셋, 채팅에 **Imported**(가져옴)와 **Backup** 태그를 붙이려면 버튼 아래의 **Tag imported**(가져옴 태그 지정)와 **Tag source**(출처 태그 지정)를 체크한 채로 두세요. 모든 것을 원래 그대로 복원하려면 체크를 해제하세요.
+3. **Import Profile (JSON/ZIP)**(프로필 가져오기 (JSON/ZIP))을 클릭하세요.
+4. `marinara-profile.json`, `marinara-profile.zip`, 백업 `.zip` 중 하나를 고르세요. 버튼에 **Scanning Profile...**(프로필 스캔 중...)이 표시됩니다.
+5. **Import Profile** 창을 읽으세요. Marinara가 찾은 내용을 보여 주고, 가져오기를 되돌릴 수 없다고 경고합니다.
+6. **Import**(가져오기)를 클릭하세요. 중단하려면 **Cancel**(취소)을 클릭하세요. 버튼에 **Importing Profile...**(프로필 가져오는 중...)이 표시되고 진행 막대가 따라옵니다. 끝나면 프로필을 가져왔다는 메시지가 나타납니다.
 
 작동하지 않는 경우:
 
@@ -90,7 +93,7 @@ Marinara는 이 기능을 켠 직후에 첫 백업을 만듭니다. 실행이 �
 
 **Import Profile**은 **Download Backup** `.zip`을 고르더라도 API 키와 웹훅 주소를 복원하지 않습니다. API 키는 서비스가 발급해 주는 비밀 코드입니다. 프로필 파일과 백업 안의 프로필에서는 이런 값이 비워져 있습니다. 그래서 새 컴퓨터에서 가져온 뒤에는 이 값들을 다시 입력해야 합니다.
 
-1. 상단 바에서 **Connections**(연결)를 여세요.
+1. **Library → Connections**(라이브러리 → 연결)를 여세요.
 2. 사용하는 계정을 하나씩 열고 API 키를 입력한 다음 저장하세요. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
 3. 웹훅 주소를 쓰는 사용자 지정 도구마다 그 주소를 다시 입력하세요.
 
@@ -101,7 +104,7 @@ Marinara는 이 기능을 켠 직후에 첫 백업을 만듭니다. 실행이 �
 ## 새 컴퓨터로 옮기기
 
 1. 새 컴퓨터에 Marinara를 설치하고 시작하세요. [설치](../INSTALLATION.md)를 참고하세요.
-2. **Settings** → **Imports** → **Profile & Marinara**를 열고 **Import Profile (JSON/ZIP)**을 클릭하세요.
+2. **Settings → Data → Backup & Restore**를 열고 **Import Profile (JSON/ZIP)**을 클릭하세요.
 3. **Download Backup** `.zip`이나 프로필 파일을 고르고 **Import**를 클릭하세요.
 4. 위에서 설명한 대로 API 키를 다시 입력하세요.
 
@@ -120,7 +123,7 @@ Marinara는 이 기능을 켠 직후에 첫 백업을 만듭니다. 실행이 �
 
 `.encryption-key` 파일은 `storage` 폴더와 함께 두세요. 그렇지 않으면 저장된 API 키를 읽을 수 없습니다.
 
-**Backup & Export**의 **Existing backups**(기존 백업) 목록은 평소에 비어 있습니다. 이 목록은 필요하지 않습니다.
+**Backup & Restore**(백업 및 복원)의 **Existing backups**(기존 백업) 목록은 평소에 비어 있습니다. 이 목록은 필요하지 않습니다.
 
 ## 관련 가이드
 

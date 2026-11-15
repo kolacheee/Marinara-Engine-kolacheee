@@ -8,8 +8,8 @@
 
 시작하기 전에 모델 서버를 설치하고, 실행하고, 모델을 불러오세요. 예를 들어 `ollama.com`에서 Ollama를 다운로드하고 안내에 따라 모델을 받으세요. Marinara는 서버에 연결할 뿐이며 서버를 대신 실행해 주지 않습니다. 서버는 내 컴퓨터의 웹 주소에서 요청에 응답하며, 이 주소를 엔드포인트라고 합니다.
 
-1. 상단 바에서 **Connections**(연결)를 클릭한 다음 **Add**(추가)를 클릭하세요. **Add account**(계정 추가) 창이 열립니다.
-2. **Chat**(채팅) 아래에서 사용하는 서버를 클릭하세요. **Ollama**, **LM Studio**, **KoboldCpp**, **llama.cpp** 중 하나입니다. 이 타일에는 **Self-hosted**(자체 호스팅) 태그가 붙어 있습니다. 다른 서버라면 **OpenAI-compatible address**(OpenAI 호환 주소)를 클릭하세요.
+1. **Library → Connections**(라이브러리 → 연결)를 열고 **Add connection**(연결 추가)을 클릭하세요. 서비스 목록이 열립니다.
+2. **Text**(텍스트) 탭의 **Self-hosted**(자체 호스팅) 아래에서 사용하는 서버를 클릭하세요. **Ollama**, **LM Studio**, **KoboldCpp**, **llama.cpp** 중 하나입니다. 이 항목에는 **Self-hosted** 태그가 붙어 있습니다. 다른 서버라면 **OpenAI-compatible address**(OpenAI 호환 주소)를 클릭하세요.
 3. **Server address**(서버 주소)를 확인하세요. 이름이 나온 네 서버는 주소가 미리 채워져 있습니다. 다른 서버라면 그 서버의 주소를 입력하세요. 아래 표를 참고하세요.
 4. **API key (optional)**(API 키, 선택 사항)은 비워 두세요. 대부분의 로컬 서버는 키가 필요 없습니다. 계정에 이름을 붙이려면 **Name (optional)**(이름, 선택 사항)에 입력하세요.
 5. **Connect**(연결)를 클릭하세요. Marinara가 주소를 테스트합니다. **Connected**(연결됨)가 표시되면 서버에 접속한 것입니다.
@@ -21,6 +21,18 @@
 
 - **Marinara could not reach**라는 메시지가 나옵니다. Marinara가 그 주소에 접속하지 못했다는 뜻입니다. 서버가 실행 중인지, 주소와 포트가 맞는지 확인하세요. **Continue anyway**(그래도 계속)는 테스트를 통과하지 않은 채로 계정을 저장합니다.
 - 주소가 다른 컴퓨터에 있습니다. [다른 컴퓨터의 서버에 연결하기](#reach-a-server-on-another-computer)를 참고하세요.
+
+## 서버에 불러온 모델 그대로 사용하기
+
+로컬 또는 자체 호스팅 서버는 현재 불러온 모델로 답할 수 있으므로, 계정에 **Default**(기본값) 모델을 둘 수 있습니다. Default는 모델 이름을 보내지 않습니다. Ollama, LM Studio, KoboldCpp, llama.cpp에서 모델을 바꿔도 항상 그곳에 불러온 모델을 씁니다.
+
+- 내 컴퓨터나 네트워크의 서버용 계정을 새로 만들면 **Default** 모델이 들어 있습니다.
+- 나중에 추가하려면 계정의 **⋯**을 클릭하고 **Add model**을 고르세요. **Default**가 첫 번째 행에 있습니다.
+- **Default**도 다른 모델처럼 쓰세요. **Defaults**(기본값) 상자에서 **Main**(메인) 같은 작업을 맡기거나, **Model for this chat**에서 고르세요.
+- Connections 표에는 "Whatever model the server has loaded"라고 표시되며 별표가 없습니다.
+- 패널에서 **Default**를 클릭하면 이름이 있는 모델처럼 매개변수와 프롬프트 프리셋 등의 자체 설정을 지정할 수 있습니다.
+
+**Default**는 내 컴퓨터나 네트워크의 서버에만 표시됩니다. 클라우드 서비스에는 항상 모델 이름이 필요합니다.
 
 ## 많이 쓰는 로컬 서버의 주소
 
@@ -71,7 +83,7 @@ Android에서는 이 설정을 따로 지정하지 않으면 기본적으로 켜
 
 ## 판정에 모델 사용하기
 
-같은 모델이 두 번째 사본을 불러오지 않고도 에이전트 활성화 확인 같은 판정 질문에 답할 수 있습니다. 패널에서 그 모델의 **⋯**을 클릭하고 **Use this model for decisions**(이 모델을 결정에 사용)를 고르세요. 이 항목은 모델 이름이 있는 OpenAI 호환 모델에 표시됩니다. [Decision 모델](decision-models.md#on-a-server-you-already-run)을 참고하세요.
+같은 모델이 두 번째 사본을 불러오지 않고도 에이전트 활성화 확인 같은 판정 질문에 답할 수 있습니다. **Library → Connections**를 열고 **Add connection**을 클릭한 다음 **Decision**(판단) 탭을 열고 **Own decision server**(자체 판단 서버)를 골라 같은 주소를 입력하세요. (클래식 레이아웃에서는 모델의 **⋯**에 있는 **Use this model for decisions**(이 모델을 결정에 사용) 바로가기가 주소를 채워 줍니다.) [Decision 모델](decision-models.md#on-a-server-you-already-run)을 참고하세요.
 
 ## Treat as local/custom endpoint 토글
 

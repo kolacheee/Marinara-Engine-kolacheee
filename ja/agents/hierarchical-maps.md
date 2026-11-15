@@ -2,7 +2,7 @@
 
 > **対応バージョン:** このガイドはWorld Maps **1.3.1**に対応しています。このバージョンは、RoleplayとGameのチャットでMarinara Engine **2.3.5～3.x**をサポートします。Engine **2.4.1**では、移動ストリームのクリーンアップと、ポータブルインポート後のLorebooksの即時更新が加わります。Engine 2.3.5～2.4.0でも動作しますが、インポート後にLorebooksを手動で更新する必要があります。
 
-World Mapsを使うと、海岸、町、地区、宿屋のように、場所の中に別の場所を入れられるマップを物語に持たせられます。Marinaraはパーティーが今どこにいるかを常に把握し、AIはそれを使って一貫性を保ちます。試すには、**Agent Organizer**(エージェント管理)で**World Maps**をインストールして再起動し、[クイックスタート](#quick-start)の手順に従ってください。
+World Mapsを使うと、海岸、町、地区、宿屋のように、場所の中に別の場所を入れられるマップを物語に持たせられます。Marinaraはパーティーが今どこにいるかを常に把握し、AIはそれを使って一貫性を保ちます。試すには、**Library → Agents**(ライブラリー → エージェント)から**World Maps**をインストールして再起動し、[クイックスタート](#quick-start)の手順に従ってください。
 
 場所を1つの自由入力テキストとして持つのではなく、世界を入れ子になった場所の集まりとして表します。
 
@@ -52,7 +52,7 @@ World Maps 1.3.1でできることは次のとおりです。
 
 ## クイックスタート
 
-1. **Agents**(エージェント)を開き、**Agent Organizer**(エージェント管理)をクリックして**World Maps**をインストールします。このパッケージにはサーバー側のコードが含まれるため、再起動を求められたらMarinaraを再起動します。
+1. **Library → Agents**(ライブラリー → エージェント)を開き、**Available**(利用可能)で**World Maps**を探して**Get**(入手)をクリックします。このパッケージにはサーバー側のコードが含まれるため、再起動を求められたらMarinaraを再起動します。
 2. RoleplayまたはGameのチャットを開きます。
 3. **Agents → World Maps**(EngineにWorld Mapsの地球儀アイコンがある場合はそれ)を開き、そのチャットで有効にします。**Chat Settings → Agents**(チャット設定 → エージェント)から有効にすることもできます。
 4. **Use template**、**Create with AI**、**Build manually**のいずれかでマップを作成します。既存のチャットではマップファイルのインポートもできます。
@@ -340,7 +340,7 @@ Map表示を使う親では、**Child map background**を別途開きます。Ga
 
 ## 自動生成の画像プロンプトをカスタマイズする
 
-**Settings → Generations → Prompt Overrides**を開き、**Maps location artwork**を選びます。これは、Mapsが場所の画像をプレビューして自動生成するときに使う全体のテンプレートです。変数は`${variableName}`の形式で書き、エディターから挿入できます。
+**Settings → Media → Prompt Overrides**(設定 → メディア → プロンプトの上書き)を開き、**Maps location artwork**を選びます。これは、Mapsが場所の画像をプレビューして自動生成するときに使う全体のテンプレートです。変数は`${variableName}`の形式で書き、エディターから挿入できます。
 
 | 変数 | 意味 |
 | --- | --- |
@@ -496,7 +496,7 @@ World Mapsは、ロアを2つの形で使います。
 
 ### 自動生成の画像プロンプトに不要な内容が入る
 
-- Gameのジャンルが必ず入る: **Settings → Generations → Prompt Overrides → Maps location artwork**を開き、`${genreLine}`を削除して保存します。
+- Gameのジャンルが必ず入る: **Settings → Media → Prompt Overrides → Maps location artwork**(設定 → メディア → プロンプトの上書き → Maps location artwork)を開き、`${genreLine}`を削除して保存します。
 - オフのはずのキャンペーンの画風が入る: **Chat Settings → Illustrator → Use campaign art style**を確認します。オフのときは、`${campaignArtStyle}`と`${campaignArtStyleLine}`は空になります。
 - 親の目印がすべての子の画像に入る: 必要な場合を除き、テンプレートで`${parentLocationDescription}`と`${locationPath}`を使わないでください。
 - ネガティブのプロンプトに身に覚えのない文字列が入る: 確定する前にネガティブの欄を編集し、そのうえで全体のネガティブ画像設定を確認します。Mapsのテンプレートが組み立てるのはポジティブのプロンプトだけです。

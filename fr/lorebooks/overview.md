@@ -14,7 +14,7 @@ La correspondance par mots-clés fonctionne avec n'importe quel modèle, sans au
 
 ## Créer un lorebook et ajouter une entrée
 
-1. Ouvre le panneau **Lorebooks** depuis la barre latérale.
+1. Ouvre **Library** > **Lorebooks** (Bibliothèque > Lorebooks). La Library se trouve à droite.
 2. Clique sur **New** (nouveau, l'icône plus). La fenêtre **Create Lorebook** (créer un lorebook) s'ouvre.
 3. Saisis un nom dans le champ **Name** (nom). Ce champ est obligatoire.
 4. Ajoute une **Description** si tu veux.
@@ -67,7 +67,24 @@ L'onglet propose aussi ces interrupteurs.
 
 Le panneau **Semantic search (embeddings)** (recherche sémantique), sous les interrupteurs, est traité dans [Recherche sémantique pour les lorebooks](semantic-search.md).
 
-## Le panneau Lorebooks
+## La page Lorebooks
+
+Ouvre **Library → Lorebooks** (Bibliothèque → Lorebooks). En haut se trouvent **Import** (importer, voir [Importer et exporter des lorebooks](import-export.md)) et **New lorebook** (nouveau lorebook). En dessous :
+
+- **All kinds** (tous les types) limite la liste aux lorebooks **Global**, **World**, **Character**, **NPC** ou **Spellbook**.
+- **List** (liste) et **Gallery** (galerie) permettent de passer d'un tableau à des vignettes illustrées.
+- Le menu de tri propose **Recently edited** (modifiés récemment), **A to Z**, **Z to A** et **My order** (mon ordre).
+
+Clique sur un lorebook pour l'ouvrir.
+
+### Organiser tes lorebooks
+
+- Le bouton **⋯** à la fin d'une ligne (ou un clic droit sur la ligne) propose **Duplicate** (dupliquer), **Move to folder** (déplacer vers un dossier), **Export**, **Select** et **Delete**. Sur un écran tactile, maintiens la ligne appuyée. **Duplicate** copie le lorebook avec toutes ses entrées et ouvre la copie.
+- Fais glisser une ligne au-dessus ou en dessous d'une autre pour définir ton propre ordre. Le menu de tri passe à **My order**.
+- **New folder** (nouveau dossier, l'icône de dossier à côté du titre) ajoute un dossier de bibliothèque. Fais glisser un lorebook dessus, ou utilise **Move to folder**. Ces dossiers sont distincts des dossiers d'entrées à l'intérieur d'un lorebook. Clique sur un dossier pour le replier, et utilise son bouton **⋯** pour le renommer ou le supprimer. Supprimer un dossier conserve ses lorebooks.
+- **Select** (l'icône de coche à côté du titre) ajoute une case à cocher sur chaque ligne. Choisis des lorebooks, puis utilise la barre du bas : **Move to folder**, **On or off** (activé ou désactivé), **Export** (un fichier `marinara-lorebooks.zip`) ou **Delete**.
+
+## Dans la disposition classique : le panneau Lorebooks
 
 En haut du panneau, trois boutons-icônes affichent leur nom quand tu passes le pointeur dessus.
 
@@ -77,7 +94,8 @@ En haut du panneau, trois boutons-icônes affichent leur nom quand tu passes le 
 
 Sous les boutons :
 
-- **Search lorebooks** (chercher des lorebooks) filtre par nom, description, nom du personnage ou du persona lié, et tags.
+- **Rechercher des lorebooks** filtre par nom, description, nom du personnage ou du persona lié, et tags. `tag:name` fonctionne ici aussi.
+- **Tags**, à côté du champ de recherche, affiche uniquement les lorebooks avec tous les tags que tu choisis, ou **Sans tag**. Voir [Tags](../characters/library-organization.md#tags).
 - **Sort order** (ordre de tri) propose **Manual order** (ordre manuel), **A-Z**, **Z-A**, **Newest**, **Oldest** et **Token Budget**. Avec **Manual order**, fais glisser les lorebooks à leur place, ou utilise <kbd>Alt</kbd>+<kbd>Up</kbd> et <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (nouveau dossier) crée un dossier de bibliothèque. Fais glisser un lorebook dessus. Sur téléphone, maintiens le lorebook appuyé, puis fais-le glisser. Ces dossiers n'ont rien à voir avec les dossiers d'entrées à l'intérieur d'un lorebook.
 

@@ -110,7 +110,7 @@ Noodleは、初回のプロフィールを用意する前にアクティブな�
 
 うまくいかなかった場合: 画像生成がオンでも使える画像モデルがないと、「Choose an image generation connection for Noodle first.」と表示されて更新が止まります。画像の生成に失敗すると1回だけ再試行します。もう一度失敗した場合は、更新はそのまま続き、テキストだけのきれいな投稿を公開します。
 
-これらの画像プロンプトのテンプレートは**Noodle Post Image**です。**Settings → Generations → Image Generation Prompt Overrides**(設定 → 生成 → 画像生成のPrompt Overrides)で編集します。画像の指示はこのテンプレートに入り、その結果がスタイルプロファイルを通ります。[画像と動画のPrompt Overrides](../prompts/prompt-overrides.md)と[画像スタイルプロファイル](../media/style-profiles.md)を参照してください。Professor Mariにはキャラクターカードがないため、画像の投稿には組み込みのアバターと参照用のイラストを使います。
+これらの画像プロンプトのテンプレートは**Noodle Post Image**です。**Settings → Media → Prompt Overrides**(設定 → メディア → プロンプトの上書き)で編集します。画像の指示はこのテンプレートに入り、その結果がスタイルプロファイルを通ります。[画像と動画のPrompt Overrides](../prompts/prompt-overrides.md)と[画像スタイルプロファイル](../media/style-profiles.md)を参照してください。Professor Mariにはキャラクターカードがないため、画像の投稿には組み込みのアバターと参照用のイラストを使います。
 
 <a id="image-understanding"></a>
 
@@ -135,7 +135,7 @@ Noodleは、初回のプロフィールを用意する前にアクティブな�
 
 ### 書き手の語り口をカスタマイズする
 
-書き手の組み込みの語り口と創作の自由度に関する指示は、**Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone**(設定 → 生成 → 画像生成のPrompt Overrides → Noodle Timeline Voice & Tone)で書き換えられます。セクション名には「Image」とありますが、この一覧には、カスタマイズできるNoodleとConversationのテキストプロンプトがすべて入っています。そこに表示されるデフォルトの文章は、自分の文章を保存するまでは**Enhanced tone & continuity**に従い、保存した後はその設定に関係なく自分の文章が使われます。
+書き手の組み込みの語り口と創作の自由度に関する指示は、**Settings → Media → Prompt Overrides → Noodle Timeline Voice & Tone**(設定 → メディア → プロンプトの上書き → Noodle Timeline Voice & Tone)で書き換えられます。セクション名には「Image」とありますが、この一覧には、カスタマイズできるNoodleとConversationのテキストプロンプトがすべて入っています。そこに表示されるデフォルトの文章は、自分の文章を保存するまでは**Enhanced tone & continuity**に従い、保存した後はその設定に関係なく自分の文章が使われます。
 
 この上書きが対象にするのは語り口だけです。どの構造化された操作が許されるかなど、更新を正しく保つためのルールは常に有効です。
 

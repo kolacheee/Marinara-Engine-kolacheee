@@ -4,7 +4,7 @@ Ein Einstellungsprofil ist ein benanntes Bündel wiederverwendbarer Chat-Einstel
 
 Profile sitzen ganz oben in **Chat Settings** (Chat-Einstellungen). Sie funktionieren in Conversation und Roleplay. Game-Chats zeigen die Profil-Bedienelemente nicht.
 
-Ein **Prompt-Preset** ist etwas anderes. Es steuert den Aufbau des System-Prompts und die Generierungswerte, und du bearbeitest es im Presets-Panel. Siehe [Preset-Editor und Prompt-Manager](../prompts/presets.md). Ein Einstellungsprofil ist das umfassendere Bündel und kann ein Prompt-Preset als einen Bestandteil enthalten.
+Ein **Prompt-Preset** ist etwas anderes. Es steuert den Aufbau des System-Prompts und die Generierungswerte, und du bearbeitest es auf der Seite **Library → Presets**. Siehe [Preset-Editor und Prompt-Manager](../prompts/presets.md). Ein Einstellungsprofil ist das umfassendere Bündel und kann ein Prompt-Preset als einen Bestandteil enthalten.
 
 ## Ein Profil anwenden
 
@@ -92,7 +92,7 @@ Nutzt ein neuer Chat ein Standardprofil mit gespeicherter Anordnung, hat diese A
 Ein Profil hält fest, wie der Chat mit dem Modell spricht:
 
 - Verbindung.
-- Prompt-Preset (in Conversation heißt es Prompt-Quelle).
+- Prompt-Preset (in Conversation heißt es Prompt-Quelle), mit deiner Auswahl für seine [Preset-Variablen](../prompts/preset-variables.md). Beim Anwenden des Profils erhält der Chat diese Auswahl. Ein Profil, das gespeichert wurde, bevor es sie enthielt, lässt die eigene Auswahl des Chats unverändert.
 - Agenten und Tools.
 - Übersetzung, Memory Recall und Advanced Parameters.
 - Fenster- und Schaltflächenanordnung: Positionen, Größen, Anheftungen, Sperren, welche Tools in Chat Settings liegen oder herausgelöst sind, offene Steuerungsfenster und Schaltflächenpositionen am Computer und Telefon. Profile ohne gespeicherte Anordnung, etwa **Default**, lassen die Anordnung des Chats unverändert.
@@ -120,6 +120,7 @@ Chat-eigene Inhalte ersetzt ein Profil nicht: Charaktere, Sprites, Zusammenfassu
 - Gedächtnis- und Zusammenfassungseinstellungen.
 - Übersetzung.
 - Die Fensteranordnung.
+- Auswahl der Preset-Variablen, nur in Chats, die dasselbe Prompt-Preset wie das Profil verwenden.
 
 Alles andere behält jeder Chat so, wie er es hat:
 

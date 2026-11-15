@@ -10,8 +10,8 @@ Unser Rat: Lass es auf **None** (keines), wenn du unsicher bist. Willst du Decis
 
 Lies vorher [Welche Möglichkeit passt?](#which-one-to-pick).
 
-1. Klick in der oberen Leiste auf **Connections** (Verbindungen) und öffne den Bereich **Jobs** (Aufgaben).
-2. Klick unter **Behind the scenes** (hinter den Kulissen) auf die Zeile **Decision**. Eine Liste öffnet sich.
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen). Der Bereich **Defaults** (Standardwerte) steht oben.
+2. Klick auf **Decision**. Eine Liste öffnet sich.
 3. Wähle ein Modell. Die Liste hat drei Gruppen:
    - **None (decisions off)** ist der Standard. Es wird nichts gefragt, und die Felder für Aktivierungsfragen im Agenten-Editor bleiben deaktiviert.
    - **Built-in model** (eingebautes Modell) listet die Modelle, die Marinara auf deinem Rechner ausführt: **Built-in model**, **Built-in model (utility)** und **Built-in model (decisions)**. Nichts verlässt deinen Rechner.
@@ -37,15 +37,15 @@ Läuft bei dir schon ein lokales Modell, probier es zuerst und teste Züge aus d
 
 Jev und Open-Jev sind unterschiedliche Modelle. Jev ist das gehostete Modell von TypeSafe, direkt oder über OpenRouter verfügbar. [Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B) ist ein separat veröffentlichtes Modell auf Qwen-Basis, das Marinara lokal ausführen kann. Die Tests mit Open-Jev messen nicht das gehostete Jev.
 
-Unter Android (Termux) kann das **Built-in decision model** (eingebautes Decision-Modell) nicht laufen, und ein kleines lokales Modell auf dem Prozessor eines Handys kann zu langsam sein. Praktisch ist dort ein gehostetes Konto, etwa Jev über OpenRouter. Siehe [Eine Decision-Verbindung einrichten](#set-up-a-decision-connection).
+Unter Android (Termux) kann das **Built-in decision model** (eingebautes Decision-Modell) nicht laufen, und ein kleines lokales Modell auf dem Prozessor eines Handys kann zu langsam sein. Praktisch ist dort ein gehostetes Konto, etwa Jev über OpenRouter. Siehe [Ein Decision-Konto einrichten](#set-up-a-decision-account).
 
-Schreib Presets, Karten und Agenten für „ein Decision-Modell“, niemals mit „benötigt Jev“. Sie verwenden mit jedem Modell dieselbe Aussage-Syntax, aber Modelle können unterschiedlich antworten. Importierst du Inhalte, die Decisions nutzen, auch eigene Agenten und Installationen aus dem Agent Organizer, zeigt Marinara einen Hinweis mit einem Link hierher. Beim Wiederherstellen eines vollständigen Profil-ZIP erscheint er nicht.
+Schreib Presets, Karten und Agenten für „ein Decision-Modell“, niemals mit „benötigt Jev“. Sie verwenden mit jedem Modell dieselbe Aussage-Syntax, aber Modelle können unterschiedlich antworten. Importierst du Inhalte, die Decisions nutzen, auch eigene Agenten und Installationen offizieller Agenten, zeigt Marinara einen Hinweis mit einem Link hierher. Beim Wiederherstellen eines vollständigen Profil-ZIP erscheint er nicht.
 
 ## Das eingebaute Modell verwenden
 
 Hast du das eingebaute Modell heruntergeladen, kannst du es ohne Konto und ohne Kosten für Decisions verwenden. Siehe [Eingebautes Modell einrichten](local-model.md).
 
-1. Klick im Bereich **Jobs** unter **Behind the scenes** auf die Zeile **Decision**.
+1. Klick auf der Connections-Seite im Bereich **Defaults** auf **Decision**.
 2. Wähle **Built-in model** (oder **Built-in model (utility)**, falls du eines hast).
 3. Klick auf das Zahnrad **Decision settings** und dann auf **Test**.
 
@@ -69,31 +69,31 @@ Die Ja/Nein-Wahrscheinlichkeiten eines allgemeinen Chat-Modells taugen für eine
 
 Läuft dein Chat-Modell in Ollama, LM Studio, llama.cpp oder einem anderen OpenAI-kompatiblen Server, kann es Decisions beantworten, ohne dass Marinara eine zweite Kopie lädt.
 
-1. Klick im Panel **Connections** bei diesem Modell auf **⋯** und wähle **Use this model for decisions** (dieses Modell für Entscheidungen verwenden). Das Fenster **Add account** (Konto hinzufügen) öffnet sich beim Decision-Schritt, mit derselben Adresse, demselben Modell und demselben Key.
+1. Öffne **Library → Connections**, klick auf **Add connection** (Verbindung hinzufügen), öffne den Tab **Entscheidung** und wähle **Own decision server** (eigener Decision-Server). Gib dieselbe Adresse und denselben Key ein, die dein Chat-Modell verwendet. (Im klassischen Layout findest du am Modell unter **⋯** die Option **Use this model for decisions** (dieses Modell für Entscheidungen verwenden), die diese Angaben einträgt.)
 2. Wähle das Modell und klick dann auf **Test decision** (Entscheidung testen). Ein bestandener Test nennt, ob der Server Log-Wahrscheinlichkeiten geliefert hat und ob das Modell zuerst nachdenken musste. Klick auf **Done** (Fertig).
-3. Klick unter **Behind the scenes** auf die Zeile **Decision** und wähle das neue Modell.
+3. Klick im Bereich **Defaults** auf **Decision** und wähle das neue Modell.
 
 Du kannst es auch selbst anlegen. Nimm ein Decision-Konto mit der Quelle **OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**, derselben Adresse wie dein Chat-Konto (zum Beispiel `http://localhost:11434/v1` für Ollama) und dem Modellnamen, den der Server verwendet.
 
 Es wird gefragt wie das eingebaute Modell: ein Ja/Nein-Wort pro Aussage. Aussagen gehen einzeln hinaus, weil Marinara nicht wissen kann, wie viele Anfragen dein Server gleichzeitig bearbeitet. **Thinking** ist für ein Konto immer **Auto**. Ein Server auf einem anderen Rechner braucht `PROVIDER_LOCAL_URLS_ENABLED`. Siehe [Ein lokales oder selbst gehostetes Modell verbinden](local-self-hosted.md).
 
-<a id="set-up-a-decision-connection"></a>
+<a id="set-up-a-decision-account"></a>
 
-## Eine Decision-Verbindung einrichten
+## Ein Decision-Konto einrichten
 
 Ein gehostetes Decision-Konto sendet die ausgewählten jüngsten Nachrichten und Aussagen an den Dienst und kann Geld kosten. Die Smart-Antwortreihenfolge sendet zusätzlich eine [Charakterliste](#what-the-model-sees).
 
-1. Klick in der oberen Leiste auf **Connections** und dann auf **Add** (Hinzufügen).
-2. Klick unter **Decisions** (Entscheidungen) auf **TypeSafe** oder **Own decision server**. Für OpenRouter klickst du unter **Chat** auf **OpenRouter**, verbindest es und nutzt dann **Use this key for decisions** (diesen Key für Decisions verwenden) im Menü **⋯** des Modells.
-3. Gib den **API key** ein oder bei **Own decision server** die **Server address** (Serveradresse). Klick auf **Connect** (Verbinden). Das Fenster schließt sich, und das Panel zeigt das neue Konto.
-4. Klick unter **Behind the scenes** auf die Zeile **Decision** und wähle das neue Modell.
-5. Zum Testen klick im Panel auf das Modell, um **Edit model** zu öffnen, und dann in der Karte **Provider tests** (Anbietertests) auf **Test provider**. Ein Modell vom Typ **Own decision server** hat dort keine Schaltfläche **Test provider**. Öffne stattdessen im Panel das Menü **⋯** des Kontos und klick auf **Test**.
+1. Öffne **Library → Connections** und klick auf **Add connection**.
+2. Klick im Tab **Entscheidung** auf **TypeSafe** oder **Own decision server**. Für OpenRouter klickst du im Tab **Text** auf **OpenRouter**, verbindest es und nutzt dann **Use this key for decisions** (diesen Key für Decisions verwenden) im Menü **⋯** des Modells.
+3. Gib den **API key** ein oder bei **Own decision server** die **Server address** (Serveradresse). Klick auf **Connect** (Verbinden). Das Fenster schließt sich, und die Connections-Seite zeigt das neue Konto.
+4. Klick im Bereich **Defaults** auf **Decision** und wähle das neue Modell.
+5. Zum Testen klick auf der Connections-Seite auf das Modell, um **Edit model** zu öffnen, und dann in der Karte **Provider tests** (Anbietertests) auf **Test provider**. Ein Modell vom Typ **Own decision server** hat dort keine Schaltfläche **Test provider**. Klick stattdessen am Konto auf **⋯**, wähl **Edit account** (Konto bearbeiten) und klick auf **Test account** (Konto testen).
 
-Ein bestandener **Test provider** zeigt die Wahrscheinlichkeit, wie lange die Antwort gedauert hat, und das Zeitlimit des Kontos. **Test** im Menü **⋯** des Kontos sagt nur, ob es funktioniert hat und wie lange es gedauert hat. Der Test wartet mindestens 10 Sekunden oder 5 Sekunden über ein längeres Limit hinaus. Hat die Antwort länger als das Limit gedauert, steht das im Ergebnis: Im Chat würde diese Antwort als keine Antwort zählen.
+Ein bestandener **Test provider** zeigt die Wahrscheinlichkeit, wie lange die Antwort gedauert hat, und das Zeitlimit des Kontos. **Test account** sagt nur, ob es funktioniert hat und wie lange es gedauert hat. Der Test wartet mindestens 10 Sekunden oder 5 Sekunden über ein längeres Limit hinaus. Hat die Antwort länger als das Limit gedauert, steht das im Ergebnis: Im Chat würde diese Antwort als keine Antwort zählen.
 
 Hat es nicht funktioniert, sieh unter [Fehlerbehebung](#troubleshooting) nach.
 
-Der Decision-Editor (**Edit model** bei einem Decision-Modell) hat diese Felder:
+Ein Decision-Modell hat diese Felder. Klick im Panel auf das Modell, um **Modell bearbeiten** zu öffnen, oder im Bereich **Aufgaben** auf das Zahnrad in der Zeile **Decision**, um **Decision settings** für das aktuelle Decision-Modell zu öffnen:
 
 | Feld | Was es bewirkt |
 | --- | --- |
@@ -117,6 +117,7 @@ Löschst du ein Konto, dessen Key für Decisions verwendet wird, erscheint eine 
 - [Decision-Felder im Lorebook](../lorebooks/entries.md#decision-activation) prüfen Require oder Trigger beim Lorebook-Scan. Ohne Antwort: Require kann keinen neuen Eintrag zulassen, und Trigger ergänzt keinen Aktivierungsweg. Sticky-Haltezeiten und gewöhnliche Trigger-Aktivierungswege gelten weiterhin.
 - Die [Smart-Antwortreihenfolge](../chats/group-chats.md#response-order-individual-only) bewertet, wenn sie eingeschaltet ist, wer in einem Gruppenchat als Nächstes spricht. Ohne Antwort: Die Smart-Reihenfolge macht ihren gewöhnlichen KI-Aufruf.
 - [Aktive Charaktere automatisieren](../chats/group-chats.md#automate-active-characters-merged-only) fragt vor jeder Antwort in einer Merged-Roleplay-Gruppe, wer in der Szene ist, wenn die Option auf **Decision model** (Entscheidungsmodell) steht. Ohne Antwort: Bekommt kein Charakter eine Antwort, nutzt es die letzte Szene des Character Trackers oder behält die Liste bei.
+- [Decision-Modell-Prüfungen von Illustrator](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model) prüfen jede Roleplay-Antwort auf einen neuen Ort oder neues Wetter, wenn sie in den Illustrator-Einstellungen des Chats eingeschaltet sind. Ohne Antwort: Hintergründe ändern sich wie bisher nur dann, wenn Illustrator oder World State es anfordern.
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model) kann für Szenengrenzen in Roleplay und die Auswahl von Erinnerungen ein eigenes Decision-Modell nutzen. Schalte **Use Decision model** (Entscheidungsmodell verwenden) in den Advanced-Memory-Einstellungen dieses Chats ein. Ohne Antwort: Fehlgeschlagene Decisions fallen auf den normalen Abruf oder die normale Szenenprüfung zurück. Zusammenfassungen nutzen weiterhin das Hilfsmodell.
 
 Eine Aktivierungsfrage entscheidet, ob ein Agent läuft. Eine Decision-Aussage in seinem Prompt entscheidet, was dieser laufende Agent gesagt bekommt. Verwende `{{#if decision:"..."}}` für Ja/Nein-Bedingungen und `{{#if decision_choice:"..." == "..."}}` für die Wahl zwischen mehreren Antworten.
@@ -214,7 +215,7 @@ Die Open-Jev-Modelle brauchen Linux **x86-64**, eine NVIDIA-GPU mit Compute Capa
 
 Das sind die Schätzungen des Katalogs. Das 9B-Modell lässt auf einer GPU mit 24 GB wenig Reserve. Beachte die Einschätzung des Installers für deine Karte.
 
-1. Klick im Panel **Connections** auf **Add** und unter **Decisions** auf **Built-in model (decisions)**. Ein Fenster mit dem Titel **Built-in decision model** öffnet sich. Du kannst es auch über die Seite der Karte **Built-in model** öffnen.
+1. Klick im Panel **Verbindungen** auf **Hinzufügen** und im Tab **Entscheidung** auf **Built-in model (decisions)** (erscheint, wenn dieser Rechner es ausführen kann). Ein Fenster mit dem Titel **Built-in decision model** öffnet sich. Du kannst es auch über die Seite der Karte **Built-in model** öffnen.
 2. Lies die Warnung und schalte dann **Use the built-in decision model** (eingebautes Decision-Modell verwenden) ein. Ein Dialogfenster mit dem Titel **Turn on the built-in decision model?** zeigt die Einschätzung für deinen Rechner. Klick auf **Enable** (Aktivieren) oder, wenn die Einschätzung eine Warnung ist, auf **Enable anyway** (trotzdem aktivieren).
 3. Wähle unter **Available decision models** (verfügbare Decision-Modelle) **Open-Jev 2B** oder **Open-Jev 9B**. Klick auf **Download and install** (herunterladen und installieren) und bestätige Größe, Hardwareeinschätzung und Lizenzen. Vorher wird nichts heruntergeladen.
 4. Klick unter **Behind the scenes** auf die Zeile **Decision** und wähle **Built-in model (decisions)**.

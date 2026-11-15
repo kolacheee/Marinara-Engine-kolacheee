@@ -8,10 +8,9 @@ Ein Regelsatz erklärt Game Mode, wie ein Tischrollenspiel funktioniert: welche 
 
 So installierst du einen offiziellen Regelsatz wie 5e (SRD 5.1):
 
-1. Öffne über das Sparkles-Symbol das Panel **Agents** (Agenten).
-2. Wähle **Agent Organizer** (Agentenverwaltung).
-3. Such den Regelsatz. Regelsätze sind mit **Rules** gekennzeichnet.
-4. Klick auf **Install** (Installieren).
+1. Öffne **Library → Agents** (Bibliothek → Agenten) und klick auf **Available** (verfügbar).
+2. Such den Regelsatz. Regelsätze sind mit **Rules** gekennzeichnet.
+3. Klick auf **Get** (Installieren).
 
 Starte dann ein neues Spiel und wähl ihn aus (siehe unten). Regelsätze kommen aus zwei Quellen:
 

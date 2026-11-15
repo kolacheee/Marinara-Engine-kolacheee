@@ -37,8 +37,6 @@ Postać może też mieć własny **Daily safety limit** (ustawiany w jej harmono
 | od 20 do 39 | 3 |
 | poniżej 20 | 2 |
 
-<a id="turn-on-schedules"></a>
-
 ## Włącz harmonogramy
 
 Zanim zaczniesz: włącz **Autonomous Messages**.
@@ -51,7 +49,7 @@ Zanim zaczniesz: włącz **Autonomous Messages**.
 
 Harmonogram należy do postaci i jest używany w każdym czacie Conversation. Wyłączenie **Schedules** w jednym czacie zostawia je wyłączone tylko tam i zachowuje harmonogram.
 
-Automatyczne tygodniowe odnawianie jest wyłączone, chyba że włączysz **Renew weekly** dla tej postaci w oknie **Character Schedule Manager** (menedżer harmonogramów postaci). Otworzysz je przyciskiem kalendarza w stopce paska bocznego, obok pola statusu.
+Automatyczne tygodniowe odnawianie jest wyłączone, chyba że włączysz **Renew weekly** dla tej postaci w oknie **Character Schedule Manager** (menedżer harmonogramów postaci). Otworzysz je przyciskiem kalendarza na dole listy czatów, obok pola statusu.
 
 Aplikacja próbuje odnowić harmonogram raz dla każdego czatu przy każdym wczytaniu strony aplikacji. Jeśli się to nie uda, nie próbuje ponownie, dopóki nie wczytasz strony od nowa. Kliknij **Generate**, aby spróbować jeszcze raz.
 

@@ -41,8 +41,6 @@ Mechaniki, która nie pasuje do tych postaci, np. przeciwstawnych pul, nie da si
 
 Game Mode rozstrzyga walkę albo własnym systemem walki Marinara, albo według zasad twojego zestawu. Opcjonalny blok `battle` przekazuje walce Marinara liczby z arkuszy postaci: zobacz [Bitwy](ruleset-combat.md#battles-lending-the-sheet-to-marinaras-combat). Opcjonalny blok `combat` określa, jak zestaw zasad sam rozstrzyga walkę: zobacz [Walka](ruleset-combat.md#combat-a-fight-your-own-rules-resolve). Ustawienie Combat Preference (preferowany rodzaj walki) gry wybiera prezentację Turn-Based lub, gdy zestaw zasad definiuje odległość, pole bitwy Tactical. Zestaw zasad może ograniczyć, których z nich używają jego gry, przez `combat.styles` (zobacz [Które style może wykorzystywać gra](ruleset-combat.md#combat-a-fight-your-own-rules-resolve)).
 
-<a id="parts-of-the-file"></a>
-
 ## Części pliku
 
 | Klucz | Zawartość |
@@ -67,8 +65,6 @@ Plik może mieć do 512 KB (256 KB przed Capability API 1.340). Tekst trafiając
 
 Identyfikatory w arkuszu (atrybutów, umiejętności, pól, pul itd.) zaczynają się literą i zawierają małe litery, cyfry oraz podkreślenia, np. `grit_max`.
 
-<a id="reference-pages"></a>
-
 ## Strony referencyjne
 
 Ta strona opisuje tworzenie, wypróbowanie i udostępnianie zestawu zasad. Każda z pozostałych stron omawia jeden temat:
@@ -82,17 +78,15 @@ Ta strona opisuje tworzenie, wypróbowanie i udostępnianie zestawu zasad. Każd
 - [Walka według zestawu zasad](ruleset-combat.md): blok `battle` i blok `combat`, z bestiariuszem, planszą, reakcjami i testami przeciwstawnymi.
 - [Warstwy, tłumaczenia i migracje zestawu zasad](ruleset-layers-and-translations.md): warianty włączane przez gracza dla jednej gry, tłumaczenia i przenoszenie wartości do nowych identyfikatorów przy zmianie arkusza.
 
-<a id="try-your-ruleset"></a>
-
 ## Wypróbowanie zestawu zasad
 
-Zanim zaczniesz, włącz **Allow custom Agent imports** (zezwolenie na import własnych agentów) w **Settings → Advanced → Danger Zone** (ustawienia, zaawansowane, strefa zagrożenia). Importowane zestawy zasad używają tego samego przełącznika bezpieczeństwa co importowani agenci, więc jest on wyłączony, dopóki go nie włączysz. Import wymaga też dostępu przez localhost albo sekretu administratora: **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny).
+Zanim zaczniesz, włącz **Allow custom Agent imports** (zezwolenie na import własnych agentów) w **Ustawienia → Zaawansowane → Bezpieczeństwo**. Importowane zestawy zasad używają tego samego przełącznika bezpieczeństwa co importowani agenci, więc jest on wyłączony, dopóki go nie włączysz. Import wymaga też dostępu przez localhost albo sekretu administratora: **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 
-1. Otwórz panel **Agents** (agenci) i wybierz przycisk **Import agents** (import agentów, ikona pobierania w rzędzie przycisków u góry panelu).
+1. Otwórz **Biblioteka → Agenci** i kliknij **Importuj agentów** (ikonę pobierania obok **Zestawy startowe**). W klasycznym układzie jest to ikona pobierania u góry panelu **Agenci**.
 2. Wybierz **Game Mode ruleset** (zestaw zasad trybu Game Mode) i swój plik JSON albo plik pakietu zestawu zasad z końcówką `.ruleset.json` (zobacz [Udostępnianie zestawu zasad](#sharing-your-ruleset)).
 3. Przeczytaj podgląd. Pokazuje nazwę, wersję, licencję, zakres zestawu zasad i tekst mistrza gry. Wybierz **Import** (import).
 
-Twój zestaw zasad pojawi się w sekcji **Rules** panelu oraz w wyborze **Rules** kreatora konfiguracji nowych gier. Zestaw zasad zaimportowany z pliku jest zapisywany jako `local/<your id>`, więc nigdy nie zostanie pomylony z oficjalnym zestawem zasad ani z cudzym.
+Twój zestaw zasad pojawi się w wyborze **Rules** kreatora konfiguracji nowych gier oraz w sekcji **Rules** klasycznego panelu **Agenci**. Zestaw zasad zaimportowany z pliku jest zapisywany jako `local/<your id>`, więc nigdy nie zostanie pomylony z oficjalnym zestawem zasad ani z cudzym.
 
 ### Zmiana już zaimportowanego zestawu zasad
 
@@ -101,8 +95,6 @@ Zaimportowana wersja nigdy nie jest nadpisywana. Jeśli zaimportujesz zmieniony 
 Podczas tworzenia cykl wygląda tak: edytuj, zwiększ `version`, zaimportuj, rozpocznij nową grę. Stare wersje pozostają zainstalowane obok nowej, dopóki nie usuniesz zestawu zasad z sekcji **Rules**. Usunięcie zestawu zasad, którego gra nadal używa, sprawia, że ta gra zgłasza jego brak aż do ponownego importu.
 
 Jeśli zmienisz kształt arkusza (dodasz, usuniesz lub zmienisz nazwy elementów), zwiększ też `sheet.version`. Istniejące arkusze są odczytywane tolerancyjnie: wartości nieznane nowemu arkuszowi zostają zachowane, a brakujące otrzymują wartości domyślne.
-
-<a id="sharing-your-ruleset"></a>
 
 ## Udostępnianie zestawu zasad
 
@@ -161,19 +153,17 @@ your-repository/
     another-system.json
 ```
 
-Użytkownik dodaje twoje repozytorium raz, przegląda jego zawartość i później je synchronizuje, żeby otrzymać nowe wersje. Lista własnych repozytoriów to zaawansowana funkcja. Osoba prowadząca serwer włącza ją przez `ENABLE_CUSTOM_AGENT_REPOS=true`, a potem otwiera **Agents → Agent Organizer → Custom Sources** (agenci, organizowanie agentów, własne źródła). Zestawy zasad z repozytorium są zapisywane pod nazwą właściciela repozytorium, np. `alice/ember-roads`, więc dwie różne osoby mogą opublikować zestaw zasad o nazwie `v20` bez kolizji.
+Użytkownik dodaje twoje repozytorium raz, przegląda jego zawartość i później je synchronizuje, żeby otrzymać nowe wersje. Lista własnych repozytoriów to zaawansowana funkcja. Osoba prowadząca serwer włącza ją przez `ENABLE_CUSTOM_AGENT_REPOS=true`, a potem otwiera **Biblioteka → Agenci → Własne źródła**. Zestawy zasad z repozytorium są zapisywane pod nazwą właściciela repozytorium, np. `alice/ember-roads`, więc dwie różne osoby mogą opublikować zestaw zasad o nazwie `v20` bez kolizji.
 
 Obowiązują dwa limity. Repozytorium może zawierać najwyżej 32 pliki JSON bezpośrednio w `rulesets`, a repozytorium z większą liczbą plików zostaje odrzucone. Konto o nazwie `local` nie może publikować zestawów zasad, ponieważ `local/` jest zarezerwowane dla zestawów zasad zaimportowanych z pliku.
 
 ### W oficjalnym katalogu
 
-Popularny system z jasną licencją może być oferowany wszystkim przez **Agent Organizer**. Aby go zaproponować, otwórz pull request do repozytorium [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Układ można sprawdzić w tamtejszym pakiecie `ruleset-5e-2014`.
+Popularny system z jasną licencją może być oferowany wszystkim przez **Biblioteka → Agenci**. Aby go zaproponować, otwórz pull request do repozytorium [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Układ można sprawdzić w tamtejszym pakiecie `ruleset-5e-2014`.
 
 ## Licencjonowanie
 
 Publikuj tylko tekst zasad, który masz prawo udostępniać. Wiele systemów publikuje dokument referencyjny na otwartej licencji i właśnie z niego można kopiować. W `license` umieść identyfikator licencji (identyfikator SPDX, czyli krótką standardową nazwę, np. `CC-BY-4.0`) oraz wymagany przez nią tekst uznania autorstwa. Nie kopiuj tekstu z podręczników bez otwartej licencji. Zestaw zasad potrzebuje głównie nazw i liczb. Tekst mistrza gry napisz własnymi słowami.
-
-<a id="troubleshooting"></a>
 
 ## Rozwiązywanie problemów
 

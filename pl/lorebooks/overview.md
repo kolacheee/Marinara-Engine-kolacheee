@@ -14,7 +14,7 @@ Dopasowanie po słowach kluczowych działa z każdym modelem i nie wymaga konfig
 
 ## Tworzenie lorebooka i dodawanie wpisu
 
-1. Otwórz panel **Lorebooks** (Lorebooki) z paska bocznego.
+1. Otwórz **Biblioteka** > **Księgi wiedzy**. Biblioteka znajduje się po prawej.
 2. Kliknij **New** (nowy, znak plus). Otwiera się okno **Create Lorebook** (utworzenie lorebooka).
 3. Wpisz nazwę w polu **Name** (nazwa). To pole jest wymagane.
 4. Jeśli chcesz, dodaj opis w polu **Description** (opis).
@@ -67,9 +67,26 @@ Zakładka ma też takie przełączniki.
 
 Panel **Semantic search (embeddings)** pod przełącznikami opisuje przewodnik [Wyszukiwanie semantyczne w lorebookach](semantic-search.md).
 
-## Panel Lorebooks
+## Strona lorebooków
 
-Na górze panelu są trzy przyciski z ikonami. Ich nazwy widać po najechaniu na nie kursorem.
+Otwórz **Biblioteka → Księgi wiedzy**. U góry są przyciski **Importuj** (zobacz [Import i eksport lorebooków](import-export.md)) i **Nowy lorebook**. Poniżej:
+
+- **Wszystkie rodzaje** zawęża listę do lorebooków typu **Globalny**, **Świat**, **Postać**, **NPC** lub **Księga zaklęć**.
+- **Lista** i **Galeria** przełączają widok między tabelą a kafelkami z obrazami.
+- Menu sortowania oferuje opcje **Ostatnio edytowane**, **Od A do Z**, **Od Z do A** i **Moja kolejność**.
+
+Kliknij lorebook, żeby go otworzyć.
+
+### Organizowanie lorebooków
+
+- **⋯** na końcu wiersza (albo kliknięcie wiersza prawym przyciskiem myszy) udostępnia opcje **Duplikuj**, **Przenieś do folderu**, **Eksportuj**, **Zaznacz** i **Usuń**. Na ekranie dotykowym naciśnij i przytrzymaj wiersz. **Duplikuj** kopiuje lorebook ze wszystkimi wpisami i otwiera kopię.
+- Przeciągnij wiersz nad inny lub pod niego, żeby ustawić własną kolejność. Menu sortowania przełączy się na **Moja kolejność**.
+- **Nowy folder** (ikona folderu obok tytułu) dodaje folder biblioteki. Przeciągnij na niego lorebook albo użyj opcji **Przenieś do folderu**. Te foldery są niezależne od folderów wpisów wewnątrz lorebooka. Kliknij folder, żeby go zwinąć, a z jego menu **⋯** zmień nazwę lub usuń go. Usunięcie folderu zachowuje jego lorebooki.
+- **Zaznacz** (ikona zaznaczenia obok tytułu) dodaje pole wyboru do każdego wiersza. Wybierz lorebooki, a potem użyj paska na dole: **Przenieś do folderu**, **Włączone lub wyłączone**, **Eksportuj** (jeden plik `marinara-lorebooks.zip`) lub **Usuń**.
+
+## W klasycznym układzie: panel lorebooków
+
+Klasyczny panel pokazuje te same foldery i kolejność w formie listy. Na górze panelu są trzy przyciski z ikonami. Ich nazwy widać po najechaniu na nie kursorem.
 
 - **New** otwiera okno **Create Lorebook**.
 - **Import** (import) otwiera okno **Import Lorebook**. Zobacz [Importowanie i eksportowanie lorebooków](import-export.md).
@@ -77,7 +94,8 @@ Na górze panelu są trzy przyciski z ikonami. Ich nazwy widać po najechaniu na
 
 Pod przyciskami:
 
-- Pole **Search lorebooks** filtruje po nazwie, opisie, nazwach powiązanych postaci i person oraz po tagach.
+- Pole **Search lorebooks** filtruje po nazwie, opisie, nazwach powiązanych postaci i person oraz po tagach. Działa tu też `tag:name`.
+- **Tagi** obok pola wyszukiwania pokazują tylko lorebooki ze wszystkimi wybranymi tagami albo **Bez tagów**. Zobacz [Tagi](../characters/library-organization.md#tags).
 - Lista **Sort order** oferuje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest**, **Oldest** i **Token Budget**. Przy opcji **Manual order** przeciągnij lorebooki na miejsce albo użyj <kbd>Alt</kbd>+<kbd>Up</kbd> i <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (nowy folder) tworzy folder biblioteki. Przeciągnij na niego lorebook. Na telefonie przytrzymaj lorebook, a potem go przeciągnij. Te foldery to co innego niż foldery wpisów wewnątrz lorebooka.
 

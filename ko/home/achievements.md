@@ -5,7 +5,10 @@
 ## Achievements 창 열기
 
 1. 홈 화면으로 이동하세요.
-2. **Achievements**(업적) 북마크(트로피 아이콘)를 클릭하세요. 휴대폰에서는 먼저 탭 왼쪽의 북마크 버튼을 탭하세요.
+2. **Widgets**(위젯)를 클릭하고 **Achievements**(업적) 위젯을 켜세요.
+3. 위젯을 클릭하세요.
+
+클래식 레이아웃에서는 홈에 **Achievements** 북마크(트로피 아이콘)도 있습니다. 휴대폰에서는 먼저 탭 왼쪽의 북마크 버튼을 탭하세요.
 
 **Achievements** 창이 열립니다. 맨 위에는 **12 of 24 achievements unlocked in this profile.** 같은 요약이 있습니다. 프로필은 저장된 Marinara 데이터 한 묶음입니다. 그 아래에는 카드가 격자로 늘어섭니다.
 
@@ -13,7 +16,7 @@
 - 열린 카드에는 **unlocked**(잠금 해제됨) 태그가 표시됩니다.
 - 목표치가 있는 카드에는 **Progress**(진행 상황) 줄과 막대도 표시됩니다.
 
-홈에 **Achievements** 위젯을 추가할 수도 있습니다. 북마크에서 **Widgets**(위젯)를 클릭하고 위젯을 켜세요. 위젯에는 **12 of 24 unlocked** 같은 개수와 **Last obtained**(최근 획득) 업적, **Closest next**(다음 업적까지) 업적이 표시됩니다. 불러오는 동안에는 **Checking the collection...**(컬렉션 확인 중...)이 표시됩니다. 위젯을 클릭하면 창이 열립니다. [홈 위젯](welcome.md#home-widgets)을 참고하세요.
+**Achievements** 위젯에는 **12 of 24 unlocked** 같은 개수와 **Last obtained**(최근 획득) 업적, **Closest next**(다음 업적까지) 업적이 표시됩니다. 불러오는 동안에는 **Checking the collection...**(컬렉션 확인 중...)이 표시됩니다. 위젯을 클릭하면 창이 열립니다. [홈 위젯](welcome.md#home-widgets)을 참고하세요.
 
 작동하지 않는 경우: 북마크, 위젯, 창은 **Achievements** 설정이 켜져 있을 때만 표시됩니다. [업적 켜고 끄기](#turn-achievements-on-or-off)를 참고하세요.
 
@@ -53,7 +56,7 @@
 ## 업적 켜고 끄기
 
 1. **Settings → General**(설정 → 일반)을 여세요.
-2. **App Behavior**(앱 동작) 섹션에서 **Achievements** 토글을 켜거나 끄세요. 기본값은 켜짐입니다.
+2. **Extras**(부가 기능) 섹션에서 **Achievements** 토글을 켜거나 끄세요. 기본값은 켜짐입니다.
 
 - 켜짐: 북마크와 창을 쓸 수 있고, 업적이 열리면 팝업이 나타납니다.
 - 꺼짐: 북마크, 위젯, 팝업이 숨겨집니다. 앱은 백그라운드에서 계속 기록을 남기므로, 다시 켜도 잃는 것은 없습니다.

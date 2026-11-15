@@ -2,7 +2,7 @@
 
 > **현재 호환 버전:** 이 가이드는 World Maps **1.3.1** 기준이며, World Maps 1.3.1은 Roleplay와 Game 채팅에서 Marinara Engine **2.3.5~3.x**를 지원합니다. Engine **2.4.1**은 이동 스트림 정리와 휴대용 가져오기 뒤 Lorebooks의 즉시 새로고침을 추가합니다. Engine 2.3.5~2.4.0도 작동하지만 가져온 뒤 Lorebooks를 수동으로 새로 고쳐야 합니다.
 
-World Maps는 해안, 마을, 구역, 여관처럼 서로의 안에 들어갈 수 있는 장소들로 이야기의 지도를 만들어 줍니다. Marinara는 파티가 어디에 있는지 항상 알고 있고, AI는 그 정보로 일관성을 유지합니다. 써 보려면 **Agent Organizer**에서 **World Maps**를 설치하고 다시 시작한 다음 [빠르게 시작하기](#quick-start)를 따르세요.
+World Maps는 해안, 마을, 구역, 여관처럼 서로의 안에 들어갈 수 있는 장소들로 이야기의 지도를 만들어 줍니다. Marinara는 파티가 어디에 있는지 항상 알고 있고, AI는 그 정보로 일관성을 유지합니다. 써 보려면 **Library → Agents**(라이브러리 → 에이전트)에서 **World Maps**를 설치하고 다시 시작한 다음 [빠르게 시작하기](#quick-start)를 따르세요.
 
 현재 위치를 자유 입력 문구 하나로 두는 대신, 세계는 겹겹이 중첩된 장소의 모음이 됩니다.
 
@@ -52,7 +52,7 @@ World Maps 1.3.1이 제공하는 기능입니다.
 
 ## 빠르게 시작하기
 
-1. **Agents**(에이전트)를 열고 **Agent Organizer**를 클릭한 뒤 **World Maps**를 설치하세요. 패키지에 서버 코드가 들어 있으므로 안내가 나오면 Marinara를 다시 시작하세요.
+1. **Library → Agents**를 열고 **Available**(사용 가능)에서 **World Maps**를 찾아 **Get**(받기)을 클릭하세요. 패키지에 서버 코드가 들어 있으므로 안내가 나오면 Marinara를 다시 시작하세요.
 2. Roleplay 또는 Game 채팅을 여세요.
 3. **Agents → World Maps**를 열거나, Engine에 World Maps 지구본 아이콘이 있다면 그 아이콘을 열어 이 채팅에서 활성화하세요. **Chat Settings → Agents**(채팅 설정 → 에이전트)에서 켤 수도 있습니다.
 4. **Use template**, **Create with AI**, **Build manually** 중 하나로 지도를 만드세요. 이미 있는 채팅이라면 지도 파일을 가져올 수도 있습니다.
@@ -341,7 +341,7 @@ Gallery 이미지 하나가 두 역할을 모두 맡고 있을 때 **Remove refe
 
 ## 자동 아트워크 프롬프트 바꾸기
 
-**Settings → Generations → Prompt Overrides**(설정 → 생성 → 프롬프트 재정의)를 열고 **Maps location artwork**를 선택하세요. 이것은 Maps가 자동 장소 아트워크를 미리 보고 생성할 때 쓰는 전역 틀입니다. 변수는 `${variableName}` 형태이며 편집기에서 삽입할 수 있습니다.
+**Settings → Media → Prompt Overrides**(설정 → 미디어 → 프롬프트 재정의)를 열고 **Maps location artwork**를 선택하세요. 이것은 Maps가 자동 장소 아트워크를 미리 보고 생성할 때 쓰는 전역 틀입니다. 변수는 `${variableName}` 형태이며 편집기에서 삽입할 수 있습니다.
 
 | 변수 | 의미 |
 | --- | --- |
@@ -497,7 +497,7 @@ World Maps는 로어를 두 가지 방식으로 씁니다.
 
 ### 자동 아트워크 프롬프트에 원하지 않는 내용이 들어갑니다
 
-- Game 장르가 항상 나오는 경우: **Settings → Generations → Prompt Overrides → Maps location artwork**를 열고 `${genreLine}`을 지운 다음 저장하세요.
+- Game 장르가 항상 나오는 경우: **Settings → Media → Prompt Overrides → Maps location artwork**를 열고 `${genreLine}`을 지운 다음 저장하세요.
 - 꺼 두었는데도 캠페인 스타일이 나오는 경우: **Chat Settings → Illustrator → Use campaign art style**을 확인하세요. 꺼져 있으면 `${campaignArtStyle}`과 `${campaignArtStyleLine}`은 빈 값이 됩니다.
 - 상위 지형지물이 모든 하위 장소 이미지에 나오는 경우: 꼭 필요한 경우가 아니면 틀에서 `${parentLocationDescription}`과 `${locationPath}`를 쓰지 마세요.
 - 부정 프롬프트에 예상하지 못한 문구가 있는 경우: 확정하기 전에 부정 프롬프트란을 편집한 다음 전역 부정 이미지 설정을 확인하세요. Maps 틀은 긍정 프롬프트만 만듭니다.

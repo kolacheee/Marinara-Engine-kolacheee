@@ -98,7 +98,7 @@ Cette section permet à Noodle de joindre des images créées par l'IA à certai
 
 Si ça n'a pas marché : quand la génération d'images est activée sans modèle d'image utilisable, le rafraîchissement est bloqué avec le message "Choose an image generation connection for Noodle first." Une image en échec est retentée une fois. Si elle échoue de nouveau, le rafraîchissement continue et publie un post propre, en texte seul.
 
-Le gabarit de ces prompts d'image s'appelle **Noodle Post Image**. Modifie-le dans **Settings → Generations → Image Generation Prompt Overrides** (Paramètres → Générations → remplacements de prompt pour la génération d'images). Tes instructions d'image sont insérées dans ce gabarit, et le résultat passe par ton profil de style. Voir [Prompt Overrides pour l'image et la vidéo](../prompts/prompt-overrides.md) et [Profils de style d'image](../media/style-profiles.md). Professor Mari n'a pas de fiche de personnage : ses posts illustrés utilisent donc son avatar et ses illustrations de référence intégrés.
+Le gabarit de ces prompts d'image s'appelle **Noodle Post Image**. Modifie-le dans **Settings → Media → Prompt Overrides** (Paramètres → Médias → Redéfinitions de prompt). Tes instructions d'image sont insérées dans ce gabarit, et le résultat passe par ton profil de style. Voir [Prompt Overrides pour l'image et la vidéo](../prompts/prompt-overrides.md) et [Profils de style d'image](../media/style-profiles.md). Professor Mari n'a pas de fiche de personnage : ses posts illustrés utilisent donc son avatar et ses illustrations de référence intégrés.
 
 ## Image Understanding
 
@@ -119,7 +119,7 @@ Cette section ajuste le ton et la mémoire du rédacteur des rafraîchissements.
 
 ### Personnaliser la voix du rédacteur
 
-Tu peux réécrire les instructions intégrées du rédacteur sur le ton et la liberté créative dans **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone**. Le titre de la section parle d'images ("Image"), mais la liste contient tous les prompts texte personnalisables de Noodle et de Conversation. Le texte par défaut affiché à cet endroit suit **Enhanced tone & continuity** tant que tu n'as pas enregistré ton propre texte. Ensuite, c'est le tien qui s'applique, quel que soit l'état de l'interrupteur.
+Tu peux réécrire les instructions intégrées du rédacteur sur le ton et la liberté créative dans **Settings → Media → Prompt Overrides → Noodle Timeline Voice & Tone**. Le titre de la section parle d'images ("Image"), mais la liste contient tous les prompts texte personnalisables de Noodle et de Conversation. Le texte par défaut affiché à cet endroit suit **Enhanced tone & continuity** tant que tu n'as pas enregistré ton propre texte. Ensuite, c'est le tien qui s'applique, quel que soit l'état de l'interrupteur.
 
 Ce remplacement ne porte que sur la voix et le ton. Les règles qui garantissent la validité d'un rafraîchissement, comme les actions structurées autorisées, restent toujours actives.
 

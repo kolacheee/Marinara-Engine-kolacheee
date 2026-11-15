@@ -24,7 +24,7 @@
 
 ## 채팅에 Knowledge 에이전트 추가하기
 
-시작하기 전에: **Agent Organizer**에서 에이전트를 설치하세요. [에이전트: 채팅을 도와주는 AI](agents-overview.md)를 참고하세요.
+시작하기 전에: **Library → Agents**(라이브러리 → 에이전트)에서 에이전트를 설치하세요. [에이전트: 채팅을 도와주는 AI](agents-overview.md)를 참고하세요.
 
 1. Roleplay 채팅에서 **Chat Settings**(채팅 설정)를 여세요.
 2. **Agents**(에이전트) 섹션을 찾아 **Enable Agents**(에이전트 활성화)를 켜세요.

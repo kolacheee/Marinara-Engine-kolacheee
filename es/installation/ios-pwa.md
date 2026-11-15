@@ -58,8 +58,6 @@ Una PWA funciona mejor sobre HTTPS, una conexión segura que empieza con `https:
 
 Tailscale por sí solo no convierte una dirección en HTTPS. Usa una configuración de Tailscale que sirva HTTPS, o pídele al dueño del servidor que ponga Marinara detrás de HTTPS. Consulta [Acceso remoto](../REMOTE_ACCESS.md#serving-over-https).
 
-<a id="clearing-and-reinstalling-the-pwa"></a>
-
 ## Borrar y reinstalar la PWA
 
 A veces Safari conserva una versión anterior de la app, o la app guardada se queda atascada. Reinstalarla suele arreglar esto. Tus chats, personajes y ajustes están en el servidor, así que reinstalar no los elimina.
@@ -93,7 +91,7 @@ Consulta [Bloqueado después de actualizar](../REMOTE_ACCESS.md#locked-out-after
 
 **Un banner rojo dice que los guardados fallarán en silencio.** Esto es una advertencia de confianza de red del servidor, no un problema de tu iPhone o iPad. El dueño del servidor necesita confiar en tu dirección. Consulta [Acceso remoto](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf).
 
-**Las acciones privilegiadas están bloqueadas.** Algunas acciones de mantenimiento necesitan el secreto de administrador (una segunda contraseña) del dueño del servidor. Guárdalo en tu iPhone o iPad en **Settings → Advanced → Admin Access** (Configuración → Avanzado → Acceso de administrador). Consulta [Acceso remoto](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+**Las acciones privilegiadas están bloqueadas.** Algunas acciones de mantenimiento necesitan el secreto de administrador (una segunda contraseña) del dueño del servidor. Guárdalo en tu iPhone o iPad en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad). Consulta [Acceso remoto](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Guías relacionadas
 

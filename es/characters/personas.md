@@ -22,9 +22,15 @@ Marinara envía tu persona a la IA en cada prompt. Elige **None** (Ninguna) en u
 
 El macro `{{user}}` es un marcador de posición. Marinara lo reemplaza por el nombre de la persona antes de enviar el prompt. Si tu persona se llama Alex, `{{user}}` se convierte en Alex. Consulta [Macros](../prompts/macros.md).
 
-## El panel Personas
+## La página Personas
 
-El panel **Personas** es tu biblioteca de personas. Haz clic en una fila para abrir esa persona en el Persona Editor.
+Abre **Library → Personas** (Biblioteca → Personas). Funciona como la [página Characters](library-organization.md#the-characters-page): tarjetas de retrato, **Import** (Importar), **New persona** (Nueva persona; en blanco o a partir de una plantilla), un cuadro de búsqueda con el botón **Tags** (Etiquetas) al lado, **Recently edited** (Editados recientemente), el menú de orden con **A to Z** (De la A a la Z), **Z to A** (De la Z a la A), **Newest** (Más recientes), **Oldest** (Más antiguas) y **My order** (Mi orden), y tres tamaños de tarjeta. Haz clic en una tarjeta para abrir la persona en el Persona Editor.
+
+Aquí funcionan las mismas herramientas que en la página Characters: **⋯** en una tarjeta, con **Duplicate** (Duplicar), **Move to folder** (Mover a una carpeta), **Export** (Exportar), **Select** (Seleccionar) y **Delete** (Eliminar); arrastrar tarjetas a **My order**; **New folder** (Nueva carpeta); y **Select** para exportar o eliminar muchas personas a la vez como `marinara-personas.zip`. Consulta [Acciones de una tarjeta](library-organization.md#a-cards-actions).
+
+## En el diseño clásico: el panel Personas
+
+El panel clásico **Personas** muestra las mismas carpetas y el mismo orden en forma de lista. Haz clic en una fila para abrir esa persona en el Persona Editor.
 
 | Control | Qué hace |
 | --- | --- |
@@ -48,11 +54,11 @@ Al abrir una persona, el área de chat se reemplaza por el Persona Editor a pág
 - El recuadro del avatar. Haz clic en él para subir una imagen. Si tienes configurada una conexión de generación de imágenes, un botón de varita también genera una.
 - El campo de nombre y un campo de comentario, para una etiqueta corta como `Modern AU version`.
 - **Save**, que permanece desactivado hasta que cambies algo.
-- El menú **…** (**More actions**, Más acciones), con **Ask Professor Mari** (Pregúntale a Professor Mari), **Export persona** (Exportar persona), **Add persona as character** (Añadir persona como personaje), **Duplicate persona** (Duplicar persona) y **Delete persona** (Eliminar persona).
+- **Export persona** (Exportar persona), **Add persona as character** (Añadir persona como personaje), **Duplicate persona** (Duplicar persona) y **Delete persona** (Eliminar persona).
 
 Al salir del editor, primero se guardan tus cambios. Si el guardado falla, el editor permanece abierto con tu borrador.
 
-Las pestañas, en orden, son **Metadata**, **Card**, **Convo**, **Lorebook**, **Images** (Imágenes), **Colors** y **Stats**. Cada pestaña salta a su sección de un único formulario largo.
+Las pestañas, en orden, son **Metadata**, **Card**, **Convo**, **Lorebook**, **Sprites**, **Gallery**, **Colors** y **Stats**. Cada pestaña salta a su sección de un único formulario largo.
 
 El editor de personas funciona como el [Character Editor](creating-and-editing-characters.md). Las notas de abajo cubren lo que cambia.
 
@@ -62,7 +68,8 @@ El editor de personas funciona como el [Character Editor](creating-and-editing-c
 | **Card** | Consulta [Pestaña Card](#card-tab) más abajo. |
 | **Convo** | Campos que solo se usan en el modo Conversation. Consulta [Perfiles de Conversation Mode](../conversation/profiles.md). |
 | **Lorebook** | Adjunta entradas de lorebook (libro de trasfondo) que se activan cuando esta persona está en el chat. Consulta [Descripción general de los lorebooks](../lorebooks/overview.md). |
-| **Images** | **Character Sheet** (Hoja del personaje), **Sprites** (arte de pie para Game y Roleplay, **Facial Expressions** (Expresiones faciales), **Full-body** (Cuerpo completo) y **Clips**, y **Upload Folder** (Subir carpeta)) y **Gallery** (imágenes y videos de referencia, con **Upload Persona Images** (Subir imágenes de la persona) y **Upload Persona Videos** (Subir videos de la persona)). Consulta [Sprites de personaje](sprites.md) y [Galerías de personajes y personas](galleries.md). |
+| **Sprites** | Arte de pie para Game y Roleplay. Tiene **Facial Expressions** (Expresiones faciales), **Full-body** (Cuerpo completo) y **Clips**, y **Upload Folder** (Subir carpeta). Consulta [Sprites de personaje](sprites.md). |
+| **Gallery** (Galería) | Imágenes y videos de referencia, con **Upload Persona Images** (Subir imágenes de la persona) y **Upload Persona Videos** (Subir videos de la persona). Consulta [Galerías de personajes y personas](galleries.md). |
 | **Colors** (Colores) | Colores del nombre, del diálogo y del cuadro de mensaje. Consulta [Colores del personaje y Estadísticas de Roleplay](colors-and-stats.md). |
 | **Stats** (Estadísticas) | Barras de estado y atributos RPG. Consulta [Pestaña Stats](#stats-tab) más abajo. |
 
@@ -71,7 +78,7 @@ La pestaña **Metadata** muestra:
 - **Persona ID** (ID de persona), con **Copy** (Copiar).
 - El recorte del avatar.
 - **Name** y **Creator** (Creador).
-- **Other names** (Otros nombres), apodos, nombres completos o títulos por los que también se conoce a la persona. Los chats de Roleplay pueden mostrarlos con el color del nombre. Consulta [Colorear tu nombre en los mensajes](choosing-your-persona.md#color-your-name-in-messages).
+- **Other names** (Otros nombres), apodos, nombres completos o títulos que también usa la persona. Los chats de Roleplay pueden colorearlos con el color del nombre; consulta [Colorear tu nombre en los mensajes](choosing-your-persona.md#color-your-name-in-messages).
 - **Phonetic name** (Nombre fonético), que solo se usa cuando el texto a voz (text-to-speech) lee tu nombre.
 - **Title / Comment** (Título / Comentario), una etiqueta corta.
 - **Version** (Versión), con `1.0` como valor predeterminado y un interruptor **Automatic versioning** (Control de versiones automático).
@@ -117,7 +124,7 @@ Un bloque **Game Mode Icon** (Icono de Game Mode) define la imagen de tu ficha e
 
 Para importar, haz clic en **Import** en el panel **Personas**. La ventana **Import Persona** acepta archivos `.marinara` y `.json`, y varios a la vez. Un archivo de Marinara restaura todos los datos, los sprites y la estructura de la galería. Un archivo JSON genérico de otra herramienta se mapea campo por campo en una persona nueva. El nombre es obligatorio. Cada archivo muestra una marca de éxito o de fallo.
 
-Para exportar, haz clic en **…** y luego en **Export persona** en el editor, o usa **Export** (Exportar) en el modo de selección. La ventana **Export Persona** (Exportar persona) ofrece dos formatos:
+Para exportar, haz clic en **Export persona** en el editor, o usa **Export** (Exportar) en el modo de selección. La ventana **Export Persona** (Exportar persona) ofrece dos formatos:
 
 | Formato | Qué obtienes |
 | --- | --- |
@@ -128,13 +135,13 @@ Una exportación en lote descarga un solo zip con un archivo por persona.
 
 ## Duplicar o eliminar una persona
 
-Para duplicar, haz clic en **Duplicate** en una fila o en **Duplicate persona** en el menú **…** del editor. La copia se llama "{original name} (Copy)" y conserva todos los campos de tarjeta, colores, estadísticas y campos de convo. Ningún chat cambia de persona.
+Para duplicar, haz clic en **Duplicate** en una fila o en **Duplicate persona** en el editor. La copia se llama "{original name} (Copy)" y conserva todos los campos de tarjeta, colores, estadísticas y campos de convo. Ningún chat cambia de persona.
 
-Para eliminar, haz clic en **Delete** en una fila o en **Delete persona** en el menú **…** del editor, y luego confirma. No se puede deshacer. Para eliminar muchas, haz clic en **Select**, marca las personas y usa **Delete** en la barra de selección. Si una eliminación falla, esas personas siguen seleccionadas para que puedas volver a intentarlo.
+Para eliminar, haz clic en **Delete** en una fila o en **Delete persona** en el editor, y luego confirma. No se puede deshacer. Para eliminar muchas, haz clic en **Select**, marca las personas y usa **Delete** en la barra de selección. Si una eliminación falla, esas personas siguen seleccionadas para que puedas volver a intentarlo.
 
 ## Añadir una persona como personaje
 
-**Add persona as character**, en el menú **…** del encabezado del editor, crea una tarjeta nueva entre tus personajes. Copia el nombre, la descripción, la personalidad, el escenario, el trasfondo, la apariencia, las etiquetas, el creador, la versión y el avatar. La persona queda como estaba. Para editar la tarjeta nueva, consulta [Crear y editar personajes](creating-and-editing-characters.md).
+**Add persona as character**, en el encabezado del editor, crea una tarjeta nueva entre tus personajes. Copia el nombre, la descripción, la personalidad, el escenario, el trasfondo, la apariencia, las etiquetas, el creador, la versión y el avatar. La persona queda como estaba. Para editar la tarjeta nueva, consulta [Crear y editar personajes](creating-and-editing-characters.md).
 
 ## Guías relacionadas
 

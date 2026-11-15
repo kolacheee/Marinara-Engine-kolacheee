@@ -31,7 +31,7 @@ Wbudowane pliki i foldery są chronione. Nie da się ich usunąć ani przenieś�
 **Asset Browser** to menedżer plików dla zasobów gry. Otwórz go z panelu **Settings** (Ustawienia):
 
 1. Otwórz **Settings**.
-2. Przejdź do zakładki **Imports**.
+2. Przejdź do zakładki **Gra**.
 3. Znajdź sekcję **Game Assets** i kliknij **Asset Browser**.
 
 Albo otwórz go z gry:
@@ -57,7 +57,7 @@ Musisz być wewnątrz folderu kategorii. Jeśli upuścisz pliki na najwyższym p
 
 ### Wgrywanie z panelu Settings
 
-1. Otwórz **Settings** i przejdź do zakładki **Imports**.
+1. Otwórz **Settings** i przejdź do zakładki **Gra**.
 2. W sekcji **Game Assets** wybierz kategorię z listy **Type**: **Music**, **Ambient**, **Sound Effects**, **Sprites** albo **Backgrounds**.
 3. Ustaw miejsce docelowe w polu **Folder** albo zostaw wartość domyślną.
 4. Kliknij **Choose Files** i zaznacz pliki.
@@ -75,8 +75,6 @@ Domyślne wartości pola **Folder**:
 | **Sprites** | `generic-fantasy` |
 | **Backgrounds** | `custom` |
 
-<a id="file-types-and-sizes"></a>
-
 ### Typy i rozmiary plików
 
 | Kategoria | Dopuszczalne typy plików |
@@ -86,8 +84,6 @@ Domyślne wartości pola **Folder**:
 | Backgrounds | PNG, JPG, JPEG, GIF, WebP, AVIF |
 
 Pliki audio i obrazy mogą mieć do 50 MB każdy. Pliki tekstowe mogą mieć do 10 MB.
-
-<a id="the-music-folder-rule"></a>
 
 ### Zasada folderów muzycznych
 
@@ -137,8 +133,6 @@ Czat w trybie Game Mode może korzystać tylko z części folderów zasobów, na
 
 Pasek pokazuje "All folders included" albo liczbę wykluczonych folderów. **Reset to all** znów włącza wszystkie. Wybór zapisuje się tylko dla tego czatu. Zmienia foldery, z których Game Mode może wybierać, ale nie usuwa ani nie ukrywa żadnego pliku.
 
-<a id="a-settings-own-art-and-music"></a>
-
 ### Własna grafika i muzyka settingu
 
 Gra rozpoczęta z zestawem settingu ma rodzinę stylistyczną, widoczną w sekcji **Art and music** (grafika i muzyka), gdy zmieniasz słownictwo zestawu: `fantasy`, `scifi`, `modern`, `wuxia`, `jazz_age`, `wasteland` albo jedną z własnych rodzin zestawu. Gra korzysta z folderów nazwanych tak jak jej rodzina i z każdego folderu, którego nazwa nie jest nazwą żadnej rodziny, a foldery innych rodzin pomija. Gra cyberpunkowa nigdy nie zagra muzyki do bitew fantasy ani nie pokaże zaczarowanego lasu. Gdy nic z jej rodziny ani ze wspólnych folderów nie pasuje, nic nie gra – gra nie sięga po ścieżkę innej rodziny. Gra bez zestawu settingu korzysta ze wszystkich folderów.
@@ -149,13 +143,11 @@ Gra rozpoczęta z zestawem settingu ma rodzinę stylistyczną, widoczną w sekcj
 
 Wbudowane tła startowe liczą się jako wspólne, z wyjątkiem teł fantasy (`ancient_library`, `castle_cliff`, `enchanted_forest`) i współczesnego `city_night`. Zestaw settingu zapisany, zanim pojawiły się rodziny stylistyczne, nadal działa: zestaw utworzony na podstawie zestawu startowego korzysta z rodziny tamtego zestawu, a każdy inny korzysta ze wszystkich folderów, dopóki nie wybierzesz rodziny w sekcji **Art and music**. Opisany wyżej pasek wyboru podaje rodzinę otwartej gry.
 
-<a id="generated-sound-effects-and-music"></a>
-
 ## Generowane efekty dźwiękowe i muzyka
 
 Game Mode potrafi generować efekty dźwiękowe i muzykę przez konto **Music & Sound Effects** (muzyka i efekty dźwiękowe). Wybierz ElevenLabs, SunoAPI albo własny zgodny serwer. Każdy nowy dźwięk lub utwór korzysta z konta w tej usłudze. Wbudowane pliki audio są dostępne bez generowania.
 
-**Zanim zaczniesz:** potrzebujesz konta **Music & Sound Effects**. Okno **Add account** (dodanie konta) nie ma dla niego kafelka. Takie konta powstają przy aktualizacji albo przez import: **Import a backup** (import kopii zapasowej) w panelu **Connections** (Połączenia). Zobacz [konfigurację dostawców i limity](../connections/providers-reference.md#music--sound-effects).
+**Zanim zaczniesz:** potrzebujesz konta **Music & Sound Effects**. Na liście **Dodaj połączenie** nie ma takiej pozycji. Takie konta pochodzą z aktualizacji lub importu (**Importuj** na stronie **Połączenia**). Zobacz [konfigurację dostawców i limity](../connections/providers-reference.md#music--sound-effects).
 
 1. W panelu **Connections** otwórz model konta przyciskiem **Edit model** (edycja modelu).
 2. Wybierz usługę, wpisz jej klucz i wybierz modele muzyki oraz efektów dźwiękowych. Muzyka SunoAPI wymaga też publicznego adresu zwrotnego HTTPS. Własny serwer potrzebuje ścieżek endpointów.

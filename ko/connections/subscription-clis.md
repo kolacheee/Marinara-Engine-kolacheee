@@ -27,8 +27,8 @@ Grok의 경우 앱에 다음 설치 명령이 표시됩니다. 내 시스템에�
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. Marinara에서 상단 바의 **Connections**(연결)를 클릭한 다음 **Add**(추가)를 클릭하세요.
-4. **Chat**(채팅) 아래에서 사용하는 서비스를 클릭하세요. 이 서비스들에는 **Sign in**(로그인) 태그가 붙어 있습니다.
+3. Marinara에서 **Library → Connections**(라이브러리 → 연결)를 열고 **Add connection**(연결 추가)을 클릭하세요.
+4. **Text**(텍스트) 탭의 **Subscriptions**(구독) 아래에서 사용하는 서비스를 클릭하세요. 이 서비스들에는 **Sign in**(로그인) 태그가 붙어 있습니다.
 5. 창에 **Sign in first**(먼저 로그인하세요)라는 안내가 실행할 명령과 함께 표시됩니다. 키 입력란은 없습니다. **Connect**(연결)를 클릭하세요. Marinara가 로그인을 테스트합니다. **Connected**(연결됨)가 표시되면 정상입니다.
 6. 목록에서 모델을 고른 다음 **Done**(완료)을 클릭하세요. Grok CLI에서는 모델을 비워 둘 수도 있으며, 그러면 CLI 자체 기본값을 씁니다([Grok CLI (Subscription)](#grok-cli-subscription) 참고).
 
@@ -65,6 +65,8 @@ Opus 같은 큰 모델을 요청했는데 더 작은 모델이 응답한 것 같
 ## OpenAI (ChatGPT)
 
 이 서비스는 Codex CLI를 통해 내 ChatGPT 계정을 사용합니다. Marinara는 로컬 Codex 로그인 파일을 읽고, 가능하면 세션을 갱신합니다.
+
+Claude와 Grok 구독과 달리 ChatGPT 로그인은 도구 호출을 지원하므로 Professor Mari, 사용자 지정 도구, Game Mode의 주사위와 도구를 사용할 수 있습니다.
 
 Codex가 답하기 전에 생각하는 정도를 정하려면 **Edit model**을 열고 **Use custom defaults for this model**(이 연결에 사용자 지정 기본값 사용)을 켠 다음 **Reasoning Effort**(추론 강도)를 고르세요. 처음 값은 **Default**(기본값)이며, Codex가 그 모델에 쓰는 단계를 그대로 유지합니다. 채팅에서는 **Advanced Parameters**(고급 매개변수)에서 따로 단계를 고를 수 있습니다. 프리셋에 지정한 단계는 이 값을 바꾸지 않습니다. 폴백으로 쓰이는 Codex 모델은 자기 단계만 따르며, 그 모델을 쓰는 에이전트는 모델의 단계를 사용합니다. 표시되는 단계는 고른 모델에서 쓸 수 있는 단계와 같습니다.
 

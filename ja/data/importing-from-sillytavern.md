@@ -15,8 +15,8 @@ SillyTavernのデータをMarinara Engineに取り込みます。ファイルを
 
 ## 単一ファイルの簡易インポート
 
-1. **Settings → Imports**(設定 → インポート)を開きます。
-2. **SillyTavern Import**で、ファイルの種類に合うボタンをクリックします。
+1. **Settings → Data → SillyTavern Import**(設定 → データ → SillyTavernインポート)を開きます。
+2. ファイルの種類に合うボタンをクリックします。
 3. ファイルを選びます。
 
 | ボタン | ファイル |
@@ -26,7 +26,7 @@ SillyTavernのデータをMarinara Engineに取り込みます。ファイルを
 | **Import Preset (JSON)** | `.json`のプリセット。 |
 | **Import Lorebook (JSON)** | `.json`のWorld Infoファイル。 |
 
-これらのボタンに設定はありません。キャラクターのインポートでは、元のタグをすべて引き継ぎ、正規表現スクリプトの適用範囲をそのキャラクターに限定します。正規表現スクリプトとは、テキストを検索して置き換えるルールです。この2つを自分で選ぶには、Charactersパネルの**Import**を使ってください。[キャラクターカードのインポートとエクスポート](../characters/import-export.md)を参照してください。
+ボタンの上の**Tag imported**(インポート済みをタグ付け)と**Tag source**(出典をタグ付け)は、どちらもデフォルトでオンで、インポートする項目に**Imported**(インポート済み)と**ST**のタグを追加します。付けたくないタグのチェックを外してください。インポートする項目の名前と説明はそのまま保持されます。それ以外に、これらのボタンに設定はありません。キャラクターのインポートでは、元のタグをすべて引き継ぎ、正規表現スクリプトの適用範囲をそのキャラクターに限定します。正規表現スクリプトとは、テキストを検索して置き換えるルールです。この2つを自分で選ぶには、**Library → Characters**(ライブラリー → キャラクター)ページの**Import**を使ってください。[キャラクターカードのインポートとエクスポート](../characters/import-export.md)を参照してください。
 
 キャラクターカードの中にロアブックが入っていると、独立したロアブックとしてインポートするかどうかをブラウザーが確認します。後で使い回せるロアブックとして残すなら**OK**を、キャラクターだけをインポートするなら**Cancel**をクリックします。
 
@@ -38,9 +38,9 @@ SillyTavernのデータをMarinara Engineに取り込みます。ファイルを
 
 ## SillyTavernフォルダーのインポート
 
-始める前に: ウィザードは、サーバーのコンピューター上のファイルを読み取ります。SillyTavernが別のコンピューターにある場合は、先にそのフォルダー(SillyTavernをインストールしたフォルダー)をMarinaraのコンピューターにコピーしてください。Marinaraのコンピューターでは、ウィザードはそのまま使えます。別のデバイスから使う場合は、管理者用のシークレットを設定し、**Settings → Advanced → Admin Access**に入力してください。[Marinaraのバックアップと復元](backup-and-restore.md)と、[サーバー設定リファレンス](../CONFIGURATION.md)の「Privileged APIs (ADMIN_SECRET)」のセクションを参照してください。
+始める前に: ウィザードは、サーバーのコンピューター上のファイルを読み取ります。SillyTavernが別のコンピューターにある場合は、先にそのフォルダー(SillyTavernをインストールしたフォルダー)をMarinaraのコンピューターにコピーしてください。Marinaraのコンピューターでは、ウィザードはそのまま使えます。別のデバイスから使う場合は、管理者用のシークレットを設定し、**Settings → Advanced → Security**に入力してください。[Marinaraのバックアップと復元](backup-and-restore.md)と、[サーバー設定リファレンス](../CONFIGURATION.md)の「Privileged APIs (ADMIN_SECRET)」のセクションを参照してください。
 
-1. **Settings → Imports → SillyTavern Import**を開きます。
+1. **Settings → Data → SillyTavern Import**を開きます。
 2. **Import from SillyTavern Folder**をクリックします。
 3. SillyTavernのフォルダーを選びます。メインフォルダーを選んでください。通常は`data/`または`public/`のフォルダーがあるフォルダーです。次のいずれかの方法を使います。
    - **Browse**をクリックして、フォルダーを選びます。
@@ -64,7 +64,7 @@ SillyTavernのデータをMarinara Engineに取り込みます。ファイルを
 **Imported regex scripts**(デフォルトは**Character only**)
 
 - **Character only**は、スクリプトを各キャラクターに適用します。
-- **Global**は、すべてのチャットに適用するために、**Presets → Regexes**へ追加します。
+- **Global**は、**Presets → Regexes**へ追加します。そこでチャットをまたいで実行するスクリプトを管理できます。[正規表現スクリプト](../extending/regex-scripts.md#manage-your-scripts)を参照してください。
 
 うまくいかなかった場合:
 
@@ -77,6 +77,7 @@ SillyTavernのデータをMarinara Engineに取り込みます。ファイルを
 - 1つのキャラクターに属するチャットファイルは、1つのチャットの分岐としてインポートされます。分岐とは、チャットのコピーを別々に続けるものです。
 - グループチャットは、Roleplayのチャットとしてインポートされます。
 - インポートした項目には、インポートした日付ではなく、元のファイルの最終更新日が付きます。
+- **Import Selected**の上の**Tag imported**または**Tag source**のチェックを外さない限り、キャラクター、ペルソナ、ロアブック、プリセット、チャットに**Imported**と**ST**のタグが付きます。名前と説明はそのまま保持されます。
 
 ## 引き継がれないもの
 

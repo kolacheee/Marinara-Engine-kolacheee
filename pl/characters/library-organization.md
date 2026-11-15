@@ -1,8 +1,56 @@
 # Porządkowanie biblioteki postaci
 
-Panel **Characters** (postacie) to lista na pasku bocznym ze wszystkimi postaciami, które utworzono lub zaimportowano. Służy do wyszukiwania, sortowania, grupowania postaci w foldery, oznaczania ulubionych, filtrowania po tagach oraz eksportowania i usuwania wielu postaci naraz.
+Strona **Postacie** w bibliotece (po prawej) zawiera wszystkie utworzone lub zaimportowane postacie. Służy do wyszukiwania, sortowania, grupowania postaci w foldery, oznaczania ulubionych, filtrowania po tagach oraz eksportowania i usuwania wielu postaci naraz.
 
-## Panel Characters
+## Strona Postacie
+
+Otwórz **Biblioteka → Postacie**. Strona pokazuje postacie jako karty z portretami. U góry znajdziesz:
+
+- **Przeglądaj online** otwiera [Przeglądarkę kart](bot-browser.md), w której znajdziesz postacie z publicznych witryn.
+- **Importuj** wczytuje plik postaci. Zobacz [Importowanie i eksportowanie kart postaci](import-export.md).
+- **Nowa postać** otwiera okno **Utwórz postać**, w którym utworzysz pustą postać lub skorzystasz z szablonu. Karta **Nowa postać** w siatce robi to samo.
+- **Search characters or tag:name** filtruje karty (zobacz [Wyszukiwanie](#search)).
+- Przycisk **Tagi** obok pola wyszukiwania ogranicza widok do kart z wybranymi tagami (zobacz [Tagi](#tags)).
+- **Ulubione** i **Ostatnio edytowane** ograniczają widoczne karty. Na telefonie tworzą jedną listę **Filtr**.
+- Menu sortowania zawiera **Od A do Z**, **Od Z do A**, **Najnowsze**, **Najstarsze** i **Moja kolejność**.
+- Trzy przyciski rozmiaru ustawiają małe, średnie lub duże karty.
+- **Nowy folder** (ikona folderu) i **Zaznacz** (ikona zaznaczenia) znajdują się obok tytułu strony.
+
+Kliknij kartę, żeby otworzyć postać. Jej przycisk **Czat** rozpoczyna czat z tą postacią. Jeśli masz wiele postaci, kliknij **Wczytaj więcej** u dołu.
+
+### Działania na karcie
+
+Najedź kursorem na kartę i kliknij **⋯** w jej lewym górnym rogu albo kliknij kartę prawym przyciskiem myszy. Na ekranie dotykowym naciśnij i przytrzymaj kartę. Menu zawiera:
+
+- **Duplikuj** tworzy kopię postaci.
+- **Przenieś do folderu** umieszcza postać w folderze albo wyjmuje ją z niego po wybraniu **Bez folderu**.
+- **Eksportuj** pobiera postać w natywnym formacie aplikacji Marinara.
+- **Zaznacz** rozpoczyna zaznaczanie od tej karty.
+- **Usuń** usuwa postać po potwierdzeniu.
+
+### Własna kolejność
+
+Przeciągnij kartę i upuść ją przed inną kartą albo za nią. Menu sortowania przełącza się na **Moja kolejność** i zachowuje tę kolejność do czasu wybrania innego sortowania. Wybierz ponownie **Moja kolejność**, żeby do niej wrócić. **Kolejność ręczna** w klasycznym panelu oznacza tę samą kolejność.
+
+### Foldery
+
+1. Kliknij **Nowy folder** obok tytułu strony. Nad kartami pojawia się folder o nazwie **bez nazwy**.
+2. Aby zmienić jego nazwę, kliknij **⋯** na folderze i wybierz **Zmień nazwę**.
+3. Przeciągnij kartę na folder albo użyj **Przenieś do folderu** w menu karty.
+
+Kliknij nazwę folderu, żeby go zwinąć lub rozwinąć. Liczba obok nazwy to liczba postaci w środku. **Usuń folder** w menu **⋯** folderu usuwa tylko folder: jego postacie wracają na stronę poza folderem.
+
+### Eksportowanie lub usuwanie wielu postaci
+
+1. Kliknij **Zaznacz** obok tytułu strony. Na każdej karcie pojawia się pole wyboru.
+2. Kliknij wybrane karty. Pasek u dołu pokazuje liczbę zaznaczonych kart i przycisk **Zaznacz wszystko**.
+3. Wybierz **Przenieś do folderu**, **Eksportuj** albo **Usuń** na pasku.
+
+**Eksportuj** pobiera jeden plik zip o nazwie `marinara-characters.zip`. **Usuń** najpierw prosi o potwierdzenie. Kliknij **X** na pasku albo naciśnij <kbd>Esc</kbd>, żeby zakończyć zaznaczanie.
+
+Sortowanie **Najpierw ulubione** i usuwanie tagu ze wszystkich postaci są dostępne w panelu postaci klasycznego układu, opisanym poniżej. Przełącz się na niego opcją **Nowy układ (podgląd przebudowy interfejsu)** w **Ustawienia → Wygląd → Motyw** i wróć w ten sam sposób.
+
+## W klasycznym układzie: panel Postacie
 
 Z górnej części panelu możesz:
 
@@ -20,7 +68,7 @@ Każdy wiersz pokazuje awatar, nazwę, opcjonalną linię z tytułem, autora i w
 
 ## Wyszukiwanie
 
-Wpisz tekst w pole wyszukiwania na górze. Tekst zastępczy brzmi **Search characters/tags** (szukaj postaci/tagów). Zwykły tekst jest porównywany z nazwą postaci, tytułem, opisem i tagami, bez rozróżniania wielkości liter. Po wpisaniu `knight` zobaczysz każdą postać, która ma "knight" w którymkolwiek z tych miejsc.
+Wpisz tekst w pole wyszukiwania na górze. Tekst zastępczy to **Search characters or tag:name** (**Szukaj postaci/tagów** w klasycznym układzie). Zwykły tekst jest porównywany z nazwą postaci, tytułem, opisem i tagami, bez rozróżniania wielkości liter. Po wpisaniu `knight` zobaczysz każdą postać, która ma "knight" w którymkolwiek z tych miejsc.
 
 | Zapytanie | Co znajduje |
 | --- | --- |
@@ -32,9 +80,9 @@ Wpisz tekst w pole wyszukiwania na górze. Tekst zastępczy brzmi **Search chara
 
 Zwykłe wyszukiwanie fraz nadal działa. Ten sam sposób wyszukiwania działa w pełnoekranowej bibliotece Character Library i dla person.
 
-## Sortowanie
+## Sortowanie (klasyczny układ)
 
-Wybierz kolejność na liście rozwijanej sortowania obok pola wyszukiwania.
+Lista rozwijana sortowania w klasycznym panelu zawiera:
 
 | Opcja | Działanie |
 | --- | --- |
@@ -47,9 +95,9 @@ Wybierz kolejność na liście rozwijanej sortowania obok pola wyszukiwania.
 
 Żeby ustawić własną kolejność, przeciągnij wiersz w górę lub w dół albo naciśnij <kbd>Alt</kbd>+<kbd>Up</kbd> lub <kbd>Alt</kbd>+<kbd>Down</kbd> na wierszu, który ma fokus. Każdy z tych sposobów przełącza sortowanie na **Manual order** (kolejność ręczna).
 
-## Foldery
+## Foldery (klasyczny układ)
 
-Foldery grupują pokrewne postacie, na przykład według historii albo serii, dzięki czemu długą listę łatwiej przejrzeć. Są opcjonalne.
+Foldery grupują pokrewne postacie, na przykład według historii albo serii, dzięki czemu długą listę łatwiej przejrzeć. Są opcjonalne, a nowy układ pokazuje te same foldery.
 
 1. Kliknij **New Folder** (nowy folder). Pojawia się folder o nazwie **unnamed**.
 2. Zmień jego nazwę: kliknij go dwukrotnie, dotknij go dwukrotnie albo zaznacz go i naciśnij <kbd>F2</kbd>. Wpisz nową nazwę i naciśnij <kbd>Enter</kbd>.
@@ -63,7 +111,7 @@ Na ekranie dotykowym naciśnij i przytrzymaj wiersz, żeby go podnieść, a pote
 
 Żeby usunąć folder, najedź na niego i kliknij jego przycisk kosza. Folder z postaciami prosi o potwierdzenie: **Delete "name"? Its N characters will stay in the library and move out of the folder.** Pusty folder znika od razu. Usunięcie folderu nigdy nie usuwa postaci, które są w środku.
 
-### Folder jako skład czatu grupowego
+## Używanie folderu jako składu czatu grupowego
 
 Każdy folder jest też zapisanym składem postaci do czatów grupowych. Podczas przygotowywania czatu z więcej niż jedną postacią **Add from Folder** (dodanie z folderu) dodaje wszystkie postacie z folderu w jednym kroku. Zobacz [Czaty grupowe w trybach Conversation i Roleplay](../chats/group-chats.md).
 
@@ -71,7 +119,7 @@ Każdy folder jest też zapisanym składem postaci do czatów grupowych. Podczas
 
 ### Ulubione
 
-Otwórz postać i kliknij jej gwiazdkę **Favorite** (ulubione), żeby włączyć lub wyłączyć oznaczenie. Nie da się go ustawić z listy w panelu. Ulubione postacie mają małą plakietkę z gwiazdką. Pod polem wyszukiwania są trzy przyciski filtrujące listę:
+Otwórz postać i kliknij jej gwiazdkę **Favorite** (ulubione), żeby włączyć lub wyłączyć oznaczenie. Na stronie postaci przycisk **Ulubione** pokazuje tylko ulubione postacie. W klasycznym panelu ulubione mają małą plakietkę z gwiazdką, a trzy przyciski pod polem wyszukiwania filtrują listę:
 
 - **All** pokazuje wszystkie postacie.
 - **Favs** pokazuje tylko ulubione.
@@ -81,9 +129,17 @@ Możesz też wybrać **Favorites** na liście rozwijanej sortowania, żeby przen
 
 ### Tagi
 
-Tagi to etykiety takie jak `fantasy` albo `slow burn`. Dodaje się je w edytorze postaci. Zobacz [Tworzenie i edycja postaci](creating-and-editing-characters.md#metadata-tab). W panelu kliknij kafelek tagu w dowolnym wierszu, żeby zawęzić listę do postaci z tym samym tagiem.
+Tagi to etykiety takie jak `fantasy` albo `slow burn`. Dodaje się je w edytorze postaci. Zobacz [Tworzenie i edycja postaci](creating-and-editing-characters.md#metadata-tab). Import dodaje **Zaimportowane** i tag źródła karty, na przykład **ST** albo **CharX**. Zobacz [Opcje importu](import-export.md#import-options).
 
-Gdy postacie mają tagi, pojawia się przycisk **Tags** (tagi) z liczbą, na przykład **Tags (12)**. Kliknij go, żeby rozwinąć pełną listę:
+Aby filtrować według tagu na stronie postaci:
+
+1. Kliknij **Tagi** obok pola wyszukiwania. Otwiera się lista wszystkich tagów z liczbą postaci, które mają dany tag.
+2. Wpisz tekst w polu **Szukaj tagów**, żeby znaleźć tag, a potem kliknij wybrane tagi. Przy kilku zaznaczonych widać tylko postacie, które mają je **wszystkie**. **Bez tagów** pokazuje postacie bez tagów.
+3. Przycisk **Tagi** pokazuje liczbę wybranych tagów. Kliknij **Wyczyść** na liście, żeby usunąć wybór.
+
+Strony **Persony** i **Księgi wiedzy** mają taki sam przycisk **Tagi**, podobnie jak **Presety**. Wpisywanie `tag:name` w polu wyszukiwania nadal działa na każdej z nich.
+
+W klasycznym panelu, gdy postacie mają tagi, pojawia się przycisk **Tagi** z liczbą, na przykład **Tagi (12)**. Kliknij go, żeby rozwinąć pełną listę:
 
 - Kliknij tag, żeby dodać go do filtrów. Przy kilku zaznaczonych tagach pasuje postać, która ma którykolwiek z nich.
 - Kliknij X przy tagu, żeby usunąć ten tag ze wszystkich postaci, które go mają. Pojawia się prośba o potwierdzenie: **Remove tag "name" from all characters?**
@@ -91,9 +147,7 @@ Gdy postacie mają tagi, pojawia się przycisk **Tags** (tagi) z liczbą, na prz
 
 Żeby zamiast tego wykluczyć tag, użyj `-tag:` w polu wyszukiwania, jak pokazano w sekcji [Wyszukiwanie](#search).
 
-<a id="export-or-delete-many-characters"></a>
-
-## Eksport i usuwanie wielu postaci
+## Eksportowanie lub usuwanie wielu postaci (klasyczny układ)
 
 1. Kliknij **Select** na górze panelu. W każdym wierszu pojawia się pole wyboru.
 2. Kliknij postacie, które chcesz zaznaczyć. Nagłówek panelu pokazuje, ile jest zaznaczonych.

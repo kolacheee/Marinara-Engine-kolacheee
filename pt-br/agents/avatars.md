@@ -6,9 +6,9 @@ Os modelos Live2D não têm suporte. A licença do Live2D exige um acordo separa
 
 ## Instalar os agentes de avatar
 
-Os dois agentes estão em **Agent Organizer** (organizador de agentes) para todas as instalações, nos filtros **Roleplay** e **Game**. Eles exigem Marinara Engine 2.5.1 ou mais recente. Um Engine mais antigo recusa a instalação. São downloads separados, então instale só o que você quiser. Os dois funcionam para personagens e personas em chats de Roleplay e de Game e não enviam nenhuma solicitação extra aos seus modelos de IA durante o chat.
+Os dois agentes estão em **Biblioteca → Agentes**, em **Disponíveis**, para todas as instalações, nos filtros **Roleplay** e **Game**. Eles exigem Marinara Engine 2.5.1 ou mais recente. Um Engine mais antigo recusa a instalação. São downloads separados, então instale só o que você quiser. Os dois funcionam para personagens e personas em chats de Roleplay e de Game e não enviam nenhuma solicitação extra aos seus modelos de IA durante o chat.
 
-1. Abra **Agents → Agent Organizer** e instale **2D Avatars**, **3D Avatars** ou os dois. Nenhum deles exige reiniciar.
+1. Abra **Biblioteca → Agentes** e instale **2D Avatars**, **3D Avatars** ou os dois. Nenhum deles exige reiniciar.
 2. Configure cada avatar na página do agente (veja [Configurar um avatar](#set-up-an-avatar)).
 3. Em um chat de Roleplay ou de Game, abra **Chat Settings → Agents → Misc Agents** (configurações do chat → agentes → agentes diversos) e adicione o agente.
 
@@ -43,7 +43,7 @@ O layout é salvo para aquele chat neste dispositivo. Ele não sincroniza com ou
 
 ### Onde ficam os arquivos de avatar
 
-Os arquivos importados são verificados antes de serem armazenados. O único limite de tamanho é o limite normal de upload do servidor. Os arquivos ficam na pasta de dados, em `avatar-models/<character or persona>/<id>/`, ao lado de um `avatar.json` com as configurações. Os backups e as exportações de perfil incluem essa pasta. Excluir um personagem ou uma persona exclui o avatar correspondente, e o mesmo acontece quando você limpa toda a categoria **Characters**, **Personas** ou **Media & Assets** na Danger Zone (zona de perigo) das configurações. As exportações de card de personagem nunca incluem avatares.
+Os arquivos importados são verificados antes de serem armazenados. O único limite de tamanho é o limite normal de upload do servidor. Os arquivos ficam na pasta de dados, em `avatar-models/<character or persona>/<id>/`, ao lado de um `avatar.json` com as configurações. Os backups e as exportações de perfil incluem essa pasta. Excluir um personagem ou uma persona exclui o avatar correspondente, e o mesmo acontece quando você limpa toda a categoria **Characters**, **Personas** ou **Media & Assets** em **Configurações → Dados → Excluir dados**. As exportações de card de personagem nunca incluem avatares.
 
 ### Chats em grupo
 
@@ -272,7 +272,7 @@ Um personagem ou uma persona pode usar os seus sprites de expressão como avatar
 
 | O que você quer | Ferramenta | O que você recebe |
 | --- | --- | --- |
-| Sprites PNGTuber | Qualquer aplicativo de desenho e depois **Images → Sprites** (imagens → sprites) no editor do personagem | Os sprites |
+| Sprites PNGTuber | Qualquer aplicativo de desenho e depois a aba **Sprites** do personagem | Os sprites |
 | Sprites PNGTuber com camadas e figurinos | [PNGTuber Plus](https://github.com/kaiakairos/PNGTuber-Plus) | Um arquivo `.save` |
 | Um avatar de malha | [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio) | Um arquivo `.mavatar` |
 | Um modelo 3D | [VRoid Studio](https://vroid.com/en/studio) ou o Blender com o [VRM Add-on for Blender](https://vrm-addon-for-blender.info/en-us/) | Um arquivo `.vrm` e, se quiser, uma animação de espera `.vrma` |
@@ -281,7 +281,7 @@ Um personagem ou uma persona pode usar os seus sprites de expressão como avatar
 
 1. Desenhe uma imagem para cada sentimento, todas do mesmo tamanho e com o personagem no mesmo lugar. Dê a cada imagem o nome do sentimento dela: `neutral`, `happy`, `angry`, `sad`, `relaxed`, `surprised`. Nomes que contêm uma palavra de sentimento também funcionam, como `smile`, `cry`, `calm` ou `shock`. Para os [sentimentos extras](#pngtuber-sprites) opcionais, dê às imagens nomes como `amusement`, `fear` ou `gratitude`.
 2. Para a boca se mexer, desenhe a mesma imagem com a boca aberta e acrescente `_talk`, por exemplo `happy_talk`. Para piscar, feche os olhos e acrescente `_blink`. Com os dois, acrescente `_blink_talk`.
-3. Adicione as imagens em **Images → Sprites**, na seção **Facial Expressions** (expressões faciais). O nome de cada arquivo vira o nome do sprite correspondente. Veja [Sprites de personagem](../characters/sprites.md#upload-your-own-sprites).
+3. Adicione as imagens na aba **Sprites**, na seção **Facial Expressions** (expressões faciais). O nome de cada arquivo vira o nome do sprite correspondente. Veja [Sprites de personagem](../characters/sprites.md#upload-your-own-sprites).
 4. Abra **2D Avatars** em **Agents**, escolha o personagem ou a persona e ligue **Show this avatar in chats**.
 
 ### PNGTuber Plus

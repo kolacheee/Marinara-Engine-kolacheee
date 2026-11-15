@@ -4,7 +4,7 @@ Profil ustawień to nazwany zestaw ustawień czatu wielokrotnego użytku: połą
 
 Profile znajdują się na górze panelu **Chat Settings** (ustawienia czatu). Działają w trybach Conversation i Roleplay. Czaty Game nie pokazują kontrolek profilu.
 
-Czym innym jest **preset promptu**. Decyduje on o strukturze promptu systemowego (tekstu, który Marinara wysyła do AI) i o wartościach generowania, a edytuje się go w panelu Presets. Zobacz [Edytor presetów i menedżer promptów](../prompts/presets.md). Profil ustawień to szerszy zestaw, który może zawierać preset promptu jako jeden z elementów.
+Czym innym jest **preset promptu**. Decyduje on o strukturze promptu systemowego (tekstu, który Marinara wysyła do AI) i o wartościach generowania, a edytuje się go na stronie **Biblioteka → Presety**. Zobacz [Edytor presetów i menedżer promptów](../prompts/presets.md). Profil ustawień to szerszy zestaw, który może zawierać preset promptu jako jeden z elementów.
 
 ## Zastosowanie profilu
 
@@ -63,8 +63,6 @@ Każdy czat ma własną kopię ustawień profilu, więc samo zapisanie profilu n
 
 Gdy z profilu nie korzysta żaden inny czat, **Save** działa bez pytania. Pokoje gry wieloosobowej nigdy nie są aktualizowane w ten sposób.
 
-<a id="choosing-the-default-profile"></a>
-
 ## Wybór profilu domyślnego
 
 Gwiazdka obok listy rozwijanej oznacza profil używany automatycznie w nowych czatach w danym trybie. Domyślny może być tylko jeden profil na tryb. Jej etykiety to **Mark this profile as default for new chats in this mode**, **This profile is the default for new chats in this mode** i **Select a profile to mark it as default**. W kreatorze możesz też zaznaczyć **Make this the default**.
@@ -79,8 +77,6 @@ Profile przechowują ustawienia, a nie tajne dane dostawców. Wyeksportowany alb
 
 Tryby Conversation i Roleplay mają własny wbudowany profil **Default** (domyślny). Jego zastosowanie przywraca ustawienia sterowane przez profil do wartości domyślnych aplikacji Marinara Engine dla danego trybu. Nie da się go przemianować, nadpisać ani usunąć. Wyłączone kontrolki pokazują komunikaty **Cannot save into the Default profile**, **Cannot rename the Default profile** i **Cannot delete the Default profile**.
 
-<a id="favorite-window-layouts"></a>
-
 ## Ulubione układy okien
 
 Gwiazdka obok **Reset View** (przywrócenie widoku) na pasku tytułu Chat Settings zapisuje ulubiony układ okien dla nowych czatów. Gwiazdka obok listy **Profile** wybiera natomiast profil domyślny. Kolejne kroki opisuje sekcja [Wybieranie układu dla nowych czatów](chat-settings.md#choosing-a-layout-for-new-chats).
@@ -92,7 +88,7 @@ Gdy nowy czat korzysta z domyślnego profilu z zapisanym układem, ten układ ma
 Profil zapisuje sposób, w jaki czat rozmawia z modelem:
 
 - Połączenie.
-- Preset promptu (w trybie Conversation nazywany źródłem promptu).
+- Preset promptu (w trybie Conversation nazywany źródłem promptu), wraz z wybranymi wartościami jego [zmiennych presetu](../prompts/preset-variables.md). Zastosowanie profilu przekazuje te wybory do czatu. Profil zapisany, zanim przechowywał te wartości, zachowuje własne wybory czatu.
 - Agenci i narzędzia.
 - Tłumaczenie, Memory Recall i Advanced Parameters.
 - Układ okien i przycisków: położenia, rozmiary, przypięcia, blokady, to, które narzędzia są wewnątrz Chat Settings, a które wydzielone, otwarte okna narzędzi oraz położenia przycisków na komputerach i telefonach. Profile bez zapisanego układu, takie jak **Default**, zostawiają układ czatu bez zmian.
@@ -120,6 +116,7 @@ Profil nie zastępuje treści należących do czatu: postaci, sprite'ów, podsum
 - Ustawienia pamięci i podsumowań.
 - Tłumaczenie.
 - Układ okien.
+- Wybrane wartości zmiennych presetu, tylko w czatach używających tego samego presetu promptu co profil.
 
 Wszystko inne zostaje tak, jak jest w danym czacie:
 

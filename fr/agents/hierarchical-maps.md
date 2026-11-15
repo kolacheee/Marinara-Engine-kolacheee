@@ -2,7 +2,7 @@
 
 > **Compatibilité actuelle :** ce guide correspond à World Maps **1.3.1**, qui prend en charge Marinara Engine **2.3.5 à 3.x** dans les chats Roleplay et Game. Engine **2.4.1** ajoute le nettoyage du flux des déplacements et une actualisation immédiate de Lorebooks après les imports portables. Engine 2.3.5 à 2.4.0 fonctionne toujours, mais demande une actualisation manuelle de Lorebooks après un import.
 
-World Maps donne à ton histoire une carte de lieux qui peuvent s'emboîter les uns dans les autres, par exemple une côte, une ville, un quartier et une auberge. Marinara sait toujours où se trouve l'équipe, et l'IA s'en sert pour rester cohérente. Pour l'essayer : installe **World Maps** dans **Agent Organizer** (organisateur d'agents), redémarre, puis suis le [Démarrage rapide](#quick-start).
+World Maps donne à ton histoire une carte de lieux qui peuvent s'emboîter les uns dans les autres, par exemple une côte, une ville, un quartier et une auberge. Marinara sait toujours où se trouve l'équipe, et l'IA s'en sert pour rester cohérente. Pour l'essayer : installe **World Maps** depuis **Library → Agents** (Bibliothèque → Agents), redémarre, puis suis le [Démarrage rapide](#quick-start).
 
 Au lieu d'un seul lieu en texte libre, le monde est un ensemble de lieux imbriqués :
 
@@ -52,7 +52,7 @@ Copier n'est pas relier. Les commandes **Use template** (utiliser un modèle), *
 
 ## Démarrage rapide
 
-1. Ouvre **Agents**, clique sur **Agent Organizer** et installe **World Maps**. Redémarre Marinara quand l'application te le demande, car le package contient du code serveur.
+1. Ouvre **Library → Agents**, trouve **World Maps** sous **Available** (disponibles) et clique sur **Get** (obtenir). Redémarre Marinara quand l'application te le demande, car le package contient du code serveur.
 2. Ouvre un chat Roleplay ou Game.
 3. Ouvre **Agents → World Maps** (ou le globe World Maps si ta version de Marinara Engine en a un) et active-le pour le chat. Tu peux aussi l'activer dans **Chat Settings → Agents** (réglages du chat → agents).
 4. Crée la carte avec **Use template**, **Create with AI** (créer avec l'IA) ou **Build manually** (construire à la main). Les chats existants peuvent aussi importer un fichier de carte.
@@ -340,7 +340,7 @@ Ce sont les prompts positifs et négatifs exactement tels qu'affichés dans la r
 
 ## Personnaliser le prompt d'illustration automatique
 
-Ouvre **Settings → Generations → Prompt Overrides** (Paramètres → générations → redéfinitions de prompt) et sélectionne **Maps location artwork**. C'est le modèle global utilisé par Maps pour prévisualiser et générer les illustrations de lieu automatiques. Les variables s'écrivent avec la syntaxe `${variableName}` et s'insèrent depuis l'éditeur.
+Ouvre **Settings → Media → Prompt Overrides** (Paramètres → Médias → Redéfinitions de prompt) et sélectionne **Maps location artwork**. C'est le modèle global utilisé par Maps pour prévisualiser et générer les illustrations de lieu automatiques. Les variables s'écrivent avec la syntaxe `${variableName}` et s'insèrent depuis l'éditeur.
 
 | Variable                                            | Signification                                              |
 | --------------------------------------------------- | ---------------------------------------------------------- |
@@ -496,7 +496,7 @@ Utilise **Plan route** s'il existe un chemin actif de type parent, enfant ou lie
 
 ### Les prompts d'illustration automatiques contiennent des éléments indésirables
 
-- Le genre de Game apparaît toujours : ouvre **Settings → Generations → Prompt Overrides → Maps location artwork**, retire `${genreLine}` et enregistre.
+- Le genre de Game apparaît toujours : ouvre **Settings → Media → Prompt Overrides → Maps location artwork**, retire `${genreLine}` et enregistre.
 - Le style de campagne apparaît alors qu'il devrait être désactivé : vérifie **Chat Settings → Illustrator → Use campaign art style**. Quand cet interrupteur est désactivé, `${campaignArtStyle}` et `${campaignArtStyleLine}` sont vides.
 - Un point de repère parent apparaît sur toutes les images d'enfant : évite `${parentLocationDescription}` et `${locationPath}` dans le modèle, sauf s'ils sont nécessaires.
 - Le prompt négatif contient du texte inattendu : modifie le champ négatif avant de confirmer, puis vérifie le réglage d'image négatif global. Le modèle de Maps ne construit que le prompt positif.

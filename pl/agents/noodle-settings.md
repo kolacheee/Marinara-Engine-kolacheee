@@ -98,7 +98,7 @@ Ta sekcja pozwala Noodle dołączać do części wpisów obrazy stworzone przez 
 
 Jeśli to nie działa: przy włączonym generowaniu obrazów i braku sprawnego modelu obrazów odświeżenie zostaje zablokowane komunikatem "Choose an image generation connection for Noodle first." Nieudany obraz jest ponawiany raz. Jeśli druga próba też zawiedzie, odświeżenie idzie dalej i publikuje czysty wpis tekstowy.
 
-Szablon tych promptów obrazów nazywa się **Noodle Post Image**. Edytujesz go w **Settings → Generations → Image Generation Prompt Overrides** (ustawienia, generowanie, nadpisywanie promptów generowania obrazów). Twoje instrukcje obrazów trafiają do tego szablonu, a wynik przechodzi przez twój profil stylu. Zobacz [Prompt Overrides dla obrazów i wideo](../prompts/prompt-overrides.md) oraz [Profile stylu obrazów](../media/style-profiles.md). Professor Mari nie ma karty postaci, więc jej wpisy z obrazami korzystają z wbudowanego awatara i wbudowanych grafik referencyjnych.
+Szablon tych promptów obrazów nazywa się **Noodle Post Image**. Edytujesz go w **Ustawienia → Multimedia → Nadpisania promptów**. Twoje instrukcje obrazów trafiają do tego szablonu, a wynik przechodzi przez twój profil stylu. Zobacz [Prompt Overrides dla obrazów i wideo](../prompts/prompt-overrides.md) oraz [Profile stylu obrazów](../media/style-profiles.md). Professor Mari nie ma karty postaci, więc jej wpisy z obrazami korzystają z wbudowanego awatara i wbudowanych grafik referencyjnych.
 
 ## Image Understanding
 
@@ -119,7 +119,7 @@ Ta sekcja dostraja ton i pamięć autora odświeżeń.
 
 ### Dostosowanie głosu autora
 
-Wbudowane instrukcje autora dotyczące tonu i swobody twórczej możesz przepisać w **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone**. Sekcja ma w tytule słowo "Image", ale lista zawiera każdy edytowalny prompt tekstowy Noodle i trybu Conversation. Widoczny tam tekst domyślny podąża za przełącznikiem **Enhanced tone & continuity**, dopóki nie zapiszesz własnego tekstu. Potem aplikacja używa twojego tekstu niezależnie od przełącznika.
+Wbudowane instrukcje autora dotyczące tonu i swobody twórczej możesz przepisać w **Ustawienia → Multimedia → Nadpisania promptów → Noodle Timeline Voice & Tone**. Sekcja ma w tytule słowo "Image", ale lista zawiera każdy edytowalny prompt tekstowy Noodle i trybu Conversation. Widoczny tam tekst domyślny podąża za przełącznikiem **Enhanced tone & continuity**, dopóki nie zapiszesz własnego tekstu. Potem aplikacja używa twojego tekstu niezależnie od przełącznika.
 
 To nadpisanie obejmuje wyłącznie głos i ton. Reguły pilnujące poprawności odświeżenia, na przykład to, jakie działania strukturalne są dozwolone, obowiązują zawsze.
 

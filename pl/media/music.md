@@ -6,7 +6,7 @@
 
 **Music DJ** to opcjonalny agent do pobrania. Agent to pomocnik, który działa w tle czatu. Po każdej odpowiedzi Music DJ może odczytać nastrój sceny i odtworzyć pasującą muzykę.
 
-Zanim zaczniesz: otwórz **Agents** (Agenci), wybierz **Agent Organizer** (organizowanie agentów) i zainstaluj agenta **Music DJ**. Po instalacji jest wyłączony. Włącz go dla czatu tak samo jak każdego innego agenta. Działa w czatach Roleplay, w trybie Game Mode przez osobny przełącznik ([Music DJ w trybie Game Mode](#music-dj-in-game-mode)) oraz w trybie Conversation przez komendę **Music** ([Komenda Music w trybie Conversation](#the-conversation-music-command)).
+Zanim zaczniesz: otwórz **Biblioteka → Agenci** i zainstaluj agenta **Music DJ** z sekcji **dostępne**. Po instalacji jest wyłączony. Włącz go dla czatu tak samo jak każdego innego agenta. Działa w czatach Roleplay, w trybie Game Mode przez osobny przełącznik ([Music DJ w trybie Game Mode](#music-dj-in-game-mode)) oraz w trybie Conversation przez komendę **Music** ([Komenda Music w trybie Conversation](#the-conversation-music-command)).
 
 Odtwarza muzykę z trzech źródeł.
 
@@ -18,7 +18,7 @@ Odtwarza muzykę z trzech źródeł.
 
 Aktywne źródło widać jako mały odtwarzacz **Music Player** (odtwarzacz muzyki) przypięty do górnego paska. Na telefonach i w wąskich oknach zmienia się w mały, pływający, okrągły widget, który da się przeciągać.
 
-Agenta Music DJ konfiguruje się w jednym wspólnym miejscu. Otwórz prawy panel **Agents**, a potem **Music DJ**. Możesz też kliknąć ikonę koła zębatego na mini odtwarzaczu (podpowiedź **Music DJ setup**).
+Agenta Music DJ konfiguruje się w jednym wspólnym miejscu. Otwórz **Biblioteka → Agenci**, a potem **Music DJ**. Możesz też kliknąć ikonę koła zębatego na mini odtwarzaczu (podpowiedź **Music DJ setup**).
 
 ### Wybór źródła muzyki
 
@@ -124,7 +124,7 @@ Ten sam wybór **Apply to** pojawia się przy dodawaniu agenta Music DJ do czatu
 
 ## Korzystanie z odtwarzacza muzyki
 
-**Music Player** to kafelek na górnym pasku na komputerze i przeciągany widget na telefonie. Żeby go pokazać lub ukryć, otwórz **Settings → General → App Behavior** (ustawienia, ogólne, zachowanie aplikacji) i przestaw przełącznik **Music Player**. Domyślnie jest włączony. Gdy jest włączony, a agent Music DJ nie jest zainstalowany, odtwarzacz pokazuje napis **Download Music DJ Agent to configure** i przycisk **Agent Organizer**.
+**Music Player** to kafelek na górnym pasku na komputerze i przeciągany widget na telefonie. Żeby go pokazać lub ukryć, otwórz **Ustawienia → Ogólne → Dodatki** i przestaw przełącznik **Music Player**. Domyślnie jest włączony. Gdy jest włączony, a agent Music DJ nie jest zainstalowany, odtwarzacz pokazuje napis **Download Music DJ Agent to configure** i przycisk **Agent Organizer**.
 
 W świeżym profilu źródłem jest na początku **YouTube**. Zmienisz je okrągłym przełącznikiem źródła na odtwarzaczu (podpowiedź "Switch to ... player"), przyciskami **Music Player** w edytorze albo w ustawieniach **Music DJ** w czacie.
 
@@ -166,7 +166,7 @@ Postać może wtedy podać nazwę utworu dla Spotify albo opisać utwór dla You
 
 ## Rozwiązywanie problemów
 
-- **Brakuje mini odtwarzacza**: włącz **Music Player** w **Settings → General → App Behavior**.
+- **Brakuje mini odtwarzacza**: włącz **Music Player** w **Ustawienia → Ogólne → Dodatki**.
 - **Spotify nic nie odtwarza**: odtwarzanie wymaga Spotify Premium i aktywnego urządzenia Spotify. Otwórz desktopową aplikację Spotify na jakimś urządzeniu albo kliknij **Enable Marinara player** na komputerze.
 - **Okno logowania Spotify nie działa na innym komputerze**: skorzystaj z pola wklejania "Browser couldn't reach the callback?" albo ustaw `SPOTIFY_REDIRECT_URI` na serwerze.
 - **Wyszukiwanie w YouTube zawodzi**: sprawdź, czy **YouTube Data API v3** jest włączone dla twojego projektu i czy klucz nie jest ograniczony po nagłówku HTTP referrer. Po wyczerpaniu dziennego limitu spróbuj następnego dnia albo użyj innego klucza.

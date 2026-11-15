@@ -22,7 +22,7 @@ Marinara는 컴퓨터 한 대에서 서버로 실행되고, 브라우저로 열�
 
 Android에서는 [최신 APK를 다운로드](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk)할 수도 있습니다. APK는 Termux를 통해 휴대폰에서 Marinara를 실행합니다. [Android (Termux) 설치 가이드](installation/android-termux.md)를 참고하세요. iPhone과 iPad는 [iOS / iPadOS PWA 가이드](installation/ios-pwa.md)를 참고하세요.
 
-Android 앱의 런처에는 **Open in browser**(브라우저에서 열기), **Retry connection**(연결 다시 시도), **Install / Start Marinara**(Marinara 설치/시작)가 있습니다. 나중에 선택을 바꾸려면 **Settings → General → App Behavior → Open Android launcher (app or browser)**(설정 → 일반 → 앱 동작 → Android 런처 열기 (앱 또는 브라우저))를 사용하세요. 이전 APK에서는 `/android-login`에서 수동으로 로그인합니다.
+Android 앱의 런처에는 **Open in browser**(브라우저에서 열기), **Retry connection**(연결 다시 시도), **Install / Start Marinara**(Marinara 설치/시작)가 있습니다. 나중에 선택을 바꾸려면 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(설정 → 모양 → 레이아웃 → Android 런처 열기 (앱 또는 브라우저))를 사용하세요. 이전 APK에서는 `/android-login`에서 수동으로 로그인합니다.
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -82,11 +82,11 @@ Marinara는 무료입니다. 비용은 사용하는 AI 서비스가 청구하는
 
 ## 에이전트란 무엇인가요?
 
-에이전트는 채팅이 진행되는 동안 장면 추적이나 지도 추가처럼 한 가지 일을 맡아 처리하는 선택형 AI 도우미입니다. 새로 설치한 상태에는 에이전트가 하나도 없습니다. **Agents → Agent Organizer**(에이전트 → Agent Organizer)를 열고 에이전트를 골라 설치하세요. 그런 다음 **Chat Settings**에서 채팅마다 켜세요. [에이전트](agents/agents-overview.md)를 참고하세요.
+에이전트는 채팅이 진행되는 동안 장면 추적이나 지도 추가처럼 한 가지 일을 맡아 처리하는 선택형 AI 도우미입니다. 새로 설치한 상태에는 에이전트가 하나도 없습니다. **Library → Agents**(라이브러리 → 에이전트)를 열고 에이전트를 골라 설치하세요. 그런 다음 **Chat Settings**에서 채팅마다 켜세요. [에이전트](agents/agents-overview.md)를 참고하세요.
 
 ## Noodle은 어떻게 설정하나요?
 
-Noodle은 캐릭터들을 위한 가상의 로컬 소셜 네트워크입니다. **Agents → Agent Organizer**에서 **Noodle**을 설치하고, 안내가 나오면 Marinara를 다시 시작한 다음, **Home → Noodle**(홈 → Noodle)을 여세요. [Noodle: 앱 안의 소셜 타임라인](agents/noodle.md)을 참고하세요.
+Noodle은 캐릭터들을 위한 가상의 로컬 소셜 네트워크입니다. **Library → Agents**에서 **Noodle**을 설치하고, 안내가 나오면 Marinara를 다시 시작한 다음, **Home → Noodle**(홈 → Noodle)을 여세요. [Noodle: 앱 안의 소셜 타임라인](agents/noodle.md)을 참고하세요.
 
 ## 캐릭터가 왜 답하지 않나요?
 
@@ -98,11 +98,11 @@ Noodle은 캐릭터들을 위한 가상의 로컬 소셜 네트워크입니다. 
 
 ## 데이터는 어떻게 백업하나요?
 
-**Settings → Advanced → Backup & Export**(설정 → 고급 → 백업 및 내보내기)를 열고 **Download Backup**(백업 다운로드)을 클릭하세요. 데이터와 업로드한 파일이 담긴 `.zip` 파일이 저장됩니다. 복원하려면 **Settings → Imports**(설정 → 가져오기)의 **Import Profile (JSON/ZIP)**(프로필 가져오기 (JSON/ZIP))을 쓰세요. 같은 섹션에서 매일, 매주, 매월 백업을 실행하도록 설정할 수도 있습니다. [백업과 복원](data/backup-and-restore.md)을 참고하세요.
+**Settings → Data → Backup & Restore**(설정 → 데이터 → 백업 및 복원)를 열고 **Download Backup**(백업 다운로드)을 클릭하세요. 데이터와 업로드한 파일이 담긴 `.zip` 파일이 저장됩니다. 복원하려면 같은 섹션의 **Import Profile (JSON/ZIP)**(프로필 가져오기 (JSON/ZIP))을 쓰세요. 같은 섹션에서 매일, 매주, 매월 백업을 실행하도록 설정할 수도 있습니다. [백업과 복원](data/backup-and-restore.md)을 참고하세요.
 
 ## 확장 기능은 어떻게 동작하며, 외부 코드를 가져올 수 있나요?
 
-기본 상태에서는 Professor Mari만 Personal Extension 초안을 만듭니다. 초안은 꺼진 상태로 시작하며, 실행되기 전에 정확한 코드를 직접 승인해야 합니다. 외부 코드 가져오기는 호스트가 `.env`에 `ENABLE_EXTERNAL_EXTENSIONS=true`를 설정하고 **Settings → Advanced → Danger Zone**(설정 → 고급 → 위험 구역)에서 경고에 동의하기 전까지 숨겨져 있습니다. [개인 확장](extending/personal-extensions.md)을 참고하세요.
+기본 상태에서는 Professor Mari만 Personal Extension 초안을 만듭니다. 초안은 꺼진 상태로 시작하며, 실행되기 전에 정확한 코드를 직접 승인해야 합니다. 외부 코드 가져오기는 호스트가 `.env`에 `ENABLE_EXTERNAL_EXTENSIONS=true`를 설정하고 **Settings → Advanced → Security**(설정 → 고급 → 보안)에서 경고에 동의하기 전까지 숨겨져 있습니다. [개인 확장](extending/personal-extensions.md)을 참고하세요.
 
 ## 데이터는 어디에 저장되나요?
 
@@ -118,7 +118,7 @@ Professor Mari는 홈 화면에 있는 내장 어시스턴트입니다. 앱을 �
 
 ## Storyboard 에이전트는 무엇이고 Game Mode에서 어떻게 쓰나요?
 
-완성된 이야기 텍스트를 이미지로 바꾸는 에이전트입니다. **Agents → Agent Organizer**에서 **Storyboard**를 설치한 다음 채팅에서 켜세요. [스토리보드 에이전트 가이드](game/storyboard.md)를 참고하세요.
+완성된 이야기 텍스트를 이미지로 바꾸는 에이전트입니다. **Library → Agents**에서 **Storyboard**를 설치한 다음 채팅에서 켜세요. [스토리보드 에이전트 가이드](game/storyboard.md)를 참고하세요.
 
 ## 통화에서 캐릭터가 소리 내어 말할 수 있나요?
 
@@ -130,7 +130,7 @@ Professor Mari는 홈 화면에 있는 내장 어시스턴트입니다. 앱을 �
 
 ## 앱 안에서 문서를 읽으려면 어떻게 하나요?
 
-홈 화면의 북마크에서 **Documentation**(문서)을 클릭하세요. 휴대폰에서는 먼저 북마크 메뉴를 여세요. 홈의 FAQ에서 **Open Documentation**(문서 열기)을 클릭해도 됩니다.
+위쪽 막대에서 **Docs**(문서)를 클릭하세요. 휴대폰에서는 Library(오른쪽 위의 겹친 모양 버튼)에 문서가 있습니다. 클래식 레이아웃에서는 Home의 북마크에서 **Documentation**(문서)을 클릭하세요. 홈의 FAQ에서 **Open Documentation**(문서 열기)을 클릭해도 됩니다.
 
 ## 도움을 받거나 버그를 신고하려면 어디로 가야 하나요?
 

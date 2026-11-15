@@ -6,15 +6,15 @@ Die Bildgenerierung liefert Szenenillustrationen, Selfies, Szenenhintergründe s
 
 Ein API-Key ist ein geheimer Code, den dir ein Dienst gibt, damit Marinara dein Konto dort nutzen kann. Die Webadresse jedes Dienstes trägt Marinara selbst ein, du musst also nur selten eine eintippen.
 
-1. Klick in der oberen Leiste auf **Connections** (Verbindungen) und dann auf **Add** (Hinzufügen). Das Fenster **Add account** (Konto hinzufügen) öffnet sich.
-2. Such den Dienst heraus. Die Liste hat einen Abschnitt **Images & video** (Bilder und Video), und mit **Search providers** (Anbieter suchen) findest du einen Dienst schneller.
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen) und klick auf **Add connection** (Verbindung hinzufügen). Die Liste der Dienste öffnet sich.
+2. Öffne den Tab **Bild** und such den Dienst heraus. Mit **Search services** (Dienste suchen) findest du einen schneller.
 3. Füge deinen Key in das Feld **API key** ein. Kostenlose und lokale Dienste brauchen keinen. Für einen Server, den du selbst betreibst, füllst du das Adressfeld aus.
 4. Klick auf **Connect** (Verbinden). Marinara testet das Konto.
-5. Wähle ein Bildmodell aus der Liste oder tipp eine Modell-ID ein. Das ist dein Bildmodell. Es erscheint im Panel **Connections** unter dem Konto.
+5. Hake unter **Found in … — use it for:** **Bilder** an. Hat der Dienst keine Modellliste, tipp die Modell-ID in die Zeile ein. Klick auf **Fertig**.
 6. Öffne das Bildmodell und klick auf **Test image** (Bild testen). Marinara erzeugt ein kleines Testbild.
-7. Soll die App dieses Modell für Bilder verwenden, setze oben im Panel **Connections** unter **Defaults** (Standardwerte) die Aufgabe **Images** (Bilder).
+7. Wenn du in Schritt 5 **Bilder** anhakst, wird damit auch die Aufgabe **Bilder** im Kasten **Aufgaben** oben im Panel **Verbindungen** festgelegt. Um sie später zu ändern, klick auf die Zeile **Bilder**.
 
-Um einem Konto ein weiteres Bildmodell hinzuzufügen, öffne sein Menü **⋯** und klick auf **Add image model** (Bildmodell hinzufügen). Das vollständige Fenster beschreibt [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
+Um einem Konto ein weiteres Bildmodell hinzuzufügen, klick in seiner Zeile auf **⋯** und wähle **Modell hinzufügen**. Das vollständige Fenster beschreibt [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 
 Wenn es nicht funktioniert hat: **Test image** schlägt fehl, wenn Key oder Adresse falsch sind. Prüf zuerst beides. **Test provider** (Anbieter testen) prüft nur, ob Marinara den Dienst erreichen kann. **Test image** erzeugt ein echtes Bild und kann Guthaben verbrauchen.
 
@@ -220,7 +220,7 @@ Präzise Referenzbilder funktionieren bei NovelAI nur auf einem V4.5-Modell wie 
 
 ## Anfragen zur Mediengenerierung in die Warteschlange stellen
 
-Der Schalter **Queue media generation requests** (Anfragen zur Mediengenerierung in die Warteschlange stellen) sitzt unter **Settings → Generations → Overall Generations**. Standardmäßig ist er an.
+Der Schalter **Queue media generation requests** (Anfragen zur Mediengenerierung in die Warteschlange stellen) sitzt unter **Settings → Media → Generation Defaults**. Standardmäßig ist er an.
 
 Ist er an, schickt Marinara Bildaufträge an jedes Bildkonto einzeln nacheinander und Videoaufträge an jedes Videokonto ebenso, jeweils in einer eigenen Warteschlange. Ein Bild und ein Video für dasselbe Konto können gleichzeitig laufen. Das gilt für jede Funktion, die sie anfordert: den Illustrator, Tracker, Befehle, die Gallery, Game-Assets und heruntergeladene Agenten wie Slurp. Zwei Modelle mit derselben Adresse und demselben API-Key teilen sich eine Warteschlange. Verschiedene Konten laufen weiterhin gleichzeitig. Bei NovelAI kommt außerdem eine kurze Pause zwischen den Aufträgen hinzu. Antwortet NovelAI, dass es ausgelastet ist, wartet Marinara und versucht es noch zweimal.
 
@@ -231,6 +231,6 @@ Lass ihn an bei Diensten, die zwei gleichzeitige Anfragen ablehnen. Schalte ihn 
 - [ComfyUI-Workflow einrichten](comfyui.md)
 - [Illustrator-Agent](illustrator-agent.md)
 - [Bild-Stilprofile](style-profiles.md)
-- [Szenen-Hintergründe und die Gallery](scene-backgrounds.md)
+- [Von Illustrator erstellte Hintergründe](scene-backgrounds.md)
 - [Selfies](../conversation/selfies.md)
 - [Unterstützte KI-Anbieter](../connections/providers-reference.md)

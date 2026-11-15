@@ -5,7 +5,10 @@
 ## 打开 Achievements 窗口
 
 1. 回到主页。
-2. 点击 **Achievements**(成就) 书签（奖杯图标）。在手机上，先点击标签页左侧的书签按钮。
+2. 点击 **Widgets**(小组件)，开启 **Achievements**(成就) 小组件。
+3. 点击这个小组件。
+
+在经典布局中，主页还有 **Achievements** 书签（奖杯图标）。在手机上，先点击标签页左侧的书签按钮。
 
 **Achievements** 窗口随即打开。顶部是一行汇总，比如 **12 of 24 achievements unlocked in this profile.** 档案就是你保存下来的那一套 Marinara 数据。下面是成就卡片组成的网格。
 
@@ -13,7 +16,7 @@
 - 已解锁的卡片会显示 **unlocked** 标签。
 - 带目标数量的卡片还会显示一行 **Progress**(进度) 和一条进度条。
 
-你也可以把 **Achievements** 小组件加到主页上。点击书签里的 **Widgets**(小组件)，把它打开即可。它会显示 **12 of 24 unlocked** 这样的计数，以及你 **Last obtained**(最近获得) 的成就和 **Closest next**(最接近完成) 的成就。加载时显示 **Checking the collection...**。点击它即可打开窗口。见[主页小组件](welcome.md#home-widgets)。
+**Achievements** 小组件会显示 **12 of 24 unlocked** 这样的计数，以及你 **Last obtained**(最近获得) 的成就和 **Closest next**(最接近完成) 的成就。加载时显示 **Checking the collection...**。点击它即可打开窗口。见[主页小组件](welcome.md#home-widgets)。
 
 如果没有成功：只有 **Achievements** 设置开启时，书签、小组件和窗口才会显示。见[开启或关闭成就](#turn-achievements-on-or-off)。
 
@@ -53,7 +56,7 @@
 ## 开启或关闭成就
 
 1. 打开 **Settings → General**(设置 → 常规)。
-2. 在 **App Behavior**(应用行为) 部分，打开或关闭 **Achievements** 开关。它默认开启。
+2. 在 **Extras**(附加功能) 部分，打开或关闭 **Achievements** 开关。它默认开启。
 
 - 开启：书签和窗口可用，有成就解锁时会弹出提示。
 - 关闭：书签、小组件和弹出提示都会隐藏。应用仍会在后台记录解锁情况，所以重新打开时不会丢失任何东西。

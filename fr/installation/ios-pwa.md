@@ -93,7 +93,7 @@ Voir [Verrouillé après une mise à jour](../REMOTE_ACCESS.md#locked-out-after-
 
 **Un bandeau rouge annonce que les enregistrements échoueront silencieusement.** C'est un avertissement de confiance réseau émis par le serveur, pas un problème de ton iPhone ou de ton iPad. Le propriétaire du serveur doit faire confiance à ton adresse. Voir [Accès à distance](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf).
 
-**Les actions privilégiées sont bloquées.** Certaines actions de maintenance demandent le secret d'administration (un second mot de passe) fourni par le propriétaire du serveur. Enregistre-le sur ton iPhone ou ton iPad dans **Settings → Advanced → Admin Access** (Paramètres → Avancé → Accès administrateur). Voir [Accès à distance](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+**Les actions privilégiées sont bloquées.** Certaines actions de maintenance demandent le secret d'administration (un second mot de passe) fourni par le propriétaire du serveur. Enregistre-le sur ton iPhone ou ton iPad dans **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité). Voir [Accès à distance](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Guides associés
 

@@ -61,7 +61,7 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 
 Состояние интерфейса и среды выполнения клиент держит в наборе хранилищ Zustand в `packages/client/src/stores/`. Из них сохраняется на диск только `ui.store.ts`. Остальные держат состояние времени выполнения для чатов, агентов, игр, локального движка моделей, перевода, диалогов и дозаполнения.
 
-Сейчас файлов хранилищ столько: `agent.store.ts`, `backfill.store.ts`, `chat-tools-menu.store.ts`, `chat.store.ts`, `combat-screen.store.ts`, `conversation-games.store.ts`, `dialog.store.ts`, `encounter.store.ts`, `floating-window.store.ts`, `gallery.store.ts`, `game-asset.store.ts`, `game-mode.store.ts`, `game-state.store.ts`, `roleplay-sheet.store.ts`, `sidecar.store.ts`, `translation.store.ts` и `ui.store.ts`. Хранилища настольных игр переехали в их скачиваемые пакеты; `conversation-games.store.ts` отслеживает только выбор и настройку игры в Conversation. `combat-screen.store.ts` отслеживает открытый экран боя и номер раунда, чтобы элементы управления боем отображались на верхней панели только на этом экране. `roleplay-sheet.store.ts` отслеживает, лист набора правил какого участника открыт в чате Roleplay.
+Сейчас файлов хранилищ столько: `agent.store.ts`, `backfill.store.ts`, `chat-tools-menu.store.ts`, `chat.store.ts`, `conversation-games.store.ts`, `dialog.store.ts`, `encounter.store.ts`, `floating-window.store.ts`, `gallery.store.ts`, `game-asset.store.ts`, `game-mode.store.ts`, `game-state.store.ts`, `sidecar.store.ts`, `translation.store.ts` и `ui.store.ts`. Хранилища настольных игр переехали в их скачиваемые пакеты; `conversation-games.store.ts` отслеживает только выбор и настройку игры в Conversation.
 
 #### `ui.store.ts`: настройки и обвязка интерфейса
 
@@ -126,7 +126,7 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 
 ### React Query (данные с сервера)
 
-Все данные с сервера запрашиваются и кешируются через TanStack React Query, который настраивается в `lib/query-client.ts`:
+Все данные с сервера запрашиваются и кешируются через TanStack React Query, который настраивается в `main.tsx`:
 
 - Время устаревания: 30 секунд (общее значение по умолчанию).
 - Повтор: 1 попытка.
@@ -137,7 +137,7 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 
 ## Справочник хуков
 
-Все хуки лежат в `src/hooks/` и названы по образцу `use-{entity}.ts`. В таблицах ниже перечислены основные хуки. Полный набор находится в `packages/client/src/hooks/`.
+Все хуки лежат в `src/hooks/` и названы по образцу `use-{entity}.ts`.
 
 ### Хуки чатов (`use-chats.ts`)
 
@@ -181,25 +181,27 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 | Хук                           | Тип     | Описание                                                 |
 | ------------------------------ | -------- | ---------------------------------------------------------- |
 | `usePresets()`                 | Query    | Все пресеты                                                |
-| `usePresetFull(id)` | Query | Один пресет с разделами, группами и переменными |
+| `usePreset(id)` | Query | Один пресет |
+| `usePresetFull(id)` | Query | Пресет с разделами, группами и вариантами |
 | `useDefaultPreset()`           | Query    | Пресет по умолчанию                                         |
+| `useCreatePreset()` | Mutation | Создать пресет |
 | `useUpdatePreset()`            | Mutation | Обновить пресет                                              |
 | `useDeletePreset()`            | Mutation | Удалить пресет                                              |
-| `useDuplicatePreset()` | Mutation | Дублировать пресет |
-| `useSetDefaultPreset()` | Mutation | Назначить пресет по умолчанию |
-| `useCreateSection()` | Mutation | Создать раздел промпта (хуки обновления, удаления и изменения порядка находятся рядом) |
-| `useCreateGroup()` | Mutation | Создать группу разделов (хуки обновления и удаления находятся рядом) |
-| `useCreateVariable()` | Mutation | Создать переменную пресета, ранее блок вариантов (хуки обновления, удаления и изменения порядка находятся рядом) |
+| `usePresetSections(presetId)` | Query | Разделы промпта пресета |
+| `usePresetGroups(presetId)` | Query | Группы разделов |
+| `usePresetVariables(presetId)` | Query | Переменные пресета (бывшие блоки вариантов) |
+| `usePreviewPreset()` | Mutation | Предпросмотр готового промпта для `{ presetId, chatId, choices }` |
 
 ### Хуки агентов (`use-agents.ts`)
 
 | Хук                 | Тип     | Описание                     |
 | -------------------- | -------- | ------------------------------- |
 | `useAgentConfigs()`  | Query    | Все настройки агентов        |
+| `useAgentConfig(id)` | Query | Настройки одного агента |
 | `useCreateAgent()`   | Mutation | Создать своего агента             |
 | `useUpdateAgent()`   | Mutation | Обновить настройки агента            |
 | `useDeleteAgent()`   | Mutation | Удалить агента                    |
-| `useUpdateAgentByType()` | Mutation | Обновить настройки агента по его типу |
+| `useToggleAgent()` | Mutation | Включить или выключить встроенного агента |
 
 ### Хук генерации (`use-generate.ts`)
 
@@ -229,7 +231,7 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 | `use-background-autonomous.ts` | Фоновый опрос по неактивным чатам      |
 | `use-translate.ts`             | Перевод текста                          |
 | `use-apply-regex.ts`           | Применение скриптов регулярных выражений к сообщениям         |
-| `use-custom-tools.ts` | CRUD собственных инструментов, изменение порядка и массовое включение и выключение |
+| `use-custom-tools.ts` | CRUD собственных инструментов |
 | `use-knowledge-sources.ts`     | Управление источниками знаний                |
 | `use-gallery.ts`               | Изображения галереи чата                           |
 | `use-chat-folders.ts`          | CRUD для папок чатов и их порядок      |
@@ -324,9 +326,9 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 Панели регистрируются в `RightPanel.tsx` в двух местах:
 
 1. `PANEL_CONFIG`: заголовок, иконка и цвет градиента.
-2. `RIGHT_PANELS` (в `right-panel-panels.ts`): карта компонентов.
+2. `PANELS`: карта компонентов.
 
-Состояние панелей сохраняет множество `mountedPanels`, которое хранится в `useState` внутри `RightPanel` и отслеживает открытые ранее панели. После монтирования панель остается в DOM (скрывается через `display: none` или `aria-hidden`) и сохраняет свое состояние.
+Панели сохраняют состояние на уровне модуля. Набор `mountedPanels` отслеживает, какие панели уже открывали. После монтирования панель остается в DOM (скрытая через `display: none` или `aria-hidden`), чтобы сохранять свое состояние.
 
 ### Базовые элементы интерфейса (`components/ui/`)
 
@@ -338,11 +340,8 @@ Marinara Engine – это приложение для чата с ИИ, в ко
 | `EmojiPicker`      | Всплывающая панель эмодзи с поиском (отображается через портал)                            |
 | `GifPicker`        | Поиск GIF через API Giphy                                          |
 | `HelpTooltip`      | Иконка, которая при наведении показывает подсказку через портал                     |
-| `LibraryToolbar` | Общая панель инструментов для всех панелей библиотеки (см. ниже) |
 
 Все компоненты интерфейса работают на управляемых свойствах (value вместе с onChange), а наложения отображают через портал.
-
-**Панели библиотеки используют `LibraryToolbar`.** Characters, Personas, Lorebooks, Agents и вкладки панели Presets выводят через него верхние элементы управления: необязательную строку библиотеки (одна кнопка во всю ширину или пара Download / Open Library), кнопки создания, импорта, экспорта и выбора, поле поиска с общим меню сортировки, New Folder и фильтры панели через `children`. Строки передаются как типизированные пропсы, а не слоты, поэтому новые панели библиотеки используют ту же разметку. Чтобы расширить панель инструментов, добавьте проп в `LibraryToolbar`.
 
 ## Клиент API (`lib/api-client.ts`)
 
@@ -467,12 +466,11 @@ Personal Extensions – это изолированный код, который
 | `/api/connections`   | GET, POST, PATCH, DELETE | CRUD подключений к API, дублирование, проверка                                                      |
 | `/api/agents`        | GET, POST, PATCH, DELETE | CRUD агентов, сообщения Echo Chamber, запуски; встроенные агенты переключаются через `PUT /api/agents/toggle/:agentType` |
 | `/api/lorebooks`     | GET, POST, PATCH, DELETE | CRUD лорбуков, записи, экспорт                                                            |
-| `/api/custom-tools` | GET, POST, PUT, PATCH, DELETE | CRUD собственных инструментов, `PUT /reorder` и `PUT /enabled` |
+| `/api/custom-tools` | GET, POST, PATCH, DELETE | CRUD собственных инструментов |
 | `/api/regex-scripts` | GET, POST, PUT, PATCH, DELETE | CRUD regex-скриптов, `PUT /reorder` и `PUT /enabled` |
 | `/api/library-folders/regex` | GET, POST, PATCH, DELETE | CRUD папок regex-скриптов, состояние паузы и `POST /move` |
-| `/api/library-folders/functions` | GET, POST, PATCH, DELETE | CRUD папок собственных инструментов, состояние паузы и `POST /move` |
 
-`PUT /api/regex-scripts/enabled` принимает `scriptIds` и `enabled`. Если какой-либо идентификатор отсутствует, запрос возвращает 404 и не обновляет ни один скрипт. В списке regex-скриптов `pausedByFolder` передается отдельно от сохраненного состояния `enabled`. `PUT /api/custom-tools/enabled` работает так же с `toolIds`, а список собственных инструментов тоже содержит `pausedByFolder`. Инструмент из приостановленной папки не передается модели.
+`PUT /api/regex-scripts/enabled` принимает `scriptIds` и `enabled`. Если какой-либо идентификатор отсутствует, запрос возвращает 404 и не обновляет ни один скрипт. В списке regex-скриптов `pausedByFolder` передается отдельно от сохраненного состояния `enabled`.
 
 Инструменты памяти агентов обращаются к `/api/agents/memory/:agentType/:chatId`, где `agentType` – строка с типом агента, а `chatId` – идентификатор нужного чата.
 
@@ -488,7 +486,7 @@ Personal Extensions – это изолированный код, который
 | Префикс                    | Точки                        | Описание                  |
 | ------------------------- | -------------------------------- | ---------------------------- |
 | `/api/chat-folders`       | CRUD и изменение порядка                | Управление папками чатов       |
-| `/api/conversation`       | schedule, status, activity, autonomous | Система автономных сообщений  |
+| `/api/conversation` | schedule, status, message, check | Система автономных сообщений |
 | `/api/scene`              | create, plan, conclude           | Ответвления сцен             |
 | `/api/encounter`          | init, action, summary            | Сражения            |
 | `/api/translate`          | POST                             | Перевод текста             |
@@ -497,8 +495,8 @@ Personal Extensions – это изолированный код, который
 | `/api/game-rulesets`      | импорт, схема, источник, удаление | Импортированные наборы правил Game Mode |
 | `/api/game-worlds`        | CRUD библиотеки и правка миров  | Библиотека миров для новых игр и пакетов карт |
 | `/api/game-tile-packs`    | пакеты тайлов, а также `/creatures` и `/boards` | Пакеты изображений для карт, существ и боевых полей |
-| `/api/turn-games` | catalog, state, start, move, resign | Настольные игры в режиме Conversation (игры поставляются в пакетах) |
-| `/api/conversation-calls` | Маршруты звонков и сессий (маршруты регистрирует пакет звонков в Conversation) | Аудиозвонки в режиме Conversation     |
+| `/api/turn-games` | Маршруты Chess, UNO, Poker | Настольные игры Conversation |
+| `/api/conversation-calls` | Маршруты звонков и сессий | Аудиозвонки Conversation |
 
 ### Медиа и ресурсы
 
@@ -537,9 +535,9 @@ Personal Extensions – это изолированный код, который
 
 | Точка                        | Описание                             |
 | ------------------------------- | --------------------------------------- |
-| `/api/updates/check` | Проверка версии по релизам GitHub. Для установок из Git также определяет, насколько рабочая копия отстает от канала обновлений |
-| `/api/updates/channel` | Канал обновлений, текущая ветка и список каналов |
-| `/api/updates/apply` | Применение обновления |
+| `/api/updates/check` | Проверка версии по выпускам GitHub |
+| `/api/updates/latest` | Метаданные последнего выпуска |
+| `/api/updates/commits-behind` | Отставание установки из Git от обновления |
 | `/api/backup`                   | Полная резервная копия, экспорт, импорт             |
 | `/api/import/*`                 | Импорт профилей SillyTavern и Marinara |
 | `/api/admin/clear-all`          | Полная очистка данных                     |
@@ -562,13 +560,13 @@ Personal Extensions – это изолированный код, который
 
 - Манифест: `public/manifest.json` с названием приложения "Marinara Engine", режимом отображения standalone и темной темой.
 - Иконки: значок сайта 64px, маскируемые иконки 192px и 512px, а также логотип для заставки.
-- Service worker: Workbox с `registerType: "prompt"`. Новая версия ждет, пока пользователь ее примет.
+- Service worker: Workbox со стратегией автоматического обновления.
 - Кеширование: статические ресурсы кешируются, для маршрутов `/api/*` используется NetworkOnly.
 - Поддержание активности: `lib/keep-alive.ts` использует Web Locks API вместе с пингами через BroadcastChannel, чтобы вкладка не засыпала.
 
 ### Определение расхождения версий
 
-`App.tsx` опрашивает `/api/health` каждые 5 минут. Если версия сервера отличается от версии в кеше клиента, клиент обновляется с помощью `forceRefreshSpa` из `lib/browser-runtime.ts`. Эта функция снимает регистрацию service worker и очищает кеши.
+`App.tsx` опрашивает `/api/health` каждые 5 минут. Если версия сервера отличается от кешированной версии клиента, клиент отменяет регистрацию service worker. Он также очищает кеши, чтобы принудительно обновиться.
 
 ## Система агентов
 
@@ -691,7 +689,7 @@ pnpm build
 ### Лимиты бандла
 
 - Основная точка входа: максимум 1 MB.
-- На каждый фрагмент: `chunkSizeWarningLimit` составляет 512 KB. При превышении порога сборка выводит предупреждение и продолжается.
+- На чанк: максимум 500 КБ.
 - Отдельные пакеты вендоров: react, tanstack, motion, zustand, icons и misc.
 
 ### Псевдоним пути

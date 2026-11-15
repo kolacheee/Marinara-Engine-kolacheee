@@ -29,7 +29,7 @@ Elles fonctionnent en Conversation et en Roleplay.
 | --- | --- |
 | `/help` | Liste toutes les commandes slash. |
 | `/send` | Publie un message au nom de ton persona sans demander de réponse. Les macros sont remplacées, comme avec **Send**. Format : `/send [message]`. |
-| `/continue` | Ajoute du texte à la dernière réponse de l'IA, sans nouveau message. Alias : `/cont`. **Settings → General → Responses → Add a new line before /continue text** (Paramètres → Général → Réponses → ajouter une nouvelle ligne avant le texte de /continue) détermine si le texte commence après une ligne vide ou juste à la coupure. |
+| `/continue` | Ajoute du texte à la dernière réponse de l'IA, sans nouveau message. Alias : `/cont`. **Settings → Chatting → Responses → Add a new line before /continue text** (Paramètres → Chat → Réponses → ajouter une nouvelle ligne avant le texte de /continue) détermine si le texte commence après une ligne vide ou juste à la coupure. |
 | `/goto` | Fait défiler le chat jusqu'à un numéro de message. Alias : `/jump`, `/scroll`. Format : `/goto [number]`. |
 | `/hide` | Masque des messages au modèle pour les tours suivants. Format : `/hide [range] [name (optional)]`. |
 | `/unhide` | Rétablit les messages masqués globalement. Format : `/unhide [range]`. |

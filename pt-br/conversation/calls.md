@@ -2,7 +2,7 @@
 
 Uma chamada é uma tela ao vivo, como em um aplicativo de bate-papo por voz, em que você fala com um ou mais personagens pelo microfone ou digitando. Ela fica sobre o chat normal de Conversation enquanto está em andamento. As chamadas existem só no Conversation Mode.
 
-Calls é um pacote opcional. Instale **Calls** em **Agents → Agent Organizer**. Se o catálogo pedir para reiniciar, pare o Marinara e inicie-o de novo do jeito que você costuma iniciá-lo (veja [Instalação](../INSTALLATION.md)).
+Calls é um pacote opcional. Instale **Calls** em **Biblioteca → Agentes**. Se o catálogo pedir para reiniciar, pare o Marinara e inicie-o de novo do jeito que você costuma iniciá-lo (veja [Instalação](../INSTALLATION.md)).
 
 Durante uma chamada, os personagens com uma voz de Text to Speech (TTS, texto transformado em áudio falado) que funciona falam em voz alta. Os personagens sem voz respondem com mensagens digitadas no chat da chamada. Você também pode mostrar clipes de vídeo em loop, feitos por IA, de um personagem no lugar de um avatar parado.
 
@@ -42,14 +42,13 @@ A chave geral **Commands** na mesma seção precisa estar ativada para os comand
 
 ### Configure o Text to Speech
 
-O Text to Speech decide quais personagens podem falar e com qual voz. Leia [Configuração do Text to Speech (TTS)](../media/tts-setup.md) para o passo a passo completo. Em resumo, abra **Connections**, clique em **Add account** e escolha **Text to speech**. Se ele já está listado em **On this device**, abra-o ali. Depois:
+O Text to Speech decide quais personagens podem falar e com qual voz. Leia [Configuração do Text to Speech (TTS)](../media/tts-setup.md) para o passo a passo completo. Em resumo:
 
-1. Ative o Text to Speech.
-2. Escolha uma fonte: **OpenAI-compatible**, **ElevenLabs**, **PocketTTS** ou **xAI Voice**.
-3. Digite a chave de API ou o endereço do servidor local dessa fonte.
-4. Escolha um modelo e uma voz.
-5. Defina **Voice option** como **One voice for all** ou **Selected per character or persona**. Vozes por personagem deixam as chamadas em grupo mais fáceis de acompanhar.
-6. Salve e depois use o botão de prévia para confirmar que você ouve áudio.
+1. Abra **Conexões** e clique na linha **Voz** da caixa **Padrões**.
+2. Escolha um modelo ou serviço de voz. Escolher um deles ativa a conversão de texto em voz. A conta desse modelo fornece a chave e o endereço.
+3. Clique na engrenagem da linha **Voz** para abrir **Configurações de voz**.
+4. Em **Quem fala**, escolha uma **Voz compartilhada** ou dê vozes próprias a personagens e personas em **Vozes de personagens e personas**. Vozes por personagem deixam as chamadas em grupo mais fáceis de acompanhar.
+5. Clique em **Prévia** para confirmar que você ouve áudio.
 
 Se um personagem não tem uma voz que o Marinara consiga resolver, esse personagem fica só em texto na chamada.
 
@@ -148,7 +147,7 @@ Se não funcionou: em uma versão Lite do Marinara, você vê "Local Whisper is 
 
 Se o Local Whisper tem dificuldade com o seu idioma ou sotaque, envie a sua voz a outro servidor de speech-to-text. Qualquer servidor que aceite o formato de speech-to-text da OpenAI (o endereço `/audio/transcriptions`) funciona, seja um que você mesmo executa ou um serviço como OpenAI ou Groq.
 
-1. Abra **Connections** e abra **Speech to text** em **On this device**. Se ele não está listado, clique em **Add account** e escolha **Speech to text**. Ele fica escondido enquanto o Calls não está instalado.
+1. Abra **Conexões** e clique na engrenagem da linha **Ditado** da caixa **Padrões**. As configurações do servidor de **Conversão de fala em texto** ficam ali. Elas ficam escondidas enquanto o Calls não está instalado.
 2. Digite a **Server URL**, por exemplo `http://localhost:8000/v1`.
 3. Digite uma **API key** se o servidor precisar de uma. Ela é salva criptografada e mostrada mascarada.
 4. Digite o nome do **Model** que o seu servidor usa. Deixe vazio para enviar `whisper-1`.
@@ -160,7 +159,7 @@ Enquanto ele está ativado, **Mic recording + Local Whisper** envia a sua fala a
 
 Um servidor no mesmo computador funciona sem mais nada. Um servidor em outro computador da sua rede é recusado, a menos que você defina `STT_LOCAL_URLS_ENABLED=true` no `.env` (veja a [Referência de configuração do servidor](../CONFIGURATION.md)).
 
-Se não funcionou: leia a mensagem abaixo de **Test**. "Could not reach the speech-to-text server" significa que o endereço está errado ou o servidor está desligado. Uma mensagem que cita `STT_LOCAL_URLS_ENABLED` significa que o servidor está em outro computador. Um número vem do seu servidor: 401 normalmente significa uma chave de API errada, 404 um endereço ou nome de modelo errado. Se as chamadas ainda usam o Local Whisper, atualize o Calls em **Agents → Agent Organizer**.
+Se não funcionou: leia a mensagem abaixo de **Test**. "Could not reach the speech-to-text server" significa que o endereço está errado ou o servidor está desligado. Uma mensagem que cita `STT_LOCAL_URLS_ENABLED` significa que o servidor está em outro computador. Um número vem do seu servidor: 401 normalmente significa uma chave de API errada, 404 um endereço ou nome de modelo errado. Se as chamadas ainda usam o Local Whisper, atualize o Calls em **Biblioteca → Agentes**.
 
 ## Configurações e padrões
 

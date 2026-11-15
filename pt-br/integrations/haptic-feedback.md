@@ -76,7 +76,7 @@ O botão liga/desliga **Incidental contact** (contato incidental), que diz "Tiny
 
 Por padrão, Marinara só aceita comandos táteis do computador que roda o servidor do Marinara. Isso mantém o controle do dispositivo privado. Por isso, o feedback tátil não funciona quando você abre Marinara pelo celular ou por outro dispositivo que acessa um servidor em outro lugar. As ações de conectar, procurar e comandar são recusadas.
 
-Para liberar isso, ative a configuração de servidor `HAPTICS_ALLOW_REMOTE` e configure uma proteção de acesso: um login ou um segredo de administrador. Veja a [Referência de configuração do servidor](../CONFIGURATION.md) e o guia [Acesso remoto](../REMOTE_ACCESS.md). O acesso de administrador é informado em **Settings → Advanced → Admin Access** (Configurações → Avançado → acesso de administrador).
+Para liberar isso, ative a configuração de servidor `HAPTICS_ALLOW_REMOTE` e configure uma proteção de acesso: um login ou um segredo de administrador. Veja a [Referência de configuração do servidor](../CONFIGURATION.md) e o guia [Acesso remoto](../REMOTE_ACCESS.md). O acesso de administrador é informado em **Settings → Advanced → Security** (Configurações → Avançado → Segurança).
 
 ## Se algo não estiver funcionando
 

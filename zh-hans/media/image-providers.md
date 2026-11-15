@@ -6,13 +6,13 @@
 
 API 密钥是服务给你的一串秘密代码，Marinara 靠它使用你的账号。每个服务的网址都由 Marinara 自动填好，所以很少需要自己输入。
 
-1. 点击顶栏里的 **Connections**(连接)，再点击 **Add**(添加)。**Add account**(添加账号) 窗口随即打开。
-2. 找到要用的服务。列表里有 **Images & video**(图像与视频) 分区，也可以用 **Search providers**(搜索服务商) 查找。
+1. 打开 **Library → Connections**(资料库 → 连接)，点击 **Add connection**(添加连接)。服务列表随即打开。
+2. 打开 **Image**(图像) 选项卡，找到要用的服务。可以用 **Search services**(搜索服务) 查找。
 3. 把密钥粘贴到 **API key**(API 密钥) 输入框。免费服务和本地服务不需要密钥。如果是你自己运行的服务器，就填好地址字段。
 4. 点击 **Connect**(连接)。Marinara 会测试这个账号。
 5. 从列表里选一个图像模型，或者输入模型 ID。这就是你的图像模型，它会显示在 **Connections** 面板里这个账号的下方。
 6. 打开这个图像模型，点击 **Test image**(测试图像)。Marinara 会生成一张小尺寸的测试图。
-7. 要让应用用它来出图，在 **Connections** 面板顶部的 **Defaults**(默认值) 下设置 **Images**(图像) 这项工作。
+7. 在第 5 步勾选 **Images**，也会设置 **Connections** 面板顶部 **Defaults**(默认值) 框里的 **Images**(图像) 这项工作。之后要更改，点击 **Images** 那一行。
 
 要给某个账号再添加一个图像模型，打开它的 **⋯** 菜单，点击 **Add image model**(添加图像模型)。窗口的完整说明见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
 
@@ -220,7 +220,7 @@ NovelAI 的精确参考图只能在 V4.5 模型上使用，比如 `nai-diffusion
 
 ## 媒体生成请求排队
 
-**Queue media generation requests**(媒体生成请求排队) 开关位于 **Settings → Generations → Overall Generations**(设置 → 生成 → 总体生成)。默认开启。
+**Queue media generation requests**(媒体生成请求排队) 开关位于 **Settings → Media → Generation Defaults**(设置 → 媒体 → 生成默认设置)。默认开启。
 
 开启时，Marinara 用两条独立的队列：每个图像账号的图像任务一次只发一个，每个视频账号的视频任务也一次只发一个。同一个账号的图像和视频可以同时进行。所有会请求图像或视频的功能都适用：Illustrator、追踪器、命令、Gallery、Game 素材，以及 Slurp 等下载的智能体。地址和 API 密钥都相同的两个模型共用一条队列。不同的账号仍然可以同时工作。NovelAI 的任务之间还会稍作停顿；NovelAI 回复正忙时，Marinara 会等一会儿再重试两次。
 
@@ -231,6 +231,6 @@ NovelAI 的精确参考图只能在 V4.5 模型上使用，比如 `nai-diffusion
 - [ComfyUI 工作流设置](comfyui.md)
 - [Illustrator 智能体](illustrator-agent.md)
 - [图像风格方案](style-profiles.md)
-- [场景背景与 Gallery 面板](scene-backgrounds.md)
+- [Illustrator 生成的背景](scene-backgrounds.md)
 - [自拍](../conversation/selfies.md)
 - [支持的 AI 服务商](../connections/providers-reference.md)

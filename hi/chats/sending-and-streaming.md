@@ -15,7 +15,7 @@
 
 ### Send on Enter
 
-यह **Settings → General → Input & Editing** (सेटिंग्स → जनरल → इनपुट और एडिटिंग) में मिलता है। हर चैट मोड के लिए एक अलग टॉगल है।
+यह **Settings → Chatting → Message Box** (सेटिंग्स → चैटिंग → संदेश बॉक्स) में मिलता है। हर चैट मोड के लिए एक अलग टॉगल है।
 
 | चैट मोड | डिफ़ॉल्ट | बंद होने पर |
 | --- | --- | --- |
@@ -23,7 +23,7 @@
 | Conversations | चालू | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (Mac पर <kbd>Cmd</kbd>+<kbd>Enter</kbd>) से संदेश जाता है। |
 | Game | चालू | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (Mac पर <kbd>Cmd</kbd>+<kbd>Enter</kbd>) से संदेश जाता है। |
 
-Roleplay में यह डिफ़ॉल्ट रूप से बंद है, क्योंकि रोलप्ले के संदेश अक्सर लंबे होते हैं और उनमें लाइन ब्रेक चाहिए। Professor Mari का अपना टॉगल है, **Enter sends to Professor Mari** (Enter से Professor Mari को भेजें), जो **Settings → General → Search and Professor Mari settings** (सेटिंग्स → जनरल → Search और Professor Mari सेटिंग्स) में है।
+Roleplay में यह डिफ़ॉल्ट रूप से बंद है, क्योंकि रोलप्ले के संदेश अक्सर लंबे होते हैं और उनमें लाइन ब्रेक चाहिए। Professor Mari का अपना टॉगल है, **Enter sends to Professor Mari** (Enter से Professor Mari को भेजें), जो **Settings → General → Professor Mari** (सेटिंग्स → जनरल → Professor Mari) में है।
 
 ## इमेज और फ़ाइलें अटैच करना
 
@@ -49,7 +49,7 @@ Roleplay में चैट का ऐसेट ब्राउज़र आप
 
 ## जवाब की स्ट्रीमिंग
 
-स्ट्रीमिंग में पूरा जवाब एक साथ आने के बजाय शब्द-दर-शब्द दिखता है। ये सेटिंग्स **Settings → General → Responses** (सेटिंग्स → जनरल → रिस्पॉन्स) में हैं।
+स्ट्रीमिंग में पूरा जवाब एक साथ आने के बजाय शब्द-दर-शब्द दिखता है। ये सेटिंग्स **Settings → Chatting → Responses** (सेटिंग्स → चैटिंग → रिस्पॉन्स) में हैं।
 
 | सेटिंग | डिफ़ॉल्ट | यह क्या करती है |
 | --- | --- | --- |

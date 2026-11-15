@@ -1,32 +1,30 @@
-# チャットの背景
+# 背景ライブラリー
 
-背景ライブラリーには、自分でアップロードし、手動で選んでチャットの後ろに表示する画像が入っています。毎ターン自動で背景を選ぶ**Background**エージェントについては、[Roleplayの背景](../roleplay/backgrounds.md)を参照してください。ギャラリーから作るAI生成の背景については、[シーン背景とギャラリー](../media/scene-backgrounds.md)を参照してください。
+背景ライブラリーには、チャットの後ろに表示できるすべての画像が入っています。自分でアップロードした画像、Illustratorが描いた画像、Marinaraに同梱されている画像が対象です。このガイドでは、チャット用の画像の選択、インポート、タグ付け、フォルダー、Roleplayのデフォルト背景、**Background Blur**(背景のぼかし)を説明します。
 
-チャットの背景は、すべてのチャットモードで表示されます。Conversationのチャットでは、**Conversation Theme**(Conversationのテーマ)のグラデーションが画像の上に重なったままになり、**Conversation background image opacity**(Conversationの背景画像の不透明度)で画像をどのくらい強く表示するかを決めます。[外観の設定](appearance-settings.md)を参照してください。
+物語に合わせて変わる背景(Backgroundエージェント、ピン留めした場所、キャラクターに付いてくる画像)については、[物語に合わせて変わる背景](../roleplay/backgrounds.md)を参照してください。雨や雪の差分を含む、Illustratorが描く画像については、[Illustratorが作る背景](../media/scene-backgrounds.md)を参照してください。
 
-## チャットの背景を変える
+チャットの背景は、すべてのチャットモードで表示されます。Conversationのチャットでは、**Conversation Background**(Conversationの背景)のグラデーションが画像の上に重なったままになり、**Conversation background image opacity**(Conversationの背景画像の不透明度)で画像をどのくらい強く表示するかを決めます。[外観の設定](appearance-settings.md)を参照してください。
 
-始める前に: 変更したいチャットを開いてください。選んだ背景はそのチャットに適用されます。
+## 開く場所
 
-1. **Settings**(設定)を開き、**Appearance**(外観)、**App**(アプリ)ボタンの順に進みます。
-2. **Backgrounds**(背景)で**Browse library**(ライブラリーを見る)をタップします。
-3. 画像をタップします。その画像がこのチャットの背景になり、ウィンドウが閉じます。
+**Settings → Appearance**(設定 → 外観)を開き、**Backgrounds**(背景)セクションを探します。ここには、**Chat Background**(チャットの背景)ピッカー、**Background Blur**(背景のぼかし)スライダー、**Conversation background image opacity**(Conversationの背景画像の不透明度)と**Chat List Backgrounds**(チャット一覧の背景)の設定があります。
+
+ピッカーには現在の背景のプレビューが表示されます。何も選んでいないときは**Default background**と表示されます。その下には**Recent**(最近)の背景が最大3つ並び、1回タップするだけで選べます。**Browse library**(ライブラリーを見る)で**Background Library**(背景ライブラリー)ウィンドウが開きます。チャット内では、**Chat Settings → Background**(チャット設定 → 背景)で、そのチャット用の同じライブラリーが開きます。
+
+## チャットの背景を選ぶ
+
+始める前に: 変更したいチャットを開いてください。選んだ画像はそのチャットだけに適用されます。
+
+1. **Settings → Appearance → Backgrounds**(設定 → 外観 → 背景)を開き、**Browse library**(ライブラリーを見る)をクリックします。
+2. 画像をクリックします。チェックマークが付き、その画像がこのチャットの背景になって、ウィンドウが閉じます。
+3. デフォルトに戻すには、選択中の画像をもう一度クリックするか、プレビューのX(**Clear selection**(選択をクリア))をクリックします。
 
 自分の画像を使うには、先にインポートしてください([背景のインポート](#import-a-background)を参照)。
 
-## 背景の場所
-
-1. **Settings**(設定)を開きます。
-2. **Appearance**(外観)タブを選び、**App**(アプリ)ボタンを選びます。
-3. **Backgrounds**(背景)セクションを探します。
-
-このセクションには、**Chat Background**(チャットの背景)ピッカー、**Background Blur**(背景のぼかし)スライダー、**Conversation background image opacity**と**Chat List Backgrounds**(チャット一覧の背景)の設定があります([外観の設定](appearance-settings.md)を参照)。
-
-ピッカーには現在の背景のプレビューが表示されます。何も選んでいないときは**Default background**と表示されます。その下には**Recent**(最近)の背景が最大3つ並び、1回タップするだけで選べます。**Browse library**(ライブラリーを見る)をクリックすると、**Background Library**(背景ライブラリー)ウィンドウが開きます。
-
 ## 背景ライブラリー
 
-ライブラリーには、自分でアップロードした画像と、Marinaraに同梱されている画像が混在します。画像にはそれぞれラベルが付きます。
+ライブラリーには、自分でアップロードした画像やIllustratorが描いた画像と、Marinaraに同梱されている画像が混在します。画像にはそれぞれラベルが付きます。
 
 | ラベル | 意味 |
 | --- | --- |
@@ -34,8 +32,6 @@
 | **Game asset** | 同梱の画像です。読み取り専用で、名前の変更、タグ付け、削除はできません。 |
 
 **Filter by source**(提供元で絞り込む)には**All sources**、**My uploads**、**Game assets**のボタンがあり、それぞれに含まれる画像の数が表示されます。
-
-<a id="import-a-background"></a>
 
 ### 背景のインポート
 
@@ -46,12 +42,6 @@
 新しい画像は、**My upload**ラベル付きでグリッドに並びます。
 
 ファイルはJPG、PNG、GIF、WebP、AVIFのいずれかで、1ファイルあたり20 MBまでです。Marinaraはファイル名ではなく、ファイルの中身を確認します。画像以外のファイルの名前を`.png`に変えても、拒否されます。
-
-### 開いているチャットの背景を選ぶ
-
-1. **Browse library**を開きます。
-2. サムネイルをクリックします。チェックマークが付き、その画像がこのチャットの背景になって、ウィンドウが閉じます。
-3. デフォルトに戻すには、選択中のサムネイルをもう一度クリックするか、プレビューのX(**Clear selection**(選択をクリア))をクリックします。
 
 ### 検索と絞り込み
 
@@ -91,7 +81,9 @@
 
 タグを外すには、タグの編集中にそのタグをクリックします。
 
-<a id="download-a-background"></a>
+タグは小文字で、文字、数字、スペース、ハイフン、アンダースコアを使えます。1つにつき40文字までです。
+
+`guest bedroom`や`harbor tavern`のように、画像に描かれた場所をタグにしてください。**Background**エージェントは選ぶときにタグを読みます。また、2語以上のタグが物語の場所を示していれば、Illustratorは新しく描かずにその画像を再利用します。[手持ちの画像の再利用](../media/scene-backgrounds.md#reusing-pictures-you-already-have)を参照してください。
 
 ### 背景をダウンロードする
 
@@ -136,6 +128,6 @@ Roleplayのデフォルト背景とは、新しいRoleplayチャットが最初�
 
 ## 関連ガイド
 
-- [Roleplayの背景](../roleplay/backgrounds.md): 毎ターン背景を選ぶBackgroundエージェント。
-- [シーン背景とギャラリー](../media/scene-backgrounds.md): ギャラリーで作るAI生成のシーン背景。これもこのライブラリーに入ります。
+- [物語に合わせて変わる背景](../roleplay/backgrounds.md): Backgroundエージェント、ピン留めした場所、ギャラリーの背景。
+- [Illustratorが作る背景](../media/scene-backgrounds.md): 描かれた背景と天候の差分。これもこのライブラリーに入ります。
 - [外観の設定](appearance-settings.md): Appearanceタブの全体。

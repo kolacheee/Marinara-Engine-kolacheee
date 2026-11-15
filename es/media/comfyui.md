@@ -14,15 +14,13 @@ Puede que un modelo de lenguaje local y un modelo de imagen no quepan al mismo t
 
 ## Crear la conexión de Marinara
 
-1. Haz clic en **Connections** (Conexiones) y luego en **Add** (Añadir). En la ventana **Add account** (Añadir cuenta), elige **ComfyUI** para un servidor local o **RunPod Serverless (ComfyUI)** para un endpoint de RunPod, en **Images & video** (Imágenes y video).
-2. Para ComfyUI local, ingresa su dirección (`http://127.0.0.1:8188`). No se necesita API key (clave de API), a menos que un proxy delante de ComfyUI la pida (consulta [Usar un proxy con autenticación](#use-an-authenticated-proxy)). Con el campo **ComfyUI workflow (optional)** (Flujo de trabajo de ComfyUI: opcional) vacío, Marinara usa un flujo de trabajo básico integrado de texto a imagen.
+1. Abre **Library → Connections** (Biblioteca → Conexiones) y haz clic en **Add connection** (Añadir conexión). En la pestaña **Image** (Imagen), elige **ComfyUI** para un servidor local o **RunPod Serverless (ComfyUI)** para un endpoint de RunPod.
+2. Para ComfyUI local, ingresa su dirección (`http://127.0.0.1:8188`). No se necesita API key (clave de API), salvo que un proxy delante de ComfyUI la pida (consulta [Usar un proxy autenticado](#use-an-authenticated-proxy)). Con el campo **ComfyUI workflow (optional)** (Flujo de trabajo de ComfyUI: opcional) vacío, Marinara usa un flujo de trabajo básico integrado de texto a imagen.
 3. Para RunPod, ingresa tu API key y el **RunPod endpoint ID** (ID del endpoint de RunPod). Se requiere un flujo de trabajo personalizado.
 4. Configura **Local image defaults** (Valores predeterminados de imagen local) en el modelo de imagen. Estos valores reemplazan los marcadores de posición correspondientes en tu flujo de trabajo.
 5. Pega el flujo de trabajo, guarda y haz clic en **Test image** (Probar imagen).
 
 Si no funcionó, consulta [Solución de problemas](#troubleshooting).
-
-<a id="use-an-authenticated-proxy"></a>
 
 ## Usar un proxy con autenticación
 
@@ -46,8 +44,6 @@ ComfyUI en sí no tiene inicio de sesión. Cuando un proxy delante de ComfyUI pi
 7. Abre el archivo `.json` exportado en un editor de texto.
 
 Un flujo de trabajo en formato API es diferente del flujo de trabajo normal del editor visual. Sus claves de nivel superior son IDs de nodo, y cada nodo normalmente contiene `class_type` e `inputs`. Exporta la versión API; no pegues el archivo del flujo de trabajo normal que contiene el diseño visual del editor.
-
-<a id="comfyui-video-workflows"></a>
 
 ## Flujos de trabajo de video de ComfyUI
 
@@ -167,8 +163,6 @@ Los flujos de trabajo de RunPod admiten los marcadores de posición de base64 si
 Puedes crear un flujo de trabajo exportado aparte y una conexión de imagen de Marinara para cada personaje que necesite un checkpoint concreto, una pila de LoRA, una configuración de ControlNet o un diseño de imagen de referencia particular. Selecciona el modelo de imagen correspondiente donde ese personaje o función de imagen te permita elegir uno.
 
 Esto puede dar resultados más consistentes que un solo flujo de trabajo genérico, pero cada modelo sigue teniendo su propia copia del JSON. Después de cambiar el flujo de trabajo de un personaje en ComfyUI, repite los pasos de exportar, editar, copiar y pegar para esa conexión.
-
-<a id="troubleshooting"></a>
 
 ## Solución de problemas
 

@@ -1,110 +1,111 @@
-# 장면 배경과 Gallery
+# Illustrator가 만드는 배경
 
-AI가 생성하는 장면 배경은 Marinara Engine이 **Gallery**(갤러리)에서 만드는 배경 이미지입니다. 이 가이드에서는 배경을 만드는 방법, Gallery에 담기는 것, 이미지를 다시 그리거나 검토하는 방법을 설명합니다. 직접 골라 쓰는 업로드 라이브러리는 [채팅 배경](../appearance/chat-backgrounds.md)을, 턴마다 배경을 골라 주는 에이전트는 [Roleplay 배경](../roleplay/backgrounds.md)을 참고하세요.
+**Illustrator** 에이전트는 이야기에 쓸 배경을 그릴 수 있습니다. 요청할 때 한 번, 이야기가 새로운 장소에 도착할 때마다, 날씨가 바뀌면 비나 눈, 안개가 낀 배경을 만듭니다. 이 가이드에서는 이 세 가지와 Illustrator가 새로 그리는 대신 이미 가진 그림을 재사용하는 방법을 설명합니다.
 
-## 장면 배경을 쓸 수 있는 곳
+직접 업로드하고 고르는 그림은 [배경 라이브러리](../appearance/chat-backgrounds.md)를 참고하세요. 채팅에서 표시할 그림을 고르는 방식(Background 에이전트, 고정된 장소, 갤러리 그림)은 [이야기를 따라 바뀌는 배경](../roleplay/backgrounds.md)을 참고하세요.
 
-장면 배경은 Roleplay(롤플레이)와 Game Mode(게임 모드)에서 쓸 수 있습니다. Conversation(대화)에서는 쓸 수 없습니다. Conversation에서 생성을 시도하면 다음 메시지가 표시됩니다.
+## 시작하기 전에
 
-```
-Scene background generation is available in Roleplay and Game modes.
-```
+- **Library → Agents**(라이브러리 → 에이전트)에서 **Illustrator**를 설치하세요. [Illustrator 에이전트](illustrator-agent.md)를 참고하세요.
+- 이미지 모델을 지정하세요. Connections 페이지의 **Defaults**(기본값) 상자에서 **Images**(이미지) 작업을 설정하거나, Illustrator의 **Open Setup**(설정 열기) 화면에서 모델을 고르세요. [이미지 생성 제공자와 설정](image-providers.md)을 참고하세요.
 
-시작하기 전에: 이미지 모델이 필요합니다. 아직 없다면 먼저 설정하세요. [이미지 생성 제공자와 설정](image-providers.md)을 참고하세요.
+생성한 배경은 Roleplay(롤플레이)와 Game Mode(게임 모드) 채팅에서 쓸 수 있으며 Conversation(대화)에서는 쓸 수 없습니다. Conversation에서는 "Scene background generation is available in Roleplay and Game modes."라는 메시지가 표시됩니다.
 
-## Gallery에서 배경 생성하고 적용하기
+## 지금 배경 그리기
 
-**Gallery**에는 채팅의 이미지와 동영상이 모여 있습니다. **Chat Settings**(채팅 설정)의 한 섹션입니다. 컴퓨터에서는 별도 창으로 꺼낼 수 있습니다([채팅 설정 개요](../chats/chat-settings.md#popping-a-section-out-into-its-own-window) 참고). **Background**(배경) 버튼은 현재 장면에 맞는 배경 그림을 만듭니다.
+1. 채팅의 슬라이더 버튼으로 **Chat Settings**(채팅 설정)를 열고 **Gallery**(갤러리)를 펼치세요.
+2. **Background**(배경)를 클릭하세요. 작업 중에는 **Generating...**이 표시됩니다.
+3. 작업이 끝나면 새 그림이 배경 라이브러리에 추가되고 채팅 뒤에 표시됩니다. "Background generated." 메시지로 완료를 알려 줍니다.
 
-Roleplay에서는 **Illustrator** 에이전트를 설치하기만 하면 **Background** 버튼이 나타납니다. Illustrator를 채팅에 추가하거나 에이전트를 켤 필요는 없습니다. **Illustrate**(이미지 생성) 버튼과 마찬가지로 한 번만 실행되며 자동 실행을 시작하지 않습니다.
+이 작업을 위해 Illustrator를 채팅에 추가할 필요는 없습니다. 한 번만 실행되며 자동 실행을 시작하지 않습니다.
 
-배경을 생성하는 방법은 다음과 같습니다.
+Marinara는 장면을 바탕으로 프롬프트를 만듭니다. 게임에서는 장르, 설정, 장소, 날씨, 시간대가 포함됩니다. 그림에는 **Backgrounds**(배경) 캔버스 크기가 적용되며, **Settings → Media → Image Generation**(설정 → 미디어 → 이미지 생성)에서 바꾸지 않으면 1280 x 720픽셀입니다.
 
-1. **Chat Settings**의 **Gallery** 섹션을 여세요.
-2. **Background** 버튼을 클릭하세요.
-3. 이미지를 만드는 동안 버튼 이름이 **Generating...**으로 바뀝니다.
-4. "AI background generation is running. The new background will be applied when it finishes."라는 상태 메시지가 표시됩니다.
-5. 생성이 끝나면 새 이미지가 현재 장면에 곧바로 적용되고, "Background generated." 메시지로 완료를 알려 줍니다.
+작동하지 않는 경우: "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection."은 이미지 모델을 찾지 못했다는 뜻입니다. **시작하기 전에**에서 설명한 대로 모델을 설정하세요. **Background** 버튼이 없으면 Illustrator가 설치되지 않은 것입니다.
 
-배경은 현재 장면을 바탕으로 만듭니다. 게임에서는 장르, 설정, 장소, 날씨, 시간대까지 반영합니다. 생성한 배경에는 **Backgrounds** 캔버스 크기가 적용되며, 기본값은 1280 x 720 픽셀입니다. 이 크기는 **Settings**(설정) → **Generations**(생성) → **Image Generation**(이미지 생성)에서 바꿀 수 있습니다.
+## 새로운 장소마다 새 배경 만들기
 
-작동하지 않는 경우: Marinara가 사용할 이미지 모델을 찾지 못하면 이 단계가 실패하고 다음 메시지가 표시됩니다.
+이 기능을 켜면 이야기가 배경 없는 장소에 도착할 때 Illustrator가 배경을 그려 라이브러리에 저장하고 표시합니다.
 
-```
-Choose an image generation connection for the Illustrator agent, or mark one as the default image connection.
-```
+1. 채팅에 **Illustrator**를 추가하세요. **Chat Settings → Agents**(채팅 설정 → 에이전트)에서 **Enable Agents**(에이전트 활성화)를 켠 다음 **Misc Agents**(기타 에이전트)에서 **Illustrator**를 추가하세요.
+2. **Illustrator** 카드에서 **Generate Scene Backgrounds**(장면 배경 생성)를 켜세요.
 
-해결하려면 **Connections**(연결) 패널의 **Defaults**(기본값)에서 **Images**(이미지) 작업을 지정하거나, **Illustrator** 에이전트에 이미지 모델을 따로 지정하세요.
+Illustrator는 **Image Run Interval**(이미지 실행 간격)에 따라 장면을 확인합니다(바꾸지 않으면 메시지 5개마다). 답변마다 확인하게 하려면 [Decision 모델 확인](#check-every-reply-with-a-decision-model)을 쓰세요. Game Mode에서는 **Game Illustrator** 스위치가 배경에도 적용됩니다.
 
-## Gallery 섹션
+### 이미 가진 그림 재사용하기
 
-**Gallery**에는 **Images**와 **Videos**(동영상) 두 개의 탭이 있습니다. 각 탭에는 담긴 항목 수가 함께 표시됩니다. **Videos** 탭에는 Roleplay와 Game 채팅의 장면 동영상, Conversation 채팅의 동영상 메시지가 담깁니다.
+Illustrator는 새 장소를 그리기 전에 이미 가진 그림을 다음 순서로 찾습니다.
 
-섹션 위쪽의 동작 버튼은 그 기능을 현재 채팅에서 쓸 수 있을 때만 나타납니다.
+1. 채팅이나 캐릭터 갤러리에서 그 장소에 고정한 배경입니다. [장소에 배경 고정하기](../roleplay/backgrounds.md#pin-a-background-to-a-place)를 참고하세요.
+2. 이름이나 두 단어 이상의 태그가 World State의 장소에 포함된 라이브러리 그림입니다. 예를 들어 `generated-guest-bedroom.png`나 `guest bedroom` 태그가 붙은 그림은 "Smith House, guest bedroom"에 쓰입니다.
+3. World State에 장소가 없으면 Illustrator의 프롬프트 모델이 쓴 장소 이름을 같은 방식으로 비교합니다.
 
-- **Illustrate**: Illustrator 에이전트를 실행해 장면 이미지를 한 장 만듭니다. [Illustrator 에이전트](illustrator-agent.md)를 참고하세요.
-- **Selfie**(셀카): Conversation에서 캐릭터의 셀카를 생성합니다.
-- **Background**: 위에서 설명한 대로 장면 배경을 생성하고 적용합니다.
-- **Video**(비디오): 가장 최근 삽화로 장면 동영상을 만듭니다. Conversation에서는 대신 캐릭터의 동영상 메시지를 보냅니다. [동영상 메시지](../conversation/selfies.md#video-messages)를 참고하세요.
-- **Create storyboard**(스토리보드 만들기): Storyboard가 켜져 있을 때 가장 최근 Game Mode 턴이나 완료된 Roleplay 에피소드의 키프레임을 생성합니다.
-- **Browse Images**(이미지 찾아보기): 저장해 둔 이미지를 골라 넣을 수 있는 브라우저를 엽니다.
-- **View storyboard**(스토리보드 보기): 가장 최근 Game Mode 스토리보드를 엽니다.
+맞는 그림이 있으면 그 그림을 표시하고(이야기의 날씨에 맞는 버전이 있으면 그 버전으로) 새로 그리지 않습니다. 맞는 그림이 없는 장소에만 새 그림을 만듭니다. 업로드한 그림에 장소 이름을 태그로 붙이는 것이 이미지 요청을 줄이는 가장 쉬운 방법입니다([배경에 태그 달기](../appearance/chat-backgrounds.md#tag-a-background) 참고).
 
-버튼 아래에는 **Upload Images**(이미지 업로드) 드롭존이 있습니다. 여기에 이미지를 끌어다 놓으면 직접 준비한 그림을 이 채팅의 Gallery에 추가할 수 있습니다.
+## 날씨별 배경
 
-### 이미지별 동작
+이 기능을 켜면 배경이 이야기의 날씨를 따릅니다. 여관에 비가 내리기 시작하면 Illustrator가 여관 배경을 창문에 비가 내리는 모습으로 다시 그립니다. 실내에서는 움직이는 비가 유리창 뒤에만 내리며 방 안에는 내리지 않습니다.
 
-**Images** 탭에서 이미지 위에 포인터를 올리거나, 모바일에서는 이미지를 탭하면 사용할 수 있는 동작이 나타납니다.
+1. **Chat Settings → Agents → Illustrator**를 여세요.
+2. **Weather Versions of Backgrounds**를 켜세요.
 
-- 이미지를 원래 크기로 열기(**Open gallery image**).
-- **Pin to chat**(채팅에 고정): 이미지를 떠 있는 그림으로 채팅에 고정합니다. 끌어서 옮기고 모서리 핸들로 크기를 바꿀 수 있습니다. 이 브라우저에서 페이지를 다시 불러와도 위치와 크기가 유지됩니다. 닫기 버튼 옆의 잠금 버튼을 누르면 잠금을 풀 때까지 옮기거나 크기를 바꿀 수 없습니다.
-- **Download image**(이미지 다운로드): 이미지를 기기에 저장합니다.
-- **Animate illustration**(삽화 애니메이션 만들기): 그 이미지를 장면 동영상으로 만듭니다.
-- **Copy prompt**(프롬프트 복사): 저장된 이미지 프롬프트를 복사합니다. 저장된 프롬프트가 없으면 **No prompt saved**로 표시되고 사용할 수 없습니다.
-- **Delete gallery image**(갤러리 이미지 삭제): 확인을 거친 뒤 이미지를 삭제합니다.
+그림을 입력받아 시작할 수 있는 이미지 모델이 필요합니다. OpenAI, Gemini, NovelAI, 이미지 입력이 있는 ComfyUI를 비롯해 대부분의 모델이 지원합니다. 지원하지 않는 모델이면 그림은 그대로 유지됩니다.
 
-<a id="regenerating-an-image"></a>
+동작 방식은 다음과 같습니다.
 
-### 이미지 다시 만들기
+- 각 그림과 날씨 조합은 **한 번**만 그립니다. 날씨가 다시 바뀌거나 이야기가 비 오는 여관으로 돌아오면 저장된 버전을 비용 없이 다시 표시합니다.
+- 해당 버전은 원본 옆에 `name--wx-rain.png`로 저장됩니다. 다른 종류는 `storm`, `snow`, `blizzard`, `hail`, `fog`, `sand`, `ash`, `embers`, `blossom`, `aurora`이며, 처음부터 궂은 날씨로 만든 그림에서 비나 눈이 없는 사본을 만들 때는 `clear`를 씁니다. 특이한 날씨는 이야기에서 쓴 표현으로 버전을 만듭니다. 유성우는 `name--wx-meteor-shower.png`입니다.
+- 쾌청하거나 맑거나 흐리거나 바람이 부는 날씨와 그 밖의 가벼운 날씨에는 기본 그림을 유지합니다.
+- 날씨는 **World State** 에이전트나 아래의 Decision 모델 확인에서 읽습니다.
+- 직접 골랐든, Background 에이전트가 골랐든, Illustrator가 그렸든 라이브러리의 모든 배경에 적용됩니다. 고정된 장소와 캐릭터를 따라 바뀌는 갤러리 배경에도 적용됩니다. **Background** 에이전트는 기본 그림 중에서 고르며, 맞는 날씨 버전이 있으면 그 버전이 표시됩니다.
 
-생성된 이미지를, 그 이미지가 속한 응답을 재생성하지 않고 다시 만들 수 있습니다. 삽화, 셀카, 스토리보드 프레임처럼 프롬프트가 저장되어 있는, 채팅 Gallery의 이미지에서 쓸 수 있습니다.
+### 창문: 움직이는 날씨가 표시되는 곳
 
-1. Gallery나 이미지가 들어 있는 메시지에서 이미지를 원래 크기로 여세요.
-2. **Regenerate image**(이미지 재생성)를 클릭하세요(그림 오른쪽 위의 원형 화살표 버튼).
-3. 그림 아래 입력란에서 바꾸고 싶은 내용을 바꾸세요. **Prompt**(프롬프트), **Negative prompt**(부정 프롬프트), 이미지에 캐릭터 프롬프트가 있었다면 **Character prompts**(캐릭터 프롬프트) 아래의 캐릭터별 입력란, 그리고 이미지 모델이 있습니다.
-4. **Generate image**(이미지 생성)를 클릭하세요. 이미지를 그대로 두려면 **Cancel**(취소)을 클릭하세요.
+실내 그림의 날씨 버전을 처음 만들 때 Illustrator는 이미지 모델에 그림 속 창문의 위치도 묻습니다. 답은 작은 흑백 마스크로 저장하며, 그 방의 모든 날씨 버전이 공유합니다. 움직이는 날씨(빗줄기, 눈송이, 꽃잎)는 유리창에만 그려집니다.
 
-새 이미지가 메시지의 예전 이미지를 대신합니다. 예전 이미지는 Gallery에 남으므로 다시 고정할 수 있습니다. 참조 그림은 캐릭터의 현재 아바타로 다시 보냅니다. 일부 예전 이미지는 부정 프롬프트와 캐릭터 프롬프트를 저장하지 않았으며, 그런 경우 편집기에 그 사실이 표시됩니다.
+- 창문 없는 방에는 움직이는 날씨 없이 날씨에 따른 색감과 번개 섬광만 나타납니다.
+- 오로라, 유성우처럼 떨어지는 것이 없는 날씨는 정지된 상태로 유지됩니다. 그림에는 보이지만 그 위로 움직이는 효과는 없습니다.
+- 마스크는 데이터 폴더의 `backgrounds/weather-masks`에 보관됩니다.
 
-## 전송 전에 프롬프트 확인하기
+### 날씨 그림이나 창문 다시 만들기
 
-Marinara가 이미지 서비스에 배경 요청을 보내기 전에 프롬프트를 확인하고 고칠 수 있습니다.
+채팅에 날씨 버전이 표시되는 동안 **Chat Settings → Agents → Illustrator**의 **Weather Versions of Backgrounds** 아래에는 **This rain picture**처럼 날씨 이름이 붙은 행이 나타납니다.
 
-1. **Settings** → **Generations** → **Overall Generations**(전체 생성)를 여세요.
+- **Remake picture**는 기본 그림에서 이 날씨 버전을 다시 그립니다.
+- **Remake windows**는 이미지 모델에 창문 마스크를 다시 요청합니다. 비가 쿠션 위에 내리거나 창문에 내리지 않을 때 쓰세요.
+- **No moving weather**는 이 방의 마스크를 끕니다. 이 방의 날씨 버전에는 날씨에 따른 색감과 번개만 나타납니다. **Remake windows**로 다시 켤 수 있습니다.
+
+작동하지 않는 경우: 채팅의 World State에 **Weather**(날씨)가 표시되는지(또는 아래의 날씨 확인을 켰는지), **Illustrator**가 이미지 모델과 함께 채팅에 추가되어 있는지 확인하세요.
+
+## Decision 모델로 답변마다 확인하기
+
+Illustrator는 보통 실행 간격에 따라 장면을 확인하므로 새 장소의 배경이 나올 때까지 답변 몇 개를 기다릴 수 있습니다. 예 또는 아니요로 답하는 작은 모델인 [Decision 모델](../connections/decision-models.md)로 답변마다 확인할 수 있습니다.
+
+시작하기 전에: Connections 페이지의 **Defaults** 상자에서 Decision 모델을 고르고 **Generate Scene Backgrounds**, **Weather Versions of Backgrounds**, 또는 둘 다 켜세요.
+
+1. **Chat Settings → Agents → Illustrator**를 여세요.
+2. **Decision Model Checks**에서 **The scene moved to a new place**, **The weather changed**, **New place and weather changes** 중 하나를 고르세요. 기본값은 **Off**(꺼짐)입니다.
+
+답변마다 다음을 수행합니다.
+
+- 새 장소 확인은 최신 메시지에서 장면이 새로운 장소로 이동하는지 묻습니다. 그렇다고 답하면 그 장소에 배경을 마련하며, 가능하면 이미 가진 그림을 재사용합니다. 프롬프트 모델은 그렇다는 답이 나온 뒤에만 새 배경을 작성합니다.
+- 날씨 확인은 최신 메시지에서 날씨가 바뀌는지 묻습니다. 그렇다고 답하면 현재 배경의 날씨 버전을 표시하거나 그립니다. World State에 날씨가 없으면 Decision 모델이 날씨 종류도 고릅니다.
+- 이 확인은 동작할 기회만 추가합니다. Illustrator 자체 실행과 World State의 장소 변경도 계속 반영됩니다.
+- 답이 없으면(모델 없음, 시간 초과, 오류) 확인을 건너뜁니다.
+
+작동하지 않는 경우: Decision 모델을 고르지 않으면 목록이 회색으로 비활성화되고 모델을 고를 곳을 알려 줍니다.
+
+## 전송 전에 프롬프트 검토하기
+
+1. **Settings → Media → Generation Defaults**(설정 → 미디어 → 생성 기본값)를 여세요.
 2. **Expose media prompts before sending**(전송 전에 미디어 프롬프트 표시)을 켜세요.
 
-이 설정을 켜면 요청을 보내기 전에 **Review Image Prompt** 창이 열립니다. 창의 안내 문구는 "Edit the prompt below before Marinara sends the image request to your provider."입니다.
-
-이 창에서는 다음을 할 수 있습니다.
-
-- 프롬프트 본문과 네거티브 프롬프트를 수정합니다.
-- 이미지 종류와 크기, 그리고 실시간 글자 수를 확인합니다.
-- **Cancel**을 클릭해 중단하거나 **Generate**(생성)를 클릭해 전송합니다.
-
-프롬프트 입력란이 하나라도 비어 있으면 **Generate**를 누를 수 없고 "Every image request needs a prompt." 안내가 나타납니다. 입력한 글은 적은 그대로 전송됩니다.
-
-## 저장한 배경 관리하기
-
-생성한 장면 배경은 모두 배경 라이브러리에 저장됩니다. 같은 라이브러리에 직접 준비한 이미지를 추가할 수도 있습니다. 업로드하는 배경은 JPG, PNG, GIF, WebP, AVIF 형식을 지원하며 파일당 최대 20 MB입니다.
-
-직접 추가한 배경에는 태그를 달거나 이름을 바꾸거나 삭제할 수 있습니다. 태그는 소문자로 저장되고 영문자, 숫자, 공백, 하이픈, 밑줄을 쓸 수 있으며 하나당 최대 40자입니다. 기본 제공 게임 에셋 배경도 함께 표시되지만, 이름 변경과 태그 지정, 삭제는 할 수 없습니다.
-
-이 라이브러리를 관리하고 채팅별 배경이나 기본 배경을 지정하는 일은 모양 설정에서 합니다. 라이브러리 전체와 선택 화면, **Background Blur**(배경 흐림)는 [채팅 배경](../appearance/chat-backgrounds.md)에서 확인하세요.
+그러면 생성할 배경을 포함해 이미지 요청마다 **Review Image Prompt** 창이 열립니다. 프롬프트와 부정 프롬프트를 수정한 다음 **Generate**(생성)를 클릭해 전송하거나 **Cancel**(취소)을 클릭해 중단하세요. 입력한 글은 적은 그대로 전송됩니다.
 
 ## 관련 가이드
 
-- [채팅 배경](../appearance/chat-backgrounds.md): 직접 골라 쓰는 업로드 라이브러리입니다.
-- [Roleplay 배경](../roleplay/backgrounds.md): 턴마다 배경을 자동으로 골라 주는 에이전트입니다.
-- [Illustrator 에이전트](illustrator-agent.md): Roleplay와 Game Mode의 장면 삽화입니다.
-- [이미지 생성 제공자와 설정](image-providers.md): 이미지 모델을 설정합니다.
-- [장면 동영상 생성](scene-video.md): Gallery의 이미지를 동영상으로 만듭니다.
+- [이야기를 따라 바뀌는 배경](../roleplay/backgrounds.md): 채팅에 표시할 그림, 고정된 장소와 갤러리 배경입니다.
+- [배경 라이브러리](../appearance/chat-backgrounds.md): 그림 업로드, 태그 지정, 정리와 흐림 효과입니다.
+- [Illustrator 에이전트](illustrator-agent.md): 장면 삽화, 클립과 실행 간격입니다.
+- [채팅 갤러리](../chats/chat-gallery.md): Gallery 섹션과 버튼입니다.
+- [Decision 모델](../connections/decision-models.md)

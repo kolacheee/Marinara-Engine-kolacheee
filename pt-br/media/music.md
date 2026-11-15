@@ -6,7 +6,7 @@ O **Music DJ** (DJ de música) toca música de fundo que combina com a sua cena.
 
 O **Music DJ** é um agente opcional para download. Um agente é um ajudante que roda em segundo plano em um chat. Depois de cada resposta, ele pode ler o clima da cena e tocar uma música que combine com ela.
 
-Antes de começar: abra **Agents** (agentes), selecione **Agent Organizer** (organizador de agentes) e instale o **Music DJ**. Ele vem desativado depois da instalação. Ative-o em um chat como qualquer outro agente. Ele funciona nos chats de Roleplay, no Game Mode por um botão liga/desliga separado ([Music DJ no Game Mode](#music-dj-in-game-mode)) e no Conversation pelo comando **Music** ([O comando Music do Conversation](#the-conversation-music-command)).
+Antes de começar: abra **Library → Agents** (Biblioteca → Agentes) e instale o **Music DJ** em **Available** (disponíveis). Ele vem desativado depois da instalação. Ative-o em um chat como qualquer outro agente. Ele funciona nos chats de Roleplay, no Game Mode por um botão liga/desliga separado ([Music DJ no Game Mode](#music-dj-in-game-mode)) e no Conversation pelo comando **Music** ([O comando Music do Conversation](#the-conversation-music-command)).
 
 Ele toca música de três fontes.
 
@@ -18,7 +18,7 @@ Ele toca música de três fontes.
 
 A fonte ativa aparece como um pequeno **Music Player** (player de música) fixado na barra superior. No celular e em janelas estreitas, ele vira um pequeno widget redondo flutuante que você pode arrastar.
 
-A configuração do Music DJ fica em um único lugar compartilhado. Abra o painel **Agents**, à direita, e depois **Music DJ**. Você também pode clicar no ícone de engrenagem do mini player (dica **Music DJ setup**).
+A configuração do Music DJ fica em um único lugar compartilhado. Abra **Library → Agents** e depois **Music DJ**. Você também pode clicar no ícone de engrenagem do mini player (dica **Music DJ setup**).
 
 ### Escolha uma fonte de música
 
@@ -124,7 +124,7 @@ A mesma opção **Apply to** aparece quando você adiciona o Music DJ a um chat.
 
 ## Use o player de música
 
-O **Music Player** é uma pequena marca na barra superior no computador e um widget que você arrasta no celular. Para mostrar ou ocultar o player, abra **Settings → General → App Behavior** (Configurações → Geral → Comportamento do aplicativo) e ative ou desative **Music Player**. Ele vem ativado por padrão. Com ele ativado e o Music DJ não instalado, o player mostra **Download Music DJ Agent to configure** e oferece um botão **Agent Organizer**.
+O **Music Player** é uma pequena marca na barra superior no computador e um widget que você arrasta no celular. Para mostrar ou ocultar o player, abra **Settings → General → Extras** (Configurações → Geral → Extras) e ative ou desative **Music Player**. Ele vem ativado por padrão. Com ele ativado e o Music DJ não instalado, o player mostra **Download Music DJ Agent to configure** e oferece um botão **Agent Organizer**.
 
 Em um perfil novo, a fonte começa como **YouTube**. Troque-a pelo botão redondo de troca de fonte no player (dica "Switch to ... player"), pelos botões de **Music Player** no editor ou pelas configurações de **Music DJ** de um chat.
 
@@ -166,7 +166,7 @@ A partir daí, um personagem pode citar uma música para o Spotify, ou descrever
 
 ## Solução de problemas
 
-- **O mini player sumiu**: ative **Music Player** em **Settings → General → App Behavior**.
+- **O mini player sumiu**: ative **Music Player** em **Settings → General → Extras**.
 - **O Spotify não toca nada**: a reprodução exige o Spotify Premium e um dispositivo do Spotify ativo. Abra o aplicativo do Spotify para computador em um dispositivo, ou clique em **Enable Marinara player** no computador.
 - **A janela de login do Spotify falha em outra máquina**: use a caixa de colar de "Browser couldn't reach the callback?", ou defina `SPOTIFY_REDIRECT_URI` no servidor.
 - **A busca do YouTube falha**: confirme que a **YouTube Data API v3** está ativada no seu projeto e que a chave não está restrita por referenciador HTTP. Se você atingiu a cota diária, tente no dia seguinte ou use outra chave.

@@ -9,12 +9,12 @@ Hay dos tipos de sprite:
 - Las **Facial Expressions** (expresiones faciales) son imágenes de retrato para estados de ánimo como feliz, triste o enojado.
 - Las imágenes **Full-body** (cuerpo completo) son imágenes de cuerpo entero para poses como reposo, caminar o postura de batalla.
 
-Los sprites aparecen en pantalla en Roleplay Mode y Game Mode, no en los chats de Conversation. Puedes subirlos en cualquier modo, porque un personaje conserva sus sprites en todos los chats. Una persona, el personaje que te representa, tiene la misma sección **Sprites**.
+Los sprites aparecen en pantalla en Roleplay Mode y Game Mode, no en los chats de Conversation. Puedes subirlos en cualquier modo, porque un personaje conserva sus sprites en todos los chats. Una persona, el personaje que te representa, tiene la misma pestaña **Sprites**.
 
-## Encontrar los sprites
+## Encontrar la pestaña Sprites
 
 1. Abre un personaje (o una persona) en su editor.
-2. Haz clic en la pestaña **Images** (Imágenes) y luego en **Sprites** en la parte superior.
+2. Haz clic en la pestaña **Sprites**.
 3. En la parte superior, elige una categoría: **Facial Expressions**, **Full-body** o **Clips**.
 
 Las secciones de abajo cubren **Facial Expressions** y **Full-body**. **Clips** forma parte de la función de llamadas. Consulta [Llamadas de audio y video de Conversation](../conversation/calls.md).
@@ -27,7 +27,7 @@ Puedes subir imágenes PNG, JPEG, GIF, WebP, AVIF y SVG. Los archivos PNG transp
 
 ### Subir uno o más sprites
 
-1. Abre **Images → Sprites** y elige **Facial Expressions** o **Full-body**.
+1. Abre la pestaña **Sprites** y elige **Facial Expressions** o **Full-body**.
 2. Haz clic en **Add sprites** (añadir sprites).
 3. Haz clic en **Upload images** (subir imágenes), entra en tu carpeta y selecciona sus imágenes. Puedes seleccionar varias a la vez.
 4. En el cuadro de diálogo **Import images** (importar imágenes), haz clic en **Import** (importar). **Cancel** (cancelar) no añade nada.
@@ -40,7 +40,7 @@ En el editor de personas, usa el campo de nombre y el botón **Upload** (subir) 
 
 La subida de una carpeta entera está disponible en el editor de personas. Para los personajes, usa **Upload images** como se explica arriba y selecciona las imágenes que hay dentro de tu carpeta.
 
-1. Abre la pestaña **Images** de la persona y haz clic en **Sprites**.
+1. Abre la pestaña **Sprites** de la persona.
 2. En el cuadro **Add Sprite**, haz clic en **Upload Folder** (subir carpeta).
 3. Elige la carpeta que contiene tus imágenes.
 
@@ -66,7 +66,7 @@ Eliges cuándo y cómo aparecen los sprites en los ajustes del chat, no en el ed
 
 ### Roleplay Mode
 
-El agente Expression Engine controla los sprites en Roleplay. Un agente es un ayudante que se ejecuta junto a las respuestas. Consulta [Agentes: ayudantes de IA para tus chats](../agents/agents-overview.md). Lee el estado de ánimo de cada mensaje y elige un sprite de expresión que coincida. Añádelo al chat, e instálalo desde **Agent Organizer** (organizador de agentes) si no lo tienes. Consulta [Referencia de agentes descargables](../agents/built-in-agents.md#expression-engine).
+El agente Expression Engine controla los sprites en Roleplay. Un agente es un ayudante que se ejecuta junto a las respuestas. Consulta [Agentes: ayudantes de IA para tus chats](../agents/agents-overview.md). Lee el estado de ánimo de cada mensaje y elige un sprite de expresión que coincida. Añádelo al chat, e instálalo desde **Library → Agents** (Biblioteca → Agentes) si no lo tienes. Consulta [Referencia de agentes descargables](../agents/built-in-agents.md#expression-engine).
 
 Para que los sprites aparezcan, todo lo siguiente debe cumplirse:
 
@@ -158,15 +158,13 @@ Arrastra sprites a una carpeta, o arrastra un sprite archivado al área suelta p
 
 Haz clic en **Select** para mostrar las casillas y **Select all sprites** (seleccionar todos los sprites), y luego arrastra juntos los sprites seleccionados o usa la limpieza y la eliminación. **Cancel** (cancelar) sale del modo de selección. La búsqueda filtra los sprites visibles. Una búsqueda sin resultados no significa que la biblioteca esté vacía.
 
-<a id="character-sheet"></a>
-
 ### Character Sheet
 
-La **Character Sheet** (Hoja del personaje) está arriba, en la pestaña **Images**, encima de los sprites. Para abrirla, haz clic en **Manage** (Gestionar). Crea o sube ahí una hoja. Activa **Use as reference image** (usar como imagen de referencia) para que se prefiera para el parecido del personaje.
+La fila **Character Sheet** del editor de personajes se abre con **Manage** (gestionar). Crea o sube ahí una hoja. Activa **Use as reference image** (usar como imagen de referencia) para que se prefiera para el parecido del personaje.
 
 ## Exportar sprites
 
-1. Abre **Images → Sprites**.
+1. Abre la pestaña **Sprites**.
 2. Haz clic en **Export** (exportar) encima de la cuadrícula del personaje, o en el cuadro **Add Sprite** de la persona.
 3. Elige **Expressions only** o **Full-body only** para exportar la categoría actual, o **All sprites** para exportarlo todo.
 

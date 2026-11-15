@@ -7,13 +7,13 @@ Professor Mariは、ホーム画面に組み込まれたアシスタントです
 ## 居場所
 
 1. ホーム画面に移動します。ホーム画面は、チャットを開いていないときに表示されます。
-2. **Professor Mari**ウィジェットの**Ask Professor Mari**(Professor Mariに質問)をクリックするか、**Professor**(プロフェッサー)タブをクリックします。
+2. **Professor Mari**ウィジェットの**Ask Professor Mari**(Professor Mariに質問)をクリックするか、ホーム上部の**Professor**(プロフェッサー)をクリックします。
 
-Professor Mariのウィンドウが開きます。どの画面からでも呼び出せます。Search(検索)に入力して**Ask Prof. Mari**を選ぶか、<kbd>Ctrl</kbd>+<kbd>J</kbd>(Macでは<kbd>⌘</kbd>+<kbd>J</kbd>)を押すか、スマートフォンでは上部バーから下へ引き下ろしてください。ヘッダーの表示は、待機中は**Ready to help**、作業中は**Working on it...**になります。
+Professor Mariは専用のタブで開きます。どの画面からでも呼び出せます。<kbd>Ctrl</kbd>+<kbd>K</kbd>を押して質問を入力し、**Ask Prof. Mari**を選びます。<kbd>Ctrl</kbd>+<kbd>J</kbd>(Macでは<kbd>⌘</kbd>+<kbd>J</kbd>)でポップアップウィンドウを開くこともできます。スマートフォンでは上部バーのタイトルをタップします。ヘッダーには、待機中は**Ready to help**、作業中は**Working on it...**と表示されます。
 
 メッセージはふだんの言葉で入力し、<kbd>Enter</kbd>を押します。<kbd>Shift</kbd>+<kbd>Enter</kbd>で改行します。Professor Mariの設定で**Enter sends to Professor Mari**(EnterでProfessor Mariに送信)をオフにすると、<kbd>Enter</kbd>で改行し、<kbd>Ctrl</kbd>+<kbd>Enter</kbd>で送信します。最初のメッセージを送ると、**Hello World**の実績が解除されます。
 
-Professor Mariの設定はすべて、**Settings → General → Search and Professor Mari settings → Open**(設定 → 一般 → SearchとProfessor Mariの設定 → 開く)にあります。Searchの歯車アイコンからも開けます。コンピューターでは、**Professor Mari window**(Professor Mariのウィンドウ)の下にある**Height**(高さ)と**Width**(幅)のスライダーで、ウィンドウの大きさを変えられます。スマートフォンでは、ウィンドウが画面いっぱいに広がります。
+Professor Mariの設定はすべて、**Settings → General → Professor Mari → Open**(設定 → 一般 → Professor Mari → 開く)にあります。Searchの歯車アイコンからも開けます。コンピューターでは、**Professor Mari window**(Professor Mariのウィンドウ)の下にある**Height**(高さ)と**Width**(幅)のスライダーで、ウィンドウの大きさを変えられます。スマートフォンでは、ウィンドウが画面いっぱいに広がります。
 
 ## Mariと一緒にキャラクターを作る
 
@@ -36,10 +36,10 @@ Professor Mariは、編集する前に対象を読み込みます。依頼が曖
 - 設定、モード、概念の説明。
 - キャラクター、ペルソナ、ロアブックの作成と編集。キャラクターカードは、AIに名前、性格、話し方を与えます。ペルソナは、自分を表すキャラクターカードです。ロアブックは、キーワードが出てきたときにAIが読む、世界の設定の集まりです。
 - キャラクターの[対話式オンボーディング](../characters/interactive-onboarding.md)の作成と、インストール済みのGame Modeルールセットに対応した[ルールセットのシート](../characters/colors-and-stats.md#ruleset-sheets)への記入。値がルールセットに合わない場合は、理由とともに拒否されます。
-- テーマ、エージェント、プロンプトプリセット、Personal Extensionの下書きの作成と編集。下書きは、コードを読んで**Settings → Addons**(設定 → アドオン)で承認するまでオフのままです。
+- テーマ、エージェント、プロンプトプリセット、Personal Extensionの下書きの作成と編集。下書きは、コードを読んで**Library → Extensions**(ライブラリー → 拡張機能)で承認するまでオフのままです。
 - プリセット全体を置き換えずに、プリセットの1つのセクションだけをその場で編集。
-- ダウンロードできるエージェントの比較と、目的に合うものの提案。インストールするときは、**Agents → Agent Organizer**へ案内します。[ダウンロードできるエージェント一覧](../agents/built-in-agents.md)を参照してください。
-- アバター、スプライト、背景などの画像の作成と割り当て。先に画像生成のアカウントが必要です。Professor Mariがアカウントを作ることはありません。
+- ダウンロードできるエージェントの比較と、目的に合うものの提案。インストールするときは、**Library → Agents**(ライブラリー → エージェント)へ案内します。[ダウンロードできるエージェント一覧](../agents/built-in-agents.md)を参照してください。
+- アバター、スプライト、背景、テーマの画像などを作成したり割り当てたりし、切り抜き、余白のトリミング、サイズ変更、単色の背景の除去を行います。先に画像生成のアカウントが必要です。Professor Mariがアカウントを作ることはありません。テーマの画像については、[Professor Mariに画像を作ってもらう](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)を参照してください。
 - キャラクターや世界観を調べるときの、公開されているFandomのwikiページの参照。
 
 ### チップから始める
@@ -182,6 +182,8 @@ Professor Mariのチャットは、ふだんのチャット一覧とは別にな
 1. ヘッダーの**Chats**(チャット)をクリックします。
 2. **Search Prof. Mari chats**(Prof. Mariのチャットを検索)でチャットを探します。チャットはクリックして開けるほか、名前の変更や削除もできます。
 
+Professor Mariとの長いチャットは、最新のメッセージから開きます。上にスクロールして**Show older**(古いものを表示)をクリックすると、前のメッセージが表示され、読んでいた位置はそのまま保たれます。
+
 新しく始めるには、**New chat**(新しいチャット)をクリックするか、`/new`と入力します。先に現在のチャットが保存され、**Professor Mari's previous chat was saved.**と表示されます。
 
 ## Quick answers in Search
@@ -231,7 +233,7 @@ Professor Mariのヘッダーにある**Context**(コンテキスト)を開く�
 
 ## FAQを読む
 
-**FAQ**のブックマークか、**Learn the engine**(エンジンを学ぶ)ウィジェットの**Read FAQ**(FAQを読む)をクリックすると、**Professor Mari's FAQ**が開きます。これはあらかじめ書かれた固定の一覧で、AIのチャットではないので、自分の設定の中身は把握していません。**Search FAQ**(FAQを検索)に入力すると絞り込めます。それぞれの質問には、**Setup**、**Connections**、**Game Mode**のようなカテゴリータグが付いています。質問をタップすると回答を読めます。
+ホームの**Learn the engine**(エンジンを学ぶ)ウィジェットにある**Read FAQ**(FAQを読む)(クラシックレイアウトでは**FAQ**ブックマークも使えます)をクリックすると、**Professor Mari's FAQ**が開きます。これはあらかじめ書かれた固定の一覧で、AIのチャットではないので、自分の設定の中身は把握していません。**Search FAQ**(FAQを検索)に入力すると絞り込めます。それぞれの質問には、**Setup**、**Connections**、**Game Mode**のようなカテゴリータグが付いています。質問をタップすると回答を読めます。
 
 ## 制限と安全のために
 

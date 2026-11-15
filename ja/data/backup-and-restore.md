@@ -9,14 +9,14 @@ Marinara Engineのデータのコピーを保存し、後から戻す方法を�
 | **Download Backup** | すべてのデータとファイルを収めた`.zip`。 | すべてをまるごと1つにしたコピー。 |
 | **Export Profile** | アカウントのデータ(キャラクター、チャット、ロアブックなど)だけを収めた小さめのファイル。 | 秘密の値を含まないコピーや、他のツール向けのファイル。 |
 
-`.zip`は、たくさんのファイルを1つにまとめたファイルです。どちらの方法も**Settings → Advanced → Backup & Export**(設定 → 詳細設定 → バックアップとエクスポート)にあります。復元は**Settings → Imports → Profile & Marinara**(設定 → インポート → プロファイルとMarinara)で行います。
+`.zip`は、たくさんのファイルを1つにまとめたファイルです。どちらの方法も、復元も、**Settings → Data → Backup & Restore**(設定 → データ → バックアップと復元)にあります。
 
-**始める前に:** Marinaraを動かしているコンピューターでは、これらの機能はそのまま使えます。スマートフォン、タブレットなどの別のデバイスから使う場合は、サーバーに管理者用のシークレットを設定し、同じ値を**Settings → Advanced → Admin Access**に入力してください。管理者用のシークレットは、サーバーの`.env`ファイルに`ADMIN_SECRET`という設定で書くパスワードです。[サーバー設定リファレンス](../CONFIGURATION.md)の「Privileged APIs (ADMIN_SECRET)」のセクションと[リモートアクセス](../REMOTE_ACCESS.md)を参照してください。
+**始める前に:** Marinaraを動かしているコンピューターでは、これらの機能はそのまま使えます。スマートフォン、タブレットなどの別のデバイスから使う場合は、サーバーに管理者用のシークレットを設定し、同じ値を**Settings → Advanced → Security**に入力してください。管理者用のシークレットは、サーバーの`.env`ファイルに`ADMIN_SECRET`という設定で書くパスワードです。[サーバー設定リファレンス](../CONFIGURATION.md)の「Privileged APIs (ADMIN_SECRET)」のセクションと[リモートアクセス](../REMOTE_ACCESS.md)を参照してください。
 
 ## Download Backup
 
-1. **Settings → Advanced**を開きます。
-2. **Backup & Export**で**Download Backup**をクリックします。ボタンの表示は**Creating backup…**になります。
+1. **Settings → Data**(設定 → データ)を開きます。
+2. **Backup & Restore**(バックアップと復元)で**Download Backup**をクリックします。ボタンの表示は**Creating backup…**になります。
 3. ブラウザーが確認したらファイルを保存します。または、ダウンロードフォルダーで見つけます。
 
 `.zip`には次のものが入っています。
@@ -32,7 +32,7 @@ Marinara Engineのデータのコピーを保存し、後から戻す方法を�
 
 Androidではアプリのデータフォルダーに手が届きません。そのため、デバイスの外にコピーを取り出すには**Download Backup**を使います。
 
-うまくいかなかった場合: 「Backup preparation timed out after one hour.」と表示されたら、もう一度試してください。別のデバイスからダウンロードできない場合は、**Admin Access**を確認してください(上記を参照)。
+うまくいかなかった場合: 「Backup preparation timed out after one hour.」と表示されたら、もう一度試してください。別のデバイスからダウンロードできない場合は、管理者用のシークレットを確認してください(上記を参照)。
 
 <a id="automatic-backups"></a>
 
@@ -40,7 +40,7 @@ Androidではアプリのデータフォルダーに手が届きません。そ�
 
 Marinaraは、動かしているコンピューター上で、スケジュールに沿って完全バックアップを作れます。
 
-1. **Settings → Advanced → Backup & Export**を開きます。
+1. **Settings → Data → Backup & Restore**を開きます。
 2. **Automatic backups**をオンにします。
 3. **Daily**、**Weekly**、**Monthly**のいずれかを選びます。
 4. **Automatic backups kept**を1から9999までの範囲で設定します。
@@ -55,7 +55,7 @@ Marinaraは、オンにしてまもなく最初のバックアップを作りま
 
 ## プロファイルのエクスポート
 
-1. **Settings → Advanced → Backup & Export**を開きます。
+1. **Settings → Data → Backup & Restore**を開きます。
 2. **Export Profile**をクリックします。同じタイトルのウィンドウが開きます。
 3. 形式を選びます。
 4. ブラウザーがファイルをダウンロードします。
@@ -65,17 +65,20 @@ Marinaraは、オンにしてまもなく最初のバックアップを作りま
 
 ネイティブ形式のプロファイルは、`marinara-profile.json`としてダウンロードされます。大きすぎる場合、MarinaraはZIPファイルを代わりに提案します。**Export ZIP**をクリックすると、`marinara-profile.zip`がダウンロードされます。
 
-ネイティブ形式のプロファイルにはPersonal Extensionのコードも残りますが、有効かどうかの状態と承認は残りません。復元された拡張機能はすべて無効の状態で入ります。**Settings → Addons**で、もう一度確認してください。
+ネイティブ形式のプロファイルは、正規表現スクリプト、そのフォルダー、各フォルダーの一時停止設定を保持します。個別のスクリプトをJSONとして共有するには、[正規表現スクリプト](../extending/regex-scripts.md#import-and-replace-scripts)を参照してください。
+
+ネイティブ形式のプロファイルにはPersonal Extensionのコードも残りますが、有効かどうかの状態と承認は残りません。復元された拡張機能はすべて無効の状態で入ります。**Library → Extensions**で、もう一度確認してください。
 
 ## Import Profileでの復元
 
 **Import Profile**は、プロファイルのファイルまたは**Download Backup**の`.zip`を読み込みます。
 
-1. **Settings → Imports**を開きます。
-2. **Profile & Marinara**で**Import Profile (JSON/ZIP)**をクリックします。
-3. `marinara-profile.json`、`marinara-profile.zip`、またはバックアップの`.zip`を選びます。ボタンの表示は**Scanning Profile...**になります。
-4. **Import Profile**ウィンドウを読みます。Marinaraが見つけた内容が一覧表示され、インポートは取り消せないという警告が出ます。
-5. 続けるなら**Import**を、やめるなら**Cancel**をクリックします。ボタンの表示は**Importing Profile...**になり、進捗バーが続きます。完了すると、プロファイルをインポートしたというメッセージが表示されます。
+1. **Settings → Data → Backup & Restore**を開きます。
+2. ボタンの下の**Tag imported**(インポート済みをタグ付け)と**Tag source**(出典をタグ付け)にチェックを入れたままにすると、取り込むキャラクター、ペルソナ、ロアブック、プリセット、チャットに**Imported**(インポート済み)と**Backup**(バックアップ)のタグが付きます。すべてを元の状態のまま復元するには、チェックを外します。
+3. **Import Profile (JSON/ZIP)**をクリックします。
+4. `marinara-profile.json`、`marinara-profile.zip`、またはバックアップの`.zip`を選びます。ボタンの表示は**Scanning Profile...**になります。
+5. **Import Profile**ウィンドウを読みます。Marinaraが見つけた内容が一覧表示され、インポートは取り消せないという警告が出ます。
+6. 続けるなら**Import**を、やめるなら**Cancel**をクリックします。ボタンの表示は**Importing Profile...**になり、進捗バーが続きます。完了すると、プロファイルをインポートしたというメッセージが表示されます。
 
 うまくいかなかった場合:
 
@@ -90,7 +93,7 @@ Marinaraは、オンにしてまもなく最初のバックアップを作りま
 
 **Import Profile**は、**Download Backup**の`.zip`からでも、APIキーとWebhookのリンクを復元しません。APIキーとは、サービスが発行する秘密のコードです。プロファイルのファイルと、バックアップの中のプロファイルでは、これらの値が空になっています。そのため、新しいコンピューターにインポートした後は、次の手順で入力し直します。
 
-1. 上部バーから**Connections**を開きます。
+1. **Library → Connections**(ライブラリー → 接続)を開きます。
 2. 使っているアカウントを1つずつ開き、APIキーを入力して保存します。[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。
 3. Webhookのリンクを使うカスタムツールごとに、リンクを入力し直します。
 
@@ -101,7 +104,7 @@ Marinaraは、オンにしてまもなく最初のバックアップを作りま
 ## 新しいコンピューターへの移行
 
 1. 新しいコンピューターにMarinaraをインストールして起動します。[インストール](../INSTALLATION.md)を参照してください。
-2. **Settings → Imports → Profile & Marinara**を開き、**Import Profile (JSON/ZIP)**をクリックします。
+2. **Settings → Data → Backup & Restore**を開き、**Import Profile (JSON/ZIP)**をクリックします。
 3. **Download Backup**の`.zip`またはプロファイルのファイルを選び、**Import**をクリックします。
 4. 上で説明したとおり、APIキーを入力し直します。
 
@@ -120,7 +123,7 @@ Marinaraは、オンにしてまもなく最初のバックアップを作りま
 
 `.encryption-key`ファイルは`storage`フォルダーと一緒に置いてください。そうしないと、保存済みのAPIキーを読み取れません。
 
-**Backup & Export**の**Existing backups**一覧は、通常は空です。この一覧は使う必要がありません。
+**Backup & Restore**(バックアップと復元)の**Existing backups**一覧は、通常は空です。この一覧は使う必要がありません。
 
 ## 関連ガイド
 

@@ -17,7 +17,7 @@ Jeśli to nie zadziałało: gdy żaden agent śledzący nie jest włączony, pas
 
 ## Gdzie pojawia się pasek HUD
 
-Na telefonie trackery to ruchome przyciski **World State** i **Player & Tracker**. Dotknij jednego z nich, żeby otworzyć jego panel, a **X**, żeby go zamknąć. Gdy World State ma już szczegóły, jego przycisk pokazuje mały baner z lokalizacją, dniem, godziną, pogodą i temperaturą. Przeciągnij przyciski w dowolne miejsce. Czat zapamiętuje, gdzie je ustawisz. Ich wygląd zależy od ustawienia **Chat widget style** (styl widgetów czatu) w **Settings → Appearance → App** (ustawienia, wygląd, aplikacja).
+Na telefonie trackery to ruchome przyciski **World State** i **Player & Tracker**. Dotknij jednego z nich, żeby otworzyć jego panel, a **X**, żeby go zamknąć. Gdy World State ma już szczegóły, jego przycisk pokazuje mały baner z lokalizacją, dniem, godziną, pogodą i temperaturą. Przeciągnij przyciski w dowolne miejsce. Czat zapamiętuje, gdzie je ustawisz. Ich wygląd zależy od ustawienia **Chat widget style** (styl widgetów czatu) w **Ustawienia → Wygląd → Przyciski i okna czatu**.
 
 Na komputerze te same trackery pojawiają się w jednym z dwóch miejsc:
 
@@ -113,7 +113,7 @@ Aby dać jednemu trackerowi własne okno, kliknij przycisk wydzielania obok jego
 2. Kliknij przycisk **Tracker Panel** (kostka) na jego pasku tytułu, obok przypięcia i kłódki. Przycisk pozostaje wyróżniony, dopóki panel jest włączony.
 3. Kliknij go ponownie, żeby ukryć panel. Na komputerze trackery pojawią się wtedy w oknie Trackers.
 
-Na komputerze panel mieści się obok wiadomości, maksymalnie do szerokości ustawionej w **Desktop size** (rozmiar na komputerze). Gdy okno jest za wąskie na jedno i drugie, na przykład przy otwartym pasku bocznym czatów, wiadomości i pole wiadomości nieco się zwężają. Na telefonie lub tablecie włączenie panelu dodaje przycisk Tracker Panel, który można przeciągać. Dotknij go, żeby otworzyć panel, i dotknij ponownie, żeby go zamknąć. Gdy panel lub inny ekran zasłania czat, ruchome przyciski czatu są ukryte i wracają potem na te same miejsca.
+Na komputerze panel mieści się obok wiadomości, maksymalnie do szerokości ustawionej w **Desktop size** (rozmiar na komputerze). Gdy okno jest za wąskie na jedno i drugie, na przykład przy otwartym pasku bocznym, wiadomości i pole wiadomości nieco się zwężają. Na telefonie lub tablecie włączenie panelu dodaje przycisk Tracker Panel, który można przeciągać. Dotknij go, żeby otworzyć panel, i dotknij ponownie, żeby go zamknąć. Gdy panel lub inny ekran zasłania czat, ruchome przyciski czatu są ukryte i wracają potem na te same miejsca.
 
 ### Dostosuj pola trackerów
 
@@ -132,7 +132,7 @@ Na dużej karcie postaci da się utworzyć nowy portret, gdy agent Character Tra
 
 ### Ustawienia Tracker Panel
 
-Otwórz **Settings → Appearance** (ustawienia, wygląd), rozwiń grupę **Roleplay** i znajdź sekcję **Tracker Panel**.
+Otwórz **Ustawienia → Roleplay** i znajdź sekcję **Tracker Panel**.
 
 | Ustawienie | Co robi |
 | --- | --- |

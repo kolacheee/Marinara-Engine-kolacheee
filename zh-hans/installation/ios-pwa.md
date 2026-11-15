@@ -93,7 +93,7 @@ Safari 有时会一直保留旧版本的应用，或者保存下来的应用卡�
 
 **出现红色横幅，提示保存会静默失败。** 这是服务器发出的网络信任警告，不是 iPhone 或 iPad 的问题。需要服务器所有者信任你的地址。见[远程访问](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf)。
 
-**高权限操作被拦住。** 有些维护操作需要服务器所有者提供的管理员密钥（第二个密码）。在 iPhone 或 iPad 上把它保存到 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问)。见[远程访问](../REMOTE_ACCESS.md#admin-access-and-privileged-actions)。
+**高权限操作被拦住。** 有些维护操作需要服务器所有者提供的管理员密钥（第二个密码）。在 iPhone 或 iPad 上把它保存到 **Settings → Advanced → Security**(设置 → 高级 → 安全)。见[远程访问](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)。
 
 ## 相关指南
 

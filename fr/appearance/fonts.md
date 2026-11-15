@@ -4,15 +4,15 @@ Change la police que Marinara utilise dans toute l'application. Choisis la polic
 
 ## Choisir la police de l'application
 
-1. Ouvre **Settings** (Paramètres) et clique sur l'onglet **Appearance** (Apparence), puis sur le bouton **App** (Application).
-2. Repère la section **Text & Scale** (texte et échelle).
+1. Ouvre **Settings** (Paramètres) et clique sur l'onglet **Appearance** (Apparence).
+2. Repère la section **Fonts & Text Size** (polices et taille du texte).
 3. Ouvre le menu déroulant **Font** (police) et choisis une police.
 
 Le moyen le plus simple d'obtenir une nouvelle police, c'est [Google Fonts](#downloading-from-google-fonts). La valeur par défaut est **Default (Inter)**, une police sobre retenue pour le confort de lecture à l'écran. Les polices que tu ajoutes apparaissent dans ce même menu déroulant, sous celle-ci.
 
 Ton choix de police se synchronise entre les appareils. Tous les navigateurs connectés au même serveur Marinara l'adoptent. Voir [Vue d'ensemble des paramètres](../settings/settings-overview.md).
 
-Les widgets du chat ont leur propre réglage **Font**, sous **Chat widget style** (style des widgets du chat). Active **Apply preset font** (appliquer la police du preset) au même endroit pour l'utiliser aussi dans les messages, les champs de saisie et les contrôles du chat. Voir [Styles de fenêtres de chat prêts à utiliser](custom-css-themes.md#ready-made-chat-window-styles).
+Les widgets du chat ont leur propre réglage **Font**, sous **Chat Buttons & Windows** (boutons et fenêtres du chat). Active **Apply preset font** (appliquer la police du preset) au même endroit pour l'utiliser aussi dans les messages, les champs de saisie et les contrôles du chat. Voir [Styles de fenêtres de chat prêts à utiliser](appearance-settings.md#chat-buttons--windows).
 
 ## Ajouter tes propres polices
 
@@ -20,7 +20,7 @@ Avant de commencer : les polices se placent dans un dossier sur le serveur. Le s
 
 1. Clique sur **Open Fonts Folder** (ouvrir le dossier des polices), à côté du menu déroulant **Font**, pour ouvrir `data/fonts/` sur le serveur. Ou repère toi-même le dossier `data/fonts/` dans le dossier de données de Marinara.
 2. Copie ton fichier de police dedans.
-3. Va dans **Settings → Appearance → App → Text & Scale** (Paramètres → Apparence → Application → Texte et échelle).
+3. Va dans **Settings → Appearance → Fonts & Text Size** (Paramètres → Apparence → Polices et taille du texte).
 4. Ouvre le menu déroulant **Font**. Ta police figure dans la liste.
 5. Sélectionne-la. Le texte de l'application change aussitôt.
 
@@ -36,7 +36,7 @@ Si ça n'a pas marché : vérifie le type de fichier, et vérifie que le fichier
 
 Le serveur a besoin d'un accès à Internet pour cela.
 
-1. Va dans **Settings → Appearance → App → Text & Scale**.
+1. Va dans **Settings → Appearance → Fonts & Text Size**.
 2. Dans le champ **Google Fonts**, saisis le nom exact de la police, par exemple `Fira Code` ou `Lora`.
 3. Clique sur **Add** (ajouter).
 4. Attends la fin du téléchargement. La police apparaît alors dans le menu déroulant **Font**.

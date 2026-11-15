@@ -76,7 +76,7 @@ Der Schalter **Incidental contact** (beiläufige Berührung) mit der Beschreibun
 
 Standardmäßig nimmt Marinara haptische Befehle nur von dem Computer an, auf dem der Marinara-Server läuft. So bleibt die Gerätesteuerung privat. Deshalb funktioniert haptisches Feedback nicht, wenn du Marinara vom Handy oder von einem anderen Gerät aus öffnest, das auf einen Server an einem anderen Ort zugreift. Verbinden, Suchen und Befehle werden abgelehnt.
 
-Um das zu erlauben, aktivierst du die Server-Einstellung `HAPTICS_ALLOW_REMOTE` und richtest einen Zugriffsschutz ein: eine Anmeldung oder ein Admin-Secret. Siehe die [Referenz zur Server-Konfiguration](../CONFIGURATION.md) und die [Anleitung zum Fernzugriff](../REMOTE_ACCESS.md). Den Admin-Zugang trägst du unter **Settings → Advanced → Admin Access** ein.
+Um das zu erlauben, aktivierst du die Server-Einstellung `HAPTICS_ALLOW_REMOTE` und richtest einen Zugriffsschutz ein: eine Anmeldung oder ein Admin-Secret. Siehe die [Referenz zur Server-Konfiguration](../CONFIGURATION.md) und die [Anleitung zum Fernzugriff](../REMOTE_ACCESS.md). Den Admin-Zugang trägst du unter **Settings → Advanced → Security** ein.
 
 ## Wenn etwas nicht funktioniert
 

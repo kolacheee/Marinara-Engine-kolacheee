@@ -57,7 +57,7 @@ http://127.0.0.1:7860
 
 ## 启动和停止 Marinara
 
-使用应用时，打开应用；如果服务器已停止，点击 **Install / Start Marinara**。要在应用和浏览器之间切换，在启动界面使用 **Open in browser**，然后点击 **Retry connection**(重试连接)。在应用里，可以通过 **Settings → General → App Behavior → Open Android launcher (app or browser)**(设置 → 常规 → 应用行为 → 打开 Android 启动界面(应用或浏览器)) 回到启动界面。
+使用应用时，打开应用；如果服务器已停止，点击 **Install / Start Marinara**。要在应用和浏览器之间切换，在启动界面使用 **Open in browser**，然后点击 **Retry connection**(重试连接)。在应用里，可以通过 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(设置 → 外观 → 布局 → 打开 Android 启动界面(应用或浏览器)) 回到启动界面。
 
 手动安装时，打开 Termux 运行：
 

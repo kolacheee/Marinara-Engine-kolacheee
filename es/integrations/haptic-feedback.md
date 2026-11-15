@@ -70,13 +70,11 @@ La tarjeta muestra un control **Touch sensitivity** (Sensibilidad al contacto) e
 
 El interruptor **Incidental contact** (Contacto incidental), que dice "Tiny taps for accidental brushes and bumps" (Toques leves para roces y golpes accidentales), está desactivado de forma predeterminada. Cuando está desactivado, la IA ignora los pequeños contactos accidentales y solo envía señales para el contacto deliberado o firme. Actívalo para recibir también toques leves por roces y golpes.
 
-<a id="use-it-from-another-device"></a>
-
 ## Úsalo desde otro dispositivo
 
 De forma predeterminada, Marinara solo acepta comandos hápticos de la computadora que ejecuta el servidor de Marinara. Esto mantiene privado el control del dispositivo. Por eso, la respuesta háptica no funciona cuando abres Marinara desde un teléfono u otro dispositivo que accede a un servidor que está en otro lugar. Las acciones de conectar, escanear y enviar comandos se rechazan.
 
-Para permitirlo, activa el ajuste del servidor `HAPTICS_ALLOW_REMOTE` y configura una protección de acceso: un inicio de sesión o un secreto de administrador. Consulta la [Referencia de configuración del servidor](../CONFIGURATION.md) y la [guía de acceso remoto](../REMOTE_ACCESS.md). El acceso de administrador se introduce en **Settings → Advanced → Admin Access** (Configuración → Avanzado → Acceso de administrador).
+Para permitirlo, activa el ajuste del servidor `HAPTICS_ALLOW_REMOTE` y configura una protección de acceso: un inicio de sesión o un secreto de administrador. Consulta la [Referencia de configuración del servidor](../CONFIGURATION.md) y la [guía de acceso remoto](../REMOTE_ACCESS.md). El acceso de administrador se introduce en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad).
 
 ## Si algo no funciona
 

@@ -1,6 +1,12 @@
 # Interrupteurs de fonctions
 
-Certains comportements du serveur sont facultatifs. Active-les dans **Settings > Advanced > Features** (paramètres > avancé > fonctions). Tous les interrupteurs sont initialement désactivés : un serveur où personne n'ouvre cette section se comporte comme avant.
+Certains comportements du serveur sont facultatifs. Tous les interrupteurs sont initialement désactivés : un serveur où personne ne les active se comporte comme avant. Ils se trouvent à différents endroits dans **Settings** (Paramètres) :
+
+- **Stable lorebook picks** (sélections stables du lorebook) et **Lorebook activation stats** (statistiques d'activation du lorebook) : **Settings → Advanced → Lorebooks** (Paramètres → Avancé → Lorebooks).
+- **Retry failed provider calls** (réessayer les appels fournisseur échoués) : **Settings → Advanced → Timeouts & Retries** (Paramètres → Avancé → Délais et nouvelles tentatives).
+- **Recover deleted chat messages** (récupérer les messages de chat supprimés) : **Settings → Data → Backup & Restore** (Paramètres → Données → Sauvegarde et restauration).
+
+Dans la disposition classique, recherche le nom de l'interrupteur dans Settings.
 
 Les changements s'appliquent immédiatement, sans redémarrage du serveur ni rechargement de la page.
 
@@ -15,7 +21,7 @@ Les changements s'appliquent immédiatement, sans redémarrage du serveur ni rec
 | **Lorebook activation stats** (statistiques d'activation du lorebook) | `usageAndActivationStats` | Désactivé | aucune |
 | **Recover deleted chat messages** (récupérer les messages de chat supprimés) | `messageTrash` | Désactivé | aucune |
 
-Recherche `features` dans les réglages pour ouvrir cette section.
+Recherche le nom d'un interrupteur dans les réglages pour l'ouvrir.
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ Désactivé : les messages supprimés disparaissent immédiatement.
 ## Priorité
 
 1. **Variable d'environnement.** Si elle est définie, elle l'emporte sur le réglage enregistré, pour activer comme désactiver. Settings affiche l'interrupteur verrouillé avec le nom de la variable. Une valeur vide compte comme non définie.
-2. **Interrupteur enregistré.** La valeur de Settings > Advanced > Features.
+2. **Interrupteur enregistré.** La valeur enregistrée dans Settings > Advanced > Lorebooks.
 3. **Défaut.** Désactivé.
 
 | Variable | Contrôle | Valeurs |

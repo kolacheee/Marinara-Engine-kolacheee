@@ -15,8 +15,8 @@ SillyTavern 데이터를 Marinara Engine으로 가져옵니다. 파일을 하나
 
 ## 파일 하나씩 빠르게 가져오기
 
-1. **Settings -> Imports**(설정 -> 가져오기)를 여세요.
-2. **SillyTavern Import** 항목에서 가져올 파일 형식에 맞는 버튼을 클릭하세요.
+1. **Settings → Data → SillyTavern Import**(설정 → 데이터 → SillyTavern 가져오기)를 여세요.
+2. 가져올 파일 형식에 맞는 버튼을 클릭하세요.
 3. 파일을 선택하세요.
 
 | 버튼 | 파일 |
@@ -26,7 +26,7 @@ SillyTavern 데이터를 Marinara Engine으로 가져옵니다. 파일을 하나
 | **Import Preset (JSON)** | `.json` 프리셋입니다. |
 | **Import Lorebook (JSON)** | `.json` World Info 파일입니다. |
 
-이 버튼들에는 선택 옵션이 없습니다. 캐릭터를 가져올 때는 원본 태그를 모두 유지하고, 정규식 스크립트는 해당 캐릭터에만 적용되도록 범위를 지정합니다. 정규식 스크립트는 텍스트를 바꾸는 찾아 바꾸기 규칙입니다. 이런 옵션을 직접 고르려면 Characters 패널의 **Import**를 쓰세요. [캐릭터 카드 가져오기와 내보내기](../characters/import-export.md) 문서를 참고하세요.
+버튼 위의 **Tag imported**(가져옴 태그 지정)와 **Tag source**(출처 태그 지정)는 기본으로 켜져 있으며, 가져오는 항목에 **Imported**(가져옴)와 **ST** 태그를 붙입니다. 붙이지 않을 태그의 체크를 해제하세요. 가져온 항목은 원래 이름과 설명을 유지합니다. 그 밖에 이 버튼들에는 선택 옵션이 없습니다. 캐릭터를 가져올 때는 원본 태그를 모두 유지하고, 정규식 스크립트는 해당 캐릭터에만 적용되도록 범위를 지정합니다. 정규식 스크립트는 텍스트를 바꾸는 찾아 바꾸기 규칙입니다. 이런 옵션을 직접 고르려면 **Library → Characters**(라이브러리 → 캐릭터) 페이지의 **Import**를 쓰세요. [캐릭터 카드 가져오기와 내보내기](../characters/import-export.md) 문서를 참고하세요.
 
 캐릭터 카드에 로어북이 들어 있으면 브라우저가 그 로어북을 독립 로어북으로 가져올지 묻습니다. 재사용할 수 있는 로어북으로 남기려면 **OK**를 클릭하고, 캐릭터만 가져오려면 **Cancel**을 클릭하세요.
 
@@ -38,9 +38,9 @@ SillyTavern 데이터를 Marinara Engine으로 가져옵니다. 파일을 하나
 
 ## SillyTavern 폴더 가져오기
 
-시작하기 전에 알아 둘 점이 있습니다. 마법사는 서버 컴퓨터에 있는 파일을 읽습니다. SillyTavern이 다른 컴퓨터에 있다면 먼저 SillyTavern을 설치한 폴더를 Marinara 컴퓨터로 복사하세요. Marinara 컴퓨터에서는 마법사가 바로 동작합니다. 다른 기기에서 쓰려면 관리자 시크릿을 설정하고 **Settings -> Advanced -> Admin Access**에 입력하세요. [Marinara 백업과 복원](backup-and-restore.md) 문서와 [서버 설정 참고 문서](../CONFIGURATION.md)의 "Privileged APIs (ADMIN_SECRET)" 섹션을 참고하세요.
+시작하기 전에 알아 둘 점이 있습니다. 마법사는 서버 컴퓨터에 있는 파일을 읽습니다. SillyTavern이 다른 컴퓨터에 있다면 먼저 SillyTavern을 설치한 폴더를 Marinara 컴퓨터로 복사하세요. Marinara 컴퓨터에서는 마법사가 바로 동작합니다. 다른 기기에서 쓰려면 관리자 시크릿을 설정하고 **Settings → Advanced → Security**(설정 → 고급 → 보안)에 입력하세요. [Marinara 백업과 복원](backup-and-restore.md) 문서와 [서버 설정 참고 문서](../CONFIGURATION.md)의 "Privileged APIs (ADMIN_SECRET)" 섹션을 참고하세요.
 
-1. **Settings -> Imports -> SillyTavern Import**를 여세요.
+1. **Settings → Data → SillyTavern Import**를 여세요.
 2. **Import from SillyTavern Folder**를 클릭하세요.
 3. SillyTavern 폴더를 선택하세요. 보통 `data/`나 `public/` 폴더가 들어 있는 최상위 폴더를 고르세요. 다음 방법 중 하나를 쓰세요.
    - **Browse**를 클릭해 폴더를 고릅니다.
@@ -64,7 +64,7 @@ SillyTavern 데이터를 Marinara Engine으로 가져옵니다. 파일을 하나
 **Imported regex scripts**(기본값 **Character only**):
 
 - **Character only**는 스크립트를 각 캐릭터에만 적용합니다.
-- **Global**은 모든 채팅에 적용되도록 **Presets -> Regexes**에 추가합니다.
+- **Global**은 **Presets → Regexes**에 추가합니다. 이곳에서 여러 채팅에 걸쳐 실행되는 스크립트를 관리할 수 있습니다. [정규식 스크립트](../extending/regex-scripts.md#manage-your-scripts)를 참고하세요.
 
 가져오기가 되지 않았다면 다음을 확인하세요.
 
@@ -77,6 +77,7 @@ SillyTavern 데이터를 Marinara Engine으로 가져옵니다. 파일을 하나
 - 한 캐릭터에 속한 채팅 파일은 하나의 채팅의 분기로 가져옵니다. 분기는 따로 이어 갈 수 있는 채팅 사본입니다.
 - 그룹 채팅은 Roleplay 채팅으로 들어옵니다.
 - 가져온 항목은 가져오기를 실행한 날짜가 아니라 원본 파일의 마지막 변경 날짜를 그대로 씁니다.
+- **Import Selected** 위의 **Tag imported**나 **Tag source** 체크를 해제하지 않으면 캐릭터, 페르소나, 로어북, 프리셋, 채팅에 **Imported**와 **ST** 태그가 붙습니다. 이름과 설명은 원래대로 유지됩니다.
 
 ## 옮겨지지 않는 것
 

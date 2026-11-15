@@ -41,6 +41,85 @@ Le sens du nombre dépend du type : `dice-sum` l'ajoute au jet ; `dice-pool` et 
 - `unmodified` : faces d'un seul dé que le registre signale quand le premier dé les montre (1.136), pour pouvoir appliquer les tables qui traitent à part "un 66 non modifié" : `[66, 100]`. Le registre indique `unmodified="66"`, la carte aussi, et le Game Master a pour consigne d'appliquer ce que les règles en disent.
 - `difficultyLadder` : difficultés parmi lesquelles le GM doit choisir. `dc` est le nombre que le total doit atteindre. Le Game Master peut nommer un palier au lieu d'écrire son nombre, comme `difficulty="Hard"`, et le moteur lit le nombre sur ce palier.
 
+#### Deux dés nommés
+
+Un test par somme peut lancer deux dés qui portent chacun un nom, quand l'histoire dépend de celui qui a obtenu le plus haut résultat (Capability API 1.821). Un ensemble de règles communautaire n'a besoin de rien ; un ensemble en package déclare 1.821.
+
+```json
+"dice": { "count": 2, "sides": 12 },
+"duality": {
+  "dice": [{ "id": "hope", "label": "Hope" }, { "id": "fear", "label": "Fear" }],
+  "tieIsCritical": true,
+  "text": "With Hope the player gains a Hope; with Fear the Game Master gains a Fear."
+}
+```
+
+- `dice` : les deux noms, dans l'ordre où les dés sont lancés. Le premier dé de `rolls` est le premier nommé.
+- `tieIsCritical` : facultatif, `true` sauf indication contraire. Une égalité donne alors une réussite critique, quel que soit le total.
+- `text` : facultatif. Une ligne qui indique au Game Master ce que chaque dé signifie à la table.
+
+Le total reste la somme des deux dés et du modificateur, comparée à la difficulté comme d'habitude. Le registre indique le dé qui a obtenu le plus haut résultat, `duality="Hope"`, ou `duality="tie"`, la carte de dés l'affiche, et le Game Master reçoit la consigne de raconter le test selon ce dé.
+
+`duality` exige `dice.count` à 2, des faces ordinaires (pas de `faces`), aucun `openEnded` et `advantage` à false, et les deux identifiants doivent être différents. Les deux libellés doivent aussi être différents, et aucun ne peut être `tie`, car le registre désigne le dé dominant par son libellé. Une surcharge peut le définir ou le supprimer pour certains tests.
+
+#### Un dé d'intrigue
+
+Un test par somme peut lancer un dé supplémentaire dont les faces portent des symboles plutôt que des nombres (Capability API 1.822). Un ensemble de règles communautaire n'a besoin de rien ; un ensemble en package déclare 1.822.
+
+```json
+"plotDie": {
+  "label": "Plot die",
+  "sides": 6,
+  "faces": [
+    { "face": 1, "symbol": "complication", "bonus": 2 },
+    { "face": 2, "symbol": "complication", "bonus": 4 },
+    { "face": 5, "symbol": "opportunity" },
+    { "face": 6, "symbol": "opportunity" }
+  ],
+  "text": "A complication goes wrong alongside the result; an opportunity offers something more."
+}
+```
+
+- `label` : le nom du dé sur la carte et pour le Game Master.
+- `sides` : de 2 à 20.
+- `faces` : les faces qui portent quelque chose. Chacune a un `symbol`, `"complication"`, `"opportunity"` ou `null`, et un `bonus` facultatif (de -20 à 20) ajouté au total. Une face absente de la liste est vierge.
+- `text` : facultatif. Une ligne qui indique au Game Master ce que les symboles signifient à la table.
+
+Le dé n'est lancé que si le Game Master le demande, en ajoutant `plot="true"` au test. Il est lancé après les dés du test et ne fait pas partie de `rolls`. Le registre indique `plotFace="2" plotSymbol="complication" plotBonus="4" plotLabel="Plot die"`. Le bonus est compris dans `modifier`, pour que la somme des dés et du modificateur reste égale au total. La carte de dés indique le résultat du dé.
+
+Chaque face indiquée doit exister sur le dé et n'être listée qu'une fois.
+
+#### Un total naturel et une bande déplacée
+
+Deux clés facultatives couvrent les systèmes par somme qui lisent des paliers sur plusieurs dés (Capability API 1.823). Un ensemble de règles communautaire n'a besoin de rien ; un ensemble en package déclare 1.823.
+
+```json
+"dice": { "count": 2, "sides": 10 },
+"naturalTotal": { "atLeast": 19 },
+"tierShift": { "max": 1, "text": "A double edge is +1, a double bane -1." }
+```
+
+- `naturalTotal` : le total des dés seuls, avant tout ajout, qui donne un critique. `atLeast` donne une réussite critique et `atMost` un échec critique ; indique l'un ou les deux. Cela fonctionne avec n'importe quel nombre de dés, alors que `naturals` exige un seul dé. Un critique tombe dans la bande `on` correspondant à ce critique, ou sinon dans la meilleure ou la pire bande.
+- `tierShift` : permet au Game Master de déplacer la bande de résultat d'un test avec `shift="+1"` ou `shift="-1"`, jusqu'à `max` bandes (de 1 à 3), sans jamais dépasser les extrémités. Cela exige `outcomes`. Le registre indique `shift="+1"` quand la bande a changé, et la carte de dés le signale. `text` est une ligne facultative qui indique au Game Master quand l'utiliser.
+
+Un bonus fixe comme le +2 d'un avantage simple est un nombre, ajouté par le modificateur d'un état. `tierShift` sert aux règles qui déplacent une bande entière.
+
+Chaque borne de `naturalTotal` doit être un total possible avec les dés (2d10 donne de 2 à 20, en passant par `dice.faces` si l'ensemble de règles les définit), et `atMost` doit être inférieur à `atLeast`.
+
+#### Un test sans dés
+
+Certains systèmes ne lancent aucun dé : dans Amber et Nobilis, un test compare une valeur à une difficulté, et la plus haute l'emporte (Capability API 1.825). Un ensemble de règles communautaire n'a besoin de rien ; un ensemble en package déclare 1.825.
+
+```json
+"kind": "dice-sum",
+"dice": { "count": 0, "sides": 6 },
+"abilityModifier": { "op": "identity" }
+```
+
+Le total est le nombre de la fiche du personnage, comparé à la difficulté exactement comme pour un test par somme : mêmes attribut, maîtrise, `adjust` et pénalité de blessure, mêmes bandes de résultat, échelles et surcharges. Le registre indique `dice="0d6" rolls=""` avec le modificateur et le total, la carte de dés affiche la comparaison ("Warfare 4 vs 3") plutôt qu'un dé, et le Game Master est informé que le moteur compare au lieu de lancer des dés.
+
+Tout ce qui lit un dé est refusé ici, pour qu'un test sans dés ne puisse pas ignorer silencieusement une clé qui en exige un : `advantage`, `openEnded`, `unmodified`, `dice.faces`, `duality`, `plotDie`, `naturalTotal` et une politique `naturals`. Une surcharge peut toujours donner leurs propres dés à certains tests.
+
 ### `dice-pool` : lancer les dés et les compter
 
 Le nombre de la fiche est la **taille de la réserve**, pas un bonus ajouté. Une valeur de 3 et un métier valant 2 lancent cinq dés. C'est tout le principe : aucun nouveau vocabulaire de fiche ni nouvel éditeur ; un système aux valeurs exprimées en poignées de dés utilise les mêmes `abilities`, `skills` et `proficiencyTiers` que les autres.
@@ -79,6 +158,8 @@ Le nombre de la fiche est la **taille de la réserve**, pas un bonus ajouté. Un
 - `botch` : facultatif. Si **aucun** dé n'a réussi et qu'une face égale ou inférieure à `upTo` est sortie, le test est un échec critique. Une réserve dont l'unique réussite a été annulée a échoué, mais n'a pas fait de maladresse critique. `"rule": "halfOrMore"` le lit autrement : des faces égales ou inférieures à `upTo` sur au moins la moitié des dés lancés au départ (explosions non comptées) donnent un échec critique si aucun dé n'a réussi ; sinon, le résultat est maintenu et marqué `complication="true"`, quelque chose tourne mal en même temps. `"noSuccesses"` est la valeur par défaut.
 - `exceptional` : facultatif. Ce nombre de réussites nettes ou plus, sur un test réussi, donne une réussite critique.
 - `situationalDice` : facultatif. Limites des dés ajoutés ou retirés par le GM avec `bonus=` pour une prouesse, des blessures ou une mauvaise lumière.
+- `pairs` : facultatif (Capability API 1.824). `{ "from": 10, "successes": 4 }` fait compter chaque paire de dés montrant `from` ou plus comme `successes` réussites à eux deux, là où chacun aurait compté pour une, et un test réussi avec une paire est une réussite critique. Trois 10 donnent une paire et un dé supplémentaire : cinq. `from` est égal ou supérieur à la cible maximale, et `pairs` ne peut pas coexister avec `double` ou `stances`.
+- `hunger` : facultatif (Capability API 1.824). `{ "label": "Hunger", "max": 5, "text": "..." }` permet à un maximum de `max` dés de la réserve d'être des dés spéciaux. Le Game Master les demande sur un test avec `hunger="N"`, généralement lu sur une piste de la fiche. Ce sont les premiers dés de `rolls`, ils font partie de la réserve (jamais des dés supplémentaires), et aucune relance ne les touche. Une réussite critique avec l'un d'eux sur la face critique (celle de `pairs`, ou la plus haute du dé) est marquée `messy="true"`, et un échec avec l'un d'eux montrant 1 est marqué `bestial="true"`. Le registre indique aussi `hunger="2" hungerLabel="Hunger"`, et la carte de dés affiche le tout. `max` ne peut pas dépasser `pool.max`.
 - `reroll` : facultatif. Des relances que le système accorde sans que personne ne les paie, jusqu'à six, chacune avec un `id` que le Game Master nomme sur un test avec `reroll=`. Les faces égales ou inférieures à `upTo` sont relancées : `"once"`, et la nouvelle face reste quelle qu'elle soit, ou `"until"`, jusqu'à ce qu'elles montrent plus. `upTo` va de 1 au nombre de faces du dé moins un, puisqu'une relance de toutes les faces ne s'arrêterait jamais, et un `until` s'arrête de toute façon après cent relances sur un même test. Aucune n'est lancée si le test ne la nomme pas. Un test lance une seule relance : si une dépense ou une entrée utilisée par le personnage en a aussi acheté une, celle qui atteint le plus de faces est lancée, et `until` l'emporte sur `once` à faces égales.
 - `difficultyLadder` : `successes` indique le nombre de réussites nécessaire. Un palier peut nommer un `target`, seulement si la cible est réglable et dans ses limites. C'est avec cette cible que compte un test à ce palier : quand le Game Master nomme le palier avec `difficulty=`, ou écrit un `dc=` qu'exige un seul palier. Si plusieurs paliers exigent le même nombre de réussites, `dc=` seul ne peut pas dire lequel était visé : la cible reste celle par défaut ; nomme le palier.
 

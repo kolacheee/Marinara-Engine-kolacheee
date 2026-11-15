@@ -12,7 +12,7 @@ Game Mode(게임 모드)는 Marinara Engine을 AI 게임 마스터가 진행하�
 
 나머지는 모두 선택 사항이고 기본값은 꺼짐입니다. 나중에 추가해도 됩니다.
 
-- **이미지.** **Illustrator** 에이전트가 NPC 초상화, 장소 배경, 장면 그림을 그립니다. **Agents → Agent Organizer**(에이전트 → Agent Organizer)에서 다운로드하세요. 이미지 계정이 필요합니다. 없어도 이야기, 상태 추적, 전투는 그대로 쓸 수 있지만 그림 영역은 비어 있습니다.
+- **이미지.** **Illustrator** 에이전트가 NPC 초상화, 장소 배경, 장면 그림을 그립니다. **Library → Agents**(라이브러리 → 에이전트)에서 다운로드하세요. 이미지 계정이 필요합니다. 없어도 이야기, 상태 추적, 전투는 그대로 쓸 수 있지만 그림 영역은 비어 있습니다.
 - **내장 모델의 장면 효과.** Marinara는 내 컴퓨터에서 작은 모델을 직접 돌려 추가 비용 없이 배경과 음악을 고를 수 있습니다. 이 모델을 다운로드하면 기본 **Scene effects model**(장면 효과 연결)이 됩니다. 그 전까지 기본값은 **Skip - use inline tags from GM**(건너뛰기 - GM의 인라인 태그 사용)입니다. [내장 모델 설정](../connections/local-model.md)을 참고하세요.
 - **스토리보드.** Storyboard 에이전트를 다운로드한 다음 게임에서 켜세요. [스토리보드 에이전트 가이드](storyboard.md)를 참고하세요.
 - **동영상.** 동영상 계정은 장면 동영상이나 움직이는 스토리보드를 쓸 때만 필요합니다.
@@ -20,7 +20,7 @@ Game Mode(게임 모드)는 Marinara Engine을 AI 게임 마스터가 진행하�
 
 ## 게임 시작하기
 
-1. 채팅 사이드바에서 **GM**(게임) 탭을 열고 **+** 버튼, 즉 **New Game**(새 게임)을 클릭하세요. 또는 홈 화면에서 **Game**(게임)을 클릭하세요. 설정 마법사가 열립니다. [채팅 목록 관리](../chats/managing-chats.md)를 참고하세요.
+1. **Chats**(채팅) 사이드바에서 **Game**(게임) 탭을 열고 **New**(**New Game**(새 게임))를 클릭하세요. 또는 홈 화면에서 **Game**을 클릭하세요. 설정 마법사가 열립니다. [채팅 목록 관리](../chats/managing-chats.md)를 참고하세요.
 2. 첫 단계에서 GM을 구동할 **Model**(모델)을 고르세요. 전에 추가한 계정을 선택하세요. 목록이 비어 있으면 먼저 계정을 추가하세요. 월드 생성에는 성능 좋은 유료 모델을 고르세요([모델 고르기](#choosing-a-model) 참고).
 3. 단계마다 **Next**(다음)를 클릭하세요. 나머지 입력란에는 모두 기본값이 있으므로 그대로 넘어가도 됩니다.
 4. 마지막 단계에서 **Create world**(세계 생성)를 클릭하세요. Marinara가 세계를 만드는 동안 버튼에 **Generating World…**(월드 생성 중…)가 표시됩니다. 모델에 보내는 큰 요청 하나이므로 끝날 때까지 기다리세요.
@@ -37,7 +37,7 @@ Game Mode(게임 모드)는 Marinara Engine을 AI 게임 마스터가 진행하�
 | 단계 | 설정하는 항목 |
 |---|---|
 | **Connection** | **Game Name**(게임 이름), GM을 구동할 **Model**, 선택 사항인 **Scene effects model**입니다. **Game Mode** 카드에는 지금은 **VN**만 표시됩니다([VN 또는 Overworld](#vn-or-overworld) 참고). |
-| **World** | 장르, 배경, 분위기, 난이도, 콘텐츠 등급, 언어입니다. **Combat Preference**(전투 방식 설정)는 **Turn-Based** 또는 **Tactical**(전술)입니다. 새 게임은 모두 **MRPG**(Marinara RPG) 클래스로 플레이합니다([MRPG 클래스](mrpg-classes.md) 참고). 규칙 집합이 설치되어 있으면 **Rules**(규칙) 선택지가 나타납니다([규칙 선택](#choose-rules) 참고). |
+| **World** | 장르, 배경, 분위기, 난이도, 콘텐츠 등급, 이야기 스타일, 폭력, 콘텐츠 제한, 언어입니다. **Combat Preference**(전투 방식 설정)는 **Turn-Based** 또는 **Tactical**(전술)입니다. 새 게임은 모두 **MRPG**(Marinara RPG) 클래스로 플레이합니다([MRPG 클래스](mrpg-classes.md) 참고). 규칙 집합이 설치되어 있으면 **Rules**(규칙) 선택지가 나타납니다([규칙 선택](#choose-rules) 참고). |
 | **Party** | 내 페르소나(직접 연기할 캐릭터), **Game Master Mode**, 파티원, **GM intro message**(GM 도입 메시지)입니다([GM 도입 메시지](#the-gm-intro-message) 참고). 파티원마다 시작할 MRPG 트리는 카드의 **Game Mode** 섹션에서 가져옵니다([캐릭터의 트리 고르기](mrpg-classes.md#choose-a-characters-trees) 참고). |
 | **Goals** | 이 모험에서 바라는 것입니다. |
 | **Lorebooks** | GM이 정해진 사실로 다루는 로어북입니다. 로어북은 세계의 배경 사실을 모아 둔 것입니다. [로어북](../lorebooks/overview.md)을 참고하세요. |
@@ -57,7 +57,9 @@ Game Mode(게임 모드)는 Marinara Engine을 AI 게임 마스터가 진행하�
 | Genre | Fantasy | 여러 개 고를 수 있으며 직접 입력한 항목도 추가할 수 있습니다. 세계관 키트를 먼저 고르면 키트가 자체 장르를 설정합니다. |
 | Tone | Heroic | 여러 개 고를 수 있습니다. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard**, **Brutal** 중에서 고릅니다. 높을수록 전투가 어려워집니다. MRPG 게임에서는 적의 수가 늘고 더 강한 적이 나옵니다([MRPG 게임의 전투](combat.md#battles-in-an-mrpg-game) 참고). Legacy 게임에서는 적의 공격이 더 세게 들어갑니다([난이도 보정](combat.md#difficulty-scaling) 참고). |
-| Content Rating | SFW | **SFW** 또는 **NSFW**입니다. NSFW는 성인용 콘텐츠를 허용할 뿐 강제하지 않습니다. |
+| 콘텐츠 등급(성적 콘텐츠) | SFW | **SFW** 또는 **NSFW**입니다. 성적 콘텐츠만 결정합니다. NSFW는 노골적인 장면을 허용할 뿐 강제하지 않습니다. |
+| 이야기 스타일 | 표준 | **Standard**(표준) 또는 **Gentle**(온화함)입니다. [콘텐츠와 이야기 스타일](#content-and-story-style)을 참고하세요. |
+| 폭력 | 심각함(NSFW에서는 노골적) | **Mild**(경미함), **Serious**(심각함), **Graphic**(노골적) 중 하나입니다. |
 | Language | English | 게임 속 모든 글이 이 언어로 작성됩니다. |
 | Game Master Mode | Standalone GM | **Character GM**(캐릭터 GM)은 내 캐릭터 카드 하나를 GM으로 씁니다. |
 | Scene effects model | Built-in model | 내장 모델을 다운로드한 뒤에만 해당합니다. 그 전까지 기본값은 **Skip - use inline tags from GM**입니다. |
@@ -68,6 +70,18 @@ Game Mode(게임 모드)는 Marinara Engine을 AI 게임 마스터가 진행하�
 | Quick Time Events | On | 스크린 리더로 플레이하거나 시간 제한 없이 플레이하려면 끄세요. |
 | Start Muted | Off | 모든 소리를 끈 상태로 게임을 시작합니다. |
 | Game Presentation | Standard | 아래를 참고하세요. |
+
+### 콘텐츠와 이야기 스타일
+
+**World** 단계에는 이야기에 무엇이 포함될 수 있는지 정하는 다음 설정이 있습니다. 진행 중인 게임에서는 모두 **Chat Settings → Prompt Preset**(채팅 설정 → 프롬프트 프리셋)에 있습니다.
+
+- **Content Rating (sexual content)**(콘텐츠 등급(성적 콘텐츠)): **SFW**는 로맨스와 애정 표현을 유지하고 성행위 장면은 직접 묘사하지 않습니다. **NSFW**는 이를 노골적으로 묘사할 수 있게 합니다. 폭력이나 분위기에는 영향을 주지 않습니다.
+- 등급 아래의 **Edit rating guidelines**(등급 지침 편집)는 게임 마스터가 게임의 콘텐츠 규칙으로 받는 텍스트를 보여 줍니다. 게임에 맞게 바꾸세요. **Reset to default**(기본값으로 초기화)는 해당 등급의 기본값을 되돌립니다. 텍스트를 바꾸지 않으면 기본값을 따르므로 이후 개선 사항도 게임에 반영됩니다. 진행 중인 게임에서는 **Rating guidelines**(등급 지침)입니다.
+- **Story style**(이야기 스타일): **Standard**는 긴장감을 선명하게 유지하여 실수와 불운이 실질적인 결과로 이어집니다. **Gentle**은 부담이 적은 이야기를 위한 설정입니다. 좌절이 처벌이나 트라우마로 이어지지 않고, 캐릭터가 통제할 수 없는 일에는 판정을 덜 하며, 위로와 회복의 여유를 둡니다.
+- **Violence**(폭력): 콘텐츠 등급과 별도로 **Mild**, **Serious**, **Graphic** 중에서 정합니다. 직접 고르지 않으면 SFW에서는 **Serious**, NSFW에서는 **Graphic**입니다.
+- **Content boundaries**(콘텐츠 제한): `harm to animals`처럼 게임 마스터가 이야기에서 제외할 주제를 한 줄에 하나씩 적습니다. 어떤 스타일이나 등급에서도 엄격한 제한으로 적용되며, 직접 작성한 등급 지침으로도 없앨 수 없습니다. AI가 이야기를 쓰므로 적어 둔 주제가 절대 등장하지 않는다고 보장할 수는 없습니다.
+
+프롬프트 프리셋에도 이 설정을 담을 수 있습니다. 프리셋의 **Prompts**(프롬프트) 탭에서 **Game story settings**(게임 이야기 설정)의 **Bring story settings to games that use this preset**(이 프리셋을 사용하는 게임에 이야기 설정 적용)를 사용하세요. 프리셋의 폭력 설정은 **Follow rating**(등급 따르기)으로 둘 수도 있습니다. 게임에 이 프리셋을 고르면 스타일과 폭력이 설정되고 게임 자체의 콘텐츠 제한에 프리셋의 제한이 추가됩니다. 게임에서 시작한 장면은 게임의 등급, 지침, 폭력, 스타일, 콘텐츠 제한을 따릅니다.
 
 <a id="choose-rules"></a>
 

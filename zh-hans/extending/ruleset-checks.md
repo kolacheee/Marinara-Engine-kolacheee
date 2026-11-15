@@ -41,6 +41,85 @@
 - `unmodified`：单颗骰子的若干点数，第一颗骰子显示这些点数时，记录会加以标记（1.136），这样就能应用那些单独处理“未修正的 66”的表：`[66, 100]`。记录写明 `unmodified="66"`，骰子卡也会显示，Game Master 会被告知按规则对它的规定处理。
 - `difficultyLadder`：向 Game Master 提供的难度候选。`dc` 是总和必须达到的数字。Game Master 也可以不写数字，而是直接点名某一档，如 `difficulty="Hard"`，Engine 会从该档读出数字。
 
+#### 两颗有名字的骰子
+
+求和检定可以掷两颗各有名字的骰子，由哪颗点数更高决定故事走向（Capability API 1.821）。社区规则集无需额外声明；打包的规则集需声明 1.821。
+
+```json
+"dice": { "count": 2, "sides": 12 },
+"duality": {
+  "dice": [{ "id": "hope", "label": "Hope" }, { "id": "fear", "label": "Fear" }],
+  "tieIsCritical": true,
+  "text": "With Hope the player gains a Hope; with Fear the Game Master gains a Fear."
+}
+```
+
+- `dice`：两个名字，按掷骰顺序排列。`rolls` 中的第一颗骰子对应第一个名字。
+- `tieIsCritical`：可选，未指定时为 `true`。此时点数相同就算大成功，不论总和多少。
+- `text`：可选。用一行文字告诉 Game Master 每颗骰子在游戏中意味着什么。
+
+总和仍然是两颗骰子加修正值，照常与难度比较。记录会写明哪颗点数更高，如 `duality="Hope"`，或写 `duality="tie"`；骰子卡也会显示，Game Master 会被告知按对应骰子来叙述检定。
+
+`duality` 要求 `dice.count` 为 2，使用普通骰面（没有 `faces`），没有 `openEnded`，且 `advantage` 为 false。两个 ID 必须不同，两个标签也必须不同，且都不能是 `tie`，因为记录通过标签指出领先的骰子。覆盖设置可以为某些检定设置或移除它。
+
+#### 剧情骰
+
+求和检定可以额外掷一颗骰面带有符号而非数字的骰子（Capability API 1.822）。社区规则集无需额外声明；打包的规则集需声明 1.822。
+
+```json
+"plotDie": {
+  "label": "Plot die",
+  "sides": 6,
+  "faces": [
+    { "face": 1, "symbol": "complication", "bonus": 2 },
+    { "face": 2, "symbol": "complication", "bonus": 4 },
+    { "face": 5, "symbol": "opportunity" },
+    { "face": 6, "symbol": "opportunity" }
+  ],
+  "text": "A complication goes wrong alongside the result; an opportunity offers something more."
+}
+```
+
+- `label`：骰子卡上及向 Game Master 展示的骰子名称。
+- `sides`：2 到 20。
+- `faces`：带有效果的骰面。每个都有一个 `symbol`，取 `"complication"`、`"opportunity"` 或 `null`，还可以有加到总和上的 `bonus`（-20 到 20）。未列出的骰面为空白。
+- `text`：可选。用一行文字告诉 Game Master 这些符号在游戏中意味着什么。
+
+只有 Game Master 在检定中添加 `plot="true"` 时才会掷这颗骰子。它在检定自身的骰子之后掷出，不属于 `rolls`。记录写作 `plotFace="2" plotSymbol="complication" plotBonus="4" plotLabel="Plot die"`。加值计入 `modifier`，因此骰子和修正值相加仍等于总和。骰子卡会显示剧情骰的结果。
+
+每个列出的骰面都必须是该骰子实际拥有的骰面，且只能列一次。
+
+#### 自然总和与结果档移动
+
+两个可选键用于根据多颗骰子读取结果档的求和系统（Capability API 1.823）。社区规则集无需额外声明；打包的规则集需声明 1.823。
+
+```json
+"dice": { "count": 2, "sides": 10 },
+"naturalTotal": { "atLeast": 19 },
+"tierShift": { "max": 1, "text": "A double edge is +1, a double bane -1." }
+```
+
+- `naturalTotal`：加上任何修正之前，骰子自身总和触发大成功或大失败的条件。`atLeast` 触发大成功，`atMost` 触发大失败，可以提供其中一个或两个。它适用于任意数量的骰子，而 `naturals` 要求单颗骰子。大成功或大失败会落入 `on` 对应该结果的档位，否则落入最好或最差档位。
+- `tierShift`：允许 Game Master 用 `shift="+1"` 或 `shift="-1"` 移动一次检定的结果档，最多移动 `max` 档（1 到 3），且不能越过两端。它需要 `outcomes`。档位移动时，记录会写出 `shift="+1"`，骰子卡也会显示。`text` 是可选的一行说明，告诉 Game Master 何时使用。
+
+单个优势带来的 +2 之类固定加值是一个数字，由状态的修正值加上。`tierShift` 则用于移动整个档位的规则。
+
+`naturalTotal` 的每个界限都必须是骰子可能掷出的总和（2d10 为 2 到 20；规则集提供 `dice.faces` 时按它读取），且 `atMost` 必须低于 `atLeast`。
+
+#### 不掷骰的检定
+
+有些系统完全不掷骰：Amber 和 Nobilis 的检定将评级与难度比较，较高者获胜（Capability API 1.825）。社区规则集无需额外声明；打包的规则集需声明 1.825。
+
+```json
+"kind": "dice-sum",
+"dice": { "count": 0, "sides": 6 },
+"abilityModifier": { "op": "identity" }
+```
+
+总和就是人物卡自身的数字，与求和检定一样和难度比较：使用相同的属性、熟练度、`adjust` 和伤势减值，以及相同的结果档、难度梯度和覆盖设置。记录写出 `dice="0d6" rolls=""`、修正值和总和；骰子卡显示比较（“Warfare 4 vs 3”）而非骰子；Game Master 会被告知引擎执行的是比较而非掷骰。
+
+这里会拒绝所有读取骰子的设置，避免不掷骰的检定默默忽略需要骰子的键：`advantage`、`openEnded`、`unmodified`、`dice.faces`、`duality`、`plotDie`、`naturalTotal` 和 `naturals` 策略。覆盖设置仍可为特定检定指定骰子。
+
 ### `dice-pool`：掷骰并计数
 
 人物卡数字代表**骰池大小**，而不是额外加值。评级 3 加专业技能 2 就掷五颗骰子。原理仅此而已：无需新人物卡词汇或编辑器，评级代表一把骰子的系统同样使用 `abilities`、`skills` 和 `proficiencyTiers` 编写。
@@ -79,6 +158,8 @@
 - `botch`：可选，**没有任何**骰子成功，且出现不高于 `upTo` 的点数时为大失败。唯一一次成功被抵消的骰池是普通失败，不是大失败。`"rule": "halfOrMore"` 换一种读法：首次掷出的骰子（不计爆骰）中至少一半点数不高于 `upTo` 时，若没有骰子成功就是大失败；否则结果照常成立，并标记 `complication="true"`，表示同时出了岔子。默认值是 `"noSuccesses"`。
 - `exceptional`：可选，成功的检定净成功数达到此值或更多时为大成功。
 - `situationalDice`：可选，Game Master 为特技、伤势或昏暗照明等情境，用 `bonus=` 对单次检定增减骰子的范围。
+- `pairs`：可选（Capability API 1.824）。`{ "from": 10, "successes": 4 }` 让每对点数达到或超过 `from` 的骰子合计为 `successes` 次成功，原本这两颗各计一次；以这样一对骰子成功的检定算大成功。三个 10 是一对加一颗，共五次成功。`from` 必须不低于最高目标，`pairs` 不能与 `double` 或 `stances` 并用。
+- `hunger`：可选（Capability API 1.824）。`{ "label": "Hunger", "max": 5, "text": "..." }` 允许骰池中最多 `max` 颗为特殊骰子。Game Master 在检定中用 `hunger="N"` 请求它们，通常从人物卡的某条轨道读取数量。它们是 `rolls` 中最前面的骰子，属于骰池（绝不是额外骰子），任何重掷都不会动它们。大成功时，如果其中一颗处于大成功骰面（`pairs` 指定的骰面，或该骰子的最高点数），就标记 `messy="true"`；失败时，如果其中一颗为 1，就标记 `bestial="true"`。记录还会写出 `hunger="2" hungerLabel="Hunger"`，骰子卡显示全部信息。`max` 不能大于 `pool.max`。
 - `reroll`：可选，系统免费给予的重掷，最多六项，每项有一个 `id`，Game Master 在检定中用 `reroll=` 点名。点数不高于 `upTo` 的骰子会再掷一次：`"once"` 表示新点数无论是多少都保留，`"until"` 则一直重掷到点数更高为止。`upTo` 取 1 到骰子面数减一，因为重掷所有点数永远不会停下；`until` 在单次检定重掷一百次后也会停止。检定不点名就不会重掷。一次检定只进行一次重掷：如果角色的消耗或使用的条目也买了一次，就采用覆盖点数更多的那一次，覆盖相同时 `until` 优先于 `once`。
 - `difficultyLadder`：`successes` 是要求的成功次数。某一档也可指定 `target`，但仅当目标可调且在范围之内时有效。该档的检定就按这个目标计数：Game Master 用 `difficulty=` 点名该档时，或者写下恰好只有一档需要的 `dc=` 时。如果几档需要相同的成功次数，单靠 `dc=` 无法说明指的是哪一档，目标就保持默认；请点名该档。
 

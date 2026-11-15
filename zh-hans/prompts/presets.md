@@ -21,12 +21,10 @@
 
 如果预设带变量，会弹出 **Configure Preset Variables**(配置预设变量) 窗口。见[预设变量](preset-variables.md)。换成另一个预设，之前的变量选择会被清空。
 
-<a id="create-a-preset"></a>
-
 ## 新建预设
 
-1. 从侧边栏打开 **Presets** 面板。
-2. 点击 **New**(新建，加号图标)，**Create Preset**(新建预设) 窗口打开。
+1. 打开 **Library → Presets**(资料库 → 预设)。资料库在右侧。
+2. 点击 **New preset**(新建预设)。**Create Preset**(新建预设) 窗口打开。
 3. 填写 **Name**(名称)。这一项必填。想的话再填一个 **Description**(描述)。
 4. 点击 **Create**(创建)。预设会在 **Preset Editor** 里打开。
 5. 在 **Sections**(小节) 选项卡里搭建提示词。
@@ -36,9 +34,22 @@
 
 要导出预设，点击顶栏的向上箭头图标（提示文字是 **Export preset**(导出预设)）。如果有未保存的改动，Marinara 会先让你保存。要删除预设，点击垃圾桶图标。
 
-## Presets 面板
+## Presets 页面
 
-面板有三个选项卡：**Presets**(预设)、**Regexes**(正则) 和 **Functions**(函数)。每个选项卡顶部都有相同的一排按钮、搜索框和 **New Folder**(新建文件夹)。在 **Presets** 选项卡中，用 **Create preset** 新建预设，用 **Import preset** 加载 `.json` 文件，或用 **Select presets** 一次导出或删除多个预设。**Regexes** 选项卡存放[正则脚本](../extending/regex-scripts.md#manage-your-scripts)，**Functions** 选项卡存放[自定义工具](../extending/custom-tools.md)。
+**Library → Presets** 以表格列出预设，列名包括 **Description**、**Sections**、**Author**(作者)、**Default**(默认) 和 **Updated**(更新时间)。顶部有 **Import**(导入，用来加载 `.json` 文件) 和 **New preset**。**All**(全部) / **Defaults**(默认值) 用来缩小列表范围，搜索框旁的 **Tags**(标签) 只显示带有所选标签的预设（导入的预设带有 **Imported**(已导入) 和来源标签，比如 **ST**），**List**(列表) / **Gallery**(图库) 用来切换视图，排序菜单提供 **Recently edited**(最近编辑)、**A to Z**(A 到 Z)、**Z to A**(Z 到 A) 和 **My order**(我的顺序)。点击预设即可打开。
+
+整理预设的方法：
+
+- 每行末尾的 **⋯** 菜单（也可以右键点击该行）提供 **Duplicate**(创建副本)、**Move to folder**(移动到文件夹)、**Export**(导出)、**Select**(选择) 和 **Delete**(删除)。**Duplicate** 会创建一份可编辑的副本并打开它，自定义内置预设就用这个方法。默认预设不能删除。
+- 把一行拖到另一行上方或下方，就能自定顺序。排序菜单会切换为 **My order**。
+- **New folder**(新建文件夹，标题旁的文件夹图标) 用来给预设分组。把预设拖到文件夹上，或用 **Move to folder**。
+- **Select**（标题旁的对勾图标）可以选择多个预设，再用底部操作栏里的 **Move to folder**、**Export**（导出为一个 `marinara-presets.zip`）或 **Delete** 批量处理。
+
+正则脚本有自己的页面：[Library → Regex scripts](../extending/regex-scripts.md)（资料库 → 正则脚本）；自定义工具也有：[Library → Custom tools](../extending/custom-tools.md)（资料库 → 自定义工具）。
+
+## 经典布局中的 Presets 面板
+
+**Presets** 选项卡包含 **Prompts**(提示词) 和 **Functions**(函数)。用 **Create preset** 新建预设，用 **Import preset** 加载 `.json` 文件，或用 **Select presets** 一次导出或删除多个预设。在 **Regexes**(正则) 选项卡里，可以把脚本整理到文件夹中，或批量开启和关闭。见[正则脚本](../extending/regex-scripts.md#manage-your-scripts)。
 
 - **Search presets**(搜索预设) 用来筛选列表。
 - 排序菜单的选项有 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest** 和 **Oldest**。选 **Manual order** 时，可以拖动一行，或者在获得焦点的行上按 <kbd>Alt</kbd>+<kbd>Up</kbd> 或 <kbd>Alt</kbd>+<kbd>Down</kbd>。在触屏上，长按一行就能把它拿起来。
@@ -62,6 +73,7 @@
 - **Description** 是简短的说明。
 - **Wrap Format**(包装格式) 决定各个小节怎么格式化（见[包装格式](#wrap-formats)）。
 - **Author**(作者) 是可选的创作者名字，分享预设时很有用。
+- **Tags** 用来给预设分类，供 Presets 页面的 **Tags** 筛选器使用。输入标签后按 Enter 添加，点击标签上的 **×** 可以移除。
 
 两张只读卡片显示 **Sections** 和 **Groups**(分组) 的数量。
 
@@ -70,6 +82,7 @@
 - **Conversation Mode**(对话模式) 是一个文本框，用来写这个预设的 Conversation 提示词。留空就用内置提示词。
 - **Roleplay Mode**(角色扮演模式) 在这里不能编辑。Roleplay 用的是你的 **Sections** 组装出来的提示词。
 - **Game Mode**(游戏模式) 是一个文本框，用来写这个预设的 Game 提示词。留空就用内置提示词。
+- **Game story settings**(游戏故事设置) 为 Game Mode 设置故事风格、暴力程度和内容边界。开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)：为游戏选择这个预设时，就会设置它的风格和暴力程度，并把这些边界添加到游戏已有的边界中。见[内容与故事风格](../game/getting-started.md#content-and-story-style)。
 
 内置的 **Marinara's Universal Preset**(Marinara 通用预设) 只提供提示词文字，不提供生成参数。它旧版保存的采样、推理、格式和 Token 设置会被忽略，改用你的账号设置、聊天覆盖值和应用默认值。要自定义它，就创建一份可编辑的副本。
 
@@ -115,7 +128,7 @@
 
 行上的控件：
 
-- **Duplicate**(复制) 复制这个小节。
+- **Duplicate**(创建副本) 复制这个小节。
 - 眼睛图标用来启用或禁用它。
 - **Delete**(删除) 把它移除。
 - 要调整顺序，可以拖动抓手、点上下箭头，或者在触屏上长按。
@@ -137,8 +150,6 @@
 - **Ordered (in sequence)**(按顺序) 让小节待在列表里它所处的位置。一般都选这个。
 - **Depth (from end of chat)**(从聊天末尾算起的深度) 按 **Depth**(深度) 数值，把小节放在从聊天末尾往前数指定条消息的位置。深度为 0 表示放在最后一条消息之后。希望模型在最新消息附近看到的提醒，就用它。
 
-<a id="wrap-formats"></a>
-
 ## 包装格式
 
 **Overview** 选项卡上的 **Wrap Format** 决定每个小节怎么包装。
@@ -152,8 +163,6 @@
 XML 适合大多数模型。只有某个模型在没有标签时回答得更好，才去试另外两种。
 
 想让某个 **Prompt Block** 不带标签或标题发出，就展开它，开启 **Send without wrapper**(不加包装发送)。分组的标签仍可能包在它外面，所以想让它完全不带包装，就把它移出分组。标记始终保留自己的包装，格式为 **NONE** 时这个开关也会隐藏。
-
-<a id="conversation-and-game-chats"></a>
 
 ## Conversation 和 Game 聊天
 
@@ -170,9 +179,7 @@ XML 适合大多数模型。只有某个模型在没有标签时回答得更好�
 
 文本框里显示正在使用的提示词。编辑它，就会生成一份只属于这个聊天的副本。如果你写的内容和预设或默认值完全一样，Marinara 就当作没有自定义。存在自定义修改时，会出现一个重置图标（提示文字是 **Reset to default prompt**(重置为默认提示词)）。
 
-Game 聊天还多两个控件。**GM prompt style**(GM 提示词风格) 只替换 Game 提示词，而聊天本地的修改仍然优先。**Extra instructions**(额外指令) 会把文字追加到 Game 提示词里，上限 2000 个字符，比如“Write in the style of Terry Pratchett.”
-
-<a id="decision-blocks-and-prompt-caching"></a>
+Game 聊天还有更多控件。**GM prompt style**(GM 提示词风格) 只替换 Game 提示词，而聊天本地的修改仍然优先。**Extra instructions**(额外指令) 会把文字追加到 Game 提示词里，上限 2000 个字符，比如“Write in the style of Terry Pratchett.”**Rating guidelines**(分级准则)、**Story style**(故事风格)、**Violence**(暴力程度) 和 **Content boundaries**(内容边界) 是游戏的内容设置；见[内容与故事风格](../game/getting-started.md#content-and-story-style)。
 
 ## 判定块与提示词缓存
 

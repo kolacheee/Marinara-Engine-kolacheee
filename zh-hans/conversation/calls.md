@@ -2,7 +2,7 @@
 
 通话是一个实时画面，类似语音聊天应用。你可以通过麦克风或打字与一个或多个角色交谈。通话进行时，它会覆盖在普通的 Conversation(对话模式) 聊天之上。通话只存在于 Conversation 模式中。
 
-通话是一个可选包。从 **Agents → Agent Organizer**(智能体管理器) 安装 **Calls**(通话)。如果目录提示你重启，请停止 Marinara，然后按你平常的方式再次启动（参见[安装指南](../INSTALLATION.md)）。
+通话是一个可选包。从 **Library → Agents**(资料库 → 智能体) 安装 **Calls**(通话)。如果目录提示你重启，请停止 Marinara，然后按你平常的方式再次启动（参见[安装指南](../INSTALLATION.md)）。
 
 通话中，已配置可用的语音合成（TTS，即把文字转换为语音）声音的角色会开口说话。没有声音的角色会在通话聊天中以文字消息回复。你也可以用循环播放的 AI 生成视频片段代替静态头像来展示角色。
 
@@ -38,17 +38,15 @@ Marinara 在你的浏览器中录制麦克风或摄像头。根据下文的输�
 
 同一区域中的总开关 **Commands** 必须开启，通话中的命令才能使用。通话本身即使在它关闭时也能开始。
 
-<a id="set-up-text-to-speech"></a>
 ### 设置语音合成
 
-语音合成决定哪些角色能开口说话，以及使用哪种声音。完整步骤请阅读 [Text to Speech (TTS) 设置](../media/tts-setup.md)。简而言之，打开 **Connections**，点击 **Add account**(添加账号)，然后选择 **Text to speech**。如果它已列在 **On this device**(在你的电脑上) 下，就直接在那里打开它。然后：
+语音合成决定哪些角色能开口说话，以及使用哪种声音。完整步骤请阅读 [Text to Speech (TTS) 设置](../media/tts-setup.md)。简要步骤如下：
 
-1. 开启语音合成。
-2. 选择来源：**OpenAI-compatible**、**ElevenLabs**、**PocketTTS** 或 **xAI Voice**。
-3. 输入该来源的 API 密钥或本地服务器地址。
-4. 选择模型和声音。
-5. 把 **Voice option**(声音选项) 设为 **One voice for all**（所有角色同一声音）或 **Selected per character or persona**（按角色或用户角色单独选择）。为每个角色单独配声，可以让群组通话更容易听清。
-6. 保存，然后使用预览按钮，确认你能听到声音。
+1. 打开 **Connections**(连接)，点击 **Defaults**(任务) 框里的 **Voice**(语音) 行。
+2. 选择一个语音模型或语音服务。选中后会开启语音合成。模型所属的账号提供密钥和地址。
+3. 点击 **Voice** 行的齿轮，打开 **Voice settings**(语音设置)。
+4. 在 **Who speaks**(谁说话) 里选择 **Shared voice**(共用声音)，或在 **Character and persona voices**(角色和人设声音) 下为角色和用户角色分别配声。为每个角色单独配声，可以让群组通话更容易听清。
+5. 点击 **Preview**(试听)，确认能听到声音。
 
 如果某个角色没有 Marinara 能解析的声音，该角色在本次通话中只能以文字参与。
 
@@ -121,7 +119,6 @@ Marinara 在你的浏览器中录制麦克风或摄像头。根据下文的输�
 
 只有在使用 **Mic recording + Local Whisper** 模式，或你想使用自己的语音识别服务器时才需要。
 
-<a id="download-local-whisper"></a>
 ### 下载 Local Whisper
 
 Local Whisper 会在运行 Marinara 的电脑上把你的语音转换为文字，因此麦克风音频不会为了转录而离开这台电脑。文字仍会作为通话的一部分发送给你的模型。对于语音支持较弱的浏览器（例如 Firefox），这是最可靠的麦克风路径。
@@ -140,12 +137,11 @@ Local Whisper 会在运行 Marinara 的电脑上把你的语音转换为文字�
 
 如果没有成功：在 Marinara 的 Lite 版本中，你会看到：“Local Whisper is disabled in Lite mode. Use a full Marinara install to download and run the local speech model.” 如果你看到关于 “native ONNX runtime” 的提示，说明你的平台缺少语音引擎。请使用运行 Marinara 时所用的同一 Node 版本重新安装依赖，然后重启。
 
-<a id="use-your-own-speech-to-text-server"></a>
 ### 使用你自己的语音识别服务器
 
 如果 Local Whisper 对你的语言或口音识别不佳，可以改为把语音发送到另一个语音识别服务器。只要接受 OpenAI 语音识别格式（即 `/audio/transcriptions` 地址）的服务器都可以使用，无论是你自己架设的，还是 OpenAI、Groq 等服务。
 
-1. 打开 **Connections**，并打开 **On this device** 下的 **Speech to text**。如果没有列出，请点击 **Add account**，然后选择 **Speech to text**。未安装 Calls 时，它会隐藏。
+1. 打开 **Connections**，点击 **Defaults** 框里 **Dictation**(听写) 行的齿轮。**Speech to text**(语音转文字) 服务器设置就在这里。未安装 Calls 时，这些设置会隐藏。
 2. 输入 **Server URL**（服务器地址），例如 `http://localhost:8000/v1`。
 3. 如果服务器需要，请输入 **API key**(API 密钥)。它会加密保存，并以掩码方式显示。
 4. 输入服务器使用的 **Model**(模型) 名称。留空则发送 `whisper-1`。
@@ -157,7 +153,7 @@ Local Whisper 会在运行 Marinara 的电脑上把你的语音转换为文字�
 
 同一台电脑上的服务器可以直接使用。网络中另一台电脑上的服务器会被拒绝，除非你在 `.env` 中设置 `STT_LOCAL_URLS_ENABLED=true`（参见[服务器配置参考](../CONFIGURATION.md)）。
 
-如果没有成功：请阅读 **Test** 下方的消息。“Could not reach the speech-to-text server” 表示地址错误或服务器已关闭。提到 `STT_LOCAL_URLS_ENABLED` 的消息表示服务器位于另一台电脑上。数字来自你的服务器：401 通常表示 API 密钥错误，404 表示地址或模型名称错误。如果通话仍在使用 Local Whisper，请从 **Agents → Agent Organizer** 更新 Calls。
+如果没有成功：请阅读 **Test** 下方的消息。“Could not reach the speech-to-text server” 表示地址错误或服务器已关闭。提到 `STT_LOCAL_URLS_ENABLED` 的消息表示服务器位于另一台电脑上。数字来自你的服务器：401 通常表示 API 密钥错误，404 表示地址或模型名称错误。如果通话仍在使用 Local Whisper，请从 **Library → Agents** 更新 Calls。
 
 ## 设置与默认值
 

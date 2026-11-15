@@ -131,7 +131,7 @@ Marinara는 데이터를 일반 JSON 파일로 보관하므로 백업을 복사�
 
 ## 타임아웃 설정
 
-타임아웃은 서버가 느린 작업을 기다리는 최대 시간입니다. **Settings → Advanced → Request timeouts**(설정 → 고급 → 요청 제한 시간)를 열면 텍스트, 에이전트, Game 이미지 프롬프트, 이미지, 동영상, ComfyUI, 임베딩의 제한 시간을 초 단위로 바꿀 수 있습니다. 제한 시간을 늘리면 느린 로컬 백엔드에 도움이 됩니다. 서비스가 정한 제한은 넘어설 수 없습니다. 저장하려면 서버 관리 권한이 필요합니다.
+타임아웃은 서버가 느린 작업을 기다리는 최대 시간입니다. **Settings → Advanced → Timeouts & Retries**(설정 → 고급 → 타임아웃 및 재시도)를 열면 텍스트, 에이전트, Game 이미지 프롬프트, 이미지, 동영상, ComfyUI, 임베딩의 제한 시간을 초 단위로 바꿀 수 있습니다. 제한 시간을 늘리면 느린 로컬 백엔드에 도움이 됩니다. 서비스가 정한 제한은 넘어설 수 없습니다. 저장하려면 서버 관리 권한이 필요합니다.
 
 이 설정은 모든 프로필에 적용되며 활성 `.env` 옆에 `.env.timeouts.json`(또는 `<custom-env-path>.timeouts.json`)으로 저장됩니다. `.env`를 고치지 않고도 해당 변수보다 우선 적용됩니다. 텍스트, 에이전트, Game 이미지 프롬프트, 임베딩 변경은 새 요청부터 적용됩니다. 미디어 변경과 설치된 에이전트 패키지는 재시작해야 적용됩니다. 변수로 돌아가려면 그 파일을 삭제하고 재시작하세요.
 
@@ -154,13 +154,13 @@ Marinara는 데이터를 일반 JSON 파일로 보관하므로 백업을 복사�
 
 ## 관리자 권한 API(ADMIN_SECRET)
 
-백업, 데이터 삭제, 업데이트 적용, 테마 설치처럼 되돌릴 수 없거나 위험한 동작에는 일반 접근 검사에 더해 시크릿이 하나 더 필요합니다. 서버가 실행 중인 컴퓨터의 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에서 만들거나([Admin Access](REMOTE_ACCESS.md#admin-access-and-privileged-actions) 참고), 서버에 길고 무작위한 값을 설정하세요.
+백업, 데이터 삭제, 업데이트 적용, 테마 설치처럼 되돌릴 수 없거나 위험한 동작에는 일반 접근 검사에 더해 시크릿이 하나 더 필요합니다. 서버가 실행 중인 컴퓨터의 **Settings → Advanced → Security**(설정 → 고급 → 보안)에서 만들거나([관리자 시크릿](REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions) 참고), 서버에 길고 무작위한 값을 설정하세요.
 
 ```text
 ADMIN_SECRET=replace-this-with-a-long-random-secret
 ```
 
-서버가 실행 중인 컴퓨터에서는 이런 동작이 대개 시크릿 없이 됩니다. 그 컴퓨터의 프록시나 터널이 전달한 요청은 `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`가 아닌 한 원격으로 간주합니다. 다른 기기에서 직접 보내는 요청에는 시크릿이 필요합니다. **Settings → Advanced → Admin Access**에 같은 값을 붙여넣으면 앱이 대신 보냅니다. `.env`의 `ADMIN_SECRET`은 앱에서 만든 시크릿보다 우선합니다. 관리자 시크릿이 없으면 서버 컴퓨터를 제외한 모든 기기에서 권한이 필요한 동작이 실패하며, 오류 메시지가 시크릿을 설정하라고 안내합니다. 설치된 에이전트는 로그인한 모든 기기에서 동작하지만, 에이전트를 설치, 업데이트, 제거하려면 시크릿이 필요합니다.
+서버가 실행 중인 컴퓨터에서는 이런 동작이 대개 시크릿 없이 됩니다. 그 컴퓨터의 프록시나 터널이 전달한 요청은 `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`가 아닌 한 원격으로 간주합니다. 다른 기기에서 직접 보내는 요청에는 시크릿이 필요합니다. **Settings → Advanced → Security**에 같은 값을 붙여넣으면 앱이 대신 보냅니다. `.env`의 `ADMIN_SECRET`은 앱에서 만든 시크릿보다 우선합니다. 관리자 시크릿이 없으면 서버 컴퓨터를 제외한 모든 기기에서 권한이 필요한 동작이 실패하며, 오류 메시지가 시크릿을 설정하라고 안내합니다. 설치된 에이전트는 로그인한 모든 기기에서 동작하지만, 에이전트를 설치, 업데이트, 제거하려면 시크릿이 필요합니다.
 
 | 변수 | 기본값 | 설명 |
 | --- | --- | --- |
@@ -172,7 +172,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `HAPTICS_ALLOW_REMOTE` | `false` | 유효한 시크릿이 있으면 원격 기기에서도 햅틱 동작을 실행할 수 있게 합니다. |
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | 사용자 지정 스크립트 도구를 켭니다. 신뢰할 수 없거나 가져온 도구라면 꺼 두세요. |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | OS 샌드박스(macOS Seatbelt 또는 Linux Bubblewrap, 있으면 사용)가 없는 호스트에서도 Professor Mari의 데이터베이스 변환 스크립트를 실행할 수 있게 합니다. 스크립트를 검토하지 않았다면 꺼 두세요. |
-| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agent Organizer에서 GitHub 에이전트 저장소를 수동으로 미리 보고 동기화할 수 있게 합니다. [사용자 지정 에이전트 저장소](#custom-agent-repositories)를 참고하세요. |
+| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agents 페이지에서 GitHub 에이전트 저장소를 수동으로 미리 보고 동기화할 수 있게 합니다. [사용자 지정 에이전트 저장소](#custom-agent-repositories)를 참고하세요. |
 | `MARINARA_OVERWORLD_GAMES` | `false` | 플레이어가 Overworld 게임(세계관 키트와 생성된 세계)을 만들고 예전 게임을 Overworld 게임으로 바꿀 수 있게 합니다. 꺼져 있으면 마법사는 VN 게임만 제공합니다. |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | 서드파티 확장 가져오기를 여는 두 관문 중 첫 번째입니다. [외부 확장](#external-extensions)을 참고하세요. |
 | `IMPORT_ALLOWED_ROOTS` | 비어 있음 | 선택기 토큰 없이 일괄 가져오기가 읽을 수 있는 폴더입니다. |
@@ -197,7 +197,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ## 기능 스위치
 
-실패한 제공자 호출 재시도나 로어북 그룹 선택 고정 같은 선택적 서버 동작은 **Settings → Advanced → Features**(설정 → 고급 → 기능)에 있습니다. 모두 기본적으로 꺼져 있습니다. 몇몇은 변수가 있어서, 설정하면 스위치보다 우선합니다. [기능 스위치](configuration/features.md)를 참고하세요.
+실패한 제공자 호출 재시도(**Settings → Advanced → Timeouts & Retries**)나 로어북 그룹 선택 고정(**Settings → Advanced → Lorebooks**(설정 → 고급 → 로어북)) 같은 선택적 서버 동작은 Settings의 스위치로 설정합니다. 모두 기본적으로 꺼져 있습니다. 몇몇은 변수가 있어서, 설정하면 스위치보다 우선합니다. [기능 스위치](configuration/features.md)를 참고하세요.
 
 <a id="marinara-notices"></a>
 
@@ -248,16 +248,16 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ## 에이전트와 확장
 
-선택 설치용 공식 에이전트는 앱의 **Agents → Agent Organizer**(에이전트 → Agent Organizer)에서 설치합니다. Marinara는 자신의 메이저 버전에 맞는 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 카탈로그를 고릅니다.
+선택 설치용 공식 에이전트는 앱의 **Library → Agents**(라이브러리 → 에이전트)에서 설치합니다. Marinara는 자신의 메이저 버전에 맞는 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 카탈로그를 고릅니다.
 
-- **업데이트:** Marinara는 설치된 패키지의 새 버전을 다운로드하기 전에 묻습니다. **Not now**(나중에)를 선택하면 현재 버전이 유지되고 Agent Organizer에 **Update**(업데이트)가 남습니다. 새로 설치한 상태에는 패키지가 없습니다.
+- **업데이트:** Marinara는 설치된 패키지의 새 버전을 다운로드하기 전에 묻습니다. **Not now**(나중에)를 선택하면 현재 버전이 유지되고 Agents 페이지에 **Update**(업데이트)가 남습니다. 새로 설치한 상태에는 패키지가 없습니다.
 - **패키지 위치:** `DATA_DIR/capability-packages`입니다. Docker 볼륨, 사용자 지정 데이터 폴더, 백업, 일반적인 업그레이드에서 모두 보존됩니다. 데스크톱, Docker, Termux 모두 같습니다. iOS를 비롯한 브라우저는 호스트 서버에 설치된 패키지를 사용합니다.
 - **디스크 사용량:** Marinara는 각 패키지의 현재 버전과 직전 버전을 보관하고, 그보다 오래된 버전과 `DATA_DIR/capability-runtime-snapshots` 안의 임시 사본은 삭제합니다. 패키지 데이터는 절대 삭제하지 않습니다.
 - **오프라인:** GitHub에 연결할 수 없거나, 업데이트를 거절했거나, 검증에 실패해도 설치된 패키지는 설치된 버전 그대로 계속 동작합니다.
 
 ### 사용자 지정 에이전트 가져오기
 
-외부 에이전트 파일, 폴더, 저장소는 잠겨 있습니다. 허용하려면 **Settings → Advanced → Danger Zone**(설정 → 고급 → 위험 구역)에서 **Allow custom Agent imports**(사용자 지정 에이전트 가져오기 허용)를 켜세요. 환경 변수는 필요 없습니다. 켜기 전까지 가져오기 컨트롤은 회색으로 표시됩니다.
+외부 에이전트 파일, 폴더, 저장소는 잠겨 있습니다. 허용하려면 **Settings → Advanced → Security**에서 **Allow custom Agent imports**(사용자 지정 에이전트 가져오기 허용)를 켜세요. 환경 변수는 필요 없습니다. 켜기 전까지 가져오기 컨트롤은 회색으로 표시됩니다.
 
 가져올 때마다 에이전트가 요청하는 기능을 먼저 보여 줍니다. 권한은 명시적으로 승인해야 합니다. 함께 들어 있는 함수와 도구 선택은 가져오지 않고, 생성된 CSS는 정제하며, 결과 동작은 승인된 기능과 대조해 검사합니다. 관문을 끄면 가져온 에이전트는 멈춥니다. Marinara에서 만든 에이전트와 공식 패키지는 영향을 받지 않습니다.
 
@@ -265,7 +265,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 사용자 지정 에이전트 저장소
 
-저장소는 프롬프트와 도구가 검증되지 않았기 때문에 기본적으로 꺼져 있습니다. `ENABLE_CUSTOM_AGENT_REPOS=true`를 설정하고 **Allow custom Agent imports**를 켠 다음, **Agents → Agent Organizer → Custom Sources**(에이전트 → Agent Organizer → 사용자 지정 소스)를 열어 공개 GitHub 저장소를 미리 보세요. 소스를 추가할 때와 이후 변경을 적용할 때 모두 확인이 필요합니다. 동기화는 수동이며, Marinara는 백그라운드에서 저장소를 복제하거나 주기적으로 확인하지 않습니다. GitHub 저장소 루트 URL만 받습니다.
+저장소는 프롬프트와 도구가 검증되지 않았기 때문에 기본적으로 꺼져 있습니다. `ENABLE_CUSTOM_AGENT_REPOS=true`를 설정하고 **Allow custom Agent imports**를 켠 다음, **Library → Agents → Custom Sources**(라이브러리 → 에이전트 → 사용자 지정 소스)를 열어 공개 GitHub 저장소를 미리 보세요. 소스를 추가할 때와 이후 변경을 적용할 때 모두 확인이 필요합니다. 동기화는 수동이며, Marinara는 백그라운드에서 저장소를 복제하거나 주기적으로 확인하지 않습니다. GitHub 저장소 루트 URL만 받습니다.
 
 저장소는 에이전트, Game Mode 규칙 집합 또는 둘 다를 게시합니다. 루트에는 다음을 둡니다.
 
@@ -297,12 +297,12 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 외부 확장(External Extensions)
 
-서드파티 확장을 가져오려면 두 가지 동의가 필요합니다. 환경 변수는 서버 운영자의 허가이고, Danger Zone 스위치는 사용자의 수락입니다.
+서드파티 확장을 가져오려면 두 가지 동의가 필요합니다. 환경 변수는 서버 운영자의 허가이고, **Settings → Advanced → Security**의 **Allow third-party extension imports**(서드파티 확장 가져오기 허용) 스위치는 사용자의 수락입니다.
 
 1. `.env`에 `ENABLE_EXTERNAL_EXTENSIONS=true`를 설정하세요.
-2. **Settings → Advanced → Danger Zone**을 열고 데이터 삭제 컨트롤 아래로 스크롤한 다음, 경고를 읽고 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)를 켜세요.
+2. **Settings → Advanced → Security**를 열고 경고를 읽은 다음 **Allow third-party extension imports**를 켜세요.
 
-그러면 **Settings → Addons**(설정 → 애드온) 아래에 **External Extensions**(외부 확장) 항목이 나타납니다. 둘 중 하나라도 닫으면 외부 기록이 비활성화되고 그 코드가 멈춥니다. 수동으로 저장한 기록, 예전 기록, 프로필로 가져온 기록, 출처를 알 수 없는 기록은 모두 외부로 간주하므로, 폴더에 파일을 넣는 방식으로는 관문을 우회할 수 없습니다. Professor Mari가 만든 초안에는 어느 관문도 필요 없습니다. 초안은 비활성 상태로 시작하며, 정확한 코드 해시를 승인해야 합니다.
+그러면 **Library → Extensions**(라이브러리 → 확장) 아래에 **External Extensions**(외부 확장) 항목이 나타납니다. 둘 중 하나라도 닫으면 외부 기록이 비활성화되고 그 코드가 멈춥니다. 수동으로 저장한 기록, 예전 기록, 프로필로 가져온 기록, 출처를 알 수 없는 기록은 모두 외부로 간주하므로, 폴더에 파일을 넣는 방식으로는 관문을 우회할 수 없습니다. Professor Mari가 만든 초안에는 어느 관문도 필요 없습니다. 초안은 비활성 상태로 시작하며, 정확한 코드 해시를 승인해야 합니다.
 
 기본값은 샌드박스로 격리된 Browser Extension입니다. 일부 예전 패키지는 Marinara 페이지가 필요해서 **Full page access**(전체 페이지 접근)로 표시됩니다. 이 방식은 승인된 코드를 Marinara 페이지 안에서 실행하므로 페이지 콘텐츠, 브라우저 저장소, 네트워크 API, 현재 세션에 접근할 수 있습니다. 두 관문이 모두 열린 External Extensions에서만 쓸 수 있으며, 별도의 경고 확인이 필요합니다. 비활성화한 뒤에는 페이지를 새로 고치세요.
 
@@ -323,7 +323,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `MARINARA_NOTICES_ENABLED` | `true` | 서버가 메인테이너 공지를 가져올지 정합니다. [Marinara 공지](#marinara-notices)를 참고하세요. |
 | `MARINARA_NOTICES_URL` | `notices` 브랜치의 `notices.json` | 포크와 미러를 위한 공지 파일 재정의입니다. 같은 방식으로 검증되며, `https://github.com/Pasta-Devs/` 밖을 가리키는 링크는 제거됩니다. 이 URL의 호스트는 hosts 파일이나 DNS에 있어야 합니다. [Marinara 공지](#marinara-notices)를 참고하세요. |
 | `MARINARA_ENV_FILE` | 프로젝트 최상위의 `.env` | `.env` 파일 경로를 재정의합니다. 시작하기 전에 설정하세요. |
-| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | 서버 전체에서 동시에 보내는 이미지나 동영상 요청 수의 상한입니다. 로컬 ComfyUI나 SwarmUI의 VRAM이 부족하면 1-2로 낮추세요. `0`은 상한을 없앱니다. 잘못된 값은 경고를 남기고 무시합니다. 일괄 작업은 마지막 자리를 차지하지 않습니다. **Settings → Generations → Overall Generations**(설정 → 생성 → 전체 생성)에 있는 **Queue media generation requests**(미디어 생성 요청 대기열 사용) 위에 추가로 적용됩니다. 이 설정은 기본적으로 켜져 있으며 계정마다 이미지와 동영상 작업을 대기열에 넣습니다. |
+| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | 서버 전체에서 동시에 보내는 이미지나 동영상 요청 수의 상한입니다. 로컬 ComfyUI나 SwarmUI의 VRAM이 부족하면 1-2로 낮추세요. `0`은 상한을 없앱니다. 잘못된 값은 경고를 남기고 무시합니다. 일괄 작업은 마지막 자리를 차지하지 않습니다. **Settings → Media → Generation Defaults**(설정 → 미디어 → 생성 기본값)에 있는 **Queue media generation requests**(미디어 생성 요청 대기열 사용) 위에 추가로 적용됩니다. 이 설정은 기본적으로 켜져 있으며 계정마다 이미지와 동영상 작업을 대기열에 넣습니다. |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000`(10분) | 요청이 빈 자리를 기다리다 실패하기까지의 시간입니다. `0`이면 무한정 기다립니다. |
 | `MARINARA_SHARED_GPU_HOSTS` | 비어 있음 | 로컬 모델과 로컬 이미지/동영상 백엔드가 GPU 하나를 공유할 때(llama-swap 등) 쓰는 쉼표로 구분한 `host:port` 목록입니다. 목록에 있는 호스트로 가는 텍스트 요청과 미디어 요청은 번갈아 처리되므로, 이미지가 채팅 응답 뒤에서 끝없이 기다리지 않습니다. 이미지나 클립이 기다리는 시간은 최대 `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS`입니다. 임베딩은 대기시키지 않습니다. 재시작 없이 새 요청에 적용됩니다. |
 | `MARINARA_ENV_WATCH` | `1` | `.env`를 감시하는 방식입니다. 기본값은 변경 이벤트(약 250 ms 디바운스)를 쓰고 30초 간격 확인을 대체 수단으로 둡니다. `poll`은 항상 30초 간격으로 확인합니다. `0`은 감시를 끕니다. [재시작과 즉시 반영](#restart-or-hot-reload)을 참고하세요. |
@@ -361,7 +361,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 로어북
 
-두 설정 모두 기본적으로 꺼져 있으며 `.env`를 바꾸면 다음 생성부터 적용됩니다. `LOREBOOK_STABLE_GROUP_WINNERS`를 설정하면 **Settings → Advanced → Features**의 **Stable lorebook picks**(안정적인 로어북 선택) 스위치보다 우선합니다. 설정하지 않으면 스위치가 결정합니다. [기능 스위치](configuration/features.md)를 참고하세요.
+두 설정 모두 기본적으로 꺼져 있으며 `.env`를 바꾸면 다음 생성부터 적용됩니다. `LOREBOOK_STABLE_GROUP_WINNERS`를 설정하면 **Settings → Advanced → Lorebooks**의 **Stable lorebook picks**(안정적인 로어북 선택) 스위치보다 우선합니다. 설정하지 않으면 스위치가 결정합니다. [기능 스위치](configuration/features.md)를 참고하세요.
 
 | 변수 | 기본값 | 설명 |
 | --- | --- | --- |
@@ -374,7 +374,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 안정성
 
-모두 기본적으로 꺼져 있어 기존 동작을 유지합니다. `STORAGE_CACHE_WINDOWS_BOOT_ID`, `SHUTDOWN_WINDOWS_CONSOLE_SIGNALS`, `SHUTDOWN_FORCE_EXIT_ON_REPEAT`는 재시작이 필요합니다. 나머지는 `.env`를 바꾸면 적용됩니다. `PROVIDER_RETRY_TRANSIENT_ERRORS`를 설정하면 **Settings → Advanced → Features**의 **Retry failed provider calls**(실패한 프로바이더 호출 재시도) 스위치보다 우선합니다. 설정하지 않으면 스위치가 결정합니다.
+모두 기본적으로 꺼져 있어 기존 동작을 유지합니다. `STORAGE_CACHE_WINDOWS_BOOT_ID`, `SHUTDOWN_WINDOWS_CONSOLE_SIGNALS`, `SHUTDOWN_FORCE_EXIT_ON_REPEAT`는 재시작이 필요합니다. 나머지는 `.env`를 바꾸면 적용됩니다. `PROVIDER_RETRY_TRANSIENT_ERRORS`를 설정하면 **Settings → Advanced → Timeouts & Retries**의 **Retry failed provider calls**(실패한 프로바이더 호출 재시도) 스위치보다 우선합니다. 설정하지 않으면 스위치가 결정합니다.
 
 | 변수 | 기본값 | 설명 |
 | --- | --- | --- |

@@ -6,14 +6,16 @@ Selfies kommen aus dem optionalen Paket **Illustrator** und nutzen die Bildgener
 
 ## Selfies aktivieren
 
-Bevor du anfängst: Installiere **Illustrator** unter **Agents → Agent Organizer** und füge ein Bild-Konto hinzu, also ein Konto bei einem Dienst, der Bilder erzeugt (siehe [Anbieter für Bildgenerierung und deren Einrichtung](../media/image-providers.md)).
+Bevor du anfängst: Installiere **Illustrator** unter **Library → Agents** (Bibliothek → Agenten) und füge ein Bild-Konto hinzu, also ein Konto bei einem Dienst, der Bilder erzeugt (siehe [Anbieter für Bildgenerierung und deren Einrichtung](../media/image-providers.md)).
 
 1. Öffne einen Conversation-Chat und dann die **Chat Settings**.
 2. Suche den Bereich **Agents** und öffne **Illustrator Settings**.
 3. Schalte **Generated Selfies** an. Darunter erscheinen die Selfie-Einstellungen.
 4. Wähle unter **Selfie model** dein Bild-Konto.
 
-Wenn du **Generated Selfies** einschaltest, schaltest du auch den Hauptschalter **Commands** für den Chat ein. Charaktere senden Selfies erst, wenn **Selfie model** gesetzt ist. Bis dahin zeigt der Chat „Choose a Selfie Provider to let characters generate selfie images.“
+Wenn du **Generated Selfies** einschaltest, schaltest du auch den Hauptschalter **Commands** für den Chat ein.
+
+Charaktere senden Selfies erst, wenn **Selfie model** gesetzt ist. Bis dahin zeigt der Chat „Choose a Selfie Provider to let characters generate selfie images.“
 
 Wenn es nicht funktioniert hat: **Illustrator Settings** erscheint nur, wenn Illustrator installiert ist. Außerdem muss der Befehl **Selfies** an sein (siehe [Wählen, welche Commands ein Charakter nutzen darf](getting-started.md#choose-which-commands-a-character-can-use)).
 
@@ -39,9 +41,10 @@ Hat die Karte oder Persona **Image Appearance Override** eingeschaltet (im Edito
 
 1. Öffne die **Chat Settings** und klappe den Abschnitt **Gallery** auf.
 2. Klicke auf **Selfie**. Sind mehrere Charaktere im Chat, wähle in der Liste neben der Schaltfläche den aus, der das Selfie machen soll.
-3. Ist **Expose media prompts before sending** unter **Settings → Generations → Overall Generations** an, prüfe oder bearbeite den Prompt und klicke auf **Generate**. Beim Abbrechen wird keine Anfrage gesendet.
+3. Ist **Expose media prompts before sending** unter **Settings → Media → Generation Defaults** an, prüfe oder bearbeite den Prompt und klicke auf **Generate**. Beim Abbrechen wird keine Anfrage gesendet.
 4. Warte, solange die Schaltfläche **Generating...** zeigt.
-5. Du siehst „Selfie generated.“ und das Bild erscheint im Chat. Eine manuelle Anfrage nutzt **Selfie model** und kostet eine Bildanfrage.
+
+Du siehst „Selfie generated.“ und das Bild erscheint im Chat. Eine manuelle Anfrage nutzt **Selfie model** und kostet eine Bildanfrage.
 
 ## Wie Charaktere Selfies senden
 
@@ -77,7 +80,7 @@ Lässt sich ein Clip nicht zum Chat hinzufügen, ist er trotzdem unter dem Tab *
 - **Video model**: das Video-Konto. **Default video provider** nutzt deinen Standard.
 - **First frame**: das Bild, mit dem der Clip beginnt (siehe unten).
 
-`/video` und die Gallery-Schaltfläche **Video** funktionieren in beiden Fällen und ignorieren das Intervall. Wischst du über eine Antwort, die einen Clip gesendet hat, lässt der neue Swipe seinen eigenen Clip senden. In einem Gruppenchat kann jeder Charakter pro Antwort einen Clip senden, bis zu **Videos per reply** (standardmäßig 3) unter **Settings → Generations → Video Generation**.
+`/video` und die Gallery-Schaltfläche **Video** funktionieren in beiden Fällen und ignorieren das Intervall. Wischst du über eine Antwort, die einen Clip gesendet hat, lässt der neue Swipe seinen eigenen Clip senden. In einem Gruppenchat kann jeder Charakter pro Antwort einen Clip senden, bis zu **Videos per reply** (standardmäßig 3) unter **Settings → Media → Video Generation**.
 
 Optionen für **First frame**:
 
@@ -88,7 +91,7 @@ Optionen für **First frame**:
 
 Ist **Expose media prompts before sending** an, prüfst du den Selfie-Prompt zusammen mit dem Clip-Prompt.
 
-Bilder in anderen Formaten, etwa WebP, werden für den Videodienst umgewandelt. Eine Videonachricht ist eine Videoanfrage, plus eine Bildanfrage, wenn sie mit einem neuen Selfie beginnt. Dein **Prompt Model** schreibt den Videoprompt, und **Settings → Generations → Video Generation Prompt Overrides → Conversation Video Message** enthält seine Anweisungen.
+Bilder in anderen Formaten, etwa WebP, werden für den Videodienst umgewandelt. Eine Videonachricht ist eine Videoanfrage, plus eine Bildanfrage, wenn sie mit einem neuen Selfie beginnt. Dein **Prompt Model** schreibt den Videoprompt, und **Settings → Media → Prompt Overrides → Conversation Video Message** enthält seine Anweisungen.
 
 ## Referenz: das Selfie-Tag
 

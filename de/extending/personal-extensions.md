@@ -6,7 +6,7 @@ Eine **Personal Extension** (persönliche Erweiterung) ist ein kleines Stück Co
 
 | Name | Was es ist |
 | --- | --- |
-| Personal Extension | Eine Erweiterung, die Professor Mari für dich geschrieben hat. Sie erscheint als Entwurf unter **Settings → Addons**. |
+| Personal Extension | Eine Erweiterung, die Professor Mari für dich geschrieben hat. Sie erscheint als Entwurf unter **Library → Extensions** (Bibliothek → Erweiterungen). |
 | External Extension (externe Erweiterung) | Eine Erweiterung von jemand anderem oder eine, die du selbst geschrieben hast. Sie braucht die zusätzlichen Schritte unter [Importe von Fremdanbietern erlauben](#allow-third-party-imports). |
 | Browser Extension (Browser-Erweiterung) | Läuft in deinem Browser in einer Sandbox. Standardmäßig sicher. |
 | Server Extension (Server-Erweiterung) | Läuft auf dem Rechner, auf dem Marinara läuft, in einer Betriebssystem-Sandbox. Braucht eine unterstützte Plattform. |
@@ -16,7 +16,7 @@ Eine **Personal Extension** (persönliche Erweiterung) ist ein kleines Stück Co
 
 Bevor du anfängst: Erledige die beiden Schritte unter [Importe von Fremdanbietern erlauben](#allow-third-party-imports). Ohne sie sind die Import-Schaltflächen ausgeblendet.
 
-1. Öffne **Settings → Addons**. Wähle unter **External Extensions** (externe Erweiterungen) für eine `.zip`-, `.json`-, `.css`- oder `.js`-Datei **Import Extension File** (Erweiterungsdatei importieren) oder für einen Ordner **Import Extension Folder** (Erweiterungsordner importieren).
+1. Öffne **Library → Extensions**. Wähle unter **External Extensions** (externe Erweiterungen) für eine `.zip`-, `.json`-, `.css`- oder `.js`-Datei **Import Extension File** (Erweiterungsdatei importieren) oder für einen Ordner **Import Extension Folder** (Erweiterungsordner importieren).
 2. Öffne den neuen Entwurf. Er ist deaktiviert und zeigt seinen Code und einen Hash, einen kurzen Fingerabdruck genau dieses Codes (Marinara verwendet SHA-256).
 3. Lies den Code und die Liste **Requested access** (angeforderter Zugriff).
 4. Wähle **Review and Run** (prüfen und ausführen) nur, wenn du genau diese Version akzeptierst. Danach wird die Erweiterung als aktiviert angezeigt.
@@ -27,7 +27,7 @@ Wenn es nicht funktioniert hat: Fehlen die Import-Schaltflächen, ist einer der 
 
 Bevor du anfängst: Bitte [Professor Mari](../home/professor-mari.md), eine Erweiterung zu erstellen. Sie kann den Code speichern, ihn aber weder freigeben noch aktivieren. In diesem Bereich gibt es keine Schaltfläche **New Draft** (neuer Entwurf) und kein Bedienelement zum Importieren.
 
-1. Öffne **Settings → Addons → Personal Extensions**. Ohne Entwürfe steht dort: „Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash.“
+1. Öffne **Library → Extensions**. Ohne Entwürfe steht dort: „Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash.“
 2. Öffne den Entwurf und lies den Code. Prüf den Hash und die Liste **Requested access**.
 3. Wähle **Review and Run** nur, wenn du genau diese Version akzeptierst.
 
@@ -78,9 +78,9 @@ Unter Windows und Android gibt es keine unterstützte Prozess-Sandbox, deshalb s
 Importe von Fremdanbietern sind standardmäßig gesperrt und ausgeblendet, weil sie Code ausführen, den andere geschrieben haben. Zwei Schritte geben sie frei:
 
 1. Setze auf dem Rechner, auf dem Marinara läuft, `ENABLE_EXTERNAL_EXTENSIONS=true` in der Datei `.env` und starte Marinara danach neu. Siehe die [Referenz zur Server-Konfiguration](../CONFIGURATION.md).
-2. Öffne **Settings → Advanced → Danger Zone**, scroll unter die Bedienelemente zum Löschen von Daten, lies die Warnung und schalte **Allow third-party extension imports** (Importe von Fremdanbietern erlauben) ein.
+2. Öffne **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit), lies die Warnung und schalte **Allow third-party extension imports** (Importe von Fremdanbietern erlauben) ein.
 
-Danach zeigt **Settings → Addons** den Bereich **External Extensions** mit Bedienelementen für den Import von Dateien und Ordnern. Unterstützte Formate:
+Danach zeigt **Library → Extensions** den Bereich **External Extensions** mit Bedienelementen für den Import von Dateien und Ordnern. Unterstützte Formate:
 
 - `.personal-extension.zip` und kompatible `.zip`-Pakete
 - `.json`-Manifeste
@@ -99,13 +99,13 @@ Als extern gelten außerdem alte Einträge, aus einem Profil importierte, von Ha
 
 Schaltest du einen der beiden Schritte wieder aus, werden alle importierten Erweiterungen deaktiviert. Schaltest du ihn wieder ein, laufen sie dadurch nicht erneut. Lade die Seite neu, falls eine Erweiterung mit Vollzugriff auf die Seite Änderungen hinterlassen hat.
 
-Wenn es nicht funktioniert hat: Erscheinen die Bedienelemente zum Importieren nicht, prüf, ob beide Schritte erledigt sind und ob du am Server-Rechner arbeitest oder das Admin-Secret unter **Settings → Advanced → Admin Access** gespeichert hast.
+Wenn es nicht funktioniert hat: Erscheinen die Bedienelemente zum Importieren nicht, prüf, ob beide Schritte erledigt sind und ob du am Server-Rechner arbeitest oder das Admin-Secret unter **Settings → Advanced → Security** gespeichert hast.
 
 ## Export, Fassungen und Notfallhilfe
 
 Über die Export-Aktion einer Erweiterung lädst du ein portables Paket herunter. Exportierte und wiederhergestellte Pakete bleiben deaktiviert. Stellst du eine frühere Fassung wieder her, wird daraus ebenfalls wieder ein deaktivierter Entwurf.
 
-**Settings → Addons → Extension revision history** legt für jede Personal Extension und jede externe Erweiterung fest, wie viele frühere Code-Fassungen erhalten bleiben. Der Standard ist **10**. Wähle **0** bis **10**; **0** schaltet den Verlauf ab. Senkst du das Limit, wirst du um Bestätigung gebeten, bevor ältere Fassungen endgültig gelöscht werden. Aktueller Code, Freigaben, der Aktivierungszustand und gespeicherte Erweiterungsdaten bleiben erhalten. Änderungen über Professor Mari halten sich an dasselbe Limit.
+**Library → Extensions → Extension revision history** (Bibliothek → Erweiterungen → Versionsverlauf für Erweiterungen) legt für jede Personal Extension und jede externe Erweiterung fest, wie viele frühere Code-Fassungen erhalten bleiben. Der Standard ist **10**. Wähle **0** bis **10**; **0** schaltet den Verlauf ab. Senkst du das Limit, wirst du um Bestätigung gebeten, bevor ältere Fassungen endgültig gelöscht werden. Aktueller Code, Freigaben, der Aktivierungszustand und gespeicherte Erweiterungsdaten bleiben erhalten. Änderungen über Professor Mari halten sich an dasselbe Limit.
 
 Verhält sich eine Erweiterung daneben, wähle **Disable** (deaktivieren). Ist die Oberfläche nicht erreichbar, beende Marinara und setze im passenden `installed_extensions`-Eintrag den Wert `enabled` auf `"false"`. Setze `approvedHash` niemals von Hand.
 

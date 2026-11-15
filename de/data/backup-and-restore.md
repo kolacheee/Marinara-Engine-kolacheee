@@ -9,14 +9,14 @@ Speichere eine Kopie deiner Daten aus Marinara Engine, damit du sie später wied
 | **Download Backup** | Eine `.zip` mit allen Daten und Dateien. | Eine vollständige Kopie von allem. |
 | **Export Profile** | Eine kleinere Datei mit deinen Kontodaten (Charaktere, Chats, Lorebooks und mehr). | Eine Kopie ohne geheime Werte oder Dateien für andere Tools. |
 
-Eine `.zip` ist eine Datei, die viele Dateien enthält. Beide Optionen findest du unter **Settings → Advanced → Backup & Export**. Die Wiederherstellung findest du unter **Settings → Imports → Profile & Marinara**.
+Eine `.zip` ist eine Datei, die viele Dateien enthält. Beide Optionen und die Wiederherstellung findest du unter **Settings → Data → Backup & Restore** (Einstellungen → Daten → Backup & Wiederherstellung).
 
-**Bevor du anfängst:** Auf dem Rechner, auf dem Marinara läuft, funktionieren diese Funktionen sofort. Von einem Handy, Tablet oder anderen Gerät aus musst du das Admin-Secret auf dem Server festlegen und denselben Wert unter **Settings → Advanced → Admin Access** eingeben. Das Admin-Secret ist ein Passwort in der `.env`-Datei des Servers, unter `ADMIN_SECRET`. Siehe den Abschnitt „Privileged APIs (ADMIN_SECRET)“ in der [Referenz zur Server-Konfiguration](../CONFIGURATION.md) und [Fernzugriff](../REMOTE_ACCESS.md).
+**Bevor du anfängst:** Auf dem Rechner, auf dem Marinara läuft, funktionieren diese Funktionen sofort. Von einem Handy, Tablet oder anderen Gerät aus musst du das Admin-Secret auf dem Server festlegen und denselben Wert unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) eingeben. Das Admin-Secret ist ein Passwort in der `.env`-Datei des Servers, unter `ADMIN_SECRET`. Siehe den Abschnitt „Privileged APIs (ADMIN_SECRET)“ in der [Referenz zur Server-Konfiguration](../CONFIGURATION.md) und [Fernzugriff](../REMOTE_ACCESS.md).
 
 ## Download Backup
 
-1. Öffne **Settings → Advanced**.
-2. Klick unter **Backup & Export** auf **Download Backup**. Die Schaltfläche zeigt **Creating backup…**.
+1. Öffne **Settings → Data**.
+2. Klick unter **Backup & Restore** auf **Download Backup**. Die Schaltfläche zeigt **Creating backup…**.
 3. Speichere die Datei, wenn dein Browser danach fragt, oder suche sie im Downloads-Ordner.
 
 Die `.zip` enthält:
@@ -32,7 +32,7 @@ Die Ordnernamen stehen unter [Wo Marinara deine Daten speichert](where-data-is-s
 
 Unter Android kannst du den Datenordner der App nicht öffnen. Mit **Download Backup** bekommst du eine Kopie vom Gerät.
 
-Wenn es nicht funktioniert: Erscheint „Backup preparation timed out after one hour.“, versuche es erneut. Kann ein anderes Gerät das Backup nicht herunterladen, prüf **Admin Access** (siehe oben).
+Wenn es nicht funktioniert: Erscheint „Backup preparation timed out after one hour.“, versuche es erneut. Kann ein anderes Gerät das Backup nicht herunterladen, prüf das Admin-Secret (siehe oben).
 
 <a id="automatic-backups"></a>
 
@@ -40,7 +40,7 @@ Wenn es nicht funktioniert: Erscheint „Backup preparation timed out after one 
 
 Marinara kann auf dem Rechner, auf dem es läuft, regelmäßig ein vollständiges Backup anlegen.
 
-1. Öffne **Settings → Advanced → Backup & Export**.
+1. Öffne **Settings → Data → Backup & Restore**.
 2. Aktiviere **Automatic backups**.
 3. Wähle **Daily**, **Weekly** oder **Monthly**.
 4. Stell **Automatic backups kept** auf einen Wert von 1 bis 9999.
@@ -55,7 +55,7 @@ Für jeden Durchlauf muss Platz für ein weiteres vollständiges Archiv frei sei
 
 ## Ein Profil exportieren
 
-1. Öffne **Settings → Advanced → Backup & Export**.
+1. Öffne **Settings → Data → Backup & Restore**.
 2. Klick auf **Export Profile**. Ein Dialog mit demselben Titel öffnet sich.
 3. Wähle ein Format.
 4. Dein Browser lädt die Datei herunter.
@@ -65,17 +65,20 @@ Für jeden Durchlauf muss Platz für ein weiteres vollständiges Archiv frei sei
 
 Ein natives Profil wird als `marinara-profile.json` heruntergeladen. Ist es zu groß, bietet Marinara stattdessen eine ZIP-Datei an. Klick auf **Export ZIP**, um `marinara-profile.zip` herunterzuladen.
 
-Ein natives Profil behält den Code von Personal Extensions, aber nicht den Aktivierungs- oder Freigabestatus. Jede wiederhergestellte Erweiterung ist deaktiviert. Prüfe sie erneut unter **Settings → Addons**.
+Ein natives Profil bewahrt Regex-Skripte, ihre Ordner und die Pauseneinstellung jedes Ordners auf. Wie du einzelne Skripte als JSON teilst, steht unter [Regex-Skripte](../extending/regex-scripts.md#import-and-replace-scripts).
+
+Ein natives Profil behält den Code von Personal Extensions, aber nicht den Aktivierungs- oder Freigabestatus. Jede wiederhergestellte Erweiterung ist deaktiviert. Prüfe sie erneut unter **Library → Extensions** (Bibliothek → Erweiterungen).
 
 ## Mit Import Profile wiederherstellen
 
 **Import Profile** lädt eine Profildatei oder eine `.zip` von **Download Backup**.
 
-1. Öffne **Settings → Imports**.
-2. Klick unter **Profile & Marinara** auf **Import Profile (JSON/ZIP)**.
-3. Wähle `marinara-profile.json`, `marinara-profile.zip` oder eine Backup-`.zip`. Die Schaltfläche zeigt **Scanning Profile...**.
-4. Lies den Dialog **Import Profile**. Er listet die gefundenen Daten auf und warnt, dass du den Import nicht rückgängig machen kannst.
-5. Klick auf **Import** oder zum Abbrechen auf **Cancel**. Die Schaltfläche zeigt **Importing Profile...**, danach folgt ein Fortschrittsbalken. Nach Abschluss bestätigt eine Meldung den Import.
+1. Öffne **Settings → Data → Backup & Restore**.
+2. Lass unter der Schaltfläche **Tag imported** (als importiert markieren) und **Tag source** (Quelle markieren) angehakt, damit die importierten Charaktere, Personas, Lorebooks, Presets und Chats die Tags **Imported** und **Backup** erhalten. Entferne die Häkchen, um alles genau so wiederherzustellen, wie es war.
+3. Klick auf **Import Profile (JSON/ZIP)**.
+4. Wähle `marinara-profile.json`, `marinara-profile.zip` oder eine Backup-`.zip`. Die Schaltfläche zeigt **Scanning Profile...**.
+5. Lies den Dialog **Import Profile**. Er listet die gefundenen Daten auf und warnt, dass du den Import nicht rückgängig machen kannst.
+6. Klick auf **Import** oder zum Abbrechen auf **Cancel**. Die Schaltfläche zeigt **Importing Profile...**, danach folgt ein Fortschrittsbalken. Nach Abschluss bestätigt eine Meldung den Import.
 
 Wenn es nicht funktioniert:
 
@@ -90,7 +93,7 @@ Importierst du dasselbe Profil zweimal, aktualisiert Marinara die vorhandenen El
 
 **Import Profile** stellt API-Keys und Webhook-Links nie wieder her, auch nicht aus einer `.zip` von **Download Backup**. Ein API-Key ist ein geheimer Code, den du von einem Dienst bekommst. In der Profildatei und im Profil innerhalb eines Backups sind diese Werte entfernt. Nach dem Import auf einem neuen Rechner musst du sie erneut eingeben:
 
-1. Öffne **Connections** über die obere Leiste.
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen).
 2. Öffne jedes Konto, das du nutzt, gib den API-Key ein und speichere. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 3. Gib den Webhook-Link bei jedem eigenen Tool, das ihn verwendet, erneut ein.
 
@@ -101,7 +104,7 @@ Beim Import werden bereits gesetzte Keys derselben Installation nicht gelöscht.
 ## Auf einen neuen Rechner umziehen
 
 1. Installiere Marinara auf dem neuen Rechner und starte es. Siehe [Installation](../INSTALLATION.md).
-2. Öffne **Settings → Imports → Profile & Marinara** und klick auf **Import Profile (JSON/ZIP)**.
+2. Öffne **Settings → Data → Backup & Restore** und klick auf **Import Profile (JSON/ZIP)**.
 3. Wähle deine `.zip` von **Download Backup** oder deine Profildatei und klick auf **Import**.
 4. Gib deine API-Keys erneut ein, wie oben beschrieben.
 
@@ -120,7 +123,7 @@ Nutze diesen Weg nur, wenn **Import Profile** nicht verfügbar ist. Die `.zip` e
 
 Bewahre die Datei `.encryption-key` zusammen mit dem Ordner `storage` auf. Sonst können die gespeicherten API-Keys nicht gelesen werden.
 
-Die Liste **Existing backups** unter **Backup & Export** ist normalerweise leer. Du brauchst sie nicht.
+Die Liste **Existing backups** unter **Backup & Restore** ist normalerweise leer. Du brauchst sie nicht.
 
 ## Verwandte Anleitungen
 

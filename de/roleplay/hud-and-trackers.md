@@ -17,7 +17,7 @@ Wenn es nicht funktioniert hat: Ist kein Tracker-Agent eingeschaltet, zeigt das 
 
 ## Wo das HUD erscheint
 
-Am Telefon sind die Tracker die verschiebbaren Schaltflächen **World State** und **Player & Tracker**. Tippe auf eine, um ihr Panel zu öffnen, und auf **X**, um es zu schließen. Sobald World State Angaben hat, zeigt seine Schaltfläche ein kleines Banner mit Ort, Tag, Uhrzeit, Wetter und Temperatur. Zieh die Schaltflächen an eine beliebige Stelle. Dein Chat merkt sich, wo du sie abgelegt hast. Sie folgen deinem **Chat widget style** (Chat-Widget-Stil) unter **Settings → Appearance → App** (Einstellungen → Darstellung → App).
+Am Telefon sind die Tracker die verschiebbaren Schaltflächen **World State** und **Player & Tracker**. Tippe auf eine, um ihr Panel zu öffnen, und auf **X**, um es zu schließen. Sobald World State Angaben hat, zeigt seine Schaltfläche ein kleines Banner mit Ort, Tag, Uhrzeit, Wetter und Temperatur. Zieh die Schaltflächen an eine beliebige Stelle. Dein Chat merkt sich, wo du sie abgelegt hast. Sie folgen deinem **Chat widget style** (Chat-Widget-Stil) unter **Settings → Appearance → Chat Buttons & Windows** (Einstellungen → Darstellung → Chat-Schaltflächen & Fenster).
 
 Am Computer erscheinen dieselben Tracker an einer von zwei Stellen:
 
@@ -113,7 +113,7 @@ Das **Tracker Panel** ist ein größeres Seitenpanel mit denselben Daten. Es zei
 2. Klick in der Titelleiste auf die Schaltfläche **Tracker Panel** (den Würfel) neben Anheften und Sperren. Sie bleibt hervorgehoben, solange das Panel an ist.
 3. Klick erneut darauf, um das Panel auszublenden. Am Computer erscheinen die Tracker dann im Trackers-Fenster.
 
-Am Computer fügt sich das Panel neben deinen Nachrichten ein, höchstens bis zu der Breite, die **Desktop size** (Desktop-Größe) festlegt. Ist das Fenster für beides zu schmal, etwa bei geöffneter Chat-Seitenleiste, werden deine Nachrichten und das Nachrichtenfeld etwas schmaler. Am Telefon oder Tablet fügt das Einschalten eine verschiebbare Tracker-Panel-Schaltfläche hinzu. Tippe darauf, um das Panel zu öffnen, und erneut, um es zu schließen. Solange das Panel oder ein anderer Bildschirm den Chat verdeckt, sind die verschiebbaren Schaltflächen des Chats ausgeblendet und kommen danach an denselben Stellen zurück.
+Am Computer fügt sich das Panel neben deinen Nachrichten ein, höchstens bis zu der Breite, die **Desktop size** (Desktop-Größe) festlegt. Ist das Fenster für beides zu schmal, etwa bei geöffneter Seitenleiste, werden deine Nachrichten und das Nachrichtenfeld etwas schmaler. Am Telefon oder Tablet fügt das Einschalten eine verschiebbare Tracker-Panel-Schaltfläche hinzu. Tippe darauf, um das Panel zu öffnen, und erneut, um es zu schließen. Solange das Panel oder ein anderer Bildschirm den Chat verdeckt, sind die verschiebbaren Schaltflächen des Chats ausgeblendet und kommen danach an denselben Stellen zurück.
 
 ### Tracker-Felder anpassen
 
@@ -132,7 +132,7 @@ Sobald der Character Tracker eine Bildverbindung hat, kann die große Karte eine
 
 ### Einstellungen des Tracker Panels
 
-Öffne **Settings → Appearance**, klapp die Gruppe **Roleplay** auf und such den Abschnitt **Tracker Panel**.
+Öffne **Settings → Roleplay** und such den Abschnitt **Tracker Panel**.
 
 | Einstellung | Was sie bewirkt |
 | --- | --- |

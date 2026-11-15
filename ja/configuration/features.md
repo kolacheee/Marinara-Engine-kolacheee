@@ -1,6 +1,12 @@
 # 機能スイッチ
 
-サーバーの一部の動作はオプションです。**Settings > Advanced > Features**(設定 > 詳細 > 機能)で有効にします。すべてのスイッチは初期状態でオフなので、このセクションを開かなければサーバーは従来どおり動作します。
+サーバーの一部の動作はオプションです。すべてのスイッチは初期状態でオフなので、誰もオンにしなければサーバーは従来どおり動作します。**Settings**(設定)内の次の場所にあります。
+
+- **Stable lorebook picks**(ロアブックの選択を固定)と**Lorebook activation stats**(ロアブックの有効化統計): **Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック)。
+- **Retry failed provider calls**(失敗したプロバイダー呼び出しを再試行): **Settings → Advanced → Timeouts & Retries**(設定 → 詳細設定 → タイムアウトと再試行)。
+- **Recover deleted chat messages**(削除したチャットメッセージの復元): **Settings → Data → Backup & Restore**(設定 → データ → バックアップと復元)。
+
+クラシックレイアウトでは、Settingsでスイッチの名前を検索してください。
 
 変更はすぐに反映されます。サーバーの再起動やページの再読み込みは不要です。
 
@@ -15,7 +21,7 @@
 | **Lorebook activation stats**(ロアブックの有効化統計) | `usageAndActivationStats` | オフ | なし |
 | **Recover deleted chat messages**(削除したチャットメッセージの復元) | `messageTrash` | オフ | なし |
 
-設定で`features`を検索するとこのセクションに移動します。
+Settingsでスイッチの名前を検索すると、その設定に移動します。
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ APIは`GET`と`PUT /api/app-settings/features`です。`PUT`はオブジェク�
 ## 優先順位
 
 1. **環境変数。** 設定されていれば、オン・オフとも保存済みスイッチより優先します。Settingsでは変数名を付けてロック表示します。空の値は未設定と見なします。
-2. **保存済みスイッチ。** Settings > Advanced > Featuresで保存した値です。
+2. **保存済みスイッチ。** Settings > Advanced > Lorebooksで保存した値です。
 3. **デフォルト。** オフです。
 
 | 変数 | 対象 | 値 |

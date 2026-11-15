@@ -1,6 +1,6 @@
 # Fernzugriff: Anmeldung und IP-Allowlist
 
-In dieser Anleitung erfährst du, wie du Marinara Engine von einem anderen Gerät aus erreichst – vom Handy, vom Laptop oder von einem Docker-Container. Sie behandelt die wichtigste Option, eine Anmeldung. Dazu kommen die IP-Allowlist, Login-Proxys, HTTPS, Admin Access (Administrator-Zugriff) und die Meldung „save blocked“ zum Thema CSRF. Fast alles dazu steht in der `.env`-Datei des Servers, nicht in der App.
+In dieser Anleitung erfährst du, wie du Marinara Engine von einem anderen Gerät aus erreichst – vom Handy, vom Laptop oder von einem Docker-Container. Sie behandelt die wichtigste Option, eine Anmeldung. Dazu kommen die IP-Allowlist, Login-Proxys, HTTPS, das Admin-Secret und die Meldung „save blocked“ zum Thema CSRF. Fast alles dazu steht in der `.env`-Datei des Servers, nicht in der App.
 
 Ein paar Begriffe, die durchgehend vorkommen:
 
@@ -24,7 +24,7 @@ Lädt die Seite nicht, prüfe, ob Tailscale auf beiden Geräten eingeschaltet is
 
 > **Hinweis:** Bei Docker-Installationen funktioniert das nicht. Tailscale-Verkehr erreicht den Container über das Docker-Gateway, deshalb kann Marinara nicht erkennen, dass er über Tailscale kam. Lege zuerst eine Anmeldung fest ([Option 1](#option-1-login-recommended)) und veröffentliche den Port erst dann über `127.0.0.1` hinaus.
 
-Backups, Importe, Updates und andere heikle Aktionen brauchen von einem entfernten Gerät aus weiterhin das Admin-Secret. Siehe [Admin Access und heikle Aktionen](#admin-access-and-privileged-actions).
+Backups, Importe, Updates und andere heikle Aktionen brauchen von einem entfernten Gerät aus weiterhin das Admin-Secret. Siehe [Das Admin-Secret und heikle Aktionen](#the-admin-secret-and-privileged-actions).
 
 ## Was Marinara standardmäßig blockiert
 
@@ -263,9 +263,9 @@ SSL_KEY=/path/to/key.pem
 
 Zertifikat und Schlüssel müssen vorliegen, bevor du `SSL_CERT` und `SSL_KEY` setzt. Erzeugen lassen sie sich für den lokalen Einsatz etwa mit `mkcert`, für eine öffentliche Domain mit `certbot`. Fehlen die Dateien oder sind sie nicht lesbar, bricht der Server beim Start ab und nennt die genauen Pfade, die er versucht hat.
 
-<a id="admin-access-and-privileged-actions"></a>
+<a id="the-admin-secret-and-privileged-actions"></a>
 
-## Admin Access und heikle Aktionen
+## Das Admin-Secret und heikle Aktionen
 
 Manche Aktionen sind besonders heikel: Daten löschen, Backups erstellen oder herunterladen, Profile importieren und exportieren, Themes und Agenten installieren und die Local-Model-Laufzeitumgebung installieren. Sie brauchen zusätzlich zur gewählten Zugriffsoption ein eigenes gemeinsames Geheimnis, das Admin-Secret.
 
@@ -275,9 +275,9 @@ Installierte Agenten, etwa die auf dem Home-Bildschirm, brauchen das Admin-Secre
 
 ### Das Admin-Secret in der App erstellen
 
-1. Öffne auf dem Computer, auf dem Marinara läuft, **Settings** (Einstellungen), dann den Tab **Advanced** (Erweitert) und dort den Abschnitt **Admin Access**.
+1. Öffne auf dem Computer, auf dem Marinara läuft, **Settings** (Einstellungen), dann den Tab **Advanced** (Erweitert) und dort den Abschnitt **Security** (Sicherheit).
 2. Klick auf **Make admin secret** (Admin-Secret erstellen). Marinara zeigt das neue Geheimnis einmal an und speichert es in diesem Browser.
-3. Öffne auf jedem entfernten Gerät **Settings** → **Advanced** → **Admin Access**, tipp das Geheimnis in das Feld und klick auf **Save** (Speichern). Großbuchstaben, Leerzeichen und Bindestriche spielen keine Rolle.
+3. Öffne auf jedem entfernten Gerät **Settings** → **Advanced** → **Security**, tipp das Geheimnis in das Feld und klick auf **Save** (Speichern). Großbuchstaben, Leerzeichen und Bindestriche spielen keine Rolle.
 
 Auch ein Gerät, das das Geheimnis schon hat, kann es erstellen. Ein Gerät, das nur mit der Anmeldung angemeldet ist, kann das nicht. So kann niemand mit einer gestohlenen Anmeldung die heiklen Aktionen übernehmen.
 
@@ -293,11 +293,11 @@ Um das Geheimnis zu ändern, klick auf **Replace admin secret** (Admin-Secret er
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. Öffne auf dem entfernten Gerät **Settings** → **Advanced** → **Admin Access**.
+2. Öffne auf dem entfernten Gerät **Settings** → **Advanced** → **Security**.
 3. Füge denselben Wert in das Feld ein (sein Platzhalter lautet **ADMIN_SECRET**) und klick auf **Save**.
 4. Es sollte die Meldung **Admin secret saved for this browser** erscheinen.
 
-`ADMIN_SECRET` in der `.env` hat Vorrang vor einem in der App erstellten Geheimnis. Solange es gesetzt ist, weist **Admin Access** darauf hin, und du änderst das Geheimnis nur in der `.env`.
+`ADMIN_SECRET` in der `.env` hat Vorrang vor einem in der App erstellten Geheimnis. Solange es gesetzt ist, weist **Security** darauf hin, und du änderst das Geheimnis nur in der `.env`.
 
 ### Gut zu wissen
 

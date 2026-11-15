@@ -57,7 +57,7 @@ Se você definiu outro `PORT`, use esse número. Para ter um ícone parecido com
 
 ## Iniciar e parar Marinara
 
-Com o aplicativo, abra-o e toque em **Install / Start Marinara** se o servidor estiver parado. Para alternar entre o aplicativo e o navegador, use **Open in browser** no inicializador e depois **Retry connection** (tentar conectar novamente). De dentro do aplicativo, volte ao inicializador por **Settings → General → App Behavior → Open Android launcher (app or browser)** (Configurações → Geral → Comportamento do aplicativo → Abrir o inicializador Android: aplicativo ou navegador).
+Com o aplicativo, abra-o e toque em **Install / Start Marinara** se o servidor estiver parado. Para alternar entre o aplicativo e o navegador, use **Open in browser** no inicializador e depois **Retry connection** (tentar conectar novamente). De dentro do aplicativo, volte ao inicializador por **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Configurações → Aparência → Layout → Abrir o inicializador Android: aplicativo ou navegador).
 
 Em uma instalação manual, abra o Termux e execute:
 

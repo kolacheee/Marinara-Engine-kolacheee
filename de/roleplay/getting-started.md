@@ -8,8 +8,8 @@ Nimm Roleplay für eine Szene aus einer Geschichte. Nimm [Conversation](../conve
 
 Bevor du anfängst: Leg im Panel **Connections** (Verbindungen) rechts in der App ein Konto an. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 
-1. Klick in der Chat-Seitenleiste auf den Tab **RP**.
-2. Klick oben in der Seitenleiste auf die Schaltfläche **+**. Ihr Tooltip lautet **New Roleplay**.
+1. Öffne deine Chats (**Bibliothek** oben rechts, dann **Chats** oben in der Seitenleiste) und klick auf den Tab **Roleplay**.
+2. Klick oben in der Chatliste auf **Neu**.
 
 Der Chat öffnet sich mit **Chat Settings** (Chat-Einstellungen) und einem Einrichtungsassistenten mit fünf Schritten. Nur das Konto ist Pflicht. Alles lässt sich später ändern.
 
@@ -23,7 +23,7 @@ Danach siehst du den Chat mit einem Nachrichtenfeld. Tipp deine erste Nachricht 
 
 ## Die Bühne: Hintergrund, Sprites und HUD
 
-- **Hintergrund**: ein Bild über die ganze Szene hinter deinen Nachrichten, das bei einem Wechsel weich überblendet. Der Agent **Background** kann in jedem Zug eines auswählen, oder du legst pro Chat einen festen Hintergrund fest. Siehe [Roleplay-Hintergründe](backgrounds.md).
+- **Hintergrund**: ein Bild über die ganze Szene hinter deinen Nachrichten, das bei einem Wechsel weich überblendet. Der Agent **Background** kann in jedem Zug eines auswählen, oder du legst pro Chat einen festen Hintergrund fest. Siehe [Hintergründe, die der Geschichte folgen](backgrounds.md).
 - **Sprites**: Charakterbilder auf der Bühne. Jeder Charakter mit aktivierten Sprites kann erscheinen. Ein Charakter braucht eine Sprite-Bibliothek auf seiner Karte, sonst bleibt sein Platz leer. Siehe [Charakter-Sprites](../characters/sprites.md).
 - **HUD**: deine Tracker (Datum, Uhrzeit, Wetter, Ort, wer anwesend ist, Inventar, Quests, Werte). Schalte sie unter **Chat Settings → Agents** ein. Siehe [Roleplay-HUD und Tracker](hud-and-trackers.md).
 
@@ -76,7 +76,7 @@ Für eine längere Notiz ziehst du am Computer an der unteren Ecke des Felds. Au
 - Tab **Activity** (Aktivität): die Ausgaben, die Agenten gespeichert haben, die sogenannten Gedankenblasen. Blende eine aus oder nutze **Clear all** (alle löschen). Auch die Ausgaben eigener Agenten erscheinen hier.
 - Während Agenten arbeiten, wird das Symbol des Abschnitts zu einem drehenden Ladesymbol. Scheitert ein Agent, erscheint ein Punkt auf dem Symbol, bis du den Abschnitt öffnest.
 - Gescheiterte Agenten stehen in einer Liste mit einer Schaltfläche zum erneuten Versuch. Du kannst auch laufende Agenten stoppen, die Tracker neu ausführen und **Clear Trackers** (Tracker leeren) nutzen.
-- Tab **Injections**: erscheint nur, wenn unter **Settings → Advanced** (Einstellungen → Erweitert) der **Debug mode** (Debug-Modus) an ist. Er listet die Prompt-Schnipsel, die schreibende Agenten vor der letzten Antwort gespeichert haben. Zu diesen Agenten zählen **Prose Guardian**, der Antworten an deine Stilregeln anpasst, und der **Narrative Director**, der die Handlung lenkt. Du kannst einen Schnipsel ansehen, bearbeiten und erneut ausführen. Eine Bearbeitung ändert nur, was beim erneuten Generieren derselben Antwort verwendet wird, damit das Neugenerieren wiederholbar bleibt. Die Antwort auf dem Bildschirm ändert sie nicht.
+- Tab **Injections**: erscheint nur, wenn unter **Settings → Advanced → Troubleshooting** (Einstellungen → Erweitert → Fehlerbehebung) der **Debug mode** (Debug-Modus) an ist. Er listet die Prompt-Schnipsel, die schreibende Agenten vor der letzten Antwort gespeichert haben. Zu diesen Agenten zählen **Prose Guardian**, der Antworten an deine Stilregeln anpasst, und der **Narrative Director**, der die Handlung lenkt. Du kannst einen Schnipsel ansehen, bearbeiten und erneut ausführen. Eine Bearbeitung ändert nur, was beim erneuten Generieren derselben Antwort verwendet wird, damit das Neugenerieren wiederholbar bleibt. Die Antwort auf dem Bildschirm ändert sie nicht.
 
 Alle Agenten stellt [Agenten: KI-Helfer für deine Chats](../agents/agents-overview.md) vor. Zum Agenten, der die Geschichte lenkt, siehe [Narrative Director und Secret Plot](narrative-director.md).
 
@@ -185,11 +185,11 @@ Um das Original zurückzuholen, öffne die Befehlsinformationen der Antwort und 
 
 - Am Computer verschiebst du das Fenster an seiner Titelleiste und änderst seine Größe an einem Rand. Hefte es an, damit es offen bleibt. **X** verkleinert es zu einer verschiebbaren Schaltfläche.
 - Am Telefon startet Echo Chamber als kompaktes Fenster über den Nachrichten. Zieh seine Titelleiste, um es zu verschieben, oder eine Kante oder Ecke, um seine Größe zu ändern. Anheften hält es offen, wenn du woanders tippst, und Sperren verhindert versehentliches Verschieben.
-- Echo Chamber folgt deinem **Chat widget style** (Chat-Widget-Stil) unter **Settings → Appearance → App** (Einstellungen → Darstellung → App). Jeder Chat merkt sich sein Layout.
+- Echo Chamber folgt deinem **Chat widget style** (Chat-Widget-Stil) unter **Settings → Appearance → Chat Buttons & Windows** (Einstellungen → Darstellung → Chat-Schaltflächen & Fenster). Jeder Chat merkt sich sein Layout.
 
 ## CYOA-Auswahlmöglichkeiten
 
-CYOA steht für Choose Your Own Adventure, also „Wähle dein eigenes Abenteuer“. Der Agent CYOA Choices ist standardmäßig aus und funktioniert nur in Roleplay. Ist er an, ergänzt er nach einer Antwort anklickbare Auswahl-Schaltflächen, und ein Klick auf eine davon schickt sie als deine nächste Nachricht ab. Willst du Auswahlmöglichkeiten kombinieren oder eine vorher bearbeiten, schalte unter **Settings → General → Input & Editing** die Einstellung **Add CYOA choices to the message box instead of sending them** (CYOA-Auswahlmöglichkeiten ins Nachrichtenfeld einfügen, statt sie abzuschicken) ein. Ein Klick auf eine Auswahl fügt ihren Text dann in dein Nachrichtenfeld ein.
+CYOA steht für Choose Your Own Adventure, also „Wähle dein eigenes Abenteuer“. Der Agent CYOA Choices ist standardmäßig aus und funktioniert nur in Roleplay. Ist er an, ergänzt er nach einer Antwort anklickbare Auswahl-Schaltflächen, und ein Klick auf eine davon schickt sie als deine nächste Nachricht ab. Willst du Auswahlmöglichkeiten kombinieren oder eine vorher bearbeiten, schalte unter **Settings → Chatting → Message Box** die Einstellung **Add CYOA choices to the message box instead of sending them** (CYOA-Auswahlmöglichkeiten ins Nachrichtenfeld einfügen, statt sie abzuschicken) ein. Ein Klick auf eine Auswahl fügt ihren Text dann in dein Nachrichtenfeld ein.
 
 ## Fehlerbehebung
 
@@ -197,14 +197,14 @@ CYOA steht für Choose Your Own Adventure, also „Wähle dein eigenes Abenteuer
 | --- | --- |
 | Ein HUD-Wert ist falsch. | Bearbeite ihn von Hand und sperre ihn, damit der nächste Durchlauf ihn in Ruhe lässt. Siehe [Roleplay-HUD und Tracker](hud-and-trackers.md). Driften die Werte immer wieder ab, nimm ein stärkeres Modell für die Agenten. |
 | Sprites ändern sich nicht. | Prüf, ob der Charakter eine Sprite-Bibliothek hat. Du kannst auch `/emote` nutzen. |
-| Der Hintergrund wechselt nie. | Der Agent **Background** wählt aus deiner Bibliothek aus, also füg weitere Hintergründe hinzu. Siehe [Roleplay-Hintergründe](backgrounds.md). |
+| Der Hintergrund wechselt nie. | Der Agent **Background** wählt aus deiner Bibliothek aus, also füg weitere Hintergründe hinzu. Siehe [Hintergründe, die der Geschichte folgen](backgrounds.md). |
 | Eine neu generierte Antwort schlägt weiter die falsche Richtung ein. | Schalte **Debug mode** ein, öffne **Agent activity → Injections** und bearbeite oder wiederhole den gespeicherten Schnipsel, bevor du neu generierst. |
 
 Weitere Hilfe bietet [Fehlerbehebung in Marinara Engine](../TROUBLESHOOTING.md).
 
 ## Verwandte Anleitungen
 
-- [Roleplay-Hintergründe](backgrounds.md)
+- [Hintergründe, die der Geschichte folgen](backgrounds.md)
 - [Roleplay-HUD und Tracker](hud-and-trackers.md)
 - [Kampfbegegnungen (Roleplay)](combat-encounters.md)
 - [Narrative Director und Secret Plot](narrative-director.md)

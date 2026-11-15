@@ -6,7 +6,7 @@
 
 この連携は、Home Assistantの中にインストールして、Marinaraサーバーと結び付ける小さなソフトウェアです。初回セットアップで、次のものを自動で作ります。ツールのアドレスをコピーしたり、ツールを手作業で設定したりする必要はありません。
 
-- Presetsパネルの**Functions**(関数)タブに、スマートホーム用のツール。[カスタムツールと関数呼び出し](../extending/custom-tools.md)を参照してください。
+- カスタムツールの中に、スマートホーム用のツール(チャットの**Chat Settings → Function Calling**(チャット設定 → 関数呼び出し)にある**Functions**(関数)の一覧)。[カスタムツールと関数呼び出し](../extending/custom-tools.md)を参照してください。
 - **Home Assistant**という名前のエージェント1つ。チャットと並行して動くAIのヘルパーです。[エージェント: チャットを支えるAIヘルパー](../agents/agents-overview.md)を参照してください。
 - Home Assistant側からMarinaraを監視、操作するための、Home Assistantのエンティティー(デバイス、センサー、コントロール)。
 
@@ -53,7 +53,7 @@ WEBHOOK_LOCAL_URLS_ENABLED=true
 
 うまくいかなかった場合: Marinaraに到達できないと、Home Assistantはエラーを表示します。[トラブルシューティング](#troubleshooting)を参照してください。
 
-成功すると、連携はHome Assistantに専用のWebhookを登録します。さらに、そのWebhookを指すツールをMarinaraの**Functions**セクションに作り、有効なツールをすべて列挙した**Home Assistant**エージェントを作り、後述のエンティティーを作ります。
+成功すると、連携はHome Assistantに専用のWebhookを登録します。さらに、そのWebhookを指すツールをMarinaraの**Library → Custom tools**(ライブラリー → カスタムツール)ページに作り、有効なツールをすべて列挙した**Home Assistant**エージェントを作り、後述のエンティティーを作ります。
 
 ## エージェントをチャットに追加する
 
@@ -160,7 +160,7 @@ Webhookの呼び出しがブロックされている可能性が高いです。`
 
 ### ツールがFunctionsに出てこない
 
-**Marinara Sync HA Tools**を押すか、Home Assistantを再起動してから、Presetsパネルの**Functions**タブを確認します。
+**Marinara Sync HA Tools**を押すか、Home Assistantを再起動してから、チャットの**Chat Settings → Function Calling → Add Functions**(チャット設定 → 関数呼び出し → 関数を追加)を確認します。
 
 ### Home Assistantエージェントがチャットに出てこない
 
@@ -176,7 +176,7 @@ http://<homeassistant-ip>:8123/api/webhook/<webhook-id>
 
 ## アンインストール
 
-Home Assistantの**Settings → Devices & Services → Marinara Engine**(設定 → デバイスとサービス → Marinara Engine)で連携を削除します。これでエンティティーは消えます。Marinaraの**Functions**セクションにあるツールと**Home Assistant**エージェントは残ります。不要であれば、Marinaraで手動で削除してください。
+Home Assistantの**Settings → Devices & Services → Marinara Engine**(設定 → デバイスとサービス → Marinara Engine)で連携を削除します。これでエンティティーは消えます。Marinaraの**Library → Custom tools**(ライブラリー → カスタムツール)ページにあるツールと**Home Assistant**エージェントは残ります。不要であれば、Marinaraで手動で削除してください。
 
 ## 関連ガイド
 

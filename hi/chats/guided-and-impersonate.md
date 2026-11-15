@@ -25,11 +25,11 @@
 
 इसमें संदेश बॉक्स में लिखा टेक्स्ट दोबारा जेनरेट करने के लिए एक बार की दिशा की तरह इस्तेमाल होता है।
 
-1. **Settings → Advanced → Message Tools** (सेटिंग्स → एडवांस्ड → संदेश टूल) खोलें और **Guide swipes/regens with chat input** चालू करें। यह डिफ़ॉल्ट रूप से बंद रहती है।
+1. **Settings → Chatting → Editing & Swipes** (सेटिंग्स → चैटिंग → एडिटिंग और स्वाइप) खोलें और **Guide swipes/regens with chat input** चालू करें। यह डिफ़ॉल्ट रूप से बंद रहती है।
 2. किसी चैट में संदेश बॉक्स में दिशा लिखें, पर उसे भेजें नहीं।
 3. AI के संदेश पर **Regenerate** (दोबारा जेनरेट करें) पर क्लिक करें। बॉक्स में टेक्स्ट हो, तो बटन का लेबल **Regenerate (guided)** होता है।
 
-इसके बाद भी आपकी दिशा बॉक्स में बनी रहती है, इसलिए उसमें बदलाव करके फिर से जेनरेट कर सकते हैं। अगर आप चाहते हैं कि वह हट जाए, तो **Settings → General → Input & Editing** (सेटिंग्स → जनरल → इनपुट और एडिटिंग) में **Keep guidance after regenerating** बंद करें।
+इसके बाद भी आपकी दिशा बॉक्स में बनी रहती है, इसलिए उसमें बदलाव करके फिर से जेनरेट कर सकते हैं। अगर आप चाहते हैं कि वह हट जाए, तो **Settings → Chatting → Message Box** (सेटिंग्स → चैटिंग → संदेश बॉक्स) में **Keep guidance after regenerating** बंद करें।
 
 अगर यह काम नहीं किया: बटन का लेबल **Regenerate (guided)** होना चाहिए। अगर उस पर सिर्फ़ **Regenerate** लिखा है, तो सेटिंग बंद है या बॉक्स खाली है।
 
@@ -71,7 +71,7 @@ Impersonate से मॉडल आपका अगला संदेश आप
 | **Preset** | सिर्फ़ Impersonate वाले जवाबों के लिए एक प्रॉम्प्ट प्रीसेट। डिफ़ॉल्ट: **Use chat default**। देखें [प्रीसेट](../prompts/presets.md)। |
 | **Connection** | Impersonate वाले जवाबों का मॉडल, जैसे कोई सस्ता या तेज़ मॉडल। डिफ़ॉल्ट: **Use chat default**। **Random** भी चुन सकते हैं। देखें [किसी AI प्रोवाइडर से कनेक्ट करना](../connections/connecting-to-a-provider.md)। |
 | **Skip agents** | Impersonate के दौरान एजेंट (ट्रैकर, लोरबुक राउटर और ऐसे दूसरे मददगार) नहीं चलाता। इससे Impersonate तेज़ रहता है और वर्ल्ड स्टेट नहीं बदलता। डिफ़ॉल्ट रूप से बंद। देखें [एजेंट](../agents/agents-overview.md)। |
-| **Use CYOA as direction** | किसी CYOA (choose your own adventure) विकल्प पर क्लिक करने से वह पोस्ट होने के बजाय Impersonate की दिशा बन जाता है। डिफ़ॉल्ट रूप से बंद। अगर **Settings → General → Input & Editing** में **Add CYOA choices to the message box instead of sending them** (CYOA विकल्प भेजने के बजाय संदेश बॉक्स में जोड़ें) चालू है, तो क्लिक करने पर टेक्स्ट सिर्फ़ आपके संदेश बॉक्स में जुड़ता है और इस सेटिंग का कोई असर नहीं होता। |
+| **Use CYOA as direction** | किसी CYOA (choose your own adventure) विकल्प पर क्लिक करने से वह पोस्ट होने के बजाय Impersonate की दिशा बन जाता है। डिफ़ॉल्ट रूप से बंद। अगर **Settings → Chatting → Message Box** में **Add CYOA choices to the message box instead of sending them** (CYOA विकल्प भेजने के बजाय संदेश बॉक्स में जोड़ें) चालू है, तो क्लिक करने पर टेक्स्ट सिर्फ़ आपके संदेश बॉक्स में जुड़ता है और इस सेटिंग का कोई असर नहीं होता। |
 
 ### एक चैट के लिए प्रॉम्प्ट सेट करना
 
@@ -88,7 +88,7 @@ Impersonate से मॉडल आपका अगला संदेश आप
 
 Quick replies **Send** के एक-क्लिक विकल्प जोड़ते हैं, ताकि स्लैश कमांड टाइप न करना पड़े।
 
-1. **Settings → General → Input & Editing** खोलें।
+1. **Settings → Chatting → Message Box** खोलें।
 2. **Quick replies** (क्विक रिप्लाई) चालू करें। यह डिफ़ॉल्ट रूप से बंद रहता है।
 3. इसे खोलकर चुनें कि कौन से एक्शन दिखें। इसके चालू होने पर तीनों एक्शन डिफ़ॉल्ट रूप से चालू रहते हैं।
 

@@ -2,16 +2,13 @@
 
 Zestaw zasad mówi trybowi Game Mode, jak działa system stołowy: jakimi kośćmi rzuca test, co jest w arkuszu postaci, jakie zasoby się wydaje, co daje odpoczynek, a w niektórych zestawach także jak rozgrywa się całą walkę. Ten przewodnik opisuje, jak zdobyć zestaw zasad, wybrać go dla gry i co zmienia się w rozgrywce. Gra bez zestawu zasad korzysta z własnych zasad aplikacji Marinara Engine, opisanych w pozostałych przewodnikach po trybie Game Mode.
 
-<a id="get-a-ruleset"></a>
-
 ## Uzyskanie zestawu zasad
 
 Żeby zainstalować oficjalny zestaw zasad, na przykład 5e (SRD 5.1):
 
-1. Kliknij ikonę Sparkles, żeby otworzyć panel **Agents** (agenci).
-2. Wybierz **Agent Organizer** (organizowanie agentów).
-3. Znajdź zestaw zasad. Zestawy zasad mają oznaczenie **Rules**.
-4. Kliknij **Install** (instalacja).
+1. Otwórz **Biblioteka → Agenci** i kliknij **Dostępne**.
+2. Znajdź zestaw zasad. Zestawy zasad mają oznaczenie **Rules**.
+3. Kliknij **Pobierz**.
 
 Potem rozpocznij nową grę i wybierz zestaw (zobacz niżej). Zestawy zasad pochodzą z dwóch miejsc:
 
@@ -50,8 +47,6 @@ Arkusz dodaje się w sekcji **Stats** (statystyki) w edytorze postaci lub person
 
 Udostępniony plik konfiguracji zapamiętuje swój zestaw zasad. Jeśli go zaimportujesz, a nie masz tego zestawu albo masz jego starszą wersję, kreator informuje, o jaki zestaw chodziło, a gra korzysta z własnych zasad aplikacji Marinara Engine, chyba że zainstalujesz ten zestaw i go wybierzesz.
 
-<a id="what-happens-in-battles"></a>
-
 ## Co dzieje się podczas walk
 
 To, co zestaw zasad robi w walce, zależy od tego, jak został napisany. Linia pod zestawem zasad w kreatorze wskazuje, który wiersz ma zastosowanie.
@@ -70,8 +65,6 @@ Gdy zestaw zasad udostępnia swój arkusz, system walki aplikacji Marinara Engin
 - Po walce utracone lub odzyskane zdrowie wraca do arkusza w ten sam sposób, a wydane komórki i zasoby zapisują się bez zmian.
 
 Reszta się nie zmienia. Matematyka rzutów nadal należy do aplikacji Marinara Engine (zobacz [Jak liczona jest walka](combat.md#how-combat-math-works)), a rzuty ataku, rzuty obronne i koncentracja z systemu stołowego nie są stosowane. Walka opuszczona przez usunięcie wiadomości, w której się zaczęła, niczego nie zapisuje z powrotem.
-
-<a id="checks-on-a-ruleset"></a>
 
 ## Testy z zestawem zasad
 
@@ -128,8 +121,6 @@ Kośćmi nadal rzuca Marinara, a karta rzutu dostosowuje się do zestawu:
 - **Kości z własnymi ściankami.** Ścianki mogą mieć inną wartość niż ich liczba, na przykład minus, puste pole i plus, albo nosić symbole, na przykład sukces, przewagę i ich przeciwieństwa.
 - **Wyniki w przedziałach.** Test może trafić w przedział, na przykład sukces krytyczny albo sukces za cenę, zamiast zwykłego sukcesu lub porażki. Karta rzutu nazywa przedział, a GM go opisuje.
 - **Kilka testów rzucanych inaczej.** Zestaw może rozstrzygać większość testów w jeden sposób i wskazać kilka, w których rzuca się inaczej.
-
-<a id="the-ruleset-sheet"></a>
 
 ## Arkusz zestawu zasad
 

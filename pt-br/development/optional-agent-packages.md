@@ -123,7 +123,7 @@ O namespace só cresce: um membro novo chega com uma versão minor da API de cap
 | --- | --- |
 | `ui` | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat` | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus` |
-| `agent` | `setYoutubePlay`, `reset` |
+| `agent` | `setYoutubePlay`, `setPackageActivity`, `reset` |
 | `sidecar` | `modelDownloaded`, `modelDisplayName`, `fetchStatus` |
 | `dialog` | `dialog`, `openDialog`, `closeDialog` |
 | `gallery` | `pinImage`, `pinVideo` |
@@ -193,6 +193,7 @@ As regras de segurança do Engine têm prioridade. A caixa é aberta à força s
 Capability API 1.14 adiciona dois valores de `contributions.slots` para pacotes de agentes Roleplay ativos e habilitados com ponto de entrada do cliente:
 
 - `roleplay-tracker` monta a visualização `toolbar` do pacote no HUD Roleplay. As propriedades incluem `chatId`, `chatMode`, `mobileCompact`, `toolbarButtonClass` do host, `onRerunTracker`, `trackerRetryBusy`, `lockMode` e `onToggleLockMode`. Os callbacks são opcionais: confira se existem antes de usá-los.
+- `chat-activity` (Capability API 1.820) monta a visualização `activity` do pacote no painel de atividade dos agentes do chat. Veja [Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity).
 - `tracker-panel` monta a visualização `tracker` dentro do Tracker Panel existente, com `chatId`, `chatMode` e `detached`. Reutilize essa superfície em vez de abrir outro painel. Ambos também recebem as propriedades normais de identidade e localização de capacidades.
 
 Contribuições de contexto continuam registradas por `api.registerPromptContext` e exigem `prompt-context`. A solicitação agora expõe `targetCharacterIds`, `personaId` e `placedAgentTypes`, opcional por compatibilidade. `placedAgentTypes` informa ao contribuidor quais seções de dados de agentes o preset já posicionou, para que ele evite duplicar o próprio contexto. O host mantém a identidade do pacote de cada contribuição em `packageBlocks` para posicionar seu texto na seção de agente correspondente. Texto específico para um público deve respeitar os IDs de personagens destinatários recebidos.
@@ -1009,10 +1010,8 @@ const memoryVectors = await embeddings.embed(memoryTexts, signal); // documents
 
 A visão do navegador ganha `openCharacter(characterId, { tab })`. Ela abre o editor de personagens, na aba indicada quando houver uma, para que um pacote leve o usuário a um campo do card que ele lê. Engines antigos não têm esse método: verifique se `openCharacter` existe antes de mostrar o link.
 
-Desde a #9191, `tab` também aceita uma seção dentro de uma aba: `character-sheet`, `image-instructions`, `sprites` ou `gallery`, todas na aba **Images** (imagens). `sprites` e `gallery` eram abas, então links antigos continuam funcionando. As instruções para selfies do personagem (`conversationImageInstructions`) passaram de `convo` para `image-instructions`. Uma versão do Engine anterior à #9191 não reconhece esse ID e abre o editor no topo.
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66: cenas a partir de threads de pacotes
@@ -1147,6 +1146,58 @@ Em um Engine 1.816, capture `code === "animation-unsupported"` para desenhar uma
 O serviço `long-term-memory:runtime` pode adicionar um método opcional `chatBranched({ chatId, parentChatId })`. O Engine aguarda esse método uma vez quando um chat é ramificado, depois que a rota de ramificação termina de copiar (mensagens, metadados e snapshots) e antes de retornar o novo chat, então as mensagens da ramificação e os metadados `branchParentChatId` já podem ser lidos dentro da chamada. Um pacote pode usá-lo para corrigir a cópia antes que alguém a leia.
 
 Erros e chamadas que levam mais de alguns segundos são registrados e ignorados; a ramificação é retornada de qualquer forma. Sem o método, nada muda. É uma integração opcional: Engines mais antigos nunca o chamam, então o pacote ainda precisa lidar com a ausência dessa chamada. Não exige nenhuma permissão.
+
+### Capability API 1.818: embeddings de uma conexão escolhida pelo pacote
+
+`api.runtime.embeddingsFor(connectionId)` resolve embeddings a partir de uma origem indicada pela configuração do próprio pacote, em vez da conexão do agente que `resolveEmbeddings()` segue. Ao contrário de `resolveEmbeddings()`, nunca recorre ao padrão **Embeddings** de todo o aplicativo.
+
+| `connectionId` | Resolve |
+| --- | --- |
+| `null` | O gerador de embeddings local MiniLM embutido. |
+| Um ID de conexão | A origem de embeddings da própria conexão: seu **Provedor de embeddings**, **URL do endpoint de embedding** e modelo de embeddings, como **Testar embedding** os resolve. |
+| Um ID que não identifica nenhuma conexão ou uma conexão sem uma origem de embeddings utilizável | `null`. Registra no log e resolve; não lança uma exceção. |
+
+O host retornado tem o mesmo formato de `resolveEmbeddings()`: `spaceId`, `label` e `embed(texts, signal?, inputType?)`, com os mesmos limites (128 textos, 200.000 caracteres no total) e o tipo de entrada da versão 1.68. `embed` resolve `null` quando a chamada falha. Cada origem tem seu próprio `spaceId`, então gere novamente os embeddings dos vetores armazenados quando a configuração mudar.
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+É uma integração opcional: versões mais antigas do Engine não têm o método, então verifique se ele existe antes de chamá-lo e use uma alternativa como no exemplo. Declare 1.818 apenas quando o pacote não puder funcionar sem ele. Nenhuma permissão é necessária.
+
+### Capability API 1.820: mostrar um pacote na atividade dos agentes
+
+O slot `chat-activity` coloca um cartão próprio no painel de atividade dos agentes de um chat, aberto pelo ícone de atividade dos agentes, no painel lateral do chat e no Tracker Panel. Declare-o em `contributions.slots` e registre uma visualização `activity`; o Engine monta um elemento para cada pacote ativo que tenha um ponto de entrada do cliente e que o chat execute (o ID do pacote está entre os agentes ativados do chat). Ele aparece depois do status e das saídas dos agentes, antes das saídas salvas dos agentes personalizados.
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+O elemento recebe `chatId` e `onOpenAgentSettings()`, que abre a página do próprio agente do pacote, além das propriedades normais de identidade e localização da capacidade. O Engine não adiciona uma moldura de interface: desenhe o próprio cartão e não renderize nada quando não houver nada para mostrar. Depois que o código do cliente carrega, um elemento vazio não ocupa espaço. Enquanto qualquer cartão de pacote estiver montado, o painel não mostra "No agent activity yet", então desenhe sua própria linha de inatividade se quiser uma.
+
+Não é uma integração opcional: um Engine anterior à versão 1.820 recusa o manifesto, então um pacote que declara `chat-activity` declara 1.820.
+
+#### Mostrar que um pacote está ocupado ou precisa de atenção
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })` acende o ícone de atividade dos agentes daquele chat (`packageId` é o `id` do manifesto), onde quer que o ícone esteja (no painel lateral do chat, na janela destacada dele e no Tracker Panel). Enquanto qualquer pacote informar `busy: true`, o ícone gira como faz para os agentes do próprio chat; `alert: true` mostra o ponto dele. Um campo omitido mantém o valor, e uma entrada com ambos false é removida. Os sinais são mantidos por chat, então trocar de chat mostra só os sinais daquele chat.
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+O Engine nunca limpa um sinal por conta própria, nem mesmo quando o elemento `activity` é desmontado (o ícone é mais importante quando o painel está fechado): a responsabilidade de limpá-lo é sua, e recarregar ou chamar `reset()` limpa tudo. Trocar de chat mantém o sinal. Um pacote ocupado ou com alerta também conta como atividade, então o painel não mostra "No agent activity yet"; combine o sinal com um cartão `activity` para o painel ter algo a mostrar. É uma integração opcional: versões mais antigas do Engine não têm o método, então verifique se ele existe, como acima. Declare 1.820 apenas quando o pacote não puder funcionar sem ele. Nenhuma permissão é necessária.
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

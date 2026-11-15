@@ -7,16 +7,16 @@ Synteza mowy (TTS) czyta na głos wiadomości czatu i narrację gry. Z tego prze
 1. Otwórz sekcję syntezy mowy (kroki niżej) i włącz **Use text to speech** (używanie syntezy mowy).
 2. Wybierz **Source** (źródło) i wklej klucz w pole **API key** (klucz API).
 3. Kliknij **Preview** (Odsłuchaj), żeby usłyszeć próbkę.
-4. W czacie kliknij **Speak** (Mów) pod wiadomością.
+4. Kliknij zębatkę wiersza **Głos** w sekcji **Domyślne**, a potem **Odsłuchaj**, żeby usłyszeć próbkę. W czacie kliknij **Mów** pod wiadomością.
 
 ## Włączanie syntezy mowy
 
 Prawie wszystkie ustawienia TTS mieszczą się w jednej sekcji. Samo włączenie TTS niczego jeszcze nie odczyta. Odsłania tylko przycisk **Speak** przy każdej wiadomości oraz opcje **Auto-play** (automatyczne odtwarzanie). O tym, co i kiedy zostanie przeczytane, nadal decydujesz ty.
 
-1. Kliknij **Connections** (Połączenia) na górnym pasku, a potem **Add** (dodaj). Otwiera się okno **Add account** (dodanie konta).
-2. W grupie **Voice** (głos) wybierz **Text to speech** (synteza mowy). Otwiera się sekcja. Jeśli synteza mowy korzysta już z PocketTTS albo z innego serwera głosu na twoim komputerze lub w twojej sieci prywatnej, ta sama sekcja jest też w grupie **On this device** (na tym urządzeniu).
-3. Włącz **Use text to speech**. Dopóki jest wyłączone, nic nie jest czytane na głos.
-4. Otwórz listę **Source** i wybierz usługę.
+1. Otwórz **Biblioteka → Połączenia**. W sekcji **Domyślne** kliknij **Głos**. Otwiera się okno **Model dla: Głos**.
+2. Wybierz model głosu z jednego ze swoich kont albo silnik głosu na tym urządzeniu, na przykład **Local PocketTTS**. Wiersz **Głos** pokazuje twój wybór.
+3. Nie masz jeszcze konta głosu? Kliknij **Dodaj konto** u dołu okna albo **Nowe połączenie** na stronie Połączenia i otwórz zakładkę **Głos**.
+4. Aby wyłączyć syntezę mowy, kliknij ponownie **Głos** i wybierz **Turn voice off** (wyłącz głos). Dopóki jest wyłączona, nic nie jest czytane na głos.
 
 **Source** to usługa, która tworzy dźwięk.
 
@@ -29,13 +29,11 @@ Marinara trzyma osobny zapisany profil dla każdego źródła: jego klucz, adres
 
 Żądania przechodzą przez własny serwer aplikacji Marinara Engine. Klucz API jest przechowywany na serwerze w postaci zaszyfrowanej. Po zapisaniu klucza pole pokazuje zamaskowane kropki, a prawdziwy klucz nigdy nie wraca do przeglądarki.
 
-<a id="use-an-audio-connection"></a>
-
 ### Korzystanie z połączenia Audio
 
 Jeśli masz już dodane konto **Audio** (zobacz [Obsługiwani dostawcy AI](../connections/providers-reference.md#audio)), nie musisz ponownie wpisywać jego danych. Pojawia się na liście **Source** w grupie **Audio providers** (dostawcy audio), z typem źródła w nawiasie.
 
-1. Otwórz listę **Source** i wybierz konto.
+1. Kliknij wiersz **Głos** w sekcji **Domyślne** i wybierz model.
 2. Wybierz jego głosy i pozostałe ustawienia opisane niżej.
 
 Marinara używa wtedy adresu, klucza, modelu i wartości **Request timeout (seconds)** (limit czasu żądania w sekundach) tego konta, więc sekcja ukrywa te pola. Klucz zostaje w koncie: nigdy nie jest kopiowany do sekcji ani wysyłany do przeglądarki. Zmiany w koncie, na przykład nowy klucz, działają od razu.
@@ -65,20 +63,15 @@ W przypadku źródła **ElevenLabs** lista **Model** wczytuje modele mowy dostę
 
 PocketTTS nie jest wbudowany w aplikację Marinara Engine. Zainstaluj osobno [oficjalny serwer PocketTTS](https://github.com/kyutai-labs/pocket-tts) i uruchom go poleceniem `uvx pocket-tts serve`. Marinara nie pobiera go ani nim nie zarządza. Oficjalny serwer używa `http://localhost:8000`. Zostaw tę wartość **Base URL**, chyba że zmienisz host lub port. Marinara wykrywa oficjalne wieloczęściowe API `/tts`. Własne adresy [adaptera PocketTTS zgodnego z OpenAI](https://github.com/teddybear082/pocket-tts-openai_streaming_server) nadal działają.
 
-<a id="request-timeout"></a>
-
 ### Limit czasu żądania
 
-Marinara czeka na każdą wypowiadaną kwestię do 60 sekund. Serwer głosu działający na twoim komputerze, zwłaszcza na laptopie, może potrzebować więcej czasu na długą kwestię. Zwiększ **Request timeout (seconds)** pod polem **Model**. Zakres wynosi od 10 do 3 600 sekund.
+Marinara czeka na każdą wypowiadaną kwestię do 60 sekund. Serwer głosu działający na twoim komputerze, zwłaszcza na laptopie, może potrzebować więcej czasu na długą kwestię. Zwiększ **Limit czasu żądania (sekundy)** w sekcji **Więcej** w **Ustawienia głosu** (zębatka wiersza **Głos** w sekcji **Domyślne**). Zakres wynosi od 10 do 3 600 sekund.
 
 Konto Audio ma własne pole **Request timeout (seconds)** pod polem **Default voice** (domyślny głos) w swoim edytorze. Czaty, które mówią przez konto Audio, także wybrane jako **Source**, używają tego limitu. Limit z sekcji dotyczy mowy z jej własnych ustawień, w tym przycisku **Preview**. Jeśli kwestia trwa zbyt długo, komunikat błędu podaje, ile sekund Marinara czekała i które ustawienie trzeba zwiększyć.
 
 ## Wybór głosów
 
-Ustawienie **Voice option** (opcja głosu) decyduje o tym, jak przydzielane są głosy.
-
-- **One voice for all** (jeden głos dla wszystkich): każda mówiąca osoba używa tego samego głosu. To ustawienie domyślne.
-- **Selected per character or persona** (wybór dla każdej postaci lub persony): wybrane postacie i persony dostają od ciebie własne głosy.
+Każda mówiąca osoba korzysta z **Shared voice** (wspólnego głosu), dopóki nie przypiszesz postaci lub personie własnego głosu. Sekcja **Who speaks** (kto mówi) w **Voice settings** (ustawienia głosu) zawiera obie możliwości.
 
 ### Jeden głos dla wszystkich
 
@@ -90,10 +83,9 @@ W przypadku źródła **ElevenLabs** wybór głosu jest obowiązkowy. Marinara w
 
 ### Głosy wybrane dla postaci i person
 
-1. Ustaw **Voice option** na **Selected per character or persona**.
-2. W ramce **Character and persona voices** (głosy postaci i person) kliknij **Add voice** (dodanie głosu).
-3. Wskaż postać lub personę na liście po lewej, a głos na liście po prawej.
-4. Powtórz to dla każdej z nich.
+1. W ramce **Character and persona voices** (głosy postaci i person) kliknij **Add voice** (dodanie głosu).
+2. Wskaż postać lub personę na liście po lewej, a głos na liście po prawej.
+3. Powtórz to dla każdej z nich.
 
 Głos postaci można też ustawić na zakładce **Voice** w oknie **Character Editor**. Ten wybór zmienia ten sam wiersz. Przycisk **Refresh** (odświeżenie) w tej ramce wczytuje ponownie listę głosów. Postacie trzeba utworzyć wcześniej. Jeśli nie ma żadnej, aplikacja poprosi o dodanie postaci lub persony przed przypisywaniem głosów.
 
@@ -182,12 +174,10 @@ Marinara zapisuje wygenerowany dźwięk w przeglądarce, żeby nie tworzyć tej 
 
 Jeśli głos przekręca nazwę postaci albo persony, uzupełnij pole **Phonetic name** (nazwa fonetyczna) i wpisz, jak nazwa ma brzmieć. W oknie **Character Editor** pole to jest na zakładce **Voice**. W oknie **Persona Editor** znajduje się przy polach z podstawowymi informacjami. Działa wyłącznie podczas rozmów audio i wideo w trybie Conversation. Przycisk **Speak**, automatyczne odtwarzanie i narracja w trybie Game Mode je pomijają.
 
-<a id="troubleshooting"></a>
-
 ## Rozwiązywanie problemów
 
-- **Nic nie jest odczytywane**: sprawdź, czy **Use text to speech** jest włączone. Potem sprawdź właściwy przełącznik **Auto-play** albo użyj przycisku **Speak** przy wiadomości.
-- **Sekcja pokazuje Missing Audio provider**: konto wybrane jako **Source** zostało usunięte albo nie da się go użyć. Wybierz inne źródło. Zobacz [Korzystanie z połączenia Audio](#use-an-audio-connection).
+- **Nic nie jest odczytywane**: sprawdź, czy wiersz **Głos** w sekcji **Domyślne** nie jest ustawiony na **Wyłączone**. Potem sprawdź właściwy przełącznik **Auto-play** albo użyj przycisku **Speak** przy wiadomości.
+- **Sekcja pokazuje Missing Audio provider**: konto wybrane jako **Source** zostało usunięte albo nie da się go użyć. Wybierz inne źródło. Zobacz [Korzystanie z połączenia Audio](#use-a-voice-model-from-an-account).
 - **Brak głosów na liście**: zapisz sekcję z włączonym TTS i poprawnym kluczem, a potem kliknij **Refresh voices from provider**. Oficjalny serwer PocketTTS korzysta z wbudowanej listy aplikacji Marinara Engine. W przypadku zgodnego adaptera PocketTTS sprawdź, czy `<Base URL>/v1/voices` odpowiada.
 - **ElevenLabs nie mówi**: wybierz prawdziwy głos, a nie tekst zastępczy "Select an ElevenLabs voice". Sprawdź, czy w polu **Model** jest model mowy, a nie model projektowania głosu z `ttv` w identyfikatorze.
 - **Kwestia urywa się z komunikatem "No audio after 60 s"**: serwer głosu potrzebuje więcej czasu. Zwiększ **Request timeout (seconds)** w miejscu wskazanym w komunikacie. Zobacz [Limit czasu żądania](#request-timeout).
@@ -198,11 +188,9 @@ Jeśli głos przekręca nazwę postaci albo persony, uzupełnij pole **Phonetic 
 
 Te sekcje dotyczą zaawansowanych konfiguracji.
 
-<a id="game-music-and-sound-effects-on-a-compatible-audio-server"></a>
-
 ### Muzyka i efekty dźwiękowe Game na zgodnym serwerze audio
 
-1. W panelu **Connections** otwórz konto **Music & Sound Effects** (muzyka i efekty dźwiękowe) przez **Edit model** (edycja modelu) i wybierz **Custom compatible server** (własny zgodny serwer). Okno **Add account** nie ma kafelka dla tego typu konta. Takie konto powstaje przy aktualizacji albo przez import (zobacz [opis kont](../connections/providers-reference.md#music--sound-effects)).
+1. W panelu **Connections** otwórz konto **Music & Sound Effects** (muzyka i efekty dźwiękowe) przez **Edit model** (edycja modelu) i wybierz **Custom compatible server** (własny zgodny serwer). Lista **Dodaj połączenie** nie zawiera pozycji dla tego typu konta. Takie konto powstaje przy aktualizacji albo przez import (zobacz [opis kont](../connections/providers-reference.md#music--sound-effects)).
 2. Wpisz adres, klucz i model serwera muzyki lub efektów dźwiękowych.
 3. Ustaw **Generation API format** (format API generowania) i wpisz ścieżki endpointów udostępnianych przez serwer. Pusta ścieżka oznacza, że dana funkcja jest niedostępna.
 4. Włącz **Music generation** (generowanie muzyki), **Sound-effect generation** (generowanie efektów dźwiękowych) albo oba przełączniki.
@@ -219,11 +207,10 @@ Włączaj tylko funkcje faktycznie obsługiwane przez serwer. Sam endpoint mowy 
 
 Wygenerowana muzyka kontekstowa powstaje raz na obszar lub poziom starcia i jest używana ponownie. Powtarzane efekty dźwiękowe korzystają z pamięci podręcznej audio. Błąd generowania pozostawia pamięć podręczną dostępną do ponownej próby.
 
-<a id="gacha-forge-dialogue-and-audio"></a>
-
 ### Dialogi i dźwięk w pakiecie Gacha Forge
 
 Gacha Forge w wersji 1.11.0 lub nowszej korzysta z konta wybranego w sekcji TTS i jego przypisań głosów do postaci. - Włącz **Read character dialogue** (czytanie dialogów postaci), żeby odczytywać dialogi zaimportowanych postaci z przypisanym głosem. Ta opcja jest w kroku **Lore** (wiedza o świecie) podczas tworzenia nowego świata albo we własnych ustawieniach świata pakietu Gacha Forge dla istniejącego świata. Narracja, myśli, wygenerowane jednostki bez identyfikatora postaci w aplikacji Marinara Engine oraz postacie bez głosu pozostają nieme. Sama nazwa nigdy nie pożycza głosu innej postaci.
+
 - Wybranego konta Audio można używać, gdy przełącznik TTS świata jest włączony. Przy bezpośrednim korzystaniu z własnych ustawień źródła w sekcji musi być też włączone **Use text to speech**.
 - Wbudowana muzyka i efekty dźwiękowe Game nie wymagają konta do generowania. Żeby tworzyć nowe utwory, włącz **Generate music and sound effects** (generowanie muzyki i efektów dźwiękowych) w pakiecie Gacha Forge i wybierz konto Music & Sound Effects w polu **Audio connection** (połączenie audio). To pole pojawia się po włączeniu generowania. Utwory ekranu głównego, walki, bossów, scen fabularnych i historii postaci są generowane przy pierwszej potrzebie, a potem używane ponownie. Te żądania korzystają z twojego konta w usłudze.
 - Przycisk wyciszenia w prawym górnym rogu wycisza jednocześnie muzykę, dialogi i efekty dźwiękowe. Ustawienia wizualne pakietu Gacha Forge mają osobne regulatory głośności tych trzech kanałów, w tym głośność zerową, oraz pauzę automatycznego odtwarzania (domyślnie **3 sekundy**, po zakończeniu odsłaniania tekstu i ewentualnej wypowiadanej kwestii). Wybory nadal czekają na gracza. Opuszczenie sceny anuluje wypowiadany dialog. Opuszczenie świata zatrzymuje jego dźwięk.

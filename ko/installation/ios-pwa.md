@@ -93,7 +93,7 @@ Safari가 예전 버전의 앱을 계속 보여 주거나, 저장해 둔 앱이 
 
 **저장이 조용히 실패한다는 빨간 배너가 표시됩니다.** iPhone이나 iPad의 문제가 아니라 서버가 보내는 네트워크 신뢰 경고입니다. 서버 운영자가 내 주소를 신뢰하도록 설정해야 합니다. [원격 접근](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf)을 참고하세요.
 
-**권한이 필요한 작업이 막힙니다.** 일부 관리 작업에는 서버 운영자에게 받은 관리자 시크릿(두 번째 비밀번호)이 필요합니다. iPhone이나 iPad의 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에 저장하세요. [원격 접근](../REMOTE_ACCESS.md#admin-access-and-privileged-actions)을 참고하세요.
+**권한이 필요한 작업이 막힙니다.** 일부 관리 작업에는 서버 운영자에게 받은 관리자 시크릿(두 번째 비밀번호)이 필요합니다. iPhone이나 iPad의 **Settings → Advanced → Security**(설정 → 고급 → 보안)에 저장하세요. [원격 접근](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)을 참고하세요.
 
 ## 관련 가이드
 

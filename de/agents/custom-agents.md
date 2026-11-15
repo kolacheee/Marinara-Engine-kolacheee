@@ -1,22 +1,22 @@
 # Eigene Agenten erstellen
 
-Ein eigener Agent ist ein Helfer, den du selbst schreibst: Du legst seine Anweisungen fest, wann er läuft und was er ändern darf. Bau einen, wenn kein [herunterladbarer Agent](built-in-agents.md) das tut, was du willst. Ist ein installierter Agent nah dran, zeig im Panel **Agents** (Agenten) auf seine Karte und klick auf **Copy agent** (Agent kopieren). So bekommst du eine bearbeitbare Kopie.
+Ein eigener Agent ist ein Helfer, den du selbst schreibst: Du legst seine Anweisungen fest, wann er läuft und was er ändern darf. Bau einen, wenn kein [herunterladbarer Agent](built-in-agents.md) das tut, was du willst. Ist ein installierter Agent nah dran, zeig auf der Seite **Agents** (Agenten) auf seine Karte und klick auf **Copy agent** (Agent kopieren). So bekommst du eine bearbeitbare Kopie.
 
 Bevor du loslegst: Lies [Agenten: KI-Helfer für deine Chats](agents-overview.md). Ein Agent, den du baust, läuft noch nicht von allein. Du fügst ihn anschließend einem Chat hinzu. Eigene Agenten funktionieren in allen Chat-Modi.
 
 ## Einen eigenen Agenten erstellen
 
-1. Öffne das Panel **Agents**.
-2. Klick oben auf **New** (Neu), das Plus-Symbol. Der ganzseitige Agent-Editor öffnet sich.
+1. Öffne **Library → Agents** (Bibliothek → Agenten).
+2. Klick oben rechts auf **New agent** (Neuer Agent). Der ganzseitige Agent-Editor öffnet sich.
 3. Trag im Titelfeld einen Namen ein, zum Beispiel `Weather Reporter`.
 4. Fülle **Description** (Beschreibung) und **Author** (Autor) aus.
 5. Wähle eine **Pipeline Phase** (Pipeline-Phase; siehe [Pipeline Phase](#pipeline-phase)).
 6. Schalte unter **Custom Agent Abilities** (Fähigkeiten eigener Agenten) die Fähigkeiten ein, die der Agent braucht.
 7. Wähle einen **Result Type** (Ergebnistyp), der zu dem passt, was der Agent erzeugt. Bist du unsicher, nimm **Context Injection**. Dieser Typ braucht keine Fähigkeit und kein festes Ausgabeformat.
 8. Schreib die Anweisungen des Agenten unter **Prompt Template** (Prompt-Vorlage).
-9. Klick oben in der Leiste auf **Save** (Speichern). Ein grünes **Saved**-Badge erscheint.
+9. Klick oben im Editor auf **Save** (Speichern) oder drück <kbd>Ctrl</kbd>+<kbd>S</kbd>.
 
-Der Agent erscheint jetzt im Bereich **Custom Agents** (Eigene Agenten) des Panels **Agents**. Zum Einsetzen öffnest du einen Chat, gehst zu **Chat Settings** (Chat-Einstellungen), schaltest **Enable Agents** (Agenten aktivieren) ein und fügst den Agenten aus **Custom Agents** hinzu.
+Der Agent erscheint jetzt unter **Your agents** (Deine Agenten) auf der Seite **Agents**. Zum Einsetzen öffnest du einen Chat, gehst zu **Chat Settings** (Chat-Einstellungen), schaltest **Enable Agents** (Agenten aktivieren) ein und fügst den Agenten aus **Custom Agents** hinzu.
 
 ## Pipeline Phase
 
@@ -160,23 +160,23 @@ Marinara setzt `editedText` in die Antwort ein. Die Notizen aus `changes` ersche
 
 ## Agenten importieren und exportieren
 
-Um einen Agenten zu exportieren, klickst du im Editor oben in der Leiste auf **Export agent** (Agent exportieren), das Upload-Symbol. Die Datei enthält Prompt und Einstellungen des Agenten, aber nie Definitionen eigener Tools. Für mehrere Agenten nutzt du **Select agents** (Agenten auswählen) im Panel **Agents**, markierst sie und exportierst sie.
+Um einen Agenten zu exportieren, klickst du im Editor oben in der Leiste auf **Export agent** (Agent exportieren), das Upload-Symbol, oder wählst in seinem Menü **⋯** unter **Your agents** auf **Library → Agents** den Punkt **Export** (Exportieren). Die Datei enthält Prompt und Einstellungen des Agenten, aber nie Definitionen eigener Tools. Um mehrere Agenten auf einmal zu exportieren, klick auf **Select** (Auswählen; das Häkchen neben dem Titel **Agents**), wähl Agenten unter **Your agents** aus und klick unten in der Leiste auf **Export**. Dasselbe Menü **⋯** enthält auch **Duplicate** (Duplizieren) und **Delete** (Löschen).
 
 Externe Importe sind standardmäßig gesperrt.
 
-1. Öffne **Settings → Advanced → Danger Zone** und schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) ein. Eine Änderung an der `.env` ist nicht nötig.
-2. Klick im Panel **Agents** auf **Import agents** (Agenten importieren) und wähle Agent-Dateien oder einen Ordner.
+1. Öffne **Settings → Advanced → Security** und schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) ein. Eine Änderung an der `.env` ist nicht nötig.
+2. Öffne **Library → Agents**, klick auf **Import agents** (Agenten importieren), das Download-Symbol neben **Starter kits** (Einsteigerpakete), wähl **Choose Files** (Dateien wählen) oder **Choose Folder** (Ordner wählen) und such die Agent-Dateien aus.
 3. Prüf die Liste der Berechtigungen, die Marinara anzeigt. Bestätige nur, was der Agent braucht. Nicht angehakte Fähigkeiten bleiben gesperrt.
 
-Diese Sperre betrifft nur Agenten aus Dateien, Ordnern oder eigenen Repositories. Agenten, die du selbst anlegst, und offizielle Agenten aus **Agent Organizer** (Agentenverwaltung) funktionieren ganz normal. Jede importierte Datei bekommt eine neue eigene Identität und kann deshalb keinen offiziellen Agenten ersetzen.
+Diese Sperre betrifft nur Agenten aus Dateien, Ordnern oder eigenen Repositories. Agenten, die du selbst anlegst, und offizielle Agenten unter **Library → Agents** funktionieren ganz normal. Jede importierte Datei bekommt eine neue eigene Identität und kann deshalb keinen offiziellen Agenten ersetzen.
 
-Zur Sicherheit ignoriert Marinara mitgelieferte Funktionen, entfernt Tool-Auswahlen, bereinigt temporäres CSS und prüft die freigegebenen Fähigkeiten, bevor ein importierter Agent Nachrichten, Tracker, Lorebooks, Hintergründe, Sprites, Medien, haptische Geräte, About-Me-Daten, Prompts oder Bilder ändern darf. Importiere vertrauenswürdige Funktionen getrennt, sieh sie durch und häng sie dem Agenten selbst an. Schaltest du den Schalter in der **Danger Zone** wieder aus, laufen importierte Agenten nicht mehr.
+Zur Sicherheit ignoriert Marinara mitgelieferte Funktionen, entfernt Tool-Auswahlen, bereinigt temporäres CSS und prüft die freigegebenen Fähigkeiten, bevor ein importierter Agent Nachrichten, Tracker, Lorebooks, Hintergründe, Sprites, Medien, haptische Geräte, About-Me-Daten, Prompts oder Bilder ändern darf. Importiere vertrauenswürdige Funktionen getrennt, sieh sie durch und häng sie dem Agenten selbst an. Schaltest du **Allow custom Agent imports** wieder aus, laufen importierte Agenten nicht mehr.
 
 <a id="activation-questions"></a>
 
 ## Aktivierungsfragen
 
-Eine Aktivierungsfrage prüft, ob die jüngste Szene deinen Agenten braucht. Sie erkennt Umschreibungen, die Schlüsselwörter übersehen. Dafür braucht sie ein **Decision model** (Entscheidungsmodell), ein kleines Modell, das Ja-Nein-Fragen beantwortet. Wähle es im Panel Connections aus. Siehe [Decision-Modelle](../connections/decision-models.md). Steht **Decision model** auf **None**, dem Standard, bleiben die Fragefelder deaktiviert, und ein Agent mit einer Frage läuft so, als hätte er keine.
+Eine Aktivierungsfrage prüft, ob die jüngste Szene deinen Agenten braucht. Sie erkennt Umschreibungen, die Schlüsselwörter übersehen. Dafür braucht sie ein **Decision model** (Entscheidungsmodell), ein kleines Modell, das Ja-Nein-Fragen beantwortet. Wähle es im Kasten **Defaults** (Standardwerte) auf der Connections-Seite aus. Siehe [Decision-Modelle](../connections/decision-models.md). Steht **Decision model** auf **None**, dem Standard, bleiben die Fragefelder deaktiviert, und ein Agent mit einer Frage läuft so, als hätte er keine.
 
 1. Öffne den eigenen Agenten.
 2. Gib eine **Question** (Frage) mit bis zu 500 Zeichen ein. Die Makros `{{user}}` und `{{char}}` funktionieren darin.
@@ -193,9 +193,7 @@ So läuft es ab:
 - Bei Zeitüberschreitung, nicht verfügbarem Modell oder ungültiger Antwort läuft der Agent normal. Das Zeitlimit hängt vom Modelltyp ab und davon, ob das Modell zuerst nachdenken muss. Siehe [Zeitlimits](../connections/decision-models.md#time-limits).
 - Importierte Agenten mit einer Aktivierungsfrage oder Decision-Aussagen zeigen einen Hinweis mit Link zur Anleitung für Decision-Modelle. Ohne Decision-Modell läuft der Agent, sobald Schlüsselwörter und **Trigger Cadence** (Ausführungstakt) es erlauben, und Aussagen im Prompt gelten als nein.
 
-Aktivierungsfragen gelten nur für eigene Agenten.
-
-<a id="decision-statements-in-the-agents-prompt"></a>
+Aktivierungsfragen gelten nur für eigene Agenten. Der eingebaute Illustrator prüft neue Orte und Wetter nach eigenen, festen Regeln. Siehe [Prüfungen durch ein Decision-Modell](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 ## Decision-Bedingungen im Agenten-Prompt
 

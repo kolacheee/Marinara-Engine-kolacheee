@@ -6,7 +6,7 @@
 
 ## 开启自拍
 
-**开始之前：** 从 **Agents → Agent Organizer**(智能体管理器) 安装 **Illustrator**，并添加一个图像账号，即用于生成图片的服务的账号（参见[图像生成服务商与设置](../media/image-providers.md)）。
+**开始之前：** 从 **Library → Agents**(资料库 → 智能体) 安装 **Illustrator**，并添加一个图像账号，即用于生成图片的服务的账号（参见[图像生成服务商与设置](../media/image-providers.md)）。
 
 1. 打开一个 Conversation 聊天，然后打开 **Chat Settings**(聊天设置)。
 2. 找到 **Agents**(智能体) 部分，然后打开 **Illustrator Settings**(Illustrator 设置)。
@@ -41,7 +41,7 @@
 
 1. 打开 **Chat Settings**，并展开 **Gallery**(图库) 部分。
 2. 点击 **Selfie**(自拍)。如果有多个角色，请在按钮旁边的列表中选择由谁拍摄。
-3. 如果开启了 **Expose media prompts before sending**（**Settings → Generations → Overall Generations**），请检查或编辑提示词，然后点击 **Generate**(生成)。取消则不会发送请求。
+3. 如果开启了 **Expose media prompts before sending**（**Settings → Media → Generation Defaults**(设置 → 媒体 → 生成默认设置)），请检查或编辑提示词，然后点击 **Generate**(生成)。取消则不会发送请求。
 4. 等待，直到按钮显示 **Generating...**。
 
 你会看到 “Selfie generated.”，图片随即出现在聊天中。手动请求使用 **Selfie model**，并消耗一次图像请求。
@@ -61,7 +61,6 @@
 
 新图片会替换消息中的旧图片，旧图片仍保留在 Gallery 中。每次尝试都会消耗一次图像请求。在此选项出现之前制作的图片，使用的是聊天的自拍账号，而且当时没有保存它们的负面提示词和角色提示词。
 
-<a id="video-messages"></a>
 ## 视频消息
 
 角色也可以发送一段短视频。请先安装 Illustrator。自拍功能可以保持关闭。
@@ -79,7 +78,7 @@
 - **Video model**：视频账号。选择 **Default video provider**(默认视频服务商) 即使用你的默认设置。
 - **First frame**：短片开始所用的图片（见下文）。
 
-无论上述设置如何，`/video` 和 Gallery 中的 **Video** 按钮都能使用，并且会忽略间隔。对发送过短片的回复进行滑动切换时，新的备选回复也可以发送它自己的短片。在群聊中，每个角色每条回复可以发送一段短片，直至 **Settings → Generations → Video Generation** 下的 **Videos per reply**(默认为 3)。
+无论上述设置如何，`/video` 和 Gallery 中的 **Video** 按钮都能使用，并且会忽略间隔。对发送过短片的回复进行滑动切换时，新的备选回复也可以发送它自己的短片。在群聊中，每个角色每条回复可以发送一段短片，直至 **Settings → Media → Video Generation**(设置 → 媒体 → 视频生成) 下的 **Videos per reply**(默认为 3)。
 
 **First frame** 的选项：
 
@@ -90,7 +89,7 @@
 
 开启 **Expose media prompts before sending** 后，你可以同时检查自拍提示词和短片提示词。
 
-WebP 等其他格式的图片，会先为视频服务转换格式。一条视频消息是一次视频请求；如果从新自拍开始，还会再加一次图像请求。视频提示词由你的 **Prompt Model** 撰写，其指令保存在 **Settings → Generations → Video Generation Prompt Overrides → Conversation Video Message** 中。
+WebP 等其他格式的图片，会先为视频服务转换格式。一条视频消息是一次视频请求；如果从新自拍开始，还会再加一次图像请求。视频提示词由你的 **Prompt Model** 撰写，其指令保存在 **Settings → Media → Prompt Overrides → Conversation Video Message**(设置 → 媒体 → 提示词覆盖 → 对话视频消息) 中。
 
 ## 参考：自拍标记
 

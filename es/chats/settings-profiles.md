@@ -4,7 +4,7 @@ Un perfil de ajustes es un paquete con nombre de ajustes de chat reutilizables: 
 
 Los perfiles están en la parte superior de **Chat Settings** (Ajustes del chat). Funcionan en Conversation y Roleplay. Los chats de Game no muestran los controles de perfil.
 
-Un **preset de prompt** es algo distinto. Controla la estructura del system prompt y los valores de generación, y se edita en el panel Presets. Consulta [Editor de presets y gestor de prompts](../prompts/presets.md). Un perfil de ajustes es el paquete más amplio, y puede incluir un preset de prompt como uno de sus elementos.
+Un **preset de prompt** es algo distinto. Controla la estructura del system prompt y los valores de generación, y se edita en la página **Library → Presets** (Biblioteca → Presets). Consulta [Editor de presets y gestor de prompts](../prompts/presets.md). Un perfil de ajustes es el paquete más amplio, y puede incluir un preset de prompt como uno de sus elementos.
 
 ## Aplicar un perfil
 
@@ -92,7 +92,7 @@ Cuando un chat nuevo usa un perfil predeterminado que tiene un diseño guardado,
 Un perfil guarda cómo se comunica el chat con el modelo:
 
 - La conexión.
-- El preset de prompt (llamado prompt source en Conversation).
+- El preset de prompt (llamado prompt source en Conversation), con las opciones que elegiste para sus [variables del preset](../prompts/preset-variables.md). Al aplicar el perfil, el chat recibe esas opciones. Un perfil guardado antes de que las incluyera conserva las opciones propias del chat.
 - Los agentes y las herramientas.
 - La traducción, Memory Recall y Advanced Parameters.
 - El diseño de ventanas y botones: posiciones, tamaños, fijaciones, bloqueos, qué herramientas están dentro de Chat Settings o separadas, las ventanas de controles abiertas y las posiciones de los botones en computadoras y teléfonos. Los perfiles sin diseño guardado, como **Default**, dejan el diseño del chat tal como está.
@@ -120,6 +120,7 @@ Un perfil no reemplaza el contenido propio del chat: los personajes, los sprites
 - Ajustes de memoria y de resumen.
 - Traducción.
 - El diseño de ventanas.
+- Las opciones de las variables del preset, solo en los chats que usan el mismo preset de prompt que el perfil.
 
 Todo lo demás se queda como lo tiene cada chat:
 

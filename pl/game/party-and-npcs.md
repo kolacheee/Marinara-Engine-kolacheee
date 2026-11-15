@@ -9,8 +9,6 @@ Ten przewodnik opisuje osoby z twojej kampanii w trybie Game Mode: członków dr
 
 Szczegóły obu opisano niżej.
 
-<a id="character-profiles"></a>
-
 ## Character Profiles
 
 **Character Profiles** to przycisk z portretem, który pokazuje, kto podróżuje razem z tobą. Zostaje poza menu **Chat tools** (narzędzia czatu; zobacz [Kontrolki gry](getting-started.md#the-games-controls)). Przy kilku członkach drużyny pokazuje po kolei ich portrety i plakietkę z liczbą. Zanim opowieść kogokolwiek doda, drużyna składa się tylko z twojej persony.
@@ -20,7 +18,7 @@ Szczegóły obu opisano niżej.
 
 Żeby usunąć towarzysza, na komputerze najedź na jego portret i kliknij **X**. Działa to przy każdym towarzyszu zwerbowanym przez GM, zarówno podczas konfiguracji, jak i później. Twoja persona (postać, w którą się wcielasz) nie ma przycisku **X**.
 
-Ten przycisk możesz przeciągać po czacie na komputerze i na telefonie. Otwórz go i użyj **Lock window** (Zablokuj okno), żeby pozostał na miejscu. Na komputerze możesz też przesuwać okno i zmieniać jego rozmiar, a **Close** (Zamknij) zmienia je z powrotem w przycisk. Jego położenie zapisuje się razem z czatem, a wygląd dopasowuje się do stylu widgetów czatu z **Settings → Appearance → App** (ustawienia, wygląd, aplikacja). Na telefonie pozostaje osobno, poza menu **Chat tools** z trzema kropkami.
+Ten przycisk możesz przeciągać po czacie na komputerze i na telefonie. Otwórz go i użyj **Lock window** (Zablokuj okno), żeby pozostał na miejscu. Na komputerze możesz też przesuwać okno i zmieniać jego rozmiar, a **Close** (Zamknij) zmienia je z powrotem w przycisk. Jego położenie zapisuje się razem z czatem, a wygląd dopasowuje się do stylu widgetów czatu z **Ustawienia → Wygląd → Przyciski i okna czatu**. Na telefonie pozostaje osobno, poza menu **Chat tools** z trzema kropkami.
 
 ## Arkusze postaci
 
@@ -40,8 +38,6 @@ Pod nim GM zapisuje fabularną część arkusza na podstawie twojej postaci i bi
 
 Przy nowej postaci może pojawić się napis "Character data will populate as the story progresses." Arkusz uzupełnia się w trakcie gry.
 
-<a id="edit-a-sheet-by-hand"></a>
-
 ### Ręczna edycja arkusza
 
 Przyciski **Retry** (ponów), **Save Sheet** (zapisanie arkusza) i **Cancel** (anuluj) pojawiają się dopiero po kliknięciu **Edit card** (edycja karty).
@@ -55,8 +51,6 @@ Przyciski **Retry** (ponów), **Save Sheet** (zapisanie arkusza) i **Cancel** (a
 3. Kliknij **Save Sheet**. Kliknij **Cancel**, żeby odrzucić zmiany.
 
 Żeby AI utworzyła arkusz od nowa, kliknij **Retry** w trakcie edycji. Korzysta przy tym z postaci i bieżącej historii gry, a także wysyła żądanie do twojego modelu. Tworzy szkic: "new sheet draft is ready. Review it, then save to apply." Przejrzyj szkic, a potem kliknij **Save Sheet**. Przydaje się to wtedy, gdy historia mocno odmieniła postać. Na wąskim ekranie przycisk pokazuje tylko ikonę.
-
-<a id="the-ruleset-sheet"></a>
 
 ### Arkusz zestawu zasad
 

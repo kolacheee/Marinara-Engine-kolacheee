@@ -99,9 +99,7 @@ globalThis.__MARINARA_HOST__ = {
 
 패키지는 멤버를 확인한 뒤에만 읽습니다. 예를 들면
 `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`처럼 확인합니다.
-
 이미지를 다운로드할 때는 `shouldUseIosImageShare()`로 갤러리와 같은 플랫폼 정책을 따르세요. iPhone에서는 저장 동작 전에 `prepareImageSave(url, filename)`로 이미지를 준비한 다음, 그 동작에서 직접 `savePreparedImageToDevice(prepared)`를 호출하세요. 공유 취소는 오류 표시 없이 처리하며, 공유 실패를 WebKit 다운로드 미리보기로 대체하지 않습니다. 다른 플랫폼은 `downloadUrlToDevice`를 사용합니다. 이 함수들은 Engine 서버가 Docker에서 실행되더라도 클라이언트 기기에 저장합니다.
-
 네임스페이스는 늘어나기만 합니다. 새 멤버는 Capability API 마이너 버전과 함께 추가되며, 그 멤버가 필요한 패키지는 해당 마이너 버전을 요구합니다. 네임스페이스에 맞춰 빌드한 패키지는 네임스페이스를 추가한 Capability API 버전을 요구하므로, 오래된 Engine은 이런 패키지를 설치하지 않고 이미 있는 버전을 유지합니다. 그래도 멤버가 없으면, 패키지는 상태를 가진 Engine 서비스의 번들 사본으로 절대 대체하지 않습니다. `ui`와 `chat` 스토어는 절대 쓰지 않는 읽기 전용 사본이 되고, 나머지 멤버는 모두 이 기능에 더 새로운 Marinara Engine이 필요하다고 알립니다.
 
 **호스트 모듈.** `modules[specifier]`는 완전한 모듈 네임스페이스이며, 라이브러리에 `default`가 있으면 그것도 포함합니다. 클라이언트 계약의 `MARINARA_HOST_MODULE_IMPORTS`는 각 공개 슬롯을 해당 슬롯이 가져오는 의존성에 매핑합니다. 대부분은 같은 이름으로 매핑됩니다. 안정적인 `framer-motion` 슬롯은 `framer-motion-v13`(Motion 13.5.1을 정확히 지정한 npm 별칭)에 매핑되며, 선택적으로 사용하는 `motion/react` 슬롯은 Engine의 기본 `framer-motion` 14 의존성에 매핑됩니다. 패키지 도구는 내보내기 목록과 TypeScript 경로 모두에 이 매핑을 사용합니다. 공개 슬롯 이름이 실제 의존성 이름일 필요는 없습니다. 지정자는 `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `@tanstack/react-query`, `zustand`, `zustand/middleware`, `sonner`, `zod`, `i18next`, `react-i18next`, `framer-motion`, `motion/react`, `tailwind-merge`, `clsx`입니다. 패키지 빌드는 이 지정자를 네임스페이스를 읽는 shim으로 연결하므로, 패키지는 Engine의 단 하나뿐인 React로 렌더링하고 Engine의 React Query 캐시와 토스트를 공유합니다.
@@ -119,7 +117,7 @@ globalThis.__MARINARA_HOST__ = {
 | --- | --- |
 | `ui` | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat` | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus` |
-| `agent` | `setYoutubePlay`, `reset` |
+| `agent` | `setYoutubePlay`, `setPackageActivity`, `reset` |
 | `sidecar` | `modelDownloaded`, `modelDisplayName`, `fetchStatus` |
 | `dialog` | `dialog`, `openDialog`, `closeDialog` |
 | `gallery` | `pinImage`, `pinVideo` |
@@ -195,6 +193,7 @@ Engine 안전 규칙이 요청보다 우선합니다. 플레이어의 텍스트 
 Capability API 1.14는 클라이언트 진입점이 있으며 활성 상태이고 사용 설정된 Roleplay 에이전트 패키지에 `contributions.slots` 값 두 개를 추가합니다.
 
 - `roleplay-tracker`는 Roleplay HUD에 패키지의 `toolbar` 뷰를 마운트합니다. 속성에는 `chatId`, `chatMode`, `mobileCompact`, 호스트의 `toolbarButtonClass`, `onRerunTracker`, `trackerRetryBusy`, `lockMode`, `onToggleLockMode`가 있습니다. 콜백은 선택 사항이므로 존재하는지 확인한 뒤 사용하세요.
+- `chat-activity`(Capability API 1.820)는 채팅의 Agent activity 패널에 패키지의 `activity` 뷰를 마운트합니다. [Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity)을 참고하세요.
 - `tracker-panel`은 기존 Tracker Panel 안에 패키지의 `tracker` 뷰를 마운트하고 `chatId`, `chatMode`, `detached`를 받습니다. 두 번째 패널을 열지 말고 호스트 화면을 재사용하세요. 두 슬롯 모두 일반 기능 식별 정보와 현지화 속성을 받습니다.
 
 프롬프트 컨텍스트 기여는 여전히 `api.registerPromptContext`로 등록하고 `prompt-context` 권한이 필요합니다. 요청에는 이제 `targetCharacterIds`, `personaId`, `placedAgentTypes`(호환성을 위해 선택 사항)가 있습니다. `placedAgentTypes`는 프리셋이 이미 배치한 에이전트 데이터 섹션을 알려 컨텍스트 중복을 피하게 합니다. 호스트는 각 기여의 패키지 식별 정보를 `packageBlocks`에 보관해 해당 에이전트 섹션에 패키지 텍스트를 배치합니다. 대상별 텍스트를 반환하는 기여자는 주어진 대상 캐릭터 ID를 존중해야 합니다.
@@ -1001,10 +1000,8 @@ const memoryVectors = await embeddings.embed(memoryTexts, signal); // documents
 
 브라우저 뷰에 `openCharacter(characterId, { tab })`가 생깁니다. 캐릭터 편집기를 열고, 탭이 주어지면 해당 탭으로 이동하므로 패키지가 자신이 읽는 카드 필드로 사용자를 안내할 수 있습니다. 오래된 Engine에는 이 함수가 없습니다. 링크를 보여 주기 전에 `openCharacter`가 있는지 확인하세요.
 
-#9191부터 `tab`에 탭 안의 섹션도 지정할 수 있습니다. `character-sheet`, `image-instructions`, `sprites`, `gallery`는 모두 **Images** 탭에 있습니다. `sprites`와 `gallery`는 이전에는 별도 탭이었으며 기존 링크는 계속 작동합니다. 캐릭터의 셀카 지침(`conversationImageInstructions`)은 `convo`에서 `image-instructions`로 옮겨졌습니다. #9191 이전의 Engine은 이 ID를 인식하지 못해 편집기의 맨 위를 엽니다.
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66: 패키지 스레드에서 시작하는 장면
@@ -1139,6 +1136,58 @@ const isGif = result.mimeType === "image/gif";
 `long-term-memory:runtime` 서비스에는 선택적 메서드 `chatBranched({ chatId, parentChatId })`를 추가할 수 있습니다. 채팅 분기가 만들어지면 Engine은 이 메서드를 한 번 호출하고 끝날 때까지 기다립니다. 호출 시점은 분기 라우트가 복사(메시지, 메타데이터, 스냅샷)를 마친 뒤, 새 채팅을 반환하기 전입니다. 따라서 호출 안에서 분기의 메시지와 `branchParentChatId` 메타데이터를 이미 읽을 수 있습니다. 패키지는 이를 이용해 누군가 읽기 전에 사본을 고칠 수 있습니다.
 
 오류가 난 호출과 몇 초보다 오래 걸리는 호출은 로그에 기록하고 무시하며, 어느 경우든 분기는 반환됩니다. 이 메서드가 없으면 아무것도 바뀌지 않습니다. 소프트 인터페이스입니다. 이전 Engine은 이 메서드를 호출하지 않으므로, 패키지는 호출이 없을 때도 대처할 수 있어야 합니다. 권한은 필요 없습니다.
+
+### Capability API 1.818: 패키지가 고른 연결에서 임베딩 가져오기
+
+`api.runtime.embeddingsFor(connectionId)`는 `resolveEmbeddings()`가 따르는 에이전트 연결 대신 패키지 자체 설정이 지정한 소스에서 임베딩을 가져옵니다. `resolveEmbeddings()`와 달리 앱 전체의 **Embeddings**(임베딩) 기본값으로 대체하지 않습니다.
+
+| `connectionId` | 가져오는 대상 |
+| --- | --- |
+| `null` | 내장 로컬 MiniLM 임베더. |
+| 연결 ID | 해당 연결 자체의 임베딩 소스입니다. **Test embedding**(임베딩 테스트)과 같은 방식으로 **Embedding provider**, **Embedding endpoint URL**(임베딩 엔드포인트 URL), 임베딩 모델을 확인합니다. |
+| 연결이 없는 ID 또는 사용 가능한 임베딩 소스가 없는 연결 | `null`. 로그를 남기고 완료하며 예외를 던지지 않습니다. |
+
+반환하는 호스트는 `resolveEmbeddings()`와 같은 형태입니다. `spaceId`, `label`, `embed(texts, signal?, inputType?)`를 제공하며 같은 한도(텍스트 128개, 합계 200,000자)와 1.68의 입력 유형을 사용합니다. 호출이 실패하면 `embed`는 `null`을 반환합니다. 소스마다 고유한 `spaceId`가 있으므로 설정이 바뀌면 저장된 벡터를 다시 임베딩하세요.
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+소프트 인터페이스입니다. 이전 Engine에는 이 메서드가 없으므로 호출 전에 존재하는지 확인하고 예제처럼 대체 경로를 사용하세요. 이 메서드 없이는 패키지가 작동할 수 없을 때만 1.818을 선언하세요. 권한은 필요 없습니다.
+
+### Capability API 1.820: 에이전트 활동에 패키지 표시하기
+
+`chat-activity` 슬롯은 채팅의 Agent activity(에이전트 활동) 패널에 자체 카드를 추가합니다. 채팅 서랍과 Tracker Panel에서 Agent activity 아이콘으로 여는 패널입니다. `contributions.slots`에 슬롯을 선언하고 `activity` 뷰를 등록하세요. Engine은 클라이언트 진입점이 있고 해당 채팅에서 실행하는 활성 패키지마다 요소 하나를 마운트합니다(패키지 ID가 채팅의 활성화된 에이전트 목록에 있어야 합니다). 에이전트 상태와 출력 뒤, 사용자 지정 에이전트의 저장된 출력 앞에 표시됩니다.
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+요소는 일반 기능 식별 정보와 현지화 속성에 더해 `chatId`와 패키지 자체 에이전트 페이지를 여는 `onOpenAgentSettings()`를 받습니다. Engine은 바깥 테두리나 컨트롤을 추가하지 않으므로 카드를 직접 그리세요. 보여 줄 내용이 없으면 아무것도 렌더링하지 마세요. 클라이언트 코드가 로드된 뒤에는 빈 요소가 공간을 차지하지 않습니다. 패키지 카드가 하나라도 마운트되어 있으면 패널에 "No agent activity yet"이 표시되지 않으므로 필요하면 자체 대기 문구를 그리세요.
+
+소프트 인터페이스가 아닙니다. 1.820 이전의 Engine은 매니페스트를 거부하므로 `chat-activity`를 선언하는 패키지는 1.820을 선언합니다.
+
+#### 패키지가 작업 중이거나 주의가 필요함을 표시하기
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })`는 해당 채팅의 Agent activity 아이콘을 켭니다(`packageId`는 매니페스트의 `id`입니다). 채팅 서랍, 별도 창, Tracker Panel 등 아이콘이 어디에 있든 적용됩니다. 패키지가 하나라도 `busy: true`를 보고하면 채팅 자체 에이전트가 작업할 때처럼 아이콘이 회전하며, `alert: true`는 점을 표시합니다. 생략한 필드는 기존 값을 유지하며 두 값이 모두 false인 항목은 제거됩니다. 신호는 채팅별로 보관되므로 채팅을 전환하면 해당 채팅의 신호만 표시됩니다.
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+Engine은 신호를 스스로 지우지 않으며, `activity` 요소가 마운트 해제되어도 지우지 않습니다(아이콘은 패널이 닫혀 있을 때 가장 중요합니다). 신호 해제는 패키지가 맡습니다. 새로고침이나 `reset()`은 모든 신호를 지우며 채팅 전환은 그대로 둡니다. 작업 중이거나 알림을 보내는 패키지도 활동으로 간주하므로 패널에 "No agent activity yet"이 표시되지 않습니다. 패널에 보여 줄 내용이 있도록 신호와 `activity` 카드를 함께 사용하세요. 소프트 인터페이스이므로 이전 Engine에는 메서드가 없습니다. 위 예제처럼 존재하는지 확인하세요. 이 메서드 없이는 패키지가 작동할 수 없을 때만 1.820을 선언하세요. 권한은 필요 없습니다.
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

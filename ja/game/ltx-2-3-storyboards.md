@@ -22,7 +22,7 @@
 2. 十分なVRAM(グラフィックカードのメモリー)を持つGPU。最初のテストを480pとキーフレーム1枚で行うなら、8 GBのカードでも動くことがあります。
 3. 編集可能な`ltx-director-simple`ワークフロー、またはComfyUI内で最後まで完走する同等のLTX 2.3 image-to-videoグラフと、そのAPI形式の書き出しである`ltx-director-simple-api`。
 4. 最初のフレームの挿絵を作るための、Marinaraの画像のアカウント。
-5. **Agents → Agent Organizer**(エージェント → エージェント管理)からダウンロードし、**Chat Settings → Agents**(チャット設定 → エージェント)でそのゲームに対してオンにした**Storyboard**エージェント。[Storyboardエージェントガイド](storyboard.md)を参照してください。
+5. **Library → Agents**(ライブラリー → エージェント)からダウンロードし、**Chat Settings → Agents**(チャット設定 → エージェント)でそのゲームに対してオンにした**Storyboard**エージェント。[Storyboardエージェントガイド](storyboard.md)を参照してください。
 
 編集可能なワークフローと、そのAPI書き出しは別々のファイルです。ComfyUIで`ltx-director-simple`を開き、ComfyUI Managerが不足していると報告したカスタムノードをすべてインストールしてから、ComfyUI上でグラフを試します。Marinaraには`ltx-director-simple-api`を読み込みます。ノードやモデルを変更したときは、そのつどグラフをAPI形式で書き出し直し、Marinaraのアカウントに保存されているJSONを置き換えてください。通常のビジュアルエディター用のワークフローをMarinaraに貼り付けないでください。
 
@@ -83,7 +83,7 @@ Marinaraは`%length_s%`、`%global_prompt%`、`%local_prompts%`、`%segment_leng
 
 ## 動画のアカウントを作る
 
-1. **Settings → Connections**(設定 → 接続)を開きます。
+1. **Library → Connections**(ライブラリー → 接続)を開きます。
 2. **Add account**(アカウントの追加)をクリックし、**Video Generation**(動画生成)のアカウントを選びます。
 3. **ComfyUI**を選びます。
 4. **Base URL**(ベースURL)を入力します。ComfyUIを同じコンピューターで動かしている場合は、通常`http://127.0.0.1:8188`です。

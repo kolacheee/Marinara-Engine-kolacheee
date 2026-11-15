@@ -20,12 +20,12 @@ She smiles Hello there.
 
 ## Crear un script de regex
 
-Tus scripts globales están en el panel **Presets** (Ajustes guardados), en la sección **Regexes**. Ábrelo con el botón **Presets** de la barra superior.
+Tus scripts globales están en la página **Regex scripts** (Scripts regex): abre **Library → Regex scripts** (Biblioteca → Scripts regex). La página enumera tus scripts a la izquierda, **en orden de ejecución**, y permite editar el seleccionado a la derecha. (En el diseño clásico, están en la sección **Regexes** del panel **Presets**.)
 
 ### Cómo crear un script de regex
 
-1. Abre **Presets** y busca **Regexes**.
-2. Haz clic en **Create regex** (Crear regex). Se abre el editor completo.
+1. Abre **Library → Regex scripts**.
+2. Haz clic en **New script** (Nuevo script). El editor se abre en el script nuevo.
 3. Escribe un nombre en la parte superior. Un script nuevo se llama "New Regex Script".
 4. En **Find Pattern (Regex)** (Patrón de búsqueda: regex), escribe `\*([^*]+)\*` (consulta [Campos del editor](#editor-fields)).
 5. En **Replace With** (Reemplazar por), escribe `$1`.
@@ -36,19 +36,33 @@ Tus scripts globales están en el panel **Presets** (Ajustes guardados), en la s
 
 Si no funcionó: un error rojo bajo **Find Pattern (Regex)** bloquea el guardado. El patrón no es válido o no es seguro; consulta [Seguridad y rendimiento](#safety-and-performance).
 
-<a id="manage-your-scripts"></a>
-
 ### Gestionar tus scripts
 
-Cada fila de la lista **Regexes** muestra el nombre del script, una etiqueta **AI** o **User**, el patrón como `/pattern/flags`, un interruptor de activar/desactivar (tiene efecto de inmediato), **Edit regex** (Editar regex, lápiz) y **Delete regex** (Eliminar regex, papelera). Sin scripts, la lista dice "No regexes yet" (aún no hay regexes).
+En la página **Regex scripts**, cada script de la lista muestra su número de ejecución, su nombre, su patrón y un interruptor de activar/desactivar. **Import** (Importar), en la parte superior, carga scripts desde un archivo, y **Export** (Exportar), en el editor, guarda el script seleccionado.
 
-El encabezado de la sección tiene tres botones de icono: **Create regex**, **Import regexes from JSON** (Importar regexes desde JSON) y **Export regexes to JSON** (Exportar regexes a JSON: guarda todos tus scripts globales en un solo archivo). Los scripts ligados a un solo personaje se guardan aparte; consulta [Limitar un script a un personaje](#limit-a-script-to-one-character).
+- Arrastra un script hacia arriba o hacia abajo en la lista para cambiar su orden de ejecución.
+- **⋯** en un script (o haz clic en él con el botón derecho) contiene **Duplicate** (Duplicar), **Export**, **Select** (Seleccionar) y **Delete** (Eliminar). En una pantalla táctil, mantén pulsado el script.
+- **Select**, encima de la lista, coloca una casilla en cada script. Elige varios y luego usa la barra que hay debajo de la lista para ponerlos en **On or off** (Activado o desactivado), **Export** a un solo archivo o **Delete**.
 
-Para encontrar un script, escribe en **Search regexes** (Buscar regexes). Busca por nombre y patrón y abre las carpetas con coincidencias. Mientras buscas, no puedes reordenar los scripts arrastrándolos.
+En el diseño clásico, cada fila de la lista **Regexes** muestra el nombre del script, una etiqueta **AI** o **User**, el patrón como `/pattern/flags`, un interruptor de activar/desactivar (tiene efecto de inmediato), **Edit regex** (Editar regex, lápiz) y **Delete regex** (Eliminar regex, papelera). Sin scripts, la lista dice "No regexes yet" (aún no hay regexes). Arrastra una fila por su asa para cambiar el orden de ejecución.
 
-Crea una carpeta con **New Folder** (Nueva carpeta). Haz clic en su nombre para desplegarla o contraerla. Desactiva su interruptor para pausar sus scripts en todos los chats. El encabezado dice **Paused** (En pausa). Cada script conserva el estado guardado de su interruptor. Un script activado en una carpeta en pausa muestra un interruptor gris y la etiqueta **Paused by folder** (En pausa por la carpeta). Al borrar la carpeta, sus scripts pasan al nivel superior y siguen el estado de sus propios interruptores.
+### Organizar scripts en carpetas
 
-Las carpetas agrupan los scripts sin cambiar cuándo se ejecutan. Haz clic en **Execution order** (Orden de ejecución) para ver la lista completa en el orden en que se ejecutan. Arrastra un script por su asa para cambiar el orden. Si no hay carpetas, la lista ya muestra el orden de ejecución.
+1. Haz clic en **New Folder** (Nueva carpeta) y ponle nombre a la carpeta.
+2. Haz clic en el icono de carpeta de la fila de un script para abrir **Move to folder** (Mover a una carpeta).
+3. Elige la carpeta. Para sacar un script, elige **No folder (top level)** (Sin carpeta: nivel superior).
+
+Haz clic en el nombre de una carpeta para expandirla o contraerla. Desactiva el interruptor de la carpeta para pausar sus scripts en todos los chats. El encabezado muestra **Paused** (En pausa). Cada script conserva la posición guardada de su interruptor. Un interruptor gris en la posición de activado indica un script activado pero pausado por la carpeta. Al eliminar la carpeta, sus scripts pasan al nivel superior, donde siguen sus propios interruptores.
+
+Las carpetas agrupan scripts sin cambiar cuándo se ejecutan. Haz clic en **Execution order** (Orden de ejecución) para ver la lista completa en el orden en que se ejecuta. Arrastra un script por su asa para cambiar ese orden. Cuando no tienes carpetas, la lista ya está en orden de ejecución. En esta vista, un icono de pausa marca los scripts activados cuya carpeta está en pausa.
+
+### Cambiar varios scripts a la vez
+
+1. Haz clic en **Select regex scripts** (Seleccionar scripts regex).
+2. Marca los scripts que quieras cambiar.
+3. Haz clic en **Enable selected** (Activar seleccionados), **Disable selected** (Desactivar seleccionados) o **Move to folder**. También puedes exportar o eliminar la selección.
+
+**Enable selected** cambia los interruptores individuales. Reanuda una carpeta en pausa para que sus scripts activados puedan volver a ejecutarse.
 
 <a id="editor-fields"></a>
 
@@ -89,7 +103,7 @@ Una lista opcional de cadenas de texto simples que se eliminan después de ejecu
 
 ### Live Test
 
-Pega un texto de ejemplo, y el resultado aparece bajo **Result:**. Live Test solo comprueba la lógica de buscar, reemplazar y recortar. La ubicación, el estado activado o desactivado, el alcance por personaje y la profundidad se evalúan en un chat real. Puedes usar macros como `{{user}}` y `{{char}}` en el patrón, en el reemplazo y en las cadenas a recortar. En Live Test usan valores de ejemplo. Consulta [Macros](../prompts/macros.md).
+Pega un texto de ejemplo, y el resultado aparece bajo **Result:**. **Live Test** solo comprueba la lógica de buscar, reemplazar y recortar. Para comprobar la ubicación, la pausa de carpetas, los interruptores de los scripts, el alcance por personaje o la profundidad, prueba el script en un chat. Puedes usar macros como `{{user}}` y `{{char}}` en el patrón, en el reemplazo y en las cadenas a recortar. En **Live Test** usan valores de ejemplo. Consulta [Macros](../prompts/macros.md).
 
 <a id="choose-where-a-script-runs"></a>
 
@@ -116,7 +130,7 @@ Para tus propios mensajes, un script de **User Input** configurado en **Only Dis
 
 Ambos están en **Advanced Options**.
 
-- **Execution Order** (Orden de ejecución) es un número. Los números más bajos se ejecutan primero, lo que importa cuando varios scripts pueden coincidir con el mismo texto. Un script nuevo empieza en 0, y la app asigna el siguiente número libre cuando guardas. También puedes arrastrar filas en la lista **Regexes**.
+- **Execution Order** (Orden de ejecución) es un número. Los números más bajos se ejecutan primero, lo que importa cuando varios scripts pueden coincidir con el mismo texto. Un script nuevo empieza en 0, y la app asigna el siguiente número libre cuando guardas. Para cambiar el orden desde el panel, consulta [Organizar scripts en carpetas](#organize-scripts-in-folders).
 - **Depth Range** (Rango de profundidad) limita hasta dónde hacia atrás se ejecuta un script, con **Min** y **Max**. El mensaje más nuevo es la profundidad 0, el anterior es la profundidad 1, y así sucesivamente. Deja ambos vacíos para ejecutarlo a cualquier profundidad. El guardado se bloquea si **Min** es mayor que **Max**.
 
 ### Chats de grupo
@@ -166,16 +180,19 @@ Debajo de los modos, el panel lista los scripts limitados de cada personaje con 
 Marinara lee los scripts de regex incluidos en una tarjeta de personaje de SillyTavern. Cuando importas una tarjeta, una sección **Imported regex scripts** (Scripts de regex importados) ofrece dos opciones:
 
 - **Character only** (Solo personaje, el predeterminado): los scripts quedan limitados a ese personaje.
-- **Global**: los scripts se añaden a **Presets** y se ejecutan en todos los chats.
+- **Global**: los scripts van a **Presets → Regexes** y pueden ejecutarse en distintos chats.
 
 La opción aparece en la ventana de importación de un solo personaje y en la importación masiva **Import from SillyTavern Folder** (Importar desde carpeta de SillyTavern). Se omiten los scripts con un patrón vacío o con uno que falla la comprobación de seguridad. Para importar un archivo JSON simple de scripts, usa **Import regexes from JSON** en **Regexes**. Consulta [Importar desde SillyTavern](../data/importing-from-sillytavern.md).
+
+**Export regexes to JSON** (Exportar regexes a JSON) guarda todos los scripts globales en un archivo. Usa **Export** mientras seleccionas scripts para guardar solo esos scripts. Una exportación de regex en JSON conserva los ajustes individuales de los scripts. Usa **Export Profile** (Exportar perfil) con **Marinara Native** (Nativo de Marinara) para conservar también las carpetas a las que pertenecen y los ajustes de pausa. Consulta [Exportar un perfil](../data/backup-and-restore.md#export-a-profile). Los scripts importados desde un JSON de regex aparecen en el nivel superior. Muévelos a una carpeta después de importarlos.
 
 ### Reemplazar un paquete de regex
 
 1. En **Presets → Regexes** (Presets → Regex), elige **Select regex scripts** (Seleccionar scripts regex).
-2. Marca las entradas del paquete anterior, o elige **Select all regex scripts** (Seleccionar todos los scripts regex).
-3. Usa **Export** (Exportar) o **Delete** (Eliminar) en la barra de acciones. La eliminación pide una sola confirmación y no se puede deshacer.
+2. Marca las entradas del paquete anterior. **Select all regex scripts** (Seleccionar todos los scripts regex) selecciona toda la biblioteca, incluidos los scripts en carpetas contraídas.
+3. Haz clic en **Delete** en la barra de acciones. Marinara te pide confirmación. Para conservar una copia primero, haz clic en **Export** antes de eliminar.
 4. Importa el paquete actualizado.
+5. Si usas una carpeta para el paquete, mueve los scripts nuevos a ella.
 
 Las eliminaciones que fallen siguen seleccionadas para que puedas reintentarlas. Los scripts no seleccionados se quedan donde están. Las asignaciones a presets siguen disponibles en el editor de regex.
 

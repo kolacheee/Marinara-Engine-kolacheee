@@ -140,7 +140,7 @@ Roleplay와 Conversation은 같은 뼈대를 씁니다. 아래의 `mari-*` 클�
 | `[data-card-css] p`, `[data-card-css] span` | 본문 안의 문단과 인라인 span. |
 | `[data-grouped]` | 같은 캐릭터가 이어서 보낸 메시지. Conversation 전용입니다. 묶음의 첫 메시지에는 `[data-card-css]:not([data-grouped])`를 쓰세요. |
 
-레이아웃을 바꾸려면 **Settings → Appearance → Conversation**(설정 → 모양 → 대화)을 열고 **Conversation Display**(대화 표시), **Chat Layout**(채팅 레이아웃) 순으로 이동하세요. **Linear**에는 말풍선이 없으므로 `.mari-message-content`(본문)와 `[data-card-css]`(행)에 스타일을 주세요.
+레이아웃을 바꾸려면 **Settings → Conversation → Conversation Layout → Chat Layout**(설정 → 대화 → 대화 레이아웃 → 채팅 레이아웃)을 여세요. **Linear**에는 말풍선이 없으므로 `.mari-message-content`(본문)와 `[data-card-css]`(행)에 스타일을 주세요.
 
 말풍선을 꾸민 예입니다.
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## 관련 가이드
 
 - [모양 설정](appearance-settings.md)
-- [사용자 지정 CSS 테마(Theme Library)](custom-css-themes.md)
+- [사용자 지정 CSS 테마](custom-css-themes.md)
 - [캐릭터 만들기와 편집](../characters/creating-and-editing-characters.md)

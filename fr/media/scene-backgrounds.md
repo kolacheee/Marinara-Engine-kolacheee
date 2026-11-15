@@ -1,110 +1,111 @@
-# Les arrière-plans de scène et la galerie
+# Arrière-plans créés par Illustrator
 
-Les arrière-plans de scène générés par l'IA sont des images de décor que Marinara Engine crée depuis la **Gallery** (la galerie). Ce guide explique comment en créer un, ce que contient la galerie, et comment redessiner ou relire une image. Pour la bibliothèque d'images téléversées que tu choisis à la main, voir [Arrière-plans de chat](../appearance/chat-backgrounds.md). Pour l'agent qui choisit un arrière-plan à chaque tour, voir [Arrière-plans en Roleplay](../roleplay/backgrounds.md).
+L'agent **Illustrator** peut peindre des arrière-plans pour ton histoire : un à ta demande, un chaque fois que l'histoire arrive dans un nouveau lieu, et des versions avec pluie, neige ou brouillard quand la météo change. Ce guide couvre ces trois possibilités et explique comment Illustrator réutilise les images que tu as déjà au lieu d'en peindre de nouvelles.
 
-## Où fonctionnent les arrière-plans de scène
+Pour les images que tu téléverses et choisis à la main, voir [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md). Pour savoir comment un chat choisit l'image à afficher (l'agent Background, les lieux épinglés et les images de galerie), voir [Des arrière-plans qui suivent l'histoire](../roleplay/backgrounds.md).
 
-Les arrière-plans de scène fonctionnent dans les modes Roleplay et Game. Ils ne sont pas disponibles en mode Conversation. Si tu essaies d'en générer un en mode Conversation, l'application affiche ce message :
+## Avant de commencer
 
-```
-Scene background generation is available in Roleplay and Game modes.
-```
+- Installe **Illustrator** depuis **Bibliothèque → Agents**. Voir [Agent Illustrator](illustrator-agent.md).
+- Attribue-lui un modèle d'image : définis la tâche **Images** dans l'encadré **Tâches** de la page Connexions, ou choisis-en un sur l'écran **Ouvrir la configuration** d'Illustrator. Voir [Fournisseurs de génération d'images et configuration](image-providers.md).
 
-Avant de commencer : il te faut un modèle d'image. Si ce n'est pas encore fait, commence par en configurer un. Voir [Fournisseurs de génération d'images et configuration](image-providers.md).
+Les arrière-plans peints fonctionnent dans les chats Roleplay et Game Mode, pas en mode Conversation. En mode Conversation, l'application indique "Scene background generation is available in Roleplay and Game modes."
 
-## Générer et appliquer un arrière-plan depuis la galerie
+## Peindre un arrière-plan maintenant
 
-La **Gallery** contient les images et vidéos d'un chat. C'est une section de **Chat Settings** (réglages du chat). Sur ordinateur, tu peux en faire une fenêtre séparée (voir [Vue d'ensemble des Chat Settings](../chats/chat-settings.md#popping-a-section-out-into-its-own-window)). Son bouton **Background** (arrière-plan) crée le décor de la scène actuelle.
+1. Ouvre **Réglages du chat** avec le bouton à curseurs du chat, puis déplie **Galerie**.
+2. Clique sur **Arrière-plan**. Le bouton affiche **Génération...** pendant le traitement.
+3. Une fois terminée, la nouvelle image est ajoutée à ta bibliothèque d'arrière-plans et affichée derrière le chat. "Fond généré." le confirme.
 
-En Roleplay, le bouton **Background** apparaît dès que l'agent **Illustrator** est installé. Tu n'as pas besoin de l'ajouter au chat ni d'activer les agents. Comme **Illustrate** (illustrer), il s'exécute une seule fois et ne lance pas d'exécutions automatiques.
+Tu n'as pas besoin d'ajouter Illustrator au chat pour cela. Il s'exécute une seule fois et ne lance aucune exécution automatique.
 
-Pour générer un arrière-plan :
+Marinara construit le prompt à partir de la scène : dans une partie, cela inclut le genre, le cadre, le lieu, la météo et le moment de la journée. L'image utilise la taille de canevas **Arrière-plans**, soit 1 280 par 720 pixels, sauf si tu la modifies sous **Paramètres → Médias → Génération d'images**.
 
-1. Ouvre la section **Gallery** de **Chat Settings**.
-2. Clique sur le bouton **Background**.
-3. Le libellé du bouton devient **Generating...** pendant la génération de l'image.
-4. Un message d'état indique : "AI background generation is running. The new background will be applied when it finishes."
-5. Une fois terminé, la nouvelle image s'applique aussitôt à la scène en cours, et "Background generated." le confirme.
+Si ça n'a pas marché : "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection." signifie qu'aucun modèle d'image n'a été trouvé. Définis-en un comme indiqué sous **Avant de commencer**. Si le bouton **Arrière-plan** manque, Illustrator n'est pas installé.
 
-L'arrière-plan est construit à partir de la scène en cours. Dans une partie, cela comprend le genre, le cadre, le lieu, la météo et le moment de la journée. Les arrière-plans générés utilisent la taille de canevas **Backgrounds**, soit 1280 sur 720 pixels par défaut. Tu peux changer cette taille dans **Settings** (Paramètres), puis **Generations**, puis **Image Generation**.
+## Un nouvel arrière-plan pour chaque nouveau lieu
 
-Si ça n'a pas marché : si Marinara ne trouve aucun modèle d'image à utiliser, l'étape échoue avec ce message :
+Avec ce réglage activé, Illustrator peint un arrière-plan quand l'histoire arrive dans un lieu qui n'en a pas, l'enregistre dans ta bibliothèque et l'affiche.
 
-```
-Choose an image generation connection for the Illustrator agent, or mark one as the default image connection.
-```
+1. Ajoute **Illustrator** au chat : ouvre **Réglages du chat → Agents**, active **Activer les agents**, puis ajoute **Illustrator** depuis **Agents divers**.
+2. Sur la carte **Illustrator**, active **Générer les arrière-plans de scène**.
 
-Pour corriger cela, définis la tâche **Images** sous **Defaults** (valeurs par défaut) dans le panneau **Connections** (Connexions), ou donne à l'agent **Illustrator** son propre modèle d'image.
+Illustrator examine la scène selon son **Intervalle de génération d'images** (tous les 5 messages, sauf si tu le modifies). Pour qu'il vérifie chaque réponse, utilise les [vérifications par un modèle de décision](#check-every-reply-with-a-decision-model). En Game Mode, l'interrupteur **Illustrator de Game** couvre aussi les arrière-plans.
 
-## La section Gallery
+### Réutiliser les images que tu as déjà
 
-La **Gallery** a deux onglets, **Images** et **Videos**. Chaque onglet affiche le nombre d'éléments qu'il contient. L'onglet **Videos** contient les vidéos de scène dans les chats Roleplay et Game, et les messages vidéo dans les chats Conversation.
+Avant de peindre un nouveau lieu, Illustrator cherche une image que tu as déjà, dans cet ordre :
 
-En haut de la section, les boutons d'action ne s'affichent que si la fonctionnalité correspondante s'applique au chat :
+1. Un arrière-plan épinglé à ce lieu, dans le chat ou dans la galerie d'un personnage. Voir [Épingler un arrière-plan à un lieu](../roleplay/backgrounds.md#pin-a-background-to-a-place).
+2. Une image de la bibliothèque dont le nom, ou un tag d'au moins deux mots, apparaît dans le lieu de World State. Par exemple, `generated-guest-bedroom.png`, ou une image avec le tag `guest bedroom`, convient à "Smith House, guest bedroom".
+3. Sans lieu dans World State, le nom du lieu écrit par le modèle de prompt d'Illustrator est comparé de la même façon.
 
-- **Illustrate** : lance l'agent Illustrator pour une image de scène ponctuelle. Voir [Agent Illustrator](illustrator-agent.md).
-- **Selfie** : génère un selfie du personnage en mode Conversation.
-- **Background** : génère et applique un arrière-plan de scène, comme décrit plus haut.
-- **Video** : crée une vidéo de scène à partir de la dernière illustration. En mode Conversation, il envoie plutôt un message vidéo d'un personnage ; voir [Messages vidéo](../conversation/selfies.md#video-messages).
-- **Create storyboard** : génère les images-clés du dernier tour de Game Mode ou d'un épisode de Roleplay terminé, quand Storyboard est actif.
-- **Browse Images** : ouvre un explorateur des images enregistrées, à insérer.
-- **View storyboard** : ouvre le dernier storyboard de Game Mode.
+Si une image convient, elle est affichée (avec la météo de l'histoire, si cette version existe) et rien n'est peint. Seul un lieu sans correspondance reçoit une nouvelle image. Ajouter des tags de noms de lieux à tes images téléversées (voir [Ajouter un tag à un arrière-plan](../appearance/chat-backgrounds.md#tag-a-background)) est la façon la plus simple d'économiser des requêtes d'images.
 
-Sous les boutons se trouve la zone de dépôt **Upload Images** (téléverser des images). Fais-y glisser des images pour ajouter tes propres illustrations à la galerie de ce chat.
+## Versions météo des arrière-plans
 
-### Actions image par image
+Avec ce réglage activé, l'arrière-plan suit la météo de l'histoire. Quand il commence à pleuvoir à l'auberge, Illustrator repeint son arrière-plan avec de la pluie aux fenêtres. À l'intérieur, la pluie animée tombe uniquement derrière les vitres, jamais à travers la pièce.
 
-Passe le pointeur sur une image de l'onglet **Images**, ou touche-la sur mobile, pour voir ses actions :
+1. Ouvre **Réglages du chat → Agents → Illustrator**.
+2. Active **Weather Versions of Backgrounds** (versions météo des arrière-plans).
 
-- Ouvrir l'image en taille réelle (**Open gallery image**).
-- **Pin to chat** : épingle l'image au chat sous forme d'image flottante. Fais-la glisser pour la déplacer et utilise sa poignée d'angle pour la redimensionner. Elle garde sa place et sa taille quand tu recharges la page dans ce navigateur. Le bouton de verrou, à côté du bouton de fermeture, l'empêche de bouger ou d'être redimensionnée tant que tu ne la déverrouilles pas.
-- **Download image** : enregistre l'image sur l'appareil.
-- **Animate illustration** : transforme cette image en vidéo de scène.
-- **Copy prompt** : copie le prompt enregistré de l'image, c'est-à-dire le texte que Marinara envoie à l'IA. Si aucun prompt n'est enregistré pour l'image, le bouton affiche **No prompt saved** et reste inactif.
-- **Delete gallery image** : supprime l'image après confirmation.
+Il faut un modèle d'image capable de partir d'une image. La plupart le peuvent, notamment OpenAI, Gemini, NovelAI et ComfyUI avec une entrée d'image. Avec un modèle qui ne le peut pas, l'image reste telle quelle.
 
-<a id="regenerating-an-image"></a>
+Voici ce qui se passe :
 
-### Régénérer une image
+- Chaque combinaison d'image et de météo est peinte **une seule fois**. Quand la météo revient, ou que l'histoire retourne à l'auberge sous la pluie, la version enregistrée s'affiche de nouveau sans frais.
+- La version est enregistrée à côté de l'original sous le nom `name--wx-rain.png`. Les autres types sont `storm`, `snow`, `blizzard`, `hail`, `fog`, `sand`, `ash`, `embers`, `blossom` et `aurora`, ainsi que `clear` pour une copie sans intempéries d'une image créée au départ par mauvais temps. Une météo inhabituelle reçoit une version nommée avec les mots de l'histoire : une pluie de météores donne `name--wx-meteor-shower.png`.
+- Un temps dégagé, ensoleillé, nuageux, venteux et les autres conditions légères gardent l'image de base.
+- La météo est lue depuis l'agent **World State**, ou depuis une vérification par un modèle de décision (ci-dessous).
+- Cela couvre tous les arrière-plans de ta bibliothèque, que tu les aies choisis, que l'agent Background l'ait fait ou qu'Illustrator les ait peints, ainsi que les lieux épinglés et les arrière-plans de galerie qui suivent un personnage. L'agent **Background** choisit parmi tes images de base, et la version météo correspondante s'affiche quand elle existe.
 
-Tu peux refaire une image générée sans régénérer la réponse à laquelle elle appartient. Cela fonctionne pour les images de la galerie du chat qui ont un prompt enregistré, comme les illustrations, les selfies et les images de storyboard.
+### Fenêtres : où tombe la météo animée
 
-1. Ouvre l'image en taille réelle, depuis la galerie ou depuis le message qui la contient.
-2. Clique sur **Regenerate image** (régénérer l'image), le bouton en forme de flèche circulaire en haut à droite de l'image.
-3. Modifie ce que tu veux dans les champs sous l'image : **Prompt**, **Negative prompt** (prompt négatif), un champ pour chaque personnage sous **Character prompts** (prompts de personnage) si l'image en avait, et le modèle d'image.
-4. Clique sur **Generate image** (générer l'image), ou sur **Cancel** pour laisser l'image telle quelle.
+La première fois qu'une image d'intérieur reçoit une version météo, Illustrator demande aussi au modèle d'image où se trouvent les fenêtres. Il enregistre la réponse sous forme d'un petit masque noir et blanc, partagé par toutes les versions météo de cette pièce. La météo animée (traits de pluie, flocons, pétales) est alors dessinée uniquement sur les vitres.
 
-La nouvelle image remplace l'ancienne dans le message. L'ancienne reste dans la galerie : tu peux donc l'épingler de nouveau. Les images de référence sont renvoyées à partir des avatars actuels des personnages. Certaines images plus anciennes n'ont pas enregistré leur prompt négatif ni leurs prompts de personnage ; l'éditeur l'indique le cas échéant.
+- Une pièce sans fenêtres ne reçoit aucune météo animée, seulement la couleur de la météo et les éclairs.
+- Une aurore, une pluie de météores et les autres météos sans précipitations restent immobiles : l'image les montre, et rien ne bouge par-dessus.
+- Les masques sont conservés dans `backgrounds/weather-masks`, dans ton dossier de données.
 
-## Relire un prompt avant l'envoi
+### Refaire une image météo ou ses fenêtres
 
-Tu peux vérifier et modifier le prompt avant que Marinara n'envoie une demande d'arrière-plan à ton service d'images.
+Quand le chat affiche une version météo, **Réglages du chat → Agents → Illustrator** présente une ligne sous **Weather Versions of Backgrounds** qui porte le nom de la météo, par exemple **This rain picture** (cette image de pluie) :
 
-1. Ouvre **Settings**, puis **Generations**, puis **Overall Generations**.
-2. Active l'option **Expose media prompts before sending**.
+- **Remake picture** (refaire l'image) repeint cette version météo à partir de l'image de base.
+- **Remake windows** (refaire les fenêtres) demande de nouveau le masque des fenêtres au modèle d'image. Utilise ce bouton quand la pluie tombe sur les coussins ou manque une fenêtre.
+- **No moving weather** (aucune météo animée) désactive le masque pour cette pièce. Ses versions météo affichent uniquement la couleur de la météo et les éclairs. **Remake windows** le rétablit.
 
-Avec ce réglage activé, une fenêtre **Review Image Prompt** s'ouvre avant chaque envoi. Son texte d'aide indique : "Edit the prompt below before Marinara sends the image request to your provider."
+Si ça n'a pas marché : vérifie que World State affiche une **Météo** pour le chat (ou que la vérification météo ci-dessous est activée), et que **Illustrator** est ajouté au chat avec un modèle d'image.
 
-Dans cette fenêtre, tu peux :
+## Vérifier chaque réponse avec un modèle de décision
 
-- Modifier le texte du prompt et le prompt négatif.
-- Voir le type et la taille de l'image, ainsi qu'un compteur de caractères en direct.
-- Cliquer sur **Cancel** pour tout arrêter, ou sur **Generate** pour envoyer.
+Illustrator n'examine normalement la scène qu'à son intervalle d'exécution : un nouveau lieu peut donc attendre quelques réponses avant de recevoir son arrière-plan. Un [modèle de décision](../connections/decision-models.md), un petit modèle qui répond par oui ou non, peut plutôt vérifier chaque réponse.
 
-Si l'un des champs de prompt est vide, le bouton **Generate** est désactivé et cette note apparaît : "Every image request needs a prompt." Le texte que tu saisis part exactement tel quel.
+Avant de commencer : choisis un modèle de décision dans l'encadré **Tâches** de la page Connexions, et active **Générer les arrière-plans de scène**, **Weather Versions of Backgrounds**, ou les deux.
 
-## Gérer les arrière-plans enregistrés
+1. Ouvre **Réglages du chat → Agents → Illustrator**.
+2. Sous **Decision Model Checks** (vérifications par un modèle de décision), choisis **The scene moved to a new place** (la scène a changé de lieu), **The weather changed** (la météo a changé) ou **New place and weather changes** (changements de lieu et de météo). La valeur par défaut est **Désactivé**.
 
-Chaque arrière-plan de scène que tu génères est enregistré dans ta bibliothèque d'arrière-plans. Tu peux aussi y ajouter tes propres images. Les arrière-plans téléversés acceptent les fichiers JPG, PNG, GIF, WebP et AVIF, jusqu'à 20 Mo chacun.
+Après chaque réponse :
 
-Les arrière-plans que tu as ajoutés se renomment, se taguent et se suppriment. Les tags s'écrivent en minuscules et acceptent lettres, chiffres, espaces, traits d'union et tirets bas, dans la limite de 40 caractères chacun. Les arrière-plans fournis avec les ressources de jeu apparaissent aux côtés des tiens, mais tu ne peux ni les renommer, ni les taguer, ni les supprimer.
+- La vérification du lieu demande si le dernier message déplace la scène vers un nouveau lieu. Un oui donne un arrière-plan au lieu, en réutilisant si possible une image que tu as déjà. Le modèle de prompt ne rédige un nouvel arrière-plan qu'après un oui.
+- La vérification météo demande si la météo change dans le dernier message. Un oui affiche ou peint la version météo de l'arrière-plan actuel. Sans météo dans World State, le modèle de décision choisit aussi le type de météo.
+- Les vérifications ajoutent seulement des occasions d'agir. Les exécutions propres à Illustrator et les changements de lieu de World State comptent toujours.
+- Sans réponse (pas de modèle, délai dépassé ou erreur), la vérification est ignorée.
 
-Cette bibliothèque se gère depuis les réglages d'apparence, où tu définis aussi un arrière-plan par chat ou par défaut. Pour la bibliothèque complète, le sélecteur et le réglage **Background Blur**, voir [Arrière-plans de chat](../appearance/chat-backgrounds.md).
+Si ça n'a pas marché : sans modèle de décision choisi, la liste est grisée et indique où en choisir un.
+
+## Relire le prompt avant son envoi
+
+1. Ouvre **Settings → Media → Generation Defaults** (Paramètres → Médias → Valeurs de génération par défaut).
+2. Active **Expose media prompts before sending** (afficher les prompts médias avant l'envoi).
+
+Une fenêtre **Examiner le prompt image** s'ouvre alors avant chaque requête d'image, y compris pour les arrière-plans peints. Modifie le prompt et le prompt négatif, puis clique sur **Générer** pour envoyer ou sur **Annuler** pour arrêter. Le texte que tu saisis est envoyé exactement tel quel.
 
 ## Guides associés
 
-- [Arrière-plans de chat](../appearance/chat-backgrounds.md) : la bibliothèque d'images téléversées dans laquelle tu choisis à la main.
-- [Arrière-plans en Roleplay](../roleplay/backgrounds.md) : l'agent qui choisit tout seul un arrière-plan à chaque tour.
-- [Agent Illustrator](illustrator-agent.md) : les illustrations de scène pour les modes Roleplay et Game.
-- [Fournisseurs de génération d'images et configuration](image-providers.md) : configurer un modèle d'image.
-- [Génération de vidéos de scène](scene-video.md) : transformer une image de la galerie en vidéo.
+- [Des arrière-plans qui suivent l'histoire](../roleplay/backgrounds.md) : l'image affichée par un chat, les lieux épinglés et les arrière-plans de galerie.
+- [Bibliothèque d'arrière-plans](../appearance/chat-backgrounds.md) : téléverser, taguer et organiser les images, et régler le flou.
+- [Agent Illustrator](illustrator-agent.md) : les illustrations de scène, les clips et l'intervalle d'exécution.
+- [La galerie du chat](../chats/chat-gallery.md) : la section Galerie et ses boutons.
+- [Modèles de décision](../connections/decision-models.md)

@@ -23,19 +23,17 @@ Escolha o personagem quando começar um chat. Veja [Roleplay Mode: primeiros pas
 
 ## O Character Editor de relance
 
-O Character Editor substitui a área do chat por um espaço de trabalho que ocupa a página inteira. Em uma tela larga, as abas ficam em uma fileira de botões no cabeçalho. Em algumas larguras intermediárias, os botões exibem só os ícones. Passe o ponteiro sobre um botão para ver o nome dele. Em uma tela estreita, elas ficam em um menu abaixo do nome. As abas, na ordem, são **Metadata**, **Card**, **Onboarding**, **Convo**, **Lorebook**, **Images** (imagens), **Colors**, **Voice**, **Stats** e **Advanced**. Cada aba leva à sua seção de um único formulário longo, então você também pode rolar a página.
+O Character Editor substitui a área do chat por um espaço de trabalho que ocupa a página inteira. Em uma tela larga, as abas ficam na lateral esquerda. Em uma tela estreita, elas formam uma faixa rolável no topo. As abas, na ordem, são **Metadados**, **Card**, **Onboarding**, **Conversa**, **Lorebook**, **Sprites**, **Galeria**, **Cores**, **Voz**, **Estatísticas** e **Avançado**. Cada aba leva à sua seção de um único formulário longo, então você também pode rolar a página.
 
 O cabeçalho reúne as partes que você mais usa:
 
 - A seta **Back**, o quadro do avatar, um campo de nome e um campo de título ou comentário para uma etiqueta curta, como `Modern AU version`. Uma linha logo abaixo mostra o criador e a versão.
 - **Save**. O botão fica desligado até você mudar alguma coisa. Enquanto trabalha, ele mostra **Uploading…** (um avatar está sendo enviado), **Embedding…** (um lorebook está sendo adicionado ao card) ou **Saving…**.
 - A estrela **Favorite**.
-- O menu **…** (**More actions**, mais ações) reúne:
-  - **Ask Professor Mari** (falar com a Professor Mari) abre uma conversa sobre este card.
-  - **Export character**. Veja [Importar e exportar cards de personagem](import-export.md).
-  - **Import character as persona**, que copia este card para uma nova persona. Veja [Personas](personas.md).
-  - **Duplicate character**.
-  - **Delete character**.
+- **Exportar personagem**. Veja [Importar e exportar cards de personagem](import-export.md).
+- **Importar o personagem como persona**, que copia este card para uma nova persona. Veja [Personas](personas.md).
+- **Duplicar o personagem**.
+- **Excluir o personagem**.
 
 Ao sair do editor, as suas mudanças são salvas antes. Se o salvamento falhar, o editor continua aberto com o seu rascunho para você tentar de novo.
 
@@ -46,23 +44,11 @@ Abas que têm guia próprio:
 | **Onboarding** | [Onboarding interativo](interactive-onboarding.md) |
 | **Convo** | [Perfis do Conversation Mode](../conversation/profiles.md) |
 | **Lorebook** | [Vincular lorebooks a personagens](../lorebooks/linking-to-characters.md) |
-| **Images** | [Sprites de personagem](sprites.md) e [Galerias de personagem e de persona](galleries.md). Veja [A aba Images](#images-tab) abaixo. |
+| **Sprites** | [Sprites de personagem](sprites.md) |
+| **Galeria** | [Galerias de personagem e de persona](galleries.md) |
 | **Colors** e **Stats** | [Cores do personagem e Status de Roleplay](colors-and-stats.md) |
 
-As seções abaixo explicam **Metadata**, **Card**, **Images**, **Voice** e **Advanced**, além dos avatares e do histórico de versões.
-
-<a id="images-tab"></a>
-
-## A aba Images
-
-A aba **Images** reúne as opções de aparência do personagem nas imagens. Os botões no topo levam a cada seção.
-
-- **Character Sheet** (ficha do personagem) é uma imagem de referência do personagem. Clique em **Manage** (gerenciar) para criar, enviar ou escolher uma ficha. Ative **Use as reference image** (usar como imagem de referência) para dar preferência à ficha sobre o avatar na geração de imagens. Veja [Ficha do personagem](sprites.md#character-sheet).
-- **Selfie instructions** (instruções para selfies) são orientações opcionais para as selfies do personagem no modo Conversation, como o estilo da câmera ou as expressões. Noodle e Slurp também podem usá-las se você ativar a opção nas configurações deles. Veja [Selfies](../conversation/selfies.md).
-- **Sprites** reúne expressões, sprites de corpo inteiro e clipes de chamadas. Veja [Sprites de personagem](sprites.md).
-- **Gallery** (galeria) guarda imagens e vídeos vinculados ao personagem. Veja [Galerias de personagem e de persona](galleries.md).
-
-A aba **Images** da persona tem as mesmas seções, exceto **Selfie instructions**.
+As seções abaixo explicam **Metadados**, **Card**, **Voz** e **Avançado**, além dos avatares e do histórico de versões.
 
 <a id="metadata-tab"></a>
 

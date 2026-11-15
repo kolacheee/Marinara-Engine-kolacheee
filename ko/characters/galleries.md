@@ -1,10 +1,10 @@
 # 캐릭터와 페르소나 갤러리
 
-캐릭터 편집기와 페르소나 편집기의 **Images**(이미지) 탭의 **Gallery**(갤러리)은 캐릭터나 페르소나에 붙어 있는 이미지와 동영상을 보관하므로, 채팅을 삭제해도 이미지와 동영상이 남습니다. 설정 자료용 시트, 의상 변형, 가져온 이미지 묶음에 쓰세요. 갤러리 이미지를 사용자 지정 이모지나 스티커로 지정할 수도 있습니다.
+캐릭터 편집기와 페르소나 편집기의 **Gallery**(갤러리) 탭은 캐릭터나 페르소나에 연결된 이미지와 동영상을 보관하므로, 채팅을 삭제해도 유지됩니다. 참조 시트, 의상 변형, 가져온 이미지 팩을 보관하는 데 쓰세요. 갤러리 그림을 사용자 지정 이모지, 스티커 또는 캐릭터를 따라 모든 채팅에 나타나는 배경으로 지정할 수도 있습니다.
 
-## 갤러리 찾기
+## Gallery 탭
 
-모든 캐릭터와 페르소나에는 각자의 갤러리가 있습니다. Character Editor(캐릭터 편집기)에서 캐릭터를 열거나 Persona Editor(페르소나 편집기)에서 페르소나를 연 다음 **Images** 탭 상단의 **Gallery**를 클릭하세요. 캐릭터의 갤러리에는 **Character Gallery**(캐릭터 갤러리), 페르소나의 갤러리에는 **Persona Gallery**(페르소나 갤러리)라는 제목이 붙습니다. 동작 방식은 둘 다 같습니다.
+캐릭터와 페르소나마다 **Gallery** 탭(카메라 아이콘)이 있습니다. Character Editor(캐릭터 편집기)에서 캐릭터를 열거나 Persona Editor(페르소나 편집기)에서 페르소나를 연 다음 **Gallery**를 클릭하세요. 캐릭터 갤러리의 제목은 **Character Gallery**(캐릭터 갤러리), 페르소나 갤러리의 제목은 **Persona Gallery**(페르소나 갤러리)입니다. 사용 방법은 같습니다.
 
 Gallery에는 하위 탭이 두 개 있습니다.
 
@@ -15,7 +15,7 @@ Gallery에는 하위 탭이 두 개 있습니다.
 
 ### 이미지 추가하기
 
-1. **Images → Gallery**을 열고 **Images**를 선택하세요.
+1. **Gallery** 탭을 열고 **Images**를 선택하세요.
 2. 이미지 파일을 **Upload Character Images**(캐릭터 이미지 업로드)로 끌어다 놓거나, 클릭해서 파일을 고르세요. 페르소나에서는 이 상자에 **Upload Persona Images**(페르소나 이미지 업로드)라고 표시됩니다.
 3. 업로드가 끝날 때까지 기다리세요. 새 이미지가 격자에 나타납니다.
 
@@ -23,7 +23,7 @@ Gallery에는 하위 탭이 두 개 있습니다.
 
 ### 동영상 추가하기
 
-1. **Images → Gallery**을 열고 **Videos**를 선택하세요.
+1. **Gallery** 탭을 열고 **Videos**를 선택하세요.
 2. 동영상 파일을 **Upload Character Videos**(캐릭터 동영상 업로드)로 끌어다 놓거나, 클릭해서 파일을 고르세요. 페르소나에서는 이 상자에 **Upload Persona Videos**(페르소나 동영상 업로드)라고 표시됩니다.
 3. 업로드가 끝날 때까지 기다리세요.
 
@@ -33,7 +33,7 @@ Gallery에는 하위 탭이 두 개 있습니다.
 
 사용자 지정 이모지는 `:name:`으로 적는 작은 인라인 이미지입니다. 스티커는 `sticker:name:`으로 적는 더 큰 블록 이미지입니다. 둘 다 메신저 형태의 모드인 Conversation Mode(대화 모드) 채팅에서만 동작합니다.
 
-1. **Images → Gallery**을 열고 **Images**를 선택하세요.
+1. **Gallery** 탭을 열고 **Images**를 선택하세요.
 2. 이미지 왼쪽 위 모서리의 작은 태그 버튼을 클릭하세요. 툴팁에는 **Tag as emoji or sticker**(이모지 또는 스티커로 태그 지정)가 표시됩니다.
 3. **Make emoji** 또는 **Make sticker**를 클릭하세요.
 4. **Custom Emoji** 또는 **Custom Sticker** 창에서 이름을 입력하고 확인하세요.
@@ -51,6 +51,20 @@ Gallery에는 하위 탭이 두 개 있습니다.
 - **Remove emoji**(이모지 해제) 또는 **Remove sticker**(스티커 해제)는 지정을 해제합니다. 이미지는 Gallery에 남습니다.
 
 갤러리에서 지정한 이모지나 스티커는 그 캐릭터나 페르소나 하나에만, 그 캐릭터나 페르소나가 참여한 Conversation Mode 채팅에서만 동작합니다. 메시지 입력란의 전체 공용 이모지 및 스티커 목록과는 별개입니다. 갤러리 이름이 전체 공용 이름과 겹치면 그 채팅에서는 갤러리 쪽이 우선합니다. 이름이 겹치는지는 검사하지 않으므로 이미지마다 다른 이름을 붙이세요.
+
+## 갤러리 그림을 배경으로 쓰기
+
+배경으로 지정한 그림은 캐릭터나 페르소나가 참여한 모든 채팅에 나타나 바로 선택할 수 있으며, 그 캐릭터의 침실 같은 장소를 표현할 수 있습니다.
+
+1. **Gallery** 탭을 열고 **Images**를 선택하세요.
+2. 그림 왼쪽 위 모서리의 태그 버튼을 클릭하고 **Use as background**를 고르세요.
+3. 그림에 나온 장소를 `{{char}}'s bedroom, {{char}}'s room`처럼 쉼표로 구분해 입력하거나 비워 두세요. 페르소나 갤러리에서는 `{{user}}`를 쓰세요.
+
+그러면 버튼에 **Background:**(배경)와 장소가 표시됩니다. 클릭하면 **Edit places**나 **Remove background tag**를 선택할 수 있습니다. 이 그림이 채팅에 표시되는 방식은 [캐릭터를 따라다니는 배경](../roleplay/backgrounds.md#backgrounds-that-follow-a-character)을 참고하세요.
+
+채팅에서 그린 그림은 채팅 Gallery의 사람 모양 버튼으로 이곳에 옮길 수 있습니다. [채팅 갤러리](../chats/chat-gallery.md#per-image-actions)를 참고하세요.
+
+**Marinara Native**로 내보내면 갤러리의 모든 지정 정보(이모지, 스티커, 배경)가 유지됩니다.
 
 <a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
 
@@ -107,4 +121,5 @@ Gallery에는 하위 탭이 두 개 있습니다.
 - [캐릭터 만들기와 편집](creating-and-editing-characters.md)
 - [페르소나](personas.md)
 - [사용자 지정 이모지, 스티커, GIF](../conversation/emoji-stickers-gifs.md)
-- [장면 배경과 Gallery](../media/scene-backgrounds.md)
+- [이야기를 따라 바뀌는 배경](../roleplay/backgrounds.md)
+- [채팅 갤러리](../chats/chat-gallery.md)

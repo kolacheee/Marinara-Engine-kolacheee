@@ -19,8 +19,8 @@
 跨版本大幅升级之前先做一次备份；只要之后可能退回旧版本，就一定要先备份。
 
 1. 打开 **Settings**(设置)。
-2. 切换到 **Advanced**(高级) 选项卡。
-3. 找到 **Backup & Export**(备份与导出) 一节。
+2. 切换到 **Data**(数据) 选项卡。
+3. 找到 **Backup & Restore**(备份与恢复) 一节。
 4. 点击 **Download Backup**(下载备份)。
 5. 把 `.zip` 文件保存到安全的位置。
 
@@ -39,7 +39,7 @@
 
 启动脚本会拉取最新代码，重新安装有变动的部分，重新构建，然后启动新版本。如果你自己改过代码，它会把这些改动暂存起来，更新完再放回去；做不到时，它会保留当前版本并打印一条说明。更新之前它会先复制一份数据；如果某次更新会落到比数据更旧的版本上，它会跳过这次更新（见[降级到旧版本](#downgrading-to-an-older-version)）。
 
-只想跳过这一次更新，运行 `start.bat --skip-update`。想让已安装的版本在之后每次启动时都保持不变，在项目的 `.env` 里设置 `AUTO_UPDATE_ENABLED=false`。这只关闭自动更新，手动命令和 **Settings → Advanced → Check for Updates**(设置 → 高级 → 检查更新) 仍然可用。
+只想跳过这一次更新，运行 `start.bat --skip-update`。想让已安装的版本在之后每次启动时都保持不变，在项目的 `.env` 里设置 `AUTO_UPDATE_ENABLED=false`。这只关闭自动更新，手动命令和 **Settings → Advanced → Updates → Check for Updates**(设置 → 高级 → 更新 → 检查更新) 仍然可用。
 
 如果启动脚本提示 Node.js 版本太旧，先安装 Node.js 24 LTS(Long Term Support，即推荐使用的长期支持稳定版)，再重新启动 Marinara。也可以从 GitHub Releases 页面下载最新的安装程序来运行。
 
@@ -144,6 +144,7 @@ Marinara 可以向 GitHub 检查有没有新版本。部分安装方式还能直
 
 - **Latest Stable**：打了 `vX.Y.Z` 标签的正式发布版本，一般选这个。
 - **Staging/UAT**：预发布的测试版构建，可能还没做完。选中它会出现警告“Staging builds are pre-release tester builds. Back up your app data before applying them.”
+- **UI overhaul (playtest):**(界面改版，试玩) 面向试玩者、采用新版布局的 `ui/kolacheee` 分支。它跟随 staging。先备份应用数据：一旦它升级了数据，**Latest Stable** 可能要等到下次发布后才能读取。Git 安装（Windows、macOS、Linux 和 Termux）可以在这里切换到它。Docker 没有对应的镜像，所以容器里这个通道只会显示一条提示。
 
 在服务器所在电脑的浏览器里选中另一个通道时，更新按钮会变成 **Switch to** 加通道名。即使普通的应用内更新已经关闭，它照样能用，运行期间显示 **Switching…**。远程设备只有满足下面 **Apply Update**(应用更新) 的条件，才能这样切换。
 
@@ -179,7 +180,7 @@ Marinara 可以向 GitHub 检查有没有新版本。部分安装方式还能直
 
 - 服务器的 `.env` 里设置了 `UPDATES_ALLOW_REMOTE_APPLY=true`。
 - 服务器的 `.env` 里设置了 `ADMIN_SECRET`。这是用于高风险操作的第二个密码。
-- 在你的设备上，把同一个密钥保存到 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问)。
+- 在你的设备上，把同一个密钥保存到 **Settings → Advanced → Security**(设置 → 高级 → 安全)。
 
 点击 **Apply Update**。服务器拉取代码、重新安装、重新构建并关闭期间，按钮显示 **Updating…**。接着会看到“Update applied successfully. Please relaunch the app to use the new version.”再次启动 Marinara 就完成了。
 
@@ -200,7 +201,7 @@ Marinara 可以向 GitHub 检查有没有新版本。部分安装方式还能直
 升级替换的是应用代码，不会动数据文件夹或 `marinara-data` 卷。聊天、角色、用户角色、世界书、预设、连接和设置都原样保留。想知道数据存放在哪里，读[备份与恢复 Marinara](data/backup-and-restore.md)。
 
 - **可选包。** 从内置了第一方智能体、地图、通话或 Conversation(对话模式) 小游戏的版本升级时，第一次启动会下载对应的可选包。你的选择、设置和历史记录都会保留。第一次启动时请保持服务器联网。如果下载源连不上，Marinara 会在下次启动时重试，不会删除任何东西。
-- **指南语言。** 如果使用了下载的文档语言（**Settings → General → Documentation Language**(设置 → 常规 → 文档语言)），更新后第一次启动会刷新它。如果连不上下载源，Marinara 会保留已安装的语言包，缺失的指南显示英文，并在下次启动时再试一次。
+- **指南语言。** 如果使用了下载的文档语言（**Settings → General → Language → Documentation Language**(设置 → 常规 → 语言 → 文档语言)），更新后第一次启动会刷新它。如果连不上下载源，Marinara 会保留已安装的语言包，缺失的指南显示英文，并在下次启动时再试一次。
 - **界面语言。** 界面语言包需要单独手动下载。首次从内置翻译的版本升级时，界面会恢复为英文。请在 **Settings → General → Language**(设置 → 常规 → 语言) 里重新选择你的语言。后续更新会保留已下载的语言包。使用 **Refresh language pack**(刷新语言包) 获取新翻译。缺失的翻译显示英文。
 
 ## 从 2.5.0 更新

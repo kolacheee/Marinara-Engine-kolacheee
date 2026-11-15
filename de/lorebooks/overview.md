@@ -14,7 +14,7 @@ Der Abgleich über Schlüsselwörter funktioniert mit jedem Modell und braucht k
 
 ## Ein Lorebook anlegen und einen Eintrag hinzufügen
 
-1. Öffne das Panel **Lorebooks** über die Seitenleiste.
+1. Öffne **Library** (Bibliothek) > **Lorebooks**. Die Bibliothek befindet sich rechts.
 2. Klick auf **New** (Neu, das Plus-Symbol). Das Fenster **Create Lorebook** (Lorebook erstellen) öffnet sich.
 3. Gib im Feld **Name** einen Namen ein. Dieses Feld ist Pflicht.
 4. Ergänze bei Bedarf eine **Description** (Beschreibung).
@@ -67,9 +67,26 @@ Der Tab hat außerdem diese Schalter.
 
 Das Panel **Semantic search (embeddings)** unter den Schaltern beschreibt [Semantische Suche für Lorebooks](semantic-search.md).
 
-## Das Lorebooks-Panel
+## Die Lorebooks-Seite
 
-Oben im Panel sitzen drei Symbol-Schaltflächen. Zeig mit der Maus darauf, um ihren Namen einzublenden.
+Öffne **Library → Lorebooks**. Oben findest du **Import** (Importieren; siehe [Lorebooks importieren und exportieren](import-export.md)) und **New lorebook** (neues Lorebook). Darunter:
+
+- **All kinds** (alle Arten) beschränkt die Liste auf Lorebooks der Arten **Global**, **World**, **Character**, **NPC** oder **Spellbook**.
+- **List** (Liste) und **Gallery** (Galerie) wechseln zwischen einer Tabelle und Bildkacheln.
+- Das Sortiermenü bietet **Recently edited** (zuletzt bearbeitet), **A to Z**, **Z to A** und **My order** (meine Reihenfolge).
+
+Klick auf ein Lorebook, um es zu öffnen.
+
+### Deine Lorebooks ordnen
+
+- **⋯** am Ende einer Zeile (oder ein Rechtsklick auf die Zeile) bietet **Duplicate** (Duplizieren), **Move to folder** (in Ordner verschieben), **Export** (Exportieren), **Select** (Auswählen) und **Delete** (Löschen). Auf einem Touchscreen hältst du die Zeile gedrückt. **Duplicate** kopiert das Lorebook mit allen Einträgen und öffnet die Kopie.
+- Zieh eine Zeile über oder unter eine andere, um deine eigene Reihenfolge festzulegen. Das Sortiermenü wechselt zu **My order**.
+- **New folder** (neuer Ordner; das Ordnersymbol neben dem Titel) fügt einen Bibliotheksordner hinzu. Zieh ein Lorebook darauf oder nutze **Move to folder**. Diese Ordner sind von den Eintragsordnern innerhalb eines Lorebooks getrennt. Klick auf einen Ordner, um ihn ein- oder auszuklappen, und nutze sein **⋯**, um ihn umzubenennen oder zu löschen. Beim Löschen eines Ordners bleiben seine Lorebooks erhalten.
+- **Select** (das Häkchensymbol neben dem Titel) versieht jede Zeile mit einem Kontrollkästchen. Wähl Lorebooks aus und nutze dann die Leiste unten: **Move to folder**, **On or off** (an oder aus), **Export** (ein `marinara-lorebooks.zip`) oder **Delete**.
+
+## Im klassischen Layout: das Lorebooks-Panel
+
+Das klassische Panel zeigt dieselben Ordner und dieselbe Reihenfolge als Liste. Oben im Panel sitzen drei Symbol-Schaltflächen. Zeig mit der Maus darauf, um ihren Namen einzublenden.
 
 - **New** öffnet das Fenster **Create Lorebook**.
 - **Import** (Importieren) öffnet das Fenster **Import Lorebook** (Lorebook importieren). Siehe [Lorebooks importieren und exportieren](import-export.md).
@@ -77,7 +94,8 @@ Oben im Panel sitzen drei Symbol-Schaltflächen. Zeig mit der Maus darauf, um ih
 
 Unter den Schaltflächen:
 
-- **Search lorebooks** (Lorebooks durchsuchen) filtert nach Name, Beschreibung, verknüpften Charakter- oder Persona-Namen und Tags (Schlagwörtern).
+- **Search lorebooks** (Lorebooks durchsuchen) filtert nach Name, Beschreibung, verknüpften Charakter- oder Persona-Namen und Tags (Schlagwörtern). `tag:name` funktioniert hier ebenfalls.
+- **Tags** neben dem Suchfeld zeigt nur Lorebooks mit allen von dir ausgewählten Tags oder **Ohne Tags**. Siehe [Tags](../characters/library-organization.md#tags).
 - **Sort order** (Sortierreihenfolge) bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest**, **Oldest** und **Token Budget**. Mit **Manual order** ziehst du die Lorebooks an ihren Platz oder nutzt <kbd>Alt</kbd>+<kbd>Pfeil nach oben</kbd> und <kbd>Alt</kbd>+<kbd>Pfeil nach unten</kbd>.
 - **New Folder** (Neuer Ordner) legt einen Bibliotheksordner an. Zieh ein Lorebook darauf. Auf dem Handy hältst du das Lorebook gedrückt und ziehst es dann. Diese Ordner sind unabhängig von den Eintragsordnern innerhalb eines Lorebooks.
 

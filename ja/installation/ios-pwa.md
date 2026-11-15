@@ -93,7 +93,7 @@ Safariが古いバージョンのアプリを保持し続けたり、保存し�
 
 **保存が黙って失敗するという赤いバナーが表示される。** これはサーバーが出しているネットワークの信頼に関する警告で、iPhoneやiPadの問題ではありません。サーバーの管理者が、こちらのアドレスを信頼済みにする必要があります。[リモートアクセス](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf)を参照してください。
 
-**権限が必要な操作がブロックされる。** 一部のメンテナンス用の操作には、サーバーの管理者から受け取る管理者用シークレット(2つ目のパスワード)が必要です。iPhoneやiPadの**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)に保存してください。[リモートアクセス](../REMOTE_ACCESS.md#admin-access-and-privileged-actions)を参照してください。
+**権限が必要な操作がブロックされる。** 一部のメンテナンス用の操作には、サーバーの管理者から受け取る管理者用シークレット(2つ目のパスワード)が必要です。iPhoneやiPadの**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)に保存してください。[リモートアクセス](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)を参照してください。
 
 ## 関連ガイド
 

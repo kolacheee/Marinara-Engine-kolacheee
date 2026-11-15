@@ -76,7 +76,7 @@ L'interrupteur **Incidental contact** (contacts involontaires), dont la descript
 
 Par défaut, Marinara n'accepte les commandes haptiques que depuis l'ordinateur qui fait tourner le serveur Marinara. Le pilotage de l'appareil reste ainsi privé. Le retour haptique ne fonctionne donc pas quand tu ouvres Marinara depuis un téléphone ou un autre appareil qui se connecte à un serveur situé ailleurs. Les actions de connexion, de recherche et de commande sont refusées.
 
-Pour l'autoriser, active le réglage serveur `HAPTICS_ALLOW_REMOTE` et mets en place une protection d'accès : une connexion par identifiants ou un secret d'administration. Voir la [référence de configuration du serveur](../CONFIGURATION.md) et le [guide de l'accès à distance](../REMOTE_ACCESS.md). L'accès administrateur se saisit dans **Settings → Advanced → Admin Access** (Paramètres → Avancé → Accès administrateur).
+Pour l'autoriser, active le réglage serveur `HAPTICS_ALLOW_REMOTE` et mets en place une protection d'accès : une connexion par identifiants ou un secret d'administration. Voir la [référence de configuration du serveur](../CONFIGURATION.md) et le [guide de l'accès à distance](../REMOTE_ACCESS.md). L'accès administrateur se saisit dans **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité).
 
 ## Si ça ne fonctionne pas
 

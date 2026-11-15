@@ -2,7 +2,7 @@
 
 本页是一份参考资料，列出 Marinara Engine 能连接的主要服务：每个服务去哪里拿 API 密钥、默认地址是什么，以及有哪些特殊之处。想一步步添加账号，请先读[连接 AI 服务商](connecting-to-a-provider.md)。
 
-服务是在 **Add account**(添加账号) 窗口里选的，按用途分在不同的分区下：**Chat**(聊天)、**Images & video**(图像与视频)、**Voice**(声音) 或 **Decisions**(判定)。按钮上的名称与下文一致。地址是 Marinara 发送请求的网址。它在账号编辑器里叫 **Address**(地址)，在模型编辑器里叫 **Base URL**(基础 URL)。已知服务的地址由 Marinara 自动填好。只有使用代理或自己运行的服务器时才需要改。
+点击 **Add connection**(添加连接) 后，在对应生成内容的选项卡里选择服务：**Text**(文本)、**Image**(图片)、**Video**(视频)、**Voice**(语音) 或 **Decision**(决策)。在搜索框输入文字会搜索所有选项卡。列表中的名称与下文一致。地址是 Marinara 发送请求的网址。它在账号编辑器里叫 **Address**(地址)，在模型编辑器里叫 **Base URL**(基础 URL)。已知服务的地址由 Marinara 自动填好。只有使用代理或自己运行的服务器时才需要改。
 
 模型变动频繁，所以本页不列出它们。连接之后，模型列表会在选择器里载入。在选择器里点击 **Refresh model list**(刷新模型列表) 可以重新载入。
 
@@ -133,7 +133,7 @@
 
 ### OpenAI-compatible
 
-**OpenAI-compatible**(OpenAI 兼容) 用来连接接受 OpenAI 请求格式的服务器或代理，例如 Ollama、LM Studio 或 KoboldCpp。在 **Add account** 窗口里，它显示为 **OpenAI-compatible address**(OpenAI 兼容地址)。大多数本地服务器的密钥可以留空。地址由你自己填写。见[连接本地或自托管模型](local-self-hosted.md)。Marinara 自己运行的那个小模型，见[内置模型设置](local-model.md)。
+**OpenAI-compatible**(OpenAI 兼容) 用来连接接受 OpenAI 请求格式的服务器或代理，例如 Ollama、LM Studio 或 KoboldCpp。在 **Add connection** 列表里，它显示为 **OpenAI-compatible address**(OpenAI 兼容地址)。大多数本地服务器的密钥可以留空。地址由你自己填写。见[连接本地或自托管模型](local-self-hosted.md)。Marinara 自己运行的那个小模型，见[内置模型设置](local-model.md)。
 
 ## 图像与视频
 
@@ -145,9 +145,7 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI 和 Google 的图像和视�
 
 ## Decision
 
-**Decisions** 下的按钮有 **TypeSafe**(默认地址 `https://api.typesafe.ai`)、**Own decision server**(自有判定服务器) 和 **Built-in model (decisions)**(内置模型，判定)。使用 OpenAI 聊天格式的聊天服务也能做判定，但只限返回对数概率（每个可能答案的分数）的模型。Decision 模型回答关于你聊天的是或否问题。见 [Decision 模型](decision-models.md)。
-
-<a id="audio"></a>
+**Decision** 选项卡上的按钮有 **TypeSafe**(默认地址 `https://api.typesafe.ai`)、**Own decision server**(自有判定服务器) 和 **Built-in model (decisions)**(内置模型，判定)。使用 OpenAI 聊天格式的聊天服务也能做判定，但只限返回对数概率（每个可能答案的分数）的模型。Decision 模型回答关于你聊天的是或否问题。见 [Decision 模型](decision-models.md)。
 
 ## 音频
 
@@ -162,13 +160,11 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI 和 Google 的图像和视�
 
 每个来源都会填好默认的地址和模型。**Default voice**(默认声音) 是在没有设置更具体的声音（比如单个角色的声音）时使用的声音。**Request timeout (seconds)**(请求超时，单位为秒) 是 Marinara 等待一句语音的时长。语音服务器较慢时调高它。
 
-要选择 Marinara 默认使用的语音账号，点击 **Jobs**(分工) 框里的 **Voice (Text to Speech)**(语音合成) 行。要用它朗读消息，在 **Text to Speech**(语音合成) 卡片里把它选为 **Source**(语音来源)。见 [Text to Speech (TTS) 设置](../media/tts-setup.md)和[使用音频连接](../media/tts-setup.md#use-an-audio-connection)。
-
-<a id="music--sound-effects"></a>
+要选择 Marinara 默认使用的语音账号，点击 **Defaults**(任务) 框里的 **Voice (Text to Speech)**(语音（语音合成）)。要用它朗读消息，在 **Text to Speech**(语音合成) 卡片里把它选为 **Source**(语音来源)。见 [Text to Speech (TTS) 设置](../media/tts-setup.md)和[使用音频连接](../media/tts-setup.md#use-a-voice-model-from-an-account)。
 
 ## 音乐与音效
 
-这类账号用于生成纯器乐音乐和音效，与语音分开。**Add account** 窗口里没有它的按钮。这类账号来自升级（见下文）或导入。用 **Edit model**(编辑模型) 编辑它，在里面选择服务，并开启 **Music generation**(音乐生成)、**Sound-effect generation**(音效生成)，或同时开启两项。Game 设置会在 **Music & Sound Effects account**(音乐与音效账号) 里要求选一个，默认选项是 **Use the default Music & Sound Effects account**(使用默认的音乐与音效账号)。
+这类账号用于生成纯器乐音乐和音效，与语音分开。**Add connection** 列表里没有它的条目。这类账号来自升级（见下文）或导入。用 **Edit model**(编辑模型) 编辑它，在里面选择服务，并开启 **Music generation**(音乐生成)、**Sound-effect generation**(音效生成)，或同时开启两项。Game 设置会在 **Music & Sound Effects account**(音乐与音效账号) 里要求选一个，默认选项是 **Use the default Music & Sound Effects account**(使用默认的音乐与音效账号)。
 
 可用的服务：
 
@@ -186,15 +182,13 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI 和 Google 的图像和视�
 
 按游戏单独开启生成音频，或者在 Roleplay 的命令设置里开启 **Sound effects**(音效)，就能使用 `[sound: description]`。Gacha Forge 有自己的生成音频设置。关闭生成时，Game 自带的音频仍然可用。
 
-<a id="embeddings"></a>
-
 ## 嵌入
 
 嵌入把文本转成一串串数字，让 Marinara 能找出相关的文本。世界书的语义搜索和 Memory Recall(记忆功能) 都靠它驱动。大多数聊天服务都允许你在模型编辑器的 **Semantic search (embeddings)**(语义搜索与嵌入) 下设置嵌入模型，以及可选的 **Embedding endpoint URL**(嵌入端点 URL)。
 
 **Anthropic**、**Claude (Subscription)**、**OpenAI (ChatGPT)** 和 **Grok CLI (Subscription)** 无法生成嵌入。遇到这几家，就用 **Embedding provider**(嵌入服务商) 下拉菜单借用另一个账号，比如某个 OpenAI 兼容账号、**Google Gemini** 或 **Built-in model**(内置模型)。
 
-想让所有没有自己嵌入设置的账号都使用同一个嵌入来源，点击 **Jobs** 框里的 **Embeddings**(嵌入) 行。**Marinara's own search**(Marinara 自带的搜索) 会保留内置的嵌入模型。账号自己的嵌入模型或 **Embedding provider** 仍然优先。更改之后，请重新向量化你的世界书和记忆。见[世界书的语义搜索](../lorebooks/semantic-search.md)。
+想让所有没有自己嵌入设置的账号都使用同一个嵌入来源，点击 **Defaults** 框里的 **Embeddings**(嵌入)。**Marinara's own search**(Marinara 自带的搜索) 会保留内置的嵌入模型。账号自己的嵌入模型或 **Embedding provider** 仍然优先。更改之后，请重新向量化你的世界书和记忆。见[世界书的语义搜索](../lorebooks/semantic-search.md)。
 
 ## 超时
 

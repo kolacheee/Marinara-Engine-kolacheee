@@ -22,7 +22,7 @@ Potrzebne są:
 2. Karta graficzna z wystarczającą ilością pamięci VRAM (pamięci na karcie graficznej). Karta z 8 GB może wystarczyć do pierwszego testu w rozdzielczości 480p z jedną klatką kluczową.
 3. Edytowalny workflow `ltx-director-simple` albo równoważny graf LTX 2.3 obraz-do-wideo, który poprawnie kończy pracę w ComfyUI, oraz jego eksport w formacie API, `ltx-director-simple-api`.
 4. Konto do generowania obrazów w aplikacji Marinara Engine, które tworzy ilustracje pierwszej klatki.
-5. Agent **Storyboard**, pobrany z **Agents → Agent Organizer** (agenci, organizowanie agentów) i włączony w grze w **Chat Settings → Agents** (ustawienia czatu, agenci). Zobacz [Przewodnik po agencie Storyboard](storyboard.md).
+5. Agent **Storyboard**, pobrany z **Biblioteka → Agenci** i włączony w grze w **Chat Settings → Agents** (ustawienia czatu, agenci). Zobacz [Przewodnik po agencie Storyboard](storyboard.md).
 
 Edytowalny workflow i jego eksport API to dwa różne pliki. Otwórz `ltx-director-simple` w ComfyUI, zainstaluj każdy węzeł niestandardowy, który ComfyUI Manager zgłasza jako brakujący, i przetestuj graf na miejscu. Do aplikacji Marinara Engine zaimportuj `ltx-director-simple-api`. Po każdej zmianie węzła lub modelu wyeksportuj graf ponownie w formacie API i podmień plik JSON zapisany na koncie w aplikacji Marinara Engine. Nie wklejaj do aplikacji Marinara Engine zwykłego workflow z edytora wizualnego.
 
@@ -83,7 +83,7 @@ Jeśli usuniesz węzeł i dalej używasz starszego eksportu, zostają w nim odwo
 
 ## Tworzenie konta wideo
 
-1. Otwórz **Settings → Connections** (ustawienia, połączenia).
+1. Otwórz **Biblioteka → Połączenia**.
 2. Kliknij **Add account** (dodanie konta) i wybierz konto typu **Video Generation**.
 3. Wybierz **ComfyUI**.
 4. Wpisz **Base URL** (adres bazowy), zwykle `http://127.0.0.1:8188`, gdy ComfyUI działa na tym samym komputerze.
@@ -184,8 +184,6 @@ Unikaj zmian sceny, cięć, teleportacji, kilku niepowiązanych akcji, złożone
 ```text
 She pushes the door open and walks outside as the camera follows closely behind her. A light breeze moves her hair while her pace remains steady. She glances toward the empty street and says, "Stay close." Footsteps and distant traffic continue as the camera settles behind her.
 ```
-
-<a id="troubleshooting"></a>
 
 ## Rozwiązywanie problemów
 

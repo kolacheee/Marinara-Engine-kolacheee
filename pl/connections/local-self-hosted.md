@@ -8,8 +8,8 @@ W aplikacji ten rodzaj konta nazywa się **OpenAI-compatible** (zgodny z OpenAI)
 
 Zanim zaczniesz, zainstaluj serwer modeli, uruchom go i wczytaj w nim model. Na przykład pobierz program Ollama ze strony `ollama.com` i wykonaj jego instrukcje, żeby pobrać model. Marinara łączy się z serwerem, ale go za ciebie nie uruchamia. Serwer odpowiada na żądania pod adresem internetowym na twoim komputerze, nazywanym endpointem.
 
-1. Kliknij **Connections** (Połączenia) na górnym pasku, a potem **Add** (dodaj). Otwiera się okno **Add account** (dodanie konta).
-2. W sekcji **Chat** (czat) kliknij swój serwer: **Ollama**, **LM Studio**, **KoboldCpp** albo **llama.cpp**. Te kafelki mają etykietę **Self-hosted** (samodzielnie hostowany). Dla każdego innego serwera kliknij **OpenAI-compatible address** (adres zgodny z OpenAI).
+1. Otwórz **Biblioteka → Połączenia** i kliknij **Dodaj połączenie**. Otworzy się lista usług.
+2. Na zakładce **Tekst**, w sekcji **Samodzielnie hostowane**, kliknij swój serwer: **Ollama**, **LM Studio**, **KoboldCpp** albo **llama.cpp**. Mają etykietę **Samodzielnie hostowane**. Dla innego serwera kliknij **Adres zgodny z OpenAI**.
 3. Sprawdź pole **Server address** (adres serwera). Dla czterech wymienionych serwerów jest już wypełnione. Dla innego serwera wpisz jego adres. Zobacz tabelę poniżej.
 4. Zostaw puste pole **API key (optional)** (klucz API, opcjonalnie). Większość serwerów lokalnych nie potrzebuje klucza. Żeby nazwać konto, wpisz nazwę w polu **Name (optional)** (nazwa, opcjonalnie).
 5. Kliknij **Connect** (połącz). Marinara testuje adres. **Connected** oznacza, że udało się połączyć z serwerem.
@@ -21,6 +21,18 @@ Jeśli to nie zadziałało:
 
 - Komunikat **Marinara could not reach** oznacza, że nie udało się połączyć z adresem. Sprawdź, czy serwer działa i czy adres oraz port się zgadzają. **Continue anyway** (kontynuuj mimo to) zapisuje konto bez zaliczonego testu.
 - Adres jest na innym komputerze. Zobacz [Dostęp do serwera na innym komputerze](#reach-a-server-on-another-computer).
+
+## Używanie modelu aktualnie załadowanego na serwerze
+
+Serwer lokalny lub samodzielnie hostowany może odpowiadać modelem, który ma załadowany, więc jego konto może zawierać model **Domyślny**. Model Domyślny nie wysyła nazwy modelu. Zawsze używa modelu załadowanego w Ollama, LM Studio, KoboldCpp lub llama.cpp, także po zmianie modelu na tym serwerze.
+
+- Nowe konto serwera na twoim komputerze lub w twojej sieci zaczyna z modelem **Domyślny**.
+- Żeby dodać go później, kliknij **⋯** na koncie i wybierz **Dodaj model**. **Domyślny** jest pierwszym wierszem.
+- Używaj modelu **Domyślny** tak jak każdego innego: przydziel mu zadanie, na przykład **Main**, w sekcji **Domyślne** albo wybierz go w **Model dla tego czatu**.
+- W tabeli Połączenia ma opis "Model aktualnie załadowany na serwerze" i nie ma gwiazdki.
+- Kliknij **Domyślny** w panelu, żeby nadać mu własne ustawienia, takie jak parametry i preset promptu, tak samo jak modelowi z nazwą.
+
+**Domyślny** pojawia się tylko przy serwerze na twoim komputerze lub w twojej sieci. Usługa w chmurze zawsze wymaga nazwy modelu.
 
 ## Adresy popularnych serwerów lokalnych
 
@@ -37,8 +49,6 @@ W oknie **Edit model** (edycja modelu) pole adresu ostrzega: "Only use URLs from
 
 W systemie Windows działający serwer nadal może być blokowany. Jeśli Marinara go nie wykrywa, może go blokować Zapora Windows Defender. Otwórz **Windows Security → Firewall & network protection → Allow an app through firewall** (Zabezpieczenia Windows, Zapora i ochrona sieci, Zezwalaj aplikacji na dostęp przez zaporę) i dodaj Node.js albo program swojego serwera.
 
-<a id="test-the-connection"></a>
-
 ## Testowanie połączenia
 
 Przycisk **Connect** już sprawdził adres. Edytor modelu ma kartę **Provider tests** (testy dostawcy) do ponownego sprawdzenia.
@@ -50,8 +60,6 @@ Przycisk **Connect** już sprawdził adres. Edytor modelu ma kartę **Provider t
 Gdy oba testy się powiodą, otwórz czat i wybierz konto w oknie **Model for this chat** (model dla tego czatu). Zobacz [Wybór modelu dla jednego czatu](connecting-to-a-provider.md#choosing-a-model-for-one-chat).
 
 Jeśli test się nie powiedzie, sprawdź, czy serwer działa z wczytanym modelem i czy adres oraz port dokładnie się zgadzają. Przy serwerze na innym komputerze sprawdź kroki poniżej.
-
-<a id="reach-a-server-on-another-computer"></a>
 
 ## Dostęp do serwera na innym komputerze
 
@@ -71,7 +79,7 @@ W systemie Android to ustawienie jest domyślnie włączone, gdy go nie ustawisz
 
 ## Używanie modelu do decyzji
 
-Ten sam model może odpowiadać na pytania decyzyjne, na przykład przy sprawdzaniu aktywacji agentów, bez wczytywania drugiej kopii. Kliknij **⋯** na modelu w panelu i wybierz **Use this model for decisions** (używaj tego modelu do decyzji). Ta opcja pojawia się przy modelu OpenAI-compatible, który ma nazwę modelu. Zobacz [Modele decyzyjne](decision-models.md#on-a-server-you-already-run).
+Ten sam model może odpowiadać na pytania decyzyjne, na przykład sprawdzać aktywację agentów, bez ładowania drugiej kopii. Otwórz **Biblioteka → Połączenia**, kliknij **Dodaj połączenie**, otwórz zakładkę **Decyzja**, wybierz **Własny serwer decyzyjny** i wpisz ten sam adres. (W klasycznym układzie menu **⋯** modelu ma skrót **Używaj tego modelu do decyzji**, który wypełnia adres za ciebie.) Zobacz [Modele decyzyjne](decision-models.md#on-a-server-you-already-run).
 
 ## Przełącznik Treat as local/custom endpoint
 

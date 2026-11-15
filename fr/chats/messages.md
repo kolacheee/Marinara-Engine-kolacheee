@@ -2,7 +2,7 @@
 
 Chaque message, le tien comme celui de l'IA, a une barre d'outils. Elle sert à modifier, supprimer, régénérer ou masquer un message, ou à créer une branche à partir de lui.
 
-La barre d'outils apparaît quand tu touches un message sur un téléphone ou une tablette, ou quand tu passes le pointeur dessus sur un ordinateur.
+Sur un ordinateur, passe le pointeur sur un message pour faire apparaître sa barre d'outils. Sur un téléphone ou une tablette, appuie longuement sur un message : les mêmes actions s'ouvrent dans un panneau.
 
 ## La barre d'outils du message
 
@@ -42,7 +42,7 @@ Pour aller plus loin : [Peek Prompt](peek-prompt.md), [Branches de chat](branche
 3. Clique sur **Save** (enregistrer), ou appuie sur <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> sur un Mac).
 4. Pour arrêter sans enregistrer, clique sur **Cancel** (annuler) ou appuie sur <kbd>Esc</kbd>.
 
-Deux réglages de **Settings → General → Input & Editing** (Paramètres → Général → Saisie et édition) permettent de lancer une modification plus vite. Les deux sont activés par défaut.
+Deux réglages de **Settings → Chatting → Editing & Swipes** (Paramètres → Chat → Modification et swipes) permettent de lancer une modification plus vite. Les deux sont activés par défaut.
 
 - **Up Arrow edits last message** (la flèche du haut modifie le dernier message) : appuie sur <kbd>Up</kbd> quand la zone de saisie est vide.
 - **Double-click edits messages** (le double-clic modifie les messages) : double-clique sur un message Roleplay, ou touche-le deux fois.
@@ -74,6 +74,20 @@ Un swipe est une version d'une réponse de l'IA. Un même message peut en conten
 
 Tu ne peux pas supprimer le dernier swipe. L'application affiche "Cannot delete the last remaining swipe". Utilise plutôt **Delete this message**.
 
+## Gestes tactiles
+
+Dans la nouvelle disposition sur un téléphone ou une tablette, les swipes et les appuis prolongés remplacent les boutons qui apparaissent au passage du pointeur sur un ordinateur.
+
+- **Fais glisser la réponse la plus récente** vers la gauche ou la droite pour parcourir ses swipes. Un glissement vers la gauche au-delà du dernier demande "Generate a new reply?" avant d'en créer un, car une nouvelle réponse coûte une requête.
+- **Fais glisser le titre** de la barre du haut vers la gauche ou la droite pour parcourir tes onglets ouverts. Home compte comme l'onglet précédant le premier. Cela fonctionne dans la disposition pour téléphone, qu'une tablette utilise quand elle est tenue à la verticale ; tournée sur le côté, une tablette affiche plutôt la barre d'onglets.
+- **Fais glisser un chat** de la liste des chats vers la gauche pour afficher **Pin**, **Rename**, **Tags** et **Delete**.
+- **Appuie longuement sur un message** pour afficher ses actions : Regenerate, Edit, Copy, Branch et les autres.
+- **Appuie longuement sur un chat** dans la liste des chats pour afficher les mêmes actions.
+
+Désactive les swipes avec **Swipe gestures on touch screens** (gestes de balayage sur écran tactile) dans Settings > Chatting > Editing & Swipes. L'appui prolongé continue de fonctionner dans les deux cas.
+
+La première fois que Marinara s'ouvre sur un téléphone, une tablette ou un ordinateur, une courte visite montre où se trouvent les éléments sur ce type d'appareil, y compris ces gestes sur les écrans tactiles. Chaque mode de chat affiche également ses astuces la première fois qu'il s'y ouvre. Relance n'importe laquelle depuis Settings > General > Walkthroughs.
+
 ## Régénérer, continuer et relancer
 
 Ces trois actions se ressemblent, mais font des choses différentes.
@@ -92,7 +106,7 @@ Saisis `/continue` (ou `/cont`) dans la zone de saisie et envoie-le. Le modèle 
 /continue
 ```
 
-Marinara ajoute une ligne vide avant le nouveau texte. Pour l'accrocher directement au dernier caractère, désactive **Settings → General → Responses → Add a new line before /continue text** (Paramètres → Général → Réponses → ajouter une nouvelle ligne avant le texte de /continue).
+Marinara ajoute une ligne vide avant le nouveau texte. Pour l'accrocher directement au dernier caractère, désactive **Settings → Chatting → Responses → Add a new line before /continue text** (Paramètres → Chat → Réponses → ajouter une nouvelle ligne avant le texte de /continue).
 
 ### Relancer avec un Send à vide
 
@@ -110,11 +124,9 @@ Pour masquer une plage de messages, utilise `/hide` et `/unhide`. Voir [Commande
 
 Quand l'option **Decide who sees new messages** (décider qui voit les nouveaux messages) d'Advanced Memory est activée, les nouveaux messages d'un chat de groupe où les personnages répondent un par un sont automatiquement masqués aux personnages absents. Ton propre choix l'emporte toujours. Voir [Décider qui voit les nouveaux messages](../agents/memory.md#deciding-who-sees-new-messages).
 
-<a id="message-display-toggles"></a>
-
 ## Interrupteurs d'affichage des messages
 
-Ils se trouvent dans **Settings → Advanced → Message Tools** (Paramètres → Avancé → Outils de message).
+Ils se trouvent dans **Settings → Chatting → Message Info** (Paramètres → Chat → Informations sur les messages).
 
 | Interrupteur | Par défaut | Ce qu'il affiche |
 | --- | --- | --- |

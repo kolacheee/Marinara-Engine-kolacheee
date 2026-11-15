@@ -15,8 +15,8 @@
 
 ## 单文件快速导入
 
-1. 打开 **Settings → Imports**(设置 → 导入)。
-2. 在 **SillyTavern Import**(SillyTavern 导入) 中，点击与你的文件类型对应的按钮。
+1. 打开 **Settings → Data → SillyTavern Import**(设置 → 数据 → SillyTavern 导入)。
+2. 点击与你的文件类型对应的按钮。
 3. 选择文件。
 
 | 按钮 | 文件 |
@@ -26,7 +26,7 @@
 | **Import Preset (JSON)**(导入预设) | 一个 `.json` 预设。 |
 | **Import Lorebook (JSON)**(导入世界书) | 一个 `.json` World Info 文件。 |
 
-这几个按钮没有可选项。导入角色时会保留源文件的全部标签，并把所有正则脚本限定在该角色上。正则脚本是一条文本查找替换规则。想自行选择这些选项，请使用角色面板里的 **Import** 按钮。参见[导入和导出角色卡](../characters/import-export.md)。
+按钮上方的 **Tag imported**(标记为已导入) 和 **Tag source**(标记来源) 默认都开启，会给导入的内容添加 **Imported**(已导入) 和 **ST** 标签。取消勾选其中一项，就不会添加对应标签。导入的内容保留原有名称和描述。除此之外，这几个按钮没有可选项。导入角色时会保留源文件的全部标签，并把所有正则脚本限定在该角色上。正则脚本是一条文本查找替换规则。想自行选择这些选项，请使用 **Library → Characters**(资料库 → 角色) 页面上的 **Import**(导入)。参见[导入和导出角色卡](../characters/import-export.md)。
 
 如果角色卡里内嵌了世界书，浏览器会询问是否把它导入为独立的世界书。点击 **OK** 会把它保存为一本可以重复使用的世界书。点击 **Cancel** 则只导入角色。
 
@@ -38,9 +38,9 @@
 
 ## 从 SillyTavern 文件夹导入
 
-**开始之前：** 向导会读取服务器电脑上的文件。如果 SillyTavern 装在另一台电脑上，请先把它的文件夹（也就是 SillyTavern 的安装文件夹）复制到运行 Marinara 的电脑上。在运行 Marinara 的电脑上，向导可以直接使用。从其他设备使用时，请先设置管理员密钥，然后把它填入 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问)。参见[备份与恢复 Marinara](backup-and-restore.md)，以及[服务器配置参考](../CONFIGURATION.md)中的“授权 API(ADMIN_SECRET)”一节。
+**开始之前：** 向导会读取服务器电脑上的文件。如果 SillyTavern 装在另一台电脑上，请先把它的文件夹（也就是 SillyTavern 的安装文件夹）复制到运行 Marinara 的电脑上。在运行 Marinara 的电脑上，向导可以直接使用。从其他设备使用时，请先设置管理员密钥，然后把它填入 **Settings → Advanced → Security**(设置 → 高级 → 安全)。参见[备份与恢复 Marinara](backup-and-restore.md)，以及[服务器配置参考](../CONFIGURATION.md)中的“授权 API(ADMIN_SECRET)”一节。
 
-1. 打开 **Settings → Imports → SillyTavern Import**。
+1. 打开 **Settings → Data → SillyTavern Import**。
 2. 点击 **Import from SillyTavern Folder**(从 SillyTavern 文件夹导入)。
 3. 选择你的 SillyTavern 文件夹。选主文件夹，通常是包含 `data/` 或 `public/` 文件夹的那一个。可以用以下任一方式：
    - 点击 **Browse**(浏览)，然后选择该文件夹。
@@ -64,7 +64,7 @@
 **Imported regex scripts**(导入的正则脚本)（默认 **Character only**）：
 
 - **Character only** 让脚本只作用于各自的角色。
-- **Global** 把脚本添加到 **Presets → Regexes**(预设 → 正则)，对所有聊天生效。
+- **Global** 把脚本添加到 **Presets → Regexes**(预设 → 正则)，可以在那里管理跨聊天运行的脚本。见[正则脚本](../extending/regex-scripts.md#manage-your-scripts)。
 
 如果没有成功：
 
@@ -77,6 +77,7 @@
 - 属于同一个角色的聊天文件，会作为同一个聊天的分支导入。分支是一份可以单独续写的聊天副本。
 - 群聊会导入为 Roleplay 聊天。
 - 导入的条目保留源文件的最后修改日期，而不是导入当天的日期。
+- 角色、用户角色、世界书、预设和聊天会获得 **Imported** 和 **ST** 标签，除非你取消勾选 **Import Selected** 上方的 **Tag imported** 或 **Tag source**。它们的名称和描述保持原样。
 
 ## 不会导入的内容
 

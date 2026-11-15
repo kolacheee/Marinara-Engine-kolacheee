@@ -6,7 +6,7 @@
 
 **Music DJ** est un agent téléchargeable facultatif. Un agent est un assistant qui tourne en arrière-plan d'un chat. Après chaque réponse, il peut lire l'ambiance de la scène et lancer une musique assortie.
 
-Avant de commencer : ouvre **Agents**, sélectionne **Agent Organizer** (organisateur d'agents) et installe **Music DJ**. Il est désactivé après l'installation. Active-le pour un chat comme n'importe quel autre agent. Il fonctionne dans les chats Roleplay, en Game Mode via un interrupteur distinct ([Music DJ en Game Mode](#music-dj-in-game-mode)), et en Conversation via la commande **Music** (musique) ([La commande Music en Conversation](#the-conversation-music-command)).
+Avant de commencer : ouvre **Library → Agents** (Bibliothèque → Agents) et installe **Music DJ** depuis **Available** (disponibles). Il est désactivé après l'installation. Active-le pour un chat comme n'importe quel autre agent. Il fonctionne dans les chats Roleplay, en Game Mode via un interrupteur distinct ([Music DJ en Game Mode](#music-dj-in-game-mode)), et en Conversation via la commande **Music** (musique) ([La commande Music en Conversation](#the-conversation-music-command)).
 
 Il puise sa musique à trois sources.
 
@@ -18,7 +18,7 @@ Il puise sa musique à trois sources.
 
 La source active apparaît sous la forme d'un petit **Music Player** (lecteur de musique) épinglé dans la barre supérieure. Sur téléphone et dans les fenêtres étroites, il devient un petit widget rond flottant que tu peux déplacer.
 
-La configuration de Music DJ se fait à un seul endroit, partagé par toute l'application. Ouvre le panneau **Agents** à droite, puis **Music DJ**. Tu peux aussi cliquer sur l'icône d'engrenage du mini-lecteur (infobulle **Music DJ setup**).
+La configuration de Music DJ se fait à un seul endroit, partagé par toute l'application. Ouvre **Library → Agents**, puis **Music DJ**. Tu peux aussi cliquer sur l'icône d'engrenage du mini-lecteur (infobulle **Music DJ setup**).
 
 ### Choisir une source de musique
 
@@ -124,7 +124,7 @@ Le même choix **Apply to** apparaît quand tu ajoutes Music DJ à un chat. Les 
 
 ## Utiliser le lecteur de musique
 
-Le **Music Player** est une pastille dans la barre supérieure sur ordinateur et un widget déplaçable sur mobile. Pour l'afficher ou le masquer, ouvre **Settings → General → App Behavior** (Paramètres → Général → Comportement de l'application) et active ou désactive **Music Player**. Il est activé par défaut. S'il est activé alors que Music DJ n'est pas installé, le lecteur affiche **Download Music DJ Agent to configure** et propose un bouton **Agent Organizer**.
+Le **Music Player** est une pastille dans la barre supérieure sur ordinateur et un widget déplaçable sur mobile. Pour l'afficher ou le masquer, ouvre **Settings → General → Extras** (Paramètres → Général → Extras) et active ou désactive **Music Player**. Il est activé par défaut. S'il est activé alors que Music DJ n'est pas installé, le lecteur affiche **Download Music DJ Agent to configure** et propose un bouton **Agent Organizer**.
 
 Sur un profil neuf, la source de départ est **YouTube**. Change-la avec le bouton rond de changement de source sur le lecteur (infobulle "Switch to ... player"), avec les boutons **Music Player** de l'éditeur, ou dans les réglages **Music DJ** d'un chat.
 
@@ -166,7 +166,7 @@ Un personnage peut alors nommer un morceau pour Spotify, ou décrire un titre po
 
 ## Dépannage
 
-- **Le mini-lecteur a disparu** : active **Music Player** dans **Settings → General → App Behavior**.
+- **Le mini-lecteur a disparu** : active **Music Player** dans **Settings → General → Extras**.
 - **Spotify ne joue rien** : la lecture exige Spotify Premium et un appareil Spotify actif. Ouvre l'application de bureau sur un appareil, ou clique sur **Enable Marinara player** sur ordinateur.
 - **La fenêtre de connexion Spotify échoue sur une autre machine** : utilise le champ de collage "Browser couldn't reach the callback?", ou définis `SPOTIFY_REDIRECT_URI` sur le serveur.
 - **La recherche YouTube échoue** : vérifie que **YouTube Data API v3** est activé pour ton projet et que la clé n'est pas restreinte par référent HTTP. Si tu atteins le quota quotidien, réessaie le lendemain ou utilise une autre clé.

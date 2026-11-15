@@ -9,8 +9,8 @@ Antes de empezar: necesitas una API key (clave de API: un código secreto, como 
 1. Instala Marinara Engine y ábrelo en tu navegador. Elige tu plataforma en [Instalación de Marinara Engine](../INSTALLATION.md).
 2. Añade una cuenta. Una cuenta es una API key para un servicio de IA. Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md).
 3. Elige los modelos que debe usar la cuenta. La misma guía muestra cómo.
-4. Crea o importa un personaje. Abre el panel **Characters** (Personajes) y luego haz clic en **New** (Nuevo) para abrir la ventana **Create Character** (Crear personaje), o haz clic en **Import** (Importar) para traer una tarjeta desde un archivo. Consulta [Crear y editar personajes](../characters/creating-and-editing-characters.md).
-5. Abre la barra lateral del chat con el botón de la barra lateral. Sus pestañas dicen **CONVO**, **RP** y **GM**. Elige una y luego haz clic en el botón **+**. Se llama **New Conversation** (Nueva conversación), **New Roleplay** (Nuevo roleplay) o **New Game** (Nueva partida), según la pestaña.
+4. Crea o importa un personaje. Abre **Library → Characters** (Biblioteca → Personajes; haz clic en **Library** en la parte superior derecha) y luego haz clic en **New character** (Nuevo personaje), o haz clic en **Import** (Importar) para traer una tarjeta desde un archivo. Consulta [Crear y editar personajes](../characters/creating-and-editing-characters.md).
+5. Haz clic en **Conversation**, **Roleplay** o **Game** en la pantalla de inicio. O abre tus chats: haz clic en **Library** en la parte superior derecha, elige **Chats** en la parte superior de la barra lateral, elige la pestaña **Convo**, **Roleplay** o **Game** y haz clic en **New** (Nuevo).
 6. Sigue la ventana de configuración que se abre y luego haz clic en **Create Chat** (Crear chat).
 
 Lo que ves: se abre el chat nuevo y puedes escribir tu primer mensaje.
@@ -21,17 +21,22 @@ Marinara no incluye una IA en línea. La mayoría de la gente se conecta a un se
 
 La primera vez que abres Marinara, empieza un breve recorrido guiado. Consulta [El tutorial de primera vez](tutorial.md). ¿Te atascaste en un paso? Pregúntale a Professor Mari, el asistente integrado: [Professor Mari, tu asistente dentro de la app](professor-mari.md).
 
+## Orientarte por la app
+
+Marinara tiene dos lugares fijos, que permanecen en su sitio sea cual sea el tema que uses:
+
+- **La barra superior.** A la izquierda, **Home** (Inicio) y una pestaña por cada chat, personaje o página que abras. A la derecha, el botón de búsqueda (o <kbd>Ctrl</kbd>+<kbd>K</kbd>, <kbd>⌘</kbd>+<kbd>K</kbd> en un Mac) encuentra o abre cualquier cosa: un chat, un personaje, un ajuste, una guía o una pregunta para Professor Mari. A su lado están **Chat settings** (Ajustes del chat) mientras hay un chat abierto, **Docs** (Documentación) para estas guías y **Library** (Biblioteca), que muestra u oculta la barra lateral.
+- **La barra lateral** a la derecha, con un selector **Chats | Library** (Chats | Biblioteca) en la parte superior. **Chats** muestra tus chats en las pestañas **Convo**, **Roleplay** y **Game** (consulta [Administrar tu lista de chats](../chats/managing-chats.md)). **Library** muestra **Characters** (Personajes), **Personas**, **Lorebooks**, **Presets**, **Regex scripts** (Scripts regex), **Connections** (Conexiones), **Agents** (Agentes) y **Custom tools** (Herramientas personalizadas), y después **Settings** (Configuración) y **Extensions** (Extensiones). Elige una opción para abrir su página en el centro.
+
+En una computadora también puedes mostrar dos páginas lado a lado. Consulta [Vista dividida](tabs-and-drafts.md#split-view-two-pages-at-once).
+
+En un teléfono o una tableta, **Home** está en la parte superior izquierda y **Library** (el botón de pila) en la parte superior derecha. Library desliza la barra lateral sobre la página, con el mismo selector **Chats | Library**; su vista Library tiene **Settings**, **Docs** y **All Tabs** (Todas las pestañas) en la parte inferior. Toca el título de la barra superior para buscar y el botón numérico para ver tus pestañas abiertas. Consulta [Pestañas, vista dividida y cambios sin guardar](tabs-and-drafts.md) y [Gestos táctiles](../chats/messages.md#touch-gestures).
+
 ## La pantalla de inicio de un vistazo
 
-La pantalla de inicio aparece cuando no hay ningún chat abierto. Se parece a un navegador web: pestañas y marcadores arriba, y widgets debajo.
+La pantalla de inicio aparece cuando no hay ningún chat abierto. En la parte superior hay un saludo, el número de versión y **Conversation**, **Roleplay** y **Game**, que inician un chat nuevo en el modo correspondiente. Si todavía no hay ningún modelo configurado, **Connect a model to start chatting** (Conecta un modelo para empezar a chatear) abre la página Connections. **Professor** abre Professor Mari en su propia pestaña; una app instalada (como Story Writer) también añade un botón aquí, y **Widgets** organiza las tarjetas de abajo.
 
-- **Pestañas.** **Home** (Inicio) es la página principal. **Professor** abre Professor Mari. Algunos agentes instalados añaden una pestaña propia.
-- **Barra de búsqueda.** En una computadora, haz clic en la barra debajo de las pestañas, o pulsa <kbd>Ctrl</kbd>+<kbd>K</kbd> (<kbd>⌘</kbd>+<kbd>K</kbd> en un Mac), para encontrar chats, personajes, ajustes y más. Los teléfonos, las tabletas y las ventanas estrechas no muestran esta barra.
-- **Marcadores.** Enlaces rápidos a **Discord**, **Support** (Apoyo), **Credits** (Créditos), **Documentation** (Documentación), **Tutorial**, **FAQ**, **Achievements** (Logros) y **Widgets**. **Achievements** solo aparece cuando el ajuste de logros está activado. Los marcadores solo aparecen en la pestaña **Home**. En un teléfono, una tableta o una ventana estrecha, toca el botón de marcadores (**Open bookmarks**, Abrir marcadores) a la izquierda de las pestañas para verlos como una lista.
-
-En el centro ves el logo, **Marinara Engine** y el número de versión. Debajo, los botones **Conversation**, **Roleplay** y **Game** empiezan cada uno un chat nuevo en ese modo.
-
-<a id="choose-a-chat-mode"></a>
+En el diseño clásico, que se desactiva en **Settings → Appearance → Theme → New layout** (Configuración → Apariencia → Tema → Nuevo diseño), la pantalla de inicio se parece a un navegador web, con pestañas, una barra de búsqueda y marcadores para **Discord**, **Support** (Apoyo), **Credits** (Créditos), **Documentation** (Documentación), **Tutorial**, **FAQ**, **Achievements** (Logros) y **Widgets**.
 
 ## Elegir un modo de chat
 
@@ -41,17 +46,15 @@ Eliges un modo cuando empiezas un chat.
 - **Roleplay**: una historia con uno o más personajes. La app lleva el seguimiento de la escena, como el lugar y la hora. Consulta [Modo Roleplay: primeros pasos](../roleplay/getting-started.md).
 - **Game** (Partida): un juego para un jugador. La IA hace de Game Master (director del juego), que narra la historia. Tienes un grupo de compañeros (un grupo de aventura), tiradas de dados, mapas y misiones. Consulta [Game Mode: primeros pasos](../game/getting-started.md).
 
-<a id="home-widgets"></a>
-
 ## Widgets de inicio
 
 Los widgets son tarjetas pequeñas que puedes mostrar, ocultar y mover.
 
-1. Haz clic en **Widgets** en los marcadores. Se abre la ventana **Home Widgets** (Widgets de inicio). Enumera los widgets en **Built-in** (Integrados), **Agents** (Agentes) y **Personal**.
+1. Haz clic en **Widgets** en la pantalla de inicio. Se abre la ventana **Home Widgets** (Widgets de inicio). Enumera los widgets en **Built-in** (Integrados), **Agents** (Agentes) y **Personal**.
 2. Haz clic en el botón del ojo junto a un widget para mostrarlo u ocultarlo. Un widget que vuelves a mostrar va al primer lugar libre de la pantalla de inicio.
 3. Para mover un widget, arrastra el tirador de su esquina superior derecha. En una computadora, el tirador aparece cuando pasas el puntero sobre el widget.
 
-Tu disposición se guarda en este navegador. Los widgets personales también tienen botones para editarlos o eliminarlos. En la parte inferior de la ventana, **Browser chrome** (Apariencia del navegador) tiene un interruptor: **Show URL bar** (Mostrar la barra de direcciones) muestra u oculta la barra de búsqueda en una computadora.
+Tu disposición se guarda en este navegador. Los widgets personales también tienen botones para editarlos o eliminarlos. En el diseño clásico, **Browser chrome** (Apariencia del navegador), en la parte inferior de la ventana, tiene un interruptor: **Show URL bar** (Mostrar la barra de direcciones) muestra u oculta la barra de búsqueda de la pantalla de inicio en una computadora.
 
 Professor Mari puede crearte un widget personal si se lo pides. Los agentes instalados también pueden añadir widgets.
 
@@ -73,9 +76,9 @@ Professor Mari puede crearte un widget personal si se lo pides. Los agentes inst
 ## Dónde conseguir ayuda
 
 - Pregúntale a Professor Mari en la pantalla de inicio.
-- Abre el marcador **FAQ** para respuestas rápidas.
-- Abre el marcador **Documentation** para las guías dentro de la app.
-- Haz clic en **Discord** para llegar a la comunidad, o en **Support** para apoyar el proyecto.
+- Haz clic en **Read FAQ** (Leer la FAQ) en el widget **Learn the engine** (Aprende a usar el motor) para obtener respuestas breves.
+- Haz clic en **Docs** en la barra superior para abrir las guías dentro de la app.
+- Haz clic en **Discord** en el widget **Community** (Comunidad) para llegar a la comunidad, o en **Support** para apoyar el proyecto.
 
 Si algo está roto, consulta [Solución de problemas de Marinara Engine](../TROUBLESHOOTING.md).
 
@@ -85,4 +88,5 @@ Si algo está roto, consulta [Solución de problemas de Marinara Engine](../TROU
 - [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md)
 - [Crear y editar personajes](../characters/creating-and-editing-characters.md)
 - [El tutorial de primera vez](tutorial.md)
+- [Pestañas, vista dividida y cambios sin guardar](tabs-and-drafts.md)
 - [Professor Mari, tu asistente dentro de la app](professor-mari.md)

@@ -140,7 +140,7 @@ Tryby Roleplay i Conversation mają ten sam szkielet. Trzymaj się klas `mari-*`
 | `[data-card-css] p`, `[data-card-css] span` | Akapity i elementy span w tekście. |
 | `[data-grouped]` | Kolejne wiadomości tej samej postaci. Tylko w trybie Conversation. Do pierwszej wiadomości w grupie użyj `[data-card-css]:not([data-grouped])`. |
 
-Żeby zmienić układ, otwórz **Settings → Appearance → Conversation** (ustawienia, wygląd, Conversation), potem **Conversation Display**, a potem **Chat Layout** (układ czatu). W układzie **Linear** styluj `.mari-message-content` (tekst) i `[data-card-css]` (wiersz), bo nie ma tam dymka.
+Żeby zmienić układ, otwórz **Ustawienia → Conversation → Układ Conversation → Układ czatu**. W układzie **Linear** styluj `.mari-message-content` (tekst) i `[data-card-css]` (wiersz), bo nie ma dymka.
 
 Ostylowany dymek:
 
@@ -231,8 +231,6 @@ Karta panelu jest elementem wyznaczającym zakres. Obejmij ją zapisem `[data-ca
   }
 }
 ```
-
-<a id="what-you-cannot-style"></a>
 
 ## Czego nie da się ostylować
 
@@ -424,5 +422,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## Powiązane przewodniki
 
 - [Ustawienia wyglądu](appearance-settings.md)
-- [Własne motywy CSS (Theme Library)](custom-css-themes.md)
+- [Własne motywy CSS](custom-css-themes.md)
 - [Tworzenie i edycja postaci](../characters/creating-and-editing-characters.md)

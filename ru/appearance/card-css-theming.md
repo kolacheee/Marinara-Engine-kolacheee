@@ -140,7 +140,7 @@ Marinara переписывает ваш код CSS так, чтобы он до
 | `[data-card-css] p`, `[data-card-css] span` | Абзацы и строчные элементы span внутри текста. |
 | `[data-grouped]` | Сообщения-продолжения от того же персонажа. Только в режиме Conversation. Для первого сообщения в группе используйте `[data-card-css]:not([data-grouped])`. |
 
-Чтобы сменить раскладку, откройте **Settings → Appearance → Conversation** (настройки → оформление → Conversation), затем **Conversation Display**, затем **Chat Layout**. В раскладке **Linear** пузыря нет, поэтому оформляйте `.mari-message-content` (текст) и `[data-card-css]` (строку).
+Чтобы изменить раскладку, откройте **Настройки → Conversation → Расположение Conversation → Раскладка чата**. В **Linear** (линейная) оформляйте `.mari-message-content` (текст) и `[data-card-css]` (строку), поскольку пузыря нет.
 
 Оформленный пузырь:
 
@@ -231,8 +231,6 @@ Marinara переписывает ваш код CSS так, чтобы он до
   }
 }
 ```
-
-<a id="what-you-cannot-style"></a>
 
 ## Что оформить нельзя
 
@@ -424,5 +422,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## Смежные руководства
 
 - [Настройки оформления](appearance-settings.md)
-- [Собственные темы оформления на CSS (Theme Library)](custom-css-themes.md)
+- [Собственные темы оформления на CSS](custom-css-themes.md)
 - [Создание и редактирование персонажей](../characters/creating-and-editing-characters.md)

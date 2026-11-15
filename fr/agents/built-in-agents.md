@@ -1,10 +1,10 @@
 # Référence des agents téléchargeables
 
-Ce guide présente, par groupe, les agents officiels de Marinara proposés dans **Agents → Agent Organizer** (Agents → organisateur d'agents). Une installation neuve ne contient aucun agent. Leurs sources et leur catalogue sont publics dans [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Chaque entrée indique ce que fait l'agent, quand il s'exécute, où il fonctionne et ses principaux réglages. Pour installer et activer des agents, commence par lire la [vue d'ensemble des agents](agents-overview.md). Les entrées marquées **staging only** (staging uniquement) sont accessibles aux utilisateurs d'Engine sur staging ; les utilisateurs du canal stable les voient une fois le package promu.
+Ce guide présente, par groupe, les agents officiels de Marinara proposés dans **Library → Agents** (Bibliothèque → Agents). Une installation neuve ne contient aucun agent. Leurs sources et leur catalogue sont publics dans [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Chaque entrée indique ce que fait l'agent, quand il s'exécute, où il fonctionne et ses principaux réglages. Pour installer et activer des agents, commence par lire la [vue d'ensemble des agents](agents-overview.md). Les entrées marquées **staging only** (staging uniquement) sont accessibles aux utilisateurs d'Engine sur staging ; les utilisateurs du canal stable les voient une fois le package promu.
 
 ## Comment lire cette référence
 
-Installe un agent depuis **Agent Organizer**, puis ajoute-le à chaque chat où tu le veux. Les agents se configurent chat par chat, et non fiche de personnage par fiche de personnage. La [vue d'ensemble des agents](agents-overview.md) couvre l'installation, la mise à jour, la configuration par chat et le coût.
+Installe un agent depuis **Library → Agents**, puis ajoute-le à chaque chat où tu le veux. Les agents se configurent chat par chat, et non fiche de personnage par fiche de personnage. La [vue d'ensemble des agents](agents-overview.md) couvre l'installation, la mise à jour, la configuration par chat et le coût.
 
 Chaque entrée donne les mêmes repères rapides.
 
@@ -26,7 +26,7 @@ Ajoute le fil public local et facultatif de Noodle, dans son propre onglet **Hom
 
 - **Intégration** : package de fonctionnalité, avec des routes locales, des flux de génération et de médias, et des planificateurs en arrière-plan.
 - **Où ça marche** : Home, avec du contexte facultatif provenant des chats Conversation, Roleplay et Game.
-- **Réglages clés** : installe-le depuis **Agents → Agent Organizer** et redémarre lorsque cela t'est demandé. Dans Noodle, tu définis les comptes invités, les connexions de texte et d'image, les actualisations du fil, les utilisateurs aléatoires et la reprise vers les chats.
+- **Réglages clés** : installe-le depuis **Library → Agents** et redémarre lorsque cela t'est demandé. Dans Noodle, tu définis les comptes invités, les connexions de texte et d'image, les actualisations du fil, les utilisateurs aléatoires et la reprise vers les chats.
 - **Données** : la désinstallation retire l'onglet et arrête les planificateurs après un redémarrage. Tes données Noodle sont conservées pour une réinstallation ultérieure.
 - **Guide complet** : [Noodle : la timeline sociale intégrée](noodle.md).
 
@@ -322,7 +322,7 @@ Ajoute après chaque réponse des boutons de choix cliquables "What will you do?
 
 - **Phase** : Post-Processing.
 - **Où ça marche** : Roleplay.
-- **Réglages clés** : **Edit** (modifier) pour réécrire les choix et **Re-roll** (relancer) pour en générer de nouveaux. Active **Add CYOA choices to the message box instead of sending them** (ajouter les choix CYOA à la zone de saisie au lieu de les envoyer) dans **Settings → General → Input & Editing** (Paramètres → Général → Saisie et édition) pour que les choix cliqués aillent dans ta zone de saisie.
+- **Réglages clés** : **Edit** (modifier) pour réécrire les choix et **Re-roll** (relancer) pour en générer de nouveaux. Active **Add CYOA choices to the message box instead of sending them** (ajouter les choix CYOA à la zone de saisie au lieu de les envoyer) dans **Settings → Chatting → Message Box** (Paramètres → Chat → Zone de saisie) pour que les choix cliqués aillent dans ta zone de saisie.
 
 ### Storyboard
 
@@ -340,7 +340,7 @@ Affiche les personnages et les personas sous forme d'avatars 2D animés qui clig
 
 - **Intégration** : package d'agent. Engine dessine les avatars. L'agent n'envoie aucune requête supplémentaire à tes connexions d'IA pendant que tu discutes.
 - **Où ça marche** : Roleplay et Game, pour les personnages et les personas.
-- **Disponibilité** : dans **Agent Organizer** pour toutes les installations. Nécessite Marinara Engine 2.5.1 ou une version plus récente.
+- **Disponibilité** : dans **Library → Agents** pour toutes les installations. Nécessite Marinara Engine 2.5.1 ou une version plus récente.
 - **Réglages clés** : configure chaque avatar sur la page de l'agent, dans **Agents**. L'agent fournit aussi les prompts qui créent les images de clignement et de parole, ainsi qu'un avatar mesh, à partir d'un sprite.
 - **Compatibilité** : Engine `2.5.0` jusqu'à `4.0.0` exclu, Capability API 1.73. Permissions : `agent-runtime`, `chat-read`, `storage`, `ui`. Aucun redémarrage nécessaire.
 - **Guide complet** : [Avatars 2D et 3D](avatars.md).
@@ -351,7 +351,7 @@ Affiche les personnages et les personas sous forme de modèles 3D animés qui cl
 
 - **Intégration** : package d'agent. Engine dessine les avatars. L'agent n'envoie aucune requête supplémentaire à tes connexions d'IA pendant que tu discutes.
 - **Où ça marche** : Roleplay et Game, pour les personnages et les personas.
-- **Disponibilité** : dans **Agent Organizer** pour toutes les installations. Nécessite Marinara Engine 2.5.1 ou une version plus récente.
+- **Disponibilité** : dans **Library → Agents** pour toutes les installations. Nécessite Marinara Engine 2.5.1 ou une version plus récente.
 - **Réglages clés** : configure chaque avatar sur la page de l'agent, dans **Agents**.
 - **Compatibilité** : la même que 2D Avatars.
 - **Guide complet** : [Avatars 2D et 3D](avatars.md).

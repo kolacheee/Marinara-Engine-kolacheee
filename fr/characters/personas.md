@@ -22,9 +22,15 @@ Marinara envoie ton persona à l'IA dans chaque prompt. Choisis **None** (aucun)
 
 La macro `{{user}}` est un espace réservé. Marinara la remplace par le nom du persona avant d'envoyer le prompt. Si ton persona s'appelle Alex, `{{user}}` devient Alex. Voir [Macros](../prompts/macros.md).
 
-## Le panneau Personas
+## La page Personas
 
-Le panneau **Personas** est ta bibliothèque de personas. Clique sur une ligne pour ouvrir ce persona dans le Persona Editor.
+Ouvre **Bibliothèque → Personas**. Elle fonctionne comme la [page Personnages](library-organization.md#the-characters-page) : fiches avec portrait, **Importer**, **Nouveau persona** (vide ou à partir d'un modèle), un champ de recherche avec le bouton **Tags** à côté, **Modifiés récemment**, le menu de tri (**De A à Z**, **De Z à A**, **Plus récents**, **Plus anciens**, **Mon ordre**) et trois tailles de fiche. Clique sur une fiche pour ouvrir le persona dans le Persona Editor.
+
+Les mêmes outils que sur la page Characters fonctionnent ici : **⋯** sur une fiche (**Duplicate**, **Move to folder**, **Export**, **Select**, **Delete**), le glissement des fiches dans **My order**, **New folder**, et **Select** pour exporter ou supprimer plusieurs personas à la fois dans `marinara-personas.zip`. Voir [Actions d'une fiche](library-organization.md#a-cards-actions).
+
+## Dans la disposition classique : le panneau Personas
+
+Le panneau classique **Personas** affiche les mêmes dossiers et le même ordre sous forme de liste. Clique sur une ligne pour ouvrir ce persona dans le Persona Editor.
 
 | Contrôle | Ce qu'il fait |
 | --- | --- |
@@ -48,11 +54,11 @@ Ouvrir un persona remplace la zone de chat par le Persona Editor en pleine page.
 - La tuile d'avatar. Clique dessus pour téléverser une image. Si une connexion de génération d'images est configurée, un bouton baguette peut aussi en générer une.
 - Le champ de nom et un champ de commentaire, pour une courte étiquette comme `Modern AU version`.
 - **Save**, désactivé tant que tu n'as rien modifié.
-- Le menu **…** (**More actions**, Plus d'actions), avec **Ask Professor Mari** (demander à Professor Mari), **Export persona** (exporter le persona), **Add persona as character** (ajouter le persona comme personnage), **Duplicate persona** (dupliquer le persona) et **Delete persona** (supprimer le persona).
+- **Export persona** (exporter le persona), **Add persona as character** (ajouter le persona comme personnage), **Duplicate persona** (dupliquer le persona) et **Delete persona** (supprimer le persona).
 
 Quitter l'éditeur enregistre d'abord tes modifications. Si l'enregistrement échoue, l'éditeur reste ouvert avec ton brouillon.
 
-Les onglets sont, dans l'ordre, **Metadata** (métadonnées), **Card**, **Convo**, **Lorebook**, **Images** (images), **Colors** (couleurs) et **Stats** (caractéristiques). Chaque onglet mène à sa section d'un même long formulaire.
+Les onglets sont, dans l'ordre, **Metadata** (métadonnées), **Card**, **Convo**, **Lorebook**, **Sprites**, **Gallery** (galerie), **Colors** (couleurs) et **Stats** (caractéristiques). Chaque onglet mène à sa section d'un même long formulaire.
 
 L'éditeur de persona fonctionne comme le [Character Editor](creating-and-editing-characters.md). Les notes ci-dessous couvrent ce qui diffère.
 
@@ -62,7 +68,8 @@ L'éditeur de persona fonctionne comme le [Character Editor](creating-and-editin
 | **Card** | Voir [Onglet Card](#card-tab) plus bas. |
 | **Convo** | Des champs utilisés uniquement en mode Conversation. Voir [Profils du mode Conversation](../conversation/profiles.md). |
 | **Lorebook** | Rattache des entrées de lorebook qui s'activent quand ce persona est dans le chat. Voir [Vue d'ensemble des lorebooks](../lorebooks/overview.md). |
-| **Images** | **Character Sheet** (fiche de référence), **Sprites** (des illustrations en pied pour le Game Mode et le Roleplay, **Facial Expressions**, **Full-body** et **Clips**, ainsi que **Upload Folder** (téléverser un dossier)) et **Gallery** (des images et des vidéos de référence, avec **Upload Persona Images** (téléverser des images de persona) et **Upload Persona Videos** (téléverser des vidéos de persona)). Voir [Sprites de personnage](sprites.md) et [Galeries de personnages et de personas](galleries.md). |
+| **Sprites** | Des illustrations en pied pour le Game Mode et le Roleplay. Comprend **Facial Expressions**, **Full-body** et **Clips**, ainsi que **Upload Folder** (téléverser un dossier). Voir [Sprites de personnage](sprites.md). |
+| **Gallery** | Des images et des vidéos de référence, avec **Upload Persona Images** (téléverser des images de persona) et **Upload Persona Videos** (téléverser des vidéos de persona). Voir [Galeries de personnages et de personas](galleries.md). |
 | **Colors** | Les couleurs du nom, des dialogues et de la bulle de message. Voir [Couleurs des personnages et Caractéristiques de Roleplay](colors-and-stats.md). |
 | **Stats** | Les barres d'état et les attributs RPG. Voir [Onglet Stats](#stats-tab) plus bas. |
 
@@ -71,7 +78,7 @@ L'onglet **Metadata** affiche :
 - **Persona ID**, avec **Copy** (copier).
 - Le recadrage de l'avatar.
 - **Name** et **Creator** (créateur).
-- **Other names** (autres noms), surnoms, noms complets ou titres que le persona porte aussi. Les chats Roleplay peuvent les afficher dans la couleur du nom. Voir [Colorer ton nom dans les messages](choosing-your-persona.md#color-your-name-in-messages).
+- **Other names** (autres noms), les surnoms, noms complets ou titres que le persona porte aussi. Les chats Roleplay peuvent les afficher dans la couleur du nom ; voir [Colorer ton nom dans les messages](choosing-your-persona.md#color-your-name-in-messages).
 - **Phonetic name** (nom phonétique), utilisé uniquement quand la synthèse vocale (text-to-speech) lit ton nom.
 - **Title / Comment** (titre / commentaire), une courte étiquette.
 - **Version**, `1.0` par défaut, avec un interrupteur **Automatic versioning** (gestion automatique des versions).
@@ -117,7 +124,7 @@ Un bloc **Game Mode Icon** (icône de Game Mode) définit l'image de ton pion da
 
 Pour importer, clique sur **Import** dans le panneau **Personas**. La fenêtre **Import Persona** accepte les fichiers `.marinara` et `.json`, y compris plusieurs à la fois. Un fichier Marinara restaure l'intégralité des détails, les sprites et la structure de la galerie. Un fichier JSON générique venu d'un autre outil est transposé champ par champ dans un nouveau persona. Le nom est obligatoire. Chaque fichier affiche une marque de réussite ou d'échec.
 
-Pour exporter, clique sur **…**, puis sur **Export persona** dans l'éditeur, ou utilise **Export** (exporter) en mode sélection. La fenêtre **Export Persona** propose deux formats :
+Pour exporter, clique sur **Export persona** dans l'éditeur, ou utilise **Export** (exporter) en mode sélection. La fenêtre **Export Persona** propose deux formats :
 
 | Format | Ce que tu obtiens |
 | --- | --- |
@@ -128,13 +135,13 @@ Un export groupé télécharge un seul zip, avec un fichier par persona.
 
 ## Dupliquer ou supprimer un persona
 
-Pour dupliquer, clique sur **Duplicate** dans une ligne ou sur **Duplicate persona** dans le menu **…** de l'éditeur. La copie s'appelle "{original name} (Copy)" et garde tous les champs de fiche, les couleurs, les caractéristiques et les champs Convo. Aucun chat ne change de persona.
+Pour dupliquer, clique sur **Duplicate** dans une ligne ou sur **Duplicate persona** dans l'éditeur. La copie s'appelle "{original name} (Copy)" et garde tous les champs de fiche, les couleurs, les caractéristiques et les champs Convo. Aucun chat ne change de persona.
 
-Pour supprimer, clique sur **Delete** dans une ligne ou sur **Delete persona** dans le menu **…** de l'éditeur, puis confirme. Tu ne peux pas annuler la suppression. Pour en supprimer plusieurs, clique sur **Select**, coche les personas et utilise **Delete** dans la barre de sélection. Si une suppression échoue, ces personas restent sélectionnés pour que tu puisses réessayer.
+Pour supprimer, clique sur **Delete** dans une ligne ou sur **Delete persona** dans l'éditeur, puis confirme. Tu ne peux pas annuler la suppression. Pour en supprimer plusieurs, clique sur **Select**, coche les personas et utilise **Delete** dans la barre de sélection. Si une suppression échoue, ces personas restent sélectionnés pour que tu puisses réessayer.
 
 ## Ajouter un persona comme personnage
 
-**Add persona as character**, dans le menu **…** de l'en-tête de l'éditeur, crée une nouvelle fiche parmi tes personnages. Elle reprend le nom, la description, la personnalité, le scénario, le passé, l'apparence, les tags, le créateur, la version et l'avatar. Le persona reste tel quel. Pour modifier la nouvelle fiche, voir [Créer et modifier des personnages](creating-and-editing-characters.md).
+**Add persona as character**, dans l'en-tête de l'éditeur, crée une nouvelle fiche parmi tes personnages. Elle reprend le nom, la description, la personnalité, le scénario, le passé, l'apparence, les tags, le créateur, la version et l'avatar. Le persona reste tel quel. Pour modifier la nouvelle fiche, voir [Créer et modifier des personnages](creating-and-editing-characters.md).
 
 ## Guides associés
 

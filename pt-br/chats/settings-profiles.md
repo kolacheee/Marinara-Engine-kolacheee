@@ -4,7 +4,7 @@ Um perfil de configurações é um pacote com nome de configurações de chat re
 
 Os perfis ficam no topo de **Chat Settings** (configurações do chat). Eles funcionam em Conversation e em Roleplay. Os chats de Game não mostram os controles de perfil.
 
-O **preset de prompt** é outra coisa. Ele controla a estrutura do prompt de sistema e os valores de geração, e você o edita no painel Presets. Veja [Editor de presets e gerenciador de prompts](../prompts/presets.md). O perfil de configurações é o pacote mais amplo, e pode incluir um preset de prompt como um dos itens.
+O **preset de prompt** é outra coisa. Ele controla a estrutura do prompt de sistema e os valores de geração, e você o edita na página **Biblioteca → Presets**. Veja [Editor de presets e gerenciador de prompts](../prompts/presets.md). O perfil de configurações é o pacote mais amplo, e pode incluir um preset de prompt como um dos itens.
 
 ## Aplique um perfil
 
@@ -92,7 +92,7 @@ Quando um novo chat usa um perfil padrão que tem um layout salvo, esse layout t
 O perfil salva a forma como o chat conversa com o modelo:
 
 - A conexão.
-- O preset de prompt (chamado de fonte do prompt em Conversation).
+- O preset de prompt (chamado de fonte do prompt em Conversation), com as escolhas que você fez para as [variáveis do preset](../prompts/preset-variables.md). Aplicar o perfil dá essas escolhas ao chat. Um perfil salvo antes de incluí-las mantém as escolhas do próprio chat.
 - Os agentes e as ferramentas.
 - A tradução, a Memory Recall e os Advanced Parameters.
 - O layout de janelas e botões: posições, tamanhos, fixações, travas, quais ferramentas estão dentro de Chat Settings ou destacadas, janelas de controles abertas e posições dos botões no computador e no celular. Perfis sem layout salvo, como **Default**, deixam o layout do chat como está.
@@ -120,6 +120,7 @@ O perfil não substitui o conteúdo que pertence ao chat: personagens, sprites, 
 - As configurações de memória e de resumo.
 - A tradução.
 - O layout das janelas.
+- As escolhas de variáveis do preset, só nos chats que usam o mesmo preset de prompt do perfil.
 
 Todo o resto continua como cada chat tem:
 

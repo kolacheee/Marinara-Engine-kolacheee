@@ -16,14 +16,14 @@ L'agent Illustrator rédige le prompt, mais c'est un modèle d'image distinct qu
 
 Tu peux lui fournir un modèle d'image de deux façons.
 
-1. Règle la tâche **Images** sous **Defaults** (valeurs par défaut) dans le panneau **Connections** (Connexions).
+1. Définis la tâche **Images** dans l'encadré **Valeurs par défaut** du panneau **Connexions**.
 2. Ou donne à l'agent Illustrator son propre modèle d'image sur son écran **Open Setup** (ouvrir la configuration).
 
 Si aucun modèle d'image n'est trouvé, l'image échoue et l'application te demande d'en choisir un.
 
 ## Activer l'agent Illustrator
 
-Avant de commencer : installe **Illustrator** depuis **Agent Organizer** (organisateur d'agents). Voir [Présentation des agents](../agents/agents-overview.md).
+Avant de commencer : installe **Illustrator** depuis **Library → Agents** (Bibliothèque → Agents). Voir [Présentation des agents](../agents/agents-overview.md).
 
 1. Ouvre le chat Roleplay que tu veux illustrer.
 2. Ouvre **Chat Settings** (réglages du chat) et repère **Agents**.
@@ -99,7 +99,7 @@ Les clips utilisent le modèle vidéo défini sous **Scene Videos** (vidéos de 
 - Avec **Clips only**, chaque exécution produit un clip, **Video Run Interval** fixe la fréquence d'exécution d'Illustrator, et **Image Run Interval** est masqué.
 - Un chat sans valeur utilise la valeur **Video Run Interval** de l'écran **Open Setup**, ou 5.
 - **0** : Illustrator ne crée aucun clip de lui-même, y compris pour les images demandées avec `[illustrate]`, qui reçoivent leur image à la place.
-- Une réponse reçoit au plus le nombre de clips fixé par **Videos per reply** (vidéos par réponse), sous **Settings → Generations → Video Generation** (Paramètres → Générations → Génération de vidéos).
+- Une réponse reçoit au plus le nombre de clips fixé par **Videos per reply** (vidéos par réponse), sous **Settings → Media → Video Generation** (Paramètres → Médias → Génération de vidéos).
 - Tu peux toujours animer une image depuis la Gallery. Avec **Clips only**, le bouton **Illustrate** d'un message crée un clip.
 - Un swipe d'une réponse qui a reçu un clip compte comme une nouvelle réponse et peut recevoir son propre clip. Le swipe précédent garde son clip.
 
@@ -112,6 +112,16 @@ Les clips utilisent le modèle vidéo défini sous **Scene Videos** (vidéos de 
 Un clip sans image propre décrit toutes les personnes qu'il nomme, y compris ton persona. L'avatar de départ est celui de la première personne nommée.
 
 Relancer Illustrator depuis le bouton **Illustrate** d'un message suit aussi **Illustrator makes** et **First frame**.
+
+## Arrière-plans et météo
+
+Illustrator peint aussi des arrière-plans. Sur la carte Illustrator dans **Réglages du chat → Agents** :
+
+- **Générer les arrière-plans de scène** peint un arrière-plan quand l'histoire arrive dans un nouveau lieu, sauf si tu as déjà une image pour celui-ci.
+- **Versions météo des arrière-plans** repeint l'arrière-plan actuel selon la météo de l'histoire, en ne dessinant la pluie ou la neige animée que sur les fenêtres de la pièce.
+- **Vérifications par le modèle de décision** fait vérifier chaque réponse par un modèle de décision pour repérer un nouveau lieu ou une nouvelle météo : les arrière-plans n'attendent donc pas l'intervalle d'exécution.
+
+Les trois sont désactivés par défaut. Voir [Arrière-plans créés par Illustrator](scene-backgrounds.md).
 
 ## Plusieurs personnages avec NovelAI
 
@@ -127,11 +137,11 @@ Aucun réglage n'est nécessaire. Les descriptions n'apparaissent qu'avec NovelA
 
 ## Enregistrement dans les galeries et inspection du prompt
 
-Dans **Settings → Generations → Image Generation** (Paramètres → Générations → Génération d'images), **Automatically save generated images to character galleries** (enregistrer automatiquement les images générées dans les galeries des personnages) est activé par défaut. Désactive-le pour ne plus ajouter les illustrations et les selfies du chat aux galeries des personnages et des personas représentés. Les images apparaissent toujours dans le chat et dans sa Gallery, et les enregistrements explicites dans une galerie fonctionnent toujours. Les entrées existantes ne changent pas. Les galeries partagent les fichiers d'images : ce réglage contrôle leur présence dans les galeries, pas leur suppression.
+Dans **Settings → Media → Image Generation** (Paramètres → Médias → Génération d'images), **Automatically save generated images to character galleries** (enregistrer automatiquement les images générées dans les galeries des personnages) est activé par défaut. Désactive-le pour ne plus ajouter les illustrations et les selfies du chat aux galeries des personnages et des personas représentés. Les images apparaissent toujours dans le chat et dans sa Gallery, et les enregistrements explicites dans une galerie fonctionnent toujours. Les entrées existantes ne changent pas. Les galeries partagent les fichiers d'images : ce réglage contrôle leur présence dans les galeries, pas leur suppression.
 
 Pour les nouvelles illustrations NovelAI, l'inspecteur d'image affiche le prompt de scène et de style, suivi des descriptions positives des personnages, séparés par ` | `. Le prompt enregistré dans la galerie est le même.
 
-Pour redessiner une illustration avec un prompt modifié, sans régénérer la réponse, ouvre-la et utilise **Regenerate image** (régénérer l'image). Voir [Régénérer une image](scene-backgrounds.md#regenerating-an-image).
+Pour redessiner une illustration avec un prompt modifié, sans régénérer la réponse, ouvre-la et utilise **Regenerate image** (régénérer l'image). Voir [Régénérer une image](../chats/chat-gallery.md#regenerating-an-image).
 
 Pour illustrer un ancien message Roleplay ou une plage de messages, utilise `/illustrate range=12` ou `/illustrate range=12-18`. Voir [Commandes slash](../chats/slash-commands.md).
 
@@ -139,6 +149,7 @@ Pour illustrer un ancien message Roleplay ou une plage de messages, utilise `/il
 
 - [Fournisseurs de génération d'images et configuration](image-providers.md)
 - [Profils de style d'image](style-profiles.md)
-- [Arrière-plans de scène et galerie](scene-backgrounds.md)
+- [Arrière-plans créés par Illustrator](scene-backgrounds.md)
+- [La galerie du chat](../chats/chat-gallery.md)
 - [Agents : des aides IA pour tes chats](../agents/agents-overview.md)
 - [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md)

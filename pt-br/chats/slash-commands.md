@@ -29,7 +29,7 @@ Estes funcionam em Conversation e em Roleplay.
 |---|---|
 | `/help` | Lista todos os comandos de barra. |
 | `/send` | Publica uma mensagem como a sua persona sem pedir uma resposta. As macros são preenchidas, como no **Send**. Formato: `/send [message]`. |
-| `/continue` | Acrescenta mais texto à última resposta da IA, sem uma mensagem nova. Também `/cont`. **Settings → General → Responses → Add a new line before /continue text** (Configurações → Geral → Respostas → Adicionar uma nova linha antes do texto de /continue) define se o texto começa depois de uma linha em branco ou no ponto em que parou. |
+| `/continue` | Acrescenta mais texto à última resposta da IA, sem uma mensagem nova. Também `/cont`. **Configurações → Conversando → Respostas → Adicionar uma nova linha antes do texto de /continue** define se o texto começa depois de uma linha em branco ou no ponto em que parou. |
 | `/goto` | Rola o chat até um número de mensagem. Também `/jump`, `/scroll`. Formato: `/goto [number]`. |
 | `/hide` | Esconde mensagens do modelo nos próximos turnos. Formato: `/hide [range] [name (optional)]`. |
 | `/unhide` | Devolve as mensagens escondidas globalmente. Formato: `/unhide [range]`. |

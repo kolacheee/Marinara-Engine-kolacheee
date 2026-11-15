@@ -16,14 +16,14 @@ Agent Illustrator pisze prompt, ale obraz rysuje osobny model obrazów. Potrzebu
 
 Model obrazów możesz mu udostępnić na jeden z dwóch sposobów.
 
-1. Ustaw zadanie **Images** (obrazy) w sekcji **Defaults** (ustawienia domyślne) panelu **Connections** (Połączenia).
+1. Ustaw zadanie **Images** (obrazy) w sekcji **Domyślne** panelu **Connections** (Połączenia).
 2. Albo przypisz agentowi Illustrator własny model obrazów na jego ekranie **Open Setup** (pełna konfiguracja).
 
 Jeśli nie da się znaleźć żadnego modelu obrazów, obraz nie powstaje, a aplikacja prosi o wybranie modelu.
 
 ## Włączanie agenta Illustrator
 
-Zanim zaczniesz: zainstaluj agenta **Illustrator** z katalogu **Agent Organizer** (organizowanie agentów). Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
+Zanim zaczniesz: zainstaluj agenta **Illustrator** z **Biblioteka → Agenci**. Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
 
 1. Otwórz czat Roleplay, który chcesz ilustrować.
 2. Otwórz **Chat Settings** (ustawienia czatu) i znajdź sekcję **Agents** (Agenci).
@@ -99,7 +99,7 @@ Klipy korzystają z modelu wideo ustawionego w **Scene Videos** (wideo sceny), a
 - Przy **Clips only** każde uruchomienie to klip, **Video Run Interval** ustala, jak często działa agent Illustrator, a **Image Run Interval** jest ukryte.
 - Czat bez własnej wartości korzysta z **Video Run Interval** z ekranu **Open Setup** albo z wartości 5.
 - **0**: agent nie tworzy klipów samodzielnie, także dla obrazów z `[illustrate]`, które dostają wtedy swój obraz.
-- Jedna odpowiedź dostaje najwyżej tyle klipów, ile wskazuje **Videos per reply** (filmy na odpowiedź) w **Settings → Generations → Video Generation** (ustawienia, generowanie, generowanie wideo).
+- Jedna odpowiedź dostaje najwyżej tyle klipów, ile wskazuje **Videos per reply** (filmy na odpowiedź) w **Ustawienia → Media → Generowanie wideo**.
 - Nadal możesz animować obraz z galerii. Przy **Clips only** przycisk **Illustrate** przy wiadomości tworzy klip.
 - Swipe odpowiedzi, która dostała klip, liczy się jako nowa odpowiedź i może dostać własny klip. Wcześniejszy swipe zachowuje swój klip.
 
@@ -112,6 +112,16 @@ Klipy korzystają z modelu wideo ustawionego w **Scene Videos** (wideo sceny), a
 Klip bez własnego obrazu opisuje wszystkich, których wymienia, łącznie z twoją personą. Pierwsza klatka z awatarem zaczyna się od osoby wymienionej jako pierwsza.
 
 Ponowne uruchomienie agenta Illustrator przyciskiem **Illustrate** przy wiadomości także stosuje się do **Illustrator makes** i **First frame**.
+
+## Tła i pogoda
+
+Illustrator maluje też tła. Na karcie agenta Illustrator w **Ustawienia czatu → Agenci**:
+
+- **Generuj tła scen** maluje tło, gdy historia przenosi się w nowe miejsce, chyba że masz już jego obraz.
+- **Weather Versions of Backgrounds** (warianty teł z pogodą) przemalowuje bieżące tło zgodnie z pogodą w historii, z ruchomym deszczem lub śniegiem widocznym tylko w oknach pomieszczenia.
+- **Decision Model Checks** (sprawdzanie modelem decyzyjnym) zleca modelowi decyzyjnemu sprawdzanie każdej odpowiedzi pod kątem nowego miejsca lub pogody, żeby tła nie musiały czekać na interwał uruchamiania.
+
+Wszystkie trzy opcje są domyślnie wyłączone. Zobacz [Tła tworzone przez agenta Illustrator](scene-backgrounds.md).
 
 ## Wiele postaci w usłudze NovelAI
 
@@ -127,11 +137,11 @@ Nie trzeba niczego ustawiać. Opisy pojawiają się tylko dla usługi NovelAI na
 
 ## Zapisywanie w galeriach i podgląd promptu
 
-W **Settings → Generations → Image Generation** (ustawienia, generowanie, generowanie obrazów) opcja **Automatically save generated images to character galleries** (automatyczne zapisywanie wygenerowanych obrazów w galeriach postaci) jest domyślnie włączona. Wyłącz ją, żeby ilustracje i selfie z czatu nie trafiały do galerii przedstawionych postaci i person. Obrazy nadal pojawiają się w rozmowie i w galerii czatu, a ręczne zapisywanie w galerii nadal działa. Istniejące wpisy pozostają bez zmian. Galerie współdzielą pliki obrazów, więc ta opcja decyduje o przynależności do galerii, a nie o usuwaniu.
+W **Ustawienia → Media → Generowanie obrazów** opcja **Automatically save generated images to character galleries** (automatyczne zapisywanie wygenerowanych obrazów w galeriach postaci) jest domyślnie włączona. Wyłącz ją, żeby ilustracje i selfie z czatu nie trafiały do galerii przedstawionych postaci i person. Obrazy nadal pojawiają się w rozmowie i w galerii czatu, a ręczne zapisywanie w galerii nadal działa. Istniejące wpisy pozostają bez zmian. Galerie współdzielą pliki obrazów, więc ta opcja decyduje o przynależności do galerii, a nie o usuwaniu.
 
 Przy nowych ilustracjach z usługi NovelAI inspektor obrazu pokazuje prompt sceny i stylu, a po nim pozytywne opisy postaci, oddzielone przez ` | `. Prompt zapisany w galerii jest taki sam.
 
-Żeby narysować ilustrację jeszcze raz ze zmienionym promptem, bez ponownego generowania odpowiedzi, otwórz ją i użyj przycisku **Regenerate image** (ponowne wygenerowanie obrazu). Zobacz [Ponowne generowanie obrazu](scene-backgrounds.md#regenerating-an-image).
+Żeby narysować ilustrację jeszcze raz ze zmienionym promptem, bez ponownego generowania odpowiedzi, otwórz ją i użyj przycisku **Regenerate image** (ponowne wygenerowanie obrazu). Zobacz [Ponowne generowanie obrazu](../chats/chat-gallery.md#regenerating-an-image).
 
 Żeby zilustrować wcześniejszą wiadomość lub zakres wiadomości w trybie Roleplay, użyj `/illustrate range=12` albo `/illustrate range=12-18`. Zobacz [Lista komend slash](../chats/slash-commands.md).
 
@@ -139,6 +149,7 @@ Przy nowych ilustracjach z usługi NovelAI inspektor obrazu pokazuje prompt scen
 
 - [Dostawcy generowania obrazów i konfiguracja](image-providers.md)
 - [Profile stylu obrazów](style-profiles.md)
-- [Tła scen i galeria](scene-backgrounds.md)
+- [Tła tworzone przez agenta Illustrator](scene-backgrounds.md)
+- [Galeria czatu](../chats/chat-gallery.md)
 - [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md)
 - [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md)

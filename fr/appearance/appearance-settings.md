@@ -1,79 +1,50 @@
 # Réglages d'apparence
 
-L'onglet **Appearance** (apparence) change l'aspect de Marinara : les couleurs, la taille du texte, la disposition du chat et le style des messages dans chaque mode de chat.
+L'onglet **Appearance** (apparence) change l'aspect de Marinara : les couleurs, la taille du texte, l'espacement, les arrière-plans ainsi que les boutons et les fenêtres du chat. Les onglets **Conversation**, **Roleplay** et **Game** à côté règlent le style de chaque mode de chat.
 
 Tu cherches autre chose ?
 
+- Une apparence toute faite ou ton propre thème : [Thèmes CSS personnalisés](custom-css-themes.md).
 - Une autre police : [Polices personnalisées et Google Fonts](fonts.md).
-- Une image d'arrière-plan pour le chat : [Arrière-plans de chat](chat-backgrounds.md).
-- Un thème personnalisé, dans **Settings → Addons → Theme Library** (Paramètres → Modules complémentaires → Bibliothèque de thèmes) : [Thèmes CSS personnalisés](custom-css-themes.md).
+- Une image d'arrière-plan pour le chat : [Bibliothèque d'arrière-plans](chat-backgrounds.md).
 - L'apparence propre à un personnage dans le chat : [Guide du thème CSS de fiche](card-css-theming.md).
 
 ## Ouvrir les réglages d'apparence
 
-1. Ouvre **Settings**.
-2. Choisis l'onglet **Appearance**.
-3. Choisis un bouton en haut : **App**, **Conversation**, **Roleplay** ou **Game**.
+1. Ouvre **Library → Settings** (Bibliothèque → Paramètres).
+2. Clique sur l'onglet **Appearance**.
+3. Clique sur le nom d'une section dans la rangée sous les onglets pour y accéder directement, ou fais défiler la page.
 
-Les boutons regroupent les réglages par mode de chat, et l'onglet n'affiche que le groupe que tu choisis.
-
-| Bouton | Sections |
+| Onglet | Sections |
 | --- | --- |
-| **App** | **App Style**, **Text & Scale**, **Atmosphere**, **Backgrounds** |
-| **Conversation** | **Conversation Display**, **Conversation Theme** |
-| **Roleplay** | **Tracker Panel**, **Roleplay Presentation** |
-| **Game** | **Game Presentation** |
+| **Appearance** | **Theme**, **Fonts & Text Size**, **Accessibility**, **Text Colors**, **Layout**, **Effects**, **Backgrounds**, **Chat Buttons & Windows**, **CSS Themes** |
+| **Conversation** | **Conversation Layout**, **Conversation Background** |
+| **Roleplay** | **Tracker Panel**, **Roleplay Messages**, **Avatars**, **Visual Novel** |
+| **Game** | **Game Text**, **Game Art**, **Game Assets** |
 
-Pour repartir de zéro, clique sur **Reset Appearance** (réinitialiser l'apparence) en haut de **App Style**. Ce bouton ramène tout l'onglet aux valeurs par défaut de Marinara, efface l'arrière-plan du chat en cours et désactive le thème actif issu de la Theme Library.
+Pour repartir de zéro, clique sur **Reset Appearance** (réinitialiser l'apparence) en haut de **Theme**. Ce bouton ramène l'apparence aux valeurs par défaut de Marinara, efface l'arrière-plan du chat en cours et désactive tout thème personnalisé.
 
-## Le bouton App
+Dans la disposition classique, ces sections se trouvent dans l'onglet **Appearance**, derrière quatre boutons : **App**, **Conversation**, **Roleplay** et **Game**.
 
-### Color Scheme et Visual Style
+## Thème
 
-Dans **App Style**, le menu déroulant **Color Scheme** (jeu de couleurs) propose **Dark** (valeur par défaut) et **Light**. L'application change aussitôt. Les couleurs qui ont une valeur par défaut distincte en Dark et en Light suivent ce choix tant que tu ne définis pas les tiennes.
+| Réglage | Rôle |
+| --- | --- |
+| **Visual Style** (style visuel) | **Default (Marinara)** est un look rétro Y2K avec des effets de halo. **SillyTavern** est un rendu épuré et minimaliste. Ce choix ne change que l'apparence et n'a rien à voir avec l'import depuis SillyTavern. **Stage** reprend les tons prune, laiton et cramoisi de la nouvelle disposition. |
+| **New layout (UI overhaul preview)** (nouvelle disposition, aperçu de la refonte de l'interface) | Activé par défaut. Désactive-le pour revenir à la disposition classique. Ces guides décrivent d'abord la nouvelle disposition. |
+| **Look on this device** (apparence sur cet appareil) | **Same as my other devices** (comme sur mes autres appareils, valeur par défaut) partage ton style visuel, tes couleurs, ta police et ton thème personnalisé avec tous tes appareils. **Only this device** (uniquement cet appareil) donne à cet appareil sa propre apparence, par exemple un thème clair sur ton téléphone et sombre sur ton ordinateur. |
+| **Color Scheme** (jeu de couleurs) | **Dark** (valeur par défaut), **Light**, **Follow system** ou **Follow time of day**, qui change selon l'horloge de cet appareil aux heures que tu choisis. |
+| **Custom Mouse Pointer** (curseur de souris personnalisé) | Activé par défaut. Affiche le curseur aux couleurs d'accentuation de Marinara. Désactive-le pour retrouver le curseur du système, ou pour laisser un thème personnalisé le définir. |
+| **Accent Color** (couleur d'accentuation) | Les boutons, les icônes actives, les contours de focus, les surbrillances et les bordures. Par défaut : **Marinara Gradient**, un dégradé de rose, d'orange et de cyan. |
+| **Accent Pulse** (pulsation de l'accent) | Éclaircit et assombrit doucement l'accentuation, ou fait défiler les couleurs d'un dégradé. Activé par défaut sur ordinateur et désactivé sur téléphone. |
+| **RGB Mode** (mode RGB) | Fait défiler l'accentuation dans une palette arc-en-ciel. La couleur enregistrée dans **Accent Color** ne change pas. Désactivé par défaut. |
 
-**Visual Style** (style visuel) propose deux cartes. **Default (Marinara)** est un look rétro Y2K avec des effets de halo. **SillyTavern** est un rendu épuré et minimaliste. Ce choix ne change que l'apparence et n'a rien à voir avec l'import depuis SillyTavern.
+**Couleur d'accentuation** accepte une couleur unie ou un dégradé, un fondu progressif entre deux couleurs ou plus. Clique sur **Rétablir la valeur par défaut** pour revenir à la valeur par défaut. L'arrière-plan de l'application suit le mode sombre ou clair, et un thème personnalisé peut définir le sien. Un seul des réglages **Pulsation de l'accent** et **Mode RGB** peut être activé à la fois.
 
-### Arrière-plan de l'application et Accent Color
+## Polices et taille du texte
 
-**Accent Color** accepte une couleur unie ou un dégradé, un fondu progressif entre deux couleurs ou plus. Pour revenir à la valeur par défaut, vide le champ avec **Reset to default** (revenir à la valeur par défaut).
-
-| Réglage | Ce qu'il colore | Par défaut |
-| --- | --- | --- |
-| **Accent Color** (couleur d'accentuation) | Les boutons, les icônes actives, les contours de focus, les surbrillances, les bordures des panneaux et les contrôles autour du chat. | **Marinara Gradient**, un dégradé de rose, d'orange et de cyan |
-
-Pour changer l'arrière-plan de la coque principale de l'application, utilise **UI Editor** (éditeur d'interface) dans **App Style** :
-
-1. Ouvre le menu déroulant qui affiche **Choose what to change…** (choisir quoi modifier) et sélectionne **Whole app** (toute l'application).
-2. Clique sur **Background** (arrière-plan) et choisis une couleur ou un dégradé.
-3. Clique sur **Save** (enregistrer).
-
-Sans arrière-plan enregistré, l'application utilise `#050312` en Dark et `#faf8ff` en Light. Pour revenir à cette valeur par défaut, rouvre **Whole app** et clique sur **Reset to default**.
-
-Une valeur comme `#050312` est un code couleur hexadécimal, une façon courte d'écrire une couleur.
-
-Deux interrupteurs changent le comportement de l'accentuation. Un seul peut être activé à la fois.
-
-- **Accent Pulse** anime ta couleur d'accentuation. Les couleurs unies s'éclaircissent puis s'assombrissent, et les dégradés défilent entre leurs couleurs. Il est activé par défaut sur ordinateur et désactivé sur téléphone.
-- **RGB Mode** fait défiler l'accentuation dans une palette arc-en-ciel. La couleur enregistrée dans **Accent Color** ne change pas. Il est désactivé par défaut.
-
-Si ton appareil demande de réduire les animations, les deux effets sont ignorés.
-
-### Les autres contrôles de la section App Style
-
-- **Custom Mouse Pointer** (curseur de souris personnalisé, activé par défaut) affiche le curseur aux couleurs d'accentuation de Marinara. Désactive-le pour retrouver le curseur du système, ou pour laisser un thème personnalisé gérer le curseur.
-- **Reduce Ambient Animations & Effects** (réduire les animations et effets d'ambiance) arrête les animations décoratives, les particules d'ambiance, les aperçus qui tournent et l'apparition progressive du texte. Marinara le fait aussi quand ton appareil demande de réduire les animations.
-- **Desktop sidebar width** (largeur des barres latérales sur ordinateur) règle la largeur des deux barres latérales sur ordinateur. **Reset width** (réinitialiser la largeur) la rétablit. Les téléphones gardent leur disposition.
-
-### Chat widget style
-
-En bas de **App Style**, choisis **Default**, **Dottore** ou **Prof. Mari** pour les boutons, les fenêtres et les sections déplaçables du chat. Tu peux changer séparément la police, la forme et les trois couleurs principales, et les trois interrupteurs **Apply preset** (appliquer le preset) étendent le style aux messages, aux champs de saisie et aux contrôles du chat. **Button size (px)** (taille du bouton en pixels) change la taille des boutons déplaçables du chat et de leurs icônes sans modifier **Display Size** (taille d'affichage). Saisis une valeur de 32 à 96, ou laisse le champ vide pour la valeur par défaut. Pour le détail de chaque contrôle, voir [Thèmes CSS personnalisés](custom-css-themes.md#ready-made-chat-window-styles).
-
-### Display Size et Chat Font Size
-
-Dans **Text & Scale** :
-
-- **Display Size** fixe la taille de texte de base de toute l'application sur cet appareil. Le changement s'applique aussitôt. Choisis l'une de ces valeurs :
+- **Font** (police) choisit la police de l'application. Voir [Polices personnalisées et Google Fonts](fonts.md).
+- **Display Size** (taille d'affichage) fixe la taille de texte de base de toute l'application sur cet appareil. Le changement s'applique aussitôt.
 
 | Choix | Taille |
 | --- | --- |
@@ -89,71 +60,125 @@ Dans **Text & Scale** :
 
 - **Chat Font Size** (taille du texte du chat) est un curseur qui règle la taille du texte des messages, de 12 px à 72 px. Par défaut : 16 px.
 
-Le menu déroulant **Font** (police) se trouve dans la même section. Voir [Polices personnalisées et Google Fonts](fonts.md).
+## Accessibilité
 
-### Couleurs et contour du texte du chat
+| Réglage | Rôle |
+| --- | --- |
+| **Line spacing** (espacement des lignes) | L'espace entre les lignes des messages et des textes longs : **Default**, **Relaxed (1.6)**, **Loose (1.8)** ou **Double (2.0)**. Les menus et les boutons gardent leur taille. |
+| **Letter spacing** (espacement des lettres) | L'espace entre les lettres partout : **Default**, **A little wider**, **Wider** ou **Widest**. |
+| **High contrast** (contraste élevé) | Renforce le texte, les bordures et les couleurs de focus. **Follow system** l'active lorsque ton appareil demande plus de contraste. |
+| **Strong focus rings** (contours de focus renforcés) | Ajoute un contour épais à l'élément sélectionné au clavier. <kbd>Tab</kbd> propose aussi des liens **Skip to content**. |
+| **Reduce motion** (réduire les animations) | Arrête les animations, les transitions, **Accent Pulse** et les effets de thème. Ce réglage s'active tout seul lorsque ton appareil demande moins d'animations. |
+| **Theme art strength** (intensité des illustrations du thème) | Règle la visibilité de l'image d'arrière-plan et de la surcouche d'un thème personnalisé (pluie, feuilles, lignes de balayage). Réduis-la si les illustrations d'un thème rendent le texte difficile à lire. |
+| **Colour-blind-safe colours** (couleurs adaptées au daltonisme) | Utilise du bleu et de l'orange au lieu du vert et du rouge pour les points d'état, les jauges et les boutons Delete. |
 
-Toujours dans **Text & Scale** :
+## Couleurs du texte
 
 - **Chat Text Color** (couleur du texte du chat) est la couleur principale du texte des messages. Par défaut : `#d4d4d4` en Dark et `#1a1025` en Light.
-- **Default Dialogue Color** (couleur par défaut des dialogues) colore les dialogues entre guillemets quand un personnage ou un persona n'a pas sa propre Dialogue Highlight Color. Les couleurs des fiches ont la priorité. Tant que l'interrupteur **Apply preset colors** (appliquer les couleurs du preset) est activé, les dialogues prennent la couleur de texte du style de chat.
-- **Chat Chrome Text Color** définit le texte des contrôles autour du chat : les widgets de tracker, les libellés de dossier et les descriptions de réglages. Mêmes valeurs par défaut que **Chat Text Color**.
+- **Default Dialogue Color** (couleur par défaut des dialogues) colore les dialogues entre guillemets quand un personnage ou un persona n'a pas sa propre Dialogue Highlight Color. Les couleurs des fiches ont la priorité. Tant que **Apply preset colors** (appliquer les couleurs du preset) est activé dans **Chat Buttons & Windows**, les dialogues prennent la couleur de texte de ce style.
+- **Chat Chrome Text Color** (couleur du texte de l'interface du chat) définit le texte des contrôles autour du chat : les widgets de tracker, les libellés de dossier, les descriptions de réglages et les fenêtres ouvertes depuis les boutons du chat. Mêmes valeurs par défaut que **Chat Text Color**.
 - **Text Outline / Stroke** ajoute un contour pour que le texte reste lisible sur les arrière-plans chargés. Règle la couleur et une largeur (**Width**) de 0 à 5 px. Par défaut : 0,5 px, et 0 supprime le contour.
 
-Vider un champ de couleur le ramène à la valeur par défaut du jeu de couleurs.
+## Disposition
 
-### Atmosphere
+- **Desktop sidebar width** (largeur de la barre latérale sur ordinateur) règle la largeur des deux barres latérales sur ordinateur. **Reset width** (réinitialiser la largeur) la rétablit. Les téléphones gardent leur disposition.
+- **Show Android status bar** (afficher la barre d'état Android) affiche la barre d'état du téléphone dans l'application Android.
 
-L'interrupteur **Dynamic weather effects (rain, snow, fog, etc.)** est activé par défaut. Il affiche des particules météo selon la météo et le moment de la journée dans l'histoire. Il n'affiche quelque chose que si l'agent **World State** est activé pour le chat. Voir [Agents : des aides IA pour tes chats](../agents/agents-overview.md).
+## Effets
 
-### Backgrounds
+- **Dynamic weather effects (rain, snow, fog, etc.)** (effets météo dynamiques : pluie, neige, brouillard, etc.) est activé par défaut. Il affiche la météo selon celle de l'histoire et le moment de la journée, et nécessite que l'agent **World State** soit activé pour le chat. Voir [Agents : des aides IA pour tes chats](../agents/agents-overview.md).
+- **Reduce Ambient Animations & Effects** (réduire les animations et effets d'ambiance) arrête les animations décoratives, les particules, les aperçus qui tournent et l'apparition progressive du texte.
+- **Reduced paint effects** (effets de rendu réduits) aplatit les panneaux transparents et les ombres coûteux pour que les appareils plus lents restent fluides.
 
-La section **Backgrounds** (arrière-plans) contient le sélecteur **Chat Background** (arrière-plan du chat) et le curseur **Background Blur** (flou d'arrière-plan). Deux autres contrôles s'y trouvent. **Conversation background image opacity** (opacité de l'image d'arrière-plan en Conversation) règle la visibilité de l'arrière-plan du chat en mode Conversation, le dégradé restant visible. **Chat List Backgrounds** (arrière-plans de la liste des chats) affiche l'arrière-plan de chaque chat sous forme de bandeau atténué derrière sa ligne, dans la liste des chats. Choisis **Active & Hovered**, **Every Row** ou **Off**. Voir [Arrière-plans de chat](chat-backgrounds.md).
+## Arrière-plans
 
-## Le bouton Conversation
+Cette section contient le sélecteur **Chat Background** (fond du chat) et le curseur **Background Blur** (flou de l'arrière-plan). Le sélecteur affiche l'arrière-plan du chat en cours (ou **Default background**) et tes choix récents. Clique sur l'image ou sur **Browse library** (parcourir la bibliothèque) pour en choisir un autre. La section contient aussi :
 
-- **Chat Layout** (disposition du chat, dans **Conversation Display**) change l'aspect des messages en mode Conversation, avec un aperçu en direct. **Linear** (valeur par défaut) affiche des lignes façon chat. **Bubbles** affiche des bulles façon messagerie.
+- **Conversation background image opacity** (opacité de l'image d'arrière-plan en Conversation) : la visibilité de l'arrière-plan du chat en mode Conversation.
+- **Chat background behind side panels** (arrière-plan du chat derrière les panneaux latéraux) : étend l'arrière-plan du chat ouvert, en l'adoucissant, derrière les barres latérales et la barre supérieure.
+- **Chat List Backgrounds** (fonds dans la liste des chats) : affiche l'arrière-plan de chaque chat sous forme de bandeau atténué derrière sa ligne, dans la liste des chats. Choisis **Active & Hovered**, **Every Row** ou **Off**.
+
+Voir [Bibliothèque d'arrière-plans](chat-backgrounds.md).
+
+## Boutons et fenêtres du chat
+
+**Chat widget style** (style des widgets du chat) règle l'apparence des boutons, des fenêtres et des sections déplaçables du chat. Choisis **Default**, **Dottore** (bleu glacé, métal pâle et coins coupés) ou **Prof. Mari** (cadres de livre d'histoires bordés d'or). Ce choix réinitialise les contrôles en dessous.
+
+| Contrôle | Rôle |
+| --- | --- |
+| **Font** | **Preset font**, **App font**, **Sans serif**, **Storybook serif** ou **Technical monospace**. |
+| **Shape** (forme) | **Preset shape**, **Rounded**, **Square**, **Cut corners** ou **Arched**. |
+| **Button size (px)** (taille des boutons en pixels) | Change la taille des boutons déplaçables du chat et de leurs icônes. Saisis une valeur de 32 à 96, ou laisse le champ vide pour la valeur par défaut. |
+| **Border & Buttons Color** (couleur des bordures et des boutons), **Background Color**, **Text Color** (couleur du texte) | Les trois couleurs principales. Réinitialise l'une d'elles pour qu'elle suive le preset et Dark ou Light. |
+| **Apply preset font** (appliquer la police du preset), **Apply preset shape** (appliquer la forme du preset), **Apply preset colors** | Étend aussi le style aux messages, aux champs de saisie et aux contrôles du chat. Désactivé par défaut. |
+
+Professor Mari peut créer un style de chat personnalisé pour toi. Demande-le-lui dans son chat.
+
+## Thèmes CSS
+
+Des thèmes tout faits, ainsi que ceux que tu crées ou importes. Voir [Thèmes CSS personnalisés](custom-css-themes.md).
+
+## Onglet Conversation
+
+- **Chat Layout** (disposition du chat, dans **Conversation Layout**) change l'aspect des messages en mode Conversation, avec un aperçu en direct. **Linear** (valeur par défaut) affiche des lignes façon chat. **Bubbles** affiche des bulles façon messagerie.
 - **Avatar Shape** (forme de l'avatar) vaut **Circular** ou **Square**. La taille de l'avatar ne change pas.
-- **Always display swipe menu** (toujours afficher le menu des swipes) affiche dès la première réponse les flèches de swipe, qui font passer d'une réponse alternative à l'autre, et le compteur. Désactive-le pour ne les afficher qu'après une régénération.
-- **Conversation Theme** (thème de Conversation) définit un dégradé de deux couleurs derrière tous les chats Conversation. Les onglets **Dark** et **Light** gardent chacun leur propre dégradé. C'est une valeur par défaut valable sur tout l'appareil, pas un réglage chat par chat.
+- **Photos de profil sur téléphone** définit les images à côté des messages sur téléphone, dans tous les modes de chat. **Mini** (par défaut) place une petite image près de chaque nom, avant le nom d'un personnage et après le tien, pour que les messages gardent toute la largeur. **Complètes** conserve la colonne d'images, et **Désactivées** n'affiche aucune image. Les tablettes et les ordinateurs affichent toujours l'image complète.
+- **Conversation Theme** (thème de Conversation, dans **Conversation Background**) définit un dégradé de deux couleurs derrière tous les chats Conversation. Les onglets **Dark** et **Light** gardent chacun leur propre dégradé. C'est la valeur par défaut de tous les chats Conversation, pas un réglage chat par chat.
 
-## Le bouton Roleplay
+Les interrupteurs du menu des swipes se trouvent dans **Settings → Chatting → Editing & Swipes** (Paramètres → Chat → Modification et swipes).
 
-**Tracker Panel** habille le panneau latéral des trackers (agents de suivi) en Roleplay. Voir [HUD et trackers en Roleplay](../roleplay/hud-and-trackers.md).
+## Onglet Roleplay
 
-**Roleplay Presentation** habille les messages Roleplay.
+**Tracker Panel** habille le panneau des statistiques, de la tenue et du lieu à côté des chats Roleplay. Voir [HUD et trackers en Roleplay](../roleplay/hud-and-trackers.md).
+
+**Roleplay Messages**
 
 | Réglage | Rôle | Par défaut |
 | --- | --- | --- |
-| **Chat position** (position du chat) | L'emplacement des messages et de la zone de saisie sur un écran large : **Left**, **Center** ou **Right**. Une barre latérale ouverte ou un Tracker Panel du même côté les décale. Sur téléphone, le chat garde toute la largeur. | **Center** |
-| **Visual Novel display** (affichage visual novel) | Affiche un paragraphe terminé à la fois, avec un portrait de dialogue et tes sprites (les images des personnages sur le plateau). Il change le Roleplay en cours et la valeur par défaut des chats sans style enregistré. | Désactivé |
-| **Roleplay Messages Background Opacity** | Un curseur de 0 % à 100 %. Baisse-le pour laisser l'arrière-plan transparaître à travers les bulles de message. | 90 % |
-| **Roleplay Avatars** | Le style d'avatar affiché à côté de chaque message : **None**, **Small Circles**, **Small Rectangles** ou **Glued Side Panel**. | **Small Circles** |
+| **Chat position** (position du chat) | L'emplacement des messages et de la zone de saisie sur un écran large : **Left**, **Center** ou **Right**. Sur téléphone, le chat garde toute la largeur. | **Center** |
+| **Custom chat width** (largeur de chat personnalisée) | Définit ta propre largeur pour la colonne des messages. | Désactivé |
+| **Roleplay Messages Background Opacity** (opacité du fond des messages de roleplay) | Baisse-la pour laisser l'arrière-plan transparaître à travers les bulles de message. Elle prend le pas sur les couleurs transparentes des fiches et des presets. | 90 % |
+| **Stretch Messages** (étirer les messages) | Chaque message occupe toute la largeur de la ligne, pour aligner les messages courts sur les longs. | Désactivé |
+| **Hide line under names** (masquer la ligne sous les noms) | Retire la fine ligne sous les noms. | Désactivé |
+
+**Avatars**
+
+| Réglage | Rôle | Par défaut |
+| --- | --- | --- |
+| Style d'avatar | **None**, **Small Circles**, **Small Rectangles**, **Glued Side Panel** ou **Faded Side Panel**, un portrait large qui se fond dans le message. | **Small Circles** |
 | **Scrollable Avatars** | Garde les avatars visibles pendant que tu fais défiler un long message. | Désactivé |
-| **Message avatar scale** | Un curseur de 75 % à 250 %. | 100 % |
-| **Default sprite scale** | Un curseur de 50 % à 175 %. La taille de sprite propre à un chat reste prioritaire. | 100 % |
+| **Narrator's Cycling Avatars** (avatars changeants du narrateur), **Narrator's Avatar Borders** (bordures de l'avatar du narrateur) | Règlent l'apparence de l'avatar du narrateur. | |
+| **Message avatar scale** (échelle des avatars des messages) | De 75 % à 250 %. | 100 % |
+| **Default sprite scale** (échelle par défaut des sprites) | De 50 % à 175 %. La taille de sprite propre à un chat reste prioritaire. | 100 % |
 
-Cette section contient aussi **Custom chat width** (largeur de chat personnalisée), **Always display swipe menu**, **Reduced paint effects** (aplatit les transparences et les ombres coûteuses pour garder une navigation fluide), **Show Thinking In Messages** (afficher le raisonnement dans les messages), **Don't Collapse Thinking** (ne pas replier le raisonnement) et **Narrator's Cycling Avatars** (avatars changeants du narrateur). Quand l'affichage **Visual Novel display** est activé, **Auto-play VN paragraphs** (lecture automatique des paragraphes VN) avec un **Paragraph delay** (délai entre paragraphes), **Dialogue portrait scale** (taille du portrait de dialogue) et **Full-body sprite scale** (taille du sprite en pied) apparaissent aussi.
+**Visual Novel**
 
-## Le bouton Game
+**Visual Novel display** (affichage visual novel) affiche un paragraphe terminé à la fois, avec un portrait de dialogue et tes sprites (les images des personnages sur le plateau). Il définit l'affichage des nouveaux Roleplays et de ceux qui n'ont pas leur propre choix. **Auto-play VN paragraphs** (lecture automatique des paragraphes VN), avec le réglage **Paragraph delay** (délai entre paragraphes), **Dialogue portrait scale** (échelle du portrait de dialogue) et **Full-body sprite scale** (échelle des sprites en pied), règle la lecture.
 
-Dans **Game Presentation**, **Game VN Art** propose deux curseurs : **Dialogue portrait scale** (de 75 % à 175 %, 100 % par défaut) et **Full-body sprite scale** (de 75 % à 275 %, 135 % par défaut).
+**Show Thinking In Messages** (afficher le raisonnement dans les messages) et **Don't Collapse Thinking** (ne pas replier le raisonnement) se trouvent dans **Settings → Chatting → Thinking** (Paramètres → Chat → Raisonnement).
 
-**Game Dialogue Display** (affichage des dialogues en Game Mode) détermine le comportement de la boîte de dialogue.
+## Onglet Game
 
-- **Classic Dialogue Box** (valeur par défaut) affiche un seul segment actif. Les lignes plus anciennes sont rangées dans le bouton **Logs** (journaux).
-- **History Above Dialogue Box** affiche les segments précédents au-dessus de la boîte, où toute la session reste consultable en faisant défiler.
+**Game Text**
 
-**Game text effects** (effets de texte en Game Mode, activé par défaut) anime les mots dramatiques, l'emphase en MAJUSCULES, les apartés entre parenthèses et les balises d'effet de texte. Désactive-le pour un texte simple.
+- **Instantly reveal game text** (afficher instantanément le texte du jeu) supprime l'effet de saisie progressive.
+- **Mouse-wheel + click navigation** (navigation à la molette et au clic) permet d'avancer dans l'histoire avec la souris.
+- **Game narration speed** (vitesse de narration du jeu) et **Game auto-play segment delay** (délai entre les segments en lecture automatique) règlent la vitesse d'affichage et de progression du texte.
+- **Game Dialogue Display** (affichage des dialogues en Game Mode) : **Classic Dialogue Box** (valeur par défaut) affiche un segment, les lignes plus anciennes se trouvant dans **Logs** (journaux). **History Above Dialogue Box** affiche les segments précédents au-dessus de la boîte.
+- **Game text effects** (effets de texte du jeu, activé par défaut) anime les mots dramatiques, l'emphase en MAJUSCULES, les apartés et les balises d'effet de texte. Désactive-le pour un texte simple.
+
+**Game Art** propose deux curseurs : **Dialogue portrait scale** (de 75 % à 175 %, 100 % par défaut) et **Full-body sprite scale** (de 75 % à 275 %, 135 % par défaut).
+
+**Game Assets** est décrit dans [Ressources de jeu](../game/game-assets.md).
 
 ## Les réglages qui restent sur cet appareil
 
-La plupart des réglages d'apparence se synchronisent avec tes autres appareils. **Display Size** et **Chat Font Size**, non. Ils sont enregistrés dans le navigateur que tu utilises. Pour savoir ce qui se synchronise, voir [Vue d'ensemble des paramètres](../settings/settings-overview.md).
+La plupart des réglages d'apparence se synchronisent avec tes autres appareils. **Display Size** et **Chat Font Size**, non. Ils sont enregistrés dans le navigateur que tu utilises. Pour donner une apparence entièrement différente à un appareil, utilise **Look on this device** dans **Theme**. Pour savoir ce qui se synchronise, voir [Vue d'ensemble des paramètres](../settings/settings-overview.md).
 
 ## Guides associés
 
+- [Thèmes CSS personnalisés](custom-css-themes.md)
 - [Polices personnalisées et Google Fonts](fonts.md)
-- [Arrière-plans de chat](chat-backgrounds.md)
-- [Thèmes CSS personnalisés (Theme Library)](custom-css-themes.md)
+- [Bibliothèque d'arrière-plans](chat-backgrounds.md)
 - [Guide du thème CSS de fiche](card-css-theming.md)
 - [Vue d'ensemble des paramètres](../settings/settings-overview.md)

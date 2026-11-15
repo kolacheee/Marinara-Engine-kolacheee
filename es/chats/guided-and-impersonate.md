@@ -25,11 +25,11 @@ Puedes escribir `/narrator`, `/narrate` o `/nar` en lugar de `/guided`. En un ch
 
 Esto reutiliza el texto de tu cuadro de mensaje como una dirección de una sola vez para una regeneración.
 
-1. Abre **Settings → Advanced → Message Tools** (Configuración → Avanzado → Herramientas de mensaje) y activa **Guide swipes/regens with chat input** (Guiar swipes/regeneraciones con la entrada del chat). Está desactivado de forma predeterminada.
+1. Abre **Settings → Chatting → Editing & Swipes** (Configuración → Chateando → Edición y swipes) y activa **Guide swipes/regens with chat input** (Guiar swipes/regeneraciones con la entrada del chat). Está desactivado de forma predeterminada.
 2. En un chat, escribe una dirección en el cuadro de mensaje, pero no la envíes.
 3. Haz clic en **Regenerate** (Regenerar) en el mensaje de la IA. Con texto en el cuadro, la etiqueta del botón es **Regenerate (guided)**.
 
-Después, tu dirección se queda en el cuadro, así que puedes ajustarla y volver a regenerar. Para que se borre en su lugar, desactiva **Keep guidance after regenerating** (Mantener la dirección después de regenerar) en **Settings → General → Input & Editing** (Configuración → General → Entrada y edición).
+Después, tu dirección se queda en el cuadro, así que puedes ajustarla y volver a regenerar. Para que se borre en su lugar, desactiva **Keep guidance after regenerating** (Mantener la dirección después de regenerar) en **Settings → Chatting → Message Box** (Configuración → Chateando → Cuadro de mensaje).
 
 Si no funcionó: la etiqueta del botón debe ser **Regenerate (guided)**. Si dice solo **Regenerate**, el ajuste está desactivado o el cuadro está vacío.
 
@@ -71,7 +71,7 @@ Estos ajustes se aplican a cada `/impersonate` en todos tus chats. Abre **Chat S
 | **Preset** | Un preset de prompt (ajuste guardado) solo para las respuestas de impersonate. Predeterminado: **Use chat default** (Usar el predeterminado del chat). Consulta [Presets](../prompts/presets.md). |
 | **Connection** | El modelo para las respuestas de impersonate, por ejemplo uno más barato o más rápido. Predeterminado: **Use chat default**. También puedes elegir **Random** (Aleatorio). Consulta [Conectarte a un proveedor de IA](../connections/connecting-to-a-provider.md). |
 | **Skip agents** | Omite los agentes (trackers, enrutadores de lorebook y ayudantes similares) durante impersonate. Así se mantiene rápido y no cambia el estado del mundo. Está desactivado de forma predeterminada. Consulta [Agentes](../agents/agents-overview.md). |
-| **Use CYOA as direction** | Al hacer clic en una opción CYOA (choose your own adventure, elige tu propia aventura), se usa como dirección de impersonate en lugar de publicarse. Está desactivado de forma predeterminada. Si **Add CYOA choices to the message box instead of sending them** (Añadir las opciones CYOA al cuadro de mensaje en lugar de enviarlas) está activado en **Settings → General → Input & Editing**, un clic solo añade el texto a tu cuadro de mensaje y este ajuste no tiene efecto. |
+| **Use CYOA as direction** | Al hacer clic en una opción CYOA (choose your own adventure, elige tu propia aventura), se usa como dirección de impersonate en lugar de publicarse. Está desactivado de forma predeterminada. Si **Add CYOA choices to the message box instead of sending them** (Añadir las opciones CYOA al cuadro de mensaje en lugar de enviarlas) está activado en **Settings → Chatting → Message Box**, un clic solo añade el texto a tu cuadro de mensaje y este ajuste no tiene efecto. |
 
 ### Establecer un prompt para un solo chat
 
@@ -88,7 +88,7 @@ Para volver al predeterminado, escribe `/impersonate_prompt reset`. El alias es 
 
 Las Quick replies añaden alternativas a **Send** con un solo clic, así que no necesitas escribir un comando slash.
 
-1. Abre **Settings → General → Input & Editing**.
+1. Abre **Settings → Chatting → Message Box**.
 2. Activa **Quick replies** (Respuestas rápidas). Está desactivado de forma predeterminada.
 3. Despliégalo para elegir qué acciones aparecen. Una vez activado, las tres acciones están activadas de forma predeterminada.
 

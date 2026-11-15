@@ -8,8 +8,8 @@
 
 开始之前，先装好一个模型服务器，启动它，并在里面加载一个模型。比如从 `ollama.com` 下载 Ollama，按它的步骤拉取一个模型。Marinara 只负责连上服务器，不会替你启动它。服务器在你电脑上的某个网址响应请求，这个网址叫端点（endpoint）。
 
-1. 点击顶栏的 **Connections**(连接)，再点击 **Add**(添加)。**Add account**(添加账号) 窗口随即打开。
-2. 在 **Chat**(聊天) 下面点击你的服务器：**Ollama**、**LM Studio**、**KoboldCpp** 或 **llama.cpp**。这些卡片带有 **Self-hosted**(自托管) 标签。其他服务器点击 **OpenAI-compatible address**(OpenAI 兼容地址)。
+1. 打开 **Library → Connections**(资料库 → 连接)，点击 **Add connection**(添加连接)。服务列表会打开。
+2. 在 **Text**(文本) 选项卡的 **Self-hosted**(自行托管) 下点击你的服务器：**Ollama**、**LM Studio**、**KoboldCpp** 或 **llama.cpp**。它们带有 **Self-hosted** 标签。其他服务器点击 **OpenAI-compatible address**(OpenAI 兼容地址)。
 3. 检查 **Server address**(服务器地址)。上面这四种服务器会自动填好。其他服务器要自己输入地址。见下表。
 4. **API key (optional)**(API 密钥，可选) 留空。多数本地服务器不需要密钥。想给账号起个名字，就填 **Name (optional)**(名称，可选)。
 5. 点击 **Connect**(连接)。Marinara 会测试这个地址。显示 **Connected** 就说明连上了服务器。
@@ -21,6 +21,18 @@
 
 - **Marinara could not reach** 这个地址。检查服务器是否在运行，地址和端口是否一致。**Continue anyway**(仍然继续) 会在测试没通过的情况下保存账号。
 - 地址在另一台电脑上。见[连接另一台电脑上的服务器](#reach-a-server-on-another-computer)。
+
+## 使用服务器当前加载的模型
+
+本地或自托管服务器可以用当前加载的模型作答，因此它的账号可以包含一个 **Default**(默认) 模型。Default 不发送模型名称。它始终使用 Ollama、LM Studio、KoboldCpp 或 llama.cpp 中当前加载的模型，即使你在那边换了模型也一样。
+
+- 为电脑或网络上的服务器新建账号时，账号一开始就带有一个 **Default** 模型。
+- 之后想添加，点击账号上的 **⋯**，选择 **Add model**。**Default** 是第一行。
+- **Default** 的用法和其他模型一样：在 **Defaults**(默认值) 框里为它分配 **Main**(主模型) 等工作，或在 **Model for this chat**(此聊天的模型) 中选择它。
+- 在 Connections 表格里，它显示为“服务器当前加载的模型”，没有星标。
+- 在面板里点击 **Default**，即可像具名模型一样为它单独设置参数、提示词预设等。
+
+**Default** 只在服务器位于你的电脑或网络上时显示。云服务始终需要模型名称。
 
 ## 常见本地服务器的地址
 
@@ -37,8 +49,6 @@
 
 在 Windows 上，服务器明明在运行，也可能被拦住。如果 Marinara 检测不到它，可能是 Windows Defender Firewall 挡住了。打开 **Windows Security → Firewall & network protection → Allow an app through firewall**(Windows 安全中心 → 防火墙和网络保护 → 允许应用通过防火墙)，把 Node.js 或你的服务器程序加进去。
 
-<a id="test-the-connection"></a>
-
 ## 测试连接
 
 **Connect** 已经检查过这个地址。模型编辑器里有一张 **Provider tests**(服务商测试) 卡片，可以再检查一遍。
@@ -50,8 +60,6 @@
 两项都通过后，打开一个聊天，在 **Model for this chat**(此聊天的模型) 里选这个账号。见[为单个聊天选择模型](connecting-to-a-provider.md#choosing-a-model-for-one-chat)。
 
 某项测试失败时，确认服务器在运行并且已经加载了模型，地址和端口也完全一致。服务器在另一台电脑上时，核对下面的步骤。
-
-<a id="reach-a-server-on-another-computer"></a>
 
 ## 连接另一台电脑上的服务器
 
@@ -71,7 +79,7 @@ PROVIDER_LOCAL_URLS_ENABLED=true
 
 ## 用这个模型做判定
 
-同一个模型也能回答判定问题，例如智能体激活检查，不需要再加载一份。在面板里点击这个模型上的 **⋯**，选择 **Use this model for decisions**(将此模型用于判定)。有模型名称的 OpenAI 兼容模型才会显示这一项。见 [Decision 模型](decision-models.md#on-a-server-you-already-run)。
+同一个模型也能回答判定问题，例如智能体激活检查，不需要再加载一份。打开 **Library → Connections**，点击 **Add connection**，打开 **Decision**(判定) 选项卡，选择 **Own decision server**(自己的判定服务器)，填入同样的地址。（在经典布局里，模型的 **⋯** 菜单有 **Use this model for decisions**(将此模型用于判定) 快捷操作，会替你填好地址。）见 [Decision 模型](decision-models.md#on-a-server-you-already-run)。
 
 ## Treat as local/custom endpoint 开关
 

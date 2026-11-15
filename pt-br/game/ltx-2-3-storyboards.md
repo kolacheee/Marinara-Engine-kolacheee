@@ -22,7 +22,7 @@ Você precisa de:
 2. Uma GPU com VRAM suficiente (a memória da sua placa de vídeo). Uma placa de 8 GB pode servir para um primeiro teste em 480p com um quadro-chave.
 3. O workflow editável `ltx-director-simple`, ou um grafo equivalente de imagem para vídeo do LTX 2.3 que conclua no ComfyUI, e a exportação dele em formato de API, `ltx-director-simple-api`.
 4. Uma conta de imagem no Marinara para as ilustrações do primeiro quadro.
-5. O agente **Storyboard**, baixado em **Agents → Agent Organizer** (agentes → Organizador de agentes) e ativado para a partida em **Chat Settings → Agents** (configurações do chat → agentes). Veja [Guia do agente Storyboard](storyboard.md).
+5. O agente **Storyboard**, baixado em **Biblioteca → Agentes** e ativado para a partida em **Chat Settings → Agents** (configurações do chat → agentes). Veja [Guia do agente Storyboard](storyboard.md).
 
 O workflow editável e a exportação de API dele são arquivos diferentes. Abra `ltx-director-simple` no ComfyUI, instale todos os nós personalizados que o ComfyUI Manager apontar como ausentes e teste o grafo por lá. Importe `ltx-director-simple-api` no Marinara. A cada mudança de nó ou de modelo, exporte o grafo de novo em formato de API e substitua o JSON na conta do Marinara. Não cole no Marinara o workflow normal do editor visual.
 
@@ -83,7 +83,7 @@ Se você excluir um nó e continuar usando uma exportação antiga, sobram refer
 
 ## Crie a conta de vídeo
 
-1. Abra **Settings → Connections** (Configurações → Conexões).
+1. Abra **Biblioteca → Conexões**.
 2. Clique em **Add account** (adicionar conta) e escolha uma conta **Video Generation** (geração de vídeo).
 3. Escolha **ComfyUI**.
 4. Informe a **Base URL** (URL base), normalmente `http://127.0.0.1:8188` quando o ComfyUI roda no mesmo computador.

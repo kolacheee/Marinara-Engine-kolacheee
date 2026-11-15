@@ -6,7 +6,7 @@ Les selfies viennent du package facultatif **Illustrator** et utilisent la gén�
 
 ## Activer les selfies
 
-**Avant de commencer :** installe **Illustrator** depuis **Agents → Agent Organizer**, et ajoute un compte d'image, c'est-à-dire un compte pour un service qui fait des images (voir [Fournisseurs de génération d'images et configuration](../media/image-providers.md)).
+**Avant de commencer :** installe **Illustrator** depuis **Library → Agents** (Bibliothèque → Agents), et ajoute un compte d'image, c'est-à-dire un compte pour un service qui fait des images (voir [Fournisseurs de génération d'images et configuration](../media/image-providers.md)).
 
 1. Ouvre un chat Conversation, puis ouvre **Chat Settings** (réglages du chat).
 2. Trouve la section **Agents** et ouvre **Illustrator Settings**.
@@ -41,7 +41,7 @@ Si la fiche ou la persona a **Image Appearance Override** activé (sous **Appear
 
 1. Ouvre **Chat Settings** et déploie la section **Gallery**.
 2. Clique sur **Selfie**. Avec plus d'un personnage, choisis celui qui le prend dans la liste à côté du bouton.
-3. Si **Expose media prompts before sending** est activé (dans **Settings → Generations → Overall Generations**), relis ou modifie le prompt et clique sur **Generate**. Annuler n'envoie aucune requête.
+3. Si **Expose media prompts before sending** est activé (dans **Settings → Media → Generation Defaults**), relis ou modifie le prompt et clique sur **Generate**. Annuler n'envoie aucune requête.
 4. Attends pendant que le bouton affiche **Generating...**.
 
 Tu vois "Selfie generated." et l'image apparaît dans le chat. Une requête manuelle utilise **Selfie model** et coûte une requête d'image.
@@ -61,13 +61,13 @@ Si ça n'a pas marché : quand tu vois le texte littéral `[selfie...]` dans un 
 
 La nouvelle image remplace l'ancienne dans le message. L'ancienne reste dans la Gallery. Chaque essai est une requête d'image. Les images faites avant l'existence de cette option utilisent le compte de selfie du chat, et leurs prompts négatifs et de personnage n'ont pas été enregistrés.
 
-<a id="video-messages"></a>
-
 ## Messages vidéo
 
 Un personnage peut envoyer un court clip vidéo. Installe d'abord Illustrator. Les selfies peuvent rester désactivés.
 
-Pour en demander un toi-même, tape `/video`, ou `/video Aster` pour choisir un personnage. Ou clique sur **Video** dans la **Gallery** du chat, qui utilise le personnage choisi là. Le clip arrive comme un nouveau message et se joue dans le chat. Il montre le dernier moment de la conversation : le modèle qui l'écrit lit autant de messages récents qu'Illustrator pour une image (son **Agent Budget**). Tu peux aussi animer une image depuis la Gallery. Le clip continue cette image et rejoint la réponse la plus récente. Si un clip ne peut pas être ajouté au chat, il est quand même enregistré dans l'onglet **Videos** de la Gallery. La galerie d'un personnage liste une vidéo seulement quand le clip montre ce personnage (voir [Galeries de personnages et de personas](../characters/galleries.md)).
+Pour en demander un toi-même, tape `/video`, ou `/video Aster` pour choisir un personnage. Ou clique sur **Video** dans la **Gallery** du chat, qui utilise le personnage choisi là. Le clip arrive comme un nouveau message et se joue dans le chat. Il montre le dernier moment de la conversation : le modèle qui l'écrit lit autant de messages récents qu'Illustrator pour une image (son **Agent Budget**). Tu peux aussi animer une image depuis la Gallery. Le clip continue cette image et rejoint la réponse la plus récente.
+
+Si un clip ne peut pas être ajouté au chat, il est quand même enregistré dans l'onglet **Videos** de la Gallery. La galerie d'un personnage liste une vidéo seulement quand le clip montre ce personnage (voir [Galeries de personnages et de personas](../characters/galleries.md)).
 
 ### Réglages vidéo
 
@@ -78,7 +78,7 @@ Ouvre **Chat Settings → Agents → Illustrator Settings**, **Video messages**.
 - **Video model** : le compte vidéo. **Default video provider** utilise ton compte par défaut.
 - **First frame** : l'image de départ du clip (voir ci-dessous).
 
-`/video` et le bouton **Video** de la Gallery fonctionnent dans les deux cas et ignorent l'intervalle. Balayer une réponse qui a envoyé un clip laisse le nouveau swipe envoyer le sien. Dans un chat de groupe, chaque personnage peut envoyer un clip par réponse, jusqu'à **Videos per reply** (3 par défaut) sous **Settings → Generations → Video Generation**.
+`/video` et le bouton **Video** de la Gallery fonctionnent dans les deux cas et ignorent l'intervalle. Balayer une réponse qui a envoyé un clip laisse le nouveau swipe envoyer le sien. Dans un chat de groupe, chaque personnage peut envoyer un clip par réponse, jusqu'à **Videos per reply** (3 par défaut) sous **Settings → Media → Video Generation**.
 
 Options de **First frame** :
 
@@ -89,7 +89,7 @@ Options de **First frame** :
 
 Avec **Expose media prompts before sending** activé, tu relis le prompt du selfie avec le prompt du clip.
 
-Les images dans d'autres formats, comme WebP, sont converties pour le service vidéo. Un message vidéo est une requête vidéo, plus une requête d'image quand il démarre d'un nouveau selfie. Ton **Prompt Model** écrit le prompt vidéo, et **Settings → Generations → Video Generation Prompt Overrides → Conversation Video Message** contient ses instructions.
+Les images dans d'autres formats, comme WebP, sont converties pour le service vidéo. Un message vidéo est une requête vidéo, plus une requête d'image quand il démarre d'un nouveau selfie. Ton **Prompt Model** écrit le prompt vidéo, et **Settings → Media → Prompt Overrides → Conversation Video Message** contient ses instructions.
 
 ## Référence : le tag selfie
 

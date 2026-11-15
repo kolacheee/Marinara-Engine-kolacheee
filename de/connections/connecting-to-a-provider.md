@@ -4,7 +4,7 @@ Zum Chatten braucht Marinara Engine ein KI-Modell. Du kannst ein Konto für eine
 
 ## Ein Konto hinzufügen
 
-Bevor du anfängst, hol dir einen API-Key von dem Dienst, den du nutzen willst. Das Fenster **Add account** (Konto hinzufügen) hat für jeden Dienst einen Link **Where do I find my key?** (Wo finde ich meinen Key?). Für die gängigen Dienste öffnet er diese Seiten.
+Bevor du anfängst, hol dir einen API-Key von dem Dienst, den du nutzen willst. Nachdem du einen Dienst gewählt hast, hat der Schritt für den Key einen Link **Where do I find my key?** (Wo finde ich meinen Key?). Für die gängigen Dienste öffnet er diese Seiten.
 
 - OpenRouter (hat kostenlose Modelle): `openrouter.ai/keys`
 - NanoGPT: `nano-gpt.com/api`
@@ -14,16 +14,18 @@ Bevor du anfängst, hol dir einen API-Key von dem Dienst, den du nutzen willst. 
 
 Bei den meisten Diensten musst du dich erst registrieren, bei manchen auch Guthaben aufladen, bevor ein Key funktioniert. Andere Dienste findest du unter [Unterstützte KI-Anbieter](providers-reference.md). Wie du ohne Key ein Modell auf deinem eigenen Rechner nutzt, steht unter [Eingebautes Modell einrichten](local-model.md).
 
-1. Klick in der oberen Leiste auf **Connections** (Verbindungen). Das Panel öffnet sich rechts. Hast du noch keine Konten, fragt es **Where do your models come from?** und zeigt einige Dienste. Klick auf einen Dienst, nicht auf **Built-in model** (eingebautes Modell). Das Fenster **Add account** öffnet sich direkt beim Schritt für den Key. Mach bei Schritt 4 weiter.
-2. Klick auf **Add** (Hinzufügen). Das Fenster **Add account** öffnet sich.
-3. Klick auf den gewünschten Dienst. Um ihn zu finden, tipp in das Feld **Search providers** (Anbieter suchen). Die Liste hat die Abschnitte **Chat**, **Images & video** (Bilder und Video), **Voice** (Stimme) und **Decisions** (Entscheidungen). Ein normales Chat-Modell findest du unter **Chat**.
-4. Klick auf **API key** und füge deinen Key ein. Klick auf die Schaltfläche mit dem Auge, um zu prüfen, ob du den Key vollständig eingefügt hast.
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen). (Klick oben rechts auf **Library** und dann auf **Connections**. Oder drück <kbd>Strg</kbd>+<kbd>K</kbd> und tipp `connections` ein.)
+2. Klick auf **Konto hinzufügen** (auf einem Handy auf **Neu**). Eine nach **Text**, **Bild**, **Video**, **Stimme** und **Entscheidung** gegliederte Liste der Dienste öffnet sich. Für ein normales Chat-Modell bleibst du unter **Text**.
+3. Klick auf den gewünschten Dienst. Tipp in **Search services** (Dienste suchen), um einen nicht aufgeführten zu finden.
+4. Füge deinen Key unter **API key** ein. Klick auf die Schaltfläche mit dem Auge, um zu prüfen, ob du den Key vollständig eingefügt hast.
 5. Klick auf **Connect** (Verbinden). Marinara testet den Key. Klappt es, siehst du **Connected** und die Zahl der gefundenen Modelle.
-6. Wie es weitergeht, hängt davon ab, ob du schon ein Main-Modell hast. Main ist die Aufgabe, deine Chat-Antworten zu schreiben.
+6. Unter **Found in … — use it for:** steht jede Zeile für eine Aufgabe, etwa **Main** oder **Bilder**. Hak die Aufgaben an, die das von Marinara gefundene Modell nutzen sollen. Hat der Dienst keine Modellliste, gib die Modell-ID in der Zeile ein. Klick auf **Fertig** oder auf **Überspringen**, um das Konto ohne Aufgabenzuweisung zu behalten.
+7. Wie es weitergeht, hängt davon ab, ob du schon ein Main-Modell hast. Main ist die Aufgabe, deine Chat-Antworten zu schreiben.
    - **Noch kein Main-Modell, oder du hast Add aus einem neuen Chat geöffnet:** Das Fenster zeigt die Modelle des Dienstes. Modelle mit **Recommended** (empfohlen) stehen oben. Klick auf ein Modell, um es hinzuzufügen, oder tipp einen Namen in **Search or enter model ID…** (Modell-ID suchen oder eingeben). Weißt du nicht, welches du nehmen sollst, nimm eines mit **Recommended**. Du kannst es später ändern. Lass **Make … my Main model** (… zu meinem Main-Modell machen) angehakt. Die Option erscheint nur, wenn du noch kein Main-Modell hast. Hast du Add aus einem neuen Chat geöffnet und schon ein Main-Modell, erscheint stattdessen die Schaltfläche **Set … as Main** (… als Main festlegen). Klick dann auf **Done** (Fertig) oder, aus einem neuen Chat heraus, auf **Start chatting** (Chat beginnen).
+   - **Du hast das Hinzufügen aus einer Aufgabenauswahl geöffnet:** Das Fenster schließt sich, und Marinara kehrt zu dieser Aufgabe zurück. Das neue Modell steht in ihrer Liste.
    - **Du hast schon ein Main-Modell:** Das Fenster schließt sich, und eine Meldung sagt, dass das Konto mit seiner Zahl an Modellen hinzugefügt wurde. Um weitere Modelle hinzuzufügen, klick am Konto auf **⋯** und wähl **Add model** (Modell hinzufügen).
 
-Das Panel zeigt dein Konto. **Connected** in Schritt 5 bedeutet bereits, dass der Key funktioniert. Ist das neue Modell dein Main-Modell, starte einen Chat und schick eine Nachricht: Kommt eine Antwort, funktioniert alles. Hattest du schon ein Main-Modell, nutzen neue Chats weiterhin dieses. Um das neue Konto zu nutzen, füge ihm ein Modell hinzu (**⋯** → **Add model**) und wähl dieses Modell dann für einen Chat oder eine Aufgabe (siehe [Das Modell für jede Aufgabe wählen](#choosing-the-model-for-each-job)).
+Die Connections-Seite zeigt dein Konto. **Connected** in Schritt 5 bedeutet bereits, dass der Key funktioniert. Ist das neue Modell dein Main-Modell, starte einen Chat und schick eine Nachricht: Kommt eine Antwort, funktioniert alles. Hattest du schon ein Main-Modell, nutzen neue Chats weiterhin dieses. Um das neue Konto zu nutzen, füge ihm ein Modell hinzu (**⋯** → **Add model**) und wähl dieses Modell dann für einen Chat oder eine Aufgabe (siehe [Das Modell für jede Aufgabe wählen](#choosing-the-model-for-each-job)).
 
 Wenn es nicht funktioniert hat:
 
@@ -33,9 +35,9 @@ Wenn es nicht funktioniert hat:
 
 ### Optionale Kontofelder
 
-Der Schritt für den Key zeigt außerdem diese Felder. Lass sie leer, solange du sie nicht brauchst.
+Klick beim Schritt für den Key auf **More options** (Weitere Optionen), um diese Felder zu sehen. Lass sie leer, solange du sie nicht brauchst.
 
-- **Name (optional)**: der Name, den das Panel anzeigt. Leer bedeutet: der Name des Dienstes. Ein zweites Konto für denselben Dienst bekommt die letzten 4 Zeichen seines Keys, etwa `OpenAI · …a1b2`.
+- **Name (optional)**: der Name, den die Connections-Seite anzeigt. Leer bedeutet: der Name des Dienstes. Ein zweites Konto für denselben Dienst bekommt die letzten 4 Zeichen seines Keys, etwa `OpenAI · …a1b2`.
 - **Address** (Adresse): wohin Marinara die Anfragen schickt. Ist das Feld leer, nutzt Marinara die eigene Adresse des Dienstes. Füll es nur für einen Proxy, ein Gateway oder einen Server aus, den du selbst betreibst. Dienste mit Anmeldung auf deinem Rechner zeigen es nicht an.
 - **Requests per minute** (Anfragen pro Minute): bremst Marinara bei diesem Konto. Leer bedeutet kein Limit. Erlaubt sind Werte von 1 bis 600.
 - **Parallel jobs** (parallele Aufgaben): wie viele Anfragen gleichzeitig laufen. Leer bedeutet kein Limit. Erlaubt sind Werte von 1 bis 16. In **Edit account** (Konto bearbeiten) heißt dieselbe Einstellung **Parallel requests** (parallele Anfragen).
@@ -46,15 +48,16 @@ Manche Dienste nutzen statt eines Keys eine Anmeldung auf deinem Rechner. Sie tr
 
 Startest du einen Chat, bevor du ein Modell hast, öffnet Marinara zuerst das Fenster **Add account**. Klick nach **Connect** auf ein Modell und dann auf **Start chatting**.
 
-## Das Connections-Panel
+## Die Connections-Seite
 
-Konten verwaltest du im Panel **Connections**. Von oben nach unten zeigt es:
+Konten verwaltest du auf der Seite **Connections** (**Library → Connections**). Von oben nach unten zeigt sie:
 
-- Ein Suchfeld, das die Liste beim Tippen filtert. Es trägt die Beschriftung **Search models and accounts** (Modelle und Konten durchsuchen).
-- **Add**, das **Add account** öffnet, und **More actions** (Weitere Aktionen, drei Punkte) mit **Import account** (Konto importieren), **Export all accounts** (alle Konten exportieren), Einklappen und Gruppieren. In einem breiten Panel steht das Dropdown-Menü für die Sortierung neben der Suche. In einem schmalen Panel liegt die Sortierung unter **More actions**.
-- Den Bereich **Jobs** (Aufgaben). Er zeigt, welches Modell welche Aufgabe übernimmt.
-- Die Karte **Built-in model**. Siehe [Eingebautes Modell einrichten](local-model.md).
-- Deine Konten, jeweils mit den gespeicherten Modellen darunter. Siehe [Verbindungen organisieren](organizing-connections.md).
+- **Import** (Importieren), womit du eine Kontodatei lädst, und **Add connection**.
+- **All kinds** (Alle Arten), womit du die Liste auf Konten für **Chat**, **Images**, **Video** oder **Voice** einschränkst, ein Suchfeld mit der Beschriftung **Search accounts and models** (Konten und Modelle suchen) und das Sortiermenü.
+- **Defaults** (Standardwerte), der Bereich, der zeigt, welches Modell welche Aufgabe übernimmt. Siehe [Das Modell für jede Aufgabe wählen](#choosing-the-model-for-each-job).
+- Die Kontotabelle mit den Spalten **Models** (Modelle), **Status** und **Balance** (Guthaben). Unter **On this device** (auf diesem Gerät) steht das [eingebaute Modell](local-model.md). Klick auf ein Konto, um seine gespeicherten Modelle darunter anzuzeigen.
+
+Jedes Konto hat eine Schaltfläche **⋯** mit **Edit account**, **Replace key** (Key ersetzen) und **Add model**. Unter **Edit account** findest du außerdem **Test account** (Konto testen), **Use this account** (dieses Konto verwenden) und die [optionalen Felder](#optional-account-fields). Mit **Use this account** kannst du das Konto ausschalten, ohne es zu löschen. Wie du Konten in Ordner gruppierst, steht unter [Verbindungen organisieren](organizing-connections.md).
 
 Ein **Konto** ist ein gespeicherter Key, eine gespeicherte Anmeldung oder eine gespeicherte Adresse für einen Dienst. Nutzt du zwei Keys für denselben Dienst, hast du zwei Konten. Ein **Modell** ist ein einzelnes KI-Modell, das du aus einem Konto gespeichert hast. Jedes gespeicherte Modell behält seine eigenen Einstellungen.
 
@@ -62,18 +65,18 @@ Ein **Konto** ist ein gespeicherter Key, eine gespeicherte Anmeldung oder eine g
 
 ## Das Modell für jede Aufgabe wählen
 
-Eine Aufgabe ist etwas, das ein Modell für dich erledigt. Der Bereich **Jobs** listet sie in vier Gruppen:
+Eine Aufgabe ist etwas, das ein Modell für dich erledigt. Der Bereich **Defaults** listet sie auf:
 
 | Gruppe | Aufgaben |
 | --- | --- |
 | **Chat** | **Main** schreibt die Antworten in deinen Chats. **Agents** (Agenten) betreibt die Hilfsagenten. **Impersonate** schreibt in deinem Namen. |
 | **Omnibar** | **Professor Mari** und **Quick answers** (schnelle Antworten). |
-| **Pictures & sound** (Bild und Ton) | **Images** (Bilder), **Video**, **Voice (Text to Speech)** und, sofern verfügbar, **Dictation (Speech to Text)**. |
+| **Bild und Ton** | **Bilder**, **Video**, **Stimme (Text to Speech)** und, falls verfügbar, **Diktat (Speech to Text)**. |
 | **Behind the scenes** (hinter den Kulissen) | **Decision**, **Embeddings** und **Image reading** (Bilder lesen). |
 
-Jede Zeile zeigt das Modell, das die Aufgabe übernimmt, oder was die Aufgabe ohne Modell tut, etwa **Follows Main** oder **Off**. Eine Aufgabe, die ein Modell braucht, zeigt **Choose a model**. Klick auf **Jobs**, um den Bereich einzuklappen.
+Jeder Eintrag zeigt das Modell, das die Aufgabe übernimmt, oder was die Aufgabe ohne Modell tut, etwa **Follows Main** oder **Off**. Eine Aufgabe, die ein Modell braucht, zeigt **Not set**, und der Bereich zählt, wie viele deine Aufmerksamkeit brauchen. Klick auf **Defaults**, um den Bereich einzuklappen.
 
-Um das Modell für eine Aufgabe zu ändern, klick auf ihre Zeile. Dann öffnet sich **Model for** (Modell für) für diese Aufgabe – außer bei drei Zeilen. **Decision** und **Embeddings** öffnen eigene Bedienelemente (siehe [Decision-Modelle](decision-models.md) und [Unterstützte KI-Anbieter](providers-reference.md#embeddings)). **Dictation (Speech to Text)** öffnet die Spracheinrichtung.
+Um das Modell für eine Aufgabe zu ändern, klick auf sie. Dann öffnet sich **Model for** (Modell für) für diese Aufgabe – außer bei drei Einträgen. **Decision** und **Embeddings** öffnen eigene Bedienelemente (siehe [Decision-Modelle](decision-models.md) und [Unterstützte KI-Anbieter](providers-reference.md#embeddings)). **Dictation (Speech to Text)** öffnet die Spracheinrichtung.
 
 In **Model for**:
 
@@ -84,11 +87,11 @@ In **Model for**:
 
 ### Wenn eine Funktion ein Modell braucht
 
-Eine Funktion, die ohne eine bestimmte Art von Modell nicht arbeiten kann, zeigt den Hinweis **Needs an image model** (oder entsprechend für Video, Audio, Decision oder Chat). Du siehst ihn auf der Karte des Agenten im Panel **Agents**, in den **Chat Settings** (Chat-Einstellungen), im Agenten-Editor sowie in den Fenstern für Bilder und Videos. Klick daneben auf **Set up** (Einrichten) und wähl dann ein Modell oder klick auf **Add account**. Der Hinweis verschwindet, sobald die Aufgabe ein Modell hat.
+Eine Funktion, die ohne eine bestimmte Art von Modell nicht arbeiten kann, zeigt den Hinweis **Needs an image model** (oder entsprechend für Video, Audio, Decision oder Chat). Du siehst ihn auf der Karte des Agenten auf der Seite **Agents**, in den **Chat Settings** (Chat-Einstellungen), im Agenten-Editor sowie in den Fenstern für Bilder und Videos. Klick daneben auf **Set up** (Einrichten) und wähl dann ein Modell oder klick auf **Add account**. Der Hinweis verschwindet, sobald die Aufgabe ein Modell hat.
 
 ## Ein Konto testen
 
-**Connect** testet den Key bereits. Um später erneut zu testen, öffne im Panel das Menü **⋯** des Kontos und klick auf **Test**. Der Konto-Editor (**Edit account**) hat **Test account** (Konto testen). Das prüft Key und Adresse so, wie du sie eingetippt hast, noch vor dem Speichern.
+**Connect** testet den Key bereits. Um später erneut zu testen, klick am Konto auf **⋯**, wähl **Edit account** und klick auf **Test account**. Das prüft Key und Adresse so, wie du sie eingetippt hast, noch vor dem Speichern.
 
 <a id="choosing-a-model-for-one-chat"></a>
 
@@ -107,8 +110,8 @@ Eine Auswahl ändert nur diesen Chat. Die Meldung nach einer Auswahl bietet **Ma
 
 Schlägt ein Test oder eine Nachricht fehl, prüf zuerst diese Punkte:
 
-- Ein falscher oder abgelaufener Key. Klick am Konto auf **⋯**, wähl **Replace key** (Key ersetzen) und füge den Key erneut ein. Ein Konto ohne Key zeigt **Needs key**.
-- Ein ausgeschaltetes Konto. Es zeigt **Off**. Klick in seinem Menü **⋯** auf **Turn on** (einschalten).
+- Ein falscher oder abgelaufener Key. Klick am Konto auf **⋯**, wähl **Replace key** und füge den Key erneut ein. Ein Konto ohne Key zeigt **Needs key**.
+- Ein ausgeschaltetes Konto. Es zeigt **Off**. Klick auf **⋯**, wähl **Edit account** und schalte **Use this account** ein.
 - Ein Key von einem anderen Dienst. Jeder Dienst braucht seinen eigenen Key.
 - Eine blockierte **Address**. Bleibt das Feld leer, gilt die eigene Adresse des Dienstes.
 

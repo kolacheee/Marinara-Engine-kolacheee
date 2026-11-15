@@ -38,11 +38,11 @@ Animated expression GIF conversion requires ffmpeg. Install ffmpeg and make it a
 
 애니메이션 표정은 하나씩 만들어지므로 정지 스프라이트보다 오래 걸립니다. 처음에는 몇 개만 만들어 보세요.
 
-**Expose media prompts before sending**(전송 전에 미디어 프롬프트 표시)이 켜져 있으면(**Settings → Generations → Overall Generations**(설정 → 생성 → 전체 생성)) Marinara가 잠시 멈추므로, 각 프롬프트가 서비스로 가기 전에 읽고 고칠 수 있습니다.
+**Expose media prompts before sending**(전송 전에 미디어 프롬프트 표시)이 켜져 있으면(**Settings → Media → Generation Defaults**(설정 → 미디어 → 생성 기본값)) Marinara가 잠시 멈추므로, 각 프롬프트가 서비스로 가기 전에 읽고 고칠 수 있습니다.
 
 ## 길이와 형태
 
-모든 애니메이션 표정은 9:16 비율의 세로로 긴 초상화 클립이며, 이 비율은 바꿀 수 없습니다. 클립 하나의 재생 길이를 바꾸려면 **Settings → Generations**(설정 → 생성)를 열고 **Video Generation**을 찾아 **Animated expression length**(애니메이션 표정 길이)를 설정하세요. 기본값은 3초입니다. 범위는 1초에서 8초입니다. Marinara는 가로 512픽셀의 작은 반복 GIF를 저장합니다. 클립이 짧을수록 파일이 작아지고 반복이 촘촘해집니다.
+모든 애니메이션 표정은 9:16 비율의 세로로 긴 초상화 클립이며, 이 비율은 바꿀 수 없습니다. 클립 하나의 재생 길이를 바꾸려면 **Settings → Media**(설정 → 미디어)를 열고 **Video Generation**을 찾아 **Animated expression length**(애니메이션 표정 길이)를 설정하세요. 기본값은 3초입니다. 범위는 1초에서 8초입니다. Marinara는 가로 512픽셀의 작은 반복 GIF를 저장합니다. 클립이 짧을수록 파일이 작아지고 반복이 촘촘해집니다.
 
 <a id="backgrounds-are-not-removed"></a>
 

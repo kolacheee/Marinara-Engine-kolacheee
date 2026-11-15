@@ -38,11 +38,11 @@ Durante o processo, aparece "Generating animated portrait GIFs...". Ao terminar,
 
 As expressões animadas demoram mais do que os sprites parados, porque são criadas uma por vez. Comece com poucas.
 
-Com **Expose media prompts before sending** (mostrar os prompts de mídia antes de enviar) ativado em **Settings → Generations → Overall Generations** (Configurações → Gerações → Gerações em geral), Marinara faz uma pausa para você ler e editar cada prompt antes que ele vá para o serviço.
+Com **Expose media prompts before sending** (mostrar os prompts de mídia antes de enviar) ativado em **Settings → Media → Generation Defaults** (Configurações → Mídia → Padrões de geração), Marinara faz uma pausa para você ler e editar cada prompt antes que ele vá para o serviço.
 
 ## Duração e formato
 
-Toda expressão animada é um clipe de retrato na vertical, em 9:16, e isso não pode ser alterado. Para mudar a duração de cada clipe, abra **Settings → Generations**, encontre **Video Generation** e defina **Animated expression length** (duração da expressão animada). O padrão é 3 segundos. O intervalo vai de 1 a 8 segundos. Marinara salva um GIF pequeno em loop, com 512 pixels de largura. Um clipe mais curto gera um arquivo menor e um loop mais fechado.
+Toda expressão animada é um clipe de retrato na vertical, em 9:16, e isso não pode ser alterado. Para mudar a duração de cada clipe, abra **Settings → Media**, encontre **Video Generation** e defina **Animated expression length** (duração da expressão animada). O padrão é 3 segundos. O intervalo vai de 1 a 8 segundos. Marinara salva um GIF pequeno em loop, com 512 pixels de largura. Um clipe mais curto gera um arquivo menor e um loop mais fechado.
 
 <a id="backgrounds-are-not-removed"></a>
 

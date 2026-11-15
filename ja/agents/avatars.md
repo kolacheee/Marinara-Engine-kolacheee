@@ -6,9 +6,9 @@ Live2Dのモデルには対応していません。Live2Dのライセンスで�
 
 ## アバターエージェントのインストール
 
-どのインストールでも、両方のエージェントが**Agent Organizer**(エージェント管理)の**Roleplay**(ロールプレイ)と**Game**(ゲーム)のフィルターにあります。Marinara Engine 2.5.1以降が必要です。それより古いEngineではインストールが拒否されます。2つは別々のダウンロードなので、必要なほうだけをインストールしてください。どちらも、RoleplayとGameのチャットでキャラクターとペルソナに使え、チャット中にAIモデルへ追加のリクエストを送りません。
+どのインストールでも、両方のエージェントが**Library → Agents**(ライブラリー → エージェント)の**Available**(利用可能)にあり、**Roleplay**(ロールプレイ)と**Game**(ゲーム)のフィルターにあります。Marinara Engine 2.5.1以降が必要です。それより古いEngineではインストールが拒否されます。2つは別々のダウンロードなので、必要なほうだけをインストールしてください。どちらも、RoleplayとGameのチャットでキャラクターとペルソナに使え、チャット中にAIモデルへ追加のリクエストを送りません。
 
-1. **Agents → Agent Organizer**(エージェント → エージェント管理)を開き、**2D Avatars**か**3D Avatars**、または両方をインストールします。どちらも再起動は不要です。
+1. **Library → Agents**(ライブラリー → エージェント)を開き、**2D Avatars**か**3D Avatars**、または両方をインストールします。どちらも再起動は不要です。
 2. アバターはそれぞれ、そのエージェントのページで設定します([アバターの設定](#set-up-an-avatar)を参照)。
 3. RoleplayまたはGameのチャットで**Chat Settings → Agents → Misc Agents**(チャット設定 → エージェント → その他のエージェント)を開き、エージェントを追加します。
 
@@ -43,7 +43,7 @@ Live2Dのモデルには対応していません。Live2Dのライセンスで�
 
 ### アバターのファイルの保存場所
 
-インポートしたファイルは、保存する前に検査されます。サイズの上限は、サーバーの通常のアップロード上限だけです。ファイルは、データフォルダーの`avatar-models/<character or persona>/<id>/`の下に、設定を記録した`avatar.json`と並んで保存されます。バックアップとプロファイルのエクスポートには、このフォルダーも含まれます。キャラクターやペルソナを削除すると、そのアバターも削除されます。SettingsのDanger Zoneで**Characters**(キャラクター)、**Personas**(ペルソナ)、**Media & Assets**(メディアとアセット)のいずれかをすべて消去した場合も同じです。キャラクターカードのエクスポートにアバターが含まれることはありません。
+インポートしたファイルは、保存する前に検査されます。サイズの上限は、サーバーの通常のアップロード上限だけです。ファイルは、データフォルダーの`avatar-models/<character or persona>/<id>/`の下に、設定を記録した`avatar.json`と並んで保存されます。バックアップとプロファイルのエクスポートには、このフォルダーも含まれます。キャラクターやペルソナを削除すると、そのアバターも削除されます。**Settings → Data → Delete Data**(設定 → データ → データを削除)で**Characters**(キャラクター)、**Personas**(ペルソナ)、**Media & Assets**(メディアとアセット)のいずれかをすべて消去した場合も同じです。キャラクターカードのエクスポートにアバターが含まれることはありません。
 
 ### グループチャット
 
@@ -270,7 +270,7 @@ Pollinations、Together AI、Horde、DALL-E、参照画像の入力枠がないC
 
 | 作りたいもの | ツール | できるもの |
 | --- | --- | --- |
-| PNGTuberのスプライト | 任意のお絵描きアプリで描いてから、キャラクターの**Images → Sprites**(画像 → スプライト)へ | スプライト |
+| PNGTuberのスプライト | 任意のお絵描きアプリで描いてから、キャラクターの**Sprites**タブへ | スプライト |
 | レイヤーとコスチュームを持つPNGTuberのスプライト | [PNGTuber Plus](https://github.com/kaiakairos/PNGTuber-Plus) | `.save`ファイル |
 | メッシュアバター | [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio) | `.mavatar`ファイル |
 | 3Dモデル | [VRoid Studio](https://vroid.com/en/studio)、または[VRM Add-on for Blender](https://vrm-addon-for-blender.info/en-us/)を入れたBlender | `.vrm`ファイルと、任意で`.vrma`の待機アニメーション |
@@ -279,7 +279,7 @@ Pollinations、Together AI、Horde、DALL-E、参照画像の入力枠がないC
 
 1. 感情ごとに1枚ずつ絵を描きます。すべて同じサイズにし、キャラクターを同じ位置に置いてください。それぞれに感情の名前を付けます。`neutral`、`happy`、`angry`、`sad`、`relaxed`、`surprised`です。`smile`、`cry`、`calm`、`shock`のように、感情を表す単語を含む名前も使えます。任意の[その他の感情](#pngtuber-sprites)には、`amusement`、`fear`、`gratitude`のような名前を付けます。
 2. 口を動かすには、口を開けた同じ絵を描き、名前に`_talk`を付けます(例: `happy_talk`)。まばたきさせるには目を閉じて`_blink`を付けます。両方の場合は`_blink_talk`を付けます。
-3. **Images → Sprites**の**Facial Expressions**(表情)に絵を追加します。各ファイル名が、そのスプライトの名前になります。[キャラクターのスプライト](../characters/sprites.md#upload-your-own-sprites)を参照してください。
+3. **Sprites**タブの**Facial Expressions**(表情)に絵を追加します。各ファイル名が、そのスプライトの名前になります。[キャラクターのスプライト](../characters/sprites.md#upload-your-own-sprites)を参照してください。
 4. **Agents**で**2D Avatars**を開き、キャラクターかペルソナを選んで、**Show this avatar in chats**をオンにします。
 
 ### PNGTuber Plus

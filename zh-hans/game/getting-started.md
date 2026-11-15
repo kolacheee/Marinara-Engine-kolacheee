@@ -12,7 +12,7 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 
 其余全是可选项，默认关闭，以后再加也行：
 
-- **图像。** **Illustrator**(插画师) 智能体会绘制 NPC 肖像、地点背景和场景图像。从 **Agents → Agent Organizer**(智能体 → 智能体管理器) 下载它。它需要一个图像账号。没有它也能照常玩，故事、状态追踪和战斗都在，只是视觉区域是空的。
+- **图像。** **Illustrator**(插画师) 智能体会绘制 NPC 肖像、地点背景和场景图像。从 **Library → Agents**(资料库 → 智能体) 下载它。它需要一个图像账号。没有它也能照常玩，故事、状态追踪和战斗都在，只是视觉区域是空的。
 - **内置模型提供的场景效果。** Marinara 可以在你自己的电脑上跑一个小模型，免费挑选背景和音乐。下载之后，它就成为默认的 **Scene effects model**(场景效果模型)。在那之前，默认是 **Skip - use inline tags from GM**(跳过，使用 GM 的行内标签)。见[内置模型设置](../connections/local-model.md)。
 - **分镜。** 下载 Storyboard 智能体，然后为这局游戏开启它。见 [Storyboard 智能体指南](storyboard.md)。
 - **视频。** 只有场景视频或动态分镜才需要视频账号。
@@ -20,7 +20,7 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 
 ## 开始一局游戏
 
-1. 在聊天侧边栏打开 **GM** 选项卡，点击 **+** 按钮（**New Game**）。也可以在主屏幕上点击 **Game**。设置向导随即打开。见[管理聊天](../chats/managing-chats.md)。
+1. 在 **Chats**(聊天) 侧边栏打开 **Game**(游戏) 选项卡，点击 **New**(新建)（**New Game**(新游戏)）。也可以在主屏幕上点击 **Game**。设置向导随即打开。见[管理聊天](../chats/managing-chats.md)。
 2. 在第一步选择运行 GM 的 **Model**(模型)。选一个之前添加过的账号。列表为空的话，先添加一个。世界生成建议选一个能力强的付费模型（见[怎么选模型](#choosing-a-model)）。
 3. 每一步都点击 **Next**(下一步)。其他字段都有默认值，所以可以一路点过去。
 4. 在最后一步点击 **Create world**(创建世界)。Marinara 构建世界时，按钮会显示 **Generating World…**。这是发给模型的一次大请求，所以要等它完成。
@@ -37,7 +37,7 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 | 步骤 | 设置内容 |
 | --- | --- |
 | **Connection**(连接) | **Game Name**(游戏名称)、运行 GM 的 **Model**，以及可选的 **Scene effects model**。**Game Mode**(游戏玩法) 卡片目前只显示 **VN**(见 [VN 还是 Overworld](#vn-or-overworld))。 |
-| **World**(世界) | 类型、背景、基调、难度、内容分级和语言。**Combat Preference**(战斗偏好) 为 **Turn-Based**(回合制) 或 **Tactical**(网格战斗)。所有新游戏都采用 **MRPG**(Marinara RPG) 职业（见 [MRPG 职业](mrpg-classes.md)）。安装了规则集时，会出现 **Rules**(规则) 选项（见[选择规则](#choose-rules)）。 |
+| **World**(世界) | 类型、背景、基调、难度、内容分级、故事风格、暴力程度、内容边界和语言。**Combat Preference**(战斗偏好) 为 **Turn-Based**(回合制) 或 **Tactical**(网格战斗)。所有新游戏都采用 **MRPG**(Marinara RPG) 职业（见 [MRPG 职业](mrpg-classes.md)）。安装了规则集时，会出现 **Rules**(规则) 选项（见[选择规则](#choose-rules)）。 |
 | **Party**(队伍) | 你的用户角色（你扮演的角色）、**Game Master Mode**、队伍成员和 **GM intro message**(GM 开场消息)（见 [GM 开场消息](#the-gm-intro-message)）。每位成员的 MRPG 起始树来自其卡片的 **Game Mode** 区块（见[选择角色的树](mrpg-classes.md#choose-a-characters-trees)）。 |
 | **Goals**(目标) | 你想从这场冒险里得到什么。 |
 | **Lorebooks**(世界书) | GM 会当作正典的世界书。世界书就是一组世界背景设定。见[世界书](../lorebooks/overview.md)。 |
@@ -57,7 +57,9 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 | Genre | Fantasy | 可多选，也能自己加。先选的设定包会设定它自己的类型。 |
 | Tone | Heroic | 可多选。 |
 | Difficulty | Normal | **Casual**、**Normal**、**Hard** 或 **Brutal**。设置越高，战斗越难：MRPG 游戏会出现更多、更强的敌人（见 [MRPG 游戏中的战斗](combat.md#battles-in-an-mrpg-game)），Legacy 游戏中的敌人则会打得更重（见[难度缩放](combat.md#difficulty-scaling)）。 |
-| Content Rating | SFW | **SFW** 或 **NSFW**。NSFW 只是允许成人内容，不会强制出现。 |
+| 内容分级（性内容） | SFW | **SFW** 或 **NSFW**。它只决定性内容。NSFW 允许露骨场景，不会强制出现。 |
+| 故事风格 | 标准 | **Standard**(标准) 或 **Gentle**(温和)。见[内容与故事风格](#content-and-story-style)。 |
+| 暴力程度 | 严重（NSFW 下为血腥） | **Mild**(轻度)、**Serious**(严重) 或 **Graphic**(血腥)。 |
 | Language | English | 游戏内所有文字都用这个语言书写。 |
 | Game Master Mode | Standalone GM | **Character GM** 用你的某张角色卡当 GM。 |
 | Scene effects model | Built-in model | 下载之后才是。在那之前，默认是 **Skip - use inline tags from GM**。 |
@@ -68,6 +70,18 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 | Quick Time Events | On | 使用屏幕阅读器或不想限时游玩时关闭。 |
 | Start Muted | Off | 开局时所有音频静音。 |
 | Game Presentation | Standard | 见下文。 |
+
+### 内容与故事风格
+
+**World** 步骤提供以下设置，用来决定故事可以包含什么。游戏开始后，它们都位于 **Chat Settings → Prompt Preset**(聊天设置 → 提示词预设)。
+
+- **Content Rating (sexual content)**(内容分级（性内容）)：**SFW** 保留浪漫和亲昵，性爱场景则淡出略过。**NSFW** 允许明确描写这些场景。它不决定暴力程度或基调。
+- 分级下方的 **Edit rating guidelines**(编辑分级准则) 显示发送给游戏主持人的游戏内容规则。可以按游戏需要修改；**Reset to default**(重置为默认值) 恢复该分级的默认准则。不改动文字就会跟随默认值，后续改进也会应用到游戏中。游戏开始后，这项设置叫 **Rating guidelines**(分级准则)。
+- **Story style**(故事风格)：**Standard** 保持紧张感，失误和坏运气会带来切实后果。**Gentle** 适合压力较低的故事：挫折不会演变成惩罚或创伤，减少为角色无法控制的事情掷骰，并留出安慰和恢复的空间。
+- **Violence**(暴力程度)：**Mild**、**Serious** 或 **Graphic**，与内容分级独立。没有主动选择时，SFW 默认为 **Serious**，NSFW 默认为 **Graphic**。
+- **Content boundaries**(内容边界)：要求游戏主持人排除的主题，每行一个，例如 `harm to animals`。无论采用什么风格或分级，这些都是硬性限制，自定义分级准则也无法取消。由于故事由 AI 编写，无法保证列出的主题绝不会出现。
+
+提示词预设也可以携带这些设置：在预设的 **Prompts**(提示词) 选项卡中，找到 **Game story settings**(游戏故事设置)，开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)。其中的暴力程度还可以选 **Follow rating**(遵循分级)。为游戏选用该预设后，会设置其故事风格和暴力程度，并将预设的内容边界加入游戏自身的边界。从游戏开启的场景会遵循游戏的分级、准则、暴力程度、风格和边界。
 
 <a id="choose-rules"></a>
 

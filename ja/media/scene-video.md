@@ -10,8 +10,8 @@ Game Modeと**Animate illustration**は必ず画像から始まるため、先�
 
 ## 動画サービスを設定する
 
-1. 上部バーの**Connections**(接続)をクリックし、続いて**Add**(追加)をクリックします。**Add account**(アカウントの追加)ウィンドウが開きます。
-2. **Images & video**(画像と動画)のセクションから、サービスを選びます。サービスの一覧は下にあります。
+1. **Library → Connections**(ライブラリー → 接続)を開き、**Add connection**(接続を追加)をクリックします。サービスの一覧が開きます。
+2. **Video**(動画)タブを開き、サービスを選びます。サービスの一覧は下にあります。
 3. クラウドサービスの場合は、APIキーを貼り付けます。ローカルのComfyUIには不要です。SwarmUIでは、サーバーでアカウントが必要な場合にだけSwarm Auth Tokenが要ります。
 4. **Connect**(接続)をクリックし、モデルを選ぶか、デフォルトのままにします。NanoGPTにはデフォルトがないため、一覧から1つ選んでください。ComfyUIでは、ワークフローが`%model%`を使っていないかぎり、モデルは未設定のままにします。SwarmUIでは、モデルは任意です。
 5. 動画モデルを開き、**Test video**(動画をテスト)をクリックして確認します。
@@ -37,7 +37,7 @@ Game Modeと**Animate illustration**は必ず画像から始まるため、先�
 
 ### デフォルトの動画モデルにする
 
-チャットに独自の動画モデルがないときに使う動画モデルを決めるには、**Connections**(接続)パネル上部の**Defaults**(デフォルト)にある**Video**(動画)の役割を設定します。Chat Settingsでは、これが**Default video provider**と表示されます。チャットのモデルもデフォルトもない場合、動画の操作時にモデルを選ぶよう警告が表示されます。
+チャットに独自の動画モデルがないときに使う動画モデルを決めるには、**Connections**(接続)パネル上部の**Defaults**(用途)ボックスにある**Video**(動画)の役割を設定します。Chat Settingsでは、これが**Default video provider**と表示されます。チャットのモデルもデフォルトもない場合、動画の操作時にモデルを選ぶよう警告が表示されます。
 
 ### Video prompting instructions
 
@@ -58,8 +58,6 @@ Game Modeと**Animate illustration**は必ず画像から始まるため、先�
 - ComfyUIとSwarmUI: 5秒、1秒から60秒、16:9、720p
 
 Gemini Omniには解像度の欄がなく、長さはプロンプトの文章に書き込まれます。Google Veoは、参照画像を動かすときに必ず8秒になります。最初と最後のフレームをつなぐのに8秒必要だからです。
-
-<a id="seedance-reference-frames"></a>
 
 ### Seedanceの参照フレーム
 
@@ -83,7 +81,7 @@ Gallery上部の操作列にある**Video**は、`/video`と同じく、最新�
 - **アバター**: 説明の中で最初に名前を挙げた人物から始まります。ペルソナも対象です。ほかの人と重ならない名前の一部を、先頭を大文字にして書けば十分です(「Dr. Lena Kowalski」に対する「Lena」など)。名前を挙げなければ、チャットのキャラクターから始まります。
 - **確認**: **Expose media prompts before sending**(送信前にメディアのプロンプトを表示)がオンなら、先にクリップのプロンプトを確認して編集できます。
 - **文脈**: AIは、Illustratorが画像を作るときと同じ件数の最近のメッセージを読みます(Illustratorの設定画面の**Agent Budget**(エージェントの予算)にある**Context Size**(コンテキストサイズ))。
-- **画像なし**: 画像なし、またはアバターから始まるクリップでは、AIが場面自体を描写します。その指示は、**Settings → Generations → Video Generation Prompt Overrides**(設定 → 生成 → 動画生成プロンプトの上書き)の**Roleplay Clip Director**(Roleplayクリップの演出)です。
+- **画像なし**: 画像なし、またはアバターから始まるクリップでは、AIが場面自体を描写します。その指示は、**Settings → Media → Prompt Overrides**(設定 → メディア → プロンプトの上書き)の**Roleplay Clip Director**(Roleplayクリップの演出)です。
 
 完成したクリップは、画像がそれより前の返信のものでも、最新の返信の下でその場で再生されます。クリップが自動でフローティングウィンドウに開くことはありません。フローティング表示にするには、**Videos**の**Pin video to chat**(動画をチャットにピン留め)を使います。メッセージからクリップを外すには、その**X**ボタンを使います。外したクリップはGalleryに残ります。
 
@@ -91,7 +89,7 @@ Gallery上部の操作列にある**Video**は、`/video`と同じく、最新�
 
 1. **Images**に画像が1枚以上あることを確かめます。**Illustrate**を使うか、画像をアップロードします。
 2. Gallery上部の操作列で**Video**をクリックします。
-3. **Settings → Generations → Overall Generations**(設定 → 生成 → 生成全般)で**Expose media prompts before sending**(送信前にメディアのプロンプトを表示)がオンになっている場合は、プロンプトを確認または編集し、**Generate**をクリックします。キャンセルした場合、リクエストは送られません。
+3. **Settings → Media → Generation Defaults**(設定 → メディア → 生成のデフォルト設定)で**Expose media prompts before sending**(送信前にメディアのプロンプトを表示)がオンになっている場合は、プロンプトを確認または編集し、**Generate**をクリックします。キャンセルした場合、リクエストは送られません。
 4. ボタンが**Generating...**になり、動画生成が進行中であることを知らせるバナーが出ます。
 5. 完成すると、クリップが**Videos**に表示されます。
 
@@ -103,7 +101,7 @@ Gallery上部の操作列にある**Video**は、`/video`と同じく、最新�
 2. 画像にカーソルを合わせます。
 3. **Animate illustration**ボタン(フィルムのアイコン)をクリックします。
 
-プロンプトの確認がオンの場合、その画像に使われる、組み立て済みのプロンプト、長さ、アスペクト比、解像度が、そのままウィンドウに表示されます。ここでの編集は、そのクリップにだけ適用されます。Roleplayでは、動きを計画するAIが、Illustratorと同じ件数の最近のメッセージを読みます。読み取る範囲は、その画像が属する返信で終わります。繰り返し使うその指示は、**Settings → Generations → Video Generation Prompt Overrides**(設定 → 生成 → 動画生成プロンプトの上書き)の**Roleplay Gallery Animation Director**です。
+プロンプトの確認がオンの場合、その画像に使われる、組み立て済みのプロンプト、長さ、アスペクト比、解像度が、そのままウィンドウに表示されます。ここでの編集は、そのクリップにだけ適用されます。Roleplayでは、動きを計画するAIが、Illustratorと同じ件数の最近のメッセージを読みます。読み取る範囲は、その画像が属する返信で終わります。繰り返し使うその指示は、**Settings → Media → Prompt Overrides**(設定 → メディア → プロンプトの上書き)の**Roleplay Gallery Animation Director**です。
 
 **Videos**の各クリップはその場で再生され、長さとモデル名が表示されます。**Pin video to chat**(動画をチャットにピン留め)か**Download scene video**(シーン動画をダウンロード)を使えます。クリップがない場合、タブには**No videos yet**と表示されます。
 
@@ -169,7 +167,7 @@ Game Modeのチャットを作成するとき、ビジュアル生成をオン�
 
 ## 動画生成の設定
 
-動画のデフォルトの一部は、アプリ全体の設定です。**Settings → Generations**(設定 → 生成)を開き、**Video Generation**(「Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls」)を探します。
+動画のデフォルトの一部は、アプリ全体の設定です。**Settings → Media**(設定 → メディア)を開き、**Video Generation**(「Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls」)を探します。
 
 - **Scene video fallback length**: 選んだ動画モデルに独自の長さがない場合にだけ使われます。デフォルトは10秒です。範囲は1から60です。
 - **Video Generation Prompt Overrides**: 繰り返し使う動画プロンプトのテンプレートを編集します。**Roleplay Gallery Animation Director**は、RoleplayのGalleryのクリップを作る前にPrompt Modelへ送る指示を決めます。その`${durationSeconds}`変数は、クリップの長さに置き換わります。

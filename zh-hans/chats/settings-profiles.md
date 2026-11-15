@@ -4,7 +4,7 @@
 
 方案位于 **Chat Settings**(聊天设置) 的最上方，适用于 Conversation(对话模式) 和 Roleplay(角色扮演)。Game(游戏模式) 聊天不显示方案控件。
 
-**提示词预设**则不同。它控制系统提示词的结构和生成参数，在 Presets(预设) 面板里编辑。见[预设编辑器与提示词管理器](../prompts/presets.md)。设置方案是范围更大的一整套配置，提示词预设可以作为其中一项包含进来。
+**提示词预设**则不同。它控制系统提示词的结构和生成参数，在 **Library → Presets**(资料库 → 预设) 页面里编辑。见[预设编辑器与提示词管理器](../prompts/presets.md)。设置方案是范围更大的一整套配置，提示词预设可以作为其中一项包含进来。
 
 ## 套用方案
 
@@ -63,8 +63,6 @@
 
 如果没有其他聊天使用这个方案，**Save** 会直接保存，不会询问。多人模式房间永远不会通过这种方式更新。
 
-<a id="choosing-the-default-profile"></a>
-
 ## 指定默认方案
 
 下拉菜单旁边的星标用来标记该模式下新建聊天自动使用的方案。每种模式只能有一个默认方案。它的提示文字有 **Mark this profile as default for new chats in this mode**、**This profile is the default for new chats in this mode** 和 **Select a profile to mark it as default**。也可以在构建器里勾选 **Make this the default**。
@@ -73,13 +71,11 @@
 
 **Export settings profile (.json)** 会下载一个 `.marinara-settings-profile.json` 文件，可以留作备份，也可以分享给别人。**Import settings profile (.json)** 会用兼容的文件新建一个方案，绝不会覆盖已有方案。旧版本导出的文件同样可以导入。导入失败时会显示 **Import failed**。
 
-方案里存的是设置，不包含服务商的机密信息。导出或导入的方案也不会带上 Discord 镜像的 webhook、DeepLX 地址、DeepL 密钥和 Intiface 地址。在这个安装上保存的方案会保留它们。导出的文件不包含用户角色和世界书，因为它们只存在于这个安装上。
+方案里存的是设置，不包含服务商的机密信息。导出或导入的方案也不会带上 Discord 镜像的 webhook、DeepLX 地址、DeepL 密钥和 Intiface 地址。在这个安装上保存的方案会保留它们。导出的文件不包含用户角色、世界书和预设变量的选择，因为它们只存在于这个安装上。
 
 ## Default 方案
 
 Conversation 和 Roleplay 各自内置了一个 **Default**(默认) 方案。套用它会把受方案控制的设置恢复成 Marinara 在该模式下的默认值。它不能改名、覆盖或删除。相应的控件处于禁用状态，提示文字分别是 **Cannot save into the Default profile**、**Cannot rename the Default profile** 和 **Cannot delete the Default profile**。
-
-<a id="favorite-window-layouts"></a>
 
 ## 收藏窗口布局
 
@@ -92,7 +88,7 @@ Chat Settings 标题栏里 **Reset View**(重置视图) 旁的星标，会为新
 方案保存的是这个聊天与模型对接的方式：
 
 - 连接。
-- 提示词预设（在 Conversation 中叫提示词来源）。
+- 提示词预设（在 Conversation 中叫提示词来源），以及为它的[预设变量](../prompts/preset-variables.md)所做的选择。套用方案时，聊天会采用这些选择。尚未保存这类选择的旧方案会保留聊天自己的选择。
 - 智能体和工具。
 - 翻译、Memory Recall(记忆功能) 和 Advanced Parameters(高级参数)。
 - 窗口和按钮布局：位置、大小、固定、锁定、哪些工具在 Chat Settings 里或已弹出、打开的控制窗口，以及电脑和手机上的按钮位置。没有保存布局的方案（比如 **Default**）会保留聊天当前的布局。
@@ -107,7 +103,7 @@ Chat Settings 标题栏里 **Reset View**(重置视图) 旁的星标，会为新
 - **Save current chat settings into this profile** 会保留方案自己的用户角色、世界书和背景。如果方案没有背景，保存时会采用聊天的背景。
 - 更新其他聊天绝不会改变它们的用户角色、世界书或背景。
 
-方案不会替换属于聊天本身的内容：角色、立绘、摘要、标签和场景提示词。方案里也不包含聊天记录，以及宏变量、你关闭的角色或多人模式房间这类运行状态。
+方案不会替换属于聊天本身的内容：角色、立绘、摘要、标签、场景提示词和 **Author's Notes**(作者注释)。方案里也不包含聊天记录，以及宏变量、你关闭的角色或多人模式房间这类运行状态。较早版本保存的方案可能仍包含 **Author's Notes**，但套用时会保留聊天自己的内容。
 
 ### Save and update 会复制什么
 
@@ -120,13 +116,14 @@ Chat Settings 标题栏里 **Reset View**(重置视图) 旁的星标，会为新
 - 记忆和摘要设置。
 - 翻译。
 - 窗口布局。
+- 预设变量的选择，只复制到使用与方案相同提示词预设的聊天。
 
 其余一切都保持各个聊天原有的样子：
 
 - 它的连接、提示词预设和自定义提示词。
 - 它的故事和角色。
 - 它的世界书和背景。
-- 它的笔记和进度。
+- 它的 **Author's Notes** 和进度。
 - 哪些 Roleplay 命令只能由它的旁白使用。
 - Noodle 能否使用它的消息。
 

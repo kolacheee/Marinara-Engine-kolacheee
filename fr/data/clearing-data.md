@@ -1,12 +1,14 @@
 # Effacer ou réinitialiser tes données
 
-Supprime définitivement une partie ou la totalité de tes données avec le bouton **Danger Zone** (zone de danger). Il n'y a pas d'annulation. Pour supprimer un seul chat ou un seul personnage, utilise plutôt son propre bouton de suppression. Voir [Gérer les chats](../chats/managing-chats.md) et [Créer et modifier des personnages](../characters/creating-and-editing-characters.md).
+Supprime définitivement une partie ou la totalité de tes données avec **Delete Data** (supprimer les données), dans **Settings → Data → Delete Data** (Paramètres → Données → Supprimer les données). Il n'y a pas d'annulation.
+
+Pour supprimer un seul chat ou un seul personnage, utilise plutôt son propre bouton de suppression. Voir [Gérer les chats](../chats/managing-chats.md) et [Créer et modifier des personnages](../characters/creating-and-editing-characters.md).
 
 **Avant de commencer :** fais une sauvegarde. Il n'y a ni corbeille ni poubelle. Voir [Sauvegarder et restaurer Marinara](backup-and-restore.md). Si tu ouvres Marinara depuis un autre appareil, tu as aussi besoin du secret d'administration. Voir [Accès à distance](../REMOTE_ACCESS.md).
 
 ## Effacer certaines catégories
 
-1. Ouvre **Settings → Advanced** (Paramètres → Avancé) et fais défiler jusqu'à **Danger Zone**.
+1. Ouvre **Settings → Data** (Paramètres → Données) et va dans **Delete Data**.
 2. Vérifie chaque catégorie que tu veux supprimer. **Select All** (tout sélectionner) coche toutes les cases. Quand tout est coché, le même bouton affiche **Clear Selection** (effacer la sélection) et décoche tout.
 3. Clique sur **Clear Selected Data**. Il reste désactivé jusqu'à ce que tu coches une catégorie.
 4. Lis l'avertissement. Il indique combien de catégories tu as choisies.
@@ -16,7 +18,7 @@ Quand ça marche, un message indique que les données choisies ont été effacé
 
 ## Tout effacer
 
-1. Dans **Danger Zone**, clique sur **Clear All Data**. Tu n'as pas besoin de cocher les cases une par une.
+1. Dans **Delete Data**, clique sur **Clear All Data**. Tu n'as pas besoin de cocher les cases une par une.
 2. L'avertissement demande : "Delete all supported data categories except Professor Mari? There is no undo."
 3. Clique sur **Confirm Delete**, ou sur **Cancel** pour arrêter.
 
@@ -34,7 +36,7 @@ Chaque catégorie supprime seulement ce que sa ligne indique, sauf pour le dossi
 | **Lorebooks** | Tous les lorebooks, entrées et dossiers. |
 | **Presets** | Tous les presets de prompt et dossiers de presets, sauf le preset de base intégré. |
 | **Connections** | Tous les comptes enregistrés, et les choix de modèles et de voix liés à eux. |
-| **Automation & Addons** | Tous les réglages d'agents, outils personnalisés, scripts regex et thèmes synchronisés. Pas les Personal Extensions ni les External Extensions. |
+| **Automation & Addons** | Tous les réglages d'agents, outils personnalisés, scripts regex et leurs dossiers, et thèmes synchronisés. Pas les Personal Extensions ni les External Extensions. |
 | **Media & Assets** | Arrière-plans, avatars, sprites, galerie, vidéos de scène, polices et fichiers de sources de connaissances. |
 
 Plus de détails :
@@ -45,7 +47,7 @@ Plus de détails :
 - **Connections** efface aussi la synthèse vocale et la reconnaissance vocale, les modèles que tu as choisis pour des fonctions, et une clé API Tripo enregistrée sur la page **3D Avatars**.
 - **Automation & Addons** supprime aussi les résultats d'agents, la mémoire d'agent, les dossiers d'agents et les widgets Home.
 - **Media & Assets** supprime aussi la liste des ressources et les images de chat.
-- Les fichiers de sources de connaissances sont des fichiers que tu as téléversés pour les agents de connaissances. Les thèmes synchronisés sont tes thèmes personnalisés enregistrés dans Marinara.
+- Les fichiers de sources de connaissances sont des fichiers que tu as téléversés pour les agents de connaissances. Les thèmes synchronisés sont tes thèmes personnalisés enregistrés dans Marinara, y compris les thèmes de départ que tu as téléchargés. Tu peux télécharger à nouveau les thèmes de départ depuis la galerie de thèmes.
 
 Certaines catégories touchent des fichiers hors de leur nom. **Chats & Messages** supprime tout le dossier `gallery`, y compris les images de personnages et de galerie de personas, même si tu n'as pas coché **Characters** ou **Personas**.
 
@@ -53,7 +55,7 @@ L'effacement ne touche pas tes autres réglages, le dossier `backups/` ni le fic
 
 ## Professor Mari reste
 
-Professor Mari est l'assistante intégrée de l'écran Home. La **Danger Zone** ne la supprime jamais, pas même avec **Clear All Data**.
+Professor Mari est l'assistante intégrée de l'écran Home. **Delete Data** ne la supprime jamais, pas même avec **Clear All Data**.
 
 ## Guides associés
 

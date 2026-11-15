@@ -6,13 +6,13 @@ Na generowaniu obrazów opierają się ilustracje scen, selfie, tła scen oraz g
 
 Klucz API to tajny kod od usługi, dzięki któremu Marinara może korzystać z twojego konta. Marinara sama wpisuje adres internetowy każdej usługi, więc rzadko trzeba go wpisywać.
 
-1. Kliknij **Connections** (Połączenia) na górnym pasku, a potem **Add** (dodaj). Otwiera się okno **Add account** (dodanie konta).
-2. Znajdź usługę. Lista ma sekcję **Images & video** (obrazy i wideo), a pole **Search providers** (wyszukiwanie dostawców) pomaga ją odnaleźć.
+1. Otwórz **Biblioteka → Połączenia** i kliknij **Dodaj połączenie**. Otworzy się lista usług.
+2. Otwórz zakładkę **Obraz** i znajdź usługę. Pomoże ci w tym pole **Szukaj usług**.
 3. Wklej klucz w pole **API key** (klucz API). Usługi darmowe i lokalne go nie potrzebują. Przy serwerze, który uruchamiasz u siebie, wypełnij pole adresu.
 4. Kliknij **Connect** (połącz). Marinara testuje konto.
 5. Wybierz model obrazów z listy albo wpisz identyfikator modelu. To jest twój model obrazów. Pojawia się pod kontem w panelu **Connections**.
 6. Otwórz model obrazów i kliknij **Test image** (test obrazu). Marinara tworzy mały obrazek testowy.
-7. Żeby aplikacja używała tego modelu do obrazów, ustaw zadanie **Images** (obrazy) w sekcji **Defaults** (ustawienia domyślne) u góry panelu **Connections**.
+7. Zaznaczenie **Obrazy** w kroku 5 ustawia też zadanie **Obrazy** w sekcji **Domyślne** u góry panelu **Połączenia**. Żeby później je zmienić, kliknij wiersz **Obrazy**.
 
 Aby dodać kolejny model obrazów do konta, otwórz jego menu **⋯** (trzy kropki) i kliknij **Add image model** (dodanie modelu obrazów). Pełny opis tego okna znajdziesz w przewodniku [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md).
 
@@ -220,7 +220,7 @@ Precyzyjne obrazy referencyjne w usłudze NovelAI działają wyłącznie na mode
 
 ## Kolejkowanie żądań generowania mediów
 
-Przełącznik **Queue media generation requests** (kolejkowanie żądań generowania mediów) znajduje się w **Settings → Generations → Overall Generations** (ustawienia, generowanie, ogólne ustawienia generowania). Domyślnie jest włączony.
+Przełącznik **Queue media generation requests** (kolejkowanie żądań generowania mediów) znajduje się w **Ustawienia → Media → Domyślne ustawienia generowania**. Domyślnie jest włączony.
 
 Kiedy jest włączony, Marinara wysyła zadania graficzne do każdego konta obrazów pojedynczo, a zadania wideo do każdego konta wideo również pojedynczo, w osobnych kolejkach. Obraz i wideo dla tego samego konta mogą powstawać jednocześnie. Dotyczy to każdej funkcji, która je zleca: agenta Illustrator, trackerów, komend, galerii, zasobów trybu Game Mode i pobranych agentów, takich jak Slurp. Dwa modele z tym samym adresem i kluczem API dzielą kolejkę. Różne konta nadal działają jednocześnie. Usługa NovelAI dostaje też krótką przerwę między zadaniami, a gdy odpowiada, że jest zajęta, Marinara czeka i próbuje jeszcze dwa razy.
 
@@ -231,6 +231,6 @@ Zostaw go włączonego przy usługach, które odrzucają dwa żądania naraz. Wy
 - [Konfiguracja workflow w ComfyUI](comfyui.md)
 - [Agent Illustrator](illustrator-agent.md)
 - [Profile stylu obrazów](style-profiles.md)
-- [Tła scen i galeria](scene-backgrounds.md)
+- [Tła tworzone przez agenta Illustrator](scene-backgrounds.md)
 - [Selfie](../conversation/selfies.md)
 - [Obsługiwani dostawcy AI](../connections/providers-reference.md)

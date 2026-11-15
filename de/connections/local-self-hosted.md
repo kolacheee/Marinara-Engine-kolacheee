@@ -8,8 +8,8 @@ In der App heißt diese Art von Konto **OpenAI-compatible** (OpenAI-kompatibel).
 
 Bevor du anfängst, installiere einen Modellserver, starte ihn und lade ein Modell darin. Lade zum Beispiel Ollama von `ollama.com` herunter und folge seinen Schritten, um ein Modell zu holen. Marinara verbindet sich mit dem Server, startet ihn aber nicht für dich. Der Server beantwortet Anfragen unter einer Webadresse auf deinem Rechner, dem sogenannten Endpunkt.
 
-1. Klick in der oberen Leiste auf **Connections** (Verbindungen) und dann auf **Add** (Hinzufügen). Das Fenster **Add account** (Konto hinzufügen) öffnet sich.
-2. Klick unter **Chat** auf deinen Server: **Ollama**, **LM Studio**, **KoboldCpp** oder **llama.cpp**. Diese Kacheln tragen die Markierung **Self-hosted**. Für jeden anderen Server klick auf **OpenAI-compatible address** (OpenAI-kompatible Adresse).
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen) und klick auf **Add connection** (Verbindung hinzufügen). Die Liste der Dienste öffnet sich.
+2. Klick im Tab **Text** unter **Self-hosted** auf deinen Server: **Ollama**, **LM Studio**, **KoboldCpp** oder **llama.cpp**. Diese tragen die Markierung **Self-hosted**. Für jeden anderen Server klick auf **OpenAI-compatible address** (OpenAI-kompatible Adresse).
 3. Prüf **Server address** (Serveradresse). Bei den vier genannten Servern ist sie schon eingetragen. Bei einem anderen Server tippst du seine Adresse ein. Siehe die Tabelle unten.
 4. Lass **API key (optional)** leer. Die meisten lokalen Server brauchen keinen Key. Um dem Konto einen Namen zu geben, tipp ihn unter **Name (optional)** ein.
 5. Klick auf **Connect** (Verbinden). Marinara testet die Adresse. **Connected** bedeutet, dass Marinara den Server erreicht hat.
@@ -21,6 +21,18 @@ Wenn es nicht funktioniert hat:
 
 - **Marinara could not reach** die Adresse. Prüf, ob der Server läuft und ob Adresse und Port stimmen. **Continue anyway** (trotzdem fortfahren) speichert das Konto ohne bestandenen Test.
 - Die Adresse liegt auf einem anderen Rechner. Siehe [Einen Server auf einem anderen Rechner erreichen](#reach-a-server-on-another-computer).
+
+## Das jeweils geladene Servermodell nutzen
+
+Ein lokaler oder selbst gehosteter Server kann mit dem Modell antworten, das er gerade geladen hat. Deshalb kann sein Konto ein Modell **Default** enthalten. Default sendet keinen Modellnamen. Es nutzt immer das Modell, das du in Ollama, LM Studio, KoboldCpp oder llama.cpp geladen hast, auch nachdem du dort das Modell gewechselt hast.
+
+- Ein neues Konto für einen Server auf deinem Rechner oder in deinem Netzwerk beginnt mit einem Modell **Default**.
+- Um später eines hinzuzufügen, klick am Konto auf **⋯** und wähl **Modell hinzufügen**. **Default** steht in der ersten Zeile.
+- Nutze **Default** wie jedes andere Modell: Weise ihm im Bereich **Aufgaben** eine Aufgabe wie **Main** zu, oder wähl es unter **Modell für diesen Chat**.
+- In der Verbindungstabelle steht dazu „Whatever model the server has loaded“, und es hat keinen Stern.
+- Klick im Panel auf **Default**, um ihm eigene Einstellungen zu geben, etwa Parameter und Prompt-Preset, genau wie einem benannten Modell.
+
+**Default** erscheint nur bei einem Server auf deinem Rechner oder in deinem Netzwerk. Ein Cloud-Dienst braucht immer einen Modellnamen.
 
 ## Adressen verbreiteter lokaler Server
 
@@ -71,7 +83,7 @@ Unter Android ist diese Einstellung standardmäßig an, solange du sie nicht set
 
 ## Das Modell für Entscheidungen nutzen
 
-Dasselbe Modell kann auch Entscheidungsfragen beantworten, etwa Aktivierungsprüfungen für Agenten, ohne dass eine zweite Kopie geladen wird. Klick im Panel am Modell auf **⋯** und wähl **Use this model for decisions** (dieses Modell für Entscheidungen verwenden). Die Option erscheint bei einem OpenAI-kompatiblen Modell mit Modellnamen. Siehe [Decision-Modelle](decision-models.md#on-a-server-you-already-run).
+Dasselbe Modell kann auch Entscheidungsfragen beantworten, etwa Aktivierungsprüfungen für Agenten, ohne dass eine zweite Kopie geladen wird. Öffne **Library → Connections**, klick auf **Add connection**, öffne den Tab **Entscheidung**, wähle **Own decision server** (eigener Decision-Server) und gib dieselbe Adresse ein. (Im klassischen Layout findest du am Modell unter **⋯** die Option **Use this model for decisions** (dieses Modell für Entscheidungen verwenden), die sie für dich einträgt.) Siehe [Decision-Modelle](decision-models.md#on-a-server-you-already-run).
 
 ## Der Schalter Treat as local/custom endpoint
 

@@ -5,7 +5,10 @@ Los logros (achievements) son insignias cosméticas que se desbloquean a medida 
 ## Abrir la ventana de logros
 
 1. Ve a la pantalla de inicio.
-2. Haz clic en el marcador **Achievements** (Logros), con el icono de trofeo. En un teléfono, toca primero el botón de marcadores a la izquierda de las pestañas.
+2. Haz clic en **Widgets** y activa el widget **Achievements** (Logros).
+3. Haz clic en el widget.
+
+En el diseño clásico, Inicio también tiene un marcador **Achievements** (icono de trofeo). En un teléfono, toca primero el botón de marcadores a la izquierda de las pestañas.
 
 Se abre la ventana **Achievements**. En la parte superior hay un resumen, como **12 of 24 achievements unlocked in this profile.** (12 de 24 logros desbloqueados en este perfil). Un perfil es tu conjunto guardado de datos de Marinara. Debajo hay una cuadrícula de tarjetas.
 
@@ -13,7 +16,7 @@ Se abre la ventana **Achievements**. En la parte superior hay un resumen, como *
 - Una tarjeta desbloqueada muestra una etiqueta **unlocked** (desbloqueado).
 - Una tarjeta con una meta también muestra una fila **Progress** (Progreso) y una barra.
 
-También puedes añadir el widget **Achievements** a la pantalla de inicio. Haz clic en **Widgets** en los marcadores y actívalo. Muestra un contador como **12 of 24 unlocked** (12 de 24 desbloqueados), tu logro **Last obtained** (Último obtenido) y el **Closest next** (Siguiente más cercano). Mientras carga, muestra **Checking the collection...** (Revisando la colección...). Haz clic en él para abrir la ventana. Consulta [Widgets de inicio](welcome.md#home-widgets).
+El widget **Achievements** muestra un contador como **12 of 24 unlocked** (12 de 24 desbloqueados), tu logro **Last obtained** (Último obtenido) y el **Closest next** (Siguiente más cercano). Mientras carga, muestra **Checking the collection...** (Revisando la colección...). Haz clic en él para abrir la ventana. Consulta [Widgets de inicio](welcome.md#home-widgets).
 
 Si no funcionó: el marcador, el widget y la ventana solo aparecen cuando el ajuste **Achievements** está activado. Consulta [Activar o desactivar los logros](#turn-achievements-on-or-off).
 
@@ -53,7 +56,7 @@ Si eliminas un agente, su sección desaparece y tus desbloqueos se conservan. Si
 ## Activar o desactivar los logros
 
 1. Abre **Settings → General** (Configuración → General).
-2. En la sección **App Behavior** (Comportamiento de la app), activa o desactiva el interruptor **Achievements**. Está activado de forma predeterminada.
+2. En la sección **Extras**, activa o desactiva el interruptor **Achievements**. Está activado de forma predeterminada.
 
 - Activado: el marcador y la ventana están disponibles, y aparece un aviso emergente cuando algo se desbloquea.
 - Desactivado: el marcador, el widget y los avisos emergentes se ocultan. La app sigue registrando los desbloqueos en segundo plano, así que no se pierde nada cuando vuelves a activarlo.

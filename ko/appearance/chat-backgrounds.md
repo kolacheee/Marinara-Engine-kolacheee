@@ -1,32 +1,30 @@
-# 채팅 배경
+# 배경 라이브러리
 
-이 가이드에서는 배경 라이브러리를 설명합니다. 배경 라이브러리에는 직접 올린 다음 손수 골라 채팅 뒤에 까는 이미지가 들어 있습니다. 매 턴 배경을 알아서 골라 주는 **Background** 에이전트는 [Roleplay 배경](../roleplay/backgrounds.md)을 참고하세요. Gallery에서 AI로 만드는 배경은 [장면 배경과 Gallery](../media/scene-backgrounds.md)를 참고하세요.
+이 가이드에서는 배경 라이브러리를 설명합니다. 배경 라이브러리에는 직접 올린 그림, Illustrator가 그린 그림, Marinara에 기본 포함된 그림처럼 채팅 뒤에 표시할 수 있는 모든 그림이 들어 있습니다. 채팅에 쓸 그림 고르기, 가져오기, 태그, 폴더, Roleplay 기본 배경, **Background Blur**(배경 흐림)를 다룹니다.
 
-채팅 배경은 모든 채팅 모드에서 보입니다. Conversation 채팅에서는 **Conversation Theme**(대화 테마)의 그라데이션이 이미지 위에 그대로 남고, **Conversation background image opacity**(대화 배경 이미지 불투명도)가 이미지가 얼마나 진하게 보일지 정합니다. [모양 설정](appearance-settings.md)을 참고하세요.
+이야기에 따라 바뀌는 배경(Background 에이전트, 고정된 장소, 캐릭터를 따라가는 그림)은 [이야기를 따라 바뀌는 배경](../roleplay/backgrounds.md)을 참고하세요. 비와 눈이 오는 버전을 포함해 Illustrator가 그리는 그림은 [Illustrator가 만드는 배경](../media/scene-backgrounds.md)을 참고하세요.
 
-## 채팅 배경 바꾸기
-
-시작하기 전에: 배경을 바꿀 채팅을 여세요. 고른 배경은 그 채팅에 적용됩니다.
-
-1. **Settings**(설정)를 열고 **Appearance**(모양)로 이동한 다음 **App**(앱) 버튼을 누르세요.
-2. **Backgrounds**(배경)에서 **Browse library**(라이브러리 찾아보기)를 탭하세요.
-3. 그림을 탭하세요. 그 그림이 이 채팅의 배경이 되고 창이 닫힙니다.
-
-내 이미지를 쓰려면 먼저 가져오세요([배경 가져오기](#import-a-background) 참고).
+채팅 배경은 모든 채팅 모드에서 보입니다. Conversation 채팅에서는 **Conversation Background**(대화 배경)의 그라데이션이 그림 위에 그대로 남고, **Conversation background image opacity**(대화 배경 이미지 불투명도)가 그림이 얼마나 진하게 보일지 정합니다. [모양 설정](appearance-settings.md)을 참고하세요.
 
 ## 배경 설정 위치
 
-1. **Settings**를 여세요.
-2. **Appearance** 탭을 선택한 다음 **App** 버튼을 누르세요.
-3. **Backgrounds** 섹션을 찾으세요.
+**Settings → Appearance**(설정 → 모양)를 열고 **Backgrounds**(배경) 섹션을 찾으세요. 이 섹션에는 **Chat Background**(채팅 배경화면) 선택기, **Background Blur** 슬라이더, **Conversation background image opacity**와 **Chat List Backgrounds**(채팅 목록 배경) 컨트롤이 있습니다.
 
-이 섹션에는 **Chat Background**(채팅 배경화면) 선택기, **Background Blur**(배경 흐림) 슬라이더, **Conversation background image opacity**와 **Chat List Backgrounds**(채팅 목록 배경) 컨트롤이 있습니다([모양 설정](appearance-settings.md) 참고).
+선택기에는 현재 배경의 미리보기가 표시되고, 고른 배경이 없으면 **Default background**(기본 배경)가 표시됩니다. 그 아래에는 **Recent**(최근 항목) 배경이 최대 3개 있어 한 번만 탭하면 바로 고를 수 있습니다. **Browse library**(라이브러리 찾아보기)를 클릭하면 **Background Library**(배경 라이브러리) 창이 열립니다. 채팅에서 **Chat Settings → Background**(채팅 설정 → 배경)를 열면 해당 채팅에 쓸 같은 라이브러리가 열립니다.
 
-선택기에는 현재 배경의 미리보기가 표시되고, 고른 배경이 없으면 **Default background**(기본 배경)가 표시됩니다. 그 아래에는 **Recent** 배경이 최대 3개 있어 한 번만 탭하면 바로 고를 수 있습니다. **Browse library**를 클릭하면 **Background Library**(배경 라이브러리) 창이 열립니다.
+## 채팅 배경 고르기
+
+시작하기 전에: 배경을 바꿀 채팅을 여세요. 고른 그림은 그 채팅에만 적용됩니다.
+
+1. **Settings → Appearance → Backgrounds**(설정 → 모양 → 배경)를 열고 **Browse library**를 클릭하세요.
+2. 그림을 클릭하세요. 체크 표시가 나타나고, 그 그림이 이 채팅의 배경이 되며, 창이 닫힙니다.
+3. 기본값으로 되돌리려면 선택된 그림을 다시 클릭하거나, 미리보기의 X(**Clear selection**(선택 해제))를 클릭하세요.
+
+내 그림을 쓰려면 먼저 가져오세요([배경 가져오기](#import-a-background) 참고).
 
 ## 배경 라이브러리
 
-라이브러리에는 직접 올린 이미지와 Marinara에 기본 포함된 그림이 함께 들어 있습니다. 이미지마다 라벨이 붙습니다.
+라이브러리에는 직접 올리거나 Illustrator가 그린 그림과 Marinara에 기본 포함된 그림이 함께 들어 있습니다. 그림마다 라벨이 붙습니다.
 
 | 라벨 | 의미 |
 | --- | --- |
@@ -46,12 +44,6 @@
 새 이미지가 **My upload** 라벨과 함께 격자에 나타납니다.
 
 각 파일은 JPG, PNG, GIF, WebP, AVIF 중 하나여야 하며, 최대 20 MB까지 허용됩니다. Marinara는 파일 이름이 아니라 실제 내용을 확인합니다. 이미지가 아닌 파일의 이름만 `.png`로 바꾸면 거부됩니다.
-
-### 현재 채팅의 배경 고르기
-
-1. **Browse library**를 여세요.
-2. 썸네일을 클릭하세요. 체크 표시가 나타나고, 그 이미지가 이 채팅의 배경이 되며, 창이 닫힙니다.
-3. 기본값으로 되돌리려면 선택된 썸네일을 다시 클릭하거나, 미리보기의 X(**Clear selection**, 선택 해제)를 클릭하세요.
 
 ### 검색과 필터
 
@@ -90,6 +82,10 @@
 3. <kbd>Enter</kbd>를 누르거나 **Add**를 클릭하세요.
 
 태그를 빼려면 태그를 편집하는 동안 그 태그를 클릭하세요.
+
+태그는 소문자로 저장되며, 글자, 숫자, 공백, 하이픈, 밑줄을 사용할 수 있습니다. 태그 하나는 최대 40자입니다.
+
+그림에 나온 장소를 `guest bedroom`이나 `harbor tavern`처럼 태그로 달아 두세요. **Background** 에이전트는 배경을 고를 때 태그를 읽습니다. Illustrator는 두 단어 이상으로 된 태그가 이야기 속 장소를 나타내는 그림이 있으면 새로 그리는 대신 그 그림을 재사용합니다. [기존 그림 재사용하기](../media/scene-backgrounds.md#reusing-pictures-you-already-have)를 참고하세요.
 
 <a id="download-a-background"></a>
 
@@ -136,6 +132,6 @@ Roleplay 기본 배경은 모든 새 Roleplay 채팅이 처음 쓰는 이미지�
 
 ## 관련 가이드
 
-- [Roleplay 배경](../roleplay/backgrounds.md): 매 턴 배경을 고르는 Background 에이전트
-- [장면 배경과 Gallery](../media/scene-backgrounds.md): Gallery에서 AI로 만드는 장면 배경. 이 라이브러리에도 저장됩니다.
+- [이야기를 따라 바뀌는 배경](../roleplay/backgrounds.md): Background 에이전트, 고정된 장소, 갤러리 배경
+- [Illustrator가 만드는 배경](../media/scene-backgrounds.md): 그린 배경과 날씨별 버전. 이 라이브러리에도 저장됩니다.
 - [모양 설정](appearance-settings.md): Appearance 탭 전체

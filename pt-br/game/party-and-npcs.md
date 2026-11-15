@@ -18,7 +18,7 @@ Os detalhes dos dois vêm a seguir.
 
 Para remover um companheiro, passe o mouse sobre o retrato dele no computador e clique no **X**. Isso funciona com qualquer companheiro que o GM recrutou, na configuração inicial ou mais tarde. A sua própria persona (o personagem que você interpreta) não tem **X**.
 
-Você pode arrastar o botão pelo chat no computador ou no celular. Abra-o e use **Lock window** (travar janela) para mantê-lo no lugar. No computador, você também pode mover e redimensionar a janela, e **Close** (fechar) a devolve ao botão. A posição fica salva com o chat e segue o estilo de widget do chat definido em **Settings → Appearance → App**. No celular, ele fica separado do menu de três pontos **Chat tools**.
+Você pode arrastar o botão pelo chat no computador ou no celular. Abra-o e use **Lock window** (travar janela) para mantê-lo no lugar. No computador, você também pode mover e redimensionar a janela, e **Close** (fechar) a devolve ao botão. A posição fica salva com o chat e segue o estilo de widget do chat definido em **Configurações → Aparência → Botões e janelas do chat**. No celular, ele fica separado do menu de três pontos **Chat tools**.
 
 ## Fichas de personagem
 

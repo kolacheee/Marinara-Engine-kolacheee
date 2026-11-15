@@ -12,7 +12,7 @@ Potrzebna jest jedna rzecz: konto AI dla postaci GM. Jeśli nie masz jeszcze ża
 
 Cała reszta jest opcjonalna i domyślnie wyłączona. Możesz dodać ją później:
 
-- **Obrazy.** Agent **Illustrator** rysuje portrety postaci NPC, tła miejsc i obrazy scen. Pobierz go z **Agents → Agent Organizer** (agenci, organizowanie agentów). Wymaga konta do generowania obrazów. Bez niego nadal działa historia, śledzenie stanu i walka, ale obszary wizualne pozostają puste.
+- **Obrazy.** Agent **Illustrator** rysuje portrety postaci NPC, tła miejsc i obrazy scen. Pobierz go z **Biblioteka → Agenci**. Wymaga konta do generowania obrazów. Bez niego nadal działa historia, śledzenie stanu i walka, ale obszary wizualne pozostają puste.
 - **Efekty sceniczne z modelu wbudowanego.** Marinara może uruchomić mały model na twoim komputerze, który bez kosztów wybiera tła i muzykę. Po pobraniu staje się domyślną wartością pola **Scene effects model** (model efektów scen). Do tego czasu wartość domyślna to **Skip - use inline tags from GM** (pominięcie, użycie znaczników z tekstu GM). Zobacz [Konfiguracja modelu wbudowanego](../connections/local-model.md).
 - **Storyboardy.** Pobierz agenta Storyboard, a potem włącz go dla gry. Zobacz [Przewodnik po agencie Storyboard](storyboard.md).
 - **Wideo.** Konto do generowania wideo jest potrzebne tylko do filmów ze scen albo animowanych storyboardów.
@@ -20,7 +20,7 @@ Cała reszta jest opcjonalna i domyślnie wyłączona. Możesz dodać ją późn
 
 ## Rozpoczynanie gry
 
-1. Na pasku bocznym czatów otwórz zakładkę **GM** i kliknij przycisk **+** o etykiecie **New Game** (nowa gra). Możesz też kliknąć **Game** (gra) na ekranie głównym. Otworzy się kreator konfiguracji. Zobacz [Zarządzanie listą czatów](../chats/managing-chats.md).
+1. Na pasku bocznym **Czaty** otwórz zakładkę **Gra** i kliknij **Nowy** (**Nowa gra**). Możesz też kliknąć **Gra** na ekranie głównym. Otworzy się kreator konfiguracji. Zobacz [Zarządzanie listą czatów](../chats/managing-chats.md).
 2. W pierwszym kroku wybierz **Model**, który obsługuje postać GM. Wybierz jedno z wcześniej dodanych kont. Jeśli lista jest pusta, najpierw dodaj konto. Do generowania świata wybierz mocny płatny model (zobacz [Wybór modelu](#choosing-a-model)).
 3. W każdym kroku klikaj **Next** (dalej). Każde inne pole ma wartość domyślną, więc możesz po prostu przejść przez kreator.
 4. W ostatnim kroku kliknij **Create world** (utworzenie świata). Podczas budowania świata przycisk pokazuje **Generating World…** (generowanie świata). To jedno duże zapytanie do twojego modelu, więc poczekaj, aż się zakończy.
@@ -37,7 +37,7 @@ Jeśli coś nie zadziałało, zajrzyj do sekcji [Generowanie świata kończy si�
 | Krok | Co ustawiasz |
 | --- | --- |
 | **Connection** (połączenie) | **Game Name** (nazwa gry), **Model**, który obsługuje postać GM, oraz opcjonalny **Scene effects model**. Karta **Game Mode** pokazuje na razie tylko **VN** (zobacz [VN czy Overworld](#vn-or-overworld)). |
-| **World** (świat) | Gatunek, realia, ton, poziom trudności, klasyfikacja treści i język. **Combat Preference** (preferowany rodzaj walki) to **Turn-Based** albo **Tactical**. Każda nowa gra korzysta z klas **MRPG** (Marinara RPG) (zobacz [Klasy MRPG](mrpg-classes.md)). Gdy jest zainstalowany zestaw zasad, pojawia się wybór **Rules** (zasady) (zobacz [Wybór zasad](#choose-rules)). |
+| **World** (świat) | Gatunek, realia, ton, poziom trudności, klasyfikacja treści, styl historii, przemoc, granice treści i język. **Combat Preference** (preferowany rodzaj walki) to **Turn-Based** albo **Tactical**. Każda nowa gra korzysta z klas **MRPG** (Marinara RPG) (zobacz [Klasy MRPG](mrpg-classes.md)). Gdy jest zainstalowany zestaw zasad, pojawia się wybór **Rules** (zasady) (zobacz [Wybór zasad](#choose-rules)). |
 | **Party** (drużyna) | Twoja persona (postać, w którą się wcielasz), **Game Master Mode**, członkowie drużyny i **GM intro message** (wiadomość otwierająca GM; zobacz [Wiadomość otwierająca GM](#the-gm-intro-message)). Początkowe drzewko MRPG każdego członka wynika z sekcji **Game Mode** na jego karcie (zobacz [Wybieranie drzewek postaci](mrpg-classes.md#choose-a-characters-trees)). |
 | **Goals** (cele) | Czego oczekujesz od przygody. |
 | **Lorebooks** (lorebooki) | Lorebooki, które postać GM traktuje jako kanon. Lorebook to zbiór faktów o świecie w tle. Zobacz [Lorebooki](../lorebooks/overview.md). |
@@ -57,7 +57,9 @@ Gdy agent **Hierarchical Maps** jest pobrany (teraz nazywa się World Maps, zoba
 | Genre | Fantasy | Można wybrać kilka, a także dopisać własne. Zestaw settingu wybrany wcześniej ustawia własny gatunek. |
 | Tone | Heroic | Można wybrać kilka. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** albo **Brutal**. Wyższe ustawienia utrudniają walki: w grze MRPG dodają liczniejszych i silniejszych przeciwników (zobacz [Walki w grze MRPG](combat.md#battles-in-an-mrpg-game)), a w grze Legacy zwiększają obrażenia zadawane przez wrogów (zobacz [Skalowanie trudności](combat.md#difficulty-scaling)). |
-| Content Rating | SFW | **SFW** albo **NSFW**. NSFW tylko dopuszcza treści dla dorosłych, nie wymusza ich. |
+| Kategoria treści (treści seksualne) | SFW | **SFW** albo **NSFW**. Dotyczy tylko treści seksualnych. NSFW dopuszcza dosłowne sceny, nie wymusza ich. |
+| Styl historii | Standardowy | **Standardowy** albo **Łagodny**. Zobacz [Treść i styl historii](#content-and-story-style). |
+| Przemoc | Poważna (Drastyczna przy NSFW) | **Łagodna**, **Poważna** albo **Drastyczna**. |
 | Language | English | W tym języku powstaje cały tekst w grze. |
 | Game Master Mode | Standalone GM | **Character GM** (GM z karty postaci) używa jednej z twoich kart postaci jako postaci GM. |
 | Scene effects model | Built-in model | Dopiero po jego pobraniu. Do tego czasu wartość domyślna to **Skip - use inline tags from GM**. |
@@ -69,13 +71,21 @@ Gdy agent **Hierarchical Maps** jest pobrany (teraz nazywa się World Maps, zoba
 | Start Muted | Off | Gra zaczyna się z wyciszonym całym dźwiękiem. |
 | Game Presentation | Standard | Zobacz niżej. |
 
-<a id="choose-rules"></a>
+### Treść i styl historii
+
+Krok **Świat** zawiera poniższe ustawienia określające, co może pojawić się w historii. W trwającej grze wszystkie znajdziesz w **Ustawienia czatu → Preset promptu**.
+
+- **Kategoria treści (treści seksualne)**: **SFW** zachowuje romans i czułość, a sceny seksu pozostawia poza kadrem. **NSFW** pozwala opisywać je dosłownie. Nie określa przemocy ani tonu.
+- **Edytuj wytyczne kategorii wiekowej**, pod kategorią treści, pokazuje tekst, który mistrz gry otrzymuje jako zasady dotyczące treści gry. Dostosuj go do swojej gry; **Przywróć domyślne** przywraca tekst domyślny dla danej kategorii. Niezmieniony tekst podąża za ustawieniem domyślnym, więc późniejsze ulepszenia trafiają też do twojej gry. W trwającej grze jest to **Wytyczne kategorii wiekowej**.
+- **Styl historii**: **Standardowy** utrzymuje wysoką stawkę, więc błędy i pech mają realne konsekwencje. **Łagodny** służy historiom o mniejszym napięciu: niepowodzeniom bez kary lub traumy, mniejszej liczbie rzutów na rzeczy poza kontrolą postaci oraz przestrzeni na pocieszenie i odpoczynek.
+- **Przemoc**: **Łagodna**, **Poważna** albo **Drastyczna**, ustawiana niezależnie od kategorii treści. Jeśli jej nie wybierzesz, jest **Poważna** przy SFW i **Drastyczna** przy NSFW.
+- **Granice treści**: tematy, które mistrz gry pomija w historii, po jednym w wierszu, np. `harm to animals`. To nieprzekraczalne granice w każdym stylu i kategorii, a twoje własne wytyczne kategorii nie mogą ich usunąć. Ponieważ historię pisze AI, nie da się zagwarantować, że wymieniony temat nigdy się nie pojawi.
+
+Preset promptu też może je zawierać: w zakładce **Prompty** presetu znajdziesz **Ustawienia historii gry** z opcją **Przenieś ustawienia historii do gier korzystających z tego presetu**. Przemoc może też mieć wartość **Zgodnie z kategorią**. Wybranie tego presetu dla gry ustawia jej styl i przemoc oraz dodaje jego granice do granic samej gry. Scena rozpoczęta z gry przejmuje jej kategorię, wytyczne, przemoc, styl i granice.
 
 ### Wybór zasad
 
 Opcja **Rules** pojawia się tylko przy nowej grze i tylko wtedy, gdy zainstalowano co najmniej jeden zestaw zasad. Domyślna opcja to **Marinara's own rules** (własne zasady aplikacji Marinara): wbudowane testy d20 i arkusz postaci z sześcioma atrybutami. Zestaw zasad, na przykład **5e (SRD 5.1)**, zastępuje je testami i arkuszem postaci danego systemu gier fabularnych, a walki też może rozstrzygać według własnych zasad. Kreator pokazuje, co obejmuje każdy zestaw zasad. Po utworzeniu gry wyboru nie da się zmienić. Zobacz [Game Mode: gra z zestawem zasad](rulesets.md).
-
-<a id="the-gm-intro-message"></a>
 
 ### Wiadomość otwierająca GM
 
@@ -109,8 +119,6 @@ Przycisk z dymkiem obok przycisku dołączania plików, z podpowiedzią **Choose
 
 Aktywny tryb ma w menu oznaczenie **On** (włączony). Kliknij tę samą pozycję jeszcze raz, żeby go wyłączyć.
 
-<a id="the-games-controls"></a>
-
 ## Kontrolki gry
 
 Na komputerze kontrolki otwierają się przyciskami blisko prawego górnego rogu czatu. Na telefonie znajdziesz je w ruchomym menu **Chat tools** (narzędzia czatu) z trzema kropkami.
@@ -128,8 +136,6 @@ Wybierz narzędzie, żeby otworzyć je w ruchomym oknie na komputerze albo w pan
 Kontrolkę możesz też trzymać wewnątrz **Chat Settings**. Otwórz okno kontrolki i wybierz **Put back in Chat Settings** (przeniesienie do Chat Settings). Pojawi się tam jako rozwijana sekcja, a jej przycisk wydzielenia znów zmieni ją w okno. Każda gra zapisuje twój wybór. **Reset View** (przywrócenie widoku) przywraca początkowy układ.
 
 **Character Profiles** (profile postaci) zostaje poza menu Chat tools zarówno na komputerze, jak i na telefonie. Przeciągnij przycisk z portretem w wybrane miejsce, a potem otwórz go, żeby wybrać członka drużyny i obejrzeć albo edytować jego arkusz postaci. Na telefonach **Map** (mapa) też ma własny ruchomy przycisk. Oba przyciski korzystają z twojego stylu widgetów czatu, zapisują swoje położenie dla tej gry i można je zablokować z poziomu otwartego okna.
-
-<a id="choosing-a-model"></a>
 
 ## Wybór modelu
 
@@ -149,8 +155,6 @@ Game Mode wysyła do AI trzy rodzaje zapytań:
 1. **Generowanie świata.** Raz, po kliknięciu **Start Game**. Jedno duże zapytanie, które zwraca opis świata, mapę startową, postacie NPC, arkusze postaci drużyny i widgety.
 2. **Tury rozgrywki.** Każda wiadomość buduje świeży prompt z aktualnym stanem gry. Postać GM opowiada dalszy ciąg i aktualizuje świat. Matematykę rund walki liczy silnik, a nie model, więc wyniki są uczciwe.
 3. **Podsumowania sesji.** Po zakończeniu sesji postać GM pisze streszczenie i notatki o ciągłości. Na starcie następnej sesji pisze krótką wiadomość pomostową. Starsze sesje są kompresowane do streszczeń, dzięki czemu długie kampanie mieszczą się w tym, co model może przyjąć.
-
-<a id="optional-tool-planning-and-lore-searches"></a>
 
 ## Opcjonalne planowanie narzędzi i wyszukiwanie w lorebookach
 
@@ -174,8 +178,6 @@ Agenci to opcjonalni pomocnicy AI, którzy działają obok postaci GM. Wysyłaj�
 **Review Agent Outputs** (przeglądanie wyników agentów) pozwala sprawdzić, co wytworzył agent. Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
 
 ## Rozwiązywanie problemów
-
-<a id="world-generation-fails-with-a-json-or-422-error"></a>
 
 ### Generowanie świata kończy się błędem formatu JSON albo błędem 422
 
@@ -208,8 +210,6 @@ Część modeli pozostaje radosna. Dopisz wyraźną instrukcję w polu preferenc
 
 Sekcje poniżej opisują gry **Overworld**, które nie są jeszcze dostępne. Czytaj je tylko wtedy, gdy twój serwer je włączył.
 
-<a id="vn-or-overworld"></a>
-
 ### VN czy Overworld
 
 Nowa gra toczy się w jednym z dwóch trybów gry, wybieranym w pierwszym kroku i zachowywanym we wszystkich jej sesjach:
@@ -218,8 +218,6 @@ Nowa gra toczy się w jednym z dwóch trybów gry, wybieranym w pierwszym kroku 
 - **VN** to Game Mode w dotychczasowej postaci, opowiadany jak powieść wizualna: scena po scenie, z mapą sceny i walkami, bez zestawu settingu, świata, mapy świata, miast i map lochów.
 
 Overworld jest zablokowany, dopóki właściciel serwera nie ustawi `MARINARA_OVERWORLD_GAMES`. Gdy jest zablokowany, jego karta jest wyszarzona z informacją "Overworld games, with a setting kit and a generated world, are not ready yet. New games start as VN games." Każda nowa gra jest wtedy grą VN, a wybory zestawu settingu i świata się nie pojawiają. Gra utworzona, zanim pojawił się ten wybór, działa tak jak dotąd: ze światem jest grą Overworld, bez świata – grą VN.
-
-<a id="choosing-a-setting-kit"></a>
 
 ### Wybór zestawu settingu
 
@@ -233,8 +231,6 @@ Jest osiem zestawów: high fantasy, wuxia i xianxia, współczesność, współc
 - **Download this kit** (pobranie zestawu) zapisuje plik `.worldkit.json` do udostępnienia. **Import a kit file** (import pliku zestawu) wczytuje go z powrotem.
 
 Gra zachowuje zestaw, z którym ją utworzono, a udostępniony plik konfiguracji go zawiera. Experience może dostarczać własny pakiet map (zestaw settingu, gotowe mapy i kafelki). Gdy to Experience jest włączone, konfiguracja pokazuje jego zestaw jako ustawiony, a jeśli dostarcza mapy – pole **Map** do wyboru. Wyłączenie Experience przywraca twoje wybory.
-
-<a id="making-a-world"></a>
 
 ### Tworzenie świata
 

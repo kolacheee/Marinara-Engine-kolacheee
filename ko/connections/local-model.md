@@ -10,9 +10,9 @@
 
 시작하기 전에 모델을 담을 디스크 여유 공간과 메모리(RAM)가 충분한지 확인하세요. 필요한 크기는 아래 표에 있습니다.
 
-1. 상단 바에서 **Connections**(연결)를 클릭하세요.
-2. **Jobs**(작업) 상자 아래에서 **Built-in model** 카드를 찾으세요. 카드에는 **Not downloaded**(다운로드되지 않음)가 표시됩니다.
-3. 카드를 클릭하거나 카드의 **Download**(다운로드) 버튼을 클릭하세요. **Built-in model**이라는 제목의 창이 열립니다.
+1. **Library → Connections**(라이브러리 → 연결)를 여세요.
+2. **On this device** 아래에서 **Built-in model**을 찾으세요. **Not downloaded**(다운로드되지 않음)가 표시됩니다.
+3. 행을 클릭하거나 **Set up**(설정)을 클릭하세요. **Built-in model**이라는 제목의 창이 열립니다.
 4. **Which model?**(어떤 모델을 쓸까요?) 아래에서 모델을 고르세요. **Gemma 4 E2B — Q8 (Best Quality)**에는 **Recommended**(권장) 표시가 붙어 있습니다. 컴퓨터의 메모리가 적다면 **Q4_K_M**을 고르세요. 이 모델은 RAM이 5.4 GB 대신 약 3.4 GB만 필요합니다.
 5. 아래쪽의 **Download** 버튼을 클릭하세요. 버튼에는 **Download 5.0 GB**(5.0 GB 다운로드)처럼 모델 크기가 표시됩니다.
 6. 기다리세요. 창에는 **Install runtime**(런타임 설치), **Download model**(모델 다운로드), **Start and test**(시작 및 테스트)의 세 단계가 표시됩니다. 런타임은 모델을 실행하는 프로그램입니다. 런타임이 없으면 Marinara가 먼저 설치합니다.
@@ -27,7 +27,7 @@
 - **Local runtime failed to start**(로컬 런타임을 시작하지 못함). [문제 해결](#troubleshooting)을 참고하세요.
 - **Download failed**(다운로드 실패). 창에 오류가 표시됩니다. 인터넷 연결과 디스크 여유 공간을 확인한 다음 다운로드 버튼을 다시 클릭하세요.
 
-**Connections** 패널의 **Add**(추가)를 클릭하고 **Add account**(계정 추가) 창의 **Built-in model** 항목에서도 이 창을 열 수 있습니다.
+Connections 페이지에서도 이 창을 열 수 있습니다. **On this device** 아래에 **Built-in model**이 있습니다.
 
 ### 엄선된 프리셋
 
@@ -67,7 +67,7 @@ Apple Silicon에서는 **Find files**가 **Validate repo**(레포 확인)로 표
 | **Use for tracker agents (roleplay)**(트래커 에이전트에 사용, 롤플레이) | 트래커 에이전트를 위해 모델을 계속 실행해 둡니다. 기본값은 꺼짐입니다. |
 | **Use for game scene analysis**(게임 장면 분석에 사용) | 배경, 음악, 날씨 같은 Game Mode 장면 효과를 위해 모델을 계속 실행해 둡니다. 기본값은 켜짐입니다. |
 | **Use the built-in model for all tracker agents**(모든 트래커 에이전트에 내장 모델 사용) | 기본 제공 트래커 에이전트가 모두 이 모델을 쓰도록 지정합니다. 에이전트를 켜 주지는 않습니다. |
-| **Change in Defaults**(기본값에서 변경) | 다른 작업도 맡길 수 있는 **Jobs** 상자를 엽니다. |
+| **Change in Defaults**(기본값에서 변경) | 다른 작업도 맡길 수 있는 **Defaults**(기본값) 상자를 엽니다. |
 
 두 스위치가 모두 꺼져 있으면 모델은 저절로 시작되지 않습니다. 둘 중 하나를 켜거나, 채팅이나 작업이 모델을 쓸 때 시작됩니다. 에이전트를 켜는 방법은 [Memory Recall과 채팅 요약](../agents/memory.md)을 참고하세요.
 
@@ -138,14 +138,14 @@ Game Mode 설정에서는 **Scene effects model**(장면 효과 연결)로 내�
 
 런타임 설치와 재설치는 보호된 작업입니다. Windows 원클릭 설치본에서는 자동으로 허용됩니다. macOS, Linux, Docker에서는 다음 중 하나를 한 다음 다시 시도하세요.
 
-- **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에 관리자 시크릿을 입력하세요. 관리자 시크릿은 위험한 작업에 쓰는 두 번째 비밀번호입니다. 서버가 실행 중인 컴퓨터의 **Admin Access**에서 만들거나, 서버의 `.env` 파일에 `ADMIN_SECRET`으로 설정합니다. [Admin Access](../REMOTE_ACCESS.md#admin-access-and-privileged-actions)를 참고하세요.
+- **Settings → Advanced → Security**(설정 → 고급 → 보안)에 관리자 시크릿을 입력하세요. 관리자 시크릿은 위험한 작업에 쓰는 두 번째 비밀번호입니다. 서버가 실행 중인 컴퓨터의 **Settings → Advanced → Security**에서 만들거나, 서버의 `.env` 파일에 `ADMIN_SECRET`으로 설정합니다. [관리자 시크릿](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)을 참고하세요.
 - 서버의 `.env` 파일에 `SIDECAR_RUNTIME_INSTALL_ENABLED=true`를 추가한 다음 Marinara를 다시 시작하세요. `.env` 파일은 Marinara 폴더에 있는 텍스트 파일입니다. [.env 파일 편집하기](../CONFIGURATION.md#edit-the-env-file)를 참고하세요.
 
 Marinara는 현재 릴리스에 승인된 llama.cpp, MLX, uv 버전만 다운로드하며, 무엇이든 실행하기 전에 각 파일의 크기와 SHA-256 체크섬을 확인합니다.
 
 ## 로컬 음성 모델
 
-**Local speech model**(로컬 음성 모델)은 Conversation(대화) 통화에서 내 목소리를 내 컴퓨터 안에서 직접 텍스트로 바꿉니다. 말을 텍스트로 바꾸는 음성 인식 모델인 Whisper 모델입니다. **Calls** 에이전트 패키지가 필요하며, 이 패키지는 **Agents → Agent Organizer**(에이전트 → Agent Organizer)에서 설치합니다.
+**Local speech model**(로컬 음성 모델)은 Conversation(대화) 통화에서 내 목소리를 내 컴퓨터 안에서 직접 텍스트로 바꿉니다. 말을 텍스트로 바꾸는 음성 인식 모델인 Whisper 모델입니다. **Calls** 에이전트 패키지가 필요하며, 이 패키지는 **Library → Agents**(라이브러리 → 에이전트)에서 설치합니다.
 
 1. **Connections** 패널을 열고 **On this device**(이 기기) 아래의 **Speech to text**(음성 인식) 항목을 클릭하세요.
 2. **Local speech model** 아래의 드롭다운에서 모델을 고르세요.

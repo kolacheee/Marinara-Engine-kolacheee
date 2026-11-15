@@ -50,7 +50,7 @@ Algumas configurações dão a chave pela variável de ambiente `ENCRYPTION_KEY`
 
 ## Copie os seus dados do Android
 
-No Android, a pasta de dados fica no armazenamento do aplicativo, que você não alcança sem acesso root, então você não consegue copiá-la. Use **Settings → Advanced → Backup & Export → Download Backup**. O `.zip` inclui o arquivo `.encryption-key` quando ele existe. Veja [Fazer backup e restaurar o Marinara](backup-and-restore.md).
+No Android, a pasta de dados fica no armazenamento do aplicativo, que você não alcança sem acesso root, então você não consegue copiá-la. Use **Configurações → Dados → Backup e restauração → Baixar o backup**. O `.zip` inclui o arquivo `.encryption-key` quando ele existe. Veja [Fazer backup e restaurar o Marinara](backup-and-restore.md).
 
 Os backups automáticos são salvos no mesmo armazenamento do aplicativo. Desinstalar ou redefinir o aplicativo pode removê-los junto com os dados ativos, então guarde uma cópia em outro lugar.
 

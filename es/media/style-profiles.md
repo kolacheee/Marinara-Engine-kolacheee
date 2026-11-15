@@ -6,7 +6,7 @@ Un perfil de estilo es un "estilo de la casa" reutilizable que da forma a cada p
 
 Cada imagen generada empieza como un prompt de texto: avatares, retratos, selfies de Conversation, fondos de escena, ilustraciones y sprites. Un perfil de estilo es un conjunto guardado de reglas que Marinara añade a ese prompt. Puede añadir palabras positivas (lo que quieres), palabras negativas (lo que quieres evitar) y un estilo de prompt preferido. Eliges un perfil como predeterminado para toda la app. Puedes anularlo para un solo chat o un solo modelo de imagen.
 
-Para encontrar el editor, abre **Settings → Generations → Image Generation** (Configuración → Generaciones → Generación de imágenes) y desplázate hasta **Style Profiles**.
+Para encontrar el editor, abre **Settings → Media → Image Generation** (Configuración → Medios → Generación de imágenes) y desplázate hasta **Style Profiles**.
 
 ## Los perfiles integrados
 
@@ -35,7 +35,7 @@ Los perfiles integrados son:
 
 El perfil predeterminado se aplica a cada imagen, a menos que un chat o un modelo de imagen lo anulen.
 
-1. Abre **Settings → Generations → Image Generation → Style Profiles**.
+1. Abre **Settings → Media → Image Generation → Style Profiles**.
 2. Abre la lista **Default style** (Estilo predeterminado).
 3. Elige un perfil.
 

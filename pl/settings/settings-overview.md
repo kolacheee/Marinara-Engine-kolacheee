@@ -2,136 +2,140 @@
 
 Sprawdź, w której części panelu **Settings** (ustawienia) leży dana opcja, skonfiguruj zakładkę **General** (ogólne) i dowiedz się, jak ustawienia synchronizują się między urządzeniami.
 
-## Panel Settings i jego sześć zakładek
+## Otwieranie ustawień
 
-Otwórz **Settings** ikoną koła zębatego na górnym pasku. Pole **Search settings** (szukaj w ustawieniach) na górze znajduje ustawienie po nazwie. Wpisz słowo, na przykład `delete`, `streaming` lub `quotes`, a aplikacja przeskoczy do pasującej sekcji. Dopasowuje nazwy w języku interfejsu i po angielsku.
+Otwórz **Biblioteka → Ustawienia**: kliknij **Biblioteka** w prawym górnym rogu, a potem **Ustawienia** pod listą biblioteki. Możesz też nacisnąć <kbd>Ctrl</kbd>+<kbd>K</kbd> (<kbd>⌘</kbd>+<kbd>K</kbd> na komputerze Mac) i wpisać nazwę ustawienia, na przykład `streaming` lub `font`, aby od razu do niego przejść. Na telefonie ustawienia są w bibliotece pod przyciskiem z ikoną stosu w prawym górnym rogu.
 
-Panel ma sześć zakładek. Każda zakładka ma własne sekcje.
+Pole **Szukaj we wszystkich ustawieniach** na górze strony znajduje ustawienie po nazwie. Wpisz słowo, na przykład `delete`, `streaming` lub `quotes`, a aplikacja przeskoczy do pasującej sekcji. Dopasowuje nazwy w języku interfejsu i po angielsku.
+
+Ustawienia mają dziewięć zakładek. Pod nimi jest rząd przycisków, które przenoszą do poszczególnych sekcji otwartej zakładki. W tych przewodnikach ścieżka taka jak **Ustawienia → Czatowanie → Pole wiadomości** oznacza zakładkę **Czatowanie** i sekcję **Pole wiadomości**.
 
 ### Chcę coś zrobić
 
 | Co chcesz zrobić | Gdzie to znaleźć |
 | --- | --- |
-| Zmienić język | **Settings → General → App Behavior → Language** (ustawienia, ogólne, zachowanie aplikacji, język) |
-| Powiększyć tekst | **Settings → Appearance → App → Text & Scale** |
-| Zmienić motyw lub kolory | **Settings → Appearance → App → App Style** |
+| Zmienić język | **Ustawienia → Ogólne → Język** |
+| Powiększyć tekst | **Ustawienia → Wygląd → Czcionki i rozmiar tekstu** |
+| Zmienić motyw lub kolory | **Ustawienia → Wygląd → Motyw** albo gotowy wygląd w **Ustawienia → Wygląd → Motywy CSS** |
 | Ustawić dźwięk powiadomień | **Settings → General → Notifications** |
-| Wyłączyć potwierdzenie usuwania | **Settings → General → App Behavior** |
-| Dodać szybkie odpowiedzi | **Settings → General → Input & Editing** |
-| Zrobić kopię zapasową | **Settings → Advanced → Backup & Export** |
-| Usunąć moje dane | **Settings → Advanced → Danger Zone** |
+| Wyłączyć potwierdzenie usuwania | **Ustawienia → Ogólne → Potwierdzenia i pomoc** |
+| Powtórzyć samouczek | **Ustawienia → Ogólne → Potwierdzenia i pomoc → Przewodniki** |
+| Dodać szybkie odpowiedzi | **Ustawienia → Czatowanie → Pole wiadomości** |
+| Wyłączyć swipe'y dotykowe | **Ustawienia → Czatowanie → Edycja i swipe'y** |
+| Zaimportować dane z SillyTavern | **Ustawienia → Dane → Import z SillyTavern** |
+| Zrobić kopię zapasową | **Ustawienia → Dane → Kopie zapasowe i przywracanie** |
+| Usunąć moje dane | **Ustawienia → Dane → Usuń dane** |
 | Zaktualizować aplikację Marinara Engine | **Settings → Advanced → Updates** |
+| Korzystać z aplikacji Marinara Engine na telefonie | **Ustawienia → Zaawansowane → Dostęp** i **Bezpieczeństwo** |
+| Sprawdzić, dlaczego reakcje na dotknięcia są wolne | **Ustawienia → Zaawansowane → Rozwiązywanie problemów → Show tap timings** |
+| Zmienić obrazki obok wiadomości na telefonie | **Ustawienia → Wygląd → Conversation → Zdjęcia profilowe na telefonach** |
 
 ### Co zawiera każda zakładka
 
-**General** (ten przewodnik)
+| Zakładka | Sekcje |
+| --- | --- |
+| **Ogólne** | **Język**, **Potwierdzenia i pomoc**, **Dodatki**, **Professor Mari**, **Powiadomienia** |
+| **Czatowanie** | **Odpowiedzi**, **Pole wiadomości**, **Edycja i swipe'y**, **Myślenie**, **Formatowanie tekstu**, **Informacje o wiadomości** |
+| **Wygląd** | **Motyw**, **Czcionki i rozmiar tekstu**, **Accessibility**, **Kolory tekstu**, **Układ**, **Efekty**, **Tła**, **Przyciski i okna czatu**, **Motywy CSS**. Zobacz [Ustawienia wyglądu](../appearance/appearance-settings.md). |
+| **Conversation** | **Układ Conversation**, **Tło Conversation** |
+| **Roleplay** | **Panel trackerów**, **Wiadomości Roleplay**, **Awatary**, **Visual Novel** |
+| **Game** | **Tekst gry**, **Grafika gry**, **Zasoby gry**. Zobacz [Zasoby gry](../game/game-assets.md). |
+| **Multimedia** | **Domyślne ustawienia generowania**, **Generowanie obrazów**, **Generowanie wideo**, **Nadpisania promptów**. Dopóki nie zainstalujesz agenta Illustrator, ta zakładka oferuje tylko jego pobranie. Zobacz [Profile stylu obrazów](../media/style-profiles.md) i [Nadpisania promptów](../prompts/prompt-overrides.md). |
+| **Dane** | **Import z SillyTavern**, **Kopie zapasowe i przywracanie**, **Eksport czatów**, **Czyszczenie danych**, **Usuń dane**. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](../data/backup-and-restore.md) i [Czyszczenie i resetowanie danych](../data/clearing-data.md). |
+| **Zaawansowane** | **Aktualizacje**, **Serwer**, **Limity czasu i ponawianie**, **Własne parametry żądań**, **Księgi wiedzy**, **Bezpieczeństwo**, **Dostęp**, **Multiplayer**, **Rozwiązywanie problemów**. Zobacz [Zakładka Advanced](#the-advanced-tab). |
 
-- **App Behavior** (zachowanie aplikacji; z wierszem **Search and Professor Mari settings**)
-- **Notifications** (powiadomienia)
-- **Responses** (odpowiedzi)
-- **Input & Editing** (wprowadzanie i edycja)
-- **Text Rules** (zasady tekstu)
-- **Game Playback** (odtwarzanie gry)
+Rozszerzenia osobiste i zewnętrzne nie znajdują się w ustawieniach. Mają własną stronę: **Biblioteka → Rozszerzenia**. Zobacz [Rozszerzenia osobiste](../extending/personal-extensions.md).
 
-**Appearance** (wygląd) ma cztery przyciski. Zobacz [Ustawienia wyglądu](../appearance/appearance-settings.md).
+### W klasycznym układzie
 
-- **App**: **App Style**, **Text & Scale**, **Atmosphere**, **Backgrounds**
-- **Conversation**: **Conversation Display**, **Conversation Theme**
-- **Roleplay**: **Tracker Panel**, **Roleplay Presentation**
-- **Game**: **Game Presentation**
+Po wyłączeniu opcji **Nowy układ** w **Ustawienia → Wygląd → Motyw** ustawienia są panelem z sześcioma zakładkami i tymi samymi sekcjami, ale inaczej pogrupowanymi:
 
-Zakładka **Generations** (generowanie) zawiera **Overall Generations**, **Image Generation**, **Video Generation** i **Prompt Overrides**. Dopóki nie zainstalujesz agenta Illustrator, ta zakładka pokazuje tylko zachętę do jego pobrania. Zobacz [Profile stylu obrazów](../media/style-profiles.md) i [Generowanie wideo sceny](../media/scene-video.md).
-
-Zakładka **Addons** (dodatki) zawiera historię wersji rozszerzeń, **Personal Extensions**, **External Extensions** (tylko po ich odblokowaniu) i **Theme Library**. Zobacz [Rozszerzenia osobiste](../extending/personal-extensions.md) i [Własne motywy CSS (Theme Library)](../appearance/custom-css-themes.md).
-
-Zakładka **Imports** (import) zawiera **Profile & Marinara**, **SillyTavern Import** i **Game Assets**. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](../data/backup-and-restore.md) i [Importowanie z SillyTavern](../data/importing-from-sillytavern.md).
-
-Zakładka **Advanced** (zaawansowane) zawiera te sekcje, w tej kolejności. Zobacz [Zakładka Advanced](#the-advanced-tab).
-
-- **Multiplayer WIP**
-- **Access**
-- **Admin Access**
-- **Features**
-- **Updates**
-- **Support Diagnostics**
-- **Request timeouts**
-- **Parameters**
-- **Message Tools**
-- **Backup & Export**
-- **Storage Optimization**
-- **Danger Zone**
+| Klasyczna zakładka | Co zawiera z nowego układu |
+| --- | --- |
+| **Ogólne** | Zakładkę Ogólne oraz **Odpowiedzi**, **Pole wiadomości**, **Edycja i swipe'y**, **Myślenie**, **Formatowanie tekstu** i **Tekst gry** |
+| **Wygląd** | Zakładki Wygląd, Conversation i Roleplay oraz **Grafika gry**, pod czterema przyciskami: **Aplikacja**, **Conversation**, **Roleplay** i **Game** |
+| **Generowanie** | Zakładkę Multimedia |
+| **Dodatki** | **Motywy CSS** i rozszerzenia osobiste |
+| **Import** | **Import z SillyTavern**, **Zasoby gry** i import profilu |
+| **Zaawansowane** | Zakładkę Zaawansowane oraz **Informacje o wiadomości**, **Kopie zapasowe i przywracanie**, **Eksport czatów**, **Czyszczenie danych** i **Usuń dane** |
 
 ## Zakładka General
 
-Każda sekcja zakładki **General** leży w **Settings → General**.
-
 | Sekcja | Co kontroluje |
 | --- | --- |
-| **App Behavior** | Język, zabezpieczenie przed usunięciem, przełączniki pokazywania i ukrywania oraz wiersz **Search and Professor Mari settings**. Zobacz [App Behavior](#app-behavior). |
-| **Notifications** | Dźwięki powiadomień oraz powiadomienia w przeglądarce i na Androidzie. Zobacz [Notifications](#notifications). |
-| **Responses** | Streaming, przycinanie i **Messages per page**. Zobacz [Wysyłanie wiadomości i streaming](../chats/sending-and-streaming.md). |
-| **Input & Editing** | **Send on Enter**, **Quick replies**, skróty swipe'ów i edycji. Zobacz [Input and Editing](#input-and-editing). |
-| **Text Rules** | Sposób formatowania tekstu czatu. Zobacz [Text Rules](#text-rules). |
-| **Game Playback** | Czytanie i nawigacja w trybie Game Mode. Zobacz [Game Mode: pierwsze kroki](../game/getting-started.md). |
+| **Język** | Język interfejsu i język tych przewodników. Zobacz [Język](#language). |
+| **Potwierdzenia i pomoc** | **Potwierdzaj przed usunięciem**, **Ukryj przycisk Pomoc czatu** i **Przewodniki**. |
+| **Dodatki** | **Osiągnięcia**, **Wyłącz sezonowe motywy Marinara** i **Odtwarzacz muzyki**. |
+| **Professor Mari** | Jeden wiersz: **Ustawienia wyszukiwania i Professor Mari**. Kliknij **Otwórz**, aby przejść do wyszukiwania, szybkich odpowiedzi i asystentki Professor Mari. Zobacz [Professor Mari, twoja asystentka w aplikacji](../home/professor-mari.md). |
+| **Powiadomienia** | Miejsce wyświetlania powiadomień, ich dźwięki oraz powiadomienia w przeglądarce i na Androidzie. Zobacz [Notifications](#notifications). |
 
-### App Behavior
+### Język
 
 | Ustawienie | Co robi |
 | --- | --- |
 | **Language** (język) | Ustawia język interfejsu. Nie zmienia promptów modelu ani treści czatów. Tekst, który nie został jeszcze przetłumaczony, pokazuje się po angielsku. Arabski używa układu od prawej do lewej. Domyślnie: English. |
 | **Documentation Language** (język dokumentacji) | Ustawia język wbudowanych przewodników. Zobacz niżej. Domyślnie: English. |
-| **Confirm before deleting** (potwierdzaj przed usunięciem) | Pyta, zanim aplikacja trwale usunie czat, postać lub inny element. Domyślnie: włączone. |
-| **Hide chat Help button** (ukryj przycisk Help w czacie) | Ukrywa przycisk **Help** w czatach Conversation, Roleplay i Game. Domyślnie: wyłączone. |
-| **Show Android status bar** (pokaż pasek stanu Androida) | Zostawia widoczne nad aplikacją godzinę, baterię i ikony powiadomień. Działa tylko w aplikacji na Androida. Domyślnie: wyłączone. |
-| **Achievements** (osiągnięcia) | Śledzi osiągnięcia, pokazuje powiadomienia o odblokowaniu oraz zakładkę i widget na ekranie głównym. Zobacz [Osiągnięcia](../home/achievements.md). Domyślnie: włączone. |
-| **Disable seasonal ME themes** (wyłącz sezonowe motywy ME) | Wyłącza sezonowe motywy aplikacji Marinara Engine. Domyślnie: wyłączone. |
-| **Music Player** (odtwarzacz muzyki) | Pokazuje kompaktowy odtwarzacz muzyki. Wymaga agenta **Music DJ** z sekcji **Agents → Agent Organizer** i pozostaje wyszarzony, dopóki go nie zainstalujesz. Zobacz [Music DJ: Spotify, YouTube i muzyka lokalna](../media/music.md). Domyślnie: włączone. |
-
-**Search and Professor Mari settings** to wiersz na dole sekcji **App Behavior**. Wybierz **Open**, aby przejść do strony ustawień wyszukiwania, szybkich odpowiedzi i asystentki Professor Mari. Zobacz [Professor Mari, twoja asystentka w aplikacji](../home/professor-mari.md).
 
 Języki interfejsu to arabski, chiński uproszczony, angielski, francuski, niemiecki, hindi, japoński, koreański, polski, portugalski brazylijski, rosyjski i hiszpański. Aby ulepszyć tłumaczenie albo dodać język, zobacz [Lokalizacja interfejsu](../development/localization.md).
 
 W przypadku **Documentation Language** angielski jest wbudowany. Wybierz inny język i kliknij **Download & Replace** (pobierz i zastąp). Aplikacja pobiera ten pakiet językowy jeden raz i usuwa poprzedni, więc przechowuje jeden pobrany język. Przewodniki, które nie zostały jeszcze przetłumaczone, otwierają się po angielsku z małą plakietką `EN`. Wyszukiwanie w dokumentacji działa w aktywnym języku. Twój wybór przetrwa aktualizacje, a pakiet odświeża się po aktualizacji, jeśli zmieniły się jego tłumaczenia. Jeśli pobrane przewodniki znikną lub przestaną działać, pojawia się przycisk **Fix documentation** (napraw dokumentację). Pobiera on pakiet ponownie albo przywraca przewodniki po angielsku, jeśli nie da się połączyć ze źródłem pobierania.
+
+### Potwierdzenia, pomoc i dodatki
+
+| Ustawienie | Co robi |
+| --- | --- |
+| **Confirm before deleting** (potwierdzaj przed usunięciem) | Pyta, zanim aplikacja trwale usunie czat, postać lub inny element. Domyślnie: włączone. |
+| **Hide chat Help button** (ukryj przycisk Help w czacie) | Ukrywa przycisk **Help** w czatach Conversation, Roleplay i Game. Domyślnie: wyłączone. |
+| **Przewodniki** | **Odtwórz ponownie powitalny samouczek**, powtórz przewodnik dla tego urządzenia albo wybierz **Pokaż ponownie wskazówki trybów czatu**. Zobacz [Samouczek pierwszego uruchomienia](../home/tutorial.md). |
+| **Osiągnięcia** | Śledzi osiągnięcia, pokazuje powiadomienia o odblokowaniu oraz widget osiągnięć. Zobacz [Osiągnięcia](../home/achievements.md). Domyślnie: włączone. |
+| **Wyłącz sezonowe motywy Marinara** | Wyłącza sezonowy wygląd aplikacji Marinara Engine. Domyślnie: wyłączone. |
+| **Odtwarzacz muzyki** | Pokazuje kompaktowy odtwarzacz muzyki. Wymaga agenta **Music DJ** z sekcji **Biblioteka → Agenci** i pozostaje wyszarzony, dopóki go nie zainstalujesz. Zobacz [Music DJ: Spotify, YouTube i muzyka lokalna](../media/music.md). Domyślnie: włączone. |
+
+Opcje **Pokaż pasek stanu Androida** i **Otwórz program uruchamiający dla Androida (aplikacja lub przeglądarka)** są w **Ustawienia → Wygląd → Układ** i tylko w aplikacji na Androida.
 
 ### Notifications
 
 Aplikacja odtwarza wbudowany sygnał powiadomień. Aby użyć własnego dźwięku:
 
 1. Otwórz **Settings → General → Notifications**.
-2. Wgraj plik w polu **Custom sound** (własny dźwięk): MP3, WAV, OGG, M4A, MP4 lub WebM, do 10 MB.
+2. Kliknij **Wybierz dźwięk** pod **Własny dźwięk**: MP3, WAV, OGG, M4A, MP4 lub WebM, do 10 MB.
 
 Dźwięk odtwarza się na każdym urządzeniu połączonym z tym serwerem. Da się go odsłuchać, podmienić albo usunąć. Jeśli nie da się odczytać pliku, aplikacja odtwarza wbudowany sygnał. Plik wchodzi w skład kopii zapasowych i eksportów profilu.
 
-**Background Notifications** (powiadomienia w tle) obejmują wiadomości w trybie Conversation, które postacie wysyłają same. **Generation Completion Notifications** (powiadomienia o zakończeniu generowania) obejmują odpowiedzi, które uruchamiasz samodzielnie w trybach Conversation, Roleplay i Game Mode. Oba działają, gdy aplikacja jest otwarta, ale nieaktywna. Nigdy nie pokazują treści wiadomości.
+**Background Notifications** (powiadomienia w tle) obejmują wiadomości w trybie Conversation, które postacie wysyłają same. **Generation Completion Notifications** (powiadomienia o zakończeniu generowania) obejmują odpowiedzi, które uruchamiasz samodzielnie w trybach Conversation, Roleplay i Game Mode. Oba działają, gdy aplikacja jest otwarta, ale nieaktywna. Nigdy nie pokazują treści wiadomości. Ustawienie **Położenie powiadomień** określa, czy komunikaty błędów i inne powiadomienia pojawiają się u góry, czy u dołu.
 
-### Input and Editing
+## Zakładka Czatowanie
 
-Ustawienia w **Settings → General → Input & Editing**:
+### Pole wiadomości oraz Edycja i swipe'y
 
-| Ustawienie | Co robi |
-| --- | --- |
-| **Send on Enter** (wysyłaj klawiszem Enter) | Wybiera tryby, w których klawisz Enter wysyła wiadomość. |
-| **Keep guidance after regenerating** (zachowaj wskazówkę po ponownym generowaniu) | Zostawia twoją wskazówkę w polu wiadomości po sterowanym ponownym generowaniu. Domyślnie włączone. |
-| **Add CYOA choices to the message box instead of sending them** (dodawaj wybory CYOA do pola wiadomości zamiast je wysyłać) | Wstawia kliknięty wybór do pola wiadomości, aby można go było najpierw zmienić. |
-| **Quick replies** (szybkie odpowiedzi) | Dodaje działania z gotowym szkicem obok przycisku wysyłania. Zobacz [Sterowane generowanie i Impersonate](../chats/guided-and-impersonate.md). |
-| **Speech-to-text microphone** (mikrofon mowy na tekst) | Pokazuje przycisk mikrofonu w polach wpisywania czatu. |
-| **Intuitive swipe navigation** (intuicyjna nawigacja swipe'ami) | Przełącza między swipe'ami (kilkoma odpowiedziami zachowanymi w jednej wiadomości) klawiszami strzałek albo przesunięciem palcem. |
-| **Reroll past the newest swipe** (generuj ponownie za najnowszym swipe'em) | Tworzy nową odpowiedź, gdy przesuniesz poza najnowszy swipe. |
-| **Up Arrow edits last message** (strzałka w górę edytuje ostatnią wiadomość) | Naciśnij strzałkę w górę w pustym polu wpisywania, aby edytować swoją ostatnią wiadomość. |
-| **Double-click edits messages** (dwuklik edytuje wiadomości) | Kliknij dwukrotnie wiadomość w trybie Roleplay, aby ją edytować. |
+| Ustawienie | Sekcja | Co robi |
+| --- | --- | --- |
+| **Send on Enter** (wysyłaj klawiszem Enter) | Pole wiadomości | Wybiera tryby, w których klawisz Enter wysyła wiadomość. |
+| **Keep guidance after regenerating** (zachowaj wskazówkę po ponownym generowaniu) | Pole wiadomości | Zostawia twoją wskazówkę w polu wiadomości po sterowanym ponownym generowaniu. Domyślnie włączone. |
+| **Add CYOA choices to the message box instead of sending them** (dodawaj wybory CYOA do pola wiadomości zamiast je wysyłać) | Pole wiadomości | Wstawia kliknięty wybór do pola wiadomości, aby można go było najpierw zmienić. |
+| **Quick replies** (szybkie odpowiedzi) | Pole wiadomości | Dodaje działania z gotowym szkicem obok przycisku wysyłania. Zobacz [Sterowane generowanie i Impersonate](../chats/guided-and-impersonate.md). |
+| **Speech-to-text microphone** (mikrofon mowy na tekst) | Pole wiadomości | Pokazuje przycisk mikrofonu w polach wpisywania czatu. |
+| **Show characters in Persona pickers** (pokaż postacie w wyborze persony) | Pole wiadomości | Wypisuje twoje postacie w oknach wyboru persony, aby można było grać jedną z nich. |
+| **Up Arrow edits last message** (strzałka w górę edytuje ostatnią wiadomość) | Edycja i swipe'y | Naciśnij strzałkę w górę w pustym polu wpisywania, aby edytować swoją ostatnią wiadomość. |
+| **Double-click edits messages** (dwuklik edytuje wiadomości) | Edycja i swipe'y | Kliknij dwukrotnie wiadomość w trybie Roleplay, aby ją edytować. |
+| **Intuitive swipe navigation** (intuicyjna nawigacja swipe'ami) | Edycja i swipe'y | Przełącza między swipe'ami (kilkoma odpowiedziami zachowanymi w jednej wiadomości) klawiszami strzałek albo przesunięciem palcem. |
+| **Reroll past the newest swipe** (generuj ponownie za najnowszym swipe'em) | Edycja i swipe'y | Tworzy nową odpowiedź, gdy przesuniesz poza najnowszy swipe. |
+| **Gesty przesuwania na ekranach dotykowych** | Edycja i swipe'y | Swipe'y nowego układu na telefonach i tabletach. Zobacz [Gesty dotykowe](../chats/messages.md#touch-gestures). Domyślnie włączone. |
+| **Guide swipes/regens with chat input** (steruj swipe'ami i ponownym generowaniem polem czatu) | Edycja i swipe'y | Używa twojego szkicu jako wskazówki przy ponownym generowaniu. |
+| **Zawsze pokazuj menu swipe'ów w trybie Conversation** / **w trybie Roleplay** | Edycja i swipe'y | Strzałki swipe'ów są zawsze widoczne, a nie tylko po najechaniu kursorem. |
 
-Sekcja **Responses** zawiera **Enable streaming**, **Streaming speed**, **Trim incomplete sentences from the response**, **Add a new line before /continue text** (domyślnie włączone) i **Messages per page**. Zobacz [Wysyłanie wiadomości i streaming](../chats/sending-and-streaming.md). O działaniach na wiadomościach przeczytasz w [Działania na wiadomości: edycja, usuwanie, swipe'y, ponowne generowanie](../chats/messages.md).
+Sekcja **Odpowiedzi** zawiera **Wyświetlaj odpowiedzi w miarę ich napływania (strumieniowanie)**, **Szybkość strumieniowania**, **Przycinaj niedokończone zakończenia modelu**, **Dodawaj nowy wiersz przed tekstem /continue** (domyślnie włączone) i **Wiadomości na stronę**. Zobacz [Wysyłanie wiadomości i streaming](../chats/sending-and-streaming.md). Sekcja **Myślenie** zawiera **Pokazuj myślenie w wiadomościach** i **Nie zwijaj myślenia**. O działaniach na wiadomościach przeczytasz w [Działania na wiadomości: edycja, usuwanie, swipe'y, ponowne generowanie](../chats/messages.md).
 
-### Text Rules
+### Formatowanie tekstu
 
-Te zasady zmieniają sposób obsługi tekstu czatu w **Settings → General → Text Rules**. Ustawienia **Bold dialogue in quotes** i **Convert LaTeX symbols** zmieniają tylko wygląd tekstu, więc zapisane wiadomości zostają bez zmian. Ustawienie **Quote style** przepisuje cudzysłowy w tekście, który wpisujesz i zapisujesz.
+Te zasady zmieniają sposób obsługi tekstu czatu w **Ustawienia → Czatowanie → Formatowanie tekstu**. Ustawienia **Bold dialogue in quotes** i **Convert LaTeX symbols** zmieniają tylko wygląd tekstu, więc zapisane wiadomości zostają bez zmian. Ustawienie **Quote style** przepisuje cudzysłowy w tekście, który wpisujesz i zapisujesz.
 
 | Ustawienie | Co robi |
 | --- | --- |
 | **Bold dialogue in quotes** | Pokazuje tekst w cudzysłowie pogrubiony. Domyślnie włączone. |
 | **Convert LaTeX symbols** | Pokazuje polecenia matematyczne LaTeX jako symbole. Kod zostaje bez zmian. Domyślnie włączone. |
+| **Wymuś jednolite kolory imion w tekście** | Pokazuje imiona postaci w wiadomościach w jednym jednolitym kolorze zamiast gradientu. |
 | **Quote style** | **Straight** zostawia zwykłe znaki (domyślnie). **Typographic** zamienia je na zakrzywione cudzysłowy i apostrofy. |
-| **Load images from other websites in messages** | Steruje obrazami z innych stron internetowych. Domyślnie wyłączone. |
 
 #### Bold dialogue in quotes
 
@@ -143,40 +147,36 @@ Niektóre modele zapisują matematykę jako polecenia LaTeX. Gdy to ustawienie j
 
 #### Load images from other websites in messages
 
-Gdy to ustawienie jest wyłączone, obraz z innej strony internetowej w wiadomości, powitaniu lub podglądzie karty pokazuje nazwę tej strony i przycisk **Load image** (wczytaj obraz). Dzięki temu wiadomość nie łączy się sama z innymi stronami. Wybierz **Load image**, aby pokazać ten obraz. Aplikacja zapamiętuje twój wybór na wszystkich urządzeniach. Włącz to ustawienie, aby od razu pokazywać każdy obraz. Obrazy zapisane w aplikacji Marinara Engine, takie jak obrazy z galerii, awatary i sprite'y, pokazują się zawsze.
+Ten przełącznik jest w **Ustawienia → Zaawansowane → Bezpieczeństwo**. Domyślnie wyłączony. Gdy to ustawienie jest wyłączone, obraz z innej strony internetowej w wiadomości, powitaniu lub podglądzie karty pokazuje nazwę tej strony i przycisk **Load image** (wczytaj obraz). Dzięki temu wiadomość nie łączy się sama z innymi stronami. Wybierz **Load image**, aby pokazać ten obraz. Aplikacja zapamiętuje twój wybór na wszystkich urządzeniach. Włącz to ustawienie, aby od razu pokazywać każdy obraz. Obrazy zapisane w aplikacji Marinara Engine, takie jak obrazy z galerii, awatary i sprite'y, pokazują się zawsze.
 
-<a id="the-advanced-tab"></a>
+### Informacje o wiadomości
 
-## Zakładka Advanced
-
-| Sekcja | Więcej informacji |
-| --- | --- |
-| **Admin Access** | [Dostęp zdalny](../REMOTE_ACCESS.md) |
-| **Features** | [Przełączniki funkcji](../configuration/features.md) |
-| **Updates** | [Aktualizacja aplikacji Marinara Engine](../UPGRADING.md) |
-| **Message Tools** | [Message Tools](#message-tools) |
-| **Backup & Export** | [Kopia zapasowa i przywracanie danych aplikacji Marinara](../data/backup-and-restore.md) |
-| **Danger Zone** | [Czyszczenie i resetowanie danych](../data/clearing-data.md) |
-
-### Message Tools
-
-Te przełączniki leżą w **Settings → Advanced → Message Tools**. Wszystkie są domyślnie wyłączone, z wyjątkiem **Show context usage** i **Show "older messages not sent" note**.
+Te przełączniki leżą w **Ustawienia → Czatowanie → Informacje o wiadomości**. Wszystkie są domyślnie wyłączone, z wyjątkiem **Show context usage** i **Show "older messages not sent" note**.
 
 | Przełącznik | Co robi |
 | --- | --- |
 | **Show message timestamps** (pokaż znaczniki czasu wiadomości) | Pokazuje datę i godzinę przy każdej wiadomości. |
-| **Show characters in Persona pickers** (pokaż postacie w wyborze persony) | Wypisuje twoje postacie w oknach wyboru persony, aby można było grać jedną z nich. |
 | **Show model name on messages** (pokaż nazwę modelu przy wiadomościach) | Pokazuje, który model napisał każdą odpowiedź. |
 | **Show token usage on messages** (pokaż użycie tokenów przy wiadomościach) | Pokazuje liczbę tokenów promptu i odpowiedzi dla każdej wiadomości. |
 | **Show context usage** (pokaż użycie kontekstu) | Pokazuje, jak bardzo zapełnione było okno kontekstu przy ostatnim zmierzonym żądaniu, w przełącznikach połączeń i ustawieniach czatu Game. |
 | **Show message numbers** (pokaż numery wiadomości) | Pokazuje numer przy każdej wiadomości. |
 | **Show "older messages not sent" note** (pokaż notatkę o niewysłanych starszych wiadomościach) | Pokazuje notatkę pod najnowszą odpowiedzią, gdy starsze wiadomości nie zmieściły się w prompcie. Odpowiedź urwana lub pusta nadal pokazuje własną notatkę. |
-| **Guide swipes/regens with chat input** (steruj swipe'ami i ponownym generowaniem polem czatu) | Używa twojego szkicu jako wskazówki przy ponownym generowaniu. |
-| **Include reasoning in exports** (dołącz rozumowanie do eksportów) | Dodaje ukryte myślenie modelu do eksportów czatu. |
-| **Include private notes in exports** (dołącz prywatne notatki do eksportów) | Dodaje twoje prywatne notatki do wiadomości w eksportach JSONL i tekstowych. Zostaw wyłączone, gdy udostępniasz zapis rozmowy. |
-| **Debug mode** (tryb debugowania) | Zapisuje dane wysyłane do modeli w konsoli serwera na potrzeby wsparcia. |
 
-Więcej znajdziesz w: [Działania na wiadomości: edycja, usuwanie, swipe'y, ponowne generowanie](../chats/messages.md), [Persony użytkownika: tworzenie i edycja](../characters/personas.md), [Wybór modelu dla jednego czatu](../connections/connecting-to-a-provider.md#choosing-a-model-for-one-chat), [Peek Prompt: zobacz, co dostał model AI](../chats/peek-prompt.md), [Sterowane generowanie i Impersonate](../chats/guided-and-impersonate.md), [Eksport i import czatów](../chats/export-import.md) i [Rozwiązywanie problemów w aplikacji Marinara Engine](../TROUBLESHOOTING.md).
+Opcje **Dołączaj rozumowanie do eksportu** i **Dołączaj prywatne notatki do eksportu** są w **Ustawienia → Dane → Eksport czatów**. Zobacz [Eksport i import czatów](../chats/export-import.md).
+
+## Zakładka Advanced
+
+| Sekcja | Co zawiera | Więcej informacji |
+| --- | --- | --- |
+| **Aktualizacje** | **Kanał wydań**, **Sprawdź aktualizacje** i **Odśwież aplikację** | [Aktualizacja aplikacji Marinara Engine](../UPGRADING.md) |
+| **Serwer** | **Uruchom ponownie serwer** | |
+| **Limity czasu i ponawianie** | Czas oczekiwania na powolne backendy i **Ponawiaj nieudane wywołania dostawcy** | [Konfiguracja serwera](../CONFIGURATION.md) |
+| **Własne parametry żądań** | Opcje wielokrotnego użytku dla pól żądań specyficznych dla dostawcy | [Parametry generowania](../prompts/generation-parameters.md) |
+| **Księgi wiedzy** | **Stabilne wybory lorebooka** i **Statystyki aktywacji lorebooka** | [Przełączniki funkcji](../configuration/features.md) |
+| **Bezpieczeństwo** | Sekret administratora, **Zezwalaj na import własnych agentów**, **Zezwalaj na import rozszerzeń innych firm** i **Wczytuj w wiadomościach obrazy z innych stron** | [Dostęp zdalny](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions) |
+| **Dostęp** | Logowanie zdalne, **Dodaj urządzenie** i reguły dostępu do tego serwera | [Dostęp zdalny](../REMOTE_ACCESS.md) |
+| **Multiplayer** | Wspólna gra na jednym czacie z różnych urządzeń (funkcja w trakcie tworzenia) | [Konfiguracja serwera](../CONFIGURATION.md) |
+| **Rozwiązywanie problemów** | **Kopiuj diagnostykę wsparcia**, **Tryb debugowania** (zapisuje dane wysyłane do modeli w konsoli serwera), **Otwórz konsolę** i **Show tap timings** | [Rozwiązywanie problemów w aplikacji Marinara Engine](../TROUBLESHOOTING.md#the-app-feels-slow-on-a-phone-or-tablet) |
 
 ## Jak ustawienia synchronizują się między urządzeniami
 
@@ -188,7 +188,7 @@ Aplikacja zapisuje większość ustawień na serwerze, więc podążają za tob�
 
 Wygrywa najnowsza zmiana. Jeśli wkrótce po zmianie otworzysz aplikację na drugim urządzeniu, jego starsza kopia może zastąpić twoją zmianę. Poczekaj chwilę, zanim przełączysz urządzenie.
 
-Dwa ustawienia nigdy się nie synchronizują. Ustaw je ponownie na każdym urządzeniu w **Settings → Appearance → Text & Scale**:
+Dwa ustawienia nigdy się nie synchronizują. Ustaw je ponownie na każdym urządzeniu w **Ustawienia → Wygląd → Czcionki i rozmiar tekstu**:
 
 - **Display Size** (rozmiar wyświetlania), czyli rozmiar tekstu interfejsu
 - **Chat Font Size** (rozmiar czcionki czatu), czyli rozmiar tekstu czatu

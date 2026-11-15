@@ -11,11 +11,10 @@ Storyboard 包提供规划用的提示词、各项默认值和按聊天设置的
 
 ## 安装智能体
 
-1. 打开 **Agents**(智能体) 面板（Sparkles 图标）。
-2. 选择 **Agent Organizer**(智能体管理器)。
-3. 打开 **Storyboard**，选择 **Install**(安装)。
-4. 打开一个 Game 或 Roleplay 聊天，然后打开 **Chat Settings → Agents**(聊天设置 → 智能体)。
-5. 开启 **Enable Agents**(启用智能体)，再在 Storyboard 卡片里开启 **Enable Storyboards**(启用分镜)。
+1. 打开 **Library → Agents**(资料库 → 智能体)，点击 **Available**(可用)。
+2. 找到 **Storyboard**，点击 **Get**(获取)。
+3. 打开一个 Game 或 Roleplay 聊天，然后打开 **Chat Settings → Agents**(聊天设置 → 智能体)。
+4. 开启 **Enable Agents**(启用智能体)，再在 Storyboard 卡片里开启 **Enable Storyboards**(启用分镜)。
 
 安装只是让这个智能体可以使用，并不会在每个聊天里启用它。不需要重启 Marinara。
 
@@ -186,7 +185,7 @@ Storyboard 和 Illustrator 是分开的，手动触发的 Illustrator 操作照�
 
 ## Storyboard 智能体设置
 
-打开 **Agents** 面板，选择 **Storyboard**，进入它的设置。没有自己覆盖设置的聊天，用的就是这里的默认值。
+打开 **Library → Agents**，点击 **Storyboard**，进入它的设置。没有自己覆盖设置的聊天，用的就是这里的默认值。
 
 | 设置 | 默认值 | 作用 |
 | --- | --- | --- |

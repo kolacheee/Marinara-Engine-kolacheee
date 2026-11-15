@@ -10,9 +10,9 @@
 
 开始之前，确认有足够的空闲磁盘空间和内存（RAM）来放这个模型。具体大小见下表。
 
-1. 点击顶栏里的 **Connections**(连接)。
-2. 在 **Jobs**(分工) 框下方找到 **Built-in model** 卡片。它显示 **Not downloaded**。
-3. 点击卡片，或者点击它的 **Download**(下载) 按钮。一个标题为 **Built-in model** 的窗口会打开。
+1. 打开 **Library → Connections**(资料库 → 连接)。
+2. 在 **On this device**(在此设备上) 下找到 **Built-in model**。它显示 **Not downloaded**。
+3. 点击这一行，或点击 **Set up**(配置)。一个标题为 **Built-in model** 的窗口会打开。
 4. 在 **Which model?**(用哪个模型？) 下面选一个模型。**Gemma 4 E2B — Q8 (Best Quality)** 带有 **Recommended**(推荐) 标记。电脑内存不多的话，选 **Q4_K_M**。它大约需要 3.4 GB 内存，而不是 5.4 GB。
 5. 点击底部的 **Download** 按钮。按钮上会显示模型大小，例如 **Download 5.0 GB**。
 6. 等待完成。窗口会显示三个步骤：**Install runtime**(安装运行时)、**Download model**(下载模型) 和 **Start and test**(启动并测试)。运行时是负责运行模型的那个程序。缺少运行时时，Marinara 会先安装它。
@@ -27,7 +27,7 @@
 - **Local runtime failed to start.** 见[故障排查](#troubleshooting)。
 - **Download failed.** 窗口会显示错误。检查网络连接和空闲磁盘空间，然后再点一次下载按钮。
 
-也可以从 **Connections** 面板里的 **Add**(添加) 打开这个窗口：在 **Add account**(添加账号) 窗口里，它在 **Built-in model** 下面。
+也可以从 Connections 页面打开这个窗口：**Built-in model** 列在 **On this device** 下。
 
 ### 精选预设
 
@@ -67,7 +67,7 @@ Apple Silicon 上改为显示两个 MLX 预设：
 | **Use for tracker agents (roleplay)**(用于追踪器智能体，角色扮演) | 让模型为追踪器智能体保持运行。默认关闭。 |
 | **Use for game scene analysis**(用于游戏场景分析) | 让它为 Game Mode 的场景效果保持运行，比如背景、音乐和天气。默认开启。 |
 | **Use the built-in model for all tracker agents**(所有追踪器智能体都使用内置模型) | 把所有内置追踪器智能体都指向这个模型。它不会把智能体开启。 |
-| **Change in Defaults**(在默认设置中更改) | 打开 **Jobs** 框，可以在那里给它分配其他工作。 |
+| **Change in Defaults**(在默认值中更改) | 打开 **Defaults**(默认值) 框，可在里面为它分配其他工作。 |
 
 两个开关都关时，模型不会自己启动。开启其中一个，或者有聊天或工作用到它时，它才会启动。启用智能体的方法见[记忆功能与聊天摘要](../agents/memory.md)。
 
@@ -132,20 +132,18 @@ Apple Silicon 上改为显示两个 MLX 预设：
 - **Max response tokens** 不限制 Game Mode 的场景分析，后者有自己的上限。
 - **Expert** 里的 **Diagnostics**(诊断信息) 会显示运行时构建版本、检测到的显卡和上一次的启动命令。
 
-<a id="allow-runtime-installs"></a>
-
 ### 允许安装运行时
 
 安装或重装运行时属于受保护操作。Windows 一键安装版会自动为你放行。在 macOS、Linux 和 Docker 上，做下面其中一项，然后重试：
 
-- 在 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问) 里输入管理员密钥。管理员密钥是用于高风险操作的第二个密码。可以在服务器所在电脑的 **Admin Access** 里生成它，也可以在服务器的 `.env` 文件里把它设为 `ADMIN_SECRET`。见 [Admin Access](../REMOTE_ACCESS.md#admin-access-and-privileged-actions)。
+- 在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 里输入管理员密钥。管理员密钥是用于高风险操作的第二个密码。可以在服务器所在电脑的 **Settings → Advanced → Security** 里生成它，也可以在服务器的 `.env` 文件里把它设为 `ADMIN_SECRET`。见 [管理员密钥](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)。
 - 在服务器的 `.env` 文件里加上 `SIDECAR_RUNTIME_INSTALL_ENABLED=true`，然后重启 Marinara。`.env` 文件是 Marinara 文件夹里的一个文本文件。见[编辑 .env 文件](../CONFIGURATION.md#edit-the-env-file)。
 
 Marinara 只下载为你当前版本批准的 llama.cpp、MLX 和 uv 版本，并在运行任何内容之前校验每个文件的大小和 SHA-256 校验和。
 
 ## 本地语音模型
 
-**Local speech model**(本地语音模型) 在你自己的电脑上把你的语音转成文字，供 Conversation(对话模式) 通话使用。它是一个 Whisper 模型，属于语音识别模型。它需要 **Calls**(通话) 智能体包，在 **Agents → Agent Organizer**(智能体 → 智能体管理器) 里安装。
+**Local speech model**(本地语音模型) 在你自己的电脑上把你的语音转成文字，供 Conversation(对话模式) 通话使用。它是一个 Whisper 模型，属于语音识别模型。它需要 **Calls**(通话) 智能体包，在 **Library → Agents**(资料库 → 智能体) 里安装。
 
 1. 打开 **Connections** 面板，点击 **On this device**(在你的电脑上) 下面的 **Speech to text**(语音识别) 项。
 2. 在 **Local speech model** 下面，从下拉菜单里选一个模型。
@@ -160,8 +158,6 @@ Marinara 只下载为你当前版本批准的 llama.cpp、MLX 和 uv 版本，�
 手机和老电脑优先选 Tiny。Base 对口齿不清的语音识别更准，但启动更慢。要删除已下载的模型，点击 **Delete Local Whisper**(删除 Local Whisper，垃圾桶按钮)。卸载 Calls 也会删掉它。
 
 你的音频不会离开你的电脑，只有文字会发给你的聊天模型。要在通话中使用它，把通话的音频输入设为 Local Whisper。见 [Conversation 音频和视频通话](../conversation/calls.md)。如果改为开启 **Speech to text** 服务器，通话就会把你的语音发到那里。见[使用你自己的语音识别服务器](../conversation/calls.md#use-your-own-speech-to-text-server)。
-
-<a id="troubleshooting"></a>
 
 ## 故障排查
 

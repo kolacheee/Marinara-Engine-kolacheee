@@ -97,11 +97,7 @@ globalThis.__MARINARA_HOST__ = {
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts`モジュール。 |
 | `api` | `lib/api-client.ts`モジュール(`api`、`ApiError`、`getApiErrorMessage`、...)。 |
 
-パッケージは、メンバーを確認してから読み取ります。たとえば`const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`のようにします。
-
-画像のダウンロードには`shouldUseIosImageShare()`を使い、ギャラリーと同じプラットフォーム方針に従います。iPhoneでは保存操作の前に`prepareImageSave(url, filename)`で画像を準備し、その操作から直接`savePreparedImageToDevice(prepared)`を呼び出します。共有のキャンセルはエラー表示を出さずに処理し、共有に失敗してもWebKitのダウンロードプレビューへ切り替えません。他のプラットフォームでは`downloadUrlToDevice`を使います。これらの関数は、EngineサーバーがDockerで動いていてもクライアント端末に保存します。
-
-名前空間は増える一方です。新しいメンバーはCapability APIのマイナーバージョンとともに追加され、それを必要とするパッケージはそのマイナーバージョンを要求します。名前空間向けにビルドしたパッケージは、名前空間を追加したCapability APIのバージョンを要求するので、古いEngineはそれをインストールせず、今あるバージョンを使い続けます。それでもメンバーが欠けている場合、パッケージは状態を持つEngineのサービスを、同梱のコピーで代用することはありません。`ui`と`chat`のストアは書き込みをしない読み取り専用のコピーになり、それ以外のメンバーはすべて、その機能には新しいMarinara Engineが必要だと報告します。
+パッケージは、メンバーを確認してから読み取ります。たとえば`const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`のようにします。画像のダウンロードには`shouldUseIosImageShare()`を使い、ギャラリーと同じプラットフォーム方針に従います。iPhoneでは保存操作の前に`prepareImageSave(url, filename)`で画像を準備し、その操作から直接`savePreparedImageToDevice(prepared)`を呼び出します。共有のキャンセルはエラー表示を出さずに処理し、共有に失敗してもWebKitのダウンロードプレビューへ切り替えません。他のプラットフォームでは`downloadUrlToDevice`を使います。これらの関数は、EngineサーバーがDockerで動いていてもクライアント端末に保存します。名前空間は増える一方です。新しいメンバーはCapability APIのマイナーバージョンとともに追加され、それを必要とするパッケージはそのマイナーバージョンを要求します。名前空間向けにビルドしたパッケージは、名前空間を追加したCapability APIのバージョンを要求するので、古いEngineはそれをインストールせず、今あるバージョンを使い続けます。それでもメンバーが欠けている場合、パッケージは状態を持つEngineのサービスを、同梱のコピーで代用することはありません。`ui`と`chat`のストアは書き込みをしない読み取り専用のコピーになり、それ以外のメンバーはすべて、その機能には新しいMarinara Engineが必要だと報告します。
 
 **ホストのモジュール。** `modules[specifier]`は完全なモジュール名前空間で、ライブラリーに`default`があればそれも含みます。クライアント契約の`MARINARA_HOST_MODULE_IMPORTS`は、各公開スロットを、そのスロットがインポートする依存関係に対応付けます。ほとんどは同じ名前に対応します。安定した`framer-motion`スロットは`framer-motion-v13`(Motion 13.5.1の正確なnpmエイリアス)に対応し、任意で選べる`motion/react`スロットはEngineの主要な依存関係である`framer-motion` 14に対応します。パッケージのツールは、エクスポート一覧とTypeScriptのパスの両方にこの対応付けを使います。公開スロット名が実際の依存関係名である必要はありません。指定子は`react`、`react/jsx-runtime`、`react-dom`、`react-dom/client`、`@tanstack/react-query`、`zustand`、`zustand/middleware`、`sonner`、`zod`、`i18next`、`react-i18next`、`framer-motion`、`motion/react`、`tailwind-merge`、`clsx`です。パッケージのビルドはこれらの指定子を、名前空間を読むシム(shim)に解決します。そのため、パッケージはEngineの唯一のReactで描画され、EngineのReact Queryのキャッシュとトーストを共有します。
 
@@ -118,7 +114,7 @@ globalThis.__MARINARA_HOST__ = {
 | --- | --- |
 | `ui` | `achievementsEnabled`、`debugMode`、`includeReasoningInExports`、`enableStreaming`、`userStatus`、`enterToSendConvo`、`conversationCallVoiceVolume`、`conversationCallVoiceMuted`、`setConversationCallVoiceVolume`、`setConversationCallVoiceMuted`、`conversationTimeZone`、`noodleNavigation`、`setNoodleNavigation`、`noodleSelectedPersonaId`、`setNoodleSelectedPersonaId`、`reviewImagePromptsBeforeSend`、`musicPlayerEnabled`、`musicPlayerSource`、`sidebarOpen`、`setSidebarOpen`、`chatBackground`、`setChatBackground`、`characterDetailId`、`lorebookDetailId`、`presetDetailId`、`connectionDetailId`、`agentDetailId`、`toolDetailId`、`personaDetailId`、`regexDetailId`、`characterLibraryOpen`、`botBrowserOpen`、`gameAssetsBrowserOpen`、`modal`、`rightPanelOpen`、`closeModal`、`closeRightPanel`、`closeBotBrowser`、`closeAllDetails` |
 | `chat` | `activeChatId`、`activeChat`、`isStreaming`、`streamingChatId`、`abortControllers`、`reset`、`pendingSpatialTransitions`、`setPendingSpatialTransition`、`clearPendingSpatialTransition`、`setPendingSpatialTransitionStatus` |
-| `agent` | `setYoutubePlay`、`reset` |
+| `agent` | `setYoutubePlay`、`setPackageActivity`、`reset` |
 | `sidecar` | `modelDownloaded`、`modelDisplayName`、`fetchStatus` |
 | `dialog` | `dialog`、`openDialog`、`closeDialog` |
 | `gallery` | `pinImage`、`pinVideo` |
@@ -194,6 +190,7 @@ Engineの安全規則は要求より優先されます。プレイヤーのテ�
 Capability API 1.14では、クライアントのエントリーポイントを持ち、有効かつ稼働中のRoleplayエージェントパッケージ向けに、`contributions.slots`へ2つの値を追加します。
 
 - `roleplay-tracker`はRoleplay HUDにパッケージの`toolbar`ビューをマウントします。Propsには`chatId`、`chatMode`、`mobileCompact`、ホストの`toolbarButtonClass`、`onRerunTracker`、`trackerRetryBusy`、`lockMode`、`onToggleLockMode`があります。コールバックは任意なので、存在を確認してから使ってください。
+- `chat-activity`(Capability API 1.820)は、チャットのAgent activityパネルにパッケージの`activity`ビューをマウントします。[Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity)を参照してください。
 - `tracker-panel`は既存のTracker Panel内にパッケージの`tracker`ビューをマウントし、`chatId`、`chatMode`、`detached`を渡します。別のパネルを開かず、ホストの画面を再利用してください。両方のスロットには通常の識別情報とローカライズのPropsも渡されます。
 
 プロンプトコンテキストの提供は引き続き`api.registerPromptContext`で登録し、`prompt-context`権限が必要です。要求に`targetCharacterIds`、`personaId`、`placedAgentTypes`(互換性のため任意)が追加されます。`placedAgentTypes`はプリセットが配置済みのエージェントデータセクションを示し、コンテキストの重複を防げます。ホストは各提供元のパッケージ識別情報を`packageBlocks`に保持し、パッケージのテキストを対応するエージェントセクションへ配置します。閲覧者別のテキストを返す場合は、指定された対象キャラクターIDを尊重してください。
@@ -1000,10 +997,8 @@ const memoryVectors = await embeddings.embed(memoryTexts, signal); // documents
 
 ブラウザービューは`openCharacter(characterId, { tab })`を受け取ります。キャラクターエディターを開き、指定されたタブがあればそのタブを表示するため、パッケージは自身が読み取るカードの項目へユーザーを案内できます。古いEngineにはこの関数がありません。リンクを表示する前に`openCharacter`があることを確認してください。
 
-#9191以降、`tab`にはタブ内のセクションも指定できます。`character-sheet`、`image-instructions`、`sprites`、`gallery`はいずれも**Images**タブにあります。`sprites`と`gallery`は以前のタブ名で、既存のリンクは引き続き使えます。自撮り写真の指示(`conversationImageInstructions`)は`convo`から`image-instructions`に移りました。#9191より前のEngineはこのIDを認識せず、エディターの先頭を開きます。
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66: パッケージのスレッドから始めるシーン
@@ -1138,6 +1133,58 @@ const isGif = result.mimeType === "image/gif";
 `long-term-memory:runtime`サービスには、省略可能な`chatBranched({ chatId, parentChatId })`メソッドを追加できます。チャットの分岐が作られると、Engineはこのメソッドを1回呼び出して完了を待ちます。呼び出すのは、分岐のルートがコピー(メッセージ、メタデータ、スナップショット)を終えた後で、新しいチャットを返す前です。そのため、呼び出しの中では、分岐のメッセージと`branchParentChatId`のメタデータをすでに読み取れます。パッケージはこれを使って、誰かが読む前にコピーを修正できます。
 
 エラーになった呼び出しと、数秒を超えてかかる呼び出しはログに記録して無視します。どちらの場合も分岐は返されます。このメソッドがなければ、何も変わりません。これはソフトなインターフェースです。古いEngineはこのメソッドを呼び出さないため、呼び出しがない場合にもパッケージが対応できるようにしておく必要があります。権限は不要です。
+
+### Capability API 1.818: パッケージが選んだ接続からの埋め込み
+
+`api.runtime.embeddingsFor(connectionId)`は、`resolveEmbeddings()`が使うエージェントの接続ではなく、パッケージ自身の設定で指定したソースから埋め込みを解決します。`resolveEmbeddings()`とは異なり、アプリ全体の**Embeddings**(埋め込み)のデフォルトへフォールバックすることはありません。
+
+| `connectionId` | 解決先 |
+| --- | --- |
+| `null` | 組み込みのローカルMiniLM埋め込みモデル。 |
+| 接続ID | その接続自身の埋め込みソース。**Embedding provider**(埋め込みプロバイダー)、**Embedding endpoint URL**(埋め込みのエンドポイントURL)、埋め込みモデルを、**Test embedding**(埋め込みをテスト)と同じ方法で解決します。 |
+| 接続が存在しないID、または使用できる埋め込みソースのない接続 | `null`。ログに記録して処理を完了し、例外は投げません。 |
+
+返されるホストは`resolveEmbeddings()`と同じ形で、`spaceId`、`label`、`embed(texts, signal?, inputType?)`を持ちます。制限(128テキスト、合計200,000文字)と1.68の入力の種類も同じです。呼び出しが失敗すると、`embed`は`null`を返します。ソースごとに独自の`spaceId`があるため、設定を変更したら保存済みのベクトルを再埋め込みしてください。
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+これはソフトなインターフェースです。古いEngineにはこのメソッドがないため、呼び出す前に存在を確認し、例のようにフォールバックしてください。1.818を宣言するのは、この機能なしではパッケージが動作しない場合だけにしてください。権限は不要です。
+
+### Capability API 1.820: Agent activityへのパッケージの表示
+
+`chat-activity`スロットは、チャットドロワーとTracker PanelでAgent activity(エージェントの動作状況)アイコンから開くパネルに、独自のカードを配置します。`contributions.slots`で宣言し、`activity`ビューを登録してください。Engineは、クライアントのエントリーポイントを持ち、そのチャットで実行されるアクティブなパッケージ(チャットの有効なエージェントにIDが含まれるパッケージ)ごとに要素を1つマウントします。エージェントの状態と出力の後、カスタムエージェントの保存済み出力の前に配置されます。
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+要素には、`chatId`と、パッケージ自身のエージェントページを開く`onOpenAgentSettings()`に加え、通常の機能識別情報とローカライズのPropsが渡されます。Engineは外枠のUIを付けません。独自のカードを描画し、表示するものがない場合は何も描画しないでください。クライアントコードが読み込まれた後は、空の要素は場所を取りません。パッケージのカードが1つでもマウントされている間、パネルは「No agent activity yet」を表示しないため、待機中の表示が必要なら自分で描画してください。
+
+これはソフトなインターフェースではありません。1.820より古いEngineはこのマニフェストを拒否するため、`chat-activity`を宣言するパッケージは1.820を宣言します。
+
+#### パッケージの処理中や確認が必要な状態の表示
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })`は、そのチャットのAgent activityアイコンを点灯させます(`packageId`はマニフェストの`id`です)。チャットドロワー、その独立ウィンドウ、Tracker Panelのどこにあるアイコンにも反映されます。どれかのパッケージが`busy: true`を報告している間は、チャット自身のエージェントと同じようにアイコンが回転します。`alert: true`はドットを表示します。省略したフィールドは値を保持し、両方がfalseになったエントリーは削除されます。通知はチャットごとに保持されるため、チャットを切り替えると、そのチャットの通知だけが表示されます。
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+Engineが自分で通知を消去することはなく、`activity`要素がアンマウントされても消えません(アイコンが特に役立つのはパネルを閉じているときです)。消去はパッケージ側が担当します。再読み込みまたは`reset()`ではすべて消去されます。チャットを切り替えても残ります。処理中または確認が必要なパッケージも動作状況として数えるため、パネルは「No agent activity yet」を表示しません。パネルに表示するものがあるよう、通知と`activity`カードを組み合わせてください。これはソフトなインターフェースです。古いEngineにはこのメソッドがないため、上の例のように存在を確認してください。1.820を宣言するのは、この機能なしではパッケージが動作しない場合だけにしてください。権限は不要です。
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

@@ -14,7 +14,7 @@ Marinara Engine 可以把图像和视频请求发给本地的 ComfyUI 服务器�
 
 ## 创建 Marinara 连接
 
-1. 点击 **Connections**(连接)，再点击 **Add**(添加)。在 **Add account**(添加账号) 窗口的 **Images & video**(图像与视频) 下，本地服务器选 **ComfyUI**，RunPod 端点选 **RunPod Serverless (ComfyUI)**。
+1. 打开 **Library → Connections**(资料库 → 连接)，点击 **Add connection**(添加连接)。在 **Image**(图像) 选项卡上，本地服务器选 **ComfyUI**，RunPod 端点选 **RunPod Serverless (ComfyUI)**。
 2. 本地 ComfyUI 填它的地址（`http://127.0.0.1:8188`），不需要 API 密钥，除非 ComfyUI 前面的代理要求提供密钥（见[使用需要认证的代理](#use-an-authenticated-proxy)）。**ComfyUI workflow (optional)**(ComfyUI 工作流，可选) 输入框留空时，Marinara 会使用内置的基础文生图工作流。
 3. RunPod 则填 API 密钥和 **RunPod endpoint ID**(RunPod 端点 ID)，必须提供自定义工作流。
 4. 在图像模型上设置 **Local image defaults**(本地图像默认值)。这些值会替换掉工作流里对应的占位符。

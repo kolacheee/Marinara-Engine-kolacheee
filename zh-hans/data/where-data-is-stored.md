@@ -50,7 +50,7 @@ Marinara 会加密你保存的 API 密钥。用于加密的密钥是数据文件
 
 ## 从 Android 复制数据
 
-在 Android 上，数据文件夹位于应用存储空间中，没有 root 权限就无法访问，因此无法直接复制。请使用 **Settings → Advanced → Backup & Export → Download Backup**(设置 → 高级 → 备份与导出 → 下载备份)。`.zip` 中会包含 `.encryption-key` 文件（如果存在）。参见[备份与恢复 Marinara](backup-and-restore.md)。
+在 Android 上，数据文件夹位于应用存储空间中，没有 root 权限就无法访问，因此无法直接复制。请使用 **Settings → Data → Backup & Restore → Download Backup**(设置 → 数据 → 备份与恢复 → 下载备份)。`.zip` 中会包含 `.encryption-key` 文件（如果存在）。参见[备份与恢复 Marinara](backup-and-restore.md)。
 
 自动备份也保存在同一个应用存储空间中。卸载或重置应用时，它们可能会和实时数据一起被删除，因此请在别处另存一份。
 

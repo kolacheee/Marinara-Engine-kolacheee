@@ -4,15 +4,15 @@ Troque a fonte que Marinara usa em todo o aplicativo. Escolha a fonte que já ve
 
 ## Como escolher a fonte do aplicativo
 
-1. Abra **Settings** (Configurações) e clique na aba **Appearance** (aparência). Depois clique no botão **App** (aplicativo).
-2. Localize a seção **Text & Scale** (texto e escala).
+1. Abra **Configurações** e clique na aba **Aparência**.
+2. Localize a seção **Fontes e tamanho do texto**.
 3. Abra o menu suspenso **Font** (fonte) e escolha uma fonte.
 
 O jeito mais fácil de conseguir uma fonte nova é o [Google Fonts](#downloading-from-google-fonts). O padrão é **Default (Inter)**, uma fonte limpa, escolhida para leitura na tela. As fontes que você adiciona aparecem no mesmo menu suspenso, abaixo dela.
 
 A fonte escolhida é sincronizada entre os dispositivos. Todo navegador conectado ao mesmo servidor Marinara passa a usá-la. Veja [Visão geral das configurações](../settings/settings-overview.md).
 
-Os widgets do chat têm uma opção **Font** própria em **Chat widget style** (estilo dos widgets do chat). Ative **Apply preset font** (aplicar fonte do preset) ali para usá-la também nas mensagens, nos campos de entrada e nos controles do chat. Veja [Estilos prontos para janelas de chat](custom-css-themes.md#ready-made-chat-window-styles).
+Os widgets do chat têm uma opção **Fonte** própria em **Botões e janelas do chat**. Ative **Aplicar a fonte do preset** ali para usá-la também nas mensagens, nos campos de entrada e nos controles do chat. Veja [Estilos prontos para janelas de chat](appearance-settings.md#chat-buttons--windows).
 
 ## Como adicionar fontes próprias
 
@@ -20,7 +20,7 @@ Antes de começar: as fontes ficam em uma pasta no servidor. O servidor é o com
 
 1. Clique em **Open Fonts Folder** (abrir a pasta de fontes), ao lado do menu suspenso **Font**, para abrir `data/fonts/` no servidor. Ou localize por conta própria a pasta `data/fonts/` dentro da pasta de dados do Marinara.
 2. Copie o arquivo de fonte para ela.
-3. Vá para **Settings → Appearance → App → Text & Scale**.
+3. Vá para **Configurações → Aparência → Fontes e tamanho do texto**.
 4. Abra o menu suspenso **Font**. A sua fonte está na lista.
 5. Selecione-a. O texto do aplicativo muda na hora.
 
@@ -36,7 +36,7 @@ Se não funcionou: confira o tipo do arquivo e se ele está em `data/fonts/` no 
 
 O servidor precisa de acesso à internet para isso.
 
-1. Vá para **Settings → Appearance → App → Text & Scale**.
+1. Vá para **Configurações → Aparência → Fontes e tamanho do texto**.
 2. No campo **Google Fonts**, digite o nome exato da fonte, por exemplo `Fira Code` ou `Lora`.
 3. Clique em **Add** (adicionar).
 4. Aguarde o download. A fonte então aparece no menu suspenso **Font**.

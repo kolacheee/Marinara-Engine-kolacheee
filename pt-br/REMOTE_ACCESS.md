@@ -1,6 +1,6 @@
 # Acesso remoto: login e lista de IPs permitidos
 
-Neste guia você aprende a acessar Marinara Engine a partir de outro dispositivo, como o celular, um notebook ou um contêiner Docker. Ele cobre a opção principal, um login. Também trata da lista de IPs permitidos, dos proxies de login, do HTTPS, do Admin Access e da mensagem de bloqueio ao salvar (CSRF). Quase tudo aqui é configurado no arquivo `.env` do servidor, e não dentro do aplicativo.
+Neste guia você aprende a acessar Marinara Engine a partir de outro dispositivo, como o celular, um notebook ou um contêiner Docker. Ele cobre a opção principal, um login. Também trata da lista de IPs permitidos, dos proxies de login, do HTTPS, do segredo de administrador e da mensagem de bloqueio ao salvar (CSRF). Quase tudo aqui é configurado no arquivo `.env` do servidor, e não dentro do aplicativo.
 
 Um rápido glossário para acompanhar o guia:
 
@@ -24,7 +24,7 @@ Se a página não carregar, verifique se o Tailscale está ativado nos dois disp
 
 > **Observação:** isso não funciona em instalações Docker. O tráfego do Tailscale chega ao contêiner pelo gateway do Docker, então Marinara não consegue ver que ele veio do Tailscale. Defina um login primeiro ([Opção 1](#option-1-login-recommended)) e depois publique a porta além de `127.0.0.1`.
 
-Backups, importações, atualizações e outras ações arriscadas ainda precisam do segredo de administrador a partir de um dispositivo remoto. Veja [Admin Access e ações privilegiadas](#admin-access-and-privileged-actions).
+Backups, importações, atualizações e outras ações arriscadas ainda precisam do segredo de administrador a partir de um dispositivo remoto. Veja [O segredo de administrador e ações privilegiadas](#the-admin-secret-and-privileged-actions).
 
 ## O que Marinara bloqueia por padrão
 
@@ -261,9 +261,9 @@ SSL_KEY=/path/to/key.pem
 
 Você precisa de um certificado e de uma chave antes de definir as variáveis `SSL_CERT` e `SSL_KEY`. Uma ferramenta como o `mkcert` cria um certificado para uso local, e o `certbot` cria um para um domínio público. Se os arquivos estiverem faltando ou ilegíveis, o servidor para na inicialização e informa os caminhos exatos que tentou usar.
 
-<a id="admin-access-and-privileged-actions"></a>
+<a id="the-admin-secret-and-privileged-actions"></a>
 
-## Admin Access e ações privilegiadas
+## O segredo de administrador e ações privilegiadas
 
 Algumas ações são especialmente delicadas: limpar dados, criar ou baixar backups, importar e exportar perfis, instalar temas e agentes e instalar o runtime de modelo local. Elas exigem um segredo compartilhado à parte, chamado segredo de administrador, além da opção de acesso que você escolheu acima.
 
@@ -273,9 +273,9 @@ Os agentes instalados, como os da tela inicial, não precisam do segredo de admi
 
 ### Criar o segredo de administrador no aplicativo
 
-1. No computador que roda Marinara, abra **Settings** (Configurações), depois a aba **Advanced** e então a seção **Admin Access** (acesso de administrador).
+1. No computador que roda Marinara, abra **Settings** (Configurações), depois a aba **Advanced** e então a seção **Segurança**.
 2. Clique em **Make admin secret** (criar segredo de administrador). Marinara mostra o novo segredo uma única vez e o salva neste navegador.
-3. Em cada dispositivo remoto, abra **Settings** → **Advanced** → **Admin Access**, digite o segredo no campo e clique em **Save**. Letras maiúsculas, espaços e traços não importam.
+3. Em cada dispositivo remoto, abra **Settings** → **Advanced** → **Segurança**, digite o segredo no campo e clique em **Save**. Letras maiúsculas, espaços e traços não importam.
 
 Um dispositivo que já tem o segredo também pode criá-lo. Um dispositivo que só entrou com o login não pode. Isso impede que um login roubado assuma o controle das ações arriscadas.
 
@@ -291,11 +291,11 @@ Para mudar o segredo, clique em **Replace admin secret** (substituir segredo de 
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. No dispositivo remoto, abra **Settings** → **Advanced** → **Admin Access**.
+2. No dispositivo remoto, abra **Settings** → **Advanced** → **Segurança**.
 3. Cole o mesmo valor no campo (o texto de exemplo dele diz **ADMIN_SECRET**) e clique em **Save**.
 4. A mensagem **Admin secret saved for this browser** deve aparecer.
 
-O `ADMIN_SECRET` do `.env` prevalece sobre um segredo criado no aplicativo. Enquanto ele estiver definido, a seção **Admin Access** informa isso, e você muda o segredo apenas no `.env`.
+O `ADMIN_SECRET` do `.env` prevalece sobre um segredo criado no aplicativo. Enquanto ele estiver definido, a seção **Segurança** informa isso, e você muda o segredo apenas no `.env`.
 
 ### Bom saber
 

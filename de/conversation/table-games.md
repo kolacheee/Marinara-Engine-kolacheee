@@ -2,7 +2,7 @@
 
 Spiele UNO, Schach, Poker, 8-Ball Pool, Tic-Tac-Toe und Schere, Stein, Papier gegen die Charaktere eines Conversation-Chats. Marinara teilt die Karten aus, baut das Spielfeld auf, achtet auf jede Regel, und jeder Charakter am Tisch erzählt seine Züge im Rollenspiel-Ton. Während du spielst, erscheint über dem Nachrichtenfeld ein lebendes Spielfeld.
 
-Jedes Spiel ist ein optionales Paket. Installiere die, die du willst, über **Agents → Agent Organizer** und starte Marinara neu, wenn der Katalog dazu auffordert. Ein Spiel, das du nicht installiert hast, hat keinen Slash-Befehl, erscheint nicht in der Spieleauswahl, und sein Schalter **Commands** bleibt verborgen.
+Jedes Spiel ist ein optionales Paket. Installiere die, die du willst, über **Library → Agents** (Bibliothek → Agenten) und starte Marinara neu, wenn der Katalog dazu auffordert. Ein Spiel, das du nicht installiert hast, hat keinen Slash-Befehl, erscheint nicht in der Spieleauswahl, und sein Schalter **Commands** bleibt verborgen.
 
 Regeln, die für jedes Spiel gelten:
 

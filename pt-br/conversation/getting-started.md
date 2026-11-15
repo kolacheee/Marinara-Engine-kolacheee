@@ -6,7 +6,7 @@ O Conversation Mode é o modo de chat no estilo de mensageiro: um ou mais person
 
 Antes de começar: adicione uma conta em **Connections** (veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md)) e tenha pelo menos um personagem. Uma persona, o cartão de personagem que representa você, é opcional (veja [Personas de usuário](../characters/personas.md)).
 
-1. Na barra lateral de chats, abra a aba **CONVO** e clique em **New Conversation**. Um assistente de configuração com quatro páginas se abre.
+1. Abra os seus chats (**Biblioteca** no canto superior direito e depois **Chats** no topo da barra lateral), abra a aba **Convo** e clique em **Novo**. Um assistente de configuração com quatro páginas se abre.
 2. Na primeira página, **Name & Connection**, dê um nome ao chat e escolha a conta que escreve as respostas.
 3. Na segunda página, **Prompt Preset**, escolha o preset do prompt de Conversation, ou mantenha o padrão.
 4. Na terceira página, **Persona & Characters**, escolha a sua persona e um ou mais personagens.
@@ -35,7 +35,7 @@ Mude essas opções depois em **Chat Settings → Autonomous Messaging**. Se os 
 
 Commands são ações que o personagem decide fazer sozinho. Você não os digita. Depois da configuração, abra **Chat Settings → Agents → Commands**. A chave geral **Commands** controla todas as famílias: quando ela está desativada, nenhuma família funciona.
 
-Cada família tem a sua própria chave. Todas começam ativadas, exceto **Videos**, que você mesmo precisa ativar. As famílias que pertencem a um agente opcional só aparecem quando você instala esse agente em **Agents → Agent Organizer**.
+Cada família tem a sua própria chave. Todas começam ativadas, exceto **Videos**, que você mesmo precisa ativar. As famílias que pertencem a um agente opcional só aparecem quando você instala esse agente em **Biblioteca → Agentes**.
 
 | Família | O que um personagem pode fazer | Precisa de um agente |
 | --- | --- | --- |
@@ -58,13 +58,13 @@ Cada família tem a sua própria chave. Todas começam ativadas, exceto **Videos
 | **Tic-Tac-Toe** | Aceitar um desafio de jogo da velha. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Aceitar uma partida. | Rock-Paper-Scissors |
 
-Para **Influence** e **Notes**, veja [Chats conectados](../chats/connected-chats.md). A última coluna indica o agente a instalar em **Agent Organizer**.
+Para **Influence** e **Notes**, veja [Chats conectados](../chats/connected-chats.md). A última coluna indica o agente a instalar em **Biblioteca → Agentes**.
 
 <a id="your-presence-status"></a>
 
 ## O seu status de presença
 
-A sua presença é uma pílula colorida no rodapé da barra lateral. Ela é a mesma em todos os chats. Clique nela para escolher:
+A sua presença é uma pílula colorida na parte de baixo da lista de chats. Ela é a mesma em todos os chats. Clique nela para escolher:
 
 | Status | Significado |
 | --- | --- |

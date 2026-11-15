@@ -6,9 +6,9 @@ Live2D 모델은 지원하지 않습니다. Live2D 라이선스는 무료 오픈
 
 ## 아바타 에이전트 설치하기
 
-모든 설치에서 **Agent Organizer**의 **Roleplay**(롤플레이)와 **Game**(게임) 필터 아래에 두 에이전트가 있습니다. Marinara Engine 2.5.1 이상이 필요합니다. 이전 Engine은 설치를 거부합니다. 두 에이전트는 따로 다운로드하므로 원하는 것만 설치하세요. 둘 다 Roleplay와 Game 채팅에서 캐릭터와 페르소나에게 쓸 수 있으며, 채팅하는 동안 AI 모델에 추가 요청을 보내지 않습니다.
+모든 설치에서 **Library → Agents**(라이브러리 → 에이전트)의 **Available**(사용 가능)에 있는 **Roleplay**(롤플레이)와 **Game**(게임) 필터 아래에 두 에이전트가 있습니다. Marinara Engine 2.5.1 이상이 필요합니다. 이전 Engine은 설치를 거부합니다. 두 에이전트는 따로 다운로드하므로 원하는 것만 설치하세요. 둘 다 Roleplay와 Game 채팅에서 캐릭터와 페르소나에게 쓸 수 있으며, 채팅하는 동안 AI 모델에 추가 요청을 보내지 않습니다.
 
-1. **Agents → Agent Organizer**(에이전트 → Agent Organizer)를 열고 **2D Avatars**나 **3D Avatars**, 또는 둘 다 설치하세요. 어느 쪽도 재시작이 필요하지 않습니다.
+1. **Library → Agents**를 열고 **2D Avatars**나 **3D Avatars**, 또는 둘 다 설치하세요. 어느 쪽도 재시작이 필요하지 않습니다.
 2. 에이전트의 페이지에서 아바타를 하나씩 설정하세요([아바타 설정하기](#set-up-an-avatar) 참고).
 3. Roleplay나 Game 채팅에서 **Chat Settings → Agents → Misc Agents**(채팅 설정 → 에이전트 → 기타 에이전트)를 열고 에이전트를 추가하세요.
 
@@ -43,7 +43,7 @@ Live2D 모델은 지원하지 않습니다. Live2D 라이선스는 무료 오픈
 
 ### 아바타 파일이 저장되는 곳
 
-가져온 파일은 저장하기 전에 검사합니다. 크기 제한은 서버의 일반 업로드 한도뿐입니다. 파일은 데이터 폴더의 `avatar-models/<character or persona>/<id>/` 아래에, 설정이 담긴 `avatar.json`과 함께 저장됩니다. 백업과 프로필 내보내기에는 이 폴더가 포함됩니다. 캐릭터나 페르소나를 삭제하면 그 아바타도 삭제되며, 설정의 Danger Zone(위험 구역)에서 **Characters**(캐릭터)나 **Personas**(페르소나), **Media & Assets**(미디어 및 에셋)를 모두 지울 때도 마찬가지입니다. 캐릭터 카드 내보내기에는 아바타가 절대 포함되지 않습니다.
+가져온 파일은 저장하기 전에 검사합니다. 크기 제한은 서버의 일반 업로드 한도뿐입니다. 파일은 데이터 폴더의 `avatar-models/<character or persona>/<id>/` 아래에, 설정이 담긴 `avatar.json`과 함께 저장됩니다. 백업과 프로필 내보내기에는 이 폴더가 포함됩니다. 캐릭터나 페르소나를 삭제하면 그 아바타도 삭제되며, **Settings → Data → Delete Data**(설정 → 데이터 → 데이터 삭제)에서 **Characters**(캐릭터)나 **Personas**(페르소나), **Media & Assets**(미디어 및 에셋)를 모두 지울 때도 마찬가지입니다. 캐릭터 카드 내보내기에는 아바타가 절대 포함되지 않습니다.
 
 ### 그룹 채팅
 
@@ -272,7 +272,7 @@ Pollinations, Together AI, Horde, DALL-E, 참조 이미지 슬롯이 없는 Comf
 
 | 원하는 것 | 도구 | 얻는 것 |
 |---|---|---|
-| PNGTuber 스프라이트 | 아무 그림 앱, 그다음 캐릭터의 **Images → Sprites**(이미지 → 스프라이트) | 스프라이트 |
+| PNGTuber 스프라이트 | 아무 그림 앱, 그다음 캐릭터의 **Sprites**(스프라이트) 탭 | 스프라이트 |
 | 레이어와 코스튬이 있는 PNGTuber 스프라이트 | [PNGTuber Plus](https://github.com/kaiakairos/PNGTuber-Plus) | `.save` 파일 |
 | 메시 아바타 | [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio) | `.mavatar` 파일 |
 | 3D 모델 | [VRoid Studio](https://vroid.com/en/studio), 또는 Blender와 [VRM Add-on for Blender](https://vrm-addon-for-blender.info/en-us/) | `.vrm` 파일, 그리고 선택 사항인 `.vrma` 대기 애니메이션 |
@@ -281,7 +281,7 @@ Pollinations, Together AI, Horde, DALL-E, 참조 이미지 슬롯이 없는 Comf
 
 1. 감정마다 그림을 한 장씩 그리세요. 모두 같은 크기로, 캐릭터가 같은 자리에 오도록 그립니다. 각 그림의 이름은 감정에 따라 `neutral`, `happy`, `angry`, `sad`, `relaxed`, `surprised`로 지으세요. `smile`, `cry`, `calm`, `shock`처럼 감정 단어가 들어간 이름도 됩니다. 선택 사항인 [더 많은 감정](#pngtuber-sprites)에는 `amusement`, `fear`, `gratitude`처럼 이름을 지으세요.
 2. 입이 움직이게 하려면 입을 벌린 같은 그림을 그리고 이름에 `_talk`를 붙이세요. 예를 들면 `happy_talk`입니다. 눈을 깜박이게 하려면 눈을 감은 그림에 `_blink`를 붙이세요. 둘 다라면 `_blink_talk`를 붙이세요.
-3. **Images → Sprites**의 **Facial Expressions**(표정) 아래에 그림을 추가하세요. 각 파일 이름이 그 스프라이트의 이름이 됩니다. [캐릭터 스프라이트](../characters/sprites.md#upload-your-own-sprites)를 참고하세요.
+3. **Sprites** 탭의 **Facial Expressions**(표정) 아래에 그림을 추가하세요. 각 파일 이름이 그 스프라이트의 이름이 됩니다. [캐릭터 스프라이트](../characters/sprites.md#upload-your-own-sprites)를 참고하세요.
 4. **Agents**에서 **2D Avatars**를 열고 캐릭터나 페르소나를 고른 다음, **Show this avatar in chats**를 켜세요.
 
 ### PNGTuber Plus

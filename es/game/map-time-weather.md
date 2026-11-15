@@ -7,7 +7,7 @@ Usa el panel de mapa para ver dónde está tu grupo y para moverlo. Esta guía t
 Game Mode muestra un panel de mapa en la pantalla de juego. Lista el nombre del mapa actual, el día de juego y un icono de cielo según la hora del día.
 
 - **En una computadora**, el mapa es un panel integrado que puedes leer de un vistazo. Puedes arrastrarlo y fijarlo en su lugar. Para saber cómo funcionan los paneles arrastrables, consulta [Game Mode: widgets del HUD](hud-widgets.md).
-- **En un teléfono**, toca **Map** (Mapa) para abrir el panel. Su botón empieza cerca de la esquina superior izquierda y se puede arrastrar por el chat. Usa **Lock window** (Fijar ventana) para mantener el botón en su sitio, y **Close** (Cerrar) para volver a él. La posición se guarda con el chat. El mapa del teléfono usa el estilo de widgets del chat de **Settings → Appearance → App** (Configuración → Apariencia → App), y su botón se mantiene separado del menú de tres puntos **Chat tools** (Herramientas del chat).
+- **En un teléfono**, toca **Map** (Mapa) para abrir el panel. Su botón empieza cerca de la esquina superior izquierda y se puede arrastrar por el chat. Usa **Lock window** (Fijar ventana) para mantener el botón en su sitio, y **Close** (Cerrar) para volver a él. La posición se guarda con el chat. El mapa del teléfono usa el estilo de widgets del chat de **Settings → Appearance → Chat Buttons & Windows** (Configuración → Apariencia → Botones y ventanas del chat), y su botón se mantiene separado del menú de tres puntos **Chat tools** (Herramientas del chat).
 
 Una partida VN tiene el mapa de escena que se describe aquí. El overworld, los pueblos y los mapas de mazmorras pertenecen a las partidas Overworld, que todavía no están disponibles (consulta [VN u Overworld](getting-started.md#vn-or-overworld)).
 
@@ -72,7 +72,30 @@ En un juego con un mundo, el tiempo también pasa por su cuenta:
 
 ## Clima
 
-El juego registra el clima con cálculos fijos, no con la IA. El clima depende del bioma (el tipo de lugar en el que está el grupo, como desierto, ártico, costero o montaña) y de la estación. Algunos ejemplos son despejado, nublado, lluvia, tormenta, nieve, ventisca, niebla y tormenta de arena. El clima cambia con más frecuencia cuando viajas o tomas un descanso largo, a veces cuando exploras, y rara vez en otros casos. Da matiz a cómo el GM describe cada escena.
+El juego registra el clima con cálculos fijos, no con la IA. Algunos ejemplos son despejado, nublado, lluvia, tormenta, nieve, ventisca, niebla, ola de calor y tormenta de arena. El clima da matiz a cómo el GM describe cada escena.
+
+En un juego con un mundo generado, el tiempo atmosférico depende del clima del lugar del mapa donde está el grupo:
+
+- **El terreno que rodea al grupo.** Los desiertos son secos y rara vez llueve, las selvas son húmedas y cálidas, los campos nevados son fríos y las montañas son más frías y tienen más niebla que los valles que hay debajo.
+- **La latitud y el mar.** En un mapa del mundo entero, los extremos superior e inferior están cerca de los polos y el centro está cerca del ecuador. La distancia al mar también cuenta: las costas tienen inviernos suaves y los lugares del interior tienen veranos calurosos e inviernos muy fríos.
+- **La estación local.** Al sur del ecuador, el verano llega durante el invierno del calendario. Cerca del ecuador, el año tiene una estación húmeda y otra seca en lugar de invierno.
+- **El tiempo se desplaza.** Los sistemas meteorológicos se mueven por el mapa a lo largo de horas y días, así que el cielo no pasa de una ola de calor a la niebla de un solo salto, y los lugares cercanos comparten el tiempo. En los climas cálidos, los chubascos y las tormentas eléctricas se forman por la tarde.
+
+Cuando la historia o el GM pide un tiempo que el lugar no puede tener en ese momento, como nieve en un desierto caluroso en verano, el juego usa el tiempo más parecido que encaje (un viento frío y fuerte, en ese caso). Se informa al GM del clima y de lo que no puede ocurrir allí.
+
+Un juego sin un mundo generado estima el clima a partir del nombre del lugar, como "desierto", "puerto" o "montaña".
+
+### Lugares al margen de la naturaleza
+
+Una maldición, un dios u otro gran poder puede fijar un lugar a un solo ambiente: una ciudad sumida en una noche eterna, un bosque que permanece en otoño, un valle bajo una nieve que nunca se derrite. El GM establece esa condición fija en la historia, y tiene prioridad sobre el clima y el reloj hasta que el GM la levanta:
+
+- **Tiempo atmosférico.** El lugar conserva el tiempo que se le fijó, incluso uno que su clima nunca podría tener, como nieve en un desierto.
+- **Estación.** El lugar permanece en una estación mientras el resto del mundo avanza.
+- **Luz.** En el lugar siempre es de noche, atardece o es de día. La iluminación y los efectos meteorológicos de la escena siguen esa condición, y el mapa del overworld sombrea el terreno afectado.
+
+Un mundo puede empezar con condiciones fijas ya establecidas. Cuando construyes un mundo a partir de tus lorebooks, cualquier lugar que el trasfondo describa como ajeno a la naturaleza, como "en Sallow Vale siempre es otoño" o "Gotham nunca ve el sol", queda fijado desde el primer día. Lo mismo ocurre con una condición fija que describa la ambientación. Se informa al GM de estos lugares, y aun así puede levantar la condición en la historia.
+
+Una condición fija abarca el lugar y todo lo que contiene, así que fijar una región también fija sus pueblos. Cuando las condiciones se superponen, tiene prioridad el lugar más cercano, por lo que un pueblo dentro de una región maldita puede tener su propio tiempo fijo. Una condición fija también puede abarcar el mundo entero. La escena no puede levantarla pidiendo otro tiempo; solo el GM puede hacerlo.
 
 Para ver el clima en pantalla, activa **Dynamic weather effects (rain, snow, fog, etc.)** (Efectos de clima dinámicos: lluvia, nieve, niebla, etc.) en la configuración de apariencia. Esta opción está activada de forma predeterminada. Entonces aparecen partículas de lluvia, nieve y niebla sobre el juego, que coinciden con el clima y la hora del día. Consulta [Configuración de apariencia](../appearance/appearance-settings.md).
 
@@ -106,7 +129,7 @@ Para cambiar de vista, usa **Show the scene** (Mostrar la escena) y **Show the o
 
 ### Paquetes de mosaicos
 
-Los paquetes de mosaicos guardan la paleta y cada mosaico (cada tipo de terreno, los asentamientos por tamaño, el grupo, y las calles, los tejados y los habitantes de un pueblo) como filas de píxeles. Cada familia de ambientación tiene un paquete integrado. Abre el panel **Agents** (Agentes) y busca **Tile packs** (Paquetes de mosaicos) para:
+Los paquetes de mosaicos guardan la paleta y cada mosaico (cada tipo de terreno, los asentamientos por tamaño, el grupo, y las calles, los tejados y los habitantes de un pueblo) como filas de píxeles. Cada familia de ambientación tiene un paquete integrado. Abre **Library → Agents** (Biblioteca → Agentes) y busca **Tile packs** (Paquetes de mosaicos) para:
 
 - elegir con qué paquete se dibuja cada ambientación (**Built in**, Integrado, es el suyo propio),
 - usar **Import a tile pack** (Importar un paquete de mosaicos) con un archivo `.tilepack.json`,

@@ -57,7 +57,7 @@ http://127.0.0.1:7860
 
 ## Marinara शुरू और बंद करना
 
-ऐप इस्तेमाल करते हैं तो उसे खोलें, और सर्वर बंद हो तो **Install / Start Marinara** पर टैप करें। ऐप और ब्राउज़र के बीच बदलने के लिए लॉन्चर में **Open in browser** इस्तेमाल करें, फिर **Retry connection** (कनेक्शन फिर आज़माएँ)। ऐप के अंदर से **Settings → General → App Behavior → Open Android launcher (app or browser)** (सेटिंग्स → जनरल → ऐप का व्यवहार → Android लॉन्चर खोलें (ऐप या ब्राउज़र)) के रास्ते लॉन्चर पर वापस जाएँ।
+ऐप इस्तेमाल करते हैं तो उसे खोलें, और सर्वर बंद हो तो **Install / Start Marinara** पर टैप करें। ऐप और ब्राउज़र के बीच बदलने के लिए लॉन्चर में **Open in browser** इस्तेमाल करें, फिर **Retry connection** (कनेक्शन फिर आज़माएँ)। ऐप के अंदर से **Settings → Appearance → Layout → Open Android launcher (app or browser)** (सेटिंग्स → अपीयरेंस → लेआउट → Android लॉन्चर खोलें (ऐप या ब्राउज़र)) के रास्ते लॉन्चर पर वापस जाएँ।
 
 हाथ से किए गए इंस्टॉल में Termux खोलें और यह चलाएँ:
 

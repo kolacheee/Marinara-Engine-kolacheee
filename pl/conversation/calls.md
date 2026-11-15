@@ -2,7 +2,7 @@
 
 Rozmowa to ekran na żywo, podobny do komunikatora głosowego, na którym rozmawiasz z jedną postacią lub kilkoma przez mikrofon albo pisząc. Gdy trwa, leży na wierzchu zwykłego czatu Conversation. Rozmowy istnieją tylko w trybie Conversation.
 
-Rozmowy to opcjonalny pakiet. Zainstaluj **Calls** z **Agents → Agent Organizer** (organizator agentów). Jeśli katalog poprosi o ponowne uruchomienie, zatrzymaj aplikację Marinara Engine i uruchom ją tak, jak zwykle (zobacz [Instalacja aplikacji Marinara Engine](../INSTALLATION.md)).
+Rozmowy to opcjonalny pakiet. Zainstaluj **Calls** z **Biblioteka → Agenci**. Jeśli katalog poprosi o ponowne uruchomienie, zatrzymaj aplikację Marinara Engine i uruchom ją tak, jak zwykle (zobacz [Instalacja aplikacji Marinara Engine](../INSTALLATION.md)).
 
 Podczas rozmowy postacie z działającym głosem Text to Speech (TTS, tekst zamieniany na mówiony dźwięk) mówią na głos. Postacie bez głosu odpowiadają wiadomościami tekstowymi na czacie rozmowy. Zamiast nieruchomego awatara możesz też pokazywać zapętlone klipy wideo postaci wykonane przez AI.
 
@@ -38,18 +38,15 @@ Dwa przełączniki wyglądają podobnie, ale robią co innego:
 
 Główny przełącznik **Commands** w tej samej sekcji musi być włączony, aby działały komendy w rozmowie. Sama rozmowa może się rozpocząć także przy wyłączonym przełączniku.
 
-<a id="set-up-text-to-speech"></a>
-
 ### Konfiguracja Text to Speech
 
-Text to Speech decyduje, które postacie mogą mówić i jakim głosem. Pełny opis znajdziesz w [Konfiguracja syntezy mowy (TTS)](../media/tts-setup.md). W skrócie: otwórz **Connections**, kliknij **Add account** i wybierz **Text to speech**. Jeśli to konto jest już na liście w sekcji **On this device**, otwórz je stamtąd. Potem:
+Text to Speech decyduje, które postacie mogą mówić i jakim głosem. Pełny opis znajdziesz w [Konfiguracja syntezy mowy (TTS)](../media/tts-setup.md). W skrócie:
 
-1. Włącz Text to Speech.
-2. Wybierz źródło: **OpenAI-compatible**, **ElevenLabs**, **PocketTTS** lub **xAI Voice**.
-3. Wpisz klucz API albo adres lokalnego serwera dla tego źródła.
-4. Wybierz model i głos.
-5. Ustaw **Voice option** na **One voice for all** albo **Selected per character or persona**. Osobne głosy postaci ułatwiają śledzenie rozmów grupowych.
-6. Zapisz, a potem użyj przycisku podglądu, aby sprawdzić, czy słychać dźwięk.
+1. Otwórz **Połączenia** i kliknij wiersz **Głos** w sekcji **Domyślne**.
+2. Wybierz model głosu lub usługę głosową. Wybranie jednego z nich włącza syntezę mowy. Konto tego modelu dostarcza klucz i adres.
+3. Kliknij zębatkę wiersza **Głos**, aby otworzyć **Voice settings** (ustawienia głosu).
+4. W sekcji **Who speaks** (kto mówi) wybierz **Shared voice** (wspólny głos) albo przypisz postaciom i personom własne głosy w sekcji **Character and persona voices** (głosy postaci i person). Osobne głosy postaci ułatwiają śledzenie rozmów grupowych.
+5. Kliknij **Odsłuchaj**, aby sprawdzić, czy słychać dźwięk.
 
 Jeśli postać nie ma głosu, który aplikacja potrafi ustalić, ta postać jest w rozmowie tylko tekstowa.
 
@@ -122,8 +119,6 @@ Wyłączenie **Character video presence** wyłącza też oba te przełączniki. 
 
 Potrzebna tylko w trybie **Mic recording + Local Whisper** albo gdy chcesz użyć własnego serwera zamiany mowy na tekst.
 
-<a id="download-local-whisper"></a>
-
 ### Pobranie modelu Local Whisper
 
 Local Whisper zamienia twoją mowę na tekst na komputerze, na którym działa aplikacja Marinara Engine, więc dźwięk z mikrofonu nie opuszcza go na potrzeby transkrypcji. Tekst nadal trafia do twojego modelu jako część rozmowy. To najpewniejsza ścieżka mikrofonu w przeglądarkach ze słabą obsługą mowy, takich jak Firefox.
@@ -142,13 +137,11 @@ Ikona kosza, **Delete Local Whisper**, usuwa model. Odinstalowanie Calls usuwa t
 
 Jeśli to nie zadziałało: w wersji Lite aplikacji Marinara Engine zobaczysz komunikat "Local Whisper is disabled in Lite mode. Use a full Marinara install to download and run the local speech model." Jeśli zobaczysz komunikat o "native ONNX runtime", brakuje silnika mowy dla twojej platformy. Zainstaluj zależności ponownie tą samą wersją Node, której używasz do uruchamiania aplikacji, a potem uruchom ją ponownie.
 
-<a id="use-your-own-speech-to-text-server"></a>
-
 ### Użyj własnego serwera zamiany mowy na tekst
 
 Jeśli Local Whisper słabo radzi sobie z twoim językiem lub akcentem, wyślij głos do innego serwera zamiany mowy na tekst. Działa każdy serwer, który przyjmuje format OpenAI do zamiany mowy na tekst (adres `/audio/transcriptions`), niezależnie od tego, czy uruchamiasz go sam, czy korzystasz z usługi takiej jak OpenAI lub Groq.
 
-1. Otwórz **Connections** i otwórz **Speech to text** w sekcji **On this device**. Jeśli go nie ma na liście, kliknij **Add account** i wybierz **Speech to text**. Jest ukryty, dopóki pakiet Calls nie jest zainstalowany.
+1. Otwórz **Połączenia** i kliknij zębatkę wiersza **Dyktowanie (rozpoznawanie mowy)** w sekcji **Domyślne**. Znajdziesz tam ustawienia serwera **Zamiana mowy na tekst**. Są ukryte, dopóki pakiet Calls nie jest zainstalowany.
 2. Wpisz **Server URL**, na przykład `http://localhost:8000/v1`.
 3. Wpisz **API key**, jeśli serwer go wymaga. Jest zapisywany w postaci zaszyfrowanej i pokazywany zamaskowany.
 4. Wpisz nazwę **Model** używaną przez twój serwer. Zostaw puste, aby wysyłać `whisper-1`.
@@ -160,7 +153,7 @@ Gdy to jest włączone, **Mic recording + Local Whisper** wysyła twoją mowę n
 
 Serwer na tym samym komputerze działa bez zmian. Serwer na innym komputerze w twojej sieci jest odrzucany, chyba że ustawisz `STT_LOCAL_URLS_ENABLED=true` w pliku `.env` (zobacz [Konfiguracja serwera](../CONFIGURATION.md)).
 
-Jeśli to nie zadziałało: przeczytaj komunikat pod przyciskiem **Test**. Komunikat "Could not reach the speech-to-text server" oznacza, że adres jest błędny albo serwer jest wyłączony. Komunikat z nazwą `STT_LOCAL_URLS_ENABLED` oznacza, że serwer jest na innym komputerze. Liczba pochodzi z twojego serwera: 401 zwykle oznacza błędny klucz API, a 404 błędny adres lub nazwę modelu. Jeśli rozmowy nadal używają Local Whisper, zaktualizuj Calls w **Agents → Agent Organizer**.
+Jeśli to nie zadziałało: przeczytaj komunikat pod przyciskiem **Test**. Komunikat "Could not reach the speech-to-text server" oznacza, że adres jest błędny albo serwer jest wyłączony. Komunikat z nazwą `STT_LOCAL_URLS_ENABLED` oznacza, że serwer jest na innym komputerze. Liczba pochodzi z twojego serwera: 401 zwykle oznacza błędny klucz API, a 404 błędny adres lub nazwę modelu. Jeśli rozmowy nadal używają Local Whisper, zaktualizuj Calls w **Biblioteka → Agenci**.
 
 ## Ustawienia i wartości domyślne
 

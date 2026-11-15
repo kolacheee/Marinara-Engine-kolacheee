@@ -11,7 +11,7 @@ Bevor du anfängst: Prompt Overrides spielen nur für Funktionen eine Rolle, die
 ## Die Editoren finden
 
 1. Öffne **Settings** (Einstellungen).
-2. Klick auf den Tab **Generations**.
+2. Klick auf den Tab **Media** (Medien). Solange der Agent Illustrator nicht installiert ist, bietet dieser Tab nur an, ihn herunterzuladen.
 3. Scroll zum Bereich **Prompt Overrides** (Prompt-Überschreibungen), der als „Reusable image and video prompt templates“ beschrieben ist.
 
 Dort gibt es zwei Editoren. Klick auf einen Titel, um ihn aufzuklappen.

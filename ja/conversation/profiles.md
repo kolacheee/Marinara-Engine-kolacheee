@@ -8,10 +8,10 @@
 
 これらの欄は、**Convo**というタブにあります。
 
-1. キャラクターは**Character Editor**で、ペルソナは**Persona Editor**で開きます。開くには、サイドバーの**Characters**パネルを開くか、右のサイドバー上部バーの人物アイコンから**Personas**パネルを開き、カードをクリックします([キャラクターの作成と編集](../characters/creating-and-editing-characters.md)と[ペルソナの作成と編集](../characters/personas.md)を参照)。
+1. キャラクターは**Character Editor**で、ペルソナは**Persona Editor**で開きます。開くには、**Library**(ライブラリー) > **Characters**(キャラクター)または**Library** > **Personas**(ペルソナ)を開き、カードをクリックします([キャラクターの作成と編集](../characters/creating-and-editing-characters.md)と[ペルソナの作成と編集](../characters/personas.md)を参照)。
 2. **Convo**タブをクリックします。
 
-このタブには、**Convo Display Name**、**About Me**、**Convo Behavior**があります。キャラクターにはさらに、**Weekly schedule**があり、**Edit schedule**または**Create schedule**が表示されます。[キャラクタースケジュールと自律メッセージ](schedules.md)を参照してください。キャラクターの自撮り写真の指示は、**Images**(画像)タブの**Selfie instructions**(自撮り写真の指示)に移動しました。[自撮り写真](selfies.md)を参照してください。
+このタブには、**Convo Display Name**、**About Me**、**Convo Behavior**があります。キャラクターにはさらに、**Weekly schedule**(**Edit schedule**または**Create schedule**があります。[スケジュール](schedules.md)を参照)と、キャラクターの自撮り写真について任意の指示を入れる**Image generation instructions**(画像生成の指示)があります([自撮り写真](selfies.md)を参照)。
 
 ## 表示名を設定する
 

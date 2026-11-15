@@ -4,15 +4,15 @@ Marinaraがアプリ全体で使うフォントを変更できます。標準の
 
 ## アプリのフォントの選択
 
-1. **Settings**(設定)を開き、**Appearance**(外観)タブをクリックしてから、**App**(アプリ)ボタンをクリックします。
-2. **Text & Scale**セクションを探します。
+1. **Settings**(設定)を開き、**Appearance**(外観)タブをクリックします。
+2. **Fonts & Text Size**(フォントと文字サイズ)セクションを探します。
 3. **Font**ドロップダウンを開き、フォントを選びます。
 
 新しいフォントをいちばん手軽に入手できるのは[Google Fonts](#downloading-from-google-fonts)です。デフォルトは**Default (Inter)**で、画面上での読みやすさを考えて選んだ、すっきりとしたフォントです。追加したフォントは、同じドロップダウンでその下に並びます。
 
 選んだフォントはデバイス間で同期します。同じMarinaraサーバーにつながっているブラウザーは、すべてそのフォントに切り替わります。[設定の概要](../settings/settings-overview.md)を参照してください。
 
-チャットウィジェットには、**Chat widget style**(チャットウィジェットのスタイル)の下に別の**Font**の選択があります。そこで**Apply preset font**(プリセットのフォントを適用)をオンにすると、そのフォントがメッセージ、入力欄、チャットの操作部品にも使われます。[用意されているチャットウィンドウのスタイル](custom-css-themes.md#ready-made-chat-window-styles)を参照してください。
+チャットウィジェットには、**Chat Buttons & Windows**(チャットのボタンとウィンドウ)の下に別の**Font**の選択があります。そこで**Apply preset font**(プリセットのフォントを適用)をオンにすると、そのフォントがメッセージ、入力欄、チャットの操作部品にも使われます。[用意されているチャットウィンドウのスタイル](appearance-settings.md#chat-buttons--windows)を参照してください。
 
 ## 自分のフォントの追加
 
@@ -20,7 +20,7 @@ Marinaraがアプリ全体で使うフォントを変更できます。標準の
 
 1. **Font**ドロップダウンの隣にある**Open Fonts Folder**(フォントフォルダーを開く)をクリックして、サーバー上の`data/fonts/`を開きます。または、Marinaraのデータフォルダーの中にある`data/fonts/`フォルダーを自分で探します。
 2. フォントファイルをそこにコピーします。
-3. **Settings → Appearance → App → Text & Scale**(設定 → 外観 → アプリ → Text & Scale)を開きます。
+3. **Settings → Appearance → Fonts & Text Size**(設定 → 外観 → フォントと文字サイズ)を開きます。
 4. **Font**ドロップダウンを開きます。追加したフォントが一覧にあります。
 5. そのフォントを選びます。アプリの文字がすぐに切り替わります。
 
@@ -36,7 +36,7 @@ Marinaraが読み込むのは`.ttf`、`.otf`、`.woff`、`.woff2`のファイル
 
 これには、サーバーがインターネットにつながっている必要があります。
 
-1. **Settings → Appearance → App → Text & Scale**(設定 → 外観 → アプリ → Text & Scale)を開きます。
+1. **Settings → Appearance → Fonts & Text Size**(設定 → 外観 → フォントと文字サイズ)を開きます。
 2. **Google Fonts**欄に、フォント名を正確に入力します。たとえば`Fira Code`や`Lora`です。
 3. **Add**(追加)をクリックします。
 4. ダウンロードを待ちます。終わると、フォントが**Font**ドロップダウンに表示されます。

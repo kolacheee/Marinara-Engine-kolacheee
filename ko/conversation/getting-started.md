@@ -6,7 +6,7 @@
 
 **시작하기 전에:** **Connections**(연결)에서 계정을 추가하고([AI 제공자에 연결하기](../connections/connecting-to-a-provider.md) 참고) 캐릭터를 하나 이상 준비하세요. 페르소나는 나를 대신하는 캐릭터 카드이며 선택 사항입니다([사용자 페르소나](../characters/personas.md) 참고).
 
-1. 채팅 사이드바에서 **CONVO**(대화) 탭을 열고 **New Conversation**(새 대화)을 클릭하세요. 4페이지짜리 설정 마법사가 열립니다.
+1. 채팅 목록을 여세요(오른쪽 위의 **Library**(라이브러리), 사이드바 위쪽의 **Chats**(채팅) 순으로 클릭). **Convo**(대화) 탭을 열고 **New**(새로 만들기)를 클릭하세요. 4페이지짜리 설정 마법사가 열립니다.
 2. 첫 페이지 **Name & Connection**에서 채팅 이름을 정하고 응답을 쓸 계정을 고르세요.
 3. 두 번째 페이지 **Prompt Preset**에서 Conversation 프롬프트용 프리셋을 고르거나 기본값을 그대로 두세요.
 4. 세 번째 페이지 **Persona & Characters**에서 페르소나와 캐릭터를 한 명 이상 고르세요.
@@ -35,7 +35,7 @@
 
 명령은 캐릭터가 스스로 하기로 결정하는 동작입니다. 직접 입력하는 것이 아닙니다. 설정을 마친 뒤 **Chat Settings** → **Agents**(에이전트) → **Commands**를 여세요. 마스터 **Commands** 스위치가 모든 계열을 통제합니다. 이 스위치가 꺼져 있으면 어떤 계열도 동작하지 않습니다.
 
-계열마다 자체 스위치가 있습니다. 직접 켜야 하는 **Videos**를 제외하면 모두 켜진 채로 시작합니다. 선택 사항인 에이전트에 딸린 계열은 **Agents** → **Agent Organizer**에서 그 에이전트를 설치했을 때만 표시됩니다.
+계열마다 자체 스위치가 있습니다. 직접 켜야 하는 **Videos**를 제외하면 모두 켜진 채로 시작합니다. 선택 사항인 에이전트에 딸린 계열은 **Library → Agents**(라이브러리 → 에이전트)에서 그 에이전트를 설치했을 때만 표시됩니다.
 
 | 계열 | 캐릭터가 할 수 있는 일 | 필요한 에이전트 |
 | --- | --- | --- |
@@ -58,13 +58,13 @@
 | **Tic-Tac-Toe** | 틱택토 도전을 수락합니다. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | 가위바위보 대결을 수락합니다. | Rock-Paper-Scissors |
 
-**Influence**와 **Notes**는 [Conversation을 Roleplay나 Game에 연결하기](../chats/connected-chats.md)를 참고하세요. 마지막 열은 **Agent Organizer**에서 설치할 에이전트 이름입니다.
+**Influence**와 **Notes**는 [Conversation을 Roleplay나 Game에 연결하기](../chats/connected-chats.md)를 참고하세요. 마지막 열은 **Library → Agents**에서 설치할 에이전트 이름입니다.
 
 <a id="your-presence-status"></a>
 
 ## 내 상태 표시
 
-내 상태는 사이드바 아래쪽에 있는 색깔 알약 모양 버튼입니다. 모든 채팅에서 같습니다. 클릭하면 다음 중에서 고를 수 있습니다.
+내 상태는 채팅 목록 아래쪽에 있는 색깔 알약 모양 버튼입니다. 모든 채팅에서 같습니다. 클릭하면 다음 중에서 고를 수 있습니다.
 
 | 상태 | 의미 |
 | --- | --- |

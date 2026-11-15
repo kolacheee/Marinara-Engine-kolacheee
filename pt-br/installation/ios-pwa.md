@@ -93,7 +93,7 @@ Veja [Bloqueado depois de atualizar](../REMOTE_ACCESS.md#locked-out-after-updati
 
 **Uma faixa vermelha avisa que os salvamentos vão falhar em silêncio.** Esse é um aviso de confiança de rede vindo do servidor, e não um problema do seu iPhone ou iPad. O dono do servidor precisa confiar no seu endereço. Veja [Acesso remoto](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf).
 
-**As ações privilegiadas estão bloqueadas.** Algumas ações de manutenção precisam do segredo de administrador (uma segunda senha), que vem do dono do servidor. Salve-o no iPhone ou no iPad em **Settings → Advanced → Admin Access**. Veja [Acesso remoto](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+**As ações privilegiadas estão bloqueadas.** Algumas ações de manutenção precisam do segredo de administrador (uma segunda senha), que vem do dono do servidor. Salve-o no iPhone ou no iPad em **Settings → Advanced → Security**. Veja [Acesso remoto](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Guias relacionados
 

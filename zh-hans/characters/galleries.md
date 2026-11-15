@@ -1,10 +1,10 @@
 # 角色与用户角色图库
 
-角色编辑器和用户角色编辑器里的 **Images**(图像) 选项卡中的 **Gallery**(图库)保存挂在角色或用户角色上的图片和视频，所以即使删掉聊天，它们也会保留。设定参考图、换装差分和导入的图包都适合放在这里。你还可以把图库里的图片标记成自定义 Emoji 或贴纸。
+角色编辑器和用户角色编辑器里的 **Gallery**(图库) 选项卡保存挂在角色或用户角色上的图片和视频，所以即使删掉聊天，它们也会保留。设定参考图、换装差分和导入的图包都适合放在这里。你还可以把图库里的图片标记成自定义 Emoji、贴纸，或跟随角色进入每个聊天的背景。
 
-## 找到图库
+## Gallery 选项卡
 
-每个角色和用户角色都有自己的图库。在 Character Editor(角色编辑器) 里打开角色，或者在 Persona Editor(用户角色编辑器) 里打开用户角色。点击 **Images** 选项卡，再点击顶部的 **Gallery**。角色的图库标题是 **Character Gallery**(角色图库)，用户角色的是 **Persona Gallery**(用户角色图库)。两者的用法相同。
+每个角色和用户角色都有自己的 **Gallery** 选项卡（相机图标）。在 Character Editor(角色编辑器) 里打开角色，或者在 Persona Editor(用户角色编辑器) 里打开用户角色。然后点击 **Gallery**。角色的图库标题是 **Character Gallery**(角色图库)，用户角色的是 **Persona Gallery**(用户角色图库)。两者的用法相同。
 
 Gallery 下面有两个子选项卡：
 
@@ -15,7 +15,7 @@ Gallery 下面有两个子选项卡：
 
 ### 添加图片
 
-1. 打开 **Images → Gallery**，选中 **Images**。
+1. 打开 **Gallery** 选项卡，选中 **Images**。
 2. 把图片文件拖到 **Upload Character Images**(上传角色图片) 上，或者点击它挑选文件。在用户角色里，这个区域叫 **Upload Persona Images**(上传用户角色图片)。
 3. 等待上传完成。新图片会出现在网格里。
 
@@ -23,7 +23,7 @@ Gallery 下面有两个子选项卡：
 
 ### 添加视频
 
-1. 打开 **Images → Gallery**，选中 **Videos**。
+1. 打开 **Gallery** 选项卡，选中 **Videos**。
 2. 把视频文件拖到 **Upload Character Videos**(上传角色视频) 上，或者点击它挑选文件。在用户角色里，这个区域叫 **Upload Persona Videos**(上传用户角色视频)。
 3. 等待上传完成。
 
@@ -33,7 +33,7 @@ Gallery 下面有两个子选项卡：
 
 自定义 Emoji 是一张随文字内嵌的小图，写法是 `:name:`。贴纸是一张单独成块的大图，写法是 `sticker:name:`。两者都只在 Conversation Mode(对话模式) 聊天里有效，也就是即时通讯风格的那个模式。
 
-1. 打开 **Images → Gallery**，选中 **Images**。
+1. 打开 **Gallery** 选项卡，选中 **Images**。
 2. 点击图片左上角的小标记按钮（提示文字是 **Tag as emoji or sticker**）。
 3. 点击 **Make emoji** 或 **Make sticker**。
 4. 在 **Custom Emoji** 或 **Custom Sticker** 窗口里输入名称，然后确认。
@@ -51,6 +51,20 @@ Gallery 下面有两个子选项卡：
 - **Remove emoji** 或 **Remove sticker** 取消标记。图片本身仍然留在 Gallery 里。
 
 在图库里标记的 Emoji 或贴纸只属于那一个角色或用户角色，也只在包含它们的 Conversation Mode 聊天里有效。它和消息输入框里的全局 Emoji、贴纸库是两回事。如果图库里的名称和全局名称相同，那个聊天中以图库版本为准。名称不做唯一性检查，所以给每张图起一个不重样的名称。
+
+## 把图库图片用作背景
+
+标记为背景的图片会出现在这个角色（或用户角色）参与的每个聊天中，随时可选，也可以代表卧室之类的地点。
+
+1. 打开 **Gallery** 选项卡，选中 **Images**。
+2. 点击图片左上角的标记按钮，选择 **Use as background**(用作背景)。
+3. 输入图片中的地点，用逗号分隔，例如 `{{char}}'s bedroom, {{char}}'s room`，也可以留空。在用户角色的图库里，使用 `{{user}}`。
+
+按钮随后会显示 **Background:**(背景：) 和地点。点击它可以 **Edit places**(编辑地点) 或 **Remove background tag**(移除背景标签)。这些图片在聊天中的显示方式，见[跟随角色的背景](../roleplay/backgrounds.md#backgrounds-that-follow-a-character)。
+
+聊天中绘制的图片可以通过聊天图库里的人形按钮移到这里。见[聊天图库](../chats/chat-gallery.md#per-image-actions)。
+
+导出为 **Marinara Native** 时，会随图库保留所有标记（Emoji、贴纸和背景）。
 
 <a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
 
@@ -107,4 +121,5 @@ Gallery 下面有两个子选项卡：
 - [创建和编辑角色](creating-and-editing-characters.md)
 - [用户角色](personas.md)
 - [自定义表情、贴纸和 GIF](../conversation/emoji-stickers-gifs.md)
-- [场景背景与 Gallery 面板](../media/scene-backgrounds.md)
+- [随剧情变化的背景](../roleplay/backgrounds.md)
+- [聊天图库](../chats/chat-gallery.md)

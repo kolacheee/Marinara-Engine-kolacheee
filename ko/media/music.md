@@ -6,7 +6,7 @@
 
 **Music DJ**는 선택해서 설치하는 다운로드 가능한 에이전트입니다. 에이전트는 채팅 뒤에서 실행되는 도우미입니다. 답변이 나올 때마다 장면의 분위기를 읽고 어울리는 음악을 재생할 수 있습니다.
 
-시작하기 전에 **Agents**(에이전트)를 열고 **Agent Organizer**를 선택해 **Music DJ**를 설치하세요. 설치 직후에는 꺼져 있습니다. 다른 에이전트처럼 채팅마다 켜세요. Roleplay(롤플레이) 채팅에서 동작하고, Game Mode에서는 별도 토글로([Game Mode의 Music DJ](#music-dj-in-game-mode)), Conversation에서는 **Music**(음악) 명령어로([Conversation의 Music 명령어](#the-conversation-music-command)) 동작합니다.
+시작하기 전에 **Library → Agents**(라이브러리 → 에이전트)를 열고 **Available**(사용 가능)에서 **Music DJ**를 설치하세요. 설치 직후에는 꺼져 있습니다. 다른 에이전트처럼 채팅마다 켜세요. Roleplay(롤플레이) 채팅에서 동작하고, Game Mode에서는 별도 토글로([Game Mode의 Music DJ](#music-dj-in-game-mode)), Conversation에서는 **Music**(음악) 명령어로([Conversation의 Music 명령어](#the-conversation-music-command)) 동작합니다.
 
 세 가지 소스에서 재생합니다.
 
@@ -18,7 +18,7 @@
 
 현재 소스는 상단 바에 고정된 작은 **Music Player**(음악 플레이어)로 표시됩니다. 휴대폰이나 좁은 창에서는 끌어서 옮길 수 있는 작은 원형 플로팅 위젯이 됩니다.
 
-Music DJ 설정은 한곳에서 공유합니다. 오른쪽 **Agents** 패널을 열고 **Music DJ**를 여세요. 미니 플레이어의 톱니바퀴 아이콘(툴팁 **Music DJ setup**(Music DJ 설정))을 클릭해도 됩니다.
+Music DJ 설정은 한곳에서 공유합니다. **Library → Agents**를 열고 **Music DJ**를 여세요. 미니 플레이어의 톱니바퀴 아이콘(툴팁 **Music DJ setup**(Music DJ 설정))을 클릭해도 됩니다.
 
 ### 음악 소스 고르기
 
@@ -124,7 +124,7 @@ Music DJ는 처음 찾은 폴더를 씁니다. 이 채팅의 폴더, 캐릭터�
 
 ## 음악 플레이어 사용하기
 
-**Music Player**는 데스크톱에서는 상단 바의 배지로, 모바일에서는 끌어서 옮길 수 있는 위젯으로 표시됩니다. 표시하거나 숨기려면 **Settings → General → App Behavior**(설정 → 일반 → 앱 동작)를 열고 **Music Player**를 켜거나 끄세요. 기본값은 켜짐입니다. 켜져 있는데 Music DJ가 설치되지 않았다면 플레이어에 **Download Music DJ Agent to configure**(설정하려면 Music DJ 에이전트를 다운로드하세요)가 표시되고 **Agent Organizer** 버튼이 나타납니다.
+**Music Player**는 데스크톱에서는 상단 바의 배지로, 모바일에서는 끌어서 옮길 수 있는 위젯으로 표시됩니다. 표시하거나 숨기려면 **Settings → General → Extras**(설정 → 일반 → 부가 기능)를 열고 **Music Player**를 켜거나 끄세요. 기본값은 켜짐입니다. 켜져 있는데 Music DJ가 설치되지 않았다면 플레이어에 **Download Music DJ Agent to configure**(설정하려면 Music DJ 에이전트를 다운로드하세요)가 표시되고 **Agent Organizer** 버튼이 나타납니다.
 
 새 프로필에서는 소스가 **YouTube**로 시작합니다. 플레이어의 원형 소스 전환 버튼(툴팁 "Switch to ... player"), 편집기의 **Music Player** 버튼, 채팅의 **Music DJ** 설정에서 바꿀 수 있습니다.
 
@@ -166,7 +166,7 @@ Conversation에서는 Music DJ를 에이전트로 추가할 수 없습니다. �
 
 ## 문제 해결
 
-- **미니 플레이어가 보이지 않음**: **Settings → General → App Behavior**에서 **Music Player**를 켜세요.
+- **미니 플레이어가 보이지 않음**: **Settings → General → Extras**에서 **Music Player**를 켜세요.
 - **Spotify에서 아무것도 재생되지 않음**: 재생하려면 Spotify Premium과 동작 중인 Spotify 기기가 필요합니다. 기기에서 데스크톱 앱을 열거나, 데스크톱에서 **Enable Marinara player**를 클릭하세요.
 - **다른 컴퓨터에서 Spotify 로그인 창이 실패함**: "Browser couldn't reach the callback?" 붙여 넣기 상자를 쓰거나, 서버에 `SPOTIFY_REDIRECT_URI`를 설정하세요.
 - **YouTube 검색이 실패함**: 프로젝트에 **YouTube Data API v3**가 활성화되어 있고 키가 HTTP 리퍼러로 제한되지 않았는지 확인하세요. 하루 쿼터를 다 썼다면 다음 날 다시 시도하거나 다른 키를 쓰세요.

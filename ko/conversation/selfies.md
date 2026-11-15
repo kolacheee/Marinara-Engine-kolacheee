@@ -6,7 +6,7 @@
 
 ## 셀카 켜기
 
-**시작하기 전에:** **Agents**(에이전트) → **Agent Organizer**에서 **Illustrator**를 설치하고, 이미지 계정을 추가하세요. 이미지 계정은 그림을 만들어 주는 서비스의 계정입니다([이미지 생성 제공자와 설정](../media/image-providers.md) 참고).
+**시작하기 전에:** **Library → Agents**(라이브러리 → 에이전트)에서 **Illustrator**를 설치하고, 이미지 계정을 추가하세요. 이미지 계정은 그림을 만들어 주는 서비스의 계정입니다([이미지 생성 제공자와 설정](../media/image-providers.md) 참고).
 
 1. Conversation 채팅을 열고 **Chat Settings**(채팅 설정)를 여세요.
 2. **Agents** 섹션을 찾아 **Illustrator Settings**(Illustrator 설정)를 여세요.
@@ -41,7 +41,7 @@
 
 1. **Chat Settings**를 열고 **Gallery**(갤러리) 섹션을 펼치세요.
 2. **Selfie**(셀카)를 클릭하세요. 캐릭터가 둘 이상이면 버튼 옆 목록에서 누가 찍을지 고르세요.
-3. **Expose media prompts before sending**(전송 전에 미디어 프롬프트 표시)이 켜져 있으면(**Settings** → **Generations** → **Overall Generations**) 프롬프트를 검토하거나 고친 다음 **Generate**를 클릭하세요. 취소하면 요청이 전송되지 않습니다.
+3. **Expose media prompts before sending**(전송 전에 미디어 프롬프트 표시)이 켜져 있으면(**Settings → Media → Generation Defaults**(설정 → 미디어 → 생성 기본값)) 프롬프트를 검토하거나 고친 다음 **Generate**를 클릭하세요. 취소하면 요청이 전송되지 않습니다.
 4. 버튼에 **Generating...**(생성 중...)이 표시되는 동안 기다리세요.
 
 채팅에 "Selfie generated."(셀카 생성됨.)가 나타나고 그림이 표시됩니다. 직접 요청도 **Selfie model**을 쓰며 이미지 요청 1번이 듭니다.
@@ -80,7 +80,7 @@
 - **Video model**(비디오 연결): 동영상 계정입니다. **Default video provider**(기본 동영상 연결)는 내 기본값을 씁니다.
 - **First frame**(첫 프레임): 클립이 시작되는 그림입니다(아래 참고).
 
-`/video`와 Gallery의 **Video** 버튼은 어느 쪽이든 작동하며 간격을 무시합니다. 클립을 보낸 응답을 스와이프하면 새 스와이프가 자기 클립을 보낼 수 있습니다. 그룹 채팅에서는 캐릭터마다 응답 하나에 클립 하나를 보낼 수 있고, **Settings** → **Generations** → **Video Generation**(동영상 생성)의 **Videos per reply**(응답당 동영상 수)(기본값 3)까지입니다.
+`/video`와 Gallery의 **Video** 버튼은 어느 쪽이든 작동하며 간격을 무시합니다. 클립을 보낸 응답을 스와이프하면 새 스와이프가 자기 클립을 보낼 수 있습니다. 그룹 채팅에서는 캐릭터마다 응답 하나에 클립 하나를 보낼 수 있고, **Settings → Media → Video Generation**(설정 → 미디어 → 동영상 생성)의 **Videos per reply**(응답당 동영상 수)(기본값 3)까지입니다.
 
 **First frame** 옵션은 다음과 같습니다.
 
@@ -91,7 +91,7 @@
 
 **Expose media prompts before sending**을 켜면 클립 프롬프트와 함께 셀카 프롬프트도 검토합니다.
 
-WebP 같은 다른 형식의 그림은 동영상 서비스용으로 변환됩니다. 동영상 메시지 하나는 동영상 요청 1번이며, 새 셀카에서 시작하면 이미지 요청 1번이 더 듭니다. **Prompt Model**이 동영상 프롬프트를 쓰고, **Settings** → **Generations** → **Video Generation Prompt Overrides**(동영상 생성 프롬프트 재정의)의 **Conversation Video Message**에 그 지침이 들어 있습니다.
+WebP 같은 다른 형식의 그림은 동영상 서비스용으로 변환됩니다. 동영상 메시지 하나는 동영상 요청 1번이며, 새 셀카에서 시작하면 이미지 요청 1번이 더 듭니다. **Prompt Model**이 동영상 프롬프트를 쓰고, **Settings → Media → Prompt Overrides → Conversation Video Message**(설정 → 미디어 → 프롬프트 재정의 → 대화 동영상 메시지)에 그 지침이 들어 있습니다.
 
 ## 참고: 셀카 태그
 

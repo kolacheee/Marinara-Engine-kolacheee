@@ -38,11 +38,11 @@ Pendant le traitement, tu vois "Generating animated portrait GIFs...". Une fois 
 
 Les expressions animées prennent plus de temps que les sprites fixes, car elles sont créées une par une. Commence par quelques-unes.
 
-Quand le réglage **Expose media prompts before sending** (afficher les prompts médias avant l'envoi) est activé dans **Settings → Generations → Overall Generations** (Paramètres → Générations → Générations globales), Marinara marque une pause pour que tu puisses lire et modifier chaque prompt – le texte que Marinara envoie à l'IA – avant qu'il parte vers le service.
+Quand le réglage **Expose media prompts before sending** (afficher les prompts médias avant l'envoi) est activé dans **Settings → Media → Generation Defaults** (Paramètres → Médias → Valeurs de génération par défaut), Marinara marque une pause pour que tu puisses lire et modifier chaque prompt – le texte que Marinara envoie à l'IA – avant qu'il parte vers le service.
 
 ## Durée et format
 
-Chaque expression animée est un clip de portrait vertical au format 9:16, que tu ne peux pas modifier. Pour changer la durée de chaque clip, ouvre **Settings → Generations** (Paramètres → Générations), repère **Video Generation** et règle **Animated expression length** (durée des expressions animées). La valeur par défaut est de 3 secondes. La plage va de 1 à 8 secondes. Marinara enregistre un petit GIF en boucle, large de 512 pixels. Un clip plus court donne un fichier plus léger et une boucle plus serrée.
+Chaque expression animée est un clip de portrait vertical au format 9:16, que tu ne peux pas modifier. Pour changer la durée de chaque clip, ouvre **Settings → Media** (Paramètres → Médias), repère **Video Generation** et règle **Animated expression length** (durée des expressions animées). La valeur par défaut est de 3 secondes. La plage va de 1 à 8 secondes. Marinara enregistre un petit GIF en boucle, large de 512 pixels. Un clip plus court donne un fichier plus léger et une boucle plus serrée.
 
 <a id="backgrounds-are-not-removed"></a>
 

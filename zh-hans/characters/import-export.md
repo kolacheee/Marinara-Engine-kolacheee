@@ -38,6 +38,10 @@ Marinara 导出文件保留的细节最多。其他几种格式来自 SillyTaver
 | **Imported regex scripts**(导入的正则脚本) | **Character only**(默认)：规则只对这个角色生效。 |
 | | **Global**(全局)：规则会加进 **Presets → Regexes**(预设 → 正则)，在每一次聊天里都生效。 |
 | **Split description into fields**(将描述拆分到各字段) | 默认关闭。勾选后，**Description**(描述) 里标明为性格、外观等内容的文字会移到各自的字段里。 |
+| **Import tags**(导入标签) | **Tag imported**(标记为已导入)（默认开启）：添加 **Imported**(已导入) 标签。 |
+| | **Tag source**(标记来源)（默认开启）：添加文件来源标签：SillyTavern 角色卡用 **ST**，`.charx` 用 **CharX**，Marinara 导出文件用 **Marinara**。 |
+
+导入的内容会保留原有的名字和描述。要找到所有导入的内容，在搜索框旁的 **Tags**(标签) 筛选器里选择 **Imported**。每个资料库导入窗口（角色、用户角色、世界书、预设）以及聊天导入窗口，都有这两个 **Import tags** 复选框。[Bot Browser](bot-browser.md) 会用网站名称作为来源，例如 **Chub**。
 
 正则脚本就是一些小的文本替换规则。除非确实想让这些规则处处生效，否则就保留 **Character only**。拆分不会改动旁白类、世界设定类和多角色的角色卡，它们保持原样。
 
@@ -50,12 +54,12 @@ Marinara 导出文件保留的细节最多。其他几种格式来自 SillyTaver
 
 ### 导入整个 SillyTavern 文件夹
 
-要搬走整个 SillyTavern 安装，请使用 **Settings**(设置) 中 **Imports**(导入) 选项卡里的批量导入工具。它会把角色、聊天、预设和世界书一起搬过来。见[从 SillyTavern 导入](../data/importing-from-sillytavern.md)。
+要搬走整个 SillyTavern 安装，请使用 **Settings → Data → SillyTavern Import**(设置 → 数据 → SillyTavern 导入) 里的批量导入工具。它会把角色、聊天、预设和世界书一起搬过来。见[从 SillyTavern 导入](../data/importing-from-sillytavern.md)。
 
 ## 导出一个角色
 
 1. 在编辑器里打开这个角色。
-2. 点击编辑器顶部的 **…**，然后点击 **Export character**(导出角色)。**Export Character** 窗口随即打开。
+2. 点击编辑器顶部的 **Export character**(导出角色)。**Export Character** 窗口随即打开。
 3. 选择一种格式。Marinara 会下载这个文件。
 
 | 格式 | 得到什么 | 适合场景 |
@@ -70,8 +74,8 @@ Marinara 导出文件保留的细节最多。其他几种格式来自 SillyTaver
 
 ## 一次导出多个角色
 
-1. 点击顶部导航栏里的 **Characters**。如果没显示，先点 **More**。
-2. 点击工具栏里的 **Select**(选择，对勾图标)，勾选想导出的角色。
+1. 打开 **Library → Characters**(资料库 → 角色)。
+2. 点击页面标题旁边的 **Select**(选择)（对勾图标），点选想导出的角色。
 3. 点击底部栏里的 **Export**(导出)。Marinara 会下载 `marinara-characters.zip`。
 
 zip 里每个角色对应一个 **Marinara Native** 文件。批量导出没有 PNG 或 JSON 选项，需要这两种格式时请用单个角色的导出。更多选择角色的方法，见[整理角色库](library-organization.md#export-or-delete-many-characters)。

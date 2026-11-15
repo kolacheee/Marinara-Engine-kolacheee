@@ -15,8 +15,8 @@ Hol deine SillyTavern-Daten in Marinara Engine. Importiere jeweils eine Datei od
 
 ## Schneller Import einzelner Dateien
 
-1. Öffne **Settings → Imports**.
-2. Klicke unter **SillyTavern Import** auf die Schaltfläche für deinen Dateityp.
+1. Öffne **Settings → Data → SillyTavern Import** (Einstellungen → Daten → SillyTavern-Import).
+2. Klick auf die Schaltfläche für deinen Dateityp.
 3. Wähle die Datei.
 
 | Schaltfläche | Datei |
@@ -26,7 +26,7 @@ Hol deine SillyTavern-Daten in Marinara Engine. Importiere jeweils eine Datei od
 | **Import Preset (JSON)** | Ein `.json`-Preset. |
 | **Import Lorebook (JSON)** | Eine `.json`-World-Info-Datei. |
 
-Die Schaltflächen haben keine Optionen. Ein Charakterimport behält alle Tags der Quelle und beschränkt jedes Regex-Skript auf diesen Charakter. Ein Regex-Skript ist eine Suchen-und-Ersetzen-Regel für Text. Um diese Optionen selbst zu wählen, nimm **Import** im Panel Characters. Siehe [Charakterkarten importieren und exportieren](../characters/import-export.md).
+Über den Schaltflächen fügen **Tag imported** (als importiert markieren) und **Tag source** (Quelle markieren), die beide standardmäßig eingeschaltet sind, den importierten Elementen die Tags **Imported** und **ST** hinzu. Entferne bei einer der Optionen den Haken, wenn der entsprechende Tag nicht hinzugefügt werden soll. Namen und Beschreibungen der Importe bleiben erhalten. Ansonsten haben die Schaltflächen keine Optionen. Ein Charakterimport behält alle Tags der Quelle und beschränkt jedes Regex-Skript auf diesen Charakter. Ein Regex-Skript ist eine Suchen-und-Ersetzen-Regel für Text. Um diese Optionen selbst zu wählen, nimm **Import** auf der Seite **Library → Characters** (Bibliothek → Charaktere). Siehe [Charakterkarten importieren und exportieren](../characters/import-export.md).
 
 Enthält eine Charakterkarte ein Lorebook, fragt dein Browser, ob er es als eigenes Lorebook importieren soll. Klicke auf **OK**, um es als wiederverwendbares Lorebook zu behalten, oder auf **Cancel**, um nur den Charakter zu importieren.
 
@@ -38,9 +38,9 @@ Um den Modus zu wählen, nutze die Import-Schaltfläche oben in der Chatliste. I
 
 ## Einen SillyTavern-Ordner importieren
 
-Bevor du anfängst: Der Assistent liest Dateien auf dem Server-Rechner. Liegt SillyTavern auf einem anderen Rechner, kopiere zuerst seinen Ordner (den, in dem du SillyTavern installiert hast) auf den Marinara-Rechner. Auf dem Rechner mit Marinara funktioniert der Assistent sofort. Von einem anderen Gerät aus musst du das Admin-Secret auf dem Server festlegen und unter **Settings → Advanced → Admin Access** eingeben. Siehe [Marinara sichern und wiederherstellen](backup-and-restore.md) und den Abschnitt „Privileged APIs (ADMIN_SECRET)“ der [Referenz zur Server-Konfiguration](../CONFIGURATION.md).
+Bevor du anfängst: Der Assistent liest Dateien auf dem Server-Rechner. Liegt SillyTavern auf einem anderen Rechner, kopiere zuerst seinen Ordner (den, in dem du SillyTavern installiert hast) auf den Marinara-Rechner. Auf dem Rechner mit Marinara funktioniert der Assistent sofort. Von einem anderen Gerät aus musst du das Admin-Secret auf dem Server festlegen und unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) eingeben. Siehe [Marinara sichern und wiederherstellen](backup-and-restore.md) und den Abschnitt „Privileged APIs (ADMIN_SECRET)“ der [Referenz zur Server-Konfiguration](../CONFIGURATION.md).
 
-1. Öffne **Settings → Imports → SillyTavern Import**.
+1. Öffne **Settings → Data → SillyTavern Import**.
 2. Klicke auf **Import from SillyTavern Folder**.
 3. Wähle deinen SillyTavern-Ordner. Nimm den Hauptordner, meist den, der `data/` oder `public/` enthält. Nutze einen dieser Wege:
    - Klicke auf **Browse** und wähle den Ordner.
@@ -55,13 +55,16 @@ Die meisten Elemente sind vorausgewählt. Die Standard-Presets von SillyTavern, 
 
 Findet die Suche Charaktere, erscheinen zwei weitere Optionen:
 
-- **Imported character tags** (Standard **All tags**):
-  - **All tags** behält die Tags der Quelle.
-  - **No tags** überspringt sie.
-  - **Existing only** behält nur Tags, die du schon hast.
-- **Imported regex scripts** (Standard **Character only**):
-  - **Character only** wendet die Skripte auf den jeweiligen Charakter an.
-  - **Global** fügt sie für jeden Charakter zu **Presets → Regexes** hinzu.
+**Imported character tags** (Standard **All tags**):
+
+- **All tags** behält die Tags der Quelle.
+- **No tags** überspringt sie.
+- **Existing only** behält nur Tags, die du schon hast.
+
+**Imported regex scripts** (Standard **Character only**):
+
+- **Character only** wendet die Skripte auf den jeweiligen Charakter an.
+- **Global** fügt sie zu **Voreinstellungen → Regex-Skripte** hinzu. Dort verwaltest du Skripte, die chatübergreifend laufen. Siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts).
 
 Wenn es nicht funktioniert hat:
 
@@ -74,6 +77,7 @@ Wenn es nicht funktioniert hat:
 - Chatdateien, die zu einem Charakter gehören, werden als Verzweigungen eines Chats importiert. Eine Verzweigung ist eine Kopie eines Chats, die du getrennt fortsetzt.
 - Gruppenchats werden als Roleplay-Chats importiert.
 - Importierte Elemente behalten das Änderungsdatum der Quelldatei, nicht das Datum des Imports.
+- Charaktere, Personas, Lorebooks, Presets und Chats erhalten die Tags **Imported** und **ST**, sofern du nicht bei **Tag imported** oder **Tag source** oberhalb von **Import Selected** den Haken entfernst. Ihre Namen und Beschreibungen bleiben unverändert.
 
 ## Was sich nicht übernehmen lässt
 

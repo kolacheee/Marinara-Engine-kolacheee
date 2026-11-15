@@ -6,9 +6,9 @@ Code, den du selbst schreibst und importierst, wird als **External Extension** (
 
 ## Bevor du beginnst
 
-External Extensions bleiben verborgen, bis du beide Sicherheitsschritte aus [Importe von Fremdanbietern erlauben](personal-extensions.md#allow-third-party-imports) erledigt hast: `ENABLE_EXTERNAL_EXTENSIONS=true` in `.env` und **Allow third-party extension imports** (Importe von Fremdanbietern erlauben) unter **Settings → Advanced → Danger Zone** (Einstellungen → Erweitert → Gefahrenbereich).
+External Extensions bleiben verborgen, bis du beide Sicherheitsschritte aus [Importe von Fremdanbietern erlauben](personal-extensions.md#allow-third-party-imports) erledigt hast: `ENABLE_EXTERNAL_EXTENSIONS=true` in `.env` und **Allow third-party extension imports** (Importe von Fremdanbietern erlauben) unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit).
 
-Zum Importieren und Verwalten von Erweiterungen brauchst du außerdem Zugriff über localhost oder das Admin-Secret. Von einem Smartphone, einer LAN-Adresse oder einem entfernten Browser aus setzt du `ADMIN_SECRET` auf dem Server und trägst denselben Wert unter **Settings → Advanced → Admin Access** (Einstellungen → Erweitert → Admin-Zugriff) ein.
+Zum Importieren und Verwalten von Erweiterungen brauchst du außerdem Zugriff über localhost oder das Admin-Secret. Von einem Smartphone, einer LAN-Adresse oder einem entfernten Browser aus setzt du `ADMIN_SECRET` auf dem Server und trägst denselben Wert unter **Settings → Advanced → Security** ein.
 
 Wähle die Laufzeitumgebung mit den geringsten Rechten, die für die Aufgabe ausreicht:
 
@@ -94,7 +94,7 @@ Verwende diese `extension.css`, um das eingeschränkte iframe-Fenster zu gestalt
 
 Importiere die Erweiterung anschließend und führe sie aus:
 
-1. Öffne **Settings → Addons → External Extensions**.
+1. Öffne **Library → Extensions → External Extensions** (Bibliothek → Erweiterungen → externe Erweiterungen).
 2. Wähle **Import Extension Folder** (Erweiterungsordner importieren) und den Ordner `Hello Panel` aus, oder packe den Ordner als ZIP-Datei und importiere sie mit **Import Extension File** (Erweiterungsdatei importieren).
 3. Öffne den deaktivierten Entwurf und prüfe sein Manifest und sein JavaScript.
 4. Wähle **Review and Run** (prüfen und ausführen) und gib den exakt angezeigten Hash frei.
@@ -342,7 +342,7 @@ Hängt eine External Extension vom Zugriff auf das Host-DOM ab, darf sie Folgend
 
 **Vollzugriff auf die Seite ist keine Sandbox-Fähigkeit.** Das freigegebene JavaScript und CSS laufen innerhalb von Marinaras Seite. Der Code kann alles lesen oder ändern, was für die aktuelle Browser-Sitzung sichtbar ist, Chats und Karten einsehen, den Browser-Speicher nutzen, Netzwerkanfragen stellen und Marinara-APIs derselben Origin aufrufen. In der Praxis hat er in der Seite dieselben Rechte wie Code, den du in die Browser-Konsole einfügst. Entwürfe von Professor Mari können ihn nicht anfordern.
 
-Erweiterungen mit Vollzugriff auf die Seite sollten für Netzwerkanfragen `marinara.fetch(...)` verwenden. Signatur und Ergebnis entsprechen `window.fetch`; zusätzlich kann **Settings > Addons > External Extensions** dann für diese Erweiterung die Anzahl der Anfragen in der Sitzung, die von Antworten gemeldeten übertragenen Bytes, die aktuelle Anfragerate und eine Warnung bei anhaltend hohem Datenverkehr anzeigen. Ein direktes `window.fetch` bleibt verfügbar, weil Code mit Vollzugriff auf die Seite vertrauenswürdiger Seitencode ist; diese Anfragen lassen sich der Erweiterung aber nicht zuordnen.
+Erweiterungen mit Vollzugriff auf die Seite sollten für Netzwerkanfragen `marinara.fetch(...)` verwenden. Signatur und Ergebnis entsprechen `window.fetch`; zusätzlich kann **Library > Extensions > External Extensions** dann für diese Erweiterung die Anzahl der Anfragen in der Sitzung, die von Antworten gemeldeten übertragenen Bytes, die aktuelle Anfragerate und eine Warnung bei anhaltend hohem Datenverkehr anzeigen. Ein direktes `window.fetch` bleibt verfügbar, weil Code mit Vollzugriff auf die Seite vertrauenswürdiger Seitencode ist; diese Anfragen lassen sich der Erweiterung aber nicht zuordnen.
 
 Marinara erkennt die ältere v1-Hülle mit `kind: "marinara.extension"` ohne ausdrückliches Feld `capabilities` als Paket aus der Zeit vor der Sandbox und vergibt beim Import **Full page access**. So landen ältere Pakete wie WeatherTweaker im richtigen Prüfablauf, statt still in einem Worker zu scheitern. Ein modernes Paket, das diese Hülle nutzt, aber die sichere Laufzeitumgebung will, muss `"capabilities": []` enthalten.
 
@@ -445,13 +445,13 @@ Die Grenzen für ZIP-Datei, Anfrage, Sandbox-Nachricht und Speicher schützen je
 | Symptom | Prüfen |
 | --- | --- |
 | Bedienelemente für externe Importe fehlen | Öffne beide oben beschriebenen Sicherheitssperren für External Extensions |
-| Die Verwaltung meldet, dass localhost oder Admin Access erforderlich ist | Richte `ADMIN_SECRET` ein und speichere es unter **Admin Access** |
+| Die Verwaltung meldet, dass localhost oder Admin Access erforderlich ist | Richte `ADMIN_SECRET` ein und speichere es unter **Settings → Advanced → Security** |
 | Beim Import wird keine Erweiterung gefunden | Prüfe `manifest.json` und die relativen Pfade darin; Server braucht JS, Browser dagegen CSS oder JS |
 | Die Erweiterung wird nach einer Änderung deaktiviert | Erwartetes Verhalten: Prüfe den neuen exakten Hash und gib ihn frei |
 | Browser-Code kann `document`, `window`, `fetch` oder lokalen Speicher nicht verwenden | In der sicheren Sandbox erwartet; verwende die dokumentierten Broker-APIs |
 | Server-Erweiterung ist nicht verfügbar | Verwende macOS Seatbelt oder Linux mit Bubblewrap, oder wechsle zu einer Browser-Erweiterung |
 | Browser-Erweiterung löst eine Ausnahme aus | Öffne die Entwicklerwerkzeuge des Browsers; `marinara.log` und Startfehler sind mit dem Namen der Erweiterung gekennzeichnet |
-| Server-Erweiterung löst eine Ausnahme aus | Prüfe ihren Status unter **Settings → Addons** und das Serverprotokoll von Marinara |
+| Server-Erweiterung löst eine Ausnahme aus | Prüfe ihren Status unter **Library → Extensions** und das Serverprotokoll von Marinara |
 
 CSS, privater Speicher, Importarchive und Laufzeitnachrichten haben weiterhin jeweils eigene Sicherheitsgrenzen. Marinara sollte die Grenze melden, die ein Paket abgelehnt hat, statt den Vorgang als Ausführungsfehler darzustellen.
 

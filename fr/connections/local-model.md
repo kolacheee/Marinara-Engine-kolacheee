@@ -10,9 +10,9 @@ Si la carte **Built-in model** n'apparaît pas, tu as une installation "Lite", u
 
 Avant de commencer, vérifie que tu as assez d'espace disque libre et de mémoire (RAM) pour le modèle. Les tailles sont dans le tableau plus bas.
 
-1. Clique sur **Connections** (Connexions) dans la barre du haut.
-2. Repère la carte **Built-in model** sous l'encadré **Jobs** (tâches). Elle affiche **Not downloaded**.
-3. Clique sur la carte, ou sur son bouton **Download** (télécharger). Une fenêtre intitulée **Built-in model** s'ouvre.
+1. Ouvre **Library → Connections** (Bibliothèque → Connexions).
+2. Repère **Built-in model** sous **On this device** (sur cet appareil). Il affiche **Not downloaded**.
+3. Clique sur la ligne, ou sur **Set up** (configurer). Une fenêtre intitulée **Built-in model** s'ouvre.
 4. Sous **Which model?** (quel modèle ?), choisis un modèle. **Gemma 4 E2B — Q8 (Best Quality)** porte l'étiquette **Recommended**. Si ton ordinateur a peu de mémoire, choisis **Q4_K_M**. Il demande environ 3,4 Go de RAM au lieu de 5,4 Go.
 5. Clique sur le bouton **Download** en bas. Il affiche la taille du modèle, par exemple **Download 5.0 GB**.
 6. Patiente. La fenêtre affiche trois étapes : **Install runtime** (installer le runtime), **Download model** (télécharger le modèle) et **Start and test** (démarrer et tester). Un runtime est le programme qui exécute le modèle. Marinara l'installe d'abord s'il manque.
@@ -27,21 +27,21 @@ Si ça n'a pas marché :
 - **Local runtime failed to start.** Voir [Dépannage](#troubleshooting).
 - **Download failed.** La fenêtre affiche l'erreur. Vérifie ta connexion internet et l'espace disque libre, puis clique de nouveau sur le bouton de téléchargement.
 
-Tu peux aussi ouvrir cette fenêtre depuis **Add** (ajouter) dans le panneau **Connections**, sous **Built-in model** dans la fenêtre **Add account** (ajouter un compte).
+Tu peux aussi ouvrir cette fenêtre depuis la page Connections : **Modèle intégré** figure sous **Sur cet appareil**.
 
 ### Presets sélectionnés
 
 La fenêtre propose deux presets tout prêts de Gemma 4 E2B, un petit modèle de Google. Sur les ordinateurs Apple Silicon, ce sont des versions MLX au lieu de fichiers GGUF. GGUF et MLX sont deux formats de fichier pour les modèles locaux. Les tailles ci-dessous sont celles qu'affiche la fenêtre (en Go, où 1 Go vaut 1024 × 1024 × 1024 octets).
 
 | Preset | Téléchargement | RAM en fonctionnement |
-| --- | --- | --- |
+| ------------------------ | -------- | ----------------- |
 | Q8 (Best Quality) | 5,0 Go | 5,4 Go |
 | Q4_K_M (Smaller, Faster) | 3,0 Go | 3,4 Go |
 
 Sur Apple Silicon, la fenêtre affiche à la place deux presets MLX :
 
 | Preset | Téléchargement | RAM en fonctionnement |
-| --- | --- | --- |
+| --------------------------- | -------- | ----------------- |
 | 8-bit MLX (Best Quality) | 5,5 Go | 7,0 Go |
 | 4-bit MLX (Smaller, Faster) | 3,4 Go | 4,5 Go |
 
@@ -67,7 +67,7 @@ Ouvre la carte **Built-in model** une fois le modèle téléchargé. Sa page aff
 | **Use for tracker agents (roleplay)** (utiliser pour les agents trackers, roleplay) | Garde le modèle en fonctionnement pour les agents trackers. Désactivé par défaut. |
 | **Use for game scene analysis** (utiliser pour l'analyse des scènes de jeu) | Le garde en fonctionnement pour les effets de scène de Game Mode, comme les arrière-plans, la musique et la météo. Activé par défaut. |
 | **Use the built-in model for all tracker agents** (utiliser le modèle intégré pour tous les agents trackers) | Fait pointer tous les agents trackers intégrés vers ce modèle. Cela ne les active pas. |
-| **Change in Defaults** (modifier dans les valeurs par défaut) | Ouvre l'encadré **Jobs**, où tu peux lui confier d'autres tâches. |
+| **Change in Defaults** (modifier dans les valeurs par défaut) | Ouvre l'encadré **Defaults** (tâches), où tu peux lui confier d'autres tâches. |
 
 Si les deux interrupteurs sont désactivés, le modèle ne démarre pas de lui-même. Il démarre quand tu en actives un, ou quand un chat ou une tâche l'utilise. Pour activer les agents, voir [Rappel de mémoire et résumés de chat](../agents/memory.md).
 
@@ -96,21 +96,21 @@ Pour les ouvrir, clique sur **Runtime settings** (réglages du runtime) sur la p
 **Speed** (vitesse)
 
 | Réglage | Par défaut | Ce qu'il fait |
-| --- | --- | --- |
+| ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------- |
 | **Runtime target** (cible du runtime) | Auto detect | La famille de cartes graphiques pour laquelle Marinara installe le runtime. |
 | **GPU offload** (délestage vers le GPU) | Auto offload | La part du travail confiée à la carte graphique. Choisis **Auto offload** (délestage automatique), **CPU only** (processeur uniquement) ou **Custom GPU layers** (couches GPU personnalisées, de 1 à 1024). |
 
 **Memory** (mémoire)
 
 | Réglage | Par défaut | Ce qu'il fait |
-| --- | --- | --- |
+| ------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | **Context window** (fenêtre de contexte) | 8192 | La quantité de texte que le modèle lit d'un coup, en tokens (de petits morceaux de texte). 512 ou plus. |
 | **KV cache type** (type de cache KV) | f16 | La façon dont le modèle stocke ce qu'il a lu. Choisis f16, q8_0 ou q4_0. Les deux derniers utilisent moins de mémoire et demandent la prise en charge de Flash Attention. |
 
 **Replies** (réponses)
 
 | Réglage | Par défaut | Ce qu'il fait |
-| --- | --- | --- |
+| ----------------------- | ------- | -------------------------------------------------- |
 | **Max response tokens** (nombre maximal de tokens de réponse) | 4096 | La réponse la plus longue que le modèle peut écrire. 64 ou plus. |
 | **Temperature** (température) | 0.3 | Le degré de hasard des réponses. De 0 à 2. |
 | **Top P** | 0.95 | Une limite sur le choix des mots. Au-dessus de 0, jusqu'à 1. |
@@ -119,7 +119,7 @@ Pour les ouvrir, clique sur **Runtime settings** (réglages du runtime) sur la p
 **Expert**
 
 | Réglage | Par défaut | Ce qu'il fait |
-| --- | --- | --- |
+| --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
 | **Native tool calls** (appels d'outils natifs) | On | Permet au modèle d'utiliser des outils. Professor Mari et les agents personnalisés ont besoin qu'il soit activé. |
 | **Max parallel agent jobs** (nombre maximal de tâches d'agent en parallèle) | 2 | Le nombre de tâches exécutées en même temps. De 1 à 16. |
 | **Pooling type** (type de pooling) | None | La façon dont le modèle transforme le texte en nombres pour la recherche dans les lorebooks. Choisis **Mean** pour les embeddings des lorebooks. |
@@ -132,28 +132,26 @@ Certains réglages varient selon le système :
 - **Max response tokens** ne limite pas l'analyse de scène de Game Mode, qui a sa propre limite.
 - **Diagnostics** (diagnostic), dans **Expert**, affiche la build du runtime, la carte graphique détectée et la dernière commande de lancement.
 
-<a id="allow-runtime-installs"></a>
-
 ### Autoriser l'installation du runtime
 
 Installer ou réinstaller le runtime est une action protégée. Les installations Windows en un clic l'autorisent pour toi. Sur macOS, Linux et Docker, fais l'une de ces opérations, puis réessaie :
 
-- Saisis le secret d'administration dans **Settings → Advanced → Admin Access** (Paramètres → Avancé → Accès administrateur). Le secret d'administration est un second mot de passe pour les actions risquées. Tu le crées dans **Admin Access** sur l'ordinateur du serveur lui-même, ou tu le définis sous le nom `ADMIN_SECRET` dans le fichier `.env` du serveur. Voir [Admin Access](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+- Saisis le secret d'administration dans **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité). Le secret d'administration est un second mot de passe pour les actions risquées. Tu le crées dans **Settings → Advanced → Security** sur l'ordinateur du serveur lui-même, ou tu le définis sous le nom `ADMIN_SECRET` dans le fichier `.env` du serveur. Voir [Le secret d'administration](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 - Ajoute `SIDECAR_RUNTIME_INSTALL_ENABLED=true` au fichier `.env` du serveur, puis redémarre Marinara. Le fichier `.env` est un fichier texte qui se trouve dans le dossier de Marinara. Voir [Modifier le fichier .env](../CONFIGURATION.md#edit-the-env-file).
 
 Marinara ne télécharge que les versions de llama.cpp, MLX et uv approuvées pour ta version de Marinara, et vérifie la taille et la somme de contrôle SHA-256 de chaque fichier avant d'exécuter quoi que ce soit.
 
 ## Modèle vocal local
 
-Le **Local speech model** (modèle vocal local) transforme ta voix en texte sur ton propre ordinateur pour les appels Conversation. C'est un modèle Whisper, un modèle qui transforme la parole en texte. Il a besoin du package d'agent **Calls**, que tu installes dans **Agents → Agent Organizer** (Agents → organisateur d'agents).
+Le **Local speech model** (modèle vocal local) transforme ta voix en texte sur ton propre ordinateur pour les appels Conversation. C'est un modèle Whisper, un modèle qui transforme la parole en texte. Il a besoin du package d'agent **Calls**, que tu installes dans **Library → Agents** (Bibliothèque → Agents).
 
-1. Ouvre le panneau **Connections** et clique sur l'élément **Speech to text** (reconnaissance vocale) sous **On this device** (sur cet appareil).
+1. Ouvre le panneau **Connexions** et clique sur **Modèle vocal local** dans la carte **Sur cet appareil**.
 2. Sous **Local speech model**, choisis un modèle dans le menu déroulant.
 3. Clique sur **Download Whisper** (télécharger Whisper).
 4. Attends **Ready**. Redémarre complètement Marinara avant d'utiliser Calls.
 
 | Modèle | Téléchargement | RAM en fonctionnement |
-| --- | --- | --- |
+| --------------------------- | ------------ | ----------------- |
 | Whisper Tiny (Multilingual) | environ 180 Mo | environ 350 Mo |
 | Whisper Base (Multilingual) | environ 320 Mo | environ 650 Mo |
 
@@ -161,12 +159,10 @@ Tiny est le meilleur premier choix pour les téléphones et les ordinateurs anci
 
 Ton audio reste sur ton ordinateur. Seul le texte part vers ton modèle de chat. Pour t'en servir pendant un appel, règle l'entrée audio de l'appel sur Local Whisper. Voir [Appels audio et vidéo en Conversation](../conversation/calls.md). Si tu actives plutôt le serveur **Speech to text**, les appels y envoient ta voix. Voir [Utiliser ton propre serveur de reconnaissance vocale](../conversation/calls.md#use-your-own-speech-to-text-server).
 
-<a id="troubleshooting"></a>
-
 ## Dépannage
 
 | Symptôme | Solution |
-| --- | --- |
+| -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Sidecar runtime install is disabled** (un message d'erreur). | Voir [Autoriser l'installation du runtime](#allow-runtime-installs). |
 | **Local runtime failed to start.** La fenêtre affiche l'erreur et le chemin d'un fichier de log (un journal). La carte affiche **Local runtime unavailable**. | Clique sur **Retry startup** (relancer le démarrage). Si ça échoue, clique sur **Reinstall runtime** (réinstaller le runtime), ou choisis une autre valeur de **Runtime target**. **Continue without local AI** (continuer sans IA locale) désactive les interrupteurs d'assistance et garde Marinara en état de marche sans le modèle. |
 | Le téléchargement du runtime signale une taille ou une somme de contrôle SHA-256 qui ne correspond pas. | Marinara a écarté le fichier. Mets Marinara à jour et réessaie. Si ça échoue encore, n'ouvre pas le fichier toi-même. Signale la cible du runtime et l'erreur. |

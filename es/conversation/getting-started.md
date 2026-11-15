@@ -6,7 +6,7 @@ Conversation Mode (modo Conversación) es el modo de chat estilo mensajería: un
 
 Antes de empezar: añade una cuenta en **Connections** (Conexiones) (consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md)) y ten al menos un personaje. Una persona, la tarjeta de personaje que te representa, es opcional (consulta [Personas de usuario](../characters/personas.md)).
 
-1. En la barra lateral de chats, abre la pestaña **CONVO** y haz clic en **New Conversation**. Se abre un asistente de configuración de cuatro páginas.
+1. Abre tus chats (**Library**, Biblioteca, arriba a la derecha, y luego **Chats** en la parte superior de la barra lateral), abre la pestaña **Convo** y haz clic en **New** (Nuevo). Se abre un asistente de configuración de cuatro páginas.
 2. En la primera página, **Name & Connection**, dale nombre al chat y elige la cuenta que escribe las respuestas.
 3. En la segunda página, **Prompt Preset**, elige el preset del prompt de Conversation, o mantén el predeterminado.
 4. En la tercera página, **Persona & Characters**, elige tu persona y uno o más personajes.
@@ -35,7 +35,7 @@ Cámbialas más tarde en **Chat Settings → Autonomous Messaging**. Si los pers
 
 Los Commands son acciones que el personaje decide hacer por sí mismo. Tú no los escribes. Tras la configuración, abre **Chat Settings → Agents → Commands**. El interruptor general **Commands** controla todas las familias: cuando está desactivado, ninguna familia funciona.
 
-Cada familia tiene su propio interruptor. Todas empiezan activadas excepto **Videos**, que debes activar tú. Las familias que pertenecen a un agente opcional solo se muestran cuando instalas ese agente desde **Agents → Agent Organizer**.
+Cada familia tiene su propio interruptor. Todas empiezan activadas excepto **Videos**, que debes activar tú. Las familias que pertenecen a un agente opcional solo se muestran cuando instalas ese agente desde **Library → Agents** (Biblioteca → Agentes).
 
 | Familia | Qué puede hacer un personaje | Necesita un agente |
 | --- | --- | --- |
@@ -58,13 +58,13 @@ Cada familia tiene su propio interruptor. Todas empiezan activadas excepto **Vid
 | **Tic-Tac-Toe** | Aceptar un desafío de tres en raya. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Aceptar una partida. | Rock-Paper-Scissors |
 
-Para **Influence** y **Notes**, consulta [Chats conectados](../chats/connected-chats.md). La última columna indica el agente que debes instalar desde **Agent Organizer**.
+Para **Influence** y **Notes**, consulta [Chats conectados](../chats/connected-chats.md). La última columna indica el agente que debes instalar desde **Library → Agents**.
 
 <a id="your-presence-status"></a>
 
 ## Tu estado de presencia
 
-Tu presencia es una píldora de color en el pie de la barra lateral. Es la misma en todos los chats. Haz clic en ella para elegir:
+Tu presencia es una píldora de color en la parte inferior de la lista de chats. Es la misma en todos los chats. Haz clic en ella para elegir:
 
 | Estado | Significado |
 | --- | --- |

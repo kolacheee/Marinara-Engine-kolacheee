@@ -2,7 +2,7 @@
 
 > **Aktualna zgodność:** Ten przewodnik opisuje pakiet World Maps **1.3.1**, który działa z aplikacją Marinara Engine **2.3.5–3.x** na czatach Roleplay i Game. Engine **2.4.1** dodaje oczyszczanie strumienia z dyrektyw ruchu oraz natychmiastowe odświeżenie Lorebooks po przenośnym imporcie. Engine 2.3.5–2.4.0 nadal działa, ale po imporcie wymaga ręcznego odświeżenia Lorebooks.
 
-World Maps daje fabule mapę miejsc, które mogą leżeć jedno w drugim, na przykład wybrzeże, miasto, dzielnicę i karczmę. Marinara zawsze wie, gdzie jest drużyna, a AI korzysta z tego, żeby zachować spójność. Żeby wypróbować pakiet: zainstaluj **World Maps** w **Agent Organizer** (organizowanie agentów), uruchom aplikację ponownie, a potem wykonaj kroki z sekcji [Szybki start](#quick-start).
+World Maps daje fabule mapę miejsc, które mogą leżeć jedno w drugim, na przykład wybrzeże, miasto, dzielnicę i karczmę. Marinara zawsze wie, gdzie jest drużyna, a AI korzysta z tego, żeby zachować spójność. Żeby wypróbować pakiet: zainstaluj **World Maps** w **Biblioteka → Agenci**, uruchom aplikację ponownie, a potem wykonaj kroki z sekcji [Szybki start](#quick-start).
 
 Zamiast jednego pola tekstowego z miejscem akcji świat to zbiór zagnieżdżonych miejsc:
 
@@ -67,7 +67,7 @@ wiążącego wspólnego świata.
 
 ## Szybki start
 
-1. Otwórz sekcję **Agents** (agenci), kliknij **Agent Organizer** i zainstaluj pakiet **World Maps**. Uruchom aplikację Marinara Engine ponownie, gdy pojawi się prośba, bo pakiet zawiera kod serwera.
+1. Otwórz **Biblioteka → Agenci**, znajdź **World Maps** w sekcji **Dostępne** i kliknij **Pobierz**. Uruchom aplikację Marinara Engine ponownie, gdy pojawi się prośba, bo pakiet zawiera kod serwera.
 2. Otwórz czat Roleplay lub Game.
 3. Otwórz **Agents → World Maps** (albo globus World Maps, jeśli twoja wersja Engine go ma) i włącz pakiet dla czatu. Da się go też włączyć w sekcji **Chat Settings → Agents** (ustawienia czatu, agenci).
 4. Utwórz mapę przyciskiem **Use template**, **Create with AI** albo **Build manually**. Do istniejącego czatu można też zaimportować plik mapy.
@@ -531,8 +531,7 @@ negatywnego.
 
 ## Dostosowanie automatycznego promptu grafik
 
-Otwórz **Settings → Generations → Prompt Overrides** (ustawienia, generowanie,
-nadpisywanie promptów) i wybierz pozycję **Maps location artwork**. To globalny
+Otwórz **Ustawienia → Multimedia → Nadpisania promptów** i wybierz pozycję **Maps location artwork**. To globalny
 szablon używany przy podglądzie i generowaniu automatycznych grafik lokalizacji.
 Zmienne mają składnię `${variableName}` i można je wstawiać z poziomu edytora.
 
@@ -742,7 +741,7 @@ Skorzystaj z przycisku **Plan route**, jeśli istnieje aktywna droga przez lokal
 
 ### Automatyczne prompty grafik zawierają niechciane treści
 
-- Zawsze pojawia się gatunek gry: otwórz **Settings → Generations → Prompt Overrides → Maps location artwork**, usuń `${genreLine}` i zapisz.
+- Zawsze pojawia się gatunek gry: otwórz **Ustawienia → Multimedia → Nadpisania promptów → Maps location artwork**, usuń `${genreLine}` i zapisz.
 - Styl kampanii pojawia się, choć ma być wyłączony: sprawdź opcję **Chat Settings → Illustrator → Use campaign art style**. Przy wyłączonej opcji `${campaignArtStyle}` i `${campaignArtStyleLine}` są puste.
 - Punkt orientacyjny lokalizacji nadrzędnej pojawia się na każdym obrazie podrzędnym: unikaj `${parentLocationDescription}` i `${locationPath}` w szablonie, o ile nie są potrzebne.
 - Prompt negatywny zawiera nieoczekiwany tekst: popraw pole negatywne przed potwierdzeniem, a potem sprawdź globalne negatywne ustawienie obrazu. Szablon Maps buduje tylko prompt pozytywny.

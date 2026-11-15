@@ -1,10 +1,10 @@
 # Referencia de agentes descargables
 
-Esta guía enumera por grupos los agentes oficiales propios que hay en **Agents → Agent Organizer** (Agentes → Organizador de agentes). Los agentes no vienen incluidos en una instalación nueva. Sus fuentes y su catálogo son públicos en [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Cada entrada indica qué hace el agente, cuándo se ejecuta, dónde funciona y sus ajustes principales. Para instalar y activar agentes, lee primero la [descripción general de los agentes](agents-overview.md). Las entradas marcadas como **staging only** (solo staging) están disponibles para quienes usan Engine en staging; llegan al canal estable cuando se publica allí el paquete.
+Esta guía enumera por grupos los agentes oficiales propios que hay en **Library → Agents** (Biblioteca → Agentes). Los agentes no vienen incluidos en una instalación nueva. Sus fuentes y su catálogo son públicos en [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Cada entrada indica qué hace el agente, cuándo se ejecuta, dónde funciona y sus ajustes principales. Para instalar y activar agentes, lee primero la [descripción general de los agentes](agents-overview.md). Las entradas marcadas como **staging only** (solo staging) están disponibles para quienes usan Engine en staging; llegan al canal estable cuando se publica allí el paquete.
 
 ## Cómo leer esta referencia
 
-Instala un agente desde **Agent Organizer** y luego añádelo a cada chat en el que lo quieras. Los agentes se configuran por chat, no por tarjeta de personaje. La [descripción general de los agentes](agents-overview.md) explica la instalación, las actualizaciones, la configuración por chat y el costo.
+Instala un agente desde **Library → Agents** y luego añádelo a cada chat en el que lo quieras. Los agentes se configuran por chat, no por tarjeta de personaje. La [descripción general de los agentes](agents-overview.md) explica la instalación, las actualizaciones, la configuración por chat y el costo.
 
 Cada entrada muestra los mismos datos rápidos.
 
@@ -26,7 +26,7 @@ Añade la línea de tiempo pública, local y opcional de Noodle en su propia pes
 
 - **Integración**: paquete de funciones con rutas locales, flujos de generación y multimedia y planificadores en segundo plano.
 - **Dónde funciona**: Home, con contexto opcional traído de chats de Conversation, Roleplay y Game.
-- **Ajustes clave**: instálalo desde **Agents → Agent Organizer** y reinicia cuando se te pida. Dentro de Noodle configuras las cuentas invitadas, las conexiones de texto e imagen, las actualizaciones de la línea de tiempo, los usuarios aleatorios y la transferencia de contexto del chat.
+- **Ajustes clave**: instálalo desde **Library → Agents** y reinicia cuando se te pida. Dentro de Noodle configuras las cuentas invitadas, las conexiones de texto e imagen, las actualizaciones de la línea de tiempo, los usuarios aleatorios y la transferencia de contexto del chat.
 - **Datos**: al desinstalarlo, se quita la pestaña y se detienen los planificadores después de reiniciar. Tus datos de Noodle se conservan para una reinstalación posterior.
 - **Guía completa**: [Noodle: la línea de tiempo social dentro de la app](noodle.md).
 
@@ -322,7 +322,7 @@ Añade botones de elección "What will you do?" (¿qué harás?) en los que pued
 
 - **Fase**: Post-Processing.
 - **Dónde funciona**: Roleplay.
-- **Ajustes clave**: **Edit** (editar) para reescribir las elecciones y **Re-roll** (volver a generar) para generar unas nuevas. Activa **Add CYOA choices to the message box instead of sending them** (Añadir las opciones CYOA al cuadro de mensaje en lugar de enviarlas) en **Settings → General → Input & Editing** (Configuración → General → Entrada y edición) para que las elecciones en las que hagas clic vayan a tu cuadro de mensaje.
+- **Ajustes clave**: **Edit** (editar) para reescribir las elecciones y **Re-roll** (volver a generar) para generar unas nuevas. Activa **Add CYOA choices to the message box instead of sending them** (Añadir las opciones CYOA al cuadro de mensaje en lugar de enviarlas) en **Settings → Chatting → Message Box** (Configuración → Chateando → Cuadro de mensaje) para que las elecciones en las que hagas clic vayan a tu cuadro de mensaje.
 
 ### Storyboard
 
@@ -340,7 +340,7 @@ Muestra personajes y personas como avatares 2D animados que parpadean, hablan y 
 
 - **Integración**: paquete de agente. El Engine dibuja los avatares. No envía solicitudes adicionales a tus conexiones de IA mientras chateas.
 - **Dónde funciona**: Roleplay y Game, para personajes y personas.
-- **Disponibilidad**: en **Agent Organizer** para todas las instalaciones. Necesita Marinara Engine 2.5.1 o posterior.
+- **Disponibilidad**: en **Library → Agents** para todas las instalaciones. Necesita Marinara Engine 2.5.1 o posterior.
 - **Ajustes clave**: configura cada avatar en la página del agente en **Agents**. El agente también incluye los prompts que crean imágenes de parpadeo y de habla, y un avatar de malla, a partir de un sprite.
 - **Compatibilidad**: Engine `2.5.0` hasta antes de `4.0.0`, Capability API 1.73. Permisos: `agent-runtime`, `chat-read`, `storage`, `ui`. No requiere reiniciar.
 - **Guía completa**: [Avatares 2D y 3D](avatars.md).
@@ -351,7 +351,7 @@ Muestra personajes y personas como modelos 3D animados que parpadean, hablan y c
 
 - **Integración**: paquete de agente. El Engine dibuja los avatares. No envía solicitudes adicionales a tus conexiones de IA mientras chateas.
 - **Dónde funciona**: Roleplay y Game, para personajes y personas.
-- **Disponibilidad**: en **Agent Organizer** para todas las instalaciones. Necesita Marinara Engine 2.5.1 o posterior.
+- **Disponibilidad**: en **Library → Agents** para todas las instalaciones. Necesita Marinara Engine 2.5.1 o posterior.
 - **Ajustes clave**: configura cada avatar en la página del agente en **Agents**.
 - **Compatibilidad**: la misma que 2D Avatars.
 - **Guía completa**: [Avatares 2D y 3D](avatars.md).

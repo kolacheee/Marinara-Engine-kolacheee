@@ -97,9 +97,7 @@ globalThis.__MARINARA_HOST__ = {
 | `api` | `lib/api-client.ts` मॉड्यूल (`api`, `ApiError`, `getApiErrorMessage`, ...) |
 
 पैकेज किसी सदस्य को जाँचने के बाद ही पढ़ता है, मिसाल के तौर पर `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`।
-
 इमेज डाउनलोड के लिए `shouldUseIosImageShare()` से गैलरी की प्लेटफ़ॉर्म नीति अपनाएँ। iPhone पर सेव करने के जेस्चर से पहले `prepareImageSave(url, filename)` से इमेज तैयार करें, फिर उसी जेस्चर से सीधे `savePreparedImageToDevice(prepared)` कॉल करें। शेयर करना रद्द करने पर कोई त्रुटि नहीं दिखती और शेयर विफल होने पर उसकी जगह WebKit डाउनलोड प्रीव्यू नहीं खुलता। दूसरे प्लेटफ़ॉर्म `downloadUrlToDevice` इस्तेमाल करते हैं। ये सहायक फ़ंक्शन क्लाइंट डिवाइस पर सेव करते हैं, भले ही Engine सर्वर Docker में चल रहा हो।
-
 नेमस्पेस सिर्फ़ बढ़ता है: नया सदस्य कैपेबिलिटी API के एक माइनर वर्ज़न के साथ आता है, और जिस पैकेज को उसकी ज़रूरत है, वह वही माइनर वर्ज़न माँगता है। नेमस्पेस के लिए बने पैकेज कैपेबिलिटी API का वह वर्ज़न माँगते हैं जिसमें नेमस्पेस जोड़ा गया था, इसलिए पुराना Engine उन्हें कभी इंस्टॉल नहीं करता और अपने पास मौजूद वर्ज़न ही रखता है। फिर भी कोई सदस्य गायब हो, तो पैकेज कभी स्टेट रखने वाली Engine सेवा की बंडल की हुई कॉपी पर नहीं लौटता: `ui` और `chat` स्टोर सिर्फ़ पढ़ने वाली कॉपी बन जाते हैं जो कभी कुछ नहीं लिखतीं, और बाकी हर सदस्य बताता है कि इस फ़ीचर के लिए नया Marinara Engine चाहिए।
 
 **होस्ट मॉड्यूल।** `modules[specifier]` एक पूरा मॉड्यूल नेमस्पेस है, और जिस लाइब्रेरी में `default` है, उसमें वह भी शामिल है। क्लाइंट कॉन्ट्रैक्ट में `MARINARA_HOST_MODULE_IMPORTS` हर सार्वजनिक स्लॉट को उस डिपेंडेंसी से मैप करता है जिसे वह इंपोर्ट करता है। ज़्यादातर के दोनों नाम एक ही हैं। स्थिर `framer-motion` स्लॉट `framer-motion-v13` से मैप होता है (Motion 13.5.1 का एक सटीक npm alias), जबकि वैकल्पिक `motion/react` स्लॉट Engine की मुख्य `framer-motion` 14 डिपेंडेंसी से मैप होता है। पैकेज टूलिंग एक्सपोर्ट सूची और TypeScript पाथ, दोनों के लिए इसी मैपिंग का इस्तेमाल करती है; सार्वजनिक स्लॉट के नाम वास्तविक डिपेंडेंसी के नाम होना ज़रूरी नहीं है। स्पेसिफ़ायर ये हैं: `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `@tanstack/react-query`, `zustand`, `zustand/middleware`, `sonner`, `zod`, `i18next`, `react-i18next`, `framer-motion`, `motion/react`, `tailwind-merge` और `clsx`। पैकेज बिल्ड इन स्पेसिफ़ायर को ऐसे शिम पर रिज़ॉल्व करता है जो नेमस्पेस पढ़ते हैं, इसलिए पैकेज Engine के उसी एक React से रेंडर होता है और उसका React Query कैश और टोस्ट साझा करता है।
@@ -121,7 +119,7 @@ globalThis.__MARINARA_HOST__ = {
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ui`        | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat`      | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `agent`     | `setYoutubePlay`, `reset`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `agent`     | `setYoutubePlay`, `setPackageActivity`, `reset`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `sidecar`   | `modelDownloaded`, `modelDisplayName`, `fetchStatus`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `dialog`    | `dialog`, `openDialog`, `closeDialog`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `gallery`   | `pinImage`, `pinVideo`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -197,6 +195,7 @@ Engine के सुरक्षा नियम अनुरोध से ऊ�
 Capability API 1.14, क्लाइंट एंट्री पॉइंट वाले सक्रिय और सक्षम Roleplay एजेंट पैकेजों के लिए `contributions.slots` में दो मान जोड़ता है:
 
 - `roleplay-tracker` पैकेज का `toolbar` व्यू Roleplay HUD में माउंट करता है। प्रॉप्स में `chatId`, `chatMode`, `mobileCompact`, होस्ट का `toolbarButtonClass`, `onRerunTracker`, `trackerRetryBusy`, `lockMode` और `onToggleLockMode` होते हैं। कॉलबैक वैकल्पिक हैं: इस्तेमाल करने से पहले उनका होना जाँचें।
+- `chat-activity` (Capability API 1.820) पैकेज का `activity` व्यू चैट के Agent activity पैनल में माउंट करता है। [Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity) देखें।
 - `tracker-panel` पैकेज का `tracker` व्यू मौजूदा Tracker Panel में `chatId`, `chatMode` और `detached` के साथ माउंट करता है। दूसरा पैनल खोलने के बजाय होस्ट की यही सतह इस्तेमाल करें। दोनों स्लॉट को सामान्य क्षमता पहचान और स्थानीयकरण प्रॉप्स भी मिलते हैं।
 
 प्रॉम्प्ट कॉन्टेक्स्ट योगदान अब भी `api.registerPromptContext` से रजिस्टर होते हैं और `prompt-context` अनुमति माँगते हैं। अनुरोध अब `targetCharacterIds`, `personaId` और `placedAgentTypes` देता है (अनुकूलता के लिए वैकल्पिक)। `placedAgentTypes` योगदान देने वाले को बताता है कि प्रीसेट किन एजेंट डेटा भागों को पहले ही रख चुका है, ताकि दोहरा कॉन्टेक्स्ट न आए। होस्ट हर योगदान की पैकेज पहचान `packageBlocks` में रखता है, जिससे पैकेज का टेक्स्ट संबंधित एजेंट भाग में रखा जा सके। खास दर्शकों के लिए टेक्स्ट लौटाने वाला योगदान दिए गए लक्ष्य कैरेक्टर ID का ध्यान रखे।
@@ -1003,10 +1002,8 @@ const memoryVectors = await embeddings.embed(memoryTexts, signal); // documents
 
 ब्राउज़र व्यू को `openCharacter(characterId, { tab })` मिलता है। यह कैरेक्टर एडिटर खोलता है, और टैब दिया हो तो उसी टैब पर, ताकि पैकेज उपयोगकर्ता को कार्ड के उस फ़ील्ड तक भेज सके जिसे वह पढ़ता है। पुराने Engine में यह नहीं है: लिंक दिखाने से पहले जाँचें कि `openCharacter` मौजूद है।
 
-#9191 से `tab` में किसी टैब का सेक्शन भी दे सकते हैं: `character-sheet`, `image-instructions`, `sprites` या `gallery`। ये सभी **Images** टैब में हैं। `sprites` और `gallery` पहले अलग टैब थे, इसलिए उनके पुराने लिंक चलते हैं। कैरेक्टर के सेल्फ़ी निर्देश (`conversationImageInstructions`) अब `convo` की जगह `image-instructions` में हैं। #9191 से पहले का Engine इस ID को नहीं पहचानता और एडिटर ऊपर से खोलता है।
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66: पैकेज के थ्रेड से सीन
@@ -1141,6 +1138,58 @@ const isGif = result.mimeType === "image/gif";
 `long-term-memory:runtime` सर्विस एक वैकल्पिक `chatBranched({ chatId, parentChatId })` मेथड जोड़ सकती है। चैट की ब्रांच बनाए जाने पर Engine इसे एक बार कॉल करता है और इसके पूरा होने का इंतज़ार करता है। यह कॉल ब्रांच रूट के कॉपी करना (संदेश, मेटाडेटा और स्नैपशॉट) पूरा करने के बाद और नई चैट लौटाने से पहले होती है, इसलिए कॉल के अंदर ब्रांच के संदेश और `branchParentChatId` मेटाडेटा पहले से पढ़े जा सकते हैं। पैकेज इसका इस्तेमाल करके कॉपी को किसी के पढ़ने से पहले ठीक कर सकता है।
 
 एरर देने वाली कॉल और कुछ सेकंड से ज़्यादा समय लेने वाली कॉल लॉग करके अनदेखी कर दी जाती हैं; दोनों ही हालात में ब्रांच लौटाई जाती है। मेथड न होने पर कुछ नहीं बदलता। यह सॉफ़्ट इंटरफ़ेस है: पुराने Engine इसे कभी कॉल नहीं करते, इसलिए यह कॉल न आने पर भी पैकेज को ठीक से काम करना होगा। इसके लिए परमिशन नहीं चाहिए।
+
+### Capability API 1.818: पैकेज के चुने हुए कनेक्शन से एम्बेडिंग
+
+`api.runtime.embeddingsFor(connectionId)` पैकेज की अपनी सेटिंग में बताए गए सोर्स से एम्बेडिंग लाता है, उस एजेंट कनेक्शन से नहीं जिसे `resolveEmbeddings()` इस्तेमाल करता है। `resolveEmbeddings()` के उलट, यह कभी पूरे ऐप के **एम्बेडिंग** डिफ़ॉल्ट का सहारा नहीं लेता।
+
+| `connectionId` | क्या मिलता है |
+| --- | --- |
+| `null` | बिल्ट-इन लोकल MiniLM एम्बेडर। |
+| कनेक्शन की ID | उस कनेक्शन का अपना एम्बेडिंग सोर्स: उसका **एम्बेडिंग प्रोवाइडर**, **एम्बेडिंग एंडपॉइंट URL** और एम्बेडिंग मॉडल, जैसे **एम्बेडिंग टेस्ट करें** उन्हें ढूँढता है। |
+| ऐसी ID जिसका कोई कनेक्शन नहीं, या ऐसा कनेक्शन जिसमें इस्तेमाल लायक एम्बेडिंग सोर्स नहीं | `null`। यह लॉग करके नतीजा लौटाता है; एरर थ्रो नहीं करता। |
+
+लौटे हुए होस्ट का रूप `resolveEmbeddings()` जैसा ही है: `spaceId`, `label` और `embed(texts, signal?, inputType?)`, उन्हीं सीमाओं (128 टेक्स्ट, कुल 200,000 अक्षर) और 1.68 वाले इनपुट टाइप के साथ। कॉल फ़ेल हो तो `embed`, null लौटाता है। हर सोर्स का अपना `spaceId` है, इसलिए सेटिंग बदलने पर सेव किए हुए वेक्टर की एम्बेडिंग फिर बनाएँ।
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+यह सॉफ़्ट इंटरफ़ेस है: पुराने Engine में यह मेथड नहीं होता, इसलिए कॉल करने से पहले इसका होना जाँचें और उदाहरण की तरह फ़ॉलबैक इस्तेमाल करें। पैकेज इसके बिना काम न कर सके, तभी 1.818 घोषित करें। कोई परमिशन नहीं चाहिए।
+
+### Capability API 1.820: पैकेज को Agent activity में दिखाना
+
+`chat-activity` स्लॉट चैट के Agent activity पैनल में आपका अपना कार्ड रखता है, जिसे Agent activity आइकन खोलता है, चैट ड्रॉअर और Tracker Panel में। इसे `contributions.slots` में घोषित करें और `activity` व्यू रजिस्टर करें; Engine हर सक्रिय पैकेज के लिए एक एलिमेंट माउंट करता है जिसका क्लाइंट एंट्रीपॉइंट हो और जिसे चैट चलाती हो (पैकेज की ID चैट के चालू एजेंट में हो)। यह एजेंट के स्टेटस और आउटपुट के बाद और कस्टम एजेंट के सेव किए आउटपुट से पहले आता है।
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+एलिमेंट को `chatId` और `onOpenAgentSettings()` मिलता है, जो पैकेज का अपना एजेंट पेज खोलता है, साथ में आम कैपेबिलिटी पहचान और लोकलाइज़ेशन प्रॉप भी मिलते हैं। Engine कोई बाहरी रैपर UI नहीं जोड़ता: अपना कार्ड खुद बनाएँ, और दिखाने को कुछ न हो तो कुछ रेंडर न करें। आपका क्लाइंट कोड लोड हो जाने पर खाली एलिमेंट कोई जगह नहीं लेता। कोई भी पैकेज कार्ड माउंट रहने तक पैनल "No agent activity yet" नहीं दिखाता, इसलिए खाली समय में कोई लाइन दिखानी हो तो खुद बनाएँ।
+
+यह सॉफ़्ट इंटरफ़ेस नहीं है: 1.820 से पुराना Engine मैनिफ़ेस्ट ठुकरा देता है, इसलिए `chat-activity` घोषित करने वाला पैकेज 1.820 घोषित करता है।
+
+#### पैकेज का व्यस्त होना या ध्यान माँगना दिखाना
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })` उस चैट का Agent activity आइकन रोशन करता है (`packageId` आपके मैनिफ़ेस्ट का `id` है), आइकन जहाँ भी हो (चैट ड्रॉअर, उसकी अलग खुली विंडो और Tracker Panel)। कोई पैकेज `busy: true` बताए तो आइकन चैट के अपने एजेंट की तरह घूमता है; `alert: true` उसका बिंदु दिखाता है। जो फ़ील्ड आप छोड़ दें उसकी वैल्यू बनी रहती है, और दोनों false वाली एंट्री हटा दी जाती है। संकेत हर चैट के लिए अलग रहते हैं, इसलिए चैट बदलने पर सिर्फ़ उसी चैट के संकेत दिखते हैं।
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+Engine कभी अपने आप संकेत साफ़ नहीं करता, आपका `activity` एलिमेंट अनमाउंट होने पर भी नहीं (पैनल बंद रहने पर आइकन सबसे ज़्यादा काम आता है): इसे साफ़ करना आपकी ज़िम्मेदारी है, और रीलोड या `reset()` सब साफ़ कर देता है। चैट बदलने पर यह बना रहता है। व्यस्त या अलर्ट देने वाला पैकेज भी एक्टिविटी माना जाता है, इसलिए पैनल "No agent activity yet" नहीं दिखाता; संकेत के साथ `activity` कार्ड जोड़ें ताकि पैनल में दिखाने को कुछ हो। यह सॉफ़्ट इंटरफ़ेस है: पुराने Engine में यह मेथड नहीं होता, इसलिए ऊपर की तरह इसका होना जाँचें। पैकेज इसके बिना काम न कर सके, तभी 1.820 घोषित करें। कोई परमिशन नहीं चाहिए।
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

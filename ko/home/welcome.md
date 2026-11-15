@@ -9,8 +9,8 @@ Marinara Engine은 AI 캐릭터와 채팅하고 롤플레이하는 앱입니다.
 1. Marinara Engine을 설치하고 브라우저에서 여세요. [Marinara Engine 설치](../INSTALLATION.md)에서 사용 중인 플랫폼을 고르세요.
 2. 계정을 추가하세요. 계정은 AI 서비스 하나에 쓰는 API 키 하나입니다. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
 3. 계정에서 쓸 모델을 고르세요. 방법은 같은 가이드에서 설명합니다.
-4. 캐릭터를 만들거나 가져오세요. **Characters**(캐릭터) 패널을 열고 **New**(새로 만들기)를 클릭해 **Create Character**(캐릭터 만들기) 창을 열거나, **Import**(가져오기)를 클릭해 파일에서 카드를 불러오세요. [캐릭터 만들기와 편집](../characters/creating-and-editing-characters.md)을 참고하세요.
-5. 사이드바 버튼으로 채팅 사이드바를 여세요. 탭에는 **CONVO**(대화), **RP**(롤플), **GM**(게임)이라고 적혀 있습니다. 하나를 고른 다음 **+** 버튼을 클릭하세요. 이 버튼의 이름은 탭에 따라 **New Conversation**(새 대화), **New Roleplay**(새 롤플레이), **New Game**(새 게임)으로 바뀝니다.
+4. 캐릭터를 만들거나 가져오세요. 오른쪽 위의 **Library**(라이브러리)를 클릭해 **Library → Characters**(라이브러리 → 캐릭터)를 열고 **New character**(새 캐릭터)를 클릭하거나, **Import**(가져오기)를 클릭해 파일에서 카드를 불러오세요. [캐릭터 만들기와 편집](../characters/creating-and-editing-characters.md)을 참고하세요.
+5. 홈에서 **Conversation**(대화), **Roleplay**(롤플레이), **Game**(게임)을 클릭하세요. 또는 채팅 목록을 여세요. 오른쪽 위의 **Library**를 클릭하고 사이드바 위쪽에서 **Chats**(채팅)를 고른 다음, **Convo**(대화), **Roleplay**, **Game** 탭 중 하나를 선택하고 **New**(새로 만들기)를 클릭하세요.
 6. 열리는 설정 창의 안내를 따른 다음 **Create Chat**(채팅 생성)을 클릭하세요.
 
 결과: 새 채팅이 열리고 첫 메시지를 쓸 수 있습니다.
@@ -21,15 +21,22 @@ Marinara에는 온라인 AI가 들어 있지 않습니다. 대부분은 온라�
 
 Marinara를 처음 열면 짧은 안내 투어가 시작됩니다. [첫 실행 튜토리얼](tutorial.md)을 참고하세요. 단계 중간에 막히면 내장 어시스턴트인 Professor Mari에게 물어보세요. [Professor Mari, 앱 안의 어시스턴트](professor-mari.md)를 참고하세요.
 
+## 화면 구성과 탐색
+
+Marinara에는 어떤 테마를 쓰든 위치가 바뀌지 않는 두 영역이 있습니다.
+
+- **상단 바.** 왼쪽에는 **Home**(홈)과 열어 둔 채팅, 캐릭터, 페이지마다 하나씩 생기는 탭이 있습니다. 오른쪽의 검색 버튼(또는 <kbd>Ctrl</kbd>+<kbd>K</kbd>, Mac에서는 <kbd>⌘</kbd>+<kbd>K</kbd>)으로 채팅, 캐릭터, 설정, 가이드를 찾거나 열고 Professor Mari에게 질문할 수 있습니다. 그 옆에는 채팅이 열려 있을 때 표시되는 **Chat settings**(채팅 설정), 이 가이드를 여는 **Docs**(문서), 사이드바를 보이거나 숨기는 **Library**가 있습니다.
+- 오른쪽의 **사이드바** 위쪽에는 **Chats | Library**(채팅 | 라이브러리) 전환 버튼이 있습니다. **Chats**는 **Convo**, **Roleplay**, **Game** 탭에 채팅을 나열합니다([채팅 목록 관리하기](../chats/managing-chats.md) 참고). **Library**에는 **Characters**(캐릭터), **Personas**(페르소나), **Lorebooks**(로어북), **Presets**(프리셋), **Regex scripts**(정규식 스크립트), **Connections**(연결), **Agents**, **Custom tools**(사용자 지정 도구), 그리고 **Settings**(설정)와 **Extensions**(확장)가 있습니다. 하나를 고르면 가운데에 해당 페이지가 열립니다.
+
+컴퓨터에서는 두 페이지를 나란히 표시할 수도 있습니다. [분할 보기](tabs-and-drafts.md#split-view-two-pages-at-once)를 참고하세요.
+
+휴대폰이나 태블릿에서는 **Home**이 왼쪽 위에, **Library**(겹친 모양 버튼)가 오른쪽 위에 있습니다. Library를 누르면 페이지 위로 사이드바가 펼쳐지며, 같은 **Chats | Library** 전환 버튼이 있습니다. Library 화면 아래쪽에는 **Settings**, **Docs**, **All Tabs**(모든 탭)가 있습니다. 검색하려면 상단 바의 제목을 탭하고, 열려 있는 탭을 보려면 숫자 버튼을 탭하세요. [탭, 분할 보기와 저장하지 않은 변경 사항](tabs-and-drafts.md)과 [터치 제스처](../chats/messages.md#touch-gestures)를 참고하세요.
+
 ## 홈 화면 한눈에 보기
 
-홈 화면은 열려 있는 채팅이 없을 때 보입니다. 웹 브라우저처럼 생겼으며, 위쪽에 탭과 북마크가 있고 그 아래에 위젯이 있습니다.
+홈은 열려 있는 채팅이 없을 때 보입니다. 위쪽에는 인사말, 버전 번호, 그리고 각 모드로 새 채팅을 시작하는 **Conversation**, **Roleplay**, **Game**이 있습니다. 아직 모델을 설정하지 않았다면 **Connect a model to start chatting**(채팅을 시작하려면 모델을 연결하세요)을 누르면 Connections 페이지가 열립니다. **Professor**(교수님)는 Professor Mari를 별도 탭에서 열며, 설치한 앱(예: Story Writer)도 여기에 버튼을 추가합니다. **Widgets**(위젯)로 아래의 카드를 배치할 수 있습니다.
 
-- **탭.** **Home**(홈)은 메인 페이지입니다. **Professor**(교수님)는 Professor Mari를 엽니다. 설치한 에이전트 중 일부는 자체 탭을 추가합니다.
-- **검색 바.** 컴퓨터에서는 탭 아래의 바를 클릭하거나 <kbd>Ctrl</kbd>+<kbd>K</kbd>(Mac에서는 <kbd>⌘</kbd>+<kbd>K</kbd>)를 눌러 채팅, 캐릭터, 설정 등을 찾을 수 있습니다. 휴대폰, 태블릿, 좁은 창에서는 이 바가 표시되지 않습니다.
-- **북마크.** **Discord**, **Support**(지원), **Credits**(크레딧), **Documentation**(문서), **Tutorial**(튜토리얼), **FAQ**, **Achievements**(업적), **Widgets**(위젯)로 바로 가는 링크입니다. **Achievements**는 Achievements 설정이 켜져 있을 때만 보입니다. 북마크는 **Home** 탭에서만 표시됩니다. 휴대폰, 태블릿, 좁은 창에서는 탭 왼쪽의 북마크 버튼인 **Open bookmarks**(북마크 열기)를 탭하면 북마크를 목록으로 볼 수 있습니다.
-
-가운데에는 로고, **Marinara Engine**이라는 글자, 버전 번호가 있습니다. 그 아래의 **Conversation**(대화), **Roleplay**(롤플레이), **Game**(게임) 버튼은 각각 해당 모드로 새 채팅을 시작합니다.
+클래식 레이아웃(**Settings → Appearance → Theme → New layout**(설정 → 모양 → 테마 → 새 레이아웃)에서 새 레이아웃을 끄면 적용됨)에서는 홈이 웹 브라우저처럼 보입니다. 탭, 검색 바, **Discord**, **Support**(지원), **Credits**(크레딧), **Documentation**(문서), **Tutorial**(튜토리얼), **FAQ**, **Achievements**(업적), **Widgets** 북마크가 있습니다.
 
 <a id="choose-a-chat-mode"></a>
 
@@ -47,11 +54,11 @@ Marinara를 처음 열면 짧은 안내 투어가 시작됩니다. [첫 실행 �
 
 위젯은 보이거나 숨기고 옮길 수 있는 작은 카드입니다.
 
-1. 북마크에서 **Widgets**를 클릭하세요. **Home Widgets**(홈 위젯) 창이 열립니다. 창에는 **Built-in**(기본 제공), **Agents**(에이전트), **Personal**(개인) 아래로 위젯이 나열됩니다.
+1. 홈에서 **Widgets**를 클릭하세요. **Home Widgets**(홈 위젯) 창이 열립니다. 창에는 **Built-in**(기본 제공), **Agents**(에이전트), **Personal**(개인) 아래로 위젯이 나열됩니다.
 2. 위젯 옆의 눈 모양 버튼을 클릭하면 위젯을 보이거나 숨길 수 있습니다. 다시 보이게 한 위젯은 홈의 첫 번째 빈자리로 갑니다.
 3. 위젯을 옮기려면 오른쪽 위 모서리의 손잡이를 끄세요. 컴퓨터에서는 위젯 위에 마우스를 올리면 손잡이가 나타납니다.
 
-위젯 배치는 이 브라우저에 저장됩니다. 개인 위젯에는 편집 버튼과 삭제 버튼도 있습니다. 창 맨 아래의 **Browser chrome**(브라우저 UI)에는 스위치가 하나 있습니다. **Show URL bar**(URL 표시줄 표시)는 컴퓨터에서 검색 바를 보이거나 숨깁니다.
+위젯 배치는 이 브라우저에 저장됩니다. 개인 위젯에는 편집 버튼과 삭제 버튼도 있습니다. 클래식 레이아웃에서는 창 맨 아래의 **Browser chrome**(브라우저 UI)에 스위치가 하나 있습니다. **Show URL bar**(URL 표시줄 표시)는 컴퓨터에서 홈의 검색 바를 보이거나 숨깁니다.
 
 Professor Mari에게 부탁하면 개인 위젯을 만들어 줍니다. 설치한 에이전트도 위젯을 추가할 수 있습니다.
 
@@ -73,9 +80,9 @@ Professor Mari에게 부탁하면 개인 위젯을 만들어 줍니다. 설치�
 ## 도움받는 곳
 
 - 홈 화면에서 Professor Mari에게 물어보세요.
-- 빠른 답을 보려면 **FAQ** 북마크를 여세요.
-- 앱 안의 가이드를 보려면 **Documentation** 북마크를 여세요.
-- **Discord**를 클릭하면 커뮤니티로 연결되고, **Support**를 클릭하면 프로젝트를 후원할 수 있습니다.
+- 빠른 답을 보려면 **Learn the engine** 위젯에서 **Read FAQ**를 클릭하세요.
+- 앱 안의 가이드를 보려면 상단 바에서 **Docs**를 클릭하세요.
+- **Community** 위젯에서 **Discord**를 클릭하면 커뮤니티로 연결되고, **Support**를 클릭하면 프로젝트를 후원할 수 있습니다.
 
 무언가 고장 났다면 [Marinara Engine 문제 해결](../TROUBLESHOOTING.md)을 참고하세요.
 
@@ -85,4 +92,5 @@ Professor Mari에게 부탁하면 개인 위젯을 만들어 줍니다. 설치�
 - [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)
 - [캐릭터 만들기와 편집](../characters/creating-and-editing-characters.md)
 - [첫 실행 튜토리얼](tutorial.md)
+- [탭, 분할 보기와 저장하지 않은 변경 사항](tabs-and-drafts.md)
 - [Professor Mari, 앱 안의 어시스턴트](professor-mari.md)

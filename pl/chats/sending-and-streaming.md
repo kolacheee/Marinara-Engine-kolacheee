@@ -13,11 +13,9 @@ Pojawia się twoja wiadomość, a potem napływa odpowiedź. W jednym czacie nar
 
 Jeśli to nie zadziałało: gdy czat nie ma ustawionego modelu, odpowiedź od razu kończy się błędem z informacją, że nie skonfigurowano żadnego połączenia. Wybierz je w panelu **Chat Settings** (ustawienia czatu) – zobacz [Panel **Chat Settings** – przegląd](chat-settings.md).
 
-<a id="send-on-enter"></a>
-
 ### Ustawienie Send on Enter
 
-Znajdziesz je w **Settings → General → Input & Editing** (ustawienia, ogólne, wprowadzanie i edycja). Każdy tryb czatu ma własny przełącznik.
+Znajdziesz je w **Ustawienia → Czatowanie → Pole wiadomości**. Każdy tryb czatu ma własny przełącznik.
 
 | Tryb czatu | Domyślnie | Gdy wyłączone |
 | --- | --- | --- |
@@ -25,7 +23,7 @@ Znajdziesz je w **Settings → General → Input & Editing** (ustawienia, ogóln
 | Conversations | Włączone | Wiadomość wysyła <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>). |
 | Game | Włączone | Wiadomość wysyła <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>). |
 
-W trybie Roleplay opcja jest domyślnie wyłączona, bo wiadomości w tym trybie bywają długie i potrzebują podziału na linie. Asystentka Professor Mari ma własny przełącznik, **Enter sends to Professor Mari** (wysyłanie do Professor Mari klawiszem Enter), w **Settings → General → Search and Professor Mari settings** (ustawienia, ogólne, ustawienia wyszukiwarki i asystentki Professor Mari).
+W trybie Roleplay opcja jest domyślnie wyłączona, bo wiadomości w tym trybie bywają długie i potrzebują podziału na linie. Asystentka Professor Mari ma własny przełącznik, **Enter sends to Professor Mari** (wysyłanie do Professor Mari klawiszem Enter), w **Ustawienia → Ogólne → Professor Mari**.
 
 ## Załączanie obrazów i plików
 
@@ -51,7 +49,7 @@ Dla własnej galerii postaci użyj przenośnej formy `card://self/gallery/<filen
 
 ## Streaming odpowiedzi
 
-Streaming pokazuje odpowiedź słowo po słowie, a nie całą naraz. Te ustawienia znajdują się w **Settings → General → Responses** (ustawienia, ogólne, odpowiedzi).
+Streaming pokazuje odpowiedź słowo po słowie, a nie całą naraz. Te ustawienia znajdują się w **Ustawienia → Czatowanie → Odpowiedzi**.
 
 | Ustawienie | Domyślnie | Do czego służy |
 | --- | --- | --- |
@@ -82,8 +80,6 @@ Działa to tylko wtedy, gdy model zwraca rozumowanie. Niektóre modele opakowuj�
 ## Zatrzymywanie odpowiedzi
 
 Kliknij przycisk zatrzymania – w czasie streamingu odpowiedzi jest nim przycisk **Send**. Tekst, który zdążył napłynąć, zwykle zostaje. Celowe zatrzymanie nigdy nie wyświetla błędu.
-
-<a id="retry-without-retyping"></a>
 
 ## Ponawianie bez przepisywania
 

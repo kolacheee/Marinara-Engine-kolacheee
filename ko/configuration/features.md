@@ -1,6 +1,12 @@
 # 기능 스위치
 
-일부 서버 동작은 선택 사항입니다. **Settings > Advanced > Features**(설정 > 고급 > 기능)에서 켭니다. 모든 스위치는 처음에 꺼져 있으므로 아무도 이 섹션을 열지 않는 서버는 이전과 똑같이 동작합니다.
+일부 서버 동작은 선택 사항입니다. 모든 스위치는 처음에 꺼져 있으므로 아무도 켜지 않는 서버는 이전과 똑같이 동작합니다. 스위치는 **Settings**(설정)의 여러 위치에 있습니다.
+
+- **Stable lorebook picks**와 **Lorebook activation stats**: **Settings → Advanced → Lorebooks**(설정 → 고급 → 로어북).
+- **Retry failed provider calls**: **Settings → Advanced → Timeouts & Retries**(설정 → 고급 → 타임아웃 및 재시도).
+- **Recover deleted chat messages**: **Settings → Data → Backup & Restore**(설정 → 데이터 → 백업 및 복원).
+
+클래식 레이아웃에서는 Settings에서 스위치 이름을 검색하세요.
 
 변경은 즉시 적용됩니다. 서버 재시작이나 페이지 새로고침은 필요 없습니다.
 
@@ -15,7 +21,7 @@
 | **Lorebook activation stats**(로어북 활성화 통계) | `usageAndActivationStats` | 꺼짐 | 없음 |
 | **Recover deleted chat messages**(삭제된 채팅 메시지 복구) | `messageTrash` | 꺼짐 | 없음 |
 
-설정에서 `features`를 검색하면 해당 섹션으로 이동합니다.
+설정에서 스위치 이름을 검색하면 해당 스위치로 이동합니다.
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ API는 `GET`과 `PUT /api/app-settings/features`입니다. `PUT`은 전체 객�
 ## 우선순위
 
 1. **환경 변수.** 설정되어 있으면 켜짐과 꺼짐 모두 저장된 스위치보다 우선합니다. Settings는 변수 이름과 함께 잠긴 스위치로 표시합니다. 빈 값은 미설정으로 봅니다.
-2. **저장된 스위치.** Settings > Advanced > Features에 저장한 값입니다.
+2. **저장된 스위치.** Settings > Advanced > Lorebooks에 저장한 값입니다.
 3. **기본값.** 꺼짐입니다.
 
 | 변수 | 제어 대상 | 값 |

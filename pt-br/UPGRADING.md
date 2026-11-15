@@ -19,8 +19,8 @@ Atualize Marinara Engine para uma versão mais nova, verifique as atualizações
 Faça um backup antes de qualquer salto grande entre versões, e sempre que houver a chance de você voltar para uma versão anterior.
 
 1. Abra **Settings** (Configurações).
-2. Vá até a aba **Advanced** (avançado).
-3. Localize a seção **Backup & Export**.
+2. Vá até a aba **Dados**.
+3. Localize a seção **Backup e restauração**.
 4. Clique em **Download Backup** (baixar o backup).
 5. Salve o arquivo `.zip` em um lugar seguro.
 
@@ -39,7 +39,7 @@ O inicializador atualiza Marinara toda vez que você o inicia.
 
 O inicializador busca o código mais novo, reinstala o que mudou, recompila e inicia a nova versão. Se você mesmo alterou o código, ele deixa as suas alterações de lado e as devolve depois da atualização. Se não conseguir, ele mantém a versão atual e mostra um aviso. Ele copia os seus dados antes de atualizar e pula uma atualização que levaria a uma versão mais antiga do que os seus dados (veja [Como voltar para uma versão anterior](#downgrading-to-an-older-version)).
 
-Para pular a atualização uma vez, execute `start.bat --skip-update`. Para manter a versão instalada em todas as inicializações, defina `AUTO_UPDATE_ENABLED=false` no `.env` do projeto. Isso desativa só as atualizações automáticas. Os comandos manuais e **Settings → Advanced → Check for Updates** (Configurações → Avançado → Verificar atualizações) continuam funcionando.
+Para pular a atualização uma vez, execute `start.bat --skip-update`. Para manter a versão instalada em todas as inicializações, defina `AUTO_UPDATE_ENABLED=false` no `.env` do projeto. Isso desativa só as atualizações automáticas. Os comandos manuais e **Configurações → Avançado → Atualizações → Verificar atualizações** continuam funcionando.
 
 Se o inicializador avisar que o Node.js está velho demais, instale o Node.js 24 LTS (Long Term Support, ou suporte de longo prazo: a versão estável recomendada) e inicie Marinara de novo. Você também pode baixar o instalador mais novo na página de Releases do GitHub e executá-lo.
 
@@ -144,6 +144,7 @@ Marinara pode consultar o GitHub para ver se existe uma versão mais nova. Algum
 
 - **Latest Stable:** as versões marcadas como `vX.Y.Z`. É a escolha normal.
 - **Staging/UAT:** compilações de teste, anteriores ao lançamento, que podem estar inacabadas. Ao escolher esse canal, aparece o aviso "Staging builds are pre-release tester builds. Back up your app data before applying them."
+- **UI overhaul (playtest):** a branch `ui/kolacheee` com o novo layout, para participantes dos testes. Ela acompanha staging. Faça um backup dos dados do aplicativo primeiro: depois que ela atualizar os dados, **Latest Stable** talvez não consiga lê-los até a próxima versão. Instalações Git (Windows, macOS, Linux e Termux) podem mudar para ela aqui. O Docker não tem uma imagem para ela, então, em um contêiner, o canal só mostra uma orientação.
 
 Quando você escolhe outro canal em um navegador no próprio computador do servidor, o botão de atualização mostra **Switch to** (mudar para) seguido do nome do canal. Ele funciona mesmo com as atualizações normais dentro do aplicativo desligadas, e mostra **Switching…** enquanto roda. Os dispositivos remotos só conseguem fazer isso se atenderem às condições de **Apply Update** (aplicar a atualização) descritas abaixo.
 
@@ -179,7 +180,7 @@ Aplicar a atualização de outro dispositivo vem desativado por padrão. Isso ex
 
 - `UPDATES_ALLOW_REMOTE_APPLY=true` no `.env` do servidor.
 - `ADMIN_SECRET` definido no `.env` do servidor. É uma segunda senha para ações arriscadas.
-- O mesmo segredo salvo no seu dispositivo em **Settings → Advanced → Admin Access**.
+- O mesmo segredo salvo no seu dispositivo em **Configurações → Avançado → Segurança**.
 
 Clique em **Apply Update**. O botão mostra **Updating…** enquanto o servidor busca o código, reinstala, recompila e se desliga. Em seguida aparece "Update applied successfully. Please relaunch the app to use the new version." Inicie Marinara de novo para concluir.
 
@@ -200,7 +201,7 @@ Use esse botão quando o aplicativo parecer desatualizado ou ficar em branco dep
 A atualização troca o código do aplicativo, e não a sua pasta de dados nem o volume `marinara-data`. Os seus chats, personagens, personas, lorebooks, presets, conexões e configurações continuam no lugar. Para saber onde os dados ficam, leia [Fazer backup e restaurar o Marinara](data/backup-and-restore.md).
 
 - **Pacotes opcionais.** Quando você atualiza a partir de uma versão que já vinha com agentes próprios, mapas, chamadas ou jogos de Conversation embutidos, a primeira inicialização baixa os pacotes opcionais correspondentes. As suas escolhas, as configurações e o histórico continuam. Mantenha o servidor online nessa primeira inicialização. Se a origem do download estiver inacessível, Marinara tenta de novo na próxima inicialização e não exclui nada.
-- **Idioma dos guias.** Se você usa um idioma de documentação baixado (**Settings → General → Documentation Language**), a primeira inicialização depois de uma atualização atualiza esse pacote. Se a origem estiver inacessível, Marinara mantém o pacote instalado, mostra em inglês os guias que faltam e tenta de novo na próxima inicialização.
+- **Idioma dos guias.** Se você usa um idioma de documentação baixado (**Configurações → Geral → Idioma → Idioma da documentação**), a primeira inicialização depois de uma atualização atualiza esse pacote. Se a origem estiver inacessível, Marinara mantém o pacote instalado, mostra em inglês os guias que faltam e tenta de novo na próxima inicialização.
 - **Idioma da interface.** Os pacotes de idioma da interface são um download separado e manual. Na primeira atualização a partir de uma versão com as traduções embutidas, a interface volta ao inglês. Escolha o seu idioma de novo em **Settings → General → Language** (Configurações → Geral → Idioma). As atualizações posteriores mantêm os pacotes baixados. Use **Refresh language pack** (atualizar o pacote de idioma) para obter traduções novas. As traduções que faltam aparecem em inglês.
 
 ## Atualizar a partir da 2.5.0

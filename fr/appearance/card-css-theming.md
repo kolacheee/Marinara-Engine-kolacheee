@@ -140,7 +140,7 @@ Roleplay et Conversation reposent sur le même squelette. Tiens-t'en aux classes
 | `[data-card-css] p`, `[data-card-css] span` | Les paragraphes et les éléments span en ligne dans le texte. |
 | `[data-grouped]` | Les messages qui prolongent ceux du même personnage. Conversation uniquement. Utilise `[data-card-css]:not([data-grouped])` pour le premier message d'un groupe. |
 
-Pour changer de mise en page, ouvre **Settings → Appearance → Conversation** (Paramètres → Apparence → Conversation), puis **Conversation Display** (affichage de Conversation), puis **Chat Layout** (disposition du chat). En **Linear**, stylise `.mari-message-content` (le texte) et `[data-card-css]` (la ligne), puisqu'il n'y a pas de bulle.
+Pour changer de mise en page, ouvre **Settings → Conversation → Conversation Layout → Chat Layout** (Paramètres → Conversation → Disposition Conversation → Disposition du chat). En **Linear**, stylise `.mari-message-content` (le texte) et `[data-card-css]` (la ligne), puisqu'il n'y a pas de bulle.
 
 Une bulle stylisée :
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## Guides associés
 
 - [Réglages d'apparence](appearance-settings.md)
-- [Thèmes CSS personnalisés (bibliothèque de thèmes)](custom-css-themes.md)
+- [Thèmes CSS personnalisés](custom-css-themes.md)
 - [Créer et modifier des personnages](../characters/creating-and-editing-characters.md)

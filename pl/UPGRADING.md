@@ -19,8 +19,8 @@ Zaktualizuj aplikację Marinara Engine do nowszej wersji, sprawdzaj dostępnoś�
 Zrób kopię zapasową przed każdym większym skokiem między wersjami i zawsze przed ewentualnym powrotem do starszej wersji.
 
 1. Otwórz panel **Settings** (Ustawienia).
-2. Przejdź do zakładki **Advanced** (Zaawansowane).
-3. Znajdź sekcję **Backup & Export** (kopia zapasowa i eksport).
+2. Przejdź do zakładki **Dane**.
+3. Znajdź sekcję **Kopie zapasowe i przywracanie**.
 4. Kliknij przycisk **Download Backup** (pobranie kopii zapasowej).
 5. Zapisz plik `.zip` w bezpiecznym miejscu.
 
@@ -39,7 +39,7 @@ Program uruchamiający aktualizuje aplikację Marinara, gdy ją uruchamiasz.
 
 Program uruchamiający pobiera najnowszy kod, doinstalowuje to, co się zmieniło, przebudowuje aplikację i uruchamia nową wersję. Jeśli w kodzie są twoje własne zmiany, odkłada je na bok i po aktualizacji przywraca na miejsce. Jeśli to się nie uda, zostawia obecną wersję i wypisuje informację. Przed aktualizacją kopiuje dane, a aktualizację, która prowadziłaby do wersji starszej niż twoje dane, pomija (zobacz [Powrót do starszej wersji](#downgrading-to-an-older-version)).
 
-Żeby jednorazowo pominąć aktualizację, uruchom `start.bat --skip-update`. Żeby zostać na zainstalowanej wersji przy kolejnych uruchomieniach, ustaw `AUTO_UPDATE_ENABLED=false` w pliku `.env` projektu. Wyłącza to tylko automatyczne aktualizacje. Polecenia ręczne i **Settings → Advanced → Check for Updates** (ustawienia, zaawansowane, sprawdzenie aktualizacji) działają dalej.
+Żeby jednorazowo pominąć aktualizację, uruchom `start.bat --skip-update`. Żeby zostać na zainstalowanej wersji przy kolejnych uruchomieniach, ustaw `AUTO_UPDATE_ENABLED=false` w pliku `.env` projektu. Wyłącza to tylko automatyczne aktualizacje. Polecenia ręczne i **Ustawienia → Zaawansowane → Aktualizacje → Sprawdź aktualizacje** działają dalej.
 
 Jeśli program uruchamiający zgłasza, że Node.js jest za stary, zainstaluj Node.js 24 LTS (Long Term Support, czyli zalecane stabilne wydanie) i uruchom aplikację Marinara ponownie. Możesz też pobrać najnowszy instalator ze strony GitHub Releases i go uruchomić.
 
@@ -144,6 +144,7 @@ Lista rozwijana **Release Channel** (kanał wydań) określa, które wersje śle
 
 - **Latest Stable**: wydania oznaczone tagiem `vX.Y.Z`. To normalny wybór.
 - **Staging/UAT**: przedpremierowe wersje testowe, które mogą być niedokończone. Wybór tej opcji wyświetla ostrzeżenie "Staging builds are pre-release tester builds. Back up your app data before applying them."
+- **UI overhaul (playtest):** gałąź `ui/kolacheee` z nowym układem, przeznaczona dla testerów. Bazuje na staging. Najpierw zrób kopię zapasową danych aplikacji: gdy zaktualizuje dane, **Latest Stable** może nie odczytać ich aż do następnego wydania. Instalacje oparte na Git (Windows, macOS, Linux i Termux) mogą się na nią tutaj przełączyć. Nie ma dla niej obrazu Docker, więc w kontenerze kanał pokazuje tylko wskazówkę.
 
 Gdy wybierzesz inny kanał w przeglądarce na komputerze, na którym działa serwer, przycisk aktualizacji zmienia napis na **Switch to** (przełącz na) z nazwą kanału. Działa nawet wtedy, gdy zwykłe aktualizacje w aplikacji są wyłączone, a na czas pracy pokazuje **Switching…**. Urządzenia zdalne nie mogą tego zrobić, chyba że spełniają opisane niżej warunki przycisku **Apply Update**.
 
@@ -179,7 +180,7 @@ Wgrywanie aktualizacji z innego urządzenia jest domyślnie wyłączone. Wymaga 
 
 - `UPDATES_ALLOW_REMOTE_APPLY=true` w pliku `.env` serwera.
 - `ADMIN_SECRET` ustawiony w pliku `.env` serwera. To drugie hasło do ryzykownych działań.
-- Ten sam sekret zapisany na twoim urządzeniu w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny).
+- Ten sam sekret zapisany na twoim urządzeniu w **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 
 Kliknij **Apply Update**. Gdy serwer pobiera kod, doinstalowuje zależności, przebudowuje aplikację i się wyłącza, przycisk pokazuje **Updating…**. Potem pojawia się komunikat "Update applied successfully. Please relaunch the app to use the new version." Uruchom aplikację Marinara ponownie, żeby dokończyć.
 
@@ -200,7 +201,7 @@ Użyj go, gdy aplikacja wygląda na starą albo pokazuje pustą stronę, choć s
 Aktualizacja podmienia kod aplikacji, a nie folder z danymi ani wolumin `marinara-data`. Czaty, postacie, persony, lorebooki, presety, połączenia i ustawienia zostają na miejscu. Gdzie leżą dane, opisuje przewodnik [Kopia zapasowa i przywracanie danych aplikacji Marinara](data/backup-and-restore.md).
 
 - **Pakiety opcjonalne.** Przy aktualizacji z wersji, która miała wbudowanych agentów, mapy, rozmowy i gry trybu Conversation od twórców aplikacji, pierwsze uruchomienie pobiera odpowiadające im pakiety opcjonalne. Wybory, ustawienia i historia zostają zachowane. Zadbaj o to, żeby przy tym pierwszym uruchomieniu serwer miał dostęp do sieci. Jeśli źródło pobierania jest nieosiągalne, Marinara próbuje ponownie przy kolejnym starcie i niczego nie usuwa.
-- **Język przewodników.** Jeśli korzystasz z pobranego języka dokumentacji (**Settings → General → Documentation Language** (ustawienia, ogólne, język dokumentacji)), pierwsze uruchomienie po aktualizacji go odświeża. Jeśli źródło jest nieosiągalne, Marinara zostawia zainstalowany pakiet, brakujące przewodniki pokazuje po angielsku i próbuje ponownie przy następnym starcie.
+- **Język przewodników.** Jeśli korzystasz z pobranego języka dokumentacji (**Ustawienia → Ogólne → Język → Język dokumentacji**), pierwsze uruchomienie po aktualizacji go odświeża. Jeśli źródło jest nieosiągalne, Marinara zostawia zainstalowany pakiet, brakujące przewodniki pokazuje po angielsku i próbuje ponownie przy następnym starcie.
 - **Język interfejsu.** Pakiety językowe interfejsu pobiera się osobno i ręcznie. Przy pierwszej aktualizacji z wersji z wbudowanymi tłumaczeniami interfejs wraca do języka angielskiego. Wybierz ponownie swój język w **Settings → General → Language** (ustawienia, ogólne, język). Kolejne aktualizacje zachowują pobrane pakiety. Użyj **Refresh language pack** (odśwież pakiet językowy), żeby pobrać nowe tłumaczenia. Brakujące tłumaczenia pokazują się po angielsku.
 
 ## Aktualizacja z wersji 2.5.0

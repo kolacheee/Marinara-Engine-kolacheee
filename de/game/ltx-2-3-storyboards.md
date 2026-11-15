@@ -22,7 +22,7 @@ Du brauchst:
 2. Eine GPU mit genug VRAM (dem Speicher auf deiner Grafikkarte). Für einen ersten Test mit 480p und einem Keyframe kann eine Karte mit 8 GB reichen.
 3. Den bearbeitbaren Workflow `ltx-director-simple` oder einen gleichwertigen LTX-2.3-Graphen für Bild-zu-Video, der in ComfyUI durchläuft, und dazu seinen Export im API-Format, `ltx-director-simple-api`.
 4. Ein Bildkonto in Marinara für die Erstbild-Illustrationen.
-5. Den Agenten **Storyboard**, heruntergeladen über **Agents → Agent Organizer** und für das Spiel unter **Chat Settings → Agents** eingeschaltet. Siehe [Anleitung zum Storyboard-Agenten](storyboard.md).
+5. Den Agenten **Storyboard**, heruntergeladen über **Library → Agents** (Bibliothek → Agenten) und für das Spiel unter **Chat Settings → Agents** eingeschaltet. Siehe [Anleitung zum Storyboard-Agenten](storyboard.md).
 
 Der bearbeitbare Workflow und sein API-Export sind zwei verschiedene Dateien. Öffne `ltx-director-simple` in ComfyUI, installiere jede Custom Node, die der ComfyUI Manager als fehlend meldet, und teste den Graphen dort. Importiere `ltx-director-simple-api` in Marinara. Nach jeder Änderung an Nodes oder Modellen exportierst du den Graphen erneut im API-Format und ersetzt das JSON im Konto in Marinara. Füge nicht den normalen Workflow aus dem visuellen Editor in Marinara ein.
 
@@ -83,7 +83,7 @@ Löschst du eine Node und nutzt weiter einen älteren Export, bleiben Verweise a
 
 ## Das Videokonto anlegen
 
-1. Öffne **Settings → Connections** (Einstellungen → Verbindungen).
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen).
 2. Klick auf **Add account** (Konto hinzufügen) und wähl ein Konto vom Typ **Video Generation** (Videogenerierung).
 3. Wähle **ComfyUI**.
 4. Trag die **Base URL** ein, normalerweise `http://127.0.0.1:8188`, wenn ComfyUI auf demselben Rechner läuft.

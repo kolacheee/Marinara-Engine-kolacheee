@@ -34,7 +34,7 @@ El instalador crea una copia de Git de la versión estable más reciente, así q
 - **Iniciar:** haz doble clic en el acceso directo del escritorio o en la entrada del menú Inicio. Si instalaste desde el código fuente, ejecuta `start.bat` en la carpeta de Marinara.
 - **Detener:** el acceso directo abre una ventana de consola. Pulsa <kbd>Ctrl</kbd>+<kbd>C</kbd> en ella.
 
-Si Marinara ya se está ejecutando, el acceso directo la vuelve a abrir en tu navegador.
+Si Marinara ya se está ejecutando, el acceso directo la vuelve a abrir en tu navegador. Si la copia en ejecución tiene una versión distinta de la que hay en la carpeta (por ejemplo, después de cambiar de versión), el lanzador dice *"A different version of Marinara Engine is still running"* y te pide que cierres primero la ventana de consola anterior, para que nunca termines por error en la versión equivocada. Una rama de prueba como `staging` o `ui/...` se actualiza desde su propia copia en GitHub.
 
 ## Instalar desde el código fuente
 
@@ -84,6 +84,9 @@ Si no funcionó: `[ERROR] Node.js 24 LTS or newer is required` significa que tu 
 ### Configuración manual sin el lanzador
 
 Este camino necesita el comando `pnpm`. Ejecuta esto desde dentro de la carpeta `Marinara-Engine`.
+
+> [!TIP]
+> En PowerShell, escribe `npm.cmd` y `pnpm.cmd` en lugar de `npm` y `pnpm` (por ejemplo, `pnpm.cmd install --force`). En muchas computadoras, PowerShell bloquea sus accesos directos con "running scripts is disabled on this system". El símbolo del sistema no se ve afectado. También puedes omitir esta sección y ejecutar `.\start.bat`, que instala y compila todo por ti.
 
 1. Instala pnpm una vez.
 

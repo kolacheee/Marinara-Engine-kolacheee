@@ -19,8 +19,8 @@
 버전 차이가 큰 업데이트 전에는 백업을 만들어 두세요. 이전 버전으로 되돌아갈 가능성이 있다면 반드시 만들어 두세요.
 
 1. **Settings**(설정)를 여세요.
-2. **Advanced**(고급) 탭으로 이동하세요.
-3. **Backup & Export**(백업 및 내보내기) 섹션을 찾으세요.
+2. **Data**(데이터) 탭으로 이동하세요.
+3. **Backup & Restore**(백업 및 복원) 섹션을 찾으세요.
 4. **Download Backup**(백업 다운로드)을 클릭하세요.
 5. `.zip` 파일을 안전한 곳에 저장하세요.
 
@@ -39,7 +39,7 @@ Marinara를 시작하면 런처가 업데이트합니다.
 
 런처는 최신 코드를 받아 와 바뀐 부분을 다시 설치하고, 다시 빌드한 뒤 새 버전을 실행합니다. 코드를 직접 수정했다면 수정 내용을 따로 보관해 두었다가 업데이트가 끝난 뒤 되돌려 놓습니다. 그럴 수 없으면 지금 버전을 그대로 유지하고 안내 메시지를 출력합니다. 업데이트하기 전에는 데이터를 복사해 두며, 데이터보다 오래된 버전으로 가게 되는 업데이트는 건너뜁니다([이전 버전으로 다운그레이드하기](#downgrading-to-an-older-version) 참고).
 
-이번 한 번만 업데이트를 건너뛰려면 `start.bat --skip-update`를 실행하세요. 실행할 때마다 지금 설치된 버전을 유지하려면 프로젝트의 `.env`에 `AUTO_UPDATE_ENABLED=false`를 설정하세요. 이 설정은 자동 업데이트만 끕니다. 수동 명령과 **Settings → Advanced → Check for Updates**(설정 → 고급 → 업데이트 확인)는 그대로 쓸 수 있습니다.
+이번 한 번만 업데이트를 건너뛰려면 `start.bat --skip-update`를 실행하세요. 실행할 때마다 지금 설치된 버전을 유지하려면 프로젝트의 `.env`에 `AUTO_UPDATE_ENABLED=false`를 설정하세요. 이 설정은 자동 업데이트만 끕니다. 수동 명령과 **Settings → Advanced → Updates → Check for Updates**(설정 → 고급 → 업데이트 → 업데이트 확인)는 그대로 쓸 수 있습니다.
 
 Node.js 버전이 너무 낮다고 런처가 알리면 Node.js 24 LTS(Long Term Support, 권장되는 안정 릴리스)를 설치한 뒤 Marinara를 다시 시작하세요. GitHub Releases 페이지에서 최신 설치 프로그램을 다운로드해 실행해도 됩니다.
 
@@ -144,6 +144,7 @@ Marinara는 GitHub에 새 버전이 있는지 확인할 수 있습니다. 일부
 
 - **Latest Stable:** 태그가 붙은 `vX.Y.Z` 릴리스입니다. 보통은 이쪽을 고르면 됩니다.
 - **Staging/UAT:** 출시 전 테스터용 빌드로, 아직 미완성일 수 있습니다. 이 채널을 고르면 "Staging builds are pre-release tester builds. Back up your app data before applying them."라는 경고가 표시됩니다.
+- **UI overhaul (playtest):** 새 레이아웃을 시험하는 플레이테스터용 `ui/kolacheee` 브랜치입니다. staging을 따릅니다. 먼저 앱 데이터를 백업하세요. 데이터가 업그레이드되면 다음 릴리스가 나올 때까지 **Latest Stable**에서 읽지 못할 수 있습니다. Git 설치(Windows, macOS, Linux, Termux)는 여기서 이 채널로 전환할 수 있습니다. Docker에는 이 채널의 이미지가 없으므로 컨테이너에서는 안내만 표시됩니다.
 
 서버를 실행하는 컴퓨터의 브라우저에서 다른 채널을 고르면 업데이트 버튼이 **Switch to** 뒤에 채널 이름이 붙은 형태로 바뀝니다. 이 버튼은 앱 안의 일반 업데이트가 꺼져 있어도 동작하며, 실행하는 동안 **Switching…**(전환 중…)이 표시됩니다. 원격 기기는 아래 **Apply Update**(업데이트 적용) 조건을 충족해야만 이 작업을 할 수 있습니다.
 
@@ -179,7 +180,7 @@ Marinara는 GitHub에 새 버전이 있는지 확인할 수 있습니다. 일부
 
 - 서버 `.env`의 `UPDATES_ALLOW_REMOTE_APPLY=true`.
 - 서버 `.env`에 설정한 `ADMIN_SECRET`. 위험한 작업에 쓰는 두 번째 비밀번호입니다.
-- 사용 중인 기기의 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에 저장한 같은 시크릿.
+- 사용 중인 기기의 **Settings → Advanced → Security**(설정 → 고급 → 보안)에 저장한 같은 시크릿.
 
 **Apply Update**를 클릭하세요. 서버가 코드를 받아 와 다시 설치하고, 다시 빌드한 뒤 종료하는 동안 버튼에 **Updating…**(업데이트 중…)이 표시됩니다. 그다음 "Update applied successfully. Please relaunch the app to use the new version."라는 메시지가 나옵니다. Marinara를 다시 시작하면 끝납니다.
 
@@ -200,7 +201,7 @@ Marinara는 GitHub에 새 버전이 있는지 확인할 수 있습니다. 일부
 업데이트는 앱 코드만 교체하며, 데이터 폴더나 `marinara-data` 볼륨은 건드리지 않습니다. 채팅, 캐릭터, 페르소나, 로어북, 프리셋, 연결, 설정은 모두 그대로 남습니다. 데이터가 어디에 있는지는 [Marinara 백업과 복원](data/backup-and-restore.md)에서 확인하세요.
 
 - **선택 패키지.** 공식 에이전트, 지도, 통화, Conversation 게임이 함께 들어 있던 버전에서 업데이트하면, 처음 실행할 때 그에 해당하는 선택 패키지를 다운로드합니다. 선택 항목, 설정, 기록은 그대로 유지됩니다. 이 첫 실행 동안에는 서버를 온라인 상태로 두세요. 다운로드 원본에 연결하지 못하면 Marinara는 아무것도 지우지 않고 다음 실행 때 다시 시도합니다.
-- **가이드 언어.** **Settings → General → Documentation Language**(설정 → 일반 → 문서 언어)에서 다운로드한 문서 언어를 쓰고 있다면, 업데이트 후 처음 실행할 때 그 언어 팩을 새로 받습니다. 다운로드 원본에 연결하지 못하면 Marinara는 설치된 팩을 그대로 두고, 팩에 없는 가이드는 영어로 표시하며, 다음 실행 때 다시 시도합니다.
+- **가이드 언어.** **Settings → General → Language → Documentation Language**(설정 → 일반 → 언어 → 문서 언어)에서 다운로드한 문서 언어를 쓰고 있다면, 업데이트 후 처음 실행할 때 그 언어 팩을 새로 받습니다. 다운로드 원본에 연결하지 못하면 Marinara는 설치된 팩을 그대로 두고, 팩에 없는 가이드는 영어로 표시하며, 다음 실행 때 다시 시도합니다.
 - **인터페이스 언어.** UI 언어 팩은 별도로 직접 다운로드합니다. 번역이 포함되어 있던 버전에서 처음 업데이트하면 인터페이스가 영어로 돌아갑니다. **Settings → General → Language**(설정 → 일반 → 언어)에서 언어를 다시 고르세요. 이후 업데이트는 다운로드한 팩을 유지합니다. 새 번역을 받으려면 **Refresh language pack**(언어 팩 새로고침)을 사용하세요. 번역이 없는 부분은 영어로 표시됩니다.
 
 ## 2.5.0에서 업데이트하기

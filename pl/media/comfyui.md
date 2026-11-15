@@ -14,7 +14,7 @@ Lokalny model językowy i model do obrazów mogą nie zmieścić się w pamięci
 
 ## Tworzenie połączenia w aplikacji Marinara Engine
 
-1. Kliknij **Connections** (Połączenia), a potem **Add** (dodaj). W oknie **Add account** (dodanie konta), w sekcji **Images & video** (obrazy i wideo), wybierz **ComfyUI** dla serwera lokalnego albo **RunPod Serverless (ComfyUI)** dla punktu końcowego RunPod.
+1. Otwórz **Biblioteka → Połączenia** i kliknij **Dodaj połączenie**. Na zakładce **Obraz** wybierz **ComfyUI** dla serwera lokalnego albo **RunPod Serverless (ComfyUI)** dla punktu końcowego RunPod.
 2. Przy lokalnym ComfyUI wpisz jego adres (`http://127.0.0.1:8188`). Klucz API nie jest potrzebny, chyba że wymaga go proxy przed ComfyUI (zobacz [Korzystanie z proxy wymagającego uwierzytelniania](#use-an-authenticated-proxy)). Jeśli pole **ComfyUI workflow (optional)** (workflow ComfyUI, opcjonalny) jest puste, Marinara używa wbudowanego prostego workflow typu tekst-na-obraz.
 3. Przy RunPod wpisz klucz API oraz **RunPod endpoint ID** (identyfikator punktu końcowego RunPod). Własny workflow jest tu obowiązkowy.
 4. Ustaw panel **Local image defaults** (domyślne ustawienia obrazów lokalnych) w modelu obrazów. Te wartości zastępują odpowiadające im symbole zastępcze w workflow.

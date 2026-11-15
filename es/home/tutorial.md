@@ -4,53 +4,49 @@ El tutorial es un recorrido guiado que empieza la primera vez que abres Marinara
 
 ## Volver a ver el tutorial
 
-1. Ve a la pantalla de inicio.
-2. Haz clic en el marcador **Tutorial**, o haz clic en **Replay tutorial** (Repetir tutorial) en el widget **Learn the engine** (Aprende a usar el motor).
+1. Abre **Settings → General → Confirmations & Help** (Configuración → General → Confirmaciones y ayuda).
+2. En **Walkthroughs** (Recorridos), haz clic en **Replay the welcome tour** (Repetir el recorrido de bienvenida).
 
-El recorrido empieza otra vez desde el primer paso. En un teléfono, toca el botón de marcadores a la izquierda de las pestañas para ver los marcadores.
+También puedes hacer clic en **Replay tutorial** (Repetir tutorial) en el widget **Learn the engine** (Aprende a usar el motor) de la pantalla de inicio. El recorrido empieza otra vez desde el primer paso.
+
+**Walkthroughs** tiene dos botones más. **Replay the computer walkthrough** (Repetir el recorrido para computadora; o para tableta o teléfono) repite el recorrido breve para el tipo de dispositivo que estás usando, y **Show chat mode tips again** (Volver a mostrar los consejos de los modos de chat) recupera los consejos de cada modo de chat. Consulta [Recorridos para cada dispositivo](#walkthroughs-for-each-device).
 
 ## Saltar el tutorial
 
 Cada tarjeta tiene un botón para saltar. En la primera tarjeta dice **Skip Tutorial** (Saltar tutorial). En las tarjetas posteriores dice **Skip** (Saltar). Haz clic en él para terminar el recorrido de inmediato.
 
-- **Skip**, **Skip Tutorial** y **Get Started** (Empezar) marcan los tres el recorrido como completado, así que no vuelve a empezar por sí solo. También pueden desbloquear el logro **Diligent Student**.
-- Solo **Get Started** guarda el idioma de las guías que elegiste en la última tarjeta (el idioma de las guías de la app). **Skip** lo deja como estaba. Puedes cambiarlo más tarde en **Settings → General** (Configuración → General).
+- **Skip**, **Skip Tutorial** y el botón de la última tarjeta marcan el recorrido como completado, así que no vuelve a empezar por sí solo. También pueden desbloquear el logro **Diligent Student**.
+- La última tarjeta tiene una lista para el idioma de las guías de la app. Solo el botón de la última tarjeta lo guarda; **Skip** lo deja como estaba. Puedes cambiarlo más tarde en **Settings → General → Language → Documentation Language** (Configuración → General → Idioma → Idioma de la documentación).
 
 ## Cómo funciona el recorrido
 
-El recorrido muestra una tarjeta a la vez. Cada tarjeta tiene un título, una explicación corta y puntos de progreso. En una pantalla de escritorio normal, un anillo que pulsa resalta el botón del que habla la tarjeta.
+El recorrido empieza en Home y muestra una tarjeta a la vez. Cada tarjeta tiene un título, una explicación corta y puntos de progreso. Un anillo resalta la parte de la pantalla de la que habla la tarjeta, y algunos pasos abren esa parte por ti: el paso Library abre la vista **Library** (Biblioteca) de la barra lateral (con la página Characters en una computadora), el paso Chats la cambia a **Chats**, y el paso Connections abre la página Connections.
 
-Algunos pasos también abren por ti el panel o la pestaña correspondiente. Por ejemplo, el paso **Connections** (Conexiones) abre el panel **Connections**.
+Haz clic en **Next** (Siguiente) para pasar a la siguiente tarjeta. En un teléfono o una tableta, las tarjetas y los resaltados funcionan igual e indican dónde está cada cosa en una pantalla táctil.
 
-Haz clic en **Next** (Siguiente) para pasar a la siguiente tarjeta. En el último paso, el botón dice **Get Started**.
-
-En un teléfono u otra pantalla estrecha, cada tarjeta se muestra centrada debajo de la barra superior. No aparece el anillo que pulsa. Los paneles se siguen abriendo, como superposiciones a pantalla completa.
-
-## Referencia: los 18 pasos
+## Referencia: los pasos
 
 | # | Título de la tarjeta | Qué cubre |
 | --- | --- | --- |
-| 1 | **Welcome to Marinara Engine!** (¡Bienvenido a Marinara Engine!) | Una tarjeta de bienvenida centrada. Professor Mari se ofrece a mostrarte todo. |
-| 2 | **Characters** | El botón del panel **Characters**, donde viven tus personajes. |
-| 3 | **Personas** | El botón del panel **Personas**, donde defines quién eres en un chat. |
-| 4 | **Lorebooks** | El botón del panel **Lorebooks** (lorebooks, o libros de trasfondo), que guarda detalles adicionales del mundo y de los personajes. |
-| 5 | **Presets** | El botón del panel **Presets** (presets, o ajustes guardados), que controla cómo se construye el prompt (las instrucciones enviadas a la IA). |
-| 6 | **Connections** | El botón del panel **Connections**. Las conexiones son lo primero que hay que configurar antes de chatear. |
-| 7 | **Agents** | El botón del panel **Agents**. La tarjeta te indica **Agent Organizer** (Organizador de agentes) para instalar agentes. |
-| 8 | **Settings** | El botón del panel **Settings**. Abre **Settings** en la pestaña **General**. |
-| 9 | **Chats** | El interruptor de la barra lateral. Abre la barra lateral de chats. |
-| 10 | **Conversation Mode** | La pestaña de conversación, etiquetada como **CONVO**. |
-| 11 | **Roleplay Mode** | La pestaña de roleplay, etiquetada como **RP**. |
-| 12 | **Game Mode** | La pestaña de juego, etiquetada como **GM**. |
-| 13 | **Home: Your Story Hub** (Inicio: tu centro de historias) | Vuelve a la pantalla de inicio. La pantalla de inicio es donde continúas un chat, empiezas uno nuevo y organizas los widgets. |
-| 14 | **Ask Me Where Things Are** (Pregúntame dónde están las cosas) | La barra de búsqueda de la parte superior de la pantalla de inicio. En un teléfono, la tarjeta te indica que deslices hacia abajo desde la barra superior de la app. |
-| 15 | **Guides and Home Controls** (Guías y controles de inicio) | Los marcadores **Documentation** (Documentación), **Tutorial**, **FAQ** y **Widgets**. |
-| 16 | **Migrating from SillyTavern?** (¿Migrando desde SillyTavern?) | De nuevo el botón **Settings**. Abre **Settings** en la pestaña **Imports** (Importaciones). |
-| 17 | **You're All Set!** (¡Todo listo!) | El botón del panel **Connections** una vez más. |
-| 18 | **One Last Thing: Guide Language** (Una última cosa: el idioma de las guías) | El marcador **Documentation**. Una lista **Documentation Language** (Idioma de la documentación) establece el idioma de las guías de la app. Las guías que todavía no están traducidas se muestran en inglés. |
+| 1 | **Welcome to Marinara Engine!** (¡Bienvenido a Marinara Engine!) | Professor Mari se ofrece a mostrarte todo. |
+| 2 | **The Library** (La biblioteca) | La barra lateral de la derecha y su vista **Library**: Characters, Personas, Lorebooks, Presets y Regex scripts. El botón **Library** de la barra superior la abre y la oculta. |
+| 3 | **Your Chats** (Tus chats) | La vista **Chats** de la misma barra lateral y **Chat settings** (Ajustes del chat) dentro de un chat. |
+| 4 | **Three Ways to Chat** (Tres maneras de chatear) | Las pestañas **Convo**, **Roleplay** y **Game**, y para qué sirve cada modo. |
+| 5 | **Connections: Set This Up First** (Conexiones: configura esto primero) | Abre la página Connections. Añade una conexión antes de chatear. |
+| 6 | **Agents** | Abre la página Agents, donde instalas funciones opcionales. |
+| 7 | **Settings (and SillyTavern Imports)** (Configuración e importaciones de SillyTavern) | Abre **Settings** en la pestaña **Data** (Datos), donde están las importaciones de SillyTavern. |
+| 8 | **Tabs and Search** (Pestañas y Search) | Las pestañas de la barra superior y el botón de búsqueda (<kbd>Ctrl</kbd>+<kbd>K</kbd>). |
+| 9 | **The Docs, and You're Set!** (La documentación, ¡y listo!) | El botón **Docs** (Documentación) y la lista de idiomas de las guías. |
+
+En un teléfono o una tableta, el recorrido añade una tarjeta **Handy Gestures** (Gestos útiles; diez pasos en total). Allí la Library está detrás del botón de pila en la parte superior derecha, Chats está en la parte superior de la misma página, la búsqueda está detrás del título y Docs está en la Library.
+
+## Recorridos para cada dispositivo
+
+Cada tipo de dispositivo (computadora, tableta o teléfono) recibe un recorrido breve la primera vez que Marinara se abre en él, aunque hayas terminado el recorrido completo en otro lugar. Muestra dónde están los chats, la Library y la búsqueda en ese dispositivo y, en una pantalla táctil, la tarjeta **Handy Gestures**. Cada modo de chat también muestra sus propios consejos la primera vez que lo abres en ese dispositivo. Repítelos desde **Settings → General → Confirmations & Help → Walkthroughs**.
 
 ## Guías relacionadas
 
 - [Primeros pasos con Marinara Engine](welcome.md)
+- [Gestos táctiles](../chats/messages.md#touch-gestures)
 - [Professor Mari, tu asistente integrado](professor-mari.md)
 - [Logros](achievements.md)

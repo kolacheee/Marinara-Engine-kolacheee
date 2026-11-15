@@ -6,7 +6,7 @@
 
 **Music DJ** es un agente descargable opcional. Un agente es un ayudante que se ejecuta en segundo plano dentro de un chat. Después de cada respuesta, puede leer el ambiente de la escena y reproducir música acorde.
 
-Antes de empezar: abre **Agents** (Agentes), elige **Agent Organizer** (Organizador de agentes) e instala **Music DJ**. Queda desactivado tras la instalación. Actívalo para un chat como cualquier otro agente. Funciona en chats de Roleplay, en Game Mode mediante un interruptor aparte ([Music DJ en Game Mode](#music-dj-in-game-mode)) y en Conversation mediante el comando **Music** ([El comando Music de Conversation](#the-conversation-music-command)).
+Antes de empezar: abre **Library → Agents** (Biblioteca → Agentes) e instala **Music DJ** desde **Available** (Disponibles). Queda desactivado tras la instalación. Actívalo para un chat como cualquier otro agente. Funciona en chats de Roleplay, en Game Mode mediante un interruptor aparte ([Music DJ en Game Mode](#music-dj-in-game-mode)) y en Conversation mediante el comando **Music** ([El comando Music de Conversation](#the-conversation-music-command)).
 
 Reproduce desde tres fuentes.
 
@@ -18,7 +18,7 @@ Reproduce desde tres fuentes.
 
 La fuente activa aparece como un pequeño **Music Player** (Reproductor de música) fijado en la barra superior. En teléfonos y ventanas estrechas se convierte en un pequeño widget redondo flotante que puedes arrastrar.
 
-Music DJ se configura en un único lugar compartido. Abre el panel lateral **Agents** de la derecha y luego **Music DJ**. También puedes hacer clic en el icono de engranaje del minirreproductor, cuyo tooltip (texto de ayuda) dice **Music DJ setup**.
+Music DJ se configura en un único lugar compartido. Abre **Library → Agents** y luego **Music DJ**. También puedes hacer clic en el icono de engranaje del minirreproductor, cuyo tooltip (texto de ayuda) dice **Music DJ setup**.
 
 ### Elegir una fuente de música
 
@@ -95,8 +95,6 @@ En el editor de **Music DJ**, busca **Custom Music Library** (Biblioteca de mús
 
 Reproducir desde una carpeta fuera de Game Assets requiere acceso local en el servidor. Guardar una ruta de carpeta escrita a mano requiere el mismo acceso que el selector de carpetas. Desde otro dispositivo sin inicio de sesión ni secreto de administrador, ambas cosas pueden quedar bloqueadas. Consulta [Acceso remoto: inicio de sesión y lista de IP permitidas](../REMOTE_ACCESS.md).
 
-<a id="use-a-different-folder-for-a-chat-or-character"></a>
-
 ### Usar una carpeta distinta para un chat o personaje
 
 Un chat o un personaje puede tener su propia carpeta de música, para que cada historia suene con su propia banda sonora. La música de la carpeta de un personaje suena en todos los chats donde ese personaje es el único personaje.
@@ -124,7 +122,7 @@ La misma opción **Apply to** aparece cuando agregas Music DJ a un chat. La carp
 
 ## Usar el reproductor de música
 
-El **Music Player** es una etiqueta en la barra superior en escritorio y un widget arrastrable en móvil. Para mostrarlo u ocultarlo, abre **Settings → General → App Behavior** (Configuración → General → Comportamiento de la app) y activa o desactiva **Music Player**. Está activado de forma predeterminada. Si está activado y Music DJ no está instalado, el reproductor dice **Download Music DJ Agent to configure** y ofrece un botón **Agent Organizer**.
+El **Music Player** es una etiqueta en la barra superior en escritorio y un widget arrastrable en móvil. Para mostrarlo u ocultarlo, abre **Settings → General → Extras** (Configuración → General → Extras) y activa o desactiva **Music Player**. Está activado de forma predeterminada. Si está activado y Music DJ no está instalado, el reproductor dice **Download Music DJ Agent to configure** y ofrece un botón **Agent Organizer**.
 
 En un perfil nuevo, la fuente empieza como **YouTube**. Cámbiala con el interruptor de fuente redondo del reproductor (tooltip "Switch to ... player"), los botones **Music Player** del editor o los ajustes de **Music DJ** de un chat.
 
@@ -145,15 +143,11 @@ Necesita dos cosas.
 
 Si tiene éxito, verás "DJ Mari playlist is ready" con un botón **Open playlist** (Abrir la lista de reproducción).
 
-<a id="music-dj-in-game-mode"></a>
-
 ## Music DJ en Game Mode
 
 Game Mode tiene su propia música de fondo desde Game Assets. Para usar Music DJ en su lugar, activa el interruptor **Music DJ** en la configuración de Game ("Use the Music DJ for this game instead of local music assets"). Está desactivado de forma predeterminada. Entonces obtienes las mismas opciones **Spotify**, **YouTube** y **Custom** y los mismos campos que en Roleplay.
 
 Con Spotify, después de cada escena el servidor crea una lista corta de canciones candidatas reales de tu fuente elegida, y la IA elige una. Esto evita que invente una canción. Game Mode reproduce una canción en bucle a la vez. Para obtener una selección nueva para la escena actual, abre **Game controls** (Controles del juego) y elige **Retry Music DJ** (Reintentar Music DJ). Consulta [Los controles del juego](../game/getting-started.md#the-games-controls).
-
-<a id="the-conversation-music-command"></a>
 
 ## El comando Music de Conversation
 
@@ -166,7 +160,7 @@ Entonces un personaje puede nombrar una canción para Spotify, o describir una p
 
 ## Solución de problemas
 
-- **El minirreproductor no aparece**: activa **Music Player** en **Settings → General → App Behavior**.
+- **El minirreproductor no aparece**: activa **Music Player** en **Settings → General → Extras**.
 - **Spotify no reproduce nada**: la reproducción necesita Spotify Premium y un dispositivo de Spotify activo. Abre la app de escritorio en un dispositivo, o haz clic en **Enable Marinara player** en escritorio.
 - **La ventana de inicio de sesión de Spotify falla en otra máquina**: usa el cuadro para pegar "Browser couldn't reach the callback?", o define `SPOTIFY_REDIRECT_URI` en el servidor.
 - **La búsqueda de YouTube falla**: confirma que **YouTube Data API v3** está activada para tu proyecto y que la clave no está restringida por HTTP referrer. Si alcanzas la cuota diaria, inténtalo al día siguiente o usa otra clave.

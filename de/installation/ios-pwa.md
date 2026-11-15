@@ -93,7 +93,7 @@ Siehe [Ausgesperrt nach dem Update](../REMOTE_ACCESS.md#locked-out-after-updatin
 
 **Ein rotes Banner meldet, dass Speichervorgänge stillschweigend fehlschlagen.** Das ist eine Vertrauenswarnung des Servers zum Netzwerk, kein Problem deines iPhones oder iPads. Der Server-Betreiber muss deine Adresse als vertrauenswürdig eintragen. Siehe [Fernzugriff](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf).
 
-**Privilegierte Aktionen werden blockiert.** Manche Wartungsaktionen brauchen das Admin-Secret (ein zweites Passwort) vom Server-Betreiber. Speichere es auf deinem iPhone oder iPad unter **Settings → Advanced → Admin Access**. Siehe [Fernzugriff](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+**Privilegierte Aktionen werden blockiert.** Manche Wartungsaktionen brauchen das Admin-Secret (ein zweites Passwort) vom Server-Betreiber. Speichere es auf deinem iPhone oder iPad unter **Settings → Advanced → Security**. Siehe [Fernzugriff](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Verwandte Anleitungen
 

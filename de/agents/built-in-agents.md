@@ -1,10 +1,10 @@
 # Referenz der herunterladbaren Agenten
 
-Diese Anleitung stellt die offiziellen Erstanbieter-Agenten unter **Agents → Agent Organizer** (Agenten → Agentenverwaltung) vor, nach Gruppen sortiert. In einer frischen Installation sind keine Agenten enthalten. Ihre Quellen und ihr Katalog liegen öffentlich in [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Jeder Eintrag sagt, was der Agent tut, wann er läuft, wo er funktioniert und welche Einstellungen wichtig sind. Wie du Agenten installierst und einschaltest, steht in der [Agenten-Übersicht](agents-overview.md) – lies sie zuerst. Mit **staging only** (nur staging) markierte Einträge sind für Engine-Nutzer auf staging verfügbar; im stabilen Kanal erscheinen sie, sobald das Paket freigegeben ist.
+Diese Anleitung stellt die offiziellen Erstanbieter-Agenten unter **Library → Agents** (Bibliothek → Agenten) vor, nach Gruppen sortiert. In einer frischen Installation sind keine Agenten enthalten. Ihre Quellen und ihr Katalog liegen öffentlich in [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Jeder Eintrag sagt, was der Agent tut, wann er läuft, wo er funktioniert und welche Einstellungen wichtig sind. Wie du Agenten installierst und einschaltest, steht in der [Agenten-Übersicht](agents-overview.md) – lies sie zuerst. Mit **staging only** (nur staging) markierte Einträge sind für Engine-Nutzer auf staging verfügbar; im stabilen Kanal erscheinen sie, sobald das Paket freigegeben ist.
 
 ## So liest du diese Referenz
 
-Installiere einen Agenten aus dem **Agent Organizer** und füge ihn dann jedem Chat hinzu, in dem du ihn haben willst. Agenten werden pro Chat eingerichtet, nicht pro Charakterkarte. Installieren, Aktualisieren, die Einrichtung pro Chat und die Kosten behandelt die [Agenten-Übersicht](agents-overview.md).
+Installiere einen Agenten unter **Library → Agents** und füge ihn dann jedem Chat hinzu, in dem du ihn haben willst. Agenten werden pro Chat eingerichtet, nicht pro Charakterkarte. Installieren, Aktualisieren, die Einrichtung pro Chat und die Kosten behandelt die [Agenten-Übersicht](agents-overview.md).
 
 Jeder Eintrag zeigt dieselben Kurzangaben.
 
@@ -26,7 +26,7 @@ Ergänzt die optionale lokale öffentliche Noodle-Timeline in einem eigenen Tab 
 
 - **Integration**: Feature-Paket mit lokalen Routen, Generierungs- und Medienabläufen und Zeitplanern, die im Hintergrund laufen.
 - **Einsatzbereich**: Home, optional mit Kontext aus Conversation-, Roleplay- und Game-Chats.
-- **Wichtige Einstellungen**: Installiere es über **Agents → Agent Organizer** und starte neu, wenn du dazu aufgefordert wirst. In Noodle selbst legst du eingeladene Konten, Text- und Bildverbindungen, Timeline-Aktualisierungen, zufällige Nutzer und das Chat-Carryover fest.
+- **Wichtige Einstellungen**: Installiere es über **Library → Agents** und starte neu, wenn du dazu aufgefordert wirst. In Noodle selbst legst du eingeladene Konten, Text- und Bildverbindungen, Timeline-Aktualisierungen, zufällige Nutzer und das Chat-Carryover fest.
 - **Daten**: Nach einem Neustart entfernt eine Deinstallation den Tab und beendet die Zeitplaner. Deine Noodle-Daten bleiben für eine spätere Neuinstallation erhalten.
 - **Vollständige Anleitung**: [Noodle: die Social-Timeline in der App](noodle.md).
 
@@ -322,7 +322,7 @@ Hängt nach jeder Antwort anklickbare Auswahlschaltflächen „What will you do?
 
 - **Phase**: Post-Processing.
 - **Einsatzbereich**: Roleplay.
-- **Wichtige Einstellungen**: **Edit** schreibt die Auswahlmöglichkeiten um, **Re-roll** erzeugt neue. Sollen angeklickte Auswahlmöglichkeiten in deinem Nachrichtenfeld landen, schalte unter **Settings → General → Input & Editing** (Einstellungen → Allgemein → Eingabe und Bearbeitung) die Einstellung **Add CYOA choices to the message box instead of sending them** (CYOA-Auswahlmöglichkeiten ins Nachrichtenfeld einfügen, statt sie abzuschicken) ein.
+- **Wichtige Einstellungen**: **Edit** schreibt die Auswahlmöglichkeiten um, **Re-roll** erzeugt neue. Sollen angeklickte Auswahlmöglichkeiten in deinem Nachrichtenfeld landen, schalte unter **Settings → Chatting → Message Box** die Einstellung **Add CYOA choices to the message box instead of sending them** (CYOA-Auswahlmöglichkeiten ins Nachrichtenfeld einfügen, statt sie abzuschicken) ein.
 
 ### Storyboard
 
@@ -340,7 +340,7 @@ Zeigt Charaktere und Personas als animierte 2D-Avatare, die blinzeln, sprechen u
 
 - **Integration**: Agent-Paket. Die Engine zeichnet die Avatare. Während du chattest, schickt es keine zusätzlichen Anfragen an deine KI-Verbindungen.
 - **Einsatzbereich**: Roleplay und Game, für Charaktere und Personas.
-- **Verfügbarkeit**: bei jeder Installation im **Agent Organizer**. Benötigt Marinara Engine 2.5.1 oder neuer.
+- **Verfügbarkeit**: bei jeder Installation unter **Library → Agents**. Benötigt Marinara Engine 2.5.1 oder neuer.
 - **Wichtige Einstellungen**: Richte jeden Avatar auf der Seite des Agenten unter **Agents** ein. Der Agent bringt außerdem die Prompts mit, die aus einem Sprite Bilder zum Blinzeln und Sprechen sowie einen Mesh-Avatar machen.
 - **Kompatibilität**: Engine `2.5.0` bis ausschließlich `4.0.0`, Capability API 1.73. Berechtigungen: `agent-runtime`, `chat-read`, `storage`, `ui`. Kein Neustart nötig.
 - **Vollständige Anleitung**: [2D- und 3D-Avatare](avatars.md).
@@ -351,7 +351,7 @@ Zeigt Charaktere und Personas als animierte 3D-Modelle, die blinzeln, sprechen u
 
 - **Integration**: Agent-Paket. Die Engine zeichnet die Avatare. Während du chattest, schickt es keine zusätzlichen Anfragen an deine KI-Verbindungen.
 - **Einsatzbereich**: Roleplay und Game, für Charaktere und Personas.
-- **Verfügbarkeit**: bei jeder Installation im **Agent Organizer**. Benötigt Marinara Engine 2.5.1 oder neuer.
+- **Verfügbarkeit**: bei jeder Installation unter **Library → Agents**. Benötigt Marinara Engine 2.5.1 oder neuer.
 - **Wichtige Einstellungen**: Richte jeden Avatar auf der Seite des Agenten unter **Agents** ein.
 - **Kompatibilität**: wie bei 2D Avatars.
 - **Vollständige Anleitung**: [2D- und 3D-Avatare](avatars.md).

@@ -24,7 +24,7 @@ Du kannst beide einem Chat hinzufügen, aber sie überschneiden sich und treiben
 
 ## Einen Wissens-Agenten zu einem Chat hinzufügen
 
-Bevor du anfängst: Installiere den Agenten über den **Agent Organizer** (Agentenverwaltung). Siehe [Agenten im Überblick](agents-overview.md).
+Bevor du anfängst: Installiere den Agenten unter **Library → Agents** (Bibliothek → Agenten). Siehe [Agenten im Überblick](agents-overview.md).
 
 1. Öffne in einem Roleplay-Chat **Chat Settings** (Chat-Einstellungen).
 2. Such den Bereich **Agents** und schalte **Enable Agents** (Agenten aktivieren) ein.
@@ -70,7 +70,7 @@ Wählst du Quell-Lorebooks für den Router, erscheint neben **Fixed source overr
 Knowledge Router kann infrage kommende Einträge auch nach Bedeutung finden, nicht nur nach Schlüsselwort. Dafür nutzt er einen Embedder, ein kleines Modell, das Text in Zahlen umwandelt, damit Marinara Bedeutungen vergleichen kann. Der Router funktioniert auch ohne ihn.
 
 1. Öffne den Lorebook-Editor und such **Semantic search (embeddings)** (semantische Suche).
-2. Wähl ein Konto mit einem Embedding-Modell. Hast du unter **Connections → Defaults** (Standardwerte) einen Standard für **Embeddings** festgelegt, ist er bereits ausgewählt, sofern du nicht vorher eine andere Quelle gewählt hast.
+2. Wähl ein Konto mit einem Embedding-Modell. Hast du im Kasten **Standardwerte** unter **Verbindungen** die Aufgabe **Embeddings** festgelegt, ist diese Quelle bereits ausgewählt, sofern du nicht vorher eine andere gewählt hast.
 3. Nutze dieselbe Embedding-Quelle wie dein Chat-Konto. Vektoren mit einer anderen Größe werden übersprungen.
 4. Klick auf die Schaltfläche zum Vektorisieren. Sie zeigt, wie vielen Einträgen noch Vektoren fehlen. **Re-vectorize all** (alle neu vektorisieren) berechnet jeden Eintrag neu.
 

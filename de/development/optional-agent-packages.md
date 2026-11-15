@@ -125,7 +125,7 @@ Der Namensraum wächst nur: Ein neues Mitglied kommt mit einer Minor-Version der
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ui`        | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat`      | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `agent`     | `setYoutubePlay`, `reset`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `agent`     | `setYoutubePlay`, `setPackageActivity`, `reset`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `sidecar`   | `modelDownloaded`, `modelDisplayName`, `fetchStatus`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `dialog`    | `dialog`, `openDialog`, `closeDialog`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `gallery`   | `pinImage`, `pinVideo`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -195,6 +195,7 @@ Die Sicherheitsregeln der Engine haben Vorrang. Das Feld wird zwangsweise ausgek
 Capability API 1.14 ergänzt zwei Werte für `contributions.slots` bei aktiven, eingeschalteten Roleplay-Agentenpaketen mit Client-Einstiegspunkt:
 
 - `roleplay-tracker` bindet die Ansicht `toolbar` des Pakets ins Roleplay-HUD ein. Ihre Props umfassen `chatId`, `chatMode`, `mobileCompact`, die Host-Klasse `toolbarButtonClass`, `onRerunTracker`, `trackerRetryBusy`, `lockMode` und `onToggleLockMode`. Die Callbacks sind optional; prüfe sie vor der Verwendung.
+- `chat-activity` (Capability API 1.820) bindet die Ansicht `activity` des Pakets in das Panel Agentenaktivität des Chats ein. Siehe [Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity).
 - `tracker-panel` bindet die Ansicht `tracker` mit `chatId`, `chatMode` und `detached` in das bestehende Tracker Panel ein. Verwende diese Host-Oberfläche, statt ein zweites Panel zu öffnen. Beide Slots erhalten auch die üblichen Props für Capability-Identität und Lokalisierung.
 
 Prompt-Kontext wird weiterhin über `api.registerPromptContext` registriert und braucht die Berechtigung `prompt-context`. Die Anfrage enthält nun `targetCharacterIds`, `personaId` und `placedAgentTypes`, aus Kompatibilitätsgründen optional. `placedAgentTypes` nennt die vom Preset bereits platzierten Agentendatenabschnitte, damit ein Beitrag seinen Kontext nicht dupliziert. Der Host behält in `packageBlocks` die Paketidentität jedes Beitrags, um paketeigenen Text im passenden Agentenabschnitt zu platzieren. Empfängerspezifischer Text sollte die gelieferten Zielcharakter-IDs berücksichtigen.
@@ -1011,13 +1012,8 @@ Dies ist eine weiche Schnittstelle: Eine ältere Engine ignoriert das dritte Arg
 
 Die Browseransicht erhält `openCharacter(characterId, { tab })`. Sie öffnet den Charakter-Editor, falls angegeben auf dem passenden Tab, sodass ein Paket den Nutzer zu einem Kartenfeld führen kann, das es liest. Ältere Engines haben diese Funktion nicht: Prüfe, ob `openCharacter` existiert, bevor du den Link anzeigst.
 
-Seit #9191 akzeptiert `tab` auch einen Abschnitt innerhalb eines Tabs: `character-sheet`, `image-instructions`, `sprites` oder
-`gallery`, alle im Tab **Images** (Bilder). `sprites` und `gallery` waren früher Tabs, daher funktionieren alte Links weiterhin.
-Die Selfie-Anweisungen des Charakters (`conversationImageInstructions`) sind von `convo` zu `image-instructions` umgezogen.
-Eine Engine von vor #9191 kennt diese ID nicht und öffnet den Editor am Anfang.
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66: Szenen aus Paket-Threads
@@ -1157,6 +1153,77 @@ sind innerhalb des Aufrufs also schon lesbar. Ein Paket kann damit die Kopie kor
 Fehler und Aufrufe, die länger als einige Sekunden dauern, werden protokolliert und verworfen; die Verzweigung wird so oder so zurückgegeben. Ohne
 die Methode ändert sich nichts. Dies ist eine weiche Schnittstelle: Ältere Engines rufen sie nie auf, das Paket muss also auch ohne den Aufruf
 auskommen. Eine Berechtigung ist nicht nötig.
+
+### Capability API 1.818: Embeddings aus einer vom Paket gewählten Verbindung
+
+`api.runtime.embeddingsFor(connectionId)` liefert Embeddings aus einer Quelle, die eine eigene Einstellung des Pakets nennt, statt aus der Agentenverbindung, der `resolveEmbeddings()` folgt. Anders als `resolveEmbeddings()` greift es nie auf den appweiten Standard **Embeddings** zurück.
+
+| `connectionId` | Liefert |
+| --- | --- |
+| `null` | Den eingebauten lokalen MiniLM-Embedder. |
+| Eine Verbindungs-ID | Die eigene Embedding-Quelle dieser Verbindung: ihren **Embedding provider**, ihre **URL des Embedding-Endpunkts** und ihr Embedding-Modell, wie **Embedding testen** sie ermittelt. |
+| Eine ID ohne zugehörige Verbindung oder eine Verbindung ohne nutzbare Embedding-Quelle | `null`. Der Fall wird protokolliert und der Aufruf abgeschlossen; es wird kein Fehler geworfen. |
+
+Der zurückgegebene Host hat dieselbe Form wie bei `resolveEmbeddings()`: `spaceId`, `label` und `embed(texts, signal?, inputType?)`, mit denselben Grenzen (128 Texte, zusammen 200.000 Zeichen) und dem Eingabetyp aus 1.68. Bei einem fehlgeschlagenen Aufruf liefert `embed` den Wert `null`. Jede Quelle hat ihre eigene `spaceId`. Erzeuge deshalb die Embeddings gespeicherter Vektoren neu, wenn sich die Einstellung ändert.
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+Dies ist eine weiche Schnittstelle: Ältere Engines lassen die Methode weg. Prüfe deshalb vor dem Aufruf, ob sie existiert, und nutze eine Ausweichlösung wie im Beispiel. Deklariere 1.818 nur, wenn das Paket ohne sie nicht funktioniert. Eine Berechtigung ist nicht nötig.
+
+
+### Capability API 1.820: ein Paket in der Agentenaktivität anzeigen
+
+Der Slot `chat-activity` fügt eine eigene Karte in das Panel Agentenaktivität eines Chats ein, das über das Symbol für Agentenaktivität
+geöffnet wird, in der Chat-Seitenleiste und im Tracker-Panel. Deklariere ihn in `contributions.slots` und registriere eine Ansicht `activity`;
+die Engine hängt für jedes aktive Paket ein Element ein, sofern es einen Client-Einstiegspunkt hat und im Chat läuft
+(die Paket-ID steht unter den aktivierten Agenten des Chats). Es erscheint nach Status und Ausgaben der Agenten und vor
+den gespeicherten Ausgaben eigener Agenten.
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+Das Element erhält `chatId` und `onOpenAgentSettings()`, das die eigene Agentenseite des Pakets öffnet, sowie die üblichen
+Props für Capability-Identität und Lokalisierung. Die Engine fügt keine umgebende Oberfläche hinzu: Zeichne deine eigene Karte und zeige nichts an,
+wenn es nichts zu zeigen gibt. Sobald dein Client-Code geladen ist, braucht ein leeres Element keinen Platz. Solange eine Paketkarte
+eingehängt ist, zeigt das Panel „No agent activity yet“ nicht an. Zeichne bei Bedarf eine eigene Zeile für den Leerlauf.
+
+Dies ist keine weiche Schnittstelle: Eine Engine vor 1.820 lehnt das Manifest ab. Ein Paket, das `chat-activity` deklariert, deklariert deshalb
+1.820.
+
+#### Anzeigen, dass ein Paket arbeitet oder Aufmerksamkeit braucht
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })` aktiviert das Symbol für Agentenaktivität
+dieses Chats (`packageId` ist die `id` deines Manifests), wo immer es steht (in der Chat-Seitenleiste, ihrem ausgelagerten Fenster und im Tracker-Panel). Solange ein
+Paket `busy: true` meldet, dreht sich das Symbol wie bei den eigenen Agenten des Chats; `alert: true` zeigt seinen Punkt an. Ein
+weggelassenes Feld behält seinen Wert, und ein Eintrag mit zweimal false wird entfernt. Signale werden je Chat gespeichert, sodass beim Chatwechsel
+nur die Signale dieses Chats erscheinen.
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+Die Engine löscht ein Signal nie von selbst, auch nicht, wenn dein Element `activity` ausgehängt wird (das Symbol ist am wichtigsten,
+während das Panel geschlossen ist): Du musst es selbst löschen. Ein Neuladen oder `reset()` löscht alles. Ein Chatwechsel lässt es bestehen. Ein arbeitendes oder Aufmerksamkeit meldendes
+Paket zählt ebenfalls als Aktivität, sodass das Panel „No agent activity yet“ nicht anzeigt. Kombiniere das Signal mit einer Karte `activity`,
+damit das Panel etwas anzeigen kann. Dies ist eine weiche Schnittstelle: Ältere Engines
+lassen die Methode weg. Prüfe deshalb wie oben, ob sie existiert. Deklariere 1.820 nur, wenn das Paket ohne sie nicht funktioniert.
+Eine Berechtigung ist nicht nötig.
+
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

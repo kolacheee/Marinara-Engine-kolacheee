@@ -34,7 +34,7 @@ Windows 10 또는 Windows 11(64비트), 몇 기가바이트의 여유 디스크 
 - **시작:** 바탕 화면 바로 가기나 시작 메뉴 항목을 두 번 클릭하세요. 소스로 설치했다면 Marinara 폴더에서 `start.bat`을 실행하세요.
 - **중지:** 바로 가기를 실행하면 콘솔 창이 열립니다. 그 창에서 <kbd>Ctrl</kbd>+<kbd>C</kbd>를 누르세요.
 
-Marinara가 이미 실행 중이라면 바로 가기는 브라우저에서 Marinara를 다시 엽니다.
+Marinara가 이미 실행 중이라면 바로 가기는 브라우저에서 Marinara를 다시 엽니다. 실행 중인 사본이 폴더에 있는 버전과 다르면(예를 들어 버전을 전환한 뒤), 런처에 *"A different version of Marinara Engine is still running"*이 표시되고 먼저 이전 콘솔 창을 닫으라는 안내가 나옵니다. 실수로 다른 버전을 열지 않도록 하기 위한 것입니다. `staging`이나 `ui/...` 같은 테스트 브랜치는 GitHub에 있는 해당 브랜치의 사본에서 업데이트합니다.
 
 ## 소스에서 설치하기
 
@@ -84,6 +84,9 @@ Marinara가 이미 실행 중이라면 바로 가기는 브라우저에서 Marin
 ### 런처 없이 직접 설치하기
 
 이 방법에는 `pnpm` 명령이 필요합니다. 다음 명령은 `Marinara-Engine` 폴더 안에서 실행하세요.
+
+> [!TIP]
+> PowerShell에서는 `npm`과 `pnpm` 대신 `npm.cmd`와 `pnpm.cmd`를 입력하세요(예: `pnpm.cmd install --force`). 많은 PC에서 PowerShell은 "running scripts is disabled on this system"이라는 메시지와 함께 바로 가기 실행을 차단합니다. 명령 프롬프트는 영향을 받지 않습니다. 이 섹션을 건너뛰고 `.\start.bat`를 실행해도 됩니다. 필요한 항목을 모두 설치하고 빌드합니다.
 
 1. pnpm을 한 번 설치하세요.
 

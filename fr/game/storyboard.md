@@ -11,11 +11,10 @@ Dans les deux modes, les images-clés sont enregistrées dans l'onglet **Images*
 
 ## Installer l'agent
 
-1. Ouvre le panneau **Agents** (l'icône Sparkles).
-2. Choisis **Agent Organizer** (organisateur d'agents).
-3. Ouvre **Storyboard** et choisis **Install** (installer).
-4. Ouvre un chat Game ou Roleplay, puis ouvre **Chat Settings → Agents** (réglages du chat → agents).
-5. Active **Enable Agents** (activer les agents), puis active **Enable Storyboards** (activer les storyboards) dans la carte Storyboard.
+1. Ouvre **Library → Agents** (Bibliothèque → Agents) et clique sur **Available** (disponibles).
+2. Trouve **Storyboard** et clique sur **Get** (obtenir).
+3. Ouvre un chat Game ou Roleplay, puis ouvre **Chat Settings → Agents** (réglages du chat → agents).
+4. Active **Enable Agents** (activer les agents), puis active **Enable Storyboards** (activer les storyboards) dans la carte Storyboard.
 
 L'installation rend l'agent disponible, sans l'activer dans chaque chat. Aucun redémarrage de Marinara n'est nécessaire.
 
@@ -186,7 +185,7 @@ Storyboard est distinct d'Illustrator, et les actions manuelles d'Illustrator re
 
 ## Réglages de l'agent Storyboard
 
-Ouvre le panneau **Agents**, choisis **Storyboard** et ouvre sa configuration. Ces valeurs sont les valeurs par défaut des chats qui n'ont pas leurs propres remplacements.
+Ouvre **Library → Agents**, clique sur **Storyboard** et ouvre sa configuration. Ces valeurs sont les valeurs par défaut des chats qui n'ont pas leurs propres remplacements.
 
 | Réglage | Par défaut | Rôle |
 | --- | --- | --- |

@@ -34,7 +34,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 **Other names** (inne nazwy), np. przezwiska, pełne imiona i nazwiska lub tytuły takie jak `Clark Kent, Kal-El, Mr. Kent`, znajdziesz w zakładce **Metadata** (metadane), pod polem **Name** (nazwa). W wiadomościach w czatach Roleplay mają ten sam kolor co główne imię. Włącz tę opcję osobno dla każdego czatu: **Color Character Names in Text** (kolorowanie imion postaci w tekście) w **Chat Settings → Characters** (ustawienia czatu, postacie) oraz **Color Persona Name in Text** (kolorowanie imienia persony w tekście) w **Chat Settings → Persona** (ustawienia czatu, persona).
 
-Przezroczystość zmienisz w **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity** (ustawienia, wygląd, prezentacja trybu Roleplay, nieprzezroczystość tła wiadomości w trybie Roleplay).
+Aby zmienić przezroczystość, użyj **Ustawienia → Roleplay → Wiadomości Roleplay → Nieprzezroczystość tła wiadomości w trybie Roleplay**.
 
 Suwak skaluje przezroczystość zapisaną w kolorze pola wiadomości postaci i persony: kolor z własną wartością alfa, na przykład `rgba(255, 255, 255, 0.25)` lub `#FFFFFF40`, pokazuje się z tą wartością alfa pomnożoną przez wartość suwaka. Zapisane wartości kolorów pozostają bez zmian. Ustawienie nie wpływa na kolor imienia ani dialogu.
 
@@ -46,7 +46,7 @@ Punkty zaczepienia tła w niestandardowym motywie oraz CSS karty nadal mogą nad
 
 ### Gdzie widać ustawione kolory
 
-- Kolor imienia koloruje wyświetlaną nazwę w wiadomościach na czacie. U postaci koloruje też nazwę na zakładkach paska bocznego. U persony koloruje też nazwę w oknach wyboru persony.
+- Kolor imienia koloruje wyświetlaną nazwę w wiadomościach na czacie. U postaci koloruje też nazwę na liście czatów. U persony koloruje też nazwę w oknach wyboru persony.
 - Kolor dialogu koloruje tekst w cudzysłowach dialogowych, zarówno w prostych cudzysłowach, jak i w innych ich stylach. Ten tekst da się też pogrubić w sekcji **Settings** (Ustawienia). Czaty Conversation z niego nie korzystają.
 - Kolor pola wiadomości ustawia tło dymków wiadomości danej postaci albo persony w czatach Roleplay. Czaty Conversation i Game z niego nie korzystają.
 
@@ -64,6 +64,10 @@ Postać ma jeden przełącznik, **Enable Roleplay Stats** (Włącz Statystyki Ro
 - **Attributes** (atrybuty) to nazwane liczby. Nowe postacie mają na starcie STR, DEX, CON, INT, WIS i CHA, każdy o wartości 10.
 
 Kliknij **Add** (dodaj), aby dodać pulę albo atrybut, i X w wierszu, aby go usunąć.
+
+Z tych statystyk korzystają czaty w trybie Roleplay i gry Legacy. Nowy czat w trybie Roleplay ustawia początkowe paski trackerów postaci na podstawie pul, a starcie w trybie Roleplay bierze jej maksymalne HP z puli HP. Rzut kością w trybie Roleplay dodaje premię z atrybutu wskazanego w rzucie, więc uwzględnia też własne atrybuty, takie jak Poczytalność. Gry MRPG nigdy nie tworzą na ich podstawie arkusza.
+
+W nowym układzie pule, atrybuty i pola trackerów mają własną sekcję **Statystyki Roleplay**, oddzielną od **Game Mode**. Jeśli karta jeszcze jej nie ma, dodaj ją przyciskiem **+ Statystyki Roleplay** na lewym pasku edytora. Paski stanu persony też znajdują się w jej sekcji **Statystyki Roleplay**.
 
 ### Statystyki persony
 

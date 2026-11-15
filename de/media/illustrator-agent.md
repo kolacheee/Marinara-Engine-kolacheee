@@ -16,14 +16,14 @@ Den Prompt schreibt der Illustrator selbst, das Bild zeichnet aber ein separates
 
 Ein Bildmodell gibst du ihm auf einem von zwei Wegen.
 
-1. Leg im Panel **Connections** (Verbindungen) unter **Defaults** (Standardwerte) die Aufgabe **Images** (Bilder) fest.
+1. Leg im Panel **Verbindungen** im Kasten **Aufgaben** die Aufgabe **Bilder** fest.
 2. Oder gib dem Illustrator im Fenster **Open Setup** (Einrichtung öffnen) ein eigenes Bildmodell.
 
 Findet die App kein Bildmodell, schlägt das Bild fehl, und du wirst aufgefordert, eines auszuwählen.
 
 ## Den Illustrator aktivieren
 
-Bevor du loslegst: Installiere **Illustrator** über **Agent Organizer** (Agentenverwaltung). Siehe [Agenten im Überblick](../agents/agents-overview.md).
+Bevor du loslegst: Installiere **Illustrator** unter **Library → Agents** (Bibliothek → Agenten). Siehe [Agenten im Überblick](../agents/agents-overview.md).
 
 1. Öffne den Roleplay-Chat, den du illustrieren möchtest.
 2. Öffne die **Chat Settings** (Chat-Einstellungen) und such **Agents**.
@@ -99,7 +99,7 @@ Clips nutzen das Videomodell unter **Scene Videos** (Szenenvideos), und jeder Cl
 - Mit **Clips only** ist jeder Lauf ein Clip, das **Video Run Interval** bestimmt, wie oft Illustrator läuft, und das **Image Run Interval** wird ausgeblendet.
 - Ein Chat ohne eigenen Wert nutzt das **Video Run Interval** aus dem Fenster **Open Setup**, sonst 5.
 - **0**: keine Clips von sich aus, auch nicht für Bilder per `[illustrate]`; sie bekommen stattdessen ihr Bild.
-- Eine Antwort erhält höchstens **Videos per reply** Clips. Die Einstellung steht unter **Settings → Generations → Video Generation** (Einstellungen → Generierungen → Videogenerierung).
+- Eine Antwort erhält höchstens **Videos per reply** Clips. Die Einstellung steht unter **Settings → Media → Video Generation** (Einstellungen → Medien → Videogenerierung).
 - Du kannst weiterhin ein Bild aus der Gallery animieren. Mit **Clips only** erzeugt die Schaltfläche **Illustrate** einer Nachricht einen Clip.
 - Ein Swipe einer Antwort mit Clip zählt als neue Antwort und kann einen eigenen Clip bekommen. Der frühere Swipe behält seinen Clip.
 
@@ -112,6 +112,16 @@ Clips nutzen das Videomodell unter **Scene Videos** (Szenenvideos), und jeder Cl
 Ein Clip ohne eigenes Bild beschreibt alle, die er nennt, einschließlich deiner Persona. Mit dem Avatar als Startbild beginnt er bei der zuerst genannten Person.
 
 Auch ein erneuter Illustrator-Lauf über die Schaltfläche **Illustrate** einer Nachricht folgt **Illustrator makes** und **First frame**.
+
+## Hintergründe und Wetter
+
+Illustrator zeichnet auch Hintergründe. Auf der Illustrator-Karte unter **Chat-Einstellungen → Agenten**:
+
+- **Szenenhintergründe generieren** zeichnet einen Hintergrund, wenn die Geschichte einen neuen Ort erreicht, sofern du noch kein Bild dafür hast.
+- **Weather Versions of Backgrounds** zeichnet den aktuellen Hintergrund mit dem Wetter der Geschichte neu. Bewegter Regen oder Schnee erscheint dabei nur an den Fenstern des Raums.
+- **Decision Model Checks** lässt ein Decision-Modell jede Antwort auf einen neuen Ort oder neues Wetter prüfen, damit Hintergründe nicht auf das Ausführungsintervall warten müssen.
+
+Alle drei sind standardmäßig aus. Siehe [Von Illustrator erstellte Hintergründe](scene-backgrounds.md).
 
 ## Mehrere Charaktere mit NovelAI
 
@@ -127,11 +137,11 @@ Du musst nichts einstellen. Figurenbeschreibungen gibt es nur bei NovelAI auf de
 
 ## Galeriespeicherung und Prompt-Ansicht
 
-Unter **Settings → Generations → Image Generation** (Einstellungen → Generierungen → Bildgenerierung) ist **Automatically save generated images to character galleries** (Erzeugte Bilder automatisch in Charaktergalerien speichern) standardmäßig an. Schalte es aus, damit Chat-Illustrationen und Selfies nicht mehr in die Galerien der dargestellten Charaktere und Personas aufgenommen werden. Die Bilder erscheinen weiterhin im Gespräch und in der Gallery des Chats, und ausdrückliches Speichern in einer Galerie funktioniert weiterhin. Vorhandene Einträge bleiben unverändert. Galerien teilen sich die Bilddateien; die Einstellung steuert also die Zuordnung, nicht das Löschen.
+Unter **Settings → Media → Image Generation** (Einstellungen → Medien → Bildgenerierung) ist **Automatically save generated images to character galleries** (Erzeugte Bilder automatisch in Charaktergalerien speichern) standardmäßig an. Schalte es aus, damit Chat-Illustrationen und Selfies nicht mehr in die Galerien der dargestellten Charaktere und Personas aufgenommen werden. Die Bilder erscheinen weiterhin im Gespräch und in der Gallery des Chats, und ausdrückliches Speichern in einer Galerie funktioniert weiterhin. Vorhandene Einträge bleiben unverändert. Galerien teilen sich die Bilddateien; die Einstellung steuert also die Zuordnung, nicht das Löschen.
 
 Bei neuen NovelAI-Illustrationen zeigt die Bildansicht den Szenen- und Stil-Prompt und danach die positiven Figurenbeschreibungen, getrennt durch ` | `. Der gespeicherte Galerie-Prompt ist derselbe.
 
-Um eine Illustration mit geändertem Prompt neu zu zeichnen, ohne die Antwort neu zu generieren, öffne sie und nutze **Regenerate image** (Bild neu generieren). Siehe [Ein Bild neu generieren](scene-backgrounds.md#regenerating-an-image).
+Um eine Illustration mit geändertem Prompt neu zu zeichnen, ohne die Antwort neu zu generieren, öffne sie und nutze **Regenerate image** (Bild neu generieren). Siehe [Ein Bild neu generieren](../chats/chat-gallery.md#regenerating-an-image).
 
 Um eine frühere Roleplay-Nachricht oder einen Bereich zu illustrieren, nutze `/illustrate range=12` oder `/illustrate range=12-18`. Siehe [Slash-Befehle](../chats/slash-commands.md).
 
@@ -139,6 +149,7 @@ Um eine frühere Roleplay-Nachricht oder einen Bereich zu illustrieren, nutze `/
 
 - [Anbieter für Bildgenerierung und Einrichtung](image-providers.md)
 - [Bild-Stilprofile](style-profiles.md)
-- [Szenen-Hintergründe und die Gallery](scene-backgrounds.md)
+- [Von Illustrator erstellte Hintergründe](scene-backgrounds.md)
+- [Die Chat-Galerie](../chats/chat-gallery.md)
 - [Agenten: KI-Helfer für deine Chats](../agents/agents-overview.md)
 - [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md)

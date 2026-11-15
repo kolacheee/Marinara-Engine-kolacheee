@@ -14,7 +14,7 @@ A correspondência por palavra-chave funciona com qualquer modelo e não exige c
 
 ## Como criar um lorebook e adicionar uma entrada
 
-1. Abra o painel **Lorebooks** pela barra lateral.
+1. Abra **Library** (Biblioteca) > **Lorebooks**. A Biblioteca fica à direita.
 2. Clique em **New** (novo, o ícone de mais). A janela **Create Lorebook** (criar lorebook) abre.
 3. Digite um **Name** (nome). Esse campo é obrigatório.
 4. Acrescente uma **Description** (descrição), se quiser.
@@ -67,9 +67,26 @@ A aba também tem estes botões liga/desliga.
 
 O painel **Semantic search (embeddings)**, abaixo dos botões liga/desliga, é tratado em [Busca semântica para lorebooks](semantic-search.md).
 
-## O painel **Lorebooks**
+## A página Lorebooks
 
-No topo do painel, três botões de ícone mostram o nome quando você passa o mouse sobre eles.
+Abra **Library → Lorebooks**. No topo ficam **Import** (importar, veja [Importar e exportar lorebooks](import-export.md)) e **New lorebook** (novo lorebook). Abaixo deles:
+
+- **All kinds** (todos os tipos) limita a lista aos lorebooks **Global**, **World**, **Character**, **NPC** ou **Spellbook**.
+- **List** (lista) e **Gallery** (galeria) alternam entre uma tabela e cartões com imagens.
+- O menu de ordenação oferece **Recently edited** (editados recentemente), **A to Z** (A a Z), **Z to A** (Z a A) e **My order** (minha ordem).
+
+Clique em um lorebook para abri-lo.
+
+### Organize os seus lorebooks
+
+- **⋯** no fim de uma linha (ou um clique com o botão direito na linha) oferece **Duplicate** (duplicar), **Move to folder** (mover para uma pasta), **Export**, **Select** e **Delete**. Em uma tela sensível ao toque, pressione e segure a linha. **Duplicate** copia o lorebook com todas as entradas e abre a cópia.
+- Arraste uma linha para cima ou para baixo de outra para definir a sua própria ordem. O menu de ordenação muda para **My order**.
+- **New folder** (nova pasta, o ícone de pasta ao lado do título) adiciona uma pasta de biblioteca. Arraste um lorebook para cima dela ou use **Move to folder**. Essas pastas são diferentes das pastas de entradas dentro de um lorebook. Clique em uma pasta para recolhê-la e use o **⋯** dela para renomeá-la ou excluí-la. Excluir uma pasta mantém os lorebooks dela.
+- **Select** (o ícone de marca de seleção ao lado do título) coloca uma caixa de seleção em cada linha. Escolha os lorebooks e use a barra na parte de baixo: **Move to folder**, **On or off** (ativado ou desativado), **Export** (um `marinara-lorebooks.zip`) ou **Delete**.
+
+## No layout clássico: o painel Lorebooks
+
+O painel clássico mostra as mesmas pastas e a mesma ordem em uma lista. No topo do painel, três botões de ícone mostram o nome quando você passa o mouse sobre eles.
 
 - **New** abre a janela **Create Lorebook**.
 - **Import** (importar) abre a janela **Import Lorebook** (importar lorebook). Veja [Importar e exportar lorebooks](import-export.md).
@@ -77,7 +94,8 @@ No topo do painel, três botões de ícone mostram o nome quando você passa o m
 
 Abaixo dos botões:
 
-- **Search lorebooks** (buscar lorebooks) filtra por nome, descrição, nomes de personagem ou persona vinculados e tags.
+- **Search lorebooks** (buscar lorebooks) filtra por nome, descrição, nomes de personagem ou persona vinculados e tags. `tag:name` também funciona aqui.
+- **Tags**, ao lado da caixa de busca, mostra só os lorebooks com todas as tags que você escolher, ou **Untagged** (sem tags). Veja [Tags](../characters/library-organization.md#tags).
 - **Sort order** (ordem de exibição) oferece **Manual order**, **A-Z**, **Z-A**, **Newest**, **Oldest** e **Token Budget**. Com **Manual order** (ordem manual), arraste os lorebooks para o lugar, ou use <kbd>Alt</kbd>+<kbd>Up</kbd> e <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (nova pasta) cria uma pasta de biblioteca. Arraste um lorebook para cima dela. No celular, segure o lorebook e depois arraste. Essas pastas são diferentes das pastas de entradas dentro de um lorebook.
 

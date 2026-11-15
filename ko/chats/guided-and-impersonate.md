@@ -25,11 +25,11 @@
 
 메시지 입력란에 적어 둔 글을 한 번의 재생성에만 쓰는 지침으로 활용합니다.
 
-1. **Settings → Advanced → Message Tools**(설정 → 고급 → 메시지 도구)를 열고 **Guide swipes/regens with chat input**(채팅 입력으로 스와이프/재생성 안내)을 켜세요. 기본값은 꺼짐입니다.
+1. **Settings → Chatting → Editing & Swipes**(설정 → 채팅 중 → 편집 및 스와이프)를 열고 **Guide swipes/regens with chat input**(채팅 입력으로 스와이프/재생성 안내)을 켜세요. 기본값은 꺼짐입니다.
 2. 채팅에서 메시지 입력란에 방향을 입력하되, 보내지는 마세요.
 3. AI 메시지에서 **Regenerate**(재생성)를 클릭하세요. 입력란에 글이 있으면 버튼 라벨이 **Regenerate (guided)**로 표시됩니다.
 
-적어 둔 방향은 재생성한 뒤에도 입력란에 남아 있으므로, 고쳐서 다시 재생성할 수 있습니다. 대신 입력란을 비우려면 **Settings → General → Input & Editing**(설정 → 일반 → 입력 및 편집)에서 **Keep guidance after regenerating**(재생성 후 지침 유지)을 끄세요.
+적어 둔 방향은 재생성한 뒤에도 입력란에 남아 있으므로, 고쳐서 다시 재생성할 수 있습니다. 대신 입력란을 비우려면 **Settings → Chatting → Message Box**(설정 → 채팅 중 → 메시지 입력창)에서 **Keep guidance after regenerating**(재생성 후 지침 유지)을 끄세요.
 
 작동하지 않는 경우: 버튼 라벨이 **Regenerate (guided)**여야 합니다. **Regenerate**라고만 표시되면 설정이 꺼져 있거나 입력란이 비어 있는 것입니다.
 
@@ -71,7 +71,7 @@ Impersonate는 내 다음 메시지를 모델이 페르소나의 말투로 대�
 | **Preset**(프리셋) | Impersonate 답변에만 쓰는 프롬프트 프리셋입니다. 기본값: **Use chat default**(채팅 기본값 사용). [Preset Editor와 프롬프트 관리](../prompts/presets.md)를 참고하세요. |
 | **Connection**(연결) | Impersonate 답변에 쓸 모델로, 더 저렴하거나 빠른 모델을 지정할 수 있습니다. 기본값: **Use chat default**. **Random**(무작위)도 고를 수 있습니다. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요. |
 | **Skip agents**(에이전트 생략) | Impersonate 중에는 에이전트(트래커, 로어북 라우터 같은 보조 기능)를 건너뜁니다. 그래서 Impersonate가 빠르고 세계 상태도 바뀌지 않습니다. 기본값은 꺼짐입니다. [에이전트](../agents/agents-overview.md)를 참고하세요. |
-| **Use CYOA as direction**(CYOA를 지침으로 사용) | CYOA(choose your own adventure) 선택지를 클릭하면 그 내용을 올리지 않고 Impersonate 방향으로 씁니다. 기본값은 꺼짐입니다. **Settings → General → Input & Editing**에서 **Add CYOA choices to the message box instead of sending them**(CYOA 선택지를 전송하지 않고 메시지 입력란에 추가)이 켜져 있으면, 클릭해도 텍스트가 메시지 입력란에 추가되기만 하고 이 설정은 효과가 없습니다. |
+| **Use CYOA as direction**(CYOA를 지침으로 사용) | CYOA(choose your own adventure) 선택지를 클릭하면 그 내용을 올리지 않고 Impersonate 방향으로 씁니다. 기본값은 꺼짐입니다. **Settings → Chatting → Message Box**에서 **Add CYOA choices to the message box instead of sending them**(CYOA 선택지를 전송하지 않고 메시지 입력란에 추가)이 켜져 있으면, 클릭해도 텍스트가 메시지 입력란에 추가되기만 하고 이 설정은 효과가 없습니다. |
 
 ### 한 채팅에만 프롬프트 지정하기
 
@@ -88,7 +88,7 @@ Impersonate는 내 다음 메시지를 모델이 페르소나의 말투로 대�
 
 Quick replies는 **Send** 대신 쓸 수 있는 원클릭 동작을 추가하므로, 슬래시 명령어를 입력할 필요가 없습니다.
 
-1. **Settings → General → Input & Editing**을 여세요.
+1. **Settings → Chatting → Message Box**를 여세요.
 2. **Quick replies**를 켜세요. 기본값은 꺼짐입니다.
 3. 펼쳐서 표시할 동작을 고르세요. 켜 두면 세 동작이 모두 기본으로 켜져 있습니다.
 

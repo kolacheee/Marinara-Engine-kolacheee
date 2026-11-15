@@ -38,6 +38,10 @@ Se não funcionou: leia a mensagem vermelha ao lado do arquivo. Os outros arquiv
 | **Imported regex scripts** (scripts de regex importados) | **Character only** (padrão): as regras valem para este personagem. |
 | | **Global**: as regras vão para **Presets → Regexes** e valem em todos os chats. |
 | **Split description into fields** (dividir a descrição em campos) | Desligada por padrão. Marque a opção para tirar de **Description** (descrição) o texto rotulado de personalidade, aparência e similares e colocá-lo nos campos próprios. |
+| **Tags de importação** | **Tag de importado** (ativada por padrão): adiciona a tag **Imported**. |
+| | **Tag de origem** (ativada por padrão): adiciona a origem do arquivo: **ST** para um card do SillyTavern, **CharX** para um arquivo `.charx`, **Marinara** para uma exportação do Marinara. |
+
+Os itens importados mantêm o próprio nome e a própria descrição. Para encontrar tudo o que você importou, escolha **Imported** no filtro **Tags** ao lado da busca. Todas as janelas de importação da Biblioteca (Personagens, Personas, Lorebooks, Presets) e a importação de chats têm as mesmas duas caixas de **Tags de importação**. O [Bot Browser](bot-browser.md) usa o nome do site como origem, por exemplo **Chub**.
 
 Os scripts de regex são pequenas regras de substituição de texto. Mantenha **Character only**, a não ser que você queira as regras em todo lugar. A divisão deixa como estão os cards de narrador, de mundo e de vários personagens.
 
@@ -50,12 +54,12 @@ Um lorebook é um conjunto de fatos de fundo que a IA consulta durante o chat. S
 
 ### Importar uma pasta inteira do SillyTavern
 
-Para trazer uma instalação inteira do SillyTavern, use o importador em lote em **Settings** (Configurações), na aba **Imports**. Ele traz personagens, chats, presets e lorebooks juntos. Veja [Importar do SillyTavern](../data/importing-from-sillytavern.md).
+Para mover uma instalação inteira do SillyTavern, use o importador em lote em **Configurações → Dados → Importação do SillyTavern**. Ele traz personagens, chats, presets e lorebooks juntos. Veja [Importar do SillyTavern](../data/importing-from-sillytavern.md).
 
 ## Exportar um personagem
 
 1. Abra o personagem no editor.
-2. Clique em **…** no cabeçalho e depois em **Export character** (exportar personagem). A janela **Export Character** abre.
+2. Clique em **Exportar personagem** no cabeçalho. A janela **Exportar personagem** abre.
 3. Escolha um formato. Marinara baixa o arquivo.
 
 | Formato | O que você recebe | Melhor para |
@@ -70,8 +74,8 @@ O [onboarding interativo](interactive-onboarding.md) de um card é mantido por *
 
 ## Exportar vários personagens de uma vez
 
-1. Clique em **Characters** na barra de navegação superior (ou em **More** primeiro, se esse item não aparecer).
-2. Clique em **Select** (selecionar, o ícone de visto) na barra de ferramentas e marque os personagens que você quer.
+1. Abra **Biblioteca → Personagens**.
+2. Clique em **Selecionar** ao lado do título da página (o ícone de marca de seleção) e clique nos personagens que você quer.
 3. Clique em **Export** (exportar) na barra de baixo. Marinara baixa `marinara-characters.zip`.
 
 O zip contém um arquivo **Marinara Native** por personagem. A exportação em lote não tem opção de PNG nem de JSON. Para esses formatos, use a exportação de um personagem por vez. Para conhecer outras formas de selecionar personagens, veja [Organizando a biblioteca de personagens](library-organization.md#export-or-delete-many-characters).

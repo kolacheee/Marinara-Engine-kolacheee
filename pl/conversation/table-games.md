@@ -2,7 +2,7 @@
 
 Zagraj w UNO, szachy, pokera, bilard 8-Ball Pool, kółko i krzyżyk oraz papier-kamień-nożyce z postaciami z czatu Conversation. Aplikacja rozdaje karty lub ustawia planszę, pilnuje każdej reguły i sprawia, że każda zasiadająca postać opisuje swoje ruchy w swojej roli. Podczas gry nad polem wiadomości pojawia się plansza na żywo.
 
-Każda gra to opcjonalny pakiet. Zainstaluj te, które chcesz mieć, w **Agents → Agent Organizer** (organizator agentów) i uruchom aplikację Marinara Engine ponownie, jeśli katalog o to poprosi. Gra, której nie zainstalowano, nie ma komendy slash, nie pojawia się w wyborze gier, a jej przełącznik **Commands** pozostaje ukryty.
+Każda gra to opcjonalny pakiet. Zainstaluj te, które chcesz mieć, w **Biblioteka → Agenci** i uruchom aplikację Marinara Engine ponownie, jeśli katalog o to poprosi. Gra, której nie zainstalowano, nie ma komendy slash, nie pojawia się w wyborze gier, a jej przełącznik **Commands** pozostaje ukryty.
 
 Reguły dla każdej gry:
 
@@ -52,7 +52,13 @@ Okno konfiguracji ma tytuł **Start UNO**.
 
 Przycisk **Deal** pozostaje nieaktywny, dopóki nie wybierzesz co najmniej jednego przeciwnika. Pokazuje liczbę graczy, na przykład **Deal (3p)** dla ciebie i dwóch postaci.
 
-Na planszy: karty, które można zagrać, unoszą się, a reszta jest przyciemniona. Kliknij kartę, aby ją zagrać. Karta Wild otwiera okno "Pick a color:". Przy włączonej opcji **7-0 rule** siódemka otwiera okno "Swap hands with:". Przyciski pojawiają się w miarę potrzeby: **Draw**, **Pass**, **Call UNO!** i **Catch!**. Zagranie przedostatniej karty zgłasza UNO za ciebie. Baner pokazuje "{winner} wins!" albo "Game over".
+Na planszy:
+
+- Karty, które można zagrać, unoszą się, a reszta jest przyciemniona. Kliknij kartę, aby ją zagrać.
+- Karta Wild otwiera okno "Pick a color:". Przy włączonej opcji **7-0 rule** siódemka otwiera okno "Swap hands with:".
+- Przyciski pojawiają się w miarę potrzeby: **Draw**, **Pass**, **Call UNO!** i **Catch!**.
+- Zagranie przedostatniej karty zgłasza UNO za ciebie.
+- Baner pokazuje "{winner} wins!" albo "Game over".
 
 ## Szachy
 
@@ -102,13 +108,13 @@ Każda plansza ma przycisk X.
 
 Przedwczesne zakończenie gry usuwa jej stan i nie zapisuje zwycięzcy.
 
-<a id="let-characters-start-games-on-their-own"></a>
-
 ## Pozwól postaciom rozpoczynać gry samodzielnie
 
 Otwórz **Chat Settings → Agents → Commands** albo użyj kroku **Automation** przy tworzeniu czatu. Główny przełącznik **Commands** steruje wszystkimi działaniami uruchamianymi przez postacie, w tym grami stołowymi, selfie i rozmowami. Gdy jest wyłączony, postacie nie rozpoczynają niczego samodzielnie.
 
-Każda zainstalowana gra ma własny przełącznik, który jest włączony, chyba że go wyłączysz: **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** i **Rock-Paper-Scissors**. Zobacz [Wybierz, których komend może używać postać](getting-started.md#choose-which-commands-a-character-can-use). Te przełączniki kontrolują tylko to, co robią postacie. Komenda slash gry i fraza "let's play" działają nawet wtedy, gdy przełącznik jest wyłączony.
+Każda zainstalowana gra ma własny przełącznik, który jest włączony, chyba że go wyłączysz: **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** i **Rock-Paper-Scissors**. Zobacz [Wybierz, których komend może używać postać](getting-started.md#choose-which-commands-a-character-can-use).
+
+Te przełączniki kontrolują tylko to, co robią postacie. Komenda slash gry i fraza "let's play" działają nawet wtedy, gdy przełącznik jest wyłączony.
 
 ## Powiązane przewodniki
 

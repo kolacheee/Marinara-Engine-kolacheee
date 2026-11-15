@@ -42,7 +42,7 @@ Chat Settingsは、チャットを作成すると自動で開きます。閉じ�
 - **Agent activity**(エージェントの動作): エージェントが行ったことを表示します。トラッカーの再実行、エージェントの再試行や停止、トラッカーの消去ができます。[エージェントの動作](../roleplay/getting-started.md#agent-activity)を参照してください。(Roleplayで、エージェントまたはAdvanced Memoryがオンの場合)
 - **Author's Notes**(作者ノート): モデルが毎ターン読むメモです。[Author's Notes](../roleplay/getting-started.md#authors-notes)を参照してください。(Roleplay)
 - **Background**(背景): チャットの背景画像です。(Roleplay、Game)
-- **Gallery**(ギャラリー): チャットの画像と動画です。[シーン背景とギャラリー](../media/scene-backgrounds.md)を参照してください。
+- **Gallery**: チャットの画像と動画です。[チャットのギャラリー](chat-gallery.md)を参照してください。
 - **Widgets**(ウィジェット): ゲームに表示するHUDウィジェットを選びます。(Game)
 - **Impersonate**: `/impersonate`コマンドの設定です。(Roleplay)
 - **Memory Recall**(記憶の呼び出し): チャットの以前の部分を思い出します。[Memory Recallとチャットの要約](../agents/memory.md)を参照してください。(Lite版にはありません)
@@ -78,8 +78,6 @@ Conversationのチャットには、Autonomous Messaging(キャラクターか�
 
 変数が多いときは、**Search and edit all in the State Editor**(State Editorですべて検索・編集)をクリックします。すべての変数が一覧で表示され、検索、編集、JSONでのまとめて貼り付け、保存前の変更の確認ができます。[State Editor](../roleplay/hud-and-trackers.md#the-state-editor)を参照してください。ほかの二重波括弧のマクロについては、[プロンプトマクロ](../prompts/macros.md)を参照してください。
 
-<a id="settings-profiles"></a>
-
 ## 設定プロファイル
 
 設定プロファイルとは、チャットの設定をまとめて保存し、ほかのチャットに適用できるようにしたものです。プロファイルのバーはパネルの上部にあり、Gameでは表示されません。保存、適用、インポート、エクスポート、デフォルトの選択については、[設定プロファイル](settings-profiles.md)で説明しています。
@@ -100,14 +98,12 @@ Conversationのチャットには、Autonomous Messaging(キャラクターか�
 
 これらのボタンはタイトルバーにあります。
 
-- **Help**(ヘルプ、**?**)は、チャットの操作を説明するラベルを表示します。スマートフォンでは、先にChat Settingsを閉じます。非表示にするには、**Settings → General → App Behavior → Hide chat Help button**(設定 → 一般 → アプリの動作 → チャットのHelpボタンを隠す)をオンにします。
+- **Help**(ヘルプ、**?**)は、チャットの操作を説明するラベルを表示します。スマートフォンでは、先にChat Settingsを閉じます。非表示にするには、**Settings → General → Confirmations & Help → Hide chat Help button**(設定 → 一般 → 確認とヘルプ → チャットのHelpボタンを隠す)をオンにします。
 - **Reset View**(表示をリセット、円形の矢印)は、確認を求めたうえで、このチャットの初期レイアウトを復元します。切り離したセクションが戻り、ウィンドウのサイズ、位置、ピン留め、ロックがリセットされます。
 - **Favorite layout**(お気に入りレイアウト、星)は、この配置を新しいチャット用に保存します。[新しいチャットのレイアウトを選ぶ](#choosing-a-layout-for-new-chats)を参照してください。
-- **Tracker Panel**(トラッカーパネル、サイコロ)は、エージェントまたはAdvanced Memoryを使うRoleplayチャットで、パネルのオンとオフを切り替えます。コンピューターでは、チャットの横に開きます。スマートフォンやタブレットでは、移動できるボタンで開きます。**Settings → Appearance**(設定 → 外観)のTracker Panelの設定も変わります。
+- **Tracker Panel**(トラッカーパネル、サイコロ)は、エージェントまたはAdvanced Memoryを使うRoleplayチャットで、パネルのオンとオフを切り替えます。コンピューターでは、チャットの横に開きます。スマートフォンやタブレットでは、移動できるボタンで開きます。**Settings → Roleplay → Tracker Panel**(設定 → Roleplay → トラッカーパネル)の設定も変わります。
 
 Tracker Panelを表示していない場合、コンピューターのトラッカーは[Trackersウィンドウ](../roleplay/hud-and-trackers.md#the-trackers-window)を使います。メッセージの横に十分な空きがなければ、小さな**Trackers**ボタンとして始まります。Tracker Panelを再び表示するには、サイコロを使ってください。
-
-<a id="popping-a-section-out-into-its-own-window"></a>
 
 ## セクションを独立したウィンドウに切り離す
 
@@ -121,15 +117,11 @@ Tracker Panelを表示していない場合、コンピューターのトラッ�
 
 スマートフォンでは、切り離すとChat Settingsが閉じ、そのセクションが3点アイコンの**Chat tools**(チャットツール)メニューに追加されます。3点アイコンをタップしてから、セクションの丸いアイコンをタップしてください。戻すには**Put back in Chat Settings**をタップします。
 
-<a id="the-phones-chat-tools-menu"></a>
-
 ## スマートフォンのChat toolsメニュー
 
 移動できる3点ボタンには、Chat Settingsから取り出したツールがまとまっています。タップすると丸いアイコンボタンが展開されるので、ツールをタップします。3点ボタンをもう一度タップすると折りたたまれます。トラッカーのボタン、GameのMapボタン、Character Profilesは別に表示されます。
 
 3点ボタンをドラッグすると、メニューを移動できます。メニューを開き、上部のロックを使うと位置を固定できます。ロックしていない間は、ツールを上下にドラッグするか、フォーカスを移して矢印キーを使うと、順番を変えられます。ロックすると、移動と並べ替えの両方ができなくなります。メニューは、チャットウィジェットのスタイルに従います。
-
-<a id="control-windows-and-their-buttons"></a>
 
 ## 操作ウィンドウとボタン
 
@@ -144,8 +136,6 @@ Tracker Panelを表示していない場合、コンピューターのトラッ�
 ## チャットごとに保存されるウィンドウレイアウト
 
 ウィンドウのサイズと位置、ピン留め、ロック、切り離したセクション、ボタンの位置は、チャットごとに記憶されます。スマートフォンの位置と、Chat toolsの順番およびロックは、コンピューターの位置とは別に保存されます。[設定プロファイル](settings-profiles.md)にレイアウトを保存すると、ほかのチャットでも使えます。
-
-<a id="choosing-a-layout-for-new-chats"></a>
 
 ## 新しいチャットのレイアウトを選ぶ
 
@@ -165,7 +155,7 @@ Tracker Panelを表示していない場合、コンピューターのトラッ�
 
 ## チャットウィンドウの外観を変える
 
-**Settings → Appearance → App**(設定 → 外観 → アプリ)を開き、**App Style**(アプリのスタイル)の下部にある**Chat widget style**(チャットウィジェットのスタイル)までスクロールします。**Default**(デフォルト)は、Marinaraの外観を保ちます。**Dottore**は、氷のような青、淡い金属色、切り落とした角を使います。**Prof. Mari**は、宝石のような青、温かみのある金色、アーチ状の枠を使います。どちらもライトモードとダークモードに対応し、3つのチャットモードすべてで、移動できるボタン、ウィンドウ、セクションに適用されます。
+**Settings → Appearance → Chat Buttons & Windows**(設定 → 外観 → チャットのボタンとウィンドウ)を開き、**Chat widget style**(チャットウィジェットのスタイル)を探します。**Default**(デフォルト)は、Marinaraの外観を保ちます。**Dottore**は、氷のような青、淡い金属色、切り落とした角を使います。**Prof. Mari**は、宝石のような青、温かみのある金色、アーチ状の枠を使います。どちらもライトモードとダークモードに対応し、3つのチャットモードすべてで、移動できるボタン、ウィンドウ、セクションに適用されます。
 
 - プリセットの下の**Font**(フォント)、**Shape**(形)、3つのカラーピッカーで外観を組み合わせられます。Marinaraにインストールしたフォントも、フォントの一覧に表示されます。プリセットを選び直すと、フォント、形、独自の色がリセットされます。
 - **Button size (px)**(ボタンのサイズ、px)は、移動できるチャットボタンのサイズを32から96までの範囲で設定します。欄を空にすると、デフォルトのままになります。

@@ -9,8 +9,8 @@ Avant de commencer : il te faut une clé API (un code secret, un peu comme un mo
 1. Installe Marinara Engine et ouvre l'application dans ton navigateur. Choisis ta plateforme dans [Installation de Marinara Engine](../INSTALLATION.md).
 2. Ajoute un compte. Un compte, c'est une clé API pour un service d'IA. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 3. Choisis les modèles que le compte doit utiliser. Le même guide explique comment.
-4. Crée ou importe un personnage. Ouvre le panneau **Characters** (personnages), puis clique sur **New** (nouveau) pour ouvrir la fenêtre **Create Character** (créer un personnage), ou sur **Import** (importer) pour récupérer une fiche depuis un fichier. Voir [Créer et modifier des personnages](../characters/creating-and-editing-characters.md).
-5. Ouvre la barre latérale des chats avec le bouton de barre latérale. Ses onglets s'appellent **CONVO**, **RP** et **GM**. Choisis-en un, puis clique sur le bouton **+**. Il s'appelle **New Conversation**, **New Roleplay** ou **New Game**, selon l'onglet.
+4. Crée ou importe un personnage. Ouvre **Library → Characters** (Bibliothèque → Personnages) en cliquant sur **Library** en haut à droite, puis clique sur **New character** (nouveau personnage), ou sur **Import** (importer) pour récupérer une fiche depuis un fichier. Voir [Créer et modifier des personnages](../characters/creating-and-editing-characters.md).
+5. Clique sur **Conversation**, **Roleplay** ou **Game** sur l'accueil. Tu peux aussi ouvrir tes chats : clique sur **Bibliothèque** en haut à droite, choisis **Chats** en haut de la barre latérale, puis l'onglet **Convo**, **Roleplay** ou **Game**, et clique sur **Nouveau**.
 6. Suis la fenêtre de configuration qui s'ouvre, puis clique sur **Create Chat** (créer le chat).
 
 Ce que tu vois : le nouveau chat s'ouvre, et tu peux écrire ton premier message.
@@ -21,15 +21,22 @@ Marinara n'inclut pas d'IA en ligne. La plupart des gens se connectent à un ser
 
 À la première ouverture de Marinara, une courte visite guidée démarre. Voir [Le tutoriel de première ouverture](tutorial.md). Tu bloques sur une étape ? Demande à Professor Mari, l'assistante intégrée : [Professor Mari, ton assistante intégrée](professor-mari.md).
 
+## Trouver ton chemin
+
+Marinara a deux emplacements fixes, qui restent à leur place quel que soit le thème utilisé :
+
+- **La barre supérieure.** À gauche, **Accueil** et un onglet pour chaque chat, personnage ou page que tu ouvres. À droite, le bouton de recherche (ou <kbd>Ctrl</kbd>+<kbd>K</kbd>, <kbd>⌘</kbd>+<kbd>K</kbd> sur un Mac) trouve ou ouvre n'importe quoi : un chat, un personnage, un réglage, un guide ou une question pour Professor Mari. À côté se trouvent **Réglages du chat** quand un chat est ouvert, **Documentation** pour ces guides, et **Bibliothèque**, qui affiche ou masque la barre latérale.
+- **La barre latérale** à droite, avec un sélecteur **Chats | Bibliothèque** en haut. **Chats** liste tes chats sous les onglets **Convo**, **Roleplay** et **Game** (voir [Gérer ta liste de chats](../chats/managing-chats.md)). **Bibliothèque** liste **Personnages**, **Personas**, **Lorebooks**, **Presets**, **Scripts regex**, **Connexions**, **Agents** et **Outils personnalisés**, puis **Paramètres** et **Extensions**. Choisis-en un pour ouvrir sa page au milieu.
+
+Sur un ordinateur, tu peux aussi afficher deux pages côte à côte. Voir [Vue partagée](tabs-and-drafts.md#split-view-two-pages-at-once).
+
+Sur un téléphone ou une tablette, **Accueil** se trouve en haut à gauche et **Bibliothèque** (le bouton en forme de pile) en haut à droite. Bibliothèque fait glisser la barre latérale par-dessus la page, avec le même sélecteur **Chats | Bibliothèque** ; sa vue Bibliothèque contient **Paramètres**, **Documentation** et **Tous les onglets** en bas. Touche le titre dans la barre supérieure pour effectuer une recherche, et le bouton numéroté pour voir tes onglets ouverts. Voir [Onglets, vue partagée et modifications non enregistrées](tabs-and-drafts.md) et [Gestes tactiles](../chats/messages.md#touch-gestures).
+
 ## L'écran d'accueil en un coup d'œil
 
-L'écran d'accueil s'affiche quand aucun chat n'est ouvert. Il ressemble à un navigateur web : des onglets et des marque-pages en haut, des widgets en dessous.
+L'accueil s'affiche quand aucun chat n'est ouvert. En haut se trouvent un message de bienvenue, le numéro de version et les boutons **Conversation**, **Roleplay** et **Game**, qui lancent chacun un nouveau chat dans ce mode. Si aucun modèle n'est encore configuré, **Connect a model to start chatting** (connecter un modèle pour commencer à discuter) ouvre la page Connections. **Professor** ouvre Professor Mari dans son propre onglet, une application installée (comme Story Writer) ajoute aussi un bouton ici, et **Widgets** organise les cartes en dessous.
 
-- **Onglets.** **Home** (accueil) est la page principale. **Professor** ouvre Professor Mari. Certains agents installés ajoutent leur propre onglet.
-- **Barre de recherche.** Sur ordinateur, clique sur la barre sous les onglets, ou appuie sur <kbd>Ctrl</kbd>+<kbd>K</kbd> (<kbd>⌘</kbd>+<kbd>K</kbd> sur un Mac), pour trouver des chats, des personnages, des réglages et plus encore. Les téléphones, les tablettes et les fenêtres étroites n'affichent pas cette barre.
-- **Marque-pages.** Des liens rapides vers **Discord**, **Support**, **Credits**, **Documentation**, **Tutorial**, **FAQ**, **Achievements** (succès) et **Widgets**. **Achievements** n'apparaît que si le réglage Achievements est activé. Les marque-pages ne s'affichent que sur l'onglet **Home**. Sur un téléphone, une tablette ou une fenêtre étroite, touche le bouton des marque-pages, **Open bookmarks** (ouvrir les marque-pages), à gauche des onglets pour les voir sous forme de liste.
-
-Au milieu, tu vois le logo, la mention **Marinara Engine** et le numéro de version. En dessous, les boutons **Conversation**, **Roleplay** et **Game** lancent chacun un nouveau chat dans ce mode.
+Dans la disposition classique (désactivée sous **Settings → Appearance → Theme → New layout** (Paramètres → Apparence → Thème → Nouvelle disposition)), l'accueil ressemble plutôt à un navigateur web, avec des onglets, une barre de recherche et des marque-pages pour **Discord**, **Support**, **Credits**, **Documentation**, **Tutorial**, **FAQ**, **Achievements** et **Widgets**.
 
 <a id="choose-a-chat-mode"></a>
 
@@ -47,11 +54,11 @@ Tu choisis un mode quand tu lances un chat.
 
 Les widgets sont de petites cartes que tu peux afficher, masquer et déplacer.
 
-1. Clique sur **Widgets** dans les marque-pages. La fenêtre **Home Widgets** (widgets de l'accueil) s'ouvre. Elle liste les widgets sous **Built-in** (intégrés), **Agents** et **Personal** (personnels).
+1. Clique sur **Widgets** sur l'accueil. La fenêtre **Home Widgets** (widgets de l'accueil) s'ouvre. Elle liste les widgets sous **Built-in** (intégrés), **Agents** et **Personal** (personnels).
 2. Clique sur le bouton en forme d'œil à côté d'un widget pour l'afficher ou le masquer. Un widget que tu affiches de nouveau prend la première place libre de l'accueil.
 3. Pour déplacer un widget, fais glisser la poignée dans son coin supérieur droit. Sur ordinateur, la poignée apparaît quand tu pointes sur le widget.
 
-Ta disposition est enregistrée dans ce navigateur. Les widgets personnels ont aussi des boutons pour les modifier ou les supprimer. En bas de la fenêtre, **Browser chrome** (habillage du navigateur) propose un seul interrupteur : **Show URL bar** (afficher la barre d'URL) affiche ou masque la barre de recherche sur ordinateur.
+Ta disposition est enregistrée dans ce navigateur. Les widgets personnels ont aussi des boutons pour les modifier ou les supprimer. Dans la disposition classique, **Browser chrome** (habillage du navigateur), en bas de la fenêtre, propose un seul interrupteur : **Show URL bar** (afficher la barre d'URL) affiche ou masque la barre de recherche de l'accueil sur un ordinateur.
 
 Professor Mari peut te créer un widget personnel si tu le lui demandes. Les agents installés peuvent aussi ajouter des widgets.
 
@@ -73,9 +80,9 @@ Professor Mari peut te créer un widget personnel si tu le lui demandes. Les age
 ## Où trouver de l'aide
 
 - Pose tes questions à Professor Mari sur l'écran d'accueil.
-- Ouvre le marque-page **FAQ** pour des réponses rapides.
-- Ouvre le marque-page **Documentation** pour les guides intégrés.
-- Clique sur **Discord** pour rejoindre la communauté, ou sur **Support** pour soutenir le projet.
+- Clique sur **Read FAQ** dans le widget **Learn the engine** pour des réponses rapides.
+- Clique sur **Docs** dans la barre supérieure pour ouvrir les guides intégrés.
+- Clique sur **Discord** dans le widget **Community** pour rejoindre la communauté, ou sur **Support** pour soutenir le projet.
 
 Si quelque chose est cassé, voir [Résoudre les problèmes de Marinara Engine](../TROUBLESHOOTING.md).
 
@@ -85,4 +92,5 @@ Si quelque chose est cassé, voir [Résoudre les problèmes de Marinara Engine](
 - [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md)
 - [Créer et modifier des personnages](../characters/creating-and-editing-characters.md)
 - [Le tutoriel de première ouverture](tutorial.md)
+- [Onglets, vue partagée et modifications non enregistrées](tabs-and-drafts.md)
 - [Professor Mari, ton assistante intégrée](professor-mari.md)

@@ -6,13 +6,13 @@
 
 API 키는 서비스가 발급하는 비밀 코드로, Marinara가 내 계정을 쓸 수 있게 해 줍니다. 각 서비스의 웹 주소는 Marinara가 채워 주므로 직접 입력할 일은 거의 없습니다.
 
-1. 상단 바에서 **Connections**(연결)를 클릭한 다음 **Add**(추가)를 클릭하세요. **Add account**(계정 추가) 창이 열립니다.
-2. 서비스를 찾으세요. 목록에 **Images & video**(이미지 및 동영상) 섹션이 있으며, **Search providers**(제공자 검색)를 쓰면 찾기 쉽습니다.
+1. **Library → Connections**(라이브러리 → 연결)를 열고 **Add connection**(연결 추가)을 클릭하세요. 서비스 목록이 열립니다.
+2. **Image**(이미지) 탭을 열고 서비스를 찾으세요. **Search services**(서비스 검색)를 쓰면 찾기 쉽습니다.
 3. **API key**(API 키) 입력란에 키를 붙여넣으세요. 무료 서비스와 로컬 서비스는 키가 필요 없습니다. 직접 실행하는 서버라면 주소 입력란을 채우세요.
 4. **Connect**(연결)를 클릭하세요. Marinara가 계정을 테스트합니다.
 5. 목록에서 이미지 모델을 고르거나 모델 ID를 입력하세요. 이것이 내 이미지 모델입니다. 이 모델은 **Connections** 패널에서 계정 아래에 표시됩니다.
 6. 이미지 모델을 열고 **Test image**(이미지 테스트)를 클릭하세요. Marinara가 작은 시험용 그림을 만듭니다.
-7. 앱이 그림을 만들 때 이 모델을 쓰게 하려면 **Connections** 패널 위쪽 **Defaults**(기본값)에서 **Images**(이미지) 작업을 설정하세요.
+7. 5단계에서 **Images**를 체크하면 **Connections** 패널 위쪽 **Defaults**(기본값)의 **Images** 작업도 설정됩니다. 나중에 바꾸려면 **Images** 행을 클릭하세요.
 
 계정에 이미지 모델을 하나 더 추가하려면 그 계정의 **⋯** 메뉴를 열고 **Add image model**(이미지 모델 추가)을 클릭하세요. 창 전체에 대한 설명은 [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
 
@@ -220,7 +220,7 @@ NovelAI 정밀 참조는 `nai-diffusion-4-5-full` 같은 V4.5 모델에서만 �
 
 ## 미디어 생성 요청을 순서대로 처리하기
 
-**Queue media generation requests**(미디어 생성 요청 대기열 사용) 토글은 **Settings → Generations → Overall Generations**(설정 → 생성 → 전체 생성)에 있습니다. 기본값은 켜짐입니다.
+**Queue media generation requests**(미디어 생성 요청 대기열 사용) 토글은 **Settings → Media → Generation Defaults**(설정 → 미디어 → 생성 기본값)에 있습니다. 기본값은 켜짐입니다.
 
 켜져 있으면 Marinara는 이미지 작업은 이미지 계정마다, 동영상 작업은 동영상 계정마다 별도의 대기열에서 하나씩 순서대로 보냅니다. 같은 계정의 이미지와 동영상은 함께 실행될 수 있습니다. 이미지나 동영상을 요청하는 모든 기능에 적용되며, Illustrator, 트래커, 명령, Gallery, Game 에셋, Slurp 같은 다운로드한 에이전트가 모두 여기에 해당합니다. 주소와 API 키가 같은 모델 두 개는 대기열을 공유합니다. 서로 다른 계정은 여전히 동시에 실행됩니다. NovelAI는 작업 사이에 짧게 쉬기도 하며, NovelAI가 바쁘다고 응답하면 Marinara는 기다렸다가 두 번 더 시도합니다.
 
@@ -231,6 +231,6 @@ NovelAI 정밀 참조는 `nai-diffusion-4-5-full` 같은 V4.5 모델에서만 �
 - [ComfyUI 워크플로 설정](comfyui.md)
 - [Illustrator 에이전트](illustrator-agent.md)
 - [이미지 스타일 프로필](style-profiles.md)
-- [장면 배경과 Gallery](scene-backgrounds.md)
+- [Illustrator가 만드는 배경](scene-backgrounds.md)
 - [셀카](../conversation/selfies.md)
 - [지원하는 AI 제공자](../connections/providers-reference.md)

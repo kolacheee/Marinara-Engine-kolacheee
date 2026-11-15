@@ -10,9 +10,9 @@ Fehlt die Karte **Built-in model**, hast du eine „Lite“-Installation, eine a
 
 Bevor du anfängst, stell sicher, dass du genug freien Speicherplatz und Arbeitsspeicher (RAM) für das Modell hast. Die Größen stehen in der Tabelle unten.
 
-1. Klick in der oberen Leiste auf **Connections** (Verbindungen).
-2. Such unter dem Bereich **Jobs** (Aufgaben) die Karte **Built-in model**. Sie zeigt **Not downloaded**.
-3. Klick auf die Karte oder auf ihre Schaltfläche **Download** (Herunterladen). Ein Fenster mit dem Titel **Built-in model** öffnet sich.
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen).
+2. Such unter **On this device** (auf diesem Gerät) nach **Built-in model**. Es zeigt **Not downloaded**.
+3. Klick auf die Zeile oder auf **Set up** (Einrichten). Ein Fenster mit dem Titel **Built-in model** öffnet sich.
 4. Wähl unter **Which model?** ein Modell. **Gemma 4 E2B — Q8 (Best Quality)** trägt die Kennzeichnung **Recommended** (empfohlen). Hat dein Rechner wenig Arbeitsspeicher, wähl **Q4_K_M**. Es braucht rund 3,4 GB RAM statt 5,4 GB.
 5. Klick unten auf die Schaltfläche **Download**. Sie zeigt die Modellgröße, zum Beispiel **Download 5.0 GB**.
 6. Warte. Das Fenster zeigt drei Schritte: **Install runtime**, **Download model** und **Start and test**. Eine Runtime ist das Programm, das das Modell ausführt. Fehlt sie, installiert Marinara sie zuerst.
@@ -27,7 +27,7 @@ Wenn es nicht funktioniert hat:
 - **Local runtime failed to start.** Siehe [Fehlerbehebung](#troubleshooting).
 - **Download failed.** Das Fenster zeigt den Fehler. Prüf deine Internetverbindung und den freien Speicherplatz und klick dann erneut auf die Download-Schaltfläche.
 
-Du erreichst dieses Fenster auch über **Add** (Hinzufügen) im Panel **Connections**, unter **Built-in model** im Fenster **Add account** (Konto hinzufügen).
+Du erreichst dieses Fenster auch über die Verbindungsseite: **Integriertes Modell** steht unter **Auf diesem Gerät**.
 
 ### Kuratierte Presets
 
@@ -67,7 +67,7 @@ Auf Apple Silicon heißt **Find files** stattdessen **Validate repo**, und das R
 | **Use for tracker agents (roleplay)** | Hält das Modell für Tracker-Agenten am Laufen. Standardmäßig aus. |
 | **Use for game scene analysis** | Hält es für Szeneneffekte im Game Mode wie Hintergründe, Musik und Wetter am Laufen. Standardmäßig an. |
 | **Use the built-in model for all tracker agents** | Richtet alle eingebauten Tracker-Agenten auf dieses Modell aus. Die Agenten selbst schaltet es nicht ein. |
-| **Change in Defaults** | Öffnet den Bereich **Jobs**, in dem du dem Modell weitere Aufgaben geben kannst. |
+| **Change in Defaults** | Öffnet den Bereich **Defaults** (Standardwerte), in dem du dem Modell weitere Aufgaben geben kannst. |
 
 Sind beide Schalter aus, startet das Modell nicht von selbst. Es startet, sobald du einen davon einschaltest oder ein Chat oder eine Aufgabe es nutzt. Wie du Agenten aktivierst, steht unter [Memory Recall und Chat-Zusammenfassungen](../agents/memory.md).
 
@@ -138,16 +138,16 @@ Manche Einstellungen unterscheiden sich je nach System:
 
 Das Installieren oder Neuinstallieren der Runtime ist eine geschützte Aktion. Bei Ein-Klick-Installationen unter Windows ist sie bereits erlaubt. Unter macOS, Linux und Docker erledigst du einen dieser Schritte und versuchst es dann erneut:
 
-- Gib das Admin-Secret unter **Settings → Advanced → Admin Access** (Einstellungen → Erweitert → Admin-Zugriff) ein. Das Admin-Secret ist ein zweites Passwort für riskante Aktionen. Du erstellst es unter **Admin Access** auf dem Server-Rechner selbst oder legst es in der `.env`-Datei des Servers als `ADMIN_SECRET` fest. Siehe [Admin Access](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+- Gib das Admin-Secret unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) ein. Das Admin-Secret ist ein zweites Passwort für riskante Aktionen. Du erstellst es unter **Settings → Advanced → Security** auf dem Server-Rechner selbst oder legst es in der `.env`-Datei des Servers als `ADMIN_SECRET` fest. Siehe [Das Admin-Secret](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 - Ergänze `SIDECAR_RUNTIME_INSTALL_ENABLED=true` in der `.env`-Datei des Servers und starte Marinara dann neu. Die `.env`-Datei ist eine Textdatei im Marinara-Ordner. Siehe [Die Datei .env bearbeiten](../CONFIGURATION.md#edit-the-env-file).
 
 Marinara lädt nur die llama.cpp-, MLX- und uv-Versionen herunter, die für deine Version freigegeben sind, und prüft Größe und SHA-256-Prüfsumme jeder Datei, bevor es etwas ausführt.
 
 ## Lokales Sprachmodell
 
-Das **Local speech model** (lokales Sprachmodell) wandelt für Conversation-Anrufe deine Stimme auf deinem eigenen Rechner in Text um. Es ist ein Whisper-Modell, also ein Speech-to-Text-Modell. Es braucht das Agentenpaket **Calls**, das du unter **Agents → Agent Organizer** installierst.
+Das **Local speech model** (lokales Sprachmodell) wandelt für Conversation-Anrufe deine Stimme auf deinem eigenen Rechner in Text um. Es ist ein Whisper-Modell, also ein Speech-to-Text-Modell. Es braucht das Agentenpaket **Calls**, das du unter **Library → Agents** (Bibliothek → Agenten) installierst.
 
-1. Öffne das Panel **Connections** und klick unter **On this device** (auf diesem Gerät) auf den Eintrag **Speech to text** (Spracherkennung).
+1. Öffne das Panel **Verbindungen** und klick in der Karte **Auf diesem Gerät** auf **Lokales Sprachmodell**.
 2. Wähl unter **Local speech model** ein Modell im Dropdown-Menü.
 3. Klick auf **Download Whisper**.
 4. Warte auf **Ready**. Starte Marinara vollständig neu, bevor du Calls nutzt.

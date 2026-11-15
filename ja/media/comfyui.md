@@ -14,8 +14,8 @@ ComfyUIを家庭内ネットワークの別のコンピューターで動かし�
 
 ## Marinaraの接続を作る
 
-1. **Connections**(接続)をクリックし、**Add**(追加)をクリックします。**Add account**(アカウントの追加)ウィンドウの**Images & video**(画像と動画)で、ローカルサーバーなら**ComfyUI**、RunPodのエンドポイントなら**RunPod Serverless (ComfyUI)**を選びます。
-2. ローカルのComfyUIでは、そのアドレス(`http://127.0.0.1:8188`)を入力します。ComfyUIの手前にあるプロキシがキーを求める場合を除き、APIキーは不要です([認証付きプロキシを使う](#use-an-authenticated-proxy)を参照)。**ComfyUI workflow (optional)**(ComfyUIワークフロー、任意)欄が空のときは、Marinaraが内蔵の基本的なtext-to-imageワークフローを使います。
+1. **Library → Connections**(ライブラリー → 接続)を開き、**Add connection**(接続を追加)をクリックします。**Image**(画像)タブで、ローカルサーバーなら**ComfyUI**、RunPodのエンドポイントなら**RunPod Serverless (ComfyUI)**を選びます。
+2. ローカルのComfyUIでは、そのアドレス(`http://127.0.0.1:8188`)を入力します。ComfyUIの手前にあるプロキシが要求する場合を除き、APIキーは不要です([認証付きプロキシを使う](#use-an-authenticated-proxy)を参照)。**ComfyUI workflow (optional)**(ComfyUIワークフロー、任意)欄が空のときは、Marinaraが内蔵の基本的なtext-to-imageワークフローを使います。
 3. RunPodでは、APIキーと**RunPod endpoint ID**(RunPodのエンドポイントID)を入力します。カスタムワークフローが必須です。
 4. 画像モデルで**Local image defaults**(ローカル画像のデフォルト設定)を設定します。ここで指定した値が、ワークフロー内の対応するプレースホルダーに入ります。
 5. ワークフローを貼り付けて保存し、**Test image**(画像をテスト)をクリックします。

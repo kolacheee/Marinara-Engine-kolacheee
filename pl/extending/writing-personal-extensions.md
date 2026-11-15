@@ -6,9 +6,9 @@ Kod, który samodzielnie napiszesz i zaimportujesz, jest traktowany jako **Exter
 
 ## Zanim zaczniesz
 
-External Extensions są ukryte, dopóki nie wykonasz obu kroków zabezpieczających z sekcji [Zezwalanie na import od osób trzecich](personal-extensions.md#allow-third-party-imports): `ENABLE_EXTERNAL_EXTENSIONS=true` w pliku `.env` oraz przełącznik **Allow third-party extension imports** (zezwolenie na import rozszerzeń od osób trzecich) w **Settings → Advanced → Danger Zone** (ustawienia, zaawansowane, strefa zagrożenia).
+External Extensions są ukryte, dopóki nie wykonasz obu kroków zabezpieczających z sekcji [Zezwalanie na import od osób trzecich](personal-extensions.md#allow-third-party-imports): `ENABLE_EXTERNAL_EXTENSIONS=true` w pliku `.env` oraz przełącznik **Allow third-party extension imports** (zezwolenie na import rozszerzeń od osób trzecich) w **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 
-Importowanie rozszerzeń i zarządzanie nimi wymaga także dostępu przez localhost albo sekretu administratora. Jeśli korzystasz z telefonu, adresu LAN lub zdalnej przeglądarki, ustaw `ADMIN_SECRET` na serwerze i wpisz tę samą wartość w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny).
+Importowanie rozszerzeń i zarządzanie nimi wymaga także dostępu przez localhost albo sekretu administratora. Jeśli korzystasz z telefonu, adresu LAN lub zdalnej przeglądarki, ustaw `ADMIN_SECRET` na serwerze i wpisz tę samą wartość w **Ustawienia → Zaawansowane → Bezpieczeństwo**.
 
 Wybierz środowisko o najmniejszych uprawnieniach, które wystarczy do wykonania zadania:
 
@@ -94,7 +94,7 @@ Użyj następującego pliku `extension.css`, aby nadać styl ograniczonemu oknu 
 
 Następnie zaimportuj i uruchom rozszerzenie:
 
-1. Otwórz **Settings → Addons → External Extensions** (ustawienia, dodatki, rozszerzenia zewnętrzne).
+1. Otwórz **Biblioteka → Rozszerzenia → Rozszerzenia zewnętrzne**.
 2. Wybierz **Import Extension Folder** (import folderu rozszerzenia) i wskaż folder `Hello Panel` albo spakuj folder do archiwum ZIP i zaimportuj je przyciskiem **Import Extension File** (import pliku rozszerzenia).
 3. Otwórz wyłączoną wersję roboczą i sprawdź jej manifest oraz kod JavaScript.
 4. Wybierz **Review and Run** (przegląd i uruchomienie) i zatwierdź dokładnie wyświetlony skrót.
@@ -144,8 +144,6 @@ Zadeklaruj opcjonalny dostęp do rekordów w `config.capabilities`:
 
 Zmiana możliwości zmienia skrót kodu wykonywalnego, wyłącza rozszerzenie i wymaga ponownego sprawdzenia.
 
-<a id="what-a-browser-extension-can-do"></a>
-
 ### Co może zrobić Browser Extension
 
 Browser Extension działa w osobnym wątku Worker wewnątrz ramki iframe z piaskownicą i nieprzezroczystym pochodzeniem. Nie ma dostępu do strony aplikacji Marinara, drzewa DOM, ciasteczek, pamięci przeglądarki, interfejsów API danego pochodzenia ani do sieci. Ma do dyspozycji prywatną pamięć rozszerzenia, logi, zarządzane timery, rejestrację sprzątania, ograniczone okna, bezpieczne miejsca na wkład w interfejs hosta oraz migawkę aktywnego czatu i identyfikatorów postaci tylko do odczytu. Wybrane pola z kart aktywnych postaci albo z wybranej persony trafiają do rozszerzenia dopiero wtedy, gdy odpowiednie uprawnienia są zadeklarowane i zatwierdzone.
@@ -163,8 +161,6 @@ const tokens = marinara.estimateTextTokens(text);
 ```
 
 Sygnatura funkcji to `estimateTextTokens(text: string): number`. Opisuje ją również typ `PersonalExtensionTokenApi` eksportowany z `@marinara-engine/shared`. Wywołanie jest synchroniczne, nie wymaga dodatkowej możliwości i zwraca niezależny od modelu szacunek liczby tokenów używany przez aplikację Marinara Engine, a nie dokładny wynik tokenizera. W starszych wersjach Engine przed wywołaniem sprawdź `typeof marinara.estimateTextTokens === "function"`.
-
-<a id="add-a-marinara-rendered-panel"></a>
 
 ### Dodanie panelu renderowanego przez aplikację Marinara
 
@@ -206,7 +202,7 @@ const panel = marinara.ui.registerContribution({
 marinara.onCleanup(() => panel.remove());
 ```
 
-Wartość `kind: "button"` daje zwięzłą akcję, a `kind: "menu-item"` – akcję w menu Extensions. Wartość `kind: "command"` tworzy wpis w oknie Command Center, który uruchamia istniejący wkład z tej samej wersji rozszerzenia. Wkład `command` wymaga `targetContributionId` i nie może używać `onActivate` ani `onEvent`.
+Wartość `kind: "button"` daje zwięzłą akcję, a `kind: "menu-item"` – akcję w menu Extensions. Wartość `kind: "command"` tworzy wpis w oknie Command Center, który uruchamia istniejący wkład z tej samej wersji rozszerzenia. Wkład command wymaga `targetContributionId` i nie może używać `onActivate` ani `onEvent`.
 
 ```js
 marinara.ui.registerContribution({
@@ -217,7 +213,7 @@ marinara.ui.registerContribution({
 });
 ```
 
-Host rozwiązuje wkład `command` tylko wtedy, gdy cel ma ten sam identyfikator rozszerzenia i ten sam skrót treści. Brakujący cel, cel z innego rozszerzenia i cel z nieaktualnej wersji kończą się odmową. Przyciski domyślnie używają `surface: "top-bar"`. Mogą też wskazywać `chats`, `bots`, `characters`, `personas`, `lorebooks`, `presets`, `connections`, `agents` lub `settings`, z polem `position` ustawionym na `header`, `before-content` albo `after-content`. Pole `icon` przyjmuje każdą obsługiwaną przez aplikację Marinara Engine nazwę ikony Lucide w formacie kebab-case. Oba rodzaje akcji wywołują `onActivate`. Rodzaj `panel` wywołuje `onActivate` przy otwarciu, a jego przyciski wywołują `onEvent` z bieżącymi wartościami wszystkich kontrolek panelu. Zwrócony uchwyt obsługuje aktualizacje zależne od rodzaju: `button` przyjmuje `label`, `description`, `icon`, `surface` i `position`; `menu-item` – `label`, `description` i `icon`; `panel` – `label`, `description`, `icon` i `elements`. Wszystkie uchwyty obsługują `remove()`. Identyfikatory mogą zawierać litery, cyfry oraz `.`, `_` i `-`.
+Host rozwiązuje wkład command tylko wtedy, gdy cel ma ten sam identyfikator rozszerzenia i ten sam skrót treści. Brakujący cel, cel z innego rozszerzenia i cel z nieaktualnej wersji kończą się odmową. Przyciski domyślnie używają `surface: "top-bar"`. Mogą też wskazywać `chats`, `bots`, `characters`, `personas`, `lorebooks`, `presets`, `connections`, `agents` lub `settings`, z polem `position` ustawionym na `header`, `before-content` albo `after-content`. Pole `icon` przyjmuje każdą obsługiwaną przez aplikację Marinara Engine nazwę ikony Lucide w formacie kebab-case. Oba rodzaje akcji wywołują `onActivate`. Rodzaj `panel` wywołuje `onActivate` przy otwarciu, a jego przyciski wywołują `onEvent` z bieżącymi wartościami wszystkich kontrolek panelu. Zwrócony uchwyt obsługuje aktualizacje zależne od rodzaju: `button` przyjmuje `label`, `description`, `icon`, `surface` i `position`; `menu-item` – `label`, `description` i `icon`; `panel` – `label`, `description`, `icon` i `elements`. Wszystkie uchwyty obsługują `remove()`. Identyfikatory mogą zawierać litery, cyfry oraz `.`, `_` i `-`.
 
 Na przykład ten kod umieszcza natywną akcję nad zawartością panelu Presets:
 
@@ -237,8 +233,6 @@ marinara.ui.registerContribution({
 ```
 
 Rozbudowane narzędzia mogą budować interfejsy wieloetapowe, aktualizując elementy panelu po zdarzeniu. Stan aplikacji trzymaj w `marinara.storage`, nigdy nie zapisuj go w samych znacznikach.
-
-<a id="use-active-chat-context"></a>
 
 ### Korzystanie z kontekstu aktywnego czatu
 
@@ -287,8 +281,6 @@ Bez danego uprawnienia wartość pozostaje `[]` albo `null`. Marinara pokazuje k
 Migawki postaci zawierają wyłącznie pola `id`, `name`, `description`, `personality`, `scenario`, `firstMessage`, `exampleDialogue`, `creator`, `characterVersion`, `tags`, `backstory`, `appearance`, `aboutMe` i `conversationDisplayName`. Migawki persony zawierają wyłącznie pola `id`, `name`, `description`, `personality`, `scenario`, `backstory`, `appearance`, `tags`, `aboutMe` i `conversationDisplayName`. Tekst dostaje narzucony limit długości, zanim przejdzie przez most piaskownicy.
 
 Marinara nigdy nie przekazuje wiadomości, notatek twórcy, promptów systemowych, instrukcji dopisywanych po historii, komentarzy, ścieżek do awatarów, całych bibliotek postaci ani person, pól niezadeklarowanych, metadanych czatu, uchwytów bazy danych, dostępu do sieci ani operacji zmieniających dane. Aktualizacje kontekstu pozostają związane z zatwierdzonym skrótem kodu i przychodzą przy zmianie aktywnego czatu, jego listy postaci albo wybranej persony.
-
-<a id="add-a-dice-format"></a>
 
 ### Dodanie formatu kości
 
@@ -342,7 +334,7 @@ Jeśli External Extension zależy od dostępu do drzewa DOM hosta, może o niego
 
 **Full page access nie jest możliwością piaskownicy.** Zatwierdzony kod JavaScript i CSS działa wewnątrz strony aplikacji Marinara Engine. Taki kod może odczytać lub zmienić wszystko, co widzi bieżąca sesja przeglądarki, zajrzeć do czatów i kart, korzystać z pamięci przeglądarki, wysyłać zapytania sieciowe oraz wywoływać interfejsy API aplikacji Marinara Engine z tego samego pochodzenia. W praktyce ma na stronie takie same uprawnienia jak kod wklejony do konsoli przeglądarki. Szkice od Professor Mari nie mogą o niego prosić.
 
-Rozszerzenia z pełnym dostępem do strony powinny używać `marinara.fetch(...)` do żądań sieciowych. Funkcja ma taką samą sygnaturę i zwraca taki sam wynik jak `window.fetch`, a jednocześnie pozwala sekcji **Settings > Addons > External Extensions** wyświetlać liczbę żądań tego rozszerzenia w bieżącej sesji, liczbę przesłanych bajtów zgłaszaną przez odpowiedzi, ostatnią częstotliwość żądań oraz ostrzeżenie o utrzymującym się dużym ruchu. Bezpośrednie wywołania `window.fetch` pozostają dostępne, ponieważ pełny dostęp oznacza uruchamianie zaufanego kodu strony, ale tych żądań nie można przypisać do rozszerzenia.
+Rozszerzenia z pełnym dostępem do strony powinny używać `marinara.fetch(...)` do żądań sieciowych. Funkcja ma taką samą sygnaturę i zwraca taki sam wynik jak `window.fetch`, a jednocześnie pozwala sekcji **Biblioteka → Rozszerzenia → Rozszerzenia zewnętrzne** wyświetlać liczbę żądań tego rozszerzenia w bieżącej sesji, liczbę przesłanych bajtów zgłaszaną przez odpowiedzi, ostatnią częstotliwość żądań oraz ostrzeżenie o utrzymującym się dużym ruchu. Bezpośrednie wywołania `window.fetch` pozostają dostępne, ponieważ pełny dostęp oznacza uruchamianie zaufanego kodu strony, ale tych żądań nie można przypisać do rozszerzenia.
 
 Starszą kopertę `kind: "marinara.extension"` w wersji 1, bez wyraźnego pola `capabilities`, Marinara rozpoznaje jako pakiet sprzed piaskownicy i przy imporcie przypisuje jej **Full page access**. Dzięki temu starsze pakiety, na przykład WeatherTweaker, trafiają do właściwej ścieżki przeglądu, zamiast po cichu zawodzić w wątku Worker. Nowoczesny pakiet, który używa tej koperty, ale chce bezpiecznego środowiska, musi zawierać `"capabilities": []`.
 
@@ -445,13 +437,13 @@ Limity archiwum ZIP, żądania, wiadomości piaskownicy i pamięci chronią osob
 | Objaw | Sprawdź |
 | --- | --- |
 | Nie ma kontrolek importu zewnętrznego | Otwórz oba opisane wyżej zabezpieczenia External Extension |
-| Zarządzanie zgłasza, że wymagany jest localhost lub Admin Access | Skonfiguruj `ADMIN_SECRET` i zapisz go w **Admin Access** |
+| Zarządzanie zgłasza, że wymagany jest localhost lub Admin Access | Skonfiguruj `ADMIN_SECRET` i zapisz go w **Ustawienia → Zaawansowane → Bezpieczeństwo** |
 | Import nie znajduje rozszerzenia | Sprawdź `manifest.json` i ścieżki względne; Server potrzebuje JS, a Browser potrzebuje CSS lub JS |
 | Rozszerzenie wyłącza się po edycji | To oczekiwane: sprawdź i zatwierdź nowy dokładny skrót |
 | Kod Browser nie może użyć `document`, `window`, `fetch` ani pamięci lokalnej | To oczekiwane w bezpiecznej piaskownicy; użyj udokumentowanych interfejsów pośredniczących |
 | Server Extension jest niedostępne | Użyj mechanizmu Seatbelt w systemie macOS albo systemu Linux z Bubblewrap lub przełącz się na Browser Extension |
 | Browser Extension zgłasza wyjątek | Otwórz narzędzia deweloperskie przeglądarki; wpisy `marinara.log` i błędy uruchamiania są oznaczone nazwą rozszerzenia |
-| Server Extension zgłasza wyjątek | Sprawdź jego stan w **Settings → Addons** (ustawienia, dodatki) oraz dziennik serwera Marinara |
+| Server Extension zgłasza wyjątek | Sprawdź jego stan w **Biblioteka → Rozszerzenia** oraz dziennik serwera Marinara |
 
 Kod CSS, prywatna pamięć, archiwa importu i wiadomości środowiska mają osobne limity bezpieczeństwa. Marinara powinna zgłosić granicę, która odrzuciła pakiet, zamiast przedstawiać problem jako błąd wykonania.
 

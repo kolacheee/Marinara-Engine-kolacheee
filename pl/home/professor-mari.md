@@ -7,13 +7,13 @@ Professor Mari to wbudowana asystentka na ekranie głównym. Wyjaśnia działani
 ## Gdzie ją znaleźć
 
 1. Przejdź na ekran główny. Pojawia się on wtedy, gdy żaden czat nie jest otwarty.
-2. Kliknij **Ask Professor Mari** (zapytaj Professor Mari) w widgecie **Professor Mari** albo kliknij zakładkę **Professor**.
+2. Kliknij **Zapytaj Professor Mari** w widgecie **Professor Mari** albo kliknij **Profesor** u góry ekranu głównego.
 
-Otworzy się jej okno. Możesz do niej dotrzeć też z każdego ekranu: wpisz coś w wyszukiwarce Search i wybierz **Ask Prof. Mari** (zapytaj Professor Mari), naciśnij <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> na Macu) albo na telefonie pociągnij w dół od górnego paska. Jej nagłówek pokazuje **Ready to help**, kiedy czeka, i **Working on it...**, kiedy pracuje.
+Otworzy się w osobnej zakładce. Możesz do niej dotrzeć też z każdego ekranu: naciśnij <kbd>Ctrl</kbd>+<kbd>K</kbd>, wpisz pytanie i wybierz **Zapytaj Professor Mari**, naciśnij <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> na Macu), żeby otworzyć jej wyskakujące okno, albo na telefonie dotknij tytułu na górnym pasku. Jej nagłówek pokazuje **Gotowa do pomocy**, kiedy czeka, i **Pracuję nad tym...**, kiedy pracuje.
 
 Wpisz wiadomość zwykłym językiem i naciśnij <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> dodaje nową linię. Jeśli w jej ustawieniach wyłączysz **Enter sends to Professor Mari** (wysyłanie do Professor Mari klawiszem Enter), <kbd>Enter</kbd> doda nową linię, a wiadomość wyśle <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. Pierwsza wiadomość odblokowuje osiągnięcie **Hello World**.
 
-Wszystkie jej ustawienia są w **Settings → General → Search and Professor Mari settings → Open** (ustawienia, ogólne, ustawienia wyszukiwarki i asystentki Professor Mari, otwarcie) albo pod ikoną zębatki w wyszukiwarce Search. Na komputerze rozmiar jej okna zmieniają suwaki **Height** (wysokość) i **Width** (szerokość) w sekcji **Professor Mari window** (okno Professor Mari). Na telefonie jej okno wypełnia cały ekran.
+Wszystkie jej ustawienia są w **Ustawienia → Ogólne → Professor Mari → Otwórz** albo pod ikoną zębatki w wyszukiwarce Search. Na komputerze rozmiar jej okna zmieniają suwaki **Height** (wysokość) i **Width** (szerokość) w sekcji **Professor Mari window** (okno Professor Mari). Na telefonie jej okno wypełnia cały ekran.
 
 ## Tworzenie postaci z Mari
 
@@ -36,10 +36,10 @@ Zanim coś edytuje, najpierw to czyta, a gdy prośba jest niejasna, dopytuje.
 - Wyjaśnienie ustawienia, trybu albo pojęcia.
 - Utworzenie lub edycja postaci, persony albo lorebooka. Karta postaci nadaje AI imię, osobowość i sposób mówienia. Persona to karta postaci, która reprezentuje ciebie. Lorebook to zbiór faktów o świecie, które AI czyta, gdy w rozmowie padną ich słowa kluczowe.
 - Napisanie onboardingu postaci (zobacz [Interaktywny onboarding](../characters/interactive-onboarding.md)) i wypełnienie [arkusza zestawu zasad](../characters/colors-and-stats.md#ruleset-sheets) dla zainstalowanego zestawu zasad Game Mode. Gdy wartość nie pasuje do zestawu zasad, zmiana asystentki zostaje odrzucona z podaniem przyczyny.
-- Utworzenie lub edycja motywu, agenta, presetu promptu albo szkicu rozszerzenia Personal Extension. Szkic pozostaje wyłączony, dopóki nie przeczytasz jego kodu i nie zatwierdzisz go w **Settings → Addons** (ustawienia, dodatki).
+- Utworzenie lub edycja motywu, agenta, presetu promptu albo szkicu rozszerzenia Personal Extension. Szkic pozostaje wyłączony, dopóki nie przeczytasz jego kodu i nie zatwierdzisz go w **Biblioteka → Rozszerzenia**.
 - Edycja jednej sekcji presetu na miejscu, bez podmieniania całego presetu.
-- Porównanie agentów do pobrania i podpowiedź, które pasują do twojego celu. Do instalacji asystentka kieruje cię do **Agents → Agent Organizer** (agenci, organizowanie agentów). Zobacz [Agenci do pobrania: przegląd pakietów](../agents/built-in-agents.md).
-- Tworzenie lub przypisywanie obrazów, takich jak awatary, sprite'y i tła. Najpierw potrzebne jest konto do generowania obrazów. Asystentka sama go nie utworzy.
+- Porównanie agentów do pobrania i podpowiedź, które pasują do twojego celu. Do instalacji asystentka kieruje cię do **Biblioteka → Agenci**. Zobacz [Agenci do pobrania: przegląd pakietów](../agents/built-in-agents.md).
+- Tworzenie lub przypisywanie obrazów, takich jak awatary, sprite'y, tła i obrazy motywu, oraz kadrowanie, przycinanie, zmienianie ich rozmiaru i usuwanie z nich jednolitego tła. Najpierw potrzebne jest konto do generowania obrazów. Asystentka sama go nie utworzy. O grafice motywu przeczytasz w sekcji [Poproś Professor Mari o stworzenie grafiki](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
 - Wyszukiwanie publicznych stron wiki Fandom, gdy zbierasz informacje o postaci albo świecie.
 
 ### Zacznij od kafelka
@@ -182,6 +182,8 @@ Jej czaty są oddzielone od twojej zwykłej listy czatów.
 1. Kliknij **Chats** w jej nagłówku.
 2. Użyj pola **Search Prof. Mari chats** (szukaj w czatach z Professor Mari), żeby znaleźć czat. Kliknij czat, żeby go otworzyć, zmienić mu nazwę albo go usunąć.
 
+Długi czat z nią otwiera się na najnowszych wiadomościach. Przewiń w górę i kliknij **Pokaż starsze**, żeby wczytać wcześniejsze; twoje miejsce pozostaje bez zmian.
+
 Kliknij **New chat** albo wpisz `/new`, żeby zacząć od nowa. Bieżący czat zostaje najpierw zapisany, a aplikacja pokazuje **Professor Mari's previous chat was saved.**
 
 ## Funkcja Quick answers in Search
@@ -231,7 +233,7 @@ Kiedy prośba się nie uda, czat zachowuje przyczynę i pokazuje **Retry** (pon�
 
 ## Czytanie FAQ
 
-Kliknij skrót **FAQ** albo **Read FAQ** (przeczytaj FAQ) w widgecie **Learn the engine** (poznaj aplikację), żeby otworzyć **Professor Mari's FAQ**. To stała, spisana lista, a nie czat z AI, więc nie zna twojej konfiguracji. Wpisz coś w polu **Search FAQ** (szukaj w FAQ), żeby przefiltrować pytania. Każde pytanie ma tag kategorii, na przykład **Setup**, **Connections** albo **Game Mode**. Dotknij pytania, żeby przeczytać odpowiedź.
+Kliknij **Przeczytaj FAQ** w widgecie **Poznaj silnik** na ekranie głównym (albo skrót **FAQ** w klasycznym układzie), żeby otworzyć **FAQ Professor Mari**. To stała, spisana lista, a nie czat z AI, więc nie zna twojej konfiguracji. Wpisz coś w polu **Search FAQ** (szukaj w FAQ), żeby przefiltrować pytania. Każde pytanie ma tag kategorii, na przykład **Setup**, **Connections** albo **Game Mode**. Dotknij pytania, żeby przeczytać odpowiedź.
 
 ## Ograniczenia i bezpieczeństwo
 

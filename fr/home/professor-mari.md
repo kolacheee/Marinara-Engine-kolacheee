@@ -7,13 +7,13 @@ Professor Mari est l'assistante intégrée de l'écran d'accueil. Elle explique 
 ## Où la trouver
 
 1. Va sur l'écran d'accueil. Il s'affiche quand aucun chat n'est ouvert.
-2. Clique sur **Ask Professor Mari** (demander à Professor Mari) dans le widget **Professor Mari**, ou clique sur l'onglet **Professor**.
+2. Clique sur **Ask Professor Mari** (demander à Professor Mari) dans le widget **Professor Mari**, ou clique sur **Professor** en haut de l'accueil.
 
-Sa fenêtre s'ouvre. Tu peux aussi la joindre depuis n'importe quel écran : saisis du texte dans Search (la recherche de l'application) et choisis **Ask Prof. Mari** (demander à Prof. Mari), appuie sur <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> sur un Mac), ou tire vers le bas depuis la barre supérieure sur un téléphone. Son en-tête affiche **Ready to help** quand elle est disponible et **Working on it...** pendant qu'elle travaille.
+Elle s'ouvre dans son propre onglet. Tu peux aussi la joindre depuis n'importe quel écran : appuie sur <kbd>Ctrl</kbd>+<kbd>K</kbd>, saisis ta question et choisis **Ask Prof. Mari** (demander à Prof. Mari), appuie sur <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> sur un Mac) pour ouvrir sa fenêtre contextuelle, ou touche le titre dans la barre supérieure sur un téléphone. Son en-tête affiche **Ready to help** quand elle est disponible et **Working on it...** pendant qu'elle travaille.
 
 Écris ton message en langage courant et appuie sur <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> ajoute une nouvelle ligne. Si tu désactives **Enter sends to Professor Mari** (Enter envoie à Professor Mari) dans ses réglages, <kbd>Enter</kbd> ajoute une nouvelle ligne et <kbd>Ctrl</kbd>+<kbd>Enter</kbd> envoie. Ton premier message débloque le succès **Hello World**.
 
-Tous ses réglages se trouvent dans **Settings → General → Search and Professor Mari settings → Open** (Paramètres → Général → réglages de Search et de Professor Mari → ouvrir), ou derrière l'engrenage de Search. Sur ordinateur, les curseurs **Height** (hauteur) et **Width** (largeur) sous **Professor Mari window** (fenêtre de Professor Mari) changent la taille de sa fenêtre. Sur téléphone, sa fenêtre occupe tout l'écran.
+Tous ses réglages se trouvent dans **Settings → General → Professor Mari → Open** (Paramètres → Général → Professor Mari → ouvrir), ou derrière l'engrenage de Search. Sur ordinateur, les curseurs **Height** (hauteur) et **Width** (largeur) sous **Professor Mari window** (fenêtre de Professor Mari) changent la taille de sa fenêtre. Sur téléphone, sa fenêtre occupe tout l'écran.
 
 ## Créer un personnage avec Mari
 
@@ -36,10 +36,10 @@ Elle lit un élément avant de le modifier, et elle pose des questions quand ta 
 - Expliquer un réglage, un mode ou un concept.
 - Créer ou modifier un personnage, un persona ou un lorebook. Une fiche de personnage donne à l'IA un nom, une personnalité et une voix. Un persona est la fiche de personnage qui te représente. Un lorebook est un recueil de faits sur ton univers, que l'IA lit quand leurs mots-clés apparaissent.
 - Écrire l'[accueil interactif](../characters/interactive-onboarding.md) d'un personnage, et remplir une [fiche d'ensemble de règles](../characters/colors-and-stats.md#ruleset-sheets) pour un ensemble de règles de Game Mode installé. Sa modification est refusée, avec la raison, quand une valeur ne respecte pas l'ensemble de règles.
-- Créer ou modifier un thème, un agent, un preset de prompt ou un brouillon de Personal Extension. Un brouillon reste désactivé tant que tu n'as pas lu son code et ne l'as pas approuvé dans **Settings → Addons** (Paramètres → Modules complémentaires).
+- Créer ou modifier un thème, un agent, un preset de prompt ou un brouillon de Personal Extension. Un brouillon reste désactivé tant que tu n'as pas lu son code et ne l'as pas approuvé dans **Library → Extensions** (Bibliothèque → Extensions).
 - Modifier une seule section d'un preset sur place, au lieu de remplacer le preset entier.
-- Comparer les agents à télécharger et te dire lesquels correspondent à ton objectif. Pour les installer, elle t'oriente vers **Agents → Agent Organizer** (Agents → organisateur d'agents). Voir la [Référence des agents téléchargeables](../agents/built-in-agents.md).
-- Générer ou attribuer des images, comme des avatars, des sprites et des arrière-plans. Il te faut d'abord un compte de génération d'images. Elle n'en crée pas à ta place.
+- Comparer les agents à télécharger et te dire lesquels correspondent à ton objectif. Pour les installer, elle t'oriente vers **Library → Agents** (Bibliothèque → Agents). Voir la [Référence des agents téléchargeables](../agents/built-in-agents.md).
+- Générer ou attribuer des images, comme des avatars, des sprites, des arrière-plans et les images d'un thème, et les recadrer, rogner, redimensionner ou en retirer un fond uni. Il te faut d'abord un compte de génération d'images. Elle n'en crée pas à ta place. Pour les illustrations d'un thème, voir [Demander à Professor Mari de créer les illustrations](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
 - Consulter les pages publiques des wikis Fandom quand tu te documentes sur un personnage ou un univers.
 
 ### Commencer par une pastille
@@ -182,6 +182,8 @@ Ses chats sont à part de ta liste de chats habituelle.
 1. Clique sur **Chats** dans son en-tête.
 2. Utilise **Search Prof. Mari chats** (rechercher dans les chats de Prof. Mari) pour en trouver un. Clique sur un chat pour l'ouvrir, le renommer ou le supprimer.
 
+Un long chat avec elle s'ouvre sur ses derniers messages. Fais défiler vers le haut et clique sur **Afficher les plus anciens** pour retrouver les messages précédents ; ta position dans le chat est conservée.
+
 Clique sur **New chat** ou saisis `/new` pour repartir de zéro. Le chat en cours est d'abord enregistré, et le message **Professor Mari's previous chat was saved.** s'affiche.
 
 ## Réponses rapides dans Search
@@ -231,7 +233,7 @@ Quand une demande échoue, le chat conserve la raison et affiche **Retry** (rée
 
 ## Lire la FAQ
 
-Clique sur le marque-page **FAQ**, ou sur **Read FAQ** (lire la FAQ) dans le widget **Learn the engine** (découvrir l'application), pour ouvrir **Professor Mari's FAQ** (la FAQ de Professor Mari). C'est une liste fixe, rédigée à l'avance, pas le chat avec l'IA : elle ne connaît donc pas ta configuration. Saisis du texte dans **Search FAQ** (rechercher dans la FAQ) pour filtrer. Chaque question porte un tag de catégorie, par exemple **Setup**, **Connections** ou **Game Mode**. Touche une question pour lire la réponse.
+Clique sur **Read FAQ** (lire la FAQ) dans le widget **Learn the engine** (découvrir l'application) de l'accueil, ou sur le marque-page **FAQ** dans la disposition classique, pour ouvrir **Professor Mari's FAQ** (la FAQ de Professor Mari). C'est une liste fixe, rédigée à l'avance, pas le chat avec l'IA : elle ne connaît donc pas ta configuration. Saisis du texte dans **Search FAQ** (rechercher dans la FAQ) pour filtrer. Chaque question porte un tag de catégorie, par exemple **Setup**, **Connections** ou **Game Mode**. Touche une question pour lire la réponse.
 
 ## Limites et sécurité
 

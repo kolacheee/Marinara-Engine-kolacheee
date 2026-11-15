@@ -6,7 +6,7 @@ Conversation(对话模式) 是即时通讯风格的聊天模式：一个或多�
 
 **开始之前：** 在 **Connections**(连接) 中添加一个账号（参见[连接 AI 服务商](../connections/connecting-to-a-provider.md)），并至少有一个角色。用户角色是代表你自己的角色卡，可选（参见[用户角色](../characters/personas.md)）。
 
-1. 在聊天侧边栏中打开 **CONVO** 选项卡，然后点击 **New Conversation**(新建 Conversation 聊天)。随即打开一个四页的设置向导。
+1. 打开聊天列表（右上角的 **Library**(资料库)，再点侧边栏顶部的 **Chats**(聊天)），打开 **Convo**(对话) 选项卡，点击 **New**(新建)。随即打开一个有四页的设置向导。
 2. 在第一页 **Name & Connection**(名称与连接) 中，为聊天命名，并选择负责生成回复的账号。
 3. 在第二页 **Prompt Preset**(提示词预设) 中，选择 Conversation 提示词所用的预设，也可以保持默认。
 4. 在第三页 **Persona & Characters**(用户角色与角色) 中，选择你的用户角色，以及一个或多个角色。
@@ -29,12 +29,11 @@ Conversation(对话模式) 是即时通讯风格的聊天模式：一个或多�
 
 之后可以在 **Chat Settings → Autonomous Messaging**(自主消息设置) 中修改这些选项。如果角色发消息太频繁，请在那里关闭 **Autonomous Messages**，或把你的在线状态设为 **Do Not Disturb**(勿扰)。
 
-<a id="choose-which-commands-a-character-can-use"></a>
 ## 选择角色可以使用的命令
 
 命令是角色自己决定执行的动作。你不需要输入它们。设置完成后，打开 **Chat Settings → Agents → Commands**。总开关 **Commands** 管控所有命令组：它关闭时，任何命令组都不会生效。
 
-每个命令组都有自己的开关。除 **Videos**(视频) 需要你自己打开外，其他开关默认都是开启的。属于可选智能体的命令组，只有你在 **Agents → Agent Organizer** 中安装该智能体后才会显示。
+每个命令组都有自己的开关。除 **Videos**(视频) 需要你自己打开外，其他开关默认都是开启的。属于可选智能体的命令组，只有你在 **Library → Agents** 中安装该智能体后才会显示。
 
 | 命令组 | 角色可以做什么 | 需要的智能体 |
 | --- | --- | --- |
@@ -57,12 +56,11 @@ Conversation(对话模式) 是即时通讯风格的聊天模式：一个或多�
 | **Tic-Tac-Toe**(井字棋) | 接受井字棋挑战。 | Tic-Tac-Toe |
 | **Rock-Paper-Scissors**(石头剪刀布) | 接受一场对局。 | Rock-Paper-Scissors |
 
-**Influence** 和 **Notes** 的说明见[把 Conversation 聊天连接到 Roleplay 或 Game](../chats/connected-chats.md)。表格最后一列写的是需要从 **Agent Organizer** 安装的智能体。
+**Influence** 和 **Notes** 的说明见[把 Conversation 聊天连接到 Roleplay 或 Game](../chats/connected-chats.md)。表格最后一列写的是需要从 **Library → Agents** 安装的智能体。
 
-<a id="your-presence-status"></a>
 ## 你的在线状态
 
-你的在线状态是侧边栏底部的一枚彩色胶囊标记。它在所有聊天中都相同。点击它即可选择：
+你的在线状态是聊天列表底部的一枚彩色胶囊标记。它在所有聊天中都相同。点击它即可选择：
 
 | 状态 | 含义 |
 | --- | --- |
@@ -75,7 +73,6 @@ Conversation(对话模式) 是即时通讯风格的聊天模式：一个或多�
 
 胶囊标记旁边是状态框。框为空时显示 “What's up?”。在那里输入你当前在做什么（最多 120 个字符），角色就能知道。最近的内容会显示在 **Recent status**(最近状态) 下，方便你重复使用。
 
-<a id="react-and-get-notified"></a>
 ## 回应与通知
 
 在消息上使用 **Add reaction**(添加回应)，即可用 emoji 回应。之后的回复能看到你的回应。开启 **Reactions** 命令后，角色也能回应你的消息以及彼此的消息。

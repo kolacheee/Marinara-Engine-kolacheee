@@ -8,8 +8,8 @@ Roleplay(角色扮演) 是用来讲故事的聊天模式。它会在消息背后
 
 开始之前：在应用右侧的 **Connections**(连接) 面板里添加一个账号。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
 
-1. 在聊天侧边栏里点击 **RP** 选项卡。
-2. 点击侧边栏顶部附近的 **+** 按钮，它的提示文字是 **New Roleplay**(新建 Roleplay 聊天)。
+1. 打开聊天列表（点击右上角的 **Library**(资料库)，再点击侧边栏顶部的 **Chats**(聊天)），然后点击 **Roleplay** 选项卡。
+2. 点击聊天列表顶部的 **New**(新建)。
 
 聊天打开后，会同时打开 **Chat Settings**(聊天设置) 和一个五步的设置向导。只有账号是必填的，其余一切之后都能改。
 
@@ -23,7 +23,7 @@ Roleplay(角色扮演) 是用来讲故事的聊天模式。它会在消息背后
 
 ## 舞台：背景、立绘和 HUD
 
-- **Background**(背景)：铺在消息后面的整屏图像，切换时会淡入淡出。**Background** 智能体可以每回合挑一张，你也可以给每个聊天固定一张。见 [Roleplay 背景](backgrounds.md)。
+- **Background**(背景)：铺在消息后面的整屏图像，切换时会淡入淡出。**Background** 智能体可以每回合挑一张，你也可以给每个聊天固定一张。见 [随故事变化的背景](backgrounds.md)。
 - **Sprites**(立绘)：舞台上的角色图片。每个开启了立绘的角色都可以出现。角色卡上需要有立绘库，否则这个角色的立绘位就是空的。见[角色立绘](../characters/sprites.md)。
 - **HUD**：你的追踪器（日期、时间、天气、位置、在场角色、物品、任务、属性）。在 **Chat Settings → Agents** 里开启。见 [Roleplay 的 HUD 与追踪器](hud-and-trackers.md)。
 
@@ -74,7 +74,7 @@ Roleplay(角色扮演) 是用来讲故事的聊天模式。它会在消息背后
 - **Activity**(动态) 选项卡：智能体保存下来的输出，也就是思维气泡。可以逐条关闭，或用 **Clear all**(全部清除) 一次清空。自定义智能体的输出也在这里。
 - 智能体工作时，它的图标会变成转圈的加载动画。某个智能体失败时，图标上会出现一个圆点，直到你打开它为止。
 - 失败的智能体会列出来，并附带重试按钮。这里还能停止正在运行的智能体、重跑追踪器，以及使用 **Clear Trackers**(清空追踪器)。
-- **Injections**(注入) 选项卡：只有开启 **Debug mode**(调试模式) 时才显示（**Settings → Advanced**(设置 → 高级)）。它列出上一条回复生成之前，写作类智能体保存下来的提示词片段。这类智能体包括按你的风格规则重写回复的 **Prose Guardian**，以及负责推动剧情的 **Narrative Director**。片段可以查看、编辑和重跑。编辑只影响重新生成同一条回复时用到的内容，这样重新生成才可复现。它不会改动屏幕上已有的回复。
+- **Injections**(注入) 选项卡：只有开启 **Debug mode**(调试模式) 时才显示（**Settings → Advanced → Troubleshooting**(设置 → 高级 → 故障排查)）。它列出上一条回复生成之前，写作类智能体保存下来的提示词片段。这类智能体包括按你的风格规则重写回复的 **Prose Guardian**，以及负责推动剧情的 **Narrative Director**。片段可以查看、编辑和重跑。编辑只影响重新生成同一条回复时用到的内容，这样重新生成才可复现。它不会改动屏幕上已有的回复。
 
 全部智能体见[智能体：聊天里的 AI 帮手](../agents/agents-overview.md)。推动剧情的智能体见 [Narrative Director 与 Secret Plot](narrative-director.md)。
 
@@ -183,11 +183,11 @@ Roleplay(角色扮演) 是用来讲故事的聊天模式。它会在消息背后
 
 - 电脑上，拖动标题栏可以移动它，拖动边缘可以调整大小。固定后它会保持打开。**X** 会把它收起为可以移动的按钮。
 - 手机上，它最初以小窗口显示在消息上方。拖动标题栏可以移动它，拖动边缘或角落可以调整大小。固定后，点击别处它也会保持打开；锁定可以避免误移动。
-- 它会使用 **Settings → Appearance → App**(设置 → 外观 → 应用) 中的 **Chat widget style**(聊天组件样式)。每个聊天都会记住自己的布局。
+- 它会使用 **Settings → Appearance → Chat Buttons & Windows**(设置 → 外观 → 聊天按钮与窗口) 中的 **Chat widget style**(聊天组件样式)。每个聊天都会记住自己的布局。
 
 ## CYOA 选项
 
-CYOA 是 Choose Your Own Adventure(自选冒险) 的缩写。CYOA Choices 智能体默认关闭，而且只在 Roleplay 里有效。开启后，它会在回复之后加上可点击的选项按钮，点一个选项，它就作为你的下一条消息发出去。想合并几个选项，或者先改一改再发，就在 **Settings → General → Input & Editing**(设置 → 常规 → 输入与编辑) 中开启 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项放进消息框，而不是直接发送)。之后点击选项只会把它的文字加进消息框。
+CYOA 是 Choose Your Own Adventure(自选冒险) 的缩写。CYOA Choices 智能体默认关闭，而且只在 Roleplay 里有效。开启后，它会在回复之后加上可点击的选项按钮，点一个选项，它就作为你的下一条消息发出去。想合并几个选项，或者先改一改再发，就在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 中开启 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项放进消息框，而不是直接发送)。之后点击选项只会把它的文字加进消息框。
 
 ## 故障排查
 
@@ -195,14 +195,14 @@ CYOA 是 Choose Your Own Adventure(自选冒险) 的缩写。CYOA Choices 智能
 | --- | --- |
 | HUD 里的某个值不对。 | 手动改掉它，再锁定，下一次运行就不会动它。见 [Roleplay 的 HUD 与追踪器](hud-and-trackers.md)。如果数值总是跑偏，换一个更强的智能体模型。 |
 | 立绘不变。 | 检查这个角色有没有立绘库。也可以用 `/emote`。 |
-| 背景一直不换。 | **Background** 智能体是从你的背景库里挑的，所以多加几张背景。见 [Roleplay 背景](backgrounds.md)。 |
+| 背景一直不换。 | **Background** 智能体是从你的背景库里挑的，所以多加几张背景。见 [随故事变化的背景](backgrounds.md)。 |
 | 重新生成的回复还是走错方向。 | 开启 **Debug mode**，打开 **Agent activity → Injections**，在重新生成之前编辑或重跑保存下来的片段。 |
 
 更多帮助见 [Marinara Engine 故障排查](../TROUBLESHOOTING.md)。
 
 ## 相关指南
 
-- [Roleplay 背景](backgrounds.md)
+- [随故事变化的背景](backgrounds.md)
 - [Roleplay 的 HUD 与追踪器](hud-and-trackers.md)
 - [战斗遭遇战（Roleplay）](combat-encounters.md)
 - [Narrative Director 与 Secret Plot](narrative-director.md)

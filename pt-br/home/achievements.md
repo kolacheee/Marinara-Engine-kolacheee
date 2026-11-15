@@ -5,7 +5,10 @@ As conquistas são medalhas decorativas que você desbloqueia conforme usa Marin
 ## Como abrir a janela de conquistas
 
 1. Vá para a tela inicial.
-2. Clique no favorito **Achievements** (conquistas), que tem o ícone de um troféu. No celular, toque antes no botão de favoritos à esquerda das abas.
+2. Clique em **Widgets** e ative o widget **Achievements** (conquistas).
+3. Clique no widget.
+
+No layout clássico, a tela inicial também tem um favorito **Achievements** (ícone de troféu). No celular, toque antes no botão de favoritos à esquerda das abas.
 
 A janela **Achievements** se abre. No topo fica um resumo, como **12 of 24 achievements unlocked in this profile.** O perfil é o seu conjunto salvo de dados do Marinara. Abaixo dele fica uma grade de cartões.
 
@@ -13,7 +16,7 @@ A janela **Achievements** se abre. No topo fica um resumo, como **12 of 24 achie
 - Um cartão desbloqueado mostra a marca **unlocked** (desbloqueado).
 - Um cartão com meta também mostra uma linha **Progress** (progresso) e uma barra.
 
-Você também pode adicionar o widget **Achievements** à tela inicial. Clique em **Widgets** nos favoritos e ative-o. Ele mostra uma contagem como **12 of 24 unlocked**, a sua conquista **Last obtained** (última obtida) e a **Closest next** (próxima mais perto). Enquanto carrega, ele mostra **Checking the collection...**. Clique nele para abrir a janela. Veja [Widgets da tela inicial](welcome.md#home-widgets).
+O widget **Achievements** mostra uma contagem como **12 of 24 unlocked**, a sua conquista **Last obtained** (última obtida) e a **Closest next** (próxima mais perto). Enquanto carrega, ele mostra **Checking the collection...**. Clique nele para abrir a janela. Veja [Widgets da tela inicial](welcome.md#home-widgets).
 
 Se não funcionou: o favorito, o widget e a janela só aparecem quando a configuração **Achievements** está ativada. Veja [Ativar ou desativar as conquistas](#turn-achievements-on-or-off).
 
@@ -53,7 +56,7 @@ Se você remover um agente, a seção dele desaparece e os seus desbloqueios sã
 ## Ativar ou desativar as conquistas
 
 1. Abra **Settings → General** (Configurações → Geral).
-2. Na seção **App Behavior** (comportamento do aplicativo), use o botão liga/desliga **Achievements** para ativar ou desativar o recurso. Ele vem ativado por padrão.
+2. Na seção **Extras**, use o botão liga/desliga **Achievements** para ativar ou desativar o recurso. Ele vem ativado por padrão.
 
 - Ativado: o favorito e a janela ficam disponíveis, e um aviso em pop-up aparece quando algo é desbloqueado.
 - Desativado: o favorito, o widget e os avisos em pop-up ficam escondidos. O aplicativo continua registrando os desbloqueios em segundo plano, então nada se perde quando você o ativa de novo.

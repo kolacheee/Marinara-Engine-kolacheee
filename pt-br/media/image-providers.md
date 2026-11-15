@@ -6,13 +6,13 @@ A geração de imagens alimenta as ilustrações de cena, as selfies, os planos 
 
 A chave de API é um código secreto que um serviço dá a você para que Marinara possa usar a sua conta. Marinara preenche o endereço web de cada serviço para você, então raramente é preciso digitar um.
 
-1. Clique em **Connections** (Conexões) na barra superior e depois em **Add** (adicionar). A janela **Add account** (adicionar conta) abre.
-2. Encontre o serviço. A lista tem uma seção **Images & video** (imagens e vídeo), e a caixa **Search providers** (buscar provedores) ajuda você a encontrá-lo.
+1. Abra **Library → Connections** (Biblioteca → Conexões) e clique em **Add connection** (adicionar conexão). A lista de serviços abre.
+2. Abra a aba **Image** (imagem) e encontre o serviço. **Search services** (buscar serviços) ajuda você a encontrá-lo.
 3. Cole a sua chave no campo **API key** (chave de API). Serviços gratuitos e locais não precisam de chave. Para um servidor que você mesmo roda, preencha o campo de endereço.
 4. Clique em **Connect** (conectar). Marinara testa a conta.
 5. Escolha um modelo de imagem na lista ou digite o ID de um modelo. Esse é o seu modelo de imagem. Ele aparece abaixo da conta no painel **Connections**.
 6. Abra o modelo de imagem e clique em **Test image** (testar imagem). Marinara gera uma pequena imagem de teste.
-7. Para que ele seja o modelo que o aplicativo usa para as imagens, defina a tarefa **Images** (imagens) em **Defaults** (padrões), no topo do painel **Connections**.
+7. Marcar **Images** (imagens) no passo 5 também define a tarefa **Images** na caixa **Defaults** (padrões), no topo do painel **Connections**. Para mudar depois, clique na linha **Images**.
 
 Para adicionar outro modelo de imagem a uma conta, abra o menu **⋯** dela e clique em **Add image model** (adicionar modelo de imagem). Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md) para conhecer a janela inteira.
 
@@ -222,7 +222,7 @@ A referência precisa da NovelAI só funciona em um modelo V4.5, como `nai-diffu
 
 ## Enfileirar as requisições de geração de mídia
 
-O botão liga/desliga **Queue media generation requests** (enfileirar requisições de geração de mídia) fica em **Settings → Generations → Overall Generations** (Configurações → Gerações → Gerações em geral). Ele vem ativado por padrão.
+O botão liga/desliga **Queue media generation requests** (enfileirar requisições de geração de mídia) fica em **Settings → Media → Generation Defaults** (Configurações → Mídia → Padrões de geração). Ele vem ativado por padrão.
 
 Com ele ativado, Marinara envia os trabalhos de imagem para cada conta de imagem um de cada vez, e os trabalhos de vídeo para cada conta de vídeo um de cada vez, em filas separadas. Uma imagem e um vídeo da mesma conta podem rodar juntos. Isso vale para todo recurso que os pede: o Illustrator, os trackers, os comandos, a galeria, os recursos de Game e os agentes baixados, como o Slurp. Dois modelos com o mesmo endereço e a mesma chave de API dividem uma fila. Contas diferentes continuam rodando ao mesmo tempo. A NovelAI também ganha uma pequena pausa entre os trabalhos e, quando responde que está ocupada, Marinara espera e tenta mais duas vezes.
 
@@ -233,6 +233,6 @@ Mantenha a opção ligada nos serviços que recusam duas requisições simultân
 - [Configuração de workflows do ComfyUI](comfyui.md)
 - [Agente Illustrator](illustrator-agent.md)
 - [Perfis de estilo de imagem](style-profiles.md)
-- [Planos de fundo de cena e a galeria](scene-backgrounds.md)
+- [Planos de fundo criados pelo Illustrator](scene-backgrounds.md)
 - [Selfies](../conversation/selfies.md)
 - [Provedores de IA compatíveis](../connections/providers-reference.md)

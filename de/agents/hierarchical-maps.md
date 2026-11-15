@@ -2,7 +2,7 @@
 
 > **Aktuelle Kompatibilität:** Diese Anleitung beschreibt World Maps **1.3.1**. Diese Version unterstützt Marinara Engine **2.3.5 bis 3.x** in Roleplay- und Game-Chats. Engine **2.4.1** ergänzt die Bereinigung des Bewegungs-Streams und aktualisiert die Lorebooks nach portablen Importen sofort. Engine 2.3.5 bis 2.4.0 funktioniert weiterhin, braucht nach einem Import aber eine manuelle Aktualisierung der Lorebooks.
 
-World Maps gibt deiner Geschichte eine Karte aus Orten, die ineinander liegen können, etwa eine Küste, eine Stadt, ein Viertel und ein Gasthaus. Marinara weiß immer, wo die Party gerade ist, und die KI nutzt das, um stimmig zu bleiben. Zum Ausprobieren: Installiere **World Maps** im **Agent Organizer** (Agentenverwaltung), starte neu und folge dann dem [Schnellstart](#quick-start).
+World Maps gibt deiner Geschichte eine Karte aus Orten, die ineinander liegen können, etwa eine Küste, eine Stadt, ein Viertel und ein Gasthaus. Marinara weiß immer, wo die Party gerade ist, und die KI nutzt das, um stimmig zu bleiben. Zum Ausprobieren: Installiere **World Maps** unter **Library → Agents** (Bibliothek → Agenten), starte neu und folge dann dem [Schnellstart](#quick-start).
 
 Statt eines einzelnen Ortes als Freitext besteht die Welt aus verschachtelten Orten:
 
@@ -52,7 +52,7 @@ Kopieren ist kein Verknüpfen. **Use template**, **Add to chat** und **Independe
 
 ## Schnellstart
 
-1. Öffne **Agents** (Agenten), klick auf **Agent Organizer** und installiere **World Maps**. Starte Marinara neu, wenn du dazu aufgefordert wirst, denn das Paket enthält Servercode.
+1. Öffne **Library → Agents**, such **World Maps** unter **Available** (verfügbar) und klick auf **Get** (Herunterladen). Starte Marinara neu, wenn du dazu aufgefordert wirst, denn das Paket enthält Servercode.
 2. Öffne einen Roleplay- oder Game-Chat.
 3. Öffne **Agents → World Maps** (oder den Globus von World Maps, falls deine Engine einen hat) und aktiviere World Maps für den Chat. Du kannst es auch unter **Chat Settings → Agents** aktivieren.
 4. Leg die Karte mit **Use template**, **Create with AI** oder **Build manually** an. Bestehende Chats können außerdem eine Kartendatei importieren.
@@ -341,7 +341,7 @@ An den Anbieter gehen genau die bearbeiteten positiven und negativen Prompts aus
 
 ## Den automatischen Grafik-Prompt anpassen
 
-Öffne **Settings → Generations → Prompt Overrides** und wähl **Maps location artwork**. Das ist die globale Vorlage für Vorschau und Generierung automatischer Ortsgrafiken. Variablen nutzen die Syntax `${variableName}` und lassen sich aus dem Editor heraus einfügen.
+Öffne **Settings → Media → Prompt Overrides** und wähl **Maps location artwork**. Das ist die globale Vorlage für Vorschau und Generierung automatischer Ortsgrafiken. Variablen nutzen die Syntax `${variableName}` und lassen sich aus dem Editor heraus einfügen.
 
 | Variable | Bedeutung |
 | --- | --- |
@@ -497,7 +497,7 @@ Nutze **Plan route**, wenn es einen aktiven Weg über übergeordnete oder unterg
 
 ### Automatische Grafik-Prompts enthalten unerwünschtes Material
 
-- Das Game-Genre taucht immer auf: Öffne **Settings → Generations → Prompt Overrides → Maps location artwork**, entferne `${genreLine}` und speichere.
+- Das Game-Genre taucht immer auf: Öffne **Settings → Media → Prompt Overrides → Maps location artwork**, entferne `${genreLine}` und speichere.
 - Der Kampagnenstil taucht auf, obwohl er aus sein sollte: Prüf **Chat Settings → Illustrator → Use campaign art style**. Steht der Schalter aus, sind `${campaignArtStyle}` und `${campaignArtStyleLine}` leer.
 - Ein übergeordnetes Wahrzeichen taucht in jedem untergeordneten Bild auf: Vermeide `${parentLocationDescription}` und `${locationPath}` in der Vorlage, solange sie nicht nötig sind.
 - Der negative Prompt enthält unerwarteten Text: Bearbeite das negative Feld vor dem Bestätigen und prüf danach die globale negative Bild-Einstellung. Die Vorlage von Maps baut nur den positiven Prompt.

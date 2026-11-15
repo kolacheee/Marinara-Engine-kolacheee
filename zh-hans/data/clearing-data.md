@@ -1,6 +1,6 @@
 # 清除或重置数据
 
-使用 **Danger Zone**(危险区域) 永久删除部分或全部数据。删除无法撤销。
+使用 **Delete Data**(删除数据) 永久删除部分或全部数据，入口在 **Settings → Data → Delete Data**(设置 → 数据 → 删除数据)。删除无法撤销。
 
 如果只想删除一个聊天或一个角色，请改用它自己的删除按钮。参见[管理聊天](../chats/managing-chats.md)和[创建与编辑角色](../characters/creating-and-editing-characters.md)。
 
@@ -8,7 +8,7 @@
 
 ## 清除部分类别
 
-1. 打开 **Settings → Advanced**，然后滚动到 **Danger Zone**。
+1. 打开 **Settings → Data**(设置 → 数据)，进入 **Delete Data**。
 2. 勾选你想删除的每个类别。**Select All**(全选) 会勾选所有复选框。全部勾选后，同一个按钮会变成 **Clear Selection**(取消全选)，并取消勾选这些复选框。
 3. 点击 **Clear Selected Data**(清除选中的数据)。在你勾选一个类别之前，该按钮一直处于禁用状态。
 4. 阅读警告。它会显示你选中了多少个类别。
@@ -18,7 +18,7 @@
 
 ## 清除全部数据
 
-1. 在 **Danger Zone** 中点击 **Clear All Data**(清除全部数据)。无需勾选任何复选框。
+1. 在 **Delete Data** 中点击 **Clear All Data**(清除全部数据)。无需勾选任何复选框。
 2. 警告会询问：“Delete all supported data categories except Professor Mari? There is no undo.”
 3. 点击 **Confirm Delete**(确认删除)，或点击 **Cancel**(取消) 停止。
 
@@ -47,7 +47,7 @@
 - **Connections** 还会清除语音合成和语音识别设置、你为各项功能选择的模型，以及在 **3D Avatars** 页面保存的 Tripo API 密钥。
 - **Automation & Addons** 还会删除智能体结果、智能体记忆、智能体文件夹和智能体首页小组件。
 - **Media & Assets** 还会删除素材列表和聊天图片。
-- 知识源文件是你为知识智能体上传的文件。已同步的主题是你在 Marinara 中保存的自定义主题。
+- 知识源文件是你为知识智能体上传的文件。已同步的主题是你在 Marinara 中保存的自定义主题，包括下载的入门主题。入门主题可以从主题图库重新下载。
 
 有些类别会删除名称之外的文件。即使你没有勾选 **Characters** 或 **Personas**，**Chats & Messages** 也会删除整个 `gallery` 文件夹，包括角色和用户角色的图库图片。
 
@@ -55,7 +55,7 @@
 
 ## Professor Mari 始终保留
 
-Professor Mari 是首页上的内置助手。**Danger Zone** 从不删除她，即使使用 **Clear All Data** 也一样。
+Professor Mari 是首页上的内置助手。**Delete Data** 从不删除她，即使使用 **Clear All Data** 也一样。
 
 ## 相关指南
 

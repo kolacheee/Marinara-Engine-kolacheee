@@ -1,22 +1,22 @@
 # 创建自定义智能体
 
-自定义智能体是你自己编写的帮手：它的指令、什么时候运行、允许改动什么，都由你决定。没有哪个[可下载智能体](built-in-agents.md)能满足需求时，就自己做一个。如果某个已安装的智能体已经很接近，在 **Agents**(智能体) 面板里把鼠标移到它的卡片上，点击 **Copy agent**(复制智能体)，就能得到一份可编辑的副本。
+自定义智能体是你自己编写的帮手：它的指令、什么时候运行、允许改动什么，都由你决定。没有哪个[可下载智能体](built-in-agents.md)能满足需求时，就自己做一个。如果某个已安装的智能体已经很接近，在 **Agents**(智能体) 页面上把鼠标移到它的卡片上，点击 **Copy agent**(复制智能体)，就能得到一份可编辑的副本。
 
 开始之前：先读[智能体：聊天里的 AI 帮手](agents-overview.md)。做好一个智能体并不会让它运行，之后还要把它加进聊天。自定义智能体在所有聊天模式下都能用。
 
 ## 新建一个自定义智能体
 
-1. 打开 **Agents** 面板。
-2. 点击顶部附近的 **New**(新建)（加号图标）。整页的智能体编辑器会打开。
+1. 打开 **Library → Agents**(资料库 → 智能体)。
+2. 点击右上角的 **New agent**(新建智能体)。整页的智能体编辑器会打开。
 3. 在标题输入框里填写名称，例如 `Weather Reporter`。
 4. 填好 **Description**(描述) 和 **Author**(作者)。
 5. 选择一个 **Pipeline Phase**(流程阶段)（见 [Pipeline Phase](#pipeline-phase)）。
 6. 在 **Custom Agent Abilities**(自定义智能体能力) 下开启它需要的能力。
 7. 挑一个与智能体产出相符的 **Result Type**(结果类型)。拿不准的话，选 **Context Injection**(上下文注入)。它不需要任何能力，也没有严格的输出格式。
 8. 在 **Prompt Template**(提示词模板) 下写它的指令。
-9. 点击顶栏的 **Save**(保存)。会出现一个绿色的 **Saved** 角标。
+9. 点击编辑器顶部的 **Save**(保存)，或者按 <kbd>Ctrl</kbd>+<kbd>S</kbd>。
 
-智能体现在会出现在 **Agents** 面板的 **Custom Agents**(自定义智能体) 区域。要使用它，打开一个聊天，进入 **Chat Settings**(聊天设置)，开启 **Enable Agents**(启用智能体)，再从 **Custom Agents** 里添加这个智能体。
+智能体现在会出现在 **Agents** 页面的 **Your agents**(你的智能体) 下。要使用它，打开一个聊天，进入 **Chat Settings**(聊天设置)，开启 **Enable Agents**(启用智能体)，再从 **Custom Agents**(自定义智能体) 里添加这个智能体。
 
 ## Pipeline Phase
 
@@ -160,23 +160,23 @@ Marinara 把 `editedText` 换进回复里。`changes` 里的说明会显示为�
 
 ## 导入和导出智能体
 
-要导出一个智能体，点击编辑器顶栏的 **Export agent**(导出智能体)（上传图标）。文件里包含智能体的提示词和设置，但永远不包含自定义工具的定义。要导出多个，在 **Agents** 面板里用 **Select agents**(选择智能体)，选好后导出。
+要导出一个智能体，点击编辑器顶栏的 **Export agent**(导出智能体)（上传图标），或者在 **Library → Agents** 的 **Your agents** 下，打开它的 **⋯** 菜单，选择 **Export**(导出)。文件里包含智能体的提示词和设置，但永远不包含自定义工具的定义。要一次导出多个，点击 **Select**(选择)（**Agents** 标题旁的勾选图标），在 **Your agents** 下选好智能体，再点击底栏的 **Export**。同一个 **⋯** 菜单里还有 **Duplicate**(创建副本) 和 **Delete**(删除)。
 
 外部导入默认是锁住的。
 
-1. 打开 **Settings → Advanced → Danger Zone**(设置 → 高级 → 危险区域)，开启 **Allow custom Agent imports**(允许导入自定义智能体)。不需要改 `.env`。
-2. 在 **Agents** 面板里点击 **Import agents**(导入智能体)，选择智能体文件或文件夹。
+1. 打开 **Settings → Advanced → Security**(设置 → 高级 → 安全)，开启 **Allow custom Agent imports**(允许导入自定义智能体)。不需要改 `.env`。
+2. 打开 **Library → Agents**，点击 **Import agents**(导入智能体)（**Starter kits**(入门套装) 旁的下载图标），选择 **Choose Files**(选择文件) 或 **Choose Folder**(选择文件夹)，再选择智能体文件。
 3. 检查 Marinara 列出的权限清单。只批准这个智能体确实需要的权限。没勾选的能力保持禁用。
 
-这个锁只影响来自文件、文件夹或自定义仓库的智能体。你自己创建的智能体，以及从 **Agent Organizer**(智能体管理器) 安装的官方智能体，照常可用。每个导入的文件都会得到一个新的自定义身份，所以它无法顶替官方智能体。
+这个锁只影响来自文件、文件夹或自定义仓库的智能体。你自己创建的智能体，以及从 **Library → Agents** 安装的官方智能体，照常可用。每个导入的文件都会得到一个新的自定义身份，所以它无法顶替官方智能体。
 
-出于安全考虑，Marinara 会忽略附带的函数，清空工具选择，清理临时 CSS，并在导入的智能体改动消息、追踪器、世界书、背景、立绘、媒体、触觉设备、About Me 数据、提示词或图像之前，先核对已批准的能力。可信的函数要单独导入，检查之后再自己挂载到智能体上。把 **Danger Zone** 开关关掉，导入的智能体就会停止运行。
+出于安全考虑，Marinara 会忽略附带的函数，清空工具选择，清理临时 CSS，并在导入的智能体改动消息、追踪器、世界书、背景、立绘、媒体、触觉设备、About Me 数据、提示词或图像之前，先核对已批准的能力。可信的函数要单独导入，检查之后再自己挂载到智能体上。把 **Allow custom Agent imports**关掉，导入的智能体就会停止运行。
 
 <a id="activation-questions"></a>
 
 ## 激活问题
 
-激活问题会询问最近的场景是否需要你的智能体。它能识别关键词漏掉的改述。它需要一个 **Decision model**(判定模型)，也就是回答是非问题的小模型。在 Connections(连接) 面板里选一个，见 [Decision 模型](../connections/decision-models.md)。**Decision model** 设为默认的 **None**(无) 时，问题字段保持禁用，带问题的智能体会像没有问题一样运行。
+激活问题会询问最近的场景是否需要你的智能体。它能识别关键词漏掉的改述。它需要一个 **Decision model**(判定模型)，也就是回答是非问题的小模型。在 Connections(连接) 页面的 **Defaults**(默认值) 区域里选一个，见 [Decision 模型](../connections/decision-models.md)。**Decision model** 设为默认的 **None**(无) 时，问题字段保持禁用，带问题的智能体会像没有问题一样运行。
 
 1. 打开这个自定义智能体。
 2. 输入最多 500 个字符的 **Question**(问题)。其中可以使用 `{{user}}` 和 `{{char}}` 宏。
@@ -193,7 +193,7 @@ Marinara 把 `editedText` 换进回复里。`changes` 里的说明会显示为�
 - 超时、模型不可用或答案无效时，智能体正常运行。时限取决于模型类型，以及模型是否需要先推理。见[时限](../connections/decision-models.md#time-limits)。
 - 带有激活问题或判定陈述的导入智能体会显示一条通知，链接到 Decision 模型指南。没有 Decision 模型时，只要关键词和 **Trigger Cadence**(触发频率) 允许，智能体就会运行，提示词里的陈述按否处理。
 
-激活问题只适用于自定义智能体。
+激活问题只适用于自定义智能体。内置的 Illustrator 会用自己固定的检查来判断新地点和天气，见 [Decision 模型检查](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)。
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

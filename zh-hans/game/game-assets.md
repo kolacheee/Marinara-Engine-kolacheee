@@ -31,7 +31,7 @@ Asset Browser 里的 **Backgrounds** 和 **Sprites** 文件夹一开始是空的
 **Asset Browser** 是游戏素材的文件管理器。从 **Settings**(设置) 打开：
 
 1. 打开 **Settings**。
-2. 切到 **Imports**(导入) 选项卡。
+2. 切到 **Game**(游戏) 选项卡。
 3. 找到 **Game Assets**(游戏素材)，点击 **Asset Browser**。
 
 也可以从游戏里打开：
@@ -57,7 +57,7 @@ Marinara 会按[文件类型和大小](#file-types-and-sizes)里的规则检查�
 
 ### 从 Settings 上传
 
-1. 打开 **Settings**，切到 **Imports** 选项卡。
+1. 打开 **Settings**，切到 **Game** 选项卡。
 2. 在 **Game Assets** 里，从 **Type**(类型) 中选一个分类：**Music**、**Ambient**、**Sound Effects**、**Sprites** 或 **Backgrounds**。
 3. 在 **Folder**(文件夹) 里设置目标位置，或者保留默认值。
 4. 点击 **Choose Files**(选择文件)，选中你的文件。
@@ -155,7 +155,7 @@ Game Mode 聊天可以只使用你的一部分素材文件夹，比如不让欢�
 
 Game Mode 可以通过 **Music & Sound Effects**(音乐与音效) 账号生成音效和音乐。可以选择 ElevenLabs、SunoAPI 或自定义兼容服务器。每段新音效或新曲目都会用到那个服务的账号。自带音频无需生成，始终可用。
 
-**开始之前：** 你需要一个 **Music & Sound Effects** 账号。**Add account**(添加账号) 窗口里没有它的按钮。这类账号来自升级或导入（**Connections**(连接) 里的 **Import a backup**(导入备份)）。见[服务商设置和限制](../connections/providers-reference.md#music--sound-effects)。
+**开始之前：** 你需要一个 **Music & Sound Effects** 账号。**Add connection**(添加连接) 列表里没有它。这类账号来自升级或导入（**Connections**(连接) 页面上的 **Import**(导入)）。见[服务商设置和限制](../connections/providers-reference.md#music--sound-effects)。
 
 1. 在 **Connections** 里，用 **Edit model**(编辑模型) 打开这个账号的模型。
 2. 选择服务，填写密钥，再选择音乐和音效模型。SunoAPI 音乐还需要一个公开的 HTTPS 回调 URL。自定义服务器需要填写端点路径。

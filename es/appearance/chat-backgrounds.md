@@ -1,32 +1,30 @@
-# Fondos del chat
+# Biblioteca de fondos
 
-La biblioteca de fondos contiene las imágenes que subes y eliges a mano para colocarlas detrás de tu chat. Para el agente **Background** (Fondo) que elige un fondo por ti en cada turno, consulta [Fondos de Roleplay](../roleplay/backgrounds.md). Para los fondos generados con IA que se crean desde la galería, consulta [Fondos de escena y la galería](../media/scene-backgrounds.md).
+La biblioteca de fondos contiene todas las imágenes que pueden aparecer detrás de un chat: las que subes, las que Illustrator pinta para ti y el arte que viene con Marinara. Esta guía explica cómo elegir una imagen para un chat, importar, etiquetar, usar carpetas, establecer el fondo de Roleplay predeterminado y usar **Background Blur** (Desenfoque del fondo).
 
-Un fondo de chat se muestra en todos los modos de chat. En los chats de Conversation, el degradado de **Conversation Theme** (Tema de Conversation) se mantiene sobre la imagen, y **Conversation background image opacity** (Opacidad de la imagen de fondo de Conversation) fija con qué intensidad se ve la imagen. Consulta [Configuración de apariencia](appearance-settings.md).
+Para los fondos que cambian con la historia (el agente Background, los lugares fijados y las imágenes que siguen a un personaje), consulta [Fondos que siguen la historia](../roleplay/backgrounds.md). Para las imágenes que pinta Illustrator, incluidas las versiones con lluvia y nieve, consulta [Fondos creados por Illustrator](../media/scene-backgrounds.md).
 
-## Cambiar el fondo de un chat
+Un fondo de chat se muestra en todos los modos de chat. En los chats de Conversation, el degradado de **Conversation Background** (Fondo de Conversation) se mantiene sobre la imagen, y **Conversation background image opacity** (Opacidad de la imagen de fondo de Conversation) fija con qué intensidad se ve. Consulta [Configuración de apariencia](appearance-settings.md).
 
-Antes de empezar: abre el chat que quieres cambiar. El fondo que elijas se aplica a ese chat.
+## Dónde encontrarla
 
-1. Abre **Settings** (Configuración), luego **Appearance** (Apariencia) y luego el botón **App**.
-2. En **Backgrounds** (Fondos), toca **Browse library** (Explorar la biblioteca).
-3. Toca una imagen. Se convierte en el fondo de este chat y la ventana se cierra.
+Abre **Settings → Appearance** (Configuración → Apariencia) y busca la sección **Backgrounds** (Fondos). Tiene el selector **Chat Background** (Fondo del chat), el control deslizante **Background Blur** y los controles **Conversation background image opacity** y **Chat List Backgrounds** (Fondos en la lista de chats).
+
+El selector muestra una vista previa del fondo actual, o **Default background** (Fondo predeterminado) cuando no hay ninguno elegido. Debajo, hasta tres fondos **Recent** (Recientes) están a un toque. **Browse library** (Explorar la biblioteca) abre la ventana **Background Library** (Biblioteca de fondos). En un chat, **Chat Settings → Background** (Ajustes del chat → Fondo) abre la misma biblioteca para ese chat.
+
+## Elegir un fondo para un chat
+
+Antes de empezar: abre el chat que quieres cambiar. La imagen que elijas se aplica solo a ese chat.
+
+1. Abre **Settings → Appearance → Backgrounds** (Configuración → Apariencia → Fondos) y haz clic en **Browse library**.
+2. Haz clic en una imagen. Aparece una marca de verificación, se convierte en el fondo de este chat y la ventana se cierra.
+3. Para volver al predeterminado, haz clic de nuevo en la imagen seleccionada, o haz clic en la X (**Clear selection**, Borrar la selección) de la vista previa.
 
 Para usar tu propia imagen, impórtala primero (consulta [Importar un fondo](#import-a-background)).
 
-## Dónde encontrar los fondos
-
-1. Abre **Settings**.
-2. Selecciona la pestaña **Appearance** y luego el botón **App**.
-3. Busca la sección **Backgrounds**.
-
-Tiene el selector **Chat Background** (Fondo del chat), el control deslizante **Background Blur** (Desenfoque del fondo) y los controles **Conversation background image opacity** y **Chat List Backgrounds** (Fondos en la lista de chats). Consulta [Configuración de apariencia](appearance-settings.md).
-
-El selector muestra una vista previa del fondo actual, o **Default background** (Fondo predeterminado) cuando no hay ninguno elegido. Debajo, hasta tres fondos **Recent** (Recientes) están a un toque. Haz clic en **Browse library** para abrir la ventana **Background Library** (Biblioteca de fondos).
-
 ## La biblioteca de fondos
 
-La biblioteca combina las imágenes que subiste con el arte integrado que viene con Marinara. Cada imagen tiene una etiqueta.
+La biblioteca combina las imágenes que subiste o que pintó Illustrator con el arte integrado que viene con Marinara. Cada imagen tiene una etiqueta.
 
 | Etiqueta | Significado |
 | --- | --- |
@@ -46,12 +44,6 @@ Los botones de **Filter by source** (Filtrar por fuente) —**All sources** (Tod
 Las nuevas imágenes aparecen en la cuadrícula con la etiqueta **My upload**.
 
 Cada archivo debe ser JPG, PNG, GIF, WebP o AVIF, de hasta 20 MB. Marinara comprueba lo que contiene el archivo, no su nombre. Un archivo que no es una imagen y que se renombra a `.png` se rechaza.
-
-### Elegir un fondo para el chat actual
-
-1. Abre **Browse library**.
-2. Haz clic en una miniatura. Aparece una marca de verificación, la imagen se convierte en el fondo de este chat y la ventana se cierra.
-3. Para volver al predeterminado, haz clic de nuevo en la miniatura seleccionada, o haz clic en la X (**Clear selection**, Borrar la selección) de la vista previa.
 
 ### Buscar y filtrar
 
@@ -90,6 +82,10 @@ Solo puedes etiquetar las imágenes **My upload**.
 3. Pulsa <kbd>Enter</kbd> o haz clic en **Add**.
 
 Para quitar una etiqueta, haz clic en ella mientras editas las etiquetas.
+
+Las etiquetas están en minúsculas y pueden contener letras, números, espacios, guiones y guiones bajos, hasta 40 caracteres cada una.
+
+Etiqueta las imágenes con los lugares que muestran, como `guest bedroom` o `harbor tavern`. El agente **Background** (Fondo) lee las etiquetas al elegir, e Illustrator reutiliza una imagen cuya etiqueta de dos o más palabras nombre el lugar de la historia en vez de pintar una nueva. Consulta [Reutilizar imágenes que ya tienes](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 <a id="download-a-background"></a>
 
@@ -136,6 +132,6 @@ Para el modelo de sincronización completo, consulta [Configuración de aparienc
 
 ## Guías relacionadas
 
-- [Fondos de Roleplay](../roleplay/backgrounds.md): el agente Background que elige un fondo en cada turno.
-- [Fondos de escena y la galería](../media/scene-backgrounds.md): fondos de escena generados con IA desde la galería. También van a parar a esta biblioteca.
+- [Fondos que siguen la historia](../roleplay/backgrounds.md): el agente Background, los lugares fijados y los fondos de galería.
+- [Fondos creados por Illustrator](../media/scene-backgrounds.md): fondos pintados y versiones según el clima. También van a parar a esta biblioteca.
 - [Configuración de apariencia](appearance-settings.md): la pestaña Appearance completa.

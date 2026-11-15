@@ -11,7 +11,7 @@ Zanim zaczniesz: Prompt Overrides mają znaczenie tylko dla funkcji, które gene
 ## Gdzie znaleźć edytory
 
 1. Otwórz panel **Settings** (Ustawienia).
-2. Kliknij zakładkę **Generations** (generowanie).
+2. Kliknij zakładkę **Media**. Dopóki agent Illustrator nie jest zainstalowany, ta zakładka oferuje tylko jego pobranie.
 3. Przewiń do sekcji **Prompt Overrides** ("Reusable image and video prompt templates").
 
 Są tam dwa edytory. Kliknij tytuł, żeby go rozwinąć.

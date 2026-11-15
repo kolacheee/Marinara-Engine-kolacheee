@@ -76,7 +76,7 @@ ws://192.168.1.50:12345
 
 기본적으로 Marinara는 Marinara 서버를 실행하는 컴퓨터에서 보낸 햅틱 명령만 받아들입니다. 기기 제어를 비공개로 유지하기 위해서입니다. 그래서 다른 곳에 있는 서버에 접속하는 휴대폰이나 다른 기기에서 Marinara를 열면 햅틱 피드백이 작동하지 않습니다. 연결, 검색, 명령 동작이 모두 거부됩니다.
 
-허용하려면 서버 설정 `HAPTICS_ALLOW_REMOTE`를 켜고, 로그인이나 관리자 시크릿 같은 접근 보호를 설정하세요. [서버 설정 참고 문서](../CONFIGURATION.md)와 [원격 접근](../REMOTE_ACCESS.md) 가이드를 참고하세요. 관리자 접근 정보는 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에서 입력합니다.
+허용하려면 서버 설정 `HAPTICS_ALLOW_REMOTE`를 켜고, 로그인이나 관리자 시크릿 같은 접근 보호를 설정하세요. [서버 설정 참고 문서](../CONFIGURATION.md)와 [원격 접근](../REMOTE_ACCESS.md) 가이드를 참고하세요. 관리자 접근 정보는 **Settings → Advanced → Security**(설정 → 고급 → 보안)에서 입력합니다.
 
 ## 잘 작동하지 않을 때
 

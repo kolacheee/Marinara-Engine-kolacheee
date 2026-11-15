@@ -6,7 +6,7 @@ Ein Stilprofil ist ein wiederverwendbarer „Hausstil“, der jeden Bild-Prompt 
 
 Jedes generierte Bild beginnt als Text-Prompt: Avatare, Porträts, Selfies in Conversation, Szenen-Hintergründe, Illustrationen und Sprites. Ein Stilprofil ist ein gespeicherter Satz Regeln, den Marinara diesem Prompt hinzufügt. Es kann positive Wörter (was du willst), negative Wörter (was du vermeiden willst) und einen bevorzugten Prompt-Stil beisteuern. Ein Profil legst du als app-weiten Standard fest. Für einen einzelnen Chat oder ein einzelnes Bildmodell kannst du es überschreiben.
 
-Den Editor findest du unter **Settings → Generations → Image Generation** (Einstellungen → Generierungen → Bildgenerierung). Scroll dort zu **Style Profiles** (Stilprofile).
+Den Editor findest du unter **Settings → Media → Image Generation** (Einstellungen → Medien → Bildgenerierung). Scroll dort zu **Style Profiles** (Stilprofile).
 
 ## Die mitgelieferten Profile
 
@@ -35,7 +35,7 @@ Die mitgelieferten Profile:
 
 Das Standardprofil gilt für jedes Bild, solange kein Chat und kein Bildmodell es überschreibt.
 
-1. Öffne **Settings → Generations → Image Generation → Style Profiles**.
+1. Öffne **Settings → Media → Image Generation → Style Profiles**.
 2. Öffne die Liste **Default style** (Standardstil).
 3. Wähl ein Profil.
 

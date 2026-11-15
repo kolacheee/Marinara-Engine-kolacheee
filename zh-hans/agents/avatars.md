@@ -6,9 +6,9 @@
 
 ## 安装虚拟形象智能体
 
-所有安装都能在 **Agent Organizer**(智能体管理器) 的 **Roleplay** 和 **Game** 筛选项下找到这两个智能体。它们需要 Marinara Engine 2.5.1 或更新版本，旧版 Engine 会拒绝安装。它们是分开下载的，所以只装你想要的那个就行。两者都适用于 Roleplay(角色扮演) 和 Game(游戏模式) 聊天里的角色和用户角色，聊天时也不会向你的 AI 模型发送额外请求。
+所有安装都能在 **Library → Agents**(资料库 → 智能体) 的 **Available**(可用) 中，通过 **Roleplay** 和 **Game** 筛选项找到这两个智能体。它们需要 Marinara Engine 2.5.1 或更新版本，旧版 Engine 会拒绝安装。它们是分开下载的，所以只装你想要的那个就行。两者都适用于 Roleplay(角色扮演) 和 Game(游戏模式) 聊天里的角色和用户角色，聊天时也不会向你的 AI 模型发送额外请求。
 
-1. 打开 **Agents → Agent Organizer**(智能体 → 智能体管理器)，安装 **2D Avatars**、**3D Avatars** 或两个都装。都不需要重启。
+1. 打开 **Library → Agents**，安装 **2D Avatars**、**3D Avatars** 或两个都装。都不需要重启。
 2. 在该智能体的页面上设置每个虚拟形象（见[设置虚拟形象](#set-up-an-avatar)）。
 3. 在 Roleplay 或 Game 聊天里，打开 **Chat Settings → Agents → Misc Agents**(聊天设置 → 智能体 → 其他智能体)，添加这个智能体。
 
@@ -43,7 +43,7 @@
 
 ### 虚拟形象文件存放在哪里
 
-导入的文件在保存前会先经过检查。唯一的大小限制是服务器常规的上传上限。文件存放在数据文件夹的 `avatar-models/<character or persona>/<id>/` 下，旁边是保存设置的 `avatar.json`。备份和档案导出都包含这个文件夹。删除角色或用户角色会一并删除它的虚拟形象，在设置的 Danger Zone(危险区域) 里清除全部 **Characters**(角色)、**Personas**(用户角色) 或 **Media & Assets**(媒体与素材) 时也一样。导出角色卡时永远不会包含虚拟形象。
+导入的文件在保存前会先经过检查。唯一的大小限制是服务器常规的上传上限。文件存放在数据文件夹的 `avatar-models/<character or persona>/<id>/` 下，旁边是保存设置的 `avatar.json`。备份和档案导出都包含这个文件夹。删除角色或用户角色会一并删除它的虚拟形象，在**Settings → Data → Delete Data**(设置 → 数据 → 删除数据) 里清除全部 **Characters**(角色)、**Personas**(用户角色) 或 **Media & Assets**(媒体与素材) 时也一样。导出角色卡时永远不会包含虚拟形象。
 
 ### 群聊
 
@@ -272,7 +272,7 @@ PNGTuber 虚拟形象如果有[更多情绪](#pngtuber-sprites)的表情，就�
 
 | 想要的 | 工具 | 得到的 |
 | --- | --- | --- |
-| PNGTuber 立绘 | 任意绘图应用，再加上角色的 **Images → Sprites**(图像 → 立绘) | 立绘 |
+| PNGTuber 立绘 | 任意绘图应用，再加上角色的 **Sprites**(立绘) 选项卡 | 立绘 |
 | 带图层和服装的 PNGTuber 立绘 | [PNGTuber Plus](https://github.com/kaiakairos/PNGTuber-Plus) | 一个 `.save` 文件 |
 | 网格虚拟形象 | [Mesh Avatar Studio](https://github.com/shinshin86/mesh-avatar-studio) | 一个 `.mavatar` 文件 |
 | 3D 模型 | [VRoid Studio](https://vroid.com/en/studio)，或者 Blender 搭配 [VRM Add-on for Blender](https://vrm-addon-for-blender.info/en-us/) | 一个 `.vrm` 文件，可选再加一个 `.vrma` 待机动画 |
@@ -281,7 +281,7 @@ PNGTuber 虚拟形象如果有[更多情绪](#pngtuber-sprites)的表情，就�
 
 1. 每种情绪画一张图，所有图尺寸相同，角色也在同一位置。每张图按它的情绪命名：`neutral`、`happy`、`angry`、`sad`、`relaxed`、`surprised`。包含情绪词的名字也可以，比如 `smile`、`cry`、`calm` 或 `shock`。对于可选的[更多情绪](#pngtuber-sprites)，图片可以命名为 `amusement`、`fear` 或 `gratitude` 这样的名字。
 2. 想让嘴巴动，就画一张嘴巴张开、其余都一样的图，在名字后加 `_talk`，例如 `happy_talk`。想要眨眼，就闭上眼睛，加 `_blink`。两者都有时加 `_blink_talk`。
-3. 在 **Images → Sprites** 的 **Facial Expressions**(面部表情) 下添加这些图片。每个文件名会成为对应立绘的名称。见[角色立绘](../characters/sprites.md#upload-your-own-sprites)。
+3. 在 **Sprites** 选项卡的 **Facial Expressions**(面部表情) 下添加这些图片。每个文件名会成为对应立绘的名称。见[角色立绘](../characters/sprites.md#upload-your-own-sprites)。
 4. 在 **Agents** 里打开 **2D Avatars**，选择角色或用户角色，再开启 **Show this avatar in chats**。
 
 ### PNGTuber Plus

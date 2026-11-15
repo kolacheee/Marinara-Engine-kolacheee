@@ -7,13 +7,13 @@ Professor Mari é a assistente integrada da tela inicial. Ela explica o aplicati
 ## Onde encontrar a Professor Mari
 
 1. Vá para a tela inicial. Ela aparece quando nenhum chat está aberto.
-2. Clique em **Ask Professor Mari** (falar com a Professor Mari) no widget **Professor Mari**, ou clique na aba **Professor**.
+2. Clique em **Ask Professor Mari** (falar com a Professor Mari) no widget **Professor Mari**, ou clique em **Professor** no topo da tela inicial.
 
-A janela dela se abre. Você também chega até ela de qualquer tela: digite na busca e escolha **Ask Prof. Mari**, pressione <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> no Mac) ou, no celular, puxe a barra superior para baixo. O cabeçalho dela mostra **Ready to help** quando ela está parada e **Working on it...** enquanto ela trabalha.
+Ela abre em uma aba própria. Você também chega até ela de qualquer tela: pressione <kbd>Ctrl</kbd>+<kbd>K</kbd>, digite a sua pergunta e escolha **Ask Prof. Mari**, pressione <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> no Mac) para abrir a janela pop-up dela ou, no celular, toque no título na barra superior. O cabeçalho dela mostra **Ready to help** quando ela está parada e **Working on it...** enquanto ela trabalha.
 
 Digite a sua mensagem em linguagem comum e pressione <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> quebra a linha. Se você desligar **Enter sends to Professor Mari** (Enter envia para a Professor Mari) nas configurações dela, <kbd>Enter</kbd> quebra a linha e <kbd>Ctrl</kbd>+<kbd>Enter</kbd> envia. A sua primeira mensagem desbloqueia a conquista **Hello World**.
 
-Todas as configurações dela ficam em **Settings → General → Search and Professor Mari settings → Open** (Configurações → Geral → configurações da busca e da Professor Mari → abrir), ou na engrenagem da busca. No computador, os controles deslizantes **Height** (altura) e **Width** (largura), em **Professor Mari window** (janela da Professor Mari), mudam o tamanho da janela dela. No celular, a janela dela ocupa a tela inteira.
+Todas as configurações dela ficam em **Settings → General → Professor Mari → Open** (Configurações → Geral → Professor Mari → Abrir), ou na engrenagem da busca. No computador, os controles deslizantes **Height** (altura) e **Width** (largura), em **Professor Mari window** (janela da Professor Mari), mudam o tamanho da janela dela. No celular, a janela dela ocupa a tela inteira.
 
 ## Criar um personagem com a Mari
 
@@ -36,10 +36,10 @@ Ela lê um item antes de editá-lo e pergunta quando o seu pedido está vago.
 - Explicar uma configuração, um modo ou um conceito.
 - Criar ou editar um personagem, uma persona ou um lorebook. O card de personagem dá à IA um nome, uma personalidade e uma voz. A persona é o card de personagem que representa você. O lorebook é um conjunto de fatos do mundo que a IA lê quando as palavras-chave deles aparecem.
 - Escrever o [onboarding interativo](../characters/interactive-onboarding.md) de um personagem e preencher uma [ficha de conjunto de regras](../characters/colors-and-stats.md#ruleset-sheets) para um conjunto de regras de Game Mode instalado. A alteração dela é recusada, com o motivo, quando um valor não cabe no conjunto de regras.
-- Criar ou editar um tema, um agente, um preset de prompt ou um rascunho de Personal Extension. O rascunho fica desativado até você ler o código dele e aprová-lo em **Settings → Addons** (Configurações → Complementos).
+- Criar ou editar um tema, um agente, um preset de prompt ou um rascunho de Personal Extension. O rascunho fica desativado até você ler o código dele e aprová-lo em **Library → Extensions** (Biblioteca → Extensões).
 - Editar uma seção de um preset no próprio lugar, em vez de substituir o preset inteiro.
-- Comparar os agentes disponíveis para download e dizer quais combinam com o seu objetivo. Ela encaminha você para **Agents → Agent Organizer** (agentes → Organizador de agentes) para instalá-los. Veja [Referência dos agentes para download](../agents/built-in-agents.md).
-- Gerar ou atribuir imagens, como avatares, sprites e planos de fundo. Antes, você precisa de uma conta de geração de imagens. Ela não cria essa conta.
+- Comparar os agentes disponíveis para download e dizer quais combinam com o seu objetivo. Ela encaminha você para **Library → Agents** (Biblioteca → Agentes) para instalá-los. Veja [Referência dos agentes para download](../agents/built-in-agents.md).
+- Gerar ou atribuir imagens, como avatares, sprites, planos de fundo e imagens de um tema, além de recortar, aparar, redimensionar ou remover um fundo de cor uniforme delas. Antes, você precisa de uma conta de geração de imagens. Ela não cria essa conta. Para a arte de temas, veja [Peça à Professor Mari para criar a arte](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
 - Consultar páginas públicas de wikis do Fandom quando você pesquisa um personagem ou um mundo.
 
 ### Comece com uma sugestão
@@ -182,6 +182,8 @@ Os chats dela ficam separados da sua lista normal de chats.
 1. Clique em **Chats** no cabeçalho dela.
 2. Use **Search Prof. Mari chats** (buscar nos chats da Professor Mari) para encontrar um. Clique em um chat para abri-lo, renomeá-lo ou excluí-lo.
 
+Um chat longo com ela abre nas mensagens mais recentes. Role para cima e clique em **Show older** (mostrar mais antigas) para trazer as anteriores de volta; a sua posição continua onde estava.
+
 Clique em **New chat** ou digite `/new` para começar do zero. Antes, o chat atual é salvo, e aparece **Professor Mari's previous chat was saved.**
 
 ## Quick answers in Search
@@ -231,7 +233,7 @@ Quando um pedido falha, o chat guarda o motivo e mostra **Retry** (tentar novame
 
 ## Ler o FAQ
 
-Clique no favorito **FAQ**, ou em **Read FAQ** (ler o FAQ) no widget **Learn the engine** (conhecer o Engine), para abrir o **Professor Mari's FAQ** (FAQ da Professor Mari). É uma lista fixa já escrita, não o chat com a IA, então ela não conhece a sua configuração. Digite em **Search FAQ** (buscar no FAQ) para filtrar. Cada pergunta tem uma tag de categoria, como **Setup**, **Connections** ou **Game Mode**. Toque em uma pergunta para ler a resposta.
+Clique em **Read FAQ** (ler o FAQ) no widget **Learn the engine** (conhecer o Engine) na tela inicial (ou no favorito **FAQ** no layout clássico) para abrir o **Professor Mari's FAQ** (FAQ da Professor Mari). É uma lista fixa já escrita, não o chat com a IA, então ela não conhece a sua configuração. Digite em **Search FAQ** (buscar no FAQ) para filtrar. Cada pergunta tem uma tag de categoria, como **Setup**, **Connections** ou **Game Mode**. Toque em uma pergunta para ler a resposta.
 
 ## Limites e segurança
 

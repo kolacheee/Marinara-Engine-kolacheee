@@ -14,8 +14,8 @@ Ein lokales Sprachmodell und ein Bildmodell passen unter Umständen nicht gleich
 
 ## Die Marinara-Verbindung anlegen
 
-1. Klick auf **Connections** (Verbindungen) und dann auf **Add** (Hinzufügen). Wähle im Fenster **Add account** (Konto hinzufügen) unter **Images & video** (Bilder und Video) **ComfyUI** für einen lokalen Server oder **RunPod Serverless (ComfyUI)** für einen RunPod-Endpunkt.
-2. Für lokales ComfyUI trägst du seine Adresse ein (`http://127.0.0.1:8188`). Ein API-Key ist nicht nötig, es sei denn, ein Proxy vor ComfyUI verlangt einen (siehe [Proxy mit Authentifizierung nutzen](#use-an-authenticated-proxy)). Bleibt das Feld **ComfyUI workflow (optional)** leer, nutzt Marinara einen eingebauten Basis-Workflow für Text-zu-Bild.
+1. Öffne **Library → Connections** (Bibliothek → Verbindungen) und klick auf **Add connection** (Verbindung hinzufügen). Wähle auf dem Tab **Bild** **ComfyUI** für einen lokalen Server oder **RunPod Serverless (ComfyUI)** für einen RunPod-Endpunkt.
+2. Für lokales ComfyUI trägst du seine Adresse ein (`http://127.0.0.1:8188`). Ein API-Key ist nicht nötig, außer ein vorgeschalteter Proxy verlangt einen (siehe [Einen authentifizierten Proxy verwenden](#use-an-authenticated-proxy)). Bleibt das Feld **ComfyUI workflow (optional)** leer, nutzt Marinara einen eingebauten Basis-Workflow für Text-zu-Bild.
 3. Für RunPod trägst du deinen API-Key und die **RunPod endpoint ID** ein. Ein eigener Workflow ist Pflicht.
 4. Richte am Bildmodell die **Local image defaults** (lokale Bild-Standardwerte) ein. Diese Werte ersetzen die passenden Platzhalter in deinem Workflow.
 5. Füge den Workflow ein, speichere und klick auf **Test image** (Bild testen).

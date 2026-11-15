@@ -57,7 +57,7 @@ Hast du einen anderen `PORT` gesetzt, nimm diese Nummer. Für ein App-ähnliches
 
 ## Marinara starten und stoppen
 
-Mit der App: Öffne sie und tipp auf **Install / Start Marinara**, wenn der Server gestoppt ist. Um zwischen App und Browser zu wechseln, nutze im Launcher **Open in browser** und danach **Retry connection** (Verbindung erneut versuchen). Aus der App heraus kommst du über **Settings → General → App Behavior → Open Android launcher (app or browser)** (Einstellungen → Allgemein → App-Verhalten → Android-Launcher öffnen (App oder Browser)) zurück zum Launcher.
+Mit der App: Öffne sie und tipp auf **Install / Start Marinara**, wenn der Server gestoppt ist. Um zwischen App und Browser zu wechseln, nutze im Launcher **Open in browser** und danach **Retry connection** (Verbindung erneut versuchen). Aus der App heraus kommst du über **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Einstellungen → Darstellung → Layout → Android-Launcher öffnen (App oder Browser)) zurück zum Launcher.
 
 Bei einer manuellen Installation öffnest du Termux und führst Folgendes aus:
 

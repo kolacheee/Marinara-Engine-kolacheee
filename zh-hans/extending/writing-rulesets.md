@@ -86,13 +86,13 @@ Game Mode 用 Marinara 自身的战斗或你的规则集的规则来结算战斗
 
 ## 试用你的规则集
 
-开始之前，先在 **Settings → Advanced → Danger Zone**(设置 → 高级 → 危险区域) 下开启 **Allow custom Agent imports**(允许导入自定义智能体)。导入的规则集与导入的智能体使用同一个安全开关，所以在你开启之前它一直是关闭的。导入还需要 localhost 访问或管理员密钥（**Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问)）。
+开始之前，先在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 下开启 **Allow custom Agent imports**(允许导入自定义智能体)。导入的规则集与导入的智能体使用同一个安全开关，所以在你开启之前它一直是关闭的。导入还需要 localhost 访问或管理员密钥（**Settings → Advanced → Security**(设置 → 高级 → 安全)）。
 
-1. 打开 **Agents**(智能体) 面板，选择 **Import agents**(导入智能体) 按钮（面板顶部按钮行中的下载图标）。
+1. 打开 **Library → Agents**(资料库 → 智能体)，点击 **Import agents**(导入智能体)（**Starter kits**(入门套装) 旁的下载图标）。在经典布局中，它是 **Agents**(智能体) 面板顶部的下载图标。
 2. 选择 **Game Mode ruleset**(Game Mode 规则集)，再选择你的 JSON 文件，或以 `.ruleset.json` 结尾的规则集包文件（见[分享你的规则集](#sharing-your-ruleset)）。
 3. 阅读审核信息。其中显示名称、版本、许可证、规则集覆盖的内容和 Game Master 文本。选择 **Import**(导入)。
 
-你的规则集会出现在面板的 **Rules** 区域，以及新游戏设置向导的 **Rules** 选项中。从文件导入的规则集归为 `local/<your id>`，因此绝不会与官方规则集或别人的规则集混淆。
+你的规则集会出现在新游戏设置向导的 **Rules** 选项中，以及经典 **Agents** 面板的 **Rules** 区域。从文件导入的规则集归为 `local/<your id>`，因此绝不会与官方规则集或别人的规则集混淆。
 
 ### 修改已导入的规则集
 
@@ -161,13 +161,13 @@ your-repository/
     another-system.json
 ```
 
-用户只需添加一次你的仓库，审核其中的内容，之后同步即可获取新版本。自定义仓库列表是一项高级功能。运行服务器的人用 `ENABLE_CUSTOM_AGENT_REPOS=true` 开启它，然后打开 **Agents → Agent Organizer → Custom Sources**(智能体 → 智能体管理器 → 自定义来源)。来自仓库的规则集归在仓库所有者名下，例如 `alice/ember-roads`，所以两位作者都能发布名为 `v20` 的规则集而不会冲突。
+用户只需添加一次你的仓库，审核其中的内容，之后同步即可获取新版本。自定义仓库列表是一项高级功能。运行服务器的人用 `ENABLE_CUSTOM_AGENT_REPOS=true` 开启它，然后打开 **Library → Agents → Custom Sources**(资料库 → 智能体 → 自定义来源)。来自仓库的规则集归在仓库所有者名下，例如 `alice/ember-roads`，所以两位作者都能发布名为 `v20` 的规则集而不会冲突。
 
 有两项限制。仓库的 `rulesets` 中最多直接存放 32 个 JSON 文件，超过就会拒绝该仓库。名为 `local` 的账号不能发布规则集，因为 `local/` 保留给从文件导入的规则集。
 
 ### 进入官方目录
 
-游玩广泛、授权清晰的系统，可以通过 **Agent Organizer** 提供给所有人。要提议加入一个系统，就向 [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 仓库提交拉取请求。布局可以参考该仓库里的 `ruleset-5e-2014` 包。
+游玩广泛、授权清晰的系统，可以通过 **Library → Agents** 提供给所有人。要提议加入一个系统，就向 [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 仓库提交拉取请求。布局可以参考该仓库里的 `ruleset-5e-2014` 包。
 
 ## 授权许可
 

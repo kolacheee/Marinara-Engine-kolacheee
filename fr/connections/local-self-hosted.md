@@ -8,8 +8,8 @@ Dans l'application, ce type de compte s'appelle **OpenAI-compatible** (compatibl
 
 Avant de commencer, installe un serveur de modèles, démarre-le et charge un modèle dans ce serveur. Par exemple, télécharge Ollama depuis `ollama.com` et suis ses étapes pour récupérer un modèle. Marinara se connecte au serveur et ne le démarre pas à ta place. Le serveur répond aux requêtes à une adresse web sur ton ordinateur, appelée point d'accès (endpoint).
 
-1. Clique sur **Connections** (Connexions) dans la barre du haut, puis sur **Add** (ajouter). La fenêtre **Add account** (ajouter un compte) s'ouvre.
-2. Sous **Chat**, clique sur ton serveur : **Ollama**, **LM Studio**, **KoboldCpp** ou **llama.cpp**. Ces tuiles portent l'étiquette **Self-hosted** (auto-hébergé). Pour tout autre serveur, clique sur **OpenAI-compatible address** (adresse compatible OpenAI).
+1. Ouvre **Library → Connections** (Bibliothèque → Connexions) et clique sur **Add connection** (ajouter un compte). La liste des services s'ouvre.
+2. Dans l'onglet **Texte**, sous **Self-hosted** (auto-hébergé), clique sur ton serveur : **Ollama**, **LM Studio**, **KoboldCpp** ou **llama.cpp**. Ils portent l'étiquette **Self-hosted**. Pour tout autre serveur, clique sur **OpenAI-compatible address** (adresse compatible OpenAI).
 3. Vérifie le champ **Server address** (adresse du serveur). Pour les quatre serveurs nommés, il est déjà rempli. Pour un autre serveur, tape son adresse. Voir le tableau ci-dessous.
 4. Laisse le champ **API key (optional)** (clé API, facultative) vide. La plupart des serveurs locaux n'ont besoin d'aucune clé. Pour nommer le compte, tape un nom dans **Name (optional)** (nom, facultatif).
 5. Clique sur **Connect** (connecter). Marinara teste l'adresse. **Connected** veut dire que Marinara a pu joindre le serveur.
@@ -21,6 +21,18 @@ Si ça n'a pas marché :
 
 - **Marinara could not reach** s'affiche quand Marinara n'a pas pu joindre l'adresse. Vérifie que le serveur tourne et que l'adresse et le port correspondent. **Continue anyway** (continuer quand même) enregistre le compte sans test réussi.
 - L'adresse se trouve sur un autre ordinateur. Voir [Joindre un serveur sur un autre ordinateur](#reach-a-server-on-another-computer).
+
+## Utiliser le modèle chargé sur le serveur
+
+Un serveur local ou auto-hébergé peut répondre avec le modèle qu'il a chargé ; son compte peut donc contenir un modèle **Par défaut**. Ce modèle n'envoie aucun nom de modèle. Il utilise toujours le modèle que tu as chargé dans Ollama, LM Studio, KoboldCpp ou llama.cpp, même après que tu y as changé de modèle.
+
+- Un nouveau compte pour un serveur sur ton ordinateur ou ton réseau commence avec un modèle **Par défaut**.
+- Pour en ajouter un plus tard, clique sur **⋯** sur le compte et choisis **Ajouter un modèle**. **Par défaut** est la première ligne.
+- Utilise **Par défaut** comme n'importe quel autre modèle : attribue-lui une tâche comme **Principal** dans l'encadré **Tâches**, ou choisis-le dans **Modèle pour ce chat**.
+- Dans le tableau des connexions, il porte la mention "Quel que soit le modèle chargé sur le serveur" et n'a pas d'étoile.
+- Clique sur **Par défaut** dans le panneau pour lui attribuer ses propres réglages, comme ses paramètres et son preset de prompt, comme tu le ferais pour un modèle nommé.
+
+**Par défaut** n'apparaît que pour un serveur sur ton ordinateur ou ton réseau. Un service cloud a toujours besoin d'un nom de modèle.
 
 ## Adresses des serveurs locaux courants
 
@@ -37,8 +49,6 @@ Dans **Edit model** (modifier le modèle), le champ d'adresse affiche cet averti
 
 Sous Windows, un serveur qui tourne peut quand même être bloqué. Si Marinara ne le détecte pas, le pare-feu Windows Defender le bloque peut-être. Ouvre **Windows Security → Firewall & network protection → Allow an app through firewall** (Sécurité Windows → Pare-feu et protection du réseau → Autoriser une application via le pare-feu), et ajoute Node.js ou le programme de ton serveur.
 
-<a id="test-the-connection"></a>
-
 ## Tester la connexion
 
 **Connect** a déjà vérifié l'adresse. L'éditeur de modèle propose une carte **Provider tests** (tests du fournisseur) pour une seconde vérification.
@@ -50,8 +60,6 @@ Sous Windows, un serveur qui tourne peut quand même être bloqué. Si Marinara 
 Si les deux réussissent, ouvre un chat et choisis le compte dans **Model for this chat** (modèle pour ce chat). Voir [Choisir un modèle pour un seul chat](connecting-to-a-provider.md#choosing-a-model-for-one-chat).
 
 Si un test échoue, vérifie que le serveur tourne avec un modèle chargé, et que l'adresse et le port correspondent exactement. Pour un serveur sur un autre ordinateur, vérifie les étapes ci-dessous.
-
-<a id="reach-a-server-on-another-computer"></a>
 
 ## Joindre un serveur sur un autre ordinateur
 
@@ -71,7 +79,7 @@ Sur Android, ce réglage est activé par défaut tant que tu ne le définis pas.
 
 ## Utiliser le modèle pour les décisions
 
-Le même modèle peut répondre aux questions de décision, comme les vérifications d'activation des agents, sans charger une seconde copie. Clique sur **⋯** sur le modèle dans le panneau et choisis **Use this model for decisions** (utiliser ce modèle pour les décisions). Cette option s'affiche pour un modèle compatible OpenAI qui a un nom de modèle. Voir [Modèles de décision](decision-models.md#on-a-server-you-already-run).
+Le même modèle peut répondre aux questions de décision, comme les vérifications d'activation des agents, sans charger une seconde copie. Ouvre **Library → Connections**, clique sur **Add connection**, ouvre l'onglet **Décision**, choisis **Own decision server** (ton propre serveur de décision) et saisis la même adresse. (Dans la disposition classique, le menu **⋯** du modèle propose un raccourci **Use this model for decisions** (utiliser ce modèle pour les décisions) qui remplit les champs à ta place.) Voir [Modèles de décision](decision-models.md#on-a-server-you-already-run).
 
 ## L'interrupteur Treat as local/custom endpoint
 

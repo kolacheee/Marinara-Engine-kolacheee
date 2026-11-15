@@ -2,7 +2,7 @@
 
 Ein Anruf ist ein Live-Bildschirm, wie in einer Voice-Chat-App, in dem du per Mikrofon oder Tippen mit einem oder mehreren Charakteren sprichst. Er liegt über dem normalen Conversation-Chat, solange er läuft. Anrufe gibt es nur in Conversation Mode.
 
-Anrufe sind ein optionales Paket. Installiere **Calls** über **Agents → Agent Organizer**. Fordert der Katalog dich zu einem Neustart auf, stoppe Marinara und starte es so wieder, wie du es normalerweise startest (siehe [Installation](../INSTALLATION.md)).
+Anrufe sind ein optionales Paket. Installiere **Calls** über **Library → Agents** (Bibliothek → Agenten). Fordert der Katalog dich zu einem Neustart auf, stoppe Marinara und starte es so wieder, wie du es normalerweise startest (siehe [Installation](../INSTALLATION.md)).
 
 Während eines Anrufs sprechen Charaktere mit einer funktionierenden Text-to-Speech-Stimme (TTS, Text wird in gesprochenes Audio umgewandelt) laut. Charaktere ohne Stimme antworten als getippte Nachrichten im Anruf-Chat. Du kannst auch wiederholte KI-Videoclips eines Charakters statt eines Standbilds zeigen.
 
@@ -42,14 +42,13 @@ Der Hauptschalter **Commands** im selben Bereich muss für Befehle im Anruf an s
 
 ### Text to Speech einrichten
 
-Text to Speech legt fest, welche Charaktere mit welcher Stimme sprechen können. Lies [Text to Speech (TTS) einrichten](../media/tts-setup.md) für die vollständige Anleitung. Kurz gefasst: Öffne **Connections**, klicke auf **Add account** und wähle **Text to speech**. Steht es schon unter **On this device**, öffne es dort. Dann:
+Text to Speech legt fest, welche Charaktere mit welcher Stimme sprechen können. Lies [Text to Speech (TTS) einrichten](../media/tts-setup.md) für die vollständige Anleitung. Kurz gefasst:
 
-1. Schalte Text to Speech an.
-2. Wähle eine Quelle: **OpenAI-compatible**, **ElevenLabs**, **PocketTTS** oder **xAI Voice**.
-3. Gib den API-Key oder die lokale Serveradresse für diese Quelle ein.
-4. Wähle ein Modell und eine Stimme.
-5. Setze **Voice option** auf **One voice for all** oder **Selected per character or persona**. Stimmen pro Charakter machen Gruppenanrufe leichter zu verfolgen.
-6. Speichere und prüfe dann mit der Vorschau-Schaltfläche, dass du Audio hörst.
+1. Öffne **Verbindungen** und klick im Bereich **Aufgaben** auf die Zeile **Stimme (Text to Speech)**.
+2. Wähl ein Sprachmodell oder einen Sprachdienst. Damit wird Text to Speech eingeschaltet. Der Key und die Adresse kommen aus dem Konto dieses Modells.
+3. Klick auf das Zahnrad in der Zeile **Stimme (Text to Speech)**, um **Voice settings** zu öffnen.
+4. Wähl unter **Who speaks** eine **Shared voice**, oder gib Charakteren und Personas unter **Character and persona voices** eigene Stimmen. Stimmen pro Charakter machen Gruppenanrufe leichter zu verfolgen.
+5. Klick auf **Vorschau**, um zu prüfen, ob du Audio hörst.
 
 Findet Marinara für einen Charakter keine Stimme, die es auflösen kann, nimmt dieser Charakter nur als Text am Anruf teil.
 
@@ -130,8 +129,8 @@ Local Whisper wandelt deine Sprache auf dem Rechner, auf dem Marinara läuft, in
 
 Bevor du anfängst: Installiere Calls. Der Bereich ist ohne es verborgen.
 
-1. Öffne **Connections** und suche **Speech to text** unter **On this device**. Steht es nicht dort, klicke auf **Add account** und wähle **Speech to text**.
-2. Suche **Local speech model** auf dieser Seite.
+1. Öffne **Verbindungen** und suche in der Karte **Auf diesem Gerät** nach **Lokales Sprachmodell**.
+2. Klick in dieser Karte auf **Lokales Sprachmodell**.
 3. Wähle ein Modell:
    - **Whisper Tiny (Multilingual)**: etwa 180 MB Download und 350 MB Arbeitsspeicher. Am besten für Handys und ältere Rechner.
    - **Whisper Base (Multilingual)**: etwa 320 MB Download und 650 MB Arbeitsspeicher. Besser bei unsauberer Sprache.
@@ -148,7 +147,7 @@ Wenn es nicht funktioniert hat: In einem Lite-Build von Marinara siehst du „Lo
 
 Kommt Local Whisper mit deiner Sprache oder deinem Akzent schlecht zurecht, sende deine Stimme stattdessen an einen anderen Speech-to-Text-Server. Jeder Server, der das OpenAI-Speech-to-Text-Format akzeptiert (die Adresse `/audio/transcriptions`), funktioniert, ob du ihn selbst betreibst oder einen Dienst wie OpenAI oder Groq nutzt.
 
-1. Öffne **Connections** und öffne **Speech to text** unter **On this device**. Steht es nicht dort, klicke auf **Add account** und wähle **Speech to text**. Es ist verborgen, solange Calls nicht installiert ist.
+1. Öffne **Verbindungen** und klick im Bereich **Aufgaben** auf das Zahnrad der Zeile **Diktat (Speech to Text)**. Dort findest du die Servereinstellungen für **Sprache zu Text**. Sie sind ausgeblendet, solange Calls nicht installiert ist.
 2. Gib die **Server URL** ein, zum Beispiel `http://localhost:8000/v1`.
 3. Gib einen **API key** ein, wenn der Server einen braucht. Er wird verschlüsselt gespeichert und maskiert angezeigt.
 4. Gib den **Model**-Namen ein, den dein Server nutzt. Lass es leer, um `whisper-1` zu senden.
@@ -160,7 +159,7 @@ Solange er an ist, sendet **Mic recording + Local Whisper** deine Sprache an die
 
 Ein Server auf demselben Rechner funktioniert ohne Weiteres. Ein Server auf einem anderen Rechner in deinem Netzwerk wird abgelehnt, es sei denn, du setzt `STT_LOCAL_URLS_ENABLED=true` in `.env` (siehe [Referenz zur Server-Konfiguration](../CONFIGURATION.md)).
 
-Wenn es nicht funktioniert hat: Lies die Meldung unter **Test**. „Could not reach the speech-to-text server“ heißt, dass die Adresse falsch ist oder der Server aus ist. Eine Meldung, die `STT_LOCAL_URLS_ENABLED` nennt, heißt, dass der Server auf einem anderen Rechner liegt. Eine Zahl kommt von deinem Server: 401 heißt meist ein falscher API-Key, 404 eine falsche Adresse oder ein falscher Modellname. Verwenden Anrufe noch Local Whisper, aktualisiere Calls über **Agents → Agent Organizer**.
+Wenn es nicht funktioniert hat: Lies die Meldung unter **Test**. „Could not reach the speech-to-text server“ heißt, dass die Adresse falsch ist oder der Server aus ist. Eine Meldung, die `STT_LOCAL_URLS_ENABLED` nennt, heißt, dass der Server auf einem anderen Rechner liegt. Eine Zahl kommt von deinem Server: 401 heißt meist ein falscher API-Key, 404 eine falsche Adresse oder ein falscher Modellname. Verwenden Anrufe noch Local Whisper, aktualisiere Calls über **Library → Agents**.
 
 ## Einstellungen und Standardwerte
 

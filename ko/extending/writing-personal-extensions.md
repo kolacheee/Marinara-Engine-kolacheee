@@ -6,9 +6,9 @@
 
 ## 시작 전 준비
 
-External Extensions는 [서드파티 가져오기 허용](personal-extensions.md#allow-third-party-imports)에 나오는 두 안전 단계를 모두 열 때까지 숨겨져 있습니다. 두 단계는 `.env`의 `ENABLE_EXTERNAL_EXTENSIONS=true`와 **Settings → Advanced → Danger Zone**(설정 → 고급 → 위험 구역)의 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)입니다.
+External Extensions는 [서드파티 가져오기 허용](personal-extensions.md#allow-third-party-imports)에 나오는 두 안전 단계를 모두 열 때까지 숨겨져 있습니다. 두 단계는 `.env`의 `ENABLE_EXTERNAL_EXTENSIONS=true`와 **Settings → Advanced → Security**(설정 → 고급 → 보안)의 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)입니다.
 
-확장 기능을 가져오고 관리하려면 localhost 접근이나 관리자 시크릿도 필요합니다. 휴대전화, LAN 주소 또는 원격 브라우저에서 사용한다면 서버에 `ADMIN_SECRET`을 설정하고 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에 같은 값을 입력하세요.
+확장 기능을 가져오고 관리하려면 localhost 접근이나 관리자 시크릿도 필요합니다. 휴대전화, LAN 주소 또는 원격 브라우저에서 사용한다면 서버에 `ADMIN_SECRET`을 설정하고 **Settings → Advanced → Security**에 같은 값을 입력하세요.
 
 작업을 수행할 수 있는 런타임 중 권한이 가장 적은 것을 선택하세요.
 
@@ -94,7 +94,7 @@ marinara.onCleanup(() => panel.remove());
 
 이제 확장 기능을 가져와 실행하세요.
 
-1. **Settings → Addons → External Extensions**(설정 → 애드온 → 외부 확장)를 여세요.
+1. **Library → Extensions → External Extensions**(라이브러리 → 확장 → 외부 확장)를 여세요.
 2. **Import Extension Folder**(확장 폴더 가져오기)를 선택해 `Hello Panel`을 지정하거나, 폴더를 ZIP으로 압축한 뒤 **Import Extension File**(확장 파일 가져오기)로 가져오세요.
 3. 비활성화된 초안을 열어 매니페스트와 JavaScript를 검사하세요.
 4. **Review and Run**(검토 및 실행)을 선택하고 표시된 정확한 해시를 승인하세요.
@@ -342,7 +342,7 @@ External Extension이 호스트 DOM 접근에 의존한다면 다음과 같이 �
 
 **전체 페이지 접근은 샌드박스 기능이 아닙니다.** 승인된 JavaScript와 CSS가 Marinara의 페이지 안에서 실행됩니다. 이 코드는 현재 브라우저 세션에 보이는 것이라면 무엇이든 읽거나 바꿀 수 있고, 채팅과 카드를 들여다보고, 브라우저 저장소를 쓰고, 네트워크 요청을 보내고, 동일 출처의 Marinara API를 호출할 수 있습니다. 브라우저 콘솔에 붙여넣은 코드와 실질적으로 같은 페이지 권한을 가집니다. Professor Mari가 만든 초안은 이 권한을 요청할 수 없습니다.
 
-전체 페이지 확장 기능은 네트워크 요청에 `marinara.fetch(...)`를 사용해야 합니다. 시그니처와 결과는 `window.fetch`와 같으며, **Settings > Addons > External Extensions**에서 해당 확장 기능의 세션 내 요청 수, 응답에 보고된 전송 바이트 수, 최근 요청 빈도, 높은 트래픽이 지속될 때의 경고를 표시할 수 있게 해 줍니다. 전체 페이지 접근 코드는 신뢰하는 페이지 코드이므로 `window.fetch` 직접 호출도 계속 쓸 수 있지만, 그 요청은 확장 기능에 귀속시킬 수 없습니다.
+전체 페이지 확장 기능은 네트워크 요청에 `marinara.fetch(...)`를 사용해야 합니다. 시그니처와 결과는 `window.fetch`와 같으며, **Library > Extensions > External Extensions**에서 해당 확장 기능의 세션 내 요청 수, 응답에 보고된 전송 바이트 수, 최근 요청 빈도, 높은 트래픽이 지속될 때의 경고를 표시할 수 있게 해 줍니다. 전체 페이지 접근 코드는 신뢰하는 페이지 코드이므로 `window.fetch` 직접 호출도 계속 쓸 수 있지만, 그 요청은 확장 기능에 귀속시킬 수 없습니다.
 
 Marinara는 명시적인 `capabilities` 필드가 없는 구형 `kind: "marinara.extension"` v1 봉투를 샌드박스 이전 패키지로 인식하고, 가져오는 시점에 **Full page access**를 부여합니다. 덕분에 WeatherTweaker 같은 레거시 패키지가 Worker 안에서 조용히 실패하지 않고 올바른 검토 절차를 밟게 됩니다. 이 봉투를 쓰면서도 안전한 런타임을 원하는 최신 패키지라면 `"capabilities": []`를 넣어야 합니다.
 
@@ -445,13 +445,13 @@ ZIP, 요청, 샌드박스 메시지, 저장소 제한은 각각 다른 전송 �
 | 증상 | 확인 사항 |
 | --- | --- |
 | 외부 가져오기 컨트롤이 보이지 않음 | 위에서 설명한 External Extension 관문 두 개를 모두 열기 |
-| 관리 화면에서 localhost 또는 Admin Access가 필요하다고 표시됨 | `ADMIN_SECRET`을 구성해 **Admin Access**에 저장하기 |
+| 관리 화면에서 localhost 또는 Admin Access가 필요하다고 표시됨 | `ADMIN_SECRET`을 구성해 **Settings → Advanced → Security**에 저장하기 |
 | 가져오기가 확장 기능을 찾지 못함 | `manifest.json`과 상대 경로 확인. Server에는 JS가 필요하고 Browser에는 CSS 또는 JS가 필요함 |
 | 편집 후 확장 기능이 비활성화됨 | 예상된 동작. 새 정확한 해시를 검사하고 승인하기 |
 | Browser 코드에서 `document`, `window`, `fetch` 또는 로컬 저장소를 사용할 수 없음 | 안전한 샌드박스에서는 예상된 동작. 문서화된 브로커 API 사용하기 |
 | Server Extension을 사용할 수 없음 | macOS Seatbelt 또는 Bubblewrap이 있는 Linux를 사용하거나 Browser Extension으로 전환하기 |
 | Browser Extension에서 예외 발생 | 브라우저 개발자 도구 열기. `marinara.log`와 시작 오류에는 확장 기능 이름이 태그로 표시됨 |
-| Server Extension에서 예외 발생 | **Settings → Addons**에서 상태와 Marinara 서버 로그 확인하기 |
+| Server Extension에서 예외 발생 | **Library → Extensions**에서 상태와 Marinara 서버 로그 확인하기 |
 
 CSS, 비공개 저장소, 가져오기 아카이브, 런타임 메시지는 서로 다른 안전 제한을 유지합니다. Marinara는 실행 실패로 표시하는 대신 패키지를 거부한 경계를 보고해야 합니다.
 

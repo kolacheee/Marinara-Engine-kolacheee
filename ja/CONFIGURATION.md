@@ -131,7 +131,7 @@ Marinaraはデータをそのままの形のJSONファイルとして保存す�
 
 ## タイムアウト
 
-タイムアウトとは、時間のかかる処理をサーバーが待つ上限時間のことです。**Settings → Advanced → Request timeouts**(設定 → 詳細設定 → リクエストのタイムアウト)を開くと、テキスト、エージェント、Gameの画像プロンプト、画像、動画、ComfyUI、埋め込みの上限時間を秒単位で変更できます。上限を長くすると、低速なローカルバックエンドで役立ちます。サービス側が設けている上限は変更できません。保存にはサーバーの管理権限が必要です。
+タイムアウトとは、時間のかかる処理をサーバーが待つ上限時間のことです。**Settings → Advanced → Timeouts & Retries**(設定 → 詳細設定 → タイムアウトと再試行)を開くと、テキスト、エージェント、Gameの画像プロンプト、画像、動画、ComfyUI、埋め込みの上限時間を秒単位で変更できます。上限を長くすると、低速なローカルバックエンドで役立ちます。サービス側が設けている上限は変更できません。保存にはサーバーの管理権限が必要です。
 
 これらの設定はすべてのプロファイルに適用され、有効な`.env`と同じ場所に`.env.timeouts.json`(または`<custom-env-path>.timeouts.json`)として保存されます。`.env`を書き換えずに、対応する環境変数より優先されます。テキスト、エージェント、Gameの画像プロンプト、埋め込みの変更は、新しいリクエストから適用されます。メディアの変更と、インストール済みのエージェントパッケージへの反映には再起動が必要です。環境変数に戻すには、そのファイルを削除して再起動します。
 
@@ -154,13 +154,13 @@ Marinaraはデータをそのままの形のJSONファイルとして保存す�
 
 ## 特権API(ADMIN_SECRET)
 
-バックアップ、データの消去、アップデートの適用、テーマのインストールなど、破壊的な操作や危険な操作には、通常のアクセス確認に加えて追加の秘密の値が必要です。サーバーが動いているコンピューター上の**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)で作成するか([Admin Access](REMOTE_ACCESS.md#admin-access-and-privileged-actions)を参照)、サーバー側に長いランダムな値を設定します。
+バックアップ、データの消去、アップデートの適用、テーマのインストールなど、破壊的な操作や危険な操作には、通常のアクセス確認に加えて追加の秘密の値が必要です。サーバーが動いているコンピューター上の**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)で作成するか([管理者用シークレット](REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)を参照)、サーバー側に長いランダムな値を設定します。
 
 ```text
 ADMIN_SECRET=replace-this-with-a-long-random-secret
 ```
 
-サーバーが動いているコンピューター上では、これらの操作はたいてい秘密の値なしで実行できます。そのコンピューター上のプロキシやトンネルが転送したリクエストは、`REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`でないかぎりリモートとして扱われます。ほかのデバイスからの直接のリクエストには、秘密の値が必要です。同じ値を**Settings → Advanced → Admin Access**に貼り付けると、アプリが代わりに送信します。`.env`の`ADMIN_SECRET`は、アプリで作成した秘密の値より優先されます。管理者用の秘密の値がない場合、特権操作はサーバーのコンピューター以外のすべてのデバイスから失敗し、エラーで設定するよう案内されます。インストール済みのエージェントは、ログインでサインインしたどのデバイスからでも使えますが、インストール、アップデート、削除には秘密の値が必要です。
+サーバーが動いているコンピューター上では、これらの操作はたいてい秘密の値なしで実行できます。そのコンピューター上のプロキシやトンネルが転送したリクエストは、`REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`でないかぎりリモートとして扱われます。ほかのデバイスからの直接のリクエストには、秘密の値が必要です。同じ値を**Settings → Advanced → Security**に貼り付けると、アプリが代わりに送信します。`.env`の`ADMIN_SECRET`は、アプリで作成した秘密の値より優先されます。管理者用の秘密の値がない場合、特権操作はサーバーのコンピューター以外のすべてのデバイスから失敗し、エラーで設定するよう案内されます。インストール済みのエージェントは、ログインでサインインしたどのデバイスからでも使えますが、インストール、アップデート、削除には秘密の値が必要です。
 
 | 変数 | デフォルト | 説明 |
 | --- | --- | --- |
@@ -172,7 +172,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `HAPTICS_ALLOW_REMOTE` | `false` | 有効な秘密の値があれば、リモートのデバイスから触覚デバイスの操作を実行できるようにします。 |
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | カスタムのスクリプトツールをオンにします。信頼できないツールやインポートしたツールを使う場合は、オフのままにしてください。 |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Professor Mariのデータベース変換スクリプトを、OSのサンドボックス(macOSのSeatbelt、LinuxのBubblewrap。ある場合は使います)がないホストでも実行できるようにします。スクリプトを自分で確認した場合以外は、オフのままにしてください。 |
-| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agent Organizerで、GitHubのエージェントリポジトリーを手動でプレビューし、同期できるようにします。[カスタムエージェントのリポジトリー](#custom-agent-repositories)を参照してください。 |
+| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agentsページで、GitHubのエージェントリポジトリーを手動でプレビューし、同期できるようにします。[カスタムエージェントのリポジトリー](#custom-agent-repositories)を参照してください。 |
 | `MARINARA_OVERWORLD_GAMES` | `false` | プレイヤーがOverworldゲーム(舞台設定キットと生成された世界)を作成し、以前の形式のゲームをOverworldゲームに変換できるようにします。オフの場合、ウィザードではVNゲームだけを作成できます。 |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | サードパーティー製の拡張機能をインポートするための2つの許可のうち、1つ目です。[外部拡張機能(External Extensions)](#external-extensions)を参照してください。 |
 | `IMPORT_ALLOWED_ROOTS` | 空 | ピッカーのトークンなしで一括インポートが読み取れるフォルダー。 |
@@ -197,7 +197,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ## 機能スイッチ
 
-失敗したプロバイダー呼び出しの再試行や、ロアブックのグループの選択を固定する動作など、サーバーのオプションの動作は**Settings → Advanced → Features**(設定 → 詳細設定 → 機能)にあります。すべてデフォルトでオフです。いくつかには、設定するとスイッチより優先される環境変数があります。[機能スイッチ](configuration/features.md)を参照してください。
+失敗したプロバイダー呼び出しの再試行(**Settings → Advanced → Timeouts & Retries**(設定 → 詳細設定 → タイムアウトと再試行))や、ロアブックのグループの選択を固定する動作(**Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック))などは、Settingsのスイッチです。すべてデフォルトでオフです。いくつかには、設定するとスイッチより優先される環境変数があります。[機能スイッチ](configuration/features.md)を参照してください。
 
 <a id="marinara-notices"></a>
 
@@ -248,16 +248,16 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ## エージェントと拡張機能
 
-任意で追加できる公式のエージェントは、アプリの**Agents → Agent Organizer**(エージェント → エージェント管理)からインストールします。Marinaraは、自分のメジャーバージョンに合った[Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)のカタログを選びます。
+任意で追加できる公式のエージェントは、アプリの**Library → Agents**(ライブラリー → エージェント)からインストールします。Marinaraは、自分のメジャーバージョンに合った[Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)のカタログを選びます。
 
-- **アップデート:** Marinaraは、インストール済みのパッケージの新しいバージョンをダウンロードする前に確認します。**Not now**(今はしない)を選ぶと現在のバージョンのままになり、Agent Organizerに**Update**(アップデート)が残ります。新規インストールの直後は、パッケージは入っていません。
+- **アップデート:** Marinaraは、インストール済みのパッケージの新しいバージョンをダウンロードする前に確認します。**Not now**(今はしない)を選ぶと現在のバージョンのままになり、Agentsページに**Update**(アップデート)が残ります。新規インストールの直後は、パッケージは入っていません。
 - **パッケージの保存場所:** `DATA_DIR/capability-packages`です。Dockerのボリューム、独自のデータフォルダー、バックアップ、通常のアップグレードでも失われません。これはデスクトップ、Docker、Termuxに当てはまります。iOSやそのほかのブラウザーは、接続先のサーバーにあるパッケージを使います。
 - **ディスク使用量:** Marinaraは各パッケージの現在のバージョンと1つ前のバージョンを残し、それより古いバージョンと、`DATA_DIR/capability-runtime-snapshots`にある一時的なコピーを削除します。パッケージのデータが削除されることはありません。
 - **オフライン時:** GitHubに到達できないとき、アップデートを断ったとき、検証に失敗したときも、インストール済みのパッケージはそのバージョンのまま動き続けます。
 
 ### カスタムエージェントのインポート
 
-外部のエージェントのファイル、フォルダー、リポジトリーはロックされています。許可するには、**Settings → Advanced → Danger Zone**(設定 → 詳細設定 → 危険な操作)で**Allow custom Agent imports**(カスタムエージェントのインポートを許可)をオンにします。環境変数は必要ありません。オンにするまで、インポートの操作はグレー表示のままです。
+外部のエージェントのファイル、フォルダー、リポジトリーはロックされています。許可するには、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)で**Allow custom Agent imports**(カスタムエージェントのインポートを許可)をオンにします。環境変数は必要ありません。オンにするまで、インポートの操作はグレー表示のままです。
 
 インポートするたびに、まずそのエージェントが要求する機能を表示します。権限は明示的に承認する必要があります。同梱された関数やツールの選択はインポートされず、生成されたCSSは無害化され、結果の動作は承認済みの機能と照らし合わせて検査されます。この設定をオフにすると、インポートしたエージェントは止まります。Marinaraの中で作ったエージェントと公式パッケージには影響しません。
 
@@ -265,7 +265,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### カスタムエージェントのリポジトリー
 
-リポジトリーのプロンプトやツールは検証されていないため、リポジトリーはデフォルトでオフです。`ENABLE_CUSTOM_AGENT_REPOS=true`を設定し、**Allow custom Agent imports**(カスタムエージェントのインポートを許可)をオンにしてから、**Agents → Agent Organizer → Custom Sources**(エージェント → エージェント管理 → カスタムソース)を開いて、公開されているGitHubリポジトリーをプレビューします。ソースの追加にも、その後の変更の適用にも、確認が必要です。同期は手動で、Marinaraがバックグラウンドでリポジトリーをクローンしたり、確認しに行ったりすることはありません。受け付けるのは、リポジトリーのルートを指すGitHubのURLだけです。
+リポジトリーのプロンプトやツールは検証されていないため、リポジトリーはデフォルトでオフです。`ENABLE_CUSTOM_AGENT_REPOS=true`を設定し、**Allow custom Agent imports**(カスタムエージェントのインポートを許可)をオンにしてから、**Library → Agents → Custom Sources**(ライブラリー → エージェント → カスタムソース)を開いて、公開されているGitHubリポジトリーをプレビューします。ソースの追加にも、その後の変更の適用にも、確認が必要です。同期は手動で、Marinaraがバックグラウンドでリポジトリーをクローンしたり、確認しに行ったりすることはありません。受け付けるのは、リポジトリーのルートを指すGitHubのURLだけです。
 
 リポジトリーでは、エージェント、Game Modeのルールセット、またはその両方を公開します。ルートには次のものを置きます。
 
@@ -297,12 +297,12 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 外部拡張機能(External Extensions)
 
-サードパーティー製の拡張機能をインポートするには、2つの許可が必要です。環境変数は、サーバーを運用する側の許可です。Danger Zoneのスイッチは、利用者本人の同意です。
+サードパーティー製の拡張機能をインポートするには、2つの許可が必要です。環境変数は、サーバーを運用する側の許可です。**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)の**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)スイッチは、利用者本人の同意です。
 
 1. `.env`に`ENABLE_EXTERNAL_EXTENSIONS=true`を設定します。
-2. **Settings → Advanced → Danger Zone**(設定 → 詳細設定 → 危険な操作)を開き、データ削除の操作より下までスクロールして、警告を読んでから**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)をオンにします。
+2. **Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)を開き、警告を読んでから**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)をオンにします。
 
-すると、**Settings → Addons**(設定 → アドオン)の下に**External Extensions**(外部拡張機能)セクションが表示されます。どちらかの許可を閉じると、外部のレコードは無効になり、そのコードも停止します。手動で保存したもの、以前の形式のもの、プロファイルからインポートしたもの、出所が不明なものは外部として扱われます。そのため、フォルダーにファイルを置くだけでは、この2つの許可を回避できません。Professor Mariの下書きには、どちらの許可も必要ありません。下書きは無効の状態で作られ、実行するにはそのコードのハッシュそのものを承認する必要があります。
+すると、**Library → Extensions**(ライブラリー → 拡張機能)の下に**External Extensions**(外部拡張機能)セクションが表示されます。どちらかの許可を閉じると、外部のレコードは無効になり、そのコードも停止します。手動で保存したもの、以前の形式のもの、プロファイルからインポートしたもの、出所が不明なものは外部として扱われます。そのため、フォルダーにファイルを置くだけでは、この2つの許可を回避できません。Professor Mariの下書きには、どちらの許可も必要ありません。下書きは無効の状態で作られ、実行するにはそのコードのハッシュそのものを承認する必要があります。
 
 デフォルトは、サンドボックス化されたブラウザー拡張機能です。古いパッケージの一部は、Marinaraのページを必要とするため**Full page access**(ページ全体へのアクセス)と表示されます。このモードでは、承認したコードがMarinaraのページ内で動き、ページの内容、ブラウザーのストレージ、ネットワークAPI、セッションにアクセスできます。このモードを使えるのは、2つの許可が両方とも開いているExternal Extensionsだけで、別途警告への同意も必要です。無効にした後は、ページを再読み込みしてください。
 
@@ -323,7 +323,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `MARINARA_NOTICES_ENABLED` | `true` | サーバーがメンテナーのお知らせを取得するかどうか。[Marinaraのお知らせ](#marinara-notices)を参照してください。 |
 | `MARINARA_NOTICES_URL` | `notices`ブランチの`notices.json` | フォークやミラー向けに、お知らせファイルを上書きします。同じ方法で検証され、`https://github.com/Pasta-Devs/`以外を指すリンクは削除されます。このURLのホストは、hostsファイルかDNSに登録されている必要があります。[Marinaraのお知らせ](#marinara-notices)を参照してください。 |
 | `MARINARA_ENV_FILE` | プロジェクトルートの`.env` | `.env`ファイルのパスを変更します。起動前に設定してください。 |
-| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | サーバー全体で同時に実行する画像・動画リクエストの最大数。ローカルのComfyUIやSwarmUIでVRAMが足りなくなる場合は、1-2に下げてください。`0`にすると上限をなくします。無効な値は警告を出して無視されます。一括処理が最後の枠を使うことはありません。この上限は、**Queue media generation requests**(メディア生成リクエストを順番待ちにする)に加えて適用されます。この設定は**Settings → Generations → Overall Generations**(設定 → 生成 → 生成全般)にあってデフォルトでオンになっており、画像と動画のジョブをアカウントごとに順番待ちにします。 |
+| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | サーバー全体で同時に実行する画像・動画リクエストの最大数。ローカルのComfyUIやSwarmUIでVRAMが足りなくなる場合は、1-2に下げてください。`0`にすると上限をなくします。無効な値は警告を出して無視されます。一括処理が最後の枠を使うことはありません。この上限は、**Queue media generation requests**(メディア生成リクエストを順番待ちにする)に加えて適用されます。この設定は**Settings → Media → Generation Defaults**(設定 → メディア → 生成のデフォルト)にあってデフォルトでオンになっており、画像と動画のジョブをアカウントごとに順番待ちにします。 |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000`(10分) | リクエストが空き枠を待つ時間。これを過ぎると失敗します。`0`にすると無期限に待ちます。 |
 | `MARINARA_SHARED_GPU_HOSTS` | 空 | ローカルモデルとローカルの画像・動画バックエンドが1台のGPUを共有する場合(llama-swapなど)の、カンマ区切りの`host:port`一覧。一覧内のホストへのテキストとメディアのリクエストは交互に処理されるため、画像がチャットの返信の後ろでいつまでも待たされることはありません。画像やクリップが待つ時間は、最長で`MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS`です。埋め込みは待機させません。再起動しなくても新しいリクエストに適用されます。 |
 | `MARINARA_ENV_WATCH` | `1` | `.env`の監視方法。デフォルト: 変更の通知を使い(約250 msの待ち合わせ)、予備として30秒ごとに確認します。`poll`: 常に30秒ごとの確認を使います。`0`: オフ。[再起動とホットリロード](#restart-or-hot-reload)を参照してください。 |
@@ -361,7 +361,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### ロアブック
 
-どちらもデフォルトでオフで、`.env`を変更した後の次の生成から適用されます。`LOREBOOK_STABLE_GROUP_WINNERS`を設定すると、**Settings → Advanced → Features**(設定 → 詳細設定 → 機能)の**Stable lorebook picks**(ロアブックの選択を固定)スイッチより優先されます。設定しない場合は、スイッチで決まります。[機能スイッチ](configuration/features.md)を参照してください。
+どちらもデフォルトでオフで、`.env`を変更した後の次の生成から適用されます。`LOREBOOK_STABLE_GROUP_WINNERS`を設定すると、**Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック)の**Stable lorebook picks**(ロアブックの選択を固定)スイッチより優先されます。設定しない場合は、スイッチで決まります。[機能スイッチ](configuration/features.md)を参照してください。
 
 | 変数 | デフォルト | 説明 |
 | --- | --- | --- |
@@ -374,7 +374,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ### 堅牢性
 
-どれもデフォルトでオフで、従来の動作のままになります。`STORAGE_CACHE_WINDOWS_BOOT_ID`、`SHUTDOWN_WINDOWS_CONSOLE_SIGNALS`、`SHUTDOWN_FORCE_EXIT_ON_REPEAT`の変更には再起動が必要です。それ以外は、`.env`を変更すると適用されます。`PROVIDER_RETRY_TRANSIENT_ERRORS`を設定すると、**Settings → Advanced → Features**(設定 → 詳細設定 → 機能)の**Retry failed provider calls**(失敗したプロバイダー呼び出しを再試行)スイッチより優先されます。設定しない場合は、スイッチで決まります。
+どれもデフォルトでオフで、従来の動作のままになります。`STORAGE_CACHE_WINDOWS_BOOT_ID`、`SHUTDOWN_WINDOWS_CONSOLE_SIGNALS`、`SHUTDOWN_FORCE_EXIT_ON_REPEAT`の変更には再起動が必要です。それ以外は、`.env`を変更すると適用されます。`PROVIDER_RETRY_TRANSIENT_ERRORS`を設定すると、**Settings → Advanced → Timeouts & Retries**(設定 → 詳細設定 → タイムアウトと再試行)の**Retry failed provider calls**(失敗したプロバイダー呼び出しを再試行)スイッチより優先されます。設定しない場合は、スイッチで決まります。
 
 | 変数 | デフォルト | 説明 |
 | --- | --- | --- |

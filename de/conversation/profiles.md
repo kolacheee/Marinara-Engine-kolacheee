@@ -8,10 +8,10 @@ Das ist kein Einstellungsprofil (ein gespeicherter Satz von Chat-Optionen, siehe
 
 Die Felder liegen auf einem Tab namens **Convo**.
 
-1. Öffne den Charakter im **Character Editor** oder die Persona im **Persona Editor**. Öffne dafür das Panel **Characters** in der Seitenleiste oder das Panel **Personas** über das Personensymbol in der rechten oberen Leiste und klicke dann auf die Karte (siehe [Charaktere anlegen und bearbeiten](../characters/creating-and-editing-characters.md) und [Nutzer-Personas](../characters/personas.md)).
+1. Öffne den Charakter im **Character Editor** oder die Persona im **Persona Editor**. Öffne dafür **Library** (Bibliothek) > **Characters** (Charaktere) oder **Library** > **Personas** (Personas) und klicke dann auf die Karte (siehe [Charaktere anlegen und bearbeiten](../characters/creating-and-editing-characters.md) und [Nutzer-Personas](../characters/personas.md)).
 2. Klicke auf den Tab **Convo**.
 
-Der Tab enthält **Convo Display Name**, **About Me** und **Convo Behavior**. Bei einem Charakter hat er außerdem **Weekly schedule** (mit **Edit schedule** oder **Create schedule**, siehe [Zeitpläne](schedules.md)). Vorgaben für die Selfies des Charakters findest du jetzt im Tab **Images** (Bilder) unter **Selfie instructions** (Selfie-Anweisungen) (siehe [Selfies](selfies.md)).
+Der Tab enthält **Convo Display Name**, **About Me** und **Convo Behavior**. Bei einem Charakter hat er außerdem **Weekly schedule** (mit **Edit schedule** oder **Create schedule**, siehe [Zeitpläne](schedules.md)) und **Image generation directions**, optionale Vorgaben für die Selfies dieses Charakters (siehe [Selfies](selfies.md)).
 
 ## Einen Anzeigenamen festlegen
 

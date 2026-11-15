@@ -37,8 +37,6 @@ Un personnage peut aussi avoir sa propre **Daily safety limit** (définie dans s
 | 20 à 39 | 3 |
 | moins de 20 | 2 |
 
-<a id="turn-on-schedules"></a>
-
 ## Activer les emplois du temps
 
 **Avant de commencer :** active **Autonomous Messages**.
@@ -51,7 +49,9 @@ Un personnage peut aussi avoir sa propre **Daily safety limit** (définie dans s
 
 Un emploi du temps appartient au personnage et sert dans chaque chat Conversation. Désactiver **Schedules** dans un chat le garde désactivé là et garde l'emploi du temps.
 
-Le renouvellement hebdomadaire automatique est désactivé, sauf si tu actives **Renew weekly** pour ce personnage dans le **Character Schedule Manager** (gestionnaire d'emplois du temps). Ouvre-le avec le bouton calendrier dans le pied de la barre latérale, à côté de la zone de statut. Marinara tente un renouvellement une fois pour chaque personnage à chaque chargement de la page de l'application. S'il échoue, il ne réessaie pas avant que tu recharges la page. Clique sur **Generate** pour réessayer.
+Le renouvellement hebdomadaire automatique est désactivé, sauf si tu actives **Renew weekly** pour ce personnage dans le **Character Schedule Manager** (gestionnaire d'emplois du temps). Ouvre-le avec le bouton calendrier en bas de la liste des chats, à côté de la zone de statut.
+
+Marinara tente un renouvellement une fois pour chaque personnage à chaque chargement de la page de l'application. S'il échoue, il ne réessaie pas avant que tu recharges la page. Clique sur **Generate** pour réessayer.
 
 **Schedule generation preferences**, dans la même zone **Schedules** de **Chat Settings**, contient des consignes en texte libre sur la façon d'écrire les emplois du temps. Elles s'appliquent à chaque chat Conversation la prochaine fois que des emplois du temps sont générés. Exemple :
 

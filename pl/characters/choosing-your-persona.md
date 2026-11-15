@@ -46,7 +46,7 @@ W czacie w trybie Roleplay okno wyboru może też oferować opcję **Create your
 
 ## Granie jako postać
 
-Żeby użyć karty postaci jako swojej tożsamości, włącz **Show characters in Persona pickers** (pokaż postacie w wyborze persony) w sekcji **Settings → Advanced → Message Tools** (ustawienia, zaawansowane, narzędzia wiadomości). Okna wyboru pokazują wtedy grupę **Play as a character** (granie jako postać) z listą twoich postaci.
+Żeby użyć karty postaci jako swojej tożsamości, włącz **Show characters in Persona pickers** (pokaż postacie w wyborze persony) w sekcji **Ustawienia → Czatowanie → Pole wiadomości**. Okna wyboru pokazują wtedy grupę **Play as a character** (granie jako postać) z listą twoich postaci.
 
 ## Powiązane przewodniki
 

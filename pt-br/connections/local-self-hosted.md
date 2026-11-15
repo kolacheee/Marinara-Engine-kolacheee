@@ -8,8 +8,8 @@ No aplicativo, esse tipo de conta se chama **OpenAI-compatible** (compatível co
 
 Antes de começar, instale um servidor de modelo, inicie esse servidor e carregue um modelo nele. Por exemplo, baixe o Ollama em `ollama.com` e siga as etapas dele para baixar um modelo. Marinara se conecta ao servidor e não o inicia por você. O servidor responde às requisições em um endereço web no seu computador, chamado endpoint.
 
-1. Clique em **Connections** (Conexões) na barra superior e depois em **Add** (adicionar). A janela **Add account** (adicionar conta) abre.
-2. Em **Chat**, clique no seu servidor: **Ollama**, **LM Studio**, **KoboldCpp** ou **llama.cpp**. Esses cartões têm a etiqueta **Self-hosted** (auto-hospedado). Para qualquer outro servidor, clique em **OpenAI-compatible address** (endereço compatível com OpenAI).
+1. Abra **Biblioteca → Conexões** e clique em **Adicionar conexão**. A lista de serviços abre.
+2. Na aba **Texto**, em **Auto-hospedado**, clique no seu servidor: **Ollama**, **LM Studio**, **KoboldCpp** ou **llama.cpp**. Eles têm a etiqueta **Auto-hospedado**. Para qualquer outro servidor, clique em **Endereço compatível com OpenAI**.
 3. Confira **Server address** (endereço do servidor). Nos quatro servidores citados, ele já vem preenchido. Para outro servidor, digite o endereço dele. Veja a tabela abaixo.
 4. Deixe **API key (optional)** (chave de API, opcional) vazio. A maioria dos servidores locais não precisa de chave. Para dar um nome à conta, digite um **Name (optional)** (nome, opcional).
 5. Clique em **Connect** (conectar). Marinara testa o endereço. **Connected** quer dizer que ele alcançou o servidor.
@@ -21,6 +21,18 @@ Se não funcionou:
 
 - **Marinara could not reach** o endereço. Confira se o servidor está rodando e se o endereço e a porta batem. **Continue anyway** (continuar mesmo assim) salva a conta sem um teste aprovado.
 - O endereço está em outro computador. Veja [Alcançar um servidor em outro computador](#reach-a-server-on-another-computer).
+
+## Usar o modelo que estiver carregado no servidor
+
+Um servidor local ou auto-hospedado pode responder com o modelo que está carregado nele, então a conta dele pode ter um modelo **Padrão**. Padrão não envia um nome de modelo. Ele sempre usa o modelo que você carregou no Ollama, LM Studio, KoboldCpp ou llama.cpp, mesmo depois de você trocar de modelo lá.
+
+- Uma conta nova para um servidor no seu computador ou na sua rede começa com um modelo **Padrão**.
+- Para adicionar um depois, clique em **⋯** na conta e escolha **Adicionar modelo**. **Padrão** é a primeira linha.
+- Use **Padrão** como qualquer outro modelo: atribua uma tarefa a ele, como **Principal** na caixa **Padrões**, ou escolha-o em **Modelo para este chat**.
+- Na tabela Conexões, ele mostra "Whatever model the server has loaded" e não tem estrela.
+- Clique em **Padrão** no painel para definir configurações próprias para ele, como os parâmetros e o preset de prompt, do mesmo modo que faria com um modelo com nome.
+
+**Padrão** só aparece para um servidor no seu computador ou na sua rede. Um serviço na nuvem sempre precisa de um nome de modelo.
 
 ## Endereços dos servidores locais mais comuns
 
@@ -71,7 +83,7 @@ No Android, essa configuração já vem ativada quando você não a define.
 
 ## Usar o modelo para decisões
 
-O mesmo modelo pode responder às perguntas de decisão, como as verificações de ativação de agentes, sem carregar uma segunda cópia. Clique em **⋯** no modelo, no painel, e escolha **Use this model for decisions** (usar este modelo para decisões). Essa opção aparece para um modelo OpenAI-compatible que tem um nome de modelo. Veja [Modelos de decisão](decision-models.md#on-a-server-you-already-run).
+O mesmo modelo pode responder às perguntas de decisão, como as verificações de ativação de agentes, sem carregar uma segunda cópia. Abra **Biblioteca → Conexões**, clique em **Adicionar conexão**, abra a aba **Decisão**, escolha **Servidor de decisão próprio** e digite o mesmo endereço. (No layout clássico, **⋯** no modelo tem um atalho **Usar este modelo para decisões** que preenche esse campo por você.) Veja [Modelos de decisão](decision-models.md#on-a-server-you-already-run).
 
 ## O botão Treat as local/custom endpoint
 

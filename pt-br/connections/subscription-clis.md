@@ -27,8 +27,8 @@ No Grok, o aplicativo mostra este comando de instalação. Se ele não funcionar
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. No Marinara, clique em **Connections** (Conexões) na barra superior e depois em **Add** (adicionar).
-4. Em **Chat**, clique no seu serviço. Esses serviços têm a etiqueta **Sign in** (entrar).
+3. No Marinara, abra **Biblioteca → Conexões** e clique em **Adicionar conexão**.
+4. Na aba **Texto**, em **Assinaturas**, clique no seu serviço. Esses serviços têm a etiqueta **Entrar**.
 5. A janela diz **Sign in first** (faça login primeiro) e mostra o comando. Não existe campo de chave. Clique em **Connect** (conectar). Marinara testa o login. **Connected** quer dizer que funciona.
 6. Escolha um modelo da lista e clique em **Done** (concluir). No Grok CLI você também pode deixar o modelo vazio, o que usa o padrão do próprio CLI (veja [Grok CLI (Subscription)](#grok-cli-subscription)).
 
@@ -65,6 +65,8 @@ Use **Diagnose model routing** quando você pediu um modelo grande, como o Opus,
 ## OpenAI (ChatGPT)
 
 Este serviço usa a sua conta do ChatGPT por meio do CLI do Codex. Marinara lê o arquivo de login local do Codex e renova a sessão sempre que consegue.
+
+Ao contrário das assinaturas do Claude e do Grok, um login do ChatGPT aceita chamadas de ferramenta, então Professor Mari, as ferramentas personalizadas e os dados e ferramentas do Game Mode funcionam com ele.
 
 Para definir quanto tempo o Codex pensa antes de responder, abra **Edit model**, ative **Use custom defaults for this model** (usar padrões personalizados para este modelo) e escolha um nível em **Reasoning Effort** (esforço de raciocínio). O ajuste começa em **Default**, que mantém o nível próprio do Codex para o modelo. Um chat pode escolher o próprio nível em **Advanced Parameters** (parâmetros avançados). O nível definido em um preset não muda isso. Um modelo Codex usado como reserva segue apenas o próprio nível, e os agentes que usam o modelo seguem o nível do modelo. Os níveis que você vê correspondem aos disponíveis para o modelo escolhido.
 

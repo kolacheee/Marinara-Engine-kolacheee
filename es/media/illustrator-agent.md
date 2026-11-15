@@ -16,14 +16,14 @@ El Illustrator escribe el prompt, pero un modelo de imagen aparte dibuja la imag
 
 Dale un modelo de imagen de una de estas dos maneras.
 
-1. Establece la tarea **Images** (Imágenes) en **Defaults** (Predeterminados) del panel **Connections** (Conexiones).
+1. Establece la tarea **Images** (Imágenes) en el cuadro **Defaults** (Valores predeterminados) del panel **Connections** (Conexiones).
 2. O dale al Illustrator su propio modelo de imagen en su pantalla **Open Setup** (Abrir la configuración).
 
 Si no se encuentra ningún modelo de imagen, la imagen falla y la app te pide que elijas uno.
 
 ## Activar el Illustrator
 
-Antes de empezar: instala **Illustrator** desde **Agent Organizer** (Organizador de agentes). Consulta [Descripción general de los agentes](../agents/agents-overview.md).
+Antes de empezar: instala **Illustrator** desde **Library → Agents** (Biblioteca → Agentes). Consulta [Descripción general de los agentes](../agents/agents-overview.md).
 
 1. Abre el chat de Roleplay que quieres ilustrar.
 2. Abre **Chat Settings** (Ajustes del chat) y busca **Agents** (Agentes).
@@ -31,8 +31,6 @@ Antes de empezar: instala **Illustrator** desde **Agent Organizer** (Organizador
 4. En el grupo **Misc Agents**, busca **Illustrator** y agrégalo con el botón del signo más.
 
 Aparece una tarjeta **Illustrator** con sus propias opciones. Los agentes usan tokens (fragmentos de texto) adicionales y pueden añadir llamadas al modelo por turno. Las estimaciones de tokens solo incluyen las instrucciones de los agentes.
-
-<a id="game-mode-the-game-illustrator-toggle"></a>
 
 ### Game Mode: el interruptor Game Illustrator
 
@@ -99,7 +97,7 @@ Los clips usan el modelo de video de **Scene Videos** (Videos de escena), y cada
 - Con **Clips only**, cada ejecución es un clip, **Video Run Interval** establece con qué frecuencia se ejecuta Illustrator e **Image Run Interval** se oculta.
 - Un chat sin valor propio usa el **Video Run Interval** de la pantalla **Open Setup**, o 5.
 - **0**: no crea clips por iniciativa propia, ni siquiera para las imágenes de `[illustrate]`, que reciben su imagen en su lugar.
-- Una respuesta recibe como máximo **Videos per reply** (Videos por respuesta) clips (**Settings → Generations → Video Generation**, Configuración → Generaciones → Generación de video).
+- Una respuesta recibe como máximo **Videos per reply** (Videos por respuesta) clips (**Settings → Media → Video Generation**, Configuración → Medios → Generación de video).
 - Puedes seguir animando una imagen desde la Gallery. Con **Clips only**, el botón **Illustrate** de un mensaje crea un clip.
 - Un swipe de una respuesta que recibió un clip cuenta como una respuesta nueva y puede recibir su propio clip. El swipe anterior conserva el suyo.
 
@@ -112,6 +110,16 @@ Los clips usan el modelo de video de **Scene Videos** (Videos de escena), y cada
 Un clip sin imagen propia describe a todos los que nombra, incluida tu persona. El fotograma inicial de avatar parte de quien se nombre primero.
 
 Volver a ejecutar Illustrator desde el botón **Illustrate** de un mensaje también sigue **Illustrator makes** y **First frame**.
+
+## Fondos y clima
+
+Illustrator también pinta fondos. En la tarjeta de Illustrator en **Chat Settings → Agents** (Ajustes del chat → Agentes):
+
+- **Generate Scene Backgrounds** (Generar fondos de escena) pinta un fondo cuando la historia llega a un lugar nuevo, salvo que ya tengas una imagen para él.
+- **Weather Versions of Backgrounds** (Versiones de los fondos según el clima) vuelve a pintar el fondo actual con el clima de la historia, con la lluvia o la nieve en movimiento dibujada solo en las ventanas de la habitación.
+- **Decision Model Checks** (Comprobaciones del modelo de decisión) hace que un modelo de decisión compruebe cada respuesta en busca de un lugar o un clima nuevo, para que los fondos no tengan que esperar al intervalo de ejecución.
+
+Las tres opciones están desactivadas de forma predeterminada. Consulta [Fondos creados por Illustrator](scene-backgrounds.md).
 
 ## Varios personajes en NovelAI
 
@@ -127,11 +135,11 @@ No hace falta ningún ajuste. Las descripciones solo aparecen con NovelAI en su 
 
 ## Guardado en galerías e inspección del prompt
 
-En **Settings → Generations → Image Generation** (Configuración → Generaciones → Generación de imágenes), **Automatically save generated images to character galleries** (Guardar automáticamente las imágenes generadas en las galerías de personajes) está activado de forma predeterminada. Desactívalo para dejar de añadir ilustraciones y selfies del chat a las galerías de los personajes y personas representados. Las imágenes siguen apareciendo en la conversación y en la Gallery del chat, y el guardado explícito en galerías sigue funcionando. Las entradas existentes no cambian. Las galerías comparten los archivos de imagen, así que este ajuste controla la pertenencia, no el borrado.
+En **Settings → Media → Image Generation** (Configuración → Medios → Generación de imágenes), **Automatically save generated images to character galleries** (Guardar automáticamente las imágenes generadas en las galerías de personajes) está activado de forma predeterminada. Desactívalo para dejar de añadir ilustraciones y selfies del chat a las galerías de los personajes y personas representados. Las imágenes siguen apareciendo en la conversación y en la Gallery del chat, y el guardado explícito en galerías sigue funcionando. Las entradas existentes no cambian. Las galerías comparten los archivos de imagen, así que este ajuste controla la pertenencia, no el borrado.
 
 En las nuevas ilustraciones de NovelAI, el inspector de imágenes muestra el prompt de escena y estilo seguido de las descripciones positivas de los personajes, separados por ` | `. El prompt guardado en la galería es el mismo.
 
-Para volver a dibujar una ilustración con un prompt cambiado, sin regenerar la respuesta, ábrela y usa **Regenerate image** (Regenerar imagen). Consulta [Regenerar una imagen](scene-backgrounds.md#regenerating-an-image).
+Para volver a dibujar una ilustración con un prompt cambiado, sin regenerar la respuesta, ábrela y usa **Regenerate image** (Regenerar imagen). Consulta [Regenerar una imagen](../chats/chat-gallery.md#regenerating-an-image).
 
 Para ilustrar un mensaje anterior de Roleplay o un rango, usa `/illustrate range=12` o `/illustrate range=12-18`. Consulta [Comandos de barra](../chats/slash-commands.md).
 
@@ -139,6 +147,7 @@ Para ilustrar un mensaje anterior de Roleplay o un rango, usa `/illustrate range
 
 - [Proveedores de generación de imágenes y configuración](image-providers.md)
 - [Perfiles de estilo de imagen](style-profiles.md)
-- [Fondos de escena y la galería](scene-backgrounds.md)
+- [Fondos creados por Illustrator](scene-backgrounds.md)
+- [La galería del chat](../chats/chat-gallery.md)
 - [Agentes: ayudantes de IA para tus chats](../agents/agents-overview.md)
 - [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md)

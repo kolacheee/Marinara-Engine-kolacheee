@@ -1,12 +1,14 @@
 # Borrar o restablecer tus datos
 
-Borra de forma permanente una parte o la totalidad de tus datos con la **Danger Zone** (Zona de peligro). No se puede deshacer. Para borrar un chat o un personaje, usa su propio botón de borrar. Consulta [Administrar chats](../chats/managing-chats.md) y [Crear y editar personajes](../characters/creating-and-editing-characters.md).
+Borra de forma permanente una parte o la totalidad de tus datos con **Delete Data** (Eliminar datos), en **Settings → Data → Delete Data** (Configuración → Datos → Eliminar datos). No se puede deshacer.
+
+Para borrar un chat o un personaje, usa su propio botón de borrar. Consulta [Administrar chats](../chats/managing-chats.md) y [Crear y editar personajes](../characters/creating-and-editing-characters.md).
 
 **Antes de empezar:** haz una copia de seguridad. No hay papelera ni papelera de reciclaje. Consulta [Copia de seguridad y restauración de Marinara](backup-and-restore.md). Si usas Marinara desde otro dispositivo, también necesitas el secreto de administrador. Consulta [Acceso remoto](../REMOTE_ACCESS.md).
 
 ## Borrar algunas categorías
 
-1. Abre **Settings → Advanced** y baja hasta **Danger Zone**.
+1. Abre **Settings → Data** y ve a **Delete Data**.
 2. Marca cada categoría que quieras borrar. **Select All** marca todas las casillas. Cuando todas están marcadas, el mismo botón dice **Clear Selection** y las desmarca.
 3. Haz clic en **Clear Selected Data**. Sigue desactivado hasta que marques una categoría.
 4. Lee la advertencia. Muestra cuántas categorías elegiste.
@@ -16,7 +18,7 @@ Cuando funciona, un mensaje indica que se borraron los datos seleccionados. Si l
 
 ## Borrar todo
 
-1. En **Danger Zone**, haz clic en **Clear All Data**. No necesitas marcar ninguna casilla.
+1. En **Delete Data**, haz clic en **Clear All Data**. No necesitas marcar ninguna casilla.
 2. La advertencia pregunta: "Delete all supported data categories except Professor Mari? There is no undo."
 3. Haz clic en **Confirm Delete**, o en **Cancel** para detenerte.
 
@@ -34,7 +36,7 @@ Cada categoría borra solo lo que indica la lista de su fila, salvo la carpeta d
 | **Lorebooks** | Todos los lorebooks, entradas y carpetas. |
 | **Presets** | Todos los presets de prompts y carpetas de presets, salvo el preset de fábrica integrado. |
 | **Connections** | Todas las cuentas guardadas, y las elecciones de modelo y los ajustes de voz vinculados a ellas. |
-| **Automation & Addons** | Todos los ajustes de agentes, herramientas personalizadas, scripts de regex y temas sincronizados. No las Personal Extensions ni las External Extensions. |
+| **Automation & Addons** | Todos los ajustes de agentes, herramientas personalizadas, scripts de regex y sus carpetas, y temas sincronizados. No las Personal Extensions ni las External Extensions. |
 | **Media & Assets** | Fondos, avatares, sprites, galería, videos de escenas, fuentes y archivos de fuentes de conocimiento. |
 
 Más detalles:
@@ -45,7 +47,7 @@ Más detalles:
 - **Connections** también borra los ajustes de texto a voz y de voz a texto, los modelos que elegiste para funciones y una API key de Tripo guardada en la página **3D Avatars**.
 - **Automation & Addons** también borra los resultados de agentes, la memoria de agentes, las carpetas de agentes y los widgets de agentes de Home.
 - **Media & Assets** también borra la lista de recursos y las imágenes de los chats.
-- Las fuentes de conocimiento son archivos que subiste para los agentes de conocimiento. Los temas sincronizados son tus temas personalizados guardados en Marinara.
+- Las fuentes de conocimiento son archivos que subiste para los agentes de conocimiento. Los temas sincronizados son tus temas personalizados guardados en Marinara, incluidos los temas iniciales que descargaste. Puedes volver a descargar los temas iniciales desde la galería de temas.
 
 Algunas categorías llegan a archivos fuera de su propio nombre. **Chats & Messages** borra toda la carpeta `gallery`, incluidas las imágenes de galería de personajes y personas, aunque no hayas marcado **Characters** ni **Personas**.
 
@@ -53,7 +55,7 @@ Borrar no toca tus otros ajustes, la carpeta `backups/` ni el archivo `.encrypti
 
 ## Professor Mari se queda
 
-Professor Mari es el asistente integrado de la pantalla Home. La **Danger Zone** nunca la borra, ni siquiera con **Clear All Data**.
+Professor Mari es el asistente integrado de la pantalla Home. **Delete Data** nunca la borra, ni siquiera con **Clear All Data**.
 
 ## Guías relacionadas
 

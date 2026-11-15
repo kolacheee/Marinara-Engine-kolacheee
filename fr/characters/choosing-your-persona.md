@@ -32,11 +32,9 @@ Si ça n'a pas marché : tu ne peux choisir que des personas que tu as déjà cr
 
 En Game Mode, cette section est présentée comme ton équipe en jeu, mais elle garde l'étiquette **Persona**.
 
-<a id="color-your-name-in-messages"></a>
-
 ### Colorer ton nom dans les messages
 
-Dans un chat Roleplay, la section **Persona** contient **Color Persona Name in Text** (colorer le nom du persona dans le texte). Cette option affiche le nom de ton persona, son nom d'affichage Conversation et ses **Other names** (autres noms) dans la couleur de son nom à l'intérieur des messages. Tant que tu ne la modifies pas, elle suit **Color Character Names in Text** (colorer les noms des personnages dans le texte) dans la section **Characters** (personnages). Un personnage du chat qui porte le même nom garde sa propre couleur. Pour que la couleur s'affiche, définis celle du nom du persona dans l'onglet **Colors** (couleurs).
+Dans un chat Roleplay, la section **Persona** contient **Color Persona Name in Text** (colorer le nom du persona dans le texte). Ce réglage colore le nom de ton persona, son nom d'affichage en Conversation et ses **Other names** (autres noms) avec la couleur du nom du persona dans les messages. Tant que tu ne le modifies pas, il suit **Color Character Names in Text** (colorer les noms des personnages dans le texte) dans la section **Characters** (personnages). Un personnage du chat qui porte le même nom garde sa propre couleur. Le persona doit avoir une couleur de nom, dans l'onglet **Colors**, pour que cela apparaisse.
 
 ## À la création d'un chat
 
@@ -46,7 +44,7 @@ Dans un chat Roleplay, le sélecteur peut aussi proposer **Create your persona**
 
 ## Incarner un personnage
 
-Pour utiliser une fiche de personnage comme identité, active **Show characters in Persona pickers** (afficher les personnages dans les sélecteurs de persona) dans **Settings → Advanced → Message Tools** (Paramètres → Avancé → Outils de message). Les sélecteurs affichent alors un groupe **Play as a character** (incarner un personnage) qui liste tes personnages.
+Pour utiliser une fiche de personnage comme identité, active **Show characters in Persona pickers** (afficher les personnages dans les sélecteurs de persona) dans **Settings → Chatting → Message Box** (Paramètres → Chat → Zone de saisie). Les sélecteurs affichent alors un groupe **Play as a character** (incarner un personnage) qui liste tes personnages.
 
 ## Guides associés
 

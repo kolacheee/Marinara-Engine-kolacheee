@@ -1,32 +1,30 @@
-# 聊天背景
+# 背景库
 
-背景库里放的是你自己上传、再手动挑选的图片，显示在聊天内容后面。想让 **Background**(背景) 智能体每回合替你挑一张背景，见 [Roleplay 背景](../roleplay/backgrounds.md)。想用 Gallery(图库) 生成 AI 背景，见[场景背景与 Gallery](../media/scene-backgrounds.md)。
+背景库包含所有可用作聊天背景的图片：自己上传的、Illustrator 绘制的，以及 Marinara 自带的美术素材。本指南介绍如何为聊天选图、导入图片、打标签、使用文件夹、设置默认 Roleplay 背景，以及 **Background Blur**(背景模糊)。
 
-聊天背景在所有聊天模式里都会显示。在 Conversation(对话模式) 聊天里，**Conversation Theme**(Conversation 主题) 的渐变会叠在图片上方，**Conversation background image opacity**(Conversation 背景图片不透明度) 决定图片显示得有多明显。见[外观设置](appearance-settings.md)。
+想让背景随故事变化（Background 智能体、固定地点和跟随角色的图片），见[随故事变化的背景](../roleplay/backgrounds.md)。想了解 Illustrator 绘制的图片，包括雨雪版本，见 [Illustrator 绘制的背景](../media/scene-backgrounds.md)。
 
-## 更换聊天背景
+聊天背景在所有聊天模式里都会显示。在 Conversation(对话模式) 聊天里，**Conversation Background**(对话背景) 的渐变会叠在图片上方，**Conversation background image opacity**(对话背景图片不透明度) 决定图片显示得有多明显。见[外观设置](appearance-settings.md)。
 
-开始之前：先打开想更换背景的聊天。你挑的背景会应用到这个聊天。
+## 在哪里打开
 
-1. 打开 **Settings**(设置)，再打开 **Appearance**(外观)，然后点 **App**(应用) 按钮。
-2. 在 **Backgrounds**(背景) 里点按 **Browse library**(浏览背景库)。
-3. 点按一张图片。它会成为这个聊天的背景，窗口随即关闭。
+打开 **Settings → Appearance**(设置 → 外观)，找到 **Backgrounds**(背景) 板块。这里有 **Chat Background**(聊天背景) 选择器、**Background Blur** 滑块，以及 **Conversation background image opacity** 和 **Chat List Backgrounds**(聊天列表背景) 两项控件。
+
+选择器会显示当前背景的预览，还没选背景时显示 **Default background**(默认背景)。它下方有最多三张 **Recent**(最近使用) 背景，点一下就能选。**Browse library**(浏览背景库) 会打开 **Background Library**(背景库) 窗口。在聊天里，**Chat Settings → Background**(聊天设置 → 背景) 会为这个聊天打开同一个背景库。
+
+## 为聊天挑一张背景
+
+开始之前：先打开想更换背景的聊天。挑选的图片只会应用到这个聊天。
+
+1. 打开 **Settings → Appearance → Backgrounds**(设置 → 外观 → 背景)，点击 **Browse library**。
+2. 点击一张图片。上面会出现一个对勾，这张图成为这个聊天的背景，窗口随即关闭。
+3. 想恢复默认，就再点一次选中的图片，或者点击预览上的 X(**Clear selection**(清除选择))。
 
 想用自己的图片，先导入它（见[导入背景](#import-a-background)）。
 
-## 背景在哪里
-
-1. 打开 **Settings**。
-2. 选择 **Appearance** 选项卡，再点 **App** 按钮。
-3. 找到 **Backgrounds** 区块。
-
-这里有 **Chat Background**(聊天背景) 选择器、**Background Blur**(背景模糊) 滑块，以及 **Conversation background image opacity** 和 **Chat List Backgrounds**(聊天列表背景) 两项控件（见[外观设置](appearance-settings.md)）。
-
-选择器会显示当前背景的预览，还没选背景时显示 **Default background**(默认背景)。它下方有最多三张 **Recent**(最近使用) 背景，点一下就能选。点击 **Browse library** 会打开 **Background Library**(背景库) 窗口。
-
 ## 背景库
 
-背景库里既有你上传的图片，也有 Marinara 自带的美术素材。每张图都带一个标签。
+背景库里既有自己上传或 Illustrator 绘制的图片，也有 Marinara 自带的美术素材。每张图都带一个标签。
 
 | 标签 | 含义 |
 | --- | --- |
@@ -46,12 +44,6 @@
 新图片会带着 **My upload** 标签出现在网格里。
 
 每个文件都必须是 JPG、PNG、GIF、WebP 或 AVIF 格式，最大 20 MB。Marinara 检查的是文件里的实际内容，而不是文件名。把非图片文件改名成 `.png`，照样会被拒绝。
-
-### 给当前聊天挑一张背景
-
-1. 打开 **Browse library**。
-2. 点击一张缩略图。上面会出现一个对勾，这张图成为这个聊天的背景，窗口随即关闭。
-3. 想恢复默认，就再点一次选中的缩略图，或者点击预览上的 X(**Clear selection**(清除选择))。
 
 ### 搜索和筛选
 
@@ -90,6 +82,10 @@
 3. 按 <kbd>Enter</kbd> 或点击 **Add**。
 
 想删掉某个标签，在编辑标签时点击它即可。
+
+标签使用小写，可以包含字母、数字、空格、连字符和下划线，每个最多 40 个字符。
+
+按图片里的地点打标签，比如 `guest bedroom` 或 `harbor tavern`。**Background**(背景) 智能体挑选背景时会读取标签；如果某张图片的标签由两个或更多单词组成，且指的是故事里的地点，Illustrator 就会复用它，不再绘制新图。见[复用已有图片](../media/scene-backgrounds.md#reusing-pictures-you-already-have)。
 
 <a id="download-a-background"></a>
 
@@ -136,6 +132,6 @@
 
 ## 相关指南
 
-- [Roleplay 背景](../roleplay/backgrounds.md)：每回合挑选背景的 Background 智能体。
-- [场景背景与 Gallery](../media/scene-backgrounds.md)：在 Gallery 里用 AI 生成的场景背景。它们也会进入这个背景库。
+- [随故事变化的背景](../roleplay/backgrounds.md)：Background 智能体、固定地点和图库背景。
+- [Illustrator 绘制的背景](../media/scene-backgrounds.md)：绘制的背景及其天气版本。它们也会进入这个背景库。
 - [外观设置](appearance-settings.md)：完整的 Appearance 选项卡。

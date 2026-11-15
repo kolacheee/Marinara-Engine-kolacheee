@@ -15,7 +15,7 @@ Si no funcionó: si el chat no tiene ningún modelo configurado, la respuesta fa
 
 ### Send on Enter
 
-Está en **Settings → General → Input & Editing** (Configuración → General → Entrada y edición). Hay un interruptor por cada modo de chat.
+Está en **Settings → Chatting → Message Box** (Configuración → Chateando → Cuadro de mensaje). Hay un interruptor por cada modo de chat.
 
 | Modo de chat | Predeterminado | Cuando está desactivado |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ Está en **Settings → General → Input & Editing** (Configuración → Genera
 | Conversations | Activado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> en Mac) envía. |
 | Game | Activado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> en Mac) envía. |
 
-Roleplay está desactivado de forma predeterminada porque los mensajes de roleplay suelen ser largos y necesitan saltos de línea. Professor Mari tiene su propio interruptor, **Enter sends to Professor Mari** (Enter envía a Professor Mari), en **Settings → General → Search and Professor Mari settings** (Configuración → General → Ajustes de Search y Professor Mari).
+Roleplay está desactivado de forma predeterminada porque los mensajes de roleplay suelen ser largos y necesitan saltos de línea. Professor Mari tiene su propio interruptor, **Enter sends to Professor Mari** (Enter envía a Professor Mari), en **Settings → General → Professor Mari** (Configuración → General → Professor Mari).
 
 ## Adjuntar imágenes y archivos
 
@@ -49,7 +49,7 @@ Para la propia galería de un personaje, usa la forma portátil `card://self/gal
 
 ## Streaming de la respuesta
 
-El streaming muestra la respuesta palabra por palabra en lugar de toda de una vez. Estos ajustes están en **Settings → General → Responses** (Configuración → General → Respuestas).
+El streaming muestra la respuesta palabra por palabra en lugar de toda de una vez. Estos ajustes están en **Settings → Chatting → Responses** (Configuración → Chateando → Respuestas).
 
 | Ajuste | Predeterminado | Qué hace |
 | --- | --- | --- |

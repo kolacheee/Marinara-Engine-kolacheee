@@ -6,7 +6,7 @@ Tryb Conversation to tryb czatu w stylu komunikatora: jedna postać lub kilka, p
 
 Zanim zaczniesz: dodaj konto w panelu **Connections** (połączenia; zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md)) i miej co najmniej jedną postać. Persona, czyli karta postaci, która reprezentuje ciebie, jest opcjonalna (zobacz [Persony użytkownika: tworzenie i edycja](../characters/personas.md)).
 
-1. Na pasku bocznym czatów otwórz zakładkę **CONVO** i kliknij **New Conversation** (nowa rozmowa). Otwiera się kreator konfiguracji z czterema stronami.
+1. Otwórz listę czatów (**Biblioteka** w prawym górnym rogu, potem **Czaty** u góry paska bocznego), otwórz zakładkę **Convo** i kliknij **Nowy**. Otwiera się kreator konfiguracji z czterema stronami.
 2. Na pierwszej stronie, **Name & Connection** (nazwa i połączenie), nazwij czat i wybierz konto, które pisze odpowiedzi.
 3. Na drugiej stronie, **Prompt Preset** (preset promptu), wybierz preset promptu trybu Conversation albo zostaw domyślny.
 4. Na trzeciej stronie, **Persona & Characters** (persona i postacie), wybierz swoją personę i jedną postać lub więcej.
@@ -29,13 +29,11 @@ Włącz **Generate Schedules**, a potem wybierz swoją strefę czasową w polu, 
 
 Zmienisz je później w **Chat Settings → Autonomous Messaging**. Jeśli postacie piszą zbyt często, wyłącz tam **Autonomous Messages** albo ustaw swoją obecność na **Do Not Disturb**.
 
-<a id="choose-which-commands-a-character-can-use"></a>
-
 ## Wybierz, których komend może używać postać
 
 Komendy to działania, które postać podejmuje sama. Nie wpisujesz ich. Po konfiguracji otwórz **Chat Settings → Agents → Commands**. Główny przełącznik **Commands** steruje wszystkimi rodzinami: gdy jest wyłączony, żadna rodzina nie działa.
 
-Każda rodzina ma własny przełącznik. Wszystkie są na początku włączone z wyjątkiem **Videos**, który musisz włączyć samodzielnie. Rodziny należące do opcjonalnego agenta pokazują się dopiero po zainstalowaniu tego agenta w **Agents → Agent Organizer**.
+Każda rodzina ma własny przełącznik. Wszystkie są na początku włączone z wyjątkiem **Videos**, który musisz włączyć samodzielnie. Rodziny należące do opcjonalnego agenta pokazują się dopiero po zainstalowaniu tego agenta w **Biblioteka → Agenci**.
 
 | Rodzina | Co może zrobić postać | Wymaga agenta |
 | --- | --- | --- |
@@ -58,13 +56,11 @@ Każda rodzina ma własny przełącznik. Wszystkie są na początku włączone z
 | **Tic-Tac-Toe** | Przyjąć wyzwanie do kółka i krzyżyka. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Przyjąć partię. | Rock-Paper-Scissors |
 
-Informacje o **Influence** i **Notes** znajdziesz w [Łączenie czatu Conversation z czatem Roleplay lub Game](../chats/connected-chats.md). Ostatnia kolumna podaje agenta, którego trzeba zainstalować z **Agent Organizer**.
-
-<a id="your-presence-status"></a>
+Informacje o **Influence** i **Notes** znajdziesz w [Łączenie czatu Conversation z czatem Roleplay lub Game](../chats/connected-chats.md). Ostatnia kolumna podaje agenta, którego trzeba zainstalować z **Biblioteka → Agenci**.
 
 ## Twój status obecności
 
-Twoja obecność to kolorowa plakietka w stopce paska bocznego. Jest taka sama w każdym czacie. Kliknij ją, aby wybrać status:
+Twoja obecność to kolorowa plakietka na dole listy czatów. Jest taka sama w każdym czacie. Kliknij ją, aby wybrać status:
 
 | Status | Znaczenie |
 | --- | --- |
@@ -76,8 +72,6 @@ Twoja obecność to kolorowa plakietka w stopce paska bocznego. Jest taka sama w
 Jeśli pozostajesz **Active** i przez 10 minut nic nie robisz, aplikacja ustawia **Idle**, a po twoim powrocie znów ustawia **Active**. Jeśli sam wybierzesz status, ta automatyczna zmiana zatrzymuje się, dopóki nie wybierzesz **Active** ponownie. Status **Idle** nie zatrzymuje odezwań postaci.
 
 Obok plakietki jest pole statusu, które gdy jest puste, pokazuje "What's up?". Wpisz tam swoją bieżącą aktywność (do 120 znaków), aby postacie o niej wiedziały. Ostatnie wpisy pojawiają się w sekcji **Recent status** (ostatni status), więc możesz użyć ich ponownie.
-
-<a id="react-and-get-notified"></a>
 
 ## Reaguj i otrzymuj powiadomienia
 

@@ -1,10 +1,10 @@
 # Galerie postaci i person
 
-Sekcja **Gallery** (galeria) w zakładce **Images** (obrazy) edytorów postaci i persony przechowuje obrazy i wideo przypisane do postaci albo persony, więc zostają one nawet po usunięciu czatów. Używaj jej do arkuszy referencyjnych, wariantów strojów i zaimportowanych paczek obrazów. Obraz z galerii da się też oznaczyć jako własne emoji albo naklejkę.
+Zakładka **Galeria** w edytorach postaci i person przechowuje obrazy i filmy powiązane z postacią lub personą, więc zostają nawet po usunięciu czatów. Używaj jej do arkuszy referencyjnych, wariantów strojów i zaimportowanych paczek obrazów. Możesz też oznaczyć obraz z galerii jako własne emoji, naklejkę albo tło, które towarzyszy postaci w każdym czacie.
 
-## Gdzie znaleźć galerię
+## Zakładka Galeria
 
-Każda postać i każda persona ma własną galerię. Otwórz postać w edytorze postaci albo personę w edytorze persony, kliknij zakładkę **Images**, a potem **Gallery** u góry zakładki. Galeria postaci nosi tytuł **Character Gallery**, a galeria persony – **Persona Gallery**. Obie działają tak samo.
+Każda postać i persona ma własną zakładkę **Galeria** (ikona aparatu). Otwórz postać w edytorze postaci albo personę w edytorze person, a potem kliknij **Galeria**. Galeria postaci nosi tytuł **Character Gallery**, a galeria persony – **Persona Gallery**. Obie działają tak samo.
 
 Galeria ma dwie podzakładki:
 
@@ -15,7 +15,7 @@ Galeria samego czatu działa inaczej. Trzyma ilustracje scen i wygenerowane zał
 
 ### Dodawanie obrazów
 
-1. Otwórz **Images → Gallery** i wybierz **Images**.
+1. Otwórz zakładkę **Galeria** i wybierz **Obrazy**.
 2. Przeciągnij pliki obrazów na pole **Upload Character Images** albo kliknij je, żeby wybrać pliki. W personie to pole nosi nazwę **Upload Persona Images**.
 3. Poczekaj na koniec wgrywania. Nowe obrazy pojawiają się w siatce.
 
@@ -23,7 +23,7 @@ Kliknij obraz, żeby zobaczyć go w powiększeniu. Każdy kafelek ma przycisk po
 
 ### Dodawanie wideo
 
-1. Otwórz **Images → Gallery** i wybierz **Videos**.
+1. Otwórz zakładkę **Galeria** i wybierz **Filmy**.
 2. Przeciągnij pliki wideo na pole **Upload Character Videos** albo kliknij je, żeby wybrać pliki. W personie to pole nosi nazwę **Upload Persona Videos**.
 3. Poczekaj na koniec wgrywania.
 
@@ -33,7 +33,7 @@ Obsługiwane formaty to MP4, WebM i MOV. Najnowsze wideo są na początku listy.
 
 Własne emoji to mały obrazek w linii tekstu, zapisywany jako `:name:`. Naklejka to większy obrazek w osobnym bloku, zapisywany jako `sticker:name:`. Oba działają wyłącznie w czatach w trybie Conversation Mode, czyli w trybie w stylu komunikatora.
 
-1. Otwórz **Images → Gallery** i wybierz **Images**.
+1. Otwórz zakładkę **Galeria** i wybierz **Obrazy**.
 2. Kliknij mały przycisk oznaczania w lewym górnym rogu obrazu (podpowiedź **Tag as emoji or sticker**).
 3. Kliknij **Make emoji** albo **Make sticker**.
 4. W oknie **Custom Emoji** lub **Custom Sticker** wpisz nazwę i zatwierdź.
@@ -51,6 +51,20 @@ Po oznaczeniu obrazu przycisk na jego miniaturze pokazuje nazwę. Kliknij go, ż
 - **Remove emoji** lub **Remove sticker** usuwa oznaczenie. Sam obraz zostaje w sekcji **Gallery**.
 
 Emoji lub naklejka oznaczona w galerii działa tylko dla tej jednej postaci lub persony, w czatach w trybie Conversation Mode z jej udziałem. To co innego niż globalne zbiory emoji i naklejek w polu pisania wiadomości. Jeśli nazwa z galerii pokrywa się z nazwą globalną, w tym czacie wygrywa wersja z galerii. Unikalność nazw nie jest sprawdzana, więc nadaj każdemu obrazowi inną nazwę.
+
+## Używanie obrazu z galerii jako tła
+
+Obraz oznaczony jako tło pojawia się do wyboru w każdym czacie z daną postacią (lub personą) i może przedstawiać miejsce, na przykład jej sypialnię.
+
+1. Otwórz zakładkę **Galeria** i wybierz **Obrazy**.
+2. Kliknij przycisk tagu w lewym górnym rogu obrazu i wybierz **Use as background** (użyj jako tła).
+3. Wpisz przedstawione miejsca, rozdzielając je przecinkami, na przykład `{{char}}'s bedroom, {{char}}'s room`, albo zostaw pole puste. W galerii persony użyj `{{user}}`.
+
+Przycisk pokazuje wtedy **Background:** (tło) i miejsca. Kliknij go, żeby wybrać **Edit places** (edytuj miejsca) albo **Remove background tag** (usuń tag tła). Sposób wyświetlania tych obrazów w czatach opisuje sekcja [Tła towarzyszące postaci](../roleplay/backgrounds.md#backgrounds-that-follow-a-character).
+
+Obrazy wygenerowane na czacie możesz przenieść tutaj z galerii czatu przyciskiem z ikoną osoby. Zobacz [Galeria czatu](../chats/chat-gallery.md#per-image-actions).
+
+Eksport w formacie **Marinara Native** zachowuje wszystkie oznaczenia (emoji, naklejki i tła) wraz z galerią.
 
 <a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
 
@@ -107,4 +121,5 @@ Podzakładka **Videos** wymienia wideo ze scen wygenerowane w czatach z tą post
 - [Tworzenie i edycja postaci](creating-and-editing-characters.md)
 - [Persony](personas.md)
 - [Własne emoji, naklejki i GIF-y](../conversation/emoji-stickers-gifs.md)
-- [Tła scen i galeria](../media/scene-backgrounds.md)
+- [Tła podążające za fabułą](../roleplay/backgrounds.md)
+- [Galeria czatu](../chats/chat-gallery.md)

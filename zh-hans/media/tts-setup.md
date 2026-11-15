@@ -4,85 +4,78 @@
 
 ## 快速上手
 
-1. 打开语音合成卡片（步骤见下文），开启 **Use text to speech**(使用语音合成)。
-2. 选择一个 **Source**(语音来源)，把密钥粘贴到 **API key**(API 密钥)。
-3. 点击 **Preview**(试听)，听一段示例。
-4. 在聊天里，点击消息下方的 **Speak**(朗读)。
+1. 点击顶栏里的 **Connections**(连接)，再点击 **Add**(添加)。
+2. 点击类型标签中的 **Voice**(声音)，选择一个服务，把密钥粘贴到 **API key**(API 密钥)。点击 **Connect**(连接)。
+3. 在 **Found in … — use it for:**(在……中找到，用于：) 下勾选 **Voice**，再点击 **Done**(完成)。选中 Voice 模型就会开启语音合成。
+4. 点击 **Defaults**(默认值) 框里 **Voice** 行的齿轮，再点击 **Preview**(试听) 听一段示例。在聊天里，点击消息下方的 **Speak**(朗读)。
 
 ## 开启语音合成
 
-几乎所有 TTS 设置都在同一张卡片里。开启 TTS 并不会让任何内容自己开口。它会让每条消息上的 **Speak** 按钮和 **Auto-play**(自动朗读) 选项显示出来。读什么、什么时候读，仍然由你决定。
+为 **Voice** 这项工作选择模型，就会开启语音合成。它并不会让任何内容自己开口。它会让每条消息上的 **Speak** 按钮和 **Auto-play**(自动朗读) 选项显示出来。读什么、什么时候读，仍然由你决定。
 
-1. 点击顶栏里的 **Connections**(连接)，再点击 **Add**(添加)。**Add account**(添加账号) 窗口随即打开。
-2. 在 **Voice**(声音) 下选择 **Text to speech**(语音合成)。卡片随即打开。如果语音合成已经在用你的电脑或私有网络上的 PocketTTS 或其他语音服务器，同一张卡片也列在 **On this device**(在你的电脑上) 下。
-3. 开启 **Use text to speech**。关闭时，什么都不会朗读。
-4. 打开 **Source** 列表，选择一个服务。
+1. 打开 **Library → Connections**(资料库 → 连接)。在 **Defaults** 框里点击 **Voice**，**Model for Voice**(用于声音的模型) 窗口随即打开。
+2. 从已有账号中选择语音模型，或选择本设备上的语音引擎，比如 **Local PocketTTS**(本地 PocketTTS)。**Voice** 行会显示你的选择。
+3. 还没有语音账号？点击窗口底部的 **Add account**(添加账号)，或点击 Connections 页面的 **New connection**(新建连接)，再打开 **Voice** 选项卡。
+4. 要关闭语音合成，再次点击 **Voice**，选择 **Turn voice off**(关闭语音)。关闭期间，什么都不会朗读。
 
-**Source** 就是负责生成音频的服务。
+语音服务就是负责生成音频的服务。Marinara 支持以下服务：
 
 - **OpenAI-compatible**：OpenAI，或任何沿用 OpenAI TTS 格式的服务器。这是默认选项。
 - **ElevenLabs**：ElevenLabs 语音服务。
 - **PocketTTS**：在你自己电脑上运行的免费语音服务器。
 - **xAI Voice**：xAI 的语音服务。
 
-Marinara 会为每个 Source 单独保存一套配置：密钥、地址、模型、声音和参数。切换 Source 时会恢复该 Source 之前的设置。还没设置过的 Source 从默认值开始。
+Marinara 会为每个语音服务单独保存一套配置：密钥、地址、模型、声音和参数。切换服务时会恢复该服务之前的设置。还没设置过的服务从默认值开始。
 
 请求经由 Marinara 自己的服务器发出。你的 API 密钥加密保存在服务器上。保存之后，输入框只显示一串圆点，真正的密钥不会回传到你的浏览器。
 
-<a id="use-an-audio-connection"></a>
+### 使用账号中的 Voice 模型
 
-### 使用音频连接
+如果你已经添加了 **Audio**(音频) 账号（见[支持的 AI 服务商](../connections/providers-reference.md#audio)），就不用再填一遍它的信息。它的语音模型会出现在 **Voice** 选择器里。
 
-如果你已经添加了 **Audio**(音频) 账号（见[支持的 AI 服务商](../connections/providers-reference.md#audio)），就不用再填一遍它的信息。它会出现在 **Source** 列表的 **Audio providers**(音频服务商) 分组下，括号里注明它的来源类型。
+1. 点击 **Defaults** 框里的 **Voice** 行，选择模型。
+2. 点击该行的齿轮，选择声音和其他设置。
 
-1. 打开 **Source** 列表，选择这个账号。
-2. 选择它的声音和下面的其他设置。
+之后 Marinara 会使用该账号的地址、密钥、模型和 **Request timeout (seconds)**(请求超时，单位为秒)，所以语音设置会隐藏这些字段。密钥留在账号里，不会复制到语音设置中，也不会发送到你的浏览器。对账号的改动，比如换了新密钥，会立即生效。
 
-之后 Marinara 会使用该账号的地址、密钥、模型和 **Request timeout (seconds)**(请求超时，单位为秒)，所以卡片会隐藏这些字段。密钥留在账号里，不会复制到卡片中，也不会发送到你的浏览器。对账号的改动，比如换了新密钥，会立即生效。
+声音、语速和其他语音设置按账号分别保存。两个同类型的账号绝不会共用这些设置。四个常规语音服务的设置保持原样。
 
-声音、语速和其他语音设置按账号分别保存。两个同类型的账号绝不会共用这些设置。四个常规 Source 的设置保持原样。卡片上的开关仍然用来开启和关闭常规 TTS。
-
-如果所选账号被删除或无法使用，卡片会显示 **Missing Audio provider**(缺少音频服务商)，在你另选一个 Source 之前不会朗读任何内容。Marinara 绝不会自行切换。如果账号能列出自己的声音，卡片会指出不在列表里的已保存声音。
+如果所选账号被删除或无法使用，该行会显示 **The voice account is missing**，在你另选一个语音模型之前不会朗读任何内容。Marinara 绝不会自行切换。
 
 ## 设置地址、密钥和模型
 
-如果选的是音频账号，跳过这一步，这些信息由账号提供。
+**Add account** 窗口只要求填写密钥或地址。之后要修改，在 **Connections** 中点击账号上的 **⋯**，再点击 **Edit account**(编辑账号)。如果选的是 Audio 账号，跳过这一步，这些信息由账号提供。
 
-1. 检查 **Base URL**(基础 URL)。每个 Source 都会填入一个默认值（见下表）。只有使用代理或自己运行的服务器时才需要改。
+1. 检查 **Address**(地址)。每个服务都会填入一个默认值（见下表）。只有使用代理或自己运行的服务器时才需要改。
 2. 把密钥粘贴到 **API key**。想保留已有密钥，就让那串圆点原样留着。想删除它，清空这个输入框。
-3. 检查 **Model**(模型)。每个 Source 都会填入一个默认值。也可以输入你的服务支持的其他模型。
+3. 选择模型，或输入你的服务支持的其他模型 ID。
 
-| Source | 默认 Base URL | 默认模型 | 默认声音 |
+| 语音服务 | 默认地址 | 默认模型 | 默认声音 |
 | --- | --- | --- | --- |
 | OpenAI-compatible | `https://api.openai.com/v1` | `tts-1` | `alloy` |
 | ElevenLabs | `https://api.elevenlabs.io` | `eleven_multilingual_v2` | 无，必须自己选一个 |
 | PocketTTS | `http://localhost:8000` | `pocket-tts` | `alba` |
 | xAI Voice | `https://api.x.ai/v1` | `grok-tts` | `eve` |
 
-选择 **ElevenLabs** 时，**Model** 列表会加载你的账号可用的语音合成模型。选一个普通的语音合成模型。ID 里带 `ttv` 的是声音设计模型，无法朗读文字。选了这种模型，播放会失败，并报错提示改用语音合成模型。
+选择 **ElevenLabs** 时，模型列表会加载你的账号可用的语音合成模型。选一个普通的语音合成模型。ID 里带 `ttv` 的是声音设计模型，无法朗读文字。选了这种模型，播放会失败，并报错提示改用语音合成模型。
 
 ### PocketTTS
 
-PocketTTS 并非 Marinara 内置。单独安装[官方 PocketTTS 服务器](https://github.com/kyutai-labs/pocket-tts)，再用 `uvx pocket-tts serve` 启动。Marinara 不会代为下载或管理它。官方服务器使用 `http://localhost:8000`。除非你改了主机或端口，否则 **Base URL** 保持这个值。Marinara 会检测官方的 multipart `/tts` API。[OpenAI 兼容 PocketTTS 包装服务器](https://github.com/teddybear082/pocket-tts-openai_streaming_server)的自定义 URL 仍然可用。
-
-<a id="request-timeout"></a>
+PocketTTS 并非 Marinara 内置。单独安装[官方 PocketTTS 服务器](https://github.com/kyutai-labs/pocket-tts)，再用 `uvx pocket-tts serve` 启动。Marinara 不会代为下载或管理它。官方服务器使用 `http://localhost:8000`。除非你改了主机或端口，否则 **Address** 保持这个值。Marinara 会检测官方的 multipart `/tts` API。[OpenAI 兼容 PocketTTS 包装服务器](https://github.com/teddybear082/pocket-tts-openai_streaming_server)的自定义 URL 仍然可用。
 
 ### 请求超时
 
-Marinara 为每一句语音最多等待 60 秒。你自己电脑上的语音服务器，尤其是笔记本上的，读一句长句可能需要更久。调高 **Model** 下方的 **Request timeout (seconds)**。范围是 10 到 3,600 秒。
+Marinara 为每一句语音最多等待 60 秒。你自己电脑上的语音服务器，尤其是笔记本上的，读一句长句可能需要更久。在 **Voice settings**(语音设置) 的 **More**(更多) 下调高 **Request timeout (seconds)**。语音设置的入口是 **Defaults** 框里 **Voice** 行的齿轮。范围是 10 到 3,600 秒。
 
-音频账号有自己的 **Request timeout (seconds)**，在账号编辑器里 **Default voice**(默认声音) 的下方。通过音频账号朗读的聊天（包括被选作 **Source** 的账号）使用该账号的时限。卡片的时限适用于卡片自身设置产生的语音，包括 **Preview**。如果某一句耗时太久，报错会写明 Marinara 等了多少秒，以及应该调高哪项设置。
+音频账号有自己的 **Request timeout (seconds)**，在模型的 **Edit model**(编辑模型) 窗口和 **Voice settings** 中，位于 **Default voice**(默认声音) 下方。通过音频账号朗读的聊天（包括被选作 **Voice** 这项工作的账号）使用该账号的时限。**Voice settings** 中的时限适用于这些设置产生的语音，包括 **Preview**。如果某一句耗时太久，报错会写明 Marinara 等了多少秒，以及应该调高哪项设置。
 
 ## 选择声音
 
-**Voice option**(声音分配方式) 决定声音如何分配。
-
-- **One voice for all**(所有角色共用一个声音)：每个说话人都使用同一个声音。这是默认设置。
-- **Selected per character or persona**(按角色或用户角色单独选择)：给选定的角色和用户角色各自指定声音。
+在给角色或用户角色单独配声之前，所有说话人都使用 **Shared voice**(共用声音)。这两种选项都在 **Voice settings** 的 **Who speaks**(谁来朗读) 区域里。
 
 ### 所有角色共用一个声音
 
-在 **Shared voice**(共用声音) 里选择声音。想加载你的服务提供的真实声音列表，先填好它的信息，再点击 **Refresh voices from provider**(从服务商刷新声音列表)（圆形箭头图标）。它会先保存卡片，所以刚填的密钥会立即生效。连接之前，会显示一份简短的内置列表，让输入框不至于是空的。服务返回错误时会直接显示错误，不会把备用列表伪装成刷新成功。
+在 **Shared voice** 里选择声音。想加载你的服务提供的真实声音列表，点击 **Refresh voices from provider**(从服务商刷新声音列表)（圆形箭头图标）。连接之前，会显示一份简短的内置列表，让输入框不至于是空的。服务返回错误时会直接显示错误，不会把备用列表伪装成刷新成功。
 
 官方 PocketTTS 服务器没有声音列表端点，因此 Marinara 显示它的内置声音，并在列表旁保留一个文本框，可以填写其他内置名称或受支持的声音 URL。兼容的包装服务器可以返回自己的列表，并接受自定义 ID 或路径。
 
@@ -90,12 +83,11 @@ Marinara 为每一句语音最多等待 60 秒。你自己电脑上的语音服�
 
 ### 按角色或用户角色单独选择
 
-1. 把 **Voice option** 设为 **Selected per character or persona**。
-2. 在 **Character and persona voices**(角色与用户角色声音) 里点击 **Add voice**(添加声音)。
-3. 在左边的列表里选一个角色或用户角色，在右边的列表里选一个声音。
-4. 每个角色或用户角色重复一次。
+1. 在 **Character and persona voices**(角色与用户角色声音) 里点击 **Add voice**(添加声音)。
+2. 在左边的列表里选一个角色或用户角色，在右边的列表里选一个声音。
+3. 每个角色或用户角色重复一次。
 
-也可以在 **Character Editor**(角色编辑器) 的 **Voice** 选项卡里设置角色的声音。那里改的是同一行。这个区域里的 **Refresh**(刷新) 会重新加载声音列表。先把角色建好。一个都没有时，应用会提示先添加角色或用户角色，再分配声音。
+也可以在 **Character Editor**(角色编辑器) 的 **Voice** 选项卡里设置角色的声音。那里改的是同一行。角色共用一个声音时，选项卡会显示 **All characters share one voice right now.** 点击 **Use a voice per character**(为每个角色单独配声) 切换，再选择声音。点击 **Open Text to Speech settings**(打开语音合成设置) 可以打开 **Voice settings**。**Character and persona voices** 里的 **Refresh**(刷新) 会重新加载声音列表。先把角色建好。一个都没有时，应用会提示先添加角色或用户角色，再分配声音。
 
 没有单独配声的角色会使用名字匹配的角色卡的声音，比如 AU 副本对应的原版卡。否则就使用共用声音。参见[创建和编辑角色](../characters/creating-and-editing-characters.md)。
 
@@ -121,9 +113,9 @@ Marinara 为每一句语音最多等待 60 秒。你自己电脑上的语音服�
 
 **Audio format**(音频格式) 可以选 **MP3**(默认) 或 **WAV**。本地服务器生成不了 MP3 时，就用 WAV。选择 ElevenLabs 时这个控件会隐藏，它始终使用 MP3。选择 xAI Voice 时控件会显示，但不起作用，因为 xAI 始终返回 MP3。
 
-**Speed**(语速) 滑块的范围随 Source 而定：
+**Speed**(语速) 滑块的范围随语音服务而定：
 
-| Source | 范围 |
+| 语音服务 | 范围 |
 | --- | --- |
 | OpenAI-compatible | 0.25 到 4.0 倍 |
 | PocketTTS | 兼容包装服务器上为 0.25 到 4.0。官方服务器自行控制语速。 |
@@ -134,7 +126,7 @@ Marinara 为每一句语音最多等待 60 秒。你自己电脑上的语音服�
 
 ## 自动朗读
 
-每个 **Auto-play** 开关都会在某一类新消息生成完毕后立刻朗读它。这些开关需要先开启 **Use text to speech**。它们默认全部关闭。
+每个 **Auto-play** 开关都会在某一类新消息生成完毕后立刻朗读它。这些开关需要先为 **Voice** 这项工作选择模型。它们默认全部关闭。
 
 - **Roleplay messages**(Roleplay 消息)：新的 Roleplay 回复。
 - **Conversation messages**(Conversation 消息)：新的 Conversation 回复。
@@ -154,11 +146,11 @@ Marinara 为每一句语音最多等待 60 秒。你自己电脑上的语音服�
 - **Skip fenced code blocks**(跳过围栏代码块)。
 - **Skip text inside square brackets**(跳过方括号内的文字)。
 
-开启 **Roleplay speaker extractor**(Roleplay 说话人提取器) 后，会显示 **Enable emotion indicators**(启用情绪提示)。它会添加朗读提示，不改动对白的字词。启用情绪提示后，即使开启了 **Skip text inside square brackets**，方括号里的文字也会发送给语音服务，其中可能包含备注。要让方括号里的备注不被朗读，就关闭情绪提示，并保持跳过选项开启。较长的一行被拆开时，`[Low, steady voice, restrained urgency]` 这样的朗读提示会保持完整。已知的说话人和场景标签仍会移除。每条提示怎么用，由语音模型决定。**Use text to speech**、**Game narration** 和情绪提示都开启时，Game 的场景、队伍和战斗对白也可以带有朗读提示。
+开启 **Roleplay speaker extractor**(Roleplay 说话人提取器) 后，会显示 **Enable emotion indicators**(启用情绪提示)。它会添加朗读提示，不改动对白的字词。启用情绪提示后，即使开启了 **Skip text inside square brackets**，方括号里的文字也会发送给语音服务，其中可能包含备注。要让方括号里的备注不被朗读，就关闭情绪提示，并保持跳过选项开启。较长的一行被拆开时，`[Low, steady voice, restrained urgency]` 这样的朗读提示会保持完整。已知的说话人和场景标签仍会移除。每条提示怎么用，由语音模型决定。为 **Voice** 这项工作选好模型，且 **Game narration** 和情绪提示都开启时，Game 的场景、队伍和战斗对白也可以带有朗读提示。
 
 ## 朗读单条消息
 
-TTS 开启后，每条角色消息或旁白消息下方的工具栏里会出现 **Speak** 按钮（麦克风图标）。
+为 **Voice** 这项工作选好模型后，每条角色消息或旁白消息下方的工具栏里会出现 **Speak** 按钮（麦克风图标）。
 
 - 点击 **Speak** 朗读这条消息。获取音频期间，按钮会显示加载状态。
 - 播放时再点一次即可停止。提示文字是 **Stop speaking**。
@@ -170,7 +162,7 @@ TTS 开启后，每条角色消息或旁白消息下方的工具栏里会出现 
 
 ## 缓存的音频片段
 
-Marinara 会把生成的音频保存在你的浏览器里，同一句话不会生成两次。**Cached clips**(缓存片段) 面板实时显示数量和总大小。点击 **Export cached TTS clips**(导出缓存的 TTS 片段)（下载图标），可以把每个缓存片段保存为独立的音频文件。缓存会自动清理最旧的片段。应用里没有清空按钮。要清空缓存，就清除浏览器数据。
+Marinara 会把生成的音频保存在你的浏览器里，同一句话不会生成两次。**Voice settings** 的 **Cached clips**(缓存片段) 区域实时显示数量和总大小。点击 **Export cached TTS clips**(导出缓存的 TTS 片段)（下载图标），可以把每个缓存片段保存为独立的音频文件。缓存会自动清理最旧的片段。应用里没有清空按钮。要清空缓存，就清除浏览器数据。
 
 ## TTS 在各个聊天模式里
 
@@ -182,31 +174,27 @@ Marinara 会把生成的音频保存在你的浏览器里，同一句话不会�
 
 如果声音念错了角色或用户角色的名字，就添加一个 **Phonetic name**(读音名)，填上它应该怎么念。在 **Character Editor** 里，它在 **Voice** 选项卡上。在 **Persona Editor**(用户角色编辑器) 里，它和基本信息字段放在一起。它只在 Conversation 的音频和视频通话中使用。**Speak**、自动朗读和 Game Mode 旁白都会忽略它。
 
-<a id="troubleshooting"></a>
-
 ## 故障排查
 
-- **完全没有声音**：确认 **Use text to speech** 已开启。再检查对应的 **Auto-play** 开关，或者用消息上的 **Speak**。
-- **卡片显示 Missing Audio provider**：被选作 **Source** 的账号已被删除或无法使用。另选一个 Source。见[使用音频连接](#use-an-audio-connection)。
-- **列表里没有声音**：在 TTS 已开启、密钥有效的状态下保存卡片，然后点击 **Refresh voices from provider**。官方 PocketTTS 服务器使用 Marinara 的内置列表。如果使用兼容的 PocketTTS 包装服务器，确认 `<Base URL>/v1/voices` 有响应。
-- **ElevenLabs 不出声**：选一个真正的声音，而不是“Select an ElevenLabs voice”占位项。确认 **Model** 是语音合成模型，而不是 ID 里带 `ttv` 的声音设计模型。
+- **完全没有声音**：确认 **Defaults** 框里的 **Voice** 行不是 **Off**(关闭)。再检查对应的 **Auto-play** 开关，或者用消息上的 **Speak**。
+- **Voice 行显示 The voice account is missing**：语音模型对应的账号已被删除或无法使用。另选一个语音模型。见[使用账号中的 Voice 模型](#use-a-voice-model-from-an-account)。
+- **列表里没有声音**：确认 **Voice** 行已选好模型且密钥有效，然后点击 **Refresh voices from provider**。官方 PocketTTS 服务器使用 Marinara 的内置列表。如果使用兼容的 PocketTTS 包装服务器，确认 `<Base URL>/v1/voices` 有响应。
+- **ElevenLabs 不出声**：选一个真正的声音，而不是“Select an ElevenLabs voice”占位项。确认语音模型是语音合成模型，而不是 ID 里带 `ttv` 的声音设计模型。
 - **某一句中断并提示“No audio after 60 s”**：语音服务器需要更多时间。按提示里说的位置调高 **Request timeout (seconds)**。见[请求超时](#request-timeout)。
 - **本地地址上的自建服务器被拦截**：在 `.env` 里开启 `TTS_LOCAL_URLS_ENABLED`。它允许 Marinara 访问 OpenAI 兼容或 ElevenLabs 风格服务器的本地地址或内网地址。PocketTTS 不需要它。参见[服务器配置参考](../CONFIGURATION.md)。
-- **快速测试**：点击卡片里的 **Preview**，用当前设置听一小段示例。
+- **快速测试**：点击 **Voice settings** 里的 **Preview**，用当前设置听一小段示例。
 
 ## 参考：音乐、音效和 Gacha Forge
 
 下面几节适用于进阶设置。
 
-<a id="game-music-and-sound-effects-on-a-compatible-audio-server"></a>
-
 ### 通过兼容音频服务器生成 Game 音乐和音效
 
-1. 在 **Connections** 里，用 **Edit model**(编辑模型) 打开你的 **Music & Sound Effects**(音乐与音效) 账号，选择 **Custom compatible server**(自定义兼容服务器)。**Add account** 窗口里没有这类账号的按钮；它来自升级或导入（见[账号参考](../connections/providers-reference.md#music--sound-effects)）。
+1. 在 **Connections** 里，用 **Edit model**(编辑模型) 打开你的 **Music & Sound Effects**(音乐与音效) 账号，选择 **Custom compatible server**(自定义兼容服务器)。**Add connection**(添加连接) 列表里没有这类账号的入口；它来自升级或导入（见[账号参考](../connections/providers-reference.md#music--sound-effects)）。
 2. 填写音乐或音效服务器的地址、密钥和模型。
 3. 设置 **Generation API format**(生成 API 格式)，并填入服务器提供的端点路径。路径留空，对应的功能就不可用。
 4. 开启 **Music generation**(音乐生成)、**Sound-effect generation**(音效生成)，或同时开启两项。
-5. 在 Game 设置或游戏的音频设置中选择这个账号。语音账号仍在 TTS 卡片里单独选择。
+5. 在 Game 设置或游戏的音频设置中选择这个账号。语音账号仍在 **Voice** 这项工作的语音设置里单独选择。
 
 端点路径会接在账号的 Base URL 后面。例如 `http://localhost:8002/v1` 搭配 `chat/completions`，访问的就是 `/v1/chat/completions`。与其他本地兼容音频请求一样，本地 HTTP 端点需要在 `.env` 里设置 `TTS_LOCAL_URLS_ENABLED=true`。
 
@@ -219,12 +207,11 @@ Marinara 会把生成的音频保存在你的浏览器里，同一句话不会�
 
 生成的情境音乐按区域或遭遇等级创作一次，之后重复使用。重复的音效使用音频缓存。生成出错后，缓存仍可用于重试。
 
-<a id="gacha-forge-dialogue-and-audio"></a>
-
 ### Gacha Forge 对白与音频
 
-Gacha Forge 1.11.0 及更新版本使用 TTS 卡片选中的账号及其按角色分配的声音。 - 开启 **Read character dialogue**(朗读角色对白)，就会朗读已分配声音的导入角色的对白。这个开关在新世界设置的 **Lore**(世界设定) 步骤里；已有世界则在 Gacha Forge 自己的世界设置里。旁白、想法、没有 Engine 角色 ID 的生成单位，以及没有声音的角色都保持静音。只凭名字，绝不会借用另一个角色的声音。
-- 世界的 TTS 开关开启时，可以使用选中的音频账号。直接使用卡片自身的来源设置时，还必须开启 **Use text to speech**。
+Gacha Forge 1.11.0 及更新版本使用 **Voice** 这项工作选中的账号及其按角色分配的声音。 - 开启 **Read character dialogue**(朗读角色对白)，就会朗读已分配声音的导入角色的对白。这个开关在新世界设置的 **Lore**(世界设定) 步骤里；已有世界则在 Gacha Forge 自己的世界设置里。旁白、想法、没有 Engine 角色 ID 的生成单位，以及没有声音的角色都保持静音。只凭名字，绝不会借用另一个角色的声音。
+
+- **Voice** 这项工作不是 **Off** 时，可以使用选中的 Audio 账号。
 - Game 自带的音乐和音效不需要生成账号。要创作新曲目，在 Gacha Forge 里开启 **Generate music and sound effects**(生成音乐和音效)，并在 **Audio connection**(音频连接) 下选择一个 Music & Sound Effects 账号。它在生成开启后才会出现。主页、战斗、首领战、故事场景和角色故事的曲目在首次需要时生成，之后重复使用。这些请求使用你的服务账号。
 - 右上角的静音按钮会同时静音音乐、对白和音效。Gacha Forge 的视觉设置里有这三者各自的音量控制（可以调到零），以及自动播放的暂停时长（默认 **3 秒**，在文字显示完毕且语音对白结束之后开始）。选项仍然等待玩家选择。离开场景时，语音对白会被取消。离开世界会停止它的音频。
 

@@ -24,7 +24,7 @@ Você pode adicionar os dois ao mesmo chat, mas eles se sobrepõem e aumentam o 
 
 ## Adicione um agente de conhecimento a um chat
 
-Antes de começar: instale o agente pelo **Agent Organizer** (organizador de agentes). Veja [Agentes: ajudantes de IA para os seus chats](agents-overview.md).
+Antes de começar: instale o agente pela **Biblioteca → Agentes**. Veja [Agentes: ajudantes de IA para os seus chats](agents-overview.md).
 
 1. Em um chat de Roleplay, abra **Chat Settings** (configurações do chat).
 2. Encontre a seção **Agents** e ative **Enable Agents** (ativar agentes).
@@ -70,7 +70,7 @@ Quando você escolhe os lorebooks de origem do roteador, um selo de cobertura ap
 O Knowledge Router também consegue encontrar entradas candidatas por significado, não só por palavra-chave. Isso usa um embedder, um modelo pequeno que transforma texto em números para que Marinara possa comparar significados. O roteador funciona sem ele.
 
 1. Abra o editor de lorebooks e encontre **Semantic search (embeddings)** (busca semântica por embeddings).
-2. Escolha uma conta que tenha um modelo de embedding. Se você definiu um padrão **Embeddings** em **Connections → Defaults** (Conexões → Padrões), ele já vem escolhido, a não ser que você tenha escolhido outra fonte antes.
+2. Escolha uma conta que tenha um modelo de embedding. Se você definiu uma tarefa **Embeddings** na caixa **Padrões** em **Conexões**, ele já vem escolhido, a não ser que você tenha escolhido outra fonte antes.
 3. Use a mesma fonte de embedding da conta do seu chat. Vetores de tamanho diferente são ignorados.
 4. Clique no botão de vetorizar. Ele mostra quantas entradas ainda precisam de vetores. **Re-vectorize all** refaz todas as entradas.
 

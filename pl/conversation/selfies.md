@@ -6,7 +6,7 @@ Selfie pochodzą z opcjonalnego pakietu **Illustrator** i korzystają z generowa
 
 ## Włącz selfie
 
-Zanim zaczniesz: zainstaluj pakiet **Illustrator** z **Agents → Agent Organizer** (organizator agentów) i dodaj konto obrazów, czyli konto usługi, która tworzy obrazy (zobacz [Dostawcy generowania obrazów i konfiguracja](../media/image-providers.md)).
+Zanim zaczniesz: zainstaluj pakiet **Illustrator** z **Biblioteka → Agenci** i dodaj konto obrazów, czyli konto usługi, która tworzy obrazy (zobacz [Dostawcy generowania obrazów i konfiguracja](../media/image-providers.md)).
 
 1. Otwórz czat Conversation, a potem otwórz **Chat Settings** (ustawienia czatu).
 2. Znajdź sekcję **Agents** i otwórz **Illustrator Settings**.
@@ -41,9 +41,10 @@ Jeśli karta lub persona ma włączone **Image Appearance Override** (w sekcji *
 
 1. Otwórz **Chat Settings** i rozwiń sekcję **Gallery**.
 2. Kliknij **Selfie**. Gdy postaci jest więcej niż jedna, wybierz z listy obok przycisku, kto ma zrobić selfie.
-3. Jeśli **Expose media prompts before sending** jest włączone (**Settings → Generations → Overall Generations**), przejrzyj lub edytuj prompt i kliknij **Generate**. Anulowanie nie wysyła żadnego żądania.
+3. Jeśli **Expose media prompts before sending** jest włączone (**Ustawienia → Media → Domyślne ustawienia generowania**), przejrzyj lub edytuj prompt i kliknij **Generate**. Anulowanie nie wysyła żadnego żądania.
 4. Poczekaj, aż przycisk pokaże **Generating...**.
-5. Zobaczysz komunikat "Selfie generated." i obraz pojawi się w czacie. Ręczne żądanie używa **Selfie model** i kosztuje jedno żądanie obrazu.
+
+Zobaczysz komunikat "Selfie generated." i obraz pojawi się w czacie. Ręczne żądanie używa **Selfie model** i kosztuje jedno żądanie obrazu.
 
 ## Jak postacie wysyłają selfie
 
@@ -60,8 +61,6 @@ Jeśli to nie zadziałało: gdy w wiadomości widzisz dosłowny tekst `[selfie..
 
 Nowy obraz zastępuje stary w wiadomości. Stary zostaje w galerii (Gallery). Każda próba to jedno żądanie obrazu. Obrazy zrobione, zanim ta opcja istniała, nie mają zapisanego promptu selfie czatu ani promptów negatywnych i promptów postaci.
 
-<a id="video-messages"></a>
-
 ## Wiadomości wideo
 
 Postać może wysłać krótką wiadomość wideo. Najpierw zainstaluj Illustrator. Selfie mogą pozostać wyłączone.
@@ -76,10 +75,10 @@ Otwórz **Chat Settings → Agents → Illustrator Settings**, **Video messages*
 
 - **Generated Videos**: pozwala postaciom wysyłać wiadomości wideo samodzielnie. W nowych czatach jest domyślnie wyłączone, bo każdy klip to żądanie wideo. Wymaga też **Videos** na liście **Commands**.
 - **Video Run Interval**: pokazuje się po włączeniu **Generated Videos**. Określa, ile wiadomości musi minąć między klipami. **0** wyłącza tę przerwę.
-- **Video model**: konto wideo.
-- **Default video provider** używa twojego ustawienia domyślnego.
+- **Video model**: konto wideo. **Default video provider** używa twojego ustawienia domyślnego.
 - **First frame**: obraz, od którego zaczyna się klip (patrz niżej).
-- `/video` i przycisk **Video** w galerii działają tak czy inaczej i ignorują ten odstęp. Przesunięcie swipe odpowiedzi, która wysłała klip, pozwala nowemu swipe'owi wysłać własny. W czacie grupowym każda postać może wysłać jeden klip na odpowiedź, do **Videos per reply** (domyślnie 3) w **Settings → Generations → Video Generation**.
+
+`/video` i przycisk **Video** w galerii działają tak czy inaczej i ignorują ten odstęp. Przesunięcie swipe odpowiedzi, która wysłała klip, pozwala nowemu swipe'owi wysłać własny. W czacie grupowym każda postać może wysłać jeden klip na odpowiedź, do **Videos per reply** (domyślnie 3) w **Ustawienia → Media → Generowanie wideo**.
 
 Opcje **First frame**:
 
@@ -90,7 +89,7 @@ Opcje **First frame**:
 
 Gdy **Expose media prompts before sending** jest włączone, przeglądasz prompt selfie razem z promptem klipu.
 
-Obrazy w innych formatach, takich jak WebP, są konwertowane dla usługi wideo. Jedna wiadomość wideo to jedno żądanie wideo, plus żądanie obrazu, gdy zaczyna się od nowego selfie. Twój **Prompt Model** pisze prompt wideo, a **Settings → Generations → Video Generation Prompt Overrides → Conversation Video Message** zawiera jego instrukcje.
+Obrazy w innych formatach, takich jak WebP, są konwertowane dla usługi wideo. Jedna wiadomość wideo to jedno żądanie wideo, plus żądanie obrazu, gdy zaczyna się od nowego selfie. Twój **Prompt Model** pisze prompt wideo, a **Ustawienia → Media → Nadpisania promptów → Conversation Video Message** zawiera jego instrukcje.
 
 ## Odniesienie: tag selfie
 

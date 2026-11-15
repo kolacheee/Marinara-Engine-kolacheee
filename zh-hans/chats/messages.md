@@ -2,7 +2,7 @@
 
 每条消息都带一个工具栏，你写的和 AI 写的都有。用它可以编辑、删除、重新生成或隐藏一条消息，也可以从这条消息开出分支。
 
-在手机或平板上点一下消息，或者在电脑上把鼠标指向消息，工具栏就会出现。
+在电脑上，把鼠标指向消息就会显示工具栏。在手机或平板上，长按消息会弹出操作面板，里面有同样的操作。
 
 ## 消息工具栏
 
@@ -42,7 +42,7 @@
 3. 点击 **Save**(保存)，或者按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>(Mac 上是 <kbd>Cmd</kbd>+<kbd>Enter</kbd>)。
 4. 不保存就退出，点击 **Cancel**(取消) 或按 <kbd>Esc</kbd>。
 
-**Settings → General → Input & Editing**(设置 → 常规 → 输入与编辑) 里有两个设置能让你更快进入编辑，两个都默认开启。
+**Settings → Chatting → Editing & Swipes**(设置 → 聊天中 → 编辑与备选回复) 里有两个设置能让你更快进入编辑，两个都默认开启。
 
 - **Up Arrow edits last message**(按上箭头编辑最后一条消息)：输入框为空时按 <kbd>Up</kbd>。
 - **Double-click edits messages**(双击编辑消息)：双击一条 Roleplay 消息，或者在触屏上点两下。
@@ -74,6 +74,20 @@
 
 最后一条备选回复删不掉，应用会提示“Cannot delete the last remaining swipe”。请改用 **Delete this message**。
 
+## 触屏手势
+
+在手机或平板的新版布局里，滑动和长按代替了电脑上悬停时出现的按钮。
+
+- **左右滑动最新回复**可切换它的备选回复。向左滑过最后一条时，应用会先询问“要生成新回复吗？”，再生成回复，因为新回复会消耗一次请求。
+- **左右滑动顶栏标题**可切换已打开的标签页。主页算作第一个标签页之前的那一页。这适用于手机布局；平板竖屏时也用此布局，横屏时则显示标签栏。
+- 在聊天列表里**向左滑动聊天**，可显示 **Pin**(置顶)、**Rename**(重命名)、**Tags**(标签) 和 **Delete**。
+- **长按消息**可打开它的操作菜单：重新生成、编辑、复制、创建分支等。
+- 在聊天列表里**长按聊天**可打开同样的操作菜单。
+
+在 Settings > Chatting > Editing & Swipes 中，用 **Swipe gestures on touch screens**(触屏滑动手势) 关闭滑动手势。无论是否关闭，长按都可用。
+
+Marinara 首次在手机、平板或电脑上打开时，会用一段简短的操作指引介绍这类设备上的界面布局，触屏设备上也会介绍这些手势。每种聊天模式首次在该设备上打开时，也会显示对应的提示。可以在 Settings > General > Walkthroughs 中重看任何一段指引。
+
 ## 重新生成、续写和重试
 
 这三个操作看着像，做的事却不同。
@@ -92,7 +106,7 @@
 /continue
 ```
 
-Marinara 会在新文字前面加一个空行。想让新文字直接紧接上一段的最后一个字符，就关闭 **Settings → General → Responses → Add a new line before /continue text**。
+Marinara 会在新文字前面加一个空行。想让新文字直接紧接上一段的最后一个字符，就关闭 **Settings → Chatting → Responses → Add a new line before /continue text**。
 
 ### 空输入时用 Send 重试
 
@@ -110,11 +124,9 @@ Marinara 会在新文字前面加一个空行。想让新文字直接紧接上�
 
 开启 Advanced Memory 的 **Decide who sees new messages**(决定谁能看到新消息) 后，在角色逐个回复的群聊里，新消息会自动对不在场的角色隐藏。你自己的选择始终优先。见[决定谁能看到新消息](../agents/memory.md#deciding-who-sees-new-messages)。
 
-<a id="message-display-toggles"></a>
-
 ## 消息显示开关
 
-这些开关在 **Settings → Advanced → Message Tools**(设置 → 高级 → 消息工具) 里。
+这些开关在 **Settings → Chatting → Message Info**(设置 → 聊天中 → 消息信息) 里。
 
 | 开关 | 默认 | 显示内容 |
 | --- | --- | --- |

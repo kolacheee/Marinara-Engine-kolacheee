@@ -4,53 +4,49 @@ Le tutoriel est une visite guidée qui se lance la première fois que tu ouvres 
 
 ## Revoir le tutoriel
 
-1. Va sur l'écran d'accueil.
-2. Clique sur le marque-page **Tutorial** (tutoriel), ou sur **Replay tutorial** (revoir le tutoriel) dans le widget **Learn the engine** (découvrir l'application).
+1. Ouvre **Settings → General → Confirmations & Help** (Paramètres → Général → Confirmations et aide).
+2. Sous **Walkthroughs** (guides), clique sur **Replay the welcome tour** (relancer la visite d'accueil).
 
-La visite reprend depuis la première étape. Sur téléphone, touche le bouton des marque-pages à gauche des onglets pour voir les marque-pages.
+Tu peux aussi cliquer sur **Replay tutorial** (revoir le tutoriel) dans le widget **Learn the engine** (découvrir l'application) sur l'accueil. La visite reprend depuis la première étape.
+
+**Walkthroughs** comporte deux autres boutons. **Replay the computer walkthrough** (ou tablet, ou phone) relance le court guide correspondant au type d'appareil que tu utilises, et **Show chat mode tips again** (réafficher les conseils des modes de chat) fait réapparaître les conseils de chaque mode de chat. Voir [Visites guidées pour chaque appareil](#walkthroughs-for-each-device).
 
 ## Passer le tutoriel
 
 Chaque carte a un bouton pour passer la visite. Sur la première carte, il affiche **Skip Tutorial** (passer le tutoriel). Sur les cartes suivantes, il affiche **Skip** (passer). Clique dessus pour mettre fin à la visite tout de suite.
 
-- **Skip**, **Skip Tutorial** et **Get Started** (commencer) marquent tous la visite comme terminée : elle ne redémarre donc plus toute seule. Ils peuvent aussi débloquer le succès **Diligent Student**.
-- Seul **Get Started** enregistre la langue des guides choisie sur la dernière carte (la langue des guides intégrés). **Skip** la laisse telle quelle. Tu peux la changer plus tard dans **Settings → General** (Paramètres → Général).
+- **Skip**, **Skip Tutorial** et le bouton de la dernière carte marquent tous la visite comme terminée : elle ne redémarre donc plus toute seule. Ils peuvent aussi débloquer le succès **Diligent Student**.
+- La dernière carte contient une liste pour la langue des guides intégrés. Seul le bouton de la dernière carte l'enregistre ; **Skip** la laisse telle quelle. Tu peux la changer plus tard dans **Settings → General → Language → Documentation Language** (Paramètres → Général → Langue → Langue de la documentation).
 
 ## Fonctionnement de la visite
 
-La visite affiche une carte à la fois. Chaque carte comporte un titre, une courte explication et des points de progression. Sur un écran d'ordinateur classique, un anneau pulsant met en évidence le bouton dont parle la carte.
+La visite commence sur l'accueil et affiche une carte à la fois. Chaque carte comporte un titre, une courte explication et des points de progression. Un anneau met en évidence la partie de l'écran dont parle la carte, et certaines étapes ouvrent cette partie pour toi : l'étape Bibliothèque ouvre la vue **Bibliothèque** de la barre latérale (avec la page Personnages sur un ordinateur), l'étape Chats la fait passer sur **Chats**, et l'étape Connexions ouvre la page Connexions.
 
-Certaines étapes ouvrent aussi pour toi le panneau ou l'onglet correspondant. Par exemple, l'étape **Connections** ouvre le panneau **Connections**.
+Clique sur **Suivant** pour passer à la carte suivante. Sur un téléphone ou une tablette, les cartes et les mises en évidence fonctionnent de la même façon et indiquent où se trouvent les éléments sur un écran tactile.
 
-Clique sur **Next** (suivant) pour passer à la carte suivante. À la dernière étape, le bouton affiche **Get Started**.
-
-Sur un téléphone ou un autre écran étroit, chaque carte s'affiche centrée sous la barre supérieure. Il n'y a pas d'anneau pulsant. Les panneaux s'ouvrent quand même, en plein écran par-dessus l'application.
-
-## Référence : les 18 étapes
+## Référence : les étapes
 
 | # | Titre de la carte | Ce qu'elle présente |
 | --- | --- | --- |
-| 1 | **Welcome to Marinara Engine!** | Une carte de bienvenue centrée. Professor Mari te propose de te faire visiter. |
-| 2 | **Characters** | Le bouton du panneau **Characters**, là où vivent tes personnages. |
-| 3 | **Personas** | Le bouton du panneau **Personas**, où tu définis qui tu es dans un chat. |
-| 4 | **Lorebooks** | Le bouton du panneau **Lorebooks**, qui regroupe des détails supplémentaires sur l'univers et les personnages. |
-| 5 | **Presets** | Le bouton du panneau **Presets**, qui règle la façon dont le prompt est construit. |
-| 6 | **Connections** | Le bouton du panneau **Connections**. Les connexions sont la première chose à configurer avant de discuter. |
-| 7 | **Agents** | Le bouton du panneau **Agents**. La carte t'oriente vers **Agent Organizer** (organisateur d'agents) pour installer des agents. |
-| 8 | **Settings** | Le bouton du panneau **Settings**. Ouvre **Settings** sur l'onglet **General**. |
-| 9 | **Chats** | L'interrupteur de la barre latérale. Ouvre la barre latérale des chats. |
-| 10 | **Conversation Mode** | L'onglet de conversation, intitulé **CONVO**. |
-| 11 | **Roleplay Mode** | L'onglet de roleplay, intitulé **RP**. |
-| 12 | **Game Mode** | L'onglet de jeu, intitulé **GM**. |
-| 13 | **Home: Your Story Hub** | Revient à l'accueil. L'accueil sert à reprendre un chat, à en lancer un nouveau et à disposer les widgets. |
-| 14 | **Ask Me Where Things Are** | La barre de recherche en haut de l'accueil. Sur téléphone, la carte te dit de tirer vers le bas depuis la barre supérieure de l'application. |
-| 15 | **Guides and Home Controls** | Les marque-pages **Documentation**, **Tutorial**, **FAQ** et **Widgets**. |
-| 16 | **Migrating from SillyTavern?** | De nouveau le bouton **Settings**. Ouvre **Settings** sur l'onglet **Imports**. |
-| 17 | **You're All Set!** | Une dernière fois le bouton du panneau **Connections**. |
-| 18 | **One Last Thing: Guide Language** | Le marque-page **Documentation**. Une liste **Documentation Language** (langue de la documentation) définit la langue des guides intégrés. Les guides pas encore traduits s'affichent en anglais. |
+| 1 | **Welcome to Marinara Engine!** | Professor Mari te propose de te faire visiter. |
+| 2 | **La Bibliothèque** | La barre latérale à droite et sa vue **Bibliothèque** : Personnages, Personas, Lorebooks, Presets et Scripts regex. Le bouton **Bibliothèque** de la barre supérieure l'affiche et la masque. |
+| 3 | **Tes chats** | La vue **Chats** de la même barre latérale, et **Réglages du chat** dans un chat. |
+| 4 | **Three Ways to Chat** | Les onglets **Convo**, **Roleplay** et **Game**, et l'usage de chaque mode. |
+| 5 | **Connections: Set This Up First** | Ouvre la page Connections. Ajoute une connexion avant de discuter. |
+| 6 | **Agents** | Ouvre la page Agents, où tu installes des fonctionnalités facultatives. |
+| 7 | **Paramètres (et imports SillyTavern)** | Ouvre **Paramètres** sur l'onglet **Données**, où se trouvent les imports SillyTavern. |
+| 8 | **Onglets et recherche** | Les onglets de la barre supérieure et le bouton de recherche (<kbd>Ctrl</kbd>+<kbd>K</kbd>). |
+| 9 | **The Docs, and You're Set!** | Le bouton **Docs** et la liste des langues des guides. |
+
+Sur un téléphone ou une tablette, la visite ajoute une carte **Gestes pratiques** (dix étapes en tout). La Bibliothèque se trouve alors derrière le bouton en forme de pile en haut à droite, les Chats en haut de la même page, la recherche derrière le titre, et la Documentation dans la Bibliothèque.
+
+## Visites guidées pour chaque appareil
+
+Chaque type d'appareil (ordinateur, tablette, téléphone) reçoit un court guide lors de la première ouverture de Marinara sur celui-ci, même si tu as terminé la visite complète ailleurs. Il montre où se trouvent les chats, la Library et la recherche sur cet appareil, ainsi que la carte **Handy Gestures** sur un écran tactile. Chaque mode de chat affiche aussi ses propres conseils la première fois que tu l'ouvres sur cet appareil. Relance-les depuis **Settings → General → Confirmations & Help → Walkthroughs**.
 
 ## Guides associés
 
 - [Démarrer avec Marinara Engine](welcome.md)
+- [Gestes tactiles](../chats/messages.md#touch-gestures)
 - [Professor Mari, ton assistante intégrée](professor-mari.md)
 - [Les succès](achievements.md)

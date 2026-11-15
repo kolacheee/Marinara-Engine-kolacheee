@@ -8,10 +8,9 @@ Un conjunto de reglas explica a Game Mode cómo funciona un sistema de mesa: qu�
 
 Para instalar un conjunto de reglas oficial, como 5e (SRD 5.1):
 
-1. Abre el panel **Agents** (Agentes) desde el icono de destellos.
-2. Selecciona **Agent Organizer** (Organizador de agentes).
-3. Busca el conjunto de reglas. Los conjuntos de reglas están marcados con **Rules** (Reglas).
-4. Selecciona **Install** (Instalar).
+1. Abre **Library → Agents** (Biblioteca → Agentes) y haz clic en **Available** (Disponibles).
+2. Busca el conjunto de reglas. Los conjuntos de reglas están marcados con **Rules** (Reglas).
+3. Haz clic en **Get** (Obtener).
 
 Después, empieza una partida nueva y elígelo (consulta más abajo). Los conjuntos de reglas vienen de dos lugares:
 

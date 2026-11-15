@@ -6,7 +6,7 @@ Le mode Conversation est le chat de style messagerie : un ou plusieurs personnag
 
 **Avant de commencer :** ajoute un compte dans **Connections** (connexions) (voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md)) et aie au moins un personnage. Une persona, la fiche de personnage qui te représente, est facultative (voir [Personas utilisateur](../characters/personas.md)).
 
-1. Dans la barre latérale des chats, ouvre l'onglet **CONVO** et clique sur **New Conversation** (nouvelle conversation). Un assistant de configuration en quatre pages s'ouvre.
+1. Ouvre tes chats (**Bibliothèque** en haut à droite, puis **Chats** en haut de la barre latérale), ouvre l'onglet **Convo** et clique sur **Nouveau**. Un assistant de configuration en quatre pages s'ouvre.
 2. Sur la première page, **Name & Connection** (nom et connexion), nomme le chat et choisis le compte qui écrit les réponses.
 3. Sur la deuxième page, **Prompt Preset** (preset de prompt), choisis le preset pour le prompt Conversation, ou garde celui par défaut.
 4. Sur la troisième page, **Persona & Characters** (persona et personnages), choisis ta persona et un ou plusieurs personnages.
@@ -29,11 +29,11 @@ Active **Generate Schedules**, puis choisis ton fuseau horaire dans le champ qui
 
 Change-les plus tard dans **Chat Settings → Autonomous Messaging**. Si les personnages écrivent trop souvent, désactive **Autonomous Messages** là, ou règle ta présence sur **Do Not Disturb**.
 
-<a id="choose-which-commands-a-character-can-use"></a>
-
 ## Choisir quelles Commands un personnage peut utiliser
 
-Les Commands sont des actions que le personnage décide de faire seul. Tu ne les tapes pas. Après la configuration, ouvre **Chat Settings → Agents → Commands**. L'interrupteur principal **Commands** contrôle toutes les familles : quand il est désactivé, aucune famille ne fonctionne. Chaque famille a son propre interrupteur. Tous sont activés, sauf **Videos** que tu dois activer toi-même. Les familles qui dépendent d'un agent facultatif apparaissent seulement quand tu installes cet agent depuis **Agents → Agent Organizer**.
+Les Commands sont des actions que le personnage décide de faire seul. Tu ne les tapes pas. Après la configuration, ouvre **Chat Settings → Agents → Commands**. L'interrupteur principal **Commands** contrôle toutes les familles : quand il est désactivé, aucune famille ne fonctionne.
+
+Chaque famille a son propre interrupteur. Tous sont activés, sauf **Videos** que tu dois activer toi-même. Les familles qui dépendent d'un agent facultatif apparaissent seulement quand tu installes cet agent depuis **Library → Agents** (Bibliothèque → Agents).
 
 | Famille | Ce qu'un personnage peut faire | Besoin d'un agent |
 | --- | --- | --- |
@@ -56,13 +56,11 @@ Les Commands sont des actions que le personnage décide de faire seul. Tu ne les
 | **Tic-Tac-Toe** | Accepter un défi de morpion. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Accepter une partie. | Rock-Paper-Scissors |
 
-Pour **Influence** et **Notes**, voir [Chats connectés](../chats/connected-chats.md). La dernière colonne nomme l'agent à installer depuis **Agent Organizer**.
-
-<a id="your-presence-status"></a>
+Pour **Influence** et **Notes**, voir [Chats connectés](../chats/connected-chats.md). La dernière colonne nomme l'agent à installer depuis **Library → Agents**.
 
 ## Ton statut de présence
 
-Ta présence est une pastille colorée dans le pied de la barre latérale. Elle est la même dans tous les chats. Clique dessus pour choisir :
+Ta présence est une pastille colorée en bas de la liste des chats. Elle est la même dans tous les chats. Clique dessus pour choisir :
 
 | Statut | Signification |
 | --- | --- |
@@ -74,8 +72,6 @@ Ta présence est une pastille colorée dans le pied de la barre latérale. Elle 
 Si tu restes **Active** et ne fais rien pendant 10 minutes, Marinara passe à **Idle** et repasse à **Active** quand tu reviens. Si tu choisis toi-même un statut, ce changement automatique s'arrête jusqu'à ce que tu choisisses à nouveau **Active**. **Idle** n'arrête pas les check-ins.
 
 À côté de la pastille se trouve la zone de statut, qui affiche "What's up?" quand elle est vide. Tape ton activité actuelle (jusqu'à 120 caractères) pour que les personnages le sachent. Les entrées récentes apparaissent sous **Recent status** pour que tu les réutilises.
-
-<a id="react-and-get-notified"></a>
 
 ## Réagir et être notifié
 

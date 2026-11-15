@@ -2,8 +2,6 @@
 
 Enregistre un chat dans un fichier, partage-le sous forme d'histoire lisible, ou recharge un fichier de chat venant de Marinara ou de SillyTavern (une autre application de chat pour le roleplay). Tu peux exporter un seul chat, une partie d'un chat ou plusieurs chats d'un coup.
 
-<a id="file-formats-you-will-see"></a>
-
 ## Les formats de fichier que tu vas croiser
 
 | Format | Ce que c'est | Réimportable ? |
@@ -25,8 +23,6 @@ Un fichier **JSONL** laisse de côté quelques adresses enregistrées avec le ch
 
 Ton navigateur télécharge le fichier. Il contient la branche que tu consultes, avec ses messages.
 
-<a id="export-part-of-a-chat"></a>
-
 ## Exporter une partie d'un chat
 
 Utilise **Export a range** (exporter une plage) pour n'enregistrer que certains messages. Cette option n'est pas disponible dans les chats Game.
@@ -40,8 +36,8 @@ Marinara exporte tous les messages, du premier au dernier que tu as choisis. Cli
 
 ## Exporter plusieurs chats d'un coup
 
-1. Dans la barre latérale de gauche, clique sur l'onglet du mode voulu : **CONVO**, **RP** ou **GM**. Chaque onglet n'exporte que ses propres chats.
-2. Clique sur **Select chats** (sélectionner des chats) en haut de la liste.
+1. Dans la barre latérale **Chats**, clique sur l'onglet du mode voulu : **Convo**, **Roleplay** ou **Game**. Chaque onglet n'exporte que ses propres chats.
+2. Clique sur **Select chats** (la coche) en haut de la barre latérale.
 3. Clique sur chaque chat voulu. Une barre en bas affiche le décompte, par exemple "3 selected".
 4. Clique sur **Export** (exporter) dans la barre.
 
@@ -51,9 +47,10 @@ Ton navigateur télécharge un fichier `.zip` avec une transcription JSONL par c
 
 Cette méthode crée un nouveau chat à partir d'un fichier `.jsonl` enregistré par Marinara ou exporté depuis SillyTavern.
 
-1. Dans la barre latérale de gauche, clique sur l'onglet du mode voulu. Le chat importé prend le mode de l'onglet ouvert, pas celui indiqué dans le fichier.
-2. Clique sur le bouton **Import** (importer) à côté du bouton **+**. Son libellé est **Import SillyTavern or Marinara chat JSONL**.
-3. Choisis ton fichier `.jsonl`.
+1. Dans la barre latérale **Chats**, clique sur l'onglet du mode voulu. Le chat importé prend le mode de l'onglet ouvert, pas celui indiqué dans le fichier.
+2. Clique sur le bouton **Import** (importer), la flèche de téléchargement, à côté de **Nouveau**. Son libellé est **Import SillyTavern or Marinara chat JSONL**. La fenêtre **Import chat** (importer un chat) s'ouvre.
+3. Laisse **Tag imported** (taguer comme importé) et **Tag source** (taguer l'origine) cochés pour attribuer au chat les tags **Imported** et **ST** (ou **Marinara** pour un chat exporté par Marinara), ou décoche-les.
+4. Dépose ton fichier `.jsonl` sur la fenêtre, ou clique sur **Browse…** (parcourir) et choisis-le.
 
 Le message "Imported N messages" s'affiche, et Marinara ouvre le nouveau chat. Pour aller plus loin avec les fichiers SillyTavern, voir [Importer depuis SillyTavern](../data/importing-from-sillytavern.md).
 
@@ -71,7 +68,7 @@ Le message "Imported N messages as a new branch" s'affiche. La branche reprend l
 
 ## Inclure le raisonnement et les notes privées dans les exports
 
-Deux réglages décident si du texte masqué part dans les fichiers d'export. Ce sont deux interrupteurs de **Settings → Advanced → Message Tools** (Paramètres → Avancé → Outils de message), tous deux désactivés par défaut. Ils s'appliquent aux exports d'un seul chat comme aux exports en `.zip`.
+Deux réglages décident si du texte masqué part dans les fichiers d'export. Ce sont deux interrupteurs de **Settings → Data → Chat Exports** (Paramètres → Données → Exports de chat), tous deux désactivés par défaut. Ils s'appliquent aux exports d'un seul chat comme aux exports en `.zip`.
 
 | Réglage | Quand il est activé |
 | --- | --- |

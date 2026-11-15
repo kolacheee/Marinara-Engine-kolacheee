@@ -10,9 +10,9 @@ Se o card **Built-in model** não aparece, a sua instalação é "Lite", uma ver
 
 Antes de começar, confira se há espaço livre em disco e memória (RAM) suficientes para o modelo. Os tamanhos estão na tabela abaixo.
 
-1. Clique em **Connections** (Conexões) na barra superior.
-2. Encontre o card **Built-in model** abaixo da caixa **Jobs** (tarefas). Ele mostra **Not downloaded**.
-3. Clique no card ou no botão **Download** (baixar) dele. Abre uma janela com o título **Built-in model**.
+1. Abra **Biblioteca → Conexões**.
+2. Encontre **Modelo embutido** em **Neste dispositivo**. Ele mostra **Não baixado**.
+3. Clique na linha ou em **Configurar**. Abre uma janela com o título **Modelo embutido**.
 4. Em **Which model?** (qual modelo?), escolha um modelo. **Gemma 4 E2B — Q8 (Best Quality)** vem marcado como **Recommended** (recomendado). Se o seu computador tem pouca memória, escolha **Q4_K_M**. Ele precisa de cerca de 3,4 GB de RAM em vez de 5,4 GB.
 5. Clique no botão **Download**, embaixo. Ele mostra o tamanho do modelo, por exemplo **Download 5.0 GB**.
 6. Espere. A janela mostra três etapas: **Install runtime**, **Download model** e **Start and test** (instalar o runtime, baixar o modelo, iniciar e testar). Um runtime é o programa que executa o modelo. Marinara instala o runtime primeiro quando ele não existe.
@@ -27,7 +27,7 @@ Se não funcionou:
 - **Local runtime failed to start.** Veja [Solução de problemas](#troubleshooting).
 - **Download failed.** A janela mostra o erro. Confira a sua conexão com a internet e o espaço livre em disco, depois clique de novo no botão de download.
 
-Você também chega a essa janela por **Add** (adicionar), no painel **Connections**, em **Built-in model** na janela **Add account** (adicionar conta).
+Você também chega a essa janela pela página Conexões: **Modelo embutido** aparece em **Neste dispositivo**.
 
 ### Presets prontos
 
@@ -67,7 +67,7 @@ Depois do download, abra o card **Built-in model**. A página dele mostra o esta
 | **Use for tracker agents (roleplay)** | Mantém o modelo rodando para os agentes tracker. Vem desativado por padrão. |
 | **Use for game scene analysis** | Mantém o modelo rodando para os efeitos de cena do Game Mode, como planos de fundo, música e clima. Vem ativado por padrão. |
 | **Use the built-in model for all tracker agents** | Aponta todos os agentes tracker nativos para este modelo. Não ativa os agentes. |
-| **Change in Defaults** | Abre a caixa **Jobs**, onde você pode dar outras tarefas ao modelo. |
+| **Alterar em Padrões** | Abre a caixa **Padrões**, onde você pode dar outras tarefas ao modelo. |
 
 Se os dois botões liga/desliga estiverem desativados, o modelo não inicia sozinho. Ele inicia quando você ativa um deles, ou quando um chat ou uma tarefa o usa. Veja [Memory Recall e resumos do chat](../agents/memory.md) para saber como ativar os agentes.
 
@@ -138,14 +138,14 @@ Algumas configurações mudam conforme o sistema:
 
 Instalar ou reinstalar o runtime é uma ação protegida. As instalações de um clique do Windows já liberam isso para você. No macOS, no Linux e no Docker, faça uma destas coisas e tente de novo:
 
-- Digite o segredo de administrador em **Settings → Advanced → Admin Access** (Configurações → Avançado → acesso de administrador). O segredo de administrador é uma segunda senha para as ações arriscadas. Você o cria em **Admin Access** no próprio computador do servidor ou o define como `ADMIN_SECRET` no arquivo `.env` do servidor. Veja [Admin Access](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+- Digite o segredo de administrador em **Configurações → Avançado → Segurança**. O segredo de administrador é uma segunda senha para as ações arriscadas. Você o cria em **Configurações → Avançado → Segurança** no próprio computador do servidor ou o define como `ADMIN_SECRET` no arquivo `.env` do servidor. Veja [O segredo de administrador](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 - Adicione `SIDECAR_RUNTIME_INSTALL_ENABLED=true` ao arquivo `.env` do servidor e reinicie o Marinara. O arquivo `.env` é um arquivo de texto na pasta do Marinara. Veja [Editar o arquivo .env](../CONFIGURATION.md#edit-the-env-file).
 
 Marinara baixa apenas as versões de llama.cpp, MLX e uv aprovadas para a sua versão e confere o tamanho e a soma de verificação SHA-256 de cada arquivo antes de executar qualquer coisa.
 
 ## Modelo de fala local
 
-O **Local speech model** (modelo de fala local) transforma a sua voz em texto no seu próprio computador, para as chamadas de Conversation. É um modelo Whisper, um modelo de fala para texto. Ele precisa do pacote de agente **Calls**, que você instala em **Agents → Agent Organizer** (agentes → Organizador de agentes).
+O **Local speech model** (modelo de fala local) transforma a sua voz em texto no seu próprio computador, para as chamadas de Conversation. É um modelo Whisper, um modelo de fala para texto. Ele precisa do pacote de agente **Calls**, que você instala em **Biblioteca → Agentes**.
 
 1. Abra o painel **Connections** e clique no item **Speech to text** (fala para texto) em **On this device** (neste dispositivo).
 2. Em **Local speech model**, escolha um modelo no menu suspenso.

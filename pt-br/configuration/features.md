@@ -1,6 +1,12 @@
 # Chaves de recursos
 
-Alguns comportamentos do servidor são opcionais. Ative-os em **Settings > Advanced > Features** (configurações > avançado > recursos). Todas as chaves começam desligadas, então um servidor onde ninguém abre essa seção funciona exatamente como antes.
+Alguns comportamentos do servidor são opcionais. Todas as chaves começam desligadas, então um servidor onde ninguém as ativa funciona exatamente como antes. Elas ficam em lugares diferentes nas **Configurações**:
+
+- **Seleções estáveis de lorebook** e **Estatísticas de ativação de lorebook**: **Configurações → Avançado → Lorebooks**.
+- **Repetir chamadas de provedor que falharam**: **Configurações → Avançado → Tempos limite e novas tentativas**.
+- **Recuperar mensagens de chat excluídas**: **Configurações → Dados → Backup e restauração**.
+
+No layout clássico, busque o nome da chave nas Configurações.
 
 As alterações valem imediatamente, sem reiniciar o servidor nem recarregar a página.
 
@@ -15,7 +21,7 @@ As alterações valem imediatamente, sem reiniciar o servidor nem recarregar a p
 | **Lorebook activation stats** (estatísticas de ativação de lorebook) | `usageAndActivationStats` | Desligada | nenhuma |
 | **Recover deleted chat messages** (recuperar mensagens de chat excluídas) | `messageTrash` | Desligada | nenhuma |
 
-Pesquisar `features` nas configurações leva à seção.
+Pesquisar o nome de uma chave nas configurações leva até ela.
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ Desligada: as mensagens excluídas são removidas na hora.
 ## Precedência
 
 1. **Variável de ambiente.** Quando definida, prevalece sobre a chave salva, tanto para ligar quanto desligar. Settings mostra a chave bloqueada com o nome da variável. Um valor vazio conta como não definido.
-2. **Chave salva.** O valor em Settings > Advanced > Features.
+2. **Chave salva.** O valor salvo em Configurações > Avançado > Lorebooks.
 3. **Padrão.** Desligada.
 
 | Variável | Controla | Valores |

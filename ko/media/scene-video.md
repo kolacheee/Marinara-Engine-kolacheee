@@ -10,8 +10,8 @@ Game Mode와 **Animate illustration**(삽화 애니메이션 만들기)은 항�
 
 ## 동영상 서비스 설정하기
 
-1. 상단 바에서 **Connections**(연결)를 클릭한 다음 **Add**(추가)를 클릭하세요. **Add account**(계정 추가) 창이 열립니다.
-2. **Images & video**(이미지 및 동영상) 섹션에서 서비스를 고르세요. 서비스 목록은 아래에 있습니다.
+1. **Library → Connections**(라이브러리 → 연결)를 열고 **Add connection**(연결 추가)을 클릭하세요. 서비스 목록이 열립니다.
+2. **Video**(동영상) 탭을 열고 서비스를 고르세요. 서비스 목록은 아래에 있습니다.
 3. 클라우드 서비스라면 API 키를 붙여넣으세요. 로컬 ComfyUI에는 필요 없습니다. SwarmUI는 서버에 계정이 필요한 경우에만 Swarm Auth Token이 필요합니다.
 4. **Connect**(연결)를 클릭한 다음 모델을 고르거나 기본값을 그대로 두세요. NanoGPT에는 기본값이 없으므로 목록에서 하나를 고르세요. ComfyUI는 워크플로가 `%model%`을 쓰지 않는 한 모델을 비워 두세요. SwarmUI에서는 모델이 선택 사항입니다.
 5. 동영상 모델을 열고 **Test video**(영상 테스트)를 클릭해 확인하세요.
@@ -59,8 +59,6 @@ Game Mode와 **Animate illustration**(삽화 애니메이션 만들기)은 항�
 
 Gemini Omni에는 해상도 항목이 없고, 길이는 프롬프트 글에 들어갑니다. Google Veo는 참조 이미지를 움직이게 만들 때 항상 8초로 고정합니다. 첫 프레임과 마지막 프레임을 자연스럽게 잇는 데 8초가 필요하기 때문입니다.
 
-<a id="seedance-reference-frames"></a>
-
 ### Seedance 참조 프레임
 
 Seedance는 참조 이미지를 공개 웹 링크로 가져와야 합니다. 로컬 Marinara 서버에는 공개 링크가 없으므로, 순수 로컬 환경에서는 한 단계가 더 필요합니다.
@@ -83,7 +81,7 @@ Gallery 위쪽 동작 줄의 **Video**는 `/video`와 마찬가지로 가장 최
 - **아바타**: 클립은 페르소나를 포함해 설명에서 처음 이름이 나온 사람에서 시작합니다. 다른 사람과 겹치지 않는 이름 일부를 대문자로 시작해 적으면 충분합니다("Dr. Lena Kowalski"의 "Lena"처럼). 아무도 이름을 대지 않으면 채팅의 캐릭터에서 시작합니다.
 - **검토**: **Expose media prompts before sending**(전송 전에 미디어 프롬프트 표시)이 켜져 있으면 클립의 프롬프트를 먼저 검토하고 수정할 수 있습니다.
 - **맥락**: AI는 Illustrator가 그림을 만들 때와 같은 수의 최근 메시지를 읽습니다(Illustrator 설정 화면의 **Agent Budget**(에이전트 예산) 아래에 있는 Illustrator의 **Context Size**(컨텍스트 크기)).
-- **그림 없음**: 그림 없이 또는 아바타에서 시작하는 클립은 AI가 장면을 직접 묘사합니다. 그 지시문은 **Settings → Generations → Video Generation Prompt Overrides**(설정 → 생성 → 동영상 생성 프롬프트 재정의) 아래의 **Roleplay Clip Director**입니다.
+- **그림 없음**: 그림 없이 또는 아바타에서 시작하는 클립은 AI가 장면을 직접 묘사합니다. 그 지시문은 **Settings → Media → Prompt Overrides**(설정 → 미디어 → 프롬프트 재정의) 아래의 **Roleplay Clip Director**입니다.
 
 완성된 클립은 그림이 더 이전 답변에서 나왔더라도 가장 최근 답변 아래에서 바로 재생됩니다. 클립이 저절로 떠 있는 창으로 열리지는 않습니다. 떠 있는 창으로 띄우려면 **Videos**에서 **Pin video to chat**(비디오를 채팅에 고정)을 쓰세요. 메시지에서 클립을 없애려면 클립의 **X** 버튼을 누르세요. 클립은 Gallery에 남습니다.
 
@@ -91,7 +89,7 @@ Gallery 위쪽 동작 줄의 **Video**는 `/video`와 마찬가지로 가장 최
 
 1. **Images**에 그림이 하나 이상 있는지 확인하세요. **Illustrate**(이미지 생성)를 쓰거나 그림을 업로드하세요.
 2. Gallery 위쪽 동작 줄에서 **Video**를 클릭하세요.
-3. **Expose media prompts before sending**이 켜져 있다면(**Settings → Generations → Overall Generations**(설정 → 생성 → 전체 생성)) 프롬프트를 확인하거나 수정한 뒤 **Generate**(생성)를 클릭하세요. 취소하면 요청이 시작되지 않습니다.
+3. **Expose media prompts before sending**이 켜져 있다면(**Settings → Media → Generation Defaults**(설정 → 미디어 → 생성 기본값)) 프롬프트를 확인하거나 수정한 뒤 **Generate**(생성)를 클릭하세요. 취소하면 요청이 시작되지 않습니다.
 4. 버튼에 **Generating...**(생성 중...)이 표시되고, 동영상 생성이 진행 중이라는 배너가 나타납니다.
 5. 완료되면 클립이 **Videos**에 나타납니다.
 
@@ -103,7 +101,7 @@ Gallery 위쪽 동작 줄의 **Video**는 `/video`와 마찬가지로 가장 최
 2. 그림 위에 마우스를 올리세요.
 3. **Animate illustration** 버튼(필름 아이콘)을 클릭하세요.
 
-프롬프트 검토를 켜 두면 그 그림에 쓰일 완성된 프롬프트, 길이, 화면 비율, 해상도가 창에 그대로 표시됩니다. 여기서 수정한 내용은 그 클립에만 적용됩니다. Roleplay에서 동작을 계획하는 AI는 Illustrator와 같은 수의 최근 메시지를 읽되, 그 그림이 속한 답변까지만 읽습니다. 이 AI의 재사용 지시문은 **Settings → Generations → Video Generation Prompt Overrides** 아래의 **Roleplay Gallery Animation Director**(롤플레이 갤러리 애니메이션 디렉터)입니다.
+프롬프트 검토를 켜 두면 그 그림에 쓰일 완성된 프롬프트, 길이, 화면 비율, 해상도가 창에 그대로 표시됩니다. 여기서 수정한 내용은 그 클립에만 적용됩니다. Roleplay에서 동작을 계획하는 AI는 Illustrator와 같은 수의 최근 메시지를 읽되, 그 그림이 속한 답변까지만 읽습니다. 이 AI의 재사용 지시문은 **Settings → Media → Prompt Overrides** 아래의 **Roleplay Gallery Animation Director**(롤플레이 갤러리 애니메이션 디렉터)입니다.
 
 **Videos**의 각 클립은 그 자리에서 재생되며 길이와 모델 이름이 함께 표시됩니다. **Pin video to chat**이나 **Download scene video**(장면 비디오 다운로드)를 쓰세요. 클립이 없으면 탭에 **No videos yet**(아직 비디오가 없습니다)이라고 표시됩니다.
 
@@ -169,7 +167,7 @@ Game Mode 채팅을 만들 때는 설정 마법사의 **Features** 단계에서 
 
 ## 동영상 생성 설정
 
-일부 동영상 기본값은 앱 전체에 적용됩니다. **Settings → Generations**(설정 → 생성)를 열고 **Video Generation** 항목("Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls")을 찾으세요.
+일부 동영상 기본값은 앱 전체에 적용됩니다. **Settings → Media**(설정 → 미디어)를 열고 **Video Generation** 항목("Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls")을 찾으세요.
 
 - **Scene video fallback length**(장면 동영상 폴백 길이): 선택한 동영상 모델에 자체 길이가 없을 때만 쓰입니다. 기본값은 10초입니다. 범위는 1에서 60입니다.
 - **Video Generation Prompt Overrides**(동영상 생성 프롬프트 재정의): 재사용하는 동영상 프롬프트 틀을 편집합니다. **Roleplay Gallery Animation Director**는 Roleplay Gallery 클립을 만들기 전에 Prompt Model로 보내는 지시문을 정합니다. 이 지시문의 `${durationSeconds}` 변수는 클립 길이로 바뀝니다.

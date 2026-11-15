@@ -6,7 +6,7 @@ Uma Personal Extension (extensão pessoal) é um pequeno trecho de código que a
 
 | Nome | O que é |
 | --- | --- |
-| Personal Extension | Uma extensão que a Professor Mari escreveu para você. Ela aparece como rascunho em **Settings → Addons** (Configurações → Complementos). |
+| Personal Extension | Uma extensão que a Professor Mari escreveu para você. Ela aparece como rascunho em **Biblioteca → Extensões**. |
 | External Extension | Uma extensão de outra pessoa, ou uma que você mesmo escreveu. Ela exige os passos extras de [Permitir importações de terceiros](#allow-third-party-imports). |
 | Browser Extension | Roda dentro do seu navegador, em um sandbox. É segura por padrão. |
 | Server Extension | Roda no computador que executa o Marinara, em um sandbox do sistema operacional. Exige uma plataforma compatível. |
@@ -16,7 +16,7 @@ Uma Personal Extension (extensão pessoal) é um pequeno trecho de código que a
 
 Antes de começar, faça os dois passos de [Permitir importações de terceiros](#allow-third-party-imports). Sem eles, os botões de importação ficam ocultos.
 
-1. Abra **Settings → Addons**. Em **External Extensions** (extensões externas), escolha **Import Extension File** (importar arquivo de extensão) para um arquivo `.zip`, `.json`, `.css` ou `.js`. Para uma pasta, escolha **Import Extension Folder** (importar pasta de extensão).
+1. Abra **Biblioteca → Extensões**. Em **External Extensions** (extensões externas), escolha **Import Extension File** (importar arquivo de extensão) para um arquivo `.zip`, `.json`, `.css` ou `.js`. Para uma pasta, escolha **Import Extension Folder** (importar pasta de extensão).
 2. Abra o rascunho novo. Ele fica desativado e mostra o código e um hash, uma impressão digital curta daquele código exato (Marinara usa SHA-256).
 3. Leia o código e a lista **Requested access** (acesso solicitado).
 4. Escolha **Review and Run** (revisar e executar) só se você aceitar aquela versão exata. A extensão então aparece como ativada.
@@ -27,7 +27,7 @@ Se não funcionou: se os botões de importação não aparecem, um dos dois pass
 
 Antes de começar, peça à [Professor Mari](../home/professor-mari.md) para criar uma extensão. Ela consegue salvar o código, mas não consegue aprová-lo nem ativá-lo. Esta seção não tem botão New Draft nem controle de importação.
 
-1. Abra **Settings → Addons → Personal Extensions**. Sem rascunhos, a seção mostra: "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."
+1. Abra **Biblioteca → Extensões**. Sem rascunhos, a seção mostra: "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."
 2. Abra o rascunho e leia o código. Confira o hash e a lista **Requested access**.
 3. Escolha **Review and Run** só se você aceitar aquela versão exata.
 
@@ -78,9 +78,9 @@ No Windows e no Android não existe sandbox de processo compatível, então as S
 As importações de terceiros ficam bloqueadas e ocultas por padrão, porque executam código escrito por outras pessoas. Dois passos as liberam:
 
 1. No computador que executa o Marinara, defina `ENABLE_EXTERNAL_EXTENSIONS=true` no arquivo `.env` e depois reinicie o Marinara. Veja a [Referência de configuração do servidor](../CONFIGURATION.md).
-2. Abra **Settings → Advanced → Danger Zone** (Configurações → Avançado → Zona de perigo), role para baixo até passar dos controles de exclusão de dados, leia o aviso e ative **Allow third-party extension imports** (permitir a importação de extensões de terceiros).
+2. Abra **Configurações → Avançado → Segurança**, leia o aviso e ative **Allow third-party extension imports** (permitir a importação de extensões de terceiros).
 
-Então **Settings → Addons** mostra **External Extensions** com os controles de importação de arquivo e de pasta. Formatos compatíveis:
+Então **Biblioteca → Extensões** mostra **External Extensions** com os controles de importação de arquivo e de pasta. Formatos compatíveis:
 
 - `.personal-extension.zip` e pacotes `.zip` compatíveis
 - manifestos `.json`
@@ -99,13 +99,13 @@ Registros antigos, importados de um perfil, guardados manualmente ou de origem d
 
 Desligar qualquer um dos passos desativa todas as extensões importadas. Ligá-lo de novo não as faz rodar outra vez. Recarregue a página se uma extensão de página inteira tiver deixado alterações para trás.
 
-Se não funcionou: se os controles de importação não aparecem, confira se os dois passos estão feitos e se você está no computador do servidor ou salvou o segredo de administrador em **Settings → Advanced → Admin Access** (Configurações → Avançado → acesso de administrador).
+Se não funcionou: se os controles de importação não aparecem, confira se os dois passos estão feitos e se você está no computador do servidor ou salvou o segredo de administrador em **Configurações → Avançado → Segurança**.
 
 ## Exportação, revisões e recuperação
 
 Use a ação de exportação da extensão para baixar um pacote portátil. Pacotes exportados e restaurados continuam desativados. Restaurar uma revisão também devolve a extensão à condição de rascunho desativado.
 
-**Settings → Addons → Extension revision history** (Configurações → Complementos → histórico de revisões de extensões) define quantas versões anteriores do código são mantidas para todas as extensões pessoais e externas. O padrão é **10**. Escolha de **0** a **10**, em que **0** desativa o histórico. Reduzir o limite pede confirmação antes de remover permanentemente as revisões antigas. O código atual, as aprovações, o estado de ativação e os dados salvos da extensão são mantidos. As edições feitas pela Professor Mari seguem o mesmo limite.
+**Biblioteca → Extensões → Histórico de revisões de extensões** define quantas versões anteriores do código são mantidas para todas as extensões pessoais e externas. O padrão é **10**. Escolha de **0** a **10**, em que **0** desativa o histórico. Reduzir o limite pede confirmação antes de remover permanentemente as revisões antigas. O código atual, as aprovações, o estado de ativação e os dados salvos da extensão são mantidos. As edições feitas pela Professor Mari seguem o mesmo limite.
 
 Se uma extensão se comportar mal, escolha **Disable** (desativar). Se a interface não estiver disponível, pare o Marinara e mude para `"false"` o valor de `enabled` do registro correspondente em `installed_extensions`. Nunca defina `approvedHash` na mão.
 

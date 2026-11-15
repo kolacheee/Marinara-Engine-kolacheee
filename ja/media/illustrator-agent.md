@@ -16,14 +16,14 @@ Illustratorが書くのはプロンプトで、絵を描くのは別の画像モ
 
 Illustratorに画像モデルを渡す方法は2つあります。
 
-1. **Connections**(接続)パネルの**Defaults**(デフォルト)で、**Images**(画像)の役割を設定します。
+1. **Connections**(接続)パネルの**Defaults**(デフォルト)ボックスで、**Images**(画像)の役割を設定します。
 2. または、Illustratorの**Open Setup**(設定を開く)画面で、Illustrator専用の画像モデルを指定します。
 
 画像モデルが見つからない場合、画像の生成は失敗し、アプリが画像モデルを選ぶよう求めます。
 
 ## Illustratorをオンにする
 
-始める前に: **Agent Organizer**から**Illustrator**をインストールしてください。[エージェントの概要](../agents/agents-overview.md)を参照してください。
+始める前に: **Library → Agents**(ライブラリー → エージェント)から**Illustrator**をインストールしてください。[エージェントの概要](../agents/agents-overview.md)を参照してください。
 
 1. 絵を付けたいRoleplayのチャットを開きます。
 2. **Chat Settings**(チャット設定)を開き、**Agents**(エージェント)を探します。
@@ -99,7 +99,7 @@ Roleplayのチャットでは、**Chat Settings → Agents → Illustrator**(チ
 - **Clips only**では、毎回の実行がクリップになり、**Video Run Interval**がIllustratorの実行頻度を決め、**Image Run Interval**は表示されません。
 - 値を設定していないチャットでは、**Open Setup**画面の**Video Run Interval**を使い、それもなければ5を使います。
 - **0**: 自分からはクリップを作りません。`[illustrate]`で求められた画像も同様で、代わりにその画像が表示されます。
-- 1つの返信に付くクリップは、最大で**Videos per reply**の本数までです。この値は**Settings → Generations → Video Generation**(設定 → 生成 → 動画生成)にあります。
+- 1つの返信に付くクリップは、最大で**Videos per reply**の本数までです。この値は**Settings → Media → Video Generation**(設定 → メディア → 動画生成)にあります。
 - Galleryから画像をアニメーションにすることも、引き続きできます。**Clips only**では、メッセージの**Illustrate**ボタンでクリップが作られます。
 - クリップが付いた返信をスワイプすると、新しい返信として数えられ、独自のクリップが付くことがあります。以前のスワイプは、元のクリップを残します。
 
@@ -112,6 +112,16 @@ Roleplayのチャットでは、**Chat Settings → Agents → Illustrator**(チ
 独自の画像がないクリップは、ペルソナを含め、名前を挙げた全員を記述します。アバターの開始フレームは、最初に名前が挙がった人物から始まります。
 
 メッセージの**Illustrate**ボタンからIllustratorを再実行するときも、**Illustrator makes**と**First frame**に従います。
+
+## 背景と天候
+
+Illustratorは背景も描きます。**Chat Settings → Agents**(チャット設定 → エージェント)のIllustratorカードで設定します。
+
+- **Generate Scene Backgrounds**(シーンの背景を生成)は、物語が新しい場所へ進んだとき、その場所の画像がまだなければ背景を描きます。
+- **Weather Versions of Backgrounds**(背景の天候バージョン)は、今の背景を物語の天候に合わせて描き直し、動く雨や雪は部屋の窓にだけ表示します。
+- **Decision Model Checks**(判断モデルの確認)は、Decisionモデルで返信ごとに新しい場所や天候を確認するため、背景の更新が実行間隔を待たずに行われます。
+
+3つともデフォルトはオフです。[Illustratorが作る背景](scene-backgrounds.md)を参照してください。
 
 ## NovelAIで複数のキャラクターを描く
 
@@ -127,11 +137,11 @@ V5は最大22人、V4とV4.5は最大6人まで受け付けます。それ以上
 
 ## ギャラリーへの保存とプロンプトの確認
 
-**Settings → Generations → Image Generation**(設定 → 生成 → 画像生成)の**Automatically save generated images to character galleries**(生成画像をキャラクターギャラリーに自動保存)は、デフォルトでオンです。オフにすると、チャットのイラストや自撮り写真を、描かれたキャラクターやペルソナのギャラリーに追加しなくなります。画像はチャットの中とチャットのGalleryには引き続き表示され、明示的なギャラリーへの保存も使えます。既存の項目は変わりません。ギャラリーは画像ファイルを共有しているため、この設定はギャラリーへの登録を制御するもので、削除は行いません。
+**Settings → Media → Image Generation**(設定 → メディア → 画像生成)の**Automatically save generated images to character galleries**(生成画像をキャラクターギャラリーに自動保存)は、デフォルトでオンです。オフにすると、チャットのイラストや自撮り写真を、描かれたキャラクターやペルソナのギャラリーに追加しなくなります。画像はチャットの中とチャットのGalleryには引き続き表示され、明示的なギャラリーへの保存も使えます。既存の項目は変わりません。ギャラリーは画像ファイルを共有しているため、この設定はギャラリーへの登録を制御するもので、削除は行いません。
 
 NovelAIで新しく作ったイラストでは、画像インスペクターに、シーンとスタイルのプロンプトに続けて、ポジティブのキャラクターの記述が` | `で区切って表示されます。ギャラリーに保存されるプロンプトも同じです。
 
-返信を再生成せずに、プロンプトを変えてイラストを描き直すには、イラストを開いて**Regenerate image**(画像を再生成)を使います。[画像を再生成する](scene-backgrounds.md#regenerating-an-image)を参照してください。
+返信を再生成せずに、プロンプトを変えてイラストを描き直すには、イラストを開いて**Regenerate image**(画像を再生成)を使います。[画像を再生成する](../chats/chat-gallery.md#regenerating-an-image)を参照してください。
 
 以前のRoleplayのメッセージや範囲を絵にするには、`/illustrate range=12`または`/illustrate range=12-18`を使います。[スラッシュコマンド](../chats/slash-commands.md)を参照してください。
 
@@ -139,6 +149,7 @@ NovelAIで新しく作ったイラストでは、画像インスペクターに�
 
 - [画像生成プロバイダーと設定](image-providers.md)
 - [画像スタイルプロファイル](style-profiles.md)
-- [シーン背景とギャラリー](scene-backgrounds.md)
+- [Illustratorが作る背景](scene-backgrounds.md)
+- [チャットのギャラリー](../chats/chat-gallery.md)
 - [エージェント: チャットを支えるAIヘルパー](../agents/agents-overview.md)
 - [AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)

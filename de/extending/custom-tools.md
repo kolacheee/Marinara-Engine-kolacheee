@@ -8,20 +8,19 @@ Function Calling bedeutet, dass die KI die App bittet, eine Aktion auszuführen,
 
 ## Ein Tool erstellen
 
-Bevor du anfängst, öffne über die obere Leiste das Panel **Presets**. Tools liegen dort im Tab **Functions** (Funktionen). Öffnest du Marinara von einem anderen Gerät aus, speichere zuerst das Admin-Secret unter **Settings → Advanced → Admin Access** (Einstellungen → Erweitert → Admin-Zugriff). Es muss mit `ADMIN_SECRET` auf dem Server übereinstimmen; siehe [Referenz zur Server-Konfiguration](../CONFIGURATION.md).
+Bevor du anfängst: Deine Tools liegen auf der Seite **Custom tools** (eigene Tools). Öffne **Library → Custom tools** (Bibliothek → eigene Tools). Links werden deine Tools aufgelistet, rechts bearbeitest du das ausgewählte. Du kannst ein Tool auch aus einem Chat heraus über **Chat Settings → Function Calling → Add Functions → New Custom Function** (Chat-Einstellungen → Funktionsaufrufe → Funktionen hinzufügen → neue eigene Funktion) anlegen. Im klassischen Layout liegen Tools im Panel **Presets**, im Bereich **Functions** (Funktionen) mit dem Schraubenschlüssel-Symbol. Öffnest du Marinara von einem anderen Gerät aus, speichere zuerst das Admin-Secret unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit). Es muss mit `ADMIN_SECRET` auf dem Server übereinstimmen; siehe [Referenz zur Server-Konfiguration](../CONFIGURATION.md).
 
 Für einen ersten Versuch wähle **Static Result**: Dieser Typ braucht sonst nichts.
 
 ### So legst du ein Tool an
 
-1. Öffne über die obere Leiste **Presets → Functions**.
-2. Klick auf **Create function** (Funktion erstellen, Plus-Symbol). Ein leerer Tool-Editor öffnet sich.
-3. Gib einen Namen in Kleinbuchstaben und snake_case ein, etwa `check_weather`. Genau unter diesem Namen ruft die KI das Tool auf. Er beginnt mit einem Kleinbuchstaben und besteht danach aus Kleinbuchstaben, Ziffern und Unterstrichen.
-4. Fülle **Description** (Beschreibung) aus. Formuliere sie als Anweisung an die KI, denn die KI entscheidet anhand dieses Textes, wann sie das Tool aufruft. Beispiel: `Get the current weather for a city the user names.`
-5. Ergänze die Parameter, die das Tool braucht (siehe [Parameter hinzufügen](#add-parameters)).
-6. Wähle einen **Execution Type** (Ausführungstyp): **Static Result**, **Webhook** oder **Script**.
-7. Fülle das Feld für diesen Typ aus (siehe [Einen Ausführungstyp wählen](#choose-an-execution-type)).
-8. Klick auf **Save** (Speichern). Neben der Schaltfläche blitzt kurz ein grünes **Saved** auf.
+1. Öffne **Library → Custom tools** und klick auf **New tool** (neues Tool). Ein leerer Tool-Editor öffnet sich.
+2. Gib einen Namen in Kleinbuchstaben und snake_case ein, etwa `check_weather`. Genau unter diesem Namen ruft die KI das Tool auf. Er beginnt mit einem Kleinbuchstaben und besteht danach aus Kleinbuchstaben, Ziffern und Unterstrichen.
+3. Fülle **Description** (Beschreibung) aus. Formuliere sie als Anweisung an die KI, denn die KI entscheidet anhand dieses Textes, wann sie das Tool aufruft. Beispiel: `Get the current weather for a city the user names.`
+4. Ergänze die Parameter, die das Tool braucht (siehe [Parameter hinzufügen](#add-parameters)).
+5. Wähle einen **Execution Type** (Ausführungstyp): **Static Result**, **Webhook** oder **Script**.
+6. Fülle das Feld für diesen Typ aus (siehe [Einen Ausführungstyp wählen](#choose-an-execution-type)).
+7. Klick auf **Save** (Speichern). Neben der Schaltfläche blitzt kurz ein grünes **Saved** auf.
 
 Regeln für Namen und Beschreibungen:
 
@@ -29,40 +28,16 @@ Regeln für Namen und Beschreibungen:
 - Zwei Tools dürfen nicht denselben Namen tragen, und ein Tool darf keinen eingebauten Namen wie `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search` oder `update_about_me` verwenden. Bei einer Kollision erscheint eine Meldung wie `"your_name" is a reserved built-in tool name.`
 - Verlässt du den Editor mit ungespeicherten Änderungen, bietet ein Banner **Keep editing**, **Discard** oder **Save & close** an.
 
-Oben im Tab **Functions** findest du:
+## Deine Tools verwalten
 
-- **Create function** (Plus-Symbol)
-- **Import functions from ZIP or JSON** (Funktionen aus ZIP oder JSON importieren)
-- **Export functions to ZIP** (Funktionen als ZIP exportieren) – ausgegraut, wenn du keine Tools hast
-- **Select functions** (Funktionen auswählen, Häkchensymbol)
+Auf der Seite **Custom tools** zeigt jedes Tool in der Liste seinen Namen, seinen Typ und die Anzahl seiner Parameter sowie einen Ein-/Aus-Schalter. Klick auf ein Tool, um es zu bearbeiten.
 
-Unter **Search functions** (Funktionen suchen) kannst du nach Tool-Namen und Beschreibungen suchen.
+- **Import** über der Liste lädt Tools aus einer `.zip`- oder `.json`-Datei. Webhook- und Script-Tools werden ausgeschaltet importiert, damit du sie prüfen kannst, bevor du sie einschaltest.
+- **Export all** (alle exportieren) speichert alle Tools in `marinara-functions.zip`. Ist eine Webhook-Adresse enthalten, warnt Marinara dich zuerst, weil die Adresse einen Key enthalten kann.
+- **⋯** an einem Tool (oder ein Rechtsklick darauf) bietet **Export**, **Select** (auswählen) und **Delete** (löschen).
+- Mit **Select** über der Liste kannst du mehrere Tools auswählen und sie dann über die Leiste unter der Liste **Export** oder **Delete**.
 
-Jedes Tool in der Liste zeigt:
-
-- seinen Namen, seinen Typ, die Anzahl der Parameter und die Beschreibung
-- einen Ein-/Aus-Schalter
-- **Edit function** (Funktion bearbeiten) und **Delete Function** (Funktion löschen)
-
-Zieh ein Tool an seinem Anfasser, um die Liste neu zu ordnen. Die Reihenfolge dient nur der Anzeige. Während einer Suche kannst du Tools nicht verschieben. Solange es keine Tools gibt, steht in der Liste **No functions yet**.
-
-### Tools in Ordnern organisieren
-
-1. Klick auf **New Folder** (Neuer Ordner) und gib dem Ordner einen Namen.
-2. Klick in der Zeile eines Tools auf das Ordnersymbol, um **Move to folder** (In Ordner verschieben) zu öffnen.
-3. Wähl den Ordner. Um ein Tool aus einem Ordner zu verschieben, wähl **No folder (top level)** (Kein Ordner, oberste Ebene).
-
-Klick auf den Ordnernamen, um den Ordner auf- oder zuzuklappen. Schalte den Ordner aus, um seine Tools zu pausieren. Die KI bekommt sie dann in keinem Chat angeboten, und sie sind in keiner Tool-Liste eines Chats oder Agenten auswählbar. In der Kopfzeile steht **Paused** (Pausiert). Jedes Tool behält seine eigene Schalterstellung. Ein eingeschaltetes Tool in einem pausierten Ordner zeigt einen grauen Schalter und den Hinweis **Paused by folder** (Durch Ordner pausiert). Schaltest du den Ordner wieder ein, stehen eingeschaltete Tools wieder zur Verfügung und ausgeschaltete bleiben aus. Löschst du den Ordner, wandern seine Tools auf die oberste Ebene und folgen ihren eigenen Schaltern.
-
-Mit Ordnern ist die Liste nach Ordnern gruppiert. Klick auf **Manual order** (manuelle Reihenfolge), um die vollständige Liste anzuzeigen und Tools an ihren Griffen zu verschieben.
-
-### Mehrere Tools auf einmal ändern
-
-1. Klick auf **Select functions**.
-2. Hak die gewünschten Tools an oder wähl **Select all functions** (Alle Funktionen auswählen).
-3. Klick auf **Enable selected** (Ausgewählte aktivieren), **Disable selected** (Ausgewählte deaktivieren) oder **Move to folder**. Du kannst die Auswahl auch exportieren oder löschen.
-
-**Enable selected** ändert die einzelnen Schalter. Schalte einen pausierten Ordner wieder ein, damit seine Tools erneut angeboten werden.
+Im klassischen Layout hat die Überschrift des Bereichs **Functions** die Schaltflächen **Create function**, **Import functions from ZIP or JSON** und **Export functions to ZIP**, und jede Zeile enthält **Edit function** (Funktion bearbeiten) und **Delete Function** (Funktion löschen).
 
 <a id="add-parameters"></a>
 
@@ -178,7 +153,7 @@ Ein Tool zu erstellen bringt die KI noch nicht dazu, es zu nutzen. Du schaltest 
 3. Schalte **Enable Tool Use** (Tool-Nutzung aktivieren) ein. Die Beschreibung dazu lautet **Allow AI to call functions (dice rolls, game state, etc.)**. In einem neuen Chat ist die Option aus.
 4. Prüfe, ob es funktioniert: Frag die KI etwas, das dein Tool beantwortet, beim Beispiel `store_hours` etwa „Wie sind eure Öffnungszeiten?“. Die Antwort sollte den Text des Tools verwenden.
 
-Ist **Enable Tool Use** eingeschaltet und darunter nichts hinzugefügt, kann der Chat jedes global aktivierte Tool verwenden, das er unterstützt: die eingebauten Tools und jedes eigene Tool, dessen Schalter unter **Functions** eingeschaltet ist und dessen Ordner nicht pausiert ist. Game-Chats brauchen für `search_lorebook` zusätzlich **Let the GM search lore** (GM im Weltwissen suchen lassen).
+Ist **Enable Tool Use** eingeschaltet und darunter nichts hinzugefügt, kann der Chat jedes global aktivierte Tool verwenden, das er unterstützt: die eingebauten Tools und jedes eigene Tool, dessen Schalter unter **Library → Custom tools** eingeschaltet ist. Game-Chats brauchen für `search_lorebook` zusätzlich **Let the GM search lore** (GM im Weltwissen suchen lassen).
 
 So begrenzt du einen Chat auf eine Auswahl:
 
@@ -190,13 +165,13 @@ Sobald du Tools hinzugefügt hast, funktionieren in diesem Chat nur noch diese. 
 
 Game-Chats können eine separate Verbindung für die Tool-Planung verwenden. Kosten und Verhalten erklärt [Optionale Tool-Planung und Lorebook-Suche](../game/getting-started.md#optional-tool-planning-and-lore-searches).
 
-Wenn es nicht funktioniert hat: Prüfe, ob **Enable Tool Use** eingeschaltet ist, ob das Tool in der Liste des Chats steht, falls du bestimmte Tools hinzugefügt hast, und ob der Schalter des Tools unter **Functions** eingeschaltet ist und sein Ordner nicht pausiert ist. Eine klarere **Description** und klarere Parameterbeschreibungen helfen der KI zu entscheiden, wann sie das Tool aufruft.
+Wenn es nicht funktioniert hat: Prüfe, ob **Enable Tool Use** eingeschaltet ist, ob das Tool in der Liste des Chats steht, falls du bestimmte Tools hinzugefügt hast, und ob der Schalter des Tools unter **Library → Custom tools** eingeschaltet ist. Eine klarere **Description** und klarere Parameterbeschreibungen helfen der KI zu entscheiden, wann sie das Tool aufruft.
 
 ## Tools an einen Agenten hängen
 
 Du kannst ein Tool auch einem Agenten statt einem Chat geben.
 
-1. Öffne das Panel **Agents** und darin einen Agenten.
+1. Öffne **Library → Agents** (Bibliothek → Agenten) und darin einen Agenten.
 2. Öffne seine Gruppe **Tools / Function Calling**.
 3. Schalte die Tools ein, die dieser Agent nutzen darf.
 

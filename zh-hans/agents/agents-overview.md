@@ -6,11 +6,11 @@
 
 智能体按聊天开启，不按角色开启。同一个角色的两个聊天，可以运行不同的智能体。
 
-全新安装不带任何可选智能体。从 **Agent Organizer**(智能体管理器) 安装它们，这是官方一键安装包的商店。源码和目录都公开在 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)。通过 **Agent Organizer** 安装，Marinara 才能校验兼容性、权限和文件哈希。每个智能体是做什么的，见[可下载智能体参考](built-in-agents.md)。想自己做一个，见[创建自定义智能体](custom-agents.md)。
+全新安装不带任何可选智能体。从 **Library → Agents**(资料库 → 智能体) 安装它们，这是官方一键安装包的商店。在经典布局中，它叫 **Agent Organizer**(智能体管理器)。源码和目录都公开在 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)。通过这个页面安装，Marinara 才能校验兼容性、权限和文件哈希。每个智能体是做什么的，见[可下载智能体参考](built-in-agents.md)。想自己做一个，见[创建自定义智能体](custom-agents.md)。
 
 ## 把智能体加进聊天
 
-开始之前：先安装智能体。打开 **Agents**(智能体) 面板（右侧选项卡里的 Sparkles 图标），点击 **Agent Organizer**，打开该智能体的页面，再点击 **Get**(获取)。见[安装和更新智能体](#install-and-update-agents)。
+开始之前：先安装智能体。打开 **Library → Agents**，在 **Available**(可用) 下找到智能体，再点击 **Get**(获取)。见[安装和更新智能体](#install-and-update-agents)。
 
 1. 打开聊天。
 2. 打开 **Chat Settings**(聊天设置)，找到 **Agents** 部分。
@@ -63,7 +63,7 @@
 - 追踪器智能体会写入 HUD 和追踪器面板。时间、地点、心情或数值有变化，就说明有追踪器运行过。
 - **Chat Settings** 里的 **Agent activity**(智能体活动) 会列出智能体留下的简短记录。智能体工作时它的图标会旋转，有智能体失败时图标上会出现一个圆点。见[智能体活动](../roleplay/getting-started.md#agent-activity)。
 - **Prose Guardian** 和 **Continuity Checker** 会改动回复文本。回复变得更干净或错误得到纠正，就说明它们运行过。
-- 想看完整的追踪记录，在 **Settings → Advanced → Message Tools**(设置 → 高级 → 消息工具) 里开启 **Debug mode**(调试模式)。它会把每个智能体的提示词和响应记到服务器控制台，智能体的调试条目也会出现在浏览器控制台里。缓存的提示词注入显示在 **Agent activity** 的 **Injections**(注入) 选项卡里。
+- 想看完整的追踪记录，在 **Settings → Advanced → Troubleshooting**(设置 → 高级 → 故障排查) 里开启 **Debug mode**(调试模式)。它会把每个智能体的提示词和响应记到服务器控制台，智能体的调试条目也会出现在浏览器控制台里。缓存的提示词注入显示在 **Agent activity** 的 **Injections**(注入) 选项卡里。
 
 ## 留意开销
 
@@ -77,11 +77,11 @@
 
 ## 安装和更新智能体
 
-打开 **Agents** 面板（右侧选项卡里的 Sparkles 图标），点击 **Agent Organizer**。桌面端和移动端都能用。
+打开 **Library → Agents**。桌面端和移动端都能用。
 
-- **Home**(主页) 显示精选智能体，以及每个分区的一排智能体：**Apps**(应用)、**Chat games**(聊天游戏)、**Trackers**(追踪器) 和 **Writing help**(写作帮助)。
-- **Updates**(更新) 列出有新版本的已安装智能体。**Installed**(已安装) 列出你拥有的全部内容，附带版本和大小。
-- 搜索和模式筛选可以缩小每份列表的范围。
+- **Installed**(已安装) 列出你拥有的全部内容，**Available** 列出可下载的智能体，**Updates**(更新) 列出有新版本的已安装智能体。
+- **All sections**(所有分区) 可以把列表缩小到一个分区，比如 **Apps**(应用)、**Chat games**(聊天游戏)、**Writing help**(写作辅助) 或 **Trackers**(追踪器)；**All modes**(所有模式) 则可以筛选聊天模式。**Search agents**(搜索智能体)、排序菜单和 **List**(列表) / **Gallery**(图库) 在每份列表里都能用。
+- **Starter kits**(入门套装) 一次安装一组搭配好的智能体。**New agent**(新建智能体) 用来创建[自定义智能体](custom-agents.md)。
 - 选中一个智能体，可以看到它的说明、下载体积、权限、兼容性和 **Version history**(版本历史)。点击 **Get** 安装。**⋯** 菜单里有 **Uninstall**(卸载)。
 - 标题旁的 **⋯** 菜单里有 **Update all**(全部更新)、**Install all**(全部安装)、**Refresh catalog**(刷新目录) 和 **Uninstall all**(全部卸载)。
 
@@ -100,7 +100,7 @@
 3. 点击 **Update all**；如果取消了部分勾选，按钮会显示 **Update 2 of 3**(更新 3 项中的 2 项)。每一行会显示 **Updated**(已更新) 或 **Failed**(失败)。失败的行会显示原因和 **Retry**(重试)。
 4. 如果某项更新需要重启，点击 **Restart now**(立即重启)，或者稍后再重启 Marinara。
 
-点击 **Not now**(暂不更新) 保留当前版本。你跳过的版本，Marinara 不会再问。你随时都可以在 **Agent Organizer** 里更新。已安装的包会一直以当前版本工作，即使连不上目录也一样。**See in Agent Organizer**(在智能体管理器中查看) 会打开该智能体的页面。
+点击 **Not now**(暂不更新) 保留当前版本。你跳过的版本，Marinara 不会再问。你随时都可以在 **Library → Agents** 的 **Updates** 选项卡里更新。已安装的包会一直以当前版本工作，即使连不上目录也一样。**See in Agent Organizer**(在智能体管理器中查看) 会打开该智能体的页面。
 
 更新只针对你安装过的包。包保存在 Marinara 服务器上，所以浏览器客户端使用的是服务器上安装的包。
 

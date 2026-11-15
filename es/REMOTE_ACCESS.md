@@ -1,6 +1,6 @@
 # Acceso remoto: inicio de sesión y lista de IP permitidas
 
-Esta guía explica cómo llegar a Marinara Engine desde otro dispositivo, como tu teléfono, una laptop o un contenedor de Docker. Cubre la opción principal: un inicio de sesión. También cubre la lista de IP permitidas, los proxies de inicio de sesión, HTTPS, Admin Access y el mensaje CSRF de "save blocked" (guardado bloqueado). Casi todos los ajustes de aquí viven en el archivo `.env` del servidor, no en la app.
+Esta guía explica cómo llegar a Marinara Engine desde otro dispositivo, como tu teléfono, una laptop o un contenedor de Docker. Cubre la opción principal: un inicio de sesión. También cubre la lista de IP permitidas, los proxies de inicio de sesión, HTTPS, el secreto de administrador y el mensaje CSRF de "save blocked" (guardado bloqueado). Casi todos los ajustes de aquí viven en el archivo `.env` del servidor, no en la app.
 
 Una lista rápida de palabras que se usan en toda esta guía:
 
@@ -24,7 +24,7 @@ Si la página no carga, revisa que Tailscale esté activado en ambos dispositivo
 
 > **Nota:** Esto no funciona en las instalaciones de Docker. El tráfico de Tailscale llega al contenedor a través de la puerta de enlace de Docker, así que Marinara no puede ver que vino de Tailscale. Configura primero un inicio de sesión ([Opción 1](#option-1-login-recommended)) y luego publica el puerto más allá de `127.0.0.1`.
 
-Las copias de seguridad, las importaciones, las actualizaciones y otras acciones de riesgo siguen necesitando el secreto de admin desde un dispositivo remoto. Consulta [Admin Access y acciones privilegiadas](#admin-access-and-privileged-actions).
+Las copias de seguridad, las importaciones, las actualizaciones y otras acciones de riesgo siguen necesitando el secreto de admin desde un dispositivo remoto. Consulta [El secreto de administrador y las acciones privilegiadas](#the-admin-secret-and-privileged-actions).
 
 ## Lo que Marinara bloquea de forma predeterminada
 
@@ -261,9 +261,9 @@ SSL_KEY=/path/to/key.pem
 
 Necesitas un certificado y una clave antes de configurar `SSL_CERT` y `SSL_KEY`. Puedes crear uno con una herramienta como `mkcert` para uso local, o `certbot` para un dominio público. Si los archivos faltan o no se pueden leer, el servidor se detiene al arrancar y nombra las rutas exactas que intentó.
 
-<a id="admin-access-and-privileged-actions"></a>
+<a id="the-admin-secret-and-privileged-actions"></a>
 
-## Admin Access y acciones privilegiadas
+## El secreto de administrador y las acciones privilegiadas
 
 Algunas acciones son especialmente sensibles: borrar datos, crear o descargar copias de seguridad, importar y exportar perfiles, instalar temas y agentes, e instalar el runtime del Local Model. Estas necesitan un secreto compartido aparte llamado el secreto de admin, además de la opción de acceso que hayas elegido arriba.
 
@@ -273,9 +273,9 @@ Los agentes instalados, como los de la pantalla de inicio, no necesitan el secre
 
 ### Crear el secreto de admin en la app
 
-1. En la computadora que ejecuta Marinara, abre **Settings** (Configuración), luego la pestaña **Advanced** (Avanzado), luego la sección **Admin Access** (Acceso de administrador).
+1. En la computadora que ejecuta Marinara, abre **Settings** (Configuración), luego la pestaña **Advanced** (Avanzado), luego la sección **Security** (Seguridad).
 2. Haz clic en **Make admin secret** (Crear secreto de admin). Marinara muestra el secreto nuevo una sola vez y lo guarda en este navegador.
-3. En cada dispositivo remoto, abre **Settings** → **Advanced** → **Admin Access**, escribe el secreto en la casilla y luego haz clic en **Save** (Guardar). Las mayúsculas, los espacios y los guiones no importan.
+3. En cada dispositivo remoto, abre **Settings** → **Advanced** → **Security**, escribe el secreto en la casilla y luego haz clic en **Save** (Guardar). Las mayúsculas, los espacios y los guiones no importan.
 
 Un dispositivo que ya tiene el secreto también puede crearlo. Un dispositivo que solo entró con el inicio de sesión no puede. Esto impide que un inicio de sesión robado tome el control de las acciones de riesgo.
 
@@ -291,11 +291,11 @@ Para cambiar el secreto, haz clic en **Replace admin secret** (Reemplazar secret
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. En el dispositivo remoto, abre **Settings** → **Advanced** → **Admin Access**.
+2. En el dispositivo remoto, abre **Settings** → **Advanced** → **Security**.
 3. Pega el mismo valor en la casilla (su marcador de posición dice **ADMIN_SECRET**), luego haz clic en **Save**.
 4. Deberías ver el mensaje **Admin secret saved for this browser** (Secreto de admin guardado para este navegador).
 
-`ADMIN_SECRET` en `.env` tiene prioridad sobre un secreto creado en la app. Mientras está configurado, **Admin Access** lo indica y solo cambias el secreto en `.env`.
+`ADMIN_SECRET` en `.env` tiene prioridad sobre un secreto creado en la app. Mientras está configurado, **Security** lo indica y solo cambias el secreto en `.env`.
 
 ### Conviene saber
 

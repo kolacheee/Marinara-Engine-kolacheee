@@ -1,53 +1,95 @@
-# Tła w trybie Roleplay
+# Tła podążające za opowieścią
 
-Czat w trybie Roleplay pokazuje za wiadomościami obraz na całą scenę. Możesz pozwolić, żeby agent **Background** dobierał go po każdej odpowiedzi, utworzyć nowy obraz ręcznie albo przypiąć jeden obraz do konkretnego czatu. Gdy obraz się zmienia, Marinara płynnie przenika stary obraz w nowy.
+Czat w trybie Roleplay pokazuje za wiadomościami obraz na całą scenę. Może on pozostać taki sam albo zmieniać się wraz z opowieścią: agent **Background** wybiera spośród twoich obrazów, przypięte miejsca zawsze pokazują własny obraz, a obrazy z galerii postaci towarzyszą jej w każdym czacie. Gdy obraz się zmienia, Marinara płynnie przenika stary obraz w nowy.
 
-Generowanie obrazów nie jest wymagane. Bez konta do generowania obrazów tło jest jednolitym kolorem, a czat działa jako zwykły czat tekstowy.
+Żadna z tych funkcji nie wymaga generowania obrazów. Bez modelu obrazów wybierasz spośród wgranych przez siebie obrazów, a jeśli nie ma żadnego obrazu, tło jest jednolitym kolorem.
+
+## Tła w skrócie
+
+| Czego chcesz | Czego użyć | Przewodnik |
+| --- | --- | --- |
+| Jednego obrazu za tym czatem | **Tło czatu** | [Ustaw tło dla jednego czatu](#set-a-background-for-one-chat) |
+| Obrazu zmieniającego się wraz ze sceną | Agenta **Background** | [Pozwól agentowi Background wybierać tło](#let-the-background-agent-pick) |
+| Miejsca, które zawsze wygląda tak samo | Przypiętego miejsca | [Przypnij tło do miejsca](#pin-a-background-to-a-place) |
+| Pokoju postaci w każdym czacie z jej udziałem | Tła z galerii | [Tła podążające za postacią](#backgrounds-that-follow-a-character) |
+| Nowych obrazów dla nowych miejsc i pogody | Agenta **Illustrator** | [Tła tworzone przez agenta Illustrator](../media/scene-backgrounds.md) |
+| Wgrywania, oznaczania tagami i porządkowania obrazów albo ich rozmywania | Biblioteki teł | [Biblioteka teł](../appearance/chat-backgrounds.md) |
+
+Gdy opowieść przenosi się w nowe miejsce, Marinara wybiera w tej kolejności: przypięcie do tego miejsca w tym czacie, potem tło z galerii z nazwą tego miejsca, a na końcu wybór agenta Background. Illustrator tworzy nowy obraz tylko wtedy, gdy żaden z tych obrazów nie pasuje. Niezależnie od tego, który obraz zostanie wybrany, wyświetla się jego wariant pogodowy, jeśli istnieje wariant dla pogody panującej w opowieści.
 
 ## Ustaw tło dla jednego czatu
 
-Użyj tej opcji, aby za otwartym czatem stale widniał jeden obraz, zamiast zostawiać wybór agentowi. Zmienia to tylko ten czat.
+1. Otwórz czat. Potem otwórz **Ustawienia → Wygląd → Tła**.
+2. W sekcji **Tło czatu** kliknij **Przeglądaj bibliotekę** i wybierz obraz.
 
-1. Otwórz czat. Potem otwórz **Settings → Appearance** (ustawienia, wygląd) i znajdź sekcję **Backgrounds** (tła).
-2. W polu **Chat Background** (tło czatu) wskaż wgrany obraz albo jedno z teł z zasobów gry.
+Zmienia to tylko ten czat. Aby wrócić do domyślnego tła, kliknij **Usuń** obok pola **Tło czatu**. Możesz też wybrać obraz w sekcji **Ustawienia czatu → Tło** w czacie. Nie masz jeszcze żadnych obrazów? Zobacz [Import tła](../appearance/chat-backgrounds.md#import-a-background).
 
-Obraz widać za twoimi wiadomościami. Aby wrócić do domyślnego tła, kliknij **Remove** (usunięcie) obok pola **Chat Background**.
+## Pozwól agentowi Background wybierać tło
 
-Nie masz jeszcze żadnych obrazów? Najpierw wgraj jakiś. Zobacz [Tła czatu](../appearance/chat-backgrounds.md).
+Agent **Background** uruchamia się po każdej odpowiedzi. Czyta scenę i spośród wszystkich twoich teł wybiera obraz, który pasuje najlepiej. Wybiera tylko obrazy, które już masz; do tworzenia nowych użyj agenta Illustrator.
 
-## Pozwól agentowi Background dobierać tło
+1. Otwórz czat w trybie Roleplay i otwórz **Ustawienia czatu** przyciskiem z suwakami.
+2. Otwórz sekcję **Agents** i włącz przełącznik **Enable Agents**.
+3. Dodaj agenta **Background**.
 
-Agent **Background** to pomocnik, który działa obok odpowiedzi. Po każdej odpowiedzi czyta bieżącą scenę i spośród wszystkich twoich teł wybiera obraz, który pasuje najlepiej. Wybiera wyłącznie istniejące obrazy. Nowe obrazy tworzy automatycznie agent **Illustrator**.
+Od teraz tło zmienia się samo, w miarę jak fabuła przenosi się między miejscami. Agent widzi każdy obraz w bibliotece, także w folderach, i wybiera na podstawie nazw i tagów, więc pomagają czytelne nazwy i tagi miejsc.
 
-1. Otwórz czat w trybie Roleplay.
-2. Otwórz **Chat Settings** (ustawienia czatu) przyciskiem z suwakami w czacie.
-3. Otwórz sekcję **Agents** i włącz przełącznik **Enable Agents**.
-4. Dodaj agenta **Background**.
+Jeśli to nie zadziałało: gdy masz tylko jedno albo dwa tła, agent wciąż wybiera właśnie je. Dodaj więcej obrazów do biblioteki.
 
-Od teraz tło zmienia się samo, w miarę jak fabuła przenosi się między miejscami.
+## Przypnij tło do miejsca
 
-Jeśli to nie zadziałało: gdy masz tylko jedno albo dwa tła, agent wciąż wybiera właśnie je. Dodaj więcej obrazów do biblioteki. Zobacz [Tła czatu](../appearance/chat-backgrounds.md).
+Użyj tej opcji, gdy miejsce powinno zawsze wyglądać tak samo: sypialnia Johna zawsze pokazuje `john-bedroom`, a twoja sypialnia zawsze pokazuje `my-bedroom`. Gdy opowieść przenosi się do przypiętego miejsca, pojawia się jego obraz, niezależnie od tego, co wybrałby agent Background.
 
-## Wygeneruj tło ręcznie
+1. Otwórz **Ustawienia czatu** przyciskiem z suwakami w czacie i otwórz sekcję **Tło**.
+2. W sekcji **Pinned places** (przypięte miejsca) kliknij **Add place** (dodanie miejsca).
+3. Kliknij puste pole obrazu i wybierz tło. Wpisz miejsce tak, jak jest zapisywane w opowieści, na przykład `John's bedroom`.
+4. Opcjonalnie: poniżej dodaj inne nazwy, których może używać opowieść, oddzielając je przecinkami, na przykład `John's room, the master bedroom`.
 
-Na podstawie sceny (gatunek, świat, miejsce, pogoda i pora dnia) Marinara buduje prompt obrazu (prompt to tekst, który Marinara wysyła do AI) i tworzy nowe tło.
+Szybszy sposób: gdy opowieść jest w danym miejscu i wyświetla się właściwy obraz, kliknij **Pin this picture to "John's bedroom"** (przypięcie tego obrazu do sypialni Johna).
 
-Zanim zaczniesz: zainstaluj agenta **Illustrator** i ustaw dla niego konto do generowania obrazów albo oznacz jedno konto do generowania obrazów jako domyślne. Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md). Nie musisz dodawać agenta Illustrator do czatu.
+Przypięcia muszą wiedzieć, gdzie toczy się opowieść, więc korzystają z lokalizacji podanej przez agenta **World State** (albo World Maps). U dołu listy widać **Story is at** (miejsce opowieści) i nazwę miejsca, a **Here** (tutaj) oznacza używane przypięcie.
 
-1. Otwórz **Chat Settings** przyciskiem z suwakami w czacie i rozwiń sekcję **Gallery** (galeria).
-2. Kliknij **Background**. W trakcie pracy przycisk pokazuje **Generating...**, a w sekcji Gallery widać komunikat "Illustrator is generating a background image for this scene."
-3. Zaczekaj, aż generowanie się zakończy. Nowy obraz trafia do biblioteki teł i zostaje ustawiony w scenie.
+### Jak dopasowywane są miejsca
 
-Ręczne generowanie korzysta z konta obrazów agenta Illustrator, a w razie jego braku z twojego domyślnego konta do generowania obrazów. Działa w trybach Roleplay i Game Mode, ale nie w trybie Conversation.
+- Wygrywa najbardziej szczegółowa nazwa. `John's bedroom` i `{{user}}'s bedroom` nigdy się nie mieszają, a przypięcie o samej nazwie `bedroom` jest używane tylko dla sypialni, których nikt nie przypiął.
+- Jedno lub dwa słowa pomiędzy nadal pozwalają na dopasowanie: "John's guest bedroom" pasuje do `John's bedroom`, chyba że inne przypięcie nazywa dokładnie to miejsce. Dopasowanie nigdy nie przechodzi przez przecinek ani innego właściciela, więc "John's house, Mara's bedroom" nie oznacza sypialni Johna.
+- `{{user}}` to imię twojej persony, a `{{char}}` – dowolnej postaci w czacie, więc `{{user}}'s bedroom` pasuje do "Alyssa's bedroom".
+- "My" i "our" odnoszą się do autora wiadomości. Gdy w odpowiedzi Johna opowieść toczy się w "my bedroom", chodzi o sypialnię Johna; "your bedroom" w jego odpowiedzi oznacza twoją sypialnię. W twojej wiadomości "your bedroom" oznacza sypialnię postaci, jeśli w czacie jest tylko jedna postać.
+- Wielkość liter, znaki diakrytyczne i apostrofy nie mają znaczenia. Nazwy pasują do całych słów: `John` nigdy nie pasuje do "Johnson".
+- Jeśli korzystasz z **World Maps**, wybierz miejsce z listy **World Maps place** (miejsce w World Maps). Przypięty budynek obejmuje też te pomieszczenia, które nie mają własnego przypięcia.
 
-Jeśli to nie zadziałało: komunikat "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection." oznacza, że Marinara nie znalazła żadnego konta obrazów. Ustaw je i spróbuj ponownie. Jeśli brakuje przycisku **Background**, agent Illustrator nie jest zainstalowany.
+### Co zmienia przypięcie
 
-## Biblioteka teł i rozmycie
+- Obraz pojawia się raz, po przybyciu na miejsce. Jeśli podczas pobytu wybierzesz ręcznie inne tło, twój wybór pozostaje, dopóki opowieść nie przeniesie się dalej.
+- W przypiętym miejscu agent Background nie może zmienić obrazu, a Illustrator nie tworzy dla niego nowego tła. Przy włączonym ustawieniu **Weather Versions of Backgrounds** (warianty pogodowe teł) przypięty obraz nadal otrzymuje wariant z deszczem, śniegiem lub mgłą.
 
-Obrazy do wyboru znajdują się w tej samej sekcji **Backgrounds**. Import, tagi, zmianę nazw, usuwanie, suwak **Background Blur** i domyślne tło nowych czatów w trybie Roleplay opisuje przewodnik [Tła czatu](../appearance/chat-backgrounds.md).
+Jeśli to nie zadziałało: sprawdź, czy **Story is at** pod listą pokazuje miejsce i czy jedna z nazw przypięcia występuje w nim słowo w słowo.
+
+## Tła podążające za postacią
+
+Obraz w sekcji **Galeria** postaci lub persony można oznaczyć jako tło. Pojawia się wtedy w każdym czacie z udziałem tej postaci, bez ustawiania przypięć w każdym czacie.
+
+1. Otwórz zakładkę **Galeria** postaci. Kliknij przycisk tagu na obrazie i wybierz **Use as background** (użycie jako tła).
+2. Wpisz przedstawione na nim miejsca, oddzielając je przecinkami, na przykład `{{char}}'s bedroom, {{char}}'s room`. W galerii postaci `{{char}}` oznacza tę postać, a w galerii persony `{{user}}` oznacza tę personę. Zostaw pole puste, jeśli obraz nie przedstawia jednego miejsca.
+
+Przycisk tagu obrazu pokazuje wtedy **Background:** (tło) i przypisane miejsca. Kliknij go, żeby wybrać **Edit places** (edycja miejsc) albo **Remove background tag** (usunięcie tagu tła).
+
+W czacie z tą postacią sekcja **Ustawienia czatu → Tło** pokazuje te obrazy w grupie **From character and persona galleries** (z galerii postaci i person). Kliknij obraz, żeby go użyć. Obrazy z nazwami miejsc działają też jak przypięte miejsca i znajdują się na liście **Pinned places** z opisem "In John's gallery, follows them into every chat" (w galerii Johna, towarzyszy mu w każdym czacie). Przypięcie ustawione w samym czacie ma pierwszeństwo przed obrazem z galerii przypisanym do tego samego miejsca.
+
+### Przenieś obraz z czatu do galerii postaci
+
+Tło utworzone przez agenta Illustrator w jednym czacie może na stałe należeć do postaci:
+
+1. Otwórz **Ustawienia czatu → Galeria** w czacie.
+2. Na obrazie kliknij przycisk z postacią (**Add to a character's or persona's gallery** – dodanie do galerii postaci lub persony) i wybierz, do kogo należy.
+
+Oznaczenie jako tło i przypisane miejsca zostają zachowane. Obraz nie jest kopiowany i pozostaje w galerii postaci lub persony po usunięciu czatu. Eksport postaci w formacie **Marinara Native** zachowuje te oznaczenia.
+
+Tła z galerii też otrzymują warianty pogodowe. Wariant z deszczem lub śniegiem zapisuje się w Bibliotece teł jako `gallery-…--wx-rain.png`.
 
 ## Powiązane przewodniki
 
-- [Tła czatu](../appearance/chat-backgrounds.md): biblioteka wgranych obrazów i ustawienia wyglądu.
-- [Tła scen i galeria](../media/scene-backgrounds.md): grafiki scen tworzone przez AI z twojej galerii.
-- [Tryb Roleplay: pierwsze kroki](getting-started.md): scena trybu Roleplay, sprite'y i pasek HUD.
+- [Tła tworzone przez agenta Illustrator](../media/scene-backgrounds.md): tworzenie nowych miejsc, wariantów pogodowych i masek okien.
+- [Biblioteka teł](../appearance/chat-backgrounds.md): wgrywanie, tagi, foldery i rozmycie.
+- [Galerie postaci i person](../characters/galleries.md)
+- [Tryb Roleplay: pierwsze kroki](getting-started.md)

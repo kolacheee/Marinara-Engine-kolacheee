@@ -25,11 +25,11 @@ Zamiast `/guided` możesz wpisać `/narrator`, `/narrate` albo `/nar`. Na czacie
 
 Ten sposób wykorzystuje tekst z pola wiadomości jako jednorazową wskazówkę dla ponownego generowania.
 
-1. Otwórz **Settings → Advanced → Message Tools** (ustawienia, zaawansowane, narzędzia wiadomości) i włącz **Guide swipes/regens with chat input** (sterowanie swipe'ami i ponownym generowaniem tekstem z pola wiadomości). Domyślnie jest wyłączone.
+1. Otwórz **Ustawienia → Czatowanie → Edycja i swipe'y** i włącz **Guide swipes/regens with chat input** (sterowanie swipe'ami i ponownym generowaniem tekstem z pola wiadomości). Domyślnie jest wyłączone.
 2. Na czacie wpisz wskazówkę w polu wiadomości, ale jej nie wysyłaj.
 3. Kliknij **Regenerate** (ponowne generowanie) na wiadomości AI. Gdy w polu jest tekst, przycisk nosi nazwę **Regenerate (guided)**.
 
-Wskazówka zostaje potem w polu, więc możesz ją poprawić i ponownie wygenerować odpowiedź. Żeby zamiast tego pole się czyściło, wyłącz **Keep guidance after regenerating** (zachowanie wskazówki po ponownym generowaniu) w **Settings → General → Input & Editing** (ustawienia, ogólne, wprowadzanie i edycja).
+Wskazówka zostaje potem w polu, więc możesz ją poprawić i ponownie wygenerować odpowiedź. Żeby zamiast tego pole się czyściło, wyłącz **Keep guidance after regenerating** (zachowanie wskazówki po ponownym generowaniu) w **Ustawienia → Czatowanie → Pole wiadomości**.
 
 Jeśli to nie zadziałało: przycisk musi nosić nazwę **Regenerate (guided)**. Jeśli widnieje na nim tylko **Regenerate**, ustawienie jest wyłączone albo pole jest puste.
 
@@ -71,7 +71,7 @@ Te ustawienia obowiązują przy każdym użyciu `/impersonate` na wszystkich two
 | **Preset** | Preset promptu tylko dla odpowiedzi z Impersonate. Domyślnie: **Use chat default** (użyj ustawienia czatu). Zobacz [Edytor presetów i menedżer promptów](../prompts/presets.md). |
 | **Connection** (połączenie) | Model dla odpowiedzi z Impersonate, na przykład tańszy albo szybszy. Domyślnie: **Use chat default**. Możesz też wybrać **Random** (losowo). Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md). |
 | **Skip agents** (pomijanie agentów) | Pomija agentów (trackery, agentów kierujących lorebookami i podobnych pomocników) podczas Impersonate. Dzięki temu Impersonate działa szybko i nie zmienia stanu świata. Domyślnie wyłączone. Zobacz [Agenci](../agents/agents-overview.md). |
-| **Use CYOA as direction** (użycie CYOA jako wskazówki) | Kliknięcie opcji CYOA (choose your own adventure, czyli "wybierz własną przygodę") używa jej jako wskazówki dla Impersonate zamiast publikować ją na czacie. Domyślnie wyłączone. Jeśli w **Settings → General → Input & Editing** włączono **Add CYOA choices to the message box instead of sending them** (dodawanie wyborów CYOA do pola wiadomości zamiast ich wysyłania), kliknięcie tylko dodaje tekst do pola wiadomości, a to ustawienie nic nie zmienia. |
+| **Use CYOA as direction** (użycie CYOA jako wskazówki) | Kliknięcie opcji CYOA (choose your own adventure, czyli "wybierz własną przygodę") używa jej jako wskazówki dla Impersonate zamiast publikować ją na czacie. Domyślnie wyłączone. Jeśli w **Ustawienia → Czatowanie → Pole wiadomości** włączono **Add CYOA choices to the message box instead of sending them** (dodawanie wyborów CYOA do pola wiadomości zamiast ich wysyłania), kliknięcie tylko dodaje tekst do pola wiadomości, a to ustawienie nic nie zmienia. |
 
 ### Ustawianie promptu dla jednego czatu
 
@@ -88,7 +88,7 @@ Aby wrócić do domyślnego promptu, wpisz `/impersonate_prompt reset`. Odpowied
 
 Quick replies dodają obok **Send** alternatywy dostępne jednym kliknięciem, więc nie trzeba wpisywać komendy slash.
 
-1. Otwórz **Settings → General → Input & Editing**.
+1. Otwórz **Ustawienia → Czatowanie → Pole wiadomości**.
 2. Włącz **Quick replies**. Domyślnie jest wyłączone.
 3. Rozwiń tę pozycję, żeby wybrać akcje, które mają się pojawić. Po włączeniu wszystkie trzy akcje są domyślnie włączone.
 

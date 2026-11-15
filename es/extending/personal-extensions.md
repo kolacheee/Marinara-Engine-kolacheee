@@ -6,7 +6,7 @@ Una Personal Extension (extensión personal) es un pequeño fragmento de código
 
 | Nombre | Qué es |
 | --- | --- |
-| Personal Extension | Una extensión que Professor Mari escribió para ti. Aparece como borrador en **Settings → Addons** (Configuración → Complementos). |
+| Personal Extension | Una extensión que Professor Mari escribió para ti. Aparece como borrador en **Library → Extensions** (Biblioteca → Extensiones). |
 | External Extension (extensión externa) | Una extensión de otra persona, o una que escribiste tú. Necesita los pasos adicionales de [Permitir importaciones de terceros](#allow-third-party-imports). |
 | Browser Extension (extensión de navegador) | Se ejecuta dentro de tu navegador, en un sandbox. Es segura de forma predeterminada. |
 | Server Extension (extensión de servidor) | Se ejecuta en la computadora que ejecuta Marinara, en un sandbox del sistema operativo. Necesita una plataforma compatible. |
@@ -16,7 +16,7 @@ Una Personal Extension (extensión personal) es un pequeño fragmento de código
 
 Antes de empezar, haz los dos pasos de [Permitir importaciones de terceros](#allow-third-party-imports). Sin ellos, los botones de importación están ocultos.
 
-1. Abre **Settings → Addons**. En **External Extensions** (Extensiones externas), elige **Import Extension File** (Importar archivo de extensión) para un archivo `.zip`, `.json`, `.css` o `.js`, o **Import Extension Folder** (Importar carpeta de extensión) para una carpeta.
+1. Abre **Library → Extensions** (Biblioteca → Extensiones). En **External Extensions** (Extensiones externas), elige **Import Extension File** (Importar archivo de extensión) para un archivo `.zip`, `.json`, `.css` o `.js`, o **Import Extension Folder** (Importar carpeta de extensión) para una carpeta.
 2. Abre el borrador nuevo. Está desactivado y muestra su código y un hash, una huella corta de ese código exacto (Marinara usa SHA-256).
 3. Lee el código y la lista **Requested access** (Acceso solicitado).
 4. Elige **Review and Run** (Revisar y ejecutar) solo si aceptas esa versión exacta. Entonces la extensión aparece como activada.
@@ -27,7 +27,7 @@ Si no funcionó: si faltan los botones de importación, no has hecho uno de los 
 
 Antes de empezar, pídele a [Professor Mari](../home/professor-mari.md) que cree una extensión. Ella puede guardar el código, pero no puede aprobarlo ni activarlo. Esta sección no tiene un botón de nuevo borrador ni un control de importación.
 
-1. Abre **Settings → Addons → Personal Extensions** (Configuración → Complementos → Extensiones personales). Si no hay borradores, dice: "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."
+1. Abre **Library → Extensions**. Si no hay borradores, dice: "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."
 2. Abre el borrador y lee el código. Comprueba el hash y la lista **Requested access**.
 3. Elige **Review and Run** solo si aceptas esa versión exacta.
 
@@ -78,9 +78,9 @@ En Windows y Android no hay un sandbox de procesos compatible, así que las Serv
 Las importaciones de terceros están bloqueadas y ocultas de forma predeterminada, porque ejecutan código escrito por otras personas. Dos pasos las desbloquean:
 
 1. En la computadora que ejecuta Marinara, establece `ENABLE_EXTERNAL_EXTENSIONS=true` en el archivo `.env` y luego reinicia Marinara. Consulta la [Referencia de configuración del servidor](../CONFIGURATION.md).
-2. Abre **Settings → Advanced → Danger Zone** (Configuración → Avanzado → Zona de peligro), desplázate por debajo de los controles de eliminación de datos, lee la advertencia y activa **Allow third-party extension imports** (Permitir importaciones de extensiones de terceros).
+2. Abre **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad), lee la advertencia y activa **Allow third-party extension imports** (Permitir importaciones de extensiones de terceros).
 
-Entonces **Settings → Addons** muestra **External Extensions** con controles para importar archivos y carpetas. Formatos compatibles:
+Entonces **Library → Extensions** muestra **External Extensions** con controles para importar archivos y carpetas. Formatos compatibles:
 
 - paquetes `.personal-extension.zip` y `.zip` compatibles
 - manifiestos `.json`
@@ -99,13 +99,13 @@ Los registros antiguos, importados de un perfil, almacenados manualmente y de or
 
 Si desactivas cualquiera de los dos pasos, se desactivan todas las extensiones importadas. Volver a activarlo no las ejecuta de nuevo. Recarga la página si una extensión de página completa dejó cambios atrás.
 
-Si no funcionó: si los controles de importación no aparecen, comprueba que los dos pasos estén hechos y que estés en la computadora del servidor o hayas guardado el secreto de administrador en **Settings → Advanced → Admin Access** (Configuración → Avanzado → Acceso de administrador).
+Si no funcionó: si los controles de importación no aparecen, comprueba que los dos pasos estén hechos y que estés en la computadora del servidor o hayas guardado el secreto de administrador en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad).
 
 ## Exportación, revisiones y recuperación
 
 Usa la acción de exportar de una extensión para descargar un paquete portátil. Los paquetes exportados y restaurados permanecen desactivados. Restaurar una revisión también la devuelve a un borrador desactivado.
 
-**Settings → Addons → Extension revision history** (Configuración → Complementos → Historial de revisiones de extensiones) establece cuántas versiones anteriores del código se conservan para todas las Personal Extensions y External Extensions. El valor predeterminado es **10**. Elige de **0** a **10**, donde **0** desactiva el historial. Al reducir el límite, se pide confirmación antes de eliminar permanentemente las revisiones antiguas. Se conservan el código actual, las aprobaciones, el estado de activación y los datos guardados de la extensión. Las ediciones hechas a través de Professor Mari siguen el mismo límite.
+**Library → Extensions → Extension revision history** (Biblioteca → Extensiones → Historial de revisiones de extensiones) establece cuántas versiones anteriores del código se conservan para todas las Personal Extensions y External Extensions. El valor predeterminado es **10**. Elige de **0** a **10**, donde **0** desactiva el historial. Al reducir el límite, se pide confirmación antes de eliminar permanentemente las revisiones antiguas. Se conservan el código actual, las aprobaciones, el estado de activación y los datos guardados de la extensión. Las ediciones hechas a través de Professor Mari siguen el mismo límite.
 
 Si una extensión se comporta mal, elige **Disable** (Desactivar). Si la interfaz no está disponible, detén Marinara y establece en `"false"` el valor `enabled` del registro `installed_extensions` correspondiente. Nunca establezcas `approvedHash` a mano.
 

@@ -98,7 +98,7 @@ Esta seção deixa o Noodle anexar imagens feitas por IA a alguns posts. Ela exi
 
 Se não funcionou: com a geração de imagens ativada, mas sem um modelo de imagem utilizável, a atualização é bloqueada com "Choose an image generation connection for Noodle first." Uma imagem que falha é tentada mais uma vez. Se falhar de novo, a atualização segue e publica um post limpo, só com texto.
 
-O modelo desses prompts de imagem se chama **Noodle Post Image**. Edite-o em **Settings → Generations → Image Generation Prompt Overrides** (Configurações → Gerações → substituições de prompt de geração de imagens). As suas instruções de imagem entram nesse modelo, e o resultado passa pelo seu perfil de estilo. Veja [Prompt Overrides para imagem e vídeo](../prompts/prompt-overrides.md) e [Perfis de estilo de imagem](../media/style-profiles.md). A Professor Mari não tem card de personagem, então as imagens dos posts dela usam o avatar e a arte de referência embutidos.
+O modelo desses prompts de imagem se chama **Noodle Post Image**. Edite-o em **Configurações → Mídia → Substituições de prompt**. As suas instruções de imagem entram nesse modelo, e o resultado passa pelo seu perfil de estilo. Veja [Prompt Overrides para imagem e vídeo](../prompts/prompt-overrides.md) e [Perfis de estilo de imagem](../media/style-profiles.md). A Professor Mari não tem card de personagem, então as imagens dos posts dela usam o avatar e a arte de referência embutidos.
 
 ## Image Understanding
 
@@ -119,7 +119,7 @@ Esta seção ajusta o tom e a memória de quem escreve a atualização.
 
 ### Personalizar a voz de quem escreve
 
-Você pode reescrever as instruções embutidas de tom e de liberdade criativa de quem escreve em **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone**. O título da seção diz "Image", mas a lista reúne todos os prompts de texto personalizáveis do Noodle e do Conversation. O texto padrão ali acompanha **Enhanced tone & continuity** até você salvar um texto próprio; depois disso, o seu é usado de qualquer jeito.
+Você pode reescrever as instruções embutidas de tom e de liberdade criativa de quem escreve em **Configurações → Mídia → Substituições de prompt → Noodle Timeline Voice & Tone**. O título da seção diz "Image", mas a lista reúne todos os prompts de texto personalizáveis do Noodle e do Conversation. O texto padrão ali acompanha **Enhanced tone & continuity** até você salvar um texto próprio; depois disso, o seu é usado de qualquer jeito.
 
 Essa substituição cobre apenas a voz e o tom. As regras que mantêm uma atualização válida, como quais ações estruturadas são permitidas, continuam sempre em vigor.
 

@@ -57,7 +57,7 @@ Si tu as défini un autre `PORT`, utilise ce numéro. Pour obtenir une icône fa
 
 ## Démarrer et arrêter Marinara
 
-Avec l'application, ouvre-la et appuie sur **Install / Start Marinara** si le serveur est arrêté. Pour passer de l'application à ton navigateur ou inversement, utilise **Open in browser** dans le lanceur, puis **Retry connection** (réessayer la connexion). Depuis l'application, reviens au lanceur par **Settings → General → App Behavior → Open Android launcher (app or browser)** (Paramètres → Général → Comportement de l'application → Ouvrir le lanceur Android (application ou navigateur)).
+Avec l'application, ouvre-la et appuie sur **Install / Start Marinara** si le serveur est arrêté. Pour passer de l'application à ton navigateur ou inversement, utilise **Open in browser** dans le lanceur, puis **Retry connection** (réessayer la connexion). Depuis l'application, reviens au lanceur par **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Paramètres → Apparence → Disposition → Ouvrir le lanceur Android (application ou navigateur)).
 
 Avec une installation manuelle, ouvre Termux et exécute :
 

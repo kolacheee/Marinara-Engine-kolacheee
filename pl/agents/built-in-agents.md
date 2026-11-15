@@ -1,10 +1,10 @@
 # Agenci do pobrania: przegląd pakietów
 
-Ten przewodnik wymienia oficjalnych agentów od twórców aplikacji Marinara Engine, dostępnych w sekcji **Agents → Agent Organizer** (agenci, organizowanie agentów), z podziałem na grupy. Świeża instalacja nie zawiera żadnych agentów. Ich źródła i katalog są publicznie dostępne w repozytorium [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Przy każdym agencie znajdziesz opis tego, co robi, kiedy się uruchamia, gdzie działa i jakie ma najważniejsze ustawienia. O instalacji i włączaniu agentów przeczytaj najpierw w przewodniku [Agenci: pomocnicy AI](agents-overview.md). Pozycje oznaczone jako **staging only** (tylko staging) są dostępne dla użytkowników wersji staging aplikacji Marinara Engine; użytkownicy wersji stabilnej zobaczą je po opublikowaniu pakietu w kanale stabilnym.
+Ten przewodnik wymienia oficjalnych agentów od twórców aplikacji Marinara Engine, dostępnych w sekcji **Biblioteka → Agenci**, z podziałem na grupy. Świeża instalacja nie zawiera żadnych agentów. Ich źródła i katalog są publicznie dostępne w repozytorium [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Przy każdym agencie znajdziesz opis tego, co robi, kiedy się uruchamia, gdzie działa i jakie ma najważniejsze ustawienia. O instalacji i włączaniu agentów przeczytaj najpierw w przewodniku [Agenci: pomocnicy AI](agents-overview.md). Pozycje oznaczone jako **staging only** (tylko staging) są dostępne dla użytkowników wersji staging aplikacji Marinara Engine; użytkownicy wersji stabilnej zobaczą je po opublikowaniu pakietu w kanale stabilnym.
 
 ## Jak czytać ten przegląd
 
-Zainstaluj agenta z **Agent Organizer**, a potem dodaj go do każdego czatu, w którym ma działać. Agentów konfiguruje się osobno dla każdego czatu, a nie dla karty postaci. Instalację, aktualizowanie, konfigurację dla pojedynczego czatu i koszty opisuje przewodnik [Agenci: pomocnicy AI](agents-overview.md).
+Zainstaluj agenta z **Biblioteka → Agenci**, a potem dodaj go do każdego czatu, w którym ma działać. Agentów konfiguruje się osobno dla każdego czatu, a nie dla karty postaci. Instalację, aktualizowanie, konfigurację dla pojedynczego czatu i koszty opisuje przewodnik [Agenci: pomocnicy AI](agents-overview.md).
 
 Każda pozycja pokazuje te same szybkie informacje.
 
@@ -28,7 +28,7 @@ Dodaje opcjonalną lokalną publiczną oś czasu Noodle we własnej zakładce **
 
 - **Integracja**: pakiet funkcji z lokalnymi trasami, procesami generowania i multimediów oraz harmonogramami w tle.
 - **Gdzie działa**: Home, z opcjonalnym kontekstem przenoszonym z czatów Conversation, Roleplay i Game.
-- **Najważniejsze ustawienia**: zainstaluj go z **Agents → Agent Organizer** i uruchom aplikację ponownie, gdy pojawi się taka prośba. W Noodle ustawiasz zaproszone konta, połączenia tekstowe i obrazowe, odświeżanie osi czasu, losowych użytkowników oraz przenoszenie treści do czatów.
+- **Najważniejsze ustawienia**: zainstaluj go z **Biblioteka → Agenci** i uruchom aplikację ponownie, gdy pojawi się taka prośba. W Noodle ustawiasz zaproszone konta, połączenia tekstowe i obrazowe, odświeżanie osi czasu, losowych użytkowników oraz przenoszenie treści do czatów.
 - **Dane**: odinstalowanie usuwa zakładkę i po ponownym uruchomieniu zatrzymuje harmonogramy. Twoje dane Noodle zostają na wypadek późniejszej ponownej instalacji.
 - **Pełny przewodnik**: [Noodle: wbudowana oś czasu społecznościowa](noodle.md).
 
@@ -324,7 +324,7 @@ Dodaje po każdej odpowiedzi klikalne przyciski wyboru w stylu "What will you do
 
 - **Faza**: Post-Processing.
 - **Gdzie działa**: Roleplay.
-- **Najważniejsze ustawienia**: przycisk **Edit** przepisuje wybory, a **Re-roll** generuje nowe. Włącz **Add CYOA choices to the message box instead of sending them** (dodawanie wyborów CYOA do pola wiadomości zamiast ich wysyłania) w **Settings → General → Input & Editing** (ustawienia, ogólne, wprowadzanie i edycja), żeby kliknięte wybory trafiały do pola wiadomości.
+- **Najważniejsze ustawienia**: przycisk **Edit** przepisuje wybory, a **Re-roll** generuje nowe. Włącz **Add CYOA choices to the message box instead of sending them** (dodawanie wyborów CYOA do pola wiadomości zamiast ich wysyłania) w **Ustawienia → Czatowanie → Pole wiadomości**, żeby kliknięte wybory trafiały do pola wiadomości.
 
 ### Storyboard
 
@@ -342,7 +342,7 @@ Pokazuje postacie i persony jako animowane awatary 2D, które mrugają, mówią 
 
 - **Integracja**: pakiet agenta. Awatary rysuje silnik. Podczas czatu pakiet nie wysyła żadnych dodatkowych zapytań do twoich połączeń AI.
 - **Gdzie działa**: Roleplay i Game, dla postaci i person.
-- **Dostępność**: w **Agent Organizer** w każdej instalacji. Wymaga aplikacji Marinara Engine w wersji 2.5.1 lub nowszej.
+- **Dostępność**: w **Biblioteka → Agenci** w każdej instalacji. Wymaga aplikacji Marinara Engine w wersji 2.5.1 lub nowszej.
 - **Najważniejsze ustawienia**: każdy awatar konfigurujesz na stronie agenta w panelu **Agents**. Agent zawiera też prompty, które ze sprite'a tworzą obrazki mrugania i mówienia oraz awatar mesh.
 - **Zgodność**: silnik od wersji `2.5.0` do wersji sprzed `4.0.0`, Capability API 1.73. Uprawnienia: `agent-runtime`, `chat-read`, `storage`, `ui`. Nie wymaga ponownego uruchomienia.
 - **Pełny przewodnik**: [Awatary 2D i 3D](avatars.md).
@@ -353,7 +353,7 @@ Pokazuje postacie i persony jako animowane modele 3D, które mrugają, mówią i
 
 - **Integracja**: pakiet agenta. Awatary rysuje silnik. Podczas czatu pakiet nie wysyła żadnych dodatkowych zapytań do twoich połączeń AI.
 - **Gdzie działa**: Roleplay i Game, dla postaci i person.
-- **Dostępność**: w **Agent Organizer** w każdej instalacji. Wymaga aplikacji Marinara Engine w wersji 2.5.1 lub nowszej.
+- **Dostępność**: w **Biblioteka → Agenci** w każdej instalacji. Wymaga aplikacji Marinara Engine w wersji 2.5.1 lub nowszej.
 - **Najważniejsze ustawienia**: każdy awatar konfigurujesz na stronie agenta w panelu **Agents**.
 - **Zgodność**: taka sama jak w przypadku 2D Avatars.
 - **Pełny przewodnik**: [Awatary 2D i 3D](avatars.md).

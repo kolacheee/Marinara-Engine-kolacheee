@@ -6,9 +6,9 @@
 
 ## 始める前の準備
 
-External Extensionsは、[サードパーティー製拡張機能のインポートを許可する](personal-extensions.md#allow-third-party-imports)にある2つの安全上の手順を両方とも済ませるまで表示されません。2つの手順とは、`.env`の`ENABLE_EXTERNAL_EXTENSIONS=true`と、**Settings → Advanced → Danger Zone**(設定 → 詳細設定 → 危険な操作)にある**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)です。
+External Extensionsは、[サードパーティー製拡張機能のインポートを許可する](personal-extensions.md#allow-third-party-imports)にある2つの安全上の手順を両方とも済ませるまで表示されません。2つの手順とは、`.env`の`ENABLE_EXTERNAL_EXTENSIONS=true`と、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)にある**Allow third-party extension imports**(サードパーティー製拡張機能のインポートを許可)です。
 
-拡張機能のインポートと管理には、localhostからのアクセスまたは管理者用シークレットも必要です。スマートフォン、LANアドレス、リモートブラウザーから使う場合は、サーバーで`ADMIN_SECRET`を設定し、**Settings → Advanced → Admin Access**(設定 → 詳細設定 → 管理者アクセス)に同じ値を入力してください。
+拡張機能のインポートと管理には、localhostからのアクセスまたは管理者用シークレットも必要です。スマートフォン、LANアドレス、リモートブラウザーから使う場合は、サーバーで`ADMIN_SECRET`を設定し、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)に同じ値を入力してください。
 
 目的を果たせる範囲で、最も権限の小さいランタイムを選んでください。
 
@@ -94,7 +94,7 @@ marinara.onCleanup(() => panel.remove());
 
 続いて、拡張機能をインポートして実行します。
 
-1. **Settings → Addons → External Extensions**(設定 → アドオン → 外部拡張機能)を開きます。
+1. **Library → Extensions → External Extensions**(ライブラリー → 拡張機能 → 外部拡張機能)を開きます。
 2. **Import Extension Folder**(拡張機能のフォルダーをインポート)を選んで`Hello Panel`を指定するか、フォルダーをZIPにして**Import Extension File**(拡張機能のファイルをインポート)でインポートします。
 3. 無効な下書きを開き、マニフェストとJavaScriptを確認します。
 4. **Review and Run**(確認して実行)を選び、表示された正確なハッシュを承認します。
@@ -342,7 +342,7 @@ External ExtensionがホストのDOMアクセスに依存する場合は、次�
 
 **Full page accessはサンドボックスの機能ではありません。** 承認されたJavaScriptとCSSは、Marinaraのページの中で動きます。そのコードは、いま開いているブラウザーのセッションから見えるものをすべて読み取ったり書き換えたりでき、チャットやカードを調べ、ブラウザーストレージを使い、ネットワーク通信を行い、同一オリジンのMarinaraのAPIを呼び出せます。実質的なページ上の権限は、ブラウザーのコンソールに貼り付けたコードと変わりません。Professor Mariの草案がこれを要求することはできません。
 
-全ページアクセスの拡張機能では、ネットワークリクエストに`marinara.fetch(...)`を使ってください。シグネチャと戻り値は`window.fetch`と同じですが、**Settings > Addons > External Extensions**(設定 > アドオン > 外部拡張機能)に、その拡張機能のセッション中のリクエスト数、レスポンスが報告する転送バイト数、直近のリクエスト頻度、トラフィックが多い状態が続いた場合の警告を表示できます。全ページアクセスは信頼されたページコードとして動くため、`window.fetch`の直接呼び出しも引き続き利用できます。ただし、そのリクエストを拡張機能に紐付けることはできません。
+全ページアクセスの拡張機能では、ネットワークリクエストに`marinara.fetch(...)`を使ってください。シグネチャと戻り値は`window.fetch`と同じですが、**Library > Extensions > External Extensions**(ライブラリー > 拡張機能 > 外部拡張機能)に、その拡張機能のセッション中のリクエスト数、レスポンスが報告する転送バイト数、直近のリクエスト頻度、トラフィックが多い状態が続いた場合の警告を表示できます。全ページアクセスは信頼されたページコードとして動くため、`window.fetch`の直接呼び出しも引き続き利用できます。ただし、そのリクエストを拡張機能に紐付けることはできません。
 
 Marinaraは、`capabilities`フィールドを明示していない古い`kind: "marinara.extension"`のv1形式を、サンドボックス導入前のパッケージとみなし、インポート時に**Full page access**を割り当てます。これにより、WeatherTweakerのような旧来のパッケージが、Workerの中で黙って失敗する代わりに、正しい確認の流れに進みます。この形式を使いながら安全なランタイムで動かしたい最近のパッケージは、`"capabilities": []`を明記してください。
 
@@ -445,13 +445,13 @@ ZIP、リクエスト、サンドボックスメッセージ、ストレージ�
 | 症状 | 確認事項 |
 | --- | --- |
 | 外部インポートのコントロールが表示されない | 上記のExternal Extension用安全ゲートを両方開く |
-| 管理画面にlocalhostまたはAdmin Accessが必要と表示される | `ADMIN_SECRET`を設定し、**Admin Access**(管理者アクセス)に保存する |
+| 管理画面にlocalhostまたはAdmin Accessが必要と表示される | `ADMIN_SECRET`を設定し、**Settings → Advanced → Security**(設定 → 詳細設定 → セキュリティ)に保存する |
 | インポートで拡張機能が見つからない | `manifest.json`と相対パスを確認する。ServerにはJS、BrowserにはCSSまたはJSが必要 |
 | 編集後に拡張機能が無効になる | 想定どおりの動作。新しい正確なハッシュを確認して承認する |
 | Browserコードから`document`、`window`、`fetch`、ローカルストレージを使用できない | 安全なサンドボックスでは想定どおり。文書化されたブローカーAPIを使用する |
 | Server Extensionを使用できない | macOS SeatbeltまたはBubblewrapを備えたLinuxを使用するか、Browser Extensionへ切り替える |
 | Browser Extensionが例外をスローする | ブラウザー開発者ツールを開く。`marinara.log`と起動エラーには拡張機能名が付く |
-| Server Extensionが例外をスローする | **Settings → Addons**(設定 → アドオン)の状態とMarinaraサーバーログを確認する |
+| Server Extensionが例外をスローする | **Library → Extensions**(ライブラリー → 拡張機能)の状態とMarinaraサーバーログを確認する |
 
 CSS、専用ストレージ、インポートアーカイブ、ランタイムメッセージには、それぞれ独立した安全上限があります。Marinaraは実行エラーとして扱うのではなく、パッケージを拒否した境界を報告する必要があります。
 

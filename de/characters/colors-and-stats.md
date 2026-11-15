@@ -14,8 +14,6 @@ Der Tab **Colors** stellt drei Farben ein: die Namensfarbe, die Dialogfarbe und 
 
 **Extract Colors from Avatar** (Farben aus dem Avatar übernehmen) wählt alle drei Farben aus dem Avatarbild. Solange noch kein Avatar vorhanden ist, ist die Schaltfläche deaktiviert und trägt die Beschriftung **Upload an avatar first**. Danach kannst du jede Farbe trotzdem von Hand ändern.
 
-<a id="the-three-colors"></a>
-
 ### Die drei Farben
 
 Stell jede Farbe über das Farbfeld ein oder tippe einen Wert ein:
@@ -32,9 +30,9 @@ Stell jede Farbe über das Farbfeld ein oder tippe einen Wert ein:
 linear-gradient(90deg, #f59e0b, #ef4444)
 ```
 
-**Other names** (Weitere Namen) findest du im Tab **Metadata** (Metadaten) unter **Name**. Dazu gehören Spitznamen, vollständige Namen oder Titel wie `Clark Kent, Kal-El, Mr. Kent`. In Roleplay-Chats erscheinen sie wie der Hauptname in der Namensfarbe. Schalte das pro Chat ein: **Color Character Names in Text** (Charakternamen im Text einfärben) unter **Chat Settings → Characters** (Chat-Einstellungen → Charaktere) und **Color Persona Name in Text** (Persona-Namen im Text einfärben) unter **Chat Settings → Persona**.
+**Other names** (weitere Namen) – Spitznamen, vollständige Namen oder Titel wie `Clark Kent, Kal-El, Mr. Kent` – stehen im Tab **Metadata** unter **Name**. In Roleplay-Chats erhalten sie in Nachrichten wie der Hauptname die Namensfarbe. Schalte das pro Chat ein: mit **Color Character Names in Text** unter **Chat Settings → Characters** (Chat-Einstellungen → Charaktere) und mit **Color Persona Name in Text** unter **Chat Settings → Persona** (Chat-Einstellungen → Persona).
 
-Die Transparenz änderst du unter **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity** (Einstellungen → Darstellung → Roleplay-Darstellung → Deckkraft des Hintergrunds von Roleplay-Nachrichten).
+Die Transparenz änderst du unter **Settings → Roleplay → Roleplay Messages → Roleplay Messages Background Opacity** (Einstellungen → Roleplay → Roleplay-Nachrichten → Hintergrunddeckkraft der Roleplay-Nachrichten).
 
 Der Schieberegler skaliert die Transparenz, die in der Farbe der Nachrichtenbox deines Charakters und deiner Persona gespeichert ist: Eine Farbe mit eigenem Alpha, etwa `rgba(255, 255, 255, 0.25)` oder `#FFFFFF40`, zeigt sich in diesem Alpha, multipliziert mit dem eingestellten Wert des Schiebereglers. Deine gespeicherten Farbwerte bleiben, wie sie sind. Namens- und Dialogfarben sind davon nicht betroffen.
 
@@ -46,7 +44,7 @@ Hintergrund-Hooks benutzerdefinierter Themes und Card CSS können die app-eigene
 
 ### Wo die Farben auftauchen
 
-- Die Namensfarbe färbt den angezeigten Namen in den Chat-Nachrichten. Bei einem Charakter färbt sie zusätzlich den Namen in den Tabs der Seitenleiste. Bei einer Persona färbt sie zusätzlich den Namen in den Persona-Auswahllisten.
+- Die Namensfarbe färbt den angezeigten Namen in den Chat-Nachrichten. Bei einem Charakter färbt sie zusätzlich den Namen in der Chatliste. Bei einer Persona färbt sie zusätzlich den Namen in den Persona-Auswahllisten.
 - Die Dialogfarbe färbt Text innerhalb von Dialog-Anführungszeichen, bei geraden Anführungszeichen ebenso wie bei anderen Anführungsstilen. Unter **Settings** kannst du diesen Text zusätzlich fett darstellen. Conversation-Chats verwenden sie nicht.
 - Die Farbe der Nachrichtenbox bestimmt in Roleplay-Chats den Hintergrund der Sprechblasen dieses Charakters oder dieser Persona. Conversation- und Game-Chats verwenden sie nicht.
 
@@ -64,6 +62,10 @@ Ein Charakter hat einen einzigen Schalter, **Enable Roleplay Stats** (Roleplay-W
 - **Attributes** sind benannte Zahlen. Neue Charaktere starten mit STR, DEX, CON, INT, WIS und CHA, jeweils bei 10.
 
 Klick auf **Add** (Hinzufügen), um einen Pool oder ein Attribut anzulegen, und auf das X in einer Zeile, um sie zu entfernen.
+
+Roleplay-Chats und Legacy-Spiele verwenden diese Werte. Ein neuer Roleplay-Chat übernimmt die Pools als Ausgangswerte für die Tracker-Leisten des Charakters, und eine Roleplay-Begegnung übernimmt seine maximalen HP aus einem HP-Pool. Ein Roleplay-Würfelwurf addiert einen Bonus aus dem genannten Attribut, sodass auch ein eigenes Attribut wie Sanity zählt. MRPG-Spiele erstellen daraus nie einen Bogen.
+
+Im neuen Layout haben Pools, Attribute und Tracker-Felder einen eigenen Abschnitt **Roleplay Stats**, getrennt von **Game Mode**. Hat eine Karte noch keine, füg sie im linken Bereich des Editors mit **+ Roleplay Stats** hinzu. Auch die Statusleisten einer Persona stehen in ihrem Abschnitt **Roleplay Stats**.
 
 ### Persona-Werte
 
@@ -87,7 +89,7 @@ Jede Festlegung bleibt erhalten, sobald du sie triffst. Mit **Back** (Zurück), 
 
 Die Auswahl der starken und schwachen Werte beeinflusst das verborgene Wachstum des Charakters in jedem Spiel. Sein Schwesterbaum ergibt sich im Spiel aus seinem Temperament, nicht aus der Karte. Siehe [Game Mode: MRPG-Klassen](../game/mrpg-classes.md#choose-a-characters-trees).
 
-Die **Roleplay Stats** (Roleplay-Werte) unter dem Block sind die oben beschriebenen Pools und Attribute. Roleplay-Chats und Legacy-Spiele verwenden sie. Ein MRPG-Spiel verwendet stattdessen den MRPG-Block und erstellt daraus nie einen Bogen.
+Die **Roleplay-Werte** unter dem Block sind die oben beschriebenen Ressourcen und Attribute. Roleplay-Chats und Legacy-Spiele verwenden sie. Ein MRPG-Spiel verwendet stattdessen den MRPG-Block und erstellt nie einen Bogen aus den Roleplay-Werten.
 
 <a id="game-mode-icon"></a>
 

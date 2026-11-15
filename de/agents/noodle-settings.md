@@ -96,7 +96,7 @@ In diesem Abschnitt erlaubst du Noodle, an manche Posts KI-generierte Bilder zu 
 
 Wenn es nicht funktioniert hat: Ist die Bildgenerierung an, aber kein brauchbares Bildmodell vorhanden, wird ein Refresh mit „Choose an image generation connection for Noodle first.“ blockiert. Ein fehlgeschlagenes Bild wird einmal wiederholt. Scheitert es erneut, läuft der Refresh weiter und veröffentlicht einen sauberen reinen Textpost.
 
-Die Vorlage für diese Bild-Prompts heißt **Noodle Post Image**. Bearbeiten kannst du sie unter **Settings → Generations → Image Generation Prompt Overrides**. Deine Bildanweisungen gehen in diese Vorlage ein, und das Ergebnis durchläuft dein Stilprofil. Siehe [Prompt Overrides für Bild und Video](../prompts/prompt-overrides.md) und [Bild-Stilprofile](../media/style-profiles.md). Professor Mari hat keine Charakterkarte, deshalb nutzen ihre Bildposts ihren eingebauten Avatar und ihre Referenzbilder.
+Die Vorlage für diese Bild-Prompts heißt **Noodle Post Image**. Bearbeiten kannst du sie unter **Settings → Media → Prompt Overrides**. Deine Bildanweisungen gehen in diese Vorlage ein, und das Ergebnis durchläuft dein Stilprofil. Siehe [Prompt Overrides für Bild und Video](../prompts/prompt-overrides.md) und [Bild-Stilprofile](../media/style-profiles.md). Professor Mari hat keine Charakterkarte, deshalb nutzen ihre Bildposts ihren eingebauten Avatar und ihre Referenzbilder.
 
 ## Image Understanding
 
@@ -117,7 +117,7 @@ Dieser Abschnitt stellt Tonfall und Gedächtnis des Refresh-Schreibers ein.
 
 ### Die Stimme des Schreibers anpassen
 
-Die eingebauten Vorgaben des Schreibers zu Ton und kreativer Freiheit kannst du unter **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone** neu schreiben. Der Abschnittstitel sagt „Image“, die Liste enthält aber alle anpassbaren Noodle- und Conversation-Textprompts. Der dort angezeigte Standardtext richtet sich nach **Enhanced tone & continuity**, bis du eigenen Text speicherst. Dann gilt dein Text, unabhängig vom Schalter.
+Die eingebauten Vorgaben des Schreibers zu Ton und kreativer Freiheit kannst du unter **Settings → Media → Prompt Overrides → Noodle Timeline Voice & Tone** neu schreiben. Der Abschnittstitel sagt „Image“, die Liste enthält aber alle anpassbaren Noodle- und Conversation-Textprompts. Der dort angezeigte Standardtext richtet sich nach **Enhanced tone & continuity**, bis du eigenen Text speicherst. Dann gilt dein Text, unabhängig vom Schalter.
 
 Dieses Override betrifft nur Stimme und Ton. Die Regeln, die einen Refresh gültig halten, etwa welche strukturierten Aktionen erlaubt sind, gelten immer.
 

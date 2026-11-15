@@ -25,8 +25,8 @@
 
 ## プリセットを作る
 
-1. サイドバーから**Presets**パネルを開きます。
-2. **New**(新規作成、プラスのアイコン)をクリックします。**Create Preset**ウィンドウが開きます。
+1. **Library → Presets**(ライブラリー → プリセット)を開きます。Libraryは右側にあります。
+2. **New preset**(新規プリセット)をクリックします。**Create Preset**ウィンドウが開きます。
 3. **Name**(名前)を入力します。この欄は必須です。必要なら**Description**(説明)も追加します。
 4. **Create**(作成)をクリックします。プリセットが**Preset Editor**で開きます。
 5. **Sections**(セクション)タブでプロンプトを組み立てます。
@@ -36,9 +36,22 @@
 
 プリセットをエクスポートするには、上部バーの上向き矢印のアイコン(ツールチップは**Export preset**)をクリックします。保存していない編集があるときは、Marinaraが先に保存するよう求めます。削除するには、ゴミ箱のアイコンをクリックします。
 
-## Presetsパネル
+## Presetsページ
 
-パネルには**Presets**(プリセット)、**Regexes**(正規表現)、**Functions**(関数)の3つのタブがあります。どのタブにも同じボタンの列、検索欄、**New Folder**(新規フォルダー)があります。**Presets**では**Create preset**で作成、**Import preset**で`.json`ファイルを読み込み、**Select presets**で複数をまとめてエクスポートまたは削除できます。**Regexes**には[正規表現スクリプト](../extending/regex-scripts.md#manage-your-scripts)、**Functions**には[カスタムツール](../extending/custom-tools.md)があります。
+**Library → Presets**(ライブラリー → プリセット)では、プリセットが**Description**(説明)、**Sections**(セクション)、**Author**(作者)、**Default**(デフォルト)、**Updated**(更新日)の列がある表に並びます。上部には**Import**(インポート、`.json`ファイルを読み込みます)と**New preset**(新規プリセット)があります。**All**(すべて) / **Defaults**(デフォルト)で一覧を絞り込み、検索の横の**Tags**(タグ)で選んだタグのプリセットだけを表示します(インポートしたプリセットには**Imported**と、**ST**などのインポート元が付きます)。**List**(一覧) / **Gallery**(ギャラリー)で表示を切り替え、並べ替えメニューでは**Recently edited**(最近編集したもの)、**A to Z**(AからZ)、**Z to A**(ZからA)、**My order**(自分の並び順)を選べます。プリセットをクリックすると開きます。
+
+プリセットを整理するには、次の操作を使います。
+
+- 行の端の**⋯**(または行を右クリック)には、**Duplicate**(複製)、**Move to folder**(フォルダーに移動)、**Export**(エクスポート)、**Select**(選択)、**Delete**(削除)があります。**Duplicate**は編集できるコピーを作り、そのコピーを開きます。組み込みプリセットはこの方法でカスタマイズします。デフォルトのプリセットは削除できません。
+- 行を別の行の上または下へドラッグすると、自分の順番を設定できます。並べ替えメニューは**My order**に切り替わります。
+- **New folder**(新しいフォルダー、タイトルの横にあるフォルダーアイコン)でプリセットをまとめられます。プリセットをフォルダーにドラッグするか、**Move to folder**を使います。
+- **Select**(タイトルの横にあるチェックアイコン)で複数のプリセットを選び、画面下部のバーから**Move to folder**、**Export**(1つの`marinara-presets.zip`)、または**Delete**を実行できます。
+
+正規表現スクリプトには独自の[Library → 正規表現スクリプト](../extending/regex-scripts.md)ページがあり、カスタムツールにも[Library → カスタムツール](../extending/custom-tools.md)ページがあります。
+
+## 従来のレイアウト: Presetsパネル
+
+**Presets**(プリセット)タブには**Prompts**(プロンプト)と**Functions**(関数)があります。新しく作るには**Create preset**(プリセットを作成)、`.json`ファイルを読み込むには**Import preset**(プリセットをインポート)、複数をまとめてエクスポートまたは削除するには**Select presets**(プリセットを選択)を使います。**Regexes**(正規表現)タブでは、スクリプトをフォルダーにまとめたり、複数をまとめてオンやオフにしたりできます。[正規表現スクリプト](../extending/regex-scripts.md#manage-your-scripts)を参照してください。
 
 - **Search presets**(プリセットを検索)は一覧を絞り込みます。
 - 並べ替えメニューには、**Manual order**(手動の順番)、**A-Z**、**Z-A**、**Newest**、**Oldest**があります。**Manual order**では、行をドラッグするか、行にフォーカスを合わせて<kbd>Alt</kbd>+<kbd>Up</kbd>または<kbd>Alt</kbd>+<kbd>Down</kbd>を押します。タッチスクリーンでは、行を長押しして持ち上げます。
@@ -62,6 +75,7 @@
 - **Description**は短い説明です。
 - **Wrap Format**(囲み形式)は、セクションの整形方法を決めます([囲み形式](#wrap-formats)を参照)。
 - **Author**(作成者)は任意で入れる制作者名で、プリセットを配布するときに役立ちます。
+- **Tags**(タグ)は、Presetsページの**Tags**フィルターでプリセットを絞り込めるように分類します。タグを入力してEnterキーを押すか、タグの**×**をクリックして削除します。
 
 読み取り専用のカードが2つあり、**Sections**と**Groups**の数を表示します。
 
@@ -70,6 +84,7 @@
 - **Conversation Mode**は、このプリセットのConversationプロンプトを入れるテキスト欄です。空のままにすると、内蔵のプロンプトを使います。
 - **Roleplay Mode**はここでは編集できません。Roleplayは、**Sections**から組み立てたプロンプトを使います。
 - **Game Mode**は、このプリセットのGameプロンプトを入れるテキスト欄です。空のままにすると、内蔵のプロンプトを使います。
+- **Game story settings**(Gameの物語設定)では、Game Modeの物語のスタイル、暴力表現、コンテンツの境界線を設定します。**Bring story settings to games that use this preset**(このプリセットを使うゲームに物語設定を適用)をオンにしてください。ゲームでこのプリセットを選ぶと、スタイルと暴力表現が設定され、ゲーム自体の境界線にこれらの境界線が追加されます。[コンテンツと物語のスタイル](../game/getting-started.md#content-and-story-style)を参照してください。
 
 組み込みの**Marinara's Universal Preset**(Marinaraの汎用プリセット)は、プロンプトの文章を提供しますが、生成パラメーターは指定しません。このプリセットに以前保存されたサンプリング、推論、書式、トークンの設定は無視され、代わりにアカウントの設定、チャットの上書き、アプリのデフォルトが適用されます。カスタマイズするには、編集できるコピーを作ってください。
 
@@ -170,7 +185,7 @@
 
 テキスト欄には、使用中のプロンプトが表示されます。編集すると、このチャットだけのコピーができます。テキストがプリセットやデフォルトと完全に一致する場合、Marinaraはカスタマイズされていないものとして扱います。カスタムの編集があるあいだは、リセットのアイコン(ツールチップは**Reset to default prompt**)が表示されます。
 
-Gameチャットには、さらに2つの設定があります。**GM prompt style**(GMのプロンプトスタイル)はGameプロンプトだけを置き換えますが、チャットだけの編集があればそちらが優先されます。**Extra instructions**(追加の指示)は、Gameプロンプトに文章を追加します。上限は2000文字で、たとえば「Write in the style of Terry Pratchett.」のように書きます。
+Gameチャットには、さらに設定があります。**GM prompt style**(GMのプロンプトスタイル)はGameプロンプトだけを置き換えますが、チャットだけの編集があればそちらが優先されます。**Extra instructions**(追加の指示)は、Gameプロンプトに文章を追加します。上限は2000文字で、たとえば「Write in the style of Terry Pratchett.」のように書きます。**Rating guidelines**(レーティングのガイドライン)、**Story style**(物語のスタイル)、**Violence**(暴力表現)、**Content boundaries**(コンテンツの境界線)は、ゲームのコンテンツ設定です。[コンテンツと物語のスタイル](../game/getting-started.md#content-and-story-style)を参照してください。
 
 <a id="decision-blocks-and-prompt-caching"></a>
 

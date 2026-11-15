@@ -4,8 +4,6 @@ Las expresiones animadas son animaciones cortas en bucle que se usan como sprite
 
 Marinara crea una en dos pasos. Le pide a una cuenta de **Video Generation** (Generación de video) un clip corto de la expresión y luego convierte el clip en un GIF en bucle en tu computadora. Una vez guardada, funciona como cualquier otro sprite. El agente descargable **Expression Engine** la muestra cuando la escena pide esa emoción. Consulta [Sprites de personaje](../characters/sprites.md) y [Referencia de agentes descargables](../agents/built-in-agents.md).
 
-<a id="before-you-start"></a>
-
 ## Antes de empezar
 
 Necesitas dos cosas.
@@ -38,13 +36,11 @@ Mientras se ejecuta, ves "Generating animated portrait GIFs...". Cuando termina,
 
 Las expresiones animadas tardan más que los sprites fijos, porque se crean una a la vez. Empieza con unas pocas.
 
-Con **Expose media prompts before sending** activado (**Settings → Generations → Overall Generations**, Configuración → Generaciones → Generaciones generales), Marinara se detiene para que puedas leer y editar cada prompt (las instrucciones enviadas a la IA) antes de que vaya al servicio.
+Con **Expose media prompts before sending** activado (**Settings → Media → Generation Defaults**, Configuración → Medios → Valores predeterminados de generación), Marinara se detiene para que puedas leer y editar cada prompt (las instrucciones enviadas a la IA) antes de que vaya al servicio.
 
 ## Duración y forma
 
-Toda expresión animada es un clip de retrato vertical en 9:16, una forma que no puedes cambiar. Para cambiar cuánto dura cada clip, abre **Settings → Generations**, busca **Video Generation** y define **Animated expression length**. El valor predeterminado es 3 segundos. El rango va de 1 a 8 segundos. Marinara guarda un GIF pequeño en bucle, de 512 píxeles de ancho. Un clip más corto da un archivo más pequeño y un bucle más ajustado.
-
-<a id="backgrounds-are-not-removed"></a>
+Toda expresión animada es un clip de retrato vertical en 9:16, una forma que no puedes cambiar. Para cambiar cuánto dura cada clip, abre **Settings → Media**, busca **Video Generation** y define **Animated expression length**. El valor predeterminado es 3 segundos. El rango va de 1 a 8 segundos. Marinara guarda un GIF pequeño en bucle, de 512 píxeles de ancho. Un clip más corto da un archivo más pequeño y un bucle más ajustado.
 
 ## Los fondos no se quitan
 

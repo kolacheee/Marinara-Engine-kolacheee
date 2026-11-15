@@ -38,11 +38,11 @@ Animated expression GIF conversion requires ffmpeg. Install ffmpeg and make it a
 
 动态表情一次只生成一个，所以比静态立绘慢。先从少量开始。
 
-在 **Settings → Generations → Overall Generations**(设置 → 生成 → 总体生成) 里开启 **Expose media prompts before sending**(发送前显示媒体提示词) 后，Marinara 会暂停，让你在每条提示词发给服务之前先读一遍、改一改。
+在 **Settings → Media → Generation Defaults**(设置 → 媒体 → 生成默认设置) 里开启 **Expose media prompts before sending**(发送前显示媒体提示词) 后，Marinara 会暂停，让你在每条提示词发给服务之前先读一遍、改一改。
 
 ## 时长与画面比例
 
-每个动态表情都是 9:16 的竖版立绘片段，这个比例无法更改。要调整每段片段的时长，打开 **Settings → Generations**(设置 → 生成)，找到 **Video Generation**，设置 **Animated expression length**(动态表情时长)。默认 3 秒，范围是 1 到 8 秒。Marinara 保存的是一个宽 512 像素的小体积循环 GIF。片段越短，文件越小，循环也越紧凑。
+每个动态表情都是 9:16 的竖版立绘片段，这个比例无法更改。要调整每段片段的时长，打开 **Settings → Media**(设置 → 媒体)，找到 **Video Generation**，设置 **Animated expression length**(动态表情时长)。默认 3 秒，范围是 1 到 8 秒。Marinara 保存的是一个宽 512 像素的小体积循环 GIF。片段越短，文件越小，循环也越紧凑。
 
 <a id="backgrounds-are-not-removed"></a>
 

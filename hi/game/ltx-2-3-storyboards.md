@@ -22,7 +22,7 @@
 2. काफ़ी VRAM (आपके ग्राफ़िक्स कार्ड की मेमोरी) वाला GPU। पहले टेस्ट के लिए 8 GB वाला कार्ड 480p और एक कीफ़्रेम पर काम कर सकता है।
 3. एडिट करने लायक `ltx-director-simple` वर्कफ़्लो, या उसके बराबर का कोई LTX 2.3 image-to-video ग्राफ़ जो ComfyUI में पूरा चलता हो, और उसका `ltx-director-simple-api` नाम वाला API फ़ॉर्मैट एक्सपोर्ट।
 4. पहली फ़्रेम की इलस्ट्रेशन के लिए Marinara में एक इमेज अकाउंट।
-5. **Storyboard** एजेंट, जो **Agents → Agent Organizer** (एजेंट → एजेंट ऑर्गनाइज़र) से डाउनलोड किया गया हो और **Chat Settings → Agents** (चैट सेटिंग्स → एजेंट) में उस गेम के लिए चालू हो। देखें [Storyboard एजेंट गाइड](storyboard.md)।
+5. **Storyboard** एजेंट, जो **Library → Agents** (Library → एजेंट) से डाउनलोड किया गया हो और **Chat Settings → Agents** (चैट सेटिंग्स → एजेंट) में उस गेम के लिए चालू हो। देखें [Storyboard एजेंट गाइड](storyboard.md)।
 
 एडिट करने लायक वर्कफ़्लो और उसका API एक्सपोर्ट अलग-अलग फ़ाइलें हैं। ComfyUI में `ltx-director-simple` खोलें, ComfyUI Manager जिन कस्टम नोड को गुम बताए उन सबको इंस्टॉल करें, और ग्राफ़ को वहीं टेस्ट करें। Marinara में `ltx-director-simple-api` इंपोर्ट करें। नोड या मॉडल में हर बदलाव के बाद ग्राफ़ को दोबारा API फ़ॉर्मैट में एक्सपोर्ट करें और Marinara अकाउंट पर रखी JSON बदल दें। सामान्य विज़ुअल-एडिटर वाला वर्कफ़्लो Marinara में पेस्ट न करें।
 
@@ -83,7 +83,7 @@ Marinara `%length_s%`, `%global_prompt%`, `%local_prompts%` और `%segment_len
 
 ## वीडियो अकाउंट बनाएँ
 
-1. **Settings → Connections** (सेटिंग्स → कनेक्शन) खोलें।
+1. **Library → Connections** (Library → कनेक्शन) खोलें।
 2. **Add account** (अकाउंट जोड़ें) पर क्लिक करें और **Video Generation** अकाउंट चुनें।
 3. **ComfyUI** चुनें।
 4. **Base URL** डालें। ComfyUI उसी कंप्यूटर पर चलता हो, तो यह आम तौर पर `http://127.0.0.1:8188` होता है।

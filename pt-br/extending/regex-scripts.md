@@ -20,12 +20,12 @@ She smiles Hello there.
 
 ## Criar um script de regex
 
-Os seus scripts globais ficam no painel **Presets**, na seção **Regexes**. Abra-o com o botão **Presets** na barra superior.
+Os seus scripts globais ficam na página **Scripts de regex**: abra **Biblioteca → Scripts de regex**. A página lista os scripts à esquerda, **na ordem de execução**, e permite editar o selecionado à direita. (No layout clássico, eles ficam na seção **Regexes** do painel **Presets**.)
 
 ### Como criar um script de regex
 
-1. Abra **Presets** e encontre **Regexes**.
-2. Clique em **Create regex** (criar regex). O editor completo se abre.
+1. Abra **Biblioteca → Scripts de regex**.
+2. Clique em **Novo script**. O editor abre no novo script.
 3. Digite um nome no topo. Um script novo se chama "New Regex Script".
 4. Em **Find Pattern (Regex)** (padrão de busca), digite `\*([^*]+)\*` (veja [Campos do editor](#editor-fields)).
 5. Em **Replace With** (substituir por), digite `$1`.
@@ -40,21 +40,31 @@ Se não funcionou: um erro em vermelho abaixo de **Find Pattern (Regex)** bloque
 
 ### Gerenciar os seus scripts
 
-Cada linha da lista **Regexes** mostra o nome do script, uma etiqueta **AI** ou **User**, o padrão no formato `/pattern/flags`, um botão liga/desliga (com efeito imediato), **Edit regex** (editar regex, lápis) e **Delete regex** (excluir regex, lixeira). Sem scripts, a lista mostra "No regexes yet".
+Na página **Scripts de regex**, cada script da lista mostra o número de execução, o nome, o padrão e um botão liga/desliga. **Importar**, no topo, carrega scripts de um arquivo, e **Exportar**, no editor, salva o script selecionado.
 
-O cabeçalho da seção tem três botões de ícone: **Create regex**, **Import regexes from JSON** (importar regexes de JSON) e **Export regexes to JSON** (exportar regexes para JSON), que salva todos os seus scripts globais em um único arquivo. Os scripts ligados a um único personagem ficam separados; veja [Limitar um script a um personagem](#limit-a-script-to-one-character).
+- Arraste um script para cima ou para baixo na lista para mudar a ordem de execução.
+- **⋯** em um script (ou um clique com o botão direito nele) oferece **Duplicar**, **Exportar**, **Selecionar** e **Excluir**. Em uma tela sensível ao toque, mantenha o script pressionado.
+- **Selecionar**, acima da lista, coloca uma caixa de seleção em cada script. Escolha vários e use a barra abaixo da lista para deixá-los **Ativado ou desativado**, usar **Exportar** para salvá-los em um único arquivo ou **Excluir** para removê-los.
 
-Para encontrar um script, digite em **Search regexes** (buscar regexes). A busca procura nos nomes e padrões dos scripts e abre as pastas com resultados. Durante a busca, você não pode arrastar os scripts para mudar a ordem.
+No layout clássico, cada linha da lista **Regexes** mostra o nome do script, uma etiqueta **IA** ou **Usuário**, o padrão no formato `/pattern/flags`, um botão liga/desliga (com efeito imediato), **Editar regex** (lápis) e **Excluir regex** (lixeira). Sem scripts, a lista mostra "No regexes yet". Arraste uma linha pela alça para mudar a ordem de execução.
 
-#### Organizar scripts em pastas
+### Organizar scripts em pastas
 
 1. Clique em **New Folder** (nova pasta) e dê um nome à pasta.
 2. Clique no ícone de pasta na linha de um script para abrir **Move to folder** (mover para a pasta).
 3. Escolha a pasta. Para tirar um script de uma pasta, escolha **No folder (top level)** (sem pasta, nível superior).
 
-Clique no nome de uma pasta para expandi-la ou recolhê-la. Desligue a pasta para pausar seus scripts em todos os chats. O cabeçalho mostra **Paused** (pausada). Cada script mantém a posição salva do próprio botão liga/desliga. Um script ativado em uma pasta pausada aparece com o botão cinza e a etiqueta **Paused by folder** (pausado pela pasta). Excluir a pasta move seus scripts para o nível superior, onde cada um segue o próprio botão liga/desliga.
+Clique no nome de uma pasta para expandi-la ou recolhê-la. Desligue a pasta para pausar seus scripts em todos os chats. O cabeçalho mostra **Paused** (pausada). Cada script mantém a posição salva do próprio botão liga/desliga. Um botão cinza na posição ligada indica um script ativado, mas pausado pela pasta. Excluir a pasta move seus scripts para o nível superior, onde cada um segue o próprio botão liga/desliga.
 
-As pastas agrupam scripts sem mudar a ordem de execução. Clique em **Execution order** (ordem de execução) para ver a lista completa na ordem em que os scripts rodam. Arraste um script pela alça para mudar a ordem. Quando não há pastas, a lista já aparece nessa ordem.
+As pastas agrupam scripts sem mudar a ordem de execução. Clique em **Execution order** (ordem de execução) para ver a lista completa na ordem em que os scripts rodam. Arraste um script pela alça para mudar a ordem. Quando não há pastas, a lista já aparece nessa ordem. Nessa visualização, um ícone de pausa marca um script ativado cuja pasta está pausada.
+
+### Alterar vários scripts de uma vez
+
+1. Clique em **Selecionar scripts de regex**.
+2. Marque os scripts que você quer alterar.
+3. Clique em **Ativar selecionados**, **Desativar selecionados** ou **Mover para a pasta**. Você também pode exportar ou excluir a seleção.
+
+**Ativar selecionados** altera os botões de cada script. Retome uma pasta pausada antes que seus scripts ativados possam rodar de novo.
 
 <a id="editor-fields"></a>
 
@@ -122,7 +132,7 @@ Nas suas próprias mensagens, um script de **User Input** em **Only Display** ou
 
 As duas configurações ficam em **Advanced Options**.
 
-- **Execution Order** (ordem de execução) é um número. Números menores rodam primeiro, o que importa quando vários scripts podem corresponder ao mesmo texto. Um script novo começa em 0, e o aplicativo atribui o próximo número livre quando você salva. Você também pode arrastar as linhas na lista **Regexes**.
+- **Execution Order** (ordem de execução) é um número. Números menores rodam primeiro, o que importa quando vários scripts podem corresponder ao mesmo texto. Um script novo começa em 0, e o aplicativo atribui o próximo número livre quando você salva. Para mudar a ordem pelo painel, veja [Organizar scripts em pastas](#organize-scripts-in-folders).
 - **Depth Range** (faixa de profundidade) limita até onde no passado um script roda, com **Min** e **Max**. A mensagem mais nova é a profundidade 0, a anterior é a profundidade 1, e assim por diante. Deixe os dois vazios para rodar em qualquer profundidade. O salvamento é bloqueado se **Min** for maior que **Max**.
 
 ### Chats em grupo
@@ -176,12 +186,15 @@ Marinara lê os scripts de regex que vêm dentro de um card de personagem do Sil
 
 Essa escolha aparece na janela de importação de um personagem e no fluxo em lote **Import from SillyTavern Folder**. Scripts com o padrão vazio, ou com um padrão que não passa na verificação de segurança, são ignorados. Para importar um arquivo JSON simples de scripts, use **Import regexes from JSON** em **Regexes**. Veja [Importar do SillyTavern](../data/importing-from-sillytavern.md).
 
+**Exportar regexes para JSON** salva todos os scripts globais em um único arquivo. Use **Exportar** enquanto seleciona scripts para salvar apenas esses scripts. Uma exportação de regex em JSON mantém as configurações individuais dos scripts. Use **Exportar perfil** com **Marinara Native** para manter também as pastas a que pertencem e as configurações de pausa. Veja [Exportar um perfil](../data/backup-and-restore.md#export-a-profile). Os scripts importados de JSON de regex aparecem no nível superior. Mova-os para uma pasta depois de importar.
+
 ### Substituir um pacote de regex
 
 1. Em **Presets → Regexes**, escolha **Select regex scripts** (selecionar scripts de regex).
 2. Marque as entradas do pacote antigo ou escolha **Select all regex scripts** (selecionar todos os scripts de regex).
 3. Use **Export** (exportar) ou **Delete** (excluir) na barra de ações. A exclusão pede uma única confirmação e não pode ser desfeita.
 4. Importe o pacote atualizado.
+5. Se você usa uma pasta para o pacote, mova os novos scripts para ela.
 
 As exclusões que falharem continuam selecionadas para você tentar de novo. Os scripts não selecionados ficam onde estão. As atribuições a presets continuam disponíveis no editor de regex.
 

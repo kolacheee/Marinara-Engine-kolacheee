@@ -22,7 +22,7 @@ Eine eigene native App gibt es nicht. Auf Handy und Tablet nutzt du die Web-App 
 
 Unter Android kannst du außerdem [die neueste APK herunterladen](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk). Sie führt Marinara über Termux auf dem Handy aus. Siehe [Android-Installation](installation/android-termux.md). Für iPhone und iPad siehe die [iOS-PWA-Anleitung](installation/ios-pwa.md).
 
-In der Android-App bietet der Launcher **Open in browser** (im Browser öffnen), **Retry connection** (Verbindung erneut versuchen) und **Install / Start Marinara** an. Um deine Auswahl später zu ändern, nutze **Settings → General → App Behavior → Open Android launcher (app or browser)**. Ältere APKs melden sich manuell unter `/android-login` an.
+In der Android-App bietet der Launcher **Open in browser** (im Browser öffnen), **Retry connection** (Verbindung erneut versuchen) und **Install / Start Marinara** an. Um deine Auswahl später zu ändern, nutze **Settings → Appearance → Layout → Open Android launcher (app or browser)**. Ältere APKs melden sich manuell unter `/android-login` an.
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -82,11 +82,11 @@ Siehe [Lorebooks](lorebooks/overview.md).
 
 ## Was ist ein Agent?
 
-Ein Agent ist ein optionaler KI-Helfer, der während eines Chats eine eng umrissene Aufgabe übernimmt, etwa die Szene mitführen oder Karten ergänzen. Neue Installationen haben keine. Öffne **Agents → Agent Organizer**, wähl einen aus und installiere ihn. Schalte ihn dann pro Chat in den **Chat Settings** ein. Siehe [Agenten](agents/agents-overview.md).
+Ein Agent ist ein optionaler KI-Helfer, der während eines Chats eine eng umrissene Aufgabe übernimmt, etwa die Szene mitführen oder Karten ergänzen. Neue Installationen haben keine. Öffne **Library → Agents**, wähl einen aus und installiere ihn. Schalte ihn dann pro Chat in den **Chat Settings** ein. Siehe [Agenten](agents/agents-overview.md).
 
 ## Wie richte ich Noodle ein?
 
-Noodle ist ein lokales, fiktives soziales Netzwerk für deine Charaktere. Installiere **Noodle** über **Agents → Agent Organizer**, starte Marinara neu, wenn du dazu aufgefordert wirst, und öffne dann **Home → Noodle**. Siehe [Noodle: die Social-Timeline in der App](agents/noodle.md).
+Noodle ist ein lokales, fiktives soziales Netzwerk für deine Charaktere. Installiere **Noodle** über **Library → Agents**, starte Marinara neu, wenn du dazu aufgefordert wirst, und öffne dann **Home → Noodle**. Siehe [Noodle: die Social-Timeline in der App](agents/noodle.md).
 
 ## Warum antwortet mein Charakter nicht?
 
@@ -98,11 +98,11 @@ Modelle können nur eine begrenzte Textmenge auf einmal lesen, deshalb fallen in
 
 ## Wie sichere ich meine Daten?
 
-Öffne **Settings → Advanced → Backup & Export** und klick auf **Download Backup** (Backup herunterladen). Dabei wird eine `.zip` mit deinen Daten und hochgeladenen Dateien gespeichert. Zum Wiederherstellen nutzt du **Import Profile (JSON/ZIP)** unter **Settings → Imports**. Im selben Abschnitt lässt sich ein tägliches, wöchentliches oder monatliches Backup einrichten. Siehe [Marinara sichern und wiederherstellen](data/backup-and-restore.md).
+Öffne **Settings → Data → Backup & Restore** und klick auf **Download Backup** (Backup herunterladen). Dabei wird eine `.zip` mit deinen Daten und hochgeladenen Dateien gespeichert. Zum Wiederherstellen nutzt du **Import Profile (JSON/ZIP)** im selben Abschnitt. Im selben Abschnitt lässt sich ein tägliches, wöchentliches oder monatliches Backup einrichten. Siehe [Marinara sichern und wiederherstellen](data/backup-and-restore.md).
 
 ## Wie funktionieren Erweiterungen, und kann ich fremden Code importieren?
 
-Standardmäßig legt nur Professor Mari Entwürfe für Personal Extensions (persönliche Erweiterungen) an. Ein Entwurf ist zunächst ausgeschaltet, und du gibst seinen exakten Code frei, bevor er läuft. Importe von Drittanbietern sind ausgeblendet, bis der Host `ENABLE_EXTERNAL_EXTENSIONS=true` in der `.env` setzt und du die Warnung unter **Settings → Advanced → Danger Zone** bestätigst. Siehe [Personal Extensions](extending/personal-extensions.md).
+Standardmäßig legt nur Professor Mari Entwürfe für Personal Extensions (persönliche Erweiterungen) an. Ein Entwurf ist zunächst ausgeschaltet, und du gibst seinen exakten Code frei, bevor er läuft. Importe von Drittanbietern sind ausgeblendet, bis der Host `ENABLE_EXTERNAL_EXTENSIONS=true` in der `.env` setzt und du die Warnung unter **Settings → Advanced → Security** bestätigst. Siehe [Personal Extensions](extending/personal-extensions.md).
 
 ## Wo werden meine Daten gespeichert?
 
@@ -118,11 +118,11 @@ Professor Mari ist die eingebaute Assistentin auf dem Home-Bildschirm. Sie erkl�
 
 ## Was ist der Storyboard-Agent, und wie nutze ich ihn im Game Mode?
 
-Er macht aus fertigem Erzähltext Bilder. Installiere **Storyboard** über **Agents → Agent Organizer** und schalte ihn dann im Chat ein. Siehe die [Anleitung zum Storyboard-Agenten](game/storyboard.md).
+Er macht aus fertigem Erzähltext Bilder. Installiere **Storyboard** über **Library → Agents** und schalte ihn dann im Chat ein. Siehe die [Anleitung zum Storyboard-Agenten](game/storyboard.md).
 
 ## Können Charaktere in einem Anruf laut sprechen?
 
-Ja, im Conversation Mode. Dafür muss **Text to Speech** (Sprachausgabe) unter **Connections** eingerichtet sein. Die Schritte, auch zur Spracherkennung für dein Mikrofon, stehen unter [Anrufe](conversation/calls.md).
+Ja, im Conversation Mode. Dafür brauchst du unter **Verbindungen** ein Modell für die Aufgabe **Stimme (Text to Speech)**. Die Schritte, auch zur Spracherkennung für dein Mikrofon, stehen unter [Anrufe](conversation/calls.md).
 
 ## Kann Marinara Bilder generieren?
 
@@ -130,7 +130,7 @@ Ja. Leg ein Konto für Bildgenerierung an, etwa **Pollinations** (braucht keinen
 
 ## Wie lese ich die Dokumentation innerhalb der App?
 
-Klick auf dem Home-Bildschirm in den Lesezeichen auf **Documentation** (Dokumentation). Auf dem Handy öffnest du zuerst das Lesezeichenmenü. In der FAQ auf dem Home-Bildschirm kannst du auch auf **Open Documentation** (Dokumentation öffnen) klicken.
+Klick in der oberen Leiste auf **Docs** (Doku). Auf dem Handy liegt die Dokumentation in der Bibliothek, der Stapel-Schaltfläche oben rechts. Im klassischen Layout klickst du in den Lesezeichen von Home auf **Documentation** (Dokumentation). In der FAQ auf dem Home-Bildschirm kannst du auch auf **Open Documentation** (Dokumentation öffnen) klicken.
 
 ## Wo bekomme ich Hilfe oder melde einen Fehler?
 

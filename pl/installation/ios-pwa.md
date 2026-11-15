@@ -93,7 +93,7 @@ Zobacz [Zablokowany dostęp po aktualizacji](../REMOTE_ACCESS.md#locked-out-afte
 
 **Czerwony pasek ostrzega, że zapisy będą po cichu przepadać.** To ostrzeżenie serwera o zaufaniu sieciowym, a nie problem z urządzeniem iPhone lub iPad. Właściciel serwera musi uznać twój adres za zaufany. Zobacz [Dostęp zdalny](../REMOTE_ACCESS.md#why-is-my-save-blocked-csrf).
 
-**Działania uprzywilejowane są blokowane.** Niektóre czynności serwisowe wymagają sekretu administratora (drugiego hasła) od właściciela serwera. Zapisz go na urządzeniu iPhone lub iPad w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny). Zobacz [Dostęp zdalny](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+**Działania uprzywilejowane są blokowane.** Niektóre czynności serwisowe wymagają sekretu administratora (drugiego hasła) od właściciela serwera. Zapisz go na urządzeniu iPhone lub iPad w **Ustawienia → Zaawansowane → Bezpieczeństwo**. Zobacz [Dostęp zdalny](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Powiązane przewodniki
 

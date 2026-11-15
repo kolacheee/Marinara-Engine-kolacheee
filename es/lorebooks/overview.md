@@ -14,7 +14,7 @@ La coincidencia por palabra clave funciona con cualquier modelo y no necesita co
 
 ## Crear un lorebook y agregar una entrada
 
-1. Abre el panel **Lorebooks** desde la barra lateral.
+1. Abre **Library** > **Lorebooks** (Biblioteca > Lorebooks). La Library está a la derecha.
 2. Haz clic en **New** (Nuevo: el icono del signo más). Se abre la ventana **Create Lorebook** (Crear lorebook).
 3. Escribe un **Name** (Nombre). Este campo es obligatorio.
 4. Agrega una **Description** (Descripción) si quieres.
@@ -67,9 +67,26 @@ La pestaña también tiene estos interruptores.
 
 El panel **Semantic search (embeddings)** (Búsqueda semántica: embeddings), debajo de los interruptores, se explica en [Búsqueda semántica para lorebooks](semantic-search.md).
 
-## El panel Lorebooks
+## La página Lorebooks
 
-En la parte superior del panel, tres botones de icono muestran su nombre cuando pasas el cursor sobre ellos.
+Abre **Library → Lorebooks** (Biblioteca → Lorebooks). En la parte superior están **Import** (Importar; consulta [Importar y exportar lorebooks](import-export.md)) y **New lorebook** (Nuevo lorebook). Debajo:
+
+- **All kinds** (Todos los tipos) limita la lista a lorebooks **Global**, **World**, **Character**, **NPC** o **Spellbook**.
+- **List** (Lista) y **Gallery** (Galería) alternan entre una tabla y fichas con imágenes.
+- El menú de orden ofrece **Recently edited** (Editados recientemente), **A to Z** (De A a Z), **Z to A** (De Z a A) y **My order** (Mi orden).
+
+Haz clic en un lorebook para abrirlo.
+
+### Organizar tus lorebooks
+
+- **⋯** al final de una fila (o haz clic derecho en la fila) tiene **Duplicate** (Duplicar), **Move to folder** (Mover a carpeta), **Export** (Exportar), **Select** (Seleccionar) y **Delete** (Eliminar). En una pantalla táctil, mantén pulsada la fila. **Duplicate** copia el lorebook con todas sus entradas y abre la copia.
+- Arrastra una fila por encima o por debajo de otra para establecer tu propio orden. El menú de orden cambia a **My order**.
+- **New folder** (Nueva carpeta; el icono de carpeta junto al título) añade una carpeta de biblioteca. Arrastra un lorebook sobre ella o usa **Move to folder**. Estas carpetas son distintas de las carpetas de entradas que hay dentro de un lorebook. Haz clic en una carpeta para plegarla y usa su **⋯** para cambiarle el nombre o eliminarla. Al eliminar una carpeta, se conservan sus lorebooks.
+- **Select** (Seleccionar; el icono de marca junto al título) pone una casilla en cada fila. Elige lorebooks y luego usa la barra de la parte inferior: **Move to folder**, **On or off** (Activar o desactivar), **Export** (un archivo `marinara-lorebooks.zip`) o **Delete**.
+
+## En el diseño clásico: el panel Lorebooks
+
+El panel clásico muestra las mismas carpetas y el mismo orden en forma de lista. En la parte superior del panel, tres botones de icono muestran su nombre cuando pasas el cursor sobre ellos.
 
 - **New** abre la ventana **Create Lorebook**.
 - **Import** (Importar) abre la ventana **Import Lorebook** (Importar lorebook). Consulta [Importar y exportar lorebooks](import-export.md).
@@ -77,7 +94,8 @@ En la parte superior del panel, tres botones de icono muestran su nombre cuando 
 
 Debajo de los botones:
 
-- **Search lorebooks** (Buscar lorebooks) filtra por nombre, descripción, nombres de personajes o personas vinculados y etiquetas.
+- **Search lorebooks** (Buscar lorebooks) filtra por nombre, descripción, nombres de personajes o personas vinculados y etiquetas. `tag:name` también funciona aquí.
+- **Tags** (Etiquetas), junto al cuadro de búsqueda, muestra solo los lorebooks con todas las etiquetas que elijas, o **Untagged** (Sin etiquetas). Consulta [Etiquetas](../characters/library-organization.md#tags).
 - **Sort order** (Orden) ofrece **Manual order** (Orden manual), **A-Z**, **Z-A**, **Newest**, **Oldest** y **Token Budget**. Con **Manual order**, arrastra los lorebooks a su lugar, o usa <kbd>Alt</kbd>+<kbd>Up</kbd> y <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (Nueva carpeta) crea una carpeta de biblioteca. Arrastra un lorebook sobre ella. En un teléfono, mantén pulsado el lorebook y luego arrástralo. Estas carpetas son distintas de las carpetas de entradas que hay dentro de un lorebook.
 

@@ -12,7 +12,7 @@ Necesitas una sola cosa: una cuenta de IA para el Game Master. Consulta [Conecta
 
 Todo lo demás es opcional y está desactivado de forma predeterminada. Puedes añadirlo más tarde:
 
-- **Imágenes.** El agente **Illustrator** dibuja retratos de NPC, fondos de lugares e imágenes de escena. Descárgalo desde **Agents → Agent Organizer** (Agentes → Organizador de agentes). Necesita una cuenta de imágenes. Sin él, sigues teniendo la historia, el registro del estado y el combate, pero las áreas visuales quedan vacías.
+- **Imágenes.** El agente **Illustrator** dibuja retratos de NPC, fondos de lugares e imágenes de escena. Descárgalo desde **Library → Agents** (Biblioteca → Agentes). Necesita una cuenta de imágenes. Sin él, sigues teniendo la historia, el registro del estado y el combate, pero las áreas visuales quedan vacías.
 - **Efectos de escena del Built-in model (Modelo integrado).** Marinara puede ejecutar un modelo pequeño en tu propia computadora para elegir fondos y música sin costo. Se convierte en el **Scene effects model** (Modelo de efectos de escena) predeterminado en cuanto lo descargas. Hasta entonces, el predeterminado es **Skip - use inline tags from GM** (Omitir: usar las etiquetas en línea del GM). Consulta [Configuración del modelo integrado](../connections/local-model.md).
 - **Storyboards.** Descarga el agente Storyboard y luego actívalo para la partida. Consulta [Guía del agente Storyboard](storyboard.md).
 - **Video.** Una cuenta de video solo hace falta para videos de escena o Storyboards animados.
@@ -20,7 +20,7 @@ Todo lo demás es opcional y está desactivado de forma predeterminada. Puedes a
 
 ## Empezar una partida
 
-1. En la barra lateral de chats, abre la pestaña **GM** y haz clic en el botón **+** (**New Game**, Nueva partida). O haz clic en **Game** en la pantalla de inicio. Se abre el asistente de configuración. Consulta [Administrar chats](../chats/managing-chats.md).
+1. En la barra lateral **Chats**, abre la pestaña **Game** y haz clic en **New** (Nuevo) (**New Game**, Nueva partida). O haz clic en **Game** en la pantalla de inicio. Se abre el asistente de configuración. Consulta [Administrar chats](../chats/managing-chats.md).
 2. En el primer paso, elige el **Model** (Modelo) que dirige al GM. Elige una cuenta que hayas añadido antes. Si la lista está vacía, añade una primero. Para la generación del mundo, elige un modelo de pago potente (consulta [Elegir un modelo](#choosing-a-model)).
 3. Haz clic en **Next** (Siguiente) en cada paso. Todos los demás campos tienen un valor predeterminado, así que puedes avanzar sin cambiar nada.
 4. En el último paso, haz clic en **Create world** (Crear mundo). El botón muestra **Generating World…** mientras Marinara construye tu mundo. Es una sola solicitud grande a tu modelo, así que espera a que termine.
@@ -37,7 +37,7 @@ Si no funcionó, consulta [La generación del mundo falla con un error de JSON o
 | Paso | Qué defines |
 | --- | --- |
 | **Connection** | **Game Name** (Nombre de la partida), el **Model** que dirige al GM y un **Scene effects model** opcional. Por ahora, la tarjeta **Game Mode** solo muestra **VN** (consulta [VN u Overworld](#vn-or-overworld)). |
-| **World** | Género, ambientación, tono, dificultad, clasificación de contenido e idioma. **Combat Preference** (Preferencia de combate) es **Turn-Based** o **Tactical**. Todas las partidas nuevas usan clases **MRPG** (Marinara RPG). Consulta [Clases MRPG](mrpg-classes.md). Cuando hay un conjunto de reglas instalado, aparece una opción **Rules** (Reglas). Consulta [Elegir las reglas](#choose-rules). |
+| **World** | Género, ambientación, tono, dificultad, clasificación de contenido, estilo de la historia, violencia, límites de contenido e idioma. **Combat Preference** (Preferencia de combate) es **Turn-Based** o **Tactical**. Todas las partidas nuevas usan clases **MRPG** (Marinara RPG). Consulta [Clases MRPG](mrpg-classes.md). Cuando hay un conjunto de reglas instalado, aparece una opción **Rules** (Reglas). Consulta [Elegir las reglas](#choose-rules). |
 | **Party** | Tu persona (el personaje que interpretas), **Game Master Mode**, los miembros del grupo y **GM intro message** (Mensaje de introducción del GM). Consulta [El mensaje de introducción del GM](#the-gm-intro-message). El árbol MRPG inicial de cada miembro procede de la sección **Game Mode** de su tarjeta (consulta [Elegir los árboles de un personaje](mrpg-classes.md#choose-a-characters-trees)). |
 | **Goals** | Lo que quieres de la aventura. |
 | **Lorebooks** | Los lorebooks (libros de trasfondo) que el GM trata como canon. Un lorebook es un conjunto de datos de trasfondo del mundo. Consulta [Lorebooks](../lorebooks/overview.md). |
@@ -57,7 +57,9 @@ Con el agente **Hierarchical Maps** descargado (ahora llamado World Maps; consul
 | Genre | Fantasy | Se permiten varios, además de los tuyos propios. Un kit de ambientación elegido primero fija el suyo. |
 | Tone | Heroic | Se permiten varios. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** o **Brutal**. Los ajustes más altos hacen las peleas más difíciles: más enemigos y más fuertes en una partida MRPG (consulta [Batallas en una partida MRPG](combat.md#battles-in-an-mrpg-game)), y enemigos que golpean más fuerte en una partida Legacy (consulta [Escalado de dificultad](combat.md#difficulty-scaling)). |
-| Content Rating | SFW | **SFW** o **NSFW**. NSFW solo permite contenido para adultos, no lo obliga. |
+| Clasificación del contenido (contenido sexual) | SFW | **SFW** o **NSFW**. Solo determina el contenido sexual. NSFW permite escenas explícitas, no las obliga. |
+| Estilo de la historia | Estándar | **Standard** (Estándar) o **Gentle** (Amable). Consulta [Contenido y estilo de la historia](#content-and-story-style). |
+| Violencia | Grave (Gráfica con NSFW) | **Mild** (Leve), **Serious** (Grave) o **Graphic** (Gráfica). |
 | Language | English | Todo el texto dentro del juego se escribe en este idioma. |
 | Game Master Mode | Standalone GM | **Character GM** usa una de tus tarjetas de personaje como GM. |
 | Scene effects model | Built-in model | Solo una vez que lo descargas. Hasta entonces, el predeterminado es **Skip - use inline tags from GM**. |
@@ -68,6 +70,18 @@ Con el agente **Hierarchical Maps** descargado (ahora llamado World Maps; consul
 | Quick Time Events | On | Desactívalo para jugar con lector de pantalla o sin límite de tiempo. |
 | Start Muted | Off | Empieza la partida con todo el audio silenciado. |
 | Game Presentation | Standard | Consulta más abajo. |
+
+### Contenido y estilo de la historia
+
+El paso **World** tiene estos ajustes para lo que puede contener la historia. En una partida en curso, todos están en **Chat Settings → Prompt Preset** (Ajustes del chat → Preset de prompt).
+
+- **Content Rating (sexual content)** (Clasificación del contenido: contenido sexual): **SFW** conserva el romance y el afecto y funde a negro las escenas de sexo. **NSFW** permite escribirlas de forma explícita. No determina la violencia ni el tono.
+- **Edit rating guidelines** (Editar directrices de clasificación), debajo de la clasificación, muestra el texto que recibe el Game Master como reglas de contenido de la partida. Cámbialo para adaptarlo a tu partida; **Reset to default** (Restablecer valores predeterminados) recupera el valor predeterminado de la clasificación. El texto sin modificar sigue el valor predeterminado, así que las mejoras posteriores llegan a tu partida. En una partida en curso se llama **Rating guidelines** (Directrices de clasificación).
+- **Story style** (Estilo de la historia): **Standard** mantiene la tensión, de modo que los errores y la mala suerte tienen consecuencias reales. **Gentle** es para historias con menos tensión: contratiempos sin castigo ni trauma, menos tiradas para cosas que tu personaje no puede controlar y espacio para el consuelo y la recuperación.
+- **Violence** (Violencia): **Mild**, **Serious** o **Graphic**, por separado de la clasificación de contenido. Si no eliges una, es **Serious** para SFW y **Graphic** para NSFW.
+- **Content boundaries** (Límites de contenido): temas que el Game Master deja fuera de la historia, uno por línea, como `harm to animals`. Son límites estrictos para cualquier estilo o clasificación, y tus propias directrices de clasificación no pueden eliminarlos. Como la historia la escribe una IA, no se puede garantizar que un tema de la lista nunca aparezca.
+
+Un preset de prompt también puede incluirlos: en su pestaña **Prompts**, **Game story settings** (Ajustes de historia de Game) con **Bring story settings to games that use this preset** (Llevar los ajustes de historia a los juegos que usen este preset). Su violencia también puede ser **Follow rating** (Seguir clasificación). Elegir ese preset para una partida establece su estilo y violencia y añade sus límites a los de la partida. Una escena iniciada desde una partida sigue su clasificación, directrices, violencia, estilo y límites.
 
 <a id="choose-rules"></a>
 

@@ -57,7 +57,7 @@ Jeśli masz ustawiony inny `PORT`, użyj tego numeru. Żeby dostać ikonę przyp
 
 ## Uruchamianie i zatrzymywanie aplikacji Marinara Engine
 
-Przy instalacji przez aplikację otwórz ją i dotknij **Install / Start Marinara**, jeśli serwer jest zatrzymany. Żeby przełączać się między aplikacją a przeglądarką, użyj **Open in browser** na ekranie uruchamiania, a potem **Retry connection** (ponów połączenie). Z wnętrza aplikacji wrócisz na ekran uruchamiania przez **Settings → General → App Behavior → Open Android launcher (app or browser)** (ustawienia, ogólne, zachowanie aplikacji, otwórz ekran uruchamiania Android: aplikacja lub przeglądarka).
+Przy instalacji przez aplikację otwórz ją i dotknij **Install / Start Marinara**, jeśli serwer jest zatrzymany. Żeby przełączać się między aplikacją a przeglądarką, użyj **Open in browser** na ekranie uruchamiania, a potem **Retry connection** (ponów połączenie). Z wnętrza aplikacji wrócisz na ekran uruchamiania przez **Ustawienia → Wygląd → Układ → Otwórz program uruchamiający dla Androida (aplikacja lub przeglądarka)**.
 
 Przy ręcznej instalacji otwórz aplikację Termux i uruchom:
 

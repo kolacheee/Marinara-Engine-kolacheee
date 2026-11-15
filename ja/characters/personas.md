@@ -22,9 +22,15 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 
 `{{user}}`マクロはプレースホルダーです。Marinaraはプロンプトを送る前に、これをペルソナの名前に置き換えます。ペルソナの名前がAlexなら、`{{user}}`はAlexになります。[マクロ](../prompts/macros.md)を参照してください。
 
-## Personasパネル
+## Personasページ
 
-**Personas**パネルはペルソナのライブラリーです。行をクリックすると、そのペルソナがPersona Editorで開きます。
+**Library → Personas**(ライブラリー → ペルソナ)を開きます。[Charactersページ](library-organization.md#the-characters-page)と同じように、ポートレートのカード、**Import**(インポート)、**New persona**(新しいペルソナ、空の状態またはテンプレートから作成)、隣に**Tags**(タグ)ボタンのある検索ボックス、**Recently edited**(最近編集したもの)、並べ替えメニュー(**A to Z**(AからZ)、**Z to A**(ZからA)、**Newest**(新しい順)、**Oldest**(古い順)、**My order**(自分の並び順))と3つのカードサイズがあります。カードをクリックすると、そのペルソナがPersona Editorで開きます。
+
+Charactersページと同じツールを使えます。カードの**⋯**メニュー(**Duplicate**(複製)、**Move to folder**(フォルダーに移動)、**Export**(エクスポート)、**Select**(選択)、**Delete**(削除))、カードをドラッグして決める**My order**、**New folder**(新しいフォルダー)、複数のペルソナを`marinara-personas.zip`としてまとめてエクスポートまたは削除するための**Select**があります。[カードの操作](library-organization.md#a-cards-actions)を参照してください。
+
+## クラシックレイアウトのPersonasパネル
+
+クラシックの**Personas**パネルでは、同じフォルダーと順番が一覧として表示されます。行をクリックすると、そのペルソナがPersona Editorで開きます。
 
 | 操作 | 動作 |
 | --- | --- |
@@ -48,11 +54,11 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 - アバターのタイル。クリックすると画像をアップロードできます。画像生成の接続を設定してある場合は、杖のボタンで画像を生成することもできます。
 - 名前の欄と、コメントの欄。コメントの欄は、`Modern AU version`のような短いラベル用です。
 - **Save**(保存)。何かを変更するまではオフのままです。
-- **…**(**More actions**(その他の操作))メニュー。**Ask Professor Mari**(Prof. Mariに聞く)、**Export persona**(ペルソナのエクスポート)、**Add persona as character**(ペルソナをキャラクターとして追加)、**Duplicate persona**(ペルソナの複製)、**Delete persona**(ペルソナの削除)。
+- **Export persona**(ペルソナのエクスポート)、**Add persona as character**(ペルソナをキャラクターとして追加)、**Duplicate persona**(ペルソナの複製)、**Delete persona**(ペルソナの削除)。
 
 エディターを離れると、先に変更が保存されます。保存に失敗した場合は、下書きを残したままエディターが開いた状態になります。
 
-タブは、**Metadata**、**Card**、**Convo**、**Lorebook**、**Images**(画像)、**Colors**、**Stats**の順に並びます。各タブを押すと、1つの長いフォームの中の対応するセクションへ移動します。
+タブは、**Metadata**、**Card**、**Convo**、**Lorebook**、**Sprites**、**Gallery**、**Colors**、**Stats**の順に並びます。各タブを押すと、1つの長いフォームの中の対応するセクションへ移動します。
 
 ペルソナエディターは[キャラクターエディター](creating-and-editing-characters.md)と同じように動作します。以下では、異なる点を説明します。
 
@@ -62,7 +68,8 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 | **Card** | 下の[Cardタブ](#card-tab)を参照してください。 |
 | **Convo** | Conversationモードでのみ使われる欄です。[Conversationモードのプロフィール](../conversation/profiles.md)を参照してください。 |
 | **Lorebook** | このペルソナがチャットにいるときに発動するロアブックのエントリーを紐付けます。[ロアブックの概要](../lorebooks/overview.md)を参照してください。 |
-| **Images** | **Character Sheet**(キャラクターシート)、**Sprites**(GameとRoleplayで使う立ち絵。**Facial Expressions**、**Full-body**、**Clips**、**Upload Folder**(フォルダーをアップロード))、**Gallery**(資料用の画像と動画。**Upload Persona Images**(ペルソナ画像のアップロード)、**Upload Persona Videos**(ペルソナ動画のアップロード))があります。[キャラクターのスプライト](sprites.md)と[キャラクターとペルソナのギャラリー](galleries.md)を参照してください。 |
+| **Sprites** | GameとRoleplayで使う立ち絵です。**Facial Expressions**、**Full-body**、**Clips**と、**Upload Folder**(フォルダーをアップロード)があります。[キャラクターのスプライト](sprites.md)を参照してください。 |
+| **Gallery** | 資料用の画像と動画です。**Upload Persona Images**(ペルソナ画像のアップロード)と**Upload Persona Videos**(ペルソナ動画のアップロード)があります。[キャラクターとペルソナのギャラリー](galleries.md)を参照してください。 |
 | **Colors** | 名前、セリフ、メッセージボックスの色です。[キャラクターの色とロールプレイ用ステータス](colors-and-stats.md)を参照してください。 |
 | **Stats** | ステータスバーとRPGの能力値です。下の[Statsタブ](#stats-tab)を参照してください。 |
 
@@ -71,14 +78,12 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 - **Copy**(コピー)付きの**Persona ID**。
 - アバターの切り抜き。
 - **Name**と**Creator**。
-- **Other names**(別名)。ペルソナの愛称、フルネーム、敬称などです。Roleplayチャットでは、これらにも名前の色を付けられます。[メッセージ内のペルソナ名の色](choosing-your-persona.md#color-your-name-in-messages)を参照してください。
 - **Phonetic name**(読み仮名)。音声合成が自分の名前を読み上げるときにだけ使われます。
 - **Title / Comment**。短いラベルです。
 - **Version**。デフォルトは`1.0`で、**Automatic versioning**(自動バージョン管理)のスイッチがあります。
 - **Tags**。
 - **Creator Notes**。AIには送られません。
-
-<a id="card-tab"></a>
+- **Other names**(別名)。ペルソナが使う愛称、フルネーム、称号です。Roleplayのチャットでは、これらにも名前の色を付けられます。[メッセージ内の名前に色を付ける](choosing-your-persona.md#color-your-name-in-messages)を参照してください。
 
 ### Cardタブ
 
@@ -102,8 +107,6 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 - 各欄の下にある**Add Alternative Field**(代替項目を追加)を使うと、選んだチャットで別のバージョンを使えます。**Active in**の一覧にはこのペルソナを使うチャットだけが表示され、チャットが別のペルソナを選ぶと割り当ては休止します。代替項目にはそれぞれ名前を付けられ、**Chat Settings → Card Field Alternatives**(チャット設定 → カード項目の代替)で切り替えられます。[選択したチャットで代替項目を使う](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats)を参照してください。
 - **Version history**(バージョン履歴)は**Metadata**タブにあります。最初の編集の前は`Previous persona states will appear here after the next edit.`と表示されます。**Reset**(リセット)はすべてのスナップショットを削除し、バージョンを1.0に設定します。[バージョン履歴](creating-and-editing-characters.md#version-history)を参照してください。
 
-<a id="stats-tab"></a>
-
 ### Statsタブ
 
 **Stats**タブは、独立した2つのブロックに分かれています。どちらもHUDに反映されます。HUDとは、チャット中に画面に表示されるステータスのパネルです。
@@ -117,7 +120,7 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 
 インポートするには、**Personas**パネルの**Import**(インポート)をクリックします。**Import Persona**(ペルソナのインポート)ウィンドウでは`.marinara`と`.json`のファイルを扱え、複数のファイルを一度に読み込めます。Marinaraのファイルは、詳細、スプライト、ギャラリーの構成を丸ごと復元します。ほかのツールの一般的なJSONファイルは、項目ごとに対応付けて新しいペルソナに取り込まれます。名前は必須です。各ファイルには成功か失敗かの印が表示されます。
 
-エクスポートするには、エディターで**…**をクリックしてから**Export persona**を選ぶか、選択モードで**Export**(エクスポート)を使います。**Export Persona**(ペルソナのエクスポート)ウィンドウでは、2つの形式を選べます。
+エクスポートするには、エディターの**Export persona**(ペルソナのエクスポート)をクリックするか、選択モードで**Export**(エクスポート)を使います。**Export Persona**(ペルソナのエクスポート)ウィンドウでは、2つの形式を選べます。
 
 | 形式 | 書き出される内容 |
 | --- | --- |
@@ -128,13 +131,13 @@ Marinaraは毎回のプロンプトで、ペルソナをAIに送ります。ペ�
 
 ## ペルソナの複製と削除
 
-複製するには、行の**Duplicate**(複製)か、エディターの**…**メニューにある**Duplicate persona**(ペルソナの複製)をクリックします。コピーの名前は「{original name} (Copy)」になり、カードの全項目、色、ステータス、Convoの項目が引き継がれます。どのチャットのペルソナも変わりません。
+複製するには、行の**Duplicate**(複製)か、エディターの**Duplicate persona**(ペルソナの複製)をクリックします。コピーの名前は「{original name} (Copy)」になり、カードの全項目、色、ステータス、Convoの項目が引き継がれます。どのチャットのペルソナも変わりません。
 
-削除するには、行の**Delete**(削除)か、エディターの**…**メニューにある**Delete persona**(ペルソナの削除)をクリックし、確認します。元に戻すことはできません。まとめて削除するには、**Select**(選択)をクリックしてペルソナにチェックを入れ、選択バーの**Delete**を使います。削除に失敗したペルソナは選択されたまま残るので、やり直せます。
+削除するには、行の**Delete**(削除)か、エディターの**Delete persona**(ペルソナの削除)をクリックし、確認します。元に戻すことはできません。まとめて削除するには、**Select**(選択)をクリックしてペルソナにチェックを入れ、選択バーの**Delete**を使います。削除に失敗したペルソナは選択されたまま残るので、やり直せます。
 
 ## ペルソナをキャラクターとして追加
 
-エディターのヘッダーの**…**メニューにある**Add persona as character**(ペルソナをキャラクターとして追加)を使うと、キャラクターに新しいカードが作成されます。名前、説明、性格、シナリオ、経歴、外見、タグ、作成者、バージョン、アバターがコピーされます。ペルソナは元のまま残ります。新しいカードの編集については[キャラクターの作成と編集](creating-and-editing-characters.md)を参照してください。
+エディターのヘッダーにある**Add persona as character**(ペルソナをキャラクターとして追加)を使うと、キャラクターに新しいカードが作成されます。名前、説明、性格、シナリオ、経歴、外見、タグ、作成者、バージョン、アバターがコピーされます。ペルソナは元のまま残ります。新しいカードの編集については[キャラクターの作成と編集](creating-and-editing-characters.md)を参照してください。
 
 ## 関連ガイド
 

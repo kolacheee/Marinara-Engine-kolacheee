@@ -2,7 +2,7 @@
 
 Jede Nachricht, deine wie die der KI, hat eine Werkzeugleiste. Darüber bearbeitest du eine einzelne Nachricht, löschst sie, generierst sie neu, verbirgst sie oder legst ab ihr eine Verzweigung an.
 
-Die Werkzeugleiste erscheint, wenn du auf Handy oder Tablet auf eine Nachricht tippst oder am Computer auf sie zeigst.
+Am Computer erscheint die Werkzeugleiste, wenn du auf eine Nachricht zeigst. Auf einem Handy oder Tablet hältst du eine Nachricht gedrückt: Dieselben Aktionen öffnen sich in einem Bedienfeld.
 
 ## Die Nachrichten-Werkzeugleiste
 
@@ -42,7 +42,7 @@ Mehr dazu: [Peek Prompt](peek-prompt.md), [Chat-Verzweigungen](branches.md), [Sz
 3. Klick auf **Save** (Speichern) oder drück <kbd>Strg</kbd>+<kbd>Enter</kbd> (auf dem Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>).
 4. Zum Abbrechen ohne Speichern klick auf **Cancel** (Abbrechen) oder drück <kbd>Esc</kbd>.
 
-Mit zwei Einstellungen unter **Settings → General → Input & Editing** startest du eine Bearbeitung schneller. Beide sind standardmäßig an.
+Mit zwei Einstellungen unter **Settings → Chatting → Editing & Swipes** startest du eine Bearbeitung schneller. Beide sind standardmäßig an.
 
 - **Up Arrow edits last message** (Pfeil nach oben bearbeitet die letzte Nachricht): Drück <kbd>Pfeil nach oben</kbd>, solange das Eingabefeld leer ist.
 - **Double-click edits messages** (Doppelklick bearbeitet Nachrichten): Doppelklick oder Doppeltipp auf eine Roleplay-Nachricht.
@@ -74,6 +74,20 @@ Ein Swipe ist eine Fassung einer KI-Antwort. Eine Nachricht kann mehrere davon e
 
 Den letzten Swipe kannst du nicht löschen. Die App meldet dann „Cannot delete the last remaining swipe“. Nimm stattdessen **Delete this message**.
 
+## Touch-Gesten
+
+Im neuen Layout auf einem Handy oder Tablet ersetzen Swipes und langes Drücken die Schaltflächen, die am Computer beim Darüberzeigen erscheinen.
+
+- **Wisch die neueste Antwort** nach links oder rechts, um zwischen ihren Swipes zu wechseln. Wischst du nach dem letzten weiter nach links, fragt die App „Generate a new reply?“, bevor sie eine neue Antwort erzeugt, denn diese kostet eine Anfrage.
+- **Wisch den Titel** in der oberen Leiste nach links oder rechts, um zwischen deinen offenen Tabs zu wechseln. Home zählt als Tab vor dem ersten. Das funktioniert im Handy-Layout, das ein Tablet im Hochformat verwendet; im Querformat zeigt ein Tablet stattdessen die Tab-Leiste.
+- **Wisch einen Chat** in der Chat-Liste nach links, um **Pin**, **Rename**, **Tags** und **Delete** anzuzeigen.
+- **Drück lange auf eine Nachricht**, um ihre Aktionen aufzurufen: Regenerate, Edit, Copy, Branch und die übrigen.
+- **Drück lange auf einen Chat** in der Chat-Liste, um dieselben Aktionen aufzurufen.
+
+Schalte die Swipes unter Settings > Chatting > Editing & Swipes mit **Swipe gestures on touch screens** (Swipe-Gesten auf Touchscreens) aus. Langes Drücken funktioniert in beiden Fällen weiter.
+
+Wenn Marinara zum ersten Mal auf einem Handy, Tablet oder Computer geöffnet wird, zeigt eine kurze Einführung, wo sich auf diesem Gerät alles befindet – auf Touchscreens auch diese Gesten. Jeder Chat-Modus zeigt außerdem seine Tipps, wenn er dort zum ersten Mal geöffnet wird. Unter Settings > General > Walkthroughs kannst du jede dieser Einführungen erneut abspielen.
+
 ## Neu generieren, fortsetzen und erneut versuchen
 
 Diese drei sehen ähnlich aus, tun aber Unterschiedliches.
@@ -92,7 +106,7 @@ Tipp `/continue` (oder `/cont`) ins Eingabefeld und schick es ab. Das Modell mac
 /continue
 ```
 
-Marinara setzt eine Leerzeile vor den neuen Text. Soll er direkt am letzten Zeichen ansetzen, schalte **Settings → General → Responses → Add a new line before /continue text** aus.
+Marinara setzt eine Leerzeile vor den neuen Text. Soll er direkt am letzten Zeichen ansetzen, schalte **Settings → Chatting → Responses → Add a new line before /continue text** aus.
 
 ### Mit leerem Send erneut versuchen
 
@@ -114,7 +128,7 @@ Ist in Advanced Memory **Decide who sees new messages** (entscheiden, wer neue N
 
 ## Anzeigeschalter für Nachrichten
 
-Diese Schalter findest du unter **Settings → Advanced → Message Tools**.
+Diese Schalter findest du unter **Settings → Chatting → Message Info**.
 
 | Schalter | Standard | Was er zeigt |
 | --- | --- | --- |

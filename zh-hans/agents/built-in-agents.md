@@ -1,10 +1,10 @@
 # 可下载智能体参考
 
-本指南按分组列出 **Agents → Agent Organizer**(智能体 → 智能体管理器) 里的官方第一方智能体。全新安装并不自带智能体。它们的源码和目录公开在 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)。每个条目都会说明这个智能体做什么、什么时候运行、在哪里可用，以及主要设置。安装和启用智能体的步骤，请先看[智能体](agents-overview.md)。标记为 **staging only**(仅 staging) 的条目供 Engine staging 用户使用；包发布到稳定版之后，稳定版用户也会看到这些条目。
+本指南按分组列出 **Library → Agents**(资料库 → 智能体) 里的官方第一方智能体。全新安装并不自带智能体。它们的源码和目录公开在 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents)。每个条目都会说明这个智能体做什么、什么时候运行、在哪里可用，以及主要设置。安装和启用智能体的步骤，请先看[智能体](agents-overview.md)。标记为 **staging only**(仅 staging) 的条目供 Engine staging 用户使用；包发布到稳定版之后，稳定版用户也会看到这些条目。
 
 ## 如何阅读本参考
 
-先从 **Agent Organizer** 安装智能体，再把它添加到你想用的每个聊天里。智能体按聊天设置，而不是按角色卡设置。安装、更新、按聊天设置和费用，见[智能体](agents-overview.md)。
+先从 **Library → Agents** 安装智能体，再把它添加到你想用的每个聊天里。智能体按聊天设置，而不是按角色卡设置。安装、更新、按聊天设置和费用，见[智能体](agents-overview.md)。
 
 每个条目都列出同样几条速查信息。
 
@@ -28,7 +28,7 @@
 
 - **集成方式**：功能包，带有本地路由、生成与媒体流程以及后台调度器。
 - **适用范围**：Home，可选择带入 Conversation、Roleplay 和 Game 聊天中的上下文。
-- **主要设置**：从 **Agents → Agent Organizer** 安装，并在提示时重启。在 Noodle 里可以设置受邀账号、文本与图像连接、时间线刷新、随机用户和聊天内容延续。
+- **主要设置**：从 **Library → Agents** 安装，并在提示时重启。在 Noodle 里可以设置受邀账号、文本与图像连接、时间线刷新、随机用户和聊天内容延续。
 - **数据**：卸载后，重启时会移除这个标签页并停止调度器。你的 Noodle 数据会保留，供以后重装。
 - **完整指南**：[Noodle：应用内的社交时间线](noodle.md)。
 
@@ -324,7 +324,7 @@ Knowledge Retrieval 的省钱替代方案。它读取世界书条目的简短描
 
 - **阶段**：Post-Processing。
 - **适用范围**：Roleplay。
-- **主要设置**：**Edit**(编辑) 用来改写选项，**Re-roll**(重掷) 用来生成一批新的。在 **Settings → General → Input & Editing**(设置 → 常规 → 输入与编辑) 中开启 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项放进消息框，而不是直接发送)，点击的选项就会进入你的消息框。
+- **主要设置**：**Edit**(编辑) 用来改写选项，**Re-roll**(重掷) 用来生成一批新的。在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 中开启 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项放进消息框，而不是直接发送)，点击的选项就会进入你的消息框。
 
 ### Storyboard
 
@@ -342,7 +342,7 @@ Knowledge Retrieval 的省钱替代方案。它读取世界书条目的简短描
 
 - **集成方式**：智能体包。虚拟形象由 Engine 绘制。聊天时它不会向你的 AI 连接发送额外请求。
 - **适用范围**：Roleplay 和 Game，适用于角色和用户角色。
-- **可用性**：所有安装都能在 **Agent Organizer** 里找到。需要 Marinara Engine 2.5.1 或更新版本。
+- **可用性**：所有安装都能在 **Library → Agents** 里找到。需要 Marinara Engine 2.5.1 或更新版本。
 - **主要设置**：在 **Agents**(智能体) 里这个智能体的页面上设置每个虚拟形象。这个智能体还带有提示词，用来根据一张立绘生成眨眼和说话图片以及网格虚拟形象。
 - **兼容性**：Engine `2.5.0` 起，`4.0.0` 之前，Capability API 1.73。权限：`agent-runtime`、`chat-read`、`storage`、`ui`。不需要重启。
 - **完整指南**：[2D 和 3D 虚拟形象](avatars.md)。
@@ -353,7 +353,7 @@ Knowledge Retrieval 的省钱替代方案。它读取世界书条目的简短描
 
 - **集成方式**：智能体包。虚拟形象由 Engine 绘制。聊天时它不会向你的 AI 连接发送额外请求。
 - **适用范围**：Roleplay 和 Game，适用于角色和用户角色。
-- **可用性**：所有安装都能在 **Agent Organizer** 里找到。需要 Marinara Engine 2.5.1 或更新版本。
+- **可用性**：所有安装都能在 **Library → Agents** 里找到。需要 Marinara Engine 2.5.1 或更新版本。
 - **主要设置**：在 **Agents** 里这个智能体的页面上设置每个虚拟形象。
 - **兼容性**：与 2D Avatars 相同。
 - **完整指南**：[2D 和 3D 虚拟形象](avatars.md)。

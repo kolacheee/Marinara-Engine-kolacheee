@@ -4,53 +4,49 @@ O tutorial é um tour guiado que começa na primeira vez que você abre Marinara
 
 ## Repita o tutorial
 
-1. Vá para a tela inicial.
-2. Clique no favorito **Tutorial** ou em **Replay tutorial** (repetir o tutorial) no widget **Learn the engine** (conhecer o Engine).
+1. Abra **Settings → General → Confirmations & Help** (Configurações → Geral → Confirmações e ajuda).
+2. Em **Walkthroughs** (tutoriais), clique em **Replay the welcome tour** (repetir o tour de boas-vindas).
 
-O tour recomeça da primeira etapa. No celular, toque no botão de favoritos à esquerda das abas para ver os favoritos.
+Você também pode clicar em **Replay tutorial** (repetir o tutorial) no widget **Learn the engine** (conhecer o Engine) na tela inicial. O tour recomeça da primeira etapa.
+
+**Walkthroughs** tem mais dois botões. **Replay the computer walkthrough** (repetir o tutorial de computador, ou de tablet ou celular) repete o tour curto para o tipo de dispositivo que você está usando, e **Show chat mode tips again** (mostrar novamente as dicas dos modos de chat) traz de volta as dicas de cada modo de chat. Veja [Tutoriais para cada dispositivo](#walkthroughs-for-each-device).
 
 ## Pule o tutorial
 
 Todo cartão tem um botão para pular. No primeiro cartão, ele aparece como **Skip Tutorial** (pular o tutorial). Nos cartões seguintes, aparece como **Skip** (pular). Clique nele para encerrar o tour na hora.
 
-- **Skip**, **Skip Tutorial** e **Get Started** (começar) marcam o tour como concluído, então ele não começa mais sozinho. Eles também podem liberar a conquista **Diligent Student**.
-- Só **Get Started** salva o idioma dos guias que você escolheu no último cartão (o idioma dos guias dentro do aplicativo). **Skip** deixa esse idioma como estava. Você pode mudá-lo depois em **Settings → General** (Configurações → Geral).
+- **Skip**, **Skip Tutorial** e o botão do último cartão marcam o tour como concluído, então ele não começa mais sozinho. Eles também podem liberar a conquista **Diligent Student**.
+- O último cartão tem uma lista para o idioma dos guias dentro do aplicativo. Só o botão do último cartão salva esse idioma; **Skip** deixa esse idioma como estava. Você pode mudá-lo depois em **Settings → General → Language → Documentation Language** (Configurações → Geral → Idioma → Idioma da documentação).
 
 ## Como o tour funciona
 
-O tour mostra um cartão por vez. Cada cartão traz um título, uma explicação curta e pontinhos de progresso. Em uma tela de computador normal, um anel pulsante destaca o botão de que o cartão está falando.
+O tour começa na tela inicial e mostra um cartão por vez. Cada cartão traz um título, uma explicação curta e pontinhos de progresso. Um anel destaca a parte da tela de que o cartão está falando, e algumas etapas abrem essa parte para você: a etapa da Biblioteca abre a visualização **Biblioteca** da barra lateral (com a página de Personagens no computador), a etapa dos chats muda para **Chats**, e a etapa das conexões abre a página de Conexões.
 
-Algumas etapas também abrem para você o painel ou a aba correspondente. A etapa **Connections** (Conexões), por exemplo, abre o painel **Connections**.
+Clique em **Next** (avançar) para ir ao próximo cartão. No celular ou no tablet, os cartões e destaques funcionam da mesma forma e indicam onde as coisas ficam em uma tela sensível ao toque.
 
-Clique em **Next** (avançar) para ir ao próximo cartão. Na última etapa, o botão mostra **Get Started**.
-
-No celular ou em outra tela estreita, cada cartão aparece centralizado abaixo da barra superior. Não há anel pulsante. Os painéis continuam abrindo, como sobreposições em tela cheia.
-
-## Referência: as 18 etapas
+## Referência: as etapas
 
 | # | Título do cartão | O que apresenta |
 | --- | --- | --- |
-| 1 | **Welcome to Marinara Engine!** | Um cartão de boas-vindas centralizado. A Professor Mari se oferece para mostrar o aplicativo a você. |
-| 2 | **Characters** | O botão do painel **Characters**, onde ficam os seus personagens. |
-| 3 | **Personas** | O botão do painel **Personas**, onde você define quem você é em um chat. |
-| 4 | **Lorebooks** | O botão do painel **Lorebooks**, que guarda detalhes extras do mundo e dos personagens. |
-| 5 | **Presets** | O botão do painel **Presets**, que controla como o prompt é montado. |
-| 6 | **Connections** | O botão do painel **Connections**. As conexões são a primeira coisa a configurar antes de conversar. |
-| 7 | **Agents** | O botão do painel **Agents**. O cartão indica **Agent Organizer** (organizador de agentes) para instalar agentes. |
-| 8 | **Settings** | O botão do painel **Settings**. Abre **Settings** na aba **General**. |
-| 9 | **Chats** | O botão liga/desliga da barra lateral. Abre a barra lateral de chats. |
-| 10 | **Conversation Mode** | A aba de conversa, que aparece como **CONVO**. |
-| 11 | **Roleplay Mode** | A aba de roleplay, que aparece como **RP**. |
-| 12 | **Game Mode** | A aba de jogo, que aparece como **GM**. |
-| 13 | **Home: Your Story Hub** | Volta para a tela inicial. A tela inicial é onde você continua um chat, começa um novo e organiza os widgets. |
-| 14 | **Ask Me Where Things Are** | A barra de busca no topo da tela inicial. No celular, o cartão diz para você puxar para baixo a partir da barra superior do aplicativo. |
-| 15 | **Guides and Home Controls** | Os favoritos **Documentation**, **Tutorial**, **FAQ** e **Widgets**. |
-| 16 | **Migrating from SillyTavern?** | O botão **Settings** de novo. Abre **Settings** na aba **Imports**. |
-| 17 | **You're All Set!** | O botão do painel **Connections** mais uma vez. |
-| 18 | **One Last Thing: Guide Language** | O favorito **Documentation**. Uma lista **Documentation Language** (idioma da documentação) define o idioma dos guias dentro do aplicativo. Os guias ainda não traduzidos aparecem em inglês. |
+| 1 | **Welcome to Marinara Engine!** (Boas-vindas ao Marinara Engine!) | A Professor Mari se oferece para mostrar o aplicativo a você. |
+| 2 | **The Library** (A Biblioteca) | A barra lateral à direita e a visualização **Library** dela: Personagens, Personas, Lorebooks, Presets e scripts Regex. O botão **Library** na barra superior abre e esconde essa barra lateral. |
+| 3 | **Your Chats** (Seus chats) | A visualização **Chats** da mesma barra lateral e **Chat settings** (Configurações do chat) dentro de um chat. |
+| 4 | **Three Ways to Chat** (Três maneiras de conversar) | As abas **Convo**, **Roleplay** e **Game** e para que serve cada modo. |
+| 5 | **Connections: Set This Up First** (Conexões: configure isto primeiro) | Abre a página de Conexões. Adicione uma conexão antes de conversar. |
+| 6 | **Agents** (Agentes) | Abre a página de Agentes, onde você instala recursos opcionais. |
+| 7 | **Settings (and SillyTavern Imports)** (Configurações e importações do SillyTavern) | Abre **Configurações** na aba **Dados**, onde ficam as importações do SillyTavern. |
+| 8 | **Tabs and Search** (Abas e busca) | As abas na barra superior e o botão de busca (<kbd>Ctrl</kbd>+<kbd>K</kbd>). |
+| 9 | **The Docs, and You're Set!** (A Documentação, e tudo pronto!) | O botão **Docs** (Documentação) e a lista de idiomas dos guias. |
+
+No celular ou no tablet, o tour acrescenta um cartão **Handy Gestures** (gestos úteis), com dez etapas ao todo. Neles, a Biblioteca fica atrás do botão de pilha no canto superior direito, os chats ficam no topo da mesma página, a busca fica atrás do título e a Documentação fica na Biblioteca.
+
+## Tutoriais para cada dispositivo
+
+Cada tipo de dispositivo (computador, tablet, celular) recebe um tutorial curto na primeira vez que Marinara abre nele, mesmo que você tenha concluído o tour completo em outro dispositivo. Ele mostra onde ficam os chats, a Biblioteca e a busca naquele dispositivo e, em uma tela sensível ao toque, o cartão **Handy Gestures**. Cada modo de chat também mostra as próprias dicas na primeira vez que você o abre naquele dispositivo. Repita os tutoriais em **Settings → General → Confirmations & Help → Walkthroughs** (Configurações → Geral → Confirmações e ajuda → Tutoriais).
 
 ## Guias relacionados
 
 - [Primeiros passos com Marinara Engine](welcome.md)
+- [Gestos de toque](../chats/messages.md#touch-gestures)
 - [Professor Mari, a assistente dentro do aplicativo](professor-mari.md)
 - [Conquistas](achievements.md)

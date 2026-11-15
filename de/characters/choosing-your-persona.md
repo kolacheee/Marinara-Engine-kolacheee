@@ -32,11 +32,9 @@ Wenn es nicht funktioniert hat: Du kannst nur Personas wählen, die du schon ers
 
 Im Game Mode ist dieser Abschnitt als deine Ingame-Party formuliert, trägt aber weiterhin die Beschriftung **Persona**.
 
-<a id="color-your-name-in-messages"></a>
+### Deinen Namen in Nachrichten einfärben
 
-### Den Namen in Nachrichten einfärben
-
-In einem Roleplay-Chat findest du im Abschnitt **Persona** die Option **Color Persona Name in Text** (Persona-Namen im Text einfärben). Sie färbt in Nachrichten den Namen deiner Persona, ihren Conversation-Anzeigenamen und ihre **Other names** (Weitere Namen) in der Namensfarbe der Persona ein. Bis du die Einstellung änderst, folgt sie **Color Character Names in Text** (Charakternamen im Text einfärben) im Abschnitt **Characters** (Charaktere). Ein gleichnamiger Charakter im Chat behält seine eigene Farbe. Damit die Farbe sichtbar wird, braucht die Persona eine Namensfarbe im Tab **Colors** (Farben).
+In einem Roleplay-Chat enthält der Abschnitt **Persona** die Option **Color Persona Name in Text** (Persona-Namen im Text einfärben). Sie färbt den Namen deiner Persona, ihren Conversation-Anzeigenamen und ihre **Other names** (weiteren Namen) innerhalb von Nachrichten in der Namensfarbe der Persona ein. Bis du die Einstellung änderst, folgt sie **Color Character Names in Text** im Abschnitt **Characters**. Hat ein Charakter im Chat denselben Namen, behält er seine eigene Farbe. Damit die Farbe erscheint, braucht die Persona im Tab **Colors** eine Namensfarbe.
 
 ## Beim Anlegen eines Chats
 
@@ -46,7 +44,7 @@ In einem Roleplay-Chat kann das Auswahlfenster auch **Create your persona** anbi
 
 ## Als Charakter spielen
 
-Um eine Charakterkarte als deine Identität zu verwenden, schalte unter **Settings → Advanced → Message Tools** die Option **Show characters in Persona pickers** (Charaktere in Persona-Auswahlen anzeigen) ein. Die Auswahlfenster zeigen dann eine Gruppe **Play as a character** (als Charakter spielen), in der deine Charaktere stehen.
+Um eine Charakterkarte als deine Identität zu verwenden, schalte unter **Settings → Chatting → Message Box** (Einstellungen → Chatten → Nachrichtenbox) die Option **Show characters in Persona pickers** (Charaktere in Persona-Auswahlen anzeigen) ein. Die Auswahlfenster zeigen dann eine Gruppe **Play as a character** (als Charakter spielen), in der deine Charaktere stehen.
 
 ## Verwandte Anleitungen
 

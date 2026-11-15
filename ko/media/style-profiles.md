@@ -6,7 +6,7 @@
 
 아바타, 초상화, Conversation(대화) 셀카, 장면 배경, 일러스트, 스프라이트까지, 생성되는 이미지는 모두 텍스트 프롬프트에서 출발합니다. 스타일 프로필은 Marinara가 그 프롬프트에 덧붙이는 규칙을 저장해 둔 것입니다. 긍정 단어(넣고 싶은 것), 부정 단어(피하고 싶은 것), 선호하는 프롬프트 형식을 더할 수 있습니다. 프로필 하나를 앱 전체의 기본값으로 고릅니다. 특정 채팅이나 특정 이미지 모델에서만 다른 프로필로 덮어쓸 수도 있습니다.
 
-편집기를 찾으려면 **Settings → Generations → Image Generation**(설정 → 생성 → 이미지 생성)을 열고 **Style Profiles**(스타일 프로필)까지 스크롤하세요.
+편집기를 찾으려면 **Settings → Media → Image Generation**(설정 → 미디어 → 이미지 생성)을 열고 **Style Profiles**(스타일 프로필)까지 스크롤하세요.
 
 ## 기본 제공 프로필
 
@@ -35,7 +35,7 @@ Marinara에는 기본 제공 스타일 프로필이 10가지 있습니다. 기�
 
 기본 프로필은 채팅이나 이미지 모델이 따로 덮어쓰지 않는 한 모든 이미지에 적용됩니다.
 
-1. **Settings → Generations → Image Generation → Style Profiles**를 여세요.
+1. **Settings → Media → Image Generation → Style Profiles**를 여세요.
 2. **Default style**(기본 스타일) 목록을 여세요.
 3. 프로필을 고르세요.
 

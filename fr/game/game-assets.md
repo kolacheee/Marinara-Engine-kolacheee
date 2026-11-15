@@ -31,7 +31,7 @@ Les fichiers et dossiers fournis sont protégés. Tu ne peux ni les supprimer ni
 Le panneau **Asset Browser** est un gestionnaire de fichiers pour les ressources de jeu. Ouvre-le depuis **Settings** (Paramètres) :
 
 1. Ouvre **Settings**.
-2. Va dans l'onglet **Imports**.
+2. Va dans l'onglet **Game** (jeu).
 3. Repère **Game Assets** (ressources de jeu) et clique sur **Asset Browser**.
 
 Ou ouvre-le depuis une partie :
@@ -57,7 +57,7 @@ Tu dois te trouver dans un dossier de catégorie. Si tu déposes des fichiers à
 
 ### Téléverser depuis Settings
 
-1. Ouvre **Settings** et va dans l'onglet **Imports**.
+1. Ouvre **Settings** et va dans l'onglet **Game**.
 2. Dans **Game Assets**, choisis une catégorie dans le menu **Type** : **Music**, **Ambient**, **Sound Effects**, **Sprites** ou **Backgrounds**.
 3. Indique la destination dans le champ **Folder** (dossier), ou garde la valeur par défaut.
 4. Clique sur **Choose Files** (choisir des fichiers) et sélectionne tes fichiers.
@@ -155,7 +155,7 @@ Les arrière-plans de départ fournis comptent comme partagés, sauf ceux de fan
 
 Game Mode peut générer des effets sonores et de la musique avec un compte **Music & Sound Effects** (musique et effets sonores). Choisis ElevenLabs, SunoAPI ou un serveur compatible personnalisé. Chaque nouveau son ou nouvelle piste utilise ce compte de service. L'audio fourni reste disponible sans génération.
 
-**Avant de commencer :** tu as besoin d'un compte **Music & Sound Effects**. La fenêtre **Add account** (ajouter un compte) n'a pas de tuile pour lui. Ces comptes proviennent d'une mise à jour ou d'un import (**Import a backup** (importer une sauvegarde) dans **Connections** (connexions)). Consulte la [configuration des fournisseurs et ses limites](../connections/providers-reference.md#music--sound-effects).
+**Avant de commencer :** tu as besoin d'un compte **Music & Sound Effects**. La liste **Add connection** (ajouter une connexion) n'a pas d'entrée pour lui. Ces comptes proviennent d'une mise à jour ou d'un import (**Import** (importer) sur la page **Connections** (connexions)). Consulte la [configuration des fournisseurs et ses limites](../connections/providers-reference.md#music--sound-effects).
 
 1. Dans **Connections**, ouvre le modèle du compte avec **Edit model** (modifier le modèle).
 2. Choisis le service, saisis sa clé et sélectionne les modèles de musique et d'effets sonores. La musique SunoAPI nécessite aussi une URL de rappel HTTPS publique. Un serveur personnalisé a besoin des chemins de ses points d'accès.

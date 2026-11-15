@@ -2,7 +2,7 @@
 
 Un appel est un écran en direct, comme une application de chat vocal, où tu parles à un ou plusieurs personnages au microphone ou en tapant. Il se place par-dessus le chat Conversation normal pendant qu'il fonctionne. Les appels existent seulement en mode Conversation.
 
-Les appels sont un package facultatif. Installe **Calls** depuis **Agents → Agent Organizer**. Si le catalogue te demande de redémarrer, arrête Marinara et démarre-le à nouveau comme tu le démarres d'habitude (voir [Installation](../INSTALLATION.md)).
+Les appels sont un package facultatif. Installe **Calls** depuis **Library → Agents** (Bibliothèque → Agents). Si le catalogue te demande de redémarrer, arrête Marinara et démarre-le à nouveau comme tu le démarres d'habitude (voir [Installation](../INSTALLATION.md)).
 
 Pendant un appel, les personnages qui ont un Text to Speech (TTS, synthèse vocale) fonctionnel disent leurs réponses à voix haute. Les personnages sans voix répondent par des messages tapés dans le chat de l'appel. Tu peux aussi afficher des clips vidéo en boucle faits par IA d'un personnage à la place d'un avatar fixe.
 
@@ -27,7 +27,9 @@ Marinara enregistre ton microphone ou ta caméra dans ton navigateur. Selon le m
 5. Choisis un **Audio input mode** (ci-dessous).
 6. Clique sur **Start call**.
 
-Si ça n'a pas marché : quand tu vois "Conversation call audio is not enabled in Chat Settings", **Call Audio Pipeline** est désactivé. C'est un réglage global, donc l'activer dans un chat l'active pour tous les appels Conversation. Pour un nouveau chat, termine d'abord l'assistant de configuration, puis ouvre les **Chat Settings** de ce chat. Les réglages d'appel s'affichent seulement quand Calls est installé.
+Si ça n'a pas marché : quand tu vois "Conversation call audio is not enabled in Chat Settings", **Call Audio Pipeline** est désactivé. C'est un réglage global, donc l'activer dans un chat l'active pour tous les appels Conversation.
+
+Pour un nouveau chat, termine d'abord l'assistant de configuration, puis ouvre les **Chat Settings** de ce chat. Les réglages d'appel s'affichent seulement quand Calls est installé.
 
 Deux interrupteurs se ressemblent mais font des choses différentes :
 
@@ -36,18 +38,15 @@ Deux interrupteurs se ressemblent mais font des choses différentes :
 
 L'interrupteur principal **Commands** dans la même section doit être activé pour les commandes pendant l'appel. L'appel lui-même peut démarrer avec lui désactivé.
 
-<a id="set-up-text-to-speech"></a>
-
 ### Configurer Text to Speech
 
-Text to Speech décide quels personnages peuvent parler et avec quelle voix. Lis [Configuration de Text to Speech (TTS)](../media/tts-setup.md) pour le guide complet. En bref, ouvre **Connections**, clique sur **Add account** et choisis **Text to speech**. S'il est déjà listé sous **On this device**, ouvre-le là. Ensuite :
+Text to Speech décide quels personnages peuvent parler et avec quelle voix. Lis [Configuration de Text to Speech (TTS)](../media/tts-setup.md) pour le guide complet. En bref :
 
-1. Active Text to Speech.
-2. Choisis une source : **OpenAI-compatible**, **ElevenLabs**, **PocketTTS** ou **xAI Voice**.
-3. Saisis la clé API ou l'adresse du serveur local pour cette source.
-4. Choisis un modèle et une voix.
-5. Règle **Voice option** sur **One voice for all** ou **Selected per character or persona**. Des voix par personnage rendent les appels de groupe plus faciles à suivre.
-6. Enregistre, puis utilise l'aperçu pour confirmer que tu entends l'audio.
+1. Ouvre **Connexions** et clique sur la ligne **Voix** dans l'encadré **Tâches**.
+2. Choisis un modèle vocal ou un service vocal. Ce choix active la synthèse vocale. Le compte de ce modèle fournit la clé et l'adresse.
+3. Clique sur l'engrenage de la ligne **Voix** pour ouvrir **Réglages de Voix**.
+4. Dans **Qui parle**, choisis une **Voix partagée**, ou attribue aux personnages et aux personas leurs propres voix sous **Voix des personnages et des personas**. Des voix par personnage rendent les appels de groupe plus faciles à suivre.
+5. Clique sur **Écouter** pour confirmer que tu entends l'audio.
 
 Si un personnage n'a pas de voix que Marinara peut résoudre, ce personnage reste en texte seulement pour l'appel.
 
@@ -120,16 +119,14 @@ Désactiver **Character video presence** désactive aussi les deux autres. Les c
 
 Nécessaire seulement pour le mode **Mic recording + Local Whisper**, ou si tu veux ton propre serveur de reconnaissance vocale.
 
-<a id="download-local-whisper"></a>
-
 ### Télécharger Local Whisper
 
 Local Whisper transforme ta voix en texte sur l'ordinateur qui exécute Marinara, donc l'audio de ton microphone ne le quitte pas pour la transcription. Le texte est quand même envoyé à ton modèle dans le cadre de l'appel. C'est le chemin de microphone le plus fiable pour les navigateurs à faible prise en charge de la voix, comme Firefox.
 
 **Avant de commencer :** installe Calls. La section est masquée sans lui.
 
-1. Ouvre **Connections** et trouve **Speech to text** sous **On this device**. S'il n'est pas listé, clique sur **Add account** et choisis **Speech to text**.
-2. Trouve **Local speech model** sur cette page.
+1. Ouvre **Connexions** et trouve **Modèle vocal local** dans la carte **Sur cet appareil**.
+2. Clique sur **Modèle vocal local** dans cette carte.
 3. Choisis un modèle :
    - **Whisper Tiny (Multilingual)** : environ 180 Mo à télécharger et 350 Mo de mémoire. Idéal pour les téléphones et les ordinateurs plus anciens.
    - **Whisper Base (Multilingual)** : environ 320 Mo à télécharger et 650 Mo de mémoire. Meilleur avec une voix peu claire.
@@ -140,13 +137,11 @@ Une icône de corbeille, **Delete Local Whisper**, supprime le modèle. Désinst
 
 Si ça n'a pas marché : sur une build Lite de Marinara, tu vois "Local Whisper is disabled in Lite mode. Use a full Marinara install to download and run the local speech model." Si tu vois un message sur le "native ONNX runtime", le moteur vocal de ta plateforme manque. Réinstalle les dépendances avec la même version de Node que celle avec laquelle tu exécutes Marinara, puis redémarre.
 
-<a id="use-your-own-speech-to-text-server"></a>
-
 ### Utiliser ton propre serveur de reconnaissance vocale
 
 Si Local Whisper a du mal avec ta langue ou ton accent, envoie plutôt ta voix à un autre serveur de reconnaissance vocale. Tout serveur qui accepte le format de reconnaissance vocale d'OpenAI (l'adresse `/audio/transcriptions`) convient, que tu l'exécutes toi-même ou que tu utilises un service comme OpenAI ou Groq.
 
-1. Ouvre **Connections** et ouvre **Speech to text** sous **On this device**. S'il n'est pas listé, clique sur **Add account** et choisis **Speech to text**. Il est masqué tant que Calls n'est pas installé.
+1. Ouvre **Connexions** et clique sur l'engrenage de la ligne **Dictée** dans l'encadré **Tâches**. Les réglages du serveur de **Reconnaissance vocale** s'y trouvent. Ils sont masqués tant que Calls n'est pas installé.
 2. Saisis le champ **Server URL**, par exemple `http://localhost:8000/v1`.
 3. Saisis une **API key** si le serveur en a besoin. Elle est enregistrée chiffrée et affichée masquée.
 4. Saisis le **Model** que ton serveur utilise. Laisse vide pour envoyer `whisper-1`.
@@ -158,7 +153,7 @@ Tant qu'il est activé, **Mic recording + Local Whisper** envoie ta voix à ce s
 
 Un serveur sur le même ordinateur fonctionne tel quel. Un serveur sur un autre ordinateur de ton réseau est refusé sauf si tu définis `STT_LOCAL_URLS_ENABLED=true` dans `.env` (voir [Référence de configuration du serveur](../CONFIGURATION.md)).
 
-Si ça n'a pas marché : lis le message sous **Test**. "Could not reach the speech-to-text server" veut dire que l'adresse est mauvaise ou que le serveur est éteint. Un message qui nomme `STT_LOCAL_URLS_ENABLED` veut dire que le serveur est sur un autre ordinateur. Un nombre vient de ton serveur : 401 veut généralement dire une mauvaise clé API, 404 une mauvaise adresse ou un mauvais nom de modèle. Si les appels utilisent encore Local Whisper, mets à jour Calls depuis **Agents → Agent Organizer**.
+Si ça n'a pas marché : lis le message sous **Test**. "Could not reach the speech-to-text server" veut dire que l'adresse est mauvaise ou que le serveur est éteint. Un message qui nomme `STT_LOCAL_URLS_ENABLED` veut dire que le serveur est sur un autre ordinateur. Un nombre vient de ton serveur : 401 veut généralement dire une mauvaise clé API, 404 une mauvaise adresse ou un mauvais nom de modèle. Si les appels utilisent encore Local Whisper, mets à jour Calls depuis **Library → Agents**.
 
 ## Réglages et valeurs par défaut
 

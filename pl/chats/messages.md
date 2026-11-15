@@ -2,7 +2,7 @@
 
 Każda wiadomość, twoja albo napisana przez AI, ma pasek narzędzi. Służy on do edycji, usuwania, ponownego generowania i ukrywania pojedynczej wiadomości oraz do tworzenia od niej gałęzi.
 
-Pasek pojawia się, gdy na telefonie lub tablecie dotkniesz wiadomości, a na komputerze najedziesz na nią kursorem.
+Na komputerze najedź kursorem na wiadomość, żeby pokazać jej pasek narzędzi. Na telefonie lub tablecie naciśnij i przytrzymaj wiadomość: te same działania otworzą się w wysuwanym panelu.
 
 ## Pasek narzędzi wiadomości
 
@@ -42,7 +42,7 @@ Więcej: [Peek Prompt](peek-prompt.md), [Gałęzie czatu](branches.md), [Sceny](
 3. Kliknij **Save** (zapisanie) albo naciśnij <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (na komputerze Mac <kbd>Cmd</kbd>+<kbd>Enter</kbd>).
 4. Aby przerwać bez zapisywania, kliknij **Cancel** (anulowanie) albo naciśnij <kbd>Esc</kbd>.
 
-Dwa ustawienia w **Settings → General → Input & Editing** (ustawienia, ogólne, wprowadzanie i edycja) pozwalają szybciej zacząć edycję. Oba są domyślnie włączone.
+Dwa ustawienia w **Ustawienia → Czatowanie → Edycja i swipe'y** pozwalają szybciej zacząć edycję. Oba są domyślnie włączone.
 
 - **Up Arrow edits last message** (edycja ostatniej wiadomości strzałką w górę): naciśnij <kbd>Up</kbd>, gdy pole wpisywania jest puste.
 - **Double-click edits messages** (edycja wiadomości dwukrotnym kliknięciem): kliknij dwukrotnie albo dotknij dwukrotnie wiadomości w trybie Roleplay.
@@ -74,6 +74,20 @@ Swipe to jedna wersja odpowiedzi AI. Jedna wiadomość może mieścić kilka swi
 
 Ostatniego swipe'a nie da się usunąć. Aplikacja zgłasza wtedy "Cannot delete the last remaining swipe". Użyj zamiast tego opcji **Delete this message**.
 
+## Gesty dotykowe
+
+W nowym układzie na telefonie lub tablecie przesunięcia i długie naciśnięcia zastępują przyciski, które na komputerze pojawiają się po najechaniu kursorem.
+
+- **Przesuń najnowszą odpowiedź** w lewo lub w prawo, żeby przełączać się między jej swipe'ami. Przesunięcie w lewo za ostatni wariant wyświetla pytanie "Wygenerować nową odpowiedź?", zanim powstanie nowa, bo nowa odpowiedź wymaga żądania.
+- **Przesuń tytuł** na górnym pasku w lewo lub w prawo, żeby przełączać się między otwartymi kartami. Ekran główny liczy się jako karta przed pierwszą z nich. Działa to w układzie telefonu, którego tablet używa w pionie; w poziomie tablet pokazuje zamiast tego pasek kart.
+- **Przesuń czat** na liście czatów w lewo, żeby pokazać opcje **Przypnij**, **Zmień nazwę**, **Tagi** i **Usuń**.
+- **Naciśnij i przytrzymaj wiadomość**, żeby zobaczyć jej działania: Wygeneruj ponownie, Edytuj, Kopiuj, Utwórz gałąź i pozostałe.
+- **Naciśnij i przytrzymaj czat** na liście czatów, żeby zobaczyć te same działania.
+
+Wyłącz przesunięcia przełącznikiem **Gesty przesuwania na ekranach dotykowych** w Ustawienia > Czatowanie > Edycja i swipe'y. Długie naciśnięcie działa niezależnie od tego ustawienia.
+
+Przy pierwszym otwarciu aplikacji Marinara na telefonie, tablecie lub komputerze krótki przewodnik pokazuje rozmieszczenie funkcji na danym rodzaju urządzenia, w tym gesty na ekranach dotykowych. Każdy tryb czatu również pokazuje wskazówki przy pierwszym otwarciu na tym urządzeniu. Możesz odtworzyć je ponownie w Ustawienia > Ogólne > Przewodniki.
+
 ## Ponowne generowanie, kontynuacja i ponowna próba
 
 Te trzy działania wyglądają podobnie, ale robią co innego.
@@ -92,7 +106,7 @@ Wpisz `/continue` (albo `/cont`) w polu wpisywania i wyślij. Model podejmuje w�
 /continue
 ```
 
-Marinara wstawia pustą linię przed nowym tekstem. Aby doklejać go wprost do ostatniego znaku, wyłącz **Settings → General → Responses → Add a new line before /continue text** (ustawienia, ogólne, odpowiedzi, nowa linia przed tekstem z /continue).
+Marinara wstawia pustą linię przed nowym tekstem. Aby doklejać go wprost do ostatniego znaku, wyłącz **Ustawienia → Czatowanie → Odpowiedzi → Dodawaj nowy wiersz przed tekstem /continue**.
 
 ### Ponowna próba przy pustym polu
 
@@ -110,11 +124,9 @@ Aby ukryć zakres wiadomości, użyj komend `/hide` i `/unhide`. Zobacz [Lista k
 
 Gdy w funkcji Advanced Memory włączona jest opcja **Decide who sees new messages** (decydowanie, kto widzi nowe wiadomości), nowe wiadomości w czacie grupowym, w którym postacie odpowiadają po kolei, są automatycznie ukrywane przed nieobecnymi postaciami. Twój własny wybór zawsze ma pierwszeństwo. Zobacz [Decydowanie, kto widzi nowe wiadomości](../agents/memory.md#deciding-who-sees-new-messages).
 
-<a id="message-display-toggles"></a>
-
 ## Przełączniki wyświetlania wiadomości
 
-Znajdują się w **Settings → Advanced → Message Tools** (ustawienia, zaawansowane, narzędzia wiadomości).
+Znajdują się w **Ustawienia → Czatowanie → Informacje o wiadomości**.
 
 | Przełącznik | Domyślnie | Co pokazuje |
 | --- | --- | --- |

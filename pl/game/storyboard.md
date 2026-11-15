@@ -11,11 +11,10 @@ Oba tryby zapisują obrazy klatek kluczowych w zakładce **Images** (obrazy) pan
 
 ## Instalacja agenta
 
-1. Kliknij ikonę Sparkles, żeby otworzyć panel **Agents** (agenci).
-2. Wybierz **Agent Organizer** (organizowanie agentów).
-3. Otwórz pakiet **Storyboard** i kliknij **Install** (instalacja).
-4. Otwórz czat w trybie Game Mode albo Roleplay, a potem **Chat Settings → Agents** (ustawienia czatu, agenci).
-5. Włącz **Enable Agents** (włączenie agentów), a potem **Enable Storyboards** (włączenie storyboardów) na karcie agenta Storyboard.
+1. Otwórz **Biblioteka → Agenci** i kliknij **Dostępne**.
+2. Znajdź **Storyboard** i kliknij **Pobierz**.
+3. Otwórz czat w trybie Game Mode albo Roleplay, a potem **Chat Settings → Agents** (ustawienia czatu, agenci).
+4. Włącz **Enable Agents** (włączenie agentów), a potem **Enable Storyboards** (włączenie storyboardów) na karcie agenta Storyboard.
 
 Instalacja udostępnia agenta, ale nie włącza go w każdym czacie. Ponowne uruchomienie aplikacji Marinara Engine nie jest potrzebne.
 
@@ -142,8 +141,6 @@ Szablon przepuszczający wysyła zwięzłe tagi NovelAI z planera i nie opakowuj
 
 Na karcie GPU z 8 GB pamięci VRAM zacznij od jednej klatki kluczowej w 480p. Gdy to zadziała, przechodź stopniowo do trzech klatek kluczowych i większych rozmiarów. Konto ComfyUI, symbole zastępcze i pełny test opisuje przewodnik [Storyboardy LTX 2.3 w Game Mode](ltx-2-3-storyboards.md).
 
-<a id="roleplay-storyboards"></a>
-
 ## Storyboardy w trybie Roleplay
 
 Storyboardy w trybie Roleplay łączą zakończone wymiany wiadomości w odcinek wizualny, wyświetlany pod odpowiedzią AI, która go kończy.
@@ -186,7 +183,7 @@ Storyboard to agent osobny od agenta Illustrator, a ręczne działania agenta Il
 
 ## Ustawienia agenta Storyboard
 
-Otwórz panel **Agents**, wybierz **Storyboard** i otwórz jego konfigurację. Te wartości są domyślne dla czatów, które nie mają własnych ustawień.
+Otwórz **Biblioteka → Agenci**, kliknij **Storyboard** i otwórz jego konfigurację. Te wartości są domyślne dla czatów, które nie mają własnych ustawień.
 
 | Ustawienie | Domyślnie | Do czego służy |
 | --- | --- | --- |
@@ -231,8 +228,6 @@ Każda klatka kluczowa to osobne zadanie generowania obrazu. Storyboardy animowa
 ## Gry ze starszego systemu storyboardów
 
 Istniejące czaty gry mogą mieć ustawienia zapisane przez starszy, wbudowany interfejs storyboardów. Po instalacji pakietu Marinara zachowuje je jako własne ustawienia czatu, więc starsza gra może działać inaczej, niż wynika z bieżących wartości domyślnych agenta. Otwórz **Chat Settings → Agents → Storyboards** i użyj przycisku przywracania przy każdym polu, które ma znowu dziedziczyć wartość domyślną agenta. Te ustawienia to wyłącznie dane z migracji. Generowanie nadal wymaga, żeby pakiet był zainstalowany i włączony w danej grze.
-
-<a id="troubleshooting"></a>
 
 ## Rozwiązywanie problemów
 

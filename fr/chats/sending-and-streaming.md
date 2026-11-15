@@ -15,7 +15,7 @@ Si ça n'a pas marché : si aucun modèle n'est défini pour le chat, la répons
 
 ### Send on Enter
 
-Ce réglage se trouve dans **Settings → General → Input & Editing** (Paramètres → Général → Saisie et édition). Il y a un interrupteur par mode de chat.
+Ce réglage se trouve dans **Settings → Chatting → Message Box** (Paramètres → Chat → Zone de message). Il y a un interrupteur par mode de chat.
 
 | Mode de chat | Par défaut | Quand il est désactivé |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ Ce réglage se trouve dans **Settings → General → Input & Editing** (Paramè
 | Conversations | Activé | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> sur Mac) envoie le message. |
 | Game | Activé | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> sur Mac) envoie le message. |
 
-Roleplay est désactivé par défaut, car les messages de roleplay sont souvent longs et ont besoin de sauts de ligne. Professor Mari a son propre interrupteur, **Enter sends to Professor Mari** (Enter envoie à Professor Mari), dans **Settings → General → Search and Professor Mari settings** (Paramètres → Général → réglages de Search et de Professor Mari).
+Roleplay est désactivé par défaut, car les messages de roleplay sont souvent longs et ont besoin de sauts de ligne. Professor Mari a son propre interrupteur, **Enter sends to Professor Mari** (Enter envoie à Professor Mari), dans **Settings → General → Professor Mari** (Paramètres → Général → Professor Mari).
 
 ## Joindre des images et des fichiers
 
@@ -49,7 +49,7 @@ Pour la galerie propre à un personnage, utilise la forme portable `card://self/
 
 ## Le streaming de la réponse
 
-Le streaming affiche la réponse mot après mot, au lieu de tout d'un coup. Ces réglages se trouvent dans **Settings → General → Responses** (Paramètres → Général → Réponses).
+Le streaming affiche la réponse mot après mot, au lieu de tout d'un coup. Ces réglages se trouvent dans **Settings → Chatting → Responses** (Paramètres → Chat → Réponses).
 
 | Réglage | Par défaut | Ce qu'il fait |
 | --- | --- | --- |

@@ -25,8 +25,8 @@ Hat das Preset Variablen, öffnet sich das Fenster **Configure Preset Variables*
 
 ## Ein Preset anlegen
 
-1. Öffne das Panel **Presets** über die Seitenleiste.
-2. Klick auf **New** (das Plus-Symbol). Das Fenster **Create Preset** (Preset erstellen) öffnet sich.
+1. Öffne **Library → Presets** (Bibliothek → Presets). Die Bibliothek ist rechts.
+2. Klick auf **New preset** (Neues Preset). Das Fenster **Create Preset** (Preset erstellen) öffnet sich.
 3. Gib einen **Name** ein. Das Feld ist Pflicht. Ergänze bei Bedarf eine **Description** (Beschreibung).
 4. Klick auf **Create**. Das Preset öffnet sich im **Preset Editor**.
 5. Bau den Prompt auf dem Tab **Sections** (Abschnitte) zusammen.
@@ -36,13 +36,26 @@ Der Editor speichert nicht von selbst. Klick nach jeder Änderung auf **Save**. 
 
 Zum Exportieren klickst du in der oberen Leiste auf das Symbol mit dem Pfeil nach oben (Tooltip **Export preset**). Bei ungespeicherten Änderungen bittet Marinara dich, zuerst zu speichern. Zum Löschen klickst du auf das Papierkorb-Symbol.
 
-## Das Presets-Panel
+## Die Presets-Seite
 
-Das Panel hat drei Tabs: **Presets**, **Regexes** und **Functions** (Funktionen). Jeder Tab hat oben dieselbe Reihe von Schaltflächen, ein Suchfeld und **New Folder** (Neuer Ordner). Unter **Presets** legst du mit **Create preset** (Preset erstellen) ein Preset an, lädst mit **Import preset** (Preset importieren) eine `.json`-Datei oder exportierst und löschst mit **Select presets** (Presets auswählen) mehrere auf einmal. Der Tab **Regexes** enthält deine Regex-Skripte. Siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts). Im Tab **Functions** findest du deine eigenen Tools. Siehe [Eigene Tools](../extending/custom-tools.md).
+Unter **Library → Presets** stehen deine Presets in einer Tabelle mit den Spalten **Description**, **Sections**, **Author** (Autor), **Default** (Standard) und **Updated** (Aktualisiert). Oben findest du **Import** (Importieren; lädt eine `.json`-Datei) und **New preset**. Mit **All** (Alle) / **Defaults** (Standardwerte) grenzt du die Liste ein. **Tags** neben der Suche zeigt nur Presets mit den gewählten Tags (importierte Presets tragen **Imported** (Importiert) und ihre Herkunft, etwa **ST**). **List** (Liste) / **Gallery** (Galerie) wechselt die Ansicht, und das Sortiermenü bietet **Recently edited** (Kürzlich bearbeitet), **A to Z** (A bis Z), **Z to A** (Z bis A) und **My order** (Meine Reihenfolge). Klick auf ein Preset, um es zu öffnen.
+
+So organisierst du Presets:
+
+- **⋯** am Ende einer Zeile (oder ein Rechtsklick auf die Zeile) bietet **Duplicate** (Duplizieren), **Move to folder** (In Ordner verschieben), **Export** (Exportieren), **Select** (Auswählen) und **Delete** (Löschen). **Duplicate** erstellt eine bearbeitbare Kopie und öffnet sie. So passt du ein mitgeliefertes Preset an. Das Standard-Preset lässt sich nicht löschen.
+- Zieh eine Zeile über oder unter eine andere, um deine eigene Reihenfolge festzulegen. Das Sortiermenü wechselt zu **My order**.
+- **New folder** (Neuer Ordner; das Ordnersymbol neben dem Titel) gruppiert Presets. Zieh ein Preset auf einen Ordner oder nutze **Move to folder**.
+- Mit **Select** (dem Häkchen-Symbol neben dem Titel) wählst du mehrere Presets aus. Anschließend kannst du sie über die Leiste unten mit **Move to folder** verschieben, mit **Export** (als ein `marinara-presets.zip`) exportieren oder mit **Delete** löschen.
+
+Regex-Skripte haben ihre eigene Seite unter [Library → Regex scripts](../extending/regex-scripts.md), eigene Tools ebenso unter [Library → Custom tools](../extending/custom-tools.md).
+
+## Im klassischen Layout: das Presets-Panel
+
+Der Tab **Voreinstellungen** enthält **Prompts** und **Funktionen**. Mit **Preset erstellen** legst du ein Preset an, mit **Preset importieren** lädst du eine `.json`-Datei und mit **Presets auswählen** exportierst oder löschst du mehrere auf einmal. Im Tab **Regex-Skripte** kannst du Skripte in Ordnern organisieren oder mehrere gemeinsam ein- oder ausschalten. Siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts).
 
 - **Search presets** (Presets durchsuchen) filtert die Liste.
 - Das Sortiermenü bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest** und **Oldest**. Bei **Manual order** ziehst du eine Zeile oder drückst auf einer fokussierten Zeile <kbd>Alt</kbd>+<kbd>Up</kbd> oder <kbd>Alt</kbd>+<kbd>Down</kbd>. Auf einem Touchscreen hältst du eine Zeile gedrückt, um sie aufzunehmen.
-- **New Folder** gruppiert Presets. Zieh ein Preset auf einen Ordner; ein Doppelklick oder Doppeltipp auf einen Ordner benennt ihn um.
+- **New Folder** (Neuer Ordner) gruppiert Presets. Zieh ein Preset auf einen Ordner; ein Doppelklick oder Doppeltipp auf einen Ordner benennt ihn um.
 
 Jede Zeile zeigt Name, Wrap-Format, Anzahl der Abschnitte und Autor. Das Abzeichen **DEFAULT** kennzeichnet den mit Stern markierten Standard. Ein Klick auf eine Zeile öffnet das Preset.
 
@@ -62,6 +75,7 @@ Jede Zeile zeigt Name, Wrap-Format, Anzahl der Abschnitte und Autor. Das Abzeich
 - **Description** ist eine kurze Zusammenfassung.
 - **Wrap Format** steuert, wie Abschnitte formatiert werden (siehe [Wrap-Formate](#wrap-formats)).
 - **Author** ist ein optionaler Name der erstellenden Person, praktisch, wenn du ein Preset weitergibst.
+- **Tags** ordnen Presets für den Filter **Tags** auf der Presets-Seite. Gib einen Tag ein und drück Enter oder klick auf das **×** eines Tags, um ihn zu entfernen.
 
 Zwei schreibgeschützte Karten zeigen die Anzahl der **Sections** und **Groups**.
 
@@ -70,6 +84,7 @@ Zwei schreibgeschützte Karten zeigen die Anzahl der **Sections** und **Groups**
 - **Conversation Mode** ist ein Textfeld für den Conversation-Prompt dieses Presets. Lass es leer, um den eingebauten Prompt zu nutzen.
 - **Roleplay Mode** lässt sich hier nicht bearbeiten. Roleplay nutzt den Prompt, der aus deinen **Sections** zusammengesetzt wird.
 - **Game Mode** ist ein Textfeld für den Game-Prompt dieses Presets. Lass es leer, um den eingebauten Prompt zu nutzen.
+- Unter **Game-Story-Einstellungen** legst du Erzählstil, Gewalt und inhaltliche Grenzen für Game Mode fest. Schalte **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden** ein: Wenn du das Preset für ein Spiel auswählst, legt es dessen Stil und Gewalt fest und ergänzt die eigenen Grenzen des Spiels um diese Grenzen. Siehe [Inhalte und Erzählstil](../game/getting-started.md#content-and-story-style).
 
 Das integrierte **Marinara's Universal Preset** liefert Prompt-Text, aber keine Generierungsparameter. Seine älteren gespeicherten Einstellungen für Sampling, Reasoning, Formatierung und Tokens werden ignoriert; stattdessen gelten deine Kontoeinstellungen, Chat-Überschreibungen und die Standardwerte der App. Erstelle eine bearbeitbare Kopie, um es anzupassen.
 
@@ -170,7 +185,7 @@ Unter dem Dropdown-Menü zeigt ein Abzeichen, woher der Prompt stammt.
 
 Das Textfeld zeigt den Prompt, der gerade gilt. Bearbeite ihn, um eine chatlokale Kopie anzulegen. Stimmt dein Text exakt mit dem Preset oder dem Standard überein, wertet Marinara ihn nicht als Anpassung. Solange eine eigene Bearbeitung existiert, erscheint ein Symbol zum Zurücksetzen (Tooltip **Reset to default prompt**).
 
-Game-Chats haben zwei zusätzliche Bedienelemente. **GM prompt style** (GM-Prompt-Stil) ersetzt nur den Game-Prompt, und eine chatlokale Bearbeitung hat weiterhin Vorrang. **Extra instructions** (zusätzliche Anweisungen) ergänzt den Game-Prompt um Text, bis zu 2.000 Zeichen, etwa „Write in the style of Terry Pratchett.“
+Game-Chats haben weitere Bedienelemente. **GM prompt style** (GM-Prompt-Stil) ersetzt nur den Game-Prompt, und eine chatlokale Bearbeitung hat weiterhin Vorrang. **Extra instructions** (zusätzliche Anweisungen) ergänzt den Game-Prompt um Text, bis zu 2.000 Zeichen, etwa „Write in the style of Terry Pratchett.“ **Altersfreigabe-Richtlinien**, **Erzählstil**, **Gewalt** und **Inhaltliche Grenzen** sind die Inhaltseinstellungen des Spiels; siehe [Inhalte und Erzählstil](../game/getting-started.md#content-and-story-style).
 
 <a id="decision-blocks-and-prompt-caching"></a>
 

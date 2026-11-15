@@ -86,13 +86,13 @@ Esta página explica cómo empezar, probar y compartir un conjunto de reglas. Ca
 
 ## Probar tu conjunto de reglas
 
-Antes de empezar, activa **Allow custom Agent imports** (Permitir importaciones de agentes personalizados) en **Settings → Advanced → Danger Zone** (Configuración → Avanzado → Zona de peligro). Los conjuntos de reglas importados usan el mismo interruptor de seguridad que los agentes importados, así que está desactivado hasta que lo actives. La importación también necesita acceso desde localhost o el secreto de administrador (**Settings → Advanced → Admin Access**, Configuración → Avanzado → Acceso de administrador).
+Antes de empezar, activa **Allow custom Agent imports** (Permitir importaciones de agentes personalizados) en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad). Los conjuntos de reglas importados usan el mismo interruptor de seguridad que los agentes importados, así que está desactivado hasta que lo actives. La importación también necesita acceso desde localhost o el secreto de administrador (**Settings → Advanced → Security**).
 
-1. Abre el panel **Agents** (Agentes) y elige el botón **Import agents** (Importar agentes), el icono de descarga de la fila de botones de la parte superior del panel.
+1. Abre **Library → Agents** (Biblioteca → Agentes) y haz clic en **Import agents** (Importar agentes), el icono de descarga junto a **Starter kits** (Kits de inicio). En el diseño clásico, es el icono de descarga de la parte superior del panel **Agents**.
 2. Elige **Game Mode ruleset** (Conjunto de reglas de Game Mode) y selecciona tu archivo JSON, o un archivo de paquete de conjunto de reglas que termine en `.ruleset.json` (consulta [Compartir tu conjunto de reglas](#sharing-your-ruleset)).
 3. Lee la revisión. Muestra el nombre, la versión, la licencia, lo que cubre el conjunto de reglas y el texto del Game Master. Elige **Import** (Importar).
 
-Tu conjunto de reglas aparece en la sección **Rules** del panel y en la opción **Rules** del asistente de configuración para partidas nuevas. Un conjunto de reglas importado desde un archivo se clasifica como `local/<your id>`, así que nunca se confunde con uno oficial ni con el de otra persona.
+Tu conjunto de reglas aparece en la opción **Rules** del asistente de configuración para partidas nuevas y en la sección **Rules** del panel **Agents** clásico. Un conjunto de reglas importado desde un archivo se clasifica como `local/<your id>`, así que nunca se confunde con uno oficial ni con el de otra persona.
 
 ### Cambiar un conjunto de reglas que ya importaste
 
@@ -161,13 +161,13 @@ your-repository/
     another-system.json
 ```
 
-Un usuario añade tu repositorio una sola vez, revisa lo que contiene y lo sincroniza después para recibir nuevas versiones. La lista de repositorios personalizados es una función avanzada. Quien ejecuta el servidor la activa con `ENABLE_CUSTOM_AGENT_REPOS=true` y luego abre **Agents → Agent Organizer → Custom Sources** (Agentes → Organizador de agentes → Fuentes personalizadas). Los conjuntos de reglas de un repositorio se clasifican bajo el nombre de quien es propietario del repositorio, como `alice/ember-roads`, para que dos autores puedan publicar uno llamado `v20` sin colisiones.
+Un usuario añade tu repositorio una sola vez, revisa lo que contiene y lo sincroniza después para recibir nuevas versiones. La lista de repositorios personalizados es una función avanzada. Quien ejecuta el servidor la activa con `ENABLE_CUSTOM_AGENT_REPOS=true` y luego abre **Library → Agents → Custom Sources** (Biblioteca → Agentes → Fuentes personalizadas). Los conjuntos de reglas de un repositorio se clasifican bajo el nombre de quien es propietario del repositorio, como `alice/ember-roads`, para que dos autores puedan publicar uno llamado `v20` sin colisiones.
 
 Se aplican dos límites. Un repositorio puede contener como máximo 32 archivos JSON directamente dentro de `rulesets`; si tiene más, se rechaza. Una cuenta llamada `local` no puede publicar conjuntos de reglas, porque `local/` se reserva para los importados desde un archivo.
 
 ### En el catálogo oficial
 
-Un sistema muy jugado y con licencias claras puede ofrecerse a todo el mundo mediante **Agent Organizer** (Organizador de agentes). Para proponer uno, abre un pull request al repositorio [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Consulta allí el paquete `ruleset-5e-2014` para ver la estructura.
+Un sistema muy jugado y con licencias claras puede ofrecerse a todo el mundo mediante **Library → Agents**. Para proponer uno, abre un pull request al repositorio [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Consulta allí el paquete `ruleset-5e-2014` para ver la estructura.
 
 ## Licencias
 

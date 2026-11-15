@@ -25,11 +25,11 @@ Tu peux saisir `/narrator`, `/narrate` ou `/nar` à la place de `/guided`. Dans 
 
 Cette méthode reprend le texte de ton champ de message comme indication ponctuelle pour une régénération.
 
-1. Ouvre **Settings → Advanced → Message Tools** (Paramètres → Avancé → Outils de message) et active **Guide swipes/regens with chat input** (guider les swipes et les régénérations avec la saisie du chat). Ce réglage est désactivé par défaut.
+1. Ouvre **Settings → Chatting → Editing & Swipes** (Paramètres → Chat → Édition et swipes) et active **Guide swipes/regens with chat input** (guider les swipes et les régénérations avec la saisie du chat). Ce réglage est désactivé par défaut.
 2. Dans un chat, saisis une indication dans le champ de message, sans l'envoyer.
 3. Clique sur **Regenerate** (régénérer) sur le message de l'IA. Quand le champ contient du texte, le bouton s'intitule **Regenerate (guided)**.
 
-Ton indication reste ensuite dans le champ : tu peux l'ajuster et régénérer de nouveau. Pour qu'elle soit plutôt effacée, désactive **Keep guidance after regenerating** (garder la consigne après la régénération) dans **Settings → General → Input & Editing** (Paramètres → Général → Saisie et édition).
+Ton indication reste ensuite dans le champ : tu peux l'ajuster et régénérer de nouveau. Pour qu'elle soit plutôt effacée, désactive **Keep guidance after regenerating** (garder la consigne après la régénération) dans **Settings → Chatting → Message Box** (Paramètres → Chat → Zone de saisie).
 
 Si ça n'a pas marché : le bouton doit s'intituler **Regenerate (guided)**. S'il affiche seulement **Regenerate**, le réglage est désactivé ou le champ est vide.
 
@@ -71,7 +71,7 @@ Ces réglages s'appliquent à chaque `/impersonate`, dans tous tes chats. Ouvre 
 | **Preset** | Un preset de prompt réservé aux réponses d'Impersonate. Par défaut : **Use chat default** (utiliser la valeur par défaut du chat). Voir [Presets](../prompts/presets.md). |
 | **Connection** (connexion) | Le modèle des réponses d'Impersonate, par exemple un modèle moins cher ou plus rapide. Par défaut : **Use chat default**. Tu peux aussi choisir **Random**. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md). |
 | **Skip agents** (ignorer les agents) | Saute les agents (trackers, routeurs de lorebooks et autres aides du même genre) pendant Impersonate. Impersonate reste ainsi rapide et ne modifie pas l'état du monde. Désactivé par défaut. Voir [Agents](../agents/agents-overview.md). |
-| **Use CYOA as direction** (utiliser le choix CYOA comme indication) | Un clic sur une option CYOA (choose your own adventure, l'aventure dont tu es le héros) l'utilise comme indication d'Impersonate au lieu de la publier. Désactivé par défaut. Si **Add CYOA choices to the message box instead of sending them** (ajouter les choix CYOA à la zone de saisie au lieu de les envoyer) est activé dans **Settings → General → Input & Editing**, un clic ajoute seulement le texte à ton champ de message, et ce réglage n'a aucun effet. |
+| **Use CYOA as direction** (utiliser le choix CYOA comme indication) | Un clic sur une option CYOA (choose your own adventure, l'aventure dont tu es le héros) l'utilise comme indication d'Impersonate au lieu de la publier. Désactivé par défaut. Si **Add CYOA choices to the message box instead of sending them** (ajouter les choix CYOA à la zone de saisie au lieu de les envoyer) est activé dans **Settings → Chatting → Message Box**, un clic ajoute seulement le texte à ton champ de message, et ce réglage n'a aucun effet. |
 
 ### Définir un prompt pour un seul chat
 
@@ -88,7 +88,7 @@ Pour revenir à la valeur par défaut, saisis `/impersonate_prompt reset`. L'ali
 
 Les Quick replies ajoutent des alternatives à **Send** en un clic : plus besoin de saisir une commande slash.
 
-1. Ouvre **Settings → General → Input & Editing**.
+1. Ouvre **Settings → Chatting → Message Box**.
 2. Active **Quick replies**. Ce réglage est désactivé par défaut.
 3. Déplie-le pour choisir les actions affichées. Une fois le réglage activé, les trois actions sont actives par défaut.
 

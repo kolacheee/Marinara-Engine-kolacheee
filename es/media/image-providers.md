@@ -6,15 +6,15 @@ La generación de imágenes da vida a las ilustraciones de escena, las selfies, 
 
 Una API key (clave de API) es un código secreto que te da un servicio para que Marinara pueda usar tu cuenta. Marinara rellena por ti la dirección web de cada servicio, así que rara vez tendrás que escribir una.
 
-1. Haz clic en **Connections** (Conexiones) en la barra superior y luego en **Add** (Añadir). Se abre la ventana **Add account** (Añadir cuenta).
-2. Busca el servicio. La lista tiene una sección **Images & video** (Imágenes y video), y **Search providers** (Buscar proveedores) te ayuda a encontrarlo.
+1. Abre **Library → Connections** (Biblioteca → Conexiones) y haz clic en **Add connection** (Añadir conexión). Se abre la lista de servicios.
+2. Abre la pestaña **Image** (Imagen) y busca el servicio. **Search services** (Buscar servicios) te ayuda a encontrar uno.
 3. Pega tu clave en el campo **API key**. Los servicios gratuitos y locales no la necesitan. Para un servidor que ejecutas tú, rellena el campo de la dirección.
 4. Haz clic en **Connect** (Conectar). Marinara prueba la cuenta.
-5. Elige un modelo de imagen de la lista o escribe un ID de modelo. Este es tu modelo de imagen. Aparece debajo de la cuenta en el panel **Connections**.
+5. En **Found in … — use it for:** (Encontrado en … — usar para:), marca **Images** (Imágenes). Si el servicio no tiene una lista de modelos, escribe el ID del modelo en la fila. Haz clic en **Done** (Listo).
 6. Abre el modelo de imagen y haz clic en **Test image** (Probar imagen). Marinara crea una pequeña imagen de prueba.
-7. Para que sea el modelo que usa la app para las imágenes, establece la tarea **Images** (Imágenes) en **Defaults** (Valores predeterminados), en la parte superior del panel **Connections**.
+7. Marcar **Images** en el paso 5 también establece la tarea **Images** en el cuadro **Defaults** (Valores predeterminados), en la parte superior del panel **Connections**. Para cambiarla después, haz clic en la fila **Images**.
 
-Para añadir otro modelo de imagen a una cuenta, abre su menú **⋯** y haz clic en **Add image model** (Añadir modelo de imagen). Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md) para ver la ventana completa.
+Para añadir otro modelo de imagen a una cuenta, haz clic en **⋯** en la fila de la cuenta y elige **Add model** (Añadir modelo). Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md) para ver la ventana completa.
 
 Si no funcionó: **Test image** falla cuando la clave o la dirección son incorrectas. Revisa ambas primero. **Test provider** (Probar proveedor) solo comprueba que Marinara puede llegar al servicio. **Test image** crea una imagen real y puede gastar crédito.
 
@@ -171,8 +171,6 @@ Pon estos marcadores de texto en el flujo de trabajo donde Marinara deba rellena
 
 Consulta [Configuración del flujo de trabajo de ComfyUI](comfyui.md) para ver los pasos de exportación completos, ejemplos, reglas de comillas, imágenes de referencia, flujos de trabajo específicos por personaje, acceso por red y solución de problemas.
 
-<a id="local-image-defaults-per-connection"></a>
-
 ## Valores predeterminados de imagen local por conexión
 
 En un modelo de imagen de **SD Web UI (AUTOMATIC1111 / Forge)**, **ComfyUI**, **NovelAI**, **Draw Things**, **Arli AI**, **SwarmUI** y **RunPod Serverless (ComfyUI)** aparece un panel **Local image defaults** (Valores predeterminados de imagen local). Draw Things y Arli AI muestran los campos de SD Web UI. SwarmUI y RunPod muestran los campos de ComfyUI. Estos valores solo se aplican cuando este modelo crea una imagen. **Reset** (Restablecer) restaura los valores integrados.
@@ -220,7 +218,7 @@ La referencia precisa de NovelAI solo funciona en un modelo V4.5, como `nai-diff
 
 ## Poner en cola las solicitudes de generación de medios
 
-El interruptor **Queue media generation requests** (Poner en cola las solicitudes de generación de medios) está en **Settings → Generations → Overall Generations** (Configuración → Generaciones → Generaciones generales). Está activado de forma predeterminada.
+El interruptor **Queue media generation requests** (Poner en cola las solicitudes de generación de medios) está en **Settings → Media → Generation Defaults** (Configuración → Medios → Valores predeterminados de generación). Está activado de forma predeterminada.
 
 Cuando está activado, Marinara envía los trabajos de imagen a cada cuenta de imágenes de uno en uno, y los trabajos de video a cada cuenta de video de uno en uno, en colas separadas. Una imagen y un video para la misma cuenta pueden ejecutarse a la vez. Se aplica a todas las funciones que los piden: el Illustrator, los trackers, los comandos, la Gallery, los recursos de Game y los agentes descargados como Slurp. Dos modelos con la misma dirección y la misma API key comparten una cola. Las cuentas distintas siguen ejecutándose al mismo tiempo. NovelAI recibe además una breve pausa entre trabajos y, cuando responde que está ocupado, Marinara espera y lo intenta dos veces más.
 
@@ -231,6 +229,6 @@ Mantenlo activado para los servicios que rechazan dos solicitudes a la vez. Desa
 - [Configuración del flujo de trabajo de ComfyUI](comfyui.md)
 - [Agente Illustrator](illustrator-agent.md)
 - [Perfiles de estilo de imagen](style-profiles.md)
-- [Fondos de escena y la galería](scene-backgrounds.md)
+- [Fondos creados por Illustrator](scene-backgrounds.md)
 - [Selfies](../conversation/selfies.md)
 - [Proveedores de IA compatibles](../connections/providers-reference.md)

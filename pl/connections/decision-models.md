@@ -10,8 +10,8 @@ Nasza rada: jeśli nie masz pewności, zostaw ustawienie **None** (brak). Jeśli
 
 Zanim zaczniesz, przeczytaj sekcję [Co wybrać](#which-one-to-pick).
 
-1. Kliknij **Connections** (Połączenia) na górnym pasku i otwórz sekcję **Jobs** (zadania).
-2. W grupie **Behind the scenes** (za kulisami) kliknij wiersz **Decision** (decyzje). Otworzy się lista.
+1. Otwórz **Biblioteka → Połączenia**. Sekcja **Domyślne** znajduje się u góry.
+2. Kliknij **Decyzje**. Otworzy się lista.
 3. Wybierz model. Lista ma trzy grupy:
    - **None (decisions off)** (brak, decyzje wyłączone) to ustawienie domyślne. Żadne pytania nie są wysyłane, a pola pytań aktywacyjnych w edytorze agenta pozostają wyłączone.
    - **Built-in model** (model wbudowany) wymienia modele, które Marinara uruchamia na twoim komputerze: **Built-in model**, **Built-in model (utility)** (model wbudowany, pomocniczy) i **Built-in model (decisions)** (model wbudowany, decyzje). Nic nie opuszcza twojego komputera.
@@ -24,8 +24,6 @@ Jeśli test się nie uda, komunikat podaje przyczynę. Częste przyczyny: odrzuc
 
 Pozycje, które nie mogą teraz odpowiadać, pozostają na liście, wyszarzone, wraz z przyczyną. Wybór **None** wyłącza decyzje bez usuwania pytań aktywacyjnych ani stwierdzeń decyzyjnych.
 
-<a id="which-one-to-pick"></a>
-
 ### Co wybrać
 
 - **Model, który już działa w ramach modelu wbudowanego.** Bez dodatkowych kosztów. Najlepszy wybór dla większości osób korzystających z modelu wbudowanego.
@@ -37,15 +35,15 @@ Jeśli masz już uruchomiony model lokalny, wypróbuj najpierw jego i testuj tur
 
 Jev i Open-Jev to różne modele. Jev to hostowany model firmy TypeSafe, dostępny bezpośrednio lub przez usługę OpenRouter. [Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B) to osobno opublikowany model oparty na Qwen, który Marinara może uruchomić lokalnie. Testy Open-Jev nie mierzą hostowanego modelu Jev.
 
-W systemie Android (Termux) **Built-in decision model** (wbudowany model decyzyjny) nie działa, a mały model lokalny na procesorze telefonu może być zbyt wolny. Praktycznym wyborem jest konto hostowane, na przykład Jev przez usługę OpenRouter. Zobacz [Konfiguracja połączenia Decision](#set-up-a-decision-connection).
+W systemie Android (Termux) **Built-in decision model** (wbudowany model decyzyjny) nie działa, a mały model lokalny na procesorze telefonu może być zbyt wolny. Praktycznym wyborem jest konto hostowane, na przykład Jev przez usługę OpenRouter. Zobacz [Konfiguracja połączenia Decision](#set-up-a-decision-account).
 
-Presety, karty i agentów pisz z myślą o "modelu decyzyjnym", nigdy jako "wymaga Jev". Z każdym modelem używają tej samej składni stwierdzeń, ale różne modele mogą dawać różne odpowiedzi. Przy imporcie treści korzystającej z decyzji, w tym niestandardowych agentów i instalacji z sekcji Agent Organizer, Marinara pokazuje informację z linkiem do tego przewodnika. Przywrócenie całego profilu z pliku ZIP jej nie pokazuje.
+Presety, karty i agentów pisz z myślą o "modelu decyzyjnym", nigdy jako "wymaga Jev". Z każdym modelem używają tej samej składni stwierdzeń, ale różne modele mogą dawać różne odpowiedzi. Przy imporcie treści korzystającej z decyzji, w tym niestandardowych agentów i instalacji oficjalnych agentów, Marinara pokazuje informację z linkiem do tego przewodnika. Przywrócenie całego profilu z pliku ZIP jej nie pokazuje.
 
 ## Używanie modelu wbudowanego
 
 Jeśli masz pobrany model wbudowany, możesz używać go do decyzji bez konta i bez kosztów. Zobacz [Konfiguracja modelu wbudowanego](local-model.md).
 
-1. Kliknij wiersz **Decision** w grupie **Behind the scenes** w sekcji **Jobs**.
+1. Kliknij **Decyzje** w sekcji **Domyślne** na stronie Połączenia.
 2. Wybierz **Built-in model** (albo **Built-in model (utility)**, jeśli go masz).
 3. Kliknij zębatkę **Decision settings**, a potem **Test**.
 
@@ -63,37 +61,33 @@ Model, który najpierw rozumuje, potrzebuje kilku sekund, więc domyślnie odpow
 
 Prawdopodobieństwa tak/nie ogólnego modelu czatu nadają się do porównania z progiem, ale model nie był uczony ich kalibracji tak jak wyspecjalizowany model decyzyjny. Środowisko, które nie zwraca logarytmów prawdopodobieństw, odpowiada po prostu 1 albo 0. Dostosuj progi na podstawie własnych czatów.
 
-<a id="on-a-server-you-already-run"></a>
-
 ### Na już działającym serwerze
 
 Jeśli twój model czatu działa na serwerze Ollama, LM Studio, llama.cpp albo innym serwerze zgodnym z OpenAI, może odpowiadać na pytania decyzyjne bez ładowania drugiej kopii przez aplikację Marinara.
 
-1. Kliknij **⋯** przy tym modelu w panelu **Connections** i wybierz **Use this model for decisions** (używaj tego modelu do decyzji). Otworzy się okno **Add account** (dodanie konta) na kroku decyzji, z tym samym adresem, modelem i kluczem.
-2. Wybierz model, a potem kliknij **Test decision** (test decyzji). Udany test podaje, czy serwer zwrócił logarytmy prawdopodobieństw i czy model musiał najpierw rozumować. Kliknij **Done** (gotowe).
-3. Kliknij wiersz **Decision** w grupie **Behind the scenes** i wybierz nowy model.
+1. Otwórz **Biblioteka → Połączenia**, kliknij **Dodaj połączenie**, otwórz zakładkę **Decyzja** i wybierz **Własny serwer decyzyjny**. Wpisz ten sam adres i klucz, których używa model czatu. (W klasycznym układzie menu **⋯** modelu ma opcję **Używaj tego modelu do decyzji**, która wypełnia te pola.)
+2. Wybierz model, a potem kliknij **Testuj decyzję**. Udany test podaje, czy serwer zwrócił logarytmy prawdopodobieństw i czy model musiał najpierw rozumować. Kliknij **Gotowe**.
+3. Kliknij **Decyzje** w sekcji **Domyślne** i wybierz nowy model.
 
 Możesz też utworzyć je samodzielnie. Użyj konta Decision ze źródłem **OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)** (model czatu zgodny z OpenAI), tym samym adresem co konto czatu (na przykład `http://localhost:11434/v1` dla serwera Ollama) i nazwą modelu, której używa serwer.
 
 Odpytywanie wygląda tak samo jak przy modelu wbudowanym: jedno słowo tak/nie na stwierdzenie. Stwierdzenia są wysyłane pojedynczo, bo Marinara nie może wiedzieć, ile żądań naraz obsługuje twój serwer. **Thinking** dla konta to zawsze **Auto** (automatycznie). Serwer na innym komputerze wymaga `PROVIDER_LOCAL_URLS_ENABLED`. Zobacz [Podłączanie modelu lokalnego lub samodzielnie hostowanego](local-self-hosted.md).
 
-<a id="set-up-a-decision-connection"></a>
-
 ## Konfiguracja połączenia Decision
 
 Hostowane konto Decision wysyła wybrane ostatnie wiadomości i stwierdzenia do usługi i może generować koszty. Smart response order wysyła też [listę postaci](#what-the-model-sees).
 
-1. Kliknij **Connections** na górnym pasku, a potem **Add** (dodaj).
-2. W sekcji **Decisions** (decyzje) kliknij **TypeSafe** albo **Own decision server**. W przypadku OpenRouter kliknij **OpenRouter** w sekcji **Chat** (czat), połącz konto, a potem użyj opcji **Use this key for decisions** (używaj tego klucza do decyzji) w menu **⋯** modelu.
-3. Wpisz **API key** (klucz API), a przy **Own decision server** – **Server address** (adres serwera). Kliknij **Connect** (połącz). Okno się zamknie, a panel pokaże nowe konto.
-4. Kliknij wiersz **Decision** w grupie **Behind the scenes** i wybierz nowy model.
-5. Żeby go przetestować, kliknij model w panelu, żeby otworzyć **Edit model**, a potem kliknij **Test provider** w sekcji **Provider tests** (testy dostawcy). Model **Own decision server** nie ma tam przycisku **Test provider**. Zamiast tego otwórz menu **⋯** konta w panelu i kliknij **Test**.
+1. Otwórz **Biblioteka → Połączenia** i kliknij **Dodaj połączenie**.
+2. Na zakładce **Decyzja** kliknij **TypeSafe** albo **Własny serwer decyzyjny**. W przypadku OpenRouter kliknij **OpenRouter** na zakładce **Tekst**, połącz konto, a potem użyj opcji **Używaj tego klucza do decyzji** w menu **⋯** modelu.
+3. Wpisz **Klucz API**, a przy **Własny serwer decyzyjny** – **Adres serwera**. Kliknij **Połącz**. Okno się zamknie, a strona Połączenia pokaże nowe konto.
+4. Kliknij **Decyzje** w sekcji **Domyślne** i wybierz nowy model.
+5. Żeby go przetestować, kliknij model na stronie Połączenia, żeby otworzyć **Edytuj model**, a potem kliknij **Testuj dostawcę** w sekcji **Testy dostawcy**. Model **Własny serwer decyzyjny** nie ma tam przycisku **Testuj dostawcę**. Zamiast tego kliknij **⋯** konta, wybierz **Edytuj konto** i kliknij **Testuj konto**.
 
-Udany **Test provider** pokazuje prawdopodobieństwo, czas odpowiedzi i limit czasu konta. **Test** konta w menu **⋯** podaje tylko, czy się udało i ile to trwało. Test czeka co najmniej 10 sekund, a przy dłuższym limicie 5 sekund ponad niego. Jeśli odpowiedź przekroczyła limit, wynik to zaznacza: na czacie taka odpowiedź liczyłaby się jako brak odpowiedzi.
+Udany **Test provider** pokazuje prawdopodobieństwo, czas odpowiedzi i limit czasu konta. **Testuj konto** podaje tylko, czy się udało i ile to trwało. Test czeka co najmniej 10 sekund, a przy dłuższym limicie 5 sekund ponad niego. Jeśli odpowiedź przekroczyła limit, wynik to zaznacza: na czacie taka odpowiedź liczyłaby się jako brak odpowiedzi.
 
 Jeśli test się nie uda, zobacz [Rozwiązywanie problemów](#troubleshooting).
 
-Edytor Decision (**Edit model** przy modelu decyzyjnym) ma te pola:
+Model decyzyjny ma te pola. Kliknij model w panelu, żeby otworzyć **Edytuj model**, albo kliknij zębatkę w wierszu **Decyzje** w sekcji **Domyślne**, żeby otworzyć **Ustawienia decyzji** bieżącego modelu decyzyjnego:
 
 | Pole | Działanie |
 | --- | --- |
@@ -108,8 +102,6 @@ Niektóre usługi hostowane czasem odpowiadają wolniej niż w 1,5 sekundy, prze
 
 Usunięcie konta, którego klucz służy do decyzji, pokazuje ostrzeżenie. Konto Decision trzeba wtedy ponownie powiązać, a do tego czasu decyzje nie dają odpowiedzi. Importowane pliki połączeń nigdy nie zawierają kluczy API ani powiązań z kontami, od których pożyczono klucz, więc odtwórz je ręcznie.
 
-<a id="where-marinara-uses-it"></a>
-
 ## Gdzie Marinara go używa
 
 - [Pytania aktywacyjne](../agents/custom-agents.md#activation-questions) decydują, czy niestandardowy agent się uruchomi. Bez odpowiedzi: pytanie go nie zatrzymuje. Nadal obowiązują słowa kluczowe i **Trigger Cadence** (częstotliwość uruchamiania).
@@ -117,11 +109,10 @@ Usunięcie konta, którego klucz służy do decyzji, pokazuje ostrzeżenie. Kont
 - [Pola Decision w lorebooku](../lorebooks/entries.md#decision-activation) sprawdzają Require lub Trigger podczas skanowania lorebooka. Bez odpowiedzi: Require nie może dopuścić nowego wpisu, a Trigger nie dodaje drogi aktywacji. Nadal obowiązują okresy Sticky i zwykłe drogi aktywacji Trigger.
 - [Smart response order](../chats/group-chats.md#response-order-individual-only) ocenia, kto mówi następny w czacie grupowym, jeśli ta opcja jest włączona. Bez odpowiedzi: kolejność Smart wykonuje zwykłe wywołanie AI.
 - [Automate active characters](../chats/group-chats.md#automate-active-characters-merged-only) przed każdą odpowiedzią w grupie Merged w trybie Roleplay pyta, kto jest w scenie, jeśli ustawiono **Decision model** (model decyzyjny). Bez odpowiedzi: jeśli żadna postać nie dostanie odpowiedzi, funkcja używa ostatniej sceny agenta Character Tracker albo zostawia listę bez zmian.
+- [Sprawdzanie modelem decyzyjnym w Illustrator](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model) sprawdza każdą odpowiedź w trybie Roleplay pod kątem nowego miejsca lub pogody, jeśli włączysz je w ustawieniach Illustrator danego czatu. Bez odpowiedzi: tła zmieniają się tylko wtedy, gdy zażąda tego Illustrator albo World State, tak jak wcześniej.
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model) może używać własnego modelu decyzyjnego do wykrywania granic scen i wybierania wspomnień w trybie Roleplay. Włącz **Use Decision model** (używaj modelu decyzyjnego) w ustawieniach Advanced Memory tego czatu. Bez odpowiedzi: nieudane decyzje przechodzą na zwykłe przywoływanie lub sprawdzenia scen. Podsumowania nadal pisze model pomocniczy.
 
 Pytanie aktywacyjne decyduje, czy agent się uruchomi. Stwierdzenie decyzyjne w jego prompcie decyduje, jakie instrukcje dostanie uruchomiony agent. Używaj `{{#if decision:"..."}}` do warunków tak/nie i `{{#if decision_choice:"..." == "..."}}` do wyboru spośród odpowiedzi.
-
-<a id="what-the-model-sees"></a>
 
 ## Co widzi model
 
@@ -142,8 +133,6 @@ Hostowana usługa decyzyjna otrzymuje te listy postaci razem z wiadomościami.
 
 **Advanced Memory** używa własnego modelu decyzyjnego ustawianego dla każdego czatu i nie stosuje reguły ostatnich 5 wiadomości. Sprawdzenia scen czytają odpowiednie okno transkryptu. Przywoływanie wysyła tekst niedawnej rozmowy i do 24 wstępnie wybranych archiwalnych podsumowań – więcej, jeśli **Maximum recalled scenes** (maksymalna liczba przywołanych scen) ma wyższą wartość – a potem oryginalne wiadomości ze scen wybranych przez model, po sprawdzeniu dostępu postaci. Usługi hostowane otrzymują te teksty, czasem w kilku partiach. Każdy przebieg przywoływania dostaje zwykle od 10 do 25 sekund, zależnie od szybkości modelu. Oba przebiegi dzielą 40 sekund na odpowiedź, więc przebieg może dostać mniej niż 10 sekund. Wspomnienia bez odpowiedzi na czas przechodzą na zwykłe przywoływanie. Zobacz [Opcjonalny model decyzyjny](../agents/memory.md#optional-decision-model).
 
-<a id="thresholds"></a>
-
 ## Progi
 
 Prawdopodobieństwa nie są porównywalne między modelami. Ten sam przykład może uzyskać 0,99 w jednym modelu i 0,2 w innym. Domyślny próg tak/nie zależy od modelu:
@@ -155,8 +144,6 @@ Prawdopodobieństwa nie są porównywalne między modelami. Ten sam przykład mo
 Ustawienie agenta **Run when probability is at least** (uruchom, gdy prawdopodobieństwo wynosi co najmniej) nadpisuje tę wartość. Gdy zapisana wartość jest inna, edytor proponuje przywrócenie zalecenia modelu. Sprawdzaj je po każdej zmianie modelu. Stwierdzenia w promptach i pola Decision w lorebookach używają domyślnego progu modelu, a próg agenta go nie zmienia.
 
 Samodzielnie hostowany Open-Jev za kontem Custom System One nadal używa progu 0,5, bo Marinara nie potrafi skalibrować dowolnych własnych punktów końcowych. Jego wyniki mogą różnić się od wbudowanego Open-Jev, w tym przez odczytanie pozytywnego wyniku poniżej 0,5 jako nie.
-
-<a id="time-limits"></a>
 
 ## Limity czasu
 
@@ -185,8 +172,6 @@ Każdy model może odpowiedzieć błędnie, a poprawne odpowiedzi tak mogą wypa
 - Nie uzależniaj zgody, ostrzeżeń o treści ani instrukcji bezpieczeństwa od decyzji.
 - Dla agenta działającego tylko na podstawie pytania aktywacyjnego ustaw **Bypass the question after this many messages** (pomiń pytanie po tylu wiadomościach), żeby model, który ciągle odpowiada przecząco, nie mógł go wyciszyć na zawsze.
 
-<a id="troubleshooting"></a>
-
 ## Rozwiązywanie problemów
 
 - **Test kończy się błędem.** Komunikat podaje przyczynę: odrzucony klucz, ograniczanie liczby żądań przez usługę, nieuruchomiony model wbudowany, niezainstalowany model decyzyjny, odpowiedź inna niż tak lub nie albo przekroczony czas.
@@ -198,8 +183,6 @@ Każdy model może odpowiedzieć błędnie, a poprawne odpowiedzi tak mogą wypa
 - **Automate active characters idzie za agentem Character Tracker.** Model nie odpowiedział dla każdej postaci, najpierw rozumuje, a **Also gate agents that run before the reply** jest wyłączone, albo obsada jest zbyt duża na dane wejściowe modelu nawet w postaci samych imion.
 
 Żeby zobaczyć wyniki i dane wyjściowe decyzji podczas generowania, włącz Debug Mode albo ustaw poziom logowania na debug. Zobacz [Poziomy logowania](../CONFIGURATION.md#logging-levels). Żeby przetestować własne stwierdzenia bez generowania odpowiedzi, otwórz **Peek Prompt → Decision diagnostics → Test decisions** (Peek Prompt, diagnostyka decyzji, testowanie decyzji). Jawne testy wywołują wybrany model i w usłudze hostowanej mogą kosztować. Zobacz [Testowanie stwierdzeń decyzyjnych](../chats/peek-prompt.md#testing-decision-statements).
-
-<a id="let-marinara-install-a-decision-model"></a>
 
 ## Instalacja modelu decyzyjnego przez aplikację Marinara
 
@@ -214,7 +197,7 @@ Modele Open-Jev wymagają systemu Linux **x86-64**, karty graficznej NVIDIA o co
 
 To szacunki katalogu. Model 9B pozostawia niewielki zapas na karcie 24 GB. Sprawdź ocenę instalatora dla swojej karty.
 
-1. Kliknij **Add** w panelu **Connections**, a potem **Built-in model (decisions)** w sekcji **Decisions**. Otworzy się okno **Built-in decision model**. Możesz je też otworzyć ze strony bloku **Built-in model**.
+1. Kliknij **Dodaj konto** w panelu **Połączenia** i kliknij **Model wbudowany (decyzje)** na zakładce **Decyzja** (widocznej, gdy ten komputer może go uruchomić). Otworzy się okno o tytule **Wbudowany model decyzyjny**. Możesz je też otworzyć ze strony karty **Model wbudowany**.
 2. Przeczytaj ostrzeżenie, a potem włącz **Use the built-in decision model** (używanie wbudowanego modelu decyzyjnego). Okno **Turn on the built-in decision model?** (włączyć wbudowany model decyzyjny?) pokazuje ocenę twojego komputera. Kliknij **Enable** (włącz) albo **Enable anyway** (włącz mimo to), gdy ocena jest ostrzeżeniem.
 3. W sekcji **Available decision models** (dostępne modele decyzyjne) wybierz **Open-Jev 2B** albo **Open-Jev 9B**. Kliknij **Download and install** (pobierz i zainstaluj) i potwierdź rozmiar, ocenę sprzętu i licencje. Wcześniej nic nie jest pobierane.
 4. Kliknij wiersz **Decision** w grupie **Behind the scenes** i wybierz **Built-in model (decisions)**.
@@ -228,8 +211,6 @@ Inne kontrolki w tym oknie:
 - **Reinstall** (ponowna instalacja) pojawia się, gdy zainstalowany model nie może się uruchomić, bo brakuje jego plików lub środowiska uruchomieniowego albo są one nieaktualne, zwykle po aktualizacji. Model dostaje oznaczenie **Needs reinstall**, a wiersz **Decision** pokazuje **Not set up**. Ponowna instalacja zachowuje pliki, które są już pobrane i kompletne, więc zwykle pobierają się ponownie tylko pakiety Python środowiska uruchomieniowego.
 
 Pierwsza odpowiedź modelu po uruchomieniu jest wolniejsza, więc podczas ładowania Marinara zadaje jedno pytanie rozgrzewające. Jeśli się nie uda, model i tak się uruchamia, a opóźnienie spada na pierwsze prawdziwe pytanie. Tura z wieloma stwierdzeniami w długim czacie trwa dłużej. Open-Jev 2B potrzebuje w długim czacie około ćwierci sekundy na stwierdzenie.
-
-<a id="run-strands-decider-yourself"></a>
 
 ### Samodzielne uruchamianie Strands decider
 

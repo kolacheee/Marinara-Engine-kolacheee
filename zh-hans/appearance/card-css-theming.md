@@ -140,7 +140,7 @@ Roleplay 和 Conversation 用的是同一套骨架。请只用下表里的 `mari
 | `[data-card-css] p`、`[data-card-css] span` | 正文里的段落和行内 span。 |
 | `[data-grouped]` | 同一角色连续发出的后续消息。仅限 Conversation。想选中一组里的第一条，用 `[data-card-css]:not([data-grouped])`。 |
 
-要切换布局，打开 **Settings → Appearance → Conversation**(设置 → 外观 → Conversation)，找到 **Conversation Display**(Conversation 显示)，再找到 **Chat Layout**(聊天布局)。**Linear** 布局没有气泡，所以给 `.mari-message-content`(正文) 和 `[data-card-css]`(消息行) 设置样式。
+要切换布局，打开 **Settings → Conversation → Conversation Layout → Chat Layout**(设置 → 对话 → 对话布局 → 聊天布局)。**Linear** 布局没有气泡，所以给 `.mari-message-content`(正文) 和 `[data-card-css]`(消息行) 设置样式。
 
 一个做过样式的气泡：
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## 相关指南
 
 - [外观设置](appearance-settings.md)
-- [自定义 CSS 主题（Theme Library）](custom-css-themes.md)
+- [自定义 CSS 主题](custom-css-themes.md)
 - [创建和编辑角色](../characters/creating-and-editing-characters.md)

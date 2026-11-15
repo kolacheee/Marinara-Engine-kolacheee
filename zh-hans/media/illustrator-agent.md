@@ -23,7 +23,7 @@ Illustrator 负责写提示词，但画图的是另一个图像模型。你需�
 
 ## 开启 Illustrator
 
-开始之前：从 **Agent Organizer**(智能体管理器) 安装 **Illustrator**。见[智能体概览](../agents/agents-overview.md)。
+开始之前：从 **Library → Agents**(资料库 → 智能体) 安装 **Illustrator**。见[智能体概览](../agents/agents-overview.md)。
 
 1. 打开想配图的 Roleplay 聊天。
 2. 打开 **Chat Settings**(聊天设置)，找到 **Agents**(智能体)。
@@ -99,7 +99,7 @@ Illustrator 卡片上有一个 **Open Setup** 按钮，点开就是完整的设�
 - 选 **Clips only** 时，每次运行都是短片，**Video Run Interval** 决定 Illustrator 多久运行一次，**Image Run Interval** 则隐藏。
 - 没有设置值的聊天会使用 **Open Setup** 界面里的 **Video Run Interval**，或者 5。
 - **0**：不自行生成短片，`[illustrate]` 请求的图片也不例外，只会得到图片。
-- 一条回复最多生成 **Videos per reply**(每条回复的视频数) 段短片（**Settings → Generations → Video Generation**(设置 → 生成 → 视频生成)）。
+- 一条回复最多生成 **Videos per reply**(每条回复的视频数) 段短片（**Settings → Media → Video Generation**(设置 → 媒体 → 视频生成)）。
 - 你仍然可以从 Gallery 把图片做成动画。选 **Clips only** 时，消息上的 **Illustrate** 按钮会生成短片。
 - 为一条已有短片的回复生成的备选回复算作一条新回复，可以有自己的短片。原来那条备选回复保留它的短片。
 
@@ -112,6 +112,16 @@ Illustrator 卡片上有一个 **Open Setup** 按钮，点开就是完整的设�
 没有自身图片的短片会描述它点名的每个人，包括你的用户角色。头像首帧从最先被点名的人开始。
 
 从消息的 **Illustrate** 按钮重新运行 Illustrator，同样遵循 **Illustrator makes** 和 **First frame**。
+
+## 背景和天气
+
+Illustrator 也会绘制背景。在 **Chat Settings → Agents**(聊天设置 → 智能体) 里的 Illustrator 卡片上：
+
+- **Generate Scene Backgrounds**(生成场景背景) 会在故事进入新地点时绘制背景，除非你已经有了该地点的图片。
+- **Weather Versions of Backgrounds**(背景的天气版本) 会按故事里的天气重绘当前背景，动态雨雪只出现在房间的窗户上。
+- **Decision Model Checks**(决策模型检查) 会让 Decision 模型在每条回复时检查地点或天气是否变化，这样背景就不用等到运行间隔到了才更新。
+
+这三个选项默认都关闭。见 [Illustrator 生成的背景](scene-backgrounds.md)。
 
 ## NovelAI 上的多角色场景
 
@@ -127,11 +137,11 @@ V5 最多接受 22 个角色，V4 和 V4.5 最多接受 6 个。可见角色更�
 
 ## 图库保存与提示词查看
 
-在 **Settings → Generations → Image Generation**(设置 → 生成 → 图像生成) 中，**Automatically save generated images to character galleries**(自动将生成的图片保存到角色图库) 默认开启。关闭后，聊天插图和自拍就不会再加入图中角色和用户角色的图库。图片仍会显示在聊天记录和聊天 Gallery 里，手动保存到图库也照常可用。已有条目不变。各图库共享图片文件，所以这个选项控制的是图片属于哪些图库，而不是删除。
+在 **Settings → Media → Image Generation**(设置 → 媒体 → 图像生成) 中，**Automatically save generated images to character galleries**(自动将生成的图片保存到角色图库) 默认开启。关闭后，聊天插图和自拍就不会再加入图中角色和用户角色的图库。图片仍会显示在聊天记录和聊天 Gallery 里，手动保存到图库也照常可用。已有条目不变。各图库共享图片文件，所以这个选项控制的是图片属于哪些图库，而不是删除。
 
 对于新的 NovelAI 插图，图片检查器会先显示场景和风格提示词，再显示各角色的正向描述，用 ` | ` 分隔。保存到图库的提示词也一样。
 
-要用修改过的提示词重画一张插图，而不重新生成回复，打开它并使用 **Regenerate image**(重新生成图片)。见[重新生成图片](scene-backgrounds.md#regenerating-an-image)。
+要用修改过的提示词重画一张插图，而不重新生成回复，打开它并使用 **Regenerate image**(重新生成图片)。见[重新生成图片](../chats/chat-gallery.md#regenerating-an-image)。
 
 要为较早的 Roleplay 消息或消息范围生成插图，使用 `/illustrate range=12` 或 `/illustrate range=12-18`。见[斜杠命令](../chats/slash-commands.md)。
 
@@ -139,6 +149,7 @@ V5 最多接受 22 个角色，V4 和 V4.5 最多接受 6 个。可见角色更�
 
 - [图像生成服务商与设置](image-providers.md)
 - [图像风格方案](style-profiles.md)
-- [场景背景与 Gallery 面板](scene-backgrounds.md)
+- [Illustrator 生成的背景](scene-backgrounds.md)
+- [聊天图库](../chats/chat-gallery.md)
 - [智能体：聊天里的 AI 帮手](../agents/agents-overview.md)
 - [连接 AI 服务商](../connections/connecting-to-a-provider.md)

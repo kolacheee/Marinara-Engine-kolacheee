@@ -131,7 +131,7 @@ Marinara 把数据保存为普通的 JSON 文件，所以备份可以直接复�
 
 ## 超时
 
-超时是服务器等待一个慢任务的最长时间。打开 **Settings → Advanced → Request timeouts**(设置 → 高级 → 请求超时)，即可按秒修改文本、智能体、Game 图像提示词、图像、视频、ComfyUI 和嵌入的时限。提高时限对较慢的本地后端有帮助，但不能突破服务本身设定的限制。保存需要服务器管理权限。
+超时是服务器等待一个慢任务的最长时间。打开 **Settings → Advanced → Timeouts & Retries**(设置 → 高级 → 超时与重试)，即可按秒修改文本、智能体、Game 图像提示词、图像、视频、ComfyUI 和嵌入的时限。提高时限对较慢的本地后端有帮助，但不能突破服务本身设定的限制。保存需要服务器管理权限。
 
 这些设置对所有档案生效，保存在当前 `.env` 旁边，文件名是 `.env.timeouts.json`(或 `<custom-env-path>.timeouts.json`)。它们会覆盖对应的环境变量，而不用改动 `.env`。文本、智能体、Game 图像提示词和嵌入的修改对新请求生效。媒体相关的修改和已安装的智能体包需要重启。要改回用环境变量，删除这个文件并重启。
 
@@ -154,13 +154,13 @@ Marinara 把数据保存为普通的 JSON 文件，所以备份可以直接复�
 
 ## 高权限 API(ADMIN_SECRET)
 
-备份、清空数据、应用更新和安装主题这类具有破坏性或风险较高的操作，在常规访问检查之外还需要一个额外的密钥。可以在服务器所在的电脑上，到 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问) 里生成一个（见 [Admin Access](REMOTE_ACCESS.md#admin-access-and-privileged-actions)），也可以在服务器上设一个长且随机的值：
+备份、清空数据、应用更新和安装主题这类具有破坏性或风险较高的操作，在常规访问检查之外还需要一个额外的密钥。可以在服务器所在的电脑上，到 **Settings → Advanced → Security**(设置 → 高级 → 安全) 里生成一个（见[管理员密钥](REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions)），也可以在服务器上设一个长且随机的值：
 
 ```text
 ADMIN_SECRET=replace-this-with-a-long-random-secret
 ```
 
-在服务器所在的电脑上，这些操作通常不用密钥也能完成。这台电脑上的代理或隧道转发过来的请求算作远程请求，除非设置了 `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`。从其他设备直接发出的请求需要密钥。把同一个值粘贴到 **Settings → Advanced → Admin Access**，应用就会替你带上它。`.env` 里的 `ADMIN_SECRET` 优先于在应用里生成的密钥。如果没有管理员密钥，那么除服务器本机外，任何设备执行高权限操作都会失败，错误提示会让你设置一个。已安装的智能体在任何用登录信息登录过的设备上都能使用；安装、更新和移除智能体则需要密钥。
+在服务器所在的电脑上，这些操作通常不用密钥也能完成。这台电脑上的代理或隧道转发过来的请求算作远程请求，除非设置了 `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`。从其他设备直接发出的请求需要密钥。把同一个值粘贴到 **Settings → Advanced → Security**，应用就会替你带上它。`.env` 里的 `ADMIN_SECRET` 优先于在应用里生成的密钥。如果没有管理员密钥，那么除服务器本机外，任何设备执行高权限操作都会失败，错误提示会让你设置一个。已安装的智能体在任何用登录信息登录过的设备上都能使用；安装、更新和移除智能体则需要密钥。
 
 | 变量 | 默认值 | 作用 |
 | --- | --- | --- |
@@ -172,7 +172,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `HAPTICS_ALLOW_REMOTE` | `false` | 允许远程设备在提供有效密钥的前提下执行触感设备操作。 |
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | 启用自定义脚本工具。工具来源不可信或是导入来的，就保持关闭。 |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | 允许 Professor Mari 的数据库转换脚本在没有操作系统沙箱的主机上运行（沙箱指 macOS Seatbelt 或 Linux Bubblewrap，存在时会自动使用）。除非你审查过脚本，否则保持关闭。 |
-| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | 在 Agent Organizer(智能体管理器) 里启用手动的 GitHub 智能体仓库预览与同步。见[自定义智能体仓库](#custom-agent-repositories)。 |
+| `ENABLE_CUSTOM_AGENT_REPOS` | `false` | 在 Agents(智能体) 页面上启用手动的 GitHub 智能体仓库预览与同步。见[自定义智能体仓库](#custom-agent-repositories)。 |
 | `MARINARA_OVERWORLD_GAMES` | `false` | 允许玩家创建 Overworld 游戏（一套设定包加一个生成的世界），并把旧版游戏转换成 Overworld 游戏。关闭时，向导只提供 VN 游戏。 |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | 第三方扩展导入两道关中的第一道。见[外部扩展](#external-extensions)。 |
 | `IMPORT_ALLOWED_ROOTS` | 空 | 批量导入无需文件选择器授权即可读取的文件夹。 |
@@ -197,7 +197,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ## 功能开关
 
-重试失败的服务商调用、固定世界书组选择等可选的服务器行为，位于 **Settings → Advanced → Features**(设置 → 高级 → 功能)。它们默认全部关闭。少数开关有对应的环境变量，设置了变量时，变量优先于开关。见[功能开关](configuration/features.md)。
+重试失败的服务商调用（**Settings → Advanced → Timeouts & Retries**）、固定世界书组选择（**Settings → Advanced → Lorebooks**(设置 → 高级 → 世界书)）等可选的服务器行为，都可以在 Settings(设置) 里通过开关控制。它们默认全部关闭。少数开关有对应的环境变量，设置了变量时，变量优先于开关。见[功能开关](configuration/features.md)。
 
 <a id="marinara-notices"></a>
 
@@ -248,16 +248,16 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 ## 智能体与扩展
 
-可选的官方智能体在应用里安装：**Agents → Agent Organizer**(智能体 → 智能体管理器)。Marinara 会挑选 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 中与其大版本对应的目录。
+可选的官方智能体在应用里安装：**Library → Agents**(资料库 → 智能体)。Marinara 会挑选 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 中与其大版本对应的目录。
 
-- **更新：** Marinara 下载已安装包的新版本之前会先询问。**Not now**(暂不更新) 会保留当前版本，Agent Organizer 里的 **Update**(更新) 也会一直留着。全新安装没有任何包。
+- **更新：** Marinara 下载已安装包的新版本之前会先询问。**Not now**(暂不更新) 会保留当前版本，Agents 页面上的 **Update**(更新) 也会一直留着。全新安装没有任何包。
 - **包存放位置：** `DATA_DIR/capability-packages`。Docker 卷、自定义数据文件夹、备份和常规升级都会保留它们。桌面端、Docker 和 Termux 都是如此。iOS 和其他浏览器使用其宿主服务器上的包。
 - **磁盘占用：** Marinara 为每个包保留当前版本和上一个版本，并删除更旧的版本以及 `DATA_DIR/capability-runtime-snapshots` 里的临时副本。包数据永远不会被删除。
 - **离线：** 连不上 GitHub、拒绝了某次更新或校验失败时，已安装的包会继续以当前版本工作。
 
 ### 导入自定义智能体
 
-外部智能体文件、文件夹和仓库是锁住的。要放开，在 **Settings → Advanced → Danger Zone**(设置 → 高级 → 危险区域) 里打开 **Allow custom Agent imports**(允许导入自定义智能体)。这不需要环境变量。打开之前，导入控件一直是灰的。
+外部智能体文件、文件夹和仓库是锁住的。要放开，在 **Settings → Advanced → Security**(设置 → 高级 → 安全) 里打开 **Allow custom Agent imports**(允许导入自定义智能体)。这不需要环境变量。打开之前，导入控件一直是灰的。
 
 每次导入都会先展示该智能体请求的能力。权限需要明确批准。打包的函数和工具选择不会导入，生成的 CSS 会经过净化，执行结果的动作也会和已批准的能力逐一核对。关掉这道开关，导入的智能体就会停止运行。在 Marinara 里创建的智能体和官方包不受影响。
 
@@ -265,7 +265,7 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 ### 自定义智能体仓库
 
-仓库默认关闭，因为其中的提示词和工具未经审核。设置 `ENABLE_CUSTOM_AGENT_REPOS=true`，打开 **Allow custom Agent imports**，然后打开 **Agents → Agent Organizer → Custom Sources**(智能体 → 智能体管理器 → 自定义来源) 预览一个公开的 GitHub 仓库。添加来源和之后应用变更都需要确认。同步是手动的，Marinara 绝不会在后台克隆或轮询仓库。只接受 GitHub 仓库根地址。
+仓库默认关闭，因为其中的提示词和工具未经审核。设置 `ENABLE_CUSTOM_AGENT_REPOS=true`，打开 **Allow custom Agent imports**，然后打开 **Library → Agents → Custom Sources**(资料库 → 智能体 → 自定义来源) 预览一个公开的 GitHub 仓库。添加来源和之后应用变更都需要确认。同步是手动的，Marinara 绝不会在后台克隆或轮询仓库。只接受 GitHub 仓库根地址。
 
 仓库可以发布智能体、Game Mode(游戏模式) 规则集，或两者都发布。在仓库根目录下：
 
@@ -297,12 +297,12 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 ### 外部扩展
 
-导入第三方扩展需要两道授权。环境变量代表服务器管理者的许可。Danger Zone 里的开关代表用户的同意。
+导入第三方扩展需要两道授权。环境变量代表服务器管理者的许可。**Settings → Advanced → Security** 里的 **Allow third-party extension imports**(允许导入第三方扩展) 开关代表用户的同意。
 
 1. 在 `.env` 里设置 `ENABLE_EXTERNAL_EXTENSIONS=true`。
-2. 打开 **Settings → Advanced → Danger Zone**，滚动到数据删除控件下方，读完警告，打开 **Allow third-party extension imports**(允许导入第三方扩展)。
+2. 打开 **Settings → Advanced → Security**，读完警告，打开 **Allow third-party extension imports**。
 
-之后，**External Extensions**(外部扩展) 一节会出现在 **Settings → Addons**(设置 → 插件) 下。任何一道关上，外部记录都会停用，其代码也会停止运行。手动存入的、遗留的、随档案导入的以及来源不明的记录一律算作外部记录，所以把文件丢进某个文件夹绕不过这两道关。Professor Mari 起草的扩展两道关都不需要。它们创建出来就是禁用状态，并且需要批准其确切的代码哈希。
+之后，**External Extensions**(外部扩展) 一节会出现在 **Library → Extensions**(资料库 → 扩展) 下。任何一道关上，外部记录都会停用，其代码也会停止运行。手动存入的、遗留的、随档案导入的以及来源不明的记录一律算作外部记录，所以把文件丢进某个文件夹绕不过这两道关。Professor Mari 起草的扩展两道关都不需要。它们创建出来就是禁用状态，并且需要批准其确切的代码哈希。
 
 沙箱化的浏览器扩展是默认形态。有些较老的包会显示 **Full page access**(整页访问)，因为它们需要 Marinara 的页面。这种模式会把批准过的代码运行在 Marinara 页面内部，能够访问页面内容、浏览器存储、网络 API 和你的会话。它只适用于两道关都打开的 External Extensions，而且还要单独确认一次警告。禁用它之后请刷新页面。
 
@@ -323,7 +323,7 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 | `MARINARA_NOTICES_ENABLED` | `true` | 服务器是否获取维护者通知。见 [Marinara 通知](#marinara-notices)。 |
 | `MARINARA_NOTICES_URL` | `notices` 分支上的 `notices.json` | 覆盖通知文件，用于 fork 和镜像。该文件的验证方式相同，指向 `https://github.com/Pasta-Devs/` 之外的链接会被丢弃。该 URL 的主机必须能在 hosts 文件或 DNS 中找到。见 [Marinara 通知](#marinara-notices)。 |
 | `MARINARA_ENV_FILE` | 项目根目录的 `.env` | 覆盖 `.env` 文件的路径。要在启动前设置。 |
-| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | 整个服务器同时进行的图像或视频请求上限。本地 ComfyUI 或 SwarmUI 显存不足时，降到 1-2。`0` 取消这个上限。无效值会被忽略，并记录一条警告。批量任务永远不会占用最后一个名额。这个上限叠加在 **Queue media generation requests**(媒体生成请求排队) 之上（位于 **Settings → Generations → Overall Generations**(设置 → 生成 → 总体生成)，默认开启），后者会按账号排队图像和视频任务。 |
+| `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | 整个服务器同时进行的图像或视频请求上限。本地 ComfyUI 或 SwarmUI 显存不足时，降到 1-2。`0` 取消这个上限。无效值会被忽略，并记录一条警告。批量任务永远不会占用最后一个名额。这个上限叠加在 **Queue media generation requests**(媒体生成请求排队) 之上（位于 **Settings → Media → Generation Defaults**(设置 → 媒体 → 生成默认设置)，默认开启），后者会按账号排队图像和视频任务。 |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000`(10 分钟) | 请求在失败之前等待空闲名额的最长时间。`0` 表示一直等待。 |
 | `MARINARA_SHARED_GPU_HOSTS` | 空 | 以逗号分隔的 `host:port` 列表，用于本地模型与本地图像或视频后端共享同一块 GPU 的情况，例如 llama-swap。发往列表中主机的文本和媒体请求会轮流执行，这样图片不会一直排在聊天回复后面。图片或片段最多等待 `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS`。嵌入请求不会被阻塞。无需重启，对新请求生效。 |
 | `MARINARA_ENV_WATCH` | `1` | `.env` 的监视方式。默认：使用变更事件（约 250 ms 防抖），并以 30 秒检查作为后备。`poll`：始终使用 30 秒检查。`0`：关闭。见[重启还是热重载](#restart-or-hot-reload)。 |
@@ -361,7 +361,7 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 ### 世界书
 
-两项设置默认关闭，在 `.env` 变更后的下一次生成生效。设置了 `LOREBOOK_STABLE_GROUP_WINNERS` 时，它优先于 **Settings → Advanced → Features** 中的 **Stable lorebook picks**(固定世界书选择) 开关。否则由开关决定。见[功能开关](configuration/features.md)。
+两项设置默认关闭，在 `.env` 变更后的下一次生成生效。设置了 `LOREBOOK_STABLE_GROUP_WINNERS` 时，它优先于 **Settings → Advanced → Lorebooks** 中的 **Stable lorebook picks**(固定世界书选择) 开关。否则由开关决定。见[功能开关](configuration/features.md)。
 
 | 变量 | 默认值 | 作用 |
 | --- | --- | --- |
@@ -374,7 +374,7 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 ### 稳健性
 
-这里的设置默认全部关闭，保持原有行为。`STORAGE_CACHE_WINDOWS_BOOT_ID`、`SHUTDOWN_WINDOWS_CONSOLE_SIGNALS` 和 `SHUTDOWN_FORCE_EXIT_ON_REPEAT` 需要重启。其余各项在 `.env` 变更后生效。设置了 `PROVIDER_RETRY_TRANSIENT_ERRORS` 时，它优先于 **Settings → Advanced → Features** 中的 **Retry failed provider calls**(重试失败的服务商调用) 开关。否则由开关决定。
+这里的设置默认全部关闭，保持原有行为。`STORAGE_CACHE_WINDOWS_BOOT_ID`、`SHUTDOWN_WINDOWS_CONSOLE_SIGNALS` 和 `SHUTDOWN_FORCE_EXIT_ON_REPEAT` 需要重启。其余各项在 `.env` 变更后生效。设置了 `PROVIDER_RETRY_TRANSIENT_ERRORS` 时，它优先于 **Settings → Advanced → Timeouts & Retries** 中的 **Retry failed provider calls**(重试失败的服务商调用) 开关。否则由开关决定。
 
 | 变量 | 默认值 | 作用 |
 | --- | --- | --- |

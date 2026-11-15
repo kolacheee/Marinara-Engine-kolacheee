@@ -34,9 +34,9 @@ Game Modeでは、このセクションはゲーム内のパーティーとし�
 
 <a id="color-your-name-in-messages"></a>
 
-### メッセージ内のペルソナ名の色
+### メッセージ内の名前に色を付ける
 
-Roleplayチャットでは、**Persona**セクションに**Color Persona Name in Text**(本文中のペルソナ名に色を付ける)があります。メッセージに出てくるペルソナの名前、Conversationの表示名、**Other names**(別名)を、ペルソナの名前の色で表示します。この設定を変更するまでは、**Characters**セクションの**Color Character Names in Text**(本文中のキャラクター名に色を付ける)に従います。同じ名前のキャラクターがチャットにいる場合、そのキャラクターには自身の色が使われます。色を表示するには、ペルソナの**Colors**(色)タブで名前の色を設定してください。
+Roleplayのチャットでは、**Persona**セクションに**Color Persona Name in Text**(文章内のペルソナ名に色を付ける)があります。メッセージ内にあるペルソナの名前、Conversationでの表示名、**Other names**(別名)に、ペルソナの名前の色を付けます。変更するまでは、**Characters**セクションの**Color Character Names in Text**(文章内のキャラクター名に色を付ける)に従います。チャット内に同じ名前のキャラクターがいても、そのキャラクターには自身の色が使われます。色を表示するには、ペルソナの名前の色(**Colors**タブ)が必要です。
 
 ## チャットを新規作成するとき
 
@@ -46,7 +46,7 @@ Roleplayのチャットでは、ピッカーに**Create your persona**(自分の
 
 ## キャラクターとしてプレイする
 
-キャラクターカードを自分として使うには、**Settings → Advanced → Message Tools**(設定 → 詳細設定 → メッセージツール)で**Show characters in Persona pickers**(ペルソナ選択にキャラクターを表示)をオンにします。すると、ピッカーに**Play as a character**(キャラクターとしてプレイ)のグループが表示され、自分のキャラクターが並びます。
+キャラクターカードを自分として使うには、**Settings → Chatting → Message Box**(設定 → チャットの動作 → メッセージ入力欄)で**Show characters in Persona pickers**(ペルソナ選択にキャラクターを表示)をオンにします。すると、ピッカーに**Play as a character**(キャラクターとしてプレイ)のグループが表示され、自分のキャラクターが並びます。
 
 ## 関連ガイド
 

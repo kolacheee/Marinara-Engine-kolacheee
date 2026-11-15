@@ -1,80 +1,144 @@
-# Temas de CSS personalizados (Theme Library)
+# Temas de CSS personalizados
 
-Um tema de CSS personalizado repinta todo o visual do Marinara. Use a **Theme Library** (biblioteca de temas) para criar, importar, exportar e trocar de tema. Este guia também lista as variáveis e as classes de CSS que um tema pode usar e explica como os temas convivem com o Card CSS. Para uma mudança rápida sem CSS, veja [Estilos prontos para janelas de chat](#ready-made-chat-window-styles).
+Um tema muda todo o visual do Marinara: cores, fontes, imagens e o formato dos painéis. Marinara tem uma galeria de temas iniciais prontos para baixar. Você também pode importar um tema que alguém compartilhou ou criar o seu próprio.
 
-Antes de começar: se você abre Marinara em outro dispositivo, como um celular, o servidor precisa de um segredo de administrador antes que você possa criar, editar, importar, ativar ou remover temas. No computador que roda o servidor, nenhum segredo é necessário.
-
-1. No servidor, defina `ADMIN_SECRET` no arquivo `.env`.
-2. No aplicativo, abra **Settings → Advanced → Admin Access** (Configurações → Avançado → acesso de administrador) e informe o mesmo valor.
-
-Veja a [Referência de configuração do servidor](../CONFIGURATION.md) e o guia [Acesso remoto](../REMOTE_ACCESS.md). Para trocar para um tema que alguém passou para você, vá para [Ativar um tema](#activating-a-theme).
+Para uma mudança rápida sem usar nenhum tema, veja [Configurações de aparência](appearance-settings.md) ou [Estilos prontos para janelas de chat](#ready-made-chat-window-styles). Para criar o seu próprio tema, o [Guia para autores de temas](theme-author-guide.md) explica o processo passo a passo.
 
 ## O que é um tema personalizado
 
-CSS, sigla de Cascading Style Sheets, é o código que define cores, bordas e espaçamentos. Um tema é um bloco de CSS que pode mudar o plano de fundo da página, a cor de destaque, os cards, as bordas, o texto e muito mais.
+Um tema é um bloco de CSS, o código que as páginas da web usam para cores, fontes e espaçamentos, junto com as imagens e fontes que ele inclui. Os temas são salvos no seu servidor do Marinara, então um tema instalado aparece em todos os dispositivos conectados a ele. Só um tema fica ativo por vez, e você pode guardar quantos quiser.
 
-Os temas ficam na **Theme Library**, no seu servidor do Marinara, então eles sincronizam com todos os dispositivos conectados ao mesmo servidor. A maioria das outras configurações de aparência fica em um só dispositivo. Só um tema fica ativo por vez, e você pode guardar quantos quiser.
+## Onde encontrar temas
 
-## Onde encontrar a Theme Library
+Abra **Biblioteca → Configurações → Aparência** e clique em **Temas CSS** na linha de seções. No layout clássico, o caminho é **Configurações → Complementos → Biblioteca de temas**.
 
-1. Abra **Settings**.
-2. Abra a aba **Addons**.
-3. Procure a seção **Theme Library**.
+A seção tem:
 
-## Criar um tema
+- **Novo tema** e **Importar arquivo** no topo.
+- **Permitir temas com HTML (aceito o risco)**, desativado por padrão. Veja [Temas com HTML](#themes-with-html).
+- **Temas instalados**: **Tema padrão**, depois os seus próprios temas e, por fim, os temas iniciais que você baixou.
+- **Explorar a galeria de temas**: os temas iniciais que você pode baixar.
 
-1. Na seção **Theme Library**, clique em **Create Theme** (criar tema).
-2. Digite um nome na caixa de nome (ela mostra "Theme name...").
-3. Escreva ou cole o CSS na caixa de texto grande.
-4. Deixe a opção **Preview** ativada para ver as mudanças ao vivo enquanto digita. Desative-a para parar a visualização ao vivo.
-5. Clique em **Save**.
+## Temas iniciais
 
-Todo tema novo começa a partir de um modelo que lista as variáveis mais comuns como exemplos comentados. Remova as marcas de comentário e coloque os seus valores. Um tema recém-criado é ativado quando você o salva, e aparece: Theme "My Theme" saved and activated.
+Os temas iniciais não fazem parte da instalação, então não ocupam espaço até você querer um. Eles ficam na galeria de temas, e Marinara só baixa um tema quando você o escolhe.
 
-Para mudar um tema depois, encontre-o em **Installed Themes** (temas instalados), clique no ícone de código (dica **Edit theme CSS**), faça as edições e clique em **Save**. Editar não muda qual tema está ativo.
+1. Clique em **Explorar a galeria de temas** abaixo de **Temas instalados**. Marinara precisa de uma conexão com a internet para isso.
+2. Cada tema mostra uma prévia, uma descrição curta, seu tamanho e suas tags.
+3. Clique em **Baixar** ao lado dos que você gostar. Eles aparecem em **Temas iniciais**, dentro de **Temas instalados**, prontos para ativar.
 
-## Importar e exportar temas
+| Tema | Visual |
+| --- | --- |
+| **Apogee Lounge** | O salão de observação de uma nave de passageiros dos anos 1970, com um gigante gasoso pela janela e mensagens em painéis moldados. |
+| **Dewglass** | Vidro brilhante dos anos 2000: as mensagens são gotas de gel sobre uma lagoa ensolarada ou uma noite com aurora. |
+| **Granite Watch** | Um posto de comando da Guerra Fria sob a montanha: as respostas aparecem em papel de teletipo e os widgets ficam em pranchetas penduradas. |
+| **Gutterlight** | Uma cidade gótica chuvosa desenhada como um quadrinho policial, com quadros a nanquim e caixas de narração. |
+| **Lantern Meadow** | Tranquilo e muito legível, sem movimento. |
+| **Lantern Path** | Uma coluna de leitura com movimento suave. |
+| **Maple's Bramble Cottage** | Uma casa de campo aconchegante, com uma coluna de leitura para respostas longas. |
+| **NEON//GRID** | Cyberpunk em neon, feito para respostas longas. |
+| **Petal OS** | Uma área de trabalho retrô divertida, com fontes em pixels. |
+| **Rosalind's Folio** | Um layout de livro de histórias com toques de visual novel. |
+| **Swiss Poster** | Design de pôster discreto e limpo, sem movimento. |
+| **Under Sail** | O convés de um veleiro no mar: cada mensagem é uma vela de lona pendurada em uma verga de madeira. |
+| **Velvet Casket** | Gótico em tons pastel de dia e gótico tradicional à noite, com mensagens em formato de caixão. |
 
-Para importar um tema:
+Todo tema inicial tem uma versão escura e uma clara. As pequenas tags abaixo de cada nome, como **No motion** (sem movimento) ou **High legibility** (alta legibilidade), indicam o que esperar.
 
-1. Clique em **Import File** (importar arquivo) na seção **Theme Library**.
-2. Escolha um arquivo `.css` ou `.json`.
-3. Leia a mensagem. Ela informa quantos temas foram importados, ignorados ou falharam.
+Quando a galeria tem uma versão mais recente de um tema que você baixou, o tema mostra **Atualizar** na lista da galeria. Clique para obter a nova versão.
 
-Um arquivo `.css` vira um tema só, com o nome do arquivo. Um arquivo `.json` pode conter um ou vários temas. Importe do jeito que está um arquivo exportado do Marinara, ou escreva você mesmo um arquivo pequeno:
+Os temas iniciais baixados são somente leitura, então sempre ficam como foram criados. Cada um tem quatro botões:
 
-```json
-{ "name": "My Theme", "css": "..." }
-```
+- **(i) Créditos e licenças**: quem criou a arte e as fontes e como você pode reutilizá-las.
+- **Clonar e editar** (o ícone de cópia): cria a sua própria cópia, como "Petal OS (minha cópia)", e a abre no editor.
+- **Exportar** (o ícone de upload): salva o tema como arquivo.
+- **Remover** (o ícone de lixeira): remove o tema desta instalação. Você pode baixá-lo de novo da galeria a qualquer momento.
 
-Os temas importados não se ativam por conta própria. Um tema com o mesmo nome e o mesmo CSS de um que já está no servidor é ignorado.
-
-Para exportar um tema, clique no ícone de upload (dica **Export theme**) na linha dele em **Installed Themes**. Marinara baixa um arquivo `.json` que você pode importar em outro lugar.
-
-<a id="activating-a-theme"></a>
+Você também pode obter os arquivos de tema sem o aplicativo: eles ficam na pasta `themes` da galeria de temas no GitHub ([branch kolacheee-themes](https://github.com/kolacheee/Marinara-Engine-kolacheee/tree/kolacheee-themes/themes)). Baixe um arquivo `.json` de lá e use **Importar arquivo**.
 
 ## Ativar um tema
 
-**Installed Themes** lista todos os temas, com um item **Default Theme** no topo.
+1. Clique no nome de um tema em **Temas instalados**. O tema é ativado nesta aba do navegador.
+2. Uma barra pergunta **Manter este tema?** e inicia uma contagem regressiva de 15 segundos. Deixar o ponteiro sobre a barra pausa a contagem.
+3. Clique em **Manter tema** para mantê-lo. Ele passa a aparecer nos outros dispositivos também. Clique em **Voltar**, ou deixe a contagem terminar, para voltar ao visual anterior.
 
-1. Clique no nome de um tema para ativá-lo. Uma marca de seleção indica o tema ativo.
-2. Clique em **Default Theme** para desligar o tema personalizado e voltar ao visual embutido.
+Clique em **Tema padrão** para desativar os temas personalizados. **Restaurar a aparência**, no topo de **Configurações → Aparência → Tema**, também desativa o tema.
 
-**Reset Appearance** (restaurar a aparência), no topo de **App Style** em **Settings → Appearance** (Configurações → Aparência), também desliga o tema ativo.
+Para usar um tema diferente em apenas um dispositivo, primeiro defina **Aparência neste dispositivo** como **Apenas neste dispositivo** em **Configurações → Aparência → Tema**.
 
-Para excluir um tema, clique no ícone de lixeira (dica **Remove theme**) e confirme na janela **Delete Theme**. Isso exclui em definitivo o CSS dele do servidor.
+### Voltar ao visual normal
 
-Se não funcionou: quando o aplicativo estiver com a aparência errada, confira tanto o tema ativo quanto qualquer Card CSS no chat. Veja [Temas e Card CSS](#themes-and-card-css).
+Se um tema dificultar o uso do Marinara, qualquer uma destas ações o desativa naquela aba:
 
-<a id="ready-made-chat-window-styles"></a>
+- Pressione <kbd>Esc</kbd> três vezes.
+- Adicione `?safe` ao fim do endereço no navegador.
+- Pressione <kbd>Ctrl</kbd>+<kbd>K</kbd> e digite "Tema personalizado".
+
+Marinara também protege a barra superior, as barras laterais, <kbd>Ctrl</kbd>+<kbd>K</kbd> e a caixa de mensagem. Um tema pode mudar o estilo dessas partes, mas, se ocultar, mover ou cobrir alguma delas, Marinara desativa o tema naquela aba e informa o motivo.
+
+## Importar um tema
+
+1. Clique em **Importar arquivo**.
+2. Escolha um arquivo de tema `.json` ou `.css`.
+3. Uma prévia mostra o nome, o autor, a versão, as imagens e o tamanho do tema, além dos créditos e da licença. Ela lista o que você precisa saber antes de instalar, como imagens em movimento, texto que o tema adiciona ou partes que não vão funcionar.
+4. Escolha o que incluir. A prévia oferece as configurações sugeridas pelo tema, como o esquema de cores, a cor de destaque e a fonte, com a maioria já marcada. Ela também pode adicionar os planos de fundo do tema à sua galeria de planos de fundo de chat.
+5. Clique em **Instalar e experimentar** para ativá-lo imediatamente, ou em **Instalar** para adicioná-lo à lista.
+
+Se você já tem um tema com o mesmo nome, a prévia oferece a opção de atualizá-lo ou **Manter ambos**. Quando você volta de um tema que está experimentando, Marinara também restaura as configurações que ele mudou.
+
+Um tema não pode ser instalado se escrever texto que pede senhas ou chaves ou se faz passar pelo Marinara. Nunca digite uma chave ou senha porque um tema pediu.
+
+### Temas com HTML
+
+Alguns temas adicionam uma pequena caixa de HTML a cada mensagem, chamada modelo de mensagem. Marinara remove scripts, links, imagens e formulários dela, mas o HTML de outra pessoa ainda pode enganar você. Esses temas só são instalados enquanto **Permitir temas com HTML (aceito o risco)** estiver ativado. Com o botão liga/desliga desativado, um tema instalado aparece sem o HTML.
+
+## Criar um tema
+
+Clique em **Novo tema**, ou em **Clonar e editar** em um tema inicial para partir de algo que já tenha um bom visual. O editor tem uma caixa de nome, uma caixa grande de CSS, **Preview** (pré-visualização) e **Salvar**. Um tema novo é ativado quando você o salva e pergunta **Manter este tema?**
+
+O [Guia para autores de temas](theme-author-guide.md#your-first-theme-step-by-step) tem um passo a passo para o seu primeiro tema.
+
+### Crie um tema com a Professor Mari
+
+Você não precisa escrever CSS por conta própria. Peça à Professor Mari com palavras simples, como "crie um tema de outono aconchegante que funcione no meu celular" ou "o que há de errado com meu tema Harbor?". Ela tem um manual para criar e revisar temas e segue estas etapas:
+
+1. **Ela combina a ideia com você primeiro.** Ela pergunta sobre o clima do tema, modo claro ou escuro (ou ambos), seus dispositivos e se você quer imagens e efeitos de tempo, depois resume um visual em uma frase, como "cápsulas de vidro fosco sobre um fundo de mar".
+2. **Ela cria o tema desativado.** Ela indica onde experimentá-lo: escolha o tema em **Temas CSS** e pressione **Manter tema** em até 15 segundos. Se você pedir que ela mesma o ative, a aba pergunta **Manter este tema?** da mesma forma e volta ao visual anterior se ninguém responder.
+3. **Ela pede que você confira.** Mari não consegue ver a sua tela, então indica pontos exatos para conferir, nos modos claro e escuro, e pede uma captura de tela do que parecer errado. Se Marinara desativou o tema, informe a mensagem a ela: a mensagem indica o motivo, e ela corrige o problema.
+4. **Ela pode criar as imagens.** Com um modelo de imagem configurado em Conexões, ela cria planos de fundo, molduras e ícones, mostra cada um primeiro e salva no tema quando você aprova. Ela também pode mudar as cores dos detalhes desenhados (imagens SVG) de um tema. Veja [Peça à Professor Mari para criar a arte](theme-author-guide.md#ask-professor-mari-to-make-the-art).
+
+Para revisar um tema, ela lista o que não combina (formatos de canto misturados, sombras, rótulos difíceis de ler), tela por tela, e não muda nada até você dizer o que corrigir.
+
+Mari só trabalha nos seus próprios temas. Os temas iniciais são somente leitura, então primeiro clique em **Clonar e editar** em um deles e peça que ela trabalhe na cópia. Você adiciona fontes, créditos e miniaturas em **Imagens e detalhes de compartilhamento (autor, versão, miniatura, fontes)**.
+
+## Editar, exportar e remover os seus temas
+
+Os seus próprios temas têm três botões na linha:
+
+- **Editar o CSS do tema** (o ícone de código) abre o editor. Editar não muda qual tema está ativo.
+- **Exportar** (o ícone de upload) baixa um arquivo `.json` que você pode compartilhar ou importar em outro lugar.
+- **Remover** (o ícone de lixeira) exclui o tema depois que você confirma. Não é possível desfazer isso, então exporte o tema primeiro se quiser usá-lo mais tarde.
+
+## Um tema para um chat
+
+Um chat pode ter seu próprio tema:
+
+1. Abra o chat e abra **Configurações do chat**.
+2. Em **Tema**, escolha um tema. **Seguir o aplicativo** usa o tema do aplicativo, e **Aparência padrão (sem tema personalizado)** desativa os temas naquele chat.
+3. Em um chat com um personagem, marque **Usar em todos os chats com este personagem** para definir esse tema como o tema do personagem.
+
+Configurações e a Biblioteca sempre usam o tema do aplicativo.
+
+## Quem pode mudar temas
+
+No computador que roda Marinara, nenhum segredo é necessário. Em outro dispositivo, como um celular, criar, importar, clonar, editar e remover temas exige o segredo de administrador. Informe-o em **Configurações → Avançado → Segurança**. Escolher um tema que alguém já instalou não exige segredo. Veja [O segredo de administrador](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 ## Estilos prontos para janelas de chat
 
 Antes de começar: isto não precisa de CSS.
 
-1. Abra **Settings → Appearance → App** (Configurações → Aparência → Aplicativo).
-2. No fim de **App Style**, encontre **Chat widget style** (estilo dos widgets do chat).
-3. Escolha um estilo.
+1. Abra **Configurações → Aparência → Botões e janelas do chat**.
+2. Em **Estilo dos widgets do chat**, escolha um estilo.
 
 | Estilo | Visual |
 | --- | --- |
@@ -105,9 +169,11 @@ Três botões liga/desliga abaixo dos seletores de cor estendem o estilo. Cada u
 
 Os botões de histórico, **Load More** (carregar mais) e **Show older** (mostrar mais antigas), seguem esses botões liga/desliga como os outros controles do chat. No Game Mode, os botões liga/desliga também se aplicam aos comentários laterais, aos widgets do HUD, ao painel do mapa, às fichas de personagem, aos registros, ao inventário, aos painéis de combate e às janelas de diálogo. Professor Mari também pode criar temas personalizados para essas áreas.
 
-Um tema personalizado ainda pode substituir os estilos. As variáveis de janelas e gavetas abaixo têm prioridade sobre as cores do estilo. Use `--mari-window-font-family` para as letras das janelas, `--mari-drawer-radius` para os cantos das seções e `--mari-window-ornament: none` para ocultar o ornamento do título. Para remover toda a decoração do estilo, escolha **Default** primeiro.
+Um tema personalizado ainda pode substituir os estilos. As variáveis de janelas e gavetas em [Estilizar janelas e gavetas do chat](#styling-chat-windows-and-drawers) têm prioridade sobre as cores do estilo. Use `--mari-window-font-family` para as letras das janelas, `--mari-drawer-radius` para os cantos das seções e `--mari-window-ornament: none` para ocultar o ornamento do título. Para remover toda a decoração do estilo, escolha **Default** primeiro.
 
-<a id="themes-and-card-css"></a>
+## Para autores de temas
+
+O restante deste guia é material de referência para quem escreve o CSS de temas à mão. Comece pelo [Guia para autores de temas](theme-author-guide.md), que lista todos os tokens estáveis, ganchos de partes e regras de segurança.
 
 ## Temas e Card CSS
 
@@ -282,6 +348,8 @@ No celular, o menu de três pontos se expande em botões redondos. Seu acionador
 
 ## Guias relacionados
 
+- [Guia para autores de temas](theme-author-guide.md)
+- [Efeitos de tempo no seu tema](theme-weather.md)
 - [Guia de temas com Card CSS](card-css-theming.md)
 - [Configurações de aparência](appearance-settings.md)
 - [Referência de configuração do servidor](../CONFIGURATION.md)

@@ -25,11 +25,11 @@ Você pode digitar `/narrator`, `/narrate` ou `/nar` no lugar de `/guided`. Em u
 
 Isto reaproveita o texto da sua caixa de mensagem como uma direção de uso único para uma regeneração.
 
-1. Abra **Settings → Advanced → Message Tools** (Configurações → Avançado → Ferramentas de mensagem) e ative **Guide swipes/regens with chat input** (guiar swipes e novas gerações com a caixa de mensagem). A opção vem desativada por padrão.
+1. Abra **Configurações → Conversando → Edição e swipes** e ative **Guiar swipes e novas gerações com a caixa de mensagem**. A opção vem desativada por padrão.
 2. Em um chat, digite uma direção na caixa de mensagem, mas não envie.
 3. Clique em **Regenerate** (regenerar) na mensagem da IA. Com texto na caixa, o botão se chama **Regenerate (guided)**.
 
-A sua direção continua na caixa depois disso, então você pode ajustá-la e regenerar de novo. Para limpar a caixa em vez disso, desative **Keep guidance after regenerating** (manter a orientação depois de gerar de novo) em **Settings → General → Input & Editing** (Configurações → Geral → Entrada e edição).
+A sua direção continua na caixa depois disso, então você pode ajustá-la e regenerar de novo. Para limpar a caixa em vez disso, desative **Manter a orientação depois de gerar de novo** em **Configurações → Conversando → Caixa de mensagem**.
 
 Se não funcionou: o botão precisa se chamar **Regenerate (guided)**. Se ele diz só **Regenerate**, a configuração está desativada ou a caixa está vazia.
 
@@ -71,7 +71,7 @@ Estas configurações valem para todo `/impersonate`, em todos os seus chats. Ab
 | **Preset** | Um preset de prompt só para as respostas do Impersonate. Padrão: **Use chat default** (usar o padrão do chat). Veja [Presets](../prompts/presets.md). |
 | **Connection** (conexão) | O modelo das respostas do Impersonate, por exemplo um mais barato ou mais rápido. Padrão: **Use chat default**. Você também pode escolher **Random** (aleatório). Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md). |
 | **Skip agents** (pular os agentes) | Pula os agentes (trackers, roteadores de lorebook e ajudantes parecidos) durante o Impersonate. Isso o deixa rápido e impede que ele mude o estado do mundo. Desativado por padrão. Veja [Agentes](../agents/agents-overview.md). |
-| **Use CYOA as direction** (usar o CYOA como direção) | Clicar em uma opção CYOA (choose your own adventure, escolha a sua própria aventura) usa essa opção como direção do Impersonate em vez de publicá-la. Desativado por padrão. Se **Add CYOA choices to the message box instead of sending them** (adicionar as escolhas CYOA à caixa de mensagem em vez de enviá-las) estiver ativado em **Settings → General → Input & Editing**, um clique só acrescenta o texto à sua caixa de mensagem, e esta configuração não tem efeito. |
+| **Usar o CYOA como direção** | Clicar em uma opção CYOA (choose your own adventure, escolha a sua própria aventura) usa essa opção como direção do Impersonate em vez de publicá-la. Desativado por padrão. Se **Adicionar as escolhas CYOA à caixa de mensagem em vez de enviá-las** estiver ativado em **Configurações → Conversando → Caixa de mensagem**, um clique só acrescenta o texto à sua caixa de mensagem, e esta configuração não tem efeito. |
 
 ### Definir um prompt para um chat
 
@@ -88,7 +88,7 @@ Para voltar ao padrão, digite `/impersonate_prompt reset`. O apelido é `/imp_p
 
 Os Quick replies acrescentam alternativas de um clique ao **Send**, para você não precisar digitar um comando de barra.
 
-1. Abra **Settings → General → Input & Editing**.
+1. Abra **Configurações → Conversando → Caixa de mensagem**.
 2. Ative **Quick replies**. A opção vem desativada por padrão.
 3. Expanda a opção para escolher quais ações aparecem. Quando ela está ativada, as três ações vêm ativadas por padrão.
 

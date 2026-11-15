@@ -12,7 +12,7 @@ Game Modeは、3つのチャットモード(Conversation、Roleplay、Game Mode)
 
 これ以外はすべて任意で、デフォルトではオフです。後から追加できます。
 
-- **画像。** **Illustrator**エージェントが、NPCの肖像、場所の背景、シーンの画像を描きます。**Agents → Agent Organizer**(エージェント → エージェント管理)からダウンロードしてください。画像用のアカウントが必要です。なくても物語、状態の追跡、戦闘は使えますが、画像の領域は空のままになります。
+- **画像。** **Illustrator**エージェントが、NPCの肖像、場所の背景、シーンの画像を描きます。**Library → Agents**(ライブラリー → エージェント)からダウンロードしてください。画像用のアカウントが必要です。なくても物語、状態の追跡、戦闘は使えますが、画像の領域は空のままになります。
 - **内蔵モデルによるシーン演出。** Marinaraは自分のコンピューターで小さなモデルを動かし、費用をかけずに背景と音楽を選べます。ダウンロードすると、このモデルがデフォルトの**Scene effects model**(シーン効果のモデル)になります。それまでのデフォルトは**Skip - use inline tags from GM**(スキップしてGMのインラインタグを使う)です。[内蔵モデルのセットアップ](../connections/local-model.md)を参照してください。
 - **絵コンテ。** Storyboardエージェントをダウンロードし、そのゲームでオンにします。[Storyboardエージェントガイド](storyboard.md)を参照してください。
 - **動画。** 動画用のアカウントは、シーンの動画や動く絵コンテを使う場合にだけ必要です。
@@ -20,7 +20,7 @@ Game Modeは、3つのチャットモード(Conversation、Roleplay、Game Mode)
 
 ## ゲームを始める
 
-1. チャットのサイドバーで**GM**タブを開き、**+**ボタン(**New Game**)をクリックします。または、ホーム画面で**Game**をクリックします。設定ウィザードが開きます。[チャットの管理](../chats/managing-chats.md)を参照してください。
+1. **Chats**(チャット)サイドバーで**Game**タブを開き、**New**(新規)(**New Game**(新しいゲーム))をクリックします。ホーム画面の**Game**をクリックしても始められます。設定ウィザードが開きます。[チャットの管理](../chats/managing-chats.md)を参照してください。
 2. 最初のステップで、GMを動かす**Model**(モデル)を選びます。前に追加したアカウントを選んでください。一覧が空なら、先にアカウントを追加します。世界の生成には、性能の高い有料のモデルを選んでください([モデルの選び方](#choosing-a-model)を参照)。
 3. 各ステップで**Next**(次へ)をクリックします。ほかの項目にはすべてデフォルトがあるので、そのまま進めてかまいません。
 4. 最後のステップで**Create world**(世界を作成)をクリックします。Marinaraが世界を組み立てている間、ボタンには**Generating World…**と表示されます。これはモデルへの1回の大きなリクエストなので、終わるまで待ってください。
@@ -37,7 +37,7 @@ Game Modeは、3つのチャットモード(Conversation、Roleplay、Game Mode)
 | ステップ | 設定する内容 |
 | --- | --- |
 | **Connection** | **Game Name**(ゲーム名)、GMを動かす**Model**(モデル)、任意の**Scene effects model**(シーン効果のモデル)です。**Game Mode**(ゲームモード)のカードには、今のところ**VN**だけが表示されます([VNとOverworld](#vn-or-overworld)を参照)。 |
-| **World** | ジャンル、舞台、雰囲気、難易度、コンテンツ区分、言語です。**Combat Preference**(戦闘の種類)は**Turn-Based**(ターン制のメニュー式戦闘)か**Tactical**(グリッド式戦闘)です。新しいゲームはすべて**MRPG**(Marinara RPG)クラスで遊びます([MRPGクラス](mrpg-classes.md)を参照)。ルールセットがインストールされていると、**Rules**(ルール)の選択肢が表示されます([ルールを選ぶ](#choose-rules)を参照)。 |
+| **World** | ジャンル、舞台、雰囲気、難易度、コンテンツ区分、物語のスタイル、暴力表現、コンテンツの境界線、言語です。**Combat Preference**(戦闘の種類)は**Turn-Based**(ターン制のメニュー式戦闘)か**Tactical**(グリッド式戦闘)です。新しいゲームはすべて**MRPG**(Marinara RPG)クラスで遊びます([MRPGクラス](mrpg-classes.md)を参照)。ルールセットがインストールされていると、**Rules**(ルール)の選択肢が表示されます([ルールを選ぶ](#choose-rules)を参照)。 |
 | **Party** | 自分のペルソナ(自分が演じるキャラクター)、**Game Master Mode**(ゲームマスターのモード)、パーティーメンバー、**GM intro message**(GMの導入メッセージ)です([GMの導入メッセージ](#the-gm-intro-message)を参照)。各メンバーの開始時のMRPGツリーは、そのカードの**Game Mode**セクションから決まります([キャラクターのツリーを選ぶ](mrpg-classes.md#choose-a-characters-trees)を参照)。 |
 | **Goals** | 冒険に何を求めるかです。 |
 | **Lorebooks** | GMが事実として扱うロアブックです。ロアブックとは、世界の背景設定をまとめたものです。[ロアブック](../lorebooks/overview.md)を参照してください。 |
@@ -57,7 +57,9 @@ Game Modeは、3つのチャットモード(Conversation、Roleplay、Game Mode)
 | Genre | Fantasy | 複数選択でき、独自のものも追加できます。先に舞台設定キットを選ぶと、そのキットのジャンルが設定されます。 |
 | Tone | Heroic | 複数選択できます。 |
 | Difficulty | Normal | **Casual**、**Normal**、**Hard**、**Brutal**のいずれかです。上の設定ほど戦闘が難しくなります。MRPGゲームでは敵が増えて強くなり([ゲームでのMRPG戦闘](combat.md#battles-in-an-mrpg-game)を参照)、Legacyゲームでは敵の攻撃が重くなります([難易度による補正](combat.md#difficulty-scaling)を参照)。 |
-| Content Rating | SFW | **SFW**か**NSFW**です。NSFWはアダルト表現を許可するだけで、強制はしません。 |
+| コンテンツのレーティング(性的内容) | SFW | **SFW**か**NSFW**です。性的内容だけを決めます。NSFWは露骨なシーンを許可するだけで、強制はしません。 |
+| 物語のスタイル | 標準 | **Standard**(標準)か**Gentle**(穏やか)です。[コンテンツと物語のスタイル](#content-and-story-style)を参照してください。 |
+| 暴力表現 | 深刻(NSFWでは露骨) | **Mild**(軽度)、**Serious**(深刻)、**Graphic**(露骨)のいずれかです。 |
 | Language | English | ゲーム内のテキストはすべてこの言語で書かれます。 |
 | Game Master Mode | Standalone GM | **Character GM**(キャラクターがGMを担当)は、手持ちのキャラクターカードの1つをGMとして使います。 |
 | Scene effects model | Built-in model | ダウンロードした場合だけです。それまでのデフォルトは**Skip - use inline tags from GM**です。 |
@@ -68,6 +70,18 @@ Game Modeは、3つのチャットモード(Conversation、Roleplay、Game Mode)
 | Quick Time Events | On | スクリーンリーダーで遊ぶ場合や、時間制限なしで遊ぶ場合はオフにします。 |
 | Start Muted | Off | すべての音声をミュートした状態でゲームを始めます。 |
 | Game Presentation | Standard | 下記を参照してください。 |
+
+### コンテンツと物語のスタイル
+
+**World**(世界)のステップには、物語に含めてよい内容についての設定があります。進行中のゲームでは、すべて**Chat Settings → Prompt Preset**(チャット設定 → プロンプトプリセット)にあります。
+
+- **Content Rating (sexual content)**(コンテンツのレーティング(性的内容)): **SFW**では恋愛や愛情表現は残し、性行為のシーンは暗転で省略します。**NSFW**では露骨に描写できます。暴力表現やトーンは、この設定では決まりません。
+- レーティングの下にある**Edit rating guidelines**(レーティングのガイドラインを編集)には、ゲームのコンテンツルールとしてGame Masterに渡される文章が表示されます。ゲームに合わせて変更してください。**Reset to default**(デフォルトに戻す)で、そのレーティングのデフォルトに戻せます。変更していない文章はデフォルトに従うため、後から改善されるとゲームにも反映されます。進行中のゲームでは**Rating guidelines**(レーティングのガイドライン)です。
+- **Story style**(物語のスタイル): **Standard**(標準)は緊張感を保ち、失敗や不運に実際の結果を伴わせます。**Gentle**(穏やか)はストレスを抑えた物語向けです。挫折が罰やトラウマに発展せず、キャラクターが制御できないことへの判定を減らし、安らぎと回復の余地を作ります。
+- **Violence**(暴力表現): **Mild**(軽度)、**Serious**(深刻)、**Graphic**(露骨)から、コンテンツのレーティングとは別に設定します。自分で選ばない場合は、SFWでは**Serious**、NSFWでは**Graphic**になります。
+- **Content boundaries**(コンテンツの境界線): Game Masterが物語に出さない題材を、`harm to animals`のように1行に1つずつ指定します。どのスタイルやレーティングでも厳守する制限で、独自のレーティングのガイドラインでも解除できません。物語はAIが書くため、指定した題材が決して登場しないとは保証できません。
+
+プロンプトプリセットにもこれらを含められます。プリセットの**Prompts**(プロンプト)タブで、**Game story settings**(Gameの物語設定)の**Bring story settings to games that use this preset**(このプリセットを使うゲームに物語設定を適用)を使います。暴力表現では**Follow rating**(レーティングに従う)も選べます。ゲームでそのプリセットを選ぶと、スタイルと暴力表現が設定され、プリセットの境界線がゲーム自身の境界線に追加されます。ゲームから始めたシーンは、そのゲームのレーティング、ガイドライン、暴力表現、スタイル、境界線に従います。
 
 <a id="choose-rules"></a>
 

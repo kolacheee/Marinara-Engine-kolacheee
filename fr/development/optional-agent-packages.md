@@ -194,6 +194,8 @@ Les règles de sécurité du moteur ont priorité. Le panneau s'ouvre de force l
 Capability API 1.14 ajoute deux valeurs de `contributions.slots` pour les paquets d'agents Roleplay actifs et activés disposant d'un point d'entrée client :
 
 - `roleplay-tracker` monte la vue `toolbar` du paquet dans le HUD Roleplay. Ses propriétés comprennent `chatId`, `chatMode`, `mobileCompact`, `toolbarButtonClass` de l'hôte, `onRerunTracker`, `trackerRetryBusy`, `lockMode` et `onToggleLockMode`. Les callbacks sont facultatifs : vérifie leur présence avant de les appeler.
+- `chat-activity` (Capability API 1.820) monte la vue `activity` du package dans le panneau
+  d'activité des agents du chat. Voir [Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity).
 - `tracker-panel` monte la vue `tracker` dans le Tracker Panel existant avec `chatId`, `chatMode` et `detached`. Réutilise cette surface au lieu d'ouvrir un second panneau. Les deux emplacements reçoivent aussi les propriétés habituelles d'identité et de localisation des capacités.
 
 Les contributions de contexte restent enregistrées par `api.registerPromptContext` et nécessitent `prompt-context`. La requête expose maintenant `targetCharacterIds`, `personaId` et `placedAgentTypes`, facultatif pour la compatibilité. `placedAgentTypes` indique au contributeur quelles sections de données d'agents le preset a déjà placées, pour qu'il évite de dupliquer son contexte. L'hôte conserve l'identité du paquet de chaque contribution dans `packageBlocks` pour placer son texte dans la section d'agent correspondante. Un texte destiné à un public particulier doit respecter les identifiants de personnages cibles reçus.
@@ -1144,13 +1146,8 @@ Il s'agit d'une interface souple : un ancien moteur ignore le troisième argumen
 
 La vue du navigateur reçoit `openCharacter(characterId, { tab })`. Elle ouvre l'éditeur de personnage, sur l'onglet indiqué le cas échéant, afin qu'un package puisse envoyer l'utilisateur vers un champ de la fiche qu'il lit. Les anciens moteurs ne l'ont pas : vérifie que `openCharacter` existe avant d'afficher le lien.
 
-Depuis #9191, `tab` accepte aussi une section d'un onglet : `character-sheet`, `image-instructions`, `sprites` ou
-`gallery`, toutes dans l'onglet **Images** (images). `sprites` et `gallery` étaient des onglets, donc les anciens liens fonctionnent encore.
-Les instructions pour les selfies du personnage (`conversationImageInstructions`) sont passées de `convo` à `image-instructions`.
-Une version du moteur antérieure à #9191 ignore cet identifiant et ouvre l'éditeur en haut.
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66 : scènes depuis les fils d'un package
@@ -1348,6 +1345,75 @@ tous les cas. Sans cette méthode, rien ne change. Il s'agit d'une interface sou
 jamais, le package doit donc aussi fonctionner sans cet appel. Aucune permission n'est nécessaire.
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
+
+### Capability API 1.818 : embeddings depuis une connexion choisie par le package
+
+`api.runtime.embeddingsFor(connectionId)` résout les embeddings depuis une source nommée par un réglage du package, au lieu de la connexion de l'agent que suit `resolveEmbeddings()`. Contrairement à `resolveEmbeddings()`, il ne se rabat jamais sur la valeur par défaut **Embeddings** de l'application.
+
+| `connectionId` | Résolution |
+| --- | --- |
+| `null` | Le modèle d'embedding local MiniLM intégré. |
+| Un identifiant de connexion | La source d'embedding propre à cette connexion : ses **Fournisseur d'embedding**, **URL du point de terminaison d'embedding** et modèle d'embedding, tels que les résout **Tester l'embedding**. |
+| Un identifiant ne correspondant à aucune connexion, ou une connexion sans source d'embedding utilisable | `null`. L'appel journalise et se termine ; il ne lève pas d'exception. |
+
+L'hôte renvoyé a la même forme que `resolveEmbeddings()` : `spaceId`, `label` et `embed(texts, signal?, inputType?)`, avec les mêmes limites (128 textes, 200 000 caractères au total) et le type d'entrée de 1.68. `embed` renvoie `null` quand l'appel échoue. Chaque source a son propre `spaceId` : recalcule donc les embeddings des vecteurs stockés quand le réglage change.
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+C'est une interface souple : les anciens moteurs n'ont pas cette méthode, donc vérifie qu'elle existe avant de l'appeler et prévois une solution de repli comme dans l'exemple. Ne déclare 1.818 que si le package ne peut pas fonctionner sans elle. Aucune permission n'est nécessaire.
+
+### Capability API 1.820 : afficher un package dans l'activité des agents
+
+L'emplacement `chat-activity` place ta propre carte dans le panneau d'activité des agents du chat, celui que l'icône d'activité des agents
+ouvre, dans le tiroir du chat et dans le Tracker Panel. Déclare-le dans `contributions.slots` et enregistre une vue `activity` ;
+le moteur monte un élément pour chaque package actif qui a un point d'entrée client et que le chat exécute
+(l'identifiant du package figure parmi les agents activés du chat). Il vient après l'état et les sorties des agents, avant les
+sorties enregistrées des agents personnalisés.
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+L'élément reçoit `chatId` et `onOpenAgentSettings()`, qui ouvre la page d'agent propre au package, ainsi que les props habituelles
+d'identité de capacité et de localisation. Le moteur n'ajoute aucun habillage : dessine ta propre carte et ne rends rien
+quand tu n'as rien à afficher. Une fois ton code client chargé, un élément vide ne prend aucune place. Tant qu'une carte de package
+est montée, le panneau n'affiche pas "Aucune activité d'agent pour le moment" : dessine donc ta propre ligne d'inactivité si tu en veux une.
+
+Ce n'est pas une interface souple : un moteur antérieur à 1.820 refuse le manifeste, donc un package qui déclare `chat-activity` déclare
+1.820.
+
+#### Signaler qu'un package travaille ou demande de l'attention
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })` active l'icône d'activité
+des agents pour ce chat (`packageId` est l'`id` de ton manifeste), où qu'elle soit (le tiroir du chat, sa fenêtre détachée et le Tracker Panel). Tant qu'un
+package signale `busy: true`, l'icône tourne comme pour les agents du chat ; `alert: true` affiche son point. Un
+champ omis garde sa valeur, et une entrée dont les deux valeurs sont false est supprimée. Les signaux sont conservés par chat : changer
+de chat n'affiche donc que ceux du chat choisi.
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+Le moteur n'efface jamais un signal de lui-même, même quand ton élément `activity` est démonté (l'icône compte surtout
+quand le panneau est fermé) : c'est à toi de l'effacer, et un rechargement ou `reset()` efface tout. Changer de chat le conserve. Un package occupé ou
+signalant une alerte compte aussi comme une activité : le panneau n'affiche donc pas "Aucune activité d'agent pour le moment" ; associe le signal à une carte `activity`
+pour que le panneau ait quelque chose à afficher. C'est une interface souple : les anciens moteurs
+n'ont pas cette méthode, donc vérifie qu'elle existe, comme ci-dessus. Ne déclare 1.820 que si le package ne peut pas fonctionner sans elle.
+Aucune permission n'est nécessaire.
 
 ### Capability API 1.391 : résumés de scène d'Advanced Memory et bloc de mémoire
 

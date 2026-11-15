@@ -140,7 +140,7 @@ Roleplay und Conversation teilen dasselbe Grundgerüst. Halte dich an die `mari-
 | `[data-card-css] p`, `[data-card-css] span` | Absätze und Inline-Spans im Text. |
 | `[data-grouped]` | Folgenachrichten desselben Charakters. Nur in Conversation. Für die erste Nachricht einer Gruppe nimm `[data-card-css]:not([data-grouped])`. |
 
-Um das Layout zu wechseln, öffne **Settings → Appearance → Conversation** (Einstellungen → Darstellung → Conversation), dann **Conversation Display** und dann **Chat Layout**. In **Linear** gestaltest du `.mari-message-content` (den Text) und `[data-card-css]` (die Zeile), weil es dort keine Bubble gibt.
+Um das Layout zu wechseln, öffne **Settings → Conversation → Conversation Layout → Chat Layout** (Einstellungen → Conversation → Conversation-Layout → Chat-Layout). In **Linear** gestaltest du `.mari-message-content` (den Text) und `[data-card-css]` (die Zeile), weil es dort keine Bubble gibt.
 
 Eine gestaltete Bubble:
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## Verwandte Anleitungen
 
 - [Darstellungseinstellungen](appearance-settings.md)
-- [Eigene CSS-Themes (Theme Library)](custom-css-themes.md)
+- [Eigene CSS-Themes](custom-css-themes.md)
 - [Charaktere anlegen und bearbeiten](../characters/creating-and-editing-characters.md)

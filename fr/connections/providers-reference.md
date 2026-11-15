@@ -2,7 +2,7 @@
 
 Cette page est une référence pour les principaux services auxquels Marinara Engine peut se connecter : où obtenir leur clé API, leur adresse par défaut et leurs particularités. Pour ajouter un compte pas à pas, lis d'abord [Se connecter à un fournisseur d'IA](connecting-to-a-provider.md).
 
-Tu choisis un service dans la fenêtre **Add account** (ajouter un compte), sous la section qui correspond à ce qu'il fait : **Chat**, **Images & video** (images et vidéo), **Voice** (voix) ou **Decisions** (décisions). La tuile porte le nom indiqué ci-dessous. L'adresse est l'adresse web à laquelle Marinara envoie les requêtes. Elle s'appelle **Address** (adresse) dans l'éditeur du compte et **Base URL** (URL de base) dans l'éditeur du modèle. Marinara la remplit pour les services connus. Ne la change que pour un proxy ou un serveur que tu fais tourner.
+Tu choisis un service après **Add connection** (ajouter une connexion), dans l'onglet qui correspond à ce qu'il produit : **Texte**, **Image**, **Vidéo**, **Voix** ou **Décision**. Le champ de recherche parcourt tous les onglets. La liste porte le nom indiqué ci-dessous. L'adresse est l'adresse web à laquelle Marinara envoie les requêtes. Elle s'appelle **Address** (adresse) dans l'éditeur du compte et **Base URL** (URL de base) dans l'éditeur du modèle. Marinara la remplit pour les services connus. Ne la change que pour un proxy ou un serveur que tu fais tourner.
 
 Les modèles changent souvent, cette page ne les liste donc pas. Une fois le compte connecté, la liste des modèles se charge dans le sélecteur. Clique sur **Refresh model list** (actualiser la liste des modèles) dans le sélecteur pour la recharger.
 
@@ -133,7 +133,7 @@ Connecte DeepSeek avec sa propre tuile, plutôt que de diriger **OpenAI** vers l
 
 ### OpenAI-compatible
 
-Le service **OpenAI-compatible** connecte un serveur ou un proxy qui accepte le format de requête d'OpenAI, comme Ollama, LM Studio ou KoboldCpp. Dans la fenêtre **Add account**, il apparaît sous le nom **OpenAI-compatible address** (adresse compatible OpenAI). Sur la plupart des serveurs locaux, la clé peut rester vide. C'est toi qui saisis l'adresse. Consulte [Connecter un modèle local ou auto-hébergé](local-self-hosted.md). Pour le petit modèle que Marinara fait tourner lui-même, consulte [Configuration du modèle intégré](local-model.md).
+Le service **OpenAI-compatible** connecte un serveur ou un proxy qui accepte le format de requête d'OpenAI, comme Ollama, LM Studio ou KoboldCpp. Dans la liste **Add connection**, il apparaît sous le nom **OpenAI-compatible address** (adresse compatible OpenAI). Sur la plupart des serveurs locaux, la clé peut rester vide. C'est toi qui saisis l'adresse. Consulte [Connecter un modèle local ou auto-hébergé](local-self-hosted.md). Pour le petit modèle que Marinara fait tourner lui-même, consulte [Configuration du modèle intégré](local-model.md).
 
 ## Images et vidéo
 
@@ -145,7 +145,7 @@ Consulte [Fournisseurs de génération d'images et configuration](../media/image
 
 ## Decision
 
-Sous **Decisions**, les tuiles sont **TypeSafe** (adresse par défaut `https://api.typesafe.ai`), **Own decision server** (ton propre serveur de décision) et **Built-in model (decisions)**. Les services de chat qui utilisent le format de chat d'OpenAI peuvent aussi prendre des décisions, mais seulement avec un modèle qui renvoie des log-probabilités (des scores pour chaque réponse possible). Un modèle de décision répond par oui ou par non à des questions sur ton chat. Consulte [Modèles de décision](decision-models.md).
+Dans l'onglet **Décision**, les tuiles sont **TypeSafe** (adresse par défaut `https://api.typesafe.ai`), **Own decision server** (ton propre serveur de décision) et **Built-in model (decisions)**. Les services de chat qui utilisent le format de chat d'OpenAI peuvent aussi prendre des décisions, mais seulement avec un modèle qui renvoie des log-probabilités (des scores pour chaque réponse possible). Un modèle de décision répond par oui ou par non à des questions sur ton chat. Consulte [Modèles de décision](decision-models.md).
 
 ## Audio
 
@@ -160,13 +160,11 @@ Sous **Voice**, un service audio fait parler les voix des personnages et la narr
 
 Chaque source remplit une adresse et un modèle par défaut. Le réglage **Default voice** (voix par défaut) désigne la voix utilisée quand rien de plus précis, comme une voix propre à un personnage, n'est défini. Le réglage **Request timeout (seconds)** (délai d'attente de la requête, en secondes) fixe le temps pendant lequel Marinara attend une réplique parlée. Augmente-le pour un serveur vocal lent.
 
-Pour choisir le compte de synthèse vocale que Marinara utilise par défaut, clique sur la ligne **Voice (Text to Speech)** (voix, synthèse vocale) dans l'encadré **Jobs** (tâches). Pour lire les messages à voix haute avec l'un d'eux, choisis-le comme **Source** dans la carte **Text to Speech** (synthèse vocale). Consulte [Configuration du Text to Speech (TTS)](../media/tts-setup.md) et [Utiliser une connexion Audio](../media/tts-setup.md#use-an-audio-connection).
-
-<a id="music--sound-effects"></a>
+Pour choisir le compte de synthèse vocale que Marinara utilise par défaut, clique sur **Voice (Text to Speech)** (voix, synthèse vocale) dans l'encadré **Defaults** (valeurs par défaut). Pour lire les messages à voix haute avec l'un d'eux, choisis-le comme **Source** dans la carte **Text to Speech** (synthèse vocale). Consulte [Configuration du Text to Speech (TTS)](../media/tts-setup.md) et [Utiliser une connexion Audio](../media/tts-setup.md#use-a-voice-model-from-an-account).
 
 ## Musique et effets sonores
 
-Ce type de compte génère de la musique instrumentale et des effets sonores, séparément de la parole. La fenêtre **Add account** n'a pas de tuile pour lui. Ces comptes proviennent d'une mise à jour (voir plus bas) ou d'un import. Tu en modifies un avec **Edit model** (modifier le modèle), où tu choisis son service et actives **Music generation** (génération de musique), **Sound-effect generation** (génération d'effets sonores) ou les deux. La configuration de Game en demande un dans **Music & Sound Effects account** (compte de musique et d'effets sonores), dont le choix par défaut est **Use the default Music & Sound Effects account** (utiliser le compte de musique et d'effets sonores par défaut).
+Ce type de compte génère de la musique instrumentale et des effets sonores, séparément de la parole. La liste **Add connection** n'a pas d'entrée pour lui. Ces comptes proviennent d'une mise à jour (voir plus bas) ou d'un import. Tu en modifies un avec **Edit model** (modifier le modèle), où tu choisis son service et actives **Music generation** (génération de musique), **Sound-effect generation** (génération d'effets sonores) ou les deux. La configuration de Game en demande un dans **Music & Sound Effects account** (compte de musique et d'effets sonores), dont le choix par défaut est **Use the default Music & Sound Effects account** (utiliser le compte de musique et d'effets sonores par défaut).
 
 Les services :
 
@@ -186,11 +184,11 @@ Active l'audio généré pour chaque Game, ou active **Sound effects** (effets s
 
 ## Embeddings
 
-Les embeddings transforment le texte en listes de nombres pour que Marinara puisse retrouver du texte apparenté. Ils font tourner la recherche sémantique des lorebooks et Memory Recall. La plupart des services de chat te permettent de définir un modèle d'embedding et, en option, une **Embedding endpoint URL** (URL du point d'accès d'embeddings) sous **Semantic search (embeddings)** (recherche sémantique) dans l'éditeur du modèle.
+Les embeddings transforment le texte en listes de nombres pour que Marinara puisse retrouver du texte apparenté. Ils font tourner la recherche sémantique des lorebooks et Memory Recall. La plupart des services de chat te permettent de définir un modèle d'embedding et, en option, une **Embedding endpoint URL** (URL du point d'accès d'embeddings) sous **Plus** → **Recherche sémantique (embeddings)** dans la fenêtre **Modifier le modèle** du modèle.
 
 **Anthropic**, **Claude (Subscription)**, **OpenAI (ChatGPT)** et **Grok CLI (Subscription)** ne savent pas produire d'embeddings. Pour ceux-là, utilise le menu déroulant **Embedding provider** (fournisseur d'embeddings) pour emprunter un autre compte, comme un compte compatible OpenAI, **Google Gemini** ou le **Built-in model** (modèle intégré).
 
-Pour utiliser une même source d'embeddings pour tous les comptes qui n'ont pas leurs propres réglages d'embedding, clique sur la ligne **Embeddings** dans l'encadré **Jobs**. L'option **Marinara's own search** (recherche propre à Marinara) garde le modèle d'embedding intégré. Le modèle d'embedding propre à un compte, ou son **Embedding provider**, reste prioritaire. Revectorise tes lorebooks et tes souvenirs après ce changement. Consulte [Recherche sémantique pour les lorebooks](../lorebooks/semantic-search.md).
+Pour utiliser une même source d'embeddings pour tous les comptes qui n'ont pas leurs propres réglages d'embedding, clique sur **Embeddings** dans l'encadré **Defaults**. L'option **Marinara's own search** (recherche propre à Marinara) garde le modèle d'embedding intégré. Le modèle d'embedding propre à un compte, ou son **Embedding provider**, reste prioritaire. Revectorise tes lorebooks et tes souvenirs après ce changement. Consulte [Recherche sémantique pour les lorebooks](../lorebooks/semantic-search.md).
 
 ## Délais d'expiration
 

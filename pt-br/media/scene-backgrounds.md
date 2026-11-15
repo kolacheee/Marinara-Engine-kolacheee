@@ -1,110 +1,111 @@
-# Planos de fundo de cena e a galeria
+# Planos de fundo criados pelo Illustrator
 
-Os planos de fundo de cena gerados por IA são imagens de fundo que Marinara Engine cria a partir da **Gallery** (galeria). Este guia mostra como criar um, o que a galeria guarda e como redesenhar ou revisar uma imagem. Para a biblioteca de imagens enviadas e escolhidas à mão, veja [Planos de fundo do chat](../appearance/chat-backgrounds.md). Para o agente que escolhe um plano de fundo a cada turno, veja [Planos de fundo do Roleplay](../roleplay/backgrounds.md).
+O agente **Illustrator** pode pintar planos de fundo para a sua história: um quando você pede, um sempre que a história chega a um novo lugar e versões de um plano de fundo com chuva, neve ou neblina quando o clima muda. Este guia cobre os três casos e mostra como o Illustrator reutiliza as imagens que você já tem em vez de pintar novas.
 
-## Onde os planos de fundo de cena funcionam
+Para as imagens que você envia e escolhe à mão, veja [Biblioteca de planos de fundo](../appearance/chat-backgrounds.md). Para saber como um chat escolhe qual imagem mostrar (o agente Background, lugares fixados e imagens da galeria), veja [Planos de fundo que acompanham a história](../roleplay/backgrounds.md).
 
-Os planos de fundo de cena funcionam nos modos Roleplay e Game. Eles não estão disponíveis no modo Conversation. Se você tentar gerar um no modo Conversation, o aplicativo mostra esta mensagem:
+## Antes de começar
 
-```
-Scene background generation is available in Roleplay and Game modes.
-```
+- Instale o **Illustrator** em **Biblioteca → Agentes**. Veja [Agente Illustrator](illustrator-agent.md).
+- Dê a ele um modelo de imagem: defina a tarefa **Imagens** em **Padrões** na página Conexões, ou escolha um na tela **Abrir a configuração** do Illustrator. Veja [Provedores de geração de imagens e configuração](image-providers.md).
 
-Antes de começar: você precisa de um modelo de imagem. Configure um antes, caso ainda não tenha. Veja [Provedores de geração de imagens e configuração](image-providers.md).
+Os planos de fundo pintados funcionam em chats de Roleplay e Game, mas não de Conversation. No Conversation, o aplicativo diz "Scene background generation is available in Roleplay and Game modes."
 
-## Gerar e aplicar um plano de fundo pela galeria
+## Pintar um plano de fundo agora
 
-A **Gallery** guarda as imagens e os vídeos de um chat. Ela é uma seção de **Chat Settings** (configurações do chat). No computador, você pode destacá-la em uma janela própria (veja [Visão geral do painel Chat Settings](../chats/chat-settings.md#popping-a-section-out-into-its-own-window)). O botão **Background** (plano de fundo) dela cria a arte de fundo da cena atual.
+1. Abra **Configurações do chat** com o botão de controles deslizantes no chat e expanda **Galeria**.
+2. Clique em **Plano de fundo**. O botão mostra **Gerando...** enquanto trabalha.
+3. Quando termina, a nova imagem é adicionada à sua Biblioteca de planos de fundo e mostrada atrás do chat. "Background generated." confirma isso.
 
-No Roleplay, o botão **Background** aparece assim que o agente **Illustrator** é instalado. Não é preciso adicioná-lo ao chat nem ativar os agentes. Assim como **Illustrate**, ele roda uma vez e não inicia execuções automáticas.
+Você não precisa adicionar o Illustrator ao chat para isso. Ele roda uma vez e não inicia execuções automáticas.
 
-Para gerar um plano de fundo:
+Marinara monta o prompt a partir da cena: em um jogo, isso inclui o gênero, a ambientação, o lugar, o clima e a hora do dia. A imagem usa o tamanho de tela **Planos de fundo**, de 1280 por 720 pixels, a menos que você o mude em **Configurações → Mídia → Geração de imagens**.
 
-1. Abra a seção **Gallery** em **Chat Settings**.
-2. Clique no botão **Background**.
-3. O texto do botão muda para **Generating...** enquanto a imagem é criada.
-4. Uma mensagem de status diz "AI background generation is running. The new background will be applied when it finishes."
-5. Ao terminar, a nova imagem é aplicada à cena atual na hora, e "Background generated." confirma isso.
+Se não funcionou: "Choose an image generation connection for the Illustrator agent, or mark one as the default image connection." significa que nenhum modelo de imagem foi encontrado. Defina um como descrito em **Antes de começar**. Se o botão **Plano de fundo** não aparecer, o Illustrator não está instalado.
 
-O plano de fundo é montado a partir da cena atual. Em um jogo, isso inclui o gênero, a ambientação, o local, o clima e a hora do dia. Os planos de fundo gerados usam o tamanho de tela **Backgrounds**, que é de 1280 por 720 pixels por padrão. Você pode mudar esse tamanho em **Settings** (Configurações), depois **Generations** (gerações), depois **Image Generation** (geração de imagens).
+## Um novo plano de fundo para cada novo lugar
 
-Se não funcionou: se Marinara não encontra nenhum modelo de imagem para usar, a etapa falha com esta mensagem:
+Com essa opção ativada, o Illustrator pinta um plano de fundo quando a história chega a um lugar que não tem um, salva a imagem na sua biblioteca e a mostra.
 
-```
-Choose an image generation connection for the Illustrator agent, or mark one as the default image connection.
-```
+1. Adicione o **Illustrator** ao chat: em **Configurações do chat → Agentes**, ative **Ativar agentes** e adicione o **Illustrator** em **Agentes diversos**.
+2. No cartão do **Illustrator**, ative **Gerar planos de fundo de cena**.
 
-Para resolver, abra o painel **Connections** (conexões) e defina a tarefa **Images** em **Defaults** (padrões), ou dê ao agente **Illustrator** um modelo de imagem próprio.
+O Illustrator examina a cena no **Intervalo de execução de imagem** (a cada 5 mensagens, a menos que você mude esse valor). Para verificar a cada resposta, use as [verificações do modelo de decisão](#check-every-reply-with-a-decision-model). No Game Mode, o botão liga/desliga **Game Illustrator** também cobre os planos de fundo.
 
-## A seção Gallery
+### Reutilizar as imagens que você já tem
 
-A **Gallery** tem duas abas, **Images** e **Videos**. Cada aba mostra a quantidade de itens que guarda. A aba **Videos** guarda os vídeos de cena nos chats de Roleplay e de Game, e as mensagens de vídeo nos chats de Conversation.
+Antes de pintar um novo lugar, o Illustrator procura uma imagem que você já tem, nesta ordem:
 
-No topo da seção, os botões de ação aparecem apenas quando o recurso correspondente se aplica ao chat:
+1. Um plano de fundo fixado nesse lugar, no chat ou na galeria de um personagem. Veja [Fixar um plano de fundo em um lugar](../roleplay/backgrounds.md#pin-a-background-to-a-place).
+2. Uma imagem da biblioteca cujo nome, ou uma tag de duas ou mais palavras, apareça no local do World State. Por exemplo, `generated-guest-bedroom.png`, ou uma imagem com a tag `guest bedroom`, serve para "Smith House, guest bedroom".
+3. Sem um local no World State, o nome do lugar escrito pelo modelo de prompt do Illustrator é comparado da mesma forma.
 
-- **Illustrate**: executa o agente Illustrator para uma imagem avulsa da cena. Veja [Agente Illustrator](illustrator-agent.md).
-- **Selfie**: gera uma selfie do personagem no modo Conversation.
-- **Background**: gera e aplica um plano de fundo de cena, como descrito acima.
-- **Video**: cria um vídeo de cena a partir da última ilustração. No modo Conversation, ele envia uma mensagem de vídeo de um personagem; veja [Mensagens de vídeo](../conversation/selfies.md#video-messages).
-- **Create storyboard**: gera os quadros-chave do último turno do Game Mode ou de um episódio de Roleplay concluído, quando o Storyboard está ativo.
-- **Browse Images**: abre um navegador das imagens salvas para inserir.
-- **View storyboard**: abre o storyboard mais recente do Game Mode.
+Se uma imagem corresponder, ela é mostrada (com o clima da história, quando essa versão existe) e nada é pintado. Só um lugar sem correspondência recebe uma nova imagem. Marcar as imagens enviadas com nomes de lugares (veja [Adicionar tags a um plano de fundo](../appearance/chat-backgrounds.md#tag-a-background)) é a forma mais fácil de economizar requisições de imagem.
 
-Abaixo dos botões fica a área **Upload Images** (enviar imagens). Arraste imagens até ela para acrescentar as suas próprias imagens à galeria deste chat.
+## Versões dos planos de fundo para cada clima
 
-### Ações de cada imagem
+Com essa opção ativada, o plano de fundo acompanha o clima da história. Quando começa a chover na estalagem, o Illustrator repinta o plano de fundo dela com chuva nas janelas. Em ambientes internos, a chuva em movimento cai apenas atrás dos vidros das janelas, nunca pelo cômodo.
 
-Passe o ponteiro sobre uma imagem da aba **Images**, ou toque nela no celular, para ver as ações:
+1. Abra **Configurações do chat → Agentes → Illustrator**.
+2. Ative **Weather Versions of Backgrounds**.
 
-- Abrir a imagem em tamanho real (**Open gallery image**).
-- **Pin to chat**: fixa a imagem no chat como uma imagem flutuante. Arraste-a para movê-la e use a alça do canto para redimensioná-la. Ela mantém o lugar e o tamanho quando você recarrega a página neste navegador. O botão de trava ao lado do botão de dispensar impede que ela seja movida ou redimensionada até você destravá-la.
-- **Download image**: salva a imagem no dispositivo.
-- **Animate illustration**: transforma essa imagem em um vídeo de cena.
-- **Copy prompt**: copia o prompt salvo da imagem. Se a imagem não tiver um prompt salvo, aparece **No prompt saved** e o botão fica desativado.
-- **Delete gallery image**: exclui a imagem depois da sua confirmação.
+É preciso um modelo de imagem que possa partir de uma imagem. A maioria pode, incluindo OpenAI, Gemini, NovelAI e ComfyUI com uma entrada de imagem. Com um modelo que não pode, a imagem fica como está.
 
-<a id="regenerating-an-image"></a>
+O que acontece:
 
-### Gerar uma imagem de novo
+- Cada combinação de imagem e clima é pintada **uma vez**. Quando o clima volta, ou a história retorna à estalagem na chuva, a versão salva é mostrada de novo sem custo.
+- A versão é salva ao lado da original como `name--wx-rain.png`. Os outros tipos são `storm`, `snow`, `blizzard`, `hail`, `fog`, `sand`, `ash`, `embers`, `blossom` e `aurora`, além de `clear` para uma cópia sem precipitação de uma imagem criada originalmente com mau tempo. Um clima incomum recebe uma versão com as palavras da própria história: uma chuva de meteoros vira `name--wx-meteor-shower.png`.
+- Tempo limpo, ensolarado, nublado, com vento e outras condições leves mantêm a imagem comum.
+- O clima é lido do agente **World State** ou de uma verificação do modelo de decisão (abaixo).
+- Isso cobre todos os planos de fundo da sua biblioteca, sejam escolhidos por você ou pelo agente Background, ou pintados pelo Illustrator, além dos lugares fixados e dos planos de fundo da galeria que acompanham um personagem. O agente **Background** escolhe entre as imagens comuns, e a versão com o clima correspondente é mostrada quando existe.
 
-Você pode gerar de novo uma imagem sem gerar de novo a resposta a que ela pertence. Isso funciona com as imagens da galeria do chat que têm um prompt salvo, como ilustrações, selfies e quadros de storyboard.
+### Janelas: onde o clima em movimento aparece
 
-1. Abra a imagem em tamanho real, pela galeria ou pela mensagem em que ela está.
-2. Clique em **Regenerate image** (gerar a imagem de novo), o botão de seta circular no canto superior direito da imagem.
-3. Mude o que quiser nas caixas abaixo da imagem: **Prompt**, **Negative prompt** (prompt negativo), uma caixa para cada personagem em **Character prompts** (prompts de personagem), quando a imagem os tinha, e o modelo de imagem.
-4. Clique em **Generate image** (gerar imagem), ou em **Cancel** (cancelar) para deixar a imagem como está.
+Na primeira vez que uma imagem de ambiente interno recebe uma versão de clima, o Illustrator também pergunta ao modelo de imagem onde estão as janelas da imagem. Ele salva a resposta como uma pequena máscara em preto e branco, compartilhada por todas as versões de clima daquele cômodo. O clima em movimento (riscos de chuva, flocos de neve, pétalas) é então desenhado só no vidro.
 
-A imagem nova substitui a antiga na mensagem. A antiga continua na galeria, então você pode fixá-la de novo. As imagens de referência são enviadas de novo a partir dos avatares atuais dos personagens. Algumas imagens mais antigas não salvaram o prompt negativo e os prompts de personagem; o editor avisa quando é o caso.
+- Um cômodo sem janelas não recebe clima em movimento, apenas a cor do clima e os clarões dos relâmpagos.
+- Uma aurora, uma chuva de meteoros e outros climas sem nada caindo ficam estáticos: a imagem os mostra e nada se move sobre ela.
+- As máscaras ficam em `backgrounds/weather-masks` na sua pasta de dados.
+
+### Refazer uma imagem de clima ou suas janelas
+
+Enquanto o chat mostra uma versão de clima, **Configurações do chat → Agentes → Illustrator** tem uma linha abaixo de **Weather Versions of Backgrounds** com o nome do clima, como **This rain picture**:
+
+- **Remake picture** pinta essa versão de clima de novo a partir da imagem comum.
+- **Remake windows** pede de novo ao modelo de imagem a máscara das janelas. Use quando a chuva cair nas almofadas ou deixar uma janela de fora.
+- **No moving weather** desativa a máscara para esse cômodo. As versões de clima dele mostram apenas a cor do clima e os relâmpagos. **Remake windows** reativa a máscara.
+
+Se não funcionou: confira se o World State do chat mostra um **Clima** (ou se a verificação de clima abaixo está ativada) e se o **Illustrator** está adicionado ao chat com um modelo de imagem.
+
+## Verificar cada resposta com um modelo de decisão
+
+O Illustrator normalmente só examina a cena no intervalo de execução dele, então um novo lugar pode esperar algumas respostas pelo plano de fundo. Um [modelo de decisão](../connections/decision-models.md), um modelo pequeno de sim ou não, pode verificar cada resposta.
+
+Antes de começar: escolha um modelo de decisão em **Padrões** na página Conexões e ative **Gerar planos de fundo de cena**, **Weather Versions of Backgrounds** ou as duas opções.
+
+1. Abra **Configurações do chat → Agentes → Illustrator**.
+2. Em **Decision Model Checks**, escolha **The scene moved to a new place**, **The weather changed** ou **New place and weather changes**. O padrão é **Off**.
+
+Depois de cada resposta:
+
+- A verificação de novo lugar pergunta se a última mensagem move a cena para um novo lugar. Um sim dá ao lugar um plano de fundo, reutilizando um que você já tem quando possível. O modelo de prompt só escreve um novo plano de fundo depois de um sim.
+- A verificação de clima pergunta se o clima muda na última mensagem. Um sim mostra ou pinta a versão de clima do plano de fundo atual. Sem um clima no World State, o modelo de decisão também escolhe o tipo de clima.
+- As verificações apenas acrescentam oportunidades de agir. A execução do próprio Illustrator e as mudanças de local do World State continuam valendo.
+- Sem resposta (sem modelo, por tempo limite esgotado ou por erro), a verificação é ignorada.
+
+Se não funcionou: sem um modelo de decisão escolhido, a lista fica desativada e indica onde escolher um.
 
 ## Revisar o prompt antes do envio
 
-Você pode conferir e editar o prompt antes que Marinara envie o pedido de plano de fundo ao seu serviço de imagens.
+1. Abra **Configurações → Mídia → Padrões de geração**.
+2. Ative **Mostrar os prompts de mídia antes de enviar**.
 
-1. Abra **Settings**, depois **Generations**, depois **Overall Generations** (gerações em geral).
-2. Ative a opção **Expose media prompts before sending** (mostrar os prompts de mídia antes de enviar).
-
-Com essa configuração ativada, a janela **Review Image Prompt** abre antes de cada pedido ser enviado. O texto de ajuda dela diz: "Edit the prompt below before Marinara sends the image request to your provider."
-
-Nessa janela, você pode:
-
-- Editar o texto do prompt e o prompt negativo.
-- Ver o tipo e o tamanho da imagem, além da contagem de caracteres em tempo real.
-- Clicar em **Cancel** para desistir, ou em **Generate** para enviar.
-
-Se alguma caixa de prompt estiver vazia, o botão **Generate** fica desativado e aparece este aviso: "Every image request needs a prompt." O texto que você digitar é enviado exatamente como está.
-
-## Gerenciar os planos de fundo salvos
-
-Todo plano de fundo de cena que você gera é salvo na sua biblioteca de planos de fundo. Você também pode acrescentar imagens próprias a essa mesma biblioteca. Os planos de fundo enviados aceitam arquivos JPG, PNG, GIF, WebP e AVIF, com até 20 MB cada.
-
-Os planos de fundo que você acrescentou podem receber tags, ser renomeados e excluídos. As tags ficam em minúsculas e aceitam letras, números, espaços, hifens e sublinhados, até 40 caracteres cada. Os planos de fundo internos, que vêm com os recursos de jogo, aparecem junto com os seus, mas não podem ser renomeados, marcados com tags nem excluídos.
-
-Você gerencia essa biblioteca e define um plano de fundo por chat ou padrão nas configurações de aparência. Para conhecer a biblioteca completa, o seletor e a opção **Background Blur**, veja [Planos de fundo do chat](../appearance/chat-backgrounds.md).
+Uma janela **Revisar prompt de imagem** passa a abrir antes de cada requisição de imagem, incluindo os planos de fundo pintados. Edite o prompt e o prompt negativo e clique em **Gerar** para enviar ou em **Cancelar** para parar. O texto que você digita é enviado exatamente como está.
 
 ## Guias relacionados
 
-- [Planos de fundo do chat](../appearance/chat-backgrounds.md): a biblioteca de imagens enviadas, escolhidas à mão.
-- [Planos de fundo do Roleplay](../roleplay/backgrounds.md): o agente que escolhe um plano de fundo sozinho a cada turno.
-- [Agente Illustrator](illustrator-agent.md): ilustrações de cena para os modos Roleplay e Game.
-- [Provedores de geração de imagens e configuração](image-providers.md): configure um modelo de imagem.
-- [Geração de vídeo de cena](scene-video.md): transforme uma imagem da galeria em vídeo.
+- [Planos de fundo que acompanham a história](../roleplay/backgrounds.md): qual imagem um chat mostra, lugares fixados e planos de fundo da galeria.
+- [Biblioteca de planos de fundo](../appearance/chat-backgrounds.md): enviar, adicionar tags e organizar imagens, além do desfoque.
+- [Agente Illustrator](illustrator-agent.md): ilustrações de cena, clipes e o intervalo de execução.
+- [A galeria do chat](../chats/chat-gallery.md): a seção Gallery e seus botões.
+- [Modelos de decisão](../connections/decision-models.md)

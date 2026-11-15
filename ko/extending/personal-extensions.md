@@ -6,7 +6,7 @@ Personal Extension(개인 확장)은 Marinara에 버튼, 패널, 도우미 기�
 
 | 이름 | 설명 |
 | --- | --- |
-| Personal Extension | Professor Mari가 대신 작성한 확장입니다. **Settings → Addons**(설정 → 애드온) 아래에 초안으로 나타납니다. |
+| Personal Extension | Professor Mari가 대신 작성한 확장입니다. **Library → Extensions**(라이브러리 → 확장) 아래에 초안으로 나타납니다. |
 | External Extension(외부 확장) | 다른 사람이 만든 확장이나 직접 작성한 확장입니다. [서드파티 가져오기 허용하기](#allow-third-party-imports)의 추가 단계가 필요합니다. |
 | Browser Extension | 브라우저 안의 샌드박스에서 실행됩니다. 기본적으로 안전합니다. |
 | Server Extension | Marinara를 실행하는 컴퓨터에서 운영체제 샌드박스 안에 실행됩니다. 지원되는 플랫폼이 필요합니다. |
@@ -16,7 +16,7 @@ Personal Extension(개인 확장)은 Marinara에 버튼, 패널, 도우미 기�
 
 시작하기 전에 [서드파티 가져오기 허용하기](#allow-third-party-imports)의 두 단계를 마치세요. 이 단계를 마치지 않으면 가져오기 버튼이 숨겨져 있습니다.
 
-1. **Settings → Addons**를 여세요. **External Extensions**(외부 확장) 아래에서 `.zip`, `.json`, `.css`, `.js` 파일은 **Import Extension File**(확장 파일 가져오기)을, 폴더는 **Import Extension Folder**(확장 폴더 가져오기)를 선택하세요.
+1. **Library → Extensions**를 여세요. **External Extensions**(외부 확장) 아래에서 `.zip`, `.json`, `.css`, `.js` 파일은 **Import Extension File**(확장 파일 가져오기)을, 폴더는 **Import Extension Folder**(확장 폴더 가져오기)를 선택하세요.
 2. 새 초안을 여세요. 초안은 비활성화되어 있으며 코드와 해시를 보여 줍니다. 해시는 바로 그 코드의 짧은 지문입니다(Marinara는 SHA-256을 사용합니다).
 3. 코드와 **Requested access**(요청된 접근 권한) 목록을 읽으세요.
 4. 그 버전을 그대로 받아들일 때만 **Review and Run**(검토 및 실행)을 선택하세요. 그러면 확장이 활성화된 것으로 표시됩니다.
@@ -27,7 +27,7 @@ Personal Extension(개인 확장)은 Marinara에 버튼, 패널, 도우미 기�
 
 시작하기 전에 [Professor Mari](../home/professor-mari.md)에게 확장을 만들어 달라고 요청하세요. Professor Mari는 코드를 저장할 수는 있지만 승인하거나 활성화할 수는 없습니다. 이 섹션에는 New Draft 버튼도, 가져오기 컨트롤도 없습니다.
 
-1. **Settings → Addons → Personal Extensions**(설정 → 애드온 → 개인 확장)를 여세요. 초안이 없으면 "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."(Mari 교수님에게 확장 만들기를 요청하세요. 사용자가 활성화하고 정확한 코드 해시를 승인하기 전에는 아무것도 실행되지 않습니다.)라고 표시됩니다.
+1. **Library → Extensions**를 여세요. 초안이 없으면 "Ask Professor Mari to create an extension for you. Nothing runs until you enable it and approve the exact code hash."(Mari 교수님에게 확장 만들기를 요청하세요. 사용자가 활성화하고 정확한 코드 해시를 승인하기 전에는 아무것도 실행되지 않습니다.)라고 표시됩니다.
 2. 초안을 열고 코드를 읽으세요. 해시와 **Requested access** 목록을 확인하세요.
 3. 그 버전을 그대로 받아들일 때만 **Review and Run**을 선택하세요.
 
@@ -78,9 +78,9 @@ Windows와 Android에는 지원되는 프로세스 샌드박스가 없으므로 
 서드파티 가져오기는 다른 사람이 작성한 코드를 실행하므로 기본적으로 잠겨 있고 화면에도 나오지 않습니다. 두 단계를 거치면 열립니다.
 
 1. Marinara를 실행하는 컴퓨터의 `.env` 파일에 `ENABLE_EXTERNAL_EXTENSIONS=true`를 설정한 다음 Marinara를 다시 시작하세요. [서버 설정 참고 문서](../CONFIGURATION.md)를 참고하세요.
-2. **Settings → Advanced → Danger Zone**(설정 → 고급 → 위험 구역)을 열고, 데이터 삭제 컨트롤 아래로 스크롤한 다음, 경고를 읽고 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)를 켜세요.
+2. **Settings → Advanced → Security**(설정 → 고급 → 보안)를 열고, 경고를 읽고 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)를 켜세요.
 
-그러면 **Settings → Addons**에 파일과 폴더 가져오기 컨트롤이 있는 **External Extensions**가 표시됩니다. 지원 형식은 다음과 같습니다.
+그러면 **Library → Extensions**에 파일과 폴더 가져오기 컨트롤이 있는 **External Extensions**가 표시됩니다. 지원 형식은 다음과 같습니다.
 
 - `.personal-extension.zip` 및 호환되는 `.zip` 패키지
 - `.json` 매니페스트
@@ -99,13 +99,13 @@ Windows와 Android에는 지원되는 프로세스 샌드박스가 없으므로 
 
 두 단계 중 하나라도 끄면 가져온 확장이 모두 비활성화됩니다. 다시 켜도 확장이 다시 실행되지는 않습니다. 전체 페이지 확장이 남긴 변경이 있으면 페이지를 새로 고치세요.
 
-작동하지 않는 경우: 가져오기 컨트롤이 나타나지 않으면 두 단계를 모두 마쳤는지, 그리고 서버 컴퓨터에서 접속했거나 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)에 관리자 시크릿을 저장했는지 확인하세요.
+작동하지 않는 경우: 가져오기 컨트롤이 나타나지 않으면 두 단계를 모두 마쳤는지, 그리고 서버 컴퓨터에서 접속했거나 **Settings → Advanced → Security**에 관리자 시크릿을 저장했는지 확인하세요.
 
 ## 내보내기, 개정판, 복구
 
 확장의 내보내기 동작을 쓰면 옮겨 쓸 수 있는 패키지를 다운로드할 수 있습니다. 내보낸 패키지와 복원한 패키지는 비활성화 상태를 유지합니다. 개정판을 복원해도 비활성화된 초안으로 돌아갑니다.
 
-**Settings → Addons → Extension revision history**(설정 → 애드온 → 확장 수정 기록)에서 모든 개인 확장과 외부 확장의 이전 코드 버전을 몇 개 보관할지 정합니다. 기본값은 **10**입니다. **0**부터 **10**까지 고를 수 있으며, **0**이면 기록이 꺼집니다. 한도를 줄이면 오래된 개정판을 영구적으로 삭제하기 전에 확인을 요청합니다. 현재 코드, 승인, 활성화 상태, 저장된 확장 데이터는 보존됩니다. Professor Mari를 통한 편집에도 같은 한도가 적용됩니다.
+**Library → Extensions → Extension revision history**(라이브러리 → 확장 → 확장 수정 기록)에서 모든 개인 확장과 외부 확장의 이전 코드 버전을 몇 개 보관할지 정합니다. 기본값은 **10**입니다. **0**부터 **10**까지 고를 수 있으며, **0**이면 기록이 꺼집니다. 한도를 줄이면 오래된 개정판을 영구적으로 삭제하기 전에 확인을 요청합니다. 현재 코드, 승인, 활성화 상태, 저장된 확장 데이터는 보존됩니다. Professor Mari를 통한 편집에도 같은 한도가 적용됩니다.
 
 확장이 이상하게 동작하면 **Disable**(비활성화)를 선택하세요. 화면을 쓸 수 없다면 Marinara를 중지하고 해당 `installed_extensions` 레코드의 `enabled` 값을 `"false"`로 바꾸세요. `approvedHash`는 절대 직접 설정하지 마세요.
 

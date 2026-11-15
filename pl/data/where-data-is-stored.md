@@ -50,7 +50,7 @@ Niektóre konfiguracje podają klucz przez zmienną środowiskową `ENCRYPTION_K
 
 ## Skopiuj dane z Androida
 
-W systemie Android folder danych leży w pamięci aplikacji, do której nie masz dostępu bez uprawnień roota, więc nie możesz go skopiować. Użyj **Settings → Advanced → Backup & Export → Download Backup** (ustawienia, zaawansowane, kopia zapasowa i eksport, pobranie kopii zapasowej). Plik `.zip` zawiera plik `.encryption-key`, jeśli on istnieje. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](backup-and-restore.md).
+W systemie Android folder danych leży w pamięci aplikacji, do której nie masz dostępu bez uprawnień roota, więc nie możesz go skopiować. Użyj **Ustawienia → Dane → Kopie zapasowe i przywracanie → Pobierz kopię zapasową**. Plik `.zip` zawiera plik `.encryption-key`, jeśli on istnieje. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](backup-and-restore.md).
 
 Automatyczne kopie zapasowe trafiają do tej samej pamięci aplikacji. Odinstalowanie lub zresetowanie aplikacji może usunąć je razem z bieżącymi danymi, więc trzymaj kopię w innym miejscu.
 

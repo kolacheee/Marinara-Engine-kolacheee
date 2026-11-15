@@ -1,70 +1,141 @@
-# Eigene CSS-Themes (Theme Library)
+# Eigene CSS-Themes
 
-Ein eigenes CSS-Theme färbt ganz Marinara neu ein. In der **Theme Library** (Theme-Bibliothek) legst du Themes an, importierst und exportierst sie und wechselst zwischen ihnen. Diese Anleitung listet außerdem die CSS-Variablen und Klassen auf, die ein Theme nutzen kann, und erklärt, wie Themes mit Card CSS zusammenspielen. Für eine schnelle Änderung ohne CSS siehe [Fertige Stile für Chat-Fenster](#ready-made-chat-window-styles).
+Ein Theme verändert das gesamte Aussehen von Marinara: Farben, Schriften, Bilder und die Form von Panels. Marinara hat eine Galerie mit fertigen Starter-Themes, die du herunterladen kannst. Du kannst auch ein Theme importieren, das jemand geteilt hat, oder dein eigenes erstellen.
 
-Bevor du anfängst: Öffnest du Marinara von einem anderen Gerät aus, etwa vom Handy, braucht der Server ein Admin-Secret, bevor du Themes anlegen, bearbeiten, importieren, aktivieren oder entfernen kannst. Auf dem Rechner, auf dem der Server läuft, ist kein Secret nötig.
-
-1. Setze auf dem Server `ADMIN_SECRET` in der Datei `.env`.
-2. Öffne in der App **Settings → Advanced → Admin Access** (Einstellungen → Erweitert → Admin-Zugriff) und trag denselben Wert ein.
-
-Siehe die [Referenz zur Server-Konfiguration](../CONFIGURATION.md) und die [Anleitung zum Fernzugriff](../REMOTE_ACCESS.md). Willst du zu einem Theme wechseln, das dir jemand gegeben hat, geh zu [Ein Theme aktivieren](#activating-a-theme).
+Für eine schnelle Änderung ganz ohne Theme siehe [Darstellungseinstellungen](appearance-settings.md) oder [Fertige Stile für Chat-Fenster](#ready-made-chat-window-styles). Wenn du ein eigenes Theme erstellen möchtest, führt dich die [Anleitung für Theme-Autoren](theme-author-guide.md) Schritt für Schritt hindurch.
 
 ## Was ein eigenes Theme ist
 
-CSS steht für Cascading Style Sheets und ist der Code, der Farben, Rahmen und Abstände festlegt. Ein Theme ist ein Block CSS, der den Seitenhintergrund, die Akzentfarbe, Karten, Rahmen, Text und mehr ändern kann.
+Ein Theme besteht aus einem CSS-Block – also dem Code, mit dem Webseiten Farben, Schriften und Abstände festlegen – samt allen Bildern und Schriften, die es mitbringt. Themes werden auf deinem Marinara-Server gespeichert. Deshalb erscheint ein installiertes Theme auf jedem Gerät, das sich damit verbindet. Es kann immer nur ein Theme eingeschaltet sein, und du kannst so viele behalten, wie du möchtest.
 
-Themes liegen in der **Theme Library** auf deinem Marinara-Server und erscheinen deshalb auf jedem Gerät, das sich mit demselben Server verbindet. Die meisten anderen Darstellungseinstellungen bleiben auf einem einzigen Gerät. Aktiv sein kann immer nur ein Theme, behalten kannst du so viele, wie du willst.
+## Wo du Themes findest
 
-## Wo die Theme Library steckt
+Öffne **Library → Settings → Appearance** (Bibliothek → Einstellungen → Darstellung) und klick in der Reihe der Bereiche auf **CSS Themes** (CSS-Themes). Im klassischen Layout findest du sie unter **Settings → Addons → Theme Library** (Einstellungen → Add-ons → Theme-Bibliothek).
 
-1. Öffne **Settings**.
-2. Öffne den Tab **Addons**.
-3. Such den Bereich **Theme Library**.
+Der Bereich enthält:
 
-## Ein Theme anlegen
+- Oben **Create Theme** (Theme erstellen) und **Import File** (Datei importieren).
+- **Allow themes with HTML (I accept the risk)** (Themes mit HTML erlauben (ich akzeptiere das Risiko)), standardmäßig ausgeschaltet. Siehe [Themes mit HTML](#themes-with-html).
+- **Installed Themes** (installierte Themes): zuerst **Default Theme** (Standard-Theme), dann deine eigenen Themes und danach die heruntergeladenen Starter-Themes.
+- **Browse the theme gallery** (Theme-Galerie durchsuchen): die Starter-Themes, die du herunterladen kannst.
 
-1. Klick im Bereich **Theme Library** auf **Create Theme** (Theme anlegen).
-2. Gib im Namensfeld einen Namen ein (dort steht „Theme name...“).
-3. Schreib dein CSS in das große Textfeld oder füg es dort ein.
-4. Lass **Preview** (Vorschau) an, um deine Änderungen beim Tippen live zu sehen. Schalte sie aus, um die Live-Vorschau zu beenden.
-5. Klick auf **Save** (Speichern).
+## Starter-Themes
 
-Ein neues Theme startet mit einer Vorlage, die gängige Variablen als auskommentierte Beispiele auflistet. Entferne die Kommentarzeichen und trag eigene Werte ein. Ein brandneues Theme wird beim Speichern aktiviert, und du siehst: Theme "My Theme" saved and activated.
+Starter-Themes sind nicht Teil der Installation und belegen daher erst Speicherplatz, wenn du eines haben möchtest. Sie liegen in der Theme-Galerie, und Marinara lädt ein Theme erst herunter, wenn du es auswählst.
 
-Um ein Theme später zu ändern, such es unter **Installed Themes** (installierte Themes), klick auf das Code-Symbol (Tooltip **Edit theme CSS**), bearbeite es und klick auf **Save**. Das Bearbeiten ändert nicht, welches Theme aktiv ist.
+1. Klick auf **Browse the theme gallery** unter **Installed Themes**. Dafür braucht Marinara eine Internetverbindung.
+2. Jedes Theme zeigt eine Vorschau, eine kurze Beschreibung, seine Größe und seine Tags.
+3. Klick neben den gewünschten Themes auf **Download** (Herunterladen). Sie erscheinen unter **Starter themes** (Starter-Themes) in **Installed Themes** und können direkt eingeschaltet werden.
 
-## Themes importieren und exportieren
+| Theme | Aussehen |
+| --- | --- |
+| **Apogee Lounge** | Die Aussichtslounge eines Weltraumliners aus den 1970ern, mit einem Gasriesen vor dem Fenster und Nachrichten auf geformten Panels. |
+| **Dewglass** | Glänzendes Glas der 2000er: Nachrichten sind Gel-Tropfen über einer sonnigen Lagune oder einer nächtlichen Aurora. |
+| **Granite Watch** | Ein Befehlsstand aus dem Kalten Krieg unter einem Berg: Antworten werden auf Fernschreiberpapier gedruckt und Widgets hängen an Klemmbrettern. |
+| **Gutterlight** | Eine regnerische gotische Stadt als Krimi-Comic, mit getuschten Panels und Textkästen. |
+| **Lantern Meadow** | Ruhig und sehr gut lesbar, ohne Bewegung. |
+| **Lantern Path** | Eine Lesespalte mit sanfter Bewegung. |
+| **Maple's Bramble Cottage** | Ein gemütliches Cottage mit einer Lesespalte für lange Antworten. |
+| **NEON//GRID** | Neon-Cyberpunk für lange Antworten. |
+| **Petal OS** | Ein verspielter Retro-Desktop mit Pixelschriften. |
+| **Rosalind's Folio** | Ein Märchenbuch-Layout mit Visual-Novel-Elementen. |
+| **Swiss Poster** | Ruhiges, klares Posterdesign ohne Bewegung. |
+| **Under Sail** | Das Deck eines Segelschiffs auf See: Jede Nachricht ist ein Segel aus Leinen, das an einer hölzernen Rah hängt. |
+| **Velvet Casket** | Tagsüber Pastel Goth und nachts Traditional Goth, mit sargförmigen Nachrichten. |
 
-So importierst du ein Theme:
+Jedes Starter-Theme hat eine dunkle und eine helle Variante. Die kleinen Tags unter dem Namen, etwa **No motion** (keine Bewegung) oder **High legibility** (hohe Lesbarkeit), zeigen dir, was dich erwartet.
 
-1. Klick im Bereich **Theme Library** auf **Import File** (Datei importieren).
-2. Wähle eine `.css`- oder `.json`-Datei.
-3. Lies die Meldung. Sie nennt, wie viele Themes importiert, übersprungen oder nicht übernommen wurden.
+Wenn es in der Galerie eine neuere Version eines heruntergeladenen Themes gibt, steht beim Theme in der Galerieliste **Update** (Aktualisieren). Klick darauf, um die neue Version zu holen.
 
-Aus einer `.css`-Datei wird ein Theme, benannt nach der Datei. Eine `.json`-Datei kann ein oder mehrere Themes enthalten. Importiere eine aus Marinara exportierte Datei unverändert, oder schreib selbst eine kleine:
+Heruntergeladene Starter-Themes sind schreibgeschützt und bleiben deshalb immer so, wie sie erstellt wurden. Jedes hat vier Schaltflächen:
 
-```json
-{ "name": "My Theme", "css": "..." }
-```
+- **(i) Credits and licences** (Credits und Lizenzen): Wer die Grafiken und Schriften erstellt hat und wie du sie weiterverwenden darfst.
+- **Clone + Edit** (Klonen und bearbeiten; das Kopiersymbol): Erstellt deine eigene Kopie, etwa „Petal OS (my copy)“, und öffnet sie im Editor.
+- **Export** (Exportieren; das Upload-Symbol): Speichert das Theme als Datei.
+- **Remove** (Entfernen; das Papierkorb-Symbol): Entfernt das Theme aus dieser Installation. Du kannst es jederzeit wieder aus der Galerie herunterladen.
 
-Importierte Themes aktivieren sich nicht von selbst. Ein Theme mit demselben Namen und demselben CSS wie eines, das schon auf dem Server liegt, wird übersprungen.
-
-Zum Exportieren klickst du in der Zeile des Themes unter **Installed Themes** auf das Upload-Symbol (Tooltip **Export theme**). Marinara lädt eine `.json`-Datei herunter, die du anderswo importieren kannst.
+Du kannst die Theme-Dateien auch ohne die App herunterladen: Sie liegen im Ordner `themes` der Theme-Galerie auf GitHub ([Branch kolacheee-themes](https://github.com/kolacheee/Marinara-Engine-kolacheee/tree/kolacheee-themes/themes)). Lade dort eine `.json`-Datei herunter und nutze **Import File**.
 
 <a id="activating-a-theme"></a>
 
 ## Ein Theme aktivieren
 
-**Installed Themes** listet alle Themes auf, ganz oben mit dem Eintrag **Default Theme** (Standard-Theme).
+1. Klick unter **Installed Themes** auf den Namen eines Themes. Das Theme wird in diesem Browser-Tab eingeschaltet.
+2. Eine Leiste fragt **Keep this theme?** und zählt 15 Sekunden herunter. Zeigst du auf die Leiste, pausiert der Countdown.
+3. Klick auf **Keep theme** (Theme behalten), um es zu behalten. Jetzt erscheint es auch auf deinen anderen Geräten. Klick auf **Go back** (Zurück), oder lass den Countdown ablaufen, um zu deinem vorherigen Aussehen zurückzukehren.
 
-1. Klick auf den Namen eines Themes, um es zu aktivieren. Ein Häkchen zeigt das aktive Theme.
-2. Klick auf **Default Theme**, um eigene Themes abzuschalten und zum eingebauten Aussehen zurückzukehren.
+Klick auf **Default Theme**, um eigene Themes auszuschalten. **Reset Appearance** (Darstellung zurücksetzen) oben unter **Settings → Appearance → Theme** (Einstellungen → Darstellung → Theme) schaltet das Theme ebenfalls aus.
 
-**Reset Appearance** (Darstellung zurücksetzen) oben in **App Style** (App-Stil) unter **Settings → Appearance** (Einstellungen → Darstellung) schaltet ebenfalls das aktive Theme ab.
+Wenn du nur auf einem Gerät ein anderes Theme verwenden möchtest, stell zuerst **Look on this device** (Aussehen auf diesem Gerät) auf **Only this device** (nur dieses Gerät), und zwar unter **Settings → Appearance → Theme**.
 
-Um ein Theme zu löschen, klick auf das Papierkorb-Symbol (Tooltip **Remove theme**) und bestätige im Dialogfenster **Delete Theme**. Damit wird sein CSS dauerhaft vom Server gelöscht.
+### Dein gewohntes Aussehen wiederherstellen
 
-Wenn es nicht funktioniert hat: Sieht die App falsch aus, prüf sowohl das aktive Theme als auch etwaiges Card CSS im Chat. Siehe [Themes und Card CSS](#themes-and-card-css).
+Wenn ein Theme die Bedienung von Marinara erschwert, kannst du es mit jeder dieser Methoden in diesem Tab ausschalten:
+
+- Drück dreimal <kbd>Esc</kbd>.
+- Häng `?safe` an die Adresse in deinem Browser an.
+- Drück <kbd>Ctrl</kbd>+<kbd>K</kbd> und gib „Custom theme“ ein.
+
+Marinara schützt außerdem die obere Leiste, die Seitenleisten, <kbd>Ctrl</kbd>+<kbd>K</kbd> und das Nachrichtenfeld. Ein Theme kann sie umgestalten. Blendet es jedoch eines dieser Elemente aus, verschiebt oder überdeckt es, schaltet Marinara das Theme in diesem Tab aus und nennt dir den Grund.
+
+## Ein Theme importieren
+
+1. Klick auf **Import File**.
+2. Wähle eine `.json`- oder `.css`-Theme-Datei.
+3. Eine Vorschau zeigt Name, Autor, Version, Bilder und Größe des Themes sowie seine Credits und Lizenz. Sie führt alles auf, was du vor der Installation wissen solltest, etwa bewegte Bilder, vom Theme hinzugefügten Text oder Teile, die nicht funktionieren werden.
+4. Wähle aus, was übernommen werden soll. Die Vorschau bietet die empfohlenen Einstellungen des Themes an, etwa Farbschema, Akzentfarbe und Schrift; die meisten davon sind angehakt. Sie kann auch die Hintergründe des Themes zu deiner Galerie für Chat-Hintergründe hinzufügen.
+5. Klick auf **Install and try it** (installieren und ausprobieren), um sofort zu diesem Theme zu wechseln, oder auf **Install** (Installieren), um es der Liste hinzuzufügen.
+
+Hast du bereits ein Theme mit demselben Namen, bietet die Vorschau an, es zu aktualisieren oder **Keep both** (beide behalten) zu wählen. Kehrst du von einem Theme zurück, das du ausprobierst, stellt Marinara auch alle Einstellungen wieder her, die das Theme geändert hat.
+
+Ein Theme kann nicht installiert werden, wenn es Text schreibt, der nach Passwörtern oder Schlüsseln fragt oder sich als Marinara ausgibt. Gib niemals einen Schlüssel oder ein Passwort ein, weil ein Theme danach fragt.
+
+<a id="themes-with-html"></a>
+
+### Themes mit HTML
+
+Manche Themes fügen jeder Nachricht ein kleines HTML-Feld hinzu, das Nachrichtenvorlage heißt. Marinara entfernt daraus Skripte, Links, Bilder und Formulare, doch HTML von jemand anderem könnte dich trotzdem täuschen. Diese Themes lassen sich nur installieren, solange **Allow themes with HTML (I accept the risk)** eingeschaltet ist. Ist der Schalter aus, wird ein installiertes Theme ohne sein HTML angezeigt.
+
+## Ein Theme anlegen
+
+Klick auf **Create Theme** oder bei einem Starter-Theme auf **Clone + Edit**, um mit etwas zu beginnen, das bereits gut aussieht. Der Editor hat ein Namensfeld, ein großes CSS-Feld, **Preview** (Vorschau) und **Save** (Speichern). Ein neues Theme wird beim Speichern eingeschaltet und fragt **Keep this theme?**
+
+Die [Anleitung für Theme-Autoren](theme-author-guide.md#your-first-theme-step-by-step) führt dich Schritt für Schritt durch dein erstes Theme.
+
+### Ein Theme mit Professor Mari erstellen
+
+Du musst CSS nicht selbst schreiben. Sag Professor Mari in einfachen Worten, was du möchtest, etwa „Mach mir ein gemütliches Herbst-Theme, das auf meinem Handy funktioniert“ oder „Was stimmt mit meinem Harbor-Theme nicht?“. Sie hat ein Handbuch zum Gestalten und Prüfen von Themes und hält sich daran:
+
+1. **Sie stimmt zuerst die Idee mit dir ab.** Sie fragt nach der Stimmung, hellem oder dunklem Modus (oder beidem), deinen Geräten und danach, ob du Bilder und Wetter möchtest. Dann fasst sie einen Look in einem Satz zusammen, etwa „Kapseln aus Milchglas vor einer Meereskulisse“.
+2. **Sie erstellt es zunächst ausgeschaltet.** Sie sagt dir, wo du es ausprobieren kannst: Wähl es unter **CSS-Themes** aus und drück innerhalb von 15 Sekunden auf **Theme behalten**. Bittest du sie, es selbst einzuschalten, fragt dein Tab genauso **Dieses Theme behalten?** und wechselt zurück, wenn niemand antwortet.
+3. **Sie bittet dich, hinzusehen.** Mari kann deinen Bildschirm nicht sehen. Deshalb nennt sie genaue Stellen, die du im hellen und dunklen Modus prüfen sollst, und bittet um einen Screenshot, wenn etwas nicht stimmt. Hat Marinara das Theme ausgeschaltet, sag ihr die Meldung: Sie nennt den Grund, und Mari behebt ihn.
+4. **Sie kann die Bilder dafür erstellen.** Ist unter Verbindungen ein Bildmodell eingerichtet, erstellt sie Hintergründe, Rahmen und Symbole, zeigt dir jedes zuerst und speichert es im Theme, wenn du zustimmst. Sie kann auch gezeichnete Verzierungen (SVG-Bilder) in einem Theme umfärben. Siehe [Professor Mari um die Bilder bitten](theme-author-guide.md#ask-professor-mari-to-make-the-art).
+
+Wenn sie ein Theme prüft, listet sie für jede Ansicht auf, was nicht zusammenpasst (unterschiedliche Eckenformen, Schatten, schwer lesbare Beschriftungen). Sie ändert nichts, bis du sagst, was sie beheben soll.
+
+Mari arbeitet nur an deinen eigenen Themes. Starter-Themes sind schreibgeschützt. Klick deshalb zuerst bei einem auf **Klonen + bearbeiten** und bitte sie, die Kopie zu bearbeiten. Schriftarten, Namensnennungen und Vorschaubilder fügst du selbst unter **Bilder und Angaben zum Teilen (Autor, Version, Vorschaubild, Schriftarten)** hinzu.
+
+## Eigene Themes bearbeiten, exportieren und entfernen
+
+Deine eigenen Themes haben drei Schaltflächen in ihrer Zeile:
+
+- **Edit theme CSS** (Theme-CSS bearbeiten; das Code-Symbol) öffnet den Editor. Das Bearbeiten ändert nicht, welches Theme eingeschaltet ist.
+- **Export** (das Upload-Symbol) lädt eine `.json`-Datei herunter, die du teilen oder anderswo importieren kannst.
+- **Remove** (das Papierkorb-Symbol) löscht das Theme nach deiner Bestätigung. Das lässt sich nicht rückgängig machen; exportiere es daher zuerst, falls du es später vielleicht wiederhaben möchtest.
+
+## Ein Theme für einen Chat
+
+Ein Chat kann ein eigenes Theme haben:
+
+1. Öffne den Chat und dann **Chat Settings** (Chat-Einstellungen).
+2. Wähl unter **Theme** (Theme) ein Theme aus. **Follow the app** (der App folgen) verwendet das App-Theme, und **Default look (no custom theme)** (Standardaussehen (kein eigenes Theme)) schaltet Themes für diesen Chat aus.
+3. Hak in einem Chat mit einem Charakter **Use it for every chat with this character** (für jeden Chat mit diesem Charakter verwenden) an, um es zum Theme dieses Charakters zu machen.
+
+Die Einstellungen und die Bibliothek verwenden immer das App-Theme.
+
+## Wer Themes ändern kann
+
+Auf dem Rechner, auf dem Marinara läuft, ist kein Secret nötig. Von einem anderen Gerät aus, etwa einem Handy, brauchst du zum Erstellen, Importieren, Klonen, Bearbeiten und Entfernen von Themes das Admin-Secret. Gib es unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) ein. Um ein bereits installiertes Theme auszuwählen, ist kein Secret nötig. Siehe [Das Admin-Secret](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 
 <a id="ready-made-chat-window-styles"></a>
 
@@ -72,9 +143,8 @@ Wenn es nicht funktioniert hat: Sieht die App falsch aus, prüf sowohl das aktiv
 
 Bevor du anfängst: Dafür brauchst du kein CSS.
 
-1. Öffne **Settings → Appearance → App**.
-2. Such unten in **App Style** den Eintrag **Chat widget style** (Chat-Widget-Stil).
-3. Wähl einen Stil.
+1. Öffne **Settings → Appearance → Chat Buttons & Windows** (Einstellungen → Darstellung → Chat-Schaltflächen und -Fenster).
+2. Wähl unter **Chat widget style** (Chat-Widget-Stil) einen Stil.
 
 | Stil | Aussehen |
 | --- | --- |
@@ -105,7 +175,11 @@ Drei Schalter unter den Farbwählern erweitern den Stil. Jeder ist anfangs aus u
 
 Die Verlaufsschaltflächen **Load More** (Mehr laden) und **Show older** (Ältere anzeigen) folgen den Schaltern wie andere Chat-Bedienelemente. Im Game Mode gelten die Schalter außerdem für Randbemerkungen, HUD-Widgets, das Kartenpanel, Charakterbögen, Protokolle, das Inventar, Kampfpanels und Dialogfenster. Professor Mari kann auch eigene Themes für diese Bereiche erstellen.
 
-Ein eigenes Theme kann die Stile weiterhin überschreiben. Die Variablen für Fenster und Abschnitte weiter unten haben Vorrang vor den Farben des Stils. Nutze `--mari-window-font-family` für die Fensterschrift, `--mari-drawer-radius` für die Ecken der Abschnitte und `--mari-window-ornament: none`, um die Verzierung am Titel auszublenden. Um alle Verzierungen des Stils zu entfernen, wähle zuerst **Default**.
+Ein eigenes Theme kann die Stile weiterhin überschreiben. Die Variablen für Fenster und Abschnitte unter [Chat-Fenster und aufklappbare Abschnitte gestalten](#styling-chat-windows-and-drawers) haben Vorrang vor den Farben des Stils. Nutze `--mari-window-font-family` für die Fensterschrift, `--mari-drawer-radius` für die Ecken der Abschnitte und `--mari-window-ornament: none`, um die Verzierung am Titel auszublenden. Um alle Verzierungen des Stils zu entfernen, wähle zuerst **Default**.
+
+## Für Theme-Autoren
+
+Der Rest dieser Anleitung ist Referenzmaterial für alle, die Theme-CSS von Hand schreiben. Beginne mit der [Anleitung für Theme-Autoren](theme-author-guide.md), die alle stabilen Tokens, Part-Hooks und Sicherheitsregeln auflistet.
 
 <a id="themes-and-card-css"></a>
 
@@ -142,6 +216,8 @@ Im Theme-Editor gibt es eine ausklappbare **CSS Variable Reference** (CSS-Variab
 | `--accent` | Hervorhebung beim Draufzeigen |
 
 Ein Theme kann jede CSS-Variable setzen, die Marinara verwendet, nicht nur diese. Manche Effekte haben eigene Variablen. Zum Beispiel fordert `--marinara-theme-accent-pulse: enabled` die pulsierende Akzent-Animation an.
+
+<a id="styling-chat-windows-and-drawers"></a>
 
 ## Chat-Fenster und aufklappbare Abschnitte gestalten
 
@@ -284,7 +360,9 @@ Am Telefon klappt das Drei-Punkte-Menü zu runden Schaltflächen auf. Sein Ausl�
 
 ## Verwandte Anleitungen
 
+- [Anleitung für Theme-Autoren](theme-author-guide.md)
+- [Wetter in deinem Theme](theme-weather.md)
 - [Anleitung zum Card-CSS-Theming](card-css-theming.md)
 - [Darstellungseinstellungen](appearance-settings.md)
 - [Referenz zur Server-Konfiguration](../CONFIGURATION.md)
-- [Fernzugriff: Anmeldung und IP-Allowlist](../REMOTE_ACCESS.md)
+- [Fernzugriff](../REMOTE_ACCESS.md)

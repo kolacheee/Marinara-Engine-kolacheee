@@ -38,11 +38,11 @@ ffmpegをインストールしてシステムから見つけられるように�
 
 アニメーション表情は1つずつ作られるため、静止画のスプライトより時間がかかります。まずは少数から始めてください。
 
-**Settings → Generations → Overall Generations**(設定 → 生成 → 生成全般)の**Expose media prompts before sending**(送信前にメディアのプロンプトを表示)をオンにしていると、Marinaraがいったん止まり、各プロンプトをサービスへ送る前に読んで編集できます。
+**Settings → Media → Generation Defaults**(設定 → メディア → 生成のデフォルト設定)の**Expose media prompts before sending**(送信前にメディアのプロンプトを表示)をオンにしていると、Marinaraがいったん止まり、各プロンプトをサービスへ送る前に読んで編集できます。
 
 ## 長さと縦横比
 
-アニメーション表情はすべて9:16の縦長の立ち絵クリップで、これは変更できません。各クリップの長さを変えるには、**Settings → Generations**(設定 → 生成)を開き、**Video Generation**(動画生成)を探して**Animated expression length**を設定します。デフォルトは3秒です。範囲は1秒から8秒です。Marinaraは幅512ピクセルの小さなループGIFを保存します。クリップが短いほど、ファイルは小さくなり、ループも短くまとまります。
+アニメーション表情はすべて9:16の縦長の立ち絵クリップで、これは変更できません。各クリップの長さを変えるには、**Settings → Media**(設定 → メディア)を開き、**Video Generation**(動画生成)を探して**Animated expression length**を設定します。デフォルトは3秒です。範囲は1秒から8秒です。Marinaraは幅512ピクセルの小さなループGIFを保存します。クリップが短いほど、ファイルは小さくなり、ループも短くまとまります。
 
 <a id="backgrounds-are-not-removed"></a>
 

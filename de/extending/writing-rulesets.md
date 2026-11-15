@@ -86,13 +86,13 @@ Diese Seite erklärt, wie du einen Regelsatz anlegst, ausprobierst und teilst. D
 
 ## Deinen Regelsatz ausprobieren
 
-Bevor du anfängst, schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) unter **Settings → Advanced → Danger Zone** (Einstellungen → Erweitert → Gefahrenbereich) ein. Importierte Regelsätze verwenden denselben Sicherheitsschalter wie importierte Agenten, deshalb ist er aus, bis du ihn einschaltest. Der Import braucht außerdem Zugriff über localhost oder das Admin-Secret (**Settings → Advanced → Admin Access**).
+Bevor du anfängst, schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) ein. Importierte Regelsätze verwenden denselben Sicherheitsschalter wie importierte Agenten, deshalb ist er aus, bis du ihn einschaltest. Der Import braucht außerdem Zugriff über localhost oder das Admin-Secret (**Settings → Advanced → Security**).
 
-1. Öffne das Panel **Agents** und wähle **Import agents** (Agenten importieren), das Download-Symbol in der Schaltflächenreihe oben im Panel.
+1. Öffne **Library → Agents** (Bibliothek → Agenten) und klick auf **Import agents** (Agenten importieren), das Download-Symbol neben **Starter kits** (Einsteigerpakete). Im klassischen Layout ist es das Download-Symbol oben im Panel **Agents**.
 2. Wähle **Game Mode ruleset** (Regelsatz für Game Mode) und deine JSON-Datei oder eine Regelsatz-Paketdatei mit der Endung `.ruleset.json` (siehe [Deinen Regelsatz teilen](#sharing-your-ruleset)).
 3. Lies die Prüfung. Sie zeigt Name, Version, Lizenz, Umfang des Regelsatzes und den Text für den Game Master. Wähle **Import** (importieren).
 
-Dein Regelsatz erscheint im Bereich **Rules** des Panels und in der Auswahl **Rules** des Einrichtungsassistenten für neue Spiele. Ein aus einer Datei importierter Regelsatz wird als `local/<your id>` abgelegt. Er wird dadurch nie mit einem offiziellen oder fremden Regelsatz verwechselt.
+Dein Regelsatz erscheint in der Auswahl **Rules** des Einrichtungsassistenten für neue Spiele und im Bereich **Rules** des klassischen Panels **Agents**. Ein aus einer Datei importierter Regelsatz wird als `local/<your id>` abgelegt. Er wird dadurch nie mit einem offiziellen oder fremden Regelsatz verwechselt.
 
 ### Einen bereits importierten Regelsatz ändern
 
@@ -161,13 +161,13 @@ your-repository/
     another-system.json
 ```
 
-Nutzer fügen dein Repository einmal hinzu, prüfen seinen Inhalt und synchronisieren es später, um neue Versionen zu erhalten. Die Liste eigener Repositories ist eine erweiterte Funktion. Wer den Server betreibt, schaltet sie mit `ENABLE_CUSTOM_AGENT_REPOS=true` ein und öffnet dann **Agents → Agent Organizer → Custom Sources** (Agenten → Agentenverwaltung → eigene Quellen). Regelsätze aus einem Repository werden unter dem Namen seines Besitzers abgelegt, etwa `alice/ember-roads`. So können zwei Autoren jeweils einen Regelsatz namens `v20` veröffentlichen, ohne einander in die Quere zu kommen.
+Nutzer fügen dein Repository einmal hinzu, prüfen seinen Inhalt und synchronisieren es später, um neue Versionen zu erhalten. Die Liste eigener Repositories ist eine erweiterte Funktion. Wer den Server betreibt, schaltet sie mit `ENABLE_CUSTOM_AGENT_REPOS=true` ein und öffnet dann **Library → Agents → Custom Sources** (Bibliothek → Agenten → eigene Quellen). Regelsätze aus einem Repository werden unter dem Namen seines Besitzers abgelegt, etwa `alice/ember-roads`. So können zwei Autoren jeweils einen Regelsatz namens `v20` veröffentlichen, ohne einander in die Quere zu kommen.
 
 Es gelten zwei Grenzen. Ein Repository darf höchstens 32 JSON-Dateien direkt in `rulesets` enthalten; eines mit mehr wird abgelehnt. Ein Konto namens `local` kann keine Regelsätze veröffentlichen, denn `local/` ist für Regelsätze reserviert, die aus einer Datei importiert wurden.
 
 ### Im offiziellen Katalog
 
-Ein verbreitetes System mit geklärten Lizenzrechten kann über **Agent Organizer** allen angeboten werden. Um eines vorzuschlagen, öffne einen Pull Request im Repository [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Das dortige Paket `ruleset-5e-2014` zeigt die Verzeichnisstruktur.
+Ein verbreitetes System mit geklärten Lizenzrechten kann über **Library → Agents** allen angeboten werden. Um eines vorzuschlagen, öffne einen Pull Request im Repository [Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Das dortige Paket `ruleset-5e-2014` zeigt die Verzeichnisstruktur.
 
 ## Lizenzierung
 

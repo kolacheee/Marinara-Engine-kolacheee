@@ -1,6 +1,12 @@
 # सुविधा स्विच
 
-सर्वर के कुछ व्यवहार वैकल्पिक हैं। उन्हें **Settings > Advanced > Features** (सेटिंग्स > उन्नत > सुविधाएँ) में चालू करें। हर स्विच शुरू में बंद है, इसलिए जहाँ यह सेक्शन कभी न खोला जाए, सर्वर पहले जैसा काम करता है।
+सर्वर के कुछ व्यवहार वैकल्पिक हैं। हर स्विच शुरू में बंद है, इसलिए जहाँ कोई इन्हें चालू न करे, सर्वर पहले जैसा काम करता है। ये **Settings** में अलग-अलग जगहों पर हैं:
+
+- **Stable lorebook picks** और **Lorebook activation stats**: **Settings → Advanced → Lorebooks**।
+- **Retry failed provider calls**: **Settings → Advanced → Timeouts & Retries**।
+- **Recover deleted chat messages**: **Settings → Data → Backup & Restore**।
+
+क्लासिक लेआउट में स्विच के नाम से Settings में खोजें।
 
 बदलाव तुरंत लागू होता है। सर्वर रीस्टार्ट या पेज रीलोड नहीं चाहिए।
 
@@ -15,7 +21,7 @@
 | **Lorebook activation stats** (लोरबुक सक्रियण के स्टैट) | `usageAndActivationStats` | बंद | कोई नहीं |
 | **Recover deleted chat messages** (डिलीट किए गए चैट संदेश वापस लाएँ) | `messageTrash` | बंद | कोई नहीं |
 
-सेटिंग्स में `features` खोजने पर यह सेक्शन मिलता है।
+सेटिंग्स में स्विच के नाम से खोजने पर वह मिल जाता है।
 
 <a id="where-the-settings-are-stored"></a>
 
@@ -76,7 +82,7 @@ API `GET` और `PUT /api/app-settings/features` है। `PUT` पूरा �
 ## प्राथमिकता
 
 1. **एनवायरनमेंट वेरिएबल।** सेट हो तो चालू और बंद दोनों स्थितियों में सेव स्विच से ऊपर है। Settings में स्विच लॉक होकर वेरिएबल नाम दिखाता है। खाली मान अनसेट माना जाता है।
-2. **सेव स्विच।** Settings > Advanced > Features में रखा मान।
+2. **सेव स्विच।** Settings > Advanced > Lorebooks में रखा मान।
 3. **डिफ़ॉल्ट।** बंद।
 
 | वेरिएबल | नियंत्रण | मान |

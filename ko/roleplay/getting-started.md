@@ -8,8 +8,8 @@ Roleplay(롤플레이)는 이야기를 위한 채팅 모드입니다. 메시지 
 
 시작하기 전에: 앱 오른쪽의 **Connections**(연결) 패널에서 계정을 추가하세요. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
 
-1. 채팅 사이드바에서 **RP** 탭을 클릭하세요.
-2. 사이드바 위쪽의 **+** 버튼을 클릭하세요. 툴팁은 **New Roleplay**(새 롤플레이)입니다.
+1. 채팅 목록을 열고(오른쪽 위의 **Library**(라이브러리), 그다음 사이드바 위쪽의 **Chats**(채팅)) **Roleplay**(롤플레이) 탭을 클릭하세요.
+2. 채팅 목록 위쪽의 **New**를 클릭하세요.
 
 채팅이 열리면서 **Chat Settings**(채팅 설정)와 5단계 설정 마법사가 나타납니다. 필수 항목은 계정뿐입니다. 모든 항목은 나중에 바꿀 수 있습니다.
 
@@ -23,7 +23,7 @@ Roleplay(롤플레이)는 이야기를 위한 채팅 모드입니다. 메시지 
 
 ## 무대: 배경, 스프라이트, HUD
 
-- **Background**(배경): 메시지 뒤에 깔리는 장면 전체 이미지로, 바뀔 때 부드럽게 전환됩니다. **Background** 에이전트가 매 턴 하나를 고르게 하거나, 채팅마다 하나로 고정할 수 있습니다. [Roleplay 배경](backgrounds.md)을 참고하세요.
+- **Background**(배경): 메시지 뒤에 깔리는 장면 전체 이미지로, 바뀔 때 부드럽게 전환됩니다. **Background** 에이전트가 매 턴 하나를 고르게 하거나, 채팅마다 하나로 고정할 수 있습니다. [이야기를 따라 바뀌는 배경](backgrounds.md)을 참고하세요.
 - **Sprites**(스프라이트): 무대에 표시되는 캐릭터 그림입니다. 스프라이트가 켜진 캐릭터는 모두 나타날 수 있습니다. 캐릭터 카드에 스프라이트 라이브러리가 있어야 하며, 없으면 그 자리는 비어 있습니다. [캐릭터 스프라이트](../characters/sprites.md)를 참고하세요.
 - **HUD**: 트래커(날짜, 시간, 날씨, 위치, 등장 캐릭터, 인벤토리, 퀘스트, 능력치)입니다. **Chat Settings → Agents**에서 켜세요. [Roleplay HUD와 트래커](hud-and-trackers.md)를 참고하세요.
 
@@ -76,7 +76,7 @@ Roleplay(롤플레이)는 이야기를 위한 채팅 모드입니다. 메시지 
 - **Activity**(활동) 탭: 에이전트가 저장한 출력으로, 생각 풍선이라고 부릅니다. 하나씩 닫거나 **Clear all**(전체 지우기)을 사용하세요. 사용자 지정 에이전트의 출력도 여기에 나타납니다.
 - 에이전트가 작업하는 동안에는 아이콘이 스피너로 바뀝니다. 에이전트가 실패하면 열어 볼 때까지 아이콘에 점이 표시됩니다.
 - 실패한 에이전트는 재시도 버튼과 함께 나열됩니다. 실행 중인 에이전트를 중지하고, 트래커를 다시 실행하고, **Clear Trackers**(트래커 비우기)를 사용할 수도 있습니다.
-- **Injections** 탭: **Debug mode**(디버그 모드)가 켜져 있을 때만 나타납니다(**Settings → Advanced**(설정 → 고급)). 직전 답변 전에 작가형 에이전트가 저장한 프롬프트 조각이 표시됩니다. 작가형 에이전트에는 문체 규칙에 맞춰 답변을 다시 쓰는 **Prose Guardian**과 이야기 흐름을 이끄는 **Narrative Director**가 있습니다. 조각은 보고, 고치고, 다시 실행할 수 있습니다. 고친 내용은 같은 답변을 재생성할 때 쓰이는 내용만 바꾸므로, 재생성 결과가 같은 조건으로 반복됩니다. 화면에 있는 답변은 바뀌지 않습니다.
+- **Injections** 탭: **Debug mode**(디버그 모드)가 켜져 있을 때만 나타납니다(**Settings → Advanced → Troubleshooting**(설정 → 고급 → 문제 해결)). 직전 답변 전에 작가형 에이전트가 저장한 프롬프트 조각이 표시됩니다. 작가형 에이전트에는 문체 규칙에 맞춰 답변을 다시 쓰는 **Prose Guardian**과 이야기 흐름을 이끄는 **Narrative Director**가 있습니다. 조각은 보고, 고치고, 다시 실행할 수 있습니다. 고친 내용은 같은 답변을 재생성할 때 쓰이는 내용만 바꾸므로, 재생성 결과가 같은 조건으로 반복됩니다. 화면에 있는 답변은 바뀌지 않습니다.
 
 모든 에이전트는 [에이전트: 채팅을 도와주는 AI](../agents/agents-overview.md)를 참고하세요. 이야기를 이끄는 에이전트는 [Narrative Director와 Secret Plot](narrative-director.md)을 참고하세요.
 
@@ -185,11 +185,11 @@ Roleplay(롤플레이)는 이야기를 위한 채팅 모드입니다. 메시지 
 
 - 컴퓨터에서는 제목 표시줄을 끌어 옮기고 가장자리를 끌어 크기를 바꾸세요. 계속 열어 두려면 고정하세요. **X**를 누르면 이동 가능한 버튼으로 닫힙니다.
 - 휴대폰에서는 메시지 위의 작은 창으로 시작합니다. 제목 표시줄을 끌어 옮기거나, 가장자리나 모서리를 끌어 크기를 바꾸세요. 고정하면 다른 곳을 탭해도 열려 있고, 잠그면 실수로 움직이지 않습니다.
-- **Settings → Appearance → App**(설정 → 모양 → 앱)의 **Chat widget style**(채팅 위젯 스타일)을 따릅니다. 채팅마다 배치를 기억합니다.
+- **Settings → Appearance → Chat Buttons & Windows**(설정 → 모양 → 채팅 버튼 및 창)의 **Chat widget style**(채팅 위젯 스타일)을 따릅니다. 채팅마다 배치를 기억합니다.
 
 ## CYOA 선택지
 
-CYOA는 Choose Your Own Adventure의 약자입니다. CYOA Choices 에이전트는 기본적으로 꺼져 있으며 Roleplay에서만 작동합니다. 켜면 답변 뒤에 클릭할 수 있는 선택지 버튼이 붙고, 선택지를 클릭하면 그 내용이 다음 메시지로 전송됩니다. 선택지를 합치거나 먼저 고치려면 **Settings → General → Input & Editing**(설정 → 일반 → 입력 및 편집)에서 **Add CYOA choices to the message box instead of sending them**(CYOA 선택지를 전송하지 않고 메시지 입력란에 추가)을 켜세요. 그러면 선택지를 클릭했을 때 그 텍스트가 메시지 입력란에 추가됩니다.
+CYOA는 Choose Your Own Adventure의 약자입니다. CYOA Choices 에이전트는 기본적으로 꺼져 있으며 Roleplay에서만 작동합니다. 켜면 답변 뒤에 클릭할 수 있는 선택지 버튼이 붙고, 선택지를 클릭하면 그 내용이 다음 메시지로 전송됩니다. 선택지를 합치거나 먼저 고치려면 **Settings → Chatting → Message Box**(설정 → 채팅 중 → 메시지 입력창)에서 **Add CYOA choices to the message box instead of sending them**(CYOA 선택지를 전송하지 않고 메시지 입력란에 추가)을 켜세요. 그러면 선택지를 클릭했을 때 그 텍스트가 메시지 입력란에 추가됩니다.
 
 ## 문제 해결
 
@@ -197,14 +197,14 @@ CYOA는 Choose Your Own Adventure의 약자입니다. CYOA Choices 에이전트�
 | --- | --- |
 | HUD 값이 틀립니다. | 직접 고친 다음 잠가서 다음 실행이 건드리지 않게 하세요. [Roleplay HUD와 트래커](hud-and-trackers.md)를 참고하세요. 값이 계속 어긋나면 더 강력한 에이전트 모델을 쓰세요. |
 | 스프라이트가 바뀌지 않습니다. | 캐릭터에 스프라이트 라이브러리가 있는지 확인하세요. `/emote`를 쓸 수도 있습니다. |
-| 배경이 전혀 바뀌지 않습니다. | **Background** 에이전트는 내 라이브러리에서 고르므로 배경을 더 추가하세요. [Roleplay 배경](backgrounds.md)을 참고하세요. |
+| 배경이 전혀 바뀌지 않습니다. | **Background** 에이전트는 내 라이브러리에서 고르므로 배경을 더 추가하세요. [이야기를 따라 바뀌는 배경](backgrounds.md)을 참고하세요. |
 | 재생성한 답변이 계속 엉뚱한 방향으로 갑니다. | **Debug mode**를 켜고 **Agent activity → Injections**를 연 다음, 재생성하기 전에 저장된 조각을 고치거나 다시 실행하세요. |
 
 더 자세한 도움말은 [Marinara Engine 문제 해결](../TROUBLESHOOTING.md)을 참고하세요.
 
 ## 관련 가이드
 
-- [Roleplay 배경](backgrounds.md)
+- [이야기를 따라 바뀌는 배경](backgrounds.md)
 - [Roleplay HUD와 트래커](hud-and-trackers.md)
 - [전투 인카운터(Roleplay)](combat-encounters.md)
 - [Narrative Director와 Secret Plot](narrative-director.md)

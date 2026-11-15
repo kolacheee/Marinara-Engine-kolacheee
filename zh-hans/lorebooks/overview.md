@@ -14,7 +14,7 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 ## 创建世界书并添加条目
 
-1. 从侧边栏打开 **Lorebooks**(世界书) 面板。
+1. 打开 **Library**(资料库) > **Lorebooks**(世界书)。资料库在右侧。
 2. 点击 **New**(新建，加号图标)。**Create Lorebook**(新建世界书) 窗口随即打开。
 3. 填写 **Name**(名称)。这一项必填。
 4. 想写的话，加上 **Description**(描述)。
@@ -67,9 +67,26 @@ Token 是模型用来计数的文本小片段，在英文中大约相当于四�
 
 开关下方的 **Semantic search (embeddings)**(语义搜索与嵌入) 面板在[世界书的语义搜索](semantic-search.md)里介绍。
 
-## Lorebooks 面板
+## Lorebooks 页面
 
-面板顶部有三个图标按钮，鼠标悬停时会显示名称。
+打开 **Library → Lorebooks**(资料库 → 世界书)。顶部有 **Import**(导入)（见[导入和导出世界书](import-export.md)）和 **New lorebook**(新建世界书)。下方还有：
+
+- **All kinds**(所有类型) 可以把列表限定为 **Global**(全局)、**World**(世界)、**Character**(角色)、**NPC** 或 **Spellbook**(法术书) 世界书。
+- **List**(列表) 和 **Gallery**(图库) 用来在表格和图片卡片之间切换。
+- 排序菜单提供 **Recently edited**(最近编辑)、**A to Z**(A 到 Z)、**Z to A**(Z 到 A) 和 **My order**(我的顺序)。
+
+点击世界书即可打开。
+
+### 整理世界书
+
+- 行尾的 **⋯**（或右键点击这一行）提供 **Duplicate**(复制)、**Move to folder**(移动到文件夹)、**Export**(导出)、**Select**(选择) 和 **Delete**(删除)。在触屏设备上，长按这一行。**Duplicate** 会复制世界书及其全部条目，并打开副本。
+- 把一行拖到另一行上方或下方，可以设置自己的顺序。排序菜单会切换到 **My order**。
+- **New folder**(新建文件夹)（标题旁的文件夹图标）会添加一个资料库文件夹。把世界书拖到它上面，或使用 **Move to folder**。这些文件夹与世界书内部的条目文件夹是分开的。点击文件夹可以折叠，用它的 **⋯** 可以重命名或删除。删除文件夹会保留其中的世界书。
+- **Select**（标题旁的勾选图标）会在每一行上显示复选框。选中世界书，再使用底部操作栏：**Move to folder**、**On or off**(开启或关闭)、**Export**（一个 `marinara-lorebooks.zip`）或 **Delete**。
+
+## 经典布局中的 Lorebooks 面板
+
+经典面板以列表形式显示相同的文件夹和排序。面板顶部有三个图标按钮，鼠标悬停时会显示名称。
 
 - **New** 打开 **Create Lorebook** 窗口。
 - **Import**(导入) 打开 **Import Lorebook**(导入世界书) 窗口。见[导入与导出世界书](import-export.md)。
@@ -77,7 +94,8 @@ Token 是模型用来计数的文本小片段，在英文中大约相当于四�
 
 按钮下方：
 
-- **Search lorebooks**(搜索世界书) 按名称、描述、关联的角色或用户角色名称以及标签筛选。
+- **Search lorebooks**(搜索世界书) 按名称、描述、关联的角色或用户角色名称以及标签筛选。这里也支持 `tag:name`。
+- 搜索框旁的 **Tags**(标签) 只显示带有全部所选标签的世界书，也可以选 **Untagged**(无标签)。见[标签](../characters/library-organization.md#tags)。
 - **Sort order**(排序方式) 提供 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest**、**Oldest** 和 **Token Budget**。选 **Manual order** 时，把世界书拖到想要的位置，或者用 <kbd>Alt</kbd>+<kbd>Up</kbd> 和 <kbd>Alt</kbd>+<kbd>Down</kbd>。
 - **New Folder**(新建文件夹) 会建立一个库文件夹。把世界书拖到上面即可。在手机上，按住世界书，再拖动。这些文件夹和世界书内部的条目文件夹是两回事。
 

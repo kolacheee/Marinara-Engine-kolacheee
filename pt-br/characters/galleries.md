@@ -1,10 +1,10 @@
 # Galerias de personagem e de persona
 
-A seção **Gallery** (galeria) da aba **Images** (imagens) dos editores de personagem e de persona, guarda imagens e vídeos presos a um personagem ou a uma persona, e eles continuam lá mesmo se você excluir chats. Use a aba para fichas de referência, variações de roupa e pacotes de imagens importados. Você também pode marcar uma imagem da galeria como emoji ou sticker (figurinha) personalizado.
+A aba **Galeria** dos editores de personagem e de persona guarda imagens e vídeos vinculados a um personagem ou a uma persona, e eles continuam lá mesmo se você excluir chats. Use a aba para fichas de referência, variações de roupa e pacotes de imagens importados. Você também pode marcar uma imagem da galeria como emoji personalizado, sticker (figurinha) ou plano de fundo que acompanha o personagem em todos os chats.
 
-## Encontre a galeria
+## A aba Galeria
 
-Todo personagem e toda persona tem a própria galeria. Abra o personagem no Character Editor (editor de personagem) ou a persona no Persona Editor (editor de persona) clique na aba **Images** e depois em **Gallery** no topo. A galeria de um personagem tem o título **Character Gallery**, e a de uma persona, **Persona Gallery**. As duas funcionam do mesmo jeito.
+Todo personagem e toda persona tem a própria aba **Galeria** (ícone de câmera). Abra o personagem no Character Editor (editor de personagem) ou a persona no Persona Editor (editor de persona) e clique em **Galeria**. A galeria de um personagem tem o título **Galeria do personagem**, e a de uma persona, **Galeria da persona**. As duas funcionam do mesmo jeito.
 
 A galeria tem duas sub-abas:
 
@@ -15,7 +15,7 @@ A galeria do próprio chat é outra coisa. Ela guarda as ilustrações de cena e
 
 ### Adicionar imagens
 
-1. Abra **Images → Gallery** e selecione **Images**.
+1. Abra a aba **Galeria** e selecione **Imagens**.
 2. Arraste os arquivos de imagem para **Upload Character Images** (enviar imagens do personagem) ou clique nessa caixa para escolher os arquivos. Em uma persona, a caixa mostra **Upload Persona Images**.
 3. Espere o upload terminar. As novas imagens aparecem na grade.
 
@@ -23,7 +23,7 @@ Clique em uma imagem para vê-la maior. Cada miniatura tem um controle de downlo
 
 ### Adicionar vídeos
 
-1. Abra **Images → Gallery** e selecione **Videos**.
+1. Abra a aba **Galeria** e selecione **Vídeos**.
 2. Arraste os arquivos de vídeo para **Upload Character Videos** (enviar vídeos do personagem) ou clique nessa caixa para escolher os arquivos. Em uma persona, a caixa mostra **Upload Persona Videos**.
 3. Espere o upload terminar.
 
@@ -33,7 +33,7 @@ Os tipos compatíveis são MP4, WebM e MOV. Os vídeos mais recentes aparecem pr
 
 O emoji personalizado é uma imagem pequena no meio do texto, escrita como `:name:`. O sticker é uma imagem maior, em bloco, escrita como `sticker:name:`. Os dois só funcionam em chats do Conversation Mode, o modo parecido com um aplicativo de mensagens.
 
-1. Abra **Images → Gallery** e selecione **Images**.
+1. Abra a aba **Galeria** e selecione **Imagens**.
 2. Clique no pequeno botão de tag no canto superior esquerdo da imagem (dica **Tag as emoji or sticker**).
 3. Clique em **Make emoji** ou em **Make sticker**.
 4. Na caixa de diálogo **Custom Emoji** ou **Custom Sticker**, digite um nome e confirme.
@@ -51,6 +51,20 @@ Depois que a imagem é marcada, o botão sobreposto mostra o nome. Clique nele p
 - **Remove emoji** ou **Remove sticker** tira a marcação da imagem. A imagem continua na galeria.
 
 Um emoji ou sticker marcado na galeria vale só para aquele personagem ou aquela persona, nos chats do Conversation Mode que o incluem. Isso é separado dos conjuntos globais de emojis e stickers do campo de escrita da mensagem. Se um nome da galeria for igual a um nome global, a versão da galeria prevalece naquele chat. Marinara não verifica se os nomes são únicos, então escolha um nome distinto para cada imagem.
+
+## Usar uma imagem da galeria como plano de fundo
+
+Uma imagem marcada como plano de fundo aparece em todos os chats dos quais o personagem (ou a persona) participa, pronta para ser escolhida, e pode representar um lugar como o quarto dele.
+
+1. Abra a aba **Galeria** e selecione **Imagens**.
+2. Clique no botão de tag no canto superior esquerdo da imagem e escolha **Usar como plano de fundo**.
+3. Digite os lugares que ela mostra, separados por vírgulas, como `{{char}}'s bedroom, {{char}}'s room`, ou deixe o campo vazio. Na galeria de uma persona, use `{{user}}`.
+
+O botão passa a mostrar **Plano de fundo:** com os lugares. Clique nele para **Editar lugares** ou **Remover tag de plano de fundo**. Veja como essas imagens aparecem nos chats em [Planos de fundo que acompanham um personagem](../roleplay/backgrounds.md#backgrounds-that-follow-a-character).
+
+As imagens criadas em um chat podem ser movidas para cá a partir da Galeria do chat com o botão de pessoa. Veja [A galeria do chat](../chats/chat-gallery.md#per-image-actions).
+
+Exportar como **Marinara Native** mantém todas as marcações (emoji, sticker e plano de fundo) junto com a galeria.
 
 <a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
 
@@ -107,4 +121,5 @@ A sub-aba **Videos** lista os vídeos de cena gerados em chats com este personag
 - [Criando e editando personagens](creating-and-editing-characters.md)
 - [Personas](personas.md)
 - [Emojis, stickers e GIFs personalizados](../conversation/emoji-stickers-gifs.md)
-- [Planos de fundo de cena e a galeria](../media/scene-backgrounds.md)
+- [Planos de fundo que acompanham a história](../roleplay/backgrounds.md)
+- [A galeria do chat](../chats/chat-gallery.md)

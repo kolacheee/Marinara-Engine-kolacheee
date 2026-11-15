@@ -10,9 +10,9 @@ Si falta la tarjeta **Built-in model**, tienes una instalación "Lite", una vers
 
 Antes de empezar, asegúrate de tener suficiente espacio libre en disco y memoria (RAM) para el modelo. Los tamaños están en la tabla de abajo.
 
-1. Haz clic en **Connections** (Conexiones) en la barra superior.
-2. Busca la tarjeta **Built-in model** debajo del cuadro **Jobs** (Tareas). Dice **Not downloaded**.
-3. Haz clic en la tarjeta o en su botón **Download** (Descargar). Se abre una ventana titulada **Built-in model**.
+1. Abre **Library → Connections** (Biblioteca → Conexiones).
+2. Busca **Built-in model** en **On this device** (En este dispositivo). Dice **Not downloaded**.
+3. Haz clic en la fila o en **Set up** (Configurar). Se abre una ventana titulada **Built-in model**.
 4. En **Which model?** (¿Qué modelo?), elige un modelo. **Gemma 4 E2B — Q8 (Best Quality)** lleva la etiqueta **Recommended** (Recomendado). Si tu computadora tiene poca memoria, elige **Q4_K_M**. Necesita unos 3,4 GB de RAM en lugar de 5,4 GB.
 5. Haz clic en el botón **Download** de la parte inferior. Muestra el tamaño del modelo, por ejemplo **Download 5.0 GB**.
 6. Espera. La ventana muestra tres pasos: **Install runtime** (Instalar el runtime), **Download model** (Descargar el modelo) y **Start and test** (Iniciar y probar). Un runtime es el programa que ejecuta el modelo. Marinara lo instala primero cuando falta.
@@ -27,23 +27,23 @@ Si no funcionó:
 - **Local runtime failed to start.** Consulta [Solución de problemas](#troubleshooting).
 - **Download failed.** La ventana muestra el error. Comprueba tu conexión a internet y el espacio libre en disco, y luego vuelve a hacer clic en el botón de descarga.
 
-También puedes llegar a esta ventana desde **Add** (Añadir) en el panel **Connections**, en **Built-in model** dentro de la ventana **Add account** (Añadir cuenta).
+También puedes llegar a esta ventana desde la página Connections: **Built-in model** aparece en **On this device** (En este dispositivo).
 
 ### Presets seleccionados
 
 La ventana ofrece dos presets (ajustes guardados) ya listos de Gemma 4 E2B, un modelo pequeño de Google. Las computadoras con Apple Silicon reciben versiones MLX en lugar de archivos GGUF. GGUF y MLX son dos formatos de archivo para modelos locales. Los tamaños de abajo son los que muestra la ventana (en GB, donde 1 GB son 1024 × 1024 × 1024 bytes).
 
-| Preset | Descarga | RAM en ejecución |
-| --- | --- | --- |
-| Q8 (Best Quality) | 5,0 GB | 5,4 GB |
-| Q4_K_M (Smaller, Faster) | 3,0 GB | 3,4 GB |
+| Preset                   | Descarga | RAM en ejecución |
+| ------------------------ | -------- | ----------------- |
+| Q8 (Best Quality)        | 5,0 GB   | 5,4 GB            |
+| Q4_K_M (Smaller, Faster) | 3,0 GB   | 3,4 GB            |
 
 En su lugar, Apple Silicon muestra dos presets MLX:
 
-| Preset | Descarga | RAM en ejecución |
-| --- | --- | --- |
-| 8-bit MLX (Best Quality) | 5,5 GB | 7,0 GB |
-| 4-bit MLX (Smaller, Faster) | 3,4 GB | 4,5 GB |
+| Preset                      | Descarga | RAM en ejecución |
+| --------------------------- | -------- | ----------------- |
+| 8-bit MLX (Best Quality)    | 5,5 GB   | 7,0 GB            |
+| 4-bit MLX (Smaller, Faster) | 3,4 GB   | 4,5 GB            |
 
 Marinara guarda un solo modelo integrado en disco a la vez. Elegir otro modelo reemplaza el primero. Para cambiarlo más tarde, abre la tarjeta y haz clic en **Change model** (Cambiar modelo) en la ventana **Built-in model**. En la página de la tarjeta, los botones junto a **Model** (Modelo) cambian entre los presets y antes te piden que confirmes el tamaño de la descarga.
 
@@ -67,7 +67,7 @@ Abre la tarjeta **Built-in model** cuando el modelo esté descargado. Su página
 | **Use for tracker agents (roleplay)** | Mantiene el modelo en ejecución para los agentes de seguimiento. Desactivado de forma predeterminada. |
 | **Use for game scene analysis** | Lo mantiene en ejecución para los efectos de escena del Game Mode, como fondos, música y clima. Activado de forma predeterminada. |
 | **Use the built-in model for all tracker agents** | Apunta todos los agentes de seguimiento integrados a este modelo. No activa los agentes. |
-| **Change in Defaults** | Abre el cuadro **Jobs**, donde puedes darle otras tareas. |
+| **Change in Defaults** | Abre el cuadro **Defaults** (Valores predeterminados), donde puedes darle otras tareas. |
 
 Si ambos interruptores están desactivados, el modelo no se inicia por sí solo. Se inicia cuando activas uno, o cuando un chat o una tarea lo usa. Consulta [Memory Recall y resúmenes de chat](../agents/memory.md) para activar agentes.
 
@@ -95,35 +95,35 @@ Para abrirlos, haz clic en **Runtime settings** (Ajustes del runtime) en la pág
 
 **Speed** (Velocidad)
 
-| Ajuste | Predeterminado | Qué hace |
-| --- | --- | --- |
-| **Runtime target** | Auto detect | Para qué familia de tarjetas gráficas instala Marinara. |
-| **GPU offload** | Auto offload | Cuánto trabajo va a la tarjeta gráfica. Elige **Auto offload**, **CPU only** o **Custom GPU layers** (de 1 a 1024). |
+| Ajuste            | Predeterminado      | Qué hace                                                                                                          |
+| ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| **Runtime target** | Auto detect  | Para qué familia de tarjetas gráficas instala Marinara.                                                                     |
+| **GPU offload**    | Auto offload | Cuánto trabajo va a la tarjeta gráfica. Elige **Auto offload**, **CPU only** o **Custom GPU layers** (de 1 a 1024). |
 
 **Memory** (Memoria)
 
-| Ajuste | Predeterminado | Qué hace |
-| --- | --- | --- |
-| **Context window** | 8192 | Cuánto texto lee el modelo a la vez, en tokens (fragmentos de texto). 512 o más. |
-| **KV cache type** | f16 | Cómo guarda el modelo lo que ha leído. Elige f16, q8_0 o q4_0. Los dos últimos usan menos memoria y necesitan compatibilidad con Flash Attention. |
+| Ajuste            | Predeterminado | Qué hace                                                                                                                     |
+| ------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Context window** | 8192    | Cuánto texto lee el modelo a la vez, en tokens (fragmentos de texto). 512 o más.                                                                   |
+| **KV cache type**  | f16     | Cómo guarda el modelo lo que ha leído. Elige f16, q8_0 o q4_0. Los dos últimos usan menos memoria y necesitan compatibilidad con Flash Attention. |
 
 **Replies** (Respuestas)
 
-| Ajuste | Predeterminado | Qué hace |
-| --- | --- | --- |
-| **Max response tokens** | 4096 | La respuesta más larga que el modelo puede escribir. 64 o más. |
-| **Temperature** | 0.3 | Qué tan aleatorias son las respuestas. De 0 a 2. |
-| **Top P** | 0.95 | Un límite en la elección de palabras. Mayor que 0, hasta 1. |
-| **Top K** | 64 | Un límite en la elección de palabras. De 0 a 500. |
+| Ajuste                 | Predeterminado | Qué hace                                       |
+| ----------------------- | ------- | -------------------------------------------------- |
+| **Max response tokens** | 4096    | La respuesta más larga que el modelo puede escribir. 64 o más. |
+| **Temperature**         | 0.3     | Qué tan aleatorias son las respuestas. De 0 a 2.                    |
+| **Top P**               | 0.95    | Un límite en la elección de palabras. Mayor que 0, hasta 1.          |
+| **Top K**               | 64      | Un límite en la elección de palabras. De 0 a 500.                  |
 
 **Expert** (Experto)
 
-| Ajuste | Predeterminado | Qué hace |
-| --- | --- | --- |
-| **Native tool calls** | Activado | Permite que el modelo use herramientas. Professor Mari y los agentes personalizados lo necesitan activado. |
-| **Max parallel agent jobs** | 2 | Cuántas tareas se ejecutan a la vez. De 1 a 16. |
-| **Pooling type** | None | Cómo convierte el modelo el texto en números para la búsqueda en lorebooks. Elige **Mean** para los embeddings de lorebooks. |
-| **Physical batch size** | 512 | Texto por lote de embeddings de lorebooks. De 128 a 32.768. Súbelo cuando fallen las entradas largas. Gemma suele funcionar con 1024. |
+| Ajuste                     | Predeterminado | Qué hace                                                                                                   |
+| --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
+| **Native tool calls**       | Activado      | Permite que el modelo use herramientas. Professor Mari y los agentes personalizados lo necesitan activado.                                         |
+| **Max parallel agent jobs** | 2       | Cuántas tareas se ejecutan a la vez. De 1 a 16.                                                                            |
+| **Pooling type**            | None    | Cómo convierte el modelo el texto en números para la búsqueda en lorebooks. Elige **Mean** para los embeddings de lorebooks.            |
+| **Physical batch size**     | 512     | Texto por lote de embeddings de lorebooks. De 128 a 32.768. Súbelo cuando fallen las entradas largas. Gemma suele funcionar con 1024. |
 
 Algunos ajustes cambian según el sistema:
 
@@ -138,24 +138,24 @@ Algunos ajustes cambian según el sistema:
 
 Instalar o reinstalar el runtime es una acción protegida. Las instalaciones de un clic de Windows lo permiten por ti. En macOS, Linux y Docker, haz una de estas cosas y luego inténtalo de nuevo:
 
-- Introduce el secreto de administrador en **Settings → Advanced → Admin Access** (Configuración → Avanzado → Acceso de administrador). El secreto de administrador es una segunda contraseña para las acciones de riesgo. Lo creas en **Admin Access** en la propia computadora del servidor, o lo defines como `ADMIN_SECRET` en el archivo `.env` del servidor. Consulta [Acceso de administrador](../REMOTE_ACCESS.md#admin-access-and-privileged-actions).
+- Introduce el secreto de administrador en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad). El secreto de administrador es una segunda contraseña para las acciones de riesgo. Lo creas en **Settings → Advanced → Security** en la propia computadora del servidor, o lo defines como `ADMIN_SECRET` en el archivo `.env` del servidor. Consulta [El secreto de administrador](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).
 - Añade `SIDECAR_RUNTIME_INSTALL_ENABLED=true` al archivo `.env` del servidor y luego reinicia Marinara. El archivo `.env` es un archivo de texto en la carpeta de Marinara. Consulta [Editar el archivo .env](../CONFIGURATION.md#edit-the-env-file).
 
 Marinara solo descarga las versiones de llama.cpp, MLX y uv aprobadas para tu versión, y comprueba el tamaño y la suma de verificación SHA-256 de cada archivo antes de ejecutar nada.
 
 ## Modelo de voz local
 
-El **Local speech model** (Modelo de voz local) convierte tu voz en texto en tu propia computadora para las llamadas de Conversation. Es un modelo Whisper, un modelo de voz a texto. Necesita el paquete de agente **Calls**, que instalas en **Agents → Agent Organizer** (Agentes → Organizador de agentes).
+El **Local speech model** (Modelo de voz local) convierte tu voz en texto en tu propia computadora para las llamadas de Conversation. Es un modelo Whisper, un modelo de voz a texto. Necesita el paquete de agente **Calls**, que instalas en **Library → Agents** (Biblioteca → Agentes).
 
-1. Abre el panel **Connections** y haz clic en el elemento **Speech to text** (Voz a texto) en **On this device** (En este dispositivo).
+1. Abre el panel **Connections** y haz clic en **Local speech model** en la tarjeta **On this device**.
 2. En **Local speech model**, elige un modelo del menú desplegable.
 3. Haz clic en **Download Whisper** (Descargar Whisper).
 4. Espera a que diga **Ready**. Reinicia Marinara por completo antes de usar Calls.
 
-| Modelo | Descarga | RAM en ejecución |
-| --- | --- | --- |
-| Whisper Tiny (Multilingual) | unos 180 MB | unos 350 MB |
-| Whisper Base (Multilingual) | unos 320 MB | unos 650 MB |
+| Modelo                       | Descarga     | RAM en ejecución |
+| --------------------------- | ------------ | ----------------- |
+| Whisper Tiny (Multilingual) | unos 180 MB | unos 350 MB      |
+| Whisper Base (Multilingual) | unos 320 MB | unos 650 MB      |
 
 Tiny es la mejor primera opción para teléfonos y computadoras más antiguas. Base es más preciso con el habla desordenada, pero tarda más en arrancar. Haz clic en **Delete Local Whisper** (Borrar Local Whisper; el botón de papelera) para quitar el modelo descargado. Desinstalar Calls también lo quita.
 
@@ -165,13 +165,13 @@ Tu audio se queda en tu computadora. Solo el texto va a tu modelo de chat. Para 
 
 ## Solución de problemas
 
-| Síntoma | Solución |
-| --- | --- |
-| **Sidecar runtime install is disabled** (un mensaje de error). | Consulta [Permitir la instalación del runtime](#allow-runtime-installs). |
+| Síntoma                                                                                                                          | Solución                                                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Sidecar runtime install is disabled** (un mensaje de error).                                                                      | Consulta [Permitir la instalación del runtime](#allow-runtime-installs).                                                                                                                                                                 |
 | **Local runtime failed to start.** La ventana muestra el error y la ruta de un archivo de registro. La tarjeta muestra **Local runtime unavailable**. | Haz clic en **Retry startup** (Reintentar el inicio). Si eso falla, haz clic en **Reinstall runtime** (Reinstalar el runtime) o elige otro **Runtime target**. **Continue without local AI** (Continuar sin IA local) desactiva los interruptores de ayudante y mantiene Marinara funcionando sin el modelo. |
-| La descarga del runtime informa de una discrepancia de tamaño o de SHA-256. | Marinara desechó el archivo. Actualiza Marinara e inténtalo de nuevo. Si sigue fallando, no abras el archivo tú mismo. Informa del runtime target y del error. |
-| La búsqueda de lorebooks dice que el modelo local no está activado. | Activa **Use for tracker agents (roleplay)** o **Use for game scene analysis**, y luego vuelve a vectorizar. |
-| Un banner del Game Mode dice **Local scene helper failed to start**. | Haz clic en **Open Local AI Model** en el banner para reintentar, cambiar de modelo o desactivar el análisis de escena local. |
+| La descarga del runtime informa de una discrepancia de tamaño o de SHA-256.                                                                         | Marinara desechó el archivo. Actualiza Marinara e inténtalo de nuevo. Si sigue fallando, no abras el archivo tú mismo. Informa del runtime target y del error.                                                                 |
+| La búsqueda de lorebooks dice que el modelo local no está activado.                                                                             | Activa **Use for tracker agents (roleplay)** o **Use for game scene analysis**, y luego vuelve a vectorizar.                                                                                                                |
+| Un banner del Game Mode dice **Local scene helper failed to start**.                                                                  | Haz clic en **Open Local AI Model** en el banner para reintentar, cambiar de modelo o desactivar el análisis de escena local.                                                                                                                 |
 
 Para más ayuda, consulta [Solución de problemas de Marinara Engine](../TROUBLESHOOTING.md).
 

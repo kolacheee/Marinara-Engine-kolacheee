@@ -41,6 +41,85 @@
 - `unmodified`: 첫 주사위가 그 눈을 보일 때 기록이 표시하는 단일 주사위의 눈입니다(1.136). 따라서 "수정되지 않은 66"을 따로 다루는 표를 적용할 수 있습니다(`[66, 100]`). 기록에는 `unmodified="66"`이 남고 카드에도 표시되며, Game Master는 규칙이 이에 대해 정한 것을 적용하라는 안내를 받습니다.
 - `difficultyLadder`: Game Master에게 제시하는 난이도 선택지입니다. `dc`는 총합이 도달해야 하는 숫자입니다. Game Master는 숫자를 쓰는 대신 `difficulty="Hard"`처럼 단계 이름을 지정할 수 있으며, Engine이 그 단계에서 숫자를 읽습니다.
 
+#### 이름이 있는 주사위 두 개
+
+합산 판정에서는 이름이 각각 있는 주사위 두 개를 던지고 어느 쪽의 눈이 더 높은지에 따라 이야기를 바꿀 수 있습니다(Capability API 1.821). 커뮤니티 규칙 집합은 별도 선언이 필요 없으며, 패키지 형태라면 1.821을 선언합니다.
+
+```json
+"dice": { "count": 2, "sides": 12 },
+"duality": {
+  "dice": [{ "id": "hope", "label": "Hope" }, { "id": "fear", "label": "Fear" }],
+  "tieIsCritical": true,
+  "text": "With Hope the player gains a Hope; with Fear the Game Master gains a Fear."
+}
+```
+
+- `dice`: 주사위를 던지는 순서대로 적은 두 이름입니다. `rolls`의 첫 주사위가 첫 번째 이름에 해당합니다.
+- `tieIsCritical`: 선택 사항이며, 따로 지정하지 않으면 `true`입니다. 이 경우 같은 눈이 나오면 총합과 관계없이 대성공입니다.
+- `text`: 선택 사항. 각 주사위가 플레이에서 무엇을 뜻하는지 Game Master에게 알려 주는 한 줄입니다.
+
+총합은 여전히 주사위 두 개에 수정치를 더한 값이며 평소처럼 난이도와 비교합니다. 기록은 `duality="Hope"` 또는 `duality="tie"`로 어느 주사위의 눈이 더 높았는지 나타내며, 주사위 카드에도 표시됩니다. Game Master는 해당 주사위에 맞춰 판정을 서술하라는 안내를 받습니다.
+
+`duality`는 `dice.count`가 2이고 일반 눈(`faces` 없음)을 사용하며 `openEnded`가 없고 `advantage`가 false여야 합니다. 두 ID도 달라야 합니다. 두 라벨도 달라야 하며 어느 쪽도 `tie`일 수 없습니다. 기록이 높은 쪽 주사위를 라벨로 표시하기 때문입니다. 재정의로 일부 판정에서 이를 설정하거나 제거할 수 있습니다.
+
+#### 플롯 주사위
+
+합산 판정에서는 눈이 숫자 대신 기호를 나타내는 주사위 하나를 더 던질 수 있습니다(Capability API 1.822). 커뮤니티 규칙 집합은 별도 선언이 필요 없으며, 패키지 형태라면 1.822를 선언합니다.
+
+```json
+"plotDie": {
+  "label": "Plot die",
+  "sides": 6,
+  "faces": [
+    { "face": 1, "symbol": "complication", "bonus": 2 },
+    { "face": 2, "symbol": "complication", "bonus": 4 },
+    { "face": 5, "symbol": "opportunity" },
+    { "face": 6, "symbol": "opportunity" }
+  ],
+  "text": "A complication goes wrong alongside the result; an opportunity offers something more."
+}
+```
+
+- `label`: 카드와 Game Master에게 표시되는 주사위 이름입니다.
+- `sides`: 2~20입니다.
+- `faces`: 효과가 있는 눈입니다. 각각 `"complication"`, `"opportunity"`, `null` 중 하나인 `symbol`과 총합에 더하는 선택적 `bonus`(-20~20)를 가집니다. 나열하지 않은 눈은 빈칸입니다.
+- `text`: 선택 사항. 기호가 플레이에서 무엇을 뜻하는지 Game Master에게 알려 주는 한 줄입니다.
+
+Game Master가 판정에 `plot="true"`를 추가해 요청할 때만 이 주사위를 던집니다. 판정 자체의 주사위 뒤에 던지며 `rolls`에 포함되지 않습니다. 기록에는 `plotFace="2" plotSymbol="complication" plotBonus="4" plotLabel="Plot die"`가 남습니다. 보너스는 `modifier`에 포함되므로 주사위와 수정치를 더하면 여전히 총합과 같습니다. 주사위 카드에는 이 주사위에서 나온 눈이 표시됩니다.
+
+나열한 눈은 해당 주사위에 있는 눈이어야 하며 한 번씩만 나열해야 합니다.
+
+#### 주사위 자체의 합계와 결과 구간 이동
+
+선택적 키 두 개로 주사위 여러 개에서 결과 단계를 읽는 합산 시스템을 지원합니다(Capability API 1.823). 커뮤니티 규칙 집합은 별도 선언이 필요 없으며, 패키지 형태라면 1.823을 선언합니다.
+
+```json
+"dice": { "count": 2, "sides": 10 },
+"naturalTotal": { "atLeast": 19 },
+"tierShift": { "max": 1, "text": "A double edge is +1, a double bane -1." }
+```
+
+- `naturalTotal`: 아무것도 더하기 전 주사위 자체의 합계가 대성공이나 대실패가 되는 기준입니다. `atLeast`는 대성공, `atMost`는 대실패이며, 하나 또는 둘 다 지정하세요. 주사위가 하나여야 하는 `naturals`와 달리 개수에 관계없이 작동합니다. 대성공이나 대실패는 해당 결과를 `on`으로 지정한 구간에 들어가며, 그런 구간이 없으면 최상 또는 최하 구간에 들어갑니다.
+- `tierShift`: Game Master가 `shift="+1"`이나 `shift="-1"`로 한 판정의 결과 구간을 최대 `max`단계(1~3)만큼 이동할 수 있게 합니다. 양 끝을 넘을 수는 없습니다. `outcomes`가 필요합니다. 구간이 이동하면 기록에 `shift="+1"`이 남고 주사위 카드에도 표시됩니다. `text`는 사용 시점을 Game Master에게 알려 주는 선택적 한 줄입니다.
+
+단일 이점의 +2 같은 고정 보너스는 숫자이며 상태의 수정치로 더합니다. `tierShift`는 구간 전체를 옮기는 규칙에 씁니다.
+
+각 `naturalTotal` 경계값은 주사위에서 나올 수 있는 합계여야 합니다(2d10은 2~20이며, 규칙 집합이 `dice.faces`를 제공하면 이를 통해 읽습니다). `atMost`는 `atLeast`보다 낮아야 합니다.
+
+#### 주사위 없는 판정
+
+아무것도 굴리지 않는 시스템도 있습니다. Amber와 Nobilis에서는 수치와 난이도를 비교하여 더 높은 쪽이 이깁니다(Capability API 1.825). 커뮤니티 규칙 집합은 별도 선언이 필요 없으며, 패키지 형태라면 1.825를 선언합니다.
+
+```json
+"kind": "dice-sum",
+"dice": { "count": 0, "sides": 6 },
+"abilityModifier": { "op": "identity" }
+```
+
+총합은 캐릭터 시트 자체의 숫자이며, 합산 판정과 똑같이 난이도와 비교합니다. 같은 능력치, 숙련도, `adjust`, 부상 페널티와 같은 결과 구간, 난이도 단계, 재정의를 사용합니다. 기록에는 수정치와 총합, `dice="0d6" rolls=""`가 남고, 주사위 카드는 주사위 대신 비교 결과("Warfare 4 vs 3")를 보여 줍니다. Game Master는 Engine이 굴리는 대신 비교한다는 안내를 받습니다.
+
+주사위를 읽는 설정은 모두 거부하므로 주사위 없는 판정이 주사위를 요구하는 키를 알리지 않고 무시할 수 없습니다. 해당 키는 `advantage`, `openEnded`, `unmodified`, `dice.faces`, `duality`, `plotDie`, `naturalTotal`, `naturals` 정책입니다. 재정의로 특정 판정에만 주사위를 부여할 수는 있습니다.
+
 ### `dice-pool`: 던져서 성공 개수 세기
 
 시트 숫자는 추가 보너스가 아니라 **풀의 크기**입니다. 평점 3과 전문 기술 2라면 다섯 개를 던집니다. 원리는 그것뿐입니다. 새 시트 어휘나 편집기 없이, 평점이 주사위 개수인 시스템도 다른 시스템과 같은 `abilities`, `skills`, `proficiencyTiers`로 작성합니다.
@@ -79,6 +158,8 @@
 - `botch`: 선택 사항. 성공한 주사위가 **하나도 없고** `upTo` 이하의 눈이 나오면 대실패입니다. 한 성공이 상쇄된 풀은 일반 실패이며 대실패가 아닙니다. `"rule": "halfOrMore"`는 다르게 판단합니다. 처음 던진 주사위(폭발로 추가된 주사위 제외)의 절반 이상이 `upTo` 이하일 때, 성공한 주사위가 없으면 대실패이고 그 밖에는 결과를 그대로 두되 `complication="true"`로 표시하여 결과와 함께 무언가 잘못되었음을 나타냅니다. 기본값은 `"noSuccesses"`입니다.
 - `exceptional`: 선택 사항. 성공한 판정에서 순 성공 수가 이 값 이상이면 대성공입니다.
 - `situationalDice`: 선택 사항. 묘기, 부상, 어두운 조명 등에 대해 Game Master가 `bonus=`로 한 판정에서 더하거나 뺄 수 있는 주사위 범위입니다.
+- `pairs`: 선택 사항(Capability API 1.824). `{ "from": 10, "successes": 4 }`는 `from` 이상인 눈의 주사위 한 쌍을 각각 성공 하나로 세는 대신, 합쳐서 `successes`개로 셉니다. 한 쌍이 있는 판정이 성공하면 대성공입니다. 10이 세 개면 한 쌍과 하나이므로 성공 다섯 개입니다. `from`은 가장 높은 목표 이상이어야 하며, `pairs`는 `double`이나 `stances`와 함께 쓸 수 없습니다.
+- `hunger`: 선택 사항(Capability API 1.824). `{ "label": "Hunger", "max": 5, "text": "..." }`는 풀의 주사위 중 최대 `max`개를 특수 주사위로 만들 수 있게 합니다. Game Master는 보통 시트의 트랙에서 숫자를 읽어 판정에 `hunger="N"`으로 요청합니다. 이 주사위는 `rolls`의 앞부분에 있으며 풀의 일부이지 추가 주사위가 아닙니다. 어떤 재굴림도 이 주사위에는 적용되지 않습니다. 대성공에서 이 주사위 중 하나가 대성공 눈(`pairs`의 눈 또는 주사위의 최고 눈)을 보이면 `messy="true"`로, 실패에서 이 주사위 중 하나가 1을 보이면 `bestial="true"`로 표시됩니다. 기록에는 `hunger="2" hungerLabel="Hunger"`도 남으며 주사위 카드에 모두 표시됩니다. `max`는 `pool.max`보다 클 수 없습니다.
 - `reroll`: 선택 사항. 아무도 비용을 내지 않고 시스템이 허용하는 재굴림으로 최대 여섯 개이며, 각각 Game Master가 판정에서 `reroll=`로 지정하는 `id`를 가집니다. `upTo` 이하의 눈을 다시 던집니다. `"once"`는 새 눈이 무엇이든 그대로 확정하고, `"until"`은 더 높은 눈이 나올 때까지 계속합니다. 모든 눈을 다시 던지면 끝나지 않으므로 `upTo`는 1부터 주사위 면 수보다 하나 작은 값까지이며, `until`도 한 판정에서 백 번 다시 던진 뒤에는 멈춥니다. 판정이 지정하지 않으면 아무것도 다시 던지지 않습니다. 한 판정은 재굴림을 하나만 합니다. 자원 소비나 캐릭터가 사용한 항목도 재굴림을 샀다면 더 많은 눈에 닿는 쪽을 던지고, 닿는 눈이 같으면 `once`보다 `until`을 택합니다.
 - `difficultyLadder`: `successes`는 필요한 성공 수입니다. 단계에 `target`도 지정할 수 있지만 목표를 조정할 수 있고 해당 범위 안일 때만 가능합니다. 그 단계의 판정은 이 목표로 성공을 셉니다. Game Master가 `difficulty=`로 단계를 지정하거나, 정확히 한 단계만 요구하는 `dc=`를 쓴 경우입니다. 여러 단계가 같은 성공 수를 요구하면 `dc=`만으로는 어느 단계인지 알 수 없어 목표가 기본값으로 남으므로 단계 이름을 지정하세요.
 

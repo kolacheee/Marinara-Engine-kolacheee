@@ -20,7 +20,7 @@ A continuación se detallan ambos.
 
 Para quitar a un compañero, en una computadora pasa el cursor sobre su retrato y haz clic en la **X**. Esto funciona con cualquier compañero que haya reclutado el GM, durante la configuración o más tarde. Tu propia persona (el personaje que interpretas) no tiene **X**.
 
-Puedes arrastrar el botón por el chat en una computadora o en un teléfono. Ábrelo y usa **Lock window** (Fijar ventana) para mantenerlo en su sitio. En una computadora también puedes mover la ventana y cambiar su tamaño, y **Close** (Cerrar) la devuelve a su botón. Su posición se guarda con el chat, y sigue tu estilo de widgets del chat de **Settings → Appearance → App** (Configuración → Apariencia → App). En los teléfonos se mantiene separado del menú de tres puntos **Chat tools**.
+Puedes arrastrar el botón por el chat en una computadora o en un teléfono. Ábrelo y usa **Lock window** (Fijar ventana) para mantenerlo en su sitio. En una computadora también puedes mover la ventana y cambiar su tamaño, y **Close** (Cerrar) la devuelve a su botón. Su posición se guarda con el chat, y sigue tu estilo de widgets del chat de **Settings → Appearance → Chat Buttons & Windows** (Configuración → Apariencia → Botones y ventanas del chat). En los teléfonos se mantiene separado del menú de tres puntos **Chat tools**.
 
 ## Hojas de personaje
 

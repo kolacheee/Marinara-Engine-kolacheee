@@ -6,7 +6,7 @@
 
 集成本身是一小段软件，安装在 Home Assistant 内部，把它和你的 Marinara 服务器连起来。首次设置时，它会替你创建下面这些东西。你完全不需要手动复制工具地址，也不需要手动配置工具。
 
-- Presets(预设) 面板 **Functions**(函数) 选项卡里的智能家居工具。见[自定义工具](../extending/custom-tools.md)。
+- 自定义工具里的智能家居工具（聊天的 **Chat Settings → Function Calling**(聊天设置 → 函数调用) 中的 **Functions**(函数) 列表）。见[自定义工具](../extending/custom-tools.md)。
 - 一个名为 **Home Assistant** 的智能体，也就是伴随聊天一起运行的 AI 帮手。见[智能体概览](../agents/agents-overview.md)。
 - 若干 Home Assistant 实体（设备、传感器和控制项），方便你从 Home Assistant 查看和控制 Marinara。
 
@@ -53,7 +53,7 @@ WEBHOOK_LOCAL_URLS_ENABLED=true
 
 如果没有成功：Home Assistant 访问不到 Marinara 时会报错。见[故障排查](#troubleshooting)。
 
-设置成功后，集成会在 Home Assistant 里注册一个私有 webhook，在 Marinara 的 **Functions** 部分创建指向这个 webhook 的工具，创建列出所有已启用工具的 **Home Assistant** 智能体，并创建下文介绍的那些实体。
+设置成功后，集成会在 Home Assistant 里注册一个私有 webhook，在 Marinara 的 **Library → Custom tools**(资料库 → 自定义工具) 页面创建指向这个 webhook 的工具，创建列出所有已启用工具的 **Home Assistant** 智能体，并创建下文介绍的那些实体。
 
 ## 把智能体加进聊天
 
@@ -160,7 +160,7 @@ automation:
 
 ### Functions 里看不到这些工具
 
-按一下 **Marinara Sync HA Tools**，或者重启 Home Assistant，然后到 Presets 面板的 **Functions** 选项卡里查看。
+按一下 **Marinara Sync HA Tools**，或者重启 Home Assistant，然后到聊天的 **Chat Settings → Function Calling → Add Functions**(聊天设置 → 函数调用 → 添加函数) 里查看。
 
 ### 聊天里没有 Home Assistant 智能体
 
@@ -176,7 +176,7 @@ http://<homeassistant-ip>:8123/api/webhook/<webhook-id>
 
 ## 卸载
 
-在 Home Assistant 的 **Settings → Devices & Services → Marinara Engine** 里删除这个集成。这会删掉那些实体。Marinara **Functions** 部分里的工具和 **Home Assistant** 智能体仍会保留。不再需要的话，在 Marinara 里手动删掉它们。
+在 Home Assistant 的 **Settings → Devices & Services → Marinara Engine** 里删除这个集成。这会删掉那些实体。Marinara **Library → Custom tools** 页面上的工具和 **Home Assistant** 智能体仍会保留。不再需要的话，在 Marinara 里手动删掉它们。
 
 ## 相关指南
 

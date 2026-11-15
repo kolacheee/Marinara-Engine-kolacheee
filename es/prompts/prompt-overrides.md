@@ -11,7 +11,7 @@ Antes de empezar: los Prompt Overrides solo importan para las funciones que gene
 ## Encontrar los editores
 
 1. Abre **Settings** (Configuración).
-2. Haz clic en la pestaña **Generations** (Generaciones).
+2. Haz clic en la pestaña **Media** (Medios). Hasta que se instale el agente Illustrator, esta pestaña solo ofrece descargarlo.
 3. Desplázate hasta **Prompt Overrides** ("Reusable image and video prompt templates", plantillas reutilizables de prompts de imagen y video).
 
 Ahí hay dos editores. Haz clic en un título para expandirlo.

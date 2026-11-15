@@ -20,12 +20,12 @@ She smiles Hello there.
 
 ## 新建正则脚本
 
-你的全局脚本放在 **Presets**(预设) 面板的 **Regexes**(正则) 区块里。用顶栏的 **Presets** 按钮打开它。
+全局脚本位于 **Regex scripts**(正则脚本) 页面：打开 **Library → Regex scripts**(资料库 → 正则脚本)。页面左侧**按运行顺序**列出脚本，右侧编辑选中的脚本。（在经典布局中，它们位于 **Presets**(预设) 面板的 **Regexes**(正则) 区块。）
 
 ### 新建正则脚本的步骤
 
-1. 打开 **Presets**，找到 **Regexes**。
-2. 点击 **Create regex**(新建正则)。完整的编辑器会打开。
+1. 打开 **Library → Regex scripts**。
+2. 点击 **New script**(新建脚本)。编辑器会打开新脚本。
 3. 在顶部填一个名称。新脚本的名称是“New Regex Script”。
 4. 在 **Find Pattern (Regex)**(查找模式) 中输入 `\*([^*]+)\*`(见[编辑器字段](#editor-fields))。
 5. 在 **Replace With**(替换为) 中输入 `$1`。
@@ -40,11 +40,13 @@ She smiles Hello there.
 
 ### 管理你的脚本
 
-**Regexes** 列表中的每一行显示脚本名称、一个 **AI** 或 **User** 标签、写成 `/pattern/flags` 形式的模式、一个启停开关（即时生效）、**Edit regex**(编辑正则)（铅笔图标）和 **Delete regex**(删除正则)（垃圾桶图标）。没有脚本或文件夹时，列表显示“No regexes yet”。
+在 **Regex scripts** 页面上，列表中的每个脚本显示运行序号、名称、模式和一个开关。顶部的 **Import**(导入) 从文件载入脚本，编辑器中的 **Export**(导出) 保存选中的脚本。
 
-使用 **Search regexes**(搜索正则) 按脚本名称和模式搜索。包含匹配脚本的文件夹会自动打开。搜索时无法拖动脚本调整顺序。
+- 在列表中上下拖动脚本，可以调整运行顺序。
+- 脚本上的 **⋯** 菜单（也可以右键点击脚本）包含 **Duplicate**(复制)、**Export**、**Select**(选择) 和 **Delete**(删除)。在触屏上，长按脚本即可。
+- 列表上方的 **Select** 会为每个脚本显示复选框。选择多个脚本后，用列表下方的操作栏将它们 **On or off**(开启或关闭)、**Export** 到同一个文件，或 **Delete**。
 
-区块标题栏有三个图标按钮：**Create regex**、**Import regexes from JSON**(从 JSON 导入正则) 和 **Export regexes to JSON**(导出正则为 JSON)（把你所有的全局脚本保存到一个文件里）。绑定到单个角色的脚本单独存放；见[把脚本限定给一个角色](#limit-a-script-to-one-character)。
+在经典布局中，**Regexes** 列表中的每一行显示脚本名称、一个 **AI** 或 **User** 标签、写成 `/pattern/flags` 形式的模式、一个启停开关（即时生效）、**Edit regex**(编辑正则)（铅笔图标）和 **Delete regex**(删除正则)（垃圾桶图标）。没有脚本时，列表显示“No regexes yet”。拖动行的把手可以调整运行顺序。
 
 ### 用文件夹整理脚本
 
@@ -52,9 +54,17 @@ She smiles Hello there.
 2. 点击脚本所在行的文件夹图标，打开 **Move to folder**(移到文件夹)。
 3. 选择文件夹。要移回顶层，选择 **No folder (top level)**(无文件夹，顶层)。
 
-点击文件夹名称可以展开或折叠。关闭文件夹的开关后，里面的脚本会在所有聊天中暂停，文件夹标题会显示 **Paused**(已暂停)。各脚本保留自己的开关设置。已启用的脚本如果位于暂停的文件夹中，开关会变灰，并显示 **Paused by folder**(因文件夹暂停)。删除文件夹会将脚本移到顶层，脚本继续按各自的开关设置运行。
+点击文件夹名称可以展开或折叠。关闭文件夹的开关后，里面的脚本会在所有聊天中暂停，文件夹标题会显示 **Paused**(已暂停)。各脚本保留自己的开关设置。处于开启位置的灰色开关，表示该脚本已启用，但因文件夹暂停而未运行。删除文件夹会将脚本移到顶层，脚本继续按各自的开关设置运行。
 
-文件夹不会改变脚本执行顺序。点击 **Execution order**(执行顺序) 按实际执行顺序查看整个列表。拖动脚本的把手可以改变顺序。没有文件夹时，列表已经按执行顺序排列。
+文件夹不会改变脚本执行顺序。点击 **Execution order**(执行顺序) 按实际执行顺序查看整个列表。拖动脚本的把手可以改变顺序。没有文件夹时，列表已经按执行顺序排列。在此视图中，暂停图标标记的是已启用、但所在文件夹已暂停的脚本。
+
+### 批量更改脚本
+
+1. 点击 **Select regex scripts**(选择正则脚本)。
+2. 勾选要更改的脚本。
+3. 点击 **Enable selected**(启用所选)、**Disable selected**(禁用所选) 或 **Move to folder**。也可以导出或删除所选脚本。
+
+**Enable selected** 更改的是各脚本的开关。要让已暂停文件夹中启用的脚本再次运行，先恢复该文件夹。
 
 <a id="editor-fields"></a>
 
@@ -122,7 +132,7 @@ She smiles Hello there.
 
 两者都在 **Advanced Options** 中。
 
-- **Execution Order**(执行顺序) 是一个数字。数字小的先运行，当多条脚本可能命中同一段文字时，这一点很重要。新脚本开始时为 0，保存时应用会分配下一个空闲编号。你也可以在 **Regexes** 列表中拖动行。
+- **Execution Order**(执行顺序) 是一个数字。数字小的先运行，当多条脚本可能命中同一段文字时，这一点很重要。新脚本开始时为 0，保存时应用会分配下一个空闲编号。要从面板调整顺序，见[用文件夹整理脚本](#organize-scripts-in-folders)。
 - **Depth Range**(深度范围) 用 **Min**(最小) 和 **Max**(最大) 限定脚本往前作用多远。最新的消息是深度 0，它之前的一条是深度 1，依此类推。两者都留空就在任意深度运行。**Min** 大于 **Max** 时无法保存。
 
 ### 群聊
@@ -176,12 +186,15 @@ Marinara 能读取打包在 SillyTavern 角色卡里的正则脚本。导入角�
 
 单个角色的导入对话框和批量的 **Import from SillyTavern Folder**(从 SillyTavern 文件夹导入) 流程都会出现这个选择。模式为空或未通过安全检查的脚本会被跳过。要导入纯 JSON 格式的脚本文件，使用 **Regexes** 中的 **Import regexes from JSON**。见[从 SillyTavern 导入](../data/importing-from-sillytavern.md)。
 
+**Export regexes to JSON**(导出正则为 JSON) 将所有全局脚本保存到一个文件。选择脚本后使用 **Export**，可只保存所选脚本。正则 JSON 导出会保留各脚本的设置。要同时保留文件夹归属和暂停设置，使用 **Export Profile**(导出档案)，并选择 **Marinara Native**(Marinara 原生格式)。见[导出档案](../data/backup-and-restore.md#export-a-profile)。从正则 JSON 导入的脚本出现在顶层，导入后再移入文件夹。
+
 ### 替换正则脚本包
 
 1. 在 **Presets → Regexes**(预设 → 正则) 中，选择 **Select regex scripts**(选择正则脚本)。
 2. 勾选旧脚本包的条目，或选择 **Select all regex scripts**(选择全部正则脚本)。
 3. 使用操作栏中的 **Export**(导出) 或 **Delete**(删除)。删除只会确认一次，且无法撤销。
 4. 导入更新后的脚本包。
+5. 如果用文件夹存放这个脚本包，把新脚本移进去。
 
 删除失败的脚本会保持选中，方便重试。未选中的脚本保留不动。预设关联仍可在正则编辑器中使用。
 

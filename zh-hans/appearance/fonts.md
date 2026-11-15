@@ -4,15 +4,15 @@
 
 ## 选择应用字体
 
-1. 打开 **Settings**(设置)，点击 **Appearance**(外观) 选项卡，再点击 **App**(应用) 按钮。
-2. 找到 **Text & Scale**(文字与缩放) 区域。
+1. 打开 **Settings**(设置)，点击 **Appearance**(外观) 选项卡。
+2. 找到 **Fonts & Text Size**(字体与文字大小) 区域。
 3. 打开 **Font**(字体) 下拉菜单，选一款字体。
 
 获取新字体最简单的方法是 [Google Fonts](#downloading-from-google-fonts)。默认是 **Default (Inter)**，这是一款为屏幕阅读挑选的清爽字体。自己添加的字体会出现在同一个下拉菜单里，排在它下面。
 
 字体选择会跨设备同步。连到同一台 Marinara 服务器的每个浏览器都会切换到这款字体。见[设置总览](../settings/settings-overview.md)。
 
-聊天组件另有单独的 **Font** 选项，位于 **Chat widget style**(聊天组件样式) 下。在那里开启 **Apply preset font**(应用预设字体)，消息、输入框和聊天控件也会使用这款字体。见[现成的聊天窗口样式](custom-css-themes.md#ready-made-chat-window-styles)。
+聊天组件另有单独的 **Font** 选项，位于 **Chat Buttons & Windows**(聊天按钮与窗口) 下。在那里开启 **Apply preset font**(应用预设字体)，消息、输入框和聊天控件也会使用这款字体。见[现成的聊天窗口样式](appearance-settings.md#chat-buttons--windows)。
 
 ## 添加自己的字体
 
@@ -20,7 +20,7 @@
 
 1. 点击 **Font** 下拉菜单旁边的 **Open Fonts Folder**(打开字体文件夹)，打开服务器上的 `data/fonts/`。也可以自己在 Marinara 的数据文件夹里找到 `data/fonts/` 文件夹。
 2. 把字体文件复制进去。
-3. 进入 **Settings → Appearance → App → Text & Scale**(设置 → 外观 → 应用 → 文字与缩放)。
+3. 进入 **Settings → Appearance → Fonts & Text Size**(设置 → 外观 → 字体与文字大小)。
 4. 打开 **Font** 下拉菜单，你的字体就在列表里。
 5. 选中它。应用里的文字会立刻换成这款字体。
 
@@ -36,7 +36,7 @@ Marinara 读取 `.ttf`、`.otf`、`.woff` 和 `.woff2` 文件，其他类型一�
 
 这需要服务器能连接互联网。
 
-1. 进入 **Settings → Appearance → App → Text & Scale**。
+1. 进入 **Settings → Appearance → Fonts & Text Size**。
 2. 在 **Google Fonts** 输入框里输入准确的字体名，例如 `Fira Code` 或 `Lora`。
 3. 点击 **Add**(添加)。
 4. 等下载完成，字体随后会出现在 **Font** 下拉菜单里。

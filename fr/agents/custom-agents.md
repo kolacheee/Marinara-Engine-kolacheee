@@ -1,22 +1,22 @@
 # Créer des agents personnalisés
 
-Un agent personnalisé est un assistant que tu écris toi-même : tes propres instructions, le moment où il s'exécute et ce qu'il a le droit de modifier. Construis-en un quand aucun [agent téléchargeable](built-in-agents.md) ne fait ce que tu veux. Si un agent installé s'en approche, passe le pointeur sur sa carte dans le panneau **Agents** et clique sur **Copy agent** (copier l'agent) pour en obtenir une copie modifiable.
+Un agent personnalisé est un assistant que tu écris toi-même : tes propres instructions, le moment où il s'exécute et ce qu'il a le droit de modifier. Construis-en un quand aucun [agent téléchargeable](built-in-agents.md) ne fait ce que tu veux. Si un agent installé s'en approche, passe le pointeur sur sa carte sur la page **Agents** et clique sur **Copy agent** (copier l'agent) pour en obtenir une copie modifiable.
 
 Avant de commencer : lis [Agents : des aides IA pour tes chats](agents-overview.md). Construire un agent ne le fait pas tourner. Tu l'ajoutes ensuite à un chat. Les agents personnalisés fonctionnent dans tous les modes de chat.
 
 ## Créer un agent personnalisé
 
-1. Ouvre le panneau **Agents**.
-2. Clique sur **New** (nouveau), l'icône plus, près du haut. L'éditeur d'agent pleine page s'ouvre.
+1. Ouvre **Library → Agents** (Bibliothèque → Agents).
+2. Clique sur **New agent** (nouvel agent) en haut à droite. L'éditeur d'agent pleine page s'ouvre.
 3. Saisis un nom dans le champ de titre, par exemple `Weather Reporter`.
 4. Remplis **Description** et **Author** (auteur).
 5. Choisis une **Pipeline Phase** (phase du pipeline). Voir [Pipeline Phase](#pipeline-phase).
 6. Active les pouvoirs dont il a besoin sous **Custom Agent Abilities** (capacités des agents personnalisés).
 7. Choisis un **Result Type** (type de résultat) qui correspond à ce que l'agent produit. Dans le doute, choisis **Context Injection**. Il ne demande aucune capacité ni aucun format de sortie strict.
 8. Rédige ses instructions sous **Prompt Template** (modèle de prompt).
-9. Clique sur **Save** (enregistrer) dans la barre du haut. Un badge vert **Saved** apparaît.
+9. Clique sur **Save** (enregistrer) en haut de l'éditeur, ou appuie sur <kbd>Ctrl</kbd>+<kbd>S</kbd>.
 
-L'agent apparaît maintenant dans la section **Custom Agents** du panneau **Agents**. Pour t'en servir, ouvre un chat, va dans **Chat Settings** (réglages du chat), active **Enable Agents** (activer les agents) et ajoute l'agent depuis **Custom Agents**.
+L'agent apparaît maintenant sous **Your agents** (tes agents) sur la page **Agents**. Pour t'en servir, ouvre un chat, va dans **Chat Settings** (réglages du chat), active **Enable Agents** (activer les agents) et ajoute l'agent depuis **Custom Agents**.
 
 ## Pipeline Phase
 
@@ -160,23 +160,23 @@ Marinara insère `editedText` à la place de la réponse. Les notes de `changes`
 
 ## Importer et exporter des agents
 
-Pour exporter un agent, clique sur **Export agent** (exporter l'agent), l'icône de téléversement, dans la barre du haut de l'éditeur. Le fichier contient le prompt et les réglages de l'agent, jamais les définitions d'outils personnalisés. Pour en exporter plusieurs, utilise **Select agents** (sélectionner des agents) dans le panneau **Agents**, choisis-les et exporte-les.
+Pour exporter un agent, clique sur **Export agent** (exporter l'agent), l'icône de téléversement, dans la barre du haut de l'éditeur, ou choisis **Export** (exporter) dans son menu **⋯** sous **Your agents** sur **Library → Agents**. Le fichier contient le prompt et les réglages de l'agent, jamais les définitions d'outils personnalisés. Pour en exporter plusieurs à la fois, clique sur **Select** (sélectionner), l'icône en forme de coche à côté du titre **Agents**, choisis des agents sous **Your agents**, puis clique sur **Export** dans la barre du bas. Le même menu **⋯** propose aussi **Duplicate** (dupliquer) et **Delete** (supprimer).
 
 Les imports externes sont verrouillés par défaut.
 
-1. Ouvre **Settings → Advanced → Danger Zone** (Paramètres → Avancé → Zone de danger) et active **Allow custom Agent imports** (autoriser l'import d'agents personnalisés). Aucune modification du fichier `.env` n'est nécessaire.
-2. Dans le panneau **Agents**, clique sur **Import agents** (importer des agents) et choisis des fichiers d'agent ou un dossier.
+1. Ouvre **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité) et active **Allow custom Agent imports** (autoriser l'import d'agents personnalisés). Aucune modification du fichier `.env` n'est nécessaire.
+2. Ouvre **Library → Agents**, clique sur **Import agents** (importer des agents), l'icône de téléchargement à côté de **Starter kits** (kits de démarrage), choisis **Choose Files** (choisir des fichiers) ou **Choose Folder** (choisir un dossier), puis sélectionne les fichiers d'agent.
 3. Examine la liste des permissions que Marinara affiche. N'approuve que ce dont l'agent a besoin. Les capacités non cochées restent bloquées.
 
-Ce verrou ne concerne que les agents issus de fichiers, de dossiers ou de dépôts personnalisés. Les agents que tu crées et les agents officiels d'**Agent Organizer** (organisateur d'agents) fonctionnent normalement. Chaque fichier importé reçoit une nouvelle identité personnalisée : il ne peut donc pas remplacer un agent officiel.
+Ce verrou ne concerne que les agents issus de fichiers, de dossiers ou de dépôts personnalisés. Les agents que tu crées et les agents officiels de **Library → Agents** fonctionnent normalement. Chaque fichier importé reçoit une nouvelle identité personnalisée : il ne peut donc pas remplacer un agent officiel.
 
-Par sécurité, Marinara ignore les fonctions embarquées, efface les sélections d'outils, nettoie le CSS temporaire et vérifie les capacités approuvées avant qu'un agent importé puisse modifier les messages, les trackers, les lorebooks, les arrière-plans, les sprites, les médias, les appareils haptiques, les données About Me, les prompts ou les images. Importe à part les fonctions de confiance, examine-les et attache-les toi-même à l'agent. Désactiver l'interrupteur de la **Danger Zone** empêche les agents importés de tourner.
+Par sécurité, Marinara ignore les fonctions embarquées, efface les sélections d'outils, nettoie le CSS temporaire et vérifie les capacités approuvées avant qu'un agent importé puisse modifier les messages, les trackers, les lorebooks, les arrière-plans, les sprites, les médias, les appareils haptiques, les données About Me, les prompts ou les images. Importe à part les fonctions de confiance, examine-les et attache-les toi-même à l'agent. Désactiver **Allow custom Agent imports** empêche les agents importés de tourner.
 
 <a id="activation-questions"></a>
 
 ## Questions d'activation
 
-Une question d'activation demande si la scène récente a besoin de ton agent. Elle reconnaît des reformulations que les mots-clés manquent. Elle nécessite un **Decision model** (modèle de décision), un petit modèle qui répond par oui ou par non à des questions. Choisis-en un dans le panneau Connections. Voir [Modèles de décision](../connections/decision-models.md). Avec **Decision model** sur **None** (aucun), le choix par défaut, les champs de la question restent désactivés, et un agent qui a une question s'exécute comme s'il n'en avait pas.
+Une question d'activation demande si la scène récente a besoin de ton agent. Elle reconnaît des reformulations que les mots-clés manquent. Elle nécessite un **Decision model** (modèle de décision), un petit modèle qui répond par oui ou par non à des questions. Choisis-en un dans l'encadré **Defaults** (valeurs par défaut) de la page Connections. Voir [Modèles de décision](../connections/decision-models.md). Avec **Decision model** sur **None** (aucun), le choix par défaut, les champs de la question restent désactivés, et un agent qui a une question s'exécute comme s'il n'en avait pas.
 
 1. Ouvre l'agent personnalisé.
 2. Saisis une **Question** (question) de 500 caractères au maximum. Les macros `{{user}}` et `{{char}}` y fonctionnent.
@@ -193,7 +193,7 @@ Déroulement :
 - Un délai dépassé, un modèle indisponible ou une réponse invalide laisse l'agent s'exécuter normalement. Le délai dépend du type de modèle et du fait que le modèle doive raisonner d'abord ou non. Voir [Délais](../connections/decision-models.md#time-limits).
 - Les agents importés qui ont une question d'activation ou des énoncés de décision affichent un avis avec un lien vers le guide des modèles de décision. Sans Decision model, l'agent s'exécute dès que les mots-clés et **Trigger Cadence** (cadence d'activation) le permettent, et les énoncés du prompt valent non.
 
-Les questions d'activation ne concernent que les agents personnalisés.
+Les questions d'activation ne concernent que les agents personnalisés. L'agent intégré Illustrator a ses propres vérifications fixes pour les nouveaux lieux et la météo, voir [Vérifications par le modèle de décision](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

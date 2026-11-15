@@ -25,8 +25,8 @@ Si le preset a des variables, la fenêtre **Configure Preset Variables** (config
 
 ## Créer un preset
 
-1. Ouvre le panneau **Presets** depuis la barre latérale.
-2. Clique sur **New** (nouveau), l'icône plus. La fenêtre **Create Preset** (créer un preset) s'ouvre.
+1. Ouvre **Library → Presets** (Bibliothèque → Presets). La bibliothèque se trouve à droite.
+2. Clique sur **New preset** (nouveau preset). La fenêtre **Create Preset** (créer un preset) s'ouvre.
 3. Saisis un **Name** (nom). Ce champ est obligatoire. Ajoute une **Description** si tu veux.
 4. Clique sur **Create** (créer). Le preset s'ouvre dans le **Preset Editor**.
 5. Construis le prompt dans l'onglet **Sections**.
@@ -36,13 +36,26 @@ L'éditeur n'enregistre rien tout seul. Clique sur **Save** après chaque modifi
 
 Pour exporter un preset, clique sur l'icône de flèche vers le haut dans la barre du haut (infobulle **Export preset**). Marinara te demande d'abord d'enregistrer si des modifications sont en attente. Pour le supprimer, clique sur l'icône de corbeille.
 
-## Le panneau Presets
+## La page Presets
 
-Le panneau comporte trois onglets : **Presets**, **Regexes** et **Functions** (fonctions). Chaque onglet présente en haut la même rangée de boutons, un champ de recherche et **New Folder** (nouveau dossier). Dans **Presets**, utilise **Create preset** (créer un preset) pour en créer un, **Import preset** (importer un preset) pour charger un fichier `.json` ou **Select presets** (sélectionner des presets) pour en exporter ou en supprimer plusieurs à la fois. L'onglet **Regexes** contient tes scripts regex. Voir [Scripts regex](../extending/regex-scripts.md#manage-your-scripts). L'onglet **Functions** contient tes outils personnalisés. Voir [Outils personnalisés](../extending/custom-tools.md).
+**Library → Presets** répertorie tes presets dans un tableau avec les colonnes **Description**, **Sections**, **Author** (auteur), **Default** (par défaut) et **Updated** (mis à jour). En haut se trouvent **Import** (importer : charger un fichier `.json`) et **New preset**. **All** (tous) / **Defaults** (valeurs par défaut) restreint la liste, **Tags** (tags) à côté de la recherche n'affiche que les presets portant les tags que tu choisis (les presets importés portent le tag **Imported** (importé) et leur provenance, par exemple **ST**), **List** (liste) / **Gallery** (galerie) change de vue, et le menu de tri propose **Recently edited** (modifiés récemment), **A to Z** (de A à Z), **Z to A** (de Z à A) et **My order** (mon ordre). Clique sur un preset pour l'ouvrir.
+
+Pour organiser les presets :
+
+- **⋯** au bout d'une ligne (ou un clic droit sur la ligne) propose **Duplicate** (dupliquer), **Move to folder** (déplacer vers un dossier), **Export** (exporter), **Select** (sélectionner) et **Delete** (supprimer). **Duplicate** crée une copie modifiable et l'ouvre : c'est ainsi que tu personnalises un preset intégré. Le preset par défaut ne peut pas être supprimé.
+- Fais glisser une ligne au-dessus ou au-dessous d'une autre pour définir ton propre ordre. Le menu de tri passe à **My order**.
+- **New folder** (nouveau dossier), l'icône de dossier à côté du titre, regroupe des presets. Fais glisser un preset sur un dossier, ou utilise **Move to folder**.
+- **Select**, l'icône de coche à côté du titre, te permet de choisir plusieurs presets, puis d'utiliser **Move to folder**, **Export** (dans un seul fichier `marinara-presets.zip`) ou **Delete** depuis la barre du bas.
+
+Les scripts regex ont leur propre page, [Bibliothèque → Scripts regex](../extending/regex-scripts.md), tout comme les outils personnalisés, [Bibliothèque → Outils personnalisés](../extending/custom-tools.md).
+
+## Dans la disposition classique : le panneau Presets
+
+L'onglet **Presets** contient **Prompts** et **Fonctions**. Utilise **Créer un preset** pour en créer un, **Importer un preset** pour charger un fichier `.json`, ou **Sélectionner des presets** pour en exporter ou en supprimer plusieurs d'un coup. Utilise l'onglet **Regex** pour organiser les scripts en dossiers ou en activer ou désactiver plusieurs à la fois. Voir [Scripts regex](../extending/regex-scripts.md#manage-your-scripts).
 
 - **Search presets** filtre la liste.
 - Le menu de tri propose **Manual order** (ordre manuel), **A-Z**, **Z-A**, **Newest** et **Oldest**. Avec **Manual order**, fais glisser une ligne, ou appuie sur <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> sur une ligne sélectionnée. Sur un écran tactile, appuie longuement sur une ligne pour la saisir.
-- **New Folder** regroupe des presets. Fais glisser un preset sur un dossier, et double-clique ou double-tape sur un dossier pour le renommer.
+- **New Folder** (nouveau dossier) regroupe des presets. Fais glisser un preset sur un dossier, et double-clique ou double-tape sur un dossier pour le renommer.
 
 Chaque ligne affiche le nom, le format d'encapsulation, le nombre de sections et l'auteur. Un badge **DEFAULT** signale le preset par défaut, marqué d'une étoile. Clique sur une ligne pour l'ouvrir.
 
@@ -61,7 +74,8 @@ Chaque ligne affiche le nom, le format d'encapsulation, le nombre de sections et
 - **Name** est le titre affiché dans le panneau **Presets**.
 - **Description** est un court résumé.
 - **Wrap Format** (format d'encapsulation) règle la mise en forme des sections (voir [Formats d'encapsulation](#wrap-formats)).
-- **Author** (auteur) est un nom de créateur facultatif, utile quand tu partages un preset.
+- **Author** est un nom de créateur facultatif, utile quand tu partages un preset.
+- **Tags** trient les presets pour le filtre **Tags** de la page Presets. Saisis un tag et appuie sur Enter, ou clique sur le **×** d'un tag pour le retirer.
 
 Deux cartes en lecture seule affichent le nombre de **Sections** et de **Groups** (groupes).
 
@@ -70,6 +84,7 @@ Deux cartes en lecture seule affichent le nombre de **Sections** et de **Groups*
 - **Conversation Mode** est un champ de texte pour le prompt Conversation de ce preset. Laisse-le vide pour utiliser le prompt intégré.
 - **Roleplay Mode** n'est pas modifiable ici. Le Roleplay utilise le prompt assemblé à partir de tes **Sections**.
 - **Game Mode** est un champ de texte pour le prompt Game de ce preset. Laisse-le vide pour utiliser le prompt intégré.
+- **Réglages de l'histoire du jeu** définit un style d'histoire, un niveau de violence et des limites de contenu pour Game Mode. Active **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset** : choisir ce preset pour une partie définit alors son style et son niveau de violence et ajoute ces limites à celles de la partie. Voir [Contenu et style de l'histoire](../game/getting-started.md#content-and-story-style).
 
 Le **Marinara's Universal Preset** intégré fournit le texte du prompt, mais aucun paramètre de génération. Ses anciens réglages enregistrés d'échantillonnage, de raisonnement, de mise en forme et de tokens sont ignorés : ce sont les réglages de ton compte, les remplacements du chat et les valeurs par défaut de l'application qui s'appliquent. Crée une copie modifiable pour le personnaliser.
 
@@ -170,7 +185,7 @@ Sous le menu déroulant, un badge indique d'où vient le prompt.
 
 Le champ de texte montre le prompt utilisé. Modifie-le pour créer une copie locale au chat. Si ton texte correspond exactement au preset ou au prompt par défaut, Marinara considère qu'il n'est pas personnalisé. Tant qu'une modification personnalisée existe, une icône de réinitialisation apparaît (infobulle **Reset to default prompt**).
 
-Les chats Game ajoutent deux contrôles. **GM prompt style** (style de prompt du GM) ne remplace que le prompt Game, et une modification locale au chat l'emporte toujours. **Extra instructions** (instructions supplémentaires) ajoute du texte au prompt Game, jusqu'à 2 000 caractères, par exemple "Write in the style of Terry Pratchett."
+Les chats Game ajoutent davantage de contrôles. **GM prompt style** (style de prompt du GM) ne remplace que le prompt Game, et une modification locale au chat l'emporte toujours. **Extra instructions** (instructions supplémentaires) ajoute du texte au prompt Game, jusqu'à 2 000 caractères, par exemple "Write in the style of Terry Pratchett." **Consignes de classification**, **Style de l'histoire**, **Violence** et **Limites de contenu** sont les réglages de contenu de la partie ; voir [Contenu et style de l'histoire](../game/getting-started.md#content-and-story-style).
 
 <a id="decision-blocks-and-prompt-caching"></a>
 

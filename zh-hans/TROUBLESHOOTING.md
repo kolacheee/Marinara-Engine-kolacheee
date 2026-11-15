@@ -38,9 +38,32 @@
 - **本机的自定义名称。** 在 `/etc/hosts` 里映射到 `127.0.0.1` 的名称会被算作被转发的访问。改用 `localhost`、`127.0.0.1`、本机的主机名或某个 `*.localhost` 名称。
 - **Too many wrong passwords.** 等 15 分钟再登录。忘了密码？在运行 Marinara 的那台电脑上，在 Marinara 文件夹里运行 `node scripts/reset-login.mjs`。在 Docker 里，运行 `docker exec <container> node scripts/reset-login.mjs`。重启服务器也能让它重新尝试。
 - **Untrusted request host.** 如果用的是公网域名或反向代理域名，把它准确的主机名加进 `.env` 的 `TRUSTED_HOSTS`。直连 IP 地址仍然会被接受。
-- **在那台设备上执行高风险操作被拦截**（备份、清除数据、更新）。在服务器所在的电脑上打开 **Settings → Advanced → Admin Access**(设置 → 高级 → 管理员访问)，点击 **Make admin secret**(生成管理员密钥)；或者在服务器的 `.env` 里设置 `ADMIN_SECRET`。在另一台设备的 **Admin Access** 里输入这个密钥，然后点击 **Save**(保存)。
+- **在那台设备上执行高风险操作被拦截**（备份、清除数据、更新）。在服务器所在的电脑上打开 **Settings → Advanced → Security**(设置 → 高级 → 安全)，点击 **Make admin secret**(生成管理员密钥)；或者在服务器的 `.env` 里设置 `ADMIN_SECRET`。在另一台设备的 **Admin Access** 里输入这个密钥，然后点击 **Save**(保存)。
 
 见[远程访问](REMOTE_ACCESS.md)和[常见问题](FAQ.md)。如果你在更新后被锁在外面，见[更新后被锁在外面](REMOTE_ACCESS.md#locked-out-after-updating)。
+
+## 在手机或平板上使用时感觉很慢
+
+第一次打开页面时，要加载图片和页面本身，可能需要等一会儿。之后点击应该很快就有响应。如果某处一直很慢：
+
+1. 打开 **Settings → Advanced → Troubleshooting**(设置 → 高级 → 故障排查)，开启 **Show tap timings**(显示点击耗时)。这只对当前设备生效。
+2. 照常使用应用。左下角附近会出现一个深色小框，列出最近几次点击。
+3. 每行先显示点了什么，再显示 `shown · smooth · longest frame · server`，单位都是毫秒（ms，即千分之一秒）。
+
+| 读数 | 含义 |
+| --- | --- |
+| **shown** | 从点击到屏幕首次发生变化的时间。 |
+| **smooth** | 从点击到屏幕完成变化的时间。绿色表示正常；超过 400 就会变红，这时会感觉到等待。 |
+| **longest frame** | 过程中最长的一次卡顿。 |
+| **server** | 这次点击发出了多少个请求，以及最后一个请求何时完成。短横线表示没有请求。 |
+
+可以试试这些办法：
+
+- 如果 **server** 占了 **smooth** 的大部分时间，等待来自服务器或网络，而不是界面。同一 Wi-Fi 下的服务器比通过互联网访问的服务器更快。
+- 如果 **smooth** 很高，而 **server** 是短横线，慢的是界面。暂时关闭主题（连按三次 <kbd>Esc</kbd>，或在地址末尾加上 `?safe`），再点一次同样的地方。如果快了很多，原因就是主题。告诉主题作者，或者参阅[让主题保持流畅](appearance/theme-author-guide.md#keeping-a-theme-fast)。
+- **Settings → Appearance → Effects**(设置 → 外观 → 效果) 里有 **Reduce Ambient Animations & Effects**(减少环境动画和特效) 和 **Reduced paint effects**(降低绘制特效)。两项都能让较慢的设备更流畅。
+
+报告某处运行缓慢时，附上对应的点击耗时记录。用完后再关掉 **Show tap timings**。
 
 ## 保存被拦截，或设置存不住
 
@@ -226,7 +249,7 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 **Built-in model**(内置模型) 在你的电脑上运行，不需要 API 密钥。有些报错信息把它称作 sidecar。设置方法见[内置模型设置](connections/local-model.md)。
 
-- **Sidecar runtime install is disabled.** 在你自己的电脑上，在 `.env` 里设置 `SIDECAR_RUNTIME_INSTALL_ENABLED=true`。从其他设备操作时，先把管理员密钥保存到 **Settings → Advanced → Admin Access**。
+- **Sidecar runtime install is disabled.** 在你自己的电脑上，在 `.env` 里设置 `SIDECAR_RUNTIME_INSTALL_ENABLED=true`。从其他设备操作时，先把管理员密钥保存到 **Settings → Advanced → Security**。
 - **从其他设备下载模型或完成设置失败**（网络地址或 Docker）。这可能同样需要管理员密钥。在你自己的电脑上则不需要。
 - **大小或 SHA-256 不匹配**：出在内置的 llama.cpp、MLX 或 uv 文件上。Marinara 在使用这个文件之前就已经拒绝了它。更新或重装 Marinara 后重试。不要解包、修改或绕过这个文件。
 
@@ -266,12 +289,12 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 ## 可下载智能体的问题
 
-- **Agent Organizer 里提示目录不可用。** 运行服务器的那台电脑（而不只是你的浏览器）必须能通过 HTTPS 访问 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 目录。已安装的智能体离线时也能继续工作。恢复连接后，点击 **Refresh**(刷新) 或 **Try again**(再试一次)。
+- **Library → Agents 里加载不出智能体目录。** 运行服务器的那台电脑（而不只是你的浏览器）必须能通过 HTTPS 访问 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 目录。已安装的智能体离线时也能继续工作。恢复连接后，点击 **Refresh**(刷新) 或 **Try again**(再试一次)。
 - **装好的地图或通话没有出现。** 把 Marinara 完全关掉，再重新启动。这些包会一直处于 **Restart required** 状态，直到下一次启动。Conversation 游戏会立即生效。如果安装失败，刷新目录，然后确认游戏显示为就绪。只有想让角色自己发起游戏时，才需要在聊天的 **Commands**(命令) 设置里添加它；用它的斜杠命令手动启动则不需要。
 - **首次包迁移无法完成。** 不要删除 `data/capability-packages` 或你的聊天数据。Marinara 会在下次启动时重试，你的聊天选择也会保留。
 - **`data/capability-runtime-snapshots` 或 `data/capability-packages/versions` 变得很大。** 不需要清理。Marinara 启动时会删除旧副本，每个智能体只保留当前版本和上一个版本。
 - **包下载被拒绝。** 校验和、文件列表、Marinara 版本范围或压缩包内路径与官方目录对不上。更新 Marinara，刷新目录，然后重试。不要手动把产物解压进数据文件夹。
-- **更新。** 智能体更新绝不会在启动时自动应用。Marinara 会先询问。**Not now**(暂不更新) 会保留已安装的版本，**Update**(更新) 会一直留在 **Agents → Agent Organizer**(智能体 → 智能体管理器) 里。更新失败时，已安装的版本保持不变。启动自检没通过的服务器运行时会回滚。
+- **更新。** 智能体更新绝不会在启动时自动应用。Marinara 会先询问。**Not now**(暂不更新) 会保留已安装的版本，**Update**(更新) 会一直留在 **Library → Agents**(资料库 → 智能体) 里。更新失败时，已安装的版本保持不变。启动自检没通过的服务器运行时会回滚。
 
 ## Card Browser 相关问题
 
@@ -301,7 +324,7 @@ pnpm backgroundremover:install
 
 分镜会把完成的叙述变成关键帧图像和可选的短片。见 [Storyboard 智能体指南](game/storyboard.md)和 [Game Mode：入门](game/getting-started.md)。
 
-- 从 **Agents → Agent Organizer** 安装 **Storyboard**(分镜)，然后为这个聊天开启 **Enable Agents**(启用智能体) 和 **Enable Storyboards**(启用分镜)。
+- 从 **Library → Agents** 安装 **Storyboard**(分镜)，然后为这个聊天开启 **Enable Agents**(启用智能体) 和 **Enable Storyboards**(启用分镜)。
 - 关键帧需要图像账号。短片还需要视频账号。
 - Game Mode(游戏模式) 自动分镜：打开 **Chat Settings → Agents → Storyboards**(聊天设置 → 智能体 → 分镜)，确认 **Automatic Storyboard Illustrations**(自动分镜插图) 已开启。要短片的话，开启 **Automatic Storyboard Animations**(自动分镜动画)。
 - 手动场景视频：打开 **Chat Settings → Gallery**(聊天设置 → 图库)，生成或上传一张图像，然后使用 **Video**(视频) 或 **Animate**。去 **Videos**(视频) 选项卡查看。
@@ -322,7 +345,7 @@ pnpm backgroundremover:install
 
 - **通话中角色不出声。** 语音合成还没设置好。打开 **Connections → Text to Speech**(连接 → 语音合成)，开启它，选择来源，填入密钥，选一个声音，然后保存。没有声音的角色只会以文字显示。
 - **语音播放停下并提示“No audio after N s”。** 你的语音服务器比 Marinara 等待的时间更慢，笔记本上的本地服务器经常这样。`N` 是你当前的超时时间。在 **Connections → Text to Speech** 里，或者在消息中点名的音频账号里，调高 **Request timeout (seconds)**(请求超时，单位为秒)。见[请求超时](media/tts-setup.md#request-timeout)。
-- **麦克风不工作。** 从 **Agents → Agent Organizer** 安装 **Calls**(通话)。然后打开 **Connections → Speech to text**(连接 → 语音识别)，在 **On this device**(在你的电脑上) 下找到 **Local speech model**(本地语音模型)，选一个 Whisper 模型，然后点击 **Download Whisper**(下载 Whisper)。Firefox 需要这一步，因为它没有浏览器语音识别。卸载 Calls 会删掉它的 Whisper 模型。你也可以使用自己的服务器：见[使用你自己的语音识别服务器](conversation/calls.md#use-your-own-speech-to-text-server)。
+- **麦克风不工作。** 从 **Library → Agents** 安装 **Calls**(通话)。然后打开 **Connections → Speech to text**(连接 → 语音识别)，在 **On this device**(在你的电脑上) 下找到 **Local speech model**(本地语音模型)，选一个 Whisper 模型，然后点击 **Download Whisper**(下载 Whisper)。Firefox 需要这一步，因为它没有浏览器语音识别。卸载 Calls 会删掉它的 Whisper 模型。你也可以使用自己的服务器：见[使用你自己的语音识别服务器](conversation/calls.md#use-your-own-speech-to-text-server)。
 - **Local Whisper is disabled in Lite mode.** 精简版镜像跑不了本地语音模型。改用完整安装。
 
 ### 远程或局域网安装时 Music DJ 的 Spotify 登录失败
@@ -358,7 +381,7 @@ Music DJ 智能体的 Spotify 模式使用 OAuth。这是一种登录交接方�
 
 ### 备份或导出返回 403
 
-同一台电脑上的会话不需要管理员密钥就能备份。来自其他设备、网络地址、Docker，或者同一台电脑上的代理或隧道的请求则需要。在服务器所在的电脑上到 **Settings → Advanced → Admin Access** 里生成它，或者在服务器上设置 `ADMIN_SECRET`，然后在另一台设备的 **Admin Access** 里保存同一个值。要让环回访问也必须提供密钥，设置 `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`。如果设置了 `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`，被转发的访客也会走本地放行。面向公网的代理或隧道请让它保持开启。
+同一台电脑上的会话不需要管理员密钥就能备份。来自其他设备、网络地址、Docker，或者同一台电脑上的代理或隧道的请求则需要。在服务器所在的电脑上到 **Settings → Advanced → Security** 里生成它，或者在服务器上设置 `ADMIN_SECRET`，然后在另一台设备的 **Admin Access** 里保存同一个值。要让环回访问也必须提供密钥，设置 `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`。如果设置了 `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`，被转发的访客也会走本地放行。面向公网的代理或隧道请让它保持开启。
 
 ### 导入时提示文件不是可读的 ZIP 压缩包
 
@@ -395,7 +418,7 @@ Android 应用只是套在 Termux 外面的一层轻壳。Termux 是 Android 上
 
 提到来源 `null` 的错误，说明你用的是较旧的 APK 和服务器组合。编辑 `.env` 解决不了。请更新 APK 和 Marinara。
 
-要在同一部手机的浏览器里打开，在 Android 启动界面点击 **Open in browser**(在浏览器中打开)，然后点击 **Retry connection**(重试连接)。服务器重启或会话过期后，也用这种方式重新打开。要回到启动界面，使用 **Settings → General → App Behavior → Open Android launcher (app or browser)**(设置 → 常规 → 应用行为 → 打开 Android 启动界面（应用或浏览器）)。
+要在同一部手机的浏览器里打开，在 Android 启动界面点击 **Open in browser**(在浏览器中打开)，然后点击 **Retry connection**(重试连接)。服务器重启或会话过期后，也用这种方式重新打开。要回到启动界面，使用 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(设置 → 外观 → 布局 → 打开 Android 启动界面（应用或浏览器）)。
 
 旧版 APK 在 `/android-login` 用 `cat ~/.marinara-engine/android-secret` 显示的值登录。浏览器链接只能用一次，一分钟后过期，所以请从启动界面重新打开一个。
 
@@ -422,7 +445,7 @@ Android 在构建步骤中耗尽了内存。重新运行启动脚本：
 
 ### Marinara 停止响应，把 Termux 切到前台才恢复
 
-聊天卡在“正在打开聊天...”，应用报出 **Server unreachable**，Support Diagnostics(支持诊断信息) 复制出来的内容在服务器相关字段上显示 **Unreachable (request timed out)**，而一打开 Termux 一切立刻恢复。这是 Android 的缓存应用冻结器挂起了 Termux 进程。手机仍然会接受连接，但被冻结的服务器永远不会回应。唤醒锁防止不了这种情况。会话日志在被冻结的那段时间里只会留下一段时间戳空档，而不是一条报错。
+聊天卡在“正在打开聊天...”，应用报出 **Server unreachable**，**Copy Support Diagnostics**(复制支持诊断信息) 生成的报告在服务器相关字段上显示 **Unreachable (request timed out)**，而一打开 Termux 一切立刻恢复。这是 Android 的缓存应用冻结器挂起了 Termux 进程。手机仍然会接受连接，但被冻结的服务器永远不会回应。唤醒锁防止不了这种情况。会话日志在被冻结的那段时间里只会留下一段时间戳空档，而不是一条报错。
 
 在 Android 设置中取消 Termux 的电池优化并允许后台活动；如果手机支持，就在最近任务界面里锁定 Termux，并让它的通知一直显示。如果还是会被冻结，在使用 Marinara 期间让 Termux 保持在前台，或者让屏幕保持常亮。
 
@@ -488,12 +511,12 @@ Windows、Android 和其他不受支持的宿主环境会拒绝执行服务器�
 
 ## 扩展相关问题
 
-### Addons 里找不到 External Extensions
+### Extensions 里找不到 External Extensions
 
 只有两道开关都打开，这一节才会出现。
 
 1. 在宿主机的 `.env` 里设置 `ENABLE_EXTERNAL_EXTENSIONS=true`。
-2. 稍等片刻，然后打开 **Settings → Advanced → Danger Zone**(设置 → 高级 → 危险区域)，滚动到数据删除控件下方，开启 **Allow third-party extension imports**(允许导入第三方扩展)。
+2. 稍等片刻，然后打开 **Settings → Advanced → Security**(设置 → 高级 → 安全)，开启 **Allow third-party extension imports**(允许导入第三方扩展)。
 
 如果这个开关是禁用状态，说明宿主机的标志仍然是 false，或者应用还没察觉到这次改动。确认你改的是[服务器配置](CONFIGURATION.md)里说明的那个生效中的 `.env`。在 Docker 上，它通常是 `/app/data/.env`。
 
@@ -501,7 +524,7 @@ Windows、Android 和其他不受支持的宿主环境会拒绝执行服务器�
 
 ### 导入的浏览器扩展出现了却不工作
 
-在 **Settings → Addons → External Extensions**(设置 → 插件 → 外部扩展) 里打开它，查看 **Requested access**(申请的权限)。没有能力声明的旧版 `marinara.extension` v1 包会显示 **Full page access**(整页访问)。只批准你检查过并且信任的那个准确哈希值。
+在 **Library → Extensions → External Extensions**(资料库 → 扩展 → 外部扩展) 里打开它，查看 **Requested access**(申请的权限)。没有能力声明的旧版 `marinara.extension` v1 包会显示 **Full page access**(整页访问)。只批准你检查过并且信任的那个准确哈希值。
 
 能力列表为空的重新导出包会被当作安全的沙箱扩展，需要页面 DOM 的代码将无法工作。只有在你接受代码会拿到整个页面、浏览器存储、网络 API 和你的会话时，才给它的清单加上 `full_page_access`。
 
@@ -531,7 +554,7 @@ Windows、Android 和其他不受支持的宿主环境会拒绝执行服务器�
 
 ## 获取更多帮助
 
-1. 打开 **Settings → Advanced → Message Tools**(设置 → 高级 → 消息工具)，开启 **Debug mode**。它会把提示词和回复记录到服务器控制台。
+1. 打开 **Settings → Advanced → Troubleshooting**(设置 → 高级 → 故障排查)，开启 **Debug mode**。它会把提示词和回复记录到服务器控制台。
 2. 记下操作系统、Node.js 版本，以及控制台里完整的报错文本。
 3. 分享任何内容之前，先删掉 API 密钥、访问 Token、管理员密钥和私密聊天内容。
 

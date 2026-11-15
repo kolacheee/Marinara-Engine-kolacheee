@@ -41,7 +41,7 @@
 - `schemas`: सेव होने वाली और साझा एंटिटी के Zod स्कीमा।
 - `constants`: प्रोवाइडर, डिफ़ॉल्ट, चैट मोड, मॉडल लिस्ट, एजेंट प्रॉम्प्ट।
 - `utils`: प्योर हेल्पर, जैसे मैक्रो एक्सपैंशन, XML रैपिंग और म्यूज़िक स्कोरिंग।
-- `features`: एजेंट मैनिफ़ेस्ट और रजिस्ट्री, फ़ंक्शन-कॉल की परिभाषाएँ, फ़ोल्डर पैकेज, टर्न-गेम इंजन का कॉन्ट्रैक्ट और रजिस्ट्री (गेम खुद वैकल्पिक पैकेज से आते हैं), Game Mode के रूलसेट और उनकी लड़ाई (`rulesets`, `ruleset-combat`, `tactical-combat` और `combat-*` फ़ाइलें), और `world` में दुनिया बनाने वाला जेनरेटर अपनी शेयर फ़ाइलों के साथ (सेटिंग किट, दुनिया, टाइल, बोर्ड और क्रीचर पैक)। `marinara-*.ts` फ़ाइलों (`ai`, `bestiary`, `bestiary-threat`, `classes`, `combat`, `items`, `loot`, `party`) में Engine के अपने Classic Marinara रूलसेट का डेटा और गणनाएँ हैं।
+- `features`: एजेंट मैनिफ़ेस्ट और रजिस्ट्री, फ़ंक्शन-कॉल की परिभाषाएँ, फ़ोल्डर पैकेज, UNO, Chess और Poker के टर्न-गेम इंजन, Game Mode के रूलसेट और उनकी लड़ाई (`rulesets`, `ruleset-combat`, `tactical-combat` और `combat-*` फ़ाइलें), और `world` में दुनिया बनाने वाला जेनरेटर अपनी शेयर फ़ाइलों के साथ (सेटिंग किट, दुनिया, टाइल, बोर्ड और क्रीचर पैक)।
 
 नियम:
 
@@ -64,12 +64,12 @@ React 19 और Vite PWA। अभी इसमें कई सौ सोर्
 - `features`: अलग निकाले गए फ़ीचर मॉड्यूल, जिनमें फ़िलहाल चैट-सेटिंग्स के सेक्शन, ट्रैकर-पैनल के हिस्से, मल्टीप्लेयर, और अवतार एजेंट का कॉन्ट्रैक्ट, सेटअप, स्टेज और रेंडरर (`features/avatars`) शामिल हैं।
 - `hooks`: ज़्यादातर API फ़ीचर के लिए React Query हुक और रनटाइम हुक।
 - `lib`: ब्राउज़र और क्लाइंट हेल्पर। अभी यहाँ आम हेल्पर और सिर्फ़ Game Mode वाले हेल्पर एक साथ पड़े हैं।
-- `stores`: UI, चैट रनटाइम, एजेंट, वर्ल्ड स्टेट, Game Mode, असेट, sidecar, ट्रांसलेशन, गैलरी, एनकाउंटर, कॉम्बैट और Roleplay शीट की स्क्रीन, और Conversation गेम के Zustand स्टोर।
+- `stores`: UI, चैट रनटाइम, एजेंट, वर्ल्ड स्टेट, Game Mode, असेट, sidecar, ट्रांसलेशन, गैलरी, एनकाउंटर और टर्न-गेम के Zustand स्टोर।
 - `styles`: ग्लोबल स्टाइलशीट और थीम के अपने CSS।
 
 अभी के अहम क्रॉसओवर:
 
-- `components/game`, `components/chat` से साझा विज़ुअल हिस्से इंपोर्ट करता है, जैसे मौसम के इफ़ेक्ट, पिन की हुई इमेज का ओवरले, और चैट टूलबार और कंट्रोल विंडो। गैलरी Chat Settings (`features/chat-settings/ChatGalleryPanel.tsx`) में है। Game Mode उसे `hooks/use-chat-gallery-actions.ts` के ज़रिए डेटा देता है।
+- `components/game`, `components/chat` से साझा विज़ुअल हिस्से इंपोर्ट करता है, जैसे मौसम और गैलरी ड्रॉअर।
 - `components/chat`, Roleplay फ़ीचर के लिए वर्ल्ड स्टेट और एनकाउंटर स्टेट इंपोर्ट करता है।
 - `hooks/use-generate.ts` चैट स्टेट, एजेंट स्टेट, वर्ल्ड स्टेट, Game Mode स्टेट, ट्रांसलेशन स्टेट और UI सेटिंग्स, सबको छूता है।
 - `lib/game-*` हेल्पर सिर्फ़ Game Mode के हैं, फिर भी ग्लोबल हेल्पर के बगल में पड़े हैं।
@@ -92,8 +92,6 @@ Fastify API, फ़ाइल-नेटिव स्टोरेज और प्
 - फ़ीचर की नींव: `services/import`, `services/lorebook`, `services/image`, `services/haptic`, `services/tools`, `services/regex`, `services/professor-mari`, `services/mari-db`, `services/turn-games`, `services/spotify`, `services/video`, `services/generation`, `services/chat-summary`, `services/achievements`, `services/prompt-overrides`, `services/setup`, `services/noodle`, `services/memory-recall`, `services/avatars` (अवतार एजेंट के लिए अवतार मॉडल का स्टोरेज, जेनरेशन और भाव पहचानने वाला क्लासिफ़ायर), `speech-to-text.service.ts` और `discord-webhook.ts`।
 - `db/schema`: `DATA_DIR/storage` के नीचे सेव होने वाले डेटा की फ़ाइल-टेबल परिभाषाएँ।
 - `db/file-schema.ts`, `db/file-query.ts`: नेटिव टेबल मेटाडेटा और क्वेरी एक्सप्रेशन।
-- `bin/mari.ts`: `mari` कमांड लाइन टूल (पैकेज की इकलौती `bin` एंट्री), जो चल रहे लोकल सर्वर से बात करता है।
-- `assets/`: सर्वर के साथ आने वाला डेटा, जैसे डिफ़ॉल्ट बैकग्राउंड, डिफ़ॉल्ट गेम ऐसेट, बोर्ड पैक, ओवरवर्ल्ड टाइल, Mari स्किल, Claude Code प्लगइन, रनटाइम की ज़रूरतों की लॉकफ़ाइलें और पर्सनल एक्सटेंशन की रनर स्क्रिप्ट।
 - `db/file-backed-store.ts`: इन-मेमोरी टेबल स्टोर, ट्रांज़ैक्शन की सीमा, क्रैश रिकवरी और JSON स्नैपशॉट सेव करना। देखें [फ़ाइल-नेटिव स्टोरेज](file-storage.md)।
 
 अभी के अहम क्रॉसओवर:
@@ -165,7 +163,7 @@ Fastify API, फ़ाइल-नेटिव स्टोरेज और प्
 | `packages/server/src/routes/generate.routes.ts` | साझा जेनरेशन और एजेंट | रूट, स्ट्रीमिंग, प्रॉम्प्ट, एजेंट, स्टोरेज और साइड इफ़ेक्ट, सब एक ही फ़ाइल में हैं। |
 | `packages/server/src/routes/game.routes.ts` | `MODE-GAME` | API हैंडलर, GM फ़्लो, सीन एनालिसिस, असेट, कॉम्बैट और सेव करना, सब आपस में गुँथे हुए हैं। |
 | `packages/client/src/components/game/GameSurface.tsx` | `MODE-GAME` | रेंडरिंग, स्टेट ऑर्केस्ट्रेशन, असेट, लॉग, नैरेशन, कॉम्बैट और इफ़ेक्ट आपस में गुँथे हुए हैं। |
-| `packages/client/src/components/chat/ChatSettingsDrawer.tsx` | मिली-जुली चैट सेटिंग्स | `features/chat-settings` में सेक्शन अलग निकालने का काम चल रहा है, फिर भी यह पैनल अभी बड़ा है। |
+| `packages/client/src/features/chat-settings/ChatSettingsDrawer.tsx` | मिली-जुली चैट सेटिंग्स | `features/chat-settings/sections` में सेक्शन अलग निकालने का काम चल रहा है, फिर भी यह पैनल अभी बड़ा है। |
 | `packages/client/src/components/game/GameNarration.tsx` | `MODE-GAME` | डिस्प्ले रेंडरिंग और कमांड फ़ॉर्मैटिंग एक-दूसरे से कसकर जुड़ी हैं। |
 | `packages/client/src/components/game/GameCombatUI.tsx` | `MODE-GAME` | कॉम्बैट डिस्प्ले, कंट्रोल और लॉग को छोटे पैनल और हुक में बाँटा जा सकता है। |
 | `packages/client/src/components/chat/RoleplayHUD.tsx` | `MODE-ROLEPLAY` | `RoleplayHUDActionsMenu.tsx` और `RoleplayHUDPanels.tsx` के ज़रिए इसका कुछ हिस्सा अलग हो चुका है। |
@@ -279,7 +277,7 @@ packages/shared/src/
 सफ़ाई की शुरुआत के लिए ये सबसे अच्छी जगहें हैं, क्योंकि इनसे व्यवहार बदले बिना आपसी उलझाव कम होता है।
 
 1. `components/chat` को आम, Conversation और Roleplay समूहों में बाँटें।
-   - आम के लिए: `ChatCommonOverlays`, `ChatBranchesPanel` और `ChatGalleryPanel` (दोनों अब `features/chat-settings` में हैं), `WeatherEffects`, और साझा संदेश तथा इनपुट प्रिमिटिव।
+   - आम के लिए: `ChatCommonOverlays`, `ChatBranchSelector`, `ChatGalleryDrawer`, `WeatherEffects`, और साझा संदेश तथा इनपुट प्रिमिटिव।
    - Conversation के लिए: `ChatConversationSurface`, `ConversationView`, `ConversationMessage`, `ConversationInput`।
    - Roleplay के लिए: `ChatRoleplaySurface`, `SpriteOverlay`, `SceneBanner`, `CyoaChoices`, `EncounterModal`। Roleplay HUD का कुछ हिस्सा `RoleplayHUDActionsMenu.tsx` और `RoleplayHUDPanels.tsx` में पहले ही अलग हो चुका है।
 2. सिर्फ़ गेम वाले क्लाइंट हेल्पर को गेम मॉड्यूल के नीचे ले जाएँ।

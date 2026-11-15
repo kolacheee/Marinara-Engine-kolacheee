@@ -15,8 +15,8 @@ Trae tus datos de SillyTavern a Marinara Engine. Importa un archivo a la vez, o 
 
 ## Importaciones rápidas de un solo archivo
 
-1. Abre **Settings → Imports**.
-2. En **SillyTavern Import**, haz clic en el botón de tu tipo de archivo.
+1. Abre **Settings → Data → SillyTavern Import** (Configuración → Datos → Importación de SillyTavern).
+2. Haz clic en el botón de tu tipo de archivo.
 3. Elige el archivo.
 
 | Botón | Archivo |
@@ -26,7 +26,7 @@ Trae tus datos de SillyTavern a Marinara Engine. Importa un archivo a la vez, o 
 | **Import Preset (JSON)** | Un preset `.json`. |
 | **Import Lorebook (JSON)** | Un archivo World Info `.json`. |
 
-Los botones no tienen opciones. Una importación de personaje conserva todas las etiquetas de origen y limita los scripts de regex al personaje. Un script de regex es una regla de buscar y reemplazar para texto. Para elegir estas opciones, usa **Import** en el panel Characters. Consulta [Importar y exportar tarjetas de personaje](../characters/import-export.md).
+Encima de los botones, **Tag imported** (Etiquetar como importado) y **Tag source** (Etiquetar origen), ambos activados de forma predeterminada, añaden las etiquetas **Imported** y **ST** a lo que importes. Desmarca cualquiera de ellos para omitir esa etiqueta. Las importaciones conservan su nombre y descripción. Por lo demás, los botones no tienen opciones. Una importación de personaje conserva todas las etiquetas de origen y limita los scripts de regex al personaje. Un script de regex es una regla de buscar y reemplazar para texto. Para elegir estas opciones, usa **Import** en la página **Library → Characters** (Biblioteca → Personajes). Consulta [Importar y exportar tarjetas de personaje](../characters/import-export.md).
 
 Si una tarjeta de personaje tiene un lorebook incrustado, tu navegador pregunta si quieres importarlo como un lorebook independiente. Haz clic en **OK** para conservarlo como un lorebook que puedes reutilizar, o en **Cancel** para importar solo el personaje.
 
@@ -38,9 +38,9 @@ Para elegir el modo, usa el botón de importación de la parte superior de la li
 
 ## Importar una carpeta de SillyTavern
 
-Antes de empezar: el asistente lee archivos en la computadora del servidor. Si SillyTavern está en otra computadora, copia primero su carpeta (aquella donde instalaste SillyTavern) a la computadora de Marinara. En la computadora de Marinara el asistente funciona de inmediato. Desde otro dispositivo, define el secreto de administrador y escríbelo en **Settings → Advanced → Admin Access**. Consulta [Copia de seguridad y restauración de Marinara](backup-and-restore.md) y la sección "Privileged APIs (ADMIN_SECRET)" de la [Referencia de configuración del servidor](../CONFIGURATION.md).
+Antes de empezar: el asistente lee archivos en la computadora del servidor. Si SillyTavern está en otra computadora, copia primero su carpeta (aquella donde instalaste SillyTavern) a la computadora de Marinara. En la computadora de Marinara el asistente funciona de inmediato. Desde otro dispositivo, define el secreto de administrador y escríbelo en **Settings → Advanced → Security** (Configuración → Avanzado → Seguridad). Consulta [Copia de seguridad y restauración de Marinara](backup-and-restore.md) y la sección "Privileged APIs (ADMIN_SECRET)" de la [Referencia de configuración del servidor](../CONFIGURATION.md).
 
-1. Abre **Settings → Imports → SillyTavern Import**.
+1. Abre **Settings → Data → SillyTavern Import**.
 2. Haz clic en **Import from SillyTavern Folder**.
 3. Elige tu carpeta de SillyTavern. Elige la carpeta principal, normalmente la que contiene una carpeta `data/` o `public/`. Usa una de estas formas:
    - Haz clic en **Browse** y elige la carpeta.
@@ -64,7 +64,7 @@ Si el escaneo encuentra personajes, aparecen dos opciones más:
 **Imported regex scripts** (el valor predeterminado es **Character only**):
 
 - **Character only** aplica los scripts a cada personaje.
-- **Global** los agrega a **Presets → Regexes** para todos los chats.
+- **Global** los agrega a **Presets → Regexes**, donde puedes gestionar los scripts que se ejecutan en varios chats. Consulta [Scripts de regex](../extending/regex-scripts.md#manage-your-scripts).
 
 Si no funcionó:
 
@@ -77,6 +77,7 @@ Si no funcionó:
 - Los archivos de chat que pertenecen a un personaje se importan como ramas de un solo chat. Una rama es una copia de un chat que continúas por separado.
 - Los chats grupales se importan como chats Roleplay.
 - Los elementos importados conservan la fecha del último cambio del archivo de origen, no la fecha de la importación.
+- Los personajes, las personas, los lorebooks, los presets y los chats reciben las etiquetas **Imported** y **ST**, a menos que desmarques **Tag imported** o **Tag source** encima de **Import Selected**. Sus nombres y descripciones se conservan como estaban.
 
 ## Qué no se transfiere
 

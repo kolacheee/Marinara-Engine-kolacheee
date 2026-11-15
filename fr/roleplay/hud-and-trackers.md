@@ -17,7 +17,7 @@ Si ça n'a pas marché : sans agent tracker activé, le HUD n'affiche aucun widg
 
 ## Où le HUD apparaît
 
-Sur téléphone, les trackers sont les boutons déplaçables **World State** et **Player & Tracker**. Appuie sur l'un d'eux pour ouvrir son panneau, et sur **X** pour le fermer. Dès que World State a des détails, son bouton affiche une petite bannière avec le lieu, le jour, l'heure, la météo et la température. Fais glisser les boutons où tu veux. Ton chat mémorise l'endroit où tu les as placés. Ils suivent ton **Chat widget style** (style des widgets du chat) dans **Settings → Appearance → App** (Paramètres → Apparence → Application).
+Sur téléphone, les trackers sont les boutons déplaçables **World State** et **Player & Tracker**. Appuie sur l'un d'eux pour ouvrir son panneau, et sur **X** pour le fermer. Dès que World State a des détails, son bouton affiche une petite bannière avec le lieu, le jour, l'heure, la météo et la température. Fais glisser les boutons où tu veux. Ton chat mémorise l'endroit où tu les as placés. Ils suivent ton **Chat widget style** (style des widgets du chat) dans **Settings → Appearance → Chat Buttons & Windows** (Paramètres → Apparence → Boutons et fenêtres du chat).
 
 Sur ordinateur, les mêmes trackers apparaissent à l'un de ces deux endroits :
 
@@ -113,7 +113,7 @@ Le **Tracker Panel** est un panneau latéral plus grand, avec les mêmes donnée
 2. Clique sur le bouton **Tracker Panel** (le dé) dans sa barre de titre, à côté de l'épingle et du verrou. Il reste mis en évidence tant que le panneau est activé.
 3. Clique à nouveau dessus pour masquer le panneau. Sur ordinateur, les trackers s'affichent alors dans la fenêtre Trackers.
 
-Sur ordinateur, le panneau tient à côté de tes messages, jusqu'à la largeur définie par **Desktop size** (taille sur ordinateur). Quand la fenêtre est trop étroite pour les deux, par exemple quand la barre latérale des chats est ouverte, tes messages et la zone de saisie se rétrécissent un peu. Sur téléphone ou tablette, l'activer ajoute un bouton Tracker Panel que tu peux faire glisser. Appuie dessus pour ouvrir le panneau, et appuie de nouveau pour le fermer. Tant que le panneau ou un autre écran recouvre le chat, les boutons déplaçables du chat sont masqués, puis ils reviennent aux mêmes endroits.
+Sur ordinateur, le panneau tient à côté de tes messages, jusqu'à la largeur définie par **Desktop size** (taille sur ordinateur). Quand la fenêtre est trop étroite pour les deux, par exemple quand la barre latérale est ouverte, tes messages et la zone de saisie se rétrécissent un peu. Sur téléphone ou tablette, l'activer ajoute un bouton Tracker Panel que tu peux faire glisser. Appuie dessus pour ouvrir le panneau, et appuie de nouveau pour le fermer. Tant que le panneau ou un autre écran recouvre le chat, les boutons déplaçables du chat sont masqués, puis ils reviennent aux mêmes endroits.
 
 ### Personnaliser les champs des trackers
 
@@ -132,7 +132,7 @@ La grande carte d'un personnage peut créer un nouveau portrait dès que Charact
 
 ### Réglages du Tracker Panel
 
-Ouvre **Settings → Appearance** (Paramètres → Apparence), ouvre le groupe **Roleplay** et trouve la section **Tracker Panel**.
+Ouvre **Settings → Roleplay** (Paramètres → Roleplay) et trouve la section **Tracker Panel**.
 
 | Réglage | Ce qu'il fait |
 | --- | --- |

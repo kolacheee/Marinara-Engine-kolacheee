@@ -40,8 +40,8 @@ Marinara 会导出从你选的第一条到最后一条之间的所有消息。�
 
 ## 一次导出多个聊天
 
-1. 在左侧边栏点击要用的模式选项卡：**CONVO**、**RP** 或 **GM**。每个选项卡只导出自己名下的聊天。
-2. 点击列表顶部的 **Select chats**(选择聊天)。
+1. 在 **Chats**(聊天) 侧边栏点击要用的模式选项卡：**Convo**(对话)、**Roleplay**(角色扮演) 或 **Game**(游戏)。每个选项卡只导出自己名下的聊天。
+2. 点击侧边栏顶部的 **Select chats**(选择聊天)（对勾图标）。
 3. 逐个点击要导出的聊天。底部会出现一个条，显示已选数量，比如“3 selected”。
 4. 点击这个条上的 **Export**(导出)。
 
@@ -51,9 +51,10 @@ Marinara 会导出从你选的第一条到最后一条之间的所有消息。�
 
 这种方式用 Marinara 保存的或从 SillyTavern 导出的 `.jsonl` 文件新建一个聊天。
 
-1. 在左侧边栏点击要用的模式选项卡。导入的聊天采用当前打开的选项卡的模式，而不是文件里记录的模式。
-2. 点击 **+** 按钮旁边的 **Import**(导入) 按钮。它的标签是 **Import SillyTavern or Marinara chat JSONL**。
-3. 选择你的 `.jsonl` 文件。
+1. 在 **Chats** 侧边栏点击要用的模式选项卡。导入的聊天采用当前打开的选项卡的模式，而不是文件里记录的模式。
+2. 点击 **New**(新建) 旁边的 **Import**(导入) 按钮（下载箭头）。它的标签是 **Import SillyTavern or Marinara chat JSONL**。**Import chat**(导入聊天) 窗口会打开。
+3. 保持勾选 **Tag imported**(标记为已导入) 和 **Tag source**(标记来源)，就会给聊天添加 **Imported**(已导入) 和 **ST** 标签（Marinara 导出的聊天则添加 **Marinara**），也可以取消勾选。
+4. 把 `.jsonl` 文件拖到窗口上，或者点击 **Browse…**(浏览…) 选择文件。
 
 屏幕上会出现“Imported N messages”，Marinara 随即打开新聊天。想深入了解 SillyTavern 文件，见[从 SillyTavern 导入](../data/importing-from-sillytavern.md)。
 
@@ -71,7 +72,7 @@ Marinara 会导出从你选的第一条到最后一条之间的所有消息。�
 
 ## 让导出文件包含推理内容和私人笔记
 
-有两个设置决定隐藏的文字要不要写进导出文件。两者都是 **Settings → Advanced → Message Tools**(设置 → 高级 → 消息工具) 里的开关，默认都是关闭的。单个聊天的导出和 `.zip` 导出都受它们影响。
+有两个设置决定隐藏的文字要不要写进导出文件。两者都是 **Settings → Data → Chat Exports**(设置 → 数据 → 聊天导出) 里的开关，默认都是关闭的。单个聊天的导出和 `.zip` 导出都受它们影响。
 
 | 设置 | 开启时 |
 | --- | --- |

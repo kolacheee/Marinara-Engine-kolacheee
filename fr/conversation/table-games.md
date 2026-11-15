@@ -2,7 +2,7 @@
 
 Joue à UNO, aux échecs, au poker, au billard 8-Ball Pool, au morpion et à Pierre-Feuille-Ciseaux contre les personnages d'un chat Conversation. Marinara distribue les cartes ou prépare le plateau, applique chaque règle et fait raconter ses coups par chaque personnage assis, en restant dans son rôle. Un plateau en direct apparaît au-dessus du champ de message pendant que tu joues.
 
-Chaque jeu est un package facultatif. Installe ceux que tu veux depuis **Agents → Agent Organizer**, et redémarre Marinara si le catalogue le demande. Un jeu que tu n'as pas installé n'a pas de commande slash, n'apparaît pas dans le sélecteur de jeux, et son interrupteur **Commands** reste masqué.
+Chaque jeu est un package facultatif. Installe ceux que tu veux depuis **Library → Agents** (Bibliothèque → Agents), et redémarre Marinara si le catalogue le demande. Un jeu que tu n'as pas installé n'a pas de commande slash, n'apparaît pas dans le sélecteur de jeux, et son interrupteur **Commands** reste masqué.
 
 Règles qui s'appliquent à chaque jeu :
 
@@ -108,13 +108,13 @@ Chaque plateau a un bouton X.
 
 Terminer une partie plus tôt supprime son état et n'enregistre aucun gagnant.
 
-<a id="let-characters-start-games-on-their-own"></a>
-
 ## Laisser les personnages lancer des parties seuls
 
 Ouvre **Chat Settings → Agents → Commands**, ou utilise l'étape **Automation** quand tu crées le chat. L'interrupteur principal **Commands** contrôle toutes les actions lancées par les personnages, y compris les jeux de table, les selfies et les appels. Quand il est désactivé, les personnages ne lancent rien seuls.
 
-Chaque jeu installé a son propre interrupteur, activé sauf si tu le désactives : **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** et **Rock-Paper-Scissors**. Voir [Choisir quelles Commands un personnage peut utiliser](getting-started.md#choose-which-commands-a-character-can-use). Ces interrupteurs contrôlent seulement ce que font les personnages. La commande slash d'un jeu et la phrase "let's play" fonctionnent même quand son interrupteur est désactivé.
+Chaque jeu installé a son propre interrupteur, activé sauf si tu le désactives : **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** et **Rock-Paper-Scissors**. Voir [Choisir quelles Commands un personnage peut utiliser](getting-started.md#choose-which-commands-a-character-can-use).
+
+Ces interrupteurs contrôlent seulement ce que font les personnages. La commande slash d'un jeu et la phrase "let's play" fonctionnent même quand son interrupteur est désactivé.
 
 ## Guides associés
 

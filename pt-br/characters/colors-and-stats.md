@@ -34,7 +34,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 **Other names** (outros nomes), como apelidos, nomes completos ou títulos, por exemplo `Clark Kent, Kal-El, Mr. Kent`, fica na aba **Metadata** (metadados), abaixo de **Name** (nome). Nas mensagens dos chats de Roleplay, esses nomes recebem a mesma cor do nome principal. Ative o recurso por chat com **Color Character Names in Text** (colorir os nomes dos personagens no texto) em **Chat Settings → Characters** (configurações do chat → personagens) e **Color Persona Name in Text** (colorir o nome da persona no texto) em **Chat Settings → Persona** (configurações do chat → persona).
 
-Para mudar a transparência, use **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity** (Configurações → Aparência → Apresentação do Roleplay → Opacidade do plano de fundo das mensagens Roleplay).
+Para mudar a transparência, use **Configurações → Roleplay → Mensagens de Roleplay → Opacidade do fundo das mensagens do Roleplay**.
 
 O controle deslizante multiplica a transparência salva na cor da caixa de mensagem do seu personagem e da sua persona: uma cor com alfa próprio, como `rgba(255, 255, 255, 0.25)` ou `#FFFFFF40`, aparece com esse alfa multiplicado pelo valor do controle deslizante. Os valores de cor que você salvou continuam como estão. As cores do nome e do diálogo não são afetadas.
 
@@ -46,7 +46,7 @@ Os pontos de personalização do plano de fundo dos temas personalizados e o Car
 
 ### Onde as cores aparecem
 
-- A cor do nome pinta o nome exibido nas mensagens do chat. No caso de um personagem, ela também pinta o nome nas abas da barra lateral. No caso de uma persona, ela também pinta o nome nos seletores de persona.
+- A cor do nome colore o nome de exibição nas mensagens do chat. Para um personagem, também colore o nome na lista de chats. Para uma persona, também colore o nome nos seletores de persona.
 - A cor do diálogo pinta o texto dentro das aspas de diálogo, com aspas retas e com os outros estilos de aspas. Você também pode deixar esse texto em negrito em **Settings**. Os chats de Conversation não usam essa cor.
 - A cor da caixa de mensagem define o fundo dos balões de mensagem daquele personagem ou daquela persona nos chats de Roleplay. Os chats de Conversation e de Game não usam essa cor.
 
@@ -64,6 +64,10 @@ O personagem tem um botão liga/desliga, **Enable Roleplay Stats** (Ativar Statu
 - **Attributes** são números com nome. Personagens novos começam com STR, DEX, CON, INT, WIS e CHA, cada um em 10.
 
 Clique em **Add** (adicionar) para criar um pool ou um atributo, e no X de uma linha para removê-lo.
+
+Os chats de Roleplay e as partidas Legacy usam esses status. Um novo chat de Roleplay inicia as barras de tracker do personagem a partir das reservas, e um encontro de Roleplay usa uma reserva de HP para definir o HP máximo dele. Uma rolagem de dados de Roleplay soma um bônus do atributo que ela indica, então um atributo personalizado como Sanidade também conta. As partidas MRPG nunca montam uma ficha a partir desses status.
+
+No novo layout, as reservas, os atributos e os campos de tracker têm uma seção própria de **Status de Roleplay**, separada de **Game Mode**. Em um card que ainda não tenha esses dados, adicione a seção com **+ Status de Roleplay** na barra lateral esquerda do editor. As barras de status da persona também ficam na seção **Status de Roleplay**.
 
 ### Status da persona
 

@@ -29,7 +29,7 @@ Te komendy działają w trybach Conversation i Roleplay.
 | --- | --- |
 | `/help` | Wypisuje wszystkie komendy slash. |
 | `/send` | Wysyła wiadomość w imieniu twojej persony, nie prosząc o odpowiedź. Makra zostają wypełnione, tak jak przy **Send**. Format: `/send [message]`. |
-| `/continue` | Dopisuje tekst do ostatniej odpowiedzi AI, bez nowej wiadomości. Także `/cont`. Opcja **Settings → General → Responses → Add a new line before /continue text** (ustawienia, ogólne, odpowiedzi, nowa linia przed tekstem z /continue) decyduje o tym, czy tekst zaczyna się po pustej linii, czy w miejscu przerwania. |
+| `/continue` | Dopisuje tekst do ostatniej odpowiedzi AI, bez nowej wiadomości. Także `/cont`. Opcja **Ustawienia → Czatowanie → Odpowiedzi → Dodawaj nowy wiersz przed tekstem /continue** decyduje o tym, czy tekst zaczyna się po pustej linii, czy w miejscu przerwania. |
 | `/goto` | Przewija czat do wiadomości o podanym numerze. Także `/jump`, `/scroll`. Format: `/goto [number]`. |
 | `/hide` | Ukrywa wiadomości przed modelem w kolejnych turach. Format: `/hide [range] [name (optional)]`. |
 | `/unhide` | Przywraca wiadomości ukryte globalnie. Format: `/unhide [range]`. |

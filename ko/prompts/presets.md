@@ -21,12 +21,10 @@
 
 프리셋에 변수가 있으면 **Configure Preset Variables**(프리셋 변수 구성) 창이 열립니다. [프리셋 변수](preset-variables.md)를 참고하세요. 프리셋을 바꾸면 앞서 고른 변수 값은 지워집니다.
 
-<a id="create-a-preset"></a>
-
 ## 프리셋 만들기
 
-1. 사이드바에서 **Presets** 패널을 여세요.
-2. **New**(플러스 아이콘)를 클릭하세요. **Create Preset**(프리셋 만들기) 창이 열립니다.
+1. **Library → Presets**(라이브러리 → 프리셋)를 여세요. Library는 오른쪽에 있습니다.
+2. **New preset**(새 프리셋)을 클릭하세요. **Create Preset**(프리셋 만들기) 창이 열립니다.
 3. **Name**(이름)을 입력하세요. 필수 입력란입니다. 원하면 **Description**(설명)도 추가하세요.
 4. **Create**(만들기)를 클릭하세요. 프리셋이 **Preset Editor**에서 열립니다.
 5. **Sections**(섹션) 탭에서 프롬프트를 구성하세요.
@@ -36,9 +34,22 @@
 
 프리셋을 내보내려면 위쪽 막대에서 툴팁이 **Export preset**(프리셋 내보내기)인 위쪽 화살표 아이콘을 클릭하세요. 저장하지 않은 편집 내용이 있으면 Marinara가 먼저 저장하라고 요청합니다. 프리셋을 삭제하려면 휴지통 아이콘을 클릭하세요.
 
-## Presets 패널
+## Presets 페이지
 
-패널에는 **Presets**(프리셋), **Regexes**(정규식), **Functions**(기능) 탭이 있습니다. 각 탭 상단에는 같은 버튼 줄과 검색창, **New Folder**(새 폴더)가 있습니다. **Presets** 탭에서 **Create preset**으로 만들고, **Import preset**으로 `.json` 파일을 불러오며, **Select presets**로 여러 프리셋을 한 번에 내보내거나 삭제하세요. **Regexes** 탭에는 [정규식 스크립트](../extending/regex-scripts.md#manage-your-scripts), **Functions** 탭에는 [사용자 지정 도구](../extending/custom-tools.md)가 있습니다.
+**Library → Presets**에는 프리셋이 **Description**, **Sections**, **Author**(작성자), **Default**(기본값), **Updated**(업데이트됨) 열이 있는 표로 나열됩니다. 위쪽에는 **Import**(가져오기)(`.json` 파일 불러오기)와 **New preset**이 있습니다. **All**(전체) / **Defaults**(기본값)로 목록을 좁히고, 검색 옆의 **Tags**(태그)로 고른 태그가 붙은 프리셋만 볼 수 있습니다(가져온 프리셋에는 **Imported**(가져옴)와 **ST** 같은 출처 태그가 붙습니다). **List**(목록) / **Gallery**(갤러리)로 보기를 전환하며, 정렬 메뉴에서는 **Recently edited**(최근 편집순), **A to Z**(오름차순), **Z to A**(내림차순), **My order**(내 순서)를 고를 수 있습니다. 프리셋을 클릭하면 열립니다.
+
+프리셋을 정리하는 방법은 다음과 같습니다.
+
+- 행 끝의 **⋯** 버튼을 클릭하거나 행을 오른쪽 클릭하면 **Duplicate**(복제), **Move to folder**(폴더로 이동), **Export**(내보내기), **Select**(선택), **Delete**(삭제)가 나타납니다. **Duplicate**는 수정 가능한 사본을 만들어 엽니다. 기본 제공 프리셋을 사용자 지정하려면 이 방법을 쓰세요. 기본 프리셋은 삭제할 수 없습니다.
+- 행을 다른 행 위나 아래로 끌어 순서를 직접 정하세요. 정렬 메뉴가 **My order**로 바뀝니다.
+- **New folder**(새 폴더)(제목 옆의 폴더 아이콘)로 프리셋을 묶습니다. 프리셋을 폴더 위로 끌어다 놓거나 **Move to folder**를 쓰세요.
+- **Select**(제목 옆의 체크 아이콘)로 프리셋을 여러 개 고른 다음, 아래쪽 막대에서 **Move to folder**, **Export**(`marinara-presets.zip` 하나로 내보내기), **Delete**를 사용할 수 있습니다.
+
+정규식 스크립트에는 [라이브러리 → 정규식 스크립트](../extending/regex-scripts.md)라는 별도 페이지가 있고, 사용자 지정 도구에도 [라이브러리 → 사용자 지정 도구](../extending/custom-tools.md)라는 별도 페이지가 있습니다.
+
+## 클래식 레이아웃의 Presets 패널
+
+**Presets** 탭에는 **Prompts**와 **Functions**(기능)가 있습니다. **Create preset**으로 만들고, **Import preset**으로 `.json` 파일을 불러오며, **Select presets**로 여러 프리셋을 한 번에 내보내거나 삭제하세요. **Regexes**(정규식) 탭에서는 스크립트를 폴더로 정리하거나 여러 개를 한 번에 켜고 끌 수 있습니다. [정규식 스크립트](../extending/regex-scripts.md#manage-your-scripts)를 참고하세요.
 
 - **Search presets**는 목록을 걸러 냅니다.
 - 정렬 메뉴에서는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest** 중에서 고릅니다. **Manual order**에서는 행을 끌거나, 포커스가 있는 행에서 <kbd>Alt</kbd>+<kbd>Up</kbd> 또는 <kbd>Alt</kbd>+<kbd>Down</kbd>을 누르세요. 터치스크린에서는 행을 길게 눌러 집어 드세요.
@@ -62,6 +73,7 @@
 - **Description**은 짧은 요약입니다.
 - **Wrap Format**(감싸기 형식)은 섹션을 어떤 형식으로 만들지 정합니다([래핑 형식](#wrap-formats) 참고).
 - **Author**(작성자)는 선택 사항인 제작자 이름으로, 프리셋을 공유할 때 쓸모가 있습니다.
+- **Tags**는 Presets 페이지의 **Tags** 필터에 쓰도록 프리셋을 분류합니다. 태그를 입력하고 Enter를 누르거나, 태그의 **×**를 클릭해 제거하세요.
 
 읽기 전용 카드 두 개에 **Sections**와 **Groups**(그룹) 개수가 표시됩니다.
 
@@ -70,6 +82,7 @@
 - **Conversation Mode**(대화 모드)는 이 프리셋의 Conversation 프롬프트를 넣는 텍스트 상자입니다. 비워 두면 내장 프롬프트를 씁니다.
 - **Roleplay Mode**(롤플레이 모드)는 여기서 편집할 수 없습니다. Roleplay는 **Sections**에서 조립한 프롬프트를 씁니다.
 - **Game Mode**(게임 모드)는 이 프리셋의 Game 프롬프트를 넣는 텍스트 상자입니다. 비워 두면 내장 프롬프트를 씁니다.
+- **Game story settings**(게임 이야기 설정)는 Game Mode의 이야기 스타일, 폭력, 콘텐츠 제한을 정합니다. **Bring story settings to games that use this preset**(이 프리셋을 사용하는 게임에 이야기 설정 적용)을 켜세요. 게임에 이 프리셋을 고르면 스타일과 폭력이 설정되고 게임 자체의 콘텐츠 제한에 이 제한이 추가됩니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#content-and-story-style)을 참고하세요.
 
 기본 제공 **Marinara's Universal Preset**(Marinara 범용 프리셋)은 프롬프트 텍스트는 제공하지만 생성 파라미터는 제공하지 않습니다. 예전에 저장된 샘플링, 추론, 서식, 토큰 설정은 무시되고, 대신 계정 설정, 채팅별 덮어쓰기, 앱 기본값이 적용됩니다. 사용자 지정하려면 수정 가능한 복사본을 만드세요.
 
@@ -137,8 +150,6 @@
 - **Ordered (in sequence)**(순서대로)는 섹션을 목록에 놓인 자리에 그대로 넣습니다. 보통은 이 방식을 씁니다.
 - **Depth (from end of chat)**(깊이, 채팅 끝 기준)은 **Depth**(깊이) 숫자를 써서, 채팅 끝에서 지정한 메시지 수만큼 위쪽에 섹션을 넣습니다. 깊이가 0이면 마지막 메시지 뒤에 들어갑니다. 모델이 최신 메시지 가까이에서 봐야 하는 당부에 쓰세요.
 
-<a id="wrap-formats"></a>
-
 ## 래핑 형식
 
 **Overview** 탭의 **Wrap Format**은 각 섹션을 어떻게 감쌀지 정합니다.
@@ -152,8 +163,6 @@
 대부분의 모델에는 XML이 잘 맞습니다. 태그가 없을 때 모델이 더 잘 답하는 경우에만 다른 형식을 시도해 보세요.
 
 **Prompt Block** 하나만 태그나 제목 없이 보내려면 그 블록을 펼치고 **Send without wrapper**(래퍼 없이 전송)를 켜세요. 그룹의 태그가 여전히 블록을 감쌀 수 있으므로, 아무것도 감싸지 않은 상태로 보내려면 블록을 그룹에서 빼세요. 마커는 항상 래퍼를 유지하며, 형식이 **NONE**이면 이 스위치는 표시되지 않습니다.
-
-<a id="conversation-and-game-chats"></a>
 
 ## Conversation 채팅과 Game 채팅
 
@@ -170,9 +179,7 @@
 
 텍스트 상자에는 사용 중인 프롬프트가 표시됩니다. 내용을 고치면 채팅 전용 사본이 만들어집니다. 입력한 글이 프리셋이나 기본값과 완전히 같으면 Marinara는 사용자 지정이 아닌 것으로 처리합니다. 사용자 지정 편집본이 있는 동안에는 툴팁이 **Reset to default prompt**(기본 프롬프트로 초기화)인 초기화 아이콘이 나타납니다.
 
-Game 채팅에는 컨트롤이 두 개 더 있습니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다.
-
-<a id="decision-blocks-and-prompt-caching"></a>
+Game 채팅에는 컨트롤이 더 있습니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다. **Rating guidelines**(등급 지침), **Story style**(이야기 스타일), **Violence**(폭력), **Content boundaries**(콘텐츠 제한)는 게임의 콘텐츠 설정입니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#content-and-story-style)을 참고하세요.
 
 ## 판정 블록과 프롬프트 캐시
 

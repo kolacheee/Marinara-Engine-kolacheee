@@ -2,7 +2,7 @@
 
 このページは、Marinara Engineが接続できる主なサービスのリファレンスです。サービスごとに、APIキーの入手先、デフォルトのアドレス、知っておきたいクセをまとめています。アカウントを順を追って追加する方法は、先に[AIプロバイダーへの接続](connecting-to-a-provider.md)を読んでください。
 
-サービスは、**Add account**(アカウントの追加)ウィンドウで、用途ごとのセクションから選びます。セクションは**Chat**(チャット)、**Images & video**(画像と動画)、**Voice**(音声)、**Decisions**(判定)です。タイルには、以下に挙げる名前が表示されます。アドレスとは、Marinaraがリクエストを送る宛先のWebアドレスです。アカウントエディターでは**Address**(アドレス)、モデルエディターでは**Base URL**(ベースURL)と呼ばれます。既知のサービスなら、Marinaraが自動で入力します。変更するのは、プロキシや自分で動かしているサーバーを使う場合だけにしてください。
+サービスは、**Add connection**(接続を追加)の後、生成するものに応じた**Text**(テキスト)、**Image**(画像)、**Video**(動画)、**Voice**(音声)、**Decision**(判定)のタブで選びます。検索欄に入力すると、すべてのタブを検索します。一覧には、以下に挙げる名前が表示されます。アドレスとは、Marinaraがリクエストを送る宛先のWebアドレスです。アカウントエディターでは**Address**(アドレス)、モデルエディターでは**Base URL**(ベースURL)と呼ばれます。既知のサービスなら、Marinaraが自動で入力します。変更するのは、プロキシや自分で動かしているサーバーを使う場合だけにしてください。
 
 モデルは頻繁に入れ替わるため、このページには一覧を載せていません。接続すると、選択画面にモデルの一覧が読み込まれます。読み込み直すには、選択画面で**Refresh model list**(モデル一覧を更新)をクリックします。
 
@@ -134,7 +134,7 @@ DeepSeekには、**OpenAI**にDeepSeekのアドレスを指定するのではな
 
 ### OpenAI-compatible
 
-**OpenAI-compatible**は、Ollama、LM Studio、KoboldCppなど、OpenAIのリクエスト形式を受け付けるサーバーやプロキシに接続します。**Add account**(アカウントの追加)ウィンドウでは、**OpenAI-compatible address**(OpenAI互換のアドレス)として表示されます。ほとんどのローカルサーバーでは、キーは空のままでかまいません。アドレスは自分で入力します。[ローカルモデルやセルフホストモデルへの接続](local-self-hosted.md)を参照してください。Marinaraが自分で動かす小さなモデルについては、[内蔵モデルのセットアップ](local-model.md)を参照してください。
+**OpenAI-compatible**は、Ollama、LM Studio、KoboldCppなど、OpenAIのリクエスト形式を受け付けるサーバーやプロキシに接続します。**Add connection**の一覧では、**OpenAI-compatible address**(OpenAI互換のアドレス)として表示されます。ほとんどのローカルサーバーでは、キーは空のままでかまいません。アドレスは自分で入力します。[ローカルモデルやセルフホストモデルへの接続](local-self-hosted.md)を参照してください。Marinaraが自分で動かす小さなモデルについては、[内蔵モデルのセットアップ](local-model.md)を参照してください。
 
 ## 画像と動画
 
@@ -146,7 +146,7 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI、Googleの画像と動画�
 
 ## Decision
 
-**Decisions**(判定)の下にあるタイルは、**TypeSafe**(デフォルトのアドレスは`https://api.typesafe.ai`)、**Own decision server**(自分の判定サーバー)、**Built-in model (decisions)**(判定用の内蔵モデル)です。OpenAIのチャット形式を使うチャットサービスも判定に使えますが、対数確率(考えられる各回答のスコア)を返すモデルに限られます。Decisionモデルは、チャットについてのはい・いいえの質問に答えます。[Decisionモデル](decision-models.md)を参照してください。
+**Decision**(判定)タブのタイルは、**TypeSafe**(デフォルトのアドレスは`https://api.typesafe.ai`)、**Own decision server**(自分の判定サーバー)、**Built-in model (decisions)**(判定用の内蔵モデル)です。OpenAIのチャット形式を使うチャットサービスも判定に使えますが、対数確率(考えられる各回答のスコア)を返すモデルに限られます。Decisionモデルは、チャットについてのはい・いいえの質問に答えます。[Decisionモデル](decision-models.md)を参照してください。
 
 ## Audio
 
@@ -161,13 +161,13 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI、Googleの画像と動画�
 
 ソースごとに、デフォルトのアドレスとモデルが入力されます。**Default voice**(デフォルトの声)は、キャラクターごとの声など、より細かい指定がないときに使われる声です。**Request timeout (seconds)**(リクエストのタイムアウト、秒単位)は、Marinaraが読み上げる1行を待つ時間です。音声サーバーが遅い場合は値を大きくしてください。
 
-Marinaraがデフォルトで使う読み上げ用のアカウントを選ぶには、**Jobs**(役割)ボックスの**Voice (Text to Speech)**(音声合成)の行をクリックします。そのアカウントでメッセージを読み上げるには、**Text to Speech**(音声合成)カードの**Source**(音声の提供元)でそのアカウントを選びます。[Text to Speech (TTS)の設定](../media/tts-setup.md)と[音声の接続を使う](../media/tts-setup.md#use-an-audio-connection)を参照してください。
+Marinaraがデフォルトで使う読み上げ用のアカウントを選ぶには、**Defaults**(用途)ボックスの**Voice (Text to Speech)**(音声合成)の行をクリックします。そのアカウントでメッセージを読み上げるには、**Text to Speech**(音声合成)カードの**Source**(音声の提供元)でそのアカウントを選びます。[Text to Speech (TTS)の設定](../media/tts-setup.md)と[音声の接続を使う](../media/tts-setup.md#use-a-voice-model-from-an-account)を参照してください。
 
 <a id="music--sound-effects"></a>
 
 ## Music & Sound Effects
 
-この種類のアカウントは、読み上げとは別に、インストゥルメンタルの音楽と効果音を作ります。**Add account**(アカウントの追加)ウィンドウには、このアカウント用のタイルはありません。これらのアカウントは、アップグレード(下記を参照)かインポートによって作られます。編集は**Edit model**(モデルの編集)で行い、そこでサービスを選んで、**Music generation**(音楽生成)、**Sound-effect generation**(効果音生成)、またはその両方をオンにします。Gameのセットアップでは**Music & Sound Effects account**(音楽と効果音のアカウント)でアカウントを指定します。デフォルトの選択肢は**Use the default Music & Sound Effects account**(デフォルトの音楽と効果音のアカウントを使用)です。
+この種類のアカウントは、読み上げとは別に、インストゥルメンタルの音楽と効果音を作ります。**Add connection**の一覧には、このアカウント用の項目はありません。これらのアカウントは、アップグレード(下記を参照)かインポートによって作られます。編集は**Edit model**(モデルの編集)で行い、そこでサービスを選んで、**Music generation**(音楽生成)、**Sound-effect generation**(効果音生成)、またはその両方をオンにします。Gameのセットアップでは**Music & Sound Effects account**(音楽と効果音のアカウント)でアカウントを指定します。デフォルトの選択肢は**Use the default Music & Sound Effects account**(デフォルトの音楽と効果音のアカウントを使用)です。
 
 サービスは次のとおりです。
 
@@ -193,7 +193,7 @@ Marinaraがデフォルトで使う読み上げ用のアカウントを選ぶに
 
 **Anthropic**、**Claude (Subscription)**、**OpenAI (ChatGPT)**、**Grok CLI (Subscription)**は埋め込みを作れません。これらを使う場合は、**Embedding provider**(埋め込み用のプロバイダー)ドロップダウンで、OpenAI互換のアカウント、**Google Gemini**、**Built-in model**(内蔵モデル)など、ほかのアカウントを借ります。
 
-独自の埋め込み設定がないすべてのアカウントで1つの埋め込みの生成元を使うには、**Jobs**(役割)ボックスの**Embeddings**(埋め込み)の行をクリックします。**Marinara's own search**(Marinara独自の検索)を選ぶと、内蔵の埋め込みモデルを使い続けます。アカウント自身の埋め込みモデルや**Embedding provider**の設定は、引き続き優先されます。変更した後は、ロアブックと記憶をベクトル化し直してください。[ロアブックのセマンティック検索](../lorebooks/semantic-search.md)を参照してください。
+独自の埋め込み設定がないすべてのアカウントで1つの埋め込みの生成元を使うには、**Defaults**(用途)ボックスの**Embeddings**(埋め込み)の行をクリックします。**Marinara's own search**(Marinara独自の検索)を選ぶと、内蔵の埋め込みモデルを使い続けます。アカウント自身の埋め込みモデルや**Embedding provider**の設定は、引き続き優先されます。変更した後は、ロアブックと記憶をベクトル化し直してください。[ロアブックのセマンティック検索](../lorebooks/semantic-search.md)を参照してください。
 
 ## タイムアウト
 

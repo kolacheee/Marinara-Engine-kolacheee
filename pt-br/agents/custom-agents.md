@@ -1,22 +1,22 @@
 # Como criar agentes personalizados
 
-Um agente personalizado é um ajudante que você mesmo escreve: as instruções são suas, assim como a decisão de quando ele roda e do que ele pode alterar. Crie um quando nenhum [agente para download](built-in-agents.md) fizer o que você quer. Se um agente instalado chegar perto, passe o mouse sobre o cartão dele no painel **Agents** (agentes) e clique em **Copy agent** (copiar agente) para ganhar uma cópia editável.
+Um agente personalizado é um ajudante que você mesmo escreve: as instruções são suas, assim como a decisão de quando ele roda e do que ele pode alterar. Crie um quando nenhum [agente para download](built-in-agents.md) fizer o que você quer. Se um agente instalado chegar perto, passe o mouse sobre o cartão dele na página **Agentes** e clique em **Copy agent** (copiar agente) para ganhar uma cópia editável.
 
 Antes de começar: leia [Agentes: ajudantes de IA para os seus chats](agents-overview.md). Criar um agente não faz ele rodar. Depois, você adiciona o agente a um chat. Os agentes personalizados funcionam em todos os modos de chat.
 
 ## Como criar um agente personalizado
 
-1. Abra o painel **Agents**.
-2. Clique em **New** (o ícone de mais), perto do topo. O editor de agentes abre em tela cheia.
+1. Abra **Biblioteca → Agentes**.
+2. Clique em **Novo agente** no canto superior direito. O editor de agentes abre em tela cheia.
 3. Digite um nome no campo de título, por exemplo `Weather Reporter`.
 4. Preencha **Description** (descrição) e **Author** (autor).
 5. Escolha uma **Pipeline Phase** (veja [Pipeline Phase](#pipeline-phase)).
 6. Ative os poderes de que ele precisa em **Custom Agent Abilities**.
 7. Escolha um **Result Type** que combine com o que o agente produz. Se estiver em dúvida, escolha **Context Injection**. Ele não exige nenhuma habilidade nem um formato de saída rígido.
 8. Escreva as instruções do agente em **Prompt Template** (modelo de prompt).
-9. Clique em **Save** na barra superior. Um selo verde **Saved** aparece.
+9. Clique em **Salvar** no topo do editor ou pressione <kbd>Ctrl</kbd>+<kbd>S</kbd>.
 
-O agente passa a aparecer na seção **Custom Agents** do painel **Agents**. Para usar o agente, abra um chat, vá em **Chat Settings** (configurações do chat), ative **Enable Agents** e adicione o agente pela seção **Custom Agents**.
+O agente passa a aparecer em **Seus agentes** na página **Agentes**. Para usar o agente, abra um chat, vá em **Chat Settings** (configurações do chat), ative **Enable Agents** e adicione o agente pela seção **Custom Agents**.
 
 ## Pipeline Phase
 
@@ -160,23 +160,23 @@ Marinara coloca o `editedText` no lugar da resposta. As anotações de `changes`
 
 ## Como importar e exportar agentes
 
-Para exportar um agente, clique em **Export agent** (o ícone de upload) na barra superior do editor. O arquivo guarda o prompt e as configurações do agente, nunca definições de ferramentas personalizadas. Para exportar vários, use **Select agents** no painel **Agents**, escolha os agentes e exporte.
+Para exportar um agente, clique em **Exportar agente** (o ícone de upload) na barra superior do editor ou escolha **Exportar** no menu **⋯** dele em **Seus agentes**, em **Biblioteca → Agentes**. O arquivo guarda o prompt e as configurações do agente, nunca definições de ferramentas personalizadas. Para exportar vários de uma vez, clique em **Selecionar** (o ícone de marca de seleção ao lado do título **Agentes**), escolha os agentes em **Seus agentes** e clique em **Exportar** na barra inferior. O mesmo menu **⋯** também tem **Duplicar** e **Excluir**.
 
 As importações externas vêm bloqueadas por padrão.
 
-1. Abra **Settings → Advanced → Danger Zone** (Configurações → Avançado → Zona de perigo) e ative **Allow custom Agent imports**. Nenhuma alteração no `.env` é necessária.
-2. No painel **Agents**, clique em **Import agents** e escolha arquivos de agente ou uma pasta.
+1. Abra **Configurações → Avançado → Segurança** e ative **Allow custom Agent imports**. Nenhuma alteração no `.env` é necessária.
+2. Abra **Biblioteca → Agentes**, clique em **Importar agentes** (o ícone de download ao lado de **Kits iniciais**), escolha **Escolher arquivos** ou **Escolher a pasta** e selecione os arquivos de agente.
 3. Revise a lista de permissões que Marinara mostra. Aprove só o que o agente precisa. As capacidades não marcadas continuam bloqueadas.
 
-Esse bloqueio afeta apenas agentes vindos de arquivos, pastas ou repositórios personalizados. Os agentes que você cria e os agentes oficiais do **Agent Organizer** (organizador de agentes) funcionam normalmente. Cada arquivo importado recebe uma nova identidade personalizada, então não consegue substituir um agente oficial.
+Esse bloqueio afeta apenas agentes vindos de arquivos, pastas ou repositórios personalizados. Os agentes que você cria e os agentes oficiais da **Biblioteca → Agentes** funcionam normalmente. Cada arquivo importado recebe uma nova identidade personalizada, então não consegue substituir um agente oficial.
 
-Por segurança, Marinara ignora funções embutidas no pacote, limpa as ferramentas selecionadas, higieniza o CSS temporário e confere as capacidades aprovadas antes que um agente importado possa alterar mensagens, trackers, lorebooks, planos de fundo, sprites, mídia, dispositivos hápticos, dados de About Me, prompts ou imagens. Importe funções confiáveis separadamente, revise essas funções e anexe-as você mesmo ao agente. Desligar o botão da **Danger Zone** faz os agentes importados pararem de rodar.
+Por segurança, Marinara ignora funções embutidas no pacote, limpa as ferramentas selecionadas, higieniza o CSS temporário e confere as capacidades aprovadas antes que um agente importado possa alterar mensagens, trackers, lorebooks, planos de fundo, sprites, mídia, dispositivos hápticos, dados de About Me, prompts ou imagens. Importe funções confiáveis separadamente, revise essas funções e anexe-as você mesmo ao agente. Desativar **Permitir importações de agentes personalizados** faz os agentes importados pararem de rodar.
 
 <a id="activation-questions"></a>
 
 ## Perguntas de ativação
 
-Uma pergunta de ativação pergunta se a cena recente precisa do seu agente. Ela reconhece paráfrases que as palavras-chave deixam passar. Ela exige um **Decision model** (modelo de decisão), um modelo pequeno que responde a perguntas de sim ou não. Escolha um no painel Connections. Veja [Modelos de decisão](../connections/decision-models.md). Com **Decision model** em **None** (nenhum), o padrão, os campos de pergunta ficam desativados, e um agente com pergunta roda como se não tivesse nenhuma.
+Uma pergunta de ativação pergunta se a cena recente precisa do seu agente. Ela reconhece paráfrases que as palavras-chave deixam passar. Ela exige um **Decision model** (modelo de decisão), um modelo pequeno que responde a perguntas de sim ou não. Escolha um na caixa **Padrões** da página Conexões. Veja [Modelos de decisão](../connections/decision-models.md). Com **Decision model** em **None** (nenhum), o padrão, os campos de pergunta ficam desativados, e um agente com pergunta roda como se não tivesse nenhuma.
 
 1. Abra o agente personalizado.
 2. Digite uma **Question** (pergunta) de até 500 caracteres. As macros `{{user}}` e `{{char}}` funcionam nela.
@@ -193,7 +193,7 @@ Como funciona:
 - Tempo esgotado, modelo indisponível ou resposta inválida deixam o agente rodar normalmente. O tempo limite depende do tipo de modelo e de o modelo precisar pensar antes. Veja [Tempos limite](../connections/decision-models.md#time-limits).
 - Agentes importados com pergunta de ativação ou declarações de decisão mostram um aviso com link para o guia de modelos de decisão. Sem modelo de decisão, o agente roda sempre que as palavras-chave e a **Trigger Cadence** permitirem, e as declarações no prompt valem não.
 
-As perguntas de ativação valem só para agentes personalizados.
+As perguntas de ativação valem só para agentes personalizados. O Illustrator integrado tem suas próprias verificações fixas de novos lugares e clima; veja [Verificações com modelo de decisão](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

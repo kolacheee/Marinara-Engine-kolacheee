@@ -57,7 +57,7 @@ http://127.0.0.1:7860
 
 ## Marinaraの起動と停止
 
-アプリを使っている場合は、アプリを開き、サーバーが停止していれば**Install / Start Marinara**(Marinaraのインストール/起動)をタップします。アプリとブラウザーを切り替えるには、ランチャーの**Open in browser**(ブラウザーで開く)を使ってから、**Retry connection**(接続を再試行)を使います。アプリ内からは、**Settings → General → App Behavior → Open Android launcher (app or browser)**(設定 → 一般 → アプリの動作 → Androidランチャーを開く(アプリまたはブラウザー))でランチャーに戻れます。
+アプリを使っている場合は、アプリを開き、サーバーが停止していれば**Install / Start Marinara**(Marinaraのインストール/起動)をタップします。アプリとブラウザーを切り替えるには、ランチャーの**Open in browser**(ブラウザーで開く)を使ってから、**Retry connection**(接続を再試行)を使います。アプリ内からは、**Settings → Appearance → Layout → Open Android launcher (app or browser)**(設定 → 外観 → レイアウト → Androidランチャーを開く(アプリまたはブラウザー))でランチャーに戻れます。
 
 手動でインストールした場合は、Termuxを開いて次を実行します。
 

@@ -10,8 +10,8 @@ Game Mode 和 **Animate illustration**(让插图动起来) 始终从图片开始
 
 ## 设置视频服务
 
-1. 点击顶栏里的 **Connections**(连接)，再点击 **Add**(添加)。**Add account**(添加账号) 窗口随即打开。
-2. 在 **Images & video**(图像与视频) 部分选择一个服务。可用的服务列在下面。
+1. 打开 **Library → Connections**(资料库 → 连接)，点击 **Add connection**(添加连接)。服务列表随即打开。
+2. 打开 **Video**(视频) 选项卡，选择一个服务。可用的服务列在下面。
 3. 云端服务需要粘贴 API 密钥。本地 ComfyUI 不需要。SwarmUI 只有在你的服务器要求账号时才需要 Swarm Auth Token。
 4. 点击 **Connect**(连接)，然后选一个模型或保留默认值。NanoGPT 没有默认值，所以要从它的列表里选一个。ComfyUI 则不要设置模型，除非工作流用到了 `%model%`。SwarmUI 的模型可填可不填。
 5. 打开视频模型，点击 **Test video**(测试视频) 检查它。
@@ -59,8 +59,6 @@ Game Mode 和 **Animate illustration**(让插图动起来) 始终从图片开始
 
 Gemini Omni 没有分辨率字段，时长写进提示词文本里。Google Veo 只要给参考图做动画，就一律使用 8 秒，因为它需要 8 秒来衔接首帧和尾帧。
 
-<a id="seedance-reference-frames"></a>
-
 ### Seedance 参考帧
 
 Seedance 必须通过公网链接获取你的参考图。本地的 Marinara 服务器没有公网链接，所以纯本地环境要多做一步。
@@ -83,7 +81,7 @@ Gallery 顶部操作行里的 **Video** 会为最新回复生成一段短片，�
 - **头像**：短片从你的描述中最先点名的人开始，也包括你的用户角色。只要写出其他人不共用的一部分名字，并以大写字母开头即可（例如用“Lena”指代“Dr. Lena Kowalski”）。没有点名任何人时，从聊天的角色开始。
 - **检查**：开启 **Expose media prompts before sending**(发送前显示媒体提示词) 后，可以先检查和修改短片的提示词。
 - **上下文**：AI 读取的近期消息数量与 Illustrator 生成图片时相同（Illustrator 的 **Context Size**(上下文大小)，在它设置界面的 **Agent Budget**(智能体预算) 下）。
-- **无图片时**：短片从头像开始或不使用图片时，AI 会自己描述场景。它的指令是 **Settings → Generations → Video Generation Prompt Overrides**(设置 → 生成 → 视频生成提示词覆盖) 下的 **Roleplay Clip Director**(Roleplay 短片导演)。
+- **无图片时**：短片从头像开始或不使用图片时，AI 会自己描述场景。它的指令是 **Settings → Media → Prompt Overrides**(设置 → 媒体 → 提示词覆盖) 下的 **Roleplay Clip Director**(Roleplay 短片导演)。
 
 生成好的短片会直接在最新回复下方播放，即使图片来自更早的回复也是如此。短片不会自己在悬浮窗口里打开。想让短片悬浮显示，就在 **Videos** 下使用 **Pin video to chat**(把视频固定到聊天)。点短片的 **X** 按钮可以把它从消息里移除，它仍会留在 Gallery 里。
 
@@ -91,7 +89,7 @@ Gallery 顶部操作行里的 **Video** 会为最新回复生成一段短片，�
 
 1. 确认 **Images** 下至少有一张图片。用 **Illustrate**(生成插图) 生成，或上传一张。
 2. 点击 Gallery 顶部操作行里的 **Video**。
-3. 如果在 **Settings → Generations → Overall Generations**(设置 → 生成 → 总体生成) 下开启了 **Expose media prompts before sending**，先查看或修改提示词，再点击 **Generate**(生成)。取消不会发出请求。
+3. 如果在 **Settings → Media → Generation Defaults**(设置 → 媒体 → 生成默认设置) 下开启了 **Expose media prompts before sending**，先查看或修改提示词，再点击 **Generate**(生成)。取消不会发出请求。
 4. 按钮会显示 **Generating...**，同时有一条横幅提示视频正在生成。
 5. 完成后，短片会出现在 **Videos** 下。
 
@@ -103,7 +101,7 @@ Gallery 顶部操作行里的 **Video** 会为最新回复生成一段短片，�
 2. 把鼠标移到图片上。
 3. 点击 **Animate illustration** 按钮，也就是胶片图标。
 
-开启提示词检查后，会弹出一个窗口，显示为这张图片编译出的确切提示词、时长、宽高比和分辨率。你的修改只对这一段短片生效。在 Roleplay 中，规划动作的 AI 读取的近期消息数量与 Illustrator 相同，截止到图片所属的那条回复。它的可复用指令是 **Settings → Generations → Video Generation Prompt Overrides** 下的 **Roleplay Gallery Animation Director**(Roleplay 图库动画导演)。
+开启提示词检查后，会弹出一个窗口，显示为这张图片编译出的确切提示词、时长、宽高比和分辨率。你的修改只对这一段短片生效。在 Roleplay 中，规划动作的 AI 读取的近期消息数量与 Illustrator 相同，截止到图片所属的那条回复。它的可复用指令是 **Settings → Media → Prompt Overrides** 下的 **Roleplay Gallery Animation Director**(Roleplay 图库动画导演)。
 
 **Videos** 下的每段短片都能就地播放，并显示时长和模型名。可以使用 **Pin video to chat** 或 **Download scene video**(下载场景视频)。还没有短片时，选项卡显示 **No videos yet**。
 
@@ -169,7 +167,7 @@ Game Mode 还有第二个生成场景视频的地方：**Game Assets**(游戏素
 
 ## 视频生成设置
 
-有些视频默认值是应用全局的。打开 **Settings → Generations**(设置 → 生成)，找到 **Video Generation** 一节，它的说明是“Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls”。
+有些视频默认值是应用全局的。打开 **Settings → Media**(设置 → 媒体)，找到 **Video Generation** 一节，它的说明是“Set default clip lengths and edit reusable video prompts for Game, Gallery, and Calls”。
 
 - **Scene video fallback length**(场景视频备用时长)：只在所选视频模型没有自己的时长时使用。默认 10 秒，范围是 1 到 60。
 - **Video Generation Prompt Overrides**：编辑可复用的视频提示词模板。**Roleplay Gallery Animation Director** 设置在生成 Roleplay Gallery 短片之前发给 Prompt Model 的指令。其中的 `${durationSeconds}` 变量会变成短片时长。

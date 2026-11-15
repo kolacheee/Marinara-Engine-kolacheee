@@ -9,8 +9,8 @@ Antes de começar: você precisa de uma chave de API (um código secreto, pareci
 1. Instale Marinara Engine e abra o aplicativo no navegador. Escolha a sua plataforma em [Instalação do Marinara Engine](../INSTALLATION.md).
 2. Adicione uma conta. Uma conta é uma chave de API de um serviço de IA. Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md).
 3. Escolha os modelos que a conta deve usar. O mesmo guia mostra como.
-4. Crie ou importe um personagem. Abra o painel **Characters** (personagens) e clique em **New** para abrir a janela **Create Character**, ou clique em **Import** para trazer um card de um arquivo. Veja [Criando e editando personagens](../characters/creating-and-editing-characters.md).
-5. Abra a barra lateral de chats com o botão da barra lateral. As abas dela mostram **CONVO**, **RP** e **GM**. Escolha uma e clique no botão **+**. Ele se chama **New Conversation**, **New Roleplay** ou **New Game**, de acordo com a aba.
+4. Crie ou importe um personagem. Abra **Library → Characters** (Biblioteca → Personagens; clique em **Library** no canto superior direito) e clique em **New character** (novo personagem), ou clique em **Import** para trazer um card de um arquivo. Veja [Criando e editando personagens](../characters/creating-and-editing-characters.md).
+5. Clique em **Conversation**, **Roleplay** ou **Game** na tela inicial. Ou abra os seus chats: clique em **Library** no canto superior direito, escolha **Chats** no topo da barra lateral, escolha a aba **Convo**, **Roleplay** ou **Game** e clique em **New**.
 6. Siga a janela de configuração que se abre e clique em **Create Chat** (criar chat).
 
 O que você vê: o chat novo se abre, e você pode escrever a sua primeira mensagem.
@@ -21,15 +21,22 @@ Marinara não inclui uma IA online. A maioria das pessoas se conecta a um servi�
 
 Na primeira vez que você abre Marinara, começa um tour guiado curto. Veja [O tutorial da primeira vez](tutorial.md). Travou em algum passo? Pergunte à Professor Mari, a assistente integrada: [Professor Mari, a assistente dentro do aplicativo](professor-mari.md).
 
+## Como se orientar
+
+Marinara tem dois lugares fixos, que ficam na mesma posição seja qual for o tema que você use:
+
+- **A barra superior.** À esquerda, **Home** (Tela inicial) e uma aba para cada chat, personagem ou página que você abre. À direita, o botão de busca (ou <kbd>Ctrl</kbd>+<kbd>K</kbd>, <kbd>⌘</kbd>+<kbd>K</kbd> no Mac) encontra ou abre qualquer coisa: um chat, um personagem, uma configuração, um guia ou uma pergunta para a Professor Mari. Ao lado ficam **Chat settings** (Configurações do chat) enquanto um chat está aberto, **Docs** (Documentação) para estes guias e **Library**, que mostra ou esconde a barra lateral.
+- **A barra lateral** à direita, com um seletor **Chats | Library** no topo. **Chats** lista os seus chats nas abas **Convo**, **Roleplay** e **Game** (veja [Como gerenciar a lista de chats](../chats/managing-chats.md)). **Library** lista **Characters**, **Personas**, **Lorebooks**, **Presets**, **Regex scripts** (scripts Regex), **Connections**, **Agents** e **Custom tools** (ferramentas personalizadas), seguidos de **Settings** e **Extensions**. Escolha um item para abrir a página dele no meio.
+
+No computador, você também pode mostrar duas páginas lado a lado. Veja [Visualização dividida](tabs-and-drafts.md#split-view-two-pages-at-once).
+
+No celular ou no tablet, **Home** fica no canto superior esquerdo e **Library** (o botão de pilha) no canto superior direito. Library desliza a barra lateral sobre a página, com o mesmo seletor **Chats | Library**; a visualização Library tem **Settings**, **Docs** e **All Tabs** (todas as abas) na parte de baixo. Toque no título na barra superior para buscar e no botão com um número para ver as abas abertas. Veja [Abas, visualização dividida e alterações não salvas](tabs-and-drafts.md) e [Gestos de toque](../chats/messages.md#touch-gestures).
+
 ## A tela inicial em resumo
 
-A tela inicial aparece quando nenhum chat está aberto. Ela lembra um navegador da web: abas e favoritos no topo e widgets abaixo.
+A tela inicial aparece quando nenhum chat está aberto. No topo ficam uma saudação, o número da versão e **Conversation**, **Roleplay** e **Game**, que começam cada um um chat novo nesse modo. Se nenhum modelo estiver configurado ainda, **Connect a model to start chatting** (conecte um modelo para começar a conversar) abre a página de Conexões. **Professor** abre a Professor Mari em uma aba própria, um aplicativo instalado (como Story Writer) também acrescenta um botão aqui, e **Widgets** organiza os cartões abaixo.
 
-- **Abas.** **Home** é a página principal. **Professor** abre a Professor Mari. Alguns agentes instalados acrescentam uma aba própria.
-- **Barra de busca.** No computador, clique na barra abaixo das abas, ou pressione <kbd>Ctrl</kbd>+<kbd>K</kbd> (<kbd>⌘</kbd>+<kbd>K</kbd> no Mac), para encontrar chats, personagens, configurações e mais. Celulares, tablets e janelas estreitas não mostram essa barra.
-- **Favoritos.** Atalhos para **Discord**, **Support**, **Credits**, **Documentation**, **Tutorial**, **FAQ**, **Achievements** e **Widgets**. **Achievements** só aparece quando a configuração Achievements está ativada. Os favoritos só aparecem na aba **Home**. No celular, no tablet ou em uma janela estreita, toque no botão de favoritos (**Open bookmarks**: abrir os favoritos) à esquerda das abas para vê-los como uma lista.
-
-No meio ficam o logotipo, **Marinara Engine** e o número da versão. Abaixo deles, os botões **Conversation**, **Roleplay** e **Game** começam cada um um chat novo nesse modo.
+No layout clássico (com **Settings → Appearance → Theme → New layout** (Configurações → Aparência → Tema → Novo layout) desativado), a tela inicial lembra um navegador da web, com abas, uma barra de busca e favoritos para **Discord**, **Support**, **Credits**, **Documentation**, **Tutorial**, **FAQ**, **Achievements** e **Widgets**.
 
 <a id="choose-a-chat-mode"></a>
 
@@ -47,11 +54,11 @@ Você escolhe um modo ao começar um chat.
 
 Widgets são pequenos cartões que você pode mostrar, esconder e mover.
 
-1. Clique em **Widgets** nos favoritos. A janela **Home Widgets** (widgets da tela inicial) se abre. Ela lista os widgets em **Built-in** (integrados), **Agents** (agentes) e **Personal** (pessoais).
+1. Clique em **Widgets** na tela inicial. A janela **Home Widgets** (widgets da tela inicial) se abre. Ela lista os widgets em **Built-in** (integrados), **Agents** (agentes) e **Personal** (pessoais).
 2. Clique no botão de olho ao lado de um widget para mostrá-lo ou escondê-lo. Um widget que você volta a mostrar vai para o primeiro lugar livre da tela inicial.
 3. Para mover um widget, arraste a alça no canto superior direito dele. No computador, a alça aparece quando você aponta para o widget.
 
-O seu layout fica salvo neste navegador. Os widgets pessoais também têm botões para editá-los ou excluí-los. Na parte de baixo da janela, **Browser chrome** (moldura do navegador) tem um botão liga/desliga: **Show URL bar** (mostrar a barra de endereço) mostra ou esconde a barra de busca no computador.
+O seu layout fica salvo neste navegador. Os widgets pessoais também têm botões para editá-los ou excluí-los. No layout clássico, **Browser chrome** (moldura do navegador), na parte de baixo da janela, tem um botão liga/desliga: **Show URL bar** (mostrar a barra de endereço) mostra ou esconde a barra de busca da tela inicial no computador.
 
 A Professor Mari pode criar um widget pessoal para você, se você pedir. Os agentes instalados também podem acrescentar widgets.
 
@@ -73,9 +80,9 @@ A Professor Mari pode criar um widget pessoal para você, se você pedir. Os age
 ## Onde buscar ajuda
 
 - Pergunte à Professor Mari na tela inicial.
-- Abra o favorito **FAQ** para respostas rápidas.
-- Abra o favorito **Documentation** para ler os guias dentro do aplicativo.
-- Clique em **Discord** para falar com a comunidade, ou em **Support** para apoiar o projeto.
+- Clique em **Read FAQ** no widget **Learn the engine** para respostas rápidas.
+- Clique em **Docs** na barra superior para ler os guias dentro do aplicativo.
+- Clique em **Discord** no widget **Community** para falar com a comunidade, ou em **Support** para apoiar o projeto.
 
 Se algo estiver quebrado, veja [Solução de problemas do Marinara Engine](../TROUBLESHOOTING.md).
 
@@ -85,4 +92,5 @@ Se algo estiver quebrado, veja [Solução de problemas do Marinara Engine](../TR
 - [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md)
 - [Criando e editando personagens](../characters/creating-and-editing-characters.md)
 - [O tutorial da primeira vez](tutorial.md)
+- [Abas, visualização dividida e alterações não salvas](tabs-and-drafts.md)
 - [Professor Mari, a assistente dentro do aplicativo](professor-mari.md)

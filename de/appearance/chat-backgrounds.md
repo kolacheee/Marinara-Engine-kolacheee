@@ -1,32 +1,30 @@
-# Chat-Hintergründe
+# Hintergrundbibliothek
 
-In der Hintergrund-Bibliothek liegen Bilder, die du hochlädst und von Hand hinter deinen Chat legst. Der **Background**-Agent (Hintergrund), der dir in jedem Zug einen Szenen-Hintergrund aussucht, steht unter [Roleplay-Hintergründe](../roleplay/backgrounds.md). Wie du Hintergründe per KI aus der Gallery erzeugst, steht unter [Szenen-Hintergründe und die Gallery](../media/scene-backgrounds.md).
+Die Hintergrundbibliothek enthält alle Bilder, die hinter einem Chat erscheinen können: deine hochgeladenen Bilder, die von Illustrator gemalten und die mit Marinara mitgelieferten. In dieser Anleitung erfährst du, wie du ein Bild für einen Chat auswählst, Bilder importierst, Tags und Ordner nutzt und den Standard-Hintergrund für Roleplay sowie die **Hintergrundunschärfe** einstellst.
 
-Ein Chat-Hintergrund erscheint in allen Chat-Modi. In Conversation-Chats bleibt der Farbverlauf aus **Conversation Theme** über dem Bild, und **Conversation background image opacity** (Deckkraft des Hintergrundbilds in Conversation) legt fest, wie stark das Bild durchscheint. Siehe [Darstellungseinstellungen](appearance-settings.md).
+Für Hintergründe, die sich mit der Geschichte ändern (der Background-Agent, angeheftete Orte und Bilder, die einen Charakter begleiten), siehe [Hintergründe, die der Geschichte folgen](../roleplay/backgrounds.md). Für von Illustrator gemalte Bilder, einschließlich Regen- und Schneevarianten, siehe [Von Illustrator gemalte Hintergründe](../media/scene-backgrounds.md).
 
-## Den Hintergrund eines Chats ändern
+Ein Chat-Hintergrund erscheint in allen Chat-Modi. In Conversation-Chats bleibt der Farbverlauf aus **Conversation-Hintergrund** über dem Bild, und **Deckkraft des Hintergrundbilds in Conversation** legt fest, wie stark es durchscheint. Siehe [Darstellungseinstellungen](appearance-settings.md).
 
-Bevor du anfängst: Öffne den Chat, den du ändern willst. Der Hintergrund, den du wählst, gilt für diesen Chat.
+## Wo du sie findest
 
-1. Öffne **Settings** (Einstellungen), dann **Appearance** (Darstellung), dann die Schaltfläche **App**.
-2. Tippe in **Backgrounds** (Hintergründe) auf **Browse library** (Bibliothek durchsuchen).
-3. Tippe auf ein Bild. Es wird zum Hintergrund dieses Chats, und das Fenster schließt sich.
+Öffne **Einstellungen → Erscheinungsbild** und suche den Abschnitt **Hintergründe**. Er enthält die Auswahl **Chat-Hintergrund**, den Schieberegler **Hintergrundunschärfe** sowie die Bedienelemente **Deckkraft des Hintergrundbilds in Conversation** und **Hintergründe der Chatliste**.
+
+Die Auswahl zeigt eine Vorschau des aktuellen Hintergrunds oder **Standardhintergrund**, wenn keiner gewählt ist. Darunter liegen unter **Zuletzt verwendet** bis zu drei Hintergründe, die du mit einem Tipp wählst. **Bibliothek durchstöbern** öffnet das Fenster **Hintergrundbibliothek**. In einem Chat öffnet **Chat-Einstellungen → Hintergrund** dieselbe Bibliothek für diesen Chat.
+
+## Einen Hintergrund für einen Chat wählen
+
+Bevor du anfängst: Öffne den Chat, den du ändern willst. Das gewählte Bild gilt nur für diesen Chat.
+
+1. Öffne **Einstellungen → Erscheinungsbild → Hintergründe** und klick auf **Bibliothek durchstöbern**.
+2. Klick auf ein Bild. Ein Häkchen erscheint, es wird zum Hintergrund dieses Chats, und das Fenster schließt sich.
+3. Zurück zum Standard geht es mit einem erneuten Klick auf das gewählte Bild oder mit dem X (**Auswahl aufheben**) auf der Vorschau.
 
 Um ein eigenes Bild zu nutzen, importiere es zuerst (siehe [Einen Hintergrund importieren](#import-a-background)).
 
-## Wo die Hintergründe liegen
-
-1. Öffne **Settings**.
-2. Wähle den Tab **Appearance** und dann die Schaltfläche **App**.
-3. Suche den Abschnitt **Backgrounds**.
-
-Er enthält die Auswahl **Chat Background** (Chat-Hintergrund), den Schieberegler **Background Blur** (Hintergrundunschärfe) sowie die Bedienelemente **Conversation background image opacity** und **Chat List Backgrounds** (Hintergründe in der Chat-Liste). Mehr dazu unter [Darstellungseinstellungen](appearance-settings.md).
-
-Die Auswahl zeigt eine Vorschau des aktuellen Hintergrunds oder **Default background**, wenn keiner gewählt ist. Darunter liegen unter **Recent** (zuletzt genutzt) bis zu drei Hintergründe, die du mit einem Tipp wählst. Klick auf **Browse library**, um das Fenster **Background Library** (Hintergrund-Bibliothek) zu öffnen.
-
 ## Die Hintergrund-Bibliothek
 
-Die Bibliothek zeigt Bilder, die du hochgeladen hast, zusammen mit Bildern, die Marinara mitbringt. Jedes Bild trägt eine Beschriftung.
+Die Bibliothek zeigt Bilder, die du hochgeladen hast oder die Illustrator gemalt hat, zusammen mit Bildern, die Marinara mitbringt. Jedes Bild trägt eine Beschriftung.
 
 | Beschriftung | Bedeutung |
 | --- | --- |
@@ -46,12 +44,6 @@ Die Schaltflächen unter **Filter by source** (nach Herkunft filtern) – **All 
 Die neuen Bilder erscheinen im Raster mit der Beschriftung **My upload**.
 
 Jede Datei muss JPG, PNG, GIF, WebP oder AVIF sein und darf bis zu 20 MB groß sein. Marinara prüft, was in der Datei steckt, nicht ihren Namen. Eine Datei, die kein Bild ist und auf `.png` umbenannt wurde, wird abgelehnt.
-
-### Einen Hintergrund für den aktuellen Chat wählen
-
-1. Öffne **Browse library**.
-2. Klick auf ein Vorschaubild. Ein Häkchen erscheint, das Bild wird zum Hintergrund dieses Chats, und das Fenster schließt sich.
-3. Zurück zum Standard geht es mit einem erneuten Klick auf das gewählte Vorschaubild oder mit dem X (**Clear selection**, Auswahl aufheben) auf der Vorschau.
 
 ### Suchen und filtern
 
@@ -90,6 +82,10 @@ Taggen lassen sich nur Bilder mit der Beschriftung **My upload**.
 3. Drück <kbd>Enter</kbd> oder klick auf **Add**.
 
 Um ein Tag zu entfernen, klick bei geöffneter Tag-Bearbeitung darauf.
+
+Tags sind kleingeschrieben und dürfen Buchstaben, Zahlen, Leerzeichen, Bindestriche und Unterstriche enthalten. Jedes Tag darf bis zu 40 Zeichen lang sein.
+
+Gib Bildern Tags für die dargestellten Orte, etwa `guest bedroom` oder `harbor tavern`. Der **Background**-Agent liest die Tags bei seiner Auswahl. Illustrator verwendet ein vorhandenes Bild wieder, wenn ein Tag aus mindestens zwei Wörtern den Ort der Geschichte benennt, statt ein neues zu malen. Siehe [Vorhandene Bilder wiederverwenden](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 <a id="download-a-background"></a>
 
@@ -136,6 +132,6 @@ Das vollständige Sync-Modell steht unter [Darstellungseinstellungen](appearance
 
 ## Verwandte Anleitungen
 
-- [Roleplay-Hintergründe](../roleplay/backgrounds.md): der Background-Agent, der in jedem Zug einen Szenen-Hintergrund aussucht.
-- [Szenen-Hintergründe und die Gallery](../media/scene-backgrounds.md): KI-generierte Szenen-Hintergründe aus der Gallery. Sie landen auch in dieser Bibliothek.
+- [Hintergründe, die der Geschichte folgen](../roleplay/backgrounds.md): der Background-Agent, angeheftete Orte und Galerie-Hintergründe.
+- [Von Illustrator gemalte Hintergründe](../media/scene-backgrounds.md): gemalte Hintergründe und Wettervarianten. Sie landen ebenfalls in dieser Bibliothek.
 - [Darstellungseinstellungen](appearance-settings.md): der komplette Tab **Appearance**.

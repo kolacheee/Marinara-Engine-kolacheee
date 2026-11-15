@@ -46,7 +46,7 @@ Roleplay 채팅에서는 선택 창에 **Create your persona**도 나타날 수 
 
 ## 캐릭터로 플레이하기
 
-캐릭터 카드를 내 정체성으로 쓰려면 **Settings → Advanced → Message Tools**(설정 → 고급 → 메시지 도구)에서 **Show characters in Persona pickers**(페르소나 선택기에서 캐릭터 표시)를 켜세요. 그러면 선택 창에 내 캐릭터 목록이 담긴 **Play as a character**(캐릭터로 플레이) 그룹이 나타납니다.
+캐릭터 카드를 내 정체성으로 쓰려면 **Settings → Chatting → Message Box**(설정 → 채팅 중 → 메시지 입력창)에서 **Show characters in Persona pickers**(페르소나 선택기에서 캐릭터 표시)를 켜세요. 그러면 선택 창에 내 캐릭터 목록이 담긴 **Play as a character**(캐릭터로 플레이) 그룹이 나타납니다.
 
 ## 관련 가이드
 

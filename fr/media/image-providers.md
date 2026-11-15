@@ -6,15 +6,15 @@ La génération d'images alimente les illustrations de scène, les selfies, les 
 
 Une clé API est un code secret qu'un service te donne pour que Marinara puisse utiliser ton compte. Marinara remplit pour toi l'adresse web de chaque service : tu en saisis donc rarement une.
 
-1. Clique sur **Connections** (Connexions) dans la barre du haut, puis sur **Add** (ajouter). La fenêtre **Add account** (ajouter un compte) s'ouvre.
-2. Trouve le service. La liste comporte une section **Images & video** (images et vidéo), et **Search providers** (rechercher des fournisseurs) t'aide à en trouver un.
+1. Ouvre **Library → Connections** (Bibliothèque → Connexions) et clique sur **Add connection** (ajouter une connexion). La liste des services s'ouvre.
+2. Ouvre l'onglet **Image** et trouve le service. **Rechercher des services** t'aide à en trouver un.
 3. Colle ta clé dans le champ **API key** (clé API). Les services gratuits et locaux n'en ont pas besoin. Pour un serveur que tu fais tourner toi-même, remplis le champ d'adresse.
 4. Clique sur **Connect** (connecter). Marinara teste le compte.
-5. Choisis un modèle d'images dans la liste, ou saisis un identifiant de modèle. C'est ton modèle d'images. Il apparaît sous le compte dans le panneau **Connections**.
+5. Sous **Trouvé dans … – utiliser pour :**, coche **Images**. Si le service n'a pas de liste de modèles, saisis l'identifiant du modèle sur la ligne. Clique sur **Terminé**.
 6. Ouvre le modèle d'images et clique sur **Test image** (tester une image). Marinara génère une petite image de test.
-7. Pour en faire le modèle que l'application utilise pour les images, règle la tâche **Images** sous **Defaults** (valeurs par défaut), en haut du panneau **Connections**.
+7. Cocher **Images** à l'étape 5 définit aussi la tâche **Images** dans l'encadré **Valeurs par défaut** en haut du panneau **Connexions**. Pour la changer plus tard, clique sur la ligne **Images**.
 
-Pour ajouter un autre modèle d'images à un compte, ouvre son menu **⋯** et clique sur **Add image model** (ajouter un modèle d'images). La fenêtre complète est décrite dans [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
+Pour ajouter un autre modèle d'images à un compte, clique sur **⋯** sur la ligne du compte et choisis **Ajouter un modèle**. La fenêtre complète est décrite dans [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 
 Si ça n'a pas marché : **Test image** échoue quand la clé ou l'adresse est fausse. Vérifie d'abord les deux. **Test provider** (tester le fournisseur) vérifie seulement que Marinara peut joindre le service. **Test image** génère une vraie image et peut consommer du crédit.
 
@@ -220,7 +220,7 @@ La référence précise de NovelAI ne fonctionne que sur un modèle V4.5 comme `
 
 ## Mettre les requêtes de génération de médias en file d'attente
 
-L'interrupteur **Queue media generation requests** (mettre les requêtes de génération de médias en file d'attente) se trouve dans **Settings → Generations → Overall Generations** (Paramètres → Générations → Générations globales). Il est activé par défaut.
+L'interrupteur **Queue media generation requests** (mettre les requêtes de génération de médias en file d'attente) se trouve dans **Settings → Media → Generation Defaults** (Paramètres → Médias → Valeurs de génération par défaut). Il est activé par défaut.
 
 Quand il est activé, Marinara envoie les tâches d'image à chaque compte d'images une par une, et les tâches de vidéo à chaque compte de vidéos une par une, dans des files séparées. Une image et une vidéo pour le même compte peuvent s'exécuter en même temps. Cela vaut pour toutes les fonctionnalités qui les demandent : l'Illustrator, les trackers, les commandes, la galerie, les ressources de Game Mode et les agents téléchargés comme Slurp. Deux modèles qui ont la même adresse et la même clé API partagent une file. Des comptes différents s'exécutent toujours en même temps. NovelAI bénéficie aussi d'une courte pause entre deux tâches, et quand il répond qu'il est occupé, Marinara attend et réessaie deux fois.
 
@@ -231,6 +231,6 @@ Garde-le activé pour les services qui refusent deux requêtes simultanées. Dé
 - [Configurer un workflow ComfyUI](comfyui.md)
 - [Agent Illustrator](illustrator-agent.md)
 - [Profils de style d'image](style-profiles.md)
-- [Arrière-plans de scène et galerie](scene-backgrounds.md)
+- [Arrière-plans créés par Illustrator](scene-backgrounds.md)
 - [Selfies](../conversation/selfies.md)
 - [Fournisseurs d'IA pris en charge](../connections/providers-reference.md)

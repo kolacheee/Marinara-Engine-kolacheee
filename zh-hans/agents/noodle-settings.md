@@ -110,7 +110,7 @@ Noodle 先选定活跃账号，然后才去准备首次的资料。只有还没�
 
 如果没有成功：开启了图像生成却没有可用的图像模型，刷新会被拦下，提示“Choose an image generation connection for Noodle first.”生成失败的图像会重试一次。第二次仍然失败的话，刷新照常继续，发布一条干净的纯文字帖子。
 
-这些图像提示词的模板叫 **Noodle Post Image**，可以在 **Settings → Generations → Image Generation Prompt Overrides**(设置 → 生成 → 图像生成提示词覆盖) 里修改。你的图像指令会传进这个模板，结果再经过你的风格方案处理。见[图像与视频的提示词覆盖](../prompts/prompt-overrides.md)和[图像风格方案](../media/style-profiles.md)。Professor Mari 没有角色卡，所以她的图像帖子用的是她内置的头像和参考图。
+这些图像提示词的模板叫 **Noodle Post Image**，可以在 **Settings → Media → Prompt Overrides**(设置 → 媒体 → 提示词覆盖) 里修改。你的图像指令会传进这个模板，结果再经过你的风格方案处理。见[图像与视频的提示词覆盖](../prompts/prompt-overrides.md)和[图像风格方案](../media/style-profiles.md)。Professor Mari 没有角色卡，所以她的图像帖子用的是她内置的头像和参考图。
 
 <a id="image-understanding"></a>
 
@@ -135,7 +135,7 @@ Noodle 先选定活跃账号，然后才去准备首次的资料。只有还没�
 
 ### 自定义写手的语气
 
-写手内置的语气和创作自由度指令可以在 **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone** 里重写。这一节的标题虽然写着“Image”，但列表里收的是所有可自定义的 Noodle 和 Conversation 文本提示词。在你保存自己的文字之前，那里的默认文字会跟随 **Enhanced tone & continuity**；保存之后，无论开关是什么状态，都以你的文字为准。
+写手内置的语气和创作自由度指令可以在 **Settings → Media → Prompt Overrides → Noodle Timeline Voice & Tone** 里重写。这一节的标题虽然写着“Image”，但列表里收的是所有可自定义的 Noodle 和 Conversation 文本提示词。在你保存自己的文字之前，那里的默认文字会跟随 **Enhanced tone & continuity**；保存之后，无论开关是什么状态，都以你的文字为准。
 
 这个覆盖项只管说话方式和语气。保证刷新结果有效的那些规则，例如允许哪些结构化动作，始终生效。
 

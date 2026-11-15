@@ -57,7 +57,7 @@ http://127.0.0.1:7860
 
 ## Marinara 시작하고 중지하기
 
-앱을 쓴다면 앱을 열고, 서버가 멈춰 있으면 **Install / Start Marinara**를 누르세요. 앱과 브라우저를 전환하려면 런처에서 **Open in browser**를 쓴 다음 **Retry connection**(연결 다시 시도)을 누르세요. 앱 안에서는 **Settings → General → App Behavior → Open Android launcher (app or browser)**(설정 → 일반 → 앱 동작 → Android 런처 열기 (앱 또는 브라우저))로 런처에 돌아갈 수 있습니다.
+앱을 쓴다면 앱을 열고, 서버가 멈춰 있으면 **Install / Start Marinara**를 누르세요. 앱과 브라우저를 전환하려면 런처에서 **Open in browser**를 쓴 다음 **Retry connection**(연결 다시 시도)을 누르세요. 앱 안에서는 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(설정 → 모양 → 레이아웃 → Android 런처 열기 (앱 또는 브라우저))로 런처에 돌아갈 수 있습니다.
 
 직접 설치했다면 Termux를 열고 다음을 실행하세요.
 

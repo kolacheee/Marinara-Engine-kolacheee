@@ -15,8 +15,8 @@ Przenieś dane z aplikacji SillyTavern do aplikacji Marinara Engine. Możesz zai
 
 ## Szybki import pojedynczych plików
 
-1. Otwórz **Settings → Imports** (ustawienia, import).
-2. W sekcji **SillyTavern Import** kliknij przycisk dla swojego typu pliku.
+1. Otwórz **Ustawienia → Dane → Import z SillyTavern**.
+2. Kliknij przycisk dla swojego typu pliku.
 3. Wybierz plik.
 
 | Przycisk | Plik |
@@ -26,7 +26,7 @@ Przenieś dane z aplikacji SillyTavern do aplikacji Marinara Engine. Możesz zai
 | **Import Preset (JSON)** (import presetu) | Preset w pliku `.json`. |
 | **Import Lorebook (JSON)** (import lorebooka) | Plik World Info w formacie `.json`. |
 
-Te przyciski nie mają opcji. Import postaci zachowuje wszystkie tagi ze źródła i ogranicza skrypty regex do tej jednej postaci. Skrypt regex to reguła znajdź-i-zamień dla tekstu. Aby wybrać te opcje samodzielnie, użyj przycisku **Import** w panelu **Characters** (postacie). Zobacz [Importowanie i eksportowanie kart postaci](../characters/import-export.md).
+Nad przyciskami opcje **Oznacz jako zaimportowane** i **Tag źródła** (obie domyślnie włączone) dodają tagi **Zaimportowane** i **ST** do importowanych elementów. Odznacz jedną z nich, żeby nie dodawać danego tagu. Importowane elementy zachowują swoje nazwy i opisy. Poza tym te przyciski nie mają opcji. Import postaci zachowuje wszystkie tagi ze źródła i ogranicza skrypty regex do tej jednej postaci. Skrypt regex to reguła znajdź-i-zamień dla tekstu. Aby wybrać te opcje samodzielnie, użyj przycisku **Importuj** na stronie **Biblioteka → Postacie**. Zobacz [Importowanie i eksportowanie kart postaci](../characters/import-export.md).
 
 Jeśli karta postaci zawiera w środku lorebook, przeglądarka pyta, czy zaimportować go jako osobny lorebook. Kliknij **OK**, aby zachować go jako lorebook do ponownego użycia, albo **Cancel** (anuluj), aby zaimportować tylko postać.
 
@@ -38,9 +38,9 @@ Aby wybrać tryb, użyj przycisku importu na górze listy czatów. Jego podpowie
 
 ## Import folderu SillyTavern
 
-Zanim zaczniesz: kreator czyta pliki na komputerze serwera. Jeśli SillyTavern jest na innym komputerze, najpierw skopiuj jego folder (ten, w którym zainstalowano SillyTavern) na komputer, na którym działa aplikacja Marinara Engine. Na tym komputerze kreator działa od razu. Aby użyć go z innego urządzenia, ustaw sekret administratora i wpisz go w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administratora). Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](backup-and-restore.md) oraz sekcję "Privileged APIs (ADMIN_SECRET)" w [Dokumentacji konfiguracji serwera](../CONFIGURATION.md).
+Zanim zaczniesz: kreator czyta pliki na komputerze serwera. Jeśli SillyTavern jest na innym komputerze, najpierw skopiuj jego folder (ten, w którym zainstalowano SillyTavern) na komputer, na którym działa aplikacja Marinara Engine. Na tym komputerze kreator działa od razu. Aby użyć go z innego urządzenia, ustaw sekret administratora i wpisz go w **Ustawienia → Zaawansowane → Bezpieczeństwo**. Zobacz [Kopia zapasowa i przywracanie danych aplikacji Marinara](backup-and-restore.md) oraz sekcję "Privileged APIs (ADMIN_SECRET)" w [Dokumentacji konfiguracji serwera](../CONFIGURATION.md).
 
-1. Otwórz **Settings → Imports → SillyTavern Import**.
+1. Otwórz **Ustawienia → Dane → Import z SillyTavern**.
 2. Kliknij **Import from SillyTavern Folder** (import z folderu SillyTavern).
 3. Wskaż folder SillyTavern. Wybierz folder główny, zwykle ten, który zawiera folder `data/` lub `public/`. Masz do wyboru jeden z tych sposobów:
    - Kliknij **Browse** (przeglądaj) i wskaż folder.
@@ -64,7 +64,7 @@ Jeśli skanowanie znajdzie postacie, pojawiają się dwie dodatkowe opcje:
 **Imported regex scripts** (domyślnie **Character only**):
 
 - **Character only** stosuje skrypty do każdej postaci osobno.
-- **Global** dodaje je do **Presets → Regexes** (presety, regexy) dla każdego czatu.
+- **Global** dodaje je do **Presets → Regexes** (presety, regexy), gdzie możesz zarządzać skryptami działającymi we wszystkich czatach. Zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts).
 
 Jeśli to nie zadziałało:
 
@@ -77,6 +77,7 @@ Jeśli to nie zadziałało:
 - Pliki czatów należące do jednej postaci trafiają do jednego czatu jako jego gałęzie. Gałąź to kopia czatu, którą kontynuujesz osobno.
 - Czaty grupowe importują się jako czaty w trybie Roleplay.
 - Zaimportowane elementy zachowują datę ostatniej zmiany pliku źródłowego, a nie datę importu.
+- Postacie, persony, lorebooki, presety i czaty otrzymują tagi **Zaimportowane** i **ST**, chyba że odznaczysz **Oznacz jako zaimportowane** lub **Tag źródła** nad przyciskiem **Importuj zaznaczone**. Ich nazwy i opisy pozostają bez zmian.
 
 ## Czego nie da się przenieść
 

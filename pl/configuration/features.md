@@ -1,10 +1,14 @@
 # Przełączniki funkcji
 
-Niektóre zachowania serwera są opcjonalne. Włączysz je w **Settings > Advanced > Features** (ustawienia > zaawansowane > funkcje). Każdy przełącznik zaczyna wyłączony, więc serwer, na którym nikt nie otworzy tej sekcji, działa jak wcześniej.
+Niektóre zachowania serwera są opcjonalne. Każdy przełącznik zaczyna wyłączony, więc serwer, na którym nikt ich nie włączy, działa jak wcześniej. Znajdują się w różnych miejscach w **Ustawienia**:
+
+- **Stabilne wybory lorebooka** i **Statystyki aktywacji lorebooka**: **Ustawienia → Zaawansowane → Księgi wiedzy**.
+- **Ponawiaj nieudane wywołania dostawcy**: **Ustawienia → Zaawansowane → Limity czasu i ponawianie**.
+- **Odzyskuj usunięte wiadomości czatu**: **Ustawienia → Dane → Kopie zapasowe i przywracanie**.
+
+W klasycznym układzie wyszukaj nazwę przełącznika w ustawieniach.
 
 Zmiany obowiązują od razu, bez restartu serwera ani odświeżania strony.
-
-<a id="overview"></a>
 
 ## Przegląd
 
@@ -15,9 +19,7 @@ Zmiany obowiązują od razu, bez restartu serwera ani odświeżania strony.
 | **Lorebook activation stats** (statystyki aktywacji lorebooków) | `usageAndActivationStats` | Wyłączony | brak |
 | **Recover deleted chat messages** (odzyskiwanie usuniętych wiadomości czatu) | `messageTrash` | Wyłączony | brak |
 
-Wyszukanie `features` w ustawieniach prowadzi do tej sekcji.
-
-<a id="where-the-settings-are-stored"></a>
+Wyszukanie nazwy przełącznika w ustawieniach prowadzi do niego.
 
 ## Gdzie zapisano ustawienia
 
@@ -27,11 +29,7 @@ Serwer trzyma kopię w pamięci, więc sprawdzanie przełącznika nie dodaje odc
 
 API to `GET` oraz `PUT /api/app-settings/features`. `PUT` zastępuje cały obiekt i odrzuca nieznane klucze oraz wartości inne niż logiczne.
 
-<a id="switches"></a>
-
 ## Przełączniki
-
-<a id="stable-lorebook-picks"></a>
 
 ### Stałe wybory lorebooka
 
@@ -41,8 +39,6 @@ Włączony: grupa włączania lorebooka zachowuje tego samego zwycięzcę w czac
 
 Wyłączony: zwycięzca jest losowany przy każdym generowaniu.
 
-<a id="retry-failed-provider-calls"></a>
-
 ### Ponawianie nieudanych wywołań dostawcy
 
 Klucz: `providerRetry`. Zmienna środowiskowa: `PROVIDER_RETRY_TRANSIENT_ERRORS`.
@@ -50,8 +46,6 @@ Klucz: `providerRetry`. Zmienna środowiskowa: `PROVIDER_RETRY_TRANSIENT_ERRORS`
 Włączony: odmowa lub nieosiągalność połączenia albo błąd bramy 502/503 są ponawiane najwyżej dwukrotnie po krótkiej losowo zmienionej przerwie, tylko przed otrzymaniem jakiegokolwiek tekstu. 504 i zerwane połączenie nigdy nie są ponawiane. Gdy połączenie ma fallback, jest on próbowany od razu zamiast ponowienia.
 
 Wyłączony: jak wcześniej ponawiane są tylko ograniczenia częstotliwości.
-
-<a id="lorebook-activation-stats"></a>
 
 ### Statystyki aktywacji lorebooków
 
@@ -61,8 +55,6 @@ Włączony: po pomyślnym zapisaniu odpowiedzi Marinara rejestruje, które wpisy
 
 Wyłączony: nic nie jest zapisywane, a edytor lorebooka ukrywa statystyki aktywacji.
 
-<a id="recover-deleted-chat-messages"></a>
-
 ### Odzyskiwanie usuniętych wiadomości czatu
 
 Klucz: `messageTrash`. Bez zmiennej środowiskowej.
@@ -71,12 +63,10 @@ Włączony: usunięte wiadomości czatu trafiają do zakładki **Trash** (kosz) 
 
 Wyłączony: usunięte wiadomości znikają od razu.
 
-<a id="precedence"></a>
-
 ## Pierwszeństwo
 
 1. **Zmienna środowiskowa.** Jeśli jest ustawiona, wygrywa z zapisanym przełącznikiem zarówno przy włączaniu, jak i wyłączaniu. Settings pokazuje blokadę z nazwą zmiennej. Pusta wartość oznacza brak ustawienia.
-2. **Zapisany przełącznik.** Wartość z Settings > Advanced > Features.
+2. **Zapisany przełącznik.** Wartość zapisana w Ustawienia > Zaawansowane > Księgi wiedzy.
 3. **Domyślna wartość.** Wyłączony.
 
 | Zmienna | Steruje | Wartości |
@@ -85,8 +75,6 @@ Wyłączony: usunięte wiadomości znikają od razu.
 | `PROVIDER_RETRY_TRANSIENT_ERRORS` | Ponowienia wywołań dostawcy | `true`, `1`, `yes` lub `on` włączają. Każda inna wartość wyłącza. |
 
 Zmienne są odczytywane przy każdej kontroli, więc zmiana `.env` nie wymaga restartu.
-
-<a id="for-developers"></a>
 
 ## Dla programistów
 

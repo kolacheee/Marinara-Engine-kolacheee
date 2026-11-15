@@ -8,8 +8,8 @@ En la app, este tipo de cuenta se llama **OpenAI-compatible** (compatible con Op
 
 Antes de empezar, instala un servidor de modelos, inícialo y carga un modelo en él. Por ejemplo, descarga Ollama desde `ollama.com` y sigue sus pasos para descargar un modelo. Marinara se conecta al servidor y no lo inicia por ti. El servidor responde las solicitudes en una dirección web de tu computadora, llamada endpoint.
 
-1. Haz clic en **Connections** (Conexiones) en la barra superior y luego en **Add** (Añadir). Se abre la ventana **Add account** (Añadir cuenta).
-2. En **Chat**, haz clic en tu servidor: **Ollama**, **LM Studio**, **KoboldCpp** o **llama.cpp**. Estas fichas tienen la etiqueta **Self-hosted** (Autoalojado). Para cualquier otro servidor, haz clic en **OpenAI-compatible address** (Dirección compatible con OpenAI).
+1. Abre **Library → Connections** (Biblioteca → Conexiones) y haz clic en **Add connection** (Añadir conexión). Se abre la lista de servicios.
+2. En la pestaña **Text** (Texto), bajo **Self-hosted** (Autoalojado), haz clic en tu servidor: **Ollama**, **LM Studio**, **KoboldCpp** o **llama.cpp**. Estos tienen la etiqueta **Self-hosted**. Para cualquier otro servidor, haz clic en **OpenAI-compatible address** (Dirección compatible con OpenAI).
 3. Revisa **Server address** (Dirección del servidor). Para los cuatro servidores nombrados ya está rellenada. Para otro servidor, escribe su dirección. Consulta la tabla de abajo.
 4. Deja vacío **API key (optional)** (Clave de API: opcional). La mayoría de los servidores locales no necesitan una clave. Para ponerle nombre a la cuenta, escribe un **Name (optional)** (Nombre: opcional).
 5. Haz clic en **Connect** (Conectar). Marinara prueba la dirección. **Connected** significa que llegó al servidor.
@@ -21,6 +21,18 @@ Si no funcionó:
 
 - **Marinara could not reach** la dirección (Marinara no pudo llegar a la dirección). Comprueba que el servidor esté en ejecución y que la dirección y el puerto coincidan. **Continue anyway** (Continuar de todos modos) guarda la cuenta sin que la prueba haya pasado.
 - La dirección está en otra computadora. Consulta [Alcanzar un servidor en otra computadora](#reach-a-server-on-another-computer).
+
+## Usar el modelo que tenga cargado el servidor
+
+Un servidor local o autoalojado puede responder con el modelo que tiene cargado, así que su cuenta puede tener un modelo **Default** (Predeterminado). Default no envía ningún nombre de modelo. Siempre usa el modelo que tengas cargado en Ollama, LM Studio, KoboldCpp o llama.cpp, incluso después de cambiar de modelo allí.
+
+- Una cuenta nueva para un servidor en tu computadora o red empieza con un modelo **Default**.
+- Para añadir uno más tarde, haz clic en **⋯** en la cuenta y elige **Add model** (Añadir modelo). **Default** es la primera fila.
+- Usa **Default** como cualquier otro modelo: asígnale una tarea como **Main** (Principal) en el cuadro **Defaults** (Valores predeterminados), o elígelo en **Model for this chat** (Modelo para este chat).
+- En la tabla de Connections dice "Whatever model the server has loaded" (El modelo que tenga cargado el servidor) y no tiene estrella.
+- Haz clic en **Default** en el panel para darle sus propios ajustes, como sus parámetros y su preset de prompt, igual que harías con un modelo con nombre.
+
+**Default** solo se muestra para un servidor en tu computadora o tu red. Un servicio en la nube siempre necesita un nombre de modelo.
 
 ## Direcciones de los servidores locales comunes
 
@@ -71,7 +83,7 @@ En Android, este ajuste está activado de forma predeterminada cuando no lo conf
 
 ## Usar el modelo para decisiones
 
-El mismo modelo puede responder preguntas de decisión, como las comprobaciones de activación de agentes, sin cargar una segunda copia. Haz clic en **⋯** en el modelo, en el panel, y elige **Use this model for decisions** (Usar este modelo para decisiones). Aparece en un modelo compatible con OpenAI que tiene un nombre de modelo. Consulta [Modelos de decisión](decision-models.md#on-a-server-you-already-run).
+El mismo modelo puede responder preguntas de decisión, como las comprobaciones de activación de agentes, sin cargar una segunda copia. Abre **Library → Connections**, haz clic en **Add connection**, abre la pestaña **Decision** (Decisión), elige **Own decision server** (Servidor de decisiones propio) y escribe la misma dirección. (En la distribución clásica, el menú **⋯** del modelo tiene el acceso directo **Use this model for decisions**, Usar este modelo para decisiones; este rellena los campos por ti.) Consulta [Modelos de decisión](decision-models.md#on-a-server-you-already-run).
 
 ## El interruptor Treat as local/custom endpoint
 

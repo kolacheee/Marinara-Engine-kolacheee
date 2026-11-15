@@ -27,8 +27,8 @@ Para Grok, la app muestra este comando de instalación. Si no funciona en tu sis
 curl -fsSL https://x.ai/cli/install.sh | bash
 ```
 
-3. En Marinara, haz clic en **Connections** (Conexiones) en la barra superior y luego en **Add** (Añadir).
-4. En **Chat**, haz clic en tu servicio. Estos servicios tienen la etiqueta **Sign in** (Iniciar sesión).
+3. En Marinara, abre **Library → Connections** (Biblioteca → Conexiones) y haz clic en **Add connection** (Añadir conexión).
+4. En la pestaña **Text** (Texto), bajo **Subscriptions** (Suscripciones), haz clic en tu servicio. Estos servicios tienen la etiqueta **Sign in** (Iniciar sesión).
 5. La ventana dice **Sign in first** (Inicia sesión primero) y nombra el comando. No hay campo de clave. Haz clic en **Connect** (Conectar). Marinara prueba el inicio de sesión. **Connected** significa que funciona.
 6. Elige un modelo de la lista y luego haz clic en **Done** (Listo). Con Grok CLI también puedes dejar el modelo vacío, lo que usa el predeterminado de la propia CLI (consulta [Grok CLI (Subscription)](#grok-cli-subscription)).
 
@@ -65,6 +65,8 @@ Usa **Diagnose model routing** cuando pediste un modelo grande como Opus pero so
 ## OpenAI (ChatGPT)
 
 Este servicio usa tu cuenta de ChatGPT a través de la Codex CLI. Marinara lee el archivo local de inicio de sesión de Codex y actualiza la sesión cuando puede.
+
+A diferencia de las suscripciones de Claude y Grok, un inicio de sesión de ChatGPT admite llamadas a herramientas, así que Professor Mari, las herramientas personalizadas y los dados y herramientas de Game Mode funcionan con él.
 
 Para ajustar cuánto tiempo piensa Codex antes de responder, abre **Edit model**, activa **Use custom defaults for this model** (Usar valores predeterminados personalizados para este modelo) y elige un **Reasoning Effort** (Esfuerzo de razonamiento). Empieza en **Default** (Predeterminado), que conserva el nivel propio de Codex para el modelo. Un chat puede elegir su propio nivel en **Advanced Parameters** (Parámetros avanzados). El nivel de un preset (ajuste guardado) no lo cambia. Un modelo de Codex usado como respaldo solo sigue su propio nivel, y los agentes que usan el modelo usan el nivel del modelo. Los niveles que ves coinciden con los disponibles para el modelo que elegiste.
 

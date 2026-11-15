@@ -15,7 +15,7 @@ Se não funcionou: sem um modelo definido para o chat, a resposta falha na hora,
 
 ### Send on Enter
 
-Ele fica em **Settings → General → Input & Editing** (Configurações → Geral → Entrada e edição). Há um botão liga/desliga para cada modo de chat.
+Ele fica em **Configurações → Conversando → Caixa de mensagem**. Há um botão liga/desliga para cada modo de chat.
 
 | Modo de chat | Padrão | Quando está desligado |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ Ele fica em **Settings → General → Input & Editing** (Configurações → Ge
 | Conversations | Ligado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> no Mac) envia. |
 | Game | Ligado | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> no Mac) envia. |
 
-No Roleplay, ele vem desligado por padrão porque as mensagens de roleplay costumam ser longas e precisam de quebras de linha. Professor Mari tem um botão liga/desliga próprio, **Enter sends to Professor Mari** (Enter envia para a Professor Mari), em **Settings → General → Search and Professor Mari settings** (Configurações → Geral → configurações da busca e da Professor Mari).
+No Roleplay, ele vem desligado por padrão porque as mensagens de roleplay costumam ser longas e precisam de quebras de linha. Professor Mari tem um botão liga/desliga próprio, **Enter sends to Professor Mari** (Enter envia para a Professor Mari), em **Configurações → Geral → Professor Mari**.
 
 ## Anexar imagens e arquivos
 
@@ -49,7 +49,7 @@ Para a própria galeria de um personagem, use a forma portátil `card://self/gal
 
 ## O streaming da resposta
 
-O streaming mostra a resposta palavra por palavra, em vez de tudo de uma vez. Estas configurações ficam em **Settings → General → Responses** (Configurações → Geral → Respostas).
+O streaming mostra a resposta palavra por palavra, em vez de tudo de uma vez. Estas configurações ficam em **Configurações → Conversando → Respostas**.
 
 | Configuração | Padrão | O que faz |
 | --- | --- | --- |

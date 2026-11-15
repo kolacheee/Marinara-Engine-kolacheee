@@ -110,7 +110,7 @@ Noodle은 첫 프로필을 준비하기 전에 활성 계정을 먼저 고릅니
 
 작동하지 않는 경우: 이미지 생성을 켰는데 쓸 수 있는 이미지 모델이 없으면 새로고침이 막히고 "Choose an image generation connection for Noodle first."가 표시됩니다. 이미지 생성에 실패하면 한 번 다시 시도합니다. 다시 실패하면 새로고침은 계속 진행되고 텍스트만 있는 깔끔한 게시물을 공개합니다.
 
-이 이미지 프롬프트에 쓰는 템플릿은 **Noodle Post Image**입니다. **Settings → Generations → Image Generation Prompt Overrides**(설정 → 생성 → 이미지 생성 프롬프트 재정의)에서 편집하세요. 이미지 지침은 이 템플릿으로 들어가고, 그 결과는 스타일 프로필을 거칩니다. [이미지와 동영상을 위한 Prompt Overrides](../prompts/prompt-overrides.md)와 [이미지 스타일 프로필](../media/style-profiles.md)을 참고하세요. Professor Mari는 캐릭터 카드가 없어서 이미지 게시물에 내장 아바타와 참조 그림을 사용합니다.
+이 이미지 프롬프트에 쓰는 템플릿은 **Noodle Post Image**입니다. **Settings → Media → Prompt Overrides**(설정 → 미디어 → 프롬프트 재정의)에서 편집하세요. 이미지 지침은 이 템플릿으로 들어가고, 그 결과는 스타일 프로필을 거칩니다. [이미지와 동영상을 위한 Prompt Overrides](../prompts/prompt-overrides.md)와 [이미지 스타일 프로필](../media/style-profiles.md)을 참고하세요. Professor Mari는 캐릭터 카드가 없어서 이미지 게시물에 내장 아바타와 참조 그림을 사용합니다.
 
 <a id="image-understanding"></a>
 
@@ -135,7 +135,7 @@ Noodle은 첫 프로필을 준비하기 전에 활성 계정을 먼저 고릅니
 
 ### 작성 모델의 어조 바꾸기
 
-작성 모델에 내장된 어조와 창작 자유도 지시는 **Settings → Generations → Image Generation Prompt Overrides → Noodle Timeline Voice & Tone**에서 다시 쓸 수 있습니다. 섹션 제목에는 "Image"가 붙어 있지만, 이 목록에는 사용자 지정할 수 있는 Noodle과 Conversation의 텍스트 프롬프트가 모두 들어 있습니다. 그곳의 기본 문구는 직접 쓴 글을 저장하기 전까지 **Enhanced tone & continuity**를 따르며, 저장한 뒤에는 그 설정과 관계없이 직접 쓴 글을 사용합니다.
+작성 모델에 내장된 어조와 창작 자유도 지시는 **Settings → Media → Prompt Overrides → Noodle Timeline Voice & Tone**에서 다시 쓸 수 있습니다. 섹션 제목에는 "Image"가 붙어 있지만, 이 목록에는 사용자 지정할 수 있는 Noodle과 Conversation의 텍스트 프롬프트가 모두 들어 있습니다. 그곳의 기본 문구는 직접 쓴 글을 저장하기 전까지 **Enhanced tone & continuity**를 따르며, 저장한 뒤에는 그 설정과 관계없이 직접 쓴 글을 사용합니다.
 
 이 재정의는 어조만 다룹니다. 어떤 구조화된 동작이 허용되는지처럼 새로고침 결과를 올바르게 유지하는 규칙은 항상 그대로 적용됩니다.
 

@@ -98,9 +98,7 @@ Ta właściwość nie jest zapisywalna ani konfigurowalna, a przestrzeń nazw or
 | `api` | Moduł `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
 Pakiet odczytuje element dopiero po sprawdzeniu go, na przykład `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`.
-
 Do pobierania obrazów używaj `shouldUseIosImageShare()`, żeby stosować te same zasady dla platform co galeria. Na iPhonie przygotuj obraz przez `prepareImageSave(url, filename)` przed gestem zapisu, a potem wywołaj `savePreparedImageToDevice(prepared)` bezpośrednio z tego gestu. Anulowanie udostępniania nie wyświetla błędu, a nieudane udostępnienie nie jest zastępowane podglądem pobierania WebKit. Pozostałe platformy używają `downloadUrlToDevice`. Te funkcje zapisują obrazy na urządzeniu klienta, także wtedy, gdy serwer Marinara Engine działa w Dockerze.
-
 Przestrzeń nazw tylko się rozrasta: nowy element pojawia się razem z nową wersją minor API możliwości, a pakiet, który go potrzebuje, wymaga tej wersji minor. Pakiety zbudowane pod przestrzeń nazw wymagają wersji API możliwości, która ją dodała, więc starszy silnik nigdy ich nie instaluje i zachowuje wersję, którą ma. Jeśli element mimo to nie istnieje, pakiet nigdy nie wraca do dołączonej kopii stanowej usługi silnika: magazyny `ui` i `chat` stają się kopiami tylko do odczytu, które nigdy niczego nie zapisują, a każdy inny element zgłasza, że funkcja wymaga nowszej wersji aplikacji Marinara Engine.
 
 **Moduły hosta.** `modules[specifier]` to pełna przestrzeń nazw modułu, łącznie z `default`, jeśli biblioteka go ma. `MARINARA_HOST_MODULE_IMPORTS` w kontrakcie klienta przypisuje każdemu publicznemu slotowi importowaną przez niego zależność. Większość zachowuje tę samą nazwę. Stabilny slot `framer-motion` jest przypisany do `framer-motion-v13` (aliasu npm wskazującego dokładnie Motion 13.5.1), a opcjonalny slot `motion/react` do głównej zależności silnika, `framer-motion` 14. Narzędzia pakietów używają tego mapowania zarówno do listy eksportów, jak i ścieżek TypeScript; nazwy publicznych slotów nie muszą być nazwami rzeczywistych zależności. Specyfikatory to `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `@tanstack/react-query`, `zustand`, `zustand/middleware`, `sonner`, `zod`, `i18next`, `react-i18next`, `framer-motion`, `motion/react`, `tailwind-merge` i `clsx`. Build pakietu rozwiązuje te specyfikatory na shimy, które czytają przestrzeń nazw, więc pakiet renderuje się z jedyną instancją React w silniku i współdzieli jego pamięć podręczną React Query oraz toasty.
@@ -123,7 +121,7 @@ Przestrzeń nazw tylko się rozrasta: nowy element pojawia się razem z nową we
 | --- | --- |
 | `ui` | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat` | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus` |
-| `agent` | `setYoutubePlay`, `reset` |
+| `agent` | `setYoutubePlay`, `setPackageActivity`, `reset` |
 | `sidecar` | `modelDownloaded`, `modelDisplayName`, `fetchStatus` |
 | `dialog` | `dialog`, `openDialog`, `closeDialog` |
 | `gallery` | `pinImage`, `pinVideo` |
@@ -193,6 +191,7 @@ Zasady bezpieczeństwa Engine mają pierwszeństwo. Pole jest przymusowo rozwija
 Capability API 1.14 dodaje dwie wartości `contributions.slots` dla aktywnych, włączonych pakietów agentów Roleplay z punktem wejścia klienta:
 
 - `roleplay-tracker` montuje widok `toolbar` pakietu w HUD Roleplay. Jego właściwości obejmują `chatId`, `chatMode`, `mobileCompact`, klasę hosta `toolbarButtonClass`, `onRerunTracker`, `trackerRetryBusy`, `lockMode` i `onToggleLockMode`. Funkcje zwrotne są opcjonalne: sprawdź ich istnienie przed użyciem.
+- `chat-activity` (Capability API 1.820) montuje widok `activity` pakietu w panelu aktywności agentów czatu. Zobacz [Capability API 1.820](#capability-api-1820-showing-a-package-in-agent-activity).
 - `tracker-panel` montuje widok `tracker` pakietu wewnątrz istniejącego Tracker Panel, z `chatId`, `chatMode` i `detached`. Używaj tej powierzchni hosta zamiast otwierać drugi panel. Oba sloty otrzymują też zwykłe właściwości tożsamości capability i lokalizacji.
 
 Wkłady kontekstu promptu nadal rejestruje się przez `api.registerPromptContext` i wymagają uprawnienia `prompt-context`. Żądanie udostępnia teraz `targetCharacterIds`, `personaId` i `placedAgentTypes` (opcjonalne dla zgodności). `placedAgentTypes` mówi autorowi wkładu, które sekcje danych agentów preset już umieścił, aby uniknąć powtarzania kontekstu. Host zachowuje tożsamość pakietu każdego wkładu w `packageBlocks`, umieszczając tekst pakietu w odpowiedniej sekcji agenta. Autor zwracający tekst dla określonej grupy odbiorców powinien respektować podane identyfikatory postaci docelowych.
@@ -440,8 +439,6 @@ Serwerowa część pakietu nie działa bezpośrednio z `DATA_DIR/capability-pack
 - **Sprzątanie przy starcie.** Po awarii albo wymuszonym zatrzymaniu sprzątanie kopii zostaje pominięte. Przy każdym starcie, zanim aktywuje się jakikolwiek pakiet, silnik usuwa każdy wpis w `capability-runtime-snapshots` z wyjątkiem współdzielonych dowiązań `node_modules`, bo żaden z nich nie może być używany przez nowy proces. Najpierw zdejmuje z plików atrybut tylko do odczytu, czego wymaga system Windows, i nigdy nie podąża za dowiązaniami. Do tego kroku dochodzi tylko proces, który trzyma dzierżawę zapisu do magazynu danych, więc drugi silnik uruchomiony na tym samym folderze danych zatrzymuje się przy otwieraniu magazynu i nigdy nie usuwa kopii działającego silnika.
 - **Zachowywane wersje.** `versions/<id>` przechowuje bieżącą wersję i `previousVersion`, którą przywraca wycofanie, gdy nowe środowisko serwerowe nie wystartuje. Starsze wersje oraz wersja, z której wycofano nieudaną aktualizację, są usuwane po udanej aktywacji lub aktualizacji oraz przy starcie. Pakiet, którego aktualizacja czeka na restart (`restart-required`) albo którego środowisko uruchomieniowe jeszcze nie wystartowało (`readiness: "pending"`), zachowuje wszystkie wersje, dopóki nie wystartuje.
 - **Nigdy nieusuwane:** dane pakietów (foldery takie jak `DATA_DIR/long-term-memory` i tabele pakietu w `storage`), czaty, ustawienia, `installed.json`, decyzje o aktualizacjach, foldery `.install-*` oraz foldery w `versions/` dla identyfikatorów, których nie ma w rejestrze. Odinstalowanie nadal usuwa kod pakietu i zachowuje jego dane.
-
-<a id="compatibility-migration"></a>
 
 ## Migracja zgodności
 
@@ -811,8 +808,6 @@ POST /api/game/experience/check
 
 Fabuła świata może utrzymywać w miejscach porę roku niezależnie od daty (`seasons` i akcja `season`: zobacz [Pisanie skryptów fabuły Game Mode](../extending/writing-story-scripts.md#seasons)), a pola bitwy świata mogą mieć namalowane pory roku (wiersze `seasons` i `seasonKeys`). Pakiet map z którymkolwiek z tych elementów wymaga 1.351. Mapa świata odczytuje takie miejsca jako `seasons` (identyfikator miejsca na porę roku, `*` dla całego świata) z `GET /api/game/:chatId/overworld`; gotowe pole bitwy zawiera początkowe pory roku kafelków jako `seasons`, z kluczami `"x,y"`.
 
-<a id="capability-api-1355-ruleset-overlays"></a>
-
 #### Capability API 1.355: nakładki zestawów zasad
 
 Pakiet map Experience może rozszerzać zestawy zasad jego gier, dopóki Experience jest włączone: o własne stworzenia, stany i przedmioty, których dostarczanie nie należy do pakietu zestawu zasad.
@@ -856,8 +851,6 @@ Ręczna mapa może też zawierać własny opis dla Mistrza Gry:
 ```
 
 `props` to jeden wpis na miejsce obiektu, od 0 do 7 (`null` dla nieopisanego miejsca). Mistrz Gry dostaje wtedy opis mapy jako "Ręcznie wykonane miejsce (ziemia ze ścierniskiem, ściany ze stojącej kukurydzy), z rowem deszczówki; w nim: strach na wróble (2), kapliczka kukurydzianej lalki", zamiast samej informacji, że wykonano ją ręcznie. Obie funkcje wymagają Experience deklarującego 1.357.
-
-<a id="capability-api-1359-items-that-cost-a-story-number"></a>
 
 #### Capability API 1.359: przedmioty zużywające liczbę fabuły
 
@@ -999,10 +992,8 @@ To miękki interfejs: starszy Engine ignoruje trzeci argument, więc pakiet moż
 
 Widok w przeglądarce dostaje `openCharacter(characterId, { tab })`. Otwiera edytor postaci, a jeśli podano zakładkę, od razu na niej, więc pakiet może skierować użytkownika do pola karty postaci, które czyta. Starsze wersje Engine go nie mają: zanim pokażesz łącze, sprawdź, czy `openCharacter` istnieje.
 
-Od #9191 parametr `tab` przyjmuje też identyfikator sekcji w zakładce: `character-sheet`, `image-instructions`, `sprites` lub `gallery`. Wszystkie są w zakładce **Images** (obrazy). `sprites` i `gallery` były wcześniej zakładkami, więc stare linki nadal działają. Instrukcje do selfie postaci (`conversationImageInstructions`) przeniesiono z `convo` do `image-instructions`. Wersje Engine sprzed #9191 nie znają tego identyfikatora i otwierają edytor na początku formularza.
-
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
 ```
 
 ### Capability API 1.66: sceny z wątków pakietów
@@ -1050,8 +1041,6 @@ Zasady, które warto znać:
 
 Uprawnienie `scenes` jest odrzucane w manifeście, który deklaruje `capabilityApi` starsze niż 1.66.
 
-<a id="capability-api-1376-home-browser-fullscreen"></a>
-
 ### Capability API 1.376: pełny ekran przeglądarki Home
 
 Widok `home-browser-tab` otrzymuje `capabilityProps.browserFullscreen`:
@@ -1061,8 +1050,6 @@ Widok `home-browser-tab` otrzymuje `capabilityProps.browserFullscreen`:
 - `enterLabel` i `exitLabel`: zlokalizowane etykiety dostępności przełącznika.
 
 To pełny ekran wewnątrz aplikacji: karty, pasek adresu i zakładki Home są ukryte, a górny pasek silnika pozostaje dostępny. Nie wywołuje to przeglądarkowego Fullscreen API ani nie wymaga obsługi pełnego ekranu przez przeglądarkę. Stan jest tymczasowy i resetuje się po opuszczeniu pakietu lub Home. Na każdym ekranie pakietu zapewnij przycisk wyjścia i odzwierciedlaj `active` przez `aria-pressed`. Zmiany właściwości muszą aktualizować przycisk bez zastępowania niedokończonych formularzy. Pakiety zależne od tej kontrolki deklarują Capability API 1.376 lub nowsze; starsze pakiety mogą zachować dotychczasowy układ.
-
-<a id="capability-api-1814-cache-the-stable-part-of-a-package-prompt"></a>
 
 ### Capability API 1.814: zapisywanie stałej części promptu pakietu w pamięci podręcznej
 
@@ -1088,15 +1075,11 @@ const result = await model.chatComplete([
 const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 ```
 
-<a id="capability-api-1815-choose-how-long-a-marked-prompt-stays-cached"></a>
-
 ### Capability API 1.815: wybór, jak długo oznaczony prompt pozostaje w pamięci podręcznej
 
 `chatComplete` przyjmuje `cacheTtl: "5m" | "1h"`: jak długo prompt aż do wiadomości wywołania oznaczonych `cacheBreakpoint` (1.814) pozostaje w pamięci podręcznej usługi Anthropic. Bez tej opcji obowiązuje, tak jak dotąd, czas przechowywania w pamięci podręcznej ustawiony w połączeniu. Poproś o `"1h"`, gdy ten sam prefiks wraca w odstępach dłuższych niż pięć minut, na przykład kontekst opowieści, którego każda scena używa ponownie, gdy gracz czyta. Zapis do pamięci podręcznej na godzinę kosztuje więcej niż zapis na 5 minut, więc opłaca się tylko wtedy, gdy prefiks zostanie ponownie odczytany w ciągu tej godziny. Wywołanie bez oznaczonej wiadomości ignoruje tę opcję. Ignorują ją też dostawcy, którzy samodzielnie zapisują prompt w pamięci podręcznej (OpenAI, Gemini, xAI, DeepSeek), oraz Claude (Subscription), gdzie obowiązuje czas przechowywania w pamięci podręcznej ustawiony w połączeniu.
 
 Starsze wersje silnika ignorują tę opcję, więc pakiet może ją zawsze przekazywać. Zadeklaruj wersję 1.815, gdy pakiet na niej polega.
-
-<a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: animowane obrazy GIF
 
@@ -1130,8 +1113,6 @@ const isGif = result.mimeType === "image/gif";
 
 W Engine w wersji 1.816 przechwyć błąd z `code === "animation-unsupported"`, żeby zamiast tego utworzyć nieruchomy obraz. Zadeklaruj wersję 1.816 tylko wtedy, gdy pakiet nie może działać bez GIF-ów. Uprawnienia nie są potrzebne.
 
-<a id="capability-api-1817-telling-a-package-that-a-chat-was-branched"></a>
-
 ### Capability API 1.817: powiadamianie pakietu o utworzeniu gałęzi czatu
 
 Usługa `long-term-memory:runtime` może dodać opcjonalną metodę `chatBranched({ chatId, parentChatId })`.
@@ -1144,7 +1125,57 @@ Błędy i wywołania trwające dłużej niż kilka sekund są zapisywane w logac
 przypadku. Bez tej metody nic się nie zmienia. To miękki interfejs: starsze wersje Engine nigdy jej nie wywołują, więc
 pakiet musi sobie radzić także bez tego wywołania. Uprawnienia nie są potrzebne.
 
-<a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
+### Capability API 1.818: embeddingi z połączenia wybranego przez pakiet
+
+`api.runtime.embeddingsFor(connectionId)` pobiera obsługę embeddingów ze źródła wskazanego przez własne ustawienie pakietu, zamiast z połączenia agenta używanego przez `resolveEmbeddings()`. W przeciwieństwie do `resolveEmbeddings()` nigdy nie przechodzi awaryjnie na domyślne **Embeddingi** całej aplikacji.
+
+| `connectionId` | Wynik |
+| --- | --- |
+| `null` | Wbudowany lokalny model embeddingów MiniLM. |
+| Identyfikator połączenia | Własne źródło embeddingów tego połączenia: **Dostawca embeddingów**, **URL punktu końcowego embeddingów** i model embeddingów, ustalane tak jak przez **Testuj embedding**. |
+| Identyfikator nieistniejącego połączenia lub połączenie bez działającego źródła embeddingów | `null`. Zapisuje zdarzenie w logu i zwraca wynik; nie zgłasza wyjątku. |
+
+Zwrócony host ma tę samą postać co `resolveEmbeddings()`: `spaceId`, `label` i `embed(texts, signal?, inputType?)`, z tymi samymi limitami (128 tekstów, łącznie 200 000 znaków) i typem wejścia z 1.68. `embed` zwraca `null`, gdy wywołanie się nie powiedzie. Każde źródło ma własne `spaceId`, więc po zmianie ustawienia ponownie wygeneruj zapisane wektory.
+
+```ts
+const runtime = api.runtime;
+const chosen = settings.embeddingConnectionId ?? null; // null: the built-in local model
+const embeddings =
+  typeof runtime.embeddingsFor === "function"
+    ? ((await runtime.embeddingsFor(chosen)) ?? (await runtime.embeddingsFor(null)))
+    : await runtime.resolveEmbeddings();
+const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
+```
+
+To miękki interfejs: starsze wersje aplikacji Marinara Engine nie mają tej metody, więc przed wywołaniem sprawdź jej istnienie i zastosuj rozwiązanie zastępcze jak w przykładzie. Zadeklaruj 1.818 tylko wtedy, gdy pakiet nie może bez niej działać. Nie wymaga uprawnienia.
+
+### Capability API 1.820: pokazywanie pakietu w aktywności agentów
+
+Slot `chat-activity` umieszcza twoją własną kartę w panelu Aktywność agentów czatu, otwieranym ikoną aktywności agentów w szufladzie czatu i panelu trackera. Zadeklaruj go w `contributions.slots` i zarejestruj widok `activity`; aplikacja montuje jeden element dla każdego aktywnego pakietu, który ma punkt wejścia klienta i działa w czacie (identyfikator pakietu należy do włączonych agentów czatu). Pojawia się za stanem i wynikami agentów, a przed zapisanymi wynikami własnych agentów.
+
+```json
+{ "contributions": { "slots": ["chat-activity"] } }
+```
+
+Element otrzymuje `chatId` i `onOpenAgentSettings()`, które otwiera stronę agenta danego pakietu, oraz zwykłe właściwości tożsamości capability i lokalizacji. Aplikacja nie dodaje oprawy interfejsu: narysuj własną kartę i nie renderuj niczego, gdy nie masz nic do pokazania. Po wczytaniu kodu klienta pusty element nie zajmuje miejsca. Gdy zamontowana jest dowolna karta pakietu, panel nie pokazuje "Brak aktywności agentów", więc narysuj własny komunikat bezczynności, jeśli go potrzebujesz.
+
+To nie jest miękki interfejs: aplikacja Marinara Engine starsza niż 1.820 odrzuca manifest, więc pakiet deklarujący `chat-activity` deklaruje 1.820.
+
+#### Sygnalizowanie pracy pakietu lub potrzeby uwagi
+
+`__MARINARA_HOST__.stores.agent.getState().setPackageActivity(packageId, chatId, { busy?, alert? })` wyróżnia ikonę aktywności agentów tego czatu (`packageId` to `id` manifestu), wszędzie, gdzie ta ikona występuje (w szufladzie czatu, jej odłączonym oknie i panelu trackera). Gdy dowolny pakiet zgłasza `busy: true`, ikona obraca się jak przy własnych agentach czatu; `alert: true` pokazuje kropkę. Pominięte pole zachowuje wartość, a wpis z obiema wartościami false jest usuwany. Sygnały są przechowywane osobno dla każdego czatu, więc po zmianie czatu widać tylko jego sygnały.
+
+```ts
+const agent = globalThis.__MARINARA_HOST__?.stores.agent?.getState();
+agent?.setPackageActivity?.(id, chatId, { busy: true });
+try {
+  await doWork();
+} finally {
+  agent?.setPackageActivity?.(id, chatId, { busy: false });
+}
+```
+
+Aplikacja nigdy sama nie usuwa sygnału, nawet po odmontowaniu elementu `activity` (ikona jest najważniejsza, gdy panel jest zamknięty): to ty odpowiadasz za jego wyczyszczenie, a odświeżenie lub `reset()` czyści wszystko. Zmiana czatu go pozostawia. Pakiet zajęty lub zgłaszający uwagę też liczy się jako aktywność, więc panel nie pokazuje "Brak aktywności agentów"; połącz sygnał z kartą `activity`, żeby panel miał co wyświetlić. To miękki interfejs: starsze wersje aplikacji nie mają tej metody, więc sprawdź jej istnienie jak wyżej. Zadeklaruj 1.820 tylko wtedy, gdy pakiet nie może bez niej działać. Nie wymaga uprawnienia.
 
 ### Capability API 1.391: podsumowania scen funkcji Advanced Memory i blok pamięci
 
@@ -1181,8 +1212,6 @@ const scenes = (await api.runtime.persistence.listChatSummaries?.(chatId))?.adva
 
 Pakiet z `contributions.agentDetail` może ustawić `"header": "engine"`. Engine rysuje wtedy taki sam nagłówek jak na pozostałych stronach agentów: przycisk Wstecz, baner sklepu i logo, nazwę, przełącznik Active dla otwartego czatu oraz opcję zarządzania pakietem. Widok `detail` otrzymuje dwa dodatkowe propsy: `engineHeader: true` i `headerSlot`, element w sekcji akcji nagłówka. Ukryj własny nagłówek, gdy ustawiono `engineHeader`, a dodatkowe przyciski nagłówka (na przykład „Dodaj wspomnienia” lub pomoc) renderuj w `headerSlot` za pomocą portalu React albo `appendChild`. Przy pierwszym renderowaniu `headerSlot` ma wartość `null`, więc poczekaj na następną aktualizację propsów. Bez tej flagi pakiet zachowuje całą stronę jak dotychczas. Po ustawieniu flagi zadeklaruj Capability API 1.390.
 
-<a id="capability-api-1389-hide-or-show-messages-from-the-ai"></a>
-
 ### Capability API 1.389: ukrywanie wiadomości przed AI i ich ponowne pokazywanie
 
 `persistence.setMessagesHiddenFromAI(chatId, messageIds, hidden)` ukrywa wiadomości jednego czatu przed AI
@@ -1200,8 +1229,6 @@ Starsze wersje silnika nie mają tej metody: sprawdź, czy istnieje, albo zadekl
 const hidden = (await api.runtime.persistence.setMessagesHiddenFromAI?.(chatId, messageIds, true)) ?? [];
 ```
 
-<a id="capability-api-1388-a-service-only-the-engine-can-read"></a>
-
 ### Capability API 1.388: usługa, którą może odczytać tylko silnik
 
 Każdą usługę zarejestrowaną przez pakiet mogą odczytać wszystkie pozostałe pakiety przez `runtime.services.get(key)`.
@@ -1216,8 +1243,6 @@ także jej właścicielowi. Zwolnienie usługi usuwa flagę, więc klucz można 
 1.388 ignoruje ten argument, więc usługa pozostaje w nim dostępna do odczytu; nie polegaj na `hostOnly`, jeśli chodzi o poufność
 w starszych wersjach silnika.
 
-<a id="capability-api-1387-read-a-chats-summaries"></a>
-
 ### Capability API 1.387: odczyt podsumowań czatu
 
 `persistence.listChatSummaries(chatId)` zwraca podsumowania przechowywane przez silnik dla danego czatu, więc pakiet nie musi ich odczytywać z metadanych czatu. Wymaga uprawnienia `chat-read`, tak jak `listMessages`, i zwraca kopie:
@@ -1231,8 +1256,6 @@ Dla czatu bez podsumowań lub nieznalezionego zwracane są puste wartości. Star
 ```ts
 const { day, week, rolling, gameSessions } = (await api.runtime.persistence.listChatSummaries?.(chatId)) ?? {};
 ```
-
-<a id="capability-api-1386-open-a-connection-and-raw-generation-for-packages"></a>
 
 ### Capability API 1.386: otwieranie połączenia i surowa generacja z pakietów
 
@@ -1251,8 +1274,6 @@ Pakiet przeglądarkowy może też generować tekst z użyciem zapisanego połąc
 - `debugMode` (1.386): przekaż `debugMode` z widoku przeglądarki. Gdy ma wartość true albo serwer działa z `DEBUG_AGENTS`, serwer zapisuje w logu ostateczne wiadomości wysłane do dostawcy i odpowiedź. Treść żądania jest sprawdzana ściśle, więc starszy silnik odrzuci to pole: wysyłaj je tylko z wartością true, z pakietu deklarującego 1.386.
 
 Zdarzenia to `raw_started` (`{ runId }`), `token` (kolejny fragment tekstu), `result` (`{ content }`, cały tekst), `aborted`, `error` (komunikat), `fallback_used`, gdy odpowiedziało połączenie zapasowe silnika, oraz `done`, zawsze na końcu.
-
-<a id="capability-api-150-professor-mari-actions"></a>
 
 ### Capability API 1.50: akcje dla Professor Mari
 
@@ -1320,8 +1341,6 @@ Zasady, które warto znać:
 - Dezaktywacja lub usunięcie pakietu ukrywa jego odznaki. Odblokowania zostają zapisane, tak jak w przypadku własnych odznak aplikacji Marinara Engine, i pojawiają się ponownie po powrocie pakietu.
 
 `api.registerAchievements` i `api.runtime.achievements` są dostępne dopiero w tak nowej wersji aplikacji Marinara Engine, więc korzystający z nich pakiet deklaruje `capabilityApi` 1.36.
-
-<a id="capability-api-135-agent-home-widgets"></a>
 
 ### Capability API 1.35: widgety Home agentów
 
@@ -1427,8 +1446,6 @@ Pakiety serwerowe mogą używać `api.runtime.integrations` do bieżących usłu
 - `speech.transcribe(audio, { filename, mimeType, signal })` wysyła nagrany dźwięk do serwera zamiany mowy na tekst ustawionego przez użytkownika w **Connections → Speech to Text** i zwraca transkrypcję albo `null`, gdy ten serwer jest wyłączony – wtedy pakiet korzysta dalej z własnej transkrypcji. Stosuje politykę adresów URL hosta (`STT_LOCAL_URLS_ENABLED`) oraz limity rozmiaru i czasu, a zapisanego klucza nigdy nie ujawnia. `speech` jest opcjonalne i nie wymaga nowszego API możliwości: sprawdź `typeof api.runtime.integrations?.speech?.transcribe === "function"`, a w starszym Engine użyj rozwiązania zastępczego.
 
 Typy żądań/wyników eksportuje `@marinara-engine/shared`. Budowanie promptów i orkiestrację pakietu zachowaj w nim; dla operacji dostawcy używaj tych punktów hosta zamiast kopiować usługi Engine. Czyste funkcje pomocnicze i typy nadal można dołączać do pakietu.
-
-<a id="package-audio"></a>
 
 ### Dźwięk pakietu
 

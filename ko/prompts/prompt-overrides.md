@@ -11,7 +11,7 @@ Prompt Overrides는 채팅 모델에 보내는 프롬프트를 바꾸지 않습�
 ## 편집기 찾기
 
 1. **Settings**(설정)를 여세요.
-2. **Generations**(생성) 탭을 클릭하세요.
+2. **Media**(미디어) 탭을 클릭하세요. Illustrator 에이전트를 설치하기 전에는 이 탭에 다운로드 안내만 표시됩니다.
 3. "Reusable image and video prompt templates"라는 설명이 붙은 **Prompt Overrides**까지 스크롤하세요.
 
 그곳에 편집기가 2개 있습니다. 제목을 클릭하면 펼쳐집니다.

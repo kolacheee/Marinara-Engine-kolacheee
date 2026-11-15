@@ -1,6 +1,6 @@
 # Daten löschen oder zurücksetzen
 
-Lösche einen Teil deiner Daten oder alle Daten endgültig über die **Danger Zone** (Gefahrenbereich). Es gibt kein Rückgängig.
+Lösche einen Teil deiner Daten oder alle Daten endgültig mit **Delete Data** (Daten löschen) unter **Settings → Data → Delete Data** (Einstellungen → Daten → Daten löschen). Es gibt kein Rückgängig.
 
 Um einen einzelnen Chat oder Charakter zu löschen, nutze stattdessen seine eigene Löschen-Schaltfläche. Siehe [Chats verwalten](../chats/managing-chats.md) und [Charaktere anlegen und bearbeiten](../characters/creating-and-editing-characters.md).
 
@@ -8,7 +8,7 @@ Um einen einzelnen Chat oder Charakter zu löschen, nutze stattdessen seine eige
 
 ## Einige Kategorien löschen
 
-1. Öffne **Settings → Advanced** und scrolle zur **Danger Zone**.
+1. Öffne **Settings → Data** und geh zu **Delete Data**.
 2. Kreuze jede Kategorie an, die du löschen willst. **Select All** kreuzt alle Kästchen an. Sind alle angekreuzt, heißt dieselbe Schaltfläche **Clear Selection** und entfernt die Häkchen wieder.
 3. Klicke auf **Clear Selected Data**. Sie bleibt deaktiviert, bis du eine Kategorie ankreuzt.
 4. Lies die Warnung. Sie zeigt, wie viele Kategorien du gewählt hast.
@@ -18,7 +18,7 @@ Hat es geklappt, meldet eine Nachricht, dass die gewählten Daten gelöscht wurd
 
 ## Alles löschen
 
-1. Klicke in der **Danger Zone** auf **Clear All Data**. Du musst kein Kästchen ankreuzen.
+1. Klicke unter **Delete Data** auf **Clear All Data**. Du musst kein Kästchen ankreuzen.
 2. Die Warnung fragt: „Delete all supported data categories except Professor Mari? There is no undo.“
 3. Klicke auf **Confirm Delete**, oder auf **Cancel**, um abzubrechen.
 
@@ -36,7 +36,7 @@ Jede Kategorie löscht nur, was in ihrer Zeile steht, mit Ausnahme des Galerieor
 | **Lorebooks** | Alle Lorebooks, Einträge und Ordner. |
 | **Presets** | Alle Prompt-Presets und Preset-Ordner, außer dem eingebauten Standard-Preset. |
 | **Connections** | Alle gespeicherten Konten sowie die damit verbundenen Modellauswahlen und Spracheinstellungen. |
-| **Automation & Addons** | Alle Agenten-Einstellungen, eigene Tools, Regex-Skripte und synchronisierte Themes. Nicht Personal Extensions oder External Extensions. |
+| **Automation & Addons** | Alle Agenten-Einstellungen, eigene Tools, Regex-Skripte samt ihren Ordnern und synchronisierte Themes. Nicht Personal Extensions oder External Extensions. |
 | **Media & Assets** | Hintergründe, Avatare, Sprites, Galerie, Szenenvideos, Schriftarten und Dateien von Wissensquellen. |
 
 Mehr Details:
@@ -47,7 +47,7 @@ Mehr Details:
 - **Connections** leert auch die Einstellungen für Text-to-Speech und Speech-to-Text, die Modelle für Funktionen und einen Tripo-API-Key, der auf der Seite **3D Avatars** gespeichert war.
 - **Automation & Addons** löscht auch Agenten-Ergebnisse, Agenten-Gedächtnis, Agenten-Ordner und Agenten-Widgets auf dem Home-Bildschirm.
 - **Media & Assets** löscht auch die Asset-Liste und Chat-Bilder.
-- Dateien von Wissensquellen sind Dateien, die du für Wissens-Agenten hochgeladen hast. Synchronisierte Themes sind deine eigenen Themes, die in Marinara gespeichert sind.
+- Dateien von Wissensquellen sind Dateien, die du für Wissens-Agenten hochgeladen hast. Synchronisierte Themes sind deine eigenen Themes, die in Marinara gespeichert sind, einschließlich heruntergeladener Starter-Themes. Du kannst Starter-Themes erneut aus der Theme-Galerie herunterladen.
 
 Manche Kategorien greifen auf Dateien außerhalb ihres Namens zu. **Chats & Messages** löscht den ganzen Ordner `gallery`, auch die Galeriebilder von Charakteren und Personas, selbst wenn du **Characters** oder **Personas** nicht angekreuzt hast.
 
@@ -55,7 +55,7 @@ Das Löschen berührt deine übrigen Einstellungen nicht, den Ordner `backups/` 
 
 ## Professor Mari bleibt erhalten
 
-Professor Mari ist der eingebaute Assistent auf dem Home-Bildschirm. Die **Danger Zone** löscht sie nie, auch nicht mit **Clear All Data**.
+Professor Mari ist der eingebaute Assistent auf dem Home-Bildschirm. **Delete Data** löscht sie nie, auch nicht mit **Clear All Data**.
 
 ## Verwandte Anleitungen
 

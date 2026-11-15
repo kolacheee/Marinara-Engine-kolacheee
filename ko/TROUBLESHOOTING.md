@@ -38,9 +38,32 @@
 - **이 컴퓨터의 사용자 지정 이름.** `/etc/hosts`에서 `127.0.0.1`로 연결한 이름은 중계된 접속으로 간주됩니다. 대신 `localhost`, `127.0.0.1`, 컴퓨터의 호스트 이름 또는 `*.localhost` 이름을 사용하세요.
 - **Too many wrong passwords.** 15분 기다린 다음 로그인하세요. 비밀번호를 잊었나요? Marinara를 실행하는 컴퓨터의 Marinara 폴더에서 `node scripts/reset-login.mjs`를 실행하세요. Docker에서는 `docker exec <container> node scripts/reset-login.mjs`를 실행하세요. 서버를 다시 시작해도 다시 시도할 수 있습니다.
 - **Untrusted request host.** 공개 도메인이나 리버스 프록시 도메인이라면 `.env`의 `TRUSTED_HOSTS`에 정확한 호스트 이름을 추가하세요. 직접 IP 주소는 계속 허용됩니다.
-- **위험한 작업 차단.** 그 기기에서 백업, 데이터 삭제, 업데이트 같은 위험한 작업이 막힌다면 서버가 실행 중인 컴퓨터에서 **Settings → Advanced → Admin Access**(설정 → 고급 → 관리자 접근)를 열고 **Make admin secret**(관리자 시크릿 만들기)을 클릭하거나, 서버 `.env`에 `ADMIN_SECRET`을 설정하세요. 다른 기기의 **Admin Access**에 시크릿을 입력하고 **Save**(저장)를 클릭하세요.
+- **위험한 작업 차단.** 그 기기에서 백업, 데이터 삭제, 업데이트 같은 위험한 작업이 막힌다면 서버가 실행 중인 컴퓨터에서 **Settings → Advanced → Security**(설정 → 고급 → 보안)를 열고 **Make admin secret**(관리자 시크릿 만들기)을 클릭하거나, 서버 `.env`에 `ADMIN_SECRET`을 설정하세요. 다른 기기의 **Admin Access**에 시크릿을 입력하고 **Save**(저장)를 클릭하세요.
 
 [원격 접근](REMOTE_ACCESS.md)과 [자주 묻는 질문](FAQ.md)을 참고하세요. 업데이트 후 접속이 막혔다면 [업데이트 후 접속이 막혔을 때](REMOTE_ACCESS.md#locked-out-after-updating)를 참고하세요.
+
+## 휴대폰이나 태블릿에서 앱이 느리게 느껴질 때
+
+페이지를 처음 열면 그림과 페이지 자체를 불러오느라 잠시 걸릴 수 있습니다. 그 뒤에는 탭에 빠르게 반응해야 합니다. 특정 동작이 계속 느리게 느껴진다면 다음을 확인하세요.
+
+1. **Settings → Advanced → Troubleshooting**(설정 → 고급 → 문제 해결)을 열고 **Show tap timings**를 켜세요. 이 기기에만 적용됩니다.
+2. 평소처럼 앱을 쓰세요. 왼쪽 아래의 작은 어두운 상자에 최근 탭한 항목이 표시됩니다.
+3. 각 줄에는 탭한 항목과 `shown · smooth · longest frame · server`가 차례로 표시됩니다. 시간 단위는 모두 밀리초(ms, 1초의 1,000분의 1)입니다.
+
+| 측정값 | 의미 |
+| --- | --- |
+| **shown** | 탭한 뒤 화면이 처음 바뀔 때까지 걸린 시간입니다. |
+| **smooth** | 화면이 바뀌는 동작을 마칠 때까지 걸린 시간입니다. 초록색이면 양호합니다. 400을 넘으면 빨간색으로 바뀌며, 기다림이 느껴집니다. |
+| **longest frame** | 그동안 한 번에 가장 오래 끊긴 시간입니다. |
+| **server** | 탭으로 발생한 요청 수와 마지막 요청이 끝난 시점입니다. 대시는 요청이 없다는 뜻입니다. |
+
+시도해 볼 방법은 다음과 같습니다.
+
+- **server**가 **smooth**의 대부분을 차지하면 화면이 아니라 서버나 네트워크에서 기다리는 것입니다. 같은 Wi-Fi에 있는 서버가 인터넷으로 접속하는 서버보다 빠릅니다.
+- **smooth**가 높고 **server**가 대시이면 화면이 느린 것입니다. 테마를 잠시 끄고(<kbd>Esc</kbd>를 세 번 누르거나 주소 끝에 `?safe`를 붙이세요) 같은 항목을 다시 탭하세요. 훨씬 빨라지면 테마가 원인입니다. 제작자에게 알리거나 [테마를 빠르게 유지하기](appearance/theme-author-guide.md#keeping-a-theme-fast)를 참고하세요.
+- **Settings → Appearance → Effects**(설정 → 모양 → 효과)에는 **Reduce Ambient Animations & Effects**(앰비언트 애니메이션 및 효과 줄이기)와 **Reduced paint effects**(렌더링 효과 간소화)가 있습니다. 둘 다 느린 기기에서 화면을 더 부드럽게 만듭니다.
+
+느린 부분을 제보할 때는 해당 항목의 탭 시간 측정 줄을 함께 보내세요. 끝나면 **Show tap timings**를 다시 끄세요.
 
 ## 저장이 차단되거나 설정이 유지되지 않을 때
 
@@ -226,7 +249,7 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 **Built-in model**(내장 모델)은 API 키 없이 내 컴퓨터에서 실행됩니다. 일부 오류 메시지에서는 사이드카라고 부릅니다. 설정 방법은 [내장 모델 설정](connections/local-model.md)을 참고하세요.
 
-- **Sidecar runtime install is disabled.** 내 컴퓨터에서는 `.env`에 `SIDECAR_RUNTIME_INSTALL_ENABLED=true`를 설정하세요. 다른 기기에서는 먼저 **Settings → Advanced → Admin Access**에 관리자 시크릿을 저장하세요.
+- **Sidecar runtime install is disabled.** 내 컴퓨터에서는 `.env`에 `SIDECAR_RUNTIME_INSTALL_ENABLED=true`를 설정하세요. 다른 기기에서는 먼저 **Settings → Advanced → Security**에 관리자 시크릿을 저장하세요.
 - **다른 기기(네트워크 주소나 Docker)에서 모델 다운로드나 설정이 실패함.** 이때도 관리자 시크릿이 필요할 수 있습니다. 내 컴퓨터에서는 필요 없습니다.
 - **함께 제공되는 llama.cpp, MLX, uv 파일의 크기 또는 SHA-256 불일치.** Marinara가 사용하기 전에 그 파일을 거부한 것입니다. Marinara를 업데이트하거나 다시 설치한 뒤 재시도하세요. 파일의 압축을 풀거나 파일을 편집하거나 우회하지 마세요.
 
@@ -266,12 +289,12 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 
 ## 다운로드 에이전트 문제
 
-- **Agent Organizer에서 카탈로그를 사용할 수 없음.** 브라우저뿐 아니라 서버를 실행하는 컴퓨터도 HTTPS로 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 카탈로그에 접근할 수 있어야 합니다. 설치한 에이전트는 오프라인에서도 계속 동작합니다. 연결을 되살린 다음 **Refresh**(새로고침)나 **Try again**(재시도)을 클릭하세요.
+- **Library → Agents에서 에이전트 카탈로그가 로드되지 않음.** 브라우저뿐 아니라 서버를 실행하는 컴퓨터도 HTTPS로 [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents) 카탈로그에 접근할 수 있어야 합니다. 설치한 에이전트는 오프라인에서도 계속 동작합니다. 연결을 되살린 다음 **Refresh**(새로고침)나 **Try again**(재시도)을 클릭하세요.
 - **설치한 지도나 통화가 보이지 않음.** Marinara를 완전히 종료했다가 다시 시작하세요. 이런 패키지는 다음 시작 전까지 **Restart required**(재시작 필요) 상태로 남습니다. Conversation 게임은 바로 활성화됩니다. 설치가 실패했다면 카탈로그를 새로 고치고 게임이 준비 상태로 표시되는지 확인하세요. 채팅의 **Commands**(명령어) 설정에 게임을 추가하는 것은 캐릭터가 스스로 게임을 시작하게 할 때만 필요하며, 수동 슬래시 명령어에는 필요하지 않습니다.
 - **첫 패키지 마이그레이션이 끝나지 않음.** `data/capability-packages`나 채팅 데이터를 지우지 마세요. Marinara는 다음 시작 때 다시 시도하며, 채팅 선택은 저장된 채로 남습니다.
 - **`data/capability-runtime-snapshots`나 `data/capability-packages/versions`가 커짐.** 정리할 필요는 없습니다. Marinara는 시작할 때 오래된 사본을 삭제하고 각 에이전트의 현재 버전과 이전 버전을 남깁니다.
 - **패키지 다운로드가 거부됨.** 체크섬, 파일 목록, Marinara 버전 범위나 아카이브 경로가 공식 카탈로그와 일치하지 않는 것입니다. Marinara를 업데이트하고 카탈로그를 새로 고친 뒤 다시 시도하세요. 데이터 폴더에 아티팩트를 직접 풀어 넣지 마세요.
-- **업데이트.** 에이전트 업데이트는 시작할 때 적용되지 않습니다. Marinara가 먼저 묻습니다. **Not now**(나중에)는 설치된 버전을 유지하며, **Update**(업데이트)는 **Agents → Agent Organizer**(에이전트 → Agent Organizer)에 남아 있습니다. 업데이트가 실패하면 설치된 버전이 그대로 남습니다. 시작 점검에 실패한 서버 런타임은 이전 버전으로 되돌아갑니다.
+- **업데이트.** 에이전트 업데이트는 시작할 때 적용되지 않습니다. Marinara가 먼저 묻습니다. **Not now**(나중에)는 설치된 버전을 유지하며, **Update**(업데이트)는 **Library → Agents**(라이브러리 → 에이전트)에 남아 있습니다. 업데이트가 실패하면 설치된 버전이 그대로 남습니다. 시작 점검에 실패한 서버 런타임은 이전 버전으로 되돌아갑니다.
 
 ## Card Browser 문제
 
@@ -301,7 +324,7 @@ pnpm backgroundremover:install
 
 스토리보드는 완성된 서술을 키프레임 이미지와 선택 사항인 클립으로 만들어 줍니다. [스토리보드 에이전트 가이드](game/storyboard.md)와 [Game Mode: 시작하기](game/getting-started.md)를 참고하세요.
 
-- **Agents → Agent Organizer**에서 **Storyboard**(스토리보드)를 설치한 다음, 채팅에서 **Enable Agents**(에이전트 활성화)와 **Enable Storyboards**(스토리보드 활성화)를 켜세요.
+- **Library → Agents**에서 **Storyboard**(스토리보드)를 설치한 다음, 채팅에서 **Enable Agents**(에이전트 활성화)와 **Enable Storyboards**(스토리보드 활성화)를 켜세요.
 - 키프레임에는 이미지 계정이 필요합니다. 클립에는 동영상 계정도 필요합니다.
 - Game 자동 생성: **Chat Settings → Agents → Storyboards**(채팅 설정 → 에이전트 → 스토리보드)를 열고 **Automatic Storyboard Illustrations**(자동 스토리보드 일러스트)가 켜져 있는지 확인하세요. 클립을 원하면 **Automatic Storyboard Animations**(자동 스토리보드 애니메이션)를 켜세요.
 - 장면 동영상 수동 생성: **Chat Settings → Gallery**(채팅 설정 → 갤러리)를 열고 이미지를 생성하거나 업로드한 다음 **Video**(비디오)나 **Animate**를 쓰세요. **Videos**(동영상) 탭을 확인하세요.
@@ -322,7 +345,7 @@ pnpm backgroundremover:install
 
 - **통화 중에 캐릭터가 말하지 않음.** Text to Speech(음성 합성)가 설정되지 않은 것입니다. **Connections → Text to Speech**(연결 → TTS)를 열어 켜고, 소스를 고르고, 키를 입력하고, 음성을 고른 다음 저장하세요. 음성이 없는 캐릭터는 텍스트로만 표시됩니다.
 - **음성이 "No audio after N s"와 함께 멈춤.** 음성 서버가 Marinara가 기다리는 시간보다 느린 것입니다. 노트북에서 돌리는 로컬 서버라면 흔한 일입니다. `N`은 현재 타임아웃 값입니다. **Connections → Text to Speech**에서, 또는 메시지에 나온 오디오 계정에서 **Request timeout (seconds)**(요청 제한 시간, 초)를 늘리세요. [요청 타임아웃](media/tts-setup.md#request-timeout)을 참고하세요.
-- **마이크가 동작하지 않음.** **Agents → Agent Organizer**에서 **Calls**를 설치하세요. 그런 다음 **Connections → Speech to text**(연결 → 음성 인식)를 열고 **On this device**(이 기기) 아래에서 **Local speech model**(로컬 음성 모델)을 찾아 Whisper 모델을 고른 다음 **Download Whisper**(Whisper 다운로드)를 클릭하세요. Firefox는 브라우저 음성 인식이 없어서 이 과정이 필요합니다. Calls를 제거하면 Whisper 모델도 삭제됩니다. 직접 운영하는 서버를 쓸 수도 있습니다. [직접 운영하는 음성 인식 서버 사용하기](conversation/calls.md#use-your-own-speech-to-text-server)를 참고하세요.
+- **마이크가 동작하지 않음.** **Library → Agents**에서 **Calls**를 설치하세요. 그런 다음 **Connections → Speech to text**(연결 → 음성 인식)를 열고 **On this device**(이 기기) 아래에서 **Local speech model**(로컬 음성 모델)을 찾아 Whisper 모델을 고른 다음 **Download Whisper**(Whisper 다운로드)를 클릭하세요. Firefox는 브라우저 음성 인식이 없어서 이 과정이 필요합니다. Calls를 제거하면 Whisper 모델도 삭제됩니다. 직접 운영하는 서버를 쓸 수도 있습니다. [직접 운영하는 음성 인식 서버 사용하기](conversation/calls.md#use-your-own-speech-to-text-server)를 참고하세요.
 - **Local Whisper is disabled in Lite mode.** lite 이미지로는 로컬 음성 모델을 실행할 수 없습니다. 일반 설치를 쓰세요.
 
 ### 원격이나 네트워크 설치 환경에서 Music DJ의 Spotify 로그인이 실패할 때
@@ -358,7 +381,7 @@ Music DJ 에이전트의 Spotify 모드는 OAuth를 씁니다. OAuth는 Spotify�
 
 ### 백업이나 내보내기에서 403이 반환될 때
 
-같은 컴퓨터의 세션은 관리자 시크릿 없이 백업할 수 있습니다. 다른 기기, 네트워크 주소, Docker, 같은 컴퓨터의 프록시나 터널에서 오는 요청에는 시크릿이 필요합니다. 서버가 실행 중인 컴퓨터의 **Settings → Advanced → Admin Access**에서 시크릿을 만들거나 서버에 `ADMIN_SECRET`을 설정한 다음, 다른 기기의 **Admin Access**에 같은 값을 저장하세요. 루프백에서도 시크릿을 요구하려면 `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`를 설정하세요. `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`이면 전달된 방문자도 로컬 면제를 받습니다. 공개 프록시나 터널을 쓴다면 이 보호를 켜 두세요.
+같은 컴퓨터의 세션은 관리자 시크릿 없이 백업할 수 있습니다. 다른 기기, 네트워크 주소, Docker, 같은 컴퓨터의 프록시나 터널에서 오는 요청에는 시크릿이 필요합니다. 서버가 실행 중인 컴퓨터의 **Settings → Advanced → Security**에서 시크릿을 만들거나 서버에 `ADMIN_SECRET`을 설정한 다음, 다른 기기의 **Admin Access**에 같은 값을 저장하세요. 루프백에서도 시크릿을 요구하려면 `MARINARA_REQUIRE_ADMIN_SECRET_ON_LOOPBACK=true`를 설정하세요. `REQUIRE_AUTH_FOR_LOOPBACK_PROXY=false`이면 전달된 방문자도 로컬 면제를 받습니다. 공개 프록시나 터널을 쓴다면 이 보호를 켜 두세요.
 
 ### 가져오기에서 파일이 읽을 수 있는 ZIP 아카이브가 아니라고 나올 때
 
@@ -395,7 +418,7 @@ APK가 관리하는 Termux 설치는 설치마다 다른 비공개 비밀 값으
 
 출처 `null`을 언급하는 오류는 오래된 APK와 서버 조합이라는 뜻입니다. `.env`를 수정해도 해결되지 않습니다. APK와 Marinara를 업데이트하세요.
 
-같은 휴대폰의 브라우저로 열려면 Android 런처에서 **Open in browser**(브라우저에서 열기)를 탭한 다음 **Retry connection**(연결 다시 시도)을 탭하세요. 서버를 다시 시작했거나 세션이 만료된 뒤에도 이 방법으로 다시 여세요. 런처로 돌아가려면 **Settings → General → App Behavior → Open Android launcher (app or browser)**(설정 → 일반 → 앱 동작 → Android 런처 열기 (앱 또는 브라우저))를 쓰세요.
+같은 휴대폰의 브라우저로 열려면 Android 런처에서 **Open in browser**(브라우저에서 열기)를 탭한 다음 **Retry connection**(연결 다시 시도)을 탭하세요. 서버를 다시 시작했거나 세션이 만료된 뒤에도 이 방법으로 다시 여세요. 런처로 돌아가려면 **Settings → Appearance → Layout → Open Android launcher (app or browser)**(설정 → 모양 → 레이아웃 → Android 런처 열기 (앱 또는 브라우저))를 쓰세요.
 
 이전 APK는 `cat ~/.marinara-engine/android-secret`의 값으로 `/android-login`에서 로그인합니다. 브라우저 링크는 한 번만 쓸 수 있고 1분 뒤 만료되므로, 런처에서 새 링크를 여세요.
 
@@ -422,7 +445,7 @@ Android 설정에서 Termux의 백그라운드 실행을 허용하고 배터리 
 
 ### Termux를 포그라운드로 불러올 때까지 Marinara가 응답하지 않을 때
 
-채팅이 "채팅 여는 중..."에서 멈추고, 앱이 **Server unreachable**(서버에 연결할 수 없음)을 표시하고, Support Diagnostics(지원 진단 정보) 복사 내용의 서버 항목이 **Unreachable (request timed out)**(연결할 수 없음, 요청 시간 초과)으로 나오며, Termux를 여는 순간 모든 것이 정상으로 돌아옵니다. Android의 캐시된 앱 동결 기능이 Termux 프로세스를 정지시킨 것입니다. 휴대폰은 연결을 받아들이지만 동결된 서버는 응답하지 않습니다. wake lock으로는 이를 막을 수 없습니다. 세션 로그에는 오류 대신 동결된 시간만큼 타임스탬프가 비어 있습니다.
+채팅이 "채팅 여는 중..."에서 멈추고, 앱이 **Server unreachable**(서버에 연결할 수 없음)을 표시하고, **Copy Support Diagnostics**(지원 진단 정보 복사) 보고서의 서버 항목이 **Unreachable (request timed out)**(연결할 수 없음, 요청 시간 초과)으로 나오며, Termux를 여는 순간 모든 것이 정상으로 돌아옵니다. Android의 캐시된 앱 동결 기능이 Termux 프로세스를 정지시킨 것입니다. 휴대폰은 연결을 받아들이지만 동결된 서버는 응답하지 않습니다. wake lock으로는 이를 막을 수 없습니다. 세션 로그에는 오류 대신 동결된 시간만큼 타임스탬프가 비어 있습니다.
 
 Termux를 배터리 최적화 대상에서 제외하고, 백그라운드 활동을 허용하고, 휴대폰이 지원한다면 최근 앱 화면에서 Termux를 고정하고, 알림이 계속 보이게 두세요. 그래도 동결이 이어진다면 Marinara를 쓰는 동안 Termux를 포그라운드에 두거나 화면을 켜 두세요.
 
@@ -488,12 +511,12 @@ Windows, Android를 비롯해 지원되지 않는 호스트에서는 Server Exte
 
 ## 확장 기능 문제
 
-### Addons에 External Extensions가 보이지 않을 때
+### Extensions에 External Extensions가 보이지 않을 때
 
 이 섹션은 두 관문이 모두 열릴 때까지 숨겨져 있습니다.
 
 1. 호스트의 `.env`에 `ENABLE_EXTERNAL_EXTENSIONS=true`를 설정하세요.
-2. 잠시 기다린 다음 **Settings → Advanced → Danger Zone**(설정 → 고급 → 위험 구역)을 열고 데이터 삭제 항목 아래로 스크롤해 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)를 켜세요.
+2. 잠시 기다린 다음 **Settings → Advanced → Security**를 열고 **Allow third-party extension imports**(서드파티 확장 가져오기 허용)를 켜세요.
 
 스위치가 비활성화되어 있다면 호스트 플래그가 아직 false이거나 앱이 변경을 아직 감지하지 못한 것입니다. [서버 설정 참고 문서](CONFIGURATION.md)에서 설명하는, 실제로 사용 중인 `.env`를 편집했는지 확인하세요. Docker에서는 보통 `/app/data/.env`입니다.
 
@@ -501,7 +524,7 @@ Windows, Android를 비롯해 지원되지 않는 호스트에서는 Server Exte
 
 ### 가져온 브라우저 확장이 나타나지만 동작하지 않을 때
 
-**Settings → Addons → External Extensions**(설정 → 애드온 → 외부 확장)에서 확장을 열고 **Requested access**(요청된 접근 권한)를 확인하세요. 기능 선언이 없는 예전 `marinara.extension` v1 패키지는 **Full page access**(전체 페이지 접근)로 표시됩니다. 직접 확인하고 신뢰하는 정확한 해시만 승인하세요.
+**Library → Extensions → External Extensions**(라이브러리 → 확장 → 외부 확장)에서 확장을 열고 **Requested access**(요청된 접근 권한)를 확인하세요. 기능 선언이 없는 예전 `marinara.extension` v1 패키지는 **Full page access**(전체 페이지 접근)로 표시됩니다. 직접 확인하고 신뢰하는 정확한 해시만 승인하세요.
 
 기능 목록이 비어 있는 상태로 다시 내보낸 패키지는 안전한 샌드박스 확장으로 취급되며, 페이지의 DOM이 필요한 코드는 동작하지 않습니다. 그 코드가 페이지 전체, 브라우저 저장소, 네트워크 API, 세션에 접근하게 된다는 점을 받아들일 때만 매니페스트에 `full_page_access`를 추가하세요.
 
@@ -531,7 +554,7 @@ HTTPS 주소를 쓰고 로그인한 다음, Marinara를 업데이트한 뒤 페�
 
 ## 도움 더 받기
 
-1. **Settings → Advanced → Message Tools**(설정 → 고급 → 메시지 도구)를 열고 **Debug mode**를 켜세요. 프롬프트와 응답이 서버 콘솔에 기록됩니다.
+1. **Settings → Advanced → Troubleshooting**을 열고 **Debug mode**를 켜세요. 프롬프트와 응답이 서버 콘솔에 기록됩니다.
 2. 운영 체제, Node.js 버전, 콘솔의 오류 전문을 적어 두세요.
 3. 무엇이든 공유하기 전에 API 키, 접근 토큰, 관리자 시크릿, 비공개 채팅 내용을 지우세요.
 

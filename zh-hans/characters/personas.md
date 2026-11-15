@@ -22,9 +22,15 @@ Marinara 会在每一次提示词里把你的用户角色发给 AI。在聊天�
 
 `{{user}}` 宏是一个占位符。Marinara 在发送提示词之前，会把它换成用户角色的名字。如果你的用户角色叫 Alex，`{{user}}` 就会变成 Alex。见[宏](../prompts/macros.md)。
 
-## Personas 面板
+## Personas 页面
 
-**Personas** 面板就是你的用户角色库。点击某一行，就能在 Persona Editor 里打开这个用户角色。
+打开 **Library → Personas**(资料库 → 人设)。它和 [Characters 页面](library-organization.md#the-characters-page)一样：有竖版卡片、**Import**(导入)、**New persona**(新建用户角色)（从空白卡片或模板开始）、旁边带 **Tags**(标签) 按钮的搜索框、**Recently edited**(最近编辑)、排序菜单（**A to Z**(A 到 Z)、**Z to A**(Z 到 A)、**Newest**(最新)、**Oldest**(最早)、**My order**(我的顺序)）以及三种卡片尺寸。点击卡片，在 Persona Editor 里打开用户角色。
+
+这里也能使用 Characters 页面的工具：卡片上的 **⋯**（**Duplicate**(复制)、**Move to folder**(移至文件夹)、**Export**(导出)、**Select**(选择)、**Delete**(删除)）、拖动卡片设定 **My order**、**New folder**(新建文件夹)，以及用 **Select** 一次删除多个用户角色，或把它们导出为 `marinara-personas.zip`。见[卡片操作](library-organization.md#a-cards-actions)。
+
+## 经典布局：Personas 面板
+
+经典 **Personas** 面板会以列表显示同样的文件夹和顺序。点击某一行，就能在 Persona Editor 里打开这个用户角色。
 
 | 控件 | 作用 |
 | --- | --- |
@@ -48,11 +54,11 @@ Marinara 会在每一次提示词里把你的用户角色发给 AI。在聊天�
 - 头像图块。点击可以上传图片。如果已经配好图像生成用的连接，还会有一个魔杖按钮，也能生成头像。
 - 名称输入框和一个备注输入框，备注用来写 `Modern AU version` 这类简短标签。
 - **Save**，在你做出改动之前它是禁用的。
-- **…**（**More actions**(更多操作)）菜单，包含 **Ask Professor Mari**(问问 Mari 教授)、**Export persona**(导出用户角色)、**Add persona as character**(把用户角色添加为角色)、**Duplicate persona**(复制用户角色) 和 **Delete persona**(删除用户角色)。
+- **Export persona**(导出用户角色)、**Add persona as character**(把用户角色添加为角色)、**Duplicate persona**(复制用户角色) 和 **Delete persona**(删除用户角色)。
 
 离开编辑器时，会先保存你的改动。如果保存失败，编辑器会保持打开，草稿也会保留。
 
-选项卡依次是 **Metadata**(元数据)、**Card**、**Convo**(对话)、**Lorebook**(世界书)、**Images**(图像)、**Colors**(颜色) 和 **Stats**(属性)。每个选项卡都会跳到同一张长表单里对应的分区。
+选项卡依次是 **Metadata**(元数据)、**Card**、**Convo**(对话)、**Lorebook**(世界书)、**Sprites**(立绘)、**Gallery**(图库)、**Colors**(颜色) 和 **Stats**(属性)。每个选项卡都会跳到同一张长表单里对应的分区。
 
 用户角色编辑器的用法和[角色编辑器](creating-and-editing-characters.md)一样。下面只说明不同之处。
 
@@ -62,7 +68,8 @@ Marinara 会在每一次提示词里把你的用户角色发给 AI。在聊天�
 | **Card** | 见下文的 [Card 选项卡](#card-tab)。 |
 | **Convo** | 只在 Conversation(对话模式) 下使用的字段，见 [Conversation Mode 个人资料](../conversation/profiles.md)。 |
 | **Lorebook** | 挂上世界书条目，这个用户角色在聊天里时，这些条目就会触发。见[世界书总览](../lorebooks/overview.md)。 |
-| **Images** | 包含 **Character Sheet**(角色设定图)、**Sprites**（Game 和 Roleplay 中使用的立绘，包括 **Facial Expressions**(面部表情)、**Full-body**(全身)、**Clips**(片段) 和 **Upload Folder**(上传文件夹)）以及 **Gallery**（参考图和视频，提供 **Upload Persona Images**(上传用户角色图片) 和 **Upload Persona Videos**(上传用户角色视频)）。见[角色立绘](sprites.md)和[角色与用户角色图库](galleries.md)。 |
+| **Sprites** | Game 和 Roleplay 中使用的立绘。包含 **Facial Expressions**(面部表情)、**Full-body**(全身)、**Clips**(片段)，以及 **Upload Folder**(上传文件夹)。见[角色立绘](sprites.md)。 |
+| **Gallery** | 参考图和视频，提供 **Upload Persona Images**(上传人设图片) 和 **Upload Persona Videos**(上传人设视频)。见[角色与用户角色图库](galleries.md)。 |
 | **Colors** | 名字、对话和消息框的颜色。见[角色颜色与角色扮演属性](colors-and-stats.md)。 |
 | **Stats** | 状态条和角色扮演属性。见下文的 [Stats 选项卡](#stats-tab)。 |
 
@@ -117,7 +124,7 @@ Marinara 会在每一次提示词里把你的用户角色发给 AI。在聊天�
 
 要导入，在 **Personas** 面板里点击 **Import**。**Import Persona** 窗口接受 `.marinara` 和 `.json` 文件，也可以一次导入多个。Marinara 文件会完整恢复细节、立绘和图库结构。其他工具导出的普通 JSON 文件会逐字段映射成一个新的用户角色，其中名称是必需的。每个文件都会显示成功或失败的标记。
 
-要导出，在编辑器里点击 **…**，再点击 **Export persona**，或者在选择模式下用 **Export**(导出)。**Export Persona**(导出用户角色) 窗口提供两种格式：
+要导出，在编辑器里点击 **Export persona**，或者在选择模式下用 **Export**(导出)。**Export Persona**(导出用户角色) 窗口提供两种格式：
 
 | 格式 | 得到的内容 |
 | --- | --- |
@@ -128,13 +135,13 @@ Marinara 会在每一次提示词里把你的用户角色发给 AI。在聊天�
 
 ## 复制或删除用户角色
 
-要复制，点击某一行上的 **Duplicate**，或者编辑器 **…** 菜单里的 **Duplicate persona**。副本名为“{original name} (Copy)”，保留全部卡片字段、颜色、属性和 Convo 字段。任何聊天所用的用户角色都不会改变。
+要复制，点击某一行上的 **Duplicate**，或者编辑器里的 **Duplicate persona**。副本名为“{original name} (Copy)”，保留全部卡片字段、颜色、属性和 Convo 字段。任何聊天所用的用户角色都不会改变。
 
 要删除，点击某一行上的 **Delete**，或者编辑器 **…** 菜单里的 **Delete persona**，然后确认。删除无法撤销。要一次删除多个，点击 **Select**，勾选要删的用户角色，然后用选择栏里的 **Delete**。如果有删除失败的，这些用户角色会保持勾选，方便你重试。
 
 ## 把用户角色添加为角色
 
-编辑器标题栏 **…** 菜单中的 **Add persona as character** 会在你的角色里新建一张角色卡。它会复制名称、描述、性格、场景设定、背景故事、外观、标签、作者、版本和头像。用户角色本身保持不变。要编辑新卡片，见[创建和编辑角色](creating-and-editing-characters.md)。
+编辑器标题栏中的 **Add persona as character** 会在你的角色里新建一张角色卡。它会复制名称、描述、性格、场景设定、背景故事、外观、标签、作者、版本和头像。用户角色本身保持不变。要编辑新卡片，见[创建和编辑角色](creating-and-editing-characters.md)。
 
 ## 相关指南
 

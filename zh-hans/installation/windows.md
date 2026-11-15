@@ -34,7 +34,7 @@
 - **启动：** 双击桌面快捷方式或开始菜单里的条目。从源码安装的话，在 Marinara 文件夹里运行 `start.bat`。
 - **停止：** 快捷方式会打开一个控制台窗口，在里面按 <kbd>Ctrl</kbd>+<kbd>C</kbd>。
 
-如果 Marinara 已经在运行，快捷方式会在浏览器里重新打开它。
+如果 Marinara 已经在运行，快捷方式会在浏览器里重新打开它。如果正在运行的版本与文件夹里的版本不同（比如切换版本之后），启动脚本会显示 *“A different version of Marinara Engine is still running”*，并要求先关闭旧的控制台窗口，避免误打开错误的版本。`staging` 或 `ui/...` 这样的测试分支会从 GitHub 上对应的分支获取更新。
 
 ## 从源码安装
 
@@ -84,6 +84,9 @@
 ### 不用启动脚本的手动搭建
 
 这种方式需要 `pnpm` 命令。下面的命令都在 `Marinara-Engine` 文件夹里运行。
+
+> [!TIP]
+> 在 PowerShell 里，用 `npm.cmd` 和 `pnpm.cmd` 代替 `npm` 和 `pnpm`（例如 `pnpm.cmd install --force`）。许多电脑上的 PowerShell 会拦截它们的快捷脚本，提示“running scripts is disabled on this system”。命令提示符不受影响。也可以跳过本节，直接运行 `.\start.bat`，它会自动完成全部安装和构建。
 
 1. 安装 pnpm，只需运行一次。
 

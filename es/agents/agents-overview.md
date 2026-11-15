@@ -6,11 +6,11 @@ Los agentes son pequeños ayudantes de IA que se ejecutan alrededor de la respue
 
 Los agentes se activan por chat, no por personaje. Dos chats con el mismo personaje pueden ejecutar agentes distintos.
 
-Una instalación nueva no tiene agentes opcionales. Instálalos desde **Agent Organizer** (Organizador de agentes), la tienda de paquetes oficiales de un clic. El código fuente y el catálogo son públicos en [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Instala a través de **Agent Organizer**, para que Marinara pueda comprobar la compatibilidad, los permisos y los hashes de los archivos. Para saber qué hace cada agente, consulta [Referencia de agentes descargables](built-in-agents.md). Para crear los tuyos, consulta [Crear agentes personalizados](custom-agents.md).
+Una instalación nueva no tiene agentes opcionales. Instálalos desde **Library → Agents** (Biblioteca → Agentes), la tienda de paquetes oficiales de un clic. En el diseño clásico se llama **Agent Organizer** (Organizador de agentes). El código fuente y el catálogo son públicos en [Pasta-Devs/Marinara-Agents](https://github.com/Pasta-Devs/Marinara-Agents). Instala a través de esa página, para que Marinara pueda comprobar la compatibilidad, los permisos y los hashes de los archivos. Para saber qué hace cada agente, consulta [Referencia de agentes descargables](built-in-agents.md). Para crear los tuyos, consulta [Crear agentes personalizados](custom-agents.md).
 
 ## Añadir un agente a un chat
 
-Antes de empezar: instala primero el agente. Abre el panel **Agents** (el icono de las estrellas, Sparkles, en las pestañas del lado derecho), haz clic en **Agent Organizer**, abre la página del agente y haz clic en **Get** (Obtener). Consulta [Instalar y actualizar agentes](#install-and-update-agents).
+Antes de empezar: instala primero el agente. Abre **Library → Agents**, busca el agente en **Available** (Disponibles) y haz clic en **Get** (Obtener). Consulta [Instalar y actualizar agentes](#install-and-update-agents).
 
 1. Abre el chat.
 2. Abre **Chat Settings** (Ajustes del chat) y busca la sección **Agents** (Agentes).
@@ -63,7 +63,7 @@ Cada agente se ejecuta en un punto alrededor de tu respuesta, llamado su **pipel
 - Los trackers escriben en el HUD y en los paneles de tracker. Si la hora, la ubicación, el estado de ánimo o las estadísticas cambiaron, un tracker se ejecutó.
 - **Agent activity** (Actividad de los agentes) en **Chat Settings** enumera notas breves de los agentes. Su icono gira mientras trabajan y muestra un punto cuando uno falla. Consulta [Agent activity](../roleplay/getting-started.md#agent-activity).
 - **Prose Guardian** y **Continuity Checker** cambian el texto de la respuesta. Una respuesta limpiada o corregida significa que se ejecutaron.
-- Para un rastro completo, activa **Debug mode** (Modo de depuración) en **Settings → Advanced → Message Tools** (Configuración → Avanzado → Herramientas de mensaje). Registra el prompt y la respuesta de cada agente en la consola del servidor, y las entradas de depuración de los agentes también aparecen en la consola del navegador. Las inyecciones de prompt guardadas en caché se muestran en la pestaña **Injections** (Inyecciones) de **Agent activity**.
+- Para un rastro completo, activa **Debug mode** (Modo de depuración) en **Settings → Advanced → Troubleshooting** (Configuración → Avanzado → Solución de problemas). Registra el prompt y la respuesta de cada agente en la consola del servidor, y las entradas de depuración de los agentes también aparecen en la consola del navegador. Las inyecciones de prompt guardadas en caché se muestran en la pestaña **Injections** (Inyecciones) de **Agent activity**.
 
 ## Vigilar el costo
 
@@ -77,11 +77,11 @@ Si ves la advertencia, quita los agentes que no necesites o mueve algunos a una 
 
 ## Instalar y actualizar agentes
 
-Abre el panel **Agents** (el icono de las estrellas, Sparkles, en las pestañas del lado derecho) y haz clic en **Agent Organizer**. Funciona en computadora y en el teléfono.
+Abre **Library → Agents**. Funciona en computadora y en el teléfono.
 
-- **Home** (Inicio) muestra agentes destacados y un estante para cada sección: **Apps**, **Chat games** (Juegos de chat), **Trackers** (Agentes de seguimiento) y **Writing help** (Ayuda para escribir).
-- **Updates** (Actualizaciones) enumera los agentes instalados que tienen una versión más reciente. **Installed** (Instalados) enumera todo lo que tienes, con la versión y el tamaño.
-- La búsqueda y el filtro de modo acotan todas las listas.
+- **Installed** (Instalados) enumera todo lo que tienes, **Available** enumera lo que puedes descargar y **Updates** (Actualizaciones) enumera los agentes instalados que tienen una versión más reciente.
+- **All sections** (Todas las secciones) acota la lista a una sección, como **Apps**, **Chat games** (Juegos de chat), **Writing help** (Ayuda para escribir) o **Trackers** (Agentes de seguimiento), y **All modes** (Todos) a un modo de chat. **Search agents** (Buscar agentes), el menú de orden y **List** (Lista) / **Gallery** (Galería) funcionan en todas las listas.
+- **Starter kits** (Kits de inicio) instala de una vez un conjunto de agentes listo para usar. **New agent** (Nuevo agente) inicia un [agente personalizado](custom-agents.md).
 - Selecciona un agente para ver su descripción, tamaño de descarga, permisos, compatibilidad y **Version history** (Historial de versiones). Haz clic en **Get** para instalarlo. El menú **⋯** ofrece **Uninstall** (Desinstalar).
 - El menú **⋯** junto al título tiene **Update all** (Actualizar todo), **Install all** (Instalar todo), **Refresh catalog** (Refrescar catálogo) y **Uninstall all** (Desinstalar todo).
 
@@ -100,7 +100,7 @@ Cuando existe una versión compatible más reciente de un paquete instalado, se 
 3. Haz clic en **Update all** (o en **Update 2 of 3**, Actualizar 2 de 3, cuando hayas desmarcado algunas). Cada fila muestra **Updated** (Actualizado) o **Failed** (Falló). Una fila fallida muestra el motivo y **Retry** (Reintentar).
 4. Si una actualización necesita un reinicio, haz clic en **Restart now** (Reiniciar ahora), o reinicia Marinara más tarde.
 
-Haz clic en **Not now** (Ahora no) para conservar tus versiones. Marinara no vuelve a preguntar por una versión que omitiste. Puedes actualizar desde **Agent Organizer** en cualquier momento. Los paquetes instalados siguen funcionando en su versión actual, incluso cuando no se puede llegar al catálogo. **See in Agent Organizer** (Ver en Agent Organizer) abre la página del agente.
+Haz clic en **Not now** (Ahora no) para conservar tus versiones. Marinara no vuelve a preguntar por una versión que omitiste. Puedes actualizar desde la pestaña **Updates** de **Library → Agents** en cualquier momento. Los paquetes instalados siguen funcionando en su versión actual, incluso cuando no se puede llegar al catálogo. **See in Agent Organizer** (Ver en Agent Organizer) abre la página del agente.
 
 Las actualizaciones solo se aplican a los paquetes que instalaste. Los paquetes viven en el servidor de Marinara, así que los clientes de navegador usan lo que el servidor tiene instalado.
 

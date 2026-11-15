@@ -10,8 +10,8 @@ Decision 模型是一种小模型，替 Marinara 回答是或否的问题，例�
 
 开始之前，先看[如何选择](#which-one-to-pick)。
 
-1. 点击顶栏里的 **Connections**(连接)，打开 **Jobs**(分工) 框。
-2. 在 **Behind the scenes**(幕后) 下点击 **Decision**(判定) 行，会打开一个列表。
+1. 打开 **Library → Connections**(资料库 → 连接)。**Defaults**(默认值) 框位于顶部。
+2. 点击 **Decision**(判定)，会打开一个列表。
 3. 选一个模型。列表分三组：
    - **None (decisions off)**(无，关闭判定) 是默认选项。不会发出任何询问，智能体编辑器里的激活问题字段保持禁用。
    - **Built-in model**(内置模型) 列出 Marinara 在你电脑上运行的模型：**Built-in model**、**Built-in model (utility)**(内置模型，辅助) 和 **Built-in model (decisions)**(内置模型，判定)。所有内容都不会离开你的电脑。
@@ -24,8 +24,6 @@ Decision 模型是一种小模型，替 Marinara 回答是或否的问题，例�
 
 当前无法回答的条目仍留在列表里，显示为灰色，并注明原因。选择 **None** 会关闭判定，但不会删除任何激活问题或判定陈述。
 
-<a id="which-one-to-pick"></a>
-
 ### 如何选择
 
 - **内置模型里已经在运行的模型。** 没有额外费用。最适合大多数使用内置模型的人。
@@ -37,15 +35,15 @@ Decision 模型是一种小模型，替 Marinara 回答是或否的问题，例�
 
 Jev 和 Open-Jev 是不同的模型。Jev 是 TypeSafe 的托管模型，可以直接使用，也可以通过 OpenRouter 使用。[Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B) 是基于 Qwen 单独发布的模型，Marinara 可以在本地运行它。Open-Jev 的测试没有测量托管的 Jev。
 
-在 Android (Termux) 上，**Built-in decision model**(内置判定模型) 无法运行，而在手机处理器上跑的小型本地模型可能太慢。托管账号是实际可行的选择，例如通过 OpenRouter 使用 Jev。见[设置 Decision 连接](#set-up-a-decision-connection)。
+在 Android (Termux) 上，**Built-in decision model**(内置判定模型) 无法运行，而在手机处理器上跑的小型本地模型可能太慢。托管账号是实际可行的选择，例如通过 OpenRouter 使用 Jev。见[设置 Decision 连接](#set-up-a-decision-account)。
 
-写预设、角色卡和智能体时，应以“一个 Decision 模型”为前提，不要写成“必须使用 Jev”。无论用哪个模型，陈述语法都相同，但不同模型可能给出不同的答案。导入使用判定的内容时，包括自定义智能体和 Agent Organizer 安装，Marinara 会显示一条链接到本指南的通知。恢复整个档案 ZIP 时不会显示。
+写预设、角色卡和智能体时，应以“一个 Decision 模型”为前提，不要写成“必须使用 Jev”。无论用哪个模型，陈述语法都相同，但不同模型可能给出不同的答案。导入使用判定的内容时，包括自定义智能体和官方智能体安装，Marinara 会显示一条链接到本指南的通知。恢复整个档案 ZIP 时不会显示。
 
 ## 使用内置模型
 
 如果已经下载了内置模型，就能用它来判定，不需要账号，也不花钱。见[内置模型设置](local-model.md)。
 
-1. 在 **Jobs** 框的 **Behind the scenes** 下点击 **Decision** 行。
+1. 在 Connections 页面的 **Defaults** 框里点击 **Decision**。
 2. 选择 **Built-in model**；如果有 **Built-in model (utility)**，也可以选它。
 3. 点击 **Decision settings** 齿轮，再点击 **Test**。
 
@@ -63,37 +61,33 @@ Marinara 向模型提一个是或否的问题，让它只写一个 Token，再�
 
 通用聊天模型给出的是或否概率可以拿来和阈值比较，但它们不像专用判定模型那样经过校准训练。不返回对数概率的运行时只会给出固定的 1 或 0。请用自己的聊天来调整阈值。
 
-<a id="on-a-server-you-already-run"></a>
-
 ### 使用已运行的服务器
 
 如果聊天模型运行在 Ollama、LM Studio、llama.cpp 或其他 OpenAI 兼容服务器上，它就能回答判定，Marinara 不必再加载第二份。
 
-1. 在 **Connections** 面板里点击该模型上的 **⋯**，选择 **Use this model for decisions**(将此模型用于判定)。**Add account**(添加账号) 窗口会直接打开到判定这一步，地址、模型和密钥都与原来相同。
+1. 打开 **Library → Connections**，点击 **Add connection**(添加连接)，打开 **Decision** 选项卡，选择 **Own decision server**。填写与聊天模型相同的地址和密钥。（在经典布局里，模型的 **⋯** 菜单有 **Use this model for decisions**(将此模型用于判定)，会替你填好这些内容。）
 2. 选择模型，然后点击 **Test decision**(测试判定)。测试通过时，会说明服务器是否返回了对数概率，以及模型是否必须先推理。点击 **Done**(完成)。
-3. 点击 **Behind the scenes** 下的 **Decision** 行，选择新模型。
+3. 点击 **Defaults** 框里的 **Decision**，选择新模型。
 
 也可以自己创建一个。使用来源为 **OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**(OpenAI 兼容聊天模型) 的 Decision 账号，填写与聊天账号相同的地址（例如 Ollama 的 `http://localhost:11434/v1`），以及服务器使用的模型名称。
 
 询问方式与内置模型相同：每条陈述要一个表示是或否的词。陈述逐条发送，因为 Marinara 无法知道你的服务器一次能处理多少请求。对账号来说，**Thinking** 始终是 **Auto**(自动)。另一台电脑上的服务器需要 `PROVIDER_LOCAL_URLS_ENABLED`。见[连接本地或自托管模型](local-self-hosted.md)。
 
-<a id="set-up-a-decision-connection"></a>
-
 ## 设置 Decision 连接
 
 托管的 Decision 账号会把选定的最近消息和陈述发给该服务，可能产生费用。Smart 回复顺序还会发送[角色名单](#what-the-model-sees)。
 
-1. 点击顶栏里的 **Connections**，再点击 **Add**(添加)。
-2. 在 **Decisions**(判定) 下点击 **TypeSafe** 或 **Own decision server**。如果用 OpenRouter，在 **Chat**(聊天) 下点击 **OpenRouter** 并完成连接，然后用模型 **⋯** 菜单里的 **Use this key for decisions**(将此密钥用于判定)。
-3. 填写 **API key**(API 密钥)；如果是 **Own decision server**，则填写 **Server address**(服务器地址)。点击 **Connect**(连接)。窗口关闭，面板里会出现新账号。
-4. 点击 **Behind the scenes** 下的 **Decision** 行，选择新模型。
-5. 要测试它，在面板里点击该模型打开 **Edit model**，然后点击 **Provider tests**(服务商测试) 卡片里的 **Test provider**。**Own decision server** 模型在那里没有 **Test provider** 按钮。请改为在面板里打开账号的 **⋯** 菜单，点击 **Test**。
+1. 打开 **Library → Connections**，点击 **Add connection**。
+2. 在 **Decision** 选项卡里点击 **TypeSafe** 或 **Own decision server**。如果用 OpenRouter，在 **Text**(文本) 选项卡里点击 **OpenRouter** 并完成连接，然后用模型 **⋯** 菜单里的 **Use this key for decisions**(将此密钥用于判定)。
+3. 填写 **API key**(API 密钥)；如果是 **Own decision server**，则填写 **Server address**(服务器地址)。点击 **Connect**(连接)。窗口关闭，Connections 页面里会出现新账号。
+4. 点击 **Defaults** 框里的 **Decision**，选择新模型。
+5. 要测试它，在 Connections 页面里点击该模型打开 **Edit model**，然后点击 **Provider tests**(服务商测试) 卡片里的 **Test provider**。**Own decision server** 模型在那里没有 **Test provider** 按钮。改为点击账号的 **⋯**，选择 **Edit account**(编辑账号)，再点击 **Test account**(测试账号)。
 
-**Test provider** 通过时，会显示概率、回答耗时和账号的时限。**⋯** 菜单里账号的 **Test** 只说明是否成功以及耗时多久。测试至少等待 10 秒；时限更长时，等待时限再加 5 秒。如果回答耗时超过时限，结果会注明：在聊天中，这样的回答会算作没有答案。
+**Test provider** 通过时，会显示概率、回答耗时和账号的时限。**Test account** 只说明是否成功以及耗时多久。测试至少等待 10 秒；时限更长时，等待时限再加 5 秒。如果回答耗时超过时限，结果会注明：在聊天中，这样的回答会算作没有答案。
 
 没有成功时，见[故障排查](#troubleshooting)。
 
-Decision 编辑器（在判定模型上打开 **Edit model**）有这些字段：
+Decision 模型有这些字段。在面板里点击模型打开 **Edit model**，或点击 **Defaults** 框中 **Decision** 行上的齿轮，打开当前判定模型的 **Decision settings**：
 
 | 字段 | 作用 |
 | --- | --- |
@@ -108,8 +102,6 @@ TypeSafe 发送到 `https://api.typesafe.ai`。可以把它的 **Base URL**(基�
 
 删除一个密钥被用于判定的账号时，会显示警告。之后需要重新关联 Decision 账号，在此之前判定不会给出答案。导入的连接文件从不包含 API 密钥或借用账号的关联，所以要手动恢复它们。
 
-<a id="where-marinara-uses-it"></a>
-
 ## Marinara 在哪里使用它
 
 - [激活问题](../agents/custom-agents.md#activation-questions)决定自定义智能体是否运行。没有答案时：问题不会阻止它运行。关键词和 **Trigger Cadence**(触发频率) 仍然适用。
@@ -117,11 +109,10 @@ TypeSafe 发送到 `https://api.typesafe.ai`。可以把它的 **Base URL**(基�
 - [世界书 Decision 字段](../lorebooks/entries.md#decision-activation)在世界书扫描期间检查 Require 或 Trigger。没有答案时：Require 无法放行新条目，Trigger 也不会增加激活路径。Sticky 保持和普通的 Trigger 激活路径仍然适用。
 - [Smart 回复顺序](../chats/group-chats.md#response-order-individual-only)开启后，会为群聊里的下一位发言者打分。没有答案时：Smart 顺序照常执行它原有的 AI 调用。
 - [自动管理活跃角色](../chats/group-chats.md#automate-active-characters-merged-only)设为 **Decision model**(判定模型) 时，会在 Merged 模式的 Roleplay 群聊里每次回复前询问谁在场景中。没有答案时：如果没有一个角色得到答案，它会使用 Character Tracker 记录的最近一个场景，或保留原有列表。
+- [Illustrator 判定模型检查](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)在聊天的 Illustrator 设置里开启后，会检查每条 Roleplay 回复是否出现新地点或新天气。没有答案时：背景仍和以前一样，只在 Illustrator 或 World State 要求时才更换。
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model) 可以为 Roleplay 的场景边界和记忆选择使用它自己的 Decision 模型。在该聊天的 Advanced Memory 设置里开启 **Use Decision model**。没有答案时：失败的判定会回退到普通回忆或场景检查。摘要仍然使用 Helper model(辅助模型)。
 
 激活问题决定智能体是否运行。智能体提示词里的判定陈述，决定告诉这个运行中的智能体什么内容。是或否的条件用 `{{#if decision:"..."}}`，在多个答案中选择用 `{{#if decision_choice:"..." == "..."}}`。
-
-<a id="what-the-model-sees"></a>
 
 ## 模型能看到什么
 
@@ -142,8 +133,6 @@ TypeSafe 发送到 `https://api.typesafe.ai`。可以把它的 **Base URL**(基�
 
 **Advanced Memory** 按聊天使用它自己的 Decision 模型，不适用最近 5 条的规则。场景检查读取相关的对话记录窗口。回忆会先发送最近的对话文本和候选名单里最多 24 个已归档的回顾（如果 **Maximum recalled scenes**(最多召回场景数) 设得更高，则会更多），再在检查角色访问权限后，发送模型所选场景里的原始消息。托管服务会收到这些文本，有时分成几批。每一轮回忆通常有 10 到 25 秒，按模型的速度确定。两轮共用每条回复 40 秒，所以一轮可能不到 10 秒。没有及时得到答案的记忆会回退到普通回忆。见[可选的 Decision 模型](../agents/memory.md#optional-decision-model)。
 
-<a id="thresholds"></a>
-
 ## 阈值
 
 不同模型的概率没法直接比较。同一个例子在一个模型上可能得 0.99，在另一个模型上只有 0.2。默认的是或否阈值取决于模型：
@@ -155,8 +144,6 @@ TypeSafe 发送到 `https://api.typesafe.ai`。可以把它的 **Base URL**(基�
 智能体的 **Run when probability is at least**(运行所需的最低概率) 会覆盖这个值。保存的值与模型建议值不同时，编辑器会提供恢复建议值的选项。每次换模型都要检查它。提示词陈述和世界书 Decision 字段使用模型的默认值，智能体的阈值不会改变它们的阈值。
 
 通过 Custom System One 账号接入的自托管 Open-Jev 仍然使用 0.5，因为 Marinara 无法校准任意的自定义端点。它的结果可能与内置的 Open-Jev 不同，包括把低于 0.5 的肯定结果读作否。
-
-<a id="time-limits"></a>
 
 ## 时限
 
@@ -185,8 +172,6 @@ TypeSafe 发送到 `https://api.typesafe.ai`。可以把它的 **Base URL**(基�
 - 不要让同意、内容警告或安全指示取决于判定。
 - 对只靠激活问题运行的智能体，设置 **Bypass the question after this many messages**(经过指定消息数后跳过问题)，这样一直回答否的模型也没法让它永远沉默。
 
-<a id="troubleshooting"></a>
-
 ## 故障排查
 
 - **测试失败。** 消息会说明原因：密钥被拒绝、服务正在限制请求、内置模型没有运行、判定模型没有安装、模型没有回答是或否，或者超时。
@@ -198,8 +183,6 @@ TypeSafe 发送到 `https://api.typesafe.ai`。可以把它的 **Base URL**(基�
 - **自动管理活跃角色改为跟随 Character Tracker。** 模型没有为每个角色都给出答案；或者它先推理，而 **Also gate agents that run before the reply** 是关闭的；或者角色阵容太大，即使只放名字也塞不进模型的输入。
 
 要在生成时查看判定的评分和输出，开启 Debug Mode，或者把日志级别设为 debug。见[日志级别](../CONFIGURATION.md#logging-levels)。要在不生成回复的情况下测试自己的陈述，打开 **Peek Prompt → Decision diagnostics → Test decisions**(Peek Prompt → 判定诊断 → 测试判定)。显式测试会调用选定的模型，在托管服务上可能产生费用。见[测试判定陈述](../chats/peek-prompt.md#testing-decision-statements)。
-
-<a id="let-marinara-install-a-decision-model"></a>
 
 ## 让 Marinara 安装判定模型
 
@@ -214,7 +197,7 @@ Open-Jev 模型需要 Linux **x86-64**、计算能力 7.5 或更高的 NVIDIA GP
 
 这些是目录给出的估算值。9B 模型在 24 GB 的 GPU 上几乎不留余量。请查看安装器针对你的显卡给出的判断。
 
-1. 在 **Connections** 面板里点击 **Add**，再点击 **Decisions** 下的 **Built-in model (decisions)**。会打开一个标题为 **Built-in decision model** 的窗口。也可以从 **Built-in model** 卡片的页面打开它。
+1. 在 **Connections** 面板里点击 **Add**，再点击 **Decision** 选项卡里的 **Built-in model (decisions)**（本电脑能运行时才显示）。会打开一个标题为 **Built-in decision model** 的窗口。也可以从 **Built-in model** 卡片的页面打开它。
 2. 阅读警告，然后开启 **Use the built-in decision model**(使用内置判定模型)。标题为 **Turn on the built-in decision model?** 的对话框会显示针对你电脑的判断。点击 **Enable**(启用)；判断结果是警告时，点击 **Enable anyway**(仍然启用)。
 3. 在 **Available decision models**(可用的判定模型) 下选择 **Open-Jev 2B** 或 **Open-Jev 9B**。点击 **Download and install**(下载并安装)，确认大小、硬件判断和许可证。在此之前什么都不会下载。
 4. 点击 **Behind the scenes** 下的 **Decision** 行，选择 **Built-in model (decisions)**。
@@ -228,8 +211,6 @@ Open-Jev 模型需要 Linux **x86-64**、计算能力 7.5 或更高的 NVIDIA GP
 - 已安装的模型因为文件或运行时缺失、过期而无法启动时（通常发生在更新之后），会出现 **Reinstall**(重新安装)。这时模型会标记为 **Needs reinstall**，**Decision** 行显示 **Not set up**。重新安装会保留已经完整下载的文件，所以通常只需重新下载运行时的 Python 包。
 
 模型启动后的第一次回答较慢，所以 Marinara 会在加载时问一个预热问题。预热失败时，模型照样启动，只是延迟落到第一个真正的问题上。在长聊天里，带很多陈述的回合耗时更长。Open-Jev 2B 在长聊天里每条陈述约需四分之一秒。
-
-<a id="run-strands-decider-yourself"></a>
 
 ### 自行运行 Strands decider
 

@@ -14,8 +14,6 @@ L'onglet **Colors** règle trois couleurs : celle du nom, celle des dialogues et
 
 **Extract Colors from Avatar** (extraire les couleurs de l'avatar) choisit les trois couleurs à partir de l'image de l'avatar. Tant qu'aucun avatar n'existe, le bouton est désactivé et affiche **Upload an avatar first**. Tu peux ensuite encore modifier chaque couleur à la main.
 
-<a id="the-three-colors"></a>
-
 ### Les trois couleurs
 
 Règle chaque couleur avec le champ de couleur, ou saisis une valeur :
@@ -32,9 +30,9 @@ Règle chaque couleur avec le champ de couleur, ou saisis une valeur :
 linear-gradient(90deg, #f59e0b, #ef4444)
 ```
 
-**Other names** (autres noms) se trouve sous **Name** (nom), dans l'onglet **Metadata** (métadonnées). Ce champ regroupe les surnoms, noms complets ou titres tels que `Clark Kent, Kal-El, Mr. Kent`. Dans les messages des chats Roleplay, ils prennent la couleur du nom, comme le nom principal. Active l'option dans chaque chat : **Color Character Names in Text** (colorer les noms des personnages dans le texte) dans **Chat Settings → Characters** (réglages du chat → personnages) et **Color Persona Name in Text** (colorer le nom du persona dans le texte) dans **Chat Settings → Persona**.
+L'onglet **Colors** d'un personnage contient aussi **Name Aliases** (alias du nom). Saisis d'autres noms ou surnoms, séparés par des virgules, par exemple `Clark Kent, Kal-El, Mr. Kent`. Ils prennent la couleur du nom du personnage quand ils apparaissent dans les messages du chat. Le nom principal est toujours inclus. Active cette option chat par chat dans **Chat Settings → Characters** (réglages du chat → personnages).
 
-Pour changer la transparence, utilise **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity** (Paramètres → Apparence → Présentation Roleplay → Opacité de l'arrière-plan des messages Roleplay).
+Pour changer la transparence, utilise **Settings → Roleplay → Roleplay Messages → Roleplay Messages Background Opacity** (Paramètres → Roleplay → Messages Roleplay → Opacité de l'arrière-plan des messages Roleplay).
 
 Ce curseur met à l'échelle la transparence enregistrée dans la couleur de la bulle de message de ton personnage et de ton persona : une couleur qui a son propre alpha, comme `rgba(255, 255, 255, 0.25)` ou `#FFFFFF40`, s'affiche avec cet alpha multiplié par la valeur du curseur. Tes valeurs de couleur enregistrées restent telles quelles. Les couleurs du nom et des dialogues ne sont pas affectées.
 
@@ -46,7 +44,7 @@ Les points d'accroche d'arrière-plan des thèmes personnalisés et le CSS de fi
 
 ### Où tes couleurs apparaissent
 
-- La couleur du nom colore le nom affiché dans les messages du chat. Pour un personnage, elle colore aussi le nom dans les onglets de la barre latérale. Pour un persona, elle colore aussi le nom dans les sélecteurs de persona.
+- La couleur du nom colore le nom affiché dans les messages du chat. Pour un personnage, elle colore aussi le nom dans la liste des chats. Pour un persona, elle colore aussi le nom dans les sélecteurs de persona.
 - La couleur des dialogues colore le texte placé entre guillemets de dialogue, avec les guillemets droits comme avec les autres styles de guillemets. Tu peux aussi mettre ce texte en gras dans **Settings** (Paramètres). Les chats Conversation ne l'utilisent pas.
 - La couleur de la bulle définit l'arrière-plan des bulles de message de ce personnage ou de ce persona dans les chats Roleplay. Les chats Conversation et Game ne l'utilisent pas.
 
@@ -64,6 +62,10 @@ Un personnage a un seul interrupteur, **Enable Roleplay Stats** (Activer les Car
 - Les **Attributes** sont des nombres nommés. Les nouveaux personnages démarrent avec STR, DEX, CON, INT, WIS et CHA, chacun à 10.
 
 Clique sur **Add** (ajouter) pour créer une réserve ou un attribut, et sur le X d'une ligne pour le supprimer.
+
+Les chats Roleplay et les parties Legacy utilisent ces caractéristiques. Un nouveau chat Roleplay initialise les barres de tracker du personnage à partir des réserves, et une rencontre Roleplay tire ses HP maximum d'une réserve de HP. Un jet de dés en Roleplay ajoute un bonus provenant de l'attribut qu'il nomme : un attribut personnalisé comme Sanity compte donc lui aussi. Les parties MRPG ne créent jamais de fiche à partir de ces caractéristiques.
+
+Dans la nouvelle disposition, les champs de réserves, d'attributs et de tracker ont leur propre section **Roleplay Stats** (Caractéristiques de Roleplay), séparée de **Game Mode**. Sur une fiche qui n'en contient encore aucun, ajoute-la avec **+ Roleplay Stats** dans la barre de gauche de l'éditeur. Les barres d'état d'un persona se trouvent elles aussi dans sa section **Roleplay Stats**.
 
 ### Caractéristiques d'un persona
 
@@ -87,9 +89,9 @@ Chaque choix est conservé dès que tu le fais, et **Back** (retour), **Next** (
 
 Les choix forts et faibles orientent la progression cachée du personnage dans chaque partie. Son arbre frère vient de son tempérament dans la partie, pas de la fiche. Voir [Game Mode : classes MRPG](../game/mrpg-classes.md#choose-a-characters-trees).
 
-Les **Roleplay Stats** (Caractéristiques de Roleplay) sous le bloc sont les réserves et les attributs décrits plus haut. Les chats Roleplay et les parties Legacy les utilisent. Une partie MRPG utilise plutôt le bloc MRPG et ne crée jamais de fiche à partir d'eux.
-
 <a id="game-mode-icon"></a>
+
+Les **Caractéristiques de Roleplay** sous le bloc sont les réserves et les attributs décrits plus haut. Les chats Roleplay et les parties Legacy les utilisent. Une partie MRPG utilise le bloc MRPG à la place et ne crée jamais de fiche à partir de ces caractéristiques.
 
 ### Icône de Game Mode
 

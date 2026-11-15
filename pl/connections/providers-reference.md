@@ -2,7 +2,7 @@
 
 Ta strona to materiał źródłowy o głównych usługach, z którymi Marinara Engine potrafi się połączyć: skąd wziąć klucz API, jaki jest domyślny adres i jakie są haczyki. Żeby dodać konto krok po kroku, przeczytaj najpierw przewodnik [Łączenie z dostawcą AI](connecting-to-a-provider.md).
 
-Usługę wybiera się w oknie **Add account** (dodanie konta), w sekcji odpowiadającej temu, co robi: **Chat** (czat), **Images & video** (obrazy i wideo), **Voice** (głos) albo **Decisions** (decyzje). Kafelek ma nazwę podaną niżej. Adres to adres internetowy, pod który Marinara wysyła żądania. W edytorze konta nazywa się **Address** (adres), a w edytorze modelu **Base URL** (adres bazowy). Dla znanych usług Marinara wypełnia go sama. Zmieniaj go tylko przy serwerze proxy albo serwerze, który uruchamiasz.
+Usługę wybiera się po kliknięciu **Dodaj połączenie**, w zakładce odpowiadającej temu, co tworzy: **Tekst**, **Obraz**, **Wideo**, **Głos** albo **Decyzje**. Wpisywanie w polu wyszukiwania przeszukuje wszystkie zakładki. Lista używa nazwy podanej niżej. Adres to adres internetowy, pod który Marinara wysyła żądania. W edytorze konta nazywa się **Address** (adres), a w edytorze modelu **Base URL** (adres bazowy). Dla znanych usług Marinara wypełnia go sama. Zmieniaj go tylko przy serwerze proxy albo serwerze, który uruchamiasz.
 
 Modele często się zmieniają, więc ta strona ich nie wymienia. Po połączeniu lista modeli wczytuje się w selektorze. Kliknij **Refresh model list** (odświeżenie listy modeli) w selektorze, żeby wczytać ją ponownie.
 
@@ -33,8 +33,7 @@ Domyślne adresy, które Marinara wpisuje za ciebie:
 - OpenAI: `https://api.openai.com/v1`
 - Anthropic: `https://api.anthropic.com/v1`
 - Google Gemini: `https://generativelanguage.googleapis.com/v1beta`
-- Google Vertex AI:
-  `https://us-central1-aiplatform.googleapis.com/v1/projects/YOUR_PROJECT_ID/locations/us-central1`
+- Google Vertex AI: `https://us-central1-aiplatform.googleapis.com/v1/projects/YOUR_PROJECT_ID/locations/us-central1`
 - Mistral: `https://api.mistral.ai/v1`
 - Cohere: `https://api.cohere.ai/compatibility/v1`
 - OpenRouter: `https://openrouter.ai/api/v1`
@@ -134,7 +133,7 @@ Połącz się z usługą DeepSeek przez jej własny kafelek, a nie przez skierow
 
 ### OpenAI-compatible
 
-**OpenAI-compatible** łączy serwer lub serwer proxy, który przyjmuje format żądań OpenAI, taki jak Ollama, LM Studio czy KoboldCpp. W oknie **Add account** ta opcja nazywa się **OpenAI-compatible address** (adres zgodny z OpenAI). Przy większości serwerów lokalnych klucz może zostać pusty. Adres wpisujesz samodzielnie. Zobacz [Podłączanie modelu lokalnego lub samodzielnie hostowanego](local-self-hosted.md). Mały model, który Marinara uruchamia samodzielnie, opisuje przewodnik [Konfiguracja modelu wbudowanego](local-model.md).
+**OpenAI-compatible** łączy serwer lub serwer proxy, który przyjmuje format żądań OpenAI, taki jak Ollama, LM Studio czy KoboldCpp. Na liście **Dodaj połączenie** ta opcja nazywa się **OpenAI-compatible address** (adres zgodny z OpenAI). Przy większości serwerów lokalnych klucz może zostać pusty. Adres wpisujesz samodzielnie. Zobacz [Podłączanie modelu lokalnego lub samodzielnie hostowanego](local-self-hosted.md). Mały model, który Marinara uruchamia samodzielnie, opisuje przewodnik [Konfiguracja modelu wbudowanego](local-model.md).
 
 ## Obrazy i wideo
 
@@ -146,7 +145,7 @@ Zobacz [Dostawcy generowania obrazów i konfiguracja](../media/image-providers.m
 
 ## Decision
 
-W sekcji **Decisions** są kafelki **TypeSafe** (domyślny adres `https://api.typesafe.ai`), **Own decision server** (własny serwer decyzyjny) i **Built-in model (decisions)** (model wbudowany, decyzje). Usługi czatu korzystające z formatu czatu OpenAI też mogą obsługiwać decyzje, ale tylko z modelem, który zwraca logarytmy prawdopodobieństw (oceny każdej możliwej odpowiedzi). Model decyzyjny odpowiada na pytania typu tak lub nie dotyczące twojego czatu. Zobacz [Modele decyzyjne](decision-models.md).
+W zakładce **Decyzje** są kafelki **TypeSafe** (domyślny adres `https://api.typesafe.ai`), **Own decision server** (własny serwer decyzyjny) i **Built-in model (decisions)** (model wbudowany, decyzje). Usługi czatu korzystające z formatu czatu OpenAI też mogą obsługiwać decyzje, ale tylko z modelem, który zwraca logarytmy prawdopodobieństw (oceny każdej możliwej odpowiedzi). Model decyzyjny odpowiada na pytania typu tak lub nie dotyczące twojego czatu. Zobacz [Modele decyzyjne](decision-models.md).
 
 ## Audio
 
@@ -161,13 +160,11 @@ W sekcji **Voice** usługa audio odpowiada za głosy postaci i narrację. Wybier
 
 Każde źródło wpisuje domyślny adres i model. **Default voice** (domyślny głos) to głos używany wtedy, gdy nie ustawiono nic bardziej szczegółowego, na przykład głosu dla konkretnej postaci. **Request timeout (seconds)** (limit czasu żądania w sekundach) to czas, przez jaki Marinara czeka na jedną wypowiadaną kwestię. Przy wolnym serwerze głosu zwiększ tę wartość.
 
-Żeby wybrać konto mowy, którego Marinara używa domyślnie, kliknij wiersz **Voice (Text to Speech)** (głos, synteza mowy) w sekcji **Jobs** (zadania). Żeby czytać nim wiadomości na głos, wybierz je jako **Source** (źródło) w sekcji **Text to Speech** (synteza mowy). Zobacz [Konfiguracja syntezy mowy (TTS)](../media/tts-setup.md) i [Korzystanie z połączenia Audio](../media/tts-setup.md#use-an-audio-connection).
-
-<a id="music--sound-effects"></a>
+Żeby wybrać konto mowy, którego Marinara używa domyślnie, kliknij wiersz **Voice (Text to Speech)** (głos, synteza mowy) w sekcji **Domyślne**. Żeby czytać nim wiadomości na głos, wybierz je jako **Source** (źródło) w sekcji **Text to Speech** (synteza mowy). Zobacz [Konfiguracja syntezy mowy (TTS)](../media/tts-setup.md) i [Korzystanie z połączenia Audio](../media/tts-setup.md#use-a-voice-model-from-an-account).
 
 ## Muzyka i efekty dźwiękowe
 
-Ten typ konta generuje instrumentalną muzykę i efekty dźwiękowe, niezależnie od mowy. Okno **Add account** nie ma dla niego kafelka. Takie konta powstają przy aktualizacji (zobacz niżej) albo przez import. Edytujesz je przez **Edit model** (edycja modelu), gdzie wybierasz usługę i włączasz **Music generation** (generowanie muzyki), **Sound-effect generation** (generowanie efektów dźwiękowych) albo oba przełączniki. Konfiguracja gry w trybie Game Mode prosi o takie konto w polu **Music & Sound Effects account** (konto muzyki i efektów dźwiękowych), a jego domyślny wybór to **Use the default Music & Sound Effects account** (użycie domyślnego konta muzyki i efektów dźwiękowych).
+Ten typ konta generuje instrumentalną muzykę i efekty dźwiękowe, niezależnie od mowy. Lista **Dodaj połączenie** nie ma dla niego pozycji. Takie konta powstają przy aktualizacji (zobacz niżej) albo przez import. Edytujesz je przez **Edit model** (edycja modelu), gdzie wybierasz usługę i włączasz **Music generation** (generowanie muzyki), **Sound-effect generation** (generowanie efektów dźwiękowych) albo oba przełączniki. Konfiguracja gry w trybie Game Mode prosi o takie konto w polu **Music & Sound Effects account** (konto muzyki i efektów dźwiękowych), a jego domyślny wybór to **Use the default Music & Sound Effects account** (użycie domyślnego konta muzyki i efektów dźwiękowych).
 
 Usługi:
 
@@ -185,15 +182,13 @@ Podczas aktualizacji każde konto Audio z włączonym generowaniem zyskuje osobn
 
 Włącz generowany dźwięk osobno dla każdej gry albo włącz **Sound effects** (efekty dźwiękowe) w ustawieniach komend trybu Roleplay, żeby używać `[sound: description]`. Gacha Forge ma własne ustawienie generowania dźwięku. Wbudowane dźwięki Game pozostają dostępne przy wyłączonym generowaniu.
 
-<a id="embeddings"></a>
-
 ## Embeddingi
 
 Embeddingi zamieniają tekst na listy liczb, dzięki czemu Marinara może znajdować powiązany tekst. Napędzają wyszukiwanie semantyczne w lorebookach i funkcję Memory Recall. Większość usług czatu pozwala ustawić model embeddingów i opcjonalne pole **Embedding endpoint URL** (adres URL endpointu embeddingów) w sekcji **Semantic search (embeddings)** w edytorze modelu.
 
 **Anthropic**, **Claude (Subscription)**, **OpenAI (ChatGPT)** i **Grok CLI (Subscription)** nie potrafią tworzyć embeddingów. W ich przypadku użyj listy rozwijanej **Embedding provider** (dostawca embeddingów), żeby pożyczyć inne konto, na przykład zgodne z OpenAI, **Google Gemini** albo **Built-in model** (model wbudowany).
 
-Żeby używać jednego źródła embeddingów dla każdego konta bez własnych ustawień embeddingów, kliknij wiersz **Embeddings** (embeddingi) w sekcji **Jobs**. **Marinara's own search** (własne wyszukiwanie aplikacji Marinara) zachowuje wbudowany model embeddingów. Własny model embeddingów konta albo jego **Embedding provider** nadal ma pierwszeństwo. Po zmianie ponownie zwektoryzuj lorebooki i wspomnienia. Zobacz [Wyszukiwanie semantyczne w lorebookach](../lorebooks/semantic-search.md).
+Żeby używać jednego źródła embeddingów dla każdego konta bez własnych ustawień embeddingów, kliknij wiersz **Embeddings** (embeddingi) w sekcji **Domyślne**. **Marinara's own search** (własne wyszukiwanie aplikacji Marinara) zachowuje wbudowany model embeddingów. Własny model embeddingów konta albo jego **Embedding provider** nadal ma pierwszeństwo. Po zmianie ponownie zwektoryzuj lorebooki i wspomnienia. Zobacz [Wyszukiwanie semantyczne w lorebookach](../lorebooks/semantic-search.md).
 
 ## Limity czasu
 

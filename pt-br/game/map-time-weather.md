@@ -7,7 +7,7 @@ Use o painel de mapa para ver onde a sua equipe está e para movê-la. Este guia
 Game Mode mostra um painel de mapa na tela do jogo. Ele traz o nome do mapa atual, o dia de jogo e um ícone de céu que indica a hora do dia.
 
 - **No computador**, o mapa é um painel embutido, fácil de consultar num relance. Você pode arrastá-lo e travá-lo no lugar. Para entender como funcionam os painéis arrastáveis, veja [Game Mode: widgets do HUD](hud-widgets.md).
-- **No celular**, toque em **Map** (mapa) para abrir o painel. O botão dele começa perto do canto superior esquerdo e pode ser arrastado pelo chat. Use **Lock window** (travar janela) para manter o botão no lugar e **Close** (fechar) para voltar a ele. A posição fica salva com o chat. O mapa do celular usa o estilo de widget do chat definido em **Settings → Appearance → App**, e o botão dele fica separado do menu de três pontos **Chat tools** (ferramentas do chat).
+- **No celular**, toque em **Map** (mapa) para abrir o painel. O botão dele começa perto do canto superior esquerdo e pode ser arrastado pelo chat. Use **Lock window** (travar janela) para manter o botão no lugar e **Close** (fechar) para voltar a ele. A posição fica salva com o chat. O mapa do celular usa o estilo de widget do chat definido em **Configurações → Aparência → Botões e janelas do chat**, e o botão dele fica separado do menu de três pontos **Chat tools** (ferramentas do chat).
 
 Uma partida VN tem o mapa de cena descrito aqui. O overworld, as cidades e os mapas de masmorra pertencem às partidas Overworld, que ainda não estão disponíveis (veja [VN ou Overworld](getting-started.md#vn-or-overworld)).
 
@@ -72,7 +72,30 @@ Em um jogo com mundo, o tempo também passa sozinho:
 
 ## Clima
 
-O jogo acompanha o clima com contas fixas, e não com a IA. O clima depende do bioma (o tipo de lugar onde a equipe está, como deserto, ártico, litoral ou montanha) e da estação do ano. Alguns exemplos são céu limpo, nublado, chuva, tempestade, neve, nevasca, neblina e tempestade de areia. O clima muda com mais frequência quando você viaja ou faz um descanso longo, às vezes quando explora e raramente nas outras situações. Ele dá cor à maneira como o GM descreve cada cena.
+O jogo acompanha o clima com contas fixas, e não com a IA. Alguns exemplos são céu limpo, nublado, chuva, tempestade, neve, nevasca, neblina, onda de calor e tempestade de areia. O clima dá cor à maneira como o GM descreve cada cena.
+
+Em um jogo com um mundo gerado, o clima vem das condições climáticas do lugar onde a equipe está no mapa:
+
+- **O terreno ao redor da equipe.** Desertos são secos e raramente têm chuva, selvas são úmidas e quentes, campos de neve são frios e montanhas são mais frias e têm mais neblina que os vales abaixo delas.
+- **A latitude e o mar.** Em um mapa de um mundo inteiro, o topo e a base ficam perto dos polos, e o meio fica perto do equador. A distância do mar também conta: os litorais têm invernos amenos, e lugares bem no interior têm verões quentes e invernos rigorosos.
+- **A estação local.** Ao sul do equador, o verão chega no inverno do calendário. Perto do equador, o ano tem uma estação chuvosa e uma seca em vez de inverno.
+- **O clima em movimento.** Sistemas meteorológicos se deslocam pelo mapa ao longo de horas e dias, então o céu não passa de uma onda de calor para neblina de uma vez, e lugares próximos compartilham o clima. Pancadas de chuva e tempestades com trovões em climas quentes se formam à tarde.
+
+Quando a história ou o GM pede um clima que o lugar não pode ter naquele momento, como neve em um deserto quente no verão, o jogo usa o clima mais próximo que se encaixa (nesse caso, um vento frio e forte). O GM é informado das condições climáticas e do que não pode acontecer ali.
+
+Um jogo sem um mundo gerado estima o clima pelo nome do local, como "deserto", "porto" ou "montanha".
+
+### Lugares fora das leis da natureza
+
+Uma maldição, um deus ou outro grande poder pode prender um lugar a uma condição: uma cidade mergulhada em uma noite sem fim, uma floresta mantida no outono, um vale sob neve que nunca derrete. O GM estabelece essa condição fixa na história, e ela prevalece sobre o clima e o relógio até que o GM a remova:
+
+- **Clima.** O lugar mantém o clima fixado, mesmo um que suas condições climáticas nunca permitiriam, como neve em um deserto.
+- **Estação.** O lugar permanece em uma estação enquanto o resto do mundo avança.
+- **Luz.** No lugar é sempre noite, crepúsculo ou dia. A iluminação e os efeitos climáticos da cena acompanham essa condição, e o mapa do overworld sombreia a área afetada.
+
+Um mundo pode começar com condições fixas já estabelecidas. Quando você cria um mundo a partir dos seus lorebooks, qualquer lugar que o lore descreva como fora das leis da natureza, como "o Sallow Vale está sempre no outono" ou "Gotham nunca vê o sol", tem essa condição fixada desde o primeiro dia. O mesmo vale para uma condição fixa descrita no cenário. O GM é informado desses lugares e ainda pode remover a condição fixa na história.
+
+Uma condição fixa cobre o lugar e tudo dentro dele, então fixar uma região também fixa suas cidades. Quando as condições se sobrepõem, o lugar mais próximo prevalece, então uma cidade dentro de uma região amaldiçoada pode manter seu próprio clima. Uma condição fixa também pode cobrir o mundo inteiro. A cena não pode removê-la pedindo outro clima; só o GM pode fazer isso.
 
 Para ver o clima na tela, ative **Dynamic weather effects (rain, snow, fog, etc.)** nas configurações de aparência. Ela vem ativada por padrão. Partículas de chuva, neve e neblina aparecem então sobre o jogo e combinam com o clima e a hora do dia. Veja [Configurações de aparência](../appearance/appearance-settings.md).
 
@@ -108,7 +131,7 @@ Para alternar entre as visualizações, use **Show the scene** (mostrar a cena) 
 
 ### Pacotes de tiles
 
-Os pacotes de tiles guardam a paleta e cada tile (cada tipo de terreno, os assentamentos por tamanho, a equipe e as ruas, os telhados e os moradores de uma cidade) como linhas de pixels. Cada família de cenário tem um pacote embutido. Abra o painel **Agents** (agentes) e encontre **Tile packs** (pacotes de tiles) para:
+Os pacotes de tiles guardam a paleta e cada tile (cada tipo de terreno, os assentamentos por tamanho, a equipe e as ruas, os telhados e os moradores de uma cidade) como linhas de pixels. Cada família de cenário tem um pacote embutido. Abra **Biblioteca → Agentes** e encontre **Tile packs** (pacotes de tiles) para:
 
 - escolher com qual pacote cada cenário é desenhado (**Built in**, ou embutido, é o pacote do próprio cenário),
 - **Import a tile pack** (importar um pacote de tiles) de um arquivo `.tilepack.json`,

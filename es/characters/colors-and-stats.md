@@ -14,8 +14,6 @@ La pestaña **Colors** define tres colores: el color del nombre, el color del di
 
 **Extract Colors from Avatar** (Extraer colores del avatar) elige los tres colores a partir de la imagen del avatar. Antes de que exista un avatar, el botón está desactivado y dice **Upload an avatar first** (Sube primero un avatar). Después puedes seguir cambiando cualquier color a mano.
 
-<a id="the-three-colors"></a>
-
 ### Los tres colores
 
 Define cada uno con el campo de color, o escribe un valor:
@@ -32,9 +30,9 @@ Define cada uno con el campo de color, o escribe un valor:
 linear-gradient(90deg, #f59e0b, #ef4444)
 ```
 
-**Other names** (Otros nombres) está en la pestaña **Metadata** (Metadatos), debajo de **Name** (Nombre). Incluye apodos, nombres completos o títulos como `Clark Kent, Kal-El, Mr. Kent`. En los mensajes de los chats de Roleplay aparecen con el color del nombre, igual que el nombre principal. Activa la opción en cada chat: **Color Character Names in Text** (Colorear los nombres de los personajes en el texto) en **Chat Settings → Characters** (Ajustes del chat → Personajes) y **Color Persona Name in Text** (Colorear el nombre de la persona en el texto) en **Chat Settings → Persona**.
+Los **Other names** (Otros nombres), apodos, nombres completos o títulos, como `Clark Kent, Kal-El, Mr. Kent`, están en la pestaña **Metadata** (Metadatos), en **Name** (Nombre). En los chats de Roleplay reciben el color del nombre en los mensajes, igual que el nombre principal. Actívalo por chat: **Color Character Names in Text** (Colorear los nombres de los personajes en el texto) en **Chat Settings → Characters** (Ajustes del chat → Personajes), y **Color Persona Name in Text** (Colorear el nombre de la persona en el texto) en **Chat Settings → Persona** (Ajustes del chat → Persona).
 
-Para cambiar la transparencia, usa **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity** (Configuración → Apariencia → Presentación de Roleplay → Opacidad del fondo de los mensajes de Roleplay).
+Para cambiar la transparencia, usa **Settings → Roleplay → Roleplay Messages → Roleplay Messages Background Opacity** (Configuración → Roleplay → Mensajes de Roleplay → Opacidad del fondo de los mensajes de Roleplay).
 
 El control deslizante escala la transparencia guardada en el color del cuadro del mensaje de tu personaje y de tu persona: un color con su propio alfa, como `rgba(255, 255, 255, 0.25)` o `#FFFFFF40`, se muestra con ese alfa multiplicado por el valor del control deslizante. Tus valores de color guardados se mantienen tal como están. Los colores del nombre y del diálogo no se ven afectados.
 
@@ -46,7 +44,7 @@ Los puntos de personalización del fondo de los temas personalizados y el CSS de
 
 ### Dónde se muestran tus colores
 
-- El color del nombre da color al nombre visible en los mensajes del chat. Para un personaje, también da color al nombre en las pestañas de la barra lateral. Para una persona, también da color al nombre en los selectores de persona.
+- El color del nombre da color al nombre visible en los mensajes del chat. Para un personaje, también da color al nombre en la lista de chats. Para una persona, también da color al nombre en los selectores de persona.
 - El color del diálogo da color al texto dentro de las comillas de diálogo, tanto con comillas rectas como con otros estilos de comillas. También puedes poner este texto en negrita en **Settings** (Configuración). Los chats de Conversation no lo usan.
 - El color del cuadro del mensaje define el fondo de las burbujas de mensaje de ese personaje o persona en los chats de Roleplay. Los chats de Conversation y de Game no lo usan.
 
@@ -64,6 +62,10 @@ Un personaje tiene un interruptor, **Enable Roleplay Stats** (Activar Estadísti
 - **Attributes** (Atributos) son números con nombre. Los personajes nuevos empiezan con STR, DEX, CON, INT, WIS y CHA, cada uno en 10.
 
 Haz clic en **Add** (Agregar) para crear una reserva o un atributo, y en la X de una fila para quitarla.
+
+Los chats de Roleplay y las partidas Legacy usan estas estadísticas. Un chat nuevo de Roleplay inicia las barras de seguimiento del personaje a partir de las reservas, y un encuentro de Roleplay toma sus HP máximos de una reserva de HP. Una tirada de dados de Roleplay añade una bonificación del atributo que nombra, por lo que también cuenta un atributo personalizado como Sanity. Las partidas MRPG nunca crean una ficha a partir de ellas.
+
+En el diseño nuevo, las reservas, los atributos y los campos de seguimiento tienen su propia sección **Roleplay Stats** (Estadísticas de Roleplay), aparte de **Game Mode**. En una tarjeta que todavía no tenga ninguno, añádela con **+ Roleplay Stats** en la barra izquierda del editor. Las barras de estado de una persona también están en su sección **Roleplay Stats**.
 
 ### Estadísticas de la persona
 
@@ -87,7 +89,7 @@ Cada elección se conserva a medida que la haces, y **Back** (Atrás), **Next** 
 
 Las elecciones fuertes y débiles inclinan el crecimiento oculto del personaje en cada partida. Su árbol hermano procede de su temperamento en la partida, no de la tarjeta. Consulta [Game Mode: clases MRPG](../game/mrpg-classes.md#choose-a-characters-trees).
 
-Las **Roleplay Stats** (Estadísticas de Roleplay) debajo del bloque son las reservas y los atributos descritos arriba. Los chats de Roleplay y las partidas Legacy los usan. Una partida MRPG usa en su lugar el bloque MRPG y nunca crea una ficha a partir de ellos.
+Las **Roleplay Stats** (Estadísticas de Roleplay) debajo del bloque son las reservas y los atributos descritos arriba. Los chats de Roleplay y las partidas Legacy los usan. Una partida MRPG usa el bloque MRPG en su lugar y nunca crea una ficha a partir de ellos.
 
 <a id="game-mode-icon"></a>
 

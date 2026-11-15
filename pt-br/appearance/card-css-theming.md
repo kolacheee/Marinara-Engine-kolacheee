@@ -140,7 +140,7 @@ Roleplay e Conversation têm o mesmo esqueleto. Fique com as classes `mari-*` e 
 | `[data-card-css] p`, `[data-card-css] span` | Parágrafos e trechos em linha dentro do texto. |
 | `[data-grouped]` | Mensagens seguidas do mesmo personagem. Só no Conversation. Use `[data-card-css]:not([data-grouped])` para a primeira mensagem de um conjunto. |
 
-Para mudar o layout, abra **Settings → Appearance → Conversation** (Configurações → Aparência → Conversation), depois **Conversation Display** e então **Chat Layout**. No **Linear**, estilize `.mari-message-content` (o texto) e `[data-card-css]` (a linha), já que não há bolha.
+Para mudar o layout, abra **Configurações → Conversation → Layout do Conversation → Layout do chat**. No **Linear**, estilize `.mari-message-content` (o texto) e `[data-card-css]` (a linha), já que não há bolha.
 
 Uma bolha estilizada:
 
@@ -424,5 +424,5 @@ Output a single <style> block I can paste into Creator Notes.
 ## Guias relacionados
 
 - [Configurações de aparência](appearance-settings.md)
-- [Temas de CSS personalizados (Theme Library)](custom-css-themes.md)
+- [Temas de CSS personalizados](custom-css-themes.md)
 - [Criando e editando personagens](../characters/creating-and-editing-characters.md)

@@ -2,7 +2,7 @@
 
 Toda mensagem, sua ou da IA, tem uma barra de ferramentas. Use-a para editar, excluir, regenerar ou ocultar uma mensagem, ou para criar uma ramificação a partir dela.
 
-A barra de ferramentas aparece quando você toca em uma mensagem no celular ou no tablet, ou quando aponta o mouse para ela no computador.
+No computador, aponte o mouse para uma mensagem para ver a barra de ferramentas. No celular ou tablet, pressione e segure uma mensagem: as mesmas ações abrem em um painel.
 
 ## A barra de ferramentas da mensagem
 
@@ -42,7 +42,7 @@ Saiba mais: [Peek Prompt](peek-prompt.md), [Ramificações de chat](branches.md)
 3. Clique em **Save** (salvar) ou pressione <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Cmd</kbd>+<kbd>Enter</kbd> no Mac).
 4. Para sair sem salvar, clique em **Cancel** (cancelar) ou pressione <kbd>Esc</kbd>.
 
-Duas configurações em **Settings → General → Input & Editing** (Configurações → Geral → Entrada e edição) abrem a edição mais rápido. As duas vêm ativadas por padrão.
+Duas configurações em **Configurações → Conversando → Edição e swipes** abrem a edição mais rápido. As duas vêm ativadas por padrão.
 
 - **Up Arrow edits last message** (seta para cima edita a última mensagem): pressione <kbd>Up</kbd> com a caixa de entrada vazia.
 - **Double-click edits messages** (clique duplo edita as mensagens): dê um clique duplo ou um toque duplo em uma mensagem de Roleplay.
@@ -74,6 +74,20 @@ Um swipe é uma versão de uma resposta da IA. Uma mensagem pode guardar vários
 
 Não é possível excluir o último swipe. O aplicativo avisa "Cannot delete the last remaining swipe". Use **Delete this message** no lugar.
 
+## Gestos de toque
+
+No novo layout no celular ou tablet, swipes e toques longos substituem os botões que aparecem ao passar o mouse no computador.
+
+- **Deslize a resposta mais recente** para a esquerda ou para a direita para trocar entre os swipes dela. Deslizar para a esquerda além do último mostra a pergunta "Gerar uma nova resposta?" antes de gerar uma, porque uma nova resposta custa uma requisição.
+- **Deslize o título** na barra superior para a esquerda ou para a direita para trocar entre as abas abertas. A tela inicial conta como a aba anterior à primeira. Isso funciona no layout de celular, que um tablet usa na vertical; na horizontal, o tablet mostra a barra de abas.
+- **Deslize um chat** na lista de chats para a esquerda para mostrar **Fixar**, **Renomear**, **Tags** e **Excluir**.
+- **Pressione e segure uma mensagem** para ver as ações dela: Regenerar, Editar, Copiar, Ramificar e as demais.
+- **Pressione e segure um chat** na lista de chats para ver as mesmas ações.
+
+Desative os swipes com **Gestos de swipe em telas sensíveis ao toque** em Configurações > Conversando > Edição e swipes. O toque longo continua funcionando em qualquer caso.
+
+Na primeira vez que Marinara abre em um celular, tablet ou computador, um tutorial curto mostra onde as coisas ficam naquele tipo de dispositivo, incluindo esses gestos nas telas sensíveis ao toque. Cada modo de chat também mostra dicas na primeira vez que abre ali. Repita qualquer um deles em Configurações > Geral > Tutoriais.
+
 ## Regenerar, continuar e tentar de novo
 
 Estas três ações parecem iguais, mas fazem coisas diferentes.
@@ -92,7 +106,7 @@ Digite `/continue` (ou `/cont`) na caixa de entrada e envie. O modelo retoma de 
 /continue
 ```
 
-Marinara insere uma linha em branco antes do texto novo. Para que ele fique grudado no último caractere, desative **Settings → General → Responses → Add a new line before /continue text** (Configurações → Geral → Respostas → Adicionar uma nova linha antes do texto de /continue).
+Marinara insere uma linha em branco antes do texto novo. Para que ele fique grudado no último caractere, desative **Configurações → Conversando → Respostas → Adicionar uma nova linha antes do texto de /continue**.
 
 ### Tentar de novo com um Send vazio
 
@@ -114,7 +128,7 @@ Quando a opção **Decide who sees new messages** (decidir quem vê as novas men
 
 ## Botões de exibição das mensagens
 
-Eles ficam em **Settings → Advanced → Message Tools** (Configurações → Avançado → Ferramentas de mensagem).
+Eles ficam em **Configurações → Conversando → Informações da mensagem**.
 
 | Botão liga/desliga | Padrão | O que mostra |
 | --- | --- | --- |

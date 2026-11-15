@@ -1,79 +1,50 @@
 # Ustawienia wyglądu
 
-Zakładka **Appearance** (wygląd) zmienia wygląd aplikacji Marinara Engine: kolory, rozmiar tekstu, układ czatu i styl wiadomości w każdym trybie czatu.
+Zakładka **Wygląd** zmienia wygląd aplikacji Marinara Engine: kolory, rozmiar tekstu, odstępy, tła oraz przyciski i okna czatu. Sąsiednie zakładki **Conversation**, **Roleplay** i **Game** odpowiadają za styl poszczególnych trybów czatu.
 
 Szukasz czegoś innego?
 
+- Gotowy wygląd albo własny motyw: [Własne motywy CSS](custom-css-themes.md).
 - Inna czcionka: [Własne czcionki i Google Fonts](fonts.md).
-- Obraz tła czatu: [Tła czatu](chat-backgrounds.md).
-- Własny motyw z sekcji **Settings → Addons → Theme Library** (ustawienia, dodatki, biblioteka motywów): [Własne motywy CSS](custom-css-themes.md).
+- Obraz tła czatu: [Biblioteka teł](chat-backgrounds.md).
 - Własny wygląd postaci w czacie: [Przewodnik po stylowaniu kart w CSS](card-css-theming.md).
 
 ## Otwieranie ustawień wyglądu
 
-1. Otwórz panel **Settings**.
-2. Wybierz zakładkę **Appearance**.
-3. Wybierz przycisk na górze: **App** (aplikacja), **Conversation**, **Roleplay** albo **Game**.
+1. Otwórz **Biblioteka → Ustawienia**.
+2. Kliknij zakładkę **Wygląd**.
+3. Kliknij nazwę sekcji w wierszu pod zakładkami, żeby do niej przejść, albo przewiń.
 
-Przyciski dzielą ustawienia według trybu czatu, a zakładka pokazuje tylko wybraną grupę.
-
-| Przycisk | Sekcje |
+| Zakładka | Sekcje |
 | --- | --- |
-| **App** | **App Style**, **Text & Scale**, **Atmosphere**, **Backgrounds** |
-| **Conversation** | **Conversation Display**, **Conversation Theme** |
-| **Roleplay** | **Tracker Panel**, **Roleplay Presentation** |
-| **Game** | **Game Presentation** |
+| **Wygląd** | **Motyw**, **Czcionki i rozmiar tekstu**, **Ułatwienia dostępu**, **Kolory tekstu**, **Układ**, **Efekty**, **Tła**, **Przyciski i okna czatu**, **Motywy CSS** |
+| **Conversation** | **Układ Conversation**, **Tło Conversation** |
+| **Roleplay** | **Panel trackerów**, **Wiadomości Roleplay**, **Awatary**, **Visual Novel** |
+| **Game** | **Tekst gry**, **Grafika gry**, **Zasoby gry** |
 
-Żeby zacząć od nowa, kliknij **Reset Appearance** (przywrócenie domyślnego wyglądu) na górze sekcji **App Style**. Przycisk przywraca całą zakładkę do ustawień domyślnych aplikacji Marinara Engine, czyści tło bieżącego czatu i wyłącza aktywny motyw z biblioteki Theme Library.
+Żeby zacząć od nowa, kliknij **Resetuj wygląd** na górze sekcji **Motyw**. Przycisk przywraca domyślny wygląd aplikacji Marinara Engine, czyści tło bieżącego czatu i wyłącza własny motyw.
 
-## Przycisk App
+W klasycznym układzie te sekcje znajdują się w zakładce **Wygląd** pod czterema przyciskami: **Aplikacja**, **Conversation**, **Roleplay** i **Game**.
 
-### Color Scheme i Visual Style
+## Motyw
 
-W sekcji **App Style** lista rozwijana **Color Scheme** (schemat kolorów) ma opcje **Dark** (domyślnie) i **Light**. Aplikacja zmienia się od razu. Kolory, które mają osobne wartości domyślne dla trybu ciemnego i jasnego, idą za tym ustawieniem, dopóki nie ustawisz własnych.
+| Ustawienie | Do czego służy |
+| --- | --- |
+| **Styl wizualny** | **Default (Marinara)** to retrowy wygląd w stylu Y2K z efektami poświaty. **SillyTavern** to czysty, minimalistyczny wygląd. To ustawienie zmienia wyłącznie wygląd i nie ma nic wspólnego z importem z aplikacji SillyTavern. **Stage** używa śliwkowych, mosiężnych i karmazynowych barw nowego układu. |
+| **Nowy układ (podgląd przebudowy interfejsu)** | Domyślnie włączony. Wyłącz go, żeby wrócić do klasycznego układu. Te przewodniki opisują najpierw nowy układ. |
+| **Wygląd na tym urządzeniu** | **Tak samo jak na innych urządzeniach** (domyślnie) współdzieli styl wizualny, kolory, czcionkę i własny motyw ze wszystkimi urządzeniami. **Tylko to urządzenie** nadaje temu urządzeniu osobny wygląd, na przykład jasny na telefonie, a ciemny na komputerze. |
+| **Schemat kolorów** | **Ciemny** (domyślnie), **Jasny**, **Zgodnie z systemem** lub **Zgodnie z porą dnia** – ta ostatnia opcja przełącza schemat według zegara tego urządzenia o wybranych godzinach. |
+| **Własny kursor myszy** | Domyślnie włączony. Wyświetla kursor aplikacji Marinara Engine w kolorze akcentu. Wyłącz go, żeby korzystać z kursora systemowego albo żeby o kursorze decydował własny motyw. |
+| **Kolor akcentu** | Przyciski, aktywne ikony, obwódki fokusu, podświetlenia i kontury. Domyślnie **Gradient Marinara**, mieszanka różu, pomarańczu i cyjanu. |
+| **Pulsowanie akcentu** | Delikatnie rozjaśnia i przygasza akcent albo przechodzi po kolei przez barwy gradientu. Domyślnie włączone na komputerze, wyłączone na telefonie. |
+| **Tryb RGB** | Przeprowadza akcent przez tęczową paletę. Zapisany **Kolor akcentu** pozostaje bez zmian. Domyślnie wyłączony. |
 
-**Visual Style** (styl wizualny) ma dwa kafelki. **Default (Marinara)** to retrowy wygląd w stylu Y2K z efektami poświaty. **SillyTavern** to czysty, minimalistyczny wygląd. To ustawienie zmienia wyłącznie wygląd i nie ma nic wspólnego z importem z aplikacji SillyTavern.
+**Kolor akcentu** przyjmuje jednolity kolor albo gradient, czyli płynne przejście między dwoma lub większą liczbą kolorów. Kliknij **Przywróć domyślne**, żeby wrócić do wartości domyślnej. Tło aplikacji zależy od trybu ciemnego lub jasnego, a własny motyw może ustawić inne. Naraz może być włączone tylko jedno z ustawień **Pulsowanie akcentu** i **Tryb RGB**.
 
-### Tło aplikacji i Accent Color
+## Czcionki i rozmiar tekstu
 
-**Accent Color** przyjmuje jednolity kolor albo gradient, czyli płynne przejście między dwoma lub większą liczbą kolorów. Żeby wrócić do wartości domyślnej, wyczyść pole przyciskiem **Reset to default** (przywrócenie wartości domyślnej).
-
-| Ustawienie | Co koloruje | Domyślnie |
-| --- | --- | --- |
-| **Accent Color** (kolor akcentu) | Przyciski, aktywne ikony, obwódki fokusu, podświetlenia, kontury paneli i kontrolki wokół czatu. | **Marinara Gradient** (gradient Marinara), mieszanka różu, pomarańczu i cyjanu |
-
-Żeby zmienić tło głównej powłoki aplikacji, użyj **UI Editor** (edytor interfejsu) w **App Style**:
-
-1. Otwórz listę rozwijaną z napisem **Choose what to change…** (wybór tego, co zmienić) i wybierz **Whole app** (cała aplikacja).
-2. Kliknij **Background** (tło) i wybierz kolor albo gradient.
-3. Kliknij **Save** (zapis).
-
-Bez zapisanego tła aplikacja używa `#050312` w trybie Dark i `#faf8ff` w trybie Light. Żeby wrócić do domyślnego tła, otwórz ponownie **Whole app** i kliknij **Reset to default**.
-
-Wartość taka jak `#050312` to szesnastkowy kod koloru, czyli krótki zapis barwy.
-
-Zachowaniem akcentu sterują dwa przełączniki. Naraz może być włączony tylko jeden.
-
-- **Accent Pulse** animuje kolor akcentu. Kolory jednolite rozjaśniają się i przygasają, a gradienty przechodzą po kolei przez swoje barwy. Domyślnie jest włączony na komputerze i wyłączony na telefonie.
-- **RGB Mode** przeprowadza akcent przez tęczową paletę. Zapisany kolor **Accent Color** pozostaje bez zmian. Domyślnie jest wyłączony.
-
-Jeśli urządzenie prosi o ograniczenie ruchu, obie animacje są pomijane.
-
-### Pozostałe kontrolki sekcji App Style
-
-- **Custom Mouse Pointer** (własny wskaźnik myszy, domyślnie włączony) wyświetla kursor aplikacji Marinara Engine w kolorze akcentu. Wyłącz go, żeby korzystać z kursora systemowego albo żeby o kursorze decydował własny motyw.
-- **Reduce Ambient Animations & Effects** (ograniczenie animacji i efektów otoczenia) zatrzymuje ozdobne animacje, cząsteczki otoczenia, obracające się podglądy i stopniowe odsłanianie tekstu. Marinara robi to też wtedy, gdy urządzenie prosi o ograniczenie ruchu.
-- **Desktop sidebar width** (szerokość pasków bocznych na komputerze) ustawia szerokość obu pasków bocznych na komputerze. Przycisk **Reset width** (przywrócenie szerokości) ją przywraca. Telefony zachowują swój układ.
-
-### Chat widget style
-
-Na dole sekcji **App Style** wybierz **Default** (domyślny), **Dottore** lub **Prof. Mari** dla przesuwanych przycisków, okien i sekcji czatu. Czcionkę, kształt i trzy główne kolory można zmieniać osobno, a trzy przełączniki **Apply preset** (zastosowanie presetu) przenoszą styl na wiadomości, pola wpisywania i kontrolki czatu. **Button size (px)** (rozmiar przycisków w pikselach) zmienia rozmiar przesuwanych przycisków czatu i ich ikon bez zmiany ustawienia **Display Size** (rozmiar wyświetlania). Wpisz wartość od 32 do 96 albo zostaw pole puste, żeby użyć rozmiaru domyślnego. Wszystkie kontrolki opisuje przewodnik [Własne motywy CSS](custom-css-themes.md#ready-made-chat-window-styles).
-
-### Display Size i Chat Font Size
-
-W sekcji **Text & Scale**:
-
-- **Display Size** ustawia bazowy rozmiar tekstu dla całej aplikacji na tym urządzeniu. Zmiana działa od razu. Wybierz jedną z tych opcji:
+- **Czcionka** wybiera czcionkę aplikacji. Zobacz [Własne czcionki i Google Fonts](fonts.md).
+- **Rozmiar wyświetlania** ustawia bazowy rozmiar tekstu dla całej aplikacji na tym urządzeniu. Zmiana działa od razu.
 
 | Opcja | Rozmiar |
 | --- | --- |
@@ -89,71 +60,125 @@ W sekcji **Text & Scale**:
 
 - **Chat Font Size** (rozmiar czcionki czatu) to suwak rozmiaru tekstu wiadomości w czacie, od 12 px do 72 px. Domyślnie jest to 16 px.
 
-W tej samej sekcji jest lista rozwijana **Font** (czcionka). Zobacz [Własne czcionki i Google Fonts](fonts.md).
+## Ułatwienia dostępu
 
-### Kolory tekstu czatu i obrys
+| Ustawienie | Do czego służy |
+| --- | --- |
+| **Interlinia** | Odstępy między wierszami wiadomości i dłuższego tekstu: **Domyślne**, **Swobodne (1,6)**, **Luźne (1,8)** lub **Podwójne (2,0)**. Menu i przyciski zachowują swój rozmiar. |
+| **Odstępy między literami** | Odstępy między literami w całej aplikacji: **Domyślne**, **Nieco szerzej**, **Szerzej** lub **Najszersze**. |
+| **Wysoki kontrast** | Wyraźniejsze kolory tekstu, obramowań i fokusu. Opcja **Zgodnie z systemem** włącza go, gdy urządzenie prosi o większy kontrast. |
+| **Wyraźne obwódki fokusu** | Gruby obrys elementu wybranego klawiaturą. Klawisz <kbd>Tab</kbd> udostępnia też linki **Przejdź do treści**. |
+| **Ogranicz ruch** | Zatrzymuje animacje, przejścia, **Pulsowanie akcentu** i efekty motywu. Włącza się automatycznie, gdy urządzenie prosi o ograniczenie ruchu. |
+| **Intensywność grafiki motywu** | Określa, jak mocno widać obraz tła i nakładkę własnego motywu (deszcz, liście, linie skanowania). Zmniejsz wartość, gdy grafika motywu utrudnia czytanie tekstu. |
+| **Kolory przyjazne daltonistom** | Niebieski i pomarańczowy zamiast zielonego i czerwonego dla kropek stanu, wskaźników i przycisków usuwania. |
 
-Również w sekcji **Text & Scale**:
+## Kolory tekstu
 
 - **Chat Text Color** (kolor tekstu czatu) to główny kolor tekstu wiadomości. Domyślnie jest to `#d4d4d4` w trybie Dark i `#1a1025` w trybie Light.
-- **Default Dialogue Color** (domyślny kolor dialogów) koloruje wypowiedzi w cudzysłowie, gdy postać lub persona nie ma własnego koloru Dialogue Highlight Color. Kolory z karty mają pierwszeństwo. Gdy przełącznik **Apply preset colors** (zastosowanie kolorów presetu) jest włączony, wypowiedzi przyjmują kolor tekstu ze stylu czatu.
-- **Chat Chrome Text Color** ustawia tekst kontrolek wokół czatu: widgetów trackerów, etykiet folderów i opisów ustawień. Ma te same wartości domyślne co **Chat Text Color**.
+- **Domyślny kolor dialogu** koloruje wypowiedzi w cudzysłowie, gdy postać lub persona nie ma własnego koloru wyróżnienia dialogu. Kolory z karty mają pierwszeństwo. Gdy przełącznik **Zastosuj kolory presetu** jest włączony w sekcji **Przyciski i okna czatu**, wypowiedzi przyjmują kolor tekstu z tego stylu.
+- **Kolor tekstu obramowania czatu** ustawia tekst kontrolek wokół czatu: widgetów trackerów, etykiet folderów, opisów ustawień i okien otwieranych przyciskami czatu. Ma te same wartości domyślne co **Kolor tekstu czatu**.
 - **Text Outline / Stroke** (obrys tekstu) dodaje obwódkę, dzięki której tekst pozostaje czytelny na niespokojnym tle. Ustaw kolor i szerokość **Width** od 0 do 5 px. Domyślnie jest to 0,5 px, a 0 wyłącza obrys.
 
-Wyczyszczenie pola koloru przywraca wartość domyślną schematu.
+## Układ
 
-### Sekcja Atmosphere
+- **Szerokość paska bocznego na komputerze** ustawia szerokość obu pasków bocznych na komputerze. Przycisk **Resetuj szerokość** ją przywraca. Telefony zachowują swój układ.
+- **Pokaż pasek stanu Androida** pokazuje pasek stanu telefonu w aplikacji na system Android.
 
-Przełącznik **Dynamic weather effects (rain, snow, fog, etc.)** jest domyślnie włączony. Pokazuje cząsteczki pogodowe zgodnie z pogodą i porą dnia w historii. Daje widoczny efekt tylko wtedy, gdy dla czatu włączony jest agent **World State**. Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
+## Efekty
 
-### Sekcja Backgrounds
+- **Dynamiczne efekty pogody (deszcz, śnieg, mgła itd.)** są domyślnie włączone. Pokazują pogodę zgodnie z pogodą i porą dnia w historii oraz wymagają włączonego agenta **World State** dla czatu. Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
+- **Ogranicz animacje i efekty otoczenia** zatrzymuje ozdobne animacje, cząsteczki, obracające się podglądy i stopniowe odsłanianie tekstu.
+- **Ograniczone efekty renderowania** spłaszcza kosztowne półprzezroczyste panele i cienie, żeby słabsze urządzenia działały płynnie.
 
-Sekcja **Backgrounds** (tła) zawiera selektor **Chat Background** (tło czatu) i **Background Blur** (rozmycie tła). Są tu też dwie inne kontrolki. **Conversation background image opacity** (nieprzezroczystość obrazu tła w trybie Conversation) ustawia, jak mocno widać tło czatu w trybie Conversation; gradient nadal pozostaje widoczny. **Chat List Backgrounds** (tła na liście czatów) pokazuje tło każdego czatu jako przygaszony baner za jego wierszem na liście czatów. Wybierz **Active & Hovered** (aktywny i wskazany kursorem), **Every Row** (każdy wiersz) albo **Off** (wyłączone). Zobacz [Tła czatu](chat-backgrounds.md).
+## Tła
 
-## Przycisk Conversation
+Ta sekcja zawiera selektor **Tło czatu** i ustawienie **Rozmycie tła**. Selektor pokazuje tło bieżącego czatu (albo **Domyślne tło**) i ostatnio wybrane obrazy. Kliknij obraz lub **Przeglądaj bibliotekę**, żeby wybrać inny. Są tu też:
 
-- **Chat Layout** (układ czatu, w sekcji **Conversation Display**) zmienia wygląd wiadomości w trybie Conversation i pokazuje podgląd na żywo. **Linear** (domyślnie) wyświetla wiersze w stylu czatu. **Bubbles** wyświetla dymki w stylu komunikatora.
+- **Przezroczystość obrazu tła w trybie Conversation**: określa, jak mocno widać tło czatu w trybie Conversation.
+- **Tło czatu za panelami bocznymi**: rozciąga złagodzone tło otwartego czatu za paskami bocznymi i górnym paskiem.
+- **Tła na liście czatów**: pokazuje tło każdego czatu jako przygaszony baner za jego wierszem na liście czatów. Wybierz **Active & Hovered**, **Every Row** albo **Off**.
+
+Zobacz [Biblioteka teł](chat-backgrounds.md).
+
+## Przyciski i okna czatu
+
+**Styl widgetów czatu** ustawia wygląd przesuwanych przycisków, okien i sekcji czatu. Wybierz **Domyślny**, **Dottore** (lodowy błękit, blady metal i ścięte narożniki) lub **Professor Mari** (bajkowe ramki ze złotymi wykończeniami). Wybór resetuje kontrolki poniżej.
+
+| Kontrolka | Do czego służy |
+| --- | --- |
+| **Czcionka** | **Czcionka presetu**, **Czcionka aplikacji**, **Bezszeryfowa**, **Książkowa szeryfowa** lub **Techniczna o stałej szerokości**. |
+| **Kształt** | **Kształt presetu**, **Zaokrąglony**, **Prostokątny**, **Ścięte narożniki** lub **Łukowy**. |
+| **Rozmiar przycisków (px)** | Zmienia rozmiar przesuwanych przycisków czatu i ich ikon. Wpisz wartość od 32 do 96 albo zostaw pole puste, żeby użyć rozmiaru domyślnego. |
+| **Kolor obramowań i przycisków**, **Kolor tła**, **Kolor tekstu** | Trzy główne kolory. Zresetuj wybrany kolor, żeby zależał od presetu i trybu ciemnego lub jasnego. |
+| **Zastosuj czcionkę presetu**, **Zastosuj kształt presetu**, **Zastosuj kolory presetu** | Przenoszą styl także na wiadomości, pola wpisywania i kontrolki czatu. Domyślnie wyłączone. |
+
+Asystentka Professor Mari może stworzyć dla ciebie własny styl czatu. Poproś ją o to na czacie.
+
+## Motywy CSS
+
+Gotowe motywy oraz motywy, które tworzysz lub importujesz. Zobacz [Własne motywy CSS](custom-css-themes.md).
+
+## Zakładka Conversation
+
+- **Układ czatu** (w sekcji **Układ Conversation**) zmienia wygląd wiadomości w trybie Conversation i pokazuje podgląd na żywo. **Linear** (domyślnie) wyświetla wiersze w stylu czatu. **Bubbles** wyświetla dymki w stylu komunikatora.
 - **Avatar Shape** (kształt awatara) to **Circular** (okrągły) albo **Square** (kwadratowy). Rozmiar awatara się nie zmienia.
-- **Always display swipe menu** (stałe wyświetlanie menu swipe'ów) pokazuje strzałki swipe'ów i licznik od pierwszej odpowiedzi. Wyłącz to ustawienie, żeby pojawiały się dopiero po ponownym wygenerowaniu.
-- **Conversation Theme** (motyw trybu Conversation) ustawia dwukolorowy gradient za każdym czatem w trybie Conversation. Zakładki **Dark** i **Light** mają każda własny gradient. To ustawienie domyślne dla całego urządzenia, a nie dla pojedynczego czatu.
+- **Zdjęcia profilowe na telefonach** ustawia zdjęcia obok wiadomości na telefonie w każdym trybie czatu. **Mini** (domyślnie) umieszcza małe zdjęcie przy każdym imieniu: przed imieniem postaci i za twoim, dzięki czemu wiadomości zachowują pełną szerokość. **Pełne** zachowuje kolumnę ze zdjęciem, a **Wyłączone** ukrywa zdjęcia. Na tabletach i komputerach zawsze widać pełne zdjęcie.
+- **Motyw rozmowy** (w sekcji **Tło Conversation**) ustawia dwukolorowy gradient za każdym czatem w trybie Conversation. Zakładki **Ciemny** i **Jasny** mają każda własny gradient. To ustawienie domyślne dla wszystkich czatów w trybie Conversation, a nie dla pojedynczego czatu.
 
-## Przycisk Roleplay
+Przełączniki menu swipe'ów znajdują się w sekcji **Ustawienia → Czatowanie → Edycja i swipe'y**.
 
-Sekcja **Tracker Panel** odpowiada za styl bocznego panelu trackerów w trybie Roleplay. Zobacz [Pasek HUD i trackery w trybie Roleplay](../roleplay/hud-and-trackers.md).
+## Zakładka Roleplay
 
-Sekcja **Roleplay Presentation** (prezentacja trybu Roleplay) odpowiada za styl wiadomości w trybie Roleplay.
+**Panel trackerów** odpowiada za styl panelu statystyk, stroju i lokalizacji obok czatów w trybie Roleplay. Zobacz [Pasek HUD i trackery w trybie Roleplay](../roleplay/hud-and-trackers.md).
+
+**Wiadomości Roleplay**
 
 | Ustawienie | Do czego służy | Domyślnie |
 | --- | --- | --- |
-| **Chat position** | Gdzie na szerokim ekranie stoją wiadomości i pole wpisywania: **Left**, **Center** lub **Right**. Otwarty pasek boczny lub Tracker Panel po tej samej stronie odsuwa je na bok. Na telefonie czat zajmuje całą szerokość. | **Center** |
-| **Visual Novel display** (widok visual novel) | Pokazuje po jednym gotowym akapicie naraz, z portretem dialogowym i twoimi sprite'ami. Zmienia bieżący czat w trybie Roleplay oraz ustawienie domyślne dla czatów bez zapisanego stylu. | Wyłączone |
-| **Roleplay Messages Background Opacity** | Suwak od 0% do 100%. Zmniejsz wartość, żeby tło prześwitywało przez dymki wiadomości. | 90% |
-| **Roleplay Avatars** | Styl awatara przy każdej wiadomości: **None**, **Small Circles**, **Small Rectangles** albo **Glued Side Panel**. | **Small Circles** |
+| **Położenie czatu** | Gdzie na szerokim ekranie stoją wiadomości i pole wpisywania: **Po lewej**, **Na środku** lub **Po prawej**. Na telefonie czat zajmuje całą szerokość. | **Na środku** |
+| **Własna szerokość czatu** | Ustawia własną szerokość kolumny wiadomości. | Wyłączone |
+| **Nieprzezroczystość tła wiadomości w trybie Roleplay** | Zmniejsz wartość, żeby tło prześwitywało przez dymki wiadomości. Nadpisuje półprzezroczyste kolory z kart i presetów. | 90% |
+| **Rozciągaj wiadomości** | Każda wiadomość wypełnia cały wiersz, dzięki czemu krótkie wiadomości wyrównują się z długimi. | Wyłączone |
+| **Ukryj linię pod imionami** | Usuwa cienką linię pod imionami. | Wyłączone |
+
+**Awatary**
+
+| Ustawienie | Do czego służy | Domyślnie |
+| --- | --- | --- |
+| Styl awatara | **Brak**, **Małe koła**, **Małe prostokąty**, **Panel boczny** lub **Zanikający panel boczny**, czyli szeroki portret, który wtapia się w wiadomość. | **Małe koła** |
 | **Scrollable Avatars** | Utrzymuje awatary na widoku podczas przewijania długiej wiadomości. | Wyłączone |
-| **Message avatar scale** | Suwak od 75% do 250%. | 100% |
-| **Default sprite scale** | Suwak od 50% do 175%. Rozmiar sprite'ów ustawiony dla czatu nadal ma pierwszeństwo. | 100% |
+| **Przełączane awatary narratora**, **Obramowania awatarów Narratora** | Wygląd awatara narratora. | |
+| **Skala awatarów wiadomości** | Od 75% do 250%. | 100% |
+| **Domyślna skala sprite'ów** | Od 50% do 175%. Rozmiar sprite'ów ustawiony dla czatu nadal ma pierwszeństwo. | 100% |
 
-W tej sekcji są też **Custom chat width** (własna szerokość czatu), **Always display swipe menu**, **Reduced paint effects** (ograniczone efekty rysowania, czyli spłaszczenie kosztownej przezroczystości i cieni, żeby nawigacja pozostała płynna), **Show Thinking In Messages** (pokazywanie myślenia w wiadomościach), **Don't Collapse Thinking** (bez zwijania myślenia) i **Narrator's Cycling Avatars** (zmieniające się awatary narratora). Przy włączonym **Visual Novel display** pojawiają się też **Auto-play VN paragraphs** (automatyczne odtwarzanie akapitów VN) z ustawieniem **Paragraph delay** (opóźnienie akapitu), **Dialogue portrait scale** i **Full-body sprite scale**.
+**Visual Novel**
 
-## Przycisk Game
+**Widok Visual Novel** pokazuje po jednym gotowym akapicie naraz, z portretem dialogowym i twoimi sprite'ami. Ustawia widok nowych czatów w trybie Roleplay oraz tych bez własnego wyboru. **Automatyczne odtwarzanie akapitów VN** z ustawieniem **Opóźnienie akapitów**, **Skala portretu dialogowego** i **Skala sprite'ów całej postaci** określają sposób odtwarzania.
 
-W sekcji **Game Presentation** grupa **Game VN Art** (grafika VN w trybie Game) ma dwa suwaki: **Dialogue portrait scale** (od 75% do 175%, domyślnie 100%) i **Full-body sprite scale** (od 75% do 275%, domyślnie 135%).
+**Pokazuj myślenie w wiadomościach** i **Nie zwijaj myślenia** znajdują się w sekcji **Ustawienia → Czatowanie → Myślenie**.
 
-**Game Dialogue Display** decyduje o zachowaniu pola dialogowego.
+## Zakładka Game
 
-- **Classic Dialogue Box** (klasyczne pole dialogowe, domyślnie) pokazuje jeden aktywny fragment. Wcześniejsze linijki są dostępne pod przyciskiem **Logs** (dziennik).
-- **History Above Dialogue Box** (historia nad polem dialogowym) pokazuje wcześniejsze fragmenty nad polem, a cała sesja pozostaje tam do przewijania.
+**Tekst gry**
 
-Przełącznik **Game text effects** (efekty tekstu w trybie Game, domyślnie włączony) animuje dramatyczne słowa, wyróżnienia pisane WIELKIMI LITERAMI, wtrącenia w nawiasach i tagi efektów tekstowych. Wyłącz go, żeby wyświetlać zwykły tekst.
+- **Natychmiast pokazuj tekst gry** pomija efekt pisania.
+- **Nawigacja kółkiem myszy i kliknięciem** pozwala przechodzić przez historię za pomocą myszy.
+- **Szybkość narracji w Game** i **Przerwa między segmentami autoodtwarzania Game** określają szybkość wyświetlania tekstu i przechodzenia dalej.
+- **Wyświetlanie dialogów w grze**: **Classic Dialogue Box** (domyślnie) pokazuje jeden fragment, a wcześniejsze linijki są dostępne pod przyciskiem **Logi**. **History Above Dialogue Box** pokazuje wcześniejsze fragmenty nad polem.
+- **Efekty tekstu gry** (domyślnie włączone) animują dramatyczne słowa, wyróżnienia pisane WIELKIMI LITERAMI, wtrącenia i tagi efektów tekstowych. Wyłącz je, żeby wyświetlać zwykły tekst.
+
+**Grafika gry** ma dwa suwaki: **Skala portretu dialogowego** (od 75% do 175%, domyślnie 100%) i **Skala sprite'ów całej postaci** (od 75% do 275%, domyślnie 135%).
+
+Sekcję **Zasoby gry** opisuje przewodnik [Zasoby gry](../game/game-assets.md).
 
 ## Ustawienia, które zostają na tym urządzeniu
 
-Większość ustawień wyglądu synchronizuje się z pozostałymi urządzeniami. **Display Size** i **Chat Font Size** nie. Zapisują się w przeglądarce, której używasz. Co się synchronizuje, opisuje [Przegląd ustawień](../settings/settings-overview.md).
+Większość ustawień wyglądu synchronizuje się z pozostałymi urządzeniami. **Rozmiar wyświetlania** i **Rozmiar czcionki czatu** nie. Zapisują się w przeglądarce, której używasz. Żeby nadać urządzeniu całkiem inny wygląd, użyj **Wygląd na tym urządzeniu** w sekcji **Motyw**. Co się synchronizuje, opisuje [Przegląd ustawień](../settings/settings-overview.md).
 
 ## Powiązane przewodniki
 
+- [Własne motywy CSS](custom-css-themes.md)
 - [Własne czcionki i Google Fonts](fonts.md)
-- [Tła czatu](chat-backgrounds.md)
-- [Własne motywy CSS (Theme Library)](custom-css-themes.md)
+- [Biblioteka teł](chat-backgrounds.md)
 - [Przewodnik po stylowaniu kart w CSS](card-css-theming.md)
 - [Przegląd ustawień](../settings/settings-overview.md)

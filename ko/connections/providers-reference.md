@@ -2,7 +2,7 @@
 
 이 페이지는 Marinara Engine이 연결할 수 있는 주요 서비스의 참고 자료입니다. 서비스마다 API 키를 받는 곳, 기본 주소, 특이점을 정리했습니다. 계정을 단계별로 추가하려면 먼저 [AI 제공자에 연결하기](connecting-to-a-provider.md)를 읽으세요.
 
-서비스는 **Add account**(계정 추가) 창에서 그 서비스가 하는 일에 맞는 섹션 아래에서 고릅니다. 섹션은 **Chat**(채팅), **Images & video**(이미지 및 동영상), **Voice**(음성), **Decisions**(판단)입니다. 타일에는 아래에 적힌 이름이 표시됩니다. 주소는 Marinara가 요청을 보내는 웹 주소입니다. 계정 편집기에서는 **Address**(주소), 모델 편집기에서는 **Base URL**(기본 URL)이라고 부릅니다. 알려진 서비스라면 Marinara가 주소를 채워 줍니다. 프록시나 직접 실행하는 서버를 쓸 때만 바꾸세요.
+서비스는 **Add connection**(연결 추가)을 누른 뒤 만드는 결과물에 맞는 탭에서 고릅니다. 탭은 **Text**(텍스트), **Image**(이미지), **Video**(동영상), **Voice**(음성), **Decision**(판단)입니다. 검색 상자에 입력하면 모든 탭을 검색합니다. 목록에는 아래에 적힌 이름이 표시됩니다. 주소는 Marinara가 요청을 보내는 웹 주소입니다. 계정 편집기에서는 **Address**(주소), 모델 편집기에서는 **Base URL**(기본 URL)이라고 부릅니다. 알려진 서비스라면 Marinara가 주소를 채워 줍니다. 프록시나 직접 실행하는 서버를 쓸 때만 바꾸세요.
 
 모델은 자주 바뀌므로 이 페이지에는 목록을 싣지 않았습니다. 연결하면 선택 창에 모델 목록을 불러옵니다. 다시 불러오려면 선택 창에서 **Refresh model list**(모델 목록 새로고침)를 클릭하세요.
 
@@ -134,7 +134,7 @@ DeepSeek에 연결할 때는 **OpenAI**에 DeepSeek의 주소를 지정하지 �
 
 ### OpenAI-compatible
 
-**OpenAI-compatible**은 Ollama, LM Studio, KoboldCpp처럼 OpenAI 요청 형식을 받는 서버나 프록시를 연결합니다. **Add account** 창에서는 **OpenAI-compatible address**(OpenAI 호환 주소)로 표시됩니다. 로컬 서버는 대부분 키를 비워 두어도 됩니다. 주소는 직접 입력합니다. [로컬 모델 또는 자체 호스팅 모델 연결하기](local-self-hosted.md)를 참고하세요. Marinara가 직접 실행하는 소형 모델은 [내장 모델 설정](local-model.md)을 참고하세요.
+**OpenAI-compatible**은 Ollama, LM Studio, KoboldCpp처럼 OpenAI 요청 형식을 받는 서버나 프록시를 연결합니다. **Add connection** 목록에서는 **OpenAI-compatible address**(OpenAI 호환 주소)로 표시됩니다. 로컬 서버는 대부분 키를 비워 두어도 됩니다. 주소는 직접 입력합니다. [로컬 모델 또는 자체 호스팅 모델 연결하기](local-self-hosted.md)를 참고하세요. Marinara가 직접 실행하는 소형 모델은 [내장 모델 설정](local-model.md)을 참고하세요.
 
 ## 이미지와 동영상
 
@@ -146,7 +146,7 @@ OpenAI, OpenRouter, xAI, NanoGPT, Arli AI, Z.AI, Google의 이미지 및 동영�
 
 ## Decision
 
-**Decisions** 아래의 타일은 **TypeSafe**(기본 주소 `https://api.typesafe.ai`), **Own decision server**(자체 판단 서버), **Built-in model (decisions)**(결정 사이드카, 실험적)입니다. OpenAI 채팅 형식을 쓰는 채팅 서비스도 판정을 할 수 있지만, 로그 확률(가능한 답마다 매기는 점수)을 반환하는 모델에서만 가능합니다. Decision 모델은 채팅에 관한 예/아니요 질문에 답합니다. [Decision 모델](decision-models.md)을 참고하세요.
+**Decision** 탭의 타일은 **TypeSafe**(기본 주소 `https://api.typesafe.ai`), **Own decision server**(자체 판단 서버), **Built-in model (decisions)**(결정 사이드카, 실험적)입니다. OpenAI 채팅 형식을 쓰는 채팅 서비스도 판정을 할 수 있지만, 로그 확률(가능한 답마다 매기는 점수)을 반환하는 모델에서만 가능합니다. Decision 모델은 채팅에 관한 예/아니요 질문에 답합니다. [Decision 모델](decision-models.md)을 참고하세요.
 
 ## Audio
 
@@ -161,13 +161,13 @@ OpenAI, OpenRouter, xAI, NanoGPT, Arli AI, Z.AI, Google의 이미지 및 동영�
 
 소스마다 기본 주소와 모델이 채워집니다. **Default voice**(기본 음성)는 캐릭터별 음성처럼 더 구체적인 설정이 없을 때 쓰는 음성입니다. **Request timeout (seconds)**(요청 제한 시간, 초)는 Marinara가 음성 대사 한 줄을 기다리는 시간입니다. 음성 서버가 느리다면 값을 올리세요.
 
-Marinara가 기본으로 쓸 음성 계정을 고르려면 **Jobs**(작업) 상자에서 **Voice (Text to Speech)**(음성, TTS) 행을 클릭하세요. 그 계정으로 메시지를 소리 내어 읽으려면 **Text to Speech**(TTS) 카드에서 그 계정을 **Source**(연결 소스)로 고르세요. [Text to Speech(TTS) 설정](../media/tts-setup.md)과 [오디오 연결 사용하기](../media/tts-setup.md#use-an-audio-connection)를 참고하세요.
+Marinara가 기본으로 쓸 음성 계정을 고르려면 **Defaults**(기본값) 상자에서 **Voice (Text to Speech)**(음성, TTS) 행을 클릭하세요. 그 계정으로 메시지를 소리 내어 읽으려면 **Text to Speech**(TTS) 카드에서 그 계정을 **Source**(연결 소스)로 고르세요. [Text to Speech(TTS) 설정](../media/tts-setup.md)과 [오디오 연결 사용하기](../media/tts-setup.md#use-a-voice-model-from-an-account)를 참고하세요.
 
 <a id="music--sound-effects"></a>
 
 ## Music & Sound Effects
 
-이 계정 유형은 음성과 별개로 연주곡과 효과음을 만듭니다. **Add account** 창에는 이 유형의 타일이 없습니다. 이런 계정은 업그레이드(아래 참고)나 가져오기로 생깁니다. 계정은 **Edit model**(모델 편집)에서 편집하며, 여기서 서비스를 고르고 **Music generation**(음악 생성), **Sound-effect generation**(효과음 생성) 또는 둘 다 켭니다. Game 설정에서는 **Music & Sound Effects account**(음악 및 효과음 연결)에서 계정을 고르며, 기본 선택은 **Use the default Music & Sound Effects account**(기본 음악 및 효과음 연결 사용)입니다.
+이 계정 유형은 음성과 별개로 연주곡과 효과음을 만듭니다. **Add connection** 목록에는 이 유형의 항목이 없습니다. 이런 계정은 업그레이드(아래 참고)나 가져오기로 생깁니다. 계정은 **Edit model**(모델 편집)에서 편집하며, 여기서 서비스를 고르고 **Music generation**(음악 생성), **Sound-effect generation**(효과음 생성) 또는 둘 다 켭니다. Game 설정에서는 **Music & Sound Effects account**(음악 및 효과음 연결)에서 계정을 고르며, 기본 선택은 **Use the default Music & Sound Effects account**(기본 음악 및 효과음 연결 사용)입니다.
 
 서비스는 다음과 같습니다.
 
@@ -193,7 +193,7 @@ Game마다 오디오 생성을 켜거나, Roleplay의 명령 설정에서 **Soun
 
 **Anthropic**, **Claude (Subscription)**, **OpenAI (ChatGPT)**, **Grok CLI (Subscription)**은 임베딩을 만들 수 없습니다. 이런 서비스에서는 **Embedding provider**(임베딩 연결) 드롭다운으로 다른 계정을 빌려 쓰세요. OpenAI 호환 계정, **Google Gemini**, **Built-in model**(내장 모델) 등을 쓸 수 있습니다.
 
-자체 임베딩 설정이 없는 모든 계정에 임베딩 소스 하나를 쓰려면 **Jobs** 상자에서 **Embeddings**(임베딩) 행을 클릭하세요. **Marinara's own search**(없음, 내장 로컬 모델)는 내장 임베딩 모델을 계속 사용합니다. 계정에 직접 설정한 임베딩 모델이나 **Embedding provider**가 여전히 우선합니다. 이 값을 바꾼 뒤에는 로어북과 기억을 다시 벡터화하세요. [로어북 시맨틱 검색](../lorebooks/semantic-search.md)을 참고하세요.
+자체 임베딩 설정이 없는 모든 계정에 임베딩 소스 하나를 쓰려면 **Defaults** 상자에서 **Embeddings**(임베딩) 행을 클릭하세요. **Marinara's own search**(없음, 내장 로컬 모델)는 내장 임베딩 모델을 계속 사용합니다. 계정에 직접 설정한 임베딩 모델이나 **Embedding provider**가 여전히 우선합니다. 이 값을 바꾼 뒤에는 로어북과 기억을 다시 벡터화하세요. [로어북 시맨틱 검색](../lorebooks/semantic-search.md)을 참고하세요.
 
 ## 타임아웃
 

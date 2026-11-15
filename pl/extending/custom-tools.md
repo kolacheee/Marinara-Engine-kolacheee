@@ -8,20 +8,19 @@ Wywoływanie funkcji oznacza, że AI prosi aplikację o wykonanie akcji, a potem
 
 ## Tworzenie narzędzia
 
-Zanim zaczniesz, otwórz panel **Presets** (presety) z górnego paska. Narzędzia znajdują się w jego zakładce **Functions** (funkcje). Jeśli otwierasz aplikację Marinara z innego urządzenia, najpierw zapisz sekret administratora w **Settings → Advanced → Admin Access** (ustawienia, zaawansowane, dostęp administracyjny). Musi on być zgodny z `ADMIN_SECRET` serwera; zobacz przewodnik [Konfiguracja serwera](../CONFIGURATION.md).
+Zanim zaczniesz: twoje narzędzia znajdują się na stronie **Własne narzędzia**. Otwórz **Biblioteka → Własne narzędzia**. Lista narzędzi jest po lewej, a edytor wybranego narzędzia po prawej. Możesz też zacząć tworzyć narzędzie z poziomu czatu przez **Ustawienia czatu → Wywoływanie funkcji → Dodaj funkcje → Nowa własna funkcja**. W klasycznym układzie narzędzia znajdują się w sekcji **Funkcje** panelu **Presety** (ikona klucza). Jeśli otwierasz aplikację Marinara z innego urządzenia, najpierw zapisz sekret administratora w **Ustawienia → Zaawansowane → Bezpieczeństwo**. Musi on być zgodny z `ADMIN_SECRET` serwera; zobacz przewodnik [Konfiguracja serwera](../CONFIGURATION.md).
 
 Na pierwszą próbę wybierz **Static Result** (stały wynik): nie potrzebuje niczego więcej.
 
 ### Jak utworzyć narzędzie
 
-1. Na górnym pasku otwórz **Presets → Functions**.
-2. Kliknij **Create function** (utworzenie funkcji, ikona plusa). Otwiera się pusty edytor narzędzia.
-3. Wpisz nazwę małymi literami w formacie snake_case, np. `check_weather`. Dokładnie tej nazwy AI używa do wywołania narzędzia. Nazwa zaczyna się od małej litery, a dalej zawiera małe litery, cyfry i podkreślenia.
-4. Wypełnij pole **Description** (opis). Napisz je jak instrukcję dla AI, bo AI czyta je, żeby zdecydować, kiedy wywołać narzędzie. Przykład: `Get the current weather for a city the user names.`
-5. Dodaj parametry, których narzędzie potrzebuje (zobacz [Dodawanie parametrów](#add-parameters)).
-6. Wybierz **Execution Type** (typ wykonania): **Static Result**, **Webhook** albo **Script** (skrypt).
-7. Wypełnij pole właściwe dla tego typu (zobacz [Wybór typu wykonania](#choose-an-execution-type)).
-8. Kliknij **Save** (zapis). Obok przycisku mignie zielony napis **Saved**.
+1. Otwórz **Biblioteka → Własne narzędzia** i kliknij **Nowe narzędzie**. Otwiera się pusty edytor narzędzia.
+2. Wpisz nazwę małymi literami w formacie snake_case, np. `check_weather`. Dokładnie tej nazwy AI używa do wywołania narzędzia. Nazwa zaczyna się od małej litery, a dalej zawiera małe litery, cyfry i podkreślenia.
+3. Wypełnij pole **Description** (opis). Napisz je jak instrukcję dla AI, bo AI czyta je, żeby zdecydować, kiedy wywołać narzędzie. Przykład: `Get the current weather for a city the user names.`
+4. Dodaj parametry, których narzędzie potrzebuje (zobacz [Dodawanie parametrów](#add-parameters)).
+5. Wybierz **Execution Type** (typ wykonania): **Static Result**, **Webhook** albo **Script** (skrypt).
+6. Wypełnij pole właściwe dla tego typu (zobacz [Wybór typu wykonania](#choose-an-execution-type)).
+7. Kliknij **Save** (zapis). Obok przycisku mignie zielony napis **Saved**.
 
 Zasady dotyczące nazw i opisów:
 
@@ -29,43 +28,16 @@ Zasady dotyczące nazw i opisów:
 - Dwa narzędzia nie mogą mieć tej samej nazwy, a narzędzie nie może używać nazwy wbudowanej, takiej jak `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search` czy `update_about_me`. Przy kolizji pojawia się komunikat, np. `"your_name" is a reserved built-in tool name.`
 - Jeśli wychodzisz z edytora z niezapisanymi zmianami, pasek oferuje **Keep editing** (dalsza edycja), **Discard** (odrzucenie) i **Save & close** (zapisanie i zamknięcie).
 
-U góry zakładki **Functions** są przyciski:
+## Zarządzanie narzędziami
 
-- **Create function** (ikona plusa)
-- **Import functions from ZIP or JSON** (import funkcji z pliku ZIP lub JSON)
-- **Export functions to ZIP** (eksport funkcji do pliku ZIP), wyszarzony, gdy nie masz żadnych narzędzi
-- **Select functions** (wybierz funkcje, ikona zaznaczenia)
+Na stronie **Własne narzędzia** każde narzędzie na liście pokazuje nazwę, typ i liczbę parametrów oraz przełącznik włącz/wyłącz. Kliknij narzędzie, żeby je edytować.
 
-Pole **Search functions** (szukaj funkcji) poniżej przeszukuje nazwy i opisy narzędzi.
+- **Importuj** nad listą wczytuje narzędzia z pliku `.zip` lub `.json`. Narzędzia Webhook i Script są importowane jako wyłączone, żeby można je było sprawdzić przed włączeniem.
+- **Eksportuj wszystko** zapisuje wszystkie narzędzia do `marinara-functions.zip`. Jeśli zawierają adres webhooka, Marinara najpierw cię ostrzega, bo adres może zawierać klucz.
+- **⋯** przy narzędziu (lub kliknięcie go prawym przyciskiem myszy) udostępnia **Eksportuj**, **Zaznacz** i **Usuń**.
+- **Zaznacz** nad listą pozwala wybrać kilka narzędzi, a potem użyć **Eksportuj** lub **Usuń** na pasku pod listą.
 
-Każde narzędzie na liście pokazuje:
-
-- nazwę, typ, liczbę parametrów i opis;
-- przełącznik włącz/wyłącz;
-- **Edit function** (edycja funkcji) i **Delete Function** (usunięcie funkcji).
-
-Przeciągnij narzędzie za uchwyt, żeby zmienić kolejność listy. Kolejność służy tylko do wyświetlania. Podczas wyszukiwania nie da się przeciągać narzędzi. Gdy nie ma żadnych narzędzi, lista pokazuje napis **No functions yet**.
-
-
-### Porządkowanie narzędzi w folderach
-
-1. Kliknij **New Folder** (nowy folder) i nazwij folder.
-2. Kliknij ikonę folderu w wierszu narzędzia, żeby otworzyć **Move to folder** (przeniesienie do folderu).
-3. Wybierz folder. Żeby przenieść narzędzie poza folder, wybierz **No folder (top level)** (bez folderu, poziom główny).
-
-Kliknij nazwę folderu, żeby go rozwinąć lub zwinąć. Wyłącz przełącznik folderu, aby wstrzymać jego narzędzia. Nie są wtedy dostępne dla AI w żadnym czacie i nie można ich wybrać na liście narzędzi czatu ani agenta. Nagłówek pokazuje **Paused** (wstrzymane). Każde narzędzie zachowuje ustawienie własnego przełącznika. Włączone narzędzie we wstrzymanym folderze ma szary przełącznik i etykietę **Paused by folder** (wstrzymane przez folder). Po wznowieniu folderu włączone narzędzia są znów dostępne, a wyłączone pozostają wyłączone. Usunięcie folderu przenosi narzędzia na poziom główny, gdzie działają zgodnie z własnymi przełącznikami.
-
-Gdy są foldery, lista grupuje narzędzia według folderu. Kliknij **Manual order** (kolejność ręczna), żeby zobaczyć pełną listę i przeciągać narzędzia za uchwyty.
-
-### Zmiana kilku narzędzi naraz
-
-1. Kliknij **Select functions**.
-2. Zaznacz narzędzia do zmiany albo zaznacz **Select all functions** (wybierz wszystkie funkcje).
-3. Kliknij **Enable selected** (włącz zaznaczone), **Disable selected** (wyłącz zaznaczone) albo **Move to folder**. Zaznaczone narzędzia możesz też wyeksportować lub usunąć.
-
-**Enable selected** zmienia ustawienia poszczególnych przełączników. Wznów wstrzymany folder, aby jego narzędzia znów były dostępne.
-
-<a id="add-parameters"></a>
+W klasycznym układzie nagłówek **Funkcje** zawiera **Utwórz funkcję**, **Importuj funkcje z ZIP lub JSON** i **Eksportuj funkcje do ZIP**, a każdy wiersz ma **Edytuj funkcję** i **Usuń funkcję**.
 
 ## Dodawanie parametrów
 
@@ -80,8 +52,6 @@ Parametry to dane wejściowe, które AI przesyła przy wywołaniu narzędzia. Ka
 Kolejne wiersze dodaje przycisk **Add Parameter**, a wiersz usuwa jego przycisk z minusem. Wiersz z pustą nazwą znika przy zapisie.
 
 Jeśli AI nigdy nie wywołuje zaimportowanego narzędzia, jego parametry mogą być niepoprawne, a wtedy aplikacja pomija narzędzie bez informowania cię o tym. Usuń parametry i dodaj je ponownie ręcznie.
-
-<a id="choose-an-execution-type"></a>
 
 ## Wybór typu wykonania
 
@@ -179,7 +149,7 @@ Samo utworzenie narzędzia nie sprawia, że AI z niego korzysta. Trzeba jeszcze 
 3. Włącz **Enable Tool Use** (zezwolenie na korzystanie z narzędzi). Jego opis brzmi **Allow AI to call functions (dice rolls, game state, etc.)**. W nowym czacie jest domyślnie wyłączony.
 4. Sprawdź, czy działa: zadaj AI pytanie, na które odpowiada twoje narzędzie, np. "Jakie są godziny otwarcia sklepu?" w przypadku przykładu `store_hours`. Odpowiedź powinna wykorzystać tekst narzędzia.
 
-Gdy **Enable Tool Use** jest włączone, a poniżej nic nie dodano, czat może korzystać ze wszystkich globalnie włączonych narzędzi, które obsługuje: z narzędzi wbudowanych oraz z każdego własnego narzędzia, którego przełącznik w sekcji **Functions** jest włączony. Czaty Game wymagają też **Let the GM search lore** (pozwól postaci GM przeszukiwać lorebooki) dla `search_lorebook`.
+Gdy **Enable Tool Use** jest włączone, a poniżej nic nie dodano, czat może korzystać ze wszystkich globalnie włączonych narzędzi, które obsługuje: z narzędzi wbudowanych oraz z każdego własnego narzędzia, którego przełącznik w **Biblioteka → Własne narzędzia** jest włączony. Czaty Game wymagają też **Let the GM search lore** (pozwól postaci GM przeszukiwać lorebooki) dla `search_lorebook`.
 
 Aby ograniczyć czat do wybranego zestawu:
 
@@ -191,13 +161,13 @@ Po dodaniu choćby jednego narzędzia w tym czacie działają tylko dodane narz�
 
 Czaty Game mogą używać osobnego połączenia do planowania narzędzi. Jego koszt i działanie opisuje sekcja [Opcjonalne planowanie narzędzi i wyszukiwanie w lorebookach](../game/getting-started.md#optional-tool-planning-and-lore-searches).
 
-Jeśli to nie zadziałało: upewnij się, że **Enable Tool Use** jest włączone, że narzędzie jest na liście czatu (jeśli dodano konkretne narzędzia) i że przełącznik narzędzia w sekcji **Functions** jest włączony. Jaśniejszy opis w polu **Description** i jaśniejsze opisy parametrów pomagają AI zdecydować, kiedy je wywołać.
+Jeśli to nie zadziałało: upewnij się, że **Enable Tool Use** jest włączone, że narzędzie jest na liście czatu (jeśli dodano konkretne narzędzia) i że przełącznik narzędzia w **Biblioteka → Własne narzędzia** jest włączony. Jaśniejszy opis w polu **Description** i jaśniejsze opisy parametrów pomagają AI zdecydować, kiedy je wywołać.
 
 ## Przypinanie narzędzi do agenta
 
 Narzędzie można też dać agentowi zamiast czatowi.
 
-1. Otwórz panel **Agents** (agenci) i otwórz agenta.
+1. Otwórz **Biblioteka → Agenci** i otwórz agenta.
 2. Otwórz jego grupę **Tools / Function Calling** (narzędzia i wywoływanie funkcji).
 3. Włącz narzędzia, z których ten agent może korzystać.
 

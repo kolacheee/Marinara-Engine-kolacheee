@@ -7,13 +7,13 @@ Professor Mari는 홈 화면에 있는 내장 어시스턴트입니다. 앱을 �
 ## Professor Mari가 있는 곳
 
 1. 홈 화면으로 이동하세요. 홈 화면은 채팅을 하나도 열지 않았을 때 보입니다.
-2. **Professor Mari** 위젯에서 **Ask Professor Mari**(Professor Mari에게 묻기)를 클릭하거나 **Professor**(교수님) 탭을 클릭하세요.
+2. **Professor Mari** 위젯에서 **Ask Professor Mari**(Professor Mari에게 묻기)를 클릭하거나 홈 위쪽의 **Professor**(교수님)를 클릭하세요.
 
-Professor Mari의 창이 열립니다. 어느 화면에서든 부를 수도 있습니다. Search(검색)에 입력하고 **Ask Prof. Mari**를 고르거나, <kbd>Ctrl</kbd>+<kbd>J</kbd>(Mac에서는 <kbd>⌘</kbd>+<kbd>J</kbd>)를 누르거나, 휴대폰에서는 상단 바에서 아래로 당기세요. 창 머리글에는 대기 중일 때 **Ready to help**(도움말 준비됨), 작업 중일 때 **Working on it...**(처리 중...)이라고 표시됩니다.
+Professor Mari가 별도 탭에서 열립니다. 어느 화면에서든 부를 수도 있습니다. <kbd>Ctrl</kbd>+<kbd>K</kbd>를 누르고 질문을 입력한 다음 **Ask Prof. Mari**를 고르세요. 팝업 창으로 열려면 <kbd>Ctrl</kbd>+<kbd>J</kbd>(Mac에서는 <kbd>⌘</kbd>+<kbd>J</kbd>)를 누르세요. 휴대폰에서는 상단 바의 제목을 탭하세요. 창 머리글에는 대기 중일 때 **Ready to help**(도움말 준비됨), 작업 중일 때 **Working on it...**(처리 중...)이라고 표시됩니다.
 
 평소 쓰는 말로 메시지를 입력하고 <kbd>Enter</kbd>를 누르세요. <kbd>Shift</kbd>+<kbd>Enter</kbd>는 줄바꿈을 넣습니다. Professor Mari 설정에서 **Enter sends to Professor Mari**(Enter로 Professor Mari에게 전송)를 끄면 <kbd>Enter</kbd>는 줄바꿈을 넣고 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>로 보냅니다. 첫 메시지를 보내면 **Hello World** 업적이 열립니다.
 
-Professor Mari의 설정은 모두 **Settings → General → Search and Professor Mari settings → Open**(설정 → 일반 → 검색 및 Professor Mari 설정 → 열기)이나 Search의 톱니바퀴에 있습니다. 컴퓨터에서는 **Professor Mari window**(Professor Mari 창) 아래의 **Height**(높이)와 **Width**(너비) 슬라이더로 창 크기를 바꿀 수 있습니다. 휴대폰에서는 창이 화면을 가득 채웁니다.
+Professor Mari의 설정은 모두 **Settings → General → Professor Mari → Open**(설정 → 일반 → Professor Mari → 열기)이나 Search(검색)의 톱니바퀴에 있습니다. 컴퓨터에서는 **Professor Mari window**(Professor Mari 창) 아래의 **Height**(높이)와 **Width**(너비) 슬라이더로 창 크기를 바꿀 수 있습니다. 휴대폰에서는 창이 화면을 가득 채웁니다.
 
 ## Mari와 캐릭터 만들기
 
@@ -36,10 +36,10 @@ Professor Mari는 항목을 편집하기 전에 먼저 읽고, 요청이 모호�
 - 설정, 모드, 개념 설명하기.
 - 캐릭터, 페르소나, 로어북 만들기와 편집하기. 캐릭터 카드는 AI에게 이름과 성격, 말투를 부여합니다. 페르소나는 나를 나타내는 캐릭터 카드입니다. 로어북은 키워드가 나올 때 AI가 읽는 세계 설정 모음입니다.
 - 캐릭터의 [대화형 온보딩](../characters/interactive-onboarding.md) 작성하기, 설치된 Game Mode 규칙 집합의 [규칙 집합 시트](../characters/colors-and-stats.md#ruleset-sheets) 채우기. 값이 규칙 집합에 맞지 않으면 이유와 함께 변경이 거부됩니다.
-- 테마, 에이전트, 프롬프트 프리셋, Personal Extension(개인 확장) 초안 만들기와 편집하기. 초안은 코드를 직접 읽고 **Settings → Addons**(설정 → 애드온)에서 승인하기 전까지 꺼져 있습니다.
+- 테마, 에이전트, 프롬프트 프리셋, Personal Extension(개인 확장) 초안 만들기와 편집하기. 초안은 코드를 직접 읽고 **Library → Extensions**(라이브러리 → 확장)에서 승인하기 전까지 꺼져 있습니다.
 - 프리셋 전체를 갈아 끼우지 않고 프리셋의 한 섹션만 그 자리에서 편집하기.
-- 다운로드 가능한 에이전트를 비교하고 목적에 맞는 것을 알려 주기. 설치는 **Agents → Agent Organizer**(에이전트 → Agent Organizer)로 안내합니다. [다운로드 가능한 에이전트 레퍼런스](../agents/built-in-agents.md)를 참고하세요.
-- 아바타, 스프라이트, 배경 같은 이미지 만들기와 지정하기. 먼저 이미지 생성 계정이 있어야 합니다. 계정을 대신 만들어 주지는 않습니다.
+- 다운로드 가능한 에이전트를 비교하고 목적에 맞는 것을 알려 주기. 설치는 **Library → Agents**(라이브러리 → 에이전트)로 안내합니다. [다운로드 가능한 에이전트 레퍼런스](../agents/built-in-agents.md)를 참고하세요.
+- 아바타, 스프라이트, 배경, 테마 그림 같은 이미지 만들기와 지정하기, 이미지 자르기, 여백 다듬기, 크기 조절, 단색 배경 지우기. 먼저 이미지 생성 계정이 있어야 합니다. 계정을 대신 만들어 주지는 않습니다. 테마 그림은 [Professor Mari에게 그림 만들기 부탁하기](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)를 참고하세요.
 - 캐릭터나 세계관을 조사할 때 공개된 Fandom 위키 문서 찾아보기.
 
 ### 칩으로 시작하기
@@ -182,6 +182,8 @@ Professor Mari의 채팅은 평소의 채팅 목록과 따로 보관됩니다.
 1. 머리글에서 **Chats**를 클릭하세요.
 2. **Search Prof. Mari chats**(Professor Mari 채팅 검색)로 채팅을 찾으세요. 채팅을 클릭해 열거나, 이름을 바꾸거나, 삭제할 수 있습니다.
 
+Professor Mari와의 긴 채팅은 최신 메시지부터 열립니다. 위로 스크롤하고 **Show older**(이전 보기)를 클릭하면 이전 메시지를 불러옵니다. 보고 있던 위치는 그대로 유지됩니다.
+
 새로 시작하려면 **New chat**을 클릭하거나 `/new`를 입력하세요. 현재 채팅을 먼저 저장하고 **Professor Mari's previous chat was saved.**라고 표시합니다.
 
 ## 검색의 빠른 답변
@@ -231,7 +233,7 @@ Professor Mari가 작업하는 동안 창을 닫아도 됩니다. 상단 바 아
 
 ## FAQ 읽기
 
-**FAQ** 북마크나 **Learn the engine**(엔진 배우기) 위젯의 **Read FAQ**(FAQ 보기)를 클릭하면 **Professor Mari's FAQ**(Mari 교수님의 FAQ)가 열립니다. FAQ는 AI 채팅이 아니라 미리 적어 둔 고정 목록이라 내 설정을 알지 못합니다. **Search FAQ**(FAQ 검색)에 입력하면 질문이 걸러집니다. 질문마다 **Setup**, **Connections**, **Game Mode** 같은 분류 태그가 붙습니다. 질문을 탭하면 답변을 읽을 수 있습니다.
+홈의 **Learn the engine**(엔진 배우기) 위젯에서 **Read FAQ**(FAQ 보기)를 클릭하거나 클래식 레이아웃에서 **FAQ** 북마크를 클릭하면 **Professor Mari's FAQ**(Mari 교수님의 FAQ)가 열립니다. FAQ는 AI 채팅이 아니라 미리 적어 둔 고정 목록이라 내 설정을 알지 못합니다. **Search FAQ**(FAQ 검색)에 입력하면 질문이 걸러집니다. 질문마다 **Setup**, **Connections**, **Game Mode** 같은 분류 태그가 붙습니다. 질문을 탭하면 답변을 읽을 수 있습니다.
 
 ## 한계와 안전
 

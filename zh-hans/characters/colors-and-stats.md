@@ -34,7 +34,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 **Other names**(其他名字) 位于 **Metadata**(元数据) 选项卡的 **Name**(名字) 下方，可以填写昵称、全名或头衔，例如 `Clark Kent, Kal-El, Mr. Kent`。在 Roleplay 聊天消息中，它们会和主要名字使用相同的颜色。你可以按聊天开启这项功能：在 **Chat Settings → Characters**(聊天设置 → 角色) 里打开 **Color Character Names in Text**(为正文中的角色名称着色)，在 **Chat Settings → Persona**(聊天设置 → 用户角色) 里打开 **Color Persona Name in Text**(为正文中的用户角色名称着色)。
 
-要调整透明度，使用 **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity**(设置 → 外观 → Roleplay 呈现方式 → Roleplay 消息背景不透明度)。
+要调整透明度，使用 **Settings → Roleplay → Roleplay Messages → Roleplay Messages Background Opacity**(设置 → 角色扮演 → 角色扮演消息 → 角色扮演消息背景不透明度)。
 
 这个滑块会按比例缩放角色和用户角色消息框颜色中保存的透明度。如果颜色自带 alpha，例如 `rgba(255, 255, 255, 0.25)` 或 `#FFFFFF40`，它的显示透明度就是该 alpha 乘以滑块的值。你保存的颜色值本身保持不变。名字颜色和对话颜色不受影响。
 
@@ -46,7 +46,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 ### 这些颜色用在哪里
 
-- 名字颜色用于聊天消息里的显示名。角色的名字颜色还会用在侧边栏选项卡里的名字上。用户角色的名字颜色还会用在用户角色选择器里的名字上。
+- 名字颜色用于聊天消息里的显示名。角色的名字颜色还会用在聊天列表里的名字上。用户角色的名字颜色还会用在用户角色选择器里的名字上。
 - 对话颜色用于对话引号内的文字，直引号和其他样式的引号都算。你还可以在 **Settings**(设置) 里把这段文字设为加粗。Conversation(对话模式) 聊天不使用它。
 - 消息框颜色决定该角色或用户角色在 Roleplay 聊天里的消息气泡背景。Conversation 和 Game Mode(游戏模式) 聊天不使用它。
 
@@ -64,6 +64,10 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 - **Attributes**(属性值) 是带名字的数值。新角色默认带 STR、DEX、CON、INT、WIS 和 CHA，全部为 10。
 
 点击 **Add**(添加) 新增一条资源条或一项属性值，点击某一行的 X 删除它。
+
+Roleplay 聊天和 Legacy 游戏会使用这些属性。新的 Roleplay 聊天会用资源条的数值初始化角色的追踪条，角色扮演遭遇战则从 HP 资源条取得角色的最大 HP。角色扮演掷骰会加上所指定属性的加值，所以 Sanity 这样的自定义属性也有效。MRPG 游戏绝不会根据它们生成人物卡。
+
+在新布局中，资源条、属性值和追踪器字段有独立的 **Roleplay Stats**(角色扮演属性) 区域，与 **Game Mode**(游戏模式) 分开。如果卡片还没有这个区域，点击编辑器左侧栏里的 **+ Roleplay Stats**(+ 角色扮演属性) 添加。用户角色的状态条也放在它的 **Roleplay Stats** 区域里。
 
 ### 用户角色属性
 

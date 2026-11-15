@@ -1,6 +1,6 @@
 # 远程访问：登录与 IP 允许列表
 
-本指南介绍怎样从另一台设备访问 Marinara Engine，比如手机、笔记本电脑或者 Docker 容器。主要办法是登录。此外还会讲到 IP 允许列表、登录代理、HTTPS、Admin Access 以及“保存被拦截”的 CSRF 提示。这里几乎所有设置都写在服务器的 `.env` 文件里，不在应用界面中。
+本指南介绍怎样从另一台设备访问 Marinara Engine，比如手机、笔记本电脑或者 Docker 容器。主要办法是登录。此外还会讲到 IP 允许列表、登录代理、HTTPS、管理员密钥 以及“保存被拦截”的 CSRF 提示。这里几乎所有设置都写在服务器的 `.env` 文件里，不在应用界面中。
 
 先明确几个贯穿全文的说法：
 
@@ -24,7 +24,7 @@
 
 > **注意：** Docker 安装不适用这个办法。Tailscale 流量要经过 Docker 网关才能到达容器，所以 Marinara 看不出它来自 Tailscale。先设置登录（[方案 1](#option-1-login-recommended)），再把端口发布到 `127.0.0.1` 之外。
 
-从远程设备执行备份、导入、更新和其他有风险的操作时，仍然需要管理员密钥。见 [Admin Access 与高权限操作](#admin-access-and-privileged-actions)。
+从远程设备执行备份、导入、更新和其他有风险的操作时，仍然需要管理员密钥。见[管理员密钥与高权限操作](#the-admin-secret-and-privileged-actions)。
 
 ## Marinara 默认会拦截什么
 
@@ -261,9 +261,9 @@ SSL_KEY=/path/to/key.pem
 
 设置 `SSL_CERT` 和 `SSL_KEY` 之前得先有证书和私钥。本地使用可以用 `mkcert` 之类的工具生成，公网域名则可以用 `certbot`。文件缺失或者读不到时，服务器会在启动时停下，并把尝试过的确切路径打印出来。
 
-<a id="admin-access-and-privileged-actions"></a>
+<a id="the-admin-secret-and-privileged-actions"></a>
 
-## Admin Access 与高权限操作
+## 管理员密钥与高权限操作
 
 有些操作格外敏感：清除数据、创建或下载备份、导入和导出档案、安装主题和智能体、安装本地模型运行时。除了上面选定的访问方案之外，这些操作还需要一个单独的共享密钥，叫管理员密钥。
 
@@ -273,9 +273,9 @@ SSL_KEY=/path/to/key.pem
 
 ### 在应用里生成管理员密钥
 
-1. 在运行 Marinara 的那台电脑上，打开 **Settings**(设置)，切到 **Advanced**(高级) 选项卡，找到 **Admin Access**(管理员访问) 一节。
+1. 在运行 Marinara 的那台电脑上，打开 **Settings**(设置)，切到 **Advanced**(高级) 选项卡，找到 **Security**(安全) 一节。
 2. 点击 **Make admin secret**(生成管理员密钥)。Marinara 会把新密钥显示一次，并保存在这个浏览器里。
-3. 在每台远程设备上，打开 **Settings** → **Advanced** → **Admin Access**，把密钥输进输入框，然后点击 **Save**(保存)。大小写、空格和短横线都不影响。
+3. 在每台远程设备上，打开 **Settings** → **Advanced** → **Security**，把密钥输进输入框，然后点击 **Save**(保存)。大小写、空格和短横线都不影响。
 
 已经有密钥的设备也可以生成密钥。只用登录信息登录的设备不行。这样即使登录被盗，对方也没法接管这些高风险操作。
 
@@ -291,11 +291,11 @@ SSL_KEY=/path/to/key.pem
 ADMIN_SECRET=some-long-random-string
 ```
 
-2. 在远程设备上打开 **Settings** → **Advanced** → **Admin Access**。
+2. 在远程设备上打开 **Settings** → **Advanced** → **Security**。
 3. 把同一个值粘进输入框（占位文字是 **ADMIN_SECRET**），然后点击 **Save**。
 4. 应该会看到提示 **Admin secret saved for this browser**。
 
-`.env` 里的 `ADMIN_SECRET` 优先于在应用里生成的密钥。设置了它时，**Admin Access** 会注明这一点，这时只能在 `.env` 里更改密钥。
+`.env` 里的 `ADMIN_SECRET` 优先于在应用里生成的密钥。设置了它时，**Security** 会注明这一点，这时只能在 `.env` 里更改密钥。
 
 ### 需要知道的事
 

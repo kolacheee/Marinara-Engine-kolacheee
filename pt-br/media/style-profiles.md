@@ -6,7 +6,7 @@ Um perfil de estilo é um "estilo da casa" reaproveitável que molda todo prompt
 
 Toda imagem gerada começa como um prompt de texto: avatares, retratos, selfies do Conversation, planos de fundo de cena, ilustrações e sprites. Um perfil de estilo é um conjunto salvo de regras que Marinara acrescenta a esse prompt. Ele pode acrescentar palavras positivas (o que você quer), palavras negativas (o que você quer evitar) e um estilo de prompt preferido. Você escolhe um perfil como padrão do aplicativo inteiro. Esse padrão pode ser substituído em um chat ou em um modelo de imagem.
 
-Para chegar ao editor, abra **Settings → Generations → Image Generation** (Configurações → Gerações → Geração de imagens) e role até **Style Profiles** (perfis de estilo).
+Para chegar ao editor, abra **Configurações → Mídia → Geração de imagens** e role até **Style Profiles** (perfis de estilo).
 
 ## Os perfis prontos
 
@@ -35,7 +35,7 @@ Os perfis prontos são:
 
 O perfil padrão vale para toda imagem, a menos que um chat ou um modelo de imagem o substitua.
 
-1. Abra **Settings → Generations → Image Generation → Style Profiles**.
+1. Abra **Configurações → Mídia → Geração de imagens → Perfis de estilo**.
 2. Abra a lista **Default style** (estilo padrão).
 3. Escolha um perfil.
 

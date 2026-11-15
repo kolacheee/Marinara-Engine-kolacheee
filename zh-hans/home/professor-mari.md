@@ -7,13 +7,13 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用、帮你�
 ## 去哪里找她
 
 1. 打开主页。没有打开任何聊天时显示的就是主页。
-2. 点击 **Professor Mari** 小组件里的 **Ask Professor Mari**(问问 Professor Mari)，或者点击 **Professor**(教授) 标签页。
+2. 点击 **Professor Mari** 小组件里的 **Ask Professor Mari**(问问 Professor Mari)，或者点击主页顶部的 **Professor**(教授)。
 
-她的窗口随即打开。在任何界面也都能找到她：在 Search(搜索栏) 里打字并选择 **Ask Prof. Mari**，按 <kbd>Ctrl</kbd>+<kbd>J</kbd>(Mac 上是 <kbd>⌘</kbd>+<kbd>J</kbd>)，或者在手机上从顶栏往下拉。她空闲时，标题栏显示 **Ready to help**(随时待命)，干活时显示 **Working on it...**。
+她会在自己的标签页里打开。在任何界面也都能找到她：按 <kbd>Ctrl</kbd>+<kbd>K</kbd>，输入问题并选择 **Ask Prof. Mari**，按 <kbd>Ctrl</kbd>+<kbd>J</kbd>(Mac 上是 <kbd>⌘</kbd>+<kbd>J</kbd>) 打开她的弹出窗口，或者在手机上点击顶栏里的标题。她空闲时，标题栏显示 **Ready to help**(随时待命)，干活时显示 **Working on it...**。
 
 用日常语言写好消息，按 <kbd>Enter</kbd> 发送。<kbd>Shift</kbd>+<kbd>Enter</kbd> 换行。如果在她的设置里关掉 **Enter sends to Professor Mari**(按 Enter 发送给 Professor Mari)，<kbd>Enter</kbd> 就变成换行，按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 才发送。你的第一条消息会解锁 **Hello World** 成就。
 
-她的所有设置都在 **Settings → General → Search and Professor Mari settings → Open**(设置 → 常规 → Search 与 Professor Mari 设置 → 打开) 里，也可以点 Search 里的齿轮图标。在电脑上，**Professor Mari window**(Professor Mari 窗口) 下的 **Height**(高度) 和 **Width**(宽度) 滑块可以调整她窗口的大小。在手机上，她的窗口会占满屏幕。
+她的所有设置都在 **Settings → General → Professor Mari → Open**(设置 → 常规 → Professor Mari → 打开) 里，也可以点 Search 里的齿轮图标。在电脑上，**Professor Mari window**(Professor Mari 窗口) 下的 **Height**(高度) 和 **Width**(宽度) 滑块可以调整她窗口的大小。在手机上，她的窗口会占满屏幕。
 
 ## 和 Mari 一起做一个角色
 
@@ -36,10 +36,10 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用、帮你�
 - 讲解某个设置、某种模式或某个概念。
 - 创建或编辑角色、用户角色或世界书。角色卡为 AI 设定名字、性格和说话方式。用户角色是代表你的那张角色卡。世界书是一组世界设定，相关关键词出现时 AI 会读到它们。
 - 为角色编写[交互式引导](../characters/interactive-onboarding.md)，并为已安装的 Game Mode(游戏模式) 规则集填写[规则集人物卡](../characters/colors-and-stats.md#ruleset-sheets)。数值不符合规则集时，她的改动会被拒绝，并附上原因。
-- 创建或编辑主题、智能体、提示词预设或 Personal Extension(个人扩展) 草稿。在你读过草稿的代码并在 **Settings → Addons**(设置 → 插件) 里批准之前，它一直处于关闭状态。
+- 创建或编辑主题、智能体、提示词预设或 Personal Extension(个人扩展) 草稿。在你读过草稿的代码并在 **Library → Extensions**(资料库 → 扩展) 里批准之前，它一直处于关闭状态。
 - 就地编辑预设的某一部分，而不必替换整份预设。
-- 对比各个可下载的智能体，告诉你哪些适合你的目标。她会让你去 **Agents → Agent Organizer**(智能体 → 智能体管理器) 安装它们。见[可下载智能体参考](../agents/built-in-agents.md)。
-- 生成或指定图像，比如头像、立绘和背景。你需要先有一个图像生成账号，她不会替你创建。
+- 对比各个可下载的智能体，告诉你哪些适合你的目标。她会让你去 **Library → Agents**(资料库 → 智能体) 安装它们。见[可下载智能体参考](../agents/built-in-agents.md)。
+- 生成或指定图像，比如头像、立绘、背景和主题里的图片，还能裁剪、修边、调整大小或去除纯色背景。你需要先有一个图像生成账号，她不会替你创建。主题图片见[让 Professor Mari 制作图片](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)。
 - 你研究某个角色或世界观时，查阅公开的 Fandom wiki 页面。
 
 ### 从小标签开始
@@ -182,6 +182,8 @@ Send now 只适用于纯文字。带文件、`@` 链接或交给她的某个字�
 1. 点击她标题栏里的 **Chats**。
 2. 用 **Search Prof. Mari chats**(搜索 Professor Mari 聊天) 查找某个聊天。点击一个聊天，可以打开、重命名或删除它。
 
+和她的长聊天会从最新消息处打开。向上滚动并点击 **Show older**(显示更早内容)，就能载入更早的消息；滚动位置会保持不变。
+
 点击 **New chat** 或输入 `/new`，即可重新开始。它会先保存当前聊天，并显示 **Professor Mari's previous chat was saved.**
 
 ## Search 中的快速回答
@@ -231,7 +233,7 @@ Skill 是一份简短的说明文档，用来改变她处理某一类请求的�
 
 ## 阅读 FAQ
 
-点击 **FAQ** 书签，或者 **Learn the engine**(了解引擎) 小组件里的 **Read FAQ**(查看常见问题)，即可打开 **Professor Mari's FAQ**(Professor Mari 的常见问题)。这是一份写好的固定清单，不是 AI 聊天，所以它不了解你的配置。在 **Search FAQ**(搜索常见问题) 里输入文字可以筛选。每个问题都带一个分类标签，比如 **Setup**、**Connections** 或 **Game Mode**。点一下问题就能看答案。
+点击主页上 **Learn the engine**(了解引擎) 小组件里的 **Read FAQ**(查看常见问题)（或经典布局中的 **FAQ** 书签），即可打开 **Professor Mari's FAQ**(Professor Mari 的常见问题)。这是一份写好的固定清单，不是 AI 聊天，所以它不了解你的配置。在 **Search FAQ**(搜索常见问题) 里输入文字可以筛选。每个问题都带一个分类标签，比如 **Setup**、**Connections** 或 **Game Mode**。点一下问题就能看答案。
 
 ## 限制和安全
 

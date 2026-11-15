@@ -6,15 +6,15 @@
 
 APIキーとは、サービスが発行する秘密のコードで、Marinaraが自分のアカウントを使えるようにするものです。各サービスのWebアドレスはMarinaraが自動で入力するので、自分で入力することはほとんどありません。
 
-1. 上部バーの**Connections**(接続)をクリックし、**Add**(追加)をクリックします。**Add account**(アカウントの追加)ウィンドウが開きます。
-2. サービスを探します。一覧には**Images & video**(画像と動画)のセクションがあり、**Search providers**(プロバイダーを検索)を使って探すこともできます。
+1. **Library → Connections**(ライブラリー → 接続)を開き、**Add connection**(接続を追加)をクリックします。サービスの一覧が開きます。
+2. **Image**(画像)タブを開き、サービスを探します。**Search services**(サービスを検索)を使って探すこともできます。
 3. **API key**(APIキー)欄にキーを貼り付けます。無料サービスとローカルサービスにはキーは不要です。自分で動かしているサーバーの場合は、アドレスの欄に入力します。
 4. **Connect**(接続)をクリックします。Marinaraがアカウントをテストします。
-5. 一覧から画像モデルを選ぶか、モデルIDを入力します。これが画像モデルになります。**Connections**パネルで、そのアカウントの下に表示されます。
+5. **Found in … — use it for:**(検出元… — 用途:)の下で**Images**(画像)にチェックを入れます。サービスにモデル一覧がない場合は、行にモデルIDを入力します。**Done**(完了)をクリックします。
 6. 画像モデルを開き、**Test image**(画像をテスト)をクリックします。Marinaraが小さなテスト画像を作ります。
-7. アプリが画像に使うモデルにするには、**Connections**パネル上部の**Defaults**(デフォルト)で、**Images**(画像)の役割に設定します。
+7. ステップ5で**Images**にチェックを入れると、**Connections**パネル上部の**Defaults**(デフォルト)ボックスにある**Images**の役割にも設定されます。後で変更するには、**Images**の行をクリックします。
 
-アカウントに別の画像モデルを追加するには、そのアカウントの**⋯**メニューを開き、**Add image model**(画像モデルを追加)をクリックします。ウィンドウ全体については[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。
+アカウントに別の画像モデルを追加するには、アカウントの行の**⋯**をクリックし、**Add model**(モデルを追加)を選びます。ウィンドウ全体については[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。
 
 うまくいかなかった場合: キーかアドレスが間違っていると、**Test image**は失敗します。まずその両方を確認してください。**Test provider**(プロバイダーをテスト)は、Marinaraがサービスに到達できるかどうかだけを確認します。**Test image**は実際に画像を作るので、クレジットを消費することがあります。
 
@@ -220,7 +220,7 @@ NovelAIの精密な参照画像は、`nai-diffusion-4-5-full`のようなV4.5の
 
 ## メディア生成リクエストを順番に処理
 
-**Queue media generation requests**(メディア生成リクエストを順番に処理)トグルは、**Settings → Generations → Overall Generations**(設定 → 生成 → 生成全般)にあります。デフォルトはオンです。
+**Queue media generation requests**(メディア生成リクエストを順番に処理)トグルは、**Settings → Media → Generation Defaults**(設定 → メディア → 生成のデフォルト設定)にあります。デフォルトはオンです。
 
 オンのとき、Marinaraは画像のジョブを画像のアカウントごとに1件ずつ、動画のジョブを動画のアカウントごとに1件ずつ、別々のキューで送ります。同じアカウントでも、画像と動画は同時に処理できます。これは、画像や動画を求めるすべての機能に適用されます。対象は、Illustrator、トラッカー、コマンド、Gallery、Gameのアセット、Slurpのようなダウンロードしたエージェントです。アドレスとAPIキーが同じ2つのモデルは、キューを共有します。異なるアカウントは、引き続き同時に処理されます。NovelAIでは、ジョブの間に短い間隔も空けます。NovelAIが混雑していると応答した場合、Marinaraは待ってから、さらに2回まで再試行します。
 
@@ -231,6 +231,6 @@ NovelAIの精密な参照画像は、`nai-diffusion-4-5-full`のようなV4.5の
 - [ComfyUIワークフローの設定](comfyui.md)
 - [Illustratorエージェント](illustrator-agent.md)
 - [画像スタイルプロファイル](style-profiles.md)
-- [シーン背景とギャラリー](scene-backgrounds.md)
+- [Illustratorが作る背景](scene-backgrounds.md)
 - [自撮り写真](../conversation/selfies.md)
 - [対応しているAIプロバイダー](../connections/providers-reference.md)

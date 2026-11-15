@@ -9,8 +9,8 @@ Zanim zaczniesz: potrzebujesz klucza API (tajnego kodu, trochę jak hasło) od u
 1. Zainstaluj aplikację Marinara Engine i otwórz ją w przeglądarce. Wybierz swoją platformę w przewodniku [Instalacja aplikacji Marinara Engine](../INSTALLATION.md).
 2. Dodaj konto. Konto to jeden klucz API do jednej usługi AI. Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md).
 3. Wybierz modele, których ma używać to konto. Ten sam przewodnik pokazuje, jak to zrobić.
-4. Utwórz albo zaimportuj postać. Otwórz panel **Characters** (postacie), a potem kliknij **New** (nowa), żeby otworzyć okno **Create Character** (tworzenie postaci), albo kliknij **Import** (import), żeby wczytać kartę z pliku. Zobacz [Tworzenie i edycja postaci](../characters/creating-and-editing-characters.md).
-5. Otwórz pasek boczny czatów przyciskiem paska bocznego. Jego zakładki to **CONVO**, **RP** i **GM**. Wybierz jedną z nich, a potem kliknij przycisk **+**. Nazywa się on **New Conversation**, **New Roleplay** albo **New Game**, zgodnie z zakładką.
+4. Utwórz albo zaimportuj postać. Otwórz **Biblioteka → Postacie** (kliknij **Biblioteka** w prawym górnym rogu), a potem kliknij **Nowa postać** albo **Importuj**, żeby wczytać kartę z pliku. Zobacz [Tworzenie i edycja postaci](../characters/creating-and-editing-characters.md).
+5. Kliknij **Conversation**, **Roleplay** lub **Game** na ekranie głównym. Możesz też otworzyć swoje czaty: kliknij **Biblioteka** w prawym górnym rogu, wybierz **Czaty** u góry paska bocznego, wybierz zakładkę **Convo**, **Roleplay** lub **Game** i kliknij **Nowy**.
 6. Przejdź przez okno konfiguracji, które się otworzy, a potem kliknij **Create Chat** (utworzenie czatu).
 
 Co zobaczysz: otworzy się nowy czat i możesz napisać pierwszą wiadomość.
@@ -21,15 +21,22 @@ Marinara nie zawiera AI online. Większość osób łączy się z usługą onlin
 
 Przy pierwszym otwarciu aplikacji Marinara Engine uruchamia się krótkie oprowadzenie z przewodnikiem. Zobacz [Samouczek przy pierwszym uruchomieniu](tutorial.md). Któryś krok sprawia kłopot? Zapytaj Professor Mari, wbudowaną asystentkę: [Professor Mari, twoja asystentka w aplikacji](professor-mari.md).
 
+## Poruszanie się po aplikacji
+
+Marinara ma dwa stałe miejsca, które pozostają na swoich pozycjach niezależnie od motywu:
+
+- **Górny pasek.** Po lewej są **Strona główna** i zakładka dla każdego otwartego czatu, postaci lub strony. Po prawej przycisk wyszukiwania (albo <kbd>Ctrl</kbd>+<kbd>K</kbd>, <kbd>⌘</kbd>+<kbd>K</kbd> na Macu) pozwala znaleźć lub otworzyć wszystko: czat, postać, ustawienie, przewodnik albo pytanie do Professor Mari. Obok są **Ustawienia czatu**, gdy czat jest otwarty, **Docs** z tymi przewodnikami oraz **Biblioteka**, która pokazuje lub ukrywa pasek boczny.
+- **Pasek boczny** po prawej ma u góry przełącznik **Czaty | Biblioteka**. **Czaty** pokazują twoje czaty na zakładkach **Convo**, **Roleplay** i **Game** (zobacz [Zarządzanie listą czatów](../chats/managing-chats.md)). **Biblioteka** zawiera **Postacie**, **Persony**, **Księgi wiedzy**, **Presety**, **Skrypty regex**, **Połączenia**, **Agenci** i **Własne narzędzia**, a dalej **Ustawienia** i **Rozszerzenia**. Wybierz pozycję, żeby otworzyć jej stronę pośrodku.
+
+Na komputerze możesz też pokazać dwie strony obok siebie. Zobacz [Widok podzielony](tabs-and-drafts.md#split-view-two-pages-at-once).
+
+Na telefonie lub tablecie **Strona główna** jest w lewym górnym rogu, a **Biblioteka** (przycisk stosu) w prawym górnym rogu. Biblioteka wysuwa pasek boczny nad stroną, z tym samym przełącznikiem **Czaty | Biblioteka**; w widoku Biblioteki na dole są **Ustawienia**, **Docs** i **Wszystkie karty**. Dotknij tytułu na górnym pasku, żeby wyszukać, albo przycisku z liczbą, żeby zobaczyć otwarte zakładki. Zobacz [Zakładki, widok podzielony i niezapisane zmiany](tabs-and-drafts.md) i [Gesty dotykowe](../chats/messages.md#touch-gestures).
+
 ## Ekran główny w skrócie
 
-Ekran główny widać wtedy, gdy nie jest otwarty żaden czat. Wygląda jak przeglądarka internetowa: u góry są zakładki i skróty, a niżej widgety.
+Ekran główny widać wtedy, gdy nie jest otwarty żaden czat. U góry są powitanie, numer wersji i przyciski **Conversation**, **Roleplay** i **Game**, z których każdy rozpoczyna nowy czat w danym trybie. Jeśli żaden model nie jest jeszcze skonfigurowany, **Connect a model to start chatting** (połącz model, żeby zacząć czat) otwiera stronę Połączenia. **Profesor** otwiera asystentkę Professor Mari w osobnej zakładce, zainstalowana aplikacja (na przykład Story Writer) też dodaje tu przycisk, a **Widgety** pozwalają rozmieścić karty poniżej.
 
-- **Zakładki.** **Home** (ekran główny) to strona główna. **Professor** otwiera asystentkę Professor Mari. Niektórzy zainstalowani agenci dodają własną zakładkę.
-- **Pasek wyszukiwania.** Na komputerze kliknij pasek pod zakładkami albo naciśnij <kbd>Ctrl</kbd>+<kbd>K</kbd> (<kbd>⌘</kbd>+<kbd>K</kbd> na Macu), żeby znaleźć czaty, postacie, ustawienia i nie tylko. Na telefonach, tabletach i w wąskich oknach ten pasek się nie pokazuje.
-- **Skróty.** Szybkie linki do **Discord**, **Support** (wsparcie), **Credits** (autorzy), **Documentation** (dokumentacja), **Tutorial** (samouczek), **FAQ** (najczęstsze pytania), **Achievements** (osiągnięcia) i **Widgets** (widgety). Skrót **Achievements** jest widoczny tylko wtedy, gdy ustawienie Achievements jest włączone. Skróty pokazują się tylko na zakładce **Home**. Na telefonie, tablecie albo w wąskim oknie dotknij przycisku skrótów **Open bookmarks** (otwarcie skrótów) po lewej stronie zakładek, żeby zobaczyć je jako listę.
-
-Na środku widać logo, napis **Marinara Engine** i numer wersji. Pod nimi przyciski **Conversation**, **Roleplay** i **Game** rozpoczynają nowy czat w danym trybie.
+W klasycznym układzie (po wyłączeniu opcji **Ustawienia → Wygląd → Motyw → Nowy układ (podgląd przebudowy interfejsu)**) ekran główny wygląda jak przeglądarka internetowa: ma zakładki, pasek wyszukiwania i skróty do **Discord**, **Wesprzyj**, **Twórcy**, **Dokumentacja**, **Samouczek**, **FAQ**, **Osiągnięcia** i **Widgety**.
 
 <a id="choose-a-chat-mode"></a>
 
@@ -47,11 +54,11 @@ Tryb wybierasz przy rozpoczynaniu czatu.
 
 Widgety to małe karty, które możesz pokazywać, ukrywać i przesuwać.
 
-1. Kliknij **Widgets** na pasku skrótów. Otworzy się okno **Home Widgets** (widgety ekranu głównego). Wymienia ono widgety w grupach **Built-in** (wbudowane), **Agents** (agenci) i **Personal** (osobiste).
+1. Kliknij **Widgety** na ekranie głównym. Otworzy się okno **Home Widgets** (widgety ekranu głównego). Wymienia ono widgety w grupach **Built-in** (wbudowane), **Agents** (agenci) i **Personal** (osobiste).
 2. Kliknij przycisk z ikoną oka obok widgetu, żeby go pokazać albo ukryć. Widget pokazany ponownie trafia na pierwsze wolne miejsce na ekranie głównym.
 3. Żeby przesunąć widget, przeciągnij uchwyt w jego prawym górnym rogu. Na komputerze uchwyt pojawia się po najechaniu kursorem na widget.
 
-Układ zapisuje się w tej przeglądarce. Osobiste widgety mają też przyciski edycji i usuwania. Na dole okna sekcja **Browser chrome** (wygląd przeglądarki) ma jeden przełącznik: **Show URL bar** (pokazanie paska adresu) pokazuje albo ukrywa pasek wyszukiwania na komputerze.
+Układ zapisuje się w tej przeglądarce. Osobiste widgety mają też przyciski edycji i usuwania. W klasycznym układzie sekcja **Wygląd przeglądarki** na dole okna ma jeden przełącznik: **Pokaż pasek adresu** pokazuje albo ukrywa pasek wyszukiwania ekranu głównego na komputerze.
 
 Professor Mari może zrobić dla ciebie osobisty widget, jeśli ją o to poprosisz. Zainstalowani agenci też mogą dodawać widgety.
 
@@ -73,9 +80,9 @@ Professor Mari może zrobić dla ciebie osobisty widget, jeśli ją o to poprosi
 ## Gdzie szukać pomocy
 
 - Zapytaj asystentkę Professor Mari na ekranie głównym.
-- Otwórz skrót **FAQ**, żeby znaleźć szybkie odpowiedzi.
-- Otwórz skrót **Documentation**, żeby przeczytać przewodniki w aplikacji.
-- Kliknij **Discord**, żeby trafić do społeczności, albo **Support**, żeby wesprzeć projekt.
+- Kliknij **Przeczytaj FAQ** w widgecie **Poznaj silnik**, żeby znaleźć szybkie odpowiedzi.
+- Kliknij **Docs** na górnym pasku, żeby przeczytać przewodniki w aplikacji.
+- Kliknij **Discord** w widgecie **Społeczność**, żeby trafić do społeczności, albo **Wesprzyj**, żeby wesprzeć projekt.
 
 Jeśli coś nie działa, zajrzyj do przewodnika [Rozwiązywanie problemów w aplikacji Marinara Engine](../TROUBLESHOOTING.md).
 
@@ -85,4 +92,5 @@ Jeśli coś nie działa, zajrzyj do przewodnika [Rozwiązywanie problemów w apl
 - [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md)
 - [Tworzenie i edycja postaci](../characters/creating-and-editing-characters.md)
 - [Samouczek przy pierwszym uruchomieniu](tutorial.md)
+- [Zakładki, widok podzielony i niezapisane zmiany](tabs-and-drafts.md)
 - [Professor Mari, twoja asystentka w aplikacji](professor-mari.md)

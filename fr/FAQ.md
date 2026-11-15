@@ -22,7 +22,7 @@ Il n'existe pas d'application native à part. Sur téléphone ou tablette, utili
 
 Sous Android, tu peux aussi [télécharger le dernier APK](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk). Il fait tourner Marinara sur le téléphone via Termux. Voir [Installation sur Android](installation/android-termux.md). Sur iPhone et iPad, voir le [guide PWA pour iOS](installation/ios-pwa.md).
 
-Dans l'application Android, le lanceur propose **Open in browser** (ouvrir dans le navigateur), **Retry connection** (réessayer la connexion) et **Install / Start Marinara** (installer / démarrer Marinara). Pour changer ton choix plus tard, utilise **Settings → General → App Behavior → Open Android launcher (app or browser)** (Paramètres → Général → comportement de l'application → ouvrir le lanceur Android, application ou navigateur). Avec les anciens APK, la connexion se fait manuellement à `/android-login`.
+Dans l'application Android, le lanceur propose **Open in browser** (ouvrir dans le navigateur), **Retry connection** (réessayer la connexion) et **Install / Start Marinara** (installer / démarrer Marinara). Pour changer ton choix plus tard, utilise **Settings → Appearance → Layout → Open Android launcher (app or browser)** (Paramètres → Apparence → Disposition → ouvrir le lanceur Android, application ou navigateur). Avec les anciens APK, la connexion se fait manuellement à `/android-login`.
 
 <a id="can-i-play-with-other-people"></a>
 
@@ -84,11 +84,11 @@ Voir [Lorebooks](lorebooks/overview.md).
 
 ## Qu'est-ce qu'un agent ?
 
-Un agent est une aide IA facultative qui tourne pendant un chat pour accomplir une tâche précise, comme suivre la scène ou ajouter des cartes. Une installation neuve n'en contient aucun. Ouvre **Agents → Agent Organizer** (Agents → organisateur d'agents), choisis-en un et installe-le. Active-le ensuite chat par chat dans **Chat Settings**. Voir [Agents](agents/agents-overview.md).
+Un agent est une aide IA facultative qui tourne pendant un chat pour accomplir une tâche précise, comme suivre la scène ou ajouter des cartes. Une installation neuve n'en contient aucun. Ouvre **Library → Agents** (Bibliothèque → Agents), choisis-en un et installe-le. Active-le ensuite chat par chat dans **Chat Settings**. Voir [Agents](agents/agents-overview.md).
 
 ## Comment configurer Noodle ?
 
-Noodle est un réseau social local et fictif pour tes personnages. Installe **Noodle** depuis **Agents → Agent Organizer**, redémarre Marinara quand on te le demande, puis ouvre **Home → Noodle** (accueil → Noodle). Voir [Noodle : la timeline sociale intégrée](agents/noodle.md).
+Noodle est un réseau social local et fictif pour tes personnages. Installe **Noodle** depuis **Library → Agents**, redémarre Marinara quand on te le demande, puis ouvre **Home → Noodle** (accueil → Noodle). Voir [Noodle : la timeline sociale intégrée](agents/noodle.md).
 
 ## Pourquoi mon personnage ne répond-il pas ?
 
@@ -100,11 +100,11 @@ Les modèles ne lisent qu'une quantité limitée de texte à la fois : dans les 
 
 ## Comment sauvegarder mes données ?
 
-Ouvre **Settings → Advanced → Backup & Export** (Paramètres → Avancé → Sauvegarde et export) et clique sur **Download Backup** (télécharger la sauvegarde). Marinara enregistre un `.zip` de tes données et de tes fichiers téléversés. Pour restaurer, utilise **Import Profile (JSON/ZIP)** dans **Settings → Imports** (Paramètres → Imports). La même section peut lancer une sauvegarde quotidienne, hebdomadaire ou mensuelle. Voir [Sauvegarder et restaurer Marinara](data/backup-and-restore.md).
+Ouvre **Settings → Data → Backup & Restore** (Paramètres → Données → Sauvegarde et restauration) et clique sur **Download Backup** (télécharger la sauvegarde). Marinara enregistre un `.zip` de tes données et de tes fichiers téléversés. Pour restaurer, utilise **Import Profile (JSON/ZIP)** dans la même section. La même section peut lancer une sauvegarde quotidienne, hebdomadaire ou mensuelle. Voir [Sauvegarder et restaurer Marinara](data/backup-and-restore.md).
 
 ## Comment fonctionnent les extensions, et puis-je importer du code tiers ?
 
-Par défaut, seule Professor Mari crée des brouillons de Personal Extension. Un brouillon démarre désactivé, et tu approuves son code exact avant qu'il ne s'exécute. Les imports tiers restent masqués tant que `ENABLE_EXTERNAL_EXTENSIONS=true` n'est pas défini dans le `.env` de l'hôte et que tu n'as pas accepté l'avertissement sous **Settings → Advanced → Danger Zone** (Paramètres → Avancé → Zone de danger). Voir [Extensions personnelles](extending/personal-extensions.md).
+Par défaut, seule Professor Mari crée des brouillons de Personal Extension. Un brouillon démarre désactivé, et tu approuves son code exact avant qu'il ne s'exécute. Les imports tiers restent masqués tant que `ENABLE_EXTERNAL_EXTENSIONS=true` n'est pas défini dans le `.env` de l'hôte et que tu n'as pas accepté l'avertissement sous **Settings → Advanced → Security** (Paramètres → Avancé → Sécurité). Voir [Extensions personnelles](extending/personal-extensions.md).
 
 ## Où mes données sont-elles stockées ?
 
@@ -120,11 +120,11 @@ Professor Mari est l'assistante intégrée de l'écran d'accueil. Elle explique 
 
 ## Qu'est-ce que l'agent Storyboard et comment l'utiliser en Game Mode ?
 
-Il transforme un texte d'histoire terminé en images. Installe **Storyboard** depuis **Agents → Agent Organizer**, puis active-le dans le chat. Voir le [Guide de l'agent Storyboard](game/storyboard.md).
+Il transforme un texte d'histoire terminé en images. Installe **Storyboard** depuis **Library → Agents**, puis active-le dans le chat. Voir le [Guide de l'agent Storyboard](game/storyboard.md).
 
 ## Les personnages peuvent-ils parler à voix haute pendant un appel ?
 
-Oui, en mode Conversation. Il faut que **Text to Speech** (synthèse vocale) soit configuré dans **Connections**. Pour les étapes, y compris la reconnaissance vocale pour ton micro, voir [Appels](conversation/calls.md).
+Oui, en mode Conversation. Il te faut un modèle pour la tâche **Voix (synthèse vocale)** dans **Connexions**. Pour les étapes, y compris la reconnaissance vocale pour ton micro, voir [Appels](conversation/calls.md).
 
 ## Marinara peut-il générer des images ?
 
@@ -132,7 +132,7 @@ Oui. Ajoute un compte de génération d'images, par exemple **Pollinations** (au
 
 ## Comment lire la documentation dans l'application ?
 
-Sur l'écran d'accueil, clique sur **Documentation** dans les marque-pages. Sur téléphone, ouvre d'abord le menu des marque-pages. Dans la FAQ de l'accueil, tu peux aussi cliquer sur **Open Documentation** (ouvrir la documentation).
+Clique sur **Docs** (documentation) dans la barre supérieure. Sur téléphone, les Docs se trouvent dans Library (le bouton en forme de pile en haut à droite). Dans la disposition classique, clique sur **Documentation** dans les marque-pages de Home. Dans la FAQ de l'accueil, tu peux aussi cliquer sur **Open Documentation** (ouvrir la documentation).
 
 ## Où trouver de l'aide ou signaler un bug ?
 

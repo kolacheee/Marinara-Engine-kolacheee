@@ -42,7 +42,7 @@ To, które sekcje widać, zależy od trybu czatu. Sekcję **Impersonate** opisuj
 - **Agent activity** (aktywność agentów): pokazuje, co zrobili agenci. Pozwala ponownie uruchomić trackery, ponowić lub zatrzymać agentów i wyczyścić trackery. Zobacz [Agent activity](../roleplay/getting-started.md#agent-activity). (Roleplay, z włączonymi agentami lub funkcją Advanced Memory.)
 - **Author's Notes** (notatki autora): notatka, którą model czyta w każdej turze. Zobacz [Author's Notes](../roleplay/getting-started.md#authors-notes). (Roleplay.)
 - **Background** (tło): obraz tła czatu. (Roleplay, Game.)
-- **Gallery** (galeria): obrazy i filmy czatu. Zobacz [Tła scen i galeria](../media/scene-backgrounds.md).
+- **Gallery** (galeria): obrazy i filmy czatu. Zobacz [Galeria czatu](chat-gallery.md).
 - **Widgets** (widgety): to, które widgety paska HUD są widoczne w grze. (Game.)
 - **Impersonate**: ustawienia komendy `/impersonate`. (Roleplay.)
 - **Memory Recall**: pamięta wcześniejsze części czatu. Zobacz [Memory Recall i podsumowania czatu](../agents/memory.md). (Niedostępne w wersji Lite.)
@@ -100,10 +100,10 @@ Okna pozostają w obszarze czatu. Okno lub przycisk może stać obok pola wiadom
 
 Te przyciski są na pasku tytułu.
 
-- **Help** (**?**) pokazuje etykiety objaśniające kontrolki czatu. Na telefonie najpierw zamyka Chat Settings. Aby go ukryć, włącz **Settings → General → App Behavior → Hide chat Help button** (ustawienia, ogólne, zachowanie aplikacji, ukrycie przycisku pomocy czatu).
+- **Help** (**?**) pokazuje etykiety objaśniające kontrolki czatu. Na telefonie najpierw zamyka Chat Settings. Aby go ukryć, włącz **Ustawienia → Ogólne → Potwierdzenia i pomoc → Ukryj przycisk Pomoc czatu**.
 - **Reset View** (przywrócenie widoku, okrągła strzałka) prosi o potwierdzenie, a potem przywraca początkowy układ tego czatu: wydzielone sekcje wracają na miejsce, a rozmiary, położenia, przypięcia i blokady okien wracają do stanu początkowego.
 - **Favorite layout** (ulubiony układ, gwiazdka) zapisuje to rozmieszczenie dla nowych czatów. Zobacz [Wybieranie układu dla nowych czatów](#choosing-a-layout-for-new-chats).
-- **Tracker Panel** (panel trackerów, kość) włącza lub wyłącza panel w czacie Roleplay korzystającym z agentów lub funkcji Advanced Memory. Na komputerze panel otwiera się obok czatu. Na telefonie lub tablecie otwiera go przesuwany przycisk. Zmienia też ustawienie Tracker Panel w **Settings → Appearance** (ustawienia, wygląd).
+- **Tracker Panel** (panel trackerów, kość) włącza lub wyłącza panel w czacie Roleplay korzystającym z agentów lub funkcji Advanced Memory. Na komputerze panel otwiera się obok czatu. Na telefonie lub tablecie otwiera go przesuwany przycisk. Zmienia też ustawienie Tracker Panel w **Ustawienia → Roleplay → Panel trackerów**.
 
 Gdy Tracker Panel nie jest widoczny, trackery na komputerze korzystają z [okna Trackers](../roleplay/hud-and-trackers.md#the-trackers-window). Jeśli obok wiadomości jest mało miejsca, okno zaczyna jako mały przycisk **Trackers**. Użyj kości, aby znów pokazać Tracker Panel.
 
@@ -165,7 +165,7 @@ Po aktualizacji ze starszej wersji dotychczasowy układ przycisków narzędzi je
 
 ## Zmiana wyglądu okien czatu
 
-Otwórz **Settings → Appearance → App** (ustawienia, wygląd, aplikacja) i przewiń do **Chat widget style** (styl widgetów czatu) na dole sekcji **App Style** (styl aplikacji). **Default** (domyślny) zachowuje wygląd aplikacji Marinara Engine. **Dottore** używa lodowych błękitów, jasnego metalu i przyciętych narożników. **Prof. Mari** używa błękitów kamieni szlachetnych, ciepłego złota i łukowatych ramek. Oba style dostosowują się do jasnego i ciemnego trybu i obejmują przesuwane przyciski, okna i sekcje we wszystkich trzech trybach czatu.
+Otwórz **Ustawienia → Wygląd → Przyciski i okna czatu** i znajdź **Styl widgetów czatu**. **Default** (domyślny) zachowuje wygląd aplikacji Marinara Engine. **Dottore** używa lodowych błękitów, jasnego metalu i przyciętych narożników. **Prof. Mari** używa błękitów kamieni szlachetnych, ciepłego złota i łukowatych ramek. Oba style dostosowują się do jasnego i ciemnego trybu i obejmują przesuwane przyciski, okna i sekcje we wszystkich trzech trybach czatu.
 
 - **Font** (czcionka), **Shape** (kształt) i trzy narzędzia wyboru kolorów pod presetami pozwalają dopasować wygląd. Czcionki zainstalowane w aplikacji Marinara Engine pojawiają się na liście czcionek. Ponowne wybranie presetu resetuje czcionkę, kształt i własne kolory.
 - **Button size (px)** (rozmiar przycisków w pikselach) ustawia rozmiar przesuwanych przycisków czatu, od 32 do 96. Puste pole zachowuje rozmiar domyślny.

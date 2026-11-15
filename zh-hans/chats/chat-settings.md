@@ -42,7 +42,7 @@
 - **Agent activity**(智能体活动)：显示智能体做了什么。可以重新运行追踪器、重试或停止智能体，以及清空追踪器。见[智能体活动](../roleplay/getting-started.md#agent-activity)。（Roleplay，开启了智能体或 Advanced Memory 时）
 - **Author's Notes**(作者注释)：模型每轮都会读取的一段笔记。见 [Author's Notes](../roleplay/getting-started.md#authors-notes)。（Roleplay）
 - **Background**(背景)：聊天的背景图片。（Roleplay 和 Game）
-- **Gallery**(图库)：聊天的图片和视频。见[场景背景与图库](../media/scene-backgrounds.md)。
+- **Gallery**(图库)：聊天的图片和视频。见[聊天图库](chat-gallery.md)。
 - **Widgets**(小组件)：游戏中显示哪些 HUD 小组件。（Game）
 - **Impersonate**：`/impersonate` 命令的设置。（Roleplay）
 - **Memory Recall**(记忆功能)：记住聊天中较早的内容。见[记忆功能与聊天摘要](../agents/memory.md)。（Lite 版没有）
@@ -100,10 +100,10 @@ Conversation 聊天还有 Autonomous Messaging(自主消息，角色会先给你
 
 这些按钮在标题栏里。
 
-- **Help**(即 **?**) 显示解释聊天控件的标签。手机上会先关闭 Chat Settings。要隐藏它，开启 **Settings → General → App Behavior → Hide chat Help button**(设置 → 常规 → 应用行为 → 隐藏聊天帮助按钮)。
+- **Help**(即 **?**) 显示解释聊天控件的标签。手机上会先关闭 Chat Settings。要隐藏它，开启 **Settings → General → Confirmations & Help → Hide chat Help button**(设置 → 常规 → 确认提示与帮助 → 隐藏聊天帮助按钮)。
 - **Reset View**(重置视图，圆形箭头) 先要求确认，然后恢复这个聊天的初始布局：弹出的区域会放回去，窗口大小、位置、固定和锁定状态都会重置。
 - **Favorite layout**(收藏布局，星标) 把这套排列保存给新聊天使用。见[为新聊天选择布局](#choosing-a-layout-for-new-chats)。
-- **Tracker Panel**(骰子) 在使用智能体或 Advanced Memory 的 Roleplay 聊天中开关这个面板。电脑上它显示在聊天旁边；手机或平板上，由一个可移动按钮打开。它也会改变 **Settings → Appearance**(设置 → 外观) 里的 Tracker Panel 偏好。
+- **Tracker Panel**(骰子) 在使用智能体或 Advanced Memory 的 Roleplay 聊天中开关这个面板。电脑上它显示在聊天旁边；手机或平板上，由一个可移动按钮打开。它也会改变 **Settings → Roleplay → Tracker Panel**(设置 → 角色扮演 → 追踪器面板) 里的 Tracker Panel 偏好。
 
 Tracker Panel 没有显示时，电脑上的追踪器改用 [Trackers 窗口](../roleplay/hud-and-trackers.md#the-trackers-window)。消息旁空间不足时，它最初会显示为一个小小的 **Trackers**(追踪器) 按钮。用骰子按钮可以重新显示 Tracker Panel。
 
@@ -165,7 +165,7 @@ Tracker Panel 没有显示时，电脑上的追踪器改用 [Trackers 窗口](..
 
 ## 改变聊天窗口的外观
 
-打开 **Settings → Appearance → App**(设置 → 外观 → 应用)，滚动到 **App Style**(应用样式) 底部的 **Chat widget style**(聊天组件样式)。**Default**(默认) 保留 Marinara 原本的外观。**Dottore** 使用冰蓝色、浅金属色和切角。**Prof. Mari** 使用宝石蓝、暖金色和拱形边框。两者都会适应浅色和深色模式，并改变三种聊天模式中可移动按钮、窗口和区域的样式。
+打开 **Settings → Appearance → Chat Buttons & Windows**(设置 → 外观 → 聊天按钮与窗口)，找到 **Chat widget style**(聊天组件样式)。**Default**(默认) 保留 Marinara 原本的外观。**Dottore** 使用冰蓝色、浅金属色和切角。**Prof. Mari** 使用宝石蓝、暖金色和拱形边框。两者都会适应浅色和深色模式，并改变三种聊天模式中可移动按钮、窗口和区域的样式。
 
 - 预设下方的 **Font**(字体)、**Shape**(形状) 和三个颜色选择器可以自由搭配外观。安装到 Marinara 的字体会出现在字体列表中。重新选择预设会重置字体、形状和自定义颜色。
 - **Button size (px)**(按钮大小，px) 设置可移动聊天按钮的大小，范围是 32 到 96。留空则保留默认值。

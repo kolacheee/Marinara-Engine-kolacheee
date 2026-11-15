@@ -34,7 +34,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 **Other names**(다른 이름)는 **Metadata**(메타데이터) 탭에서 **Name**(이름) 아래에 있습니다. `Clark Kent, Kal-El, Mr. Kent`처럼 별명, 전체 이름, 호칭을 입력할 수 있습니다. Roleplay 채팅 메시지에서 기본 이름과 같은 색상으로 표시됩니다. 채팅별로 **Chat Settings → Characters**(채팅 설정 → 캐릭터)의 **Color Character Names in Text**(본문의 캐릭터 이름에 색상 적용)와 **Chat Settings → Persona**(채팅 설정 → 페르소나)의 **Color Persona Name in Text**(본문의 페르소나 이름에 색상 적용)를 켜세요.
 
-투명도를 바꾸려면 **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity**(설정 → 모양 → 롤플레이 표시 방식 → 롤플레이 메시지 배경 불투명도)를 사용하세요.
+투명도를 바꾸려면 **Settings → Roleplay → Roleplay Messages → Roleplay Messages Background Opacity**(설정 → 롤플레이 → 롤플레이 메시지 → 롤플레이 메시지 배경 불투명도)를 사용하세요.
 
 이 슬라이더는 캐릭터와 페르소나의 메시지 말풍선 색상에 저장된 투명도에 슬라이더 값을 곱합니다. 자체 알파 값을 가진 색상, 예를 들어 `rgba(255, 255, 255, 0.25)`나 `#FFFFFF40`은 그 알파 값에 슬라이더의 값을 곱한 만큼의 투명도로 표시됩니다. 저장된 색상 값 자체는 그대로 유지됩니다. 이름 색상과 대사 색상에는 영향을 주지 않습니다.
 
@@ -46,7 +46,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 ### 색상이 적용되는 곳
 
-- 이름 색상은 채팅 메시지에 표시되는 이름에 적용됩니다. 캐릭터라면 사이드바 탭의 이름에도, 페르소나라면 페르소나 선택 창의 이름에도 함께 적용됩니다.
+- 이름 색상은 채팅 메시지에 표시되는 이름에 적용됩니다. 캐릭터라면 채팅 목록의 이름에도, 페르소나라면 페르소나 선택 창의 이름에도 함께 적용됩니다.
 - 대사 색상은 대사 따옴표 안쪽 글자에 적용됩니다. 곧은 따옴표와 다른 형태의 따옴표 모두에서 동작합니다. **Settings**에서 이 글자를 굵게 표시할 수도 있습니다. Conversation(대화) 채팅에서는 쓰이지 않습니다.
 - 메시지 말풍선 색상은 Roleplay 채팅에서 해당 캐릭터나 페르소나의 메시지 말풍선 배경을 정합니다. Conversation 채팅과 Game 채팅에서는 쓰이지 않습니다.
 
@@ -64,6 +64,10 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 - **Attributes**(속성)는 이름 붙은 숫자입니다. 새 캐릭터는 STR, DEX, CON, INT, WIS, CHA를 각각 10으로 가지고 시작합니다.
 
 **Add**(추가)를 클릭하면 풀이나 속성을 만들 수 있고, 행의 X를 클릭하면 삭제할 수 있습니다.
+
+Roleplay 채팅과 Legacy 게임은 이 스탯을 사용합니다. 새 Roleplay 채팅에서는 풀의 값으로 캐릭터의 트래커 막대를 시작하고, 롤플레이 인카운터에서는 HP 풀에서 최대 HP를 가져옵니다. 롤플레이 주사위 굴림은 지정한 속성의 보너스를 더하므로 Sanity 같은 사용자 지정 속성도 반영됩니다. MRPG 게임은 이 값으로 시트를 만들지 않습니다.
+
+새 레이아웃에서는 풀, 속성, 트래커 필드가 **Game Mode**와 별개인 **Roleplay Stats** 섹션에 있습니다. 아직 이 항목들이 없는 카드에서는 편집기 왼쪽 메뉴의 **+ Roleplay Stats**로 추가하세요. 페르소나의 상태 막대도 **Roleplay Stats** 섹션에 있습니다.
 
 ### 페르소나 스탯
 
