@@ -1,0 +1,42 @@
+start castle/snow-day twin ['ref-current.png']
+start castle/day-hall twin ['ref-current.png']
+start castle/storm-day twin ['ref-current.png']
+done  castle/day-hall True
+start castle/fog-day twin ['ref-current.png']
+done  castle/storm-day True
+start castle/phone-day twin ['ref-current.png']
+done  castle/snow-day True
+start castle/phone-storm-day twin ['ref-current.png']
+done  castle/fog-day True
+start castle/phone-snow-day twin ['ref-current.png']
+done  castle/phone-day True
+start castle/phone-fog-day twin ['ref-current.png']
+done  castle/phone-storm-day True
+start castle/night-hall twin ['ref-current.png']
+done  castle/phone-snow-day True
+start castle/snow-hall twin ['ref-current.png']
+done  castle/phone-fog-day True
+start castle/fog-hall twin ['ref-current.png']
+done  castle/night-hall True
+start castle/phone-night twin ['ref-current.png']
+done  castle/snow-hall True
+start castle/phone-snow twin ['ref-current.png']
+done  castle/fog-hall True
+start castle/phone-fog twin ['ref-current.png']
+done  castle/phone-night True
+done  castle/phone-fog True
+done  castle/phone-snow True
+ok castle/day-hall (1672, 941) RGB
+ok castle/storm-day (1672, 941) RGB
+ok castle/snow-day (1672, 941) RGB
+ok castle/fog-day (1672, 941) RGB
+ok castle/phone-day (887, 1774) RGB
+ok castle/phone-storm-day (887, 1774) RGB
+ok castle/phone-snow-day (887, 1774) RGB
+ok castle/phone-fog-day (887, 1774) RGB
+ok castle/night-hall (1672, 941) RGB
+ok castle/snow-hall (1672, 941) RGB
+ok castle/fog-hall (1672, 941) RGB
+ok castle/phone-night (887, 1774) RGB
+ok castle/phone-snow (887, 1774) RGB
+ok castle/phone-fog (887, 1774) RGB

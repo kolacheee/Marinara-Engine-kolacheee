@@ -96,3 +96,17 @@ pancake/creature-peek rc=0 secs=97 exists=yes
 pancake/creature-over rc=0 secs=79 exists=yes
 wsb/mari-bags-v5 rc=0 secs=78 exists=yes
 wsb/mari-bags-v4 rc=0 secs=92 exists=yes
+castle/day-hall rc=0 secs=150 exists=yes
+castle/storm-day rc=0 secs=157 exists=yes
+castle/snow-day rc=0 secs=161 exists=yes
+castle/fog-day rc=0 secs=102 exists=yes
+castle/phone-day rc=0 secs=110 exists=yes
+castle/phone-storm-day rc=0 secs=133 exists=yes
+castle/phone-snow-day rc=0 secs=117 exists=yes
+castle/phone-fog-day rc=0 secs=107 exists=yes
+castle/night-hall rc=0 secs=112 exists=yes
+castle/snow-hall rc=0 secs=102 exists=yes
+castle/fog-hall rc=0 secs=108 exists=yes
+castle/phone-night rc=0 secs=105 exists=yes
+castle/phone-fog rc=0 secs=81 exists=yes
+castle/phone-snow rc=0 secs=96 exists=yes
