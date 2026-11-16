@@ -1,0 +1,24 @@
+start hal/bg-phone-night-rain twin ['raw.png']
+start hal/bg-phone-day-snow twin ['raw.png']
+start hal/bg-phone-day-rain twin ['raw.png']
+done  hal/bg-phone-night-rain True
+start hal/bg-phone-night-snow twin ['raw.png']
+done  hal/bg-phone-day-rain True
+start hal/bg-phone-day-fog twin ['raw.png']
+done  hal/bg-phone-day-snow True
+start hal/bg-phone-night-fog twin ['raw.png']
+done  hal/bg-phone-day-fog True
+start hal/bg-day-snow regen ['ref-current.png']
+done  hal/bg-phone-night-fog True
+start hal/bg-night-snow regen ['ref-current.png']
+done  hal/bg-phone-night-snow True
+done  hal/bg-night-snow True
+done  hal/bg-day-snow True
+ok hal/bg-phone-day-rain (852, 1846) RGB
+ok hal/bg-phone-night-rain (852, 1846) RGB
+ok hal/bg-phone-day-snow (852, 1846) RGB
+ok hal/bg-phone-night-snow (852, 1846) RGB
+ok hal/bg-phone-day-fog (852, 1846) RGB
+ok hal/bg-phone-night-fog (852, 1846) RGB
+ok hal/bg-day-snow (1672, 941) RGB
+ok hal/bg-night-snow (1672, 941) RGB

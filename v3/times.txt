@@ -72,3 +72,11 @@ castle/phone-fog-day rc=0 secs=106 exists=yes
 castle/mask-day-hall rc=0 secs=122 exists=yes
 castle/mask-phone-day rc=0 secs=97 exists=yes
 castle/mask-phone-storm rc=0 secs=76 exists=yes
+hal/bg-phone-night-rain rc=0 secs=99 exists=yes
+hal/bg-phone-day-rain rc=0 secs=102 exists=yes
+hal/bg-phone-day-snow rc=0 secs=121 exists=yes
+hal/bg-phone-day-fog rc=0 secs=97 exists=yes
+hal/bg-phone-night-fog rc=0 secs=84 exists=yes
+hal/bg-phone-night-snow rc=0 secs=108 exists=yes
+hal/bg-night-snow rc=0 secs=80 exists=yes
+hal/bg-day-snow rc=0 secs=104 exists=yes
