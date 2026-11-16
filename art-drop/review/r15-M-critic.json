@@ -1,0 +1,54 @@
+{
+  "scope": "Round 15 Part M response to critic-r15M-1; saved-art self-review",
+  "verdict": "PASS",
+  "failed_files": [],
+  "reviewed": [
+    "r15-city-mockup.png",
+    "r15-city-mockup-detail-2x.png",
+    "r15-city-mockup-vs-today.png",
+    "r15-M-north-joins-4x.png",
+    "r15-M-west-depth-4x.png",
+    "r15-M-bent-lane-1x.png",
+    "r15-M-selection.png",
+    "r15-M-east-cross-street-1x.png",
+    "r15-M-east-cross-street-4x.png"
+  ],
+  "criteria": {
+    "city_not_village": "Continuous terraces, 2-5 storeys, dense roof masses, north curtain wall, paved market and streets, no lawn. Buildings occupy 53.097% of the full view before the wall is counted.",
+    "ground_contact_and_depth": "One shared foot sort includes buildings, props and people. Frontage feet meet 48px street lines. All 19 rear-row feet are fully hidden behind foreground architecture. The bottom camera edge deliberately crops the southern block. Corrected folk[23] from origin (1082,397), foot 430 to (1082,351), foot 384. At native 1x and nearest-neighbour 4x, both boots sit visibly on cobbles with no roof or chimney contact. The entire unchanged person has at least 16 clear pixels before the nearest architecture and remains fully visible.",
+    "joins_and_courses": "All lots abut exactly, every floor is 48px, top/bottom course bytes are retained, corners show their side return. Both wall ends use the compositor's inspected 3px reveal.",
+    "repetition": "Unequal block lengths, 1-3 cell building widths, four roof types, three colourways and an eastward lane bend. Two initially adjacent identical shop pairs were replaced by a workshop and doorway. Existing 288px ground bases remain unchanged and tile literally.",
+    "style": "Unscaled city15 modules and unscaled fantasy paving/market props share warm top-left light and dark pixel contours. New review-only folk use the existing city palette and native one-pixel contours.",
+    "seasons": "Summer view only; no seasonal output or silhouette modification. Town-ground grass is documented in the ground proof but not placed in the district."
+  },
+  "source_limitations": [
+    "The specified fantasy pack has no folk entry. The current renderer uses blue fallback markers. Four newly drawn review-only people are used instead; no game files are changed.",
+    "The curtain wall is also a review-only image-tool drawing, not a newly installed game asset.",
+    "This is a composited visual proposal, not an observed in-engine walkability or collision test."
+  ],
+  "critic_r15M_1_repair": {
+    "failed_files_repaired": [
+      "r15-city-mockup.png",
+      "r15-city-mockup-vs-today.png"
+    ],
+    "passing_detail_preserved": true,
+    "image_redraw_required": false,
+    "reason": "Critic requested a placement-only repair; existing drawings are unchanged.",
+    "old_person_origin": [
+      1082,
+      397
+    ],
+    "new_person_origin": [
+      1082,
+      351
+    ],
+    "old_architecture_overlap_pixels": 15,
+    "new_architecture_overlap_pixels": 0,
+    "nearest_architecture_chebyshev_distance": 17,
+    "clear_pixels": 16,
+    "comparison_origin": [
+      1224,
+      36
+    ]
+  }
+}

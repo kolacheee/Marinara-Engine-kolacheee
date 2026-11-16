@@ -1,0 +1,7157 @@
+{
+  "size": [
+    1200,
+    912
+  ],
+  "cell": 48,
+  "plaza": [
+    384,
+    336,
+    864,
+    672
+  ],
+  "ground": "street everywhere; square in plaza; no lawn",
+  "wall": {
+    "source": "r15-M-clean-wall-a.png",
+    "crop": [
+      18,
+      0,
+      270,
+      96
+    ],
+    "x_start": -96,
+    "y": 0,
+    "period": 252
+  },
+  "buildings": [
+    {
+      "id": "north-west-rear-0",
+      "row": "north-west-rear",
+      "rear": true,
+      "x": 0,
+      "baseline": 240,
+      "y": 48,
+      "width": 96,
+      "height": 192,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-0",
+            "x": 68,
+            "y": -78,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 126,
+          "crop": null
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 68,
+          "y": 18,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-west-rear-1",
+      "row": "north-west-rear",
+      "rear": true,
+      "x": 96,
+      "baseline": 240,
+      "y": 32,
+      "width": 144,
+      "height": 208,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": []
+      },
+      "parts": [
+        {
+          "file": "roof-gable-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 160,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 161,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 161,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 112,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 113,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 113,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-west-rear-2",
+      "row": "north-west-rear",
+      "rear": true,
+      "x": 240,
+      "baseline": 240,
+      "y": 48,
+      "width": 96,
+      "height": 192,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-2",
+            "x": 68,
+            "y": -54,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 126,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 68,
+          "y": 42,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-centre-rear-3",
+      "row": "north-centre-rear",
+      "rear": true,
+      "x": 384,
+      "baseline": 240,
+      "y": 32,
+      "width": 144,
+      "height": 208,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          },
+          {
+            "file": "chimney-3",
+            "x": 116,
+            "y": -40,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-3.png",
+          "x": 116,
+          "y": 72,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 160,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 161,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 161,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 112,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 113,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 113,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 138,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-centre-rear-4",
+      "row": "north-centre-rear",
+      "rear": true,
+      "x": 528,
+      "baseline": 240,
+      "y": 0,
+      "width": 96,
+      "height": 240,
+      "floors": 3,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          },
+          {
+            "kind": "plaster",
+            "colour": 2
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-0",
+            "x": 68,
+            "y": -78,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-0",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 68,
+          "y": 18,
+          "crop": null
+        },
+        {
+          "file": "dormer-0.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-centre-rear-5",
+      "row": "north-centre-rear",
+      "rear": true,
+      "x": 624,
+      "baseline": 240,
+      "y": 40,
+      "width": 144,
+      "height": 200,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          },
+          {
+            "file": "dormer-1",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w3-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c1.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 130,
+          "crop": null
+        },
+        {
+          "file": "dormer-1.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-centre-rear-6",
+      "row": "north-centre-rear",
+      "rear": true,
+      "x": 768,
+      "baseline": 240,
+      "y": 48,
+      "width": 96,
+      "height": 192,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-2",
+            "x": 68,
+            "y": -86,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 126,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 68,
+          "y": 10,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-east-rear-7",
+      "row": "north-east-rear",
+      "rear": true,
+      "x": 960,
+      "baseline": 240,
+      "y": 32,
+      "width": 144,
+      "height": 208,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-3",
+            "x": 116,
+            "y": -40,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-3.png",
+          "x": 116,
+          "y": 72,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 160,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 161,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 161,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 112,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 113,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 113,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-east-rear-8",
+      "row": "north-east-rear",
+      "rear": true,
+      "x": 1104,
+      "baseline": 240,
+      "y": 48,
+      "width": 96,
+      "height": 192,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-0",
+            "x": 68,
+            "y": -78,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-0",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 126,
+          "crop": null
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 68,
+          "y": 18,
+          "crop": null
+        },
+        {
+          "file": "dormer-0.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-west-front-9",
+      "row": "north-west-front",
+      "rear": false,
+      "x": 0,
+      "baseline": 336,
+      "y": 88,
+      "width": 144,
+      "height": 248,
+      "floors": 3,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 74
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w3-c0.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 178,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-west-front-10",
+      "row": "north-west-front",
+      "rear": false,
+      "x": 144,
+      "baseline": 336,
+      "y": 48,
+      "width": 96,
+      "height": 288,
+      "floors": 4,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-2",
+            "x": 33,
+            "y": 102
+          },
+          {
+            "file": "chimney-2",
+            "x": 68,
+            "y": -86,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 241,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 241,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "sign-2.png",
+          "x": 33,
+          "y": 198,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 68,
+          "y": 10,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-west-front-11",
+      "row": "north-west-front",
+      "rear": false,
+      "x": 240,
+      "baseline": 336,
+      "y": 104,
+      "width": 48,
+      "height": 232,
+      "floors": 3,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 2
+          },
+          {
+            "kind": "plaster",
+            "colour": 2
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 74
+          },
+          {
+            "file": "chimney-3",
+            "x": 20,
+            "y": -52,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-3.png",
+          "x": 20,
+          "y": 36,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w1-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w1-c2.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c2.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 162,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-west-front-12",
+      "row": "north-west-front",
+      "rear": false,
+      "x": 288,
+      "baseline": 336,
+      "y": 104,
+      "width": 48,
+      "height": 232,
+      "floors": 3,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-0",
+            "x": 20,
+            "y": -63,
+            "layer": "front"
+          }
+        ],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w1-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 20,
+          "y": 25,
+          "crop": null
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 184,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    },
+    {
+      "id": "square-north-front-13",
+      "row": "square-north-front",
+      "rear": false,
+      "x": 384,
+      "baseline": 336,
+      "y": -8,
+      "width": 96,
+      "height": 344,
+      "floors": 5,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          },
+          {
+            "kind": "jetty",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-1",
+            "x": 33,
+            "y": 150
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-gable-w2-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w2.png",
+          "x": 0,
+          "y": 296,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 297,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 297,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 248,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 249,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 249,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w2-c0.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "sign-1.png",
+          "x": 33,
+          "y": 254,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-north-front-14",
+      "row": "square-north-front",
+      "rear": false,
+      "x": 480,
+      "baseline": 336,
+      "y": 40,
+      "width": 144,
+      "height": 296,
+      "floors": 4,
+      "spec": {
+        "width": 3,
+        "ground": "arch",
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 2
+          },
+          {
+            "kind": "timber",
+            "colour": 2
+          },
+          {
+            "kind": "stone",
+            "colour": 2
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 126
+          },
+          {
+            "file": "chimney-2",
+            "x": 116,
+            "y": -94,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-arch-w3.png",
+          "x": 0,
+          "y": 248,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 249,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 249,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w3-c2.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c2.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w3-c2.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 230,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 116,
+          "y": 10,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-north-front-15",
+      "row": "square-north-front",
+      "rear": false,
+      "x": 624,
+      "baseline": 336,
+      "y": 0,
+      "width": 96,
+      "height": 336,
+      "floors": 5,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          },
+          {
+            "kind": "stone",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-3",
+            "x": 33,
+            "y": 150
+          },
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 170
+          },
+          {
+            "file": "chimney-3",
+            "x": 68,
+            "y": -48,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w2.png",
+          "x": 0,
+          "y": 288,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 289,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 289,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 241,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 241,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "sign-3.png",
+          "x": 33,
+          "y": 246,
+          "crop": null
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 266,
+          "crop": null
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 68,
+          "y": 48,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-north-front-16",
+      "row": "square-north-front",
+      "rear": false,
+      "x": 720,
+      "baseline": 336,
+      "y": 40,
+      "width": 96,
+      "height": 296,
+      "floors": 4,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          },
+          {
+            "kind": "plaster",
+            "colour": 2
+          },
+          {
+            "kind": "stone",
+            "colour": 2
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-0",
+            "x": 68,
+            "y": -60,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-0.png",
+          "x": 68,
+          "y": 44,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w2-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w2.png",
+          "x": 0,
+          "y": 248,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 249,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 249,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c2.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w2-c2.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "square-north-front-17",
+      "row": "square-north-front",
+      "rear": false,
+      "x": 816,
+      "baseline": 336,
+      "y": 56,
+      "width": 48,
+      "height": 280,
+      "floors": 4,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w1-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 232,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 233,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 233,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w1-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 232,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 184,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    },
+    {
+      "id": "north-east-front-18",
+      "row": "north-east-front",
+      "rear": false,
+      "x": 960,
+      "baseline": 336,
+      "y": 96,
+      "width": 96,
+      "height": 240,
+      "floors": 3,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-2",
+            "x": 33,
+            "y": 54
+          },
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 78
+          },
+          {
+            "file": "chimney-2",
+            "x": 68,
+            "y": -86,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "sign-2.png",
+          "x": 33,
+          "y": 150,
+          "crop": null
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 174,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 68,
+          "y": 10,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-east-front-19",
+      "row": "north-east-front",
+      "rear": false,
+      "x": 1056,
+      "baseline": 336,
+      "y": 144,
+      "width": 96,
+      "height": 192,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 2
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-3",
+            "x": 68,
+            "y": -48,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-3",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w2-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w2-c2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 68,
+          "y": 48,
+          "crop": null
+        },
+        {
+          "file": "dormer-3.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "north-east-front-20",
+      "row": "north-east-front",
+      "rear": false,
+      "x": 1152,
+      "baseline": 336,
+      "y": 104,
+      "width": 48,
+      "height": 232,
+      "floors": 3,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-0",
+            "x": 20,
+            "y": -56,
+            "layer": "behind_roof"
+          }
+        ],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "chimney-0.png",
+          "x": 20,
+          "y": 32,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w1-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c1.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c1.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 184,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c1.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c1.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    },
+    {
+      "id": "west-rear-21",
+      "row": "west-rear",
+      "rear": true,
+      "x": 0,
+      "baseline": 528,
+      "y": 344,
+      "width": 96,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 114,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "west-rear-22",
+      "row": "west-rear",
+      "rear": true,
+      "x": 96,
+      "baseline": 528,
+      "y": 344,
+      "width": 144,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-2",
+            "x": 116,
+            "y": -66,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 116,
+          "y": 22,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "west-rear-23",
+      "row": "west-rear",
+      "rear": true,
+      "x": 240,
+      "baseline": 528,
+      "y": 344,
+      "width": 144,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          },
+          {
+            "file": "chimney-3",
+            "x": 116,
+            "y": -58,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c1.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 114,
+          "crop": null
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 116,
+          "y": 30,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-west-front-24",
+      "row": "square-west-front",
+      "rear": false,
+      "x": 0,
+      "baseline": 672,
+      "y": 416,
+      "width": 144,
+      "height": 256,
+      "floors": 3,
+      "spec": {
+        "width": 3,
+        "ground": "arch",
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 78
+          },
+          {
+            "file": "chimney-0",
+            "x": 116,
+            "y": -44,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-0.png",
+          "x": 116,
+          "y": 68,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w3-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-arch-w3.png",
+          "x": 0,
+          "y": 208,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 209,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 209,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w3-c0.png",
+          "x": 0,
+          "y": 160,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 161,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 161,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 112,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 113,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 113,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 190,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-west-front-25",
+      "row": "square-west-front",
+      "rear": false,
+      "x": 144,
+      "baseline": 672,
+      "y": 384,
+      "width": 96,
+      "height": 288,
+      "floors": 4,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          },
+          {
+            "kind": "stone",
+            "colour": 2
+          },
+          {
+            "kind": "plaster",
+            "colour": 2
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-1",
+            "x": 33,
+            "y": 102
+          },
+          {
+            "file": "dormer-1",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 241,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 241,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w2-c2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "sign-1.png",
+          "x": 33,
+          "y": 198,
+          "crop": null
+        },
+        {
+          "file": "dormer-1.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-west-front-26",
+      "row": "square-west-front",
+      "rear": false,
+      "x": 240,
+      "baseline": 672,
+      "y": 432,
+      "width": 96,
+      "height": 240,
+      "floors": 3,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 78
+          },
+          {
+            "file": "chimney-2",
+            "x": 68,
+            "y": -54,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w2-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 174,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 68,
+          "y": 42,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "square-west-front-27",
+      "row": "square-west-front",
+      "rear": false,
+      "x": 336,
+      "baseline": 672,
+      "y": 440,
+      "width": 48,
+      "height": 232,
+      "floors": 3,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-3",
+            "x": 20,
+            "y": -61,
+            "layer": "front"
+          }
+        ],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w1-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 20,
+          "y": 27,
+          "crop": null
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 184,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    },
+    {
+      "id": "east-front-28",
+      "row": "east-front",
+      "rear": false,
+      "x": 960,
+      "baseline": 624,
+      "y": 376,
+      "width": 144,
+      "height": 248,
+      "floors": 3,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 2
+          },
+          {
+            "kind": "plaster",
+            "colour": 2
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-0",
+            "x": 116,
+            "y": -61,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-0",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w3-c2.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w3-c2.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 116,
+          "y": 43,
+          "crop": null
+        },
+        {
+          "file": "dormer-0.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "east-front-29",
+      "row": "east-front",
+      "rear": false,
+      "x": 1104,
+      "baseline": 624,
+      "y": 344,
+      "width": 48,
+      "height": 280,
+      "floors": 4,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "timber",
+            "colour": 1
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 122
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-gable-w1-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 232,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 233,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 233,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w1-c1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c1.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c1.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 210,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "east-front-30",
+      "row": "east-front",
+      "rear": false,
+      "x": 1152,
+      "baseline": 624,
+      "y": 392,
+      "width": 48,
+      "height": 232,
+      "floors": 3,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-2",
+            "x": 20,
+            "y": -66,
+            "layer": "front"
+          }
+        ],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w1-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 20,
+          "y": 22,
+          "crop": null
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 184,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-31",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 0,
+      "baseline": 912,
+      "y": 728,
+      "width": 144,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-3",
+            "x": 116,
+            "y": -58,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 116,
+          "y": 30,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-32",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 144,
+      "baseline": 912,
+      "y": 720,
+      "width": 96,
+      "height": 192,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-0",
+            "x": 68,
+            "y": -78,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-0",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 126,
+          "crop": null
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 68,
+          "y": 18,
+          "crop": null
+        },
+        {
+          "file": "dormer-0.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-33",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 240,
+      "baseline": 912,
+      "y": 728,
+      "width": 144,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c1.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 114,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-34",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 384,
+      "baseline": 912,
+      "y": 712,
+      "width": 144,
+      "height": 200,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-2",
+            "x": 116,
+            "y": -65,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 116,
+          "y": 39,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-35",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 528,
+      "baseline": 912,
+      "y": 728,
+      "width": 144,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          },
+          {
+            "file": "chimney-3",
+            "x": 116,
+            "y": -58,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c2.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 114,
+          "crop": null
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 116,
+          "y": 30,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-36",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 672,
+      "baseline": 912,
+      "y": 712,
+      "width": 144,
+      "height": 200,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-0",
+            "x": 116,
+            "y": -86,
+            "layer": "front"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w3-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 134,
+          "crop": null
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 116,
+          "y": 18,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-rear-37",
+      "row": "south-west-rear",
+      "rear": true,
+      "x": 816,
+      "baseline": 912,
+      "y": 728,
+      "width": 96,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 1
+          }
+        ],
+        "roof": "flat",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": []
+      },
+      "parts": [
+        {
+          "file": "roof-flat-w2-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-38",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 0,
+      "baseline": 1008,
+      "y": 760,
+      "width": 144,
+      "height": 248,
+      "floors": 3,
+      "spec": {
+        "width": 3,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          },
+          {
+            "kind": "plaster",
+            "colour": 2
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 78
+          },
+          {
+            "file": "chimney-2",
+            "x": 116,
+            "y": -65,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w3.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c2.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w3-c2.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 182,
+          "crop": null
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 116,
+          "y": 39,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-39",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 144,
+      "baseline": 1008,
+      "y": 808,
+      "width": 96,
+      "height": 200,
+      "floors": 2,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          },
+          {
+            "file": "chimney-3",
+            "x": 68,
+            "y": -59,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-3.png",
+          "x": 68,
+          "y": 45,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w2-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w2.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 130,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-40",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 240,
+      "baseline": 1008,
+      "y": 768,
+      "width": 96,
+      "height": 240,
+      "floors": 3,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-0",
+            "x": 68,
+            "y": -78,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-0",
+            "x": 28,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 193,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 145,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 145,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 97,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 97,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-0.png",
+          "x": 68,
+          "y": 18,
+          "crop": null
+        },
+        {
+          "file": "dormer-0.png",
+          "x": 28,
+          "y": 60,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-41",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 336,
+      "baseline": 1008,
+      "y": 808,
+      "width": 144,
+      "height": 200,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "arch",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-1",
+            "x": 4,
+            "y": 26
+          },
+          {
+            "file": "dormer-1",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w3-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-arch-w3.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-1.png",
+          "x": 4,
+          "y": 130,
+          "crop": null
+        },
+        {
+          "file": "dormer-1.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-42",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 480,
+      "baseline": 1008,
+      "y": 760,
+      "width": 96,
+      "height": 248,
+      "floors": 3,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          },
+          {
+            "kind": "stone",
+            "colour": 2
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-2",
+            "x": 33,
+            "y": 54
+          },
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 78
+          },
+          {
+            "file": "chimney-2",
+            "x": 68,
+            "y": -66,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-2.png",
+          "x": 68,
+          "y": 38,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w2-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w2.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w2-c2.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w2-c2.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 93,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "sign-2.png",
+          "x": 33,
+          "y": 158,
+          "crop": null
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 182,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-43",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 576,
+      "baseline": 1008,
+      "y": 760,
+      "width": 144,
+      "height": 248,
+      "floors": 3,
+      "spec": {
+        "width": 3,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-3",
+            "x": 116,
+            "y": -86,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-3",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w3-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w3.png",
+          "x": 0,
+          "y": 200,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 201,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 201,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-jetty-w3-c0.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w3-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 116,
+          "y": 18,
+          "crop": null
+        },
+        {
+          "file": "dormer-3.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-44",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 720,
+      "baseline": 1008,
+      "y": 800,
+      "width": 144,
+      "height": 208,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "work",
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "flowerbox-0",
+            "x": 4,
+            "y": 30
+          },
+          {
+            "file": "chimney-0",
+            "x": 116,
+            "y": -44,
+            "layer": "behind_roof"
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "chimney-0.png",
+          "x": 116,
+          "y": 68,
+          "crop": null
+        },
+        {
+          "file": "roof-gable-w3-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-work-w3.png",
+          "x": 0,
+          "y": 160,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 161,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 161,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-stone-w3-c1.png",
+          "x": 0,
+          "y": 112,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 113,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 113,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "flowerbox-0.png",
+          "x": 4,
+          "y": 142,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-west-front-45",
+      "row": "south-west-front",
+      "rear": false,
+      "x": 864,
+      "baseline": 1008,
+      "y": 776,
+      "width": 48,
+      "height": 232,
+      "floors": 3,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "plaster",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 2,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w1-c2.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 184,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 185,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 185,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 184,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c0.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    },
+    {
+      "id": "south-east-front-46",
+      "row": "south-east-front",
+      "rear": false,
+      "x": 1008,
+      "baseline": 912,
+      "y": 712,
+      "width": 144,
+      "height": 200,
+      "floors": 2,
+      "spec": {
+        "width": 3,
+        "ground": "shop",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 1,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-2",
+            "x": 116,
+            "y": -94,
+            "layer": "front"
+          },
+          {
+            "file": "dormer-2",
+            "x": 52,
+            "y": -36
+          }
+        ]
+      },
+      "parts": [
+        {
+          "file": "roof-ridge-w3-c1.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-shop-w3.png",
+          "x": 0,
+          "y": 152,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 153,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 153,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w3-c0.png",
+          "x": 0,
+          "y": 104,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 105,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 141,
+          "y": 105,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-2.png",
+          "x": 116,
+          "y": 10,
+          "crop": null
+        },
+        {
+          "file": "dormer-2.png",
+          "x": 52,
+          "y": 68,
+          "crop": null
+        }
+      ]
+    },
+    {
+      "id": "south-east-front-47",
+      "row": "south-east-front",
+      "rear": false,
+      "x": 1152,
+      "baseline": 912,
+      "y": 728,
+      "width": 48,
+      "height": 184,
+      "floors": 2,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 2
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [
+          "left",
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "chimney-3",
+            "x": 20,
+            "y": -61,
+            "layer": "front"
+          }
+        ],
+        "corner": true
+      },
+      "parts": [
+        {
+          "file": "roof-hip-w1-c0.png",
+          "x": 0,
+          "y": 40,
+          "crop": null
+        },
+        {
+          "file": "ground-door-w1.png",
+          "x": 0,
+          "y": 136,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 137,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 137,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "storey-timber-w1-c2.png",
+          "x": 0,
+          "y": 88,
+          "crop": null
+        },
+        {
+          "file": "wall-end-left.png",
+          "x": 0,
+          "y": 89,
+          "crop": [
+            0,
+            1,
+            3,
+            47
+          ]
+        },
+        {
+          "file": "wall-end-right.png",
+          "x": 45,
+          "y": 89,
+          "crop": [
+            5,
+            1,
+            8,
+            47
+          ]
+        },
+        {
+          "file": "chimney-3.png",
+          "x": 20,
+          "y": 27,
+          "crop": null
+        },
+        {
+          "file": "corner-ground.png",
+          "x": 0,
+          "y": 136,
+          "corner_replacement": true
+        },
+        {
+          "file": "corner-storey-c2.png",
+          "x": 0,
+          "y": 88,
+          "corner_replacement": true
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "tile": "stall",
+      "index": 0,
+      "x": 432,
+      "y": 367,
+      "foot": 410,
+      "bounds": [
+        6,
+        12,
+        41,
+        43
+      ]
+    },
+    {
+      "tile": "stall",
+      "index": 1,
+      "x": 498,
+      "y": 367,
+      "foot": 410,
+      "bounds": [
+        5,
+        10,
+        43,
+        43
+      ]
+    },
+    {
+      "tile": "stall",
+      "index": 0,
+      "x": 756,
+      "y": 375,
+      "foot": 418,
+      "bounds": [
+        6,
+        12,
+        41,
+        43
+      ]
+    },
+    {
+      "tile": "stall",
+      "index": 1,
+      "x": 432,
+      "y": 539,
+      "foot": 582,
+      "bounds": [
+        5,
+        10,
+        43,
+        43
+      ]
+    },
+    {
+      "tile": "stall",
+      "index": 0,
+      "x": 494,
+      "y": 539,
+      "foot": 582,
+      "bounds": [
+        6,
+        12,
+        41,
+        43
+      ]
+    },
+    {
+      "tile": "stall",
+      "index": 1,
+      "x": 720,
+      "y": 563,
+      "foot": 606,
+      "bounds": [
+        5,
+        10,
+        43,
+        43
+      ]
+    },
+    {
+      "tile": "stall",
+      "index": 0,
+      "x": 778,
+      "y": 563,
+      "foot": 606,
+      "bounds": [
+        6,
+        12,
+        41,
+        43
+      ]
+    },
+    {
+      "tile": "well",
+      "index": 0,
+      "x": 616,
+      "y": 471,
+      "foot": 516,
+      "bounds": [
+        9,
+        10,
+        39,
+        45
+      ]
+    },
+    {
+      "tile": "tree",
+      "index": 0,
+      "x": 762,
+      "y": 464,
+      "foot": 554,
+      "bounds": [
+        9,
+        9,
+        87,
+        90
+      ]
+    },
+    {
+      "tile": "tree",
+      "index": 1,
+      "x": 382,
+      "y": 567,
+      "foot": 658,
+      "bounds": [
+        14,
+        3,
+        82,
+        91
+      ]
+    },
+    {
+      "tile": "town_prop3",
+      "index": 0,
+      "x": 782,
+      "y": 530,
+      "foot": 573,
+      "bounds": [
+        3,
+        11,
+        44,
+        43
+      ]
+    },
+    {
+      "tile": "town_prop0",
+      "index": 0,
+      "x": 475,
+      "y": 536,
+      "foot": 580,
+      "bounds": [
+        11,
+        11,
+        37,
+        44
+      ]
+    },
+    {
+      "tile": "town_prop1",
+      "index": 0,
+      "x": 804,
+      "y": 371,
+      "foot": 417,
+      "bounds": [
+        9,
+        5,
+        39,
+        46
+      ]
+    },
+    {
+      "tile": "town_prop7",
+      "index": 0,
+      "x": 1030,
+      "y": 642,
+      "foot": 679,
+      "bounds": [
+        1,
+        9,
+        44,
+        37
+      ]
+    },
+    {
+      "tile": "town_prop4",
+      "index": 0,
+      "x": 340,
+      "y": 332,
+      "foot": 378,
+      "bounds": [
+        12,
+        1,
+        33,
+        46
+      ]
+    },
+    {
+      "tile": "town_prop4",
+      "index": 0,
+      "x": 866,
+      "y": 325,
+      "foot": 371,
+      "bounds": [
+        12,
+        1,
+        33,
+        46
+      ]
+    },
+    {
+      "tile": "town_prop4",
+      "index": 0,
+      "x": 344,
+      "y": 659,
+      "foot": 705,
+      "bounds": [
+        12,
+        1,
+        33,
+        46
+      ]
+    },
+    {
+      "tile": "town_prop4",
+      "index": 0,
+      "x": 934,
+      "y": 660,
+      "foot": 706,
+      "bounds": [
+        12,
+        1,
+        33,
+        46
+      ]
+    }
+  ],
+  "folk": [
+    {
+      "variant": 0,
+      "x": 347,
+      "y": 254,
+      "foot": 287
+    },
+    {
+      "variant": 1,
+      "x": 294,
+      "y": 342,
+      "foot": 375
+    },
+    {
+      "variant": 2,
+      "x": 166,
+      "y": 338,
+      "foot": 371
+    },
+    {
+      "variant": 3,
+      "x": 510,
+      "y": 332,
+      "foot": 365
+    },
+    {
+      "variant": 0,
+      "x": 881,
+      "y": 367,
+      "foot": 400
+    },
+    {
+      "variant": 1,
+      "x": 1006,
+      "y": 346,
+      "foot": 379
+    },
+    {
+      "variant": 2,
+      "x": 457,
+      "y": 400,
+      "foot": 433
+    },
+    {
+      "variant": 3,
+      "x": 530,
+      "y": 410,
+      "foot": 443
+    },
+    {
+      "variant": 0,
+      "x": 716,
+      "y": 411,
+      "foot": 444
+    },
+    {
+      "variant": 1,
+      "x": 607,
+      "y": 519,
+      "foot": 552
+    },
+    {
+      "variant": 2,
+      "x": 663,
+      "y": 502,
+      "foot": 535
+    },
+    {
+      "variant": 3,
+      "x": 566,
+      "y": 460,
+      "foot": 493
+    },
+    {
+      "variant": 0,
+      "x": 478,
+      "y": 577,
+      "foot": 610
+    },
+    {
+      "variant": 1,
+      "x": 731,
+      "y": 608,
+      "foot": 641
+    },
+    {
+      "variant": 2,
+      "x": 828,
+      "y": 579,
+      "foot": 612
+    },
+    {
+      "variant": 3,
+      "x": 411,
+      "y": 668,
+      "foot": 701
+    },
+    {
+      "variant": 0,
+      "x": 277,
+      "y": 689,
+      "foot": 722
+    },
+    {
+      "variant": 1,
+      "x": 626,
+      "y": 678,
+      "foot": 711
+    },
+    {
+      "variant": 2,
+      "x": 895,
+      "y": 564,
+      "foot": 597
+    },
+    {
+      "variant": 3,
+      "x": 960,
+      "y": 694,
+      "foot": 727
+    },
+    {
+      "variant": 0,
+      "x": 1093,
+      "y": 649,
+      "foot": 682
+    },
+    {
+      "variant": 1,
+      "x": 944,
+      "y": 812,
+      "foot": 845
+    },
+    {
+      "variant": 2,
+      "x": 57,
+      "y": 673,
+      "foot": 706
+    },
+    {
+      "variant": 3,
+      "x": 1082,
+      "y": 351,
+      "foot": 384
+    },
+    {
+      "variant": 0,
+      "x": 845,
+      "y": 448,
+      "foot": 481
+    }
+  ],
+  "draw_order": [
+    "north-west-rear-0",
+    "north-west-rear-1",
+    "north-west-rear-2",
+    "north-centre-rear-3",
+    "north-centre-rear-4",
+    "north-centre-rear-5",
+    "north-centre-rear-6",
+    "north-east-rear-7",
+    "north-east-rear-8",
+    "folk-0",
+    "north-west-front-9",
+    "north-west-front-10",
+    "north-west-front-11",
+    "north-west-front-12",
+    "square-north-front-13",
+    "square-north-front-14",
+    "square-north-front-15",
+    "square-north-front-16",
+    "square-north-front-17",
+    "north-east-front-18",
+    "north-east-front-19",
+    "north-east-front-20",
+    "folk-3",
+    "town_prop4-16",
+    "folk-2",
+    "folk-1",
+    "town_prop4-15",
+    "folk-5",
+    "folk-23",
+    "folk-4",
+    "stall-1",
+    "stall-2",
+    "town_prop1-13",
+    "stall-3",
+    "folk-6",
+    "folk-7",
+    "folk-8",
+    "folk-24",
+    "folk-11",
+    "well-8",
+    "west-rear-21",
+    "west-rear-22",
+    "west-rear-23",
+    "folk-10",
+    "folk-9",
+    "tree-9",
+    "town_prop3-11",
+    "town_prop0-12",
+    "stall-4",
+    "stall-5",
+    "folk-18",
+    "stall-6",
+    "stall-7",
+    "folk-12",
+    "folk-14",
+    "east-front-28",
+    "east-front-29",
+    "east-front-30",
+    "folk-13",
+    "tree-10",
+    "square-west-front-24",
+    "square-west-front-25",
+    "square-west-front-26",
+    "square-west-front-27",
+    "town_prop7-14",
+    "folk-20",
+    "folk-15",
+    "town_prop4-17",
+    "town_prop4-18",
+    "folk-22",
+    "folk-17",
+    "folk-16",
+    "folk-19",
+    "folk-21",
+    "south-west-rear-31",
+    "south-west-rear-32",
+    "south-west-rear-33",
+    "south-west-rear-34",
+    "south-west-rear-35",
+    "south-west-rear-36",
+    "south-west-rear-37",
+    "south-east-front-46",
+    "south-east-front-47",
+    "south-west-front-38",
+    "south-west-front-39",
+    "south-west-front-40",
+    "south-west-front-41",
+    "south-west-front-42",
+    "south-west-front-43",
+    "south-west-front-44",
+    "south-west-front-45"
+  ],
+  "pack": {
+    "ref": "origin/claude/project-thread-g8wuu1",
+    "path": "packages/server/src/assets/overworld-art/fantasy.json",
+    "sha256": "bfbb3cd3c0f5512fb4678991eabdcc7d1861f9c52f281da36e39615426f2801b",
+    "tileSize": 48,
+    "folk_missing": true
+  }
+}

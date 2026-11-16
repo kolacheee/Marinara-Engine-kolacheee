@@ -1,0 +1,188 @@
+{
+  "status": "PASS",
+  "checks": 11840,
+  "protected_files": 8438,
+  "out_unchanged": true,
+  "compose_unchanged": true,
+  "mode_blocks": 60736,
+  "samples": 3887104,
+  "proof_pairs": 118,
+  "rear_feet_occluded": 19,
+  "buildings": 48,
+  "people": 25,
+  "props": 18,
+  "building_coverage_percent": 53.097,
+  "measurements": [
+    {
+      "name": "wall-a",
+      "size": [
+        288,
+        96
+      ],
+      "bounds": [
+        0,
+        0,
+        288,
+        96
+      ],
+      "colours": 21,
+      "opaque": 25891,
+      "cleanup": 973,
+      "sha256": "0aa3fdfbf4dccd8fa1bcf96fbd0bced8b3f00cdd9dce6c409a99510a3ff5a21d"
+    },
+    {
+      "name": "folk-a-0",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        2,
+        1,
+        17,
+        33
+      ],
+      "colours": 18,
+      "opaque": 329,
+      "cleanup": 71,
+      "sha256": "574898d2840b19dc54ec8c5c244262f75de9a11dd979ff99f6819a3bbe0f575d"
+    },
+    {
+      "name": "folk-a-1",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        2,
+        1,
+        18,
+        33
+      ],
+      "colours": 13,
+      "opaque": 312,
+      "cleanup": 88,
+      "sha256": "6a06d1dc39c3ae1b7bf8d8a0de443ddb57039bee8372513a7ea0fcb1f985634d"
+    },
+    {
+      "name": "folk-a-2",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        2,
+        1,
+        17,
+        33
+      ],
+      "colours": 12,
+      "opaque": 350,
+      "cleanup": 73,
+      "sha256": "51bcee46eb28b5f058cd236d85703e61c03637d3b13e773cf2f9379218f02598"
+    },
+    {
+      "name": "folk-a-3",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        1,
+        1,
+        18,
+        33
+      ],
+      "colours": 14,
+      "opaque": 368,
+      "cleanup": 87,
+      "sha256": "dd34ca0cb83f5fddf67d100433dacc9cd5d8dd7b6850bd117fc728d66fda54dc"
+    },
+    {
+      "name": "wall-b",
+      "size": [
+        288,
+        96
+      ],
+      "bounds": [
+        0,
+        0,
+        288,
+        96
+      ],
+      "colours": 17,
+      "opaque": 25728,
+      "cleanup": 916,
+      "sha256": "3f4431d8bb26549de0ca009b4ee51f04b10d23db00632533b19f6eb3ef4f100f"
+    },
+    {
+      "name": "folk-b-0",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        2,
+        1,
+        18,
+        33
+      ],
+      "colours": 21,
+      "opaque": 352,
+      "cleanup": 76,
+      "sha256": "69832307d04a6fc38a0837739a09a02abbfc4c6ef858b4e45479b79d2dd7d427"
+    },
+    {
+      "name": "folk-b-1",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        1,
+        1,
+        18,
+        33
+      ],
+      "colours": 23,
+      "opaque": 349,
+      "cleanup": 88,
+      "sha256": "6281fbdeb178f259456c16bc36907a18295adb1e9720e9e79d760b610035deaf"
+    },
+    {
+      "name": "folk-b-2",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        2,
+        1,
+        17,
+        33
+      ],
+      "colours": 24,
+      "opaque": 352,
+      "cleanup": 76,
+      "sha256": "b727a668589a0ed47b36b4dd94b51c54ee5c237c413419c30f08512e1e21005d"
+    },
+    {
+      "name": "folk-b-3",
+      "size": [
+        20,
+        34
+      ],
+      "bounds": [
+        2,
+        1,
+        18,
+        33
+      ],
+      "colours": 30,
+      "opaque": 356,
+      "cleanup": 85,
+      "sha256": "464cb0a07399741dfd6d0c3fc79414faa3ab0315ea2670fed5153c77a19588cf"
+    }
+  ],
+  "failed_files": []
+}

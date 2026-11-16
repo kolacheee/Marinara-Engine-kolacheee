@@ -1,3 +1,248 @@
+# Round 15 — Part M: critic-r15M-1 redraw
+
+Repaired both failed images, `review/r15-city-mockup.png` and
+`review/r15-city-mockup-vs-today.png`, by moving **folk[23]** 46 native pixels
+up the east cross-street: origin **(1082,397) → (1082,351)**, foot
+**430 → 384**. Its full silhouette now has **16 clear pixels** before the
+nearest building pixel; the old placement overlapped the chimney by 15 pixels.
+Native sprite size and the shared back-to-front foot sort are retained.
+This was the critic's requested placement repair; no drawing needed redrawing.
+All image-tool sources and their magenta-key / registration / exact-mode /
+palette / hard-alpha / outline-cleanup results remain unchanged.
+
+Regenerated the `r15-M-*.png` review sheets and added east-cross-street crops
+at **1× and exact nearest-neighbour 4×**. Inspected those crops, the full scene
+and the comparison. Saved-art self-review: **PASS; failed review files: `[]`**.
+The passing **2× detail remains byte-identical**, using `(336,144)–(912,672)`;
+the comparison retains the unchanged fantasy panel and proposed-city origin
+**(1224,36)**. The pixel audit also checks silhouette clearance and visibility.
+
+**No file in `out/` changed, including `city15/compose.py`.** Earlier notes,
+passing artwork and the independent `critic-r15M-1` evidence are preserved.
+No commit, push or branch change.
+
+---
+
+# Round 15 — Part M
+
+Made a **review-only fantasy city district**, built from the approved round 15
+modules at their exact native size. **No file in `out/` changed, including
+`city15/compose.py`.** The scene has **48 buildings**, widths **1–3 cells**,
+with **24 two-storey / 16 three-storey / 6 four-storey / 2 five-storey** stacks.
+There are **29 front-row and 19 rear-row buildings**. Continuous frontages,
+rear roof masses, a north curtain wall and a fully paved market replace the
+detached cottages and lawns in today's render.
+
+**Files:**
+
+| Review | Size | Scale |
+|---|---|---|
+| `review/r15-city-mockup.png` | **1200×912** | Native **48 px cells**, 25×19 cells |
+| `review/r15-city-mockup-detail-2x.png` | **1152×1056** | Exact 2× of `(336,144)–(912,672)` |
+| `review/r15-city-mockup-vs-today.png` | **2424×1048** | Both scenes at 48 px cells |
+
+The comparison retains the complete **600×500** fantasy panel from
+`review/city-view-towns-2026-11-16.png`, cropped at `(0,0)–(600,500)` and
+enlarged exactly **2× nearest-neighbour**: its screenshot cells are 24 px.
+The proposed district is placed beside it unchanged at **1×**. Coordinates
+are zero-based; right and bottom bounds are exclusive.
+
+**Assembly method:** imported the unchanged `city15/compose.py` and used
+`build(spec)` for every building. All **82 used city PNGs** are composited
+without resampling, recolouring or pixel edits. Floors advance exactly
+48 px; each frontage foot lies on a 48 px street line; neighbours advance
+by their exact lot width. The compositor's tested **3 px wall-end reveal**
+retains windows and complete course rows. Seven street-corner stacks replace
+their one-cell panels with the existing corner ground/storeys, retaining
+the native roof and right-hand side return. The recipe includes **36 chimney,
+17 dormer, 6 sign and 25 flowerbox placements**; some are naturally occluded
+in rear rows or by the bottom camera crop.
+
+Every standing object, including people and market props, shares one
+back-to-front sort by its foot. All **19 rear-row feet are fully occluded**
+by front architecture. Rear roofs and upper walls remain visible where the
+front skyline drops, making solid blocks. The north frontage meets y=336;
+the west market frontage meets y=672; the east block steps back at y=624.
+The east lane shifts one cell right toward the foreground. The **480×336**
+flagstone square occupies `(384,336)–(864,672)`. Seven stalls form unequal
+groups around a well, **two trees**, and **25 townsfolk placements**. Eighteen
+stock prop placements include the stalls, well, trees, bench, barrel, crates,
+handcart and lamps. There is **no lawn or grass in the district**.
+
+**Fantasy pack:** decoded the data-URL sheets read by
+`git show origin/claude/project-thread-g8wuu1:packages/server/src/assets/overworld-art/fantasy.json`.
+Source rectangles use the pack's **48 px cell coordinates**. The **288×288**
+`street` and `square` drawings tile at 1× with a continuous global phase;
+their pieces are neither shrunk nor randomized. `town_ground` was inspected
+and has repeat proofs, but its grass is deliberately not placed in the city.
+The well, stalls, trees and additional market props come from that same pack.
+The exact pack hash, source ref and placements are in `r15-M-layout.json`.
+
+**Missing folk and review-only drawings:** this pack has **no `folk` entry**;
+the current town renderer falls back to the blue markers visible in today's
+panel. Four small townsfolk and the curtain wall were therefore drawn only
+for this picture, with **four large built-in image-tool drawings on solid
+magenta**: two wall alternatives and two four-person sheets. Selected
+**wall A / folk B**. A's irregular ashlar better matches the existing material
+detail than B's very regular courses; B's people have clearer clothing and
+silhouettes at native size. No new game asset was installed.
+
+Magenta key → painted-bounds BOX registration at **8×** → the existing
+**58-colour city palette**, without dithering → exact RGBA mode of **all 64
+samples per 8×8 block**, including transparency, with lexicographic ties →
+one-pixel exposed-contour cleanup using adjacent drawn colours. Wall canvases
+are **288×96**; each person has a **20×34** canvas with a 32 px painted height.
+The selected wall uses **21 opaque colours**; selected people use **21 / 23 /
+24 / 30**, with **352 / 349 / 352 / 356 opaque pixels**. Hard alpha is **0/255**,
+RGB under transparency is zero, and each is one connected silhouette.
+There are **1,298 recorded cleanup edits** across the selected five drawings,
+**2,533** across both alternatives. No silhouette pixels were added. The
+wall repeats a native **252×96 crop**, x=18..269, to join inside merlons instead
+of doubling the source's outside borders. Code registers, reduces, cleans,
+crops, repeats and composites drawings; it constructs no architecture,
+people, paving or surface noise from code shapes.
+
+Original drawings, exact prompts, registered/mode/clean stages, palette and
+cleanup records remain under **`review/r15-M-*`**. The new wall and folk are
+review ingredients only; the deliverables are the three scene pictures.
+
+**QC and critic self-review:** inspected the native district, exact 2× market
+crop, same-scale comparison and enlarged course, corner, rear/front-depth,
+wall and bent-lane crops. Replaced two pairs of adjacent identical shop
+fronts with a workshop and doorway, and removed one almost-hidden pedestrian.
+Final verdict: **PASS; failed review files: none (`[]`)**. Joined multistorey
+frontages and roof masses read as a city; no floating foot, open neighbour
+gap, displaced course or incorrect depth overlap was found. Building pixels
+cover **53.097%** of the canvas before the wall is counted. The unequal blocks,
+square and bent lane avoid a repeated street-plan stamp. Paving remains the
+unchanged pack artwork. This is **saved-art self-review**, not an independent
+critic verdict or an in-engine movement/collision test. No seasonal outputs
+or seasonal silhouette changes belong to M.
+
+**Review sheets:** **270 `r15-M-*.png` files**, including all three deliverables
+at **1× and exact nearest-neighbour 4×**, every used building piece, each stock
+prop over summer paving, both wall/folk alternatives, and detail inspections.
+The three decoded ground bases have literal unlabelled **3×3 repeats** at
+**864×864 / 3456×3456**. Start at **`review/r15-M-review.html`**. The native
+source pieces are not scaled in the scene; enlargement is for proofs only.
+
+**Verification:** **11,837 checks pass**, including **60,736 mode blocks /
+3,887,104 samples**, recorded-cleanup replay, hard alpha, palette membership,
+connected silhouettes, full saved-scene replay from original native pixels,
+48 px lot/foot/course registration, all 19 rear-foot occlusions, **117 exact
+1×/4× pairs**, 27 literal ground-repeat copies, the exact 2× crop and both
+comparison placements. All **8,438 protected pre-existing files**, including
+all of `out/`, are byte-identical. All earlier NOTES content follows unchanged.
+The compositor's own read-only check also passes **129 assets / 108 wall-end
+assemblies / 120 sign mounts**.
+
+Reproduce with `python -B art-drop/review/r15-M-build.py --full`; audit with
+`python -B art-drop/review/r15-M-verify.py` (Python and Pillow). Results and
+measurements: **`r15-M-validation.json`**; critic criteria and source caveats:
+**`r15-M-critic.json`**. Only Part M review material and this top NOTES section
+were added. **No commit, push or branch change.**
+
+---
+
+# Round 16 — Part E
+
+Made **14 transparent 24×24 RGBA PNGs in `out/weather16/`**:
+`icon-clear-day.png`, `icon-clear-night.png`, `icon-cloudy.png`,
+`icon-overcast.png`, `icon-rain.png`, `icon-heavy_rain.png`,
+`icon-storm.png`, `icon-snow.png`, `icon-blizzard.png`, `icon-fog.png`,
+`icon-wind.png`, `icon-hail.png`, `icon-sandstorm.png` and `icon-heat_wave.png`.
+These are small corner-badge symbols on the native square pixel grid, with
+upper-left light and a one-pixel dark navy **(32,41,54)** outline.
+
+**Drawing method:** **20 separate large built-in image-tool drawings on solid
+magenta**. Cloudy, overcast and blizzard each have two alternatives; sandstorm
+has three. Heat wave has two completed alternatives; two earlier thermometer
+requests returned no image. Selected **cloudy B / overcast B / blizzard B /
+sandstorm C / heat wave D**, and **A** for the other nine icons. All twenty
+original drawings are retained as **`review/r16-E-source-*.png`**, with the
+exact prompt set and request outcomes in **`r16-E-generation.json`**.
+No API fallback was used.
+
+Magenta is keyed, painted bounds are BOX-registered onto **192×192** working
+canvases, and explicit neutral, blue, gold and ochre palettes are locked without
+dithering. Each final pixel is the exact RGBA mode of **all 64 samples in its
+8×8 block**, including transparent samples; ties use lexicographic RGBA order.
+Most sources are aspect-fitted within **22×22 native pixels**, leaving at least
+one clear pixel at every canvas edge. The selected heat drawing registers its
+already-painted wave group and base bar separately: waves occupy **(2,1)–(22,19)**
+and the bar **(1,20)–(23,23)**. This retains a coloured centre in the narrow bar
+after outlining. Coordinates are zero-based, right/bottom exclusive.
+
+Native cleanup recolours exposed contours to the one-pixel dark edge and thins
+heavy source strokes using adjacent drawn shades. There are **267 recorded
+mode-to-final colour edits** across the selected fourteen, **455 across all
+alternatives**; selected alpha masks require **zero edits**. No icon shapes,
+weather marks, decorative geometry or noise were constructed in code. Code only
+registers, reduces, palette-locks, cleans and composites the drawings. Every
+output has hard **0/255 alpha**, **zero RGB under transparency**, and **3–6
+opaque colours**. Registered, mode and clean stages remain in the review folder.
+
+**Native-size selection and QC:** rain has two short blue ticks below a pale
+cloud; heavy rain has four long streaks below a dark cloud. Snow has two white
+cross flakes, blizzard a branching crystal with horizontal speed streaks, and
+hail three squared ice pellets. Cloudy retains a visible gold sun; overcast has
+two layered grey clouds. Fog has still, square-ended horizontal banks; wind has
+open right-hand hooks. Clear day is an eight-ray sun; heat wave is three upright
+gold ripples above a warm base bar. Sandstorm has a substantial ochre dust bank
+with three leftward trails.
+
+The first native review rejected cloudy A’s disappearing ray, overcast A’s
+peak-like profile, sandstorm A’s wave-like curl and B’s dark-only thin trails,
+and heat wave C’s hanging silhouette. Selected redraws resolve those problems.
+Blizzard B keeps a clearer crystal than A’s curls at 1×. The final native rows
+were visually reviewed on dark and light panels at **1×, 2× and exact
+nearest-neighbour 4×**, including actual **75% panels over all seven existing
+reference crops**: grass, forest, town, city, wasteland, sand and snow. Panel
+composition uses `(3 × panel RGB + map RGB) / 4`, rounded to nearest byte;
+dark panel RGB is **(10,12,20)**, light **(246,243,232)**. This is saved-art
+self-review, not an independent critic verdict or observed in-engine playback.
+
+**Measurements:** all canvases are 24×24; bounds are right/bottom exclusive.
+
+| Icon | Painted bounds | Opaque pixels | Colours |
+|---|---|---:|---:|
+| clear-day | (1,1)–(23,23) | 285 | 4 |
+| clear-night | (2,1)–(22,23) | 234 | 3 |
+| cloudy | (1,2)–(23,21) | 241 | 4 |
+| overcast | (1,5)–(23,18) | 215 | 4 |
+| rain | (1,1)–(23,23) | 286 | 6 |
+| heavy_rain | (1,1)–(23,23) | 296 | 6 |
+| storm | (1,1)–(23,23) | 258 | 5 |
+| snow | (3,1)–(20,23) | 199 | 4 |
+| blizzard | (1,4)–(23,19) | 176 | 3 |
+| fog | (1,4)–(23,19) | 229 | 4 |
+| wind | (1,2)–(23,21) | 215 | 3 |
+| hail | (3,1)–(20,23) | 192 | 5 |
+| sandstorm | (1,3)–(23,20) | 283 | 4 |
+| heat_wave | (1,1)–(23,23) | 281 | 4 |
+
+**Review material:** start at **`review/r16-E-review.html`**. The fourteen
+**`r16-E-file-icon-*.png`** sheets show every icon at 1× and 4× on both panel
+colours. **`r16-E-row-{dark,light}-{1,2,4}x.png`** supplies six literal row
+proofs; **`r16-E-context-*-{1,2,4}x.png`** supplies all seven map contexts.
+**`r16-E-overview.png`** and **`r16-E-selection.png`** show the set and drawing
+alternatives. Part E contains no ground bases, props, trees or seasonal partners,
+so 3×3 ground repeats and seasonal silhouette comparisons do not apply.
+
+**Verification:** the saved-pixel audit replays all twenty source registrations,
+**11,520 exact mode blocks / 737,280 samples**, recorded cleanup, output sizes,
+palettes, alpha, clear margins, connected groups, outline colour, file hashes,
+all 1×/4× individual placements and exact 2×/4× row/context enlargements.
+It also checks all **8,291 protected pre-existing files** and preserves the
+complete earlier NOTES content. Results: **`r16-E-validation.json`**;
+measurements: **`r16-E-measurements.json`**. Reproduce with
+**`r16-E-build.py`**, then **`r16-E-verify.py`** (Python and Pillow).
+
+Only the fourteen named Part E output PNGs, **`review/r16-E-*`** material and
+established **`NOTES.md`** were changed or added. No commit, push or branch change.
+
+---
+
 # Round 16 — Part D: critic-r16D-1 redraw
 
 Replaced all **11 failed files**: the three `lightning-*-f2.png` afterglows

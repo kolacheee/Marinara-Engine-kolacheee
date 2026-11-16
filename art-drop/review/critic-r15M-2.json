@@ -1,0 +1,24 @@
+{
+  "part": "M",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "r15-city-mockup": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No correction required. The former pedestrian/chimney collision is resolved: folk[23] is at (1082,351), foot 384, fully visible on cobbles with at least 16 native pixels of clearance from architecture. Preserve this placement and the native-size, back-to-front composition."
+    },
+    "r15-city-mockup-detail-2x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No correction required. The 1152x1056 image is the exact nearest-neighbour 2x enlargement of master rectangle (336,144)-(912,672). The enlarged frontage, course lines, square perimeter and market props remain clean."
+    },
+    "r15-city-mockup-vs-today": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No correction required. The repaired master is reproduced without scaling at (1224,36). The complete original fantasy panel, rectangle (0,0)-(600,500), is preserved at exact nearest-neighbour 2x on the left, restoring its screenshot cells to the same 48 px scale."
+    }
+  },
+  "notes": "Independent critic review of the current saved images; the author's self-review was not used as the verdict. Read BRIEF-15.md in full and the Part M and modular-building method sections of NOTES.md. Inspected all three deliverables at saved 1x and exact nearest-neighbour 4x through enlarged crops; the detail's 4x inspection also exposes 8x-native pixels. Additional 8x crops inspect the repaired pedestrian, party-wall/course junction, street corner, curtain-wall join and ground-repeat boundaries. Evidence is saved as critic-r15M-2-*.png. The district reads as a dense city: continuous terraces, varied widths and roof heights, mixed 2-5-storey stacks, taller square frontage, rear roofs forming solid blocks, a curtain wall, a bent lane, seven market stalls, a well, people and two trees without lawns. No remaining floating foot, misleading roof/person contact, incorrect draw overlap, open neighbour gap, displaced course line, conspicuous tile seam, repeated street-plan stamp, rounded grid boundary, haze, smear, stray sprite speck or rejection-level style/outline/light mismatch was found. The original pack props have softer internal shading than the modular facades, but remain coherent at the native town scale. Compared against all ten supplied house/hall references and the original fantasy panel. Inspected literal 3x3 repeats of street, square and town_ground; independently verified all 27 copies and their exact 4x proofs. Town_ground is reference-only and is absent from the proposed district. Reviewed every distinct placed stock prop and all four townsfolk over both summer street and square paving at 1x and 4x. Part M has no seasonal deliverables or seasonal partners, so seasonal-ground proofs and summer/season alpha-mask comparisons are not applicable. Independently decoded the specified git fantasy pack: tileSize is 48 and no folk tile exists, consistent with the disclosed review-only people. Independently reconstructed the entire saved scene from source pixels and recorded placements, obtaining an exact RGBA match. Checked all 48 buildings' native lot widths, 48 px floor/foot registration, 260 shared course rows, abutting row positions and all 19 rear-foot occlusions. All standing objects follow the recorded foot sort. Independently verified folk[23]'s full pixel visibility and 16 px architecture clearance; inspected its repair at 1x, 4x and 8x, including the comparison copy. Scene, detail and comparison dimensions are 1200x912, 1152x1056 and 2424x1048. All three have fully opaque alpha; the selected wall and four people have only 0/255 alpha and zero RGB under transparency. The detail crop, both comparison panels and all three saved deliverable 1x/4x proof pairs are pixel-exact. All 1832 protected files under art-drop/out/ match the starting hash manifest, including city15/compose.py. This review wrote only this JSON and critic-r15M-2-prefixed PNG evidence. No source art, mockup, compositor, notes, branch or git history was changed. This is approval of the requested picture, not an in-engine movement or collision test."
+}

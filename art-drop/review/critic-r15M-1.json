@@ -1,0 +1,31 @@
+{
+  "part": "M",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "r15-city-mockup",
+    "r15-city-mockup-vs-today"
+  ],
+  "files": {
+    "r15-city-mockup": {
+      "status": "fail",
+      "problems": [
+        "Incorrect visual ground contact at the east block, around x=1084..1099, y=398..450: the green/brown pedestrian appears to stand on the chimney of the blue-roofed workshop. The person's boots merge with the cream chimney cap, making a rooftop figure instead of a pedestrian on the street. This is visible at native 1x, not just under magnification. In r15-M-layout.json this is folk[23], with origin (1082,397) and foot=430, beside east-front-28. The chimney origin is (1076,419); its opaque bounds are (1082,427)-(1094,451). Independent mask intersection finds 15 overlapping pixels in (1087,427)-(1094,430), and the later building draw clips the boots. Correct baseline sorting alone does not prevent this misleading silhouette contact. Evidence: critic-r15M-1-chimney-person-1x.png, critic-r15M-1-chimney-person-4x.png and critic-r15M-1-chimney-person-8x.png."
+      ],
+      "fix": "Move folk[23] onto visibly clear cobbles farther up the east cross-street, leaving an obvious strip of ground between both boots and every roof/chimney outline. Keep the native sprite size and back-to-front foot sort. Reinspect the placement at 1x and 4x, then regenerate the scene and its comparison. No city15 asset or compose.py change is needed."
+    },
+    "r15-city-mockup-detail-2x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No correction required in the current crop. It is the exact nearest-neighbour 2x enlargement of master rectangle (336,144)-(912,672), and excludes the failed east-block placement. Preserve this exact crop when synchronizing the deliverables after the master correction."
+    },
+    "r15-city-mockup-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The proposed-city panel carries the same pedestrian-on-chimney defect as r15-city-mockup, around x=2308..2323, y=434..486 in this comparison. The boot/cap intersection is at (2311,463)-(2318,466). The right panel is an exact unscaled copy of the master, so its defective overlap remains visible to the owner in the principal before/after presentation. Evidence: critic-r15M-1-comparison-chimney-4x.png."
+      ],
+      "fix": "After correcting the pedestrian placement in the master, replace the right panel with that corrected native-size scene. Preserve its origin (1224,36), the unchanged fantasy-panel crop on the left, and the present 48 px cell comparison scale."
+    }
+  },
+  "notes": "Independent Part M review; the author's self-review verdict was not used as the decision. Read BRIEF-15.md in full and the drawing-method notes, and inspected the supplied town references and fantasy panel. Reviewed all three deliverables at saved 1x and nearest-neighbour 4x, using tiled close-ups to retain exact pixels; the delivered detail at 4x also supplies 8x-native scrutiny. Checked extra 8x close-ups at roof contact, wall join and square perimeter. Inspected literal 3x3 repeats of the fantasy street, square and town_ground, and the scene props over summer paving. Independently decoded the specified git fantasy pack: tileSize is 48 and there is no folk tile, so the disclosed review-only townsfolk are a reasonable fallback. No seasonal deliverables or seasonal partners belong to M; seasonal-ground and summer/season alpha-mask comparisons are not applicable. The district does read as a city: contiguous terraces, mixed 2-5-storey heights, rear roof masses, taller square frontage, a curtain wall, a bent lane, market stalls, a well, two trees and no lawns. The street plan does not read as a repeated block stamp. No additional rejection-level module seam, neighbour gap, displaced course, floating building foot, lighting reversal, haze, rounded grid boundary or style/scale clash was found. The stock props have softer shading than the city modules, but remain coherent at native view. Independently reconstructed the complete scene from original source pixels and recorded placements with byte-identical output; checked 48 buildings, all 260 course rows, native lot widths, street-line feet and abutting frontage positions. Dimensions are 1200x912, 1152x1056 and 2424x1048 respectively; these meet the requested scene/crop/comparison sizes. All three deliverables are fully opaque with no fractional alpha. The selected review-only wall and four people have hard 0/255 alpha and zero RGB under transparency. The detail crop, both comparison panel placements, all three saved 1x/4x proof pairs and all 27 ground-repeat copies are pixel-exact. The left comparison panel correctly uses the original 600x500 fantasy crop enlarged 2x nearest-neighbour to restore 48 px cells. Checked all 131 city15 files against the author's starting hash manifest: unchanged, including compose.py. This critic changed no source artwork, mockup, compositor, notes or branch; only this verdict and critic-prefixed review PNGs were written. The two failures are a localized scene-placement problem, not a rejection of the modular-city concept."
+}
