@@ -110,3 +110,5 @@ castle/fog-hall rc=0 secs=108 exists=yes
 castle/phone-night rc=0 secs=105 exists=yes
 castle/phone-fog rc=0 secs=81 exists=yes
 castle/phone-snow rc=0 secs=96 exists=yes
+wsb/mari-rocket-chubby rc=0 secs=94 exists=yes
+wsb/mari-bags-v6 rc=0 secs=83 exists=yes

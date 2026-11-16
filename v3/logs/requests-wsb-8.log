@@ -1,0 +1,6 @@
+start wsb/mari-rocket-chubby twin ['mari-rocket.png']
+done  wsb/mari-rocket-chubby True
+start wsb/mari-bags-v6 twin ['raw.png']
+done  wsb/mari-bags-v6 True
+ok wsb/mari-rocket-chubby (1024, 1024) RGBA
+ok wsb/mari-bags-v6 (1024, 1024) RGBA
