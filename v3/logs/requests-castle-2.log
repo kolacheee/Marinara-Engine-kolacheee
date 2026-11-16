@@ -1,0 +1,21 @@
+start castle/storm-day twin ['raw.png']
+start castle/fog-hall twin ['raw.png']
+start castle/snow-day twin ['raw.png']
+done  castle/fog-hall True
+start castle/phone-storm twin ['raw.png']
+done  castle/snow-day True
+start castle/stone-day twin ['raw.png']
+done  castle/storm-day True
+start castle/frieze-night fresh []
+done  castle/frieze-night True
+start castle/frieze-day twin ['raw.png']
+done  castle/phone-storm True
+done  castle/stone-day True
+done  castle/frieze-day True
+ok castle/storm-day (1672, 941) RGB
+ok castle/snow-day (1672, 941) RGB
+ok castle/fog-hall (1672, 941) RGB
+ok castle/phone-storm (887, 1774) RGB
+ok castle/stone-day (1254, 1254) RGB
+ok castle/frieze-night (1983, 793) RGB
+ok castle/frieze-day (1983, 793) RGB

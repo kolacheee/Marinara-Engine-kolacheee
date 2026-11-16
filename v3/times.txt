@@ -13,3 +13,10 @@ wsb/mascot-bags rc=0 secs=95 exists=yes
 wsb/floor-day-phone rc=0 secs=95 exists=yes
 wsb/floor-night rc=0 secs=103 exists=yes
 wsb/floor-night-phone rc=0 secs=79 exists=yes
+castle/fog-hall rc=0 secs=130 exists=yes
+castle/snow-day rc=0 secs=142 exists=yes
+castle/storm-day rc=0 secs=156 exists=yes
+castle/frieze-night rc=0 secs=73 exists=yes
+castle/phone-storm rc=0 secs=109 exists=yes
+castle/stone-day rc=0 secs=122 exists=yes
+castle/frieze-day rc=0 secs=96 exists=yes
