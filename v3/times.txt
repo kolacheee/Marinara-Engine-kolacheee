@@ -71,3 +71,4 @@ castle/phone-snow-day rc=0 secs=117 exists=yes
 castle/phone-fog-day rc=0 secs=106 exists=yes
 castle/mask-day-hall rc=0 secs=122 exists=yes
 castle/mask-phone-day rc=0 secs=97 exists=yes
+castle/mask-phone-storm rc=0 secs=76 exists=yes
