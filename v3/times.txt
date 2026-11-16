@@ -120,3 +120,6 @@ pancake/bg-phone-day rc=0 secs=98 exists=yes
 pancake/bg-day-rain rc=0 secs=134 exists=yes
 pancake/bg-night-storm rc=0 secs=96 exists=yes
 pancake/bg-phone-night rc=0 secs=139 exists=yes
+wsb/mari-bags-v9 rc=0 secs=92 exists=yes
+wsb/mari-bags-v10 rc=0 secs=95 exists=yes
+wsb/mari-bags-v11 rc=0 secs=96 exists=yes
