@@ -1,0 +1,265 @@
+{
+  "part": "A",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "rain-f0",
+    "rain-f1",
+    "rain-f2",
+    "rain-f3",
+    "heavy_rain-f0",
+    "heavy_rain-f1",
+    "heavy_rain-f2",
+    "heavy_rain-f3",
+    "snow-f0",
+    "snow-f1",
+    "snow-f2",
+    "snow-f3",
+    "blizzard-f0",
+    "blizzard-f1",
+    "blizzard-f2",
+    "blizzard-f3",
+    "hail-f0",
+    "hail-f1",
+    "hail-f2",
+    "hail-f3",
+    "sandstorm-f0",
+    "sandstorm-f1",
+    "sandstorm-f2",
+    "sandstorm-f3"
+  ],
+  "files": {
+    "rain-f0": {
+      "status": "fail",
+      "problems": [
+        "Visible repeated rain lanes across the entire tile. Columns x=0..95 are an exact RGBA copy of x=96..191 in this frame. The 3x3 repeat reads as regularly spaced strings over grass, sand and the water beside the town/city.",
+        "Identical short drops form a diagonal chain starting near (68,7), (72,39), (76,71) and continuing at (+4,+32). This is a placement pattern, not a boundary seam.",
+        "The required splash ticks are absent. The only selected splash drawing is particle 4, whose alpha mask is entirely empty after cleanup; particle 5 survives as two pixels but is never placed."
+      ],
+      "fix": "Rework placement over the full 192x192 area to eliminate the exact 96px horizontal subperiod and the long diagonal chains. Use irregular cyclic tracks/staggered spacing while preserving f3-to-f0 continuation and the eastward slant. Restore a few deliberately drawn 1-2px splash ticks that survive reduction, place them visibly, and give them an impact phase. Keep the current restrained palette and coverage."
+    },
+    "rain-f1": {
+      "status": "fail",
+      "problems": [
+        "Visible repeated rain lanes across the entire tile. Columns x=0..95 are an exact RGBA copy of x=96..191 in this frame. The 3x3 repeat reads as regularly spaced strings over grass, sand and the water beside the town/city.",
+        "Identical short drops form a diagonal chain starting near (69,15), (73,47), (77,79) and continuing at (+4,+32). This is a placement pattern, not a boundary seam.",
+        "The required splash ticks are absent. The only selected splash drawing is particle 4, whose alpha mask is entirely empty after cleanup; particle 5 survives as two pixels but is never placed."
+      ],
+      "fix": "Rework placement over the full 192x192 area to eliminate the exact 96px horizontal subperiod and the long diagonal chains. Use irregular cyclic tracks/staggered spacing while preserving f3-to-f0 continuation and the eastward slant. Restore a few deliberately drawn 1-2px splash ticks that survive reduction, place them visibly, and give them an impact phase. Keep the current restrained palette and coverage."
+    },
+    "rain-f2": {
+      "status": "fail",
+      "problems": [
+        "Visible repeated rain lanes across the entire tile. Columns x=0..95 are an exact RGBA copy of x=96..191 in this frame. The 3x3 repeat reads as regularly spaced strings over grass, sand and the water beside the town/city.",
+        "Identical short drops form a diagonal chain starting near (70,23), (74,55), (78,87) and continuing at (+4,+32). This is a placement pattern, not a boundary seam.",
+        "The required splash ticks are absent. The only selected splash drawing is particle 4, whose alpha mask is entirely empty after cleanup; particle 5 survives as two pixels but is never placed."
+      ],
+      "fix": "Rework placement over the full 192x192 area to eliminate the exact 96px horizontal subperiod and the long diagonal chains. Use irregular cyclic tracks/staggered spacing while preserving f3-to-f0 continuation and the eastward slant. Restore a few deliberately drawn 1-2px splash ticks that survive reduction, place them visibly, and give them an impact phase. Keep the current restrained palette and coverage."
+    },
+    "rain-f3": {
+      "status": "fail",
+      "problems": [
+        "Visible repeated rain lanes across the entire tile. Columns x=0..95 are an exact RGBA copy of x=96..191 in this frame. The 3x3 repeat reads as regularly spaced strings over grass, sand and the water beside the town/city.",
+        "Identical short drops form a diagonal chain starting near (71,31), (75,63), (79,95) and continuing at (+4,+32). This is a placement pattern, not a boundary seam.",
+        "The required splash ticks are absent. The only selected splash drawing is particle 4, whose alpha mask is entirely empty after cleanup; particle 5 survives as two pixels but is never placed."
+      ],
+      "fix": "Rework placement over the full 192x192 area to eliminate the exact 96px horizontal subperiod and the long diagonal chains. Use irregular cyclic tracks/staggered spacing while preserving f3-to-f0 continuation and the eastward slant. Restore a few deliberately drawn 1-2px splash ticks that survive reduction, place them visibly, and give them an impact phase. Keep the current restrained palette and coverage."
+    },
+    "heavy_rain-f0": {
+      "status": "fail",
+      "problems": [
+        "Columns x=0..95 exactly duplicate x=96..191 in RGBA. Dense slanted strings recur every two map cells, plainly visible on water, sand and grass in the literal 3x3 repeat.",
+        "The long drops line up end-to-end into thin cables running across most of the tile height. The same dense/sparse lanes recur in every frame; this reads as a striped screen texture rather than irregular heavy rainfall."
+      ],
+      "fix": "Break the 96px subperiod and repeated dense lanes by redistributing the drawn strokes over irregular cyclic paths with staggered spacing. Preserve the darker, longer, visibly denser treatment relative to rain, stay below 25% cover, and recheck all four phases over the town/city water as well as grass. Do not add blur or repaint the reference."
+    },
+    "heavy_rain-f1": {
+      "status": "fail",
+      "problems": [
+        "Columns x=0..95 exactly duplicate x=96..191 in RGBA. Dense slanted strings recur every two map cells, plainly visible on water, sand and grass in the literal 3x3 repeat.",
+        "The long drops line up end-to-end into thin cables running across most of the tile height. The same dense/sparse lanes recur in every frame; this reads as a striped screen texture rather than irregular heavy rainfall."
+      ],
+      "fix": "Break the 96px subperiod and repeated dense lanes by redistributing the drawn strokes over irregular cyclic paths with staggered spacing. Preserve the darker, longer, visibly denser treatment relative to rain, stay below 25% cover, and recheck all four phases over the town/city water as well as grass. Do not add blur or repaint the reference."
+    },
+    "heavy_rain-f2": {
+      "status": "fail",
+      "problems": [
+        "Columns x=0..95 exactly duplicate x=96..191 in RGBA. Dense slanted strings recur every two map cells, plainly visible on water, sand and grass in the literal 3x3 repeat.",
+        "The long drops line up end-to-end into thin cables running across most of the tile height. The same dense/sparse lanes recur in every frame; this reads as a striped screen texture rather than irregular heavy rainfall."
+      ],
+      "fix": "Break the 96px subperiod and repeated dense lanes by redistributing the drawn strokes over irregular cyclic paths with staggered spacing. Preserve the darker, longer, visibly denser treatment relative to rain, stay below 25% cover, and recheck all four phases over the town/city water as well as grass. Do not add blur or repaint the reference."
+    },
+    "heavy_rain-f3": {
+      "status": "fail",
+      "problems": [
+        "Columns x=0..95 exactly duplicate x=96..191 in RGBA. Dense slanted strings recur every two map cells, plainly visible on water, sand and grass in the literal 3x3 repeat.",
+        "The long drops line up end-to-end into thin cables running across most of the tile height. The same dense/sparse lanes recur in every frame; this reads as a striped screen texture rather than irregular heavy rainfall."
+      ],
+      "fix": "Break the 96px subperiod and repeated dense lanes by redistributing the drawn strokes over irregular cyclic paths with staggered spacing. Preserve the darker, longer, visibly denser treatment relative to rain, stay below 25% cover, and recheck all four phases over the town/city water as well as grass. Do not add blur or repaint the reference."
+    },
+    "snow-f0": {
+      "status": "fail",
+      "problems": [
+        "Flakes form visible diagonal dotted chains, for example near (100,104), (104,112), (108,120), (112,128). Other tracks cross these to make a recurring lattice across the tile.",
+        "The diagonal lattice persists in all four phases and across the 3x3 repeats, especially on the town/city water and plain grass. The blue-grey edges keep flakes visible on snow, but also expose the repeated dotted tracks there."
+      ],
+      "fix": "Keep the 2-3px drawn flakes and their blue-grey edge. Replace straight, evenly spaced orbit copies with irregularly spaced cyclic drift paths and independently staggered variants so no dotted diagonal chains are readable at 1x. Preserve gentle east/west drift and four-frame closure; check snowy ground as well as dark water."
+    },
+    "snow-f1": {
+      "status": "fail",
+      "problems": [
+        "Flakes form visible diagonal dotted chains, for example near (101,106), (105,114), (109,122), (113,130). Other tracks cross these to make a recurring lattice across the tile.",
+        "The diagonal lattice persists in all four phases and across the 3x3 repeats, especially on the town/city water and plain grass. The blue-grey edges keep flakes visible on snow, but also expose the repeated dotted tracks there."
+      ],
+      "fix": "Keep the 2-3px drawn flakes and their blue-grey edge. Replace straight, evenly spaced orbit copies with irregularly spaced cyclic drift paths and independently staggered variants so no dotted diagonal chains are readable at 1x. Preserve gentle east/west drift and four-frame closure; check snowy ground as well as dark water."
+    },
+    "snow-f2": {
+      "status": "fail",
+      "problems": [
+        "Flakes form visible diagonal dotted chains, for example near (102,108), (106,116), (110,124), (114,132). Other tracks cross these to make a recurring lattice across the tile.",
+        "The diagonal lattice persists in all four phases and across the 3x3 repeats, especially on the town/city water and plain grass. The blue-grey edges keep flakes visible on snow, but also expose the repeated dotted tracks there."
+      ],
+      "fix": "Keep the 2-3px drawn flakes and their blue-grey edge. Replace straight, evenly spaced orbit copies with irregularly spaced cyclic drift paths and independently staggered variants so no dotted diagonal chains are readable at 1x. Preserve gentle east/west drift and four-frame closure; check snowy ground as well as dark water."
+    },
+    "snow-f3": {
+      "status": "fail",
+      "problems": [
+        "Flakes form visible diagonal dotted chains, for example near (103,110), (107,118), (111,126), (115,134). Other tracks cross these to make a recurring lattice across the tile.",
+        "The diagonal lattice persists in all four phases and across the 3x3 repeats, especially on the town/city water and plain grass. The blue-grey edges keep flakes visible on snow, but also expose the repeated dotted tracks there."
+      ],
+      "fix": "Keep the 2-3px drawn flakes and their blue-grey edge. Replace straight, evenly spaced orbit copies with irregularly spaced cyclic drift paths and independently staggered variants so no dotted diagonal chains are readable at 1x. Preserve gentle east/west drift and four-frame closure; check snowy ground as well as dark water."
+    },
+    "blizzard-f0": {
+      "status": "fail",
+      "problems": [
+        "Rows y=0..95 are an exact RGBA copy of y=96..191. Repeating diagonal grain and patches recur every two cells vertically in the 3x3 repeat, most apparent over water and plain grass.",
+        "The intended faint wind drawings collapse during reduction: particles 3/4/5 retain only 5/4/4 painted pixels within their 12x3, 16x4 and 20x4 bounds. They read as separated tiny dashes rather than coherent wind streaks. At 1x the effect is a repeated granular static texture instead of convincing wind-driven whiteout."
+      ],
+      "fix": "Remove the exact 96px vertical subperiod and regular orbit texture. Redraw/re-register the faint wind strokes so continuous thin native-pixel strands survive mode sampling, then interleave them with irregular clumps of sideways-driven flakes. Keep clear gaps for roads/towns and total cover at or below about 40%; do not substitute a pale fog sheet."
+    },
+    "blizzard-f1": {
+      "status": "fail",
+      "problems": [
+        "Rows y=0..95 are an exact RGBA copy of y=96..191. Repeating diagonal grain and patches recur every two cells vertically in the 3x3 repeat, most apparent over water and plain grass.",
+        "The intended faint wind drawings collapse during reduction: particles 3/4/5 retain only 5/4/4 painted pixels within their 12x3, 16x4 and 20x4 bounds. They read as separated tiny dashes rather than coherent wind streaks. At 1x the effect is a repeated granular static texture instead of convincing wind-driven whiteout."
+      ],
+      "fix": "Remove the exact 96px vertical subperiod and regular orbit texture. Redraw/re-register the faint wind strokes so continuous thin native-pixel strands survive mode sampling, then interleave them with irregular clumps of sideways-driven flakes. Keep clear gaps for roads/towns and total cover at or below about 40%; do not substitute a pale fog sheet."
+    },
+    "blizzard-f2": {
+      "status": "fail",
+      "problems": [
+        "Rows y=0..95 are an exact RGBA copy of y=96..191. Repeating diagonal grain and patches recur every two cells vertically in the 3x3 repeat, most apparent over water and plain grass.",
+        "The intended faint wind drawings collapse during reduction: particles 3/4/5 retain only 5/4/4 painted pixels within their 12x3, 16x4 and 20x4 bounds. They read as separated tiny dashes rather than coherent wind streaks. At 1x the effect is a repeated granular static texture instead of convincing wind-driven whiteout."
+      ],
+      "fix": "Remove the exact 96px vertical subperiod and regular orbit texture. Redraw/re-register the faint wind strokes so continuous thin native-pixel strands survive mode sampling, then interleave them with irregular clumps of sideways-driven flakes. Keep clear gaps for roads/towns and total cover at or below about 40%; do not substitute a pale fog sheet."
+    },
+    "blizzard-f3": {
+      "status": "fail",
+      "problems": [
+        "Rows y=0..95 are an exact RGBA copy of y=96..191. Repeating diagonal grain and patches recur every two cells vertically in the 3x3 repeat, most apparent over water and plain grass.",
+        "The intended faint wind drawings collapse during reduction: particles 3/4/5 retain only 5/4/4 painted pixels within their 12x3, 16x4 and 20x4 bounds. They read as separated tiny dashes rather than coherent wind streaks. At 1x the effect is a repeated granular static texture instead of convincing wind-driven whiteout."
+      ],
+      "fix": "Remove the exact 96px vertical subperiod and regular orbit texture. Redraw/re-register the faint wind strokes so continuous thin native-pixel strands survive mode sampling, then interleave them with irregular clumps of sideways-driven flakes. Keep clear gaps for roads/towns and total cover at or below about 40%; do not substitute a pale fog sheet."
+    },
+    "hail-f0": {
+      "status": "fail",
+      "problems": [
+        "Repeated pellet columns remain visible in the 3x3 field. For example, the same pellet repeats near x=38 at y=[47, 95, 143, 191]; other columns repeat at 64 or 96px vertical intervals. In f0, 67.44% of occupied pixels coincide after a 96px vertical shift, against only 7.01% total cover. The recurring clustered/empty patches are obvious on grass and water.",
+        "The U-shaped bounce marks are carried straight downward unchanged at the same 12-24px/frame speeds as falling pellets. There is no local impact/rebound phase, so the marks read as additional falling symbols rather than tiny bounces."
+      ],
+      "fix": "Redistribute the hard grey-white pellets to remove visibly repeated columns and cluster spacing while retaining a fast straight fall and seamless wrap. Give the existing drawn bounce marks a brief ground-impact/rebound cycle instead of translating them down with the pellets. Keep their hard compact silhouette and keep cover below 25%."
+    },
+    "hail-f1": {
+      "status": "fail",
+      "problems": [
+        "Repeated pellet columns remain visible in the 3x3 field. For example, the same pellet repeats near x=38 at y=[11, 59, 107, 155]; other columns repeat at 64 or 96px vertical intervals. In f0, 67.44% of occupied pixels coincide after a 96px vertical shift, against only 7.01% total cover. The recurring clustered/empty patches are obvious on grass and water.",
+        "The U-shaped bounce marks are carried straight downward unchanged at the same 12-24px/frame speeds as falling pellets. There is no local impact/rebound phase, so the marks read as additional falling symbols rather than tiny bounces."
+      ],
+      "fix": "Redistribute the hard grey-white pellets to remove visibly repeated columns and cluster spacing while retaining a fast straight fall and seamless wrap. Give the existing drawn bounce marks a brief ground-impact/rebound cycle instead of translating them down with the pellets. Keep their hard compact silhouette and keep cover below 25%."
+    },
+    "hail-f2": {
+      "status": "fail",
+      "problems": [
+        "Repeated pellet columns remain visible in the 3x3 field. For example, the same pellet repeats near x=38 at y=[23, 71, 119, 167]; other columns repeat at 64 or 96px vertical intervals. In f0, 67.44% of occupied pixels coincide after a 96px vertical shift, against only 7.01% total cover. The recurring clustered/empty patches are obvious on grass and water.",
+        "The U-shaped bounce marks are carried straight downward unchanged at the same 12-24px/frame speeds as falling pellets. There is no local impact/rebound phase, so the marks read as additional falling symbols rather than tiny bounces."
+      ],
+      "fix": "Redistribute the hard grey-white pellets to remove visibly repeated columns and cluster spacing while retaining a fast straight fall and seamless wrap. Give the existing drawn bounce marks a brief ground-impact/rebound cycle instead of translating them down with the pellets. Keep their hard compact silhouette and keep cover below 25%."
+    },
+    "hail-f3": {
+      "status": "fail",
+      "problems": [
+        "Repeated pellet columns remain visible in the 3x3 field. For example, the same pellet repeats near x=38 at y=[35, 83, 131, 179]; other columns repeat at 64 or 96px vertical intervals. In f0, 67.44% of occupied pixels coincide after a 96px vertical shift, against only 7.01% total cover. The recurring clustered/empty patches are obvious on grass and water.",
+        "The U-shaped bounce marks are carried straight downward unchanged at the same 12-24px/frame speeds as falling pellets. There is no local impact/rebound phase, so the marks read as additional falling symbols rather than tiny bounces."
+      ],
+      "fix": "Redistribute the hard grey-white pellets to remove visibly repeated columns and cluster spacing while retaining a fast straight fall and seamless wrap. Give the existing drawn bounce marks a brief ground-impact/rebound cycle instead of translating them down with the pellets. Keep their hard compact silhouette and keep cover below 25%."
+    },
+    "sandstorm-f0": {
+      "status": "fail",
+      "problems": [
+        "Across the full width, the tan/ochre marks merge into long narrow outlined cords with recurring crests. Over grass, water and town roofs they read as stacked rope/lightning-like strands rather than swirling airborne dust.",
+        "The dense horizontal bands and large empty horizontal gaps recur through the literal 3x3 repeat. The band around native y=136 reaches 86.98% row coverage in every frame, despite compliant 39.1168% whole-tile cover. The identical band structure persists while the entire field is shifted rigidly by 48px per frame."
+      ],
+      "fix": "Make 2-3 image-tool variants of broken, tapering dust swirls, with more variation in length, thickness and internal gaps and less continuous bright edging. Select/reduce the best, then place the drawings so they do not join into full-width cords or repeated empty lanes. Keep golden contrast over sand and grass, discrete alpha, readable roads/towns and at most about 45% cover. Recheck perceived smoothness of the 48px/frame motion in live playback."
+    },
+    "sandstorm-f1": {
+      "status": "fail",
+      "problems": [
+        "Across the full width, the tan/ochre marks merge into long narrow outlined cords with recurring crests. Over grass, water and town roofs they read as stacked rope/lightning-like strands rather than swirling airborne dust.",
+        "The dense horizontal bands and large empty horizontal gaps recur through the literal 3x3 repeat. The band around native y=136 reaches 86.98% row coverage in every frame, despite compliant 39.1168% whole-tile cover. The identical band structure persists while the entire field is shifted rigidly by 48px per frame."
+      ],
+      "fix": "Make 2-3 image-tool variants of broken, tapering dust swirls, with more variation in length, thickness and internal gaps and less continuous bright edging. Select/reduce the best, then place the drawings so they do not join into full-width cords or repeated empty lanes. Keep golden contrast over sand and grass, discrete alpha, readable roads/towns and at most about 45% cover. Recheck perceived smoothness of the 48px/frame motion in live playback."
+    },
+    "sandstorm-f2": {
+      "status": "fail",
+      "problems": [
+        "Across the full width, the tan/ochre marks merge into long narrow outlined cords with recurring crests. Over grass, water and town roofs they read as stacked rope/lightning-like strands rather than swirling airborne dust.",
+        "The dense horizontal bands and large empty horizontal gaps recur through the literal 3x3 repeat. The band around native y=136 reaches 86.98% row coverage in every frame, despite compliant 39.1168% whole-tile cover. The identical band structure persists while the entire field is shifted rigidly by 48px per frame."
+      ],
+      "fix": "Make 2-3 image-tool variants of broken, tapering dust swirls, with more variation in length, thickness and internal gaps and less continuous bright edging. Select/reduce the best, then place the drawings so they do not join into full-width cords or repeated empty lanes. Keep golden contrast over sand and grass, discrete alpha, readable roads/towns and at most about 45% cover. Recheck perceived smoothness of the 48px/frame motion in live playback."
+    },
+    "sandstorm-f3": {
+      "status": "fail",
+      "problems": [
+        "Across the full width, the tan/ochre marks merge into long narrow outlined cords with recurring crests. Over grass, water and town roofs they read as stacked rope/lightning-like strands rather than swirling airborne dust.",
+        "The dense horizontal bands and large empty horizontal gaps recur through the literal 3x3 repeat. The band around native y=136 reaches 86.98% row coverage in every frame, despite compliant 39.1168% whole-tile cover. The identical band structure persists while the entire field is shifted rigidly by 48px per frame."
+      ],
+      "fix": "Make 2-3 image-tool variants of broken, tapering dust swirls, with more variation in length, thickness and internal gaps and less continuous bright edging. Select/reduce the best, then place the drawings so they do not join into full-width cords or repeated empty lanes. Keep golden contrast over sand and grass, discrete alpha, readable roads/towns and at most about 45% cover. Recheck perceived smoothness of the 48px/frame motion in live playback."
+    },
+    "ref-desert-sand": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    },
+    "ref-fantasy-forest": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    },
+    "ref-fantasy-grass": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    },
+    "ref-fantasy-town": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    },
+    "ref-modern-city": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    },
+    "ref-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    },
+    "ref-wasteland": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Correct 288x288 reference at 48px per cell; source crop/composite was independently replayed exactly. Preserve it."
+    }
+  },
+  "notes": "Independent Part A critic review. Verdict fail: all 24 weather frames need revision; all seven references pass. Weather PNGs were not edited. No commit, push or branch change was made.\n\nVisual inspection: every delivered weather PNG and reference at native 1x and nearest-neighbour 4x; all 24 frames in literal 3x3 repeats over all seven references at native scale; 3x close-ups across both wrap joins for every frame/reference combination; neutral 3x3 repeats and 8x close-ups to expose particle structure and periodicity. Evidence is in critic-r16A-1-repeat-*, critic-r16A-1-repeats-*, critic-r16A-1-junctions-*-3x.png and critic-r16A-1-particles.png. The reference background itself repeats at 288px; its road/crop boundaries are not weather seams.\n\nPlayback limitation: the browser access host was unavailable, so real-time GIF playback and perceived motion smoothness were not verified. All six existing r16-A-<name>.gif files were decoded: four distinct frames, infinite-loop metadata, 110ms/frame except snow at 160ms. Each GIF frame was matched against the corresponding final PNG over all seven references, confirming f0/f1/f2/f3 order. Quantization mean RGB error is about 1.79-2.34/255. The visual pattern/shape defects already independently require failure; mathematical loop closure is not being claimed as proof of perceptual smoothness.\n\nIndependent technical checks pass: all 24 weather files are 192x192 RGBA, contain only 2-5 nontransparent RGBA entries, use a small set of fixed alpha levels rather than antialias ramps, and have zero RGB under transparency. Coverage is below every applicable cap. Replayed every final PNG from the recorded drawn particles and positions and verified the fifth state equals f0. No boundary discontinuity was found. The 24 native/4x file sheets and 168 native reference-repeat proofs were checked against the current output pixels. All 24 output SHA-256 hashes still equal the hashes read at the start.\n\nPositive visual findings: heavy rain is clearly darker/longer/denser than rain; snow remains visible on the winter reference; compact hail pellets have a harder grey facet; the small palettes and native square pixels are consistent; no magenta fringe or soft alpha ramp was found. Roads and settlements remain distinguishable in all seven contexts. These do not override visible periodic patterns, missing marks or incorrect sandstorm form.\n\nReference measurement: 48px drawn cell pitch. Independent farmland-3 match at render coordinate (672,240) gives mean RGB error 0.9057 at 48px, compared with 8.7032 at 47px and 9.4955 at 49px. Five references exactly match their recorded 288x288 camera crops. Desert exactly replays beach-base plus dunes props 0/3/4/2 at native cell coordinates; snow exactly replays grass@winter-base plus its recorded winter trees/details. No new grounds or seasonal prop partners are Part A deliverables, so summer/winter silhouette equality tests are not applicable to the weather PNGs. Existing donor art was inspected in context and not re-authored.\n\nNative per-frame offsets (right/down positive, including the mathematical f3-to-f0 step): rain (1,6), (2,8), (1,8), (2,12); heavy_rain (2,12), (3,16), (2,16), (3,12); snow (1,2), (-1,3), (1,4), (0,3); hail (0,12), (0,16), (0,24); blizzard (8,1), (12,1), (16,2), (8,-1); sandstorm (48,0). Straight copies spaced at four times these offsets explain much of the visible regularity. Preserve seamless continuation while revising placement/drawings.\n\nMeasured cover counts alpha>0, without discounting semitransparent pixels. Alpha-weighted cover is reported separately and was not used to excuse excess occupied area.\nrain-f0: 3286/36864 = 8.9138% cover; 4.8700% alpha-weighted.\nrain-f1: 3304/36864 = 8.9627% cover; 4.8870% alpha-weighted.\nrain-f2: 3300/36864 = 8.9518% cover; 4.8897% alpha-weighted.\nrain-f3: 3284/36864 = 8.9084% cover; 4.8679% alpha-weighted.\nheavy_rain-f0: 7144/36864 = 19.3793% cover; 13.6588% alpha-weighted.\nheavy_rain-f1: 7112/36864 = 19.2925% cover; 13.5989% alpha-weighted.\nheavy_rain-f2: 7084/36864 = 19.2166% cover; 13.5376% alpha-weighted.\nheavy_rain-f3: 7046/36864 = 19.1135% cover; 13.4518% alpha-weighted.\nsnow-f0: 3348/36864 = 9.0820% cover; 8.2599% alpha-weighted.\nsnow-f1: 3355/36864 = 9.1010% cover; 8.2782% alpha-weighted.\nsnow-f2: 3373/36864 = 9.1498% cover; 8.3195% alpha-weighted.\nsnow-f3: 3360/36864 = 9.1146% cover; 8.2892% alpha-weighted.\nblizzard-f0: 13024/36864 = 35.3299% cover; 22.9705% alpha-weighted.\nblizzard-f1: 13004/36864 = 35.2756% cover; 22.9439% alpha-weighted.\nblizzard-f2: 13148/36864 = 35.6662% cover; 23.0236% alpha-weighted.\nblizzard-f3: 12948/36864 = 35.1237% cover; 22.8915% alpha-weighted.\nhail-f0: 2583/36864 = 7.0068% cover; 6.7213% alpha-weighted.\nhail-f1: 2545/36864 = 6.9038% cover; 6.6242% alpha-weighted.\nhail-f2: 2555/36864 = 6.9309% cover; 6.6517% alpha-weighted.\nhail-f3: 2544/36864 = 6.9010% cover; 6.6218% alpha-weighted.\nsandstorm-f0: 14420/36864 = 39.1168% cover; 22.9548% alpha-weighted.\nsandstorm-f1: 14420/36864 = 39.1168% cover; 22.9548% alpha-weighted.\nsandstorm-f2: 14420/36864 = 39.1168% cover; 22.9548% alpha-weighted.\nsandstorm-f3: 14420/36864 = 39.1168% cover; 22.9548% alpha-weighted."
+}

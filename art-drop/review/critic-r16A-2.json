@@ -1,0 +1,197 @@
+{
+  "part": "A",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "snow-f0",
+    "snow-f1",
+    "snow-f2",
+    "snow-f3",
+    "sandstorm-f0",
+    "sandstorm-f1",
+    "sandstorm-f2",
+    "sandstorm-f3"
+  ],
+  "files": {
+    "rain-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "rain-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "rain-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "rain-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "heavy_rain-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "heavy_rain-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "heavy_rain-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "heavy_rain-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "snow-f0": {
+      "status": "fail",
+      "problems": [
+        "Visible curved strings of flakes and alternating dense/sparse vertical columns remain in the literal 3x3 repeat. In this frame, native x=72..103, y=0..191 has 13.005% occupied pixels, while x=36..67 has 4.915%. These columns recur at +192 and +384 px. The effect is conspicuous at 1x on fantasy grass, desert sand and the water in the town/wasteland references.",
+        "Removing the exact 96 px subperiod did not remove the visible path pattern: placing many identical flakes at every fourth station of each coherent bending path makes dotted curves. The native flake drawings themselves are clean, remain visible on snow and fit the requested 2-3 px scale."
+      ],
+      "fix": "Keep the existing flake drawings and palette. Redistribute the phase cohorts among more independently positioned paths, with fewer simultaneously visible copies following each curve, and balance the broad vertical density so no repeated curtain or dotted chain emerges. Preserve gentle sideways drift, continuous wrap, four-frame closure and the coverage cap. Recheck all four phases in a literal 3x3 repeat on grass, sand and water; see critic-r16A-2-detail-snow.png and critic-r16A-2-repeats-snow-*.png."
+    },
+    "snow-f1": {
+      "status": "fail",
+      "problems": [
+        "Visible curved strings of flakes and alternating dense/sparse vertical columns remain in the literal 3x3 repeat. In this frame, native x=73..104, y=0..191 has 12.891% occupied pixels, while x=35..66 has 4.834%. These columns recur at +192 and +384 px. The effect is conspicuous at 1x on fantasy grass, desert sand and the water in the town/wasteland references.",
+        "Removing the exact 96 px subperiod did not remove the visible path pattern: placing many identical flakes at every fourth station of each coherent bending path makes dotted curves. The native flake drawings themselves are clean, remain visible on snow and fit the requested 2-3 px scale."
+      ],
+      "fix": "Keep the existing flake drawings and palette. Redistribute the phase cohorts among more independently positioned paths, with fewer simultaneously visible copies following each curve, and balance the broad vertical density so no repeated curtain or dotted chain emerges. Preserve gentle sideways drift, continuous wrap, four-frame closure and the coverage cap. Recheck all four phases in a literal 3x3 repeat on grass, sand and water; see critic-r16A-2-detail-snow.png and critic-r16A-2-repeats-snow-*.png."
+    },
+    "snow-f2": {
+      "status": "fail",
+      "problems": [
+        "Visible curved strings of flakes and alternating dense/sparse vertical columns remain in the literal 3x3 repeat. In this frame, native x=74..105, y=0..191 has 12.809% occupied pixels, while x=36..67 has 4.899%. These columns recur at +192 and +384 px. The effect is conspicuous at 1x on fantasy grass, desert sand and the water in the town/wasteland references.",
+        "Removing the exact 96 px subperiod did not remove the visible path pattern: placing many identical flakes at every fourth station of each coherent bending path makes dotted curves. The native flake drawings themselves are clean, remain visible on snow and fit the requested 2-3 px scale."
+      ],
+      "fix": "Keep the existing flake drawings and palette. Redistribute the phase cohorts among more independently positioned paths, with fewer simultaneously visible copies following each curve, and balance the broad vertical density so no repeated curtain or dotted chain emerges. Preserve gentle sideways drift, continuous wrap, four-frame closure and the coverage cap. Recheck all four phases in a literal 3x3 repeat on grass, sand and water; see critic-r16A-2-detail-snow.png and critic-r16A-2-repeats-snow-*.png."
+    },
+    "snow-f3": {
+      "status": "fail",
+      "problems": [
+        "Visible curved strings of flakes and alternating dense/sparse vertical columns remain in the literal 3x3 repeat. In this frame, native x=70..101, y=0..191 has 12.907% occupied pixels, while x=38..69 has 4.720%. These columns recur at +192 and +384 px. The effect is conspicuous at 1x on fantasy grass, desert sand and the water in the town/wasteland references.",
+        "Removing the exact 96 px subperiod did not remove the visible path pattern: placing many identical flakes at every fourth station of each coherent bending path makes dotted curves. The native flake drawings themselves are clean, remain visible on snow and fit the requested 2-3 px scale."
+      ],
+      "fix": "Keep the existing flake drawings and palette. Redistribute the phase cohorts among more independently positioned paths, with fewer simultaneously visible copies following each curve, and balance the broad vertical density so no repeated curtain or dotted chain emerges. Preserve gentle sideways drift, continuous wrap, four-frame closure and the coverage cap. Recheck all four phases in a literal 3x3 repeat on grass, sand and water; see critic-r16A-2-detail-snow.png and critic-r16A-2-repeats-snow-*.png."
+    },
+    "blizzard-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "blizzard-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "blizzard-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "blizzard-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "hail-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "hail-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "hail-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "hail-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve the current PNG; see the shared playback limitation in notes."
+    },
+    "sandstorm-f0": {
+      "status": "fail",
+      "problems": [
+        "Across the tile, especially native y=0..63 and the central third, the similarly sized ochre crests recur as short waves with bright upper edges and darker undersides. The six 28-38 px wide, 8-10 px high source particles have too similar a peaked body and trailing tail. At 1x, their repeated arrangement reads as a patterned ground texture over grass/water, rather than irregular airborne dust bands.",
+        "On desert sand the overlay follows the same rising diagonal, ridge-like visual language as the ground and reads as extra sand-surface texture. Shortening the previous cords and removing full-width empty lanes improved the result, but the recurring crest shapes still make the 3x3 repeat obvious. This is a form/placement failure, not a coverage or transparency failure."
+      ],
+      "fix": "Make 2-3 image-tool variants of genuinely varied broken dust bands: vary length, thickness, curvature, internal gaps and the position of the thickest area; avoid giving every piece one similar peaked body with a bright rim. Select and mode-reduce the best drawings, then place them in irregular overlapping streams without repeated scalloped rows or full-width cords. Keep the golden contrast, discrete alpha, readable map and <=45% occupied cover. Inspect on both sand and grass at 1x and in live playback. See critic-r16A-2-detail-sandstorm.png, critic-r16A-2-sand-particles-8x.png and critic-r16A-2-repeats-sandstorm-*.png."
+    },
+    "sandstorm-f1": {
+      "status": "fail",
+      "problems": [
+        "Across the tile, especially native y=0..63 and the central third, the similarly sized ochre crests recur as short waves with bright upper edges and darker undersides. The six 28-38 px wide, 8-10 px high source particles have too similar a peaked body and trailing tail. At 1x, their repeated arrangement reads as a patterned ground texture over grass/water, rather than irregular airborne dust bands.",
+        "On desert sand the overlay follows the same rising diagonal, ridge-like visual language as the ground and reads as extra sand-surface texture. Shortening the previous cords and removing full-width empty lanes improved the result, but the recurring crest shapes still make the 3x3 repeat obvious. This is a form/placement failure, not a coverage or transparency failure."
+      ],
+      "fix": "Make 2-3 image-tool variants of genuinely varied broken dust bands: vary length, thickness, curvature, internal gaps and the position of the thickest area; avoid giving every piece one similar peaked body with a bright rim. Select and mode-reduce the best drawings, then place them in irregular overlapping streams without repeated scalloped rows or full-width cords. Keep the golden contrast, discrete alpha, readable map and <=45% occupied cover. Inspect on both sand and grass at 1x and in live playback. See critic-r16A-2-detail-sandstorm.png, critic-r16A-2-sand-particles-8x.png and critic-r16A-2-repeats-sandstorm-*.png."
+    },
+    "sandstorm-f2": {
+      "status": "fail",
+      "problems": [
+        "Across the tile, especially native y=0..63 and the central third, the similarly sized ochre crests recur as short waves with bright upper edges and darker undersides. The six 28-38 px wide, 8-10 px high source particles have too similar a peaked body and trailing tail. At 1x, their repeated arrangement reads as a patterned ground texture over grass/water, rather than irregular airborne dust bands.",
+        "On desert sand the overlay follows the same rising diagonal, ridge-like visual language as the ground and reads as extra sand-surface texture. Shortening the previous cords and removing full-width empty lanes improved the result, but the recurring crest shapes still make the 3x3 repeat obvious. This is a form/placement failure, not a coverage or transparency failure."
+      ],
+      "fix": "Make 2-3 image-tool variants of genuinely varied broken dust bands: vary length, thickness, curvature, internal gaps and the position of the thickest area; avoid giving every piece one similar peaked body with a bright rim. Select and mode-reduce the best drawings, then place them in irregular overlapping streams without repeated scalloped rows or full-width cords. Keep the golden contrast, discrete alpha, readable map and <=45% occupied cover. Inspect on both sand and grass at 1x and in live playback. See critic-r16A-2-detail-sandstorm.png, critic-r16A-2-sand-particles-8x.png and critic-r16A-2-repeats-sandstorm-*.png."
+    },
+    "sandstorm-f3": {
+      "status": "fail",
+      "problems": [
+        "Across the tile, especially native y=0..63 and the central third, the similarly sized ochre crests recur as short waves with bright upper edges and darker undersides. The six 28-38 px wide, 8-10 px high source particles have too similar a peaked body and trailing tail. At 1x, their repeated arrangement reads as a patterned ground texture over grass/water, rather than irregular airborne dust bands.",
+        "On desert sand the overlay follows the same rising diagonal, ridge-like visual language as the ground and reads as extra sand-surface texture. Shortening the previous cords and removing full-width empty lanes improved the result, but the recurring crest shapes still make the 3x3 repeat obvious. This is a form/placement failure, not a coverage or transparency failure."
+      ],
+      "fix": "Make 2-3 image-tool variants of genuinely varied broken dust bands: vary length, thickness, curvature, internal gaps and the position of the thickest area; avoid giving every piece one similar peaked body with a bright rim. Select and mode-reduce the best drawings, then place them in irregular overlapping streams without repeated scalloped rows or full-width cords. Keep the golden contrast, discrete alpha, readable map and <=45% occupied cover. Inspect on both sand and grass at 1x and in live playback. See critic-r16A-2-detail-sandstorm.png, critic-r16A-2-sand-particles-8x.png and critic-r16A-2-repeats-sandstorm-*.png."
+    },
+    "ref-desert-sand": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    },
+    "ref-fantasy-forest": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    },
+    "ref-fantasy-grass": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    },
+    "ref-fantasy-town": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    },
+    "ref-modern-city": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    },
+    "ref-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    },
+    "ref-wasteland": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Preserve this 288x288 reference at the verified 48 px cell pitch; its source crop/composite matches exactly."
+    }
+  },
+  "notes": "Independent Round 16 Part A critic, round 2. Fail: all four snow and all four sandstorm frames. Rain, heavy_rain, hail, blizzard and all seven reference PNGs have no blocking defect found in the inspected pixels. All 37 existing weather PNGs, reference PNGs and review GIFs retain the SHA-256 hashes captured at the start of this audit. No art output, reference, build script or NOTES file was edited; only critic-r16A-2.json and critic-r16A-2-*.png review evidence were written. No commit, push or branch change.\n\nVisual inspection: every one of the 24 weather frames and seven references at exact native 1x and nearest-neighbour 4x. Every weather frame was examined in a literal 3x3 repeat over all seven references (168 combinations), with 3x close-ups crossing both weather wrap joins for every combination. Neutral 3x3 repeats and 8x particle close-ups separate weather structure from map texture. Evidence: critic-r16A-2-repeats-*, critic-r16A-2-junctions-*-3x.png, critic-r16A-2-neutral-*, critic-r16A-2-particles-8x.png and the detailed snow/sandstorm sheets. The reference backgrounds repeat at 288 px; their road/crop boundaries are not weather seams.\n\nPlayback limitation: the browser inventory returned 'The browser access host is unavailable', so real-time GIF playback and perceived motion smoothness could not be verified. All six r16-A-<name>.gif files were decoded and checked: four distinct exported phases, infinite loop, 110 ms per frame except snow at 160 ms. Every decoded reference panel exactly matches its corresponding PNG composite after the GIF's shared-palette quantization; mean RGB quantization error is approximately 1.81-2.21/255. Passing PNG entries do not constitute a live-motion signoff. The eight visual failures independently require revision.\n\nTechnical checks: all 24 weather PNGs are 192x192 RGBA; each uses 2-5 nontransparent RGBA entries and a few fixed alpha levels, with zero RGB under transparency. No antialias alpha ramp, magenta fringe, blurred particle edge, rounded tile backing or boundary discontinuity was found. All files meet their occupied-area caps. All 24 delivered native/4x proof sheets, all seven native/4x reference sheets and all 168 existing native repeat proofs match current pixels exactly. There is no exact horizontal or vertical subperiod shorter than 192 px; this does not override the visual pattern failures.\n\nDrawing/animation audit: replayed all 2,428 native blocks as the exact RGBA mode of all 64 registered samples, and replayed the recorded component cleanup. Working particle alpha is 0/255. All 20,104 recorded path steps continue to their next station modulo 192. Each output matches the recorded particle placement; an independently assembled unwrapped particle field equals each of the 24 literal 3x3 repeats. The fifth computed state is byte-identical to f0 for every family. These checks establish spatial wrapping and mathematical four-frame closure, not perceived smoothness.\n\nPositive visual findings: heavy rain is distinctly longer, darker and denser than rain. Rain splash ticks survive at native scale, and their approach/contact/clear phases no longer carry the marks down with the rain. Hail has compact hard white/grey facets and separate impact/rebound phases. Blizzard is substantially denser than snowfall with clear sideways strands, while towns, roads and terrain remain distinguishable. Snow flakes have a blue-grey edge that remains visible on winter ground. The sand palette remains golden rather than muddy; its failing shape pattern is separate from that colour success.\n\nReference measurement: the renders draw 48 px cells. Comparing farmland-3 at render coordinate (672,240) gives mean RGB error 0.9057 at 48 px, versus 8.7032 at 47 px and 9.4955 at 49 px. Five 288x288 references exactly match their recorded camera crops. Desert exactly replays beach-base with dunes props 0/3/4/2; snow exactly replays grass@winter-base with the recorded winter trees/details, at native scale. No new ground or seasonal partner sprite is a Part A deliverable. As additional donor diagnostics, winter broadleaf 0/2 masks match summer exactly; the pre-existing conifer 0 and grass details 1/3/6 differ by 23/268/244/122 alpha pixels respectively. These are unchanged approved donor files, and Part A explicitly asks to compose the winter reference from the existing winter art; those inherited differences are not reference-composition failures. Donors were also viewed over summer and winter ground in critic-r16A-2-seasonal-donors.png.\n\nMotion uses irregular closed paths, not a single rigid offset per tile. Right/down are positive. The ranges below apply to consecutive path stations, including wrap; exact per-step vectors are in r16-A-measurements.json -> weather -> family -> groups[*].steps. Four advances permute the phase cohort. Rain impact marks use approach/contact/tick/clear states; hail marks stay at the impact and then rebound 1 px right / 2 px up.\nrain: dx=0..3, dy=4..11 native px per frame.\nheavy_rain: dx=0..4, dy=9..19 native px per frame.\nsnow: dx=-2..2, dy=1..5 native px per frame.\nblizzard: dx=5..17, dy=-3..3 native px per frame.\nhail: dx=0..0, dy=10..33 native px per frame.\nsandstorm: dx=6..16, dy=-4..4 native px per frame.\n\nMeasured cover counts every alpha>0 pixel at full area against 36,864 pixels. Alpha-weighted cover is informational only; it was not used to excuse occupied-area coverage. Ordinary weather is below 25%, blizzard below 40%, sandstorm below 45%.\nrain-f0: 3191/36864 = 8.6561% occupied; 4.6041% alpha-weighted.\nrain-f1: 3198/36864 = 8.6751% occupied; 4.6201% alpha-weighted.\nrain-f2: 3187/36864 = 8.6453% occupied; 4.5973% alpha-weighted.\nrain-f3: 3211/36864 = 8.7104% occupied; 4.6388% alpha-weighted.\nheavy_rain-f0: 6972/36864 = 18.9128% occupied; 13.3095% alpha-weighted.\nheavy_rain-f1: 7039/36864 = 19.0945% occupied; 13.4355% alpha-weighted.\nheavy_rain-f2: 6902/36864 = 18.7229% occupied; 13.1781% alpha-weighted.\nheavy_rain-f3: 7036/36864 = 19.0864% occupied; 13.4259% alpha-weighted.\nsnow-f0: 3420/36864 = 9.2773% occupied; 8.4275% alpha-weighted.\nsnow-f1: 3410/36864 = 9.2502% occupied; 8.4043% alpha-weighted.\nsnow-f2: 3391/36864 = 9.1987% occupied; 8.3564% alpha-weighted.\nsnow-f3: 3408/36864 = 9.2448% occupied; 8.3966% alpha-weighted.\nblizzard-f0: 12556/36864 = 34.0603% occupied; 21.7625% alpha-weighted.\nblizzard-f1: 12583/36864 = 34.1336% occupied; 21.8144% alpha-weighted.\nblizzard-f2: 12414/36864 = 33.6751% occupied; 21.5627% alpha-weighted.\nblizzard-f3: 12561/36864 = 34.0739% occupied; 21.8037% alpha-weighted.\nhail-f0: 2609/36864 = 7.0774% occupied; 6.7919% alpha-weighted.\nhail-f1: 2584/36864 = 7.0095% occupied; 6.7286% alpha-weighted.\nhail-f2: 2603/36864 = 7.0611% occupied; 6.7779% alpha-weighted.\nhail-f3: 2632/36864 = 7.1398% occupied; 6.8513% alpha-weighted.\nsandstorm-f0: 12361/36864 = 33.5314% occupied; 18.1196% alpha-weighted.\nsandstorm-f1: 12364/36864 = 33.5395% occupied; 18.1185% alpha-weighted.\nsandstorm-f2: 12371/36864 = 33.5585% occupied; 18.1303% alpha-weighted.\nsandstorm-f3: 12287/36864 = 33.3306% occupied; 18.0212% alpha-weighted."
+}

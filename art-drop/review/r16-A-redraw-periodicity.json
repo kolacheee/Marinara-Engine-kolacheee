@@ -1,0 +1,194 @@
+{
+  "blizzard-f0.png": {
+    "96px_y_overlap_percent": 34.5174,
+    "96px_x_overlap_percent": 33.7528,
+    "row_cover_range_percent": [
+      20.8333,
+      57.2917
+    ]
+  },
+  "blizzard-f1.png": {
+    "96px_y_overlap_percent": 33.9824,
+    "96px_x_overlap_percent": 33.2512,
+    "row_cover_range_percent": [
+      18.75,
+      49.4792
+    ]
+  },
+  "blizzard-f2.png": {
+    "96px_y_overlap_percent": 35.1377,
+    "96px_x_overlap_percent": 33.5911,
+    "row_cover_range_percent": [
+      16.6667,
+      53.125
+    ]
+  },
+  "blizzard-f3.png": {
+    "96px_y_overlap_percent": 35.0927,
+    "96px_x_overlap_percent": 35.7933,
+    "row_cover_range_percent": [
+      15.1042,
+      47.3958
+    ]
+  },
+  "hail-f0.png": {
+    "96px_y_overlap_percent": 11.652,
+    "96px_x_overlap_percent": 4.7528,
+    "row_cover_range_percent": [
+      1.0417,
+      15.625
+    ]
+  },
+  "hail-f1.png": {
+    "96px_y_overlap_percent": 11.5325,
+    "96px_x_overlap_percent": 6.9659,
+    "row_cover_range_percent": [
+      1.0417,
+      14.0625
+    ]
+  },
+  "hail-f2.png": {
+    "96px_y_overlap_percent": 12.6777,
+    "96px_x_overlap_percent": 5.2247,
+    "row_cover_range_percent": [
+      2.0833,
+      12.5
+    ]
+  },
+  "hail-f3.png": {
+    "96px_y_overlap_percent": 12.766,
+    "96px_x_overlap_percent": 5.6991,
+    "row_cover_range_percent": [
+      2.0833,
+      13.0208
+    ]
+  },
+  "heavy_rain-f0.png": {
+    "96px_y_overlap_percent": 18.3018,
+    "96px_x_overlap_percent": 17.2691,
+    "row_cover_range_percent": [
+      12.5,
+      24.4792
+    ]
+  },
+  "heavy_rain-f1.png": {
+    "96px_y_overlap_percent": 17.5025,
+    "96px_x_overlap_percent": 16.7353,
+    "row_cover_range_percent": [
+      13.5417,
+      23.9583
+    ]
+  },
+  "heavy_rain-f2.png": {
+    "96px_y_overlap_percent": 17.8789,
+    "96px_x_overlap_percent": 16.3141,
+    "row_cover_range_percent": [
+      14.5833,
+      23.4375
+    ]
+  },
+  "heavy_rain-f3.png": {
+    "96px_y_overlap_percent": 17.3678,
+    "96px_x_overlap_percent": 19.7271,
+    "row_cover_range_percent": [
+      13.0208,
+      24.4792
+    ]
+  },
+  "rain-f0.png": {
+    "96px_y_overlap_percent": 9.0881,
+    "96px_x_overlap_percent": 7.8972,
+    "row_cover_range_percent": [
+      4.1667,
+      11.4583
+    ]
+  },
+  "rain-f1.png": {
+    "96px_y_overlap_percent": 8.3802,
+    "96px_x_overlap_percent": 9.0682,
+    "row_cover_range_percent": [
+      4.6875,
+      12.5
+    ]
+  },
+  "rain-f2.png": {
+    "96px_y_overlap_percent": 9.1622,
+    "96px_x_overlap_percent": 7.7189,
+    "row_cover_range_percent": [
+      5.2083,
+      11.9792
+    ]
+  },
+  "rain-f3.png": {
+    "96px_y_overlap_percent": 7.5989,
+    "96px_x_overlap_percent": 9.4052,
+    "row_cover_range_percent": [
+      5.2083,
+      11.4583
+    ]
+  },
+  "sandstorm-f0.png": {
+    "96px_y_overlap_percent": 33.9414,
+    "96px_x_overlap_percent": 45.8793,
+    "row_cover_range_percent": [
+      5.7292,
+      72.9167
+    ]
+  },
+  "sandstorm-f1.png": {
+    "96px_y_overlap_percent": 34.248,
+    "96px_x_overlap_percent": 43.3572,
+    "row_cover_range_percent": [
+      1.0417,
+      72.9167
+    ]
+  },
+  "sandstorm-f2.png": {
+    "96px_y_overlap_percent": 37.5688,
+    "96px_x_overlap_percent": 39.1874,
+    "row_cover_range_percent": [
+      5.2083,
+      65.625
+    ]
+  },
+  "sandstorm-f3.png": {
+    "96px_y_overlap_percent": 35.5477,
+    "96px_x_overlap_percent": 43.8176,
+    "row_cover_range_percent": [
+      4.6875,
+      57.8125
+    ]
+  },
+  "snow-f0.png": {
+    "96px_y_overlap_percent": 8.7471,
+    "96px_x_overlap_percent": 7.8264,
+    "row_cover_range_percent": [
+      2.6042,
+      15.1042
+    ]
+  },
+  "snow-f1.png": {
+    "96px_y_overlap_percent": 8.4433,
+    "96px_x_overlap_percent": 7.6517,
+    "row_cover_range_percent": [
+      2.0833,
+      14.5833
+    ]
+  },
+  "snow-f2.png": {
+    "96px_y_overlap_percent": 9.8188,
+    "96px_x_overlap_percent": 7.7759,
+    "row_cover_range_percent": [
+      0.5208,
+      15.625
+    ]
+  },
+  "snow-f3.png": {
+    "96px_y_overlap_percent": 7.6058,
+    "96px_x_overlap_percent": 8.3995,
+    "row_cover_range_percent": [
+      2.0833,
+      15.625
+    ]
+  }
+}

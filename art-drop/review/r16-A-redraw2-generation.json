@@ -1,0 +1,35 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "critic-r16A-2 sandstorm drawing repair",
+  "variants": [
+    {
+      "variant": "A",
+      "prompt": "Use case: stylized-concept. Draw a production pixel-art particle atlas for an east-moving sandstorm overlay in a top-down RPG with 48px ground cells. Large square canvas 1536x1536, perfectly flat solid #FF00FF magenta background. Atlas exactly TWO columns and FOUR rows, eight separate sprite drawings centered in their cells, generous magenta separation; no text, labels, gridlines, scenery, panels or shadows. Each sprite is an irregular BROKEN AIRBORNE DUST STREAM. Golden ochre #c4974e, warm tan #e0b973, restrained pale gold #f8dea8, faint umber #a4844d. Hard square pixel clusters, no blur, no gradients, no scattered single specks. Deliberately radically different silhouettes: top left a long thin near-horizontal split filament; top right a shorter thick torn irregular gauze-like ribbon with two holes; second left a broad low S with separated parallel broken ends; second right a very short thin forked streamer; third left a low crescent with its thickest area at the LEFT and a long narrow right extension; third right two discontinuous offset horizontal stream fragments with a large central gap; bottom left a long shallow descending ribbon with several large interior gaps; bottom right a compact uneven turbulent fold with an opening on its right. Native eventual dimensions vary from 18x4 to 68x16, so keep shapes very simple and readable at that scale. These are flat airborne weather strands viewed from above, not scenery or solids. No repeated peaked wave body, no bright top rim and dark underside, no dunes, flames, foamy wave crests, rope, outlined cords or scallops. Only small top-left highlight accents, never outlining whole upper edge. Avoid consistent rising diagonal and avoid identical tails. All strands travel to the RIGHT. Draw each with coarse square pixel clusters and small palette, hard irregular edges and abundant magenta negative space through gaps. Variant A."
+    },
+    {
+      "variant": "B",
+      "prompt": "Use case: stylized-concept. Variant B: production hand-drawn pixel-art dust band atlas for a sandstorm WEATHER overlay. Square canvas 1536x1536 flat solid magenta #FF00FF. Exactly 2 columns by 4 rows, one distinct dust-stream sprite centered in each of eight evenly spaced cells. No labels, text, gridlines, panels, landscape or ground. Broad irregular airborne turbulent wisps blowing east, flat graphic 4-color pixel clusters. Only warm golden ochre, tan, pale sand-yellow and a little muted ochre shadow. Coarse square pixels, flat cluster colors, very hard edges. Native sizes after reduction range 20x5 to 72x14. DO NOT DRAW crested dunes, flames, solid puffs, waves or same-shaped symbols. Avoid bright upper outlines, rim lighting, shadows on ground, repeated arches, symmetric curves, single-pixel speckles. A stream is composed of several disconnected chunky irregular horizontal fragments with clear magenta channels between them, not a single cord. Show varied length, thickness and bend. Upper left: very long nearly straight three-fragment streamer with thick middle-left; upper right: short broad offset three-fragment turbulent patch with wide gaps, no peak; row2 left: long shallow falling diagonal broken gauzy band with an open center; row2 right: small pair of thin unequal separated dust filaments; row3 left: medium broad irregular reverse-S band thick at RIGHT, with two interior magenta slots; row3 right: very long thin broken horizontal draft, nearly straight with asymmetric ends; bottom left: short thick ragged fragment with a large notch and two unequal extensions; bottom right: medium low crooked five-fragment stream thick at its leftmost end. Keep highlights INSIDE clusters and uneven, not along upper rims. Large magenta separation between all eight drawings. These will be semi-transparent golden airborne wind, not dunes or ground texture. Shapes must be radically varied. Everything drawn from scratch."
+    },
+    {
+      "variant": "C",
+      "prompt": "Draw a large pixel-art atlas on pure solid #FF00FF magenta, square 1536x1536. Exactly 2 columns by 4 rows. Eight separate AIRBORNE DUST STREAMS, with wide margins inside their cells. No text, no grid, no panels, no scenery. Intended as subtle tan/gold sandstorm overlay at native 48px per game cell, reduced afterward. This is Variant C, deliberately FLAT, HOLLOW, FRAGMENTED, WINDSTRETCHED, irregular bands, not solid objects. Render with hard square pixels in just 3 tan/ochre values and sparse pale gold. Colors #c4974e #e0b973 #f8dea8, very little #a4844d. No continuous dark outlines, no bright top contour, no material shading or ground shadows. Tiny internal lighter patches scattered unevenly WITHIN the stream. Every sprite consists of large separated overlapping-looking ribbon segments with internal magenta gaps. No individual speck or grain. Distinct silhouettes: 1 extremely long thin horizontal ragged streamer split once in its middle; 2 short broad hollow tilted band with thick RIGHT end; 3 medium low irregular S composed of three unconnected fragments; 4 very short thin two-pronged wisp; 5 a wide loose C-shaped broken turbulent roll with large open center, flatter than tall; 6 three staggered uneven narrow strips collectively sloping slightly DOWN to the right; 7 long porous ribbon with several magenta slots, thick central segment and very thin ends; 8 short asymmetric two-layer drift with the densest patch at the left. Thin streams should finish 3-5 native pixels tall; broader ones 9-14 px tall; widths range 16 to 76 px. Crisp step contours. Make EACH radically different. Mostly horizontal motion to the right. Avoid peaked waves, repeated hills, scallops, flames, solid puffs, cloudy blobs, bright rims, ropes, pointed crests or a rising diagonal shared by all sprites. No blur, haze, gradients, noise or antialiasing. Flat pixel cluster drawing of moving weather, not sand terrain."
+    }
+  ],
+  "selected": {
+    "C": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "B": [
+      3,
+      6
+    ]
+  },
+  "selection_reason": "C has flat broken filaments and varied hollow bands; B 3/6 add a short thin fragment and a short thick open fragment. A retained for comparison."
+}

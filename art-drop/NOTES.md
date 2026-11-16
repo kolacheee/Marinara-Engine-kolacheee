@@ -1,3 +1,273 @@
+# Round 16 — Part A: critic-r16A-2 redraw
+
+Repaired the **eight failed snow/sandstorm frames**. The **16 passing weather
+PNGs and seven references are byte-identical**; 1,906 other art/reference files
+are preserved. Replayed all reference crops/compositions: measured **48 px/cell**,
+288×288, with the same native desert and winter donors.
+
+**Snow:** retained all six original flake drawings and their palette. Replaced
+long bending tracks with **82 independently placed shorter paths**, only 8–10
+flakes per path. Broad density is balanced across all phases: every wrapped
+32 px column has **7.68–8.84%** cover, versus the critic's **4.72–13.01%**.
+Native repeat review no longer shows the curved strings or alternating curtains.
+
+**Sandstorm:** drew **three new built-in image-tool variants on solid magenta**.
+Selected **C cells 0–7 plus B cells 3/6**: ten distinct thin filaments, hollow
+swirls and broken patches, **16–76 px wide / 4–16 px tall**. These replace the
+similar peaked crests. Key → 8× BOX registration → existing golden palette →
+exact 64-sample RGBA mode → detached-pixel cleanup. Working alpha is 0/255;
+final alpha uses fixed levels, with zero transparent RGB. All shapes come from
+the drawings; code only processes and places them. Prompts and comparisons:
+`review/r16-A-redraw2-generation.json`, `r16-A-source-redraw2-sand-{a,b,c}.png`,
+`r16-A-selection.png`.
+
+**Motion:** right/down positive; snow moves **dx −2…2, dy 1…8 px/frame**;
+sandstorm moves **dx 16…32, dy −3…3**, with only two bands per closed path.
+Other motion remains unchanged. Exact per-step offsets are recorded in
+`r16-A-measurements.json` → `weather` → `groups[*].steps`. All particles wrap;
+four advances permute the same particles and the fifth state equals f0 exactly.
+GIF timing remains 160 ms for snow and 110 ms for the other sets.
+
+**Measured occupied cover per file** (`alpha > 0`, out of 36,864 pixels):
+
+| Family (`-fN.png`) | f0 | f1 | f2 | f3 |
+|---|---:|---:|---:|---:|
+| rain | 8.6561% | 8.6751% | 8.6453% | 8.7104% |
+| heavy_rain | 18.9128% | 19.0945% | 18.7229% | 19.0864% |
+| snow | 8.2492% | 8.2248% | 8.2330% | 8.2031% |
+| blizzard | 34.0603% | 34.1336% | 33.6751% | 34.0739% |
+| hail | 7.0774% | 7.0095% | 7.0611% | 7.1398% |
+| sandstorm | 33.9030% | 33.7104% | 33.5178% | 33.8515% |
+
+Regenerated review sheets, **504 repeat proofs and six GIFs**. **4,512 checks
+pass**, including 4,493 native mode blocks, independent unwrapped 3×3 rendering,
+four-frame closure, GIF/PNG correspondence, coverage caps and preservation.
+Snow remains visible on snow; dust stays golden over sand/grass; roads and towns
+remain readable. Review index: `review/r16-A-review.html`.
+
+**Playback limitation:** the browser host is unavailable, so live perceived
+motion remains unverified. GIF frames and mathematical continuity pass; this
+is a repair and self-review, not a new independent critic verdict.
+No commit, push, branch change or changes to other art parts.
+
+---
+
+# Round 16 — Part A: critic-r16A-1 redraw
+
+Reworked **all 24 failed frames**; preserved the **seven passing 288×288 references
+byte-for-byte**, at their measured **48 px/cell**. These results supersede the
+first Part A results below.
+
+**Drawing repairs:** five new large built-in image-tool masters on magenta:
+two sand variants, two wind variants, one splash sheet. Selected **sand2 / wind2**.
+Short broken dust swirls replace outlined cords; connected one-pixel wind
+strands replace fragmented dashes; drawn two-pixel rain splashes now survive.
+Kept the existing falling strokes, blue-grey-edged snow and hard hail drawings.
+Key → 8× BOX registration → palette lock → exact 64-sample mode → component
+cleanup; hard working alpha, discrete final alpha, zero transparent RGB.
+Code only processes, places and moves drawings. Prompts and variants:
+`review/r16-A-redraw-generation.json`, `r16-A-source-redraw-*.png`, `r16-A-selection.png`.
+
+**Motion:** irregular closed paths replace constant-spacing orbit copies.
+Four advances permute each phase cohort exactly, including f3→f0. Per-particle
+native offset ranges (right/down positive) follow; exact step sequences are in
+`r16-A-measurements.json` → `weather` → `groups[*].steps`.
+
+| Set | dx/frame | dy/frame |
+|---|---:|---:|
+| rain | 0…3 | 4…11 |
+| heavy_rain | 0…4 | 9…19 |
+| snow | -2…2 | 1…5 |
+| blizzard | 5…17 | -3…3 |
+| hail | 0 | 10…33 |
+| sandstorm | 6…16 | -4…4 |
+
+Rain splashes use approach/contact/tick/clear phases. Hail bounce marks stay at
+the impact, then rebound 1 px right / 2 px up. GIFs: 110 ms/frame; snow 160 ms.
+Sand/blizzard placement avoids full-width empty lanes.
+
+**Per-file cover:** every alpha>0 pixel counts against 36,864 pixels.
+
+| Family (`-fN.png`) | f0 | f1 | f2 | f3 |
+|---|---:|---:|---:|---:|
+| rain | 8.6561% | 8.6751% | 8.6453% | 8.7104% |
+| heavy_rain | 18.9128% | 19.0945% | 18.7229% | 19.0864% |
+| snow | 9.2773% | 9.2502% | 9.1987% | 9.2448% |
+| blizzard | 34.0603% | 34.1336% | 33.6751% | 34.0739% |
+| hail | 7.0774% | 7.0095% | 7.0611% | 7.1398% |
+| sandstorm | 33.5314% | 33.5395% | 33.5585% | 33.3306% |
+
+**QC:** 2,484 technical checks pass. No exact horizontal/vertical subperiod;
+hail’s 96 px vertical overlap falls from 67.44% to 11.65%; sand’s maximum f0
+row cover falls from 86.98% to 59.38%. Regenerated all review sheets, 504 repeat
+proofs and six GIFs; decoded GIF phases match their PNG composites. Native
+and enlarged review retains readable roads/towns and snow on snow.
+Coverage counts, weighted cover, offsets, palettes and checks are in the
+`r16-A-measurements.json` / `r16-A-validation.json` files.
+
+**Limitation:** browser access host unavailable; real-time perceived motion
+was not verified. Mathematical continuity passes; no second independent critic
+verdict is claimed. No commit, push, branch change or edits to other art parts.
+
+---
+
+# Round 16 — Part A
+
+Made only **24 falling-weather frames in `out/weather16/`**, all **192×192
+RGBA**, plus the seven **288×288** reference crops/compositions in
+`reference/r16/` and this part's `review/r16-A-*` material. The six sets are
+**rain, heavy_rain, snow, blizzard, hail and sandstorm**, each **f0–f3**.
+
+**References:** the camera renders draw cells at **48 px**, so the six-cell
+crops remain **288×288** with nearest-neighbour **1:1** registration. Modern
+farmland boundaries are x **576 / 624 / 672 / 720** and y **144 / 192 / 240 /
+288 / 336**. Matching `farmland-3.png` at **(672,240)** gives mean RGB error
+**0.9057** at 48 px, versus **8.7032** at 47 px and **9.4955** at 49 px.
+The fantasy and wasteland render features use the same 48 px pitch.
+Crop coordinates are zero-based, right/bottom exclusive:
+
+| Reference | Render | Crop |
+|---|---|---|
+| `ref-fantasy-grass.png` | `ow-fantasy-0.png` | (864,96)–(1152,384) |
+| `ref-fantasy-forest.png` | `ow-fantasy-0.png` | (816,432)–(1104,720) |
+| `ref-fantasy-town.png` | `ow-fantasy-0.png` | (432,240)–(720,528) |
+| `ref-modern-city.png` | `ow-modern-0.png` | (480,96)–(768,384) |
+| `ref-wasteland.png` | `ow-wasteland-0.png` | (480,240)–(768,528) |
+
+The renders have no desert or snowy stretch. **`ref-desert-sand.png`** uses
+the existing **`beach-base.png`** sand with native **dunes props 0/3/4/2**;
+**`ref-snow.png`** uses **`grass@winter-base.png`**, winter broadleaf trees
+**0/2**, winter conifer **0**, and winter grass details **1/3/6**. All donor
+pixels and alpha are composited at their original scale, on 48 px cell
+coordinates. No reference terrain or prop was newly drawn or recoloured.
+Exact donor placements are recorded in PNG metadata and the measurements.
+
+**Drawing method:** **nine separate large built-in image-tool drawings on
+solid magenta**: one master atlas for each family, with a second variant for
+**heavy rain, blizzard and sandstorm**. Selected **heavy rain B / blizzard B /
+sandstorm B**; rain, snow and hail use their sole masters. The first heavy
+rain leaned west; the second supplies the required eastward fall. Blizzard
+B has thinner open wind ribbons. Sandstorm B replaces A's strong flame-like
+curls with low broken dust strands. `r16-A-selection.png` shows both variants;
+all exact prompts are embedded in `r16-A-source-*.png` and retained in
+`r16-A-generation.json`.
+
+Each drawing is magenta-keyed, cropped to its painted component bounds and
+BOX-registered to **8W×8H**. A fixed family palette is locked before the exact
+RGBA mode of **all 64 samples per native pixel**, including transparency,
+with lexicographic RGBA tie-breaking. This produces **33 particle drawings**:
+short stepped streaks and tiny splash ticks; longer heavy-rain strokes;
+**2–3 px** snow flakes; compact **2×2 / 2×3** grey-faceted hail and bounce
+marks; sideways snow clumps and fine wind strands; and three **80×9 / 88×10 /
+96×9** dust ribbons. Cleanup removes **12 detached native pixels**. The
+one-pixel lower-right edges and upper-left highlights come from the drawings;
+no additional contour painting was needed after reduction.
+
+Working particle silhouettes have hard **0/255** alpha. Final weather uses
+only fixed alpha levels: rain **0/96/160**, heavy rain **0/128/192**, snow
+**0/224/255**, hail **0/224/240/255**, blizzard **0/96/128/144/176/224**,
+and sandstorm **0/128/144/176**. Final frames contain **2–5 nontransparent
+RGBA entries**. Transparent RGB is always **0,0,0**. Overlap selects a drawn
+RGBA entry by opacity/colour priority; it creates no blended colour or alpha
+ramp. Code registers, reduces, palette-locks, cleans, places, moves, wraps and
+composites drawings. It constructs **no particle shapes, terrain or noise**;
+the deterministic random numbers choose particle positions and motion groups
+only.
+
+**Animation:** coordinates increase right/down. Offsets below are **native
+pixels per frame**, including the f3→f0 step. Rain and hail ticks are small
+secondary drawn marks. Snow mixes gentle east/west drift; blizzard motion is
+predominantly eastward. Sandstorm is one fast eastward stream.
+
+| Set | Motion groups: (dx,dy) per frame | GIF frame duration |
+|---|---|---|
+| rain | (1,6), (2,8), (1,8), (2,12) | 110 ms |
+| heavy_rain | (2,12), (3,16), (2,16), (3,12) | 110 ms |
+| snow | (1,2), (−1,3), (1,4), (0,3) | 160 ms |
+| hail | (0,12), (0,16), (0,24) | 110 ms |
+| blizzard | (8,1), (12,1), (16,2), (8,−1) | 110 ms |
+| sandstorm | (48,0) | 110 ms |
+
+Particles wrap on the **192×192 torus**. Each motion group is populated at
+successive **4×offset** positions until it closes, so four advances permute
+the same drawn particles. Groups with different offsets and staggered origins
+break up the visible regularity. Sandstorm advances a complete tile width in
+four steps and therefore needs no short repeated sub-band. The computed fifth
+state is **byte-identical to f0** for all six sets: no fade, teleport/reset or
+reseed at the loop boundary. The GIFs contain the actual four exported states,
+with no interpolated or invented animation frames.
+
+**Measurements:** cover counts every pixel with alpha > 0, against **36,864**
+pixels per file. Weighted cover is sum(alpha)/(255×36,864). Ordinary weather
+stays below 25%, blizzard below 40%, sandstorm below 45%.
+
+| File | Covered pixels | Cover | Alpha-weighted cover |
+|---|---:|---:|---:|
+| `rain-f0.png` | 3,286 | 8.9138% | 4.8700% |
+| `rain-f1.png` | 3,304 | 8.9627% | 4.8870% |
+| `rain-f2.png` | 3,300 | 8.9518% | 4.8897% |
+| `rain-f3.png` | 3,284 | 8.9084% | 4.8679% |
+| `heavy_rain-f0.png` | 7,144 | 19.3793% | 13.6588% |
+| `heavy_rain-f1.png` | 7,112 | 19.2925% | 13.5989% |
+| `heavy_rain-f2.png` | 7,084 | 19.2166% | 13.5376% |
+| `heavy_rain-f3.png` | 7,046 | 19.1135% | 13.4518% |
+| `snow-f0.png` | 3,348 | 9.0820% | 8.2599% |
+| `snow-f1.png` | 3,355 | 9.1010% | 8.2782% |
+| `snow-f2.png` | 3,373 | 9.1498% | 8.3195% |
+| `snow-f3.png` | 3,360 | 9.1146% | 8.2892% |
+| `hail-f0.png` | 2,583 | 7.0068% | 6.7213% |
+| `hail-f1.png` | 2,545 | 6.9038% | 6.6242% |
+| `hail-f2.png` | 2,555 | 6.9309% | 6.6517% |
+| `hail-f3.png` | 2,544 | 6.9010% | 6.6218% |
+| `blizzard-f0.png` | 13,024 | 35.3299% | 22.9705% |
+| `blizzard-f1.png` | 13,004 | 35.2756% | 22.9439% |
+| `blizzard-f2.png` | 13,148 | 35.6662% | 23.0236% |
+| `blizzard-f3.png` | 12,948 | 35.1237% | 22.8915% |
+| `sandstorm-f0.png` | 14,420 | 39.1168% | 22.9548% |
+| `sandstorm-f1.png` | 14,420 | 39.1168% | 22.9548% |
+| `sandstorm-f2.png` | 14,420 | 39.1168% | 22.9548% |
+| `sandstorm-f3.png` | 14,420 | 39.1168% | 22.9548% |
+
+**QC:** two visual passes. The first caught short repeated wave chains in the
+sandstorm placement. Its final single-stream placement removes those chains
+and uses irregularly overlapping painted bands. Heavy rain is visibly longer
+and denser than rain. Snow retains its blue-grey edge on the snowy reference;
+hail has compact hard pellets and a much faster vertical path. Blizzard's
+sideways clumps and strands read substantially denser than snowfall. Sand
+bands remain golden over grass and visible over sand. Town silhouettes,
+roads and fields remain readable in all seven contexts. Native and enlarged
+views retain square pixels, hard edges and clean transparency without magenta
+fringe, antialias haze or blur. This is visual self-review of the exported
+art; no engine code or live renderer was changed.
+
+**Verification:** **539 checks pass**. These replay **3,068 native mode blocks /
+196,352 source samples**, all recorded cleanup, final placement and movement,
+24 dimensions and palettes, all per-file coverage counts, zero transparent
+RGB, four distinct frames per set, and exact fourth-advance closure. An
+independent unwrapped particle rendering equals every literal **3×3** tile
+repeat, including particles straddling both boundaries. Every 3×/4× repeat
+proof is byte-identical to the nearest-neighbour enlargement of its 1× source.
+All six GIFs contain four frames and infinite-loop metadata. Full checks and
+final SHA-256 hashes are in **`review/r16-A-validation.json`**.
+
+**Review material:** **`r16-A-overview.png`** compares all six at native scale;
+**`r16-A-review.html`** is a local index of the six **`r16-A-<name>.gif`** loops,
+each showing all seven references. GIF colour is a shared 256-colour review
+palette; the PNGs are authoritative for colour/alpha. Each delivered weather
+PNG has a **1× + exact 4× sheet** (`r16-A-file-*`) and every reference has its
+own 1×/4× sheet. **`r16-A-repeat-<name>-fN-<reference>-{1,3,4}x.png`** supplies
+**504 literal 3×3 weather-repeat proofs**, covering all 24 frames on all seven
+references at the brief's 1×/3× and the requested 4×. There are no newly drawn
+ground bases in this part. The reference crops themselves repeat at 288 px in
+these proofs; their road/crop boundaries are independent of the 192 px weather
+joins. Six native filmstrips, seven reference PNGs, source selections,
+registered/mode/cleaned stages, exact prompts, per-file measurements and
+replayable **`r16-A-build.py` / `r16-A-verify.py`** complete the audit trail.
+
+No files from Parts B–E were changed. No branch change, commit or push.
+
+---
+
 # Round 15 — Part C: critic-r15C-1 redraw
 
 Repaired `out/city15/compose.py` and regenerated all four failed mounted

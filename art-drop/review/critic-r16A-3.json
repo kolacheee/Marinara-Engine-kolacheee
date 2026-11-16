@@ -1,0 +1,164 @@
+{
+  "part": "A",
+  "round": 3,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "rain-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "rain-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "rain-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "rain-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "heavy_rain-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "heavy_rain-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "heavy_rain-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "heavy_rain-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "snow-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "snow-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "snow-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "snow-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "blizzard-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "blizzard-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "blizzard-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "blizzard-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "hail-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "hail-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "hail-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "hail-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "sandstorm-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "sandstorm-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "sandstorm-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "sandstorm-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-desert-sand": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-fantasy-forest": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-fantasy-grass": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-fantasy-town": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-modern-city": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "ref-wasteland": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    }
+  },
+  "notes": "Independent critic review of the current 24 Part A weather PNGs and seven requested reference PNGs. Read BRIEF-16 in full and the drawing-method sections of NOTES. No production artwork, references, existing GIFs, previous reviews, notes or scripts were edited. Visual inspection: every named PNG at native 1x and nearest-neighbour 4x; all four phases of every weather family in literal 3x3 weather repeats over all seven references; 3x seam-junction crops for every phase/reference; selected drawn particles at 8x, and isolated snow/sandstorm seams at 4x. The 42 critic-r16A-3-repeats-*.png sheets each contain four unscaled 576x576 repeat panels. Ground-reference boundaries every 288 px are repeated camera-crop boundaries, not 192 px weather seams. No remaining weather seam, conspicuous repeated curtain, rounded tile border, blur, fringe, accidental detached cleanup speck, oversized outline or unreadable map area was found. Rain has short east-leaning strokes and tiny ticks; heavy rain is visibly longer, darker and over twice as dense. Snow retains 2-3 px pale flakes with blue-grey edges visible on winter ground; the former broad curved curtains are no longer evident. Hail has compact hard facets and bounce marks, distinct from the broader cross-like snow flakes. Blizzard reads as a dense sideways blast with thinner wind strands while roads and settlements remain identifiable. Sandstorm now has varied thin fragments, open curls and broken patches rather than a sequence of identical crests; it stays tan/gold over grass and visible over sand, without muddy opaque masses or a fog sheet. Technical replay: 2588 checks passed, including 4493 exact 64-sample native RGBA mode blocks, recorded cleanup, fixed export palettes, zero RGB beneath transparency, all 24 current PNG reconstructions, independent unwrapped particle rendering versus literal 3x3 tiling, every path step across wraps, four distinct frames, exact f4=f0 closure, and all 168 decoded GIF reference panels matching their PNG composites after the shared GIF palette. All 504 existing 1x/3x/4x repeat proofs were separately compared with current PNG/reference composites and matched. All weather PNGs are 192x192 RGBA and use a few fixed alpha levels. Partial alpha is the explicit weather exception, not antialiasing. Reference validation: all seven are 288x288 and represent 6x6 cells at measured 48 px/cell. At modern render (672,240), farmland-3 RGB mean absolute match errors at 47/48/49 px were 8.7032/0.9057/9.4955. Five references exactly match the stated camera crops; desert and snow exactly match existing native donor composites, including grass@winter-base for snow. Part A has no newly authored seasonal partners or props requiring summer-mask comparisons; reference props were checked by exact donor-composite replay. Measured occupied cover (every alpha>0 pixel out of 36864, irrespective of opacity): rain-f0=8.6561%, rain-f1=8.6751%, rain-f2=8.6453%, rain-f3=8.7104%; heavy_rain-f0=18.9128%, heavy_rain-f1=19.0945%, heavy_rain-f2=18.7229%, heavy_rain-f3=19.0864%; snow-f0=8.2492%, snow-f1=8.2248%, snow-f2=8.2330%, snow-f3=8.2031%; blizzard-f0=34.0603%, blizzard-f1=34.1336%, blizzard-f2=33.6751%, blizzard-f3=34.0739%; hail-f0=7.0774%, hail-f1=7.0095%, hail-f2=7.0611%, hail-f3=7.1398%; sandstorm-f0=33.9030%, sandstorm-f1=33.7104%, sandstorm-f2=33.5178%, sandstorm-f3=33.8515%. All limits pass: 25% ordinary falling weather, 40% blizzard, 45% sandstorm. Native per-frame path offsets, right/down positive, including f3 to f0: rain dx 0..3, dy 4..11; heavy_rain dx 0..4, dy 9..19; snow dx -2..2, dy 1..8; blizzard dx 5..17, dy -3..3; hail dx 0, dy 10..33; sandstorm dx 16..32, dy -3..3. These are variable per-particle steps, not uniform tile translations. Exact sequences are retained in r16-A-measurements.json weather.groups[].steps. Rain/hail impacts additionally follow the recorded contact/tick/rebound states. All six existing r16-A-<name>.gif exports contain the actual four phases over all seven references, loop indefinitely and have consistent 110 ms frame timing (snow 160 ms). Playback limitation: the browser tool returned 'The browser access host is unavailable'. This verdict is based on native/enlarged visual frame inspection, decoded GIF correspondence and continuous trajectory/loop checks; real-time perceived smoothness was not observed, and no live-game playback is claimed. No commit, push or branch change was performed."
+}

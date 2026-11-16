@@ -1,0 +1,17 @@
+{
+  "exact_replay": {
+    "fantasy-grass": true,
+    "fantasy-forest": true,
+    "fantasy-town": true,
+    "modern-city": true,
+    "wasteland": true,
+    "desert-sand": true,
+    "snow": true
+  },
+  "drawn_cell_px": 48,
+  "mean_RGB_error_at_cell_sizes": {
+    "47": 8.703183944469593,
+    "48": 0.9056712962962963,
+    "49": 9.495487991114814
+  }
+}

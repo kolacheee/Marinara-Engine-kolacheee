@@ -1,0 +1,574 @@
+{
+  "a": [
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        0,
+        0,
+        627,
+        314
+      ],
+      "crop_in_cell": [
+        22,
+        156,
+        608,
+        229
+      ],
+      "native": [
+        68,
+        7
+      ],
+      "mode_blocks": 476,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        627,
+        0,
+        1254,
+        314
+      ],
+      "crop_in_cell": [
+        39,
+        108,
+        601,
+        282
+      ],
+      "native": [
+        42,
+        14
+      ],
+      "mode_blocks": 588,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        0,
+        314,
+        627,
+        627
+      ],
+      "crop_in_cell": [
+        22,
+        103,
+        601,
+        256
+      ],
+      "native": [
+        56,
+        12
+      ],
+      "mode_blocks": 672,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        627,
+        314,
+        1254,
+        627
+      ],
+      "crop_in_cell": [
+        175,
+        142,
+        422,
+        213
+      ],
+      "native": [
+        18,
+        5
+      ],
+      "mode_blocks": 90,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        13,
+        14,
+        28,
+        29
+      ]
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        0,
+        627,
+        627,
+        940
+      ],
+      "crop_in_cell": [
+        22,
+        95,
+        607,
+        236
+      ],
+      "native": [
+        52,
+        12
+      ],
+      "mode_blocks": 624,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        115,
+        116,
+        172
+      ]
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        627,
+        627,
+        1254,
+        940
+      ],
+      "crop_in_cell": [
+        32,
+        121,
+        601,
+        198
+      ],
+      "native": [
+        48,
+        7
+      ],
+      "mode_blocks": 336,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        141,
+        142
+      ]
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        0,
+        940,
+        627,
+        1254
+      ],
+      "crop_in_cell": [
+        22,
+        87,
+        608,
+        242
+      ],
+      "native": [
+        64,
+        13
+      ],
+      "mode_blocks": 832,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-a",
+      "cell": [
+        627,
+        940,
+        1254,
+        1254
+      ],
+      "crop_in_cell": [
+        83,
+        73,
+        550,
+        238
+      ],
+      "native": [
+        34,
+        12
+      ],
+      "mode_blocks": 408,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        11,
+        12
+      ]
+    }
+  ],
+  "b": [
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        0,
+        0,
+        627,
+        314
+      ],
+      "crop_in_cell": [
+        26,
+        154,
+        602,
+        245
+      ],
+      "native": [
+        64,
+        9
+      ],
+      "mode_blocks": 576,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        627,
+        0,
+        1254,
+        314
+      ],
+      "crop_in_cell": [
+        85,
+        120,
+        555,
+        268
+      ],
+      "native": [
+        38,
+        12
+      ],
+      "mode_blocks": 456,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        58
+      ]
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        0,
+        314,
+        627,
+        627
+      ],
+      "crop_in_cell": [
+        26,
+        114,
+        602,
+        261
+      ],
+      "native": [
+        60,
+        12
+      ],
+      "mode_blocks": 720,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        657,
+        658,
+        498
+      ]
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        627,
+        314,
+        1254,
+        627
+      ],
+      "crop_in_cell": [
+        109,
+        161,
+        512,
+        215
+      ],
+      "native": [
+        22,
+        4
+      ],
+      "mode_blocks": 88,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        11,
+        12,
+        64
+      ]
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        0,
+        627,
+        627,
+        940
+      ],
+      "crop_in_cell": [
+        26,
+        80,
+        601,
+        240
+      ],
+      "native": [
+        48,
+        13
+      ],
+      "mode_blocks": 624,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        627,
+        627,
+        1254,
+        940
+      ],
+      "crop_in_cell": [
+        26,
+        134,
+        602,
+        185
+      ],
+      "native": [
+        72,
+        6
+      ],
+      "mode_blocks": 432,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        267,
+        304
+      ]
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        0,
+        940,
+        627,
+        1254
+      ],
+      "crop_in_cell": [
+        62,
+        77,
+        497,
+        230
+      ],
+      "native": [
+        25,
+        11
+      ],
+      "mode_blocks": 275,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-b",
+      "cell": [
+        627,
+        940,
+        1254,
+        1254
+      ],
+      "crop_in_cell": [
+        19,
+        106,
+        592,
+        207
+      ],
+      "native": [
+        50,
+        8
+      ],
+      "mode_blocks": 400,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    }
+  ],
+  "c": [
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        0,
+        0,
+        627,
+        314
+      ],
+      "crop_in_cell": [
+        47,
+        170,
+        592,
+        193
+      ],
+      "native": [
+        76,
+        4
+      ],
+      "mode_blocks": 304,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        627,
+        0,
+        1254,
+        314
+      ],
+      "crop_in_cell": [
+        93,
+        119,
+        541,
+        234
+      ],
+      "native": [
+        34,
+        10
+      ],
+      "mode_blocks": 340,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        272
+      ]
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        0,
+        314,
+        627,
+        627
+      ],
+      "crop_in_cell": [
+        64,
+        120,
+        573,
+        221
+      ],
+      "native": [
+        52,
+        10
+      ],
+      "mode_blocks": 520,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        627,
+        314,
+        1254,
+        627
+      ],
+      "crop_in_cell": [
+        214,
+        140,
+        394,
+        187
+      ],
+      "native": [
+        16,
+        4
+      ],
+      "mode_blocks": 64,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        0,
+        627,
+        627,
+        940
+      ],
+      "crop_in_cell": [
+        48,
+        77,
+        573,
+        249
+      ],
+      "native": [
+        54,
+        16
+      ],
+      "mode_blocks": 864,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        627,
+        627,
+        1254,
+        940
+      ],
+      "crop_in_cell": [
+        58,
+        110,
+        574,
+        215
+      ],
+      "native": [
+        56,
+        11
+      ],
+      "mode_blocks": 616,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        539,
+        540,
+        76,
+        612,
+        613
+      ]
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        0,
+        940,
+        627,
+        1254
+      ],
+      "crop_in_cell": [
+        29,
+        114,
+        601,
+        193
+      ],
+      "native": [
+        66,
+        9
+      ],
+      "mode_blocks": 594,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": [
+        393
+      ]
+    },
+    {
+      "source": "redraw2-sand-c",
+      "cell": [
+        627,
+        940,
+        1254,
+        1254
+      ],
+      "crop_in_cell": [
+        106,
+        110,
+        507,
+        204
+      ],
+      "native": [
+        28,
+        7
+      ],
+      "mode_blocks": 196,
+      "samples_per_block": 64,
+      "cleanup_removed_indices": []
+    }
+  ]
+}

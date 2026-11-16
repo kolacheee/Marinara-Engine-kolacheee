@@ -1,0 +1,18 @@
+{
+  "changed_art": [
+    "art-drop/out/weather16/snow-f0.png",
+    "art-drop/out/weather16/snow-f1.png",
+    "art-drop/out/weather16/snow-f2.png",
+    "art-drop/out/weather16/snow-f3.png",
+    "art-drop/out/weather16/sandstorm-f0.png",
+    "art-drop/out/weather16/sandstorm-f1.png",
+    "art-drop/out/weather16/sandstorm-f2.png",
+    "art-drop/out/weather16/sandstorm-f3.png"
+  ],
+  "protected_art_reference_files": 1906,
+  "all_16_passing_weather_and_seven_references_byte_preserved": true,
+  "branch": "art/overworld-codex-2026-11-06",
+  "no_git_commit_push_or_checkout": true,
+  "live_playback": "Browser access host unavailable",
+  "verification": "r16-A-validation.json"
+}
