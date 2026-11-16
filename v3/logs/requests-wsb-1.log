@@ -1,0 +1,18 @@
+start wsb/floor-day fresh []
+start wsb/mascot fresh []
+done  wsb/mascot True
+done  wsb/floor-day True
+start wsb/mascot-bags ref ['raw.png']
+start wsb/floor-day-phone ref ['raw.png']
+start wsb/floor-night twin ['raw.png']
+done  wsb/mascot-bags True
+done  wsb/floor-day-phone True
+start wsb/floor-night-phone twin ['raw.png']
+done  wsb/floor-night True
+done  wsb/floor-night-phone True
+ok wsb/floor-day (1672, 941) RGB
+ok wsb/floor-night (1672, 941) RGB
+ok wsb/floor-day-phone (941, 1672) RGB
+ok wsb/floor-night-phone (941, 1672) RGB
+ok wsb/mascot (1024, 1024) RGBA
+ok wsb/mascot-bags (1024, 1024) RGBA

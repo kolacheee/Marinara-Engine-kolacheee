@@ -7,3 +7,9 @@ castle/day-hall rc=0 secs=109 exists=yes
 castle/phone-day rc=0 secs=131 exists=yes
 castle/storm-hall rc=0 secs=121 exists=yes
 castle/snow-hall rc=0 secs=97 exists=yes
+wsb/mascot rc=0 secs=64 exists=yes
+wsb/floor-day rc=0 secs=68 exists=yes
+wsb/mascot-bags rc=0 secs=95 exists=yes
+wsb/floor-day-phone rc=0 secs=95 exists=yes
+wsb/floor-night rc=0 secs=103 exists=yes
+wsb/floor-night-phone rc=0 secs=79 exists=yes
