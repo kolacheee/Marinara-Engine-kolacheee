@@ -1,0 +1,27 @@
+start pancake/bg-day fresh []
+done  pancake/bg-day True
+start pancake/bg-phone-day ref ['raw.png']
+start pancake/bg-night twin ['raw.png']
+start pancake/bg-day-rain twin ['raw.png']
+done  pancake/bg-phone-day True
+start pancake/creature-idol ref ['raw.png']
+done  pancake/bg-day-rain True
+done  pancake/bg-night True
+start pancake/bg-night-storm twin ['raw.png']
+start pancake/bg-phone-night twin ['raw.png', 'raw.png']
+done  pancake/creature-idol True
+start pancake/creature-peek ref ['raw.png']
+done  pancake/bg-night-storm True
+start pancake/creature-over ref ['raw.png']
+done  pancake/bg-phone-night True
+done  pancake/creature-peek True
+done  pancake/creature-over True
+ok pancake/bg-day (1672, 941) RGB
+ok pancake/bg-night (1672, 941) RGB
+ok pancake/bg-phone-day (852, 1846) RGB
+ok pancake/bg-phone-night (852, 1846) RGB
+ok pancake/bg-day-rain (1672, 941) RGB
+ok pancake/bg-night-storm (1672, 941) RGB
+ok pancake/creature-idol (1024, 1024) RGBA
+ok pancake/creature-peek (1024, 1536) RGBA
+ok pancake/creature-over (1774, 887) RGBA
