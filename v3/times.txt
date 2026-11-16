@@ -33,3 +33,9 @@ wsb/floor-snow-day rc=0 secs=107 exists=yes
 wsb/floor-fog-day rc=0 secs=103 exists=yes
 wsb/floor-snow-night rc=0 secs=115 exists=yes
 wsb/floor-fog-night rc=0 secs=82 exists=yes
+hal/bg-night-rain rc=0 secs=96 exists=yes
+hal/bg-night-snow rc=0 secs=97 exists=yes
+hal/bg-day-rain rc=0 secs=105 exists=yes
+hal/bg-night-fog rc=0 secs=99 exists=yes
+hal/bg-day-snow rc=0 secs=112 exists=yes
+hal/bg-day-fog rc=0 secs=121 exists=yes
