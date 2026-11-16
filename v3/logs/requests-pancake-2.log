@@ -1,0 +1,22 @@
+start pancake/bg-day regen ['ref-current.png']
+done  pancake/bg-day True
+start pancake/bg-day-rain twin ['raw.png', 'raw.png']
+start pancake/bg-night twin ['raw.png', 'raw.png']
+start pancake/bg-phone-day regen ['ref-current.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/pancake/bg-night/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/pancake/bg-day-rain/raw.png': No such file or directory
+done  pancake/bg-night True
+done  pancake/bg-phone-day True
+start pancake/bg-night-storm twin ['raw.png', 'raw.png']
+start pancake/bg-phone-night twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/pancake/bg-phone-night/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/pancake/bg-night-storm/raw.png': No such file or directory
+done  pancake/bg-day-rain True
+done  pancake/bg-night-storm True
+done  pancake/bg-phone-night True
+ok pancake/bg-day (1672, 941) RGB
+ok pancake/bg-night (1672, 941) RGB
+ok pancake/bg-phone-day (852, 1847) RGB
+ok pancake/bg-phone-night (798, 1972) RGB
+ok pancake/bg-day-rain (1672, 941) RGB
+ok pancake/bg-night-storm (1672, 941) RGB
