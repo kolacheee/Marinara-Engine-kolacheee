@@ -39,3 +39,9 @@ hal/bg-day-rain rc=0 secs=105 exists=yes
 hal/bg-night-fog rc=0 secs=99 exists=yes
 hal/bg-day-snow rc=0 secs=112 exists=yes
 hal/bg-day-fog rc=0 secs=121 exists=yes
+hal/bg-night rc=0 secs=94 exists=yes
+hal/lens-night rc=0 secs=95 exists=yes
+hal/bg-day rc=0 secs=98 exists=yes
+hal/bg-phone-day rc=0 secs=95 exists=yes
+hal/bg-phone-night rc=0 secs=99 exists=yes
+hal/lens-day rc=0 secs=98 exists=yes

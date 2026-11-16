@@ -1,0 +1,19 @@
+start hal/bg-day regen ['ref-current.png']
+start hal/lens-night regen ['ref-current.png']
+start hal/bg-night regen ['ref-current.png']
+done  hal/bg-night True
+start hal/bg-phone-day regen ['ref-current.png']
+done  hal/lens-night True
+start hal/bg-phone-night regen ['ref-current.png']
+done  hal/bg-day True
+start hal/lens-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/hal/lens-day/raw.png': No such file or directory
+done  hal/bg-phone-day True
+done  hal/bg-phone-night True
+done  hal/lens-day True
+ok hal/lens-night (1024, 1024) RGBA
+ok hal/lens-day (1254, 1254) RGBA
+ok hal/bg-day (1672, 941) RGB
+ok hal/bg-night (1672, 941) RGB
+ok hal/bg-phone-day (852, 1846) RGB
+ok hal/bg-phone-night (852, 1847) RGB
