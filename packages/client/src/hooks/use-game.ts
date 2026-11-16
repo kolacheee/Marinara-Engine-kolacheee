@@ -55,6 +55,7 @@ import type {
   WorldSeason,
   WorldWalk,
   GameLightHold,
+  WeatherType,
 } from "@marinara-engine/shared";
 import { isJsonRecord } from "@marinara-engine/shared";
 
@@ -1033,6 +1034,8 @@ export interface OverworldState {
   seasons?: Record<string, WorldSeason>;
   /** Places the Game Master holds at night, dusk or day (environment.ts), by place id (`*` everywhere). */
   lights?: Record<string, GameLightHold>;
+  /** The weather the Game Master holds places at (environment.ts), drawn on the map whatever the sky. */
+  weathers?: Record<string, WeatherType>;
 }
 
 /** The world as the party knows it (the Journal's World tab), read again after each turn (`turnKey`), so

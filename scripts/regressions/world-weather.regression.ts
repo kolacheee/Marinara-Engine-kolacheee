@@ -36,6 +36,8 @@ import {
   worldOverviewPromptText,
   worldDrawnSeason,
   worldWeatherAt,
+  worldWeatherBlocks,
+  WORLD_WEATHER_BLOCK,
   worldWeatherFit,
   worldWeatherNote,
   type GameWorld,
@@ -315,6 +317,30 @@ assert.equal(worldDrawnSeason(places.mumbai, 300), "summer", "the tropics are ne
     worldOverviewPromptText(game),
     /Held outside nature since the world began[\s\S]*always winter, always night \(the curse\)/,
   );
+}
+
+{
+  // The overworld map draws weather per block of cells, from the same climate weather the party gets.
+  const drawn = { kit, seed: 11, grounding: "expand" as const, brief: emptyBrief };
+  const game: GameWorld = { ...drawn, world: compileGameWorld(drawn) };
+  const { cols, rows, types } = worldWeatherBlocks(game, 40, 15);
+  assert.equal(cols, Math.ceil(game.world.width / WORLD_WEATHER_BLOCK));
+  assert.equal(types.length, cols * rows);
+  const centre = Math.min(game.world.width - 1, WORLD_WEATHER_BLOCK >> 1);
+  const row = Math.min(game.world.height - 1, WORLD_WEATHER_BLOCK >> 1);
+  assert.equal(
+    types[0],
+    worldWeatherAt({
+      seed: game.seed,
+      climate: worldClimateAt(game, row * game.world.width + centre),
+      day: 40,
+      hour: 15,
+    }).type,
+    "a block shows the weather of its centre",
+  );
+  const seen = new Set<string>();
+  for (let day = 1; day <= 120; day += 7) for (const type of worldWeatherBlocks(game, day, 12).types) seen.add(type);
+  assert.ok(seen.size >= 3, `the map's weather varies over a season (${[...seen].join(", ")})`);
 }
 
 console.log("world-weather regression passed");

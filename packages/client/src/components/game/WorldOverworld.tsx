@@ -53,8 +53,16 @@ import {
   environmentHeldCells,
   type GameLightHold,
   worldSeasonCells,
+  worldWeatherBlocks,
+  type WeatherType,
   type WorldSeason,
 } from "@marinara-engine/shared";
+import {
+  drawOverworldWeather,
+  loadOverworldWeatherArt,
+  overworldWeatherMoves,
+  type OverworldWeatherArt,
+} from "./overworld-weather";
 import { useDungeonEnter, useOverworld, useOverworldWalk } from "../../hooks/use-game";
 import {
   overworldCamera,
@@ -123,6 +131,10 @@ interface WorldOverworldProps {
   tilePack?: TilePack | null | "loading";
   /** Opens the town the party is in (worldgen W8b). */
   onEnterTown?: () => void;
+  /** The weather where the party is, as the chat has it (a scene may have set it); drawn over its block. */
+  partyWeather?: WeatherType | null;
+  /** Weather drawn on the map (the player's weather effects setting). */
+  weatherEffects?: boolean;
   handleRef?: MutableRefObject<WorldOverworldHandle | null>;
 }
 
@@ -153,6 +165,8 @@ export function WorldOverworld({
   tilePack,
   onEnterTown,
   handleRef,
+  partyWeather = null,
+  weatherEffects = true,
 }: WorldOverworldProps) {
   const { t } = useTranslation();
   const { data: overworld } = useOverworld(chatId, turnKey, true);
@@ -228,6 +242,36 @@ export function WorldOverworld({
   const lightCells = useMemo(
     () => environmentHeldCells(game, JSON.parse(lightsKey) as Record<string, GameLightHold>),
     [game, lightsKey],
+  );
+
+  // ── The weather over the map (art round 16): each block's own, the Game Master's holds over it ──
+  const [weatherArt, setWeatherArt] = useState<OverworldWeatherArt | null>(null);
+  useEffect(() => {
+    if (!weatherEffects) return;
+    let live = true;
+    void loadOverworldWeatherArt().then((art) => live && setWeatherArt(art));
+    return () => {
+      live = false;
+    };
+  }, [weatherEffects]);
+  const weatherDay = time?.day;
+  // Read again each quarter hour of the game's clock: the systems drift a few km in that time.
+  const weatherHour = time ? time.hour + Math.floor(time.minute / 15) / 4 : undefined;
+  const weatherBlocks = useMemo(
+    () =>
+      weatherEffects && weatherDay !== undefined && weatherHour !== undefined
+        ? worldWeatherBlocks(game, weatherDay, weatherHour, heldCells)
+        : null,
+    [game, heldCells, weatherDay, weatherEffects, weatherHour],
+  );
+  const weathersKey = JSON.stringify(overworld?.weathers ?? {});
+  const heldWeatherCells = useMemo(
+    () => environmentHeldCells(game, JSON.parse(weathersKey) as Record<string, WeatherType>),
+    [game, weathersKey],
+  );
+  const reducedMotion = useMemo(
+    () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true,
+    [],
   );
 
   // ── What is drawn once: the ground and its ways, then the settlements ──
@@ -1654,8 +1698,36 @@ export function WorldOverworld({
         }
         ctx.globalCompositeOperation = "source-over";
       }
-      ctx.imageSmoothingEnabled = false;
       const party = partyRef.current;
+      if (weatherArt && weatherBlocks) {
+        drawOverworldWeather(
+          ctx,
+          weatherArt,
+          {
+            width: world.width,
+            height: world.height,
+            blocks: weatherBlocks,
+            held: heldWeatherCells,
+            party:
+              party && partyWeather
+                ? {
+                    x: Math.floor(party.x / OVERWORLD_TILE),
+                    y: Math.floor(party.y / OVERWORLD_TILE),
+                    weather: partyWeather,
+                  }
+                : null,
+          },
+          {
+            x0: cam.x / scale,
+            y0: cam.y / scale,
+            x1: (cam.x + size.width) / scale,
+            y1: (cam.y + size.height) / scale,
+          },
+          performance.now(),
+          reducedMotion,
+        );
+      }
+      ctx.imageSmoothingEnabled = false;
       if (party) {
         const [x, y] = [Math.round(party.x) - 8, Math.round(party.y) - 14 - (step ? 1 : 0)];
         const drawn = drawTile.character(
@@ -1682,7 +1754,13 @@ export function WorldOverworld({
       darkness,
       drawTile,
       ground,
+      heldWeatherCells,
       lightCells,
+      partyWeather,
+      reducedMotion,
+      weatherArt,
+      weatherBlocks,
+      world.height,
       world.width,
       markers,
       outer.pad,
@@ -1707,6 +1785,28 @@ export function WorldOverworld({
   useEffect(() => {
     if (!walkingRef.current) draw({ x: cameraX, y: cameraY });
   }, [cameraX, cameraY, draw, here]);
+  // The weather moves while the map stands still: frames for it about ten times a second (a walk draws its own).
+  const restingRef = useRef({ x: cameraX, y: cameraY });
+  restingRef.current = { x: cameraX, y: cameraY };
+  const weatherMoves = Boolean(
+    weatherArt &&
+    weatherBlocks &&
+    !reducedMotion &&
+    overworldWeatherMoves({
+      width: world.width,
+      height: world.height,
+      blocks: weatherBlocks,
+      held: heldWeatherCells,
+      party: partyWeather ? { x: 0, y: 0, weather: partyWeather } : null,
+    }),
+  );
+  useEffect(() => {
+    if (!weatherMoves) return;
+    const timer = window.setInterval(() => {
+      if (!walkingRef.current && document.visibilityState === "visible") drawRef.current(restingRef.current);
+    }, 100);
+    return () => window.clearInterval(timer);
+  }, [weatherMoves]);
   // When the party is somewhere new, the view goes with it.
   useEffect(() => setLookAt(null), [here]);
 

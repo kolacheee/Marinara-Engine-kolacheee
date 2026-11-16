@@ -152,7 +152,7 @@ export function environmentHoldAt(
 
 /** Every place of the world under a hold's part, and every place inside it, with what it is held at
  *  (`*` the whole world): for the overworld to draw the seasons and the dark. */
-export function environmentHeldPlaces<P extends "season" | "light">(
+export function environmentHeldPlaces<P extends "season" | "light" | "weather">(
   holds: readonly GameEnvironmentHold[],
   game: GameWorld,
   part: P,

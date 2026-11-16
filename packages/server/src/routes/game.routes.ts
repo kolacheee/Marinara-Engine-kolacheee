@@ -11775,8 +11775,9 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const holds = readEnvironmentHolds(replies.all, worldEnvironmentHolds(world));
     const seasons = { ...storySeasons, ...environmentHeldPlaces(holds, world, "season") };
     const lights = environmentHeldPlaces(holds, world, "light");
+    const weathers = environmentHeldPlaces(holds, world, "weather");
     const walk = worldWalkFromMetadata(meta);
-    if (walk) return { here: walk.to, walk, present, placeName: undefined, locks, seasons, lights };
+    if (walk) return { here: walk.to, walk, present, placeName: undefined, locks, seasons, lights, weathers };
     const place = worldPlaceInForce(
       world,
       lastGamePlace(replies.scoped),
@@ -11789,6 +11790,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       locks,
       seasons,
       lights,
+      weathers,
       placeName: place?.name,
     };
   };
@@ -12550,7 +12552,11 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const meta = parseMeta(chat.metadata);
     const world = chat.mode === "game" ? await loadGameWorld(app.db, chat.id, meta) : null;
     if (!world) return { overworld: null };
-    const { here, walk, present, locks, seasons, lights } = await overworldPlace(req.params.chatId, meta, world);
+    const { here, walk, present, locks, seasons, lights, weathers } = await overworldPlace(
+      req.params.chatId,
+      meta,
+      world,
+    );
     // A hidden site is never sent: the player does not know it is there.
     const locked = Object.fromEntries([...locks].filter(([, lock]) => lock === "sealed"));
     const hidden = new Set([...locks].filter(([, lock]) => lock === "hidden").map(([id]) => id));
@@ -12566,6 +12572,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         ...(Object.keys(seasons).length ? { seasons } : {}),
         // Only when the Game Master holds a place at night, dusk or day (environment.ts).
         ...(Object.keys(lights).length ? { lights } : {}),
+        ...(Object.keys(weathers).length ? { weathers } : {}),
       },
     };
   });

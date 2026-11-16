@@ -1009,3 +1009,43 @@ export function worldDrawnSeason(game: GameWorld, day: number): WorldSeason {
   if (climate.zone === "rainforest" || climate.zone === "savanna" || climate.zone === "hot_desert") return "summer";
   return worldLocalSeason(climate, day).season;
 }
+
+// ── The weather over the whole map (art round 16) ──
+
+/** The overworld reads the weather a block of cells at a time: systems are hundreds of km across. */
+export const WORLD_WEATHER_BLOCK = 4;
+const blockClimates = new WeakMap<GameWorld, WorldClimate[]>();
+
+/**
+ * The weather over every block of the map at a time, for the overworld to draw where each weather is. Each
+ * block reads the climate at its middle cell; `seasons` (a cell's held season, as the overworld draws them)
+ * holds a block's season as gameWeatherNow does for the party's place.
+ */
+export function worldWeatherBlocks(
+  game: GameWorld,
+  day: number,
+  hour: number,
+  seasons?: ReadonlyArray<WorldSeason | null> | null,
+): { cols: number; rows: number; types: WeatherType[] } {
+  const { width, height } = game.world;
+  const cols = Math.ceil(width / WORLD_WEATHER_BLOCK);
+  const rows = Math.ceil(height / WORLD_WEATHER_BLOCK);
+  let climates = blockClimates.get(game);
+  if (!climates) {
+    climates = [];
+    for (let row = 0; row < rows; row++)
+      for (let col = 0; col < cols; col++) {
+        const x = Math.min(width - 1, col * WORLD_WEATHER_BLOCK + (WORLD_WEATHER_BLOCK >> 1));
+        const y = Math.min(height - 1, row * WORLD_WEATHER_BLOCK + (WORLD_WEATHER_BLOCK >> 1));
+        climates.push(worldClimateAt(game, y * width + x));
+      }
+    blockClimates.set(game, climates);
+  }
+  const types = climates.map((climate, index) => {
+    const x = Math.min(width - 1, (index % cols) * WORLD_WEATHER_BLOCK + (WORLD_WEATHER_BLOCK >> 1));
+    const y = Math.min(height - 1, Math.floor(index / cols) * WORLD_WEATHER_BLOCK + (WORLD_WEATHER_BLOCK >> 1));
+    const heldSeason = seasons?.[y * width + x] ?? null;
+    return worldWeatherAt({ seed: game.seed, climate, day, hour, heldSeason }).type;
+  });
+  return { cols, rows, types };
+}

@@ -260,7 +260,7 @@ import type {
   PendingSpatialTransition,
 } from "@marinara-engine/shared";
 import type { AvatarCrop, CombatIconChoice, Persona, SceneSegmentEffect } from "@marinara-engine/shared";
-import { GAME_LIGHT_HOURS, type GameLightHold } from "@marinara-engine/shared";
+import { GAME_LIGHT_HOURS, normalizeWeatherType, type GameLightHold } from "@marinara-engine/shared";
 import {
   PROFESSOR_MARI_ID,
   SPOTIFY_RECENT_TRACK_HISTORY_LIMIT,
@@ -14136,6 +14136,9 @@ function GameSurfaceComponent({
                         family: artFamily,
                         tilePack: mapPackTiles,
                         handleRef: overworldClockRef,
+                        partyWeather:
+                          normalizeWeatherType(metaWeather) ?? normalizeWeatherType(gameSnapshot?.weather) ?? null,
+                        weatherEffects: weatherEffectsEnabled,
                       };
                       return (
                         <Suspense fallback={null}>
@@ -14229,8 +14232,10 @@ function GameSurfaceComponent({
                   </div>
 
                   {/* Dynamic weather effects from tracked game state */}
+                  {/* The overworld map draws its own weather where each weather is (overworld-weather.ts). */}
                   {!replayActive &&
                     weatherEffectsEnabled &&
+                    !(overworldShown && gameWorld && !townShown) &&
                     (gameSnapshot?.weather || gameSnapshot?.time || metaTime) && (
                       <div className="pointer-events-none absolute inset-0 z-[1]">
                         <WeatherEffects
