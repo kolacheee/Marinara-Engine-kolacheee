@@ -1,0 +1,21 @@
+start wsb/floor-storm twin ['raw.png']
+start wsb/floor-rain-day twin ['raw.png']
+start wsb/floor-rain-night twin ['raw.png']
+done  wsb/floor-rain-night True
+start wsb/floor-snow-day twin ['raw.png']
+done  wsb/floor-storm True
+start wsb/floor-snow-night twin ['raw.png']
+done  wsb/floor-rain-day True
+start wsb/floor-fog-day twin ['raw.png']
+done  wsb/floor-snow-day True
+start wsb/floor-fog-night twin ['raw.png']
+done  wsb/floor-fog-day True
+done  wsb/floor-snow-night True
+done  wsb/floor-fog-night True
+ok wsb/floor-storm (1672, 941) RGB
+ok wsb/floor-rain-day (1672, 941) RGB
+ok wsb/floor-rain-night (1672, 941) RGB
+ok wsb/floor-snow-day (1672, 941) RGB
+ok wsb/floor-snow-night (1672, 941) RGB
+ok wsb/floor-fog-day (1672, 941) RGB
+ok wsb/floor-fog-night (1672, 941) RGB

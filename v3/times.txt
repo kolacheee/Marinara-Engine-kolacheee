@@ -26,3 +26,10 @@ hal/bg-night rc=0 secs=101 exists=yes
 hal/lens-day rc=0 secs=97 exists=yes
 hal/bg-phone-day rc=0 secs=106 exists=yes
 hal/bg-phone-night rc=0 secs=94 exists=yes
+wsb/floor-rain-night rc=0 secs=107 exists=yes
+wsb/floor-storm rc=0 secs=109 exists=yes
+wsb/floor-rain-day rc=0 secs=117 exists=yes
+wsb/floor-snow-day rc=0 secs=107 exists=yes
+wsb/floor-fog-day rc=0 secs=103 exists=yes
+wsb/floor-snow-night rc=0 secs=115 exists=yes
+wsb/floor-fog-night rc=0 secs=82 exists=yes
