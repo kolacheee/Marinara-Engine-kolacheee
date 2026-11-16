@@ -1,0 +1,6 @@
+start wsb/mari-bags-v12 twin ['mari-rocket.png']
+start wsb/mari-bags-v13 twin ['mari-rocket.png']
+done  wsb/mari-bags-v12 True
+done  wsb/mari-bags-v13 True
+ok wsb/mari-bags-v12 (1024, 1024) RGBA
+ok wsb/mari-bags-v13 (1024, 1024) RGBA
