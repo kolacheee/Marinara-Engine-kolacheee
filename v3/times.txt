@@ -94,3 +94,5 @@ pancake/bg-night-storm rc=0 secs=122 exists=yes
 pancake/bg-phone-night rc=0 secs=150 exists=yes
 pancake/creature-peek rc=0 secs=97 exists=yes
 pancake/creature-over rc=0 secs=79 exists=yes
+wsb/mari-bags-v5 rc=0 secs=78 exists=yes
+wsb/mari-bags-v4 rc=0 secs=92 exists=yes
