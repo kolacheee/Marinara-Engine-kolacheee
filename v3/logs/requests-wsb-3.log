@@ -1,0 +1,6 @@
+start wsb/mari-bags ref ['mari-ref.png', 'mari-ref-2.png']
+start wsb/mari-rocket ref ['mari-ref.png', 'mari-ref-2.png']
+done  wsb/mari-bags True
+done  wsb/mari-rocket True
+ok wsb/mari-rocket (1024, 1024) RGBA
+ok wsb/mari-bags (1024, 1024) RGBA
