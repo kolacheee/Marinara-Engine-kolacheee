@@ -1,0 +1,91 @@
+{
+  "part": "E",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "icon-cloudy",
+    "icon-overcast",
+    "icon-sandstorm"
+  ],
+  "files": {
+    "icon-clear-day": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-clear-night": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-cloudy": {
+      "status": "fail",
+      "problems": [
+        "The sun/cloud overlap is not a clean one-pixel contour. The dark navy pixel at (7,15) is isolated from every other dark outline pixel in its 8-neighbourhood and is surrounded by opaque fill. The separator above it ends at (9,13), with the intervening (8,14) painted gold. At 4x/8x this reads as a stray dark fleck and a broken boundary between the two objects.",
+        "The pale foreground cloud, approximately x=5..21, y=12..19, is a single flat-filled sloping mound. The long descending right shoulder makes the native badge lean toward sun-behind-a-hill rather than a clearly puffed cloud. The sun is readable, but the cloud needs a stronger cloud-specific silhouette."
+      ],
+      "fix": "Retain the recognizable gold sun and rays. Redraw the pale foreground as a compact cloud with two or three broad stepped lobes, a shallow underside and a restrained lower-right shade. Finish the sun/cloud overlap as an intentional continuous one-pixel separator; remove the orphan pixel at (7,15), or reconnect it as part of that drawn boundary. Check the result at 1x beside overcast and clear-day on both panels."
+    },
+    "icon-overcast": {
+      "status": "fail",
+      "problems": [
+        "At 1x the two overlapping forms read as mountain wedges, not an overcast bank. The front form at x=1..15, y=10..18 climbs diagonally to one peak; its diagonal light/dark split across y=14..17 and flat bottom reinforce a shaded rock face. The rear form at x=8..22, y=5..13 repeats the peaked profile. This is a weather-recognition failure even though it is distinguishable by colour from cloudy.",
+        "The dark pixel at (10,10) is an isolated interior outline-colour fleck, surrounded by opaque fill and disconnected from other outline pixels in all eight directions. The overlap separator resumes at (12,12), leaving an unfinished dotted ridge."
+      ],
+      "fix": "Redraw as a broad low bank of overlapping grey cloud lobes, with several shallow stepped humps instead of two triangular summits. Put the shade under the lobes and toward the lower right rather than in a long diagonal mountain face. Use one deliberate one-pixel overlap contour and remove the isolated (10,10) fleck. Retain no sun or precipitation; verify immediate cloud recognition at 1x beside cloudy, rain and storm."
+    },
+    "icon-rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-heavy_rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-storm": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-blizzard": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-fog": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-wind": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-hail": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-sandstorm": {
+      "status": "fail",
+      "problems": [
+        "There is a stray dark navy pixel at (11,14) inside the ochre dust body. All eight adjacent pixels are opaque non-outline colours, so this is a genuinely isolated interior speck, not a boundary corner or separated weather particle. It appears as a pinhole in the 4x/8x light-panel view and violates the no-isolated-specks cleanup rule."
+      ],
+      "fix": "Replace only the stray (11,14) pixel with the surrounding ochre fill, matching the drawn band. Preserve the warm dust body, leftward trailing bars and existing silhouette. Recheck the cleaned icon at 1x and 4x on dark and light panels."
+    },
+    "icon-heat_wave": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    }
+  },
+  "notes": "Independent review of the fourteen current icon PNGs only. Read BRIEF-16.md in full and the NOTES drawing-method sections, including the large magenta drawings, BOX registration, palette lock, exact RGBA mode vote, hard alpha and native contour cleanup. All fourteen are 24x24 RGBA, use alpha only 0/255, have zero RGB under transparency, have a clear outer margin, and use 3-6 opaque colours with the shared dark outline RGB (32,41,54). No detached one-pixel alpha components or soft fringes were found. Inspected every icon in literal rows at 1x, 2x and nearest-neighbour 4x on dark and light panels, all fourteen at 8x, and selected defects at 12x. Also inspected native rows over seven supplied reference crops using rgba(10,12,20,0.75) dark panels and corresponding light panels, and compared native pixel scale with approved grass and tree art. Rain has two short blue drops under a pale cloud; heavy_rain has four longer streaks and a dark cloud. Snow has two cross flakes, blizzard a sideways crystal/gust, and hail squared pellets. Fog has low horizontal banks; wind has curled gusts. Clear-day has a radiant sun; heat_wave has upright warm waves and a base. Those pairs remain distinguishable at 1x. The eleven passing icons have readable solid pixels and acceptable outline weight and light direction. Three files fail the visual/cleanup requirements stated above. Coordinates are zero-based and ranges inclusive. Part E contains no ground tiles, props, seasonal partners or animation frames, so 3x3 repeats, seasonal alpha-mask equality and loop/coverage checks do not apply. Evidence: critic-r16E-1-rows-{1,2,4}x.png; critic-r16E-1-closeups-{1,2}-8x.png; critic-r16E-1-context-1x.png; critic-r16E-1-style-context.png; critic-r16E-1-failure-detail.png. No output artwork was edited."
+}

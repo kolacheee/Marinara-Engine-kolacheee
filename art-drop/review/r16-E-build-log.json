@@ -1,8 +1,8 @@
 {
-  "sources": 20,
+  "sources": 32,
   "outputs": 14,
-  "mode_blocks": 11520,
-  "cleanup": 455,
+  "mode_blocks": 18432,
+  "cleanup": 787,
   "files": {
     "icon-clear-day.png": {
       "source": "clear-day-a",
@@ -92,25 +92,31 @@
       "sha256": "7896b9c797e2bf1bbb77e8385983ffd94373f4751f0b213d74f71b8514efc285"
     },
     "icon-cloudy.png": {
-      "source": "cloudy-b",
+      "source": "cloudy-g",
       "size": [
         24,
         24
       ],
       "bounds": [
         1,
-        2,
+        3,
         23,
         21
       ],
-      "opaque_pixels": 241,
-      "coverage_percent": 41.84,
-      "colours": 4,
+      "opaque_pixels": 255,
+      "coverage_percent": 44.271,
+      "colours": 5,
       "palette": [
         [
           32,
           41,
           54,
+          255
+        ],
+        [
+          146,
+          170,
+          184,
           255
         ],
         [
@@ -126,19 +132,19 @@
           255
         ],
         [
-          245,
-          243,
-          223,
+          255,
+          240,
+          176,
           255
         ]
       ],
       "components": [
-        241
+        255
       ],
-      "sha256": "71e0206b187a95293727b670638b251faf06ed639ed9f71a4fc9baa3310bb519"
+      "sha256": "738ed2c67749f8a712aa64203588f9c29b185dfc550dd403e067089cb9bcbeed"
     },
     "icon-overcast.png": {
-      "source": "overcast-b",
+      "source": "overcast-f",
       "size": [
         24,
         24
@@ -147,10 +153,10 @@
         1,
         5,
         23,
-        18
+        19
       ],
-      "opaque_pixels": 215,
-      "coverage_percent": 37.326,
+      "opaque_pixels": 239,
+      "coverage_percent": 41.493,
       "colours": 4,
       "palette": [
         [
@@ -179,9 +185,9 @@
         ]
       ],
       "components": [
-        215
+        239
       ],
-      "sha256": "cef35868458ed21fb8e09768062820d65e3bd99c67bde2ca58af98e6e5052718"
+      "sha256": "82c90c28db90c6cef88f0143638032b029d470be9c248ae0b31e0b3e698ea913"
     },
     "icon-rain.png": {
       "source": "rain-a",
@@ -354,19 +360,19 @@
       "sha256": "223c5a29d60982f3fba9292dd7907deba075345d7be463be9a6347443d81b265"
     },
     "icon-snow.png": {
-      "source": "snow-a",
+      "source": "snow-d",
       "size": [
         24,
         24
       ],
       "bounds": [
-        3,
         1,
-        20,
-        23
+        1,
+        23,
+        22
       ],
-      "opaque_pixels": 199,
-      "coverage_percent": 34.549,
+      "opaque_pixels": 260,
+      "coverage_percent": 45.139,
       "colours": 4,
       "palette": [
         [
@@ -395,11 +401,11 @@
         ]
       ],
       "components": [
-        132,
-        34,
-        33
+        166,
+        47,
+        47
       ],
-      "sha256": "1ff7bf8c87333742b889d40d67daa1439ecd2e30c6a2560c764ac4f2d58af503"
+      "sha256": "f2282ec0727fa0523368d40fa9d545687004899369bbeb9f8b2e361ad9fa1aec"
     },
     "icon-blizzard.png": {
       "source": "blizzard-b",
@@ -627,7 +633,7 @@
       "components": [
         283
       ],
-      "sha256": "402b661bf49a33f394f8be81ca2643487c12a6502e71b0d0e44f3c14d1d282e9"
+      "sha256": "05b3b6cc8608ccb446a55cff2c05150ac11b351492cf7a0462a761a835eff5a2"
     },
     "icon-heat_wave.png": {
       "source": "heat_wave-d",

@@ -1,3 +1,138 @@
+# Round 16 — Part E: critic-r16E-1 redraw
+
+Redrew **cloudy** and **overcast**, and repaired the single stray pixel at
+**(11,14)** in **sandstorm**. The eleven passing icons remain byte-identical.
+Cloudy retains the original gold sun and rays behind a newly drawn three-lobe
+cloud; overcast has overlapping low grey cloud banks with continuous contours.
+Sandstorm's silhouette and all other pixels are unchanged.
+
+Made **three cloudy and two overcast alternatives** with the built-in image
+tool on solid magenta; selected **cloudy G / overcast F**. Sources and exact
+prompts are in `review/r16-E-critic1-generation.json`. Cloudy G's painted
+foreground and adjacent existing navy stroke are extracted, registered and
+composited over the retained native sun. No source pixels or shapes are invented.
+The same **8× BOX registration → fixed palette → exact RGBA mode of all 64
+samples → native outline cleanup** produces the 24×24 icons. New redraws keep
+their drawn overlap separators instead of thinning them into disconnected dots.
+Final alpha is **0/255**, with **zero RGB under transparency**.
+
+**QC:** saved-art self-review passes; **1,217/1,217** audit checks pass,
+including exact mode replay, all eleven retained icons and **8,709 protected
+files**. This is not a new independent critic verdict.
+
+Rebuilt the `r16-E-*.png` review sheets, including complete rows at **1×, 2× and
+4× on dark and light panels**, seven map-reference contexts with actual 75%
+panels, and before/after comparisons of all three failed icons. The full earlier
+NOTES content and independent critic evidence remain unchanged. No commit,
+push or branch change. Validation and saved-art review results follow in
+`review/r16-E-validation.json` and `review/r16-E-critic1-review.json`.
+
+---
+
+# Round 16 — Part E
+
+Resumed the interrupted icon work, reviewed all **14 transparent 24×24 RGBA
+PNGs** in **`out/weather16/`**, and redrew **cloudy, overcast and snow**.
+The other **eleven installed icons are byte-identical** to the start of this
+pass. Cloudy now has visible sun rays; overcast has two offset cloud masses
+with broad stepped tops; snow has two larger white cross-shaped flakes.
+The old drawings and earlier Round 16 notes remain below, unchanged.
+
+**Drawing method:** seven new large built-in image-tool drawings on solid
+magenta: **two cloudy, two overcast and three snow alternatives**. Selected
+**cloudy C / overcast D / snow D**. Cloudy D loses too much ray colour after
+reduction; overcast C retains a mountain-like diagonal division; snow B/C
+lose cross-arm clarity. The selected drawings are retained as
+`review/r16-E-source-cloudy-c.png`, `r16-E-source-overcast-d.png` and
+`r16-E-source-snow-d.png`. All seven new prompts and original paths are in
+**`r16-E-resume-generation.json`**, also appended to the complete
+**`r16-E-generation.json`**. There are now **27 retained source drawings**.
+No API fallback was used.
+
+Magenta key → painted-bounds **BOX registration at 8×** → existing fixed
+family palette, without dithering → exact RGBA mode of **all 64 samples**
+in every 8×8 block, including transparency, with lexicographic RGBA ties →
+native one-pixel exposed-contour cleanup. Working canvases are **192×192**.
+Cloudy registers to **(1,3)–(23,21)**; overcast to **(1,5)–(23,19)**.
+Snow's already-painted components register separately: cloud
+**(1,1)–(23,11)**, left flake **(2,12)–(11,21)**, right flake
+**(13,13)–(22,22)**. This preserves the cross arms at badge size.
+Coordinates are zero-based, with exclusive right/bottom bounds.
+
+Code only keys, registers, palette-locks, reduces, cleans and composites
+drawings. It constructs no weather symbols, surface shapes or noise.
+The **seven new alternatives have 291 recorded cleanup colour edits**;
+all 27 drawings have **746**. The selected fourteen have **352 colour edits
+and zero alpha-mask edits** from their mode reductions. Final alpha is
+strictly **0/255**, RGB under transparency is **0,0,0**, each canvas has a
+clear outer pixel margin, and each uses **3–6 opaque colours**. The dark
+outline remains **(32,41,54)** with upper-left lighting.
+
+**Final files and measurements:** every filename below is prefixed
+`out/weather16/icon-` and suffixed `.png`; every canvas is **24×24**.
+
+| Icon | Painted bounds | Opaque pixels | Colours |
+|---|---|---:|---:|
+| clear-day | (1,1)–(23,23) | 285 | 4 |
+| clear-night | (2,1)–(22,23) | 234 | 3 |
+| cloudy | (1,3)–(23,21) | 230 | 4 |
+| overcast | (1,5)–(23,19) | 191 | 4 |
+| rain | (1,1)–(23,23) | 286 | 6 |
+| heavy_rain | (1,1)–(23,23) | 296 | 6 |
+| storm | (1,1)–(23,23) | 258 | 5 |
+| snow | (1,1)–(23,22) | 260 | 4 |
+| blizzard | (1,4)–(23,19) | 176 | 3 |
+| fog | (1,4)–(23,19) | 229 | 4 |
+| wind | (1,2)–(23,21) | 215 | 3 |
+| hail | (3,1)–(20,23) | 192 | 5 |
+| sandstorm | (1,3)–(23,20) | 283 | 4 |
+| heat_wave | (1,1)–(23,23) | 281 | 4 |
+
+**QC:** inspected the complete saved row on dark and light panels at
+**1×, 2× and nearest-neighbour 4×**, all individual 1×/4× proofs, and the
+1× contexts over grass, forest, town, city, wasteland, desert and snow.
+The context panels use actual 75% composition with dark RGB **(10,12,20)**
+and light **(246,243,232)**. Rain has two short ticks under a pale cloud;
+heavy rain has four long streaks under a dark cloud. Snow's two white
+crosses differ from blizzard's sideways crystal/gust and hail's squared
+pellets. Cloudy has gold rays; overcast has two grey clouds and no sun.
+Fog has stationary horizontal bars; wind has open hooks. Clear day is a
+radiant sun; heat wave is three upright warm ripples over a base bar.
+No pair was confused in the native row. **Saved-art self-review: PASS;
+failed review files: []**. This is not an independent critic verdict or
+an observed in-engine test.
+
+**Review sheets:** start at **`review/r16-E-review.html`**.
+All fourteen **`r16-E-file-icon-*.png`** sheets contain 1× and exact 4×
+placements on both panels; **`r16-E-row-{dark,light}-{1,2,4}x.png`**
+provides six literal rows. The **21 `r16-E-context-*-{1,2,4}x.png`**
+proofs cover all seven references. **`r16-E-redraw-comparison.png`**
+compares the three prior icons with their replacements at 1×/4×;
+**`r16-E-selection.png`** shows all 27 alternatives with selected marks.
+Part E has no ground bases, props, trees or seasonal partners; ground
+3×3 repeat sheets and seasonal silhouette comparisons do not apply.
+
+**Verification: 1,141 / 1,141 checks pass.** The audit
+`r16-E-verify.py` replays all **15,552 exact mode blocks /
+995,328 samples**, recorded cleanup, selected exports, palette membership,
+hard alpha, zero hidden RGB, exposed contours, component fill and margins.
+It verifies every individual 1×/4× placement, exact 2×/4× row/context
+enlargement, and byte-identical retention of the eleven unchanged icons.
+The current protected-file baseline covers **8,688 pre-existing files
+outside Part E**, and the complete starting NOTES content is preserved.
+An external `BRIEF-17.md` appeared during the task; it was neither created
+nor edited here and is separately recorded in `r16-E-external-files.json`.
+
+Reproduce with **`python -B art-drop/review/r16-E-build.py`**, then audit
+with **`python -B art-drop/review/r16-E-verify.py`** (Python and Pillow).
+Full results are in **`r16-E-validation.json`**; registrations, palettes,
+cleanup records and per-file hashes are in **`r16-E-measurements.json`**.
+Only the three named Part E output icons, Part E review material and this
+top NOTES section changed. **No commit, push or branch change.**
+
+---
+
+
 # Round 15 — Part M: critic-r15M-1 redraw
 
 Repaired both failed images, `review/r15-city-mockup.png` and

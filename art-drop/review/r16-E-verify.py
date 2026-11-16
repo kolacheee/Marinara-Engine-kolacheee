@@ -20,7 +20,8 @@ for stage in M['stages']:
     ident=stage['id'];rec=sources[ident]
     check(ident+' original copy',hashlib.sha256((REV/rec['source']).read_bytes()).hexdigest()==hashlib.sha256(Path(rec['original_path']).read_bytes()).hexdigest())
     rebuilt,replayed_stage=scope['reduce_source'](rec)
-    check(ident+' source registration replay',stage==replayed_stage and same(rebuilt,Image.open(REV/f'r16-E-clean-{ident}.png')))
+    # JSON stores palette tuples as lists; compare the same serialized types.
+    check(ident+' source registration replay',stage==json.loads(json.dumps(replayed_stage)) and same(rebuilt,Image.open(REV/f'r16-E-clean-{ident}.png')))
     reg=Image.open(REV/f'r16-E-registered-{ident}.png');mode=Image.open(REV/f'r16-E-mode-{ident}.png')
     # Independently replay all 64 RGBA samples, with transparent samples voting.
     votes=[]
@@ -49,6 +50,13 @@ for n,im in icons.items():
             v=im.getpixel((x,y))
             if v[3] and any(not im.getpixel((xx,yy))[3] for xx,yy in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)]):exposed.append(v[:3])
     check(n+' dark one-pixel exposed contour',set(exposed)=={scope['OUTLINE']})
+    flecks=[]
+    for y in range(1,23):
+        for x in range(1,23):
+            if im.getpixel((x,y))[:3]!=scope['OUTLINE']:continue
+            near=[im.getpixel((xx,yy)) for yy in range(y-1,y+2) for xx in range(x-1,x+2) if (xx,yy)!=(x,y)]
+            if all(v[3] and v[:3]!=scope['OUTLINE'] for v in near):flecks.append([x,y])
+    check(n+' no isolated interior outline flecks',not flecks)
     check(n+' selected drawing',same(im,Image.open(REV/f'r16-E-clean-{M["selected"][n]}.png')))
     check(n+' measurements',im.getbbox()==tuple(m['bounds']) and sum(v[3]>0 for v in p)==m['opaque_pixels'] and len(set(v for v in p if v[3]))==m['colours'])
     check(n+' hash',hashlib.sha256((OUT/f'icon-{n}.png').read_bytes()).hexdigest()==m['sha256'])
@@ -76,15 +84,27 @@ for a,b in itertools.combinations(icons,2):
     changed=sum(x!=y for x,y in zip(icons[a].get_flattened_data(),icons[b].get_flattened_data()))
     pairs.append({'a':a,'b':b,'different_rgba_pixels':changed})
 check('no duplicated icons',all(p['different_rgba_pixels']>0 for p in pairs))
-baseline=json.loads((REV/'r16-E-baseline.json').read_text())
+resume=json.loads((REV/'r16-E-critic1-baseline.json').read_text())
+baseline={str(ROOT.parent/p):h for p,h in resume['protected'].items()}
 changed=[p for p,h in baseline.items() if not Path(p).is_file() or hashlib.sha256(Path(p).read_bytes()).hexdigest()!=h]
 check('all protected art files byte-identical',not changed)
 allowed={str(OUT/f'icon-{n}.png') for n in icons}|{str(ROOT/'NOTES.md')}
-new=[str(p) for p in ROOT.rglob('*') if p.is_file() and str(p) not in baseline and str(p) not in allowed and not(p.parent==REV and p.name.startswith('r16-E-'))]
+external=json.loads((REV/'r16-E-external-files.json').read_text())
+external_paths={str(ROOT.parent/p):rec for p,rec in external.items()}
+for p,rec in external_paths.items():
+    check(p+' externally added file untouched',hashlib.sha256(Path(p).read_bytes()).hexdigest()==rec['sha256'])
+new=[str(p) for p in ROOT.rglob('*') if p.is_file() and str(p) not in baseline and str(p) not in allowed and str(p) not in external_paths and not(p.parent==REV and p.name.startswith('r16-E-'))]
 check('all new files in Part E scope',not new)
-notes=(ROOT/'NOTES.md').read_bytes();old=(REV/'r16-E-notes-before.txt').read_bytes()
-check('NOTES new section at top',notes.startswith('# Round 16 — Part E\n'.encode()))
+notes=(ROOT/'NOTES.md').read_bytes();old=(REV/'r16-E-critic1-notes-before.txt').read_bytes()
+check('NOTES new section at top',notes.startswith('# Round 16 — Part E: critic-r16E-1 redraw\n'.encode()))
 check('all previous NOTES preserved',notes.endswith(old))
+for name,old_hash in resume['icons'].items():
+    if name not in ['icon-cloudy.png','icon-overcast.png','icon-sandstorm.png']:
+        check(name+' retained byte-identical',hashlib.sha256((OUT/name).read_bytes()).hexdigest()==old_hash)
+before=Image.open(REV/'r16-E-critic1-before-icon-sandstorm.png').convert('RGBA')
+after=icons['sandstorm']
+delta=[(i%24,i//24) for i,(a,b) in enumerate(zip(before.get_flattened_data(),after.get_flattened_data())) if a!=b]
+check('sandstorm only requested pixel changed',delta==[(11,14)] and after.getpixel((11,14))==(201,155,83,255))
 result={'passed':sum(c['pass'] for c in checks),'total':len(checks),'failed':[c for c in checks if not c['pass']],'protected_files':len(baseline),'changed_protected':changed,'unexpected_new':new,'source_drawings':len(sources),'mode_blocks':len(sources)*576,'mode_samples':len(sources)*576*64,'pair_pixel_differences':pairs,'checks':checks}
 (REV/'r16-E-validation.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({k:v for k,v in result.items() if k not in ['checks','pair_pixel_differences']},indent=2))

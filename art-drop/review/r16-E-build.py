@@ -1,6 +1,6 @@
 """Register image-tool drawings and mode-reduce them; never draw icon shapes."""
 from pathlib import Path
-from PIL import Image, ImageDraw, PngImagePlugin
+from PIL import Image, ImageDraw, ImageFilter, PngImagePlugin
 from collections import Counter
 import json, hashlib
 
@@ -14,7 +14,7 @@ BLUE=[(85,143,190),(113,184,221),(196,231,240)]
 SAND=[(158,106,61),(201,155,83),(234,213,154)]
 NAMES=['clear-day','clear-night','cloudy','overcast','rain','heavy_rain','storm','snow','blizzard','fog','wind','hail','sandstorm','heat_wave']
 SELECT={n:n+'-a' for n in NAMES}
-SELECT.update(cloudy='cloudy-b',overcast='overcast-b',blizzard='blizzard-b',sandstorm='sandstorm-c',heat_wave='heat_wave-d')
+SELECT.update(cloudy='cloudy-g',overcast='overcast-f',snow='snow-d',blizzard='blizzard-b',sandstorm='sandstorm-c',heat_wave='heat_wave-d')
 FITS={n:(22,22) for n in NAMES}
 
 def save(im,path,**metadata):
@@ -46,12 +46,45 @@ def reduce_source(rec):
     raw=Image.open(REV/rec['source']).convert('RGB')
     keyed=Image.new('RGBA',raw.size)
     keyed.putdata([(0,0,0,0) if r>135 and b>135 and r>g+45 and b>g+45 else (r,g,b,255) for r,g,b in raw.get_flattened_data()])
+    if rec.get('extract_cloud'):
+        # Select the painted cool foreground and its adjacent EXISTING dark
+        # stroke. The mask adds no colour or alpha to the source drawing.
+        rp=list(keyed.get_flattened_data());fill=Image.new('L',raw.size)
+        fill.putdata([255 if a and r>100 and b>175 and b>=r+6 and g>=r+6 else 0 for r,g,b,a in rp])
+        near=fill.filter(ImageFilter.MaxFilter(85))
+        keyed.putdata([p if f or (n and p[3] and max(p[:3])<115) else (0,0,0,0) for p,f,n in zip(rp,fill.get_flattened_data(),near.get_flattened_data())])
+        save(keyed,REV/f'r16-E-extracted-{ident}.png')
     bbox=keyed.getbbox(); crop=keyed.crop(bbox); fw,fh=FITS[name]
     scale=min(fw/crop.width,fh/crop.height)
     bw,bh=round(crop.width*scale),round(crop.height*scale)
     x,y=(24-bw)//2,(24-bh)//2
     reg=Image.new('RGBA',(192,192)); placements=[]
-    if ident=='heat_wave-d':
+    if rec.get('retain_sun'):
+        # Retain only the old drawing's gold pixels and their drawn navy edge.
+        # The new foreground cloud occludes this unchanged native sun artwork.
+        prior=Image.open(REV/rec['retain_sun']).convert('RGBA');pp=list(prior.get_flattened_data())
+        gold=Image.new('L',(24,24));gold.putdata([255 if p[3] and p[:3] in GOLD else 0 for p in pp])
+        near=gold.filter(ImageFilter.MaxFilter(3))
+        prior.putdata([p if g or (n and p[:3]==OUTLINE) else (0,0,0,0) for p,g,n in zip(pp,gold.get_flattened_data(),near.get_flattened_data())])
+        reg.alpha_composite(prior.resize((192,192),NN))
+    if 'native_bounds' in rec:
+        tx,ty,tr,tb=rec['native_bounds']
+        reg.alpha_composite(crop.resize(((tr-tx)*8,(tb-ty)*8),Image.Resampling.BOX),(tx*8,ty*8))
+        placements.append({'source_crop':list(bbox),'native_bounds':rec['native_bounds']})
+    elif ident in ['snow-b','snow-c','snow-d']:
+        # Register the three painted components independently so the cross arms
+        # retain a white centre after the one-pixel exposed-contour cleanup.
+        split_y=670 if ident=='snow-b' else 650
+        for source_box,target_box in [
+            ((0,0,raw.width,split_y),(1,1,23,11)),
+            ((0,split_y,625,raw.height),(2,12,11,21)),
+            ((625,split_y,raw.width,raw.height),(13,13,22,22)),
+        ]:
+            part=keyed.crop(source_box); box=part.getbbox(); part=part.crop(box)
+            tx,ty,tr,tb=target_box
+            reg.paste(part.resize(((tr-tx)*8,(tb-ty)*8),Image.Resampling.BOX),(tx*8,ty*8))
+            placements.append({'source_crop':[source_box[0]+box[0],source_box[1]+box[1],source_box[0]+box[2],source_box[1]+box[3]],'native_bounds':list(target_box)})
+    elif ident=='heat_wave-d':
         # Register the separately drawn waves and base bar independently.
         # This preserves a visible interior in the source's narrow base bar.
         for source_box,target_box in [((0,0,raw.width,995),(2,1,22,19)),((0,995,raw.width,raw.height),(1,20,23,23))]:
@@ -85,12 +118,17 @@ def reduce_source(rec):
         yy,xx=divmod(i,24);near=[j for j in [i-1,i+1,i-24,i+24] if 0<=j<576]
         edge=xx in [0,23] or yy in [0,23] or any(not before[j][3] for j in near)
         if edge:pixels[i]=(*OUTLINE,255)
-        elif p[:3]==OUTLINE:
+        elif p[:3]==OUTLINE and rec.get('round')!='critic-r16E-1 redraw':
             # Thin thick dark source edges to a single boundary pixel. Retain
             # one-pixel interior division lines if they separate drawn colours.
             if sum(before[j][:3]==OUTLINE for j in near)>=2:
                 candidates=[before[j] for j in near if before[j][3] and before[j][:3]!=OUTLINE]
                 if candidates:pixels[i]=Counter(candidates).most_common(1)[0][0]
+    # Critic requested this single fill repair, with no silhouette changes.
+    if ident=='sandstorm-c':pixels[14*24+11]=(*SAND[1],255)
+    # Explicit contour repairs follow the drawn boundaries after mode reduction.
+    for edit in rec.get('native_cleanup',[]):
+        xx,yy=edit['xy'];pixels[yy*24+xx]=tuple(edit['rgba'])
     clean.putdata(pixels)
     edits=[{'xy':[i%24,i//24],'before':list(p),'after':list(q)} for i,(p,q) in enumerate(zip(mode.get_flattened_data(),pixels)) if p!=q]
     for stage,im in [('registered',reg),('mode',mode),('clean',clean)]:save(im,REV/f'r16-E-{stage}-{ident}.png')
@@ -119,6 +157,16 @@ def reviews(parts):
     for i,ident in enumerate(ids):
         x=i%6*172;y=i//6*176;im=parts[ident];d.text((x+6,y+8),ident+(' *' if ident in SELECT.values() else ''),fill='white');p=on_panel(im,'dark');sheet.paste(p,(x+6,y+34));sheet.paste(p.resize((96,96),NN),(x+42,y+34))
     save(sheet,REV/'r16-E-selection.png')
+    # Compare the previously installed drawings with the selected redraws.
+    comparison=Image.new('RGB',(640,3*166),(34,39,49));d=ImageDraw.Draw(comparison)
+    for i,name in enumerate(['cloudy','overcast','sandstorm']):
+        y=i*166;d.text((8,y+8),name+' / previous 1x + 4x / final 1x + 4x',fill='white')
+        before=Image.open(REV/f'r16-E-critic1-before-icon-{name}.png').convert('RGBA')
+        for j,im in enumerate([before,parts[SELECT[name]]]):
+            for k,kind in enumerate(['dark','light']):
+                x=j*320+k*160;p=on_panel(im,kind)
+                comparison.paste(p,(x+8,y+44));comparison.paste(p.resize((96,96),NN),(x+44,y+44))
+    save(comparison,REV/'r16-E-redraw-comparison.png')
     # Actual translucent UI panels over every supplied native reference crop.
     for refpath in sorted((ROOT/'reference/r16').glob('ref-*.png')):
         ref=Image.open(refpath).convert('RGB');rp=ref.load()
@@ -136,7 +184,7 @@ def reviews(parts):
     html+='<h2>Each file at 1× and 4×</h2><img src="r16-E-overview.png"><h2>Actual 75% panels over map references</h2>'
     for refpath in sorted((ROOT/'reference/r16').glob('ref-*.png')):
         html+=f'<p>{refpath.stem}</p><img src="r16-E-context-{refpath.stem[4:]}-1x.png"><a href="r16-E-context-{refpath.stem[4:]}-4x.png">4× proof</a>'
-    html+='<h2>Drawing alternatives (* selected)</h2><img src="r16-E-selection.png"><p>Prompts: <a href="r16-E-generation.json">generation.json</a>. Measurements: <a href="r16-E-measurements.json">measurements.json</a>. Saved-art self-review; no in-engine test or independent critic verdict.</p>'
+    html+='<h2>Three redraws: previous and final</h2><img src="r16-E-redraw-comparison.png"><h2>Drawing alternatives (* selected)</h2><img src="r16-E-selection.png"><p>Prompts: <a href="r16-E-generation.json">generation.json</a>. Measurements: <a href="r16-E-measurements.json">measurements.json</a>. Saved-art self-review; no in-engine test or independent critic verdict.</p>'
     (REV/'r16-E-review.html').write_text(html+'\n')
 
 def main():
@@ -145,7 +193,10 @@ def main():
         if 'original_path' not in rec:continue
         im,stage=reduce_source(rec);parts[rec['id']]=im;stages.append(stage)
     for name in NAMES:
-        im=parts[SELECT[name]];path=OUT/f'icon-{name}.png';save(im,path)
+        im=parts[SELECT[name]];path=OUT/f'icon-{name}.png'
+        # Never rewrite passing files; require their existing pixels to match.
+        if name in ['cloudy','overcast','sandstorm']:save(im,path)
+        else:assert Image.open(path).convert('RGBA').tobytes()==im.tobytes(),name
         p=list(im.get_flattened_data());vis=[v for v in p if v[3]]
         files[path.name]={'source':SELECT[name],'size':[24,24],'bounds':list(im.getbbox()),'opaque_pixels':len(vis),'coverage_percent':round(100*len(vis)/576,3),'colours':len(set(vis)),'palette':[list(v) for v in sorted(set(vis))],'components':[len(g) for g in groups(im)],'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
     reviews(parts)

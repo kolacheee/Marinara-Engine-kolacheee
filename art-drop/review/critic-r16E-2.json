@@ -1,0 +1,79 @@
+{
+  "part": "E",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "icon-clear-day": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-clear-night": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-cloudy": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-overcast": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-heavy_rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-storm": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-blizzard": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-fog": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-wind": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-hail": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-sandstorm": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "icon-heat_wave": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    }
+  },
+  "notes": "Independent review of all fourteen current Part E PNGs. Read BRIEF-16.md in full and the drawing-method sections of NOTES.md: large image-tool drawings on magenta, BOX registration, fixed palettes, exact RGBA mode sampling, hard alpha, transparent RGB cleanup and native one-pixel contour cleanup. Inspected every icon in complete rows at exact 1x, 2x and nearest-neighbour 4x on dark and light panels, plus every icon at nearest-neighbour 8x on both panels. Also inspected native rows on the seven supplied map reference crops with rgba(10,12,20,0.75) dark panels and translucent light panels, and compared pixel scale, outline weight and lighting with approved markers and props. All fourteen are 24x24 RGBA, use only alpha 0/255, have zero RGB under transparency, retain a clear outer margin and use 3-6 opaque colours. Every four-neighbour exposed silhouette pixel uses the shared dark outline RGB (32,41,54). There are no detached one/two-pixel alpha components or isolated outline-colour pixels. No soft fringes, smeared paint or accidental specks were found. Highlights and lower-right shades are consistent with the established top-left light. At 1x, rain's two short blue drops and pale cloud are distinct from heavy_rain's four long streaks and dark cloud; snow's two cross flakes are distinct from blizzard's sideways branching crystal and speed bars, and from hail's three square pellets. Fog's flat banks remain distinct from wind's open curls. Clear-day's radial sun remains distinct from heat_wave's three upright ripples and warm base. The crescent/star and lightning bolt identify clear-night and storm clearly. Cloudy now has stepped cloud lobes, a shallow shaded base and a continuous separator beneath its visible gold sun; overcast has two low overlapping grey cloud banks with a continuous internal contour, without the previous diagonal rock-face shading. Both read as clouds and remain distinct from one another at native size. Sandstorm retains a solid warm dust body and three trailing bars; the former isolated navy pixel at (11,14) is gone. No file meets a failure condition. Part E contains no ground tiles, props, seasonal partners or animation frames, so literal 3x3 repeats, seasonal alpha-mask comparisons and loop/coverage checks are not applicable to these assets. Evidence: critic-r16E-2-row-{dark,light}-{1,2,4}x.png; critic-r16E-2-detail-{1,2}-8x.png; critic-r16E-2-context-1x.png; critic-r16E-2-neighbours.png. No output artwork was edited; all fourteen input file hashes were verified unchanged."
+}

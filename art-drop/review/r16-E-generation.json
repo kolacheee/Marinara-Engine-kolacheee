@@ -130,5 +130,201 @@
     "prompt": "Draw ONE crisp tiny pixel-art HEAT WAVE weather badge, viewed straight-on as a graphic symbol. Three upright rising HEAT WAVES above a short warm horizontal ground bar, like the conventional hot-surface heat symbol. NO SUN, no cloud, no thermometer, no lettering or numbers. Each rising wave is an angular stepped S, with solid golden-orange interior TWO logical pixels thick and a ONE logical pixel charcoal #202936 contour all around. Separate waves with at least TWO magenta logical pixels. One short red-orange ground bar along the bottom. Overall a 21x21 logical-pixel design enlarged about 50 times onto a large square image. Centered, perfectly flat magenta #FF00FF backdrop, generous margin. Gold #e8b753 waves with pale #fff0b0 upper-left highlights, orange #c8793f lower edges. Very simple solid square pixel clusters, no fine texture, no noise, no blur, no smooth curves, no glow, no arrows, no isolated dots. Must remain obvious rising heat and completely distinct from a clear-day sun at actual 24x24 pixels.",
     "source": "r16-E-source-heat_wave-d.png",
     "original_path": "/home/kolache/.codex/generated_images/01a1e599-7458-7c13-9930-a265333a2631/exec-c4af959c-32cc-45d9-add4-bb699c63be49.png"
+  },
+  {
+    "id": "cloudy-c",
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art weather UI icon for a 24x24 native-pixel game badge. Render the tiny pixel drawing enlarged into a large square image on perfectly solid magenta #FF00FF. Strict square pixel grid, every conceptual pixel a uniform large square, flat colour clusters, no subpixel detail or antialiasing. Center icon with clear margin. One logical-pixel dark navy #202936 outline, thin rather than heavy. Top-left light. Palette: navy #202936, slate #596f86, blue-grey #92aab8, pale cloud #cedbde, ivory #f5f3df; sun gold #e8b753, warm highlight #fff0b0, lower-right gold #bb743b. No gradients, texture, specks, haze, fog, noise, text, labels, decorative border, smooth curves or rounded pixel corners. Pixel stepped contours. Keep shapes bold and legible at 24 pixels. PARTLY CLOUDY. A recognisable golden SUN with a stepped octagonal disk and three substantial attached square rays on its upper and left sides, partially hidden behind ONE white low puffy cloud at lower right. The sun disk is about 10 logical pixels across; the white cloud about 16 across, with three broad stair-stepped lobes, each flat at the top, not triangular. Sun must read as sun, not diamond or star; no pointed gold diamond. Cloud occupies lower-right, sun upper-left, overlapping in a single compact 21x19 logical-pixel composition. Keep at least two distinct gold rays visibly separate from the cloud; no tiny detached pixels.",
+    "source": "r16-E-source-cloudy-c.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-f8da19ab-1112-420d-bce9-ebf7c334c456.png"
+  },
+  {
+    "id": "cloudy-d",
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art weather UI icon for a 24x24 native-pixel game badge. Render the tiny pixel drawing enlarged into a large square image on perfectly solid magenta #FF00FF. Strict square pixel grid, every conceptual pixel a uniform large square, flat colour clusters, no subpixel detail or antialiasing. Center icon with clear margin. One logical-pixel dark navy #202936 outline, thin rather than heavy. Top-left light. Palette: navy #202936, slate #596f86, blue-grey #92aab8, pale cloud #cedbde, ivory #f5f3df; sun gold #e8b753, warm highlight #fff0b0, lower-right gold #bb743b. No gradients, texture, specks, haze, fog, noise, text, labels, decorative border, smooth curves or rounded pixel corners. Pixel stepped contours. Keep shapes bold and legible at 24 pixels. PARTLY CLOUDY alternative. A small golden sun with a stair-stepped OCTAGON disk and five stubby rectangular rays partly behind the upper-left edge of a broad ivory cloud. Sun and rays span about 13x13 logical pixels. Cloud spans about 17x10 logical pixels at lower right. Full icon roughly 22x19. Flat top runs on both sun and broad cloud puffs, no pointed peaks. The sun disk remains half visible, with bright cream upper-left, gold middle, darker lower-right; the cloud has ivory top, pale blue-grey bottom stripe. Sun rays attach to the disk through short necks; no tiny disconnected specks. One continuous thin dark outline; clean airy silhouette.",
+    "source": "r16-E-source-cloudy-d.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-c2aa49e4-8ede-44b5-bb70-874e91b7ec49.png"
+  },
+  {
+    "id": "overcast-c",
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art weather UI icon for a 24x24 native-pixel game badge. Render the tiny pixel drawing enlarged into a large square image on perfectly solid magenta #FF00FF. Strict square pixel grid, every conceptual pixel a uniform large square, flat colour clusters, no subpixel detail or antialiasing. Center icon with clear margin. One logical-pixel dark navy #202936 outline, thin rather than heavy. Top-left light. Palette: navy #202936, slate #596f86, blue-grey #92aab8, pale cloud #cedbde, ivory #f5f3df; sun gold #e8b753, warm highlight #fff0b0, lower-right gold #bb743b. No gradients, texture, specks, haze, fog, noise, text, labels, decorative border, smooth curves or rounded pixel corners. Pixel stepped contours. Keep shapes bold and legible at 24 pixels. OVERCAST. Exactly TWO clearly recognisable overlapping CLOUDS, NO SUN, no precipitation. Rear cloud occupies upper-left, muted blue-grey; front cloud occupies lower-right, medium slate grey with pale blue-grey upper-left highlight. Each cloud has 3 broad puffy stair-step lobes with FLAT horizontal tops and vertical sides, as in classic 24px weather pixel icons, no triangular peaks or diagonally striped mountain faces. Two horizontal, flat-bottomed cloud masses, with a thin dark dividing contour so the rear cloud is unmistakable. Wide low overall 22x15 logical-pixel composition; cloud puffs use 3-5 pixel flat top runs. No sharp mountain or tent peaks, no white diagonal streaks. Keep both clouds substantial.",
+    "source": "r16-E-source-overcast-c.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-7b9e5684-e975-44e1-921e-7db9277ab2e8.png"
+  },
+  {
+    "id": "overcast-d",
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art weather UI icon for a 24x24 native-pixel game badge. Render the tiny pixel drawing enlarged into a large square image on perfectly solid magenta #FF00FF. Strict square pixel grid, every conceptual pixel a uniform large square, flat colour clusters, no subpixel detail or antialiasing. Center icon with clear margin. One logical-pixel dark navy #202936 outline, thin rather than heavy. Top-left light. Palette: navy #202936, slate #596f86, blue-grey #92aab8, pale cloud #cedbde, ivory #f5f3df; sun gold #e8b753, warm highlight #fff0b0, lower-right gold #bb743b. No gradients, texture, specks, haze, fog, noise, text, labels, decorative border, smooth curves or rounded pixel corners. Pixel stepped contours. Keep shapes bold and legible at 24 pixels. OVERCAST alternative. A bank of two overlapping square-grid stepped CUMULUS clouds, a higher pale blue-grey cloud at the RIGHT BACK and a lower darker slate cloud at the LEFT FRONT, their horizontal bases offset vertically by four logical pixels. Three flat-topped puffy lobes in each cloud, broad short horizontal runs separated by square stair steps; no triangular peaks. Total width about 22 logical pixels and height about 16. Clear thin dark internal dividing line. Shade broad cloud volumes with a quiet pale top-left plane, slate lower-right plane, no texture. No sun, no rain, no snow, no diagonal highlights resembling mountains.",
+    "source": "r16-E-source-overcast-d.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-a67e550e-2b99-410e-becd-7558fb81d56d.png"
+  },
+  {
+    "id": "snow-b",
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art weather UI icon for a 24x24 native-pixel game badge. Render the tiny pixel drawing enlarged into a large square image on perfectly solid magenta #FF00FF. Strict square pixel grid, every conceptual pixel a uniform large square, flat colour clusters, no subpixel detail or antialiasing. Center icon with clear margin. One logical-pixel dark navy #202936 outline, thin rather than heavy. Top-left light. Palette: navy #202936, slate #596f86, blue-grey #92aab8, pale cloud #cedbde, ivory #f5f3df; sun gold #e8b753, warm highlight #fff0b0, lower-right gold #bb743b. No gradients, texture, specks, haze, fog, noise, text, labels, decorative border, smooth curves or rounded pixel corners. Pixel stepped contours. Keep shapes bold and legible at 24 pixels. SNOW. One low pale ivory cloud across the UPPER HALF with three broad flat-topped pixel stair-step puffs, blue-grey shadow stripe along its flat base. Beneath it exactly TWO separate large white PLUS-SHAPED snowflakes, each 7x7 logical pixels overall including a one-pixel dark outline, offset a little in height. Each white interior is a bold equal-arm PLUS: visibly projecting horizontal arms and vertical arms, square concave corners, no rounded diamond shape. The two plus flakes have at least two clear pixels between them; full clear row below cloud. Complete composition about 21x22 logical pixels. No ice pellets, no teardrops, no rain lines, no extra tiny dots.",
+    "source": "r16-E-source-snow-b.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-9d29bc04-4bfc-4349-bd0c-2a76fc3bfca1.png"
+  },
+  {
+    "id": "snow-c",
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art weather UI icon for a 24x24 native-pixel game badge. Render the tiny pixel drawing enlarged into a large square image on perfectly solid magenta #FF00FF. Strict square pixel grid, every conceptual pixel a uniform large square, flat colour clusters, no subpixel detail or antialiasing. Center icon with clear margin. One logical-pixel dark navy #202936 outline, thin rather than heavy. Top-left light. Palette: navy #202936, slate #596f86, blue-grey #92aab8, pale cloud #cedbde, ivory #f5f3df; sun gold #e8b753, warm highlight #fff0b0, lower-right gold #bb743b. No gradients, texture, specks, haze, fog, noise, text, labels, decorative border, smooth curves or rounded pixel corners. Pixel stepped contours. Keep shapes bold and legible at 24 pixels. SNOW alternative. A pale flat-bottomed cloud with three broad stair-stepped puffs in the top 10 logical pixel rows, followed by two bold white cross snow crystals below in staggered positions. Each crystal has distinctly four rectangular projecting arms, 7x7 logical pixels including its thin dark outline; keep white cross interior bright and obvious. Left flake two pixels higher than right. Cloud has ivory upper-left and pale blue-grey underside. Overall drawing spans 21x22 logical pixels. Keep clouds and flakes separated by empty magenta. No rounded diamonds, no circular hailstones, no tiny isolated particles, no wind streaks.",
+    "source": "r16-E-source-snow-c.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-e979588c-fd63-4488-b4ff-65e093b3a55b.png"
+  },
+  {
+    "id": "snow-d",
+    "source": "r16-E-source-snow-d.png",
+    "prompt": "Use case: stylized-concept. Draw exactly ONE SNOW WEATHER ICON as precise tiny pixel art on solid pure magenta #FF00FF. Large square source picture, but all marks look like enormous crisp square pixels on a strict 24x24 logical grid. Upper half: small ivory snowcloud with three low broad flat-top stepped puffs and a pale grey lower edge, about 20 pixels wide and 8 high. Lower half: exactly TWO pure-white PLUS SIGN snowflakes, each a rigid square-cross silhouette of 9x9 logical pixels. Each cross has a square 3x3 central block and four equal-length rectangular arms 3 pixels wide and 3 pixels long, with deep EMPTY 3x3 MAGENTA NOTCHES between the arms. The four concave corners of each cross MUST be perfectly square 90-degree corners, no diagonal corner cuts, no rounded arms, no shield or diamond shapes. A thin ONE-pixel charcoal #202936 outline follows those exact concave square notches; bright ivory #f5f3df inside. The cloud above uses #f5f3df upper-left, #cedbde body and #92aab8 underside. Keep every colour flat without gradients or texture. NO black fill thicker than one pixel. Separate the two snowflakes by two clear pixels; put one a pixel lower than the other. At 24x24 the two white cross arms must be unmistakable. NO text, symbols besides this cloud and two crosses, grid lines, glow, blur, antialiasing, noise, rounded corners or tiny scattered pixels. It is clean classic pixel game UI art, not a vector illustration.",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e66c-c57e-7393-917c-1b3b1c8e8247/exec-df99a3d3-b048-4357-b529-521eb99d5b0c.png"
+  },
+  {
+    "id": "cloudy-e",
+    "source": "r16-E-source-cloudy-e.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e67a-1062-7c41-909a-3c3ec4a35c63/exec-e67ec78b-3e33-4bbb-87b7-2ac4cce87ea4.png",
+    "prompt": "Use case: precise-object-edit. Asset: one tiny pixel-art weather badge for Marinara Engine, CLOUDY, intended native size exactly 24 by 24 pixels. The supplied first image is the current icon to improve; retain its recognizable gold sun and square rays in upper left, but REDRAW the foreground cloud. The second image shows a passing cloud icon's pixel style, only for style reference. Deliver ONE large square image on perfectly solid flat magenta (#FF00FF), with the sprite occupying about 85% of frame.\nDraw as if a true 24x24 sprite has been magnified with nearest-neighbor: approximately 22 logical pixels wide, strict equal square pixel units, one logical pixel deep navy (#202936) outline, no antialias, no gradient, no texture. Sun gold #E8B753, pale yellow highlight #FFF0B0, ochre lower right. Cloud in front, pale cool #CEDBDE with small muted #92AAB8 underside at lower-right. Essential cloud silhouette: THREE compact broad stepped lobes, each with a horizontal flat cap and short vertical side, visible shallow notch between lobes; low wide cloud, shallow level underside. NOT a triangular mountain, NOT a single sloping hill. Cloud occupies lower-right half, leaving the sun disk and at least three rays visible above and left. Keep the sun/cloud overlap a continuous single-pixel navy contour without orphan interior dark pixels. No precipitation, no symbols, no letters, no extra dots or sparkle. Top-left light, crisp clean economical hand-level pixel design. This is variant E.",
+    "tool": "built-in image_gen",
+    "round": "critic-r16E-1 redraw",
+    "native_bounds": [
+      1,
+      2,
+      23,
+      22
+    ]
+  },
+  {
+    "id": "cloudy-f",
+    "source": "r16-E-source-cloudy-f.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e67a-1062-7c41-909a-3c3ec4a35c63/exec-3bd2a244-5c5a-4c33-807e-ba7b5bbe4b09.png",
+    "prompt": "Use case: precise-object-edit. Draw a replacement for the attached CLOUDY weather pixel badge. One icon only on perfectly flat solid magenta #FF00FF. Large square image, strict coarse uniform square pixel grid representing a final 24x24 sprite, with one native pixel dark navy #202936 outline. Retain recognizable GOLD SUN WITH ATTACHED RAYS in upper left. Sun not a big circle with disconnected squares: make a compact 7-pixel diameter sun with three connected short gold rays sticking out at top, left and upper-left, similar to the reference. Foreground cloud covers the bottom-right of sun. Redraw cloud with THREE broad shallow stepped puffs: a small left lobe, slightly taller broad middle lobe, smaller right lobe, short low straight underside. Cloud width 17 logical pixels, height 8 logical pixels, sun peeking high above cloud. Each lobe has a FLAT 3-to-5-pixel top, then vertical one-pixel steps, and visible shallow notch between neighbouring puffs. No long sloping shoulders, no triangles or mountains. Cloud cool pale #CEDBDE, modest cool #92AAB8 shade along bottom-right, clear continuous one-pixel navy cloud/sun overlap boundary. Sun #E8B753 with #FFF0B0 upper-left light. No dark dots inside fills. NO precipitation, no extra isolated particles, no text, no smooth curves, no gradients or texture. Fill most of canvas while leaving a magenta margin. Variant F, prioritize immediately recognizable puffy cloud and connected sun rays at 24x24.",
+    "tool": "built-in image_gen",
+    "round": "critic-r16E-1 redraw",
+    "native_bounds": [
+      1,
+      2,
+      23,
+      22
+    ]
+  },
+  {
+    "id": "overcast-e",
+    "source": "r16-E-source-overcast-e.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e67a-1062-7c41-909a-3c3ec4a35c63/exec-4a791d37-01ce-4d71-b867-0157f5552862.png",
+    "prompt": "Use case: stylized-concept. Asset: a single OVERCAST weather UI icon in coarse square-grid pixel art, destined for only 24 by 24 native pixels. Draw a large image on completely solid flat magenta #FF00FF. One wide low bank of TWO overlapping GREY CLOUDS with THREE broad shallow stepped humps per cloud, unmistakably puffy cloud lobes, NO SUN or rain. The rear cloud is slightly raised and offset to right, lighter muted grey-blue #92AAB8; front bank is lower and offset to left, medium slate #596F86 with a small #92AAB8 upper-left highlight band. One-native-pixel dark navy #202936 outer outline and ONE uninterrupted overlap contour separating the banks. Shapes must be low and horizontal, roughly 22 logical pixels wide by 12 logical pixels high as a group. Each puff has a broad FLAT 3-to-5-pixel cap, then short vertical steps and a one-pixel-deep valley before next cap. NO pointed summits, NO long diagonal sides, NO mountain shapes, NO diagonal split through the fill. Shade only the shallow underside/lower-right. Keep at most 4 flat colours, same chunky native pixel scale as reference badge. Every pixel a crisp square, no gradients or smooth curves. No tiny internal lines or isolated dark flecks. Large simple forms readable at 1x on dark panel. No text or background marks. Variant E. Reference is the earlier failed overcast icon: change its mountain-like shape completely into unmistakably overlapping clouds; retain cool gray family and square pixels.",
+    "tool": "built-in image_gen",
+    "round": "critic-r16E-1 redraw",
+    "native_bounds": [
+      1,
+      5,
+      23,
+      19
+    ]
+  },
+  {
+    "id": "overcast-f",
+    "source": "r16-E-source-overcast-f.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e67a-1062-7c41-909a-3c3ec4a35c63/exec-85ac1384-7a35-4266-96a0-e6755e282c4e.png",
+    "prompt": "Use case: stylized-concept. Draw ONE very small game UI weather icon for OVERCAST, as chunky hand-level PIXEL ART on an absolutely solid #FF00FF magenta background. Square large output. Imagine a 24x24-pixel canvas upscaled huge, using a strictly uniform logical square pixel grid. Main shape within 22 logical pixels wide and 14 high: TWO broad low overlapping grey cloud banks. Rear bank visible at top-right with two or three wide flat-topped stepped puffs. Front bank offset lower-left has three low squarish cloud lobes, EACH flat top at least 3 logical pixels across, NOT pointy. Cloud lobe top levels differ by only one or two logical pixels, with shallow notches between them, broad low sides and flat shallow bottom. At 1x unmistakably cloudy sky, never triangular mountain silhouettes. A single dark navy one-native-pixel contour travels continuously across top of foreground cloud to separate it from rear cloud. Do not use diagonal light/dark split or dark flecks inside fills. Palette ONLY navy outline #202936, slate grey #596F86 front cloud, muted blue grey #92AAB8 rear cloud, a few pale #CEDBDE pixels on upper-left of each cloud. Shadow beneath and to lower-right only, no diagonal band. No sun, precipitation, rays, sparkles, extra shapes, text, haze, blur, smooth curves, noise or gradients. Keep the two clouds compact together and at most four flat colours. Leave a magenta margin. Variant F.",
+    "tool": "built-in image_gen",
+    "round": "critic-r16E-1 redraw",
+    "native_bounds": [
+      1,
+      5,
+      23,
+      19
+    ],
+    "native_cleanup": [
+      {
+        "xy": [
+          5,
+          11
+        ],
+        "rgba": [
+          32,
+          41,
+          54,
+          255
+        ],
+        "reason": "Close the drawn foreground overlap contour."
+      },
+      {
+        "xy": [
+          16,
+          12
+        ],
+        "rgba": [
+          32,
+          41,
+          54,
+          255
+        ],
+        "reason": "Close the drawn right-lobe overlap contour."
+      },
+      {
+        "xy": [
+          7,
+          12
+        ],
+        "rgba": [
+          89,
+          111,
+          134,
+          255
+        ],
+        "reason": "Trim an inward contour spur beneath the continuous cloud boundary."
+      },
+      {
+        "xy": [
+          13,
+          13
+        ],
+        "rgba": [
+          89,
+          111,
+          134,
+          255
+        ],
+        "reason": "Trim an inward contour spur beneath the continuous cloud boundary."
+      }
+    ]
+  },
+  {
+    "id": "cloudy-g",
+    "source": "r16-E-source-cloudy-g.png",
+    "original_path": "/home/kolache/.codex/generated_images/01a1e67a-1062-7c41-909a-3c3ec4a35c63/exec-34f55b94-ea9f-4e59-bd91-1c3b938f51ef.png",
+    "prompt": "Draw ONE retro pixel-art CLOUDY weather badge on completely flat magenta #FF00FF. This will become a tiny 24x24 icon: use only about TWENTY-TWO equal square pixel columns for the entire drawing, as if drawing at 24x24 and zooming up. NOT detailed pixel art. No antialias, gradients, noise or texture. Make the icon on a large square image with magenta margin.\nCOMPOSITION: a SMALL gold sun upper-left BEHIND a MUCH BROADER pale blue-white cloud. Sun disk about 7 logical pixels wide, three attached short square rays at top, upper-left and left; dark navy outline. Cloud in foreground across bottom two-thirds. Cloud is 19 logical pixels wide and 10 high. Its top MUST have THREE DISTINCT LOBES with visibly DEEP valleys: left lobe a flat 4-pixel cap at mid-height; a clear 2-pixel-wide 2-pixel-deep notch; centre lobe a flat 5-pixel cap slightly taller; another clear 2-pixel-wide 2-pixel-deep notch; right lobe a flat 4-pixel cap back at mid-height. This produces unmistakable puffs rather than a sloping hill. Do not fill the valleys with cloud colour. The cloud has short vertical outer sides, shallow horizontal underside, not a mountain or triangle. Navy one-logical-pixel outline around outside AND a continuous navy line at sun/cloud overlap. Cloud pale #CEDBDE, a restrained #92AAB8 shade only on bottom edge and lower-right, no diagonal mountain shadow. Gold sun #E8B753, upper-left highlight #FFF0B0, outline #202936. No detached rays or stray flecks. No rain, snow, text or secondary symbols. Equal square pixels, same dark one-pixel outline throughout. Variant G, with clear cloud humps and deep notches surviving downsampling.",
+    "tool": "built-in image_gen",
+    "round": "critic-r16E-1 redraw",
+    "native_bounds": [
+      3,
+      10,
+      23,
+      21
+    ],
+    "extract_cloud": true,
+    "retain_sun": "r16-E-critic1-before-icon-cloudy.png",
+    "native_cleanup": [
+      {
+        "xy": [
+          6,
+          12
+        ],
+        "rgba": [
+          32,
+          41,
+          54,
+          255
+        ],
+        "reason": "Reconnect the painted left cloud cap at the retained sun overlap."
+      },
+      {
+        "xy": [
+          7,
+          12
+        ],
+        "rgba": [
+          32,
+          41,
+          54,
+          255
+        ],
+        "reason": "Reconnect the painted left cloud cap at the retained sun overlap."
+      }
+    ]
   }
 ]

@@ -1,0 +1,43 @@
+{
+  "type": "saved-art self-review",
+  "response_to": "critic-r16E-1.json",
+  "verdict": "PASS",
+  "failed_review_files": [],
+  "redrawn": [
+    "icon-cloudy.png",
+    "icon-overcast.png"
+  ],
+  "repaired": [
+    "icon-sandstorm.png"
+  ],
+  "retained_byte_identical": 11,
+  "selected_redraws": [
+    "cloudy-g",
+    "overcast-f"
+  ],
+  "new_image_tool_variants": {
+    "cloudy": 3,
+    "overcast": 2
+  },
+  "fixes": {
+    "icon-cloudy": "Original gold sun and rays retained behind a new three-lobe cloud, with shallow shaded underside and a continuous one-pixel overlap contour. The former isolated dark fleck is gone.",
+    "icon-overcast": "Two newly drawn broad low cloud banks replace the triangular profiles. Flat stepped lobe caps, upper-left highlights and a continuous overlap contour; no isolated interior dark fleck.",
+    "icon-sandstorm": "Only pixel (11,14) changed from navy to ochre (201,155,83,255). Silhouette and all other pixels are identical."
+  },
+  "reviewed": [
+    "All 14 icons in literal rows on dark and light panels at 1x, 2x and 4x",
+    "Seven map references with actual 75% dark/light panels at 1x",
+    "Three before/after comparisons at 1x and 4x",
+    "Selected cloud contours and failed-icon details at 10x/12x"
+  ],
+  "distinctions": {
+    "rain/heavy_rain": "Two short drops and pale cloud versus four long streaks and dark cloud.",
+    "snow/blizzard/hail": "Two white cross flakes versus sideways crystal/gust versus square pellets.",
+    "cloudy/overcast": "Gold sun behind pale lobes versus two low grey banks without sun or precipitation.",
+    "fog/wind": "Low horizontal banks versus open curling gusts.",
+    "clear-day/heat_wave": "Radiant gold sun versus upright warm waves and base."
+  },
+  "pixel_audit": "1217/1217 pass",
+  "protected_files": 8709,
+  "limitations": "Saved-art self-review, not a new independent critic verdict or an in-engine test. No seasonal partners in Part E."
+}

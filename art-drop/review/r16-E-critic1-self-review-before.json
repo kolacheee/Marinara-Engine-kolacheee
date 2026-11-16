@@ -1,0 +1,36 @@
+{
+  "type": "saved-art self-review",
+  "verdict": "PASS",
+  "failed_review_files": [],
+  "redrawn": [
+    "icon-cloudy.png",
+    "icon-overcast.png",
+    "icon-snow.png"
+  ],
+  "retained_byte_identical": 11,
+  "selected_redraws": [
+    "cloudy-c",
+    "overcast-d",
+    "snow-d"
+  ],
+  "new_image_tool_variants": {
+    "cloudy": 2,
+    "overcast": 2,
+    "snow": 3
+  },
+  "reviewed": [
+    "All 14 icons on dark and light panels at literal 1x, nearest-neighbour 2x and 4x",
+    "All 14 individual 1x/4x proofs via overview",
+    "All seven reference map contexts with 75% dark and light panels at 1x",
+    "Three-icon previous/final comparison at 1x and 4x"
+  ],
+  "distinctions": {
+    "rain/heavy_rain": "Two short sparse ticks and pale cloud versus four long strokes and dark cloud",
+    "snow/blizzard/hail": "Two cross flakes versus sideways crystal and gust versus square pellets",
+    "cloudy/overcast": "Visible gold rays and one cloud versus two offset grey clouds",
+    "fog/wind": "Still horizontal banks versus open curls",
+    "clear-day/heat_wave": "Eight-ray sun versus three vertical warm ripples and base bar"
+  },
+  "pixel_audit": "1141/1141 pass",
+  "limitations": "Saved-art self-review; no independent critic or in-engine test. No ground bases or seasonal partners in Part E."
+}
