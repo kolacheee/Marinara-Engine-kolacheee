@@ -1,0 +1,86 @@
+{
+  "part": "B",
+  "round": 4,
+  "verdict": "fail",
+  "failed": [
+    "fog-f0",
+    "fog-f1",
+    "fog-f2",
+    "fog-f3"
+  ],
+  "files": {
+    "fog-f0": {
+      "status": "fail",
+      "problems": [
+        "The native 3x3 still reads as repeated rows of recognizable banks at actual map opacity. In f0, the central pointed/stepped highlight around tile x77-115, y64-75, within the larger x76-147, y53-95 cluster, is an obvious recurring landmark every 192 pixels. Its neighbouring low bank and clear pocket repeat with it. This is visible over fantasy grass and the open water in wasteland/town, without boosting opacity. The upper-left/lower-right repairs quieted the previous landmarks but did not resolve the field-wide composition repeat. See critic-r16B-4-repeat-fog-fantasy-grass-0-1.png, critic-r16B-4-repeat-fog-wasteland-0-1.png, critic-r16B-4-fog-repeat-evidence.png and critic-r16B-4-crest-context-8x.png.",
+        "Two completely transparent, full-width corridors remain at y97-107 and y162-170 inclusive, x0-191. These same corridors exist in every phase. In the literal repeat they reinforce horizontal tiers of fog and clear map. Gaps are required, but these uninterrupted lanes and repeated bright accents make the layout legible as a texture pattern. No hard tile-boundary discontinuity is alleged."
+      ],
+      "fix": "Recompose the whole drawn bank field and its gaps. Use 2-3 image-tool alternatives with less identifiable pointed highlights and more irregularly overlapping shallow layers; redistribute the drawn banks vertically so clear gaps do not run uninterrupted across the entire tile at the same two heights. Select from unannotated native 3x3 views over grass and open water. Keep the established magenta-key, registration, exact mode reduction, palette lock and native contour-cleanup method, 35-55% occupied cover and readable roads/towns. Carry the selected composition coherently through all four slow phases, including f3-to-f0. Preserve or rebuild all four matching edge continuations and check the assembled area again."
+    },
+    "fog-f1": {
+      "status": "fail",
+      "problems": [
+        "The native 3x3 still reads as repeated rows of recognizable banks at actual map opacity. In f1, the central pointed/stepped highlight around tile x77-115, y64-75, within the larger x76-147, y53-95 cluster, is an obvious recurring landmark every 192 pixels. Its neighbouring low bank and clear pocket repeat with it. This is visible over fantasy grass and the open water in wasteland/town, without boosting opacity. The upper-left/lower-right repairs quieted the previous landmarks but did not resolve the field-wide composition repeat. See critic-r16B-4-repeat-fog-fantasy-grass-0-1.png, critic-r16B-4-repeat-fog-wasteland-0-1.png, critic-r16B-4-fog-repeat-evidence.png and critic-r16B-4-crest-context-8x.png.",
+        "Two completely transparent, full-width corridors remain at y97-107 and y162-170 inclusive, x0-191. These same corridors exist in every phase. In the literal repeat they reinforce horizontal tiers of fog and clear map. Gaps are required, but these uninterrupted lanes and repeated bright accents make the layout legible as a texture pattern. No hard tile-boundary discontinuity is alleged."
+      ],
+      "fix": "Carry the fog-f0 composition repair coherently into f1; remove the recurring central highlight/clear-pocket landmark and interrupt the full-width clear lanes using image-drawn banks. Preserve fixed alpha levels, cover and the small adjacent-frame changes. Recheck the native 3x3 over every reference and all edge joins."
+    },
+    "fog-f2": {
+      "status": "fail",
+      "problems": [
+        "The native 3x3 still reads as repeated rows of recognizable banks at actual map opacity. In f2, the central pointed/stepped highlight around tile x77-115, y64-75, within the larger x76-147, y53-95 cluster, is an obvious recurring landmark every 192 pixels. Its neighbouring low bank and clear pocket repeat with it. This is visible over fantasy grass and the open water in wasteland/town, without boosting opacity. The upper-left/lower-right repairs quieted the previous landmarks but did not resolve the field-wide composition repeat. See critic-r16B-4-repeat-fog-fantasy-grass-2-3.png, critic-r16B-4-repeat-fog-wasteland-2-3.png, critic-r16B-4-fog-repeat-evidence.png and critic-r16B-4-crest-context-8x.png.",
+        "Two completely transparent, full-width corridors remain at y97-107 and y162-170 inclusive, x0-191. These same corridors exist in every phase. In the literal repeat they reinforce horizontal tiers of fog and clear map. Gaps are required, but these uninterrupted lanes and repeated bright accents make the layout legible as a texture pattern. No hard tile-boundary discontinuity is alleged."
+      ],
+      "fix": "Carry the fog-f0 composition repair coherently into f2; remove the recurring central highlight/clear-pocket landmark and interrupt the full-width clear lanes using image-drawn banks. Preserve fixed alpha levels, cover and the small adjacent-frame changes. Recheck the native 3x3 over every reference and all edge joins."
+    },
+    "fog-f3": {
+      "status": "fail",
+      "problems": [
+        "The native 3x3 still reads as repeated rows of recognizable banks at actual map opacity. In f3, the central pointed/stepped highlight around tile x77-115, y64-75, within the larger x76-147, y53-95 cluster, is an obvious recurring landmark every 192 pixels. Its neighbouring low bank and clear pocket repeat with it. This is visible over fantasy grass and the open water in wasteland/town, without boosting opacity. The upper-left/lower-right repairs quieted the previous landmarks but did not resolve the field-wide composition repeat. See critic-r16B-4-repeat-fog-fantasy-grass-2-3.png, critic-r16B-4-repeat-fog-wasteland-2-3.png, critic-r16B-4-fog-repeat-evidence.png and critic-r16B-4-crest-context-8x.png.",
+        "Two completely transparent, full-width corridors remain at y97-107 and y162-170 inclusive, x0-191. These same corridors exist in every phase. In the literal repeat they reinforce horizontal tiers of fog and clear map. Gaps are required, but these uninterrupted lanes and repeated bright accents make the layout legible as a texture pattern. No hard tile-boundary discontinuity is alleged."
+      ],
+      "fix": "Carry the fog-f0 composition repair coherently into f3; remove the recurring central highlight/clear-pocket landmark and interrupt the full-width clear lanes using image-drawn banks. Preserve fixed alpha levels, cover and the small adjacent-frame changes, especially the closing f3-to-f0 step. Recheck the native 3x3 over every reference and all edge joins."
+    },
+    "heat_wave-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-n": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-s": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-e": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-w": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 16 Part B critic; no output artwork edited. Read BRIEF-16 in full and the drawing-method sections of NOTES.md. Inspected all twelve named PNGs at exact 1x and nearest-neighbour 4x; every animation phase in literal native 3x3 repeats over all seven supplied references; nearest 3x/4x wrap-junction excerpts; and 8x bank close-ups. Independently rebuilt and verified all 168 stored 1x/3x/4x repeat proofs. The reference crop repeats at 288 pixels; the reported weather landmarks recur at the separate 192-pixel overlay period. Reconstructed the 2x2 fog core, four edges and lower-alpha intersections of the delivered end crops at corners; all seven area composites match the supplied native proofs. Inspected native areas and 4x perimeter-junction crops. Part B contains no ground, prop or seasonal partner deliverables, so seasonal alpha-mask comparison is not applicable. All sizes pass: eight 192x192 frames, north/south 192x48, east/west 48x192. All PNGs are RGBA with zero RGB under transparency. Fog uses alpha 0/24/48/80; heat uses 0/24/40/56. These deliberate fixed weather-opacity levels are permitted by Part B; they are not an antialiased fringe. No airbrush blur, full-map grey sheet, square perimeter cutoff, lost road/town readability, wrong lighting, heavy outline or incompatible pixel scale was found. Independently replayed 110,592 native blocks across the three latest registered source alternatives: every stored mode pixel equals the exact RGBA mode of all 64 samples, and working alpha is 0/255. Occupied cover counts alpha>0. Fog f0/f1/f2/f3: 45.3505/45.2582/45.2501/45.3342%; alpha-weighted cover: 5.6003/5.5833/5.5784/5.5984%. Heat: 1.6059% occupied and 0.2682% alpha-weighted in every frame. Edges N/S/E/W: 24.2296/39.8112/37.2396/34.2882% occupied; 3.4783/4.1565/4.8550/4.0091% alpha-weighted. Cover limits pass. Heat reads as sparse, thin, warm horizontal shimmer and passes all four phases. All four edges pass for the current core: their outermost row/column is clear and the inner three rows/columns match the continued fog pattern exactly in all four phases. The north three-pixel dash at x147-149,y2 and east detached 1x22 column at x39,y127-148 from round 3 have been removed. Remaining small northern fragments read as horizontal feather wisps, not stray pixel dots. No isolated one- or two-pixel alpha components were found. The assembled area ends softly. Edge passes must be revalidated if a future core repair changes its boundary pattern. Existing r16-B-fog.gif, r16-B-heat_wave.gif and r16-B-fog-area.gif each contain four frames, 360 ms/frame and infinite looping. Independently matched all 56 family/reference GIF panels and all four area GIF frames to current PNG composites in the GIF palette; inspected decoded filmstrips. Mean absolute alpha changes for 0->1, 1->2, 2->3, 3->0 are fog 0.275608/0.282118/0.275174/0.279948 and heat 0.785156/0.836806/0.785156/0.836806, out of 255. The closing step is comparable to the other small steps; no temporal jump was found in decoded states. LIVE PLAYBACK LIMITATION: browser inventory returned \"The browser access host is unavailable\". Real-time perceived motion and in-engine playback were not observed. This limitation does not account for the verdict: the static repeated fog composition independently fails the brief. Only critic-r16B-4.json and critic-r16B-4-*.png review composites were written. All twelve output hashes were rechecked unchanged. No commit, push, branch change or write outside art-drop/review. Coordinates in findings are zero-based and inclusive."
+}

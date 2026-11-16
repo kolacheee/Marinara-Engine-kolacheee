@@ -1,0 +1,82 @@
+{
+  "part": "B",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "fog-f0",
+    "fog-f1",
+    "fog-f2",
+    "fog-f3"
+  ],
+  "files": {
+    "fog-f0": {
+      "status": "fail",
+      "problems": [
+        "Visible repeating arrangement at native 1x in a literal 3x3 repeat, especially over fantasy grass, desert sand, and the water in the town/city/wasteland references. The bright hooked crest around native x24-76, y18-43 and the dense comb of trailing ridges around x28-165, y125-171 recur as conspicuous landmarks every 192 px. Together with the large clear gaps they form alternating diagonal lanes of white ridges and clear map. This reads as a repeated texture rather than an irregular fog bank. The effect is already visible without enlargement; it is not a hard boundary seam or a reference-map seam. See critic-r16B-1-fog-repeat-evidence.png and critic-r16B-1-repeat-fog-fantasy-grass-0-1.png."
+      ],
+      "fix": "Redraw the prominent hooked crests and lower-centre comb with the image tool, using less directional, more varied bank footprints and less repetitive highlight shapes. Make 2-3 drawing alternatives and judge them in the full 3x3 field. Recompose the drawn banks so dense areas and clear gaps do not align into recurring diagonal lanes; simply moving the same obvious crests by one pixel will not fix this. Keep the existing native pixel scale, discrete alpha levels, readable map gaps, and 35-55% occupied cover. Register and mode-reduce the drawings, then carry the repair through all four phases. Preserve or rebuild matching edge continuations wherever the boundary pattern changes."
+    },
+    "fog-f1": {
+      "status": "fail",
+      "problems": [
+        "The same native-scale repeating texture persists in this phase: the bright hook around x24-76, y18-43 and dense lower-centre ridges around x28-165, y125-171 remain readily identifiable every 192 px. Repeated pale diagonal lanes and matching clear gaps are obvious over grass and sand, and the hooked marks resemble rows of whitecaps over water. The small phase change does not break this arrangement. See critic-r16B-1-repeat-fog-fantasy-grass-0-1.png and critic-r16B-1-repeat-fog-desert-sand-0-1.png."
+      ],
+      "fix": "Use the revised image-drawn banks and placement from the fog-f0 repair, propagated coherently into this phase. Break up the recurring hooked highlights and dense lower-centre comb instead of translating the existing motif. Keep occupied cover within 35-55%, retain discrete pixel clusters and map readability, and recheck the 3x3 repeat and both neighbouring animation steps. Rebuild edge continuations if the boundary pattern changes."
+    },
+    "fog-f2": {
+      "status": "fail",
+      "problems": [
+        "The conspicuous 192 px repeating fog arrangement remains at 1x. The bright upper-left hook around x24-76, y18-43 and comb of lower-centre banks around x28-165, y125-171 repeat into diagonal rows, separated by similarly repeating clear lanes. This is especially apparent on grass, sand, and open water. The one-pixel movement changes contour details but leaves the same dominant texture. See critic-r16B-1-repeat-fog-fantasy-grass-2-3.png and critic-r16B-1-repeat-fog-desert-sand-2-3.png."
+      ],
+      "fix": "Propagate the fog-f0 image-tool redraw and revised composition into this phase. Vary the actual bank and highlight shapes and the distribution of clear gaps enough that the 3x3 field does not resolve into diagonal rows. Retain the existing pixel scale, fixed alpha palette, 35-55% occupied cover, and slow coherent frame changes. Recheck matching edges if boundary pixels change."
+    },
+    "fog-f3": {
+      "status": "fail",
+      "problems": [
+        "The final phase retains the same easily spotted repeating hooks, trailing combs, and diagonal clear lanes. Native regions x24-76, y18-43 and x28-165, y125-171 provide obvious landmarks at every 192 px repeat on grass/sand and the water portions of the map references. The repeat remains visible at actual opacity and native size. See critic-r16B-1-repeat-fog-fantasy-grass-2-3.png and critic-r16B-1-repeat-fog-wasteland-2-3.png."
+      ],
+      "fix": "Use the same repaired image-drawn bank family and irregular composition as the other three phases, with less repetitive bright hooks and lower-centre ridges. Maintain 35-55% occupied cover, map readability, and discrete native pixels. Recheck f2-to-f3 and f3-to-f0 after the redraw so the spatial repair preserves slow temporal continuity. Rebuild edge continuations if the repaired core boundary changes."
+    },
+    "heat_wave-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-n": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-s": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-e": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-w": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic inspection; no output art was edited. Read BRIEF-16 in full and the drawing/mode-reduction method sections of NOTES.md. Examined all 12 current files in exact native 1x and nearest-neighbour 4x reference composites; independently verified those sheets against the final PNGs. Examined all eight frame tiles in literal 3x3 repeats over all seven 288x288 references: fantasy grass, forest, town, modern city, wasteland, desert sand, and snow. Inspected 3x wrap-junction closeups for every frame/reference and an 8x fog-crest closeup. Independently verified all 112 existing 3x/4x repeat enlargements. Also examined the delivered 2x2 fog-area composites with cardinal edges over all seven references. No new ground, prop, or seasonal partner belongs to Part B, so seasonal silhouette comparisons are not applicable. All dimensions pass: frames 192x192, north/south 192x48, east/west 48x192. Every file is RGBA, has zero RGB under transparent pixels, and has no detached one- or two-pixel 8-connected components when tiled. Fog/edges use only alpha 0,24,48,80,112; heat uses only 0,24,40,56. These are the explicitly requested weather opacity steps, not an antialiased alpha ramp. Occupied cover counts all alpha>0 pixels. Fog f0/f1/f2/f3: 45.8659%, 45.7167%, 45.6163%, 45.7872% (16908/16853/16816/16879 of 36864 pixels); alpha-weighted cover 9.7173%, 9.7025%, 9.6981%, 9.7234%. Heat f0/f1/f2/f3: each 1.6059% occupied (592 of 36864), 0.2682% alpha-weighted. Edge n/s/e/w: 32.9210%, 30.8377%, 24.6202%, 21.3216% occupied (3034/2842/2269/1965 of 9216), with weighted cover 5.6110%, 5.3196%, 4.0540%, 3.7881%. Cover limits and map readability pass. Heat is faint, thin warm horizontal pixel linework with no conspicuous texture lattice at actual 1x opacity. No hard tile seam was identified. All four edge strips have fully clear outermost rows/columns and exact three-pixel inner continuations of the corresponding fog field in all four phases; the assembled area feathers into clear map without a hard square perimeter. Edge passes apply to this delivered core; revalidate them if its boundary is redrawn. The blocking defect is the visually conspicuous repeating fog arrangement, not file mechanics, opacity, or a full-map grey wash. Existing loops r16-B-fog.gif, r16-B-heat_wave.gif, and r16-B-fog-area.gif each contain four distinct frames at 360 ms/frame, looping indefinitely. Independently matched all 56 family/reference GIF panels to their PNG composites using the GIF palettes. Alpha mean absolute changes for fog steps f0->f1, f1->f2, f2->f3, f3->f0 are 1.8819, 1.7250, 1.8314, 1.7409 out of 255; heat is 0.7852, 0.8368, 0.7852, 0.8368. The wrap transition is comparable to the other steps. LIVE PLAYBACK LIMITATION: the browser access host was unavailable, so real-time perceived motion was not observed; temporal findings are based on decoded frames, filmstrip comparisons, timing, and numerical continuity. This is not an in-engine playback sign-off. Review-only composites are saved under critic-r16B-1-*.png. No commit, push, branch change, or file change outside art-drop/review was made."
+}

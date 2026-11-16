@@ -1,0 +1,82 @@
+{
+  "part": "B",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "fog-f0",
+    "fog-f1",
+    "fog-f2",
+    "fog-f3"
+  ],
+  "files": {
+    "fog-f0": {
+      "status": "fail",
+      "problems": [
+        "The redraw removes the previous large comb, but the native 3x3 field still resolves into recurring rows of small bright curls rather than soft layered banks. In this tile, the linked bright crests at approximately x10-103, y140-178 and the compact, toothed bank at x104-160, y16-62 are recognizable every 192 px. The matching clear pockets reinforce the rhythm. This is visible at actual opacity over fantasy grass and the water in the town, city and wasteland crops; on water the marks resemble repeated whitecaps. It is a composition/shape problem, not a hard tile-boundary seam. See critic-r16B-2-fog-repeat-evidence.png, the unannotated repeat sheets, and critic-r16B-2-fog-detail-8x.png."
+      ],
+      "fix": "Draw 2-3 alternatives for the prominent lower chain and upper-right bank with the image tool. Replace the repeated curl/crest vocabulary with quieter, broader overlapping cluster planes and varied bank lengths; reduce the concentration of bright tips in the lower strip. Recompose the drawn material so clear pockets and brighter banks do not recur as visible rows. Judge the unannotated native 3x3 over grass and water before selecting. Keep 35-55% occupied cover, the fixed alpha levels, native pixels and readable map. Register and mode-reduce the chosen drawings, carry the repair coherently through all four phases, and rebuild/recheck matching edges if boundary pixels change."
+    },
+    "fog-f1": {
+      "status": "fail",
+      "problems": [
+        "The same repeated small-curl pattern remains at native size. The lower chain around x10-104, y140-179 and upper-right cluster around x104-161, y16-63 retain their identity and spacing in every 192 px repeat. Bright isolated-looking crests dominate the perceptual reading even though their faint underlying clusters are connected. Over grass and open water this still reads as a repeated mottled surface texture, not a layered fog bank. The one-pixel motion does not disguise these landmarks. See critic-r16B-2-repeat-fog-fantasy-grass-0-1.png and critic-r16B-2-repeat-fog-wasteland-0-1.png."
+      ],
+      "fix": "Carry the fog-f0 image-tool redraw and revised placement coherently into this phase. Change the conspicuous crest shapes and distribution of clear gaps, rather than only shifting the existing marks or reducing overall opacity. Preserve fixed alpha levels, 35-55% occupied cover and slow one-pixel changes. Recheck the native 3x3 on grass and water, both neighbouring transitions, and matching edge continuations."
+    },
+    "fog-f2": {
+      "status": "fail",
+      "problems": [
+        "The 192 px arrangement is still conspicuous: the bright lower chain around x10-104, y140-179 and the toothed upper-right cluster around x104-161, y16-63 recur in rows, with the same intervening clear pockets. The many short curling crests give the field a whitecap/mottled-texture appearance over water and grass. The banks are technically pixel-clustered and translucent, but the native-scale repeated motif remains a brief failure. See critic-r16B-2-repeat-fog-fantasy-grass-2-3.png and critic-r16B-2-repeat-fog-wasteland-2-3.png."
+      ],
+      "fix": "Carry the fog-f0 image-tool redraw and revised placement coherently into this phase. Change the conspicuous crest shapes and distribution of clear gaps, rather than only shifting the existing marks or reducing overall opacity. Preserve fixed alpha levels, 35-55% occupied cover and slow one-pixel changes. Recheck the native 3x3 on grass and water, both neighbouring transitions, and matching edge continuations."
+    },
+    "fog-f3": {
+      "status": "fail",
+      "problems": [
+        "The final phase retains the same repeating bright curls and negative-space arrangement. The lower chain at approximately x10-103, y140-178 and upper-right cluster at x104-160, y16-62 remain easy landmarks in the native 3x3 field, especially on grass and open water. The result still reads as rows of small surface marks rather than irregular layered fog. This is not a f3-to-f0 discontinuity; it persists throughout the loop. See critic-r16B-2-repeat-fog-fantasy-grass-2-3.png and critic-r16B-2-repeat-fog-wasteland-2-3.png."
+      ],
+      "fix": "Carry the fog-f0 image-tool redraw and revised placement coherently into this phase. Change the conspicuous crest shapes and distribution of clear gaps, rather than only shifting the existing marks or reducing overall opacity. Preserve fixed alpha levels, 35-55% occupied cover and slow one-pixel changes. Recheck the native 3x3 on grass and water, both neighbouring transitions, and matching edge continuations."
+    },
+    "heat_wave-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-n": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-s": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-e": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-w": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 16 Part B critic; no output artwork was edited. Read BRIEF-16 in full and the method sections of NOTES.md. Inspected all twelve PNGs at exact 1x and nearest-neighbour 4x, all eight frame tiles in literal 3x3 repeats over all seven reference crops (desert sand, fantasy forest, fantasy grass, fantasy town, modern city, snow, wasteland), enlarged wrap junctions and 3x excerpts, plus 8x fog and edge/corner details. Independently reconstructed the 2x2 fog area with the four supplied edges and lower-alpha corner intersections; all seven results match the delivered area proofs exactly and were visually inspected. Checked all 112 stored 3x/4x repeat enlargements for exact nearest-neighbour scaling. No Part B ground, prop or seasonal partner exists, so seasonal alpha-mask comparison is not applicable. All dimensions pass: frame tiles 192x192, N/S edges 192x48, E/W edges 48x192. All are RGBA with zero RGB under transparency. Fog uses only alpha 0/24/48/80/112, heat only 0/24/40/56; these fixed weather opacity steps are explicitly required, not antialiased blur. No detached one- or two-pixel 8-connected components were found in tiled masks. The pixel grid and restrained lighting are consistent; there is no full-map grey sheet or loss of road/town readability. Occupied cover is the percentage of pixels with alpha>0. Fog f0/f1/f2/f3: 44.9382/44.6723/44.5584/44.8622%; alpha-weighted cover: 5.8484/5.8208/5.8037/5.8374%. Heat f0/f1/f2/f3: 1.6059% occupied and 0.2682% alpha-weighted each. Edges N/S/E/W: 32.6714/30.3928/32.1832/36.5017% occupied; 3.7606/3.8909/3.9638/4.4118% alpha-weighted. Cover limits pass. Heat passes as very faint, predominantly one-pixel warm horizontal shimmer without a distracting texture pattern at actual map scale. No hard tile seam was identified in either family. Every fog edge has a clear outermost row/column and an exact three-pixel inner continuation matching all four fog phases. The assembled edges feather into clear map without a hard square boundary. Edge passes apply to this core: revalidate/rebuild them if a fog repair changes its boundary pattern. The blocking finding is the remaining visible fog motif repetition and surface-texture reading, not opacity, file dimensions or join mechanics. Existing r16-B-fog.gif, r16-B-heat_wave.gif and r16-B-fog-area.gif each contain four frames at 360 ms/frame and loop indefinitely. Independently matched all 56 family/reference GIF panels to current PNG composites using their GIF palettes, and examined decoded filmstrips including the return to f0. Mean absolute alpha changes for fog transitions 0->1, 1->2, 2->3, 3->0 are 1.8828/2.2259/1.8581/2.2611 out of 255; heat: 0.7852/0.8368/0.7852/0.8368. These are small, and the closing step is comparable to the other steps. LIVE PLAYBACK LIMITATION: the browser access host was unavailable, so perceived real-time motion was not observed. Temporal findings are based on decoded PNG/GIF states, timing and numerical continuity, not in-engine playback. Only this JSON and critic-r16B-2-*.png review composites were written. All twelve target PNG hashes remain unchanged. No commit, push, branch change, or change outside art-drop/review."
+}

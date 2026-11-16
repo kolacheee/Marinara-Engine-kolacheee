@@ -1,0 +1,244 @@
+{
+  "files": {
+    "fog-f0.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16566,
+      "cover_percent": 44.9382,
+      "weighted_cover_percent": 5.8484,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80,
+        112
+      ]
+    },
+    "fog-f1.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16468,
+      "cover_percent": 44.6723,
+      "weighted_cover_percent": 5.8208,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80,
+        112
+      ]
+    },
+    "fog-f2.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16426,
+      "cover_percent": 44.5584,
+      "weighted_cover_percent": 5.8037,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80,
+        112
+      ]
+    },
+    "fog-f3.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16538,
+      "cover_percent": 44.8622,
+      "weighted_cover_percent": 5.8374,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80,
+        112
+      ]
+    },
+    "heat_wave-f0.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f1.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f2.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f3.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "fog-edge-n.png": {
+      "size": [
+        192,
+        48
+      ],
+      "covered_pixels": 3011,
+      "cover_percent": 32.6714,
+      "weighted_cover_percent": 3.7606,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-edge-s.png": {
+      "size": [
+        192,
+        48
+      ],
+      "covered_pixels": 2801,
+      "cover_percent": 30.3928,
+      "weighted_cover_percent": 3.8909,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80,
+        112
+      ]
+    },
+    "fog-edge-e.png": {
+      "size": [
+        48,
+        192
+      ],
+      "covered_pixels": 2966,
+      "cover_percent": 32.1832,
+      "weighted_cover_percent": 3.9638,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80,
+        112
+      ]
+    },
+    "fog-edge-w.png": {
+      "size": [
+        48,
+        192
+      ],
+      "covered_pixels": 3364,
+      "cover_percent": 36.5017,
+      "weighted_cover_percent": 4.4118,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    }
+  },
+  "motion": {
+    "fog": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "changed_pixels": 2684,
+        "alpha_mean_absolute_delta": 1.8828125
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "changed_pixels": 3170,
+        "alpha_mean_absolute_delta": 2.2259114583333335
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "changed_pixels": 2643,
+        "alpha_mean_absolute_delta": 1.8580729166666667
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 0,
+        "changed_pixels": 3221,
+        "alpha_mean_absolute_delta": 2.2610677083333335
+      }
+    ],
+    "heat_wave": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "changed_pixels": 717,
+        "alpha_mean_absolute_delta": 0.78515625
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "changed_pixels": 762,
+        "alpha_mean_absolute_delta": 0.8368055555555556
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "changed_pixels": 717,
+        "alpha_mean_absolute_delta": 0.78515625
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 0,
+        "changed_pixels": 762,
+        "alpha_mean_absolute_delta": 0.8368055555555556
+      }
+    ]
+  }
+}

@@ -1,0 +1,1759 @@
+{
+  "passed": true,
+  "checks_passed": 431,
+  "checks_total": 431,
+  "native_mode_blocks": 93652,
+  "mode_samples": 5993728,
+  "removed_donor_pixels": 0,
+  "one_pixel_contour_recolours": 830,
+  "removed_edge_pixels": {
+    "n": 0,
+    "s": 0,
+    "e": 0,
+    "w": 1
+  },
+  "repeat_proofs": 168,
+  "protected_files": 6981,
+  "changed_protected_files": [],
+  "final_sha256": {
+    "fog-f0.png": "30f74c64a15df769001e68ae100f968299b78b588726fc0bb645156d587709b4",
+    "fog-f1.png": "84990f0a105ec56e0fe3a828477aa11f4419b036ccb56144673859b3bf3e2ab8",
+    "fog-f2.png": "bfbcc928cc0edd192895132fd49e1d902958854eb1e38da0a214f1226aa690ef",
+    "fog-f3.png": "dd6f239ce93e9b28900b3b94b9d5537f4298c499d486e2a3f8de707d7034bb99",
+    "heat_wave-f0.png": "fb81988696cc3cea8a656481119d2a20bc4332bc4c90a982dd6c69fb7761a134",
+    "heat_wave-f1.png": "2811eb2d1c9e6bed32ecd9d0a074d117f70f885515bd8135b3cb0c38928ee686",
+    "heat_wave-f2.png": "7eec6a50bfd3bc78729855708b90e75085d0509244f3b3fb72c92710a4797501",
+    "heat_wave-f3.png": "70eaab846d3bd1bcabebfc68b4657e5fe5a0c0e15a9aaabdacfcddab9f201238",
+    "fog-edge-n.png": "64f22806fe4bb73aa893618f65822a9c0e68911d44506407a257592bd2722d4d",
+    "fog-edge-s.png": "04be8d6b13265253a7f3950f438ae5cf3d6de27369fedacc2ea369f9444182f2",
+    "fog-edge-e.png": "d26f28c295208e9244bb8ac3d7487998f654bd0a6a0f87ed1379910a293d2457",
+    "fog-edge-w.png": "e59b1dbf36bcdf067549bfb1b2c6552bb103576562384566e9908c8a9ec3a096"
+  },
+  "checks": [
+    {
+      "check": "redraw2-fog-a-0 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-a-0 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-a-0 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-a-0 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-a-0 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-0 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-0 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-0 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-0 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-0 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-1 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-1 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-1 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-1 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-1 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-2 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-2 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-2 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-2 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-2 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-3 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-3 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-3 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-3 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-3 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-4 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-4 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-4 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-4 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-4 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-5 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-5 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-5 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-5 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-b-5 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-0 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-0 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-0 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-0 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-0 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-1 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-1 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-1 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-1 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-1 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-2 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-2 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-2 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-2 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-2 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-3 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-3 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-3 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-3 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-3 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-4 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-4 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-4 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-4 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-4 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-5 every 64-sample mode",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-5 binary working alpha",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-5 cleanup replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-5 one-pixel contour replay",
+      "pass": true
+    },
+    {
+      "check": "redraw2-fog-c-5 contour preserves silhouette",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png matches image-drawn placements",
+      "pass": true
+    },
+    {
+      "check": "fog-f0.png independent unwrapped 3x3 equals literal repeat",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png matches image-drawn placements",
+      "pass": true
+    },
+    {
+      "check": "fog-f1.png independent unwrapped 3x3 equals literal repeat",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png matches image-drawn placements",
+      "pass": true
+    },
+    {
+      "check": "fog-f2.png independent unwrapped 3x3 equals literal repeat",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png matches image-drawn placements",
+      "pass": true
+    },
+    {
+      "check": "fog-f3.png independent unwrapped 3x3 equals literal repeat",
+      "pass": true
+    },
+    {
+      "check": "fog four distinct frames",
+      "pass": true
+    },
+    {
+      "check": "fog all transitions small including f3-f0",
+      "pass": true
+    },
+    {
+      "check": "fog wrap transition comparable to interior steps",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f0.png passing asset byte-identical",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f1.png passing asset byte-identical",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f2.png passing asset byte-identical",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png RGBA 192 square",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png cover and measurements",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png requested cover",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png fixed alpha levels",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "heat_wave-f3.png passing asset byte-identical",
+      "pass": true
+    },
+    {
+      "check": "heat_wave four distinct frames",
+      "pass": true
+    },
+    {
+      "check": "heat_wave all transitions small including f3-f0",
+      "pass": true
+    },
+    {
+      "check": "heat_wave wrap transition comparable to interior steps",
+      "pass": true
+    },
+    {
+      "check": "fog fifth state equals first",
+      "pass": true
+    },
+    {
+      "check": "10 distinct broad source drawings used once each",
+      "pass": true
+    },
+    {
+      "check": "donor 10 phase 0 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 10 phase 1 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 10 phase 2 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 10 phase 3 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 6 phase 0 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 6 phase 1 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 6 phase 2 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 6 phase 3 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 3 phase 0 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 3 phase 1 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 3 phase 2 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "donor 3 phase 3 one-pixel advance",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png drawn-cap continuation replay",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png correct size",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png outermost edge clear",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png exact 3-pixel join f0",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png exact 3-pixel join f1",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png exact 3-pixel join f2",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png exact 3-pixel join f3",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-n.png measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png drawn-cap continuation replay",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png correct size",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png outermost edge clear",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png exact 3-pixel join f0",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png exact 3-pixel join f1",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png exact 3-pixel join f2",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png exact 3-pixel join f3",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-s.png measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png drawn-cap continuation replay",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png correct size",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png outermost edge clear",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png exact 3-pixel join f0",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png exact 3-pixel join f1",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png exact 3-pixel join f2",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png exact 3-pixel join f3",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-e.png measurements",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png drawn-cap continuation replay",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png correct size",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png outermost edge clear",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png no detached one/two pixel specks",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png zero hidden RGB",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png exact 3-pixel join f0",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png exact 3-pixel join f1",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png exact 3-pixel join f2",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png exact 3-pixel join f3",
+      "pass": true
+    },
+    {
+      "check": "fog-edge-w.png measurements",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f0-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "fog 0 native review",
+      "pass": true
+    },
+    {
+      "check": "fog 0 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f1-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "fog 1 native review",
+      "pass": true
+    },
+    {
+      "check": "fog 1 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f2-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "fog 2 native review",
+      "pass": true
+    },
+    {
+      "check": "fog 2 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-fog-f3-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "fog 3 native review",
+      "pass": true
+    },
+    {
+      "check": "fog 3 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f0-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 0 native review",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 0 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f1-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 1 native review",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 1 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f2-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 2 native review",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 2 4x review",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-desert-sand-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-desert-sand-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-desert-sand-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-forest-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-forest-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-forest-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-grass-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-grass-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-grass-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-town-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-town-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-fantasy-town-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-modern-city-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-modern-city-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-modern-city-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-snow-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-snow-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-snow-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-wasteland-1x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-wasteland-3x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "r16-B-repeat-heat_wave-f3-wasteland-4x.png exact repeat / nearest enlargement",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 3 native review",
+      "pass": true
+    },
+    {
+      "check": "heat_wave 3 4x review",
+      "pass": true
+    },
+    {
+      "check": "edge n native review",
+      "pass": true
+    },
+    {
+      "check": "edge n 4x review",
+      "pass": true
+    },
+    {
+      "check": "edge s native review",
+      "pass": true
+    },
+    {
+      "check": "edge s 4x review",
+      "pass": true
+    },
+    {
+      "check": "edge e native review",
+      "pass": true
+    },
+    {
+      "check": "edge e 4x review",
+      "pass": true
+    },
+    {
+      "check": "edge w native review",
+      "pass": true
+    },
+    {
+      "check": "edge w 4x review",
+      "pass": true
+    },
+    {
+      "check": "area 0 exact 2x2 core",
+      "pass": true
+    },
+    {
+      "check": "area 0 clear margin",
+      "pass": true
+    },
+    {
+      "check": "area 1 exact 2x2 core",
+      "pass": true
+    },
+    {
+      "check": "area 1 clear margin",
+      "pass": true
+    },
+    {
+      "check": "area 2 exact 2x2 core",
+      "pass": true
+    },
+    {
+      "check": "area 2 clear margin",
+      "pass": true
+    },
+    {
+      "check": "area 3 exact 2x2 core",
+      "pass": true
+    },
+    {
+      "check": "area 3 clear margin",
+      "pass": true
+    },
+    {
+      "check": "area desert-sand 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area desert-sand 4x exact",
+      "pass": true
+    },
+    {
+      "check": "area fantasy-forest 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area fantasy-forest 4x exact",
+      "pass": true
+    },
+    {
+      "check": "area fantasy-grass 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area fantasy-grass 4x exact",
+      "pass": true
+    },
+    {
+      "check": "area fantasy-town 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area fantasy-town 4x exact",
+      "pass": true
+    },
+    {
+      "check": "area modern-city 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area modern-city 4x exact",
+      "pass": true
+    },
+    {
+      "check": "area snow 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area snow 4x exact",
+      "pass": true
+    },
+    {
+      "check": "area wasteland 1x exact",
+      "pass": true
+    },
+    {
+      "check": "area wasteland 4x exact",
+      "pass": true
+    },
+    {
+      "check": "fog GIF four phases and infinite loop",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f0 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f0 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f1 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f1 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f2 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f2 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f3 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "fog GIF f3 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF four phases and infinite loop",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f0 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f0 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f1 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f1 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f2 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f2 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f3 matches PNG composites",
+      "pass": true
+    },
+    {
+      "check": "heat_wave GIF f3 duration 360ms",
+      "pass": true
+    },
+    {
+      "check": "area GIF four phases and infinite loop",
+      "pass": true
+    },
+    {
+      "check": "area GIF f0 exact PNG composite",
+      "pass": true
+    },
+    {
+      "check": "area GIF f0 duration",
+      "pass": true
+    },
+    {
+      "check": "area GIF f1 exact PNG composite",
+      "pass": true
+    },
+    {
+      "check": "area GIF f1 duration",
+      "pass": true
+    },
+    {
+      "check": "area GIF f2 exact PNG composite",
+      "pass": true
+    },
+    {
+      "check": "area GIF f2 duration",
+      "pass": true
+    },
+    {
+      "check": "area GIF f3 exact PNG composite",
+      "pass": true
+    },
+    {
+      "check": "area GIF f3 duration",
+      "pass": true
+    },
+    {
+      "check": "all other art, reference and critic files byte-identical",
+      "pass": true
+    },
+    {
+      "check": "n original drawn feather cap byte-identical",
+      "pass": true
+    },
+    {
+      "check": "s original drawn feather cap byte-identical",
+      "pass": true
+    },
+    {
+      "check": "e original drawn feather cap byte-identical",
+      "pass": true
+    },
+    {
+      "check": "w original drawn feather cap byte-identical",
+      "pass": true
+    }
+  ],
+  "playback": "Exported GIF frames, timing and continuity verified; live perceived playback and in-engine playback not tested."
+}

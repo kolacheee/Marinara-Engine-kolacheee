@@ -1,0 +1,88 @@
+{
+  "part": "B",
+  "round": 3,
+  "verdict": "fail",
+  "failed": [
+    "fog-f0",
+    "fog-f1",
+    "fog-f2",
+    "fog-f3",
+    "fog-edge-n",
+    "fog-edge-e"
+  ],
+  "files": {
+    "fog-f0": {
+      "status": "fail",
+      "problems": [
+        "The broader banks are an improvement, but a conspicuous repeat remains at actual map opacity. The compact capped wisp in x145-190, y114-146, especially its bright arch around x156-185, y119-129, repeats as an easily recognized little hump every 192 pixels. The elongated highlighted cluster near x0-78, y12-40 supplies a second recurring landmark. Over fantasy grass and the water in town/city/wasteland, the same humps and intervening clear pockets resolve into rows. This is a visible composition repeat, not a tile-boundary discontinuity. See critic-r16B-3-fog-repeat-evidence.png, the unannotated native repeat sheets, and critic-r16B-3-fog-bank-detail-8x.png."
+      ],
+      "fix": "Focus the next image-tool alternatives on the lower-right capped bank and the upper-left highlighted cluster. Draw 2-3 quieter, shallow, irregularly overlapping alternatives whose highlights do not form a compact arch or recognizable crest. Retain the successful broad planes, but recompose the drawn banks and clear gaps to interrupt the recurring rows. Select using an unannotated native 3x3 over grass and water before finalizing. Use the established registration, exact mode reduction and fixed palette/alpha method; preserve 35-55% occupied cover and map readability. Carry the selected composition through all phases. Rebuild and recheck edge continuations if boundary pixels change."
+    },
+    "fog-f1": {
+      "status": "fail",
+      "problems": [
+        "The capped wisp at x145-190, y114-146 and highlighted upper-left cluster at approximately x0-78, y12-40 remain recognizable every 192 pixels in the native 3x3. Their repeated bright crests and clear pockets still read as rows over grass and open water. The small interior motion does not change these landmarks. See critic-r16B-3-repeat-fog-fantasy-grass-0-1.png and critic-r16B-3-repeat-fog-wasteland-0-1.png."
+      ],
+      "fix": "Carry the focused fog-f0 image-tool redraw and revised placement coherently into f1. Break the capped silhouette and the repeated bright/clear arrangement, rather than merely shifting the present field. Preserve the small adjacent-frame changes, fixed alpha levels and occupied cover. Recheck the native repeat and matching edges."
+    },
+    "fog-f2": {
+      "status": "fail",
+      "problems": [
+        "The capped wisp at x145-190, y114-146 and upper-left highlighted cluster at approximately x0-78, y12-40 preserve the same conspicuous 192-pixel arrangement. At actual opacity on grass and water, their recurring little humps are still stronger landmarks than the broader, quieter bank planes. This is a repeated-motif failure, not a seam or an opacity-limit failure. See critic-r16B-3-repeat-fog-fantasy-grass-2-3.png and critic-r16B-3-repeat-fog-wasteland-2-3.png."
+      ],
+      "fix": "Carry the focused fog-f0 image-tool redraw and revised placement coherently into f2. Remove the compact crest vocabulary and redistribute the drawn layers and clear gaps. Keep native pixels, 35-55% occupied cover and slow changes. Recheck both neighbouring transitions and all edge continuations."
+    },
+    "fog-f3": {
+      "status": "fail",
+      "problems": [
+        "The final phase retains the same capped wisp at x145-190, y114-146 and upper-left highlighted cluster at approximately x0-78, y12-40. Their identity and spacing are visible in the unannotated native repeated fields over grass and open water. The repetition persists throughout the loop; it is not a special f3-to-f0 jump. See critic-r16B-3-repeat-fog-fantasy-grass-2-3.png and critic-r16B-3-repeat-fog-wasteland-2-3.png."
+      ],
+      "fix": "Carry the focused fog-f0 image-tool redraw and revised placement coherently into f3. Preserve the currently small closing transition while changing the conspicuous bank shapes and clear-pocket distribution. Verify the native 3x3, f2-to-f3, f3-to-f0 and matching edges."
+    },
+    "heat_wave-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "heat_wave-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-n": {
+      "status": "fail",
+      "problems": [
+        "A detached three-pixel horizontal dash survives at x147-149, y2, alpha 24. It sits alone near the clear outer boundary, well away from the bank, and repeats along the northern perimeter. It is an isolated speck, despite passing a cleanup check that only rejects components smaller than three pixels. See critic-r16B-3-file-fog-edge-n.png and critic-r16B-3-edge-defects-8x.png. Coordinates are zero-based and inclusive."
+      ],
+      "fix": "Remove these three detached pixels during native contour cleanup, with zero RGB beneath the resulting transparency. Preserve the matching inner three rows and the drawn feathering. Check the complete assembled northern perimeter after any fog-core rebuild; do not rely solely on a less-than-three-pixels component threshold."
+    },
+    "fog-edge-s": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fog-edge-e": {
+      "status": "fail",
+      "problems": [
+        "There is a fully detached straight vertical line at x39, y127-148: exactly 1x22 pixels at alpha 24. It stands several clear pixels outside the neighbouring bank and reads as a scratch or a fragment of a rectangular boundary, not a feathered horizontal fog cluster. It is apparent in the exact 4x view and the actual-alpha 8x grass/water close-ups. See critic-r16B-3-file-fog-edge-e.png and critic-r16B-3-edge-defects-8x.png. Coordinates are zero-based and inclusive."
+      ],
+      "fix": "Remove the detached 22-pixel column during native cleanup, zeroing its RGB. Inspect the newly composed edge for similar long one-pixel fragments rather than checking component area alone. Preserve the exact inner three-column continuation and clear outer column; revalidate the assembled east side against all four fog phases."
+    },
+    "fog-edge-w": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 16 Part B critic. Read BRIEF-16 in full and the drawing-method sections of NOTES.md. No output artwork was edited. Inspected all twelve target PNGs at exact 1x and nearest-neighbour 4x, every frame in literal 3x3 repeats over all seven reference crops, enlarged wrap junctions, 3x repeat views/excerpts, and 8x bank/edge close-ups. Independently reconstructed the 2x2 fog area with all four supplied edges and lower-alpha corner intersections; all seven composites match the supplied area proofs exactly. Checked all 168 stored native/3x/4x repeat proofs against composites rebuilt from the current PNGs. The reference crops have their own 288-pixel repetition; the reported fog motifs recur at the overlay's separate 192-pixel period. Part B contains no new ground, prop or seasonal partner, so seasonal silhouette comparison is not applicable. All dimensions pass: eight 192x192 frames, N/S 192x48 and E/W 48x192. All are RGBA, with zero hidden RGB. Fog uses alpha 0/24/48/80; heat uses 0/24/40/56. These deliberate weather opacity steps are allowed by Part B and are not antialiased blur. Independently replayed 93,652 fog source-stage native blocks: every pixel matches the exact mode of its registered 8x8 block. Pixel scale and restrained top-left lighting are compatible with the references. No full-map wash or loss of road/town readability was found. No hard tile-boundary seam was identified. Every edge has a clear outermost row/column and an exact three-pixel inner continuation matching all four fog phases. The assembled area generally ends softly; the two listed detached edge artifacts still require cleanup. South/west passes apply to the current boundary pattern and must be rechecked if the fog repair changes it. Occupied cover counts every alpha>0 pixel. Fog f0/f1/f2/f3: 45.6353/45.5431/45.5349/45.6190%; alpha-weighted cover: 5.8810/5.8640/5.8590/5.8791%. Heat: 1.6059% occupied and 0.2682% alpha-weighted in every frame. Edges N/S/E/W: 24.2622/39.8112/37.4783/34.2882% occupied; 3.4814/4.1565/4.8775/4.0091% alpha-weighted. Cover limits pass. Heat remains a faint, thin, warm horizontal shimmer without a blocking native-scale texture pattern. No isolated one- or two-pixel alpha components were found; this does not excuse the north three-pixel speck or east 22-pixel hairline. Existing r16-B-fog.gif, r16-B-heat_wave.gif and r16-B-fog-area.gif each contain four frames, 360 ms/frame, with infinite looping. Independently matched all 56 family/reference GIF panels to the current PNG composites in the GIF palette and inspected decoded filmstrips. Mean absolute alpha changes for 0->1, 1->2, 2->3, 3->0 are fog 0.27561/0.28212/0.27517/0.27995 and heat 0.78516/0.83681/0.78516/0.83681 out of 255. The closing transition is comparable to the others. LIVE PLAYBACK LIMITATION: the browser access host was unavailable; perceived real-time motion and in-engine playback were not observed. Temporal findings are based on decoded states, timing and numerical continuity. Only this JSON and critic-r16B-3-*.png review composites were written. All twelve output PNG hashes were rechecked unchanged. No commit, push, branch change or write outside art-drop/review."
+}

@@ -1,3 +1,270 @@
+# Round 16 — Part B: critic-r16B-3 redraw
+
+Drew **three focused built-in image-tool alternatives on solid magenta**.
+Selected B in unannotated native 3×3 grass/water repeats: shallow, quieter
+layers and revised clear gaps replace the upper-left crest and lower-right
+capped bank. A kept brighter accents; C introduced a more recognizable wavy
+shelf. Sources/prompts: `review/r16-B-source-redraw3-fog-{a,b,c}.png` and
+`review/r16-B-redraw3-generation.json`.
+
+Same method: magenta key → 8× BOX registration → fixed palette → exact mode
+of all 64 samples → one-pixel contour cleanup → low-error hard-cut composition.
+Working alpha is 0/255; final fog is 0/24/48/80, with zero transparent RGB.
+Code constructs no shapes or noise. Broad planes, boundary pixels and the
+original small four-phase motion remain intact. Removed the north 3-pixel dash
+and east 22-pixel column. **All four passing heat PNGs and the passing south/
+west edges are byte-identical**; every edge still matches all four phases.
+
+Occupied cover (alpha-weighted cover in parentheses):
+
+| Assets | f0 / f1 / f2 / f3, or N / S / E / W |
+|---|---|
+| Fog | 45.3505 / 45.2582 / 45.2501 / 45.3342% (5.6003 / 5.5833 / 5.5784 / 5.5984%) |
+| Heat | 1.6059% each (0.2682% each) |
+| Edges | 24.2296 / 39.8112 / 37.2396 / 34.2882% (3.4783 / 4.1565 / 4.8550 / 4.0091%) |
+
+Regenerated final-art sheets, **168 repeat proofs**, three GIF loops and seven
+feathered area composites: `review/r16-B-review.html`. **383/383 checks pass**,
+including 110,592 exact mode blocks, edge joins, PNG/GIF correspondence and
+7,064 protected files unchanged. Reviewed all seven native reference fields
+and enlarged repair/junction excerpts; roads and towns remain readable.
+Fog transitions remain 0.2752–0.2821/255 mean alpha change, including closure.
+GIFs are four frames at 360 ms each. Live/in-engine playback was not observed;
+this is self-review, not an independent critic verdict. Reproduction/checks:
+`review/r16-B-redraw3-{build.py,verify.py,validation.json}`. No commit, push or
+branch change.
+
+---
+
+# Round 16 — Part B: critic-r16B-2 redraw
+
+Redrew all four failed fog phases from **three new large built-in image-tool
+alternatives on solid magenta**. Selected ten distinct broad bank drawings
+from B/C, each used once per tile. Quiet overlapping planes and varied bank
+lengths replace the small curls, bright tips and regularly spaced clear
+pockets. A was too dense; B alone emphasized corner highlights; the mixed
+field was selected in unannotated native 3×3 views over grass and water.
+Sources and exact prompts: `review/r16-B-source-redraw2-fog-{a,b,c}.png` and
+`review/r16-B-redraw2-generation.json`.
+
+Same method: key → 8× BOX registration → source-calibrated palette lock →
+exact mode of all 64 samples → one-pixel contour cleanup. Working alpha is
+0/255; final fog uses **0/24/48/80**, with zero transparent RGB. No shapes or
+noise were constructed in code. Three interior banks move one native pixel
+per phase; all closing transitions are equally small. Changed boundary
+drawings required rebuilding the four matching edges through the **unchanged
+drawn feather masks**. Their inner three pixels match every phase and their
+outermost pixels are clear. The passing heat PNGs are **byte-identical**.
+
+Occupied cover (`alpha > 0`; alpha-weighted cover in parentheses):
+
+| Files | f0 / f1 / f2 / f3, or N / S / E / W |
+|---|---|
+| Fog | 45.6353 / 45.5431 / 45.5349 / 45.6190% (5.8810 / 5.8640 / 5.8590 / 5.8791%) |
+| Heat | 1.6059% each (0.2682% each) |
+| Fog edges | 24.2622 / 39.8112 / 37.4783 / 34.2882% (3.4814 / 4.1565 / 4.8775 / 4.0091%) |
+
+Regenerated final-art PNG sheets, 168 repeat proofs, all three GIF loops and
+the seven feathered fog-area composites. Start at `review/r16-B-review.html`.
+**431/431 checks pass**, including 93,652 exact native mode blocks, edge
+joins, fixed alpha, no isolated 1/2-pixel components, GIF/PNG correspondence
+and **6,981 protected files unchanged**. Validation and reproducible scripts:
+`review/r16-B-redraw2-{validation.json,build.py,verify.py}`. Native fields and
+area boundaries were visually reviewed across all seven references; roads
+and towns remain readable. The browser access host was unavailable, so live
+GIF playback and in-engine playback were not tested. This is self-review,
+not a new independent critic verdict. No commit, push or branch change.
+
+---
+
+# Round 16 — Part B: critic-r16B-1 redraw
+
+Redrew all four failed **fog frames** with **three new large built-in image-tool
+atlases on solid magenta**. Compared A, B, C and a mixed field in literal 3×3
+repeats; selected **25 distinct drawings**, each used once per tile. Shorter,
+less directional banks and quieter patch highlights replace the conspicuous
+hooked crests, lower comb and diagonal clear lanes. Prompts and alternatives:
+`review/r16-B-redraw1-generation.json`, `r16-B-source-redraw1-fog-{a,b,c}.png`
+and `r16-B-redraw1-candidate-*.png`.
+
+Same method: magenta key → **8× BOX registration** → four-colour palette lock →
+exact RGBA mode of **all 64 samples** → native component/one-pixel contour
+cleanup. All 36 donors have hard 0/255 working alpha; final fog retains
+**0/24/48/80/112**, square pixels and zero transparent RGB. No shapes or noise
+were constructed in code. The redraw changes the boundary pattern, so the
+**four fog edges were rebuilt as matching continuations**, as the critic
+requested, through the **unchanged image-drawn feather masks**. A four-pixel
+tile-origin adjustment avoids tiny cut fragments at the inner joins. The
+passing **four heat-wave PNGs are byte-identical**.
+
+Occupied cover (`alpha > 0`; alpha-weighted cover in parentheses):
+
+| Files | f0 / f1 / f2 / f3, or N / S / E / W |
+|---|---|
+| Fog frames | 44.9382 / 44.6723 / 44.5584 / 44.8622% (5.8484 / 5.8208 / 5.8037 / 5.8374%) |
+| Heat frames | 1.6059% each (0.2682% each) |
+| Fog edges N/S/E/W | 32.6714 / 30.3928 / 32.1832 / 36.5017% (3.7606 / 3.8909 / 3.9638 / 4.4118%) |
+
+**590/590 checks pass**: 62,850 exact native mode blocks, fixed alpha/palette,
+no hidden RGB or isolated 1/2-pixel components, independent wrapped rendering,
+all edge joins across all four phases, clear outer edges, 168 exact repeat
+proofs, and GIF-to-PNG correspondence. Animated banks move one native pixel
+per phase in a closed cycle; mean alpha changes are **1.8581–2.2611/255**,
+including f3→f0. GIFs retain four frames at **360 ms/frame**. Reviewed native
+fields across all seven references and enlarged joins; towns and roads remain
+readable. The rebuilt area feathers into clear map without a square perimeter.
+**6,902 protected files are byte-identical**. Validation:
+`review/r16-B-redraw1-validation.json`; build/replay scripts:
+`r16-B-redraw1-build.py --final` and `r16-B-redraw1-verify.py`.
+
+Regenerated `review/r16-B-*.png` final-art sheets, all three GIFs, the seven
+fog-area composites and `r16-B-review.html`. Before/after:
+`r16-B-redraw1-comparison.png`. Historical source/processing sheets are retained.
+Live perceived GIF playback and in-engine playback were not tested; this is
+self-review, not a new independent critic verdict. No commit, push, branch
+change, or changes outside `art-drop/`.
+
+---
+
+# Round 16 — Part B
+
+Made only **12 transparent PNGs in `out/weather16/`**: **`fog-f0..f3.png`**
+and **`heat_wave-f0..f3.png`**, each **192×192**; **`fog-edge-n.png`** and
+**`fog-edge-s.png`**, each **192×48**; **`fog-edge-e.png`** and
+**`fog-edge-w.png`**, each **48×192**. The seven existing **288×288 / 48 px
+per cell** references and all Part A frames are unchanged. No ground base,
+prop, seasonal partner, engine code or other art part was changed.
+
+**Drawing method:** **six separate large built-in image-tool drawings on
+solid magenta**: two fog-bank atlases, two heat-shimmer atlases and two
+four-strip fog-edge mask atlases. Selected **fog B / heat A / edge B**.
+Fog B has lower, more open interleaved strata; heat A has less regular
+kinks than B; edge B has long shallow fingers instead of A's deeper lobes.
+The edge feathering itself is drawn, not a procedural gradient.
+Exact prompts: **`review/r16-B-generation.json`** and the source PNG metadata.
+All six source paintings and both alternatives at native scale are retained
+as **`r16-B-source-*.png`** / **`r16-B-selection.png`**.
+
+Magenta is keyed, each drawing is cropped to its painted bounds, then
+BOX-registered to **8W×8H**. Edge crops also retain the source's clear outer
+margin. Fixed palettes are locked without dithering before taking the exact
+RGBA mode of **all 64 samples per 8×8 block**, including transparent samples;
+ties use lexicographic RGBA order. The 36 processed alternative pieces remove
+**37 detached native pixels**. Six selected fog donors receive **2,358 colour
+changes on their one-pixel outer contours**, to the quiet blue-grey edge
+colour; no silhouette pixels are added. Their interior top-left highlights
+remain drawn. Selected fog banks are **104–144 px wide / 28–35 px tall**.
+Eight selected heat drawings are **48–83 px wide / 3–4 px bounding height**,
+with predominantly one-pixel strokes. No outlines, bands, bank shapes, terrain
+or noise are constructed in code.
+
+Working drawings have hard **0/255 alpha**. As required for weather, final
+fog uses only **0 / 24 / 48 / 80 / 112** alpha, and heat only
+**0 / 24 / 40 / 56**. Fog has four pale blue-grey/grey-white RGB colours;
+heat has three pale straw/ivory colours. Overlap selects an existing drawn
+sample by opacity priority, never an interpolated colour or alpha. All PNGs
+have **zero RGB under transparency**. Code only registers, reduces,
+palette-locks, cleans, places, moves, wraps and composites the drawings.
+
+**Spatial joins and motion:** ten placed fog banks use six different drawings;
+four interior banks move through the closed offsets **(0,0), (1,0), (1,1),
+(0,1)**, with staggered phases. The other six hold the boundary pattern steady
+so the single-state edge PNGs match **all four** fog frames. Fourteen heat
+bands use the eight selected drawings and the same one-pixel cycle, with
+staggered phases and reversed directions. Every transition, including
+**f3→f0**, moves each animated donor exactly **one native pixel**. There is
+no reseed, teleport or crossfade. The computed fifth state equals f0 exactly.
+The GIFs use **360 ms/frame**, a **1.44 s** cycle. Mean absolute per-pixel
+alpha changes are **1.7250–1.8819 / 255** for fog and **0.7852–0.8368 / 255**
+for heat; the loop-boundary step is comparable to the other steps.
+
+The first placement review caught broad, regular clear lanes. A deterministic
+placement-only search redistributed the same painted banks, keeping large
+map-readable gaps and removing the lanes. It generates positions only, not
+pixel texture. Final placements are recorded in **`r16-B-layout.json`** and
+**`r16-B-measurements.json`**. Every bank that crosses a tile boundary wraps
+on the **192×192 torus**; an independent unwrapped rendering matches every
+literal 3×3 repeat. Neither family has an exact shorter horizontal or vertical
+subperiod.
+
+**Fog-bank edges:** four individually drawn mask strips are mode-reduced to
+**224×48**, then tile-wrapped to **192×48** by a minimum-error hard cut in a
+32 px overlap. Every retained mask sample comes from the drawing. Their grey
+steps become discrete opacity caps **0 / 24 / 48 / 80 / 112 / 255**, applied
+to continuations of the fog pattern; mask grey is never rendered as dark fog.
+North/south masks are oriented vertically and east/west transposed. The
+inner **three pixels** preserve the pattern exactly for every phase. The
+outermost row/column is completely clear. Final cap intersections remove
+**five isolated native pixels** (one north, four west), away from the joins.
+No airbrush, blur, fractional alpha ramp or straight opaque perimeter remains.
+
+For a fog core starting at **(0,0)**, place N at **(0,−48)**, S at **(0,H)**,
+W at **(−48,0)** and E at **(W,0)**; repeat each strip every 192 px along its
+side. Keep tile phases aligned. The area proofs use a literal **2×2 fog core**,
+the four delivered edge PNGs and a clear map margin. Each 48×48 corner is the
+**lower-alpha intersection of matching end crops of the two adjacent edge
+PNGs**, using their same RGB pattern. This needs no extra corner asset and
+avoids both a square cutoff and doubled corner opacity.
+
+**Measured cover:** every alpha>0 pixel counts, against **36,864** for frames
+or **9,216** for edges. Weighted cover is sum(alpha)/(255×pixel count).
+
+| File | Covered pixels | Cover | Alpha-weighted cover |
+|---|---:|---:|---:|
+| `fog-f0.png` | 16,908 | 45.8659% | 9.7173% |
+| `fog-f1.png` | 16,853 | 45.7167% | 9.7025% |
+| `fog-f2.png` | 16,816 | 45.6163% | 9.6981% |
+| `fog-f3.png` | 16,879 | 45.7872% | 9.7234% |
+| `heat_wave-f0.png` | 592 | 1.6059% | 0.2682% |
+| `heat_wave-f1.png` | 592 | 1.6059% | 0.2682% |
+| `heat_wave-f2.png` | 592 | 1.6059% | 0.2682% |
+| `heat_wave-f3.png` | 592 | 1.6059% | 0.2682% |
+| `fog-edge-n.png` | 3,034 | 32.9210% | 5.6110% |
+| `fog-edge-s.png` | 2,842 | 30.8377% | 5.3196% |
+| `fog-edge-e.png` | 2,269 | 24.6202% | 4.0540% |
+| `fog-edge-w.png` | 1,965 | 21.3216% | 3.7881% |
+
+**QC:** two visual self-review passes inspected native and enlarged drawings,
+all seven reference contexts, repeated fields, individual edge strips and the
+bank-area compositions. Town silhouettes, roads, forest detail and desert
+landmarks remain readable. Fog is layered pixel clusters with clear gaps;
+heat is barely visible warm linework, not a full-map tint. The revised fog
+placement avoids the first layout's clear lanes. Pixel boundaries stay square,
+with no magenta fringe, isolated 1/2-pixel components or antialias blur.
+
+**Verification:** **482 / 482 checks pass**, including **137,256 exact native
+mode blocks / 8,784,384 source samples**, cleanup replay, all twelve sizes,
+fixed palettes/alpha, zero hidden RGB, four distinct phases per family,
+closed one-pixel motion, independent spatial repeat rendering, all edge joins,
+clear outer edges, exact 1×/3×/4× proofs and GIF-to-PNG phase correspondence.
+**6,858 pre-existing art/reference/review files are byte-identical**. Complete
+checks, per-file measurements and final SHA-256 hashes are retained in
+**`review/r16-B-validation.json`** / **`r16-B-measurements.json`**.
+
+**Review material:** start at **`review/r16-B-review.html`**. The three loops
+are **`r16-B-fog.gif`**, **`r16-B-heat_wave.gif`** and **`r16-B-fog-area.gif`**.
+Every final PNG has a **1× + exact nearest-neighbour 4×** sheet,
+**`r16-B-file-*.png`**. **168 literal 3×3 repeat proofs** cover both families,
+all four phases and all seven references at **1× / 3× / 4×**:
+**`r16-B-repeat-<family>-fN-<reference>-{1,3,4}x.png`**. Seven fog-area
+compositions each have **1× / 4×** versions. No new ground base is part of B.
+The reference crops repeat at 288 px, independently of the weather's 192 px
+period; reference road/crop boundaries are not weather seams. GIFs use a
+shared 256-colour review palette; the PNGs are authoritative for colour/alpha.
+Source drawings, prompts, selected alternatives, registered/mode/clean stages,
+filmstrips, measurements and **`r16-B-build.py` / `r16-B-verify.py`** remain
+under this part's review prefix. The scripts use Python with Pillow and NumPy.
+
+**Playback limitation:** the browser access host is unavailable. Actual GIF
+frames, timing and mathematical continuity were verified, but live perceived
+motion could not be observed. This is self-review, not an independent critic
+verdict or an in-engine test.
+
+No commit, push or branch change. All changes are inside `art-drop/`, limited
+to the twelve named Part B outputs, `review/r16-B-*` and this NOTES section.
+
+---
+
 # Round 16 — Part A: critic-r16A-2 redraw
 
 Repaired the **eight failed snow/sandstorm frames**. The **16 passing weather

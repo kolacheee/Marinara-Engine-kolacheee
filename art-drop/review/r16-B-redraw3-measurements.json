@@ -1,0 +1,933 @@
+{
+  "repair": "critic-r16B-3 redraw",
+  "selection": "B: quieter broad shallow planes, without A bright accents or C wavy shelf; selected in native unannotated 3x3 grass/water composites.",
+  "method": "Built-in image tool: three large focused redraws on magenta. Key, 8x BOX registration, fixed palette, exact 64-sample mode, one-pixel contour cleanup, minimum-error hard-cut composition with approved broad planes. No shape/noise synthesis.",
+  "selected": {
+    "drawing": {
+      "source": "r16-B-source-redraw3-fog-b.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "native": [
+        192,
+        192
+      ],
+      "registration": [
+        1536,
+        1536
+      ],
+      "removed": [],
+      "contour_recolours": [
+        5227,
+        6000,
+        6001,
+        9055
+      ]
+    },
+    "cuts": [
+      {
+        "name": "upper-left",
+        "box": [
+          4,
+          6,
+          88,
+          47
+        ],
+        "overlap": [
+          4,
+          5,
+          12,
+          6
+        ],
+        "left_cut": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          3,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "right_cut": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          73,
+          74,
+          74,
+          75,
+          75,
+          74,
+          73,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "top_cut": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bottom_cut": [
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          36,
+          37,
+          37,
+          37,
+          37,
+          37,
+          37,
+          36,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35,
+          35
+        ]
+      },
+      {
+        "name": "lower-right",
+        "box": [
+          125,
+          100,
+          188,
+          159
+        ],
+        "overlap": [
+          12,
+          10,
+          4,
+          9
+        ],
+        "left_cut": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "right_cut": [
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          60,
+          61,
+          61,
+          61,
+          61,
+          61,
+          61,
+          61,
+          61,
+          60,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          60,
+          61,
+          61,
+          60,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59,
+          59
+        ],
+        "top_cut": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bottom_cut": [
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50
+        ]
+      }
+    ],
+    "cleanup_removed": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "stats": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16718,
+      "cover_percent": 45.3505,
+      "weighted_cover_percent": 5.6003,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    }
+  },
+  "edge_cleanup_coordinates": {
+    "n": [
+      [
+        147,
+        2
+      ],
+      [
+        148,
+        2
+      ],
+      [
+        149,
+        2
+      ]
+    ],
+    "e": [
+      [
+        39,
+        127
+      ],
+      [
+        39,
+        128
+      ],
+      [
+        39,
+        129
+      ],
+      [
+        39,
+        130
+      ],
+      [
+        39,
+        131
+      ],
+      [
+        39,
+        132
+      ],
+      [
+        39,
+        133
+      ],
+      [
+        39,
+        134
+      ],
+      [
+        39,
+        135
+      ],
+      [
+        39,
+        136
+      ],
+      [
+        39,
+        137
+      ],
+      [
+        39,
+        138
+      ],
+      [
+        39,
+        139
+      ],
+      [
+        39,
+        140
+      ],
+      [
+        39,
+        141
+      ],
+      [
+        39,
+        142
+      ],
+      [
+        39,
+        143
+      ],
+      [
+        39,
+        144
+      ],
+      [
+        39,
+        145
+      ],
+      [
+        39,
+        146
+      ],
+      [
+        39,
+        147
+      ],
+      [
+        39,
+        148
+      ]
+    ]
+  },
+  "files": {
+    "fog-f0.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16718,
+      "cover_percent": 45.3505,
+      "weighted_cover_percent": 5.6003,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-f1.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16684,
+      "cover_percent": 45.2582,
+      "weighted_cover_percent": 5.5833,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-f2.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16681,
+      "cover_percent": 45.2501,
+      "weighted_cover_percent": 5.5784,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-f3.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16712,
+      "cover_percent": 45.3342,
+      "weighted_cover_percent": 5.5984,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "heat_wave-f0.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f1.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f2.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f3.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "fog-edge-n.png": {
+      "size": [
+        192,
+        48
+      ],
+      "covered_pixels": 2233,
+      "cover_percent": 24.2296,
+      "weighted_cover_percent": 3.4783,
+      "alpha_levels": [
+        0,
+        24,
+        48
+      ]
+    },
+    "fog-edge-s.png": {
+      "size": [
+        192,
+        48
+      ],
+      "covered_pixels": 3669,
+      "cover_percent": 39.8112,
+      "weighted_cover_percent": 4.1565,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-edge-e.png": {
+      "size": [
+        48,
+        192
+      ],
+      "covered_pixels": 3432,
+      "cover_percent": 37.2396,
+      "weighted_cover_percent": 4.855,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-edge-w.png": {
+      "size": [
+        48,
+        192
+      ],
+      "covered_pixels": 3160,
+      "cover_percent": 34.2882,
+      "weighted_cover_percent": 4.0091,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    }
+  },
+  "motion": {
+    "fog": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "changed_pixels": 390,
+        "alpha_mean_absolute_delta": 0.2756076388888889
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "changed_pixels": 414,
+        "alpha_mean_absolute_delta": 0.2821180555555556
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "changed_pixels": 390,
+        "alpha_mean_absolute_delta": 0.2751736111111111
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 0,
+        "changed_pixels": 411,
+        "alpha_mean_absolute_delta": 0.2799479166666667
+      }
+    ],
+    "heat_wave": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "changed_pixels": 717,
+        "alpha_mean_absolute_delta": 0.78515625
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "changed_pixels": 762,
+        "alpha_mean_absolute_delta": 0.8368055555555556
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "changed_pixels": 717,
+        "alpha_mean_absolute_delta": 0.78515625
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 0,
+        "changed_pixels": 762,
+        "alpha_mean_absolute_delta": 0.8368055555555556
+      }
+    ]
+  }
+}

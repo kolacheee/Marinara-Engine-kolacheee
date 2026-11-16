@@ -1,0 +1,78 @@
+{
+  "seed": 1616,
+  "trials": 3500,
+  "selected_trial": 2697,
+  "score": 0.6413637599432438,
+  "instances": [
+    {
+      "part": 0,
+      "x": 34,
+      "y": 132,
+      "moving": true,
+      "phase": 0
+    },
+    {
+      "part": 1,
+      "x": 24,
+      "y": 21,
+      "moving": true,
+      "phase": 1
+    },
+    {
+      "part": 2,
+      "x": 67,
+      "y": 39,
+      "moving": true,
+      "phase": 2
+    },
+    {
+      "part": 3,
+      "x": 16,
+      "y": 145,
+      "moving": true,
+      "phase": 3
+    },
+    {
+      "part": 4,
+      "x": 153,
+      "y": 3,
+      "moving": false,
+      "phase": 0
+    },
+    {
+      "part": 5,
+      "x": 72,
+      "y": 107,
+      "moving": false,
+      "phase": 1
+    },
+    {
+      "part": 0,
+      "x": 21,
+      "y": 121,
+      "moving": false,
+      "phase": 2
+    },
+    {
+      "part": 2,
+      "x": 185,
+      "y": 64,
+      "moving": false,
+      "phase": 3
+    },
+    {
+      "part": 4,
+      "x": 153,
+      "y": 171,
+      "moving": false,
+      "phase": 0
+    },
+    {
+      "part": 5,
+      "x": 45,
+      "y": 82,
+      "moving": false,
+      "phase": 1
+    }
+  ]
+}

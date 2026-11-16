@@ -1,0 +1,242 @@
+{
+  "origin_shift": [
+    0,
+    0
+  ],
+  "moving_banks": 3,
+  "files": {
+    "fog-f0.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16823,
+      "cover_percent": 45.6353,
+      "weighted_cover_percent": 5.881,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-f1.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16789,
+      "cover_percent": 45.5431,
+      "weighted_cover_percent": 5.864,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-f2.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16786,
+      "cover_percent": 45.5349,
+      "weighted_cover_percent": 5.859,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-f3.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 16817,
+      "cover_percent": 45.619,
+      "weighted_cover_percent": 5.8791,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "heat_wave-f0.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f1.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f2.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "heat_wave-f3.png": {
+      "size": [
+        192,
+        192
+      ],
+      "covered_pixels": 592,
+      "cover_percent": 1.6059,
+      "weighted_cover_percent": 0.2682,
+      "alpha_levels": [
+        0,
+        24,
+        40,
+        56
+      ]
+    },
+    "fog-edge-n.png": {
+      "size": [
+        192,
+        48
+      ],
+      "covered_pixels": 2236,
+      "cover_percent": 24.2622,
+      "weighted_cover_percent": 3.4814,
+      "alpha_levels": [
+        0,
+        24,
+        48
+      ]
+    },
+    "fog-edge-s.png": {
+      "size": [
+        192,
+        48
+      ],
+      "covered_pixels": 3669,
+      "cover_percent": 39.8112,
+      "weighted_cover_percent": 4.1565,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-edge-e.png": {
+      "size": [
+        48,
+        192
+      ],
+      "covered_pixels": 3454,
+      "cover_percent": 37.4783,
+      "weighted_cover_percent": 4.8775,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    },
+    "fog-edge-w.png": {
+      "size": [
+        48,
+        192
+      ],
+      "covered_pixels": 3160,
+      "cover_percent": 34.2882,
+      "weighted_cover_percent": 4.0091,
+      "alpha_levels": [
+        0,
+        24,
+        48,
+        80
+      ]
+    }
+  },
+  "motion": {
+    "fog": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "changed_pixels": 390,
+        "alpha_mean_absolute_delta": 0.2756076388888889
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "changed_pixels": 414,
+        "alpha_mean_absolute_delta": 0.2821180555555556
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "changed_pixels": 390,
+        "alpha_mean_absolute_delta": 0.2751736111111111
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 0,
+        "changed_pixels": 411,
+        "alpha_mean_absolute_delta": 0.2799479166666667
+      }
+    ],
+    "heat_wave": [
+      {
+        "from_frame": 0,
+        "to_frame": 1,
+        "changed_pixels": 717,
+        "alpha_mean_absolute_delta": 0.78515625
+      },
+      {
+        "from_frame": 1,
+        "to_frame": 2,
+        "changed_pixels": 762,
+        "alpha_mean_absolute_delta": 0.8368055555555556
+      },
+      {
+        "from_frame": 2,
+        "to_frame": 3,
+        "changed_pixels": 717,
+        "alpha_mean_absolute_delta": 0.78515625
+      },
+      {
+        "from_frame": 3,
+        "to_frame": 0,
+        "changed_pixels": 762,
+        "alpha_mean_absolute_delta": 0.8368055555555556
+      }
+    ]
+  }
+}
