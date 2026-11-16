@@ -8,7 +8,8 @@
 #
 # Writes packages/client/public/images/overworld-weather/weather.png and weather.json
 # ({"version", "cell": 48, "frames": {name: [x, y, w, h]}}). The fog tile (fog-f0..f3) is left out: it failed
-# its critic, and the overworld draws fog from the clouds and the fog edges instead.
+# its critic, and the overworld draws fog from the clouds and the fog edges instead. The 24 px icon-* frames
+# (part E) are the map's "weather here" badge.
 # ──────────────────────────────────────────────
 import json
 import os
@@ -29,7 +30,7 @@ def main() -> None:
     names = sorted(
         name[:-4]
         for name in os.listdir(source)
-        if name.endswith(".png") and not name.startswith("icon-") and name[:-4] not in LEFT_OUT
+        if name.endswith(".png") and name[:-4] not in LEFT_OUT
     )
     images = {name: Image.open(os.path.join(source, f"{name}.png")).convert("RGBA") for name in names}
     # Tallest first on shelves, a pixel apart so no frame bleeds into the next when drawn scaled.

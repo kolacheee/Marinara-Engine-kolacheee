@@ -41,6 +41,12 @@ export function loadOverworldWeatherArt(): Promise<OverworldWeatherArt | null> {
   return loading;
 }
 
+/** The icon of the "weather here" badge (round 16 part E): a clear sky shows the sun by day and the moon by night. */
+export function overworldWeatherIcon(weather: WeatherType, hour: number): string {
+  if (weather === "clear") return hour >= 6 && hour < 20 ? "icon-clear-day" : "icon-clear-night";
+  return `icon-${weather}`;
+}
+
 /** A small, steady hash of whole numbers: the same cell or block always draws the same way. */
 function hash(a: number, b: number, c = 0): number {
   let h = Math.imul(a | 0, 374761393) ^ Math.imul(b | 0, 668265263) ^ Math.imul(c | 0, 1274126177);

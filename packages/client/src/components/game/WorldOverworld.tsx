@@ -62,6 +62,7 @@ import {
   loadOverworldWeatherArt,
   overworldWeatherMoves,
   type OverworldWeatherArt,
+  overworldWeatherIcon,
 } from "./overworld-weather";
 import { useDungeonEnter, useOverworld, useOverworldWalk } from "../../hooks/use-game";
 import {
@@ -1785,6 +1786,30 @@ export function WorldOverworld({
   useEffect(() => {
     if (!walkingRef.current) draw({ x: cameraX, y: cameraY });
   }, [cameraX, cameraY, draw, here]);
+  // The weather where the party stands, in the corner: the sheet's 24 px icon drawn at twice its size.
+  const weatherIcon =
+    weatherArt && partyWeather ? weatherArt.frames[overworldWeatherIcon(partyWeather, time?.hour ?? 12)] : null;
+  const weatherBadge = weatherArt && partyWeather && weatherIcon && (
+    <div
+      className="pointer-events-none flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 py-0.5 pl-1 pr-2.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md"
+      data-component="WorldOverworld.Weather"
+      role="status"
+    >
+      <span
+        aria-hidden
+        className="block shrink-0"
+        style={{
+          width: weatherIcon[2] * 2,
+          height: weatherIcon[3] * 2,
+          backgroundImage: `url(${weatherArt.image.src})`,
+          backgroundPosition: `${-weatherIcon[0] * 2}px ${-weatherIcon[1] * 2}px`,
+          backgroundSize: `${weatherArt.image.naturalWidth * 2}px ${weatherArt.image.naturalHeight * 2}px`,
+          imageRendering: "pixelated",
+        }}
+      />
+      {t(`game.combat.weather.type.${partyWeather}`)}
+    </div>
+  );
   // The weather moves while the map stands still: frames for it about ten times a second (a walk draws its own).
   const restingRef = useRef({ x: cameraX, y: cameraY });
   restingRef.current = { x: cameraX, y: cameraY };
@@ -2143,6 +2168,7 @@ export function WorldOverworld({
 
         {/* The places, nearest first: the same choice as the map, by keyboard or for a place off screen. */}
         <div className="pointer-events-auto absolute right-3 top-14 z-10 flex flex-col items-end gap-1.5">
+          {weatherBadge}
           <button
             type="button"
             onClick={() => setPlacesOpen((open) => !open)}
