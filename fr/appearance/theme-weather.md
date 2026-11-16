@@ -221,7 +221,7 @@ Par défaut, un orage fait seulement clignoter l'écran. Ajoute `--mari-weather-
 }
 ```
 
-L'éclair frappe le long du bord gauche ou droit de l'écran, jamais au milieu où se trouve le texte du chat. Il se divise en plusieurs branches et brille dans la couleur choisie. Il apparaît uniquement pendant le flash de l'application et s'estompe avec lui : un thème ne peut donc ni ajouter de flashs ni les accélérer. En style pixel, l'éclair est dessiné sous forme de blocs sur la grille de pixels. La plupart des thèmes de départ utilisent des éclairs : Apogee Lounge, Dewglass, Gutterlight, Under Sail et Velvet Casket. Granite Watch les désactive, car son décor se trouve en intérieur.
+L'éclair frappe le long du bord gauche ou droit de l'écran, jamais au milieu où se trouve le texte du chat. Il se divise en plusieurs branches et brille dans la couleur choisie. Il apparaît uniquement pendant le flash de l'application et s'estompe avec lui : un thème ne peut donc ni ajouter de flashs ni les accélérer. En style pixel, l'éclair est dessiné sous forme de blocs sur la grille de pixels. La plupart des thèmes de départ utilisent des éclairs : Apogee Lounge, Crepuscular, Dewglass, Gutterlight, MARI to the Moon, Sanguine Keep, Under Sail et Velvet Casket. Granite Watch et Quiet Iris les désactivent, car leur décor se trouve en intérieur.
 
 ## Adapter ton arrière-plan à la météo
 
@@ -307,6 +307,10 @@ Chaque thème de départ de la galerie de thèmes met la météo en valeur. Tél
 - **Under Sail** : un grain en mer avec des éclairs blanc-bleu le long du gréement, du brouillard marin, de la neige sur le bastingage et les enfléchures, ainsi que des plumes de mouette dans le vent.
 - **Apogee Lounge** : la météo spatiale vue à travers la baie vitrée du salon. Un orage devient une tempête ionique dans une nébuleuse avec des éclairs de plasma violets, la pluie devient des traînées de micrométéorites, la neige un champ de glace et le brouillard une brume de nébuleuse. Un masque maintient le tout derrière la vitre.
 - **Granite Watch** : un thème d'intérieur où la météo reste aussi discrète que le permet un thème. La pluie ressemble à des gouttes provenant des conduits, la neige à de la poussière de plâtre, les éclairs sont désactivés et le flash de l'application est teinté comme le vacillement d'une lampe. Consulte ce thème pour découvrir comment atténuer la météo dans un décor intérieur.
+- **Quiet Iris** : un autre thème d'intérieur, mais avec un hublot. La météo n'apparaît qu'à travers la vitre, le fond passe à une version avec de la pluie, du givre ou du brouillard sur le hublot, les éclairs sont désactivés et la baie s'assombrit un peu pendant un orage.
+- **MARI to the Moon** : la météo des marchés vue par la fenêtre de la salle de trading. La pluie tombe en ticks verts, un orage est un krach avec des éclairs rouges et des écrans rouges, la neige est une pluie de pièces et de diamants, le vent emporte des billets, les fleurs lancent de petites fusées et le brouillard est du FUD sur la ligne d'horizon.
+- **Sanguine Keep** : la météo vue par les fenêtres du château. Un pochoir par fond garde la pluie, la neige, les pétales, les feuilles et les éclairs dans le verre des fenêtres de la grande salle (ou de la tour d'escalier sur téléphone), jamais sur la pierre.
+- **Crepuscular** : la même mer lue à travers un almanach. La neige est du sucre glace, la poussière des miettes, les lucioles des yeux qui veillent, le vent emporte des bouts de papier, les éclairs sont de fines branches gravées et la veillée continue sous les parapluies. En intérieur, la mer se voit à travers un vitrail au plomb.
 
 ## Guides associés
 

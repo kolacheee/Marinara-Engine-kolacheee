@@ -30,15 +30,19 @@ Starter-Themes sind nicht Teil der Installation und belegen daher erst Speicherp
 | Theme | Aussehen |
 | --- | --- |
 | **Apogee Lounge** | Die Aussichtslounge eines Weltraumliners aus den 1970ern, mit einem Gasriesen vor dem Fenster und Nachrichten auf geformten Panels. |
+| **Crepuscular** | Ein Almanach der nächtlichen See: Kapuzengestalten halten auf einer Klippe Wache unter einem wachsamen Mond (sie essen Pfannkuchen), und die Nachrichten laufen eine linierte Hauptbuchspalte hinunter. |
 | **Dewglass** | Glänzendes Glas der 2000er: Nachrichten sind Gel-Tropfen über einer sonnigen Lagune oder einer nächtlichen Aurora. |
 | **Granite Watch** | Ein Befehlsstand aus dem Kalten Krieg unter einem Berg: Antworten werden auf Fernschreiberpapier gedruckt und Widgets hängen an Klemmbrettern. |
 | **Gutterlight** | Eine regnerische gotische Stadt als Krimi-Comic, mit getuschten Panels und Textkästen. |
 | **Lantern Meadow** | Ruhig und sehr gut lesbar, ohne Bewegung. |
 | **Lantern Path** | Eine Lesespalte mit sanfter Bewegung. |
 | **Maple's Bramble Cottage** | Ein gemütliches Cottage mit einer Lesespalte für lange Antworten. |
+| **MARI to the Moon** | Ein Handelsterminal: Jede Antwort ist ein Orderzettel, die obere Leiste zeigt ein Börsenlaufband und die Chatliste ist eine Watchlist. |
 | **NEON//GRID** | Neon-Cyberpunk für lange Antworten. |
 | **Petal OS** | Ein verspielter Retro-Desktop mit Pixelschriften. |
+| **Quiet Iris** | Eine ruhige Schiffsintelligenz: mattes Graphit-Instrumentarium, eine einzige rot-bernsteinfarbene Linse und jeder Chat angedockt an einem einzigen leuchtenden Rückgrat. |
 | **Rosalind's Folio** | Ein Märchenbuch-Layout mit Visual-Novel-Elementen. |
+| **Sanguine Keep** | Eine mondbeschienene gotische Burg: nachts karmesinroter Samt und Blattgold, tags heller Marmor, mit Porträts in Lanzettfenstern und Nachrichten auf Reliquientafeln. |
 | **Swiss Poster** | Ruhiges, klares Posterdesign ohne Bewegung. |
 | **Under Sail** | Das Deck eines Segelschiffs auf See: Jede Nachricht ist ein Segel aus Leinen, das an einer hölzernen Rah hängt. |
 | **Velvet Casket** | Tagsüber Pastel Goth und nachts Traditional Goth, mit sargförmigen Nachrichten. |

@@ -30,15 +30,19 @@ Os temas iniciais não fazem parte da instalação, então não ocupam espaço a
 | Tema | Visual |
 | --- | --- |
 | **Apogee Lounge** | O salão de observação de uma nave de passageiros dos anos 1970, com um gigante gasoso pela janela e mensagens em painéis moldados. |
+| **Crepuscular** | Um almanaque do mar noturno: figuras encapuzadas fazem vigília em um penhasco sob uma lua atenta (elas estão comendo panquecas), com as mensagens descendo por uma única coluna pautada de livro-razão. |
 | **Dewglass** | Vidro brilhante dos anos 2000: as mensagens são gotas de gel sobre uma lagoa ensolarada ou uma noite com aurora. |
 | **Granite Watch** | Um posto de comando da Guerra Fria sob a montanha: as respostas aparecem em papel de teletipo e os widgets ficam em pranchetas penduradas. |
 | **Gutterlight** | Uma cidade gótica chuvosa desenhada como um quadrinho policial, com quadros a nanquim e caixas de narração. |
 | **Lantern Meadow** | Tranquilo e muito legível, sem movimento. |
 | **Lantern Path** | Uma coluna de leitura com movimento suave. |
 | **Maple's Bramble Cottage** | Uma casa de campo aconchegante, com uma coluna de leitura para respostas longas. |
+| **MARI to the Moon** | Um terminal de negociação: cada resposta é uma boleta de ordem, a barra superior exibe um letreiro de cotações e a lista de chats é uma lista de acompanhamento. |
 | **NEON//GRID** | Cyberpunk em neon, feito para respostas longas. |
 | **Petal OS** | Uma área de trabalho retrô divertida, com fontes em pixels. |
+| **Quiet Iris** | Uma inteligência de nave tranquila: instrumentos de grafite fosco, uma única lente vermelho-âmbar e cada chat acoplado ao longo de uma única coluna iluminada. |
 | **Rosalind's Folio** | Um layout de livro de histórias com toques de visual novel. |
+| **Sanguine Keep** | Um castelo gótico ao luar: veludo carmesim e dourados à noite, mármore claro de dia, com retratos em janelas de lanceta e mensagens em painéis de relicário. |
 | **Swiss Poster** | Design de pôster discreto e limpo, sem movimento. |
 | **Under Sail** | O convés de um veleiro no mar: cada mensagem é uma vela de lona pendurada em uma verga de madeira. |
 | **Velvet Casket** | Gótico em tons pastel de dia e gótico tradicional à noite, com mensagens em formato de caixão. |

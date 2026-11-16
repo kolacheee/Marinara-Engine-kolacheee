@@ -221,7 +221,7 @@ Domyślnie burza tylko rozświetla ekran. Dodaj `--mari-weather-lightning-bolt`,
 }
 ```
 
-Piorun biegnie w dół wzdłuż lewej lub prawej krawędzi ekranu, nigdy przez środek, gdzie znajduje się tekst czatu. Rozdziela się na kilka odnóg i świeci w wybranym kolorze błyskawicy. Pojawia się tylko podczas błysku aplikacji i zanika razem z nim, więc motyw nie może dodawać błysków ani zwiększać ich częstotliwości. W stylu pikselowym piorun jest rysowany z bloczków na siatce pikseli. Większość motywów startowych używa piorunów: Apogee Lounge, Dewglass, Gutterlight, Under Sail i Velvet Casket. Granite Watch je wyłącza, ponieważ przedstawia wnętrze.
+Piorun biegnie w dół wzdłuż lewej lub prawej krawędzi ekranu, nigdy przez środek, gdzie znajduje się tekst czatu. Rozdziela się na kilka odnóg i świeci w wybranym kolorze błyskawicy. Pojawia się tylko podczas błysku aplikacji i zanika razem z nim, więc motyw nie może dodawać błysków ani zwiększać ich częstotliwości. W stylu pikselowym piorun jest rysowany z bloczków na siatce pikseli. Większość motywów startowych używa piorunów: Apogee Lounge, Crepuscular, Dewglass, Gutterlight, MARI to the Moon, Sanguine Keep, Under Sail i Velvet Casket. Granite Watch i Quiet Iris je wyłączają, ponieważ przedstawiają wnętrza.
 
 ## Dostosowanie tła do pogody
 
@@ -307,6 +307,10 @@ Każdy motyw startowy w galerii motywów prezentuje efekty pogody. Pobierz jeden
 - **Under Sail**: szkwał na morzu z biało-niebieskimi piorunami wzdłuż takielunku, morska mgła, śnieg na relingu i wyblinkach oraz mewie pióra na wietrze.
 - **Apogee Lounge**: kosmiczna pogoda widziana przez okno salonu. Burza staje się burzą jonową w mgławicy z fioletowymi piorunami plazmowymi, deszcz – smugami mikrometeorów, śnieg – polem lodowym, a mgła – zamgleniem mgławicy. Maska utrzymuje wszystko w obrębie szyby.
 - **Granite Watch**: motyw przedstawiający wnętrze, więc pogoda pozostaje tak subtelna, jak tylko pozwala motyw. Deszcz przypomina kapanie z przewodów, śnieg – pył z tynku, pioruny są wyłączone, a błysk aplikacji jest zabarwiony tak, by przypominał migotanie lampy. Zajrzyj tutaj, żeby zobaczyć, jak wyciszyć pogodę w scenerii wnętrza.
+- **Quiet Iris**: kolejny motyw przedstawiający wnętrze, ale z iluminatorem. Pogoda jest widoczna tylko przez szybę, tło zmienia się na wersję z deszczem, szronem lub mgłą na iluminatorze, pioruny są wyłączone, a podczas burzy wnętrze lekko przygasa.
+- **MARI to the Moon**: giełdowa pogoda widziana przez okno pokoju tradera. Deszcz pada jako zielone ticki, burza to krach z czerwonymi piorunami i czerwonymi ekranami, śnieg to spadające monety i diamenty, wiatr niesie banknoty, kwiaty wystrzeliwują małe rakiety, a mgła to FUD nad panoramą miasta.
+- **Sanguine Keep**: pogoda widziana przez okna zamku. Szablon dla każdego tła trzyma deszcz, śnieg, płatki, liście i pioruny w szybach okien wielkiej sali (lub wieży schodowej na telefonie), nigdy nad kamieniem.
+- **Crepuscular**: to samo morze czytane przez almanach. Śnieg to cukier puder, kurz to okruchy, świetliki to czujne oczy, wiatr niesie skrawki papieru, pioruny to cienkie rytowane gałązki, a czuwanie trwa dalej pod parasolami. We wnętrzach morze widać przez witrażowe okno w ołowianych ramkach.
 
 ## Powiązane poradniki
 

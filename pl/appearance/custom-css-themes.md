@@ -30,15 +30,19 @@ Motywy startowe nie są częścią instalacji, więc nie zajmują miejsca, dopó
 | Motyw | Wygląd |
 | --- | --- |
 | **Apogee Lounge** | Salon widokowy kosmicznego liniowca w stylu lat 70., z gazowym olbrzymem za oknem i wiadomościami na profilowanych panelach. |
+| **Crepuscular** | Almanach nocnego morza: zakapturzone postacie czuwają na klifie pod czujnym księżycem (jedzą naleśniki), a wiadomości biegną w dół jedną liniowaną kolumną księgi rachunkowej. |
 | **Dewglass** | Błyszczące szkło w stylu lat 2000.: wiadomości to żelowe krople na tle słonecznej laguny lub nocnej zorzy. |
 | **Granite Watch** | Zimnowojenne stanowisko dowodzenia pod górą: odpowiedzi drukują się na papierze dalekopisowym, a widgety wiszą na podkładkach z klipsem. |
 | **Gutterlight** | Deszczowe gotyckie miasto narysowane jak komiks kryminalny, z tuszowanymi kadrami i ramkami narracyjnymi. |
 | **Lantern Meadow** | Spokojny i bardzo czytelny, bez ruchu. |
 | **Lantern Path** | Kolumna do czytania z delikatnym ruchem. |
 | **Maple's Bramble Cottage** | Przytulny domek z kolumną do czytania długich odpowiedzi. |
+| **MARI to the Moon** | Terminal giełdowy: każda odpowiedź to zlecenie, górny pasek wyświetla taśmę z notowaniami, a lista czatów to lista obserwowanych. |
 | **NEON//GRID** | Neonowy cyberpunk stworzony z myślą o długich odpowiedziach. |
 | **Petal OS** | Żartobliwy pulpit retro z pikselowymi czcionkami. |
+| **Quiet Iris** | Spokojna inteligencja statku: matowe grafitowe przyrządy, jedna czerwono-bursztynowa soczewka i każdy czat zadokowany wzdłuż jednego podświetlonego kręgosłupa. |
 | **Rosalind's Folio** | Układ baśniowej książki z elementami visual novel. |
+| **Sanguine Keep** | Gotycki zamek w świetle księżyca: karmazynowy aksamit i złocenia nocą, jasny marmur za dnia, z portretami w oknach ostrołukowych i wiadomościami na panelach relikwiarzy. |
 | **Swiss Poster** | Spokojna, przejrzysta stylistyka plakatu, bez ruchu. |
 | **Under Sail** | Pokład żaglowca na morzu: każda wiadomość to płócienny żagiel zawieszony na drewnianej rei. |
 | **Velvet Casket** | Pastelowy gotyk za dnia i tradycyjny gotyk nocą, z wiadomościami w kształcie trumien. |

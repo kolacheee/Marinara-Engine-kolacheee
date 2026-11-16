@@ -221,7 +221,7 @@ Por padrão, uma tempestade apenas produz clarões na tela. Adicione `--mari-wea
 }
 ```
 
-O raio desce pela borda esquerda ou direita da tela, nunca pelo meio, onde fica o texto do chat. Ele se divide em várias ramificações e brilha na cor que você definiu para o relâmpago. Só aparece enquanto o clarão do próprio aplicativo está visível e desaparece junto com ele, então um tema não pode adicionar clarões nem torná-los mais rápidos. No estilo pixel, o raio é desenhado em blocos na grade de pixels. A maioria dos temas iniciais usa raios: Apogee Lounge, Dewglass, Gutterlight, Under Sail e Velvet Casket. Granite Watch os desativa porque se passa em um ambiente interno.
+O raio desce pela borda esquerda ou direita da tela, nunca pelo meio, onde fica o texto do chat. Ele se divide em várias ramificações e brilha na cor que você definiu para o relâmpago. Só aparece enquanto o clarão do próprio aplicativo está visível e desaparece junto com ele, então um tema não pode adicionar clarões nem torná-los mais rápidos. No estilo pixel, o raio é desenhado em blocos na grade de pixels. A maioria dos temas iniciais usa raios: Apogee Lounge, Crepuscular, Dewglass, Gutterlight, MARI to the Moon, Sanguine Keep, Under Sail e Velvet Casket. Granite Watch e Quiet Iris os desativam porque se passam em ambientes internos.
 
 ## Faça o plano de fundo acompanhar o clima
 
@@ -307,6 +307,10 @@ Todos os temas iniciais da galeria de temas mostram efeitos de clima. Baixe um, 
 - **Under Sail**: uma tempestade em alto-mar com raios branco-azulados descendo pelo cordame, neblina marítima, neve na amurada e nas escadas de corda, e penas de gaivota ao vento.
 - **Apogee Lounge**: clima espacial visto pela janela do salão. Uma tempestade vira uma tempestade de íons em uma nebulosa com raios de plasma violeta, a chuva vira rastros de micrometeoros, a neve vira um campo de gelo e a neblina vira névoa de nebulosa. Uma máscara mantém tudo dentro da área do vidro.
 - **Granite Watch**: um tema de ambiente interno, então o clima fica tão discreto quanto um tema permite. A chuva parece pingos dos dutos, a neve parece pó de gesso, os raios ficam desativados e o clarão do aplicativo ganha a cor de uma lâmpada piscando. Veja este tema para aprender a suavizar o clima em um ambiente interno.
+- **Quiet Iris**: outro tema de interior, mas com uma escotilha panorâmica. O clima só aparece através do vidro, o fundo muda para uma versão com chuva, geada ou névoa na escotilha, os raios ficam desativados e o compartimento escurece um pouco durante uma tempestade.
+- **MARI to the Moon**: o clima do mercado visto pela janela da sala de trading. A chuva cai como ticks verdes, uma tempestade é um crash com raios vermelhos e telas vermelhas, a neve são moedas e diamantes caindo, o vento leva cédulas, as flores lançam foguetinhos e a névoa é FUD sobre o horizonte.
+- **Sanguine Keep**: o clima visto pelas janelas do castelo. Um estêncil para cada fundo mantém a chuva, a neve, as pétalas, as folhas e os raios dentro do vidro das janelas do grande salão (ou da torre da escada no celular), nunca sobre a pedra.
+- **Crepuscular**: o mesmo mar lido através de um almanaque. A neve é açúcar de confeiteiro, a poeira são migalhas, os vaga-lumes são olhos vigilantes, o vento leva pedaços de papel, os raios são finos galhos gravados e a vigília continua sob guarda-chuvas. Em ambientes internos, o mar aparece através de um vitral com moldura de chumbo.
 
 ## Guias relacionados
 

@@ -221,7 +221,7 @@ Standardmäßig lässt ein Sturm nur den Bildschirm aufleuchten. Füge `--mari-w
 }
 ```
 
-Der Blitz schlägt am linken oder rechten Bildschirmrand ein, nie in der Mitte über dem Chat-Text. Er gabelt sich in mehrere Zweige und leuchtet in deiner Blitzfarbe. Er ist nur zu sehen, solange das Aufleuchten der App aktiv ist, und verblasst damit. Ein Theme kann also weder zusätzliches Aufleuchten erzeugen noch es beschleunigen. Im Pixelstil wird der Blitz in Blöcken auf dem Pixelraster gezeichnet. Die meisten Starter-Themes verwenden Blitze: Apogee Lounge, Dewglass, Gutterlight, Under Sail und Velvet Casket. Granite Watch schaltet sie aus, weil es in Innenräumen spielt.
+Der Blitz schlägt am linken oder rechten Bildschirmrand ein, nie in der Mitte über dem Chat-Text. Er gabelt sich in mehrere Zweige und leuchtet in deiner Blitzfarbe. Er ist nur zu sehen, solange das Aufleuchten der App aktiv ist, und verblasst damit. Ein Theme kann also weder zusätzliches Aufleuchten erzeugen noch es beschleunigen. Im Pixelstil wird der Blitz in Blöcken auf dem Pixelraster gezeichnet. Die meisten Starter-Themes verwenden Blitze: Apogee Lounge, Crepuscular, Dewglass, Gutterlight, MARI to the Moon, Sanguine Keep, Under Sail und Velvet Casket. Granite Watch und Quiet Iris schalten sie aus, weil sie in Innenräumen spielen.
 
 ## Den Hintergrund dem Wetter anpassen
 
@@ -307,6 +307,10 @@ Jedes Starter-Theme in der Theme-Galerie zeigt Wettereffekte. Lade eines herunte
 - **Under Sail**: eine Bö auf See mit weiß-blauen Blitzen entlang der Takelage, Seenebel, Schnee auf Reling und Wanten sowie Möwenfedern im Wind.
 - **Apogee Lounge**: Weltraumwetter durch das Lounge-Fenster. Ein Sturm wird zu einem Ionensturm in einem Nebel mit violetten Plasmablitzen, Regen zu Mikrometeorstreifen, Schnee zu einem Eisfeld und Nebel zu Nebeldunst. Eine Maske hält alles hinter dem Glas.
 - **Granite Watch**: ein Theme für Innenräume, daher bleibt das Wetter so schwach, wie es ein Theme erlaubt. Regen wirkt wie Tropfen aus den Leitungen, Schnee wie Gipsstaub, Blitze sind ausgeschaltet und das Leuchten der App wird wie das Flackern einer Lampe eingefärbt. Hier siehst du, wie du das Wetter in Innenräumen abschwächst.
+- **Quiet Iris**: ein weiteres Theme für Innenräume, aber mit einem Sichtfenster. Wetter zeigt sich nur hinter dem Glas, der Hintergrund wechselt zu einer Version mit Regen, Frost oder Nebel auf dem Sichtfenster, Blitze sind aus und die Bucht wird bei Sturm etwas dunkler.
+- **MARI to the Moon**: Börsenwetter, gesehen durch das Fenster des Trading-Zimmers. Regen fällt als grüne Kursticks, ein Sturm ist ein Crash mit roten Blitzen und roten Bildschirmen, Schnee sind fallende Münzen und Diamanten, Wind weht Geldscheine, Blüten starten kleine Raketen und Nebel ist FUD über der Skyline.
+- **Sanguine Keep**: Wetter, gesehen durch die Fenster der Burg. Eine Schablone pro Hintergrund hält Regen, Schnee, Blütenblätter, Blätter und Blitze im Fensterglas der großen Halle (auf Handys im Treppenturm), nie über dem Stein.
+- **Crepuscular**: dieselbe See, gelesen durch einen Almanach. Schnee ist Puderzucker, Staub sind Krümel, Glühwürmchen sind wachende Augen, Wind weht Papierfetzen, Blitze sind dünne gravierte Äste und die Wache geht unter Regenschirmen weiter. In Innenräumen sieht man die See durch ein Bleiglasfenster.
 
 ## Verwandte Anleitungen
 

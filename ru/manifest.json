@@ -1,6 +1,6 @@
 {
   "language": "ru",
-  "sourceCommit": "7fc86da70d24b84317dc0a96ed9b1e8b852f9418",
+  "sourceCommit": "827821f4ed33dbc54efe357444ecebd6893b2a51",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -99,8 +99,8 @@
     },
     {
       "path": "appearance/custom-css-themes.md",
-      "sha256": "5e651d35c0abc95217c00e4c1f0eb270a8e25b1a37e047ae2990ac7d7443776f",
-      "bytes": 47324
+      "sha256": "576e00ce9a5f9240e0ae089874ae10eaa85d1620b5d5acaa134946645d2c2e7d",
+      "bytes": 48523
     },
     {
       "path": "appearance/fonts.md",
@@ -114,8 +114,8 @@
     },
     {
       "path": "appearance/theme-weather.md",
-      "sha256": "16aeaf3d1701418f8b8471a7a54446a48b0c2a13f48cdcadab8c9829aefce28b",
-      "bytes": 32877
+      "sha256": "99b081c5a5e9083374499e53f74902ce35ea37a008b5c17b7db1c049c76081fc",
+      "bytes": 34737
     },
     {
       "path": "characters/bot-browser.md",

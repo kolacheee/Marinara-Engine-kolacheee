@@ -30,15 +30,19 @@ Los temas iniciales no forman parte de la instalación, así que no ocupan espac
 | Tema | Aspecto |
 | --- | --- |
 | **Apogee Lounge** | La sala de observación de un transatlántico espacial de la década de 1970, con un gigante gaseoso tras la ventana y mensajes sobre paneles moldeados. |
+| **Crepuscular** | Un almanaque del mar nocturno: figuras encapuchadas montan guardia en un acantilado bajo una luna vigilante (están comiendo tortitas), con los mensajes en una sola columna de libro mayor pautada. |
 | **Dewglass** | Cristal brillante de los años 2000: los mensajes son gotas de gel sobre una laguna soleada o una noche de auroras. |
 | **Granite Watch** | Un puesto de mando de la Guerra Fría bajo la montaña: las respuestas se imprimen como papel de teletipo y los widgets cuelgan de portapapeles. |
 | **Gutterlight** | Una ciudad gótica lluviosa dibujada como un cómic policiaco, con viñetas entintadas y cuadros de texto. |
 | **Lantern Meadow** | Tranquilo y muy legible, sin movimiento. |
 | **Lantern Path** | Una columna de lectura con movimiento suave. |
 | **Maple's Bramble Cottage** | Una cabaña acogedora, con una columna de lectura para respuestas largas. |
+| **MARI to the Moon** | Una terminal de trading: cada respuesta es una orden de compra, la barra superior muestra una cinta de cotizaciones y la lista de chats es una lista de seguimiento. |
 | **NEON//GRID** | Ciberpunk de neón, diseñado para respuestas largas. |
 | **Petal OS** | Un escritorio retro y divertido con fuentes pixeladas. |
+| **Quiet Iris** | Una inteligencia de nave serena: instrumentos de grafito mate, una sola lente rojo ámbar y cada chat acoplado a una única columna iluminada. |
 | **Rosalind's Folio** | Un diseño de cuento con toques de novela visual. |
+| **Sanguine Keep** | Un castillo gótico a la luz de la luna: terciopelo carmesí y dorados de noche, mármol pálido de día, con retratos en ventanas ojivales y mensajes en paneles de relicario. |
 | **Swiss Poster** | Un diseño de cartel sobrio y limpio, sin movimiento. |
 | **Under Sail** | La cubierta de un velero en el mar: cada mensaje es una vela de lona colgada de una verga de madera. |
 | **Velvet Casket** | Gótico pastel de día y gótico tradicional de noche, con mensajes en forma de ataúd. |

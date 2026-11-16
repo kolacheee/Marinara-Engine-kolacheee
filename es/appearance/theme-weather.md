@@ -221,7 +221,7 @@ De forma predeterminada, una tormenta solo hace destellar la pantalla. Agrega `-
 }
 ```
 
-El rayo cae por el borde izquierdo o derecho de la pantalla, nunca por el centro, donde está el texto del chat. Se bifurca en varias ramas y brilla con el color que elegiste para los relámpagos. Solo se muestra mientras está activo el destello de la app y se desvanece con él, por lo que un tema no puede añadir destellos ni hacerlos más rápidos. En el estilo pixelado, el rayo se dibuja en bloques sobre la cuadrícula de píxeles. La mayoría de los temas iniciales usan rayos: Apogee Lounge, Dewglass, Gutterlight, Under Sail y Velvet Casket. Granite Watch los desactiva porque está ambientado en interiores.
+El rayo cae por el borde izquierdo o derecho de la pantalla, nunca por el centro, donde está el texto del chat. Se bifurca en varias ramas y brilla con el color que elegiste para los relámpagos. Solo se muestra mientras está activo el destello de la app y se desvanece con él, por lo que un tema no puede añadir destellos ni hacerlos más rápidos. En el estilo pixelado, el rayo se dibuja en bloques sobre la cuadrícula de píxeles. La mayoría de los temas iniciales usan rayos: Apogee Lounge, Crepuscular, Dewglass, Gutterlight, MARI to the Moon, Sanguine Keep, Under Sail y Velvet Casket. Granite Watch y Quiet Iris los desactivan porque están ambientados en interiores.
 
 ## Hacer que el fondo siga el clima
 
@@ -307,6 +307,10 @@ Todos los temas iniciales de la galería de temas exhiben el clima. Descarga uno
 - **Under Sail**: una borrasca en el mar con rayos blancos azulados que bajan por el aparejo, niebla marina, nieve sobre la borda y los obenques, y plumas de gaviota al viento.
 - **Apogee Lounge**: clima espacial visto por la ventana del salón. Una tormenta se convierte en una tormenta de iones dentro de una nebulosa con rayos de plasma violeta, la lluvia se convierte en trazos de micrometeoros, la nieve en un campo de hielo y la niebla en bruma de nebulosa. Una máscara lo mantiene todo dentro del cristal.
 - **Granite Watch**: un tema de interior, por lo que el clima se mantiene tan tenue como permite un tema. La lluvia parece gotear de los conductos, la nieve parece polvo de yeso, los rayos están desactivados y el destello de la app se tiñe como el parpadeo de una lámpara. Consulta este tema para ver cómo suavizar el clima en un espacio interior.
+- **Quiet Iris**: otro tema de interior, pero con un ventanal. El clima solo se ve a través del cristal, el fondo cambia a una versión con lluvia, escarcha o niebla en el ventanal, los rayos están desactivados y la bahía se oscurece un poco durante una tormenta.
+- **MARI to the Moon**: clima bursátil visto por la ventana de la sala de trading. La lluvia cae como ticks verdes, una tormenta es un desplome con rayos rojos y pantallas rojas, la nieve son monedas y diamantes que caen, el viento arrastra billetes, las flores lanzan cohetitos y la niebla es FUD sobre el horizonte.
+- **Sanguine Keep**: clima visto por las ventanas del castillo. Una plantilla por fondo mantiene la lluvia, la nieve, los pétalos, las hojas y los rayos dentro del cristal de las ventanas del gran salón (o de la torre de la escalera en el móvil), nunca sobre la piedra.
+- **Crepuscular**: el mismo mar leído a través de un almanaque. La nieve es azúcar glas, el polvo son migas, las luciérnagas son ojos que vigilan, el viento arrastra trozos de papel, los rayos son finas ramas grabadas y la vigilia continúa bajo los paraguas. En interiores, el mar se ve a través de una vidriera emplomada.
 
 ## Guías relacionadas
 

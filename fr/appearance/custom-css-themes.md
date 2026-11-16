@@ -30,15 +30,19 @@ Les thèmes de départ ne font pas partie de l'installation et ne prennent donc 
 | Thème | Apparence |
 | --- | --- |
 | **Apogee Lounge** | Le salon d'observation d'un paquebot spatial des années 1970, avec une géante gazeuse par la fenêtre et des messages sur des panneaux moulés. |
+| **Crepuscular** | Un almanach de la mer nocturne : des silhouettes encapuchonnées veillent sur une falaise sous une lune attentive (elles mangent des pancakes), avec les messages le long d'une seule colonne de registre réglée. |
 | **Dewglass** | Du verre brillant des années 2000 : les messages sont des gouttes de gel sur un lagon ensoleillé ou une nuit d'aurore. |
 | **Granite Watch** | Un poste de commandement de la guerre froide sous la montagne : les réponses s'impriment sur du papier de téléimprimeur et les widgets sont accrochés à des planchettes. |
 | **Gutterlight** | Une ville gothique sous la pluie, dessinée comme une bande dessinée policière, avec des cases encrées et des cartouches de texte. |
 | **Lantern Meadow** | Calme et très lisible, sans animation. |
 | **Lantern Path** | Une colonne de lecture avec des animations douces. |
 | **Maple's Bramble Cottage** | Un chalet douillet, avec une colonne de lecture pour les longues réponses. |
+| **MARI to the Moon** | Un terminal de trading : chaque réponse est un ticket d'ordre, la barre du haut fait défiler un bandeau boursier et la liste des chats est une liste de surveillance. |
 | **NEON//GRID** | Du cyberpunk néon, conçu pour les longues réponses. |
 | **Petal OS** | Un bureau rétro ludique avec des polices pixelisées. |
+| **Quiet Iris** | Une intelligence de vaisseau sereine : des instruments en graphite mat, un seul objectif rouge ambré, et chaque chat amarré le long d'une seule colonne lumineuse. |
 | **Rosalind's Folio** | Une mise en page de livre de contes avec des touches de visual novel. |
+| **Sanguine Keep** | Un château gothique au clair de lune : velours cramoisi et dorures la nuit, marbre pâle le jour, avec des portraits dans des fenêtres en lancette et des messages sur des panneaux de reliquaire. |
 | **Swiss Poster** | Un design d'affiche sobre et épuré, sans animation. |
 | **Under Sail** | Le pont d'un voilier en mer : chaque message est une voile de toile suspendue à une vergue en bois. |
 | **Velvet Casket** | Goth pastel le jour et goth traditionnel la nuit, avec des messages en forme de cercueil. |
