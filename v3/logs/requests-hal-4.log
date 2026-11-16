@@ -1,0 +1,18 @@
+start hal/bg-night-rain regen ['ref-current.png', 'raw.png']
+start hal/bg-night-snow regen ['ref-current.png', 'raw.png']
+start hal/bg-day-rain regen ['ref-current.png', 'raw.png']
+done  hal/bg-night-rain True
+start hal/bg-day-snow regen ['ref-current.png', 'raw.png']
+done  hal/bg-night-snow True
+start hal/bg-night-fog regen ['ref-current.png', 'raw.png']
+done  hal/bg-day-rain True
+start hal/bg-day-fog regen ['ref-current.png', 'raw.png']
+done  hal/bg-night-fog True
+done  hal/bg-day-snow True
+done  hal/bg-day-fog True
+ok hal/bg-night-rain (1672, 941) RGB
+ok hal/bg-day-rain (1672, 941) RGB
+ok hal/bg-night-snow (1672, 941) RGB
+ok hal/bg-day-snow (1672, 941) RGB
+ok hal/bg-night-fog (1672, 941) RGB
+ok hal/bg-day-fog (1672, 941) RGB
