@@ -1,0 +1,590 @@
+{
+  "sources": 8,
+  "files": 18,
+  "mode_blocks": 142848,
+  "cleanup_pixels": 709,
+  "selected_cleanup_pixels": 443,
+  "files_measurements": {
+    "cloud-light-0.png": {
+      "bounds": [
+        4,
+        8,
+        92,
+        87
+      ],
+      "covered_pixels": 5004,
+      "coverage_percent": 54.2969,
+      "components": [
+        5004
+      ]
+    },
+    "cloud-light-1.png": {
+      "bounds": [
+        10,
+        5,
+        86,
+        91
+      ],
+      "covered_pixels": 3330,
+      "coverage_percent": 36.1328,
+      "components": [
+        3330
+      ]
+    },
+    "cloud-light-2.png": {
+      "bounds": [
+        5,
+        18,
+        139,
+        77
+      ],
+      "covered_pixels": 4248,
+      "coverage_percent": 30.7292,
+      "components": [
+        4248
+      ]
+    },
+    "cloud-light-3.png": {
+      "bounds": [
+        6,
+        7,
+        137,
+        89
+      ],
+      "covered_pixels": 5495,
+      "coverage_percent": 39.7497,
+      "components": [
+        3424,
+        2071
+      ]
+    },
+    "cloud-light-4.png": {
+      "bounds": [
+        8,
+        7,
+        184,
+        137
+      ],
+      "covered_pixels": 16323,
+      "coverage_percent": 59.0386,
+      "components": [
+        16323
+      ]
+    },
+    "cloud-light-5.png": {
+      "bounds": [
+        6,
+        7,
+        186,
+        137
+      ],
+      "covered_pixels": 12479,
+      "coverage_percent": 45.1353,
+      "components": [
+        9365,
+        1652,
+        1462
+      ]
+    }
+  },
+  "skies": {
+    "town-light": {
+      "reference": "renders/ow-fantasy-0.png",
+      "crop": [
+        288,
+        96,
+        1152,
+        768
+      ],
+      "size": [
+        864,
+        672
+      ],
+      "clouds": 12,
+      "placements": [
+        [
+          0,
+          28,
+          35
+        ],
+        [
+          2,
+          198,
+          10
+        ],
+        [
+          1,
+          470,
+          32
+        ],
+        [
+          3,
+          632,
+          78
+        ],
+        [
+          4,
+          77,
+          197
+        ],
+        [
+          5,
+          350,
+          125
+        ],
+        [
+          0,
+          716,
+          282
+        ],
+        [
+          1,
+          558,
+          342
+        ],
+        [
+          2,
+          285,
+          351
+        ],
+        [
+          3,
+          12,
+          432
+        ],
+        [
+          4,
+          640,
+          412
+        ],
+        [
+          5,
+          357,
+          462
+        ]
+      ],
+      "shadow_offset": [
+        22,
+        18
+      ],
+      "shadow_preview_alpha": 56,
+      "coverage_percent": 16.1482,
+      "weighted_cover_percent": 12.1587
+    },
+    "town-dark": {
+      "reference": "renders/ow-fantasy-0.png",
+      "crop": [
+        288,
+        96,
+        1152,
+        768
+      ],
+      "size": [
+        864,
+        672
+      ],
+      "clouds": 12,
+      "placements": [
+        [
+          0,
+          28,
+          35
+        ],
+        [
+          2,
+          198,
+          10
+        ],
+        [
+          1,
+          470,
+          32
+        ],
+        [
+          3,
+          632,
+          78
+        ],
+        [
+          4,
+          77,
+          197
+        ],
+        [
+          5,
+          350,
+          125
+        ],
+        [
+          0,
+          716,
+          282
+        ],
+        [
+          1,
+          558,
+          342
+        ],
+        [
+          2,
+          285,
+          351
+        ],
+        [
+          3,
+          12,
+          432
+        ],
+        [
+          4,
+          640,
+          412
+        ],
+        [
+          5,
+          357,
+          462
+        ]
+      ],
+      "shadow_offset": [
+        22,
+        18
+      ],
+      "shadow_preview_alpha": 56,
+      "coverage_percent": 16.1482,
+      "weighted_cover_percent": 12.1587
+    },
+    "town-mixed": {
+      "reference": "renders/ow-fantasy-0.png",
+      "crop": [
+        288,
+        96,
+        1152,
+        768
+      ],
+      "size": [
+        864,
+        672
+      ],
+      "clouds": 12,
+      "placements": [
+        [
+          0,
+          28,
+          35
+        ],
+        [
+          2,
+          198,
+          10
+        ],
+        [
+          1,
+          470,
+          32
+        ],
+        [
+          3,
+          632,
+          78
+        ],
+        [
+          4,
+          77,
+          197
+        ],
+        [
+          5,
+          350,
+          125
+        ],
+        [
+          0,
+          716,
+          282
+        ],
+        [
+          1,
+          558,
+          342
+        ],
+        [
+          2,
+          285,
+          351
+        ],
+        [
+          3,
+          12,
+          432
+        ],
+        [
+          4,
+          640,
+          412
+        ],
+        [
+          5,
+          357,
+          462
+        ]
+      ],
+      "shadow_offset": [
+        22,
+        18
+      ],
+      "shadow_preview_alpha": 56,
+      "coverage_percent": 16.1482,
+      "weighted_cover_percent": 12.1587
+    },
+    "city-light": {
+      "reference": "renders/ow-modern-0.png",
+      "crop": [
+        288,
+        48,
+        1152,
+        720
+      ],
+      "size": [
+        864,
+        672
+      ],
+      "clouds": 12,
+      "placements": [
+        [
+          0,
+          28,
+          35
+        ],
+        [
+          2,
+          198,
+          10
+        ],
+        [
+          1,
+          470,
+          32
+        ],
+        [
+          3,
+          632,
+          78
+        ],
+        [
+          4,
+          77,
+          197
+        ],
+        [
+          5,
+          350,
+          125
+        ],
+        [
+          0,
+          716,
+          282
+        ],
+        [
+          1,
+          558,
+          342
+        ],
+        [
+          2,
+          285,
+          351
+        ],
+        [
+          3,
+          12,
+          432
+        ],
+        [
+          4,
+          640,
+          412
+        ],
+        [
+          5,
+          357,
+          462
+        ]
+      ],
+      "shadow_offset": [
+        22,
+        18
+      ],
+      "shadow_preview_alpha": 56,
+      "coverage_percent": 16.1482,
+      "weighted_cover_percent": 12.1587
+    },
+    "city-dark": {
+      "reference": "renders/ow-modern-0.png",
+      "crop": [
+        288,
+        48,
+        1152,
+        720
+      ],
+      "size": [
+        864,
+        672
+      ],
+      "clouds": 12,
+      "placements": [
+        [
+          0,
+          28,
+          35
+        ],
+        [
+          2,
+          198,
+          10
+        ],
+        [
+          1,
+          470,
+          32
+        ],
+        [
+          3,
+          632,
+          78
+        ],
+        [
+          4,
+          77,
+          197
+        ],
+        [
+          5,
+          350,
+          125
+        ],
+        [
+          0,
+          716,
+          282
+        ],
+        [
+          1,
+          558,
+          342
+        ],
+        [
+          2,
+          285,
+          351
+        ],
+        [
+          3,
+          12,
+          432
+        ],
+        [
+          4,
+          640,
+          412
+        ],
+        [
+          5,
+          357,
+          462
+        ]
+      ],
+      "shadow_offset": [
+        22,
+        18
+      ],
+      "shadow_preview_alpha": 56,
+      "coverage_percent": 16.1482,
+      "weighted_cover_percent": 12.1587
+    },
+    "city-mixed": {
+      "reference": "renders/ow-modern-0.png",
+      "crop": [
+        288,
+        48,
+        1152,
+        720
+      ],
+      "size": [
+        864,
+        672
+      ],
+      "clouds": 12,
+      "placements": [
+        [
+          0,
+          28,
+          35
+        ],
+        [
+          2,
+          198,
+          10
+        ],
+        [
+          1,
+          470,
+          32
+        ],
+        [
+          3,
+          632,
+          78
+        ],
+        [
+          4,
+          77,
+          197
+        ],
+        [
+          5,
+          350,
+          125
+        ],
+        [
+          0,
+          716,
+          282
+        ],
+        [
+          1,
+          558,
+          342
+        ],
+        [
+          2,
+          285,
+          351
+        ],
+        [
+          3,
+          12,
+          432
+        ],
+        [
+          4,
+          640,
+          412
+        ],
+        [
+          5,
+          357,
+          462
+        ]
+      ],
+      "shadow_offset": [
+        22,
+        18
+      ],
+      "shadow_preview_alpha": 56,
+      "coverage_percent": 16.1482,
+      "weighted_cover_percent": 12.1587
+    }
+  }
+}

@@ -1,3 +1,106 @@
+# Round 16 — Part C
+
+Made **18 transparent RGBA PNGs in `out/weather16/`**:
+**`cloud-light-0..5.png`**, **`cloud-dark-0..5.png`**, and
+**`cloud-shadow-0..5.png`**. Numbers **0–1 are 96×96**, **2–3 are 144×96**,
+and **4–5 are 192×144**. These are loose sprites at the existing native pixel
+scale, with top-left light. No ground base or seasonal partner belongs to C.
+
+**Drawing method:** **eight separate large built-in image-tool drawings on
+solid magenta**, selecting **0A / 1A / 2A / 3B / 4A / 5B**. The harder broken
+formations, 3 and 5, each have two drawings. 3B retains a wide diagonal clear
+channel between two substantial puff groups; 5B has a branching diagonal mass
+and two separate cloud islands. 5A's conspicuous open arch was rejected.
+The other shapes are compact/round, hooked, long, and broad/lobed. Each source
+was drawn independently; no cloud is a transformed copy of another. Exact
+prompts are in **`review/r16-C-generation.json`** and source PNG metadata;
+all eight originals remain as **`r16-C-source-*.png`**. A failed connection
+on the first 5A request was retried with the same prompt.
+
+Magenta is keyed, the painted bounds are cropped and aspect-registered with
+BOX sampling onto an **8W×8H** canvas, then locked to a fixed six-colour
+white/blue-grey palette without dithering. Every native pixel is the exact
+RGBA mode of **all 64 samples in its 8×8 block**, including transparent
+samples; ties use lexicographic RGBA order. The source's darkest contour
+colour is restricted to the one-pixel perimeter, and isolated one/two-pixel
+colour grains merge into neighbouring drawn shades. The selected six record
+**443 mode-to-final colour changes** (**709 across all eight alternatives**).
+No alpha/silhouette pixels changed during cleanup. No cloud shapes, puff
+texture, shadows or noise were constructed from geometric primitives.
+
+Working registered, mode and clean stages have hard **0/255 alpha**. The
+weather brief's translucency is applied only at export: every visible pixel
+in **all 18 final files** has alpha **192/255 = 75.2941%**. Every light/dark/
+shadow trio therefore has **byte-for-byte identical full alpha channels**,
+not just equivalent nonzero masks. The storm version is a six-entry palette
+mapping of the same drawn puff shading, from a lighter blue-grey top-left
+rim/cap to a near-black lower-right contour. Shadows have exactly one RGB
+colour, **(27,36,46)**. All transparent pixels have **RGB (0,0,0)**; there is
+no feathering, fractional edge alpha, blur or magenta fringe.
+
+**Measurements:** zero-based bounds, right/bottom exclusive. Values apply to
+all three partners. Cover counts every nontransparent pixel against the
+whole canvas; visible opacity is uniformly 75.2941%. All sides retain at
+least four clear pixels. Separate components in 3 and 5 are intentional
+substantial puff groups, never specks.
+
+| Number | Canvas | Painted bounds | Covered pixels | Cover | Connected groups |
+|---|---|---|---:|---:|---:|
+| 0 | 96×96 | (4,8)–(92,87) | 5,004 | 54.2969% | 1 |
+| 1 | 96×96 | (10,5)–(86,91) | 3,330 | 36.1328% | 1 |
+| 2 | 144×96 | (5,18)–(139,77) | 4,248 | 30.7292% | 1 |
+| 3 | 144×96 | (6,7)–(137,89) | 5,495 | 39.7497% | 2 |
+| 4 | 192×144 | (8,7)–(184,137) | 16,323 | 59.0386% | 1 |
+| 5 | 192×144 | (6,7)–(186,137) | 12,479 | 45.1353% | 3 |
+
+**Context review:** six **864×672** skies show **12 cloud sprites each**:
+light, dark and mixed skies over both the town and city. Each uses all six
+shapes twice at native scale, with no rotation or reflection. The backdrops
+are unscaled crops of the existing renders: fantasy **(288,96)–(1152,768)**,
+modern **(288,48)–(1152,720)**. Shadow copies are composited first, offset
+**(+22,+18)**, with their visible alpha replaced by **56** (equivalent to
+multiplying the exported shadow opacity by **56/192**). This fading and
+offset happen only in review composition; the delivered shadow pixels retain
+the exact cloud alpha. Clouds cover **16.1482%** of each sky, or **12.1587%**
+alpha-weighted cover. Separate single-cloud context sheets also inspect both
+colourways over all seven existing reference crops.
+
+**QC:** visual self-review inspected all six silhouettes and both colourways
+at native and enlarged sizes, town/city skies at **1× and 3×**, and every
+reference context. The cloud tops read as clustered puffs with stepped
+shading; town walls, buildings, roads and farmland show through faintly.
+The broken groups keep open channels at 1×. A final colour-grain check caught
+one isolated pixel in 5B; a second local cleanup pass merged it into adjacent
+shading and all affected proofs were rebuilt. No detached alpha specks or
+isolated one/two-pixel colour components remain in the selected sprites.
+This is saved-art self-review, not an independent critic or in-engine test.
+
+**Verification:** **490 / 490 checks pass**, replaying source registration and
+palette locking, **142,848 exact mode blocks / 9,142,272 source samples**,
+all recorded cleanup, storm palette transfer, flat shadows, 18 sizes,
+coverage and hashes, full trio alpha equality, zero hidden RGB, clear margins,
+all 84 single-cloud context placements, six 12-cloud scene composites and
+exact nearest-neighbour proof scales. **7,820 pre-existing art/reference/
+review files are byte-identical**; all earlier NOTES content is preserved.
+Details and output hashes: **`r16-C-validation.json`** and
+**`r16-C-measurements.json`**. Build and verification scripts use Python and
+Pillow only: **`r16-C-build.py`** / **`r16-C-verify.py`**.
+
+**Review material:** start at **`review/r16-C-review.html`** or
+**`r16-C-overview-1x.png`**. Every final file has a **1× + exact 4×** sheet,
+**`r16-C-file-cloud-<light|dark|shadow>-N.png`**. The overview has an exact
+4× partner; **`r16-C-sky-<town|city>-<light|dark|mixed>-{1,3,4}x.png`**
+supplies all six skies at three scales. **`r16-C-context-*-1x.png`** covers
+all seven references; **`r16-C-selection.png`** compares all eight drawings.
+Sources, registered/mode/clean stages, prompts, measurements and audit remain
+under this part's review prefix. There are **no ground bases in Part C**, so
+literal 3×3 ground repeats do not apply; the cloud sprites are not tiled.
+
+Only the eighteen named Part C outputs, `review/r16-C-*` material and this
+NOTES section were added. No commit, push or branch change.
+
+---
+
 # Round 16 — Part B: critic-r16B-3 redraw
 
 Drew **three focused built-in image-tool alternatives on solid magenta**.

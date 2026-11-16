@@ -1,0 +1,99 @@
+{
+  "part": "C",
+  "round": 1,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "cloud-light-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-light-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-light-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-light-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-light-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-light-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-dark-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-dark-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-dark-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-dark-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-dark-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-dark-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-shadow-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-shadow-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-shadow-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-shadow-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-shadow-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cloud-shadow-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic review of all 18 delivered PNGs. Inspected every file at exact native 1x and nearest-neighbour 4x; code confirmed that the inspected file sheets contain the delivered pixels at both scales. Inspected additional 8x details of clouds 0, 3, 4 and 5. The six formations read as distinct compact, hooked, long, split, broad and branching cloud groups. Their clustered puffs retain top-left highlights, lower-right grey shading, restrained native-pixel contours and clear gaps. No unacceptable blob, smear, copied silhouette, detached speck, magenta fringe, soft edge or square backing was found. The broad central puff in 4 remains articulated at 1x; the separate groups in 3 and 5 are substantial puffs, not stray pixels. Independent code checks pass all sizes: 0-1 are 96x96, 2-3 are 144x96 and 4-5 are 192x144. Every light/dark/shadow trio has byte-identical full alpha channels, with only 0 and 192. Visible opacity is 75.2941%, as Part C requests; this uniform translucency is intentional, not antialiased edge alpha. Every transparent pixel has zero RGB. Light and dark files each use six RGB colours, and every shadow uses only RGB (27,36,46). All sprites have clear margins. The 8-connected alpha component counts are 1, 1, 1, 2, 1 and 3; the smallest separate group contains 1462 pixels. Reviewed the supplied processing method and independently reproduced the exact RGBA mode of all 64 samples for each of 101376 selected native blocks. All six stored mode images match; cleanup changes 443 colour pixels without changing alpha, and the delivered light images exactly match the clean drawings with the specified export opacity. The working alpha is hard 0/255. Created and inspected independent 12-cloud skies over both the town and city render references at 1x and exact nearest-neighbour 3x, including every 3x quadrant. Each sky includes all six light and all six dark clouds, with matching shadows offset (+22,+18) and faded to alpha 56 only for composition. A large light cloud was deliberately placed across each settlement. Buildings, settlement identities, roads, fields and waterways remain readable through or around the clouds; the required faint underlying detail survives. Also inspected all 12 light/dark sprites, with their shadows, over each of the seven supplied native reference crops: town, city, grass, forest, desert, wasteland and snow. Evidence is saved as critic-r16C-1-context-*.png, critic-r16C-1-sky-*.png and critic-r16C-1-detail-*-8x.png. Ground repeats, seasonal partners and four-frame animation loops are not applicable to Part C: these are loose cloud sprites, not tiles or seasonal props. No file in out/weather16 was edited. Only this report and the permitted critic-r16C-1-*.png review composites were written; no commit, push or branch change was made."
+}

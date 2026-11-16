@@ -1,0 +1,2007 @@
+{
+  "passed": 490,
+  "total": 490,
+  "failed": [],
+  "mode_blocks": 142848,
+  "mode_samples": 9142272,
+  "unchanged_preexisting_files": 7820,
+  "checks": [
+    {
+      "check": "0a: source crop",
+      "passed": true
+    },
+    {
+      "check": "0a: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "0a: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 9216,
+        "samples": 589824
+      }
+    },
+    {
+      "check": "0a: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "0a registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "0a registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "0a mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "0a mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "0a clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "0a clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "0a: component measurements",
+      "passed": true
+    },
+    {
+      "check": "1a: source crop",
+      "passed": true
+    },
+    {
+      "check": "1a: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "1a: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 9216,
+        "samples": 589824
+      }
+    },
+    {
+      "check": "1a: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "1a registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "1a registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "1a mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "1a mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "1a clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "1a clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "1a: component measurements",
+      "passed": true
+    },
+    {
+      "check": "2a: source crop",
+      "passed": true
+    },
+    {
+      "check": "2a: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "2a: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 13824,
+        "samples": 884736
+      }
+    },
+    {
+      "check": "2a: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "2a registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "2a registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "2a mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "2a mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "2a clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "2a clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "2a: component measurements",
+      "passed": true
+    },
+    {
+      "check": "3a: source crop",
+      "passed": true
+    },
+    {
+      "check": "3a: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "3a: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 13824,
+        "samples": 884736
+      }
+    },
+    {
+      "check": "3a: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "3a registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "3a registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "3a mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "3a mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "3a clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "3a clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "3a: component measurements",
+      "passed": true
+    },
+    {
+      "check": "4a: source crop",
+      "passed": true
+    },
+    {
+      "check": "4a: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "4a: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 27648,
+        "samples": 1769472
+      }
+    },
+    {
+      "check": "4a: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "4a registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "4a registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "4a mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "4a mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "4a clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "4a clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "4a: component measurements",
+      "passed": true
+    },
+    {
+      "check": "3b: source crop",
+      "passed": true
+    },
+    {
+      "check": "3b: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "3b: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 13824,
+        "samples": 884736
+      }
+    },
+    {
+      "check": "3b: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "3b registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "3b registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "3b mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "3b mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "3b clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "3b clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "3b: component measurements",
+      "passed": true
+    },
+    {
+      "check": "5a: source crop",
+      "passed": true
+    },
+    {
+      "check": "5a: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "5a: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 27648,
+        "samples": 1769472
+      }
+    },
+    {
+      "check": "5a: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "5a registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "5a registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "5a mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "5a mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "5a clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "5a clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "5a: component measurements",
+      "passed": true
+    },
+    {
+      "check": "5b: source crop",
+      "passed": true
+    },
+    {
+      "check": "5b: source registration and palette replay",
+      "passed": true
+    },
+    {
+      "check": "5b: exact 64-sample RGBA mode",
+      "passed": true,
+      "detail": {
+        "blocks": 27648,
+        "samples": 1769472
+      }
+    },
+    {
+      "check": "5b: cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "5b registered: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "5b registered: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "5b mode: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "5b mode: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "5b clean: hard working alpha",
+      "passed": true
+    },
+    {
+      "check": "5b clean: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "5b: component measurements",
+      "passed": true
+    },
+    {
+      "check": "18 requested outputs",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-0.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-0.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-0.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-1.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-1.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-1.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-2.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-2.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-2.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-3.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-3.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-3.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-4.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-4.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-4.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-light-5.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: no isolated colour grains",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-dark-5.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: dimensions",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: exact 0/192 alpha",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: fixed palette",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: no magenta",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: count and bounds",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: coverage measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: alpha-weighted measurement",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: no detached specks",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: clear margin",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: SHA-256",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: review 1x",
+      "passed": true
+    },
+    {
+      "check": "cloud-shadow-5.png: review 4x",
+      "passed": true
+    },
+    {
+      "check": "0: full alpha byte equality in all three files",
+      "passed": true
+    },
+    {
+      "check": "0: source silhouette equality",
+      "passed": true
+    },
+    {
+      "check": "0: light paint replay",
+      "passed": true
+    },
+    {
+      "check": "0: storm LUT replay",
+      "passed": true
+    },
+    {
+      "check": "0: shadow is exactly one flat colour",
+      "passed": true
+    },
+    {
+      "check": "1: full alpha byte equality in all three files",
+      "passed": true
+    },
+    {
+      "check": "1: source silhouette equality",
+      "passed": true
+    },
+    {
+      "check": "1: light paint replay",
+      "passed": true
+    },
+    {
+      "check": "1: storm LUT replay",
+      "passed": true
+    },
+    {
+      "check": "1: shadow is exactly one flat colour",
+      "passed": true
+    },
+    {
+      "check": "2: full alpha byte equality in all three files",
+      "passed": true
+    },
+    {
+      "check": "2: source silhouette equality",
+      "passed": true
+    },
+    {
+      "check": "2: light paint replay",
+      "passed": true
+    },
+    {
+      "check": "2: storm LUT replay",
+      "passed": true
+    },
+    {
+      "check": "2: shadow is exactly one flat colour",
+      "passed": true
+    },
+    {
+      "check": "3: full alpha byte equality in all three files",
+      "passed": true
+    },
+    {
+      "check": "3: source silhouette equality",
+      "passed": true
+    },
+    {
+      "check": "3: light paint replay",
+      "passed": true
+    },
+    {
+      "check": "3: storm LUT replay",
+      "passed": true
+    },
+    {
+      "check": "3: shadow is exactly one flat colour",
+      "passed": true
+    },
+    {
+      "check": "4: full alpha byte equality in all three files",
+      "passed": true
+    },
+    {
+      "check": "4: source silhouette equality",
+      "passed": true
+    },
+    {
+      "check": "4: light paint replay",
+      "passed": true
+    },
+    {
+      "check": "4: storm LUT replay",
+      "passed": true
+    },
+    {
+      "check": "4: shadow is exactly one flat colour",
+      "passed": true
+    },
+    {
+      "check": "5: full alpha byte equality in all three files",
+      "passed": true
+    },
+    {
+      "check": "5: source silhouette equality",
+      "passed": true
+    },
+    {
+      "check": "5: light paint replay",
+      "passed": true
+    },
+    {
+      "check": "5: storm LUT replay",
+      "passed": true
+    },
+    {
+      "check": "5: shadow is exactly one flat colour",
+      "passed": true
+    },
+    {
+      "check": "all six silhouettes distinct",
+      "passed": true
+    },
+    {
+      "check": "town-light: 12 clouds",
+      "passed": true
+    },
+    {
+      "check": "town-light: native reference crop",
+      "passed": true
+    },
+    {
+      "check": "town-light: native composite replay",
+      "passed": true
+    },
+    {
+      "check": "town-light: sky coverage",
+      "passed": true
+    },
+    {
+      "check": "town-light: exact nearest-neighbour 3x",
+      "passed": true
+    },
+    {
+      "check": "town-light: exact nearest-neighbour 4x",
+      "passed": true
+    },
+    {
+      "check": "town-dark: 12 clouds",
+      "passed": true
+    },
+    {
+      "check": "town-dark: native reference crop",
+      "passed": true
+    },
+    {
+      "check": "town-dark: native composite replay",
+      "passed": true
+    },
+    {
+      "check": "town-dark: sky coverage",
+      "passed": true
+    },
+    {
+      "check": "town-dark: exact nearest-neighbour 3x",
+      "passed": true
+    },
+    {
+      "check": "town-dark: exact nearest-neighbour 4x",
+      "passed": true
+    },
+    {
+      "check": "town-mixed: 12 clouds",
+      "passed": true
+    },
+    {
+      "check": "town-mixed: native reference crop",
+      "passed": true
+    },
+    {
+      "check": "town-mixed: native composite replay",
+      "passed": true
+    },
+    {
+      "check": "town-mixed: sky coverage",
+      "passed": true
+    },
+    {
+      "check": "town-mixed: exact nearest-neighbour 3x",
+      "passed": true
+    },
+    {
+      "check": "town-mixed: exact nearest-neighbour 4x",
+      "passed": true
+    },
+    {
+      "check": "city-light: 12 clouds",
+      "passed": true
+    },
+    {
+      "check": "city-light: native reference crop",
+      "passed": true
+    },
+    {
+      "check": "city-light: native composite replay",
+      "passed": true
+    },
+    {
+      "check": "city-light: sky coverage",
+      "passed": true
+    },
+    {
+      "check": "city-light: exact nearest-neighbour 3x",
+      "passed": true
+    },
+    {
+      "check": "city-light: exact nearest-neighbour 4x",
+      "passed": true
+    },
+    {
+      "check": "city-dark: 12 clouds",
+      "passed": true
+    },
+    {
+      "check": "city-dark: native reference crop",
+      "passed": true
+    },
+    {
+      "check": "city-dark: native composite replay",
+      "passed": true
+    },
+    {
+      "check": "city-dark: sky coverage",
+      "passed": true
+    },
+    {
+      "check": "city-dark: exact nearest-neighbour 3x",
+      "passed": true
+    },
+    {
+      "check": "city-dark: exact nearest-neighbour 4x",
+      "passed": true
+    },
+    {
+      "check": "city-mixed: 12 clouds",
+      "passed": true
+    },
+    {
+      "check": "city-mixed: native reference crop",
+      "passed": true
+    },
+    {
+      "check": "city-mixed: native composite replay",
+      "passed": true
+    },
+    {
+      "check": "city-mixed: sky coverage",
+      "passed": true
+    },
+    {
+      "check": "city-mixed: exact nearest-neighbour 3x",
+      "passed": true
+    },
+    {
+      "check": "city-mixed: exact nearest-neighbour 4x",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-desert-sand dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-forest dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-grass dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-fantasy-town dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-modern-city dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-snow dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland light-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland light-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland light-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland light-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland light-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland light-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland dark-0: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland dark-1: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland dark-2: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland dark-3: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland dark-4: exact context",
+      "passed": true
+    },
+    {
+      "check": "ref-wasteland dark-5: exact context",
+      "passed": true
+    },
+    {
+      "check": "overview exact 4x",
+      "passed": true
+    },
+    {
+      "check": "all pre-existing art and reviews unchanged",
+      "passed": true,
+      "detail": {
+        "unchanged": 7820,
+        "changed": []
+      }
+    },
+    {
+      "check": "earlier NOTES content preserved",
+      "passed": true
+    },
+    {
+      "check": "new files limited to Part C outputs and review prefix",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}
