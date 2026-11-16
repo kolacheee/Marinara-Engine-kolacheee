@@ -82,3 +82,4 @@ hal/bg-night-snow rc=0 secs=80 exists=yes
 hal/bg-day-snow rc=0 secs=104 exists=yes
 wsb/mari-bags rc=0 secs=92 exists=yes
 wsb/mari-rocket rc=0 secs=96 exists=yes
+wsb/mari-bags rc=0 secs=81 exists=yes

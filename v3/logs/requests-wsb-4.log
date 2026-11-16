@@ -1,0 +1,3 @@
+start wsb/mari-bags regen ['ref-current.png', 'mari-ref.png', 'mari-rocket.png']
+done  wsb/mari-bags True
+ok wsb/mari-bags (1024, 1024) RGBA
