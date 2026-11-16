@@ -1,0 +1,45 @@
+start castle/mask-night-hall twin ['raw.png']
+start castle/day-hall twin ['ref-current.png']
+start castle/phone-day twin ['ref-current.png']
+done  castle/mask-night-hall True
+start castle/mask-phone-night twin ['raw.png']
+done  castle/day-hall True
+start castle/phone-storm regen ['ref-current.png', 'raw.png']
+done  castle/phone-day True
+start castle/storm-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/castle/storm-day/raw.png': No such file or directory
+done  castle/mask-phone-night True
+start castle/snow-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/castle/snow-day/raw.png': No such file or directory
+done  castle/phone-storm True
+start castle/fog-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/castle/fog-day/raw.png': No such file or directory
+done  castle/storm-day True
+start castle/phone-storm-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/castle/phone-storm-day/raw.png': No such file or directory
+done  castle/snow-day True
+start castle/phone-snow-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/castle/phone-snow-day/raw.png': No such file or directory
+done  castle/fog-day True
+start castle/phone-fog-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v3/work/castle/phone-fog-day/raw.png': No such file or directory
+done  castle/phone-storm-day True
+start castle/mask-day-hall twin ['raw.png']
+done  castle/phone-snow-day True
+start castle/mask-phone-day twin ['raw.png']
+done  castle/phone-fog-day True
+done  castle/mask-day-hall True
+done  castle/mask-phone-day True
+ok castle/day-hall (1672, 941) RGB
+ok castle/phone-day (887, 1774) RGB
+ok castle/storm-day (1672, 941) RGB
+ok castle/snow-day (1672, 941) RGB
+ok castle/fog-day (1672, 941) RGB
+ok castle/phone-storm-day (887, 1774) RGB
+ok castle/phone-snow-day (887, 1774) RGB
+ok castle/phone-fog-day (887, 1774) RGB
+ok castle/mask-day-hall (1672, 941) RGB
+ok castle/mask-phone-day (887, 1774) RGB
+ok castle/mask-night-hall (1672, 941) RGB
+ok castle/mask-phone-night (887, 1774) RGB
+ok castle/phone-storm (887, 1774) RGB

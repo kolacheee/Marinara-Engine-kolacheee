@@ -58,3 +58,16 @@ castle/phone-snow rc=0 secs=126 exists=yes
 castle/phone-fog rc=0 secs=115 exists=yes
 castle/fog-day rc=0 secs=117 exists=yes
 REGEN: castle/phone-storm rc=0 secs=64 exists=yes
+castle/mask-night-hall rc=0 secs=110 exists=yes
+castle/day-hall rc=0 secs=144 exists=yes
+castle/phone-day rc=0 secs=156 exists=yes
+castle/mask-phone-night rc=0 secs=90 exists=yes
+castle/phone-storm rc=0 secs=111 exists=yes
+castle/storm-day rc=0 secs=143 exists=yes
+castle/snow-day rc=0 secs=117 exists=yes
+castle/fog-day rc=0 secs=124 exists=yes
+castle/phone-storm-day rc=0 secs=100 exists=yes
+castle/phone-snow-day rc=0 secs=117 exists=yes
+castle/phone-fog-day rc=0 secs=106 exists=yes
+castle/mask-day-hall rc=0 secs=122 exists=yes
+castle/mask-phone-day rc=0 secs=97 exists=yes
