@@ -1,3 +1,150 @@
+# Round 14 — Part B2
+
+Redrew **all 24 hills** smaller and enlarged only **mountain peaks 6 and 7**
+in summer and winter: **28 transparent PNGs** in `out/`. The four single hills
+retain their individual crests, terrace marks and attached tufts; the four
+rolling groups retain their two or three overlapping crests and embedded
+stones. Autumn keeps tawny olive/ochre slopes; winter keeps solid white snow,
+blue-grey lower-right shade and a thin dark contact foot. The two enlarged
+mountains remain the rounded rocky knoll and stepped outcrop, using the
+approved grey/slate/olive and snow palettes of peaks 3–5.
+
+**Files:** `out/hills-prop-0..7.png`, `hills@autumn-prop-0..7.png`,
+`hills@winter-prop-0..7.png`, `mountains-peak-{6,7}.png` and
+`mountains@winter-peak-{6,7}.png`. Peaks **0–5**, their winter partners,
+all ground bases and all other starting art remain byte-identical.
+
+**Method:** **34 separate large built-in image-tool drawings on solid
+magenta**: twelve summer hill paintings, sixteen seasonal hill paintings,
+four summer knoll paintings and two winter knoll paintings. Two variants
+were drawn for each difficult small summer hill and each enlarged summer
+knoll. Selected hills **0b / 1a / 2b / 3b / 4a / 5a / 6a / 7a**, mountains
+**6a / 7a**, and seasonal paintings **a**. The second small-hill variants
+were compared at native size for rounded shoulders and surviving terrace
+marks; the first mountain variants better retained the old knoll designs.
+Exact prompts are embedded in `review/r14-B2-source-*.png`.
+
+Each fresh painting is magenta-keyed, cropped and BOX-registered to its new
+visible bounds on **384×384** or **768×768**, then locked without dithering
+to explicit palettes sampled from the starting art: **10 colours per hill
+season, 13 summer mountain colours and 16 winter mountain colours**. Every
+native pixel is the exact RGBA mode of **all 64 samples in its 8×8 block**,
+including transparency, with lexicographic RGBA tie-breaking. Nearest
+neighbour is used for proof enlargement only; the old sprites were not
+shrunk or enlarged to make the new output artwork.
+
+Seasonal drawings are composited through the exact new summer alpha masks.
+No missing painted samples needed nearest-sample filling. Native contour
+cleanup resolves the outline at one pixel and removes isolated colour
+remnants while retaining embedded stone material. The final recorded
+registration/contour/colour cleanup changes **1,115 pixels** across the
+28 outputs. Autumn material cleanup changes **two further pixels**, removing
+an invented stone and keeping the summer stone locations. Code only
+registers, reduces, palette-locks, cleans and composites the drawings; it
+constructs no landforms or noise. Final hills use **5–8 opaque colours**;
+changed mountains use **11–15**. Alpha is **0/255**, with **zero RGB under
+transparency**, and each changed sprite is one connected component.
+
+**Measurements:** all 24 hill and 16 mountain bounding boxes are listed
+below. Coordinates are zero-based; right and bottom are exclusive. Bounds
+include the contact edge. Small hill feet remain on **row 43**, large hill
+feet on **row 88**; the enlarged peaks are centred with feet on **row 93**.
+All sixteen hill seasonal masks and both enlarged winter peak masks have
+**zero differing alpha pixels** from their new summer partner.
+
+Every hill is **18–36 px tall**; every mountain is **45–74 px tall**. The
+shortest mountain remains **9 px taller** than the tallest hill. The new
+peaks are both **58×52**, versus the former **40×29 / 36×31**.
+
+| Hill file in `out/` | Bounds (left, top, right, bottom) | Visible size |
+|---|---|---|
+| `hills-prop-0.png` | (9, 24, 39, 44) | 30×20 |
+| `hills-prop-1.png` | (9, 25, 39, 44) | 30×19 |
+| `hills-prop-2.png` | (9, 25, 39, 44) | 30×19 |
+| `hills-prop-3.png` | (9, 26, 39, 44) | 30×18 |
+| `hills-prop-4.png` | (18, 53, 78, 89) | 60×36 |
+| `hills-prop-5.png` | (18, 55, 78, 89) | 60×34 |
+| `hills-prop-6.png` | (18, 54, 78, 89) | 60×35 |
+| `hills-prop-7.png` | (18, 55, 78, 89) | 60×34 |
+| `hills@autumn-prop-0.png` | (9, 24, 39, 44) | 30×20 |
+| `hills@autumn-prop-1.png` | (9, 25, 39, 44) | 30×19 |
+| `hills@autumn-prop-2.png` | (9, 25, 39, 44) | 30×19 |
+| `hills@autumn-prop-3.png` | (9, 26, 39, 44) | 30×18 |
+| `hills@autumn-prop-4.png` | (18, 53, 78, 89) | 60×36 |
+| `hills@autumn-prop-5.png` | (18, 55, 78, 89) | 60×34 |
+| `hills@autumn-prop-6.png` | (18, 54, 78, 89) | 60×35 |
+| `hills@autumn-prop-7.png` | (18, 55, 78, 89) | 60×34 |
+| `hills@winter-prop-0.png` | (9, 24, 39, 44) | 30×20 |
+| `hills@winter-prop-1.png` | (9, 25, 39, 44) | 30×19 |
+| `hills@winter-prop-2.png` | (9, 25, 39, 44) | 30×19 |
+| `hills@winter-prop-3.png` | (9, 26, 39, 44) | 30×18 |
+| `hills@winter-prop-4.png` | (18, 53, 78, 89) | 60×36 |
+| `hills@winter-prop-5.png` | (18, 55, 78, 89) | 60×34 |
+| `hills@winter-prop-6.png` | (18, 54, 78, 89) | 60×35 |
+| `hills@winter-prop-7.png` | (18, 55, 78, 89) | 60×34 |
+
+| Mountain file in `out/` | Bounds (left, top, right, bottom) | Visible size | Change |
+|---|---|---|---|
+| `mountains-peak-0.png` | (7, 20, 89, 94) | 82×74 | unchanged |
+| `mountains-peak-1.png` | (8, 28, 88, 94) | 80×66 | unchanged |
+| `mountains-peak-2.png` | (10, 27, 86, 94) | 76×67 | unchanged |
+| `mountains-peak-3.png` | (18, 41, 78, 94) | 60×53 | unchanged |
+| `mountains-peak-4.png` | (22, 35, 74, 94) | 52×59 | unchanged |
+| `mountains-peak-5.png` | (22, 49, 74, 94) | 52×45 | unchanged |
+| `mountains-peak-6.png` | (19, 42, 77, 94) | 58×52 | redrawn |
+| `mountains-peak-7.png` | (19, 42, 77, 94) | 58×52 | redrawn |
+| `mountains@winter-peak-0.png` | (7, 20, 89, 94) | 82×74 | unchanged |
+| `mountains@winter-peak-1.png` | (8, 28, 88, 94) | 80×66 | unchanged |
+| `mountains@winter-peak-2.png` | (10, 26, 86, 94) | 76×68 | unchanged |
+| `mountains@winter-peak-3.png` | (18, 41, 78, 94) | 60×53 | unchanged |
+| `mountains@winter-peak-4.png` | (22, 35, 74, 94) | 52×59 | unchanged |
+| `mountains@winter-peak-5.png` | (22, 49, 74, 94) | 52×45 | unchanged |
+| `mountains@winter-peak-6.png` | (19, 42, 77, 94) | 58×52 | redrawn |
+| `mountains@winter-peak-7.png` | (19, 42, 77, 94) | 58×52 | redrawn |
+
+**QC and review:** inspected every changed file over matching ground at
+native **1× and exact nearest-neighbour 4×**, full seasonal hill sheets,
+all sixteen mountains, same-foot size comparisons and before/after hills.
+The **768×432** summer and winter map crops each scatter **24 hills** beside
+an overlapping mountain range, using the Round 5 lattice: **48 px across,
+30 px between rows, alternate rows shifted 24 px**, composited back to front
+with mountain overscan. The same placement list is used in both seasons.
+At 1×, hills read clearly lower than the range; terrace strokes and crest
+separation survive the shrink. The close views retain one-pixel outlines,
+top-left light and attached contact feet. No detached alpha specks, backing
+squares, magenta fringe, smears, haze or fog remain. This is **visual
+self-review of asset composites**, without a new independent critic verdict
+or live-game check.
+
+Primary proofs are `review/r14-B2-{summer,winter}-map-{1x,4x}.png`,
+`r14-B2-{summer,winter}-size-comparison-{1x,4x}.png`,
+`r14-B2-{summer,autumn,winter}-hills-{1x,4x}.png`,
+`r14-B2-{summer,winter}-mountains-all-{1x,4x}.png`, and
+`r14-B2-seasons-{1x,4x}.png`. Each of the 28 changed files also has an
+individual ground-backed **1×/4×** pair. All five unchanged grounds used
+in these proofs have literal, unlabelled **3×3 repeats**, **864×864 at 1× /
+3456×3456 at 4×**; no ground base was changed.
+
+Validation recomputed **202,752 mode blocks / 12,976,128 samples** across
+all 34 paintings, reconstructed every final sprite from its mode stage and
+recorded cleanup, checked **46 exact 4× pairs**, **45 literal repeat crops**,
+all dimensions, palette membership, alpha, connected silhouettes, centring,
+foot rows, the 18 exact seasonal masks and both lattice composites.
+**All 3,445 protected starting files remain byte-identical**, including the
+brief, references, all earlier reviews, peaks 0–5 and their winter partners.
+Two unrelated `city-view-*-2026-11-16.png` reviews appeared during the run
+and were left untouched.
+
+There are **311 new B2 PNGs**, including drawings, inputs, alternatives,
+processing stages and proofs. The processing recipe and per-file cleanup
+records are in `r14-B2-processing.png`; placement and review recipes are in
+`r14-B2-review-recipe.png`; the complete measurements, validation recipe and
+results are in `r14-B2-validation.png`. Starting hashes are in
+`r14-B2-reference.png`. Only the 28 named outputs, these B2 review PNGs and
+this top note were written for B2. **No commit, push or branch change.**
+
+---
+
 # Round 14 — Part C2
 
 Redrew only **`out/treeline_forest@winter-0..7.png`**, eight transparent

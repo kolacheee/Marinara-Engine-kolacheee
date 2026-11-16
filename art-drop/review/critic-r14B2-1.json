@@ -1,0 +1,209 @@
+{
+  "part": "B2",
+  "round": 1,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "hills-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains-peak-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mountains@winter-peak-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent B2 critique of the actual current output files, not the artist self-review. PASS: the reduced hills retain individual rounded crests, wrapping terrace marks, attached texture and contact feet. The multi-hill groups keep their overlapping crests. Solid colour clusters, one-native-pixel contours and top-left light survive at 1x; no blur, detached alpha specks, backing squares or magenta fringe was found. Autumn remains tawny olive/ochre. Winter has solid snow planes and blue-grey lower-right shadow, with a dark foot; it does not read as fog. Enlarged mountain 6 keeps its rounded rocky crown and 7 its stepped outcrop; both fit peaks 3-5 in palette, strata and outline weight. On the summer and winter map proofs, and in same-foot comparisons, hills and mountains are clearly different in height at 1x. The largest hill is 36 px tall, the shortest protected mountain 45 px, and the enlarged mountains 52 px.\n\nReviewed all 24 hills and all 16 mountains at exact 1x and nearest-neighbour 4x, plus 8x close-ups of small hills and changed mountains. Compared all 24 hill designs with their pre-B2 HEAD versions. Viewed props on summer grass and matching seasonal ground, all five contextual bases in literal 3x3 repeats, and wrap intersections at 4x. These unchanged bases show no hard wrap seam affecting B2. Seasonal alpha overlays are recorded in critic-r14B2-1-mask-overlay-1x.png (grey=intersection, magenta=summer-only, cyan=seasonal-only).\n\nIndependent code checks: every reviewed PNG has alpha only 0/255, zero RGB under transparency and one 8-connected opaque component. All 16 hill seasonal masks and both changed winter mountain masks have zero differing pixels. Small hill feet remain at row 43; large hill feet remain at row 88; all mountain feet are at row 93. Every silhouette is horizontally centred. All target dimensions pass. Recomputed all 175,104 native mode blocks (11,206,656 locked RGBA samples) for the 28 selected paintings, including transparency and lexicographic ties, and reconstructed each output from the recorded cleanup: zero mismatches. Verified 46 exact 4x proof pairs, 45 repeated ground cells, and both 24-hill map composites against the current files and their 48 px horizontal / 30 px row / 24 px alternate-row lattice.\n\nScope: summer/winter mountain peaks 0-5 are byte-identical to HEAD and the pre-B2 hash snapshot. Their winter masks already differ from summer by 6, 7, 20, 3, 7 and 7 pixels respectively; winter peak 2 is 68 px tall versus summer 67 px. These are pre-existing differences in explicitly protected files, not B2 failures or requests to alter them. All 28 changed output files meet B2's rules. No out/ file was edited during this critique. No live-game claim is made.\n\nAll 40 opaque bounding boxes follow. Coordinates are zero-based, with right and bottom exclusive; bounds include the contact foot.\nhills-prop-0: cell 48x48; bbox (9,24,39,44); opaque extent 30x20; foot row 43.\nhills-prop-1: cell 48x48; bbox (9,25,39,44); opaque extent 30x19; foot row 43.\nhills-prop-2: cell 48x48; bbox (9,25,39,44); opaque extent 30x19; foot row 43.\nhills-prop-3: cell 48x48; bbox (9,26,39,44); opaque extent 30x18; foot row 43.\nhills-prop-4: cell 96x96; bbox (18,53,78,89); opaque extent 60x36; foot row 88.\nhills-prop-5: cell 96x96; bbox (18,55,78,89); opaque extent 60x34; foot row 88.\nhills-prop-6: cell 96x96; bbox (18,54,78,89); opaque extent 60x35; foot row 88.\nhills-prop-7: cell 96x96; bbox (18,55,78,89); opaque extent 60x34; foot row 88.\nhills@autumn-prop-0: cell 48x48; bbox (9,24,39,44); opaque extent 30x20; foot row 43.\nhills@autumn-prop-1: cell 48x48; bbox (9,25,39,44); opaque extent 30x19; foot row 43.\nhills@autumn-prop-2: cell 48x48; bbox (9,25,39,44); opaque extent 30x19; foot row 43.\nhills@autumn-prop-3: cell 48x48; bbox (9,26,39,44); opaque extent 30x18; foot row 43.\nhills@autumn-prop-4: cell 96x96; bbox (18,53,78,89); opaque extent 60x36; foot row 88.\nhills@autumn-prop-5: cell 96x96; bbox (18,55,78,89); opaque extent 60x34; foot row 88.\nhills@autumn-prop-6: cell 96x96; bbox (18,54,78,89); opaque extent 60x35; foot row 88.\nhills@autumn-prop-7: cell 96x96; bbox (18,55,78,89); opaque extent 60x34; foot row 88.\nhills@winter-prop-0: cell 48x48; bbox (9,24,39,44); opaque extent 30x20; foot row 43.\nhills@winter-prop-1: cell 48x48; bbox (9,25,39,44); opaque extent 30x19; foot row 43.\nhills@winter-prop-2: cell 48x48; bbox (9,25,39,44); opaque extent 30x19; foot row 43.\nhills@winter-prop-3: cell 48x48; bbox (9,26,39,44); opaque extent 30x18; foot row 43.\nhills@winter-prop-4: cell 96x96; bbox (18,53,78,89); opaque extent 60x36; foot row 88.\nhills@winter-prop-5: cell 96x96; bbox (18,55,78,89); opaque extent 60x34; foot row 88.\nhills@winter-prop-6: cell 96x96; bbox (18,54,78,89); opaque extent 60x35; foot row 88.\nhills@winter-prop-7: cell 96x96; bbox (18,55,78,89); opaque extent 60x34; foot row 88.\nmountains-peak-0: cell 96x96; bbox (7,20,89,94); opaque extent 82x74; foot row 93.\nmountains-peak-1: cell 96x96; bbox (8,28,88,94); opaque extent 80x66; foot row 93.\nmountains-peak-2: cell 96x96; bbox (10,27,86,94); opaque extent 76x67; foot row 93.\nmountains-peak-3: cell 96x96; bbox (18,41,78,94); opaque extent 60x53; foot row 93.\nmountains-peak-4: cell 96x96; bbox (22,35,74,94); opaque extent 52x59; foot row 93.\nmountains-peak-5: cell 96x96; bbox (22,49,74,94); opaque extent 52x45; foot row 93.\nmountains-peak-6: cell 96x96; bbox (19,42,77,94); opaque extent 58x52; foot row 93.\nmountains-peak-7: cell 96x96; bbox (19,42,77,94); opaque extent 58x52; foot row 93.\nmountains@winter-peak-0: cell 96x96; bbox (7,20,89,94); opaque extent 82x74; foot row 93.\nmountains@winter-peak-1: cell 96x96; bbox (8,28,88,94); opaque extent 80x66; foot row 93.\nmountains@winter-peak-2: cell 96x96; bbox (10,26,86,94); opaque extent 76x68; foot row 93.\nmountains@winter-peak-3: cell 96x96; bbox (18,41,78,94); opaque extent 60x53; foot row 93.\nmountains@winter-peak-4: cell 96x96; bbox (22,35,74,94); opaque extent 52x59; foot row 93.\nmountains@winter-peak-5: cell 96x96; bbox (22,49,74,94); opaque extent 52x45; foot row 93.\nmountains@winter-peak-6: cell 96x96; bbox (19,42,77,94); opaque extent 58x52; foot row 93.\nmountains@winter-peak-7: cell 96x96; bbox (19,42,77,94); opaque extent 58x52; foot row 93."
+}
