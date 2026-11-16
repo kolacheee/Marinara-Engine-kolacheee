@@ -1,3 +1,154 @@
+# Round 15 — Part A: critic-r15A-1 redraw
+
+Repaired only **ground-work-w1**, **storey-stone-w2**, and **storey-jetty-w1/w2/w3**
+in `out/city15/`. The **19 passing PNGs remain byte-identical**.
+
+**Method:** eight large built-in image-tool paintings on solid magenta: two
+workshop alternatives, two balcony repaints, and four jetty backing edits
+(two attempts for w2). Selected workshop **b**, balcony **c** (second repaint),
+and jetty **a/b/a**. BOX registration, the existing 34-colour palette, exact
+RGBA mode of all 64 samples per 8×8 block, source-supported thin-detail
+registration, and one-pixel contour cleanup. Code only processes/composites
+drawn material. Prompts remain in `review/r15-A-source-*-critic1-*.png`.
+
+The workshop now has a separated saw, hammer and hand plane; its frame and
+stone foot are retained. The balcony has a continuous rail and **six distinct
+posts** against light stone; its slab and brackets are unchanged. Each jetty
+receives **54 opaque painted backing pixels** in the former side slots, with
+all previously opaque pixels unchanged. The **3 px inset** remains visible
+through depth shading within the exact 48/96/144×48 footprint. This supersedes
+the transparent-recess description in the earlier entry below. `COURSE.md`
+now documents the backing; course rows **0/47** and their RGBA bytes are unchanged.
+
+**Verification:** all 24 dimensions, palette membership, hard alpha and hidden
+RGB checks pass; all same-width course rows are identical. Recomputed **14,042
+mode blocks / 898,688 samples**, reconstructed the five recorded composites,
+and checked **48 lateral pairings**, **96 vertical joins**, **12 random stacks**
+with 1–4 upper storeys, and **71 exact 4× proof pairs**. **3,939 protected files**
+remain byte-identical. Native/4× self-review passes; no new independent critic
+or live-game verdict is claimed.
+
+Regenerated `r15-A-{all,grounds,storeys,stacks-w1,stacks-w2,stacks-w3,joins-w1,joins-w2,joins-w3}-{1x,4x}.png`
+and individual/repeat/style proofs. Added `r15-A-critic1-before-after`,
+`r15-A-critic1-variants`, `r15-A-critic1-balconies`, and
+`r15-A-jetty-neighbours-w{1,2,3}` at 1×/4×. Processing, review recipes and
+validation are embedded in `r15-A-critic1-{processing,review-recipe,validation}.png`.
+Only the five failed outputs, course note, Part A review PNGs and this note changed.
+No commit, push or branch change.
+
+---
+
+# Round 15 — Part A
+
+Drew **24 modular fantasy-town facade pieces** in `out/city15/`: twelve
+ground floors and twelve upper storeys. Every piece is exactly **48 px high**,
+with separately composed **48 / 96 / 144 px** widths. Shop displays, residential
+entrances, yard passages and open workshops sit below half-timber, shuttered
+plaster, stone balcony and jettied upper walls. The wider designs have their
+own window groups, doorway positions and structural rhythms.
+
+**Files:** `ground-{shop,door,arch,work}-w{1,2,3}.png` and
+`storey-{timber,plaster,stone,jetty}-w{1,2,3}.png`, plus
+[`out/city15/COURSE.md`](out/city15/COURSE.md). All images are RGBA PNGs.
+The 21 ordinary facades fill their square-edged rectangular footprints;
+the three jetty pieces expose transparent lower-side recesses.
+
+**Course first:** `COURSE.md` was written before drawing. The course occupies
+**top row 0 and bottom row 47**, one native pixel on each edge. At x=0 and
+x=W−1 it is **RGBA (43,40,29,255), #2b281d**; every interior course pixel is
+**(98,66,38,255), #624226**. Two abutting pieces therefore make a continuous
+two-pixel timber course. All eight pieces of each width have byte-identical
+complete top and bottom rows, including the jetty pieces. Decorative framing
+sits inside those fixed boundaries.
+
+The common course comes from the drawn upper beam in shop **w2-a**, with its
+brown material palette-locked and the original dark ends retained. The short
+width crops the painted interior; the wide width repeats/crops that same
+interior and transfers the original end pixels. This donor is retained as
+`review/r15-A-course-donor.png`. Ground-floor stone plinths and steps sit
+immediately above the common contact foot on row **47**.
+
+**Method:** **29 separate large built-in image-tool drawings on solid
+magenta**: one for each requested piece, second shop drawings for **w2 / w3**,
+and two variants of every jetty width. Selected shops **a / b / b**, jetties
+**a / a / b**, and **a** for all other pieces. The shop revisions replace
+incorrect glazing with open wares and flatten the wide awning hem. The jetty
+choices retain clear small windows, readable brackets and quiet wide plaster
+panels. Exact prompts are embedded in `review/r15-A-source-*.png`; selected
+variants and reasons are recorded in `r15-A-selection.png`.
+
+Each source is keyed only through the magenta surround connected to the image
+border, preserving coloured cloth inside the shop. Painted row extents are
+BOX-registered to **384×384 / 768×384 / 1152×384** working canvases. The jetty's
+already-drawn upper and recessed lower wall bands are separately registered
+to the agreed rows and widths. An explicit **34-colour palette sampled from
+the supplied house/hall references** locks material colours without dithering.
+Glazing uses the blue-grey ramp instead of colliding with olive display colours.
+Every native pixel is the exact RGBA mode of **all 64 samples in its 8×8 block**,
+including transparency, with lexicographic RGBA tie-breaking. Nearest neighbour
+is used for proof enlargement only.
+
+Native contour cleanup resolves exposed edges to the one-pixel dark outline;
+the shared painted course is composited onto both boundaries. The selected
+outputs record **5,468 mode-to-final pixel changes**, including course transfer
+and contour recolouring. Code registers, reduces, palette-locks, cleans and
+composites drawings; it constructs no architecture or texture from shapes or
+noise. Final pieces use **21–32 opaque colours**. Alpha is **0/255**, transparent
+RGB is **0,0,0**, and every piece is one connected silhouette.
+
+**Measurements:** coordinates are zero-based; right and bottom are exclusive.
+All kinds share the full bounding box and foot row shown below. Jetty walls
+remain full width on rows **0–37**, then step inward exactly **3 px on each
+side** for rows **38–46**. Their full-width common course returns at row **47**.
+Each jetty consequently has exactly **54 transparent pixels**, two **3×9**
+recesses; no piece exceeds its requested width or changes the stack origin.
+
+| Width suffix | PNG size | Full bounds | Jetty lower-wall x interval | Foot row |
+|---|---|---|---|---:|
+| `w1` | 48×48 | (0, 0, 48, 48) | [3, 45) | 47 |
+| `w2` | 96×48 | (0, 0, 96, 48) | [3, 93) | 47 |
+| `w3` | 144×48 | (0, 0, 144, 48) | [3, 141) | 47 |
+
+**QC and review:** inspected all 24 native pieces and exact nearest-neighbour
+**4×** sheets, style comparisons with the original town houses/halls, twelve
+mixed stacks and the full join matrix. Random stacks use seed **15062026**:
+each width has ground plus **1, 2, 3 and 4** upper storeys. **96 ordered valid
+upper-storey/lower-facade pairings** have dedicated join crops. The joins have
+no transparent break or course displacement; balcony rails, workshop openings,
+square outside edges and the three-pixel jetty steps remain readable. No
+detached alpha specks, magenta fringe, haze or fog remains. This is visual
+self-review of asset composites, without a live-game or independent critic
+verdict.
+
+Primary sheets: `review/r15-A-{all,grounds,storeys}-{1x,4x}.png`,
+`r15-A-stacks-w{1,2,3}-{1x,4x}.png`,
+`r15-A-joins-w{1,2,3}-{1x,4x}.png`, and
+`r15-A-style-comparison-{1x,4x}.png`. Each final file also has an individual
+`r15-A-piece-<filename>-{1x,4x}.png` proof. All twelve ground-floor facades
+have literal, unlabelled **3×3 repeats** at **1× and 4×**. The unchanged summer
+`grass-base.png` used beneath the stacks also has its literal **3×3 repeat**,
+**864×864 / 3456×3456**. No terrain base belongs to this part or was changed.
+
+Validation recomputed **135,936 mode blocks / 8,699,904 source samples** across
+all 29 drawings, reconstructed every recorded cleanup, checked the 24 exact
+output sizes and selections, shared course rows, jetty recesses, palette,
+alpha, connectivity, width-specific designs, **64 exact 4× pairs**, **117 literal
+repeat copies**, all twelve stacks and all 96 join pairings. **11,188 checks
+pass. All 3,820 protected starting files remain byte-identical**, including the
+brief, references, neighbouring approved art and earlier reviews. The previous
+notes follow unchanged below.
+
+There are **280 new review PNGs**, including original drawings, alternatives,
+registered palette stages, mode votes, recorded cleanup and proofs, plus the
+**24 final PNGs**. The processing script is embedded in `r15-A-processing.png`;
+review recipes in `r15-A-review-recipe.png`; complete per-file measurements,
+validation script and results in `r15-A-validation.png`; starting hashes in
+`r15-A-reference.png`. Only the named Part A outputs, `COURSE.md`, the
+`r15-A-*.png` review files and this top note were written in the checkout.
+**No commit, push or branch change.**
+
+---
+
 # Round 14 — Part B2
 
 Redrew **all 24 hills** smaller and enlarged only **mountain peaks 6 and 7**

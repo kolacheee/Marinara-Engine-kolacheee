@@ -1,0 +1,129 @@
+{
+  "part": "A",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "ground-shop-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 2 critic review of all 24 Part A facade PNGs. Read BRIEF-15 in full, the drawing/registration/mode-sampling methods in NOTES.md, and COURSE.md. Inspected every current file at native 1x and exact nearest-neighbour 4x; inspected the five repaired files at 8x. Compared with all ten supplied fantasy house/hall references at native scale, with enlarged house and shop references. Reviewed all twelve ground facades in literal 3x3 repeats at 1x/4x, twelve fresh random stacks (seed 151602; each width with ground plus 1, 2, 3 or 4 upper storeys) at 1x/4x, mixed-width wall-to-wall rows at 1x, and 4x crops of all 96 same-width vertical joins and 192 same-width lateral joins. Stacks and street rows use the existing summer grass. Facade repetition in the literal repeat test is expected architecture, not a terrain-repeat defect. Each wider design is independently composed rather than repeated w1 cells. All dimensions are exactly 48/96/144 by 48. Grid boundaries are square and the ground-floor contact foot reaches y=47. All files are RGBA; their rectangular footprints are fully opaque, with no soft alpha or hidden transparent RGB. Every opaque colour belongs to the recorded 34-colour palette. The common course passes exact full-row RGBA comparison: y=0 and y=47 have (43,40,29,255) at x=0 and x=W-1 and (98,66,38,255) everywhere between. Every same-width panel has identical top and bottom rows. No displaced course, open background gap, doubled stray edge, haze, magenta fringe, detached sprite speck or objectionable seam was found. Native pixel scale, outline weight, materials and top-left lighting are consistent with the reference family. The previous five failures are resolved. ground-work-w1 now has a separate loop-handled saw, hammer and bench plane readable at 1x; the dark neck beneath the saw handle connects to the blade rather than leaving a detached handle. storey-stone-w2 has a continuous visible top rail and six distinct posts over light stone, separated from the glazing, with its slab and brackets retained. All three jetties retain the documented internal 3px recess on rows 38-46 through shaded backing; both 3x9 side returns are now opaque and adjacent copies expose no grass. For each jetty, exactly the former 54 transparent pixels changed and all previously opaque pixels are preserved. The 19 files that passed Round 1 remain byte-identical to the saved pre-repair hashes. Independently recomputed 117694 exact 8x8 RGBA mode blocks (7532416 samples), including lexicographic tie-breaking, across the selected drawings, their original predecessors and the selected rail strip; all match the stored reductions. Replaying 5944 recorded selected cleanup/composite pixel changes against their stated predecessors reproduces all 24 outputs. Processing records and inspected source painting are consistent with drawn material being registered, palette-locked, mode-reduced, cleaned and composited. Verified 108 literal repeat placements and 41 exact 1x/4x proof pairs. Numeric checks and source hashes are embedded in critic-r15A-2-audit.png. Seasonal alpha-mask overlays and seasonal-ground prop checks are not applicable: Part A names no seasonal partners, terrain bases or separate props. Roofs, wall-end overlays and colourways belong to Part B and are outside this verdict. This is an asset-composite review, not a live-game test. No city15 file, COURSE.md, NOTES.md, reference or neighbouring art was edited; all 1771 hashed output/reference files remain unchanged. Only critic-r15A-2.json and critic-r15A-2-*.png review artifacts were written."
+}

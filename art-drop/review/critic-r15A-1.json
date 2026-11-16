@@ -1,0 +1,145 @@
+{
+  "part": "A",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "ground-work-w1",
+    "storey-stone-w2",
+    "storey-jetty-w1",
+    "storey-jetty-w2",
+    "storey-jetty-w3"
+  ],
+  "files": {
+    "ground-shop-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1": {
+      "status": "fail",
+      "problems": [
+        "At native coordinates x=16..36, y=15..28, the hanging saw/mallet/chisel have reduced to adjoining low-contrast brown and grey clusters. Their handles, heads and blades are not clearly separable at 1x; at 4x/8x they read as smudges against the dark opening. The bench objects around x=7..29, y=27..34 also merge into the counter. The large source drawing has recognizable tools, but that clarity has not survived reduction. See critic-r15A-1-close-ground-work-w1-8x.png and the literal repeat proofs."
+      ],
+      "fix": "Repaint the small workshop interior with fewer, larger, clearly separated tools and a readable bench object. Make 2-3 image-tool alternatives for this difficult 48px design and choose at native size. Register and mode-reduce the drawing, then recover source-supported one-pixel tool contours so metal separates from the wooden rack and dark interior. Preserve the 48x48 footprint, plinth, square frame and exact course rows."
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "fail",
+      "problems": [
+        "The balcony at x=32..63, y=30..40 loses its guard rail in the reduction. The dark top rail merges into the bottom of the glazing and the uprights mostly collapse into brown sash pixels. At 1x it reads as a large window on a projecting sill, rather than the required small balcony. The source drawing contains a clear separate rail, and stone-w1/w3 retain readable rails. See critic-r15A-1-balcony-comparison.png and critic-r15A-1-close-storey-stone-w2-8x.png."
+      ],
+      "fix": "Re-register or repaint the existing drawn balcony railing so its dark top bar and several distinct uprights survive as continuous native pixels, with visible gaps and a clear separation from the window sash. Keep the slab and brackets, 96x48 dimensions, and shared course rows. Recheck at 1x beside stone-w1/w3 after mode sampling and source-supported outline cleanup."
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "fail",
+      "problems": [
+        "The permitted 3px inset is implemented as transparent slots at x=0..2 and x=45..47, y=38..46. Two copies placed wall to wall expose a 6x9-pixel background hole at the internal join (pair coordinates x=45..50, y=38..46; 54 transparent pixels). The full-width row-47 course then bridges beneath this opening as a thin bar. This is visible over summer ground at 1x and 4x and fails the requested gap-free side-by-side join. The inset dimensions and course bytes themselves are correct. See critic-r15A-1-jetty-neighbours-w1-1x.png and -4x.png."
+      ],
+      "fix": "Repaint the recessed side returns/backing so the 3px wall step remains visible through depth shading inside the 48px width, while internal wall-to-wall joins do not reveal the ground behind the building. Use drawn wall/shadow material, then register, mode-reduce and clean it; do not widen the sprite or move the course. Preserve 48x48 dimensions and the exact y=0/y=47 RGBA patterns. Verify two adjacent copies and mixed neighbours over a contrasting background, as well as vertical stacks."
+    },
+    "storey-jetty-w2": {
+      "status": "fail",
+      "problems": [
+        "The permitted 3px inset is implemented as transparent slots at x=0..2 and x=93..95, y=38..46. Two copies placed wall to wall expose a 6x9-pixel background hole at the internal join (pair coordinates x=93..98, y=38..46; 54 transparent pixels). The full-width row-47 course then bridges beneath this opening as a thin bar. This is visible over summer ground at 1x and 4x and fails the requested gap-free side-by-side join. The inset dimensions and course bytes themselves are correct. See critic-r15A-1-jetty-neighbours-w2-1x.png and -4x.png."
+      ],
+      "fix": "Repaint the recessed side returns/backing so the 3px wall step remains visible through depth shading inside the 96px width, while internal wall-to-wall joins do not reveal the ground behind the building. Use drawn wall/shadow material, then register, mode-reduce and clean it; do not widen the sprite or move the course. Preserve 96x48 dimensions and the exact y=0/y=47 RGBA patterns. Verify two adjacent copies and mixed neighbours over a contrasting background, as well as vertical stacks."
+    },
+    "storey-jetty-w3": {
+      "status": "fail",
+      "problems": [
+        "The permitted 3px inset is implemented as transparent slots at x=0..2 and x=141..143, y=38..46. Two copies placed wall to wall expose a 6x9-pixel background hole at the internal join (pair coordinates x=141..146, y=38..46; 54 transparent pixels). The full-width row-47 course then bridges beneath this opening as a thin bar. This is visible over summer ground at 1x and 4x and fails the requested gap-free side-by-side join. The inset dimensions and course bytes themselves are correct. See critic-r15A-1-jetty-neighbours-w3-1x.png and -4x.png."
+      ],
+      "fix": "Repaint the recessed side returns/backing so the 3px wall step remains visible through depth shading inside the 144px width, while internal wall-to-wall joins do not reveal the ground behind the building. Use drawn wall/shadow material, then register, mode-reduce and clean it; do not widen the sprite or move the course. Preserve 144x48 dimensions and the exact y=0/y=47 RGBA patterns. Verify two adjacent copies and mixed neighbours over a contrasting background, as well as vertical stacks."
+    }
+  },
+  "notes": "Independent critic review of the 24 delivered Part A facade PNGs. Read BRIEF-15 in full, earlier method sections in NOTES.md, and COURSE.md. Inspected all 24 at exact 1x and nearest-neighbour 4x; used 8x close-ups for ambiguous details. Inspected all 12 ground-floor facades in literal 3x3 repeats at 1x/4x, all 12 independently composed random stacks at 1x, representative stacks with four upper storeys at 4x, mixed wall-to-wall rows, and the three jetty neighbour pairs at 1x/4x. Compared against the supplied fantasy houses/halls, including native reference sheets. Ground repeats are facade repetition diagnostics, not terrain textures; ordinary repetition of a complete facade is not itself counted as a defect. All 24 pass exact N*48 by 48 dimensions, square exterior grid edges, binary alpha, zero hidden RGB, and a single connected opaque component. The 21 non-jetty panels are fully opaque; each jetty has 54 transparent pixels. No alpha fringe, haze/fog, magenta residue or detached alpha speck was found. Palette/pixel scale and top-left light are acceptable on the passing pieces. Each width is separately designed rather than a repeated w1. Course verification passes for every pixel: y=0 and y=47 both use (43,40,29,255) at x=0/W-1 and (98,66,38,255) at every interior x. All eight pieces of each width have identical complete RGBA rows. Vertical stacks have no transparent break at the contact rows. Passing this byte check does not cure the jetty holes above the course at lateral joins. Independently recomputed 110592 selected-source 8x8 RGBA mode blocks (7077888 samples), including lexicographic tie-breaking; all matched the saved mode stages. The recorded 5468 cleanup changes reconstruct all 24 final outputs exactly. Verified 108 literal ground-repeat placements and their exact 4x enlargements. Source paintings and processing records are consistent with the requested drawing/registration/mode/palette/cleanup method. Seasonal alpha overlays and seasonal-ground prop tests are not applicable: Part A names no seasonal partners, props or terrain tiles. Stacks and jetty joins were composited over the existing summer grass. Roofs, wall-end strips and colour variants belong to Part B and were not required or changed. This is an asset-composite review, not a live-game rendering test. No city15 file, COURSE.md, NOTES.md, reference, or neighbouring output was edited. Only this JSON and critic-r15A-1-*.png review composites were written."
+}
