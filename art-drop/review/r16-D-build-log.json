@@ -1,0 +1,469 @@
+{
+  "sources": 10,
+  "files": 26,
+  "mode_blocks": 202752,
+  "cleanup_pixels": 116,
+  "selected_cleanup_pixels": 87,
+  "measurements": {
+    "lightning-0-f0.png": {
+      "bounds": [
+        7,
+        8,
+        40,
+        136
+      ],
+      "covered_pixels": 523,
+      "components": [
+        523
+      ],
+      "mean_luma": 233.017,
+      "centroid": [
+        23.99,
+        70.757
+      ]
+    },
+    "lightning-0-f1.png": {
+      "bounds": [
+        7,
+        8,
+        40,
+        136
+      ],
+      "covered_pixels": 523,
+      "components": [
+        523
+      ],
+      "mean_luma": 166.609,
+      "centroid": [
+        23.99,
+        70.757
+      ]
+    },
+    "lightning-0-f2.png": {
+      "bounds": [
+        7,
+        8,
+        40,
+        136
+      ],
+      "covered_pixels": 523,
+      "components": [
+        523
+      ],
+      "mean_luma": 95.71,
+      "centroid": [
+        23.99,
+        70.757
+      ]
+    },
+    "lightning-1-f0.png": {
+      "bounds": [
+        6,
+        6,
+        43,
+        136
+      ],
+      "covered_pixels": 434,
+      "components": [
+        434
+      ],
+      "mean_luma": 238.153,
+      "centroid": [
+        22.493,
+        66.488
+      ]
+    },
+    "lightning-1-f1.png": {
+      "bounds": [
+        6,
+        6,
+        43,
+        136
+      ],
+      "covered_pixels": 434,
+      "components": [
+        434
+      ],
+      "mean_luma": 172.076,
+      "centroid": [
+        22.493,
+        66.488
+      ]
+    },
+    "lightning-1-f2.png": {
+      "bounds": [
+        6,
+        6,
+        43,
+        136
+      ],
+      "covered_pixels": 434,
+      "components": [
+        434
+      ],
+      "mean_luma": 99.33,
+      "centroid": [
+        22.493,
+        66.488
+      ]
+    },
+    "lightning-2-f0.png": {
+      "bounds": [
+        13,
+        4,
+        34,
+        140
+      ],
+      "covered_pixels": 474,
+      "components": [
+        474
+      ],
+      "mean_luma": 217.278,
+      "centroid": [
+        22.785,
+        64.027
+      ]
+    },
+    "lightning-2-f1.png": {
+      "bounds": [
+        13,
+        4,
+        34,
+        140
+      ],
+      "covered_pixels": 474,
+      "components": [
+        474
+      ],
+      "mean_luma": 156.635,
+      "centroid": [
+        22.785,
+        64.027
+      ]
+    },
+    "lightning-2-f2.png": {
+      "bounds": [
+        13,
+        4,
+        34,
+        140
+      ],
+      "covered_pixels": 474,
+      "components": [
+        474
+      ],
+      "mean_luma": 91.373,
+      "centroid": [
+        22.785,
+        64.027
+      ]
+    },
+    "wind-0-f0.png": {
+      "bounds": [
+        7,
+        17,
+        61,
+        35
+      ],
+      "covered_pixels": 172,
+      "components": [
+        148,
+        24
+      ],
+      "mean_luma": 230.771,
+      "centroid": [
+        37.041,
+        27.674
+      ]
+    },
+    "wind-0-f1.png": {
+      "bounds": [
+        22,
+        13,
+        108,
+        34
+      ],
+      "covered_pixels": 316,
+      "components": [
+        268,
+        48
+      ],
+      "mean_luma": 243.658,
+      "centroid": [
+        70.234,
+        26.706
+      ]
+    },
+    "wind-0-f2.png": {
+      "bounds": [
+        58,
+        16,
+        124,
+        33
+      ],
+      "covered_pixels": 204,
+      "components": [
+        184,
+        20
+      ],
+      "mean_luma": 214.57,
+      "centroid": [
+        94.912,
+        25.814
+      ]
+    },
+    "wind-0-f3.png": {
+      "bounds": [
+        98,
+        17,
+        128,
+        32
+      ],
+      "covered_pixels": 80,
+      "components": [
+        70,
+        10
+      ],
+      "mean_luma": 187.008,
+      "centroid": [
+        116.237,
+        25.475
+      ]
+    },
+    "wind-1-f0.png": {
+      "bounds": [
+        7,
+        16,
+        48,
+        35
+      ],
+      "covered_pixels": 99,
+      "components": [
+        75,
+        24
+      ],
+      "mean_luma": 230.906,
+      "centroid": [
+        28.051,
+        24.091
+      ]
+    },
+    "wind-1-f1.png": {
+      "bounds": [
+        25,
+        13,
+        100,
+        37
+      ],
+      "covered_pixels": 252,
+      "components": [
+        179,
+        73
+      ],
+      "mean_luma": 239.334,
+      "centroid": [
+        63.73,
+        23.111
+      ]
+    },
+    "wind-1-f2.png": {
+      "bounds": [
+        56,
+        14,
+        119,
+        35
+      ],
+      "covered_pixels": 165,
+      "components": [
+        130,
+        35
+      ],
+      "mean_luma": 213.772,
+      "centroid": [
+        88.212,
+        22.764
+      ]
+    },
+    "wind-1-f3.png": {
+      "bounds": [
+        106,
+        18,
+        135,
+        31
+      ],
+      "covered_pixels": 57,
+      "components": [
+        49,
+        8
+      ],
+      "mean_luma": 192.448,
+      "centroid": [
+        120.789,
+        22.842
+      ]
+    },
+    "wind-2-f0.png": {
+      "bounds": [
+        7,
+        24,
+        45,
+        41
+      ],
+      "covered_pixels": 74,
+      "components": [
+        60,
+        7,
+        7
+      ],
+      "mean_luma": 235.409,
+      "centroid": [
+        25.73,
+        30.811
+      ]
+    },
+    "wind-2-f1.png": {
+      "bounds": [
+        26,
+        17,
+        113,
+        36
+      ],
+      "covered_pixels": 161,
+      "components": [
+        139,
+        22
+      ],
+      "mean_luma": 243.168,
+      "centroid": [
+        73.174,
+        25.36
+      ]
+    },
+    "wind-2-f2.png": {
+      "bounds": [
+        64,
+        15,
+        131,
+        33
+      ],
+      "covered_pixels": 132,
+      "components": [
+        117,
+        15
+      ],
+      "mean_luma": 218.38,
+      "centroid": [
+        98.644,
+        23.22
+      ]
+    },
+    "wind-2-f3.png": {
+      "bounds": [
+        108,
+        20,
+        138,
+        30
+      ],
+      "covered_pixels": 50,
+      "components": [
+        44,
+        6
+      ],
+      "mean_luma": 189.312,
+      "centroid": [
+        122.88,
+        24.56
+      ]
+    },
+    "wind-3-f0.png": {
+      "bounds": [
+        11,
+        16,
+        49,
+        33
+      ],
+      "covered_pixels": 140,
+      "components": [
+        129,
+        11
+      ],
+      "mean_luma": 225.971,
+      "centroid": [
+        33.686,
+        24.721
+      ]
+    },
+    "wind-3-f1.png": {
+      "bounds": [
+        35,
+        14,
+        94,
+        32
+      ],
+      "covered_pixels": 212,
+      "components": [
+        197,
+        15
+      ],
+      "mean_luma": 240.311,
+      "centroid": [
+        71.75,
+        23.962
+      ]
+    },
+    "wind-3-f2.png": {
+      "bounds": [
+        56,
+        14,
+        120,
+        32
+      ],
+      "covered_pixels": 206,
+      "components": [
+        192,
+        14
+      ],
+      "mean_luma": 212.111,
+      "centroid": [
+        96.558,
+        23.888
+      ]
+    },
+    "wind-3-f3.png": {
+      "bounds": [
+        90,
+        16,
+        127,
+        31
+      ],
+      "covered_pixels": 77,
+      "components": [
+        49,
+        22,
+        6
+      ],
+      "mean_luma": 182.783,
+      "centroid": [
+        110.74,
+        23.896
+      ]
+    },
+    "lightning-flash.png": {
+      "bounds": [
+        8,
+        8,
+        184,
+        184
+      ],
+      "covered_pixels": 23725,
+      "components": [
+        23725
+      ],
+      "mean_luma": 234.241,
+      "centroid": [
+        94.906,
+        95.943
+      ]
+    }
+  }
+}

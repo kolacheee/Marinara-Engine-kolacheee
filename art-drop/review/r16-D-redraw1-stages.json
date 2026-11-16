@@ -1,0 +1,1611 @@
+[
+  {
+    "joins": [
+      {
+        "index": 506,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1520,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1715,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2666,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2998,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3224,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4784,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 6025,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3187,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 3321,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 1372,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 4739,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 2385,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 4829,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 4920,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 1522,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1909,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2377,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 4245,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5112,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5592,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2522,
+        "source_opaque_samples": 13
+      },
+      {
+        "index": 3418,
+        "source_opaque_samples": 12
+      },
+      {
+        "index": 2761,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2809,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2054,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 2101,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2243,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 2290,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 4342,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4391,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2527,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 2574,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1332,
+        "source_opaque_samples": 22
+      },
+      {
+        "index": 1379,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3034,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 3082,
+        "source_opaque_samples": 22
+      }
+    ],
+    "removed_specks": [
+      554,
+      506,
+      602,
+      459,
+      841,
+      889,
+      937,
+      4633,
+      4681,
+      6455,
+      3902
+    ],
+    "components": [
+      76,
+      26,
+      19,
+      7
+    ],
+    "id": "bolt-0a",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 506,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1422,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4147,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5592,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4871,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 1426,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 2951,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 4831,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 5302,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 938,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 1520,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5446,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5689,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 2713,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 3419,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 4342,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 4633,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 5927,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 2053,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 1666,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2148,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 3129,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 3609,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1812,
+        "source_opaque_samples": 21
+      },
+      {
+        "index": 4488,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 4536,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3273,
+        "source_opaque_samples": 20
+      },
+      {
+        "index": 3322,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 6360,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 6407,
+        "source_opaque_samples": 16
+      }
+    ],
+    "removed_specks": [
+      6312,
+      6360,
+      6407,
+      6455
+    ],
+    "components": [
+      66,
+      32,
+      25,
+      22,
+      15
+    ],
+    "id": "bolt-0b",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 2122,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2414,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 6014,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 6205,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 791,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 1912,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 5534,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 888,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 1521,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 3384,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 4431,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 5001,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 1815,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 4667,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 5147,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 2416,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1327,
+        "source_opaque_samples": 22
+      },
+      {
+        "index": 6346,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 6394,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3481,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 3529,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 3720,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 3767,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 551,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 599,
+        "source_opaque_samples": 27
+      }
+    ],
+    "removed_specks": [
+      2242
+    ],
+    "components": [
+      41,
+      33,
+      30,
+      21,
+      13
+    ],
+    "id": "bolt-1a",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 1415,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1900,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3764,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3908,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4246,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5878,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4391,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 1704,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 2670,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 4049,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5496,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 1997,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 5110,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 5352,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 6454,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 885,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 4102,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 600,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2143,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2519,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2815,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 3007,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 3953,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 4583,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5782,
+        "source_opaque_samples": 22
+      },
+      {
+        "index": 1027,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1075,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1801,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1802,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2852,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 2900,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5591,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 5638,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2710,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2757,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5974,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 6023,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 4726,
+        "source_opaque_samples": 23
+      },
+      {
+        "index": 4774,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 2477,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 2525,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5206,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5254,
+        "source_opaque_samples": 24
+      }
+    ],
+    "removed_specks": [
+      3237,
+      3285,
+      3334,
+      2085,
+      2279
+    ],
+    "components": [
+      45,
+      36,
+      24,
+      16,
+      12,
+      6,
+      6
+    ],
+    "id": "bolt-2a",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 1766,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2953,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3432,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4336,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4431,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5534,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5294,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 4097,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5630,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 1960,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 5390,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 1132,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 6394,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 1326,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 1422,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1976,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5776,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 5002,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5051,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 3529,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 3578,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1520,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1521,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5966,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 6013,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 2102,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 2149,
+        "source_opaque_samples": 25
+      }
+    ],
+    "removed_specks": [
+      2074,
+      2025,
+      1976,
+      1927,
+      648,
+      696,
+      744,
+      6346,
+      6394,
+      6441,
+      2905,
+      2953,
+      3000,
+      2316,
+      2365,
+      3190,
+      3862,
+      358
+    ],
+    "components": [
+      33,
+      30,
+      12,
+      8,
+      6
+    ],
+    "id": "bolt-1b",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 1028,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2037,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3526,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3908,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4381,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 6454,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2519,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 4247,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 4102,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 4584,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 5304,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 884,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 1753,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 5782,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 2383,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 3669,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 4095,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 4239,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 1850,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 2852,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 4775,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 1512,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 1222,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1270,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2192,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2240,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3765,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3812,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5638,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5686,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1997,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 2046,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4477,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4526,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 2816,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 2864,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 600,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 648,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3907,
+        "source_opaque_samples": 25
+      },
+      {
+        "index": 3954,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 4440,
+        "source_opaque_samples": 24
+      },
+      {
+        "index": 4488,
+        "source_opaque_samples": 29
+      },
+      {
+        "index": 4917,
+        "source_opaque_samples": 20
+      },
+      {
+        "index": 4964,
+        "source_opaque_samples": 31
+      }
+    ],
+    "removed_specks": [
+      3103,
+      3151
+    ],
+    "components": [
+      74,
+      62,
+      22,
+      7
+    ],
+    "id": "bolt-2b",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 3616,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3899,
+        "source_opaque_samples": 20
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      13
+    ],
+    "id": "wind-0a-f0",
+    "source": "wind-0a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      35,
+      190,
+      88,
+      210
+    ],
+    "placement": [
+      8,
+      24,
+      12,
+      5
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      13
+    ],
+    "id": "wind-0a-f3",
+    "source": "wind-0a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      931,
+      178,
+      975,
+      205
+    ],
+    "placement": [
+      127,
+      22,
+      9,
+      6
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      16
+    ],
+    "id": "wind-1a-f0",
+    "source": "wind-1a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      41,
+      167,
+      103,
+      189
+    ],
+    "placement": [
+      8,
+      22,
+      12,
+      4
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      10
+    ],
+    "id": "wind-1a-f3",
+    "source": "wind-1a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      953,
+      157,
+      1014,
+      179
+    ],
+    "placement": [
+      127,
+      21,
+      9,
+      3
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 4770,
+        "source_opaque_samples": 24
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      21
+    ],
+    "id": "wind-2a-f0",
+    "source": "wind-2a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      54,
+      238,
+      106,
+      261
+    ],
+    "placement": [
+      8,
+      31,
+      12,
+      5
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      9
+    ],
+    "id": "wind-2a-f3",
+    "source": "wind-2a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      966,
+      188,
+      1030,
+      210
+    ],
+    "placement": [
+      127,
+      25,
+      9,
+      3
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 3469,
+        "source_opaque_samples": 18
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      9
+    ],
+    "id": "wind-3a-f0",
+    "source": "wind-3a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      48,
+      183,
+      119,
+      197
+    ],
+    "placement": [
+      8,
+      24,
+      12,
+      2
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      9
+    ],
+    "id": "wind-3a-f3",
+    "source": "wind-3a",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      898,
+      165,
+      955,
+      183
+    ],
+    "placement": [
+      127,
+      22,
+      9,
+      3
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 3905,
+        "source_opaque_samples": 30
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      23
+    ],
+    "id": "wind-0b-f0",
+    "source": "wind-0b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      52,
+      210,
+      100,
+      232
+    ],
+    "placement": [
+      8,
+      26,
+      12,
+      6
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      18
+    ],
+    "id": "wind-0b-f3",
+    "source": "wind-0b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      935,
+      182,
+      968,
+      197
+    ],
+    "placement": [
+      127,
+      23,
+      9,
+      4
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      30
+    ],
+    "id": "wind-1b-f0",
+    "source": "wind-1b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      48,
+      177,
+      81,
+      192
+    ],
+    "placement": [
+      8,
+      22,
+      12,
+      5
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      11
+    ],
+    "id": "wind-1b-f3",
+    "source": "wind-1b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      975,
+      157,
+      1029,
+      180
+    ],
+    "placement": [
+      127,
+      20,
+      9,
+      4
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 4478,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4337,
+        "source_opaque_samples": 24
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      12
+    ],
+    "id": "wind-2b-f0",
+    "source": "wind-2b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      30,
+      233,
+      86,
+      247
+    ],
+    "placement": [
+      8,
+      30,
+      12,
+      3
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 3586,
+        "source_opaque_samples": 21
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      9
+    ],
+    "id": "wind-2b-f3",
+    "source": "wind-2b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      996,
+      179,
+      1054,
+      193
+    ],
+    "placement": [
+      127,
+      24,
+      9,
+      2
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 3472,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3186,
+        "source_opaque_samples": 22
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      12
+    ],
+    "id": "wind-3b-f0",
+    "source": "wind-3b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 0,
+    "source_crop": [
+      40,
+      175,
+      105,
+      201
+    ],
+    "placement": [
+      8,
+      22,
+      12,
+      5
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [],
+    "removed_specks": [],
+    "components": [
+      9
+    ],
+    "id": "wind-3b-f3",
+    "source": "wind-3b",
+    "size": [
+      144,
+      48
+    ],
+    "source_row": 3,
+    "source_crop": [
+      892,
+      168,
+      957,
+      196
+    ],
+    "placement": [
+      127,
+      22,
+      9,
+      4
+    ],
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 2149,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4829,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3370,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 1522,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 3082,
+        "source_opaque_samples": 30
+      },
+      {
+        "index": 3129,
+        "source_opaque_samples": 31
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      262
+    ],
+    "id": "bolt-0c",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 6441,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 6346,
+        "source_opaque_samples": 22
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      277
+    ],
+    "id": "bolt-1c",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  },
+  {
+    "joins": [
+      {
+        "index": 2805,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 3765,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 4965,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5975,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5110,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 5206,
+        "source_opaque_samples": 31
+      },
+      {
+        "index": 6357,
+        "source_opaque_samples": 28
+      },
+      {
+        "index": 2815,
+        "source_opaque_samples": 27
+      },
+      {
+        "index": 2382,
+        "source_opaque_samples": 26
+      },
+      {
+        "index": 1749,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 1797,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2478,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2526,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2661,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 2709,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5639,
+        "source_opaque_samples": 32
+      },
+      {
+        "index": 5686,
+        "source_opaque_samples": 30
+      }
+    ],
+    "removed_specks": [],
+    "components": [
+      200
+    ],
+    "id": "bolt-2c",
+    "size": [
+      48,
+      144
+    ],
+    "registration": "full canvas to 384x1152 BOX",
+    "mode_blocks": 6912
+  }
+]

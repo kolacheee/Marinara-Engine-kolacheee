@@ -1,0 +1,139 @@
+{
+  "part": "D",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "lightning-0-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-0-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-0-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-1-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-1-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-1-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-2-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-2-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-2-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-flash": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-1-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-1-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-1-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-1-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-2-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-2-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-2-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-2-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-3-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-3-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-3-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-3-f3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 2 review of all 26 named Part D PNGs. Read BRIEF-16 in full and NOTES drawing/mode-reduction method sections. Inspected every current output at exact native 1x and nearest-neighbour 4x, with 8x bolt bend/fork details; inspected all 26 over fantasy grass, forest, town, modern city, wasteland, desert sand and snow. Fresh evidence is in critic-r16D-2-*.png. All sizes pass: nine 48x144 bolts, one 192x192 flash, sixteen 144x48 gusts. All 25 bolt/gust frames have only alpha 0/255; all 26 files have zero RGB under transparency. No detached 1-4-pixel alpha components, magenta fringe, soft antialiased edge, blob or smear found. The three bolt designs and four gust designs remain distinct, with native stroke scale and edge weight consistent with the surrounding art. Bolt f0/f1 alpha channels match exactly. The f2 afterglows intentionally narrow the same paths, retaining the bends/forks: 262, 277 and 200 connected pixels; all but one pixel in bolts 0 and 2 lie within the original mask, and those two pixels are only one native pixel away. This is thinning of the same bolt, not a seasonal silhouette mismatch. Pale f2 strokes no longer read as the old navy cracks; their total luminance contrast is lower than f1 on each tested grass/sand/snow/town/city crop. The flash passes the explicit hard-ring exception: alpha 0/8/16/28/44/64/88, crisp discrete boundaries, 5.8893% alpha-weighted coverage, no smooth airbrush ramp, and readable roads/buildings underneath. Decoded and inspected all nine bolt GIF sequences over dark cloud, city and town and all four gust GIFs over grass, including timing and f3-to-f0 closure. Gust GIFs contain exactly four 140 ms frames at a fixed origin, without a blank pause. Their 9-16-pixel connected endpoint wisps make closure unobtrusive at 1x; the middle phases retain recognizable curls moving east. This is saved-frame/encoded-timing review, not live in-engine playback. Part D contains sprites, no ground tiles or seasonal partners, so literal 3x3 ground repeats and summer/seasonal mask comparisons are not applicable. Curved gusts and the radial flash are intentional sprite shapes, not rounded grid-tile corners. Only this JSON and critic-r16D-2-*.png review composites were written; no weather16 output, branch or other project file was changed, and no commit or push was made."
+}

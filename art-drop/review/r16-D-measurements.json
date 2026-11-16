@@ -1,0 +1,1566 @@
+{
+  "revision": "critic-r16D-1 redraw",
+  "selected_bolts": [
+    "bolt-0c",
+    "bolt-1c",
+    "bolt-2c"
+  ],
+  "selected_wind": [
+    "wind-0a",
+    "wind-1a",
+    "wind-2b",
+    "wind-3b"
+  ],
+  "files": {
+    "lightning-0-f0.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        7,
+        8,
+        40,
+        136
+      ],
+      "covered_pixels": 523,
+      "cover_percent": 7.5666,
+      "alpha_weighted_cover_percent": 7.5666,
+      "centroid": [
+        23.99,
+        70.757
+      ],
+      "mean_luma": 233.017,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          150,
+          154,
+          208,
+          255
+        ],
+        [
+          194,
+          217,
+          252,
+          255
+        ],
+        [
+          251,
+          253,
+          255,
+          255
+        ]
+      ],
+      "components": [
+        523
+      ],
+      "sha256": "e1c1b4d67a9bec8ad87317ea5ea83ef99c0b4b817de9043ece5f3e1e91ac5c11"
+    },
+    "lightning-0-f1.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        7,
+        8,
+        40,
+        136
+      ],
+      "covered_pixels": 523,
+      "cover_percent": 7.5666,
+      "alpha_weighted_cover_percent": 7.5666,
+      "centroid": [
+        23.99,
+        70.757
+      ],
+      "mean_luma": 166.609,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          91,
+          102,
+          148,
+          255
+        ],
+        [
+          125,
+          148,
+          184,
+          255
+        ],
+        [
+          173,
+          190,
+          218,
+          255
+        ]
+      ],
+      "components": [
+        523
+      ],
+      "sha256": "000922ac74ee89666720c666daea418e258b86e3735c30d591e9591b48e463ce"
+    },
+    "lightning-0-f2.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        8,
+        8,
+        39,
+        135
+      ],
+      "covered_pixels": 262,
+      "cover_percent": 3.7905,
+      "alpha_weighted_cover_percent": 3.7905,
+      "centroid": [
+        23.813,
+        70.973
+      ],
+      "mean_luma": 183.458,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          175,
+          184,
+          203,
+          255
+        ]
+      ],
+      "components": [
+        262
+      ],
+      "sha256": "f4f91b48083c4038220c63ffb5616c7c027f0f75bec12619aa2706540d7a0bf8"
+    },
+    "lightning-1-f0.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        6,
+        6,
+        43,
+        136
+      ],
+      "covered_pixels": 434,
+      "cover_percent": 6.2789,
+      "alpha_weighted_cover_percent": 6.2789,
+      "centroid": [
+        22.493,
+        66.488
+      ],
+      "mean_luma": 238.153,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          194,
+          217,
+          252,
+          255
+        ],
+        [
+          251,
+          253,
+          255,
+          255
+        ]
+      ],
+      "components": [
+        434
+      ],
+      "sha256": "06b6f7be71e11f6fa49454adacd0ae519b31b99c70dc88fa5b36eaebd55993ab"
+    },
+    "lightning-1-f1.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        6,
+        6,
+        43,
+        136
+      ],
+      "covered_pixels": 434,
+      "cover_percent": 6.2789,
+      "alpha_weighted_cover_percent": 6.2789,
+      "centroid": [
+        22.493,
+        66.488
+      ],
+      "mean_luma": 172.076,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          125,
+          148,
+          184,
+          255
+        ],
+        [
+          173,
+          190,
+          218,
+          255
+        ]
+      ],
+      "components": [
+        434
+      ],
+      "sha256": "9d09cce3201fdd1dd0f455e759436968cd32c7997e913071e2b6fded61902121"
+    },
+    "lightning-1-f2.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        7,
+        6,
+        43,
+        136
+      ],
+      "covered_pixels": 277,
+      "cover_percent": 4.0075,
+      "alpha_weighted_cover_percent": 4.0075,
+      "centroid": [
+        22.469,
+        65.773
+      ],
+      "mean_luma": 183.458,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          175,
+          184,
+          203,
+          255
+        ]
+      ],
+      "components": [
+        277
+      ],
+      "sha256": "dc18be63f14cf029fde72c59c7da402893dd6d3c35730d020e28c1c69fc6f1cb"
+    },
+    "lightning-2-f0.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        13,
+        4,
+        34,
+        140
+      ],
+      "covered_pixels": 474,
+      "cover_percent": 6.8576,
+      "alpha_weighted_cover_percent": 6.8576,
+      "centroid": [
+        22.785,
+        64.027
+      ],
+      "mean_luma": 217.278,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          83,
+          75,
+          134,
+          255
+        ],
+        [
+          150,
+          154,
+          208,
+          255
+        ],
+        [
+          194,
+          217,
+          252,
+          255
+        ],
+        [
+          251,
+          253,
+          255,
+          255
+        ]
+      ],
+      "components": [
+        474
+      ],
+      "sha256": "77da407195e57d54b1c38bf99723489e901767ea90ed1e479841abc5c3c9cb0d"
+    },
+    "lightning-2-f1.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        13,
+        4,
+        34,
+        140
+      ],
+      "covered_pixels": 474,
+      "cover_percent": 6.8576,
+      "alpha_weighted_cover_percent": 6.8576,
+      "centroid": [
+        22.785,
+        64.027
+      ],
+      "mean_luma": 156.635,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          58,
+          58,
+          93,
+          255
+        ],
+        [
+          91,
+          102,
+          148,
+          255
+        ],
+        [
+          125,
+          148,
+          184,
+          255
+        ],
+        [
+          173,
+          190,
+          218,
+          255
+        ]
+      ],
+      "components": [
+        474
+      ],
+      "sha256": "17051a5519ee0c74160ad63acc0b10c05b7699e54a42080b09a2be6236be4068"
+    },
+    "lightning-2-f2.png": {
+      "size": [
+        48,
+        144
+      ],
+      "bounds": [
+        13,
+        4,
+        33,
+        140
+      ],
+      "covered_pixels": 200,
+      "cover_percent": 2.8935,
+      "alpha_weighted_cover_percent": 2.8935,
+      "centroid": [
+        22.85,
+        68.16
+      ],
+      "mean_luma": 183.458,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          175,
+          184,
+          203,
+          255
+        ]
+      ],
+      "components": [
+        200
+      ],
+      "sha256": "892d916f299d49b039f9ff38982f2d60a52e794fe01b129071e371f9f6d97f78"
+    },
+    "lightning-flash.png": {
+      "size": [
+        192,
+        192
+      ],
+      "bounds": [
+        8,
+        8,
+        184,
+        184
+      ],
+      "covered_pixels": 23725,
+      "cover_percent": 64.3582,
+      "alpha_weighted_cover_percent": 5.8893,
+      "centroid": [
+        94.906,
+        95.943
+      ],
+      "mean_luma": 234.241,
+      "alpha_levels": [
+        0,
+        8,
+        16,
+        28,
+        44,
+        64,
+        88
+      ],
+      "palette": [
+        [
+          228,
+          234,
+          255,
+          8
+        ],
+        [
+          228,
+          234,
+          255,
+          16
+        ],
+        [
+          228,
+          234,
+          255,
+          28
+        ],
+        [
+          228,
+          234,
+          255,
+          44
+        ],
+        [
+          228,
+          234,
+          255,
+          64
+        ],
+        [
+          228,
+          234,
+          255,
+          88
+        ]
+      ],
+      "components": [
+        23725
+      ],
+      "sha256": "1cfbdcb8d2c9666599d6b88c03a701e969b310c81875bd599f61bee91cdf94b8"
+    },
+    "wind-0-f0.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        8,
+        24,
+        20,
+        29
+      ],
+      "covered_pixels": 13,
+      "cover_percent": 0.1881,
+      "alpha_weighted_cover_percent": 0.1881,
+      "centroid": [
+        13.308,
+        26.385
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        13
+      ],
+      "sha256": "bb786fc85827b9222ef8228c40006164012e6b51088f54c9bd55b0b25640df2c"
+    },
+    "wind-0-f1.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        22,
+        13,
+        108,
+        34
+      ],
+      "covered_pixels": 316,
+      "cover_percent": 4.5718,
+      "alpha_weighted_cover_percent": 4.5718,
+      "centroid": [
+        70.234,
+        26.706
+      ],
+      "mean_luma": 243.658,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          213,
+          229,
+          232,
+          255
+        ],
+        [
+          250,
+          252,
+          247,
+          255
+        ]
+      ],
+      "components": [
+        268,
+        48
+      ],
+      "sha256": "2d0a8afe808378850a40829261dd5f00d3437efec5537b8c190f1bf38c6929a4"
+    },
+    "wind-0-f2.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        58,
+        16,
+        124,
+        33
+      ],
+      "covered_pixels": 204,
+      "cover_percent": 2.9514,
+      "alpha_weighted_cover_percent": 2.9514,
+      "centroid": [
+        94.912,
+        25.814
+      ],
+      "mean_luma": 214.57,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          177,
+          198,
+          207,
+          255
+        ],
+        [
+          217,
+          230,
+          233,
+          255
+        ]
+      ],
+      "components": [
+        184,
+        20
+      ],
+      "sha256": "20dfc179643212029797a2233a0ced2c3e76165504646ef7b9d5c85ffe238353"
+    },
+    "wind-0-f3.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        127,
+        22,
+        136,
+        28
+      ],
+      "covered_pixels": 13,
+      "cover_percent": 0.1881,
+      "alpha_weighted_cover_percent": 0.1881,
+      "centroid": [
+        131.692,
+        25.462
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        13
+      ],
+      "sha256": "1dbaaa584816c69131d27c1eba147dcfccc0f417102e0885e7abb4a81f6132a2"
+    },
+    "wind-1-f0.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        8,
+        22,
+        20,
+        26
+      ],
+      "covered_pixels": 16,
+      "cover_percent": 0.2315,
+      "alpha_weighted_cover_percent": 0.2315,
+      "centroid": [
+        14.062,
+        23.875
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        16
+      ],
+      "sha256": "e54221b966bec52f4df109cb76319110d07fb43a08aa52d1df968cc04fa583c1"
+    },
+    "wind-1-f1.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        25,
+        13,
+        100,
+        37
+      ],
+      "covered_pixels": 252,
+      "cover_percent": 3.6458,
+      "alpha_weighted_cover_percent": 3.6458,
+      "centroid": [
+        63.73,
+        23.111
+      ],
+      "mean_luma": 239.334,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          154,
+          176,
+          186,
+          255
+        ],
+        [
+          213,
+          229,
+          232,
+          255
+        ],
+        [
+          250,
+          252,
+          247,
+          255
+        ]
+      ],
+      "components": [
+        179,
+        73
+      ],
+      "sha256": "c3f52175dc1f3f6b7299c097451f98baebe99958dc0918ee319a7af1e0cbd545"
+    },
+    "wind-1-f2.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        56,
+        14,
+        119,
+        35
+      ],
+      "covered_pixels": 165,
+      "cover_percent": 2.3872,
+      "alpha_weighted_cover_percent": 2.3872,
+      "centroid": [
+        88.212,
+        22.764
+      ],
+      "mean_luma": 213.772,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          125,
+          149,
+          161,
+          255
+        ],
+        [
+          177,
+          198,
+          207,
+          255
+        ],
+        [
+          217,
+          230,
+          233,
+          255
+        ]
+      ],
+      "components": [
+        130,
+        35
+      ],
+      "sha256": "2d51ca94edd62a006904d792cb832c5b15c5605b56725d0e81b184057aabf1b8"
+    },
+    "wind-1-f3.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        127,
+        21,
+        136,
+        24
+      ],
+      "covered_pixels": 10,
+      "cover_percent": 0.1447,
+      "alpha_weighted_cover_percent": 0.1447,
+      "centroid": [
+        130.9,
+        22.2
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        10
+      ],
+      "sha256": "5f176726ec9e10f98e7e7dc37b82a41cbfde90f7bfab0bc2fa9a7383e2bd562f"
+    },
+    "wind-2-f0.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        8,
+        30,
+        20,
+        33
+      ],
+      "covered_pixels": 12,
+      "cover_percent": 0.1736,
+      "alpha_weighted_cover_percent": 0.1736,
+      "centroid": [
+        13.5,
+        31.25
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        12
+      ],
+      "sha256": "09f609f3fe26efb0bf5408b3d26dafcf742dd51c9892dc44a71dde9db9b1c61a"
+    },
+    "wind-2-f1.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        26,
+        17,
+        113,
+        36
+      ],
+      "covered_pixels": 161,
+      "cover_percent": 2.3293,
+      "alpha_weighted_cover_percent": 2.3293,
+      "centroid": [
+        73.174,
+        25.36
+      ],
+      "mean_luma": 243.168,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          213,
+          229,
+          232,
+          255
+        ],
+        [
+          250,
+          252,
+          247,
+          255
+        ]
+      ],
+      "components": [
+        139,
+        22
+      ],
+      "sha256": "ea7930ea7005219a85e688e8679b35e15fb296e9c0e2d3c608461f6514c61eab"
+    },
+    "wind-2-f2.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        64,
+        15,
+        131,
+        33
+      ],
+      "covered_pixels": 132,
+      "cover_percent": 1.9097,
+      "alpha_weighted_cover_percent": 1.9097,
+      "centroid": [
+        98.644,
+        23.22
+      ],
+      "mean_luma": 218.38,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          177,
+          198,
+          207,
+          255
+        ],
+        [
+          217,
+          230,
+          233,
+          255
+        ]
+      ],
+      "components": [
+        117,
+        15
+      ],
+      "sha256": "a5743740e3973e64dbba5011b3ce9e95dd08e3298a57a7d7e6154227ed9692f4"
+    },
+    "wind-2-f3.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        127,
+        24,
+        136,
+        26
+      ],
+      "covered_pixels": 9,
+      "cover_percent": 0.1302,
+      "alpha_weighted_cover_percent": 0.1302,
+      "centroid": [
+        131.0,
+        24.333
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        9
+      ],
+      "sha256": "711d4a90e5ede9c6aace7dfdb58325d1ce3856e425238f142d9c5a03f88927a4"
+    },
+    "wind-3-f0.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        8,
+        22,
+        20,
+        27
+      ],
+      "covered_pixels": 12,
+      "cover_percent": 0.1736,
+      "alpha_weighted_cover_percent": 0.1736,
+      "centroid": [
+        13.5,
+        24.667
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        12
+      ],
+      "sha256": "a8a7e78fb573314a7f7e8466219708809d3ca07d958c1ec2dfd505850bb6df50"
+    },
+    "wind-3-f1.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        35,
+        14,
+        94,
+        32
+      ],
+      "covered_pixels": 212,
+      "cover_percent": 3.0671,
+      "alpha_weighted_cover_percent": 3.0671,
+      "centroid": [
+        71.75,
+        23.962
+      ],
+      "mean_luma": 240.311,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          213,
+          229,
+          232,
+          255
+        ],
+        [
+          250,
+          252,
+          247,
+          255
+        ]
+      ],
+      "components": [
+        197,
+        15
+      ],
+      "sha256": "b87077ef571d80a8f6e5ee50c476176cb210e72a2ac448b24989f5642b53b01d"
+    },
+    "wind-3-f2.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        56,
+        14,
+        120,
+        32
+      ],
+      "covered_pixels": 206,
+      "cover_percent": 2.9803,
+      "alpha_weighted_cover_percent": 2.9803,
+      "centroid": [
+        96.558,
+        23.888
+      ],
+      "mean_luma": 212.111,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          177,
+          198,
+          207,
+          255
+        ],
+        [
+          217,
+          230,
+          233,
+          255
+        ]
+      ],
+      "components": [
+        192,
+        14
+      ],
+      "sha256": "8d09983224bebcbff12d6b67fa9959a52408e21cdd90287f43829d02d4c0fb20"
+    },
+    "wind-3-f3.png": {
+      "size": [
+        144,
+        48
+      ],
+      "bounds": [
+        127,
+        22,
+        136,
+        26
+      ],
+      "covered_pixels": 9,
+      "cover_percent": 0.1302,
+      "alpha_weighted_cover_percent": 0.1302,
+      "centroid": [
+        131.0,
+        22.889
+      ],
+      "mean_luma": 187.969,
+      "alpha_levels": [
+        0,
+        255
+      ],
+      "palette": [
+        [
+          171,
+          192,
+          198,
+          255
+        ]
+      ],
+      "components": [
+        9
+      ],
+      "sha256": "d78dfb0c1f206a6b0e0d66a91d8eab47083512d36e419dbc440f9b88c129ffb2"
+    }
+  },
+  "animations": [
+    {
+      "gif": "r16-D-bolt-0-over-cloud.gif",
+      "kind": "bolt",
+      "index": 0,
+      "context": "cloud",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-0-over-modern-city.gif",
+      "kind": "bolt",
+      "index": 0,
+      "context": "modern-city",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-0-over-fantasy-town.gif",
+      "kind": "bolt",
+      "index": 0,
+      "context": "fantasy-town",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-1-over-cloud.gif",
+      "kind": "bolt",
+      "index": 1,
+      "context": "cloud",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-1-over-modern-city.gif",
+      "kind": "bolt",
+      "index": 1,
+      "context": "modern-city",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-1-over-fantasy-town.gif",
+      "kind": "bolt",
+      "index": 1,
+      "context": "fantasy-town",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-2-over-cloud.gif",
+      "kind": "bolt",
+      "index": 2,
+      "context": "cloud",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-2-over-modern-city.gif",
+      "kind": "bolt",
+      "index": 2,
+      "context": "modern-city",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-bolt-2-over-fantasy-town.gif",
+      "kind": "bolt",
+      "index": 2,
+      "context": "fantasy-town",
+      "phases": [
+        null,
+        0,
+        1,
+        2,
+        null
+      ],
+      "duration_ms": [
+        400,
+        80,
+        120,
+        180,
+        600
+      ]
+    },
+    {
+      "gif": "r16-D-wind-0-over-grass.gif",
+      "kind": "wind",
+      "index": 0,
+      "context": "grass",
+      "phases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "duration_ms": [
+        140,
+        140,
+        140,
+        140
+      ],
+      "sprite_origin": [
+        24,
+        24
+      ]
+    },
+    {
+      "gif": "r16-D-wind-1-over-grass.gif",
+      "kind": "wind",
+      "index": 1,
+      "context": "grass",
+      "phases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "duration_ms": [
+        140,
+        140,
+        140,
+        140
+      ],
+      "sprite_origin": [
+        24,
+        24
+      ]
+    },
+    {
+      "gif": "r16-D-wind-2-over-grass.gif",
+      "kind": "wind",
+      "index": 2,
+      "context": "grass",
+      "phases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "duration_ms": [
+        140,
+        140,
+        140,
+        140
+      ],
+      "sprite_origin": [
+        24,
+        24
+      ]
+    },
+    {
+      "gif": "r16-D-wind-3-over-grass.gif",
+      "kind": "wind",
+      "index": 3,
+      "context": "grass",
+      "phases": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "duration_ms": [
+        140,
+        140,
+        140,
+        140
+      ],
+      "sprite_origin": [
+        24,
+        24
+      ]
+    }
+  ],
+  "afterglow_contrast": {
+    "fantasy-grass": {
+      "0": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          43277.528,
+          11652.362,
+          8613.481
+        ],
+        "old_f2": 28533.666,
+        "new_f2_over_f1": 0.7392
+      },
+      "1": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          38370.871,
+          11577.361,
+          9192.303
+        ],
+        "old_f2": 21993.315,
+        "new_f2_over_f1": 0.794
+      },
+      "2": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          39666.906,
+          15550.867,
+          6719.793
+        ],
+        "old_f2": 27677.038,
+        "new_f2_over_f1": 0.4321
+      }
+    },
+    "desert-sand": {
+      "0": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          31095.915,
+          12008.874,
+          2939.5
+        ],
+        "old_f2": 40959.387,
+        "new_f2_over_f1": 0.2448
+      },
+      "1": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          27496.728,
+          8388.163,
+          2701.916
+        ],
+        "old_f2": 32752.557,
+        "new_f2_over_f1": 0.3221
+      },
+      "2": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          31384.017,
+          15474.931,
+          2140.94
+        ],
+        "old_f2": 39213.894,
+        "new_f2_over_f1": 0.1383
+      }
+    },
+    "snow": {
+      "0": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          10290.981,
+          37970.357,
+          14607.13
+        ],
+        "old_f2": 75050.354,
+        "new_f2_over_f1": 0.3847
+      },
+      "1": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          7357.394,
+          30139.072,
+          16018.593
+        ],
+        "old_f2": 61710.779,
+        "new_f2_over_f1": 0.5315
+      },
+      "2": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          16832.586,
+          39538.719,
+          11374.796
+        ],
+        "old_f2": 70472.475,
+        "new_f2_over_f1": 0.2877
+      }
+    },
+    "fantasy-town": {
+      "0": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          66159.148,
+          33997.711,
+          20312.84
+        ],
+        "old_f2": 20346.184,
+        "new_f2_over_f1": 0.5975
+      },
+      "1": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          54585.425,
+          27111.469,
+          20059.303
+        ],
+        "old_f2": 13149.57,
+        "new_f2_over_f1": 0.7399
+      },
+      "2": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          57617.885,
+          31723.044,
+          16114.469
+        ],
+        "old_f2": 16340.986,
+        "new_f2_over_f1": 0.508
+      }
+    },
+    "modern-city": {
+      "0": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          49342.855,
+          29062.159,
+          15740.889
+        ],
+        "old_f2": 33310.315,
+        "new_f2_over_f1": 0.5416
+      },
+      "1": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          43194.363,
+          24557.185,
+          16614.243
+        ],
+        "old_f2": 25232.092,
+        "new_f2_over_f1": 0.6766
+      },
+      "2": {
+        "sum_absolute_luminance_difference_f0_f1_f2": [
+          44794.814,
+          28759.735,
+          11590.057
+        ],
+        "old_f2": 30325.095,
+        "new_f2_over_f1": 0.403
+      }
+    }
+  },
+  "wind_closure": {
+    "0": {
+      "old_closure_mean_rgb_change": 3.4806,
+      "new_closure_mean_rgb_change": 0.2585,
+      "reduction_percent": 92.57
+    },
+    "1": {
+      "old_closure_mean_rgb_change": 2.2369,
+      "new_closure_mean_rgb_change": 0.2669,
+      "reduction_percent": 88.07
+    },
+    "2": {
+      "old_closure_mean_rgb_change": 1.7432,
+      "new_closure_mean_rgb_change": 0.2179,
+      "reduction_percent": 87.5
+    },
+    "3": {
+      "old_closure_mean_rgb_change": 2.8498,
+      "new_closure_mean_rgb_change": 0.2093,
+      "reduction_percent": 92.66
+    }
+  }
+}

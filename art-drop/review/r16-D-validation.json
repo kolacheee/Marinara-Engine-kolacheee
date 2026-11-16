@@ -1,0 +1,2654 @@
+{
+  "checks_passed": 522,
+  "checks_total": 522,
+  "protected_files": 7988,
+  "mode_blocks": 172800,
+  "source_samples": 11059200,
+  "failures": [],
+  "checks": [
+    {
+      "check": "registration bolt-0a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-0a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-0a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-0a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-0b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-0b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-0b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-0b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-1a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-1a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-1a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-1a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-2a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-2a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-2a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-2a",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-1b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-1b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-1b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-1b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-2b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-2b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-2b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-2b",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-0a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-0a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-0a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-0a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-0a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-0a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-0a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-0a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-1a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-1a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-1a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-1a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-1a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-1a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-1a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-1a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-2a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-2a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-2a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-2a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-2a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-2a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-2a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-2a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-3a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-3a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-3a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-3a-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-3a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-3a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-3a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-3a-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-0b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-0b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-0b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-0b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-0b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-0b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-0b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-0b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-1b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-1b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-1b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-1b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-1b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-1b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-1b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-1b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-2b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-2b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-2b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-2b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-2b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-2b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-2b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-2b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-3b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-3b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-3b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-3b-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration wind-3b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode wind-3b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup wind-3b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha wind-3b-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-0c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-0c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-0c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-0c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-1c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-1c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-1c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-1c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "registration bolt-2c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact 64-sample mode bolt-2c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source-supported cleanup bolt-2c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "hard source alpha bolt-2c",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "size wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "alpha wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero RGB wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no detached specks wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected bolt lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "connected pale afterglow lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "reduced stroke mass lightning-0-f2.png",
+      "pass": true,
+      "detail": {
+        "old": 523,
+        "new": 262
+      }
+    },
+    {
+      "check": "same registered bolt path lightning-0-f2.png",
+      "pass": true,
+      "detail": {
+        "within_original_mask": 0.9961832061068703
+      }
+    },
+    {
+      "check": "same vertical span lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected bolt lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "connected pale afterglow lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "reduced stroke mass lightning-1-f2.png",
+      "pass": true,
+      "detail": {
+        "old": 434,
+        "new": 277
+      }
+    },
+    {
+      "check": "same registered bolt path lightning-1-f2.png",
+      "pass": true,
+      "detail": {
+        "within_original_mask": 1.0
+      }
+    },
+    {
+      "check": "same vertical span lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected bolt lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "connected pale afterglow lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "reduced stroke mass lightning-2-f2.png",
+      "pass": true,
+      "detail": {
+        "old": 474,
+        "new": 200
+      }
+    },
+    {
+      "check": "same registered bolt path lightning-2-f2.png",
+      "pass": true,
+      "detail": {
+        "within_original_mask": 0.995
+      }
+    },
+    {
+      "check": "same vertical span lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "selected endpoint wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "quiet connected endpoint wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "all protected files byte-identical",
+      "pass": true,
+      "detail": {
+        "count": 7988,
+        "changed": []
+      }
+    },
+    {
+      "check": "failed file replaced lightning-0-f2",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced lightning-1-f2",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced lightning-2-f2",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-0-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-0-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-1-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-1-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-2-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-2-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-3-f0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "failed file replaced wind-3-f3",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "current measurement hash wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "afterglow contrast falls fantasy-grass 0",
+      "pass": true,
+      "detail": 0.7392
+    },
+    {
+      "check": "afterglow contrast falls fantasy-grass 1",
+      "pass": true,
+      "detail": 0.794
+    },
+    {
+      "check": "afterglow contrast falls fantasy-grass 2",
+      "pass": true,
+      "detail": 0.4321
+    },
+    {
+      "check": "afterglow contrast falls desert-sand 0",
+      "pass": true,
+      "detail": 0.2448
+    },
+    {
+      "check": "afterglow contrast falls desert-sand 1",
+      "pass": true,
+      "detail": 0.3221
+    },
+    {
+      "check": "afterglow contrast falls desert-sand 2",
+      "pass": true,
+      "detail": 0.1383
+    },
+    {
+      "check": "afterglow contrast falls snow 0",
+      "pass": true,
+      "detail": 0.3847
+    },
+    {
+      "check": "afterglow contrast falls snow 1",
+      "pass": true,
+      "detail": 0.5315
+    },
+    {
+      "check": "afterglow contrast falls snow 2",
+      "pass": true,
+      "detail": 0.2877
+    },
+    {
+      "check": "afterglow contrast falls fantasy-town 0",
+      "pass": true,
+      "detail": 0.5975
+    },
+    {
+      "check": "afterglow contrast falls fantasy-town 1",
+      "pass": true,
+      "detail": 0.7399
+    },
+    {
+      "check": "afterglow contrast falls fantasy-town 2",
+      "pass": true,
+      "detail": 0.508
+    },
+    {
+      "check": "afterglow contrast falls modern-city 0",
+      "pass": true,
+      "detail": 0.5416
+    },
+    {
+      "check": "afterglow contrast falls modern-city 1",
+      "pass": true,
+      "detail": 0.6766
+    },
+    {
+      "check": "afterglow contrast falls modern-city 2",
+      "pass": true,
+      "detail": 0.403
+    },
+    {
+      "check": "quiet loop closure 0",
+      "pass": true,
+      "detail": {
+        "old_closure_mean_rgb_change": 3.4806,
+        "new_closure_mean_rgb_change": 0.2585,
+        "reduction_percent": 92.57
+      }
+    },
+    {
+      "check": "quiet loop closure 1",
+      "pass": true,
+      "detail": {
+        "old_closure_mean_rgb_change": 2.2369,
+        "new_closure_mean_rgb_change": 0.2669,
+        "reduction_percent": 88.07
+      }
+    },
+    {
+      "check": "quiet loop closure 2",
+      "pass": true,
+      "detail": {
+        "old_closure_mean_rgb_change": 1.7432,
+        "new_closure_mean_rgb_change": 0.2179,
+        "reduction_percent": 87.5
+      }
+    },
+    {
+      "check": "quiet loop closure 3",
+      "pass": true,
+      "detail": {
+        "old_closure_mean_rgb_change": 2.8498,
+        "new_closure_mean_rgb_change": 0.2093,
+        "reduction_percent": 92.66
+      }
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-0-over-cloud.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-0-over-cloud.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-0-over-modern-city.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-0-over-modern-city.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-0-over-fantasy-town.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-0-over-fantasy-town.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-1-over-cloud.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-1-over-cloud.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-1-over-modern-city.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-1-over-modern-city.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-1-over-fantasy-town.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-1-over-fantasy-town.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-2-over-cloud.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-2-over-cloud.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-2-over-modern-city.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-2-over-modern-city.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-bolt-2-over-fantasy-town.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-bolt-2-over-fantasy-town.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-wind-0-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-wind-0-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact four-frame fixed-origin loop r16-D-wind-0-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-wind-1-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-wind-1-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact four-frame fixed-origin loop r16-D-wind-1-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-wind-2-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-wind-2-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact four-frame fixed-origin loop r16-D-wind-2-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF frame count/timing r16-D-wind-3-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "GIF matches actual output frames r16-D-wind-3-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exact four-frame fixed-origin loop r16-D-wind-3-over-grass.gif",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-0-over-cloud-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-0-over-fantasy-town-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-0-over-modern-city-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-1-over-cloud-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-1-over-fantasy-town-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-1-over-modern-city-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-2-over-cloud-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-2-over-fantasy-town-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-bolt-2-over-modern-city-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-overview-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-wind-0-over-grass-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-wind-1-over-grass-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-wind-2-over-grass-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "nearest-neighbour 4x r16-D-wind-3-over-grass-1x.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-desert-sand wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-forest wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-grass wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-fantasy-town wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-modern-city wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-snow wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland lightning-flash.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-0-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-0-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-0-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-0-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-1-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-1-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-1-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-1-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-2-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-2-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-2-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-2-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-3-f0.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-3-f1.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-3-f2.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "context ref-wasteland wind-3-f3.png",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "earlier NOTES preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "requested note heading",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "branch unchanged",
+      "pass": true,
+      "detail": "art/overworld-codex-2026-11-06"
+    },
+    {
+      "check": "worktree changes confined to art-drop",
+      "pass": true,
+      "detail": []
+    }
+  ]
+}

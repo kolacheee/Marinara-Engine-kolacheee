@@ -1,0 +1,184 @@
+{
+  "part": "D",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "lightning-0-f2",
+    "lightning-1-f2",
+    "lightning-2-f2",
+    "wind-0-f0",
+    "wind-0-f3",
+    "wind-1-f0",
+    "wind-1-f3",
+    "wind-2-f0",
+    "wind-2-f3",
+    "wind-3-f0",
+    "wind-3-f3"
+  ],
+  "files": {
+    "lightning-0-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-0-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-0-f2": {
+      "status": "fail",
+      "problems": [
+        "The entire afterglow (x=7..39, y=8..135, zero-based inclusive) is still fully opaque and becomes a dark blue/violet stroke. At 1x over grass, sand and snow it reads as a wire or crack, rather than faint residual light. It also persists visibly across the town/city roofs and grass in the decoded GIF phases.",
+        "The f1-to-f2 change increases background contrast instead of fading: mean absolute luminance difference at identical covered pixels rises from 22.28 to 54.56 over grass, 22.96 to 78.32 over sand, and 72.6 to 143.5 over snow (0-255 scale; reference crop (96,72)-(192,216), bolt at (24,0)). See critic-r16D-1-afterglow-context.png."
+      ],
+      "fix": "Rework f2 along the same registered bolt and branch paths into a much thinner, pale, low-saturation violet-blue afterglow, reducing the solid painted stroke mass rather than darkening every pixel to navy. Derive any thinner remnants from an image-tool edit of this bolt, retain clean connected strokes and hard 0/255 alpha, and avoid isolated dither dots. Preserve the bolt's position and recognizable bends/forks. Review the revised three-phase sequence over the actual light terrain, town and city as well as slate; the last phase must read as fading light rather than a newly dark line."
+    },
+    "lightning-1-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-1-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-1-f2": {
+      "status": "fail",
+      "problems": [
+        "The entire afterglow (x=6..42, y=6..135, zero-based inclusive) is still fully opaque and becomes a dark blue/violet stroke. At 1x over grass, sand and snow it reads as a wire or crack, rather than faint residual light. It also persists visibly across the town/city roofs and grass in the decoded GIF phases.",
+        "The f1-to-f2 change increases background contrast instead of fading: mean absolute luminance difference at identical covered pixels rises from 26.68 to 50.68 over grass, 19.33 to 75.47 over sand, and 69.44 to 142.19 over snow (0-255 scale; reference crop (96,72)-(192,216), bolt at (24,0)). See critic-r16D-1-afterglow-context.png."
+      ],
+      "fix": "Rework f2 along the same registered bolt and branch paths into a much thinner, pale, low-saturation violet-blue afterglow, reducing the solid painted stroke mass rather than darkening every pixel to navy. Derive any thinner remnants from an image-tool edit of this bolt, retain clean connected strokes and hard 0/255 alpha, and avoid isolated dither dots. Preserve the bolt's position and recognizable bends/forks. Review the revised three-phase sequence over the actual light terrain, town and city as well as slate; the last phase must read as fading light rather than a newly dark line."
+    },
+    "lightning-2-f0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-2-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lightning-2-f2": {
+      "status": "fail",
+      "problems": [
+        "The entire afterglow (x=13..33, y=4..139, zero-based inclusive) is still fully opaque and becomes a dark blue/violet stroke. At 1x over grass, sand and snow it reads as a wire or crack, rather than faint residual light. It also persists visibly across the town/city roofs and grass in the decoded GIF phases.",
+        "The f1-to-f2 change increases background contrast instead of fading: mean absolute luminance difference at identical covered pixels rises from 32.81 to 58.39 over grass, 32.65 to 82.73 over sand, and 83.42 to 148.68 over snow (0-255 scale; reference crop (96,72)-(192,216), bolt at (24,0)). See critic-r16D-1-afterglow-context.png."
+      ],
+      "fix": "Rework f2 along the same registered bolt and branch paths into a much thinner, pale, low-saturation violet-blue afterglow, reducing the solid painted stroke mass rather than darkening every pixel to navy. Derive any thinner remnants from an image-tool edit of this bolt, retain clean connected strokes and hard 0/255 alpha, and avoid isolated dither dots. Preserve the bolt's position and recognizable bends/forks. Review the revised three-phase sequence over the actual light terrain, town and city as well as slate; the last phase must read as fading light rather than a newly dark line."
+    },
+    "lightning-flash": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f0": {
+      "status": "fail",
+      "problems": [
+        "Loop-entry discontinuity: f0 already contains 172 opaque pixels within (7,17)-(61,35) (right/bottom exclusive), with a clearly formed bright gust. It appears suddenly on the left immediately after f3's still-visible gust on the right. The opacity-weighted x centroid jumps west from 116.237 to 37.041 (79.196 native pixels), breaking the requested smooth four-frame eastward loop.",
+        "The supplied wind-0 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-0's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-0-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-0-f3": {
+      "status": "fail",
+      "problems": [
+        "Loop-exit discontinuity: f3 still contains 80 opaque pixels within (98,17)-(128,32) (right/bottom exclusive). This recognizable right-side remnant vanishes abruptly when the next f0 appears 79.196 native pixels to its west. The last frame has not faded enough to conceal that reset.",
+        "The supplied wind-0 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-0's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-1-f0": {
+      "status": "fail",
+      "problems": [
+        "Loop-entry discontinuity: f0 already contains 99 opaque pixels within (7,16)-(48,35) (right/bottom exclusive), with a clearly formed bright gust. It appears suddenly on the left immediately after f3's still-visible gust on the right. The opacity-weighted x centroid jumps west from 120.789 to 28.051 (92.738 native pixels), breaking the requested smooth four-frame eastward loop.",
+        "The supplied wind-1 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-1's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-1-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-1-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-1-f3": {
+      "status": "fail",
+      "problems": [
+        "Loop-exit discontinuity: f3 still contains 57 opaque pixels within (106,18)-(135,31) (right/bottom exclusive). This recognizable right-side remnant vanishes abruptly when the next f0 appears 92.738 native pixels to its west. The last frame has not faded enough to conceal that reset.",
+        "The supplied wind-1 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-1's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-2-f0": {
+      "status": "fail",
+      "problems": [
+        "Loop-entry discontinuity: f0 already contains 74 opaque pixels within (7,24)-(45,41) (right/bottom exclusive), with a clearly formed bright gust. It appears suddenly on the left immediately after f3's still-visible gust on the right. The opacity-weighted x centroid jumps west from 122.88 to 25.73 (97.150 native pixels), breaking the requested smooth four-frame eastward loop.",
+        "The supplied wind-2 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-2's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-2-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-2-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-2-f3": {
+      "status": "fail",
+      "problems": [
+        "Loop-exit discontinuity: f3 still contains 50 opaque pixels within (108,20)-(138,30) (right/bottom exclusive). This recognizable right-side remnant vanishes abruptly when the next f0 appears 97.150 native pixels to its west. The last frame has not faded enough to conceal that reset.",
+        "The supplied wind-2 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-2's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-3-f0": {
+      "status": "fail",
+      "problems": [
+        "Loop-entry discontinuity: f0 already contains 140 opaque pixels within (11,16)-(49,33) (right/bottom exclusive), with a clearly formed bright gust. It appears suddenly on the left immediately after f3's still-visible gust on the right. The opacity-weighted x centroid jumps west from 110.74 to 33.686 (77.054 native pixels), breaking the requested smooth four-frame eastward loop.",
+        "The supplied wind-3 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-3's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    },
+    "wind-3-f1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-3-f2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wind-3-f3": {
+      "status": "fail",
+      "problems": [
+        "Loop-exit discontinuity: f3 still contains 77 opaque pixels within (90,16)-(127,31) (right/bottom exclusive). This recognizable right-side remnant vanishes abruptly when the next f0 appears 77.054 native pixels to its west. The last frame has not faded enough to conceal that reset.",
+        "The supplied wind-3 GIF runs f0/f1/f2/f3 for 140 ms each, then inserts a fifth blank 420 ms frame. That previews separate spawned events; it does not establish the requested smooth four-frame loop. See critic-r16D-1-wind-loop-seams.png, ordered f2, f3, f0, f1."
+      ],
+      "fix": "Revise wind-3's f0 and f3 together so the left entry and right exit are nearly vanished, source-drawn tapered wisps and the f3-to-f0 reset is unobtrusive. Retain the recognizable curl and eastward progression in f1/f2, hard alpha, clean native strokes and no isolated specks. Use the image tool for any new shape work, then register/reduce it. Verify f0-f1-f2-f3-f0 directly over the same grass crop at a fixed sprite origin, without an extra blank frame or hidden position reset."
+    }
+  },
+  "notes": "Independent asset review of all 26 named Part D files; no weather16 output was edited. Read BRIEF-16 in full and the earlier-round drawing/reduction method sections in NOTES. Inspected every file at exact native 1x and nearest-neighbour 4x, with 8x fork/edge/tip close-ups. Inspected all 26 native placements over each of the seven reference crops: fantasy grass, forest, town, modern city, wasteland, desert sand and snow. Decoded and inspected all nine bolt GIF sequences over dark clouds, city and town and all four gust GIF sequences over grass, including their encoded timing; this is frame/timing review, not a claim of live in-engine playback. Also explicitly inspected the wind f3-to-f0 transition. All required dimensions pass; the 25 bolt/gust sprites have only alpha 0/255, all 26 files have zero RGB under transparency, and each bolt's f0/f1/f2 alpha channels are byte-identical. No detached 1-4 pixel alpha specks were found. The flash is accepted under the explicit discrete-ring exception: alpha 0/8/16/28/44/64/88, crisp band boundaries, approximately 5.89% alpha-weighted canvas coverage, readable underlying map, and no smooth antialiased ramp. Native stroke scale, drawn curl/bolt shapes and map readability otherwise pass. The three afterglow failures are visual despite decreasing raw RGB luminance. The wind endpoint failures apply the user's explicit smooth four-frame-loop review requirement; the source brief's sprite wording and the creator's five-frame event previews do not demonstrate that closure. Middle wind frames pass individually, but the four sequences require endpoint repair. Part D has no ground tiles, seasonal props or seasonal partners: literal 3x3 ground repeats and summer/seasonal alpha comparisons are not applicable; curves in these effect sprites are not rounded grid-tile corners. Only critic-r16D-1.json and critic-r16D-1-*.png review composites were written. No commit, push or branch change."
+}

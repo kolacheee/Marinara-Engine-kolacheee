@@ -1,3 +1,154 @@
+# Round 16 — Part D: critic-r16D-1 redraw
+
+Replaced all **11 failed files**: the three `lightning-*-f2.png` afterglows
+and eight `wind-*-f0/f3.png` endpoints. **All 15 passing PNGs, including the
+flash and middle wind frames, are byte-identical.** No seasonal partners apply.
+
+Drew **17 large built-in image-tool edits on solid magenta**: three alternatives
+per bolt and two per gust. Selected bolt **0C / 1C / 2C**, wind **0A / 1A / 2B /
+3B**. Exact prompts and originals: `review/r16-D-redraw1-generation.json` and
+`r16-D-redraw1-source-*.png`. The thin A/B bolt trials fragmented on reduction;
+C retains connected strokes. No API fallback or code-drawn shapes/noise.
+
+Same method: magenta key → BOX registration at 8× → fixed palette → exact
+64-sample RGBA mode → source-supported gap/outline cleanup. Each restored
+cell has at least eight painted source samples; joins span at most two cells.
+Final sprites have hard **0/255 alpha** and **zero RGB under transparency**.
+Afterglows now use a thinner pale low-saturation stroke (262 / 277 / 200
+pixels), preserving the bends/forks. Wind endpoints contain only **9–16
+connected pixels**. Fade comes from reduced painted mass, not navy darkening.
+
+Regenerated the Part D sheets and **13 GIFs**. Wind loops contain exactly
+**four 140 ms frames**, at a fixed origin, without a blank pause. Their closing
+image change falls **87.5–92.7%**. Afterglow contrast falls from f1 over grass,
+sand, snow, town and city. Reviewed native/enlarged sprites, all seven map
+contexts and decoded cloud/city/town/grass GIF phases. This is saved-art
+self-review, not a new independent critic verdict or in-engine playback.
+
+**522/522 checks pass**; **7,988 protected files** are byte-identical.
+The audit replays **172,800 exact mode blocks / 11,059,200 samples**.
+
+Start at `review/r16-D-review.html`. Reproduce with
+`r16-D-redraw1-build.py --export`, then `r16-D-redraw1-review.py`; verify with
+`r16-D-redraw1-verify.py`. Audit: `r16-D-redraw1-validation.json`. Earlier
+sources and notes remain historical records. No commit, push or branch change.
+
+---
+
+# Round 16 — Part D
+
+Made **26 transparent RGBA PNGs in `out/weather16/`**:
+**`lightning-0..2-f0..f2.png`** (nine **48×144** frames),
+**`lightning-flash.png`** (**192×192**), and
+**`wind-0..3-f0..f3.png`** (sixteen **144×48** frames).
+These are sparse, setting-neutral effect sprites at the existing native pixel
+scale. There are no ground bases or seasonal partners in Part D.
+
+**Drawing method:** **ten separate large built-in image-tool drawings on
+solid magenta**: four bolt sources, five four-phase gust sheets, and one
+six-tone radial flash mask. The difficult forked bolt and coiling gust each
+have two variants. Selected **bolt 0A / 1A / 2B**, **wind 0A / 1A / 2A / 3B**,
+and **flash A**. Bolt 2A spreads too far horizontally for the narrow canvas;
+2B preserves a tall strike with two descending forks. Wind 3A is too close
+to the simple hook; 3B retains a small inward coil. The other gusts are an
+upward hook, an unequal double curl, and a rising shallow sweep. Sources are
+**`review/r16-D-source-*.png`**; exact prompts are in
+**`review/r16-D-generation.json`**. No API fallback was used.
+
+Magenta is keyed, then each source is BOX-registered to **8W×8H**, locked to
+a fixed palette, and reduced by the exact RGBA mode of **all 64 samples in
+every 8×8 block**, including transparent samples. Ties use lexicographic
+RGBA order. Bolts use their painted bounds, registered to a 136-pixel-high
+working placement with width capped at 40 pixels. The gust sheets retain
+their complete four-row coordinate system at **144×192**, then split into
+four **144×48** cells. The drawn flash is registered to **176×176**, leaving
+eight clear pixels on each side. All mode and registered stages remain in
+the review directory.
+
+Native cleanup restricts the darkest drawn contour to the one-pixel
+perimeter, removes detached remnants and restores source-supported
+one-pixel joins. Each restored pixel connects two existing drawn components
+and has at least **8 of 64 opaque source samples**; its colour comes from
+those samples. The eight selected sources have **87 mode-to-clean edits**,
+including **32 documented joins**. Across all ten alternatives there are
+**116 edits / 44 joins**. No bolt paths, gust curls, flash rings, surface
+shapes or noise were constructed in code.
+
+**Animation and alpha:** all nine bolt frames and sixteen gust frames have
+strict **0/255 alpha**, with **RGB (0,0,0)** under transparency. Each bolt's
+three full alpha channels are **byte-identical**. Its four-colour white,
+ice-blue and violet palette becomes dimmer in f1 and darker blue-violet in
+f2; every visible RGB channel decreases at each step. Shapes never change.
+The four gust phases are separately drawn stages of the same gust, moving
+east. After the f1 peak, their drawn coverage and luminance both decrease;
+the late phase fades through shorter/thinner drawing and a dimmer palette,
+while retaining hard alpha. The top-left whites and lower/right grey edges
+come from the source drawings. No interpolated animation frames are added.
+
+The flash is the brief's discrete-alpha-ring exception: six drawn tonal
+zones map to pale **(228,234,255)** with alpha **8 / 16 / 28 / 44 / 64 / 88**,
+plus transparent zero. There is no smooth alpha ramp, airbrush, procedural
+radial gradient or generated dither. The working mask has hard 0/255 alpha.
+The final glow covers **23,725 pixels / 64.3582%** of its canvas, but only
+**5.8893% alpha-weighted cover**. Mean alpha decreases outward through six
+measured radial bands, and its painted bounds are **(8,8)–(184,184)**.
+
+**Measurements:** bounds are zero-based, right/bottom exclusive. Bolt
+measurements apply to all three frames; each bolt has one connected channel.
+Luminance is the mean visible RGB luminance, on a 0–255 scale.
+
+| Bolt | Painted bounds | Covered pixels | Cover | Luminance f0 / f1 / f2 |
+|---|---|---:|---:|---|
+| 0 | (7,8)–(40,136) | 523 | 7.5666% | 233.017 / 166.609 / 95.710 |
+| 1 | (6,6)–(43,136) | 434 | 6.2789% | 238.153 / 172.076 / 99.330 |
+| 2 | (13,4)–(34,140) | 474 | 6.8576% | 217.278 / 156.635 / 91.373 |
+
+| Gust | Covered pixels f0 / f1 / f2 / f3 | Cover % f0 / f1 / f2 / f3 | Horizontal centroid f0 → f3 |
+|---|---|---|---|
+| 0 | 172 / 316 / 204 / 80 | 2.4884 / 4.5718 / 2.9514 / 1.1574 | 37.041 → 116.237 |
+| 1 | 99 / 252 / 165 / 57 | 1.4323 / 3.6458 / 2.3872 / 0.8247 | 28.051 → 120.789 |
+| 2 | 74 / 161 / 132 / 50 | 1.0706 / 2.3293 / 1.9097 / 0.7234 | 25.730 → 122.880 |
+| 3 | 140 / 212 / 206 / 77 | 2.0255 / 3.0671 / 2.9803 / 1.1140 | 33.686 → 110.740 |
+
+**Review and QC:** every file has a **1× + exact nearest-neighbour 4×** sheet,
+**`review/r16-D-file-<filename>.png`**. Start at **`r16-D-review.html`** or
+**`r16-D-overview-1x.png`**; the overview has an exact 4× partner. All 26
+files have native placements over all seven existing reference crops
+(**182 placements**), in **`r16-D-context-*-all-1x.png`**, plus seven compact
+peak-frame context sheets. Roads, towns and ground remain readable. White
+strokes are intentionally subtler on snowy ground than over grass or slate.
+The native and enlarged reviews caught broken tips in the first reduction;
+the recorded source-supported joins fix those without drawing new paths.
+No isolated one-to-four-pixel alpha fragments remain in the final sprites.
+
+**Thirteen GIFs** show each bolt over an approved dark cloud on a slate
+backdrop, over the city, and over the fantasy town (**nine GIFs**), and each
+gust alone over a clear grass crop (**four GIFs**). Clouds are composited
+over the bolt origin so each strike meets its cloud base. Bolt phases last
+**80 / 120 / 180 ms**, with a clear lead-in and pause; only f0 includes the
+flash. Gust phases last **140 ms each**, followed by a **420 ms** clear pause.
+These preview single spawned events, not seamless falling-weather loops.
+Each GIF has native and 4× phase strips; decoded-GIF contact sheets verify
+the actual encoded frames. GIF timing and frame correspondence are checked
+automatically. This is saved-art self-review of frames and decoded GIF
+sequences, not an independent critic verdict or observed in-engine playback.
+
+**Verification:** **592 / 592 checks pass**, replaying registration from all
+ten originals, **202,752 exact mode blocks / 12,976,128 source samples**,
+cleanup and source support, all 26 sizes/palettes/alpha sets/hashes, identical
+bolt masks, monotonic gust movement and fade, flash falloff, proof scaling,
+GIF frames/timing and every reference placement. **7,958 pre-existing art
+files are byte-identical**, and all earlier NOTES content is preserved.
+Measurements and audit: **`r16-D-measurements.json`** and
+**`r16-D-validation.json`**. Reproduction: **`r16-D-build.py`** and
+**`r16-D-verify.py`**, using Python and Pillow.
+
+Only the 26 named Part D outputs, **`review/r16-D-*`** material and this top
+NOTES section were added. Literal 3×3 ground repeats do not apply because
+Part D contains no ground bases. No commit, push or branch change.
+
+---
+
 # Round 16 — Part C
 
 Made **18 transparent RGBA PNGs in `out/weather16/`**:
