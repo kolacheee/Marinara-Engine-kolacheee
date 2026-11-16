@@ -1,3 +1,141 @@
+# Round 15 — Part C: critic-r15C-1 redraw
+
+Repaired `out/city15/compose.py` and regenerated all four failed mounted
+proofs. The critic passed every individual drawing and requested assembly
+repairs, so **all 129 city PNGs remain byte-identical**; no redraw was needed.
+Code only crops and composites the existing approved drawings.
+
+Wall ends now expose their outer **3 native pixels** within the inspected
+edge framing; the remaining five pixels stay behind the intact facade.
+Shutters, windows, sills, original course rows and **48×width** lot spacing
+are preserved. All four unchanged signs mount on the diagonal timber brace
+between the two-cell upper windows, clear of the whole ground entrance and
+display. `sign_mount()` uses this inspected socket and returns no automatic
+mount for incompatible facades. The mounted sheets and streets share it.
+
+Regenerated the original two streets, five-storey **8×** proof and asset
+sheets; passing proofs remain byte-identical. Added width **1/2/3** wall-end
+proofs covering all four storey kinds and all colourways, plus twelve-building
+mounted streets with saved seeds **731 / 15062046**, each showing all four
+signs. Native and enlarged inspection found no clipped shutter, covered
+opening, gap or displaced course in the revised assemblies.
+
+**Checks:** 129 asset invariants, **108** wall-end assemblies, **120** sign
+mounts, **100 fresh seeds / 1,200 buildings / 185 signs**, saved-spec replay
+and **12 exact enlargement pairs** pass. Run
+`python -B art-drop/out/city15/compose.py --check-only`; use
+`--seed 731 --seed2 15062046 --mounts --no-sheets` to recompose the mounting
+stress streets. Audit metadata is in `review/r15-C-critic1-validation.png`.
+Only Part C files and this section changed; no commit, push or branch change.
+This records self-review, not a new independent critic verdict.
+
+---
+
+# Round 15 — Part C
+
+Added the reproducible street compositor, `out/city15/compose.py`, and
+completed the native street / enlarged building self-review. Two fixed seeds
+each compose **12 wall-to-wall buildings**, with widths **1–3 cells** and
+**1–5 floors including ground**. A separate five-floor building shows all four
+upper-storey kinds at **8×**. Repaired **four PNGs**: `storey-plaster-w3.png`
+and its `-c0..c2` partners. The other **125 city PNGs**, `COURSE.md`, references
+and neighbouring approved art remain byte-identical.
+
+**Findings and fixes:** the old wide plaster panel put a detached-looking
+closed shutter beside its left window, followed by a conspicuous empty bay.
+Repeated beside another wide building, that layout dominated the street.
+Two new drawings replace it with three distinct framed windows: four-pane
+glass, closed centre shutters and six-pane glass. Selected **B**, whose
+framed centre window and irregular material shading read more naturally with
+the town houses. A is retained for comparison. The random assembler also
+avoids repeating a storey kind within a building or an identical same-width
+window pattern at the same floor on adjacent buildings. Adjacent same-width
+ground and roof kinds differ as well; colour remains consistent within each
+building's upper facade.
+
+The first assembly exposed floating chimneys beside gables. Chimney bases
+now register to the drawn roof silhouette across their complete foot width.
+Gable chimneys composite **behind** the roof, preserving its attic windows;
+the other flues mount on the visible slope or deck. Overlay canvases stay
+inside their building width. Optional **8×48 wall ends** composite inside
+the facade edge, with their top/bottom rows omitted so the original complete
+course remains untouched. Separate mounted proofs exercise both wall ends,
+all four signs, all chimneys/dormers and both flowerboxes.
+
+**Drawing method:** two large built-in image-tool edits on solid magenta,
+using the existing wide plaster panel and `reference/r15/fantasy-house-2.png`.
+The magenta surround is keyed, painted row extents are BOX-registered to
+**1152×384**, and the established **34-colour** facade palette is locked
+without dithering. Glass stays in the original blue-grey ramp. Every native
+pixel is the exact RGBA mode of **all 64 samples per 8×8 block**, including
+alpha, with lexicographic tie-breaking. One-pixel contour cleanup and transfer
+of the existing drawn course record **295 edits** for selected B (**312** for
+rejected A). Code registers, reduces, palette-locks, cleans, recolours and
+composites drawings; it constructs no architecture, noise or decorative shapes.
+Exact prompts, both source drawings, registered samples, mode results and
+recorded cleanup are retained in `review/r15-C-*.png`; the processing recipe
+is embedded in `r15-C-processing.png`.
+
+The revised facade and its colourways remain **144×48**, fully opaque within
+bounds `(0,0,144,48)`, with **27 / 28 / 28 opaque colours** for c0 / c1 / c2.
+The unsuffixed PNG is byte-identical to c0. All four preserve the original
+alpha and exact course rows **0 / 47**. Alpha is **0/255**, hidden RGB is zero,
+and colourways use the existing cream/ochre/blue-grey and timber mappings.
+
+**Compositor:** requires Pillow. `build(spec)` accepts a ground floor,
+**0–4 upper storeys**, roof, optional wall ends and positioned overlays.
+Facade pieces are placed without scaling or overlap at **48 px** intervals.
+Roofs end immediately above the top facade course; adjoining lots advance by
+exactly **48×width**. There is no street spacing or generated ground artwork:
+review backgrounds repeat the unchanged summer `grass-base.png`.
+
+```sh
+python art-drop/out/city15/compose.py
+python art-drop/out/city15/compose.py --seed 42 --seed2 43 --no-sheets
+python art-drop/out/city15/compose.py --replay art-drop/review/r15-C-street-15062026-1x.png
+```
+
+Default seeds are **15062026 / 15112026**. Each saved street contains its seed,
+complete building specs, exact piece placements and source-file hashes in PNG
+text metadata. `--no-overlays` exposes bare stacks; `--count` changes street
+length. Replay uses saved specs rather than drawing another random sequence.
+
+| Proof | Native canvas | Enlarged canvas |
+|---|---|---|
+| `r15-C-street-15062026` | 1088×384 | 3264×1152 at 3× |
+| `r15-C-street-15112026` | 1376×392 | 4128×1176 at 3× |
+| `r15-C-five-storey` | 176×392 | 1408×3136 at 8×; also 4× |
+
+The five-floor facade is **144×240**, capped by a **144×72** gable. Its review
+canvas adds the documented headroom and summer-ground margins. Every one of
+the **129 city PNGs** has an individual **1× / exact nearest-neighbour 4×**
+proof, plus grouped sheets. Props appear over summer grass. No terrain base
+was added; the unchanged grass has a literal, unlabelled **3×3 repeat** at
+**864×864 / 3456×3456**. `r15-C-plaster-selection-{1x,4x}.png` compares before,
+both alternatives and all colourways. Style and mounted-detail sheets accompany
+the streets; additional fresh-seed **42 / 43** streets are saved at 1× / 4×.
+
+**QC:** inspected both final streets at **1× / 3×**, the five-floor **8×**
+building, fresh-seed streets and mounted details. No transparent facade break,
+gap between neighbours, displaced course, detached overlay or adjacent copied
+window pattern remains in those assemblies. Source-mode replay verifies
+**13,824 mode blocks / 884,736 samples**, all cleanup and three colourway
+replays. Pixel checks cover all **129 assets**, **960 roof/facade pairings**,
+**960 storey/facade pairings**, four saved-street reconstructions and
+**100 fresh seeds / 1,200 buildings**, including connected alpha, bounds,
+48 px floor origins and repeat exclusions. All **142 exact 4× pairs**, the
+3×/8× enlargements, individual native asset insets and nine literal grass
+copies pass. Results, measurements and the validation script are embedded in
+`r15-C-validation.png`.
+
+There are **312 `r15-C-*.png` review files**. All **5,210 protected starting
+files** remain byte-identical; earlier notes follow unchanged below. This is
+visual asset-composite self-review, with no independent critic or live-game
+verdict claimed. Only Part C files inside `art-drop/` were written.
+**No commit, push or branch change.**
+
+---
+
 # Round 15 — Part B: critic-r15B-1 redraw
 
 Repaired all **eight failed PNGs** in `out/city15/`: `roof-flat-w1` and

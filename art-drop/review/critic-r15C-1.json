@@ -1,0 +1,731 @@
+{
+  "part": "C",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "compose.py",
+    "r15-C-wall-ends-mounted-1x",
+    "r15-C-overlays-mounted-1x",
+    "r15-C-wall-ends-mounted-4x",
+    "r15-C-overlays-mounted-4x"
+  ],
+  "files": {
+    "chimney-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15062026-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15062026-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15112026-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15112026-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-five-storey-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-five-storey-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-five-storey-8x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "The wall-end assembly cuts off drawn shutters. build() places fully opaque 8-pixel strips over columns 0..7 and W-8..W-1 of every facade, rows 1..46. In the supplied three-building proof, the right strip at local x136..143 replaces the outer edge of the right-hand timber window/shutter; the new plaster panel's right shutter is also clipped. This produces an abrupt vertical cut through foreground detail, not a clean party-wall join. Visible on all three colourways. Native proof locations: right edges x152..159, x296..303 and x440..447, timber floor y120..167 and plaster floor y168..215. See critic-r15C-1-wall-end-occlusion-8x.png and critic-r15C-1-wall-end-narrow-4x.png.",
+        "All four mounted signs hang across the shop entrance. detail_sheets() places sign-0..3 at facade-relative (64,40), which is ground-panel-relative (64,-8); their boards cover the upper/middle door leaf of ground-shop-w2, around local x74..88 and y10..26. The bracket and board read as pasted onto the doorway rather than hanging from a clear wall position. In the native overlay sheet this affects sign-0/sign-1 at the right of row 3 and sign-2/sign-3 in row 4. See critic-r15C-1-overlays-mounted-x1280-y1856-4x.png and critic-r15C-1-overlays-mounted-x0-y2784-4x.png."
+      ],
+      "fix": "Revise compose.py build() at the wall-end placement (line 102): register the strips to clear wall/framing regions and preserve complete foreground windows, shutters and their outlines with source-derived compositing masks, or use an explicitly compatible end treatment. Keep the 48*N lot width and original course rows. Do not solve this by erasing shutters or adding spacing between lots. Regenerate both wall-ends-mounted proofs and test widths 1, 2 and 3 with both ends enabled. Revise the sign mounting position in compose.py detail_sheets() (line 215), using a clear wall or framing anchor above/beside the entrance. Keep the whole sign board clear of the door opening and other window/display detail, with its bracket visibly attached. Use the existing sign drawings unchanged. Regenerate both overlays-mounted proofs and exercise the same mounting rule in a wall-to-wall street."
+    },
+    "r15-C-wall-ends-mounted-1x": {
+      "status": "fail",
+      "problems": [
+        "The wall-end assembly cuts off drawn shutters. build() places fully opaque 8-pixel strips over columns 0..7 and W-8..W-1 of every facade, rows 1..46. In the supplied three-building proof, the right strip at local x136..143 replaces the outer edge of the right-hand timber window/shutter; the new plaster panel's right shutter is also clipped. This produces an abrupt vertical cut through foreground detail, not a clean party-wall join. Visible on all three colourways. Native proof locations: right edges x152..159, x296..303 and x440..447, timber floor y120..167 and plaster floor y168..215. See critic-r15C-1-wall-end-occlusion-8x.png and critic-r15C-1-wall-end-narrow-4x.png."
+      ],
+      "fix": "Revise compose.py build() at the wall-end placement (line 102): register the strips to clear wall/framing regions and preserve complete foreground windows, shutters and their outlines with source-derived compositing masks, or use an explicitly compatible end treatment. Keep the 48*N lot width and original course rows. Do not solve this by erasing shutters or adding spacing between lots. Regenerate both wall-ends-mounted proofs and test widths 1, 2 and 3 with both ends enabled."
+    },
+    "r15-C-overlays-mounted-1x": {
+      "status": "fail",
+      "problems": [
+        "All four mounted signs hang across the shop entrance. detail_sheets() places sign-0..3 at facade-relative (64,40), which is ground-panel-relative (64,-8); their boards cover the upper/middle door leaf of ground-shop-w2, around local x74..88 and y10..26. The bracket and board read as pasted onto the doorway rather than hanging from a clear wall position. In the native overlay sheet this affects sign-0/sign-1 at the right of row 3 and sign-2/sign-3 in row 4. See critic-r15C-1-overlays-mounted-x1280-y1856-4x.png and critic-r15C-1-overlays-mounted-x0-y2784-4x.png."
+      ],
+      "fix": "Revise the sign mounting position in compose.py detail_sheets() (line 215), using a clear wall or framing anchor above/beside the entrance. Keep the whole sign board clear of the door opening and other window/display detail, with its bracket visibly attached. Use the existing sign drawings unchanged. Regenerate both overlays-mounted proofs and exercise the same mounting rule in a wall-to-wall street."
+    },
+    "r15-C-wall-ends-mounted-4x": {
+      "status": "fail",
+      "problems": [
+        "The wall-end assembly cuts off drawn shutters. build() places fully opaque 8-pixel strips over columns 0..7 and W-8..W-1 of every facade, rows 1..46. In the supplied three-building proof, the right strip at local x136..143 replaces the outer edge of the right-hand timber window/shutter; the new plaster panel's right shutter is also clipped. This produces an abrupt vertical cut through foreground detail, not a clean party-wall join. Visible on all three colourways. Native proof locations: right edges x152..159, x296..303 and x440..447, timber floor y120..167 and plaster floor y168..215. See critic-r15C-1-wall-end-occlusion-8x.png and critic-r15C-1-wall-end-narrow-4x.png."
+      ],
+      "fix": "Revise compose.py build() at the wall-end placement (line 102): register the strips to clear wall/framing regions and preserve complete foreground windows, shutters and their outlines with source-derived compositing masks, or use an explicitly compatible end treatment. Keep the 48*N lot width and original course rows. Do not solve this by erasing shutters or adding spacing between lots. Regenerate both wall-ends-mounted proofs and test widths 1, 2 and 3 with both ends enabled."
+    },
+    "r15-C-overlays-mounted-4x": {
+      "status": "fail",
+      "problems": [
+        "All four mounted signs hang across the shop entrance. detail_sheets() places sign-0..3 at facade-relative (64,40), which is ground-panel-relative (64,-8); their boards cover the upper/middle door leaf of ground-shop-w2, around local x74..88 and y10..26. The bracket and board read as pasted onto the doorway rather than hanging from a clear wall position. In the native overlay sheet this affects sign-0/sign-1 at the right of row 3 and sign-2/sign-3 in row 4. See critic-r15C-1-overlays-mounted-x1280-y1856-4x.png and critic-r15C-1-overlays-mounted-x0-y2784-4x.png."
+      ],
+      "fix": "Revise the sign mounting position in compose.py detail_sheets() (line 215), using a clear wall or framing anchor above/beside the entrance. Keep the whole sign board clear of the door opening and other window/display detail, with its bracket visibly attached. Use the existing sign drawings unchanged. Regenerate both overlays-mounted proofs and exercise the same mounting rule in a wall-to-wall street."
+    }
+  },
+  "notes": "Independent Round 15 Part C review. Read BRIEF-15 in full, the recorded drawing method and COURSE.md. Inspected all 129 current city PNGs at exact native 1x and nearest-neighbour 4x; compared the ten supplied town-house/hall references at 1x/4x. Inspected both submitted twelve-building streets at native scale and in complete 4x crops, and verified their supplied 3x files are exact nearest-neighbour enlargements. Replayed both saved seed/spec recipes byte-for-byte. Inspected the five-storey building at 1x, 4x and complete 8x close-ups. Independently recomposed seeds 20261116 and 731, twelve buildings each, and inspected both at 1x/4x; their seeds, specs and placements are saved in critic-r15C-1-street-*-1x.png metadata. No facade gap, displaced shared course, detached chimney, or unacceptable repeated facade pattern was found in those four streets or the five-storey stack. Their warm stone/timber, top-left light and native detail scale fit the supplied town art. The revised wide plaster panel passes. All 129 individual PNGs pass dimensions, hard alpha 0/255, zero RGB under transparency, single connected alpha silhouette, and the applicable exact course-row/opaque-footprint checks. All 75 colourway alpha masks match their unsuffixed sources exactly. Props were inspected directly over unchanged summer grass at 1x/4x as well as mounted. Verified and inspected the summer grass in a literal 3x3 repeat, including enlarged junctions; it is existing context, not a new Part C output. There are no seasonal city files in Parts A-C, so seasonal-ground/seasonal-silhouette tests are not applicable; colourways are not seasonal partners. The failure is limited to optional assembly/mounting behavior and its four saved proofs; no individual city PNG is failed or needs redrawing on this evidence. Primary street and five-storey proof entries pass because they do not enable wall ends or hanging signs. All 129 PNGs and compose.py remained byte-identical to the critic's starting hashes. Only critic-r15C-1.json and critic-r15C-1-*.png review evidence were written. No git commit, push or branch change."
+}

@@ -1,0 +1,769 @@
+{
+  "part": "C",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "chimney-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15062026-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15062026-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15112026-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-15112026-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-five-storey-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-five-storey-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-five-storey-8x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-mounted-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-mounted-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-overlays-mounted-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-overlays-mounted-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-w1-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-w1-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-w2-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-w2-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-w3-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-wall-ends-w3-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-mounts-731-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-mounts-731-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-mounts-731-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-mounts-15062046-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r15-C-street-mounts-15062046-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 15 Part C, round 2 critic review. Read BRIEF-15 in full, the recorded drawing method, COURSE.md and compose.py. Inspected all 129 current city PNGs at exact native 1x and nearest-neighbour 4x, including props over unchanged summer grass; verified that the individual and grouped proof pixels match the current source files. Compared all ten supplied r15 house/hall references at 1x/4x. The native detail scale, top-left lighting, solid material colours and dark contours fit the town-house family. Reviewed both required twelve-building streets (seeds 15062026 and 15112026), both submitted mounted streets (731 and 15062046), and independently recomposed mounted streets with new seeds 20261117 and 92841, all at native scale and in complete exact 4x crops. New seed/spec/placement recipes are saved in critic-r15C-2-street-20261117-1x.png and critic-r15C-2-street-92841-1x.png metadata. Inspected the five-storey building at 1x/4x and complete 8x architectural close-ups. No visible stacking seam, ground gap between neighbours, displaced shared course, unacceptable copy-paste pattern, detached roof fitting or style mismatch was found. The repeated colourway demonstration buildings are comparison proofs, not randomized streets. The previous wall-end defect is resolved: only the outer three native pixels are revealed, leaving complete shutters, windows and sills intact; the original course rows and 48*N lot widths are preserved. Inspected both ends at widths 1/2/3 and all facade kinds/colourways. The previous sign defect is resolved: all four sign boards now occupy the clear area between timber-w2 windows, with bracket contact on the diagonal brace, clear of the entire shop entrance/display and upper windows. The same mounting rule works in the streets; incompatible facades receive no automatic sign. All 129 assets pass exact dimensions, hard alpha 0/255, zero hidden RGB, a single connected alpha silhouette and applicable opaque-footprint/course-row checks. All 75 colourway alpha masks match their unsuffixed sources exactly. There are no seasonal city partners in this part, so seasonal-ground and summer/seasonal silhouette checks are not applicable. Verified and inspected the existing summer ground in a literal 3x3 repeat and at enlarged junctions; it is unchanged context, not a new Part C ground asset. The submitted 3x/4x/8x proof enlargements are exact nearest-neighbour copies, and saved street recipes replay pixel-for-pixel. The compositor check-only run passes 129 asset checks, 108 wall-end assemblies and 120 sign mounts. Additional independent checks cover 129 individual proof pairs, five grouped proof pairs, 72 street buildings, 66 shared facade joins and 12 street signs. Evidence and audit metadata are in critic-r15C-2-*.png. All 5,623 pre-existing art-drop files retain their starting hashes, including every city PNG, compose.py, COURSE.md, NOTES.md and earlier reviews. Only this JSON and critic-r15C-2-*.png review evidence were written. No git commit, push or branch change. This is an asset/composite review, not a live-game rendering test."
+}
