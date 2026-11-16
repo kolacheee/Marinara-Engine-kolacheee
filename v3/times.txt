@@ -84,3 +84,4 @@ wsb/mari-bags rc=0 secs=92 exists=yes
 wsb/mari-rocket rc=0 secs=96 exists=yes
 wsb/mari-bags rc=0 secs=81 exists=yes
 wsb/mari-bags-v2 rc=0 secs=60 exists=yes
+wsb/mari-bags-v3 rc=0 secs=79 exists=yes
