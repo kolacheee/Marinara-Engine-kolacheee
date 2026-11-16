@@ -1,0 +1,534 @@
+{
+  "part": "B",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "chimney-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic review of the current Round 15 Part B assets, round 2. Read BRIEF-15.md in full, COURSE.md and the drawing/reduction method sections of NOTES.md. All 105 requested Part B PNGs were inspected at exact native 1x and nearest-neighbour 4x in fresh critic-r15B-2 proof sheets. Each sheet contains the untouched native asset and its exact 4x enlargement; 210 embedded renders were checked against the current PNG pixels. The 12 Part A source storeys were compared through their byte-identical c0 partners; Part A grounds supplied assembly context. Reference/r15 house and hall crops supplied the style comparison. All requested files are present. Roof widths are exactly 48*N and canvas heights are within 48-72 px; storey colourways are 48*N by 48, party-wall strips are 8x48, and corners are 48x48. Every applicable course row matches COURSE.md byte-for-byte. The roofs have fully opaque bottom two rows, and facade/corner/party-wall footprints are filled. All 105 files have hard alpha 0/255, zero RGB under transparency, and one connected alpha silhouette. All 75 colourway alpha masks match their unsuffixed sources with zero changed pixels. Colour ramps retain material shading and top-left light. The eight previous failures now pass. roof-flat-w1 and its three colourways have legible rectangular blocks and coherent mortar courses around x=1..43/y=33..45; the fragmented pale flecks are gone. roof-gable-w2-c1/c2 retain the front crossbeam and central-post shading; the core beam at x=29..69/y=34..36 is byte-identical to the unsuffixed drawing. roof-gable-w3-c1/c2 similarly preserve the core beam at x=36..92/y=38..41, and the tiled lower-right slope around x=126..142/y=68..70 now follows the selected roof ramp without the old red strip. These areas were inspected at 8x. No new defect requiring a redraw or recolour was found in the remaining files. Fresh whole-building proofs cover 12 buildings, widths 1-3, heights 1-5 floors, all four roof forms, mixed facade kinds and all three colours, assembled wall-to-wall at 1x and 3x. A five-floor building was also inspected at 8x. Corner assemblies and party-wall joins were inspected in all three colourways. All 960 matching-width roof/facade course comparisons and 960 storey/facade course comparisons pass; tested assemblies have no transparent stack or neighbour gaps. Repeated architectural bays remain coherent; no new internal tiling seam or mismatched pixel scale was found. All 14 overlays were inspected on mounted-building proofs and on the unchanged summer, autumn, winter and spring grass at 1x/4x. Each contextual grass base was examined in a literal 3x3 repeat. corner-ground was also examined as a literal 3x3 repeat at 1x/4x; it is a corner facade module, not a terrain tile, so repeating its doorway is not a terrain-repeat defect. Part B requests no seasonal asset partners, so seasonal source-mask overlays are not applicable; the applicable 75 colourway masks were compared directly instead. Every unsuffixed storey, including corner-storey, is byte-identical to c0. The nine unsuffixed pitched roofs are byte-identical to c0; the three unsuffixed flat roofs are byte-identical to c2 (grey lead). Main visual evidence: critic-r15B-2-roof-flat-w1.png, critic-r15B-2-roof-gable-w2.png, critic-r15B-2-roof-gable-w3.png, the gable beam/foot 8x crops, critic-r15B-2-street-1x.png and its 3x sections, and the mounted/corner/party-wall proof sets. All 5,105 pre-existing art-drop files checked against starting SHA-256 hashes remain unchanged, including every city15 output and COURSE.md. Only this JSON and critic-r15B-2-*.png review evidence were added. This verdict covers asset/composite quality; no live-engine test is claimed."
+}

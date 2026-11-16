@@ -1,3 +1,175 @@
+# Round 15 — Part B: critic-r15B-1 redraw
+
+Repaired all **eight failed PNGs** in `out/city15/`: `roof-flat-w1` and
+its three colourways, plus `roof-gable-w{2,3}-c{1,2}`. Passing outputs,
+Part A originals and `COURSE.md` remain byte-identical.
+
+**Method:** three new large built-in image-tool drawings on solid magenta;
+selected **C's parapet** for its two clear rectangular stone courses.
+BOX registration, the existing palette, exact RGBA mode of all **64 samples
+per 8×8 block**, hard alpha, zero hidden RGB and one-pixel contour cleanup.
+Two thin painted mortar joints were separately registered from that drawing;
+one lip pixel was cleaned using its adjacent drawn stone. The new front
+parapet is composited into the existing cap, retaining its deck, silhouette,
+side return and bottom course. Code constructs no replacement stonework.
+Exact prompts and all three variants are retained in `review/r15-B-source-roof-flat-w1-critic1-*.png`.
+
+The gable colour masks now protect the complete facade, including solid
+crossbeam rows and all timber shades. The w3 tiled lower-right slope is
+recoloured through row 70. Source alpha and bottom courses are unchanged.
+The unsuffixed flat w1 remains **byte-identical to c2** (grey lead);
+passing unsuffixed gables and their c0 partners are untouched.
+
+Regenerated Part B native/4× review sheets, whole buildings and the joined
+street; added `r15-B-critic1-*` before/after, material-mask and flat-building
+proofs. Source-mode replay, colourway replay, palette/alpha/course checks,
+join checks and protected-file hashes are recorded in
+`review/r15-B-critic1-validation.png`. This is visual self-review, with no
+new independent critic verdict. Earlier notes are preserved below.
+No commit, push or branch change.
+
+---
+
+# Round 15 — Part B
+
+Drew **30 new modules** and added **75 colourway files** in `out/city15/`:
+**105 new RGBA PNGs**. Four roof kinds each have separately drawn 48 / 96 /
+144 px widths; four chimneys, four dormers, four hanging pictogram signs and
+two flowerboxes supply overlays. Two party-wall strips and two corner panels
+complete the joins. The **24 Part A originals and `COURSE.md` remain
+byte-identical**.
+
+**Files:** `roof-{gable,ridge,hip,flat}-w{1,2,3}.png` and their `-c0..c2`
+partners; `chimney-0..3.png`, `dormer-0..3.png`, `sign-0..3.png`,
+`flowerbox-0..1.png`, `wall-end-left.png`, `wall-end-right.png`,
+`corner-ground.png`, `corner-storey.png`; and `-c0..c2` partners for all
+12 existing `storey-{timber,plaster,stone,jetty}-w{1,2,3}` panels and the
+new `corner-storey` panel.
+
+**Method:** **40 separate large built-in image-tool drawings on solid
+magenta**, selecting 30. Eight difficult pieces have two alternatives each;
+the narrow flat roof has three. Selected **ridge w1 / ridge w3 / hip w2 /
+chimney 2 / both corners = b**, **flat w1 = c**; all other pieces use **a**.
+The rejected narrow ridge includes an unwanted facade; the rejected wide
+hip has oversized tiles; the rejected second flat w2 introduces windows.
+The final narrow flat repaint makes its four lead sheets readable after
+reduction. Selection reasons are in `review/r15-B-selection.png`; all exact
+prompts are embedded in `review/r15-B-source-*.png`.
+
+Magenta is keyed from the surround **and enclosed sign/bracket holes**.
+Drawings are cropped and BOX-registered onto **8W × 8H** working canvases.
+The lower painted roof columns are registered to the common baseline;
+the final two painted fascia rows are registered to their opaque row extents.
+Rectangular join panels use painted row extents; corner front/side planes
+are registered to a **32 / 16 px** division. Every sample comes from the
+drawing. A **42-colour base palette**, using Part A's 34 colours plus six
+terracotta and two olive tones sampled from the house references, locks
+materials without dithering. Every native pixel is the exact RGBA mode
+of **all 64 samples in its 8×8 block**, including transparency, with
+lexicographic RGBA tie-breaking. Nearest neighbour is used for enlargement.
+
+Native cleanup removes detached alpha remnants, resolves the exposed contour
+to the one-pixel dark outline, maps corner timber into the established facade
+browns, and transfers Part A's drawn course donor. The selected pieces record
+**6,358 mode-to-final pixel changes**. Code registers, reduces, palette-locks,
+recolours, cleans and composites drawings; it constructs no architecture,
+foliage, surface noise or decorative shapes. Alpha is **0/255**, hidden RGB
+is **0,0,0**, and each new base piece is one connected silhouette.
+
+**Course:** roofs end on row **H−1**, with the exact Part A course pattern:
+end pixels **#2b281d**, interior pixels **#624226**, fully opaque. Their bottom
+two rows are filled across the width. Corners and party-wall strips carry
+the same course on rows **0 / 47**. Two abutting modules retain the agreed
+two-pixel course. All storey colourways preserve both original course rows
+byte-for-byte. The corner's depth stays inside its filled square footprint.
+
+**Colourways:** storeys use **c0 cream with warm dark timber**, **c1 ochre
+with lighter timber**, and **c2 pale blue-grey with darker timber**. Stone
+panels receive corresponding warm/ochre/cool masonry ramps. Highlights,
+shadows, window glass, texture and alpha remain registered. The corner side
+plaster uses a source-colour material mask so its shadowed wall changes with
+the plaster rather than with the timber. Roofs use **c0 red**, **c1 brown
+slate**, **c2 grey slate**; the flat cap applies those hues to its drawn lead
+sheets while retaining the limestone parapet and lead seams. Gable plaster
+and front framing are protected during roof recolouring.
+
+Every unsuffixed storey, including the new corner, is **byte-identical to
+c0**. The nine pitched roofs are also **byte-identical to c0**. The three
+unsuffixed flat roofs retain their natural grey lead and are **byte-identical
+to c2**. No unsuffixed Part A file was changed. Colourways have exactly the
+same alpha mask as their unsuffixed partner and use complete tonal ramps.
+Final files contain **10–38 opaque colours** each.
+
+**Measurements:** coordinates are zero-based, right/bottom exclusive.
+All roof widths are exactly `48*N`. Heights below are PNG canvas heights;
+flat parapets are bottom-aligned within their 48 px canvases.
+
+| Roof kind | w1 size | w2 size | w3 size | Visible height w1 / w2 / w3 |
+|---|---|---|---|---|
+| gable | 48×48 | 96×64 | 144×72 | 48 / 64 / 72 |
+| ridge | 48×48 | 96×56 | 144×64 | 48 / 56 / 64 |
+| hip | 48×48 | 96×56 | 144×64 | 48 / 56 / 64 |
+| flat | 48×48 | 96×48 | 144×48 | 28 / 32 / 36 |
+
+Both wall ends are **8×48**, bounds `(0,0,8,48)`. Both corners are **48×48**,
+bounds `(0,0,48,48)`. The 36 Part A storey colourways retain **48/96/144×48**.
+Flat roof bounds are `(0,20,48,48)`, `(0,16,96,48)`, `(0,12,144,48)`.
+Every other roof occupies its complete width/height bounds.
+
+| Overlay | PNG size | Visible bounds |
+|---|---|---|
+| chimney-0 | 24×32 | (6,8,18,32) |
+| chimney-1 | 24×32 | (5,4,19,32) |
+| chimney-2 | 24×40 | (3,8,21,40) |
+| chimney-3 | 24×32 | (4,8,20,32) |
+| dormer-0 | 32×32 | (6,8,26,32) |
+| dormer-1 | 32×32 | (4,8,28,32) |
+| dormer-2 | 40×32 | (5,10,35,32) |
+| dormer-3 | 32×32 | (6,6,26,32) |
+| sign-0 / sign-1 / sign-3 | 32×32 | (4,4,28,32) |
+| sign-2 | 32×36 | (3,6,29,36) |
+| flowerbox-0 | 32×16 | (4,4,28,16) |
+| flowerbox-1 | 40×20 | (4,6,36,20) |
+
+**QC and review:** all 105 files have individual native and exact nearest-
+neighbour **4×** proofs, plus grouped roofs, storeys, overlays and joins.
+Overlays are shown over unchanged summer grass and mounted on buildings.
+Twelve complete examples span widths **1–3** and heights **1–5 floors**;
+there are three colourway corner assemblies, party-wall join examples,
+a wall-to-wall street and native style comparisons with the approved houses.
+Visual self-review checked roof silhouettes, readable flues/panes/signs,
+lead seams, square join footprints and common courses at **1× / 4×**.
+
+Primary sheets are `review/r15-B-buildings-w{1,2,3}-{1x,4x}.png`,
+`r15-B-joined-street-{1x,4x}.png`, `r15-B-corner-buildings-{1x,4x}.png`,
+`r15-B-party-wall-joins-{1x,4x}.png`, `r15-B-overlays-mounted-{1x,4x}.png`,
+and `r15-B-{roofs,storeys}-w{1,2,3}-{1x,4x}.png`. Each output also has
+`r15-B-piece-<filename>-{1x,4x}.png`. No terrain base was introduced by this
+part. The unchanged summer `grass-base.png` has a literal **3×3 repeat**
+at **864×864 / 3456×3456**, and `corner-ground` has a literal **3×3 facade
+repeat** at **144×144 / 576×576**. Both repeats are unlabelled.
+
+Validation replays registration, palette locking, **122,784 mode blocks /
+7,858,176 source samples**, every recorded cleanup and every colourway map.
+It verifies dimensions, filled joins, one connected silhouette, hard alpha,
+zero hidden RGB, all native proof pixels, **124 exact 4× proof pairs**,
+**18 literal repeat copies**, **576 roof-to-facade pairings**, **576 storey
+colourway pairings**, and the twelve-building street reconstruction.
+**All checks pass. All 4,404 protected starting files remain byte-identical**,
+and all earlier notes follow unchanged below. This is asset-composite
+self-review; no independent Part C critic or live-game verdict is claimed.
+
+There are **456 `r15-B-*.png` review files**, including drawings, alternatives,
+palette-registered stages, mode results, selections and proofs. Processing,
+colourway and review scripts are embedded in `r15-B-processing.png`,
+`r15-B-colourways.png` and `r15-B-review-recipe.png`; complete measurements,
+validation script and results are in `r15-B-validation.png`. Starting hashes
+remain in `r15-B-reference.png`. Only the named Part B outputs, these review
+PNGs and this top note were written in the checkout. **No commit, push or
+branch change.**
+
+---
+
 # Round 15 — Part A: critic-r15A-1 redraw
 
 Repaired only **ground-work-w1**, **storey-stone-w2**, and **storey-jetty-w1/w2/w3**

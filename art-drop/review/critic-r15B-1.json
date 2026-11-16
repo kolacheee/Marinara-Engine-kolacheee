@@ -1,0 +1,561 @@
+{
+  "part": "B",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "roof-flat-w1",
+    "roof-flat-w1-c0",
+    "roof-flat-w1-c1",
+    "roof-flat-w1-c2",
+    "roof-gable-w2-c1",
+    "roof-gable-w2-c2",
+    "roof-gable-w3-c1",
+    "roof-gable-w3-c2"
+  ],
+  "files": {
+    "chimney-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "flowerbox-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The front parapet, approximately x=1..43/y=33..45 (zero-based), reduces to broken cream/tan streaks and single-pixel flecks. Its masonry courses and block corners are substantially less legible than roof-flat-w2/w3 and the reference stonework. At 1x it reads as a mottled pale band; 4x/8x confirms fragmented drawing rather than clean rectangular stones. This is a native-scale/detail-quality failure, not an alpha failure."
+      ],
+      "fix": "Redraw the narrow parapet with fewer, clearly separated rectangular stones and coherent horizontal mortar courses at the existing native masonry scale. Make 2-3 large magenta-backed image-tool variants, register and mode-reduce them, and select the one that retains block edges at 1x. Derive all three colourways from the corrected drawing. Preserve the 48x48 canvas, square lower corners, bottom course row, hard alpha and zero transparent RGB; do not construct replacement stonework in code."
+    },
+    "roof-flat-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The front parapet, approximately x=1..43/y=33..45 (zero-based), reduces to broken cream/tan streaks and single-pixel flecks. Its masonry courses and block corners are substantially less legible than roof-flat-w2/w3 and the reference stonework. At 1x it reads as a mottled pale band; 4x/8x confirms fragmented drawing rather than clean rectangular stones. This is a native-scale/detail-quality failure, not an alpha failure."
+      ],
+      "fix": "Redraw the narrow parapet with fewer, clearly separated rectangular stones and coherent horizontal mortar courses at the existing native masonry scale. Make 2-3 large magenta-backed image-tool variants, register and mode-reduce them, and select the one that retains block edges at 1x. Derive all three colourways from the corrected drawing. Preserve the 48x48 canvas, square lower corners, bottom course row, hard alpha and zero transparent RGB; do not construct replacement stonework in code."
+    },
+    "roof-flat-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The front parapet, approximately x=1..43/y=33..45 (zero-based), reduces to broken cream/tan streaks and single-pixel flecks. Its masonry courses and block corners are substantially less legible than roof-flat-w2/w3 and the reference stonework. At 1x it reads as a mottled pale band; 4x/8x confirms fragmented drawing rather than clean rectangular stones. This is a native-scale/detail-quality failure, not an alpha failure."
+      ],
+      "fix": "Redraw the narrow parapet with fewer, clearly separated rectangular stones and coherent horizontal mortar courses at the existing native masonry scale. Make 2-3 large magenta-backed image-tool variants, register and mode-reduce them, and select the one that retains block edges at 1x. Derive all three colourways from the corrected drawing. Preserve the 48x48 canvas, square lower corners, bottom course row, hard alpha and zero transparent RGB; do not construct replacement stonework in code."
+    },
+    "roof-flat-w1": {
+      "status": "fail",
+      "problems": [
+        "The front parapet, approximately x=1..43/y=33..45 (zero-based), reduces to broken cream/tan streaks and single-pixel flecks. Its masonry courses and block corners are substantially less legible than roof-flat-w2/w3 and the reference stonework. At 1x it reads as a mottled pale band; 4x/8x confirms fragmented drawing rather than clean rectangular stones. This is a native-scale/detail-quality failure, not an alpha failure."
+      ],
+      "fix": "Redraw the narrow parapet with fewer, clearly separated rectangular stones and coherent horizontal mortar courses at the existing native masonry scale. Make 2-3 large magenta-backed image-tool variants, register and mode-reduce them, and select the one that retains block edges at 1x. Derive all three colourways from the corrected drawing. Preserve the 48x48 canvas, square lower corners, bottom course row, hard alpha and zero transparent RGB; do not construct replacement stonework in code."
+    },
+    "roof-flat-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c1": {
+      "status": "fail",
+      "problems": [
+        "The roof colour mask spills into the front timber crossbeam around x=25..73/y=34..36. Only scattered sections of that beam and its central-post intersection receive the brown-slate roof ramp, while neighbouring timber remains red-brown. This produces a broken material/lighting transition; it is especially obvious in the c2 partner. Compare critic-r15B-1-gable-material-w2-8x.png."
+      ],
+      "fix": "Use a material mask that follows the drawn roof surface and explicitly excludes all facade timber, including horizontal beam rows that contain no plaster. Preserve the full original timber shading rather than changing only red-valued pixels within it. Regenerate this colourway from the unchanged source, retaining the complete source alpha mask and exact bottom course. Palette recolouring in code is sufficient; no new geometry is needed."
+    },
+    "roof-gable-w2-c2": {
+      "status": "fail",
+      "problems": [
+        "The roof colour mask spills into the front timber crossbeam around x=25..73/y=34..36. Only scattered sections of that beam and its central-post intersection receive the blue-grey slate roof ramp, while neighbouring timber remains red-brown. This produces a broken material/lighting transition; it is especially obvious in the c2 partner. Compare critic-r15B-1-gable-material-w2-8x.png."
+      ],
+      "fix": "Use a material mask that follows the drawn roof surface and explicitly excludes all facade timber, including horizontal beam rows that contain no plaster. Preserve the full original timber shading rather than changing only red-valued pixels within it. Regenerate this colourway from the unchanged source, retaining the complete source alpha mask and exact bottom course. Palette recolouring in code is sufficient; no new geometry is needed."
+    },
+    "roof-gable-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c1": {
+      "status": "fail",
+      "problems": [
+        "The roof colour mask spills into the front timber crossbeam around x=36..98/y=38..41. Only scattered sections of that beam and its central-post intersection receive the brown-slate roof ramp, while neighbouring timber remains red-brown. This produces a broken material/lighting transition; it is especially obvious in the c2 partner. Compare critic-r15B-1-gable-material-w3-8x.png.",
+        "At the lower-right roof slope, approximately x=126..142/y=68..70, a terracotta strip remains below the recoloured tiles. It sits above the fixed course and ends the brown/grey roof in an abrupt red patch. The blanket protected bottom band excludes actual tiled slope pixels along with timber; see critic-r15B-1-roof-details-8x.png."
+      ],
+      "fix": "Use a material mask that follows the drawn roof surface and explicitly excludes all facade timber, including horizontal beam rows that contain no plaster. Preserve the full original timber shading rather than changing only red-valued pixels within it. Include the tiled lower-right slope in the roof recolour instead of protecting a fixed-height band across the entire image. Regenerate this colourway from the unchanged source, retaining the complete source alpha mask and exact bottom course. Palette recolouring in code is sufficient; no new geometry is needed."
+    },
+    "roof-gable-w3-c2": {
+      "status": "fail",
+      "problems": [
+        "The roof colour mask spills into the front timber crossbeam around x=36..98/y=38..41. Only scattered sections of that beam and its central-post intersection receive the blue-grey slate roof ramp, while neighbouring timber remains red-brown. This produces a broken material/lighting transition; it is especially obvious in the c2 partner. Compare critic-r15B-1-gable-material-w3-8x.png.",
+        "At the lower-right roof slope, approximately x=126..142/y=68..70, a terracotta strip remains below the recoloured tiles. It sits above the fixed course and ends the brown/grey roof in an abrupt red patch. The blanket protected bottom band excludes actual tiled slope pixels along with timber; see critic-r15B-1-roof-details-8x.png."
+      ],
+      "fix": "Use a material mask that follows the drawn roof surface and explicitly excludes all facade timber, including horizontal beam rows that contain no plaster. Preserve the full original timber shading rather than changing only red-valued pixels within it. Include the tiled lower-right slope in the roof recolour instead of protecting a fixed-height band across the entire image. Regenerate this colourway from the unchanged source, retaining the complete source alpha mask and exact bottom course. Palette recolouring in code is sufficient; no new geometry is needed."
+    },
+    "roof-gable-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Part B asset review. Read BRIEF-15 in full, COURSE.md and the drawing/reduction method sections of NOTES.md. Reviewed all 105 delivered Part B PNGs at native 1x and nearest-neighbour 4x; inspected material errors and a five-floor assembly in 8x close-ups. The 12 Part A source storeys were also compared through their identical c0 files; Part A ground floors were assembly context only. All requested files are present. All checked dimensions pass: roofs are 48*N wide and 48-72 high, storey colourways are 48*N by 48, wall ends are 8x48, and corners are 48x48. No soft alpha, hidden nonzero RGB or detached alpha components were found in the 105 files. All applicable course rows exactly match COURSE.md; 960 matching-width roof/facade course comparisons pass. The 75 colourway masks have zero pixel differences from their unsuffixed sources. Storey and pitched-roof c0 files equal their unsuffixed sources; unsuffixed flat roofs equal c2, not c0. Fresh critic composites include every file, 12 complete buildings with varied widths/heights/kinds/colours in a wall-to-wall street, and all 14 overlays both mounted and on summer/autumn/winter/spring ground. Corner and party-wall assemblies were checked in all three colours. No transparent stacking or neighbour gaps were found in the tested assemblies. The unchanged summer grass and corner-ground were inspected as literal 3x3 repeats; corner-ground is a facade panel, not a terrain tile, so repeated doors in that diagnostic are not treated as a terrain-repeat defect. Part B specifies no seasonal output partners, so summer/seasonal partner-mask tests are not applicable; the applicable colourway masks were compared instead. Pass entries have no required correction under this Part B review. The eight failures concern the narrow flat parapet drawing and gable recolour material masks; dimensions and join compliance do not excuse these visible defects. Main evidence: critic-r15B-1-roofs-w1-p0-4x.png, critic-r15B-1-gable-material-w2-8x.png, critic-r15B-1-gable-material-w3-8x.png, critic-r15B-1-roof-details-8x.png and critic-r15B-1-street-1x.png. All output art was left unchanged. This is an asset/composite review, not a live-engine integration verdict."
+}
