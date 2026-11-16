@@ -1,0 +1,12 @@
+start pancake/moon-night fresh []
+start pancake/bg-phone-day twin ['ref-current.png']
+start pancake/bg-phone-night twin ['ref-current.png']
+done  pancake/bg-phone-night True
+done  pancake/moon-night True
+start pancake/moon-day twin ['raw.png']
+done  pancake/bg-phone-day True
+done  pancake/moon-day True
+ok pancake/moon-night (1254, 1254) RGBA
+ok pancake/moon-day (1024, 1024) RGBA
+ok pancake/bg-phone-day (852, 1846) RGB
+ok pancake/bg-phone-night (798, 1972) RGB

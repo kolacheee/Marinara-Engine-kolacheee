@@ -125,3 +125,7 @@ wsb/mari-bags-v10 rc=0 secs=95 exists=yes
 wsb/mari-bags-v11 rc=0 secs=96 exists=yes
 wsb/mari-bags-v12 rc=0 secs=92 exists=yes
 wsb/mari-bags-v13 rc=0 secs=92 exists=yes
+pancake/bg-phone-night rc=0 secs=52 exists=yes
+pancake/moon-night rc=0 secs=56 exists=yes
+pancake/bg-phone-day rc=0 secs=57 exists=yes
+pancake/moon-day rc=0 secs=66 exists=yes
