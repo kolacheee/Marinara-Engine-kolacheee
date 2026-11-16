@@ -51,3 +51,10 @@ hal/bg-day-rain rc=0 secs=193 exists=yes
 hal/bg-night-fog rc=0 secs=168 exists=yes
 hal/bg-day-snow rc=0 secs=192 exists=yes
 hal/bg-day-fog rc=0 secs=175 exists=yes
+castle/phone-fog-day rc=0 secs=145 exists=yes
+castle/phone-snow-day rc=0 secs=170 exists=yes
+castle/phone-storm-day rc=0 secs=184 exists=yes
+castle/phone-snow rc=0 secs=126 exists=yes
+castle/phone-fog rc=0 secs=115 exists=yes
+castle/fog-day rc=0 secs=117 exists=yes
+REGEN: castle/phone-storm rc=0 secs=64 exists=yes

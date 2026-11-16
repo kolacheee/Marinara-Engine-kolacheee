@@ -1,0 +1,21 @@
+start castle/phone-fog-day twin ['raw.png']
+start castle/phone-storm-day twin ['raw.png']
+start castle/phone-snow-day twin ['raw.png']
+done  castle/phone-fog-day True
+start castle/phone-snow twin ['raw.png']
+done  castle/phone-snow-day True
+start castle/phone-fog twin ['raw.png']
+done  castle/phone-storm-day True
+start castle/fog-day twin ['raw.png']
+done  castle/phone-snow True
+start REGEN: castle/phone-storm regen []
+done  castle/phone-fog True
+done  castle/fog-day True
+done  REGEN: castle/phone-storm True
+ok castle/phone-storm-day (887, 1774) RGB
+ok castle/phone-snow-day (887, 1774) RGB
+ok castle/phone-fog-day (887, 1774) RGB
+ok castle/phone-snow (887, 1774) RGB
+ok castle/phone-fog (887, 1774) RGB
+ok castle/fog-day (1672, 941) RGB
+ok REGEN: castle/phone-storm (887, 1774) RGB
