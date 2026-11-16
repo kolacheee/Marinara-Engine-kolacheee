@@ -1,0 +1,18 @@
+start hal/bg-day fresh []
+start hal/lens-night fresh []
+done  hal/bg-day True
+start hal/bg-phone-day ref ['raw.png']
+start hal/bg-night twin ['raw.png']
+done  hal/lens-night True
+start hal/lens-day twin ['raw.png']
+done  hal/bg-night True
+done  hal/lens-day True
+done  hal/bg-phone-day True
+start hal/bg-phone-night twin ['raw.png', 'raw.png']
+done  hal/bg-phone-night True
+ok hal/bg-day (1672, 941) RGB
+ok hal/bg-night (1672, 941) RGB
+ok hal/bg-phone-day (852, 1846) RGB
+ok hal/bg-phone-night (852, 1846) RGB
+ok hal/lens-night (1024, 1024) RGBA
+ok hal/lens-day (1024, 1024) RGBA

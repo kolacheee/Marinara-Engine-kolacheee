@@ -20,3 +20,9 @@ castle/frieze-night rc=0 secs=73 exists=yes
 castle/phone-storm rc=0 secs=109 exists=yes
 castle/stone-day rc=0 secs=122 exists=yes
 castle/frieze-day rc=0 secs=96 exists=yes
+hal/bg-day rc=0 secs=65 exists=yes
+hal/lens-night rc=0 secs=72 exists=yes
+hal/bg-night rc=0 secs=101 exists=yes
+hal/lens-day rc=0 secs=97 exists=yes
+hal/bg-phone-day rc=0 secs=106 exists=yes
+hal/bg-phone-night rc=0 secs=94 exists=yes
