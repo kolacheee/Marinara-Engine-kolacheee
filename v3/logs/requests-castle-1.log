@@ -1,0 +1,27 @@
+start castle/phone-night fresh []
+start castle/rose-window fresh []
+start castle/night-hall fresh []
+done  castle/phone-night True
+start castle/stone-tile fresh []
+done  castle/night-hall True
+start castle/candelabrum fresh []
+done  castle/rose-window True
+start castle/day-hall twin ['raw.png']
+done  castle/stone-tile True
+start castle/phone-day twin ['raw.png']
+done  castle/candelabrum True
+start castle/storm-hall twin ['raw.png']
+done  castle/day-hall True
+start castle/snow-hall twin ['raw.png']
+done  castle/phone-day True
+done  castle/storm-hall True
+done  castle/snow-hall True
+ok castle/night-hall (1672, 941) RGB
+ok castle/day-hall (1672, 941) RGB
+ok castle/phone-night (887, 1774) RGB
+ok castle/phone-day (887, 1774) RGB
+ok castle/storm-hall (1672, 941) RGB
+ok castle/snow-hall (1672, 941) RGB
+ok castle/rose-window (1024, 1024) RGBA
+ok castle/stone-tile (1254, 1254) RGB
+ok castle/candelabrum (887, 1774) RGBA
