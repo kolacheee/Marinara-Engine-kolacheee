@@ -51,7 +51,8 @@ test("a haunted manor's stairs lead to its other floors and back", async ({ page
   const here = site.levels[site.level]!.name;
   const there = site.levels[link.level]!.name;
   await expect(page.getByRole("status").filter({ hasText: here })).toBeVisible();
-  await expect(page.getByRole("status").filter({ hasText: "in the hall" })).toBeVisible();
+  // The party stands in the hall, or in the great hall where the house is laid out round one.
+  await expect(page.getByRole("status").filter({ hasText: /· (in the hall|Great hall)$/u })).toBeVisible();
   await page.waitForTimeout(1500);
   await page.screenshot({ path: testInfo.outputPath("manor-ground.png") });
   const down = link.level > site.level;
