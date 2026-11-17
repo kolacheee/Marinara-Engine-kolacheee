@@ -1203,7 +1203,15 @@ export function useDungeonMap(chatId: string, turnKey: string | null, enabled: b
         map: GameDungeonMap | null;
         walk: GameDungeonWalk | null;
         /** The holders' posts the party can see (dungeon spawns); absent from an older server. */
-        guards?: Array<{ x: number; y: number; area: number; count: number; heart: boolean }>;
+        guards?: Array<{
+          x: number;
+          y: number;
+          area: number;
+          count: number;
+          heart: boolean;
+          /** A patrol's beat, end to end. */
+          beat?: Array<{ x: number; y: number }>;
+        }>;
       }>(`/game/${chatId}/map`),
     enabled: enabled && !!chatId,
     staleTime: 30_000,

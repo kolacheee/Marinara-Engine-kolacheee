@@ -834,6 +834,10 @@ export const gameDungeonMapSchema = z
             name: z.string().trim().min(1).max(60),
             use: z.string().regex(/^[a-z]{1,12}$/u),
             heart: z.literal(true).optional(),
+            /** The room on the way across the floor the holders keep, with a way round it. */
+            post: z.literal(true).optional(),
+            /** A room on that way round, left to nobody. */
+            quiet: z.literal(true).optional(),
           })
           .strict(),
       )

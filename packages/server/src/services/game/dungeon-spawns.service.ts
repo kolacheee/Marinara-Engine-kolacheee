@@ -258,6 +258,8 @@ export interface DungeonGuardMark {
   area: number;
   count: number;
   heart: boolean;
+  /** A patrol's beat: the walk it keeps, end to end; the figure stands somewhere along it. */
+  beat?: Array<{ x: number; y: number }>;
 }
 
 /** The holders' posts as the party sees them on the map (owner 2026-11-13): every guard post and the heart
@@ -272,6 +274,21 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     );
     if (!foes.length) return [];
     const room = here.map.rooms[area.area - 1]!;
+    // A patrol walks its walk's middle line end to end; where it is now goes by the day and the walk.
+    if (area.patrol) {
+      const long = room.w >= room.h;
+      const line = dungeonRoomCells(room)
+        .filter(({ x, y }) => dungeonWalkable(cells, x, y))
+        .filter(
+          ({ x, y }) => (long ? y : x) === (long ? room.y + Math.floor(room.h / 2) : room.x + Math.floor(room.w / 2)),
+        )
+        .sort((p, q) => (long ? p.x - q.x : p.y - q.y));
+      if (line.length >= 3) {
+        const step = (today * 7 + area.area * 3) % (2 * line.length - 2);
+        const at = line[step < line.length ? step : 2 * line.length - 2 - step]!;
+        return [{ ...at, area: area.area, count: foes.length, heart: false, beat: line }];
+      }
+    }
     // The room's middle, or the walkable cell nearest it; a cell clear of props (an urn, a lamp, the stairs)
     // first, so the figure never stands in one, and never the cell above it, where its head would be.
     // The chief keeps the middle of the heart.
@@ -300,7 +317,20 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const watch = farDoor
       ? { x: farDoor.x + Math.sign(centre.x - farDoor.x), y: farDoor.y + Math.sign(centre.y - farDoor.y) }
       : undefined;
-    const middle = here.map.roomInfo ? (watch ?? centre) : (stair ?? farDoor ?? centre);
+    // A room with one way in is held from its far wall, facing that door across the room, not from its
+    // middle on the rug (panel round 25: guards standing in the open with no reason to be there).
+    const backWall =
+      here.map.roomInfo && !watch && sorted.length && area.role !== "heart"
+        ? dungeonRoomCells(room)
+            .filter(({ x, y }) => dungeonWalkable(cells, x, y))
+            .sort(
+              (p, q) =>
+                Math.abs(q.x - sorted[0]!.x) +
+                Math.abs(q.y - sorted[0]!.y) -
+                (Math.abs(p.x - sorted[0]!.x) + Math.abs(p.y - sorted[0]!.y)),
+            )[0]
+        : undefined;
+    const middle = here.map.roomInfo ? (watch ?? backWall ?? centre) : (stair ?? farDoor ?? centre);
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&

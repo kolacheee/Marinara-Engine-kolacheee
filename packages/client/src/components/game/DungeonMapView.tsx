@@ -789,6 +789,22 @@ export function DungeonMapView({
       }
       // The holders' posts (dungeon spawns): who stands guard where, the heart's chief crowned.
       // A post of more than one shows a second figure a step behind the first.
+      // A patrol's beat: a worn line of footfalls along the walk it keeps, a mark at each end where it turns.
+      for (const guard of guards) {
+        if (!guard.beat || inFog(guard.x, guard.y)) continue;
+        ctx.fillStyle = "rgba(196, 64, 52, 0.55)";
+        for (const [k, { x, y }] of guard.beat.entries()) {
+          const cx = x * T + T / 2;
+          const cy = y * T + T / 2;
+          if (k === 0 || k === guard.beat.length - 1) {
+            ctx.fillRect(cx - 3, cy - 1, 6, 2);
+            ctx.fillRect(cx - 1, cy - 3, 2, 6);
+          } else {
+            ctx.fillRect(cx - 4, cy + (k % 2 ? -2 : 1), 2, 2);
+            ctx.fillRect(cx + 2, cy + (k % 2 ? 1 : -2), 2, 2);
+          }
+        }
+      }
       for (const guard of guards) {
         if (inFog(guard.x, guard.y)) continue;
         if (guard.count > 2) paintGuard(ctx, guard.x * T - 1, guard.y * T - 8, false);

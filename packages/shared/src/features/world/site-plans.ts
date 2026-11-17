@@ -719,7 +719,7 @@ export interface SiteLevelTrap {
 export interface SiteLevelMap {
   map: DungeonMap;
   /** Each room's name and use, as the map's rooms are ordered. */
-  rooms: Array<{ name: string; use: SiteRoomUse; heart?: true }>;
+  rooms: Array<{ name: string; use: SiteRoomUse; heart?: true; post?: true; quiet?: true }>;
   links: SiteLevelLink[];
   locks: SiteLevelLock[];
   traps: SiteLevelTrap[];
@@ -2375,13 +2375,23 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     kind === "manor" &&
     !level.inset &&
     stairsHere.length &&
-    random() < (level.depth > 0 ? 0.75 : level.depth === 0 ? 0.5 : 0.55)
+    // A house has its passages more often than not, and always where they make the way round the rooms the
+    // household keeps (owner 2026-11-17, "Routes and guard posts").
+    random() < (level.depth > 0 ? 0.9 : level.depth === 0 ? 0.85 : 0.6)
   ) {
     const [first, ...rest] = shuffle([...stairsHere]);
     const from = [...touching(first!)];
-    if (rest.length)
-      for (const other of rest) {
-        const goal = touching(other);
+    // From the front door's hall as well, on the floor it opens onto, so the way in has a passage on.
+    // Near the front door, a few steps in from it: the hall the house is entered by is grown there later.
+    const door = new Set<number>();
+    if (doorIn >= 0) {
+      const [dx, dy] = [doorIn % mapW, Math.floor(doorIn / mapW)];
+      for (let y = dy - 4; y <= dy - 2; y++)
+        for (let x = dx - 2; x <= dx + 2; x++) if (free(cell(x, y))) door.add(cell(x, y));
+    }
+    const goals = [...rest.map((other) => touching(other)), ...(door.size ? [door] : [])];
+    if (goals.length)
+      for (const goal of goals) {
         const way = route(corridor >= 0 ? [...touching(corridor), ...from] : from, (c) => goal.has(c));
         if (way) lay(way);
       }
@@ -3499,6 +3509,119 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       secrets.push(doorAt);
     }
   }
+  // ── The quiet way (owner 2026-11-17, "Routes and guard posts") ──
+  let postRegion = -1;
+  let wayTargetRegion = -1;
+  // From where the party comes onto the floor to the way on there is the main way, and the holders keep a room
+  // on it; where no second way misses the main way's rooms, a door is opened to make one, so a careful party
+  // can go round (a door between two spaces either side of it, or two doors through a space between).
+  {
+    const near = new Map<number, number[]>();
+    for (const edge of opened) {
+      near.set(edge.a, [...(near.get(edge.a) ?? []), edge.b]);
+      near.set(edge.b, [...(near.get(edge.b) ?? []), edge.a]);
+    }
+    const reach = (from: number, blocked: Set<number>) => {
+      const prev = new Map<number, number>([[from, -1]]);
+      const queue = [from];
+      for (let head = 0; head < queue.length; head++)
+        for (const m of near.get(queue[head]!) ?? [])
+          if (!prev.has(m) && !blocked.has(m) && !hiddenNode(m) && !lockedNode(m)) {
+            prev.set(m, queue[head]!);
+            queue.push(m);
+          }
+      return prev;
+    };
+    const all = reach(start, new Set());
+    const hops = (n: number) => {
+      let k = 0;
+      for (let m = n; m >= 0; m = all.get(m)!) k++;
+      return k;
+    };
+    // The way on, else (a top or bottom floor) the heart, else the space farthest in.
+    const heartRegion = [...all.keys()].find((n) => owner.get(n)?.heart);
+    const target =
+      links
+        .map((link) => at[cell(link.x, link.y)]!)
+        .filter((n) => n >= 0 && n !== start && all.has(n))
+        .sort((p, q) => hops(q) - hops(p))[0] ??
+      (heartRegion !== undefined && heartRegion !== start
+        ? heartRegion
+        : [...all.keys()].filter((n) => n !== start).sort((p, q) => hops(q) - hops(p))[0]);
+    if (target !== undefined && !level.inset) {
+      // The rooms that can be held across the way: not the gate (there is one way in) nor the heart.
+      const held = (n: number) =>
+        ["room", "hall", "tower"].includes(regions[n]!.kind) &&
+        !owner.get(n)?.heart &&
+        owner.get(n)?.use !== "quiet" &&
+        !/^(Gatehouse|Gate tower)$/u.test(siteBaseName(owner.get(n)?.name ?? ""));
+      const inner = new Set<number>();
+      for (let m = all.get(target)!; m >= 0 && m !== start; m = all.get(m)!) if (held(m)) inner.add(m);
+      // One room on the main way the holders can keep with a way round it is enough: the first that has one
+      // already, else the first a door or a short passage can give one.
+      const order = [...inner];
+      const roundOne = (r: number) => {
+        const lone = new Set([r]);
+        if (reach(start, lone).has(target)) return true;
+        const fromStart = reach(start, lone);
+        const fromTarget = reach(target, lone);
+        const usable = (n: number) => live(n) && !lockedNode(n) && n !== r;
+        const one = edges
+          .filter(
+            (edge) =>
+              !opened.has(edge) &&
+              usable(edge.a) &&
+              usable(edge.b) &&
+              ((fromStart.has(edge.a) && fromTarget.has(edge.b)) || (fromStart.has(edge.b) && fromTarget.has(edge.a))),
+          )
+          .sort((p, q) => q.cells.length - p.cells.length)[0];
+        if (one) {
+          openEdge(one, false);
+          return true;
+        }
+        // A short passage cut through the wall from one side to the other, never opening into the room itself.
+        const touchesR = (c: number) => around(c).some((m) => at[m] === r && ground[m] === "floor");
+        const costTo = new Int32Array(size).fill(1 << 20);
+        const back = new Int32Array(size).fill(-1);
+        const queue: number[] = [];
+        for (let c = 0; c < size; c++)
+          if (ground[c] === "floor" && at[c]! >= 0 && fromStart.has(at[c]!)) {
+            costTo[c] = 0;
+            queue.push(c);
+          }
+        let goal = -1;
+        for (let head = 0; head < queue.length; head++) {
+          const c = queue[head]!;
+          if (costTo[c]! > 6) continue;
+          if (ground[c] === "floor" && at[c]! >= 0 && fromTarget.has(at[c]!)) {
+            goal = c;
+            break;
+          }
+          for (const m of around(c)) {
+            const open =
+              ground[m] === "floor" && at[m] !== r && !(at[m]! >= 0 && (hiddenNode(at[m]!) || lockedNode(at[m]!)));
+            const cut = ground[m] === "wall" && mask[m] && !hold[m] && !touchesR(m);
+            if (!open && !cut) continue;
+            const next = costTo[c]! + (cut ? 1 : 0);
+            if (next >= costTo[m]!) continue;
+            costTo[m] = next;
+            back[m] = c;
+            if (cut) queue.push(m);
+            else queue.splice(head + 1, 0, m);
+          }
+        }
+        if (goal < 0) return false;
+        for (let c = goal; c >= 0; c = back[c]!) if (ground[c] === "wall") ground[c] = "floor";
+        return true;
+      };
+      for (const r of order)
+        if (roundOne(r)) {
+          postRegion = r;
+          wayTargetRegion = target;
+          break;
+        }
+    }
+  }
 
   // Alcoves: a room now and then has a three-cell recess cut into a thick wall (or a crypt's rock): never
   // near the front door.
@@ -3590,6 +3713,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const doors: Array<{ x: number; y: number; room: number; locked: boolean } | null> = [];
   const opens: Array<SiteSide | null> = [];
   const roomOf = new Map<SitePlanRoom, number>();
+  const roomOfRegion = new Map<number, number>();
   /** The hidden room: never where a key lies, as the way to it may be through the lock. */
   const hiddenRooms = new Set<number>();
   const ways: SiteRect[] = nodes.filter((_, n) => alive(n) && isPassage(n));
@@ -3625,7 +3749,13 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         : []),
     ];
     rooms.push(parts.length ? { ...r, parts } : { ...r });
-    info.push({ name: room.name, use: room.use, ...(room.heart ? { heart: true as const } : {}) });
+    info.push({
+      name: room.name,
+      use: room.use,
+      ...(room.heart ? { heart: true as const } : {}),
+      ...(n === postRegion ? { post: true as const } : {}),
+    });
+    roomOfRegion.set(n, k);
     doors.push(door && n !== court ? { ...door, room: k, locked: !!room.locked && n !== start } : null);
     opens.push(side);
     // A great room's pillars: two rows of them down a big one, clear of its doors and links.
@@ -3717,6 +3847,39 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // a room off.
   // Each lock's key room, once the locks are set: reached without going through any locked door.
   const keyRooms: SiteRect[] = [];
+  // The way round the holders' post, once laid: from the way in to the way on without entering the post.
+  const wayTo =
+    wayTargetRegion >= 0 ? (cellsBy.get(wayTargetRegion) ?? []).find((c) => ground[c] === "floor") : undefined;
+  const round = (trace = false) => {
+    if (postRegion < 0 || wayTo === undefined) return null;
+    const begin = cell(entrance.x, entrance.y);
+    const prev = new Int32Array(ground.length).fill(-2);
+    prev[begin] = -1;
+    const queue = [begin];
+    for (let head = 0; head < queue.length; head++) {
+      const c = queue[head]!;
+      const x = c % mapW;
+      for (const n of [c - 1, c + 1, c - mapW, c + mapW]) {
+        if (
+          n < 0 ||
+          n >= ground.length ||
+          prev[n] !== -2 ||
+          (n === c - 1 && x === 0) ||
+          (n === c + 1 && x === mapW - 1)
+        )
+          continue;
+        if (ground[n] !== "floor" || at[n] === postRegion) continue;
+        if (props[n] !== -1 && props[n] !== DUNGEON_EXIT_PROP && props[n] !== DUNGEON_PORTCULLIS_PROP) continue;
+        prev[n] = c;
+        queue.push(n);
+      }
+    }
+    if (prev[wayTo] === -2) return null;
+    if (!trace) return [];
+    const path: number[] = [];
+    for (let c = wayTo; c >= 0; c = prev[c]!) path.push(c);
+    return path;
+  };
   const reachable = () => {
     const begin = cell(entrance.x, entrance.y);
     const seen = new Uint8Array(ground.length);
@@ -3751,13 +3914,18 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     if (!keys) return false;
     for (let c = 0; c < ground.length; c++) if (seen[c]) queue.push(c);
     spread(true);
-    return ground.every(
-      (g, i) =>
-        g !== "floor" ||
-        seen[i] ||
-        (props[i] !== -1 && props[i] !== DUNGEON_EXIT_PROP && props[i] !== DUNGEON_PORTCULLIS_PROP),
+    return (
+      ground.every(
+        (g, i) =>
+          g !== "floor" ||
+          seen[i] ||
+          (props[i] !== -1 && props[i] !== DUNGEON_EXIT_PROP && props[i] !== DUNGEON_PORTCULLIS_PROP),
+      ) &&
+      // Nothing set down blocks the way round the holders' post.
+      (!keepRound || round() !== null)
     );
   };
+  const keepRound = round() !== null;
   // Water that cuts a room off is drained.
   if (level.flooded && !reachable())
     for (let i = 0; i < ground.length; i++) if (ground[i] === "liquid") ground[i] = "floor";
@@ -4271,6 +4439,18 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
   }
   map.entrance = entrance;
+  // The rooms the way round goes through, left to nobody.
+  const quietPath = keepRound ? round(true) : null;
+  if (quietPath)
+    for (const c of quietPath) {
+      const k = roomOfRegion.get(at[c]!);
+      // Not the room it starts from (the gate stays held) nor the one it makes for.
+      if (k === undefined || [postRegion, start, wayTargetRegion].includes(at[c]!) || info[k]!.heart) continue;
+      info[k] = { ...info[k]!, quiet: true };
+    }
+  else
+    for (const [k, each] of info.entries())
+      if (each.post) info[k] = { name: each.name, use: each.use, ...(each.heart ? { heart: true as const } : {}) };
   return { map, rooms: info, links, locks, traps };
 }
 
@@ -4371,6 +4551,8 @@ export function gameDungeonPlannedMap(input: {
       name: room.name,
       use: room.use,
       ...(room.heart ? { heart: true as const } : {}),
+      ...(room.post ? { post: true as const } : {}),
+      ...(room.quiet ? { quiet: true as const } : {}),
     })),
     site: {
       template: plan.template,

@@ -86,6 +86,8 @@ export interface DungeonArea {
   key: string;
   /** The way down to the next floor stands in it: the holders guard it. */
   wayDown?: true;
+  /** Its holders walk it, back and forth along its length (a wall walk, a long passage), rather than stand. */
+  patrol?: true;
   role: DungeonAreaRole;
   level: number;
   foes: MarinaraEncounterFoe[];
@@ -700,7 +702,169 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
           : { area, key, role: "empty", level: level_, foes: [] };
     }
   });
+  plannedRoutes(
+    map,
+    cells,
+    passable,
+    areas,
+    (index) => distance[index]! >= 0 && distance[index]! <= 2,
+    (index) => {
+      const level_ = areas[index]!.level;
+      return fitted(setting, level_, group(site.holder, "standard", level_, 1 + Math.floor(random() * 2)), "normal");
+    },
+  );
+  // A patrol on the floor's long walk (owner 2026-11-17, "Routes and guard posts"): the wall walk most of the
+  // time, else a long passage or gallery now and then; never on the quiet way, never by the way in.
+  const walks = map.rooms
+    .map((room, n) => ({ n, room, info: map.roomInfo![n]! }))
+    .filter(
+      ({ n, room, info }) =>
+        PATROL_WALKS.test(info.name.replace(/ \d+$/u, "")) &&
+        !info.quiet &&
+        info.use !== "quiet" &&
+        !info.heart &&
+        !info.post &&
+        Math.max(room.w, room.h) >= 6 &&
+        !(distance[n]! >= 0 && distance[n]! <= 2),
+    )
+    .sort((p, q) => Math.max(q.room.w, q.room.h) - Math.max(p.room.w, p.room.h));
+  const beat = walks[0];
+  if (beat && random() < (/^Wall walk/u.test(beat.info.name) ? 0.85 : 0.6)) {
+    const level_ = areas[beat.n]!.level;
+    const foes =
+      areas[beat.n]!.role === "guard" && areas[beat.n]!.foes.length
+        ? areas[beat.n]!.foes
+        : fitted(setting, level_, group(site.holder, "standard", level_, 1 + Math.floor(random() * 2)), "normal");
+    areas[beat.n] = { ...areas[beat.n]!, role: "guard", patrol: true, foes };
+  }
+  // A guard standing on a wall walk the patrol does not keep walks it too.
+  for (const [n, area] of areas.entries())
+    if (area.role === "guard" && !area.patrol && /^Wall walk/u.test(map.roomInfo![n]!.name))
+      areas[n] = { ...area, patrol: true };
   return areas;
+}
+
+/** The long walks a patrol keeps. */
+const PATROL_WALKS =
+  /^(Wall walk|Screens passage|Cloister walk|Cloister|Gallery|Long gallery|Ambulatory|Catacomb|Burial hall|Undercroft)$/u;
+
+/**
+ * The way across a floor and the way round it (owner 2026-11-17, "Routes and guard posts"): the shortest way
+ * from where the party comes onto the floor to the way on is the main way, and the holders keep one room on
+ * it, the one where it narrows; a second way that misses the main way's rooms, where the floor has one, is
+ * the quiet way, its rooms left to nobody (no holders, no squatters) so a careful party can go round.
+ */
+function plannedRoutes(
+  map: GameDungeonMap,
+  cells: ReturnType<typeof dungeonFromGameDungeonMap>,
+  passable: (x: number, y: number) => boolean,
+  areas: DungeonArea[],
+  near: (index: number) => boolean,
+  postFoes: (index: number) => MarinaraEncounterFoe[],
+): void {
+  // The floor's own plan of it, where it was laid with one: its post held, its way round left to nobody.
+  const post = map.roomInfo?.findIndex((info) => info.post) ?? -1;
+  if (post >= 0) {
+    for (const [n, info] of map.roomInfo!.entries())
+      if (info.quiet && areas[n]!.role !== "heart") areas[n] = { ...areas[n]!, role: "empty", foes: [] };
+    if (areas[post]!.role !== "heart" && !near(post) && !(areas[post]!.role === "guard" && areas[post]!.foes.length))
+      areas[post] = { ...areas[post]!, role: "guard", foes: postFoes(post) };
+    return;
+  }
+  const width = cells.width;
+  const size = width * cells.height;
+  const owner = new Int32Array(size).fill(-1);
+  for (const [n, room] of map.rooms.entries()) for (const { x, y } of dungeonRoomCells(room)) owner[y * width + x] = n;
+  const start = map.entrance.y * width + map.entrance.x;
+  const walk = (blocked: (n: number) => boolean) => {
+    const back = new Int32Array(size).fill(-2);
+    back[start] = -1;
+    const queue = [start];
+    for (let head = 0; head < queue.length; head++) {
+      const c = queue[head]!;
+      const x = c % width;
+      const y = (c - x) / width;
+      for (const [dx, dy] of [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ] as const) {
+        const next = (y + dy) * width + x + dx;
+        if (!passable(x + dx, y + dy) || back[next] !== -2) continue;
+        if (owner[next]! >= 0 && blocked(owner[next]!)) continue;
+        back[next] = c;
+        queue.push(next);
+      }
+    }
+    return back;
+  };
+  const roomsOn = (back: Int32Array, to: number) => {
+    const out: number[] = [];
+    for (let c = to; c >= 0; c = back[c]!) if (owner[c]! >= 0 && out.at(-1) !== owner[c]) out.push(owner[c]!);
+    return out.reverse();
+  };
+  const all = walk(() => false);
+  // The way on: the link farthest from where the party comes in.
+  const steps = (to: number) => {
+    let k = 0;
+    for (let c = to; c >= 0 && all[c] !== -2; c = all[c]!) k++;
+    return k;
+  };
+  const ways = (map.links ?? [])
+    .map((link) => link.y * width + link.x)
+    .filter((c) => c !== start && all[c] !== -2)
+    .sort((a, b) => steps(b) - steps(a));
+  // The way on, else (a top or bottom floor) the heart, else the room farthest in.
+  const heart = areas.findIndex((area) => area.role === "heart");
+  const cellOf = (n: number) => {
+    const room = map.rooms[n]!;
+    const inner = dungeonRoomCells(room).find(({ x, y }) => all[y * width + x] !== -2);
+    return inner ? inner.y * width + inner.x : undefined;
+  };
+  const far = map.rooms
+    .map((_, n) => cellOf(n))
+    .filter((c): c is number => c !== undefined && owner[c] !== owner[start])
+    .sort((a, b) => steps(b) - steps(a))[0];
+  const to = ways[0] ?? (heart >= 0 && owner[start] !== heart ? cellOf(heart) : undefined) ?? far;
+  if (to === undefined) return;
+  const name = (n: number) => (map.roomInfo?.[n]?.name ?? "").replace(/ \d+$/u, "");
+  // Only rooms can be held across the way; a passage, a walk or an open court is gone along, not kept.
+  const room = (n: number) =>
+    map.roomInfo?.[n]?.use !== "open" &&
+    !/passage|walk|corridor|cloister/iu.test(name(n)) &&
+    !SITE_STAIR_ROOMS.has(name(n));
+  // The main way: the shortest walk there, through whatever rooms it crosses.
+  const main = roomsOn(all, to);
+  // The room the party walks into and the one it makes for are the ends of the way, not on it.
+  const ends = new Set([owner[start]!, owner[to]!, main[0] ?? -1, main.at(-1) ?? -1]);
+  const fixed = (n: number) =>
+    areas[n]!.role === "heart" || SITE_STAIR_ROOMS.has(name(n)) || /^(Gate passage|Gatehouse)$/u.test(name(n));
+  const inner = main.filter((n) => !ends.has(n) && n >= 0 && room(n) && !fixed(n));
+  if (!inner.length) return;
+  // The main way is held at one room, the one a way round can miss: of its rooms, the smallest that a walk
+  // avoiding it (and every other room the holders keep off the main way) still gets past.
+  const guarded = (n: number) => (areas[n]!.role === "guard" || areas[n]!.role === "lair") && areas[n]!.foes.length > 0;
+  const candidates = inner
+    .filter((n) => !near(n) && map.roomInfo?.[n]?.use !== "quiet")
+    .sort((a, b) => map.rooms[a]!.w * map.rooms[a]!.h - map.rooms[b]!.w * map.rooms[b]!.h);
+  for (const choke of candidates) {
+    // The way round misses the post; any other holders on it are moved off it below.
+    const avoid = new Set([choke]);
+    const round = walk((n) => avoid.has(n));
+    if (round[to] === -2) continue;
+    // Held there; the main way's other rooms left to their own (a cook, a clerk), the quiet way left to nobody.
+    for (const n of inner) if (n !== choke && guarded(n)) areas[n] = { ...areas[n]!, role: "empty", foes: [] };
+    if (!guarded(choke)) areas[choke] = { ...areas[choke]!, role: "guard", foes: postFoes(choke) };
+    for (const n of roomsOn(round, to))
+      if (!ends.has(n) && !fixed(n) && n !== choke) areas[n] = { ...areas[n]!, role: "empty", foes: [] };
+    return;
+  }
+  // No way round: the main way held where it narrows, unless it is held already.
+  if (inner.some(guarded)) return;
+  const choke = candidates[0];
+  if (choke === undefined) return;
+  areas[choke] = { ...areas[choke]!, role: "guard", foes: postFoes(choke) };
 }
 
 /** Whether a site's holders think and band together (people, cunning spirits): beaten in their heart, they
