@@ -826,6 +826,37 @@ export function paintBuildingRug(ctx: Ctx, x: number, y: number, w: number, h: n
   for (let k = x + 6; k < x + w - 6; k += 8) px(ctx, "#c8a040", k, y + Math.floor(h / 2) - 1, 2, 2);
 }
 
+/** A dais: the raised end of a hall under its high seat or altar, a step lit along the edge facing the room
+ *  (gamer panel 2026-11-17). `front` is the side the step faces. */
+export function paintBuildingDais(
+  ctx: Ctx,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  front: "N" | "S" | "E" | "W",
+  stone: boolean,
+) {
+  const [base, top, line] = stone ? ["#5e5a52", "#7a756a", "#46423c"] : ["#5a3a22", "#7a5432", "#3a2414"];
+  px(ctx, base, x, y, w, h);
+  px(ctx, top, x + 1, y + 1, w - 2, h - 2);
+  for (let k = y + 8; k < y + h - 2; k += 8) px(ctx, line, x + 1, k, w - 2, 1);
+  // The step: a lit lip and its shadow on the side facing the hall.
+  if (front === "S") {
+    px(ctx, "#a89c84", x, y + h - 3, w, 1);
+    px(ctx, "#1a120c", x, y + h - 1, w, 1);
+  } else if (front === "N") {
+    px(ctx, "#a89c84", x, y + 2, w, 1);
+    px(ctx, "#1a120c", x, y, w, 1);
+  } else if (front === "E") {
+    px(ctx, "#a89c84", x + w - 3, y, 1, h);
+    px(ctx, "#1a120c", x + w - 1, y, 1, h);
+  } else {
+    px(ctx, "#a89c84", x + 2, y, 1, h);
+    px(ctx, "#1a120c", x, y, 1, h);
+  }
+}
+
 /** A way to another level: stairs down or up, a ladder, a hole in the floor. */
 export function paintSiteLink(ctx: Ctx, kind: string, down: boolean, x: number, y: number) {
   const ink = "#0c0806";

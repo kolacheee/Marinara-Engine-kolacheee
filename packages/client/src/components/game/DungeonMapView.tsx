@@ -43,6 +43,7 @@ import {
   paintBuildingProp,
   paintBuildingWall,
   paintBuildingEarth,
+  paintBuildingDais,
   paintBuildingRug,
   paintBuildingWater,
   paintFoundTrap,
@@ -62,6 +63,9 @@ const T = OVERWORLD_TILE;
 type Point = { x: number; y: number };
 const WALK_MS_PER_CELL = 70;
 /** Rooms laid with a rug, and its colour. */
+/** The furnishings a dais is raised under: the high seat and the altar (site-plans' slots). */
+const DAIS_SEAT = 13;
+const DAIS_ALTAR = 24;
 const RUG_ROOMS: Readonly<Record<string, string>> = {
   "Lord's chamber": "#7a1e22",
   "Master bedroom": "#7a1e22",
@@ -200,13 +204,31 @@ export function DungeonMapView({
     const siteDepth = kept?.site ? (kept.site.levels[kept.site.level]?.depth ?? -1) : null;
     const outdoors = siteDepth !== null && siteDepth >= 0;
     const buried = siteDepth !== null && siteDepth < 0;
+    // A crypt's founder lies on a raised platform: three by three of stone under the tomb nearest the
+    // middle of the heart (gamer panel 2026-11-17: the tomb was a lone coffin in an empty room).
+    const raiseTomb = (ctx: CanvasRenderingContext2D) => {
+      if (building || !kept?.roomInfo) return;
+      cells.rooms.forEach((room, n) => {
+        if (!kept.roomInfo?.[n]?.heart || Math.min(room.w, room.h) < 5) return;
+        const mid = { x: room.x + (room.w - 1) / 2, y: room.y + (room.h - 1) / 2 };
+        let tomb: { x: number; y: number } | null = null;
+        for (let y = room.y + 1; y < room.y + room.h - 1; y++)
+          for (let x = room.x + 1; x < room.x + room.w - 1; x++)
+            if (
+              cells.props[y * cells.width + x] === 0 &&
+              (!tomb || Math.abs(x - mid.x) + Math.abs(y - mid.y) < Math.abs(tomb.x - mid.x) + Math.abs(tomb.y - mid.y))
+            )
+              tomb = { x, y };
+        if (tomb) paintBuildingDais(ctx, (tomb.x - 1) * T, (tomb.y - 1) * T, 3 * T, 3 * T, "S", true);
+      });
+    };
+
     if (coded) {
       const at = (x: number, y: number) =>
         x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
       // Open courts: a planned building's rooms open to the sky.
       const courts = cells.rooms.filter((_, n) => kept?.roomInfo?.[n]?.use === "open");
-      const inRoom = (x: number, y: number) =>
-        cells.rooms.some((room) => dungeonRoomHas(room, x, y));
+      const inRoom = (x: number, y: number) => cells.rooms.some((room) => dungeonRoomHas(room, x, y));
       // The hall: floor outside every room, but for a doorway into one, laid as the room's floor.
       const isHall = (x: number, y: number) =>
         at(x, y) === "floor" &&
@@ -265,13 +287,11 @@ export function DungeonMapView({
               // A castle's ward is cobbled along its edges and paths with trodden grass between (gamer panel
               // 2026-11-17: an all-stone ward read as a roofed hall); a house's or a cloister's court is a garden
               // crossed by paths.
-              const edge =
-                x === court.x || y === court.y || x === court.x + court.w - 1 || y === court.y + court.h - 1;
+              const edge = x === court.x || y === court.y || x === court.x + court.w - 1 || y === court.y + court.h - 1;
               const paved =
                 x === mid.x ||
                 y === mid.y ||
-                (building === "keep" &&
-                  (edge || cellNoise(Math.floor(x / 3), Math.floor(y / 3))(77) < 0.45));
+                (building === "keep" && (edge || cellNoise(Math.floor(x / 3), Math.floor(y / 3))(77) < 0.45));
               paintBuildingCourt(ctx, x * T, y * T, paved, noise);
             } else
               // A house's cellars are flagged stone, not boards and carpet.
@@ -298,6 +318,33 @@ export function DungeonMapView({
           if (!colour || room.w < 5 || room.h < 5) return;
           paintBuildingRug(ctx, (room.x + 1) * T, (room.y + 1) * T, (room.w - 2) * T, (room.h - 2) * T, colour);
         });
+      // A dais at the high end of a hall, under its high seat or altar: two cells deep along the wall the seat
+      // stands against, the room's width less a cell each end (gamer panel 2026-11-17).
+      const onDais = new Set<number>();
+      if (building)
+        cells.rooms.forEach((room) => {
+          if (Math.min(room.w, room.h) < 5) return;
+          for (let y = room.y; y < room.y + room.h; y++)
+            for (let x = room.x; x < room.x + room.w; x++) {
+              const prop = cells.props[y * cells.width + x];
+              if (prop !== DAIS_SEAT && prop !== DAIS_ALTAR) continue;
+              const gaps = { N: y - room.y, S: room.y + room.h - 1 - y, W: x - room.x, E: room.x + room.w - 1 - x };
+              const side = (Object.keys(gaps) as Array<keyof typeof gaps>).reduce((p, q) =>
+                gaps[q] < gaps[p] ? q : p,
+              );
+              if (gaps[side] > 1) continue;
+              const across = side === "N" || side === "S";
+              if ((across ? room.w : room.h) < 5 || (across ? room.h : room.w) < 6) continue;
+              const [dx, dy, dw, dh] = across
+                ? [room.x + 1, side === "N" ? room.y : room.y + room.h - 2, room.w - 2, 2]
+                : [side === "W" ? room.x : room.x + room.w - 2, room.y + 1, 2, room.h - 2];
+              const front = ({ N: "S", S: "N", W: "E", E: "W" } as const)[side];
+              paintBuildingDais(ctx, dx * T, dy * T, dw * T, dh * T, front, building !== "manor");
+              onDais.add(y * cells.width + x);
+              return;
+            }
+        });
+      raiseTomb(ctx);
       // Doorways: a door standing open against one jamb wherever a room opens through a wall one cell wide,
       // so the ways between rooms read at a glance (panel round 5). Archways (wider) stay open.
       if (building)
@@ -338,7 +385,7 @@ export function DungeonMapView({
       // A high seat stands on a dais: a raised step three wide under it (panel round 4).
       if (building)
         for (let i = 0; i < cells.props.length; i++) {
-          if (cells.props[i] !== 13) continue;
+          if (cells.props[i] !== 13 || onDais.has(i)) continue;
           const [sx, sy] = [i % cells.width, Math.floor(i / cells.width)];
           for (let dx = -1; dx <= 1; dx++)
             if (at(sx + dx, sy) === "floor") {
@@ -380,8 +427,18 @@ export function DungeonMapView({
               for (let k = 0; k < 7; k++) {
                 const a = (k / 6) * (Math.PI / 2);
                 const r = T - 4;
-                const px = dx === 0 ? ox + 2 + Math.round(Math.sin(a) * r) : dx > 0 ? ox + Math.round((1 - Math.cos(a)) * 3) : ox + T - 1 - Math.round((1 - Math.cos(a)) * 3);
-                const py = dy === 0 ? oy + 2 + Math.round(Math.sin(a) * r) : dy > 0 ? oy + Math.round((1 - Math.cos(a)) * 3) : oy + T - 1 - Math.round((1 - Math.cos(a)) * 3);
+                const px =
+                  dx === 0
+                    ? ox + 2 + Math.round(Math.sin(a) * r)
+                    : dx > 0
+                      ? ox + Math.round((1 - Math.cos(a)) * 3)
+                      : ox + T - 1 - Math.round((1 - Math.cos(a)) * 3);
+                const py =
+                  dy === 0
+                    ? oy + 2 + Math.round(Math.sin(a) * r)
+                    : dy > 0
+                      ? oy + Math.round((1 - Math.cos(a)) * 3)
+                      : oy + T - 1 - Math.round((1 - Math.cos(a)) * 3);
                 ctx.fillRect(px, py, 1, 1);
               }
             }
@@ -499,6 +556,7 @@ export function DungeonMapView({
         if (!open(groundAt(x - 1, y + 1)) || !open(groundAt(x + 1, y + 1))) continue;
         drawTile(ctx, "dn_door_wall", x * T, y * T, 0);
       }
+    raiseTomb(ctx);
     for (let y = 0; y < cells.height; y++)
       for (let x = 0; x < cells.width; x++) {
         const prop = cells.props[y * cells.width + x]!;
@@ -569,8 +627,7 @@ export function DungeonMapView({
       ctx.drawImage(base, 0, 0, base.width / resolution, base.height / resolution);
       ctx.imageSmoothingEnabled = false;
       for (const trap of foundTraps) paintFoundTrap(ctx, trap.x * T, trap.y * T);
-      const inFog = (x: number, y: number) =>
-        fogged.some((room) => dungeonRoomHas(room, x, y));
+      const inFog = (x: number, y: number) => fogged.some((room) => dungeonRoomHas(room, x, y));
       // On a map made by hand, someone at each spot in use at the hour (map editor Phase 3).
       for (const { at, person } of standing) {
         if (drawTile.character(ctx, { person: person.id }, at.x * T, at.y * T)) continue;

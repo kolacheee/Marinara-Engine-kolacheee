@@ -488,9 +488,7 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
   );
   // The heart is on the deepest floor; above it, the furthest area is where the way down is, held.
   const heart = deepest ? furthest : -1;
-  const downArea = map.down
-    ? map.rooms.findIndex((room) => dungeonRoomHas(room, map.down!.x, map.down!.y))
-    : -1;
+  const downArea = map.down ? map.rooms.findIndex((room) => dungeonRoomHas(room, map.down!.x, map.down!.y)) : -1;
   const random = marinaraRandom(`${map.seed}:areas:${site.holder}:${band.low}`);
   const levelAt = (index: number) =>
     Math.round(band.low + ((band.high - 1 - band.low) * Math.max(0, distance[index]!)) / far);
@@ -673,10 +671,7 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
         level: level_,
         foes: fitted(setting, level_, group(site.holder, "standard", level_, 3 + Math.floor(random() * 2)), "normal"),
       };
-    if (SITE_STAIR_ROOMS.has(base))
-      return random() < 0.15
-        ? { area, key, role: "guard", level: level_, foes: holders() }
-        : { area, key, role: "empty", level: level_, foes: [] };
+    if (SITE_STAIR_ROOMS.has(base)) return { area, key, role: "empty", level: level_, foes: [] };
     switch (info.use) {
       case "post":
         return random() < (base === "Corner tower" || base === "Wall walk" ? 0.5 : 1)
@@ -770,9 +765,7 @@ export function readGameDungeonSiteTags(text: string): { displaced: boolean } {
 
 /** The area a cell is in (1-based), or 0 in a passage. */
 export function dungeonAreaNumberAt(map: Pick<GameDungeonMap, "rooms">, at: { x: number; y: number }): number {
-  return (
-    map.rooms.findIndex((room) => dungeonRoomHas(room, at.x, at.y)) + 1
-  );
+  return map.rooms.findIndex((room) => dungeonRoomHas(room, at.x, at.y)) + 1;
 }
 
 /** A roster in words: "3 Mire Rats (minion, level 4), Bone Knight (boss, level 8)". */

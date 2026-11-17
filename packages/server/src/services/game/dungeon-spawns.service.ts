@@ -279,13 +279,13 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const doors: Array<{ x: number; y: number }> = [];
     if (here.map.roomInfo && area.role !== "heart")
       for (const { x, y } of dungeonRoomCells(room))
-          for (const [dx, dy] of [
-            [1, 0],
-            [-1, 0],
-            [0, 1],
-            [0, -1],
-          ] as const)
-            if (!inRoom(x + dx, y + dy) && dungeonWalkable(cells, x + dx, y + dy)) doors.push({ x, y });
+        for (const [dx, dy] of [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+        ] as const)
+          if (!inRoom(x + dx, y + dy) && dungeonWalkable(cells, x + dx, y + dy)) doors.push({ x, y });
     // Round 3 of the panel (2026-11-17): not at the door the party comes in by. Guards hold the way on: the
     // stairs where the room has them, else the room's door farthest in, else the middle of a room with one door.
     const way = here.map.entrance;
@@ -294,7 +294,13 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const sorted = doors.sort((p, q) => fromWay(q) - fromWay(p));
     const farDoor =
       sorted.length && fromWay(sorted[0]!) - fromWay(sorted[sorted.length - 1]!) > 2 ? sorted[0] : undefined;
-    const middle = stair ?? farDoor ?? { x: room.x + Math.floor(room.w / 2), y: room.y + Math.floor(room.h / 2) };
+    const centre = { x: room.x + Math.floor(room.w / 2), y: room.y + Math.floor(room.h / 2) };
+    // Round 9 of the panel: a planned building's guards watch the far door from a step inside it, never
+    // standing in the doorway or on the stairs (a way up or down is not always a fight).
+    const watch = farDoor
+      ? { x: farDoor.x + Math.sign(centre.x - farDoor.x), y: farDoor.y + Math.sign(centre.y - farDoor.y) }
+      : undefined;
+    const middle = here.map.roomInfo ? (watch ?? centre) : (stair ?? farDoor ?? centre);
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&

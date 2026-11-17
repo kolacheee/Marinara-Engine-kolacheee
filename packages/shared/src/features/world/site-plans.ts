@@ -1316,7 +1316,14 @@ const SITE_COURT_NAMES: Record<SiteTemplateId, string> = {
 /** How big a planned room grows, in cells, by its size. */
 const SITE_WANT = { 1: 12, 2: 26, 3: 46 } as const;
 /** The rooms a floor is built round: they grow to twice and more the size of the rest. */
-const SITE_SET_PIECES = new Set(["Great hall", "Ballroom", "Burial hall", "Undercroft", "Chapter house", "Long gallery"]);
+const SITE_SET_PIECES = new Set([
+  "Great hall",
+  "Ballroom",
+  "Burial hall",
+  "Undercroft",
+  "Chapter house",
+  "Long gallery",
+]);
 /** The stairwells, by every name they go by: kept clear of guards, so a stair is not always a fight. */
 export const SITE_STAIR_ROOMS: ReadonlySet<string> = new Set(
   Object.values({
@@ -1616,7 +1623,10 @@ function siteFrameOf(plan: SitePlan) {
       const wx = left ? nx - 1 - span : nx + nw + 1;
       const lo = ty + ta + 1;
       const wy = lo + Math.floor(random() * Math.max(1, B - span + 1 - lo + 1));
-      const ring = cellsOf({ x: wx, y: wy, w: span, h: span }, (x, y) => x === wx || y === wy || x === wx + span - 1 || y === wy + span - 1);
+      const ring = cellsOf(
+        { x: wx, y: wy, w: span, h: span },
+        (x, y) => x === wx || y === wy || x === wx + span - 1 || y === wy + span - 1,
+      );
       fixed.push({
         kind: "walk",
         cells: ring,
@@ -1713,7 +1723,10 @@ function siteFrameOf(plan: SitePlan) {
     return best;
   };
   const names = SITE_STAIR_NAMES[kind];
-  const groups = new Map<string, { links: number[]; w: number; h: number; want: { x: number; y: number }; name: string }>();
+  const groups = new Map<
+    string,
+    { links: number[]; w: number; h: number; want: { x: number; y: number }; name: string }
+  >();
   for (const [k, link] of plan.links.entries()) {
     const ladder = !!plan.levels[link.upper]!.inset || !!plan.levels[link.lower]!.inset;
     const key = ladder
@@ -1733,23 +1746,38 @@ function siteFrameOf(plan: SitePlan) {
             ? mainAt
             : { x: 2 * cx - mainAt.x, y: T + B - mainAt.y }
           : { x: L + 2 + random() * (W - 4), y: T + 2 + random() * (H - 4) };
-    const [w, h] = ladder || link.kind === "hidden" || link.kind === "hole" ? [2, 2] : link.kind === "servants" ? [2, 3] : kind === "crypt" ? [3, 3] : [plan.wealth === 3 ? 4 : 3, 3];
-    const name = ladder ? names.ladder : link.kind === "servants" ? names.back : link.kind === "stairs" ? names.main : link.kind === "hidden" ? "Hidden stair" : "Broken floor";
+    const [w, h] =
+      ladder || link.kind === "hidden" || link.kind === "hole"
+        ? [2, 2]
+        : link.kind === "servants"
+          ? [2, 3]
+          : kind === "crypt"
+            ? [3, 3]
+            : [plan.wealth === 3 ? 4 : 3, 3];
+    const name = ladder
+      ? names.ladder
+      : link.kind === "servants"
+        ? names.back
+        : link.kind === "stairs"
+          ? names.main
+          : link.kind === "hidden"
+            ? "Hidden stair"
+            : "Broken floor";
     const group = groups.get(key) ?? { links: [], w, h, want, name };
     group.links.push(k);
     groups.set(key, group);
   }
   for (const group of groups.values()) {
     const levels = [...new Set(group.links.flatMap((k) => [plan.links[k]!.upper, plan.links[k]!.lower]))];
-    const r =
-      pick(group.w, group.h, levels, group.want) ??
+    const r = pick(group.w, group.h, levels, group.want) ??
       pick(2, 2, levels, group.want) ??
       pick(1, 1, levels, group.want, true) ?? { x: cx, y: B - 2, w: 1, h: 1 };
     wells.push({ r, levels: new Set(levels), name: group.name });
     for (const k of group.links) {
       // Each stair at the back of its well, the up and the down of one well apart.
       const link = plan.links[k]!;
-      const x = group.links.length > 1 && r.w > 1 ? r.x + (link.upper % 2 === 0 ? 0 : r.w - 1) : r.x + Math.floor(r.w / 2);
+      const x =
+        group.links.length > 1 && r.w > 1 ? r.x + (link.upper % 2 === 0 ? 0 : r.w - 1) : r.x + Math.floor(r.w / 2);
       linkAt[k] = { x, y: r.y };
     }
     const cells = cellsOf(r);
@@ -1877,7 +1905,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const heap: Array<[number, number]> = [];
     const push = (d: number, s: number) => {
       heap.push([d, s]);
-      for (let i = heap.length - 1; i > 0; ) {
+      for (let i = heap.length - 1; i > 0;) {
         const p = (i - 1) >> 1;
         if (heap[p]![0] <= heap[i]![0]) break;
         [heap[p], heap[i]] = [heap[i]!, heap[p]!];
@@ -1889,7 +1917,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       const last = heap.pop()!;
       if (heap.length) {
         heap[0] = last;
-        for (let i = 0; ; ) {
+        for (let i = 0; ;) {
           const [l, r] = [2 * i + 1, 2 * i + 2];
           let m = i;
           if (l < heap.length && heap[l]![0] < heap[m]![0]) m = l;
@@ -1933,8 +1961,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   };
   const touching = (id: number) => {
     const out = new Set<number>();
-    for (let c = 0; c < size; c++)
-      if (at[c] === id) for (const n of around(c)) if (free(n) && !hold[n]) out.add(n);
+    for (let c = 0; c < size; c++) if (at[c] === id) for (const n of around(c)) if (free(n) && !hold[n]) out.add(n);
     return out;
   };
   const stairsHere = regions.map((r, n) => (r.kind === "stair" ? n : -1)).filter((n) => n >= 0);
@@ -1984,7 +2011,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const want = 2 + plan.wealth;
     for (let tries = 0; tries < 200 && points.length < want; tries++) {
       const c = Math.floor(random() * size);
-      if (!free(c) || points.some((p) => Math.abs((p % mapW) - (c % mapW)) + Math.abs(Math.floor(p / mapW) - Math.floor(c / mapW)) < 7))
+      if (
+        !free(c) ||
+        points.some(
+          (p) => Math.abs((p % mapW) - (c % mapW)) + Math.abs(Math.floor(p / mapW) - Math.floor(c / mapW)) < 7,
+        )
+      )
         continue;
       points.push(c);
     }
@@ -2011,7 +2043,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const arrival = entry
     ? doorIn
     : (() => {
-        const toward = links.find((link) => Math.abs(link.level - plan.entry) < Math.abs(index - plan.entry)) ?? links[0];
+        const toward =
+          links.find((link) => Math.abs(link.level - plan.entry) < Math.abs(index - plan.entry)) ?? links[0];
         return toward ? cell(toward.x, toward.y) : -1;
       })();
   const dist = new Int32Array(size).fill(-1);
@@ -2215,9 +2248,11 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
   }
   const spread = (cap: (g: number) => number, least: number) => {
-    for (let changed = true; changed; ) {
+    for (let changed = true; changed;) {
       changed = false;
-      for (const g of [...grown].sort((p, q) => area.get(p)! / regions[p]!.target - area.get(q)! / regions[q]!.target)) {
+      for (const g of [...grown].sort(
+        (p, q) => area.get(p)! / regions[p]!.target - area.get(q)! / regions[q]!.target,
+      )) {
         if (area.get(g)! >= cap(g)) continue;
         const b = box.get(g)!;
         let best: number[] = [];
@@ -2231,7 +2266,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           const lines = new Map<number, number[]>();
           for (let y = b.y0 - 1; y <= b.y1 + 1; y++)
             for (let x = b.x0 - 1; x <= b.x1 + 1; x++) {
-              if (x - dx < 0 || y - dy < 0 || x - dx >= mapW || y - dy >= mapH || x < 0 || y < 0 || x >= mapW || y >= mapH)
+              if (
+                x - dx < 0 ||
+                y - dy < 0 ||
+                x - dx >= mapW ||
+                y - dy >= mapH ||
+                x < 0 ||
+                y < 0 ||
+                x >= mapW ||
+                y >= mapH
+              )
                 continue;
               const c = cell(x, y);
               if (!takes(g, c) || at[cell(x - dx, y - dy)] !== g) continue;
@@ -2269,7 +2313,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   };
   // A room squeezed to a sliver (two wide) or a scrap is no room: its space goes to its neighbours, and a
   // planned room so lost takes a made-up room's space further on (gamer panel 2026-11-17).
-  const core = new Map([...grown].map((g) => [g, Math.min(box.get(g)!.x1 - box.get(g)!.x0, box.get(g)!.y1 - box.get(g)!.y0) + 1]));
+  const core = new Map(
+    [...grown].map((g) => [g, Math.min(box.get(g)!.x1 - box.get(g)!.x0, box.get(g)!.y1 - box.get(g)!.y0) + 1]),
+  );
   spread((g) => regions[g]!.target * (rock ? 1.15 : 1.45), rock ? 2 : 3);
   if (!rock)
     for (const g of [...grown]) {
@@ -2314,7 +2360,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (pass !== undefined) for (const p of comp) at[p] = pass;
       }
     }
-    for (let changed = true; changed; ) {
+    for (let changed = true; changed;) {
       changed = false;
       for (let c = 0; c < size; c++) {
         if (!free(c)) continue;
@@ -2358,7 +2404,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   for (const c of lost) if (!hold[c]) at[c] = -1;
   const isRoom = (c: number) => at[c]! >= 0 && regions[at[c]!]!.kind === "room";
-  for (let changed = true; changed; ) {
+  for (let changed = true; changed;) {
     changed = false;
     for (let c = 0; c < size; c++) {
       if (!isRoom(c) || hold[c] || ground[c] !== "floor") continue;
@@ -2427,7 +2473,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         ground[c] = "wall";
         at[c] = -1;
       }
-    cellsBy.set(g, cells.filter((c) => at[c] === g));
+    cellsBy.set(
+      g,
+      cells.filter((c) => at[c] === g),
+    );
   }
   // Walls two thick between two rooms give a cell back to one of them, and a stray cell of wall inside a
   // room (a stub, a sliver between two parts of it) is floor again: one wall between neighbours, no nubs.
@@ -2467,11 +2516,15 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // Wall more than one thick inside the building (a blob where a space was dropped, a double wall) goes to
   // the one room it touches, a cell at a time, until the walls are one thick (gamer panel 2026-11-17).
   if (!rock)
-    for (let changed = true; changed; ) {
+    for (let changed = true; changed;) {
       changed = false;
       for (let c = mapW + 1; c < size - mapW - 1; c++) {
         if (ground[c] !== "wall" || !mask[c] || hold[c]) continue;
-        const owners = new Set(around(c).filter((n) => ground[n] !== "wall").map((n) => at[n]!));
+        const owners = new Set(
+          around(c)
+            .filter((n) => ground[n] !== "wall")
+            .map((n) => at[n]!),
+        );
         if (owners.size !== 1) continue;
         const g = [...owners][0]!;
         if (g < 0 || regions[g]!.kind !== "room") continue;
@@ -2499,7 +2552,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
   // Then a room's one-wide tails (a strip left along a wall) are wall again, from their free end in.
   if (!rock)
-    for (let changed = true; changed; ) {
+    for (let changed = true; changed;) {
       changed = false;
       for (const [g, cells] of cellsBy) {
         if (regions[g]!.kind !== "room") continue;
@@ -2510,7 +2563,11 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           at[c] = -1;
           changed = true;
         }
-        if (changed) cellsBy.set(g, cells.filter((c) => at[c] === g));
+        if (changed)
+          cellsBy.set(
+            g,
+            cells.filter((c) => at[c] === g),
+          );
       }
     }
   /** The biggest box inside a set of cells. */
@@ -2613,7 +2670,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   const depth = nodes.map(() => -1);
   depth[start] = 0;
-  for (let changed = true; changed; ) {
+  for (let changed = true; changed;) {
     changed = false;
     for (const edge of tree) {
       if (depth[edge.a]! >= 0 && depth[edge.b]! < 0) [depth[edge.b], changed] = [depth[edge.a]! + 1, true];
@@ -2625,7 +2682,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const hiddenId = regions.findIndex((region, n) => region.hidden && alive(n));
   if (hiddenId >= 0) {
     const way = edges
-      .filter((edge) => (edge.a === hiddenId || edge.b === hiddenId) && inTree.has(edge.a === hiddenId ? edge.b : edge.a))
+      .filter(
+        (edge) => (edge.a === hiddenId || edge.b === hiddenId) && inTree.has(edge.a === hiddenId ? edge.b : edge.a),
+      )
       .filter((edge) => !lockedNode(edge.a === hiddenId ? edge.b : edge.a))
       .sort((p, q) => {
         const other = (e: Edge) => (e.a === hiddenId ? e.b : e.a);
@@ -2642,7 +2701,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   // A space the tree never reached gets a passage cut to the nearest one it did, through the wall or the
   // rock (a crypt's chambers apart from its galleries); failing that it is walled up.
-  for (const [n] of [...regions.entries()].sort((p, q) => (cellsBy.get(q[0])?.length ?? 0) - (cellsBy.get(p[0])?.length ?? 0))) {
+  for (const [n] of [...regions.entries()].sort(
+    (p, q) => (cellsBy.get(q[0])?.length ?? 0) - (cellsBy.get(p[0])?.length ?? 0),
+  )) {
     if (!alive(n) || inTree.has(n) || hiddenNode(n)) continue;
     const from = (cellsBy.get(n) ?? []).filter((c) => ground[c] === "floor");
     const back = new Int32Array(size).fill(-2);
@@ -2719,7 +2780,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const kinds = [regions[edge.a]!.kind, regions[edge.b]!.kind];
     if (kinds.includes("court") && (kinds.includes("walk") || kinds.includes("pass"))) {
       const sorted = [...edge.cells].sort((p, q) => p.x - q.x || p.y - q.y);
-      for (const [k, each] of sorted.entries()) if (k % 3 !== 2 || sorted.length <= 3) ground[cell(each.x, each.y)] = "floor";
+      for (const [k, each] of sorted.entries())
+        if (k % 3 !== 2 || sorted.length <= 3) ground[cell(each.x, each.y)] = "floor";
       const mid = sorted[Math.floor(sorted.length / 2)]!;
       ground[cell(mid.x, mid.y)] = "floor";
       if (main) doorOf.set(child, mid);
@@ -2890,7 +2952,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
 
   // A passage's dead ends, where no door or stair is, are walled: no carpet runs into a blank wall.
-  for (let changed = true; changed; ) {
+  for (let changed = true; changed;) {
     changed = false;
     for (let c = mapW; c < size - mapW; c++) {
       if (ground[c] !== "floor" || hold[c] || at[c]! < 0 || !isPassage(at[c]!)) continue;
@@ -3059,6 +3121,22 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // Furniture against each room's back wall (the one facing its door), then rubble in ruined rooms;
   // never closing a way.
   const doorCells = new Set(doors.flatMap((door) => (door ? [cell(door.x, door.y)] : [])));
+  // A scene or two a floor, a few things together that tell what happened here (gamer panel 2026-11-17).
+  const scenes = new Set(
+    [...roomOf]
+      .filter(
+        ([room, n]) =>
+          plan.template !== "crypt" &&
+          room.use !== "open" &&
+          !room.heart &&
+          !hiddenRooms.has(n) &&
+          !SITE_STAIR_ROOMS.has(siteBaseName(room.name)) &&
+          rooms[n]!.w * rooms[n]!.h >= 16,
+      )
+      .sort(() => random() - 0.5)
+      .slice(0, 1 + Math.floor(random() * 2))
+      .map(([, n]) => n),
+  );
   for (const [room, n] of roomOf) {
     const area = rooms[n]!;
     const side = opens[n];
@@ -3279,7 +3357,37 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
     // Something left lying about now and then, a sign of who was here: a stool knocked over, a jug spilt, a
     // sword dropped, cobwebs where nobody goes (panel round 4).
-    if (plan.template !== "crypt" && room.use !== "open" && !tiny && random() < 0.55) {
+    if (scenes.has(n)) {
+      const base = siteBaseName(room.name);
+      const scene = /guard|barracks|armoury|gate|watch|gaol|interrogation|wall walk|cell/iu.test(base)
+        ? [BONES, SWORD, TIPPED, JUG] // a fight lost
+        : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
+          ? [BARREL, CRATE, TIPPED, BONES] // broken into, the stores spilt
+          : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
+            ? [TIPPED, JUG, TIPPED, BONES] // a meal left in a hurry
+            : [CHEST, TIPPED, JUG, SWORD]; // ransacked
+      const steps: Array<[number, number]> = shuffle([
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+        [1, 1],
+        [-1, 1],
+        [1, -1],
+        [-1, -1],
+      ]);
+      for (const [x, y] of everywhere()) {
+        if (near(x, y) || !put(scene[0]!, x, y)) continue;
+        let k = 1;
+        for (const [dx, dy] of steps) {
+          if (k >= scene.length) break;
+          const [sx, sy] = [x + dx, y + dy];
+          if (sx < x0 || sy < y0 || sx > x1 || sy > y1 || near(sx, sy)) continue;
+          if (put(scene[k]!, sx, sy)) k++;
+        }
+        break;
+      }
+    } else if (plan.template !== "crypt" && room.use !== "open" && !tiny && random() < 0.55) {
       const base = siteBaseName(room.name);
       const pick =
         /store|cellar|lumber|attic|trunk|coal|granary|vault|garret|loft|undercroft|relic|charnel|ossuary/iu.test(base)
