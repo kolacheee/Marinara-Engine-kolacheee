@@ -1,3 +1,204 @@
+# Round 17 — Part E: critic-r17E-3 redraw
+
+Repaired the sole failed file, `out/city17/compose.py`. The retained gate
+interior now repeats from its own **(984,192)** origin; the threshold is
+placed once at **(984,423)**. Both render after generic street kerbs, retaining
+the drawn outer kerbs at **x984–987 / x1076–1079** and removing the stray
+**x1052–1059** stripe. Vertical paving registration matches Part D.
+All **78 passing E PNGs** and both Part D gate crops remain byte-identical;
+no redraw, resampling or new paint was needed. Their established large
+magenta drawing → registration → palette/mode sampling → hard-alpha cleanup
+method remains unchanged.
+
+Regenerated the required scenes at **1×/3× beside both references**, native
+greyscale squints, every piece's **1×/4×** house comparison, self/unlike seams
+and focused proofs. Inspected all 17 piece pages and the portal-to-approach
+join at 1×/4×. **780 general + 149 retained-regression + 25 gate checks pass**:
+76 entrance approaches clear, all eight signs mounted, all 66 street segments
+shaded. The gate test detects the original failure and verifies exact source
+pixels across both outer kerbs and the former stripe; all other scene ground
+and **2,335 protected production files/gate crops** remain unchanged.
+[Gate comparison](review/r17-E-critic3-gate-comparison-1x.png),
+[focused audit](review/r17-E-critic3-verification.json),
+[response](review/r17-E-critic3-response.json), [review index](review/r17-E-review.html).
+
+No Round15 production proxies; existing Round17 A/B/C/D/E and retained D
+crops supply the scenes. BRIEF-17 wins over panel 1's conflicting deferrals,
+layout and shadow proposals; panel 2 is absent. Saved-art self-review only.
+All edits stay inside `art-drop/`; no commit, push or branch change.
+
+Replay with `python -B`: `out/city17/compose.py`, then
+`review/r17-E-critic3-review.py`, `review/r17-E-verify.py`,
+`review/r17-E-critic2-verify.py` and `review/r17-E-critic3-verify.py`
+(paths relative to `art-drop/`).
+
+# Round 17 — Part E: critic-r17E-2 redraw
+
+Repaired `cobble-small`, `street-side`, `lane` and `city17/compose.py`;
+the **75 passing E PNGs remain byte-identical**. Drew two large built-in
+image-tool cobble variants on solid magenta and selected A. Same method:
+**8× BOX registration → fixed six-colour palette → exact 64-sample mode →
+edge-paint wrap and one-pixel cleanup inspection**, hard 0/255 alpha and
+zero hidden RGB. No cleanup edits were needed; no shapes or noise were
+constructed in code. Retained both street kerb/gutter strips exactly.
+The small field's top/bottom eight-row luminance difference is now **0.67**
+(previously **8.31**); all six eight-row bands span only **1.64** levels.
+[Prompts/sources](review/r17-E-critic2-generation.json),
+[processing](review/r17-E-critic2-processing.json).
+
+Gardens now render beneath roads. The poor lane retains all **2,592 paved
+interior pixels**. Each district's northern court frontage is one storey
+lower and ends 48px earlier, leaving a visible **96×48 paved court** for
+its door/porch and arch, connected to the eastern side lane. All **76 declared
+48×48 entrance approaches** are checked against final opaque building and
+prop masks; restoring the old placement correctly fails all five cases.
+All **66 street segments** retain cast shade and all eight sign mounts stay clear.
+
+Regenerated the required scenes/comparisons at 1×/3×, native squints, all
+78 piece comparisons at 1×/4×, self/unlike seams, literal repeats and focused
+lane/court/junction proofs. Inspected all 17 packed piece sheets beside
+`fantasy-house-2`. **780 general + 149 focused checks pass**, including
+**294,912 new mode samples** and preservation of **2,330 other production files**.
+[Review index](review/r17-E-review.html),
+[critic response](review/r17-E-critic2-response.json),
+[focused audit](review/r17-E-critic2-verification.json).
+
+No Round15 production proxies: existing Round17 A/B/C/D/E drawings and D's
+retained gate-approach crops provide the context. BRIEF-17 wins over panel 1's
+deferrals and conflicting layout/shadow proposals; panel 2 is absent.
+Saved-art self-review, not independent acceptance or an in-engine playtest.
+All edits are inside `art-drop/`; no commit, push or branch change.
+
+Replay: `python -B art-drop/review/r17-E-critic2-process.py --install`,
+`python -B art-drop/out/city17/compose.py`, then `python -B` on
+`art-drop/review/r17-E-verify.py` and `art-drop/review/r17-E-critic2-verify.py`.
+
+# Round 17 — Part E: critic-r17E-1 redraw
+
+Repaired all **18 failed PNGs and `city17/compose.py`**. The **60 passing E
+PNGs remain byte-identical**. Drew **12 large built-in image-tool variants on
+solid magenta**, selecting six: whole-field large/small cobbles, low mud,
+separate candles, a boarded repair shutter and a readable tankard plaque.
+Used **8× BOX registration → fixed palette → exact 64-sample mode → one-pixel
+cleanup**, hard 0/255 alpha and zero hidden RGB. Retained drawn street kerbs;
+registered the shutter separately into five recesses and the tankard into all
+five inn aliases. No replacement shapes or noise were constructed in code.
+[Prompts/sources](review/r17-E-critic1-generation.json),
+[processing](review/r17-E-critic1-processing.json).
+
+Composer repairs open full kerbs, align junction paint without rotating
+cobbles, preserve all eight mounted trade entrances, clear the washing,
+complete fenced market rear strips and district returns, and distinguish
+the gate route in greyscale. **All 66 street segments receive cast shade**;
+all required routes are clear and washing occlusion is zero. Regenerated
+`r17-E-*.png` review sheets: required scenes at 1×/3× beside both references,
+native squints, every export at 1×/4× beside `fantasy-house-2`, and self/unlike
+seams and literal repeats. **780 general + 133 redraw checks pass**, including
+**1,189,696 new mode samples** and unchanged earlier protected files.
+[Review index](review/r17-E-review.html),
+[per-failure response](review/r17-E-critic1-response.json),
+[redraw audit](review/r17-E-critic1-verification.json).
+
+BRIEF-17 overrides panel 1's deferrals, relaxed shadow rule and conflicting
+size/layout proposals; panel 2 is absent. No Round15 production proxies.
+This is saved-art self-review, not independent or in-engine approval.
+All edits stay in `art-drop/`; no commit, push or branch change. The checkout
+was already detached at `35c06009d5` and was left there.
+
+Replay: `python -B art-drop/review/r17-E-critic1-process.py --install`,
+`python -B art-drop/out/city17/compose.py`, then both
+`art-drop/review/r17-E-verify.py` and `r17-E-critic1-verify.py` with `python -B`.
+
+# Round 17 — Part E
+
+Made **78 native PNG exports (72 distinct pixel files)** in **`out/city17/`**:
+streets and paving, eight trades, a new two-cell inn, five district palettes
+with three architectural arrangements each, and life props/overlays.
+Extended **`out/city17/compose.py`** to use them in the required critics and
+five separate district studies. **14,823 protected earlier files are unchanged**;
+this includes the earlier junction and all A/B/C/D production pieces outside
+the explicitly replaced E streets, signs and two-cell inn.
+
+**Method:** **35 large built-in image-tool drawings on solid magenta**,
+selecting **30 source paintings**. Main street received three attempts;
+side street, inn and washing line received two; the poor roofs use three
+separate thatch drawings. Two wrong-subject street generations were rejected.
+Exact prompts, original sources and selections are in
+[generation](review/r17-E-generation.json).
+
+Painted bounds/course registration → **8× BOX registration** → fixed palette
+without dithering → exact RGBA mode of **all 64 samples per 8×8 footprint**,
+with lexicographic ties → isolated-colour/alpha-island and one-pixel outline
+cleanup. Final files have **3–35 opaque colours**, **hard 0/255 alpha** and
+**zero RGB under transparency**. Code registers, reduces, cleans, recolours,
+wraps and composites existing paint; it does not draw replacement geometry
+or procedural texture. Road mortar comes from registered source bands;
+kerbs/gutters are strips of the street paintings. District wall palettes
+recolour approved A drawings, retaining their silhouette and fixed courses;
+roof variants reuse B drawings except for the new poor thatch. Review labels
+and neutral mounts are presentation only.
+[Processing](review/r17-E-processing.json), [files](review/r17-E-files.json),
+[districts](review/r17-E-districts.json), [replay](review/r17-E-process.py).
+
+**Files and measurements:**
+
+- `street-main` **96×48**, `street-side` **48×48**, `lane` **24×48** with
+  kerbs/gutters of 4/4/3px; `cobble-large` and `cobble-small` **48×48** use
+  **12×6  / 6×4px cobbles** and **24×12  / 12×8px repeat periods**.
+  `mud-edge` is a **48×48** transparent overlay with a 24px horizontal period.
+- Eight `sign-*` files are **64×72**: twice the maximum Round15 sign canvas
+  (**32×36**). The last size check caught undersized initial registrations;
+  final signs were reduced again from the original large paintings, not
+  enlarged native sprites. Symbols are anvil, loaf, bottle, boot, tankard,
+  quill, scissors and cleaver, with distinct shapes/colours.
+- `inn-front`, `inn-front-w2` and `inn-front-w2-c0..2` are **96×48**.
+  The wide porch, tankard and courtyard arch retain the A rows 0/47 contract.
+- **45 district architecture exports**: market, temple, craft, rich and poor,
+  each with three ground/storey/roof arrangements. Facades **96×48**;
+  roofs **96×96 or 96×144**. Each district uses one roof colour family and at
+  most two wall colours. Rich studies use 3–5 floors; poor studies use 1–2.
+- District props: scales/candles **32×32**, drying rack/shed **48×48**,
+  banner **24×48**, patched shutter **24×24**. Life: washing **96×32**,
+  barrel **24×28**, crate **24×24**, cart **48×48**, chimney/forge smoke
+  **24×48 /32×48**, cat **20×20**, pigeon **16×16**.
+
+**Composition and QC:** rebuilt the **768×576 (16×12-cell) L-block** with T,
+bend and dead end; the **1248×1968 irregular market** with cathedral,
+facing guildhall, cross, six stalls and clear gate/service routes; the
+**768×864 5|1 and 1|5 test**; and five **768×864 district studies**. Native
+one/two-cell fronts, bottom-left/base-row ordering, owned overlays, stepped
+wedge/setbacks and height-responsive B shadows remain explicit. The final
+height test also replaces inherited three-cell fronts with two-cell fronts.
+The market retains approved D civic/wall placement and its 48/96px routes.
+No Round15 production proxies are used; Round15 is comparison-only.
+
+Saved **1×/3× scenes beside both Round15/current-town references**, **1×
+greyscale squints**, all **78 individual 1×/4× house comparisons**, **17 packed
+inspection pages**, **294 self/unlike seam sheets**, and **12 literal 3×3
+repeat proofs** (six ground/overlay files at 1×/4×). Props are mounted on
+summer paving/grass; no seasonal partners are assigned to E.
+**722/722 checks pass**, including replay of **7,095,296 mode samples**,
+zero obstructed route pixels, zero required-roof holes, sign dimensions,
+three distinct ground/roof variants per district, hard alpha, hidden RGB,
+no detached one/two-pixel islands, exact nearest-neighbour scaling and
+protected-file hashes. Every street family receives cast shadow; even the
+24px poor lane has 112 measured shadow pixels.
+[Review index](review/r17-E-review.html), [audit](review/r17-E-verification.json),
+[critic findings](review/r17-E-critic.json).
+This is saved-art self-review, not independent or in-engine approval.
+
+BRIEF-17 and the explicit Part E request win over panel 1's reassignment of
+signs/streets/life and deferral of the district/animal catalogue. Required
+bends, stepped wedges, 24px lanes and shadows remain; one/two-cell fronts
+win over the panel's merged three-cell option. Existing D keeps BRIEF-17's
+three-cell gate. Panel 2 is absent. No commit, push or branch change; the
+checkout was already detached. All project edits stay inside `art-drop/`.
+
+Replay: `python -B art-drop/review/r17-E-process.py`,
+`python -B art-drop/review/r17-E-install.py`,
+`python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-E-verify.py`.
+
 # Round 17 — Part D: critic-r17D-2 redraw
 
 Repaired **wall-walk, wall-walk-stair and compose.py**. Both wall surfaces
@@ -541,7 +742,6 @@ this top NOTES section changed. **No commit, push or branch change.**
 
 ---
 
-<<<<<<< HEAD
 # Round 16 — Part Epolish: critic-r16Epolish-1 redraw
 
 Repaired **cloudy** by moving its original sun three native pixels down behind
@@ -686,7 +886,6 @@ this top NOTES section changed. **No commit, push or branch change.**
 
 ---
 
-=======
 # Round 17 — Part A: critic-r17A-3 redraw
 
 Repaired **`out/city17/compose.py`**, the critic's only failed file. Corners
@@ -919,7 +1118,6 @@ section were written. **No commit, push or branch change.**
 ---
 
 <!-- r17-A retained earlier notes -->
->>>>>>> 5ea1d99554 (art-drop: round 17 part A)
 # Round 16 — Part E: critic-r16E-1 redraw
 
 Redrew **cloudy** and **overcast**, and repaired the single stray pixel at

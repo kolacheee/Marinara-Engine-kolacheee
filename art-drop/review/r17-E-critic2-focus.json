@@ -1,0 +1,147 @@
+{
+  "crops": {
+    "poor-lane": [
+      "district-poor",
+      [
+        48,
+        432,
+        288,
+        672
+      ]
+    ],
+    "junction": [
+      "L-block",
+      [
+        240,
+        120,
+        432,
+        312
+      ]
+    ],
+    "mounted-trades-north": [
+      "market",
+      [
+        504,
+        672,
+        984,
+        936
+      ]
+    ],
+    "mounted-trades-south": [
+      "market",
+      [
+        504,
+        1200,
+        984,
+        1464
+      ]
+    ],
+    "market-stalls": [
+      "market",
+      [
+        456,
+        1488,
+        984,
+        1776
+      ]
+    ],
+    "washing": [
+      "district-poor",
+      [
+        72,
+        528,
+        288,
+        648
+      ]
+    ],
+    "market-court": [
+      "district-market",
+      [
+        384,
+        432,
+        624,
+        816
+      ]
+    ],
+    "temple-court": [
+      "district-temple",
+      [
+        384,
+        432,
+        624,
+        816
+      ]
+    ],
+    "craft-court": [
+      "district-craft",
+      [
+        384,
+        432,
+        624,
+        816
+      ]
+    ],
+    "rich-court": [
+      "district-rich",
+      [
+        384,
+        432,
+        624,
+        816
+      ]
+    ],
+    "poor-court": [
+      "district-poor",
+      [
+        384,
+        432,
+        624,
+        816
+      ]
+    ]
+  },
+  "links": [
+    "r17-E-critic2-focus-poor-lane-1x.png",
+    "r17-E-critic2-focus-poor-lane-3x.png",
+    "r17-E-critic2-focus-poor-lane-4x.png",
+    "r17-E-critic2-focus-junction-1x.png",
+    "r17-E-critic2-focus-junction-3x.png",
+    "r17-E-critic2-focus-junction-4x.png",
+    "r17-E-critic2-focus-mounted-trades-north-1x.png",
+    "r17-E-critic2-focus-mounted-trades-north-3x.png",
+    "r17-E-critic2-focus-mounted-trades-north-4x.png",
+    "r17-E-critic2-focus-mounted-trades-south-1x.png",
+    "r17-E-critic2-focus-mounted-trades-south-3x.png",
+    "r17-E-critic2-focus-mounted-trades-south-4x.png",
+    "r17-E-critic2-focus-market-stalls-1x.png",
+    "r17-E-critic2-focus-market-stalls-3x.png",
+    "r17-E-critic2-focus-market-stalls-4x.png",
+    "r17-E-critic2-focus-washing-1x.png",
+    "r17-E-critic2-focus-washing-3x.png",
+    "r17-E-critic2-focus-washing-4x.png",
+    "r17-E-critic2-focus-market-court-1x.png",
+    "r17-E-critic2-focus-market-court-3x.png",
+    "r17-E-critic2-focus-market-court-4x.png",
+    "r17-E-critic2-focus-temple-court-1x.png",
+    "r17-E-critic2-focus-temple-court-3x.png",
+    "r17-E-critic2-focus-temple-court-4x.png",
+    "r17-E-critic2-focus-craft-court-1x.png",
+    "r17-E-critic2-focus-craft-court-3x.png",
+    "r17-E-critic2-focus-craft-court-4x.png",
+    "r17-E-critic2-focus-rich-court-1x.png",
+    "r17-E-critic2-focus-rich-court-3x.png",
+    "r17-E-critic2-focus-rich-court-4x.png",
+    "r17-E-critic2-focus-poor-court-1x.png",
+    "r17-E-critic2-focus-poor-court-3x.png",
+    "r17-E-critic2-focus-poor-court-4x.png",
+    "r17-E-critic2-vertical-cobble-small-1x.png",
+    "r17-E-critic2-vertical-cobble-small-4x.png",
+    "r17-E-critic2-vertical-cobble-small-8x.png",
+    "r17-E-critic2-vertical-street-side-1x.png",
+    "r17-E-critic2-vertical-street-side-4x.png",
+    "r17-E-critic2-vertical-street-side-8x.png",
+    "r17-E-critic2-vertical-lane-1x.png",
+    "r17-E-critic2-vertical-lane-4x.png",
+    "r17-E-critic2-vertical-lane-8x.png"
+  ]
+}

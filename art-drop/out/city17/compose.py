@@ -15,7 +15,7 @@ a wide drawing. Drawn course strips preserve rows 0/47 across the whole lot.
 Part B roofs, joins, firewall and masked shadows are native city17 assets.
 Part C adds rear rows, separately lit side returns, corner nodes, fenced
 yards and quiet street surfaces. Part D adds native whole civic and market sprites.
-Default output is scoped to r17-D review files; --part C replays historical C.
+Default output is scoped to r17-E review files; --part C/D replays historical parts.
 """
 
 import argparse
@@ -133,14 +133,14 @@ CAP_COURSES={1:(41,[41,33,41]),2:(59,[59,27,59]),3:(42,[42,58,34])}
 
 def wall_reveal(spec):
     """Reserve full bays where possible, otherwise use intact narrow returns."""
-    return 48 if spec['width']>len(spec.get('firewalls',[])) else 4
+    return 4 if spec.get('district') else (48 if spec['width']>len(spec.get('firewalls',[])) else 4)
 
 
 def build(spec, include_roof_overlays=True):
     """Ground, upper floors bottom-to-top, roof, overlays; no asset resampling."""
     width, upper = spec['width']*48, spec['storeys']
     if spec['width'] not in (1,2,3) or not 0 <= len(upper) <= 4: raise ValueError(spec)
-    roof_name = f"roof-{spec['roof']}-w{spec['width']}-c{spec.get('roof_colour',0)}"
+    roof_name = spec.get('roof_file') or f"roof-{spec['roof']}-w{spec['width']}-c{spec.get('roof_colour',0)}"
     roof = asset(roof_name); top = spec.get('roof_depth',roof.height//48)*48
     if top<roof.height or top%48:raise ValueError('roof depth must be whole cells and fit cap')
     im = Image.new('RGBA',(width,top+48*(1+len(upper)))); parts=[]
@@ -152,7 +152,7 @@ def build(spec, include_roof_overlays=True):
         im.alpha_composite(piece,(x,y))
         parts.append(dict(file=str(asset_path(name).relative_to(ART)),x=x,y=y,crop=crop,layer=layer))
     frontage={}
-    panels=[ground_name(spec)]+[f"storey-{s['kind']}-w{spec['width']}-c{s['colour']}" for s in upper]
+    panels=[spec.get('ground_file') or ground_name(spec)]+[s.get('file') or f"storey-{s['kind']}-w{spec['width']}-c{s['colour']}" for s in upper]
     for floor,name in enumerate(panels):
         y=im.height-48*(floor+1)
         walls=[wall for wall in spec.get('firewalls',[]) if y<top+wall['height']]
@@ -229,7 +229,7 @@ def build(spec, include_roof_overlays=True):
     for o in spec.get('roof_overlays',[]):
         p=asset(o['file'])
         if o['y']+p.height>top:raise ValueError('roof overlay leaves roof receiver')
-        if not any(o['x']>=x0 and o['y']>=y0 and o['x']+p.width<=x1 and o['y']+p.height<=y1
+        if o['file'] not in ('chimney-smoke','forge-smoke') and not any(o['x']>=x0 and o['y']>=y0 and o['x']+p.width<=x1 and o['y']+p.height<=y1
                    for x0,y0,x1,y1 in receiving_planes(spec)):
             raise ValueError(('roof accent crosses ridge, verge or parapet',o,spec['roof']))
         if include_roof_overlays:put(o['file'],o['x'],o['y'],layer='roof overlay')
@@ -565,7 +565,7 @@ def build_c(spec):
     return im,parts
 
 
-def c_ground(size,roads):
+def c_ground(size,roads,junction_file="street-junction"):
     im=repeat(context('town_ground'),size)
     for road in roads:
         x,y,w,h=road['rect'];tile=Image.open(ART/road['path']).convert('RGBA') if road.get('path') else asset(road['file'])
@@ -575,7 +575,7 @@ def c_ground(size,roads):
     # contacts, instead of leaving the earlier rectangle's kerb across a T.
     def road_at(x,y):
         return any(rx<=x<rx+rw and ry<=y<ry+rh for rx,ry,rw,rh in (r['rect'] for r in roads))
-    field=asset('street-junction')
+    field=asset(junction_file)
     for road in roads:
         if road['file'] not in ('street-main','street-side','lane'):continue
         x,y,w,h=road['rect']
@@ -620,19 +620,28 @@ def c_shadow_layer(layout):
         if bounds and not o['file'].startswith('fence'):
             sx,sy=x+bounds[0],y+bounds[3];w=bounds[2]-bounds[0]
             civic=o['file'] in ('cathedral','guildhall','gatehouse','wall-tower','wall-walk','wall-walk-stair','townhall-market')
-            reach=min(30,max(6,a.height//16)) if civic else 6
+            reach=(min(32,max(6,a.height//12)) if layout.get('e_ground') else min(30,max(6,a.height//16))) if civic else 6
             layer=Image.new('RGBA',size);layer.paste(repeat(asset('shadow-street-w3').crop((12,0,132,reach)),(w,reach)),(sx,sy));union=ImageChops.lighter(union,layer)
-            if civic:
+            if civic or o.get('cast_east'):
                 # Reuse approved painted shade; restrict it to receiving ground
                 # with the same occupancy mask as houses and market props.
-                ex=x+bounds[2];eh=min(a.height,144)
-                layer=Image.new('RGBA',size);layer.paste(repeat(east,(reach,eh)),(ex,sy-eh));union=ImageChops.lighter(union,layer)
+                layer=Image.new('RGBA',size)
+                if layout.get('e_ground') and civic:
+                    # Each painted row, including the narrow tower, casts
+                    # from its own silhouette rather than a floating bbox.
+                    for yy in range(a.height):
+                        bb=a.crop((0,yy,a.width,yy+1)).getbbox()
+                        if bb:layer.paste(east.crop((0,yy%east.height,reach,yy%east.height+1)),(x+bb[2],y+yy))
+                else:
+                    ex=x+bounds[2];eh=min(a.height,144);layer.paste(repeat(east,(reach,eh)),(ex,sy-eh))
+                union=ImageChops.lighter(union,layer)
     union.putalpha(ImageChops.multiply(union.getchannel('A'),ImageChops.invert(occupied)))
     return union,records
 
 
 def c_render(layout,cutaway=False):
-    im=c_ground(tuple(layout['size']),layout.get('roads',[]));ordered=[];records=[]
+    im=e_ground(layout) if layout.get('e_ground') else c_ground(tuple(layout['size']),layout.get('roads',[]),layout.get('junction_file','street-junction'))
+    ordered=[];records=[]
     for turn in layout.get('kerb_turns',[]):
         # The square turn itself was drawn; only a native patch is transferred.
         patch=asset('street-junction-turn').crop((4,17,13,26))
@@ -1004,4 +1013,364 @@ def d_main():
     print('Saved D scenes, comparisons, squints and per-file reviews.')
 
 
-if __name__=='__main__':d_main()
+# Part E entry point follows.
+
+# ---- Part E: quiet routes, trade symbols, district materials and life ----
+E_DISTRICTS=('market','temple','craft','rich','poor')
+
+def e_spec(district, floors=2, variant=0):
+    if district=='poor' and floors>2:raise ValueError('poor quarter maximum two floors')
+    s=make_spec(2,floors,'shop' if district=='market' else 'work' if district=='craft' else 'door',variant,0,'ridge')
+    v=variant%3;suffix=f'-v{v}' if v else ''
+    s['district']=district;s['ground_file']=f'district-{district}-ground{suffix}-w2'
+    s['roof_file']=f'district-{district}-roof{suffix}-w2'
+    s['roof']='ridge' if district=='poor' or v==0 else 'gable' if v==1 else 'hip'
+    for i,u in enumerate(s['storeys']):
+        uv=(v+i)%3;us=f'-v{uv}' if uv else '';u['file']=f'district-{district}-storey{us}-w2'
+    s['roof_colour']=1 if district in ('rich','temple') else 2 if district=='craft' else 0
+    if district=='market' and variant==1:s['ground_file']='inn-front'
+    return s
+
+
+def e_overlay(layout,file,x,base,lot,**kw):
+    a=asset(file);lx,ly,lw,lh=lot
+    if not (lx<=x and x+a.width<=lx+lw and ly<=base-a.height and base<=ly+lh):
+        raise ValueError(('overlay outside owner',file,lot))
+    layout['props'].append(dict(file=file,x=x,base=base,owner=lot,**kw))
+
+
+def e_ground(layout):
+    """World-registered drawn paving; rotate only kerbs, never stone faces.
+
+    Repeatable fields share a paint phase. Full4px kerbs (3px lanes) survive
+    only on exterior road edges, so unlike T contacts open. Authored path
+    crops keep their destination-local origin and their own drawn kerbs.
+    """
+    size=tuple(layout['size']);im=repeat(context('town_ground'),size)
+    roads=layout['roads'];street_files=('street-main','street-side','lane')
+    pavement=[r for r in roads if r['file']!='mud-edge']
+    def at(x,y):return any(rx<=x<rx+rw and ry<=y<ry+rh for rx,ry,rw,rh in (r['rect'] for r in pavement))
+    def phase(tile,x,y,w,h):
+        return repeat(tile,(w+tile.width,h+tile.height)).crop((x%tile.width,y%tile.height,x%tile.width+w,y%tile.height+h))
+    def tint(a,kind):
+        if not kind:return a
+        a=a.copy()
+        if kind=='square':a.putdata([(min(255,r+17),min(255,g+16),min(255,b+13),z) for r,g,b,z in a.get_flattened_data()])
+        elif kind=='gate-route':a.putdata([(r-20,g-13,b+1,z) for r,g,b,z in a.get_flattened_data()])
+        return a
+    # Garden paint is beneath the complete road surface, including interiors.
+    for x,y,w,h in layout.get('gardens',[]):im.paste(phase(asset_path_grass(),x,y,w,h),(x,y))
+    for r in roads:
+        if r.get('path'):continue
+        x,y,w,h=r['rect'];name=r['file']
+        if name in street_files:
+            tile=asset('cobble-large' if name=='street-main' else 'cobble-small')
+        else:tile=asset(name)
+        tile=tint(tile,r.get('tone'));im.alpha_composite(phase(tile,x,y,w,h),(x,y))
+    # Repaint each intersection from one complete field in global phase.
+    for i,r in enumerate(pavement):
+        x,y,w,h=r['rect']
+        for s in pavement[i+1:]:
+            xx,yy,ww,hh=s['rect'];l,t=max(x,xx),max(y,yy);rr,bb=min(x+w,xx+ww),min(y+h,yy+hh)
+            if l<rr and t<bb and not (r.get('path') or s.get('path')):
+                tone='gate-route' if 'gate-route' in (r.get('tone'),s.get('tone')) else None
+                im.paste(phase(tint(asset('cobble-large'),tone),l,t,rr-l,bb-t),(l,t))
+    for r in roads:
+        if r['file'] not in street_files:continue
+        x,y,w,h=r['rect'];k=3 if r['file']=='lane' else 4;tile=asset(r['file'])
+        if r.get('horizontal'):
+            tile=tile.transpose(Image.Transpose.ROTATE_90)
+            for xx in range(x,x+w):
+                for sy,dy,other in ((0,y,y-1),(tile.height-k,y+h-k,y+h)):
+                    if not at(xx,other):im.paste(tile.crop((xx%tile.width,sy,xx%tile.width+1,sy+k)),(xx,dy))
+        else:
+            for yy in range(y,y+h):
+                for sx,dx,other in ((0,x,x-1),(tile.width-k,x+w-k,x+w)):
+                    if not at(other,yy):im.paste(tile.crop((sx,yy%48,sx+k,yy%48+1)),(dx,yy))
+    # The gate interior is a complete kerbed drawing, not a world-wrapped
+    # cobble field. Match Part D's local origin in both axes, after generic
+    # kerbs so they cannot overwrite its edges. Preserve road order: the
+    # interior repeats vertically, then the one-off threshold covers its foot.
+    for r in roads:
+        if not r.get('path'):continue
+        x,y,w,h=r['rect'];tile=Image.open(ART/r['path']).convert('RGBA')
+        im.alpha_composite(repeat(tint(tile,r.get('tone')),(w,h)),(x,y))
+    return im
+
+
+@lru_cache(maxsize=1)
+def asset_path_grass():return Image.open(ASSETS.parent/'grass-base.png').convert('RGBA')
+
+
+def e_prepare(layout):
+    layout['e_ground']=True;layout['junction_file']='cobble-large';layout['kerb_turns']=[]
+    for r in layout['roads']:
+        if r['file']=='street-junction':r['file']='cobble-large'
+    return layout
+
+
+def e_yard(layout,b):
+    """A48px fenced rear strip belongs to each1/2-cell frontage."""
+    a,_=build_c(b['spec']);x,y,w=b['x'],b['base']-a.height-48,a.width
+    if y<480:return
+    # Keep wall-service pockets and market access clear. A half-width rear
+    # strip is sufficient beside a pocket; no garden paint covers a route.
+    for rx,ry,rw,rh in layout.get('clear_routes',[]):
+        if y<ry+rh and y+48>ry and x<rx+rw and x+w>rx:
+            if x<rx+rw<=x+48:x+=48;w-=48
+            elif x+48<=rx<x+w:w=48
+    box=[x,y,w,48];layout.setdefault('gardens',[]).append(box);b['yard']=box
+    for xx in range(x,x+w,48):layout['props'].append(dict(file='fence-0',x=xx,base=y+24,owner=box))
+    layout['props'].append(dict(file='yard-'+str((x//48)%4),x=x,base=y+48,owner=box))
+
+
+def e_market_repairs(m):
+    # Eight mounted signs, on full two-cell shops with the right door clear.
+    m['lots']=[b for b in m['lots'] if int(b['id'].rsplit('-',1)[1]) not in (1,2,6,7,9,10)]
+    trades=('smith','baker','apothecary','cobbler','inn','scribe','tailor','butcher')
+    for row,base in enumerate((864,1392)):
+        for i,(x,floors) in enumerate(zip((528,624,720,864),(3,2,3,5) if row==0 else (2,3,2,5))):
+            key='rich' if i==3 else 'market';s=e_spec(key,floors,(i+row)%3)
+            s['ground_file']='ground-shop-v1-w2-c0'
+            s['overlays']=[dict(file='sign-'+trades[row*4+i],x=0,y=(floors-2)*48+16)]
+            m['lots'].append(dict(id='trade-'+trades[row*4+i],x=x,base=base,spec=s,footprint=[x,base-96,96,96],entrance=[x+78,base],trade=trades[row*4+i]))
+    for i,(x,floors) in enumerate(zip((528,624,720,864),(1,1,1,5))):
+        s=e_spec('rich' if i==3 else 'market',floors,i%3)
+        if i<3:s['roof_file']='roof-'+('flat' if i==1 else 'ridge')+'-w2-c0';s['roof']='flat' if i==1 else 'ridge'
+        m['lots'].append(dict(id='south-house-'+str(i),x=x,base=1920,spec=s,footprint=[x,1824,96,96]))
+    # A west return closes the poor block and casts onto the north-south road.
+    m['lots'].append(dict(id='west-return',x=96,base=912,spec=dict(view='side',depth=1,width=1,floors=1)))
+    m['lots'][-1]['spec']=make_spec(1,2,'door',1,0,'ridge')
+    for p in m['props']:
+        if p['file']=='guildhall':p['x']=240;p['footprint'][0]=240;p['entrance'][0]=336;p['overhang'][0]=240
+        if p['file']=='market-cross':p['x']=816;p['footprint'][0]=816
+        if p['file']=='shrine':p.update(x=408,base=1008,footprint=[408,960,48,48],cast_east=True)
+        if p['file']=='cart':p.update(x=1120,base=1488,owner=[1104,1440,96,48])
+    # Strong, continuous cooler gate route against a warmer lighter square.
+    for r in m['roads']:
+        if r['file']=='street-junction':r['tone']='square'
+        if r['rect'][0]==984 and not r.get('path'):r['tone']='gate-route'
+    for base in (864,1392):m['roads'].append(dict(file='cobble-large',rect=[528,base,456,48],tone='square'))
+    for b in m['lots']:e_yard(m,b)
+    m['features']['yards']='Every new trade/residential frontage has a fenced48px rear strip; adjoining rows plus west return enclose blocks, with48px passages at x816.'
+    m['features']['trades']='All8 unscaled64x72 signs mounted over left goods bays of96px shop fronts; right doors and approaches stay clear.'
+    m['features']['hierarchy']='Slate-value main route continues from the gate; full-height civic east shade and5-storey main-street houses cast onto individual segments.'
+    return e_prepare(m)
+
+
+def e_layouts():
+    old=c_layouts();l=old['L-block'];lots=[]
+    # Divide inherited three-cell facades into complete 2+1 cell drawings.
+    for b in l['lots']:
+        b=json.loads(json.dumps(b));s=b['spec']
+        if s.get('width')==3:
+            for dx,w in [(0,2),(96,1)]:
+                n=json.loads(json.dumps(b));n['id']+=f'-split{w}';n['x']+=dx;n['spec']['width']=w
+                n['spec'].pop('roof_overlays',None);lots.append(n)
+        else:lots.append(b)
+    l['lots']=lots
+    for b in lots:
+        if b['id']=='north-4':b['spec']=e_spec('market',1,1)
+        if b['id']=='east-shop':
+            b['spec']=e_spec('craft',1);b['spec']['roof_file']='roof-ridge-w2-c0';b['spec']['roof_colour']=0
+        b['footprint']=[b['x'],b['base']-96,48*b['spec'].get('width',2),96]
+    l['plot_depth_cells']=[1,2];l['features']['districts']='market inn and craft lane; unchanged A/B/C volume contract'
+    # Overhead line owns the reserved passage, not either neighbouring lot.
+    e_overlay(l,'washing-line',288,272,[288,240,96,48],overhead=True)
+    for file,x,base,lot in [('barrel',522,320,[480,288,96,48]),('crate',488,320,[480,288,96,48]),('cat',266,328,[240,288,48,48]),('district-craft-drying-rack',480,264,[480,216,96,72])]:e_overlay(l,file,x,base,lot)
+    # Main market keeps the approved civic/wall anchors and clear gate route.
+    market=d_market();market['features']['proxies']='None; A/B/C/D/E production drawings. Round15 comparison only.'
+    market['features']['districts']='temple north churchyard; rich square/main-street houses; market south; craft east; poor west edge'
+    market['features']['wedge']='one-cell stepped west and south setbacks form wedge blocks at the district edges'
+    for b in market['lots']:
+        idx=int(b['id'].rsplit('-',1)[1]);key={0:'poor',1:'rich',3:'rich',4:'craft',6:'market',9:'market',10:'poor'}.get(idx)
+        if key:
+            floors=4 if idx==1 else 3 if idx==3 else 2 if idx in (4,9) else 1
+            b['spec']=e_spec(key,floors,1 if idx==9 else 0)
+            if idx==1:b['spec']['overlays']=[dict(file='district-rich-banner',x=72,y=8)]
+        b['footprint']=[b['x'],b['base']-96,96,96]
+    additions=[
+      ('district-temple-candles',392,1432,[384,1368,48,72]),
+
+      ('district-craft-drying-rack',1112,1312,[1104,1248,96,96]),
+      ('cart',840,1760,[840,1680,96,96]),
+      ('barrel',916,1730,[912,1680,48,96]),('crate',920,1760,[912,1680,48,96]),
+      ('district-market-scales',808,1532,[792,1488,48,48]),
+      ('pigeon',828,1620,[816,1584,48,48]),('cat',96,1376,[96,1344,48,48]),
+      ('district-poor-shed',48,1440,[0,1344,144,96]),
+      ('washing-line',0,1400,[0,1344,96,96]),
+      ('chimney-smoke',556,1064,[528,1056,96,240]),
+      ('forge-smoke',1140,1056,[1104,1008,96,240])]
+    # Smoke is placed within its owner's painted volume above a B chimney.
+    additions=[a for a in additions if a[0] not in ('chimney-smoke','forge-smoke')]
+    for f,x,b,lot in additions:e_overlay(market,f,x,b,lot,overhead=f=='washing-line')
+    market['roads'].append(dict(file='mud-edge',rect=[0,1392,144,48]))
+    heights=old['height-test']
+    for i,b in enumerate(heights['lots'][:4]):
+        if b['spec'].get('width')==3:
+            s=b['spec'];s['width']=2;s['district']='trade-test';s['variant']=1
+            # The larger sign hangs from the second-floor beam over the
+            # goods bay. The right-hand entrance remains unobstructed.
+            s['overlays']=[dict(file='sign-baker' if i==0 else 'sign-smith',x=0,y=168)]
+            if 'east_receiver' in b:b['east_receiver'][0]=b['x']+96
+        elif i==1:
+            b['x']=144;b['east_receiver'][0]=192
+    heights['features']['firewall']='4px masonry returns with original B coping/flashing; all fronts now1–2cells'
+    # A sign at the L's eastern workshop gives this compact test an
+    # actual mounted trade too, with its doorway on the unobstructed right.
+    for b in l['lots']:
+        if b['id']=='east-shop':
+            b['spec']=make_spec(2,2,'shop',1,0,'ridge');b['spec']['overlays']=[dict(file='sign-smith',x=0,y=16)]
+    return {'L-block':e_prepare(l),'market':e_market_repairs(market),'height-test':e_prepare(heights)}
+
+
+def e_district_layout(key):
+    """Each district repeats the circulation test with native 1/2-cell lots.
+
+    Roads bend, widen at setbacks, form T/dead-end contacts and a stair-step
+    wedge. Painted roof overhangs are separate from two-cell lot footprints.
+    """
+    layout=dict(size=[768,864],roads=[
+      dict(file='street-main',rect=[0,384,384,96],horizontal=True),
+      dict(file='street-side',rect=[384,384,384,48],horizontal=True),
+      dict(file='street-side',rect=[336,0,48,384]),
+      dict(file='street-main',rect=[288,480,96,144]),
+      dict(file='street-side',rect=[336,624,48,192]),
+      dict(file='street-side',rect=[0,816,384,48],horizontal=True),
+      dict(file='street-main',rect=[384,768,384,96],horizontal=True),
+      dict(file='street-side',rect=[576,624,48,144]),
+      dict(file='street-junction',rect=[288,480,48,144]),
+      dict(file='street-junction',rect=[288,576,96,48])],lots=[],props=[],clear_routes=[[336,0,48,816],[0,384,384,96],[576,624,48,144]],gardens=[],features=dict(district=key,T=[7,8],bent=[7,10],dead_end=[12,13],wedge='stepped rear edge at x480/528/576',width_runs_max_cells=8,wall_colours_max=2,roof_colours=1))
+    for i,(x,base) in enumerate([(0,384),(96,384),(192,384),(384,384),(480,384),(672,384),(0,816),(96,816),(192,816),(384,768),(480,624),(672,768)]):
+        floors=([3,4,5,3,4,3,4,3,4,3,3,4][i] if key=='rich' else [1,2,1,2,1,2,2,1,2,1,2,1][i])
+        s=e_spec(key,floors,i%3)
+        if i==3 and key=='craft':
+            s['roof_overlays']=[dict(file='chimney-0',x=8,y=50),dict(file='forge-smoke',x=6,y=8)]
+        if i==3 and key=='market':s['roof_overlays']=[dict(file='chimney-0',x=8,y=50),dict(file='chimney-smoke',x=8,y=8)]
+        layout['lots'].append(dict(id=f'{key}-{i}',x=x,base=base,spec=s,footprint=[x,base-96,96,96],entrance=[x+72,base]))
+    # Native back gardens are deliberate; street gaps are not roof holes.
+    for x in (0,96,192,384,672):
+        layout['gardens'].append([x,480,96,96]);layout['props'].append(dict(file='fence-0',x=x,base=504))
+        layout['props'].append(dict(file='yard-'+str((x//96)%4),x=x+48,base=552))
+    layout['props'].append(dict(file='yard-2',x=240,base=576,cast_east=True,owner=[240,528,48,48]))
+    owner=[384,480,96,96]
+    prop={'market':'district-market-scales','temple':'district-temple-candles','craft':'district-craft-drying-rack','rich':'district-rich-banner','poor':'district-poor-shed'}[key]
+    if key=='rich':layout['lots'][3]['spec']['overlays']=[dict(file='district-rich-banner',x=72,y=8)]
+    else:e_overlay(layout,prop,384,568,owner)
+    e_overlay(layout,'washing-line',120,616,[120,576,96,48],overhead=True)
+    e_overlay(layout,'cat',260,604,[240,576,48,48])
+    if key=='poor':
+        layout['roads'].append(dict(file='mud-edge',rect=[0,576,288,48]))
+        layout['roads'].append(dict(file='lane',rect=[96,480,24,144]))
+        layout['props']=[p for p in layout['props'] if not (p['file']=='fence-0' and p['x']==96)]
+        e_overlay(layout,'barrel',72,604,[48,576,48,48],cast_east=True)
+    # Close the wedge's eastern return and put actual walls beside each road.
+    for b in layout['lots']:
+        if b['x']==192:
+            b['x']=240;b['footprint'][0]=240;b['entrance'][0]=312
+        if b['id']==key+'-10':
+            # Keep the roof's north edge fixed, shorten the court frontage
+            # by one storey, and expose a full48px court before the return.
+            b['base']=576;b['footprint'][1]=480;b['entrance'][1]=576
+            b['spec']=e_spec(key,1,1)
+            b['spec']['roof_file']=f'district-{key}-roof-w2';b['spec']['roof']='ridge'
+    s=e_spec(key,1,2)
+    s['roof_file']=f'district-{key}-roof-w2';s['roof']='ridge'
+    layout['lots'].append(dict(id=key+'-wedge-return',x=480,base=768,spec=s,footprint=[480,672,96,96],entrance=[552,768]))
+    # The porch and courtyard arch both face a paved court, connected to
+    # the side lane without requiring a roof cutaway to see the approach.
+    layout['roads'].append(dict(file='cobble-large',rect=[480,576,96,48]))
+    for r in layout['roads']:
+        if r['rect']==[576,624,48,144]:r['rect']=[576,576,48,192]
+    layout['clear_routes'].extend([[480,576,144,48]])
+    layout['clear_routes'].append([384,384,384,48])
+    layout['gardens'].append([384,576,96,48])
+    for x in (384,432):layout['props'].append(dict(file='fence-0',x=x,base=600))
+    layout['features']['wedge']='Southern return closes the stepped block; a deliberate96x48 paved entrance court separates the northern frontage and joins the eastern48px side lane.'
+    layout['features']['washing']='Owned passage at x120..216,y576..624; no shed crosses the shirt/trousers/supports.'
+    if key=='rich':
+        # Tall southern properties need more projected roof space than poor
+        # cottages: move their baseline, keeping the owned washing yard clear.
+        layout['size'][1]=1008
+        for b in layout['lots']:
+            if b['base']==816:
+                b['base']+=144;b['footprint'][1]+=144;b['entrance'][1]+=144
+        for r in layout['roads']:
+            if r['rect']==[0,816,384,48]:r['rect'][1]=960
+            if r['rect']==[336,624,48,192]:r['rect'][3]=336
+        layout['clear_routes'][0]=[336,0,48,960]
+    layout['lots']=neighbours(layout['lots'])
+    return e_prepare(layout)
+
+
+def e_entrance_approaches(layout):
+    """Audit every declared entrance against final opaque building/prop paint.
+
+    A roof over a physically open route still counts as hidden here. These
+    scenes require fully visible48x48 approaches, not unproved cutaways.
+    """
+    size=tuple(layout['size']);mask=Image.new('L',size)
+    for b in layout.get('lots',[]):
+        a,_=build_c(b['spec']);layer=Image.new('L',size)
+        layer.paste(a.getchannel('A'),(b['x'],b['base']-a.height));mask=ImageChops.lighter(mask,layer)
+    for p in layout.get('props',[]):
+        a=Image.open(ART/p['path']).convert('RGBA') if p.get('path') else asset(p['file'])
+        layer=Image.new('L',size);layer.paste(a.getchannel('A'),(p['x'],p['base']-a.height));mask=ImageChops.lighter(mask,layer)
+    if layout.get('joined_l'):
+        p=layout['joined_l'];a=joined_l_roof(p.get('colour',0));layer=Image.new('L',size)
+        layer.paste(a.getchannel('A'),(p['x'],p['y']));mask=ImageChops.lighter(mask,layer)
+    records=[]
+    for b in layout.get('lots',[])+layout.get('props',[]):
+        if not b.get('entrance'):continue
+        x,y=b['entrance'];box=[x-24,y,48,48]
+        blocked=sum(v>0 for v in mask.crop((x-24,y,x+24,y+48)).get_flattened_data())
+        inside=0<=x-24 and x+24<=size[0] and 0<=y and y+48<=size[1]
+        records.append(dict(id=b.get('id',b.get('file')),rect=box,blocked_pixels=blocked,inside_canvas=inside))
+    return records
+
+
+def e_save(im,name,**metadata):
+    info=PngImagePlugin.PngInfo()
+    for k,v in metadata.items():info.add_text(k,json.dumps(v,sort_keys=True))
+    im.save(REVIEW/f'r17-E-{name}.png',pnginfo=info)
+
+
+def e_compare(im,name):
+    refs=[('Round15 / literal1x','round15-street.png'),('Current town / literal1x,24px displayed cells','current-town.png')]
+    refs=[(t,Image.open(ART/'reference/r17'/f).convert('RGBA')) for t,f in refs]
+    for scale in (1,3):
+        a=im.resize((im.width*scale,im.height*scale),NEAREST)
+        sheet=Image.new('RGBA',(a.width+max(r.width for _,r in refs)+48,max(a.height+70,sum(r.height+40 for _,r in refs)+30)),(35,39,34,255));d=ImageDraw.Draw(sheet)
+        d.text((12,10),f'Round17 E | {name} | {scale}x nearest neighbour',fill='white');sheet.alpha_composite(a,(12,34));y=12
+        for title,r in refs:d.text((a.width+36,y),title,fill='white');sheet.alpha_composite(r,(a.width+36,y+22));y+=r.height+40
+        d.text((12,a.height+44),'Native A/B/C/D/E. Round15 comparison only. Saved-art review.',fill='white');e_save(sheet,f'critic-{name}-comparison-{scale}x',SceneScale=scale,ReferencesScale=1)
+
+
+def e_main():
+    parser=argparse.ArgumentParser(description='Round17 E native critic and per-file reviews')
+    parser.add_argument('--no-sheets',action='store_true');parser.add_argument('--part',choices=['C','D','E'],default='E');args=parser.parse_args()
+    if args.part!='E':
+        import sys
+        sys.argv=[sys.argv[0]]+(['--no-sheets'] if args.no_sheets else [])+(['--part','C'] if args.part=='C' else [])
+        return d_main()
+    layouts=e_layouts()
+    for key in E_DISTRICTS:layouts['district-'+key]=e_district_layout(key)
+    placements={}
+    for name,layout in layouts.items():
+        layout['junction_file']='cobble-large'
+        for road in layout['roads']:
+            if road['file']=='street-junction':road['file']='cobble-large'
+        layout['entrance_approaches']=e_entrance_approaches(layout)
+        for approach in layout['entrance_approaches']:
+            if approach['blocked_pixels'] or not approach['inside_canvas']:
+                raise ValueError(('hidden entrance approach',name,approach))
+        im,records=c_render(layout);placements[name]=records
+        for scale in (1,3):e_save(im.resize((im.width*scale,im.height*scale),NEAREST),f'critic-{name}-{scale}x',Layout=layout,Placements=records)
+        e_save(im.convert('L').convert('RGBA'),f'critic-{name}-squint-1x');e_compare(im,name)
+    (REVIEW/'r17-E-scenes.json').write_text(json.dumps(layouts,indent=2));(REVIEW/'r17-E-placements.json').write_text(json.dumps(placements,indent=2))
+    if not args.no_sheets:
+        import importlib.util
+        sp=importlib.util.spec_from_file_location('e_reviews',REVIEW/'r17-E-review.py');mod=importlib.util.module_from_spec(sp);sp.loader.exec_module(mod);mod.run()
+    print('Saved Part E scenes, comparisons and squints.')
+
+if __name__=='__main__':e_main()

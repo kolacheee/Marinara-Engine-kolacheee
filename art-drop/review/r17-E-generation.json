@@ -1,0 +1,637 @@
+[
+  {
+    "id": "street-main-a",
+    "size": [
+      96,
+      48
+    ],
+    "kind": "road",
+    "prompt": "Draw ONE axis-aligned rectangular medieval cobblestone MAIN STREET tile, native96px wide48px high, exactly 2:1 width/height. Road runs north-south. Full square edges, NOT perspective trapezoid. Left/right edges have 3px raised sandstone kerb, next to it 2px darker recessed gutter, middle86px low-contrast warm-grey stone cobbles about10x6 native pixels in regular staggered courses, very quiet grout only slightly darker. NO bottom/top border so courses continue beyond edges. Light top-left, coherent subtly shaded top faces. All paving same native pixel density as town house. Whole rectangle on pure magenta margin. No scattered stones or flecks, no vegetation, no ornaments. Large crisp pixel-art drawing, flat subdued grey-beige ramps. Must stay quieter than buildings. Asset only no labels.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-ecddc298-d642-4619-b26b-2419ecbe1472.png",
+    "source": "r17-E-source-street-main-a.png",
+    "selected": false,
+    "selection_reason": "Rejected in favour of C complete courses"
+  },
+  {
+    "id": "street-main-b",
+    "size": [
+      96,
+      48
+    ],
+    "kind": "road",
+    "prompt": "Draw ONE rectangular 2:1 north-south street tile intended96x48 native. Both vertical sides have2px pale stone raised kerb plus2px charcoal gutter. Fill with 12x6px squared cobbles in aligned brick bond, FOUR paired row courses filling48px height, very low contrast beige-grey stones with no texture and NO curved corners. No top or bottom border, repeatable. Pure magenta margin. Ultra calm background, NOT frontal masonry wall; seen directly from above. Single production pixel-art sprite for Marinara medieval RPG. Large drawing on perfectly solid #FF00FF magenta with small blank margin. High 3/4 town-house view: front horizontal, visible top and short right plane, NOT diamond isometric. Square native pixels, calm broad clusters, top-left light, one native pixel dark brown outline #2b281d. Warm sandstone/timber, muted colours matching fantasy-house-2. No text, labels, grid, gradients, blur, soft shadow, specks, noise, scratches or ground island. Output only one asset, generously large.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-35eeeda2-b68b-4fb9-abda-735f3f656b37.png",
+    "source": "r17-E-source-street-main-b.png",
+    "selected": false,
+    "selection_reason": "Rejected: subject drift to house"
+  },
+  {
+    "id": "street-side",
+    "size": [
+      48,
+      48
+    ],
+    "kind": "road",
+    "prompt": "Draw ONE square north-south side street tile intended48x48 native. Both vertical edges have2px pale raised stone kerbs plus2px dark recessed gutters. Middle40px: small6x4px squared grey beige cobbles with very low contrast grout in running bond, calm flat fields, no texture. No top/bottom border. Absolutely square rectangle on magenta margin, orthographic top-down, repeating path surface. Single production pixel-art sprite for Marinara medieval RPG. Large drawing on perfectly solid #FF00FF magenta with small blank margin. High 3/4 town-house view: front horizontal, visible top and short right plane, NOT diamond isometric. Square native pixels, calm broad clusters, top-left light, one native pixel dark brown outline #2b281d. Warm sandstone/timber, muted colours matching fantasy-house-2. No text, labels, grid, gradients, blur, soft shadow, specks, noise, scratches or ground island. Output only one asset, generously large.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-f708d7d8-582a-4048-ae0c-a5bb11417f1e.png",
+    "source": "r17-E-source-street-side.png",
+    "selected": false,
+    "selection_reason": "Rejected: subject drift to house"
+  },
+  {
+    "id": "street-main-c",
+    "size": [
+      96,
+      48
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a rectangular 2:1 COBBLESTONE ROAD SURFACE, 96x48 native, seen straight from above. Not a building. North-south road. Vertical 2px stone kerbs and2px dark gutters at left/right,12x6px large squared muted GREY cobbles with low contrast grout in staggered rows. No top/bottom border. Completely square edges, no perspective taper. Render this one paving rectangle filling the image with tiny magenta margin.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-24ac3fc5-d11f-4a96-a944-72f34f127c4a.png",
+    "source": "r17-E-source-street-main-c.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "street-side-b",
+    "size": [
+      48,
+      48
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a SQUARE cobblestone ROAD SURFACE intended48x48 pixels. NOT a building. Top-down orthographic; no perspective. Left and right2px raised pale stone kerbs, next2px dark gutter. Middle40px small6x4px low contrast grey cobbles. No top/bottom border, only straight full square edges. Magenta margin outside square.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-eb1b966b-27f3-46fa-a7df-de76667a81cf.png",
+    "source": "r17-E-source-street-side-b.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "lane",
+    "size": [
+      24,
+      48
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE narrow north-south alley lane_joined path, intended24x48 native aspect1:2. Straight square edges, no rounded corners. Both edges1px sandstone kerb, next2px dark gutter. Middle18px pale grey-beige little6x4 squared cobbles, running bond. Light lane significantly brighter than building shadow. No top/bottom border. Absolutely rectangular top-down surface, no perspective taper, no texture. Pure magenta outside.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-99f1f285-6663-4271-be3c-5e50efa095a1.png",
+    "source": "r17-E-source-lane.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "mud-edge",
+    "size": [
+      48,
+      48
+    ],
+    "kind": "mud",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE square-grid muddy verge OVERLAY intended48x48 native. Connected horizontal strip of compact dark earth along LOWER edge, broad angular tread/rut clusters and three embedded squared stones, stepped rectilinear northern boundary occupying lower half, top half pure magenta. Continues left and right with flat full-height brown bottom edge, no rounded ends. No tiny debris, no noise, no loose specks, only5 earthy colours, top-left light. Magenta empty area.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-c48fd6ed-b547-4e74-8f8c-349ad9f4c0fc.png",
+    "source": "r17-E-source-mud-edge.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "sign-smith",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval SMITH TRADE SIGN intended32x40 native pixels. a heavy steel ANVIL silhouette with horizontal horn, on a clipped-corner dark charcoal iron plaque, brass rim. Anvil fills most board, no crossed tiny tools. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-bdaf1aa9-8773-40f5-b673-ef4882273233.png",
+    "source": "r17-E-source-sign-smith.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-baker",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval BAKER TRADE SIGN intended32x40 native pixels. one large GOLDEN BREAD LOAF with three diagonal cream score marks, plaque itself broad bread-loaf silhouette with ochre crust border. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-72c2f272-6af3-454b-9dc6-f532f563d6a6.png",
+    "source": "r17-E-source-sign-baker.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-apothecary",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval APOTHECARY TRADE SIGN intended32x40 native pixels. one large luminous green glass POTION BOTTLE with a cork and square shoulder, on a tall shield-shaped deep GREEN board; no skull, no text. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-2906df25-1fdd-440b-95cb-a05d4f18ef5f.png",
+    "source": "r17-E-source-sign-apothecary.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-cobbler",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval COBBLER TRADE SIGN intended32x40 native pixels. one oversized RED-BROWN BOOT silhouette, heel and upturned toe clearly separated, the plaque itself is boot-shaped with cream edge. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-1f899747-2cb2-4dbb-b823-2d5715b84212.png",
+    "source": "r17-E-source-sign-cobbler.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-inn",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval INN TRADE SIGN intended32x40 native pixels. one huge GOLDEN TANKARD with visible square handle and cream froth, on a broad dark OXBLOOD red octagonal plaque. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-1114f45b-3c3d-4ba7-984e-fe5393ab8e00.png",
+    "source": "r17-E-source-sign-inn.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-scribe",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval SCRIBE TRADE SIGN intended32x40 native pixels. one large diagonal IVORY QUILL, pointed nib visibly meeting a dark ink pot, on a tall dark INDIGO rectangular scroll-shaped board. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-8b98e08f-e492-407d-a772-dd02d68f26a8.png",
+    "source": "r17-E-source-sign-scribe.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-tailor",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval TAILOR TRADE SIGN intended32x40 native pixels. one very large open SILVER SCISSORS, TWO handle loops and two blades as clear silhouette, on a TEAL diamond-shaped board. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-2bd9a751-9103-46d7-a41a-c69bdcd75b84.png",
+    "source": "r17-E-source-sign-tailor.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "sign-butcher",
+    "size": [
+      64,
+      72
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE hanging medieval BUTCHER TRADE SIGN intended32x40 native pixels. one large ivory CLEAVER with brown handle and single rectangular blade, on dark RED rectangular board with notched top. Black iron bracket at upper left connected to two short hanging links. Board symbol about24px across and immediately identifiable at native1x. Thick enough simple silhouette, no tiny details, NO lettering, no surrounding shop. Whole hanging sign fills canvas, magenta outside. Slight visible thickness on right edge, top-left highlight.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-ad4ffdbd-f704-4536-81d7-b7b4c89481e8.png",
+    "source": "r17-E-source-sign-butcher.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests",
+    "original_requested_size": [
+      32,
+      40
+    ],
+    "registration_revision": "Final native canvas is twice the largest Round15 sign (32x36); original large image-tool painting reduced again, not nearest-neighbour enlarged."
+  },
+  {
+    "id": "inn-front-a",
+    "size": [
+      96,
+      48
+    ],
+    "kind": "facade",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE modular INN GROUND FLOOR facade,96x48 native pixels aspect2:1. NO roof cap, NO upper storey. Exactly rectangular horizontal top course and bottom plinth, square corners. Wide dark wooden PORCH with shallow projecting flat canopy left half, TWO substantial posts, recessed warm lit entrance20x30 native with lantern and stone step. Large hanging tankard sign above porch. RIGHT half has tall open masonry courtyard ARCH30px wide: bright grey paving visibly continues to garden/daylight through it, dark arch soffit and thick stone right return show depth. Stone ground floor, muted red porch valance, warm timber. High3/4 town view see plinth/porch canopy TOP planes, horizontal front. Tiny magenta outer margin. Complete facade fills rectangle.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-3c56f10b-bd5e-4203-83bc-a630dffa1679.png",
+    "source": "r17-E-source-inn-front-a.png",
+    "selected": false,
+    "selection_reason": "B has a clearer entrance and open courtyard passage"
+  },
+  {
+    "id": "inn-front-b",
+    "size": [
+      96,
+      48
+    ],
+    "kind": "facade",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE rectangular96x48 native INN GROUND FLOOR MODULE ONLY. No upper storey, no roof cap. Warm grey ashlar and dark oak porch with flat deep red canopy left60%, recessed open door under porch, lantern and lit step, big tankard sign. Right40% is a full-height OPEN COURTYARD PASSAGE through deep stone ARCH, unmistakable pale cobbles receding toward sunlit green court beyond; not closed door. Top and bottom straight48px modular courses, full square footprint. Front horizontal, visible top surfaces on canopy/plinth; strong thin shadow beneath. Broad masses and large opening, no small decoration. Two-cell wide, one-cell tall architectural slice on magenta.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-156b4c1a-53b3-4294-92cd-41792513ff6c.png",
+    "source": "r17-E-source-inn-front-b.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "washing-line",
+    "size": [
+      96,
+      32
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE washing line spanning96x32 native pixels, two thin timber attachment posts at edges with a slightly sagging brown rope, THREE large garments hanging: cream sheet, muted blue tunic, cream trousers. Square pixel cut edges, ample clear magenta below, no ground. Clothes occupy upper24px, bottom of each clearly separated. Purposeful medieval lane overlay, high3/4 view, white top-left lighting.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-470f91c4-a4bd-4234-a4d5-05ef6c741942.png",
+    "source": "r17-E-source-washing-line.png",
+    "selected": false,
+    "selection_reason": "B preserves a connected rope at native size"
+  },
+  {
+    "id": "barrel",
+    "size": [
+      24,
+      28
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE medieval oak barrel standing upright,24x28native, visible oval TOP face from above and shaded right side. Three broad iron hoops, only5 broad timber staves, no scratches, no loose objects, calm brown clusters, thin dark outline. Magenta outside.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-92f1e1bc-e965-48b1-bd83-40e374b68d79.png",
+    "source": "r17-E-source-barrel.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "crate",
+    "size": [
+      24,
+      24
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE square wooden goods crate24x24native in high3/4 view front horizontal, top plane visible, short shaded right return. Sturdy diagonal cross brace front, honey oak planks,5 colours, no grain noise, no ground or clutter. Square-grid crate, not diamond isometric.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-978ce375-865a-459e-95db-191be25ae675.png",
+    "source": "r17-E-source-crate.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "cart",
+    "size": [
+      48,
+      48
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE medieval two-wheel handcart48x48native, high3/4 view front horizontal. Large open rectangular wooden bed, two clear dark wheels on sides, two short pulling shafts toward lower right. Carry two cream sacks and one brown barrel as big shapes. Show deep top interior. No ground, no tiny clutter.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-d374cd06-422f-4d57-8a0c-b6135d93fef8.png",
+    "source": "r17-E-source-cart.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "chimney-smoke",
+    "size": [
+      24,
+      48
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE narrow chimney-smoke overlay intended24x48 native, a single connected rising ribbon of PALE WARM GREY smoke drifting slightly right, just THREE angular tapering curls, chunky stepped square-pixel contour and2 flat grey shades. Hard edges. Thin base at bottom centre to sit over chimney. NO chimney or building, no fuzzy cloud blobs, no transparency gradients, no fog, no detached wisps. Pure magenta outside.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-273b39cd-2e20-4408-8a0c-352e797aba76.png",
+    "source": "r17-E-source-chimney-smoke.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "forge-smoke",
+    "size": [
+      32,
+      48
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE forge smoke overlay intended32x48native, a connected dark charcoal rising angular ribbon bending right with TWO hooked curls and tapered narrow base.4 flat warm grey shades, crisp stepped pixel silhouette, no smooth clouds, no fog/haze, no detached specks, no chimney, no flames. Pure magenta background.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-5394a535-ce22-4d8e-992f-ece5529cb7c8.png",
+    "source": "r17-E-source-forge-smoke.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "cat",
+    "size": [
+      20,
+      20
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE small ginger CAT sitting sideways facing left in high3/4 RPG view,20x20native. Clear triangular ears, pale muzzle, upright chest, curled tail connected around paws. Big orange/tan clusters,1px dark outline, no whisker noise, no ground. Animal clearly cat at tiny size.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-3db12454-e0ce-4e4a-afac-71fa0e41083d.png",
+    "source": "r17-E-source-cat.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "pigeon",
+    "size": [
+      16,
+      16
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE tiny grey PIGEON standing side view facing left, top/back slightly visible.16x16native. Small head, short beak, large grey folded wing, dark teal neck patch, connected red feet, no detached specks, no ground. Simple chunky identifiable bird silhouette.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-3588a169-9b1a-4721-aa81-460afe22e872.png",
+    "source": "r17-E-source-pigeon.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "washing-line-b",
+    "size": [
+      96,
+      32
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE simple washing line ONLY. Wide horizontal3:1, intended96x32native pixels. Thick strong continuous brown rope at least TWO native pixels wide spanning between two vertical edge posts. Rope visible along ENTIRE width above clothes. Hanging THREE large blocky cloth items: square cream sheet, muted blue tunic, cream trousers. Few fold bands, no thin details. Keep all pieces connected to thick rope; no ground.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-2f284736-2515-488c-bd70-b28dad7cef8e.png",
+    "source": "r17-E-source-washing-line-b.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-market-scales",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE brass merchant balance scale standing on a small square wooden plinth,32x32native. Thick T-shaped beam with two broad shallow gold pans attached by sturdy short chains, cream weights on left pan. High3/4 front horizontal, top visible, simple recognizable silhouette. No counter or scene.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-45007cdd-36dd-4117-acdd-6780d61f4e0c.png",
+    "source": "r17-E-source-district-market-scales.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-temple-candles",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE small temple votive altar prop32x32native: square pale limestone plinth with visible top plane, THREE large cream pillar candles of uneven heights standing on it with tiny connected orange flames, restrained carved sun symbol front. High3/4 view, front horizontal, no religious text, no ground.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-8dacf8e3-3b57-4843-b4f2-1b968d48bc3e.png",
+    "source": "r17-E-source-district-temple-candles.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-craft-drying-rack",
+    "size": [
+      48,
+      48
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE medieval dyer drying rack48x48native. Stout wooden frame on two trestle feet, horizontal top rail, TWO broad pieces of dyed fabric hanging separately: muted blue and muted burgundy red with clear large folds. Deep top and shaded right planes, front mostly horizontal, calm large masses. No scene or ground, no other objects.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-ebff76bb-4160-4f0f-ab76-f32077273399.png",
+    "source": "r17-E-source-district-craft-drying-rack.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-rich-banner",
+    "size": [
+      24,
+      48
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE rich district heraldic wall banner24x48native: short horizontal brass rail, hanging deep slate-blue textile with broad gold trim and ONE large pale gold diamond emblem, split pointed foot. A few broad folds, thin dark outline. Top-left light, no lettering or building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-f8be0fbb-83ae-4622-8348-6bfac26e48e7.png",
+    "source": "r17-E-source-district-rich-banner.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-poor-shed",
+    "size": [
+      48,
+      48
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE low poor-quarter garden SHED48x48native. High3/4 view horizontal front, large brown thatch lean-to roof seen from above occupies half height, grey timber plank wall, single dim closed patched plank door, small squat footprint and visible right return. A few broad straw bundles not thin line noise. No ground island. Square-grid footprint with square edges.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-34fc2912-01b3-42e2-92b7-4fe09c952d50.png",
+    "source": "r17-E-source-district-poor-shed.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-poor-shutter",
+    "size": [
+      24,
+      24
+    ],
+    "kind": "prop",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE pair of closed patched wooden WINDOW SHUTTERS24x24native, dark recessed frame, weathered grey-brown planks, a broad diagonal repair board, one lit top sill. Straight square rectangle, no crumbling edges, no texture noise. Overlay only no wall.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-708cc8e6-3a2c-40c4-9d0d-133313589bc4.png",
+    "source": "r17-E-source-district-poor-shutter.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-poor-roof",
+    "size": [
+      96,
+      96
+    ],
+    "kind": "roof",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE square96x96 native modular THATCH ROOF CAP, NO building or walls. High3/4 town view, front eave horizontal across entire bottom, ridge across top, deep receding roof plane seen from above. Broad horizontal straw-bundle courses, lit warm tan left and shaded brown right,1px dark outline, square corners at all four edges with no magenta holes. No loose straw or tiny lines, no chimney. Flat whole96x96 square on magenta margin, matching 2cell wide2cell deep cap.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-3d62def1-8adb-4638-87db-b405859534df.png",
+    "source": "r17-E-source-district-poor-roof.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "cobble-large-patch",
+    "size": [
+      24,
+      12
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a rectangular 2:1 COBBLESTONE ROAD SURFACE, 96x48 native, seen straight from above. Not a building. North-south road. Vertical 2px stone kerbs and2px dark gutters at left/right,12x6px large squared muted GREY cobbles with low contrast grout in staggered rows. No top/bottom border. Completely square edges, no perspective taper. Render this one paving rectangle filling the image with tiny magenta margin.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-24ac3fc5-d11f-4a96-a944-72f34f127c4a.png",
+    "source": "r17-E-source-street-main-c.png",
+    "parent": "street-main-c",
+    "crop": [
+      283,
+      129,
+      716,
+      354
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "main-kerb-left",
+    "size": [
+      4,
+      12
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a rectangular 2:1 COBBLESTONE ROAD SURFACE, 96x48 native, seen straight from above. Not a building. North-south road. Vertical 2px stone kerbs and2px dark gutters at left/right,12x6px large squared muted GREY cobbles with low contrast grout in staggered rows. No top/bottom border. Completely square edges, no perspective taper. Render this one paving rectangle filling the image with tiny magenta margin.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-24ac3fc5-d11f-4a96-a944-72f34f127c4a.png",
+    "source": "r17-E-source-street-main-c.png",
+    "parent": "street-main-c",
+    "crop": [
+      17,
+      129,
+      76,
+      354
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "main-kerb-right",
+    "size": [
+      4,
+      12
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a rectangular 2:1 COBBLESTONE ROAD SURFACE, 96x48 native, seen straight from above. Not a building. North-south road. Vertical 2px stone kerbs and2px dark gutters at left/right,12x6px large squared muted GREY cobbles with low contrast grout in staggered rows. No top/bottom border. Completely square edges, no perspective taper. Render this one paving rectangle filling the image with tiny magenta margin.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-24ac3fc5-d11f-4a96-a944-72f34f127c4a.png",
+    "source": "r17-E-source-street-main-c.png",
+    "parent": "street-main-c",
+    "crop": [
+      1699,
+      129,
+      1757,
+      354
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "cobble-small-patch",
+    "size": [
+      12,
+      8
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a SQUARE cobblestone ROAD SURFACE intended48x48 pixels. NOT a building. Top-down orthographic; no perspective. Left and right2px raised pale stone kerbs, next2px dark gutter. Middle40px small6x4px low contrast grey cobbles. No top/bottom border, only straight full square edges. Magenta margin outside square.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-24ac3fc5-d11f-4a96-a944-72f34f127c4a.png",
+    "source": "r17-E-source-street-main-c.png",
+    "parent": "street-main-c",
+    "crop": [
+      283,
+      129,
+      716,
+      354
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "side-kerb-left",
+    "size": [
+      4,
+      8
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a SQUARE cobblestone ROAD SURFACE intended48x48 pixels. NOT a building. Top-down orthographic; no perspective. Left and right2px raised pale stone kerbs, next2px dark gutter. Middle40px small6x4px low contrast grey cobbles. No top/bottom border, only straight full square edges. Magenta margin outside square.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-eb1b966b-27f3-46fa-a7df-de76667a81cf.png",
+    "source": "r17-E-source-street-side-b.png",
+    "parent": "street-side-b",
+    "crop": [
+      50,
+      149,
+      155,
+      326
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "side-kerb-right",
+    "size": [
+      4,
+      8
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. ONLY a SQUARE cobblestone ROAD SURFACE intended48x48 pixels. NOT a building. Top-down orthographic; no perspective. Left and right2px raised pale stone kerbs, next2px dark gutter. Middle40px small6x4px low contrast grey cobbles. No top/bottom border, only straight full square edges. Magenta margin outside square.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-eb1b966b-27f3-46fa-a7df-de76667a81cf.png",
+    "source": "r17-E-source-street-side-b.png",
+    "parent": "street-side-b",
+    "crop": [
+      1099,
+      149,
+      1204,
+      326
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "lane-patch",
+    "size": [
+      24,
+      8
+    ],
+    "kind": "road",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONE narrow north-south alley lane_joined path, intended24x48 native aspect1:2. Straight square edges, no rounded corners. Both edges1px sandstone kerb, next2px dark gutter. Middle18px pale grey-beige little6x4 squared cobbles, running bond. Light lane significantly brighter than building shadow. No top/bottom border. Absolutely rectangular top-down surface, no perspective taper, no texture. Pure magenta outside.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-99f1f285-6663-4271-be3c-5e50efa095a1.png",
+    "source": "r17-E-source-lane.png",
+    "parent": "lane",
+    "crop": [
+      205,
+      0,
+      684,
+      116
+    ],
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-poor-roof-b",
+    "size": [
+      96,
+      96
+    ],
+    "kind": "roof",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONLY ONE square96x96 native THATCH ROOF CAP, no walls. High3/4 view from above, broad central ridge atTOP and deep front slope ending at horizontal eave atBOTTOM, square rectangular footprint completely filled corner-to-corner. Broad bundled dark tawny straw courses, slightly worn two broad repair patches tied with dark ropes. FOUR large rows of bundles, no thin straw noise. Straight top edge, no tips or transparent notches. Warm top-left light, dark right plane. All square edges, magenta tiny outside margin.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-03aacfad-34dd-4273-9edc-45b034c49c18.png",
+    "source": "r17-E-source-district-poor-roof-b.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  },
+  {
+    "id": "district-poor-roof-c",
+    "size": [
+      96,
+      96
+    ],
+    "kind": "roof",
+    "prompt": "Large crisp pixel art on flat pure #FF00FF magenta. Flat colour clusters, top-left light, thin dark-brown outline, muted medieval palette, no text or labels, no noise or specks, no blur or gradients. Draw ONLY the object requested below, never a house or whole building unless explicitly requested. Draw ONLY ONE square96x96 native thatch ROOF CAP with hip atRIGHT, roof only no walls. Deep view from above, front eave horizontal alongbottom, ridge atupperleft, broad lit left2/3 roof and darker RIGHT hip plane; both made of wide straw bundles and thick ridge roll. Calm weathered brown/tan. Full opaque square square-corner rectangle, no transparent notches on top, no protrusions or loose straw. No thin texture, no noise. Magenta margin.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e90f-3d7d-74f1-98d4-fdb1d709c6b0/exec-dd7225d0-3956-4ebd-90b6-157443e156a5.png",
+    "source": "r17-E-source-district-poor-roof-c.png",
+    "selected": true,
+    "selection_reason": "Selected native drawing or crop donor; exact use is in files/processing manifests"
+  }
+]

@@ -1,0 +1,1675 @@
+{
+  "cobble-large": {
+    "size": [
+      48,
+      48
+    ],
+    "source": "critic1:cobble-large-b",
+    "kind": "ground",
+    "colours": 6,
+    "opaque": 2304,
+    "alpha": [
+      255
+    ],
+    "sha256": "2c644744a9fea7215c158d48d1d8be053d5a613ab2e6607d18cd808e59177059",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "cobble": [
+      12,
+      6
+    ],
+    "painted_field": [
+      48,
+      48
+    ]
+  },
+  "cobble-small": {
+    "size": [
+      48,
+      48
+    ],
+    "source": [
+      "critic2:cobble-small-a",
+      "whole painted field"
+    ],
+    "kind": "ground",
+    "colours": 6,
+    "opaque": 2304,
+    "alpha": [
+      255
+    ],
+    "sha256": "08933e2adf548bc76b2d9b1b9be4327172ab1b8d2d0f57f56b89cf5a23b9689d",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "cobble": [
+      6,
+      4
+    ],
+    "painted_field": [
+      48,
+      48
+    ]
+  },
+  "street-main": {
+    "size": [
+      96,
+      48
+    ],
+    "source": [
+      "critic1:cobble-large-b",
+      "retained drawn kerb/gutter"
+    ],
+    "kind": "ground",
+    "colours": 10,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "defbe7a150331da17db00970afc3e40b929d1d0f527b5707652f0508f5912247",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "kerb_gutter_width": 4,
+    "painted_field": [
+      48,
+      48
+    ]
+  },
+  "street-side": {
+    "size": [
+      48,
+      48
+    ],
+    "source": [
+      "critic2:cobble-small-a",
+      "retained kerbs/gutters"
+    ],
+    "kind": "ground",
+    "colours": 11,
+    "opaque": 2304,
+    "alpha": [
+      255
+    ],
+    "sha256": "69e455cb8acafb56151db5c552b59f6bdd92f0ff05b8aebcbbef85fb273a58bf",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "kerb_gutter_width": 4,
+    "painted_field": [
+      48,
+      48
+    ]
+  },
+  "lane": {
+    "size": [
+      24,
+      48
+    ],
+    "source": [
+      "critic2:cobble-small-a",
+      "retained kerbs/gutters"
+    ],
+    "kind": "ground",
+    "colours": 9,
+    "opaque": 1152,
+    "alpha": [
+      255
+    ],
+    "sha256": "e0c998f2c0fc09db6c2c74870bd761d25aa3384649d42b98b1be3789e83430ea",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "style": "lane_joined",
+    "kerb_gutter_width": 3,
+    "painted_field": [
+      48,
+      48
+    ]
+  },
+  "mud-edge": {
+    "size": [
+      48,
+      48
+    ],
+    "source": "critic1:mud-edge-b",
+    "kind": "ground-overlay",
+    "colours": 7,
+    "opaque": 346,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "ac936cad6a08cc269cb40640f01654725db0bc42ecd73b8678f3a698260a2f94",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "painted_field": [
+      48,
+      48
+    ]
+  },
+  "sign-smith": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-smith",
+    "kind": "prop",
+    "colours": 21,
+    "opaque": 2889,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "4ead333e26f4bd761b8d06a26686e0e4f034b5d94e57dd523260593a9a93b0c8",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-baker": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-baker",
+    "kind": "prop",
+    "colours": 16,
+    "opaque": 2586,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "0d78e8a77687218e6377fa50d709ae873e876d906f0151fd7981c0cf353445da",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-apothecary": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-apothecary",
+    "kind": "prop",
+    "colours": 25,
+    "opaque": 2255,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "8aa1ea2fa37ba439324873af7d5101567864705cd685e9a979f651df19dc8699",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-cobbler": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-cobbler",
+    "kind": "prop",
+    "colours": 17,
+    "opaque": 2249,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "d390cac62fb715951523870f87695ef3ba0d6e98d52900f146851bebed0f1b9a",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-inn": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-inn",
+    "kind": "prop",
+    "colours": 21,
+    "opaque": 2842,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "9aad45fae452417b6d2f78308687c0bded90fba96329ec94ff4588b7fae0369e",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-scribe": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-scribe",
+    "kind": "prop",
+    "colours": 16,
+    "opaque": 2598,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "d8f38eb16911c92986765ace45ffbf513fc251396fa3f1dbfeb6de3345e66cc7",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-tailor": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-tailor",
+    "kind": "prop",
+    "colours": 13,
+    "opaque": 2190,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "31718aa05d18b6e60ab4b5f3d509d158af9aa5e2811021d0a1ee2f2d8502973a",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "sign-butcher": {
+    "size": [
+      64,
+      72
+    ],
+    "source": "sign-butcher",
+    "kind": "prop",
+    "colours": 23,
+    "opaque": 2731,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "ba22dcf0ba83d7d96883153cc4fabb126933235bb877eb633ac8f8a36c395122",
+    "anchor_bottom_left": [
+      0,
+      72
+    ],
+    "season": "summer"
+  },
+  "barrel": {
+    "size": [
+      24,
+      28
+    ],
+    "source": "barrel",
+    "kind": "prop",
+    "colours": 13,
+    "opaque": 445,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "d6d681223ccce4386e14409b40b223f3aa12b12a3bed0451b0e62ccda85e162e",
+    "anchor_bottom_left": [
+      0,
+      28
+    ],
+    "season": "summer"
+  },
+  "crate": {
+    "size": [
+      24,
+      24
+    ],
+    "source": "crate",
+    "kind": "prop",
+    "colours": 7,
+    "opaque": 468,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "4a6dab02b0cffa84a67c95c3afb06d00a8f42bc807eecd3d7e39940152ca510c",
+    "anchor_bottom_left": [
+      0,
+      24
+    ],
+    "season": "summer"
+  },
+  "cart": {
+    "size": [
+      48,
+      48
+    ],
+    "source": "cart",
+    "kind": "prop",
+    "colours": 21,
+    "opaque": 954,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "f46c3ec4bd353e21bec72aafb6ff4919311cbf461b4a47b0dee9efa282300610",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer"
+  },
+  "chimney-smoke": {
+    "size": [
+      24,
+      48
+    ],
+    "source": "chimney-smoke",
+    "kind": "overlay",
+    "colours": 4,
+    "opaque": 356,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "1401b631d63f872c6e75eff5bd3fde1ddd43173b6418a3ea39306ff5754619dd",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer"
+  },
+  "forge-smoke": {
+    "size": [
+      32,
+      48
+    ],
+    "source": "forge-smoke",
+    "kind": "overlay",
+    "colours": 8,
+    "opaque": 434,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "381ada8241cd7cc776f54b58107b6479367dd9b48565a3c45489ebf496182f27",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer"
+  },
+  "cat": {
+    "size": [
+      20,
+      20
+    ],
+    "source": "cat",
+    "kind": "prop",
+    "colours": 7,
+    "opaque": 119,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "cfcdfa784480db3bb8ae4ed344aa57c0b5102393b9c960d47a8f3a9bb54c2b44",
+    "anchor_bottom_left": [
+      0,
+      20
+    ],
+    "season": "summer"
+  },
+  "pigeon": {
+    "size": [
+      16,
+      16
+    ],
+    "source": "pigeon",
+    "kind": "prop",
+    "colours": 8,
+    "opaque": 99,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "f2802db1d2262ede7d88a233d03d1b7c310fe250d173a2f655641bb308ff307c",
+    "anchor_bottom_left": [
+      0,
+      16
+    ],
+    "season": "summer"
+  },
+  "district-market-scales": {
+    "size": [
+      32,
+      32
+    ],
+    "source": "district-market-scales",
+    "kind": "prop",
+    "colours": 16,
+    "opaque": 340,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "83bc09afc2683f4656796a47c898a9fc889d80fb44e91d1d2ebe9c871b042952",
+    "anchor_bottom_left": [
+      0,
+      32
+    ],
+    "season": "summer"
+  },
+  "district-temple-candles": {
+    "size": [
+      32,
+      32
+    ],
+    "source": "critic1:candles-a",
+    "kind": "prop",
+    "colours": 13,
+    "opaque": 519,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "3d056de9a3b63d15fbb6178f0ad80d5235fb1e41d106908307181eae5e858416",
+    "anchor_bottom_left": [
+      0,
+      32
+    ],
+    "season": "summer"
+  },
+  "district-craft-drying-rack": {
+    "size": [
+      48,
+      48
+    ],
+    "source": "district-craft-drying-rack",
+    "kind": "prop",
+    "colours": 17,
+    "opaque": 1057,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "dba592f4289b136a36a6b8e04f0da8ee6a8cf1efc96c0af88e0da63e5a7eba73",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer"
+  },
+  "district-rich-banner": {
+    "size": [
+      24,
+      48
+    ],
+    "source": "district-rich-banner",
+    "kind": "overlay",
+    "colours": 6,
+    "opaque": 621,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "164ba2776584da3ab60c28d2807943e2c5163f0ba5fea2f00a24b9a300fab3ba",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer"
+  },
+  "district-poor-shed": {
+    "size": [
+      48,
+      48
+    ],
+    "source": "district-poor-shed",
+    "kind": "prop",
+    "colours": 17,
+    "opaque": 1464,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "8b3868821571f4093b6b15d1e50c01e2f5f08095eddf04aa3f2891213bb173dc",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer"
+  },
+  "district-poor-shutter": {
+    "size": [
+      24,
+      24
+    ],
+    "source": "critic1:shutter-b",
+    "kind": "overlay",
+    "colours": 8,
+    "opaque": 466,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "2681b2cd4a088fcdcb49076d32f0623bab66f33c9fd8936791760cf9096d78db",
+    "anchor_bottom_left": [
+      0,
+      24
+    ],
+    "season": "summer"
+  },
+  "washing-line": {
+    "size": [
+      96,
+      32
+    ],
+    "source": "washing-line-b",
+    "kind": "overlay",
+    "colours": 19,
+    "opaque": 1784,
+    "alpha": [
+      0,
+      255
+    ],
+    "sha256": "aac8cb950b6d5059a79e63c256416e87bfd642a06c834adc17f9571b3ac6d2d3",
+    "anchor_bottom_left": [
+      0,
+      32
+    ],
+    "season": "summer"
+  },
+  "inn-front": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "critic1:tankard-a + retained inn",
+    "kind": "facade",
+    "colours": 35,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "78692c078e3347139bdecc4464923377c87a7edb044f173c6a7dd1fbbad7885c",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "emblem": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  "inn-front-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "critic1:tankard-a + retained inn",
+    "kind": "facade",
+    "colours": 35,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "78692c078e3347139bdecc4464923377c87a7edb044f173c6a7dd1fbbad7885c",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "emblem": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  "inn-front-w2-c0": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "critic1:tankard-a + retained inn",
+    "kind": "facade",
+    "colours": 35,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "78692c078e3347139bdecc4464923377c87a7edb044f173c6a7dd1fbbad7885c",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "emblem": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  "inn-front-w2-c1": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "critic1:tankard-a + retained inn",
+    "kind": "facade",
+    "colours": 36,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "6dcc2b38fcef0016fcf68e2e71912c2b67688ae89d5223fd10db4ad6980aab85",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "emblem": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  "inn-front-w2-c2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "critic1:tankard-a + retained inn",
+    "kind": "facade",
+    "colours": 36,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "7b28a54647353c5335bff783f06f9932c7f9bec71bd56788517b9d94a89f8389",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "emblem": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  "district-market-ground-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-shop-v2-w2-c0",
+    "kind": "facade",
+    "colours": 30,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "0df19d13437ef33d1f7ca197032040245bed9b0beca7410cec00285277e66dd8",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "market"
+  },
+  "district-market-storey-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-plaster-w2-c0",
+    "kind": "facade",
+    "colours": 18,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "b9c348c9127f4472db11de7570f9adf8e4e86011c67273ce2f685bbcc4196fd6",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "market"
+  },
+  "district-market-roof-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-ridge-w2-c0",
+    "kind": "roof",
+    "colours": 12,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "8543ab93dbcf68db5888c3ce2a794c8d9610d4f2119f19f8b4f7d106c4471d28",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "market"
+  },
+  "district-temple-ground-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-v2-w2-c0",
+    "kind": "facade",
+    "colours": 26,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "75ea41e4346171e928fa608ce6bf21405cc19a332cc553e3ad95124a5888df6a",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "temple"
+  },
+  "district-temple-storey-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-stone-w2-c0",
+    "kind": "facade",
+    "colours": 21,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "fcfc9ceb9f9ca38b2dbaa80d0e76f00922e985e9a428b8abb155b8d4e5a11d3e",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "temple"
+  },
+  "district-temple-roof-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-ridge-w2-c1",
+    "kind": "roof",
+    "colours": 12,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "35a1ce805ff79bf0adcb10de2e94e5af47e1e9f4b57cae1436a2c3dd2a79fb56",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "temple"
+  },
+  "district-craft-ground-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-work-v2-w2-c0",
+    "kind": "facade",
+    "colours": 26,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "330573b8f1aa0ac361734811d693b818b04495215a8630b1bb9cae73e24dc3b2",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "craft"
+  },
+  "district-craft-storey-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-timber-w2-c0",
+    "kind": "facade",
+    "colours": 13,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "301de43803703d770dbd2f36ce87e7eafe87eabdd9f5931e5a6555d8b4bbc67d",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "craft"
+  },
+  "district-craft-roof-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-ridge-w2-c2",
+    "kind": "roof",
+    "colours": 12,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "6d5f9e7e12f12ebf872676e8fe9f23fc93b9f08f12b4a61c081c6e1a3a381add",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "craft"
+  },
+  "district-rich-ground-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-v2-w2-c0",
+    "kind": "facade",
+    "colours": 26,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "1010b7b76c2acae129661d8908d9328ecf1c9feff9217cd64143afc05ff7dfc7",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "rich"
+  },
+  "district-rich-storey-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-stone-w2-c0",
+    "kind": "facade",
+    "colours": 21,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "26a618381decc81d5798888eba646f8df6c446195cb3f334b3d15aef192405d4",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "rich"
+  },
+  "district-rich-roof-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-ridge-w2-c1",
+    "kind": "roof",
+    "colours": 12,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "35a1ce805ff79bf0adcb10de2e94e5af47e1e9f4b57cae1436a2c3dd2a79fb56",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "rich"
+  },
+  "district-poor-ground-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-v2-w2-c0",
+    "kind": "facade",
+    "colours": 26,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "189079046a81b351d35ab5ef2ee7f70e132d10f44af474d34559677959d1fdc1",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "poor"
+  },
+  "district-poor-storey-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": [
+      "storey-plaster-w2-c0",
+      "critic1:shutter-b"
+    ],
+    "kind": "facade",
+    "colours": 19,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "14ca8784e32f02b6a729f870b9a74c2d6ad5ed79003689b5b4da0519085701ff",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "poor"
+  },
+  "district-poor-roof-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "district-poor-roof",
+    "kind": "roof",
+    "colours": 7,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "18401855d94f149f9056493911436147c6db701daa674d6e72e0d15906d08589",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "poor"
+  },
+  "district-market-ground-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-shop-w2-c0",
+    "kind": "facade",
+    "colours": 27,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "4d0991d6e81568b57433465c86bb5179fda447e35225f3cbb7df1a04c22e9105",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "market",
+    "layout": 1
+  },
+  "district-market-storey-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-timber-w2-c0",
+    "kind": "facade",
+    "colours": 13,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "e94baa95a6a3489ab15ca36105f2d790f517e948fc4f4f1c9b73db55aa85e1b2",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "market",
+    "layout": 1
+  },
+  "district-market-roof-v1-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-gable-w2-c0",
+    "kind": "roof",
+    "colours": 18,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "f71d9903ebc2c5b8f58fd65c0b8602e35998c2672138142bd4307c8a518ecd01",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "market",
+    "layout": 1
+  },
+  "district-market-ground-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-shop-v1-w2-c0",
+    "kind": "facade",
+    "colours": 29,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "a2ddfc4dc1cebf3a4c3c95206778b3b5239a7830a218589003ec4685090bfb32",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "market",
+    "layout": 2
+  },
+  "district-market-storey-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-oriel-w2-c0",
+    "kind": "facade",
+    "colours": 23,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "023a736f8d60704341dec58456d393b0bc5d3df089c1469efea52a4c6157a591",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "market",
+    "layout": 2
+  },
+  "district-market-roof-v2-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "source": "roof-hip-w2-c0",
+    "kind": "roof",
+    "colours": 11,
+    "opaque": 13824,
+    "alpha": [
+      255
+    ],
+    "sha256": "c142a159a0d9bda29b863cc21718ddc16b2ca6e4c94d5c1bd476ec926d9e2b63",
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "district": "market",
+    "layout": 2
+  },
+  "district-temple-ground-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-w2-c0",
+    "kind": "facade",
+    "colours": 23,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "7f8914c8809ca810e1217cd2161d2006a5679c06d70acf0601541ce69efd7cd8",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "temple",
+    "layout": 1
+  },
+  "district-temple-storey-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-timber-w2-c0",
+    "kind": "facade",
+    "colours": 13,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "0d4334a7ac06c5137b568322258d5cf57f8ef6df1099b6b91e4afefe1e00fe66",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "temple",
+    "layout": 1
+  },
+  "district-temple-roof-v1-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-gable-w2-c1",
+    "kind": "roof",
+    "colours": 18,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "5618c72d6237028b8bc832220a2b296f3e7d8924ce7fae2f5029cb41618b0809",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "temple",
+    "layout": 1
+  },
+  "district-temple-ground-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-v1-w2-c0",
+    "kind": "facade",
+    "colours": 28,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "a19793b6ac370b0826f782df8ed22f682685eab08d36f3738cf2e13b79fd8163",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "temple",
+    "layout": 2
+  },
+  "district-temple-storey-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-oriel-w2-c0",
+    "kind": "facade",
+    "colours": 23,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "38c968d8c36054d110e65c02f41ad9568674aed69551ebdfb8189b715b8a71bf",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "temple",
+    "layout": 2
+  },
+  "district-temple-roof-v2-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "source": "roof-hip-w2-c1",
+    "kind": "roof",
+    "colours": 11,
+    "opaque": 13824,
+    "alpha": [
+      255
+    ],
+    "sha256": "7e566883536aa6f0a1c5b48402cd39b34b93aa8b74ba77b1051b48760a5999ca",
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "district": "temple",
+    "layout": 2
+  },
+  "district-craft-ground-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-work-w2-c0",
+    "kind": "facade",
+    "colours": 27,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "b6a94d3b5e4ecfb8be812c66cb347547f9baeb575ab9366d5526c1d72ff1c790",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "craft",
+    "layout": 1
+  },
+  "district-craft-storey-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-timber-w2-c0",
+    "kind": "facade",
+    "colours": 13,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "301de43803703d770dbd2f36ce87e7eafe87eabdd9f5931e5a6555d8b4bbc67d",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "craft",
+    "layout": 1
+  },
+  "district-craft-roof-v1-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-gable-w2-c2",
+    "kind": "roof",
+    "colours": 18,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "4c1f5093c3495e4963185533655038fa704c5e7b7d9e69e564007472d5eb217e",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "craft",
+    "layout": 1
+  },
+  "district-craft-ground-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-work-v1-w2-c0",
+    "kind": "facade",
+    "colours": 27,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "eb98ebc7da991d51d9712408acd1925782dbea6a564863b8c70c8c7d23446807",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "craft",
+    "layout": 2
+  },
+  "district-craft-storey-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-oriel-w2-c0",
+    "kind": "facade",
+    "colours": 23,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "a83100ca27e6cd97969f4d977d852199439385e92f9b94579900aa491ec67fed",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "craft",
+    "layout": 2
+  },
+  "district-craft-roof-v2-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "source": "roof-hip-w2-c2",
+    "kind": "roof",
+    "colours": 11,
+    "opaque": 13824,
+    "alpha": [
+      255
+    ],
+    "sha256": "3eda1048c2cc3f67106dee2dd15375bf5cd9599bfdf0276c65e99af576d8ceec",
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "district": "craft",
+    "layout": 2
+  },
+  "district-rich-ground-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-w2-c0",
+    "kind": "facade",
+    "colours": 23,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "f81c3dcb86fe41aff98ba10a9e9e562512c53f13a212bb884b7cebd6946fbbf6",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "rich",
+    "layout": 1
+  },
+  "district-rich-storey-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-timber-w2-c0",
+    "kind": "facade",
+    "colours": 13,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "51bef4581a698974865dfe4baaafe160efb6baac9defdab57911ca9d67a6aa68",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "rich",
+    "layout": 1
+  },
+  "district-rich-roof-v1-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "roof-gable-w2-c1",
+    "kind": "roof",
+    "colours": 18,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "5618c72d6237028b8bc832220a2b296f3e7d8924ce7fae2f5029cb41618b0809",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "rich",
+    "layout": 1
+  },
+  "district-rich-ground-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "ground-door-v1-w2-c0",
+    "kind": "facade",
+    "colours": 28,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "67019ba05b5c1f79e2c19bd6c202b98ce13da6bc3f045ddfff82d1196ee99a01",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "rich",
+    "layout": 2
+  },
+  "district-rich-storey-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": "storey-oriel-w2-c0",
+    "kind": "facade",
+    "colours": 23,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "9d27dcb8f93d8d5b0b5e4854db835bf5b182a918ea77186098fc065ef76220e9",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "rich",
+    "layout": 2
+  },
+  "district-rich-roof-v2-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "source": "roof-hip-w2-c1",
+    "kind": "roof",
+    "colours": 11,
+    "opaque": 13824,
+    "alpha": [
+      255
+    ],
+    "sha256": "7e566883536aa6f0a1c5b48402cd39b34b93aa8b74ba77b1051b48760a5999ca",
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "district": "rich",
+    "layout": 2
+  },
+  "district-poor-ground-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": [
+      "ground-door-w2-c0",
+      "critic1:shutter-b"
+    ],
+    "kind": "facade",
+    "colours": 25,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "2961c07909bb65c42d006fa5c0a64069db083ad3f73c861454feed96a9baf8df",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "poor",
+    "layout": 1
+  },
+  "district-poor-storey-v1-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": [
+      "storey-timber-w2-c0",
+      "critic1:shutter-b"
+    ],
+    "kind": "facade",
+    "colours": 13,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "2ae4c71d7426ddf1ad2a165d296e07f851fb965a28494ba9e942ac7a540a615d",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "poor",
+    "layout": 1
+  },
+  "district-poor-roof-v1-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "district-poor-roof-b",
+    "kind": "roof",
+    "colours": 7,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "b1f6ca7912cf2a2bd3cd18fd9fbd21ac7b0c8c41af14fd2003e04e87775fecd1",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "poor",
+    "layout": 1
+  },
+  "district-poor-ground-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": [
+      "ground-door-v1-w2-c0",
+      "critic1:shutter-b"
+    ],
+    "kind": "facade",
+    "colours": 27,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "755956f8d4846ce38b564aac1b104772826e0c5391e538b8ee475cd45955c450",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "poor",
+    "layout": 2
+  },
+  "district-poor-storey-v2-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "source": [
+      "storey-oriel-w2-c0",
+      "critic1:shutter-b"
+    ],
+    "kind": "facade",
+    "colours": 22,
+    "opaque": 4608,
+    "alpha": [
+      255
+    ],
+    "sha256": "4dc401a1b46cd2df125e3d44d59ede25ac97e3e23716a548ad27bd26ba1b2d44",
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "district": "poor",
+    "layout": 2
+  },
+  "district-poor-roof-v2-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "source": "district-poor-roof-c",
+    "kind": "roof",
+    "colours": 7,
+    "opaque": 9216,
+    "alpha": [
+      255
+    ],
+    "sha256": "6fb2ff3e7a80b150629914962ff175e1573bba54137269da021324b406d3489f",
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "district": "poor",
+    "layout": 2
+  }
+}

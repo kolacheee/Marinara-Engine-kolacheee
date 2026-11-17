@@ -1,0 +1,10 @@
+{
+  "changed_production": [
+    "art-drop/out/city17/compose.py",
+    "art-drop/out/city17/street-side.png",
+    "art-drop/out/city17/lane.png",
+    "art-drop/out/city17/cobble-small.png"
+  ],
+  "changed_existing_count": 84,
+  "unexpected_changes": []
+}

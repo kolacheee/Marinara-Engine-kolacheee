@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cobble-large-a",
+    "source": "r17-E-critic1-source-cobble-large-a.png",
+    "prompt": "Use case: stylized-concept. Draw one production pixel-art paving tile as a LARGE 1024px painting on perfectly solid magenta #ff00ff, centered square fully painted field with a thin magenta margin. This will be reduced to 48x48 native pixels for a warm medieval fantasy town. Top-down quiet grey olive stone cobbles: approximately 4 to 5 stones across and 7 to 8 rows down, each about 10-12 native pixels wide and 5-7 high. Each stone individually drawn, square-edged but varied sizes, subtly staggered without a mechanical running brick bond. Broad flat painted masses, sparse shallow lit upper-left lips and lower-right shade. Only 5 muted olive-grey tones of CLOSE luminance. Mortar thin and low contrast, never a continuous loud grid. No tiny repeated motif, no regular notch on every stone, no texture specks or noise, no rounded corners, no gradients, no perspective, no grass, no objects. Entire 48x48-equivalent field must be individually composed; no internal period shorter than the tile. Opposite edges must tile seamlessly. Strict square chunky pixels, matching the paving beside the fantasy-house-2 reference. This is cobble-large variant A."
+  },
+  {
+    "id": "cobble-large-b",
+    "source": "r17-E-critic1-source-cobble-large-b.png",
+    "prompt": "Draw ONE large square pixel-art ground tile on flat solid magenta #FF00FF, with thin magenta margin. Native target 48x48 medieval fantasy town paving. A full unique field of about 30 LARGE cobbles: four or five across, seven rows high, mostly 10-12 by 6 native pixels. Squared rough-cut stone, variable widths and subtly staggered joints, no rounded rocks. Warm muted grey-olive. 5 flat close-value shades; bright top-left small lips, dark bottom-right narrow creases; predominantly calm broad flat faces. IMPORTANT almost hairline shallow mortar, no black grid, no repetitive brick bond, no same notch copied onto each stone, no noise or speckling. Lightest and darkest paving colours remain close, background should sit quietly beneath detailed timber houses. Straight square outer boundaries, full-bleed paint inside margin, seamless opposite edges with continuing stone masses. Avoid a dark enclosing frame. Strict chunky square pixels, no blur/gradients. Variant B, all stones individually drawn over the entire tile."
+  },
+  {
+    "id": "cobble-small-a",
+    "source": "r17-E-critic1-source-cobble-small-a.png",
+    "prompt": "One square production pixel-art medieval town SMALL COBBLE ground texture, large image on flat pure magenta #FF00FF with narrow magenta margin. Reduce target 48x48 native. Draw an ENTIRE unique square field of small squared worn cobbles, approximately 7 to 8 stones across and 10 to 12 down; stones roughly 5-7 native pixels wide by 4-5 high. Quiet muted warm grey-olive 5 close-value flat tones, minimal thin mortar (less than 20 percent area), thin top-left bevels and subtle dark lower edges. Vary stone sizes and grouped flat faces across whole field, break long mortar lines; not uniform bricks, not a fine net, no repeated nicks, no regular short motif. Square edges on the pixel grid, no rounded corners, no noise, no loose specks, no grass. Full bleed straight-edged square paint, seamless opposite edges, no border/frame, no perspective. Calm ground subordinate to detailed fantasy houses. Small-cobble variant A."
+  },
+  {
+    "id": "cobble-small-b",
+    "source": "r17-E-critic1-source-cobble-small-b.png",
+    "prompt": "Production pixel art texture: draw one complete unique square field of SMALL square-edged cobbles, surrounded by thin flat #ff00ff magenta margin. Native target 48x48. Approximately eight stones across and eleven rows down, each 5-7x4 native pixels. NO continuous mortar grid: some neighboring stones share close values and merge into broader painted groups, others have a single thin dark lower edge. Low contrast warm olive-grey with 5 flat tones. Mortar only around 12 percent of field. Top-left light. Broad clean flat faces, uneven varied squared sizes, subtly displaced rows, not rounded stones. No more detail than is readable at 48px; no noise/specks or identical repeated chips. Entire field independently composed. Seamless opposing edges, square outer edges, no frame. Calm pavement next to warm detailed medieval fantasy timber houses. Strict native-looking chunky square pixel steps, no curves, no gradient or blur. Variant B."
+  },
+  {
+    "id": "mud-edge-a",
+    "source": "r17-E-critic1-source-mud-edge-a.png",
+    "prompt": "Draw one pixel-art muddy ground-edge OVERLAY on perfectly solid magenta #FF00FF. Square canvas, native target48x48. ONLY the bottom quarter contains a low band of worn dark brown earth; upper three quarters empty magenta. Bottom edge perfectly straight horizontal, left and right edges meet at the same height to tile horizontally. Upper edge shallow irregular squared steps, varying gently between 8 and 13 native pixels deep across width, no diagonal waves, no humps or sawtooth, no pointed ochre tips. Broad connected flat earth masses, dark umber base with two close muted brown highlights, very restrained top-left light. No outlined stones, no wood fragments, no grass, no specks, no detached flecks, no smoothing. Medieval fantasy game ground transition. Coherent large painted patches with NO small repeating pattern, quiet and low. Strict square pixel grid. Variant A."
+  },
+  {
+    "id": "mud-edge-b",
+    "source": "r17-E-critic1-source-mud-edge-b.png",
+    "prompt": "ONE pixel-art ground transition overlay. Large square image, mostly solid pure magenta #FF00FF; a quiet strip of dark muted brown mud occupies only lowest 20 percent. 48x48 native equivalent: 8 to 11 pixels high. Flat bottom boundary, left/right edges matching for horizontal repeat, gently changing upper boundary made of long horizontal runs and one-pixel square steps. Not rocks, not wood, no triangle humps, no diagonal sawtooth waves. Three low-contrast umber flat colours, broad soil clusters, a few shallow horizontal compacted earth creases. Native square-pixel shapes, no dots, no dither, no grass, no gradient, no curved edges. Top-left restrained light, darker underside. Draw the ENTIRE width with no repeated internal pattern. Variant B for a medieval fantasy town muddy lane edge."
+  },
+  {
+    "id": "candles-a",
+    "source": "r17-E-critic1-source-candles-a.png",
+    "prompt": "Draw ONE tiny medieval RPG candle-group prop as a large pixel-art painting on perfectly solid magenta #FF00FF. Native canvas32x32. Three DISTINCT ivory wax candles side by side, heights varied, each body about6 native pixels wide, with2 pixels clear magenta separation. Each candle has visible squared elliptical top face with dark central wick and a small amber flame attached to wick. Thin dark brown one-native-pixel contour, top-left lighting, 4 cream/ochre wax tones. Tall candle left, short middle, medium right. Connected by a narrow dark bronze rectangular tray below, seen in high three-quarter view. Distinct vertical cylindrical bodies, not a cream mound or spire, no melting blob. Plain flat groups, no noisy wax spots, no haze/glow, no cast shadow outside tray, no text. Whole prop centered and fills most of image. Crisp square pixel steps. Variant A."
+  },
+  {
+    "id": "candles-b",
+    "source": "r17-E-critic1-source-candles-b.png",
+    "prompt": "ONE simple medieval pixel-art prop, large drawing on solid magenta #FF00FF for reduction to32x32. TWO separate ivory wax candles on a plain rectangular bronze tray in high3/4 game view. Tall left candle and medium right candle, each about8 native pixels wide, generous4-native-pixel gap between bodies. Clearly visible top faces, dark wicks, small connected yellow flames. Cylindrical wax with straight vertical sides and squared pixel-step top/bottom faces. 1-native-pixel dark brown contour, warm cream lit left side, muted ochre right shade, top-left light. No large melted wax lump, no spires, no glow or haze, no specks, no ornament, no drips. Broad clean flat colour blocks. Image fills most of canvas with margin. Variant B."
+  },
+  {
+    "id": "shutter-a",
+    "source": "r17-E-critic1-source-shutter-a.png",
+    "prompt": "Draw one clearly PATCHED WOODEN WINDOW SHUTTER pixel-art overlay, large image on pure solid magenta #FF00FF. Square native24x24 canvas. Front view with slight lit top/left thickness matching medieval fantasy house pixel art. Three broad vertical dark honey-brown wooden planks, separated by two clean dark seams. One obvious lighter replacement repair board runs diagonally across the lower half, fastened by two dark square nail heads. Two short dark iron strap hinges on left edge. Thin one-native-pixel dark brown outer contour, straight square silhouette, top-left light. Few flat colours, grouped wood areas, no dots/pinholes or noisy grain, no blank grey panel. No window frame or sill; just the shutter panel with magenta around it. Native-readable simple silhouette, fills most of canvas. Variant A."
+  },
+  {
+    "id": "shutter-b",
+    "source": "r17-E-critic1-source-shutter-b.png",
+    "prompt": "ONE patched medieval wooden shutter, large crisp pixel-art sprite on pure solid magenta #FF00FF. Native24x24 square. Three broad vertical weathered brown boards with two clear dark seams, one lighter horizontal replacement plank nailed across their middle. Two dark iron hinge straps on left. Square straight outer panel edges, thin one-native-pixel dark brown contour. Slight top/left lit thickness, top-left light. Use muted warm wood brown and tan, no grey blank plate. Flat grouped pixel colours and VERY simple board shapes readable when small. Only two intentional nails on the repair, no random dark dots, no grain noise, no rounded corners, no frame/window/sill, no text. Fill most of image with narrow magenta margin. Variant B."
+  },
+  {
+    "id": "tankard-a",
+    "source": "r17-E-critic1-source-tankard-a.png",
+    "prompt": "Draw ONE tiny tavern plaque emblem as a large pixel-art drawing on pure solid magenta #FF00FF. It will be registered to only14x16 native pixels inside a medieval inn porch. Rectangular dark oxblood RED plaque with thin dark brown square outline. CENTER: immediately recognisable golden beer TANKARD, simple broad rectangular amber body on LEFT and an OPEN square-loop handle on RIGHT, handle hole large and red like the plaque, clear pale ivory rim/foam across top. Very simple blocky icon, body at least5 native pixels wide, handle hole2x3 pixels. NO letters, NO F-like silhouette, NO elaborate wood grain, no chains/bracket, no gradients, no rounded plaque corners. Top-left light and one-pixel dark contour, 6 flat colours. Fill canvas with plaque and narrow magenta margin. Variant A."
+  },
+  {
+    "id": "tankard-b",
+    "source": "r17-E-critic1-source-tankard-b.png",
+    "prompt": "Single simple medieval inn emblem on a RECTANGULAR dark burgundy red plaque, drawn large pixel art on flat pure magenta #FF00FF background. Reduction target14x16 native pixels. Clear amber tankard: broad square mug body, obvious OPEN HANDLE LOOP to right with large burgundy2x3-pixel hole, ivory flat foam rim across top. Thin dark brown1px outline, small lit top-left edge and shaded right body, quiet flat colours, maximum7 colours. Tankard occupies most of plaque. No letters, no text, no F symbol, no bracket, no chain, no curved plaque corners, no gradient, no texture noise. Strict chunky native pixel steps, instantly nameable at very small size. Keep enough space for open handle. Variant B."
+  }
+]

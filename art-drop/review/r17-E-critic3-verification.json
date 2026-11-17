@@ -1,0 +1,165 @@
+{
+  "checks": 25,
+  "passed": 25,
+  "failures": [],
+  "protected_files": 2335,
+  "passing_E_PNGs": 78,
+  "results": [
+    {
+      "check": "destination-local gate and one-off threshold",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "test detects original world-phase regression",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market threshold keeps all original pixels and its vertical position",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "left outer kerb exact source pixels on every row 432\u2013575",
+      "passed": true,
+      "detail": {
+        "scene_box": [
+          984,
+          432,
+          988,
+          576
+        ]
+      }
+    },
+    {
+      "check": "right outer kerb exact source pixels on every row 432\u2013575",
+      "passed": true,
+      "detail": {
+        "scene_box": [
+          1076,
+          432,
+          1080,
+          576
+        ]
+      }
+    },
+    {
+      "check": "open paving exact source pixels on every row 432\u2013575",
+      "passed": true,
+      "detail": {
+        "scene_box": [
+          988,
+          432,
+          1076,
+          576
+        ]
+      }
+    },
+    {
+      "check": "former eight-column interior stripe exact source pixels on every row 432\u2013575",
+      "passed": true,
+      "detail": {
+        "scene_box": [
+          1052,
+          432,
+          1060,
+          576
+        ]
+      }
+    },
+    {
+      "check": "full 96px approach row 432 keeps local vertical phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full 96px approach row 480 keeps local vertical phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full 96px approach row 500 keeps local vertical phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full 96px approach row 528 keeps local vertical phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full 96px approach row 550 keeps local vertical phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full 96px approach row 575 keeps local vertical phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all market ground outside gate crops unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "L-block ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "height-test ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-market ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-temple ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-craft ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-rich ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor ground unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "final scene approach equals local drawing plus retained cast shade",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "portal and approach stay within clear 96px route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all other production files and both Part D gate crops byte-identical",
+      "passed": true,
+      "detail": {
+        "count": 2335,
+        "changed": []
+      }
+    },
+    {
+      "check": "all 78 passing Part E PNGs byte-identical",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "production_changes": [
+    "art-drop/out/city17/compose.py",
+    "art-drop/out/city17/inn-front-w2-c0.png",
+    "art-drop/out/city17/inn-front-w2-c1.png",
+    "art-drop/out/city17/inn-front-w2-c2.png",
+    "art-drop/out/city17/inn-front-w2.png",
+    "art-drop/out/city17/street-side.png",
+    "art-drop/out/city17/street-main.png",
+    "art-drop/out/city17/lane.png",
+    "art-drop/out/city17/mud-edge.png",
+    "art-drop/out/city17/cobble-large.png",
+    "art-drop/out/city17/cobble-small.png",
+    "art-drop/out/city17/district-temple-candles.png",
+    "art-drop/out/city17/district-poor-shutter.png",
+    "art-drop/out/city17/inn-front.png",
+    "art-drop/out/city17/district-poor-storey-w2.png",
+    "art-drop/out/city17/district-poor-ground-v1-w2.png",
+    "art-drop/out/city17/district-poor-storey-v1-w2.png",
+    "art-drop/out/city17/district-poor-ground-v2-w2.png",
+    "art-drop/out/city17/district-poor-storey-v2-w2.png"
+  ],
+  "production_changes_exactly_failed": true,
+  "unexpected_changed_files": [],
+  "passing_E_files": 60,
+  "passing_E_changed": [],
+  "new_source_drawings": 12
+}

@@ -1,0 +1,30 @@
+{
+  "scene": "market",
+  "crop": [
+    960,
+    384,
+    1128,
+    624
+  ],
+  "links": [
+    "r17-E-critic3-gate-comparison-1x.png",
+    "r17-E-critic3-gate-context-1x.png",
+    "r17-E-critic3-gate-comparison-4x.png",
+    "r17-E-critic3-gate-context-4x.png"
+  ],
+  "registration": "96x144 interior repeats from (984,192); threshold once at (984,423).",
+  "kerbs": [
+    [
+      984,
+      987
+    ],
+    [
+      1076,
+      1079
+    ]
+  ],
+  "former_stripe": [
+    1052,
+    1059
+  ]
+}

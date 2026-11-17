@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cobble-small-a",
+    "prompt": "Use case: stylized-concept. Asset type: one small-cobble ground texture painting for a 48x48 native pixel-art medieval town tile. Draw a complete perfectly square cobblestone field centered large on a flat solid magenta #FF00FF surround. The square is viewed directly from above, no perspective, no raised slab edges, no border or kerb. About 8 irregular staggered stones across and 10-12 rows down; each stone is a simple flat angular rectangular cluster 5-7 native pixels wide, 3-5 high. Quiet muted grey olive stone, low contrast fine dark mortar, restrained top-left highlight on EVERY INDIVIDUAL STONE and lower-right shadow on each individual stone. CRITICAL: perfectly even overall lighting and equal distribution of light/dark stones across the WHOLE SQUARE, especially the top eight and bottom eight native rows; no overall light direction across field, no bright upper band, no dark lower band, no gradients, no vignette, no large light/dark patches. Edge-to-edge seamless repeatable field with partial stones at square edges, no perimeter outline. Sharp square logical pixels, large simple shapes, no specks, no dithering, no moss, no noise, no rounded contours, no haze or blur. Square is an entire painted 48x48 design enlarged, not a tiny motif repeated. No text. Variant A.",
+    "source": "r17-E-critic2-source-cobble-small-a.png",
+    "tool": "built-in image_gen",
+    "selected": true
+  },
+  {
+    "id": "cobble-small-b",
+    "prompt": "Use case: stylized-concept. One hand-painted pixel-art small cobblestone seamless texture square for medieval town, to reduce to 48x48 native pixels. Center the square filling almost all of a large canvas, flat solid #FF00FF magenta outside the square only. Orthographic top-down square, completely flat field with clipped partial stones at all four edges, no border, no raised slab, no rim. Small squared cobbles about 6 pixels wide by 4 pixels high in slightly irregular staggered rows, about eight stones across twelve rows down. Narrow quiet mortar. Muted warm grey-olive palette, low contrast. Individually lit stone faces: one quiet top-left pixel edge, darker bottom-right pixel edge, simple broad face. Uniform colour distribution and mean brightness everywhere; top, bottom, centre and sides equally bright, no overarching lighting gradient, no pale band across top, no shadowed lower half, no horizontal striping. Same even overall exposure across every row. Balanced small-scale variation without broad pale/dark regions. Calm paving to sit behind dark-outlined fantasy houses. Rectangular angular stones with square logical pixels, no rounded pebble blobs, no noise, no dots or specks, no cracks, no moss, no vignette, no shading of the entire square, no blur, no dithering. Draw the whole field as unique paint, not a repeated miniature block. No labels or text. Variant B.",
+    "source": "r17-E-critic2-source-cobble-small-b.png",
+    "tool": "built-in image_gen",
+    "selected": false
+  }
+]

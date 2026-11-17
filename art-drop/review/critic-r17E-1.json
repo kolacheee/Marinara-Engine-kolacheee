@@ -1,0 +1,483 @@
+{
+  "part": "E",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "cobble-large",
+    "cobble-small",
+    "street-main",
+    "street-side",
+    "lane",
+    "mud-edge",
+    "district-temple-candles",
+    "district-poor-shutter",
+    "inn-front",
+    "inn-front-w2",
+    "inn-front-w2-c0",
+    "inn-front-w2-c1",
+    "inn-front-w2-c2",
+    "district-poor-storey-w2",
+    "district-poor-ground-v1-w2",
+    "district-poor-storey-v1-w2",
+    "district-poor-ground-v2-w2",
+    "district-poor-storey-v2-w2",
+    "compose.py"
+  ],
+  "files": {
+    "cobble-large": {
+      "status": "fail",
+      "problems": [
+        "The entire 48x48 field is a visibly repeated 24x12 two-course brick motif. Identical stepped nicks recur in the same position every second stone; the literal 3x3 repeat reads as mechanical brick wallpaper at 1x, rather than the town reference\u2019s painted cobbles.",
+        "Only three colours describe flat rectangular stones. Across the market this produces a continuous mortar grid that dominates the ground; the absence of a boundary discontinuity does not remove the visible repeat pattern."
+      ],
+      "fix": "Draw a full native-tile-equivalent field of quiet, individually grouped square-edged cobbles with broader, nonidentical painted masses. Keep the 48x48 tile, roughly 12x6 stone scale, restrained contrast and seamless opposite edges; do not rebuild the field from one tiny repeated pair of stones. Recheck literal 3x3 at 1x and 4x."
+    },
+    "cobble-small": {
+      "status": "fail",
+      "problems": [
+        "The 12x8 source period repeats across the whole 48x48 tile. Every tiny rectangular stone has essentially the same face and every other stone repeats the same notch. The 3x3 view is an obvious fine mesh at 1x.",
+        "Mortar occupies 864 of 2304 pixels (37.5%). This creates a busy, uniform screen pattern rather than quiet painted paving beside fantasy-house-2."
+      ],
+      "fix": "Redraw a full quiet small-cobble field with the intended approximately 6x4 stone scale, less dominant mortar and varied drawn stone clusters. Preserve square grid boundaries and seamless joins; reduce the painting by the established mode-sampling method."
+    },
+    "street-main": {
+      "status": "fail",
+      "problems": [
+        "The interior inherits the visibly repeating 24x12 cobble-large motif. At 1x the road is a flat brick grid; when rotated for east-west streets, the long identical vertical stones read like planking. See critic-r17E-1-L-block-1x.png and street-main-repeat-4x.png.",
+        "The required street-shadow test fails in its actual market use: street-main rectangles [984,528,96,336], [984,1056,96,336] and [984,1584,96,336] each receive zero cast-shadow pixels. A passing shadow total for the family elsewhere is insufficient."
+      ],
+      "fix": "Replace the interior with improved large painted cobbles, retain the 96x48 footprint and distinct kerb/gutter, and repair the receiving-surface/layout shadow placement in compose.py for every displayed street segment. Keep shadows as overlays, rather than baking uniform darkness into the street."
+    },
+    "street-side": {
+      "status": "fail",
+      "problems": [
+        "The interior repeats the same 12x8 small-cobble pattern, producing a dense mesh at 1x; kerb strips do not disguise that visible repeat.",
+        "The required street-shadow test fails in use: all five district studies have zero shadow pixels on [336,0,48,384], [336,624,48,192] and [576,624,48,144]. The market also leaves [144,768,48,240], [456,576,48,336] and [456,912,48,240] unshadowed."
+      ],
+      "fix": "Improve the small painted cobble field and keep the 48x48 square footprint, kerb and darker gutter. Adjust scene receivers/building placement so each street segment has actual cast shade; validate segments individually."
+    },
+    "lane": {
+      "status": "fail",
+      "problems": [
+        "The 24x48 lane repeats the same tiny small-cobble motif every 8 rows; in literal 3x3 it reads as a narrow mechanical mesh with repeated ruler-straight rails, not a quieter lane_joined surface.",
+        "This is a texture/readability failure, not a missing-shadow failure: the poor-quarter lane does receive 112 shadow pixels and remains lighter than that shade."
+      ],
+      "fix": "Redraw the lane paving with a quieter full-length arrangement of small painted stones and retain the 24px width, straight compatible lane_joined edges, narrow kerbs and dark gutters. Recheck it in the poor-quarter scene and as a literal repeat."
+    },
+    "mud-edge": {
+      "status": "fail",
+      "problems": [
+        "The lower band contains the same large diagonal brown hump twice inside one 48px tile, with a 24px horizontal period. The 3x3 repeat is an unmistakable sawtooth/diagonal ribbon.",
+        "At 1x and 8x the sharp ochre tips and repeated light nicks read as a row of identical rocks or wooden fragments, rather than a quiet worn muddy street edge. See critic-r17E-1-mud-edge-repeat-4x.png."
+      ],
+      "fix": "Redraw a low, irregular muddy transition with broad solid earth clusters and no repeated diagonal hump. Preserve seamless horizontal ends and hard transparency; retain the required square tile boundary without procedural noise or smoothing."
+    },
+    "sign-smith": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "barrel": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "crate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-smoke": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-smoke": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cat": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "pigeon": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-scales": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-candles": {
+      "status": "fail",
+      "problems": [
+        "At 1x the object reads as a single cream lump or miniature spire. The central tall peak and two side peaks merge into one silhouette; separate candle bodies, rims and wicks cannot be identified.",
+        "At 8x most of the lower half is one broad pale block, with indistinct internal patches rather than candle forms. It fails the no-blob/readability rule on both paving and grass."
+      ],
+      "fix": "Redraw two or three distinct candles with separated cylindrical bodies, readable top faces and small dark wicks or clear flames. Use a restrained warm ramp, one-pixel dark contour and top-left light; preserve the 32x32 canvas."
+    },
+    "district-craft-drying-rack": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-banner": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-shed": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-shutter": {
+      "status": "fail",
+      "problems": [
+        "The 24x24 overlay is a nearly featureless grey-brown plate. The scattered dark dots and tiny brown mark do not describe shutter boards, hinges or a repair patch at 1x.",
+        "At 4x/8x it still reads as a blank panel with blemishes. The brief specifically asks for patched shutters; a large opaque rectangle over a window does not communicate that."
+      ],
+      "fix": "Draw a recognisable wooden shutter with a few broad boards and one explicit nailed repair board or contrasting patch. Keep detail grouped, remove meaningless pinhole-like marks, and make a version that fits the receiving window recess without covering the sill."
+    },
+    "washing-line": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front": {
+      "status": "fail",
+      "problems": [
+        "The small red hanging plaque immediately right of the entrance (approximately x44\u201358, y19\u201334) contains an ambiguous ochre F-like mark. At exact 1x it cannot be named as a tankard; the 8x close-up does not reveal a clear mug body and open handle.",
+        "The porch and bright courtyard arch are readable, but the inn-specific tankard requirement is not met by this embedded emblem. All five two-cell inn exports share the same failed symbol."
+      ],
+      "fix": "Redraw the embedded emblem as a simple tankard with a broad body, a separated handle hole and a clear light rim/foam. Register it at a readable native size within the porch, without covering the door or courtyard arch; propagate it to all five named two-cell inn exports and preserve course rows."
+    },
+    "inn-front-w2": {
+      "status": "fail",
+      "problems": [
+        "The small red hanging plaque immediately right of the entrance (approximately x44\u201358, y19\u201334) contains an ambiguous ochre F-like mark. At exact 1x it cannot be named as a tankard; the 8x close-up does not reveal a clear mug body and open handle.",
+        "The porch and bright courtyard arch are readable, but the inn-specific tankard requirement is not met by this embedded emblem. All five two-cell inn exports share the same failed symbol."
+      ],
+      "fix": "Redraw the embedded emblem as a simple tankard with a broad body, a separated handle hole and a clear light rim/foam. Register it at a readable native size within the porch, without covering the door or courtyard arch; propagate it to all five named two-cell inn exports and preserve course rows."
+    },
+    "inn-front-w2-c0": {
+      "status": "fail",
+      "problems": [
+        "The small red hanging plaque immediately right of the entrance (approximately x44\u201358, y19\u201334) contains an ambiguous ochre F-like mark. At exact 1x it cannot be named as a tankard; the 8x close-up does not reveal a clear mug body and open handle.",
+        "The porch and bright courtyard arch are readable, but the inn-specific tankard requirement is not met by this embedded emblem. All five two-cell inn exports share the same failed symbol."
+      ],
+      "fix": "Redraw the embedded emblem as a simple tankard with a broad body, a separated handle hole and a clear light rim/foam. Register it at a readable native size within the porch, without covering the door or courtyard arch; propagate it to all five named two-cell inn exports and preserve course rows."
+    },
+    "inn-front-w2-c1": {
+      "status": "fail",
+      "problems": [
+        "The small red hanging plaque immediately right of the entrance (approximately x44\u201358, y19\u201334) contains an ambiguous ochre F-like mark. At exact 1x it cannot be named as a tankard; the 8x close-up does not reveal a clear mug body and open handle.",
+        "The porch and bright courtyard arch are readable, but the inn-specific tankard requirement is not met by this embedded emblem. All five two-cell inn exports share the same failed symbol."
+      ],
+      "fix": "Redraw the embedded emblem as a simple tankard with a broad body, a separated handle hole and a clear light rim/foam. Register it at a readable native size within the porch, without covering the door or courtyard arch; propagate it to all five named two-cell inn exports and preserve course rows."
+    },
+    "inn-front-w2-c2": {
+      "status": "fail",
+      "problems": [
+        "The small red hanging plaque immediately right of the entrance (approximately x44\u201358, y19\u201334) contains an ambiguous ochre F-like mark. At exact 1x it cannot be named as a tankard; the 8x close-up does not reveal a clear mug body and open handle.",
+        "The porch and bright courtyard arch are readable, but the inn-specific tankard requirement is not met by this embedded emblem. All five two-cell inn exports share the same failed symbol."
+      ],
+      "fix": "Redraw the embedded emblem as a simple tankard with a broad body, a separated handle hole and a clear light rim/foam. Register it at a readable native size within the porch, without covering the door or courtyard arch; propagate it to all five named two-cell inn exports and preserve course rows."
+    },
+    "district-market-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-storey-w2": {
+      "status": "fail",
+      "problems": [
+        "The 24x24 district-poor-shutter overlay at (12,10) inherits the failed blank-panel drawing. At 1x the intended patched shutter is an opaque grey rectangle, not a readable repaired wooden shutter."
+      ],
+      "fix": "Replace the failed shutter drawing, register it to this specific window opening, and retain the surrounding recess/frame/sill depth. Keep the 96x48 footprint, alpha and shared rows 0/47 unchanged; inspect the assembled poor house at 1x and 4x."
+    },
+    "district-poor-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-ground-v1-w2": {
+      "status": "fail",
+      "problems": [
+        "The 24x24 district-poor-shutter overlay at (58,10) inherits the failed blank-panel drawing. At 1x the intended patched shutter is an opaque grey rectangle, not a readable repaired wooden shutter."
+      ],
+      "fix": "Replace the failed shutter drawing, register it to this specific window opening, and retain the surrounding recess/frame/sill depth. Keep the 96x48 footprint, alpha and shared rows 0/47 unchanged; inspect the assembled poor house at 1x and 4x."
+    },
+    "district-poor-storey-v1-w2": {
+      "status": "fail",
+      "problems": [
+        "The 24x24 district-poor-shutter overlay at (12,10) inherits the failed blank-panel drawing. At 1x the intended patched shutter is an opaque grey rectangle, not a readable repaired wooden shutter.",
+        "The patch obscures the underlying window rather than following its framed opening; retain the frame, sill top and their depth when fitting the replacement."
+      ],
+      "fix": "Replace the failed shutter drawing, register it to this specific window opening, and retain the surrounding recess/frame/sill depth. Keep the 96x48 footprint, alpha and shared rows 0/47 unchanged; inspect the assembled poor house at 1x and 4x."
+    },
+    "district-poor-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-ground-v2-w2": {
+      "status": "fail",
+      "problems": [
+        "The 24x24 district-poor-shutter overlay at (12,10) inherits the failed blank-panel drawing. At 1x the intended patched shutter is an opaque grey rectangle, not a readable repaired wooden shutter.",
+        "The patch obscures the underlying window rather than following its framed opening; retain the frame, sill top and their depth when fitting the replacement."
+      ],
+      "fix": "Replace the failed shutter drawing, register it to this specific window opening, and retain the surrounding recess/frame/sill depth. Keep the 96x48 footprint, alpha and shared rows 0/47 unchanged; inspect the assembled poor house at 1x and 4x."
+    },
+    "district-poor-storey-v2-w2": {
+      "status": "fail",
+      "problems": [
+        "The 24x24 district-poor-shutter overlay at (36,10) inherits the failed blank-panel drawing. At 1x the intended patched shutter is an opaque grey rectangle, not a readable repaired wooden shutter.",
+        "The central panel also covers the oriel\u2019s lower window/sill area and projects below the visible sill line, reading as a flat sticker pasted over the bay instead of a shutter fitted inside its recess."
+      ],
+      "fix": "Replace the failed shutter drawing, register it to this specific window opening, and retain the surrounding recess/frame/sill depth. Keep the 96x48 footprint, alpha and shared rows 0/47 unchanged; inspect the assembled poor house at 1x and 4x."
+    },
+    "district-poor-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "The shadow check is too coarse for the brief: shadow pixels are aggregated by filename/family. Several entire street-main and street-side rectangles have zero shadow pixels; exact examples are recorded in those file entries. Panel 1\u2019s permission for sunlit streets conflicts with BRIEF-17 and the explicit critic instruction, so it cannot waive these failures.",
+        "Junction opening still removes only 3px in c_ground although E main/side kerb-gutter strips are 4px. In the L-block, a dark remnant remains across the junction at y236 (x288\u2013335), followed by a visibly abrupt paving-phase/orientation change. See critic-r17E-1-junction-remnant-8x.png. The new street interiors need compatible unlike joins, not only self repeats.",
+        "All five district scenes place the new washing-line at x192, base556 directly behind the yard-2 shed at x240, base552 and the yard-2 shed at x240, base576. The later shed hides the trousers/right support and part of the shirt. See critic-r17E-1-washing-line-occlusion-3x.png. This is accidental prop overlap, not purposeful life across a usable lane.",
+        "Neither the L-block nor the market contains any standalone trade sign. Only baker and smith are exercised in the height test; the six remaining signs have no actual facade mounting proof at their new 64x72 size. Their isolated symbols pass, but destination readability and unobstructed doors in districts are not demonstrated.",
+        "In the market greyscale view, the main route below the slate gate approach merges into the same-value large paving used throughout the enormous square. The main street loses its distinct visual route to the gate. Reinforce hierarchy with deliberate paving treatment and building shade without adding a noisy pattern.",
+        "The market has no yard strips assigned to its new residential/trade lots: the only garden in d_market is the churchyard [144,1032,312,408]. For example, the new market shop at x528\u2013623, base1296 and the back house at x720\u2013815, base1344 stand isolated in the large paved arm, with no fenced rear-yard strip or enclosing roof block. The district studies also remain largely straight rows plus isolated setbacks; their claimed wedge is not a convincingly enclosed block. This misses the required lot/yard and irregular urban-block proof."
+      ],
+      "fix": "Fix the per-segment shadow test and receiving surfaces; open the full drawn kerb width and register compatible junction paint; move washing lines into clear owned passages; mount all eight trades in fitting two-cell shop lots with visible entrances; give the market route a clear greyscale hierarchy and complete the intended yards/block enclosure. Re-render all required scenes and comparisons without changing earlier-part assets."
+    }
+  },
+  "notes": "Independent Round 17 Part E saved-art review. Read BRIEF-17 in full, panel-1, and the method sections of NOTES; panel-2 is absent. Reviewed all 78 Part E PNGs at exact native 1x and nearest-neighbour 4x beside fantasy-house-2, using the current hash-matched inspection sheets; inspected focused 8x close-ups, all native self-seam sheets, unlike district/inn joins, and literal 3x3 ground repeats. Mounted all 22 props/overlays on summer grass as well as the existing paving mounts. All 78 entries are summer-only and there are no seasonal partners in this part, so a summer-versus-season mask overlay is not applicable. Code compared all 42 available district donor alpha channels exactly (zero differences); the five inn masks also match. Independent technical audit found no dimension/manifest mismatch, soft alpha, nonzero RGB under transparency, detached 1\u20132 pixel alpha components, or facade row-0/47 course mismatch. The eight standalone trade signs are all nameable at 1x (anvil, loaf, bottle, boot, tankard, quill, scissors, cleaver). Their 64x72 canvases meet the explicit twice-Round15-size interpretation; the smaller panel symbol suggestion does not override BRIEF-17. Imported the existing compose.py with bytecode disabled and rendered its required 768x576 L-block, 1248x1968 irregular market and 768x864 height test, plus five district studies, to critic-r17E-1-*.png. Saved 1x and exact NN3x scenes, comparisons beside round15-street/current-town, native greyscale squints and detailed crops. The L/T/dead-end structure, six market stalls, civic assets and both tall/low arrangements are present. No Round15 production proxy was used; Round15 is comparison-only (the retained facade course donor remains part of the established contract). BRIEF-17 and the explicit E request override panel-1\u2019s deferral/reassignment of streets, signs, life and district/animal exports, its relaxed street-shadow rule, and conflicting size/layout proposals. Failure assignments distinguish artwork from its use: the six grounds fail visible repetition; street-main/side additionally fail their mandatory contextual shadow proof. The standalone signs, washing-line and other sound props remain passing assets; mounting, scene hierarchy and overlap failures belong to compose.py. Inn aliases and the five poor facade derivatives fail because they contain the failed embedded emblem/shutter. The remaining district architecture retains acceptable registered courses, square boundaries, roof depth and lit recesses at the inspected scales; this does not approve the failed scene arrangement. No image was drawn or altered by this reviewer, no city17 file was edited, and no commit, push or branch change was performed. Evidence includes critic-r17E-1-*-comparison-1x/3x.png, *-squint-1x.png, *-repeat-1x/4x.png, *-8x.png, grass-props-0..5.png, self-seams-0..8.png, and the unshadowed-street/washing-line close-ups. Review is of saved artwork, not an in-engine playtest."
+}

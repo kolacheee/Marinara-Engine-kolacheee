@@ -1,0 +1,107 @@
+[
+  {
+    "target": "inn-front",
+    "source": "tankard-a",
+    "rect": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  {
+    "target": "inn-front-w2",
+    "source": "tankard-a",
+    "rect": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  {
+    "target": "inn-front-w2-c0",
+    "source": "tankard-a",
+    "rect": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  {
+    "target": "inn-front-w2-c1",
+    "source": "tankard-a",
+    "rect": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  {
+    "target": "inn-front-w2-c2",
+    "source": "tankard-a",
+    "rect": [
+      40,
+      19,
+      14,
+      16
+    ]
+  },
+  {
+    "target": "district-poor-storey-w2",
+    "source": "shutter-b",
+    "rect": [
+      17,
+      15,
+      17,
+      16
+    ],
+    "donor": "storey-plaster-w2-c0"
+  },
+  {
+    "target": "district-poor-ground-v1-w2",
+    "source": "shutter-b",
+    "rect": [
+      60,
+      13,
+      20,
+      16
+    ],
+    "donor": "ground-door-w2-c0"
+  },
+  {
+    "target": "district-poor-storey-v1-w2",
+    "source": "shutter-b",
+    "rect": [
+      18,
+      15,
+      14,
+      17
+    ],
+    "donor": "storey-timber-w2-c0"
+  },
+  {
+    "target": "district-poor-ground-v2-w2",
+    "source": "shutter-b",
+    "rect": [
+      20,
+      15,
+      12,
+      12
+    ],
+    "donor": "ground-door-v1-w2-c0"
+  },
+  {
+    "target": "district-poor-storey-v2-w2",
+    "source": "shutter-b",
+    "rect": [
+      36,
+      14,
+      11,
+      13
+    ],
+    "donor": "storey-oriel-w2-c0"
+  }
+]

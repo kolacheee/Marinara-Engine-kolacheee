@@ -1,0 +1,409 @@
+{
+  "part": "E",
+  "round": 4,
+  "verdict": "fail",
+  "failed": [
+    "compose.py"
+  ],
+  "files": {
+    "cobble-large": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cobble-small": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-main": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-side": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lane": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "barrel": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "crate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-smoke": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-smoke": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cat": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "pigeon": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-scales": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-candles": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-drying-rack": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-banner": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-shed": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-shutter": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "washing-line": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-storey-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-roof-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-market-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-temple-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-craft-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-rich-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-ground-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-storey-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-roof-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-ground-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-storey-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "district-poor-roof-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "BRIEF-17's layout limit is 'At most 2 identical pieces in a row of 5.' The first five north-rear lots in the 16x12 L-block resolve to roof-back-w2, roof-back-w1, roof-back-w1, roof-back-w2, roof-back-w1. The three identical w1 roof caps are at x=96, 144 and 288, y=0..95, on north-rear-0-split1, north-rear-1 and north-rear-3; all five buildings have base y=144. This is an actual five-lot run with three uses of the same cap, not a self-seam test. e_layouts() adds the extra w1 when it splits the inherited three-cell lot. The aligned, repeated roof field is visible at 1x in critic-r17E-4-L-north-repetition.png. Varying the lower wall between plain/stair does not vary those repeated roof pieces.",
+        "e_market_repairs() unconditionally assigns ground-shop-v1-w2-c0 to all eight trade buildings. At base y=864, smith/baker/apothecary/cobbler at x=528/624/720/864 all use that identical ground floor; with D-flank-0 at x=0 these are five lots on the same base row, four with the same shopfront. The southern trade row repeats the same four fronts at base y=1392. In each row the first three shops are directly adjacent, with the same right door, lit surround and goods-bay arrangement. Different signs and upper floors distinguish the businesses, but do not satisfy the explicit repeated-piece limit or the brief's request to vary ground-floor arrangements. See critic-r17E-4-market-north-repetition.png and critic-r17E-4-market-south-repetition.png, plus the mounted 3x details. This is a placement-selection failure; ground-shop-v1-w2-c0 and the eight sign PNGs are not individually failed."
+      ],
+      "fix": "Revise the Part E layout selections so every five-lot frontage run uses any identical resolved roof or facade piece at most twice. Replace at least one of the three identical northern w1 cap placements with a compatible different drawn roof arrangement while preserving the rear-row view, 1-2-cell lots, joins and required coverage. Remove the unconditional shopfront override and distribute compatible existing ground-floor arrangements across the trade rows; reposition each sign for the chosen facade so doors and 48x48 approaches stay visible, signs remain within their lots and readable, and awnings do not repeat on adjacent shops. Retain the corrected gate registration, paving phase, courts, shadows and all passing Part E PNGs. Add a layout check over the actual resolved asset identities or pixel hashes (including aliases), rather than relying on different district/variant labels. Rebuild the L-block and market at 1x/3x and inspect these rows beside the references. No production edits were made in this critic review."
+    }
+  },
+  "notes": "Independent saved-art critic for Round 17 Part E, round 4. Read BRIEF-17 in full, panel 1 and the NOTES method sections. Panel 2 is absent. The final critic-only instruction controls: no drawings or production edits, branch changes, commits or pushes. BRIEF-17 and the explicit E scope override panel 1's conflicting reassignments/deferrals, relaxed shadow exception and conflicting layout/dimension suggestions. Reviewed all 78 E-owned PNGs listed in r17-E-files.json at exact 1x and nearest-neighbour 4x beside fantasy-house-2 on fresh pieces-0..16 sheets. Earlier inn-front-w1/w3 aliases belong to Part A and were not newly judged as E exports. Built and inspected literal 3x3 repeats for cobble-large, cobble-small, street-main, street-side, lane and mud-edge; every export's self contacts; unlike district variants; summer grass and paving mounts for all E props/overlays; and 8x paving contacts. There are no E seasonal partners: seasonal-ground and summer/season mask-overlay tests are not applicable. Code compared 37 architecture alpha masks with their distinct retained production donors; all match. All 78 PNGs match the inventory dimensions and SHA-256 hashes, use alpha only 0/255, contain zero RGB under transparency and have no detached one- or two-pixel alpha islands. All E facades match the prescribed course on rows 0 and 47. Streets are 96x48, 48x48 and 24x48; cobble fields and mud-edge are 48x48. All eight 64x72 signs are nameable at 1x: anvil, loaf, bottle, boot, tankard, quill, scissors and cleaver. The inn porch, tankard and daylight courtyard arch read. District materials, rich slate/banner/stone, low poor thatch/patches/shed, drying rack, washing, containers, cart, smoke, cat and pigeon pass as individual art. The grounds are quiet and their intended longitudinal contacts do not expose a light/dark tile reset. Replayed 7,095,296 original registered RGBA mode samples with zero mismatches; this verifies the retained original processing record, not a new drawing operation. Imported current city17/compose.py with bytecode disabled and rebuilt the 768x576 L-block, 1248x1968 irregular market, 768x864 tall/low test and all five district studies. Fresh scenes match the supplied current scene pixels. Saved 1x/3x scenes beside round15-street/current-town at literal 1x, native greyscale squints and focused native/3x/4x/8x details under critic-r17E-4-*.png. The market retains its six stalls, civic hierarchy and distinct gate route in greyscale. All 66 main/side/lane road segments receive nonzero cast shade; all 76 declared 48x48 entrance approaches are unobstructed and in canvas. The repaired poor lane remains paved and district court entrances visible. Runtime asset-path tracing found no Round 15 production proxy: scenes use Round 17 A/B/C/D/E and retained D gate/wall review crops; Round 15 is comparison-only. The gate registration repair passes exact pixel and visual checks. The remaining failure is compose.py's repeated-piece selection, documented at exact scene coordinates above. The four-round cap does not waive that explicit brief requirement. Only this JSON and critic-r17E-4-*.png review composites were written. This is a saved-art review, not an in-engine playtest."
+}

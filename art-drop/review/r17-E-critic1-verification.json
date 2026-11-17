@@ -1,0 +1,696 @@
+{
+  "checks": 133,
+  "passed": 133,
+  "failures": [],
+  "new_mode_samples": 1189696,
+  "protected_production_files": 483,
+  "street_segments": 66,
+  "washing_occluded_pixels": {
+    "L-block": 0,
+    "market": 0,
+    "district-market": 0,
+    "district-temple": 0,
+    "district-craft": 0,
+    "district-rich": 0,
+    "district-poor": 0
+  },
+  "results": [
+    {
+      "check": "all passing and earlier production assets byte-identical",
+      "passed": true,
+      "detail": {
+        "files": 483,
+        "changed": []
+      }
+    },
+    {
+      "check": "mud-edge repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-w2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-w2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-w2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-w2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-shutter repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-shutter dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v2-w2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v2-w2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v2-w2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v2-w2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c0 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c0 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c0 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c0 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v2-w2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v2-w2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v2-w2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v2-w2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v1-w2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v1-w2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v1-w2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-ground-v1-w2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v1-w2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v1-w2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v1-w2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor-storey-v1-w2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compose.py repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-temple-candles repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-temple-candles dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c2 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c2 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c2 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c2 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-main repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-main dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c1 repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c1 dimensions unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c1 course rows preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inn-front-w2-c1 alpha preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large-a-48x48 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large-a-48x48 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large-a-48x48 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large-b-48x48 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large-b-48x48 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large-b-48x48 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-a-48x48 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-a-48x48 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-a-48x48 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-b-48x48 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-b-48x48 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-b-48x48 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge-a-48x48 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge-a-48x48 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge-a-48x48 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge-b-48x48 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge-b-48x48 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mud-edge-b-48x48 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candles-a-32x32 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candles-a-32x32 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candles-a-32x32 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candles-b-32x32 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candles-b-32x32 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candles-b-32x32 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-a-24x24 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-a-24x24 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-a-24x24 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-24x24 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-24x24 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-24x24 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tankard-a-14x16 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tankard-a-14x16 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tankard-a-14x16 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tankard-b-14x16 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tankard-b-14x16 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "tankard-b-14x16 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-17x16 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-17x16 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-17x16 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-20x16 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-20x16 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-20x16 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-14x17 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-14x17 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-14x17 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-12x12 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-12x12 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-12x12 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-11x13 exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-11x13 logged cleanup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "shutter-b-11x13 retained source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-large no small source period",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "cobble-large wrapped opposite paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small no small source period",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "cobble-small wrapped opposite paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "L-block east-shop sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "L-block complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "market trade-smith sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-baker sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-apothecary sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-cobbler sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-inn sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-scribe sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-tailor sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-butcher sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "height-test height-0 sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "height-test height-3 sign clear of right door",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-market complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-temple complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-craft complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-rich complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-poor complete washing silhouette visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "all eight trades mounted",
+      "passed": true,
+      "detail": [
+        "sign-apothecary",
+        "sign-baker",
+        "sign-butcher",
+        "sign-cobbler",
+        "sign-inn",
+        "sign-scribe",
+        "sign-smith",
+        "sign-tailor"
+      ]
+    },
+    {
+      "check": "full E audit passes",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

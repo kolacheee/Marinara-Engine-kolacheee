@@ -1,0 +1,103 @@
+{
+  "part": "E",
+  "responds_to": "critic-r17E-2.json",
+  "scope": "3 failed PNGs plus compose.py;75 passing E PNGs unchanged",
+  "method": "Two new built-in image-tool drawings on solid magenta; selected A.8x BOX registration, fixed palette, exact64-sample mode, edge paint wrap, one-pixel cleanup inspection (0 edits needed), hard0/255 alpha, zero hidden RGB. No procedural shapes or noise.",
+  "verification": {
+    "checks": 149,
+    "passed": 149,
+    "new_mode_samples": 294912,
+    "protected_production_files": 2330,
+    "passing_E_PNGs": 75,
+    "street_segments": 66,
+    "entrance_count": 76,
+    "paving_luminance": {
+      "cobble-small": {
+        "eight_row_luminance": [
+          131.8125,
+          132.65104166666666,
+          132.9296875,
+          133.44791666666666,
+          132.61458333333334,
+          132.484375
+        ],
+        "range": 1.6354166666666572,
+        "top_bottom_difference": 0.671875
+      },
+      "street-side": {
+        "eight_row_luminance": [
+          131.44375,
+          132.440625,
+          132.759375,
+          133.375,
+          132.715625,
+          132.45625
+        ],
+        "range": 1.9312500000000057,
+        "top_bottom_difference": 1.012500000000017
+      },
+      "lane": {
+        "eight_row_luminance": [
+          131.41666666666666,
+          132.49305555555554,
+          132.59027777777777,
+          133.00694444444446,
+          132.07638888888889,
+          132.8125
+        ],
+        "range": 1.5902777777777999,
+        "top_bottom_difference": 1.3958333333333428
+      }
+    }
+  },
+  "files": {
+    "cobble-small": {
+      "status": "repaired; saved-art self-review",
+      "original_problems": [
+        "The literal 3x3 repeat has a visible 48px value cycle: a pale band across local rows 0-7 restarts above the darker lower portion of each tile. It reads as repeated rectangular patches at 1x, and as horizontal bands at 4x/8x. The top eight rows average 137.34 in Pillow L luminance; the bottom eight average 129.03. This is tile-wide lighting drift, not just individual stone highlights.",
+        "Evidence: critic-r17E-2-repeat-cobble-small.png and critic-r17E-2-cobble-small-vertical-8x.png. The strongest reset is at y=48 and y=96 in the native 3x3 field."
+      ],
+      "fix": "Repainted the complete field with two built-in image-tool variants; selected A for its even whole-field lighting and less rigid courses. Registered at8x, locked the existing six-colour ramp, reduced by exact64-sample mode, wrapped opposite edge paint. Native literal3x3 has no broad48px pale/dark reset. Top/bottom8-row luminance delta0.67; band range1.64."
+    },
+    "street-side": {
+      "status": "repaired; saved-art self-review",
+      "original_problems": [
+        "The interior inherits cobble-small\u2019s broad light-to-dark 48px repeat. Local rows 0-7 form a lighter stripe that restarts at every vertical tile join, clearly visible between the kerbs in the literal 3x3 at 1x/4x. The kerbs join, but the paving still advertises its tile height.",
+        "Evidence: critic-r17E-2-repeat-street-side.png and critic-r17E-2-street-side-vertical-8x.png. This failure is in the source PNG, independent of scene placement; current scenes do cast shadows on this street family."
+      ],
+      "fix": "Replaced only the40px paved interior with the new small-cobble field; preserved both4px drawn kerb/gutter strips byte-for-byte and the48x48 canvas. Interior band range1.93; native vertical repeats and main/side junctions inspected."
+    },
+    "lane": {
+      "status": "repaired; saved-art self-review",
+      "original_problems": [
+        "The narrow interior repeats the same bright top band and darker lower patch every 48px. At 1x the lane becomes a sequence of rectangular sections instead of continuous quiet paving; the reset remains obvious at 4x/8x.",
+        "Evidence: critic-r17E-2-repeat-lane.png and critic-r17E-2-lane-vertical-8x.png. The separate loss of lane paving under garden paint in the poor scene is assigned to compose.py, not to this PNG."
+      ],
+      "fix": "Replaced only the18px interior with the new whole-field small cobbles, preserving both3px kerb/gutter strips and24x48 canvas. World-phase sampling remains continuous; interior band range1.59; vertical3x repeats inspected at1x/4x/8x."
+    },
+    "compose.py": {
+      "status": "repaired; saved-art self-review",
+      "original_problems": [
+        "In e_ground(), gardens are painted after road interiors and before the kerbs. The poor-district garden [96,480,96,96] therefore overwrites the lane [96,480,24,144]. At x=99..116, y=480..575, all 1,728 interior pixels become grass. The first 96px of this 144px lane are a green strip between stone kerbs; only its final 48px retain paving. See critic-r17E-2-poor-lane-4x.png and district-poor-1x.png.",
+        "In all five e_district_layout() scenes, the northern lot with id <district>-10 has entrance [552,624], immediately above <district>-wedge-return at x=480, base=768. The return roof starts at y=624 and covers all 2,304 pixels of the 48x48 approach [528,624,48,48]. At 1x/3x the northern ground floor opens directly onto the foreground roof: there is no visible entrance approach or courtyard passage. In the market variant both the inn porch and its courtyard arch face this roof. The declared clear_routes omit these entrance approaches, so their clearance audit misses the defect. See critic-r17E-2-market-wedge-3x.png; corresponding temple/craft/rich/poor wedge proofs show the same placement error.",
+        "The current street composition also repeats the failed cobble-small field in the side roads and lane; rerender it after correcting those three source PNGs."
+      ],
+      "fix": "Moved garden painting beneath road interiors and kerbs. All2592 poor-lane interior pixels and3456 full lane pixels match the registered road paint. In each district, shortened the northern court building from two storeys to one and moved its baseline from624 to576, keeping its roof north edge fixed. The entire96px frontage now opens onto a visible48px-deep paved court connected to the eastern48px lane, which starts at576. All76 declared48x48 entrance approaches are checked against final opaque building/prop masks; all clear. Restoring the old position reproduces the2304px obstruction in each district. Retained eight sign mounts, zero washing occlusion and shade on all66 street segments."
+    }
+  },
+  "visual_review": "Inspected all78 exports on17 literal1x/nearest4x pages beside fantasy-house-2. Reviewed the L/T/dead-end, irregular market,5|1 and1|5 joins, five districts, reference comparisons, squints, new ground self/unlike repeats and focused court/lane/junction proofs. All eight unchanged trade symbols remain nameable at1x.",
+  "fail_list": {
+    "flat_or_cardboard": "New paving retains small individually lit stones; existing facades/props unchanged.",
+    "roof_holes": "Only deliberate fenced yards, passages and new paved entrance courts; required roof coverage checks pass.",
+    "seams": "Wrapped paving interiors and preserved kerbs; self/unlike and junction proofs rebuilt.",
+    "repetition": "No broad48px value cycle; whole-field paint instead of repeated subtiles.",
+    "landmarks": "Unchanged D cathedral remains skyline leader on the market square.",
+    "greyscale": "Existing gate/main-route treatment retained; native squints rebuilt.",
+    "trades": "Anvil, loaf, bottle, boot, tankard, quill, scissors and cleaver readable at1x; mounts unchanged.",
+    "shadows": "All66 street segments have nonzero cast shade."
+  },
+  "proxies": "No Round15 production art. Existing Round17 A/B/C/D/E plus retained D gate-approach crops; Round15 comparison only.",
+  "panel_conflicts": "BRIEF-17 and explicit E scope override panel1 reassignment/deferrals, relaxed shadows and conflicting sizes/layouts. Panel2 absent.",
+  "limits": "Saved-art self-review; independent critic acceptance and in-engine playtest not claimed.",
+  "git": "No commit, push or branch change. Checkout left detached as found."
+}

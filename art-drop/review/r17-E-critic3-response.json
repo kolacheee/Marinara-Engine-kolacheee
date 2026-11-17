@@ -1,0 +1,48 @@
+{
+  "part": "E",
+  "responds_to": "critic-r17E-3.json",
+  "scope": "Composer-only repair; all 78 passing Part E PNGs and retained Part D gate crops unchanged.",
+  "file": "out/city17/compose.py",
+  "status": "addressed; saved-art self-review, independent acceptance pending",
+  "problems": [
+    "In e_ground(), the generic phase(tile,x,y,w,h) call also world-wraps the non-generic gate-approach and gate-threshold crops. The retained Part D gate-interior drawing is 96x144 and has 4px stone kerbs at source columns 0-3 and 92-95. Its road rectangle starts at x=984, so x % 96 = 24. This shifts the complete kerbed drawing sideways: source columns 92-95 and 0-3 become one 8px stone stripe at scene x=1052-1059, inside the 96px route instead of along its edges.",
+    "The defect is visible at native 1x through the gateway and along its approach, especially y=432-575. The stripe cuts across the otherwise open slate paving and terminates abruptly at y=576. The expected outer kerbs at x=984-987 and x=1076-1079 are displaced; the threshold is horizontally misregistered as well. This is a visible composition seam/stray road strip, not an intended median or a failure of street-main.png. The retained Part D render shows the same crop with its kerbs correctly on the outside.",
+    "Evidence: critic-r17E-3-gate-registration-1x.png compares the same native crop from Part D and Part E. critic-r17E-3-gate-context-E-4x.png and critic-r17E-3-gate-context-D-4x.png show the displaced and correct kerbs; critic-r17E-3-market-detail-3-3x.png shows the approach in context. Pixel checks at y=500 confirm that all eight columns x=1052-1059 are exactly the wrapped source kerb pixels."
+  ],
+  "repairs": [
+    "Destination-local registration for authored path crops; the 96x144 gate interior repeats from (984,192), and the 96x9 threshold is placed once at (984,423).",
+    "Place authored crops after generic field kerbs, retaining the original Part D edge paint rather than overwriting it with street-main kerbs.",
+    "Exact pixel checks on every row 432\u2013575 restore kerbs at x984\u2013987 and x1076\u20131079 and verify source paving at x1052\u20131059. The full approach under existing shade matches the retained source.",
+    "Rebuilt required scenes, references, squints, all piece and seam sheets; added literal 1x and nearest-neighbour 4x gate comparisons against Part D and the failing Part E render."
+  ],
+  "checks": {
+    "general": 780,
+    "retained_regressions": 149,
+    "gate": 25,
+    "total_passed": 954,
+    "failures": 0,
+    "unchanged_E_PNGs": 78,
+    "protected_production_files_and_gate_crops": 2335,
+    "clear_entrance_approaches": 76,
+    "shaded_street_segments": 66
+  },
+  "visual_review": {
+    "piece_sheets": "All 17 r17-E-inspection pages, covering every export at 1x/4x beside fantasy-house-2.",
+    "trade_signs": "All eight named at native scale: anvil, loaf, bottle, boot, tankard, quill, scissors, cleaver.",
+    "scenes": "L-block, irregular market and both tall/low joins; reference comparisons and native squints.",
+    "gate": "Outer kerbs restored, interior stripe absent, threshold and portal-to-approach join aligned; inspected at 1x/4x.",
+    "fail_list": "No new seam, ground hole, hidden entrance, repetition or hierarchy failure introduced. All passing drawings retained."
+  },
+  "method": "No new drawing or image-tool call: critic explicitly required preserving every passing PNG and both Part D crops. Code composites retained drawings only.",
+  "sources": "Existing Round17 A/B/C/D/E drawings and retained Part D gate crops; no Round15 production proxies.",
+  "precedence": "BRIEF-17 and explicit Part E scope override panel 1 conflicting reassignments, deferrals and layout/shadow changes. Panel 2 absent.",
+  "evidence": [
+    "r17-E-critic3-gate-comparison-1x.png",
+    "r17-E-critic3-gate-comparison-4x.png",
+    "r17-E-critic3-verification.json",
+    "r17-E-critic3-before/failing-verification.json",
+    "r17-E-verification.json",
+    "r17-E-critic2-verification.json"
+  ],
+  "limits": "Saved-art self-review, not independent acceptance or an in-engine playtest."
+}

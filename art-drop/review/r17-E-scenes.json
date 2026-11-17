@@ -1,0 +1,8599 @@
+{
+  "L-block": {
+    "size": [
+      768,
+      576
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          144,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          144,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          528,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          480,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          0,
+          48,
+          240
+        ]
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          288,
+          240,
+          96,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          384,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          576,
+          336,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          240,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          96,
+          240,
+          192,
+          48
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          336,
+          96,
+          48
+        ]
+      }
+    ],
+    "lots": [
+      {
+        "id": "north-4",
+        "x": 384,
+        "base": 144,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "inn-front",
+          "roof_file": "district-market-roof-v1-w2"
+        },
+        "footprint": [
+          384,
+          48,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "north-5",
+        "x": 480,
+        "base": 144,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 1,
+          "storeys": [],
+          "roof": "flat",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "roof_overlays": [
+            {
+              "file": "dormer-0",
+              "x": 12,
+              "y": 26
+            }
+          ]
+        },
+        "footprint": [
+          480,
+          48,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "north-6",
+        "x": 576,
+        "base": 144,
+        "spec": {
+          "width": 1,
+          "ground": "arch",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        },
+        "footprint": [
+          576,
+          48,
+          48,
+          96
+        ]
+      },
+      {
+        "id": "north-7-split2",
+        "x": 624,
+        "base": 144,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        },
+        "footprint": [
+          624,
+          48,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "north-7-split1",
+        "x": 720,
+        "base": 144,
+        "spec": {
+          "width": 1,
+          "ground": "work",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        },
+        "footprint": [
+          720,
+          48,
+          48,
+          96
+        ]
+      },
+      {
+        "id": "L-south-1",
+        "x": 96,
+        "base": 528,
+        "spec": {
+          "width": 2,
+          "ground": "arch",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "roof_overlays": [
+            {
+              "file": "dormer-1",
+              "x": 8,
+              "y": 52
+            }
+          ]
+        },
+        "footprint": [
+          96,
+          432,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "L-south-2-split2",
+        "x": 192,
+        "base": 528,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        },
+        "east_receiver": [
+          336,
+          480,
+          6,
+          48
+        ],
+        "footprint": [
+          192,
+          432,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "L-south-2-split1",
+        "x": 288,
+        "base": 528,
+        "spec": {
+          "width": 1,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        },
+        "east_receiver": [
+          336,
+          480,
+          6,
+          48
+        ],
+        "footprint": [
+          288,
+          432,
+          48,
+          96
+        ]
+      },
+      {
+        "id": "L-corner",
+        "x": 0,
+        "base": 528,
+        "spec": {
+          "width": 2,
+          "ground": "arch",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "roof_depth": 5,
+          "roof_overlays": [
+            {
+              "file": "chimney-1",
+              "x": 8,
+              "y": 40
+            }
+          ],
+          "roof_joins": []
+        },
+        "footprint": [
+          0,
+          432,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "north-rear-0-split2",
+        "x": 0,
+        "base": 144,
+        "spec": {
+          "view": "back",
+          "width": 2,
+          "floors": 1,
+          "back": "plain"
+        },
+        "footprint": [
+          0,
+          48,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "north-rear-0-split1",
+        "x": 96,
+        "base": 144,
+        "spec": {
+          "view": "back",
+          "width": 1,
+          "floors": 1,
+          "back": "plain"
+        },
+        "footprint": [
+          96,
+          48,
+          48,
+          96
+        ]
+      },
+      {
+        "id": "north-rear-1",
+        "x": 144,
+        "base": 144,
+        "spec": {
+          "view": "back",
+          "width": 1,
+          "floors": 1,
+          "back": "stair"
+        },
+        "footprint": [
+          144,
+          48,
+          48,
+          96
+        ]
+      },
+      {
+        "id": "north-rear-2",
+        "x": 192,
+        "base": 144,
+        "spec": {
+          "view": "back",
+          "width": 2,
+          "floors": 1,
+          "back": "plain"
+        },
+        "footprint": [
+          192,
+          48,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "north-rear-3",
+        "x": 288,
+        "base": 144,
+        "spec": {
+          "view": "back",
+          "width": 1,
+          "floors": 1,
+          "back": "plain"
+        },
+        "footprint": [
+          288,
+          48,
+          48,
+          96
+        ]
+      },
+      {
+        "id": "side-along-lane",
+        "x": 384,
+        "base": 480,
+        "spec": {
+          "view": "side",
+          "direction": "W",
+          "depth": 2,
+          "floors": 2
+        },
+        "footprint": [
+          384,
+          384,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "east-shop",
+        "x": 480,
+        "base": 480,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-smith",
+              "x": 0,
+              "y": 16
+            }
+          ],
+          "corner": false
+        },
+        "footprint": [
+          480,
+          384,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "deadend-cap",
+        "x": 576,
+        "base": 336,
+        "spec": {
+          "view": "node",
+          "node": "deadend-cap",
+          "floors": 1
+        },
+        "footprint": [
+          576,
+          240,
+          96,
+          96
+        ]
+      },
+      {
+        "id": "east-corner",
+        "x": 672,
+        "base": 480,
+        "spec": {
+          "view": "node",
+          "node": "corner-outer-R",
+          "floors": 2
+        },
+        "footprint": [
+          672,
+          384,
+          96,
+          96
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "yard-0",
+        "x": 96,
+        "base": 336
+      },
+      {
+        "file": "yard-1",
+        "x": 144,
+        "base": 336
+      },
+      {
+        "file": "yard-3",
+        "x": 192,
+        "base": 336
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 336
+      },
+      {
+        "file": "fence-0",
+        "x": 96,
+        "base": 365
+      },
+      {
+        "file": "fence-0",
+        "x": 144,
+        "base": 365
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 365
+      },
+      {
+        "file": "fence-0",
+        "x": 240,
+        "base": 365
+      },
+      {
+        "file": "fence-1",
+        "x": 94,
+        "base": 336
+      },
+      {
+        "file": "fence-1",
+        "x": 190,
+        "base": 336
+      },
+      {
+        "file": "fence-1",
+        "x": 286,
+        "base": 336
+      },
+      {
+        "file": "yard-1",
+        "x": 384,
+        "base": 288
+      },
+      {
+        "file": "yard-2",
+        "x": 432,
+        "base": 288
+      },
+      {
+        "file": "yard-0",
+        "x": 480,
+        "base": 288
+      },
+      {
+        "file": "yard-3",
+        "x": 528,
+        "base": 288
+      },
+      {
+        "file": "yard-2",
+        "x": 624,
+        "base": 432
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 216
+      },
+      {
+        "file": "fence-0",
+        "x": 432,
+        "base": 216
+      },
+      {
+        "file": "fence-0",
+        "x": 480,
+        "base": 216
+      },
+      {
+        "file": "fence-0",
+        "x": 528,
+        "base": 216
+      },
+      {
+        "file": "fence-1",
+        "x": 466,
+        "base": 240
+      },
+      {
+        "file": "fence-1",
+        "x": 466,
+        "base": 288
+      },
+      {
+        "file": "fence-1",
+        "x": 562,
+        "base": 240
+      },
+      {
+        "file": "fence-1",
+        "x": 562,
+        "base": 288
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 216
+      },
+      {
+        "file": "fence-0",
+        "x": 720,
+        "base": 216
+      },
+      {
+        "file": "yard-2",
+        "x": 672,
+        "base": 288
+      },
+      {
+        "file": "yard-1",
+        "x": 720,
+        "base": 288
+      },
+      {
+        "file": "fence-1",
+        "x": 648,
+        "base": 384
+      },
+      {
+        "file": "fence-1",
+        "x": 648,
+        "base": 432
+      },
+      {
+        "file": "fence-0",
+        "x": 624,
+        "base": 458
+      },
+      {
+        "file": "pilot-person",
+        "path": "review/r17-C-pilot-person.png",
+        "x": 348,
+        "base": 345
+      },
+      {
+        "file": "washing-line",
+        "x": 288,
+        "base": 272,
+        "owner": [
+          288,
+          240,
+          96,
+          48
+        ],
+        "overhead": true
+      },
+      {
+        "file": "barrel",
+        "x": 522,
+        "base": 320,
+        "owner": [
+          480,
+          288,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "crate",
+        "x": 488,
+        "base": 320,
+        "owner": [
+          480,
+          288,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "cat",
+        "x": 266,
+        "base": 328,
+        "owner": [
+          240,
+          288,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "district-craft-drying-rack",
+        "x": 480,
+        "base": 264,
+        "owner": [
+          480,
+          216,
+          96,
+          72
+        ]
+      }
+    ],
+    "joined_l": {
+      "x": 0,
+      "y": 240,
+      "base": 528,
+      "colour": 0
+    },
+    "kerb_turns": [],
+    "gardens": [
+      [
+        96,
+        288,
+        192,
+        96
+      ],
+      [
+        384,
+        192,
+        96,
+        96
+      ],
+      [
+        480,
+        192,
+        96,
+        96
+      ],
+      [
+        672,
+        192,
+        96,
+        96
+      ],
+      [
+        624,
+        336,
+        48,
+        144
+      ]
+    ],
+    "required_roofs": [
+      [
+        0,
+        240,
+        96,
+        240
+      ],
+      [
+        96,
+        384,
+        240,
+        96
+      ],
+      [
+        576,
+        192,
+        96,
+        96
+      ]
+    ],
+    "features": {
+      "T": [
+        7,
+        7
+      ],
+      "dead_end": [
+        12,
+        7
+      ],
+      "north_south_lane": "48px / 96px court setback / 48px, runs5/3/3cells",
+      "two_EW_streets": [
+        3,
+        11
+      ],
+      "bent": "east-west width changes at column8",
+      "wedge": "stepped east courtyard between terminal cap and corner",
+      "districts": "market inn and craft lane; unchanged A/B/C volume contract"
+    },
+    "clear_routes": [
+      [
+        336,
+        0,
+        48,
+        528
+      ],
+      [
+        576,
+        336,
+        48,
+        144
+      ],
+      [
+        0,
+        144,
+        384,
+        96
+      ]
+    ],
+    "plot_depth_cells": [
+      1,
+      2
+    ],
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "entrance_approaches": []
+  },
+  "market": {
+    "size": [
+      1248,
+      1968
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          984,
+          0,
+          96,
+          384
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          984,
+          384,
+          144,
+          144
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          984,
+          528,
+          96,
+          336
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          984,
+          864,
+          144,
+          192
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          984,
+          1056,
+          96,
+          336
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          984,
+          1392,
+          144,
+          192
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          984,
+          1584,
+          96,
+          336
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          984,
+          1920,
+          144,
+          48
+        ],
+        "tone": "gate-route"
+      },
+      {
+        "file": "gate-approach",
+        "path": "review/r17-D-critic2-gate-interior.png",
+        "rect": [
+          984,
+          192,
+          96,
+          384
+        ]
+      },
+      {
+        "file": "gate-threshold",
+        "path": "review/r17-D-critic2-gate-threshold.png",
+        "rect": [
+          984,
+          423,
+          96,
+          9
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          432,
+          48,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          144,
+          432,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          624,
+          432,
+          192,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          912,
+          432,
+          72,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          1104,
+          432,
+          144,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          48,
+          432,
+          96,
+          96
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          528,
+          432,
+          96,
+          96
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          816,
+          432,
+          96,
+          96
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          144,
+          912,
+          840,
+          96
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          192,
+          864,
+          192,
+          48
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          456,
+          1008,
+          528,
+          432
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          144,
+          1440,
+          840,
+          336
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          0,
+          1488,
+          192,
+          144
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          1776,
+          696,
+          96
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          432,
+          1872,
+          552,
+          48
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          144,
+          768,
+          48,
+          240
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          456,
+          576,
+          48,
+          336
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          456,
+          912,
+          48,
+          240
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          456,
+          1152,
+          96,
+          96
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          456,
+          1248,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "mud-edge",
+        "rect": [
+          0,
+          1392,
+          144,
+          48
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          528,
+          864,
+          456,
+          48
+        ],
+        "tone": "square"
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          528,
+          1392,
+          456,
+          48
+        ],
+        "tone": "square"
+      }
+    ],
+    "lots": [
+      {
+        "id": "D-flank-0",
+        "x": 0,
+        "base": 864,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-w2",
+          "roof_file": "district-poor-roof-w2"
+        },
+        "footprint": [
+          0,
+          768,
+          96,
+          96
+        ],
+        "yard": [
+          0,
+          672,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "D-flank-3",
+        "x": 1104,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-w2",
+          "roof_file": "district-rich-roof-w2"
+        },
+        "footprint": [
+          1104,
+          672,
+          96,
+          96
+        ],
+        "yard": [
+          1104,
+          480,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "D-flank-4",
+        "x": 1104,
+        "base": 1248,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-craft-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-w2",
+          "roof_file": "district-craft-roof-w2"
+        },
+        "footprint": [
+          1104,
+          1152,
+          96,
+          96
+        ],
+        "yard": [
+          1104,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "D-flank-5",
+        "x": 0,
+        "base": 1344,
+        "spec": {
+          "view": "back",
+          "width": 2,
+          "floors": 1
+        },
+        "footprint": [
+          0,
+          1248,
+          96,
+          96
+        ],
+        "yard": [
+          0,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "D-flank-8",
+        "x": 0,
+        "base": 1872,
+        "spec": {
+          "view": "back",
+          "width": 2,
+          "floors": 1
+        },
+        "footprint": [
+          0,
+          1776,
+          96,
+          96
+        ],
+        "yard": [
+          0,
+          1680,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-smith",
+        "x": 528,
+        "base": 864,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-market-storey-v1-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-smith",
+              "x": 0,
+              "y": 64
+            }
+          ],
+          "corner": false,
+          "district": "market",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-market-roof-w2"
+        },
+        "footprint": [
+          528,
+          768,
+          96,
+          96
+        ],
+        "entrance": [
+          606,
+          864
+        ],
+        "trade": "smith",
+        "yard": [
+          528,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-baker",
+        "x": 624,
+        "base": 864,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v1-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-baker",
+              "x": 0,
+              "y": 16
+            }
+          ],
+          "corner": false,
+          "district": "market",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-market-roof-v1-w2"
+        },
+        "footprint": [
+          624,
+          768,
+          96,
+          96
+        ],
+        "entrance": [
+          702,
+          864
+        ],
+        "trade": "baker",
+        "yard": [
+          624,
+          624,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-apothecary",
+        "x": 720,
+        "base": 864,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v2-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-market-storey-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-apothecary",
+              "x": 0,
+              "y": 64
+            }
+          ],
+          "corner": false,
+          "district": "market",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-market-roof-v2-w2"
+        },
+        "footprint": [
+          720,
+          768,
+          96,
+          96
+        ],
+        "entrance": [
+          798,
+          864
+        ],
+        "trade": "apothecary",
+        "yard": [
+          720,
+          528,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-cobbler",
+        "x": 864,
+        "base": 864,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "oriel",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-cobbler",
+              "x": 0,
+              "y": 160
+            }
+          ],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-rich-roof-w2"
+        },
+        "footprint": [
+          864,
+          768,
+          96,
+          96
+        ],
+        "entrance": [
+          942,
+          864
+        ],
+        "trade": "cobbler",
+        "yard": [
+          912,
+          480,
+          48,
+          48
+        ]
+      },
+      {
+        "id": "trade-inn",
+        "x": 528,
+        "base": 1392,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v1-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-inn",
+              "x": 0,
+              "y": 16
+            }
+          ],
+          "corner": false,
+          "district": "market",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-market-roof-v1-w2"
+        },
+        "footprint": [
+          528,
+          1296,
+          96,
+          96
+        ],
+        "entrance": [
+          606,
+          1392
+        ],
+        "trade": "inn",
+        "yard": [
+          528,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-scribe",
+        "x": 624,
+        "base": 1392,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v2-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-market-storey-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-scribe",
+              "x": 0,
+              "y": 64
+            }
+          ],
+          "corner": false,
+          "district": "market",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-market-roof-v2-w2"
+        },
+        "footprint": [
+          624,
+          1296,
+          96,
+          96
+        ],
+        "entrance": [
+          702,
+          1392
+        ],
+        "trade": "scribe",
+        "yard": [
+          624,
+          1056,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-tailor",
+        "x": 720,
+        "base": 1392,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-tailor",
+              "x": 0,
+              "y": 16
+            }
+          ],
+          "corner": false,
+          "district": "market",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-market-roof-w2"
+        },
+        "footprint": [
+          720,
+          1296,
+          96,
+          96
+        ],
+        "entrance": [
+          798,
+          1392
+        ],
+        "trade": "tailor",
+        "yard": [
+          720,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "trade-butcher",
+        "x": 864,
+        "base": 1392,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "oriel",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-butcher",
+              "x": 0,
+              "y": 160
+            }
+          ],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "ground-shop-v1-w2-c0",
+          "roof_file": "district-rich-roof-v1-w2"
+        },
+        "footprint": [
+          864,
+          1296,
+          96,
+          96
+        ],
+        "entrance": [
+          942,
+          1392
+        ],
+        "trade": "butcher",
+        "yard": [
+          864,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "south-house-0",
+        "x": 528,
+        "base": 1920,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-w2",
+          "roof_file": "roof-ridge-w2-c0"
+        },
+        "footprint": [
+          528,
+          1824,
+          96,
+          96
+        ],
+        "yard": [
+          528,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "south-house-1",
+        "x": 624,
+        "base": 1920,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "flat",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "inn-front",
+          "roof_file": "roof-flat-w2-c0"
+        },
+        "footprint": [
+          624,
+          1824,
+          96,
+          96
+        ],
+        "yard": [
+          624,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "south-house-2",
+        "x": 720,
+        "base": 1920,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-v2-w2",
+          "roof_file": "roof-ridge-w2-c0"
+        },
+        "footprint": [
+          720,
+          1824,
+          96,
+          96
+        ],
+        "yard": [
+          720,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "south-house-3",
+        "x": 864,
+        "base": 1920,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "oriel",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-w2",
+          "roof_file": "district-rich-roof-w2"
+        },
+        "footprint": [
+          864,
+          1824,
+          96,
+          96
+        ],
+        "yard": [
+          864,
+          1536,
+          96,
+          48
+        ]
+      },
+      {
+        "id": "west-return",
+        "x": 96,
+        "base": 912,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        },
+        "yard": [
+          96,
+          672,
+          48,
+          48
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "cathedral",
+        "x": 192,
+        "base": 1440,
+        "footprint": [
+          192,
+          1152,
+          240,
+          288
+        ],
+        "entrance": [
+          272,
+          1440
+        ],
+        "overhang": [
+          192,
+          1008,
+          240,
+          144
+        ]
+      },
+      {
+        "file": "guildhall",
+        "x": 240,
+        "base": 912,
+        "footprint": [
+          240,
+          720,
+          192,
+          192
+        ],
+        "entrance": [
+          336,
+          912
+        ],
+        "overhang": [
+          240,
+          512,
+          192,
+          208
+        ],
+        "faces": "south across the northern square arm towards the church"
+      },
+      {
+        "file": "townhall-market",
+        "x": 0,
+        "base": 1632,
+        "footprint": [
+          0,
+          1488,
+          192,
+          144
+        ]
+      },
+      {
+        "file": "fountain",
+        "x": 480,
+        "base": 1632,
+        "footprint": [
+          480,
+          1536,
+          96,
+          96
+        ]
+      },
+      {
+        "file": "market-cross",
+        "x": 816,
+        "base": 1680,
+        "footprint": [
+          816,
+          1584,
+          48,
+          96
+        ]
+      },
+      {
+        "file": "shrine",
+        "x": 408,
+        "base": 1008,
+        "footprint": [
+          408,
+          960,
+          48,
+          48
+        ],
+        "cast_east": true
+      },
+      {
+        "file": "stall-0",
+        "x": 600,
+        "base": 1536,
+        "footprint": [
+          600,
+          1488,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "stall-1",
+        "x": 648,
+        "base": 1536,
+        "footprint": [
+          648,
+          1488,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "stall-2",
+        "x": 696,
+        "base": 1536,
+        "footprint": [
+          696,
+          1488,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "stall-3",
+        "x": 648,
+        "base": 1728,
+        "footprint": [
+          648,
+          1680,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "stall-4",
+        "x": 696,
+        "base": 1728,
+        "footprint": [
+          696,
+          1680,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "stall-5",
+        "x": 744,
+        "base": 1728,
+        "footprint": [
+          744,
+          1680,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "wall-walk-stair",
+        "x": 784,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            4,
+            36
+          ],
+          "right": [
+            184,
+            36
+          ]
+        }
+      },
+      {
+        "file": "wall-walk-alternate",
+        "x": 692,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        },
+        "path": "review/r17-D-critic2-wall-walk-alternate.png"
+      },
+      {
+        "file": "wall-walk",
+        "x": 596,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        }
+      },
+      {
+        "file": "wall-tower",
+        "x": 516,
+        "base": 432,
+        "layer": 2,
+        "attachments": {
+          "left": [
+            10,
+            132
+          ],
+          "right": [
+            80,
+            132
+          ]
+        }
+      },
+      {
+        "file": "wall-walk-alternate",
+        "x": 430,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        },
+        "path": "review/r17-D-critic2-wall-walk-alternate.png"
+      },
+      {
+        "file": "wall-walk",
+        "x": 334,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        }
+      },
+      {
+        "file": "wall-tower",
+        "x": 254,
+        "base": 432,
+        "layer": 2,
+        "attachments": {
+          "left": [
+            10,
+            132
+          ],
+          "right": [
+            80,
+            132
+          ]
+        }
+      },
+      {
+        "file": "wall-walk-alternate",
+        "x": 168,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        },
+        "path": "review/r17-D-critic2-wall-walk-alternate.png"
+      },
+      {
+        "file": "wall-walk",
+        "x": 72,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        }
+      },
+      {
+        "file": "wall-tower",
+        "x": -8,
+        "base": 432,
+        "layer": 2,
+        "attachments": {
+          "left": [
+            10,
+            132
+          ],
+          "right": [
+            80,
+            132
+          ]
+        }
+      },
+      {
+        "file": "wall-walk-alternate",
+        "x": -94,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        },
+        "path": "review/r17-D-critic2-wall-walk-alternate.png"
+      },
+      {
+        "file": "wall-walk",
+        "x": -190,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        }
+      },
+      {
+        "file": "wall-tower",
+        "x": -270,
+        "base": 432,
+        "layer": 2,
+        "attachments": {
+          "left": [
+            10,
+            132
+          ],
+          "right": [
+            80,
+            132
+          ]
+        }
+      },
+      {
+        "file": "gatehouse",
+        "x": 960,
+        "base": 432,
+        "layer": 3,
+        "attachments": {
+          "left": [
+            8,
+            292
+          ],
+          "right": [
+            136,
+            292
+          ]
+        },
+        "footprint": [
+          960,
+          240,
+          144,
+          192
+        ],
+        "entrance": [
+          1032,
+          432
+        ],
+        "overhang": [
+          960,
+          32,
+          144,
+          208
+        ]
+      },
+      {
+        "file": "wall-walk",
+        "x": 1096,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        }
+      },
+      {
+        "file": "wall-walk-alternate",
+        "x": 1192,
+        "base": 432,
+        "layer": 1,
+        "attachments": {
+          "left": [
+            0,
+            36
+          ],
+          "right": [
+            96,
+            36
+          ]
+        },
+        "path": "review/r17-D-critic2-wall-walk-alternate.png"
+      },
+      {
+        "file": "fence-0",
+        "x": 144,
+        "base": 1056
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 1056
+      },
+      {
+        "file": "fence-0",
+        "x": 240,
+        "base": 1056
+      },
+      {
+        "file": "fence-0",
+        "x": 288,
+        "base": 1056
+      },
+      {
+        "file": "fence-0",
+        "x": 336,
+        "base": 1056
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 1056
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1104
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1152
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1200
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1248
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1296
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1344
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1392
+      },
+      {
+        "file": "fence-1",
+        "x": 144,
+        "base": 1440
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1104
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1152
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1200
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1248
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1296
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1344
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1392
+      },
+      {
+        "file": "fence-1",
+        "x": 432,
+        "base": 1440
+      },
+      {
+        "file": "fence-0",
+        "x": 144,
+        "base": 1468
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 1468
+      },
+      {
+        "file": "fence-0",
+        "x": 336,
+        "base": 1468
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 1468
+      },
+      {
+        "file": "district-temple-candles",
+        "x": 392,
+        "base": 1432,
+        "owner": [
+          384,
+          1368,
+          48,
+          72
+        ],
+        "overhead": false
+      },
+      {
+        "file": "district-craft-drying-rack",
+        "x": 1112,
+        "base": 1312,
+        "owner": [
+          1104,
+          1248,
+          96,
+          96
+        ],
+        "overhead": false
+      },
+      {
+        "file": "cart",
+        "x": 1120,
+        "base": 1488,
+        "owner": [
+          1104,
+          1440,
+          96,
+          48
+        ],
+        "overhead": false
+      },
+      {
+        "file": "barrel",
+        "x": 916,
+        "base": 1730,
+        "owner": [
+          912,
+          1680,
+          48,
+          96
+        ],
+        "overhead": false
+      },
+      {
+        "file": "crate",
+        "x": 920,
+        "base": 1760,
+        "owner": [
+          912,
+          1680,
+          48,
+          96
+        ],
+        "overhead": false
+      },
+      {
+        "file": "district-market-scales",
+        "x": 808,
+        "base": 1532,
+        "owner": [
+          792,
+          1488,
+          48,
+          48
+        ],
+        "overhead": false
+      },
+      {
+        "file": "pigeon",
+        "x": 828,
+        "base": 1620,
+        "owner": [
+          816,
+          1584,
+          48,
+          48
+        ],
+        "overhead": false
+      },
+      {
+        "file": "cat",
+        "x": 96,
+        "base": 1376,
+        "owner": [
+          96,
+          1344,
+          48,
+          48
+        ],
+        "overhead": false
+      },
+      {
+        "file": "district-poor-shed",
+        "x": 48,
+        "base": 1440,
+        "owner": [
+          0,
+          1344,
+          144,
+          96
+        ],
+        "overhead": false
+      },
+      {
+        "file": "washing-line",
+        "x": 0,
+        "base": 1400,
+        "owner": [
+          0,
+          1344,
+          96,
+          96
+        ],
+        "overhead": true
+      },
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 696,
+        "owner": [
+          0,
+          672,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 48,
+        "base": 696,
+        "owner": [
+          0,
+          672,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-0",
+        "x": 0,
+        "base": 720,
+        "owner": [
+          0,
+          672,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 1104,
+        "base": 504,
+        "owner": [
+          1104,
+          480,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 1152,
+        "base": 504,
+        "owner": [
+          1104,
+          480,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 1104,
+        "base": 528,
+        "owner": [
+          1104,
+          480,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 1104,
+        "base": 1032,
+        "owner": [
+          1104,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 1152,
+        "base": 1032,
+        "owner": [
+          1104,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 1104,
+        "base": 1056,
+        "owner": [
+          1104,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 1176,
+        "owner": [
+          0,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 48,
+        "base": 1176,
+        "owner": [
+          0,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-0",
+        "x": 0,
+        "base": 1200,
+        "owner": [
+          0,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 1704,
+        "owner": [
+          0,
+          1680,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 48,
+        "base": 1704,
+        "owner": [
+          0,
+          1680,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-0",
+        "x": 0,
+        "base": 1728,
+        "owner": [
+          0,
+          1680,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 528,
+        "base": 600,
+        "owner": [
+          528,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 576,
+        "base": 600,
+        "owner": [
+          528,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 528,
+        "base": 624,
+        "owner": [
+          528,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 624,
+        "base": 648,
+        "owner": [
+          624,
+          624,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 648,
+        "owner": [
+          624,
+          624,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-1",
+        "x": 624,
+        "base": 672,
+        "owner": [
+          624,
+          624,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 720,
+        "base": 552,
+        "owner": [
+          720,
+          528,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 768,
+        "base": 552,
+        "owner": [
+          720,
+          528,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 576,
+        "owner": [
+          720,
+          528,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 912,
+        "base": 504,
+        "owner": [
+          912,
+          480,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 912,
+        "base": 528,
+        "owner": [
+          912,
+          480,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 528,
+        "base": 1176,
+        "owner": [
+          528,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 576,
+        "base": 1176,
+        "owner": [
+          528,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 528,
+        "base": 1200,
+        "owner": [
+          528,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 624,
+        "base": 1080,
+        "owner": [
+          624,
+          1056,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 1080,
+        "owner": [
+          624,
+          1056,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-1",
+        "x": 624,
+        "base": 1104,
+        "owner": [
+          624,
+          1056,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 720,
+        "base": 1176,
+        "owner": [
+          720,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 768,
+        "base": 1176,
+        "owner": [
+          720,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 1200,
+        "owner": [
+          720,
+          1152,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 864,
+        "base": 1032,
+        "owner": [
+          864,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 912,
+        "base": 1032,
+        "owner": [
+          864,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-2",
+        "x": 864,
+        "base": 1056,
+        "owner": [
+          864,
+          1008,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 528,
+        "base": 1752,
+        "owner": [
+          528,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 576,
+        "base": 1752,
+        "owner": [
+          528,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 528,
+        "base": 1776,
+        "owner": [
+          528,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 624,
+        "base": 1752,
+        "owner": [
+          624,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 1752,
+        "owner": [
+          624,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-1",
+        "x": 624,
+        "base": 1776,
+        "owner": [
+          624,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 720,
+        "base": 1752,
+        "owner": [
+          720,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 768,
+        "base": 1752,
+        "owner": [
+          720,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 1776,
+        "owner": [
+          720,
+          1728,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 864,
+        "base": 1560,
+        "owner": [
+          864,
+          1536,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 912,
+        "base": 1560,
+        "owner": [
+          864,
+          1536,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "yard-2",
+        "x": 864,
+        "base": 1584,
+        "owner": [
+          864,
+          1536,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 96,
+        "base": 696,
+        "owner": [
+          96,
+          672,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "yard-2",
+        "x": 96,
+        "base": 720,
+        "owner": [
+          96,
+          672,
+          48,
+          48
+        ]
+      }
+    ],
+    "clear_routes": [
+      [
+        984,
+        432,
+        96,
+        1536
+      ],
+      [
+        0,
+        432,
+        984,
+        48
+      ],
+      [
+        1104,
+        432,
+        144,
+        48
+      ],
+      [
+        48,
+        432,
+        96,
+        96
+      ],
+      [
+        528,
+        432,
+        96,
+        96
+      ],
+      [
+        816,
+        432,
+        96,
+        96
+      ],
+      [
+        192,
+        912,
+        192,
+        96
+      ],
+      [
+        456,
+        912,
+        48,
+        528
+      ],
+      [
+        576,
+        1536,
+        240,
+        144
+      ],
+      [
+        552,
+        1488,
+        48,
+        48
+      ],
+      [
+        792,
+        1680,
+        48,
+        48
+      ]
+    ],
+    "features": {
+      "square": "L square: northern96px forecourt, east arm and main17.5x7-cell stall square; church north of main square, guild arcade faces church across north arm",
+      "market": "Two staggered groups of three;144px between canopies,96px usable aisle and48px end access",
+      "gate": "3x4 footprint wins over conflicting panel4-cell suggestion;96px portal, new drawn slate approach, explicit overlapping wall/stair contacts",
+      "wall": "Two adjacent96px crops of one drawn walkway alternate; stair uses the same paint with an identical4px overlap, preserving the drawn stair and gate landing",
+      "service_route": "48px continuous core,96px pockets/junctions at48,528,816; no width run beyond8cells",
+      "hierarchy": "Slate-value main route continues from the gate; full-height civic east shade and5-storey main-street houses cast onto individual segments.",
+      "proxies": "None; A/B/C/D/E production drawings. Round15 comparison only.",
+      "districts": "temple north churchyard; rich square/main-street houses; market south; craft east; poor west edge",
+      "wedge": "one-cell stepped west and south setbacks form wedge blocks at the district edges",
+      "yards": "Every new trade/residential frontage has a fenced48px rear strip; adjoining rows plus west return enclose blocks, with48px passages at x816.",
+      "trades": "All8 unscaled64x72 signs mounted over left goods bays of96px shop fronts; right doors and approaches stay clear."
+    },
+    "gardens": [
+      [
+        144,
+        1032,
+        312,
+        408
+      ],
+      [
+        0,
+        672,
+        96,
+        48
+      ],
+      [
+        1104,
+        480,
+        96,
+        48
+      ],
+      [
+        1104,
+        1008,
+        96,
+        48
+      ],
+      [
+        0,
+        1152,
+        96,
+        48
+      ],
+      [
+        0,
+        1680,
+        96,
+        48
+      ],
+      [
+        528,
+        576,
+        96,
+        48
+      ],
+      [
+        624,
+        624,
+        96,
+        48
+      ],
+      [
+        720,
+        528,
+        96,
+        48
+      ],
+      [
+        912,
+        480,
+        48,
+        48
+      ],
+      [
+        528,
+        1152,
+        96,
+        48
+      ],
+      [
+        624,
+        1056,
+        96,
+        48
+      ],
+      [
+        720,
+        1152,
+        96,
+        48
+      ],
+      [
+        864,
+        1008,
+        96,
+        48
+      ],
+      [
+        528,
+        1728,
+        96,
+        48
+      ],
+      [
+        624,
+        1728,
+        96,
+        48
+      ],
+      [
+        720,
+        1728,
+        96,
+        48
+      ],
+      [
+        864,
+        1536,
+        96,
+        48
+      ],
+      [
+        96,
+        672,
+        48,
+        48
+      ]
+    ],
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": [
+      {
+        "id": "trade-smith",
+        "rect": [
+          582,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-baker",
+        "rect": [
+          678,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-apothecary",
+        "rect": [
+          774,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-cobbler",
+        "rect": [
+          918,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-inn",
+        "rect": [
+          582,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-scribe",
+        "rect": [
+          678,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-tailor",
+        "rect": [
+          774,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-butcher",
+        "rect": [
+          918,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "cathedral",
+        "rect": [
+          248,
+          1440,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "guildhall",
+        "rect": [
+          312,
+          912,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "gatehouse",
+        "rect": [
+          1008,
+          432,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  },
+  "height-test": {
+    "size": [
+      768,
+      864
+    ],
+    "lots": [
+      {
+        "id": "height-0",
+        "x": 48,
+        "base": 432,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            },
+            {
+              "kind": "plaster",
+              "colour": 0
+            },
+            {
+              "kind": "jetty",
+              "colour": 0
+            },
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-baker",
+              "x": 0,
+              "y": 168
+            }
+          ],
+          "corner": false,
+          "roof_overlays": [
+            {
+              "file": "chimney-0",
+              "x": 8,
+              "y": 38
+            }
+          ],
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 192
+            }
+          ],
+          "shared_flat_left": false,
+          "district": "trade-test"
+        }
+      },
+      {
+        "id": "height-1",
+        "x": 144,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "roof_overlays": [
+            {
+              "file": "chimney-1",
+              "x": 16,
+              "y": 112
+            }
+          ],
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "east_receiver": [
+          192,
+          384,
+          32,
+          48
+        ]
+      },
+      {
+        "id": "height-2",
+        "x": 384,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "roof_overlays": [
+            {
+              "file": "chimney-2",
+              "x": 4,
+              "y": 38
+            }
+          ],
+          "firewalls": [],
+          "shared_flat_left": false
+        }
+      },
+      {
+        "id": "height-3",
+        "x": 432,
+        "base": 432,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 1
+            },
+            {
+              "kind": "plaster",
+              "colour": 1
+            },
+            {
+              "kind": "jetty",
+              "colour": 1
+            },
+            {
+              "kind": "timber",
+              "colour": 1
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-smith",
+              "x": 0,
+              "y": 168
+            }
+          ],
+          "corner": false,
+          "roof_overlays": [
+            {
+              "file": "chimney-3",
+              "x": 8,
+              "y": 38
+            }
+          ],
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 192
+            }
+          ],
+          "shared_flat_left": false,
+          "district": "trade-test"
+        },
+        "east_receiver": [
+          528,
+          192,
+          32,
+          240
+        ]
+      },
+      {
+        "id": "C-east-five",
+        "x": 48,
+        "base": 816,
+        "spec": {
+          "view": "side",
+          "direction": "E",
+          "depth": 2,
+          "floors": 5,
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 192
+            }
+          ]
+        }
+      },
+      {
+        "id": "C-rear-one",
+        "x": 144,
+        "base": 816,
+        "spec": {
+          "view": "back",
+          "width": 1,
+          "floors": 1
+        }
+      },
+      {
+        "id": "C-rear-one-west",
+        "x": 384,
+        "base": 816,
+        "spec": {
+          "view": "back",
+          "width": 1,
+          "floors": 1
+        }
+      },
+      {
+        "id": "C-west-five",
+        "x": 432,
+        "base": 816,
+        "spec": {
+          "view": "side",
+          "direction": "W",
+          "depth": 2,
+          "floors": 5,
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 192
+            }
+          ]
+        }
+      }
+    ],
+    "props": [],
+    "roads": [
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          432,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          432,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          816,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          816,
+          384,
+          48
+        ],
+        "horizontal": true
+      }
+    ],
+    "features": {
+      "joins": "5|1 and 1|5; zero interlot gap",
+      "firewall": "4px masonry returns with original B coping/flashing; all fronts now1\u20132cells",
+      "shadow": "height responsive6..30px south/east; end lots reserve32px east receiver; union opacity112/255",
+      "C_join": "Both separately lit C returns beside1-storey rear walls, with original B coping/flashing."
+    },
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": []
+  },
+  "district-market": {
+    "size": [
+      768,
+      864
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          384,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          384,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          0,
+          48,
+          384
+        ]
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          288,
+          480,
+          96,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          624,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          816,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          768,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          576,
+          576,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          480,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          480,
+          576,
+          96,
+          48
+        ]
+      }
+    ],
+    "lots": [
+      {
+        "id": "market-0",
+        "x": 0,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-w2",
+          "roof_file": "district-market-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          384
+        ]
+      },
+      {
+        "id": "market-1",
+        "x": 96,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v1-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "inn-front",
+          "roof_file": "district-market-roof-v1-w2",
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          384
+        ]
+      },
+      {
+        "id": "market-2",
+        "x": 240,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-v2-w2",
+          "roof_file": "district-market-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          384
+        ]
+      },
+      {
+        "id": "market-3",
+        "x": 384,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-w2",
+          "roof_file": "district-market-roof-w2",
+          "roof_overlays": [
+            {
+              "file": "chimney-0",
+              "x": 8,
+              "y": 50
+            },
+            {
+              "file": "chimney-smoke",
+              "x": 8,
+              "y": 8
+            }
+          ],
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          384
+        ]
+      },
+      {
+        "id": "market-4",
+        "x": 480,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "inn-front",
+          "roof_file": "district-market-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          384
+        ]
+      },
+      {
+        "id": "market-5",
+        "x": 672,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-v2-w2",
+          "roof_file": "district-market-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          384
+        ]
+      },
+      {
+        "id": "market-6",
+        "x": 0,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-w2",
+          "roof_file": "district-market-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          816
+        ]
+      },
+      {
+        "id": "market-7",
+        "x": 96,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "inn-front",
+          "roof_file": "district-market-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          816
+        ]
+      },
+      {
+        "id": "market-8",
+        "x": 240,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-market-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-v2-w2",
+          "roof_file": "district-market-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          816
+        ]
+      },
+      {
+        "id": "market-9",
+        "x": 384,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-w2",
+          "roof_file": "district-market-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          768
+        ]
+      },
+      {
+        "id": "market-10",
+        "x": 480,
+        "base": 576,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "inn-front",
+          "roof_file": "district-market-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          480,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          576
+        ]
+      },
+      {
+        "id": "market-11",
+        "x": 672,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-v2-w2",
+          "roof_file": "district-market-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          768
+        ]
+      },
+      {
+        "id": "market-wedge-return",
+        "x": 480,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "market",
+          "ground_file": "district-market-ground-v2-w2",
+          "roof_file": "district-market-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          768
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 48,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 96,
+        "base": 504
+      },
+      {
+        "file": "yard-1",
+        "x": 144,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 504
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 432,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 504
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 552
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 576,
+        "cast_east": true,
+        "owner": [
+          240,
+          528,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "district-market-scales",
+        "x": 384,
+        "base": 568,
+        "owner": [
+          384,
+          480,
+          96,
+          96
+        ]
+      },
+      {
+        "file": "washing-line",
+        "x": 120,
+        "base": 616,
+        "owner": [
+          120,
+          576,
+          96,
+          48
+        ],
+        "overhead": true
+      },
+      {
+        "file": "cat",
+        "x": 260,
+        "base": 604,
+        "owner": [
+          240,
+          576,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 600
+      },
+      {
+        "file": "fence-0",
+        "x": 432,
+        "base": 600
+      }
+    ],
+    "clear_routes": [
+      [
+        336,
+        0,
+        48,
+        816
+      ],
+      [
+        0,
+        384,
+        384,
+        96
+      ],
+      [
+        576,
+        624,
+        48,
+        144
+      ],
+      [
+        480,
+        576,
+        144,
+        48
+      ],
+      [
+        384,
+        384,
+        384,
+        48
+      ]
+    ],
+    "gardens": [
+      [
+        0,
+        480,
+        96,
+        96
+      ],
+      [
+        96,
+        480,
+        96,
+        96
+      ],
+      [
+        192,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        480,
+        96,
+        96
+      ],
+      [
+        672,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        576,
+        96,
+        48
+      ]
+    ],
+    "features": {
+      "district": "market",
+      "T": [
+        7,
+        8
+      ],
+      "bent": [
+        7,
+        10
+      ],
+      "dead_end": [
+        12,
+        13
+      ],
+      "wedge": "Southern return closes the stepped block; a deliberate96x48 paved entrance court separates the northern frontage and joins the eastern48px side lane.",
+      "width_runs_max_cells": 8,
+      "wall_colours_max": 2,
+      "roof_colours": 1,
+      "washing": "Owned passage at x120..216,y576..624; no shed crosses the shirt/trousers/supports."
+    },
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": [
+      {
+        "id": "market-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  },
+  "district-temple": {
+    "size": [
+      768,
+      864
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          384,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          384,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          0,
+          48,
+          384
+        ]
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          288,
+          480,
+          96,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          624,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          816,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          768,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          576,
+          576,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          480,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          480,
+          576,
+          96,
+          48
+        ]
+      }
+    ],
+    "lots": [
+      {
+        "id": "temple-0",
+        "x": 0,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-w2",
+          "roof_file": "district-temple-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          384
+        ]
+      },
+      {
+        "id": "temple-1",
+        "x": 96,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-temple-storey-v1-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v1-w2",
+          "roof_file": "district-temple-roof-v1-w2",
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          384
+        ]
+      },
+      {
+        "id": "temple-2",
+        "x": 240,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v2-w2",
+          "roof_file": "district-temple-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          384
+        ]
+      },
+      {
+        "id": "temple-3",
+        "x": 384,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-temple-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-w2",
+          "roof_file": "district-temple-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          384
+        ]
+      },
+      {
+        "id": "temple-4",
+        "x": 480,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v1-w2",
+          "roof_file": "district-temple-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          384
+        ]
+      },
+      {
+        "id": "temple-5",
+        "x": 672,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-temple-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v2-w2",
+          "roof_file": "district-temple-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          384
+        ]
+      },
+      {
+        "id": "temple-6",
+        "x": 0,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-temple-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-w2",
+          "roof_file": "district-temple-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          816
+        ]
+      },
+      {
+        "id": "temple-7",
+        "x": 96,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v1-w2",
+          "roof_file": "district-temple-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          816
+        ]
+      },
+      {
+        "id": "temple-8",
+        "x": 240,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-temple-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v2-w2",
+          "roof_file": "district-temple-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          816
+        ]
+      },
+      {
+        "id": "temple-9",
+        "x": 384,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-w2",
+          "roof_file": "district-temple-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          768
+        ]
+      },
+      {
+        "id": "temple-10",
+        "x": 480,
+        "base": 576,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v1-w2",
+          "roof_file": "district-temple-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          480,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          576
+        ]
+      },
+      {
+        "id": "temple-11",
+        "x": 672,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v2-w2",
+          "roof_file": "district-temple-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          768
+        ]
+      },
+      {
+        "id": "temple-wedge-return",
+        "x": 480,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "temple",
+          "ground_file": "district-temple-ground-v2-w2",
+          "roof_file": "district-temple-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          768
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 48,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 96,
+        "base": 504
+      },
+      {
+        "file": "yard-1",
+        "x": 144,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 504
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 432,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 504
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 552
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 576,
+        "cast_east": true,
+        "owner": [
+          240,
+          528,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "district-temple-candles",
+        "x": 384,
+        "base": 568,
+        "owner": [
+          384,
+          480,
+          96,
+          96
+        ]
+      },
+      {
+        "file": "washing-line",
+        "x": 120,
+        "base": 616,
+        "owner": [
+          120,
+          576,
+          96,
+          48
+        ],
+        "overhead": true
+      },
+      {
+        "file": "cat",
+        "x": 260,
+        "base": 604,
+        "owner": [
+          240,
+          576,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 600
+      },
+      {
+        "file": "fence-0",
+        "x": 432,
+        "base": 600
+      }
+    ],
+    "clear_routes": [
+      [
+        336,
+        0,
+        48,
+        816
+      ],
+      [
+        0,
+        384,
+        384,
+        96
+      ],
+      [
+        576,
+        624,
+        48,
+        144
+      ],
+      [
+        480,
+        576,
+        144,
+        48
+      ],
+      [
+        384,
+        384,
+        384,
+        48
+      ]
+    ],
+    "gardens": [
+      [
+        0,
+        480,
+        96,
+        96
+      ],
+      [
+        96,
+        480,
+        96,
+        96
+      ],
+      [
+        192,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        480,
+        96,
+        96
+      ],
+      [
+        672,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        576,
+        96,
+        48
+      ]
+    ],
+    "features": {
+      "district": "temple",
+      "T": [
+        7,
+        8
+      ],
+      "bent": [
+        7,
+        10
+      ],
+      "dead_end": [
+        12,
+        13
+      ],
+      "wedge": "Southern return closes the stepped block; a deliberate96x48 paved entrance court separates the northern frontage and joins the eastern48px side lane.",
+      "width_runs_max_cells": 8,
+      "wall_colours_max": 2,
+      "roof_colours": 1,
+      "washing": "Owned passage at x120..216,y576..624; no shed crosses the shirt/trousers/supports."
+    },
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": [
+      {
+        "id": "temple-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  },
+  "district-craft": {
+    "size": [
+      768,
+      864
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          384,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          384,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          0,
+          48,
+          384
+        ]
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          288,
+          480,
+          96,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          624,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          816,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          768,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          576,
+          576,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          480,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          480,
+          576,
+          96,
+          48
+        ]
+      }
+    ],
+    "lots": [
+      {
+        "id": "craft-0",
+        "x": 0,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-w2",
+          "roof_file": "district-craft-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          384
+        ]
+      },
+      {
+        "id": "craft-1",
+        "x": 96,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-craft-storey-v1-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v1-w2",
+          "roof_file": "district-craft-roof-v1-w2",
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          384
+        ]
+      },
+      {
+        "id": "craft-2",
+        "x": 240,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v2-w2",
+          "roof_file": "district-craft-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          384
+        ]
+      },
+      {
+        "id": "craft-3",
+        "x": 384,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-craft-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-w2",
+          "roof_file": "district-craft-roof-w2",
+          "roof_overlays": [
+            {
+              "file": "chimney-0",
+              "x": 8,
+              "y": 50
+            },
+            {
+              "file": "forge-smoke",
+              "x": 6,
+              "y": 8
+            }
+          ],
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          384
+        ]
+      },
+      {
+        "id": "craft-4",
+        "x": 480,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v1-w2",
+          "roof_file": "district-craft-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          384
+        ]
+      },
+      {
+        "id": "craft-5",
+        "x": 672,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-craft-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v2-w2",
+          "roof_file": "district-craft-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          384
+        ]
+      },
+      {
+        "id": "craft-6",
+        "x": 0,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-craft-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-w2",
+          "roof_file": "district-craft-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          816
+        ]
+      },
+      {
+        "id": "craft-7",
+        "x": 96,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v1-w2",
+          "roof_file": "district-craft-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          816
+        ]
+      },
+      {
+        "id": "craft-8",
+        "x": 240,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-craft-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v2-w2",
+          "roof_file": "district-craft-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          816
+        ]
+      },
+      {
+        "id": "craft-9",
+        "x": 384,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-w2",
+          "roof_file": "district-craft-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          768
+        ]
+      },
+      {
+        "id": "craft-10",
+        "x": 480,
+        "base": 576,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v1-w2",
+          "roof_file": "district-craft-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          480,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          576
+        ]
+      },
+      {
+        "id": "craft-11",
+        "x": 672,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v2-w2",
+          "roof_file": "district-craft-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          768
+        ]
+      },
+      {
+        "id": "craft-wedge-return",
+        "x": 480,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 2,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "craft",
+          "ground_file": "district-craft-ground-v2-w2",
+          "roof_file": "district-craft-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          768
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 48,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 96,
+        "base": 504
+      },
+      {
+        "file": "yard-1",
+        "x": 144,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 504
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 432,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 504
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 552
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 576,
+        "cast_east": true,
+        "owner": [
+          240,
+          528,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "district-craft-drying-rack",
+        "x": 384,
+        "base": 568,
+        "owner": [
+          384,
+          480,
+          96,
+          96
+        ]
+      },
+      {
+        "file": "washing-line",
+        "x": 120,
+        "base": 616,
+        "owner": [
+          120,
+          576,
+          96,
+          48
+        ],
+        "overhead": true
+      },
+      {
+        "file": "cat",
+        "x": 260,
+        "base": 604,
+        "owner": [
+          240,
+          576,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 600
+      },
+      {
+        "file": "fence-0",
+        "x": 432,
+        "base": 600
+      }
+    ],
+    "clear_routes": [
+      [
+        336,
+        0,
+        48,
+        816
+      ],
+      [
+        0,
+        384,
+        384,
+        96
+      ],
+      [
+        576,
+        624,
+        48,
+        144
+      ],
+      [
+        480,
+        576,
+        144,
+        48
+      ],
+      [
+        384,
+        384,
+        384,
+        48
+      ]
+    ],
+    "gardens": [
+      [
+        0,
+        480,
+        96,
+        96
+      ],
+      [
+        96,
+        480,
+        96,
+        96
+      ],
+      [
+        192,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        480,
+        96,
+        96
+      ],
+      [
+        672,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        576,
+        96,
+        48
+      ]
+    ],
+    "features": {
+      "district": "craft",
+      "T": [
+        7,
+        8
+      ],
+      "bent": [
+        7,
+        10
+      ],
+      "dead_end": [
+        12,
+        13
+      ],
+      "wedge": "Southern return closes the stepped block; a deliberate96x48 paved entrance court separates the northern frontage and joins the eastern48px side lane.",
+      "width_runs_max_cells": 8,
+      "wall_colours_max": 2,
+      "roof_colours": 1,
+      "washing": "Owned passage at x120..216,y576..624; no shed crosses the shirt/trousers/supports."
+    },
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": [
+      {
+        "id": "craft-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  },
+  "district-rich": {
+    "size": [
+      768,
+      1008
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          384,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          384,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          0,
+          48,
+          384
+        ]
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          288,
+          480,
+          96,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          624,
+          48,
+          336
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          960,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          768,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          576,
+          576,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          480,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          480,
+          576,
+          96,
+          48
+        ]
+      }
+    ],
+    "lots": [
+      {
+        "id": "rich-0",
+        "x": 0,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-w2",
+          "roof_file": "district-rich-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          384
+        ]
+      },
+      {
+        "id": "rich-1",
+        "x": 96,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v1-w2",
+          "roof_file": "district-rich-roof-v1-w2",
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          384
+        ]
+      },
+      {
+        "id": "rich-2",
+        "x": 240,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "oriel",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v2-w2",
+          "roof_file": "district-rich-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          384
+        ]
+      },
+      {
+        "id": "rich-3",
+        "x": 384,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "district-rich-banner",
+              "x": 72,
+              "y": 8
+            }
+          ],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-w2",
+          "roof_file": "district-rich-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          384
+        ]
+      },
+      {
+        "id": "rich-4",
+        "x": 480,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v1-w2",
+          "roof_file": "district-rich-roof-v1-w2",
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          384
+        ]
+      },
+      {
+        "id": "rich-5",
+        "x": 672,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v2-w2",
+          "roof_file": "district-rich-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          384
+        ]
+      },
+      {
+        "id": "rich-6",
+        "x": 0,
+        "base": 960,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-w2",
+          "roof_file": "district-rich-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          864,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          960
+        ]
+      },
+      {
+        "id": "rich-7",
+        "x": 96,
+        "base": 960,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v1-w2",
+          "roof_file": "district-rich-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          864,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          960
+        ]
+      },
+      {
+        "id": "rich-8",
+        "x": 240,
+        "base": 960,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v2-w2",
+          "roof_file": "district-rich-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          864,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          960
+        ]
+      },
+      {
+        "id": "rich-9",
+        "x": 384,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-w2",
+          "roof_file": "district-rich-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 96
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          768
+        ]
+      },
+      {
+        "id": "rich-10",
+        "x": 480,
+        "base": 576,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v1-w2",
+          "roof_file": "district-rich-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          480,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          576
+        ]
+      },
+      {
+        "id": "rich-11",
+        "x": 672,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-rich-storey-v2-w2"
+            },
+            {
+              "kind": "plaster",
+              "colour": 0,
+              "file": "district-rich-storey-w2"
+            },
+            {
+              "kind": "jetty",
+              "colour": 0,
+              "file": "district-rich-storey-v1-w2"
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v2-w2",
+          "roof_file": "district-rich-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          768
+        ]
+      },
+      {
+        "id": "rich-wedge-return",
+        "x": 480,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 1,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "rich",
+          "ground_file": "district-rich-ground-v2-w2",
+          "roof_file": "district-rich-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          768
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 48,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 96,
+        "base": 504
+      },
+      {
+        "file": "yard-1",
+        "x": 144,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 504
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 432,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 504
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 552
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 576,
+        "cast_east": true,
+        "owner": [
+          240,
+          528,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "washing-line",
+        "x": 120,
+        "base": 616,
+        "owner": [
+          120,
+          576,
+          96,
+          48
+        ],
+        "overhead": true
+      },
+      {
+        "file": "cat",
+        "x": 260,
+        "base": 604,
+        "owner": [
+          240,
+          576,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 600
+      },
+      {
+        "file": "fence-0",
+        "x": 432,
+        "base": 600
+      }
+    ],
+    "clear_routes": [
+      [
+        336,
+        0,
+        48,
+        960
+      ],
+      [
+        0,
+        384,
+        384,
+        96
+      ],
+      [
+        576,
+        624,
+        48,
+        144
+      ],
+      [
+        480,
+        576,
+        144,
+        48
+      ],
+      [
+        384,
+        384,
+        384,
+        48
+      ]
+    ],
+    "gardens": [
+      [
+        0,
+        480,
+        96,
+        96
+      ],
+      [
+        96,
+        480,
+        96,
+        96
+      ],
+      [
+        192,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        480,
+        96,
+        96
+      ],
+      [
+        672,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        576,
+        96,
+        48
+      ]
+    ],
+    "features": {
+      "district": "rich",
+      "T": [
+        7,
+        8
+      ],
+      "bent": [
+        7,
+        10
+      ],
+      "dead_end": [
+        12,
+        13
+      ],
+      "wedge": "Southern return closes the stepped block; a deliberate96x48 paved entrance court separates the northern frontage and joins the eastern48px side lane.",
+      "width_runs_max_cells": 8,
+      "wall_colours_max": 2,
+      "roof_colours": 1,
+      "washing": "Owned passage at x120..216,y576..624; no shed crosses the shirt/trousers/supports."
+    },
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": [
+      {
+        "id": "rich-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-6",
+        "rect": [
+          48,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-7",
+        "rect": [
+          144,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-8",
+        "rect": [
+          288,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  },
+  "district-poor": {
+    "size": [
+      768,
+      864
+    ],
+    "roads": [
+      {
+        "file": "street-main",
+        "rect": [
+          0,
+          384,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          384,
+          384,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          0,
+          48,
+          384
+        ]
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          288,
+          480,
+          96,
+          144
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          336,
+          624,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          0,
+          816,
+          384,
+          48
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-main",
+        "rect": [
+          384,
+          768,
+          384,
+          96
+        ],
+        "horizontal": true
+      },
+      {
+        "file": "street-side",
+        "rect": [
+          576,
+          576,
+          48,
+          192
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          480,
+          48,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          288,
+          576,
+          96,
+          48
+        ]
+      },
+      {
+        "file": "mud-edge",
+        "rect": [
+          0,
+          576,
+          288,
+          48
+        ]
+      },
+      {
+        "file": "lane",
+        "rect": [
+          96,
+          480,
+          24,
+          144
+        ]
+      },
+      {
+        "file": "cobble-large",
+        "rect": [
+          480,
+          576,
+          96,
+          48
+        ]
+      }
+    ],
+    "lots": [
+      {
+        "id": "poor-0",
+        "x": 0,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-w2",
+          "roof_file": "district-poor-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          384
+        ]
+      },
+      {
+        "id": "poor-1",
+        "x": 96,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-poor-storey-v1-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v1-w2",
+          "roof_file": "district-poor-roof-v1-w2",
+          "firewalls": [
+            {
+              "side": "left",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          384
+        ]
+      },
+      {
+        "id": "poor-2",
+        "x": 240,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v2-w2",
+          "roof_file": "district-poor-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          384
+        ]
+      },
+      {
+        "id": "poor-3",
+        "x": 384,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-poor-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-w2",
+          "roof_file": "district-poor-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          384
+        ]
+      },
+      {
+        "id": "poor-4",
+        "x": 480,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v1-w2",
+          "roof_file": "district-poor-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          384
+        ]
+      },
+      {
+        "id": "poor-5",
+        "x": 672,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-poor-storey-v2-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v2-w2",
+          "roof_file": "district-poor-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          288,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          384
+        ]
+      },
+      {
+        "id": "poor-6",
+        "x": 0,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-poor-storey-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-w2",
+          "roof_file": "district-poor-roof-w2",
+          "firewalls": [
+            {
+              "side": "right",
+              "height": 48
+            }
+          ],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          0,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          72,
+          816
+        ]
+      },
+      {
+        "id": "poor-7",
+        "x": 96,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v1-w2",
+          "roof_file": "district-poor-roof-v1-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          96,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          168,
+          816
+        ]
+      },
+      {
+        "id": "poor-8",
+        "x": 240,
+        "base": 816,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0,
+              "file": "district-poor-storey-v2-w2"
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v2-w2",
+          "roof_file": "district-poor-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          240,
+          720,
+          96,
+          96
+        ],
+        "entrance": [
+          312,
+          816
+        ]
+      },
+      {
+        "id": "poor-9",
+        "x": 384,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-w2",
+          "roof_file": "district-poor-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          384,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          456,
+          768
+        ]
+      },
+      {
+        "id": "poor-10",
+        "x": 480,
+        "base": 576,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v1-w2",
+          "roof_file": "district-poor-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          480,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          576
+        ]
+      },
+      {
+        "id": "poor-11",
+        "x": 672,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v2-w2",
+          "roof_file": "district-poor-roof-v2-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          672,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          744,
+          768
+        ]
+      },
+      {
+        "id": "poor-wedge-return",
+        "x": 480,
+        "base": 768,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false,
+          "district": "poor",
+          "ground_file": "district-poor-ground-v2-w2",
+          "roof_file": "district-poor-roof-w2",
+          "firewalls": [],
+          "shared_flat_left": false
+        },
+        "footprint": [
+          480,
+          672,
+          96,
+          96
+        ],
+        "entrance": [
+          552,
+          768
+        ]
+      }
+    ],
+    "props": [
+      {
+        "file": "fence-0",
+        "x": 0,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 48,
+        "base": 552
+      },
+      {
+        "file": "yard-1",
+        "x": 144,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 192,
+        "base": 504
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 504
+      },
+      {
+        "file": "yard-0",
+        "x": 432,
+        "base": 552
+      },
+      {
+        "file": "fence-0",
+        "x": 672,
+        "base": 504
+      },
+      {
+        "file": "yard-3",
+        "x": 720,
+        "base": 552
+      },
+      {
+        "file": "yard-2",
+        "x": 240,
+        "base": 576,
+        "cast_east": true,
+        "owner": [
+          240,
+          528,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "district-poor-shed",
+        "x": 384,
+        "base": 568,
+        "owner": [
+          384,
+          480,
+          96,
+          96
+        ]
+      },
+      {
+        "file": "washing-line",
+        "x": 120,
+        "base": 616,
+        "owner": [
+          120,
+          576,
+          96,
+          48
+        ],
+        "overhead": true
+      },
+      {
+        "file": "cat",
+        "x": 260,
+        "base": 604,
+        "owner": [
+          240,
+          576,
+          48,
+          48
+        ]
+      },
+      {
+        "file": "barrel",
+        "x": 72,
+        "base": 604,
+        "owner": [
+          48,
+          576,
+          48,
+          48
+        ],
+        "cast_east": true
+      },
+      {
+        "file": "fence-0",
+        "x": 384,
+        "base": 600
+      },
+      {
+        "file": "fence-0",
+        "x": 432,
+        "base": 600
+      }
+    ],
+    "clear_routes": [
+      [
+        336,
+        0,
+        48,
+        816
+      ],
+      [
+        0,
+        384,
+        384,
+        96
+      ],
+      [
+        576,
+        624,
+        48,
+        144
+      ],
+      [
+        480,
+        576,
+        144,
+        48
+      ],
+      [
+        384,
+        384,
+        384,
+        48
+      ]
+    ],
+    "gardens": [
+      [
+        0,
+        480,
+        96,
+        96
+      ],
+      [
+        96,
+        480,
+        96,
+        96
+      ],
+      [
+        192,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        480,
+        96,
+        96
+      ],
+      [
+        672,
+        480,
+        96,
+        96
+      ],
+      [
+        384,
+        576,
+        96,
+        48
+      ]
+    ],
+    "features": {
+      "district": "poor",
+      "T": [
+        7,
+        8
+      ],
+      "bent": [
+        7,
+        10
+      ],
+      "dead_end": [
+        12,
+        13
+      ],
+      "wedge": "Southern return closes the stepped block; a deliberate96x48 paved entrance court separates the northern frontage and joins the eastern48px side lane.",
+      "width_runs_max_cells": 8,
+      "wall_colours_max": 2,
+      "roof_colours": 1,
+      "washing": "Owned passage at x120..216,y576..624; no shed crosses the shirt/trousers/supports."
+    },
+    "e_ground": true,
+    "junction_file": "cobble-large",
+    "kerb_turns": [],
+    "entrance_approaches": [
+      {
+        "id": "poor-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  }
+}

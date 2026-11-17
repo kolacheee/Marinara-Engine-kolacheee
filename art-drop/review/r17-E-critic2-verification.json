@@ -1,0 +1,2452 @@
+{
+  "checks": 149,
+  "passed": 149,
+  "failures": [],
+  "new_mode_samples": 294912,
+  "protected_production_files": 2330,
+  "passing_E_PNGs": 75,
+  "street_segments": 66,
+  "entrance_count": 76,
+  "entrance_approaches": {
+    "L-block": [],
+    "market": [
+      {
+        "id": "trade-smith",
+        "rect": [
+          582,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-baker",
+        "rect": [
+          678,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-apothecary",
+        "rect": [
+          774,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-cobbler",
+        "rect": [
+          918,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-inn",
+        "rect": [
+          582,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-scribe",
+        "rect": [
+          678,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-tailor",
+        "rect": [
+          774,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "trade-butcher",
+        "rect": [
+          918,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "cathedral",
+        "rect": [
+          248,
+          1440,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "guildhall",
+        "rect": [
+          312,
+          912,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "gatehouse",
+        "rect": [
+          1008,
+          432,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ],
+    "height-test": [],
+    "district-market": [
+      {
+        "id": "market-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "market-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ],
+    "district-temple": [
+      {
+        "id": "temple-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "temple-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ],
+    "district-craft": [
+      {
+        "id": "craft-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "craft-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ],
+    "district-rich": [
+      {
+        "id": "rich-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-6",
+        "rect": [
+          48,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-7",
+        "rect": [
+          144,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-8",
+        "rect": [
+          288,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "rich-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ],
+    "district-poor": [
+      {
+        "id": "poor-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      },
+      {
+        "id": "poor-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    ]
+  },
+  "paving_luminance": {
+    "cobble-small": {
+      "eight_row_luminance": [
+        131.8125,
+        132.65104166666666,
+        132.9296875,
+        133.44791666666666,
+        132.61458333333334,
+        132.484375
+      ],
+      "range": 1.6354166666666572,
+      "top_bottom_difference": 0.671875
+    },
+    "street-side": {
+      "eight_row_luminance": [
+        131.44375,
+        132.440625,
+        132.759375,
+        133.375,
+        132.715625,
+        132.45625
+      ],
+      "range": 1.9312500000000057,
+      "top_bottom_difference": 1.012500000000017
+    },
+    "lane": {
+      "eight_row_luminance": [
+        131.41666666666666,
+        132.49305555555554,
+        132.59027777777777,
+        133.00694444444446,
+        132.07638888888889,
+        132.8125
+      ],
+      "range": 1.5902777777777999,
+      "top_bottom_difference": 1.3958333333333428
+    }
+  },
+  "washing_occluded_pixels": {
+    "L-block": 0,
+    "market": 0,
+    "district-market": 0,
+    "district-temple": 0,
+    "district-craft": 0,
+    "district-rich": 0,
+    "district-poor": 0
+  },
+  "results": [
+    {
+      "check": "all passing and earlier production files byte-identical",
+      "passed": true,
+      "detail": {
+        "count": 2330,
+        "changed": []
+      }
+    },
+    {
+      "check": "75 passing Part E PNGs unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small.png changed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane.png changed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "compose.py changed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side.png changed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-a exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-a wrap replay",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-a original source hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-b exact64sample mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-b wrap replay",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small-b original source hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "selected A paint matches output",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small unchanged dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small no broad eight-row value drift",
+      "passed": true,
+      "detail": {
+        "eight_row_luminance": [
+          131.8125,
+          132.65104166666666,
+          132.9296875,
+          133.44791666666666,
+          132.61458333333334,
+          132.484375
+        ],
+        "range": 1.6354166666666572,
+        "top_bottom_difference": 0.671875
+      }
+    },
+    {
+      "check": "cobble-small drawn interior transfer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "cobble-small paved interior vertical repeat seam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side unchanged dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side no broad eight-row value drift",
+      "passed": true,
+      "detail": {
+        "eight_row_luminance": [
+          131.44375,
+          132.440625,
+          132.759375,
+          133.375,
+          132.715625,
+          132.45625
+        ],
+        "range": 1.9312500000000057,
+        "top_bottom_difference": 1.012500000000017
+      }
+    },
+    {
+      "check": "street-side drawn interior transfer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side both kerbs/gutters byte-identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "street-side paved interior vertical repeat seam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane unchanged dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane no broad eight-row value drift",
+      "passed": true,
+      "detail": {
+        "eight_row_luminance": [
+          131.41666666666666,
+          132.49305555555554,
+          132.59027777777777,
+          133.00694444444446,
+          132.07638888888889,
+          132.8125
+        ],
+        "range": 1.5902777777777999,
+        "top_bottom_difference": 1.3958333333333428
+      }
+    },
+    {
+      "check": "lane drawn interior transfer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane both kerbs/gutters byte-identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "lane paved interior vertical repeat seam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "L-block recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "L-block east-shop sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "L-block washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "market recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-smith visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-smith",
+        "rect": [
+          582,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-baker visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-baker",
+        "rect": [
+          678,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-apothecary visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-apothecary",
+        "rect": [
+          774,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-cobbler visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-cobbler",
+        "rect": [
+          918,
+          864,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-inn visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-inn",
+        "rect": [
+          582,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-scribe visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-scribe",
+        "rect": [
+          678,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-tailor visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-tailor",
+        "rect": [
+          774,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-butcher visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "trade-butcher",
+        "rect": [
+          918,
+          1392,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market cathedral visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "cathedral",
+        "rect": [
+          248,
+          1440,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market guildhall visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "guildhall",
+        "rect": [
+          312,
+          912,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market gatehouse visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "gatehouse",
+        "rect": [
+          1008,
+          432,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "market trade-smith sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-baker sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-apothecary sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-cobbler sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-inn sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-scribe sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-tailor sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market trade-butcher sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "market washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "height-test recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "height-test height-0 sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "height-test height-3 sign leaves right entrance clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-market recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-market market-0 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-1 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-2 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-3 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-4 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-5 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-6 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-7 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-8 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-9 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-10 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-11 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market market-wedge-return visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "market-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-market full96x48 porch/arch court paved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-market court directly joins48px side lane",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-market audit detects old hidden approach",
+      "passed": true,
+      "detail": 2304
+    },
+    {
+      "check": "district-market washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-temple recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-temple temple-0 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-1 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-2 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-3 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-4 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-5 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-6 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-7 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-8 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-9 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-10 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-11 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple temple-wedge-return visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "temple-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-temple full96x48 porch/arch court paved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-temple court directly joins48px side lane",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-temple audit detects old hidden approach",
+      "passed": true,
+      "detail": 2304
+    },
+    {
+      "check": "district-temple washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-craft recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-craft craft-0 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-1 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-2 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-3 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-4 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-5 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-6 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-7 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-8 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-9 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-10 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-11 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft craft-wedge-return visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "craft-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-craft full96x48 porch/arch court paved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-craft court directly joins48px side lane",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-craft audit detects old hidden approach",
+      "passed": true,
+      "detail": 2304
+    },
+    {
+      "check": "district-craft washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-rich recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-rich rich-0 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-1 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-2 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-3 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-4 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-5 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-6 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-6",
+        "rect": [
+          48,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-7 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-7",
+        "rect": [
+          144,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-8 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-8",
+        "rect": [
+          288,
+          960,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-9 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-10 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-11 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich rich-wedge-return visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "rich-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-rich full96x48 porch/arch court paved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-rich court directly joins48px side lane",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-rich audit detects old hidden approach",
+      "passed": true,
+      "detail": 2304
+    },
+    {
+      "check": "district-rich washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "district-poor recorded entrance audit replays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor poor-0 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-0",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-1 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-1",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-2 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-2",
+        "rect": [
+          288,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-3 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-3",
+        "rect": [
+          432,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-4 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-4",
+        "rect": [
+          528,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-5 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-5",
+        "rect": [
+          720,
+          384,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-6 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-6",
+        "rect": [
+          48,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-7 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-7",
+        "rect": [
+          144,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-8 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-8",
+        "rect": [
+          288,
+          816,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-9 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-9",
+        "rect": [
+          432,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-10 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-10",
+        "rect": [
+          528,
+          576,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-11 visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-11",
+        "rect": [
+          720,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor poor-wedge-return visible48x48 approach",
+      "passed": true,
+      "detail": {
+        "id": "poor-wedge-return",
+        "rect": [
+          528,
+          768,
+          48,
+          48
+        ],
+        "blocked_pixels": 0,
+        "inside_canvas": true
+      }
+    },
+    {
+      "check": "district-poor full96x48 porch/arch court paved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor court directly joins48px side lane",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "district-poor audit detects old hidden approach",
+      "passed": true,
+      "detail": 2304
+    },
+    {
+      "check": "district-poor washing remains visible",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "poor lane all2592 interior pixels retain paving",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "poor lane all3456 pixels retain paving and kerbs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all eight trade signs remain mounted",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "general E audit passes",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "every street segment receives cast shade",
+      "passed": true,
+      "detail": 66
+    }
+  ]
+}
