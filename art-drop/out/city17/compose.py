@@ -1573,7 +1573,39 @@ def r_city_layout():
     l['features']=dict(grid=48,cells=[40,30],square='10x8 with2x2 northeast notch; church west, guild north, merchant walls east/south',life='six vendors, customers, unloading cart, fountain visitor, inhabited shared rear court',wall='one-cell service route; towers every8cells; south gate reaches square through96px elbow',material='terracotta dominant, two facade colours, neutral civic stone, rare poor repairs',routes='96/48/24 with T, jog, elbow and court termination',conflicts=['BRIEF17 sign dimensions and fixed0/47 course win over panel2 reductions','BRIEF17 street-jog and one/two-cell lot rules retained'])
     r_refine_lots(l)
     r_critic1_refine(l)
-    return l
+    base=json.dumps(l)
+    for seed in range(1701,1901):
+        c=json.loads(base);r_cycle1(c,seed)
+        if not r_repeat_audit(c)['failures']:return c
+    raise ValueError('no colourway seed passes the repeat audit')
+
+
+RECOLOURED=('roof-connected-r-w2','roof-gable-long-r-w2','roof-gable-deep-r-w2','roof-back-w1','roof-back-w2','roof-back-dormer-w2','roof-back-accent-r-w1','roof-rear-wing-r-w2','roof-corner-r-w2')
+
+
+def r_cycle1(l,seed=1701):
+    """Cycle 1: roof colourways (terracotta ~half, slate, brown shingle) and facade colourways."""
+    rng=random.Random(seed);rows={}
+    for b in l['lots']:rows.setdefault(b['base'],[]).append(b)
+    for base,row in rows.items():
+        row.sort(key=lambda b:b['x']);prev=[]
+        for b in row:
+            s=b['spec']
+            for _ in range(20):
+                c=rng.choice([0,0,0,0,1,1,2,2])
+                if prev[-2:]!=[c,c]:break
+            prev.append(c)
+            name=s.get('roof_file')
+            if s.get('district')=='poor' or (name and name.startswith('district-')):continue
+            if name:
+                if name.endswith('-c0') and c:s['roof_file']=name[:-1]+str(c)
+                elif name in RECOLOURED and c:s['roof_file']=f'{name}-cy{c}'
+            else:s['roof_colour']=c
+            if s.get('view','front')=='front':
+                fc=rng.choice([0,1,2])
+                for u in s.get('storeys',[]):
+                    if not u.get('file'):u['colour']=fc
+    l['gardens']=l.get('gardens',[])+[[0,0,1920,96]]
 
 
 def r_refine_lots(l):

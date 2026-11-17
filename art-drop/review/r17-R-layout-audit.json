@@ -1,14 +1,14 @@
 {
-  "buildings": 86,
+  "buildings": 73,
   "storeys": {
     "3": 25,
     "4": 6,
     "5": 2,
     "1": 1,
-    "2": 52
+    "2": 39
   },
   "repeat": {
-    "windows": 250,
+    "windows": 202,
     "failures": []
   }
 }
