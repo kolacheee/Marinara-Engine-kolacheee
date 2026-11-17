@@ -725,6 +725,22 @@ export interface SiteLevelMap {
 const SITE_HALL_ROOMS = new Set(["Great hall", "Nave", "Undercroft", "Burial hall"]);
 /** The rooms the way in opens into. */
 /** Rooms whose tables are set end to end down the middle. */
+/** A house's kitchen and offices, on the service side of its ground floor. */
+const SITE_SERVICE_ROOMS = new Set([
+  "Kitchen",
+  "Pantry",
+  "Servants' hall",
+  "Scullery",
+  "Laundry",
+  "Still room",
+  "Dairy",
+  "Butler's pantry",
+  "Housekeeper's room",
+  "Larder",
+  "Gun room",
+  "Steward's office",
+  "Estate office",
+]);
 const SITE_FEAST_ROOMS = new Set(["Great hall", "Dining room", "Refectory", "Servants' hall", "Chapter house"]);
 
 /** Rooms where many sleep, so their beds go in rows. */
@@ -1477,6 +1493,8 @@ function siteFrameOf(plan: SitePlan) {
   let backAt = { x: random() < 0.5 ? L + 2 : R - 2, y: T + Math.floor(H / 2) };
   /** A castle's wall stair: its foot in the ward against a side range, its head on the wall walk above. */
   let wallAt: { x: number; y: number; lower: { x: number; y: number } } | null = null;
+  /** A house's ground floor: the side of the front door its kitchen and offices are on. */
+  let serviceSide = 0;
 
   if (kind === "manor") {
     // The house's shape: a box, an L, a U round a forecourt, an H, or a T with its middle range forward.
@@ -1502,6 +1520,10 @@ function siteFrameOf(plan: SitePlan) {
       put(full, cellsOf({ x: L, y: B - h + 1, w, h }), 0);
       put(full, cellsOf({ x: R - w + 1, y: B - h + 1, w, h }), 0);
     }
+    // The ground floor in two sides either side of the front door, as a house is: the family's rooms and
+    // the hall on one, the kitchen and the offices on the other, the dining room and the kitchen each by
+    // the line between (history panel 2026-11-17: the kitchen thirty cells from the dining room).
+    serviceSide = random() < 0.5 ? 1 : 2;
     // A great house is built round a courtyard: open on the ground floor, a light well through the floors
     // above.
     if (plan.wealth === 3 && random() < 0.7) {
@@ -1812,8 +1834,20 @@ function siteFrameOf(plan: SitePlan) {
       claim: (room) => SITE_ENTRY_ROOMS.has(room.name),
       room: { name: "Vestibule", use: "post", size: 2, zone: "public", furniture: [2] },
     });
-    mainAt = { x: L + 2 + Math.floor(random() * (W - 4)), y: T + 2 + Math.floor(random() * Math.max(1, H / 2)) };
-    backAt = { x: 2 * cx - mainAt.x, y: T + 2 };
+    // The chapel at the surface is a chapel: its body down the middle from the vestibule to the altar at
+    // the far end, a few rooms either side (history panel 2026-11-17: eight rooms in a box, no chapel).
+    const cw = W >= 28 ? 7 : 5;
+    fixed.push({
+      kind: "hall",
+      cells: cellsOf({ x: cx - Math.floor(cw / 2), y: T, w: cw, h: H - 4 }),
+      on: onGround,
+      claim: (room) => room.name === "Mortuary chapel",
+      room: { name: "Mortuary chapel", use: "quiet", size: 3, zone: "public", furniture: [0, 2, 7] },
+    });
+    for (let y = T; y <= B; y++) for (let x = L; x <= R; x++) zone[at(x, y)] = x < cx ? 1 : 2;
+    const side = random() < 0.5 ? -1 : 1;
+    mainAt = { x: cx + side * (Math.floor(cw / 2) + 3), y: T + 2 + Math.floor(random() * Math.max(1, H / 2)) };
+    backAt = { x: cx - side * (Math.floor(cw / 2) + 3), y: T + 2 };
   }
 
   const groundMask = full.slice();
@@ -1968,6 +2002,7 @@ function siteFrameOf(plan: SitePlan) {
     T,
     B,
     zone,
+    serviceSide,
     fixed,
     maskOf,
     linkAt,
@@ -2269,7 +2304,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       true,
     );
   let left = room - growers.reduce((n, g) => n + regions[g]!.target, 0);
-  for (let k = 0; left > (rock ? 22 : 30) && growers.length < 30 && k < 20; k++) {
+  // A crypt's chapel keeps to a few rooms beside its body.
+  const most = kind === "crypt" && !rock ? 6 : 30;
+  for (let k = 0; left > (rock ? 22 : 30) && growers.length < most && k < 20; k++) {
     // Made-up rooms only while there are names not used yet: past that the planned rooms grow instead.
     if (!pool.some(([name]) => !used.has(name))) break;
     const want = left > 60 && random() < 0.4 ? 3 : left > 34 && random() < 0.6 ? 2 : 1;
@@ -2353,6 +2390,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           if (r.name === "Gatehouse" && !byPass[c]) s += 6;
         }
         if (rock && !byPass[c]) s += 30;
+        if (kind === "manor" && level.depth === 0 && frame.serviceSide && !(entry && SITE_ENTRY_ROOMS.has(r.name))) {
+          const service = SITE_SERVICE_ROOMS.has(siteBaseName(r.name));
+          if (service !== ((x < frame.cx ? 1 : 2) === frame.serviceSide)) s += 25;
+          // The dining room and the kitchen each against the line between the two sides.
+          if (r.name === "Dining room" || r.name === "Kitchen") s += Math.abs(x - frame.cx) * 0.4;
+        }
         if (region.hidden && !nearEdge[c]) s += 2;
         if (byOutside[c] && !region.hidden) s += 0.3;
         // Room to grow: a big room's seed where there is space round it.
