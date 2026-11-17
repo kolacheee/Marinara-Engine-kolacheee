@@ -729,6 +729,7 @@ const BARREL = 8,
   SEAT = 13,
   ANVIL = 14,
   STATUE = 15,
+  COLUMN = 16,
   RACK = 17,
   PALLET = 18,
   RANGE = 19,
@@ -2527,7 +2528,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         );
         if (owners.size !== 1) continue;
         const g = [...owners][0]!;
-        if (g < 0 || regions[g]!.kind !== "room") continue;
+        if (g < 0 || !["room", "pass", "stair", "hall", "entry"].includes(regions[g]!.kind)) continue;
         // Only out of a mass: some two-by-two of wall inside the building round this cell.
         const mass = [
           [1, mapW],
@@ -3019,7 +3020,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         for (let along = 2; along < (vertical ? r.h : r.w) - 2; along += 3) {
           const [x, y] = vertical ? [r.x + off, r.y + along] : [r.x + along, r.y + off];
           if (links.some((link) => link.x === x && link.y === y) || doorway(x, y)) continue;
-          ground[cell(x, y)] = "wall";
+          // A stone column standing free, not a stub of wall (gamer panel 2026-11-17); a crypt's pack has
+          // its own pillar.
+          if (plan.template === "crypt") ground[cell(x, y)] = "wall";
+          else props[cell(x, y)] = COLUMN;
         }
     }
   }

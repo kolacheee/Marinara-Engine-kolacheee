@@ -80,6 +80,12 @@ const RUG_ROOMS: Readonly<Record<string, string>> = {
   Library: "#3a2a5a",
   Study: "#5a3a1a",
   Nursery: "#2a5a5a",
+  // The great rooms' floors, so a ballroom or a saloon is not a bare field of boards (panel 2026-11-17).
+  Ballroom: "#2a3a5a",
+  Saloon: "#5a2a2a",
+  "Long gallery": "#3a4a2a",
+  "Withdrawing room": "#4a2a4a",
+  "Drawing room": "#4a2a4a",
 };
 const WALK_LONGEST_MS = 3000;
 /** Without the set's art: the ground in plain colours. */
