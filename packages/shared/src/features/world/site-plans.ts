@@ -1142,6 +1142,11 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [STATUE, "corner", 2],
   ],
   Apse: [[ALTAR, "center", 1]],
+  // The choir's stalls down both its long walls, the lectern between them.
+  Choir: [
+    [PEW, "wall", "all"],
+    [LECTERN, "center", 1],
+  ],
   Vestry: [
     [WARDROBE, "wall", 2],
     [CHEST, "corner"],
@@ -1537,6 +1542,72 @@ function siteFrameOf(plan: SitePlan) {
       claim: (room) => room.use === "open",
       room: { name: SITE_COURT_NAMES.keep, use: "open", size: 3, zone: "public", furniture: [] },
     });
+    // The back range laid out as a castle's is (history panel 2026-11-17): the donjon at one end, a square
+    // block behind a wall two thick; the great hall beside it, its dais at the donjon end; across its low end
+    // the screens passage from the ward, and past that the buttery and pantry, then the kitchen. Whatever
+    // is left at the far end is free for the chapel and the rest.
+    {
+      const westKeep = random() < 0.5;
+      const d = Math.max(7, Math.min(nb, Math.floor(W / 3)));
+      const rest = W - d;
+      const hw = Math.max(7, Math.min(14, Math.round(rest * 0.38)));
+      const sw = 2;
+      const bw = 4;
+      const kw = Math.max(5, Math.min(7, rest - hw - sw - bw - 1));
+      // Spans along the band, from the donjon's end outward.
+      const span = (from: number, w: number) => (westKeep ? { x: L + from, w } : { x: R - from - w + 1, w });
+      const donjon = span(0, d);
+      const hall = span(d, hw);
+      const screens = span(d + hw, sw);
+      const buttery = span(d + hw + sw, bw);
+      const kitchen = span(d + hw + sw + bw, kw);
+      if (d + hw + sw + bw + kw <= W) {
+        // The donjon's own wall: two thick, nothing grows in it.
+        for (const c of cellsOf({ x: donjon.x, y: T, w: donjon.w, h: nb })) zone[c] = -2;
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nb - 2 }),
+          on: onGround,
+          claim: (room) => room.name === "Keep store",
+          room: { name: "Keep store", use: "store", size: 2, zone: "private", furniture: [CHEST, CRATE, BARREL] },
+        });
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: hall.x, y: T, w: hall.w, h: nb }),
+          on: onGround,
+          claim: (room) => room.name === "Great hall",
+          room: { name: "Great hall", use: "holders", size: 3, zone: "public", furniture: [T, T, FIRE] },
+        });
+        fixed.push({
+          kind: "pass",
+          cells: cellsOf({ x: screens.x, y: T, w: screens.w, h: nb }),
+          on: onGround,
+          room: { name: "Screens passage", use: "post", size: 1, zone: "public", furniture: [] },
+        });
+        const half = Math.floor(nb / 2);
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: buttery.x, y: T, w: buttery.w, h: half }),
+          on: onGround,
+          claim: (room) => room.name === "Buttery",
+          room: { name: "Buttery", use: "store", size: 1, zone: "service", furniture: [BARREL, WINE] },
+        });
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: buttery.x, y: T + half, w: buttery.w, h: nb - half }),
+          on: onGround,
+          claim: (room) => room.name === "Pantry",
+          room: { name: "Pantry", use: "store", size: 1, zone: "service", furniture: [SHELF, CRATE] },
+        });
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: kitchen.x, y: T, w: kitchen.w, h: nb }),
+          on: onGround,
+          claim: (room) => room.name === "Kitchen",
+          room: { name: "Kitchen", use: "holders", size: 2, zone: "service", furniture: [FIRE, T] },
+        });
+      }
+    }
     const td = 3;
     const gateTowers = [
       { x: gx - 3, y: B + 1, w: 3, h: td },
@@ -1601,20 +1672,24 @@ function siteFrameOf(plan: SitePlan) {
     mainAt = { x: L + 3 + Math.floor(random() * 4), y: T + nb - 3 };
     backAt = { x: R - 3 - Math.floor(random() * 4), y: T + 2 };
   } else if (kind === "temple") {
-    // The nave down the middle with its aisles, the transepts across it near the far end (a cross), the
-    // narthex at the door, the apse past the far wall; a cloister on one side against the nave.
+    // Laid out as a church is: the choir and its stalls at the high end under the apse, the crossing with a
+    // transept arm either side below it, the nave and its arcades down to the narthex at the west door. On
+    // one side the cloister against the nave, its walk round the garth, the claustral ranges off the walk:
+    // the chapter house and the dorter on the outer range, the refectory across the front (history panel
+    // 2026-11-17: a church plan, not a hall with rooms stuck on).
     const nw = W >= 26 ? 11 : 9;
     const nx = cx - Math.floor(nw / 2);
     const nh = 3;
     const ta = H >= 22 ? 4 : 3;
-    const ty = T + 2 + Math.floor(random() * 2);
+    const chh = H >= 18 ? 5 : 4;
+    const ty = T + chh + Math.floor(random() * 2);
     const ext = Math.max(3, Math.min(6, Math.floor((nx - L) * 0.5)));
     for (let y = T; y <= B; y++) for (let x = L; x <= R; x++) zone[at(x, y)] = x < nx ? 1 : x >= nx + nw ? 2 : -2;
     const crossing = [
       ...cellsOf({ x: nx - ext, y: ty, w: ext, h: ta }),
       ...cellsOf({ x: nx + nw, y: ty, w: ext, h: ta }),
     ];
-    const naveRect = { x: nx, y: T, w: nw, h: H - nh };
+    const naveRect = { x: nx, y: T + chh, w: nw, h: H - nh - chh };
     fixed.push({
       kind: "hall",
       cells: [...cellsOf(naveRect), ...crossing],
@@ -1622,9 +1697,18 @@ function siteFrameOf(plan: SitePlan) {
       claim: (room) => SITE_HALL_ROOMS.has(room.name),
       room: { name: "Nave", use: "holders", size: 3, zone: "public", furniture: [T] },
     });
+    // The choir: the stalls facing each other across it, through a wide arch from the crossing.
+    fixed.push({
+      kind: "room",
+      cells: cellsOf({ x: nx, y: T, w: nw, h: chh }),
+      on: onGround,
+      claim: (room) => room.name === "Choir",
+      room: { name: "Choir", use: "quiet", size: 2, zone: "private", furniture: [PEW] },
+      arch: true,
+    });
     fixed.push({
       kind: "hall",
-      cells: cellsOf(naveRect),
+      cells: cellsOf({ x: nx, y: T, w: nw, h: H - nh }),
       on: (level) => level.depth < 0,
       claim: (room) => SITE_HALL_ROOMS.has(room.name),
       room: { name: "Undercroft", use: "squat", size: 3, zone: "public", furniture: [CHEST] },
@@ -1636,11 +1720,14 @@ function siteFrameOf(plan: SitePlan) {
       claim: (room) => SITE_ENTRY_ROOMS.has(room.name),
       room: { name: "Narthex", use: "post", size: 2, zone: "public", furniture: [T] },
     });
-    const aw = nw >= 11 ? 7 : 5;
-    const apse = cellsOf(
-      { x: cx - Math.floor(aw / 2), y: T - 4, w: aw, h: 3 },
-      (x, y) => y > T - 4 || Math.abs(x - cx) <= Math.floor(aw / 2) - 1,
-    );
+    // The apse: the sanctuary, its altar, rounded at its far end.
+    const aw = nw - 2;
+    const ad = 4;
+    const apse = cellsOf({ x: cx - Math.floor(aw / 2), y: T - ad - 1, w: aw, h: ad }, (x, y) => {
+      const fromEnd = y - (T - ad - 1);
+      const half = Math.floor(aw / 2);
+      return fromEnd >= 2 || Math.abs(x - cx) <= half - (2 - fromEnd);
+    });
     groundOnly = apse;
     fixed.push({
       kind: "apse",
@@ -1652,12 +1739,15 @@ function siteFrameOf(plan: SitePlan) {
     });
     const left = random() < 0.5;
     const room = left ? nx - L : R - (nx + nw - 1);
-    const gs = Math.min(7, room - 8, H - ta - 9);
-    if (gs >= 5) {
+    const lo = ty + ta + 1;
+    // The garth as big as leaves an outer range four deep and the refectory four deep across the front;
+    // failing the range, the garth alone.
+    const ranged = Math.min(7, room - 7, B - lo - 6) >= 3;
+    const gs = ranged ? Math.min(7, room - 7, B - lo - 6) : Math.min(7, room - 3, B - lo - 2);
+    if (gs >= 3) {
       const span = gs + 2;
       const wx = left ? nx - 1 - span : nx + nw + 1;
-      const lo = ty + ta + 1;
-      const wy = lo + Math.floor(random() * Math.max(1, B - span + 1 - lo + 1));
+      const wy = lo;
       const ring = cellsOf(
         { x: wx, y: wy, w: span, h: span },
         (x, y) => x === wx || y === wy || x === wx + span - 1 || y === wy + span - 1,
@@ -1677,12 +1767,41 @@ function siteFrameOf(plan: SitePlan) {
       });
       // Nothing grows in the cell between the walk and the nave: it is the nave's wall.
       for (let y = wy; y < wy + span; y++) zone[at(left ? nx - 1 : nx + nw, y)] = -2;
+      // The outer range off the walk: the chapter house nearer the church, the dorter past it.
+      if (ranged) {
+        const ox = left ? L : wx + span;
+        const ow = left ? wx - L : R - (wx + span) + 1;
+        const split = Math.ceil(span * 0.55);
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: ox, y: wy, w: ow, h: split }),
+          on: onGround,
+          claim: (each) => each.name === "Chapter house",
+          room: { name: "Chapter house", use: "quiet", size: 2, zone: "service", furniture: [PEW, LECTERN] },
+        });
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: ox, y: wy + split, w: ow, h: span - split }),
+          on: onGround,
+          claim: (each) => /^Monks' cells/u.test(each.name),
+          room: { name: "Monks' cells", use: "holders", size: 2, zone: "guest", furniture: [BED] },
+        });
+        // The refectory across the front of the cloister, the walk's whole width and the range's.
+        const fy0 = wy + span;
+        fixed.push({
+          kind: "room",
+          cells: cellsOf({ x: left ? L : wx, y: fy0, w: span + ow, h: B - fy0 + 1 }),
+          on: onGround,
+          claim: (each) => each.name === "Refectory",
+          room: { name: "Refectory", use: "holders", size: 2, zone: "service", furniture: [T, T] },
+        });
+        for (const c of cellsOf({ x: left ? L : wx, y: wy, w: span + ow, h: B - wy + 1 })) zone[c] = -2;
+      }
     }
-    const other = left ? nx + nw + 2 : L + 1;
     mainAt = { x: left ? R - 2 : L + 2, y: B - 3 };
     backAt = { x: left ? nx - 3 : nx + nw + 2, y: ty + ta + 1 };
-    void other;
-    inset = { x: Math.max(L - 1, nx - 5), y: B - 7, w: Math.min(R + 2, nx + nw + 5) - Math.max(L - 1, nx - 5), h: 9 };
+    // The bell tower: one square tower over the west end, not a range of rooms (history panel 2026-11-17).
+    inset = { x: cx - 5, y: B - 10, w: 11, h: 11 };
   } else {
     // A crypt: the vestibule at the door; galleries and chambers cut in the rock behind it.
     const vw = W >= 30 ? 7 : 5;
@@ -1726,7 +1845,16 @@ function siteFrameOf(plan: SitePlan) {
   // joins; the main stairs alternate between two stairwells far apart, so a floor is crossed from the stair
   // up to the stair down; the back stairs in one well of their own.
   const taken = new Uint8Array(mapW * mapH);
-  for (const each of fixed) for (const c of each.cells) for (const d of [0, -1, 1, -mapW, mapW]) taken[c + d] = 1;
+  // A room laid down by rule may have a stairwell cut in it; a court, a hall or a walk may not.
+  for (const each of fixed)
+    if (each.kind !== "room") for (const c of each.cells) for (const d of [0, -1, 1, -mapW, mapW]) taken[c + d] = 1;
+  // A stairwell never stands on the wall stair's foot or head.
+  const banned = new Uint8Array(mapW * mapH);
+  // Nor across a wall walk or a cloister walk, which would cut it in two.
+  for (const each of fixed) if (each.kind === "walk") for (const c of each.cells) banned[c] = 1;
+  if (wallAt)
+    for (const p of [wallAt, wallAt.lower])
+      for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) banned[at(p.x + dx, p.y + dy)] = 2;
   const wells: Array<{ r: SiteRect; levels: Set<number>; name: string }> = [];
   const linkAt: Array<{ x: number; y: number; lower?: { x: number; y: number } }> = [];
   const pick = (
@@ -1748,6 +1876,7 @@ function siteFrameOf(plan: SitePlan) {
             const edge = yy === y - 1 || xx === x - 1 || yy === y + h || xx === x + w;
             if (!edge && masks.some((m) => !m[c])) ok = false;
             if (!edge && taken[c] && !loose) ok = false;
+            if (banned[c] === 2 || (banned[c] === 1 && !loose)) ok = false;
             if (wells.some(({ r }) => xx >= r.x - 1 && xx < r.x + r.w + 1 && yy >= r.y - 1 && yy < r.y + r.h + 1))
               ok = false;
           }
@@ -1807,6 +1936,7 @@ function siteFrameOf(plan: SitePlan) {
     const levels = [...new Set(group.links.flatMap((k) => [plan.links[k]!.upper, plan.links[k]!.lower]))];
     const r = pick(group.w, group.h, levels, group.want) ??
       pick(2, 2, levels, group.want) ??
+      pick(2, 2, levels, group.want, true) ??
       pick(1, 1, levels, group.want, true) ?? { x: cx, y: B - 2, w: 1, h: 1 };
     wells.push({ r, levels: new Set(levels), name: group.name });
     for (const k of group.links) {
@@ -2704,7 +2834,15 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   for (const g of [...cellsBy.keys()]) {
     const cells = cellsBy.get(g);
     const region = regions[g]!;
-    if (!cells?.length || region.kind !== "room" || region.hidden || region.room?.heart || cellLike(region.room!))
+    if (
+      !cells?.length ||
+      region.kind !== "room" ||
+      region.hidden ||
+      region.room?.heart ||
+      cellLike(region.room!) ||
+      // A room the frame laid down by rule (a buttery, a choir) stays as it was laid.
+      region.zone === -1
+    )
       continue;
     if (entry && SITE_ENTRY_ROOMS.has(region.room!.name)) continue;
     const main = biggestBox(cells);
@@ -2938,7 +3076,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   const madeUp = () =>
     [...owner.entries()].filter(
-      ([m, room]) => regions[m]!.kind === "room" && !regions[m]!.hidden && !level.rooms.includes(room),
+      ([m, room]) =>
+        regions[m]!.kind === "room" && !regions[m]!.hidden && regions[m]!.zone !== -1 && !level.rooms.includes(room),
     );
   for (const [n, region] of regions.entries()) {
     if (alive(n) || !region.room || !level.rooms.includes(region.room)) continue;
