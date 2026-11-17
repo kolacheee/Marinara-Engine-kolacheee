@@ -2005,7 +2005,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (way) lay(way.slice(0, Math.max(4, Math.round(way.length * 0.85))));
     }
   }
-  if (kind === "crypt") {
+  if ((kind === "crypt" || kind === "keep") && level.depth < 0) {
     // Galleries: from the way in to every stair and on to a few points cut further into the rock.
     const ends = [entryRegion, ...stairsHere].filter((n) => n >= 0);
     const points: number[] = [];
@@ -2076,7 +2076,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     used.set(name, times);
     return { name: times > 1 ? `${name} ${times}` : name, use: "squat", size: roomSize, zone: "service", furniture };
   };
-  const rock = kind === "crypt";
+  // Cut in rock: a crypt's vaults and a castle's dungeons. A crypt's chapel at the surface is built, its
+  // rooms filling it as in any building, never a void left inside its walls (panel 2026-11-17).
+  const rock = (kind === "crypt" || kind === "keep") && level.depth < 0;
   // One space on a floor is the set piece, two or three times any other (gamer panel 2026-11-17).
   const weight = (r: SitePlanRoom) => SITE_WANT[r.size] * (r.heart || SITE_SET_PIECES.has(r.name) ? 2.2 : 1);
   const sum = planned.reduce((n, room) => n + weight(room), 0) || 1;
@@ -2091,7 +2093,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   planned = [];
   // The hidden room: small, deep, against an outer wall, behind a hidden door, with something worth it.
   // Never in a crypt: its walls are a tile pack's, with no hidden door drawn in them.
-  if (!rock && !level.inset && level.rooms.length >= 3 && random() < 0.65)
+  if (!rock && kind !== "crypt" && !level.inset && level.rooms.length >= 3 && random() < 0.65)
     add(
       { name: SITE_HIDDEN_ROOM[kind], use: "store", size: 1, zone: "deep", furniture: [CHEST, CHEST, STATUE] },
       9,
@@ -2161,6 +2163,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       mate: isMate(r, regions[seed.g]!.room!),
     }));
     const hall = keepGround && (SITE_HALL_ROOMS.has(r.name) || r.name === "Chapel");
+    // The set piece's seed where it has room all round to grow to its own shape, not in a band between passages.
+    const big = r.heart || SITE_SET_PIECES.has(r.name);
     const reach = Math.max(1, Math.floor(Math.sqrt(region.target) / 2));
     if (entry && SITE_ENTRY_ROOMS.has(r.name) && free(doorIn)) best = doorIn;
     else
@@ -2189,7 +2193,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           Math.min(mapW - 1, x + reach),
           Math.min(mapH - 1, y + reach),
         ];
-        s += 2 * (1 - freeIn(x0, y0, x1, y1) / ((x1 - x0 + 1) * (y1 - y0 + 1)));
+        s += (big ? 10 : 2) * (1 - freeIn(x0, y0, x1, y1) / ((x1 - x0 + 1) * (y1 - y0 + 1)));
         s += random() * 0.5;
         if (s < score) [score, best] = [s, c];
       }
@@ -2202,6 +2206,11 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // in runs (an L, a T), to about half again its size; then (in a building, not in rock) whatever is left
   // to whoever borders it.
   const grown = new Set(seeds.map((seed) => seed.g));
+  const longest = (g: number) => {
+    const r = regions[g]!.room!;
+    if (r.name === "Long gallery") return 5;
+    return r.heart || SITE_SET_PIECES.has(r.name) ? 2 : 3;
+  };
   const box = new Map<number, { x0: number; y0: number; x1: number; y1: number }>();
   const area = new Map<number, number>();
   const ratio = new Map<number, number>();
@@ -2234,7 +2243,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             ? Array.from({ length: h }, (_, k) => cell(dir === "E" ? b.x1 + 1 : b.x0 - 1, b.y0 + k))
             : Array.from({ length: w }, (_, k) => cell(b.x0 + k, dir === "S" ? b.y1 + 1 : b.y0 - 1));
         const [nw, nh] = dir === "E" || dir === "W" ? [w + 1, h] : [w, h + 1];
-        if (Math.max(nw, nh) / Math.min(nw, nh) > (rock ? 2.5 : 3)) continue;
+        if (Math.max(nw, nh) / Math.min(nw, nh) > Math.min(rock ? 2.5 : 3, longest(g))) continue;
         if (!strip.every((c) => c >= 0 && c < size && takes(g, c))) continue;
         for (const c of strip) at[c] = g;
         if (dir === "E") b.x1++;
@@ -2287,8 +2296,18 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             list.sort((p, q) => p - q);
             let run: number[] = [];
             const flush = () => {
-              if (run.length >= least && run.length > best.length)
-                best = run.map((k) => (dx ? cell(line, k) : cell(k, line)));
+              if (run.length >= least && run.length > best.length) {
+                // Never so long and thin a hall reads as a corridor (history panel 2026-11-17).
+                const [x0, x1] = dx
+                  ? [Math.min(b.x0, line), Math.max(b.x1, line)]
+                  : [Math.min(b.x0, run[0]!), Math.max(b.x1, run[run.length - 1]!)];
+                const [y0, y1] = dx
+                  ? [Math.min(b.y0, run[0]!), Math.max(b.y1, run[run.length - 1]!)]
+                  : [Math.min(b.y0, line), Math.max(b.y1, line)];
+                const [w, h] = [x1 - x0 + 1, y1 - y0 + 1];
+                if (Math.max(w, h) / Math.min(w, h) <= longest(g))
+                  best = run.map((k) => (dx ? cell(line, k) : cell(k, line)));
+              }
               run = [];
             };
             for (const k of list) {
@@ -3293,11 +3312,14 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     // Between the arcades where a great room has them, the aisles outside them left clear.
     const arcades = SITE_HALL_ROOMS.has(room.name) && plan.template !== "manor" && area.w >= 7 && area.h >= 7;
     if (short >= 5)
-      for (let k = 2; k < long - 2; k += 2)
+      for (let k = 2; k < long - 2; k += 2) {
+        // A long nave's pews in two blocks with a cross-aisle between them (panel 2026-11-17).
+        if (long >= 12 && Math.abs(k - Math.round(long / 2)) <= 1) continue;
         for (let line = arcades ? 3 : 1; line < short - (arcades ? 3 : 1); line++) {
           if (Math.abs(line - (short - 1) / 2) < 1) continue;
           pews.push(along ? [x0 + k, y0 + line] : [x0 + line, y0 + k]);
         }
+      }
     // Seats: stools along both sides of each table set out, a table to sit at (panel 2026-11-17).
     const seats = () => {
       const isTable = (x: number, y: number) => x >= x0 && x <= x1 && y >= y0 && y <= y1 && props[cell(x, y)] === T;
@@ -3363,13 +3385,37 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     // sword dropped, cobwebs where nobody goes (panel round 4).
     if (scenes.has(n)) {
       const base = siteBaseName(room.name);
-      const scene = /guard|barracks|armoury|gate|watch|gaol|interrogation|wall walk|cell/iu.test(base)
-        ? [BONES, SWORD, TIPPED, JUG] // a fight lost
-        : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
-          ? [BARREL, CRATE, TIPPED, BONES] // broken into, the stores spilt
-          : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
-            ? [TIPPED, JUG, TIPPED, BONES] // a meal left in a hurry
-            : [CHEST, TIPPED, JUG, SWORD]; // ransacked
+      // Several stories for each kind of room, and bigger heaps, so no two floors tell the same one (panel
+      // 2026-11-17).
+      const camp = [PALLET, BUCKET, JUG, WOODPILE, STOOL]; // someone camped here
+      const stories = /cell|gaol|oubliette/iu.test(base)
+        ? [
+            [CHAINS, BONES, BUCKET, HAY, TIPPED], // a prisoner left to die
+            [CHAINS, TIPPED, SWORD, BUCKET], // a breakout
+          ]
+        : /guard|barracks|armoury|gate|watch|interrogation|wall walk/iu.test(base)
+          ? [
+              [BONES, SWORD, TIPPED, JUG, BONES], // a fight lost
+              [TIPPED, SWORD, SWORD, CHEST, BONES], // a last stand by the chest
+              [STOOL, JUG, JUG, TIPPED, CHEST], // dice and drink, left mid-game
+            ]
+          : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
+            ? [
+                [BARREL, CRATE, TIPPED, BONES, JARS], // broken into, the stores spilt
+                [CRATE, CRATE, JARS, COBWEB, HAY], // rats' nest
+                camp,
+              ]
+            : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
+              ? [
+                  [TIPPED, JUG, TIPPED, BONES, STOOL], // a meal left in a hurry
+                  [JUG, JUG, TIPPED, BARREL, STOOL], // a feast that ended badly
+                ]
+              : [
+                  [CHEST, TIPPED, JUG, SWORD, CHEST], // ransacked
+                  [BONES, COBWEB, TIPPED, JARS], // someone who never left
+                  camp,
+                ];
+      const scene = stories[Math.floor(random() * stories.length)]!;
       const steps: Array<[number, number]> = shuffle([
         [1, 0],
         [-1, 0],
