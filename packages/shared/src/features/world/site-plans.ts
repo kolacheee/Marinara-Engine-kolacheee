@@ -7,6 +7,7 @@
 // always gives the same building.
 
 import { marinaraRandom } from "../marinara-classes.js";
+import { SITE_STAMP_LEGEND, siteStampStretch, siteStampsFor } from "./site-stamps.js";
 import {
   DUNGEON_EXIT_PROP,
   DUNGEON_SECRET_DOOR_PROP,
@@ -3887,7 +3888,39 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         }
       return out;
     };
-    if (vaulted) {
+    // A hand-drawn plan for the room where one is drawn for its kind and size: every piece where the plan
+    // puts it, turned to face the door (owner's call 2026-11-17: set-piece rooms by hand).
+    let stamped = false;
+    {
+      const deepAlong = back === "N" || back === "S";
+      const [across, deep] = deepAlong ? [area.w, area.h] : [area.h, area.w];
+      const grids = siteStampsFor(siteBaseName(room.name))
+        .map((each) => siteStampStretch(each, across, deep))
+        .filter((grid): grid is string[] => !!grid);
+      if (!tiny && grids.length && !hiddenRooms.has(n) && random() < 0.9) {
+        const grid = grids[Math.floor(random() * grids.length)]!;
+        const flip = random() < 0.5;
+        for (let r = 0; r < deep; r++)
+          for (let c = 0; c < across; c++) {
+            const slot = SITE_STAMP_LEGEND[grid[r]![c]!];
+            if (slot === undefined) continue;
+            const k = flip ? across - 1 - c : c;
+            const [x, y] =
+              back === "N"
+                ? [x0 + k, y0 + r]
+                : back === "S"
+                  ? [x1 - k, y1 - r]
+                  : back === "W"
+                    ? [x0 + r, y1 - k]
+                    : [x1 - r, y0 + k];
+            if (near(x, y)) continue;
+            put(slot, x, y);
+          }
+        items.length = 0;
+        stamped = true;
+      }
+    }
+    if (vaulted && !stamped) {
       for (const each of items)
         if (each.kind === "center" || each.slot === 0) [each.kind, each.count] = ["center", bays.length];
       if (!items.some((each) => each.kind === "pillar"))
