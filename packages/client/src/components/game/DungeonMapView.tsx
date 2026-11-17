@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import {
   DUNGEON_EXIT_PROP,
   DUNGEON_SECRET_DOOR_PROP,
+  dungeonRoomHas,
   dungeonWayOutId,
   gameDungeonLinkAt,
   gameDungeonOnWayDown,
@@ -205,7 +206,7 @@ export function DungeonMapView({
       // Open courts: a planned building's rooms open to the sky.
       const courts = cells.rooms.filter((_, n) => kept?.roomInfo?.[n]?.use === "open");
       const inRoom = (x: number, y: number) =>
-        cells.rooms.some((room) => x >= room.x && x < room.x + room.w && y >= room.y && y < room.y + room.h);
+        cells.rooms.some((room) => dungeonRoomHas(room, x, y));
       // The hall: floor outside every room, but for a doorway into one, laid as the room's floor.
       const isHall = (x: number, y: number) =>
         at(x, y) === "floor" &&
@@ -350,12 +351,31 @@ export function DungeonMapView({
             // A hidden door: the wall it hides in, with only a hairline and a scuff to give it away.
             const below = at(x, y + 1);
             paintBuildingWall(ctx, building, x * T, y * T, below === "floor", cellNoise(x, y));
-            ctx.fillStyle = "rgba(10, 6, 4, 0.55)";
+            ctx.fillStyle = "rgba(10, 6, 4, 0.7)";
             ctx.fillRect(x * T + 3, y * T + 2, 1, T - 3);
             ctx.fillRect(x * T + T - 4, y * T + 2, 1, T - 3);
             ctx.fillRect(x * T + 3, y * T + 2, T - 6, 1);
-            ctx.fillStyle = "rgba(200, 190, 160, 0.35)";
-            ctx.fillRect(x * T + 5, y * T + T - 2, 6, 1);
+            // A draught has kept the cobwebs off it, and the floor in front is scraped in an arc where the
+            // door swings (panel round 6: a hidden door needs a tell a careful eye can find).
+            ctx.fillStyle = "rgba(230, 220, 190, 0.5)";
+            ctx.fillRect(x * T + 6, y * T + 5, 1, 4);
+            for (const [dx, dy] of [
+              [0, 1],
+              [0, -1],
+              [1, 0],
+              [-1, 0],
+            ] as const) {
+              if (at(x + dx, y + dy) !== "floor") continue;
+              const [ox, oy] = [(x + dx) * T, (y + dy) * T];
+              ctx.fillStyle = "rgba(225, 212, 178, 0.45)";
+              for (let k = 0; k < 7; k++) {
+                const a = (k / 6) * (Math.PI / 2);
+                const r = T - 4;
+                const px = dx === 0 ? ox + 2 + Math.round(Math.sin(a) * r) : dx > 0 ? ox + Math.round((1 - Math.cos(a)) * 3) : ox + T - 1 - Math.round((1 - Math.cos(a)) * 3);
+                const py = dy === 0 ? oy + 2 + Math.round(Math.sin(a) * r) : dy > 0 ? oy + Math.round((1 - Math.cos(a)) * 3) : oy + T - 1 - Math.round((1 - Math.cos(a)) * 3);
+                ctx.fillRect(px, py, 1, 1);
+              }
+            }
             continue;
           }
           if (building) {
@@ -430,6 +450,10 @@ export function DungeonMapView({
           const below = at(0, 1);
           if (below === "floor" || below === "liquid") {
             if (drawPatternCell(ctx, "dn_wall_face", x % 6, 1, x, y, pick)) continue;
+          } else if (buried) {
+            // Below ground a wall's top is the masonry it is cut in, like the rock round it, not a black rim
+            // round every chamber (layout rebuild 2026-11-17).
+            if (drawTile(ctx, "dn_wall", x * T, y * T, pick)) continue;
           } else {
             const mask =
               (at(0, -1) === "wall" ? 1 : 0) |
@@ -537,7 +561,7 @@ export function DungeonMapView({
       ctx.imageSmoothingEnabled = false;
       for (const trap of foundTraps) paintFoundTrap(ctx, trap.x * T, trap.y * T);
       const inFog = (x: number, y: number) =>
-        fogged.some((room) => x >= room.x && x < room.x + room.w && y >= room.y && y < room.y + room.h);
+        fogged.some((room) => dungeonRoomHas(room, x, y));
       // On a map made by hand, someone at each spot in use at the hour (map editor Phase 3).
       for (const { at, person } of standing) {
         if (drawTile.character(ctx, { person: person.id }, at.x * T, at.y * T)) continue;
@@ -553,7 +577,8 @@ export function DungeonMapView({
         paintGuard(ctx, guard.x * T + (guard.count > 1 ? -3 : 1), guard.y * T - 3, guard.heart);
       }
       ctx.fillStyle = "rgba(5, 6, 10, 0.88)";
-      for (const room of fogged) ctx.fillRect(room.x * T, room.y * T, room.w * T, room.h * T);
+      for (const room of fogged)
+        for (const r of [room, ...(room.parts ?? [])]) ctx.fillRect(r.x * T, r.y * T, r.w * T, r.h * T);
       const party = partyRef.current;
       if (party) {
         const drawn = drawTile.character(

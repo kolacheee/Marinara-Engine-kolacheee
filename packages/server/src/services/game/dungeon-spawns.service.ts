@@ -6,6 +6,8 @@ import {
   dungeonAreaFoesNow,
   dungeonFromGameDungeonMap,
   dungeonWalkable,
+  dungeonRoomCells,
+  dungeonRoomHas,
   dungeonAreaNumberAt,
   dungeonAreas,
   dungeonRosterWords,
@@ -273,11 +275,10 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     // The room's middle, or the walkable cell nearest it; a cell clear of props (an urn, a lamp, the stairs)
     // first, so the figure never stands in one, and never the cell above it, where its head would be.
     // The chief keeps the middle of the heart.
-    const inRoom = (x: number, y: number) => x >= room.x && x < room.x + room.w && y >= room.y && y < room.y + room.h;
+    const inRoom = (x: number, y: number) => dungeonRoomHas(room, x, y);
     const doors: Array<{ x: number; y: number }> = [];
     if (here.map.roomInfo && area.role !== "heart")
-      for (let y = room.y; y < room.y + room.h; y++)
-        for (let x = room.x; x < room.x + room.w; x++)
+      for (const { x, y } of dungeonRoomCells(room))
           for (const [dx, dy] of [
             [1, 0],
             [-1, 0],
@@ -302,12 +303,13 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       !onLink(x, y + 1);
     let at = middle;
     let best = Infinity;
-    for (let y = room.y; y < room.y + room.h; y++)
-      for (let x = room.x; x < room.x + room.w; x++) {
+    for (const { x, y } of dungeonRoomCells(room)) {
+      {
         if (!dungeonWalkable(cells, x, y)) continue;
         const away = Math.abs(x - middle.x) + Math.abs(y - middle.y) + (clear(x, y) ? 0 : 100);
         if (away < best) [at, best] = [{ x, y }, away];
       }
+    }
     return [{ ...at, area: area.area, count: foes.length, heart: area.role === "heart" }];
   });
 }

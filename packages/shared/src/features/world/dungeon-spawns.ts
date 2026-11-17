@@ -25,8 +25,11 @@ import { MARINARA_LEVEL_CAP, marinaraRandom } from "../marinara-classes.js";
 import {
   DUNGEON_SETS,
   dungeonFromGameDungeonMap,
+  dungeonRoomCells,
+  dungeonRoomHas,
   dungeonWalkable,
   gameDungeonMapForFloor,
+  type DungeonRoom,
   type GameDungeonMap,
 } from "./dungeon-map.js";
 import {
@@ -469,18 +472,13 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
   }
   const distance = map.rooms.map((room) => {
     let best = -1;
-    for (let y = room.y; y < room.y + room.h; y++)
-      for (let x = room.x; x < room.x + room.w; x++) {
-        const at = steps[y * cells.width + x]!;
-        if (at >= 0 && (best < 0 || at < best)) best = at;
-      }
+    for (const { x, y } of dungeonRoomCells(room)) {
+      const at = steps[y * cells.width + x]!;
+      if (at >= 0 && (best < 0 || at < best)) best = at;
+    }
     return best;
   });
-  const inside = (room: { x: number; y: number; w: number; h: number }) =>
-    map.entrance.x >= room.x &&
-    map.entrance.x < room.x + room.w &&
-    map.entrance.y >= room.y &&
-    map.entrance.y < room.y + room.h;
+  const inside = (room: DungeonRoom) => dungeonRoomHas(room, map.entrance.x, map.entrance.y);
   const entry = Math.max(0, map.rooms.findIndex(inside));
   const far = Math.max(1, ...distance);
   const furthest = distance.reduce(
@@ -490,13 +488,7 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
   // The heart is on the deepest floor; above it, the furthest area is where the way down is, held.
   const heart = deepest ? furthest : -1;
   const downArea = map.down
-    ? map.rooms.findIndex(
-        (room) =>
-          map.down!.x >= room.x &&
-          map.down!.x < room.x + room.w &&
-          map.down!.y >= room.y &&
-          map.down!.y < room.y + room.h,
-      )
+    ? map.rooms.findIndex((room) => dungeonRoomHas(room, map.down!.x, map.down!.y))
     : -1;
   const random = marinaraRandom(`${map.seed}:areas:${site.holder}:${band.low}`);
   const levelAt = (index: number) =>
@@ -638,11 +630,10 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
   }
   const distance = map.rooms.map((room) => {
     let best = -1;
-    for (let y = room.y; y < room.y + room.h; y++)
-      for (let x = room.x; x < room.x + room.w; x++) {
-        const at = steps[y * cells.width + x]!;
-        if (at >= 0 && (best < 0 || at < best)) best = at;
-      }
+    for (const { x, y } of dungeonRoomCells(room)) {
+      const at = steps[y * cells.width + x]!;
+      if (at >= 0 && (best < 0 || at < best)) best = at;
+    }
     return best;
   });
   const far = Math.max(1, ...distance);
@@ -759,9 +750,7 @@ export function readGameDungeonSiteTags(text: string): { displaced: boolean } {
 /** The area a cell is in (1-based), or 0 in a passage. */
 export function dungeonAreaNumberAt(map: Pick<GameDungeonMap, "rooms">, at: { x: number; y: number }): number {
   return (
-    map.rooms.findIndex(
-      (room) => at.x >= room.x && at.x < room.x + room.w && at.y >= room.y && at.y < room.y + room.h,
-    ) + 1
+    map.rooms.findIndex((room) => dungeonRoomHas(room, at.x, at.y)) + 1
   );
 }
 

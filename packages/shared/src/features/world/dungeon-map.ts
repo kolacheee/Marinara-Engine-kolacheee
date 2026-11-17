@@ -342,6 +342,22 @@ export interface DungeonRoom {
   y: number;
   w: number;
   h: number;
+  /** The rest of a room that is not a box (an L, a T), as more boxes; the first box is its main part. */
+  parts?: Array<{ x: number; y: number; w: number; h: number }>;
+}
+
+/** Whether a room holds a cell: in its main box or one of its other parts. */
+export function dungeonRoomHas(room: DungeonRoom, x: number, y: number): boolean {
+  const inBox = (r: { x: number; y: number; w: number; h: number }) => x >= r.x && x < r.x + r.w && y >= r.y && y < r.y + r.h;
+  return inBox(room) || !!room.parts?.some(inBox);
+}
+
+/** Every cell of a room, its main box first. */
+export function dungeonRoomCells(room: DungeonRoom): Array<{ x: number; y: number }> {
+  const out: Array<{ x: number; y: number }> = [];
+  for (const r of [room, ...(room.parts ?? [])])
+    for (let y = r.y; y < r.y + r.h; y++) for (let x = r.x; x < r.x + r.w; x++) out.push({ x, y });
+  return out;
 }
 
 export interface DungeonMap {
@@ -734,13 +750,14 @@ export function dungeonMapWords(map: DungeonMap): string {
   const rooms = map.rooms.map((room, index) => {
     const counts = new Map<number, number>();
     let liquid = false;
-    for (let y = room.y; y < room.y + room.h; y++)
-      for (let x = room.x; x < room.x + room.w; x++) {
+    for (const { x, y } of dungeonRoomCells(room)) {
+      {
         const i = at(map, x, y);
         if (map.ground[i] === "liquid") liquid = true;
         const prop = map.props[i]!;
         if (prop >= 0) counts.set(prop, (counts.get(prop) ?? 0) + 1);
       }
+    }
     const things = [...counts].map(([prop, n]) => (n > 1 ? `${set.props[prop]} (${n})` : set.props[prop]!));
     if (liquid) things.push(set.liquid);
     const name = map.roomNames?.[index];
@@ -898,7 +915,20 @@ export const gameDungeonMapSchema = z
       .regex(/^[-0-9a-zA-Z]+$/u)
       .max(MAP_MAX_CELLS),
     rooms: z
-      .array(z.object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() }).strict())
+      .array(
+        z
+          .object({
+            x: z.number().int(),
+            y: z.number().int(),
+            w: z.number().int(),
+            h: z.number().int(),
+            parts: z
+              .array(z.object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() }).strict())
+              .max(24)
+              .optional(),
+          })
+          .strict(),
+      )
       .max(40),
     entrance: z.object({ x: z.number().int(), y: z.number().int() }).strict(),
     /** Where the party stands. */
@@ -1241,8 +1271,7 @@ export function dungeonSetFor(kind: string | undefined, family: string | undefin
 
 /** Which of the map's areas a cell is in (1-based), or 0 for a passage between them. */
 export function dungeonAreaAt(map: { rooms: readonly DungeonRoom[] }, x: number, y: number): number {
-  const index = map.rooms.findIndex((room) => x >= room.x && x < room.x + room.w && y >= room.y && y < room.y + room.h);
-  return index + 1;
+  return map.rooms.findIndex((room) => dungeonRoomHas(room, x, y)) + 1;
 }
 
 /** How long a walk of `steps` cells takes: a cell is about two metres, a minute some thirty of them. */
