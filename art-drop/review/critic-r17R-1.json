@@ -1,0 +1,146 @@
+{
+  "part": "R",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today"
+  ],
+  "files": {
+    "court-stair": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-side": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-repair-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-left-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-right-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cathedral-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guildhall-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gatehouse-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-stair-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fountain-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "market-cross-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shrine-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-dormer-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-alternate-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-left-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-right-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "bench-pocket": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "BLOCKER \u2014 the final city still violates 'at most 2 identical pieces in a row of 5'. The consecutive, gap-free rear lots rear-7-split0, rear-7-split1, rear-8, rear-9 and rear-10-split0 occupy x=864..1151. Their resolved caps are roof-back-repair-w1, roof-back-w1, roof-gable-w2-c0, roof-back-repair-w1, roof-back-repair-w1. All five caps start at y=288; the identical repair caps are at x=864, 1056 and 1104, y=288..383. Their decoded RGBA-plus-size hashes are identical (fdc8bae9c578ef0e5782c18bd622f4c93f8271b75710596cd5d6ec3617da6b00). The same five lots also reuse back-plain-ground-w1 and back-plain-w1 on three buildings. r_refine_lots() moves rear-10-split0 to base=528 and gives it three floors, leaving its cap aligned with the other roofs. r_repeat_audit() groups only by base, so it removes this fifth neighbour from the base=480 run and reports a false pass. This is a real contiguous roof row, not a seam sheet or a run formed by skipping intervening houses. See critic-r17R-1-final-five-lot-repetition-1x/4x/8x.png and critic-r17R-1-five-lot-assembly-1x/4x.png.",
+        "Panel 2 items 8 and 13 / BRIEF-17 wall lane: the west inner 48px service route is blocked beside the tower ending at y=624. The declared route x=48..95 overlaps the tower; its rectangle [48,480,48,96] contains 4,059 opaque tower pixels. The potential adjacent detour [96,480,48,96] contains all 4,608 pixels of poor-edge-narrow. The next house begins at x=144, with its footprint starting y=528. There is no 48px passage between the tower and this occupied frontage. The verification script checks the square's one route rectangle but does not establish the claimed continuous perimeter lane. See critic-r17R-1-west-wall-blocked-1x/4x.png. Retain density by moving/replanning this lot and tower landing, not by claiming the drawn obstruction is an overhead span.",
+        "Panel 2 items 2, 3, 7 and 14 / the brief's volume and join failures remain visible. The northern roof field is a mosaic of independent rectangular caps: at x=144..239 the rear gable ends at y=383 directly against the next front gable beginning y=384, producing a gable/eave band across another roof without a valley, depth separation or party-wall transition. At x=240/288 and y=288..383 the repair cap's thin simplified courses abruptly meet the broader original rear-cap tiles. Comparable foreground/back-cap resets recur in the east and southern blocks. These are visible at 1x and explicit at 8x in critic-r17R-1-double-gable-8x.png and critic-r17R-1-roof-scale-change-8x.png. The seven-cell proof does not solve this: all three roof tops are aligned at y=96, including the nominally lower hip, and the alleged rear-wing house is just a front stack with roof-back-dormer-w2 substituted; it has no connected rear wing or valley. The complete-corner-house proof still uses the A corner assembly with a rectangular B cap, rather than showing the requested matched B/C roof return beside the reference's complete shaped roof. Fixed attachment rows do not waive the requirement to show coherent three-dimensional joins. Draw/use the missing connected returns and transitions before texturing them; do not merely shuffle more rectangular caps.",
+        "Panel 2 item 12 is only partly addressed. Height-dependent reach and civic east silhouettes exist, but south shadows remain full-width rectangular mats. The guildhall has a straight approximately 192x32 dark rectangle at x=864..1055, y=672..703, while the paving visible through all three arches stays bright. The market hall likewise has a full-width stripe below its six supports at y=864, and even the bench and cart receive detached rectangular strips. These shapes do not follow arcade posts, overhangs or the top-left light as requested; changing rectangle reach is not the requested shadow refinement. See critic-r17R-1-shadow-mat-8x.png and city-2-1-4x.png. Keep the readable paving and improved east casts, but use drawn contact/cast shapes for the actual supports and eaves.",
+        "Panel 2 item 9 is incomplete in the inhabited court at x=240..335, y=720..863. The new supported stair and upper shutter read, but the lean-to remains the freestanding yard-2 shed, with yard-1's cropped woodpile pasted over its lower front. The stair wall terminates as an isolated panel and is not joined to a demonstrated rear house wall; the shed is bounded by a fence, not attached to that wall. This does not visibly establish the requested wall-attached lean-to and coherent rear closure. See critic-r17R-1-court-attachment-8x.png and r17-R-corner-court-1x.png. Connect the stair/landing and lean-to to an actual rear elevation while retaining the open court access, shared well and laundry supports.",
+        "Panel 2 item 11 is incomplete. The nine -r recolours preserve their geometry and improve the stone, but the townhall-market placed at x=720..911, base=864 retains bright yellow/gold masonry, conspicuously unlike the neighbouring grey-brown civic stone. The guildhall still offers three indistinguishable open arcade bays with no visibly marked public entrance; assigning entrance=[960,672] in metadata does not mark it in the art. At the gate, the hard switch to large blue rectangular units at y=1200 and their flat fill in the portal read like an infill panel rather than a clearly recessed continuation of the cobbled road. Complete the civic material treatment, mark the public entry in the drawing, and integrate the gate floor/threshold with visible recession. Keep the approved landmark silhouettes and their clear approaches.",
+        "The current acceptance claims overstate what is verified. r_repeat_audit() and the resulting r17-R-layout-audit.json / r17-R-verification.json omit the continuous rear run crossing a base-row change. The declared clear_routes are not all checked: the wall lane obstruction above survives. The six hard-coded 'closed block coverage' rectangles only establish coverage inside those selected rectangles, not coherent whole-block joins. Recompute acceptance from actual neighbouring lots and their painted layer positions; distinguish ground obstructions from overhead masks and test every claimed clearance corridor. Keep the existing render/reveal sheets as evidence, but do not call the current layout universally clear or repetition-free."
+      ],
+      "fix": "First repair the contiguous five-lot rear run using genuinely different resolved roof and wall drawings or a compatible replanned sequence; do not use aliases, labels or shifted base rows to evade the count. Extend the repetition audit to neighbouring frontage/roof runs across height and base changes, using actual decoded asset identities and layer coordinates. Reopen the west 48px wall lane and audit all declared routes, including tower landings. Replace incompatible roof-cap contacts with drawn depth/valley/party-wall returns, and make the corner/seven-cell proofs show the requested complete volumes. Replace rectangular south shadow mats with drawn support/eave casts. Attach the inhabited court's stair and lean-to to a real rear elevation; finish the market hall's stone, guildhall entrance marking and gate recession. Keep the passing native assets, successful E4 repairs, density and populated square. New geometry must come from image-tool drawings processed with the established magenta/registration/mode/palette/hard-alpha method. Re-render all final outputs and repeat the native, enlarged, greyscale, access and actual-five-lot checks. No production changes were made by this critic."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "Three identical roof-back-repair-w1 caps remain in the consecutive five-lot run x=864..1151, with all roof tops at y=288; see compose.py problem 1 and the labelled repetition composites. This alone blocks acceptance under the explicit R critic rule.",
+        "The west 48px wall lane is blocked by the tower and poor-edge-narrow at x=48..143, y=480..575. See compose.py problem 2.",
+        "Unresolved rectangular roof joins, arcade/prop shadow mats, the unattached court assembly and incomplete civic treatment remain visible at native size. Locations, panel requirements and exact fixes are documented under compose.py problems 3\u20136.",
+        "The canvas size, density, no-unassigned-lawn rule and populated square pass: 1920x1440 is 40x30 native cells; the 10x8 square with a 2x2 notch has six stalls and substantial activity. The storey histogram is 1:1, 2:52, 3:25, 4:6, 5:2 (86 buildings; 1.16% single-storey). These successful counts do not waive the failures above."
+      ],
+      "fix": "Apply the concrete composition and necessary drawing fixes under compose.py, then re-render the native final and inspect its complete pixels at 1x and nearest-neighbour 4x."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "This is an exact 3840x2880 nearest-neighbour 2x of the failed native final, so it reproduces all of that scene's failures. Scaling is correct; acceptance fails on the content."
+      ],
+      "fix": "Regenerate from the corrected native final, preserving exact nearest-neighbour scaling."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "All three source panels are embedded without resampling, as requested, and the screenshot/native-cell distinction is labelled. The Round 17 panel is nevertheless the failed final scene, including the three-in-five rear caps, blocked wall lane and unresolved panel refinements."
+      ],
+      "fix": "Rebuild this comparison with the corrected final; retain today and Round 15 at their exact existing 1x sizes."
+    }
+  },
+  "notes": "Independent saved-art critic for Round 17 Part R, round 1. Read BRIEF-17.md in full, both panel briefs, the NOTES method sections and critic-r17E-4.json, and inspected the current composer, processing and review/verification code. The final critic-only instruction controls: no drawing, production edit, branch change, commit or push. Only this JSON and critic-r17R-1-*.png review evidence were written. Reviewed all 19 R-owned PNGs from r17-R-files.json at literal 1x and exact nearest-neighbour 4x in independent asset slices; viewed the native complete city, all 16 non-resampled 4x city regions, focused 8x roof/shadow/court details, the corner-house, seven-cell roofs, access, trade, L-block, market, tall/low and reveal proofs, and town/R15 comparisons. Summer grass and paving mounts cover the new small props and reused court/activity props. Inspected all six used ground/edge families in literal 3x3 repeats at 1x and 4x. Their intended contacts and quiet ground values pass; repeated road kerbs are deliberate parallel-road structure, not a failed longitudinal seam. R has no seasonal exports or seasonal-ground partners, so seasonal overlays/mask comparisons are not applicable. Code separately compared all nine recoloured civic alpha masks against their original drawings: every mask matches exactly. All 19 inventory sizes/hashes match; alpha is exclusively 0/255, RGB under transparency is zero, and there are no detached one- or two-pixel alpha components. All four sign-bay exports preserve the fixed rows 0/47. Replayed 2,949,120 retained registered RGBA mode samples with zero differences; this checks the retained drawing-processing record, not a new generation. No individual new PNG is failed merely for the way the composer places it. Imported compose.py with bytecode disabled, rebuilt the city and all three required scenes plus five district studies in memory, and verified exact agreement with the supplied PNGs. The final 2x is exact nearest-neighbour, and all three panels of the comparison match their original source pixels. Independently hashed the actual assembled facade/wall/roof sources in 68 five-lot runs grouped by common base: those pass, as does the author's 401-window/layer audit. Crucially, examining the actual consecutive rear frontage across its one-cell base change exposes the three-in-five failure described above; the cap tops are all on the same y=288 row. Do not interpret the base-only passing result as a global pass. The separated south-side group was not falsely treated as a consecutive run by skipping the intervening main-street houses. Both original E4 defects really are repaired: the L north caps now resolve to back-w2, back-w1, back-w1, back-w2, repair-w1; the market trade rows each use four distinct ground drawings. Their signs remain inside their lots and their doors are visible. The new final-city defect is separate. The final histogram is {1:1,2:52,3:25,4:6,5:2}, 86 buildings, with front-facing histogram {1:1,2:6,3:24,4:6,5:1}; the additional five-storey building is the side return. Single-storey share is 1/86=1.16%. Six stalls and 39 existing townsfolk are present. The square does not read empty. The 96px through-strip [1104,768,96,288] has no stationary opaque obstruction, and the gate/market reveal states exist. Grass is confined to the deliberate court/churchyard, rather than street-front lawns. The gate, civic spires and differently valued main approach remain identifiable in greyscale. Panel-2 disposition: 1 addressed in the final; 2 incomplete matched complete-corner/roof-return proof; 3 failed coherent roof volumes/joins; 4 distinct baker/smith/apothecary fronts and restrained families are present, but complete elevation/roof integration remains subject to 2/3/14; 5 access types and standing-space demonstrations present; 6 conflicting sign-size reduction is overridden by BRIEF-17, with new blank mounting bays and visible doors accepted; 7 separate side/rear pieces exist, but connected return/closure assembly remains incomplete; 8 failed continuous wall circulation; 9 partly addressed by the stair/well/laundry, missing coherent wall attachment; 10 addressed by staggered triplets, browsing space, cart and people; 11 partly addressed, remaining civic stone/entry/recession issues above; 12 failed remaining shadow mats; 13 normal/reveal and anchor evidence exists, but a drawn/declared blocked wall lane cannot be counted as clear; 14 failed final scene acceptance, especially actual repeated caps and unintegrated roof joins; 15 deferral respected. Panel-1 R life/bench/activity requests are substantially present; its acceptance sheet cannot waive these scene failures. Precedence: the coordinator's 40x30 cells overrides the earlier approximate 1200x900 showcase size. BRIEF-17's twice-R15 signs and fixed attachment rows override conflicting reductions, and its lot/jog/shadow requirements remain applicable. Keeping fixed course rows does not exempt visibly unresolved building joins or internal panel seams. This is a saved-art review, not an in-engine routing or playtest claim."
+}

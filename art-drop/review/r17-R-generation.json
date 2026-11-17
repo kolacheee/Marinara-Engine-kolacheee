@@ -1,0 +1,110 @@
+[
+  {
+    "id": "rear_a",
+    "size": [
+      48,
+      96
+    ],
+    "output": "roof-back-repair-w1",
+    "selected": false,
+    "source": "r17-R-source-rear_a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-06c1abb4-192c-4f94-a51e-20b7cc36a5dd.png",
+    "prompt": "Draw ONE isolated medieval RPG pixel-art REAR ROOF CAP on pure solid #FF00FF magenta. It will be reduced to exactly 48 pixels wide by 96 pixels tall: one narrow city lot, deep roof seen from ABOVE in high three-quarter view, front eave horizontal. Rectangular roof plan, straight square outside edges, NOT diamond isometric. Ridge horizontal near top at y8, long south-facing roof slope recedes backwards from eave, muted terracotta broad tile courses at roughly 6x4 native pixel scale. A small raised rear-facing brick chimney at upper left, ONE broad darker repaired tile patch at lower right, no dormer, NO wall, NO facade, NO house. Must meet a neighbouring roof edge without a gutter gap: paint completely across width. One native-pixel dark brown outer edge, lit top-left, darker lower eave, large calm clusters. Main colour family terracotta (77,42,28),(110,48,29),(143,58,30),(171,74,33),(194,94,42),(215,122,68). Large working size with magenta margin. Crisp pixel art, no fine texture, flecks, noise, haze, blur, text. Roof only. Variant A, chimney and broad repair, simple horizontal ridge."
+  },
+  {
+    "id": "rear_b",
+    "size": [
+      48,
+      96
+    ],
+    "output": "roof-back-repair-w1",
+    "selected": false,
+    "source": "r17-R-source-rear_b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-35841bda-a1a9-4cdb-ad57-33ffabca8230.png",
+    "prompt": "Draw ONE replacement narrow REAR ROOF tile with the SAME TILE SCALE and simple rectangular deep volume as the attached 48x96 roof reference, at a large working resolution on SOLID MAGENTA #ff00ff. Exactly 1:2 width/height rectangular roof plane; matches a 48x96 native pixel sprite. Very important: about EIGHT tiles across the width and TWENTY horizontal overlapping tile courses down the height, NOT six huge tile courses. Match reference calm terracotta ramps, ridge across top and thick front eave across bottom, high three-quarter RPG view sees broad roof plane above. Change arrangement by adding a SMALL low brick chimney wholly inside upper left quadrant and one broad dark repaired rectangle of tiles in right lower third. No facade, no house, no window, no ground. Straight square boundary edges completely filled across all rows so it connects to rear roof neighbours; chimney stays inside rectangular silhouette. One pixel outline after reduction, top-left light. No noise, no tiny flecks, no gradients, no blur, no text. Repaint the roof only, preserve native pixel density of provided reference."
+  },
+  {
+    "id": "stair_a",
+    "size": [
+      48,
+      96
+    ],
+    "output": "court-stair",
+    "selected": false,
+    "source": "r17-R-source-stair_a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-53f29a6b-a14c-49bf-bf46-9e16ffa1d333.png",
+    "prompt": "Draw ONE isolated medieval courtyard OUTDOOR TIMBER STAIR with LANDING, large pixel art on perfectly solid #ff00ff magenta. Tall narrow sprite intended exactly 48x96 native pixels, 1:2 width-to-height. Complete structure from ground to upper floor: seven substantial wooden steps rise diagonally from lower left to upper right, rail, square supporting posts reach the ground, short upper landing at right, behind it a warm plaster wall section with a shuttered upper doorway and small warm amber shutter. The stair is attached to this narrow two-storey rear wall, no roof, no house outside the panel. Rear-wall perspective: front vertical wall faces viewer, see stair tread and landing TOPS from above, minimal right side depth, no diamond isometric. Broad coherent timber and warm grey-brown plaster masses, one native-pixel dark brown outline, top-left light, deep door recess, lit threshold. Full-width flat horizontal upper and lower contact edges. No isolated props, no hanging stair, no floor belts, no blur/noise/speckles/text. Registerable square grid edges. Calm chunky shapes similar to medieval RPG town houses."
+  },
+  {
+    "id": "stair_b",
+    "size": [
+      48,
+      96
+    ],
+    "output": "court-stair",
+    "selected": true,
+    "source": "r17-R-source-stair_b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-ed4d60db-1924-40a3-a31e-051a98593886.png",
+    "prompt": "ONE isolated pixel-art courtyard exterior wooden stair and rear-wall panel, native48x96 at large resolution, 1:2 width/height, SOLID MAGENTA BACKGROUND. A complete exterior staircase rises from bottom LEFT to upper RIGHT to a supported square landing at half-height; 8 chunky treads with lit top faces, wooden balustrade, support legs reaching foundation, dark brown beams, grey warm plaster behind. Door on the landing is 20 native pixels wide and 30 high, small closed amber upper shutter at left. Make the door large enough for a16x28px person to enter. Entire building panel square sided, no roof and no cut-off stairs. View from above at 3/4 RPG elevation, broad masses, muted wood and plaster, same dense square-pixel scale as fantasy town houses. One dark olive brown outline after reduction, light upper left, shadow below treads and landing. No extra decor, no fine grunge, no tiny specks, no haze, no text. Variant B: flatter grey plaster, larger usable landing doorway, 8 evenly readable treads."
+  },
+  {
+    "id": "wall_a",
+    "size": [
+      48,
+      144
+    ],
+    "output": "wall-side",
+    "selected": false,
+    "source": "r17-R-source-wall_a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-ef318f39-c001-4297-b638-cfd1410ded60.png",
+    "prompt": "Draw ONE long NORTH-SOUTH medieval city wall run for a top-down high-three-quarter-view pixel RPG. SINGLE narrow VERTICAL wall strip seen from above, runs straight TOP TO BOTTOM on screen, exactly rectangular 1:3 width to length for a native48x144 tile. The broad top walkway is visible, crenellated parapet down the LEFT edge, a thicker dark grey-brown masonry return face along the RIGHT edge, top-left light. Three square merlons evenly down the length. Both top and bottom ends cut straight through masonry so segments can repeat vertically, NO end pillars, NO towers, NO roofs, NO ground. Warm grey-brown neutral stone, subtle large blocks, dark one-native-pixel outline, square axis-aligned geometry (not diagonally isometric), no tilted perspective or taper. This is a PLAN-ORIENTED north-south wall, not a tall frontal wall or tower. Draw at large size on solid #ff00ff magenta with small margin. Match calm pixel art and material scale of medieval fantasy house sprites. No tiny texture, scattered specks, blur, haze, lettering."
+  },
+  {
+    "id": "wall_b",
+    "size": [
+      48,
+      144
+    ],
+    "output": "wall-side",
+    "selected": true,
+    "source": "r17-R-source-wall_b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-1b00f4f2-e9ea-437a-9a28-de575da2cb4b.png",
+    "prompt": "Draw ONE medieval city-wall top-view segment, a VERTICAL rectangle, EXACTLY 1 unit wide by3 units tall. Target is48x144 native pixel art. It runs NORTH to SOUTH down the page, no vanishing point. Wide stone walkway with crenellations along BOTH vertical sides; THREE square merlons each side. Left parapet lit light grey-beige, right outer vertical face dark grey-brown, coherent sunlight from upper left. Large individual stone blocks, warm neutral muted ramps. Straight vertical edges and horizontal open ends, must repeat from end to end. This is not a tower and not a front-facing tall wall. Isolated asset on solid pure magenta #ff00ff, large working resolution with small margin. Chunky crisp pixel RPG art, one native-pixel dark brown outline, calm flat palette, NO perspective taper, NO fine noisy stone texture, no tiny flecks, blur, gradients, haze, ground or text. Variant B: wide visible top walkway, three aligned buttress/merlon groups."
+  },
+  {
+    "id": "rear_c",
+    "size": [
+      48,
+      96
+    ],
+    "output": "roof-back-repair-w1",
+    "selected": true,
+    "source": "r17-R-source-rear_c.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-37113f63-e686-4a89-b9d4-b691b8f56078.png",
+    "prompt": "Edit this rear-roof sprite, output a large enlarged pixel-art painting on solid magenta. Preserve the reference roof EXACTLY in silhouette and broad tile spacing, including its 48 wide x96 high proportion, simple horizontal ridge and squared eave. Keep the visible chunky tile grid: 4 or5 broad tiles across, about18 overlapping rows. The only change is ONE broad rectangular muted-brown repaired tile patch in the LOWER RIGHT third of the slope, about3 tiles wide and5 rows high. No chimney, no windows, no additional tiny detail. Existing roof is terracotta with top-left light and dark brown1px outline. Same high3/4 perspective, full rectangular field seen from above. The patch should be clear and quiet at48x96 native size. No tiny flecks, no extraneous lines, no noise, blur, gradient, text, or roof shape changes. Variant C: repair only, clean large clusters."
+  },
+  {
+    "id": "mount_left",
+    "size": [
+      96,
+      48
+    ],
+    "output": "storey-sign-bay-left-w2",
+    "selected": true,
+    "source": "r17-R-source-mount_left.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-95bfb0d5-0d6a-4c95-8291-9dc78983ae67.png",
+    "prompt": "Draw ONE isolated medieval pixel-RPG upper storey facade MODULE, large working drawing on solid magenta #ff00ff. Exactly2:1 aspect ratio for96x48 native pixels. Calm warm cream plaster and substantial dark brown structural timber; full rectangular plane with perfectly square straight edges. IMPORTANT: the LEFT TWO THIRDS (native x4..66) is plain quiet warm plaster with NO window and NO decoration, reserved for a hanging trade sign later. Only ONE recessed shuttered window in the RIGHT THIRD (native x70..91), twenty native pixels wide, with a lit sill TOP, dark recess, shutters and deep eave shading. Single central support atx66, outer posts, no diagonal beam in blank bay, no horizontal floor belts except1px top/bottom attachment courses. Front wall faces viewer in high3/4 RPG perspective, visible ledge top, top-left light, dark one native-pixel outline. It is an UPPER STOREY only: no roof, ground, door, stairs, plinth, sign or text. Crisp chunky native-scale pixel art, large masses like the fantasy house, no fine texture, noise, isolated specks, blur or haze. The blank LEFT side is essential."
+  },
+  {
+    "id": "mount_right",
+    "size": [
+      96,
+      48
+    ],
+    "output": "storey-sign-bay-right-w2",
+    "selected": true,
+    "source": "r17-R-source-mount_right.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1ea1c-3dfc-71e0-8a0c-ae405e813123/exec-902167f2-08f3-42ad-85fc-86d069f7b578.png",
+    "prompt": "Draw ONE isolated medieval pixel-RPG upper-storey facade MODULE on solid MAGENTA #ff00ff. Wide rectangle EXACT2:1 for96x48 native pixels, big working size. RIGHT TWO THIRDS (x30..91 of native96) is blank warm cream plaster, absolutely no decoration or window there: it will receive a large hanging trade sign later. Only ONE recessed WINDOW on LEFT (x5..25),21px wide, dark blue glass, opened brown shutters and lit sill-top visible from high3/4 view. Strong single support post atx28, outer posts, narrow straight top course and bottom course. No horizontal belt beyond these attachment edges. Top-left sunlight, warm grey cream plaster, dark brown structural wood, one-native-pixel dark outline. Front of wall faces viewer; small lit ledge tops give depth; exactly square outside corners. UPPER FLOOR ONLY, no roof, no ground, no door, no sign, no extra furniture, no text. Calm chunky pixel art with broad material fields, no tiny flecks or busy texture, no blur, gradients, noise or haze. RIGHT side stays plain. Separately lit drawing, not a mirror of a right-window panel."
+  }
+]

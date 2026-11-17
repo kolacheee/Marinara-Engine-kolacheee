@@ -1,0 +1,5633 @@
+{
+  "size": [
+    1920,
+    1440
+  ],
+  "ground_base": "cobble-small",
+  "e_ground": true,
+  "junction_file": "cobble-large",
+  "roads": [
+    {
+      "file": "street-side",
+      "rect": [
+        96,
+        240,
+        1728,
+        48
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        48,
+        288,
+        48,
+        1056
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1824,
+        240,
+        48,
+        1104
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        96,
+        1344,
+        1728,
+        48
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        384,
+        240,
+        48,
+        72
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        768,
+        240,
+        48,
+        72
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1152,
+        240,
+        48,
+        72
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1536,
+        240,
+        48,
+        72
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        96,
+        624,
+        336,
+        96
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        432,
+        624,
+        48,
+        144
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        480,
+        624,
+        240,
+        48
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1200,
+        624,
+        192,
+        96
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1392,
+        624,
+        336,
+        96
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1728,
+        624,
+        96,
+        144
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        96,
+        1008,
+        336,
+        48
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        432,
+        1008,
+        288,
+        96
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1296,
+        1008,
+        192,
+        48
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1488,
+        1008,
+        336,
+        96
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        432,
+        288,
+        48,
+        336
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        432,
+        720,
+        48,
+        288
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1344,
+        288,
+        48,
+        336
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1344,
+        720,
+        48,
+        288
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1776,
+        720,
+        48,
+        288
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        1776,
+        1104,
+        48,
+        240
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "cobble-large",
+      "rect": [
+        720,
+        672,
+        384,
+        96
+      ],
+      "horizontal": false,
+      "tone": "square"
+    },
+    {
+      "file": "cobble-large",
+      "rect": [
+        720,
+        768,
+        480,
+        288
+      ],
+      "horizontal": false,
+      "tone": "square"
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1104,
+        768,
+        96,
+        288
+      ],
+      "horizontal": false,
+      "tone": "gate-route"
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1104,
+        1056,
+        192,
+        96
+      ],
+      "horizontal": true,
+      "tone": "gate-route"
+    },
+    {
+      "file": "street-main",
+      "rect": [
+        1200,
+        1152,
+        96,
+        288
+      ],
+      "horizontal": false,
+      "tone": "gate-route"
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        720,
+        672,
+        48,
+        48
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        720,
+        1008,
+        48,
+        48
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "street-side",
+      "rect": [
+        288,
+        864,
+        48,
+        144
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "lane",
+      "rect": [
+        288,
+        840,
+        24,
+        48
+      ],
+      "horizontal": false
+    },
+    {
+      "file": "lane",
+      "rect": [
+        240,
+        816,
+        96,
+        24
+      ],
+      "horizontal": true
+    },
+    {
+      "file": "gate-approach",
+      "path": "review/r17-D-critic2-gate-interior.png",
+      "rect": [
+        1200,
+        1200,
+        96,
+        240
+      ]
+    },
+    {
+      "file": "gate-threshold",
+      "path": "review/r17-D-critic2-gate-threshold.png",
+      "rect": [
+        1200,
+        1431,
+        96,
+        9
+      ]
+    }
+  ],
+  "lots": [
+    {
+      "id": "north-west-0",
+      "x": 144,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 72,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        144,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        384,
+        96,
+        240
+      ],
+      "overhang": [
+        144,
+        384,
+        96,
+        144
+      ],
+      "entrance": [
+        216,
+        624
+      ]
+    },
+    {
+      "id": "north-west-1",
+      "x": 240,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "roof_overlays": [
+          {
+            "file": "chimney-1-c0",
+            "x": 8,
+            "y": 40
+          }
+        ],
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          },
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        240,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        240,
+        336,
+        96,
+        288
+      ],
+      "overhang": [
+        240,
+        336,
+        96,
+        192
+      ],
+      "entrance": [
+        264,
+        624
+      ]
+    },
+    {
+      "id": "north-west-2",
+      "x": 336,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "variant": 2,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        336,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        336,
+        96,
+        288
+      ],
+      "overhang": [
+        336,
+        336,
+        96,
+        192
+      ],
+      "entrance": [
+        360,
+        624
+      ]
+    },
+    {
+      "id": "north-mid-0",
+      "x": 480,
+      "base": 576,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-secondary",
+      "footprint": [
+        480,
+        480,
+        96,
+        96
+      ],
+      "painted": [
+        480,
+        336,
+        96,
+        240
+      ],
+      "overhang": [
+        480,
+        336,
+        96,
+        144
+      ],
+      "entrance": [
+        504,
+        576
+      ]
+    },
+    {
+      "id": "north-mid-1",
+      "x": 576,
+      "base": 576,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "variant": 2,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-secondary",
+      "footprint": [
+        576,
+        480,
+        96,
+        96
+      ],
+      "painted": [
+        576,
+        288,
+        96,
+        288
+      ],
+      "overhang": [
+        576,
+        288,
+        96,
+        192
+      ],
+      "entrance": [
+        600,
+        576
+      ]
+    },
+    {
+      "id": "north-east-0",
+      "x": 1200,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 2,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          },
+          {
+            "kind": "stone",
+            "colour": 1
+          },
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        1200,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1200,
+        288,
+        96,
+        336
+      ],
+      "overhang": [
+        1200,
+        288,
+        96,
+        240
+      ],
+      "entrance": [
+        1224,
+        624
+      ]
+    },
+    {
+      "id": "north-east-jog",
+      "x": 1296,
+      "base": 624,
+      "spec": {
+        "width": 1,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        1296,
+        528,
+        48,
+        96
+      ],
+      "painted": [
+        1296,
+        384,
+        48,
+        240
+      ],
+      "overhang": [
+        1296,
+        384,
+        48,
+        144
+      ],
+      "entrance": [
+        1320,
+        624
+      ]
+    },
+    {
+      "id": "north-east-2",
+      "x": 1392,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "roof_overlays": [
+          {
+            "file": "chimney-1-c0",
+            "x": 8,
+            "y": 40
+          }
+        ],
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 96
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        1392,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        288,
+        96,
+        336
+      ],
+      "overhang": [
+        1392,
+        288,
+        96,
+        240
+      ],
+      "entrance": [
+        1416,
+        624
+      ]
+    },
+    {
+      "id": "north-east-3",
+      "x": 1488,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "variant": 2,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        1488,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        384,
+        96,
+        240
+      ],
+      "overhang": [
+        1488,
+        384,
+        96,
+        144
+      ],
+      "entrance": [
+        1512,
+        624
+      ]
+    },
+    {
+      "id": "north-east-4",
+      "x": 1584,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 72,
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          },
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        1584,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1584,
+        336,
+        96,
+        288
+      ],
+      "overhang": [
+        1584,
+        336,
+        96,
+        192
+      ],
+      "entrance": [
+        1656,
+        624
+      ]
+    },
+    {
+      "id": "north-east-5",
+      "x": 1680,
+      "base": 624,
+      "spec": {
+        "width": 2,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "north-main",
+      "footprint": [
+        1680,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1680,
+        384,
+        96,
+        240
+      ],
+      "overhang": [
+        1680,
+        384,
+        96,
+        144
+      ],
+      "entrance": [
+        1704,
+        624
+      ]
+    },
+    {
+      "id": "square-baker",
+      "x": 720,
+      "base": 672,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1,
+            "file": "storey-sign-bay-left-w2-c1"
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-baker",
+            "x": 0,
+            "y": 88
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-shop-w2-c0",
+        "entrance_dx": 72,
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "square-north",
+      "footprint": [
+        720,
+        576,
+        96,
+        96
+      ],
+      "painted": [
+        720,
+        384,
+        96,
+        288
+      ],
+      "overhang": [
+        720,
+        384,
+        96,
+        192
+      ],
+      "entrance": [
+        792,
+        672
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "x": 816,
+      "base": 672,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "variant": 2,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "square-north",
+      "footprint": [
+        816,
+        576,
+        48,
+        96
+      ],
+      "painted": [
+        816,
+        384,
+        48,
+        288
+      ],
+      "overhang": [
+        816,
+        384,
+        48,
+        192
+      ],
+      "entrance": [
+        840,
+        672
+      ]
+    },
+    {
+      "id": "square-smith",
+      "x": 1056,
+      "base": 672,
+      "spec": {
+        "width": 1,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "square-north",
+      "footprint": [
+        1056,
+        576,
+        48,
+        96
+      ],
+      "painted": [
+        1056,
+        432,
+        48,
+        240
+      ],
+      "overhang": [
+        1056,
+        432,
+        48,
+        144
+      ],
+      "entrance": [
+        1080,
+        672
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "x": 1104,
+      "base": 768,
+      "spec": {
+        "width": 2,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0,
+            "file": "storey-sign-bay-left-w2"
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-apothecary",
+            "x": 0,
+            "y": 40
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-shop-v1-w2-c0",
+        "entrance_dx": 72,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "square-notch",
+      "footprint": [
+        1104,
+        672,
+        96,
+        96
+      ],
+      "painted": [
+        1104,
+        528,
+        96,
+        240
+      ],
+      "overhang": [
+        1104,
+        528,
+        96,
+        144
+      ],
+      "entrance": [
+        1176,
+        768
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "x": 1200,
+      "base": 1056,
+      "spec": {
+        "view": "side",
+        "direction": "W",
+        "depth": 2,
+        "width": 2,
+        "floors": 5
+      },
+      "frontage_group": "square-east",
+      "footprint": [
+        1200,
+        960,
+        96,
+        96
+      ],
+      "painted": [
+        1200,
+        720,
+        96,
+        336
+      ],
+      "overhang": [
+        1200,
+        720,
+        96,
+        240
+      ],
+      "entrance": [
+        1256,
+        1056
+      ]
+    },
+    {
+      "id": "east-main-scribe",
+      "x": 1296,
+      "base": 1008,
+      "spec": {
+        "width": 1,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "east-main",
+      "footprint": [
+        1296,
+        912,
+        48,
+        96
+      ],
+      "painted": [
+        1296,
+        768,
+        48,
+        240
+      ],
+      "overhang": [
+        1296,
+        768,
+        48,
+        144
+      ],
+      "entrance": [
+        1320,
+        1008
+      ]
+    },
+    {
+      "id": "west-smith",
+      "x": 144,
+      "base": 1008,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1,
+            "file": "storey-sign-bay-right-w2-c1"
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-smith",
+            "x": 32,
+            "y": 40
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-work-w2-c0",
+        "entrance_dx": 24,
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 96
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "west-craft",
+      "footprint": [
+        144,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        144,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        168,
+        1008
+      ]
+    },
+    {
+      "id": "court-low-wing",
+      "x": 240,
+      "base": 1008,
+      "spec": {
+        "width": 1,
+        "ground": "door",
+        "variant": 2,
+        "colour": 0,
+        "storeys": [],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "poor",
+        "roof_file": "roof-ridge-w1-c2",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "west-craft",
+      "footprint": [
+        240,
+        912,
+        48,
+        96
+      ],
+      "painted": [
+        240,
+        864,
+        48,
+        144
+      ],
+      "overhang": [
+        240,
+        864,
+        48,
+        48
+      ],
+      "entrance": [
+        264,
+        1008
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "x": 336,
+      "base": 1008,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 1,
+            "file": "storey-sign-bay-right-w2-c1"
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-cobbler",
+            "x": 32,
+            "y": 40
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-shop-v2-w2-c0",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "west-craft",
+      "footprint": [
+        336,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        336,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        360,
+        1008
+      ]
+    },
+    {
+      "id": "east-craft-0",
+      "x": 1392,
+      "base": 1008,
+      "spec": {
+        "width": 2,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0,
+            "file": "storey-sign-bay-right-w2"
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-scribe",
+            "x": 32,
+            "y": 40
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-work-v1-w2-c0",
+        "entrance_dx": 24,
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "east-craft",
+      "footprint": [
+        1392,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        1392,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        1416,
+        1008
+      ]
+    },
+    {
+      "id": "east-craft-1",
+      "x": 1488,
+      "base": 1008,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 2,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "roof_overlays": [
+          {
+            "file": "chimney-1-c0",
+            "x": 8,
+            "y": 38
+          }
+        ],
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "east-craft",
+      "footprint": [
+        1488,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        1488,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        1512,
+        1008
+      ]
+    },
+    {
+      "id": "east-craft-2",
+      "x": 1584,
+      "base": 1008,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0,
+            "file": "storey-sign-bay-right-w2"
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-tailor",
+            "x": 32,
+            "y": 40
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-shop-v2-w2-c1",
+        "entrance_dx": 24,
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          },
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "east-craft",
+      "footprint": [
+        1584,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        1584,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        1584,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        1608,
+        1008
+      ]
+    },
+    {
+      "id": "east-craft-3",
+      "x": 1680,
+      "base": 1008,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "east-craft",
+      "footprint": [
+        1680,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        1680,
+        816,
+        96,
+        192
+      ],
+      "overhang": [
+        1680,
+        816,
+        96,
+        96
+      ],
+      "entrance": [
+        1704,
+        1008
+      ]
+    },
+    {
+      "id": "poor-edge-narrow",
+      "x": 96,
+      "base": 576,
+      "spec": {
+        "width": 1,
+        "ground": "work",
+        "variant": 2,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "poor",
+        "roof_file": "roof-ridge-w1-c2",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "poor-edge",
+      "footprint": [
+        96,
+        480,
+        48,
+        96
+      ],
+      "painted": [
+        96,
+        384,
+        48,
+        192
+      ],
+      "overhang": [
+        96,
+        384,
+        48,
+        96
+      ],
+      "entrance": [
+        120,
+        576
+      ]
+    },
+    {
+      "id": "south-0",
+      "x": 144,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        144,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        144,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        168,
+        1344
+      ]
+    },
+    {
+      "id": "south-1",
+      "x": 240,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 2,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "roof_overlays": [
+          {
+            "file": "chimney-1-c0",
+            "x": 8,
+            "y": 38
+          }
+        ],
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        240,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        240,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        240,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        264,
+        1344
+      ]
+    },
+    {
+      "id": "south-2",
+      "x": 336,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 72,
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        336,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        336,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        408,
+        1344
+      ]
+    },
+    {
+      "id": "south-3",
+      "x": 480,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        480,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        480,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        480,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        504,
+        1344
+      ]
+    },
+    {
+      "id": "south-4",
+      "x": 576,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "door",
+        "variant": 2,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 0
+          },
+          {
+            "kind": "stone",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false,
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        576,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        576,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        576,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        600,
+        1344
+      ]
+    },
+    {
+      "id": "south-5",
+      "x": 672,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 72,
+        "roof_overlays": [
+          {
+            "file": "chimney-1-c0",
+            "x": 8,
+            "y": 40
+          }
+        ],
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        672,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        672,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        672,
+        1056,
+        96,
+        192
+      ],
+      "entrance": [
+        744,
+        1344
+      ]
+    },
+    {
+      "id": "south-6",
+      "x": 768,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0,
+            "file": "storey-sign-bay-left-w2"
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-inn",
+            "x": 0,
+            "y": 88
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "inn-front-w2-c0",
+        "entrance_dx": 72,
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          },
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        768,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        768,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        768,
+        1056,
+        96,
+        192
+      ],
+      "entrance": [
+        840,
+        1344
+      ]
+    },
+    {
+      "id": "south-7",
+      "x": 864,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 2,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          },
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        864,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        864,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        864,
+        1056,
+        96,
+        192
+      ],
+      "entrance": [
+        888,
+        1344
+      ]
+    },
+    {
+      "id": "south-8",
+      "x": 960,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0,
+            "file": "storey-sign-bay-right-w2"
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [
+          {
+            "file": "sign-butcher",
+            "x": 32,
+            "y": 88
+          }
+        ],
+        "corner": false,
+        "district": "market",
+        "ground_file": "ground-work-v2-w2-c0",
+        "entrance_dx": 24,
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          },
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        960,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        960,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        960,
+        1056,
+        96,
+        192
+      ],
+      "entrance": [
+        984,
+        1344
+      ]
+    },
+    {
+      "id": "south-9",
+      "x": 1056,
+      "base": 1344,
+      "spec": {
+        "width": 1,
+        "ground": "work",
+        "variant": 1,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "plaster",
+            "colour": 1
+          },
+          {
+            "kind": "plaster",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-main",
+      "footprint": [
+        1056,
+        1248,
+        48,
+        96
+      ],
+      "painted": [
+        1056,
+        1056,
+        48,
+        288
+      ],
+      "overhang": [
+        1056,
+        1056,
+        48,
+        192
+      ],
+      "entrance": [
+        1080,
+        1344
+      ]
+    },
+    {
+      "id": "south-11",
+      "x": 1392,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "jetty",
+            "colour": 1
+          },
+          {
+            "kind": "jetty",
+            "colour": 1
+          }
+        ],
+        "roof": "ridge",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 72,
+        "firewalls": [
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        1392,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        1392,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        1464,
+        1344
+      ]
+    },
+    {
+      "id": "south-12",
+      "x": 1488,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "arch",
+        "variant": 1,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        1488,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        1152,
+        96,
+        192
+      ],
+      "overhang": [
+        1488,
+        1152,
+        96,
+        96
+      ],
+      "entrance": [
+        1512,
+        1344
+      ]
+    },
+    {
+      "id": "south-13",
+      "x": 1584,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "work",
+        "variant": 2,
+        "colour": 1,
+        "storeys": [
+          {
+            "kind": "stone",
+            "colour": 1
+          },
+          {
+            "kind": "stone",
+            "colour": 1
+          }
+        ],
+        "roof": "hip",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 24,
+        "roof_overlays": [
+          {
+            "file": "chimney-1-c0",
+            "x": 8,
+            "y": 38
+          }
+        ],
+        "firewalls": [
+          {
+            "side": "left",
+            "height": 48
+          },
+          {
+            "side": "right",
+            "height": 48
+          }
+        ],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        1584,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        1584,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        1584,
+        1056,
+        96,
+        192
+      ],
+      "entrance": [
+        1608,
+        1344
+      ]
+    },
+    {
+      "id": "south-14",
+      "x": 1680,
+      "base": 1344,
+      "spec": {
+        "width": 2,
+        "ground": "shop",
+        "variant": 0,
+        "colour": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "roof_colour": 0,
+        "ends": [],
+        "overlays": [],
+        "corner": false,
+        "district": "market",
+        "entrance_dx": 72,
+        "firewalls": [],
+        "shared_flat_left": false
+      },
+      "frontage_group": "south-side",
+      "footprint": [
+        1680,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        1680,
+        1152,
+        96,
+        192
+      ],
+      "overhang": [
+        1680,
+        1152,
+        96,
+        96
+      ],
+      "entrance": [
+        1752,
+        1344
+      ]
+    },
+    {
+      "id": "rear-0",
+      "x": 144,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-gable-w2-c0"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        144,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        144,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-1-split0",
+      "x": 240,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        240,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        240,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        240,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-1-split1",
+      "x": 288,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        288,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        288,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        288,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-2",
+      "x": 336,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        336,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        336,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-3",
+      "x": 480,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        480,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        480,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        480,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-4-split0",
+      "x": 576,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-gable-w1-c0"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        576,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        576,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        576,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-4-split1",
+      "x": 624,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        624,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        624,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        624,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-5",
+      "x": 672,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        672,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        672,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        672,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-6",
+      "x": 768,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-gable-w2-c0"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        768,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        768,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        768,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-7-split0",
+      "x": 864,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        864,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        864,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        864,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-7-split1",
+      "x": 912,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        912,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        912,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        912,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-8",
+      "x": 960,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-gable-w2-c0"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        960,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        960,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        960,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-9",
+      "x": 1056,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1056,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        1056,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        1056,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-10-split0",
+      "x": 1104,
+      "base": 528,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 3,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1104,
+        432,
+        48,
+        96
+      ],
+      "painted": [
+        1104,
+        288,
+        48,
+        240
+      ],
+      "overhang": [
+        1104,
+        288,
+        48,
+        144
+      ]
+    },
+    {
+      "id": "rear-10-split1",
+      "x": 1152,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1152,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        1152,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        1152,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-11",
+      "x": 1200,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1200,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1200,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1200,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-12",
+      "x": 1296,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1296,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        1296,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        1296,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-13",
+      "x": 1392,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1392,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1392,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-14",
+      "x": 1488,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-gable-w2-c0"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1488,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1488,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-15",
+      "x": 1584,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1584,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1584,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1584,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-16-split0",
+      "x": 1680,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-gable-w1-c0"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1680,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        1680,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        1680,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-16-split1",
+      "x": 1728,
+      "base": 480,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-480",
+      "footprint": [
+        1728,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        1728,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        1728,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-17",
+      "x": 144,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        144,
+        816,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        720,
+        96,
+        192
+      ],
+      "overhang": [
+        144,
+        720,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-18-split0",
+      "x": 1392,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        1392,
+        816,
+        48,
+        96
+      ],
+      "painted": [
+        1392,
+        720,
+        48,
+        192
+      ],
+      "overhang": [
+        1392,
+        720,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-18-split1",
+      "x": 1440,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        1440,
+        816,
+        48,
+        96
+      ],
+      "painted": [
+        1440,
+        720,
+        48,
+        192
+      ],
+      "overhang": [
+        1440,
+        720,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-19",
+      "x": 1488,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        1488,
+        816,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        720,
+        96,
+        192
+      ],
+      "overhang": [
+        1488,
+        720,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-20",
+      "x": 1584,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        1584,
+        816,
+        96,
+        96
+      ],
+      "painted": [
+        1584,
+        720,
+        96,
+        192
+      ],
+      "overhang": [
+        1584,
+        720,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-21-split0",
+      "x": 1680,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        1680,
+        816,
+        48,
+        96
+      ],
+      "painted": [
+        1680,
+        720,
+        48,
+        192
+      ],
+      "overhang": [
+        1680,
+        720,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-21-split1",
+      "x": 1728,
+      "base": 912,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-912",
+      "footprint": [
+        1728,
+        816,
+        48,
+        96
+      ],
+      "painted": [
+        1728,
+        720,
+        48,
+        192
+      ],
+      "overhang": [
+        1728,
+        720,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-22",
+      "x": 144,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        144,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        144,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-23-split0",
+      "x": 240,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        240,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        240,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        240,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-23-split1",
+      "x": 288,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        288,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        288,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        288,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-24",
+      "x": 336,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        336,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        336,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-25",
+      "x": 480,
+      "base": 1296,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        480,
+        1200,
+        96,
+        96
+      ],
+      "painted": [
+        480,
+        1104,
+        96,
+        192
+      ],
+      "overhang": [
+        480,
+        1104,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-26-split0",
+      "x": 576,
+      "base": 1296,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        576,
+        1200,
+        48,
+        96
+      ],
+      "painted": [
+        576,
+        1104,
+        48,
+        192
+      ],
+      "overhang": [
+        576,
+        1104,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-26-split1",
+      "x": 624,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        624,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        624,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        624,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-27",
+      "x": 672,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        672,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        672,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        672,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-28",
+      "x": 768,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        768,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        768,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        768,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-29-split0",
+      "x": 864,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        864,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        864,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        864,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-29-split1",
+      "x": 912,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        912,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        912,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        912,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-30",
+      "x": 960,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        960,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        960,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        960,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-31",
+      "x": 1056,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        1056,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        1056,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        1056,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-33",
+      "x": 1392,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        1392,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        1392,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-34",
+      "x": 1488,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        1488,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        1488,
+        1056,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "rear-35-split0",
+      "x": 1584,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "plain",
+        "roof_file": "roof-back-repair-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        1584,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        1584,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        1584,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-35-split1",
+      "x": 1632,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 1,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-w1"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        1632,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        1632,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        1632,
+        1056,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "rear-36",
+      "x": 1680,
+      "base": 1248,
+      "spec": {
+        "view": "back",
+        "width": 2,
+        "floors": 2,
+        "back": "stair",
+        "roof_file": "roof-back-dormer-w2"
+      },
+      "frontage_group": "rear-1248",
+      "footprint": [
+        1680,
+        1152,
+        96,
+        96
+      ],
+      "painted": [
+        1680,
+        1056,
+        96,
+        192
+      ],
+      "overhang": [
+        1680,
+        1056,
+        96,
+        96
+      ]
+    }
+  ],
+  "props": [
+    {
+      "file": "cathedral-r",
+      "x": 480,
+      "base": 1056,
+      "id": "cathedral",
+      "entrance": [
+        562,
+        1056
+      ],
+      "footprint": [
+        480,
+        768,
+        240,
+        288
+      ],
+      "overhang": [
+        480,
+        624,
+        240,
+        144
+      ]
+    },
+    {
+      "file": "guildhall-r",
+      "x": 864,
+      "base": 672,
+      "id": "guildhall",
+      "entrance": [
+        960,
+        672
+      ],
+      "footprint": [
+        864,
+        480,
+        192,
+        192
+      ],
+      "overhang": [
+        864,
+        272,
+        192,
+        208
+      ]
+    },
+    {
+      "file": "townhall-market",
+      "x": 720,
+      "base": 864,
+      "id": "market-hall",
+      "footprint": [
+        720,
+        720,
+        192,
+        144
+      ]
+    },
+    {
+      "file": "fountain-r",
+      "x": 768,
+      "base": 1008,
+      "id": "fountain",
+      "footprint": [
+        768,
+        912,
+        96,
+        96
+      ]
+    },
+    {
+      "file": "market-cross-r",
+      "x": 1056,
+      "base": 1032,
+      "id": "market-cross",
+      "footprint": [
+        1056,
+        936,
+        48,
+        96
+      ]
+    },
+    {
+      "file": "stall-0",
+      "x": 936,
+      "base": 828,
+      "id": "stall-0",
+      "footprint": [
+        936,
+        780,
+        48,
+        48
+      ],
+      "overhead": [
+        938,
+        782,
+        44,
+        25
+      ],
+      "supports": [
+        [
+          939,
+          807,
+          3,
+          21
+        ],
+        [
+          978,
+          807,
+          3,
+          21
+        ]
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ]
+    },
+    {
+      "file": "stall-1",
+      "x": 984,
+      "base": 828,
+      "id": "stall-1",
+      "footprint": [
+        984,
+        780,
+        48,
+        48
+      ],
+      "overhead": [
+        986,
+        782,
+        44,
+        25
+      ],
+      "supports": [
+        [
+          987,
+          807,
+          3,
+          21
+        ],
+        [
+          1026,
+          807,
+          3,
+          21
+        ]
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ]
+    },
+    {
+      "file": "stall-2",
+      "x": 1032,
+      "base": 828,
+      "id": "stall-2",
+      "footprint": [
+        1032,
+        780,
+        48,
+        48
+      ],
+      "overhead": [
+        1034,
+        782,
+        44,
+        25
+      ],
+      "supports": [
+        [
+          1035,
+          807,
+          3,
+          21
+        ],
+        [
+          1074,
+          807,
+          3,
+          21
+        ]
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ]
+    },
+    {
+      "file": "stall-3",
+      "x": 948,
+      "base": 948,
+      "id": "stall-3",
+      "footprint": [
+        948,
+        900,
+        48,
+        48
+      ],
+      "overhead": [
+        950,
+        902,
+        44,
+        25
+      ],
+      "supports": [
+        [
+          951,
+          927,
+          3,
+          21
+        ],
+        [
+          990,
+          927,
+          3,
+          21
+        ]
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ]
+    },
+    {
+      "file": "stall-4",
+      "x": 996,
+      "base": 948,
+      "id": "stall-4",
+      "footprint": [
+        996,
+        900,
+        48,
+        48
+      ],
+      "overhead": [
+        998,
+        902,
+        44,
+        25
+      ],
+      "supports": [
+        [
+          999,
+          927,
+          3,
+          21
+        ],
+        [
+          1038,
+          927,
+          3,
+          21
+        ]
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ]
+    },
+    {
+      "file": "stall-5",
+      "x": 1044,
+      "base": 948,
+      "id": "stall-5",
+      "footprint": [
+        1044,
+        900,
+        48,
+        48
+      ],
+      "overhead": [
+        1046,
+        902,
+        44,
+        25
+      ],
+      "supports": [
+        [
+          1047,
+          927,
+          3,
+          21
+        ],
+        [
+          1086,
+          927,
+          3,
+          21
+        ]
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ]
+    },
+    {
+      "file": "fence-0",
+      "x": 576,
+      "base": 696,
+      "owner": "churchyard"
+    },
+    {
+      "file": "fence-0",
+      "x": 624,
+      "base": 696,
+      "owner": "churchyard"
+    },
+    {
+      "file": "fence-0",
+      "x": 672,
+      "base": 696,
+      "owner": "churchyard"
+    },
+    {
+      "file": "fence-1",
+      "x": 704,
+      "base": 744,
+      "owner": "churchyard"
+    },
+    {
+      "file": "fence-0",
+      "x": 672,
+      "base": 792,
+      "owner": "churchyard"
+    },
+    {
+      "file": "bench-pocket",
+      "x": 624,
+      "base": 760,
+      "id": "bench-pocket",
+      "owner": "churchyard"
+    },
+    {
+      "file": "yard-3",
+      "x": 576,
+      "base": 744,
+      "id": "churchyard-tub-tree",
+      "owner": "churchyard"
+    },
+    {
+      "file": "person",
+      "x": 600,
+      "base": 758,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "bench-visitor",
+      "role": "bench pocket"
+    },
+    {
+      "file": "court-stair",
+      "x": 240,
+      "base": 816,
+      "id": "court-stair",
+      "entrance": [
+        258,
+        816
+      ],
+      "footprint": [
+        240,
+        768,
+        48,
+        48
+      ],
+      "overhead": [
+        240,
+        720,
+        48,
+        48
+      ],
+      "supports": [
+        [
+          240,
+          768,
+          6,
+          48
+        ],
+        [
+          282,
+          768,
+          6,
+          48
+        ]
+      ]
+    },
+    {
+      "file": "yard-2",
+      "x": 288,
+      "base": 768,
+      "id": "court-lean-to",
+      "owner": "court"
+    },
+    {
+      "file": "yard-0",
+      "x": 288,
+      "base": 816,
+      "id": "court-well",
+      "owner": "court"
+    },
+    {
+      "file": "yard-1",
+      "x": 288,
+      "base": 772,
+      "id": "court-wood-and-wash",
+      "owner": "court",
+      "crop": [
+        0,
+        28,
+        48,
+        48
+      ]
+    },
+    {
+      "file": "washing-line",
+      "x": 240,
+      "base": 740,
+      "id": "court-laundry",
+      "overhead": true,
+      "owner": "court"
+    },
+    {
+      "file": "fence-0",
+      "x": 240,
+      "base": 720,
+      "owner": "court"
+    },
+    {
+      "file": "fence-0",
+      "x": 288,
+      "base": 720,
+      "owner": "court"
+    },
+    {
+      "file": "fence-1",
+      "x": 320,
+      "base": 768,
+      "owner": "court"
+    },
+    {
+      "file": "fence-1",
+      "x": 320,
+      "base": 816,
+      "owner": "court"
+    },
+    {
+      "file": "fence-0",
+      "x": 240,
+      "base": 888,
+      "id": "court-gate",
+      "entrance": [
+        312,
+        864
+      ],
+      "owner": "court-open-gate"
+    },
+    {
+      "file": "cart",
+      "x": 864,
+      "base": 912
+    },
+    {
+      "file": "crate",
+      "x": 916,
+      "base": 910
+    },
+    {
+      "file": "barrel",
+      "x": 890,
+      "base": 887
+    },
+    {
+      "file": "district-market-scales",
+      "x": 1016,
+      "base": 868
+    },
+    {
+      "file": "cat",
+      "x": 268,
+      "base": 900
+    },
+    {
+      "file": "pigeon",
+      "x": 874,
+      "base": 1002
+    },
+    {
+      "file": "district-craft-drying-rack",
+      "x": 1740,
+      "base": 1048
+    },
+    {
+      "file": "crate",
+      "x": 1734,
+      "base": 1080
+    },
+    {
+      "file": "barrel",
+      "x": 1704,
+      "base": 1080
+    },
+    {
+      "file": "person",
+      "x": 744,
+      "base": 700,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-0",
+      "role": "passing"
+    },
+    {
+      "file": "person",
+      "x": 917,
+      "base": 700,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-1",
+      "role": "entering guild"
+    },
+    {
+      "file": "person",
+      "x": 574,
+      "base": 1088,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-2",
+      "role": "entering church"
+    },
+    {
+      "file": "person",
+      "x": 864,
+      "base": 1010,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-3",
+      "role": "jug-filler"
+    },
+    {
+      "file": "person",
+      "x": 907,
+      "base": 888,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-4",
+      "role": "unloading"
+    },
+    {
+      "file": "person",
+      "x": 942,
+      "base": 870,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-5",
+      "role": "browsing"
+    },
+    {
+      "file": "person",
+      "x": 1006,
+      "base": 874,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-6",
+      "role": "browsing"
+    },
+    {
+      "file": "person",
+      "x": 1068,
+      "base": 872,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-7",
+      "role": "browsing"
+    },
+    {
+      "file": "person",
+      "x": 938,
+      "base": 984,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-8",
+      "role": "buying"
+    },
+    {
+      "file": "person",
+      "x": 1002,
+      "base": 985,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-9",
+      "role": "buying"
+    },
+    {
+      "file": "person",
+      "x": 1082,
+      "base": 989,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-10",
+      "role": "buying"
+    },
+    {
+      "file": "person",
+      "x": 1136,
+      "base": 900,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-11",
+      "role": "passing"
+    },
+    {
+      "file": "person",
+      "x": 1150,
+      "base": 1016,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-12",
+      "role": "passing"
+    },
+    {
+      "file": "person",
+      "x": 1240,
+      "base": 1200,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-13",
+      "role": "passing gate"
+    },
+    {
+      "file": "person",
+      "x": 1242,
+      "base": 1360,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-14",
+      "role": "passing gate"
+    },
+    {
+      "file": "person",
+      "x": 352,
+      "base": 1046,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-15",
+      "role": "entering shop"
+    },
+    {
+      "file": "person",
+      "x": 250,
+      "base": 840,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-16",
+      "role": "at court well"
+    },
+    {
+      "file": "person",
+      "x": 292,
+      "base": 955,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-17",
+      "role": "court passage"
+    },
+    {
+      "file": "person",
+      "x": 446,
+      "base": 924,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-18",
+      "role": "side street"
+    },
+    {
+      "file": "person",
+      "x": 1356,
+      "base": 916,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-19",
+      "role": "side street"
+    },
+    {
+      "file": "person",
+      "x": 1504,
+      "base": 1047,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-20",
+      "role": "trader"
+    },
+    {
+      "file": "person",
+      "x": 1610,
+      "base": 1076,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-21",
+      "role": "cart handler"
+    },
+    {
+      "file": "person",
+      "x": 1788,
+      "base": 850,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-22",
+      "role": "side street"
+    },
+    {
+      "file": "person",
+      "x": 200,
+      "base": 663,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-23",
+      "role": "main street"
+    },
+    {
+      "file": "person",
+      "x": 340,
+      "base": 672,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-24",
+      "role": "main street"
+    },
+    {
+      "file": "person",
+      "x": 1400,
+      "base": 666,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-25",
+      "role": "main street"
+    },
+    {
+      "file": "person",
+      "x": 1560,
+      "base": 678,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-26",
+      "role": "main street"
+    },
+    {
+      "file": "person",
+      "x": 1748,
+      "base": 684,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-27",
+      "role": "main street"
+    },
+    {
+      "file": "person",
+      "x": 200,
+      "base": 1378,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-28",
+      "role": "south street"
+    },
+    {
+      "file": "person",
+      "x": 620,
+      "base": 1378,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-29",
+      "role": "south street"
+    },
+    {
+      "file": "person",
+      "x": 960,
+      "base": 1378,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-30",
+      "role": "south street"
+    },
+    {
+      "file": "person",
+      "x": 1500,
+      "base": 1378,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-31",
+      "role": "south street"
+    },
+    {
+      "file": "person",
+      "x": 950,
+      "base": 789,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-32",
+      "role": "vendor"
+    },
+    {
+      "file": "person",
+      "x": 998,
+      "base": 789,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-33",
+      "role": "vendor"
+    },
+    {
+      "file": "person",
+      "x": 1046,
+      "base": 789,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "person-34",
+      "role": "vendor"
+    },
+    {
+      "file": "person",
+      "x": 962,
+      "base": 909,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "person-35",
+      "role": "vendor"
+    },
+    {
+      "file": "person",
+      "x": 1010,
+      "base": 909,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "person-36",
+      "role": "vendor"
+    },
+    {
+      "file": "person",
+      "x": 1058,
+      "base": 909,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "person-37",
+      "role": "vendor"
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 0,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 0,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 96,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 96,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 192,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 192,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 288,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 288,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 384,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 384,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 480,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 480,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 576,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 576,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 672,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 672,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 768,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 768,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 864,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 864,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 960,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 960,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 1056,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1056,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1152,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 1248,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1344,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1344,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 1440,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1440,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1536,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1536,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 1632,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1632,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1728,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1728,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-alternate-r",
+      "x": 1824,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-walk-r",
+      "x": 1824,
+      "base": 1440,
+      "crop": [
+        0,
+        0,
+        96,
+        48
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-stair-r",
+      "x": 960,
+      "base": 240,
+      "wall": true,
+      "id": "north-wall-stair"
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 384,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 528,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 672,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 816,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 960,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 1104,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 1248,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 0,
+      "base": 1392,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 384,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 528,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 672,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 816,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 960,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 1104,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 1248,
+      "wall": true
+    },
+    {
+      "file": "wall-side",
+      "x": 1872,
+      "base": 1392,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 0,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 384,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 768,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 1152,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 1536,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 1824,
+      "base": 240,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 0,
+      "base": 624,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 0,
+      "base": 1008,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 0,
+      "base": 1440,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 1824,
+      "base": 624,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 1824,
+      "base": 1008,
+      "wall": true
+    },
+    {
+      "file": "wall-tower-r",
+      "x": 1824,
+      "base": 1440,
+      "wall": true
+    },
+    {
+      "file": "gatehouse-r",
+      "x": 1176,
+      "base": 1440,
+      "id": "gatehouse",
+      "entrance": [
+        1248,
+        1440
+      ],
+      "footprint": [
+        1176,
+        1248,
+        144,
+        192
+      ],
+      "overhang": [
+        1176,
+        1040,
+        144,
+        208
+      ],
+      "foreground_mask": [
+        24,
+        230,
+        120,
+        338
+      ],
+      "supports": [
+        [
+          1176,
+          1344,
+          24,
+          96
+        ],
+        [
+          1296,
+          1344,
+          24,
+          96
+        ]
+      ],
+      "wall": true
+    },
+    {
+      "file": "wall-walk-stair-r",
+      "x": 1000,
+      "base": 1440,
+      "wall": true,
+      "crop": [
+        0,
+        0,
+        184,
+        48
+      ]
+    }
+  ],
+  "gardens": [
+    [
+      576,
+      672,
+      144,
+      96
+    ],
+    [
+      240,
+      720,
+      96,
+      144
+    ]
+  ],
+  "clear_routes": [
+    [
+      96,
+      240,
+      1728,
+      48
+    ],
+    [
+      48,
+      288,
+      48,
+      1056
+    ],
+    [
+      1824,
+      240,
+      48,
+      1104
+    ],
+    [
+      96,
+      1344,
+      1728,
+      48
+    ],
+    [
+      96,
+      1008,
+      336,
+      48
+    ],
+    [
+      432,
+      1008,
+      288,
+      96
+    ],
+    [
+      1296,
+      1008,
+      192,
+      48
+    ],
+    [
+      1488,
+      1008,
+      336,
+      96
+    ],
+    [
+      432,
+      288,
+      48,
+      336
+    ],
+    [
+      432,
+      720,
+      48,
+      288
+    ],
+    [
+      1344,
+      288,
+      48,
+      336
+    ],
+    [
+      1344,
+      720,
+      48,
+      288
+    ],
+    [
+      1776,
+      720,
+      48,
+      288
+    ],
+    [
+      1776,
+      1104,
+      48,
+      240
+    ],
+    [
+      1104,
+      768,
+      96,
+      288
+    ],
+    [
+      1104,
+      1056,
+      192,
+      96
+    ],
+    [
+      1200,
+      1152,
+      96,
+      288
+    ],
+    [
+      720,
+      672,
+      48,
+      48
+    ],
+    [
+      720,
+      1008,
+      48,
+      48
+    ],
+    [
+      288,
+      864,
+      48,
+      144
+    ]
+  ],
+  "features": {
+    "grid": 48,
+    "cells": [
+      40,
+      30
+    ],
+    "square": "10x8 with2x2 northeast notch; church west, guild north, merchant walls east/south",
+    "life": "six vendors, customers, unloading cart, fountain visitor, inhabited shared rear court",
+    "wall": "one-cell service route; towers every8cells; south gate reaches square through96px elbow",
+    "material": "terracotta dominant, two facade colours, neutral civic stone, rare poor repairs",
+    "routes": "96/48/24 with T, jog, elbow and court termination",
+    "conflicts": [
+      "BRIEF17 sign dimensions and fixed0/47 course win over panel2 reductions",
+      "BRIEF17 street-jog and one/two-cell lot rules retained"
+    ]
+  },
+  "square": [
+    720,
+    672,
+    480,
+    384
+  ],
+  "square_notch": [
+    1104,
+    672,
+    96,
+    96
+  ]
+}

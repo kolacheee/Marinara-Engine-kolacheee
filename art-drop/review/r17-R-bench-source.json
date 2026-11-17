@@ -1,0 +1,7 @@
+{
+  "ref": "origin/claude/project-thread-g8wuu1",
+  "path": "packages/server/src/assets/overworld-art/fantasy.json",
+  "sha256": "bfbb3cd3c0f5512fb4678991eabdcc7d1861f9c52f281da36e39615426f2801b",
+  "tileSize": 48,
+  "folk_missing": true
+}

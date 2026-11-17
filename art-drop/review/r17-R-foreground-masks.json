@@ -1,0 +1,125 @@
+[
+  {
+    "case": "behind roof",
+    "actor": [
+      84,
+      66,
+      20,
+      34
+    ],
+    "rects": [
+      {
+        "label": "footprint",
+        "box": [
+          48,
+          128,
+          144,
+          224
+        ]
+      },
+      {
+        "label": "roof mask",
+        "box": [
+          48,
+          32,
+          144,
+          128
+        ]
+      },
+      {
+        "label": "standing",
+        "box": [
+          80,
+          64,
+          104,
+          96
+        ]
+      }
+    ]
+  },
+  {
+    "case": "under arch",
+    "actor": [
+      119,
+      184,
+      20,
+      34
+    ],
+    "rects": [
+      {
+        "label": "entrance",
+        "box": [
+          112,
+          224,
+          136,
+          256
+        ]
+      },
+      {
+        "label": "passage",
+        "box": [
+          111,
+          185,
+          139,
+          224
+        ]
+      },
+      {
+        "label": "base",
+        "box": [
+          48,
+          224,
+          144,
+          225
+        ]
+      }
+    ]
+  },
+  {
+    "case": "behind canopy",
+    "actor": [
+      84,
+      176,
+      20,
+      34
+    ],
+    "rects": [
+      {
+        "label": "canopy mask",
+        "box": [
+          74,
+          178,
+          118,
+          202
+        ]
+      },
+      {
+        "label": "left post",
+        "box": [
+          75,
+          202,
+          78,
+          224
+        ]
+      },
+      {
+        "label": "right post",
+        "box": [
+          114,
+          202,
+          117,
+          224
+        ]
+      },
+      {
+        "label": "vendor",
+        "box": [
+          80,
+          176,
+          104,
+          208
+        ]
+      }
+    ]
+  }
+]

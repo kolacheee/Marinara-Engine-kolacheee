@@ -1,3 +1,118 @@
+# Round 17 — Part R
+
+Finished the **40×30-cell dense walled district**, using the coordinator's
+48px grid: **1920×1440 at 1×**, **3840×2880 at 2×**. It has **86 buildings**,
+joined frontages and rear rows, a **10×8-cell square with a 2×2 notch**,
+cathedral west, guildhall north, six stalls in staggered triplets, the low
+market hall, fountain, cross, unloading cart and **39 existing townsfolk**.
+The gate's **96px route** turns into the square; side streets are **48px**,
+the court lane **24px**. Only the fenced churchyard and inhabited rear court
+receive grass. The churchyard retains a bench pocket, resident and tub tree.
+
+[Final city](review/r17-city-final.png), [exact 2×](review/r17-city-final-2x.png),
+[three-way comparison](review/r17-city-final-vs-r15-vs-today.png),
+[review index](review/r17-R-review.html). The comparison places today's
+**600×500** town, the **1200×912 Round15 mockup**, and the final district
+beside each other without resampling. Today's screenshot has 24px displayed
+cells; both city mockups use native 48px cells, explicitly labelled.
+
+**Drawing method:** **nine large built-in image-tool drawings on solid
+magenta**, selecting five paintings. Rear roof received three alternatives;
+stair/landing and north–south wall received two each. Retained the quieter
+repair-only roof C, supported stair B and wall B. Two separately drawn upper
+floors reserve blank left/right sign bays and retain recessed windows.
+Painted bounds/row registration → **8× BOX working canvas** → fixed approved
+palette without dithering → exact RGBA mode of **all 64 samples per native
+pixel**, including transparency, with lexicographic ties → one-pixel dark
+outline and isolated-pixel cleanup. **3,403 recorded native edits** across
+the five selected drawings include the retained contact-strip transfers.
+All exports use **6–32 opaque colours**, **hard 0/255 alpha**, **zero RGB under
+transparency**, and no detached one/two-pixel alpha islands.
+[Prompts and selections](review/r17-R-generation.json),
+[processing](review/r17-R-processing.json), [file inventory](review/r17-R-files.json).
+
+**Nineteen native PNG exports** in `out/city17/`:
+
+- `roof-back-repair-w1` **48×96**; `roof-back-dormer-w2` **96×96**, assembled
+  from the approved rear cap and native drawn dormer. The repair cap retains
+  the original 12 ridge rows and four eave rows to meet its neighbours.
+- `court-stair` **48×96**, a complete stair, supported landing and warm
+  upper shutter; `wall-side` **48×144**, repeating the drawing's central
+  48px merlon period along the north–south perimeter.
+- `storey-sign-bay-left/right-w2`, each **96×48**, plus both warm-grey `-c1`
+  partners. They retain the fixed rows 0/47. Signs mount higher over the
+  blank bay, leaving the recessed window, door and shop goods visible.
+- Grey-brown `-r` partners for cathedral **240×432**, guildhall **192×400**,
+  gatehouse **144×400**, tower **96×240**, wall-walk **96×144**, wall stair
+  **192×144**, fountain **96×96**, cross **48×96**, shrine **48×48**, plus
+  the **96×144** alternate wall crop. Palette changes preserve alpha and
+  native geometry; roof, window and timber drawings remain intact.
+- `bench-pocket` **48×48**, extracted from the existing fantasy pack and
+  palette-locked at native size, with unchanged alpha. Existing Round15
+  **20×34** townsfolk, and A–E architectural/market/life drawings, are reused
+  without resizing. No new character sizes or district catalogue.
+
+Code only registers, reduces, palette-locks, cleans, crops, repeats and
+composites drawings. No architecture, props, textures, noise or replacement
+shapes were constructed in code. Review labels, footprint outlines and
+explicit foreground cutaway masks are presentation/proof only.
+
+**Composer repairs:** removed Part E's unconditional shopfront override;
+both trade rows select four distinct complete fronts, with mounts on the
+side opposite their doors. The L-block's third repeated narrow rear cap is
+replaced by the new repair cap. The inherited rich-district study now keeps
+a coherent upper family per house instead of cycling the same three pieces
+through every house. The checker compares **resolved RGBA pixel hashes and
+dimensions**, including aliases and pieces used at different floor levels.
+It checks actual five-lot runs, not variant labels. Restoring either original
+E4 failure makes the checker fail. No earlier production PNG was overwritten.
+
+**Measurements and QC:** all **223 checks pass**, including replay of
+**2,949,120 mode samples**, **401 resolved-piece window/layer checks** across
+the final city, three required blocks and five inherited district studies,
+**43 clear standing/public approaches**, six closed-block coverage regions,
+the square's unobstructed 96px route, exact nearest-neighbour scaling and
+**2,333 unchanged earlier production files**. The city has this storey count:
+
+| Storeys | 1 | 2 | 3 | 4 | 5 |
+|---|---:|---:|---:|---:|---:|
+| All buildings, including rear rows | 1 | 52 | 25 | 6 | 2 |
+| Front-facing buildings | 1 | 6 | 24 | 6 | 1 |
+
+The remaining five-storey building is the side-facing square return.
+Single-storey buildings are **1.16%** of all buildings. Taller frontages
+frame the square/main streets; low work buildings remain at the wall/court.
+Party walls use the height-test coping/flashing rule. Existing drawn shadow
+paint falls down/right with height-responsive reach, tight contact strips
+and civic silhouette masks, keeping receiving paving visible.
+
+Saved **every new export at 1×/nearest-neighbour 4×**, self/unlike seams,
+**literal 3×3 repeats at 1×/4× for all six used ground/overlay families**,
+required scenes and comparisons at **1×/3×**, complete corner-house and
+seven-cell roof studies, and native greyscale navigation checks. Props use
+summer paving/grass; there are no seasonal partners in R. The anchor sheet
+separates footprints, bases, entrances, overhead spans and supports. Normal
+and reveal states show an actor behind a roof, under an arch, behind a
+canopy and under the gate chamber, with supports retained.
+[Verification](review/r17-R-verification.json),
+[panel response](review/r17-R-panel-response.json),
+[critic](review/critic-r17R-1.json), [anchors](review/r17-R-city-anchors-1x.png).
+
+**Brief precedence:** kept twice-Round15 **64×72 signs** over panel2's smaller
+assembly request; new blank mounting bays address architectural obstruction.
+Kept fixed stack courses, 1/2-cell live lots, street jogs and required shadows.
+The three-cell hip appears only in the requested seam study. The coordinator's
+40×30 cells override the earlier approximate 1200×900 size. Panel2's deferral
+of runtime routing/fading and magical court expansion is respected.
+
+This is saved-art self-review, not independent acceptance or an in-engine
+playtest. All authored edits stay inside `art-drop/`. Branch
+`art/overworld-codex-2026-11-06` is unchanged; no commit or push.
+
+Replay with `python -B`: `review/r17-R-process.py`,
+`out/city17/compose.py --part R`, `review/r17-R-review.py`, then
+`review/r17-R-verify.py` (paths relative to `art-drop/`).
+
 # Round 17 — Part E: critic-r17E-3 redraw
 
 Repaired the sole failed file, `out/city17/compose.py`. The retained gate

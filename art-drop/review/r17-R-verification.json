@@ -1,0 +1,1537 @@
+{
+  "part": "R",
+  "passed": 223,
+  "total": 223,
+  "failed": [],
+  "checks": [
+    {
+      "name": "court-stair dimensions",
+      "pass_": true
+    },
+    {
+      "name": "court-stair hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "court-stair hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "court-stair no detached specks",
+      "pass_": true,
+      "components": [
+        4460
+      ]
+    },
+    {
+      "name": "court-stair file hash",
+      "pass_": true
+    },
+    {
+      "name": "court-stair review 1x",
+      "pass_": true
+    },
+    {
+      "name": "court-stair review 4x",
+      "pass_": true
+    },
+    {
+      "name": "court-stair exact4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-side dimensions",
+      "pass_": true
+    },
+    {
+      "name": "wall-side hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "wall-side hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "wall-side no detached specks",
+      "pass_": true,
+      "components": [
+        6519
+      ]
+    },
+    {
+      "name": "wall-side file hash",
+      "pass_": true
+    },
+    {
+      "name": "wall-side review 1x",
+      "pass_": true
+    },
+    {
+      "name": "wall-side review 4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-side exact4x",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 no detached specks",
+      "pass_": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "roof-back-repair-w1 file hash",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 review 1x",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 review 4x",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-repair-w1 exact4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 no detached specks",
+      "pass_": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "storey-sign-bay-left-w2 file hash",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 review 1x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 review 4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2 exact4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 no detached specks",
+      "pass_": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "storey-sign-bay-right-w2 file hash",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 review 1x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 review 4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2 exact4x",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r no detached specks",
+      "pass_": true,
+      "components": [
+        59274
+      ]
+    },
+    {
+      "name": "cathedral-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "cathedral-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r no detached specks",
+      "pass_": true,
+      "components": [
+        36565
+      ]
+    },
+    {
+      "name": "guildhall-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "guildhall-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r no detached specks",
+      "pass_": true,
+      "components": [
+        35667
+      ]
+    },
+    {
+      "name": "gatehouse-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r no detached specks",
+      "pass_": true,
+      "components": [
+        19553
+      ]
+    },
+    {
+      "name": "wall-tower-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r no detached specks",
+      "pass_": true,
+      "components": [
+        13264
+      ]
+    },
+    {
+      "name": "wall-walk-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r no detached specks",
+      "pass_": true,
+      "components": [
+        26556
+      ]
+    },
+    {
+      "name": "wall-walk-stair-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r no detached specks",
+      "pass_": true,
+      "components": [
+        5916
+      ]
+    },
+    {
+      "name": "fountain-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "fountain-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r no detached specks",
+      "pass_": true,
+      "components": [
+        1814
+      ]
+    },
+    {
+      "name": "market-cross-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "market-cross-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r no detached specks",
+      "pass_": true,
+      "components": [
+        1261
+      ]
+    },
+    {
+      "name": "shrine-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "shrine-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 no detached specks",
+      "pass_": true,
+      "components": [
+        9216
+      ]
+    },
+    {
+      "name": "roof-back-dormer-w2 file hash",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 review 1x",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 review 4x",
+      "pass_": true
+    },
+    {
+      "name": "roof-back-dormer-w2 exact4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r dimensions",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r no detached specks",
+      "pass_": true,
+      "components": [
+        13260
+      ]
+    },
+    {
+      "name": "wall-walk-alternate-r file hash",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r review 1x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r review 4x",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-alternate-r exact4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 no detached specks",
+      "pass_": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 file hash",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 review 1x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 review 4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-left-w2-c1 exact4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 no detached specks",
+      "pass_": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 file hash",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 review 1x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 review 4x",
+      "pass_": true
+    },
+    {
+      "name": "storey-sign-bay-right-w2-c1 exact4x",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket dimensions",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket hard alpha",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket hidden RGB",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket no detached specks",
+      "pass_": true,
+      "components": [
+        833
+      ]
+    },
+    {
+      "name": "bench-pocket file hash",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket review 1x",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket review 4x",
+      "pass_": true
+    },
+    {
+      "name": "bench-pocket exact4x",
+      "pass_": true
+    },
+    {
+      "name": "left attachment courses",
+      "pass_": true
+    },
+    {
+      "name": "right attachment courses",
+      "pass_": true
+    },
+    {
+      "name": "cathedral silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "guildhall silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "gatehouse silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "wall-tower silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "wall-walk-stair silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "fountain silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "market-cross silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "shrine silhouette preserved",
+      "pass_": true
+    },
+    {
+      "name": "rear_a exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "rear_b exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "stair_a exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "stair_b exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "wall_a exact mode",
+      "pass_": true,
+      "samples": 442368
+    },
+    {
+      "name": "wall_b exact mode",
+      "pass_": true,
+      "samples": 442368
+    },
+    {
+      "name": "rear_c exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "mount_left exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "mount_right exact mode",
+      "pass_": true,
+      "samples": 294912
+    },
+    {
+      "name": "protected production files",
+      "pass_": true,
+      "count": 2333,
+      "changed": []
+    },
+    {
+      "name": "city resolved-piece limit",
+      "pass_": true,
+      "windows": 250,
+      "failures": []
+    },
+    {
+      "name": "L-block resolved-piece limit",
+      "pass_": true,
+      "windows": 28,
+      "failures": []
+    },
+    {
+      "name": "market resolved-piece limit",
+      "pass_": true,
+      "windows": 21,
+      "failures": []
+    },
+    {
+      "name": "height-test resolved-piece limit",
+      "pass_": true,
+      "windows": 16,
+      "failures": []
+    },
+    {
+      "name": "district-market resolved-piece limit",
+      "pass_": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "district-temple resolved-piece limit",
+      "pass_": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "district-craft resolved-piece limit",
+      "pass_": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "district-rich resolved-piece limit",
+      "pass_": true,
+      "windows": 26,
+      "failures": []
+    },
+    {
+      "name": "district-poor resolved-piece limit",
+      "pass_": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "detect original north-rear failure",
+      "pass_": true
+    },
+    {
+      "name": "detect original forced trade front",
+      "pass_": true
+    },
+    {
+      "name": "L-block retained48px entrances",
+      "pass_": true,
+      "count": 0
+    },
+    {
+      "name": "market retained48px entrances",
+      "pass_": true,
+      "count": 11
+    },
+    {
+      "name": "height-test retained48px entrances",
+      "pass_": true,
+      "count": 0
+    },
+    {
+      "name": "city standing and public approaches",
+      "pass_": true,
+      "count": 43,
+      "blocked": []
+    },
+    {
+      "name": "only enclosed gardens assigned",
+      "pass_": true
+    },
+    {
+      "name": "city defaults to paving",
+      "pass_": true
+    },
+    {
+      "name": "closed block coverage 0",
+      "pass_": true,
+      "rect": [
+        144,
+        336,
+        288,
+        288
+      ],
+      "uncovered": 0
+    },
+    {
+      "name": "closed block coverage 1",
+      "pass_": true,
+      "rect": [
+        1392,
+        384,
+        384,
+        240
+      ],
+      "uncovered": 0
+    },
+    {
+      "name": "closed block coverage 2",
+      "pass_": true,
+      "rect": [
+        144,
+        864,
+        96,
+        144
+      ],
+      "uncovered": 0
+    },
+    {
+      "name": "closed block coverage 3",
+      "pass_": true,
+      "rect": [
+        1392,
+        864,
+        384,
+        144
+      ],
+      "uncovered": 0
+    },
+    {
+      "name": "closed block coverage 4",
+      "pass_": true,
+      "rect": [
+        144,
+        1200,
+        288,
+        144
+      ],
+      "uncovered": 0
+    },
+    {
+      "name": "closed block coverage 5",
+      "pass_": true,
+      "rect": [
+        576,
+        1200,
+        528,
+        144
+      ],
+      "uncovered": 0
+    },
+    {
+      "name": "square96px route",
+      "pass_": true,
+      "blocked": 0,
+      "rect": [
+        1104,
+        768,
+        96,
+        288
+      ]
+    },
+    {
+      "name": "six stalls",
+      "pass_": true
+    },
+    {
+      "name": "square dimensions",
+      "pass_": true
+    },
+    {
+      "name": "one-storey share",
+      "pass_": true,
+      "histogram": {
+        "3": 25,
+        "4": 6,
+        "5": 2,
+        "1": 1,
+        "2": 52
+      },
+      "percent": 1.1627906976744187
+    },
+    {
+      "name": "all live lots1/2 cells",
+      "pass_": true
+    },
+    {
+      "name": "square-baker sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "square-apothecary sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "west-smith sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "west-cobbler sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "east-craft-0 sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "east-craft-2 sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "south-6 sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "south-8 sign inside lot",
+      "pass_": true
+    },
+    {
+      "name": "native40x30 canvas",
+      "pass_": true
+    },
+    {
+      "name": "exact2x city",
+      "pass_": true
+    },
+    {
+      "name": "cobble-large literal3x3 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "cobble-large exact repeat4x",
+      "pass_": true
+    },
+    {
+      "name": "cobble-small literal3x3 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "cobble-small exact repeat4x",
+      "pass_": true
+    },
+    {
+      "name": "street-main literal3x3 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "street-main exact repeat4x",
+      "pass_": true
+    },
+    {
+      "name": "street-side literal3x3 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "street-side exact repeat4x",
+      "pass_": true
+    },
+    {
+      "name": "lane literal3x3 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "lane exact repeat4x",
+      "pass_": true
+    },
+    {
+      "name": "mud-edge literal3x3 dimensions",
+      "pass_": true
+    },
+    {
+      "name": "mud-edge exact repeat4x",
+      "pass_": true
+    }
+  ],
+  "mode_samples": 2949120,
+  "storey_histogram": {
+    "3": 25,
+    "4": 6,
+    "5": 2,
+    "1": 1,
+    "2": 52
+  },
+  "street_front_histogram": {
+    "3": 24,
+    "4": 6,
+    "5": 1,
+    "1": 1,
+    "2": 6
+  },
+  "buildings": 86,
+  "townsfolk": 39,
+  "exports": 19,
+  "entrances": [
+    {
+      "id": "north-west-0",
+      "rect": [
+        204,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-west-1",
+      "rect": [
+        252,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-west-2",
+      "rect": [
+        348,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-mid-0",
+      "rect": [
+        492,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-mid-1",
+      "rect": [
+        588,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-east-0",
+      "rect": [
+        1212,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-east-jog",
+      "rect": [
+        1308,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-east-2",
+      "rect": [
+        1404,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-east-3",
+      "rect": [
+        1500,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-east-4",
+      "rect": [
+        1644,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-east-5",
+      "rect": [
+        1692,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-baker",
+      "rect": [
+        780,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-narrow",
+      "rect": [
+        828,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-smith",
+      "rect": [
+        1068,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-apothecary",
+      "rect": [
+        1164,
+        768,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-east-return",
+      "rect": [
+        1244,
+        1056,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-main-scribe",
+      "rect": [
+        1308,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-smith",
+      "rect": [
+        156,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "court-low-wing",
+      "rect": [
+        252,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-cobbler",
+      "rect": [
+        348,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-craft-0",
+      "rect": [
+        1404,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-craft-1",
+      "rect": [
+        1500,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-craft-2",
+      "rect": [
+        1596,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-craft-3",
+      "rect": [
+        1692,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "poor-edge-narrow",
+      "rect": [
+        108,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-0",
+      "rect": [
+        156,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-1",
+      "rect": [
+        252,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-2",
+      "rect": [
+        396,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-3",
+      "rect": [
+        492,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-4",
+      "rect": [
+        588,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-5",
+      "rect": [
+        732,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-6",
+      "rect": [
+        828,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-7",
+      "rect": [
+        876,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-8",
+      "rect": [
+        972,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-9",
+      "rect": [
+        1068,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-11",
+      "rect": [
+        1452,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-12",
+      "rect": [
+        1500,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-13",
+      "rect": [
+        1596,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-14",
+      "rect": [
+        1740,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "cathedral",
+      "rect": [
+        538,
+        1056,
+        48,
+        48
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "guildhall",
+      "rect": [
+        936,
+        672,
+        48,
+        48
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "court-stair",
+      "rect": [
+        246,
+        816,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "court-gate",
+      "rect": [
+        300,
+        864,
+        24,
+        32
+      ],
+      "blocked": 0
+    }
+  ],
+  "repetition": {
+    "city": {
+      "windows": 250,
+      "failures": []
+    },
+    "L-block": {
+      "windows": 28,
+      "failures": []
+    },
+    "market": {
+      "windows": 21,
+      "failures": []
+    },
+    "height-test": {
+      "windows": 16,
+      "failures": []
+    },
+    "district-market": {
+      "windows": 15,
+      "failures": []
+    },
+    "district-temple": {
+      "windows": 15,
+      "failures": []
+    },
+    "district-craft": {
+      "windows": 15,
+      "failures": []
+    },
+    "district-rich": {
+      "windows": 26,
+      "failures": []
+    },
+    "district-poor": {
+      "windows": 15,
+      "failures": []
+    }
+  },
+  "scope": "Saved-art checks. Runtime routing/fading is outside PartR."
+}

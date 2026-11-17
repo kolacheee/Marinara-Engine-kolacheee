@@ -1,0 +1,46 @@
+{
+  "part": "R",
+  "review_kind": "Saved-art self-review; no runtime pathfinding or renderer claim",
+  "panel_2": [
+    {"item":1,"status":"addressed","evidence":"r17-city-final.png; square [720,672,480,384], notch [1104,672,96,96]; west church, north guildhall, tall eastern/southern frontages, fenced churchyard"},
+    {"item":2,"status":"addressed with brief precedence","evidence":"r17-R-complete-corner-house-1x.png /4x; native96px two-storey corner assembled from A/B/C; BRIEF17 fixed0/47 courses retained"},
+    {"item":3,"status":"addressed","evidence":"r17-R-seven-cell-roof-volumes-1x.png /4x; 2-cell gable, lower3-cell hip seam demonstration and2-cell rear wing; live lots stay1/2 cells"},
+    {"item":4,"status":"addressed","evidence":"r17-R-three-trade-elevations-1x.png /4x; bakery tray, smith hearth and apothecary shelves; two newly drawn blank sign bays; e_spec now retains a coherent upper-floor family per building"},
+    {"item":5,"status":"addressed","evidence":"r17-R-three-access-types-1x.png /4x and r17-R-human-access-reveal-1x.png; enterable steps, shuttered service door, visible far passage, both side hands;43 checked standing/public approaches"},
+    {"item":6,"status":"conflicting size overridden by BRIEF17; placement addressed","evidence":"Keep required twice-Round15 signs at64x72. New blank upper bays and raised mounts keep windows, doors and goods visible. Sign pixels unchanged and all mounts remain inside their lots."},
+    {"item":7,"status":"addressed with brief precedence","evidence":"r17-R-three-access-types-1x.png; separately lit96px east/west returns, rear closure and complete corner. Footprints are separate from painted bounds. Live plot widths/depths retain brief1/2-cell rule."},
+    {"item":8,"status":"addressed with brief precedence","evidence":"r17-city-final.png, city layout and anchors;96px gate elbow,48px side routes,24px court lane, T junctions and closed court termination. Brief street jogs retained."},
+    {"item":9,"status":"addressed","evidence":"r17-R-corner-court-1x.png /3x;96x144 court,48px approach, open fence gap, shared well, wall-attached lean-to, woodpile, newly drawn48x96 stair/landing, supported laundry and warm shutter"},
+    {"item":10,"status":"addressed","evidence":"r17-R-populated-square-1x.png /3x; six48px stalls in staggered triplets beside market hall,72px browsing aisle, visible vendors/customers, unloading cart,96px through-route and48px fountain margins"},
+    {"item":11,"status":"addressed","evidence":"Nine civic grey-brown material partners preserve silhouettes; marked public entrances have48px approaches; full wall stair, gate interior and threshold; low market hall and fountain retained"},
+    {"item":12,"status":"addressed","evidence":"Existing drawn B shadow paint is placed with6px/storey reach and civic silhouette-following east casts, contact shade and receiver masks. Cross-lot casts are allowed; ground texture remains readable. No procedural shadow shapes."},
+    {"item":13,"status":"addressed","evidence":"r17-R-city-anchors-1x.png; r17-R-human-access-reveal-1x.png /3x; r17-R-gate-scene-reveal-1x.png and r17-R-market-scene-reveal-1x.png. Footprints, base anchors, entrances, overhead masks and supports are separate; existing people pass, enter and serve."},
+    {"item":14,"status":"addressed","evidence":"Native populated-square/corner-court/height-test comparisons, greyscale scenes, enlarged unlike joins, r17-city-final-vs-r15-vs-today.png. Real pixel hashes enforce at-most-two pieces per five-lot run across every floor level."},
+    {"item":15,"status":"addressed","evidence":"Only19 necessary R exports; no new character size, broad district catalogue, alternate civic silhouette, runtime pathfinding/fading or magical court. Existing E district studies are repaired and re-rendered for the universal repetition check."}
+  ],
+  "panel_1_R": {
+    "12":"Purposeful vendors, customers, jug-filler, unloading, shared stair/well/laundry court and a bench pocket with resident/tub tree; existing native townsfolk reused.",
+    "13":"Native/enlarged town comparisons, squints, both tall/low joins, unlike seams, marked entrances and explicit roof/arch/canopy reveal proofs."
+  },
+  "coordinator": {
+    "canvas":"40x30 at48px =1920x1440; literal1x and exact2x",
+    "density":"86 buildings, continuous joined frontages, front/back rows, no unassigned grass; only fenced court/churchyard",
+    "storeys":{"1":1,"2":52,"3":25,"4":6,"5":2},
+    "single_storey_percent":1.1627906976744187,
+    "market":"10x8 with2x2 notch,6 stalls,39 people across the scene; cross, fountain, hall and unloading activity",
+    "repetition":"Pixel hashes including aliases and all upper-floor levels; city, required three critics and all five inherited district studies pass"
+  },
+  "E4_repairs": {
+    "L_north_rear":"north-rear-3 uses image-drawn roof-back-repair-w1; no triple w1 cap",
+    "trade_rows":"Four distinct complete ground arrangements per row, sign side follows doorway, dedicated blank upper bay, raised mounts",
+    "rich_district":"Coherent per-house upper family removes cross-level repeated resolved pieces",
+    "regression_detection":"Restoring either original E4 selection fails the checker"
+  },
+  "conflicts": [
+    "User no-commit/no-push/no-branch-change overrides brief push-after-part instruction.",
+    "BRIEF17 twice-Round15 signs override panel2 maximum32x40 assembly.",
+    "BRIEF17 fixed0/47 course and1/2-cell live lots override removing attachment courses and merged3-cell live plots;3-cell roof appears only in seam demonstration.",
+    "BRIEF17 jogs/shadows retained over panel relaxed street runs/shadow exceptions.",
+    "Coordinator40x30 grid overrides earlier approximate1200x900 canvas."
+  ]
+}

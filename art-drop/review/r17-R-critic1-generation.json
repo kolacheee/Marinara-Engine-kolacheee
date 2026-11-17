@@ -1,0 +1,122 @@
+[
+  {
+    "id": "roof_a",
+    "source": "r17-R-critic1-source-roof_a.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-cb0572a4-5680-4de7-bb8d-51e6a42773b0.png",
+    "prompt": "Draw ONE production pixel-art ROOF VOLUME for this medieval town kit, a deep two-cell-wide house roof with a connected rear wing, not a sheet and not a whole building. Reference 1 is the approved native tile material; reference 2 is the town's viewing angle. Solid pure magenta #FF00FF background. Large 768 x 1536 drawing intended to reduce to exactly 96 x 192 native pixels. The roof occupies nearly the full width and height. Orthographic high 3/4 RPG view, front faces bottom, no isometric diamonds. One contiguous 4-cell deep volume: a long north-south terracotta main ridge occupies the rear half, meeting a shorter east-west front roof through a clearly painted recessed valley and correctly sloped roof planes; frontmost south eave continuous horizontal across 96px width. Broad coherent tiles about 6x4 native pixels, one tile scale throughout. No little front gable repeated midway, no interior horizontal eave dividing the two connected roofs. Lit upper/left slopes, dark right slopes. Small transparent/magenta stepped corner setbacks at the north corners allowed; a strong recognizable interlocking roof silhouette. Warm muted terracotta, brown one-native-pixel outline, quiet highlights, no specks, noise, gradients, blur, ground or cast shadow. Paint all geometry, ridges and valleys explicitly. Native pixel clusters enlarged cleanly. Variation A: L intersection with main rear ridge on left, cross-wing front facing right.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "output": "roof-rear-wing-r-w2"
+  },
+  {
+    "id": "roof_b",
+    "source": "r17-R-critic1-source-roof_b.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-b16a8d8c-d956-4aca-95dd-178bfad93354.png",
+    "prompt": "One medieval pixel-art connected roof module on flat pure magenta #ff00ff. Reference roof supplies exact terracotta tile style, house supplies high 3/4 orthographic viewing angle. Large drawing for reduction to 96x192 pixels (width:height=1:2). Paint a RECTANGULAR plan with an intersecting T roof: rear half is a full-width broad hipped roof, joined by two real dark diagonal valleys into a central north-south front gable at the lower edge. All planes form ONE joined roof with no interior horizontal eave, no repeated stacked gable ends. The ridge and diagonal valleys articulate depth. Fill nearly all of rectangular footprint with roof planes, tiny shaped transparent north corner setbacks allowed. South edge is a straight horizontal eave across entire width with central triangular timber gable immediately above eave. Keep roof tiles same native 6x4 px scale everywhere. Top-left light, dark right slopes, muted red and brown, one native pixel brown outline, big calm clusters. No ground, detached parts, chimneys, blur, noise or specks. Render LARGE (about 768x1536) clean pixel clusters.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "output": "roof-connected-r-w2"
+  },
+  {
+    "id": "corner_a",
+    "source": "r17-R-critic1-source-corner_a.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-bfe450e4-1357-47bc-96f3-bfb561764cb3.png",
+    "prompt": "Draw one complete matched CORNER ROOF RETURN module for this medieval kit, isolated on pure #ff00ff magenta, 768x1152 art intended for 96x144 native pixels. Reference1 gives terracotta material, reference2 gives required high 3/4 camera. Only the roof and its small timber gable infill; no storeys below. A shaped cross-gabled corner roof with coherent adjoining right-hand hip/end return, real valley, broad large roof planes seen from above, lit upper-left and shaded right. Lower FRONT EAVE is perfectly horizontal across 96px width to attach at y143 to a 96px-wide wall; shaded right return occupies final 24px matching a narrow right wall return. Plan is square grid, never diamond/isometric. Top corners may be transparent stepped silhouette. Tiles about 6x4 native px with few highlights and constant scale. Native one-pixel brown outline. No ground, shadows, noise, decorative specks, mist, soft edges, giant individual tiles. This is one well-built three-dimensional roof, not independent rectangles.",
+    "size": [
+      96,
+      144
+    ],
+    "selected": false,
+    "output": null
+  },
+  {
+    "id": "corner_b",
+    "source": "r17-R-critic1-source-corner_b.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-d2142c46-22f7-47c9-9c0d-02de7e2a5211.png",
+    "prompt": "Draw ONE complete two-storey medieval CORNER HOUSE as production game art isolated on solid pure magenta #ff00ff. Large portrait 768x1536 intended for 96x192 native pixels. Match the attached town house camera and material colours, use high 3/4 orthographic RPG view with front south wall, shaded narrow right return wall. Upper half of sprite (native y0..95) is a coherent terracotta cross-gabled roof with visible valley and connected shaded right roof return. Lower half (native y96..191) contains TWO equal 48px storeys: upper windows in deep recesses and projecting sill tops, then stone-based ground floor. Front covers left 72px and shaded right return the last24px. Roof eave and bottom plinth follow this same front/return corner exactly, seamless strong volume. Ground has a real lit doorway/step at native x28..48 and right return has one small recessed window. Upper has two large shuttered windows with calm timber framing. No projecting sign, no garden, no cast ground shadow. Solid square-grid edges, no diamond/isometric plan, no rounded edges. One-native-pixel dark brown outline, simple big masses and 6x4 native roof tile clusters, light top left. Keep bottom left anchor, stepped top silhouette, no blur or noise. This must be a complete connected corner volume not a flat panel with rectangle roof stuck on.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "output": "corner-house-r-w2"
+  },
+  {
+    "id": "court_a",
+    "source": "r17-R-critic1-source-court_a.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-f45ecb44-5039-48a6-98a0-e1fafff9864c.png",
+    "prompt": "Draw one coherent medieval REAR HOUSE WALL WITH ATTACHED LEAN-TO, production pixel art isolated on solid pure magenta #ff00ff, large art for 96x144 native sprite. Reference1 is our 48x96 supported stair and upper shutter, reference2 is town camera/style. Paint the left half as this stair's plaster rear elevation, extended into a REAL roofed rear house closure spanning whole96px width: top48px a low terracotta rear roof with thick timber eave; below it a continuous 96px wide cream plaster rear house wall. LEFT lower96px includes complete supported timber stair, landing, warm shutter and lower door as reference. RIGHT lower half has a LOW LEAN-TO whose sloped roof has flashing fixed flush against the rear house wall, supporting front posts, and a neatly stacked woodpile under it. Lean-to is not freestanding, no gaps between its high roof edge and plaster wall. Right lean-to bottom ends around native y118, leave magenta below its posts so well can stand forward. All actual geometry connected, big readable timber/plaster masses, strong shaded right returns, top-left light, same native pixel scale, one dark outline. No fence, washing, well, grass, ground backing, people, mist, isolated specks or smooth gradients.",
+    "size": [
+      96,
+      144
+    ],
+    "selected": false,
+    "output": null
+  },
+  {
+    "id": "court_b",
+    "source": "r17-R-critic1-source-court_b.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-0f880439-3c9c-45b6-bac8-36c06d56935d.png",
+    "prompt": "Draw one coherent medieval REAR HOUSE WALL WITH ATTACHED LEAN-TO, production pixel art isolated on solid pure magenta #ff00ff, large art for 96x144 native sprite. Reference1 is our 48x96 supported stair and upper shutter, reference2 is town camera/style. Paint the left half as this stair's plaster rear elevation, extended into a REAL roofed rear house closure spanning whole96px width: top48px a low terracotta rear roof with thick timber eave; below it a continuous 96px wide cream plaster rear house wall. LEFT lower96px includes complete supported timber stair, landing, warm shutter and lower door as reference. RIGHT lower half has a LOW LEAN-TO whose sloped roof has flashing fixed flush against the rear house wall, supporting front posts, and a neatly stacked woodpile under it. Lean-to is not freestanding, no gaps between its high roof edge and plaster wall. Right lean-to bottom ends around native y118, leave magenta below its posts so well can stand forward. All actual geometry connected, big readable timber/plaster masses, strong shaded right returns, top-left light, same native pixel scale, one dark outline. No fence, washing, well, grass, ground backing, people, mist, isolated specks or smooth gradients. Alternative B: lower roofline, smaller quiet tile clusters; the lean-to roof meets the house wall visibly through a continuous dark flashing seam, and the lean-to stops 20 native pixels above the stair's foot, so the front yard is open. No extra building. Keep the left stair complete 48x96.",
+    "size": [
+      96,
+      144
+    ],
+    "selected": true,
+    "output": "court-closure-r"
+  },
+  {
+    "id": "shadow_a",
+    "source": "r17-R-critic1-source-shadow_a.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-a6bd6b37-758a-445b-96d3-124a9c073a1c.png",
+    "prompt": "Draw a single SHADOW-ONLY sprite for the supplied guildhall arcade, on pure solid magenta #ff00ff. Do NOT draw the building or paving. Large horizontal 1536x640 intended to register to192x80 native pixels. Hard edged flat dark grey-brown silhouettes only, not gradients. We see the ground in high 3/4 view, light from TOP LEFT, casts extend DOWN RIGHT. Three distinct recessed arcade floor shadows across width: bays roughly native x20..57,70..107,121..159, each recedes toward the top of the picture and opens at a slightly diagonal irregular lower edge near native y48. Darken the floor behind the arches, preserving separate bright paths between casts. Four narrower tapering/parallelogram pillar casts start around x8,58,109,160 at y42 and extend 12px right and24px down, attached to their arcade floor shade. All dark masses are joined to their own contacts. These are three separately articulated arcade footprints and four slim support casts, NOT a full-width rectangle or rounded blobs. Blank magenta between shapes and around outer edge. No outlines around magenta, no bevel, no rendered 3D posts, no text, no soft shade. One clean pixel grid, square sharp steps, stable flat colour. Keep actual post locations from reference.",
+    "size": [
+      192,
+      48
+    ],
+    "selected": false,
+    "output": null
+  },
+  {
+    "id": "shadow_b",
+    "source": "r17-R-critic1-source-shadow_b.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-b4085644-06b3-464a-be63-209f6f8157fe.png",
+    "prompt": "Draw a single SHADOW-ONLY sprite for the supplied guildhall arcade, on pure solid magenta #ff00ff. Do NOT draw the building or paving. Large horizontal 1536x640 intended to register to192x80 native pixels. Hard edged flat dark grey-brown silhouettes only, not gradients. We see the ground in high 3/4 view, light from TOP LEFT, casts extend DOWN RIGHT. Three distinct recessed arcade floor shadows across width: bays roughly native x20..57,70..107,121..159, each recedes toward the top of the picture and opens at a slightly diagonal irregular lower edge near native y48. Darken the floor behind the arches, preserving separate bright paths between casts. Four narrower tapering/parallelogram pillar casts start around x8,58,109,160 at y42 and extend 12px right and24px down, attached to their arcade floor shade. All dark masses are joined to their own contacts. These are three separately articulated arcade footprints and four slim support casts, NOT a full-width rectangle or rounded blobs. Blank magenta between shapes and around outer edge. No outlines around magenta, no bevel, no rendered 3D posts, no text, no soft shade. One clean pixel grid, square sharp steps, stable flat colour. Keep actual post locations from reference. Alternative B: maintain the three separate bay floor recesses, make them only24 native pixels deep, with small diagonal pointed pillar casts24px down/right, and deeper contact directly at the north edge. Leave visible magenta wedges between the casts. Avoid a rectangular base or continuous stripe. Entire painted bounding area aspect4:1.",
+    "size": [
+      192,
+      48
+    ],
+    "selected": true,
+    "output": "shadow-arcade-r"
+  },
+  {
+    "id": "entry_a",
+    "source": "r17-R-critic1-source-entry_a.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-bf54bdac-9a73-4625-ad37-838f0b82d56b.png",
+    "prompt": "Production pixel-art GUILDHALL PUBLIC ENTRANCE insert on solid pure magenta #ff00ff, ONE narrow recessed stone arch doorway. Large art for32x48 native pixels. Match attached guildhall grey-brown stone and top-left illumination. A pair of rich dark wooden public doors recessed inside arch, a large readable brass crossed-keys emblem above lintel on a blue shield, one warm lantern beside frame and a broad projecting lit stone threshold at bottom. Whole assembly tall narrow32x48 with lower24x32 door aperture, intended to fit center bay of existing arcade without changing outer architecture. Clear iconic entrance, no text. Warm timber and subdued grey-brown masonry, restrained blue shield, dark brown one pixel native outline. Front-on wall in high3/4 game camera, top face of threshold visible. No ground rectangle, people, mist, blur or specks.",
+    "size": [
+      32,
+      48
+    ],
+    "selected": true,
+    "output": "guildhall-entry-r"
+  },
+  {
+    "id": "gate_a",
+    "source": "r17-R-critic1-source-gate_a.png",
+    "tool_source": "/home/kolache/.codex/generated_images/01a1ea79-7b91-7c30-b38e-8af6f02a22c8/exec-e57b719f-3ec8-4011-9ea7-96656d447966.png",
+    "prompt": "Paint ONE seamless vertical medieval COBBLED GATE ROAD surface on pure magenta outside the rectangular road. Large portrait image for96x240 native pixels. Top down/high3/4 pixel game view, square grid. Entire road is same warm grey/olive neutral stone as supplied town paving; small quiet cobbles roughly6x4native pixels, not large blue square tiles. Two narrow worn light kerbs on far left and right, continuous cobbles across whole96px width. The top two thirds are outdoors: softly ordered but HARD PIXEL stone clusters; lower third passes underneath a gate arch and becomes moderately darker with two sharp diagonal recess shadows cast down/right along the margins, center still readable. The very bottom12native pixels return to daylight, showing the road continues BEYOND the arch. No end wall, no solid infill, no grid diagram, no structure or towers, no text. Paint the full rectangular road up to square edges. No blur, fog, random specks, texture noise, rounded tile edges, giant blocks. Keep light from upper left, six grey brown stone values. Reference image gives exact cobble size and color, keep native scale consistent over entire road.",
+    "size": [
+      96,
+      240
+    ],
+    "selected": true,
+    "output": "gate-road-r"
+  }
+]

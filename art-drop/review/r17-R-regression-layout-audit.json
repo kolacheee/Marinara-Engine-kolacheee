@@ -1,0 +1,34 @@
+{
+  "L-block": {
+    "windows": 28,
+    "failures": []
+  },
+  "market": {
+    "windows": 21,
+    "failures": []
+  },
+  "height-test": {
+    "windows": 16,
+    "failures": []
+  },
+  "district-market": {
+    "windows": 15,
+    "failures": []
+  },
+  "district-temple": {
+    "windows": 15,
+    "failures": []
+  },
+  "district-craft": {
+    "windows": 15,
+    "failures": []
+  },
+  "district-rich": {
+    "windows": 26,
+    "failures": []
+  },
+  "district-poor": {
+    "windows": 15,
+    "failures": []
+  }
+}
