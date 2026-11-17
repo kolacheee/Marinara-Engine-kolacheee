@@ -736,6 +736,46 @@ function paintBuildingDressing(
       }
       return;
     }
+    case 35: {
+      // A stool knocked over on its side.
+      px(ctx, ink, x + 3, y + 8, 10, 6);
+      px(ctx, wood[0]!, x + 4, y + 9, 3, 4);
+      px(ctx, wood[1]!, x + 4, y + 9, 1, 4);
+      px(ctx, wood[2]!, x + 7, y + 10, 5, 1);
+      px(ctx, wood[2]!, x + 7, y + 12, 5, 1);
+      return;
+    }
+    case 36: {
+      // A sword dropped on the floor, on the slant.
+      for (let k = 0; k < 9; k++) px(ctx, k === 0 ? "#e8e8f0" : "#b4b4bc", x + 3 + k, y + 3 + k, 1, 1);
+      px(ctx, "#c8a040", x + 10, y + 13, 3, 1);
+      px(ctx, "#c8a040", x + 12, y + 11, 1, 3);
+      px(ctx, "#5a3a20", x + 13, y + 14, 2, 1);
+      return;
+    }
+    case 37: {
+      // A jug on its side and what ran out of it.
+      px(ctx, "#5a1a20", x + 2, y + 10, 9, 3);
+      px(ctx, "#7a2a30", x + 3, y + 11, 6, 1);
+      px(ctx, ink, x + 8, y + 6, 6, 6);
+      px(ctx, "#a06a3c", x + 9, y + 7, 4, 4);
+      px(ctx, "#c88a54", x + 9, y + 7, 4, 1);
+      px(ctx, ink, x + 7, y + 8, 1, 2);
+      return;
+    }
+    case 38: {
+      // Cobwebs strung across a corner.
+      const web = "rgba(220, 220, 228, 0.55)";
+      for (let k = 0; k < 12; k++) {
+        px(ctx, web, x + k, y, 1, 1);
+        px(ctx, web, x, y + k, 1, 1);
+        if (k < 11) px(ctx, web, x + k, y + 11 - k, 1, 1);
+        if (k < 7) px(ctx, web, x + k, y + 6 - k, 1, 1);
+      }
+      px(ctx, web, x + 2, y + 2, 1, 1);
+      px(ctx, web, x + 4, y + 4, 1, 1);
+      return;
+    }
   }
 }
 

@@ -56,17 +56,28 @@ export const BUILDING_DRESSING = [
   "a heap of bones",
   "a niche of skulls",
   "shelves of jars and sacks",
+  "a stool knocked over",
+  "a dropped sword",
+  "a spilt jug",
+  "cobwebs",
 ] as const;
 
 /** A prop as one character of a kept map: "-" none, 0-9, then a-z for 10 on. */
 export function dungeonPropChar(prop: number): string {
-  return prop < 0 ? "-" : prop < 10 ? String(prop) : String.fromCharCode(87 + prop);
+  // 0-9, then a-z (10-35), then A-Z (36-61).
+  return prop < 0
+    ? "-"
+    : prop < 10
+      ? String(prop)
+      : prop < 36
+        ? String.fromCharCode(87 + prop)
+        : String.fromCharCode(29 + prop);
 }
 
 export function dungeonPropOfChar(char: string): number {
   if (char === "-") return -1;
   const code = char.charCodeAt(0);
-  return code >= 97 ? code - 87 : Number(char);
+  return code >= 97 ? code - 87 : code >= 65 ? code - 29 : Number(char);
 }
 
 export const DUNGEON_SETS: readonly DungeonSet[] = Object.freeze([
@@ -875,7 +886,7 @@ export const gameDungeonMapSchema = z
       .max(MAP_MAX_CELLS),
     props: z
       .string()
-      .regex(/^[-0-9a-z]+$/u)
+      .regex(/^[-0-9a-zA-Z]+$/u)
       .max(MAP_MAX_CELLS),
     rooms: z
       .array(z.object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() }).strict())

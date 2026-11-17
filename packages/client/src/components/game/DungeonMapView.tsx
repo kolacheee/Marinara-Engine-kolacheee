@@ -287,6 +287,21 @@ export function DungeonMapView({
           if (!colour || room.w < 5 || room.h < 5) return;
           paintBuildingRug(ctx, (room.x + 1) * T, (room.y + 1) * T, (room.w - 2) * T, (room.h - 2) * T, colour);
         });
+      // A high seat stands on a dais: a raised step three wide under it (panel round 4).
+      if (building)
+        for (let i = 0; i < cells.props.length; i++) {
+          if (cells.props[i] !== 13) continue;
+          const [sx, sy] = [i % cells.width, Math.floor(i / cells.width)];
+          for (let dx = -1; dx <= 1; dx++)
+            if (at(sx + dx, sy) === "floor") {
+              ctx.fillStyle = "#1a120c";
+              ctx.fillRect((sx + dx) * T, sy * T, T, T);
+              ctx.fillStyle = building === "manor" ? "#6a3a20" : "#6e675c";
+              ctx.fillRect((sx + dx) * T, sy * T, T, T - 2);
+              ctx.fillStyle = building === "manor" ? "#8a5030" : "#8a8376";
+              ctx.fillRect((sx + dx) * T, sy * T, T, 1);
+            }
+        }
       const wayOut = dungeonWayOutId(DUNGEON_SETS.find((each) => each.id === cells.set));
       const way = wayOut === "ladder" ? "ladder" : wayOut === "ladder_hatch" ? "hatch" : "stairs";
       for (let y = 0; y < cells.height; y++)
