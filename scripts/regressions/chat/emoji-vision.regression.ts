@@ -32,6 +32,7 @@ const cases: RegressionCase[] = [
       assert.equal(semanticAssetText("cat_hide", "cat behind a pillow; shy"), "cat hide: cat behind a pillow; shy");
       assert.equal(semanticAssetText("cat_hide", undefined), "cat hide");
       assert.equal(normalizeCustomEmojiSelection({}).useDescriptions, true);
+      assert.equal(normalizeCustomEmojiSelection({}).showDescriptions, false);
 
       const responders = [{ charId: "a", name: "Ann" }];
       const own = new Map([["a", ["hug", "wave"]]]);
@@ -56,6 +57,15 @@ const cases: RegressionCase[] = [
         changed: true,
       });
       assert.equal(rewriteStickerNamesWrittenAsEmojis(":hug: :hug:", stickers, emojis).text, "sticker:hug:");
+      // The mirror case: an emoji name sent as a sticker shows the emoji, unless a sticker owns the name.
+      assert.deepEqual(
+        rewriteStickerNamesWrittenAsEmojis("ugh sticker:oof: sticker:hug:", stickers, new Set(["oof"])),
+        {
+          text: "ugh :oof: sticker:hug:",
+          changed: true,
+        },
+      );
+      assert.equal(rewriteStickerNamesWrittenAsEmojis("sticker:wave:", stickers, emojis).changed, false);
       // Only the duplicate goes: hard breaks, indentation and blank lines elsewhere stay as written.
       const formatted =
         "line one  \nline two\n\n```\n    code\n```\n\n\nsticker:hug:\n:hug:\nend :wave: sticker:wave: :hug: bye";

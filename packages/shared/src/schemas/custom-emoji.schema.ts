@@ -50,8 +50,10 @@ export interface CustomEmojiSelectionPrefs {
   visionRecentCount: number;
   /** How many of this turn's offered emojis and stickers also go on the sheet, in offered order (0 = none). */
   visionOfferedCount: number;
-  /** Use the pictures' descriptions to rank the offered ones and show next to their names. */
+  /** Use the pictures' descriptions to choose which ones are offered (no prompt cost). */
   useDescriptions: boolean;
+  /** Also show each offered one's description next to its name in the prompt (costs input tokens). */
+  showDescriptions: boolean;
 }
 
 export const CUSTOM_EMOJI_VISION_MODES = ["off", "last", "recent"] as const;
@@ -70,6 +72,7 @@ export const CUSTOM_EMOJI_SELECTION_DEFAULTS: CustomEmojiSelectionPrefs = {
   visionRecentCount: 6,
   visionOfferedCount: 6,
   useDescriptions: true,
+  showDescriptions: false,
 };
 
 function clampWhole(value: unknown, min: number, max: number, fallback: number): number {
@@ -107,5 +110,16 @@ export function normalizeCustomEmojiSelection(raw: unknown): CustomEmojiSelectio
   );
   const useDescriptions =
     typeof obj.useDescriptions === "boolean" ? obj.useDescriptions : CUSTOM_EMOJI_SELECTION_DEFAULTS.useDescriptions;
-  return { mode, maxCount, toolConnectionId, visionMode, visionRecentCount, visionOfferedCount, useDescriptions };
+  const showDescriptions =
+    typeof obj.showDescriptions === "boolean" ? obj.showDescriptions : CUSTOM_EMOJI_SELECTION_DEFAULTS.showDescriptions;
+  return {
+    mode,
+    maxCount,
+    toolConnectionId,
+    visionMode,
+    visionRecentCount,
+    visionOfferedCount,
+    useDescriptions,
+    showDescriptions,
+  };
 }
