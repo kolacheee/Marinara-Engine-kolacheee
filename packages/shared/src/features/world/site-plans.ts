@@ -1704,8 +1704,10 @@ function siteFrameOf(plan: SitePlan) {
     // The dungeons run on under the ward as well, not a strip under the donjon alone.
     put(below, cellsOf({ x: L, y: T, w: W, h: Math.min(H, nb + Math.round(H * 0.55)) }));
     const walk = [
-      ...cellsOf({ x: L, y: yb, w: 2, h: B - yb + 1 }),
-      ...cellsOf({ x: R - 1, y: yb, w: 2, h: B - yb + 1 }),
+      // From the back range's foot, so the walk meets the floors of the back range (round 21 2026-11-17:
+      // a walk cut off from them was walled up whole).
+      ...cellsOf({ x: L, y: T + nb, w: 2, h: B - T - nb + 1 }),
+      ...cellsOf({ x: R - 1, y: T + nb, w: 2, h: B - T - nb + 1 }),
       ...cellsOf({ x: L + 2, y: B - 1, w: W - 4, h: 2 }),
     ];
     put(upper, walk);
@@ -1869,7 +1871,8 @@ function siteFrameOf(plan: SitePlan) {
     if (sideTower) {
       const tx = left ? nx + nw + 1 : nx - 1 - tw;
       const tyy = B - tw + 1;
-      const base = cellsOf({ x: tx, y: tyy, w: tw, h: tw });
+      // The base out to the outer wall, so no strip of a room is left beside it (round 21 2026-11-17).
+      const base = cellsOf({ x: left ? tx : L, y: tyy, w: left ? R - tx + 1 : nx - 1 - L, h: tw });
       fixed.push({
         kind: "room",
         cells: base,
@@ -2739,6 +2742,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     if (at[c]! < 0) continue;
     for (const n of [c % mapW < mapW - 1 ? c + 1 : -1, c + mapW < size ? c + mapW : -1]) {
       if (n < 0 || at[n]! < 0 || at[n] === at[c]) continue;
+      // A cloister walk opens on its garth along its whole length: no wall between them (round 21
+      // 2026-11-17: the walk's wall ate the garth down to one cell).
+      const pair = [regions[at[c]!]!.kind, regions[at[n]!]!.kind];
+      if (pair.includes("walk") && pair.includes("court")) continue;
       const [hc, hn] = [holdOf(c), holdOf(n)];
       const loser = hc < hn ? c : hn < hc ? n : c;
       ground[loser] = "wall";
@@ -2956,7 +2963,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       continue;
     if (entry && SITE_ENTRY_ROOMS.has(region.room!.name)) continue;
     const main = biggestBox(cells);
-    if (!main || Math.min(main.w, main.h) > 2) continue;
+    // Three wide counts too when it runs four times as long: a 13x3 dining room is a corridor (round 21).
+    if (!main || Math.min(main.w, main.h) > 3 || (Math.min(main.w, main.h) === 3 && Math.max(main.w, main.h) < 12))
+      continue;
     const between = new Map<number, number[]>();
     for (const c of cells)
       for (const d of [1, -1, mapW, -mapW]) {
