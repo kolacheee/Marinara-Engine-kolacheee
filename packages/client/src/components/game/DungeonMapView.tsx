@@ -408,6 +408,36 @@ export function DungeonMapView({
             const ends = across === "ns" ? [inRoom(x, y - 1), inRoom(x, y + 1)] : [inRoom(x - 1, y), inRoom(x + 1, y)];
             if (!ends[0] && !ends[1]) continue;
             const [px0, py0] = [x * T, y * T];
+            // A cell's door is a grille of iron bars, the cell seen through it (panel 2026-11-17).
+            const sides =
+              across === "ns"
+                ? [
+                    [x, y - 1],
+                    [x, y + 1],
+                  ]
+                : [
+                    [x - 1, y],
+                    [x + 1, y],
+                  ];
+            const barred = sides.some(([sx, sy]) => {
+              const n = cells.rooms.findIndex((room) => dungeonRoomHas(room, sx!, sy!));
+              return n >= 0 && /^(Cell|Oubliette)\b/u.test(kept?.roomInfo?.[n]?.name ?? "");
+            });
+            if (barred) {
+              ctx.fillStyle = "#1a1a1e";
+              if (across === "ns") ctx.fillRect(px0, py0 + Math.floor(T / 2) - 2, T, 4);
+              else ctx.fillRect(px0 + Math.floor(T / 2) - 2, py0, 4, T);
+              ctx.fillStyle = "#8a8c94";
+              for (let k = 1; k < 5; k++) {
+                const at2 = Math.round((k * T) / 5);
+                if (across === "ns") ctx.fillRect(px0 + at2 - 1, py0 + Math.floor(T / 2) - 3, 2, 6);
+                else ctx.fillRect(px0 + Math.floor(T / 2) - 3, py0 + at2 - 1, 6, 2);
+              }
+              ctx.fillStyle = "#b0b2ba";
+              if (across === "ns") ctx.fillRect(px0, py0 + Math.floor(T / 2) - 1, T, 1);
+              else ctx.fillRect(px0 + Math.floor(T / 2) - 1, py0, 1, T);
+              continue;
+            }
             ctx.fillStyle = "#1a100a";
             if (across === "ns") {
               ctx.fillRect(px0, py0, 2, T);

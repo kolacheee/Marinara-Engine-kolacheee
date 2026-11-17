@@ -2125,7 +2125,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     growers.push(regions.length);
     regions.push({ kind: "room", room: r, target, zone: -1, ...(hidden ? { hidden: true as const } : {}) });
   };
-  for (const r of planned) add(r, Math.round(weight(r) * scale));
+  // A castle's cells are cells, two by three off the gallery, not chambers (panel 2026-11-17).
+  const cellLike = (r: SitePlanRoom) => rock && kind === "keep" && /^(Cell|Oubliette)\b/u.test(r.name);
+  for (const r of planned) add(r, cellLike(r) ? 10 : Math.round(weight(r) * scale));
   planned = [];
   // The hidden room: small, deep, against an outer wall, behind a hidden door, with something worth it.
   // Never in a crypt: its walls are a tile pack's, with no hidden door drawn in them.
@@ -2245,6 +2247,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const longest = (g: number) => {
     const r = regions[g]!.room!;
     if (r.name === "Long gallery") return 5;
+    if (cellLike(r)) return 2;
     return r.heart || SITE_SET_PIECES.has(r.name) ? 2 : 3;
   };
   const box = new Map<number, { x0: number; y0: number; x1: number; y1: number }>();
@@ -2700,7 +2703,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   for (const g of [...cellsBy.keys()]) {
     const cells = cellsBy.get(g);
     const region = regions[g]!;
-    if (!cells?.length || region.kind !== "room" || region.hidden || region.room?.heart) continue;
+    if (!cells?.length || region.kind !== "room" || region.hidden || region.room?.heart || cellLike(region.room!))
+      continue;
     if (entry && SITE_ENTRY_ROOMS.has(region.room!.name)) continue;
     const main = biggestBox(cells);
     if (!main || Math.min(main.w, main.h) > 2) continue;
@@ -2712,7 +2716,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (far < 0 || far >= size || ground[w] !== "wall" || hold[w] || !mask[w]) continue;
         const h = at[far]!;
         if (h < 0 || h === g || ground[far] !== "floor" || !cellsBy.has(h)) continue;
-        if ((regions[h]!.kind !== "room" && (regions[h]!.kind !== "pass" || cells.length > 10)) || regions[h]!.hidden)
+        if ((regions[h]!.kind !== "room" && (regions[h]!.kind !== "pass" || cells.length > 26)) || regions[h]!.hidden)
           continue;
         between.set(h, [...(between.get(h) ?? []), w]);
       }
@@ -2737,6 +2741,52 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
     cellsBy.delete(lose);
   }
+  // A small thin limb off a room (two wide or less, a few cells, hanging off its body: a kitchen's tail down
+  // beside the gate) is walled up, so a room is its body and not its body and a spill (panel 2026-11-17).
+  if (!rock)
+    for (const [g, cells] of cellsBy) {
+      const region = regions[g]!;
+      if (region.kind !== "room" || region.hidden || cells.length < 12) continue;
+      const main = biggestBox(cells);
+      if (!main || Math.min(main.w, main.h) < 3) continue;
+      let rest = cells.filter((c) => !inside(main, c % mapW, Math.floor(c / mapW)));
+      const drop: number[] = [];
+      while (rest.length) {
+        const b = biggestBox(rest)!;
+        const part = rest.filter((c) => inside(b, c % mapW, Math.floor(c / mapW)));
+        const byShell = part.some((c) =>
+          [1, -1, mapW, -mapW, 2, -2, 2 * mapW, -2 * mapW].some((d) => c + d >= 0 && c + d < size && !mask[c + d]),
+        );
+        const thin = Math.min(b.w, b.h) <= 1 && b.w * b.h <= 3;
+        const limb = kind === "keep" && byShell && Math.min(b.w, b.h) <= 2 && b.w * b.h <= 8;
+        if ((thin || limb) && part.every((c) => !hold[c])) {
+          // Never so as to cut the room in two.
+          const gone = new Set([...drop, ...part]);
+          const left = cells.filter((c) => !gone.has(c));
+          const set = new Set(left);
+          const seen = new Set([left[0]]);
+          const queue = [left[0]!];
+          for (let head = 0; head < queue.length; head++)
+            for (const n of around(queue[head]!))
+              if (set.has(n) && !seen.has(n)) {
+                seen.add(n);
+                queue.push(n);
+              }
+          if (seen.size === left.length) drop.push(...part);
+        }
+        rest = rest.filter((c) => !inside(b, c % mapW, Math.floor(c / mapW)));
+      }
+      if (!drop.length) continue;
+      for (const c of drop) {
+        ground[c] = "wall";
+        at[c] = -1;
+      }
+      const gone = new Set(drop);
+      cellsBy.set(
+        g,
+        cells.filter((c) => !gone.has(c)),
+      );
+    }
   const shapes = new Map<number, { main: SiteRect; parts: SiteRect[] }>();
   for (const [g, cells] of cellsBy) {
     if (!cells.length) continue;
