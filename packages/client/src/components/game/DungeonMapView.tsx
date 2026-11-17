@@ -312,28 +312,43 @@ export function DungeonMapView({
           [-1, 0],
           [1, 0],
         ] as const) {
-          // The walk beside it, or beyond one more course of a wall two thick.
-          const walk =
-            onRampart(x + dx, y + dy) || (at(x + dx, y + dy) === "wall" && onRampart(x + 2 * dx, y + 2 * dy));
-          if (!walk || at(x - dx, y - dy) !== "rock") continue;
+          // The walk beside it, with the land beyond it or beyond one more course of a wall two thick.
+          const near = onRampart(x + dx, y + dy);
+          const far = at(x + dx, y + dy) === "wall" && onRampart(x + 2 * dx, y + 2 * dy);
+          const land = at(x - dx, y - dy) === "rock";
+          const inner = near && at(x - dx, y - dy) === "wall" && at(x - 2 * dx, y - 2 * dy) === "rock";
+          if (!((near || far) && land) && !inner) continue;
           // The field side when the land lies away from the middle of the map.
           const outward = -dx * (x - midX) + -dy * (y - midY) > 0;
           const [ox, oy] = [x * T, y * T];
+          // The top of the wall as dressed stone, so the rampart reads as stone walked beside, not a void.
+          ctx.fillStyle = "#5d5853";
+          ctx.fillRect(ox, oy, T, T);
+          ctx.fillStyle = "#4a4642";
+          for (let k = 0; k < T; k += 8) {
+            if (dy !== 0) ctx.fillRect(ox, oy + k, T, 1);
+            else ctx.fillRect(ox + k, oy, 1, T);
+          }
+          if (inner) return;
           const along = (k: number, len: number, depth: number, colour: string) => {
             // A strip `len` long and `depth` deep on the land side of the cell, `k` along it.
-            if (dy !== 0) ((ctx.fillStyle = colour), ctx.fillRect(ox + k, dy > 0 ? oy : oy + T - depth, len, depth));
-            else ((ctx.fillStyle = colour), ctx.fillRect(dx > 0 ? ox : ox + T - depth, oy + k, depth, len));
+            ctx.fillStyle = colour;
+            if (dy !== 0) ctx.fillRect(ox + k, dy > 0 ? oy : oy + T - depth, len, depth);
+            else ctx.fillRect(dx > 0 ? ox : ox + T - depth, oy + k, depth, len);
           };
           if (outward) {
-            along(0, T, 7, "#3a3633");
+            // The parapet: merlons and crenels along the field edge, shadow at their foot.
+            along(0, T, 10, "#2c2926");
             for (let k = 0; k < T; k += 8) {
-              along(k + 1, 5, 6, "#8f8a82");
-              along(k + 1, 5, 1, "#b0aba2");
+              along(k, 5, 9, "#9a958c");
+              along(k, 5, 2, "#c2bdb3");
+              along(k + 4, 1, 9, "#6c6862");
             }
           } else {
-            along(0, T, 4, "#3a3633");
-            along(0, T, 3, "#8f8a82");
-            along(0, T, 1, "#b0aba2");
+            // A low parapet over the ward.
+            along(0, T, 5, "#2c2926");
+            along(0, T, 4, "#9a958c");
+            along(0, T, 1, "#c2bdb3");
           }
           return;
         }
