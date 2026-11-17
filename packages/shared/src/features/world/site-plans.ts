@@ -2616,6 +2616,43 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
     return best;
   };
+  // A room that is a sliver at heart (its biggest box two wide or less, a corridor with a name) joins the
+  // room across its longest wall, the wall between them taken down (panel 2026-11-17).
+  for (const g of [...cellsBy.keys()]) {
+    const cells = cellsBy.get(g);
+    const region = regions[g]!;
+    if (!cells?.length || region.kind !== "room" || region.hidden || region.room?.heart) continue;
+    if (entry && SITE_ENTRY_ROOMS.has(region.room!.name)) continue;
+    const main = biggestBox(cells);
+    if (!main || Math.min(main.w, main.h) > 2) continue;
+    const between = new Map<number, number[]>();
+    for (const c of cells)
+      for (const d of [1, -1, mapW, -mapW]) {
+        const w = c + d;
+        const far = w + d;
+        if (far < 0 || far >= size || ground[w] !== "wall" || hold[w] || !mask[w]) continue;
+        const h = at[far]!;
+        if (h < 0 || h === g || ground[far] !== "floor" || !cellsBy.has(h)) continue;
+        if (regions[h]!.kind !== "room" || regions[h]!.hidden) continue;
+        between.set(h, [...(between.get(h) ?? []), w]);
+      }
+    const best = [...between].sort((p, q) => q[1].length - p[1].length)[0];
+    if (!best || best[1].length < 2) continue;
+    const [h, walls] = best;
+    // The one that stays is the bigger; a planned room keeps its name over a made-up one.
+    const keep = cellsBy.get(h)!.length >= cells.length ? h : g;
+    const lose = keep === h ? g : h;
+    for (const w of new Set(walls)) {
+      ground[w] = "floor";
+      at[w] = keep;
+      cellsBy.get(keep)!.push(w);
+    }
+    for (const c of cellsBy.get(lose)!) {
+      at[c] = keep;
+      cellsBy.get(keep)!.push(c);
+    }
+    cellsBy.delete(lose);
+  }
   const shapes = new Map<number, { main: SiteRect; parts: SiteRect[] }>();
   for (const [g, cells] of cellsBy) {
     if (!cells.length) continue;

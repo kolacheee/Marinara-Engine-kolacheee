@@ -332,7 +332,8 @@ export function DungeonMapView({
           const name = (kept?.roomInfo?.[n]?.name ?? "").replace(/\s+\d+$/u, "");
           const colour = RUG_ROOMS[name];
           if (!colour || room.w < 5 || room.h < 5) return;
-          paintBuildingRug(ctx, (room.x + 1) * T, (room.y + 1) * T, (room.w - 2) * T, (room.h - 2) * T, colour);
+          const m = Math.min(room.w, room.h) >= 9 ? 2 : 1;
+          paintBuildingRug(ctx, (room.x + m) * T, (room.y + m) * T, (room.w - 2 * m) * T, (room.h - 2 * m) * T, colour);
         });
       // A dais at the high end of a hall, under its high seat or altar: two cells deep along the wall the seat
       // stands against, the room's width less a cell each end (gamer panel 2026-11-17).
@@ -477,6 +478,17 @@ export function DungeonMapView({
             const isDown = links.down?.x === x && links.down?.y === y;
             paintDungeonWay(ctx, way, isDown ? "down" : links.floor > 1 ? "up" : "out", x * T, y * T);
           } else paintDungeonProp(ctx, cells.set, prop, x * T, y * T);
+        }
+      // A warm pool of light round each hearth, range and brazier (casual panel 2026-11-17).
+      if (building)
+        for (let i = 0; i < cells.props.length; i++) {
+          if (cells.props[i] !== 3 && cells.props[i] !== 19) continue;
+          const [gx, gy] = [((i % cells.width) + 0.5) * T, (Math.floor(i / cells.width) + 0.5) * T];
+          const glow = ctx.createRadialGradient(gx, gy, T * 0.3, gx, gy, T * 3);
+          glow.addColorStop(0, "rgba(255, 176, 84, 0.26)");
+          glow.addColorStop(1, "rgba(255, 176, 84, 0)");
+          ctx.fillStyle = glow;
+          ctx.fillRect(gx - T * 3, gy - T * 3, T * 6, T * 6);
         }
       if (door && out && building && building !== "keep")
         for (const side of [-1, 1]) {

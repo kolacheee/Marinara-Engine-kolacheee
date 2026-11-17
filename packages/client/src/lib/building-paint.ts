@@ -941,11 +941,72 @@ function paintBuildingDressing(
 }
 
 /** A rug laid down the middle of a room: a border and a field. */
+/** A colour lightened (amount > 0) or darkened (amount < 0), for a rug's pattern from its one colour. */
+function shade(colour: string, amount: number): string {
+  const n = parseInt(colour.slice(1), 16);
+  const f = (v: number) =>
+    Math.max(0, Math.min(255, Math.round(amount > 0 ? v + (255 - v) * amount : v * (1 + amount))));
+  return `#${[(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => f(v).toString(16).padStart(2, "0")).join("")}`;
+}
+
+/** A great rug: a fringed edge, a gold border with a running pattern, a lattice field of small lozenges and
+ *  a medallion in the middle (roguelike panel 2026-11-17: a flat slab read as a placeholder). */
 export function paintBuildingRug(ctx: Ctx, x: number, y: number, w: number, h: number, colour: string) {
+  const light = shade(colour, 0.25);
+  const dark = shade(colour, -0.35);
+  // Fringe at the two short ends.
+  const across = w >= h;
+  for (let k = 0; k < (across ? h : w); k += 2)
+    if (across) {
+      px(ctx, "#d8c8a0", x - 2, y + k, 2, 1);
+      px(ctx, "#d8c8a0", x + w, y + k, 2, 1);
+    } else {
+      px(ctx, "#d8c8a0", x + k, y - 2, 1, 2);
+      px(ctx, "#d8c8a0", x + k, y + h, 1, 2);
+    }
   px(ctx, "#2a1a10", x, y, w, h);
-  px(ctx, "#c8a040", x + 1, y + 1, w - 2, h - 2);
-  px(ctx, colour, x + 3, y + 3, w - 6, h - 6);
-  for (let k = x + 6; k < x + w - 6; k += 8) px(ctx, "#c8a040", k, y + Math.floor(h / 2) - 1, 2, 2);
+  px(ctx, "#b08a38", x + 1, y + 1, w - 2, h - 2);
+  px(ctx, dark, x + 3, y + 3, w - 6, h - 6);
+  // The border's running pattern: small squares along its middle.
+  for (let k = x + 4; k < x + w - 4; k += 4) {
+    px(ctx, dark, k, y + 2, 2, 1);
+    px(ctx, dark, k, y + h - 3, 2, 1);
+  }
+  for (let k = y + 4; k < y + h - 4; k += 4) {
+    px(ctx, dark, x + 2, k, 1, 2);
+    px(ctx, dark, x + w - 3, k, 1, 2);
+  }
+  // The field, inside a thin inner border, set with a lattice of lozenges.
+  const [fx, fy, fw, fh] = [x + 5, y + 5, w - 10, h - 10];
+  if (fw <= 0 || fh <= 0) return;
+  px(ctx, colour, fx, fy, fw, fh);
+  px(ctx, light, fx, fy, fw, 1);
+  px(ctx, light, fx, fy + fh - 1, fw, 1);
+  px(ctx, light, fx, fy, 1, fh);
+  px(ctx, light, fx + fw - 1, fy, 1, fh);
+  for (let ly = fy + 4; ly < fy + fh - 3; ly += 8)
+    for (let lx = fx + 4 + (((ly - fy - 4) / 8) % 2) * 4; lx < fx + fw - 3; lx += 8) {
+      px(ctx, light, lx, ly - 1, 1, 1);
+      px(ctx, light, lx - 1, ly, 3, 1);
+      px(ctx, light, lx, ly + 1, 1, 1);
+    }
+  // The medallion: a gold lozenge in the middle with the dark colour inside.
+  const [mx, my] = [Math.round(x + w / 2), Math.round(y + h / 2)];
+  const r = Math.max(4, Math.min(12, Math.floor(Math.min(w, h) / 5)));
+  for (let k = -r; k <= r; k++) {
+    const span = r - Math.abs(k);
+    px(ctx, "#b08a38", mx - span, my + k, span * 2 + 1, 1);
+    if (span > 2) px(ctx, dark, mx - span + 2, my + k, span * 2 - 3, 1);
+    if (span > 5) px(ctx, light, mx - span + 5, my + k, span * 2 - 9, 1);
+  }
+  // A corner piece in each corner of the field.
+  for (const [cx, cy] of [
+    [fx + 2, fy + 2],
+    [fx + fw - 5, fy + 2],
+    [fx + 2, fy + fh - 5],
+    [fx + fw - 5, fy + fh - 5],
+  ] as const)
+    px(ctx, "#b08a38", cx, cy, 3, 3);
 }
 
 /** A dais: the raised end of a hall under its high seat or altar, a step lit along the edge facing the room
