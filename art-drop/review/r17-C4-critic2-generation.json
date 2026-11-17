@@ -1,0 +1,92 @@
+[
+  {
+    "id": "narrow-a",
+    "prompt": "Use case: stylized-concept. Draw ONE complete narrow medieval north-access shop courtyard sprite, intended for exact native 48x48 pixels, shown large at about 900x900 on pure solid #FF00FF magenta. High 3/4 RPG view from above, square orthogonal footprint, top-left light. It must be a COMPLETE one-cell-wide courtyard rather than half a wide booth. Warm grey-brown stone paving fills the square; a straight masonry low boundary on left and RIGHT with a visible finished right contour. Along top is an open 20px-wide lit entrance slightly left of centre; continuous pale paving connects entry to lower edge. On the RIGHT half a small COMPLETE pottery stall, whole ochre canopy, two wooden supports, entire counter and two big ceramic jars, every edge inside the square. Stall is at most half the width. Bottom edge is a straight thin stone threshold that will meet a red roof below in composition. Native palette muted warm stone and timber, ochre canopy; one-native-pixel dark silhouette, connected angular pixel clusters. Do NOT draw a roof or building below the courtyard: draw just this 48x48 courtyard tile, all four finished sides, no perspective diamond, no rounded corners, no text, no gradients, specks or dither. Match existing 48px grid medieval town, not detailed illustration. Candidate A.",
+    "source": "r17-C4-critic2-source-narrow-a.png",
+    "size": [
+      48,
+      48
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-a8327b49-06bf-4763-accf-7bbeba96b5ef.png"
+  },
+  {
+    "id": "narrow-b",
+    "prompt": "Use case: stylized-concept. Draw ONE complete narrow medieval north-access shop courtyard sprite, intended for exact native 48x48 pixels, shown large at about 900x900 on pure solid #FF00FF magenta. High 3/4 RPG view from above, square orthogonal footprint, top-left light. It must be a COMPLETE one-cell-wide courtyard rather than half a wide booth. Warm grey-brown stone paving fills the square; a straight masonry low boundary on left and RIGHT with a visible finished right contour. Along top is an open 20px-wide lit entrance slightly left of centre; continuous pale paving connects entry to lower edge. On the RIGHT half a small COMPLETE pottery stall, whole ochre canopy, two wooden supports, entire counter and two big ceramic jars, every edge inside the square. Stall is at most half the width. Bottom edge is a straight thin stone threshold that will meet a red roof below in composition. Native palette muted warm stone and timber, ochre canopy; one-native-pixel dark silhouette, connected angular pixel clusters. Do NOT draw a roof or building below the courtyard: draw just this 48x48 courtyard tile, all four finished sides, no perspective diamond, no rounded corners, no text, no gradients, specks or dither. Match existing 48px grid medieval town, not detailed illustration. Candidate B. NO people, NO human silhouettes or cast human shadows. Use subtle 6–10 native pixel stone clusters, low contrast mortar, exactly two vessels on the counter, no loose vessels on paving. Flat pixel colours, no gradient. The stall canopy is a straight angular rectangular edge without scallops; very small entire stall occupies only right 20 native pixels. Keep the northern entry 20 native pixels wide. Broad clear path along left half. Perspective wall height at most 4 native pixels.",
+    "source": "r17-C4-critic2-source-narrow-b.png",
+    "size": [
+      48,
+      48
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-543b25ef-0817-49ac-9b30-caf9ec559558.png"
+  },
+  {
+    "id": "roof-left-a",
+    "prompt": "Precise-object-edit of supplied roof assembly. Draw at large resolution on solid #FF00FF with margin, for exact144x144 native pixels. Preserve square overall footprint, wide96px hip at LEFT and narrow48px gable at RIGHT, shared bottom eave at y144, north ridges at x48 and x120. REPAIR the meeting between their roof planes into ONE coherent joined valley, continuous tile courses and a narrow dark receiving gutter, not two separate pasted panels. Keep ridge locations and top-left illumination. The hip ridge runs down to native y96 then branches to bottom corners; narrow right gable ridge continues to y132. Their joining valley on x96 runs to the common eave. Draw the endpoint where hip triangular front slope, shaded right plane and right-gable lit slope meet; remove double outlines at contact. No new triangular cusp in the middle of a slope, no horizontal rectangular patch seams. Muted red/brown palette of reference; fine angular tile clusters6–8 native pixels wide,3–4high, three main values, thin dark exterior contour, no tiny flecks. No walls, text, shadows or decorations. Candidate A. Single complete joined roof, not a sheet.",
+    "source": "r17-C4-critic2-source-roof-left-a.png",
+    "size": [
+      144,
+      144
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-aa2258f4-a05f-4e3c-addb-b2126f47222b.png"
+  },
+  {
+    "id": "roof-left-b",
+    "prompt": "Precise-object-edit of supplied roof assembly. Draw at large resolution on solid #FF00FF with margin, for exact144x144 native pixels. Preserve square overall footprint, wide96px hip at LEFT and narrow48px gable at RIGHT, shared bottom eave at y144, north ridges at x48 and x120. REPAIR the meeting between their roof planes into ONE coherent joined valley, continuous tile courses and a narrow dark receiving gutter, not two separate pasted panels. Keep ridge locations and top-left illumination. The hip ridge runs down to native y96 then branches to bottom corners; narrow right gable ridge continues to y132. Their joining valley on x96 runs to the common eave. Draw the endpoint where hip triangular front slope, shaded right plane and right-gable lit slope meet; remove double outlines at contact. No new triangular cusp in the middle of a slope, no horizontal rectangular patch seams. Muted red/brown palette of reference; fine angular tile clusters6–8 native pixels wide,3–4high, three main values, thin dark exterior contour, no tiny flecks. No walls, text, shadows or decorations. Candidate B. Reduce strong black interior line to a fine recessed brown copper valley gutter. Tile courses are 3 native pixels apart: about 40 diagonal courses down each roof plane, broken into short6–8px tile clusters; NOT14 large uninterrupted stripes. Preserve all slopes but use lighter subtle internal joints. One unified contact, exactly one valley from north edge to shared near eave. Single complete joined roof, not a sheet.",
+    "source": "r17-C4-critic2-source-roof-left-b.png",
+    "size": [
+      144,
+      144
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-fc0fb9fa-3d3a-4ccb-88a9-c179852fc683.png"
+  },
+  {
+    "id": "roof-right-a",
+    "prompt": "Precise-object-edit of supplied roof assembly. Draw at large resolution on solid #FF00FF with margin, for exact144x144 native pixels. Preserve square overall footprint, narrow48px gable at LEFT and wide96px hip at RIGHT, shared bottom eave at y144, north ridges at x24 and x96. REPAIR the meeting between their roof planes into ONE coherent joined valley, continuous tile courses and a narrow dark receiving gutter, not two separate pasted panels. Keep ridge locations and top-left illumination. The hip ridge runs down to native y96 then branches to bottom corners; narrow left gable ridge continues to y132. Their joining valley on x48 runs to the common eave. Draw the endpoint where hip triangular front slope, shaded right plane and wide hip lit slope meet; remove double outlines at contact. No new triangular cusp in the middle of a slope, no horizontal rectangular patch seams. Muted red/brown palette of reference; fine angular tile clusters6–8 native pixels wide,3–4high, three main values, thin dark exterior contour, no tiny flecks. No walls, text, shadows or decorations. Opposite hand candidate A. Relight from upper left, do not mirror the lighting. Reduce strong black interior line to a fine recessed brown copper valley gutter. Tile courses are 3 native pixels apart: about 40 diagonal courses down each roof plane, broken into short6–8px tile clusters; NOT14 large uninterrupted stripes. Preserve all slopes but use lighter subtle internal joints. One unified contact, exactly one valley from north edge to shared near eave. Single complete joined roof, not a sheet.",
+    "source": "r17-C4-critic2-source-roof-right-a.png",
+    "size": [
+      144,
+      144
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-edfe7019-056e-4d63-a928-1c33c927fe9a.png"
+  },
+  {
+    "id": "roof-right-b",
+    "prompt": "Precise-object-edit of supplied roof assembly. Draw at large resolution on solid #FF00FF with margin, for exact144x144 native pixels. Preserve square overall footprint, narrow48px gable at LEFT and wide96px hip at RIGHT, shared bottom eave at y144, north ridges at x24 and x96. REPAIR the meeting between their roof planes into ONE coherent joined valley, continuous tile courses and a narrow dark receiving gutter, not two separate pasted panels. Keep ridge locations and top-left illumination. The hip ridge runs down to native y96 then branches to bottom corners; narrow left gable ridge continues to y132. Their joining valley on x48 runs to the common eave. Draw the endpoint where hip triangular front slope, shaded right plane and wide hip lit slope meet; remove double outlines at contact. No new triangular cusp in the middle of a slope, no horizontal rectangular patch seams. Muted red/brown palette of reference; fine angular tile clusters6–8 native pixels wide,3–4high, three main values, thin dark exterior contour, no tiny flecks. No walls, text, shadows or decorations. Opposite hand candidate B. Use less-contrasting quiet staggered tile clusters and shared fine eave, at least36courses. Avoid long heavy black stripes on interior planes. Relight from upper left, do not mirror the lighting. Reduce strong black interior line to a fine recessed brown copper valley gutter. Tile courses are 3 native pixels apart: about 40 diagonal courses down each roof plane, broken into short6–8px tile clusters; NOT14 large uninterrupted stripes. Preserve all slopes but use lighter subtle internal joints. One unified contact, exactly one valley from north edge to shared near eave. Single complete joined roof, not a sheet.",
+    "source": "r17-C4-critic2-source-roof-right-b.png",
+    "size": [
+      144,
+      144
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-23912461-f7b0-4697-bc36-88955b8b991f.png"
+  },
+  {
+    "id": "floor-a",
+    "prompt": "Use case precise-object-edit. Draw one new96x48native upper-floor modular facade as large wide image on solid #FF00FF magenta with margin, using supplied reference sprites' EXACT warm plaster, muted timber, shaded deep windows, top-left light, squared edges and1nativepx outer contour. No roof or ground or door, just a wide rectangular2:1storey. Variation A: left bay is a narrow22x28px recessed six-pane window with only its LEFT shutter fully closed; right bay a wider30x26px recessed double casement with shutters folded against jambs. One solid central timber at x48, substantial shaded posts on edges, quiet beige wall fields, lit sill top and2px shadow below, shallow exposed upper beam face. Windows total width varies visibly, recesses read deep. Top and bottom are straight horizontal stack contacts, no ornate belts, no garlands, no diagonal braces across windows. Clear flat pixel clusters, no dithering/noise/flecks/soft shading. Draw large clean source for mode reduction, preserve the reference pixel proportions.",
+    "source": "r17-C4-critic2-source-floor-a.png",
+    "size": [
+      96,
+      48
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-6c6314ed-f754-432f-bddf-cfb5c817709b.png"
+  },
+  {
+    "id": "floor-b",
+    "prompt": "Use case precise-object-edit. Draw one new96x48native upper-floor modular facade as large wide image on solid #FF00FF magenta with margin, using supplied reference sprites' EXACT warm plaster, muted timber, shaded deep windows, top-left light, squared edges and1nativepx outer contour. No roof or ground or door, just a wide rectangular2:1storey. Variation B: one broad projecting THREE-LIGHT recessed window centred across x28..68, width40 native px, with a flat timber canopy top, projecting ledge and two short supporting brackets below. Left and right outer wall bays are quiet warm plaster, one small closed narrow shutter high in the rightmost bay x78..88. No solid central post cutting the main window: posts at x24 and72, substantial shaded posts on edges, quiet beige wall fields, lit sill top and2px shadow below, shallow exposed upper beam face. The main window is shallower and broader than ordinary paired bays; height24nativepx; return faces are visible along its sides. Window total width varies visibly, recesses read deep. Top and bottom are straight horizontal stack contacts, no ornate belts, no garlands, no diagonal braces across windows. Clear flat pixel clusters, no dithering/noise/flecks/soft shading. Draw large clean source for mode reduction, preserve the reference pixel proportions.",
+    "source": "r17-C4-critic2-source-floor-b.png",
+    "size": [
+      96,
+      48
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-3647b148-a2e8-4fb0-9c23-9bf8d3b83a66.png"
+  },
+  {
+    "id": "floor-c",
+    "prompt": "Use case precise-object-edit. Draw one new96x48native upper-floor modular facade as large wide image on solid #FF00FF magenta with margin, using supplied reference sprites' EXACT warm plaster, muted timber, shaded deep windows, top-left light, squared edges and1nativepx outer contour. No roof or ground or door, just a wide rectangular2:1storey. Variation C: three uneven structural bays: narrow LEFT window at x8..28 (20x28 native px, both solid shutters closed with two dark horizontal hinges); wide blank plaster CENTRAL bay x34..62; RIGHT window at x66..88 (22x28nativepx) is a deep four-pane casement with one shutter folded outward on right. Structural timber posts at x32 and64. No central window, substantial shaded posts on edges, quiet beige wall fields, lit sill top and2px shadow below, shallow exposed upper beam face. The three-bay arrangement and broad blank centre are visibly different from the reference paired bays. Windows total width varies visibly, recesses read deep. Top and bottom are straight horizontal stack contacts, no ornate belts, no garlands, no diagonal braces across windows. Clear flat pixel clusters, no dithering/noise/flecks/soft shading. Draw large clean source for mode reduction, preserve the reference pixel proportions.",
+    "source": "r17-C4-critic2-source-floor-c.png",
+    "size": [
+      96,
+      48
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb7b-e81a-7f30-ae72-2727ccd970de/exec-150a11b1-a782-4ca0-9fa9-b102e3d0361c.png"
+  }
+]

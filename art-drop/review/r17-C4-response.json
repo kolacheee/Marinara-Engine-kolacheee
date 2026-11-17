@@ -1,0 +1,301 @@
+{
+  "part": "C4",
+  "review_status": "Author implementation and saved-art verification; no independent panel approval or runtime collision claim.",
+  "fixes": [
+    {
+      "item": 1,
+      "implementation": "Both gate bypasses now have native masonry connectors. The west connector extends beneath the left pier outline; the 96 px controlled opening remains clear. Full exterior-alpha flood is tested with only that opening closed in the verification mask.",
+      "evidence": [
+        "r17-C4-gate-separated-art-1x.png",
+        "r17-C4-gate-actor-reveal-1x.png"
+      ]
+    },
+    {
+      "item": 2,
+      "implementation": "Curtains yield their actual overlapping pixels to projecting tower and gate artwork across different base rows. Native receiving courses close the north corner contacts. The single northwest tower, uneven northern spacing and southern towers at x=432/816/1584 remain.",
+      "evidence": [
+        "r17-C4-five-walls-offset-tower-1x.png",
+        "r17-C4-wall-turn-actor-reveal-1x.png"
+      ]
+    },
+    {
+      "item": 3,
+      "implementation": "Two complete image-tool candidates; B retained. Painted doorway landmarks register to a24px mouth; the entire right canopy/counter and closing boundary stay within48px. The lower96px roof/stack contact is unchanged.",
+      "evidence": [
+        "r17-C4-square-1x.png",
+        "r17-C4-city-anchors-1x.png"
+      ]
+    },
+    {
+      "item": 4,
+      "implementation": "Continuous96px gate road with a west elbow and north approach; shared cobble phase, lighter road material and joined native3px kerbs. Guard and delivery props are outside it.",
+      "evidence": [
+        "r17-C4-gate-inn-1x.png",
+        "r17-C4-gate-actor-reveal-1x.png"
+      ]
+    },
+    {
+      "item": 5,
+      "implementation": "The96x48 pottery pocket is a complete private delivery court served by its rear door, with two connected rail pieces and an intact delivery crate. Removed the detached guild fence and extended its private service approach to the receiving facade.",
+      "evidence": [
+        "r17-C4-merchant-bend-1x.png",
+        "r17-C4-street-1x.png"
+      ]
+    },
+    {
+      "item": 6,
+      "implementation": "Two full house paintings supply recessed and shuttered96x48 floors plus bakery/apothecary fronts; separate smith drawing. Complete96px-wide two-storey houses compare directly to house2 at1x/4x.",
+      "evidence": [
+        "r17-C4-complete-house-baker-1x.png",
+        "r17-C4-complete-house-smith-4x.png"
+      ]
+    },
+    {
+      "item": 7,
+      "implementation": "Whole west/east-facing side elevations replace front stacks at lane ends. Drawn party returns and lower-roof flashing remain part of each actual assembly and are now included in the repetition inventory.",
+      "evidence": [
+        "r17-C4-roof-return-pilot-4x.png",
+        "r17-C4-tall-left-3x.png"
+      ]
+    },
+    {
+      "item": 8,
+      "implementation": "Two image-tool variants per orientation. Selected B/B continuous joined roof drawings are registered to144x144; separate96px receiver,48px companion and48x48 end adapter restore exactly to those source pixels at local y96. The old passing valley/end PNGs and northwest contact remain unchanged.",
+      "evidence": [
+        "r17-C4-selection-hip-4x.png",
+        "r17-C4-roof-return-pilot-1x.png"
+      ]
+    },
+    {
+      "item": 9,
+      "implementation": "Three ridge candidates were drawn; selected angular fine-course paint replaces all failed ridge/back/dormer widths. Chimney and dormer colours match that field. Slate and brown partners retain identical alpha. Rear material is coherent within the slate merchant and brown southern blocks.",
+      "evidence": [
+        "r17-C4-seven-cell-roof-volumes-1x.png",
+        "r17-C4-street-squint-1x.png"
+      ]
+    },
+    {
+      "item": 10,
+      "implementation": "Replaced the stair filling the declared yard with a complete rear ground-floor door beside the retained shed. A48x48 workyard now exposes1535 ground pixels between the rear wall, east boundary and low front-house roof, opening into the48px west service passage. The barrel is an intact native sprite.",
+      "evidence": [
+        "r17-C4-property-sequence-1x.png",
+        "r17-C4-south-property-1x.png"
+      ]
+    },
+    {
+      "item": 11,
+      "implementation": "Both former lawns use worn paving. Church enclosure has masonry sides,48px opening, tree and seated visitor. West court has attached fence at1008, well, laundry and a clear48px opening at288..336.",
+      "evidence": [
+        "r17-C4-corner-court-1x.png",
+        "r17-C4-court-actor-reveal-1x.png"
+      ]
+    },
+    {
+      "item": 12,
+      "implementation": "Drawn144x36 hall contact shade is composited at30percent; gate soffit and18px threshold shade remain hard. Existing native eave/jetty and south/east cast paint retained.",
+      "evidence": [
+        "r17-C4-square-3x.png",
+        "r17-C4-gate-actor-reveal-3x.png"
+      ]
+    },
+    {
+      "item": 13,
+      "implementation": "The retained inn porch and landing stay readable. Newly drawn complete west/east-facing side houses and north-access shop courts have entrance anchors tied to their actual painted thresholds; the market cross moves clear of the narrow north approach.",
+      "evidence": [
+        "r17-C4-selection-inn-4x.png",
+        "r17-C4-inn-actor-reveal-1x.png"
+      ]
+    },
+    {
+      "item": 14,
+      "implementation": "All eight passing sign PNGs remain byte-identical. Brackets now attach at a higher beam across two reserved blank panels, leaving principal windows, sills and ground doors clear within the owning lot.",
+      "evidence": [
+        "r17-C4-eight-signs-1x.png",
+        "r17-C4-piece-sign-inn-c4-4x.png"
+      ]
+    },
+    {
+      "item": 15,
+      "implementation": "Each connected five-lot run includes all floor instances; five-instance sliding windows, vertical stacks, receiving-edge chains and perimeter chains remain. The five-lot proof uses six distinct full drawn elevations twice each; its receiving strips also vary. The northeast middle block gets a different projecting window arrangement. Old4/6 repeated-floor and four-sign-bay layouts are explicit negative checks. Legacy L roof courses and tall-test masonry use distinct compatible native donor bands where the expanded audit detected repeats. Architecture is selected by draw layer, not filename substrings. All14 sign-bay storeys are inventoried and their14 exposed window bays compared separately. The tailor and scribe alternate original open windows with a newly drawn closed-shutter bay; reserved sign regions and doorway approaches are unchanged.",
+      "evidence": [
+        "r17-C4-five-staggered-lots-1x.png",
+        "r17-C4-city-anchors-1x.png"
+      ]
+    },
+    {
+      "item": 16,
+      "implementation": "Three newly drawn upper-floor arrangements and a complete drawn shutter bay add structural variety. All passing wall, ground and sign exports remain unchanged.",
+      "evidence": [
+        "r17-C4-structural-shop-1x.png",
+        "r17-C4-five-walls-offset-tower-1x.png"
+      ]
+    },
+    {
+      "item": 17,
+      "implementation": "Slate/stone/banners in the merchant block; low brown roofs, patches and lean-tos by the wall;96x48 inn storage range; western fuel/apron/chimney/smoke. Palette variation does not satisfy repetition by itself.",
+      "evidence": [
+        "r17-C4-merchant-bend-1x.png",
+        "r17-C4-gate-inn-1x.png"
+      ]
+    },
+    {
+      "item": 18,
+      "implementation": "All native/3x proofs, exact2x city, comparison, crops and squint regenerated.480 full acceptance and39 focused critic-2 checks pass; both old repetition patterns fail negative checks.",
+      "evidence": [
+        "r17-C4-regression-L-block-1x.png",
+        "r17-C4-tall-right-1x.png"
+      ]
+    },
+    {
+      "item": 19,
+      "implementation": "Eastern court retains west48px access; cart/crate/fence share its east loading recess, tree is farther north,24px marker accompanies the storage door.",
+      "evidence": [
+        "r17-C4-gate-inn-1x.png",
+        "r17-C4-inn-actor-reveal-1x.png"
+      ]
+    },
+    {
+      "item": 20,
+      "implementation": "New vendor, back-facing customer, porter and seated poses at existing native scales; six sellers, browsing customers, market unloading, seated church visitor and gate guard. All27 placed actors have visible paint.",
+      "evidence": [
+        "r17-C4-square-1x.png",
+        "r17-C4-corner-court-1x.png"
+      ]
+    }
+  ],
+  "panel2": {
+    "1": "C4 latest8x6 core supersedes panel2 preferred10x8; coordinator permits at most10x8.",
+    "2": "Complete-house and reference sheets1x/4x.",
+    "3": "Corrected ridge/junction paint, newly drawn three-cell hip and both actual adapter orientations in the seven-cell and tall/low proofs.",
+    "4": "Three new trade fronts and two ordinary window families plus the explicitly requested oriel.",
+    "5": "Door, scenery and passage assets; all usable landings measured.",
+    "6": "Conflicts with BRIEF17 twice-R15 sign size: retained64x72 assembly, dark inset board and door-safe mounting.",
+    "7": "Complete directionally drawn side houses are integrated into the square and north-south lanes. Native receiving returns and flashing remain. Brief lot dimensions are retained.",
+    "8": "BRIEF compulsory eight-cell variation overrides panel optional jogs. Gate, square, inner circuit and served dead ends connected.",
+    "9": "Two complete bounded rear property sequences now include 48 px service lanes and covered street access.",
+    "10": "Six stalls in two triplets, vendor strips and unloading area.",
+    "11": "Retained grey-brown civic stone and marked guild entry; approaches clear; skyline carried by spires/towers.",
+    "12": "Native cast/contact shadow paint; BRIEF lot ownership overrides optional cross-lot shadows.",
+    "13": "Actual painted directional thresholds, cross-row ownership, full perimeter-alpha closure and actor/reveal proofs supplement the metadata checks.",
+    "14": "Whole scenes at native scale with today/R15 comparisons, greyscale and enlarged joins.",
+    "15": "Art/compositor only. No engine pathfinding or renderer changes, expansion quotas or magical court."
+  },
+  "conflicts": [
+    "Coordinator40x30 cells at48px overrides earlier approximate1200x900: final1920x1440, exact2x3840x2880.",
+    "BRIEF3x4 gate and2x3 wall-tower ground footprints retained, rather than four-cell gate/single bastion proposals.",
+    "No seasonal ground or seasonal object partners are requested for C4. Material roof partners retain exact alpha."
+  ],
+  "replay": [
+    "python -B art-drop/review/r17-C4-critic2-process.py",
+    "python -B art-drop/out/city17/compose.py --part C4",
+    "python -B art-drop/review/r17-C4-review.py",
+    "python -B art-drop/review/r17-C4-critic2-review.py",
+    "python -B art-drop/review/r17-C4-verify.py",
+    "python -B art-drop/review/r17-C4-critic2-verify.py"
+  ],
+  "critic1": {
+    "source": "critic-r17C4-1.json",
+    "drawing_sources": "r17-C4-critic1-generation.json",
+    "processing": "r17-C4-critic1-processing.json",
+    "extra_verification": "r17-C4-critic1-verification.json",
+    "passing_pngs_preserved": 61,
+    "repaired_pngs": 22,
+    "added_pngs": 23
+  },
+  "critic2": {
+    "part": "C4",
+    "source_critic": "critic-r17C4-2.json",
+    "status": "Author repairs and saved-art verification complete; independent critic not rerun.",
+    "failed_files_addressed": [
+      "north-shop-court-c4-w1",
+      "compose.py",
+      "r17-city-final",
+      "r17-city-final-2x",
+      "r17-city-final-vs-r15-vs-today",
+      "r17-city-final-squint",
+      "r17-city-final-crop-square-3x",
+      "r17-city-final-crop-gate-3x",
+      "r17-C4-roof-adapter-left-1x",
+      "r17-C4-roof-adapter-left-3x",
+      "r17-C4-roof-adapter-right-1x",
+      "r17-C4-roof-adapter-right-3x",
+      "r17-C4-five-staggered-lots-1x",
+      "r17-C4-five-staggered-lots-3x"
+    ],
+    "cases": [
+      {
+        "issue": "Clipped one-cell shop court",
+        "resolution": "Two complete image-tool candidates; B retained. Painted doorway landmarks register to a24px mouth; the entire right canopy/counter and closing boundary stay within48px. The lower96px roof/stack contact is unchanged.",
+        "evidence": [
+          "r17-C4-critic2-before-after-narrow-court-1x.png",
+          "r17-C4-critic2-selection-narrow-4x.png",
+          "r17-city-final-crop-square-3x.png"
+        ]
+      },
+      {
+        "issue": "Missing sign-bay floors and repeated uncovered windows",
+        "resolution": "Architecture is selected by draw layer, not filename substrings. All14 sign-bay storeys are inventoried and their14 exposed window bays compared separately. The tailor and scribe alternate original open windows with a newly drawn closed-shutter bay; reserved sign regions and doorway approaches are unchanged.",
+        "evidence": [
+          "r17-C4-critic2-before-after-sign-windows-1x.png",
+          "r17-C4-layout-audit.json",
+          "r17-city-final-crop-gate-3x.png"
+        ]
+      },
+      {
+        "issue": "Staggered frontages split by floor level",
+        "resolution": "Each connected five-lot run includes all floor instances; five-instance sliding windows, vertical stacks, receiving-edge chains and perimeter chains remain. The five-lot proof uses six distinct full drawn elevations twice each; its receiving strips also vary. The northeast middle block gets a different projecting window arrangement. Old4/6 repeated-floor and four-sign-bay layouts are explicit negative checks. Legacy L roof courses and tall-test masonry use distinct compatible native donor bands where the expanded audit detected repeats.",
+        "evidence": [
+          "r17-C4-five-staggered-lots-1x.png",
+          "r17-C4-critic2-ne-windows-4x.png",
+          "r17-C4-critic2-verification.json"
+        ]
+      },
+      {
+        "issue": "Valley/end proof patches interrupt their receiving slopes",
+        "resolution": "Two image-tool variants per orientation. Selected B/B continuous joined roof drawings are registered to144x144; separate96px receiver,48px companion and48x48 end adapter restore exactly to those source pixels at local y96. The old passing valley/end PNGs and northwest contact remain unchanged.",
+        "evidence": [
+          "r17-C4-critic2-before-after-roof-left-3x.png",
+          "r17-C4-critic2-before-after-roof-right-3x.png",
+          "r17-C4-critic2-adapter-registration-left-4x.png",
+          "r17-C4-critic2-adapter-registration-right-4x.png"
+        ]
+      },
+      {
+        "issue": "South property has no exposed rear yard",
+        "resolution": "Replaced the stair filling the declared yard with a complete rear ground-floor door beside the retained shed. A48x48 workyard now exposes1535 ground pixels between the rear wall, east boundary and low front-house roof, opening into the48px west service passage. The barrel is an intact native sprite.",
+        "evidence": [
+          "r17-C4-critic2-before-after-south-yard-1x.png",
+          "r17-C4-south-property-1x.png"
+        ]
+      },
+      {
+        "issue": "Unassigned northern paving pocket and stray guild fence",
+        "resolution": "The96x48 pottery pocket is a complete private delivery court served by its rear door, with two connected rail pieces and an intact delivery crate. Removed the detached guild fence and extended its private service approach to the receiving facade.",
+        "evidence": [
+          "r17-C4-critic2-before-after-north-court-1x.png",
+          "r17-C4-critic2-north-court-4x.png"
+        ]
+      }
+    ],
+    "verification": "r17-C4-critic2-verification.json",
+    "source_drawings": "r17-C4-critic2-generation.json",
+    "processing": "r17-C4-critic2-processing.json",
+    "protected_passing_pngs": 105,
+    "changed_existing_production": [
+      "north-shop-court-c4-w1.png",
+      "compose.py"
+    ],
+    "new_supporting_pngs": 10,
+    "seasonal_partners": "None",
+    "outputs": [
+      "r17-city-final.png",
+      "r17-city-final-2x.png",
+      "r17-city-final-vs-r15-vs-today.png",
+      "r17-city-final-squint.png",
+      "r17-city-final-crop-square-3x.png",
+      "r17-city-final-crop-street-3x.png",
+      "r17-city-final-crop-gate-3x.png"
+    ],
+    "retained": "Bent streets, L/trapezoid blocks, alleys, varied heights, gate-road inn, uneven towers, closed perimeter, no frontage lawns, populated square and Part E repairs remain."
+  }
+}

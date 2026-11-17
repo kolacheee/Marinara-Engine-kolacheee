@@ -1,0 +1,6978 @@
+{
+  "five-staggered-lots": {
+    "instances": 56,
+    "visible_instances": 56,
+    "windows": 34,
+    "chains": 27,
+    "adjacency_edges": [
+      [
+        "stagger-0",
+        "stagger-1"
+      ],
+      [
+        "stagger-1",
+        "stagger-2"
+      ],
+      [
+        "stagger-2",
+        "stagger-3"
+      ],
+      [
+        "stagger-3",
+        "stagger-4"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "stagger-0",
+        "layer": "ground",
+        "rect": [
+          48,
+          336,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 48,
+        "base": 384,
+        "level": 0
+      },
+      {
+        "file": "party-left-c4",
+        "crop": null,
+        "owner": "stagger-0",
+        "layer": "receiving return",
+        "rect": [
+          48,
+          336,
+          8,
+          48
+        ],
+        "hash": "565423463a56f2b9d64eaa26bd35db388dcd86e07ae66be99cb373f0a392fcaa",
+        "motif": "0f10dcbc20e6c330c2245ac65e3ef631783e3ce65b2d3c05bee1de761575e912",
+        "x": 48,
+        "base": 384,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          336,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 136,
+        "base": 384,
+        "level": 0
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "stagger-0",
+        "layer": "storey",
+        "rect": [
+          48,
+          288,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 384,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-0",
+        "layer": "receiving return",
+        "rect": [
+          48,
+          288,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 48,
+        "base": 384,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          288,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 136,
+        "base": 384,
+        "level": 1
+      },
+      {
+        "file": "storey-arrangement-a-c4-w2",
+        "crop": null,
+        "owner": "stagger-0",
+        "layer": "storey",
+        "rect": [
+          48,
+          240,
+          96,
+          48
+        ],
+        "hash": "fbad055ea400bf22413bc827bb46e3c4cb491150d8868ded0b2f38bad26c24db",
+        "motif": "39b619d550264a3211951e94a18ad1f476cd5a30f626195264697cf195427c24",
+        "x": 48,
+        "base": 384,
+        "level": 2
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-0",
+        "layer": "receiving return",
+        "rect": [
+          48,
+          240,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 48,
+        "base": 384,
+        "level": 2
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          240,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 136,
+        "base": 384,
+        "level": 2
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "stagger-0",
+        "layer": "roof",
+        "rect": [
+          48,
+          144,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 48,
+        "base": 384,
+        "level": "roof"
+      },
+      {
+        "file": "ground-apothecary-c4-w2",
+        "crop": null,
+        "owner": "stagger-1",
+        "layer": "ground",
+        "rect": [
+          144,
+          384,
+          96,
+          48
+        ],
+        "hash": "022b0c6eba3aad5cc603186c96e070064253efd627c53ff3abdde1dcf2008ace",
+        "motif": "e7927f8ca513f10b5f71fc1808bdd40c8f73e482d5338d2ca909ecca7b9b5fd3",
+        "x": 144,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          384,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 144,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-1",
+        "layer": "receiving return",
+        "rect": [
+          232,
+          384,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 232,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "stagger-1",
+        "layer": "storey",
+        "rect": [
+          144,
+          336,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 144,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          336,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 144,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-1",
+        "layer": "receiving return",
+        "rect": [
+          232,
+          336,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 232,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "roof-ridge-c4-w2",
+        "crop": null,
+        "owner": "stagger-1",
+        "layer": "roof",
+        "rect": [
+          144,
+          240,
+          96,
+          96
+        ],
+        "hash": "7209b0273a289b43b32eb8d0447ee2b3d36817dcfef4470229a55b4b69e4710d",
+        "motif": "4ca8a6a466eec6465b6be9e63662fbf97c340104d2d2a8c21455c3323cf35995",
+        "x": 144,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "ground-smith-c4-w2",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "ground",
+        "rect": [
+          240,
+          336,
+          96,
+          48
+        ],
+        "hash": "8b1b5e86132f1c6e45a8691784ff128c6e1a19358b34d60965b8a37e88e3a862",
+        "motif": "f301a67db09593d72e0287a1a0c2b621fca2c33351e1176337f3e5384bfb3681",
+        "x": 240,
+        "base": 384,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          240,
+          336,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 240,
+        "base": 384,
+        "level": 0
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          328,
+          336,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 328,
+        "base": 384,
+        "level": 0
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "storey",
+        "rect": [
+          240,
+          288,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 240,
+        "base": 384,
+        "level": 1
+      },
+      {
+        "file": "party-left-c4",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          240,
+          288,
+          8,
+          48
+        ],
+        "hash": "565423463a56f2b9d64eaa26bd35db388dcd86e07ae66be99cb373f0a392fcaa",
+        "motif": "0f10dcbc20e6c330c2245ac65e3ef631783e3ce65b2d3c05bee1de761575e912",
+        "x": 240,
+        "base": 384,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          328,
+          288,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 328,
+        "base": 384,
+        "level": 1
+      },
+      {
+        "file": "storey-arrangement-b-c4-w2",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "storey",
+        "rect": [
+          240,
+          240,
+          96,
+          48
+        ],
+        "hash": "87c8bd86a5b49ef10a731aed2f6d6f4e16f4064b6cd4c253115949e3eb916f5f",
+        "motif": "b240695ec5b5998fa061abb1ebfabae5d51a9a6ae94db5a9b1555192039708de",
+        "x": 240,
+        "base": 384,
+        "level": 2
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          240,
+          240,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 240,
+        "base": 384,
+        "level": 2
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          328,
+          240,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 328,
+        "base": 384,
+        "level": 2
+      },
+      {
+        "file": "storey-arrangement-c-c4-w2",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "storey",
+        "rect": [
+          240,
+          192,
+          96,
+          48
+        ],
+        "hash": "5ca6b7375da8a37290771795cbc423ded57ea034e19b3216f1225fa46f68ab3b",
+        "motif": "db62e0cb53e628633ef55eb8102b698799ce8303c60ead3af293f6aa1a2d1d4b",
+        "x": 240,
+        "base": 384,
+        "level": 3
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          240,
+          192,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 240,
+        "base": 384,
+        "level": 3
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "receiving return",
+        "rect": [
+          328,
+          192,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 328,
+        "base": 384,
+        "level": 3
+      },
+      {
+        "file": "roof-hip-c4-w2",
+        "crop": null,
+        "owner": "stagger-2",
+        "layer": "roof",
+        "rect": [
+          240,
+          48,
+          96,
+          144
+        ],
+        "hash": "22e60f1e8b793da51036a1c1704f1038643eb4412a74accd1fe295214f8914e9",
+        "motif": "13fea1dfce8959e7c5f5b77e7ad911d1d3fee469c07a3419c6591e4635a64a59",
+        "x": 240,
+        "base": 384,
+        "level": "roof"
+      },
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "stagger-3",
+        "layer": "ground",
+        "rect": [
+          336,
+          432,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 336,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "party-left-c4",
+        "crop": null,
+        "owner": "stagger-3",
+        "layer": "receiving return",
+        "rect": [
+          336,
+          432,
+          8,
+          48
+        ],
+        "hash": "565423463a56f2b9d64eaa26bd35db388dcd86e07ae66be99cb373f0a392fcaa",
+        "motif": "0f10dcbc20e6c330c2245ac65e3ef631783e3ce65b2d3c05bee1de761575e912",
+        "x": 336,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-3",
+        "layer": "receiving return",
+        "rect": [
+          424,
+          432,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 424,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "storey-arrangement-a-c4-w2",
+        "crop": null,
+        "owner": "stagger-3",
+        "layer": "storey",
+        "rect": [
+          336,
+          384,
+          96,
+          48
+        ],
+        "hash": "fbad055ea400bf22413bc827bb46e3c4cb491150d8868ded0b2f38bad26c24db",
+        "motif": "39b619d550264a3211951e94a18ad1f476cd5a30f626195264697cf195427c24",
+        "x": 336,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-3",
+        "layer": "receiving return",
+        "rect": [
+          336,
+          384,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 336,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-3",
+        "layer": "receiving return",
+        "rect": [
+          424,
+          384,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 424,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "stagger-3",
+        "layer": "storey",
+        "rect": [
+          336,
+          336,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 336,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-3",
+        "layer": "receiving return",
+        "rect": [
+          336,
+          336,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 336,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-3",
+        "layer": "receiving return",
+        "rect": [
+          424,
+          336,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 424,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "stagger-3",
+        "layer": "roof",
+        "rect": [
+          336,
+          240,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 336,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "ground-apothecary-c4-w2",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "ground",
+        "rect": [
+          432,
+          384,
+          96,
+          48
+        ],
+        "hash": "022b0c6eba3aad5cc603186c96e070064253efd627c53ff3abdde1dcf2008ace",
+        "motif": "e7927f8ca513f10b5f71fc1808bdd40c8f73e482d5338d2ca909ecca7b9b5fd3",
+        "x": 432,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          432,
+          384,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 432,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          520,
+          384,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 520,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "storey-arrangement-c-c4-w2",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "storey",
+        "rect": [
+          432,
+          336,
+          96,
+          48
+        ],
+        "hash": "5ca6b7375da8a37290771795cbc423ded57ea034e19b3216f1225fa46f68ab3b",
+        "motif": "db62e0cb53e628633ef55eb8102b698799ce8303c60ead3af293f6aa1a2d1d4b",
+        "x": 432,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          432,
+          336,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 432,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          520,
+          336,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 520,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "storey",
+        "rect": [
+          432,
+          288,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 432,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "party-left-c4",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          432,
+          288,
+          8,
+          48
+        ],
+        "hash": "565423463a56f2b9d64eaa26bd35db388dcd86e07ae66be99cb373f0a392fcaa",
+        "motif": "0f10dcbc20e6c330c2245ac65e3ef631783e3ce65b2d3c05bee1de761575e912",
+        "x": 432,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          520,
+          288,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 520,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "storey-arrangement-b-c4-w2",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "storey",
+        "rect": [
+          432,
+          240,
+          96,
+          48
+        ],
+        "hash": "87c8bd86a5b49ef10a731aed2f6d6f4e16f4064b6cd4c253115949e3eb916f5f",
+        "motif": "b240695ec5b5998fa061abb1ebfabae5d51a9a6ae94db5a9b1555192039708de",
+        "x": 432,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          432,
+          240,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 432,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          520,
+          240,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 520,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "storey",
+        "rect": [
+          432,
+          192,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 432,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          432,
+          192,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 432,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "receiving return",
+        "rect": [
+          520,
+          192,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 520,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "roof-ridge-c4-w2",
+        "crop": null,
+        "owner": "stagger-4",
+        "layer": "roof",
+        "rect": [
+          432,
+          96,
+          96,
+          96
+        ],
+        "hash": "7209b0273a289b43b32eb8d0447ee2b3d36817dcfef4470229a55b4b69e4710d",
+        "motif": "4ca8a6a466eec6465b6be9e63662fbf97c340104d2d2a8c21455c3323cf35995",
+        "x": 432,
+        "base": 432,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "tall-left": {
+    "instances": 15,
+    "visible_instances": 15,
+    "windows": 5,
+    "chains": 13,
+    "adjacency_edges": [
+      [
+        "tall-left-0",
+        "tall-left-1"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "ground",
+        "rect": [
+          48,
+          432,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 48,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "tall-left-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          432,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 136,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "storey",
+        "rect": [
+          48,
+          384,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "tall-left-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          384,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 136,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "storey",
+        "rect": [
+          48,
+          336,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 48,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          336,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 136,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "storey",
+        "rect": [
+          48,
+          288,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 48,
+        "base": 480,
+        "level": 3
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "tall-left-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          288,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 136,
+        "base": 480,
+        "level": 3
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "storey",
+        "rect": [
+          48,
+          240,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 480,
+        "level": 4
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "tall-left-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          240,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 136,
+        "base": 480,
+        "level": 4
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "tall-left-0",
+        "layer": "roof",
+        "rect": [
+          48,
+          144,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 48,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "roof-junction-c4",
+        "crop": [
+          0,
+          18,
+          8,
+          28
+        ],
+        "owner": "tall-left-0",
+        "layer": "lower roof flashing",
+        "rect": [
+          136,
+          424,
+          8,
+          10
+        ],
+        "hash": "8cb164506754ad25013e5b503f21156cdcffa9d4aff2e0464885f9fa0bf7d3a8",
+        "motif": "849d83a968fdba44c8860b95e22cf621e67ebe4356c63b99d65fe114a0bedaa4",
+        "x": 136,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "ground-apothecary-c4-w2",
+        "crop": null,
+        "owner": "tall-left-1",
+        "layer": "ground",
+        "rect": [
+          144,
+          432,
+          96,
+          48
+        ],
+        "hash": "022b0c6eba3aad5cc603186c96e070064253efd627c53ff3abdde1dcf2008ace",
+        "motif": "e7927f8ca513f10b5f71fc1808bdd40c8f73e482d5338d2ca909ecca7b9b5fd3",
+        "x": 144,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "tall-left-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          432,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 144,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "tall-left-1",
+        "layer": "roof",
+        "rect": [
+          144,
+          336,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 144,
+        "base": 480,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "tall-right": {
+    "instances": 15,
+    "visible_instances": 15,
+    "windows": 5,
+    "chains": 13,
+    "adjacency_edges": [
+      [
+        "tall-right-0",
+        "tall-right-1"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "tall-right-0",
+        "layer": "ground",
+        "rect": [
+          48,
+          432,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 48,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "tall-right-0",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          432,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 136,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "tall-right-0",
+        "layer": "roof",
+        "rect": [
+          48,
+          336,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 48,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "ground",
+        "rect": [
+          144,
+          432,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 144,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "tall-right-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          432,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 144,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "storey",
+        "rect": [
+          144,
+          384,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 144,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "tall-right-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          384,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 144,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "storey",
+        "rect": [
+          144,
+          336,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 144,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "party-left-c4",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          336,
+          8,
+          48
+        ],
+        "hash": "565423463a56f2b9d64eaa26bd35db388dcd86e07ae66be99cb373f0a392fcaa",
+        "motif": "0f10dcbc20e6c330c2245ac65e3ef631783e3ce65b2d3c05bee1de761575e912",
+        "x": 144,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "storey",
+        "rect": [
+          144,
+          288,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 144,
+        "base": 480,
+        "level": 3
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "tall-right-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          288,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 144,
+        "base": 480,
+        "level": 3
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "storey",
+        "rect": [
+          144,
+          240,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 144,
+        "base": 480,
+        "level": 4
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "tall-right-1",
+        "layer": "receiving return",
+        "rect": [
+          144,
+          240,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 144,
+        "base": 480,
+        "level": 4
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "tall-right-1",
+        "layer": "roof",
+        "rect": [
+          144,
+          144,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 144,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "roof-junction-c4",
+        "crop": [
+          0,
+          18,
+          8,
+          28
+        ],
+        "owner": "tall-right-1",
+        "layer": "lower roof flashing",
+        "rect": [
+          144,
+          424,
+          8,
+          10
+        ],
+        "hash": "8cb164506754ad25013e5b503f21156cdcffa9d4aff2e0464885f9fa0bf7d3a8",
+        "motif": "849d83a968fdba44c8860b95e22cf621e67ebe4356c63b99d65fe114a0bedaa4",
+        "x": 144,
+        "base": 480,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "five-walls-offset-tower": {
+    "instances": 6,
+    "visible_instances": 6,
+    "windows": 1,
+    "chains": 2,
+    "adjacency_edges": [],
+    "inventory": [
+      {
+        "file": "wall-walk-a-c4",
+        "crop": null,
+        "owner": "proof-wall-0",
+        "layer": "prop architecture",
+        "rect": [
+          96,
+          192,
+          96,
+          144
+        ],
+        "hash": "d64b8954e21f1feb235e180ed346600dac7866bb99fa9d8e9cda9325e4cf1bcc",
+        "motif": "dbc3111ee7e25ac5d701ca6f9886906b6b65f19954248442c69a82c6c3ac3223",
+        "x": 96,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk-b-c4",
+        "crop": null,
+        "owner": "proof-wall-1",
+        "layer": "prop architecture",
+        "rect": [
+          192,
+          192,
+          96,
+          144
+        ],
+        "hash": "f308bf5eac849fc2f968b95528d0c7150c5080d3f02f382f1280308a0a4c16a6",
+        "motif": "7eb2f15e39040a0ca1cd927b3a1d82a9dea64112f30dbd62031833e0008deac0",
+        "x": 192,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk-c-c4",
+        "crop": null,
+        "owner": "proof-wall-2",
+        "layer": "prop architecture",
+        "rect": [
+          288,
+          192,
+          96,
+          144
+        ],
+        "hash": "72c37bfb3df4b4e8cafb603e8229fc81c5bc5e517facaccedc52357df2ccfb59",
+        "motif": "7c5fb24f3573e964970b25823ea744646b167d5c541dfeb45dd0c5c859853840",
+        "x": 288,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk-a-c4",
+        "crop": null,
+        "owner": "proof-wall-3",
+        "layer": "prop architecture",
+        "rect": [
+          384,
+          192,
+          96,
+          144
+        ],
+        "hash": "d64b8954e21f1feb235e180ed346600dac7866bb99fa9d8e9cda9325e4cf1bcc",
+        "motif": "dbc3111ee7e25ac5d701ca6f9886906b6b65f19954248442c69a82c6c3ac3223",
+        "x": 384,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk-b-c4",
+        "crop": null,
+        "owner": "proof-wall-4",
+        "layer": "prop architecture",
+        "rect": [
+          480,
+          192,
+          96,
+          144
+        ],
+        "hash": "f308bf5eac849fc2f968b95528d0c7150c5080d3f02f382f1280308a0a4c16a6",
+        "motif": "7eb2f15e39040a0ca1cd927b3a1d82a9dea64112f30dbd62031833e0008deac0",
+        "x": 480,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "wall-tower-b-c4",
+        "crop": null,
+        "owner": "shifted-tower",
+        "layer": "prop architecture",
+        "rect": [
+          240,
+          48,
+          96,
+          240
+        ],
+        "hash": "fed70c34999493bcf01f6a7ec0e55fb73d6398b8058b0ce8b7833a94033dd4f0",
+        "motif": "7c526c7b9fceaf47c193a2acda769b99c898865137a5425b914e9d9cab4f073a",
+        "x": 240,
+        "base": 288,
+        "level": "prop",
+        "order": 6432
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "seven-cell-roof-volumes": {
+    "instances": 14,
+    "visible_instances": 14,
+    "windows": 7,
+    "chains": 12,
+    "adjacency_edges": [
+      [
+        "seven-left-gable",
+        "seven-low-hip"
+      ],
+      [
+        "seven-low-hip",
+        "seven-rear-wing"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "seven-left-gable",
+        "layer": "ground",
+        "rect": [
+          48,
+          432,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 48,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          0,
+          0,
+          8,
+          48
+        ],
+        "owner": "seven-left-gable",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          432,
+          8,
+          48
+        ],
+        "hash": "9ac2db590ddf6febcfe912da623aa5264226e82b17e00f66a9f688c2159f7e9f",
+        "motif": "a538aafe9195e64b0e1adb36e5d2ae64e712c1720d289a8b77ed7514321272f5",
+        "x": 136,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "seven-left-gable",
+        "layer": "storey",
+        "rect": [
+          48,
+          384,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "seven-left-gable",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          384,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 136,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "seven-left-gable",
+        "layer": "storey",
+        "rect": [
+          48,
+          336,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 48,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "party-right-c4",
+        "crop": null,
+        "owner": "seven-left-gable",
+        "layer": "receiving return",
+        "rect": [
+          136,
+          336,
+          8,
+          48
+        ],
+        "hash": "9c8ff9a5926edf7a0d7168887aceb6c1a9398c8c17c95eea444319dac0449632",
+        "motif": "113e78e9f8eb7cb238a8182137d962b32027a7f62dfa67c05628fb9dab1463eb",
+        "x": 136,
+        "base": 480,
+        "level": 2
+      },
+      {
+        "file": "roof-gable-c4-w2",
+        "crop": null,
+        "owner": "seven-left-gable",
+        "layer": "roof",
+        "rect": [
+          48,
+          240,
+          96,
+          96
+        ],
+        "hash": "140c6af97caf45f1212eab8fa2a03c060aff9366fdb6ed54ca67cf4680c3d7bc",
+        "motif": "262e241241665646dc713b69eca54b21e65c9f835aca20f21695d024b6bde294",
+        "x": 48,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "ground-work-w3-c0",
+        "crop": null,
+        "owner": "seven-low-hip",
+        "layer": "ground",
+        "rect": [
+          144,
+          432,
+          144,
+          48
+        ],
+        "hash": "784486ae70a4afb50de539fc5cf3ea062297a55a5ff17133c5ac9a3d175dfde1",
+        "motif": "7089a8a3a72c7e30d0e38aae463c6052e749adcf33834b00efb6c4de9810b474",
+        "x": 144,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "roof-hip-c4-w3",
+        "crop": null,
+        "owner": "seven-low-hip",
+        "layer": "roof",
+        "rect": [
+          144,
+          336,
+          144,
+          96
+        ],
+        "hash": "c7d39e9b1c2f71f8dc34b4c4a6b1eb09892d2248d56168aae3249892f75e81af",
+        "motif": "1a54dadf72f8a575f51ae124672b2f21ec860c1407c766e70a57fd1194af3032",
+        "x": 144,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "ground-smith-c4-w2",
+        "crop": null,
+        "owner": "seven-rear-wing",
+        "layer": "ground",
+        "rect": [
+          288,
+          432,
+          96,
+          48
+        ],
+        "hash": "8b1b5e86132f1c6e45a8691784ff128c6e1a19358b34d60965b8a37e88e3a862",
+        "motif": "f301a67db09593d72e0287a1a0c2b621fca2c33351e1176337f3e5384bfb3681",
+        "x": 288,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "firewall-w0",
+        "crop": [
+          8,
+          0,
+          16,
+          48
+        ],
+        "owner": "seven-rear-wing",
+        "layer": "receiving return",
+        "rect": [
+          288,
+          432,
+          8,
+          48
+        ],
+        "hash": "806937399f57ffa4ae25d395fab2d7a1e46707830fa59c1b8e0ea76e1326ac01",
+        "motif": "8bd1c7d4d1d640b0b4977cd07f850f35fe5d074fa9f6a753ecce17ea69ed99ec",
+        "x": 288,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "seven-rear-wing",
+        "layer": "storey",
+        "rect": [
+          288,
+          384,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 288,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "party-left-c4",
+        "crop": null,
+        "owner": "seven-rear-wing",
+        "layer": "receiving return",
+        "rect": [
+          288,
+          384,
+          8,
+          48
+        ],
+        "hash": "565423463a56f2b9d64eaa26bd35db388dcd86e07ae66be99cb373f0a392fcaa",
+        "motif": "0f10dcbc20e6c330c2245ac65e3ef631783e3ce65b2d3c05bee1de761575e912",
+        "x": 288,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "roof-back-c4-w2",
+        "crop": null,
+        "owner": "seven-rear-wing",
+        "layer": "roof",
+        "rect": [
+          288,
+          288,
+          96,
+          96
+        ],
+        "hash": "48bf28a6d43455b90c602ed97e5a1678232a31b02318d40004e9f8d92ffc4e16",
+        "motif": "6602f5950b876963391d471d95f6bd09639f033f1c1c72804d7432f282bdd40f",
+        "x": 288,
+        "base": 480,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "roof-adapter-left": {
+    "instances": 7,
+    "visible_instances": 7,
+    "windows": 2,
+    "chains": 5,
+    "adjacency_edges": [
+      [
+        "joined-hip",
+        "gable-companion"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "ground",
+        "rect": [
+          48,
+          384,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 48,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "storey",
+        "rect": [
+          48,
+          336,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "roof-receiver-left-c4-w2",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "roof",
+        "rect": [
+          48,
+          192,
+          96,
+          144
+        ],
+        "hash": "efb2391cd4f9533145bc51e594f2a01333c2a9d1532e2a31673b503759d9a6ae",
+        "motif": "ff7b686905b9edc67fb7360025da2d6ae4683db05f50224b173ceea105675aa5",
+        "x": 48,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "roof-adapter-left-c4",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "owned roof junction",
+        "rect": [
+          96,
+          288,
+          48,
+          48
+        ],
+        "hash": "634cb483437a2bc277ce1aad4063cc1dfa507e4df13fdf94385a70ceca1497d8",
+        "motif": "18bc9929ff75a4313bd8e6909bdf1f749afe6582c9070814ca9a35464b75ed02",
+        "x": 96,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "ground-door-v1-w1-c0",
+        "crop": null,
+        "owner": "gable-companion",
+        "layer": "ground",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "hash": "43bca4011581dcddde420c2b5b22457633cda42a36ae60f3d54004931d7a15b1",
+        "motif": "78f22f7e81e340d795ff1c9bfdd7f08118410a8c9ec4af5938ea33434ae0b121",
+        "x": 144,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "storey-shuttered-c4-right-w1",
+        "crop": null,
+        "owner": "gable-companion",
+        "layer": "storey",
+        "rect": [
+          144,
+          336,
+          48,
+          48
+        ],
+        "hash": "9698adb464bdf102a643812baeb94e0597e9dd6e75e486d13e43f3aa0decd085",
+        "motif": "82074de30629192ce489a9aa92024a00800530178aa57d8c6918bf605c184abd",
+        "x": 144,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "roof-companion-left-c4-w1",
+        "crop": null,
+        "owner": "gable-companion",
+        "layer": "roof",
+        "rect": [
+          144,
+          192,
+          48,
+          144
+        ],
+        "hash": "b31fca542337bfe5451495db6e9d612427fb2b06d298eb4b6dac5e35f7a1e63d",
+        "motif": "a45b8c0e60ba50aa6b2669b46b40c1a6c69cd56de256cfe222822aa89db8000b",
+        "x": 144,
+        "base": 432,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "roof-adapter-right": {
+    "instances": 7,
+    "visible_instances": 7,
+    "windows": 2,
+    "chains": 5,
+    "adjacency_edges": [
+      [
+        "gable-companion",
+        "joined-hip"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "ground-door-v1-w1-c0",
+        "crop": null,
+        "owner": "gable-companion",
+        "layer": "ground",
+        "rect": [
+          48,
+          384,
+          48,
+          48
+        ],
+        "hash": "43bca4011581dcddde420c2b5b22457633cda42a36ae60f3d54004931d7a15b1",
+        "motif": "78f22f7e81e340d795ff1c9bfdd7f08118410a8c9ec4af5938ea33434ae0b121",
+        "x": 48,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "storey-shuttered-c4-right-w1",
+        "crop": null,
+        "owner": "gable-companion",
+        "layer": "storey",
+        "rect": [
+          48,
+          336,
+          48,
+          48
+        ],
+        "hash": "9698adb464bdf102a643812baeb94e0597e9dd6e75e486d13e43f3aa0decd085",
+        "motif": "82074de30629192ce489a9aa92024a00800530178aa57d8c6918bf605c184abd",
+        "x": 48,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "roof-companion-right-c4-w1",
+        "crop": null,
+        "owner": "gable-companion",
+        "layer": "roof",
+        "rect": [
+          48,
+          192,
+          48,
+          144
+        ],
+        "hash": "ce47838588c10ec83efb5408faf8ec829047d3b97f4139f98225cd6ebe573ddb",
+        "motif": "3186f90e5776c7e7bcbdd7720d7648739508b8c547f2d39fd0fdefdde1c524c8",
+        "x": 48,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "ground-baker-c4-w2",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "ground",
+        "rect": [
+          96,
+          384,
+          96,
+          48
+        ],
+        "hash": "ef029cf9923c1bbe20b937c8931a8e4b9723415865c4f92ba497730ec7a535a4",
+        "motif": "5830a020d5177dc35c7772c8d6f0b82e53bf816c6b9443df5f045c12dc4fe463",
+        "x": 96,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "storey",
+        "rect": [
+          96,
+          336,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 96,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "roof-receiver-right-c4-w2",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "roof",
+        "rect": [
+          96,
+          192,
+          96,
+          144
+        ],
+        "hash": "5ba7cf6fe378277cb7dc4fc2a8f8ea70aaedd42136c46ee6655c5809e808d278",
+        "motif": "04e5a90c63ed22c5ddd0be491253fc41f3788958714d9d52934b88d4d954be0c",
+        "x": 96,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "roof-adapter-right-c4",
+        "crop": null,
+        "owner": "joined-hip",
+        "layer": "owned roof junction",
+        "rect": [
+          96,
+          288,
+          48,
+          48
+        ],
+        "hash": "78370f28da09e55bc2b7bfea32d17a225888517ccaeb3495bb900885144c2c15",
+        "motif": "cd24eeebca1a0d3ade8b0ce56cfaa184e46d6a7ec76f73be34783ad98a6f296d",
+        "x": 96,
+        "base": 432,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "regression-L-block": {
+    "instances": 69,
+    "visible_instances": 69,
+    "windows": 22,
+    "chains": 42,
+    "adjacency_edges": [
+      [
+        "north-4",
+        "north-5"
+      ],
+      [
+        "north-5",
+        "north-6"
+      ],
+      [
+        "north-6",
+        "north-7-split2"
+      ],
+      [
+        "north-7-split2",
+        "north-7-split1"
+      ],
+      [
+        "L-south-1",
+        "L-south-2-split2"
+      ],
+      [
+        "L-south-1",
+        "L-corner"
+      ],
+      [
+        "L-south-2-split2",
+        "L-south-2-split1"
+      ],
+      [
+        "north-rear-0-split2",
+        "north-rear-0-split1"
+      ],
+      [
+        "north-rear-0-split1",
+        "north-rear-1"
+      ],
+      [
+        "north-rear-1",
+        "north-rear-2"
+      ],
+      [
+        "north-rear-2",
+        "north-rear-3"
+      ],
+      [
+        "side-along-lane",
+        "east-shop"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "out/city17/inn-front.png",
+        "crop": null,
+        "owner": "north-4",
+        "layer": "facade",
+        "rect": [
+          384,
+          96,
+          96,
+          48
+        ],
+        "hash": "da9cc8061214ee5e33652692cc8230fa6c6e343f47cee24a729790a0202f6aa0",
+        "motif": "10412961346a204cc0cb790fe344442e0e7b459d014c150e072b81509725a0ea",
+        "x": 384,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "out/city17/district-market-roof-v1-w2.png",
+        "crop": null,
+        "owner": "north-4",
+        "layer": "roof",
+        "rect": [
+          384,
+          0,
+          96,
+          96
+        ],
+        "hash": "f2de03eaa3d109251830ea9803375d6ea88ee09d44038a96373e7f75edb27288",
+        "motif": "1cf0533f050bef9c2fd755e2bdf89ecad49333b1566ecfa0f564c304bcdc58c9",
+        "x": 384,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-door-v2-w2-c1.png",
+        "crop": null,
+        "owner": "north-5",
+        "layer": "facade",
+        "rect": [
+          480,
+          96,
+          96,
+          48
+        ],
+        "hash": "371a06d5dba76689c431342504f888b6bc80e681f680a1a38cfb141d3534cbbf",
+        "motif": "d4773495d4557b91ebc2e7b3525953f4c0f428aee65131a7da0affb58f23d1ba",
+        "x": 480,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-flat-w2-c0.png",
+        "crop": null,
+        "owner": "north-5",
+        "layer": "roof",
+        "rect": [
+          480,
+          0,
+          96,
+          96
+        ],
+        "hash": "752eb78aa69db2fea3501d44becdcad398cdc9cc49e8177506b9a84e6fa29c60",
+        "motif": "a82e593f8430f8dcf57b5fa6647e861c68d6481c93cd1140dc18cbba9e932914",
+        "x": 480,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-arch-w1-c0.png",
+        "crop": null,
+        "owner": "north-6",
+        "layer": "facade",
+        "rect": [
+          576,
+          96,
+          48,
+          48
+        ],
+        "hash": "e6df9107b6737b98bfcb9bf40e5e044f32f1a73a42feba7405a88d8b304a8e99",
+        "motif": "c1af5aac1eb70ebbecad64da526769e26ffca9a5b6608d074d694023e52a0ed5",
+        "x": 576,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-gable-w1-c0.png",
+        "crop": null,
+        "owner": "north-6",
+        "layer": "roof",
+        "rect": [
+          576,
+          0,
+          48,
+          96
+        ],
+        "hash": "94964ed454d871c77a0e3966848f52ad31b47e83b4db569ab1c38fec23e69567",
+        "motif": "fc7aa0f7455978057326043ccaf95f48e95f27459ee6d0d84730504e6d057a0d",
+        "x": 576,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-work-v1-w2-c1.png",
+        "crop": null,
+        "owner": "north-7-split2",
+        "layer": "facade",
+        "rect": [
+          624,
+          96,
+          96,
+          48
+        ],
+        "hash": "71b9b3e0ba3e0ce201dee28b0c8bc8d93bc99d328c6bb7b3cf82a2a83d8d5feb",
+        "motif": "9ccffba6e3f04620236d15bb6e2800b4cb8f74327d68d501a42bd509375ed7ea",
+        "x": 624,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": null,
+        "owner": "north-7-split2",
+        "layer": "roof",
+        "rect": [
+          624,
+          0,
+          96,
+          96
+        ],
+        "hash": "655e348a3be989a08b241da79fd540721652550c415ef1fe1a2d8416ee520e88",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 624,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-work-v1-w1-c1.png",
+        "crop": null,
+        "owner": "north-7-split1",
+        "layer": "facade",
+        "rect": [
+          720,
+          96,
+          48,
+          48
+        ],
+        "hash": "ff17a3d92f5de4f528b0fe6a1bb705b142c1ee7a1b9a1029b8125da1b7df68cb",
+        "motif": "0ea56d072b434a05c949086b75d5401f8e38abf85d2508777061a10f5d18e72c",
+        "x": 720,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-ridge-w1-c0.png",
+        "crop": null,
+        "owner": "north-7-split1",
+        "layer": "roof",
+        "rect": [
+          720,
+          0,
+          48,
+          96
+        ],
+        "hash": "4d8f6f8ef08969c82c771e699fcd59eba129279876d79841d53869bba501c1a9",
+        "motif": "28da44f1c87000507f4a8a3786f417b3c464ff57b0d51a671ed654f42eb83237",
+        "x": 720,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-arch-v1-w2-c1.png",
+        "crop": null,
+        "owner": "L-south-1",
+        "layer": "facade",
+        "rect": [
+          96,
+          480,
+          96,
+          48
+        ],
+        "hash": "bc4b5ec7422cc9249e220e516fb32b705b598c66dd2e0bde4f3cb91eb3abe2ea",
+        "motif": "5152f44a6a86687b3047fe13f92607e5fca588c7b789370448a80cae971a6f3b",
+        "x": 96,
+        "base": 528,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": null,
+        "owner": "L-south-1",
+        "layer": "roof",
+        "rect": [
+          96,
+          384,
+          96,
+          96
+        ],
+        "hash": "655e348a3be989a08b241da79fd540721652550c415ef1fe1a2d8416ee520e88",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 96,
+        "base": 528,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-work-v2-w2-c0.png",
+        "crop": null,
+        "owner": "L-south-2-split2",
+        "layer": "facade",
+        "rect": [
+          192,
+          480,
+          96,
+          48
+        ],
+        "hash": "606ebc6ea9ffff5350f1adb282675c817adcdfe9ba47f4c70212208c090ecd35",
+        "motif": "26288f5c68cfaedf3e9c99194e5fb66ccf009a322597c385c355d98a31b7195b",
+        "x": 192,
+        "base": 528,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-gable-w2-c0.png",
+        "crop": null,
+        "owner": "L-south-2-split2",
+        "layer": "roof",
+        "rect": [
+          192,
+          384,
+          96,
+          96
+        ],
+        "hash": "f2de03eaa3d109251830ea9803375d6ea88ee09d44038a96373e7f75edb27288",
+        "motif": "1cf0533f050bef9c2fd755e2bdf89ecad49333b1566ecfa0f564c304bcdc58c9",
+        "x": 192,
+        "base": 528,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-work-v2-w1-c0.png",
+        "crop": null,
+        "owner": "L-south-2-split1",
+        "layer": "facade",
+        "rect": [
+          288,
+          480,
+          48,
+          48
+        ],
+        "hash": "193890128353f868a992ee97066c1b9f703ae7706bccc002b7fd02630e441941",
+        "motif": "baec792a7fd39b707d433649daffdae66bd38386f84d1d02315d7572e88704bc",
+        "x": 288,
+        "base": 528,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-gable-w1-c0.png",
+        "crop": null,
+        "owner": "L-south-2-split1",
+        "layer": "roof",
+        "rect": [
+          288,
+          384,
+          48,
+          96
+        ],
+        "hash": "94964ed454d871c77a0e3966848f52ad31b47e83b4db569ab1c38fec23e69567",
+        "motif": "fc7aa0f7455978057326043ccaf95f48e95f27459ee6d0d84730504e6d057a0d",
+        "x": 288,
+        "base": 528,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-arch-v2-w2-c0.png",
+        "crop": null,
+        "owner": "L-corner",
+        "layer": "facade",
+        "rect": [
+          0,
+          480,
+          96,
+          48
+        ],
+        "hash": "477f4767e7e74d6daa19e89d6c49ebde2df7cb593a87a3f5eeca7eaa103b3139",
+        "motif": "2c0f6ee18635ed7657ad4bd14c0eccbf31bf8ff09f636e867fe6efda0390e125",
+        "x": 0,
+        "base": 528,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          0,
+          96,
+          59
+        ],
+        "owner": "L-corner",
+        "layer": "roof ridge",
+        "rect": [
+          0,
+          240,
+          96,
+          59
+        ],
+        "hash": "e78cb0053cd8d0cceaa6f1e6c9e7bac992c7f1a3249ace5595e8225550d8b488",
+        "motif": "c2dcea2e11e24567f32cfba137d9eda2d2579a01a6a74fc8275ff1dd079d5a4e",
+        "x": 0,
+        "base": 528,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          59,
+          96,
+          75
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          299,
+          96,
+          16
+        ],
+        "hash": "3945cd8837258da507d02eca26dc9687728b016bf760ca1555883c900ac30ce3",
+        "motif": "6f393941a9ea9d417ce00406e91d23b30936025693a8831a8ede8f5f1df137cc",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-3"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          75,
+          96,
+          91
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          315,
+          96,
+          16
+        ],
+        "hash": "de02fcc0f1e6b79981fcea83dbb7bc3f0d15cbf20a15df02b028f1427b25397a",
+        "motif": "f29552924a17738fb4507a5538ab60a71c5fc83aacef29282539386721669371",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-4"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          11,
+          96,
+          27
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          331,
+          96,
+          16
+        ],
+        "hash": "bd0c92181f66a1c42abfee9c46a1148c160fc4faf8d52d558d00df65c2fbd940",
+        "motif": "b611ce96defd53d0a97d844d2af8e2f0c20dadebb98c57110d24b241155c2e72",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-5"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          27,
+          96,
+          43
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          347,
+          96,
+          16
+        ],
+        "hash": "1a2350553747393eb28dadd27ff2539842e5e990966875bf6212ad6a1a0d30c1",
+        "motif": "ef8385e4d44bcb5b931829ec04c0072f6d4280adba907d33867144e51976b210",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-6"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          43,
+          96,
+          59
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          363,
+          96,
+          16
+        ],
+        "hash": "22da15cae4a1897ff9e653b61db9ba20c8849d6262eea41013db9c3c77f7dae6",
+        "motif": "4a2509fe2bcd6b8096f814f5b54413af9cf02a88e975dd59241760aa418b176a",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-7"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          59,
+          96,
+          75
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          379,
+          96,
+          16
+        ],
+        "hash": "3945cd8837258da507d02eca26dc9687728b016bf760ca1555883c900ac30ce3",
+        "motif": "6f393941a9ea9d417ce00406e91d23b30936025693a8831a8ede8f5f1df137cc",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-8"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          75,
+          96,
+          91
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          395,
+          96,
+          16
+        ],
+        "hash": "de02fcc0f1e6b79981fcea83dbb7bc3f0d15cbf20a15df02b028f1427b25397a",
+        "motif": "f29552924a17738fb4507a5538ab60a71c5fc83aacef29282539386721669371",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-9"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          11,
+          96,
+          27
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          411,
+          96,
+          16
+        ],
+        "hash": "bd0c92181f66a1c42abfee9c46a1148c160fc4faf8d52d558d00df65c2fbd940",
+        "motif": "b611ce96defd53d0a97d844d2af8e2f0c20dadebb98c57110d24b241155c2e72",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-10"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          27,
+          96,
+          43
+        ],
+        "owner": "L-corner",
+        "layer": "roof fill adapter",
+        "rect": [
+          0,
+          427,
+          96,
+          16
+        ],
+        "hash": "1a2350553747393eb28dadd27ff2539842e5e990966875bf6212ad6a1a0d30c1",
+        "motif": "ef8385e4d44bcb5b931829ec04c0072f6d4280adba907d33867144e51976b210",
+        "x": 0,
+        "base": 528,
+        "level": "roof-course-11"
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": [
+          0,
+          59,
+          96,
+          96
+        ],
+        "owner": "L-corner",
+        "layer": "roof slope/eave",
+        "rect": [
+          0,
+          443,
+          96,
+          37
+        ],
+        "hash": "7e7bed26a6e77d84d936e525f4ba71ca65bd438e1a9c0f506fa919ffe08ed707",
+        "motif": "144fe3bbeb62221f831ea45632683f3bd8d1ff6a39713c96373b239995544f78",
+        "x": 0,
+        "base": 528,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w2",
+        "crop": null,
+        "owner": "north-rear-0-split2",
+        "layer": "wall",
+        "rect": [
+          0,
+          96,
+          96,
+          48
+        ],
+        "hash": "e09aeefc6a5ecbba4729d71a8e8a5bf5084549444b704b5e35fd6fe67f0fee31",
+        "motif": "fd21214df3f631a4aac4dc3716628b7f95acf90086d35bd15583fdbcc715648f",
+        "x": 0,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w2",
+        "crop": null,
+        "owner": "north-rear-0-split2",
+        "layer": "roof",
+        "rect": [
+          0,
+          0,
+          96,
+          96
+        ],
+        "hash": "c66125ce9a621ce8e34d435ed3c8123847d5216d9b96e5b11f31f29b1b31ffdb",
+        "motif": "5846790c542518c8e067fda00469476679051e88335511c5e6cd4983b390a8bd",
+        "x": 0,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w1",
+        "crop": null,
+        "owner": "north-rear-0-split1",
+        "layer": "wall",
+        "rect": [
+          96,
+          96,
+          48,
+          48
+        ],
+        "hash": "d7615b0480167fff7e4490e4bed1b77cf76c8d1348d8359d554180f0cda5f87b",
+        "motif": "bab02b5b70a4048cc6a1d39bfc1b4e4f3cc1fa3a2651604ab9517fab7a58acb1",
+        "x": 96,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w1",
+        "crop": null,
+        "owner": "north-rear-0-split1",
+        "layer": "roof",
+        "rect": [
+          96,
+          0,
+          48,
+          96
+        ],
+        "hash": "78f9fb98aaae748ce0b43e16164b03fc7b536b79055e6aa6372f1aa91cf8e495",
+        "motif": "15d2944a14debbbea19c4af5bfb4e391c338cf6c3a42ddabbc5f20f7bd690311",
+        "x": 96,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "back-stair-w1",
+        "crop": null,
+        "owner": "north-rear-1",
+        "layer": "wall",
+        "rect": [
+          144,
+          96,
+          48,
+          48
+        ],
+        "hash": "b4ef56b568d3c6823fd40fd7ffdbd1a3424986040f8bce47591e2175c8b0c33a",
+        "motif": "06d8a647beb95cbcbb67f2d73615503e6095fbcb4b510ed616f8badeb9079d36",
+        "x": 144,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w1",
+        "crop": null,
+        "owner": "north-rear-1",
+        "layer": "roof",
+        "rect": [
+          144,
+          0,
+          48,
+          96
+        ],
+        "hash": "78f9fb98aaae748ce0b43e16164b03fc7b536b79055e6aa6372f1aa91cf8e495",
+        "motif": "15d2944a14debbbea19c4af5bfb4e391c338cf6c3a42ddabbc5f20f7bd690311",
+        "x": 144,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w2",
+        "crop": null,
+        "owner": "north-rear-2",
+        "layer": "wall",
+        "rect": [
+          192,
+          96,
+          96,
+          48
+        ],
+        "hash": "e09aeefc6a5ecbba4729d71a8e8a5bf5084549444b704b5e35fd6fe67f0fee31",
+        "motif": "fd21214df3f631a4aac4dc3716628b7f95acf90086d35bd15583fdbcc715648f",
+        "x": 192,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w2",
+        "crop": null,
+        "owner": "north-rear-2",
+        "layer": "roof",
+        "rect": [
+          192,
+          0,
+          96,
+          96
+        ],
+        "hash": "c66125ce9a621ce8e34d435ed3c8123847d5216d9b96e5b11f31f29b1b31ffdb",
+        "motif": "5846790c542518c8e067fda00469476679051e88335511c5e6cd4983b390a8bd",
+        "x": 192,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w1",
+        "crop": null,
+        "owner": "north-rear-3",
+        "layer": "wall",
+        "rect": [
+          288,
+          96,
+          48,
+          48
+        ],
+        "hash": "d7615b0480167fff7e4490e4bed1b77cf76c8d1348d8359d554180f0cda5f87b",
+        "motif": "bab02b5b70a4048cc6a1d39bfc1b4e4f3cc1fa3a2651604ab9517fab7a58acb1",
+        "x": 288,
+        "base": 144,
+        "level": 0
+      },
+      {
+        "file": "roof-back-repair-w1",
+        "crop": null,
+        "owner": "north-rear-3",
+        "layer": "roof",
+        "rect": [
+          288,
+          0,
+          48,
+          96
+        ],
+        "hash": "fdc8bae9c578ef0e5782c18bd622f4c93f8271b75710596cd5d6ec3617da6b00",
+        "motif": "5b17111ad423a7396e7069a6fe33b07c0238d4caee65621fddf6f6c32857b7bf",
+        "x": 288,
+        "base": 144,
+        "level": "roof"
+      },
+      {
+        "file": "side-ground-W",
+        "crop": null,
+        "owner": "side-along-lane",
+        "layer": "wall",
+        "rect": [
+          384,
+          432,
+          96,
+          48
+        ],
+        "hash": "691401bf7debb59e53752e7d57f41ebc3c5dcda361f5ebc095de997d00faaba2",
+        "motif": "356e9bad0d951678ee7f2d7bfc6db6d7d885927e8008848334c5a76006379118",
+        "x": 384,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "side-storey-W",
+        "crop": null,
+        "owner": "side-along-lane",
+        "layer": "wall",
+        "rect": [
+          384,
+          384,
+          96,
+          48
+        ],
+        "hash": "66c0465a8687fab448dae2e8ca69c16cca72ec79004119dab1b1254e8bb23122",
+        "motif": "dbce3595739425795edb9d3d2ad98a923a2153aac13f65d5f59f100b740ce563",
+        "x": 384,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "side-roof-d2-W",
+        "crop": null,
+        "owner": "side-along-lane",
+        "layer": "roof",
+        "rect": [
+          384,
+          288,
+          96,
+          96
+        ],
+        "hash": "661631346dec2a49bcdb8224d28d545f30cb25794f70a4fc484fa1d5d45923e9",
+        "motif": "b7a27e2e24da758ba0d8f690fdfa9dd4d2d997f583521b0a605aaf9184dccf6d",
+        "x": 384,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-v1-w2-c0.png",
+        "crop": null,
+        "owner": "east-shop",
+        "layer": "facade",
+        "rect": [
+          480,
+          432,
+          96,
+          48
+        ],
+        "hash": "f5ee38fa0360241322c290d6499f36da3155f870c2b06f3bab6e95c7d44826ae",
+        "motif": "7ef90b4dc95981963cf9d379cf9922a2873500948a6c47f3d206ac35b3f7ceb1",
+        "x": 480,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "east-shop",
+        "layer": "facade",
+        "rect": [
+          480,
+          384,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 480,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": null,
+        "owner": "east-shop",
+        "layer": "roof",
+        "rect": [
+          480,
+          288,
+          96,
+          96
+        ],
+        "hash": "655e348a3be989a08b241da79fd540721652550c415ef1fe1a2d8416ee520e88",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 480,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "deadend-cap-storey",
+        "crop": null,
+        "owner": "deadend-cap",
+        "layer": "wall",
+        "rect": [
+          576,
+          288,
+          96,
+          48
+        ],
+        "hash": "69a6d66e2c03295c9733040aac0770fdf2fe1410cd9d290f2dc9cfba9f570756",
+        "motif": "b99818d1fae15eaa74e16213a9357a1fa6b28123ab653c0bd6a09445e3fb5a02",
+        "x": 576,
+        "base": 336,
+        "level": 0
+      },
+      {
+        "file": "deadend-cap-roof",
+        "crop": null,
+        "owner": "deadend-cap",
+        "layer": "roof",
+        "rect": [
+          576,
+          192,
+          96,
+          96
+        ],
+        "hash": "20ad56542a0fb471fd56a10feb597aec13585ba3c558c554bd4d1ba36005a327",
+        "motif": "2267b7717a0776458c0883fd9dfb5c1733e6f8d3a68658892e3ed8fbff52e9cf",
+        "x": 576,
+        "base": 336,
+        "level": "roof"
+      },
+      {
+        "file": "corner-outer-R-storey",
+        "crop": null,
+        "owner": "east-corner",
+        "layer": "wall",
+        "rect": [
+          672,
+          432,
+          96,
+          48
+        ],
+        "hash": "15b680b50828249289e0439cbf9dac1ab07be726dea90c754738b8b72c0756fa",
+        "motif": "61649b8bc2c9bc24653dbe097dda197e07fa1f70dbf8e6a26f8b13de2c15d54a",
+        "x": 672,
+        "base": 480,
+        "level": 0
+      },
+      {
+        "file": "corner-outer-R-storey",
+        "crop": null,
+        "owner": "east-corner",
+        "layer": "wall",
+        "rect": [
+          672,
+          384,
+          96,
+          48
+        ],
+        "hash": "15b680b50828249289e0439cbf9dac1ab07be726dea90c754738b8b72c0756fa",
+        "motif": "61649b8bc2c9bc24653dbe097dda197e07fa1f70dbf8e6a26f8b13de2c15d54a",
+        "x": 672,
+        "base": 480,
+        "level": 1
+      },
+      {
+        "file": "corner-outer-R-roof",
+        "crop": null,
+        "owner": "east-corner",
+        "layer": "roof",
+        "rect": [
+          672,
+          288,
+          96,
+          96
+        ],
+        "hash": "5fb64841ee30189561994d3c8ea74f610899d91c823fc6aeea93e2fd1e1a626c",
+        "motif": "e357987ff38db44269384293d331ec125d200d4396b75133ac200fc96c754d30",
+        "x": 672,
+        "base": 480,
+        "level": "roof"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:96:365",
+        "layer": "prop architecture",
+        "rect": [
+          96,
+          341,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 96,
+        "base": 365,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:144:365",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          341,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 144,
+        "base": 365,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:192:365",
+        "layer": "prop architecture",
+        "rect": [
+          192,
+          341,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 192,
+        "base": 365,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:240:365",
+        "layer": "prop architecture",
+        "rect": [
+          240,
+          341,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 240,
+        "base": 365,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:94:336",
+        "layer": "prop architecture",
+        "rect": [
+          94,
+          288,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 94,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:190:336",
+        "layer": "prop architecture",
+        "rect": [
+          190,
+          288,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 190,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:286:336",
+        "layer": "prop architecture",
+        "rect": [
+          286,
+          288,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 286,
+        "base": 336,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:384:216",
+        "layer": "prop architecture",
+        "rect": [
+          384,
+          192,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 384,
+        "base": 216,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:432:216",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          192,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 432,
+        "base": 216,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:480:216",
+        "layer": "prop architecture",
+        "rect": [
+          480,
+          192,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 480,
+        "base": 216,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:528:216",
+        "layer": "prop architecture",
+        "rect": [
+          528,
+          192,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 528,
+        "base": 216,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:466:240",
+        "layer": "prop architecture",
+        "rect": [
+          466,
+          192,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 466,
+        "base": 240,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:466:288",
+        "layer": "prop architecture",
+        "rect": [
+          466,
+          240,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 466,
+        "base": 288,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:562:240",
+        "layer": "prop architecture",
+        "rect": [
+          562,
+          192,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 562,
+        "base": 240,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:562:288",
+        "layer": "prop architecture",
+        "rect": [
+          562,
+          240,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 562,
+        "base": 288,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:672:216",
+        "layer": "prop architecture",
+        "rect": [
+          672,
+          192,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 672,
+        "base": 216,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:720:216",
+        "layer": "prop architecture",
+        "rect": [
+          720,
+          192,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 720,
+        "base": 216,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:648:384",
+        "layer": "prop architecture",
+        "rect": [
+          648,
+          336,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 648,
+        "base": 384,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:648:432",
+        "layer": "prop architecture",
+        "rect": [
+          648,
+          384,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 648,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:624:458",
+        "layer": "prop architecture",
+        "rect": [
+          624,
+          434,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 624,
+        "base": 458,
+        "level": "prop"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "regression-market": {
+    "instances": 140,
+    "visible_instances": 140,
+    "windows": 47,
+    "chains": 74,
+    "adjacency_edges": [
+      [
+        "D-flank-0",
+        "west-return"
+      ],
+      [
+        "trade-smith",
+        "trade-baker"
+      ],
+      [
+        "trade-baker",
+        "trade-apothecary"
+      ],
+      [
+        "trade-inn",
+        "trade-scribe"
+      ],
+      [
+        "trade-scribe",
+        "trade-tailor"
+      ],
+      [
+        "south-house-0",
+        "south-house-1"
+      ],
+      [
+        "south-house-1",
+        "south-house-2"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "out/city17/district-poor-ground-w2.png",
+        "crop": null,
+        "owner": "D-flank-0",
+        "layer": "facade",
+        "rect": [
+          0,
+          816,
+          96,
+          48
+        ],
+        "hash": "bf7e7f1f876e47802d5270b904de39be25ac28fc913da34695afaa649e088556",
+        "motif": "d4773495d4557b91ebc2e7b3525953f4c0f428aee65131a7da0affb58f23d1ba",
+        "x": 0,
+        "base": 864,
+        "level": 0
+      },
+      {
+        "file": "out/city17/district-poor-roof-w2.png",
+        "crop": null,
+        "owner": "D-flank-0",
+        "layer": "roof",
+        "rect": [
+          0,
+          720,
+          96,
+          96
+        ],
+        "hash": "c277eb93491e69ef4676d8275ac6eeb42161958da1fabbcff22ca94d9c8c93f3",
+        "motif": "3141f4c8dc14310c5b24ade873d41e3c09cb1a140a9e87e1aa8d1b09a6cc97d9",
+        "x": 0,
+        "base": 864,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/district-rich-ground-w2.png",
+        "crop": null,
+        "owner": "D-flank-3",
+        "layer": "facade",
+        "rect": [
+          1104,
+          720,
+          96,
+          48
+        ],
+        "hash": "5a3ee6523407fc975a42649cf14335e76ceeeb3cb46fe8457c534cc7e9d85ce4",
+        "motif": "d4773495d4557b91ebc2e7b3525953f4c0f428aee65131a7da0affb58f23d1ba",
+        "x": 1104,
+        "base": 768,
+        "level": 0
+      },
+      {
+        "file": "out/city17/district-rich-storey-w2.png",
+        "crop": null,
+        "owner": "D-flank-3",
+        "layer": "facade",
+        "rect": [
+          1104,
+          672,
+          96,
+          48
+        ],
+        "hash": "9e7b51b36c793daabb3103523349c96025beb24b60a20ee07ba589801343cc10",
+        "motif": "a8d3d2863b824ca5092df36b5d635c33ac8450352bd2f5e1a7f5e7e8023bfae1",
+        "x": 1104,
+        "base": 768,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-rich-storey-w2.png",
+        "crop": null,
+        "owner": "D-flank-3",
+        "layer": "facade",
+        "rect": [
+          1104,
+          624,
+          96,
+          48
+        ],
+        "hash": "9e7b51b36c793daabb3103523349c96025beb24b60a20ee07ba589801343cc10",
+        "motif": "a8d3d2863b824ca5092df36b5d635c33ac8450352bd2f5e1a7f5e7e8023bfae1",
+        "x": 1104,
+        "base": 768,
+        "level": 2
+      },
+      {
+        "file": "out/city17/district-rich-roof-w2.png",
+        "crop": null,
+        "owner": "D-flank-3",
+        "layer": "roof",
+        "rect": [
+          1104,
+          528,
+          96,
+          96
+        ],
+        "hash": "6223a8b44c6a4d1619d9e47c1bf50e330708478409972a94b2efe53d9fbd153e",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 1104,
+        "base": 768,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/district-craft-ground-w2.png",
+        "crop": null,
+        "owner": "D-flank-4",
+        "layer": "facade",
+        "rect": [
+          1104,
+          1200,
+          96,
+          48
+        ],
+        "hash": "0f25a9a8e1741733629f3f0370fad1c264749e2d2ea58f98d7fc9493be07615e",
+        "motif": "26288f5c68cfaedf3e9c99194e5fb66ccf009a322597c385c355d98a31b7195b",
+        "x": 1104,
+        "base": 1248,
+        "level": 0
+      },
+      {
+        "file": "out/city17/district-craft-storey-w2.png",
+        "crop": null,
+        "owner": "D-flank-4",
+        "layer": "facade",
+        "rect": [
+          1104,
+          1152,
+          96,
+          48
+        ],
+        "hash": "a49b020b06d473605eb819a77fb06769ebb43139c13a6d7cecc3bf148080200f",
+        "motif": "063e6c61763028fdbede0e4c4f5f0c61c1a962199a87bc20adf446ab31d0d8fd",
+        "x": 1104,
+        "base": 1248,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-craft-roof-w2.png",
+        "crop": null,
+        "owner": "D-flank-4",
+        "layer": "roof",
+        "rect": [
+          1104,
+          1056,
+          96,
+          96
+        ],
+        "hash": "878c9f84e27c20e75e5d087c93453145ba34f720ed1fca443aef559553dec390",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 1104,
+        "base": 1248,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w2",
+        "crop": null,
+        "owner": "D-flank-5",
+        "layer": "wall",
+        "rect": [
+          0,
+          1296,
+          96,
+          48
+        ],
+        "hash": "e09aeefc6a5ecbba4729d71a8e8a5bf5084549444b704b5e35fd6fe67f0fee31",
+        "motif": "fd21214df3f631a4aac4dc3716628b7f95acf90086d35bd15583fdbcc715648f",
+        "x": 0,
+        "base": 1344,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w2",
+        "crop": null,
+        "owner": "D-flank-5",
+        "layer": "roof",
+        "rect": [
+          0,
+          1200,
+          96,
+          96
+        ],
+        "hash": "c66125ce9a621ce8e34d435ed3c8123847d5216d9b96e5b11f31f29b1b31ffdb",
+        "motif": "5846790c542518c8e067fda00469476679051e88335511c5e6cd4983b390a8bd",
+        "x": 0,
+        "base": 1344,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w2",
+        "crop": null,
+        "owner": "D-flank-8",
+        "layer": "wall",
+        "rect": [
+          0,
+          1824,
+          96,
+          48
+        ],
+        "hash": "e09aeefc6a5ecbba4729d71a8e8a5bf5084549444b704b5e35fd6fe67f0fee31",
+        "motif": "fd21214df3f631a4aac4dc3716628b7f95acf90086d35bd15583fdbcc715648f",
+        "x": 0,
+        "base": 1872,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w2",
+        "crop": null,
+        "owner": "D-flank-8",
+        "layer": "roof",
+        "rect": [
+          0,
+          1728,
+          96,
+          96
+        ],
+        "hash": "c66125ce9a621ce8e34d435ed3c8123847d5216d9b96e5b11f31f29b1b31ffdb",
+        "motif": "5846790c542518c8e067fda00469476679051e88335511c5e6cd4983b390a8bd",
+        "x": 0,
+        "base": 1872,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-work-w2-c0.png",
+        "crop": null,
+        "owner": "trade-smith",
+        "layer": "facade",
+        "rect": [
+          528,
+          816,
+          96,
+          48
+        ],
+        "hash": "2ac3fc4f76ba56cf4c9d671fc2867b3ec0c16512a5e28a0fea539824daeab217",
+        "motif": "ed54de628a276597afeb70747a63a80069a6abf923d44b112c64cb04eec2964e",
+        "x": 528,
+        "base": 864,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-right-w2.png",
+        "crop": null,
+        "owner": "trade-smith",
+        "layer": "facade",
+        "rect": [
+          528,
+          768,
+          96,
+          48
+        ],
+        "hash": "87bced0a33aff5c02ce481f05698921b6952d59e4ecece1457ee202839666a8d",
+        "motif": "990930126c8771d6d0f896824ffde82a16843dbe3b0de3a399e52a04573a3086",
+        "x": 528,
+        "base": 864,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-market-storey-w2.png",
+        "crop": null,
+        "owner": "trade-smith",
+        "layer": "facade",
+        "rect": [
+          528,
+          720,
+          96,
+          48
+        ],
+        "hash": "b977b6419960906408b4ab60fba66d27e39ca1f53fb33f451444f6abbbb67bc4",
+        "motif": "a5b6293d3feb72da48c4a8676a52983ade73ba03ea00bea8bf2e3f69dddd5cef",
+        "x": 528,
+        "base": 864,
+        "level": 2
+      },
+      {
+        "file": "out/city17/district-market-roof-w2.png",
+        "crop": null,
+        "owner": "trade-smith",
+        "layer": "roof",
+        "rect": [
+          528,
+          624,
+          96,
+          96
+        ],
+        "hash": "655e348a3be989a08b241da79fd540721652550c415ef1fe1a2d8416ee520e88",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 528,
+        "base": 864,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-w2-c0.png",
+        "crop": null,
+        "owner": "trade-baker",
+        "layer": "facade",
+        "rect": [
+          624,
+          816,
+          96,
+          48
+        ],
+        "hash": "34860c6e89b6f937e6b78fce3cfb03ad1b518e2d154a663b6eba102f8c591847",
+        "motif": "41f61d64d86ed63d720da43b6d6f139235b1ab8957d5784560d06c24c6e6417d",
+        "x": 624,
+        "base": 864,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "trade-baker",
+        "layer": "facade",
+        "rect": [
+          624,
+          768,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 624,
+        "base": 864,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-market-roof-v1-w2.png",
+        "crop": null,
+        "owner": "trade-baker",
+        "layer": "roof",
+        "rect": [
+          624,
+          672,
+          96,
+          96
+        ],
+        "hash": "f2de03eaa3d109251830ea9803375d6ea88ee09d44038a96373e7f75edb27288",
+        "motif": "1cf0533f050bef9c2fd755e2bdf89ecad49333b1566ecfa0f564c304bcdc58c9",
+        "x": 624,
+        "base": 864,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-v1-w2-c0.png",
+        "crop": null,
+        "owner": "trade-apothecary",
+        "layer": "facade",
+        "rect": [
+          720,
+          816,
+          96,
+          48
+        ],
+        "hash": "f5ee38fa0360241322c290d6499f36da3155f870c2b06f3bab6e95c7d44826ae",
+        "motif": "7ef90b4dc95981963cf9d379cf9922a2873500948a6c47f3d206ac35b3f7ceb1",
+        "x": 720,
+        "base": 864,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "trade-apothecary",
+        "layer": "facade",
+        "rect": [
+          720,
+          768,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 720,
+        "base": 864,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-market-storey-v2-w2.png",
+        "crop": null,
+        "owner": "trade-apothecary",
+        "layer": "facade",
+        "rect": [
+          720,
+          720,
+          96,
+          48
+        ],
+        "hash": "4911f9f178c425b3dad447eda9233cdd0a73a1ce19731cf685ae344fe048c6ca",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 720,
+        "base": 864,
+        "level": 2
+      },
+      {
+        "file": "out/city17/district-market-roof-v2-w2.png",
+        "crop": null,
+        "owner": "trade-apothecary",
+        "layer": "roof",
+        "rect": [
+          720,
+          576,
+          96,
+          144
+        ],
+        "hash": "ccf439070065ef57cc745d07356a07b2b19f53055a3d30ddc664aabbb7462e8c",
+        "motif": "f74136008d4a564c5b5d73610cb7642bd0784756cb6edf89878e9bae7fb96bf0",
+        "x": 720,
+        "base": 864,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-v2-w2-c0.png",
+        "crop": null,
+        "owner": "trade-cobbler",
+        "layer": "facade",
+        "rect": [
+          864,
+          816,
+          96,
+          48
+        ],
+        "hash": "6db3cfcddfa5a96d1207e618eeeef96c35fce0026a1d956bd8c5feb346d80701",
+        "motif": "4510e39d4895dd2cea0679daa4c555fec5494d54bed6be1300aaa22623122ab7",
+        "x": 864,
+        "base": 864,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-right-w2.png",
+        "crop": null,
+        "owner": "trade-cobbler",
+        "layer": "facade",
+        "rect": [
+          864,
+          768,
+          96,
+          48
+        ],
+        "hash": "87bced0a33aff5c02ce481f05698921b6952d59e4ecece1457ee202839666a8d",
+        "motif": "990930126c8771d6d0f896824ffde82a16843dbe3b0de3a399e52a04573a3086",
+        "x": 864,
+        "base": 864,
+        "level": 1
+      },
+      {
+        "file": "out/city17/storey-shuttered-c4-w2.png",
+        "crop": null,
+        "owner": "trade-cobbler",
+        "layer": "facade",
+        "rect": [
+          864,
+          720,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 864,
+        "base": 864,
+        "level": 2
+      },
+      {
+        "file": "out/city17/storey-oriel-w2-c0.png",
+        "crop": null,
+        "owner": "trade-cobbler",
+        "layer": "facade",
+        "rect": [
+          864,
+          672,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 864,
+        "base": 864,
+        "level": 3
+      },
+      {
+        "file": "out/city17/storey-recessed-c4-w2.png",
+        "crop": null,
+        "owner": "trade-cobbler",
+        "layer": "facade",
+        "rect": [
+          864,
+          624,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 864,
+        "base": 864,
+        "level": 4
+      },
+      {
+        "file": "out/city17/district-rich-roof-w2.png",
+        "crop": null,
+        "owner": "trade-cobbler",
+        "layer": "roof",
+        "rect": [
+          864,
+          528,
+          96,
+          96
+        ],
+        "hash": "6223a8b44c6a4d1619d9e47c1bf50e330708478409972a94b2efe53d9fbd153e",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 864,
+        "base": 864,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-w2-c0.png",
+        "crop": null,
+        "owner": "trade-inn",
+        "layer": "facade",
+        "rect": [
+          528,
+          1344,
+          96,
+          48
+        ],
+        "hash": "34860c6e89b6f937e6b78fce3cfb03ad1b518e2d154a663b6eba102f8c591847",
+        "motif": "41f61d64d86ed63d720da43b6d6f139235b1ab8957d5784560d06c24c6e6417d",
+        "x": 528,
+        "base": 1392,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "trade-inn",
+        "layer": "facade",
+        "rect": [
+          528,
+          1296,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 528,
+        "base": 1392,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-market-roof-v1-w2.png",
+        "crop": null,
+        "owner": "trade-inn",
+        "layer": "roof",
+        "rect": [
+          528,
+          1200,
+          96,
+          96
+        ],
+        "hash": "f2de03eaa3d109251830ea9803375d6ea88ee09d44038a96373e7f75edb27288",
+        "motif": "1cf0533f050bef9c2fd755e2bdf89ecad49333b1566ecfa0f564c304bcdc58c9",
+        "x": 528,
+        "base": 1392,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-v1-w2-c0.png",
+        "crop": null,
+        "owner": "trade-scribe",
+        "layer": "facade",
+        "rect": [
+          624,
+          1344,
+          96,
+          48
+        ],
+        "hash": "f5ee38fa0360241322c290d6499f36da3155f870c2b06f3bab6e95c7d44826ae",
+        "motif": "7ef90b4dc95981963cf9d379cf9922a2873500948a6c47f3d206ac35b3f7ceb1",
+        "x": 624,
+        "base": 1392,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "trade-scribe",
+        "layer": "facade",
+        "rect": [
+          624,
+          1296,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 624,
+        "base": 1392,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-market-storey-v2-w2.png",
+        "crop": null,
+        "owner": "trade-scribe",
+        "layer": "facade",
+        "rect": [
+          624,
+          1248,
+          96,
+          48
+        ],
+        "hash": "4911f9f178c425b3dad447eda9233cdd0a73a1ce19731cf685ae344fe048c6ca",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 624,
+        "base": 1392,
+        "level": 2
+      },
+      {
+        "file": "out/city17/district-market-roof-v2-w2.png",
+        "crop": null,
+        "owner": "trade-scribe",
+        "layer": "roof",
+        "rect": [
+          624,
+          1104,
+          96,
+          144
+        ],
+        "hash": "ccf439070065ef57cc745d07356a07b2b19f53055a3d30ddc664aabbb7462e8c",
+        "motif": "f74136008d4a564c5b5d73610cb7642bd0784756cb6edf89878e9bae7fb96bf0",
+        "x": 624,
+        "base": 1392,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-v2-w2-c0.png",
+        "crop": null,
+        "owner": "trade-tailor",
+        "layer": "facade",
+        "rect": [
+          720,
+          1344,
+          96,
+          48
+        ],
+        "hash": "6db3cfcddfa5a96d1207e618eeeef96c35fce0026a1d956bd8c5feb346d80701",
+        "motif": "4510e39d4895dd2cea0679daa4c555fec5494d54bed6be1300aaa22623122ab7",
+        "x": 720,
+        "base": 1392,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-right-w2.png",
+        "crop": null,
+        "owner": "trade-tailor",
+        "layer": "facade",
+        "rect": [
+          720,
+          1296,
+          96,
+          48
+        ],
+        "hash": "87bced0a33aff5c02ce481f05698921b6952d59e4ecece1457ee202839666a8d",
+        "motif": "990930126c8771d6d0f896824ffde82a16843dbe3b0de3a399e52a04573a3086",
+        "x": 720,
+        "base": 1392,
+        "level": 1
+      },
+      {
+        "file": "out/city17/district-market-roof-w2.png",
+        "crop": null,
+        "owner": "trade-tailor",
+        "layer": "roof",
+        "rect": [
+          720,
+          1200,
+          96,
+          96
+        ],
+        "hash": "655e348a3be989a08b241da79fd540721652550c415ef1fe1a2d8416ee520e88",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 720,
+        "base": 1392,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-work-w2-c0.png",
+        "crop": null,
+        "owner": "trade-butcher",
+        "layer": "facade",
+        "rect": [
+          864,
+          1344,
+          96,
+          48
+        ],
+        "hash": "2ac3fc4f76ba56cf4c9d671fc2867b3ec0c16512a5e28a0fea539824daeab217",
+        "motif": "ed54de628a276597afeb70747a63a80069a6abf923d44b112c64cb04eec2964e",
+        "x": 864,
+        "base": 1392,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-right-w2.png",
+        "crop": null,
+        "owner": "trade-butcher",
+        "layer": "facade",
+        "rect": [
+          864,
+          1296,
+          96,
+          48
+        ],
+        "hash": "87bced0a33aff5c02ce481f05698921b6952d59e4ecece1457ee202839666a8d",
+        "motif": "990930126c8771d6d0f896824ffde82a16843dbe3b0de3a399e52a04573a3086",
+        "x": 864,
+        "base": 1392,
+        "level": 1
+      },
+      {
+        "file": "out/city17/storey-shuttered-c4-w2.png",
+        "crop": null,
+        "owner": "trade-butcher",
+        "layer": "facade",
+        "rect": [
+          864,
+          1248,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 864,
+        "base": 1392,
+        "level": 2
+      },
+      {
+        "file": "out/city17/storey-oriel-w2-c0.png",
+        "crop": null,
+        "owner": "trade-butcher",
+        "layer": "facade",
+        "rect": [
+          864,
+          1200,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 864,
+        "base": 1392,
+        "level": 3
+      },
+      {
+        "file": "out/city17/storey-recessed-c4-w2.png",
+        "crop": null,
+        "owner": "trade-butcher",
+        "layer": "facade",
+        "rect": [
+          864,
+          1152,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 864,
+        "base": 1392,
+        "level": 4
+      },
+      {
+        "file": "out/city17/district-rich-roof-v1-w2.png",
+        "crop": null,
+        "owner": "trade-butcher",
+        "layer": "roof",
+        "rect": [
+          864,
+          1056,
+          96,
+          96
+        ],
+        "hash": "c1341ad193ab55e0df8bdb35ec8ae7fdfbc289042f96a0887a06a5e8224af7e0",
+        "motif": "1cf0533f050bef9c2fd755e2bdf89ecad49333b1566ecfa0f564c304bcdc58c9",
+        "x": 864,
+        "base": 1392,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/district-market-ground-w2.png",
+        "crop": null,
+        "owner": "south-house-0",
+        "layer": "facade",
+        "rect": [
+          528,
+          1872,
+          96,
+          48
+        ],
+        "hash": "c398e0c1480987c9a5389c6c8fe383de2ac60cd7505cee783df450a105a6b3e7",
+        "motif": "4510e39d4895dd2cea0679daa4c555fec5494d54bed6be1300aaa22623122ab7",
+        "x": 528,
+        "base": 1920,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-ridge-w2-c0.png",
+        "crop": null,
+        "owner": "south-house-0",
+        "layer": "roof",
+        "rect": [
+          528,
+          1776,
+          96,
+          96
+        ],
+        "hash": "655e348a3be989a08b241da79fd540721652550c415ef1fe1a2d8416ee520e88",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 528,
+        "base": 1920,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/inn-front.png",
+        "crop": null,
+        "owner": "south-house-1",
+        "layer": "facade",
+        "rect": [
+          624,
+          1872,
+          96,
+          48
+        ],
+        "hash": "da9cc8061214ee5e33652692cc8230fa6c6e343f47cee24a729790a0202f6aa0",
+        "motif": "10412961346a204cc0cb790fe344442e0e7b459d014c150e072b81509725a0ea",
+        "x": 624,
+        "base": 1920,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-flat-w2-c0.png",
+        "crop": null,
+        "owner": "south-house-1",
+        "layer": "roof",
+        "rect": [
+          624,
+          1776,
+          96,
+          96
+        ],
+        "hash": "752eb78aa69db2fea3501d44becdcad398cdc9cc49e8177506b9a84e6fa29c60",
+        "motif": "a82e593f8430f8dcf57b5fa6647e861c68d6481c93cd1140dc18cbba9e932914",
+        "x": 624,
+        "base": 1920,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/district-market-ground-v2-w2.png",
+        "crop": null,
+        "owner": "south-house-2",
+        "layer": "facade",
+        "rect": [
+          720,
+          1872,
+          96,
+          48
+        ],
+        "hash": "469719bd9eef748281884f437133533c6bca3ffa2ed3eecfd930e054116d0fa4",
+        "motif": "7ef90b4dc95981963cf9d379cf9922a2873500948a6c47f3d206ac35b3f7ceb1",
+        "x": 720,
+        "base": 1920,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-gable-w2-c0.png",
+        "crop": null,
+        "owner": "south-house-2",
+        "layer": "roof",
+        "rect": [
+          720,
+          1776,
+          96,
+          96
+        ],
+        "hash": "f2de03eaa3d109251830ea9803375d6ea88ee09d44038a96373e7f75edb27288",
+        "motif": "1cf0533f050bef9c2fd755e2bdf89ecad49333b1566ecfa0f564c304bcdc58c9",
+        "x": 720,
+        "base": 1920,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/district-rich-ground-w2.png",
+        "crop": null,
+        "owner": "south-house-3",
+        "layer": "facade",
+        "rect": [
+          864,
+          1872,
+          96,
+          48
+        ],
+        "hash": "5a3ee6523407fc975a42649cf14335e76ceeeb3cb46fe8457c534cc7e9d85ce4",
+        "motif": "d4773495d4557b91ebc2e7b3525953f4c0f428aee65131a7da0affb58f23d1ba",
+        "x": 864,
+        "base": 1920,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-recessed-c4-w2.png",
+        "crop": null,
+        "owner": "south-house-3",
+        "layer": "facade",
+        "rect": [
+          864,
+          1824,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 864,
+        "base": 1920,
+        "level": 1
+      },
+      {
+        "file": "out/city17/storey-shuttered-c4-w2.png",
+        "crop": null,
+        "owner": "south-house-3",
+        "layer": "facade",
+        "rect": [
+          864,
+          1776,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 864,
+        "base": 1920,
+        "level": 2
+      },
+      {
+        "file": "out/city17/storey-oriel-w2-c0.png",
+        "crop": null,
+        "owner": "south-house-3",
+        "layer": "facade",
+        "rect": [
+          864,
+          1728,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 864,
+        "base": 1920,
+        "level": 3
+      },
+      {
+        "file": "out/city17/storey-recessed-c4-w2.png",
+        "crop": null,
+        "owner": "south-house-3",
+        "layer": "facade",
+        "rect": [
+          864,
+          1680,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 864,
+        "base": 1920,
+        "level": 4
+      },
+      {
+        "file": "out/city17/district-rich-roof-w2.png",
+        "crop": null,
+        "owner": "south-house-3",
+        "layer": "roof",
+        "rect": [
+          864,
+          1584,
+          96,
+          96
+        ],
+        "hash": "6223a8b44c6a4d1619d9e47c1bf50e330708478409972a94b2efe53d9fbd153e",
+        "motif": "73afb0e4398aa5ab1aecacf5a7bf30cfd3a79b32d4546f49919b65c664d04176",
+        "x": 864,
+        "base": 1920,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-door-v1-w1-c0.png",
+        "crop": null,
+        "owner": "west-return",
+        "layer": "facade",
+        "rect": [
+          96,
+          864,
+          48,
+          48
+        ],
+        "hash": "43bca4011581dcddde420c2b5b22457633cda42a36ae60f3d54004931d7a15b1",
+        "motif": "78f22f7e81e340d795ff1c9bfdd7f08118410a8c9ec4af5938ea33434ae0b121",
+        "x": 96,
+        "base": 912,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-timber-w1-c0.png",
+        "crop": null,
+        "owner": "west-return",
+        "layer": "facade",
+        "rect": [
+          96,
+          816,
+          48,
+          48
+        ],
+        "hash": "114fa373d85ae27caba8d26b6b150c26376e8119ccfa8ee6683891d120d6d5dc",
+        "motif": "8fd57cc4cc60c9ecf3f3fd20251950503ac768f6aa16458849810736f6fcca53",
+        "x": 96,
+        "base": 912,
+        "level": 1
+      },
+      {
+        "file": "out/city17/roof-ridge-w1-c0.png",
+        "crop": null,
+        "owner": "west-return",
+        "layer": "roof",
+        "rect": [
+          96,
+          720,
+          48,
+          96
+        ],
+        "hash": "4d8f6f8ef08969c82c771e699fcd59eba129279876d79841d53869bba501c1a9",
+        "motif": "28da44f1c87000507f4a8a3786f417b3c464ff57b0d51a671ed654f42eb83237",
+        "x": 96,
+        "base": 912,
+        "level": "roof"
+      },
+      {
+        "file": "cathedral",
+        "crop": null,
+        "owner": "cathedral:192:1440",
+        "layer": "prop architecture",
+        "rect": [
+          192,
+          1008,
+          240,
+          432
+        ],
+        "hash": "5c099fbcb37abc2e68f4511cd0946ea23901574727cd8154d7d610c6f6ba910d",
+        "motif": "7a9f43d6505341116d00619e8410477e8f40011d65f40bcacebcd7774903f797",
+        "x": 192,
+        "base": 1440,
+        "level": "prop"
+      },
+      {
+        "file": "guildhall",
+        "crop": null,
+        "owner": "guildhall:240:912",
+        "layer": "prop architecture",
+        "rect": [
+          240,
+          512,
+          192,
+          400
+        ],
+        "hash": "495a653f4625bc32ded5a8b2f233ee620a5ab6cb46e6f8964e21e8dca58e6be2",
+        "motif": "6cb088bc0d2e03eb11ff283f09ec7730755cb23abfc67320c30630282f5dc967",
+        "x": 240,
+        "base": 912,
+        "level": "prop"
+      },
+      {
+        "file": "townhall-market",
+        "crop": null,
+        "owner": "townhall-market:0:1632",
+        "layer": "prop architecture",
+        "rect": [
+          0,
+          1488,
+          192,
+          144
+        ],
+        "hash": "15091f5680bf1e9afcd9474dc3346c6e0cc9d3f635b6cbea3aa62d39bf7cc665",
+        "motif": "b36fe247fba93c6c00b11919dc205f78a4eb224f284838ace9f7dfa3d2c8aeec",
+        "x": 0,
+        "base": 1632,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk-stair",
+        "crop": null,
+        "owner": "wall-walk-stair:784:432",
+        "layer": "prop architecture",
+        "rect": [
+          784,
+          288,
+          192,
+          144
+        ],
+        "hash": "ca2dad33d1e226ac50b2e27cdceded7838a3146d2896f0160875cd713ffd0aa5",
+        "motif": "74858e2a176a83863077edeea161d890da71701743622055d056b8aefb4cbf72",
+        "x": 784,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "review/r17-D-critic2-wall-walk-alternate.png",
+        "crop": null,
+        "owner": "wall-walk-alternate:692:432",
+        "layer": "prop architecture",
+        "rect": [
+          692,
+          288,
+          96,
+          144
+        ],
+        "hash": "a90e6f89f78512dc0e77698759696a0341e1f8276184ab9eee8fe479f3da9f35",
+        "motif": "93870326031dfd67a0fe6ae8968eeb33ff4ac1b41dc3855d621f03bbd02866a8",
+        "x": 692,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk",
+        "crop": null,
+        "owner": "wall-walk:596:432",
+        "layer": "prop architecture",
+        "rect": [
+          596,
+          288,
+          96,
+          144
+        ],
+        "hash": "c707646eeaad56aa2b1cf2992711323becb14052f17881f0f06c3721d716c3fb",
+        "motif": "090f67028d2e88ae444c96366930efd894513759320115d3842c3fe37d3ab85f",
+        "x": 596,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-tower",
+        "crop": null,
+        "owner": "wall-tower:516:432",
+        "layer": "prop architecture",
+        "rect": [
+          516,
+          192,
+          96,
+          240
+        ],
+        "hash": "5e1d384a187cc2429c554ece4601bd24625a151b37fc5239cf7d23eb33aa8abe",
+        "motif": "af895056d0c5ca27360c4d0b86812ce631218269cd15738aced66237331acb10",
+        "x": 516,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "review/r17-D-critic2-wall-walk-alternate.png",
+        "crop": null,
+        "owner": "wall-walk-alternate:430:432",
+        "layer": "prop architecture",
+        "rect": [
+          430,
+          288,
+          96,
+          144
+        ],
+        "hash": "a90e6f89f78512dc0e77698759696a0341e1f8276184ab9eee8fe479f3da9f35",
+        "motif": "93870326031dfd67a0fe6ae8968eeb33ff4ac1b41dc3855d621f03bbd02866a8",
+        "x": 430,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk",
+        "crop": null,
+        "owner": "wall-walk:334:432",
+        "layer": "prop architecture",
+        "rect": [
+          334,
+          288,
+          96,
+          144
+        ],
+        "hash": "c707646eeaad56aa2b1cf2992711323becb14052f17881f0f06c3721d716c3fb",
+        "motif": "090f67028d2e88ae444c96366930efd894513759320115d3842c3fe37d3ab85f",
+        "x": 334,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-tower",
+        "crop": null,
+        "owner": "wall-tower:254:432",
+        "layer": "prop architecture",
+        "rect": [
+          254,
+          192,
+          96,
+          240
+        ],
+        "hash": "5e1d384a187cc2429c554ece4601bd24625a151b37fc5239cf7d23eb33aa8abe",
+        "motif": "af895056d0c5ca27360c4d0b86812ce631218269cd15738aced66237331acb10",
+        "x": 254,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "review/r17-D-critic2-wall-walk-alternate.png",
+        "crop": null,
+        "owner": "wall-walk-alternate:168:432",
+        "layer": "prop architecture",
+        "rect": [
+          168,
+          288,
+          96,
+          144
+        ],
+        "hash": "a90e6f89f78512dc0e77698759696a0341e1f8276184ab9eee8fe479f3da9f35",
+        "motif": "93870326031dfd67a0fe6ae8968eeb33ff4ac1b41dc3855d621f03bbd02866a8",
+        "x": 168,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk",
+        "crop": null,
+        "owner": "wall-walk:72:432",
+        "layer": "prop architecture",
+        "rect": [
+          72,
+          288,
+          96,
+          144
+        ],
+        "hash": "c707646eeaad56aa2b1cf2992711323becb14052f17881f0f06c3721d716c3fb",
+        "motif": "090f67028d2e88ae444c96366930efd894513759320115d3842c3fe37d3ab85f",
+        "x": 72,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-tower",
+        "crop": null,
+        "owner": "wall-tower:-8:432",
+        "layer": "prop architecture",
+        "rect": [
+          -8,
+          192,
+          96,
+          240
+        ],
+        "hash": "5e1d384a187cc2429c554ece4601bd24625a151b37fc5239cf7d23eb33aa8abe",
+        "motif": "af895056d0c5ca27360c4d0b86812ce631218269cd15738aced66237331acb10",
+        "x": -8,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "review/r17-D-critic2-wall-walk-alternate.png",
+        "crop": null,
+        "owner": "wall-walk-alternate:-94:432",
+        "layer": "prop architecture",
+        "rect": [
+          -94,
+          288,
+          96,
+          144
+        ],
+        "hash": "a90e6f89f78512dc0e77698759696a0341e1f8276184ab9eee8fe479f3da9f35",
+        "motif": "93870326031dfd67a0fe6ae8968eeb33ff4ac1b41dc3855d621f03bbd02866a8",
+        "x": -94,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk",
+        "crop": null,
+        "owner": "wall-walk:-190:432",
+        "layer": "prop architecture",
+        "rect": [
+          -190,
+          288,
+          96,
+          144
+        ],
+        "hash": "c707646eeaad56aa2b1cf2992711323becb14052f17881f0f06c3721d716c3fb",
+        "motif": "090f67028d2e88ae444c96366930efd894513759320115d3842c3fe37d3ab85f",
+        "x": -190,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-tower",
+        "crop": null,
+        "owner": "wall-tower:-270:432",
+        "layer": "prop architecture",
+        "rect": [
+          -270,
+          192,
+          96,
+          240
+        ],
+        "hash": "5e1d384a187cc2429c554ece4601bd24625a151b37fc5239cf7d23eb33aa8abe",
+        "motif": "af895056d0c5ca27360c4d0b86812ce631218269cd15738aced66237331acb10",
+        "x": -270,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "gatehouse",
+        "crop": null,
+        "owner": "gatehouse:960:432",
+        "layer": "prop architecture",
+        "rect": [
+          960,
+          32,
+          144,
+          400
+        ],
+        "hash": "31d3a6b1032a1c0d9ec6d585348eb726adf459bba52a749e1ef21c060029de36",
+        "motif": "85d7d56d975ea7a9ecfbf4bfb65aa8403743c57e87cfa6f9c7ba4eaad53ac07b",
+        "x": 960,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "wall-walk",
+        "crop": null,
+        "owner": "wall-walk:1096:432",
+        "layer": "prop architecture",
+        "rect": [
+          1096,
+          288,
+          96,
+          144
+        ],
+        "hash": "c707646eeaad56aa2b1cf2992711323becb14052f17881f0f06c3721d716c3fb",
+        "motif": "090f67028d2e88ae444c96366930efd894513759320115d3842c3fe37d3ab85f",
+        "x": 1096,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "review/r17-D-critic2-wall-walk-alternate.png",
+        "crop": null,
+        "owner": "wall-walk-alternate:1192:432",
+        "layer": "prop architecture",
+        "rect": [
+          1192,
+          288,
+          96,
+          144
+        ],
+        "hash": "a90e6f89f78512dc0e77698759696a0341e1f8276184ab9eee8fe479f3da9f35",
+        "motif": "93870326031dfd67a0fe6ae8968eeb33ff4ac1b41dc3855d621f03bbd02866a8",
+        "x": 1192,
+        "base": 432,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:144:1056",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1032,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 144,
+        "base": 1056,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:192:1056",
+        "layer": "prop architecture",
+        "rect": [
+          192,
+          1032,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 192,
+        "base": 1056,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:240:1056",
+        "layer": "prop architecture",
+        "rect": [
+          240,
+          1032,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 240,
+        "base": 1056,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:288:1056",
+        "layer": "prop architecture",
+        "rect": [
+          288,
+          1032,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 288,
+        "base": 1056,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:336:1056",
+        "layer": "prop architecture",
+        "rect": [
+          336,
+          1032,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 336,
+        "base": 1056,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:384:1056",
+        "layer": "prop architecture",
+        "rect": [
+          384,
+          1032,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 384,
+        "base": 1056,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:144:1104",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1056,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 144,
+        "base": 1104,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:144:1152",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1104,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 144,
+        "base": 1152,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-c-c4",
+        "crop": null,
+        "owner": "fence-v-c-c4:144:1200",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1152,
+          24,
+          48
+        ],
+        "hash": "cd53d351f07ff8e74f846126db0793503676eaaf35798c1b1a0a2ddcc11b1e06",
+        "motif": "138e24a5e7080f12e91db36c5499798cacf3a3a28d9cd65b562bc15e2f120990",
+        "x": 144,
+        "base": 1200,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:144:1248",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1200,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 144,
+        "base": 1248,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:144:1296",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1248,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 144,
+        "base": 1296,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-c-c4",
+        "crop": null,
+        "owner": "fence-v-c-c4:144:1344",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1296,
+          24,
+          48
+        ],
+        "hash": "cd53d351f07ff8e74f846126db0793503676eaaf35798c1b1a0a2ddcc11b1e06",
+        "motif": "138e24a5e7080f12e91db36c5499798cacf3a3a28d9cd65b562bc15e2f120990",
+        "x": 144,
+        "base": 1344,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:144:1392",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1344,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 144,
+        "base": 1392,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:144:1440",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1392,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 144,
+        "base": 1440,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:432:1104",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1056,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 432,
+        "base": 1104,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:432:1152",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1104,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 432,
+        "base": 1152,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-c-c4",
+        "crop": null,
+        "owner": "fence-v-c-c4:432:1200",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1152,
+          24,
+          48
+        ],
+        "hash": "cd53d351f07ff8e74f846126db0793503676eaaf35798c1b1a0a2ddcc11b1e06",
+        "motif": "138e24a5e7080f12e91db36c5499798cacf3a3a28d9cd65b562bc15e2f120990",
+        "x": 432,
+        "base": 1200,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:432:1248",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1200,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 432,
+        "base": 1248,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:432:1296",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1248,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 432,
+        "base": 1296,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-c-c4",
+        "crop": null,
+        "owner": "fence-v-c-c4:432:1344",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1296,
+          24,
+          48
+        ],
+        "hash": "cd53d351f07ff8e74f846126db0793503676eaaf35798c1b1a0a2ddcc11b1e06",
+        "motif": "138e24a5e7080f12e91db36c5499798cacf3a3a28d9cd65b562bc15e2f120990",
+        "x": 432,
+        "base": 1344,
+        "level": "prop"
+      },
+      {
+        "file": "fence-1",
+        "crop": null,
+        "owner": "fence-1:432:1392",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1344,
+          24,
+          48
+        ],
+        "hash": "3d314f49e6974214d755f8a141f57d57773acbe2f595ba6941bd11f576ad510c",
+        "motif": "6870f395614022d80f43dcc555663020fbbbfb5e1d903864f1a3f83b0c1e5292",
+        "x": 432,
+        "base": 1392,
+        "level": "prop"
+      },
+      {
+        "file": "fence-v-b-c4",
+        "crop": null,
+        "owner": "fence-v-b-c4:432:1440",
+        "layer": "prop architecture",
+        "rect": [
+          432,
+          1392,
+          24,
+          48
+        ],
+        "hash": "ab5fd69e2e905fd3a0b61623b5f6b9b32b9b942552c75690868b53a90f0c835d",
+        "motif": "8444d52de68db86e8785f380dc91798ace181e1193b78f527a1c3031127eb148",
+        "x": 432,
+        "base": 1440,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:144:1468",
+        "layer": "prop architecture",
+        "rect": [
+          144,
+          1444,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 144,
+        "base": 1468,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:192:1468",
+        "layer": "prop architecture",
+        "rect": [
+          192,
+          1444,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 192,
+        "base": 1468,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:336:1468",
+        "layer": "prop architecture",
+        "rect": [
+          336,
+          1444,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 336,
+        "base": 1468,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:384:1468",
+        "layer": "prop architecture",
+        "rect": [
+          384,
+          1444,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 384,
+        "base": 1468,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:0:696",
+        "layer": "prop architecture",
+        "rect": [
+          0,
+          672,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 0,
+        "base": 696,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:48:696",
+        "layer": "prop architecture",
+        "rect": [
+          48,
+          672,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 48,
+        "base": 696,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:1104:504",
+        "layer": "prop architecture",
+        "rect": [
+          1104,
+          480,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 1104,
+        "base": 504,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:1152:504",
+        "layer": "prop architecture",
+        "rect": [
+          1152,
+          480,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 1152,
+        "base": 504,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:1104:1032",
+        "layer": "prop architecture",
+        "rect": [
+          1104,
+          1008,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 1104,
+        "base": 1032,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:1152:1032",
+        "layer": "prop architecture",
+        "rect": [
+          1152,
+          1008,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 1152,
+        "base": 1032,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:0:1176",
+        "layer": "prop architecture",
+        "rect": [
+          0,
+          1152,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 0,
+        "base": 1176,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:48:1176",
+        "layer": "prop architecture",
+        "rect": [
+          48,
+          1152,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 48,
+        "base": 1176,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:0:1704",
+        "layer": "prop architecture",
+        "rect": [
+          0,
+          1680,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 0,
+        "base": 1704,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:48:1704",
+        "layer": "prop architecture",
+        "rect": [
+          48,
+          1680,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 48,
+        "base": 1704,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:528:600",
+        "layer": "prop architecture",
+        "rect": [
+          528,
+          576,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 528,
+        "base": 600,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:576:600",
+        "layer": "prop architecture",
+        "rect": [
+          576,
+          576,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 576,
+        "base": 600,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:624:648",
+        "layer": "prop architecture",
+        "rect": [
+          624,
+          624,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 624,
+        "base": 648,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:672:648",
+        "layer": "prop architecture",
+        "rect": [
+          672,
+          624,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 672,
+        "base": 648,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:720:552",
+        "layer": "prop architecture",
+        "rect": [
+          720,
+          528,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 720,
+        "base": 552,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:768:552",
+        "layer": "prop architecture",
+        "rect": [
+          768,
+          528,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 768,
+        "base": 552,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:912:504",
+        "layer": "prop architecture",
+        "rect": [
+          912,
+          480,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 912,
+        "base": 504,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:528:1176",
+        "layer": "prop architecture",
+        "rect": [
+          528,
+          1152,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 528,
+        "base": 1176,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:576:1176",
+        "layer": "prop architecture",
+        "rect": [
+          576,
+          1152,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 576,
+        "base": 1176,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:624:1080",
+        "layer": "prop architecture",
+        "rect": [
+          624,
+          1056,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 624,
+        "base": 1080,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:672:1080",
+        "layer": "prop architecture",
+        "rect": [
+          672,
+          1056,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 672,
+        "base": 1080,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:720:1176",
+        "layer": "prop architecture",
+        "rect": [
+          720,
+          1152,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 720,
+        "base": 1176,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:768:1176",
+        "layer": "prop architecture",
+        "rect": [
+          768,
+          1152,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 768,
+        "base": 1176,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:864:1032",
+        "layer": "prop architecture",
+        "rect": [
+          864,
+          1008,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 864,
+        "base": 1032,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:912:1032",
+        "layer": "prop architecture",
+        "rect": [
+          912,
+          1008,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 912,
+        "base": 1032,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:528:1752",
+        "layer": "prop architecture",
+        "rect": [
+          528,
+          1728,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 528,
+        "base": 1752,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:576:1752",
+        "layer": "prop architecture",
+        "rect": [
+          576,
+          1728,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 576,
+        "base": 1752,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:624:1752",
+        "layer": "prop architecture",
+        "rect": [
+          624,
+          1728,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 624,
+        "base": 1752,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:672:1752",
+        "layer": "prop architecture",
+        "rect": [
+          672,
+          1728,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 672,
+        "base": 1752,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:720:1752",
+        "layer": "prop architecture",
+        "rect": [
+          720,
+          1728,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 720,
+        "base": 1752,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:768:1752",
+        "layer": "prop architecture",
+        "rect": [
+          768,
+          1728,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 768,
+        "base": 1752,
+        "level": "prop"
+      },
+      {
+        "file": "fence-0",
+        "crop": null,
+        "owner": "fence-0:864:1560",
+        "layer": "prop architecture",
+        "rect": [
+          864,
+          1536,
+          48,
+          24
+        ],
+        "hash": "450d62c545e55bec133e8d2d3056cccc014173fd35195ff01b83a98a343685b8",
+        "motif": "e96dc05713700685b807024c9bcf7f0f1d127c30340cfcef743e5bad1373593a",
+        "x": 864,
+        "base": 1560,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-b-c4",
+        "crop": null,
+        "owner": "fence-h-b-c4:912:1560",
+        "layer": "prop architecture",
+        "rect": [
+          912,
+          1536,
+          48,
+          24
+        ],
+        "hash": "f42789c5d85a8dadd72ef27c4c847987185ada0d89b184b72355fc7316f47593",
+        "motif": "70a86502136d74a5077312ab6c028db29b7536f6d7b5b19d9b22109e07d41b6c",
+        "x": 912,
+        "base": 1560,
+        "level": "prop"
+      },
+      {
+        "file": "fence-h-c-c4",
+        "crop": null,
+        "owner": "fence-h-c-c4:96:696",
+        "layer": "prop architecture",
+        "rect": [
+          96,
+          672,
+          48,
+          24
+        ],
+        "hash": "7a2115fb5b83c1f6625d56cb997761e0a81a73b69ab1b6e0a4b944e843b66aa3",
+        "motif": "b3ddaa9e06182944759c70c7f04be0a49dee6181fb0cedc3e0ca7b5a152837ae",
+        "x": 96,
+        "base": 696,
+        "level": "prop"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  },
+  "regression-height-test": {
+    "instances": 48,
+    "visible_instances": 48,
+    "windows": 20,
+    "chains": 24,
+    "adjacency_edges": [
+      [
+        "height-0",
+        "height-1"
+      ],
+      [
+        "height-2",
+        "height-3"
+      ],
+      [
+        "C-east-five",
+        "C-rear-one"
+      ],
+      [
+        "C-rear-one-west",
+        "C-west-five"
+      ]
+    ],
+    "inventory": [
+      {
+        "file": "out/city17/ground-shop-v1-w2-c0.png",
+        "crop": null,
+        "owner": "height-0",
+        "layer": "facade",
+        "rect": [
+          48,
+          384,
+          96,
+          48
+        ],
+        "hash": "f5ee38fa0360241322c290d6499f36da3155f870c2b06f3bab6e95c7d44826ae",
+        "motif": "7ef90b4dc95981963cf9d379cf9922a2873500948a6c47f3d206ac35b3f7ceb1",
+        "x": 48,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "height-0",
+        "layer": "facade",
+        "rect": [
+          48,
+          336,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 48,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "out/city17/storey-shuttered-c4-w2.png",
+        "crop": null,
+        "owner": "height-0",
+        "layer": "facade",
+        "rect": [
+          48,
+          288,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 48,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "out/city17/storey-oriel-w2-c0.png",
+        "crop": null,
+        "owner": "height-0",
+        "layer": "facade",
+        "rect": [
+          48,
+          240,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 48,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "out/city17/storey-recessed-c4-w2.png",
+        "crop": null,
+        "owner": "height-0",
+        "layer": "facade",
+        "rect": [
+          48,
+          192,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          4,
+          4,
+          44
+        ],
+        "owner": "height-0",
+        "layer": "firewall body",
+        "rect": [
+          140,
+          196,
+          4,
+          40
+        ],
+        "hash": "145a8a435426d6ea87bab419e7dad7a41f26901c4373e9abcc82b355bf9af587",
+        "motif": "269f3716a4eb86036178caee7de82954b5a7b7e41fcf2c6edec30f7e2a01a547",
+        "x": 140,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          4,
+          4,
+          8,
+          44
+        ],
+        "owner": "height-0",
+        "layer": "firewall body",
+        "rect": [
+          140,
+          236,
+          4,
+          40
+        ],
+        "hash": "0881259cc076b47bbc975a42440e3a3f48adc19ccfd659c82039e319eb3de112",
+        "motif": "5dab10e84fecfe767f7574edd265928344737c36014614984cae2c4d8393cffa",
+        "x": 140,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          8,
+          4,
+          12,
+          44
+        ],
+        "owner": "height-0",
+        "layer": "firewall body",
+        "rect": [
+          140,
+          276,
+          4,
+          40
+        ],
+        "hash": "a7c452679f1eb693f81d14e85b286223a447df7647d68c82090d86dcd64ede96",
+        "motif": "eb6dbe82ba508b486bfa256ba1502d27a430848d7aeed9ca43aa4f1305095762",
+        "x": 140,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          4,
+          4,
+          44
+        ],
+        "owner": "height-0",
+        "layer": "firewall body",
+        "rect": [
+          140,
+          316,
+          4,
+          40
+        ],
+        "hash": "145a8a435426d6ea87bab419e7dad7a41f26901c4373e9abcc82b355bf9af587",
+        "motif": "269f3716a4eb86036178caee7de82954b5a7b7e41fcf2c6edec30f7e2a01a547",
+        "x": 140,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          4,
+          4,
+          8,
+          28
+        ],
+        "owner": "height-0",
+        "layer": "firewall body",
+        "rect": [
+          140,
+          356,
+          4,
+          24
+        ],
+        "hash": "8e087e451f326ca3b19182619979639ce50cc107f9f6767ff758c2dcbcc3b1dd",
+        "motif": "c5f13c9dd04b0aae9e6a344f0d40ab3c332093d1ea5767eb50373673d4c54f31",
+        "x": 140,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "owner": "height-0",
+        "layer": "firewall coping",
+        "rect": [
+          140,
+          192,
+          4,
+          4
+        ],
+        "hash": "0e6554d97dcf5398710e1d62142260dd726f153a713a783e39c9eaf33d2a2b39",
+        "motif": "ca416a7824d066ab8b7b59ec14124c12eb463f8803520839ae70629d50d003a9",
+        "x": 140,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          44,
+          4,
+          48
+        ],
+        "owner": "height-0",
+        "layer": "firewall flashing",
+        "rect": [
+          140,
+          380,
+          4,
+          4
+        ],
+        "hash": "c16a6017bd992a6d3aa411c5838ad7b676d26576e156132744fea7b4c24cff65",
+        "motif": "dd9fe31bd76ce37fb4257295b1be068c9a5c9f4867ff9fc78e53a85691bf0430",
+        "x": 140,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-hip-w2-c0.png",
+        "crop": null,
+        "owner": "height-0",
+        "layer": "roof",
+        "rect": [
+          48,
+          48,
+          96,
+          144
+        ],
+        "hash": "ccf439070065ef57cc745d07356a07b2b19f53055a3d30ddc664aabbb7462e8c",
+        "motif": "f74136008d4a564c5b5d73610cb7642bd0784756cb6edf89878e9bae7fb96bf0",
+        "x": 48,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-door-v1-w1-c1.png",
+        "crop": null,
+        "owner": "height-1",
+        "layer": "facade",
+        "rect": [
+          144,
+          384,
+          48,
+          48
+        ],
+        "hash": "f258591f6d95a721f2329771b5e87945c710cfc7d39af006cdd65ebe7d76c407",
+        "motif": "3bb1b7230a88982b76b9079b2ecbda8289f51a8ae0a630446c37f545faf6fa0a",
+        "x": 144,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-hip-w1-c0.png",
+        "crop": null,
+        "owner": "height-1",
+        "layer": "roof",
+        "rect": [
+          144,
+          240,
+          48,
+          144
+        ],
+        "hash": "e727eeaf1d3f888075664d6740b5ebe8a30b65846f353f287f96d08c3191cdd0",
+        "motif": "1ac892b677813adbe9927bdaf5a1e88f54dfb89f8c354f5fa005a7a541c3fc19",
+        "x": 144,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-door-v2-w1-c0.png",
+        "crop": null,
+        "owner": "height-2",
+        "layer": "facade",
+        "rect": [
+          384,
+          384,
+          48,
+          48
+        ],
+        "hash": "2aebf66ad9f044502212ef91d89611e596b4778850ad1c1879e08dea58f9d4e9",
+        "motif": "053cb3695ad6522d3578d747c63194a195e4499f529512ee9c427b98a651b3ff",
+        "x": 384,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-hip-w1-c0.png",
+        "crop": null,
+        "owner": "height-2",
+        "layer": "roof",
+        "rect": [
+          384,
+          240,
+          48,
+          144
+        ],
+        "hash": "e727eeaf1d3f888075664d6740b5ebe8a30b65846f353f287f96d08c3191cdd0",
+        "motif": "1ac892b677813adbe9927bdaf5a1e88f54dfb89f8c354f5fa005a7a541c3fc19",
+        "x": 384,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "out/city17/ground-shop-v1-w2-c1.png",
+        "crop": null,
+        "owner": "height-3",
+        "layer": "facade",
+        "rect": [
+          432,
+          384,
+          96,
+          48
+        ],
+        "hash": "debb13f1c5837844618b08c56cc5855ca18031c90056490af94193c85f0802b3",
+        "motif": "7ef90b4dc95981963cf9d379cf9922a2873500948a6c47f3d206ac35b3f7ceb1",
+        "x": 432,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/storey-sign-bay-left-w2.png",
+        "crop": null,
+        "owner": "height-3",
+        "layer": "facade",
+        "rect": [
+          432,
+          336,
+          96,
+          48
+        ],
+        "hash": "db0bee5c0d0facdd8bc69875c42957cf989ab31f33a378f0b0a4afdc017d7013",
+        "motif": "8a3ad70173190b21e3d01bf07f1a621de2685edf27aa1c327ae86dd149a93bdc",
+        "x": 432,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "out/city17/storey-shuttered-c4-w2.png",
+        "crop": null,
+        "owner": "height-3",
+        "layer": "facade",
+        "rect": [
+          432,
+          288,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 432,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "out/city17/storey-oriel-w2-c0.png",
+        "crop": null,
+        "owner": "height-3",
+        "layer": "facade",
+        "rect": [
+          432,
+          240,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 432,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "out/city17/storey-recessed-c4-w2.png",
+        "crop": null,
+        "owner": "height-3",
+        "layer": "facade",
+        "rect": [
+          432,
+          192,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 432,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          4,
+          4,
+          44
+        ],
+        "owner": "height-3",
+        "layer": "firewall body",
+        "rect": [
+          432,
+          196,
+          4,
+          40
+        ],
+        "hash": "145a8a435426d6ea87bab419e7dad7a41f26901c4373e9abcc82b355bf9af587",
+        "motif": "269f3716a4eb86036178caee7de82954b5a7b7e41fcf2c6edec30f7e2a01a547",
+        "x": 432,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          4,
+          4,
+          8,
+          44
+        ],
+        "owner": "height-3",
+        "layer": "firewall body",
+        "rect": [
+          432,
+          236,
+          4,
+          40
+        ],
+        "hash": "0881259cc076b47bbc975a42440e3a3f48adc19ccfd659c82039e319eb3de112",
+        "motif": "5dab10e84fecfe767f7574edd265928344737c36014614984cae2c4d8393cffa",
+        "x": 432,
+        "base": 432,
+        "level": 3
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          8,
+          4,
+          12,
+          44
+        ],
+        "owner": "height-3",
+        "layer": "firewall body",
+        "rect": [
+          432,
+          276,
+          4,
+          40
+        ],
+        "hash": "a7c452679f1eb693f81d14e85b286223a447df7647d68c82090d86dcd64ede96",
+        "motif": "eb6dbe82ba508b486bfa256ba1502d27a430848d7aeed9ca43aa4f1305095762",
+        "x": 432,
+        "base": 432,
+        "level": 2
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          4,
+          4,
+          44
+        ],
+        "owner": "height-3",
+        "layer": "firewall body",
+        "rect": [
+          432,
+          316,
+          4,
+          40
+        ],
+        "hash": "145a8a435426d6ea87bab419e7dad7a41f26901c4373e9abcc82b355bf9af587",
+        "motif": "269f3716a4eb86036178caee7de82954b5a7b7e41fcf2c6edec30f7e2a01a547",
+        "x": 432,
+        "base": 432,
+        "level": 1
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          4,
+          4,
+          8,
+          28
+        ],
+        "owner": "height-3",
+        "layer": "firewall body",
+        "rect": [
+          432,
+          356,
+          4,
+          24
+        ],
+        "hash": "8e087e451f326ca3b19182619979639ce50cc107f9f6767ff758c2dcbcc3b1dd",
+        "motif": "c5f13c9dd04b0aae9e6a344f0d40ab3c332093d1ea5767eb50373673d4c54f31",
+        "x": 432,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "owner": "height-3",
+        "layer": "firewall coping",
+        "rect": [
+          432,
+          192,
+          4,
+          4
+        ],
+        "hash": "0e6554d97dcf5398710e1d62142260dd726f153a713a783e39c9eaf33d2a2b39",
+        "motif": "ca416a7824d066ab8b7b59ec14124c12eb463f8803520839ae70629d50d003a9",
+        "x": 432,
+        "base": 432,
+        "level": 4
+      },
+      {
+        "file": "out/city17/firewall-w0.png",
+        "crop": [
+          0,
+          44,
+          4,
+          48
+        ],
+        "owner": "height-3",
+        "layer": "firewall flashing",
+        "rect": [
+          432,
+          380,
+          4,
+          4
+        ],
+        "hash": "c16a6017bd992a6d3aa411c5838ad7b676d26576e156132744fea7b4c24cff65",
+        "motif": "dd9fe31bd76ce37fb4257295b1be068c9a5c9f4867ff9fc78e53a85691bf0430",
+        "x": 432,
+        "base": 432,
+        "level": 0
+      },
+      {
+        "file": "out/city17/roof-hip-w2-c0.png",
+        "crop": null,
+        "owner": "height-3",
+        "layer": "roof",
+        "rect": [
+          432,
+          48,
+          96,
+          144
+        ],
+        "hash": "ccf439070065ef57cc745d07356a07b2b19f53055a3d30ddc664aabbb7462e8c",
+        "motif": "f74136008d4a564c5b5d73610cb7642bd0784756cb6edf89878e9bae7fb96bf0",
+        "x": 432,
+        "base": 432,
+        "level": "roof"
+      },
+      {
+        "file": "side-ground-E",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "wall",
+        "rect": [
+          48,
+          768,
+          96,
+          48
+        ],
+        "hash": "0d3d96250626624dc611d436724b5f4fcff51254e65d609681661a4fb8c95dfc",
+        "motif": "055281cbd7479e968a702ef6d24059728ff5ea97ca1b5d17c113a749be0d56c0",
+        "x": 48,
+        "base": 816,
+        "level": 0
+      },
+      {
+        "file": "side-storey-E",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "wall",
+        "rect": [
+          48,
+          720,
+          96,
+          48
+        ],
+        "hash": "92dbc9e4ade4b2bb3d6a9ea453214ae3051af205fc455abc113f5d87e1d29fad",
+        "motif": "b5b1b2b0f770b2a95b3711e2cf5d1ad5b908887542f25388471f3d3392e78991",
+        "x": 48,
+        "base": 816,
+        "level": 1
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "wall",
+        "rect": [
+          48,
+          672,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 48,
+        "base": 816,
+        "level": 2
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "wall",
+        "rect": [
+          48,
+          624,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 48,
+        "base": 816,
+        "level": 3
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "wall",
+        "rect": [
+          48,
+          576,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 48,
+        "base": 816,
+        "level": 4
+      },
+      {
+        "file": "firewall-w0",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "C party wall",
+        "rect": [
+          128,
+          576,
+          16,
+          48
+        ],
+        "hash": "37148a3e2b090fc63d106bbc0f4e059d85e8fff84ee18072efe8df9bcbe6de15",
+        "motif": "b2bc38d751ffc735bf5b412ff65e621e374fb3fb7d9223bbb32123ece35a3bee",
+        "x": 128,
+        "base": 816,
+        "level": 4
+      },
+      {
+        "file": "side-roof-d2",
+        "crop": null,
+        "owner": "C-east-five",
+        "layer": "roof",
+        "rect": [
+          48,
+          480,
+          96,
+          96
+        ],
+        "hash": "8c9cf6c9d174cc2eaaa8a1344649ffa17bd51a3474c41546ac3dc8e4a18a3134",
+        "motif": "06d7c449a20a30eea9853a2cbd934bd820c128c215fc55f0bebf16899229a8a2",
+        "x": 48,
+        "base": 816,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w1",
+        "crop": null,
+        "owner": "C-rear-one",
+        "layer": "wall",
+        "rect": [
+          144,
+          768,
+          48,
+          48
+        ],
+        "hash": "d7615b0480167fff7e4490e4bed1b77cf76c8d1348d8359d554180f0cda5f87b",
+        "motif": "bab02b5b70a4048cc6a1d39bfc1b4e4f3cc1fa3a2651604ab9517fab7a58acb1",
+        "x": 144,
+        "base": 816,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w1",
+        "crop": null,
+        "owner": "C-rear-one",
+        "layer": "roof",
+        "rect": [
+          144,
+          672,
+          48,
+          96
+        ],
+        "hash": "78f9fb98aaae748ce0b43e16164b03fc7b536b79055e6aa6372f1aa91cf8e495",
+        "motif": "15d2944a14debbbea19c4af5bfb4e391c338cf6c3a42ddabbc5f20f7bd690311",
+        "x": 144,
+        "base": 816,
+        "level": "roof"
+      },
+      {
+        "file": "back-plain-ground-w1",
+        "crop": null,
+        "owner": "C-rear-one-west",
+        "layer": "wall",
+        "rect": [
+          384,
+          768,
+          48,
+          48
+        ],
+        "hash": "d7615b0480167fff7e4490e4bed1b77cf76c8d1348d8359d554180f0cda5f87b",
+        "motif": "bab02b5b70a4048cc6a1d39bfc1b4e4f3cc1fa3a2651604ab9517fab7a58acb1",
+        "x": 384,
+        "base": 816,
+        "level": 0
+      },
+      {
+        "file": "roof-back-w1",
+        "crop": null,
+        "owner": "C-rear-one-west",
+        "layer": "roof",
+        "rect": [
+          384,
+          672,
+          48,
+          96
+        ],
+        "hash": "78f9fb98aaae748ce0b43e16164b03fc7b536b79055e6aa6372f1aa91cf8e495",
+        "motif": "15d2944a14debbbea19c4af5bfb4e391c338cf6c3a42ddabbc5f20f7bd690311",
+        "x": 384,
+        "base": 816,
+        "level": "roof"
+      },
+      {
+        "file": "side-ground-W",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "wall",
+        "rect": [
+          432,
+          768,
+          96,
+          48
+        ],
+        "hash": "691401bf7debb59e53752e7d57f41ebc3c5dcda361f5ebc095de997d00faaba2",
+        "motif": "356e9bad0d951678ee7f2d7bfc6db6d7d885927e8008848334c5a76006379118",
+        "x": 432,
+        "base": 816,
+        "level": 0
+      },
+      {
+        "file": "side-storey-W",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "wall",
+        "rect": [
+          432,
+          720,
+          96,
+          48
+        ],
+        "hash": "66c0465a8687fab448dae2e8ca69c16cca72ec79004119dab1b1254e8bb23122",
+        "motif": "dbce3595739425795edb9d3d2ad98a923a2153aac13f65d5f59f100b740ce563",
+        "x": 432,
+        "base": 816,
+        "level": 1
+      },
+      {
+        "file": "storey-shuttered-c4-w2",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "wall",
+        "rect": [
+          432,
+          672,
+          96,
+          48
+        ],
+        "hash": "8cd640f2dc1a6e1ed317d1b4235a42a4180a218160a9656c25b2852c67cc6782",
+        "motif": "7be50443c84f3a39ba0189c68957c7f4438dd595b0554731c32c8af31c083bd9",
+        "x": 432,
+        "base": 816,
+        "level": 2
+      },
+      {
+        "file": "storey-oriel-w2-c0",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "wall",
+        "rect": [
+          432,
+          624,
+          96,
+          48
+        ],
+        "hash": "ef24a1339841828dd12d3eeb52da1600b024fc69fc4cc240e08c5e5465863f70",
+        "motif": "a51a20b615285202f868f0e2b07b3fec5bf0aec4c35d9b4a5fbcea9fa6f83f32",
+        "x": 432,
+        "base": 816,
+        "level": 3
+      },
+      {
+        "file": "storey-recessed-c4-w2",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "wall",
+        "rect": [
+          432,
+          576,
+          96,
+          48
+        ],
+        "hash": "1e7dbf037528c02b7339963846814ef7b66a5f7a612290009ac40fcad8899765",
+        "motif": "2c6b52914c0af3461d7a030572ab8c80be87bdc2425a13212ca2216002fb3259",
+        "x": 432,
+        "base": 816,
+        "level": 4
+      },
+      {
+        "file": "firewall-w0",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "C party wall",
+        "rect": [
+          432,
+          576,
+          16,
+          48
+        ],
+        "hash": "37148a3e2b090fc63d106bbc0f4e059d85e8fff84ee18072efe8df9bcbe6de15",
+        "motif": "b2bc38d751ffc735bf5b412ff65e621e374fb3fb7d9223bbb32123ece35a3bee",
+        "x": 432,
+        "base": 816,
+        "level": 4
+      },
+      {
+        "file": "side-roof-d2-W",
+        "crop": null,
+        "owner": "C-west-five",
+        "layer": "roof",
+        "rect": [
+          432,
+          480,
+          96,
+          96
+        ],
+        "hash": "661631346dec2a49bcdb8224d28d545f30cb25794f70a4fc484fa1d5d45923e9",
+        "motif": "b7a27e2e24da758ba0d8f690fdfa9dd4d2d997f583521b0a605aaf9184dccf6d",
+        "x": 432,
+        "base": 816,
+        "level": "roof"
+      }
+    ],
+    "window_motifs": [],
+    "failures": []
+  }
+}

@@ -1,3 +1,194 @@
+# Round 17 — Part C4: critic-r17C4-2 redraw
+
+Repaired the complete **48px north-access shop court**, both roof-adapter
+assemblies, the exposed sign/window repetitions, the south rear-yard sequence
+and the northern delivery-court boundaries. The expanded audit counts **369
+architectural instances**, **176 runs** and all **14 exposed sign-bay windows**;
+it rejects the old four-sign-bay and staggered 4/6-floor repetitions. The
+five-lot proof now uses six full floor arrangements twice each. Bent streets,
+alleys, L/trapezoid blocks, the gate-road inn, mixed heights and uneven towers
+remain. [Repair evidence](review/r17-C4-critic2-response.json).
+
+**Nine large built-in image-tool drawings on solid magenta**: two narrow-court
+candidates, two joined-roof candidates per hand, and three floor arrangements.
+B wins for the court and both roof hands. Same method: painted-landmark
+registration, palette lock, exact **8×8 RGBA mode**, native outline cleanup,
+hard alpha and zero transparent RGB. Code registers, reduces, cleans and
+composites drawn paint. The new 48×48 adapters reconstruct their complete
+receiving slopes pixel-for-pixel. [Prompts and sources](review/r17-C4-critic2-generation.json),
+[processing record](review/r17-C4-critic2-processing.json).
+
+Replaced **one failed production PNG**, added **ten supporting PNGs**, and
+changed `compose.py`. All **105 passing C4 PNGs**, the passing street crop and
+**2,519 protected files** remain byte-identical. No seasonal partners apply.
+Regenerated the final 1×/2×, native comparison, squint, 3× crops and C4 review
+sheets, including focused native before/after views and reference-house pairs.
+[Final city](review/r17-city-final.png), [review index](review/r17-C4-review.html).
+
+**480 acceptance checks + 39 focused repair checks pass**, including replay
+of **6,488,064 new mode samples**. Storey histogram for **46 modular buildings**:
+**1:7, 2:15, 3:17, 4:6, 5:1** — **15.22%** one-storey. Including six ancillary
+ranges/hall gives **1:13, 2:15, 3:17, 4:6, 5:1**, exactly **25%** of 52.
+[Focused verification](review/r17-C4-critic2-verification.json).
+BRIEF-17 retains precedence for sign scale, lot/gate/tower footprints and
+street variation; the coordinator's 40×30 cells require **1920×1440** native
+pixels. These are saved-art checks, not independent critic approval or runtime
+tests. Replay commands are in [the response](review/r17-C4-response.json).
+All authored changes are inside `art-drop/`; no branch change, commit or push.
+
+# Round 17 — Part C4: critic-r17C4-1 redraw
+
+Repaired all **22 failed PNGs**, added **23 supporting PNGs**, and kept all
+**61 passing C4 PNGs byte-identical**. The **23 large image-tool drawings**
+include three ridge and three junction candidates, plus two candidates each
+for the west-facing house and north-access shop court. Selected paint uses
+the established solid-magenta registration, exact **8×8 RGBA mode sampling**,
+fixed palette, native outline cleanup, hard alpha and zero transparent RGB.
+Code only registers, reduces, cleans and composites drawn material.
+[Prompts/sources](review/r17-C4-critic1-generation.json) and
+[processing/selection log](review/r17-C4-critic1-processing.json).
+
+Redrew fine angular roofs, integrated tower/side-wall masonry and actual
+valley/end adapters. The compositor now seals both gate contacts and the
+north corner seams, protects towers across different base rows, places
+complete directional side houses and north-access shop courts, exposes two
+bounded rear properties with covered service passages, and mounts the
+unchanged signs on clear beams. Bent streets, stepped blocks, the gate-road
+inn and uneven towers remain. BRIEF-17 still governs sign scale, lot and
+fortification footprints, eight-cell street variation and shadow ownership
+where panel suggestions conflict; [item responses](review/r17-C4-response.json).
+
+Regenerated the [final 1×](review/r17-city-final.png), exact 2×, comparison,
+greyscale, three 3× crops and [C4 review sheets](review/r17-C4-review.html).
+**446 acceptance checks + 36 critic-repair checks pass**, including the full
+perimeter, painted entry approaches, passing-file hashes and replay of
+**17,301,504 new mode samples**. The expanded repetition audit covers
+**355 architectural instances / 111 windows** with no failures; the original
+Part E regressions also pass. Storey histogram for **46 modular buildings**:
+**1:7, 2:15, 3:17, 4:6, 5:1** (15.22% one-storey). Including six ancillary
+sheds/ranges/hall gives **1:13, 2:15, 3:17, 4:6, 5:1**, exactly **25%** of 52.
+These are saved-art checks, not independent panel approval or runtime tests.
+[Acceptance results](review/r17-C4-verification.json),
+[critic-repair results](review/r17-C4-critic1-verification.json).
+
+# Round 17 — Part C4
+
+Reworked the **40×30-cell district** against all twenty cycle-4 fixes: bent
+streets follow stepped building edges, rear ranges reclaim surplus paving,
+a western wedge and merchant trapezoid meet T-junctions, and a southern L
+opens around the wall towers. The **96px gate road** turns west and then north
+into an **8×6-cell square with a 2×2 notch**. The hall owns its northwest edge;
+the guildhall, church with an east porch, inn wing and shop ranges frame the
+other edges. Six stalls, an unloading cart, fountain, cross and **27 visible
+people** give the square activity. Both former frontage lawns are paved,
+bounded courts. The inn has a served courtyard and **96×48 storage range**;
+the eastern loading recess leaves its western **48px** clear.
+
+[Final 1×](review/r17-city-final.png),
+[exact 2×](review/r17-city-final-2x.png),
+[today / Round 15 / C4 at literal 1×](review/r17-city-final-vs-r15-vs-today.png),
+[greyscale](review/r17-city-final-squint.png),
+[review index](review/r17-C4-review.html),
+[all twenty fixes and panel-2 responses](review/r17-C4-response.json).
+The final is **1920×1440**, enlarged to **3840×2880** with nearest-neighbour.
+The requested square, street and gate crops are exact **3×**. The coordinator's
+40×30 native cells supersede the earlier approximate 1200×900 canvas.
+
+**Drawing method:** **33 large built-in image-tool paintings on solid
+magenta**, including two hip candidates and two inn-front candidates; B is
+selected for each. Two complete ordinary-house paintings supplied the window
+families and trade fronts. Painted bounds and rows are registered to an **8×
+working canvas**, palette-locked without dithering, and reduced by exact RGBA
+mode of **all 64 samples per native pixel**, including transparent votes and
+lexicographic ties. Native one-pixel outline, alpha-island and colour-fleck
+cleanup follows; fixed attachment courses are transferred from the approved
+frontage. Code only registers, reduces, cleans, crops, palette-substitutes,
+wraps and composites drawings. It constructs no replacement architecture,
+stone shapes, noise or shadow silhouettes. Annotation marks occur only on
+review sheets. [Full prompts and sources](review/r17-C4-generation.json),
+[35 registered components and processing log](review/r17-C4-processing.json).
+
+The replay checks **11,517,952 mode samples** and records **14,022 native
+cleanup/course edits**. All **83 new PNG exports** have hard **0/255 alpha**,
+zero RGB beneath transparency, **2–35 opaque colours**, and no detached
+one/two-pixel alpha islands. The red/slate/brown roof partners preserve the
+same alpha pixel-for-pixel. No seasonal partners are requested in C4.
+[Export sizes and hashes](review/r17-C4-files.json).
+
+- Ordinary **96×48** recessed/shuttered floors and baker/apothecary/smith
+  grounds, with native **48×48** bay crops; a new **96×48 inn front**.
+  Complete two-storey houses are shown beside `fantasy-house-2` at 1×/4×.
+- New w1–w3 gable/ridge/hip caps, including the **96×144 hip** and **48×144
+  companion**; native back/dormer partners and material variants. One
+  **96×48 junction** owns the rear-eave/front-hip contact at **(336,384)**;
+  **48×48** valley/end adapters preserve the painted endpoints.
+- Left/right **48×48 receiving faces**, **8×48 party strips**, and native
+  flashing placed at each actual lower-neighbour eave. Existing separately
+  lit side and rear assemblies remain available, with access proofs.
+- Three separately drawn **96×48 wall-walk tops** with common endpoints,
+  composited curtain/tower/side variants, a **48×48 gate connector**, and
+  gate portal, overhead and support exports. Equal-base curtains now draw
+  before towers. South towers sit at **x=432/816/1584**; north gaps are
+  **7 / 9 / 6 / 9 / 7 cells** and there is one northwest tower.
+- An east church porch, **144×36 drawn hall shade**, eight redrawn bracketed
+  trade signs, stable/lean-to, workshop marker and four native-size activity
+  poses. Hall and threshold shade use **30%** darkness in the composition.
+  Two **96×96** paving partners are palette-only versions of approved cobbles.
+
+**Measurements and QC:** **365 checks pass**. The audit counts individual
+floor/roof instances along stepped frontages, equal-base rows, vertical
+stacks and perimeter chains. It compares RGBA, palette-independent motifs
+and comparable visible paint; recolours, aliases and hidden-only edits do
+not supply variation. The city checks **233 instances / 149 five-piece
+windows**, with no repetition failures. The original Part E rear-cap and
+eight-forced-shopfront defects are deliberately reintroduced in negative
+checks and are detected. L/T/dead-end, market and height-test scenes pass
+the retained entrance and repetition checks.
+
+| Storeys | 1 | 2 | 3 | 4 | 5 |
+|---|---:|---:|---:|---:|---:|
+| Modular residential, trade and rear buildings | 7 | 16 | 15 | 6 | 2 |
+
+There are **46 modular buildings**, with **15.22%** at one storey. Counting
+the four separate lean-tos, stable range and open market hall as additional
+one-storey buildings gives **52 buildings**, **13 / 16 / 15 / 6 / 2**, and
+**25.00%** at one storey. Church, guildhall and defensive towers are recorded
+separately as landmarks, not house stacks. Attached square shop arcades are
+parts of their owning properties. The low southern workshop exposes a rear
+yard beside its taller neighbour, with its shed against the rear boundary.
+
+Every declared public route and usable entrance passes the saved-paint
+clearance check; all main reaches are **96px**, side routes **48px**, and rear
+lanes **24px**. Collinear road segments are merged before junctions and real
+width changes are measured: the longest unchanged reach is **384px**, eight
+cells. The gate's lower opening is **96px**, the courtyard strips **48px**.
+Normal/reveal proofs show people and a cart beneath the gate while preserving
+supports; tower overhangs are distinguished from ground footprints. Signs
+remain inside their lots and above ground-floor doors.
+
+Every new export has a **1× and nearest-neighbour 4×** review sheet. All new
+and reused ground bases have literal **3×3 repeats at 1×/4×**. Further proofs
+show five staggered lots, five wall sections with a tower offset by **48px**,
+five-floor stacks, both tall/low orientations, seven-cell roof volumes,
+self/unlike seams, side/rear access, reference comparisons and greyscale.
+[Verification details](review/r17-C4-verification.json).
+**2,413 earlier production files remain byte-identical**; only `compose.py`
+changes among existing production files. All new paint lives in `out/city17/`.
+
+BRIEF-17 wins where panels conflict: signs retain the approximately doubled
+Round-15 **64×72 assembly** rather than the proposed small caps; the gate
+remains **3×4 cells**, towers **2×3**, building lots **1–2 cells** plus yards,
+compulsory street variation remains, and overlays/shadows keep their owning
+lot bounds. C4's latest **8×6** core supersedes panel-2's preferred 10×8.
+This is saved-art verification, not runtime pathfinding/collision validation
+or a new independent panel approval. Earlier reviews are preserved.
+
+Replay, in order: `python -B art-drop/review/r17-C4-process.py`,
+`python -B art-drop/out/city17/compose.py --part C4`,
+`python -B art-drop/review/r17-C4-review.py`,
+`python -B art-drop/review/r17-C4-verify.py`.
+All authored changes are inside `art-drop/`; no branch change, commit or push.
+
 # Round 17 — Part C3: critic-r17C3-1 redraw
 
 Replaced the three failed hip exports with **96×144 caps**, plus a separate

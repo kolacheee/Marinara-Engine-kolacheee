@@ -1,0 +1,16 @@
+{
+  "passed": 446,
+  "failed": 0,
+  "mode_samples": 11517952,
+  "exports": 106,
+  "buildings": 46,
+  "storeys": {
+    "3": 17,
+    "2": 15,
+    "1": 7,
+    "4": 6,
+    "5": 1
+  },
+  "single_storey_percent": 15.217391304347826,
+  "actors": 27
+}

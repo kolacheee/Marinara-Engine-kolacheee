@@ -1,0 +1,201 @@
+{
+  "passed": 39,
+  "failed": 0,
+  "mode_samples": 6488064,
+  "source_drawings": 9,
+  "exports": 11,
+  "passing_pngs_preserved": 105,
+  "storeys": {
+    "3": 17,
+    "2": 15,
+    "1": 7,
+    "4": 6,
+    "5": 1
+  },
+  "inclusive_storeys": {
+    "3": 17,
+    "2": 15,
+    "1": 13,
+    "4": 6,
+    "5": 1
+  },
+  "all_instance_audit": {
+    "instances": 369,
+    "windows": 176,
+    "exposed_window_bays": 14,
+    "failures": 0
+  },
+  "checks": [
+    {
+      "name": "only failed native PNG and composer changed",
+      "passed": true,
+      "changed": [
+        "art-drop/out/city17/compose.py",
+        "art-drop/out/city17/north-shop-court-c4-w1.png"
+      ],
+      "protected": 2519
+    },
+    {
+      "name": "all105 passing native C4 PNGs identical",
+      "passed": true,
+      "count": 105
+    },
+    {
+      "name": "passing street crop byte identical",
+      "passed": true
+    },
+    {
+      "name": "critic2-narrow-a exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-narrow-a recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-narrow-b exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-narrow-b recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-left-a exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-left-a recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-left-b exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-left-b recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-right-a exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-right-a recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-right-b exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-roof-right-b recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-floor-a exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-floor-a recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-floor-b exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-floor-b recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "critic2-floor-c exact64-vote mode and source",
+      "passed": true
+    },
+    {
+      "name": "critic2-floor-c recorded cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "floor a is registered drawing plus invariant courses",
+      "passed": true
+    },
+    {
+      "name": "floor b is registered drawing plus invariant courses",
+      "passed": true
+    },
+    {
+      "name": "floor c is registered drawing plus invariant courses",
+      "passed": true
+    },
+    {
+      "name": "left adapter reconstructs continuous ridge/course/eave pixels",
+      "passed": true
+    },
+    {
+      "name": "right adapter reconstructs continuous ridge/course/eave pixels",
+      "passed": true
+    },
+    {
+      "name": "narrow court complete drawing with preserved roof contact",
+      "passed": true
+    },
+    {
+      "name": "sign mount unchanged and exposed window actually different",
+      "passed": true
+    },
+    {
+      "name": "all14 sign-bay floors and exposed windows inventoried",
+      "passed": true,
+      "actual": 14,
+      "reported": 14,
+      "window_motifs": 14
+    },
+    {
+      "name": "final all-floor and exposed-window repetition",
+      "passed": true,
+      "instances": 369,
+      "windows": 176
+    },
+    {
+      "name": "old four sign bays rejected as floors AND visible windows",
+      "passed": true
+    },
+    {
+      "name": "all levels of five touching lots pass",
+      "passed": true
+    },
+    {
+      "name": "old staggered proof rejected for four recessed and six shuttered panels",
+      "passed": true
+    },
+    {
+      "name": "geometric frontages independent of owner labels",
+      "passed": true
+    },
+    {
+      "name": "all mounted signs stay inside lots above doors",
+      "passed": true,
+      "count": 7
+    },
+    {
+      "name": "south yard exposes real ground behind front roof",
+      "passed": true,
+      "uncovered_pixels": 1535,
+      "total": 2304
+    },
+    {
+      "name": "rear door and service mouth reach exposed yard",
+      "passed": true
+    },
+    {
+      "name": "north court bounded and detached guild fence removed",
+      "passed": true
+    },
+    {
+      "name": "full acceptance suite passes",
+      "passed": true,
+      "passed_checks": 480
+    }
+  ]
+}

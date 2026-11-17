@@ -1,0 +1,332 @@
+[
+  {
+    "id": "house-a",
+    "source": "r17-C4-source-house-a.png",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-49ac04e6-fa4a-4c76-8831-264ca1592f75.png",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Use case: stylized-concept. Draw one modular medieval town house for a native pixel-art RPG, on perfectly solid #FF00FF magenta. Reference is the supplied fantasy-house-2, matching its high three-quarter overhead view, big visible roof plane, warm plaster, subdued brown timbers and gray stone plinth, upper-left light, crisp dark outlines. This is a production sprite to reduce to exactly 96 by 240 pixels. Draw enlarged 6x or greater with discrete pixel clusters; no blur or noise.\nComposition: a complete rectangular two-cell attached house. Its full-width roof occupies top 144 native pixels, upper storey next 48, ground shop next 48. NO ground outside the house. One readable lengthwise roof ridge, broad muted terracotta angular tiles approximately 6–8 native pixels wide and 3–4 high, three main roof values, little internal black, single near eave and 4px eave shadow. A modest 10px shaded gable return on RIGHT, no isometric diamond. Upper storey: TWO deeply recessed 22px square windows with open wooden shutters, lit 1px sill and 2px shadow, substantial beams with lit top edge, no ornamental hairline panel outlines. Ground: bakery shop with broad LEFT bread tray under muted wine-red awning, dominant RIGHT 22px dark door, brass lantern and 5px lit stone doorstep; plinth has a visible 5px top. Architecture fills the width edge to edge to join neighbours. Calm detail equal to the reference, not painterly. No signs, text, labels, halo, detached specks, grass, rounded corners or extra floors. Exactly one house centered with magenta margin."
+  },
+  {
+    "id": "house-b",
+    "source": "r17-C4-source-house-b.png",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-2b1df1b2-83f9-4760-bcc3-7543ec61ad36.png",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Draw one enlarged modular medieval townhouse sprite, solid pure magenta #FF00FF background, for native 96x240 pixels. High 3/4 overhead RPG view and pixel clusters matching fantasy-house-2. No text or labels. Single dark native-pixel exterior contour. Upper-left lighting, warm muted plaster, deep brown beams, gray-brown plinth, muted reddish roof. SAME requested geometry: 96x144 cap then 96x48 upper floor then 96x48 ground floor. Clear horizontal attachment beams. Whole house width rectangular and joins side-to-side. Narrow shaded RIGHT gable return, visible sill tops, 4px eave recess. Upper-floor family B: two broad CLOSED wooden shutter pairs, one partly open, with deep sill shadow; omit the many panel borders. Ground floor variant B: LEFT 24px enterable door, 5px lit step and lantern; broad RIGHT apothecary shelf with only three large green jars under dark muted green awning, different door and support positions than a bakery. Roof has one coherent ridge, flat ANGULAR tile clusters 6-8 native px by3-4, not orange shiny beads. Large simple material masses, no texture noise, specks, hazy light or gradients. One whole house centered, magenta surround."
+  },
+  {
+    "id": "shop-c",
+    "source": "r17-C4-source-shop-c.png",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-7e7c7a04-14d3-465b-a9b5-8550434cb188.png",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Production asset: one medieval smith shop GROUND FLOOR module, native 96x48, rendered large, solid #FF00FF background. Matching the viewed fantasy-house-2 high 3/4 RPG pixel art. Exact 2:1 rectangular facade, edge-to-edge brown load-bearing posts, gray-brown stonework with visible plinth TOP and strong single dark outer contour. A central 24px enterable timber door with lantern and 5px lit doorstep; to LEFT a broad recessed coal forge with one quiet warm orange hearth; to RIGHT a narrow open work bay with ONE large hammer and iron horseshoe. No awning, no roof, no upper floor, no sign, no text. Timber beam top shows lit upper face and deep 4px undercut; stone side return on right occupies8px. Top-left light, calm connected colour clusters, subdued brown gray warm cream palette, no hairline brick texture or grain, no loose specks, no blur, no rounded corners. One flat full module with horizontal upper and lower attachment edges. Draw as crisp enlarged pixel art, 96x48 equivalent."
+  },
+  {
+    "id": "roof-hip-a",
+    "source": "r17-C4-source-roof-hip-a.png",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-6dee2fe7-ff41-46e8-adf8-22234d8527b0.png",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "One production pixel-art medieval roof cap, NO building walls, native width96 height144, draw enlarged on uniform pure magenta. High 3/4 top-down town-game projection, north at top, front eave horizontal at bottom, NOT isometric. Roof is a deep rectangular rowhouse HIP: fills the full rectangular 2-cell-wide 3-cell-deep area, front hip triangular plane in bottom third; straight north-south ridge near center extending from back edge to hip point. Broad lit left roof slope, darker right slope, front hip intermediate; one near eave, 3px recessed wood under eave. Flat muted dusty red-brown clay tiles in coherent angular overlapping CLUSTERS, approx6-8 native pixels across and3-4 tall (about14 tiles across, about32 visible courses), no black outlines between every tile, THREE main values with sparse connected highlights. Straight square boundary edges ready to butt to neighbours, dark1px outer contour. Upper-left light. NO chimney, dormer, moss, flecks, texture noise, gleam, gradient, blur, rounded/scalloped tile beads, separate roof pieces, extra ridges, labels or text. Draw a single roof nearly filling portrait canvas with magenta margin. Must have the big overhead roof plane of fantasy-house-2 but modular flat sided rectangle."
+  },
+  {
+    "id": "roof-hip-b",
+    "source": "r17-C4-source-roof-hip-b.png",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-f134a78e-7221-4c67-bc58-d26db927c898.png",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Draw ONE roof cap for a pixel-art RPG, large on solid #FF00FF magenta, no labels. Native96x144. A rectangular deep hipped terracotta roof in high 3/4 overhead view: centered north-south ridge along upper TWO THIRDS, front hip triangle occupies bottom third, one straight horizontal front eave with thick shaded wooden fascia. Fills a square-grid rectangle, no rounded corners. Light top-left, distinct lit left slope and shaded right slope, quiet dusty brick-red and brown. All tiles angular flat clusters, approximately FOURTEEN tiles across entire width and THIRTY-SIX rows from back to front; tile size6-8x3-4 at native. Three main values, no black internal joints, sparse connected highlights only. Aim calm broad forms not orange pattern noise. One1px dark external contour. No chimney or dormer. Not a top-down floor texture: clearly two sloping planes and a front hip, receiving eave shadow. No wall or ground, no embellishments. Rectangle about2:3 aspect."
+  },
+  {
+    "id": "roof-w1",
+    "source": "r17-C4-source-roof-w1.png",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-bd1f6b48-92b1-46dd-9749-ab35a5d71adf.png",
+    "size": [
+      48,
+      144
+    ],
+    "prompt": "Draw ONE narrow medieval roof cap sprite native48x144 pixels, enlarged portrait rectangle on solid magenta #FF00FF. Top-down high3/4 RPG view. A slender one-cell frontage, three-cell depth GABLED roof with north-south ridge, lit left plane, darker right plane, near eave straight horizontal at bottom and visible tiny triangular wood gable end under near ridge. Quiet dusty terracotta brown roof with angular small tiles: about SEVEN tiles across full width, about36 courses vertically, matching physical tile6-8x3-4 native size. Use three main matte values with restrained highlights, dark external1px outline, no strong dark tile joints, no individual grain. Fills rectangular canvas; single ridge, no dormer chimney walls grass text. All straight square grid edges, not isometric. Top-left light. Keep magenta margin."
+  },
+  {
+    "id": "roof-w3",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "One production modular pixel-art roof native144x96, enlarged landscape on solid pure magenta. High3/4 RPG overhead view, broad THREE-cell-wide two-cell-deep pitched roof. Horizontal ridge near TOP, single broad slope toward viewer, small shaded right hip, one near eave with3px deep shadow and wood beam; no walls. Match dusty muted red-brown clay roof family: approximately22 angular flat tiles across and24 courses deep, tiles6-8 by3-4 at native, three main values, sparse restrained connected highlights. No orange flecks, black grid joints, rounded bead ends, moss, dormers, chimney. Sharp1px external dark outline, top-left light. Square rectangular side-to-side boundaries, no rounded corners. One coherent roof, not a sheet, no text.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-76cbab44-7b63-4ff0-b1aa-20b82d6ba792.png",
+    "source": "r17-C4-source-roof-w3.png"
+  },
+  {
+    "id": "wall-top-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One modular medieval city-wall parapet/walk top native96x48, enlarged pixel-art game sprite on pure #FF00FF magenta. High3/4 overhead view matching gray-brown limestone fantasy town walls. Rectangular piece two cells wide: crenellated parapet rear upper edge, walkway visible from above in middle, heavy front masonry lower half with corbels casting hard contact shadows. Variant A: three wide square merlons with flat pale caps, narrow central arrow slit below, plain slab walk. Light top-left, dark east edges, narrow highlights, subdued stone beige-gray with3 main values. Single dark1px exterior contour, little brick noise. Flat horizontal left/right join endpoints at same level, square corners. No towers, flags, vegetation, floor outside tile, text or labels. Art fills the rectangle apart from crenel notches.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-c745e2ec-8f64-4c5c-9c72-63bed6ad5860.png",
+    "source": "r17-C4-source-wall-top-a.png"
+  },
+  {
+    "id": "wall-top-b",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One modular medieval city-wall parapet/walk top native96x48, enlarged pixel-art game sprite on pure #FF00FF magenta. High3/4 overhead view matching gray-brown limestone fantasy town walls. Rectangular two-cell piece. Variant B structurally different: FOUR narrow square merlons, recessed stair-access hatch at right third of visible walkway, paired stone corbel supports below. Lower half is solid matching masonry with one plain repaired large ashlar block. Top-left light with shaded east edges, quiet3-value gray-beige stone,1px dark exterior contour. Flat horizontal left/right join endpoints, identical height across both edges, square corners. No standalone tower, flags, ground outside, words, rounded edges or texture noise.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-96ed580c-0767-4c14-a5f3-c66cd6c57e2b.png",
+    "source": "r17-C4-source-wall-top-b.png"
+  },
+  {
+    "id": "wall-top-c",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One modular medieval city-wall parapet/walk top native96x48, enlarged pixel-art game sprite on solid magenta #FF00FF. High3/4 overhead view matching gray-brown limestone town walls. A2:1 rectangular horizontal module with THREE square merlons but CENTER one is twice as broad, with a narrow recessed archers slit. Wide worn stone slabs on visible wall-walk, lower half solid masonry with TWO broad brackets and small closed timber access door left of center. Calm materials with3 principal muted beige-gray values and dark brown door. Single native1px dark external outline. Top-left light and shaded east faces. Straight square left and right attachment ends, level front course, no rounded edges. No standalone tower, ground outside, people, flags, words, grain or noise.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-8e24bd4e-1acf-4c97-a1a5-4aa1c65f0a7d.png",
+    "source": "r17-C4-source-wall-top-c.png"
+  },
+  {
+    "id": "gate-connector",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "One masonry connector for a medieval city wall, native48x48 square, rendered large crisp pixel-art on magenta. Full square wall block, high3/4 overhead view: gray-brown stone, upper8px is visible wall-walk top with flat coping, right8px is a shaded return, remainder solid masonry in6x3px ashlar blocks with restrained joints. Full-height left edge fits against a gate pier, full-height right edge joins curtain. ONE1px dark exterior contour, bright upper-left coping edge, muted stone. No merlons on this low connector. Square edges, no holes, no ground, no inscriptions, no isolated flecks, no gradients.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-18e0a464-0a8d-470e-8102-dba3ab737a68.png",
+    "source": "r17-C4-source-gate-connector.png"
+  },
+  {
+    "id": "gate-portal-a",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Draw one medieval gatehouse LOWER PORTAL only, native144x96 pixels enlarged on pure magenta. High3/4 overhead fantasy pixel art, gray-brown limestone, upper-left light. Horizontal architectural module144 wide96 high: LEFT stone jamb exactly24 native pixels wide, RIGHT jamb24px, central opening96px clear at ground. Shallow stone segmental arch across top with visible4-6px DARK soffit, iron groove and RAISED portcullis showing only small teeth along very top of opening. Open wooden leaves folded tightly into recessed jambs, hinges visible. Central lower96px must be pure magenta transparent-through area, not ground or a door, for paving to continue beneath. Deep jamb returns and narrow dark inner contour. Upper-left lit coping, no yellow glow. No towers or walls above, no words, no extra arches, crisp square outer boundary, one dark1px contour. Draw arch/support geometry convincingly, calm ashlar clusters no specks. Opening has square vertical sides and low arch at top only.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-acdab652-e6d7-4213-8e33-a380f48bbced.png",
+    "source": "r17-C4-source-gate-portal-a.png"
+  },
+  {
+    "id": "inn-front",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw one medieval inn ground-floor facade module, native96x48, enlarged pixel art on solid #FF00FF magenta. High3/4 overhead fantasy-town view, top-left light, warm cream plaster dark muted timber and stone. One dominant 28px door at left third with dark recess, shallow supported porch, visible4-6px pale lit stone doorstep, small lantern above and beside door. RIGHT half an open recessed courtyard ARCH, with pale gray paving visibly continuing to daylight beyond, not a green panel. One small shuttered service hatch high right, dark and blind. NO hanging sign or text; tankard is separate overlay. Substantial beams with lit tops and shaded underside, gray-brown plinth top visible. Full-width rectangular96x48 shape, flat attachment beam top and course bottom, square exterior ends. Single1px dark silhouette, quiet colour clusters, no noise or blur. Draw complete facade with porch contained inside width.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-80b4821f-166a-414d-9ed2-24790475722c.png",
+    "source": "r17-C4-source-inn-front.png"
+  },
+  {
+    "id": "return-left",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "One architectural PARTY WALL and LEFT CORNER return module native48x48 on solid magenta, enlarged crisp pixel art. High3/4 overhead medieval townhouse view. Main wall36px wide warm gray stone/plaster with a single narrow recessed20px shutter window; left12px is separately visible west-facing return, lit top-left. One coping ledge across upper edge shows its top and casts3px shade. Bottom course flat and full48px wide. Show wall thickness, not a frontal brick rectangle. No floor/ground or roof. Broad quiet masses, gray-brown stone and dark timber, dark1px exterior silhouette, no dark border around every plaster panel, no isolated flecks, no blur. Rectangle square cell endpoints. Drawing must clearly show an8–16px receiving face at left, and a tiny angled flashing receiver below the coping.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-97904944-bb5c-40c3-858f-5c2d5ed0b0c8.png",
+    "source": "r17-C4-source-return-left.png"
+  },
+  {
+    "id": "return-right",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "One architectural PARTY WALL and RIGHT CORNER return module native48x48 on solid magenta, enlarged crisp pixel art. High3/4 overhead medieval townhouse view. Main wall36px wide warm gray plaster/stone with a single broad recessed20px window with wooden sill; right12px visible EAST-facing return much darker than front, lit only on coping top. Coping ledge across upper edge shows top and3px undercut. Lower course flat full48px width. Show physical wall thickness and narrow lower-roof flashing lip against right face. No ground, no roof or whole building. Broad quiet stone masses, subdued brown timber,1px dark exterior contour, no internal black grid, specks, haze or blur. Square cell ends. Separate illumination from left counterpart, not mirror-lighting.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-6d446c30-483b-4d3c-81a2-375a0dd65b16.png",
+    "source": "r17-C4-source-return-right.png"
+  },
+  {
+    "id": "roof-junction",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One modular medieval ROOF JUNCTION native96x48 enlarged on pure magenta. High3/4 overhead pixel art, muted dusty red-brown angular clay tiles6-8x3-4 native, gray lead gutter. Rear slope in upper half meets foreground hipped roof slope in lower half through ONE continuous visible shallow recessed valley gutter running horizontally and then diagonally down-right. This is a single owned96px-wide rear-eave/front-hip connection, no two eave beams, no wall frontage. Lit coping/lead flashing catches top-left, dark contact edge only at receiving valley. Fixed flat tile-course endpoints at left/right; material three values with restrained highlights, one dark exterior pixel. No chimney, moss, specks, labels, bright orange, rounded tile beads or blur. Square full rectangular painted module designed to overlay the join.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-5deb86da-082b-45f7-b492-27c7038b3ec7.png",
+    "source": "r17-C4-source-roof-junction.png"
+  },
+  {
+    "id": "church-porch",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "One small EAST-FACING church side porch for a medieval high3/4 overhead pixel RPG, native48x48 enlarged on solid magenta. Gray-brown limestone matching fantasy halls, simple slate gabled awning and a deep dark doorway on the EAST/RIGHT-facing wall, pale4-6px stone steps project to RIGHT towards square. View roof from above, tiny left/front wall is solid masonry. Upper-left light, right doorway in shade, warm small lantern beside entry. One square 48x48 footprint, clear wide step, crisp native1px silhouette, restrained big stone blocks, no lawn, no scenery, no characters or text, no blur. It will attach its LEFT edge to church wall.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-1f7e99d9-9a53-45fd-9eb7-3a59c6bc6775.png",
+    "source": "r17-C4-source-church-porch.png"
+  },
+  {
+    "id": "hall-shade",
+    "size": [
+      144,
+      36
+    ],
+    "prompt": "Draw ONLY the hard-edged floor shadow under this open market hall, not the building. Native144x36 production shadow silhouette, enlarged on pure magenta. Flat near-black region following a shallow rectangular footprint with six connected pillar-foot shadows and a short diagonal lower-right cast, upper edge horizontal. One continuous shaded area underneath arcade, square stepped corners, no soft blur, no glow, no dither, no unrelated spots. Keep solid silhouette with clear rectangular center and connected6 column-foot projections on front edge; light would be top-left. No text, no stone texture or building. This sprite will be composited at30 percent darkness over paving.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-75ff1676-c7e2-4b54-9d74-0203e06e97ce.png",
+    "source": "r17-C4-source-hall-shade.png"
+  },
+  {
+    "id": "inn-front-b",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One crisp enlarged pixel-art INN GROUND FLOOR module native96x48 on solid magenta. Warm muted timber/plaster with gray-brown stone plinth in high3/4 town view; upper-left light. LEFT half one dominant28px wide24px tall dark doorway, shallow timber porch beam, one little lantern, conspicuous5px lit step. RIGHT half deep ARCH PASSAGE open to pale gray paving, only paving visible through it, no distant houses sky plants or miniature scenery. Perspective of paving continues backward beneath arch. Dark recessed arch soffit, daylight at far end. No signs, no text, no upstairs, no overall roof. Full-width rectangular horizontal course at top and bottom, strong shaded posts and sills,3px eave recess. Calm blocks at the scale of fantasy-house-2, single dark1px silhouette, no orange shine, hairline grain, rounded exterior corners or noise.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-bb810c9f-2fc7-4f12-90db-7ffaa88a5d2a.png",
+    "source": "r17-C4-source-inn-front-b.png"
+  },
+  {
+    "id": "sign-baker",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval hanging BAKERY sign, enlarged pixel-art asset on solid pure magenta. Native64x72 canvas to retain twice-round15 scale, main board fits48x48 below short dark iron bracket in top20px. Warm dark-brown carved board shaped as angular loaf, bold golden bread symbol with THREE broad slashes. Single dark1px outer contour, narrow upper-left highlight, short lower-right thickness edge; NO CREAM BADGE RIM. Iron bracket starts at LEFT wall-mount with small dark contact plate and shadow, horizontal arm and two short chains. Distinct unmistakable bread at literal1x. Simple clean blocks, no text, no decoration, no ground, no glow or noise. Board about48px wide, not oversized.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-99abdb56-8210-4fe2-b06b-d01cb4467a56.png",
+    "source": "r17-C4-source-sign-baker.png"
+  },
+  {
+    "id": "sign-smith",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval hanging SMITH trade sign enlarged pixel-art on solid pure magenta. Native64x72 canvas; main board48x48 under short iron bracket at top. Board dark muted russet angular shield with a large bold pale-gray ANVIL symbol and hammer silhouette, clear at1x. Single1px dark contour, narrow upper-left highlight and2px lower-right wood thickness, absolutely no cream badge rim. Left wall-mount bracket with dark contact plate, short horizontal arm and2 short chains. Upper-left light, calm colour blocks, no words, glow, textured noise or ground.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-bf85ad13-a8f8-4ad8-8dec-4d9107548222.png",
+    "source": "r17-C4-source-sign-smith.png"
+  },
+  {
+    "id": "sign-apothecary",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval APOTHECARY hanging sign, enlarged crisp pixel art on pure magenta. Native64x72 canvas,48x48 main board below short left-mounted iron bracket with2 small chains and contact shadow. Deep forest-green angular hexagonal board with one large PALE GREEN medicine bottle, broad cork, simple white cross on bottle. Recognizable at1x. Single dark1px outside contour, narrow upper-left wood highlight, short dark lower-right thickness edge; no cream or white badge rim. Top-left light, simple colour clusters no noise, no text, no glow, no extra decoration.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-62d5ee2f-ae22-438d-b395-17c5f0801713.png",
+    "source": "r17-C4-source-sign-apothecary.png"
+  },
+  {
+    "id": "sign-cobbler",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval COBBLER hanging sign enlarged crisp pixel art on pure magenta. Native64x72 canvas,48x48 main board below short left-mounted iron bracket with two short chains and contact shadow. Dark muted teal rectangular board with clipped square corners and one large tan LEATHER BOOT in side silhouette, toe pointing right, sole clear. Single dark1px exterior contour, narrow upper-left highlight and dark lower-right thickness edge, NO cream badge outline. Simple bold symbol, no words, clean flat colour clusters, top-left light, no blur, glow or noise.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-d89613dd-52a3-42b4-8e37-b14e177eccf6.png",
+    "source": "r17-C4-source-sign-cobbler.png"
+  },
+  {
+    "id": "sign-inn",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval INN hanging sign enlarged pixel-art on solid magenta. Native64x72 canvas, board48x48 below short LEFT wall-mounted iron bracket and two short chains. Dark burgundy octagonal wood board, big bold golden foaming TANKARD symbol, handle right, tiny simple bed symbol below only if clear. Dark1px contour, narrow upper-left highlight,2px lower-right thickness, no cream badge rim. Upper-left light, board subdued so tankard readable, contact plate and hard shadow at bracket. No text, no gradient glow, no decorative curls or specks.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-7667b906-f6c3-4d5c-a133-53aa82c25667.png",
+    "source": "r17-C4-source-sign-inn.png"
+  },
+  {
+    "id": "sign-scribe",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval SCRIBE hanging trade sign enlarged pixel-art on solid magenta. Native64x72, main48x48 board beneath short iron wall bracket with contact plate at left and2 short chains. Dark slate-blue angular rectangular board bears one large ivory QUILL diagonal into small black inkpot. Read at1x. Dark1px outer contour, very narrow upper-left highlight and dark lower-right board thickness, NO cream badge border. Top-left light, calm limited palette, no text or letters, no noisy grain, glow or detached marks.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-3319b6c0-6dc1-43ad-b7bf-42b602919c3a.png",
+    "source": "r17-C4-source-sign-scribe.png"
+  },
+  {
+    "id": "sign-tailor",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval TAILOR hanging trade sign enlarged pixel art on pure magenta. Native64x72,48x48 dark muted wine-purple diamond board under short LEFT wall-mounted iron bracket and2 chains. Big pale metal open SCISSORS icon, two clear loops and blades, recognizable at native1x. Single dark1px outer contour, narrow upper-left highlight, short lower-right wood thickness, no cream badge border. Contact plate/shadow at bracket. No letters or words, no noise, glow or tiny decoration.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-18597334-c425-4748-a763-e26dda69c599.png",
+    "source": "r17-C4-source-sign-tailor.png"
+  },
+  {
+    "id": "sign-butcher",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "One medieval BUTCHER hanging sign enlarged pixel art on pure magenta. Native64x72,48x48 dark brown angular wood board under short LEFT wall iron bracket with two chains. Big ivory-gray meat CLEAVER symbol with short brown handle, clear rectangular blade and tiny hole near upper corner. Bold1x recognition. Single dark1px outer contour, narrow upper-left highlight and dark lower-right thickness, NO cream border. Top-left light, quiet limited colour blocks, no text, no food gore, no background object, no noise or glow.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-4d4783ff-be5a-4fcc-b69c-6caa72a0bc4c.png",
+    "source": "r17-C4-source-sign-butcher.png"
+  },
+  {
+    "id": "person-vendor",
+    "size": [
+      16,
+      32
+    ],
+    "prompt": "One medieval female market VENDOR pixel sprite matching provided tiny townsfolk, native16x32, enlarged on solid magenta. High3/4 overhead view, simple pixel clusters, one1px dark silhouette, top-left light. SIDE-FACING LEFT, cream apron over muted olive dress, brown hair under small linen cap. One arm extended offering goods to a customer on left. Full body boots visible. Human proportions and head size of reference, not chibi. No stall, ground, object, text or shadow outside figure, no blur, no isolated specks. Calm few-colour blocks to survive16x32 mode reduction.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-d707c159-4ac9-4da8-93cf-044d8b9506ba.png",
+    "source": "r17-C4-source-person-vendor.png"
+  },
+  {
+    "id": "person-customer",
+    "size": [
+      16,
+      32
+    ],
+    "prompt": "One medieval townsfolk CUSTOMER pixel sprite native16x32, enlarged on pure magenta. BACK-FACING north toward a shop counter, high3/4 overhead view same tiny fantasy town figure scale as provided. Muted slate-blue tunic, tan belt, brown hair, small basket held at one hip, boots. Full body, head and shoulders seen from behind, no face visible. One1px dark contour, top-left lit shoulders, few crisp colour clusters, no blur texture noise, no ground shadow, no stall or text. Human proportions like reference, not big-head chibi.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-dbe37335-8240-427f-ae1a-f56982343bb0.png",
+    "source": "r17-C4-source-person-customer.png"
+  },
+  {
+    "id": "person-porter",
+    "size": [
+      16,
+      32
+    ],
+    "prompt": "One medieval PORTER sprite, native16x32, enlarged crisp pixel art on pure magenta. High3/4 overhead game view same human scale as supplied figure. SIDE-FACING RIGHT, short brown cap, muted rust tunic and dark trousers, carrying one small wooden crate at waist with both arms. Stooped slightly under load, boots visible, no cart or floor. Single1px dark contour, top-left light, simple coherent pixels, no texture noise, no blur, no shadow outside figure or words.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-488e0764-0bf7-4272-9935-439990a9fea7.png",
+    "source": "r17-C4-source-person-porter.png"
+  },
+  {
+    "id": "person-seated",
+    "size": [
+      16,
+      28
+    ],
+    "prompt": "One elderly medieval townsfolk SEATED figure pixel sprite native16x28 enlarged on pure magenta. High3/4 overhead RPG scale matching provided townsfolk. Side-facing RIGHT, seated on an unseen bench, knees bent and feet resting low in front, simple gray hair, muted brown cloak, hands folded lap. Draw person only no bench or ground. Crisp1px dark silhouette, top-left light, few big native pixel clusters, no blur or noise, not chibi, no text.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-cbdf5b32-0bf3-4c82-a34b-5f407a52e538.png",
+    "source": "r17-C4-source-person-seated.png"
+  },
+  {
+    "id": "stable-range",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One low medieval stable/storage rear range, native96x48 enlarged pixel sprite on pure magenta. High3/4 overhead view, shallow muted brown tiled lean-to roof occupies top half, dark timber2-bay lower front, left open stable door with hay and right closed plank store. Broad quiet shapes, top-left light, dark1px silhouette, visible stone sill top, no animals or people, no ground, no text. It attaches to rear courtyard boundary. Full96px rectangular width, low squat one-storey silhouette, square grid corners, no blur, haze or noisy grain. Match fantasy town palette.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-06e601a3-6e24-4b4f-bff1-2ba013ad46e3.png",
+    "source": "r17-C4-source-stable-range.png"
+  },
+  {
+    "id": "roof-gable-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "ONE gabled roof cap only for medieval pixel RPG, native96x96, enlarged on pure magenta. High3/4 overhead town-house projection like fantasy-house-2, a large visible roof plane, central north-south ridge ending in a small visible triangular timber GABLE at lower edge, dark shaded right slope. Two-cell wide two-cell deep square canvas. About14 angular tiles across and24 courses deep, native6-8px tile width3-4px course height. Quiet dusty red-brown3-value roof palette, muted brown gable with one simple central support, single horizontal eave at bottom with3-4px recess. Edge-to-edge width and square boundaries to join neighbours, one1px dark outer contour, top-left lighting. No wall storey, ground, chimney dormer moss noise bright orange or labels.",
+    "original": "/home/kolache/.codex/generated_images/01a1eafb-c7ad-7363-875a-73fd1e3d67b9/exec-1cbd822f-a685-4b88-9c2d-873725eda12b.png",
+    "source": "r17-C4-source-roof-gable-w2.png"
+  }
+]

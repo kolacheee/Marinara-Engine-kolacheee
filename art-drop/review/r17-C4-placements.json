@@ -1,0 +1,6573 @@
+{
+  "paint": [
+    {
+      "id": "C4-west-0",
+      "painted": [
+        144,
+        384,
+        96,
+        240
+      ],
+      "footprint": [
+        144,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        218,
+        624
+      ],
+      "overhang": [
+        144,
+        384,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 96,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 88,
+          "y": 184,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-west-1",
+      "painted": [
+        240,
+        528,
+        48,
+        192
+      ],
+      "footprint": [
+        240,
+        624,
+        48,
+        96
+      ],
+      "entrance": [
+        264,
+        720
+      ],
+      "overhang": [
+        240,
+        528,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v1-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-shuttered-c4-right-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-west-2",
+      "painted": [
+        336,
+        384,
+        96,
+        288
+      ],
+      "footprint": [
+        336,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        384,
+        672
+      ],
+      "overhang": [
+        336,
+        384,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-smith-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 240,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "party-left-c4",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-hip-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "owned roof junction"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 0,
+          "y": 184,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-west-rear-0",
+      "painted": [
+        144,
+        288,
+        96,
+        144
+      ],
+      "footprint": [
+        144,
+        336,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        144,
+        288,
+        96,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-ridge-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-west-rear-1",
+      "painted": [
+        240,
+        288,
+        96,
+        144
+      ],
+      "footprint": [
+        240,
+        336,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        240,
+        288,
+        96,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-stair-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-back-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-west-rear-2",
+      "painted": [
+        336,
+        288,
+        96,
+        144
+      ],
+      "footprint": [
+        336,
+        336,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        336,
+        288,
+        96,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-dormer-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-middle-0",
+      "painted": [
+        480,
+        336,
+        96,
+        288
+      ],
+      "footprint": [
+        480,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        554,
+        624
+      ],
+      "overhang": [
+        480,
+        336,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 144,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-middle-1",
+      "painted": [
+        576,
+        336,
+        96,
+        240
+      ],
+      "footprint": [
+        576,
+        480,
+        96,
+        96
+      ],
+      "entrance": [
+        672,
+        568
+      ],
+      "overhang": [
+        576,
+        336,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 192,
+          "crop": [
+            0,
+            192,
+            96,
+            240
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "storey"
+        },
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ]
+    },
+    {
+      "id": "square-baker",
+      "painted": [
+        720,
+        384,
+        96,
+        288
+      ],
+      "footprint": [
+        720,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        794,
+        672
+      ],
+      "overhang": [
+        720,
+        384,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 144,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 88,
+          "y": 136,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "sign-baker-c4",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "painted": [
+        816,
+        432,
+        48,
+        240
+      ],
+      "footprint": [
+        816,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        840,
+        672
+      ],
+      "overhang": [
+        816,
+        432,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v1-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-shuttered-c4-right-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-smith",
+      "painted": [
+        1056,
+        432,
+        48,
+        240
+      ],
+      "footprint": [
+        1056,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        1080,
+        672
+      ],
+      "overhang": [
+        1056,
+        432,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v2-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "painted": [
+        1104,
+        528,
+        96,
+        240
+      ],
+      "footprint": [
+        1104,
+        672,
+        96,
+        96
+      ],
+      "entrance": [
+        1178,
+        768
+      ],
+      "overhang": [
+        1104,
+        528,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 96,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-apothecary-c4",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-east-0",
+      "painted": [
+        1200,
+        336,
+        96,
+        288
+      ],
+      "footprint": [
+        1200,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        1218,
+        624
+      ],
+      "overhang": [
+        1200,
+        336,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-door-w2-c1",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 88,
+          "y": 184,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-east-1",
+      "painted": [
+        1296,
+        384,
+        48,
+        240
+      ],
+      "footprint": [
+        1296,
+        528,
+        48,
+        96
+      ],
+      "entrance": [
+        1320,
+        624
+      ],
+      "overhang": [
+        1296,
+        384,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v2-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 40,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-east-2",
+      "painted": [
+        1392,
+        336,
+        96,
+        240
+      ],
+      "footprint": [
+        1392,
+        480,
+        96,
+        96
+      ],
+      "entrance": [
+        1466,
+        576
+      ],
+      "overhang": [
+        1392,
+        336,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v2-w2-c1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 96,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-east-3",
+      "painted": [
+        1488,
+        288,
+        96,
+        336
+      ],
+      "footprint": [
+        1488,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        1506,
+        624
+      ],
+      "overhang": [
+        1488,
+        288,
+        96,
+        240
+      ],
+      "parts": [
+        {
+          "file": "ground-door-w2-c1",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 288,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 288,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 240,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "party-left-c4",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-arrangement-b-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 96,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 0,
+          "y": 136,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-east-4",
+      "painted": [
+        1632,
+        384,
+        48,
+        288
+      ],
+      "footprint": [
+        1632,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        1656,
+        672
+      ],
+      "overhang": [
+        1632,
+        384,
+        48,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v2-w1-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 40,
+          "y": 240,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-left-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-north-east-5",
+      "painted": [
+        1680,
+        480,
+        96,
+        240
+      ],
+      "footprint": [
+        1680,
+        624,
+        96,
+        96
+      ],
+      "entrance": [
+        1776,
+        712
+      ],
+      "overhang": [
+        1680,
+        480,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 192,
+          "crop": [
+            0,
+            192,
+            96,
+            240
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "storey"
+        },
+        {
+          "file": "side-house-east-c4",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-0",
+      "painted": [
+        1296,
+        288,
+        48,
+        144
+      ],
+      "footprint": [
+        1296,
+        336,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1296,
+        288,
+        48,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-ridge-c4-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-1",
+      "painted": [
+        1632,
+        288,
+        48,
+        144
+      ],
+      "footprint": [
+        1632,
+        336,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1632,
+        288,
+        48,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-ridge-c4-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-0",
+      "painted": [
+        480,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        480,
+        384,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        480,
+        288,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "back-plain-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-back-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-1",
+      "painted": [
+        720,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        720,
+        384,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        720,
+        288,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-stair-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "back-stair-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-2",
+      "painted": [
+        816,
+        288,
+        48,
+        192
+      ],
+      "footprint": [
+        816,
+        384,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        816,
+        288,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-shuttered-c4-right-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-3",
+      "painted": [
+        1056,
+        288,
+        48,
+        192
+      ],
+      "footprint": [
+        1056,
+        384,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1056,
+        288,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "back-plain-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-4",
+      "painted": [
+        1104,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        1104,
+        384,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1104,
+        288,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "ground-work-v2-w2-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-back-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-5",
+      "painted": [
+        1200,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        1200,
+        384,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1200,
+        288,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-added-rear-6",
+      "painted": [
+        1392,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        1392,
+        384,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1392,
+        288,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "back-plain-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-ridge-c4-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "painted": [
+        1200,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1200,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1200,
+        1032
+      ],
+      "overhang": [
+        1200,
+        768,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "side-house-west-c4",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-west-c4",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            0,
+            240,
+            96,
+            288
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-west-c4",
+          "x": 0,
+          "y": 192,
+          "crop": [
+            0,
+            192,
+            96,
+            240
+          ],
+          "layer": "storey"
+        },
+        {
+          "file": "side-house-west-c4",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "storey"
+        },
+        {
+          "file": "side-house-west-c4",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ]
+    },
+    {
+      "id": "C4-gate-inn",
+      "painted": [
+        1296,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1296,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1324,
+        1056
+      ],
+      "overhang": [
+        1296,
+        768,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "inn-front-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 88,
+          "y": 136,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "sign-inn-c4",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-inn-east-wing",
+      "painted": [
+        1392,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1392,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1440,
+        1056
+      ],
+      "overhang": [
+        1392,
+        768,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-arch-v1-w2-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 240,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-hip-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-east-tailor",
+      "painted": [
+        1584,
+        768,
+        96,
+        240
+      ],
+      "footprint": [
+        1584,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        1658,
+        1008
+      ],
+      "overhang": [
+        1584,
+        768,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-left-c4",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-right-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-shutter-right-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-tailor-c4",
+          "x": 32,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-east-scribe",
+      "painted": [
+        1680,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1680,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1698,
+        1056
+      ],
+      "overhang": [
+        1680,
+        768,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-apothecary-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-shutter-right-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-right-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-scribe-c4",
+          "x": 32,
+          "y": 144,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "west-smith",
+      "painted": [
+        144,
+        720,
+        96,
+        288
+      ],
+      "footprint": [
+        144,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        192,
+        1008
+      ],
+      "overhang": [
+        144,
+        720,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-smith-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-left-c4",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-left-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-hip-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-smith-c4",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "painted": [
+        336,
+        768,
+        96,
+        240
+      ],
+      "footprint": [
+        336,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        410,
+        1008
+      ],
+      "overhang": [
+        336,
+        768,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-right-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-sign-bay-right-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 96,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-cobbler-c4",
+          "x": 32,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-south-0",
+      "painted": [
+        144,
+        1056,
+        96,
+        240
+      ],
+      "footprint": [
+        144,
+        1200,
+        96,
+        96
+      ],
+      "entrance": [
+        162,
+        1296
+      ],
+      "overhang": [
+        144,
+        1056,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-apothecary-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 144,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w2-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 88,
+          "y": 136,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-south-1",
+      "painted": [
+        240,
+        1056,
+        96,
+        288
+      ],
+      "footprint": [
+        240,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        288,
+        1344
+      ],
+      "overhang": [
+        240,
+        1056,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-smith-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 240,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-hip-c4-w2-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-south-2",
+      "painted": [
+        336,
+        1056,
+        48,
+        192
+      ],
+      "footprint": [
+        336,
+        1152,
+        48,
+        96
+      ],
+      "entrance": [
+        360,
+        1248
+      ],
+      "overhang": [
+        336,
+        1056,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "ground-door-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "party-left-c4",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-left-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-back-c4-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 0,
+          "y": 136,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-south-3",
+      "painted": [
+        576,
+        1200,
+        48,
+        144
+      ],
+      "footprint": [
+        576,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        600,
+        1344
+      ],
+      "overhang": [
+        576,
+        1200,
+        48,
+        48
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v1-w1-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-ridge-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-south-4",
+      "painted": [
+        624,
+        1152,
+        48,
+        192
+      ],
+      "footprint": [
+        624,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        648,
+        1344
+      ],
+      "overhang": [
+        624,
+        1152,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v2-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-back-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-poor-0",
+      "painted": [
+        1392,
+        1104,
+        96,
+        240
+      ],
+      "footprint": [
+        1392,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        1440,
+        1344
+      ],
+      "overhang": [
+        1392,
+        1104,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-work-v1-w2-c1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "back-plain-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-hip-c4-w2-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-poor-1",
+      "painted": [
+        1488,
+        1104,
+        48,
+        192
+      ],
+      "footprint": [
+        1488,
+        1200,
+        48,
+        96
+      ],
+      "entrance": [
+        1512,
+        1296
+      ],
+      "overhang": [
+        1488,
+        1104,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "party-left-c4",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "back-plain-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "roof-junction-c4",
+          "x": 0,
+          "y": 136,
+          "crop": [
+            0,
+            18,
+            8,
+            28
+          ],
+          "layer": "lower roof flashing"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-poor-2",
+      "painted": [
+        1536,
+        1104,
+        48,
+        144
+      ],
+      "footprint": [
+        1536,
+        1152,
+        48,
+        96
+      ],
+      "entrance": [
+        1560,
+        1248
+      ],
+      "overhang": [
+        1536,
+        1104,
+        48,
+        48
+      ],
+      "parts": [
+        {
+          "file": "ground-work-v1-w1-c1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 96,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-ridge-c4-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "C4-poor-3",
+      "painted": [
+        1728,
+        1104,
+        48,
+        240
+      ],
+      "footprint": [
+        1728,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1752,
+        1344
+      ],
+      "overhang": [
+        1728,
+        1104,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 40,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "back-plain-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "roof-gable-c4-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-south-property-0",
+      "painted": [
+        720,
+        1056,
+        96,
+        240
+      ],
+      "footprint": [
+        720,
+        1200,
+        96,
+        96
+      ],
+      "entrance": [
+        751,
+        1062
+      ],
+      "overhang": [
+        720,
+        1056,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 96,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "north-shop-court-short-c4",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-south-property-1",
+      "painted": [
+        960,
+        1056,
+        96,
+        288
+      ],
+      "footprint": [
+        960,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        991,
+        1062
+      ],
+      "overhang": [
+        960,
+        1056,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-apothecary-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 88,
+          "y": 192,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "north-shop-court-c4",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    },
+    {
+      "id": "square-south-property-2",
+      "painted": [
+        1056,
+        1056,
+        48,
+        288
+      ],
+      "footprint": [
+        1056,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1072,
+        1056
+      ],
+      "overhang": [
+        1056,
+        1056,
+        48,
+        192
+      ],
+      "parts": [
+        {
+          "file": "ground-door-v2-w1-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "party-right-c4",
+          "x": 40,
+          "y": 240,
+          "crop": null,
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "storey-recessed-c4-left-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "firewall-w0",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            8,
+            0,
+            16,
+            48
+          ],
+          "layer": "receiving return"
+        },
+        {
+          "file": "north-shop-court-c4-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ]
+    }
+  ],
+  "shadows": [
+    {
+      "id": "C4-west-0",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        144,
+        619,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-west-0",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        240,
+        480,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-west-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        240,
+        715,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-west-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        288,
+        624,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-west-2",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        336,
+        667,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-west-2",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        432,
+        528,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-west-rear-0",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        144,
+        427,
+        108,
+        6
+      ]
+    },
+    {
+      "id": "C4-west-rear-0",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        240,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-west-rear-1",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        240,
+        427,
+        108,
+        6
+      ]
+    },
+    {
+      "id": "C4-west-rear-1",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        336,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-west-rear-2",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        336,
+        427,
+        108,
+        6
+      ]
+    },
+    {
+      "id": "C4-west-rear-2",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        432,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-north-middle-0",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        480,
+        619,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C4-north-middle-0",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        576,
+        432,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C4-north-middle-1",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        576,
+        571,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-north-middle-1",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        672,
+        432,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "square-baker",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        720,
+        667,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "square-baker",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        816,
+        480,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        816,
+        667,
+        60,
+        18
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        864,
+        528,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "square-smith",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1056,
+        667,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "square-smith",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1104,
+        576,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1104,
+        763,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1200,
+        624,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-north-east-0",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1200,
+        619,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C4-north-east-0",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1296,
+        432,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C4-north-east-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1296,
+        619,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-north-east-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1344,
+        528,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-north-east-2",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1392,
+        571,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-north-east-2",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1488,
+        432,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-north-east-3",
+      "side": "south drawn eave/support",
+      "reach": 30,
+      "receiver": [
+        1488,
+        619,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C4-north-east-3",
+      "side": "east",
+      "reach": 30,
+      "receiver": [
+        1584,
+        384,
+        30,
+        240
+      ]
+    },
+    {
+      "id": "C4-north-east-4",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1632,
+        667,
+        60,
+        18
+      ]
+    },
+    {
+      "id": "C4-north-east-4",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1680,
+        528,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-north-east-5",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1680,
+        715,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-north-east-5",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1776,
+        576,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-0",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        1296,
+        427,
+        60,
+        6
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-0",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        1344,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-1",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        1632,
+        427,
+        60,
+        6
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-1",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        1680,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-added-rear-0",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        480,
+        475,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-0",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        576,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        720,
+        475,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        816,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-2",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        816,
+        475,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-2",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        864,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-3",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1056,
+        475,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-3",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1104,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-4",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1104,
+        475,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-4",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1200,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-5",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1200,
+        475,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-5",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1296,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-6",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1392,
+        475,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C4-added-rear-6",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1488,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1200,
+        1051,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1296,
+        864,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C4-gate-inn",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1296,
+        1051,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C4-gate-inn",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1392,
+        864,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C4-inn-east-wing",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1392,
+        1051,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-inn-east-wing",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1488,
+        912,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-east-tailor",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1584,
+        1003,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-east-tailor",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1680,
+        864,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-east-scribe",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1680,
+        1051,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C4-east-scribe",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1776,
+        864,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "west-smith",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        144,
+        1003,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "west-smith",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        240,
+        864,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        336,
+        1003,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        432,
+        864,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-south-0",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        144,
+        1291,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-south-0",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        240,
+        1152,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-south-1",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        240,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C4-south-1",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        336,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C4-south-2",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        336,
+        1243,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-south-2",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        384,
+        1152,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-south-3",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        576,
+        1339,
+        60,
+        6
+      ]
+    },
+    {
+      "id": "C4-south-3",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        624,
+        1296,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-south-4",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        624,
+        1339,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-south-4",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        672,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-poor-0",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1392,
+        1339,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C4-poor-0",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1488,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-poor-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1488,
+        1291,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-poor-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1536,
+        1200,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C4-poor-2",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        1536,
+        1243,
+        60,
+        6
+      ]
+    },
+    {
+      "id": "C4-poor-2",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        1584,
+        1200,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C4-poor-3",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1728,
+        1339,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C4-poor-3",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1776,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "square-south-property-0",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        720,
+        1291,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "square-south-property-0",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        816,
+        1152,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "square-south-property-1",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        960,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "square-south-property-1",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1056,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "square-south-property-2",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1056,
+        1339,
+        60,
+        18
+      ]
+    },
+    {
+      "id": "square-south-property-2",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1104,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "crate",
+      "receiver": [
+        1562,
+        1042,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "crate",
+      "receiver": [
+        1562,
+        1042,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        480,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        528,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        576,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        624,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        672,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "guildhall",
+      "receiver": [
+        868,
+        644,
+        192,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "bench-pocket",
+      "receiver": [
+        632,
+        754,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "bench-pocket",
+      "receiver": [
+        654,
+        754,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        725,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        755,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        786,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        817,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        848,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        879,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "fountain",
+      "receiver": [
+        816,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "fountain",
+      "receiver": [
+        864,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "market-cross",
+      "receiver": [
+        1056,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cart",
+      "receiver": [
+        872,
+        898,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cart",
+      "receiver": [
+        894,
+        898,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "crate",
+      "receiver": [
+        924,
+        898,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "crate",
+      "receiver": [
+        924,
+        898,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "barrel",
+      "receiver": [
+        898,
+        878,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "barrel",
+      "receiver": [
+        898,
+        878,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-0",
+      "receiver": [
+        0,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-0",
+      "receiver": [
+        48,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-0",
+      "receiver": [
+        0,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-0",
+      "receiver": [
+        48,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-1",
+      "receiver": [
+        96,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-1",
+      "receiver": [
+        144,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-1",
+      "receiver": [
+        96,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-1",
+      "receiver": [
+        144,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-2",
+      "receiver": [
+        192,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-2",
+      "receiver": [
+        240,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-2",
+      "receiver": [
+        192,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-2",
+      "receiver": [
+        240,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-3",
+      "receiver": [
+        288,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-3",
+      "receiver": [
+        336,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-3",
+      "receiver": [
+        288,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-3",
+      "receiver": [
+        336,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-4",
+      "receiver": [
+        384,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-4",
+      "receiver": [
+        432,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-4",
+      "receiver": [
+        384,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-4",
+      "receiver": [
+        432,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-5",
+      "receiver": [
+        480,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-5",
+      "receiver": [
+        528,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-5",
+      "receiver": [
+        480,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-5",
+      "receiver": [
+        528,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-6",
+      "receiver": [
+        576,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-6",
+      "receiver": [
+        624,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-6",
+      "receiver": [
+        576,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-6",
+      "receiver": [
+        624,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-7",
+      "receiver": [
+        672,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-7",
+      "receiver": [
+        720,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-7",
+      "receiver": [
+        672,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-7",
+      "receiver": [
+        720,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-8",
+      "receiver": [
+        768,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-8",
+      "receiver": [
+        816,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-8",
+      "receiver": [
+        768,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-8",
+      "receiver": [
+        816,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-9",
+      "receiver": [
+        864,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-9",
+      "receiver": [
+        912,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-9",
+      "receiver": [
+        864,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-9",
+      "receiver": [
+        912,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-10",
+      "receiver": [
+        960,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-10",
+      "receiver": [
+        1008,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-10",
+      "receiver": [
+        960,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-10",
+      "receiver": [
+        1008,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-11",
+      "receiver": [
+        1056,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-11",
+      "receiver": [
+        1104,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-11",
+      "receiver": [
+        1056,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-11",
+      "receiver": [
+        1104,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-12",
+      "receiver": [
+        1152,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-12",
+      "receiver": [
+        1200,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-13",
+      "receiver": [
+        1248,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-13",
+      "receiver": [
+        1296,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-14",
+      "receiver": [
+        1344,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-14",
+      "receiver": [
+        1392,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-14",
+      "receiver": [
+        1344,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-14",
+      "receiver": [
+        1392,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-15",
+      "receiver": [
+        1440,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-15",
+      "receiver": [
+        1488,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-15",
+      "receiver": [
+        1440,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-15",
+      "receiver": [
+        1488,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-16",
+      "receiver": [
+        1536,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-16",
+      "receiver": [
+        1584,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-16",
+      "receiver": [
+        1536,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-16",
+      "receiver": [
+        1584,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-17",
+      "receiver": [
+        1632,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-17",
+      "receiver": [
+        1680,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-17",
+      "receiver": [
+        1632,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-17",
+      "receiver": [
+        1680,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-18",
+      "receiver": [
+        1728,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-18",
+      "receiver": [
+        1776,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-18",
+      "receiver": [
+        1728,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-18",
+      "receiver": [
+        1776,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-19",
+      "receiver": [
+        1824,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-curtain-19",
+      "receiver": [
+        1872,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-19",
+      "receiver": [
+        1824,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-curtain-19",
+      "receiver": [
+        1872,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-a-c4",
+      "receiver": [
+        0,
+        378,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-b-c4",
+      "receiver": [
+        0,
+        522,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-c-c4",
+      "receiver": [
+        0,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-a-c4",
+      "receiver": [
+        0,
+        810,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-b-c4",
+      "receiver": [
+        0,
+        954,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-c-c4",
+      "receiver": [
+        0,
+        1098,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-a-c4",
+      "receiver": [
+        0,
+        1242,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-b-c4",
+      "receiver": [
+        0,
+        1386,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        378,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-b-c4",
+      "receiver": [
+        1872,
+        522,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-c-c4",
+      "receiver": [
+        1872,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        810,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-b-c4",
+      "receiver": [
+        1872,
+        954,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-c-c4",
+      "receiver": [
+        1872,
+        1098,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        1242,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side-b-c4",
+      "receiver": [
+        1872,
+        1386,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-0",
+      "receiver": [
+        0,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-0",
+      "receiver": [
+        48,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-336",
+      "receiver": [
+        336,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-336",
+      "receiver": [
+        384,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-768",
+      "receiver": [
+        768,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-768",
+      "receiver": [
+        816,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-1056",
+      "receiver": [
+        1056,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-1056",
+      "receiver": [
+        1104,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-1488",
+      "receiver": [
+        1488,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-1488",
+      "receiver": [
+        1536,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-1824",
+      "receiver": [
+        1824,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-tower-1824",
+      "receiver": [
+        1872,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-0",
+      "receiver": [
+        0,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-0",
+      "receiver": [
+        48,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-1",
+      "receiver": [
+        0,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-1",
+      "receiver": [
+        48,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-2",
+      "receiver": [
+        0,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-2",
+      "receiver": [
+        48,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-3",
+      "receiver": [
+        1824,
+        570,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-3",
+      "receiver": [
+        1872,
+        570,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-4",
+      "receiver": [
+        1824,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-4",
+      "receiver": [
+        1872,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-5",
+      "receiver": [
+        1824,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-5",
+      "receiver": [
+        1872,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-6",
+      "receiver": [
+        432,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-6",
+      "receiver": [
+        480,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-7",
+      "receiver": [
+        816,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-7",
+      "receiver": [
+        864,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-8",
+      "receiver": [
+        1584,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "tower-8",
+      "receiver": [
+        1632,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gatehouse",
+      "receiver": [
+        1176,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gatehouse",
+      "receiver": [
+        1224,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gatehouse",
+      "receiver": [
+        1272,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gate-east-connector",
+      "receiver": [
+        1296,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        960,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        1008,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        1056,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        1104,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gate-west-connector",
+      "receiver": [
+        1152,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-rear-door-barrel",
+      "receiver": [
+        600,
+        1176,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "south-rear-door-barrel",
+      "receiver": [
+        600,
+        1176,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    }
+  ]
+}

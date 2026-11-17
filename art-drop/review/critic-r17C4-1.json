@@ -1,0 +1,575 @@
+{
+  "part": "C4",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "roof-ridge-c4-w3",
+    "roof-junction-c4",
+    "roof-ridge-c4-w1",
+    "roof-ridge-c4-w2",
+    "roof-ridge-c4-w3-slate",
+    "roof-ridge-c4-w3-brown",
+    "roof-junction-c4-slate",
+    "roof-junction-c4-brown",
+    "roof-ridge-c4-w1-slate",
+    "roof-ridge-c4-w1-brown",
+    "roof-ridge-c4-w2-slate",
+    "roof-ridge-c4-w2-brown",
+    "wall-tower-b-c4",
+    "wall-tower-c-c4",
+    "wall-side-b-c4",
+    "wall-side-c-c4",
+    "roof-back-c4-w1",
+    "roof-dormer-c4-w1",
+    "roof-back-c4-w2",
+    "roof-dormer-c4-w2",
+    "roof-valley-c4",
+    "roof-hip-end-c4",
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x"
+  ],
+  "files": {
+    "storey-recessed-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-shuttered-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w3": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "wall-top-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-connector-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-portal-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-left-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-right-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-junction-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8–9: the junction retains the coarse scalloped tile field. In the actual northwest join at x=336–432, y=384–432, a separate dark rear-eave strip remains immediately above it, and its bottom edge resets abruptly to the fine hip texture at y=432. The gutter line does not reconcile the two roof planes into one owned ridge/eave transition. See critic-r17C4-1-nw-contact-8x.png and critic-r17C4-1-detail-roof-junction-4x.png."
+      ],
+      "fix": "Redraw the junction against both actual adjoining caps, with registered slopes, one near eave, continuous gutter/valley endpoints and the same tile pitch. Remove the predecessor eave in the owning assembly; prove both ends at 1x and 4x before exporting colour partners."
+    },
+    "church-porch-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hall-shade-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-vendor-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-customer-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-porter-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-seated-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "stable-range-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "roof-ridge-c4-w2": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "storey-recessed-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-recessed-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-shuttered-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-shuttered-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w3-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "roof-ridge-c4-w3-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "roof-junction-c4-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8–9: the junction retains the coarse scalloped tile field. In the actual northwest join at x=336–432, y=384–432, a separate dark rear-eave strip remains immediately above it, and its bottom edge resets abruptly to the fine hip texture at y=432. The gutter line does not reconcile the two roof planes into one owned ridge/eave transition. See critic-r17C4-1-nw-contact-8x.png and critic-r17C4-1-detail-roof-junction-4x.png."
+      ],
+      "fix": "Redraw the junction against both actual adjoining caps, with registered slopes, one near eave, continuous gutter/valley endpoints and the same tile pitch. Remove the predecessor eave in the owning assembly; prove both ends at 1x and 4x before exporting colour partners."
+    },
+    "roof-junction-c4-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8–9: the junction retains the coarse scalloped tile field. In the actual northwest join at x=336–432, y=384–432, a separate dark rear-eave strip remains immediately above it, and its bottom edge resets abruptly to the fine hip texture at y=432. The gutter line does not reconcile the two roof planes into one owned ridge/eave transition. See critic-r17C4-1-nw-contact-8x.png and critic-r17C4-1-detail-roof-junction-4x.png."
+      ],
+      "fix": "Redraw the junction against both actual adjoining caps, with registered slopes, one near eave, continuous gutter/valley endpoints and the same tile pitch. Remove the predecessor eave in the owning assembly; prove both ends at 1x and 4x before exporting colour partners."
+    },
+    "roof-gable-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w1-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "roof-ridge-c4-w1-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "roof-ridge-c4-w2-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "roof-ridge-c4-w2-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha."
+    },
+    "wall-walk-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-b-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 2/16: a rectangular grey insert at local x=22–54, y=110–134 covers the existing horizontal stringcourse. Its straight patch boundary and different masonry scale are visible at 1x; the banner does not make this an integrated tower variation. See critic-r17C4-1-pieces-11.png."
+      ],
+      "fix": "Redraw the opening or repair as part of the tower face, preserving its stone courses, stringcourse, perspective, top-left light and single exterior contour. Do not overlay an unrelated curtain-wall crop across the moulding."
+    },
+    "wall-tower-c-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 2/16: pasted rectangular wall crops at local x=24–54, y=104–118 and x=22–54, y=150–174 interrupt the tower courses. The lower insert reads as a floating small doorway/plaque pasted onto an upper floor; the grey rectangular edges remain visible. See critic-r17C4-1-pieces-12.png."
+      ],
+      "fix": "Redraw a structurally distinct tower opening/repair in the tower projection, tying its sill, jambs and masonry to the surrounding courses instead of covering them with cropped wall art."
+    },
+    "wall-side-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-side-b-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 2/16: the local x=12–36, y=54–78 insert puts frontal curtain-wall detail onto the long side-wall/walk projection. The square crop changes stone scale and breaks course continuity; it reads as a pasted patch, not a drawn variation. See critic-r17C4-1-pieces-13.png."
+      ],
+      "fix": "Redraw the variation for this side-wall projection with continuous endpoints, coping and masonry courses. Integrate any damage or opening into the receiving wall plane and lighting."
+    },
+    "wall-side-c-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 2/16: the local x=12–36, y=94–118 insert puts frontal curtain-wall detail onto the long side-wall/walk projection. The square crop changes stone scale and breaks course continuity; it reads as a pasted patch, not a drawn variation. See critic-r17C4-1-pieces-13.png."
+      ],
+      "fix": "Redraw the variation for this side-wall projection with continuous endpoints, coping and masonry courses. Integrate any damage or opening into the receiving wall plane and lighting."
+    },
+    "roof-back-c4-w1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x.",
+        "FIXES 8–9: the bright orange chimney/dormer insert and fine detailing sit on a much coarser muted roof field; the assembled cap still reads as two material scales. See critic-r17C4-1-pieces-13.png."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha. Integrate the chimney/dormer flashing and material ramp with that corrected field, retaining its readable volume."
+    },
+    "roof-dormer-c4-w1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x.",
+        "FIXES 8–9: the bright orange chimney/dormer insert and fine detailing sit on a much coarser muted roof field; the assembled cap still reads as two material scales. See critic-r17C4-1-pieces-13.png."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha. Integrate the chimney/dormer flashing and material ramp with that corrected field, retaining its readable volume."
+    },
+    "roof-back-c4-w2": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x.",
+        "FIXES 8–9: the bright orange chimney/dormer insert and fine detailing sit on a much coarser muted roof field; the assembled cap still reads as two material scales. See critic-r17C4-1-pieces-13.png."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha. Integrate the chimney/dormer flashing and material ramp with that corrected field, retaining its readable volume."
+    },
+    "roof-dormer-c4-w2": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9: the ridge field has coarse, scalloped/beaded courses approximately 6–7 native pixels high, strong dark horizontal joints and rounded tile ends. Beside the C4 gable/hip and reference houses, the tile pitch and internal outline weight change visibly. Recolouring has muted the orange but has not unified the drawing scale. See critic-r17C4-1-seams-ridge.png at literal 1x and nearest-neighbour 4x.",
+        "FIXES 8–9: the bright orange chimney/dormer insert and fine detailing sit on a much coarser muted roof field; the assembled cap still reads as two material scales. See critic-r17C4-1-pieces-13.png."
+      ],
+      "fix": "Redraw the ridge source with angular tile clusters at the shared approximately 6–8 px width / 3–4 px course height, three main values and restrained internal joints; register and mode-reduce it using the existing method. Derive width and colour partners from the corrected paint, preserving compatible endpoints and partner alpha. Integrate the chimney/dormer flashing and material ramp with that corrected field, retaining its readable volume."
+    },
+    "party-left-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8–9: this left valley half is a rectangular crop of the failed junction, retaining its coarse rounded tile rows and abrupt horizontal gutter/material division. The export does not provide a demonstrated compatible hip/gable end in the final layout or the seven-cell roof proof. See critic-r17C4-1-pieces-14.png."
+      ],
+      "fix": "Draw and register an actual 48x48 adapter against the intended hip and gable endpoints. Show its ridge, eave, valley and silhouette meeting the receiving caps in both required orientations; use the corrected common tile scale."
+    },
+    "roof-hip-end-c4": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8–9: this right end half is a rectangular crop of the failed junction, retaining its coarse rounded tile rows and abrupt horizontal gutter/material division. The export does not provide a demonstrated compatible hip/gable end in the final layout or the seven-cell roof proof. See critic-r17C4-1-pieces-14.png."
+      ],
+      "fix": "Draw and register an actual 48x48 adapter against the intended hip and gable endpoints. Show its ridge, eave, valley and silhouette meeting the receiving caps in both required orientations; use the corrected common tile scale."
+    },
+    "gatehouse-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-supports-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-overhead-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lean-to-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "workshop-marker-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "workyard-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1, perimeter blocker: the requested east connector at (1296,1392) closes that side, but the south curtain still leaves a 24 px paved bypass west of the gate at x=1152–1176, y=1392–1440. The wall-only alpha mask contains 0 masonry pixels in all 1,152 pixels of that rectangle. The controlled arch is x=1200–1296. See critic-r17C4-1-gate-west-bypass-4x.png. This is a visible art/perimeter failure, not a claim about untested runtime collision.",
+        "FIXES 2: equal-base ordering is improved, but the east curtain at base y=672 still draws across the lower right half of the projecting tower at base y=576: x=1872–1920, y=528–576. The same error recurs at x=1872–1920, y=960–1008 for the tower at base y=1008. Curtain coping cuts through the tower body/return. See critic-r17C4-1-east-tower-occlusion-8x.png.",
+        "FIXES 3 and panel-2 1/5/13: the square south edge at x=768–1104, y=1056–1152 is composed of roof surfaces and clipped freestanding ground-front fragments, not coherent inhabited fronts facing the square. square-facing-shop-0 retains only 2,304 of its 4,608 painted pixels; it and shop-1 leave adjacent bare doorway fragments. All three painted thresholds face south, while their metadata declares north entrances at y=1056. The declared approach and visible doorstep disagree. See critic-r17C4-1-detail-square-south-4x.png.",
+        "FIXES 3/5/7 and panel-2 7/8: square-east-return at x=1200–1296 is a front-facing five-storey stack above side-ground-W, not the required square-facing eastern arcade/side elevation. Its declared west entrance [1200,1032] does not match the painted south-facing door/step near the bottom of the facade. Elsewhere the north–south streets still expose narrow party strips and front stacks rather than matched side-ground/storey/roof returns with usable lane doors. One side-ground and standalone side/rear proof do not visibly integrate those elevations into the city. See critic-r17C4-1-detail-square-east-4x.png.",
+        "FIXES 8–9 and panel-2 3: the northwest roof connection at (336,384) retains a separate rear-eave band and a hard material/projection reset at y=432. Ridge/back/dormer roofs retain rounded coarse courses beside fine hip/gable fields. The seven-cell roof proof uses make_spec(3,1,...) for the middle old orange hip, so it does not validate the new C4 adapters and common material scale. See critic-r17C4-1-nw-contact-8x.png and critic-r17C4-1-seams-ridge.png.",
+        "FIXES 10 and panel-2 9: rear property arrangements are still incompletely bounded shelves/notches. In the northwest x=240–336, y=384–480, stair/props occupy a roof notch and the short fence is largely hidden; there is no visibly complete fence-to-party-wall yard with its 48 px back passage and covered street access. At x=1104–1200, y=384–504 the stacked stair modules and short transverse fence do not form a bounded serviced yard. The south-central x=672–720, y=1104–1200 lean-to/fence fragment likewise does not expose the requested complete second property sequence. Repositioning the former roof props is progress, but does not finish the property geometry.",
+        "FIXES 14: c4_build places every trade sign at im.height-120. Although sign boards are kept within their lots and dedicated bays, brackets extend onto principal upper windows/sills. At the inn x=1296–1392, the bracket at approximately y=936–954 cuts across the lower oriel/sill in y=912–960; analogous mounts affect other trade fronts. See critic-r17C4-1-inn-bracket-8x.png. The sign drawings themselves pass; their beam anchors fail.",
+        "FIXES 15, acceptance blocker: c4_instance_audit counts lot panels/roofs and only props with an explicit chain. It omits the square-facing shop props, churchyard wall sections, north-wall-stair and drawn receiving-return/roof-flashing parts from the placed wall/floor inventory. Connected frontage membership is manually labelled, rather than checked from actual adjacency. Therefore the reported zero failures in 233 instances / 149 windows does not certify every placed architectural instance. No additional actual two-in-five excess is asserted from this omission; the original Part E offending runs are repaired.",
+        "FIXES 16/18: tower and side-wall B/C variations pass hashes by adding visibly pasted rectangles, but fail integrated drawing quality. Existing acceptance proofs and route metadata allow the west gate hole, tower cut-through and false north/west entrance directions to pass. These are not sufficient acceptance tests for the stated joins, access and ownership requirements."
+      ],
+      "fix": "Close the west 24 px gate gap with an owned masonry connector while preserving the 96 px arch; audit the entire perimeter. Retain base-row ordering but crop/mask curtain connectors to projecting tower ownership even across different base rows. Rebuild the square south/east frontages with directionally valid ground, upper, roof and threshold artwork, and tie entrance anchors to painted steps. Continue real side elevations along north–south streets. Recompose two clearly bounded rear-yard sequences with continuous 48 px access. Replace the failed roof/tower/side-wall art, mount sign brackets on actual clear beams, and derive the repetition inventory from every placed architectural component and connected frontage. Rerender all seven deliverables and repeat 1x/4x/8x, join, perimeter and entrance checks. Do not replace the street plan with colour-only adjustments."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "The final city still has the west gate bypass, clipped east tower faces and false-facing/incomplete square frontages identified with exact coordinates under compose.py. These are visible at 1x and fail the perimeter, inhabited-square, high-3/4-volume and access requirements.",
+        "The coarse ridge/back/dormer roof family, failed northwest junction and rectangular masonry variation patches remain visible. Complete rear-yard sequences and clear principal windows beneath sign brackets are not consistently achieved.",
+        "The C4 layout has genuinely changed: bent arrival road, stepped blocks, uneven towers, slate merchant quarter and gate-road inn are present. The fail is not a claim that C4 only recoloured the old plan. Pixel-format, export scaling and the height fraction pass; those do not resolve the specific visible failures."
+      ],
+      "fix": "Fix the source drawings and compose.py issues listed in this report, then rerender. Keep the native panel comparison and exact nearest-neighbour 2x scaling; do not rescale or repaint the review PNG to hide defects."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "The final city still has the west gate bypass, clipped east tower faces and false-facing/incomplete square frontages identified with exact coordinates under compose.py. These are visible at 1x and fail the perimeter, inhabited-square, high-3/4-volume and access requirements.",
+        "The coarse ridge/back/dormer roof family, failed northwest junction and rectangular masonry variation patches remain visible. Complete rear-yard sequences and clear principal windows beneath sign brackets are not consistently achieved.",
+        "The C4 layout has genuinely changed: bent arrival road, stepped blocks, uneven towers, slate merchant quarter and gate-road inn are present. The fail is not a claim that C4 only recoloured the old plan. Pixel-format, export scaling and the height fraction pass; those do not resolve the specific visible failures."
+      ],
+      "fix": "Fix the source drawings and compose.py issues listed in this report, then rerender. Keep the native panel comparison and exact nearest-neighbour 2x scaling; do not rescale or repaint the review PNG to hide defects."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The final city still has the west gate bypass, clipped east tower faces and false-facing/incomplete square frontages identified with exact coordinates under compose.py. These are visible at 1x and fail the perimeter, inhabited-square, high-3/4-volume and access requirements.",
+        "The coarse ridge/back/dormer roof family, failed northwest junction and rectangular masonry variation patches remain visible. Complete rear-yard sequences and clear principal windows beneath sign brackets are not consistently achieved.",
+        "The C4 layout has genuinely changed: bent arrival road, stepped blocks, uneven towers, slate merchant quarter and gate-road inn are present. The fail is not a claim that C4 only recoloured the old plan. Pixel-format, export scaling and the height fraction pass; those do not resolve the specific visible failures."
+      ],
+      "fix": "Fix the source drawings and compose.py issues listed in this report, then rerender. Keep the native panel comparison and exact nearest-neighbour 2x scaling; do not rescale or repaint the review PNG to hide defects."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "The greyscale conversion is exact, and the lighter bent main route, church, guildhall and gate are now legible. However the failed square frontages, roof-course banding and incomplete perimeter ownership survive in greyscale; this cannot be accepted as a proof of the final composition while those forms remain wrong."
+      ],
+      "fix": "Preserve the improved route value hierarchy while fixing the geometry and roof material scale; regenerate directly from the corrected native final."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "Source x=672–1392, y=624–1152: the southern edge contains two clipped doorway fragments and a south-facing shop above roofing instead of a continuous square-facing elevation. The eastern five-floor stack faces south despite its west entrance declaration. See the square-south/east critic details.",
+        "The inn sign bracket cuts an upper window/sill near x=1296–1392, y=936–954. Roof material pitch also changes conspicuously between adjoining caps."
+      ],
+      "fix": "Correct square frontage orientation/ownership and entrance anchors, remount the inn bracket on clear timber and replace the failed roof field; regenerate the same crop by nearest-neighbour 3x."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "Source x=96–720, y=240–816: the northwest junction at (336,384) has an extra eave seam and abrupt coarse-to-fine roof reset at y=432. The northwest property strip remains an incomplete roof notch rather than the required bounded yard with visible back passage. See critic-r17C4-1-nw-contact-8x.png."
+      ],
+      "fix": "Redraw the owned roof junction and recompose a complete northwest rear-yard/access sequence; regenerate the same crop by nearest-neighbour 3x."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "Source x=1104–1776, y=768–1440: a 24 px open paved bypass remains west of the gate at x=1152–1176, y=1392–1440 despite the repaired east connector.",
+        "The inn bracket crosses its upper oriel/sill near x=1296–1392, y=936–954; incomplete property/facade arrangements remain at the upper-left of the crop."
+      ],
+      "fix": "Close the west curtain-to-pier gap, preserve the recessed controlled arch, remount the inn bracket and finish adjoining properties; regenerate the same crop by nearest-neighbour 3x."
+    }
+  },
+  "notes": "Independent C4 round-1 critique; no production file in art-drop/out/city17 was edited. Reviewed BRIEF-17 in full, NOTES drawing/registration/reduction methods, both panel briefs, cycle-4 FIXES and all five reviews, plus critic-r17E-4. Scope: all 83 C4-manifest PNG exports, compose.py, all seven requested final renders and supporting acceptance proofs. Every new export was inspected at literal 1x and nearest-neighbour 4x (21 critic contact sheets); the full city was examined natively and in sixteen 4x tiles, with 8x defect close-ups. Inspected reference/r17 houses, halls and stalls and neighbouring approved art. Props/actors/signs were inspected over summer grass and workyard paving. Seven used ground types were inspected in literal 3x3 repeats at 1x/4x. No seasonal exports are part of C4, so summer/seasonal mask and seasonal-ground tests are not applicable; all 14 colour partners have alpha masks identical to their source. Independent technical checks passed: all 83 sizes and SHA256 values match the C4 manifest; alpha is only 0/255; transparent RGB is zero; no detached 1–2-pixel 8-connected alpha islands; affected facade/return course rows 0/47 match their fixed donors. Replayed 11,517,952 8x8 RGBA mode samples across 35 registered components with zero mismatches, and checked source hashes. This supports the required image-tool drawing/registration/mode-reduction method; no procedural substitute drawing is alleged. Fresh read-only composition equals the submitted final. Final is 1920x1440 (40x30 cells at 48 px); 2x is exact nearest-neighbour, squint is exact L conversion, all three 3x crops are exact, and the today/r15/C4 comparison panels preserve their native pixels. The later coordinator cell dimensions govern the approximate earlier 1200x900 target. Ground repeats are sharp and sufficiently quiet; no new ground-seam failure was found. Height count: 46 modular buildings: {1:7, 2:16, 3:15, 4:6, 5:2}, hence 15.22% one-storey. Including four lean-tos, stable range and market hall gives 52 structures: {1:13, 2:16, 3:15, 4:6, 5:2}, exactly 25.00% one-storey. This criterion passes. No exposed frontage lawns remain in the examined final; churchyard/workyard paving is improved. Six stalls, fountain/cross and visible townsfolk keep the square populated. The new gate-road plan is a real layout change, with bends/steps, mixed heights, an adjacent inn, slate northeast merchant roofs, brown poor-quarter roofs and uneven towers. Do not discard those gains. Repetition: rerunning the submitted C4 audit gives 233 instances, 219 visible, 149 scanned windows, 163 chains, no reported failures. Part E regression layouts likewise report no failures (L-block 39 instances/20 windows; market 61/24; height 32/12), and the three roof-back caps / eight forced shop fronts are repaired. The audit inventory omissions described under compose.py prevent a universal anywhere-in-the-scene pass; they are not evidence of a newly measured excess. FIXES coverage: 1 partial (east connector and separated gate layers good, west bypass remains); 2 partial (same-base order/NW duplicate/south spacing improved, east tower ownership fails); 3 fail (wrong-facing south/east enclosure); 4 visually addressed (continuous lighter bent 96 px arrival road, guard moved), but actual entrance validity is still limited by 3/13; 5 partial (bends/T/steps present, side elevations and serviced property edges incomplete); 6 addressed for the new ordinary facade modules and complete-house comparison; 7 partial (painted returns replace flat fill, complete side elevations/flashing fit incomplete); 8 fail (junction/adapters); 9 partial (colour improved, pitch/beads still fail); 10 fail (complete bounded rear-yard sequences); 11 addressed (paved enclosures and western court opening); 12 addressed for supplied sharp hall/gate shade, with joins still governed by 2/8; 13 partial (new inn door/arch readable, square entrance metadata contradicts paint); 14 partial (eight readable dark-rim signs pass as assets, mounting overlaps fail); 15 fail (incomplete placed-instance inventory); 16 partial (new grounds/storeys/parapets present, pasted tower/side variants fail); 17 visibly improved districts/work/inn storage; 18 partial (proof suite exists but accepts observed failures and uses an old middle hip); 19 addressed (east loading destination/clear west strip/marker); 20 new side/back/seated/porter actors supplied and visible, but full access acceptance depends on the unresolved architectural approaches. Coordinator top priorities 1/4/5 have visible progress; 2/3 remain incomplete through the join/frontage/property defects. Conflict handling: BRIEF-17 and FIXES take precedence over panel-2 suggestions to shrink signs, allow cross-lot shadows, abandon the eight-cell street-variation rule or enlarge standard lots/gate/towers. Sign recognition and twice-round-15 scale were retained in judging the sign assets; their placement, not their required scale, fails. Gate/tower sprite overhang height is not confused with footprint dimensions. No runtime collision, navigation or player-reveal behaviour is claimed tested in this art checkout. Asset status pass is limited to the drawing/export itself; wrong use of an otherwise sound asset is assigned to compose.py and affected renders. Failed drawing families and layout defects require rework before acceptance, not merely recolouring or changing metadata."
+}

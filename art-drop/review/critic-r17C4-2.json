@@ -1,0 +1,661 @@
+{
+  "part": "C4",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "north-shop-court-c4-w1",
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-gate-3x",
+    "r17-C4-roof-adapter-left-1x",
+    "r17-C4-roof-adapter-left-3x",
+    "r17-C4-roof-adapter-right-1x",
+    "r17-C4-roof-adapter-right-3x",
+    "r17-C4-five-staggered-lots-1x",
+    "r17-C4-five-staggered-lots-3x"
+  ],
+  "files": {
+    "storey-recessed-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-shuttered-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-connector-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-portal-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-left-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-right-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-junction-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-porch-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hall-shade-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-vendor-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-customer-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-porter-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "person-seated-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "stable-range-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-recessed-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-recessed-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-shuttered-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-shuttered-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c4-left-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c4-right-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-junction-c4-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-junction-c4-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-walk-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-side-a-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-side-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-side-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-c4-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-dormer-c4-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-dormer-c4-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-left-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gatehouse-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-supports-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-overhead-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lean-to-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "workshop-marker-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "workyard-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-east-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "north-shop-court-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "court-passage-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "north-shop-court-short-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "court-passage-supports-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "court-passage-overhead-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c4-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-c4-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-c4-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-dormer-c4-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-dormer-c4-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-dormer-c4-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-dormer-c4-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fence-h-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fence-h-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fence-v-b-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fence-v-c-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "north-shop-court-c4-w1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 3/8/13: the 48x144 narrow court is not a complete drawing. Its top 48 px are a centre crop of the 96 px court, cutting through the shop canopy and counter at the right canvas edge. In the city this edge is exposed beside the arrival road at x=1104, y=1056..1104; the right half of the booth and its closing contour are missing. This is visible at native size, not an alpha or scaling defect. See critic-r17C4-2-clipped-shop-8x.png."
+      ],
+      "fix": "Draw a complete 48 px-wide north-access shop/court with a finished right boundary, a whole counter/awning and an unmistakable entrance. Register and mode-reduce the drawing, preserve the roof/stack contacts, then replace the clipped placement in square-south-property-2. Do not obtain this width by cutting through a wider booth."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 15/16: c4_instance_audit drops real architectural floors whenever the filename contains 'sign-'. All 14 placed storey-sign-bay floors disappear from its inventory (verified: 14 in the actual layout, zero in the reported inventory). The adjacent C4-east-tailor and C4-east-scribe at x=1584/1680 contain four copies of storey-sign-bay-right-w2. Their uncovered window regions at (1594,871)-(1616,906), (1594,919)-(1616,954), (1690,919)-(1712,954) and (1690,967)-(1712,1002) are byte-identical in the final render. Signs do not supply architectural variation. See critic-r17C4-2-four-identical-windows.png and critic-r17C4-2-repeated-windows-4x.png.",
+        "FIXES 15/18: connected-frontage scans are split by relative floor level, so staggered rows still evade the required count of every floor/window instance. The supplied five-staggered-lots proof has four storey-recessed-c4-w2 and six storey-shuttered-c4-w2 instances across its five touching lots, yet reports zero failures. The shuttered panel also appears three times across the connected northeast pair: x=1392,y=432 and x=1488,y=384/528. Per-level chains plus separate per-building vertical scans do not establish the two-identical-in-five condition for the connected frontage.",
+        "FIXES 8/18: both roof-adapter acceptance assemblies are visibly discontinuous. The left proof inserts roof-valley-c4 into x=96..144,y=240..288; the right inserts roof-hip-end-c4 into x=96..144,y=240..288 (native proof coordinates). Each patch creates a second triangular slope/cusp inside the hip, with a rectangular course/shading reset at its lower edge, rather than meeting the neighbouring gable's ridge/eave. The junction strip above does not fix this interior break. See critic-r17C4-2-roof-adapter-left-4x.png and -right-4x.png. The existing northwest contact at city (336,384) is repaired; this failure concerns the separate valley/end proofs.",
+        "FIXES 10: the south-served-plot still has no visible rear-yard strip. Its declared yard [576,1104,48,96] is occupied almost entirely by the 48x96 court-stair facade; the shed at x=624,y=1104..1152 touches the adjacent roof, while the fence at base 1200 is covered. At 1x the arrangement reads as a stair wall and shed joined directly to roofs, not a front house / enclosed yard / rear range sequence. The covered access and west passage exist, but do not expose the missing yard. See critic-r17C4-2-south-yard-1x.png and -4x.png. The improved northwest laundry/shed yard is not failed.",
+        "Coordinator priorities 3/4 and FIXES 5/10: the bare 96x48 cobble pocket at x=1104..1200,y=480..528 remains pinched between the pottery frontage and surrounding roofs, without a readable serviced-yard boundary or through alley. Nearby guild-rear-service-closure at x=1008..1056,y=432..456 is a short isolated fence across paving; its left end meets no return, fence or wall. These read as unfinished block infill and a stray closure. See critic-r17C4-2-north-hole-1x.png and -4x.png.",
+        "FIXES 3/8/13: the 48x144 narrow court is not a complete drawing. Its top 48 px are a centre crop of the 96 px court, cutting through the shop canopy and counter at the right canvas edge. In the city this edge is exposed beside the arrival road at x=1104, y=1056..1104; the right half of the booth and its closing contour are missing. This is visible at native size, not an alpha or scaling defect. See critic-r17C4-2-clipped-shop-8x.png."
+      ],
+      "fix": "Count architectural pieces by layer/type, not filename substrings; include the sign-bay floors and compare their exposed window motifs. Scan all floor instances along connected and staggered frontages as well as vertical stacks and wall chains, then vary actual drawn panels until the supplied five-lot proof and city pass. Keep the signs in reserved bays and doors visible. Register the valley/end adapters against their actual receiving slopes; move or redraw the adapters if the required ridge/eave endpoints cannot meet. Recompose the south-central property to expose a real bounded yard strip connected to the existing passage and rear door. Resolve the north-middle cobble pocket as a complete serviced court or roofed infill and attach/remove the isolated guild fence. Replace the clipped narrow court drawing. Re-render and visually inspect the final deliverables and acceptance proofs; an empty current audit failure list is not acceptance."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "FIXES 15/16: c4_instance_audit drops real architectural floors whenever the filename contains 'sign-'. All 14 placed storey-sign-bay floors disappear from its inventory (verified: 14 in the actual layout, zero in the reported inventory). The adjacent C4-east-tailor and C4-east-scribe at x=1584/1680 contain four copies of storey-sign-bay-right-w2. Their uncovered window regions at (1594,871)-(1616,906), (1594,919)-(1616,954), (1690,919)-(1712,954) and (1690,967)-(1712,1002) are byte-identical in the final render. Signs do not supply architectural variation. See critic-r17C4-2-four-identical-windows.png and critic-r17C4-2-repeated-windows-4x.png.",
+        "FIXES 15/18: connected-frontage scans are split by relative floor level, so staggered rows still evade the required count of every floor/window instance. The supplied five-staggered-lots proof has four storey-recessed-c4-w2 and six storey-shuttered-c4-w2 instances across its five touching lots, yet reports zero failures. The shuttered panel also appears three times across the connected northeast pair: x=1392,y=432 and x=1488,y=384/528. Per-level chains plus separate per-building vertical scans do not establish the two-identical-in-five condition for the connected frontage.",
+        "FIXES 10: the south-served-plot still has no visible rear-yard strip. Its declared yard [576,1104,48,96] is occupied almost entirely by the 48x96 court-stair facade; the shed at x=624,y=1104..1152 touches the adjacent roof, while the fence at base 1200 is covered. At 1x the arrangement reads as a stair wall and shed joined directly to roofs, not a front house / enclosed yard / rear range sequence. The covered access and west passage exist, but do not expose the missing yard. See critic-r17C4-2-south-yard-1x.png and -4x.png. The improved northwest laundry/shed yard is not failed.",
+        "Coordinator priorities 3/4 and FIXES 5/10: the bare 96x48 cobble pocket at x=1104..1200,y=480..528 remains pinched between the pottery frontage and surrounding roofs, without a readable serviced-yard boundary or through alley. Nearby guild-rear-service-closure at x=1008..1056,y=432..456 is a short isolated fence across paving; its left end meets no return, fence or wall. These read as unfinished block infill and a stray closure. See critic-r17C4-2-north-hole-1x.png and -4x.png.",
+        "FIXES 3/8/13: the 48x144 narrow court is not a complete drawing. Its top 48 px are a centre crop of the 96 px court, cutting through the shop canopy and counter at the right canvas edge. In the city this edge is exposed beside the arrival road at x=1104, y=1056..1104; the right half of the booth and its closing contour are missing. This is visible at native size, not an alpha or scaling defect. See critic-r17C4-2-clipped-shop-8x.png."
+      ],
+      "fix": "Apply the composition and narrow-court fixes above and render again at literal 1920x1440. Preserve the repaired street bends, gate connectors, tower ownership, muted roof districts and populated square."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "Exact nearest-neighbour 2x scaling passes. The source image still contains the clipped narrow court, repeated sign-bay/window panels, missing south yard and unresolved north-middle pocket/fence described under r17-city-final."
+      ],
+      "fix": "Regenerate from the corrected native final with nearest-neighbour scaling."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "All three panels reproduce their sources at literal 1x, but the Round 17 panel contains the failures listed under r17-city-final. Correct comparison sizing does not cure those visible defects."
+      ],
+      "fix": "Rebuild this comparison from the corrected native final, retaining the current-town and Round 15 panels at literal 1x."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "The greyscale conversion is exact and the gate, main road and civic landmarks read. The clipped south-square shop, unfinished south property and north-middle pocket/fence remain visible structural defects; loss of colour also leaves the copied window rhythms exposed."
+      ],
+      "fix": "Regenerate after the geometry, property and repetition fixes; retain the improved civic/main-road value hierarchy."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 3/8/13: the 48x144 narrow court is not a complete drawing. Its top 48 px are a centre crop of the 96 px court, cutting through the shop canopy and counter at the right canvas edge. In the city this edge is exposed beside the arrival road at x=1104, y=1056..1104; the right half of the booth and its closing contour are missing. This is visible at native size, not an alpha or scaling defect. See critic-r17C4-2-clipped-shop-8x.png."
+      ],
+      "fix": "Replace the narrow court drawing and regenerate this exact nearest-neighbour crop."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 15/16: c4_instance_audit drops real architectural floors whenever the filename contains 'sign-'. All 14 placed storey-sign-bay floors disappear from its inventory (verified: 14 in the actual layout, zero in the reported inventory). The adjacent C4-east-tailor and C4-east-scribe at x=1584/1680 contain four copies of storey-sign-bay-right-w2. Their uncovered window regions at (1594,871)-(1616,906), (1594,919)-(1616,954), (1690,919)-(1712,954) and (1690,967)-(1712,1002) are byte-identical in the final render. Signs do not supply architectural variation. See critic-r17C4-2-four-identical-windows.png and critic-r17C4-2-repeated-windows-4x.png."
+      ],
+      "fix": "Vary the tailor/scribe architectural floors and exposed window motifs while retaining the corrected sign mounts, gate road and doorway clearances, then regenerate the crop."
+    },
+    "r17-C4-roof-adapter-left-1x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8/18: both roof-adapter acceptance assemblies are visibly discontinuous. The left proof inserts roof-valley-c4 into x=96..144,y=240..288; the right inserts roof-hip-end-c4 into x=96..144,y=240..288 (native proof coordinates). Each patch creates a second triangular slope/cusp inside the hip, with a rectangular course/shading reset at its lower edge, rather than meeting the neighbouring gable's ridge/eave. The junction strip above does not fix this interior break. See critic-r17C4-2-roof-adapter-left-4x.png and -right-4x.png. The existing northwest contact at city (336,384) is repaired; this failure concerns the separate valley/end proofs."
+      ],
+      "fix": "Rebuild this proof using adapters whose ridge, course and eave endpoints actually continue into the hip and companion gable; inspect both orientations at 1x and nearest-neighbour magnification before acceptance."
+    },
+    "r17-C4-roof-adapter-left-3x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8/18: both roof-adapter acceptance assemblies are visibly discontinuous. The left proof inserts roof-valley-c4 into x=96..144,y=240..288; the right inserts roof-hip-end-c4 into x=96..144,y=240..288 (native proof coordinates). Each patch creates a second triangular slope/cusp inside the hip, with a rectangular course/shading reset at its lower edge, rather than meeting the neighbouring gable's ridge/eave. The junction strip above does not fix this interior break. See critic-r17C4-2-roof-adapter-left-4x.png and -right-4x.png. The existing northwest contact at city (336,384) is repaired; this failure concerns the separate valley/end proofs."
+      ],
+      "fix": "Rebuild this proof using adapters whose ridge, course and eave endpoints actually continue into the hip and companion gable; inspect both orientations at 1x and nearest-neighbour magnification before acceptance."
+    },
+    "r17-C4-roof-adapter-right-1x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8/18: both roof-adapter acceptance assemblies are visibly discontinuous. The left proof inserts roof-valley-c4 into x=96..144,y=240..288; the right inserts roof-hip-end-c4 into x=96..144,y=240..288 (native proof coordinates). Each patch creates a second triangular slope/cusp inside the hip, with a rectangular course/shading reset at its lower edge, rather than meeting the neighbouring gable's ridge/eave. The junction strip above does not fix this interior break. See critic-r17C4-2-roof-adapter-left-4x.png and -right-4x.png. The existing northwest contact at city (336,384) is repaired; this failure concerns the separate valley/end proofs."
+      ],
+      "fix": "Rebuild this proof using adapters whose ridge, course and eave endpoints actually continue into the hip and companion gable; inspect both orientations at 1x and nearest-neighbour magnification before acceptance."
+    },
+    "r17-C4-roof-adapter-right-3x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8/18: both roof-adapter acceptance assemblies are visibly discontinuous. The left proof inserts roof-valley-c4 into x=96..144,y=240..288; the right inserts roof-hip-end-c4 into x=96..144,y=240..288 (native proof coordinates). Each patch creates a second triangular slope/cusp inside the hip, with a rectangular course/shading reset at its lower edge, rather than meeting the neighbouring gable's ridge/eave. The junction strip above does not fix this interior break. See critic-r17C4-2-roof-adapter-left-4x.png and -right-4x.png. The existing northwest contact at city (336,384) is repaired; this failure concerns the separate valley/end proofs."
+      ],
+      "fix": "Rebuild this proof using adapters whose ridge, course and eave endpoints actually continue into the hip and companion gable; inspect both orientations at 1x and nearest-neighbour magnification before acceptance."
+    },
+    "r17-C4-five-staggered-lots-1x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 15/18: connected-frontage scans are split by relative floor level, so staggered rows still evade the required count of every floor/window instance. The supplied five-staggered-lots proof has four storey-recessed-c4-w2 and six storey-shuttered-c4-w2 instances across its five touching lots, yet reports zero failures. The shuttered panel also appears three times across the connected northeast pair: x=1392,y=432 and x=1488,y=384/528. Per-level chains plus separate per-building vertical scans do not establish the two-identical-in-five condition for the connected frontage."
+      ],
+      "fix": "Vary complete drawn floor/window arrangements across the five touching lots and make the corrected all-instance frontage audit reject this current assembly before accepting its replacement."
+    },
+    "r17-C4-five-staggered-lots-3x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 15/18: connected-frontage scans are split by relative floor level, so staggered rows still evade the required count of every floor/window instance. The supplied five-staggered-lots proof has four storey-recessed-c4-w2 and six storey-shuttered-c4-w2 instances across its five touching lots, yet reports zero failures. The shuttered panel also appears three times across the connected northeast pair: x=1392,y=432 and x=1488,y=384/528. Per-level chains plus separate per-building vertical scans do not establish the two-identical-in-five condition for the connected frontage."
+      ],
+      "fix": "Vary complete drawn floor/window arrangements across the five touching lots and make the corrected all-instance frontage audit reject this current assembly before accepting its replacement."
+    }
+  },
+  "notes": "Independent saved-art review for Round 17 Part C4, round 2. Read BRIEF-17 in full, both panel briefs, the NOTES method sections, cycle-4 FIXES and all five neighbouring panel reviews, and critic-r17E-4. The final critic-only instruction controls: no production art/compositor edits, drawing, branch changes, commits or pushes. Only this JSON and critic-r17C4-2-*.png review composites were written. The coordinator's 40x30-cell final overrides the earlier approximate 1200x900 showcase size. The brief's specified gate/tower footprints and twice-R15 sign scale take precedence over conflicting panel enlargement/shrink proposals; 64x72 sign assemblies have not been failed merely for their bracket-inclusive dimensions. Live engine collision/reveal code is outside this art review.\n\nCoverage: all 106 exports in r17-C4-files.json inspected at literal 1x and nearest-neighbour 4x on 35 new piece sheets, alongside the reference houses and neighbouring approved art. The full native city was inspected and divided into sixteen native/4x detail tiles; targeted 8x views cover the clipped booth and northwest contact. Checked the requested final crops, squint and native comparison, roof/house/tall-low/wall/staggered/actor proofs and retained L-block/market/height regressions. Seven ground families were viewed in literal 3x3 repeats: workyard-c4, main-paving-c4, cobble-c3, street-main-c3, street-side-c3, lane-c3 and ditch-c3. Twenty C4 signs, people, fences and service props were mounted over summer grass and the actual workyard ground. There are no C4 seasonal partners, so seasonal-ground and summer/season-mask tests are not applicable. The 24 slate/brown roof colour partners retain their source alpha masks exactly.\n\nTechnical checks pass: all 106 export dimensions and SHA-256 values match the current inventory; alpha is only 0/255 and RGB beneath transparent pixels is zero. The six complete 96x48 ground/storey/inn facade modules match the prescribed course rows 0 and 47 exactly. Independently replayed all 58 retained registered component reductions (28,819,456 source RGBA samples, exact 8x8 modal sampling) with zero mismatches. This replays the retained processing record and does not claim a new drawing operation. Fresh read-only composition reproduces r17-city-final.png exactly. The 3840x2880 2x output, three 3x crops, native three-panel comparison and greyscale conversion all reproduce the expected source pixels exactly.\n\nThe layout really has been reworked: stepped frontages, bends, side-facing entrances, a gate-road inn, varied heights and uneven wall towers are visible. The native final is 1920x1440 (40x30 cells). Its 46 lot buildings have storey histogram {1:7, 2:15, 3:17, 4:6, 5:1}; 7/46 = 15.22% are one-storey. Counting the four lean-tos, stable/storage range and market hall as six additional one-storey structures gives {1:13, 2:15, 3:17, 4:6, 5:1}, 13/52 = 25%, still within the stated cap. Civic towers and curtain towers are excluded from residential storey counting. No exposed lawn remains along the final city's street frontages. The six-stall square is populated and the gate/main route/landmarks read in greyscale. These improvements pass and are not replaced by a claim that only colours changed.\n\nPrior-critic repairs credited: the curved/beaded ridge family and duplicate tower/side-wall variants have been replaced; the northwest doubled eave now has one readable receiving contact; the west/east gate connectors and tower/curtain ownership remove the former bypass and cut-through; side-house drawings provide actual directional elevations; the large signs now occupy reserved blank bays rather than principal windows; the northwest shed/laundry yard reads as serviced space. The individual valley/end PNGs are not rejected merely because compose.py misplaces their slopes: their mandatory assembled acceptance proofs are explicitly failed instead.\n\nThe specific Part E regressions are repaired: the L-block's first five north-rear caps resolve to roof-back-w2, roof-back-w1, roof-back-w1, roof-back-w2, roof-back-repair-w1 (maximum identical pixel identity twice). Each market trade row now resolves four distinct ground-front pixel identities rather than four copies of ground-shop-v1-w2-c0; doors and signs remain readable. This does not waive the new all-floor repetition failures in the C4 final and five-staggered-lot proof. The reported 355-instance/111-window C4 audit with zero failures omits all 14 sign-bay storeys and divides connected floor runs by level, so it is not evidence of universal compliance.\n\nRemaining failures concern FIXES 3/5/8/10/13/15/16/18 and coordinator gap/stray-boundary priorities: the clipped narrow court, repeated visible window/floor instances and incomplete audit, broken adapter assemblies, and unfinished rear-property/infill geometry. Other passing pieces are not failed by association. In particular, the street crop passes after the northwest junction/yard repair; the square and gate crops fail only for defects actually inside their bounds. Review is of saved artwork and composition, not an in-engine playtest."
+}

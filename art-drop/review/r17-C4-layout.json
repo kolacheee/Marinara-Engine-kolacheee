@@ -1,0 +1,6299 @@
+{
+  "size": [
+    1920,
+    1440
+  ],
+  "c4_ground": true,
+  "e_ground": true,
+  "ground_base": "cobble-c3",
+  "lots": [
+    {
+      "id": "C4-west-0",
+      "x": 144,
+      "base": 624,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 0,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-recessed-c4-w2",
+          "storey-shuttered-c4-w2"
+        ],
+        "roof_file": "roof-gable-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [],
+        "flashings": [
+          {
+            "x": 88,
+            "y": 184,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-west-1",
+            "world_eave": 576
+          }
+        ]
+      },
+      "frontage_group": "west-wedge",
+      "footprint": [
+        144,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        384,
+        96,
+        240
+      ],
+      "overhang": [
+        144,
+        384,
+        96,
+        144
+      ],
+      "entrance": [
+        218,
+        624
+      ]
+    },
+    {
+      "id": "C4-west-1",
+      "x": 240,
+      "base": 720,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 1,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v1-w1-c0",
+          "storey-shuttered-c4-right-w1"
+        ],
+        "roof_file": "roof-ridge-c4-w1",
+        "roof": "ridge",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "west-wedge",
+      "footprint": [
+        240,
+        624,
+        48,
+        96
+      ],
+      "painted": [
+        240,
+        528,
+        48,
+        192
+      ],
+      "overhang": [
+        240,
+        528,
+        48,
+        96
+      ],
+      "entrance": [
+        264,
+        720
+      ]
+    },
+    {
+      "id": "C4-west-2",
+      "x": 336,
+      "base": 672,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 2,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-smith-c4-w2",
+          "storey-oriel-w2-c0",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-hip-c4-w2",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "front",
+        "returns": [
+          "right",
+          "left"
+        ],
+        "overlays": [],
+        "joins": [
+          {
+            "file": "roof-junction-c4",
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "flashings": [
+          {
+            "x": 0,
+            "y": 184,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-west-1",
+            "world_eave": 576
+          }
+        ]
+      },
+      "frontage_group": "west-wedge",
+      "footprint": [
+        336,
+        576,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        384,
+        96,
+        288
+      ],
+      "overhang": [
+        336,
+        384,
+        96,
+        192
+      ],
+      "entrance": [
+        384,
+        672
+      ]
+    },
+    {
+      "id": "C4-west-rear-0",
+      "x": 144,
+      "base": 432,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 1,
+        "variation_index": 0,
+        "storeys": [],
+        "panels": [
+          "back-plain-ground-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "west-rear",
+      "footprint": [
+        144,
+        336,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        288,
+        96,
+        144
+      ],
+      "overhang": [
+        144,
+        288,
+        96,
+        48
+      ]
+    },
+    {
+      "id": "C4-west-rear-1",
+      "x": 240,
+      "base": 432,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 1,
+        "variation_index": 1,
+        "storeys": [],
+        "panels": [
+          "back-stair-w2"
+        ],
+        "roof_file": "roof-back-c4-w2",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "west-rear",
+      "footprint": [
+        240,
+        336,
+        96,
+        96
+      ],
+      "painted": [
+        240,
+        288,
+        96,
+        144
+      ],
+      "overhang": [
+        240,
+        288,
+        96,
+        48
+      ]
+    },
+    {
+      "id": "C4-west-rear-2",
+      "x": 336,
+      "base": 432,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 1,
+        "variation_index": 2,
+        "storeys": [],
+        "panels": [
+          "back-plain-ground-w2"
+        ],
+        "roof_file": "roof-dormer-c4-w2",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "back",
+        "returns": [],
+        "overlays": [],
+        "remove_rear_eave": true
+      },
+      "frontage_group": "west-rear",
+      "footprint": [
+        336,
+        336,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        288,
+        96,
+        144
+      ],
+      "overhang": [
+        336,
+        288,
+        96,
+        48
+      ]
+    },
+    {
+      "id": "C4-north-middle-0",
+      "x": 480,
+      "base": 624,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 4,
+        "variation_index": 3,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-recessed-c4-w2",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "roof_file": "roof-gable-c4-w2-slate",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "north-middle",
+      "footprint": [
+        480,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        480,
+        336,
+        96,
+        288
+      ],
+      "overhang": [
+        480,
+        336,
+        96,
+        192
+      ],
+      "entrance": [
+        554,
+        624
+      ]
+    },
+    {
+      "id": "C4-north-middle-1",
+      "x": 576,
+      "base": 576,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 4,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-apothecary-c4-w2",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "roof_file": "roof-ridge-c4-w2",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "front",
+        "returns": [],
+        "overlays": [],
+        "complete_file": "side-house-east-c4",
+        "flashings": [],
+        "joins": []
+      },
+      "frontage_group": "north-middle",
+      "footprint": [
+        576,
+        480,
+        96,
+        96
+      ],
+      "painted": [
+        576,
+        336,
+        96,
+        240
+      ],
+      "overhang": [
+        576,
+        336,
+        96,
+        144
+      ],
+      "entrance": [
+        672,
+        568
+      ],
+      "entrance_direction": "E",
+      "threshold_paint": {
+        "file": "side-house-east-c4",
+        "direction": "E",
+        "point": [
+          96,
+          232
+        ]
+      }
+    },
+    {
+      "id": "square-baker",
+      "x": 720,
+      "base": 672,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 4,
+        "variation_index": 6,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-sign-bay-left-w2",
+          "storey-sign-bay-left-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "roof_file": "roof-gable-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-baker-c4",
+            "x": 0,
+            "y_offset": -144,
+            "beam_anchor": [
+              8,
+              -142
+            ]
+          }
+        ],
+        "flashings": [
+          {
+            "x": 88,
+            "y": 136,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "square-narrow",
+            "world_eave": 528
+          }
+        ]
+      },
+      "frontage_group": "square-north",
+      "footprint": [
+        720,
+        576,
+        96,
+        96
+      ],
+      "painted": [
+        720,
+        384,
+        96,
+        288
+      ],
+      "overhang": [
+        720,
+        384,
+        96,
+        192
+      ],
+      "entrance": [
+        794,
+        672
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "x": 816,
+      "base": 672,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 3,
+        "variation_index": 7,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v1-w1-c0",
+          "storey-shuttered-c4-right-w1",
+          "storey-oriel-w1-c0"
+        ],
+        "roof_file": "roof-ridge-c4-w1",
+        "roof": "ridge",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "square-north",
+      "footprint": [
+        816,
+        576,
+        48,
+        96
+      ],
+      "painted": [
+        816,
+        432,
+        48,
+        240
+      ],
+      "overhang": [
+        816,
+        432,
+        48,
+        144
+      ],
+      "entrance": [
+        840,
+        672
+      ]
+    },
+    {
+      "id": "square-smith",
+      "x": 1056,
+      "base": 672,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 8,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w1-c0",
+          "storey-oriel-w1-c0"
+        ],
+        "roof_file": "roof-gable-c4-w1",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "square-north",
+      "footprint": [
+        1056,
+        576,
+        48,
+        96
+      ],
+      "painted": [
+        1056,
+        432,
+        48,
+        240
+      ],
+      "overhang": [
+        1056,
+        432,
+        48,
+        144
+      ],
+      "entrance": [
+        1080,
+        672
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "x": 1104,
+      "base": 768,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 9,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-sign-bay-left-w2",
+          "storey-sign-bay-left-w2"
+        ],
+        "roof_file": "roof-gable-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-apothecary-c4",
+            "x": 0,
+            "y_offset": -144,
+            "beam_anchor": [
+              8,
+              -142
+            ]
+          }
+        ]
+      },
+      "frontage_group": "square-notch",
+      "footprint": [
+        1104,
+        672,
+        96,
+        96
+      ],
+      "painted": [
+        1104,
+        528,
+        96,
+        240
+      ],
+      "overhang": [
+        1104,
+        528,
+        96,
+        144
+      ],
+      "entrance": [
+        1178,
+        768
+      ]
+    },
+    {
+      "id": "C4-north-east-0",
+      "x": 1200,
+      "base": 624,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 4,
+        "variation_index": 10,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-w2-c1",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2-slate",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [],
+        "flashings": [
+          {
+            "x": 88,
+            "y": 184,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-north-east-1",
+            "world_eave": 528
+          }
+        ]
+      },
+      "frontage_group": "merchant-trapezoid",
+      "footprint": [
+        1200,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1200,
+        336,
+        96,
+        288
+      ],
+      "overhang": [
+        1200,
+        336,
+        96,
+        192
+      ],
+      "entrance": [
+        1218,
+        624
+      ]
+    },
+    {
+      "id": "C4-north-east-1",
+      "x": 1296,
+      "base": 624,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 11,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w1-c0",
+          "storey-oriel-w1-c0"
+        ],
+        "roof_file": "roof-gable-c4-w1-slate",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "merchant-trapezoid",
+      "footprint": [
+        1296,
+        528,
+        48,
+        96
+      ],
+      "painted": [
+        1296,
+        384,
+        48,
+        240
+      ],
+      "overhang": [
+        1296,
+        384,
+        48,
+        144
+      ],
+      "entrance": [
+        1320,
+        624
+      ]
+    },
+    {
+      "id": "C4-north-east-2",
+      "x": 1392,
+      "base": 576,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 12,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w2-c1",
+          "storey-recessed-c4-w2",
+          "storey-shuttered-c4-w2"
+        ],
+        "roof_file": "roof-gable-c4-w2-slate",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "merchant-trapezoid",
+      "footprint": [
+        1392,
+        480,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        336,
+        96,
+        240
+      ],
+      "overhang": [
+        1392,
+        336,
+        96,
+        144
+      ],
+      "entrance": [
+        1466,
+        576
+      ]
+    },
+    {
+      "id": "C4-north-east-3",
+      "x": 1488,
+      "base": 624,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 5,
+        "variation_index": 13,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-w2-c1",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0",
+          "storey-recessed-c4-w2",
+          "storey-arrangement-b-c4-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2-slate",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "front",
+        "returns": [
+          "right",
+          "left"
+        ],
+        "overlays": [],
+        "flashings": [
+          {
+            "x": 0,
+            "y": 136,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-north-east-2",
+            "world_eave": 432
+          }
+        ]
+      },
+      "frontage_group": "merchant-trapezoid",
+      "footprint": [
+        1488,
+        528,
+        96,
+        96
+      ],
+      "painted": [
+        1488,
+        288,
+        96,
+        336
+      ],
+      "overhang": [
+        1488,
+        288,
+        96,
+        240
+      ],
+      "entrance": [
+        1506,
+        624
+      ]
+    },
+    {
+      "id": "C4-north-east-4",
+      "x": 1632,
+      "base": 672,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 3,
+        "variation_index": 14,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w1-c0",
+          "storey-oriel-w1-c0",
+          "storey-recessed-c4-left-w1"
+        ],
+        "roof_file": "roof-gable-c4-w1-slate",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "merchant-trapezoid",
+      "footprint": [
+        1632,
+        576,
+        48,
+        96
+      ],
+      "painted": [
+        1632,
+        384,
+        48,
+        288
+      ],
+      "overhang": [
+        1632,
+        384,
+        48,
+        192
+      ],
+      "entrance": [
+        1656,
+        672
+      ]
+    },
+    {
+      "id": "C4-north-east-5",
+      "x": 1680,
+      "base": 720,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 15,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w2-c1",
+          "storey-recessed-c4-w2",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "roof_file": "roof-gable-c4-w2-slate",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [],
+        "overlays": [],
+        "complete_file": "side-house-east-c4",
+        "flashings": [],
+        "joins": []
+      },
+      "frontage_group": "merchant-trapezoid",
+      "footprint": [
+        1680,
+        624,
+        96,
+        96
+      ],
+      "painted": [
+        1680,
+        480,
+        96,
+        240
+      ],
+      "overhang": [
+        1680,
+        480,
+        96,
+        144
+      ],
+      "entrance": [
+        1776,
+        712
+      ],
+      "entrance_direction": "E",
+      "threshold_paint": {
+        "file": "side-house-east-c4",
+        "direction": "E",
+        "point": [
+          96,
+          232
+        ]
+      }
+    },
+    {
+      "id": "C4-merchant-rear-0",
+      "x": 1296,
+      "base": 432,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 1,
+        "variation_index": 15,
+        "storeys": [],
+        "panels": [
+          "back-plain-ground-w1"
+        ],
+        "roof_file": "roof-ridge-c4-w1-slate",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "merchant-rear",
+      "footprint": [
+        1296,
+        336,
+        48,
+        96
+      ],
+      "painted": [
+        1296,
+        288,
+        48,
+        144
+      ],
+      "overhang": [
+        1296,
+        288,
+        48,
+        48
+      ]
+    },
+    {
+      "id": "C4-merchant-rear-1",
+      "x": 1632,
+      "base": 432,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 1,
+        "variation_index": 16,
+        "storeys": [],
+        "panels": [
+          "back-plain-ground-w1"
+        ],
+        "roof_file": "roof-ridge-c4-w1-slate",
+        "roof": "ridge",
+        "entrance_dx": 24,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "merchant-rear",
+      "footprint": [
+        1632,
+        336,
+        48,
+        96
+      ],
+      "painted": [
+        1632,
+        288,
+        48,
+        144
+      ],
+      "overhang": [
+        1632,
+        288,
+        48,
+        48
+      ]
+    },
+    {
+      "id": "C4-added-rear-0",
+      "x": 480,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 2,
+        "variation_index": 42,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "back-plain-ground-w2",
+          "back-plain-w2"
+        ],
+        "roof_file": "roof-back-c4-w2-slate",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        480,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        480,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        480,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-1",
+      "x": 720,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 2,
+        "variation_index": 43,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "back-stair-w2",
+          "back-stair-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        720,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        720,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        720,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-2",
+      "x": 816,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 44,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "back-plain-ground-w1",
+          "storey-shuttered-c4-right-w1"
+        ],
+        "roof_file": "roof-ridge-c4-w1",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        816,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        816,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        816,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-3",
+      "x": 1056,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 45,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "back-plain-ground-w1",
+          "back-plain-w1"
+        ],
+        "roof_file": "roof-ridge-c4-w1",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        1056,
+        384,
+        48,
+        96
+      ],
+      "painted": [
+        1056,
+        288,
+        48,
+        192
+      ],
+      "overhang": [
+        1056,
+        288,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-4",
+      "x": 1104,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 2,
+        "variation_index": 46,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-work-v2-w2-c0",
+          "storey-shuttered-c4-w2"
+        ],
+        "roof_file": "roof-back-c4-w2",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        1104,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1104,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1104,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-5",
+      "x": 1200,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 2,
+        "variation_index": 47,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "back-plain-ground-w2",
+          "storey-shuttered-c4-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2-slate",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        1200,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1200,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1200,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "C4-added-rear-6",
+      "x": 1392,
+      "base": 480,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 2,
+        "variation_index": 48,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "back-plain-ground-w2",
+          "back-plain-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2-slate",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "back",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "north-rear-ranges",
+      "footprint": [
+        1392,
+        384,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        288,
+        96,
+        192
+      ],
+      "overhang": [
+        1392,
+        288,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "x": 1200,
+      "base": 1056,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 4,
+        "variation_index": 18,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "side-ground-W",
+          "storey-recessed-c4-w2",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-gable-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [],
+        "overlays": [],
+        "complete_file": "side-house-west-c4",
+        "flashings": [],
+        "joins": []
+      },
+      "frontage_group": "inn-square",
+      "footprint": [
+        1200,
+        960,
+        96,
+        96
+      ],
+      "painted": [
+        1200,
+        768,
+        96,
+        288
+      ],
+      "overhang": [
+        1200,
+        768,
+        96,
+        192
+      ],
+      "entrance": [
+        1200,
+        1032
+      ],
+      "entrance_direction": "W",
+      "threshold_paint": {
+        "file": "side-house-west-c4",
+        "direction": "W",
+        "point": [
+          0,
+          264
+        ]
+      }
+    },
+    {
+      "id": "C4-gate-inn",
+      "x": 1296,
+      "base": 1056,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 4,
+        "variation_index": 19,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "inn-front-c4-w2",
+          "storey-sign-bay-left-w2",
+          "storey-sign-bay-left-w2",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2",
+        "roof": "ridge",
+        "entrance_dx": 28,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-inn-c4",
+            "x": 0,
+            "y_offset": -144,
+            "beam_anchor": [
+              8,
+              -142
+            ]
+          }
+        ],
+        "flashings": [
+          {
+            "x": 88,
+            "y": 136,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-inn-east-wing",
+            "world_eave": 912
+          }
+        ]
+      },
+      "frontage_group": "inn-gate-road",
+      "footprint": [
+        1296,
+        960,
+        96,
+        96
+      ],
+      "painted": [
+        1296,
+        768,
+        96,
+        288
+      ],
+      "overhang": [
+        1296,
+        768,
+        96,
+        192
+      ],
+      "entrance": [
+        1324,
+        1056
+      ]
+    },
+    {
+      "id": "C4-inn-east-wing",
+      "x": 1392,
+      "base": 1056,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 20,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-arch-v1-w2-c0",
+          "storey-oriel-w2-c0",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-hip-c4-w2",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "inn-gate-road",
+      "footprint": [
+        1392,
+        960,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        768,
+        96,
+        288
+      ],
+      "overhang": [
+        1392,
+        768,
+        96,
+        192
+      ],
+      "entrance": [
+        1440,
+        1056
+      ]
+    },
+    {
+      "id": "C4-east-tailor",
+      "x": 1584,
+      "base": 1008,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 21,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-sign-bay-right-w2",
+          "storey-sign-bay-shutter-right-c4-w2"
+        ],
+        "roof_file": "roof-gable-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "left"
+        ],
+        "overlays": [
+          {
+            "file": "sign-tailor-c4",
+            "x": 32,
+            "y_offset": -144,
+            "beam_anchor": [
+              40,
+              -142
+            ]
+          }
+        ]
+      },
+      "frontage_group": "inn-east",
+      "footprint": [
+        1584,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        1584,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        1584,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        1658,
+        1008
+      ]
+    },
+    {
+      "id": "C4-east-scribe",
+      "x": 1680,
+      "base": 1056,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 4,
+        "variation_index": 22,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-apothecary-c4-w2",
+          "storey-sign-bay-shutter-right-c4-w2",
+          "storey-sign-bay-right-w2",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-scribe-c4",
+            "x": 32,
+            "y_offset": -144,
+            "beam_anchor": [
+              40,
+              -142
+            ]
+          }
+        ]
+      },
+      "frontage_group": "inn-east",
+      "footprint": [
+        1680,
+        960,
+        96,
+        96
+      ],
+      "painted": [
+        1680,
+        768,
+        96,
+        288
+      ],
+      "overhang": [
+        1680,
+        768,
+        96,
+        192
+      ],
+      "entrance": [
+        1698,
+        1056
+      ]
+    },
+    {
+      "id": "west-smith",
+      "x": 144,
+      "base": 1008,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 23,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-smith-c4-w2",
+          "storey-sign-bay-left-w2",
+          "storey-sign-bay-left-w2"
+        ],
+        "roof_file": "roof-hip-c4-w2",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "front",
+        "returns": [
+          "left"
+        ],
+        "overlays": [
+          {
+            "file": "sign-smith-c4",
+            "x": 0,
+            "y_offset": -144,
+            "beam_anchor": [
+              8,
+              -142
+            ]
+          }
+        ]
+      },
+      "frontage_group": "west-craft",
+      "footprint": [
+        144,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        720,
+        96,
+        288
+      ],
+      "overhang": [
+        144,
+        720,
+        96,
+        192
+      ],
+      "entrance": [
+        192,
+        1008
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "x": 336,
+      "base": 1008,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 24,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-sign-bay-right-w2",
+          "storey-sign-bay-right-w2"
+        ],
+        "roof_file": "roof-ridge-c4-w2",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [
+          {
+            "file": "sign-cobbler-c4",
+            "x": 32,
+            "y_offset": -144,
+            "beam_anchor": [
+              40,
+              -142
+            ]
+          }
+        ]
+      },
+      "frontage_group": "west-craft",
+      "footprint": [
+        336,
+        912,
+        96,
+        96
+      ],
+      "painted": [
+        336,
+        768,
+        96,
+        240
+      ],
+      "overhang": [
+        336,
+        768,
+        96,
+        144
+      ],
+      "entrance": [
+        410,
+        1008
+      ]
+    },
+    {
+      "id": "C4-south-0",
+      "x": 144,
+      "base": 1296,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 25,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-apothecary-c4-w2",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "roof_file": "roof-ridge-c4-w2-brown",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": [],
+        "flashings": [
+          {
+            "x": 88,
+            "y": 136,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-south-1",
+            "world_eave": 1200
+          }
+        ]
+      },
+      "frontage_group": "south-L",
+      "footprint": [
+        144,
+        1200,
+        96,
+        96
+      ],
+      "painted": [
+        144,
+        1056,
+        96,
+        240
+      ],
+      "overhang": [
+        144,
+        1056,
+        96,
+        144
+      ],
+      "entrance": [
+        162,
+        1296
+      ]
+    },
+    {
+      "id": "C4-south-1",
+      "x": 240,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 26,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-smith-c4-w2",
+          "storey-oriel-w2-c0",
+          "storey-recessed-c4-w2"
+        ],
+        "roof_file": "roof-hip-c4-w2-brown",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "south-L",
+      "footprint": [
+        240,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        240,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        240,
+        1056,
+        96,
+        192
+      ],
+      "entrance": [
+        288,
+        1344
+      ]
+    },
+    {
+      "id": "C4-south-2",
+      "x": 336,
+      "base": 1248,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 27,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-w1-c0",
+          "storey-recessed-c4-left-w1"
+        ],
+        "roof_file": "roof-back-c4-w1-brown",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right",
+          "left"
+        ],
+        "overlays": [],
+        "flashings": [
+          {
+            "x": 0,
+            "y": 136,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-south-1",
+            "world_eave": 1200
+          }
+        ]
+      },
+      "frontage_group": "south-L",
+      "footprint": [
+        336,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        336,
+        1056,
+        48,
+        192
+      ],
+      "overhang": [
+        336,
+        1056,
+        48,
+        96
+      ],
+      "entrance": [
+        360,
+        1248
+      ]
+    },
+    {
+      "id": "C4-south-3",
+      "x": 576,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 1,
+        "variation_index": 28,
+        "storeys": [],
+        "panels": [
+          "ground-door-v1-w1-c0"
+        ],
+        "roof_file": "roof-ridge-c4-w1",
+        "roof": "ridge",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "square-south",
+      "footprint": [
+        576,
+        1248,
+        48,
+        96
+      ],
+      "painted": [
+        576,
+        1200,
+        48,
+        144
+      ],
+      "overhang": [
+        576,
+        1200,
+        48,
+        48
+      ],
+      "entrance": [
+        600,
+        1344
+      ]
+    },
+    {
+      "id": "C4-south-4",
+      "x": 624,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 29,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w1-c0",
+          "storey-oriel-w1-c0"
+        ],
+        "roof_file": "roof-back-c4-w1",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [],
+        "overlays": []
+      },
+      "frontage_group": "square-south",
+      "footprint": [
+        624,
+        1248,
+        48,
+        96
+      ],
+      "painted": [
+        624,
+        1152,
+        48,
+        192
+      ],
+      "overhang": [
+        624,
+        1152,
+        48,
+        96
+      ],
+      "entrance": [
+        648,
+        1344
+      ],
+      "use": "low workshop range beside rear yard"
+    },
+    {
+      "id": "C4-poor-0",
+      "x": 1392,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 2,
+        "variation_index": 35,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-work-v1-w2-c1",
+          "back-plain-w2"
+        ],
+        "roof_file": "roof-hip-c4-w2-brown",
+        "roof": "hip",
+        "entrance_dx": 48,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "poor-wall",
+      "footprint": [
+        1392,
+        1248,
+        96,
+        96
+      ],
+      "painted": [
+        1392,
+        1104,
+        96,
+        240
+      ],
+      "overhang": [
+        1392,
+        1104,
+        96,
+        144
+      ],
+      "entrance": [
+        1440,
+        1344
+      ]
+    },
+    {
+      "id": "C4-poor-1",
+      "x": 1488,
+      "base": 1296,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 36,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-work-v2-w1-c1",
+          "back-plain-w1"
+        ],
+        "roof_file": "roof-ridge-c4-w1-brown",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right",
+          "left"
+        ],
+        "overlays": [],
+        "flashings": [
+          {
+            "x": 0,
+            "y": 136,
+            "crop": [
+              0,
+              18,
+              8,
+              28
+            ],
+            "neighbour": "C4-poor-0",
+            "world_eave": 1248
+          }
+        ]
+      },
+      "frontage_group": "poor-wall",
+      "footprint": [
+        1488,
+        1200,
+        48,
+        96
+      ],
+      "painted": [
+        1488,
+        1104,
+        48,
+        192
+      ],
+      "overhang": [
+        1488,
+        1104,
+        48,
+        96
+      ],
+      "entrance": [
+        1512,
+        1296
+      ]
+    },
+    {
+      "id": "C4-poor-2",
+      "x": 1536,
+      "base": 1248,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 1,
+        "variation_index": 37,
+        "storeys": [],
+        "panels": [
+          "ground-work-v1-w1-c1"
+        ],
+        "roof_file": "roof-ridge-c4-w1-brown",
+        "roof": "ridge",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "poor-wall",
+      "footprint": [
+        1536,
+        1152,
+        48,
+        96
+      ],
+      "painted": [
+        1536,
+        1104,
+        48,
+        144
+      ],
+      "overhang": [
+        1536,
+        1104,
+        48,
+        48
+      ],
+      "entrance": [
+        1560,
+        1248
+      ]
+    },
+    {
+      "id": "C4-poor-3",
+      "x": 1728,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 2,
+        "variation_index": 38,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-work-v2-w1-c1",
+          "back-plain-w1"
+        ],
+        "roof_file": "roof-gable-c4-w1-brown",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "poor-wall",
+      "footprint": [
+        1728,
+        1248,
+        48,
+        96
+      ],
+      "painted": [
+        1728,
+        1104,
+        48,
+        240
+      ],
+      "overhang": [
+        1728,
+        1104,
+        48,
+        144
+      ],
+      "entrance": [
+        1752,
+        1344
+      ]
+    },
+    {
+      "id": "square-south-property-0",
+      "x": 720,
+      "base": 1296,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 60,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-recessed-c4-w2",
+          "storey-shuttered-c4-w2"
+        ],
+        "roof_file": "north-shop-court-short-c4",
+        "roof": "gable",
+        "entrance_dx": 74,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "square-south",
+      "footprint": [
+        720,
+        1200,
+        96,
+        96
+      ],
+      "entrance": [
+        751,
+        1062
+      ],
+      "entrance_direction": "N",
+      "threshold_paint": {
+        "file": "north-shop-court-short-c4",
+        "point": [
+          31,
+          6
+        ],
+        "direction": "N"
+      },
+      "court": [
+        728,
+        1062,
+        40,
+        42
+      ],
+      "overhead_court": true,
+      "painted": [
+        720,
+        1056,
+        96,
+        240
+      ],
+      "overhang": [
+        720,
+        1056,
+        96,
+        144
+      ]
+    },
+    {
+      "id": "square-south-property-1",
+      "x": 960,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 2,
+        "floors": 3,
+        "variation_index": 61,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-apothecary-c4-w2",
+          "storey-shuttered-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "roof_file": "north-shop-court-c4",
+        "roof": "ridge",
+        "entrance_dx": 18,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "square-south",
+      "footprint": [
+        960,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        991,
+        1062
+      ],
+      "entrance_direction": "N",
+      "threshold_paint": {
+        "file": "north-shop-court-c4",
+        "point": [
+          31,
+          6
+        ],
+        "direction": "N"
+      },
+      "court": [
+        968,
+        1062,
+        40,
+        42
+      ],
+      "overhead_court": true,
+      "painted": [
+        960,
+        1056,
+        96,
+        288
+      ],
+      "overhang": [
+        960,
+        1056,
+        96,
+        192
+      ]
+    },
+    {
+      "id": "square-south-property-2",
+      "x": 1056,
+      "base": 1344,
+      "spec": {
+        "c4": true,
+        "width": 1,
+        "floors": 3,
+        "variation_index": 62,
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "panels": [
+          "ground-door-v2-w1-c0",
+          "storey-oriel-w1-c0",
+          "storey-recessed-c4-left-w1"
+        ],
+        "roof_file": "north-shop-court-c4-w1",
+        "roof": "gable",
+        "entrance_dx": 24,
+        "view": "front",
+        "returns": [
+          "right"
+        ],
+        "overlays": []
+      },
+      "frontage_group": "square-south",
+      "footprint": [
+        1056,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1072,
+        1056
+      ],
+      "entrance_direction": "N",
+      "threshold_paint": {
+        "file": "north-shop-court-c4-w1",
+        "point": [
+          16,
+          4
+        ],
+        "direction": "N"
+      },
+      "court": [
+        1060,
+        1056,
+        24,
+        48
+      ],
+      "overhead_court": true,
+      "painted": [
+        1056,
+        1056,
+        48,
+        288
+      ],
+      "overhang": [
+        1056,
+        1056,
+        48,
+        192
+      ]
+    }
+  ],
+  "props": [
+    {
+      "file": "district-rich-banner",
+      "x": 1272,
+      "base": 540,
+      "owner": "C4-north-east-0"
+    },
+    {
+      "file": "district-rich-banner",
+      "x": 1752,
+      "base": 636,
+      "owner": "C4-north-east-5"
+    },
+    {
+      "file": "stable-range-c4",
+      "x": 1488,
+      "base": 864,
+      "id": "inn-storage",
+      "footprint": [
+        1488,
+        816,
+        96,
+        48
+      ],
+      "entrance": [
+        1512,
+        864
+      ]
+    },
+    {
+      "file": "planter-tree-c3",
+      "x": 1536,
+      "base": 960,
+      "owner": "inn-court"
+    },
+    {
+      "file": "cart",
+      "x": 1536,
+      "base": 1048,
+      "owner": "inn-court",
+      "crop": [
+        0,
+        0,
+        48,
+        48
+      ]
+    },
+    {
+      "file": "crate",
+      "x": 1554,
+      "base": 1048,
+      "owner": "inn-court"
+    },
+    {
+      "file": "fence-0",
+      "x": 1536,
+      "base": 1056,
+      "owner": "inn-court"
+    },
+    {
+      "file": "workshop-marker-c4",
+      "x": 1558,
+      "base": 840,
+      "owner": "inn-storage"
+    },
+    {
+      "file": "yard-0",
+      "x": 240,
+      "base": 988,
+      "id": "court-well",
+      "owner": "court"
+    },
+    {
+      "file": "washing-line",
+      "x": 256,
+      "base": 984,
+      "id": "court-laundry",
+      "overhead": true,
+      "owner": "court",
+      "foreground_mask": [
+        6,
+        0,
+        90,
+        32
+      ],
+      "supports": [
+        [
+          258,
+          954,
+          4,
+          28
+        ],
+        [
+          346,
+          954,
+          4,
+          28
+        ]
+      ]
+    },
+    {
+      "file": "court-closure-r",
+      "x": 240,
+      "base": 912,
+      "id": "court-closure",
+      "entrance": [
+        272,
+        912
+      ],
+      "footprint": [
+        240,
+        816,
+        96,
+        96
+      ],
+      "overhang": [
+        240,
+        768,
+        96,
+        48
+      ]
+    },
+    {
+      "file": "fence-0",
+      "x": 240,
+      "base": 1008,
+      "id": "court-gate",
+      "owner": "west-court"
+    },
+    {
+      "file": "fence-1",
+      "x": 336,
+      "base": 960,
+      "owner": "west-court",
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ]
+    },
+    {
+      "file": "fence-1",
+      "x": 336,
+      "base": 1008,
+      "owner": "west-court",
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ]
+    },
+    {
+      "file": "yard-1",
+      "x": 144,
+      "base": 952,
+      "owner": "smith-fuel"
+    },
+    {
+      "file": "forge-smoke",
+      "x": 170,
+      "base": 866,
+      "owner": "west-smith",
+      "overhead": true
+    },
+    {
+      "file": "chimney-1-c0",
+      "x": 170,
+      "base": 826,
+      "owner": "west-smith"
+    },
+    {
+      "file": "workshop-marker-c4",
+      "x": 214,
+      "base": 956,
+      "owner": "west-smith"
+    },
+    {
+      "file": "lean-to-c4",
+      "x": 1440,
+      "base": 1200,
+      "owner": "poor-rear"
+    },
+    {
+      "file": "district-poor-shutter",
+      "x": 1440,
+      "base": 1228,
+      "owner": "poor-rear"
+    },
+    {
+      "file": "lean-to-c4",
+      "x": 1728,
+      "base": 1200,
+      "owner": "poor-rear"
+    },
+    {
+      "file": "district-poor-shutter",
+      "x": 1728,
+      "base": 1228,
+      "owner": "poor-rear"
+    },
+    {
+      "file": "cathedral-r",
+      "x": 480,
+      "base": 1056,
+      "id": "cathedral",
+      "entrance": [
+        562,
+        1056
+      ],
+      "footprint": [
+        480,
+        768,
+        240,
+        288
+      ],
+      "overhang": [
+        480,
+        624,
+        240,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        240,
+        144
+      ]
+    },
+    {
+      "file": "guildhall-r",
+      "x": 864,
+      "base": 672,
+      "id": "guildhall",
+      "entrance": [
+        951,
+        672
+      ],
+      "footprint": [
+        864,
+        480,
+        192,
+        192
+      ],
+      "overhang": [
+        864,
+        272,
+        192,
+        208
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        192,
+        208
+      ]
+    },
+    {
+      "file": "bench-pocket",
+      "x": 624,
+      "base": 760,
+      "id": "bench-pocket",
+      "owner": "churchyard"
+    },
+    {
+      "file": "guildhall-entry-r",
+      "x": 935,
+      "base": 672,
+      "id": "guildhall-public-entry",
+      "layer": 2,
+      "footprint": [
+        935,
+        656,
+        32,
+        16
+      ]
+    },
+    {
+      "file": "townhall-market-r",
+      "x": 720,
+      "base": 864,
+      "id": "market-hall",
+      "footprint": [
+        720,
+        720,
+        192,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        192,
+        105
+      ]
+    },
+    {
+      "file": "church-porch-c4",
+      "x": 696,
+      "base": 960,
+      "id": "church-side-entry",
+      "entrance": [
+        744,
+        936
+      ],
+      "entrance_direction": "E",
+      "footprint": [
+        696,
+        912,
+        48,
+        48
+      ]
+    },
+    {
+      "file": "fountain-r",
+      "x": 816,
+      "base": 1008,
+      "id": "fountain",
+      "footprint": [
+        816,
+        912,
+        96,
+        96
+      ]
+    },
+    {
+      "file": "market-cross-r",
+      "x": 1056,
+      "base": 1008,
+      "id": "market-cross",
+      "footprint": [
+        1056,
+        912,
+        48,
+        96
+      ]
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 576,
+      "base": 696,
+      "crop": [
+        0,
+        24,
+        48,
+        48
+      ],
+      "owner": "churchyard"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 624,
+      "base": 696,
+      "crop": [
+        0,
+        24,
+        48,
+        48
+      ],
+      "owner": "churchyard"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 672,
+      "base": 696,
+      "crop": [
+        0,
+        24,
+        48,
+        48
+      ],
+      "owner": "churchyard"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 576,
+      "base": 768,
+      "crop": [
+        0,
+        24,
+        48,
+        48
+      ],
+      "owner": "churchyard"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 672,
+      "base": 768,
+      "crop": [
+        0,
+        24,
+        48,
+        48
+      ],
+      "owner": "churchyard"
+    },
+    {
+      "file": "planter-tree-c3",
+      "x": 576,
+      "base": 750,
+      "owner": "churchyard"
+    },
+    {
+      "file": "person-seated-c4",
+      "x": 636,
+      "base": 752,
+      "id": "church-seated",
+      "role": "seated visitor",
+      "sort_base": 761
+    },
+    {
+      "file": "stall-0",
+      "x": 936,
+      "base": 828,
+      "id": "stall-0",
+      "footprint": [
+        936,
+        780,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ],
+      "supports": [
+        [
+          939,
+          807,
+          3,
+          21
+        ],
+        [
+          978,
+          807,
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 952,
+      "base": 788,
+      "id": "vendor-0",
+      "role": "vendor"
+    },
+    {
+      "file": "stall-1",
+      "x": 984,
+      "base": 828,
+      "id": "stall-1",
+      "footprint": [
+        984,
+        780,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ],
+      "supports": [
+        [
+          987,
+          807,
+          3,
+          21
+        ],
+        [
+          1026,
+          807,
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 1000,
+      "base": 788,
+      "id": "vendor-1",
+      "role": "vendor"
+    },
+    {
+      "file": "stall-2",
+      "x": 1032,
+      "base": 828,
+      "id": "stall-2",
+      "footprint": [
+        1032,
+        780,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ],
+      "supports": [
+        [
+          1035,
+          807,
+          3,
+          21
+        ],
+        [
+          1074,
+          807,
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 1048,
+      "base": 788,
+      "id": "vendor-2",
+      "role": "vendor"
+    },
+    {
+      "file": "stall-3",
+      "x": 936,
+      "base": 948,
+      "id": "stall-3",
+      "footprint": [
+        936,
+        900,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ],
+      "supports": [
+        [
+          939,
+          927,
+          3,
+          21
+        ],
+        [
+          978,
+          927,
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 952,
+      "base": 908,
+      "id": "vendor-3",
+      "role": "vendor"
+    },
+    {
+      "file": "stall-4",
+      "x": 984,
+      "base": 948,
+      "id": "stall-4",
+      "footprint": [
+        984,
+        900,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ],
+      "supports": [
+        [
+          987,
+          927,
+          3,
+          21
+        ],
+        [
+          1026,
+          927,
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 1000,
+      "base": 908,
+      "id": "vendor-4",
+      "role": "vendor"
+    },
+    {
+      "file": "stall-5",
+      "x": 1032,
+      "base": 948,
+      "id": "stall-5",
+      "footprint": [
+        1032,
+        900,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        2,
+        2,
+        46,
+        26
+      ],
+      "supports": [
+        [
+          1035,
+          927,
+          3,
+          21
+        ],
+        [
+          1074,
+          927,
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 1048,
+      "base": 908,
+      "id": "vendor-5",
+      "role": "vendor"
+    },
+    {
+      "file": "person-customer-c4",
+      "x": 955,
+      "base": 869,
+      "role": "customer facing bread"
+    },
+    {
+      "file": "person-customer-c4",
+      "x": 1004,
+      "base": 989,
+      "role": "customer facing cloth"
+    },
+    {
+      "file": "cart",
+      "x": 864,
+      "base": 904,
+      "owner": "market-delivery"
+    },
+    {
+      "file": "crate",
+      "x": 916,
+      "base": 904,
+      "owner": "market-delivery"
+    },
+    {
+      "file": "barrel",
+      "x": 890,
+      "base": 884,
+      "owner": "market-delivery"
+    },
+    {
+      "file": "person-porter-c4",
+      "x": 888,
+      "base": 889,
+      "role": "unloading porter"
+    },
+    {
+      "file": "person-vendor-c4",
+      "x": 910,
+      "base": 1010,
+      "role": "jug filler"
+    },
+    {
+      "file": "person",
+      "x": 552,
+      "base": 1090,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "role": "church arrival"
+    },
+    {
+      "file": "person",
+      "x": 914,
+      "base": 701,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "C4-person-0",
+      "role": "guild entry"
+    },
+    {
+      "file": "person",
+      "x": 200,
+      "base": 714,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "C4-person-1",
+      "role": "west bend"
+    },
+    {
+      "file": "person",
+      "x": 351,
+      "base": 757,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "C4-person-2",
+      "role": "west bend"
+    },
+    {
+      "file": "person",
+      "x": 692,
+      "base": 617,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "C4-person-3",
+      "role": "side entry"
+    },
+    {
+      "file": "person",
+      "x": 1460,
+      "base": 665,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "C4-person-4",
+      "role": "merchant street"
+    },
+    {
+      "file": "person",
+      "x": 1600,
+      "base": 686,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "C4-person-5",
+      "role": "merchant lane"
+    },
+    {
+      "file": "person",
+      "x": 1740,
+      "base": 757,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "C4-person-6",
+      "role": "east bend"
+    },
+    {
+      "file": "person",
+      "x": 282,
+      "base": 998,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "C4-person-7",
+      "role": "court well"
+    },
+    {
+      "file": "person",
+      "x": 1500,
+      "base": 1000,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "C4-person-8",
+      "role": "stable hand"
+    },
+    {
+      "file": "person",
+      "x": 1360,
+      "base": 1100,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "C4-person-9",
+      "role": "inn arrival"
+    },
+    {
+      "file": "person",
+      "x": 1326,
+      "base": 1375,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "C4-person-10",
+      "role": "gate guard"
+    },
+    {
+      "file": "person",
+      "x": 1030,
+      "base": 880,
+      "path": "review/r15-M-clean-folk-b-3.png",
+      "id": "C4-person-11",
+      "role": "market shopper"
+    },
+    {
+      "file": "person",
+      "x": 770,
+      "base": 970,
+      "path": "review/r15-M-clean-folk-b-0.png",
+      "id": "C4-person-12",
+      "role": "church porch visitor"
+    },
+    {
+      "file": "person",
+      "x": 300,
+      "base": 1380,
+      "path": "review/r15-M-clean-folk-b-1.png",
+      "id": "C4-person-13",
+      "role": "south service"
+    },
+    {
+      "file": "person",
+      "x": 1750,
+      "base": 1380,
+      "path": "review/r15-M-clean-folk-b-2.png",
+      "id": "C4-person-14",
+      "role": "poor service"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 0,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 0,
+      "id": "north-curtain-0"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 0,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 0,
+      "id": "south-curtain-0"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 96,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 1,
+      "id": "north-curtain-1"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 96,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 1,
+      "id": "south-curtain-1"
+    },
+    {
+      "file": "wall-walk-c-c4",
+      "x": 192,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 2,
+      "id": "north-curtain-2"
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 192,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 2,
+      "id": "south-curtain-2"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 288,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 3,
+      "id": "north-curtain-3"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 288,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 3,
+      "id": "south-curtain-3"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 384,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 4,
+      "id": "north-curtain-4"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 384,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 4,
+      "id": "south-curtain-4"
+    },
+    {
+      "file": "wall-walk-c-c4",
+      "x": 480,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 5,
+      "id": "north-curtain-5"
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 480,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 5,
+      "id": "south-curtain-5"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 576,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 6,
+      "id": "north-curtain-6"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 576,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 6,
+      "id": "south-curtain-6"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 672,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 7,
+      "id": "north-curtain-7"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 672,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 7,
+      "id": "south-curtain-7"
+    },
+    {
+      "file": "wall-walk-c-c4",
+      "x": 768,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 8,
+      "id": "north-curtain-8"
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 768,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 8,
+      "id": "south-curtain-8"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 864,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 9,
+      "id": "north-curtain-9"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 864,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 9,
+      "id": "south-curtain-9"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 960,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 10,
+      "id": "north-curtain-10"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 960,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 10,
+      "id": "south-curtain-10"
+    },
+    {
+      "file": "wall-walk-c-c4",
+      "x": 1056,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 11,
+      "id": "north-curtain-11"
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 1056,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 11,
+      "id": "south-curtain-11"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 1152,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 12,
+      "id": "north-curtain-12"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 1248,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 13,
+      "id": "north-curtain-13"
+    },
+    {
+      "file": "wall-walk-c-c4",
+      "x": 1344,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 14,
+      "id": "north-curtain-14"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 1344,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 14,
+      "id": "south-curtain-14"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 1440,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 15,
+      "id": "north-curtain-15"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 1440,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 15,
+      "id": "south-curtain-15"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 1536,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 16,
+      "id": "north-curtain-16"
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 1536,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 16,
+      "id": "south-curtain-16"
+    },
+    {
+      "file": "wall-walk-c-c4",
+      "x": 1632,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 17,
+      "id": "north-curtain-17"
+    },
+    {
+      "file": "wall-top-b-c4",
+      "x": 1632,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 17,
+      "id": "south-curtain-17"
+    },
+    {
+      "file": "wall-walk-a-c4",
+      "x": 1728,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 18,
+      "id": "north-curtain-18"
+    },
+    {
+      "file": "wall-top-c-c4",
+      "x": 1728,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 18,
+      "id": "south-curtain-18"
+    },
+    {
+      "file": "wall-walk-b-c4",
+      "x": 1824,
+      "base": 240,
+      "wall": true,
+      "chain": "north-curtain",
+      "index": 19,
+      "id": "north-curtain-19"
+    },
+    {
+      "file": "wall-top-a-c4",
+      "x": 1824,
+      "base": 1440,
+      "wall": true,
+      "chain": "south-curtain",
+      "index": 19,
+      "id": "south-curtain-19"
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 0,
+      "base": 384,
+      "wall": true,
+      "chain": "side-0",
+      "index": 0
+    },
+    {
+      "file": "wall-side-b-c4",
+      "x": 0,
+      "base": 528,
+      "wall": true,
+      "chain": "side-0",
+      "index": 1
+    },
+    {
+      "file": "wall-side-c-c4",
+      "x": 0,
+      "base": 672,
+      "wall": true,
+      "chain": "side-0",
+      "index": 2
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 0,
+      "base": 816,
+      "wall": true,
+      "chain": "side-0",
+      "index": 3
+    },
+    {
+      "file": "wall-side-b-c4",
+      "x": 0,
+      "base": 960,
+      "wall": true,
+      "chain": "side-0",
+      "index": 4
+    },
+    {
+      "file": "wall-side-c-c4",
+      "x": 0,
+      "base": 1104,
+      "wall": true,
+      "chain": "side-0",
+      "index": 5
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 0,
+      "base": 1248,
+      "wall": true,
+      "chain": "side-0",
+      "index": 6
+    },
+    {
+      "file": "wall-side-b-c4",
+      "x": 0,
+      "base": 1392,
+      "wall": true,
+      "chain": "side-0",
+      "index": 7
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 1872,
+      "base": 384,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 0
+    },
+    {
+      "file": "wall-side-b-c4",
+      "x": 1872,
+      "base": 528,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 1
+    },
+    {
+      "file": "wall-side-c-c4",
+      "x": 1872,
+      "base": 672,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 2
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 1872,
+      "base": 816,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 3
+    },
+    {
+      "file": "wall-side-b-c4",
+      "x": 1872,
+      "base": 960,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 4
+    },
+    {
+      "file": "wall-side-c-c4",
+      "x": 1872,
+      "base": 1104,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 5
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 1872,
+      "base": 1248,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 6
+    },
+    {
+      "file": "wall-side-b-c4",
+      "x": 1872,
+      "base": 1392,
+      "wall": true,
+      "chain": "side-1872",
+      "index": 7
+    },
+    {
+      "file": "wall-tower-a-c4",
+      "x": 0,
+      "base": 240,
+      "wall": true,
+      "id": "north-tower-0",
+      "footprint": [
+        0,
+        96,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 0
+    },
+    {
+      "file": "wall-tower-b-c4",
+      "x": 336,
+      "base": 240,
+      "wall": true,
+      "id": "north-tower-336",
+      "footprint": [
+        336,
+        96,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 1
+    },
+    {
+      "file": "wall-tower-c-c4",
+      "x": 768,
+      "base": 240,
+      "wall": true,
+      "id": "north-tower-768",
+      "footprint": [
+        768,
+        96,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 2
+    },
+    {
+      "file": "wall-tower-a-c4",
+      "x": 1056,
+      "base": 240,
+      "wall": true,
+      "id": "north-tower-1056",
+      "footprint": [
+        1056,
+        96,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 3
+    },
+    {
+      "file": "wall-tower-b-c4",
+      "x": 1488,
+      "base": 240,
+      "wall": true,
+      "id": "north-tower-1488",
+      "footprint": [
+        1488,
+        96,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 4
+    },
+    {
+      "file": "wall-tower-c-c4",
+      "x": 1824,
+      "base": 240,
+      "wall": true,
+      "id": "north-tower-1824",
+      "footprint": [
+        1824,
+        96,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 5
+    },
+    {
+      "file": "wall-tower-c-c4",
+      "x": 0,
+      "base": 672,
+      "wall": true,
+      "id": "tower-0",
+      "footprint": [
+        0,
+        528,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 14
+    },
+    {
+      "file": "wall-tower-b-c4",
+      "x": 0,
+      "base": 1056,
+      "wall": true,
+      "id": "tower-1",
+      "footprint": [
+        0,
+        912,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 13
+    },
+    {
+      "file": "wall-tower-a-c4",
+      "x": 0,
+      "base": 1440,
+      "wall": true,
+      "id": "tower-2",
+      "footprint": [
+        0,
+        1296,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 12
+    },
+    {
+      "file": "wall-tower-a-c4",
+      "x": 1824,
+      "base": 576,
+      "wall": true,
+      "id": "tower-3",
+      "footprint": [
+        1824,
+        432,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 6
+    },
+    {
+      "file": "wall-tower-b-c4",
+      "x": 1824,
+      "base": 1008,
+      "wall": true,
+      "id": "tower-4",
+      "footprint": [
+        1824,
+        864,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 7
+    },
+    {
+      "file": "wall-tower-c-c4",
+      "x": 1824,
+      "base": 1440,
+      "wall": true,
+      "id": "tower-5",
+      "footprint": [
+        1824,
+        1296,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 8
+    },
+    {
+      "file": "wall-tower-c-c4",
+      "x": 432,
+      "base": 1440,
+      "wall": true,
+      "id": "tower-6",
+      "footprint": [
+        432,
+        1296,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 11
+    },
+    {
+      "file": "wall-tower-b-c4",
+      "x": 816,
+      "base": 1440,
+      "wall": true,
+      "id": "tower-7",
+      "footprint": [
+        816,
+        1296,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 10
+    },
+    {
+      "file": "wall-tower-a-c4",
+      "x": 1584,
+      "base": 1440,
+      "wall": true,
+      "id": "tower-8",
+      "footprint": [
+        1584,
+        1296,
+        96,
+        144
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        96
+      ],
+      "chain": "tower-circuit",
+      "index": 9
+    },
+    {
+      "file": "gatehouse-c4",
+      "x": 1176,
+      "base": 1440,
+      "id": "gatehouse",
+      "wall": true,
+      "footprint": [
+        1176,
+        1248,
+        144,
+        192
+      ],
+      "overhang": [
+        1176,
+        1040,
+        144,
+        208
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        144,
+        344
+      ],
+      "supports": [
+        [
+          1176,
+          1384,
+          24,
+          56
+        ],
+        [
+          1296,
+          1384,
+          24,
+          56
+        ]
+      ],
+      "entrance": [
+        1248,
+        1440
+      ]
+    },
+    {
+      "file": "gate-connector-c4",
+      "x": 1296,
+      "base": 1440,
+      "id": "gate-east-connector",
+      "wall": true,
+      "attachment": true,
+      "footprint": [
+        1296,
+        1392,
+        48,
+        48
+      ]
+    },
+    {
+      "file": "wall-walk-stair-r",
+      "x": 960,
+      "base": 240,
+      "wall": true,
+      "id": "north-wall-stair"
+    },
+    {
+      "file": "gate-connector-c4",
+      "x": 1152,
+      "base": 1440,
+      "id": "gate-west-connector",
+      "wall": true,
+      "attachment": true,
+      "footprint": [
+        1152,
+        1392,
+        48,
+        48
+      ]
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 0,
+      "base": 240,
+      "crop": [
+        0,
+        0,
+        48,
+        2
+      ],
+      "id": "north-side-contact-0",
+      "wall": true
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 1872,
+      "base": 240,
+      "crop": [
+        0,
+        0,
+        48,
+        2
+      ],
+      "id": "north-side-contact-1872",
+      "wall": true
+    },
+    {
+      "file": "fence-1",
+      "x": 240,
+      "base": 480,
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ],
+      "owner": "west-plot-1",
+      "architectural": true
+    },
+    {
+      "file": "fence-1",
+      "x": 240,
+      "base": 528,
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ],
+      "owner": "west-plot-1",
+      "architectural": true
+    },
+    {
+      "file": "fence-1",
+      "x": 336,
+      "base": 480,
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ],
+      "owner": "west-plot-1",
+      "architectural": true
+    },
+    {
+      "file": "fence-1",
+      "x": 336,
+      "base": 528,
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ],
+      "owner": "west-plot-1",
+      "architectural": true
+    },
+    {
+      "file": "lean-to-c4",
+      "x": 240,
+      "base": 480,
+      "owner": "west-plot-1",
+      "architectural": true
+    },
+    {
+      "file": "yard-1",
+      "x": 240,
+      "base": 524,
+      "owner": "west-plot-1"
+    },
+    {
+      "file": "court-passage-c4",
+      "x": 264,
+      "base": 720,
+      "id": "west-covered-access",
+      "owner": "west-plot-1",
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        20
+      ],
+      "supports": [
+        [
+          264,
+          692,
+          12,
+          28
+        ],
+        [
+          348,
+          692,
+          12,
+          28
+        ]
+      ],
+      "architectural": true
+    },
+    {
+      "file": "lean-to-c4",
+      "x": 624,
+      "base": 1152,
+      "id": "south-rear-shed",
+      "owner": "south-served-plot",
+      "architectural": true
+    },
+    {
+      "file": "court-passage-c4",
+      "x": 504,
+      "base": 1248,
+      "id": "south-covered-access",
+      "owner": "south-served-plot",
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        20
+      ],
+      "supports": [
+        [
+          504,
+          1220,
+          12,
+          28
+        ],
+        [
+          588,
+          1220,
+          12,
+          28
+        ]
+      ],
+      "architectural": true
+    },
+    {
+      "file": "wall-side-a-c4",
+      "x": 704,
+      "base": 768,
+      "crop": [
+        0,
+        0,
+        8,
+        72
+      ],
+      "owner": "churchyard",
+      "architectural": true
+    },
+    {
+      "file": "back-plain-ground-w1",
+      "x": 576,
+      "base": 1152,
+      "id": "south-rear-door",
+      "owner": "south-served-plot",
+      "architectural": true,
+      "footprint": [
+        576,
+        1104,
+        48,
+        48
+      ]
+    },
+    {
+      "file": "fence-1",
+      "x": 616,
+      "base": 1200,
+      "crop": [
+        7,
+        0,
+        15,
+        48
+      ],
+      "id": "south-yard-east-boundary",
+      "owner": "south-served-plot",
+      "architectural": true
+    },
+    {
+      "file": "barrel",
+      "x": 592,
+      "base": 1182,
+      "id": "south-rear-door-barrel",
+      "owner": "south-served-plot"
+    },
+    {
+      "file": "fence-h-b-c4",
+      "x": 1104,
+      "base": 528,
+      "id": "pottery-court-rail-1104",
+      "owner": "pottery-service-court",
+      "architectural": true
+    },
+    {
+      "file": "fence-h-c-c4",
+      "x": 1152,
+      "base": 528,
+      "id": "pottery-court-rail-1152",
+      "owner": "pottery-service-court",
+      "architectural": true
+    },
+    {
+      "file": "crate",
+      "x": 1168,
+      "base": 502,
+      "crop": [
+        0,
+        0,
+        24,
+        24
+      ],
+      "id": "pottery-delivery-crate",
+      "owner": "pottery-service-court"
+    }
+  ],
+  "roads": [
+    {
+      "rect": [
+        96,
+        240,
+        336,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        240,
+        384,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        816,
+        240,
+        384,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1200,
+        240,
+        384,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1584,
+        240,
+        240,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        96,
+        288,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "wall-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        96,
+        624,
+        48,
+        384
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "wall-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        96,
+        1008,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "wall-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1776,
+        288,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "wall-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1776,
+        624,
+        48,
+        384
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "wall-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1776,
+        1008,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "wall-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        96,
+        1344,
+        288,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "south-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        576,
+        1344,
+        192,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "south-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1344,
+        1344,
+        192,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "south-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1728,
+        1344,
+        96,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "south-wall-lane",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        384,
+        1248,
+        192,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "tower-service-turn",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        384,
+        1296,
+        48,
+        96
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "tower-service-turn",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        528,
+        1296,
+        48,
+        96
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "tower-service-turn",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1536,
+        1248,
+        192,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "tower-service-turn",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1536,
+        1296,
+        48,
+        96
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "tower-service-turn",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1680,
+        1296,
+        48,
+        96
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "tower-service-turn",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1104,
+        1248,
+        48,
+        144
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "gate-inner-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1104,
+        1248,
+        288,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "gate-inner-service",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1344,
+        1248,
+        48,
+        144
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "gate-inner-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1200,
+        1152,
+        96,
+        288
+      ],
+      "file": "street-main-c3",
+      "kind": "main",
+      "id": "gate-to-market",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1104,
+        1056,
+        192,
+        96
+      ],
+      "file": "street-main-c3",
+      "kind": "main",
+      "id": "gate-to-market",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1104,
+        768,
+        96,
+        288
+      ],
+      "file": "street-main-c3",
+      "kind": "main",
+      "id": "gate-to-market",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        144,
+        624,
+        96,
+        96
+      ],
+      "file": "street-main-c3",
+      "kind": "main",
+      "id": "west-bend",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1200,
+        624,
+        144,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "merchant-bend",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1344,
+        576,
+        48,
+        144
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "merchant-bend",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1344,
+        672,
+        240,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "merchant-bend",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1584,
+        624,
+        48,
+        144
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "merchant-bend",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1584,
+        720,
+        192,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "merchant-bend",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        288,
+        48,
+        288
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        672,
+        288,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1344,
+        288,
+        48,
+        288
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1584,
+        288,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1776,
+        288,
+        48,
+        336
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "north-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        96,
+        1008,
+        336,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "court-T",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        816,
+        48,
+        240
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "court-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1488,
+        1008,
+        48,
+        96
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "court-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1488,
+        1056,
+        288,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "court-T",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        1776,
+        768,
+        48,
+        288
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "court-T",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1632,
+        1104,
+        48,
+        144
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "back-passage",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        288,
+        912,
+        48,
+        96
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "back-passage",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        444,
+        336,
+        24,
+        240
+      ],
+      "file": "lane-c3",
+      "kind": "lane",
+      "id": "rear-lane",
+      "horizontal": false,
+      "clear": false
+    },
+    {
+      "rect": [
+        1596,
+        336,
+        24,
+        240
+      ],
+      "file": "lane-c3",
+      "kind": "lane",
+      "id": "rear-lane",
+      "horizontal": false,
+      "clear": false
+    },
+    {
+      "rect": [
+        924,
+        1104,
+        24,
+        192
+      ],
+      "file": "lane-c3",
+      "kind": "lane",
+      "id": "rear-lane",
+      "horizontal": false,
+      "clear": false
+    },
+    {
+      "rect": [
+        1644,
+        1128,
+        24,
+        120
+      ],
+      "file": "lane-c3",
+      "kind": "lane",
+      "id": "rear-lane",
+      "horizontal": false,
+      "clear": false
+    },
+    {
+      "rect": [
+        288,
+        888,
+        24,
+        24
+      ],
+      "file": "lane-c3",
+      "kind": "lane",
+      "id": "rear-lane",
+      "horizontal": false,
+      "clear": false
+    },
+    {
+      "rect": [
+        816,
+        768,
+        384,
+        288
+      ],
+      "file": "cobble-c3",
+      "kind": "square",
+      "id": "square",
+      "horizontal": true,
+      "clear": false
+    },
+    {
+      "rect": [
+        432,
+        576,
+        48,
+        192
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "temple-access",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        624,
+        288,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "temple-access",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        1056,
+        288,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "temple-access",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        744,
+        864,
+        48,
+        192
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "temple-access",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1008,
+        240,
+        48,
+        240
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "guild-rear-service",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        1776,
+        624,
+        96,
+        48
+      ],
+      "file": "street-side-c3",
+      "kind": "side",
+      "id": "east-wall-service-bay",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        816,
+        1056,
+        96,
+        192
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        816,
+        1248,
+        96,
+        48
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        912,
+        1344,
+        192,
+        48
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        768,
+        1296,
+        48,
+        96
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        672,
+        1296,
+        96,
+        48
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        672,
+        1200,
+        48,
+        144
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        912,
+        1296,
+        48,
+        48
+      ],
+      "id": "south-square-exit",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        288,
+        480,
+        48,
+        240
+      ],
+      "id": "west-yard-access",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        240,
+        720,
+        192,
+        48
+      ],
+      "id": "west-yard-access",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        672,
+        48,
+        96
+      ],
+      "id": "west-yard-access",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        144,
+        672,
+        96,
+        48
+      ],
+      "id": "west-bend-return",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        528,
+        1104,
+        48,
+        240
+      ],
+      "id": "south-yard-service",
+      "kind": "side",
+      "file": "street-side-c3",
+      "horizontal": false,
+      "clear": true
+    }
+  ],
+  "gardens": [],
+  "clear_routes": [
+    [
+      96,
+      240,
+      336,
+      48
+    ],
+    [
+      432,
+      240,
+      384,
+      48
+    ],
+    [
+      816,
+      240,
+      384,
+      48
+    ],
+    [
+      1200,
+      240,
+      384,
+      48
+    ],
+    [
+      1584,
+      240,
+      240,
+      48
+    ],
+    [
+      96,
+      288,
+      48,
+      336
+    ],
+    [
+      96,
+      624,
+      48,
+      384
+    ],
+    [
+      96,
+      1008,
+      48,
+      336
+    ],
+    [
+      1776,
+      288,
+      48,
+      336
+    ],
+    [
+      1776,
+      624,
+      48,
+      384
+    ],
+    [
+      1776,
+      1008,
+      48,
+      336
+    ],
+    [
+      96,
+      1344,
+      288,
+      48
+    ],
+    [
+      576,
+      1344,
+      192,
+      48
+    ],
+    [
+      1344,
+      1344,
+      192,
+      48
+    ],
+    [
+      1728,
+      1344,
+      96,
+      48
+    ],
+    [
+      384,
+      1248,
+      192,
+      48
+    ],
+    [
+      384,
+      1296,
+      48,
+      96
+    ],
+    [
+      528,
+      1296,
+      48,
+      96
+    ],
+    [
+      1536,
+      1248,
+      192,
+      48
+    ],
+    [
+      1536,
+      1296,
+      48,
+      96
+    ],
+    [
+      1680,
+      1296,
+      48,
+      96
+    ],
+    [
+      1104,
+      1248,
+      48,
+      144
+    ],
+    [
+      1104,
+      1248,
+      288,
+      48
+    ],
+    [
+      1344,
+      1248,
+      48,
+      144
+    ],
+    [
+      1200,
+      1152,
+      96,
+      288
+    ],
+    [
+      1104,
+      1056,
+      192,
+      96
+    ],
+    [
+      1104,
+      768,
+      96,
+      288
+    ],
+    [
+      144,
+      624,
+      96,
+      96
+    ],
+    [
+      1200,
+      624,
+      144,
+      48
+    ],
+    [
+      1344,
+      576,
+      48,
+      144
+    ],
+    [
+      1344,
+      672,
+      240,
+      48
+    ],
+    [
+      1584,
+      624,
+      48,
+      144
+    ],
+    [
+      1584,
+      720,
+      192,
+      48
+    ],
+    [
+      432,
+      288,
+      48,
+      288
+    ],
+    [
+      672,
+      288,
+      48,
+      336
+    ],
+    [
+      1344,
+      288,
+      48,
+      288
+    ],
+    [
+      1584,
+      288,
+      48,
+      336
+    ],
+    [
+      1776,
+      288,
+      48,
+      336
+    ],
+    [
+      96,
+      1008,
+      336,
+      48
+    ],
+    [
+      432,
+      816,
+      48,
+      240
+    ],
+    [
+      1488,
+      1008,
+      48,
+      96
+    ],
+    [
+      1488,
+      1056,
+      288,
+      48
+    ],
+    [
+      1776,
+      768,
+      48,
+      288
+    ],
+    [
+      1632,
+      1104,
+      48,
+      144
+    ],
+    [
+      288,
+      912,
+      48,
+      96
+    ],
+    [
+      432,
+      576,
+      48,
+      192
+    ],
+    [
+      432,
+      624,
+      288,
+      48
+    ],
+    [
+      432,
+      1056,
+      288,
+      48
+    ],
+    [
+      744,
+      864,
+      48,
+      192
+    ],
+    [
+      1008,
+      240,
+      48,
+      240
+    ],
+    [
+      1776,
+      624,
+      96,
+      48
+    ],
+    [
+      816,
+      1056,
+      96,
+      192
+    ],
+    [
+      816,
+      1248,
+      96,
+      48
+    ],
+    [
+      912,
+      1344,
+      192,
+      48
+    ],
+    [
+      768,
+      1296,
+      48,
+      96
+    ],
+    [
+      672,
+      1296,
+      96,
+      48
+    ],
+    [
+      672,
+      1200,
+      48,
+      144
+    ],
+    [
+      912,
+      1296,
+      48,
+      48
+    ],
+    [
+      288,
+      480,
+      48,
+      240
+    ],
+    [
+      240,
+      720,
+      192,
+      48
+    ],
+    [
+      432,
+      672,
+      48,
+      96
+    ],
+    [
+      144,
+      672,
+      96,
+      48
+    ],
+    [
+      528,
+      1104,
+      48,
+      240
+    ]
+  ],
+  "courts": [
+    {
+      "id": "inn-court",
+      "rect": [
+        1488,
+        864,
+        96,
+        192
+      ],
+      "access": [
+        1488,
+        864,
+        48,
+        192
+      ],
+      "loading": [
+        1536,
+        1008,
+        48,
+        48
+      ]
+    },
+    {
+      "id": "west-court",
+      "rect": [
+        240,
+        912,
+        96,
+        96
+      ],
+      "access": [
+        288,
+        912,
+        48,
+        96
+      ],
+      "forge_apron": [
+        144,
+        960,
+        48,
+        48
+      ]
+    },
+    {
+      "id": "pottery-service-court",
+      "rect": [
+        1104,
+        480,
+        96,
+        48
+      ],
+      "access": [
+        1104,
+        480,
+        24,
+        24
+      ],
+      "entrance": [
+        1118,
+        480
+      ],
+      "private": true
+    }
+  ],
+  "plots": [
+    {
+      "id": "west-plot-0",
+      "front": [
+        144,
+        528,
+        96,
+        96
+      ],
+      "yard": [
+        144,
+        432,
+        96,
+        96
+      ],
+      "rear": [
+        144,
+        336,
+        96,
+        96
+      ],
+      "passage": [
+        432,
+        336,
+        48,
+        240
+      ]
+    },
+    {
+      "id": "west-plot-2",
+      "front": [
+        336,
+        528,
+        96,
+        96
+      ],
+      "yard": [
+        336,
+        432,
+        96,
+        96
+      ],
+      "rear": [
+        336,
+        336,
+        96,
+        96
+      ],
+      "passage": [
+        432,
+        336,
+        48,
+        240
+      ]
+    },
+    {
+      "id": "west-plot-1",
+      "front": [
+        240,
+        624,
+        48,
+        96
+      ],
+      "yard": [
+        240,
+        432,
+        96,
+        96
+      ],
+      "rear": [
+        240,
+        336,
+        96,
+        96
+      ],
+      "passage": [
+        288,
+        480,
+        48,
+        240
+      ]
+    },
+    {
+      "id": "south-served-plot",
+      "front": [
+        576,
+        1248,
+        96,
+        96
+      ],
+      "yard": [
+        576,
+        1152,
+        48,
+        48
+      ],
+      "rear": [
+        576,
+        1104,
+        96,
+        48
+      ],
+      "passage": [
+        528,
+        1104,
+        48,
+        240
+      ],
+      "access": [
+        528,
+        1152,
+        48,
+        48
+      ],
+      "rear_door": [
+        588,
+        1152
+      ]
+    },
+    {
+      "id": "pottery-service-court",
+      "front": [
+        1104,
+        384,
+        96,
+        96
+      ],
+      "yard": [
+        1104,
+        480,
+        96,
+        48
+      ],
+      "rear": [
+        1104,
+        528,
+        96,
+        96
+      ],
+      "access": [
+        1104,
+        480,
+        24,
+        32
+      ],
+      "rear_door": [
+        1118,
+        480
+      ]
+    }
+  ],
+  "square": [
+    816,
+    768,
+    384,
+    288
+  ],
+  "square_notch": [
+    816,
+    768,
+    96,
+    96
+  ],
+  "block_shapes": [
+    {
+      "id": "west",
+      "shape": "stepped trapezoid",
+      "polygon": [
+        [
+          144,
+          288
+        ],
+        [
+          432,
+          288
+        ],
+        [
+          432,
+          720
+        ],
+        [
+          336,
+          720
+        ],
+        [
+          336,
+          672
+        ],
+        [
+          240,
+          672
+        ],
+        [
+          240,
+          624
+        ],
+        [
+          144,
+          624
+        ]
+      ]
+    },
+    {
+      "id": "merchant",
+      "shape": "trapezoid with24px through lane",
+      "polygon": [
+        [
+          1392,
+          288
+        ],
+        [
+          1776,
+          288
+        ],
+        [
+          1776,
+          720
+        ],
+        [
+          1680,
+          720
+        ],
+        [
+          1680,
+          672
+        ],
+        [
+          1632,
+          672
+        ],
+        [
+          1632,
+          624
+        ],
+        [
+          1488,
+          624
+        ],
+        [
+          1488,
+          576
+        ],
+        [
+          1392,
+          576
+        ]
+      ]
+    },
+    {
+      "id": "south",
+      "shape": "L with tower forecourt",
+      "polygon": [
+        [
+          144,
+          1056
+        ],
+        [
+          384,
+          1056
+        ],
+        [
+          384,
+          1248
+        ],
+        [
+          336,
+          1248
+        ],
+        [
+          336,
+          1344
+        ],
+        [
+          240,
+          1344
+        ],
+        [
+          240,
+          1296
+        ],
+        [
+          144,
+          1296
+        ]
+      ]
+    }
+  ],
+  "features": {
+    "cycle": "C4",
+    "grid": 48,
+    "cells": [
+      40,
+      30
+    ],
+    "main_width": 96,
+    "side_width": 48,
+    "rear_lane_width": 24,
+    "square": "8x6 core with2x2 northwest notch; hall attached at northwest; church west; guild north; inn arcade east; shop arcades south",
+    "plan": "stepped western wedge, merchant trapezoid, southern L; public T-junctions and bends; separate private rear mouths",
+    "no_frontage_lawns": true,
+    "wall": "single northwest tower; uneven north gaps; three south intervals with inner detours",
+    "conflicts": [
+      "BRIEF17 twice-round15 sign canvases64x72 supersede48px panel cap; painted boards approximately48px",
+      "BRIEF17 keeps compulsory8-cell bends,1/2-cell lots,3x4gate and2x3towers",
+      "Coordinator40x30 native48px cells requires1920x1440, rather than approximate1200x900"
+    ],
+    "critic1": "Directional side doors, complete north-access shop courts, two fenced property sequences, whole-face masonry and cross-row tower ownership.",
+    "critic2": "Complete narrow court; all-floor frontage audit; varied visible sign bays; exposed south rear yard; enclosed pottery court; matched roof adapters in proofs."
+  }
+}

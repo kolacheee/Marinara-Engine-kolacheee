@@ -1,0 +1,232 @@
+[
+  {
+    "id": "ridge-a",
+    "prompt": "Use case: stylized-concept. Draw ONE modular medieval roof sprite source, on perfectly flat solid #FF00FF magenta with a margin. For a 144x96 native pixel RPG roof: a broad rectangular single roof slope seen from high 3/4 above, horizontal thin ridge at its north/top edge, ONE thin dark near eave at bottom, vertical straight cut joining edges. No walls, gable, windows, chimney or ground. Width 1.5 times height. Large source about 1152x768 painted pixels. CRITICAL: draw fine angular terracotta tile clusters that reduce to 6–8 native pixels wide by 3–4 pixels high: about 21 tiles across and 26 courses down. Square angular ends, not scallops/beads/curves. Three dominant muted clay values, restrained internal joints instead of black horizontal stripes, sparse upper-left edge light, one-native-pixel exterior contour. Flat crisp pixel art matching the reference house's native tile scale and the fine existing hip. No outlines around every tile, no flecks, noise, isolated pixels, gradients, fog, text or labels. Draw the sprite large and clean. This is ridge candidate A.",
+    "size": [
+      144,
+      96
+    ],
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-890ea1e0-3f89-4eed-bf46-5ab64dcb0a05.png",
+    "source": "r17-C4-critic1-source-ridge-a.png"
+  },
+  {
+    "id": "ridge-b",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Draw one high-3/4 medieval red-tile roof plane, rectangular aspect 144:96, on flat #FF00FF magenta. Large sprite for mode reduction to native144x96. Horizontal narrow north ridge, shallow broad receding plane, single thin near eave, square joining edges; no facade. Calm angular flat overlapping tile CLUSTERS, circa 21 columns and 26 rows of tiles, native tiles6–8px wide and courses3–4px high. Tile seams soft brown only, sparse staggered joints, never dark black lines or scalloped bead ends. Dominant three flat desaturated terracotta shades, top-left light, thin1nativepx dark exterior contour. Fine chunky pixel-art cluster discipline, small native scale matching a 48px-grid medieval town house. NO shiny beveled brick edges, NO outlined bricks, NO black horizontal bands, NO noise, speckles or gradients. Keep variations in connected clusters. Draw at large resolution on magenta for clean reduction. Alternative B: especially restrained interior contrast and long broken joints.",
+    "source": "r17-C4-critic1-source-ridge-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-78e9befb-be1f-42eb-9b2e-7916745dfb75.png"
+  },
+  {
+    "id": "tower-b",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Use case precise-object-edit. Redraw the provided small medieval tower sprite as a large clean pixel-art source on perfectly solid #FF00FF magenta. Maintain the EXACT high3/4 projection, silhouette proportions, grey-brown masonry courses, two projecting horizontal stringcourses, lit left/front and shaded right return, rooftop parapet with little slate canopy, bottom door and step. This is an integrated architectural variant B: replace the upper narrow slit window with a broader paired two-slit arched opening with a single stone lintel, jambs and sill IN THE WALL masonry; middle opening remains one narrow slit; at ground retain the visible door. Add a small weathered vertical blue banner beside, not across, window. No pasted rectangular patches or mismatched stone scales. Stonework flows into every sill and jamb; stringcourses continue uninterrupted. Top-left lighting, crisp angular square pixels, thin1nativepx external outline. Intended native size96x240, standard2x3-cell footprint. Whole tower fills most of large portrait image, centered with magenta margin. No words, ground cast shadow, soft edges, noise, fog.",
+    "source": "r17-C4-critic1-source-tower-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-28f0bab3-480e-4a2a-8fd3-e3bebc79816d.png"
+  },
+  {
+    "id": "tower-c",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Use case precise-object-edit. Redraw provided medieval wall tower sprite enlarged on solid #FF00FF magenta. EXACT same tower silhouette proportions96x240 native, high3/4 projection, top-left light, grey-brown stone scale, slate canopy, parapet and two continuous projecting stringcourses. Make a structurally integrated variant C: upper floor has a SMALL square recessed window with plain straight stone lintel, middle floor has two separated narrow arrow slits with their jamb stones built into the same courses, ground has timber service door at right instead of left, flush old sealed opening at left built with full matching courses. No banner. No rectangular pasted patches, no floating plaques, no mismatched scale. Keep all mouldings continuous around the shaded right return. Fine crisp angular pixel clusters,1nativepx exterior outline, restrained inside joints, no noise or flecks. Whole tower large with magenta margin, no ground cast shadow, words or labels.",
+    "source": "r17-C4-critic1-source-tower-c.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-8c73dac7-aade-45fb-ac37-47d52ae9a822.png"
+  },
+  {
+    "id": "wall-side-b",
+    "size": [
+      48,
+      144
+    ],
+    "prompt": "Use case precise-object-edit. Redraw the input north-south city curtain wall/wall-walk segment on solid magenta #FF00FF at large size, preserving its long vertical48x144 native canvas projection and EXACT straight top and bottom joining edges. It is seen high from above, with lit coping stones on the left, a receding central paved wall-walk and the darker vertical EAST/right wall strip. It is NOT a front-facing facade. Create variation B with an integrated inset drain channel along one side and a single repaired run of three rectangular paving slabs in its middle, at the SAME scale and perspective as neighboring original courses. Continuous side coping rails, continuous courses; no square inserted patches, no buildings, windows, doors or frontal ornaments pasted on. Flat crisp square-grid pixel art, grey-brown masonry, top-left light, thin exterior contour. Flat magenta margin. Native target48x144, long thin strip. Top/bottom join identical to reference.",
+    "source": "r17-C4-critic1-source-wall-side-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-34fe9a7e-34ad-4c5b-8f42-4ea47752f248.png"
+  },
+  {
+    "id": "wall-side-c",
+    "size": [
+      48,
+      144
+    ],
+    "prompt": "Use case precise-object-edit. Redraw this vertical north-south medieval city wall-walk sprite enlarged, on flat #FF00FF magenta. Same exact straight rectangular48x144 native proportions and top/bottom joining endpoints. High three-quarter overhead view: narrow lit coping left, broad warm-grey flagstone walkway in center, narrow dark shaded coping/right face, NO front elevation. Variant C has a wider central line of long rectangular repair slabs that fit into the existing stone courses and a small recessed transverse scupper midway; two subtle chips on inner coping edges. Same angular stone scale as reference. No inserted squares, no plaque, door, window or banner. Continuous coping, all masonry drawn together with upper-left light. Clean1nativepx external outline, few flat grey-brown values, no texture noise, flecks, fog, blobs, shadows outside asset, text or labels. Large clean source, ends cut square and paint reaching both ends.",
+    "source": "r17-C4-critic1-source-wall-side-c.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-69fff21d-5560-4f5a-9e27-64c62ecbdfe6.png"
+  },
+  {
+    "id": "ridge-c",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Use case precise-object-edit. Image1 is the style/material reference hip; Image2 is target rectangular ridge roof. Redraw Image2 as ONE large source on solid #FF00FF magenta. Keep its exact144x96 native rectangle, thin horizontal north ridge and one south eave. Match Image1's restrained tiny angular tile strokes: native pitch6–8px width/3–4px high, about22columns and25courses. REMOVE Image2's dark horizontal bands, brick bevel highlights and heavy outlines. Use three close muted red-brown flat values matching Image1, thin broken staggered joints, sparse connected angled clusters. Roof surface must read as a calm slope, not a brick wall. No shapes added, no dormers, no walls. Top-left light, one-nativepx exterior outline. Large clean pixel-art source with native-scale marks enlarged8x, no noise, flecks, airbrush, rounded tile ends or text.",
+    "source": "r17-C4-critic1-source-ridge-c.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-697270f5-a931-48fc-9fb2-e5af5d0de658.png"
+  },
+  {
+    "id": "junction-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw ONE modular96x48 native roof JOIN adapter at large resolution on perfectly flat magenta #FF00FF. Reference image is the lower receiving hip roof; use its exact high3/4 projection, fine angular tile pitch6–8px across and3–4px courses, muted red-brown three values. Adapter is a rectangular horizontal2:1 patch joining a rear single-slope roof above to the top of this hip below. At upper edge: fine rear slope tile courses terminate in ONE narrow horizontal lead gutter at native y8. Below gutter: LEFT plane lit, RIGHT plane dark, separated by a vertical thin hip ridge exactly halfway at x48; these two planes run out of bottom edge to continue the reference cap below. No eave or border at bottom; no second horizontal seam. Gutter meets both outer edges at y8; the ridge meets bottom x48. Straight square joining endpoints, one side contour only. Calm broken angled tile strokes like reference, not rounded beads or outlined brick rows. No building/wall, decorative objects, text, labels, noise, gradients or haze. Draw all masonry/tile geometry yourself. Candidate A.",
+    "source": "r17-C4-critic1-source-junction-a.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-24b30ba2-4bbc-463a-b0ed-51c8c2e88d50.png"
+  },
+  {
+    "id": "junction-b",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "One large pixel-art roof junction sprite on flat magenta#FF00FF, native96x48 aspect2:1. Match the attached red hip roof style EXACTLY. At top8nativepx a fine angular tiled rear slope drains into one narrow grey-brown lead gutter. At x48 center a thin vertical raised hip ridge meets that gutter then continues to bottom edge. Left slope lit warm muted clay, right slope shaded muted brown. Approximately12 fine staggered tile courses down the48px patch, tile pitch6–8wide/3–4high; calm broken joints, no heavy black tile rows. Bottom edge has no eave/border because it CONTINUES into the hip roof; one exterior outline at left/right only. Gutter endpoints meet both side edges at y8, ridge bottom at x48. Large drawing, no facade, props, rounded/scalloped ends, flecks, noise, labels or gradients. CandidateB, focus on accurate projection and one joined roof rather than separate panels.",
+    "source": "r17-C4-critic1-source-junction-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-3d5c7542-d864-4cb5-943a-e1da0f073807.png"
+  },
+  {
+    "id": "valley",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Draw ONE48x48 native roof VALLEY adapter as a large square sprite on flat solid magenta#FF00FF. For joining perpendicular hipped/gabled roofs in high3/4 RPG view. A narrow recessed grey-brown metal valley runs diagonally from TOP LEFT corner to BOTTOM RIGHT corner. Two correctly angled muted terracotta roof slopes meet the valley, left/bottom plane warm lit, upper/right plane shaded. Fine angular tile clusters pitch6–8nativepx width/3–4px courses, three main values, shallow thin brown joints like the supplied hip. NO black rounded bead rows. Straight square top, left, right, bottom joining boundaries, no eave across internal join, no ornamental ridge; tile slopes continue out each edge. Top-left light, dark single-pixel outer edges only if exposed. Draw real coherent flashing, no pasted rectangle. Large source clean pixels, no letters, props, walls, noise, haze or gradient. Intended tile joins96px hip and48px gable.",
+    "source": "r17-C4-critic1-source-valley.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-dd9a33eb-b93b-4e33-9414-0ac45f6bd5cf.png"
+  },
+  {
+    "id": "hip-end",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Draw ONE roof HIP END adapter source square96x96 native, on flat solid magenta#FF00FF. High three-quarter RPG roof geometry, same muted angular red tiles as reference. A raised thin hip ridge runs diagonally from TOP RIGHT corner to BOTTOM LEFT corner; lit left/north plane and shaded right/south plane meet it. Tiles follow the slopes, angular rectangular clusters about6–8nativepx wide and3–4px course height, three main muted terracotta values, thin broken brown joints. This is a continuous rectangular roof surface used for a native48x48 crop around the center of the ridge to join a gabled roof and lower hip. No eave through center. Crisp contour around outermost source only, no rounded ends, thick black courses, noise, flecks, gradients, text, walls or props. Draw at large resolution. Retain exact square grid.",
+    "source": "r17-C4-critic1-source-hip-end.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-95bcacfc-4b4d-4135-b22b-52786937e726.png"
+  },
+  {
+    "id": "west-wing-a",
+    "size": [
+      96,
+      288
+    ],
+    "prompt": "Draw one complete FOUR-STOREY medieval merchant INN SIDE WING as a large pixel-art source on perfectly flat solid magenta#FF00FF. Narrow sprite native96x288, high overhead3/4 RPG view, NOT flat frontal elevation. Camera sees the broad WEST-facing side wall on LEFT and the small SOUTH gable-end on RIGHT. Building recedes diagonally up-right. Its only public door and TWO open stone arcade bays face WEST/LEFT into the street: the lit step projects LEFT at the bottom-left edge, not down toward viewer. All south-end lower openings shuttered/blind. Four inhabited floors: stone arcade ground, recessed paired windows, shuttered pair, a shallow oriel on the west-facing wall. Warm off-white plaster, chunky timber posts, 1px lit sill tops2px lower shade, actual corner returns, top-left light. Roof occupies upper96nativepx, deep muted red tiled plane with north-south ridge and tiny angular6–8x3–4px tiles. The remaining four floors are48nativepx each. No sign. Match attached house material ramps/native pixel scale, single thin exterior outline. Square grid, no rounded overall corners, no haze/noise/specks. Whole house large with magenta margin. West-facing public step and recessed arcade are the key requirement.",
+    "source": "r17-C4-critic1-source-west-wing-a.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-0acc11ef-12fc-4db8-9e23-e0aa7d89831c.png"
+  },
+  {
+    "id": "west-wing-b",
+    "size": [
+      96,
+      288
+    ],
+    "prompt": "Draw a FOUR-storey medieval house seen from high SOUTHWEST3/4, pixel-art game sprite on solid#FF00FF magenta. CRITICAL ORIENTATION: show a visible WEST/LEFT return occupying left third of sprite, slanting diagonally DOWN-RIGHT from left edge to the front corner. Only usable doorway is ON THIS LEFT RETURN. Door and stone step point outward LEFT; step extends to extreme LEFT edge halfway up the bottom floor, not to bottom edge. Main SOUTH face on right two-thirds has NO DOORS, only shuttered ground windows. Do not put any door on frontal south face. West return also has a small recessed open shop arcade behind its side door. Upper floor windows continue on both faces, three different levels (recessed pair, shutters, shallow oriel). Native96x288 canvas; roof96px, four floors48px each. Deep high overhead hip/gable roof with thin angular6–8x3–4px muted red tiles, warm plaster, dark timber, grey-brown plinth. Onepx silhouette, top-left light, shaded east/down-right surfaces. The LEFTWARD threshold must be completely unambiguous. Clean flat pixel clusters not smooth illustration, no noise/flecks/haze, no sign or text. Large source with margin. Variant B.",
+    "source": "r17-C4-critic1-source-west-wing-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-af783688-6d1a-47d8-9055-3f43e8ed2e3c.png"
+  },
+  {
+    "id": "east-wing",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Draw one complete THREE-storey medieval lane house, high SOUTH-EAST3/4 RPG pixel-art on flat solid#FF00FF magenta. Visible EAST/RIGHT side return occupies right third, slanting diagonally UP-RIGHT from front corner to right edge. Its ONLY door is on that RIGHT return, with lit step projecting RIGHT to rightmost edge halfway up bottom floor. Main SOUTH/front face on left2/3 has no doors, only blind shuttered ground windows and stone base. Upper floors: one deeply recessed paired window level, one shuttered paired level with distinct layout; both continue onto shaded RIGHT return. Deep roof96nativepx high, three floors48nativepx each, target96x240native. Muted slate tiles, fine angular pitch6–8x3–4px, warm ivory plaster/dark timber/grey-brown masonry. Top LEFT light, RIGHT side noticeably darker with a narrow lit sill edge. No mirror of lighting. Strong structural depth and plinth top, single1px silhouette. Crisp clean square pixel clusters, no noise/isolated specks, no words or ground shadow. Whole building large with margin. Make sideways entrance direction completely clear.",
+    "source": "r17-C4-critic1-source-east-wing.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-3363df70-51df-462e-85e6-4f2fbe64afc7.png"
+  },
+  {
+    "id": "north-shop-a",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Draw ONE connected medieval NORTH-ACCESS SHOP REAR COURT + ROOF module in high overhead3/4 RPG view, on solid#FF00FF magenta. Native96pxwide x144pxtall; large clean sprite. Upper third(48nativepx) is a small open-roof shop loggia/courtyard viewed from above: open at NORTH/TOP center with a pale square stone threshold at the extreme TOP EDGE facing UP into the square; low party walls along left/right attach to building behind. The shop's sheltered BREAD counter occupies the west/left side, viewed from above; short brown wooden posts, bread in2clear blocks, no frontage door facing down. Paving visibly leads FROM TOP opening into the covered counter and into the house. Lower two-thirds(96nativepx) is the coherent broad muted red tile roof of the attached taller southern house, high3/4 view, receding behind the near eave at bottom, fine angular tile clusters6–8nativepx wide/3–4high. Show the court roof junction/flashing, no disconnected pasted pieces. Roof left plane lit/right dark; ONE near eave at bottom. This is an inward-facing shop annex attached to the back of a tall house, NOT a front facade flipped upside down. Thin1nativepx outline, warm plaster/dark timber/grey-brown stone, few calm values, square edges, no grass, roundedcorners, noise, haze, text or labels. North threshold must be unobstructed and easy to locate.",
+    "source": "r17-C4-critic1-source-north-shop-a.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-4a8c918e-2844-4de2-8a66-715d2895efe4.png"
+  },
+  {
+    "id": "north-shop-b",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Draw ONE square-grid modular NORTH-access SHOP COURT and attached roof, high overhead3/4 medieval RPG pixel art on solid#FF00FF magenta. Large source intended native96x144, width2cells. Upper48nativepx is a small fully bounded rear shop court open through a48px-wide NORTH/TOP gap between short left/right stone walls. Clearly lit rectangular threshold at top edge faces UP. An APOTHECARY counter on the right/east side sits beneath a narrow timber shelter, jars in2big colour blocks; a recessed side door opens LEFT into the courtyard. Paving through top gap reaches counter/door. Bottom96nativepx: coherent attached southern house roof, broad deep receding muted terracotta plane with tiny angular6–8wide/3–4high tile clusters (about14tilesacross and25coursesdown), three calm values and fine brown joints, no scallops, no blackbead rows. ONE thin near eave at very bottom; NO facade beneath. Roof flashing joins northcourt backwall seamlessly. Square outer footprint, no taper or rounded corners. Top-left light, warm plaster, grey-brown stone, brown timber, single1px outline. No grass, standalone props, text, shadows outside sprite, gradients, noise, smears or specks. This is one connected property, not loose shop fragments. Candidate B.",
+    "source": "r17-C4-critic1-source-north-shop-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-1962e384-9d16-404a-af33-5d24f39d752f.png"
+  },
+  {
+    "id": "court-passage",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw one medieval timber COVERED COURT PASSAGE as a large96x48 native pixel module on solid magenta#FF00FF. High overhead3/4 RPG view matching warm plaster houses. Rectangular wide shallow tiled canopy across top16nativepx, a very thin1px outline and top-left light. Two substantial timber posts only in outer12px on left/right; clear OPEN rectangular64px-wide passage in center and bottom, magenta visible through opening, NO door, counter, floor, bottom sill or horizontal bottom bar. Canopy muted brown-red tiny angular tiles, roof upper surface and dark soffit visible, supported by short knee braces at outeredges. Grey-brown post shoes visible. It bridges a48px backyard lane; player can walk all the way through north-south. Square-corner canopy and plumb posts, no gablepoint, roundarch, grass, props, noise, haze, text or labels. Large clean sprite fills most of image with magenta margin.",
+    "source": "r17-C4-critic1-source-court-passage.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-a8c73c0d-abbe-4f20-a61a-62a8786d24bd.png"
+  },
+  {
+    "id": "hip-w3",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Draw ONE wide THREE-CELL HIP ROOF sprite for medieval RPG, on solid#FF00FF magenta. Native144x96pixel roof cap,3:2 rectangular footprint, large source. Match the attached96x144 hip's high3/4 projection and muted terracotta palette, fine angular tile scale6–8nativepx wide/3–4px courses. A short horizontal ridge recedes near the north/top edge; broad lit front slope, lit left hip, darker right hip; hip diagonals meet the near-eave bottom corners. Large readable planes. About22tilesacross/24coursesdown, shallow thin brown joints, three main values,1px external contour, no black bead rows or scalloped round ends. Thick enough eave shows shaded underside but no facade below. Square overall footprint and straight cut joining edges; no tapered rounded rectangle, walls, chimney, dormer, labels, flecks, noise, haze, gradients or decorative additions. Used between a taller two-cell gable and two-cell rear wing in the actual roof proof; keep same native tile size.",
+    "source": "r17-C4-critic1-source-hip-w3.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-3d3f923c-56b7-4706-a17a-abd72cbaf756.png"
+  },
+  {
+    "id": "fence-h-b",
+    "size": [
+      48,
+      24
+    ],
+    "prompt": "Draw ONE medieval yard fence sprite on solid #FF00FF magenta. horizontal48x24 native, wide2:1. High3/4 RPG view, upper-left lit warm brown timber, native one-pixel dark outer contour, clear top faces, squared ends, three squared posts, two continuous rails and one clear diagonal brace. Keep left/right rail endpoints at the same height for modular joining. Fence fills canvas width with narrow magenta margin around source. Large clean pixel art source, few flat warm wood values matching existing medieval town, no noisy grain, foliage, ground, shadow, rounded edges, isolated specks or text.",
+    "source": "r17-C4-critic1-source-fence-h-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-87bdf719-d6ca-4dc2-9837-9fe374c16e1e.png"
+  },
+  {
+    "id": "fence-h-c",
+    "size": [
+      48,
+      24
+    ],
+    "prompt": "Draw ONE medieval yard fence sprite on solid #FF00FF magenta. horizontal48x24 native, wide2:1. High3/4 RPG view, upper-left lit warm brown timber, native one-pixel dark outer contour, clear top faces, squared ends, two squared outer posts and a CLOSED timber wicket gate with one diagonal brace, small iron latch and vertical boards. Keep left/right rail endpoints at the same height for modular joining. Fence fills canvas width with narrow magenta margin around source. Large clean pixel art source, few flat warm wood values matching existing medieval town, no noisy grain, foliage, ground, shadow, rounded edges, isolated specks or text.",
+    "source": "r17-C4-critic1-source-fence-h-c.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-697d6ed6-f2fb-408c-b6f9-900fe33a6166.png"
+  },
+  {
+    "id": "fence-v-b",
+    "size": [
+      8,
+      48
+    ],
+    "prompt": "Draw ONE NORTH-SOUTH yard fence segment seen in a very high overhead3/4 RPG view on flat#FF00FF magenta. LONG VERTICAL thin silhouette, same as a fence along a map's vertical lane edge, NOT a front-facing horizontal fence rotated. Native opaque footprint about8pxwide48pxtall. three spaced squared post tops and a clearly visible diagonal timber brace on the left side between two long continuous rails. The long rails run north-south vertically through the image. Upper/left wood faces lit warm golden brown, right faces dark, one-nativepx exterior contour, square ends with matching rail endpoints at top/bottom. Large clean pixel-art source, no ground, horizontal panorama, rounded corners, noise, isolated flecks, fog, text or labels.",
+    "source": "r17-C4-critic1-source-fence-v-b.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-0b7b7427-6d4f-42a6-ba49-6d192dcac2e6.png"
+  },
+  {
+    "id": "fence-v-c",
+    "size": [
+      8,
+      48
+    ],
+    "prompt": "Draw ONE NORTH-SOUTH yard fence segment seen in a very high overhead3/4 RPG view on flat#FF00FF magenta. LONG VERTICAL thin silhouette, same as a fence along a map's vertical lane edge, NOT a front-facing horizontal fence rotated. Native opaque footprint about8pxwide48pxtall. two outer squared post tops and a small CLOSED narrow gate in the middle, with a transverse crossbar and a dark metal latch. The long rails run north-south vertically through the image. Upper/left wood faces lit warm golden brown, right faces dark, one-nativepx exterior contour, square ends with matching rail endpoints at top/bottom. Large clean pixel-art source, no ground, horizontal panorama, rounded corners, noise, isolated flecks, fog, text or labels.",
+    "source": "r17-C4-critic1-source-fence-v-c.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-b86e433d-ef93-44fb-a916-eb6da76b3665.png"
+  },
+  {
+    "id": "junction-c",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Precise pixel-art edit of this complete96x144 native HIP ROOF. Redraw as a much larger source on solid#FF00FF magenta, preserving its full exact rectangular silhouette, ridge x48 and lower hip diagonals, left lit/right shaded planes, tile scale and fine angular clusters. CHANGE ONLY THE TOP48px region: at y8 add ONE narrow horizontal lead gutter for a rear roof draining onto this hip, then continue the SAME lit/shaded roof planes straight down through y48 into the unchanged lower96px. No bottom edge or eave at y48. Gutter meets both side edges, center ridge joins gutter. ALL tile joints must be clear native1pixel-thick angular brown marks (at enlarged8x that means8-source-pixel thick), tiles6–8nativepxwide and3–4pixelcourses. No subpixel hairlines that vanish, no flecked flat fields, no black rounded bead rows, no gradients/noise/text. Use3main muted clay values. Each roof plane reads as rows of angular overlapping tiles with restrained contrast. Top-left light,1px exterior outline. Whole deep3cellcap large on magenta, candidate C.",
+    "source": "r17-C4-critic1-source-junction-c.png",
+    "tool_path": "/home/kolache/.codex/generated_images/01a1eb44-f4ff-7f31-a1b2-6f52fb7c4b3f/exec-176944e7-8b2d-4e88-bc79-950c3d16d09d.png"
+  }
+]

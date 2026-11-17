@@ -1,0 +1,293 @@
+{
+  "passed": 36,
+  "failed": 0,
+  "mode_samples": 17301504,
+  "source_drawings": 23,
+  "repaired_or_added_exports": 45,
+  "protected_passing": 61,
+  "checks": [
+    {
+      "name": "only failed old assets and compose.py changed",
+      "passed": true,
+      "changed": [
+        "compose.py",
+        "roof-ridge-c4-w3.png",
+        "roof-ridge-c4-w3-slate.png",
+        "roof-ridge-c4-w3-brown.png",
+        "roof-junction-c4.png",
+        "roof-ridge-c4-w1.png",
+        "roof-ridge-c4-w2.png",
+        "roof-junction-c4-slate.png",
+        "roof-junction-c4-brown.png",
+        "roof-ridge-c4-w1-slate.png",
+        "roof-ridge-c4-w1-brown.png",
+        "roof-ridge-c4-w2-slate.png",
+        "roof-ridge-c4-w2-brown.png",
+        "wall-tower-b-c4.png",
+        "wall-tower-c-c4.png",
+        "wall-side-b-c4.png",
+        "wall-side-c-c4.png",
+        "roof-back-c4-w1.png",
+        "roof-dormer-c4-w1.png",
+        "roof-back-c4-w2.png",
+        "roof-dormer-c4-w2.png",
+        "roof-valley-c4.png",
+        "roof-hip-end-c4.png"
+      ],
+      "unexpected": []
+    },
+    {
+      "name": "all passing C4 PNGs byte identical",
+      "passed": true,
+      "count": 61
+    },
+    {
+      "name": "critic1-ridge-a exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-ridge-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-tower-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-tower-c exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-wall-side-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-wall-side-c exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-ridge-c exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-junction-a exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-junction-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-valley exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-hip-end exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-west-wing-a exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-west-wing-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-east-wing exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-north-shop-a exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-north-shop-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-court-passage exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-hip-w3 exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-fence-h-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-fence-h-c exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-fence-v-b exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-fence-v-c exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "critic1-junction-c exact64vote mode/source",
+      "passed": true
+    },
+    {
+      "name": "west gate bypass fully masonry",
+      "passed": true,
+      "painted": 1152,
+      "area": 1152
+    },
+    {
+      "name": "east gate bypass fully masonry",
+      "passed": true,
+      "painted": 2304,
+      "area": 2304
+    },
+    {
+      "name": "controlled ground arch stays96px clear",
+      "passed": true
+    },
+    {
+      "name": "entire perimeter excludes exterior flood with arch closed",
+      "passed": true,
+      "leaks": []
+    },
+    {
+      "name": "tower owns every curtain contact across base rows",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "name": "directional entries point to painted thresholds",
+      "passed": true,
+      "entries": [
+        {
+          "id": "C4-north-middle-1",
+          "direction": "E",
+          "painted": true,
+          "anchor": [
+            672,
+            568
+          ]
+        },
+        {
+          "id": "C4-north-east-5",
+          "direction": "E",
+          "painted": true,
+          "anchor": [
+            1776,
+            712
+          ]
+        },
+        {
+          "id": "square-east-return",
+          "direction": "W",
+          "painted": true,
+          "anchor": [
+            1200,
+            1032
+          ]
+        },
+        {
+          "id": "square-south-property-0",
+          "direction": "N",
+          "painted": true,
+          "anchor": [
+            751,
+            1062
+          ]
+        },
+        {
+          "id": "square-south-property-1",
+          "direction": "N",
+          "painted": true,
+          "anchor": [
+            991,
+            1062
+          ]
+        },
+        {
+          "id": "square-south-property-2",
+          "direction": "N",
+          "painted": true,
+          "anchor": [
+            1071,
+            1062
+          ]
+        }
+      ]
+    },
+    {
+      "name": "actual sign brackets clear principal windows and doors",
+      "passed": true,
+      "signs": [
+        {
+          "id": "square-baker",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        },
+        {
+          "id": "square-apothecary",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        },
+        {
+          "id": "C4-gate-inn",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        },
+        {
+          "id": "C4-east-tailor",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        },
+        {
+          "id": "C4-east-scribe",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        },
+        {
+          "id": "west-smith",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        },
+        {
+          "id": "west-cobbler",
+          "clear_beam": true,
+          "window_overlap": 0,
+          "above_doors": true
+        }
+      ]
+    },
+    {
+      "name": "architectural inventory covers returns flashing stairs church walls",
+      "passed": true,
+      "instances": 355
+    },
+    {
+      "name": "frontage scan independent of manual labels",
+      "passed": true
+    },
+    {
+      "name": "universal placed-instance repetition",
+      "passed": true,
+      "instances": 355,
+      "windows": 111,
+      "failures": []
+    },
+    {
+      "name": "existing full acceptance suite",
+      "passed": true,
+      "passed_checks": 446,
+      "failed_checks": 0
+    }
+  ]
+}
