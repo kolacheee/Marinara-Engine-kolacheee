@@ -3338,8 +3338,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           found = m;
           break;
         }
-        // A tower may go through the curtain it stands on (a cell outside the floor plan), never further.
-        const curtain = !mask[m] && regions[n]!.kind === "tower" && from.includes(c);
+        // Through one course of wall outside the plan with the plan again beyond it (a tower through the
+        // curtain it stands on; a kitchen through the line between the back range and the ward, its only
+        // neighbours locked: round 25 keep 1), never further out.
+        const beyond = m + (m - c);
+        const curtain =
+          !mask[m] && mask[c] === 1 && beyond >= 0 && beyond < size && !!mask[beyond] && ground[m] === "wall";
         if ((!mask[m] && !curtain) || hold[m] || ground[m] === "floor") continue;
         back[m] = c;
         queue.push(m);
