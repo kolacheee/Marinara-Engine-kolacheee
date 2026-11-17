@@ -1209,6 +1209,8 @@ export function useDungeonMap(chatId: string, turnKey: string | null, enabled: b
           area: number;
           count: number;
           heart: boolean;
+          /** The room held across the main way. */
+          post?: boolean;
           /** A patrol's beat, end to end. */
           beat?: Array<{ x: number; y: number }>;
         }>;

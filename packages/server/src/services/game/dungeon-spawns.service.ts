@@ -258,6 +258,8 @@ export interface DungeonGuardMark {
   area: number;
   count: number;
   heart: boolean;
+  /** The room the holders keep across the main way: a light is kept burning by it. */
+  post?: boolean;
   /** A patrol's beat: the walk it keeps, end to end; the figure stands somewhere along it. */
   beat?: Array<{ x: number; y: number }>;
 }
@@ -267,7 +269,7 @@ export interface DungeonGuardMark {
 export function dungeonGuardMarks(here: DungeonSiteHere, today: number): DungeonGuardMark[] {
   const holders = new Set([here.site.holder, ...(here.site.leader ? [here.site.leader] : [])]);
   const cells = dungeonFromGameDungeonMap(here.map);
-  return here.areas.flatMap((area) => {
+  return here.areas.flatMap((area): DungeonGuardMark[] => {
     if (area.role !== "guard" && area.role !== "heart") return [];
     const foes = dungeonAreaFoesNow(area, here.site, here.setting, here.state, today).filter((foe) =>
       holders.has(foe.familyId),
@@ -314,23 +316,13 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const centre = { x: room.x + Math.floor(room.w / 2), y: room.y + Math.floor(room.h / 2) };
     // Round 9 of the panel: a planned building's guards watch the far door from a step inside it, never
     // standing in the doorway or on the stairs (a way up or down is not always a fight).
-    const watch = farDoor
-      ? { x: farDoor.x + Math.sign(centre.x - farDoor.x), y: farDoor.y + Math.sign(centre.y - farDoor.y) }
+    // A room with one way in is held at that door, from a step inside it (panel round 26: guards at the
+    // back wall read as standing in a corner, not at the door the way forces you through).
+    const held = farDoor ?? (area.role !== "heart" ? sorted[0] : undefined);
+    const watch = held
+      ? { x: held.x + Math.sign(centre.x - held.x), y: held.y + Math.sign(centre.y - held.y) }
       : undefined;
-    // A room with one way in is held from its far wall, facing that door across the room, not from its
-    // middle on the rug (panel round 25: guards standing in the open with no reason to be there).
-    const backWall =
-      here.map.roomInfo && !watch && sorted.length && area.role !== "heart"
-        ? dungeonRoomCells(room)
-            .filter(({ x, y }) => dungeonWalkable(cells, x, y))
-            .sort(
-              (p, q) =>
-                Math.abs(q.x - sorted[0]!.x) +
-                Math.abs(q.y - sorted[0]!.y) -
-                (Math.abs(p.x - sorted[0]!.x) + Math.abs(p.y - sorted[0]!.y)),
-            )[0]
-        : undefined;
-    const middle = here.map.roomInfo ? (watch ?? backWall ?? centre) : (stair ?? farDoor ?? centre);
+    const middle = here.map.roomInfo ? (watch ?? centre) : (stair ?? farDoor ?? centre);
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&
@@ -346,7 +338,8 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
         if (away < best) [at, best] = [{ x, y }, away];
       }
     }
-    return [{ ...at, area: area.area, count: foes.length, heart: area.role === "heart" }];
+    const post = !!here.map.roomInfo?.[area.area - 1]?.post;
+    return [{ ...at, area: area.area, count: foes.length, heart: area.role === "heart", ...(post ? { post } : {}) }];
   });
 }
 

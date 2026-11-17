@@ -4460,7 +4460,28 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (k === undefined || [postRegion, start, wayTargetRegion].includes(at[c]!) || info[k]!.heart) continue;
       info[k] = { ...info[k]!, quiet: true };
     }
-  else
+  // Something for taking the quiet way (panel round 26): a cache left in its farthest room, against a wall.
+  if (quietPath) {
+    const cache = plan.template === "crypt" ? 3 : CHEST;
+    const walled = (c: number) => around(c).some((m) => ground[m] === "wall");
+    const spots = [...quietPath]
+      .reverse()
+      .filter((c) => {
+        const k = roomOfRegion.get(at[c]!);
+        return k !== undefined && info[k]!.quiet && !SITE_STAIR_ROOMS.has(siteBaseName(info[k]!.name));
+      })
+      .flatMap((c) =>
+        around(c).filter((m) => at[m] === at[c] && ground[m] === "floor" && props[m] === -1 && walled(m)),
+      );
+    const onLink = (m: number) =>
+      links.some((link) => cell(link.x, link.y) === m) || traps.some((trap) => cell(trap.x, trap.y) === m);
+    for (const m of spots) {
+      if (onLink(m)) continue;
+      props[m] = cache;
+      if (reachable()) break;
+      props[m] = -1;
+    }
+  } else
     for (const [k, each] of info.entries())
       if (each.post) info[k] = { name: each.name, use: each.use, ...(each.heart ? { heart: true as const } : {}) };
   return { map, rooms: info, links, locks, traps };
