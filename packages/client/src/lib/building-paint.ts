@@ -56,6 +56,13 @@ const LOOK: Record<
   },
 };
 
+/** The dressed courses of wall mass, by style. */
+const MASS: Record<BuildingStyle, { fill: string; joint: string; light: string }> = {
+  manor: { fill: "#4a3a33", joint: "#33261f", light: "#5a483f" },
+  keep: { fill: "#4a4741", joint: "#34322e", light: "#58554e" },
+  temple: { fill: "#5a4c3c", joint: "#41372b", light: "#6a5a47" },
+};
+
 /** A wall cell: its top, and its face when a floor lies below it. */
 export function paintBuildingWall(
   ctx: Ctx,
@@ -64,8 +71,27 @@ export function paintBuildingWall(
   y: number,
   faceBelow: boolean,
   noise: Noise,
+  deep = false,
 ) {
   const look = LOOK[style];
+  // Wall mass with no room beside it (the outer shell, a tower's flank): laid in dressed courses, not left
+  // a black void (owner 2026-11-17, "Thin walls everywhere").
+  if (deep && !faceBelow) {
+    const mass = MASS[style];
+    px(ctx, mass.fill, x, y, T, T);
+    const gx = Math.round(x / T);
+    const gy = Math.round(y / T);
+    for (let k = 0; k < 4; k++) {
+      const yy = y + k * 4;
+      px(ctx, mass.joint, x, yy + 3, T, 1);
+      px(ctx, mass.light, x, yy, T, 1);
+      const off = ((gx * 3 + gy * 5 + k * 7) % 2) * 4;
+      for (let j = off; j < T; j += 8) px(ctx, mass.joint, x + j, yy, 1, 3);
+    }
+    if (noise(9) < 0.3)
+      px(ctx, mass.joint, x + 2 + Math.floor(noise(10) * 10), y + 1 + Math.floor(noise(11) * 2) * 4, 3, 1);
+    return;
+  }
   if (!faceBelow) {
     px(ctx, look.top, x, y, T, T);
     px(ctx, look.topEdge, x, y, T, 1);

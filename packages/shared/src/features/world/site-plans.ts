@@ -2283,6 +2283,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     });
     for (const c of cells) at[c] = id;
   }
+  const fixedCount = regions.length;
   const zoneOf = (c: number) => (level.inset ? 0 : frame.zone[c]!);
   const free = (c: number) => mask[c] === 1 && at[c] === -1 && zoneOf(c) !== -2;
 
@@ -3220,6 +3221,56 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         at[c] = g;
         cellsBy.get(g)!.push(c);
         changed = true;
+      }
+    }
+  // Thin walls (owner 2026-11-17, "Thin walls everywhere"): a wall two or more thick between two spaces
+  // inside the building is one thick, the space beside it taking the near course along its whole side, so
+  // rooms stay square; the outer shell, the towers, the donjon and the stairwells keep their thickness.
+  if (!rock && !level.inset)
+    for (let pass = 0, changed = true; changed && pass < 4; pass++) {
+      changed = false;
+      for (const [g, cells] of cellsBy) {
+        const region = regions[g]!;
+        if (g < fixedCount || region.hidden || !["room", "hall", "pass", "entry"].includes(region.kind)) continue;
+        for (const d of [-mapW, mapW, -1, 1]) {
+          const e = Math.abs(d) === 1 ? mapW : 1;
+          // The room's cells on this side, by the line they stand on.
+          const lines = new Map<number, number[]>();
+          for (const c of cells) {
+            if (at[c] !== g || ground[c] !== "floor") continue;
+            const n = c + d;
+            if (n < 0 || n >= size || (Math.abs(d) === 1 && Math.floor(n / mapW) !== Math.floor(c / mapW))) continue;
+            if (ground[n] !== "wall") continue;
+            const key = Math.abs(d) === 1 ? c % mapW : Math.floor(c / mapW);
+            lines.set(key, [...(lines.get(key) ?? []), c]);
+          }
+          for (const run of lines.values()) {
+            // The whole side of the room on that line, or nothing: no jogs.
+            const sideLen = cells.filter(
+              (c) =>
+                at[c] === g &&
+                (Math.abs(d) === 1 ? c % mapW === run[0]! % mapW : Math.floor(c / mapW) === Math.floor(run[0]! / mapW)),
+            ).length;
+            if (run.length < 2 || run.length !== sideLen) continue;
+            const strip = run.map((c) => c + d);
+            const ok = strip.every((m) => {
+              const beyond = m + d;
+              if (!mask[m] || hold[m] || ground[m] !== "wall" || (at[m]! >= 0 && at[m] !== g)) return false;
+              if (beyond < 0 || beyond >= size || ground[beyond] !== "wall") return false;
+              // Never so as to meet another space at the strip's sides or across a corner.
+              for (const side of [m + e, m - e, beyond + e, beyond - e])
+                if (side >= 0 && side < size && ground[side] !== "wall" && at[side] !== g) return false;
+              return true;
+            });
+            if (!ok) continue;
+            for (const m of strip) {
+              ground[m] = "floor";
+              at[m] = g;
+              cells.push(m);
+            }
+            changed = true;
+          }
+        }
       }
     }
   const shapes = new Map<number, { main: SiteRect; parts: SiteRect[] }>();

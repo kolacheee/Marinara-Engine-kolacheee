@@ -67,6 +67,9 @@ const WALK_MS_PER_CELL = 70;
 /** Rooms laid with a rug, and its colour. */
 /** The furnishings a dais is raised under: the high seat and the altar (site-plans' slots). */
 const DAIS_SEAT = 13;
+/** How much of a building wall's cell is laid with the floor beside it, at its sides and at its top. */
+const WALL_INSET = 5;
+const WALL_INSET_TOP = 3;
 const DAIS_ALTAR = 24;
 const RUG_ROOMS: Readonly<Record<string, string>> = {
   "Lord's chamber": "#7a1e22",
@@ -234,6 +237,21 @@ export function DungeonMapView({
     // A soft shadow on the floor along the foot of every wall, so the line of a room's walls reads at a
     // glance even where floor and wall are the same stone (panel 2026-11-17: a crypt chapel's rooms could
     // not be told apart).
+    const building_ = buildingStyleOf(cells.set);
+    /** Whether a building's wall cell is laid thin on one side: the cell beside it is a room's floor (not a
+     *  doorway, a pool or the land), and the wall is no hidden door or other piece. */
+    const wallInset = (x: number, y: number, dx: number, dy: number) => {
+      const g = (u: number, v: number) =>
+        u < 0 || v < 0 || u >= cells.width || v >= cells.height ? "rock" : cells.ground[v * cells.width + u];
+      const prop = cells.props[y * cells.width + x];
+      if (!building_ || g(x, y) !== "wall" || (prop !== -1 && prop !== DUNGEON_SECRET_DOOR_PROP)) return false;
+      const [nx, ny] = [x + dx, y + dy];
+      if (g(nx, ny) !== "floor") return false;
+      // A doorway (walls either side of it across the way) keeps its jambs.
+      return dx
+        ? !(g(nx, ny - 1) === "wall" && g(nx, ny + 1) === "wall")
+        : !(g(nx - 1, ny) === "wall" && g(nx + 1, ny) === "wall");
+    };
     const shadeWallFeet = (ctx: CanvasRenderingContext2D) => {
       const g = (x: number, y: number) =>
         x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
@@ -250,9 +268,12 @@ export function DungeonMapView({
             ctx.fillStyle = grad;
             ctx.fillRect(Math.min(x0, x1), Math.min(y0, y1), w, h);
           };
+          // A thin wall's shadow falls from where it now stands, inside its cell.
+          const left = solid(x - 1, y) && wallInset(x - 1, y, 1, 0) ? WALL_INSET : 0;
+          const right = solid(x + 1, y) && wallInset(x + 1, y, -1, 0) ? WALL_INSET : 0;
           if (solid(x, y - 1)) edge(px, py, px, py + depth, T, depth);
-          if (solid(x - 1, y)) edge(px, py, px + depth, py, depth, T);
-          if (solid(x + 1, y)) edge(px + T, py, px + T - depth, py, depth, T);
+          if (solid(x - 1, y)) edge(px - left, py, px - left + depth, py, depth, T);
+          if (solid(x + 1, y)) edge(px + T + right, py, px + T + right - depth, py, depth, T);
         }
     };
     if (coded) {
@@ -353,6 +374,46 @@ export function DungeonMapView({
           return;
         }
       };
+      // A building's floor cell as it is laid (its court, its room's floor), so a thin wall's edge can be
+      // laid with the floor beside it.
+      const paintBuildingFloorCell = (x: number, y: number) => {
+        const noise = cellNoise(x, y);
+        if (courts.some((court) => x >= court.x && x < court.x + court.w && y >= court.y && y < court.y + court.h)) {
+          // A path across the court from each opening in its walls.
+          const court = courts.find(
+            (each) => x >= each.x && x < each.x + each.w && y >= each.y && y < each.y + each.h,
+          )!;
+          const mid = { x: court.x + Math.floor(court.w / 2), y: court.y + Math.floor(court.h / 2) };
+          // A castle's ward is cobbled along its edges and paths with trodden grass between (gamer panel
+          // 2026-11-17: an all-stone ward read as a roofed hall); a house's or a cloister's court is a garden
+          // crossed by paths.
+          // A castle's ward is one open bailey of trodden earth, cobbled only down the way from the gate
+          // and across it, a little grass where nobody walks (panel 2026-11-17: paved strips round grass
+          // beds read as a cloister, then as a ring road).
+          const paved = x === mid.x || y === mid.y;
+          const edge = x === court.x || y === court.y || x === court.x + court.w - 1 || y === court.y + court.h - 1;
+          if (building === "keep" && !paved)
+            if (edge && cellNoise(Math.floor(x / 2), Math.floor(y / 2))(77) < 0.35)
+              paintBuildingCourt(ctx, x * T, y * T, false, noise);
+            else paintBuildingYard(ctx, x * T, y * T, noise);
+          else paintBuildingCourt(ctx, x * T, y * T, paved, noise);
+        } else
+          // A house's cellars and a church's undercroft are flagged stone, not boards or marble (panel
+          // round 23).
+          paintBuildingFloor(
+            ctx,
+            buried ? "keep" : building!,
+            x * T,
+            y * T,
+            isHall(x, y),
+            noise,
+            {
+              up: isHall(x, y - 1),
+              down: isHall(x, y + 1),
+            },
+            floorKindAt(x, y),
+          );
+      };
       for (let y = 0; y < cells.height; y++)
         for (let x = 0; x < cells.width; x++) {
           const ground = at(x, y);
@@ -369,7 +430,13 @@ export function DungeonMapView({
             const below = at(x, y + 1);
             const face = below === "floor" || below === "liquid";
             if (building) {
-              paintBuildingWall(ctx, building, x * T, y * T, face, noise);
+              let deep = true;
+              for (let dy = -1; dy <= 1 && deep; dy++)
+                for (let dx = -1; dx <= 1; dx++) {
+                  const near = at(x + dx, y + dy);
+                  if (near === "floor" || near === "liquid") deep = false;
+                }
+              paintBuildingWall(ctx, building, x * T, y * T, face, noise, deep);
               battlement(x, y);
             } else paintDungeonWall(ctx, cells.set, x * T, y * T, face, noise);
           } else if (ground === "liquid") {
@@ -377,47 +444,35 @@ export function DungeonMapView({
             else paintDungeonPool(ctx, cells.set, x * T, y * T, noise);
             const dry = (dx: number, dy: number) => at(x + dx, y + dy) !== "liquid";
             paintPoolRim(ctx, x * T, y * T, { n: dry(0, -1), s: dry(0, 1), w: dry(-1, 0), e: dry(1, 0) });
-          } else if (building)
-            if (
-              courts.some((court) => x >= court.x && x < court.x + court.w && y >= court.y && y < court.y + court.h)
-            ) {
-              // A path across the court from each opening in its walls.
-              const court = courts.find(
-                (each) => x >= each.x && x < each.x + each.w && y >= each.y && y < each.y + each.h,
-              )!;
-              const mid = { x: court.x + Math.floor(court.w / 2), y: court.y + Math.floor(court.h / 2) };
-              // A castle's ward is cobbled along its edges and paths with trodden grass between (gamer panel
-              // 2026-11-17: an all-stone ward read as a roofed hall); a house's or a cloister's court is a garden
-              // crossed by paths.
-              // A castle's ward is one open bailey of trodden earth, cobbled only down the way from the gate
-              // and across it, a little grass where nobody walks (panel 2026-11-17: paved strips round grass
-              // beds read as a cloister, then as a ring road).
-              const paved = x === mid.x || y === mid.y;
-              const edge = x === court.x || y === court.y || x === court.x + court.w - 1 || y === court.y + court.h - 1;
-              if (building === "keep" && !paved)
-                if (edge && cellNoise(Math.floor(x / 2), Math.floor(y / 2))(77) < 0.35)
-                  paintBuildingCourt(ctx, x * T, y * T, false, noise);
-                else paintBuildingYard(ctx, x * T, y * T, noise);
-              else paintBuildingCourt(ctx, x * T, y * T, paved, noise);
-            } else
-              // A house's cellars and a church's undercroft are flagged stone, not boards or marble (panel
-              // round 23).
-              paintBuildingFloor(
-                ctx,
-                buried ? "keep" : building,
-                x * T,
-                y * T,
-                isHall(x, y),
-                noise,
-                {
-                  up: isHall(x, y - 1),
-                  down: isHall(x, y + 1),
-                },
-                floorKindAt(x, y),
-              );
+          } else if (building) paintBuildingFloorCell(x, y);
           // A planned crypt's hall is set apart from its rooms; a carved place's ground is all one.
           else paintDungeonFloor(ctx, cells.set, x * T, y * T, noise, Boolean(cells.roomNames) && isHall(x, y));
         }
+      // Thin walls (owner 2026-11-17, "Thin walls everywhere"): a wall's sides toward a room are laid with
+      // that room's floor, so a wall between two rooms reads as a line, not a cell-wide black band; its face
+      // toward the room below stays as it stands.
+      const insetWallCell = (x: number, y: number) => {
+        for (const [dx, dy] of [
+          [-1, 0],
+          [1, 0],
+          [0, -1],
+        ] as const) {
+          if (!wallInset(x, y, dx, dy)) continue;
+          const depth = dy ? WALL_INSET_TOP : WALL_INSET;
+          ctx.save();
+          ctx.beginPath();
+          if (dx < 0) ctx.rect(x * T, y * T, depth, T);
+          else if (dx > 0) ctx.rect(x * T + T - depth, y * T, depth, T);
+          else ctx.rect(x * T, y * T, T, depth);
+          ctx.clip();
+          ctx.translate(-dx * T, -dy * T);
+          paintBuildingFloorCell(x + dx, y + dy);
+          ctx.restore();
+        }
+      };
+      if (building)
+        for (let y = 0; y < cells.height; y++)
+          for (let x = 0; x < cells.width; x++) if (at(x, y) === "wall") insetWallCell(x, y);
       shadeWallFeet(ctx);
       // A rug in the quiet rooms people live in, under their furniture (panel 2026-11-17).
       if (building)
@@ -547,10 +602,15 @@ export function DungeonMapView({
             // A hidden door: the wall it hides in, with only a hairline and a scuff to give it away.
             const below = at(x, y + 1);
             paintBuildingWall(ctx, building, x * T, y * T, below === "floor", cellNoise(x, y));
+            // Laid as thin as the wall it hides in, so its width gives nothing away.
+            insetWallCell(x, y);
+            const l = wallInset(x, y, -1, 0) ? WALL_INSET : 0;
+            const r = wallInset(x, y, 1, 0) ? WALL_INSET : 0;
+            const top = wallInset(x, y, 0, -1) ? WALL_INSET_TOP : 0;
             ctx.fillStyle = "rgba(10, 6, 4, 0.7)";
-            ctx.fillRect(x * T + 3, y * T + 2, 1, T - 3);
-            ctx.fillRect(x * T + T - 4, y * T + 2, 1, T - 3);
-            ctx.fillRect(x * T + 3, y * T + 2, T - 6, 1);
+            ctx.fillRect(x * T + l + 1, y * T + top + 2, 1, T - top - 3);
+            ctx.fillRect(x * T + T - r - 2, y * T + top + 2, 1, T - top - 3);
+            ctx.fillRect(x * T + l + 1, y * T + top + 2, T - l - r - 2, 1);
             // A draught has kept the cobwebs off it, and the floor in front is scraped in an arc where the
             // door swings (panel round 6: a hidden door needs a tell a careful eye can find).
             ctx.fillStyle = "rgba(230, 220, 190, 0.5)";
