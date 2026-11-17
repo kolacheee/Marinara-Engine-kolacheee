@@ -4224,12 +4224,20 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (!tiny && grids.length && !hiddenRooms.has(n) && random() < 0.9) {
         const grid = grids[Math.floor(random() * grids.length)]!;
         const flip = random() < 0.5;
+        let drawn = 0;
         for (let r = 0; r < deep; r++)
           for (let c = 0; c < across; c++) {
             // A crypt's tile pack has no altar: its altar is a tomb, the altar tomb of a mortuary chapel.
             const raw = SITE_STAMP_LEGEND[grid[r]![c]!];
+            // Its loose bones are the pack's skeletons; what else it cannot draw is left out.
             const slot =
-              plan.template === "crypt" && raw !== undefined && raw > 7 ? (raw === ALTAR ? 0 : undefined) : raw;
+              plan.template === "crypt" && raw !== undefined && raw > 7
+                ? raw === ALTAR
+                  ? 0
+                  : raw === BONES
+                    ? 1
+                    : undefined
+                : raw;
             if (slot === undefined) continue;
             const k = flip ? across - 1 - c : c;
             const [x, y] =
@@ -4242,9 +4250,13 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
                     : [x1 - r, y0 + k];
             if (near(x, y)) continue;
             put(slot, x, y);
+            drawn++;
           }
-        items.length = 0;
-        stamped = true;
+        // A plan that left nothing the pack can draw falls back to the room's own furniture.
+        if (drawn) {
+          items.length = 0;
+          stamped = true;
+        }
       }
     }
     if (vaulted && !stamped) {
