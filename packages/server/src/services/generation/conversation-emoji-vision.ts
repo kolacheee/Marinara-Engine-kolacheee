@@ -40,14 +40,15 @@ const EMOJI_TOKEN = /:([a-z0-9_]{1,32}):/g;
 
 /**
  * Models often write a sticker as an emoji (`:hug:` for `sticker:hug:`). Rewrite a bare `:name:` into a sticker token
- * when the name is a sticker the responders can see and no custom emoji has that name, so it shows as the sticker.
+ * when the name is a sticker the responders can see and no custom emoji has that name, so it shows as the sticker, and
+ * the reverse: `sticker:name:` for a custom emoji with no sticker of that name becomes `:name:`.
  */
 export function rewriteStickerNamesWrittenAsEmojis(
   text: string,
   stickerNames: ReadonlySet<string> | Map<string, unknown>,
   emojiNames: ReadonlySet<string> | Map<string, unknown>,
 ): { text: string; changed: boolean } {
-  if (stickerNames.size === 0 || !text.includes(":")) return { text, changed: false };
+  if ((stickerNames.size === 0 && emojiNames.size === 0) || !text.includes(":")) return { text, changed: false };
   // A sticker the reply already sends is not sent twice: its bare `:name:` copy is dropped instead.
   const alreadySent = new Set([...text.matchAll(STICKER_TOKEN)].map((match) => match[1]!));
   let out = "";
@@ -55,10 +56,18 @@ export function rewriteStickerNamesWrittenAsEmojis(
   for (const match of text.matchAll(/(sticker)?:([a-z0-9_]{1,32}):/g)) {
     const [whole, prefix, name] = match;
     const start = match.index!;
-    if (prefix || !stickerNames.has(name!) || emojiNames.has(name!)) continue;
     // Leave word-joined colons alone ("a:hug:b"), which are not emoji tokens.
     if (start > 0 && /[a-z0-9_]/i.test(text[start - 1]!)) continue;
     const end = start + whole.length;
+    if (prefix) {
+      // The mirror case: an emoji's name sent as a sticker (`sticker:oof:` with no sticker of that name) shows the emoji.
+      if (!stickerNames.has(name!) && emojiNames.has(name!)) {
+        out += `${text.slice(cursor, start)}:${name}:`;
+        cursor = end;
+      }
+      continue;
+    }
+    if (!stickerNames.has(name!) || emojiNames.has(name!)) continue;
     if (!alreadySent.has(name!)) {
       alreadySent.add(name!);
       out += `${text.slice(cursor, start)}sticker:${name}:`;

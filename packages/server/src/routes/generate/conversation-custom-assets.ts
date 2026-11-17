@@ -457,7 +457,10 @@ export async function appendConversationCustomAssetAdvertisements(args: {
   }
   const describeEmoji: AssetDescriber = (name) => emojiDescriptions.get(name);
   const describeSticker: AssetDescriber = (name) => stickerDescriptions.get(name);
-  if (vision) {
+  // Ranking and the tool-call picker always use them; the prompt shows them only when asked, since each costs tokens.
+  const showEmoji: AssetDescriber = selectionPrefs.showDescriptions ? describeEmoji : noDescriptions;
+  const showSticker: AssetDescriber = selectionPrefs.showDescriptions ? describeSticker : noDescriptions;
+  if (vision && selectionPrefs.showDescriptions) {
     vision.emojiDescriptions = emojiDescriptions;
     vision.stickerDescriptions = stickerDescriptions;
   }
@@ -532,7 +535,7 @@ export async function appendConversationCustomAssetAdvertisements(args: {
             [],
             new Map([[responder.charId, picked]]),
             emojiPrefs.maxCount,
-            describeEmoji,
+            showEmoji,
           );
           if (vision) vision.offeredEmojis = picked.slice(0, emojiPrefs.maxCount);
         }
@@ -553,7 +556,7 @@ export async function appendConversationCustomAssetAdvertisements(args: {
         orderedShared,
         orderedOwnByChar,
         emojiPrefs.maxCount,
-        describeEmoji,
+        showEmoji,
       );
       if (vision) {
         vision.offeredEmojis = listAdvertisedAssetNames(
@@ -595,7 +598,7 @@ export async function appendConversationCustomAssetAdvertisements(args: {
             [],
             new Map([[responder.charId, picked]]),
             stickerPrefs.maxCount,
-            describeSticker,
+            showSticker,
           );
           if (vision) vision.offeredStickers = picked.slice(0, stickerPrefs.maxCount);
         }
@@ -616,7 +619,7 @@ export async function appendConversationCustomAssetAdvertisements(args: {
         orderedShared,
         orderedOwnByChar,
         stickerPrefs.maxCount,
-        describeSticker,
+        showSticker,
       );
       if (vision) {
         vision.offeredStickers = listAdvertisedAssetNames(
