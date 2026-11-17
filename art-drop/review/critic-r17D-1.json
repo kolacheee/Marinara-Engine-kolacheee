@@ -1,0 +1,118 @@
+{
+  "part": "D",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "gatehouse",
+    "wall-walk",
+    "wall-walk-stair",
+    "stall-2",
+    "compose.py"
+  ],
+  "files": {
+    "cathedral": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "guildhall": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "townhall-market": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "gatehouse": {
+      "status": "fail",
+      "problems": [
+        "The 144x400 drawing reads as a stretched front elevation at 1x. The two flanking towers are squeezed into approximately 24px strips, while four repeated window floors fill the central slab. There is no substantial side return, receding gate passage or believable pair of tower volumes beside fantasy-house-2. See r17-D-piece-gatehouse-1x4x.png and critic-r17D-1-skyline-1x.png.",
+        "The roof occupies only the shallow band near y35..100, and the tower masonry is compressed into narrow streaks. Its material scale differs sharply from both wall-tower and the oversized blocks in wall-walk. The common stone colour does not make these a matching fortification set.",
+        "At the stair connection the gate presents closed, nearly flat masonry, with no legible landing or access into the tower at wall-walk height. The supplied joined scene also exposes ground between the stair and gate; see critic-r17D-1-join-stair-gate-8x.png."
+      ],
+      "fix": "Redraw the gate as two substantial towers and a gate chamber in the town-house 3/4 view, designed from the outset for the three-cell footprint and 96px opening. Give the passage visible depth, show roof/top planes and a shaded return, and draw an actual wall-walk landing/entry. Obtain skyline height through the tower design instead of anisotropically squeezing a tall facade. Match the interval tower stone scale and retest native wall/stair contacts."
+    },
+    "fountain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "wall-tower": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "wall-walk": {
+      "status": "fail",
+      "problems": [
+        "The lower wall, especially y72..142, consists of enormous almost unshaded rectangular blocks, roughly 24px high and up to a cell wide. Beside wall-tower and fantasy-house-2 it reads as a different, much coarser drawing style. The walk/parapet is mostly a flat horizontal band rather than a convincing high 3/4 volume.",
+        "The exact same crack, corbel and masonry phase recur every 48px, including twice within this 96px export. In the market this becomes a conspicuous stamped strip across the wall. See critic-r17D-1-seams-1-1x.png and critic-r17D-1-market-crop-3x.png.",
+        "Unlike contacts do not join cleanly: the wall uses painted crop edges, while the stair and tower retain transparent margins and closed outlines. The delivered wall/stair transition exposes ground and a vertical dark divider. The tower/wall transition exposes an even wider irregular ground sliver. See critic-r17D-1-join-wall-stair-8x.png and critic-r17D-1-join-tower-wall-8x.png."
+      ],
+      "fix": "Redraw at the tower/house native material scale, with a clearly visible walk surface, parapet thickness, lit top edges and the existing under-walk shadow. Retain regular merlons but avoid repeating the same crack and stone irregularity every cell. Establish explicit compatible contact rows and overlap anchors for the tower, stair and gate; prove all unlike joins on actual ground without gaps or doubled outlines."
+    },
+    "wall-walk-stair": {
+      "status": "fail",
+      "problems": [
+        "The wall body and stairs use broad flat fill bands and very large blocks, unlike the neighbouring tower and town-house references. The stair has tread stripes but lacks convincing thickness and a landing connected to the gate. See r17-D-piece-wall-walk-stair-1x4x.png.",
+        "Both canvas edge columns, x0 and x191, are transparent throughout the lower 139 inspected rows. At the current adjacent placements this creates open ground slits and a closed-outline divider where a continuous wall is required. In the market these occur at the west join near x768 and east join near x960. The 8x join evidence shows them plainly."
+      ],
+      "fix": "Redraw the stair-wall in the same stone scale and 3/4 construction as the interval tower, including a substantial stair side and top landing. Supply mating edge paint/anchors compatible with the straight walk and gate. Change the compositor to use those anchors, then show continuous unlike joins; do not hide the slits with a generic dark line."
+    },
+    "market-cross": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "shrine": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "stall-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "stall-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "stall-2": {
+      "status": "fail",
+      "problems": [
+        "At native size the fish display at approximately x6..40,y30..35 reads as three pale horizontal bars in dark trays. There are no readable fish heads/tails. The blue/cream mark on the counter near x15..29,y38..44 is an amorphous patch rather than a usable fish cue. The teal canopy is distinct, but the required trade cannot be named reliably from the goods at 1x. See critic-r17D-1-fish-8x.png and critic-r17D-1-props-paving-1x.png."
+      ],
+      "fix": "Redraw the goods as two or three larger, clearly tapered fish with distinct heads and forked tails, using solid silver/blue clusters. Replace the counter patch with a legible fish silhouette or clean timber. Keep the 48x48 export, 44px canopy, counter, hard outline and top-left light; check recognition unlabeled at 1x beside the other five stalls."
+    },
+    "stall-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "stall-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "stall-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No sprite change required in this review."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "d_market places guildhall at x192,base1536 with entrance [288,1536], south of the square. Its visible arcade faces south, away from the church and square to the north. Opposite positions alone do not meet the requirement that the guildhall face the church. The entrance opens onto the narrow bottom apron instead of the market.",
+        "The wall placement loop abuts whole canvases, despite the comment claiming overlapping native edge paint. Transparent tower/stair/gate contours therefore leave visible ground slits at the tower, stair and gate connections. The wall path and stair do not make a visually connected accessible fortification. See the three critic-r17D-1-join-*-8x.png files.",
+        "The 48px service road at [0,432,984,48] runs 20.5 cells at unchanged width, exceeding BRIEF-17's eight-cell maximum. Six identical wall-walk exports at x0,96,192,288,384,480 also violate the rule of at most two identical pieces in a row of five and amplify the repeated crack/corbel stamp.",
+        "The gate road uses the same street-main drawing as the other main-road stretches and the same paving family as the square. There is no distinct gate-road paving treatment called for by the layout rules. Preserve its clear 96px core while making the exit treatment visible."
+      ],
+      "fix": "Rework the D market placement so the guildhall arcade addresses the square/church, using a properly drawn orientation or a revised square edge arrangement rather than mirroring light direction. Use explicit wall attachment anchors/overlaps and a real stair-to-gate landing. Break the long service-road run through planned setbacks/junctions while retaining 48px clearance; vary wall arrangements with compatible drawn sections. Give the gate approach a distinct drawn paving treatment. Rebuild the four scenes, comparisons, greyscale views and unlike seam proofs."
+    }
+  },
+  "notes": "Independent Part D visual review; no production art or compositor edits were made. Inspected all 16 D PNGs at literal 1x and nearest-neighbour 4x beside fantasy-house-2, plus 8x fish and unlike-wall close-ups. Inspected self-neighbour seam sheets for every export and the six unlike stalls. Rebuilt the 16x12-cell L-block, irregular market, both 5-storey/1-storey joins and common-baseline skyline by importing the unchanged city17/compose.py. All four rebuilt 1x renders exactly match the supplied renders. Saved independent 1x/3x scenes, comparisons with round15-street and current-town at literal 1x, and 1x greyscale squints under critic-r17D-1-*.png. The reference current-town screenshot uses a different display zoom; it is not a native sprite-scale ruler. Pixel audit: every D PNG has alpha only 0/255, zero RGB under transparency, one connected opaque component and no detached alpha specks. No haze/white wash was found in these D exports. The six declared market route rectangles contain zero opaque fixed-art pixels, and the gate opening x24..119,y336..398 is transparent. These checks do not repair the visual joins or prove an accessible landing. Shadows are present; the church leads the low flanking roofs and remains visible in greyscale. The isolated cathedral, guildhall, market hall, tower and small passed props have useful roof/top planes and top-left lighting. Guildhall orientation and tower contacts are layout failures, not grounds to discard otherwise usable passed drawings. Size interpretation: BRIEF-17 simultaneously specifies cell dimensions and landmarks taller than the 384px maximum stack. Following panel 1 item 6, this review treats the stated landmark cell dimensions as ground footprints with northward art overhang; it does not pretend these PNGs have literal footprint-height canvases. Actual expanded canvases are cathedral 240x432, guildhall 192x400, gatehouse 144x400 and wall-tower 96x240; their declared footprints are 5x6,4x4,3x4,2x3. The other requested exact canvases are correct: hall192x144, fountain96x96, cross48x96, shrine/stalls48x48. If literal canvas heights are required, these four expanded exports also fail size and the brief's height requirements need reconciliation. The explicit three-cell gate footprint takes precedence over panel 1's conflicting four-cell request. Panel 2 is absent. No ground bases or seasonal partners are part of D, and none were supplied for D; seasonal alpha-mask comparisons are therefore not applicable, not claimed as passed. Inspected unchanged summer paving/grass in literal 3x3 repeats and the small D props over both summer contexts. Context paving repeats regularly and grass has visible repeated motifs over large fields; these are pre-existing context, not new D failures. Whole civic sprites do not share the facade course-row contract; the wall family does require the continuous contacts that currently fail. No Round15 PNG dependency was used by the rebuilt scenes; Round15 appears only as the requested comparison. A/B/C pieces and the existing review-only C actor provide context. Part E life/district content remains deferred. This review does not reapprove or modify earlier parts. The failed list includes compose.py because its Part D extension is explicitly within the requested deliverable. Each failed drawing must be redrawn through the image tool; registration, mode reduction, palette lock, cleanup and composition remain the permitted code steps."
+}

@@ -1,0 +1,354 @@
+{
+  "cathedral": {
+    "size": [
+      240,
+      432
+    ],
+    "colours": 36,
+    "opaque": 59274,
+    "sha256": "756ef2f289bf154f37aa4626ae578b55612cecad44f5f55798432845ac261193",
+    "footprint_cells": [
+      5,
+      6
+    ],
+    "anchor_bottom_left": [
+      0,
+      432
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "guildhall": {
+    "size": [
+      192,
+      400
+    ],
+    "colours": 36,
+    "opaque": 36565,
+    "sha256": "0aac9bf94df6dc1be8e7a11c8c68bd668c2f2617d0993cb085d9afcab01c91c3",
+    "footprint_cells": [
+      4,
+      4
+    ],
+    "anchor_bottom_left": [
+      0,
+      400
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "gatehouse": {
+    "size": [
+      144,
+      400
+    ],
+    "colours": 30,
+    "opaque": 35667,
+    "sha256": "b0bc48225bdc10a62fe6e4ac4470c132dd4196087f4cf61d2dad6f71e7d2bc23",
+    "footprint_cells": [
+      3,
+      4
+    ],
+    "anchor_bottom_left": [
+      0,
+      400
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-walk-stair": {
+    "size": [
+      192,
+      144
+    ],
+    "colours": 6,
+    "opaque": 26556,
+    "sha256": "9d506e8a1910e8b9e1a3a9278a367b22a37ba414c4756b64559e2943a3f618ab",
+    "footprint_cells": [
+      4,
+      2
+    ],
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "townhall-market": {
+    "size": [
+      192,
+      144
+    ],
+    "colours": 24,
+    "opaque": 18163,
+    "sha256": "9be7849724b4da948570e9b9a8993aa8514ca820117882ac0f989fc560fd4ff8",
+    "footprint_cells": [
+      4,
+      3
+    ],
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "fountain": {
+    "size": [
+      96,
+      96
+    ],
+    "colours": 22,
+    "opaque": 5916,
+    "sha256": "ffd3e1409a575d9150e9032503fc3ac77090e8d7936854d9e2d6e2992c6d345c",
+    "footprint_cells": [
+      2,
+      2
+    ],
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-tower": {
+    "size": [
+      96,
+      240
+    ],
+    "colours": 30,
+    "opaque": 19553,
+    "sha256": "6e05010a70cea4328e6b999e8c280ea25299f5356ec20bb60683f538c92b65c3",
+    "footprint_cells": [
+      2,
+      3
+    ],
+    "anchor_bottom_left": [
+      0,
+      240
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "market-cross": {
+    "size": [
+      48,
+      96
+    ],
+    "colours": 22,
+    "opaque": 1814,
+    "sha256": "60018d7197805bb5d2e54b2b9e8398bb15320efd787eacbd20fed37639fd76da",
+    "footprint_cells": [
+      1,
+      2
+    ],
+    "anchor_bottom_left": [
+      0,
+      96
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "shrine": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 24,
+    "opaque": 1261,
+    "sha256": "87afc40a99b7d707faa48b1f046f99147b4f569f7b8b760e9b9c6881d16d94f4",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "stall-0": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 15,
+    "opaque": 1548,
+    "sha256": "a536dc44945b88e71f3dd6d1d61f5f4399635a9107b64b11f51ae33e4af2985d",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "stall-1": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 28,
+    "opaque": 1450,
+    "sha256": "f40fcb8a956fabd2f6b3351204e60913dd0090f94debb5f46991c64209c9eac3",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "stall-2": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 23,
+    "opaque": 1568,
+    "sha256": "7ecd6bcd9846a04b6fe655eb7e117e46e42563abe377ede88aec2307f0d14258",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "stall-3": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 25,
+    "opaque": 1445,
+    "sha256": "152eb56f55b28d9cb49d29a860a06c3c82de364c7c9d37ff678487570619a2b5",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "stall-4": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 21,
+    "opaque": 1421,
+    "sha256": "6aad6608efd36c1e5ab96a42d836990420503acc3ca7091473339fc720139429",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "stall-5": {
+    "size": [
+      48,
+      48
+    ],
+    "colours": 25,
+    "opaque": 1493,
+    "sha256": "4f2748d67a663463c3d5318320556aa063f36e2f75d93655bd1c4fb667d0eb24",
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      48
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-walk": {
+    "size": [
+      96,
+      144
+    ],
+    "colours": 6,
+    "opaque": 13264,
+    "sha256": "b036e6728aaa3a90fffb5057bf9108b86d5a85705925666e4d7020bd7aadd2f7",
+    "footprint_cells": [
+      2,
+      1
+    ],
+    "anchor_bottom_left": [
+      0,
+      144
+    ],
+    "season": "summer",
+    "alpha": [
+      0,
+      255
+    ]
+  }
+}

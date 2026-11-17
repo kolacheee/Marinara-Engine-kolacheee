@@ -1,0 +1,72 @@
+{
+  "part": "D",
+  "responds_to": "critic-r17D-2.json",
+  "verdict": "self-review pass",
+  "independent_approval": false,
+  "changed_exports": [
+    "wall-walk.png",
+    "wall-walk-stair.png"
+  ],
+  "files": {
+    "wall-walk": {
+      "status": "addressed",
+      "problems_addressed": [
+        "Replaced the incompatible bright wall with selected image-tool variant A. Wall and stair wall now use one shared six-colour painting; the 4px overlap is byte-identical. Horizontal courses, ledge, shadow and merlon treatment continue across the actual contact, without a synthetic seam stripe.",
+        "The newly drawn upper surface is a receding diagonally paved walking plane with rear parapet, lit coping and corbel shadow; the same paint supplies both partners."
+      ],
+      "proofs": [
+        "r17-D-wall-joins-1x.png",
+        "r17-D-wall-joins-4x.png",
+        "r17-D-join-wall-stair-8x.png",
+        "r17-D-critic2-wall-stair-context-4x.png"
+      ]
+    },
+    "wall-walk-stair": {
+      "status": "addressed",
+      "problems_addressed": [
+        "Replaced incompatible wall/parapet paint with the same selected master used by the straight run. Extracted the accepted stair at its observed painted left contour, retaining every tread, side cheek, right-hand masonry and gate landing pixel from that contour eastward. Extraction coordinates and replay are recorded; no staircase shape was generated in code."
+      ],
+      "proofs": [
+        "r17-D-piece-wall-walk-stair-1x4x.png",
+        "r17-D-critic2-native-joins.json",
+        "r17-D-join-stair-gate-8x.png"
+      ]
+    },
+    "compose.py": {
+      "status": "addressed",
+      "problems_addressed": [
+        "The 96px gate route now repeats only four whole cool-slate courses cropped from native source rows 51..86, including their side kerbs. This genuine north/south period is wrapped into a 96x144 grid-aligned review/compositor tile. The transverse threshold is cropped separately and placed once at [984,423,96,9]. The source drawing is unchanged."
+      ],
+      "proofs": [
+        "r17-D-critic2-gate-route-3x.png",
+        "r17-D-repeat-gate-interior-1x.png",
+        "r17-D-repeat-gate-interior-4x.png",
+        "r17-D-critic-market-squint-1x.png"
+      ]
+    }
+  },
+  "method": "Two built-in image-tool variants on magenta; selected A. Painted landmark BOX registration at 8x, existing six-colour palette with no dither, exact 64-sample RGBA mode, one-pixel cleanup, hard alpha, zero hidden RGB. Native drawn-paint crops and staircase extraction only.",
+  "review": {
+    "pieces": "All 16 exports inspected at literal 1x and nearest-neighbour 4x beside fantasy-house-2; tall 4x art split into native 144px bands to avoid fit-down. All self seams inspected, plus alternating wall crops and unlike tower/wall/stair/gate contacts on actual paving at 1x/4x/8x.",
+    "scenes": "Regenerated 16x12 L-block, irregular market, both 5-storey/1-storey orientations and common-baseline skyline. Saved native 1x/NN3x, comparisons beside both round15-street and current-town, and greyscale 1x. Native scene crops inspected; focused gate route inspected at 3x.",
+    "fail_list": {
+      "flat_volume": "Wall now has a continuous visible walk plane, coping thickness, corbels and undershadow. Accepted civic roof/top planes preserved.",
+      "accidental_roof_holes": "No new roof holes; earlier A/B/C scene geometry unchanged.",
+      "seams_gaps": "No ground slit or material/registration discontinuity at the repaired wall/stair join. Opaque overlaps retained. Tower/gate overlaps checked.",
+      "copy_paste": "Two distinct 96px wall crops alternate between towers; no duplicated 48px halves. Gate threshold occurs once, with no repeating pale bands.",
+      "landmark_hierarchy": "Church remains the skyline leader on the market; low flanking roofs and common-baseline proof retained.",
+      "greyscale": "Church, guildhall and gate remain distinguishable, with a continuous clear exit route.",
+      "trade_readability": "All six accepted goods/canopies remain distinct at 1x; no trade or sign file changed.",
+      "street_shadows": "South/east shadows remain present and masked to receiving ground."
+    }
+  },
+  "validation": {
+    "checks": 148,
+    "passed": true,
+    "exact_mode_samples": 3538944,
+    "protected_files": 14382,
+    "passing_D_pngs_unchanged": 14,
+    "all11_market_route_rectangles_clear": true
+  },
+  "scope": "Only the two failed production PNGs, D compositor, D review/replay files and NOTES changed. No seasonal D partners. No city15 production dependency; round15 is comparison-only. Part E life deferred. BRIEF-17 keeps the 3-cell gate footprint over panel 1 item 7 four-cell request. Panel 2 absent. Checkout was detached at 01139f503b and left unchanged; no commit or push."
+}

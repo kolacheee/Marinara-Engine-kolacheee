@@ -1,0 +1,105 @@
+{
+  "part": "D",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "wall-walk",
+    "wall-walk-stair",
+    "compose.py"
+  ],
+  "files": {
+    "cathedral": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "guildhall": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "townhall-market": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "gatehouse": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "fountain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "wall-tower": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "wall-walk": {
+      "status": "fail",
+      "problems": [
+        "The straight wall and stair-wall still do not read as one continuous construction. At their west stair contact (market x784, y288..431; independent wall-join proof x304, y256..399), bright cream masonry switches abruptly to the darker stair masonry, with mortar courses ending or stepping at the boundary. Filling the old transparent slit has removed the ground gap but has left a visible material/registration seam. See critic-r17D-2-wall-stair-context-4x.png and critic-r17D-2-join-wall-stair-8x.png.",
+        "The upper band at native y20..35 reads as mottled front-facing masonry, whereas the adjoining stair export draws a diagonally paved horizontal walking surface at the same level. The merlon bases and corbel treatment also change at that contact. This weakens the required common 3/4 wall volume; it is especially clear beside the stair and the substantial top planes of wall-tower."
+      ],
+      "fix": "Make the straight run and stair attachment share the same drawn walkway depth, parapet profile, ledge/shadow thickness, masonry value range and course registration at their mating edges. Retain the successful opaque overlaps. Redraw the incompatible surface/edge paint with the image tool where needed, then register and reduce it through the established mode/palette workflow. Reprove the unlike contact on actual ground at 1x/4x/8x; do not merely cover the join with a dark stripe."
+    },
+    "wall-walk-stair": {
+      "status": "fail",
+      "problems": [
+        "The stairs themselves now have thickness, readable treads and a usable drawn gate landing, but the left-hand wall body remains incompatible with wall-walk. Around native x0..24, y20..143, the walkway/parapet changes construction and the lower masonry changes value and course phase at the join. The resulting vertical change remains visible in the market at x784. See critic-r17D-2-wall-stair-context-4x.png and critic-r17D-2-wall-joins-1x.png."
+      ],
+      "fix": "Resolve the shared wall/stair contact as one matched construction with wall-walk. Preserve the improved stairs and gate landing; adjust or redraw only the incompatible wall/parapet paint and its registration. Either partner may supply the compatible drawn courses, but the delivered pair must join without the current material boundary. This is a pair-compatibility failure, not a request to discard the successful stair silhouette."
+    },
+    "market-cross": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "shrine": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "stall-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "stall-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "stall-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "stall-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "stall-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "stall-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required in this review."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "d_market repeats review/r17-D-critic1-gate-paving.png, a 96x96 drawing containing a full-width pale transverse band, over [984,192,96,384]. The band occupies source rows44..50 and recurs in the market at y236..242,332..338,428..434 and524..530. This makes a conspicuous repeated ladder of threshold bars instead of a continuous distinct gate approach. See critic-r17D-2-gate-paving-3x3-1x.png, critic-r17D-2-gate-paving-3x3-4x.png and critic-r17D-2-gate-route-3x.png. The approach is newly drawn for D even though its source lives in review, so it is not an earlier-part ground exemption."
+      ],
+      "fix": "Tile a compatible north/south slate interior along the approach, retain the side kerbs, and place the transverse gate threshold once at the gate. Crop/wrap only existing drawn paint where it can genuinely meet; otherwise request a new image-tool paving drawing. Preserve the 96px clear route and the distinct slate colour. Rebuild the native/3x market, greyscale view and literal3x3 paving proof."
+    }
+  },
+  "notes": "Independent Round17 PartD second review. No file under art-drop/out/city17 was edited. All 16 named/exported D PNGs, including wall-walk-stair, were inspected at literal1x and nearest-neighbour4x beside fantasy-house-2; tall4x views were split into native-coordinate sections to avoid fitting them down. Inspected every self-neighbour seam, alternating straight wall paint, unlike tower/wall/stair/gate contacts, and8x wall/fish close-ups. The requested16x12 L-block, irregular market, both5-storey/1-storey joins and common-baseline skyline were rebuilt by importing the unchanged compose.py. All four1x renders match the supplied renders pixel-for-pixel. Independent1x/3x renders, reference comparisons and native greyscale squints are saved under critic-r17D-2-*.png. Both round15-street and current-town were inspected; current-town is a screenshot at a different display zoom, not a native sprite-scale ruler. Every D sprite has alpha only0/255, zero RGB beneath transparency and exactly one8-connected opaque component, with no detached alpha specks. No haze, soft alpha, rounded grid corners or light-direction failure was found in these exports. Cathedral/guildhall/market hall retain useful depth, lit top planes and dark side returns. The gate redraw now has separate tower volumes, visible roof/top planes, an arch reveal and a landing meeting the stair. The fish goods and counter emblem are recognizable at1x; all six canopy colours and trades remain distinct. The remaining visual failures are the wall/stair material-and-plane discontinuity and the newly repeated gate threshold. All11 declared market clear-route rectangles contain zero fixed opaque sprite pixels. Gate opening x24..119,y335..398 is fully transparent. The guildhall arcade now opens south onto the northern paved forecourt toward the church; the service road has widening pockets and the main gate route remains clear. Shadows are present on south/east receiving ground. The church, guildhall and gate remain readable in greyscale, with the church leading the low flanking roofs. The market has six stalls in two staggered groups, an offset fountain and cross, and an enclosed churchyard. These checks do not waive the visible remaining seam/repeat failures. Size interpretation follows panel1 item6: the listed civic dimensions are ground footprints with northward art overhang to reconcile the brief with its taller-than-five-storeys requirement. Actual canvases are cathedral240x432, guildhall192x400, gatehouse144x400 and wall-tower96x240; declared footprints remain5x6,4x4,3x4 and2x3 cells. Cathedral has430 painted rows, guildhall/gate398, above the384px maximum five-storey-plus-three-cell-roof example. The other specified canvases are exact: townhall-market192x144, fountain96x96, market-cross48x96, shrine/stalls48x48; walls are96x144 and192x144. The low hall, fountain and interval tower follow the panel skyline hierarchy. BRIEF-17 wins over panel1 item7 on gate width: the three-cell footprint is retained instead of four. Panel2 does not exist. Whole civic sprites do not inherit the modular facade row0/47 stacking contract; wall mating surfaces still require compatible continuous joins. No seasonal D partners exist, so seasonal alpha-mask comparisons and seasonal-ground placement are not applicable and are not claimed as passes. Small D props were inspected over summer paving and grass; those unchanged grounds were inspected in literal3x3 repeats. Existing summer context texture repetition is outside this part. The new gate paving was also inspected in literal3x3 repeat and is included in the compositor failure. Tracing94 PNG asset dependencies while rebuilding the L-block, height test and market found no city15 production dependency. Round15 is comparison-only; A/B/C assets and the existing C review actor supply context. PartE life/district work remains deferred. The failed list includes compose.py because its D extension is explicitly a deliverable. The wall and stair entries describe one shared compatibility problem; they do not demand redundant full redraws. File hashes across the entire city17 directory are unchanged before/after review (aggregate SHA256 eed4a5016b107f419435d20c73523e08e0c32da369c067e657cf6dc94aa1e311). Only this report and critic-r17D-2-*.png review composites were written. No commit, push or branch change occurred; the checkout was already detached."
+}

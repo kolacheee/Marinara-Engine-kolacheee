@@ -14,7 +14,8 @@ Corners use the explicit complete-panel assemblies below, never a cut through
 a wide drawing. Drawn course strips preserve rows 0/47 across the whole lot.
 Part B roofs, joins, firewall and masked shadows are native city17 assets.
 Part C adds rear rows, separately lit side returns, corner nodes, fenced
-yards and quiet street surfaces. Current civic art is a Part D placeholder.
+yards and quiet street surfaces. Part D adds native whole civic and market sprites.
+Default output is scoped to r17-D review files; --part C replays historical C.
 """
 
 import argparse
@@ -567,7 +568,7 @@ def build_c(spec):
 def c_ground(size,roads):
     im=repeat(context('town_ground'),size)
     for road in roads:
-        x,y,w,h=road['rect'];tile=asset(road['file'])
+        x,y,w,h=road['rect'];tile=Image.open(ART/road['path']).convert('RGBA') if road.get('path') else asset(road['file'])
         if road.get('horizontal'):tile=tile.transpose(Image.Transpose.ROTATE_90)
         im.alpha_composite(repeat(tile,(w,h)),(x,y))
     # An adjoining road opens the painted kerb: transfer open paving at those
@@ -618,7 +619,14 @@ def c_shadow_layer(layout):
         bounds=a.getbbox()
         if bounds and not o['file'].startswith('fence'):
             sx,sy=x+bounds[0],y+bounds[3];w=bounds[2]-bounds[0]
-            layer=Image.new('RGBA',size);layer.paste(repeat(asset('shadow-street-w3').crop((12,0,132,6)),(w,6)),(sx,sy));union=ImageChops.lighter(union,layer)
+            civic=o['file'] in ('cathedral','guildhall','gatehouse','wall-tower','wall-walk','wall-walk-stair','townhall-market')
+            reach=min(30,max(6,a.height//16)) if civic else 6
+            layer=Image.new('RGBA',size);layer.paste(repeat(asset('shadow-street-w3').crop((12,0,132,reach)),(w,reach)),(sx,sy));union=ImageChops.lighter(union,layer)
+            if civic:
+                # Reuse approved painted shade; restrict it to receiving ground
+                # with the same occupancy mask as houses and market props.
+                ex=x+bounds[2];eh=min(a.height,144)
+                layer=Image.new('RGBA',size);layer.paste(repeat(east,(reach,eh)),(ex,sy-eh));union=ImageChops.lighter(union,layer)
     union.putalpha(ImageChops.multiply(union.getchannel('A'),ImageChops.invert(occupied)))
     return union,records
 
@@ -645,7 +653,7 @@ def c_render(layout,cutaway=False):
         ordered.append((o['base'],2,o['x'],o['y'],a));records.append(dict(id='continuous-L',painted=[o['x'],o['y'],a.width,a.height],footprint=None,entrance=None,overhang=0,parts=[dict(file='Part B continuous L paint')]))
     for o in layout.get('props',[]):
         a=asset(o['file']) if not o.get('path') else Image.open(ART/o['path']).convert('RGBA')
-        ordered.append((o['base'],1,o['x'],o['base']-a.height,a));records.append(o)
+        ordered.append((o['base'],o.get('layer',1),o['x'],o['base']-a.height,a));records.append(o)
     for base,z,x,y,a in sorted(ordered,key=lambda t:(t[0],t[1],t[2])):im.alpha_composite(a,(x,y))
     return im,records
 
@@ -849,4 +857,151 @@ def c_main():
         sp=importlib.util.spec_from_file_location('c_reviews',REVIEW/'r17-C-review.py');mod=importlib.util.module_from_spec(sp);sp.loader.exec_module(mod);mod.run()
     print('Saved PartC scenes,1x/3x comparisons, squints and reviews.')
 
-if __name__=='__main__':c_main()
+# Painted contact anchors; the footprint origin remains bottom-left.
+# Towers/gate overdraw the reserved overlap, never a synthetic seam stripe.
+D_WALL_ANCHORS = {
+    'wall-walk': {'left': [0,36], 'right': [96,36]},
+    'wall-walk-stair': {'left': [4,36], 'right': [184,36]},
+    'wall-tower': {'left': [10,132], 'right': [80,132]},
+    'gatehouse': {'left': [8,292], 'right': [136,292]},
+}
+
+
+def d_wall_props(gate_x=960, base=432, right_edge=1248):
+    """Continuous native wall paint with explicit overlap attachment points."""
+    props=[]
+    def add(file,x,layer=1,alternate=False):
+        rec=dict(file=file,x=x,base=base,layer=layer,attachments=D_WALL_ANCHORS[file])
+        if alternate:rec.update(file='wall-walk-alternate',path='review/r17-D-critic2-wall-walk-alternate.png')
+        props.append(rec)
+    stair_x=gate_x+8-184
+    add('wall-walk-stair',stair_x)
+    cursor=stair_x+4
+    while cursor>0:
+        add('wall-walk',cursor-96,alternate=True)
+        add('wall-walk',cursor-192)
+        tower_x=cursor-192-80
+        add('wall-tower',tower_x,2)
+        cursor=tower_x+10
+    add('gatehouse',gate_x,3)
+    cursor=gate_x+136
+    alternate=False
+    while cursor<right_edge:
+        add('wall-walk',cursor,alternate=alternate)
+        cursor+=96;alternate=not alternate
+    return props
+
+
+def d_market():
+    """L square wraps the church: guild arcade addresses its north forecourt.
+
+    The church remains on the north edge of the main stall square. Its guild
+    neighbour faces south across the northern arm towards the church, so no
+    sprite mirroring or repaint of an approved civic drawing is necessary.
+    """
+    layout=dict(size=[1248,1968],roads=[],lots=[],props=[],clear_routes=[],features={})
+    roads=layout['roads'];props=layout['props'];lots=layout['lots']
+    for y,h,w in [(0,384,96),(384,144,144),(528,336,96),(864,192,144),
+                  (1056,336,96),(1392,192,144),(1584,336,96),(1920,48,144)]:
+        roads.append(dict(file='street-junction' if w==144 else 'street-main',rect=[984,y,w,h]))
+    # Repeat only the compatible slate interior. The transverse threshold
+    # is a separate drawn crop placed once at the foot of the gateway.
+    roads.append(dict(file='gate-approach',path='review/r17-D-critic2-gate-interior.png',rect=[984,192,96,384]))
+    roads.append(dict(file='gate-threshold',path='review/r17-D-critic2-gate-threshold.png',rect=[984,423,96,9]))
+    # The 48px service route widens into planned pockets and intersections;
+    # its longest unchanged segment is six cells, never the old20.5cells.
+    for x,w in [(0,48),(144,384),(624,192),(912,72),(1104,144)]:
+        roads.append(dict(file='street-side',rect=[x,432,w,48],horizontal=True))
+    for x in (48,528,816):roads.append(dict(file='street-junction',rect=[x,432,96,96]))
+    roads += [dict(file='street-junction',rect=[144,912,840,96]),
+              dict(file='street-junction',rect=[192,864,192,48]),
+              dict(file='street-junction',rect=[456,1008,528,432]),
+              dict(file='street-junction',rect=[144,1440,840,336]),
+              dict(file='street-junction',rect=[0,1488,192,144]),
+              dict(file='street-junction',rect=[288,1776,696,96]),
+              dict(file='street-junction',rect=[432,1872,552,48]),
+              dict(file='street-side',rect=[144,768,48,240]),
+              dict(file='street-side',rect=[456,576,48,336]),
+              dict(file='street-side',rect=[456,912,48,240]),
+              dict(file='street-junction',rect=[456,1152,96,96]),
+              dict(file='street-side',rect=[456,1248,48,192])]
+    def prop(file,x,base,**kw):props.append(dict(file=file,x=x,base=base,**kw))
+    prop('cathedral',192,1440,footprint=[192,1152,240,288],entrance=[272,1440],overhang=[192,1008,240,144])
+    prop('guildhall',192,912,footprint=[192,720,192,192],entrance=[288,912],overhang=[192,512,192,208],faces='south across the northern square arm towards the church')
+    prop('townhall-market',0,1632,footprint=[0,1488,192,144])
+    prop('fountain',480,1632,footprint=[480,1536,96,96])
+    prop('market-cross',864,1680,footprint=[864,1584,48,96])
+    prop('shrine',384,1488,footprint=[384,1440,48,48])
+    for i,(x,base) in enumerate([(600,1536),(648,1536),(696,1536),(648,1728),(696,1728),(744,1728)]):
+        prop(f'stall-{i}',x,base,footprint=[x,base-48,48,48])
+    props.extend(d_wall_props())
+    for rec in props:
+        if rec['file']=='gatehouse':rec.update(footprint=[960,240,144,192],entrance=[1032,432],overhang=[960,32,144,208])
+    # Churchyard has a48px south opening, retaining the north forecourt.
+    for x in range(144,432,48):prop('fence-0',x,1056)
+    for x in (144,432):
+        for base in range(1104,1441,48):prop('fence-1',x,base)
+    for x in (144,192,336,384):prop('fence-0',x,1468)
+    flanks=[(0,864,2,1,'front'),(528,864,2,2,'front'),(720,816,2,1,'back'),
+            (1104,768,2,2,'front'),(1104,1248,2,1,'front'),(0,1344,2,1,'back'),
+            (528,1296,2,1,'front'),(720,1344,2,1,'back'),
+            (0,1872,2,1,'back'),(528,1920,2,2,'front'),(768,1920,2,1,'front')]
+    for i,(x,base,width,floors,view) in enumerate(flanks):
+        spec=dict(view='back',width=width,floors=floors) if view=='back' else make_spec(width,floors,'door' if i%2 else 'shop',i%3,i%2,'ridge')
+        lots.append(dict(id=f'D-flank-{i}',x=x,base=base,spec=spec))
+    layout['clear_routes']=[[984,432,96,1536],[0,432,984,48],[1104,432,144,48],
+        [48,432,96,96],[528,432,96,96],[816,432,96,96],
+        [192,912,192,96],[456,912,48,528],
+        [576,1536,240,144],[552,1488,48,48],[792,1680,48,48]]
+    layout['gardens']=[[144,1032,312,408]]
+    layout['features']=dict(square='L square: northern96px forecourt, east arm and main17.5x7-cell stall square; church north of main square, guild arcade faces church across north arm',
+        market='Two staggered groups of three;144px between canopies,96px usable aisle and48px end access',
+        gate='3x4 footprint wins over conflicting panel4-cell suggestion;96px portal, new drawn slate approach, explicit overlapping wall/stair contacts',
+        wall='Two adjacent96px crops of one drawn walkway alternate; stair uses the same paint with an identical4px overlap, preserving the drawn stair and gate landing',
+        service_route='48px continuous core,96px pockets/junctions at48,528,816; no width run beyond8cells',
+        hierarchy='Church432canvas, guild/gate400; low flanks, market hall/fountain and interval towers',
+        proxies='None. Round15 comparison only. Part E life remains deferred.')
+    return layout
+
+
+def d_save(im,name,**metadata):
+    info=PngImagePlugin.PngInfo()
+    for k,v in metadata.items():info.add_text(k,json.dumps(v,sort_keys=True))
+    im.save(REVIEW/f'r17-D-{name}.png',pnginfo=info)
+
+
+def d_compare(im,name):
+    refs=[('Round15 street / literal1x','round15-street.png'),('Current town / literal1x screenshot,24px displayed cells','current-town.png')]
+    refs=[(title,Image.open(ART/'reference/r17'/file).convert('RGBA')) for title,file in refs]
+    for scale in (1,3):
+        a=im.resize((im.width*scale,im.height*scale),NEAREST)
+        sheet=Image.new('RGBA',(a.width+max(r.width for _,r in refs)+48,max(a.height+72,sum(r.height+40 for _,r in refs)+30)),(35,39,34,255));d=ImageDraw.Draw(sheet)
+        d.text((12,10),f'Round17 D | {name} | {scale}x nearest neighbour',fill='white');sheet.alpha_composite(a,(12,34));y=12
+        for title,r in refs:d.text((a.width+36,y),title,fill='white');sheet.alpha_composite(r,(a.width+36,y+22));y+=r.height+40
+        d.text((12,a.height+45),'A/B/C/D native art. No civic proxies. Round15 only at right. Part E life deferred.',fill='white')
+        d_save(sheet,f'critic-{name}-comparison-{scale}x',SceneScale=scale,ReferencesScale=1)
+
+
+def d_main():
+    parser=argparse.ArgumentParser(description='Round17 D native city and review sheets')
+    parser.add_argument('--no-sheets',action='store_true');parser.add_argument('--part',choices=['C','D'],default='D');args=parser.parse_args()
+    if args.part=='C':
+        # Explicit historical replay only; default D never rewrites C reviews.
+        import sys
+        sys.argv=[sys.argv[0]]+(['--no-sheets'] if args.no_sheets else []);return c_main()
+    old=c_layouts();layouts={'L-block':old['L-block'],'market':d_market(),'height-test':old['height-test']}
+    tall=make_spec(2,5,'door',0,0,'hip');tall['roof_depth']=3
+    layouts['skyline']=dict(size=[1008,576],roads=[dict(file='street-main',rect=[0,480,1008,96],horizontal=True)],lots=[dict(id='maximum-five-storeys',x=0,base=480,spec=tall)],props=[dict(file='cathedral',x=144,base=480),dict(file='guildhall',x=432,base=480),dict(file='gatehouse',x=672,base=480),dict(file='wall-tower',x=864,base=480)],features=dict(proof='All at common480px baseline. Five storeys plus3-cell roof=384px; church432, guildhall/gate400px canvases. Wall tower is subordinate.'))
+    placements={}
+    for name,layout in layouts.items():
+        im,records=c_render(layout);placements[name]=records
+        for scale in (1,3):d_save(im.resize((im.width*scale,im.height*scale),NEAREST),f'critic-{name}-{scale}x',Layout=layout,Placements=records)
+        d_save(im.convert('L').convert('RGBA'),f'critic-{name}-squint-1x');d_compare(im,name)
+    (REVIEW/'r17-D-scenes.json').write_text(json.dumps(layouts,indent=2));(REVIEW/'r17-D-placements.json').write_text(json.dumps(placements,indent=2))
+    if not args.no_sheets:
+        import importlib.util
+        sp=importlib.util.spec_from_file_location('d_reviews',REVIEW/'r17-D-review.py');mod=importlib.util.module_from_spec(sp);sp.loader.exec_module(mod);mod.run()
+    print('Saved D scenes, comparisons, squints and per-file reviews.')
+
+
+if __name__=='__main__':d_main()

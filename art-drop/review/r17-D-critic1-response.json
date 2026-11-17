@@ -1,0 +1,58 @@
+{
+  "scope": "Part D critic-r17D-1 redraw; saved-art self-review, not independent approval",
+  "failed_files_addressed": [
+    "gatehouse",
+    "wall-walk",
+    "wall-walk-stair",
+    "stall-2",
+    "compose.py"
+  ],
+  "preserved": "All twelve passed D PNGs and all earlier-part art remain byte-identical.",
+  "responses": {
+    "gatehouse": [
+      "Redrawn through three image-tool variants. Distinct broad upper towers with deep slate roofs, shaded returns and two window stages replace the squeezed four-storey central slab.",
+      "Upper tower columns retain the source proportions. Only lower arch/jamb landmarks register slightly to deliver a96x64 clear aperture. Existing144x400canvas and3x4 footprint remain.",
+      "Drawn lit left landing and access doorway connect at gate anchor[8,292] to stair anchor[184,36]. The8x proof shows actual painted access and no ground slit."
+    ],
+    "wall-walk": [
+      "Three source variants plus a cleanup edit of selected C. Fine masonry, visible topwalk, coping thickness and dark underwalk shade replace giant flat blocks.",
+      "The96px export and alternate crop come from different native portions of a192px painting. Neither export duplicates a48px half; no repeating crack is drawn.",
+      "Explicit cut-face anchors overlap the tower/stair edge paint. Unlike joins are rendered over actual C paving at1x,3x and8x."
+    ],
+    "wall-walk-stair": [
+      "Three image-tool variants; selected C has small masonry courses, substantial side wall, clear tread tops/risers and right top landing.",
+      "Registration aligns walk top, coping and underwalk courses. The source enclosing cut-edge border is cropped before reduction;4px left and8px right paint reserves overlap neighbours.",
+      "Gate, tower and stair overdraw only the reserved contact paint; no synthetic dark seam line conceals gaps."
+    ],
+    "stall-2": [
+      "Two image-tool redraws; selected B. Two larger tapered silver-blue fish have heads and forked tails. A clean eyed fish silhouette replaces the counter patch.",
+      "48x48export,44pxcanopy, teal identity, counter, top-left light and hard outline retained; inspected unlabeled with five unchanged stalls."
+    ],
+    "compose.py": [
+      "The L-shaped square wraps the north-edge church. The unchanged south-facing guildhall now faces the church across the northern forecourt; its arcade opens into the square with paving beneath it.",
+      "D_WALL_ANCHORS and d_wall_props place actual overlapping cut faces and a stair-to-gate landing. Towers/gate draw over reserved contact paint.",
+      "The48px service core widens into96px planned pockets/junctions. Longest unchanged width run384px. Alternating native wall crops and interval towers satisfy at most two identical sections in five.",
+      "A new image-tool slate threshold in review/ supplies the distinct96px gate approach. Existing C paving exports are untouched.",
+      "Rebuilt L-block, irregular market, both5/1height orientations and skyline,1x/3x comparisons, native greyscale, all per-piece1x/4x sheets and self/unlike seams."
+    ]
+  },
+  "brief_fail_list": {
+    "flat/cardboard": "Gate roofs, upper tower returns and arch intrados are visible; wall topwalk, stair thickness and tread tops read at native scale. Passed civic drawings retained.",
+    "accidental_roof_holes": "Unchanged C continuous L; all open market/yard surfaces are deliberate ground, not roof gaps.",
+    "seam/gap": "Three unlike masonry contact strips have full opaque coverage; landing anchors coincide; no doubled cut-face border remains.",
+    "copypaste": "Distinct goods and canopy colours retained; wall uses two different painted crops between towers, not a cloned48px period.",
+    "landmark_hierarchy": "Church432, guild/gate400 canvases exceed384px maximum stack. Church leads its square; low flanking houses, fountain and hall remain subordinate.",
+    "greyscale": "Viewed all four1xgreyscale scenes; pale civic masses, twin gate towers and distinct main/gate road remain legible.",
+    "trade_readability": "Fish heads/tails and eyed counter emblem are recognizable in unlabeled1xstall row; all six trades checked.",
+    "shadow": "Existing drawn B shadows remain under/east of D civic art and walls, masked to receiving ground."
+  },
+  "panel_precedence": "BRIEF-17 three-cell gate footprint overrides panel1 four-cell request. Landmark heights retain northward art overhang. Panel2 absent.",
+  "sources": "13 new built-in image-tool drawings/edits on solid magenta,5selected including review-only gate paving. No API fallback or code-drawn architecture/texture.",
+  "verification": "172checks pass;24,330,240mode samples;14,274protected files unchanged. No new seasonal partners.",
+  "limits": [
+    "No live-engine collision or cutaway integration.",
+    "No independent critic rerun claimed.",
+    "No Round15 production dependency; comparison only. Part E life/district work deferred."
+  ],
+  "result": "All five requested failures addressed; saved-art self-review complete."
+}

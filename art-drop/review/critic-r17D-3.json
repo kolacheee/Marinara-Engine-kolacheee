@@ -1,0 +1,94 @@
+{
+  "part": "D",
+  "round": 3,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "cathedral": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "guildhall": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "townhall-market": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "gatehouse": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "fountain": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "wall-tower": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "wall-walk": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "wall-walk-stair": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "market-cross": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "shrine": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "stall-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "stall-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "stall-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "stall-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "stall-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "stall-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    }
+  },
+  "notes": "Independent Round 17 Part D, third critic review. Read BRIEF-17 in full, panel 1 and the documented image-tool/magenta registration, palette, mode-reduction and cleanup method. Panel 2 is absent. No production file was edited. All 16 Part D PNGs, including the stair attachment, were inspected at exact 1x and nearest-neighbour 4x beside fantasy-house-2; tall sprites were split into native-coordinate sections so their inspection did not depend on fitting a tall sheet down. Inspected every self-neighbour seam, alternating wall paint and the tower/wall, wall/stair and stair/gate contacts, including 8x contact close-ups. Small props were inspected over both summer paving and summer grass at 1x/4x. Literal 3x3 repeats cover those context grounds and the current gate approach interior.\n\nThe previous wall/stair compatibility failure is resolved. Both pieces now show a continuous diagonal walking plane, matching parapet/coping, corbel shadow, masonry values and course phase. The actual four-column wall/stair overlap is pixel-identical. The assembled contact has no exposed-ground slit, abrupt material stripe or displaced walkway. Stair treads, cheek and the gate landing remain readable. Tower/wall and stair/gate contacts also hold at native size and 8x. The gate route now uses continuous slate interior and one transverse threshold at y423..431. Its north/south repetition no longer makes the previous ladder of pale bands. In the literal two-direction repeat the lateral kerbs repeat as expected for a fixed-width road strip; the compositor uses this strip only along its north/south axis.\n\nRebuilt the 768x576 L-block, irregular market, both five-storey/one-storey joins and common-baseline skyline by importing the unchanged compose.py. All four independent native renders match the supplied current renders pixel-for-pixel. Saved exact 1x and nearest-neighbour 3x scenes and reference comparisons, native greyscale squints, seam sheets and focused crops under critic-r17D-3-*.png. Inspected round15-street and current-town; the latter is a differently zoomed game screenshot, not a native sprite-scale ruler. The L-block retains the deliberate yards, connected roof coverage, T-junction and dead end. The market has the north-edge church and enclosed yard, guild arcade opening onto the opposite northern forecourt, low flanks, an offset fountain, cross and six stalls in two staggered groups of three. All 11 declared route rectangles contain zero fixed opaque sprite pixels; the portal's x24..119, y335..398 rectangle is fully transparent, giving a clear 96x64 opening. South/east ground shadows are present. Church, guildhall, gate and main route remain legible in native greyscale. The church leads the skyline; the low market hall and fountain do not compete with it.\n\nThe cathedral, guildhall and market hall have substantial roof planes, visible top faces, dark recesses and shaded right returns. The gate has distinct tower volumes, a roof and arch reveal, and a connected access landing. The fountain, shrine and cross retain square plinths and useful depth. All six 48x48 stalls have 44px painted canopy widths, counters and distinguishable goods: bread/red, cloth/indigo, fish/teal, fruit/green, pottery/ochre and spice/violet. The fish silhouettes and counter emblem read at 1x. No remaining Part D flat-front, rounded-grid-edge, blob/smear, haze, light-direction or outline/pixel-scale failure was found.\n\nEach of the 16 sprites has alpha only 0/255, zero RGB under transparent pixels and exactly one 8-connected opaque component; there are no detached opaque specks. The fixed painted palettes contain 6 to 36 colours. No seasonal Part D partners exist, so seasonal-ground placement and summer/seasonal alpha-mask overlays are not applicable and are not claimed as tested passes. The context paving and grass are unchanged earlier art; their texture repetition is outside this part. The revised D gate paving was separately assessed and passes its directional use.\n\nSize interpretation follows panel 1 item 6: civic dimensions are ground footprints, with northward painted overhang to reconcile them with the brief's taller-than-five-storeys requirement. Actual canvases are cathedral 240x432, guildhall 192x400, gatehouse 144x400 and wall-tower 96x240; ground footprints retain 5x6, 4x4, 3x4 and 2x3 cells. Cathedral has 430 painted rows; guildhall and gate have 398, exceeding the 384px maximum five-storey-plus-three-cell-roof example. The other required canvases are exact: townhall-market 192x144, fountain 96x96, market-cross 48x96, shrine and stalls 48x48. Wall-walk is 96x144 and its stair attachment 192x144. The low market hall, fountain and subordinate interval tower follow the panel's skyline hierarchy. BRIEF-17 wins over panel 1 item 7 on gate width: three cells rather than four. Whole civic sprites do not inherit the modular facade row-0/47 stack contract; their wall contacts have been checked separately.\n\nTracing image reads while rebuilding the L-block, height test and market found 100 unique image dependencies and no city15 production dependency. Round 15 is comparison-only; existing Round 17 A/B/C pieces and the C review actor provide context. Part E life/district content remains deferred. This is an independent saved-art review, not an in-engine playtest. The failed list includes no entries; compose.py was assessed as an explicit Part D deliverable. The entire city17 directory has the same aggregate SHA256 before and after review: 1ae5ca7c6b10a83f32396d96e2905fef7a50798bf740a30ae7db5cf9580c7c61. Only this JSON and critic-r17D-3-*.png review composites were written. No commit, push or branch change occurred; the checkout was already detached."
+}

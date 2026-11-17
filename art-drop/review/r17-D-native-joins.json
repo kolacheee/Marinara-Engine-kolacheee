@@ -1,0 +1,15 @@
+{
+  "wall-walk": {
+    "donor": "wall-walk-stair.png",
+    "crop": [
+      40,
+      0,
+      88,
+      144
+    ],
+    "repeat": [
+      2,
+      1
+    ]
+  }
+}

@@ -1,0 +1,248 @@
+[
+  {
+    "id": "cathedral-a",
+    "prompt": "Draw a cathedral, a narrow soaring Gothic civic church with one immense square bell tower crowned with a slate pointed spire, attached long terracotta nave roof seen from above, buttresses, three large recessed lancet windows, large entrance and stone steps. Native painted dimensions 236 wide x428 high within240x432 canvas, footprint5x6 cells (240x288), tower extends144px north above footprint. The single spire is skyline leader. Calm blocky architecture with substantial lit stone planes, big roof courses and very little ornament. Use architectural vertical proportion matching intended tall 0.56 width/height image. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "size": [
+      240,
+      432
+    ],
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-aa30541a-e22f-4368-b1e7-d9b0945f2e87.png",
+    "source": "r17-D-source-cathedral-a.png",
+    "selected": true,
+    "selection_reason": "Deep nave roof and right return; b was too frontal."
+  },
+  {
+    "id": "cathedral-b",
+    "size": [
+      240,
+      432
+    ],
+    "prompt": "Draw one cathedral with tall narrow SQUARE bell tower and single slate spire, terracotta deep nave roof, front entry with huge recessed arched doorway and lit steps. Tall overall0.56 width/height, intended240x432 native pixels, footprint240x288. Church body lower two-thirds; tower dominates upper third. Strong square-grid front facing viewer, front eave strictly horizontal, short shaded right return only15% width. ROOF VIEW high from above, broad roof plane about half church body's height. Fewer bigger stone blocks and broad terracotta tiles6-10native px, no thin repetitive ornament. Asymmetric tower on left, three very large windows.  Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-4185034e-e9a9-476d-b411-781f7547cd5e.png",
+    "source": "r17-D-source-cathedral-b.png",
+    "selected": false
+  },
+  {
+    "id": "guildhall-a",
+    "size": [
+      192,
+      400
+    ],
+    "prompt": "Draw a medieval GUILDHALL with stone ground-level open arcade, warm cream timbered council chamber above, a huge terracotta roof seen steeply from above, and an exceptionally tall narrow central clock/bell turret rising from ridge. Whole building190 wide by396 high native proportions. The main hall body occupies lower190px and bell tower upper200px. Footprint4x4cells. Three clearly open arches at street level, show solid-magenta background through openings between stone piers. Broad slate spire on turret, gold clock with simple hands, no numbers. Roof takes half hall body. Foreground eave horizontal, right return narrow. Warm stone same family as cathedral.  Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-f473f1d1-e1c4-434d-bc37-2aad7f8fbf77.png",
+    "source": "r17-D-source-guildhall-a.png",
+    "selected": true,
+    "selection_reason": "Strong arcade and tall bell/clock silhouette; b had broader squat proportions."
+  },
+  {
+    "id": "guildhall-b",
+    "size": [
+      192,
+      400
+    ],
+    "prompt": "Draw one medieval civic GUILDHALL, whole sprite190wide396high native proportions. A very tall slender square CLOCK TURRET with a short copper pyramidal cap (NO cross, NO church spire); below it broad high-angle terracotta roof taking half the main building body, upper cream timber council hall with two large shuttered windows, ground floor three OPEN arches with solid magenta through each arch. Main hall in lower55percent of image, slender turret upper45percent. Foreground horizontal, short right return, roof ridge much farther north than front eave. Coarse calm pixels like 1990s RPG. Clock face plain gold circle and two brown hands, no numbers, civic pennant attached. Roof tiles6-10native px, masonry blocks8-12px. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-d7ba198a-ab7d-43a1-91e3-1e96309a7cc2.png",
+    "source": "r17-D-source-guildhall-b.png",
+    "selected": false
+  },
+  {
+    "id": "gatehouse-a",
+    "size": [
+      144,
+      400
+    ],
+    "prompt": "Draw one VERY TALL narrow fortified medieval city GATEHOUSE, 144wide400high native proportions, twin square stone towers, steep slate pyramidal roofs, horizontal stone bridge joining towers above one massive open rectangular portal. Gate opening96native px wide within144width; each tower24px wide. Native portal extends from bottom up80px, MAGENTA visible through entire rectangle to ground, no doors portcullis or paving in opening. Tower roofs rise390px from ground, no church crosses. Square blocky towers have large stone blocks, two narrow recessed windows each, upper merlons. Cream sandstone lit left, taupe right side, match church stone. Frontal 3/4 town camera roof top planes visible. Broad horizontal bridge low down around100px above ground, open top walkway. No outer ground platform; tower bases flat on same baseline. This is very slender tall architecture, width to height0.36, not a wide fortress. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-61aad47f-a6d9-451f-80e5-d9f4e5fae72d.png",
+    "source": "r17-D-source-gatehouse-a.png",
+    "selected": false
+  },
+  {
+    "id": "gatehouse-b",
+    "size": [
+      144,
+      400
+    ],
+    "prompt": "One tall narrow medieval gatehouse sprite on magenta. Composition: two SLENDER square sandstone watchtowers at extreme left and right, separated by a vast open gate spanning TWO THIRDS of total width. Overall native dimensions144x400, tower footprints24px each, open gap96px. Both towers tall with slate hipped caps viewed from above. A stone covered bridge connects towers halfway up; below it large perfectly RECTANGULAR opening with flat lintel, solid magenta visible clear to bottom with no threshold, door or portcullis. Towers have three simple recessed arrow windows and large coarse stone blocks, lit top-left and shaded right returns. Both base plinths aligned horizontal. Not round towers, not church spires; substantial square roofs. Gatehouse matching warm cream fortified wall, no outside stairs, no ground. Opening is twice the combined tower widths. Crisp medieval RPG sprite, calm materials, minimal decoration. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-2184c534-7479-4169-a93f-24650d765e2f.png",
+    "source": "r17-D-source-gatehouse-b.png",
+    "selected": false
+  },
+  {
+    "id": "townhall-market",
+    "size": [
+      192,
+      144
+    ],
+    "prompt": "Draw a LOW open-sided medieval market hall on substantial sandstone pillars, wide4:3 overall proportions native192x144. One broad terracotta hipped roof seen steeply from above occupies upper TWO THIRDS; six wooden rafters below with short stout square stone pillars holding roof; open central arcade, magenta visible through open bays. No upper floor, no tower. Heavy timber horizontal eave, right side small shaded return, far ridge and lit left tiles, flat square plinth feet. Plain town civic pavilion with roof deep enough for a4x3cell market footprint. Clear deep roof and open sheltered space, not a closed house. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-9a4da048-48aa-4204-ad99-69feb2eec5b7.png",
+    "source": "r17-D-source-townhall-market.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "fountain",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Draw one LOW medieval town FOUNTAIN on a strict square base, native96x96, 2x2cells. Broad SQUARE sandstone basin seen from above, square stepped plinth with straight horizontal front, a short central carved square pillar with two blocky spouts pouring two solid short blue water ribbons into blue water. Square rim with lit top face and shaded right face. Calm large blue water clusters, no spray droplets, no ripples detached from basin, no circular basins, no round corners, no statue. Fountain occupies about88x76px in96x96cell canvas. Big readable shape matching medieval town house stone. Flat magenta around all sides, no ground island. Top-left light, dark onepixel silhouette, chunky precise pixel art. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-c536acdd-73a2-4f37-8eb7-59e622191d40.png",
+    "source": "r17-D-source-fountain.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "wall-tower",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Draw a fortified town WALL TOWER, square sandstone interval tower, two-cell wide three-cell ground footprint96x144, tall art96x240. A square crenellated parapet with visible paved top platform and squat slate hipped cap above central watchroom, three storeys of broad warm sandstone with two recessed arrow windows, stout square plinth. RIGHT shaded return narrow15percent; front face horizontal, high view of roof. Entry at bottom left with a small lantern and one step. Flat straight base, no ground island. Match gatehouse: cream square stone blocks, broad taupe side, slate roof, coarse10native pixel stone courses, no scratches or broken masonry. One whole tower on magenta. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-ea1911b0-afb2-4fb0-a797-35de9bcf6550.png",
+    "source": "r17-D-source-wall-tower.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "wall-walk-a",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Draw a seamless horizontally repeatable city WALL WALK segment, native96wide144high. Straight-on high three-quarter town view, front parapet and pale sandstone wall below, broad visible top walkway behind crenellated front parapet. All horizontal courses exactly horizontal. Both left and right cut edges exactly VERTICAL, no side face, no corner endcap, no outer border at left/right, wall extends to both image edges. Four square merlons along top with repeated alternating gaps, dark shadow under corbels, stone masonry calm broad12x8native blocks. Bottom perfectly straight horizontal. Magenta ONLY above merlons. Material warm cream sandstone, shaded warm taupe. Top-left light. Match gatehouse and wall tower. No roof, door, windows, moss, weeds, ground, text. Pixel art square grid, not isometric. This is a rectangular tiling wall strip viewed from above, not an isolated fort. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-2cf0e242-f904-450d-ac79-14ec94e28b19.png",
+    "source": "r17-D-source-wall-walk-a.png",
+    "selected": false
+  },
+  {
+    "id": "wall-walk-b",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Paint ONLY a medieval curtain WALL segment, no house, absolutely NO ROOF, no window, no timber. Isolated96x144native pixel game asset enlarged on flat #ff00ff. Tall rectangle of warm sandstone masonry with battlement along top, broad visible pale stone WALKWAY on top seen from above, front crenellated parapet with four square merlons, corbel shadow below parapet. Lower two-thirds solid wall of broad12x8pixel stone blocks. Flat horizontal baseline, exact vertical left/right slice edges with no end face; architecture continues seamlessly past left/right edges so segment can repeat horizontally. No end posts. Top-left light, one nativepixel outline only on top and bottom, no dark vertical edge lines. Pixel art flat colours cream #dfc08c light #f2d7a4, brown outline #2b281d, taupe shaded masonry #9a8059. Calm rectangular coarse clusters, no grain, haze, floating fragments, moss, noise, gradients. NOT isometric: front masonry lines horizontal, a strip of top walkway depth visible. Magenta outside top silhouette. One wall segment only, no other buildings.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-3594821f-7518-4a3b-8dc2-b7d7f756eb7c.png",
+    "source": "r17-D-source-wall-walk-b.png",
+    "selected": false
+  },
+  {
+    "id": "wall-walk-c",
+    "size": [
+      192,
+      144
+    ],
+    "prompt": "Draw ONE fortified curtain wall with an ACCESS STAIR as complete pixelart sprite, native192wide144high proportions. Absolutely NO HOUSE OR ROOF. Top30percent is a deep horizontal pale sandstone walkway seen steeply from above, crenellated rear parapet along back top edge, lower near parapet with corbels at its front edge. Below is plain sandstone curtain wall, broad stone courses and a deep brown shadow immediately under walkway. On RIGHTMOST quarter a straight stone staircase rises diagonally from front ground up to walkway height, wide lit treads, masonry support below, connected to same top platform. Front wall line exactly horizontal, left end vertical no return face, right end short shaded return. Overall width4cells, height3cells. Warm cream #dfc08c, light #f2d7a4, taupe #9a8059, dark outline #2b281d. One nativepixel outline, calm large clusters, top-left light. Solid #FF00FF background, no ground island or weeds, no tiny texture specks, no gradients, no isometric diamond, no text. This is only defensive wall architecture, flat square base.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-1368af95-e0ea-4147-a208-b400f5ddf484.png",
+    "source": "r17-D-source-wall-walk-c.png",
+    "selected": true,
+    "selection_reason": "Visible top platform and connected stair; a incorrectly included house, b lacked depth."
+  },
+  {
+    "id": "market-cross",
+    "size": [
+      48,
+      96
+    ],
+    "prompt": "Draw one medieval MARKET CROSS monument for square, whole48wide96high native sprite. Tall square sandstone column on a THREE-STEP SQUARE base, carved small stone cross at top under a tiny pointed terracotta square canopy supported on four short posts. Shaft has one plain heraldic shield in recessed panel. High3/4town camera, see top faces of square steps, horizontal front edges and short right return. Narrow graceful silhouette but stout readable shapes, onepixel dark outline top-left light. Painted object about40x90native pixels. No ground island, text, decoration specks, vines, round plinth. Solidmagenta background. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-09d1e7c8-d976-4003-8cfb-ad39a2f5581f.png",
+    "source": "r17-D-source-market-cross.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "shrine",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "One small roadside SHRINE medieval RPG native48x48pixels. A squat stone niche with tiny terracotta pitched gable roof, inset golden cross above a single large candle, square sandstone base with one step. Visible high3/4roof plane, front horizontal, short shaded right return. Whole silhouette40pxwide44pxtall. Candle flame a connected warm cluster, no halo. Quiet stonework, strong roof mass, recessed interior dark brown,1pixel outline, top-left light. Isolated solidmagenta background. No flowers, ground, floating particles, written text. Single whole sprite for Marinara medieval RPG; large drawing on perfectly solid #FF00FF magenta, tiny blank margin, no ground island, no text. Town-house high three-quarter view: front wall horizontal facing viewer, see deep roof from above and a short right return, NOT diamond isometric. Crisp square pixels, large calm clusters, one native pixel dark brown outline #2b281d, top-left light, cream sandstone and dark wood, muted terracotta roof. Big recessed windows, lit sills, eave shadows, visible plinth top. Same drawing/detail scale as fantasy-house-2 shown in conversation; no photoreal texture, gradients, haze, blur, scattered specks, weeds, debris, outline thicker than one native pixel, or rounded grid footprint. ",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-35edaa43-9f52-4af0-8103-3de8bc6eb6ab.png",
+    "source": "r17-D-source-shrine.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "stall-0",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Draw one BREAD market stall: rust RED AND CREAM striped cloth canopy, oak counter with THREE LARGE golden loaves, two long baguettes with diagonal scores and one round loaf. Loaves each8-10nativepixels, big readable silhouettes on dark wooden tray. Counter broad solid oak front with three planks. Canopy square straight-edged rectangular shape, straight squared valance, no scallops. Whole sprite48x48native pixels enlarged on perfectly solid#FF00FFmagenta with blank margin. Medieval RPG high3/4town view like fantasy-house-2, horizontal front countertop and small shaded right return. Large cloth canopy42pxwide and18pxdeep at TOP, supported by four slim posts, counter visibly below it at y32, big goods shapes at y27-32, short wooden feet on baseline46. Upper roof plane visible from above, canopy well above adult head height, no people in sprite. Onepixel dark brown outline #2b281d, light from top-left, warm oak frame, quiet flat colour clusters, no blur or gradients, no ground or cast shadow, no scattered crumbs, isolated specks, little props outside stall or text. The goods must remain distinct at native48x48. No tiled roof or stone building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-fe2e7184-c43a-4bef-b22a-7ddf19f1fde2.png",
+    "source": "r17-D-source-stall-0.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "stall-1",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Draw one CLOTH merchant market stall, muted INDIGO BLUE cloth canopy with cream edge, large straight squared valance no scallops. Goods: THREE large rolled fabric bolts on counter in burgundy, cream and moss green, visible spiral ends; a folded blue fabric length draped over counter front as one broad block. Wooden frame. Only3goods forms, broad fabric folds, no tiny embroidery. Whole sprite48x48native pixels enlarged on perfectly solid#FF00FFmagenta with blank margin. Medieval RPG high3/4town view like fantasy-house-2, horizontal front countertop and small shaded right return. Large cloth canopy42pxwide and18pxdeep at TOP, supported by four slim posts, counter visibly below it at y32, big goods shapes at y27-32, short wooden feet on baseline46. Upper roof plane visible from above, canopy well above adult head height, no people in sprite. Onepixel dark brown outline #2b281d, light from top-left, warm oak frame, quiet flat colour clusters, no blur or gradients, no ground or cast shadow, no scattered crumbs, isolated specks, little props outside stall or text. The goods must remain distinct at native48x48. No tiled roof or stone building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-efd177ec-6bf1-46da-b0da-84c13f412176.png",
+    "source": "r17-D-source-stall-1.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "stall-2",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Draw one FISHMONGER market stall with muted TEAL and cream broad-striped canopy, straight squared valance. Three LARGE SILVER FISH lying horizontally side by side across a dark counter tray, clearly each has forked tail, dark eye, blue-grey back and pale silver belly; each fish12nativepixels long. No ice fragments, small clutter or ground objects. Broad oak counter front with one hanging whole silver fish as shop symbol attached to central board. Canopy is teal distinct from blue. Whole sprite48x48native pixels enlarged on perfectly solid#FF00FFmagenta with blank margin. Medieval RPG high3/4town view like fantasy-house-2, horizontal front countertop and small shaded right return. Large cloth canopy42pxwide and18pxdeep at TOP, supported by four slim posts, counter visibly below it at y32, big goods shapes at y27-32, short wooden feet on baseline46. Upper roof plane visible from above, canopy well above adult head height, no people in sprite. Onepixel dark brown outline #2b281d, light from top-left, warm oak frame, quiet flat colour clusters, no blur or gradients, no ground or cast shadow, no scattered crumbs, isolated specks, little props outside stall or text. The goods must remain distinct at native48x48. No tiled roof or stone building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-160a5030-93e1-48b2-9690-6d23a1e7299e.png",
+    "source": "r17-D-source-stall-2.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "stall-3",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Draw one FRUIT market stall, MOSS GREEN canvas canopy with thin cream hem, straight squared valance. Counter has two broad shallow wooden crates: left with five LARGE red apples, right with five golden pears, blocky leaf clusters attached. Goods are big clusters two clear colour masses, not tiny dots. Solid oak counter front, no goods on ground. Canopy slopes back deeply seen above, no roof tiles. Whole sprite48x48native pixels enlarged on perfectly solid#FF00FFmagenta with blank margin. Medieval RPG high3/4town view like fantasy-house-2, horizontal front countertop and small shaded right return. Large cloth canopy42pxwide and18pxdeep at TOP, supported by four slim posts, counter visibly below it at y32, big goods shapes at y27-32, short wooden feet on baseline46. Upper roof plane visible from above, canopy well above adult head height, no people in sprite. Onepixel dark brown outline #2b281d, light from top-left, warm oak frame, quiet flat colour clusters, no blur or gradients, no ground or cast shadow, no scattered crumbs, isolated specks, little props outside stall or text. The goods must remain distinct at native48x48. No tiled roof or stone building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-e95295bd-70c6-447e-8c1e-3799f86f2ec4.png",
+    "source": "r17-D-source-stall-3.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "stall-4",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Draw one POTTERY market stall, MUSTARD OCHRE and cream broad striped canopy, straight squared valance. Goods three large fired-clay vessels on counter: one tall terracotta jug with a single large handle, one pale cream wide bowl, one dark red short pot. Each distinct shape8-12nativepx wide. Do not crowd stall with more pottery. Plain oak counter, vessels big bold silhouettes, no tiny patterning. Whole sprite48x48native pixels enlarged on perfectly solid#FF00FFmagenta with blank margin. Medieval RPG high3/4town view like fantasy-house-2, horizontal front countertop and small shaded right return. Large cloth canopy42pxwide and18pxdeep at TOP, supported by four slim posts, counter visibly below it at y32, big goods shapes at y27-32, short wooden feet on baseline46. Upper roof plane visible from above, canopy well above adult head height, no people in sprite. Onepixel dark brown outline #2b281d, light from top-left, warm oak frame, quiet flat colour clusters, no blur or gradients, no ground or cast shadow, no scattered crumbs, isolated specks, little props outside stall or text. The goods must remain distinct at native48x48. No tiled roof or stone building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-f07ee29e-d940-4bb5-bb7c-13e2bd1aba40.png",
+    "source": "r17-D-source-stall-4.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "stall-5",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Draw one SPICE merchant market stall, muted PLUM VIOLET canvas canopy with cream squared hem, straight valance no scallops. Goods three broad open burlap sacks set on countertop, each with one pointed heap of spice: deep rust red, mustard gold, dark warm brown. Each mound and sack about9nativepx wide, large clearly readable heaps, attached wooden scoop in central sack. No granular noise, labels, floating particles or bowls resembling fruit. Stout oak counter. Whole sprite48x48native pixels enlarged on perfectly solid#FF00FFmagenta with blank margin. Medieval RPG high3/4town view like fantasy-house-2, horizontal front countertop and small shaded right return. Large cloth canopy42pxwide and18pxdeep at TOP, supported by four slim posts, counter visibly below it at y32, big goods shapes at y27-32, short wooden feet on baseline46. Upper roof plane visible from above, canopy well above adult head height, no people in sprite. Onepixel dark brown outline #2b281d, light from top-left, warm oak frame, quiet flat colour clusters, no blur or gradients, no ground or cast shadow, no scattered crumbs, isolated specks, little props outside stall or text. The goods must remain distinct at native48x48. No tiled roof or stone building.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-e023f44e-d50b-4b22-a8ff-bde3d5bef164.png",
+    "source": "r17-D-source-stall-5.png",
+    "selected": true,
+    "selection_reason": "Distinct readable subject after native reduction, coherent view and top-left light."
+  },
+  {
+    "id": "gatehouse-c",
+    "size": [
+      144,
+      400
+    ],
+    "prompt": "Draw ONE very tall fortified medieval GATEHOUSE as a SOLID MASSIVE STONE KEEP with two slightly taller attached square towers. Intended native art144wide400high. IMPORTANT fill nearly ALL upper300px with broad masonry architecture across ENTIRE width, NOT two thin freestanding columns, NOT a bridge floating between sticks. Central gate chamber has four floors of recessed windows and heavy sandstone walls, steep broad slate roof seen from high3/4above. Two square corner towers integrated left/right, slate roofs slightly taller. At ground level ONLY, one wide open rectangular gate96wide70high, magenta through portal to ground, flat stone lintel, raised portcullis completely concealed. The opening occupies bottom18percent of sprite height and middle two thirds width. Feet sit on same horizontal baseline, no ground island. Substantial tower stone plinths, short shaded right return, top-left light, warm sandstone matches cathedral. Coarse stone blocks8-12nativepx, roof tiles6-10nativepx, dark brown1pixel outline, quiet big colour clusters, no haze/specks/noise, no text. Full sprite enlarged on perfectly solid#FF00FFmagenta. No church crosses. Proper imposing defensive architecture, tall rectangular solid silhouette with small open gateway at bottom.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8a5-52c0-79d3-91e1-0c3ed556188d/exec-097858d6-6bbc-40cd-9099-19e4a02bf763.png",
+    "source": "r17-D-source-gatehouse-c.png",
+    "selected": true,
+    "selection_reason": "Solid gate chamber and96px clear portal replace overly thin open tower alternatives; neutral masonry lock matches wall."
+  }
+]

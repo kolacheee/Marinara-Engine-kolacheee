@@ -1,0 +1,752 @@
+{
+  "mode_samples": 3538944,
+  "checks": [
+    {
+      "check": "wallA mode64",
+      "pass_": true
+    },
+    {
+      "check": "wallA cleanup replay",
+      "pass_": true
+    },
+    {
+      "check": "wallA source hash",
+      "pass_": true
+    },
+    {
+      "check": "wallB mode64",
+      "pass_": true
+    },
+    {
+      "check": "wallB cleanup replay",
+      "pass_": true
+    },
+    {
+      "check": "wallB source hash",
+      "pass_": true
+    },
+    {
+      "check": "cathedral native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "cathedral hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "cathedral zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "cathedral manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "cathedral one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "cathedral review sheets",
+      "pass_": true
+    },
+    {
+      "check": "guildhall native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "guildhall hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "guildhall zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "guildhall manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "guildhall one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "guildhall review sheets",
+      "pass_": true
+    },
+    {
+      "check": "gatehouse native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "gatehouse hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "gatehouse zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "gatehouse manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "gatehouse one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "gatehouse review sheets",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk-stair native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk-stair hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk-stair zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk-stair manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk-stair one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "wall-walk-stair review sheets",
+      "pass_": true
+    },
+    {
+      "check": "townhall-market native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "townhall-market hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "townhall-market zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "townhall-market manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "townhall-market one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "townhall-market review sheets",
+      "pass_": true
+    },
+    {
+      "check": "fountain native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "fountain hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "fountain zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "fountain manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "fountain one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "fountain review sheets",
+      "pass_": true
+    },
+    {
+      "check": "wall-tower native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "wall-tower hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "wall-tower zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "wall-tower manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "wall-tower one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "wall-tower review sheets",
+      "pass_": true
+    },
+    {
+      "check": "market-cross native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "market-cross hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "market-cross zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "market-cross manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "market-cross one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "market-cross review sheets",
+      "pass_": true
+    },
+    {
+      "check": "shrine native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "shrine hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "shrine zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "shrine manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "shrine one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "shrine review sheets",
+      "pass_": true
+    },
+    {
+      "check": "stall-0 native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "stall-0 hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "stall-0 zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "stall-0 manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "stall-0 one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "stall-0 review sheets",
+      "pass_": true
+    },
+    {
+      "check": "stall-1 native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "stall-1 hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "stall-1 zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "stall-1 manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "stall-1 one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "stall-1 review sheets",
+      "pass_": true
+    },
+    {
+      "check": "stall-2 native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "stall-2 hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "stall-2 zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "stall-2 manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "stall-2 one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "stall-2 review sheets",
+      "pass_": true
+    },
+    {
+      "check": "stall-3 native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "stall-3 hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "stall-3 zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "stall-3 manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "stall-3 one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "stall-3 review sheets",
+      "pass_": true
+    },
+    {
+      "check": "stall-4 native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "stall-4 hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "stall-4 zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "stall-4 manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "stall-4 one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "stall-4 review sheets",
+      "pass_": true
+    },
+    {
+      "check": "stall-5 native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "stall-5 hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "stall-5 zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "stall-5 manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "stall-5 one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "stall-5 review sheets",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk native dimensions",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk hard alpha",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk zero hiddenRGB",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk manifest hash",
+      "pass_": true
+    },
+    {
+      "check": "wall-walk one opaque component without detached specks",
+      "pass_": true,
+      "components": 1
+    },
+    {
+      "check": "wall-walk review sheets",
+      "pass_": true
+    },
+    {
+      "check": "wall has no duplicated48px half",
+      "pass_": true
+    },
+    {
+      "check": "wall native drawing crop",
+      "pass_": true
+    },
+    {
+      "check": "alternate adjacent drawing crop",
+      "pass_": true
+    },
+    {
+      "check": "shared4px wall stair overlap is identical paint",
+      "pass_": true
+    },
+    {
+      "check": "accepted stair treads cheek and gate landing byte identical",
+      "pass_": true
+    },
+    {
+      "check": "stair wall is common drawing donor",
+      "pass_": true
+    },
+    {
+      "check": "redrawn wall and stair use locked stone palette",
+      "pass_": true
+    },
+    {
+      "check": "paving reuses whole compatible drawn courses",
+      "pass_": true
+    },
+    {
+      "check": "paving interior contains only slate colours",
+      "pass_": true
+    },
+    {
+      "check": "96x64 gateway clear below lintel",
+      "pass_": true
+    },
+    {
+      "check": "L-block clear route [336, 0, 48, 528]",
+      "pass_": true
+    },
+    {
+      "check": "L-block clear route [576, 336, 48, 144]",
+      "pass_": true
+    },
+    {
+      "check": "L-block clear route [0, 144, 384, 96]",
+      "pass_": true
+    },
+    {
+      "check": "L-block exact NN3x",
+      "pass_": true
+    },
+    {
+      "check": "L-block native greyscale",
+      "pass_": true
+    },
+    {
+      "check": "L-block visible ground shadows",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [984, 432, 96, 1536]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [0, 432, 984, 48]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [1104, 432, 144, 48]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [48, 432, 96, 96]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [528, 432, 96, 96]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [816, 432, 96, 96]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [192, 912, 192, 96]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [456, 912, 48, 528]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [576, 1536, 240, 144]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [552, 1488, 48, 48]",
+      "pass_": true
+    },
+    {
+      "check": "market clear route [792, 1680, 48, 48]",
+      "pass_": true
+    },
+    {
+      "check": "market exact NN3x",
+      "pass_": true
+    },
+    {
+      "check": "market native greyscale",
+      "pass_": true
+    },
+    {
+      "check": "market visible ground shadows",
+      "pass_": true
+    },
+    {
+      "check": "height-test exact NN3x",
+      "pass_": true
+    },
+    {
+      "check": "height-test native greyscale",
+      "pass_": true
+    },
+    {
+      "check": "height-test visible ground shadows",
+      "pass_": true
+    },
+    {
+      "check": "skyline exact NN3x",
+      "pass_": true
+    },
+    {
+      "check": "skyline native greyscale",
+      "pass_": true
+    },
+    {
+      "check": "skyline visible ground shadows",
+      "pass_": true
+    },
+    {
+      "check": "tower-wall opaque masonry contact",
+      "pass_": true
+    },
+    {
+      "check": "wall-stair opaque masonry contact",
+      "pass_": true
+    },
+    {
+      "check": "stair-gate opaque masonry contact",
+      "pass_": true
+    },
+    {
+      "check": "gate landing and stair attachment coincide",
+      "pass_": true
+    },
+    {
+      "check": "at most two identical wall pieces in any five",
+      "pass_": true
+    },
+    {
+      "check": "guildhall addresses church through north forecourt",
+      "pass_": true
+    },
+    {
+      "check": "distinct drawn gate approach",
+      "pass_": true
+    },
+    {
+      "check": "threshold placed once at gate",
+      "pass_": true
+    },
+    {
+      "check": "service road clear minimum48 and width runs at most384",
+      "pass_": true,
+      "longest_native_run": 384
+    },
+    {
+      "check": "protected preexisting files unchanged",
+      "pass_": true,
+      "changed": [],
+      "count": 14382
+    }
+  ],
+  "clear_routes": {
+    "L-block": [
+      {
+        "rect": [
+          336,
+          0,
+          48,
+          528
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          576,
+          336,
+          48,
+          144
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          0,
+          144,
+          384,
+          96
+        ],
+        "opaque_pixels": 0
+      }
+    ],
+    "market": [
+      {
+        "rect": [
+          984,
+          432,
+          96,
+          1536
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          0,
+          432,
+          984,
+          48
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          1104,
+          432,
+          144,
+          48
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          48,
+          432,
+          96,
+          96
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          528,
+          432,
+          96,
+          96
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          816,
+          432,
+          96,
+          96
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          192,
+          912,
+          192,
+          96
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          456,
+          912,
+          48,
+          528
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          576,
+          1536,
+          240,
+          144
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          552,
+          1488,
+          48,
+          48
+        ],
+        "opaque_pixels": 0
+      },
+      {
+        "rect": [
+          792,
+          1680,
+          48,
+          48
+        ],
+        "opaque_pixels": 0
+      }
+    ],
+    "height-test": [],
+    "skyline": []
+  },
+  "passed": true,
+  "failures": []
+}

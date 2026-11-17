@@ -1,0 +1,26 @@
+[
+  {
+    "id": "wallA",
+    "source": "r17-D-critic2-source-wallA.png",
+    "prompt": "Use case: precise-object-edit. Asset type: medieval RPG native pixel-art modular city wall. Use the attached stair-wall as the geometry and material reference. Draw a SINGLE straight wall-walk without a staircase, enlarged on a solid #FF00FF magenta background. The final native canvas will be 192x144 pixels, so draw a 4:3 painted rectangle with calm deliberate pixel clusters. KEEP the reference's construction exactly: eight square merlons on the rear edge, clearly visible receding DIAGONALLY PAVED HORIZONTAL WALKWAY between native y20 and y36, thick coping at y36..42, dark undershadow with corbels y42..52, and warm muted ashlar wall from y52..143. Match the first image's warm grey sandstone middle values (not bright cream), 14-16 small horizontal stone courses below the walk, stones about 8-13 native pixels wide. Light from top-left, shaded right faces, one-native-pixel dark silhouette. Each stone is one solid flat colour with a clean one-pixel top highlight and thin mortar, no erosion, mottling, cracks, specks, noise or scratches. Merlons show deep lit top faces and shaded right sides. The walkway must visibly be a top plane, not front-facing masonry. Draw paint right up to BOTH square-cut lateral boundaries, with NO vertical enclosing outline, no side face and no pillar. Full-width opaque straight wall below walkway. This is one continuous drawn construction to be cut into compatible wall/stair wall surfaces. No stairs, tower, house, ground, labels or text. Preserve square edges, not rounded. Reference2 is the town style and scale only.",
+    "selected": true,
+    "selection_reason": "Cleaner native masonry and distinct diagonally paved walk; shared donor for both contacts.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8fa-a96a-7f01-9986-5fd9a66c7ad4/exec-30f6b03f-8d3b-4369-a85e-90960f3b58a8.png",
+    "references": [
+      "r17-D-critic1-source-stairC.png",
+      "../reference/r17/fantasy-house-2.png"
+    ]
+  },
+  {
+    "id": "wallB",
+    "source": "r17-D-critic2-source-wallB.png",
+    "prompt": "Use case: precise-object-edit. Asset type: medieval RPG native pixel-art modular city wall. Use the attached stair-wall as the geometry and material reference. Draw a SINGLE straight wall-walk without a staircase, enlarged on a solid #FF00FF magenta background. The final native canvas will be 192x144 pixels, so draw a 4:3 painted rectangle with calm deliberate pixel clusters. KEEP the reference's construction exactly: eight square merlons on the rear edge, clearly visible receding DIAGONALLY PAVED HORIZONTAL WALKWAY between native y20 and y36, thick coping at y36..42, dark undershadow with corbels y42..52, and warm muted ashlar wall from y52..143. Match the first image's warm grey sandstone middle values (not bright cream), 14-16 small horizontal stone courses below the walk, stones about 8-13 native pixels wide. Light from top-left, shaded right faces, one-native-pixel dark silhouette. Each stone is one solid flat colour with a clean one-pixel top highlight and thin mortar, no erosion, mottling, cracks, specks, noise or scratches. Merlons show deep lit top faces and shaded right sides. The walkway must visibly be a top plane, not front-facing masonry. Draw paint right up to BOTH square-cut lateral boundaries, with NO vertical enclosing outline, no side face and no pillar. Full-width opaque straight wall below walkway. This is one continuous drawn construction to be cut into compatible wall/stair wall surfaces. No stairs, tower, house, ground, labels or text. Preserve square edges, not rounded. Reference2 is the town style and scale only.\nAlternative B: retain the reference's broad walkway and coping, but make the lower masonry even quieter: plain warm-grey stones, no strong cream faces. Use very fine dark mortar only, with 16 whole courses and at least 16 stones across the width. Keep top-plane outlines clear. No perspective convergence: all front horizontal courses are exactly horizontal.",
+    "selected": false,
+    "selection_reason": "Rejected: stronger native mottling and less coherent stone fills.",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e8fa-a96a-7f01-9986-5fd9a66c7ad4/exec-aa07fbb2-4abc-41dc-ac6f-390f517d408f.png",
+    "references": [
+      "r17-D-critic1-source-stairC.png",
+      "../reference/r17/fantasy-house-2.png"
+    ]
+  }
+]

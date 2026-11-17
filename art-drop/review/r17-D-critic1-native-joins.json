@@ -1,0 +1,20 @@
+{
+  "wall-walk": {
+    "source": "wallClean",
+    "crop": [
+      24,
+      0,
+      120,
+      144
+    ]
+  },
+  "wall-walk-alternate": {
+    "source": "wallClean",
+    "crop": [
+      72,
+      0,
+      168,
+      144
+    ]
+  }
+}

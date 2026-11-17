@@ -1,3 +1,166 @@
+# Round 17 — Part D: critic-r17D-2 redraw
+
+Repaired **wall-walk, wall-walk-stair and compose.py**. Both wall surfaces
+now share one drawn walkway, parapet, coping, shadow and masonry; their
+**4px overlap is identical paint**. The accepted stair treads, cheek and gate
+landing remain byte-identical. The gate approach repeats compatible slate
+interior with side kerbs, and places its transverse threshold **once**.
+All **14 passing D PNGs** and earlier-part art remain unchanged.
+
+Made **two built-in image-tool variants on magenta**, selected A, then used
+**8× BOX registration → fixed palette → exact 64-sample mode → one-pixel
+cleanup**, hard 0/255 alpha and zero hidden RGB. Code only registers, reduces,
+cleans, extracts, wraps and composites drawn paint.
+[Prompts/sources](review/r17-D-critic2-generation.json),
+[processing](review/r17-D-critic2-processing.json),
+[critic response](review/r17-D-critic2-response.json).
+
+Rebuilt the four critic scenes, **1×/3× reference comparisons**, greyscale
+squints, all 16 **1×/4× house comparisons**, self seams, unlike contacts at
+**1×/4×/8×**, and literal 3×3 gate-paving repeats. **148 checks pass**, replaying
+**3,538,944 mode samples** and confirming **14,382 protected files unchanged**.
+[Review index](review/r17-D-review.html); [audit](review/r17-D-verification.json).
+This is saved-art self-review, not independent or in-engine approval.
+
+BRIEF-17 retains the 3-cell gate over panel 1's conflicting 4-cell request;
+panel 2 is absent. Round 15 is comparison-only, Part E life remains deferred,
+and D has no seasonal partners. No commit, push or branch change; the
+checkout was already detached. All project edits stay in `art-drop/`.
+
+Replay: `python -B art-drop/review/r17-D-process.py`,
+`python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-D-verify.py`.
+
+# Round 17 — Part D: critic-r17D-1 redraw
+
+Redrew **gatehouse, wall-walk, wall-walk-stair and stall-2** and repaired the
+D market in **`out/city17/compose.py`**. All **12 passing D sprites** and
+all earlier-part art remain byte-identical. The gate has broad twin tower
+volumes, a recessed **96×64px clear portal** and a drawn access landing;
+wall/stair contacts use explicit overlapping paint anchors. Smaller masonry,
+two different wall crops and clearly tapered fish replace the failed details.
+The guildhall now faces the church across the northern arm of an L-shaped
+square; its arcade opens onto paving. Service-road pockets break the long
+run, and a newly drawn slate threshold identifies the gate approach.
+
+Used **13 built-in image-tool drawings/edits on solid magenta**: three gate
+variants, three wall variants plus a cleanup edit, three stair variants,
+two fish variants and one review/compositor-only paving drawing. Selected
+five sources. Same method: **8× BOX registration → fixed palette → exact
+64-sample mode → one-pixel cleanup**, hard **0/255 alpha**, zero hidden RGB.
+Code only registers, reduces, cleans, crops and composites drawings.
+[Exact prompts/sources](review/r17-D-critic1-generation.json),
+[processing](review/r17-D-critic1-processing.json), and
+[response to every critic problem](review/r17-D-critic1-response.json).
+
+Regenerated all D scenes, **1×/3× reference comparisons**, greyscale squints,
+all **16 piece sheets at 1×/4× beside fantasy-house-2**, self seams and unlike
+wall contacts, including focused 8× proofs. **172 checks pass**, replaying
+**24,330,240 mode samples** and confirming **14,274 protected files unchanged**.
+[Review index](review/r17-D-review.html); [audit](review/r17-D-verification.json).
+This is saved-art self-review, not an independent critic or engine approval.
+BRIEF-17's **3-cell gate footprint** wins over panel 1's conflicting 4-cell
+request; existing height overhangs are retained. Panel 2 is absent. No
+Round15 production art is used; it is comparison-only. Part E life remains
+deferred. No seasonal partners belong to D. No commit, push or branch change;
+the checkout was already detached at HEAD. All project edits stay in `art-drop/`.
+
+Replay: `python -B art-drop/review/r17-D-process.py`,
+`python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-D-verify.py`.
+
+# Round 17 — Part D
+
+Made **16 native RGBA PNG exports** in **`out/city17/`**: cathedral,
+guildhall, open market hall, gatehouse, fountain, interval tower, repeatable
+wall-walk and its stair attachment, market cross, shrine, and six distinct
+market stalls. Extended **`out/city17/compose.py`** to place these whole
+sprites by bottom-left/base-row anchors in an irregular market. All **422
+existing A/B/C PNGs remain byte-identical**.
+
+**Method:** **21 large built-in image-tool drawings on solid magenta**,
+selecting **15 paintings**. Cathedral and guildhall received two alternatives;
+gatehouse and wall-walk received three. The first gate designs had excessive
+open height; the selected third drawing has a substantial gate chamber.
+The first wall mistakenly included a house and was rejected. Exact prompts,
+source paths and selections are in [generation](review/r17-D-generation.json).
+No API fallback, code-drawn architecture, shapes, texture or noise.
+
+Painted-bound registration → **BOX registration at 8× native size** → fixed
+palette without dithering → exact RGBA mode of **all 64 samples per 8×8
+footprint**, with lexicographic ties → isolated-colour/alpha-island cleanup
+and one-pixel dark silhouette cleanup. The gate registers its painted tower
+and portal columns separately to retain a **96px opening**. Its neutral
+stone palette matches the wall; quiet cloth ramps distinguish the canopies.
+A stricter magenta key preserves the violet canopy. The wall-walk repeats
+one complete native 48px merlon/corbel period from the selected stair-wall
+painting. [Processing and edits](review/r17-D-processing.json),
+[native transfer](review/r17-D-native-joins.json),
+[replay script](review/r17-D-process.py).
+
+| Export | Footprint in 48px cells | Native PNG canvas |
+|---|---:|---:|
+| `cathedral` | 5×6 | 240×432 |
+| `guildhall` | 4×4 | 192×400 |
+| `townhall-market` | 4×3 | 192×144 |
+| `gatehouse` | 3×4 | 144×400 |
+| `fountain` | 2×2 | 96×96 |
+| `wall-tower` | 2×3 | 96×240 |
+| `wall-walk`, `wall-walk-stair` | wall / access attachment | 96×144; 192×144 |
+| `market-cross` | 1×2 | 48×96 |
+| `shrine`, `stall-0..5` | 1×1 each | 48×48 each |
+
+The church has **430 painted rows**; guildhall and gate have **398**. All
+three exceed the **384px maximum five-storey plus three-cell roof test**;
+the church leads the skyline. Following the panel's hierarchy clarification,
+the open market hall, fountain and small monuments remain low. The interval
+tower is subordinate to the gate. Stalls have **44px-wide painted canopies**:
+bread/red, cloth/indigo, fish/teal, fruit/green, pottery/ochre, spice/violet.
+Exports use **11–36 painted colours**, alpha strictly **0/255**, and zero RGB
+under transparency. No seasonal partners or ground bases belong to D.
+
+**Composition and critic:** rebuilt the **768×576 / 16×12-cell L-block**,
+both five-storey/one-storey joins, and a **1248×1584 irregular market** with
+the church on the north edge in a fenced yard, guildhall opposite, offset
+fountain, cross and two staggered groups of three stalls. Low flanking houses
+preserve the skyline. The gate connects to drawn wall-walk/stairs and an
+interval tower, with road visible beyond it. The main route changes width at
+setbacks; a **96px core**, **48px inner service route**, and stall end access
+remain free of fixed art. Existing B shadow paint falls south/east of civic
+buildings and is masked to visible receiving ground. A separate common-base
+skyline sheet compares the landmarks directly against the maximum stack.
+
+All four scenes have **1×/nearest-neighbour 3× reference comparisons** and
+**native greyscale squints**. Every export has a **1×/4× sheet beside
+`fantasy-house-2`**, plus self-neighbour seams; additional sheets show unlike
+wall contacts, all six stalls and actor clearance. Props sit on summer
+paving/grass. Literal **3×3 repeats at 1×/4×** are supplied for the unchanged
+context paving and grass; they are not new D ground exports. Start at
+[the review index](review/r17-D-review.html).
+
+**QC:** inspected all 16 exports at 1×/4× and applied the brief's fail list
+in [the scoped critic](review/r17-D-critic.json). The saved-art audit replays
+**42,860,544 mode samples**, validates cleanup, dimensions, hard alpha,
+hidden RGB, exact scale renders and fixed-obstacle route clearances.
+The L-block's movable review actor is excluded from fixed obstacles.
+**14,222 protected pre-existing files remain unchanged**; only the authorized
+compositor and this Notes file are excluded. See
+[verification](review/r17-D-verification.json) and
+[per-file measurements](review/r17-D-files.json).
+
+**Precedence and limits:** BRIEF-17's **three-cell gate footprint wins** over
+panel 1's requested four cells; the 96px portal is retained within it.
+Panel 2 was absent. No Round15 art is placed in the scenes; its street render
+is comparison-only, and the earlier course/palette donors remain the approved
+modular contract. Part E life/district content remains deferred. This is
+saved-art self-review, not independent or in-engine approval. No commit,
+push, branch change, or edit outside `art-drop/`.
+
+Replay: `python -B art-drop/review/r17-D-process.py`,
+`python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-D-verify.py`. The processor also accepts source
+IDs for a focused replay; all source/registered/mode/cleanup records are kept.
+
 # Round 17 — Part C: critic-r17C-2 redraw
 
 Repaired **`compose.py` and `street-junction-turn.png`**. All **44 passing C
