@@ -1,0 +1,730 @@
+[
+  {
+    "id": "storey-timber-w2-a",
+    "source": "r17-A-source-storey-timber-w2-a.png",
+    "sha256": "42b97c99cf49c22a33c17a964f7cbc81a74ab696f96e41519203f657c141035c",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-fde617fc-d9d8-4734-8c89-bbfe5f6e4cb6.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w1-a",
+    "source": "r17-A-source-ground-shop-w1-a.png",
+    "sha256": "e01fc4ddc51096ffd98ed2f1e320cb5d14a2de47f14edbad5e73f885d3a0e3b9",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-1c2527e2-9ff1-4207-9070-1630a773bae6.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w2-a",
+    "source": "r17-A-source-ground-shop-w2-a.png",
+    "sha256": "867d6572aa37486ba5b86f55dcd2acc1cea4ffb520a859634abaf646882bc08d",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-28b041d5-baa2-4843-af09-61eb8146925b.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w3-a",
+    "source": "r17-A-source-ground-shop-w3-a.png",
+    "sha256": "b49ea98eaa8b7d826b2d64c2f18705e119e1cd247350cac4b7c72aae5bb66f08",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-8ec9183f-1d21-4de0-b5dc-79b5f6f776b8.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w1-a",
+    "source": "r17-A-source-ground-shop-v1-w1-a.png",
+    "sha256": "451db93f972ade77346917e7b00bf01e5e73db0462256ee249234d6c19542480",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-6d3cd29d-0791-4e73-94ef-525af625235e.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w2-a",
+    "source": "r17-A-source-ground-shop-v1-w2-a.png",
+    "sha256": "06f5c978b9be20ad2644f520c44457e9ea8b08fb53592d8450d2188b37e7a715",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-de540971-8fa5-4e88-a20d-2a571bda4974.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w3-a",
+    "source": "r17-A-source-ground-shop-v1-w3-a.png",
+    "sha256": "0eff45d7c7eed895681496bcddc84f69e1be4c39241165f72fb148b8876e9d23",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-5ec7682d-16e6-4a64-866a-94633ae2b0bf.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v2-w1-a",
+    "source": "r17-A-source-ground-shop-v2-w1-a.png",
+    "sha256": "0820ca8d62ee5f4649bdb3ecafdf9acc9d56b59310f31a1cc0e69ee38b0a1a41",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-a32f2b26-287c-474e-be85-d3369aee6c53.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v2-w2-a",
+    "source": "r17-A-source-ground-shop-v2-w2-a.png",
+    "sha256": "a16c68423f0551e94270483f37d149106cf73e070e685625667ebb4f40631152",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-a3e965b7-62bd-4dbf-aa7d-2d5114abb865.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v2-w3-a",
+    "source": "r17-A-source-ground-shop-v2-w3-a.png",
+    "sha256": "50284afccbf2332bf8511214c2c579a5caf8306a0559ef7357adb8f1970da0e6",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-ae48668c-c552-4e82-a882-62a338346c06.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-w1-a",
+    "source": "r17-A-source-ground-door-w1-a.png",
+    "sha256": "327baca4103979b387a0ca1a43795dd8eebc8aeeebe4c73e31b7aa604e88a8c6",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-882f9f81-6513-4dbb-a352-7d19a3f94e1b.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-w2-a",
+    "source": "r17-A-source-ground-door-w2-a.png",
+    "sha256": "95a18f86ff609ce8b30cc479d429b5c0f5f62b830361b3d25dfbb7a68bfa1907",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-fa0ae158-57b8-4843-86de-0d9dc71bf3e3.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-w3-a",
+    "source": "r17-A-source-ground-door-w3-a.png",
+    "sha256": "1289bbbc8b94ad26c1b40e089b436c078523586ffb35fd47cf69188807cd6229",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-20d6f329-9610-414f-8e26-901e0a4075e7.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-v1-w1-a",
+    "source": "r17-A-source-ground-door-v1-w1-a.png",
+    "sha256": "76f9902bc61e70d0b7dffed1e4966dbfaadc6ae98d9d8ffa0792f3319b5190bd",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-00bfdc2c-178b-4879-9c61-6676b7d2d743.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-v1-w2-a",
+    "source": "r17-A-source-ground-door-v1-w2-a.png",
+    "sha256": "863617fffb0f14c07565042686ed775536b1e31afed8c85a52e7fc91742c2b5e",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-a635f657-e048-4db5-a484-d4806ef13b5e.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-v1-w3-a",
+    "source": "r17-A-source-ground-door-v1-w3-a.png",
+    "sha256": "22ee92568c14022800adb12af2f1662253aa1b2995c3c9ec6e87df8408d24a5e",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-c2bad76e-cfdd-48b9-806a-af2a5bb7f138.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-v2-w1-a",
+    "source": "r17-A-source-ground-door-v2-w1-a.png",
+    "sha256": "17c947fbcfe653a813d63e2e3600b2101faa613f3ba1314eec8422d19c3a7a26",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-d23a8be4-7a77-406b-93bb-63acf9727955.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-v2-w2-a",
+    "source": "r17-A-source-ground-door-v2-w2-a.png",
+    "sha256": "ebbc787c0f240930dfee331e76ce5df025197b77bc62e3b4a472041859331727",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-95bb136e-f21a-4ad4-98a4-ff36ff1d0885.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-door-v2-w3-a",
+    "source": "r17-A-source-ground-door-v2-w3-a.png",
+    "sha256": "9d0f3fb2a3b3e6148b54d6e11ee0f431bb63342a514093ed29fb3b10085d9401",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-94aaa656-0e75-4e28-b95b-9457cc8d875f.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-w1-a",
+    "source": "r17-A-source-ground-arch-w1-a.png",
+    "sha256": "e4e0d6cdbab619e5ef80de043aeae3f8542c88c2c174a8fa1e41cea2ecb804ae",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-1495e020-2aa1-46c8-893d-48c82b6891e9.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-w2-a",
+    "source": "r17-A-source-ground-arch-w2-a.png",
+    "sha256": "e083197c260f5394ba0f52a09c1673a6c68f234e03879ffa7fe33980976cec77",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-dc8f9132-f47f-436b-b666-8de90499a32e.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-w3-a",
+    "source": "r17-A-source-ground-arch-w3-a.png",
+    "sha256": "4f9311d919558e726b13393d8591effee1521be9496d2363b90111200a27d371",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-3ffc0d35-3bcd-4993-ad5c-c71b9d9a2466.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-v1-w1-a",
+    "source": "r17-A-source-ground-arch-v1-w1-a.png",
+    "sha256": "531b856e6e14ee0ed5770f89cd596db330ce10d0d8db3fcaa6c19b3d3d54585a",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-0f46c92b-1292-4810-ab91-6932d9bb27d6.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-v1-w2-a",
+    "source": "r17-A-source-ground-arch-v1-w2-a.png",
+    "sha256": "869947386fcae12a91d10575312b99c3e0339e748ba344503b3c3ea15899b9c8",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-1e486e82-2a07-4fb7-8c8d-1b3510137ecd.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-v1-w3-a",
+    "source": "r17-A-source-ground-arch-v1-w3-a.png",
+    "sha256": "f01644ee989087483216b3adfc9f414b05dbac1818482765453641c476aff5ba",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-eb822b64-3e38-4eaf-8a6b-2ac7a128a04d.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-v2-w1-a",
+    "source": "r17-A-source-ground-arch-v2-w1-a.png",
+    "sha256": "7471386e1b8579c605fdfdc945cc59bac682adf0d596959d4dd30275fd241191",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-4774d955-dbab-4405-92d0-b3f58b6f8fd1.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-v2-w2-a",
+    "source": "r17-A-source-ground-arch-v2-w2-a.png",
+    "sha256": "1183e80002454d67481fa139317f9beeee06402be2c5cde7f86154baf4c840ec",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-fd1a204c-8f4f-4bc5-99d5-dc53b50aad68.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-v2-w3-a",
+    "source": "r17-A-source-ground-arch-v2-w3-a.png",
+    "sha256": "710137d6e64754acae5e9e29e5ea254c6c2983da3e165af26a85813c567d1781",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-0994ce31-e093-44e9-9dd1-127450741614.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-w1-a",
+    "source": "r17-A-source-ground-work-w1-a.png",
+    "sha256": "3d9ad41cf152af30ece0c3e58a74ad12da648473ea7f55abcb4f23f741c279c6",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-cf3bbee2-04d5-45a0-b6e9-8cc829263bbf.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-w2-a",
+    "source": "r17-A-source-ground-work-w2-a.png",
+    "sha256": "627a164f3cf9b57126635c0415c432985d7d108075dd41202c0615cf879dd870",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-ecb081e1-9dfc-431c-8a8d-fc269ceac260.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-w3-a",
+    "source": "r17-A-source-ground-work-w3-a.png",
+    "sha256": "dd737775bc5aa5e193f6f0ef5334757f0d87b7f5ca4c2521e5cd10b255030091",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-b70761dd-9ae6-4bf3-a168-f6b50c0399e6.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v1-w1-a",
+    "source": "r17-A-source-ground-work-v1-w1-a.png",
+    "sha256": "addda67684f8e33a7378ed8c5abe55eab09613bd13fbef4a05e60aa9a712c765",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-e0916f7e-ab02-41fe-acd4-b32f25f5fb0c.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v1-w2-a",
+    "source": "r17-A-source-ground-work-v1-w2-a.png",
+    "sha256": "9c65d6e14bc389d5a9310669d317bdee98f6dd6dc4e68d034d2983ab733a9974",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-81ef07a6-4bbc-4a81-9280-89bce388d1de.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v1-w3-a",
+    "source": "r17-A-source-ground-work-v1-w3-a.png",
+    "sha256": "63455cd1590a89f2ea1fe2dbb8fdd734c52ce1255fff088fe52db5be6f9ec53c",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-e3c30532-6a8c-403e-aaf0-a53635d81b9d.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v2-w1-a",
+    "source": "r17-A-source-ground-work-v2-w1-a.png",
+    "sha256": "f0f05ea004182f7598a72ea9ab409faec950c3fe6a83dad7622391d9eaa05eaa",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-b1e7df75-dbf4-4b2b-92a6-58d0726d999e.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v2-w2-a",
+    "source": "r17-A-source-ground-work-v2-w2-a.png",
+    "sha256": "c2b7c78b81bd427f471336d12dada940cc197f48aebc50f4eaedddbd4d94ca67",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-f2c0ff22-942a-41f2-9450-89dc8ff14000.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v2-w3-a",
+    "source": "r17-A-source-ground-work-v2-w3-a.png",
+    "sha256": "98c84c83fe5576ee8e89fc8f3b644d2c7ae4835ab8a4ad3663815d5d17ca8443",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-cde47f59-cce0-4c46-9a8e-75b07e12a5ab.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w1-a",
+    "source": "r17-A-source-storey-timber-w1-a.png",
+    "sha256": "bdc4426eb2baccfb8d89379ed8ed52478164f5686684cc4fee6a6e3c4bd0a0b4",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-aa1c9857-e94e-491e-9346-79efefeeca0c.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w3-a",
+    "source": "r17-A-source-storey-timber-w3-a.png",
+    "sha256": "6dc265cdd97ab2b929fec0603e0b13623ffbfa442a86207da323c7d3901054d7",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-65363cae-e5f8-4bce-9140-26b0734433fd.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-plaster-w1-a",
+    "source": "r17-A-source-storey-plaster-w1-a.png",
+    "sha256": "cb549dbef0e921812959ab1ea62e44d653702ea768dfb0b318daabc9cc3802d0",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-26f6b78b-8930-407c-aa46-8fe8ae85470a.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-plaster-w1-b",
+    "source": "r17-A-source-storey-plaster-w1-b.png",
+    "sha256": "0ba49711493ade39653eae6e31d1b846a068cca90b396150896e7ec12c85c1fb",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-6354d5cd-38bb-422a-80c9-f2a4c6dc3de9.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w3-b",
+    "source": "r17-A-source-storey-timber-w3-b.png",
+    "sha256": "389c8b95e2be0edea5d6b06d00278dda6cdc13835714652afd23541b886fca46",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-cdfacb6d-e190-43b1-9b28-5a3ec7bfdd13.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w1-b",
+    "source": "r17-A-source-storey-timber-w1-b.png",
+    "sha256": "03110b3026ac2d23024812f434e7c6647709c2a440e497b32677b10fffec9c71",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-d488f01d-d61a-476e-8f45-3ee5b1f18e97.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-plaster-w2-a",
+    "source": "r17-A-source-storey-plaster-w2-a.png",
+    "sha256": "287d878ccf118af1148e2a12a74247178d2d6b0c636ee54f9dbbc357186a47b1",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-0371be3c-bd14-4075-8e52-5bd46cdcf9a3.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-plaster-w3-a",
+    "source": "r17-A-source-storey-plaster-w3-a.png",
+    "sha256": "1fdbe0f627d7a5475fe59e24356084699c1a0f1d304caaf90d58ee6b1fafe3c2",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-5418e673-11fa-49ac-b293-51d1df2d6af6.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-stone-w1-a",
+    "source": "r17-A-source-storey-stone-w1-a.png",
+    "sha256": "e896035c2ebdbeacfc8bfab44a7b30229b2a1dfce3aa5ca57aed4aa5dedc38ec",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-05dc1251-05de-4d43-8a87-82942e13aaa1.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-stone-w2-a",
+    "source": "r17-A-source-storey-stone-w2-a.png",
+    "sha256": "308a1257adf8c58cb2a423d6c5b9fc5bc92e1bad304440be1c0166fb29eee6b0",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-e1bfe93d-100b-4af1-b0f1-23bd10405d62.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-stone-w3-a",
+    "source": "r17-A-source-storey-stone-w3-a.png",
+    "sha256": "7a78aa9dc5702a96cb70ee176eeebe64f0f65b730d28b315a74b26f205dadb9a",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-2cf71742-a4e7-4f4f-a86a-26deb1088af1.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-jetty-w1-a",
+    "source": "r17-A-source-storey-jetty-w1-a.png",
+    "sha256": "5b32c95cc955bc75e21027503a299d1e1fde4c3c0dfa8873c80f7e0315283de0",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-5b32fe5c-795e-44b3-9bca-49cd1fea4a3d.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-jetty-w2-a",
+    "source": "r17-A-source-storey-jetty-w2-a.png",
+    "sha256": "a5ff626de7689aef38dfe7d7fdc06e9eb2623290793e58033282f54e1fcab825",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-50cab8c5-5b23-4783-bd83-79928623a695.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-jetty-w3-a",
+    "source": "r17-A-source-storey-jetty-w3-a.png",
+    "sha256": "94a24231b27dc0d042f4dff897707e1a89f4290e4d14a0d6223e405cecbe9c91",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-c0165421-5ee3-48cc-ac10-7608b8775665.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-oriel-w1-a",
+    "source": "r17-A-source-storey-oriel-w1-a.png",
+    "sha256": "e55bd1cabd11bb0e744a3e48fb121cebbe760de55960e8723b3dc3d751831300",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-0621d57e-8646-4fcc-a60e-cc64c0458acc.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-oriel-w2-a",
+    "source": "r17-A-source-storey-oriel-w2-a.png",
+    "sha256": "6d1f602bc9b313e763fb3927eb99ca9958c44772ea0d6b1a34ef6e899aa53d01",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-fc0dfc52-cd64-4268-b61a-f1c4a2782828.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-oriel-w3-a",
+    "source": "r17-A-source-storey-oriel-w3-a.png",
+    "sha256": "3ceccd9205dbf5d0b0caa0964c01cf01e0e983f2d8a8302edabf20f0769a2dd3",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-3f878154-70a6-442d-84d0-02a147e9889f.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-ground-a",
+    "source": "r17-A-source-corner-ground-a.png",
+    "sha256": "4b471c0e81584410eb2acc8dfc2c62f33268363a0136f73aa2b8e103c03debd6",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-a8bd9388-9acb-41b9-a069-7ce9e6ed0a4d.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-storey-a",
+    "source": "r17-A-source-corner-storey-a.png",
+    "sha256": "cc247f8484439a9bf509b5d5890cf29c3c0fd516f05fc741639b4d8f31a37856",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-d2b95ec4-842d-4fa9-bf98-1a4308acfd1f.png",
+    "original_matches": true
+  },
+  {
+    "id": "wall-end-left-a",
+    "source": "r17-A-source-wall-end-left-a.png",
+    "sha256": "e88b541b653e9a9597ee614f39da8a53fcbce2050564009b4643ce09f85d77cf",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-1b86d939-e690-46a9-a704-5b739fd2713e.png",
+    "original_matches": true
+  },
+  {
+    "id": "wall-end-right-a",
+    "source": "r17-A-source-wall-end-right-a.png",
+    "sha256": "31b3f2949c0716492e1ed2f081bcb197fa3caefa99b05ca9e2c1baff0a7a847a",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-e9a13e07-3b57-4139-9b72-1a32bfafb143.png",
+    "original_matches": true
+  },
+  {
+    "id": "inn-front-w2-a",
+    "source": "r17-A-source-inn-front-w2-a.png",
+    "sha256": "a484405a1526ad7c174bf08bdb58061771e066a343e55c06657b9d5880b8181c",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-80ced76e-566e-4f36-93a3-44e3c50be250.png",
+    "original_matches": true
+  },
+  {
+    "id": "inn-front-w3-a",
+    "source": "r17-A-source-inn-front-w3-a.png",
+    "sha256": "e0e45b2c85ca8ac0e3c6f39e81a7c32358691b0bf36c84cf320fbd966d804132",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-2f14e70d-1d2d-4898-8689-ca2cceffb067.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-smith-a",
+    "source": "r17-A-source-sign-smith-a.png",
+    "sha256": "3b9bd8e741a8ccfa02c152bcc5d64e51cf7c5b968034acf49fc94af0ad039fb8",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-8ce0744f-d987-423d-97f8-efeed03ae8ec.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-baker-a",
+    "source": "r17-A-source-sign-baker-a.png",
+    "sha256": "188a862d6b87bfb1cfad97eb3998c58dfa94f416b59296304f27513535fbdcdd",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-55702c8a-e94c-4e71-bf48-e58135087325.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-apothecary-a",
+    "source": "r17-A-source-sign-apothecary-a.png",
+    "sha256": "4a6c30b4b7f2fd3c78592836d17bee2a92730d4ca7caed97f2f07ffa25556696",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-3f2ae3b0-cdf7-4ef9-a43d-f87c58cdefd7.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-cobbler-a",
+    "source": "r17-A-source-sign-cobbler-a.png",
+    "sha256": "9f1d6a7f5e14ccc1a0af9c876a06943dbafae9d1adebdaefd6dcb8c448cb0273",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-74cba048-14ba-40ca-ab26-f5612b7d44c1.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-inn-a",
+    "source": "r17-A-source-sign-inn-a.png",
+    "sha256": "d24bd6b9e711a8afea3e794b6c1e42d74eb658352b772e7a0552d2fac3508045",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-94184883-a790-48ab-a038-81784d5e2628.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-scribe-a",
+    "source": "r17-A-source-sign-scribe-a.png",
+    "sha256": "c1796b25d05897287ac0b7d2fae84b7360752e7fb788cff20b6039b7bec2b43d",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-d962e9bb-54aa-40f2-b917-08053eca6fd1.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-tailor-a",
+    "source": "r17-A-source-sign-tailor-a.png",
+    "sha256": "7b0bf9c5d8152c26c2e232b7557daa70ce9e3935544df779c841344f21a006c5",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-e1a05ff1-99cd-43f3-bf4e-862cd5d94bd9.png",
+    "original_matches": true
+  },
+  {
+    "id": "sign-butcher-a",
+    "source": "r17-A-source-sign-butcher-a.png",
+    "sha256": "fd109fdf0f4830bc83e9baee45cf9b02274f795ee8d6c97a9491496d04ebdabf",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-c2c18dff-cfc2-4f1a-a517-0bc2ff6df59a.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w1-b",
+    "source": "r17-A-source-ground-shop-w1-b.png",
+    "sha256": "d402478c6b19953ed9b0cbf83fab69e8d6a3e57e44de74efff390087c113fdc8",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-fdc2c453-aa64-48c6-9f9c-ae01efee9bc7.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-jetty-w1-b",
+    "source": "r17-A-source-storey-jetty-w1-b.png",
+    "sha256": "47d74c0e73f37de87f04f5a48cdae1265290c1e38bb800ff112cb78d377adf22",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-1fb13046-a23b-470e-9468-a68c747ebb87.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-jetty-w2-b",
+    "source": "r17-A-source-storey-jetty-w2-b.png",
+    "sha256": "c5d9ddbd825a3a14ffe702848c532f2e07a1fa0da4f92e56b1167f458f91536f",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-ad7cf923-e597-4f4f-8ed2-10d6892d5741.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-jetty-w3-b",
+    "source": "r17-A-source-storey-jetty-w3-b.png",
+    "sha256": "674697d872fad0b9ac3ef275a67d41213afb0d4163c84bb403468349d1e09455",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-490083df-4e83-4820-aaee-1cbdaf03c9e6.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-oriel-w1-b",
+    "source": "r17-A-source-storey-oriel-w1-b.png",
+    "sha256": "fb6fe98664a4c969d748ecbe71c56abfc791423d8c92e53d799d58aff8f89f51",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-7ffa6970-0c7b-44f5-9368-68d698f7fcce.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-oriel-w2-b",
+    "source": "r17-A-source-storey-oriel-w2-b.png",
+    "sha256": "90e481ca3b61d1beea009248a664fa8bc355e4a75de75fbda3ae0b9889acccd3",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-212f051f-d287-4cb7-8ad9-7ba9ed3ea088.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-oriel-w3-b",
+    "source": "r17-A-source-storey-oriel-w3-b.png",
+    "sha256": "c667340489a4524b7627fab5a7a24a0e69c6a4969dce03c3ae2bcbeb5cb31775",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-a922cd18-858b-457e-8533-dd54c0a39cf2.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-ground-b",
+    "source": "r17-A-source-corner-ground-b.png",
+    "sha256": "927c8d48a2938dda4f8c0c79ff8a631f8f3994bee1c202b888177032a1216ab8",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-5b4cec58-d534-474c-aa05-9067b4282f2b.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-storey-b",
+    "source": "r17-A-source-corner-storey-b.png",
+    "sha256": "6d0f9f4a12a1da5b1f0f4893b574d61244d5c4082ebd9d4ed57aec305e327c8e",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-8625ff67-f7b2-49cf-b9c6-89555fd12648.png",
+    "original_matches": true
+  },
+  {
+    "id": "inn-front-w1-a",
+    "source": "r17-A-source-inn-front-w1-a.png",
+    "sha256": "9b2d36604978fb6b3176ead40d8a67e58550f16ae151a6bfd93a53f261990a98",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-0c7bb806-ea41-4dbc-b5f1-d388e38d2809.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-storey-c",
+    "source": "r17-A-source-corner-storey-c.png",
+    "sha256": "4ff594d309ba201e97fc71f10b70eb2bd8229aa2b3116755f1aea213e20fc5b8",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-b0c943ae-1537-42c6-bf08-6955ad533d13.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w2-b",
+    "source": "r17-A-source-ground-shop-w2-b.png",
+    "sha256": "440d0ceb72271f02f10f3b3ea346869b59526ee2349f4a6d03be55872c178c84",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-8a616c93-c0f7-46a0-a6c8-d5bec1387e01.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w2-c",
+    "source": "r17-A-source-ground-shop-w2-c.png",
+    "sha256": "5c11993a6730bcd10e1822bbc2a63a8992358b4c1a29eae4dc15f626e2b8d3e7",
+    "original": "/home/kolache/.codex/generated_images/01a1e6a8-41ad-7ad0-bdeb-07ac2992a432/exec-bbb95848-0a59-4cb9-92aa-4ed7535f76f4.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w1-r1a",
+    "source": "r17-A-source-ground-shop-w1-r1a.png",
+    "sha256": "dcdf2dc14dea3d4ff5f93dfae93feb32b01cbe6699be7e8d43a561a183e6e16b",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-a29683ba-c7d6-4276-92fb-849bea971a82.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-w1-r1b",
+    "source": "r17-A-source-ground-shop-w1-r1b.png",
+    "sha256": "399d8c616a432f21ea64a6784aaafda053300e73164905c99e31b45330e83720",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-c1fee110-749c-42d0-8bba-7ab4584a8ee1.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-ground-r1a",
+    "source": "r17-A-source-corner-ground-r1a.png",
+    "sha256": "c752cc9c32511bcd9e0c159895443891c4b5b3d66cbd4669eb7dfb92004817e0",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-afd27c3a-0b44-4d9f-88fa-83921ecbee3f.png",
+    "original_matches": true
+  },
+  {
+    "id": "corner-ground-r1b",
+    "source": "r17-A-source-corner-ground-r1b.png",
+    "sha256": "62e630f7f48ec30bbb29b114fbb2956b682b4744735178b95cd7c5223fd41c63",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-d597c118-53e3-45f8-bf94-e1ad31cc0d4d.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w1-r1a",
+    "source": "r17-A-source-ground-shop-v1-w1-r1a.png",
+    "sha256": "5ad93683273b4ac4faa24825f316a63c8fef6e13d2dcba5efd9690cd50a7d775",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-e54ca8f7-25d8-495d-a502-7155514d8a0e.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w1-r1b",
+    "source": "r17-A-source-ground-shop-v1-w1-r1b.png",
+    "sha256": "0ee7e1b8bd21fc1d3fd5f7ecc49d3642e6391f1f630099617098db6dbb348346",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-5f5e4a77-3795-48cb-9b89-b1dfb4234e50.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v2-w1-r1a",
+    "source": "r17-A-source-ground-shop-v2-w1-r1a.png",
+    "sha256": "0625b6433f2c84685abb1adb0c6435c9cbdd0d685d2897709b8bf263877b86b5",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-cc25e262-9c47-482c-9b79-a894f7d5f98d.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-w1-r1a",
+    "source": "r17-A-source-ground-work-w1-r1a.png",
+    "sha256": "398ac15910c407b831872a3594843487cc5d70e357480a16719a7b908790fe90",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-c1103afc-6a1c-45af-a7ef-5f46bfe8cd34.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v2-w1-r1b",
+    "source": "r17-A-source-ground-shop-v2-w1-r1b.png",
+    "sha256": "670cc23a05d751d9f2514e0239ecd58d25b1cdd6f015f079026a97afaab22e74",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-a9f40ded-788b-4c39-8d08-22afa2dd397b.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-w1-r1b",
+    "source": "r17-A-source-ground-work-w1-r1b.png",
+    "sha256": "539205d097b0c602b471a018a69a743e2233a54198f473aca269bbe31b392094",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-6e3ad912-4db3-4622-9524-bec32e8cbb6a.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v1-w1-r1a",
+    "source": "r17-A-source-ground-work-v1-w1-r1a.png",
+    "sha256": "207a255028ddf96d9ee2832573c3985ce43a66e0dd783b25df4d405ab0287d35",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-5f3c599e-a300-4be8-89d6-8014ac2a4129.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v1-w1-r1b",
+    "source": "r17-A-source-ground-work-v1-w1-r1b.png",
+    "sha256": "7663fc81748f892644917f0e1e72c3ae4a87a175d4785c994b337feda3c539fd",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-c5284776-5adc-4742-8ac6-19e18d7b2fe0.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v2-w1-r1a",
+    "source": "r17-A-source-ground-work-v2-w1-r1a.png",
+    "sha256": "daab8ff1576d48eeef0da42d61c40a966e9cc45eaeab3a4b139b2b5fdd6ac09a",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-3cfbcc08-1863-4fd8-9788-d3280e45c2b2.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-work-v2-w1-r1b",
+    "source": "r17-A-source-ground-work-v2-w1-r1b.png",
+    "sha256": "8cae2f104ac8a9edcaa87ea7850d5160a2888c6eff69655f5057849a0dc21848",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-7fda693e-8b2f-49c9-93cd-7083789c31e1.png",
+    "original_matches": true
+  },
+  {
+    "id": "inn-front-w1-r1a",
+    "source": "r17-A-source-inn-front-w1-r1a.png",
+    "sha256": "00bf99de236cbe903bb04452d91f7681c825146c3bdb2b82b4f7ac17714201a9",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-cbb74e11-6225-4d09-9dea-fa9cdbf6bc47.png",
+    "original_matches": true
+  },
+  {
+    "id": "inn-front-w1-r1b",
+    "source": "r17-A-source-inn-front-w1-r1b.png",
+    "sha256": "df766c4951a99b229357e2215f3e2396c2f7a8fe5f0e9247b410b5f8cd59c65a",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-6256abeb-821d-4e4d-9cae-1dc31c7f20ce.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-w3-r1a",
+    "source": "r17-A-source-ground-arch-w3-r1a.png",
+    "sha256": "7cdc6deac60b1ded8f9a9be83833b51ae55126adc36e7dedf27cd9bce021df9e",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-5751b9d0-b115-4182-bacc-7a298f963da6.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-arch-w3-r1b",
+    "source": "r17-A-source-ground-arch-w3-r1b.png",
+    "sha256": "7ba4258ab8b50d1071d12e79341a0174eb36d97cba791b3ea5d19acc64ab77db",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-9f30a190-3404-4719-b742-be9401843b34.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w2-r1a",
+    "source": "r17-A-source-storey-timber-w2-r1a.png",
+    "sha256": "7e679223e942561ce1bf6270a305633df2eac745825d008297b128d419e13e34",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-dff96c31-affa-42c7-a931-19c06677dbea.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w2-r1b",
+    "source": "r17-A-source-storey-timber-w2-r1b.png",
+    "sha256": "002158180db0b09705a5d1da88e21ef76552e32d9d13c12bbaee8cebdeca5534",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-637abe0c-c2ea-4975-9a01-4e50447dbd79.png",
+    "original_matches": true
+  },
+  {
+    "id": "storey-timber-w2-r1c",
+    "source": "r17-A-source-storey-timber-w2-r1c.png",
+    "sha256": "2032454970e5b72f4c3619468d3535d36c0f742730236763afddc6a106fef492",
+    "original": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-6dbee289-76b8-4e1e-9ce4-f21eeeed35a4.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w1-r2a",
+    "source": "r17-A-source-ground-shop-v1-w1-r2a.png",
+    "sha256": "b67a1b112554cb5d5a6a231e6c080366cb3903f0172ea016aed0635067fc3e9b",
+    "original": "/home/kolache/.codex/generated_images/01a1e712-7bc3-7271-b9d0-0d27a8058112/exec-bf85c4e9-e804-496e-a88a-05bc96862a37.png",
+    "original_matches": true
+  },
+  {
+    "id": "ground-shop-v1-w1-r2b",
+    "source": "r17-A-source-ground-shop-v1-w1-r2b.png",
+    "sha256": "c728ed564f63cea1d1165e207e8a7f5b1cfe8c91d0fadabd111e7650923dd0f1",
+    "original": "/home/kolache/.codex/generated_images/01a1e712-7bc3-7271-b9d0-0d27a8058112/exec-b7201876-a32d-495e-9fdd-ec3975650431.png",
+    "original_matches": true
+  }
+]

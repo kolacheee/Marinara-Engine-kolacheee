@@ -1,0 +1,632 @@
+{
+  "scope": "Round 17 Part B critic-r17B-1 repair only; saved-art self-review, not an independent critic or in-engine approval",
+  "part_B_result": "REPAIRED; scoped visual and technical self-review passed",
+  "failed_part_B_files": [],
+  "repaired_pngs": 41,
+  "passing_pngs_byte_identical": 96,
+  "full_city_result": "NOT PASSED: C/D context still provisional",
+  "source_review": "critic-r17B-1.json (unchanged)",
+  "files": {
+    "compose.py": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "build()/neighbours(): the tall/low reveal crops firewall-w0 to four columns and paints it on the front facade at x=140..143 in the left test and x=432..435 in the right test. It reads as trim beside windows, not an exposed, coped party-wall plane above the lower roof. The separate firewall_surface() proof is not used to solve this scene.",
+        "build()/critic_layouts(): extra depth is filled north of a complete ridge cap, leaving a heavy transverse ridge as an internal seam. The L-corner valley is an opaque square at local (48,96), with mismatched courses and no continuous L-wing gutter. roof-hip-end is not exercised by any critic scene.",
+        "ground_shadows(): rotating and repeating the stepped w1 mask along the east receiver produces periodic notches down the straight side of the five-storey building. Wide south masks repeat the same defect. Maximum-alpha union prevents double opacity but does not correct the silhouette.",
+        "critic_layouts().add(): generic central placement is used for skylights on all roof kinds. In north-row and market gable w2 buildings the skylight spans the central ridge at local x=48 instead of lying on one pitched plane. Rectangular canvas containment is not a sufficient receiving-surface check.",
+        "Required scene files exist and native placement/scale are correct, but their visual roof-join and firewall results fail. Technical checks cannot override these failures."
+      ],
+      "resolution": "Replaced the four-column facade stripe with a reserved 48px wall bay; inserted depth fill below the ridge instead of above a complete cap; assembled a real L with a connected gutter and terminal hip; restricted roof overlays to explicit receiving planes; removed repeated terminal notches from long east shadow receivers. Shared flat caps retain one common parapet. Rebuilt all required scenes, comparisons, squints and seams.",
+      "evidence": [
+        "r17-B-critic-L-block-comparison-1x.png",
+        "r17-B-critic-market-comparison-1x.png",
+        "r17-B-critic-height-test-comparison-1x.png",
+        "r17-B-validation.json"
+      ]
+    },
+    "dormer-3": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower face at approximately x=5..18/y=17..25 is one ochre block with irregular edge marks. It has no readable recessed window, glazing, shutter leaves or louvres. At 1x on a roof it reads as a blank wooden hut/box rather than a dormer.",
+        "The lost focal opening persists in all three colourways. See critic-r17B-1-accents-c0/c1/c2.png, the mounted proofs, and critic-r17B-1-detail-dormer-3-c0-8x.png."
+      ],
+      "resolution": "Redrew the 24x28 dormer with a dark recessed opening, two legible panes, a sill and a lit frame; c1/c2 are remaps of the selected native c0.",
+      "evidence": [
+        "r17-B-file-dormer-3.png",
+        "r17-B-overlay-mounts-c0-1x.png",
+        "r17-B-critic1-detail-dormer-3-8x.png"
+      ]
+    },
+    "dormer-3-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower face at approximately x=5..18/y=17..25 is one ochre block with irregular edge marks. It has no readable recessed window, glazing, shutter leaves or louvres. At 1x on a roof it reads as a blank wooden hut/box rather than a dormer.",
+        "The lost focal opening persists in all three colourways. See critic-r17B-1-accents-c0/c1/c2.png, the mounted proofs, and critic-r17B-1-detail-dormer-3-c0-8x.png."
+      ],
+      "resolution": "Redrew the 24x28 dormer with a dark recessed opening, two legible panes, a sill and a lit frame; c1/c2 are remaps of the selected native c0.",
+      "evidence": [
+        "r17-B-file-dormer-3.png",
+        "r17-B-overlay-mounts-c0-1x.png",
+        "r17-B-critic1-detail-dormer-3-8x.png"
+      ]
+    },
+    "dormer-3-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower face at approximately x=5..18/y=17..25 is one ochre block with irregular edge marks. It has no readable recessed window, glazing, shutter leaves or louvres. At 1x on a roof it reads as a blank wooden hut/box rather than a dormer.",
+        "The lost focal opening persists in all three colourways. See critic-r17B-1-accents-c0/c1/c2.png, the mounted proofs, and critic-r17B-1-detail-dormer-3-c0-8x.png."
+      ],
+      "resolution": "Redrew the 24x28 dormer with a dark recessed opening, two legible panes, a sill and a lit frame; c1/c2 are remaps of the selected native c0.",
+      "evidence": [
+        "r17-B-file-dormer-3.png",
+        "r17-B-overlay-mounts-c0-1x.png",
+        "r17-B-critic1-detail-dormer-3-8x.png"
+      ]
+    },
+    "dormer-3-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower face at approximately x=5..18/y=17..25 is one ochre block with irregular edge marks. It has no readable recessed window, glazing, shutter leaves or louvres. At 1x on a roof it reads as a blank wooden hut/box rather than a dormer.",
+        "The lost focal opening persists in all three colourways. See critic-r17B-1-accents-c0/c1/c2.png, the mounted proofs, and critic-r17B-1-detail-dormer-3-c0-8x.png."
+      ],
+      "resolution": "Redrew the 24x28 dormer with a dark recessed opening, two legible panes, a sill and a lit frame; c1/c2 are remaps of the selected native c0.",
+      "evidence": [
+        "r17-B-file-dormer-3.png",
+        "r17-B-overlay-mounts-c0-1x.png",
+        "r17-B-critic1-detail-dormer-3-8x.png"
+      ]
+    },
+    "firewall-w0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The literal 3x3 repeat creates a dark 16x48 grid from the exposed top/side outlines. The designated body crop also visibly repeats isolated rectangular shading marks every 14 px horizontally and a large-course rhythm every 40 px vertically. It reads as striped wallpaper rather than bare masonry. See critic-r17B-1-firewall-repeat.png.",
+        "The top is a broken dark/light row rather than a convincingly modelled coping stone. In the tall/low scene, compose.py uses only four edge columns, reducing the wall to a pale facade stripe; no substantial party-wall plane is visible above the lower roof."
+      ],
+      "resolution": "Redrew a 16x48 masonry strip with a four-row coping, a 16x40 wrapping body and four-row flashing. Remapped the body to quiet limestone/mortar and removed detached marks. The compositor reserves a full 48px side bay beside an intact narrower facade; coping/flashing appear only at the exposed ends. Both 5|1 and 1|5 are demonstrated.",
+      "evidence": [
+        "r17-B-firewall-body-repeat-4x.png",
+        "r17-B-critic-height-test-1x.png",
+        "r17-B-critic1-section-height-test-1-3x.png",
+        "r17-B-critic1-section-height-test-2-3x.png"
+      ]
+    },
+    "roof-fill-w1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The entire 48x48 image is an exact repeat of one 16x16 interior patch in both axes, independently confirmed from saved pixels. Identical highlight hooks and alternating courses form obvious wallpaper in a literal 3x3 repeat. Absence of an alpha gap does not make this visually seamless.",
+        "In the L-block west arm, x=0..95/y=240..383, the fill becomes a flat texture panel. Tile size, shading and course phase change abruptly at the valley insert and ridge cap below. See critic-r17B-1-join-repeat-c0/c1/c2.png and the L-block 3x sections."
+      ],
+      "resolution": "Selected a new complete six-course drawing. Registered all six courses to 48x48 and wrapped the last lip with native paint. No 16x16 miniature stamp is repeated. The actual L uses oriented copies of the complete tile; adjacent valley paint uses these same courses.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-4x.png",
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-fill-w1-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The entire 48x48 image is an exact repeat of one 16x16 interior patch in both axes, independently confirmed from saved pixels. Identical highlight hooks and alternating courses form obvious wallpaper in a literal 3x3 repeat. Absence of an alpha gap does not make this visually seamless.",
+        "In the L-block west arm, x=0..95/y=240..383, the fill becomes a flat texture panel. Tile size, shading and course phase change abruptly at the valley insert and ridge cap below. See critic-r17B-1-join-repeat-c0/c1/c2.png and the L-block 3x sections."
+      ],
+      "resolution": "Selected a new complete six-course drawing. Registered all six courses to 48x48 and wrapped the last lip with native paint. No 16x16 miniature stamp is repeated. The actual L uses oriented copies of the complete tile; adjacent valley paint uses these same courses.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-4x.png",
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-fill-w1-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The entire 48x48 image is an exact repeat of one 16x16 interior patch in both axes, independently confirmed from saved pixels. Identical highlight hooks and alternating courses form obvious wallpaper in a literal 3x3 repeat. Absence of an alpha gap does not make this visually seamless.",
+        "In the L-block west arm, x=0..95/y=240..383, the fill becomes a flat texture panel. Tile size, shading and course phase change abruptly at the valley insert and ridge cap below. See critic-r17B-1-join-repeat-c0/c1/c2.png and the L-block 3x sections."
+      ],
+      "resolution": "Selected a new complete six-course drawing. Registered all six courses to 48x48 and wrapped the last lip with native paint. No 16x16 miniature stamp is repeated. The actual L uses oriented copies of the complete tile; adjacent valley paint uses these same courses.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-4x.png",
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-fill-w1-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The entire 48x48 image is an exact repeat of one 16x16 interior patch in both axes, independently confirmed from saved pixels. Identical highlight hooks and alternating courses form obvious wallpaper in a literal 3x3 repeat. Absence of an alpha gap does not make this visually seamless.",
+        "In the L-block west arm, x=0..95/y=240..383, the fill becomes a flat texture panel. Tile size, shading and course phase change abruptly at the valley insert and ridge cap below. See critic-r17B-1-join-repeat-c0/c1/c2.png and the L-block 3x sections."
+      ],
+      "resolution": "Selected a new complete six-course drawing. Registered all six courses to 48x48 and wrapped the last lip with native paint. No 16x16 miniature stamp is repeated. The actual L uses oriented copies of the complete tile; adjacent valley paint uses these same courses.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-4x.png",
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-flat-w1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The narrow cap has almost no visible inner parapet face or front thickness; its three huge terrace panels read like a shutter."
+      ],
+      "resolution": "Redrew the 48x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w1.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w1-1x.png"
+      ]
+    },
+    "roof-flat-w1-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The narrow cap has almost no visible inner parapet face or front thickness; its three huge terrace panels read like a shutter."
+      ],
+      "resolution": "Redrew the 48x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w1.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w1-1x.png"
+      ]
+    },
+    "roof-flat-w1-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The narrow cap has almost no visible inner parapet face or front thickness; its three huge terrace panels read like a shutter."
+      ],
+      "resolution": "Redrew the 48x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w1.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w1-1x.png"
+      ]
+    },
+    "roof-flat-w1-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The narrow cap has almost no visible inner parapet face or front thickness; its three huge terrace panels read like a shutter."
+      ],
+      "resolution": "Redrew the 48x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w1.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w1-1x.png"
+      ]
+    },
+    "roof-flat-w2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 96x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w2.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w2-1x.png"
+      ]
+    },
+    "roof-flat-w2-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 96x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w2.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w2-1x.png"
+      ]
+    },
+    "roof-flat-w2-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 96x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w2.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w2-1x.png"
+      ]
+    },
+    "roof-flat-w2-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 96x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w2.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w2-1x.png"
+      ]
+    },
+    "roof-flat-w3": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 144x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w3.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w3-1x.png"
+      ]
+    },
+    "roof-flat-w3-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 144x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w3.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w3-1x.png"
+      ]
+    },
+    "roof-flat-w3-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 144x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w3.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w3-1x.png"
+      ]
+    },
+    "roof-flat-w3-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The terrace interior reads as a few large, nearly uniform colour rectangles inside a cream frame, not a painted roof surface in the town-house view. At 1x the framed-panel effect is conspicuous in the L-block and market; 4x exposes abrupt, largely unmodelled slab fills. Material detail and volume do not match fantasy-house-2.",
+        "The side coping is predominantly a flat bright strip, and the front fascia has much less material modelling than the adjacent house. Paired caps create a conspicuous doubled cream divider instead of a convincing shared parapet junction."
+      ],
+      "resolution": "Redrew the 144x96 terrace with lit coping, shaded inner faces, a darker east return, substantial front masonry and restrained painted surface variation. Preserved square boundaries and the fixed contact row. Shared-edge composition keeps one coping rail; isolated reduction flecks were cleaned without drawing new joints.",
+      "evidence": [
+        "r17-B-file-roof-flat-w3.png",
+        "r17-B-shared-flat-c0-4x.png",
+        "r17-B-seam-roof-flat-w3-1x.png"
+      ]
+    },
+    "roof-gable-w2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "Both tiled planes, especially the lit left plane at x=1..45, y=8..70, collapse into thin rippling stripes and small mottled highlights. At 1x this is markedly busier than gable w1/w3; at 4x the shallow, broken courses look smeared beside their larger, cleaner tile clusters. This violates the common native material scale and panel B3 broad-cluster direction.",
+        "The mismatch is visible within one roof family on critic-r17B-1-roofs-gable-c0/c1/c2.png and the gable seam sheet. Changing colour does not cure it."
+      ],
+      "resolution": "Selected the third new drawing for broad bounded tile courses at the neighbouring gables' native scale. Kept the 96x96 cap, lit left/shaded right planes, front timber gable and exact bottom contact row; derived c1/c2 afterward.",
+      "evidence": [
+        "r17-B-gallery-13.png",
+        "r17-B-gallery-14.png",
+        "r17-B-seam-roof-gable-w2-1x.png"
+      ]
+    },
+    "roof-gable-w2-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "Both tiled planes, especially the lit left plane at x=1..45, y=8..70, collapse into thin rippling stripes and small mottled highlights. At 1x this is markedly busier than gable w1/w3; at 4x the shallow, broken courses look smeared beside their larger, cleaner tile clusters. This violates the common native material scale and panel B3 broad-cluster direction.",
+        "The mismatch is visible within one roof family on critic-r17B-1-roofs-gable-c0/c1/c2.png and the gable seam sheet. Changing colour does not cure it."
+      ],
+      "resolution": "Selected the third new drawing for broad bounded tile courses at the neighbouring gables' native scale. Kept the 96x96 cap, lit left/shaded right planes, front timber gable and exact bottom contact row; derived c1/c2 afterward.",
+      "evidence": [
+        "r17-B-gallery-13.png",
+        "r17-B-gallery-14.png",
+        "r17-B-seam-roof-gable-w2-1x.png"
+      ]
+    },
+    "roof-gable-w2-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "Both tiled planes, especially the lit left plane at x=1..45, y=8..70, collapse into thin rippling stripes and small mottled highlights. At 1x this is markedly busier than gable w1/w3; at 4x the shallow, broken courses look smeared beside their larger, cleaner tile clusters. This violates the common native material scale and panel B3 broad-cluster direction.",
+        "The mismatch is visible within one roof family on critic-r17B-1-roofs-gable-c0/c1/c2.png and the gable seam sheet. Changing colour does not cure it."
+      ],
+      "resolution": "Selected the third new drawing for broad bounded tile courses at the neighbouring gables' native scale. Kept the 96x96 cap, lit left/shaded right planes, front timber gable and exact bottom contact row; derived c1/c2 afterward.",
+      "evidence": [
+        "r17-B-gallery-13.png",
+        "r17-B-gallery-14.png",
+        "r17-B-seam-roof-gable-w2-1x.png"
+      ]
+    },
+    "roof-gable-w2-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "Both tiled planes, especially the lit left plane at x=1..45, y=8..70, collapse into thin rippling stripes and small mottled highlights. At 1x this is markedly busier than gable w1/w3; at 4x the shallow, broken courses look smeared beside their larger, cleaner tile clusters. This violates the common native material scale and panel B3 broad-cluster direction.",
+        "The mismatch is visible within one roof family on critic-r17B-1-roofs-gable-c0/c1/c2.png and the gable seam sheet. Changing colour does not cure it."
+      ],
+      "resolution": "Selected the third new drawing for broad bounded tile courses at the neighbouring gables' native scale. Kept the 96x96 cap, lit left/shaded right planes, front timber gable and exact bottom contact row; derived c1/c2 afterward.",
+      "evidence": [
+        "r17-B-gallery-13.png",
+        "r17-B-gallery-14.png",
+        "r17-B-seam-roof-gable-w2-1x.png"
+      ]
+    },
+    "roof-hip-end": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The 48x48 insert is a complete miniature roof with its own bottom fascia and converging hip ridges. Its roof directions, contrast and edge courses do not match the surrounding fill. In the join proof at x=96..143/y=96..143 it reads as a boxed roof pasted on another roof.",
+        "The bottom fascia becomes an internal seam when used as an insert. No critic scene in compose.py demonstrates this piece terminating an actual L-shaped block."
+      ],
+      "resolution": "Redrew a terminal hip for the two-cell-deep horizontal L wing. Its canvas is now 48x96 (formerly 48x48), with an incoming ridge at y48. Native fill registers the two open-edge columns; the painted hip and eaves remain only on exposed edges. The actual L scene terminates with this piece.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-terminal-hip-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-hip-end-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The 48x48 insert is a complete miniature roof with its own bottom fascia and converging hip ridges. Its roof directions, contrast and edge courses do not match the surrounding fill. In the join proof at x=96..143/y=96..143 it reads as a boxed roof pasted on another roof.",
+        "The bottom fascia becomes an internal seam when used as an insert. No critic scene in compose.py demonstrates this piece terminating an actual L-shaped block."
+      ],
+      "resolution": "Redrew a terminal hip for the two-cell-deep horizontal L wing. Its canvas is now 48x96 (formerly 48x48), with an incoming ridge at y48. Native fill registers the two open-edge columns; the painted hip and eaves remain only on exposed edges. The actual L scene terminates with this piece.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-terminal-hip-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-hip-end-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The 48x48 insert is a complete miniature roof with its own bottom fascia and converging hip ridges. Its roof directions, contrast and edge courses do not match the surrounding fill. In the join proof at x=96..143/y=96..143 it reads as a boxed roof pasted on another roof.",
+        "The bottom fascia becomes an internal seam when used as an insert. No critic scene in compose.py demonstrates this piece terminating an actual L-shaped block."
+      ],
+      "resolution": "Redrew a terminal hip for the two-cell-deep horizontal L wing. Its canvas is now 48x96 (formerly 48x48), with an incoming ridge at y48. Native fill registers the two open-edge columns; the painted hip and eaves remain only on exposed edges. The actual L scene terminates with this piece.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-terminal-hip-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-hip-end-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The 48x48 insert is a complete miniature roof with its own bottom fascia and converging hip ridges. Its roof directions, contrast and edge courses do not match the surrounding fill. In the join proof at x=96..143/y=96..143 it reads as a boxed roof pasted on another roof.",
+        "The bottom fascia becomes an internal seam when used as an insert. No critic scene in compose.py demonstrates this piece terminating an actual L-shaped block."
+      ],
+      "resolution": "Redrew a terminal hip for the two-cell-deep horizontal L wing. Its canvas is now 48x96 (formerly 48x48), with an incoming ridge at y48. Native fill registers the two open-edge columns; the painted hip and eaves remain only on exposed edges. The actual L scene terminates with this piece.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-terminal-hip-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-valley": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The full 48x48 perimeter is visible as a square patch when mounted in the fill. Tile scale and light ramp change on its top/left/right edges; the diagonal dark line stops at the patch boundary instead of continuing a joined roof valley.",
+        "In the actual L-block it sits at x=48..95/y=336..383, above the cap ridge at y=384, and does not connect the two roof wings into one volume. The join-kit proof reproduces the defect in c0/c1/c2."
+      ],
+      "resolution": "Redrew a concave diagonal lead gutter and retained its painted channel and tile lips. Composited the complete native fill into the two source-defined planes so their direction and phase match the L receiver. The gutter runs from the concave corner to the ridge elbow, with no surrounding box frame.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-gutter-elbow-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-valley-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The full 48x48 perimeter is visible as a square patch when mounted in the fill. Tile scale and light ramp change on its top/left/right edges; the diagonal dark line stops at the patch boundary instead of continuing a joined roof valley.",
+        "In the actual L-block it sits at x=48..95/y=336..383, above the cap ridge at y=384, and does not connect the two roof wings into one volume. The join-kit proof reproduces the defect in c0/c1/c2."
+      ],
+      "resolution": "Redrew a concave diagonal lead gutter and retained its painted channel and tile lips. Composited the complete native fill into the two source-defined planes so their direction and phase match the L receiver. The gutter runs from the concave corner to the ridge elbow, with no surrounding box frame.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-gutter-elbow-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-valley-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The full 48x48 perimeter is visible as a square patch when mounted in the fill. Tile scale and light ramp change on its top/left/right edges; the diagonal dark line stops at the patch boundary instead of continuing a joined roof valley.",
+        "In the actual L-block it sits at x=48..95/y=336..383, above the cap ridge at y=384, and does not connect the two roof wings into one volume. The join-kit proof reproduces the defect in c0/c1/c2."
+      ],
+      "resolution": "Redrew a concave diagonal lead gutter and retained its painted channel and tile lips. Composited the complete native fill into the two source-defined planes so their direction and phase match the L receiver. The gutter runs from the concave corner to the ridge elbow, with no surrounding box frame.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-gutter-elbow-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "roof-valley-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The full 48x48 perimeter is visible as a square patch when mounted in the fill. Tile scale and light ramp change on its top/left/right edges; the diagonal dark line stops at the patch boundary instead of continuing a joined roof valley.",
+        "In the actual L-block it sits at x=48..95/y=336..383, above the cap ridge at y=384, and does not connect the two roof wings into one volume. The join-kit proof reproduces the defect in c0/c1/c2."
+      ],
+      "resolution": "Redrew a concave diagonal lead gutter and retained its painted channel and tile lips. Composited the complete native fill into the two source-defined planes so their direction and phase match the L receiver. The gutter runs from the concave corner to the ridge elbow, with no surrounding box frame.",
+      "evidence": [
+        "r17-B-join-kit-c0-1x.png",
+        "r17-B-critic1-gutter-elbow-8x.png",
+        "r17-B-critic1-section-L-block-3-3x.png"
+      ]
+    },
+    "shadow-street-w2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23 and 48..71 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 2-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 96x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w2-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23 and 48..71 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 2-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 96x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w2-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23 and 48..71 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 2-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 96x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w2-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23 and 48..71 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 2-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 96x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w3": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23, 48..71 and 96..119 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 3-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 144x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w3-c0": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23, 48..71 and 96..119 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 3-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 144x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w3-c1": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23, 48..71 and 96..119 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 3-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 144x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    },
+    "shadow-street-w3-c2": {
+      "status": "repaired; saved-art self-reviewed",
+      "original_problems": [
+        "The lower seven rows, y=25..31, repeat the w1 mask every 48 px instead of describing one building shadow. Transparent notches at x=0..23, 48..71 and 96..119 alternate with 24 px dark tabs, producing a visible comb pattern for a straight 3-cell frontage.",
+        "The defect appears when height-responsive reach exceeds 24 px, including the five-storey test. It is explicit at native 1x and 4x in critic-r17B-1-shadow-street-mask-proof.png. The 112/255 opacity is legal; the repeated silhouette is the failure."
+      ],
+      "resolution": "Registered an independently drawn continuous 144x32 silhouette instead of tiling the w1 terminal. All three tints retain 0/112 alpha and zero hidden RGB. Full 32px and five-storey 30px reaches show no periodic notches; the east receiver repeats only the continuous interior.",
+      "evidence": [
+        "r17-B-critic1-shadow-full-depth-1x.png",
+        "r17-B-critic1-shadow-full-depth-4x.png",
+        "r17-B-critic-height-test-3x.png"
+      ]
+    }
+  },
+  "inspected": [
+    "All 137 exports at 1x and exact nearest-neighbour 4x beside fantasy-house-2; 101 size-plus-pixel unique exports on 34 gallery pages; c0 aliases verified byte/pixel-wise",
+    "16x12 L-block, irregular market and both 5|1 orientations at 1x/3x beside literal 1x round15-street/current-town; exact 3x sections and 1x greyscale",
+    "Same/variant seams for each export, unlike eaves, literal full-fill repeats, source-defined wall-body repeat, shared flat parapets, mounted accents and focused 8x joins",
+    "Full 32px and height-responsive 30px wide shadow masks over current paving, plus continuous east receiver"
+  ],
+  "fail_list": [
+    {
+      "criterion": "Flat/cardboard beside town houses",
+      "part_B": "PASS self-review",
+      "evidence": "New flat terraces have inner parapet and front wall depth; w2 gable uses broad courses; dormer opening reads at native scale."
+    },
+    {
+      "criterion": "Bare ground inside a roof block",
+      "part_B": "PASS",
+      "evidence": "Opaque cap/fill/join coverage; connected L preserves only the deliberate court and lane."
+    },
+    {
+      "criterion": "Seam or gap",
+      "part_B": "PASS self-review",
+      "evidence": "Continuous gutter and incoming hip ridge; complete fill course phase; shared flat parapet; common eave contact. Plain wall body is tiled separately from exposed coping/flashing."
+    },
+    {
+      "criterion": "Copy-pasted neighbours",
+      "part_B": "PASS for repaired roofs",
+      "evidence": "Width-specific cap drawings and optional accents retained. Fill varies across its complete 48px tile. Unchanged six-stall proxy uses two current drawings pending D."
+    },
+    {
+      "criterion": "Landmark clearly biggest",
+      "part_B": "DEFERRED D; full city does not pass",
+      "evidence": "Current hall and well drawings remain labelled proxies; new cathedral/guildhall/cross are outside this part."
+    },
+    {
+      "criterion": "Greyscale landmarks, gate and main street stand out",
+      "part_B": "DEFERRED C/D; full city does not pass",
+      "evidence": "Roof masses remain readable; quiet paving, gate and final civic hierarchy await their parts."
+    },
+    {
+      "criterion": "Trade signs identifiable at 1x",
+      "part_B": "UNCHANGED A",
+      "evidence": "A context is preserved byte-for-byte; no sign reapproval is claimed."
+    },
+    {
+      "criterion": "Street has no shadow",
+      "part_B": "PASS",
+      "evidence": "Continuous south/east casts with max-alpha union112/255; full-depth and tall-neighbour proofs included."
+    }
+  ],
+  "panel_items": {
+    "3": "Broad native roof volumes, coherent fill/gutter/hip receivers, plain full party wall with coping/flashing; dormers remain optional.",
+    "11": "Retained 4/6px local shadow strips; repaired wide and long ground casts, surface clipping and maximum-alpha union."
+  },
+  "priority_conflicts": [
+    "BRIEF-17 shared eaves take precedence over panel wording against universal aligned eaves.",
+    "BRIEF-17 lot containment takes precedence over panel projections beyond lots; east casts use explicit reserved receivers.",
+    "Complete Part B inventory takes precedence over the panel 40–60-piece pilot cap.",
+    "The brief's shadow-specific <=50% opacity takes precedence over general 0/255 alpha for shadow masks only.",
+    "The user's no-commit/no-push instruction takes precedence over the brief push wording."
+  ],
+  "placeholders": [
+    "Part A facades/signs remain unchanged.",
+    "Current fantasy grass/paving stand in for Part C.",
+    "Current fantasy-hall-1, fantasy-hall-0, fantasy-well-0 and stall-0/1 stand in for Part D.",
+    "No city15 pieces are used in scene composition; round15-street is comparison only.",
+    "No seasonal partners exist for Part B."
+  ],
+  "source_method": "24 new large built-in image-tool drawings on solid magenta; 11 selected. Registration to8x, palette lock without dithering, exact64-sample mode, recorded cleanup/wrapping/native compositing, colourway remaps, 0/255 alpha except0/112 shadows and zero hidden RGB.",
+  "receiver_contract_change": {
+    "roof-hip-end": "48x96 terminal for a two-cell-deep L wing; not a 48x48 internal patch. All other failed-export sizes retained."
+  }
+}

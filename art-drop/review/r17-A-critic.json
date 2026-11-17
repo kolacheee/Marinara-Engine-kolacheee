@@ -1,0 +1,172 @@
+{
+  "part": "A",
+  "review_type": "Saved-art self-review, not an independent panel verdict or in-engine test",
+  "result": "critic-r17A-3 corner composition repaired in saved-art self-review; independent reapproval pending; full-city critic NOT PASS until later parts exist",
+  "failed_part_A_files": [],
+  "criteria": [
+    {
+      "criterion": "Flat/cardboard facades",
+      "status": "PASS for A in self-review",
+      "observation": "Native sill tops, dark jambs, stone thresholds, oriel side faces and corner returns show depth. Whole-building silhouette acceptance still depends on the B roof."
+    },
+    {
+      "criterion": "Bare ground inside roof-covered blocks",
+      "status": "FAIL / deferred B,C",
+      "observation": "R15 caps do not fill deep plots. Visible grass pockets remain unaccepted. The pre-existing foreground roof overlap in L-wing-3 and the southeast market stall remains B/C/D context work; isolated corner proofs show the complete uncropped facades."
+    },
+    {
+      "criterion": "Seam or gap",
+      "status": "PASS for A; firewall deferred B",
+      "observation": "Complete source drawings now meet at explicit corner boundaries without cutting symbols, awnings or counters. Full-lot course rows match the existing contract; 16,832 native ordered stack pairs still pass. Firewalls/coping/flashing remain absent for B."
+    },
+    {
+      "criterion": "Copy-pasted neighbours",
+      "status": "PASS for A; stall variation deferred D",
+      "observation": "No A module repeats more than twice in any five-lot row. Six market positions still use two old stall drawings."
+    },
+    {
+      "criterion": "Landmark not biggest",
+      "status": "FAIL / deferred D",
+      "observation": "Current fantasy halls mark cathedral/guildhall positions but do not achieve the required skyline. Well marks the future cross/fountain position."
+    },
+    {
+      "criterion": "Greyscale landmark/gate/main-street hierarchy",
+      "status": "FAIL / deferred C,D",
+      "observation": "Facade recesses separate at 1x. Current paving is too emphatic; no final cathedral or gate exists."
+    },
+    {
+      "criterion": "Unrecognisable trade sign",
+      "status": "PASS in self-review",
+      "observation": "Anvil, loaf, flask, boot, tankard, quill/ink, scissors and cleaver distinguish all eight. Mounts preserve doors and goods."
+    },
+    {
+      "criterion": "No falling street shadow",
+      "status": "FAIL / deferred B",
+      "observation": "Local painted sill, jetty and awning shade exists in A. Cast street/height-responsive overlays are not fabricated in code."
+    }
+  ],
+  "refinements": [
+    "Full-width facade overwrite replaced by explicit complete narrower facade plus corner assemblies.",
+    "North-3 uses intact ground-work-w1-c1 and storey-jetty-w1-c1 beside matching corner panels.",
+    "L-wing-3 uses intact ground-shop-v1-w1-c1 with its complete green canopy, bottle display, counter and end support.",
+    "L-wing-8 uses intact ground-door-w2-c0 and storey-jetty-w2-c0 beside matching corner panels.",
+    "Rows 0/47 transfer existing full-width drawn contact strips; dimensions and bottom-left anchors are retained.",
+    "Unsupported combinations raise ValueError; 90 supported colour/height builds preserve all interior source pixels.",
+    "All 240 passing native PNGs and COURSE.md remain byte-identical. No new image-tool drawing was required."
+  ],
+  "reviewed_gallery": [
+    "r17-A-gallery-01.png",
+    "r17-A-gallery-02.png",
+    "r17-A-gallery-03.png",
+    "r17-A-gallery-04.png",
+    "r17-A-gallery-05.png",
+    "r17-A-gallery-06.png",
+    "r17-A-gallery-07.png",
+    "r17-A-gallery-08.png",
+    "r17-A-gallery-09.png",
+    "r17-A-gallery-10.png",
+    "r17-A-gallery-11.png",
+    "r17-A-gallery-12.png",
+    "r17-A-gallery-13.png",
+    "r17-A-gallery-14.png",
+    "r17-A-gallery-15.png",
+    "r17-A-gallery-16.png",
+    "r17-A-gallery-17.png",
+    "r17-A-gallery-18.png",
+    "r17-A-gallery-19.png",
+    "r17-A-gallery-20.png",
+    "r17-A-gallery-21.png",
+    "r17-A-gallery-22.png",
+    "r17-A-gallery-23.png",
+    "r17-A-gallery-24.png",
+    "r17-A-gallery-25.png",
+    "r17-A-gallery-26.png",
+    "r17-A-gallery-27.png",
+    "r17-A-gallery-28.png",
+    "r17-A-gallery-29.png",
+    "r17-A-gallery-30.png",
+    "r17-A-gallery-31.png"
+  ],
+  "distinct_pixel_exports": 182,
+  "alias_exports": 58,
+  "special_reviews": [
+    "Sample building 1x and 4x beside fantasy-house-2",
+    "Every export 1x/4x and seam/repeat data checks",
+    "Both tall/low joins at 1x/3x",
+    "L-block and irregular market at 1x/3x beside references",
+    "All three greyscale squint renders",
+    "Native trade recognition, mounted signs, corners and entrance approaches"
+  ],
+  "panel_assignments": {
+    "2 substance": "Deep recesses, sill/plinth/threshold tops and roughly 6-8-row painted jetty ledge/shade bands.",
+    "8 doors/trades": "Lit steps/lanterns; unlit shuttered door-v2 service fronts; daylight/paving passages; eight signs and three inn widths.",
+    "10 materials/seams": "Three muted ramps, at most two per scene plus one red roof family. Exact courses and no additional border."
+  },
+  "conflicts": [
+    "Explicit full Part A set overrides panel 40-60-piece cap.",
+    "BRIEF-17 fixed rows0/47 override removal of repeated floor belts. Separate one-pixel lot contours remain; no third line is added.",
+    "No commit/push per operator instruction."
+  ],
+  "placeholders": [
+    "R15 roof assets for B",
+    "Current fantasy hall-1 / hall-0 as cathedral / guildhall position proxies",
+    "Current well as cross/fountain proxy",
+    "Two current stall drawings in six positions",
+    "Current street/square/town_ground textures until C",
+    "No final firewall, cast shadows, rear/side assets, civic skyline or gate"
+  ],
+  "mechanical_validation": {
+    "passed": 31520,
+    "checks": 31520,
+    "failed": [],
+    "source_drawings": 104,
+    "selected_drawings": 66,
+    "outputs": 240,
+    "native_output_pixels": 1027072,
+    "mode_blocks": 391168,
+    "mode_samples": 25034752,
+    "recorded_cleanup_edits": 23531,
+    "selected_cleanup_edits": 15931,
+    "same_width_ordered_stack_pairs": 16832,
+    "end_mount_cases": 540,
+    "protected_files": 8935,
+    "scope": "Mechanical checks only. Visual criterion dispositions are in r17-A-critic.json; later-part city failures are not waived."
+  },
+  "redraw_response": {
+    "source_critic": "critic-r17A-3.json",
+    "audit": "r17-A-redraw3-audit.json",
+    "repaired_files": [
+      "out/city17/compose.py"
+    ],
+    "new_drawings": 0,
+    "redrawn_exports": 0,
+    "unchanged_passing_exports": 240,
+    "course_document": "unchanged",
+    "seasonal_partners": "none in Part A",
+    "viewed": "All 31 native/4x unique-export galleries against fantasy-house-2; repaired corner before/after at 1x/4x and complete-source proof; sample-neighbour 1x/4x; all three native scenes, fourteen exact 3x crops and three native greyscale views; current-town and round15 references. Per-file, colourway, alias and seam pixels verified mechanically."
+  },
+  "source_critic_round": 3,
+  "redraw_response_history": [
+    {
+      "source_critic": "critic-r17A-1.json",
+      "selected_sources": "r17-A-redraw-selection.json",
+      "source_prompts": "r17-A-redraw-generation.json",
+      "new_drawings": 21,
+      "redrawn_exports": 40,
+      "unchanged_passing_exports": 200,
+      "seasonal_partners": "none in Part A",
+      "viewed": "31 native/4x unique-export galleries, sample-neighbour 1x/4x, native seams/repeats, 1x scene comparisons, literal 3x crops, all three squint views. Aliases verified by exact pixels."
+    },
+    {
+      "source_critic": "critic-r17A-2.json",
+      "selected_sources": "r17-A-redraw2-selection.json",
+      "source_prompts": "r17-A-redraw2-generation.json",
+      "audit": "r17-A-redraw2-audit.json",
+      "new_drawings": 2,
+      "redrawn_exports": 4,
+      "unchanged_passing_exports": 236,
+      "seasonal_partners": "none in Part A",
+      "viewed": "All 31 current native/4x unique-export galleries; individual repaired c0/c1/c2 house comparisons; native and 4x repaired seams/repeats; sample-neighbour 1x/4x; critic scenes at 1x and all 14 literal 3x crops; all three native greyscale squints and existing town/round15 references. Aliases verified by exact pixels."
+    }
+  ]
+}

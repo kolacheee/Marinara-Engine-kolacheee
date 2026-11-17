@@ -1,0 +1,725 @@
+[
+  {
+    "id": "ground-shop-w1-a",
+    "output": "ground-shop-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. A merchant BAKERY in a stone ground floor. Broad muted brick-red fabric awning projects forward, its top visible; bread loaves are only two or three large gold colour blocks on a deep counter. A real dark enterable door beside the counter with a lit stone step and attached lantern. No glass across goods. Awning straight squared hem. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-shop-w2-a",
+    "output": "ground-shop-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. A merchant BAKERY in a stone ground floor. Broad muted brick-red fabric awning projects forward, its top visible; bread loaves are only two or three large gold colour blocks on a deep counter. A real dark enterable door beside the counter with a lit stone step and attached lantern. No glass across goods. Awning straight squared hem. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-shop-w3-a",
+    "output": "ground-shop-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. A merchant BAKERY in a stone ground floor. Broad muted brick-red fabric awning projects forward, its top visible; bread loaves are only two or three large gold colour blocks on a deep counter. A real dark enterable door beside the counter with a lit stone step and attached lantern. No glass across goods. Awning straight squared hem. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-shop-v1-w1-a",
+    "output": "ground-shop-v1-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-v1-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. A merchant APOTHECARY in a stone ground floor. Broad muted sage-green fabric awning with square straight hem, top plane visible. Three large bottle/jar silhouettes in cream, muted green and red brown on recessed counter. Real door with lit step and lantern at the opposite side. No tiny bottles or glazing over goods. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-shop-v1-w2-a",
+    "output": "ground-shop-v1-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-v1-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. A merchant APOTHECARY in a stone ground floor. Broad muted sage-green fabric awning with square straight hem, top plane visible. Three large bottle/jar silhouettes in cream, muted green and red brown on recessed counter. Real door with lit step and lantern at the opposite side. No tiny bottles or glazing over goods. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-shop-v1-w3-a",
+    "output": "ground-shop-v1-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-v1-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. A merchant APOTHECARY in a stone ground floor. Broad muted sage-green fabric awning with square straight hem, top plane visible. Three large bottle/jar silhouettes in cream, muted green and red brown on recessed counter. Real door with lit step and lantern at the opposite side. No tiny bottles or glazing over goods. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-shop-v2-w1-a",
+    "output": "ground-shop-v2-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-v2-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. A merchant CLOTH shop in a stone ground floor. Broad muted burgundy fabric canopy, squared edge. Two large folded-cloth colour blocks and one hanging cloth on a deep counter. Enterable door, lit step, lantern. Awning and goods arrangement clearly different from a bakery. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-shop-v2-w2-a",
+    "output": "ground-shop-v2-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-v2-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. A merchant CLOTH shop in a stone ground floor. Broad muted burgundy fabric canopy, squared edge. Two large folded-cloth colour blocks and one hanging cloth on a deep counter. Enterable door, lit step, lantern. Awning and goods arrangement clearly different from a bakery. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-shop-v2-w3-a",
+    "output": "ground-shop-v2-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-shop-v2-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. A merchant CLOTH shop in a stone ground floor. Broad muted burgundy fabric canopy, squared edge. Two large folded-cloth colour blocks and one hanging cloth on a deep counter. Enterable door, lit step, lantern. Awning and goods arrangement clearly different from a bakery. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-door-w1-a",
+    "output": "ground-door-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-door-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Residential entry. One large dark recessed wooden door, opening roughly 20x30 native pixels, lit stone step whose TOP is visible, warm brass lantern adjacent. Warm cream plaster over a visible substantial stone plinth. One calm shuttered window where width permits. Door offset left on wider panels. Quiet unornamented wall. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-door-w2-a",
+    "output": "ground-door-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-door-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Residential entry. One large dark recessed wooden door, opening roughly 20x30 native pixels, lit stone step whose TOP is visible, warm brass lantern adjacent. Warm cream plaster over a visible substantial stone plinth. One calm shuttered window where width permits. Door offset left on wider panels. Quiet unornamented wall. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-door-w3-a",
+    "output": "ground-door-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-door-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Residential entry. One large dark recessed wooden door, opening roughly 20x30 native pixels, lit stone step whose TOP is visible, warm brass lantern adjacent. Warm cream plaster over a visible substantial stone plinth. One calm shuttered window where width permits. Door offset left on wider panels. Quiet unornamented wall. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-door-v1-w1-a",
+    "output": "ground-door-v1-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-door-v1-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Residential entry. One large dark wooden recessed usable door at the RIGHT on wider panels, opening 20x30 native pixels, lit stone step and attached lantern. A small shuttered window to left where width permits. Stone ground wall with restrained timber post, broad simple forms. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-door-v1-w2-a",
+    "output": "ground-door-v1-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-door-v1-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Residential entry. One large dark wooden recessed usable door at the RIGHT on wider panels, opening 20x30 native pixels, lit stone step and attached lantern. A small shuttered window to left where width permits. Stone ground wall with restrained timber post, broad simple forms. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-door-v1-w3-a",
+    "output": "ground-door-v1-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-door-v1-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Residential entry. One large dark wooden recessed usable door at the RIGHT on wider panels, opening 20x30 native pixels, lit stone step and attached lantern. A small shuttered window to left where width permits. Stone ground wall with restrained timber post, broad simple forms. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-door-v2-w1-a",
+    "output": "ground-door-v2-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-door-v2-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. A service-entry ground floor: DIM closed shuttered plank door, no lantern or bright enterable threshold. Warm stone plinth top face and muted plaster. A broad closed shutter and low storage hatch on wider panels. Clearly closed, calm and solid. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-door-v2-w2-a",
+    "output": "ground-door-v2-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-door-v2-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. A service-entry ground floor: DIM closed shuttered plank door, no lantern or bright enterable threshold. Warm stone plinth top face and muted plaster. A broad closed shutter and low storage hatch on wider panels. Clearly closed, calm and solid. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-door-v2-w3-a",
+    "output": "ground-door-v2-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-door-v2-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. A service-entry ground floor: DIM closed shuttered plank door, no lantern or bright enterable threshold. Warm stone plinth top face and muted plaster. A broad closed shutter and low storage hatch on wider panels. Clearly closed, calm and solid. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-arch-w1-a",
+    "output": "ground-arch-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Open courtyard passage in substantial warm limestone piers. ONE broad squared stone-lintel opening, visibly open: pale SUNLIT paving seen from above continues THROUGH a dark passage to a tiny bright far courtyard opening. Do not fill passage with magenta or a wooden door. Opening at least 24 native pixels wide. Deep left jamb, shaded right reveal and lintel underside; top-lit threshold continuing inside. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-arch-w2-a",
+    "output": "ground-arch-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Open courtyard passage in substantial warm limestone piers. ONE broad squared stone-lintel opening, visibly open: pale SUNLIT paving seen from above continues THROUGH a dark passage to a tiny bright far courtyard opening. Do not fill passage with magenta or a wooden door. Opening at least 24 native pixels wide. Deep left jamb, shaded right reveal and lintel underside; top-lit threshold continuing inside. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-arch-w3-a",
+    "output": "ground-arch-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Open courtyard passage in substantial warm limestone piers. ONE broad squared stone-lintel opening, visibly open: pale SUNLIT paving seen from above continues THROUGH a dark passage to a tiny bright far courtyard opening. Do not fill passage with magenta or a wooden door. Opening at least 24 native pixels wide. Deep left jamb, shaded right reveal and lintel underside; top-lit threshold continuing inside. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-arch-v1-w1-a",
+    "output": "ground-arch-v1-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-v1-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Open courtyard passage with a broad squared TIMBER lintel and stone posts, off-centre left on wider panel. Pale warm paving continues through dark opening into daylight at far end. Opaque painted courtyard inside the hole, never magenta. Door-sized broad clearance. Adjacent wall has a dim closed shutter, only where width permits. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-arch-v1-w2-a",
+    "output": "ground-arch-v1-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-v1-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Open courtyard passage with a broad squared TIMBER lintel and stone posts, off-centre left on wider panel. Pale warm paving continues through dark opening into daylight at far end. Opaque painted courtyard inside the hole, never magenta. Door-sized broad clearance. Adjacent wall has a dim closed shutter, only where width permits. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-arch-v1-w3-a",
+    "output": "ground-arch-v1-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-v1-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Open courtyard passage with a broad squared TIMBER lintel and stone posts, off-centre left on wider panel. Pale warm paving continues through dark opening into daylight at far end. Opaque painted courtyard inside the hole, never magenta. Door-sized broad clearance. Adjacent wall has a dim closed shutter, only where width permits. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-arch-v2-w1-a",
+    "output": "ground-arch-v2-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-v2-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Open covered carriage passage, broad square stone lintel, offset right on wider panel. Clearly lit cobbles continue away through the dark depth to bright courtyard at far end. Broad stone piers, a side shutter on wider panels, no gates or front wooden door. Never magenta inside the opening. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-arch-v2-w2-a",
+    "output": "ground-arch-v2-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-v2-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Open covered carriage passage, broad square stone lintel, offset right on wider panel. Clearly lit cobbles continue away through the dark depth to bright courtyard at far end. Broad stone piers, a side shutter on wider panels, no gates or front wooden door. Never magenta inside the opening. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-arch-v2-w3-a",
+    "output": "ground-arch-v2-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-arch-v2-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Open covered carriage passage, broad square stone lintel, offset right on wider panel. Clearly lit cobbles continue away through the dark depth to bright courtyard at far end. Broad stone piers, a side shutter on wider panels, no gates or front wooden door. Never magenta inside the opening. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-work-w1-a",
+    "output": "ground-work-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-work-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. SMITH workshop stone ground floor. Wide open work bay with one large anvil silhouette, tongs and a broad forge opening with muted red orange fire block. Three clear shapes, no tool clutter or sparks. A real entry beside bay with lit step and attached lantern where width permits. Deep counter top and stone plinth top visible. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-work-w2-a",
+    "output": "ground-work-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-work-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. SMITH workshop stone ground floor. Wide open work bay with one large anvil silhouette, tongs and a broad forge opening with muted red orange fire block. Three clear shapes, no tool clutter or sparks. A real entry beside bay with lit step and attached lantern where width permits. Deep counter top and stone plinth top visible. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-work-w3-a",
+    "output": "ground-work-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-work-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. SMITH workshop stone ground floor. Wide open work bay with one large anvil silhouette, tongs and a broad forge opening with muted red orange fire block. Three clear shapes, no tool clutter or sparks. A real entry beside bay with lit step and attached lantern where width permits. Deep counter top and stone plinth top visible. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-work-v1-w1-a",
+    "output": "ground-work-v1-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-work-v1-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. CARPENTER workshop. Broad open recessed work bay with a single clearly readable saw silhouette and hammer above a thick workbench, one timber stack below. Quiet cream plaster and substantial stone base. Enterable dark door, lit step and lantern where width permits. No tiny tools or sawdust. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-work-v1-w2-a",
+    "output": "ground-work-v1-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-work-v1-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. CARPENTER workshop. Broad open recessed work bay with a single clearly readable saw silhouette and hammer above a thick workbench, one timber stack below. Quiet cream plaster and substantial stone base. Enterable dark door, lit step and lantern where width permits. No tiny tools or sawdust. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-work-v1-w3-a",
+    "output": "ground-work-v1-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-work-v1-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. CARPENTER workshop. Broad open recessed work bay with a single clearly readable saw silhouette and hammer above a thick workbench, one timber stack below. Quiet cream plaster and substantial stone base. Enterable dark door, lit step and lantern where width permits. No tiny tools or sawdust. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "ground-work-v2-w1-a",
+    "output": "ground-work-v2-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-ground-work-v2-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. POTTER workshop. Broad open bay with three large cream terracotta pots on a deep stone counter, distinct silhouettes, no rows of tiny objects. Muted ochre shutter, stone piers and visible plinth top. Real dark doorway with lantern and lit threshold where width permits. Width 1 cells. Compose this width deliberately; ONE compact principal opening; prioritize the entrance or work bay without squeezing multiple miniatures."
+  },
+  {
+    "id": "ground-work-v2-w2-a",
+    "output": "ground-work-v2-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-ground-work-v2-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. POTTER workshop. Broad open bay with three large cream terracotta pots on a deep stone counter, distinct silhouettes, no rows of tiny objects. Muted ochre shutter, stone piers and visible plinth top. Real dark doorway with lantern and lit threshold where width permits. Width 2 cells. Compose this width deliberately; TWO broad structural bays; door and display/passage have separate space."
+  },
+  {
+    "id": "ground-work-v2-w3-a",
+    "output": "ground-work-v2-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-ground-work-v2-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. POTTER workshop. Broad open bay with three large cream terracotta pots on a deep stone counter, distinct silhouettes, no rows of tiny objects. Muted ochre shutter, stone piers and visible plinth top. Real dark doorway with lantern and lit threshold where width permits. Width 3 cells. Compose this width deliberately; THREE broad structural bays with a distinct asymmetric rhythm, not three identical repeated panels."
+  },
+  {
+    "id": "storey-timber-w1-a",
+    "output": "storey-timber-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-storey-timber-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Substantial timber posts and warm cream plaster. Deep square window recesses, open muted wooden shutters, shadowed glass with a single central mullion, projecting sills with lit top surfaces. No diagonal hairline braces. Narrow structural beam top edge. Exactly 1 broad window bay, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-timber-w3-a",
+    "output": "storey-timber-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-storey-timber-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Substantial timber posts and warm cream plaster. Deep square window recesses, open muted wooden shutters, shadowed glass with a single central mullion, projecting sills with lit top surfaces. No diagonal hairline braces. Narrow structural beam top edge. Exactly 3 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-plaster-w1-a",
+    "output": "storey-plaster-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-storey-plaster-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Calm warm cream plaster wall with minimal structural timber only at outside posts. Deep square shuttered window bays with single central mullion, broad uninterrupted plaster between them. Projecting limestone sills show top faces, deep lintel shade. Quiet substantial masonry. Exactly 1 broad window bay, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-plaster-w2-a",
+    "output": "storey-plaster-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-storey-plaster-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Calm warm cream plaster wall with minimal structural timber only at outside posts. Deep square shuttered window bays with single central mullion, broad uninterrupted plaster between them. Projecting limestone sills show top faces, deep lintel shade. Quiet substantial masonry. Exactly 2 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-plaster-w3-a",
+    "output": "storey-plaster-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-storey-plaster-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Calm warm cream plaster wall with minimal structural timber only at outside posts. Deep square shuttered window bays with single central mullion, broad uninterrupted plaster between them. Projecting limestone sills show top faces, deep lintel shade. Quiet substantial masonry. Exactly 3 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-stone-w1-a",
+    "output": "storey-stone-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-storey-stone-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Merchant upper wall in warm grey squared ashlar, ONLY a few broad block joints. Deep large rectangular window recesses with quiet wooden shutters and single mullion, substantial limestone sills and lintels, top surfaces lit. No balcony rail, no dense brick texture. Exactly 1 broad window bay, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-stone-w2-a",
+    "output": "storey-stone-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-storey-stone-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. Merchant upper wall in warm grey squared ashlar, ONLY a few broad block joints. Deep large rectangular window recesses with quiet wooden shutters and single mullion, substantial limestone sills and lintels, top surfaces lit. No balcony rail, no dense brick texture. Exactly 2 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-stone-w3-a",
+    "output": "storey-stone-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-storey-stone-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. Merchant upper wall in warm grey squared ashlar, ONLY a few broad block joints. Deep large rectangular window recesses with quiet wooden shutters and single mullion, substantial limestone sills and lintels, top surfaces lit. No balcony rail, no dense brick texture. Exactly 3 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-jetty-w1-a",
+    "output": "storey-jetty-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-storey-jetty-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. JETTIED upper storey: projecting cream plaster and substantial timber upper wall, deep square shuttered windows with central mullions. A broad ledge with visible TOP at its foot, dark 6–8-native-pixel shade band below and TWO strong wooden supporting brackets. Recessed lower backing remains opaque across full width. The overhang must read volumetrically, not as a dark flat stripe. Quiet panels, no decorative crossbraces. Exactly 1 broad window bay, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-jetty-w2-a",
+    "output": "storey-jetty-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-storey-jetty-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. JETTIED upper storey: projecting cream plaster and substantial timber upper wall, deep square shuttered windows with central mullions. A broad ledge with visible TOP at its foot, dark 6–8-native-pixel shade band below and TWO strong wooden supporting brackets. Recessed lower backing remains opaque across full width. The overhang must read volumetrically, not as a dark flat stripe. Quiet panels, no decorative crossbraces. Exactly 2 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-jetty-w3-a",
+    "output": "storey-jetty-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-storey-jetty-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. JETTIED upper storey: projecting cream plaster and substantial timber upper wall, deep square shuttered windows with central mullions. A broad ledge with visible TOP at its foot, dark 6–8-native-pixel shade band below and TWO strong wooden supporting brackets. Recessed lower backing remains opaque across full width. The overhang must read volumetrically, not as a dark flat stripe. Quiet panels, no decorative crossbraces. Exactly 3 broad window bays, each complete shutter-and-window group about 28 native pixels wide; size by available bay."
+  },
+  {
+    "id": "storey-oriel-w1-a",
+    "output": "storey-oriel-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-storey-oriel-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. ORIEL upper storey: one projecting BOX BAY WINDOW with visible broad ledge TOP, a front glazing face and a narrow shaded RIGHT RETURN, each with one simple mullion. Solid wooden shutters, dark recess. Two thick supporting brackets below and 6-pixel underside shade. Warm plaster to either side. A squared projecting window, no round bow window, no roof cap. Calm broad forms. ONE compact projecting bay."
+  },
+  {
+    "id": "storey-oriel-w2-a",
+    "output": "storey-oriel-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-storey-oriel-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. ORIEL upper storey: one projecting BOX BAY WINDOW with visible broad ledge TOP, a front glazing face and a narrow shaded RIGHT RETURN, each with one simple mullion. Solid wooden shutters, dark recess. Two thick supporting brackets below and 6-pixel underside shade. Warm plaster to either side. A squared projecting window, no round bow window, no roof cap. Calm broad forms. ONE broad central projecting bay with plaster margins."
+  },
+  {
+    "id": "storey-oriel-w3-a",
+    "output": "storey-oriel-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-storey-oriel-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. ORIEL upper storey: one projecting BOX BAY WINDOW with visible broad ledge TOP, a front glazing face and a narrow shaded RIGHT RETURN, each with one simple mullion. Solid wooden shutters, dark recess. Two thick supporting brackets below and 6-pixel underside shade. Warm plaster to either side. A squared projecting window, no round bow window, no roof cap. Calm broad forms. ONE broad projecting bay offset left and one smaller recessed shuttered window to right."
+  },
+  {
+    "id": "corner-ground-a",
+    "output": "corner-ground",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-corner-ground-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Corner entry wall: illuminated front plane spans LEFT TWO THIRDS, shaded RIGHT return spans ONE THIRD. High 3/4 volume within filled square footprint. Large recessed real door on front, lit step, small lantern. Stone plinth with visible top wrapping corner; dark post at change of plane. Right side a small closed service shutter. No isometric diamond silhouette."
+  },
+  {
+    "id": "corner-storey-a",
+    "output": "corner-storey",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-corner-storey-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. Corner upper wall: illuminated warm plaster FRONT plane spans LEFT TWO THIRDS, darker RIGHT side return spans ONE THIRD. Broad deep shuttered window on front, a small closed shutter on side. Substantial timber at change of plane and top-lit stone sill. Filled square footprint, no isometric diamond."
+  },
+  {
+    "id": "wall-end-left-a",
+    "output": "wall-end-left",
+    "size": [
+      8,
+      48
+    ],
+    "source": "r17-A-source-wall-end-left-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 8x48 pixels; exact 0.16666666666666666:1 rectangle. NARROW VERTICAL left end of a medieval plaster/timber wall: long substantial vertical post with narrow illuminated LEFT/top-facing bevel and darker right reveal; plain warm plaster/stone backing. No window, door, roof or decorations. Target only EIGHT native pixels wide, 48 high. Full solid narrow rectangle, top and bottom timber contacts."
+  },
+  {
+    "id": "wall-end-right-a",
+    "output": "wall-end-right",
+    "size": [
+      8,
+      48
+    ],
+    "source": "r17-A-source-wall-end-right-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 8x48 pixels; exact 0.16666666666666666:1 rectangle. NARROW VERTICAL right end of a medieval plaster/timber wall: substantial post and shaded RIGHT-facing wall reveal, slim top-left lit rim, deeper brown shadow on right. No window, door, roof or decorations. Target only EIGHT native pixels wide, 48 high. Full solid narrow rectangle, top and bottom timber contacts."
+  },
+  {
+    "id": "inn-front-w1-a",
+    "output": "inn-front-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-A-source-inn-front-w1-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 48x48 pixels; exact 1:1 rectangle. INN ground floor in stone and heavy timber: one deep usable porch doorway with lit step and lantern, a small tankard emblem attached above.Warm cream and dark burgundy accents, substantial posts; quiet forms."
+  },
+  {
+    "id": "inn-front-w2-a",
+    "output": "inn-front-w2",
+    "size": [
+      96,
+      48
+    ],
+    "source": "r17-A-source-inn-front-w2-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 96x48 pixels; exact 2:1 rectangle. INN ground floor in stone and heavy timber: wide projecting porch with top face visible, large usable dark door with lit step and lantern, broad open square passage on right whose pale paving continues through to daylight in the courtyard. A large clear tankard symbol on a hanging plaque. Warm cream and dark burgundy accents, substantial posts; quiet forms."
+  },
+  {
+    "id": "inn-front-w3-a",
+    "output": "inn-front-w3",
+    "size": [
+      144,
+      48
+    ],
+    "source": "r17-A-source-inn-front-w3-a.png",
+    "selected": true,
+    "prompt": "Draw ONE standalone modular medieval RPG town facade source, large and centered on a perfectly solid #ff00ff magenta background with a small margin. Strict crisp square pixel art, no antialiasing. High three-quarter town view looking down: front wall faces us, see TOP surfaces of sills, steps, thick beams and stone plinth. Top-left light, shaded right and lower faces. Warm cream plaster, substantial dark brown timber and warm grey limestone, muted colours, palette matching a small old JRPG timber town. Quiet large material masses, no hairline braces, no texture speckles. One-native-pixel dark brown outline #2b281d. EXACT RECTANGULAR outside silhouette with square corners and straight horizontal top and bottom. Narrow uninterrupted timber contact course along both boundaries. Opaque wall backing throughout. NO roof, upper floor, ground outside panel, people, text, letters, labels, watermark, rounded outside corners, blur, haze, gradients or floating objects. Native target 144x48 pixels; exact 3:1 rectangle. INN ground floor in stone and heavy timber: wide projecting porch with top face visible, large usable dark door with lit step and lantern, broad open square passage on right whose pale paving continues through to daylight in the courtyard. A large clear tankard symbol on a hanging plaque. Warm cream and dark burgundy accents, substantial posts; quiet forms."
+  },
+  {
+    "id": "sign-smith-a",
+    "output": "sign-smith",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-smith-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. a dark ANVIL silhouette on warm ochre rectangular signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-baker-a",
+    "output": "sign-baker",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-baker-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. a single big golden BREAD LOAF with two dark scoring cuts on burgundy square signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-apothecary-a",
+    "output": "sign-apothecary",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-apothecary-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. one broad pale green POTION BOTTLE with a cream stopper on dark wood rectangular signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-cobbler-a",
+    "output": "sign-cobbler",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-cobbler-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. one ochre BOOT silhouette with obvious toe on dark warm-grey rectangular signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-inn-a",
+    "output": "sign-inn",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-inn-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. one cream TANKARD with clear handle and muted gold contents on dark burgundy shield-shaped squared signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-scribe-a",
+    "output": "sign-scribe",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-scribe-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. one big pale QUILL diagonally crossing a dark INKWELL on muted blue-grey square signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-tailor-a",
+    "output": "sign-tailor",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-tailor-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. large silver SCISSORS, clear open crossed blades, on a muted green square signboard. Designed to be named at 1x."
+  },
+  {
+    "id": "sign-butcher-a",
+    "output": "sign-butcher",
+    "size": [
+      32,
+      40
+    ],
+    "source": "r17-A-source-sign-butcher-a.png",
+    "overlay": true,
+    "selected": true,
+    "prompt": "Draw ONE isolated large medieval hanging TRADE SIGN on completely solid #ff00ff magenta, including the holes around its short attached forged-iron wall bracket. Production pixel-art sprite for 32x40 native canvas. The main pictogram board is about 24x24 native pixels. Top-left light, muted earth palette, 1-pixel dark brown outline, crisp square pixels. Large unmistakable pictogram with broad colour blocks and no letters or text. No wall, floor, props, extra icons, haze, blur, scattered specks or watermark. Short left wall mounting plate connected to top bracket, sign hangs below; whole silhouette connected. one broad light-grey CLEAVER with short ochre handle on a deep red rectangular signboard. Designed to be named at 1x."
+  }
+]

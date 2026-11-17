@@ -1,3 +1,197 @@
+# Round 17 — Part B: critic-r17B-3 redraw
+
+Repaired `out/city17/compose.py`, the only failed file. All **137 passing Part B PNGs remain byte-identical**. The fixed pilot L now uses continuous drawn roof paint: courses cross both former rectangular cuts, the southwest hip ends at the outside corner, and one uninterrupted eave retains both exposed verges. Earlier deep-cap, firewall, shadow-mask and final-accent fixes are preserved.
+
+Made **three large built-in image-tool variants on solid magenta** and selected A. Same method: source-landmark BOX registration at 8×, approved palette lock, exact mode of all 64 samples, hard 0/255 alpha, zero hidden RGB and 29 one-pixel cleanup edits. No shapes or texture were constructed in code. [Prompts and sources](review/r17-B-critic3-generation.json); [processing record](review/r17-B-critic3-processing.json).
+
+Rebuilt the requested scenes, comparisons, squints, every export/seam sheet and focused 8× join/eave proofs. Inspected all unique exports at 1×/4× beside `fantasy-house-2`, plus the L in all three colours. **1,253 checks pass**, replaying 15,482,880 mode samples and confirming 11,939 protected files unchanged. [Review index](review/r17-B-review.html); [response to all critic problems](review/r17-B-critic3-response.json). This is saved-art self-review, not independent or in-engine approval.
+
+Current terrain and civic/stall drawings remain labelled C/D proxies; round 15 is comparison only. Final city hierarchy remains deferred. BRIEF-17 wins the panel conflicts on inventory, shared eaves and lot-contained overlays. No commit, push or branch change.
+
+Replay: `python -B art-drop/review/r17-B-critic3-process.py`, `python -B art-drop/out/city17/compose.py`, `python -B art-drop/review/r17-B-critic3-details.py`, then `python -B art-drop/review/r17-B-critic3-verify.py`.
+
+# Round 17 — Part B: critic-r17B-2 redraw
+
+Repaired the four failed `roof-fill-w1` exports and `out/city17/compose.py`. All **133 passing Part B PNGs remain byte-for-byte unchanged**; the independent critic report is preserved.
+
+Made **three large built-in image-tool variants on solid magenta**. Selected C for the lit fill and B as the shaded L-plane adapter. Painted courses are BOX-registered at 8×, palette-locked, reduced by exact 64-sample mode, cleaned and tile-wrapped to 48×48; alpha is 0/255 with zero hidden RGB. Exact prompts, sources and replay records are in `review/r17-B-critic2-{generation,processing}.json`. No architecture or texture was drawn in code.
+
+Deep ridge roofs now use complete native course adapters from each unchanged cap, retaining its own tile scale, left/right values and one-pixel verges across both interfaces. The L uses unrotated lit/shaded paint, its existing valley channel and hip ends. Jetty shadows exclude bare firewall bays. Narrow tall/low lots use 4px masonry returns beside intact windows; wider lots retain full wall bays. Final roof accents follow opaque joins and stay clear of the joined ridge.
+
+Regenerated every export/seam proof, the three critic scenes at 1×/3× beside both references, greyscale squints, both height orientations, narrow adjacency cases, literal fill repeats and all **27 width/colour/depth-3/4/5 cases**. Inspected every unique Part B export at 1×/4× beside `fantasy-house-2`. **13,352 checks pass**, including 344,064 mode samples and 11,757 protected files. Start at [the review index](review/r17-B-review.html); the [critic response](review/r17-B-critic2-response.json) covers each failure. This is saved-art self-review, not independent or in-engine approval.
+
+Current terrain and civic/stall art remain explicit C/D proxies; no city15 piece is used except the comparison. Final landmark/gate/street hierarchy remains deferred. BRIEF-17 wins over panel conflicts on shared eaves, lot-contained overlays and inventory size. No commit, push or branch change.
+
+Replay: `python -B art-drop/review/r17-B-process.py`, `python -B art-drop/out/city17/compose.py`, `python -B art-drop/review/r17-B-critic2-details.py`, then `python -B art-drop/review/r17-B-verify.py`.
+
+# Round 17 — Part B: critic-r17B-1 redraw
+
+Repaired all 41 failed PNGs and `out/city17/compose.py`; the 96 passing Part B PNGs remain byte-for-byte unchanged. The independent `review/critic-r17B-1.json` is preserved. This is the repair's saved-art self-review, not independent or in-engine approval.
+
+Used 24 new large built-in image-tool drawings on solid magenta, with 2–3 alternatives for difficult pieces and 11 selected drawings. Registered at 8×, locked the existing palette without dithering, reduced by exact 8×8 mode, then cleaned outlines/flecks, wrapped native paint and composited drawn joins. Alpha is 0/255 with zero hidden RGB; shadow masks retain the brief's 0/112 exception. Sources, prompts and every post-mode edit are retained in `review/r17-B-critic1-generation.json` and `review/r17-B-critic1-processing.json`.
+
+- Redrew substantial flat parapets, the w2 gable, the recessed dormer, a complete 48×48 fill, the valley, terminal hip and plain firewall. Wide shadows now have continuous silhouettes.
+- `roof-hip-end` is now **48×96**, terminating the two-cell-deep L wing; all other export dimensions are retained. The compositor joins its incoming ridge, mounts skylights on one receiving plane, extends below the ridge, shares flat parapets, and reserves a 48px wall bay beside intact windows in both tall/low orientations.
+- Rebuilt the L-block, irregular market, 5|1 and 1|5 tests at 1×/3× beside both references, greyscale squints, every per-file 1×/4× proof and seam sheet, literal fill repeats and focused 8× joins. Start at [the review index](review/r17-B-review.html); [the response](review/r17-B-critic1-response.json) addresses every failed file.
+
+Part B self-review passes the scoped fail list. Current grass/paving and halls/well/two stall drawings remain explicit C/D proxies; civic/gate/street hierarchy cannot pass yet. No city15 piece is used except the comparison render. BRIEF-17 wins over panel conflicts on shared eaves, lot-contained overlays and inventory size. No commit, push or branch change was made.
+
+# Round 17 — Part B
+
+Made **137 native RGBA PNG exports** in **`out/city17/`**: four roof
+families, three widths, red/slate/brown colourways, deeper-roof fill,
+valley/hip joins, a firewall, ten roof accents and three shadow families.
+There are **98 pixel-unique exports**; unsuffixed names are the c0 aliases.
+Extended **`out/city17/compose.py`** for native roof depths, fills, joins,
+unequal-height neighbours and receiving-surface shadows. Part A's **240 PNGs
+and COURSE.md remain byte-identical**.
+
+**Drawing method:** **41 large built-in image-tool drawings on solid
+magenta**, selecting **29 source drawings**. Difficult pieces received
+2–3 alternatives: gable w2, hip w2, all flat roofs, fill, valley, firewall
+and the small gabled dormer. The final flat roofs have stronger terrace
+seams; the second firewall has larger masonry courses; the second dormer
+keeps its two-pane recess at native size. Exact prompts, source paths,
+selection flags and registration settings are in
+**`review/r17-B-generation.json`**; all original drawings remain as
+**`r17-B-source-*.png`**. No API fallback was used.
+
+Solid-magenta key → painted-row registration for rectangular modules
+(painted-bounds registration for silhouettes, aspect-preserving registration
+for accents) → **BOX registration at 8× native size** → fixed approved
+palette plus a seven-step terracotta ramp, without dithering → exact RGBA
+mode of **all 64 samples per 8×8 footprint**, with lexicographic ties →
+one-pixel exposed-outline and isolated-pixel cleanup. Source ridge-tip
+protrusions are excluded before registering straight, completely painted
+north edges. The last eave row transfers the existing drawn contact course.
+Material-only corrections keep enclosed gable/hatch timber warm and put
+all terrace tile shades into the appropriate roof ramp. No shape, texture,
+noise, masonry or shadow silhouette was constructed in code.
+
+The fill wraps a **16×16 painted interior patch** containing two tile
+courses, repeated natively into a **48×48 tile**. This removes phase drift
+at both wrap edges without blending or inventing pixels. The firewall's
+bare body **(1,4)–(15,44)** repeats in both axes; its top four coping rows
+and bottom two flashing rows are applied once by `firewall_surface()`.
+The narrow neighbour reveal uses four existing edge pixels inside the
+taller lot, preserving the adjacent facade's windows.
+
+**Final files and measurements:** dimensions are native pixels; w1/w2/w3
+mean **48/96/144 px**. Except the single firewall, every named base has
+**c0/c1/c2 plus an unsuffixed c0 alias**. c0 is red tile, c1 muted slate,
+c2 brown tile.
+
+| Family in `out/city17/` | Native canvas | Exports |
+|---|---|---:|
+| `roof-gable-w1..3`, `roof-ridge-w1..3`, `roof-flat-w1..3` | 48/96/144 × 96, exactly 2 cells deep | 36 |
+| `roof-hip-w1..3` | 48/96/144 × 144, exactly 3 cells deep | 12 |
+| `roof-fill-w1`, `roof-valley`, `roof-hip-end` | 48 × 48 | 12 |
+| `firewall-w0` | 16 × 48 | 1 |
+| `chimney-0..3` | 16×32, 20×28, 16×36, 24×24 | 16 |
+| `dormer-0..3` | 24×28, 28×24, 24×28, 24×28 | 16 |
+| `skylight-0..1` | 20×24, 28×20 | 8 |
+| `shadow-eave-w1..3` | 48/96/144 × 4 | 12 |
+| `shadow-jetty-w1..3` | 48/96/144 × 6 | 12 |
+| `shadow-street-w1..3` | 48/96/144 × 32 | 12 |
+
+Non-shadow exports use **5–24 painted colours**, alpha strictly **0/255**,
+and dark outline **(43,40,29)**. All transparent pixels have RGB **(0,0,0)**.
+All roof and firewall footprints are fully opaque: no unpainted corner,
+rounded canvas edge or pinhole exposes the terrain underneath. Accents
+retain transparent margins and no isolated one- or two-pixel alpha islands.
+No seasonal partners or ground bases belong to this part.
+
+**Shadow exception required by the brief:** painted shadow pixels use
+**112/255 alpha (43.9%)**, below the 50% limit; all clear pixels are zero
+RGBA. Widths w2/w3 repeat the drawn w1 mask. The compositor puts **4 px**
+eave shade on the wall and **6 px** shade below jetties, preserving facade
+contact rows. South and explicitly reserved east ground receivers use
+**6 px per storey**, reaching **30 px** in the five-storey test; available
+receivers constrain the width. A maximum-alpha union avoids doubled dark
+intersections. Terrain remains visible through the shade, and buildings
+and props mask it in base-row order. Roof accents and joins are rejected
+if they cross their lot or leave their roof receiver.
+
+**Critic scenes:** `compose.py` builds the **768×576 / 16×12-cell L-block**
+with a T-junction, dead end, two east-west streets and a north-south lane;
+an **864×864 irregular market square** with six stall positions; and a
+**768×480 five-storey/one-storey test in both orientations**. The L-wing
+uses three fill rows above its two-cell cap, with a drawn valley join.
+Mixed two-/three-cell roofs meet at the same facade eave without gaps.
+The tall/low test shows coping, repeated bare wall, flashing and different
+shadow reaches. Buildings remain bottom-left anchored and compose at
+native scale, with ground/storeys/roof/overlays in order and objects sorted
+by base row. Every scene uses at most two facade colours and one roof colour.
+
+All roofs, roof accents, firewall and shadows in these scenes are Part B;
+all facades are current Part A. **No round 15 roof or facade remains.**
+Current fantasy grass/paving and deliberate yard reservations stand in
+for **Part C**. Current `fantasy-hall-1`, `fantasy-hall-0`, `fantasy-well-0`
+and two stall drawings stand in for **Part D's cathedral, guildhall,
+market cross and six distinct stalls**. They are kept at native size and
+labelled on the comparison sheets. The gate and final civic skyline do
+not exist yet. The large current paving also awaits Part C.
+
+**QC:** inspected every pixel-unique export at **1× and exact nearest-
+neighbour 4× beside `fantasy-house-2`**, the native composed neighbour,
+same/variant seams, unlike roof eaves, literal 3×3 fill repeats, firewall
+body repeats and all ten mounted roof accents. Inspected critic scenes
+at **1×/3× beside literal 1× `round15-street` and `current-town`**, plus
+**1× greyscale squint views**. The current-town screenshot is labelled
+as its actual 24 px display-cell scale; it is not enlarged to fake a match.
+Final Part B saved-art self-review: **PASS; failed Part B files: `[]`**.
+No independent panel approval or in-engine test is claimed.
+
+The brief's fail list is recorded criterion by criterion in
+**`review/r17-B-critic.json`**. Part B has no roof holes, interlot eave gaps,
+missing street shade or unbounded accents. Roof kinds, widths, heights and
+accents vary across the scenes. **Full-city acceptance is not claimed**:
+landmark dominance, the gate, quieter streets, rear/side architecture and
+six distinct market stalls remain failures or incomplete checks for C/D.
+Existing Part A trade signs were preserved, not redrawn or reapproved here.
+
+**Panel priorities and conflicts:** B items **3 and 11** are applied through
+roof depth/volume, native joins, bare party walls with coping/flashing and
+directional receiving-surface shadows. BRIEF-17's complete requested inventory
+wins over the panel's 40–60-piece cap; its shared eaves win over the panel's
+wording against universal aligned eaves; its lot-boundary rule wins over
+unrestricted projections. East shade requires a reserved receiver. The
+shadow-specific alpha requirement wins over the general hard-alpha rule
+only for shadows. The user's no-commit/no-push instruction wins over the
+brief's push instruction.
+
+**Verification: 36,910 / 36,910 checks pass.** The audit replays
+**212,928 exact mode blocks / 13,627,392 source samples** and **23,436
+recorded native edits** across all alternatives (**20,557** in selected
+sources, including tile wrapping, palette corrections and shadow tinting).
+It checks dimensions, palette membership, alpha, hidden RGB, exposed
+contours, opaque roof coverage, colourway/silhouette equality, contact rows,
+exact 4× proofs, exact 3× scenes, both tall/low walls, height-responsive east
+shade, bounded placement and literal fill repetition. **11,431 protected
+pre-existing files remain byte-identical**, and all earlier NOTES bytes,
+including the pre-existing merge conflict, follow this section unchanged.
+Results: **`review/r17-B-validation.json`**. Per-file dimensions, bounds,
+colour counts, alpha values and pixel hashes: **`r17-B-files.json`**.
+
+**Review sheets:** start at **`review/r17-B-review.html`**.
+`r17-B-file-*.png` contains every final file at 1×/4×;
+`r17-B-seam-*-{1,4}x.png` contains every same/variant seam;
+`r17-B-repeat-roof-fill-w1*-{1,4}x.png` is literal 3×3;
+`r17-B-unlike-eaves-*`, `r17-B-join-kit-*`,
+`r17-B-firewall-body-repeat-*` and `r17-B-overlay-mounts-*` cover assembly.
+`r17-B-critic-*-{1,3}x.png`, `*-comparison-{1,3}x.png` and
+`*-squint-1x.png` contain the three critic layouts. Source alternatives,
+registered samples, mode reductions and cleanup stages are retained.
+
+Reproduce with `python -B art-drop/review/r17-B-process.py`, then
+`python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-B-verify.py` (Python and Pillow).
+Only Part B output files, `compose.py`, new `r17-B-*` review material and
+this top NOTES section changed. **No commit, push or branch change.**
+
+---
+
+<<<<<<< HEAD
 # Round 16 — Part Epolish: critic-r16Epolish-1 redraw
 
 Repaired **cloudy** by moving its original sun three native pixels down behind
@@ -142,6 +336,240 @@ this top NOTES section changed. **No commit, push or branch change.**
 
 ---
 
+=======
+# Round 17 — Part A: critic-r17A-3 redraw
+
+Repaired **`out/city17/compose.py`**, the critic's only failed file. Corners
+now use an explicit set of complete narrower facades beside the corner panel;
+unsupported combinations raise an error. The north smith and L-wing apothecary
+retain their whole displays, canopies, counters and supports. The three-cell
+corner uses the same safe assembly rule. Lot widths, bottom-left anchors and
+48 px floor spacing are unchanged. Full-width **drawn** contact strips preserve
+course rows **0/47** without cutting architectural features.
+
+All **240 passing PNGs and `COURSE.md` remain byte-identical**. No new drawing
+was needed: the critic explicitly requested a compositor repair. Existing
+image-tool / magenta / registered 8× mode-sampled / palette-locked drawings
+are composited at native size, with no resampling or code-constructed shapes.
+There are no seasonal partners in Part A.
+
+Regenerated the current `r17-A-*.png` review sheets, scenes, seams, per-file
+1×/4× house comparisons and greyscale views. Added before/after corner proofs
+and complete-source join sheets for all three colours. Start at
+**`review/r17-A-review.html`**. All **31,520** existing mechanical checks pass;
+the new audit covers **90 corner colour/height combinations**, reproduces the
+old failure, rejects unsupported combinations and rechecks all 15 references.
+See `review/r17-A-redraw3-audit.json`. Saved-art self-review resolves the listed
+Part A corner defects; independent reapproval is pending.
+
+R15 roofs and current fantasy context remain labelled B/C/D placeholders.
+Roof coverage/foreground overlap, firewalls, shadows, quieter streets and civic
+hierarchy remain open; full-city acceptance is not claimed. BRIEF-17's fixed
+courses and full inventory take precedence over the panel's belt-removal
+suggestion and pilot cap. No other part was changed.
+
+Replay: `python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-A-verify.py` and
+`python -B art-drop/review/r17-A-redraw3-verify.py`.
+No commit, push or branch change.
+
+---
+
+<!-- r17-A critic round 3 retained notes -->
+# Round 17 — Part A: critic-r17A-2 redraw
+
+Repaired the unreadable lantern in **`ground-shop-v1-w1` and c0/c1/c2**.
+Two large built-in image-tool edits on solid magenta; selected A for its
+clear projecting bracket and **3×3 amber/cream light** at native resolution.
+The **236 passing exports remain byte-identical**. Only 53 pixels within
+the lantern patch changed per colourway; the **22×33 clear entrance**, lit
+threshold, bottles, canopy and exact course rows 0/47 are unchanged.
+
+Same method: painted-row registration → 8× BOX → composite the drawn lantern
+region into the retained registered drawing → fixed palette → exact mode of
+all 64 RGBA samples → one-pixel cleanup and drawn course transfer. No shapes
+or noise constructed in code. Sources/prompts: `review/r17-A-redraw2-generation.json`;
+selection and replay/scope audit: `r17-A-redraw2-selection.json` and
+`r17-A-redraw2-audit.json`. No seasonal partners belong to A.
+
+Regenerated the per-file 1×/4× house comparisons, seams/repeats, sample building,
+critic scenes at 1×/3×, baseline comparisons and 1× greyscale views. Start at
+**`review/r17-A-review.html`**. **31,520 mechanical checks pass.** This is
+saved-art self-review; independent reapproval is pending. R15 roofs and current
+fantasy context remain labelled B/C/D placeholders; full-city failures persist.
+BRIEF-17's course contract and complete inventory take precedence over the
+panel's belt-removal suggestion and pilot cap. No other part was changed.
+
+Replay: `python -B art-drop/review/r17-A-redraw2.py --install`, then
+`python -B art-drop/out/city17/compose.py`, then `r17-A-verify.py` and
+`r17-A-redraw2-verify.py` in `art-drop/review/`. No commit, push or branch change.
+
+---
+
+<!-- r17-A critic round 2 retained notes -->
+# Round 17 — Part A: critic-r17A-1 redraw
+
+Redrew all **10 failed designs / 40 PNG exports** in `out/city17/`, including
+c0/c1/c2 and the unsuffixed aliases. The **200 passing exports remain
+byte-for-byte unchanged**. The eight affected entrances now have approximately
+**20–22 × 31–34 px** clear openings or door leaves, lit thresholds and lanterns.
+The small inn now has a paved courtyard passage and a readable tankard sign.
+The wide arch has quiet grey stone paving instead of the gold wedge; timber w2
+has straight posts, rectangular plaster fields, recessed glazing and thin top-lit sills.
+
+**Method:** twenty-one new large built-in image-tool drawings on solid magenta,
+**two alternatives per failed design plus a third timber refinement**, selecting ten. Source PNGs and exact
+prompts are retained in `review/r17-A-redraw-generation.json`; selection reasons
+are in `r17-A-redraw-selection.json`. Same magenta key → painted-row registration
+→ 8× BOX → fixed **23-colour subset of the existing palette** → exact all-64-sample
+RGBA mode → one-pixel contour/material-fleck cleanup. Four painted frontage
+intervals are registered wider before reduction. Code constructs no replacement
+shapes or noise. Existing colour ramps and drawn course donor are retained;
+rows 0/47, hard alpha and zero hidden RGB are verified.
+
+Regenerated all `r17-A-*.png` output comparisons, seams/repeats, sample-neighbour
+1×/4×, L-block, market and both tall/low joins at 1×/3×, with baseline comparisons
+and 1× greyscale squint views. Start at **`review/r17-A-review.html`**.
+All 13 fantasy crops, the current-town crop and Round 15 street replay match.
+Mechanical audit: **31,514/31,514** checks pass; redraw-specific scope/source
+checks are in `r17-A-redraw-audit.json`. This is saved-art self-review, not an
+independent reapproval. Full-city acceptance still fails on the recorded B/C/D
+roof coverage, rear/side walls, firewall, shadows, paving and civic/gate work.
+R15 roofs and current fantasy context remain labelled placeholders.
+
+BRIEF-17's fixed course rows and complete Part A inventory take precedence over
+the panel's belt-removal suggestion and pilot cap. No other part was changed.
+No commit, push or branch change.
+
+Reproduce: `python -B art-drop/review/r17-A-redraw.py --install`, then
+`python -B art-drop/out/city17/compose.py`, then the `r17-A-verify.py` and
+`r17-A-redraw-verify.py` scripts in `art-drop/review/`.
+
+---
+
+<!-- r17-A critic redraw retained notes -->
+# Round 17 — Part A
+
+Drew the complete facade set into **`out/city17/`**: **240 RGBA PNGs**
+from **66 selected drawings**, comprising **182 distinct pixel images**
+and 58 unsuffixed c0 aliases. Shop, door, arch and workshop each have three
+layouts at all three widths. Added oriels, corner ground/upper walls, wall
+ends, eight trade signs and three inn widths. Every facade has c0/c1/c2.
+
+**Method:** **81 large built-in image-tool drawings on solid magenta**.
+Every successful source and exact prompt is retained in
+`review/r17-A-generation.json`; all 81 saved sources are byte-identical to
+the tool outputs, recorded in `r17-A-source-hashes.json`. One interrupted
+inn request was retried. Difficult pieces have two alternatives; the upper
+corner and two-cell bakery have three. Selected B jetties/oriels, corner
+ground B, corner upper C, bakery w1 B and bakery w2 C. Rejected upper-floor
+plinths/steps and shorter or narrower bakery entrances remain in the
+selection sheets.
+
+Border-connected magenta key (all magenta for signs) → painted bounds and
+row-extent registration to square edges → **8× BOX working canvas** → fixed
+34-colour family palette without dithering → exact RGBA mode of **all 64
+samples** per native pixel, including alpha, with lexicographic RGBA ties →
+one-pixel contour/fleck cleanup. Signs preserve aspect within their canvas.
+The upper corner uses a restricted brown subset of the same palette.
+Colourways replace the eight-step plaster/stone ramp with muted warm-grey
+or cool-grey ramps. Code only keys, registers, reduces, locks palettes,
+cleans, recolours, tiles and composites drawings; it constructs no shapes
+or noise in place of drawing.
+
+**Files and measurements:** variant 0 retains the original filename;
+additional layouts use `-v1` and `-v2`. Every facade design has an unsuffixed
+c0 alias and explicit `-c0..2` files.
+
+| Family | Drawings | Native size | Exports |
+|---|---:|---|---:|
+| ground-shop / door / arch / work, three layouts each | 36 | 48/96/144 × 48 | 144 |
+| storey-timber / plaster / stone / jetty / oriel | 15 | 48/96/144 × 48 | 60 |
+| corner-ground / corner-storey | 2 | 48 × 48 | 8 |
+| wall-end-left / wall-end-right | 2 | 8 × 48 | 8 |
+| inn-front | 3 | 48/96/144 × 48 | 12 |
+| sign-smith / baker / apothecary / cobbler / inn / scribe / tailor / butcher | 8 | 32 × 40 | 8 |
+
+There are **80 canvases at 48×48, 72 at 96×48, 72 at 144×48, 8 at 8×48
+and 8 at 32×40**, using **8–31 opaque colours per file**. Alpha is strictly
+**0/255**, hidden RGB is **0,0,0**, and every drawing is one connected
+painted component. Facade footprints are filled with square corners.
+There are no seasonal partners or new terrain bases in this part.
+
+**Course:** `out/city17/COURSE.md` fixes rows **0 and 47** to the retained
+drawn Round 15 donor: endpoints **(43,40,29,255)** and interior
+**(98,66,38,255)**. Painted donor pixels are transferred, not code-drawn.
+Every same-width piece/colourway has identical course bytes. Wall ends
+reveal only their outer three pixels inside existing framing; windows and
+courses stay intact. Corners replace 48 pixels of a lot. The final bakery
+w2 entrance is roughly **22×30 px** with a lit threshold and lantern.
+Jetties retain roughly **6–8-row ledge/shade bands**; separate cast-shadow
+overlays belong to B. Oriel side planes, dark corner returns and top-lit
+sills provide depth. Bread, jars, cloth, forge and pottery identify trades;
+unlit shuttered service fronts differ from usable entrances.
+
+**References:** extracted fantasy house 0–3, hall 0–5, stall 0–1 and well 0
+into `reference/r17/` from the specified Git object, with source metadata.
+`round15-street.png` comes from the unchanged city15 compositor's seed-731
+mounted street. `current-town.png` is the literal **(0,0)–(600,500)** crop
+of the current fantasy panel. That screenshot uses 24 px cells; comparison
+labels preserve its literal 1× size. Per-piece style comparisons use native
+`fantasy-house-2` at matching 1× and 4× scales.
+
+**Reviews:** start at **`review/r17-A-review.html`**. Every export has an
+individual 1×/nearest-neighbour 4× house comparison and self/colour/layout
+seam sheets. All **160 ground-facade exports** also have literal **3×3
+repeats at 1×/4×**, as do the four unchanged terrain backdrops. Signs are
+shown over summer grass and on inspected blank bays. All 182 distinct
+images were inspected through 31 native/4× gallery pages; alias pixels are
+checked separately. Sample-building, corner-stack, wall-end, trade-symbol,
+mounting and clear **48×48 entrance-approach** proofs are included. The
+existing Round 15 review person supplies a native scale reference.
+
+Extended the copied **`out/city17/compose.py`** for the **16×12-cell
+L-block** with T-junction/dead end between two east-west streets and a
+north-south lane, an irregular market with two staggered groups of three
+stalls, and **both 5|1 and 1|5 joins**. Each scene has 1× and exact 3×
+renders beside the Round 15/current-town references at 1×, plus greyscale
+squint at 1×. Composition follows base row, then ground/storeys/roof/overlays.
+Scenes use at most two wall colours and one roof colour; no A module repeats
+more than twice in any five-lot row. Native recipes are saved in metadata.
+
+**Critic:** three saved-art self-review passes, not an independent panel
+verdict or an in-engine test. Part A depth, readability, course joins,
+trade recognition and mounts pass this self-review. **The full-city critic
+does not pass yet.** R15 roofs are explicit B placeholders; firewall and
+cast street shadows are absent. Deep roof coverage, rear/side walls, yards
+and quieter streets await B/C. Current fantasy halls mark cathedral and
+guildhall positions, the well marks the cross/fountain, and two existing
+stall drawings fill six positions. They do not satisfy D's skyline,
+distinct-stall or gate requirements. Roof holes, absent street shadows and
+weak civic/route hierarchy in squint views are recorded as later-part
+failures, not waived. See **`r17-A-critic.json`** for every fail-list item.
+
+The explicit complete Part A request overrides the panel's 40–60-piece cap.
+BRIEF-17's fixed course contract overrides removing all repeated floor
+belts. Adjacent one-pixel lot contours remain; no extra border is added.
+
+**Verification: 31,451 / 31,451 checks pass.** The audit replays **322,048
+exact mode blocks / 20,611,072 samples**, recorded cleanup, all selected
+exports, **16,832 ordered same-width stack pairs**, **540 wall-end mount
+cases**, per-file native/enlarged/seam/repeat sheets and all three scenes.
+There are **19,134 recorded cleanup edits**, **15,817** in selected sources.
+All **8,935 protected pre-existing files** and the complete earlier NOTES
+content are retained. Results and per-file measurements are in
+`r17-A-validation.json` and `r17-A-measurements.json`.
+
+Reproduce with `python -B art-drop/review/r17-A-process.py`, then
+`python -B art-drop/out/city17/compose.py`, then
+`python -B art-drop/review/r17-A-verify.py` (Python and Pillow).
+Only Part A outputs, its review/reference material and this top NOTES
+section were written. **No commit, push or branch change.**
+
+---
+
+<!-- r17-A retained earlier notes -->
+>>>>>>> 5ea1d99554 (art-drop: round 17 part A)
 # Round 16 — Part E: critic-r16E-1 redraw
 
 Redrew **cloudy** and **overcast**, and repaired the single stray pixel at

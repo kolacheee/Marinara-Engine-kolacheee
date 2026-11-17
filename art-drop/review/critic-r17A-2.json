@@ -1,0 +1,1222 @@
+{
+  "part": "A",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "ground-shop-v1-w1-c0",
+    "ground-shop-v1-w1-c1",
+    "ground-shop-v1-w1-c2",
+    "ground-shop-v1-w1"
+  ],
+  "files": {
+    "corner-ground-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The enlarged usable entrance has no legible lantern. In the narrow pier between the display and the opening (approximately x14..19, y12..30), the remaining brown/cream pixels merge into the jamb; neither a lit lamp body nor a distinct hanging bracket survives. The right jamb is also bare. This fails BRIEF-17 A and panel 1 item 8: a usable entrance must have a lit step AND a lantern. The opening and threshold are now large enough, so do not undo that repair. The omission is visible at native 1x and confirmed at 4x/8x/12x in critic-r17A-2-entrance-reference-1.png, critic-r17A-2-entrances-8x-1.png and critic-r17A-2-lantern-details.png."
+      ],
+      "fix": "Use an image-tool edit to restore a readable projecting lantern beside the entrance: a distinct dark bracket and framed warm lit body, separated from the timber pier at 1x. Reallocate a few pixels of display/framing if needed, while retaining the roughly 22x34 clear opening, lit stone threshold, bottle colour blocks, 48x48 square footprint and exact course rows 0/47. Register/reduce with the established mode-sampling method; check the final native pixels, not only the large source. Apply the repair to c0/c1/c2 and the unsuffixed c0 alias, then repeat the matching-scale house comparison and seam checks."
+    },
+    "ground-shop-v1-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The enlarged usable entrance has no legible lantern. In the narrow pier between the display and the opening (approximately x14..19, y12..30), the remaining brown/cream pixels merge into the jamb; neither a lit lamp body nor a distinct hanging bracket survives. The right jamb is also bare. This fails BRIEF-17 A and panel 1 item 8: a usable entrance must have a lit step AND a lantern. The opening and threshold are now large enough, so do not undo that repair. The omission is visible at native 1x and confirmed at 4x/8x/12x in critic-r17A-2-entrance-reference-1.png, critic-r17A-2-entrances-8x-1.png and critic-r17A-2-lantern-details.png."
+      ],
+      "fix": "Use an image-tool edit to restore a readable projecting lantern beside the entrance: a distinct dark bracket and framed warm lit body, separated from the timber pier at 1x. Reallocate a few pixels of display/framing if needed, while retaining the roughly 22x34 clear opening, lit stone threshold, bottle colour blocks, 48x48 square footprint and exact course rows 0/47. Register/reduce with the established mode-sampling method; check the final native pixels, not only the large source. Apply the repair to c0/c1/c2 and the unsuffixed c0 alias, then repeat the matching-scale house comparison and seam checks."
+    },
+    "ground-shop-v1-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The enlarged usable entrance has no legible lantern. In the narrow pier between the display and the opening (approximately x14..19, y12..30), the remaining brown/cream pixels merge into the jamb; neither a lit lamp body nor a distinct hanging bracket survives. The right jamb is also bare. This fails BRIEF-17 A and panel 1 item 8: a usable entrance must have a lit step AND a lantern. The opening and threshold are now large enough, so do not undo that repair. The omission is visible at native 1x and confirmed at 4x/8x/12x in critic-r17A-2-entrance-reference-1.png, critic-r17A-2-entrances-8x-1.png and critic-r17A-2-lantern-details.png."
+      ],
+      "fix": "Use an image-tool edit to restore a readable projecting lantern beside the entrance: a distinct dark bracket and framed warm lit body, separated from the timber pier at 1x. Reallocate a few pixels of display/framing if needed, while retaining the roughly 22x34 clear opening, lit stone threshold, bottle colour blocks, 48x48 square footprint and exact course rows 0/47. Register/reduce with the established mode-sampling method; check the final native pixels, not only the large source. Apply the repair to c0/c1/c2 and the unsuffixed c0 alias, then repeat the matching-scale house comparison and seam checks."
+    },
+    "ground-shop-v1-w1": {
+      "status": "fail",
+      "problems": [
+        "The enlarged usable entrance has no legible lantern. In the narrow pier between the display and the opening (approximately x14..19, y12..30), the remaining brown/cream pixels merge into the jamb; neither a lit lamp body nor a distinct hanging bracket survives. The right jamb is also bare. This fails BRIEF-17 A and panel 1 item 8: a usable entrance must have a lit step AND a lantern. The opening and threshold are now large enough, so do not undo that repair. The omission is visible at native 1x and confirmed at 4x/8x/12x in critic-r17A-2-entrance-reference-1.png, critic-r17A-2-entrances-8x-1.png and critic-r17A-2-lantern-details.png."
+      ],
+      "fix": "Use an image-tool edit to restore a readable projecting lantern beside the entrance: a distinct dark bracket and framed warm lit body, separated from the timber pier at 1x. Reallocate a few pixels of display/framing if needed, while retaining the roughly 22x34 clear opening, lit stone threshold, bottle colour blocks, 48x48 square footprint and exact course rows 0/47. Register/reduce with the established mode-sampling method; check the final native pixels, not only the large source. Apply the repair to c0/c1/c2 and the unsuffixed c0 alias, then repeat the matching-scale house comparison and seam checks."
+    },
+    "ground-shop-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art critic, Round 17 Part A round 2. FAIL: one design / four exports; 236 of 240 PNG exports pass. Read BRIEF-17 in full, panel 1, COURSE.md, and the Round 17 and earlier Round 15 drawing-method sections in NOTES.md. Panel 2 does not exist. The ten designs failed in critic round 1 were reconsidered from their current pixels, along with the entire Part A inventory. The enlarged corner entrance, small inn courtyard passage/tankard, grey-paved wide arch and calmer timber-w2 are accepted. The narrow apothecary entrance size is repaired, but its lantern cue is absent/unreadable. Other small lamps were compared in a dedicated close-up: they retain a contrasting lit body; the apothecary pier does not. The bottle display is small, but the decisive failure is the missing readable lantern, not a newly imposed numerical goods-size rule. Inspected all 182 distinct images at literal 1x and nearest-neighbour 4x using galleries checked against the current asset pixels; the remaining 58 exports are exact c0 aliases. Compared against fantasy-house-2 and examined the sample building at matching 1x/4x, individual apothecary proofs, 8x entrance views and a 12x lamp-detail sheet. Reviewed all 120 distinct ground/inn/corner colourway images as literal 3x3 repeats in critic-r17A-2-repeats-01..10.png; 40 unsuffixed ground aliases are identical. Reviewed current self/colour/layout seam sheets for all 182 distinct images in critic-r17A-2-seams-01..23.png. These are facade modules rather than seamless terrain: intentional doors/windows and required lot contours repeating in a forced 3x3 test are not themselves texture-seam failures. Reviewed corner stacks and wall-end mounts at 4x. The eight trade signs remain nameable at 1x; inspected them over summer grass and mounted on the saved blank facade bay. No terrain bases or seasonal partners belong to A, so seasonal-ground and seasonal-overlay tests are not applicable. Code compared all 116 c1/c2 facade alpha masks with their c0 source: zero mismatches. Independent mechanical checks pass for all 240 files: correct RGBA dimensions (80 at 48x48, 72 at 96x48, 72 at 144x48, eight 8x48 wall ends, eight 32x40 signs), alpha only 0/255, zero RGB under transparency, one connected opaque component, 8-31 opaque colours. All 232 non-sign exports match the exact COURSE.md bytes on both rows 0 and 47. No displaced course, transparent join gap, rounded external grid corner, detached alpha speck, soft-alpha fringe, haze or fog was found. Inspected top-left lighting, recess/sill/plinth depth, outline weight, quiet materials and colourway coherence. Replayed the exact all-64-sample RGBA mode from all 66 selected registered drawings: 264448 native blocks / 16924672 samples. Recorded cleanup replay and colourway mapping reproduce all 240 current PNGs exactly. Also verified all 240 per-file matching-scale 1x/4x house proofs against current pixels. Read the processing pipeline: magenta key, painted-row/interval registration, BOX at 8x, fixed palette, exact RGBA mode, contour/material-fleck cleanup and retained drawn course transfer; no replacement facade-shape or noise drawing was found. This audit starts from the saved registered canvases, rather than independently regenerating images. Verified all 13 fantasy reference crops directly against the requested origin/claude/project-thread-g8wuu1 Git object, the current-town crop against the literal 600x500 fantasy panel, and the Round 15 street against an in-memory city15 seed-731 mounted-street replay. Rebuilt the L-block, market and both tall/low joins in memory with the unmodified city17 compositor; all match their saved native scenes byte-for-byte, and all saved 3x scenes are exact nearest-neighbour. Inspected the three scenes at 1x and 3x, with the latter split into 14 literal crops named critic-r17A-2-<scene>-3x-*.png; inspected each 1x greyscale squint and the Round 15/current-town baselines. Full-city acceptance still FAILS on deferred B/C/D work: ground is exposed where block roof/rear/side mass should be; foreground roofs obscure parts of the middle row; tall/low joins have no firewall or cast street shadow; the cathedral/guildhall proxies do not dominate the square; the six market positions reuse two small existing stall drawings; large paving competes with architecture in greyscale; no finished gate exists. These are explicitly recorded dependencies, not extra failures assigned to Part A PNG basenames. Actual context uses Round 15 roofs and current fantasy ground/hall/well/stall art. Later-part assets were not invented. The fixed shared course in BRIEF-17 takes precedence over the panel suggestion to remove floor belts, and the explicit complete Part A request takes precedence over the panel pilot cap. Only critic-r17A-2.json and critic-r17A-2-*.png review evidence were written. No file in city17 or any pre-existing art-drop file was changed; no commit, push or branch change. "
+}

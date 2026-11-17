@@ -1,0 +1,86 @@
+[
+  {
+    "id": "critic2-fill-a",
+    "output": "roof-fill-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-B-source-critic2-fill-a.png",
+    "fill": true,
+    "roof_only": true,
+    "selected": false,
+    "prompt": "Use case: stylized-concept. Draw one seamless fantasy town terracotta roof-fill texture, square, large and crisp, on a pure solid #ff00ff magenta margin. Reference images: first is the approved narrow roof cap, second the matching town house; match their calm chunky native pixel style, colours and top-left lighting. The new square will be reduced to exactly 48x48 pixels; think 48x48 grid enlarged. Show SIX horizontal staggered overlapping courses, each 8 native pixels high, FOUR broad rectangular clay tiles across each course, each about 12 native pixels wide. Broad tile faces, coherent clusters, no grain or scattered flecks. Each tile has a small warm top-left highlight and a dark lower-right overlap, using the muted terracotta ramp in the reference. No overall horizontal gradient: all columns have equivalent material illumination, so the tile can repeat seamlessly left to right; shading across whole roof planes is carried by approved painted interface adapters. First and last course join at a normal course overlap, as do left/right tiles. Straight square fully painted edges, no outer frame, no thick black outline around the texture, no ridge, no gable, no eave, no house, no perspective trapezoid. This is a flat rectangular extracted texture of a roof slope SEEN FROM ABOVE, not a wall. Place exactly one square centred with a clean magenta margin. Hard pixel clusters, no blur, no noise, no rounded tile corners. Use four-colour terracotta body plus dark seams and rare warm highlights. No text or watermark."
+  },
+  {
+    "id": "critic2-fill-b",
+    "output": "roof-fill-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-B-source-critic2-fill-b.png",
+    "fill": true,
+    "roof_only": true,
+    "selected": false,
+    "source_rows": [
+      69,
+      280,
+      473,
+      658,
+      847,
+      1039,
+      1211
+    ],
+    "target_rows": [
+      0,
+      8,
+      16,
+      24,
+      32,
+      40,
+      48
+    ],
+    "source_columns": [
+      57,
+      1197
+    ],
+    "prompt": "Use case: stylized-concept. Draw ONE square tileable terracotta roof material texture on a pure #ff00ff magenta margin, in the exact chunky pixel-art style of the reference. It will reduce to 48x48 native game pixels. Exactly SIX horizontal overlapping roof tile courses, exactly FOUR tile widths per row (staggered so alternate rows have cut half tiles at their left and right edges), native tile width 12, course height 8. Six rows is critical: six rows total, not five. Tile corners are square stepped pixel corners, not rounded shingles. Calm simple broad flat faces in dark burnt-red terracotta, very restrained ochre top-left highlights, darker lower-right overlap. Match the attached approved cap's native painted material size and value, no orange glow. Each row flat and horizontal. Four broad tiles across, six courses down, one-pixel dark overlap seams. No grain or flecks or gradients or light rays. The first and last row are opposite stagger phases; top and bottom edges must repeat into one another as regular courses. Left/right edges also tile. No perimeter border, no ridge, no eave, no perspective trapezoid, no surrounding objects. Hard square grid pixel art enlarged cleanly, fully filled square, solid magenta surrounding margin. No text.",
+    "used_as_adapter": "north-facing shaded L wing"
+  },
+  {
+    "id": "critic2-fill-c",
+    "output": "roof-fill-w1",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-B-source-critic2-fill-c.png",
+    "fill": true,
+    "roof_only": true,
+    "selected": true,
+    "source_rows": [
+      102,
+      310,
+      495,
+      680,
+      860,
+      1041,
+      1199
+    ],
+    "target_rows": [
+      0,
+      8,
+      16,
+      24,
+      32,
+      40,
+      48
+    ],
+    "source_columns": [
+      59,
+      1195
+    ],
+    "prompt": "Use case: stylized-concept. One seamless 48x48-native terracotta roof-fill tile drawn large and crisp on solid #ff00ff magenta. Use the attached approved roof's broad tile faces and top-left illumination. SIX staggered horizontal overlapping courses in the square. Four broad tile widths across per course, with half-tiles at the edges of alternate rows. Each course corresponds to 8 native pixels high; tile width 12. Use medium warm muted burnt-orange body #ab4a21 / #c25e2a, some #d77a44 top-left light, dark #6e301d overlap seams. Do not let dark reds fill most of the tile faces. Strong coherent pixel clusters, no grain, no small flecks. No black border, no ridge, no eaves, no structures or perspective narrowing. Flat rectangular seamless texture, straight unrounded edges. Every course has square stepped tile lips and a single dark overlap under it, like the reference. All six rows fully visible, all tiles occupy square with a modest magenta surround. Same material illumination left to right; no large lighting gradient or vignette. No text, no noise, no haze."
+  }
+]

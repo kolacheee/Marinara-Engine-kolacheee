@@ -1,0 +1,17 @@
+{
+  "passed": 31520,
+  "checks": 31520,
+  "failed": [],
+  "source_drawings": 104,
+  "selected_drawings": 66,
+  "outputs": 240,
+  "native_output_pixels": 1027072,
+  "mode_blocks": 391168,
+  "mode_samples": 25034752,
+  "recorded_cleanup_edits": 23531,
+  "selected_cleanup_edits": 15931,
+  "same_width_ordered_stack_pairs": 16832,
+  "end_mount_cases": 540,
+  "protected_files": 8935,
+  "scope": "Mechanical checks only. Visual criterion dispositions are in r17-A-critic.json; later-part city failures are not waived."
+}

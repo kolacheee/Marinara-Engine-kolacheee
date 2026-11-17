@@ -1,0 +1,11 @@
+{
+  "selected": "ground-shop-v1-w1-r2a",
+  "reason": "A retains a distinct top-lit projecting bracket and a broader 3x3 amber/cream light after exact native mode reduction. B has a narrower 2x3 lit body and its dark support merges into the display recess.",
+  "patch": [
+    10,
+    16,
+    19,
+    26
+  ],
+  "preserved": "Every pixel outside this registered drawing patch is unchanged, including clear entrance [20,9,42,42], lit threshold, bottles, canopy and course rows. No manually painted native pixels."
+}

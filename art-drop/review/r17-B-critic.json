@@ -1,0 +1,23 @@
+{
+  "part": "B",
+  "review": "critic-r17B-2 repair self-review",
+  "verdict": "pass for scoped repair; full city acceptance deferred",
+  "failed_part_B_files": [],
+  "criteria": {
+    "flat/cardboard": "Deep source-painted slopes retain their value masses; L has separately lit opposing faces.",
+    "bare ground in roof blocks": "All intended roof footprints opaque; deliberate court retained.",
+    "seams/gaps": "Native whole-course adapters preserve depth interfaces and verges; literal fill repeats and shared eaves inspected.",
+    "copy-pasted neighbours": "Existing varied heights, widths, facade/roof kinds and optional accents retained.",
+    "dominant landmark": "Deferred to D; current hall proxies are not final cathedral/guildhall.",
+    "greyscale civic/gate/main-street hierarchy": "Deferred C/D: provisional circulation textures and civic proxies.",
+    "trade signs identifiable": "Part A assets unchanged; not reapproved in B.",
+    "street shadows": "Drawn south/east masks remain, terrain texture visible; false masonry jetty shadow removed."
+  },
+  "panel_B": {
+    "3": "Directional roof planes, complete courses, native hip/gutter joins, narrow/wide coping/flashing wall reveals.",
+    "11": "3\u20136px receiving-surface eave/jetty shade and height-responsive ground shade; bare firewall bays excluded."
+  },
+  "conflicts": "BRIEF-17 governs shared eaves, lot-contained overlays and complete inventory; shadow-specific <=50% alpha exception remains 112/255. User forbids commit/push/branch changes.",
+  "source_replay": "r17-B-critic2-processing.json",
+  "validation": "r17-B-critic2-validation.json"
+}

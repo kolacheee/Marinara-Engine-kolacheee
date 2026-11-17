@@ -1,0 +1,356 @@
+[
+  {
+    "id": "critic1-gable-a",
+    "source": "r17-B-source-critic1-gable-a.png",
+    "output": "roof-gable-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw the roof-gable-w2 sprite in the second reference with the calm tile scale and material craftsmanship of the fantasy house in the first reference. Output ONE isolated roof only, NOT the comparison sheet, NOT the house. Solid perfectly uniform #FF00FF magenta background with margin. Target native sprite 96x96, draw large with strict crisp pixel clusters. Full opaque square roof footprint, straight parallel sides and square corners, no round edges. Elevated three-quarter view looking over front eave toward back: long north-south central ridge, lit left plane and shaded right plane, small triangular timber front gable occupying bottom fifth, horizontal thick front eave. Tile courses must be FEWER and much broader than the second reference: about 10 coherent courses in depth, tiles about 8 native pixels wide and 7 pixels high, quiet broad terracotta blocks with one lit edge, no ripples or mottled specks. Same top-left warm lighting, one native pixel dark umber outline, muted red tile, warm timber gable. No windows, walls, chimneys, floor or ground. No texture noise, dither, smears, antialias, blur, haze, thin broken tile stripes, labels or text. Variant A: compact simple tile clusters, strong clear two-plane roof volume.",
+    "selected": false,
+    "timber_gable": true,
+    "timber_seed_row": 84,
+    "timber_threshold": 90
+  },
+  {
+    "id": "critic1-gable-b",
+    "source": "r17-B-source-critic1-gable-b.png",
+    "output": "roof-gable-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw the roof-gable-w2 sprite in the second reference with the calm tile scale and material craftsmanship of the fantasy house in the first reference. Output ONE isolated roof only, NOT the comparison sheet, NOT the house. Solid perfectly uniform #FF00FF magenta background with margin. Target native sprite 96x96, draw large with strict crisp pixel clusters. Full opaque square roof footprint, straight parallel sides and square corners, no round edges. Elevated three-quarter view looking over front eave toward back: long north-south central ridge, lit left plane and shaded right plane, small triangular timber front gable occupying bottom fifth, horizontal thick front eave. Tile courses must be FEWER and much broader than the second reference: exactly 12 coherent courses in depth, tiles about 7 native pixels wide and 6 pixels high, quiet broad terracotta blocks with one lit edge, no ripples or mottled specks. Same top-left warm lighting, one native pixel dark umber outline, muted red tile, warm timber gable. No windows, walls, chimneys, floor or ground. No texture noise, dither, smears, antialias, blur, haze, thin broken tile stripes, labels or text. Variant B: calmer thinner single-pixel overlaps and narrow ridge caps, about six tiles across each slope; no heavy black grout. Short deliberate shading clusters; front gable fifth remains architectural. Maintain a common native material scale with the house.",
+    "selected": false,
+    "timber_gable": true,
+    "timber_seed_row": 84,
+    "timber_threshold": 90
+  },
+  {
+    "id": "critic1-flat-w2-a",
+    "source": "r17-B-source-critic1-flat-w2-a.png",
+    "output": "roof-flat-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 96x96 pixels, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED SQUARE FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant A: modest low parapets, clearly sunken tile terrace, masonry remains quieter than red roof surface.",
+    "selected": false
+  },
+  {
+    "id": "critic1-flat-w2-b",
+    "source": "r17-B-source-critic1-flat-w2-b.png",
+    "output": "roof-flat-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 96x96 pixels, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED SQUARE FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant B: square terrace, 8 pavers across by 9 courses deep. Small square pavers, NOT large slabs. Straight vertical left and right boundaries with NO taper and NO perspective convergence. Roof plane is visible from above, walls show shaded faces inside. Thin low-contrast mortar and broad quiet painted highlights. Coping only 3 native pixels wide on sides, 4 at front; parapet front 7 native pixels deep. Limit the brightest stone to a single top-left lip.",
+    "selected": false
+  },
+  {
+    "id": "critic1-flat-w1-a",
+    "source": "r17-B-source-critic1-flat-w1-a.png",
+    "output": "roof-flat-w1",
+    "size": [
+      48,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 48x96 pixels, aspect 1:2 portrait, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED TALL RECTANGULAR FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant A: narrow 1:2 townhouse terrace. 3 pavers across by 9 courses deep. Small square pavers, NOT large slabs. Straight vertical left and right boundaries with NO taper and NO perspective convergence. Roof plane is visible from above, walls show shaded faces inside. Thin low-contrast mortar and broad quiet painted highlights. Coping only 3 native pixels wide on sides, 4 at front; parapet front 7 native pixels deep. Limit the brightest stone to a single top-left lip.",
+    "selected": true
+  },
+  {
+    "id": "critic1-flat-w1-b",
+    "source": "r17-B-source-critic1-flat-w1-b.png",
+    "output": "roof-flat-w1",
+    "size": [
+      48,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 48x96 pixels, aspect 1:2 portrait, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED RECTANGULAR FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant B: narrow 1:2 townhouse terrace. 4 pavers across by 10 courses deep. Small square pavers, NOT large slabs. Straight vertical left and right boundaries with NO taper and NO perspective convergence. Roof plane is visible from above, walls show shaded faces inside. Thin low-contrast mortar and broad quiet painted highlights. Coping only 3 native pixels wide on sides, 4 at front; parapet front 7 native pixels deep. Limit the brightest stone to a single top-left lip. Calm grey tan stone, and muted clay surface; no white borders.",
+    "selected": false
+  },
+  {
+    "id": "critic1-flat-w3-a",
+    "source": "r17-B-source-critic1-flat-w3-a.png",
+    "output": "roof-flat-w3",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 144x96 pixels, landscape 3:2, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED RECTANGULAR FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant A: wide 3:2 terrace, 13 pavers across by 9 courses deep. Small square pavers, NOT large slabs. Straight vertical left and right boundaries with NO taper and NO perspective convergence. Roof plane is visible from above, walls show shaded faces inside. Thin low-contrast mortar and broad quiet painted highlights. Coping only 3 native pixels wide on sides, 4 at front; parapet front 7 native pixels deep. Limit the brightest stone to a single top-left lip. Calm grey tan stone, and muted clay surface; no white borders.",
+    "selected": true
+  },
+  {
+    "id": "critic1-flat-w3-b",
+    "source": "r17-B-source-critic1-flat-w3-b.png",
+    "output": "roof-flat-w3",
+    "size": [
+      144,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 144x96 pixels, landscape 3:2, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED RECTANGULAR FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant B: NO taper, NO converging sides. Straight vertical rectangular boundaries. 14 small square pavers across and 9 courses back. Muted grey-tan coping tops only 3 pixels wide, clear shaded inner faces. Front parapet 8 native pixels tall. Restrained warm grey stone and red clay, precise simple pixel clusters, no white frame.",
+    "selected": false
+  },
+  {
+    "id": "critic1-dormer-a",
+    "source": "r17-B-source-critic1-dormer-a.png",
+    "output": "dormer-3",
+    "size": [
+      24,
+      28
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE tiny fantasy medieval gabled dormer window roof overlay, target 24x28 native pixels, drawn large and crisp on perfectly flat solid #FF00FF magenta background with margin. Reference1 guides materials, reference2 shows the failed dormer box to replace. Output just one dormer, no house or comparison. High three-quarter town view: small red tiled pitched roof with lit left slope, dark right roof return, projecting eave. The FRONT FACE must feature one unmistakable large DARK RECESSED WINDOW, 8x10 native pixels of near-black blue-brown opening, warm top-left lit wooden frame and a projecting pale stone sill. A single simple crossbar, two broad dim glass panes, no fussy lattice. The visible side wall is shaded warm plaster. The opening dominates the lower half; no blank ochre face. Compact stepped square pixel contour, exactly one native pixel dark umber outline. Large colour clusters surviving 24x28 reduction. No specks, noise, smears, blur, hazy shadows, background or ground. Variant A: clear paired dark panes inside deep timber surround, little red gable roof.",
+    "selected": false,
+    "overlay": true
+  },
+  {
+    "id": "critic1-dormer-b",
+    "source": "r17-B-source-critic1-dormer-b.png",
+    "output": "dormer-3",
+    "size": [
+      24,
+      28
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE tiny fantasy medieval gabled dormer window roof overlay, target 24x28 native pixels, drawn large and crisp on perfectly flat solid #FF00FF magenta background with margin. Reference1 guides materials, reference2 shows the failed dormer box to replace. Output just one dormer, no house or comparison. High three-quarter town view: small red tiled pitched roof with lit left slope, dark right roof return, projecting eave. The FRONT FACE must feature one unmistakable large DARK RECESSED WINDOW, 8x10 native pixels of near-black blue-brown opening, warm top-left lit wooden frame and a projecting pale stone sill. A single simple crossbar, two broad dim glass panes, no fussy lattice. The visible side wall is shaded warm plaster. The opening dominates the lower half; no blank ochre face. Compact stepped square pixel contour, exactly one native pixel dark umber outline. Large colour clusters surviving 24x28 reduction. No specks, noise, smears, blur, hazy shadows, background or ground. Variant B: a lower and quieter 3-course red roof, 2 broader dark glass panes with a single central vertical mullion, thin pale sill and strong black recess. Less orange frame, use warm brown timber. The window takes 40 percent of the height. Compact silhouette, chunky native clusters.",
+    "selected": true,
+    "overlay": true
+  },
+  {
+    "id": "critic1-firewall-a",
+    "source": "r17-B-source-critic1-firewall-a.png",
+    "output": "firewall-w0",
+    "size": [
+      16,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE plain medieval masonry party-wall STRIP sprite, 16x48 native pixels, tall 1:3 rectangle, large on perfectly flat solid #FF00FF magenta with margin. Reference1 is house material guide, reference2 is failed wall strip to replace, do not draw sheets. Fully painted tall rectangular wall plane with square corners and straight sides. Top 4 native pixels have a proper continuous coping stone: lit narrow top face, warm grey top, dark shaded front lip. Then 40 pixels of PLAIN SMALL-COURSED warm grey tan limestone, 4 evenly spaced courses about 10 pixels high, staggered mortar seams, subtle light upper-left and muted brown-grey low shadow, no isolated rectangular highlight stamps, no bright patches. Bottom 4 pixels have thin continuous lead flashing, charcoal grey. Main masonry BODY must tile seamlessly left-right and top-bottom with no outline on internal body edges; mortar and stone continue through both side edges, borderless body. This is not a freestanding column; do not add dark vertical border rails or stone corner quoins. Stone courses have quiet broad colour planes and only restrained native pixel bevels, consistent with reference house plinth. No bricks popping forward, no cracked speckles, no noise or dither, no grass or ground, no windows, no text, no haze or rounded corners. Variant A: low contrast warm grey tan masonry, strongest modelling on coping.",
+    "selected": true,
+    "no_colours": true,
+    "fill": true,
+    "source_rows": [
+      136,
+      274,
+      674,
+      698,
+      1068,
+      1090,
+      1474,
+      1498,
+      1927,
+      2032
+    ],
+    "target_rows": [
+      0,
+      4,
+      13,
+      14,
+      23,
+      24,
+      33,
+      34,
+      44,
+      48
+    ],
+    "source_columns": [
+      130,
+      592
+    ]
+  },
+  {
+    "id": "critic1-firewall-b",
+    "source": "r17-B-source-critic1-firewall-b.png",
+    "output": "firewall-w0",
+    "size": [
+      16,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE plain medieval masonry party-wall STRIP sprite, 16x48 native pixels, tall 1:3 rectangle, large on perfectly flat solid #FF00FF magenta with margin. Reference1 is house material guide, reference2 is failed wall strip to replace, do not draw sheets. Fully painted tall rectangular wall plane with square corners and straight sides. Top 4 native pixels have a proper continuous coping stone: lit narrow top face, warm grey top, dark shaded front lip. Then 40 pixels of PLAIN SMALL-COURSED warm grey tan limestone, 4 evenly spaced courses about 10 pixels high, staggered mortar seams, subtle light upper-left and muted brown-grey low shadow, no isolated rectangular highlight stamps, no bright patches. Bottom 4 pixels have thin continuous lead flashing, charcoal grey. Main masonry BODY must tile seamlessly left-right and top-bottom with no outline on internal body edges; mortar and stone continue through both side edges, borderless body. This is not a freestanding column; do not add dark vertical border rails or stone corner quoins. Stone courses have quiet broad colour planes and only restrained native pixel bevels, consistent with reference house plinth. No bricks popping forward, no cracked speckles, no noise or dither, no grass or ground, no windows, no text, no haze or rounded corners. Variant B: carefully limit detail to four flat stone courses and very fine mortar. Coping top face is visible as a narrow warm grey lit band, with a distinct darker side below. Keep masonry body an evenly lit middle grey-beige, no isolated dark or light rectangular patches. Borderless masonry repeats through sides. Deliberate native pixels, almost no stone surface texture.",
+    "selected": false,
+    "fill": true,
+    "no_colours": true
+  },
+  {
+    "id": "critic1-fill-a",
+    "source": "r17-B-source-critic1-fill-a.png",
+    "output": "roof-fill-w1",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art seamless ROOF FILL TILE on perfectly uniform solid #FF00FF magenta background, square painted swatch with margin, not a full building. Native 48x48 pixels but paint large for later exact mode reduction. Fantasy medieval muted terracotta red tiles viewed on a south-facing roof slope from high three-quarter angle. EXACTLY SIX overlapping horizontal courses in depth, 8 native pixels per course. Tiles about 8 native pixels wide: six tile widths across, with alternate half-tile stagger. EVERY tile has quiet broad flat colour, one narrow light upper-left bevel and a thin darker overlap beneath. Consistent top-left lighting but no large cross-tile gradient. Entire 48x48 square is individually drawn with restrained subtle variation; NO repeated miniature stamp, NO checkerboard. Left/right AND top/bottom edges must tile in phase with no seam: borderless, no frame, no outline around swatch, no eave, no ridge, no fascia, no whole roof. Same coarse tile size as fantasy-house-2. Soft muted clay palette with dark warm umber joins, not orange neon. Crisp rectilinear native pixel clusters, square outer corners. No specks, noise, tiny highlights, dither, curved tile bottoms, smears, blur, labels or text. Variant A: calm south slope, 6 full courses, horizontal overlap lines aligned at row boundaries.",
+    "selected": false,
+    "fill": true
+  },
+  {
+    "id": "critic1-fill-b",
+    "source": "r17-B-source-critic1-fill-b.png",
+    "output": "roof-fill-w1",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. Draw ONE production pixel-art seamless ROOF FILL TILE on perfectly uniform solid #FF00FF magenta background, square painted swatch with margin, not a full building. Native 48x48 pixels but paint large for later exact mode reduction. Fantasy medieval muted terracotta red tiles viewed on a south-facing roof slope from high three-quarter angle. EXACTLY SIX overlapping horizontal courses in depth, 8 native pixels per course. Tiles about 8 native pixels wide: six tile widths across, with alternate half-tile stagger. EVERY tile has quiet broad flat colour, one narrow light upper-left bevel and a thin darker overlap beneath. Consistent top-left lighting but no large cross-tile gradient. Entire 48x48 square is individually drawn with restrained subtle variation; NO repeated miniature stamp, NO checkerboard. Left/right AND top/bottom edges must tile in phase with no seam: borderless, no frame, no outline around swatch, no eave, no ridge, no fascia, no whole roof. Same coarse tile size as fantasy-house-2. Soft muted clay palette with dark warm umber joins, not orange neon. Crisp rectilinear native pixel clusters, square outer corners. No specks, noise, tiny highlights, dither, curved tile bottoms, smears, blur, labels or text. Variant B: calm warm burnt sienna, SIX COMPLETE tile courses of exactly EQUAL height, first course starts flush at TOP edge and sixth course ends at BOTTOM edge. No cropped half row at bottom. Each course has six full tile-widths, stagger every other course by half. Similar muted palette to roof-ridge, subtle weathered flat clusters but no decorative hooks. Full tile is intentionally varied across all six courses. The tile has no global brightness falloff: all edges same lighting.",
+    "selected": false,
+    "fill": true
+  },
+  {
+    "id": "critic1-fill-c",
+    "source": "r17-B-source-critic1-fill-c.png",
+    "output": "roof-fill-w1",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE seamless square roof-fill swatch matching the broad SOUTH SLOPE tiles of the first reference, the ridge cap. Use second reference house as material guide. Draw ONLY a borderless square 48x48 native pixel patch of roof tiling, large on uniform solid #FF00FF magenta with margin. It is a sloping tiled roof, NOT paving or a wall. Same overlapping warm terracotta tiles as reference: about six tiles across by SIX COMPLETE horizontal courses, staggered alternate courses. Each tile approximately 8 native pixels wide by 8 deep, thin dark lower overlap, narrow warm lit top-left plane. Consistent dimensional overlapping lips, square pixel contours; calm native clusters. No round swatch edges, no outer outline, NO ridge, fascia, eave, frame, wall or props. All four sides are CUT THROUGH continuous tiling to repeat seamlessly. First full course begins at top edge, sixth full course finishes exactly at bottom edge. Six equal course heights. Individually paint whole48x48 with slight quiet tile variation, never a repeated 16x16 miniature stamp. Warm burnt terracotta palette matched to reference, avoid beige or yellow tile faces. No speckle, noise, dither, haze, blur, thin rippled stripes or text. Variant C: carefully match the source ridge tile overlap scale, clean strong native-pixel tile boundaries.",
+    "selected": true,
+    "fill": true,
+    "source_rows": [
+      126,
+      310,
+      474,
+      640,
+      807,
+      977,
+      1128
+    ],
+    "source_columns": [
+      126,
+      1128
+    ],
+    "target_rows": [
+      0,
+      8,
+      16,
+      24,
+      32,
+      40,
+      48
+    ],
+    "roof_only": true
+  },
+  {
+    "id": "critic1-flat-w2-c",
+    "source": "r17-B-source-critic1-flat-w2-c.png",
+    "output": "roof-flat-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw ONE isolated fantasy medieval flat rooftop terrace sprite, replacing the failed framed flat panel shown in reference2; reference1 is the material and pixel scale guide. Output the asset alone on perfectly solid #FF00FF magenta with margin, never a comparison sheet. Native target 96x96 pixels, draw large crisp pixel art. View high three-quarter looking north over the front parapet. FULLY PAINTED SQUARE FOOTPRINT, straight vertical sides horizontal top and bottom, absolutely square corners. A horizontal terrace recedes backward occupying most of the roof, made of restrained muted red terracotta pavers about 8x8 native pixels, staggered joints, subtle deliberate worn edge clusters. Substantial stone parapet around perimeter: narrow warm-grey LIT coping TOPS, a plainly visible shaded INNER vertical face 6 native pixels deep at back, darker east return, LEFT wall lit, front parapet has a clear TOP face and a substantial 8-pixel front fascia with two stone courses. No bright cream picture-frame border: warm grey/ochre stone shaded like the house's plinth, quietly modelled. Broad light from top-left, very dark umber single pixel silhouette. Show real depth, inner wall shadows and stone construction. No flat giant panels, no ground or facade below roof, no props, greenery, windows, railings or crenellations. No noise, tiny flecks, dither, blur, smears, rounded corners, text. Variant C: seven square pavers across by eight courses back, EVERY mortar line a full bold ONE NATIVE PIXEL wide and continuous, strong medium-dark terracotta joints so exact mode reduction keeps them. No fine texture on pavers; each has just 2-3 large connected shading blocks. Rectangular straight vertical sides no taper. Model stone with 3-4 flat shades per stone block, no stone speckle. Moderate warm-grey coping, clear inward-facing wall and top faces; no bright white frame. Very calm pixel-art craftsmanship.",
+    "selected": true
+  },
+  {
+    "id": "critic1-valley-a",
+    "source": "r17-B-source-critic1-valley-a.png",
+    "output": "roof-valley",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE modular concave ROOF VALLEY junction, a fully painted 48x48 native square patch drawn LARGE on uniform #FF00FF magenta margin. Reference1 shows the EXACT roof-fill material to match (tiles 8x8 native, six courses per48), reference2 house style. This is an unframed interior roof junction, never an entire miniature roof. Two deliberately oriented terracotta roof planes slope DOWN into a continuous narrow dark lead gutter running from TOP RIGHT CORNER to BOTTOM LEFT CORNER. The gutter must enter and leave exactly at those corners, continuing across the tile boundary, no closed ends. Upper-left triangular plane is east-facing, tiles run in VERTICAL courses; lower-right triangular plane is south/north-arm slope, tiles run in HORIZONTAL courses. Same tile SIZE, colour ramp, spacing and phase as reference1. Outer sides are cut THROUGH the tiles, borderless, NO outline rectangle, NO ridge border, NO bottom fascia, NO frame. Full square opaque coverage, not an L silhouette. Lit tile upper-left edges, clear narrow depressed gutter with ONE native pixel dark channel and modest lead lip. Low contrast coherent terracotta tones. Make the diagonal visibly CONCAVE, not raised hip. Crisp square pixel grid, broad connected clusters, no noise or specks, no dither, blur, smears, fog, text, props or walls. Variant A: gentle restrained channel, sober dark clay shade in east-facing upper-left triangle.",
+    "selected": false,
+    "fill": true,
+    "roof_only": true,
+    "keep_lead": true,
+    "preserve_diagonal": true
+  },
+  {
+    "id": "critic1-valley-b",
+    "source": "r17-B-source-critic1-valley-b.png",
+    "output": "roof-valley",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE modular concave ROOF VALLEY junction, a fully painted 48x48 native square patch drawn LARGE on uniform #FF00FF magenta margin. Reference1 shows the EXACT roof-fill material to match (tiles 8x8 native, six courses per48), reference2 house style. This is an unframed interior roof junction, never an entire miniature roof. Two deliberately oriented terracotta roof planes slope DOWN into a continuous narrow dark lead gutter running from TOP RIGHT CORNER to BOTTOM LEFT CORNER. The gutter must enter and leave exactly at those corners, continuing across the tile boundary, no closed ends. Upper-left triangular plane is east-facing, tiles run in VERTICAL courses; lower-right triangular plane is south/north-arm slope, tiles run in HORIZONTAL courses. Same tile SIZE, colour ramp, spacing and phase as reference1. Outer sides are cut THROUGH the tiles, borderless, NO outline rectangle, NO ridge border, NO bottom fascia, NO frame. Full square opaque coverage, not an L silhouette. Lit tile upper-left edges, clear narrow depressed gutter with ONE native pixel dark channel and modest lead lip. Low contrast coherent terracotta tones. Make the diagonal visibly CONCAVE, not raised hip. Crisp square pixel grid, broad connected clusters, no noise or specks, no dither, blur, smears, fog, text, props or walls. Variant B: very clear lead valley trough, tiles meeting it at clean stepped cut ends; no light/dark square swatch boundary, both planes use the same base clay values.",
+    "selected": true,
+    "fill": true,
+    "roof_only": true,
+    "keep_lead": true,
+    "preserve_diagonal": true
+  },
+  {
+    "id": "critic1-hip-end-a",
+    "source": "r17-B-source-critic1-hip-end-a.png",
+    "output": "roof-hip-end",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE modular HIP-END transition for a medieval roof, fully painted 48x48 native square, large crisp pixel art on perfectly flat #FF00FF magenta margin. First reference is the exact terracotta tile fill material and 8x8 native tile scale, second the house style. This piece is the RIGHT TERMINAL of an east-west roof wing. A narrow raised ridge ENTERS from the MIDDLE OF THE LEFT EDGE, runs horizontally to about x=20 out of48, then forks to the TOP RIGHT and BOTTOM RIGHT corners, making a convex triangular EAST HIP face. Top-left triangular plane lit warm red, bottom-left plane red midtone, broad right hip darker red. Coherent directional overlapping tiles along each pitch, six native tile widths across. LEFT EDGE CUTS THROUGH the incoming ridge and roof planes: absolutely NO frame or fascia there. TOP AND BOTTOM edges are cut through tile courses too; fascia only as a THIN darker rightmost exposed return (1 native pixel), NO bottom front gable, NO wood, NO full miniature roof. Square opaque footprint no holes or rounded corners. Match fill clay ramp and course size, clean raised hip seams meeting exactly at corners, top-left lighting and dark umber edges only on the outside RIGHT. No text, props, blur, smears, fine specks, dither, noise or haze. Variant A: short incoming horizontal ridge and a clear broad triangular terminal hip.",
+    "selected": false,
+    "fill": true,
+    "roof_only": true,
+    "keep_lead": true
+  },
+  {
+    "id": "critic1-hip-end-b",
+    "source": "r17-B-source-critic1-hip-end-b.png",
+    "output": "roof-hip-end",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE modular HIP-END transition for a medieval roof, fully painted 48x48 native square, large crisp pixel art on perfectly flat #FF00FF magenta margin. First reference is the exact terracotta tile fill material and 8x8 native tile scale, second the house style. This piece is the RIGHT TERMINAL of an east-west roof wing. A narrow raised ridge ENTERS from the MIDDLE OF THE LEFT EDGE, runs horizontally to about x=20 out of48, then forks to the TOP RIGHT and BOTTOM RIGHT corners, making a convex triangular EAST HIP face. Top-left triangular plane lit warm red, bottom-left plane red midtone, broad right hip darker red. Coherent directional overlapping tiles along each pitch, six native tile widths across. LEFT EDGE CUTS THROUGH the incoming ridge and roof planes: absolutely NO frame or fascia there. TOP AND BOTTOM edges are cut through tile courses too; fascia only as a THIN darker rightmost exposed return (1 native pixel), NO bottom front gable, NO wood, NO full miniature roof. Square opaque footprint no holes or rounded corners. Match fill clay ramp and course size, clean raised hip seams meeting exactly at corners, top-left lighting and dark umber edges only on the outside RIGHT. No text, props, blur, smears, fine specks, dither, noise or haze. Variant B: subtle narrow hip caps and calm large tile planes, ridge enters left at precisely half height, right triangular plane unmistakably slopes away.",
+    "selected": false,
+    "fill": true,
+    "roof_only": true,
+    "keep_lead": true
+  },
+  {
+    "id": "critic1-shadow-w2-a",
+    "source": "r17-B-source-critic1-shadow-w2-a.png",
+    "output": "shadow-street-w2",
+    "size": [
+      96,
+      32
+    ],
+    "prompt": "Draw ONE flat cast-shadow mask for a straight medieval building on perfectly solid #FF00FF magenta. Crisp hard-edged pixel art, one solid dark charcoal silhouette, no texture or gradients. Native target 96 pixels WIDE by32 pixels HIGH; wide 3:1 rectangle, draw large with ample magenta margin. The shape is ONE continuous horizontal strip all the way across the building width. Top edge perfectly horizontal. Bottom boundary horizontal at full32-pixel depth across the entire middle and right end. At the LEFT TERMINAL only, a short 6-native-pixel stair diagonal joins the left edge at y26 to the bottom at x6,y32. Everything right of x6 is full depth. Right end perfectly vertical; square corners. No notches or tabs in the middle, no repeating steps at48px divisions, no holes. This is a single connected cast shadow on the south/east receiving surface, NOT a building drawing. Solid dark #1e1e1e fill on magenta, no translucency in this source drawing; alpha will be set afterward. No border, blur, haze, dither, rounded corners, labels or text.",
+    "selected": true,
+    "shadow": true,
+    "silhouette": true
+  },
+  {
+    "id": "critic1-shadow-w3-a",
+    "source": "r17-B-source-critic1-shadow-w3-a.png",
+    "output": "shadow-street-w3",
+    "size": [
+      144,
+      32
+    ],
+    "prompt": "Draw ONE flat cast-shadow mask for a straight medieval building on perfectly solid #FF00FF magenta. Crisp hard-edged pixel art, one solid dark charcoal silhouette, no texture or gradients. Native target 144 pixels WIDE by32 pixels HIGH; wide 4.5:1 rectangle, draw large with ample magenta margin. The shape is ONE continuous horizontal strip all the way across the building width. Top edge perfectly horizontal. Bottom boundary horizontal at full32-pixel depth across the entire middle and right end. At the LEFT TERMINAL only, a short 6-native-pixel stair diagonal joins the left edge at y26 to the bottom at x6,y32. Everything right of x6 is full depth. Right end perfectly vertical; square corners. No notches or tabs in the middle, no repeating steps at48px divisions, no holes. This is a single connected cast shadow on the south/east receiving surface, NOT a building drawing. Solid dark #1e1e1e fill on magenta, no translucency in this source drawing; alpha will be set afterward. No border, blur, haze, dither, rounded corners, labels or text.",
+    "selected": true,
+    "shadow": true,
+    "silhouette": true
+  },
+  {
+    "id": "critic1-hip-end-c",
+    "source": "r17-B-source-critic1-hip-end-c.png",
+    "output": "roof-hip-end",
+    "size": [
+      48,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE roof HIP-END module for the RIGHT end of a TWO-CELL-DEEP east-west roof wing. Native size 48 pixels wide x96 pixels deep (1:2 tall rectangle). Draw large on perfectly flat #FF00FF magenta, margin. Material and exact 8x8 native tile scale from reference1, house style from reference2. FULL OPAQUE RECTANGULAR FOOTPRINT: straight parallel vertical sides, square corners. Incoming narrow horizontal ridge ENTERS LEFT EDGE at y48 (exactly halfway down) and extends 8 native pixels to the RIGHT, then forks diagonally to the TOP-RIGHT and BOTTOM-RIGHT corners. This creates one broad triangular EAST HIP face covering the right part, tiled in VERTICAL staggered courses (tiles flowing down toward RIGHT edge); upper-left triangle is the north slope with horizontal tile courses, lower-left triangle is south slope with horizontal tile courses. Upper-left lit clay, lower-left warm clay, right hip darker muted red. Left edge is OPEN THROUGH ROOF PAINT, with matching tiles continuing outside: NO left border, NO front gable, NO timber, NO miniature complete roof. Rightmost outer return is one dark native pixel. NO bottom internal fascia, no frame. Exactly six tile widths across and twelve tile heights down, not enlarged48x48 tiles. Raised hip seams and narrow ridge cap, very thin dark overlaps, 2-3 connected shades per tile. Perfectly square overall footprint. No walls, props, dither, specks, noise, smears, blur or text. Variant C adapted to actual96px-deep receiver: a complete terminal end-cap of an east-west long roof with only its right end exposed.",
+    "selected": true,
+    "fill": true,
+    "roof_only": true,
+    "keep_lead": true
+  },
+  {
+    "id": "critic1-gable-c",
+    "source": "r17-B-source-critic1-gable-c.png",
+    "output": "roof-gable-w2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: precise-object-edit. Draw ONE gable roof sprite, native96x96, matching EXACT native tile scale of reference1 (approved144x96 gable roof) and reference2 (approved48x96 gable roof); reference3 house is material/view guide. The width96 roof must have TWELVE tile widths across in total, SIX TILE WIDTHS ON EACH SIDE OF THE RIDGE, individual tiles approximately8 native pixels wide by7 high. DO NOT use four huge tiles per slope. About twelve courses down. Broad bounded clusters with a single restrained highlight and thin dark overlap; not thin ripples or noisy mottling. Draw large on solid uniform #FF00FF magenta with margin. Square fully painted opaque rectangular footprint with absolutely straight side edges and square corners, no taper. Elevated three-quarter top view, north-south ridge centered atx48, left slope warm lit terracotta, right slope quieter shaded red clay. Small timber front gable in bottomfifth, no opening, straight horizontal timber eave atbottom. Roof must recede far back above eave. Very thin ridge cap, one native pixel umber outline. No facade, ground, chimney, skylight, props, blur, smears, haze, dither, scattered specks, labels or text. Variant C: exact common native material scale, six8px tiles across left slope and six across right, not merely fewer courses.",
+    "selected": true,
+    "timber_gable": true,
+    "timber_seed_row": 84,
+    "timber_threshold": 90
+  }
+]

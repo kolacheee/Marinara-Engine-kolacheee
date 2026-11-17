@@ -1,0 +1,5137 @@
+{
+  "total": 1253,
+  "passed": 1253,
+  "failures": [],
+  "repaired_files": [
+    "out/city17/compose.py"
+  ],
+  "passing_pngs_unchanged": 137,
+  "protected_files": 11939,
+  "changed_protected_files": [],
+  "mode_blocks": 241920,
+  "mode_samples": 15482880,
+  "join_metrics": [
+    {
+      "colour": 0,
+      "x": 96,
+      "y": [
+        160,
+        184
+      ],
+      "luma_delta": 2.2916666666666714
+    },
+    {
+      "colour": 0,
+      "x": 96,
+      "y": [
+        208,
+        232
+      ],
+      "luma_delta": 0.515625
+    },
+    {
+      "colour": 0,
+      "x": 288,
+      "y": [
+        160,
+        184
+      ],
+      "luma_delta": 2.8489583333333286
+    },
+    {
+      "colour": 0,
+      "x": 288,
+      "y": [
+        208,
+        232
+      ],
+      "luma_delta": 1.2760416666666714
+    },
+    {
+      "colour": 1,
+      "x": 96,
+      "y": [
+        160,
+        184
+      ],
+      "luma_delta": 2.338541666666657
+    },
+    {
+      "colour": 1,
+      "x": 96,
+      "y": [
+        208,
+        232
+      ],
+      "luma_delta": 0.5
+    },
+    {
+      "colour": 1,
+      "x": 288,
+      "y": [
+        160,
+        184
+      ],
+      "luma_delta": 2.7291666666666714
+    },
+    {
+      "colour": 1,
+      "x": 288,
+      "y": [
+        208,
+        232
+      ],
+      "luma_delta": 0.984375
+    },
+    {
+      "colour": 2,
+      "x": 96,
+      "y": [
+        160,
+        184
+      ],
+      "luma_delta": 2.578125
+    },
+    {
+      "colour": 2,
+      "x": 96,
+      "y": [
+        208,
+        232
+      ],
+      "luma_delta": 0.5885416666666714
+    },
+    {
+      "colour": 2,
+      "x": 288,
+      "y": [
+        160,
+        184
+      ],
+      "luma_delta": 3.140625
+    },
+    {
+      "colour": 2,
+      "x": 288,
+      "y": [
+        208,
+        232
+      ],
+      "luma_delta": 1.1770833333333286
+    }
+  ],
+  "checks": [
+    {
+      "check": "every protected file is byte-identical",
+      "passed": true
+    },
+    {
+      "check": "all 137 passing Part B exports retained",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-0-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png palette",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "chimney-3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-0-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png palette",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "dormer-3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png palette",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "firewall-w0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-fill-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-flat-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-gable-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-end.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-hip-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-ridge-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-valley-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png alpha",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png palette",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "roof-valley.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-eave-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-jetty-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png alpha",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png palette",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "shadow-street-w3.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-0-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c0.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-1-c2.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png unchanged bytes",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png native dimensions",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png alpha",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png palette",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png reviewed pixels",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png exact 1x/4x reference proof",
+      "passed": true
+    },
+    {
+      "check": "skylight-1.png exact seam enlargement",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a exact mode",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 63,6",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 55,7",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 77,27",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 79,27",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 62,34",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 79,81",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 66,89",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 72,102",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 58,109",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 68,123",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 87,123",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 42,130",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 88,137",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 58,157",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 85,157",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 55,158",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 332,161",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 192,162",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 75,163",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 263,163",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 122,164",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 156,170",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 206,177",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 205,178",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 29,185",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 295,189",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 18,222",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 158,223",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup source 160,224",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-a cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b exact mode",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 57,35",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 45,45",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 44,56",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 44,87",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 81,92",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 59,147",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 314,160",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 117,164",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 150,171",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 249,171",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 309,178",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 213,188",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 244,189",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 39,193",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 198,200",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 212,207",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 280,208",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 317,216",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 307,217",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 195,224",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 218,232",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 234,233",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 335,235",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup source 335,236",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-b cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c exact mode",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 12,102",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 72,164",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 60,181",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 55,186",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 53,208",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 199,225",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup source 118,226",
+      "passed": true
+    },
+    {
+      "check": "critic3-L-c cleanup replay",
+      "passed": true
+    },
+    {
+      "check": "L c0 native dimensions",
+      "passed": true
+    },
+    {
+      "check": "L c0 same exact L footprint; no ground holes",
+      "passed": true
+    },
+    {
+      "check": "L c0 selected drawing remap",
+      "passed": true
+    },
+    {
+      "check": "L c0 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "L c0 one-pixel exposed contour",
+      "passed": true
+    },
+    {
+      "check": "L c0 eave has no internal verge cuts",
+      "passed": true
+    },
+    {
+      "check": "L c0 both end verges survive",
+      "passed": true
+    },
+    {
+      "check": "L c0 west lit / east shaded",
+      "passed": true
+    },
+    {
+      "check": "L c0 south lit / north shaded",
+      "passed": true
+    },
+    {
+      "check": "L c0 no rectangular value jump x96 y160",
+      "passed": true
+    },
+    {
+      "check": "L c0 no rectangular value jump x96 y208",
+      "passed": true
+    },
+    {
+      "check": "L c0 no rectangular value jump x288 y160",
+      "passed": true
+    },
+    {
+      "check": "L c0 no rectangular value jump x288 y208",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c0 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c0 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c0 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c0 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c0 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c0 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c0 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c0 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c0 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "L c1 native dimensions",
+      "passed": true
+    },
+    {
+      "check": "L c1 same exact L footprint; no ground holes",
+      "passed": true
+    },
+    {
+      "check": "L c1 selected drawing remap",
+      "passed": true
+    },
+    {
+      "check": "L c1 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "L c1 one-pixel exposed contour",
+      "passed": true
+    },
+    {
+      "check": "L c1 eave has no internal verge cuts",
+      "passed": true
+    },
+    {
+      "check": "L c1 both end verges survive",
+      "passed": true
+    },
+    {
+      "check": "L c1 west lit / east shaded",
+      "passed": true
+    },
+    {
+      "check": "L c1 south lit / north shaded",
+      "passed": true
+    },
+    {
+      "check": "L c1 no rectangular value jump x96 y160",
+      "passed": true
+    },
+    {
+      "check": "L c1 no rectangular value jump x96 y208",
+      "passed": true
+    },
+    {
+      "check": "L c1 no rectangular value jump x288 y160",
+      "passed": true
+    },
+    {
+      "check": "L c1 no rectangular value jump x288 y208",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c1 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c1 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c1 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c1 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c1 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c1 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c1 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c1 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c1 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "L c2 native dimensions",
+      "passed": true
+    },
+    {
+      "check": "L c2 same exact L footprint; no ground holes",
+      "passed": true
+    },
+    {
+      "check": "L c2 selected drawing remap",
+      "passed": true
+    },
+    {
+      "check": "L c2 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "check": "L c2 one-pixel exposed contour",
+      "passed": true
+    },
+    {
+      "check": "L c2 eave has no internal verge cuts",
+      "passed": true
+    },
+    {
+      "check": "L c2 both end verges survive",
+      "passed": true
+    },
+    {
+      "check": "L c2 west lit / east shaded",
+      "passed": true
+    },
+    {
+      "check": "L c2 south lit / north shaded",
+      "passed": true
+    },
+    {
+      "check": "L c2 no rectangular value jump x96 y160",
+      "passed": true
+    },
+    {
+      "check": "L c2 no rectangular value jump x96 y208",
+      "passed": true
+    },
+    {
+      "check": "L c2 no rectangular value jump x288 y160",
+      "passed": true
+    },
+    {
+      "check": "L c2 no rectangular value jump x288 y208",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c2 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c2 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w1 c2 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c2 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c2 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w2 c2 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c2 d3 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c2 d4 unchanged",
+      "passed": true
+    },
+    {
+      "check": "deep roof w3 c2 d5 unchanged",
+      "passed": true
+    },
+    {
+      "check": "L-block native scene replay",
+      "passed": true
+    },
+    {
+      "check": "L-block exact 3x",
+      "passed": true
+    },
+    {
+      "check": "L-block greyscale replay",
+      "passed": true
+    },
+    {
+      "check": "L-block changes stay within the repaired roof",
+      "passed": true
+    },
+    {
+      "check": "L-south-1-dormer-1 survives opaque joins",
+      "passed": true
+    },
+    {
+      "check": "L-south-2-chimney-2 survives opaque joins",
+      "passed": true
+    },
+    {
+      "check": "L-block comparison scales 1x/1x",
+      "passed": true
+    },
+    {
+      "check": "L-block comparison scales 3x/1x",
+      "passed": true
+    },
+    {
+      "check": "market native scene replay",
+      "passed": true
+    },
+    {
+      "check": "market exact 3x",
+      "passed": true
+    },
+    {
+      "check": "market greyscale replay",
+      "passed": true
+    },
+    {
+      "check": "market preserved assembly and shadows",
+      "passed": true
+    },
+    {
+      "check": "market comparison scales 1x/1x",
+      "passed": true
+    },
+    {
+      "check": "market comparison scales 3x/1x",
+      "passed": true
+    },
+    {
+      "check": "height-test native scene replay",
+      "passed": true
+    },
+    {
+      "check": "height-test exact 3x",
+      "passed": true
+    },
+    {
+      "check": "height-test greyscale replay",
+      "passed": true
+    },
+    {
+      "check": "height-test preserved assembly and shadows",
+      "passed": true
+    },
+    {
+      "check": "height-test comparison scales 1x/1x",
+      "passed": true
+    },
+    {
+      "check": "height-test comparison scales 3x/1x",
+      "passed": true
+    },
+    {
+      "check": "narrow-pair narrow tall/low regression",
+      "passed": true
+    },
+    {
+      "check": "narrow-between narrow tall/low regression",
+      "passed": true
+    },
+    {
+      "check": "earlier NOTES preserved verbatim",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "part": "B",
+  "responds_to": "critic-r17B-3.json",
+  "review_kind": "saved-art self-review; independent acceptance pending",
+  "failed_files_addressed": [
+    "compose.py"
+  ],
+  "passing_pngs_unchanged": 137,
+  "method": "Three built-in image-tool alternatives on solid magenta. Selected A. Source landmarks BOX-register to 8x native pixels; approved palette lock without dithering; exact mode of all 64 samples per pixel; 29 contour/isolated-pixel cleanup edits for the selected drawing. Code creates no architecture, tile shapes or texture.",
+  "repairs": [
+    {
+      "problem": "Western rectangular material cut and false hip to the middle of the south eave",
+      "repair": "The fixed pilot L uses continuous drawn receiving planes. Tile courses cross x96 without a paste boundary. The west ridge stays at x48 and turns at (48,192); the valley reaches the concave corner (96,144). The southwest hip ends at (0,240); the former diagonal to (96,240) is gone.",
+      "evidence": [
+        "r17-B-critic3-L-join-c0-1x.png",
+        "r17-B-critic3-L-join-c0-4x.png",
+        "r17-B-critic3-left-transition-c0-8x.png",
+        "r17-B-critic3-west-hip-c0-8x.png"
+      ]
+    },
+    {
+      "problem": "Bright rectangular terminal hip patch at x288",
+      "repair": "Shaded north-wing courses continue into the eastern terminal hip in one painting. The material boundary follows the two actual hips from (288,192) to the outer corners, not x288. Colourways retain identical silhouettes.",
+      "evidence": [
+        "r17-B-critic3-hip-transition-c0-8x.png",
+        "r17-B-critic3-L-join-c1-4x.png",
+        "r17-B-critic3-L-join-c2-4x.png",
+        "r17-B-critic3-L-join-c0-squint-1x.png"
+      ]
+    },
+    {
+      "problem": "Repeated inside eave verges and missing southeast contour",
+      "repair": "A single continuous drawn eave replaces the repeated full-cap crop. Rows236..238 contain no internal outline-colour cuts; x0 and x335 retain the exposed one-pixel verge through row239. No interior verge is repeated.",
+      "evidence": [
+        "r17-B-critic3-eave-c0-8x.png",
+        "r17-B-critic3-eave-c1-8x.png",
+        "r17-B-critic3-eave-c2-8x.png",
+        "r17-B-critic3-east-corner-c0-8x.png"
+      ]
+    }
+  ],
+  "preserved_regressions": [
+    "27 width/colour/depth ridge extensions are pixel-identical to the pre-repair compositor.",
+    "Market and both tall/low orientations remain pixel-identical, including jetty-shadow receiving masks and firewall bays.",
+    "Both narrow arrangements still render identically.",
+    "Final L dormer and chimney retain every opaque overlay pixel.",
+    "The new L alpha mask is identical to the previous 336x240 footprint. Only the intended roof region changes in the L scene."
+  ],
+  "visual_review": {
+    "assets": "All 101 pixel-unique exports in all colourways viewed at 1x/4x beside fantasy-house-2 in gallery01..34; all137 exports and aliases verified unchanged.",
+    "scenes": "L-block 16x12 cells, irregular market, both 5|1 orientations rebuilt at1x/3x beside the two literal1x references, with greyscale1x squints. Complete3x scene sections inspected.",
+    "joins": "All c0/c1/c2 L roofs inspected at1x/4x and greyscale. Both reported joins, southwest hip, entire eave and exposed southeast corner have focused8x evidence."
+  },
+  "brief_fail_list": [
+    {
+      "criterion": "flat/cardboard",
+      "result": "Part B passes scoped visual review: directional roof planes, ridges, valley and hips retain volume at1x."
+    },
+    {
+      "criterion": "ground inside roof footprint",
+      "result": "Pass: repaired L has the same fully painted footprint; open courtyard is deliberate."
+    },
+    {
+      "criterion": "seam or gap",
+      "result": "Pass for repaired joins/eave in all three colours; passing standalone PNGs untouched."
+    },
+    {
+      "criterion": "copy-pasted neighbours",
+      "result": "Unchanged scene layouts vary widths, heights, facades and accents. New L has continuous courses, not pasted rectangular roof modules."
+    },
+    {
+      "criterion": "dominant landmark",
+      "result": "Deferred to D: current native hall drawings remain labelled proxies."
+    },
+    {
+      "criterion": "greyscale landmark/gate/main-street hierarchy",
+      "result": "Full-city acceptance remains deferred to C/D/E; gate absent. The repaired roof planes retain distinct greyscale values."
+    },
+    {
+      "criterion": "nameable trade signs",
+      "result": "Part A signs preserved; not reapproved by this Part B repair."
+    },
+    {
+      "criterion": "street shadows",
+      "result": "Pass: height-responsive south/east receiving shadows preserved; market and height-test scenes pixel-identical."
+    }
+  ],
+  "panel": {
+    "3": "Correct roof volumes, valley and terminal hips now join continuously. Existing depth and party-wall contracts retained.",
+    "11": "Existing receiving-surface shadows retained; repeated eave cuts removed.",
+    "conflicts": "BRIEF-17 retains priority on full inventory, shared eaves and lot-contained overlays. User no-commit/no-push/no-branch-change instructions override the brief push request. Panel2 is absent."
+  },
+  "placeholders": "Current terrain is a Part C proxy. fantasy-hall-1, fantasy-hall-0, fantasy-well-0 and two current stall drawings at six positions remain Part D proxies. No city15 art is used in the new scenes; round15-street is comparison only.",
+  "validation": "r17-B-critic3-validation.json",
+  "scope": "Only compose.py, requested Part B review/provenance files and a prepended NOTES section changed. All11939 protected files remain byte-identical.",
+  "remaining_failed_part_B_files": []
+}

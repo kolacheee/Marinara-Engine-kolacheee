@@ -1,0 +1,42 @@
+{
+  "ground-shop-w1": {
+    "selected": "ground-shop-w1-r1a",
+    "reason": "A retains the full 20px opening and compact two-mass bread display; B narrows the entry with a thicker frame."
+  },
+  "corner-ground": {
+    "selected": "corner-ground-r1a",
+    "reason": "A has calmer oak and a clear return; register its painted doorway to 21px. B has busier panel highlights."
+  },
+  "ground-shop-v1-w1": {
+    "selected": "ground-shop-v1-w1-r1b",
+    "reason": "B gives the three bottles a compact bay and keeps a 22px open entrance; A spends too much width on display."
+  },
+  "ground-shop-v2-w1": {
+    "selected": "ground-shop-v2-w1-r1b",
+    "reason": "B lifts the canopy clear of the door and simplifies the cloth; register the opening from 18 to 20px."
+  },
+  "ground-work-w1": {
+    "selected": "ground-work-w1-r1b",
+    "reason": "B has the clearer anvil horn and calmer forge; register the opening from 19 to 20px."
+  },
+  "ground-work-v1-w1": {
+    "selected": "ground-work-v1-w1-r1b",
+    "reason": "B has fewer door planks and two larger tools; register the painted door leaf to 20px."
+  },
+  "ground-work-v2-w1": {
+    "selected": "ground-work-v2-w1-r1b",
+    "reason": "B has a single-handled jug and 22px entry with one shallow step; A narrows the entry."
+  },
+  "inn-front-w1": {
+    "selected": "inn-front-w1-r1b",
+    "reason": "B places its lintel high, opens the courtyard passage and gives the tankard a large readable handle; A has a lower arch."
+  },
+  "ground-arch-w3": {
+    "selected": "ground-arch-w3-r1a",
+    "reason": "A has quiet paved slabs with a clear far exit; B has excessive mottled stone and unnecessary courtyard facade detail."
+  },
+  "storey-timber-w2": {
+    "selected": "storey-timber-w2-r1c",
+    "reason": "C retains calm rectangular plaster and straight thin sill planes, while recessed four-pane glazing and clear shutter braces read closer to fantasy-house-2 than the empty A/B openings."
+  }
+}

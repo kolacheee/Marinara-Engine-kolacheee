@@ -1,0 +1,125 @@
+{
+  "part": "B",
+  "responding_to": "critic-r17B-2.json",
+  "review": "saved-art self-review; independent approval not claimed",
+  "files": {
+    "roof-fill-w1": {
+      "status": "repaired",
+      "drawing": "Three new large built-in image-tool drawings on solid magenta; selected C for exported fill, B for shaded L adapter. Registered source tile width to 8px and six courses to 48px; exact 8x8 mode, locked palette, hard alpha, native painted wrap.",
+      "interface": "The three approved cap widths have different painted scales and broad value fields. compose uses cap-specific native two-course adapters instead of splicing one universal texture across those fields. Both cap interfaces and the exposed verges retain their original source paint.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-1x.png",
+        "r17-B-repeat-roof-fill-w1-c1-4x.png",
+        "r17-B-repeat-roof-fill-w1-c2-4x.png",
+        "r17-B-critic2-deep-w1-c0-1x.png",
+        "r17-B-critic2-deep-w1-c1-1x.png",
+        "r17-B-critic2-deep-w1-c2-1x.png",
+        "r17-B-critic2-deep-w2-c0-1x.png",
+        "r17-B-critic2-deep-w2-c1-1x.png",
+        "r17-B-critic2-deep-w2-c2-1x.png",
+        "r17-B-critic2-deep-w3-c0-1x.png",
+        "r17-B-critic2-deep-w3-c1-1x.png",
+        "r17-B-critic2-deep-w3-c2-1x.png"
+      ]
+    },
+    "roof-fill-w1-c0": {
+      "status": "repaired",
+      "drawing": "Three new large built-in image-tool drawings on solid magenta; selected C for exported fill, B for shaded L adapter. Registered source tile width to 8px and six courses to 48px; exact 8x8 mode, locked palette, hard alpha, native painted wrap.",
+      "interface": "The three approved cap widths have different painted scales and broad value fields. compose uses cap-specific native two-course adapters instead of splicing one universal texture across those fields. Both cap interfaces and the exposed verges retain their original source paint.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-1x.png",
+        "r17-B-repeat-roof-fill-w1-c1-4x.png",
+        "r17-B-repeat-roof-fill-w1-c2-4x.png",
+        "r17-B-critic2-deep-w1-c0-1x.png",
+        "r17-B-critic2-deep-w1-c1-1x.png",
+        "r17-B-critic2-deep-w1-c2-1x.png",
+        "r17-B-critic2-deep-w2-c0-1x.png",
+        "r17-B-critic2-deep-w2-c1-1x.png",
+        "r17-B-critic2-deep-w2-c2-1x.png",
+        "r17-B-critic2-deep-w3-c0-1x.png",
+        "r17-B-critic2-deep-w3-c1-1x.png",
+        "r17-B-critic2-deep-w3-c2-1x.png"
+      ]
+    },
+    "roof-fill-w1-c1": {
+      "status": "repaired",
+      "drawing": "Three new large built-in image-tool drawings on solid magenta; selected C for exported fill, B for shaded L adapter. Registered source tile width to 8px and six courses to 48px; exact 8x8 mode, locked palette, hard alpha, native painted wrap.",
+      "interface": "The three approved cap widths have different painted scales and broad value fields. compose uses cap-specific native two-course adapters instead of splicing one universal texture across those fields. Both cap interfaces and the exposed verges retain their original source paint.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-1x.png",
+        "r17-B-repeat-roof-fill-w1-c1-4x.png",
+        "r17-B-repeat-roof-fill-w1-c2-4x.png",
+        "r17-B-critic2-deep-w1-c0-1x.png",
+        "r17-B-critic2-deep-w1-c1-1x.png",
+        "r17-B-critic2-deep-w1-c2-1x.png",
+        "r17-B-critic2-deep-w2-c0-1x.png",
+        "r17-B-critic2-deep-w2-c1-1x.png",
+        "r17-B-critic2-deep-w2-c2-1x.png",
+        "r17-B-critic2-deep-w3-c0-1x.png",
+        "r17-B-critic2-deep-w3-c1-1x.png",
+        "r17-B-critic2-deep-w3-c2-1x.png"
+      ]
+    },
+    "roof-fill-w1-c2": {
+      "status": "repaired",
+      "drawing": "Three new large built-in image-tool drawings on solid magenta; selected C for exported fill, B for shaded L adapter. Registered source tile width to 8px and six courses to 48px; exact 8x8 mode, locked palette, hard alpha, native painted wrap.",
+      "interface": "The three approved cap widths have different painted scales and broad value fields. compose uses cap-specific native two-course adapters instead of splicing one universal texture across those fields. Both cap interfaces and the exposed verges retain their original source paint.",
+      "evidence": [
+        "r17-B-repeat-roof-fill-w1-c0-1x.png",
+        "r17-B-repeat-roof-fill-w1-c1-4x.png",
+        "r17-B-repeat-roof-fill-w1-c2-4x.png",
+        "r17-B-critic2-deep-w1-c0-1x.png",
+        "r17-B-critic2-deep-w1-c1-1x.png",
+        "r17-B-critic2-deep-w1-c2-1x.png",
+        "r17-B-critic2-deep-w2-c0-1x.png",
+        "r17-B-critic2-deep-w2-c1-1x.png",
+        "r17-B-critic2-deep-w2-c2-1x.png",
+        "r17-B-critic2-deep-w3-c0-1x.png",
+        "r17-B-critic2-deep-w3-c1-1x.png",
+        "r17-B-critic2-deep-w3-c2-1x.png"
+      ]
+    },
+    "compose.py": {
+      "status": "repaired",
+      "problems_addressed": [
+        {
+          "problem": "Incompatible deep fill / missing verges",
+          "repair": "Complete native two-course cap adapters carry original tile scale, course phase, value distribution and continuous one-pixel edges through 3/4/5-cell roofs."
+        },
+        {
+          "problem": "False jetty shade across bare firewall",
+          "repair": "Intersect each shadow with its casting jetty frontage and receiving facade, excluding reserved masonry bays. Passing shadow PNGs are unchanged."
+        },
+        {
+          "problem": "Rotated highlights and equal-value L planes",
+          "repair": "Repeat the approved gable paired planes without rotation. Use separate image-painted shaded north and lit south fill planes; retain the source-defined gutter channel and the unmirrored south hip. All three colours have distinct opposing values in greyscale."
+        },
+        {
+          "problem": "Narrow unequal-height lots raise",
+          "repair": "Use full masonry bays only where an intact frontage fits. W1 tall/low pairs and a W2 tall between two W1 lows use four-pixel blank-edge masonry returns; central windows and doors remain unchanged."
+        },
+        {
+          "problem": "L join erases roof accents",
+          "repair": "Scene composites final accents after all opaque joins at the owning base row; later base rows retain occlusion. The dormer and chimney were mounted on the final L receiving planes, clear of its ridge."
+        }
+      ],
+      "evidence": [
+        "r17-B-critic2-L-join-c0-4x.png",
+        "r17-B-critic2-L-join-c1-squint-1x.png",
+        "r17-B-critic2-narrow-pair-3x.png",
+        "r17-B-critic2-narrow-between-3x.png",
+        "r17-B-critic2-firewall-shadow-west-8x.png",
+        "r17-B-critic2-firewall-shadow-east-8x.png",
+        "r17-B-critic2-final-dormer-8x.png",
+        "r17-B-critic2-final-chimney-8x.png"
+      ]
+    }
+  },
+  "passing_pngs_byte_identical": 133,
+  "tests": "r17-B-critic2-validation.json",
+  "deferred": [
+    "Part C rear/side/circulation art and quiet paving",
+    "Part D cathedral, guildhall, market cross/gate and six distinct stalls; current art is explicitly a proxy",
+    "Final landmark/gate/main-street squint hierarchy and unchanged Part A trade-sign acceptance"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "ref": "origin/claude/project-thread-g8wuu1",
+  "path": "packages/server/src/assets/overworld-art/fantasy.json",
+  "sha256": "bfbb3cd3c0f5512fb4678991eabdcc7d1861f9c52f281da36e39615426f2801b",
+  "tileSize": 48,
+  "crops": [
+    {
+      "file": "fantasy-house-0.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 16,
+        "y": 3,
+        "w": 3,
+        "h": 3
+      }
+    },
+    {
+      "file": "fantasy-house-1.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 19,
+        "y": 3,
+        "w": 3,
+        "h": 3
+      }
+    },
+    {
+      "file": "fantasy-house-2.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 22,
+        "y": 3,
+        "w": 3,
+        "h": 3
+      }
+    },
+    {
+      "file": "fantasy-house-3.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 25,
+        "y": 3,
+        "w": 3,
+        "h": 3
+      }
+    },
+    {
+      "file": "fantasy-hall-0.png",
+      "tile": {
+        "sheet": "art3",
+        "x": 0,
+        "y": 36,
+        "w": 4,
+        "h": 4
+      }
+    },
+    {
+      "file": "fantasy-hall-1.png",
+      "tile": {
+        "sheet": "art3",
+        "x": 8,
+        "y": 36,
+        "w": 3,
+        "h": 4
+      }
+    },
+    {
+      "file": "fantasy-hall-2.png",
+      "tile": {
+        "sheet": "art3",
+        "x": 11,
+        "y": 36,
+        "w": 3,
+        "h": 4
+      }
+    },
+    {
+      "file": "fantasy-hall-3.png",
+      "tile": {
+        "sheet": "art3",
+        "x": 14,
+        "y": 36,
+        "w": 3,
+        "h": 4
+      }
+    },
+    {
+      "file": "fantasy-hall-4.png",
+      "tile": {
+        "sheet": "art3",
+        "x": 17,
+        "y": 36,
+        "w": 3,
+        "h": 4
+      }
+    },
+    {
+      "file": "fantasy-hall-5.png",
+      "tile": {
+        "sheet": "art3",
+        "x": 20,
+        "y": 36,
+        "w": 3,
+        "h": 4
+      }
+    },
+    {
+      "file": "fantasy-stall-0.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 2,
+        "y": 19
+      }
+    },
+    {
+      "file": "fantasy-stall-1.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 3,
+        "y": 19
+      }
+    },
+    {
+      "file": "fantasy-well-0.png",
+      "tile": {
+        "sheet": "art4",
+        "x": 4,
+        "y": 19
+      }
+    }
+  ]
+}

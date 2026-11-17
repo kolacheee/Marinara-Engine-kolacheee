@@ -1,0 +1,2657 @@
+{
+  "chimney-0-c0.png": {
+    "proof": "r17-B-file-chimney-0-c0.png",
+    "size": [
+      16,
+      32
+    ],
+    "bounds": [
+      2,
+      1,
+      14,
+      31
+    ],
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 291,
+    "pixels_sha256": "3ead989b8af81f6741104ce9dd2585819851068b3c37f3d16cda6f23f305e631"
+  },
+  "chimney-0-c1.png": {
+    "proof": "r17-B-file-chimney-0-c1.png",
+    "size": [
+      16,
+      32
+    ],
+    "bounds": [
+      2,
+      1,
+      14,
+      31
+    ],
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 291,
+    "pixels_sha256": "3ead989b8af81f6741104ce9dd2585819851068b3c37f3d16cda6f23f305e631"
+  },
+  "chimney-0-c2.png": {
+    "proof": "r17-B-file-chimney-0-c2.png",
+    "size": [
+      16,
+      32
+    ],
+    "bounds": [
+      2,
+      1,
+      14,
+      31
+    ],
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 291,
+    "pixels_sha256": "3ead989b8af81f6741104ce9dd2585819851068b3c37f3d16cda6f23f305e631"
+  },
+  "chimney-0.png": {
+    "proof": "r17-B-file-chimney-0.png",
+    "size": [
+      16,
+      32
+    ],
+    "bounds": [
+      2,
+      1,
+      14,
+      31
+    ],
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 291,
+    "pixels_sha256": "3ead989b8af81f6741104ce9dd2585819851068b3c37f3d16cda6f23f305e631"
+  },
+  "chimney-1-c0.png": {
+    "proof": "r17-B-file-chimney-1-c0.png",
+    "size": [
+      20,
+      28
+    ],
+    "bounds": [
+      1,
+      6,
+      19,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 332,
+    "pixels_sha256": "a7092cbe6c08375ca2b72ee55bb95f0d84732735e9dc4d1c9c93c82ab9b30d3f"
+  },
+  "chimney-1-c1.png": {
+    "proof": "r17-B-file-chimney-1-c1.png",
+    "size": [
+      20,
+      28
+    ],
+    "bounds": [
+      1,
+      6,
+      19,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 332,
+    "pixels_sha256": "ef69a3685f5643c44c11201e7662955279781a0d3813e61bbba65222d5e551af"
+  },
+  "chimney-1-c2.png": {
+    "proof": "r17-B-file-chimney-1-c2.png",
+    "size": [
+      20,
+      28
+    ],
+    "bounds": [
+      1,
+      6,
+      19,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 332,
+    "pixels_sha256": "ccdb049ffd8ddbdcbc1d89bcaa8e00430b69923695c473d797adb74298597e2b"
+  },
+  "chimney-1.png": {
+    "proof": "r17-B-file-chimney-1.png",
+    "size": [
+      20,
+      28
+    ],
+    "bounds": [
+      1,
+      6,
+      19,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 332,
+    "pixels_sha256": "a7092cbe6c08375ca2b72ee55bb95f0d84732735e9dc4d1c9c93c82ab9b30d3f"
+  },
+  "chimney-2-c0.png": {
+    "proof": "r17-B-file-chimney-2-c0.png",
+    "size": [
+      16,
+      36
+    ],
+    "bounds": [
+      3,
+      1,
+      13,
+      35
+    ],
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 270,
+    "pixels_sha256": "c160906fa1725aa5f795aa6cde5433c5ed719deedef279a9bc0fe777e98056c0"
+  },
+  "chimney-2-c1.png": {
+    "proof": "r17-B-file-chimney-2-c1.png",
+    "size": [
+      16,
+      36
+    ],
+    "bounds": [
+      3,
+      1,
+      13,
+      35
+    ],
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 270,
+    "pixels_sha256": "2f006d7f4c220f2c64de998d6108eb8d7b92d5b7ebdd1ea843f44c36b2555b66"
+  },
+  "chimney-2-c2.png": {
+    "proof": "r17-B-file-chimney-2-c2.png",
+    "size": [
+      16,
+      36
+    ],
+    "bounds": [
+      3,
+      1,
+      13,
+      35
+    ],
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 270,
+    "pixels_sha256": "8862b36ccbf24608c6c50a3210c820a4908189e41f620ed500cc3b9129461531"
+  },
+  "chimney-2.png": {
+    "proof": "r17-B-file-chimney-2.png",
+    "size": [
+      16,
+      36
+    ],
+    "bounds": [
+      3,
+      1,
+      13,
+      35
+    ],
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 270,
+    "pixels_sha256": "c160906fa1725aa5f795aa6cde5433c5ed719deedef279a9bc0fe777e98056c0"
+  },
+  "chimney-3-c0.png": {
+    "proof": "r17-B-file-chimney-3-c0.png",
+    "size": [
+      24,
+      24
+    ],
+    "bounds": [
+      1,
+      1,
+      23,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 402,
+    "pixels_sha256": "8c7f7f393eb11360c8fb64783caa5e5e526a9cfc87c27bef911701dd7e4e6490"
+  },
+  "chimney-3-c1.png": {
+    "proof": "r17-B-file-chimney-3-c1.png",
+    "size": [
+      24,
+      24
+    ],
+    "bounds": [
+      1,
+      1,
+      23,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 402,
+    "pixels_sha256": "6d6e083409b91b4ec6754aa96f462c3d3411119031cf4cdbd2dce6ab185b60c7"
+  },
+  "chimney-3-c2.png": {
+    "proof": "r17-B-file-chimney-3-c2.png",
+    "size": [
+      24,
+      24
+    ],
+    "bounds": [
+      1,
+      1,
+      23,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 402,
+    "pixels_sha256": "9652961c5185e64c1ce57c34b5007ec08e00a04bdf5f982e9883317486b6544e"
+  },
+  "chimney-3.png": {
+    "proof": "r17-B-file-chimney-3.png",
+    "size": [
+      24,
+      24
+    ],
+    "bounds": [
+      1,
+      1,
+      23,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 402,
+    "pixels_sha256": "8c7f7f393eb11360c8fb64783caa5e5e526a9cfc87c27bef911701dd7e4e6490"
+  },
+  "dormer-0-c0.png": {
+    "proof": "r17-B-file-dormer-0-c0.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      4,
+      23,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 403,
+    "pixels_sha256": "d1a02232e9985f1171303615aaeca55479f1973138692c703d52a217f234fb89"
+  },
+  "dormer-0-c1.png": {
+    "proof": "r17-B-file-dormer-0-c1.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      4,
+      23,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 403,
+    "pixels_sha256": "fafa09bdd07f709d4a5544f13fbfbcef1145275a9614d4aacda1b7ae20edf31a"
+  },
+  "dormer-0-c2.png": {
+    "proof": "r17-B-file-dormer-0-c2.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      4,
+      23,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 403,
+    "pixels_sha256": "9cc498fc81b2e1bd1e035d52cea5676f644c61a898b8cc510e5e872d86371f9b"
+  },
+  "dormer-0.png": {
+    "proof": "r17-B-file-dormer-0.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      4,
+      23,
+      27
+    ],
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 403,
+    "pixels_sha256": "d1a02232e9985f1171303615aaeca55479f1973138692c703d52a217f234fb89"
+  },
+  "dormer-1-c0.png": {
+    "proof": "r17-B-file-dormer-1-c0.png",
+    "size": [
+      28,
+      24
+    ],
+    "bounds": [
+      1,
+      7,
+      27,
+      23
+    ],
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 340,
+    "pixels_sha256": "ffcf58d758b098bbe4bffbe5b891ef04fd3467cbca2ae3b27b889ba84e97fb76"
+  },
+  "dormer-1-c1.png": {
+    "proof": "r17-B-file-dormer-1-c1.png",
+    "size": [
+      28,
+      24
+    ],
+    "bounds": [
+      1,
+      7,
+      27,
+      23
+    ],
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 340,
+    "pixels_sha256": "c46e74bcf43cc273de4c712803763567d98854742a9e5f906d90f217586836b2"
+  },
+  "dormer-1-c2.png": {
+    "proof": "r17-B-file-dormer-1-c2.png",
+    "size": [
+      28,
+      24
+    ],
+    "bounds": [
+      1,
+      7,
+      27,
+      23
+    ],
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 340,
+    "pixels_sha256": "8fdca909105c242200c4860f2ce04fbb374788e08f578daf7f15a5d43be89293"
+  },
+  "dormer-1.png": {
+    "proof": "r17-B-file-dormer-1.png",
+    "size": [
+      28,
+      24
+    ],
+    "bounds": [
+      1,
+      7,
+      27,
+      23
+    ],
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 340,
+    "pixels_sha256": "ffcf58d758b098bbe4bffbe5b891ef04fd3467cbca2ae3b27b889ba84e97fb76"
+  },
+  "dormer-2-c0.png": {
+    "proof": "r17-B-file-dormer-2-c0.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      2,
+      1,
+      22,
+      27
+    ],
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 358,
+    "pixels_sha256": "114bdcf78667245711552e0a1315881837809067ef311fe2865568d76ced2a1b"
+  },
+  "dormer-2-c1.png": {
+    "proof": "r17-B-file-dormer-2-c1.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      2,
+      1,
+      22,
+      27
+    ],
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 358,
+    "pixels_sha256": "e13e8a3f816c782057cbaff5a97eed333f7ba9810fcfeff5d142bd72540ce426"
+  },
+  "dormer-2-c2.png": {
+    "proof": "r17-B-file-dormer-2-c2.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      2,
+      1,
+      22,
+      27
+    ],
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 358,
+    "pixels_sha256": "eb8ff30ab49b7150b4e1c07b7cd6cf8921594a4f5fe8bee407e2a2907d4e8620"
+  },
+  "dormer-2.png": {
+    "proof": "r17-B-file-dormer-2.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      2,
+      1,
+      22,
+      27
+    ],
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 358,
+    "pixels_sha256": "114bdcf78667245711552e0a1315881837809067ef311fe2865568d76ced2a1b"
+  },
+  "dormer-3-c0.png": {
+    "proof": "r17-B-file-dormer-3-c0.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      3,
+      23,
+      27
+    ],
+    "colours": 25,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 370,
+    "pixels_sha256": "8ac6175b275cd5e98bae9fcf6a769844a56ec0881e3e6dc7bef1945113c32ba9"
+  },
+  "dormer-3-c1.png": {
+    "proof": "r17-B-file-dormer-3-c1.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      3,
+      23,
+      27
+    ],
+    "colours": 25,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 370,
+    "pixels_sha256": "1ee79fce180a0c06f49a4a70564dcdb0daedde4ccec72c31c398e33be6b5e7cf"
+  },
+  "dormer-3-c2.png": {
+    "proof": "r17-B-file-dormer-3-c2.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      3,
+      23,
+      27
+    ],
+    "colours": 25,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 370,
+    "pixels_sha256": "1adc8572ef29cfa9c8e41c2fd8e7cae64660ca970cb5d4d17a9fc3d636e1eaa9"
+  },
+  "dormer-3.png": {
+    "proof": "r17-B-file-dormer-3.png",
+    "size": [
+      24,
+      28
+    ],
+    "bounds": [
+      1,
+      3,
+      23,
+      27
+    ],
+    "colours": 25,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 370,
+    "pixels_sha256": "8ac6175b275cd5e98bae9fcf6a769844a56ec0881e3e6dc7bef1945113c32ba9"
+  },
+  "firewall-w0.png": {
+    "proof": "r17-B-file-firewall-w0.png",
+    "size": [
+      16,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      16,
+      48
+    ],
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 768,
+    "pixels_sha256": "6ac4b8c2c561665b726bb6d756731271902f44bf2422d110a512dc5b134d6197"
+  },
+  "roof-fill-w1-c0.png": {
+    "proof": "r17-B-file-roof-fill-w1-c0.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "fbaf78f8af4b8259288ff7ff978ab6aef0020478de5f18697228082267658e4e"
+  },
+  "roof-fill-w1-c1.png": {
+    "proof": "r17-B-file-roof-fill-w1-c1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "30b0d7aa187e5fb7d6558e00dd5e5598fca598a2b11a888d13bff5170043a400"
+  },
+  "roof-fill-w1-c2.png": {
+    "proof": "r17-B-file-roof-fill-w1-c2.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "5ce51e7b8e3d96b6bea6cc3b59e851708b467d3447117e3114b5cf4d8356b984"
+  },
+  "roof-fill-w1.png": {
+    "proof": "r17-B-file-roof-fill-w1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "fbaf78f8af4b8259288ff7ff978ab6aef0020478de5f18697228082267658e4e"
+  },
+  "roof-flat-w1-c0.png": {
+    "proof": "r17-B-file-roof-flat-w1-c0.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "a9811f289ae93ced60f8a1749f27e9403e806a8cdf69d6cc008f0dca8b458b69"
+  },
+  "roof-flat-w1-c1.png": {
+    "proof": "r17-B-file-roof-flat-w1-c1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "7a73fd428fd8391ffbbc08fd3b578e4280c88e2bf12a98222ce56168c9e0b4c7"
+  },
+  "roof-flat-w1-c2.png": {
+    "proof": "r17-B-file-roof-flat-w1-c2.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "37336fdad45623502b56015db61e9d184db09d79d2f64c4754560880b06a350e"
+  },
+  "roof-flat-w1.png": {
+    "proof": "r17-B-file-roof-flat-w1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "a9811f289ae93ced60f8a1749f27e9403e806a8cdf69d6cc008f0dca8b458b69"
+  },
+  "roof-flat-w2-c0.png": {
+    "proof": "r17-B-file-roof-flat-w2-c0.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "ea1f40b969a883f0154e8da34af0a251254a918a61ec4e11fddf09699f2cf268"
+  },
+  "roof-flat-w2-c1.png": {
+    "proof": "r17-B-file-roof-flat-w2-c1.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "51907749fca45411fb812e7ad345f40fb4cd72d8ae69567cd384a7aaaf67c3a5"
+  },
+  "roof-flat-w2-c2.png": {
+    "proof": "r17-B-file-roof-flat-w2-c2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "808341498016b500e8c83062e88a590b593f128f1191071c8ffb35dda167a0f7"
+  },
+  "roof-flat-w2.png": {
+    "proof": "r17-B-file-roof-flat-w2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "ea1f40b969a883f0154e8da34af0a251254a918a61ec4e11fddf09699f2cf268"
+  },
+  "roof-flat-w3-c0.png": {
+    "proof": "r17-B-file-roof-flat-w3-c0.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 23,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "d6d8cca0074ca7ec272e9e8e4a35cf922d90aa8d264cd4196271e8f285a9cfb8"
+  },
+  "roof-flat-w3-c1.png": {
+    "proof": "r17-B-file-roof-flat-w3-c1.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 23,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "40f9e6bc3dc423769f944e5ef5b936def0031c433145ffbd23afe1a918d9db88"
+  },
+  "roof-flat-w3-c2.png": {
+    "proof": "r17-B-file-roof-flat-w3-c2.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 23,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "48f5026e6e80b08577c28fd3a1fdee71a98e9d387002ce1a418cbc9a92e9afbb"
+  },
+  "roof-flat-w3.png": {
+    "proof": "r17-B-file-roof-flat-w3.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 23,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "d6d8cca0074ca7ec272e9e8e4a35cf922d90aa8d264cd4196271e8f285a9cfb8"
+  },
+  "roof-gable-w1-c0.png": {
+    "proof": "r17-B-file-roof-gable-w1-c0.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "b14fbcfd26b5bcd7f6749faab6c8814edd6e3884f01b8bdcb1440501751af713"
+  },
+  "roof-gable-w1-c1.png": {
+    "proof": "r17-B-file-roof-gable-w1-c1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "992fd1f5e3d3b794566c179fabba9f819a9aa1d01a4707f93ef59b6262c93b38"
+  },
+  "roof-gable-w1-c2.png": {
+    "proof": "r17-B-file-roof-gable-w1-c2.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "60eb559c21579aa93b64a09c842a8f0ef73700d33cbb75885f3657b07d735503"
+  },
+  "roof-gable-w1.png": {
+    "proof": "r17-B-file-roof-gable-w1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "b14fbcfd26b5bcd7f6749faab6c8814edd6e3884f01b8bdcb1440501751af713"
+  },
+  "roof-gable-w2-c0.png": {
+    "proof": "r17-B-file-roof-gable-w2-c0.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "c3bdeb9b9995537658fd46670461957635da7a4649ac93a5ee4b91984c591221"
+  },
+  "roof-gable-w2-c1.png": {
+    "proof": "r17-B-file-roof-gable-w2-c1.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "678823c39133dba6ba44b35f1cec20bda0e7f5e19e08e5b1cfb8568d7f9d2cdb"
+  },
+  "roof-gable-w2-c2.png": {
+    "proof": "r17-B-file-roof-gable-w2-c2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "459cb5c3f5baa1e8bcfd2b52aaeed5f21621e219dfc059195f2d629f0991b871"
+  },
+  "roof-gable-w2.png": {
+    "proof": "r17-B-file-roof-gable-w2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "c3bdeb9b9995537658fd46670461957635da7a4649ac93a5ee4b91984c591221"
+  },
+  "roof-gable-w3-c0.png": {
+    "proof": "r17-B-file-roof-gable-w3-c0.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 13,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "f7407e73c1aa168cf633045c44206094c3edbf51d15099d8d6d6027696b36fe0"
+  },
+  "roof-gable-w3-c1.png": {
+    "proof": "r17-B-file-roof-gable-w3-c1.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 13,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "38cc653af3d021c27eb27c3e113338fa5fef4ac7ebd3efb8e0937061bf094717"
+  },
+  "roof-gable-w3-c2.png": {
+    "proof": "r17-B-file-roof-gable-w3-c2.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 13,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "d109b2ff6f7da207feb8ad6864ba8c41dcc67aa1e41b6b8a6a422bafed7ae70b"
+  },
+  "roof-gable-w3.png": {
+    "proof": "r17-B-file-roof-gable-w3.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 13,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "f7407e73c1aa168cf633045c44206094c3edbf51d15099d8d6d6027696b36fe0"
+  },
+  "roof-hip-end-c0.png": {
+    "proof": "r17-B-file-roof-hip-end-c0.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "fcbbbb3c43a5ba09fae30229c48b1f8d39f835f2627b830b32dd26fd718901de"
+  },
+  "roof-hip-end-c1.png": {
+    "proof": "r17-B-file-roof-hip-end-c1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "e1b383c39e4fe43d9340090e0a68f39b0f9efd8b2c9edbcc3311d77d5023b265"
+  },
+  "roof-hip-end-c2.png": {
+    "proof": "r17-B-file-roof-hip-end-c2.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "efcb43d0c1475dc02edf8f3dcf15059fceb7993f95c9ea30c6e68c1c630dcf4d"
+  },
+  "roof-hip-end.png": {
+    "proof": "r17-B-file-roof-hip-end.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "fcbbbb3c43a5ba09fae30229c48b1f8d39f835f2627b830b32dd26fd718901de"
+  },
+  "roof-hip-w1-c0.png": {
+    "proof": "r17-B-file-roof-hip-w1-c0.png",
+    "size": [
+      48,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 6912,
+    "pixels_sha256": "2c0a499626d67508f6f15d918cc4fed1a36520d700abfa5d3a19ce41433d4cb7"
+  },
+  "roof-hip-w1-c1.png": {
+    "proof": "r17-B-file-roof-hip-w1-c1.png",
+    "size": [
+      48,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 6912,
+    "pixels_sha256": "bb935e07f788dbbd96d24c84c1637482ae29e432cd23687cb4b4a3e12d25831a"
+  },
+  "roof-hip-w1-c2.png": {
+    "proof": "r17-B-file-roof-hip-w1-c2.png",
+    "size": [
+      48,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 6912,
+    "pixels_sha256": "075848ddc7f261435e9ca9d96751a347ed65ddb700ad06be5aa5523a38848193"
+  },
+  "roof-hip-w1.png": {
+    "proof": "r17-B-file-roof-hip-w1.png",
+    "size": [
+      48,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 6912,
+    "pixels_sha256": "2c0a499626d67508f6f15d918cc4fed1a36520d700abfa5d3a19ce41433d4cb7"
+  },
+  "roof-hip-w2-c0.png": {
+    "proof": "r17-B-file-roof-hip-w2-c0.png",
+    "size": [
+      96,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "07a30f55f74775ecb37af50a66cbf8940378262d02e7befce9e2746abc433b6a"
+  },
+  "roof-hip-w2-c1.png": {
+    "proof": "r17-B-file-roof-hip-w2-c1.png",
+    "size": [
+      96,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "a9801da78694b2610033590da12f024f96c49889b534a7e2ef989be0121a9a5f"
+  },
+  "roof-hip-w2-c2.png": {
+    "proof": "r17-B-file-roof-hip-w2-c2.png",
+    "size": [
+      96,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "02ac1f5ed93bc1d3797e6eff8eb08cd072932b572b27062a14263b4e9e309650"
+  },
+  "roof-hip-w2.png": {
+    "proof": "r17-B-file-roof-hip-w2.png",
+    "size": [
+      96,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "07a30f55f74775ecb37af50a66cbf8940378262d02e7befce9e2746abc433b6a"
+  },
+  "roof-hip-w3-c0.png": {
+    "proof": "r17-B-file-roof-hip-w3-c0.png",
+    "size": [
+      144,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 20736,
+    "pixels_sha256": "f52a98a4eac902f52be595e99d2926a7bf8b041d225a0e11dac8c00e957d1187"
+  },
+  "roof-hip-w3-c1.png": {
+    "proof": "r17-B-file-roof-hip-w3-c1.png",
+    "size": [
+      144,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 20736,
+    "pixels_sha256": "cef4d9a45f1cb7b137655821dc1b105e87b8a13e9d7871c9e8a119a0b70debb5"
+  },
+  "roof-hip-w3-c2.png": {
+    "proof": "r17-B-file-roof-hip-w3-c2.png",
+    "size": [
+      144,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 20736,
+    "pixels_sha256": "b3a190e1f6bff8c13351439f154e5eb98ff249399f9012ab9219658aaae807c3"
+  },
+  "roof-hip-w3.png": {
+    "proof": "r17-B-file-roof-hip-w3.png",
+    "size": [
+      144,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      144
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 20736,
+    "pixels_sha256": "f52a98a4eac902f52be595e99d2926a7bf8b041d225a0e11dac8c00e957d1187"
+  },
+  "roof-ridge-w1-c0.png": {
+    "proof": "r17-B-file-roof-ridge-w1-c0.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "f967115041810d54ba95bf2006b13c95a5a4ab79d9f56f24d7630528fa898a88"
+  },
+  "roof-ridge-w1-c1.png": {
+    "proof": "r17-B-file-roof-ridge-w1-c1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "d4e91115b0f1687d4fe696ac066f70b1ef11b2a6afe09bc7d6326bfe650833cb"
+  },
+  "roof-ridge-w1-c2.png": {
+    "proof": "r17-B-file-roof-ridge-w1-c2.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "ae36b2a79c39a5da3f32255f1a66189d75090ffd55e304342e4bc8e2ed8e158d"
+  },
+  "roof-ridge-w1.png": {
+    "proof": "r17-B-file-roof-ridge-w1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 4608,
+    "pixels_sha256": "f967115041810d54ba95bf2006b13c95a5a4ab79d9f56f24d7630528fa898a88"
+  },
+  "roof-ridge-w2-c0.png": {
+    "proof": "r17-B-file-roof-ridge-w2-c0.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "e21afd492cc0fd03dc69a49dbf259462a01d551bde1dc04689e2ebeb9659d7ec"
+  },
+  "roof-ridge-w2-c1.png": {
+    "proof": "r17-B-file-roof-ridge-w2-c1.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "c6fe018f93112c363ef71584a9b660ff263879d1af5a51f84caea48fbfa5b5a9"
+  },
+  "roof-ridge-w2-c2.png": {
+    "proof": "r17-B-file-roof-ridge-w2-c2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "ca80d510ca5a813848dc8f4d41ecf37185a22d9f9378e3320ffcce6a5434b14a"
+  },
+  "roof-ridge-w2.png": {
+    "proof": "r17-B-file-roof-ridge-w2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 9216,
+    "pixels_sha256": "e21afd492cc0fd03dc69a49dbf259462a01d551bde1dc04689e2ebeb9659d7ec"
+  },
+  "roof-ridge-w3-c0.png": {
+    "proof": "r17-B-file-roof-ridge-w3-c0.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "d7bf0a111dfab643077ffee1015ef4711152bd32f22509892a9e72080bb616c5"
+  },
+  "roof-ridge-w3-c1.png": {
+    "proof": "r17-B-file-roof-ridge-w3-c1.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "94988aa840cfdf901032a072fc30eeb226e19e1446688d9c18bb0825c73b4a8b"
+  },
+  "roof-ridge-w3-c2.png": {
+    "proof": "r17-B-file-roof-ridge-w3-c2.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "810d9acc23c8d6775b802ee6b7f7a152638e560c1daf9f12625f2979df1df602"
+  },
+  "roof-ridge-w3.png": {
+    "proof": "r17-B-file-roof-ridge-w3.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 13824,
+    "pixels_sha256": "d7bf0a111dfab643077ffee1015ef4711152bd32f22509892a9e72080bb616c5"
+  },
+  "roof-valley-c0.png": {
+    "proof": "r17-B-file-roof-valley-c0.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "bc9ab2924c8444658d0f3f9b37523da697dda24e359771a0e885673802de631e"
+  },
+  "roof-valley-c1.png": {
+    "proof": "r17-B-file-roof-valley-c1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "7b1a71f4c05507c9dba7321471b8f41a8b0315f364aee6b00f25691ab62af7a9"
+  },
+  "roof-valley-c2.png": {
+    "proof": "r17-B-file-roof-valley-c2.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "622b81a49a1030802b3dcab8ac31dc22c7c23c89f781146a13f8459a159ecac8"
+  },
+  "roof-valley.png": {
+    "proof": "r17-B-file-roof-valley.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "painted_pixels": 2304,
+    "pixels_sha256": "bc9ab2924c8444658d0f3f9b37523da697dda24e359771a0e885673802de631e"
+  },
+  "shadow-eave-w1-c0.png": {
+    "proof": "r17-B-file-shadow-eave-w1-c0.png",
+    "size": [
+      48,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 192,
+    "pixels_sha256": "48d6505c1bb91854a82b7bcca59dba9341eee32a99ae13a89be8c3596a4ff503"
+  },
+  "shadow-eave-w1-c1.png": {
+    "proof": "r17-B-file-shadow-eave-w1-c1.png",
+    "size": [
+      48,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 192,
+    "pixels_sha256": "cdff3657f32da01a41fa433782cee148687482c8de06d58340c4adfd61b42eec"
+  },
+  "shadow-eave-w1-c2.png": {
+    "proof": "r17-B-file-shadow-eave-w1-c2.png",
+    "size": [
+      48,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 192,
+    "pixels_sha256": "b83fa371737a1389eeea4c898a32817cdd21f217c590a231bfd7ac471554d397"
+  },
+  "shadow-eave-w1.png": {
+    "proof": "r17-B-file-shadow-eave-w1.png",
+    "size": [
+      48,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 192,
+    "pixels_sha256": "48d6505c1bb91854a82b7bcca59dba9341eee32a99ae13a89be8c3596a4ff503"
+  },
+  "shadow-eave-w2-c0.png": {
+    "proof": "r17-B-file-shadow-eave-w2-c0.png",
+    "size": [
+      96,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 384,
+    "pixels_sha256": "5afacdf3bbff90f6e044521fb003bc6d0b01d19131b66d4a402730e4c4845ba2"
+  },
+  "shadow-eave-w2-c1.png": {
+    "proof": "r17-B-file-shadow-eave-w2-c1.png",
+    "size": [
+      96,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 384,
+    "pixels_sha256": "8b6d5f365dc9b457dd642b69d4bde4d90d0b6bee30bd5cae49243b6099cc7d6a"
+  },
+  "shadow-eave-w2-c2.png": {
+    "proof": "r17-B-file-shadow-eave-w2-c2.png",
+    "size": [
+      96,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 384,
+    "pixels_sha256": "e864ff8a8eba25ae12f04a53afee6dcb05aa4429464c27866bec3b615b97caf4"
+  },
+  "shadow-eave-w2.png": {
+    "proof": "r17-B-file-shadow-eave-w2.png",
+    "size": [
+      96,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 384,
+    "pixels_sha256": "5afacdf3bbff90f6e044521fb003bc6d0b01d19131b66d4a402730e4c4845ba2"
+  },
+  "shadow-eave-w3-c0.png": {
+    "proof": "r17-B-file-shadow-eave-w3-c0.png",
+    "size": [
+      144,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "79244d762d6515c1bdc642e9b99a61083729921a71147d2ed034d22e4b1133cd"
+  },
+  "shadow-eave-w3-c1.png": {
+    "proof": "r17-B-file-shadow-eave-w3-c1.png",
+    "size": [
+      144,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "3b47082bf37c68f625f9b8b203e1ad1dc3e10e175284d4a7dd53bd9ce95d8a7c"
+  },
+  "shadow-eave-w3-c2.png": {
+    "proof": "r17-B-file-shadow-eave-w3-c2.png",
+    "size": [
+      144,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "e729ad7f79059ea9bd3a009f43d3e2521384ef81406dd6575f59ec91e826bc81"
+  },
+  "shadow-eave-w3.png": {
+    "proof": "r17-B-file-shadow-eave-w3.png",
+    "size": [
+      144,
+      4
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      4
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "79244d762d6515c1bdc642e9b99a61083729921a71147d2ed034d22e4b1133cd"
+  },
+  "shadow-jetty-w1-c0.png": {
+    "proof": "r17-B-file-shadow-jetty-w1-c0.png",
+    "size": [
+      48,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 288,
+    "pixels_sha256": "333bd91b9d7682f610a276f1b774ca4a06e9eb6c41a8b2f0ba6d16c66a43ffe5"
+  },
+  "shadow-jetty-w1-c1.png": {
+    "proof": "r17-B-file-shadow-jetty-w1-c1.png",
+    "size": [
+      48,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 288,
+    "pixels_sha256": "e77213dedbd5db72425910eb6f79e90c5f6454038dd26a618763fb768f6e7836"
+  },
+  "shadow-jetty-w1-c2.png": {
+    "proof": "r17-B-file-shadow-jetty-w1-c2.png",
+    "size": [
+      48,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 288,
+    "pixels_sha256": "f74d15f18a031e3b995c8513a37fa55d421837ed0ff4ebe99a9b27ea3fdd73dc"
+  },
+  "shadow-jetty-w1.png": {
+    "proof": "r17-B-file-shadow-jetty-w1.png",
+    "size": [
+      48,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 288,
+    "pixels_sha256": "333bd91b9d7682f610a276f1b774ca4a06e9eb6c41a8b2f0ba6d16c66a43ffe5"
+  },
+  "shadow-jetty-w2-c0.png": {
+    "proof": "r17-B-file-shadow-jetty-w2-c0.png",
+    "size": [
+      96,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "79244d762d6515c1bdc642e9b99a61083729921a71147d2ed034d22e4b1133cd"
+  },
+  "shadow-jetty-w2-c1.png": {
+    "proof": "r17-B-file-shadow-jetty-w2-c1.png",
+    "size": [
+      96,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "3b47082bf37c68f625f9b8b203e1ad1dc3e10e175284d4a7dd53bd9ce95d8a7c"
+  },
+  "shadow-jetty-w2-c2.png": {
+    "proof": "r17-B-file-shadow-jetty-w2-c2.png",
+    "size": [
+      96,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "e729ad7f79059ea9bd3a009f43d3e2521384ef81406dd6575f59ec91e826bc81"
+  },
+  "shadow-jetty-w2.png": {
+    "proof": "r17-B-file-shadow-jetty-w2.png",
+    "size": [
+      96,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 576,
+    "pixels_sha256": "79244d762d6515c1bdc642e9b99a61083729921a71147d2ed034d22e4b1133cd"
+  },
+  "shadow-jetty-w3-c0.png": {
+    "proof": "r17-B-file-shadow-jetty-w3-c0.png",
+    "size": [
+      144,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 864,
+    "pixels_sha256": "4abc6944d60e37936a1078858be284a2c9bb94e8bd84fe300cdfdc45ff077405"
+  },
+  "shadow-jetty-w3-c1.png": {
+    "proof": "r17-B-file-shadow-jetty-w3-c1.png",
+    "size": [
+      144,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 864,
+    "pixels_sha256": "ddaa5a503765904fb889a06166f2996ecc0ff8b68b1335f6cf5214778bcf5eea"
+  },
+  "shadow-jetty-w3-c2.png": {
+    "proof": "r17-B-file-shadow-jetty-w3-c2.png",
+    "size": [
+      144,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 864,
+    "pixels_sha256": "edfa0503230399c6b42cdc96ac0359d88cd8f23ec6d6c35fcfca8aba83d5e62c"
+  },
+  "shadow-jetty-w3.png": {
+    "proof": "r17-B-file-shadow-jetty-w3.png",
+    "size": [
+      144,
+      6
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      6
+    ],
+    "colours": 1,
+    "alpha": [
+      112
+    ],
+    "painted_pixels": 864,
+    "pixels_sha256": "4abc6944d60e37936a1078858be284a2c9bb94e8bd84fe300cdfdc45ff077405"
+  },
+  "shadow-street-w1-c0.png": {
+    "proof": "r17-B-file-shadow-street-w1-c0.png",
+    "size": [
+      48,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 1368,
+    "pixels_sha256": "ea2e4461cb645c28ef2d8b9ee651d25a187080ac90762517671c9689540b89c0"
+  },
+  "shadow-street-w1-c1.png": {
+    "proof": "r17-B-file-shadow-street-w1-c1.png",
+    "size": [
+      48,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 1368,
+    "pixels_sha256": "d5391128700b04ab45c6c00ba27142d343c0cd84ca92bb61b8d05f9e74b54ab1"
+  },
+  "shadow-street-w1-c2.png": {
+    "proof": "r17-B-file-shadow-street-w1-c2.png",
+    "size": [
+      48,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 1368,
+    "pixels_sha256": "e8bf02d569583544e7c3c499051d5a478db7568b8da1fc500593ed81b32a8cea"
+  },
+  "shadow-street-w1.png": {
+    "proof": "r17-B-file-shadow-street-w1.png",
+    "size": [
+      48,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 1368,
+    "pixels_sha256": "ea2e4461cb645c28ef2d8b9ee651d25a187080ac90762517671c9689540b89c0"
+  },
+  "shadow-street-w2-c0.png": {
+    "proof": "r17-B-file-shadow-street-w2-c0.png",
+    "size": [
+      96,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 3052,
+    "pixels_sha256": "488476061658529b68c98c0754b53a0b21bd818a3415e556fe07983c428a7907"
+  },
+  "shadow-street-w2-c1.png": {
+    "proof": "r17-B-file-shadow-street-w2-c1.png",
+    "size": [
+      96,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 3052,
+    "pixels_sha256": "85274509114d4851b778cebd0f070ac732c655e47bdf7b03e7e64187b411f925"
+  },
+  "shadow-street-w2-c2.png": {
+    "proof": "r17-B-file-shadow-street-w2-c2.png",
+    "size": [
+      96,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 3052,
+    "pixels_sha256": "0f6c7b06a67b592361e36fc4943e91a18180f6a1800c8d6b4f5d234c4b7af08f"
+  },
+  "shadow-street-w2.png": {
+    "proof": "r17-B-file-shadow-street-w2.png",
+    "size": [
+      96,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 3052,
+    "pixels_sha256": "488476061658529b68c98c0754b53a0b21bd818a3415e556fe07983c428a7907"
+  },
+  "shadow-street-w3-c0.png": {
+    "proof": "r17-B-file-shadow-street-w3-c0.png",
+    "size": [
+      144,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 4586,
+    "pixels_sha256": "f63b502808e8bf8e241afeeb04a51d80577cdbc25c0322e3bcd675895e62f62f"
+  },
+  "shadow-street-w3-c1.png": {
+    "proof": "r17-B-file-shadow-street-w3-c1.png",
+    "size": [
+      144,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 4586,
+    "pixels_sha256": "c25551da832140140d6a0d409a456bbb1e2018504d951d5aac35a5e1f95f86b1"
+  },
+  "shadow-street-w3-c2.png": {
+    "proof": "r17-B-file-shadow-street-w3-c2.png",
+    "size": [
+      144,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 4586,
+    "pixels_sha256": "7567a273d5f04530eeb8da4031b5bd45437cdc0c6434b9fc8b87d340dfca5a6b"
+  },
+  "shadow-street-w3.png": {
+    "proof": "r17-B-file-shadow-street-w3.png",
+    "size": [
+      144,
+      32
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      32
+    ],
+    "colours": 1,
+    "alpha": [
+      0,
+      112
+    ],
+    "painted_pixels": 4586,
+    "pixels_sha256": "f63b502808e8bf8e241afeeb04a51d80577cdbc25c0322e3bcd675895e62f62f"
+  },
+  "skylight-0-c0.png": {
+    "proof": "r17-B-file-skylight-0-c0.png",
+    "size": [
+      20,
+      24
+    ],
+    "bounds": [
+      2,
+      1,
+      18,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 321,
+    "pixels_sha256": "094af72561037e617a844d3a8c1dbb032dc9b7411b1c6f5e730435a182ee1b17"
+  },
+  "skylight-0-c1.png": {
+    "proof": "r17-B-file-skylight-0-c1.png",
+    "size": [
+      20,
+      24
+    ],
+    "bounds": [
+      2,
+      1,
+      18,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 321,
+    "pixels_sha256": "c39945cd8bee2ba703d707628bb653dda4ff8e9661ec8aeaf14a97d65d0b34be"
+  },
+  "skylight-0-c2.png": {
+    "proof": "r17-B-file-skylight-0-c2.png",
+    "size": [
+      20,
+      24
+    ],
+    "bounds": [
+      2,
+      1,
+      18,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 321,
+    "pixels_sha256": "06fd776875c5f0175f16a9d907ba014929adc40469cdee8ca9c90090b6e054bb"
+  },
+  "skylight-0.png": {
+    "proof": "r17-B-file-skylight-0.png",
+    "size": [
+      20,
+      24
+    ],
+    "bounds": [
+      2,
+      1,
+      18,
+      23
+    ],
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 321,
+    "pixels_sha256": "094af72561037e617a844d3a8c1dbb032dc9b7411b1c6f5e730435a182ee1b17"
+  },
+  "skylight-1-c0.png": {
+    "proof": "r17-B-file-skylight-1-c0.png",
+    "size": [
+      28,
+      20
+    ],
+    "bounds": [
+      1,
+      8,
+      27,
+      19
+    ],
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 256,
+    "pixels_sha256": "4fa7bddc2720011cf0e9f49b55304293106edc13f595002b79b1ce5ed05c0e6f"
+  },
+  "skylight-1-c1.png": {
+    "proof": "r17-B-file-skylight-1-c1.png",
+    "size": [
+      28,
+      20
+    ],
+    "bounds": [
+      1,
+      8,
+      27,
+      19
+    ],
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 256,
+    "pixels_sha256": "42b8c9e027065d2fd25a6995962e5e377e3c98836171b96917f34a8928fcf641"
+  },
+  "skylight-1-c2.png": {
+    "proof": "r17-B-file-skylight-1-c2.png",
+    "size": [
+      28,
+      20
+    ],
+    "bounds": [
+      1,
+      8,
+      27,
+      19
+    ],
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 256,
+    "pixels_sha256": "1944e92265f5d8b68a84eeb297e9171ad52a4885e783f08d51eb74691106185a"
+  },
+  "skylight-1.png": {
+    "proof": "r17-B-file-skylight-1.png",
+    "size": [
+      28,
+      20
+    ],
+    "bounds": [
+      1,
+      8,
+      27,
+      19
+    ],
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "painted_pixels": 256,
+    "pixels_sha256": "4fa7bddc2720011cf0e9f49b55304293106edc13f595002b79b1ce5ed05c0e6f"
+  }
+}

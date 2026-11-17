@@ -1,0 +1,1346 @@
+{
+  "part": "A",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "corner-ground-c0",
+    "corner-ground-c1",
+    "corner-ground-c2",
+    "corner-ground",
+    "ground-arch-w3-c0",
+    "ground-arch-w3-c1",
+    "ground-arch-w3-c2",
+    "ground-arch-w3",
+    "ground-shop-v1-w1-c0",
+    "ground-shop-v1-w1-c1",
+    "ground-shop-v1-w1-c2",
+    "ground-shop-v1-w1",
+    "ground-shop-v2-w1-c0",
+    "ground-shop-v2-w1-c1",
+    "ground-shop-v2-w1-c2",
+    "ground-shop-v2-w1",
+    "ground-shop-w1-c0",
+    "ground-shop-w1-c1",
+    "ground-shop-w1-c2",
+    "ground-shop-w1",
+    "ground-work-v1-w1-c0",
+    "ground-work-v1-w1-c1",
+    "ground-work-v1-w1-c2",
+    "ground-work-v1-w1",
+    "ground-work-v2-w1-c0",
+    "ground-work-v2-w1-c1",
+    "ground-work-v2-w1-c2",
+    "ground-work-v2-w1",
+    "ground-work-w1-c0",
+    "ground-work-w1-c1",
+    "ground-work-w1-c2",
+    "ground-work-w1",
+    "inn-front-w1-c0",
+    "inn-front-w1-c1",
+    "inn-front-w1-c2",
+    "inn-front-w1",
+    "storey-timber-w2-c0",
+    "storey-timber-w2-c1",
+    "storey-timber-w2-c2",
+    "storey-timber-w2"
+  ],
+  "files": {
+    "corner-ground-c0": {
+      "status": "fail",
+      "problems": [
+        "The usable entrance is squeezed into approximately x18..30, y18..39: about 13x22 native pixels. The lantern and step designate a usable entrance, but it is markedly below panel A item 8's roughly 20x30 opening and looks pinched beside fantasy-house-2.",
+        "The front/return split spends most of the 48px width on wall and window, leaving the door narrower than the adjacent window. This is visible at 1x and confirmed in critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the corner ground with the image tool: reduce or remove the front window and rebalance the return so the entrance has roughly 20x30 clear pixels, a solid lit threshold and a legible lantern. Preserve the 48x48 canvas and course rows 0/47."
+    },
+    "corner-ground-c1": {
+      "status": "fail",
+      "problems": [
+        "The usable entrance is squeezed into approximately x18..30, y18..39: about 13x22 native pixels. The lantern and step designate a usable entrance, but it is markedly below panel A item 8's roughly 20x30 opening and looks pinched beside fantasy-house-2.",
+        "The front/return split spends most of the 48px width on wall and window, leaving the door narrower than the adjacent window. This is visible at 1x and confirmed in critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the corner ground with the image tool: reduce or remove the front window and rebalance the return so the entrance has roughly 20x30 clear pixels, a solid lit threshold and a legible lantern. Preserve the 48x48 canvas and course rows 0/47."
+    },
+    "corner-ground-c2": {
+      "status": "fail",
+      "problems": [
+        "The usable entrance is squeezed into approximately x18..30, y18..39: about 13x22 native pixels. The lantern and step designate a usable entrance, but it is markedly below panel A item 8's roughly 20x30 opening and looks pinched beside fantasy-house-2.",
+        "The front/return split spends most of the 48px width on wall and window, leaving the door narrower than the adjacent window. This is visible at 1x and confirmed in critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the corner ground with the image tool: reduce or remove the front window and rebalance the return so the entrance has roughly 20x30 clear pixels, a solid lit threshold and a legible lantern. Preserve the 48x48 canvas and course rows 0/47."
+    },
+    "corner-ground": {
+      "status": "fail",
+      "problems": [
+        "The usable entrance is squeezed into approximately x18..30, y18..39: about 13x22 native pixels. The lantern and step designate a usable entrance, but it is markedly below panel A item 8's roughly 20x30 opening and looks pinched beside fantasy-house-2.",
+        "The front/return split spends most of the 48px width on wall and window, leaving the door narrower than the adjacent window. This is visible at 1x and confirmed in critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the corner ground with the image tool: reduce or remove the front window and rebalance the return so the entrance has roughly 20x30 clear pixels, a solid lit threshold and a legible lantern. Preserve the 48x48 canvas and course rows 0/47."
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c0": {
+      "status": "fail",
+      "problems": [
+        "The central passage floor at approximately x63..92, y33..46 is a large, nearly uniform mustard-yellow triangle with a hard V-shaped boundary. At 1x and in the literal 3x3 repeat it reads as a painted wedge or light blob rather than paving continuing through an arch. It also clashes with the stone floor colours of both layout variants.",
+        "This is opaque colour-block art, not a soft-alpha error; the visible problem is the artificial triangular patch. See critic-r17A-1-detail-ground-arch-w3-8x.png and repeat sheet 3."
+      ],
+      "fix": "Redraw the passage floor in the image tool with quiet solid stone clusters and a coherent dark-to-light depth transition. Remove the isolated gold wedge, match the threshold to the stone plinth/paving, and keep daylight visible at the far end. Preserve the 144x48 canvas and course rows."
+    },
+    "ground-arch-w3-c1": {
+      "status": "fail",
+      "problems": [
+        "The central passage floor at approximately x63..92, y33..46 is a large, nearly uniform mustard-yellow triangle with a hard V-shaped boundary. At 1x and in the literal 3x3 repeat it reads as a painted wedge or light blob rather than paving continuing through an arch. It also clashes with the stone floor colours of both layout variants.",
+        "This is opaque colour-block art, not a soft-alpha error; the visible problem is the artificial triangular patch. See critic-r17A-1-detail-ground-arch-w3-8x.png and repeat sheet 3."
+      ],
+      "fix": "Redraw the passage floor in the image tool with quiet solid stone clusters and a coherent dark-to-light depth transition. Remove the isolated gold wedge, match the threshold to the stone plinth/paving, and keep daylight visible at the far end. Preserve the 144x48 canvas and course rows."
+    },
+    "ground-arch-w3-c2": {
+      "status": "fail",
+      "problems": [
+        "The central passage floor at approximately x63..92, y33..46 is a large, nearly uniform mustard-yellow triangle with a hard V-shaped boundary. At 1x and in the literal 3x3 repeat it reads as a painted wedge or light blob rather than paving continuing through an arch. It also clashes with the stone floor colours of both layout variants.",
+        "This is opaque colour-block art, not a soft-alpha error; the visible problem is the artificial triangular patch. See critic-r17A-1-detail-ground-arch-w3-8x.png and repeat sheet 3."
+      ],
+      "fix": "Redraw the passage floor in the image tool with quiet solid stone clusters and a coherent dark-to-light depth transition. Remove the isolated gold wedge, match the threshold to the stone plinth/paving, and keep daylight visible at the far end. Preserve the 144x48 canvas and course rows."
+    },
+    "ground-arch-w3": {
+      "status": "fail",
+      "problems": [
+        "The central passage floor at approximately x63..92, y33..46 is a large, nearly uniform mustard-yellow triangle with a hard V-shaped boundary. At 1x and in the literal 3x3 repeat it reads as a painted wedge or light blob rather than paving continuing through an arch. It also clashes with the stone floor colours of both layout variants.",
+        "This is opaque colour-block art, not a soft-alpha error; the visible problem is the artificial triangular patch. See critic-r17A-1-detail-ground-arch-w3-8x.png and repeat sheet 3."
+      ],
+      "fix": "Redraw the passage floor in the image tool with quiet solid stone clusters and a coherent dark-to-light depth transition. Remove the isolated gold wedge, match the threshold to the stone plinth/paving, and keep daylight visible at the far end. Preserve the 144x48 canvas and course rows."
+    },
+    "ground-door-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The apothecary entrance at approximately x29..41, y14..39 is about 13x26px. Its arch, thick jamb and adjacent lantern compress the usable opening well below the panel's roughly 20x30 target; the three jars get more frontage than the entrance. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw this layout with a roughly 20x30 usable opening; simplify or narrow the jar display and surrounding masonry. Keep the three readable goods colours, lantern, lit threshold and exact shared course."
+    },
+    "ground-shop-v1-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The apothecary entrance at approximately x29..41, y14..39 is about 13x26px. Its arch, thick jamb and adjacent lantern compress the usable opening well below the panel's roughly 20x30 target; the three jars get more frontage than the entrance. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw this layout with a roughly 20x30 usable opening; simplify or narrow the jar display and surrounding masonry. Keep the three readable goods colours, lantern, lit threshold and exact shared course."
+    },
+    "ground-shop-v1-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The apothecary entrance at approximately x29..41, y14..39 is about 13x26px. Its arch, thick jamb and adjacent lantern compress the usable opening well below the panel's roughly 20x30 target; the three jars get more frontage than the entrance. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw this layout with a roughly 20x30 usable opening; simplify or narrow the jar display and surrounding masonry. Keep the three readable goods colours, lantern, lit threshold and exact shared course."
+    },
+    "ground-shop-v1-w1": {
+      "status": "fail",
+      "problems": [
+        "The apothecary entrance at approximately x29..41, y14..39 is about 13x26px. Its arch, thick jamb and adjacent lantern compress the usable opening well below the panel's roughly 20x30 target; the three jars get more frontage than the entrance. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw this layout with a roughly 20x30 usable opening; simplify or narrow the jar display and surrounding masonry. Keep the three readable goods colours, lantern, lit threshold and exact shared course."
+    },
+    "ground-shop-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The left cloth-shop entrance at approximately x8..19, y17..39 is only about 12x23px. The low awning and counter make it short as well as narrow, and it does not match the door scale of the town-house reference. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw the doorway taller and wider, near 20x30px, by moving the awning up and simplifying the cloth bay. Preserve the lantern, lit step, 48px registration and course rows."
+    },
+    "ground-shop-v2-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The left cloth-shop entrance at approximately x8..19, y17..39 is only about 12x23px. The low awning and counter make it short as well as narrow, and it does not match the door scale of the town-house reference. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw the doorway taller and wider, near 20x30px, by moving the awning up and simplifying the cloth bay. Preserve the lantern, lit step, 48px registration and course rows."
+    },
+    "ground-shop-v2-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The left cloth-shop entrance at approximately x8..19, y17..39 is only about 12x23px. The low awning and counter make it short as well as narrow, and it does not match the door scale of the town-house reference. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw the doorway taller and wider, near 20x30px, by moving the awning up and simplifying the cloth bay. Preserve the lantern, lit step, 48px registration and course rows."
+    },
+    "ground-shop-v2-w1": {
+      "status": "fail",
+      "problems": [
+        "The left cloth-shop entrance at approximately x8..19, y17..39 is only about 12x23px. The low awning and counter make it short as well as narrow, and it does not match the door scale of the town-house reference. See entrance close-up sheet 1."
+      ],
+      "fix": "Redraw the doorway taller and wider, near 20x30px, by moving the awning up and simplifying the cloth bay. Preserve the lantern, lit step, 48px registration and course rows."
+    },
+    "ground-shop-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The right entrance, approximately x28..40, y10..39, is only about 13px wide. It reads as a narrow slit beside the large awning, below the requested roughly 20px usable-door width. See critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the one-cell bakery layout with a roughly 20x30 entrance. Give some width back from the counter/awning and consolidate the bread into two clear masses; retain the lantern, lit step, square footprint and shared course."
+    },
+    "ground-shop-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The right entrance, approximately x28..40, y10..39, is only about 13px wide. It reads as a narrow slit beside the large awning, below the requested roughly 20px usable-door width. See critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the one-cell bakery layout with a roughly 20x30 entrance. Give some width back from the counter/awning and consolidate the bread into two clear masses; retain the lantern, lit step, square footprint and shared course."
+    },
+    "ground-shop-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The right entrance, approximately x28..40, y10..39, is only about 13px wide. It reads as a narrow slit beside the large awning, below the requested roughly 20px usable-door width. See critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the one-cell bakery layout with a roughly 20x30 entrance. Give some width back from the counter/awning and consolidate the bread into two clear masses; retain the lantern, lit step, square footprint and shared course."
+    },
+    "ground-shop-w1": {
+      "status": "fail",
+      "problems": [
+        "The right entrance, approximately x28..40, y10..39, is only about 13px wide. It reads as a narrow slit beside the large awning, below the requested roughly 20px usable-door width. See critic-r17A-1-entrances-8x-1.png."
+      ],
+      "fix": "Redraw the one-cell bakery layout with a roughly 20x30 entrance. Give some width back from the counter/awning and consolidate the bread into two clear masses; retain the lantern, lit step, square footprint and shared course."
+    },
+    "ground-shop-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The carpenter's left entrance at approximately x6..18, y15..38 is about 13x24px. It is a narrow brown slot beneath the awning instead of the requested usable-door scale. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw with a roughly 20x30 entrance and a stronger threshold/lantern separation. Compress the tool display into one simple bay, keeping the saw/hammer recognisable and the course rows unchanged."
+    },
+    "ground-work-v1-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The carpenter's left entrance at approximately x6..18, y15..38 is about 13x24px. It is a narrow brown slot beneath the awning instead of the requested usable-door scale. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw with a roughly 20x30 entrance and a stronger threshold/lantern separation. Compress the tool display into one simple bay, keeping the saw/hammer recognisable and the course rows unchanged."
+    },
+    "ground-work-v1-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The carpenter's left entrance at approximately x6..18, y15..38 is about 13x24px. It is a narrow brown slot beneath the awning instead of the requested usable-door scale. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw with a roughly 20x30 entrance and a stronger threshold/lantern separation. Compress the tool display into one simple bay, keeping the saw/hammer recognisable and the course rows unchanged."
+    },
+    "ground-work-v1-w1": {
+      "status": "fail",
+      "problems": [
+        "The carpenter's left entrance at approximately x6..18, y15..38 is about 13x24px. It is a narrow brown slot beneath the awning instead of the requested usable-door scale. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw with a roughly 20x30 entrance and a stronger threshold/lantern separation. Compress the tool display into one simple bay, keeping the saw/hammer recognisable and the course rows unchanged."
+    },
+    "ground-work-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The pottery entrance at approximately x29..42, y11..35 is only about 14x25px. The stair occupies the remaining bottom rows, shortening the opening further; this reads cramped beside fantasy-house-2. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the pottery front with a roughly 20x30 clear entrance and a shallower lit step. Reduce the pots to two distinct silhouettes if needed to make room, preserving the lantern, square footprint and fixed course."
+    },
+    "ground-work-v2-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The pottery entrance at approximately x29..42, y11..35 is only about 14x25px. The stair occupies the remaining bottom rows, shortening the opening further; this reads cramped beside fantasy-house-2. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the pottery front with a roughly 20x30 clear entrance and a shallower lit step. Reduce the pots to two distinct silhouettes if needed to make room, preserving the lantern, square footprint and fixed course."
+    },
+    "ground-work-v2-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The pottery entrance at approximately x29..42, y11..35 is only about 14x25px. The stair occupies the remaining bottom rows, shortening the opening further; this reads cramped beside fantasy-house-2. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the pottery front with a roughly 20x30 clear entrance and a shallower lit step. Reduce the pots to two distinct silhouettes if needed to make room, preserving the lantern, square footprint and fixed course."
+    },
+    "ground-work-v2-w1": {
+      "status": "fail",
+      "problems": [
+        "The pottery entrance at approximately x29..42, y11..35 is only about 14x25px. The stair occupies the remaining bottom rows, shortening the opening further; this reads cramped beside fantasy-house-2. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the pottery front with a roughly 20x30 clear entrance and a shallower lit step. Reduce the pots to two distinct silhouettes if needed to make room, preserving the lantern, square footprint and fixed course."
+    },
+    "ground-work-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The usable smith entrance at the left, approximately x7..16, y18..38, is only about 10x21px and merges with the dark workshop. The tiny step and lantern do not rescue its scale or separation at 1x. See critic-r17A-1-entrances-8x-2.png."
+      ],
+      "fix": "Redraw the narrow smith front around a roughly 20x30 entrance, with a continuous dark opening and clean lit step. Reduce the forge/counter to two or three clear shapes and lift the awning so it does not squash the door."
+    },
+    "ground-work-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The usable smith entrance at the left, approximately x7..16, y18..38, is only about 10x21px and merges with the dark workshop. The tiny step and lantern do not rescue its scale or separation at 1x. See critic-r17A-1-entrances-8x-2.png."
+      ],
+      "fix": "Redraw the narrow smith front around a roughly 20x30 entrance, with a continuous dark opening and clean lit step. Reduce the forge/counter to two or three clear shapes and lift the awning so it does not squash the door."
+    },
+    "ground-work-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The usable smith entrance at the left, approximately x7..16, y18..38, is only about 10x21px and merges with the dark workshop. The tiny step and lantern do not rescue its scale or separation at 1x. See critic-r17A-1-entrances-8x-2.png."
+      ],
+      "fix": "Redraw the narrow smith front around a roughly 20x30 entrance, with a continuous dark opening and clean lit step. Reduce the forge/counter to two or three clear shapes and lift the awning so it does not squash the door."
+    },
+    "ground-work-w1": {
+      "status": "fail",
+      "problems": [
+        "The usable smith entrance at the left, approximately x7..16, y18..38, is only about 10x21px and merges with the dark workshop. The tiny step and lantern do not rescue its scale or separation at 1x. See critic-r17A-1-entrances-8x-2.png."
+      ],
+      "fix": "Redraw the narrow smith front around a roughly 20x30 entrance, with a continuous dark opening and clean lit step. Reduce the forge/counter to two or three clear shapes and lift the awning so it does not squash the door."
+    },
+    "ground-work-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "There is no courtyard arch or through passage: the entire facade is a closed red door and a window. This fails the inn-front program reassigned to A by panel 1; the w2/w3 versions demonstrate the missing feature.",
+        "At 1x the pale mark above the door is an indistinct cluster, not a nameable tankard sign. The entrance itself is only roughly 14x22px (around x10..23, y18..39), below the roughly 20x30 target. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the small inn around a clearly open porch/courtyard passage with daylight and paving continuing through, plus a readable tankard symbol. Use the available frontage for the entrance instead of the extra window; retain a lit step, lantern, 48x48 registration and the course rows."
+    },
+    "inn-front-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "There is no courtyard arch or through passage: the entire facade is a closed red door and a window. This fails the inn-front program reassigned to A by panel 1; the w2/w3 versions demonstrate the missing feature.",
+        "At 1x the pale mark above the door is an indistinct cluster, not a nameable tankard sign. The entrance itself is only roughly 14x22px (around x10..23, y18..39), below the roughly 20x30 target. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the small inn around a clearly open porch/courtyard passage with daylight and paving continuing through, plus a readable tankard symbol. Use the available frontage for the entrance instead of the extra window; retain a lit step, lantern, 48x48 registration and the course rows."
+    },
+    "inn-front-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "There is no courtyard arch or through passage: the entire facade is a closed red door and a window. This fails the inn-front program reassigned to A by panel 1; the w2/w3 versions demonstrate the missing feature.",
+        "At 1x the pale mark above the door is an indistinct cluster, not a nameable tankard sign. The entrance itself is only roughly 14x22px (around x10..23, y18..39), below the roughly 20x30 target. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the small inn around a clearly open porch/courtyard passage with daylight and paving continuing through, plus a readable tankard symbol. Use the available frontage for the entrance instead of the extra window; retain a lit step, lantern, 48x48 registration and the course rows."
+    },
+    "inn-front-w1": {
+      "status": "fail",
+      "problems": [
+        "There is no courtyard arch or through passage: the entire facade is a closed red door and a window. This fails the inn-front program reassigned to A by panel 1; the w2/w3 versions demonstrate the missing feature.",
+        "At 1x the pale mark above the door is an indistinct cluster, not a nameable tankard sign. The entrance itself is only roughly 14x22px (around x10..23, y18..39), below the roughly 20x30 target. See entrance close-up sheet 2."
+      ],
+      "fix": "Redraw the small inn around a clearly open porch/courtyard passage with daylight and paving continuing through, plus a readable tankard symbol. Use the available frontage for the entrance instead of the extra window; retain a lit step, lantern, 48x48 registration and the course rows."
+    },
+    "inn-front-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "fail",
+      "problems": [
+        "Both window surrounds (approximately x5..43 and x51..90, y12..43) form broad irregular cream/tan rings, with mottled sill tops and thick rounded shadow lobes. At 1x they read as rough holes in plaster; at 4x/8x the clusters look eroded and uneven beside the reference's controlled posts, shutters and sill planes.",
+        "This is the upper module used in the sample-neighbour sheet, so the sample does not yet pass the same-street style test. The dark recesses provide depth, but the surrounding highlights and sill shadows are too bulky and noisy. See critic-r17A-1-detail-storey-timber-w2-8x.png."
+      ],
+      "fix": "Redraw both bays with calm rectangular plaster masses, substantial straight timber posts, clearly separated shutters and thin top-lit sill faces. Replace the mottled halo and broad rounded underside shadows with deliberate pixel clusters matching fantasy-house-2 and the cleaner w1/w3 siblings. Keep the recess depth, 96x48 size and course rows exactly."
+    },
+    "storey-timber-w2-c1": {
+      "status": "fail",
+      "problems": [
+        "Both window surrounds (approximately x5..43 and x51..90, y12..43) form broad irregular cream/tan rings, with mottled sill tops and thick rounded shadow lobes. At 1x they read as rough holes in plaster; at 4x/8x the clusters look eroded and uneven beside the reference's controlled posts, shutters and sill planes.",
+        "This is the upper module used in the sample-neighbour sheet, so the sample does not yet pass the same-street style test. The dark recesses provide depth, but the surrounding highlights and sill shadows are too bulky and noisy. See critic-r17A-1-detail-storey-timber-w2-8x.png."
+      ],
+      "fix": "Redraw both bays with calm rectangular plaster masses, substantial straight timber posts, clearly separated shutters and thin top-lit sill faces. Replace the mottled halo and broad rounded underside shadows with deliberate pixel clusters matching fantasy-house-2 and the cleaner w1/w3 siblings. Keep the recess depth, 96x48 size and course rows exactly."
+    },
+    "storey-timber-w2-c2": {
+      "status": "fail",
+      "problems": [
+        "Both window surrounds (approximately x5..43 and x51..90, y12..43) form broad irregular cream/tan rings, with mottled sill tops and thick rounded shadow lobes. At 1x they read as rough holes in plaster; at 4x/8x the clusters look eroded and uneven beside the reference's controlled posts, shutters and sill planes.",
+        "This is the upper module used in the sample-neighbour sheet, so the sample does not yet pass the same-street style test. The dark recesses provide depth, but the surrounding highlights and sill shadows are too bulky and noisy. See critic-r17A-1-detail-storey-timber-w2-8x.png."
+      ],
+      "fix": "Redraw both bays with calm rectangular plaster masses, substantial straight timber posts, clearly separated shutters and thin top-lit sill faces. Replace the mottled halo and broad rounded underside shadows with deliberate pixel clusters matching fantasy-house-2 and the cleaner w1/w3 siblings. Keep the recess depth, 96x48 size and course rows exactly."
+    },
+    "storey-timber-w2": {
+      "status": "fail",
+      "problems": [
+        "Both window surrounds (approximately x5..43 and x51..90, y12..43) form broad irregular cream/tan rings, with mottled sill tops and thick rounded shadow lobes. At 1x they read as rough holes in plaster; at 4x/8x the clusters look eroded and uneven beside the reference's controlled posts, shutters and sill planes.",
+        "This is the upper module used in the sample-neighbour sheet, so the sample does not yet pass the same-street style test. The dark recesses provide depth, but the surrounding highlights and sill shadows are too bulky and noisy. See critic-r17A-1-detail-storey-timber-w2-8x.png."
+      ],
+      "fix": "Redraw both bays with calm rectangular plaster masses, substantial straight timber posts, clearly separated shutters and thin top-lit sill faces. Replace the mottled halo and broad rounded underside shadows with deliberate pixel clusters matching fantasy-house-2 and the cleaner w1/w3 siblings. Keep the recess depth, 96x48 size and course rows exactly."
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art critic, Part A round 1. Reviewed BRIEF-17 in full, panel 1, COURSE.md, and the earlier-round method sections in NOTES.md; panel 2 does not exist. FAIL: 10 designs / 40 exports, including each unsuffixed c0 alias and explicit c0/c1/c2. All 240 Part A PNGs have an entry; 200 pass. Inspected all 182 distinct pixel images at literal 1x and nearest-neighbour 4x in galleries verified against the current PNG bytes; 58 remaining exports are byte-identical pixel aliases. Compared with fantasy-house-2, including the full sample building at matching 1x/4x. Used native-coordinate 8x close-ups for small entrances and suspect clusters. Inspected literal 3x3 repeats of all 40 ground/inn/corner designs in all three colourways (unsuffixed aliases are exact c0), plus per-export self/colour/layout seam sheets. These facades are architecture, not seamless terrain textures: intentional doors, windows and lot contours repeating in a forced 3x3 grid are not by themselves failures. The eight trade symbols are nameable at 1x and were inspected over summer grass and mounted on the approved blank facade bay; their final PNGs pass. There are no Part A terrain bases or seasonal partners, so seasonal-ground/seasonal-silhouette tests are not applicable. Code compared all 116 c1/c2 facade alpha masks against c0 with zero mismatches. Independent technical checks: 240/240 correct RGBA dimensions (48/96/144x48 facades, 8x48 ends, 32x40 signs); alpha only 0/255; zero RGB beneath transparency; one connected painted component per PNG; 8-31 opaque colours; exact COURSE.md bytes on both rows 0/47 for every non-sign export. All same-width joins therefore share the same contact rows. No alpha seam, rounded external grid corner, detached alpha speck, haze or fog found. The supplied source-processing code uses magenta keying, painted-row registration, 8x BOX working canvases, fixed palette quantisation, exact 64-sample RGBA mode and contour/fleck cleanup; no replacement shape/noise drawing was found in that pipeline. This review does not claim a fresh replay of all source reductions. Verified all 13 fantasy reference crops directly against the requested Git object and current-town.png against the exact 600x500 fantasy-panel crop. Rebuilt all three critic scenes in memory with city17/compose.py: each equals the saved 1x scene byte-for-byte, and every saved 3x scene is exact nearest-neighbour. Inspected all three at 1x and 3x (large 3x views split into literal crops), their 1x greyscale squint renders, and the round15/current-town baselines. Full-city acceptance still FAILS: L-block exposes ground behind facades, lacks convincing rear/side mass, and a foreground roof obscures part of the central row; the height tests have no firewall or cast street shadow; the market proxies do not dominate the square and the oversized paving competes with the architecture in greyscale; no finished gate is present. These are recorded B/C/D dependencies, not additional failures assigned to A PNG basenames. The actual placeholders are R15 roof/chimney/dormer art, current fantasy ground textures and halls/well/stalls; missing walls/shadows/landmarks were not fabricated. Brief precedence: keep the mandated identical course rows despite the panel suggestion to remove repeated belts; the explicit complete Part A set takes precedence over the panel 40-60-piece cap. That precedence does not excuse the entrance, inn-program or painted-cluster failures listed here. Evidence: critic-r17A-1-repeats-01..10.png, critic-r17A-1-seams-01..23.png, critic-r17A-1-entrances-8x-1..3.png, critic-r17A-1-wide-fronts-1..5.png, critic-r17A-1-detail-*.png, and critic-r17A-1-<scene>-3x-*.png. No city17 file was edited; no commit, push or branch change."
+}

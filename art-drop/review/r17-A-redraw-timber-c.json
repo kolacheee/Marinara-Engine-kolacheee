@@ -1,0 +1,12 @@
+{
+  "id": "storey-timber-w2-r1c",
+  "output": "storey-timber-w2",
+  "size": [
+    96,
+    48
+  ],
+  "source": "r17-A-source-storey-timber-w2-r1c.png",
+  "selected": false,
+  "prompt": "Edit the FIRST image (the rectangular timber upper wall) into a final 96x48-native-pixel game module. The SECOND image is a STYLE REFERENCE ONLY: match the fantasy-house window construction and top-left light, do not copy its whole building. Preserve the first image's horizontal2:1 rectangular panel, TWO orderly bays, solid magenta backdrop, straight central/edge timber posts, square outside corners, quiet cream rectangular plaster fields, top and bottom narrow courses, and thin straight top-lit sills. Crucial change: the current empty black windows and plain brown shutters look flat beside the reference. Draw TWO recessed GLAZED WINDOWS with muted dark blue-grey glass and a simple dark wooden CROSS MULLION, four large rectangular panes per opening. Give each pane one broad quiet reflection facet (no individual glints). Draw shutters as orderly solid WOOD PANELS with two broad planks, one clear horizontal brace and a thin lit upper-left edge, dark right side faces. Recess is dark around glazing, sill has a clean pale top plane2px high and dark wood straight front2px high, 1px cast shadow underneath. Sill underside is NOT oval or mottled. Keep top-left light and1native-pixel dark brown outline. Use the SECOND house reference's muted wood/cream/glass tones and controlled small clusters, but simpler wall masses. Window+shutters about30px per bay, visible glass about13x18px. No irregular cream/tan halos, no speckled plaster, no thick rounded shadows, no busy hairs or rough stone. No flowers, no arch, no roof, no ground, no decorative new elements, no words. Redraw at LARGE source size on perfectly solid #ff00ff magenta; crisp square pixel clusters, no gradients or blur. Produce the single edited wall panel only.",
+  "original_path": "/home/kolache/.codex/generated_images/01a1e6f1-4d4e-7412-8236-0900be813aa6/exec-6dbee289-76b8-4e1e-9ce4-f21eeeed35a4.png"
+}

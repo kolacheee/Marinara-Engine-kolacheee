@@ -1,0 +1,264 @@
+{
+  "part": "A",
+  "source_critic": "critic-r17A-1.json",
+  "review_type": "Saved-art self-review; not independent reapproval",
+  "result": "All listed Part A corrections addressed; full-city B/C/D failures remain",
+  "failed_part_A_files": [],
+  "files": {
+    "corner-ground-c0": {
+      "status": "addressed in redraw",
+      "selected": "corner-ground-r1a",
+      "reason": "A has calmer oak and a clear return; register its painted doorway to 21px. B has busier panel highlights."
+    },
+    "corner-ground-c1": {
+      "status": "addressed in redraw",
+      "selected": "corner-ground-r1a",
+      "reason": "A has calmer oak and a clear return; register its painted doorway to 21px. B has busier panel highlights."
+    },
+    "corner-ground-c2": {
+      "status": "addressed in redraw",
+      "selected": "corner-ground-r1a",
+      "reason": "A has calmer oak and a clear return; register its painted doorway to 21px. B has busier panel highlights."
+    },
+    "corner-ground": {
+      "status": "addressed in redraw",
+      "selected": "corner-ground-r1a",
+      "reason": "A has calmer oak and a clear return; register its painted doorway to 21px. B has busier panel highlights."
+    },
+    "ground-arch-w3-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-arch-w3-r1a",
+      "reason": "A has quiet paved slabs with a clear far exit; B has excessive mottled stone and unnecessary courtyard facade detail."
+    },
+    "ground-arch-w3-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-arch-w3-r1a",
+      "reason": "A has quiet paved slabs with a clear far exit; B has excessive mottled stone and unnecessary courtyard facade detail."
+    },
+    "ground-arch-w3-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-arch-w3-r1a",
+      "reason": "A has quiet paved slabs with a clear far exit; B has excessive mottled stone and unnecessary courtyard facade detail."
+    },
+    "ground-arch-w3": {
+      "status": "addressed in redraw",
+      "selected": "ground-arch-w3-r1a",
+      "reason": "A has quiet paved slabs with a clear far exit; B has excessive mottled stone and unnecessary courtyard facade detail."
+    },
+    "ground-shop-v1-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v1-w1-r1b",
+      "reason": "B gives the three bottles a compact bay and keeps a 22px open entrance; A spends too much width on display."
+    },
+    "ground-shop-v1-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v1-w1-r1b",
+      "reason": "B gives the three bottles a compact bay and keeps a 22px open entrance; A spends too much width on display."
+    },
+    "ground-shop-v1-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v1-w1-r1b",
+      "reason": "B gives the three bottles a compact bay and keeps a 22px open entrance; A spends too much width on display."
+    },
+    "ground-shop-v1-w1": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v1-w1-r1b",
+      "reason": "B gives the three bottles a compact bay and keeps a 22px open entrance; A spends too much width on display."
+    },
+    "ground-shop-v2-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v2-w1-r1b",
+      "reason": "B lifts the canopy clear of the door and simplifies the cloth; register the opening from 18 to 20px."
+    },
+    "ground-shop-v2-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v2-w1-r1b",
+      "reason": "B lifts the canopy clear of the door and simplifies the cloth; register the opening from 18 to 20px."
+    },
+    "ground-shop-v2-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v2-w1-r1b",
+      "reason": "B lifts the canopy clear of the door and simplifies the cloth; register the opening from 18 to 20px."
+    },
+    "ground-shop-v2-w1": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-v2-w1-r1b",
+      "reason": "B lifts the canopy clear of the door and simplifies the cloth; register the opening from 18 to 20px."
+    },
+    "ground-shop-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-w1-r1a",
+      "reason": "A retains the full 20px opening and compact two-mass bread display; B narrows the entry with a thicker frame."
+    },
+    "ground-shop-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-w1-r1a",
+      "reason": "A retains the full 20px opening and compact two-mass bread display; B narrows the entry with a thicker frame."
+    },
+    "ground-shop-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-w1-r1a",
+      "reason": "A retains the full 20px opening and compact two-mass bread display; B narrows the entry with a thicker frame."
+    },
+    "ground-shop-w1": {
+      "status": "addressed in redraw",
+      "selected": "ground-shop-w1-r1a",
+      "reason": "A retains the full 20px opening and compact two-mass bread display; B narrows the entry with a thicker frame."
+    },
+    "ground-work-v1-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v1-w1-r1b",
+      "reason": "B has fewer door planks and two larger tools; register the painted door leaf to 20px."
+    },
+    "ground-work-v1-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v1-w1-r1b",
+      "reason": "B has fewer door planks and two larger tools; register the painted door leaf to 20px."
+    },
+    "ground-work-v1-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v1-w1-r1b",
+      "reason": "B has fewer door planks and two larger tools; register the painted door leaf to 20px."
+    },
+    "ground-work-v1-w1": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v1-w1-r1b",
+      "reason": "B has fewer door planks and two larger tools; register the painted door leaf to 20px."
+    },
+    "ground-work-v2-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v2-w1-r1b",
+      "reason": "B has a single-handled jug and 22px entry with one shallow step; A narrows the entry."
+    },
+    "ground-work-v2-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v2-w1-r1b",
+      "reason": "B has a single-handled jug and 22px entry with one shallow step; A narrows the entry."
+    },
+    "ground-work-v2-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v2-w1-r1b",
+      "reason": "B has a single-handled jug and 22px entry with one shallow step; A narrows the entry."
+    },
+    "ground-work-v2-w1": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-v2-w1-r1b",
+      "reason": "B has a single-handled jug and 22px entry with one shallow step; A narrows the entry."
+    },
+    "ground-work-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-w1-r1b",
+      "reason": "B has the clearer anvil horn and calmer forge; register the opening from 19 to 20px."
+    },
+    "ground-work-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-w1-r1b",
+      "reason": "B has the clearer anvil horn and calmer forge; register the opening from 19 to 20px."
+    },
+    "ground-work-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-w1-r1b",
+      "reason": "B has the clearer anvil horn and calmer forge; register the opening from 19 to 20px."
+    },
+    "ground-work-w1": {
+      "status": "addressed in redraw",
+      "selected": "ground-work-w1-r1b",
+      "reason": "B has the clearer anvil horn and calmer forge; register the opening from 19 to 20px."
+    },
+    "inn-front-w1-c0": {
+      "status": "addressed in redraw",
+      "selected": "inn-front-w1-r1b",
+      "reason": "B places its lintel high, opens the courtyard passage and gives the tankard a large readable handle; A has a lower arch."
+    },
+    "inn-front-w1-c1": {
+      "status": "addressed in redraw",
+      "selected": "inn-front-w1-r1b",
+      "reason": "B places its lintel high, opens the courtyard passage and gives the tankard a large readable handle; A has a lower arch."
+    },
+    "inn-front-w1-c2": {
+      "status": "addressed in redraw",
+      "selected": "inn-front-w1-r1b",
+      "reason": "B places its lintel high, opens the courtyard passage and gives the tankard a large readable handle; A has a lower arch."
+    },
+    "inn-front-w1": {
+      "status": "addressed in redraw",
+      "selected": "inn-front-w1-r1b",
+      "reason": "B places its lintel high, opens the courtyard passage and gives the tankard a large readable handle; A has a lower arch."
+    },
+    "storey-timber-w2-c0": {
+      "status": "addressed in redraw",
+      "selected": "storey-timber-w2-r1c",
+      "reason": "C retains calm rectangular plaster and straight thin sill planes, while recessed four-pane glazing and clear shutter braces read closer to fantasy-house-2 than the empty A/B openings."
+    },
+    "storey-timber-w2-c1": {
+      "status": "addressed in redraw",
+      "selected": "storey-timber-w2-r1c",
+      "reason": "C retains calm rectangular plaster and straight thin sill planes, while recessed four-pane glazing and clear shutter braces read closer to fantasy-house-2 than the empty A/B openings."
+    },
+    "storey-timber-w2-c2": {
+      "status": "addressed in redraw",
+      "selected": "storey-timber-w2-r1c",
+      "reason": "C retains calm rectangular plaster and straight thin sill planes, while recessed four-pane glazing and clear shutter braces read closer to fantasy-house-2 than the empty A/B openings."
+    },
+    "storey-timber-w2": {
+      "status": "addressed in redraw",
+      "selected": "storey-timber-w2-r1c",
+      "reason": "C retains calm rectangular plaster and straight thin sill planes, while recessed four-pane glazing and clear shutter braces read closer to fantasy-house-2 than the empty A/B openings."
+    }
+  },
+  "full_city_criteria": [
+    {
+      "criterion": "Flat/cardboard facades",
+      "status": "PASS for A in self-review",
+      "observation": "Native sill tops, dark jambs, stone thresholds, oriel side faces and corner returns show depth. Whole-building silhouette acceptance still depends on the B roof."
+    },
+    {
+      "criterion": "Bare ground inside roof-covered blocks",
+      "status": "FAIL / deferred B,C",
+      "observation": "R15 caps do not fill deep plots. Visible L-block grass pockets are not accepted as finished roofs or enclosed yards."
+    },
+    {
+      "criterion": "Seam or gap",
+      "status": "PASS for A; firewall deferred B",
+      "observation": "Exact courses across 16,832 ordered pairs. Both tall/low joins are gap-free at facade level, but coping, firewall and flashing are missing."
+    },
+    {
+      "criterion": "Copy-pasted neighbours",
+      "status": "PASS for A; stall variation deferred D",
+      "observation": "No A module repeats more than twice in any five-lot row. Six market positions still use two old stall drawings."
+    },
+    {
+      "criterion": "Landmark not biggest",
+      "status": "FAIL / deferred D",
+      "observation": "Current fantasy halls mark cathedral/guildhall positions but do not achieve the required skyline. Well marks the future cross/fountain position."
+    },
+    {
+      "criterion": "Greyscale landmark/gate/main-street hierarchy",
+      "status": "FAIL / deferred C,D",
+      "observation": "Facade recesses separate at 1x. Current paving is too emphatic; no final cathedral or gate exists."
+    },
+    {
+      "criterion": "Unrecognisable trade sign",
+      "status": "PASS in self-review",
+      "observation": "Anvil, loaf, flask, boot, tankard, quill/ink, scissors and cleaver distinguish all eight. Mounts preserve doors and goods."
+    },
+    {
+      "criterion": "No falling street shadow",
+      "status": "FAIL / deferred B",
+      "observation": "Local painted sill, jetty and awning shade exists in A. Cast street/height-responsive overlays are not fabricated in code."
+    }
+  ],
+  "placeholders": [
+    "R15 roof assets for B",
+    "Current fantasy hall-1 / hall-0 as cathedral / guildhall position proxies",
+    "Current well as cross/fountain proxy",
+    "Two current stall drawings in six positions",
+    "Current street/square/town_ground textures until C",
+    "No final firewall, cast shadows, rear/side assets, civic skyline or gate"
+  ],
+  "conflicts": [
+    "Explicit full Part A set overrides panel 40-60-piece cap.",
+    "BRIEF-17 fixed rows0/47 override removal of repeated floor belts. Separate one-pixel lot contours remain; no third line is added.",
+    "No commit/push per operator instruction."
+  ]
+}

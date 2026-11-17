@@ -1,0 +1,1219 @@
+{
+  "part": "A",
+  "round": 4,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "COURSE.md": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-arch-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-door-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-shop-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v1-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-v2-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-work-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-apothecary": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-baker": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-butcher": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-cobbler": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-inn": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-smith": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-oriel-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-stone-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-timber-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-left": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-end-right": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 17 Part A critic; no drawing or city17 editing performed. Read BRIEF-17 in full, BRIEF-17-panel-1, the Round 17 and earlier drawing-method sections of NOTES, COURSE.md, the compositor and processing code. Panel 2 does not exist.\n\nReviewed every one of the 240 PNG exports: all 182 distinct pixel images in the 31 current native 1x / nearest-neighbour 4x galleries against fantasy-house-2, with matched-scale sample-building and corner comparisons and focused exact 8x checks. Verified the 58 aliases against their c0 images. Replayed every export's individual 1x/4x house comparison and seam proof from the current PNGs. Inspected all unique native seam sheets and literal 3x3 repeats of all 120 distinct ground-facade/inn/corner-ground images (160 exports including aliases). Inspected signs over summer grass and on their wall mounts, entrance approaches with the existing person, corner assemblies in all three colourways, and wall ends at all widths. There are no seasonal partners or new terrain bases in Part A; seasonal-ground and summer/seasonal overlay comparisons are not applicable. All c1/c2 alpha masks nevertheless match c0 byte-for-byte.\n\nIndependent audits passed 4,538 checks with no failures. The complete inventory is present: 80 48x48, 72 96x48, 72 144x48, eight 8x48 wall ends and eight 32x40 signs. All files are RGBA, use only alpha 0/255, have zero RGB under transparency, and use the locked palette with 8-31 opaque colours per image. The 232 facade exports have filled square footprints and the prescribed one-pixel side contours. Rows 0 and 47 match the exact COURSE.md donor contract on every facade, guaranteeing all 16,832 ordered same-width course pairings. All sign alpha masks have one connected component. All 13 fantasy crops match the requested origin/claude/project-thread-g8wuu1 Git object; the current-town fantasy-panel crop and Round 15 street replay also match. Scene comparisons preserve the requested literal 1x references and exact 1x/3x scene pixels.\n\nThe previous compositor blocker is resolved. north-3 now joins the intact ground-work-w1 drawing to corner-ground, so the smith display is no longer sliced at scene x=288. L-wing-3 uses the complete ground-shop-v1-w1 beside corner-ground instead of cutting through a broad green canopy/counter at x=288. L-wing-8 likewise uses complete narrower ground and upper drawings. All 90 tested supported corner/colour/height cases preserve the complete painted interiors, exact total lot width, bottom-left registration and course rows; unsupported corner combinations raise ValueError. The actual joins pass at native 1x and nearest-neighbour 4x in critic-r17A-4-corners-c0..2.png. The remaining foreground roof overlap at the south L-wing is the declared later-part roof/layout issue, not a recurrence of the cut-through-panel defect.\n\nPart A visual acceptance: entrances have clear lit thresholds and usable openings; shuttered service fronts remain distinct. Passage paving and daylight continue through the arch designs. Bakery, apothecary, cloth, smith and pottery displays retain readable masses. The eight trade symbols are identifiable at 1x. Recessed windows, sill tops, posts, stone ground floors, oriel return faces and shaded jetty bands provide facade relief; colourways are muted and native pixel scale is consistent. No Part A export requires a redraw for soft alpha, detached flecks, blur, haze, rounded grid bounds, broken outline, wrong light direction, or a source-cutting join. The sample building passes the facade-neighbour comparison; its Round 15 roof remains provisional.\n\nRecomposed the 16x12 L-block, irregular market square and both 5|1 / 1|5 height joins in memory with the current city17 compose.py. Saved and inspected fresh 1x scenes, exact 3x crops and 1x greyscale squint renders against the Round 15 and current-town baselines. Part A courses and joins remain intact in context; the scenes use two wall colours and one roof colour.\n\nThis is a Part A pass only. Full-city acceptance remains failed for later work: Round 15 caps still give shallow/incomplete roof coverage; rear/side walls and deliberate yards are unfinished; both tall/low tests lack firewalls; there are no cast street shadows; paving dominates too much in the greyscale views. Current fantasy halls, well and two repeated stall drawings are explicit Part D proxies, not the requested cathedral/guildhall/cross and six distinct stalls. The square lacks the final skyline leader and gate hierarchy, and the southeast foreground roof hides part of a proxy stall. Parts B/C/D must resolve those issues and their layout/clearance consequences; this verdict does not waive them.\n\nBRIEF-17 and the explicit complete-inventory request take precedence over panel 1's suggestions to remove the fixed floor belts, restrict facade widths to 96px, or cap this part at 40-60 pieces. The mandated course rows are therefore not failed simply for being visible structural belts. Only critic-r17A-4.json and critic-r17A-4-*.png were written. All 240 city17 PNGs, compose.py and COURSE.md remain unchanged during this review. No commit, push or branch change."
+}

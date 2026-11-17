@@ -1,0 +1,162 @@
+[
+  {
+    "file": "sign-apothecary.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-baker.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-butcher.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-cobbler.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-inn.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-scribe.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-smith.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  },
+  {
+    "file": "sign-tailor.png",
+    "host": "ground-shop-w3-c0",
+    "xy": [
+      4,
+      3
+    ],
+    "protected_goods": [
+      45,
+      0,
+      112,
+      48
+    ],
+    "protected_door": [
+      112,
+      0,
+      144,
+      48
+    ]
+  }
+]

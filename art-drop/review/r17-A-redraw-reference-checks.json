@@ -1,0 +1,17 @@
+{
+  "house-0": true,
+  "house-1": true,
+  "house-2": true,
+  "house-3": true,
+  "hall-0": true,
+  "hall-1": true,
+  "hall-2": true,
+  "hall-3": true,
+  "hall-4": true,
+  "hall-5": true,
+  "stall-0": true,
+  "stall-1": true,
+  "well-0": true,
+  "current-town": true,
+  "round15-street": true
+}

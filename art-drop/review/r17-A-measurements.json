@@ -1,0 +1,3602 @@
+{
+  "corner-ground-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 13,
+    "sha256": "fc63c5192487415136c936f121957fd9050d11f9e821dff44591c43fe4fb9d36"
+  },
+  "corner-ground-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 13,
+    "sha256": "1b12e301f5e9b3558d420199571418020348f9317eb36f9092f229bd1b2c8d6b"
+  },
+  "corner-ground-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 13,
+    "sha256": "d8ddfe0d13a0eccd2a2846a2c9041cb85ed6f1b47f27b7a23b852c70f9e6270a"
+  },
+  "corner-ground.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 13,
+    "sha256": "fc63c5192487415136c936f121957fd9050d11f9e821dff44591c43fe4fb9d36"
+  },
+  "corner-storey-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "d71316fe07512ab3b49870cb07981728c751a441037c7b470f2fbb31d2e8f55c"
+  },
+  "corner-storey-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "d5edc365942f52ece7d3214de6e740fa92ed466101f6d2e6508a417116fd8248"
+  },
+  "corner-storey-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "7a659f7ffaa555cdf76f5e50e96e86144ea33a3d09d6219abdfd6feb96eb4a28"
+  },
+  "corner-storey.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "d71316fe07512ab3b49870cb07981728c751a441037c7b470f2fbb31d2e8f55c"
+  },
+  "ground-arch-v1-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "7f42591aa33cce4490b59fab9c65b08263cd953aa3516ed0dc3318e2793ab93c"
+  },
+  "ground-arch-v1-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "dcf23e3f66fa21e6f31b641fbf2eaff6cf460f3e8de5927d6954e3b494fced05"
+  },
+  "ground-arch-v1-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "651b8b141650ed29da0c30e537cc67224d439666598eb9a18f30079149c3c18e"
+  },
+  "ground-arch-v1-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "7f42591aa33cce4490b59fab9c65b08263cd953aa3516ed0dc3318e2793ab93c"
+  },
+  "ground-arch-v1-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "2443a6e08e009345a2e52173fc05e297f386713a89930c47866f2c8597363dcd"
+  },
+  "ground-arch-v1-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "521f0e9780f04ca4510a82341e603fcc01a97518246913c5f4f7939659f23d3b"
+  },
+  "ground-arch-v1-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "ebcb0469921c11c1767a500ed0212d2142b5431f24fd83d1020cc87a12f8ce9d"
+  },
+  "ground-arch-v1-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "2443a6e08e009345a2e52173fc05e297f386713a89930c47866f2c8597363dcd"
+  },
+  "ground-arch-v1-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "e8cb2002c9e4c3f8da5f7f5b040a4dfdc452514c62603cac84b15acbf8592dbb"
+  },
+  "ground-arch-v1-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "25ce80d184e46c27897cbbd1c6b816a1eb57f131fa43af69a883e5fda77214c5"
+  },
+  "ground-arch-v1-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "6abd7ec0e9f10ca58b9361920e192dc37ab5f03fe5566a8a0292d83e1762bf46"
+  },
+  "ground-arch-v1-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "e8cb2002c9e4c3f8da5f7f5b040a4dfdc452514c62603cac84b15acbf8592dbb"
+  },
+  "ground-arch-v2-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "d30b9e1a7b98157680fe1aeacf0be739d3f1cdfdc523dbb4d4c4c7535f0fdfbd"
+  },
+  "ground-arch-v2-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "6a736b187b591a067460c081381595fd7c56bdc70354484d0ed741e3c0c2c4a2"
+  },
+  "ground-arch-v2-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "79db2e035c0119f0425460c86c76af2a8f1ddecf403e4bb19800361504080a5f"
+  },
+  "ground-arch-v2-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 29,
+    "sha256": "d30b9e1a7b98157680fe1aeacf0be739d3f1cdfdc523dbb4d4c4c7535f0fdfbd"
+  },
+  "ground-arch-v2-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "74a9151d598b539c9aef84b7713a9e92559172214bd5ee15ad61917a458b3696"
+  },
+  "ground-arch-v2-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "e3ef2de877cbadf7ef66c020eb55c4735f462ce55d13276d2b8e18ba5291ea3b"
+  },
+  "ground-arch-v2-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "3215c9e320d76ad902b44a809fc4d6d4eb406a059cc4998e950145801dff776c"
+  },
+  "ground-arch-v2-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "74a9151d598b539c9aef84b7713a9e92559172214bd5ee15ad61917a458b3696"
+  },
+  "ground-arch-v2-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "41834e26ff05cb2e51c1f827746f4a593600e6e631ab657a9a171316b15daac6"
+  },
+  "ground-arch-v2-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "3f10cdf3c74364f7908085677d778ed54d802c518089b5d82bb91f0dc60d817a"
+  },
+  "ground-arch-v2-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "9f5ddf8762ec698e6638a45d9ee0b27ede0b42f5db8b0722df25fb06ee73e4ca"
+  },
+  "ground-arch-v2-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "41834e26ff05cb2e51c1f827746f4a593600e6e631ab657a9a171316b15daac6"
+  },
+  "ground-arch-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 26,
+    "sha256": "bf89fe268773fc80915829b28a6b595e26c444884831e25750e1c0a8994016cd"
+  },
+  "ground-arch-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 26,
+    "sha256": "824f477f8a7705836d297002c28075e0ddb9a7aa3f8bbb5219bd4b5a2e600f02"
+  },
+  "ground-arch-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 26,
+    "sha256": "34b9008983557dba8cd66794c4dd4ada0b83a38052f986ae4eab14f6622a2f00"
+  },
+  "ground-arch-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 26,
+    "sha256": "bf89fe268773fc80915829b28a6b595e26c444884831e25750e1c0a8994016cd"
+  },
+  "ground-arch-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "a01845bd6b27ce33594300803def2388a87f679715c7aef52d8dd0a493eca619"
+  },
+  "ground-arch-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "75c47e28a2b51a73840b6b860476fb997e9c74ffa988ed62f90cea054f690b73"
+  },
+  "ground-arch-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "9a8a96bcd613a29757759be9803bd670814ce131cbf6f8e02b33bf8e14f2353b"
+  },
+  "ground-arch-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "a01845bd6b27ce33594300803def2388a87f679715c7aef52d8dd0a493eca619"
+  },
+  "ground-arch-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "151fb45cbe379c56d629d1f2a1d3d23680ef02bac25052c50aad30f7b18249df"
+  },
+  "ground-arch-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "82150c2a5ecd6f55a913fa3eaeef320210381a555acaa279671860a0fd5dc3f8"
+  },
+  "ground-arch-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "f4398493240275935def23d80fc3b006bf84c43c68ec201cbc7598804f5b7aa7"
+  },
+  "ground-arch-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "151fb45cbe379c56d629d1f2a1d3d23680ef02bac25052c50aad30f7b18249df"
+  },
+  "ground-door-v1-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "41edf0d4f220b4fb56f5873a98a51de8fbee8a35586f0e605274d5cf163190a0"
+  },
+  "ground-door-v1-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "e8bf885461eed39de813953b15cf10a2a8b438d4cd7c7f5d3a87567062224fa9"
+  },
+  "ground-door-v1-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "07605b66ecafa49fe6947131685950d9ffdaacee27dc4d64adc05e1f0f405df2"
+  },
+  "ground-door-v1-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "41edf0d4f220b4fb56f5873a98a51de8fbee8a35586f0e605274d5cf163190a0"
+  },
+  "ground-door-v1-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "869a8103a846475081ea2c15537060427ba287a5c4d128b0a66a2c896fe34051"
+  },
+  "ground-door-v1-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "e6144fe5fc41b38c629e69566c9d6bf8d0895370767e32bd9bfe42ca02ba30da"
+  },
+  "ground-door-v1-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "f4e2d31d44c6b81533c7e65e08f9d8ab2dda2d1ecb60b8622590c6e67e401885"
+  },
+  "ground-door-v1-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 28,
+    "sha256": "869a8103a846475081ea2c15537060427ba287a5c4d128b0a66a2c896fe34051"
+  },
+  "ground-door-v1-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 25,
+    "sha256": "60e9ae4605d5b2e7b566dec8c3c9e43de4e1c5b5bc9e2f4ff4a53dad860f4d1c"
+  },
+  "ground-door-v1-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 25,
+    "sha256": "dcc33f9ba4ba45504eedc2288c1e116f7bab9ac271d586637f6c74fc95afc248"
+  },
+  "ground-door-v1-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 25,
+    "sha256": "040dfd579c8fc7953caeef5edb20fde33da7b2629be0d98e16307cf5a03a521f"
+  },
+  "ground-door-v1-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 25,
+    "sha256": "60e9ae4605d5b2e7b566dec8c3c9e43de4e1c5b5bc9e2f4ff4a53dad860f4d1c"
+  },
+  "ground-door-v2-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "12cbd92164222009d80b458444784771e272e790399438966583116020935671"
+  },
+  "ground-door-v2-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "b5e1279d7f103272bc9c4c1b91178e4c309e1940fb15e50639c2ab5b0e68a56e"
+  },
+  "ground-door-v2-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "67d20ee297d5574b0be64b0ca96fd2a7f589bd0666c5c381584b430be63a3b83"
+  },
+  "ground-door-v2-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "12cbd92164222009d80b458444784771e272e790399438966583116020935671"
+  },
+  "ground-door-v2-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "c4b12be6cc6ea292d3c83062bec0f913e2debdf8cb1a6bbbfb5c5bd6b8c1996d"
+  },
+  "ground-door-v2-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "bdecb955171b3cb2ebe892a1be132c7fd6f3bbd54d7629f6d3b8c2734065a5fb"
+  },
+  "ground-door-v2-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "c3ef0fe914530f2d8eb7ac1b42ee9d2e03ef2fbeccc6445e6734d1354245e7d3"
+  },
+  "ground-door-v2-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "c4b12be6cc6ea292d3c83062bec0f913e2debdf8cb1a6bbbfb5c5bd6b8c1996d"
+  },
+  "ground-door-v2-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 19,
+    "sha256": "91c6e8617bd07588b4d526b78df4a23331d9289d13b6863945c9116389d37ca4"
+  },
+  "ground-door-v2-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 19,
+    "sha256": "4bbcab744e7b8f2b188e08717b58513eb972601b44d8a2d0dbbff31055934702"
+  },
+  "ground-door-v2-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 19,
+    "sha256": "83bc51e63d62d05103ae27fa7c7a3a23acdbb472ab33daad41abc32bd85a56c8"
+  },
+  "ground-door-v2-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 19,
+    "sha256": "91c6e8617bd07588b4d526b78df4a23331d9289d13b6863945c9116389d37ca4"
+  },
+  "ground-door-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 24,
+    "sha256": "853d153ba0d2170c67b3ab453f99694956d8d088b58265beffeeb752e584ddbf"
+  },
+  "ground-door-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 24,
+    "sha256": "32e809363be034a4aa18a003d579f8818337ef649a882d11142baef587088251"
+  },
+  "ground-door-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 24,
+    "sha256": "810251af849d0e190b8094db594d6d6b96029348bf0a2c6583c3762dbf487fae"
+  },
+  "ground-door-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 24,
+    "sha256": "853d153ba0d2170c67b3ab453f99694956d8d088b58265beffeeb752e584ddbf"
+  },
+  "ground-door-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "42089dfaa2df359c34d571b8b6f99e3da0e2fc5a5337eb1057646f92572b924d"
+  },
+  "ground-door-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "34c02f16b46963564b44e243625176f1140ddae226cb4804e7f88912f323a976"
+  },
+  "ground-door-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "ccb14d4ef563555ea1988582cfc5bc6a2281bc1a994941918207cdd4f543bdf2"
+  },
+  "ground-door-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "42089dfaa2df359c34d571b8b6f99e3da0e2fc5a5337eb1057646f92572b924d"
+  },
+  "ground-door-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 26,
+    "sha256": "fc92f4c112628b3e4571bf4bb5ba033db39d324dd5a259ba878affa396d05802"
+  },
+  "ground-door-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 26,
+    "sha256": "c2d8afef3d4c86fc3eb07cc8877fa389522660ca9593241715d8c42d281509e1"
+  },
+  "ground-door-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 26,
+    "sha256": "e54085f84f09d19d641ea37282fcdebb32b10f3ec8e0bf21e90d4533c28814af"
+  },
+  "ground-door-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 26,
+    "sha256": "fc92f4c112628b3e4571bf4bb5ba033db39d324dd5a259ba878affa396d05802"
+  },
+  "ground-shop-v1-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "70bc205e8055a225217a1d6c2327554b7f82af3bb377896fb5b7696f1bd833e3"
+  },
+  "ground-shop-v1-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "2e889a984b00d435249822c058a77bc4aa167243aaed2977f6343fb51bcc8a0e"
+  },
+  "ground-shop-v1-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "c5d8fff5f46bc913ae12284cd9b61f346e82b99bdacf486782076e5e838cea56"
+  },
+  "ground-shop-v1-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "70bc205e8055a225217a1d6c2327554b7f82af3bb377896fb5b7696f1bd833e3"
+  },
+  "ground-shop-v1-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "7ed6bc3750eeb095cf142a417283308ff0a360d337e7db92e7cb74066a0d1f3f"
+  },
+  "ground-shop-v1-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "c46f1a9181d6c59adaced980d3265552618cabfbe55e67069892ae3ae817148d"
+  },
+  "ground-shop-v1-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "b51c0a97de86ac5a44dca43bbcda21f869130cbfc061172d919d605423c9d226"
+  },
+  "ground-shop-v1-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 29,
+    "sha256": "7ed6bc3750eeb095cf142a417283308ff0a360d337e7db92e7cb74066a0d1f3f"
+  },
+  "ground-shop-v1-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 27,
+    "sha256": "f3172e7ca5d4e7a04739f4b8b6106abc1ecdb984db9ac99cd27994675e4bd88b"
+  },
+  "ground-shop-v1-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 27,
+    "sha256": "4e3322c73e5ea52a3b96ba07b5d3d6dd7ebe305b50e12865d74033553646e5f0"
+  },
+  "ground-shop-v1-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 27,
+    "sha256": "c65278310289af8f663a02b896eff0a6252be17c8eb67727297d719a3937bd60"
+  },
+  "ground-shop-v1-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 27,
+    "sha256": "f3172e7ca5d4e7a04739f4b8b6106abc1ecdb984db9ac99cd27994675e4bd88b"
+  },
+  "ground-shop-v2-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 19,
+    "sha256": "4de1bbc6f84db5668f8f2e580a2d7fac37d8ff0e7a80d49980bfc3f6ebf8fd30"
+  },
+  "ground-shop-v2-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 19,
+    "sha256": "d6aec1ab6d62886ebd7c480775c302f708e0667c5999c274786abc612b5a018a"
+  },
+  "ground-shop-v2-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 19,
+    "sha256": "f0b69a92a22282dd388b7628e0f76aa39f888dfd30064c578fdae33f47868abc"
+  },
+  "ground-shop-v2-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 19,
+    "sha256": "4de1bbc6f84db5668f8f2e580a2d7fac37d8ff0e7a80d49980bfc3f6ebf8fd30"
+  },
+  "ground-shop-v2-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "2317b6d2eae10117d51037441914806a13fa2784226de6d62403f17ac5637656"
+  },
+  "ground-shop-v2-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "b28cf02fa738bb6406a27198b923c1f7c07c6fdc5e69ee12f861dd16451b2677"
+  },
+  "ground-shop-v2-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "35eb86a6f746af0bea6e6dba8b3b71ef791e17c5c66173abe7a1ee91c70770f0"
+  },
+  "ground-shop-v2-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 30,
+    "sha256": "2317b6d2eae10117d51037441914806a13fa2784226de6d62403f17ac5637656"
+  },
+  "ground-shop-v2-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 31,
+    "sha256": "43e361046123e854f703a0333a3aed88b916c0bb4bc87d74f6ebd22747f7f1bf"
+  },
+  "ground-shop-v2-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 31,
+    "sha256": "1b6d4a81b1cc5af9d15ec3e3973adbde64a1fa3c819babfd0ccfe1503e72b80f"
+  },
+  "ground-shop-v2-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 31,
+    "sha256": "bc69bd326b28d378bd32a65faab38600e4ffb99df58b385f609a03f51201358e"
+  },
+  "ground-shop-v2-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 31,
+    "sha256": "43e361046123e854f703a0333a3aed88b916c0bb4bc87d74f6ebd22747f7f1bf"
+  },
+  "ground-shop-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "75e3df7b46d72aa46c7b2a804c8830661bf138bcf7f22e98e5ef9f1c8489d551"
+  },
+  "ground-shop-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "e7c7a26fd78d1d5cb3b9a52d9c30d5cb6ea5e1489733ef9b8bccfd7fc76e535b"
+  },
+  "ground-shop-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "8f93b515e06a982363248d72e1696740d843c88fd1711d309abc66a0c8abec47"
+  },
+  "ground-shop-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 15,
+    "sha256": "75e3df7b46d72aa46c7b2a804c8830661bf138bcf7f22e98e5ef9f1c8489d551"
+  },
+  "ground-shop-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "f4c002f616373690ee46e88a868cb8f01ccc4c3f92f508d417831c70a1837bde"
+  },
+  "ground-shop-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "b1f672ab6495734268562444f61c2a9f83974e4cb5bb387ed3116878e3d9c668"
+  },
+  "ground-shop-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "4f11a124e645f200512bab652f6ffbfd5779b10b482aad7aed821c350d70ff30"
+  },
+  "ground-shop-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "f4c002f616373690ee46e88a868cb8f01ccc4c3f92f508d417831c70a1837bde"
+  },
+  "ground-shop-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "e150b34ffbe032855e9ae88603599877caf116a6d72a833070da20b81df47d1d"
+  },
+  "ground-shop-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "a8bddf910e7a264fb5719e638707f31bee78bfc5c395a726c48aaa8b31d01e3c"
+  },
+  "ground-shop-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "c5fadb756eba4049116bf75ca5483276e9bf580bdc2dec44aedae19e03ad5d72"
+  },
+  "ground-shop-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "e150b34ffbe032855e9ae88603599877caf116a6d72a833070da20b81df47d1d"
+  },
+  "ground-work-v1-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "9ad646cddd7042663ee55270a57f1755d460dc87dc03c768e3bdc5c851eb174c"
+  },
+  "ground-work-v1-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "430b396f3654067c1c2b45018a192bcb37111ae9ad47b78a4000f317155bc816"
+  },
+  "ground-work-v1-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "26a19be83761cc296a8be202d5d19058393e9960f0ceced7d806d2d965a41a93"
+  },
+  "ground-work-v1-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 16,
+    "sha256": "9ad646cddd7042663ee55270a57f1755d460dc87dc03c768e3bdc5c851eb174c"
+  },
+  "ground-work-v1-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "88ddf6019a7e089aca17bd54d31f6bd80d04083c5ed3f53a741e3b95bd832b33"
+  },
+  "ground-work-v1-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "3c1ac01089460a93f061b33bdcc75c67b21a8f24a21d85e5c55afad065726df8"
+  },
+  "ground-work-v1-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "616987f4be77a9397fbd42cf3957042f1f09629c70a24889c9e20a5d6d943a9d"
+  },
+  "ground-work-v1-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "88ddf6019a7e089aca17bd54d31f6bd80d04083c5ed3f53a741e3b95bd832b33"
+  },
+  "ground-work-v1-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "6bb57e08e79bdadc5de79db33d6cdc656dd79585f36b4dacf29e0ce63f3aee7c"
+  },
+  "ground-work-v1-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "c5be291e3e0357963da63f1f2510fbf1d918fb5878007f512cc85ab1f3cc0bb4"
+  },
+  "ground-work-v1-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "f08320e27366430738aed1ba5d7a3a50461bdf15813d83cd21e1359a27680436"
+  },
+  "ground-work-v1-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "6bb57e08e79bdadc5de79db33d6cdc656dd79585f36b4dacf29e0ce63f3aee7c"
+  },
+  "ground-work-v2-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "d0ed1c48c195216da5a33035c42863860bee2332279c0951d2c4c74ea96399ac"
+  },
+  "ground-work-v2-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "292bebe1b8a00eccd8f46bd2e90c36bf5e3df43f881027263181ae5fd3151ba9"
+  },
+  "ground-work-v2-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "bdbd89c0fbe6237e04432a4693b1b8679bdeb345896ffcfd1941b358099e027c"
+  },
+  "ground-work-v2-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "d0ed1c48c195216da5a33035c42863860bee2332279c0951d2c4c74ea96399ac"
+  },
+  "ground-work-v2-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "f7aec25b9f994e17e408ef53f364251127926457584563c514c9238c4e408a02"
+  },
+  "ground-work-v2-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "cb34a0b2022763d846b87fc4acb11fcaf104ef45217d328a716ec04245d50c57"
+  },
+  "ground-work-v2-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "97d4d639bd6c5dae63555318758a7e8456e33be3f43ce00255e58f2b41ce82e8"
+  },
+  "ground-work-v2-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "f7aec25b9f994e17e408ef53f364251127926457584563c514c9238c4e408a02"
+  },
+  "ground-work-v2-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "cbb70262d4a99f0910cd2b8b4f410bed581365062fff1fdbc3a7f9f0d0bcb579"
+  },
+  "ground-work-v2-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "efb67453df42c6397b6ad01f5d84708ba3a2e84c3c7a53172921fe76127dd510"
+  },
+  "ground-work-v2-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "044859f5f2d078134a7e8a7ed395fb0ea655489d83ddeabfa8eaf8555d32b042"
+  },
+  "ground-work-v2-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "cbb70262d4a99f0910cd2b8b4f410bed581365062fff1fdbc3a7f9f0d0bcb579"
+  },
+  "ground-work-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "0b000e26092df4dd6a2b79dd62ccdc8c6df83fc136af7c2ae13b7ae774908fcf"
+  },
+  "ground-work-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "0eb501e7bca90ea35ab4db6ebdbfc520de994fba860edf09cb631a0c5ca69ba9"
+  },
+  "ground-work-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "9cc0f6158f3b88997f561186de3787d4e9385d392f6e4442e1447b9c52c639fc"
+  },
+  "ground-work-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 20,
+    "sha256": "0b000e26092df4dd6a2b79dd62ccdc8c6df83fc136af7c2ae13b7ae774908fcf"
+  },
+  "ground-work-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "7d21223c4e150e0b672728415e04896e9d73a5cf9aa9770c2a858a8e4bfea24b"
+  },
+  "ground-work-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "5285d000981ef282ee9a9b148afbe3c07271d926aa07339e337bcb4bacaf6d9e"
+  },
+  "ground-work-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "a7aff77c83b79e53d574027e3570d59bd288120a34ec544d24feb2ef2f0c2349"
+  },
+  "ground-work-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 27,
+    "sha256": "7d21223c4e150e0b672728415e04896e9d73a5cf9aa9770c2a858a8e4bfea24b"
+  },
+  "ground-work-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "f36620a2ded1154c8b0c00b06d02a618fda66ee3e5569823a4ef737205657af2"
+  },
+  "ground-work-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "87ab7f984e1de82056775405753ce2a327e3d8454e0683ede1f80912734729eb"
+  },
+  "ground-work-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "82b4a999a1afdac003f4d4c39d9601b8f6acdb2ad818a5e1b69a583c043cd9f2"
+  },
+  "ground-work-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 28,
+    "sha256": "f36620a2ded1154c8b0c00b06d02a618fda66ee3e5569823a4ef737205657af2"
+  },
+  "inn-front-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "d28760158abf93ec3184f25e8ce732cea9977f0292c6cc0fabc62678769db0ab"
+  },
+  "inn-front-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "f00ae70d6f05e71fb3617a25c158889e3dff569f586361e856be90128c7b9b1d"
+  },
+  "inn-front-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "8e292f65bfb1fcc43951f83dfc1c02cc47378a90215a08e0fe697964f0adc9af"
+  },
+  "inn-front-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 17,
+    "sha256": "d28760158abf93ec3184f25e8ce732cea9977f0292c6cc0fabc62678769db0ab"
+  },
+  "inn-front-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "cc07250b80a27cb58d065bbb91c0b401784e079841e9f02f8e5f7ea3e7f78de4"
+  },
+  "inn-front-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "36e8793d5bf81e55a1654f0beab6a3765eaf858ff4237bf9c48cb5eb09822377"
+  },
+  "inn-front-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "ad0a4003fc74830b50e4f870599d3f4383f5f6953d4ebced6767e476a4208530"
+  },
+  "inn-front-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 26,
+    "sha256": "cc07250b80a27cb58d065bbb91c0b401784e079841e9f02f8e5f7ea3e7f78de4"
+  },
+  "inn-front-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "1415589b88c54b54e50dc7a8ead928b08032753deedf95702d24553d68c6619b"
+  },
+  "inn-front-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "75bf3ad3bc716353dc980a3ee48e487d6a310f4784d2bc1ca7f72f3232af30d2"
+  },
+  "inn-front-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "902de2b559f38eaab147aa2e7a76cb22b9b1e63de540dddc93998ef59b3f0c53"
+  },
+  "inn-front-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 29,
+    "sha256": "1415589b88c54b54e50dc7a8ead928b08032753deedf95702d24553d68c6619b"
+  },
+  "sign-apothecary.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      4,
+      31,
+      39
+    ],
+    "opaque": 693,
+    "colours": 25,
+    "sha256": "4a7670dbaa641d0ead8295ec734288e5b4a441785e8ee8df47c7b866486b314e"
+  },
+  "sign-baker.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      4,
+      31,
+      39
+    ],
+    "opaque": 646,
+    "colours": 18,
+    "sha256": "82b358f50dae548788ace091bf80262b2c7043bba98793c5ef60e1c282a4dbcf"
+  },
+  "sign-butcher.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      3,
+      31,
+      39
+    ],
+    "opaque": 767,
+    "colours": 9,
+    "sha256": "33a021e1ad966273990f6fb4c856eaa6e798ab198dfe9e855bbb5af87591898c"
+  },
+  "sign-cobbler.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      5,
+      31,
+      39
+    ],
+    "opaque": 640,
+    "colours": 10,
+    "sha256": "c8110433baa8224710a3bd9df2eb67a1e3a454edef003024d18c66d951a5307b"
+  },
+  "sign-inn.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      1,
+      31,
+      39
+    ],
+    "opaque": 702,
+    "colours": 16,
+    "sha256": "5d0f282d048c65714d12aebe6d4669d8266e136151d382e044861c9d1f19bacd"
+  },
+  "sign-scribe.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      3,
+      30,
+      39
+    ],
+    "opaque": 711,
+    "colours": 18,
+    "sha256": "a2e3242abfc8b77ae34262e83478aed1ad4079a743769d7630cdbf69bf6b91b2"
+  },
+  "sign-smith.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      7,
+      31,
+      39
+    ],
+    "opaque": 621,
+    "colours": 8,
+    "sha256": "99c1b4838e8d3bfb8f69e40c54420c43424cdf8ad4337f92ad03fa3e245ccce2"
+  },
+  "sign-tailor.png": {
+    "size": [
+      32,
+      40
+    ],
+    "bounds": [
+      1,
+      4,
+      31,
+      39
+    ],
+    "opaque": 665,
+    "colours": 15,
+    "sha256": "82cb89df9e7f1c6305a02d12903767c4f6f2168623ea7d261186340411aef032"
+  },
+  "storey-jetty-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 23,
+    "sha256": "3af44053b3358f40a8aa2dedfadfc77a5469e7a8ad0b19827520d00d04e33bb4"
+  },
+  "storey-jetty-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 23,
+    "sha256": "45113f38253f2217f36796012ae91bbda8a734ba588775def94967537fa851de"
+  },
+  "storey-jetty-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 23,
+    "sha256": "da3764dd9fac5a5b78ea5d3d0e18187564a1feb9f855e39ea32462de57839094"
+  },
+  "storey-jetty-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 23,
+    "sha256": "3af44053b3358f40a8aa2dedfadfc77a5469e7a8ad0b19827520d00d04e33bb4"
+  },
+  "storey-jetty-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "34723e8af637290b66b463833aca4a6edad40e5e5023887b4d9ab27c16354efa"
+  },
+  "storey-jetty-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "0d1671d42bc65f169094dd179d0538c6f057af904b86ba91efdc62a3debbe81b"
+  },
+  "storey-jetty-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "804ee23fae88579cb0f82478c6a623292d153aeef7b607a7a40a97745d8b5324"
+  },
+  "storey-jetty-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "34723e8af637290b66b463833aca4a6edad40e5e5023887b4d9ab27c16354efa"
+  },
+  "storey-jetty-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 23,
+    "sha256": "4431f6cc4b69c423df5e29a7270c85e1a198f2ef7993f3a9d954d4e8ebf8b5f3"
+  },
+  "storey-jetty-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 23,
+    "sha256": "93dd88f0ea7cc326b1b23b64a93d7b712c5b426379582ec9283643a744fcca76"
+  },
+  "storey-jetty-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 23,
+    "sha256": "1f408bb8d0bf43747f96147263a0c77634a0be97cc7f6e74c340c3a6d8eb2a66"
+  },
+  "storey-jetty-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 23,
+    "sha256": "4431f6cc4b69c423df5e29a7270c85e1a198f2ef7993f3a9d954d4e8ebf8b5f3"
+  },
+  "storey-oriel-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 18,
+    "sha256": "1cbcc2961f5740d08eb57c4447a0100f71a105169f489d4ed4956d06bdea9d64"
+  },
+  "storey-oriel-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 18,
+    "sha256": "8ca9aad749ca4dfa4d099bea433317699b99c033f732794e2329a23d70cb71cf"
+  },
+  "storey-oriel-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 18,
+    "sha256": "2b48f0e7584d878ccf1c0eb8f61b69a9ae005dca5e71c0b47b4a4a75fd7a935a"
+  },
+  "storey-oriel-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 18,
+    "sha256": "1cbcc2961f5740d08eb57c4447a0100f71a105169f489d4ed4956d06bdea9d64"
+  },
+  "storey-oriel-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "461953e1e21d277ddd8abba5124a41b0bb185ccd3182d4a483a3ed38fd0d9fae"
+  },
+  "storey-oriel-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "f6c2f5b6af8f8d4034b89c14465f2de023c44a095a89376cae217e0f8eee3579"
+  },
+  "storey-oriel-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "0d14df4b4bac2378d2e5d29e2535f300b58ffe401eaa9943416e3a47f5315e1e"
+  },
+  "storey-oriel-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 23,
+    "sha256": "461953e1e21d277ddd8abba5124a41b0bb185ccd3182d4a483a3ed38fd0d9fae"
+  },
+  "storey-oriel-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 21,
+    "sha256": "3b4c74b877c5ba2228342d6ce70904d4f6252276430a44442fdf06989480cd0e"
+  },
+  "storey-oriel-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 21,
+    "sha256": "b849af71b15a739fc67f21296bc18facd29e2b754d41855d6195f78da9696ddd"
+  },
+  "storey-oriel-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 21,
+    "sha256": "c13565c302fac93088752b7b8b5dcdbc2ee1cc885b3da17d4b4ee8ad5ee6049f"
+  },
+  "storey-oriel-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 21,
+    "sha256": "3b4c74b877c5ba2228342d6ce70904d4f6252276430a44442fdf06989480cd0e"
+  },
+  "storey-plaster-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "5224f5aa82202dc9d4e0c1079416ba196c0a8e16dffacd62186c0d1250baa3ef"
+  },
+  "storey-plaster-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "680d03bc34f21f23073b87da6013e8f942a5f0b67fc2f23afa77547d00021109"
+  },
+  "storey-plaster-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "c14aad045e7d820f3b1718ad98115e84c62c1662382de0aa6d5bd1d8d8f00fd2"
+  },
+  "storey-plaster-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "5224f5aa82202dc9d4e0c1079416ba196c0a8e16dffacd62186c0d1250baa3ef"
+  },
+  "storey-plaster-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 18,
+    "sha256": "263dee4d5d3a6012bec149d0ca309b1e6b8c10ecd4d83c1b7ac9f0a6dd0174ae"
+  },
+  "storey-plaster-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 18,
+    "sha256": "9e25756c2ea2e7241db0acd2959a66f85a793117626f663474b5af55b360ea76"
+  },
+  "storey-plaster-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 18,
+    "sha256": "607dad1b9f54fc056608aaaa4d001a075811977251e10a1e0c6c82282cccef48"
+  },
+  "storey-plaster-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 18,
+    "sha256": "263dee4d5d3a6012bec149d0ca309b1e6b8c10ecd4d83c1b7ac9f0a6dd0174ae"
+  },
+  "storey-plaster-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "b4581dec98a58346f95f36334bda02c1ef0dffa6af4da04cf35b342b16012515"
+  },
+  "storey-plaster-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "ee1995a4f8d481e44bd43532627a6bfc0b7864b6ab6650abf75fd1dc4cd30ea9"
+  },
+  "storey-plaster-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "6bf99d2abbf78c68d853bc79bd1a2b96a1403edb678dfcf2804f6f0e8a321561"
+  },
+  "storey-plaster-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 24,
+    "sha256": "b4581dec98a58346f95f36334bda02c1ef0dffa6af4da04cf35b342b16012515"
+  },
+  "storey-stone-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "d83fb3f05b9a370813d33115a3b58db12c12bae44786a155ce843c76f14370e0"
+  },
+  "storey-stone-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "52450113e7879af4a5ae036117bd7574587bc8836a017841befd184aaab981a7"
+  },
+  "storey-stone-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "8d15f951812e8e7adfaefc4c2e457753ae33569bd22f65e9c175b388c5357202"
+  },
+  "storey-stone-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 21,
+    "sha256": "d83fb3f05b9a370813d33115a3b58db12c12bae44786a155ce843c76f14370e0"
+  },
+  "storey-stone-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "2b0d0a92ea06d62e8635d9f75824acf19c41122da682f10ac3a7b91bc07425b4"
+  },
+  "storey-stone-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "c7c066b00813fb830ae6ff7e147b17b54b1cd9e639495ac02908ab5e3d31936d"
+  },
+  "storey-stone-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "6c0697747e74849cb74eb928c7cf7f15371e5838cc195d60b84e7062b1fa23df"
+  },
+  "storey-stone-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 21,
+    "sha256": "2b0d0a92ea06d62e8635d9f75824acf19c41122da682f10ac3a7b91bc07425b4"
+  },
+  "storey-stone-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 22,
+    "sha256": "7d4c1f076c7a5635f648537be9470d44854724c2f052371df11cc2be20569efa"
+  },
+  "storey-stone-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 22,
+    "sha256": "e49a6333f53cc678b6e1d426f080e3a2125ee7055b0d2adfb6d05ca75f9dbb0e"
+  },
+  "storey-stone-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 22,
+    "sha256": "e7bdc4f0955ed4f267c0d5dc626f15edac62b0554f8d51ee7d8d915e70591e2d"
+  },
+  "storey-stone-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 22,
+    "sha256": "7d4c1f076c7a5635f648537be9470d44854724c2f052371df11cc2be20569efa"
+  },
+  "storey-timber-w1-c0.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 22,
+    "sha256": "53fdb1b546d5d60d991e0cdc69575396b845a183ac3bed657ab26d61cb7c4385"
+  },
+  "storey-timber-w1-c1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 22,
+    "sha256": "86368e51a9843371af04febd0ac81acffb56524fa4e3bf5be05c03d64e2b42f7"
+  },
+  "storey-timber-w1-c2.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 22,
+    "sha256": "a3099fcc1c8583e8cfd3b1478c7a7e9d9f74746f88408e77ebb334da2060744a"
+  },
+  "storey-timber-w1.png": {
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque": 2304,
+    "colours": 22,
+    "sha256": "53fdb1b546d5d60d991e0cdc69575396b845a183ac3bed657ab26d61cb7c4385"
+  },
+  "storey-timber-w2-c0.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 13,
+    "sha256": "ed5fb7a8e0a50e6866ae0601150889235858d07063f0aaede156a0b9b14a212f"
+  },
+  "storey-timber-w2-c1.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 13,
+    "sha256": "68a972bccd34e385be2a45fed58f9d254c96705c8406333bd8782a544ca560c0"
+  },
+  "storey-timber-w2-c2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 13,
+    "sha256": "1d3b85def9e6d0e59d9a2952e5647bca66a9f22ac2b40141c71aff0bb288e513"
+  },
+  "storey-timber-w2.png": {
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "opaque": 4608,
+    "colours": 13,
+    "sha256": "ed5fb7a8e0a50e6866ae0601150889235858d07063f0aaede156a0b9b14a212f"
+  },
+  "storey-timber-w3-c0.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "7db991809be4d0d28e0b70a66c131e74da2c907f7203bfaae01c11fc6a1a1fae"
+  },
+  "storey-timber-w3-c1.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "7033dfa270fa25f3297255381e139a5059bcd934175b77f7f0590701a2cd2244"
+  },
+  "storey-timber-w3-c2.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "73ff50390bbe36d4c8039e1c6c0ee9d082b7966b130b33bcc1432131483daabb"
+  },
+  "storey-timber-w3.png": {
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "opaque": 6912,
+    "colours": 20,
+    "sha256": "7db991809be4d0d28e0b70a66c131e74da2c907f7203bfaae01c11fc6a1a1fae"
+  },
+  "wall-end-left-c0.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 10,
+    "sha256": "69fbd363dab7359fa54863360f1cebf5c78647adb42509c141367f570ff8a04e"
+  },
+  "wall-end-left-c1.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 10,
+    "sha256": "29e8e575779da998643ae9d1ebdcee47fca15d293638ba43cb19556887b08278"
+  },
+  "wall-end-left-c2.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 10,
+    "sha256": "77a07570a436834bbe0275ea4f4f33bda120dbb5728e4c4f05fb16aaa30bd3c7"
+  },
+  "wall-end-left.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 10,
+    "sha256": "69fbd363dab7359fa54863360f1cebf5c78647adb42509c141367f570ff8a04e"
+  },
+  "wall-end-right-c0.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 14,
+    "sha256": "d93438a48aa32c482821a9fb72b974f2468d7de3d9dea558adb3f96ca0169210"
+  },
+  "wall-end-right-c1.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 14,
+    "sha256": "7d550729e70438387edaf60b9427392c4ba5fce5078dabc518fd9a721baa3725"
+  },
+  "wall-end-right-c2.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 14,
+    "sha256": "466e30955cf6389445ffba90efbdf1983e7bf0003d477c3cadcd437cffe8c0ff"
+  },
+  "wall-end-right.png": {
+    "size": [
+      8,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      8,
+      48
+    ],
+    "opaque": 384,
+    "colours": 14,
+    "sha256": "d93438a48aa32c482821a9fb72b974f2468d7de3d9dea558adb3f96ca0169210"
+  }
+}

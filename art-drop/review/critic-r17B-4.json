@@ -1,0 +1,699 @@
+{
+  "part": "B",
+  "round": 4,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "chimney-0-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-0-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-0-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "chimney-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "dormer-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "firewall-w0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-flat-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-eave-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shadow-street-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-0-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-0-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-0-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "skylight-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent Round 17 Part B round-4 saved-art review. Read BRIEF-17 in full, BRIEF-17-panel-1 and the relevant NOTES drawing-method sections; panel-2 does not exist. No asset or compositor was edited. All 379 files under out/city17 are byte-identical to the review-start hash inventory.\n\nReviewed all 137 named PNG exports (98 distinct pixel images, with identical aliases checked by code) at literal native 1x and nearest-neighbour 4x beside fantasy-house-2. Inspected all colourways, same/variant seam sheets, unlike-depth eaves, shared flat parapets, mounted accents, and the bare firewall repeat with coping/flashing applied once. The fill was inspected in a literal 3x3 repeat in c0/c1/c2. Roof accents were also viewed over summer grass and their receiving roofs. There are no seasonal partners or ground-base assets in Part B; seasonal-ground and summer/season alpha comparisons are therefore not applicable. All c0/c1/c2 alpha channels were nevertheless compared and match their unsuffixed sources exactly.\n\nDirect PNG checks found correct cap dimensions: gable/ridge/flat widths 48/96/144 and depth96; hip widths48/96/144 and depth144; fill/valley48x48; hip-end48x96; firewall16x48. Roof and firewall footprints are fully painted, with no terrain pinholes or rounded corners. Non-shadow alpha is strictly0/255. Shadow pixels use112/255 (43.9%), an explicit BRIEF-17 exception to the general hard-alpha rule; transparent RGB is zero throughout. No one- or two-pixel detached alpha islands were found in the40 accent exports. No blocking light-direction, pixel-scale, outline, smearing, haze or material-repeat defect was observed.\n\nImported the unchanged compose.py with bytecode disabled and rebuilt the16x12 L-block, irregular market and both5|1 and1|5 height arrangements. Saved 1x/3x renders beside literal1x round15-street/current-town references, plus native greyscale squints. The3x images were verified as exact nearest-neighbour enlargements and inspected in native-scale sections. Fresh scene pixels match the supplied final proofs. Additional critic-r17B-4-*.png sheets contain native/4x asset comparisons, seams, fill repeats and 8x L-join crops.\n\nThe three preceding compose.py failures are resolved in the delivered fixed L pilot: courses no longer stop at rectangular x96/x288 paste boundaries; the southwest hip reaches the actual outside corner; the terminal east hip has continuous receiving planes; and the south eave has no repeated interior verges. The exposed notch, top and eave contour rows were checked directly. All three L colourways retain clear plane separation. Final chimney/dormer placement remains intact. Tall/low neighbours retain uninterrupted bare party walls, coping/flashing and intact windows; street shadows preserve paving texture and vary with building height. The reviewed pass covers the delivered pilot assemblies, not arbitrary future city layouts or an in-engine integration test.\n\nApplied the brief fail list to Part B: roofs read as volumes rather than flat fronts; intended roof footprints hide the ground; neighbours have no interlot gaps; the demonstrated roofs vary in width, family and accents; and streets receive visible shade. The green court in the L is intentional yard space. Full-city landmark dominance and greyscale gate/main-street hierarchy remain unapproved later-part work: current terrain is a Part C proxy, fantasy-hall-1/fantasy-hall-0/fantasy-well-0 stand in for Part D cathedral/guildhall/market cross, and six stall positions reuse two current drawings. No city15 roof or facade is used in the new scenes; round15 is comparison only. Existing Part A trade signs were not reapproved here.\n\nPanel B priorities3 and11 are met for the reviewed pilot. Where directions conflict, BRIEF-17 retains precedence on the complete requested inventory, shared eaves and lot-contained overlays; the user's critic-only/no-commit/no-push/no-branch-change instructions govern this review. No required Part B correction remains."
+}

@@ -1,0 +1,723 @@
+{
+  "part": "B",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "compose.py",
+    "roof-fill-w1",
+    "roof-fill-w1-c0",
+    "roof-fill-w1-c1",
+    "roof-fill-w1-c2"
+  ],
+  "files": {
+    "chimney-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-0-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-0-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-0-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "chimney-3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-0-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-0-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-0-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "dormer-3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "firewall-w0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-fill-w1": {
+      "status": "fail",
+      "problems": [
+        "The 48x48 tile repeats without an alpha gap, but fails its required deeper-roof interface. In compose.build(make_spec(width,1,'door',0,0,'ridge') with roof_depth=3), the inserted fill occupies roof-local rows 28..75. At joins 27/28 and 75/76, the tile-course phase, cluster shape and lighting change abruptly. At native 1x this is a conspicuous 48px-high texture band, not one continuous roof slope. Reproduced for widths 1, 2 and 3 in all colourways.",
+        "The fill's nearly uniform repeating shading does not continue the cap's broad left-to-right value distribution, especially on w2/w3. The w1 cap also has visibly broader tile clusters than the inserted fill. Pixel size is unchanged; the painted material scale and value pattern are incompatible. See critic-r17B-2-deep-roof-w1.png, -w2.png, -w3.png and critic-r17B-2-deep-roofs-c1.png / -c2.png."
+      ],
+      "fix": "Use the image tool to redraw compatible fill paint or drawn interface adapters so tile widths, course height/phase and plane lighting continue through both cap interfaces. Keep the 48x48 repeat contract, square edges and hard alpha; preserve matching c0/c1/c2 masks. Register and mode-reduce as before. Demonstrate both a literal 3x3 repeat and 3/4/5-cell-deep w1..w3 roofs without a texture band. Coordinate the splice and exposed-edge fixes in compose.py."
+    },
+    "roof-fill-w1-c0": {
+      "status": "fail",
+      "problems": [
+        "The 48x48 tile repeats without an alpha gap, but fails its required deeper-roof interface. In compose.build(make_spec(width,1,'door',0,0,'ridge') with roof_depth=3), the inserted fill occupies roof-local rows 28..75. At joins 27/28 and 75/76, the tile-course phase, cluster shape and lighting change abruptly. At native 1x this is a conspicuous 48px-high texture band, not one continuous roof slope. Reproduced for widths 1, 2 and 3 in all colourways.",
+        "The fill's nearly uniform repeating shading does not continue the cap's broad left-to-right value distribution, especially on w2/w3. The w1 cap also has visibly broader tile clusters than the inserted fill. Pixel size is unchanged; the painted material scale and value pattern are incompatible. See critic-r17B-2-deep-roof-w1.png, -w2.png, -w3.png and critic-r17B-2-deep-roofs-c1.png / -c2.png."
+      ],
+      "fix": "Use the image tool to redraw compatible fill paint or drawn interface adapters so tile widths, course height/phase and plane lighting continue through both cap interfaces. Keep the 48x48 repeat contract, square edges and hard alpha; preserve matching c0/c1/c2 masks. Register and mode-reduce as before. Demonstrate both a literal 3x3 repeat and 3/4/5-cell-deep w1..w3 roofs without a texture band. Coordinate the splice and exposed-edge fixes in compose.py."
+    },
+    "roof-fill-w1-c1": {
+      "status": "fail",
+      "problems": [
+        "The 48x48 tile repeats without an alpha gap, but fails its required deeper-roof interface. In compose.build(make_spec(width,1,'door',0,0,'ridge') with roof_depth=3), the inserted fill occupies roof-local rows 28..75. At joins 27/28 and 75/76, the tile-course phase, cluster shape and lighting change abruptly. At native 1x this is a conspicuous 48px-high texture band, not one continuous roof slope. Reproduced for widths 1, 2 and 3 in all colourways.",
+        "The fill's nearly uniform repeating shading does not continue the cap's broad left-to-right value distribution, especially on w2/w3. The w1 cap also has visibly broader tile clusters than the inserted fill. Pixel size is unchanged; the painted material scale and value pattern are incompatible. See critic-r17B-2-deep-roof-w1.png, -w2.png, -w3.png and critic-r17B-2-deep-roofs-c1.png / -c2.png."
+      ],
+      "fix": "Use the image tool to redraw compatible fill paint or drawn interface adapters so tile widths, course height/phase and plane lighting continue through both cap interfaces. Keep the 48x48 repeat contract, square edges and hard alpha; preserve matching c0/c1/c2 masks. Register and mode-reduce as before. Demonstrate both a literal 3x3 repeat and 3/4/5-cell-deep w1..w3 roofs without a texture band. Coordinate the splice and exposed-edge fixes in compose.py."
+    },
+    "roof-fill-w1-c2": {
+      "status": "fail",
+      "problems": [
+        "The 48x48 tile repeats without an alpha gap, but fails its required deeper-roof interface. In compose.build(make_spec(width,1,'door',0,0,'ridge') with roof_depth=3), the inserted fill occupies roof-local rows 28..75. At joins 27/28 and 75/76, the tile-course phase, cluster shape and lighting change abruptly. At native 1x this is a conspicuous 48px-high texture band, not one continuous roof slope. Reproduced for widths 1, 2 and 3 in all colourways.",
+        "The fill's nearly uniform repeating shading does not continue the cap's broad left-to-right value distribution, especially on w2/w3. The w1 cap also has visibly broader tile clusters than the inserted fill. Pixel size is unchanged; the painted material scale and value pattern are incompatible. See critic-r17B-2-deep-roof-w1.png, -w2.png, -w3.png and critic-r17B-2-deep-roofs-c1.png / -c2.png."
+      ],
+      "fix": "Use the image tool to redraw compatible fill paint or drawn interface adapters so tile widths, course height/phase and plane lighting continue through both cap interfaces. Keep the 48x48 repeat contract, square edges and hard alpha; preserve matching c0/c1/c2 masks. Register and mode-reduce as before. Demonstrate both a literal 3x3 repeat and 3/4/5-cell-deep w1..w3 roofs without a texture band. Coordinate the splice and exposed-edge fixes in compose.py."
+    },
+    "roof-flat-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-flat-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-gable-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-end": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-end-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-end-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-end-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-hip-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-ridge-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-valley": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-valley-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-valley-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "roof-valley-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-eave-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-jetty-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w2-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w2-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w2-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w3-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w3-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "shadow-street-w3-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-0-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-0-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-0-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-1-c0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-1-c1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "skylight-1-c2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "build(): the deeper ridge splice at split=28 inserts roof-fill-w1 without a compatible course transition. The visible texture bands at roof-local y=28 and y=76 are present for all three widths and colours at roof_depth=3. The inserted run also lacks the exposed one-pixel side outline: only 4/48 left-edge and 6/48 right-edge pixels are #2b281d, rather than a continuous contour. See critic-r17B-2-deep-roof-w1.png through -w3.png.",
+        "build(): the full-width shadow-jetty-w3 is applied after the reserved firewall bay, so a false six-pixel dark belt crosses bare masonry with no projecting jetty above it. In the height-test scene it crosses x=144..191 and x=432..479 at y=289..294. This is an unmasked receiving-surface error, not a shadow PNG defect. See critic-r17B-2-firewall-shadow-west-8x.png and -east-8x.png.",
+        "joined_l_roof(): the west arm at local x=0..95,y=0..143 consists of opposing 90-degree rotations of the same fill. The tile highlights rotate with the material and the two sides have almost the same overall value. The horizontal wing likewise uses the same unrotated fill above and below the ridge at y=190..193. At 1x/4x the result reads as parallel textured ribbons with a line drawn through them, unlike the cap roofs' clearly lit left and shaded right planes. This fails Part B's roof-volume/light requirement and panel item 3. See critic-r17B-2-L-join-c0-4x.png through -c2-4x.png and the L-block squint.",
+        "neighbours()/build(): valid narrow unequal-height arrangements cannot render. A w1 five-storey house beside a w1 one-storey house raises ValueError('party wall needs a reserved side bay'). A w2 five-storey house between two w1 one-storey houses raises the same error. Both were reproduced using make_spec(...,roof='hip'), neighbours(), then build(). The brief supports 1-cell frontages and does not exclude these height arrangements.",
+        "scene(): the opaque joined_l object is drawn after the already-composited lot roof overlays. It erases L-south-1's dormer-1 at scene bounds (104,424)-(132,448) and L-south-2's chimney-2 at (200,404)-(216,440). The final scene contains roof tiles in those rectangles although build() includes the accents. See critic-r17B-2-occluded-dormer-1.png and -chimney-2.png. Roof joins must precede their final accents."
+      ],
+      "fix": "Composite course-compatible drawn fill/adapters and retain the drawn one-pixel verges on extended roofs. Restrict each jetty shadow to the actual jetty frontage, excluding reserved firewall bays. Build the L from appropriately lit directional painted planes while preserving top-left illumination, and inspect both ridge faces in greyscale. Support narrow tall/low joins with compatible wall reveals instead of consuming all frontage and raising an error. Apply accents to the final joined roof after all opaque roof pieces. Rebuild the three brief scenes, both height orientations, narrow adjacency cases, and deeper-roof seam proofs. Do not redraw the passing shadow/accent PNGs to compensate for placement errors."
+    }
+  },
+  "notes": "Independent Round 17 Part B, critic round 2. Read BRIEF-17.md in full, BRIEF-17-panel-1.md and NOTES.md's drawing/registration/mode/palette/alpha/cleanup methods. BRIEF-17-panel-2.md does not exist. This is a saved-art and compositor review, not an in-engine approval. No art was drawn or edited.\n\nScope: all 137 Part B PNG exports (including unsuffixed c0 aliases) and compose.py. Inspected native 1x and nearest-neighbour 4x roof, join, firewall, shadow and accent sheets beside fantasy-house-2; accents also on summer grass and mounted on receiving roof planes. Inspected same/variant seams, mixed-depth neighbouring eaves, shared flat parapets, literal 3x3 roof-fill repeats and firewall repeats. The firewall is usable with its bare body repeated and its coping/flashing applied once; repeating the entire decorated strip vertically is not the supported assembly.\n\nRebuilt the 768x576 (16x12-cell) L-block with T-junction and dead end, the irregular 864x864 market square, and the 768x480 five-storey/one-storey test in both orientations using the unchanged compose.py. Saved exact 1x/3x scenes, comparisons with round15-street.png and current-town.png at literal 1x, and 1x greyscale squints. Inspected every 3x scene region using unscaled tiled crops. Extra proofs cover directional L joins at 4x/8x, three-cell roof extensions at every width and colour, false firewall shadows, and erased accents. Evidence files are critic-r17B-2-*.png.\n\nAll 137 PNGs pass their native dimension contracts, including 96px gable/ridge/flat caps, 144px hip caps, 48x48 fill/valley and the repaired 48x96 terminal hip. All ordinary art is alpha 0/255; shadows use only 0/112 (43.9%, allowed by the brief's shadow-specific <=50% exception). All transparent pixels have zero RGB; no detached one- or two-pixel alpha islands were found. All 34 unsuffixed colour aliases equal c0; all 68 c1/c2 alpha comparisons against the corresponding source match exactly. There are no seasonal partners or new ground tiles in Part B, so seasonal-ground and summer/seasonal overlay checks are not applicable. Colourways were nevertheless checked by code and visually.\n\nThe 133 passing PNGs retain clean square grid silhouettes where applicable, readable material clusters, matching native pixel scale, appropriate outlines and roof volume, and usable mounted accents. No standalone PNG is failed for a compositor-only defect. The four fill PNGs fail their intended cap interface despite a gap-free self-repeat. compose.py is included in failed because it is an explicitly named Part B deliverable; PNG keys omit .png.\n\nPart A facades are used as delivered. Current fantasy grass/paving are temporary Part C context; current fantasy halls/well and two stall drawings in six positions are Part D proxies. No city15 asset is used in the new scene assembly; round15-street.png is only a comparison. Deliberate courts are not counted as roof holes. No unexpected transparent hole exists in the supplied roof footprints, and neighbouring eaves do not expose ground. Street shadows are present and retain paving texture. The market does not establish the final dominant cathedral/gate/sign/street hierarchy in greyscale; those missing C/D/E results are recorded as deferred, not attributed to a Part B PNG. Existing Part A trade signs were not reapproved.\n\nPanel B items 3 and 11 are not fully met: directional assembled roof planes, seamless deeper-cap interfaces and receiving-surface shadow masking still fail. BRIEF-17 takes precedence over panel conflicts on the complete Part B inventory, shared eaves and lot-contained overlays; the user's no-commit/no-push/no-branch-change instructions take precedence over the brief's push instruction.\n\nOnly this report and critic-r17B-2-*.png review composites were written. No file in art-drop/out/city17 was edited."
+}

@@ -1,0 +1,967 @@
+{
+  "L-block": {
+    "size": [
+      768,
+      576
+    ],
+    "terrain": {
+      "street": [
+        [
+          0,
+          4,
+          8,
+          2
+        ],
+        [
+          8,
+          4,
+          8,
+          1
+        ],
+        [
+          0,
+          10,
+          8,
+          1
+        ],
+        [
+          8,
+          9,
+          8,
+          2
+        ],
+        [
+          7,
+          4,
+          1,
+          7
+        ],
+        [
+          0,
+          7,
+          8,
+          1
+        ],
+        [
+          12,
+          5,
+          1,
+          3
+        ]
+      ],
+      "square": [
+        [
+          8,
+          5,
+          2,
+          2
+        ]
+      ]
+    },
+    "buildings": [
+      {
+        "id": "north-0",
+        "x": 0,
+        "base": 192,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "north-1",
+        "x": 96,
+        "base": 192,
+        "spec": {
+          "width": 1,
+          "ground": "inn",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "plaster",
+              "colour": 1
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "north-2",
+        "x": 144,
+        "base": 192,
+        "spec": {
+          "width": 2,
+          "ground": "arch",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "north-3",
+        "x": 240,
+        "base": 192,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "jetty",
+              "colour": 1
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": true
+        }
+      },
+      {
+        "id": "north-4",
+        "x": 384,
+        "base": 192,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "oriel",
+              "colour": 0
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "north-5",
+        "x": 480,
+        "base": 192,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 1
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "north-6",
+        "x": 576,
+        "base": 192,
+        "spec": {
+          "width": 1,
+          "ground": "arch",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "plaster",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "north-7",
+        "x": 624,
+        "base": 192,
+        "spec": {
+          "width": 3,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 1
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-baker",
+              "x": 4,
+              "y": 51
+            }
+          ],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-0",
+        "x": 0,
+        "base": 336,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-1",
+        "x": 96,
+        "base": 336,
+        "spec": {
+          "width": 1,
+          "ground": "arch",
+          "variant": 2,
+          "colour": 1,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-2",
+        "x": 144,
+        "base": 336,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-3",
+        "x": 240,
+        "base": 336,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": true
+        }
+      },
+      {
+        "id": "L-wing-4",
+        "x": 0,
+        "base": 480,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "oriel",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-5",
+        "x": 96,
+        "base": 480,
+        "spec": {
+          "width": 2,
+          "ground": "arch",
+          "variant": 0,
+          "colour": 1,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-6",
+        "x": 192,
+        "base": 480,
+        "spec": {
+          "width": 3,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "plaster",
+              "colour": 0
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [
+            {
+              "file": "sign-apothecary",
+              "x": 112,
+              "y": 51
+            }
+          ],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-7",
+        "x": 432,
+        "base": 432,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 1
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "L-wing-8",
+        "x": 624,
+        "base": 432,
+        "spec": {
+          "width": 3,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "jetty",
+              "colour": 0
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": true
+        }
+      },
+      {
+        "id": "L-wing-9",
+        "x": 528,
+        "base": 384,
+        "spec": {
+          "width": 1,
+          "ground": "arch",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      }
+    ],
+    "objects": [],
+    "features": {
+      "L_block": "west lots rows6-9",
+      "T_junction": [
+        7,
+        7
+      ],
+      "dead_end": [
+        12,
+        8
+      ],
+      "north_south_lane": [
+        7,
+        4,
+        1,
+        7
+      ],
+      "bent_street": "east lower street rises one row",
+      "wedge": "staggered eastern block"
+    }
+  },
+  "market": {
+    "size": [
+      864,
+      768
+    ],
+    "terrain": {
+      "street": [
+        [
+          8,
+          0,
+          2,
+          16
+        ],
+        [
+          0,
+          12,
+          18,
+          2
+        ],
+        [
+          0,
+          7,
+          5,
+          1
+        ]
+      ],
+      "square": [
+        [
+          4,
+          6,
+          10,
+          5
+        ],
+        [
+          6,
+          11,
+          8,
+          2
+        ],
+        [
+          4,
+          5,
+          5,
+          1
+        ]
+      ]
+    },
+    "buildings": [
+      {
+        "id": "square-lot-0",
+        "x": 0,
+        "base": 288,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-1",
+        "x": 96,
+        "base": 288,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "plaster",
+              "colour": 1
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-2",
+        "x": 672,
+        "base": 288,
+        "spec": {
+          "width": 2,
+          "ground": "arch",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-3",
+        "x": 768,
+        "base": 288,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 0,
+          "colour": 1,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-4",
+        "x": 0,
+        "base": 480,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "oriel",
+              "colour": 0
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-5",
+        "x": 96,
+        "base": 480,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 2,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 1
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-6",
+        "x": 672,
+        "base": 480,
+        "spec": {
+          "width": 2,
+          "ground": "arch",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "plaster",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-7",
+        "x": 768,
+        "base": 528,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-8",
+        "x": 0,
+        "base": 720,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "jetty",
+              "colour": 0
+            }
+          ],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-9",
+        "x": 96,
+        "base": 720,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 1,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-10",
+        "x": 624,
+        "base": 720,
+        "spec": {
+          "width": 3,
+          "ground": "arch",
+          "variant": 1,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "timber",
+              "colour": 0
+            },
+            {
+              "kind": "plaster",
+              "colour": 0
+            }
+          ],
+          "roof": "gable",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "square-lot-11",
+        "x": 768,
+        "base": 720,
+        "spec": {
+          "width": 2,
+          "ground": "work",
+          "variant": 2,
+          "colour": 1,
+          "storeys": [],
+          "roof": "ridge",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      }
+    ],
+    "objects": [
+      {
+        "id": "cathedral-placeholder",
+        "file": "reference/r17/fantasy-hall-1.png",
+        "x": 240,
+        "base": 288,
+        "deferred": "Part D"
+      },
+      {
+        "id": "guildhall-placeholder",
+        "file": "reference/r17/fantasy-hall-0.png",
+        "x": 432,
+        "base": 768,
+        "deferred": "Part D"
+      },
+      {
+        "id": "market-cross-placeholder",
+        "file": "reference/r17/fantasy-well-0.png",
+        "x": 432,
+        "base": 504,
+        "deferred": "Part D"
+      },
+      {
+        "id": "stall-0",
+        "file": "reference/r17/fantasy-stall-0.png",
+        "x": 240,
+        "base": 384,
+        "deferred": "Part D: six positions, two current drawings"
+      },
+      {
+        "id": "stall-1",
+        "file": "reference/r17/fantasy-stall-1.png",
+        "x": 300,
+        "base": 384,
+        "deferred": "Part D: six positions, two current drawings"
+      },
+      {
+        "id": "stall-2",
+        "file": "reference/r17/fantasy-stall-0.png",
+        "x": 360,
+        "base": 384,
+        "deferred": "Part D: six positions, two current drawings"
+      },
+      {
+        "id": "stall-3",
+        "file": "reference/r17/fantasy-stall-1.png",
+        "x": 540,
+        "base": 528,
+        "deferred": "Part D: six positions, two current drawings"
+      },
+      {
+        "id": "stall-4",
+        "file": "reference/r17/fantasy-stall-0.png",
+        "x": 600,
+        "base": 528,
+        "deferred": "Part D: six positions, two current drawings"
+      },
+      {
+        "id": "stall-5",
+        "file": "reference/r17/fantasy-stall-1.png",
+        "x": 660,
+        "base": 528,
+        "deferred": "Part D: six positions, two current drawings"
+      }
+    ],
+    "features": {
+      "square": "L footprint: 10x5 + 8x2 + 5x1 cells",
+      "central_aisle": [
+        8,
+        6,
+        2,
+        7
+      ],
+      "churchyard": [
+        4,
+        5,
+        5,
+        1
+      ],
+      "landmarks": "current hall proxies; final sizes/skyline deferred D"
+    }
+  },
+  "height-test": {
+    "size": [
+      768,
+      432
+    ],
+    "terrain": {
+      "street": [
+        [
+          0,
+          8,
+          16,
+          1
+        ]
+      ]
+    },
+    "buildings": [
+      {
+        "id": "height-0",
+        "x": 48,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            },
+            {
+              "kind": "plaster",
+              "colour": 0
+            },
+            {
+              "kind": "jetty",
+              "colour": 0
+            },
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "height-1",
+        "x": 144,
+        "base": 384,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 1,
+          "colour": 1,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "height-2",
+        "x": 384,
+        "base": 384,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 2,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "height-3",
+        "x": 432,
+        "base": 384,
+        "spec": {
+          "width": 2,
+          "ground": "shop",
+          "variant": 0,
+          "colour": 1,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 1
+            },
+            {
+              "kind": "plaster",
+              "colour": 1
+            },
+            {
+              "kind": "jetty",
+              "colour": 1
+            },
+            {
+              "kind": "timber",
+              "colour": 1
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      }
+    ],
+    "objects": [],
+    "features": {
+      "joins": "5|1 and 1|5; no interlot gap",
+      "firewall": "NOT DRAWN / Part B",
+      "shadow": "NOT DRAWN / Part B"
+    }
+  }
+}

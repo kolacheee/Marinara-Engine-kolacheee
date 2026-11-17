@@ -1,0 +1,210 @@
+{
+  "narrow-pair": {
+    "size": [
+      432,
+      480
+    ],
+    "terrain": {
+      "street": [
+        [
+          0,
+          9,
+          9,
+          1
+        ]
+      ]
+    },
+    "buildings": [
+      {
+        "id": "narrow-pair0",
+        "x": 48,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            },
+            {
+              "kind": "plaster",
+              "colour": 0
+            },
+            {
+              "kind": "jetty",
+              "colour": 0
+            },
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "narrow-pair1",
+        "x": 96,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "narrow-pair2",
+        "x": 240,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "narrow-pair3",
+        "x": 288,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            },
+            {
+              "kind": "plaster",
+              "colour": 0
+            },
+            {
+              "kind": "jetty",
+              "colour": 0
+            },
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      }
+    ],
+    "objects": []
+  },
+  "narrow-between": {
+    "size": [
+      432,
+      480
+    ],
+    "terrain": {
+      "street": [
+        [
+          0,
+          9,
+          9,
+          1
+        ]
+      ]
+    },
+    "buildings": [
+      {
+        "id": "narrow-between0",
+        "x": 48,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "narrow-between1",
+        "x": 96,
+        "base": 432,
+        "spec": {
+          "width": 2,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [
+            {
+              "kind": "stone",
+              "colour": 0
+            },
+            {
+              "kind": "plaster",
+              "colour": 0
+            },
+            {
+              "kind": "jetty",
+              "colour": 0
+            },
+            {
+              "kind": "timber",
+              "colour": 0
+            }
+          ],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      },
+      {
+        "id": "narrow-between2",
+        "x": 192,
+        "base": 432,
+        "spec": {
+          "width": 1,
+          "ground": "door",
+          "variant": 0,
+          "colour": 0,
+          "storeys": [],
+          "roof": "hip",
+          "roof_colour": 0,
+          "ends": [],
+          "overlays": [],
+          "corner": false
+        }
+      }
+    ],
+    "objects": []
+  }
+}
