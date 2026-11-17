@@ -664,8 +664,9 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
         foes: fitted(setting, band.high, [...head, ...guard], "hard"),
       };
     }
+    // A lone sentry, a pair or a squad of three, not always two (panel 2026-11-17).
     const holders = () =>
-      fitted(setting, level_, group(site.holder, "standard", level_, 2 + Math.floor(random() * 2)), "normal");
+      fitted(setting, level_, group(site.holder, "standard", level_, 1 + Math.floor(random() * 3)), "normal");
     switch (info.use) {
       case "post":
         return { area, key, role: "guard", level: level_, foes: holders() };

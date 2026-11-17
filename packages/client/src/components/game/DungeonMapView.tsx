@@ -40,6 +40,7 @@ import {
   paintBuildingFloor,
   paintBuildingProp,
   paintBuildingWall,
+  paintBuildingEarth,
   paintBuildingRug,
   paintBuildingWater,
   paintFoundTrap,
@@ -236,7 +237,7 @@ export function DungeonMapView({
             // Round a planned building's floors at and above the ground lies the land it stands on, not a
             // black void (panel 2026-11-16).
             if (outdoors) paintBuildingCourt(ctx, x * T, y * T, onPath(x, y), noise);
-            else if (buried && building) paintBuildingWall(ctx, building, x * T, y * T, false, noise);
+            else if (buried && building) paintBuildingEarth(ctx, x * T, y * T, noise);
             else if (buried) paintDungeonWall(ctx, cells.set, x * T, y * T, false, noise);
             continue;
           }
@@ -259,12 +260,22 @@ export function DungeonMapView({
                 (each) => x >= each.x && x < each.x + each.w && y >= each.y && y < each.y + each.h,
               )!;
               const mid = { x: court.x + Math.floor(court.w / 2), y: court.y + Math.floor(court.h / 2) };
-              paintBuildingCourt(ctx, x * T, y * T, x === mid.x || y === mid.y, noise);
+              // A castle's ward is cobbled all over; a house's or a cloister's court is a garden crossed by paths.
+              paintBuildingCourt(ctx, x * T, y * T, building === "keep" || x === mid.x || y === mid.y, noise);
             } else
-              paintBuildingFloor(ctx, building, x * T, y * T, isHall(x, y), noise, {
-                up: isHall(x, y - 1),
-                down: isHall(x, y + 1),
-              });
+              // A house's cellars are flagged stone, not boards and carpet.
+              paintBuildingFloor(
+                ctx,
+                buried && building === "manor" ? "keep" : building,
+                x * T,
+                y * T,
+                isHall(x, y),
+                noise,
+                {
+                  up: isHall(x, y - 1),
+                  down: isHall(x, y + 1),
+                },
+              );
           // A planned crypt's hall is set apart from its rooms; a carved place's ground is all one.
           else paintDungeonFloor(ctx, cells.set, x * T, y * T, noise, Boolean(cells.roomNames) && isHall(x, y));
         }
@@ -472,6 +483,7 @@ export function DungeonMapView({
       // A post of more than one shows a second figure a step behind the first.
       for (const guard of guards) {
         if (inFog(guard.x, guard.y)) continue;
+        if (guard.count > 2) paintGuard(ctx, guard.x * T - 1, guard.y * T - 8, false);
         if (guard.count > 1) paintGuard(ctx, guard.x * T + 7, guard.y * T - 5, false);
         paintGuard(ctx, guard.x * T + (guard.count > 1 ? -3 : 1), guard.y * T - 3, guard.heart);
       }

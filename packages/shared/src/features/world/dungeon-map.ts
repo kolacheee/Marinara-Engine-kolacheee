@@ -48,6 +48,14 @@ export const BUILDING_DRESSING = [
   "an altar",
   "a pew",
   "a tomb",
+  "a stool",
+  "chains and shackles",
+  "a bucket",
+  "a heap of straw",
+  "a wine rack",
+  "a heap of bones",
+  "a niche of skulls",
+  "shelves of jars and sacks",
 ] as const;
 
 /** A prop as one character of a kept map: "-" none, 0-9, then a-z for 10 on. */

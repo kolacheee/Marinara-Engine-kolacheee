@@ -272,8 +272,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const room = here.map.rooms[area.area - 1]!;
     // The room's middle, or the walkable cell nearest it; a cell clear of props (an urn, a lamp, the stairs)
     // first, so the figure never stands in one, and never the cell above it, where its head would be.
-    // In a planned building a guard stands just inside the room's door nearest the way in, where it would
-    // stop whoever comes in (panel 2026-11-16); the chief keeps the middle of the heart.
+    // The chief keeps the middle of the heart.
     const inRoom = (x: number, y: number) => x >= room.x && x < room.x + room.w && y >= room.y && y < room.y + room.h;
     const doors: Array<{ x: number; y: number }> = [];
     if (here.map.roomInfo && area.role !== "heart")
@@ -286,13 +285,21 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
             [0, -1],
           ] as const)
             if (!inRoom(x + dx, y + dy) && dungeonWalkable(cells, x + dx, y + dy)) doors.push({ x, y });
+    // Round 3 of the panel (2026-11-17): not at the door the party comes in by. Guards hold the way on: the
+    // stairs where the room has them, else the room's door farthest in, else the middle of a room with one door.
     const way = here.map.entrance;
-    const door = doors.sort(
-      (p, q) => Math.abs(p.x - way.x) + Math.abs(p.y - way.y) - (Math.abs(q.x - way.x) + Math.abs(q.y - way.y)),
-    )[0];
-    const middle = door ?? { x: room.x + Math.floor(room.w / 2), y: room.y + Math.floor(room.h / 2) };
+    const fromWay = (p: { x: number; y: number }) => Math.abs(p.x - way.x) + Math.abs(p.y - way.y);
+    const stair = here.map.roomInfo ? here.map.links?.find((link) => inRoom(link.x, link.y)) : undefined;
+    const sorted = doors.sort((p, q) => fromWay(q) - fromWay(p));
+    const farDoor =
+      sorted.length && fromWay(sorted[0]!) - fromWay(sorted[sorted.length - 1]!) > 2 ? sorted[0] : undefined;
+    const middle = stair ?? farDoor ?? { x: room.x + Math.floor(room.w / 2), y: room.y + Math.floor(room.h / 2) };
+    const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
-      cells.props[y * cells.width + x] === -1 && (y === 0 || cells.props[(y - 1) * cells.width + x] === -1);
+      cells.props[y * cells.width + x] === -1 &&
+      (y === 0 || cells.props[(y - 1) * cells.width + x] === -1) &&
+      !onLink(x, y) &&
+      !onLink(x, y + 1);
     let at = middle;
     let best = Infinity;
     for (let y = room.y; y < room.y + room.h; y++)

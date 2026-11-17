@@ -690,7 +690,7 @@ const SITE_FEAST_ROOMS = new Set(["Great hall", "Dining room", "Refectory", "Ser
 /** Rooms where many sleep, so their beds go in rows. */
 const SITE_DORMS = new Set(["Barracks", "Servants' garret", "Servants' hall", "Monks' cells", "Officers' quarters"]);
 
-type SiteRole = "center" | "wall" | "back" | "corner" | "scatter" | "pillar" | "pews";
+type SiteRole = "center" | "wall" | "back" | "corner" | "scatter" | "pillar" | "pews" | "seats";
 // The furnishings past the first five (dungeon-map BUILDING_DRESSING), by slot.
 const BARREL = 8,
   CRATE = 9,
@@ -709,7 +709,15 @@ const BARREL = 8,
   LECTERN = 23,
   ALTAR = 24,
   PEW = 25,
-  TOMB = 26;
+  TOMB = 26,
+  STOOL = 27,
+  CHAINS = 28,
+  BUCKET = 29,
+  HAY = 30,
+  WINE = 31,
+  BONES = 32,
+  SKULLS = 33,
+  JARS = 34;
 type SiteRecipe = ReadonlyArray<readonly [slot: number, role: SiteRole, count?: number | "reps" | "all"]>;
 const KITCHEN: SiteRecipe = [
   [RANGE, "back"],
@@ -757,10 +765,12 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [SEAT, "back"],
     [FIRE, "wall"],
     [T, "center", "all"],
+    [STOOL, "seats", "all"],
     [STATUE, "corner", 2],
   ],
   "Dining room": [
     [T, "center", "all"],
+    [STOOL, "seats", "all"],
     [FIRE, "back"],
     [WARDROBE, "wall"],
   ],
@@ -787,6 +797,7 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   "Servants' hall": [
     [T, "center", "all"],
+    [STOOL, "seats", "all"],
     [FIRE, "back"],
     [CHEST, "corner"],
   ],
@@ -871,8 +882,8 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [SHELF, "wall", 2],
   ],
   "Wine cellar": [
-    [BARREL, "wall", "all"],
-    [SHELF, "corner", 2],
+    [WINE, "wall", "all"],
+    [BARREL, "corner", 2],
   ],
   Brewhouse: [
     [BARREL, "wall", "reps"],
@@ -986,11 +997,13 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   Stables: [
     [MANGER, "wall", "all"],
-    [CRATE, "corner", 2],
+    [HAY, "corner", 2],
+    [BUCKET, "corner"],
   ],
   Kennels: [
-    [PALLET, "wall", "reps"],
-    [BARREL, "corner"],
+    [HAY, "wall", "reps"],
+    [BONES, "scatter", 2],
+    [BUCKET, "corner"],
   ],
   "Well house": [
     [WELL, "center", 1],
@@ -1014,15 +1027,34 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   "Gaoler's room": [
     [T, "center", 1],
+    [STOOL, "seats", 2],
     [CHEST, "corner"],
     [RACK, "wall"],
     [FIRE, "back"],
   ],
-  Cell: [[PALLET, "corner"]],
+  Oubliette: [
+    [BONES, "center", 1],
+    [CHAINS, "wall"],
+  ],
+  "Inner ward": [
+    [WELL, "center", 1],
+    [HAY, "corner"],
+    [BARREL, "corner"],
+    [CRATE, "corner"],
+  ],
+  "Cloister garth": [[WELL, "center", 1]],
+  Cloister: [[WELL, "center", 1]],
+  Cell: [
+    [PALLET, "corner"],
+    [CHAINS, "wall"],
+    [BUCKET, "corner"],
+  ],
   "Interrogation room": [
     [T, "center", 1],
     [FIRE, "back"],
     [RACK, "wall"],
+    [CHAINS, "wall", 2],
+    [BUCKET, "corner"],
   ],
   "Signal room": [[FIRE, "center", 1]],
   "Beacon platform": [[FIRE, "center", 1]],
@@ -1054,6 +1086,7 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   Refectory: [
     [T, "center", "all"],
+    [STOOL, "seats", "all"],
     [LECTERN, "back"],
   ],
   Scriptorium: [
@@ -1075,8 +1108,9 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   "Bell loft": [[CRATE, "corner", 2]],
   "Clock room": [[SHELF, "wall", 2]],
   Undercroft: [
-    [CRATE, "scatter", "reps"],
-    [BARREL, "corner", 2],
+    [SKULLS, "wall", "reps"],
+    [CRATE, "corner", 2],
+    [BARREL, "corner"],
   ],
   Reliquary: [
     [CHEST, "wall", 2],
@@ -1085,8 +1119,14 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   "Relic store": [[CHEST, "wall", "reps"]],
   "Burial vault": [[TOMB, "center", "reps"]],
-  Charnel: [[SHELF, "wall", "reps"]],
-  Ossuary: [[SHELF, "wall", "reps"]],
+  Charnel: [
+    [SKULLS, "wall", "all"],
+    [BONES, "scatter", "reps"],
+  ],
+  Ossuary: [
+    [SKULLS, "wall", "all"],
+    [BONES, "scatter", "reps"],
+  ],
   "Family crypt": [
     [TOMB, "center", "reps"],
     [FIRE, "corner", 2],
@@ -1127,7 +1167,63 @@ const SITE_NEXT_TO: Record<string, readonly string[]> = {
   "Ringers' loft": ["Bell chamber"],
   "Signal room": ["Watch room"],
   "Monks' cells": ["Monks' cells", "Refectory"],
+  "Entrance hall": ["Great hall"],
+  "Dining room": ["Great hall"],
+  Ballroom: ["Great hall", "Long gallery"],
+  "Sitting room": ["Parlour", "Great hall"],
+  "Morning room": ["Parlour"],
+  Gallery: ["Long gallery", "Great hall"],
+  "Music room": ["Ballroom", "Parlour"],
+  Scullery: ["Kitchen"],
+  Bakehouse: ["Kitchen"],
+  Larder: ["Kitchen"],
+  Smithy: ["Armoury"],
+  Stables: ["Kennels"],
+  "Chapter house": ["Cloister"],
+  Charnel: ["Ossuary"],
+  Undercroft: ["Crypt chapel"],
 };
+/** Rooms whose shelves hold books. */
+const SITE_BOOK_ROOMS = new Set([
+  "Library",
+  "Study",
+  "Steward's office",
+  "Muniment room",
+  "Scriptorium",
+  "Chapter house",
+  "Vestry",
+  "Sacristy",
+  "Chaplain's room",
+  "Gallery",
+  "Long gallery",
+  "Parlour",
+  "Sitting room",
+  "Morning room",
+  "Music room",
+  "Governess's room",
+  "Solar",
+  "Lord's chamber",
+  "Master bedroom",
+  "Bedroom",
+  "Guest bedroom",
+  "Guest chamber",
+  "Nursery",
+  "Boudoir",
+]);
+/** Pieces a room has one or two of however big it is: one high seat, one hearth, one altar. */
+const SITE_ONE_OFF = new Set<number>([SEAT, FIRE, ALTAR, WELL, ANVIL, BATH, RANGE, FONT, LECTERN, DESK, STATUE]);
+/** Rooms shut away behind a door of their own, never opened wide into the next. */
+const SITE_CLOSED = new Set([
+  "Cell",
+  "Monks' cells",
+  "Bathroom",
+  "Vault",
+  "Treasury",
+  "Garderobe",
+  "Oubliette",
+  "Dressing room",
+  "Interrogation room",
+]);
 const siteBaseName = (name: string) => name.replace(/ \d+$/u, "");
 
 const SITE_ENTRY_ROOMS = new Set(["Entrance hall", "Gatehouse", "Narthex", "Vestibule"]);
@@ -1644,6 +1740,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
   }
 
+  /** Each room's alcove, the cells of it, where it has one. */
+  const alcoves = new Map<number, Array<{ x: number; y: number }>>();
   // ── The plan's rooms on the spaces ──
   const owner = new Map<number, SitePlanRoom>();
   for (const [k, each] of extras.entries()) owner.set(passages.length + leaves.length + heroes.length + k, each.room);
@@ -1810,12 +1908,22 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const doorOf = new Map<number, { x: number; y: number }>();
   const lockedNode = (n: number) => !!owner.get(n)?.locked;
   const opened = new Set<Edge>();
-  const openEdge = (edge: Edge, main: boolean) => {
+  const openEdge = (edge: Edge, main: boolean, wide = false) => {
     opened.add(edge);
     const both = isPassage(edge.a) && isPassage(edge.b);
     if (both) {
       for (const each of edge.cells) ground[cell(each.x, each.y)] = "floor";
       return edge.cells[0]!;
+    }
+    // Two rooms that go together open through a wide archway, one space of two parts (an L, a T), not two
+    // boxes (panel 2026-11-17).
+    if (wide && edge.cells.length >= 5) {
+      const mid = edge.cells[Math.floor(edge.cells.length / 2)]!;
+      const half = edge.cells.length >= 8 ? 2 : 1;
+      for (const each of edge.cells)
+        if (Math.abs(each.x - mid.x) + Math.abs(each.y - mid.y) <= half) ground[cell(each.x, each.y)] = "floor";
+      if (main) doorOf.set(depth[edge.a]! > depth[edge.b]! ? edge.a : edge.b, mid);
+      return mid;
     }
     const at = edge.cells[Math.floor(random() * edge.cells.length)]!;
     ground[cell(at.x, at.y)] = "floor";
@@ -1846,7 +1954,11 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       together(edge.a, edge.b) &&
       !tree.some((each) => (each.a === edge.a && each.b === edge.b) || (each.a === edge.b && each.b === edge.a))
     ) {
-      openEdge(edge, false);
+      openEdge(
+        edge,
+        false,
+        random() < 0.6 && ![edge.a, edge.b].some((k) => SITE_CLOSED.has(siteBaseName(owner.get(k)?.name ?? ""))),
+      );
       forced.add(edge);
     }
   for (const edge of edges) {
@@ -1854,8 +1966,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     if (lockedNode(edge.a) || lockedNode(edge.b)) continue;
     const passages2 = Number(isPassage(edge.a)) + Number(isPassage(edge.b));
     // Loops: rooms open into each other often, so a floor is more than a tree of dead ends.
-    const chance = edge.a === court || edge.b === court ? 0.7 : passages2 === 2 ? 0.6 : passages2 === 1 ? 0.3 : 0.45;
-    if (random() < chance) openEdge(edge, false);
+    // Room to room more than room to corridor, so a way round skips the corridor (panel 2026-11-17).
+    const chance = edge.a === court || edge.b === court ? 0.7 : passages2 === 2 ? 0.6 : passages2 === 1 ? 0.15 : 0.6;
+    if (random() < chance)
+      openEdge(
+        edge,
+        false,
+        passages2 === 0 &&
+          random() < 0.2 &&
+          ![edge.a, edge.b].some((k) => SITE_CLOSED.has(siteBaseName(owner.get(k)?.name ?? ""))),
+      );
   }
   // A room with one way in and others to be had gets a second, mostly: rooms to go round, not only to
   // walk into and back out of (panel 2026-11-16).
@@ -1864,13 +1984,65 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const mine = edges.filter((edge) => edge.a === n || edge.b === n);
     if (mine.filter((edge) => opened.has(edge)).length !== 1) continue;
     const more = mine.filter((edge) => !opened.has(edge) && !lockedNode(edge.a === n ? edge.b : edge.a));
-    if (more.length && random() < 0.6) openEdge(more[Math.floor(random() * more.length)]!, false);
+    // Into the next room where there is one, not back onto the same corridor.
+    const rooms2 = more.filter((edge) => !isPassage(edge.a === n ? edge.b : edge.a));
+    const pool = rooms2.length ? rooms2 : more;
+    if (pool.length && random() < 0.7) openEdge(pool[Math.floor(random() * pool.length)]!, false);
   }
   if (entry) {
     // Through the whole thickness of the outer wall.
     const [dx, dy] =
       entrance.y === bottom ? [0, -1] : entrance.y === top ? [0, 1] : entrance.x === left ? [1, 0] : [-1, 0];
     for (let t = 0; t < thick; t++) ground[cell(entrance.x + dx * t, entrance.y + dy * t)] = "floor";
+  }
+
+  // Alcoves and bays: a room on the outer wall now and then has a three-cell recess in it, cut into a
+  // thick wall or pushed out past a thin one, so a floor is not all boxes (panel 2026-11-17). Never on the
+  // front with the door, never where the next cell out is not open ground.
+  if (!level.inset) {
+    const front = entry ? entrance : null;
+    for (const [n, r] of nodes.entries()) {
+      const room = owner.get(n);
+      if (isPassage(n) || !room || room.use === "open" || Math.min(r.w, r.h) < 4 || random() > 0.35) continue;
+      const t = touches(r);
+      const sides = (["n", "s", "e", "w"] as const).filter(
+        (side) =>
+          t[side] &&
+          (side === "n" || side === "s" ? r.w : r.h) >= 5 &&
+          !(
+            front &&
+            (side === "s"
+              ? front.y === bottom
+              : side === "n"
+                ? front.y === top
+                : side === "w"
+                  ? front.x === left
+                  : front.x === right)
+          ),
+      );
+      const side = sides[Math.floor(random() * sides.length)];
+      if (!side) continue;
+      const across = side === "n" || side === "s";
+      const [dx, dy] = side === "n" ? [0, -1] : side === "s" ? [0, 1] : side === "w" ? [-1, 0] : [1, 0];
+      const along = across ? r.w : r.h;
+      const start = Math.floor(random() * (along - 3 - 1)) + 1;
+      const cellsOf = (k: number, d: number) =>
+        across
+          ? { x: r.x + start + k, y: (side === "n" ? r.y : r.y + r.h - 1) + dy * d }
+          : { x: (side === "w" ? r.x : r.x + r.w - 1) + dx * d, y: r.y + start + k };
+      // The recess: the first cell out along three; past it, wall (or the thick wall's second course).
+      const recess = [0, 1, 2].map((k) => cellsOf(k, 1));
+      const behind = [-1, 0, 1, 2, 3].map((k) => cellsOf(k, 2));
+      const flank = [cellsOf(-1, 1), cellsOf(3, 1)];
+      const ok = (p: { x: number; y: number }) => p.x > 0 && p.y > 0 && p.x < mapW - 1 && p.y < mapH - 1;
+      if (![...recess, ...behind, ...flank].every(ok)) continue;
+      if (!recess.every((p) => ground[cell(p.x, p.y)] === "wall")) continue;
+      if (!behind.every((p) => ground[cell(p.x, p.y)] !== "floor" && ground[cell(p.x, p.y)] !== "liquid")) continue;
+      if (links.some((link) => [...recess, ...behind].some((p) => p.x === link.x && p.y === link.y))) continue;
+      for (const p of recess) ground[cell(p.x, p.y)] = "floor";
+      for (const p of [...behind, ...flank]) if (ground[cell(p.x, p.y)] === "rock") ground[cell(p.x, p.y)] = "wall";
+      alcoves.set(n, recess);
+    }
   }
 
   const rooms: DungeonRoom[] = [];
@@ -2060,6 +2232,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) out.push([x, y]);
       return shuffle(out);
     };
+    // Stacked together: heaps of one thing in a corner of the room, not dotted about the floor (panel
+    // 2026-11-17).
+    const anchor = corners.length ? corners[Math.floor(random() * corners.length)]! : ([x0, y0] as [number, number]);
+    const clustered = () =>
+      everywhere().sort(
+        (p, q) =>
+          Math.abs(p[0] - anchor[0]) +
+          Math.abs(p[1] - anchor[1]) -
+          (Math.abs(q[0] - anchor[0]) + Math.abs(q[1] - anchor[1])),
+      );
     // Every other cell along each wall in turn (starting at random), and only then the cells between.
     const spread = (...lists: Array<Array<[number, number]>>) => {
       const skips = lists.map(() => Math.floor(random() * 2));
@@ -2077,7 +2259,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const recipe = plan.template === "crypt" ? undefined : SITE_RECIPES[siteBaseName(room.name)];
     const items: Array<{ slot: number; kind: SiteRole; count: number }> = recipe
       ? recipe.map(([slot, kind, n]) => ({
-          slot,
+          // Books where people read; jars, pots and sacks on the shelves of stores and kitchens.
+          slot: slot === SHELF && !SITE_BOOK_ROOMS.has(siteBaseName(room.name)) ? JARS : slot,
           kind,
           // A big room holds more of what stands round its walls than a small one (panel 2026-11-17).
           count:
@@ -2085,7 +2268,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
               ? Infinity
               : n === "reps"
                 ? reps
-                : (n ?? 1) * (kind === "center" ? 1 : Math.max(1, Math.floor((area.w * area.h) / 40))),
+                : (n ?? 1) *
+                  (kind === "center" || kind === "back" || SITE_ONE_OFF.has(slot) || room.use === "open"
+                    ? 1
+                    : Math.max(1, Math.floor((area.w * area.h) / 40))),
         }))
       : room.furniture.map((slot) => {
           const kind = siteFurnitureRole(plan.template, slot);
@@ -2109,6 +2295,27 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           if (Math.abs(line - (short - 1) / 2) < 1) continue;
           pews.push(along ? [x0 + k, y0 + line] : [x0 + line, y0 + k]);
         }
+    // Seats: stools along both sides of each table set out, a table to sit at (panel 2026-11-17).
+    const seats = () => {
+      const isTable = (x: number, y: number) => x >= x0 && x <= x1 && y >= y0 && y <= y1 && props[cell(x, y)] === T;
+      const out: Array<[number, number]> = [];
+      for (let y = y0; y <= y1; y++)
+        for (let x = x0; x <= x1; x++) {
+          if (!isTable(x, y)) continue;
+          const upright = !isTable(x - 1, y) && !isTable(x + 1, y) && (isTable(x, y - 1) || isTable(x, y + 1));
+          for (const [sx, sy] of upright
+            ? [
+                [x - 1, y],
+                [x + 1, y],
+              ]
+            : [
+                [x, y - 1],
+                [x, y + 1],
+              ])
+            if (sx! >= x0 && sx! <= x1 && sy! >= y0 && sy! <= y1) out.push([sx!, sy!]);
+        }
+      return out;
+    };
     for (const { slot, kind, count } of items) {
       const spots = tiny
         ? everywhere()
@@ -2133,14 +2340,19 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
                   ? pillars
                   : kind === "pews"
                     ? pews
-                    : everywhere();
+                    : kind === "seats"
+                      ? seats()
+                      : kind === "scatter" && plan.template !== "crypt"
+                        ? clustered()
+                        : everywhere();
       let placed = 0;
       for (const [x, y] of spots) {
-        if (placed >= count || budget <= 0) break;
+        // Seats come with their table, outside the room's budget.
+        if (placed >= count || (budget <= 0 && kind !== "seats")) break;
         if (near(x, y)) continue;
         if (put(slot, x, y)) {
           placed++;
-          budget--;
+          if (kind !== "seats") budget--;
         }
       }
     }

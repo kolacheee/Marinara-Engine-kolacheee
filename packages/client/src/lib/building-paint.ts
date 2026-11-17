@@ -200,6 +200,9 @@ export function paintBuildingProp(
   join: { w?: boolean; e?: boolean; n?: boolean; s?: boolean } = {},
 ) {
   const ink = "#140d08";
+  // A store's shelves: jars, pots and sacks, as a keep's are, in any building.
+  if (prop === 34 && style !== "keep") return paintBuildingProp(ctx, "keep", 2, x, y);
+  if (prop === 34) prop = 2;
   switch (prop) {
     case 0: {
       if (style === "temple") {
@@ -627,6 +630,112 @@ function paintBuildingDressing(
       px(ctx, stone[2]!, x + 5, y + 6, 6, 2);
       return;
     }
+    case 27: {
+      // A stool: a round seat on three legs.
+      px(ctx, ink, x + 4, y + 5, 8, 7);
+      px(ctx, wood[0]!, x + 5, y + 6, 6, 4);
+      px(ctx, wood[1]!, x + 5, y + 6, 6, 1);
+      px(ctx, wood[2]!, x + 5, y + 10, 1, 3);
+      px(ctx, wood[2]!, x + 10, y + 10, 1, 3);
+      return;
+    }
+    case 28: {
+      // Chains and shackles: an iron plate in the wall, a heavy chain hanging in a loop, a cuff at each end.
+      px(ctx, ink, x + 5, y, 6, 4);
+      px(ctx, "#5a5a62", x + 6, y + 1, 4, 2);
+      const links: Array<[number, number]> = [
+        [6, 4],
+        [5, 6],
+        [4, 8],
+        [4, 10],
+        [9, 4],
+        [10, 6],
+        [11, 8],
+        [11, 10],
+      ];
+      for (const [k, [lx, ly]] of links.entries()) {
+        px(ctx, ink, x + lx - 1, y + ly - 1, 3, 3);
+        px(ctx, k % 2 ? "#6a6a74" : "#9a9aa4", x + lx, y + ly, 1, 2);
+      }
+      for (const cx of [3, 10]) {
+        px(ctx, ink, x + cx - 1, y + 11, 5, 5);
+        px(ctx, "#8a8a94", x + cx, y + 12, 3, 3);
+        px(ctx, "#2a2a30", x + cx + 1, y + 13, 1, 1);
+      }
+      return;
+    }
+    case 29: {
+      // A wooden bucket with an iron hoop and a rope handle.
+      px(ctx, ink, x + 4, y + 6, 8, 9);
+      px(ctx, wood[0]!, x + 5, y + 7, 6, 7);
+      px(ctx, "#2a3a48", x + 5, y + 7, 6, 2);
+      px(ctx, "#4a4a52", x + 5, y + 10, 6, 1);
+      px(ctx, "#b8a478", x + 5, y + 4, 1, 3);
+      px(ctx, "#b8a478", x + 10, y + 4, 1, 3);
+      px(ctx, "#b8a478", x + 6, y + 3, 4, 1);
+      return;
+    }
+    case 30: {
+      // A heap of straw.
+      px(ctx, "#6a5a24", x + 1, y + 6, 14, 9);
+      px(ctx, "#a08a3a", x + 2, y + 5, 12, 8);
+      px(ctx, "#c4ac54", x + 4, y + 4, 8, 4);
+      for (const [hx, hy] of [
+        [3, 8],
+        [7, 6],
+        [10, 9],
+        [5, 11],
+        [12, 7],
+      ] as const)
+        px(ctx, "#e0cc78", x + hx, y + hy, 2, 1);
+      return;
+    }
+    case 31: {
+      // A wine rack: a lattice of bottle ends.
+      px(ctx, ink, x + 1, y + 1, 14, 14);
+      px(ctx, wood[2]!, x + 2, y + 2, 12, 12);
+      for (let r = 0; r < 3; r++)
+        for (let c = 0; c < 3; c++) {
+          px(ctx, wood[1]!, x + 2 + c * 4, y + 2 + r * 4, 4, 1);
+          px(ctx, (r + c) % 2 ? "#3a1a24" : "#2a3a1a", x + 3 + c * 4, y + 3 + r * 4, 2, 2);
+        }
+      return;
+    }
+    case 32: {
+      // A heap of bones and a skull.
+      for (const [bx, by, w, h] of [
+        [2, 10, 7, 1],
+        [6, 12, 8, 1],
+        [3, 7, 1, 6],
+        [11, 8, 1, 5],
+        [8, 9, 5, 1],
+      ] as const)
+        px(ctx, "#cfc6aa", x + bx, y + by, w, h);
+      px(ctx, ink, x + 4, y + 3, 6, 6);
+      px(ctx, "#e4dcc0", x + 5, y + 3, 4, 4);
+      px(ctx, ink, x + 5, y + 5, 1, 1);
+      px(ctx, ink, x + 8, y + 5, 1, 1);
+      return;
+    }
+    case 33: {
+      // A wall niche under a round arch, stacked with four skulls.
+      px(ctx, ink, x + 1, y + 2, 14, 13);
+      px(ctx, ink, x + 3, y, 10, 2);
+      px(ctx, "#1c1814", x + 2, y + 3, 12, 11);
+      for (const [sx, sy] of [
+        [2, 3],
+        [8, 3],
+        [2, 9],
+        [8, 9],
+      ] as const) {
+        px(ctx, "#d8d0b4", x + sx + 1, y + sy, 4, 1);
+        px(ctx, "#d8d0b4", x + sx, y + sy + 1, 6, 3);
+        px(ctx, "#b8b094", x + sx + 1, y + sy + 4, 4, 1);
+        px(ctx, ink, x + sx + 1, y + sy + 2, 1, 1);
+        px(ctx, ink, x + sx + 4, y + sy + 2, 1, 1);
+      }
+      return;
+    }
   }
 }
 
@@ -713,4 +822,25 @@ export function paintBuildingCourt(ctx: Ctx, x: number, y: number, path: boolean
     );
   }
   if (noise(70) < 0.15) px(ctx, "#c9c07a", x + 4 + Math.floor(noise(71) * 8), y + 4 + Math.floor(noise(72) * 8), 1, 1);
+}
+
+/** The earth and rock a building's cellars are dug into: packed earth with stones in it, never a void
+ *  (panel 2026-11-17). */
+export function paintBuildingEarth(ctx: Ctx, x: number, y: number, noise: Noise) {
+  px(ctx, "#2b251f", x, y, T, T);
+  for (let k = 0; k < 6; k++)
+    px(
+      ctx,
+      noise(80 + k) < 0.5 ? "#342d25" : "#231e19",
+      x + Math.floor(noise(90 + k) * 14),
+      y + Math.floor(noise(100 + k) * 15),
+      2,
+      1,
+    );
+  if (noise(110) < 0.35) {
+    const [sx, sy] = [x + 2 + Math.floor(noise(111) * 9), y + 2 + Math.floor(noise(112) * 9)];
+    px(ctx, "#17130f", sx, sy + 1, 5, 4);
+    px(ctx, "#4a4239", sx, sy, 5, 4);
+    px(ctx, "#5c5348", sx, sy, 4, 1);
+  }
 }
