@@ -14,6 +14,8 @@ export type DungeonGround = (typeof DUNGEON_GROUND)[number];
 
 /** The prop slot that is always the way out (stairs down, a ladder, a hatch) in every set. */
 export const DUNGEON_EXIT_PROP = 5;
+/** A hidden door in a planned building's wall: drawn as wall, walked through like floor. */
+export const DUNGEON_SECRET_DOOR_PROP = 39;
 
 export interface DungeonSet {
   id: string;
@@ -60,6 +62,10 @@ export const BUILDING_DRESSING = [
   "a dropped sword",
   "a spilt jug",
   "cobwebs",
+  "a hidden door",
+  "a cart",
+  "a training dummy",
+  "a woodpile",
 ] as const;
 
 /** A prop as one character of a kept map: "-" none, 0-9, then a-z for 10 on. */
@@ -379,7 +385,10 @@ export function dungeonWalkable(map: DungeonMap, x: number, y: number): boolean 
   const i = at(map, x, y);
   if (map.drawnProps) return map.ground[i] === "floor";
   if (map.blocked?.has(i)) return false;
-  return map.ground[i] === "floor" && (map.props[i] === -1 || map.props[i] === DUNGEON_EXIT_PROP);
+  return (
+    map.ground[i] === "floor" &&
+    (map.props[i] === -1 || map.props[i] === DUNGEON_EXIT_PROP || map.props[i] === DUNGEON_SECRET_DOOR_PROP)
+  );
 }
 
 /** The shortest walk between two cells, four ways, as the cells after the start; null when none. */

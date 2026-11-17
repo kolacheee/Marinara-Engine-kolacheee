@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
   DUNGEON_EXIT_PROP,
+  DUNGEON_SECRET_DOOR_PROP,
   dungeonWayOutId,
   gameDungeonLinkAt,
   gameDungeonOnWayDown,
@@ -287,6 +288,43 @@ export function DungeonMapView({
           if (!colour || room.w < 5 || room.h < 5) return;
           paintBuildingRug(ctx, (room.x + 1) * T, (room.y + 1) * T, (room.w - 2) * T, (room.h - 2) * T, colour);
         });
+      // Doorways: a door standing open against one jamb wherever a room opens through a wall one cell wide,
+      // so the ways between rooms read at a glance (panel round 5). Archways (wider) stay open.
+      if (building)
+        for (let y = 0; y < cells.height; y++)
+          for (let x = 0; x < cells.width; x++) {
+            if (at(x, y) !== "floor" || cells.props[y * cells.width + x] !== -1 || inRoom(x, y)) continue;
+            const across =
+              at(x - 1, y) === "wall" && at(x + 1, y) === "wall"
+                ? "ns"
+                : at(x, y - 1) === "wall" && at(x, y + 1) === "wall"
+                  ? "we"
+                  : null;
+            if (!across) continue;
+            const ends = across === "ns" ? [inRoom(x, y - 1), inRoom(x, y + 1)] : [inRoom(x - 1, y), inRoom(x + 1, y)];
+            if (!ends[0] && !ends[1]) continue;
+            const [px0, py0] = [x * T, y * T];
+            ctx.fillStyle = "#1a100a";
+            if (across === "ns") {
+              ctx.fillRect(px0, py0, 2, T);
+              ctx.fillRect(px0 + T - 2, py0, 2, T);
+              ctx.fillStyle = "#6a4422";
+              ctx.fillRect(px0 + 2, py0 + 1, 3, T - 2);
+              ctx.fillStyle = "#8a5a30";
+              ctx.fillRect(px0 + 2, py0 + 1, 1, T - 2);
+              ctx.fillStyle = "#c8a040";
+              ctx.fillRect(px0 + 4, py0 + Math.floor(T / 2), 1, 1);
+            } else {
+              ctx.fillRect(px0, py0, T, 2);
+              ctx.fillRect(px0, py0 + T - 2, T, 2);
+              ctx.fillStyle = "#6a4422";
+              ctx.fillRect(px0 + 1, py0 + 2, T - 2, 3);
+              ctx.fillStyle = "#8a5a30";
+              ctx.fillRect(px0 + 1, py0 + 2, T - 2, 1);
+              ctx.fillStyle = "#c8a040";
+              ctx.fillRect(px0 + Math.floor(T / 2), py0 + 4, 1, 1);
+            }
+          }
       // A high seat stands on a dais: a raised step three wide under it (panel round 4).
       if (building)
         for (let i = 0; i < cells.props.length; i++) {
@@ -308,6 +346,18 @@ export function DungeonMapView({
         for (let x = 0; x < cells.width; x++) {
           const prop = cells.props[y * cells.width + x]!;
           if (prop < 0) continue;
+          if (building && prop === DUNGEON_SECRET_DOOR_PROP) {
+            // A hidden door: the wall it hides in, with only a hairline and a scuff to give it away.
+            const below = at(x, y + 1);
+            paintBuildingWall(ctx, building, x * T, y * T, below === "floor", cellNoise(x, y));
+            ctx.fillStyle = "rgba(10, 6, 4, 0.55)";
+            ctx.fillRect(x * T + 3, y * T + 2, 1, T - 3);
+            ctx.fillRect(x * T + T - 4, y * T + 2, 1, T - 3);
+            ctx.fillRect(x * T + 3, y * T + 2, T - 6, 1);
+            ctx.fillStyle = "rgba(200, 190, 160, 0.35)";
+            ctx.fillRect(x * T + 5, y * T + T - 2, 6, 1);
+            continue;
+          }
           if (building) {
             const same = (dx: number, dy: number) =>
               x + dx >= 0 &&

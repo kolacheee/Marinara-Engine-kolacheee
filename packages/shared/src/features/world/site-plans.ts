@@ -9,6 +9,7 @@
 import { marinaraRandom } from "../marinara-classes.js";
 import {
   DUNGEON_EXIT_PROP,
+  DUNGEON_SECRET_DOOR_PROP,
   gameDungeonMapFromDungeon,
   type DungeonGround,
   type DungeonMap,
@@ -721,7 +722,10 @@ const BARREL = 8,
   TIPPED = 35,
   SWORD = 36,
   JUG = 37,
-  COBWEB = 38;
+  COBWEB = 38,
+  CART = 40,
+  DUMMY = 41,
+  WOODPILE = 42;
 type SiteRecipe = ReadonlyArray<readonly [slot: number, role: SiteRole, count?: number | "reps" | "all"]>;
 const KITCHEN: SiteRecipe = [
   [RANGE, "back"],
@@ -1042,6 +1046,9 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   "Inner ward": [
     [WELL, "center", 1],
+    [CART, "corner"],
+    [DUMMY, "scatter", 2],
+    [WOODPILE, "wall"],
     [HAY, "corner"],
     [BARREL, "corner"],
     [CRATE, "corner"],
@@ -2042,6 +2049,31 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const pool = rooms2.length ? rooms2 : more;
     if (pool.length && random() < 0.7) openEdge(pool[Math.floor(random() * pool.length)]!, false);
   }
+  // A hidden door: a short way between two rooms far apart on the tree of doors, through a wall that
+  // looks whole (panel round 5: no secrets). Never into a locked room, never in a crypt (its walls are
+  // a tile pack's).
+  const secrets: Array<{ x: number; y: number }> = [];
+  if (plan.template !== "crypt" && !level.inset && random() < 0.75) {
+    const best = edges
+      .filter(
+        (edge) =>
+          !opened.has(edge) &&
+          !isPassage(edge.a) &&
+          !isPassage(edge.b) &&
+          !lockedNode(edge.a) &&
+          !lockedNode(edge.b) &&
+          owner.has(edge.a) &&
+          owner.has(edge.b) &&
+          Math.abs(depth[edge.a]! - depth[edge.b]!) >= 2,
+      )
+      .sort((p, q) => Math.abs(depth[q.a]! - depth[q.b]!) - Math.abs(depth[p.a]! - depth[p.b]!))[0];
+    if (best) {
+      opened.add(best);
+      const at = best.cells[Math.floor(best.cells.length / 2)]!;
+      ground[cell(at.x, at.y)] = "floor";
+      secrets.push(at);
+    }
+  }
   if (entry) {
     // Through the whole thickness of the outer wall.
     const [dx, dy] =
@@ -2183,6 +2215,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
   }
   if (entry) props[cell(entrance.x, entrance.y)] = DUNGEON_EXIT_PROP;
+  for (const at of secrets) props[cell(at.x, at.y)] = DUNGEON_SECRET_DOOR_PROP;
   // Solid with nothing open beside it is not wall but the land round the building.
   const solid = ground.map((g, i) => {
     if (g !== "wall") return false;
@@ -2231,7 +2264,13 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       for (const n of [c - 1, c + 1, c - mapW, c + mapW]) {
         if (n < 0 || n >= ground.length || seen[n] || (n === c - 1 && x === 0) || (n === c + 1 && x === mapW - 1))
           continue;
-        if (ground[n] !== "floor" || (props[n] !== -1 && props[n] !== DUNGEON_EXIT_PROP && props[n] !== SITE_LOCK_PROP))
+        if (
+          ground[n] !== "floor" ||
+          (props[n] !== -1 &&
+            props[n] !== DUNGEON_EXIT_PROP &&
+            props[n] !== SITE_LOCK_PROP &&
+            props[n] !== DUNGEON_SECRET_DOOR_PROP)
+        )
           continue;
         seen[n] = 1;
         queue.push(n);
@@ -2245,7 +2284,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   for (const edge of edges) {
     if (isPassage(edge.a) || isPassage(edge.b) || edge.cells.length < 6) continue;
     const [one, two] = [owner.get(edge.a), owner.get(edge.b)];
-    if (!one || !two || one.use === "open" || two.use === "open" || random() > 0.45) continue;
+    if (!one || !two || one.use === "open" || two.use === "open" || random() > 0.2) continue;
     const vertical = edge.cells[0]!.x === edge.cells[1]!.x;
     const giver = random() < 0.5 ? edge.a : edge.b;
     if ((vertical ? nodes[giver]!.w : nodes[giver]!.h) < 5) continue;
@@ -2409,7 +2448,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           const kind = siteFurnitureRole(plan.template, slot);
           // A bed is one to a room but in a dormitory; everything else set out along a wall or down the
           // middle repeats with the room's size.
-          const one = plan.template !== "crypt" && slot === BED && !SITE_DORMS.has(siteBaseName(room.name));
+          const one =
+            (plan.template !== "crypt" && slot === BED && !SITE_DORMS.has(siteBaseName(room.name))) ||
+            // A crypt's heart has the one tomb in the middle of it, the founder's, not a row.
+            (plan.template === "crypt" && !!room.heart && slot === 0);
           const count =
             feast && kind === "center"
               ? middle.length

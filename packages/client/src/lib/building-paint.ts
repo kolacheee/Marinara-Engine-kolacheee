@@ -776,6 +776,45 @@ function paintBuildingDressing(
       px(ctx, web, x + 4, y + 4, 1, 1);
       return;
     }
+    case 40: {
+      // A handcart: a box bed on two wheels, its shafts out in front.
+      px(ctx, ink, x + 1, y + 3, 11, 8);
+      px(ctx, wood[0]!, x + 2, y + 4, 9, 6);
+      px(ctx, wood[1]!, x + 2, y + 4, 9, 1);
+      px(ctx, wood[2]!, x + 5, y + 4, 1, 6);
+      px(ctx, wood[2]!, x + 12, y + 5, 4, 1);
+      px(ctx, wood[2]!, x + 12, y + 8, 4, 1);
+      for (const wy of [1, 10]) {
+        px(ctx, ink, x + 4, y + wy, 5, 5);
+        px(ctx, "#4a3420", x + 5, y + wy + 1, 3, 3);
+        px(ctx, "#8a6a3a", x + 6, y + wy + 2, 1, 1);
+      }
+      return;
+    }
+    case 41: {
+      // A training dummy: a straw man on a post, a cross-bar for arms.
+      px(ctx, wood[2]!, x + 7, y + 6, 2, 10);
+      px(ctx, ink, x + 2, y + 6, 12, 3);
+      px(ctx, wood[1]!, x + 3, y + 7, 10, 1);
+      px(ctx, ink, x + 4, y + 7, 8, 7);
+      px(ctx, "#b8a050", x + 5, y + 8, 6, 5);
+      px(ctx, "#d8c070", x + 5, y + 8, 6, 1);
+      px(ctx, ink, x + 5, y, 6, 6);
+      px(ctx, "#c8b060", x + 6, y + 1, 4, 4);
+      px(ctx, "#8a2a20", x + 7, y + 9, 2, 2);
+      return;
+    }
+    case 42: {
+      // A woodpile: split logs stacked end-on.
+      px(ctx, ink, x + 1, y + 5, 14, 10);
+      for (let r = 0; r < 3; r++)
+        for (let c = 0; c < 4; c++) {
+          const [lx, ly] = [x + 2 + c * 3 + (r % 2), y + 6 + r * 3];
+          px(ctx, "#6a4426", lx, ly, 3, 3);
+          px(ctx, "#b88a54", lx + 1, ly + 1, 1, 1);
+        }
+      return;
+    }
   }
 }
 
