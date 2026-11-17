@@ -1,0 +1,79 @@
+{
+  "part": "Epolish",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "icon-clear-day": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-clear-night": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-cloudy": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-overcast": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-heavy_rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-storm": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-blizzard": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-fog": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-wind": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-hail": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-sandstorm": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-heat_wave": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic review of the current fourteen output PNGs. Read BRIEF-16E-polish.md and BRIEF-16.md in full and the drawing-method material in NOTES.md. Inspected every icon at exact 1x and nearest-neighbour 4x and 8x on dark and light panels, the complete 1x/2x/4x rows, both sets of named 2x badges, all seven supplied map contexts, comparisons with the saved pre-polish icons, and the round-1 before/after sheets. Panels use 191/255 opacity over the supplied map art. Evidence: critic-r16Epolish-2-detail-8x-{1,2,3,4}.png, critic-r16Epolish-2-row-{dark,light}-4x-{1,2}.png, critic-r16Epolish-2-before-polish-{dark,light}-{1,2}.png and critic-r16Epolish-2-contexts-1x.png. The three previous failures are resolved: cloudy now visibly occludes the lower sun behind the unchanged cloud; blizzard has a recognizable six-arm flake separated from two approaching gusts; sandstorm has three separate horizontal ochre bands without the former head, leg or upright hook. None now requires its label to avoid the previous non-weather reading. The sun has a round stepped disc, eight spaced rays and an upper-left highlight; the crescent has a four-point star. Overcast has two overlapping clouds and no sun. Three short rain strokes versus five longer heavy-rain strokes read distinctly at 1x. Snow uses two cross flakes; hail uses three highlighted round pellets. The retained storm bolt remains clear. Fog has thick offset pale bars; wind has separated streams and open curls without the former numeral reading. Heat wave has a sun and two shallow horizontal ripples. Cloudy/overcast, rain/heavy_rain, snow/hail, wind/blizzard/sandstorm and fog/overcast remain distinguishable at native size. Independent technical checks pass for all fourteen: 24x24 RGBA, alpha only 0/255, zero RGB under transparency, a clear outer pixel margin, 20-22 px painted width, 4-7 opaque colours, no disconnected one- or two-pixel opaque components, and navy (32,41,54) on every exposed four-neighbour contour pixel. Native pixel scale, outline weight and top-left lighting are consistent. All seven shared-cloud checks pass: rain, snow, heavy_rain and hail match the master cloud after the specified recolouring; the complete cloudy, overcast and storm images are exactly reproduced by the documented unchanged-cloud translations/recolouring and drawn sun/bolt composites. Six full-row checks and 84 individual/badge placement checks confirm that the supplied proofs contain the current output pixels and exact nearest-neighbour enlargements. Only cloudy, blizzard and sandstorm differ from the round-1 baseline; the other eleven files are byte-identical. This part contains no ground tiles, props or seasonal partners, so literal 3x3 terrain repeats, prop-on-seasonal-ground checks and summer/seasonal alpha-mask comparisons do not apply. Review is of saved artwork and badge mock-ups, not live in-engine rendering. No output weather file was edited. No commit, push or branch change was performed; the existing checkout branch was art-r16e-polish."
+}

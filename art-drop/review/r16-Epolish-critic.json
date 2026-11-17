@@ -1,0 +1,40 @@
+{
+  "type": "saved-art self-review",
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "revise",
+      "findings": [
+        "Single registration lost some sun ray centres.",
+        "Small snow marks lost their plus silhouette.",
+        "The first blizzard contained too many fine branches."
+      ]
+    },
+    {
+      "round": 2,
+      "verdict": "revise",
+      "findings": [
+        "Heavy-rain streak centres broke at native bends.",
+        "Two wind streams met without a clear gap.",
+        "Heat-wave rays and ripples required separate registration."
+      ]
+    },
+    {
+      "round": 3,
+      "verdict": "pass",
+      "findings": [
+        "Five longer blue streaks read heavier than three short drops.",
+        "Cloud family uses the same exact mask and scale.",
+        "The separate wind streams have open offset hooks.",
+        "All 14 symbols are distinct at native size and named badge size."
+      ]
+    }
+  ],
+  "verdict": "PASS",
+  "failed_files": [],
+  "limitations": [
+    "Saved-art mock-ups only; no in-engine test or independent critic."
+  ],
+  "selected_ingredient_cleanup": 243,
+  "bolt_cleanup": 15
+}

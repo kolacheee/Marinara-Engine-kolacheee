@@ -1,0 +1,92 @@
+{
+  "part": "Epolish",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "icon-cloudy",
+    "icon-blizzard",
+    "icon-sandstorm"
+  ],
+  "files": {
+    "icon-clear-day": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-clear-night": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-cloudy": {
+      "status": "fail",
+      "problems": [
+        "The almost fully exposed sun at x=1..13, y=1..11 sits above the cloud, with only a narrow, notched overlap around x=4..9, y=10..13. At 1x on the dark panel this reads as a gold head or ball resting on a white body, rather than a sun clearly peeking from behind the cloud. The badge preserves that stacked-object reading.",
+        "The overlap has several short dark steps between the disc and the cloud's left puff. At 4x/8x the joint is fussy, and at 1x those dark pixels visually detach the sun. This fails the requested clear sun-behind-cloud composition, although the shared cloud itself is correct."
+      ],
+      "fix": "Keep the shared cloud drawing, palette and scale intact. Reposition the drawn sun farther behind its upper-left puff, approximately 3 native pixels lower, so a substantial lower portion of the disc is occluded. Resolve the visible overlap into one simple cloud contour instead of the current notched neck. Preserve the sun's upper-left highlight and the clear outer margin. Recheck the unlabeled 1x silhouette and the 2x badge: it must immediately read as partly cloudy."
+    },
+    "icon-overcast": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-heavy_rain": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-storm": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-snow": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-blizzard": {
+      "status": "fail",
+      "problems": [
+        "The two left trails at x=1..13, y=4..10 and y=13..19 merge directly into the flake around x=13..21, y=9..18. The result is one branching white mass. At 1x the flake loses its regular six-arm structure and reads as a clawed splat or small creature, rather than snow being driven sideways.",
+        "The right-hand forks around x=19..22, y=5..10 and y=14..19 have heavy hooked/blocky tips, while the upper-left trail contains alternating isolated-looking shade steps. The 4x/8x close-ups expose these irregularities; enlargement does not resolve them into a clean snowflake plus gusts."
+      ],
+      "fix": "Redraw the flake and gust composition with a clearly legible, regular six-arm flake on the right and two simpler sweeping trails approaching from the left. Preserve visible negative space between the gusts and the flake's branches; do not turn its left arms into thick bent ribbons. Simplify the fork tips and interior shade clusters, retaining the white-blue ramp, one-pixel navy outline, top-left light and 20-22 pixel width. Select the version that reads as blowing snow at 1x, without relying on its label."
+    },
+    "icon-fog": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-wind": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-hail": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "icon-sandstorm": {
+      "status": "fail",
+      "problems": [
+        "The upper curled terminal at x=12..17, y=1..7, the large middle hook at x=16..22, y=7..14, and the lower fork at x=9..17, y=16..21 combine into a creature-like silhouette. At 1x/2x it suggests a running animal or scorpion ornament rather than dust blowing left to right. This directly fails the polish brief's non-weather-object rule.",
+        "The narrow connection at x=12..15, y=15..17 makes the lower band look like a leg attached to the middle body's underside. The nearly enclosed upper curl looks like a head, and the middle band's thick upright right end stops the left-to-right sweep. These are structural silhouette problems, not palette or alpha problems."
+      ],
+      "fix": "Redraw three broad, asymmetric tan/ochre dust bands with a clear horizontal sweep and open gaps between them. Remove the head-like upper terminal, the upright block at the middle band's right end and the neck joining the lower band. Use shallow, open curls with tapered ends instead of limb-like forks or closed loops. Keep the existing colour family, top-left highlights, one-pixel navy outline and full canvas presence. Compare unlabeled at 1x beside wind and blizzard; it must read as dense blowing dust before the weather name is shown."
+    },
+    "icon-heat_wave": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent visual review of the delivered PNGs, not an adoption of the artist's self-review. Read BRIEF-16E-polish.md and BRIEF-16.md in full and the drawing-method material in NOTES.md. Coordinates in problems/fixes are zero-based native pixels, with inclusive ranges. Reviewed every icon at exact 1x and nearest-neighbour 4x on dark and light panels, all fourteen at 8x, the complete 1x/2x/4x rows, both sets of named 2x badges, and old/new comparisons. The supplied panels composite over map references at 75% opacity. Additional evidence is in critic-r16Epolish-1-native-4x-{1,2}.png, critic-r16Epolish-1-detail-8x-{1,2,3,4}.png, critic-r16Epolish-1-before-after-focus.png and the four critic-r16Epolish-1-before-after-{dark,light}-4x-{1,2}.png crops. Technical checks pass for all fourteen: 24x24 RGBA, alpha only 0/255, zero RGB beneath transparency, a clear outer pixel margin, 20-22 pixel painted width, 4-7 opaque colours, no one- or two-pixel disconnected opaque components, and navy (32,41,54) on every exposed four-neighbour contour pixel. Exact source-pixel checks pass for all 84 individual/badge placements; both rows contain the current outputs and their 2x/4x versions are exact nearest-neighbour enlargements. Shared-cloud comparisons pass for cloudy, overcast, rain, heavy_rain, snow and hail after the documented translations/recolouring. Storm's 149 unoccluded cloud pixels match the same master; compositing the retained bolt reproduces the entire storm icon exactly, and its original gold pixels are unchanged. The family has consistent native pixel scale and top-left lighting. Rain/heavy_rain and snow/hail are distinguishable at 1x; overcast has two clouds and no sun; fog's thick offset pale bars are distinct from overcast; wind no longer reads as the digit 3; heat_wave has a sun and two shallow gold ripples. This part contains no ground tiles, props or seasonal partners, so 3x3 ground repeats, seasonal-ground placement and summer/seasonal alpha-mask comparisons do not apply. No output weather PNG was edited, no branch was changed, and no commit or push was made."
+}

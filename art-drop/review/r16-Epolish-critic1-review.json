@@ -1,0 +1,28 @@
+{
+  "type": "saved-art self-review after critic-r16Epolish-1; not an independent critic verdict",
+  "files": {
+    "icon-cloudy": {
+      "status": "self-review pass",
+      "resolution": "Retained sun translated exactly three native pixels down; its lower section is hidden by the unchanged shared cloud contour. Clear sun-behind-cloud composition at 1x and in both named 2x badges."
+    },
+    "icon-blizzard": {
+      "status": "self-review pass",
+      "resolution": "Selected new drawing D with compact 13x17 flake registration. Six straight orderly arms, no hooked fork tips, two separately registered gusts and a full clear column separating them from the flake. White-blue family ramp retained."
+    },
+    "icon-sandstorm": {
+      "status": "self-review pass",
+      "resolution": "Selected new drawing D. Three staggered ochre streams, shallow open ends, two clear pixel rows between bands. No head-like loop, upright terminal or connecting lower leg."
+    }
+  },
+  "passing_icons": "Eleven retained byte-for-byte from critic-round-1 inputs.",
+  "reviewed": [
+    "Native 1x unlabeled dark/light rows",
+    "Exact nearest-neighbour 2x/4x rows",
+    "All fourteen dark/light 2x named badges",
+    "All fourteen 1x/4x individual proofs and overview",
+    "Full pre-critic/current before-after rows",
+    "Alternative reductions on both backgrounds",
+    "Desert and snow context sheets"
+  ],
+  "scope": "Only three failed output icons, Epolish review/support material and NOTES changed; no git commit/push/branch change."
+}

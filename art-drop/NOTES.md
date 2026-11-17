@@ -1,3 +1,147 @@
+# Round 16 — Part Epolish: critic-r16Epolish-1 redraw
+
+Repaired **cloudy** by moving its original sun three native pixels down behind
+the unchanged shared cloud. Redrew **blizzard** with a separate six-arm flake
+and two gusts, and **sandstorm** with three unconnected horizontal dust bands.
+The **eleven passing output PNGs remain byte-identical**.
+
+Made **two built-in image-tool variants per redraw on solid magenta**;
+selected **blizzard D** and **sand D**. Used the same **8× BOX registration →
+fixed palette → exact mode of all 64 RGBA samples → one-pixel contour cleanup**.
+No shapes or noise were constructed in code. All icons retain **24×24 RGBA**,
+alpha **0/255**, zero transparent RGB and the existing navy outline/palettes.
+Prompts, four sources, five reduction stages and cleanup records are in
+`review/r16-Epolish-critic1-*`.
+
+Regenerated the full **1×/2×/4× dark/light rows**, **2× named badges**,
+individual proofs and seven context sets. Before/after now starts at the
+critic-round-1 icons. Saved-art self-review finds the listed problems resolved;
+**no new independent critic verdict is claimed**. The supplied critic evidence
+and earlier notes remain unchanged. **9,789/9,789 checks pass**, including
+184,320 mode samples, 147 colour-only cleanup edits and 9,096 protected files.
+
+Review: `review/r16-Epolish-review.html`. The existing `r16-Epolish-build.py
+--install` and `r16-Epolish-verify.py` entry points now route to this repair;
+run `r16-Epolish-review.py` between them. Validation is saved in
+`review/r16-Epolish-critic1-validation.json`. **No commit, push or branch change.**
+
+---
+
+# Round 16 — Part Epolish
+
+Redrew all **14 transparent 24×24 weather icons** in **`out/weather16/`**
+as one family. The seven cloud-based weather types use **one exact 20×12
+cloud drawing**, with three stepped puffs, a full body, top-left highlights
+and a dark navy **(32,41,54)** one-pixel outline. Cloudy/rain/snow use the
+white ramp; overcast/heavy rain/hail use slate; storm uses dark slate.
+Only colour and placement change between these cloud copies; none is resized.
+
+**Drawing method:** **19 large built-in image-tool drawings on solid magenta**:
+three cloud alternatives; two sun, blizzard, wind, sandstorm and heat-wave
+alternatives; one crescent, rain strip, heavy-rain strip, snow strip, hail
+strip and fog drawing. Selected **cloud C**, **sun A's separately registered
+components**, **blizzard B / wind B / sandstorm B**, and **heat B's ripples**.
+The first cloud variants have taller, less distinct lobes; the second
+blizzard has simpler branches; wind B keeps clean open hooks; sandstorm B
+has better asymmetric bands. Sources and exact prompts remain in
+**`review/r16-Epolish-generation.json`** and **`r16-Epolish-source-*.png`**.
+The built-in tool was used throughout; no API fallback.
+
+Solid-magenta key → painted-bounds **BOX registration at 8×** onto 192×192
+canvases → explicit fixed palette, without dithering → exact RGBA mode of
+**all 64 samples per 8×8 footprint**, including transparency, with
+lexicographic RGBA ties → native one-pixel contour cleanup. Original drawn
+components are isolated and registered separately when reduction would lose
+their centres: eight sun rays and its round disc, the four-point star,
+precipitation marks, wind streams and heat ripples. Three source-supported
+wind midtone transitions are restored from colours present in their own
+registered sample blocks. No symbol, texture, noise or replacement shape is
+constructed in code; code keys, registers, reduces, palette-locks, cleans,
+recolours and composites the drawings.
+
+There are **35 retained processing stages**, **813 recorded native
+cleanup edits** across all alternatives/ingredients, **243** in
+selected ingredients, plus **15** recorded contour edits to the retained
+storm bolt. The bolt's gold drawing comes from the starting storm icon, as
+requested; its outline uses only already-opaque neighbouring source pixels.
+The full pass has **0 alpha changes** in reduction cleanup across all
+stages. Final alpha is strictly **0/255**, hidden RGB is **(0,0,0)**, and all
+files retain at least one clear pixel at every canvas edge. No isolated
+one- or two-pixel opaque components remain.
+
+**Family assembly:** the master cloud occupies **(2,1)–(22,13)**. Cloudy places
+it eight pixels lower over a clear gold sun disc. Overcast overlaps two
+unchanged-size copies at offsets **(-1,1)** and **(1,8)**. Rain has **three
+5×7 short slanted drops**; heavy rain has **five 5×9 longer streaks** under
+a slate cloud. Snow uses **two 7×7 cross flakes**, hail **three separated
+5×5 rounded pellets**. Blizzard fills the canvas with a six-arm flake and
+two sideways gusts. Fog has three broad offset bands; wind has three separate
+streams with open curls at different positions. Sandstorm has three dense
+ochre bands; heat wave reuses the sun above two gentle horizontal ripples.
+The crescent has one proper four-point star, with no lone-dot star.
+
+**Final files and measurements:** all names below have prefix
+`out/weather16/icon-` and suffix `.png`; every canvas is **24×24 RGBA**.
+Bounds are zero-based, with exclusive right/bottom coordinates.
+
+| Icon | Painted bounds | Opaque pixels | Colours |
+|---|---|---:|---:|
+| clear-day | (1,1)–(23,23) | 227 | 4 |
+| clear-night | (1,1)–(23,23) | 231 | 4 |
+| cloudy | (1,1)–(22,21) | 290 | 7 |
+| overcast | (1,2)–(23,21) | 321 | 4 |
+| rain | (2,1)–(22,22) | 246 | 7 |
+| heavy_rain | (1,1)–(22,23) | 306 | 7 |
+| storm | (2,1)–(22,23) | 250 | 6 |
+| snow | (2,1)–(22,22) | 252 | 4 |
+| blizzard | (1,1)–(23,23) | 301 | 4 |
+| fog | (1,1)–(23,23) | 348 | 4 |
+| wind | (1,1)–(23,23) | 228 | 4 |
+| hail | (2,1)–(22,22) | 249 | 5 |
+| sandstorm | (1,1)–(23,23) | 272 | 4 |
+| heat_wave | (1,1)–(23,23) | 274 | 4 |
+
+**QC:** three rounds of saved-art review, with native-size corrections to
+thin precipitation, missing ray centres and gust spacing before acceptance.
+Inspected the full row at **1×, 2× and nearest-neighbour 4×** on dark and
+light panels, plus **48 px icon + weather-name badges**, all individual
+1×/4× proofs, before/after against all fourteen starting icons, and seven
+supplied map contexts. Panels use alpha **191/255 (about 75%)** over the
+actual reference art. The confusing pairs were checked together:
+cloudy/overcast, rain/heavy rain, snow/hail, wind/blizzard/sandstorm and
+fog/overcast. Final saved-art self-review: **PASS; failed files: `[]`**.
+This is a saved-art review, not an independent critic verdict or an in-engine
+test. Detailed decisions are in **`r16-Epolish-critic.json`**.
+
+**Review sheets:** start at **`review/r16-Epolish-review.html`**.
+`r16-Epolish-row-{dark,light}-{1,2,4}x.png` contains literal rows;
+`r16-Epolish-badges-{dark,light}.png` contains every named badge;
+`r16-Epolish-file-icon-*.png` shows every output at 1× and exact 4×;
+`r16-Epolish-before-after-{dark,light}-{1,2,4}x.png` compares every old/new
+icon. The overview and 21 context sheets cover grass, forest, town, modern
+city, wasteland, desert and snow. The selection sheet retains the alternative
+reductions. This part contains no ground base, prop, tree or seasonal partner,
+so ground 3×3 repeats and seasonal silhouette comparisons do not apply.
+
+**Verification: 10,237 / 10,237 checks pass.**
+`r16-Epolish-verify.py` replays **20,160 exact mode blocks /
+1,290,240 samples**, every recorded cleanup edit, all fourteen assemblies and
+all shared-cloud colour/placement recipes. It checks sizes, palettes, hard
+alpha, hidden RGB, complete exposed outlines, 20–22 px painted widths,
+component sizes, proof placements and exact enlargement. It also compares
+**8,916 protected pre-existing files** against the starting hashes and checks
+that the entire earlier NOTES text follows unchanged. Results are in
+**`r16-Epolish-validation.json`**; measurements and assembly recipes are in
+**`r16-Epolish-measurements.json`**.
+
+Reproduce with `python -B art-drop/review/r16-Epolish-build.py --install`,
+then `python -B art-drop/review/r16-Epolish-review.py` and
+`python -B art-drop/review/r16-Epolish-verify.py` (Python and Pillow).
+Only the fourteen named output icons, new `r16-Epolish-*` review material and
+this top NOTES section changed. **No commit, push or branch change.**
+
+---
+
 # Round 16 — Part E: critic-r16E-1 redraw
 
 Redrew **cloudy** and **overcast**, and repaired the single stray pixel at

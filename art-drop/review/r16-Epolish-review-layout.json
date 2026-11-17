@@ -1,0 +1,758 @@
+[
+  {
+    "sheet": "badges-dark",
+    "icon": "clear-day",
+    "xy": [
+      16,
+      50
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "clear-night",
+    "xy": [
+      304,
+      50
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "cloudy",
+    "xy": [
+      16,
+      130
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "overcast",
+    "xy": [
+      304,
+      130
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "rain",
+    "xy": [
+      16,
+      210
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "heavy_rain",
+    "xy": [
+      304,
+      210
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "storm",
+    "xy": [
+      16,
+      290
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "snow",
+    "xy": [
+      304,
+      290
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "blizzard",
+    "xy": [
+      16,
+      370
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "fog",
+    "xy": [
+      304,
+      370
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "wind",
+    "xy": [
+      16,
+      450
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "hail",
+    "xy": [
+      304,
+      450
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "sandstorm",
+    "xy": [
+      16,
+      530
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-dark",
+    "icon": "heat_wave",
+    "xy": [
+      304,
+      530
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "clear-day",
+    "xy": [
+      16,
+      50
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "clear-night",
+    "xy": [
+      304,
+      50
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "cloudy",
+    "xy": [
+      16,
+      130
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "overcast",
+    "xy": [
+      304,
+      130
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "rain",
+    "xy": [
+      16,
+      210
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "heavy_rain",
+    "xy": [
+      304,
+      210
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "storm",
+    "xy": [
+      16,
+      290
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "snow",
+    "xy": [
+      304,
+      290
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "blizzard",
+    "xy": [
+      16,
+      370
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "fog",
+    "xy": [
+      304,
+      370
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "wind",
+    "xy": [
+      16,
+      450
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "hail",
+    "xy": [
+      304,
+      450
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "sandstorm",
+    "xy": [
+      16,
+      530
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "badges-light",
+    "icon": "heat_wave",
+    "xy": [
+      304,
+      530
+    ],
+    "scale": 2
+  },
+  {
+    "sheet": "file-icon-clear-day",
+    "icon": "clear-day",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-clear-day",
+    "icon": "clear-day",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-clear-day",
+    "icon": "clear-day",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-clear-day",
+    "icon": "clear-day",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-clear-night",
+    "icon": "clear-night",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-clear-night",
+    "icon": "clear-night",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-clear-night",
+    "icon": "clear-night",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-clear-night",
+    "icon": "clear-night",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-cloudy",
+    "icon": "cloudy",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-cloudy",
+    "icon": "cloudy",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-cloudy",
+    "icon": "cloudy",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-cloudy",
+    "icon": "cloudy",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-overcast",
+    "icon": "overcast",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-overcast",
+    "icon": "overcast",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-overcast",
+    "icon": "overcast",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-overcast",
+    "icon": "overcast",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-rain",
+    "icon": "rain",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-rain",
+    "icon": "rain",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-rain",
+    "icon": "rain",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-rain",
+    "icon": "rain",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-heavy_rain",
+    "icon": "heavy_rain",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-heavy_rain",
+    "icon": "heavy_rain",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-heavy_rain",
+    "icon": "heavy_rain",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-heavy_rain",
+    "icon": "heavy_rain",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-storm",
+    "icon": "storm",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-storm",
+    "icon": "storm",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-storm",
+    "icon": "storm",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-storm",
+    "icon": "storm",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-snow",
+    "icon": "snow",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-snow",
+    "icon": "snow",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-snow",
+    "icon": "snow",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-snow",
+    "icon": "snow",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-blizzard",
+    "icon": "blizzard",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-blizzard",
+    "icon": "blizzard",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-blizzard",
+    "icon": "blizzard",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-blizzard",
+    "icon": "blizzard",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-fog",
+    "icon": "fog",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-fog",
+    "icon": "fog",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-fog",
+    "icon": "fog",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-fog",
+    "icon": "fog",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-wind",
+    "icon": "wind",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-wind",
+    "icon": "wind",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-wind",
+    "icon": "wind",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-wind",
+    "icon": "wind",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-hail",
+    "icon": "hail",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-hail",
+    "icon": "hail",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-hail",
+    "icon": "hail",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-hail",
+    "icon": "hail",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-sandstorm",
+    "icon": "sandstorm",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-sandstorm",
+    "icon": "sandstorm",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-sandstorm",
+    "icon": "sandstorm",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-sandstorm",
+    "icon": "sandstorm",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-heat_wave",
+    "icon": "heat_wave",
+    "xy": [
+      10,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-heat_wave",
+    "icon": "heat_wave",
+    "xy": [
+      46,
+      46
+    ],
+    "scale": 4
+  },
+  {
+    "sheet": "file-icon-heat_wave",
+    "icon": "heat_wave",
+    "xy": [
+      174,
+      46
+    ],
+    "scale": 1
+  },
+  {
+    "sheet": "file-icon-heat_wave",
+    "icon": "heat_wave",
+    "xy": [
+      210,
+      46
+    ],
+    "scale": 4
+  }
+]
