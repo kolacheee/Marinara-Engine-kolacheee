@@ -1,0 +1,239 @@
+{
+  "part": "C3",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "cobble-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-deep-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lamp-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "planter-tree-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "stable-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ditch-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-edge-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "puddle-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cloth-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-potter-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-paving-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-chimney-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-dormer-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-chimney-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-dormer-c3-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-short-chimney-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-dormer-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-main-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-side-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lane-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-hip-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-elbow-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-square-mouth-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-straight-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-cross-straight-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-straight-south-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-2x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-squint": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "barrel": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "crate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "washing-line": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "bench-pocket": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "court-closure-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art critic for Round 17 Part C3, round 2. This reviewer did not draw or modify production art. Read BRIEF-17 in full, both panel briefs, all ten FIXES.md items, NOTES drawing-method sections, the earlier E4 and C3-1 critics, current compose.py, processing records and repair evidence. The cycle-3 directory contains FIXES.md; no individual panel review files are present there. Only this JSON and critic-r17C3-2-*.png review composites were authored. No production edits, branch changes, commits or pushes. Inspected all 29 C3-owned exports at native 1x and nearest-neighbour 4x, the complete final scene at native size and in twelve 4x tiles, and an 8x dormer close-up. Examined the required final comparison, square/street/gate crops and native grayscale; verified the delivered 2x and 3x images pixel-for-pixel against their native source. The final is 1920x1440 (40x30 cells at 48px); 2x is 3840x2880. The comparison preserves all three source panels at literal 1x. The coordinator's native cell count takes precedence over the earlier approximate 1200x900 size. Examined literal 3x3 repeats for the cobble, main/side/lane, original gate paving, ditch, street edge, puddle, mud edge and five new gate connectors. Longitudinal contacts and actual unlike road connections were judged according to their intended orientation; road shoulders, junction silhouettes and isolated puddles are not universal two-direction ground fills. No blocking seam or conspicuous texture reset was found in their intended placement. Inspected new and reused props over summer grass and cobbles, complete-house/reference comparisons, corner/side/rear and seven-cell roof studies, native L/market/height regressions and normal/reveal access proofs. No seasonal partners are requested or present for C3, so seasonal-ground and summer/season alpha comparisons are not applicable. Independently compared the nine retained civic colourway alpha masks with their original sources: all match exactly. Replayed both supplied verifiers with report writes suppressed: 262 scene/source checks and 76 repair checks pass. These replay 8,798,208 original plus 12,533,760 repair RGBA mode samples. The 29 exports match their recorded dimensions/hashes, use hard 0/255 alpha, have zero RGB under transparency and no detached one/two-pixel alpha islands; shop rows 0/47 match the shared course. The reviewed processing uses large image-tool paintings on magenta, registration, fixed palettes, exact mode reduction, native cleanup and painted-source crops/composites; no constructed replacement geometry or noise was found. Existing shadow overlays retain the specific BRIEF-17 alpha exception. The three previously failed hip caps now measure 96x144. The deeper northeast property uses a separate 96x48 directional fill. Their dark outer courses, receiving slopes and fill contacts pass; the dormer is wholly on the lit left slope and the former ridge-straddling baked placement is rejection-tested. The former west pinch at x240..335/y672..767 now has a literal 96px clear corridor. All twelve main-road reaches are at least 96px and included in the clearance checks. Documented church/stable overhead projections have separate ground footprints and reveal proofs. All seven staggered front-facing contacts receive world-positioned party-wall/coping/flashing or exposed step returns; the earlier different-base omission is repaired. Roof/eave changes are visible in the assembled scene. The gate mouth, straight reaches and elbow now share the same native painted stone phase; the previous rectangular texture switch is gone. The continuous lighter gate route, gatehouse and civic towers remain identifiable in the native grayscale view. FIXES.md coverage: two stepped trapezoids and a southern L, actual bent streets and through alleys, varied widths/setbacks and deliberate courts are present. Roof hues remain coherent within buildings, with changes in ridge direction and height. The east frontage mixes 4/2/3/5/3/4 storeys. The inn has a joined 192px gate-road frontage, paved court, stable and clear access. North tower gaps are 7/9/6/9/7 cells, with a paired northwest bastion and north ditch. The old long guildhall strip is removed and the northeast termination is hipped. Quiet irregular cobbles, kerbs/gutters, dirt-edge paint, puddles and blended gate connections are present. Five distinct new shopfronts, roof accents/repairs/moss, lamps, tub trees, containers, carts and laundry are present. Part R/panel-2 coverage: the populated notched 10x8 square is framed by civic and joined merchant buildings; six stalls form staggered triplets, with sellers/customers, unloading cart, fountain and cross. There is no street-front lawn; grass is confined to the enclosed rear court and churchyard. The inhabited court includes access, stair/landing, well, wood and supported laundry. Distinct access types, relit side/rear returns, civic colour matching, public approaches, native cast shadows, actor visibility/reveal proofs and deferred expansion are retained. BRIEF-17 takes precedence over panel requests to reduce signs, remove fixed course rows or defer mandatory jogs/wedges; signs remain within their lots and doors remain visible. Computed current storey histogram: 42 buildings, 1=3, 2=13, 3=15, 4=9, 5=2; single-storey share 7.14%, below 25%. All 40 final-scene actors retain visible pixels. The final resolved-pixel repetition audit passes 146 window/layer checks across actual base rows and bent frontage groups. Retained L-block, market and district repetition checks also pass; deliberately restoring either original E4 defect makes the checker fail. The old village-like E regression scenes were used to assess those specific repairs, not as the final dense-city showcase. No blocking failure remains in the reviewed C3 deliverables. This is approval of saved art and its composition, not an engine playtest or a new five-member panel score."
+}

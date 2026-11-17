@@ -1,0 +1,58 @@
+[
+  {
+    "id": "hip-a",
+    "prompt": "Use case: stylized-concept. Draw ONE modular hipped roof cap for a medieval pixel-art RPG city, on perfectly solid magenta #FF00FF with a narrow margin. No facade, no walls, no ground, no labels. Large drawing intended for exact 96x144 native pixel reduction (2:3 width-to-height). It is a three-cell cap, NOT an extremely long four-cell roof. Rectangular square-grid footprint with straight full-width north and south eaves. High 3/4 overhead view: a north-south terracotta capped ridge at the centre x48, running from y26 to y118; triangular hip planes above and below its ends, lit left slope and shaded right slope. In the middle y48..96, parallel side eaves and straight longitudinal ridge: quiet repeating tile courses at 8 native pixels high so that this whole 48px band can be inserted as a separate directional roof fill without stretching any tiles. Clear sculptural volume, top-left light, a one-native-pixel dark brown outline. Muted russet/terracotta with broad flat colour clusters, 7 shades, no gradients. A small connected moss patch near lower-left eave, a small contiguous repaired tile patch near upper right. Quiet tidy tiles roughly 5-8 native pixels wide. Match classic high 3/4 fantasy town houses. No dormer or chimney in this base drawing. No rounded footprint, dots, noise, blur, floating specks or borders. Fill most of the image with this one carefully drawn cap.",
+    "path": "/home/kolache/.codex/generated_images/01a1eabe-e0d9-77b3-9c28-bc743d1294d5/exec-329e6eb5-a9c2-4364-8558-9b444f2cfbc3.png",
+    "size": [
+      96,
+      144
+    ],
+    "source": "r17-C3-critic1-source-hip-a.png",
+    "selected": true
+  },
+  {
+    "id": "hip-b",
+    "prompt": "Use case: stylized-concept. Draw a single roof cap asset on perfectly flat pure magenta #FF00FF, no other objects, no wall, no text. Large pixel-art master for reduction to exactly 96 wide x144 high, a 2:3 rectangular footprint. High three-quarter RPG town view, NOT front elevation. Muted terracotta hipped roof, capped north-south ridge in centre, clear triangular hip at each end. Upper hip reaches ridge at y26 of the final 144, lower hip begins at y116. Between y40 and y104, two straight parallel eaves and two planar tile slopes separated by the straight capped ridge: this allows native directional fill rows. Tile clusters should be restrained and at the SAME scale as a town house: 5-7 native px wide by 5-6px high, around 24 courses down the full drawing, not giant tiles. Lit broad left plane, shaded red-brown right plane, shadow at eaves, dark brown ONE native pixel outer contour; top-left light. Keep square straight silhouette and grid aligned eaves. A small connected moss patch against lower-left eave and three repaired tiles joined as one upper-right patch. Seven flat material shades, no airbrush, no gradients, no isolated specks, no noise. No chimney, dormer, ground or shadow mat. Beautiful clear volume and deliberate quiet texture. Fill almost all portrait frame, small magenta margin.",
+    "path": "/home/kolache/.codex/generated_images/01a1eabe-e0d9-77b3-9c28-bc743d1294d5/exec-544a3708-13f9-44e0-84b6-c06bf4518ee3.png",
+    "size": [
+      96,
+      144
+    ],
+    "source": "r17-C3-critic1-source-hip-b.png",
+    "selected": false
+  },
+  {
+    "id": "road-a",
+    "prompt": "Use case: stylized-concept. Draw ONE continuous medieval city gate-road pavement connector on solid pure magenta #FF00FF, large pixel-art master, no objects or buildings. The native output will be 192px wide by 288px tall. Precisely SQUARED stepped dogleg footprint: north entrance occupies LEFT half of top edge, continues down first third; middle third is full width horizontal paving; south exit occupies RIGHT half of bottom third. Thus the EMPTY top-right quadrant and bottom-left quadrant are magenta. All bends are square 90-degree right angles, NOT curved, NOT rounded. One continuous warm pale limestone cobble paving with hand-laid staggered irregular angular stones about 6-10 native px wide, 4-7 high. Stones keep the same scale, material, light from upper left and general staggered horizontal course direction through both elbows. A bright quiet stone centre about #b3b4a4, recessed dusty joints #939684, only 5 calm shades. Contrast should be clear against medium grey-green field cobbles. Feather edges by interlocking complete angular stones with short irregular protrusions into magenta, no hard bounding rectangle, no fuzz, specks or blurry alpha. NO dark border around the footprint, NO kerb, NO perimeter outline, NO shadow, NO rounded stone river, no strips or marks at joins. The central horizontal band opens at the east edge too, so an eastward extension could continue there. North/south open mouths are straight 96-native-pixel-wide square-grid cross-sections, left/right route boundaries are irregular interlocking stone edges. A deliberately painted seamless continuous dogleg material, not three separated rectangles. Slim magenta margins. No text, watermark, gradients, noise, puddle shine or isolated dots.",
+    "path": "/home/kolache/.codex/generated_images/01a1eabe-e0d9-77b3-9c28-bc743d1294d5/exec-29ae253e-8f8c-4471-a3d0-a518a2499f93.png",
+    "size": [
+      192,
+      288
+    ],
+    "source": "r17-C3-critic1-source-road-a.png",
+    "selected": false
+  },
+  {
+    "id": "road-b",
+    "prompt": "Use case: stylized-concept. Draw ONE continuous medieval city gate-road pavement connector on solid pure magenta #FF00FF, large pixel-art master, no objects or buildings. The native output will be 192px wide by 288px tall. Precisely SQUARED stepped dogleg footprint: north entrance occupies LEFT half of top edge, continues down first third; middle third is full width horizontal paving; south exit occupies RIGHT half of bottom third. Thus the EMPTY top-right quadrant and bottom-left quadrant are magenta. All bends are square 90-degree right angles, NOT curved, NOT rounded. One continuous warm pale limestone cobble paving with hand-laid staggered irregular angular stones about 6-10 native px wide, 4-7 high. Stones keep the same scale, material, light from upper left and general staggered horizontal course direction through both elbows. A bright quiet stone centre about #b3b4a4, recessed dusty joints #939684, only 5 calm shades. Contrast should be clear against medium grey-green field cobbles. Feather edges by interlocking complete angular stones with short irregular protrusions into magenta, no hard bounding rectangle, no fuzz, specks or blurry alpha. NO dark border around the footprint, NO kerb, NO perimeter outline, NO shadow, NO rounded stone river, no strips or marks at joins. The central horizontal band opens at the east edge too, so an eastward extension could continue there. North/south open mouths are straight 96-native-pixel-wide square-grid cross-sections, left/right route boundaries are irregular interlocking stone edges. A deliberately painted seamless continuous dogleg material, not three separated rectangles. Slim magenta margins. No text, watermark, gradients, noise, puddle shine or isolated dots. Refine style: strictly flat pixel art, entirely angular small squared limestone blocks, no natural round pebbles. Ten or twelve stones across each 96px-wide road. Very low contrast between stone faces, broad mid-light grey-beige values. The route has crisp right-angle corners on a square lattice, but boundary stones interlock irregularly by 2-4 native pixels. No bevel highlights wider than one pixel.",
+    "path": "/home/kolache/.codex/generated_images/01a1eabe-e0d9-77b3-9c28-bc743d1294d5/exec-43e06b33-0da4-4046-be18-ead2b3ee7eff.png",
+    "size": [
+      192,
+      288
+    ],
+    "source": "r17-C3-critic1-source-road-b.png",
+    "selected": true
+  },
+  {
+    "id": "mouth",
+    "prompt": "Use case: stylized-concept. Draw ONE medieval limestone gate-road mouth blending into market-square paving, isolated on perfectly solid magenta #FF00FF. Large clean pixel art for reduction to192x192 native pixels. High overhead flat ground only, no perspective, no building, no text. Bottom opening is a straight 96px-wide road in the middle half, with 48px magenta on each side. This road widens toward the top into a 192px-wide square apron, with SQUARE stepped shoulders and no curved corners. Native stones small 6-10px across and 4-7 high, angular irregular staggered rectangular blocks, five subdued warm pale grey-beige shades, faces near #b3b4a4 and dusty joints near #939684, upper-left light and one-pixel darker lower-right edges. Bottom road opening and top broad apron are connected one material with continuous stone size. Toward the top and upper sides, the paving breaks into irregular interlocking stone fingers, a broad ragged but CONNECTED transition into the surrounding magenta rather than a straight rectangle or pointed triangle. Some connected groups of stones are slightly darker grey-green to merge with the square's darker cobbles. NO single detached specks, NO noisy scattered pebbles, NO gradient or fuzzy edge, NO rounded island or haze. Crisp square pixel grid, no border outlining the whole patch, no kerbs. Keep an uninterrupted central96px path from bottom through top.",
+    "path": "/home/kolache/.codex/generated_images/01a1eabe-e0d9-77b3-9c28-bc743d1294d5/exec-164e69b0-d828-4ff3-ba67-0f543ca38e04.png",
+    "size": [
+      240,
+      240
+    ],
+    "source": "r17-C3-critic1-source-mouth.png",
+    "selected": true,
+    "registration_note": "Uniform stone scale at 240px apron; observed central opening registers to 96px."
+  }
+]

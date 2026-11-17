@@ -1,0 +1,431 @@
+{
+  "passed": 76,
+  "failed": 0,
+  "new_mode_samples": 12533760,
+  "checks": [
+    {
+      "name": "hip-a exact 64-sample RGBA mode",
+      "passed": true
+    },
+    {
+      "name": "hip-a retained source",
+      "passed": true
+    },
+    {
+      "name": "hip-a complete cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "hip-b exact 64-sample RGBA mode",
+      "passed": true
+    },
+    {
+      "name": "hip-b retained source",
+      "passed": true
+    },
+    {
+      "name": "hip-b complete cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "road-a exact 64-sample RGBA mode",
+      "passed": true
+    },
+    {
+      "name": "road-a retained source",
+      "passed": true
+    },
+    {
+      "name": "road-a complete cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "road-b exact 64-sample RGBA mode",
+      "passed": true
+    },
+    {
+      "name": "road-b retained source",
+      "passed": true
+    },
+    {
+      "name": "road-b complete cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "mouth exact 64-sample RGBA mode",
+      "passed": true
+    },
+    {
+      "name": "mouth retained source",
+      "passed": true
+    },
+    {
+      "name": "mouth complete cleanup replay",
+      "passed": true
+    },
+    {
+      "name": "only three failed PNGs and composer changed",
+      "passed": true,
+      "changed": [
+        "art-drop/out/city17/compose.py",
+        "art-drop/out/city17/roof-hip-deep-c3-w2.png",
+        "art-drop/out/city17/roof-hip-chimney-c3-w2.png",
+        "art-drop/out/city17/roof-hip-dormer-c3-w2.png"
+      ],
+      "protected_count": 2404
+    },
+    {
+      "name": "every passing production PNG byte-identical",
+      "passed": true,
+      "count": 29
+    },
+    {
+      "name": "new base is a three-cell cap",
+      "passed": true
+    },
+    {
+      "name": "fill is separate native directional band",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 exact native overlay and alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 cap depth",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 exact native overlay and alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 cap depth",
+      "passed": true
+    },
+    {
+      "name": "four-cell cap rejected by final builder",
+      "passed": true
+    },
+    {
+      "name": "original ridge-straddling baked dormer rejected",
+      "passed": true
+    },
+    {
+      "name": "all seven actual staggered property/roof joins treated",
+      "passed": true,
+      "pairs": [
+        {
+          "left": "C3-west-wedge-0",
+          "right": "C3-west-wedge-1",
+          "bases": [
+            576,
+            624
+          ],
+          "eaves": [
+            432,
+            432
+          ],
+          "passed": true
+        },
+        {
+          "left": "C3-west-wedge-1",
+          "right": "C3-west-wedge-2",
+          "bases": [
+            624,
+            672
+          ],
+          "eaves": [
+            432,
+            528
+          ],
+          "passed": true
+        },
+        {
+          "left": "square-smith",
+          "right": "square-apothecary",
+          "bases": [
+            672,
+            768
+          ],
+          "eaves": [
+            576,
+            624
+          ],
+          "passed": true
+        },
+        {
+          "left": "square-apothecary",
+          "right": "C3-north-east-0",
+          "bases": [
+            768,
+            624
+          ],
+          "eaves": [
+            624,
+            432
+          ],
+          "passed": true
+        },
+        {
+          "left": "C3-north-east-2",
+          "right": "C3-north-east-3",
+          "bases": [
+            576,
+            624
+          ],
+          "eaves": [
+            432,
+            384
+          ],
+          "passed": true
+        },
+        {
+          "left": "C3-east-return-0",
+          "right": "C3-east-return-1",
+          "bases": [
+            1008,
+            1056
+          ],
+          "eaves": [
+            864,
+            864
+          ],
+          "passed": true
+        },
+        {
+          "left": "C3-south-0",
+          "right": "C3-south-1",
+          "bases": [
+            1296,
+            1344
+          ],
+          "eaves": [
+            1200,
+            1200
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "C3-west-wedge-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-west-wedge-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-west-wedge-2 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-middle-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-middle-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "square-baker cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "square-narrow cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "square-smith cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "square-apothecary cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "west-smith cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "west-cobbler cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-2 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-3 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-4 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-5 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-north-east-5 depth uses separate fill",
+      "passed": true
+    },
+    {
+      "name": "C3-gate-inn cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-inn-east-wing cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-east-return-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-east-return-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-2 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-3 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-4 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-5 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-6 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-7 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-8 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-narrow-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-south-narrow-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-wall-poor-0 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-wall-poor-1 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-wall-poor-2 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "C3-wall-poor-3 cap is two or three cells",
+      "passed": true
+    },
+    {
+      "name": "gate-elbow-c3 identical world-phase stones through joins",
+      "passed": true,
+      "mismatches": 0
+    },
+    {
+      "name": "gate-square-mouth-c3 identical world-phase stones through joins",
+      "passed": true,
+      "mismatches": 0
+    },
+    {
+      "name": "gate-straight-c3 identical world-phase stones through joins",
+      "passed": true,
+      "mismatches": 0
+    },
+    {
+      "name": "gate-straight-south-c3 identical world-phase stones through joins",
+      "passed": true,
+      "mismatches": 0
+    },
+    {
+      "name": "gate-cross-straight-c3 identical world-phase stones through joins",
+      "passed": true,
+      "mismatches": 0
+    },
+    {
+      "name": "square entrance greyscale route contrast",
+      "passed": true,
+      "mean": 162.67,
+      "field_mean": 135.44,
+      "difference": 27.23
+    },
+    {
+      "name": "north arm greyscale route contrast",
+      "passed": true,
+      "mean": 162.67,
+      "field_mean": 135.44,
+      "difference": 27.23
+    },
+    {
+      "name": "horizontal elbow greyscale route contrast",
+      "passed": true,
+      "mean": 161.87,
+      "field_mean": 135.44,
+      "difference": 26.43
+    },
+    {
+      "name": "south arm greyscale route contrast",
+      "passed": true,
+      "mean": 162.72,
+      "field_mean": 135.44,
+      "difference": 27.28
+    },
+    {
+      "name": "all resolved facade cap and fill repetitions",
+      "passed": true,
+      "windows": 146,
+      "failures": []
+    },
+    {
+      "name": "today comparison remains literal1x",
+      "passed": true
+    },
+    {
+      "name": "round15 comparison remains literal1x",
+      "passed": true
+    },
+    {
+      "name": "C3 comparison remains literal1x",
+      "passed": true
+    }
+  ]
+}

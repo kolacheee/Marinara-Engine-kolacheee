@@ -1,0 +1,156 @@
+{
+  "part": "C3",
+  "fixes": {
+    "layout1": {
+      "status": "addressed",
+      "response": "Fresh coordinates for two stepped trapezoids and a southern L; north and south through-alleys, a bent west market road and stepped east road, varied block widths, civic/inn courts and setbacks. Critic repair widens the western bend to joined 96px reaches, moves the rear court south and lowers its street wing; all main street segments are checked against actual paint and documented overhead reveals.",
+      "evidence": [
+        "r17-C3-city-anchors-1x.png",
+        "r17-city-final-crop-street-3x.png",
+        "r17-C3-bent-east-3x.png"
+      ]
+    },
+    "layout2": {
+      "status": "addressed",
+      "response": "One roof hue per property and its rear wing. Main blocks use terracotta; poor wall block uses brown. Ridge direction, hip/gable shape and height vary independently. Pixel hashes audit both base rows and bent frontage groups. Shorter compliant caps now break the northern ridge alignment; fenced service-side recesses make their setbacks deliberate.",
+      "evidence": [
+        "r17-C3-layout-audit.json",
+        "r17-C3-retained-seven-cell-roof-volumes-4x.png"
+      ]
+    },
+    "layout3": {
+      "status": "addressed",
+      "response": "East block ordered heights 4,2,3,5,3,4: every adjacent step is 1 or 2 storeys. Other blocks have coherent 2/3 or 3/4 mixes and native party-wall reveals. All seven staggered property/roof contacts are now derived from actual overlapping paint bounds and world-space eaves, with native coping/flashing and lit/shaded returns.",
+      "evidence": [
+        "r17-C3-city-anchors-1x.png",
+        "r17-C3-verification.json"
+      ]
+    },
+    "layout4": {
+      "status": "addressed",
+      "response": "Inn moved to x1296/base1056 on gate road, with joined 192px frontage, 96x144 paved court, stable, delivery cart, barrel and tub tree; a 48px path reaches the stable door.",
+      "evidence": [
+        "r17-city-final-crop-gate-3x.png",
+        "r17-C3-gate-inn-1x.png"
+      ]
+    },
+    "layout5": {
+      "status": "addressed",
+      "response": "North tower gaps are 7,9,6,9,7 cells; east/west intervals differ. Paired northwest bastion and a painted defensive ditch outside the north wall; inner service route retained with junction bays.",
+      "evidence": [
+        "r17-city-final.png",
+        "r17-C3-city-anchors-1x.png"
+      ]
+    },
+    "layout6": {
+      "status": "addressed",
+      "response": "Removed the long thin cap at x1056 and its rear roof; a low clerk annex and enclosed civic service court occupy that edge. Northeast terminal slab replaced with the newly drawn deep hip.",
+      "evidence": [
+        "r17-C3-square-1x.png",
+        "r17-C3-bent-east-1x.png"
+      ]
+    },
+    "drawing1": {
+      "status": "addressed",
+      "response": "Passing cobbles, gutters, puddles and original gate-paving PNG retained. Critic repair adds two drawn dogleg alternatives and a drawn square mouth. Selected road B supplies one native 96x48 stone period, composited through both painted alpha outlines at a shared world phase. No rotated lighting, +7 field substitution, constructed stones or noise.",
+      "evidence": [
+        "r17-C3-critic1-road-selection-3x.png",
+        "r17-C3-critic1-connected-road-material-3x.png",
+        "r17-city-final-squint.png"
+      ]
+    },
+    "drawing2": {
+      "status": "addressed",
+      "response": "Five new 96x48 fronts: baker, smith, apothecary, cloth and potter. Distinct left/right/central doors, awnings and broad goods. Rows 0/47 match the established attachment course.",
+      "evidence": [
+        "r17-C3-pieces-2-4x.png",
+        "r17-C3-pieces-3-4x.png",
+        "r17-C3-complete-house-apothecary-4x.png"
+      ]
+    },
+    "drawing3": {
+      "status": "addressed",
+      "response": "Critic repair draws two new 96x144 hip alternatives and selects A. The three failed exports now have three-cell caps, a separate 96x48 directional fill extends the NE property, and dormer/chimney sit wholly within the lit receiving slope. Baked overlays are checked; original ridge-straddling placement is rejected.",
+      "evidence": [
+        "r17-C3-selection-hip-4x.png",
+        "r17-C3-critic1-cap-fill-and-accents-4x.png",
+        "r17-C3-critic1-directional-fill-seams-4x.png"
+      ]
+    },
+    "drawing4": {
+      "status": "addressed",
+      "response": "New post lamp, square tub tree and inn stable. Existing drawn barrels, crates, carts and supported washing line are placed at the market, stable court and rear doors. Street clearance is measured after placement.",
+      "evidence": [
+        "r17-C3-piece-lamp-c3-4x.png",
+        "r17-C3-piece-planter-tree-c3-4x.png",
+        "r17-C3-gate-inn-3x.png",
+        "r17-C3-corner-court-3x.png"
+      ]
+    }
+  },
+  "panel2": {
+    "1": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Retained 10x8 notched square, church west and guild north; joined merchant frontages,96px gate route and48px exits."
+    },
+    "2": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Retained complete corner house and separately lit returns; all five new frontages also shown as complete houses beside fantasy-house-2 at1x/4x."
+    },
+    "3": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Compliant two/three-cell caps, separate directional hip fill and seven actual staggered joins. Roof/eave heights vary in the final city; intact native masonry, coping/flashing and independently lit step returns explain height transitions."
+    },
+    "4": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Five new fronts vary doors and goods; coherent upper materials per house; retained sign-bearing blank bays and structural course attachment."
+    },
+    "5": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Lit usable steps, dim service/rear doors and open arch/daylight proof;42 public/standing approaches checked."
+    },
+    "6": {
+      "status": "addressed; brief precedence where stated",
+      "response": "BRIEF-17 precedence: retained twice-round15 64x72 signs instead of panel smaller boards. Blank upper bays and within-lot mounts preserve doors and windows."
+    },
+    "7": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Retained matched corner/rear closure and separately lit east/west side doors. Footprints and overhead paint remain separate metadata. Critic repair includes staggered ground and roof-bound contacts, not only equal-base studies."
+    },
+    "8": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Actual bent streets,T junctions,96/48/24 routes, through-alleys and gate elbow. BRIEF-17 keeps mandatory jogs/wedges despite panel deferral. All twelve main-road reaches are declared clear and at least96px. The western pinch is visibly96px; overhead spire/stable pixels have separate ground-footprint and normal/reveal proofs."
+    },
+    "9": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Inhabited96x144 west court moved behind the widened road: complete stair/landing/upper shutter, door approach, well, wood and supported laundry. Stable court and its48px access retained."
+    },
+    "10": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Retained two staggered stall triplets, browsing aisle, fountain/cross, unloading cart and vendors/customers."
+    },
+    "11": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Retained grey-brown civic paint and marked guild entry; gate route recedes through the arch. Only landmark towers need skyline dominance."
+    },
+    "12": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Retained drawn height-responsive south/east casts and arcade support shadows, masked to real receiving surfaces; no new shadow mats."
+    },
+    "13": {
+      "status": "addressed; brief precedence where stated",
+      "response": "New footprint/base/entrance/block/route anchor sheet and normal/reveal proofs. Guild spire overhang crosses16px of the north lane in screen space; its ground supports are clear and a walker/reveal pair proves visibility. Gate walker moved into the open portal; no fully hidden actors remain in the final scene. Added focused west/east main-road player reveals; overhead pixels are distinguished from supporting footprints. All40 final-scene actors retain visible pixels."
+    },
+    "14": {
+      "status": "addressed; brief precedence where stated",
+      "response": "New1x/3x populated square, street, inn/gate and rear court comparisons, native greyscale, unchanged E regression scenes and complete-house1x/4x comparisons."
+    },
+    "15": {
+      "status": "addressed; brief precedence where stated",
+      "response": "Expansion remains deferred. The original23 C3 exports plus six necessary fill/road connectors total29; three failed originals are replaced. No runtime changes or character expansion."
+    }
+  },
+  "part_E_regressions": "Both original failures still trigger the checker when restored; current L rear caps and market trade rows pass by resolved pixel hashes.",
+  "review_type": "Saved-art self-review; no new independent panel scores or engine playtest.",
+  "critic1_response": "r17-C3-critic1-response.json"
+}

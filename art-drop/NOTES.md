@@ -1,3 +1,167 @@
+# Round 17 — Part C3: critic-r17C3-1 redraw
+
+Replaced the three failed hip exports with **96×144 caps**, plus a separate
+**96×48 directional fill** used on the deeper northeast property. The dormer
+now sits wholly on the lit slope; baked accents receive the same plane checks
+as composer overlays. **Five large built-in image-tool drawings on magenta**:
+two hip alternatives, two gate-road alternatives and a square entrance.
+Selected hip A and road B. Same method: painted registration → 8× BOX → fixed
+palette → exact 64-sample RGBA mode → one-pixel cleanup, hard alpha and zero
+hidden RGB. The road's native painted stone period is composited through the
+drawn elbow and entrance outlines at one shared phase; no shapes or noise
+were constructed. [Prompts and selections](review/r17-C3-critic1-generation.json).
+
+Moved the western court back, lowered its street wing and joined full-width
+road reaches to remove the **48px pinch**. Every main-street segment is now
+audited at **96px or wider**. All **seven staggered property/roof joins** receive
+world-positioned coping/flashing, bare masonry or exposed step returns.
+Ridge heights vary visibly; fenced service recesses explain the setbacks.
+Retained the gate-road inn/stable, bent streets, alleys, irregular blocks,
+uneven towers, ditch, populated square and Part E repetition repairs.
+Documented overhead church/stable projections have footprint and player
+reveal proofs. [Focused review](review/r17-C3-critic1-west-width-3x.png),
+[critic response](review/r17-C3-critic1-response.json).
+
+Regenerated every requested final render and C3 review sheet.
+**338 checks pass** (262 scene/regression + 76 redraw checks), including
+**12,533,760 new mode samples**, all public approaches, exact output scales,
+and resolved-piece repetition. **42 buildings:** 1 storey **3**, 2 **13**,
+3 **15**, 4 **9**, 5 **2**; single-storey share **7.14%**. The **29 passing PNGs**
+and **2,404 protected production files** remain byte-identical. Only the three
+failed production PNGs and composer changed; six necessary connector/fill
+PNGs were added. No seasonal partners apply. [Final 1×](review/r17-city-final.png),
+[review index](review/r17-C3-review.html),
+[redraw verification](review/r17-C3-critic1-verification.json).
+
+BRIEF-17 retains precedence over the panels' smaller signs and optional
+jogs; the coordinator's 40×30 native cells retain precedence over the earlier
+approximate canvas size. Saved-art verification only; the original independent
+critic JSON is preserved and no new independent approval is claimed.
+Replay: `python -B art-drop/review/r17-C3-critic1-process.py`,
+`python -B art-drop/out/city17/compose.py --part C3`, then the
+`r17-C3-review.py`, `r17-C3-critic1-review.py`, `r17-C3-verify.py` and
+`r17-C3-critic1-verify.py` scripts in `art-drop/review/`.
+All authored changes are inside `art-drop/`; no branch change, commit or push.
+
+# Round 17 — Part C3
+
+Rebuilt the **40×30-cell walled district** around actual changes to the street
+plan: a stepped western trapezoid, an eastern trapezoid split by a through
+alley, a southern L, bent market streets, narrow passages, an additional
+square exit, courtyard setbacks and mixed building heights. The inn now
+faces the **gate road**, with a **192px joined frontage**, a guest entrance,
+**96×144 paved court**, a new stable and a clear **48px court path**. North
+wall tower gaps are **7 / 9 / 6 / 9 / 7 cells**; the northwest corner has a
+paired bastion and a drawn defensive ditch runs outside the northern wall.
+The long narrow roof beside the guildhall is gone; a low clerk annex and
+an enclosed paved service yard replace it. The northeast slab ends in a hip.
+
+[Final city at 1×](review/r17-city-final.png),
+[exact 2×](review/r17-city-final-2x.png),
+[three-way comparison](review/r17-city-final-vs-r15-vs-today.png),
+[native greyscale](review/r17-city-final-squint.png),
+[review index](review/r17-C3-review.html).
+The final canvas is **1920×1440**, with **3840×2880** at 2×. The coordinator's
+40×30 cells at the established 48px scale override the earlier approximate
+1200×900 request. Today and Round15 remain literal 1× in the comparison.
+Required **3× square, street and gate crops** use nearest-neighbour only.
+
+**Drawing method:** **17 large built-in image-tool drawings on solid
+magenta**, selecting **14 paintings**. Cobble field, deep hip and feathered
+gate paving each received two candidates; B was retained in all three.
+Painted bounds/row registration → **8× BOX working canvas** → fixed approved
+material palettes without dithering → exact RGBA mode of **all 64 samples
+per native pixel**, including transparency and lexicographic ties → isolated
+colour/alpha and one-pixel silhouette cleanup. Ground receives colour-fleck
+cleanup without an artificial outline. The selected deep hip carries its
+painted ridge cap, connected moss cluster and repair patch. Native existing
+chimneys and dormers are composited onto compatible receiving planes.
+**8,208 native edits** across the candidate drawings are recorded, including
+course transfers and edge wrapping. All exports have **hard 0/255 alpha**,
+**zero RGB under transparency**, **6–36 opaque colours** and no detached
+one/two-pixel alpha islands. No seasonal partners were requested.
+[Prompts, sources and selection](review/r17-C3-generation.json),
+[processing record](review/r17-C3-processing.json).
+
+**23 new native PNGs**, all in `out/city17/`:
+
+- Five **96×48** shopfronts: `ground-{baker,smith,apothecary,cloth,potter}-c3-w2`.
+  Distinct left/right/central door arrangements, awnings, broad goods and
+  lit steps; the established drawing supplies stack rows **0/47**.
+- `roof-hip-deep-c3-w2` **96×192**, with chimney and dormer partners;
+  `roof-hip-short-chimney-c3-w2` **96×144**;
+  `roof-ridge-dormer-c3-w2` and `roof-back-chimney-c3-w2` **96×96**;
+  `roof-back-dormer-c3-w1` **48×96**. One roof hue per property and rear wing;
+  ridge direction and height change between neighbours.
+- `cobble-c3` and `gate-paving-c3`, both **96×96**;
+  `street-main-c3` **96×48**, `street-side-c3` **48×48**, `lane-c3` **24×48**;
+  `street-edge-c3` **96×24**, `puddle-c3` **48×24**, `ditch-c3` **192×96**.
+  Square and streets share a world-registered stone phase. Drawn gate-edge
+  alpha interlocks with that field; only its edge mask turns at the elbow,
+  preserving stone lighting. Existing native kerb/gutter strips remain.
+- `lamp-c3` **24×64**, `planter-tree-c3` **48×72**, `stable-c3` **96×144**.
+  Existing drawn barrels, crates, carts and supported laundry serve the
+  market and rear courts. The inn's second frontage is a guest entrance.
+
+Code registers, reduces, palette-locks, cleans, wraps, crops and composites
+paintings. It constructs no replacement architecture, objects, stones,
+noise or shadow silhouettes. Marks on anchor/access sheets are review
+annotations only. [Export inventory](review/r17-C3-files.json).
+
+**Layout and QC:** the final scene contains **43 residential/trade/rear
+buildings**, plus the retained civic and defensive landmarks, **40 townsfolk**,
+six stalls in staggered triplets, the market hall, fountain and cross. The
+square retains its **10×8-cell extent and 2×2 notch**, church west and guildhall
+north. Grass remains confined to the fenced churchyard and rear court;
+other courts are paved. Heights in the eastern block are **4 / 2 / 3 / 5 / 3 / 4**,
+with adjacent steps of one or two storeys and the existing firewall rule.
+
+| Storeys | 1 | 2 | 3 | 4 | 5 |
+|---|---:|---:|---:|---:|---:|
+| Buildings | 4 | 12 | 16 | 9 | 2 |
+
+Single-storey buildings are **9.30%**. **223 checks pass**, replaying
+**8,798,208 mode samples**, checking **43 standing/public approaches**, the
+**96px gate route**, **48px service/court/through routes**, closed building
+masses, every sign's lot bounds, every building's drawn cast shade and exact
+output scales. No final-scene actor is completely hidden. The guild spire
+projects **16px** over the north service lane in screen space; its ground
+supports stay clear. The normal/reveal pair explicitly separates that
+painted overhang from the walkable ground. Gate walkers are visible in the
+open portal. [Verification](review/r17-C3-verification.json),
+[anchors](review/r17-C3-city-anchors-1x.png),
+[north-lane reveal](review/r17-C3-north-service-reveal-3x.png).
+
+The repetition checker compares **resolved RGBA hashes and dimensions** on
+both actual base rows and frontage groups along bent streets: **149 city
+window/layer checks**, **300 including retained studies**, all pass. Both
+original Part E failures still fail when deliberately restored: the third
+identical northern rear cap and the eight forced trade fronts. Their current
+selections, mounted signs and approaches pass. **2,384 earlier production
+files are byte-identical**; only the named compositor changed among them.
+
+Saved every new export at **1×/nearest-neighbour 4×**, self/unlike seams,
+**literal 3×3 repeats at 1×/4× for all nine reviewed ground/overlay families**,
+complete house/reference and separately lit return studies, the retained
+seven-cell roof-volume proof, populated scenes at **1×/3×**, greyscale views,
+footprints/entrances/overhangs/supports and normal/reveal states. Required
+L-block, irregular market and tall/low regression scenes were replayed into
+C3 review files; earlier review files remain unchanged.
+
+[Every FIXES.md and panel-2 item](review/r17-C3-panel-response.json),
+[saved-art critic](review/critic-r17C3-1.json). **Brief precedence:** retain
+BRIEF-17's large signs, fixed attachment courses, required jogs/wedges,
+48px grid and shadows despite conflicting panel reductions/deferrals.
+Existing blank sign bays preserve doors/windows. No runtime routing/fading,
+new character sizes or broad district catalogue were added. This is saved-art
+self-review; no new independent panel score or engine playtest is claimed.
+
+Replay with `python -B`: `review/r17-C3-process.py`,
+`out/city17/compose.py --part C3`, `review/r17-C3-review.py`, then
+`review/r17-C3-verify.py` (paths relative to `art-drop/`). Authored edits remain
+inside `art-drop/`. Branch `art/overworld-codex-2026-11-06` is unchanged;
+no commit or push.
+
 # Round 17 — Part R
 
 Finished the **40×30-cell dense walled district**, using the coordinator's

@@ -1,0 +1,2230 @@
+{
+  "checks": [
+    {
+      "name": "cobble-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "cobble-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "cobble-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "cobble-c3 no detached specks",
+      "passed": true,
+      "components": [
+        9216
+      ]
+    },
+    {
+      "name": "cobble-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "cobble-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-deep-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-deep-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-deep-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-deep-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        13824
+      ]
+    },
+    {
+      "name": "roof-hip-deep-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-deep-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "lamp-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "lamp-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "lamp-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "lamp-c3 no detached specks",
+      "passed": true,
+      "components": [
+        410
+      ]
+    },
+    {
+      "name": "lamp-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "lamp-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "planter-tree-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "planter-tree-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "planter-tree-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "planter-tree-c3 no detached specks",
+      "passed": true,
+      "components": [
+        1489
+      ]
+    },
+    {
+      "name": "planter-tree-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "planter-tree-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "stable-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "stable-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "stable-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "stable-c3 no detached specks",
+      "passed": true,
+      "components": [
+        10024
+      ]
+    },
+    {
+      "name": "stable-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "stable-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 no detached specks",
+      "passed": true,
+      "components": [
+        18432
+      ]
+    },
+    {
+      "name": "ditch-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 no detached specks",
+      "passed": true,
+      "components": [
+        1823
+      ]
+    },
+    {
+      "name": "street-edge-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 no detached specks",
+      "passed": true,
+      "components": [
+        542
+      ]
+    },
+    {
+      "name": "puddle-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ground-baker-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "ground-baker-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "ground-baker-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "ground-baker-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "ground-baker-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "ground-baker-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ground-baker-c3-w2 stack courses",
+      "passed": true
+    },
+    {
+      "name": "ground-smith-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "ground-smith-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "ground-smith-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "ground-smith-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "ground-smith-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "ground-smith-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ground-smith-c3-w2 stack courses",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "ground-apothecary-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c3-w2 stack courses",
+      "passed": true
+    },
+    {
+      "name": "ground-cloth-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "ground-cloth-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "ground-cloth-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "ground-cloth-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "ground-cloth-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "ground-cloth-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ground-cloth-c3-w2 stack courses",
+      "passed": true
+    },
+    {
+      "name": "ground-potter-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "ground-potter-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "ground-potter-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "ground-potter-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "ground-potter-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "ground-potter-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "ground-potter-c3-w2 stack courses",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 no detached specks",
+      "passed": true,
+      "components": [
+        8594
+      ]
+    },
+    {
+      "name": "gate-paving-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        13824
+      ]
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-chimney-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        13824
+      ]
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-dormer-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-back-chimney-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-back-chimney-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-back-chimney-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-back-chimney-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        9216
+      ]
+    },
+    {
+      "name": "roof-back-chimney-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-back-chimney-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-back-dormer-c3-w1 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-back-dormer-c3-w1 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-back-dormer-c3-w1 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-back-dormer-c3-w1 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "roof-back-dormer-c3-w1 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-back-dormer-c3-w1 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-short-chimney-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-short-chimney-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-short-chimney-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-short-chimney-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        13824
+      ]
+    },
+    {
+      "name": "roof-hip-short-chimney-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-short-chimney-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-dormer-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-dormer-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-dormer-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-dormer-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        9216
+      ]
+    },
+    {
+      "name": "roof-ridge-dormer-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-dormer-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "street-main-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 no detached specks",
+      "passed": true,
+      "components": [
+        2304
+      ]
+    },
+    {
+      "name": "street-side-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 no detached specks",
+      "passed": true,
+      "components": [
+        1152
+      ]
+    },
+    {
+      "name": "lane-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-hip-c3-w2 dimensions",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-hip-c3-w2 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-hip-c3-w2 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-hip-c3-w2 no detached specks",
+      "passed": true,
+      "components": [
+        4608
+      ]
+    },
+    {
+      "name": "roof-fill-hip-c3-w2 hash",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-hip-c3-w2 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "gate-elbow-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "gate-elbow-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "gate-elbow-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "gate-elbow-c3 no detached specks",
+      "passed": true,
+      "components": [
+        34528
+      ]
+    },
+    {
+      "name": "gate-elbow-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "gate-elbow-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "gate-square-mouth-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "gate-square-mouth-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "gate-square-mouth-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "gate-square-mouth-c3 no detached specks",
+      "passed": true,
+      "components": [
+        37876
+      ]
+    },
+    {
+      "name": "gate-square-mouth-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "gate-square-mouth-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-c3 no detached specks",
+      "passed": true,
+      "components": [
+        8496
+      ]
+    },
+    {
+      "name": "gate-straight-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "gate-cross-straight-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "gate-cross-straight-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "gate-cross-straight-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "gate-cross-straight-c3 no detached specks",
+      "passed": true,
+      "components": [
+        8557
+      ]
+    },
+    {
+      "name": "gate-cross-straight-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "gate-cross-straight-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-south-c3 dimensions",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-south-c3 hard alpha",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-south-c3 zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-south-c3 no detached specks",
+      "passed": true,
+      "components": [
+        8759
+      ]
+    },
+    {
+      "name": "gate-straight-south-c3 hash",
+      "passed": true
+    },
+    {
+      "name": "gate-straight-south-c3 exact4x sheet",
+      "passed": true
+    },
+    {
+      "name": "cobble-a exact mode",
+      "passed": true,
+      "samples": 589824
+    },
+    {
+      "name": "cobble-b exact mode",
+      "passed": true,
+      "samples": 589824
+    },
+    {
+      "name": "hip-a exact mode",
+      "passed": true,
+      "samples": 1179648
+    },
+    {
+      "name": "shop-baker exact mode",
+      "passed": true,
+      "samples": 294912
+    },
+    {
+      "name": "hip-b exact mode",
+      "passed": true,
+      "samples": 1179648
+    },
+    {
+      "name": "shop-smith exact mode",
+      "passed": true,
+      "samples": 294912
+    },
+    {
+      "name": "shop-apothecary exact mode",
+      "passed": true,
+      "samples": 294912
+    },
+    {
+      "name": "shop-cloth exact mode",
+      "passed": true,
+      "samples": 294912
+    },
+    {
+      "name": "shop-potter exact mode",
+      "passed": true,
+      "samples": 294912
+    },
+    {
+      "name": "planter-tree exact mode",
+      "passed": true,
+      "samples": 221184
+    },
+    {
+      "name": "lamp exact mode",
+      "passed": true,
+      "samples": 98304
+    },
+    {
+      "name": "ditch exact mode",
+      "passed": true,
+      "samples": 1179648
+    },
+    {
+      "name": "stable exact mode",
+      "passed": true,
+      "samples": 884736
+    },
+    {
+      "name": "puddle exact mode",
+      "passed": true,
+      "samples": 73728
+    },
+    {
+      "name": "street-edge exact mode",
+      "passed": true,
+      "samples": 147456
+    },
+    {
+      "name": "gate-paving-b exact mode",
+      "passed": true,
+      "samples": 589824
+    },
+    {
+      "name": "gate-paving-a exact mode",
+      "passed": true,
+      "samples": 589824
+    },
+    {
+      "name": "previous production paint unchanged",
+      "passed": true,
+      "count": 2384,
+      "changed": []
+    },
+    {
+      "name": "city straight AND bent frontage repetition",
+      "passed": true,
+      "windows": 146,
+      "failures": []
+    },
+    {
+      "name": "L-block resolved-piece repetition",
+      "passed": true,
+      "windows": 28,
+      "failures": []
+    },
+    {
+      "name": "market resolved-piece repetition",
+      "passed": true,
+      "windows": 21,
+      "failures": []
+    },
+    {
+      "name": "height-test resolved-piece repetition",
+      "passed": true,
+      "windows": 16,
+      "failures": []
+    },
+    {
+      "name": "district-market resolved-piece repetition",
+      "passed": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "district-temple resolved-piece repetition",
+      "passed": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "district-craft resolved-piece repetition",
+      "passed": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "district-rich resolved-piece repetition",
+      "passed": true,
+      "windows": 26,
+      "failures": []
+    },
+    {
+      "name": "district-poor resolved-piece repetition",
+      "passed": true,
+      "windows": 15,
+      "failures": []
+    },
+    {
+      "name": "original E rear-cap failure detected",
+      "passed": true
+    },
+    {
+      "name": "original E forced trade-front failure detected",
+      "passed": true
+    },
+    {
+      "name": "L-block retained approaches",
+      "passed": true,
+      "count": 0
+    },
+    {
+      "name": "market retained approaches",
+      "passed": true,
+      "count": 11
+    },
+    {
+      "name": "height-test retained approaches",
+      "passed": true,
+      "count": 0
+    },
+    {
+      "name": "one-storey buildings below25percent",
+      "passed": true,
+      "storeys": {
+        "3": 15,
+        "4": 9,
+        "1": 3,
+        "2": 13,
+        "5": 2
+      },
+      "buildings": 42,
+      "one_storey_percent": 7.142857142857143
+    },
+    {
+      "name": "three irregular blocks",
+      "passed": true
+    },
+    {
+      "name": "bent street changes actual base rows",
+      "passed": true
+    },
+    {
+      "name": "2to5 storeys and1to2 steps in east block",
+      "passed": true,
+      "heights": [
+        4,
+        2,
+        3,
+        5,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "uneven towers",
+      "passed": true,
+      "interval_cells": [
+        7,
+        9,
+        6,
+        9,
+        7
+      ]
+    },
+    {
+      "name": "corner bastion",
+      "passed": true
+    },
+    {
+      "name": "five new shopfronts used",
+      "passed": true
+    },
+    {
+      "name": "no narrow deep guildhall roof",
+      "passed": true
+    },
+    {
+      "name": "NE slab replaced by hip",
+      "passed": true
+    },
+    {
+      "name": "six stalls",
+      "passed": true
+    },
+    {
+      "name": "only enclosed summer gardens",
+      "passed": true
+    },
+    {
+      "name": "48px canvas registration",
+      "passed": true
+    },
+    {
+      "name": "all standing/public approaches clear",
+      "passed": true,
+      "count": 42,
+      "blocked": []
+    },
+    {
+      "name": "every main street96 service48 and through-alleys clear",
+      "passed": true,
+      "routes": [
+        {
+          "id": "wall-service",
+          "rect": [
+            96,
+            240,
+            1728,
+            48
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service",
+          "rect": [
+            96,
+            288,
+            48,
+            1056
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service",
+          "rect": [
+            1776,
+            288,
+            48,
+            1056
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service",
+          "rect": [
+            96,
+            1344,
+            1056,
+            48
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service",
+          "rect": [
+            1344,
+            1344,
+            480,
+            48
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            432,
+            240,
+            48,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            672,
+            240,
+            48,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            864,
+            240,
+            48,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            1104,
+            240,
+            48,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            1344,
+            240,
+            48,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            1584,
+            240,
+            48,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "wall-service-bay",
+          "rect": [
+            96,
+            672,
+            96,
+            48
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-west-market-road",
+          "rect": [
+            144,
+            576,
+            96,
+            192
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-west-market-road",
+          "rect": [
+            144,
+            624,
+            192,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-west-market-road",
+          "rect": [
+            240,
+            672,
+            288,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-west-market-road",
+          "rect": [
+            432,
+            576,
+            96,
+            192
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-west-market-road",
+          "rect": [
+            480,
+            576,
+            240,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-east-market-road",
+          "rect": [
+            1200,
+            624,
+            384,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-east-market-road",
+          "rect": [
+            1344,
+            576,
+            144,
+            144
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-east-market-road",
+          "rect": [
+            1488,
+            672,
+            288,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "bent-east-market-road",
+          "rect": [
+            1488,
+            624,
+            144,
+            144
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "north-through-alley",
+          "rect": [
+            1584,
+            288,
+            48,
+            384
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "gate-to-square",
+          "rect": [
+            1104,
+            768,
+            96,
+            288
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "gate-to-square",
+          "rect": [
+            1104,
+            1056,
+            384,
+            96
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "gate-to-square",
+          "rect": [
+            1200,
+            1152,
+            96,
+            288
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "gate-wall-bypass",
+          "rect": [
+            1152,
+            1248,
+            48,
+            144
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "gate-wall-bypass",
+          "rect": [
+            1152,
+            1248,
+            240,
+            48
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "gate-wall-bypass",
+          "rect": [
+            1344,
+            1248,
+            48,
+            144
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "square-west-exit",
+          "rect": [
+            720,
+            1056,
+            48,
+            336
+          ],
+          "blocked": 0,
+          "owners": []
+        },
+        {
+          "id": "square-through-alley",
+          "rect": [
+            912,
+            1056,
+            48,
+            336
+          ],
+          "blocked": 0,
+          "owners": []
+        }
+      ]
+    },
+    {
+      "name": "all main street ids audited",
+      "passed": true
+    },
+    {
+      "name": "all main street segments declared clear and at least96px",
+      "passed": true
+    },
+    {
+      "name": "western pinch has literal96px visible corridor",
+      "passed": true,
+      "rect": [
+        240,
+        672,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "inn court48px path clear",
+      "passed": true,
+      "rect": [
+        1488,
+        864,
+        48,
+        192
+      ]
+    },
+    {
+      "name": "all signs inside their lots",
+      "passed": true,
+      "signs": [
+        {
+          "lot": "square-baker",
+          "file": "sign-baker",
+          "contained": true
+        },
+        {
+          "lot": "square-apothecary",
+          "file": "sign-apothecary",
+          "contained": true
+        },
+        {
+          "lot": "west-smith",
+          "file": "sign-smith",
+          "contained": true
+        },
+        {
+          "lot": "west-cobbler",
+          "file": "sign-cobbler",
+          "contained": true
+        },
+        {
+          "lot": "C3-gate-inn",
+          "file": "sign-inn",
+          "contained": true
+        },
+        {
+          "lot": "C3-east-return-0",
+          "file": "sign-tailor",
+          "contained": true
+        },
+        {
+          "lot": "C3-east-return-1",
+          "file": "sign-scribe",
+          "contained": true
+        },
+        {
+          "lot": "C3-south-8",
+          "file": "sign-butcher",
+          "contained": true
+        }
+      ]
+    },
+    {
+      "name": "west wedge closed roof/wall mass",
+      "passed": true,
+      "rect": [
+        144,
+        336,
+        432,
+        576
+      ],
+      "holes": 0
+    },
+    {
+      "name": "north middle closed roof/wall mass",
+      "passed": true,
+      "rect": [
+        480,
+        336,
+        672,
+        576
+      ],
+      "holes": 0
+    },
+    {
+      "name": "east wedge closed roof/wall mass",
+      "passed": true,
+      "rect": [
+        1392,
+        384,
+        1584,
+        576
+      ],
+      "holes": 0
+    },
+    {
+      "name": "east hip end closed roof/wall mass",
+      "passed": true,
+      "rect": [
+        1632,
+        480,
+        1776,
+        672
+      ],
+      "holes": 0
+    },
+    {
+      "name": "south L closed roof/wall mass",
+      "passed": true,
+      "rect": [
+        144,
+        1104,
+        432,
+        1296
+      ],
+      "holes": 0
+    },
+    {
+      "name": "inn wings closed roof/wall mass",
+      "passed": true,
+      "rect": [
+        1296,
+        864,
+        1488,
+        1056
+      ],
+      "holes": 0
+    },
+    {
+      "name": "no fully hidden scene actors",
+      "passed": true,
+      "actors": [
+        {
+          "id": "person-14",
+          "visible": 356
+        },
+        {
+          "id": "C3-person-11",
+          "visible": 356
+        },
+        {
+          "id": "C3-person-13",
+          "visible": 349
+        },
+        {
+          "id": "C3-person-12",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-10",
+          "visible": 352
+        },
+        {
+          "id": "person-13",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-7",
+          "visible": 356
+        },
+        {
+          "id": "person-2",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-8",
+          "visible": 352
+        },
+        {
+          "id": "person-15",
+          "visible": 352
+        },
+        {
+          "id": "person-12",
+          "visible": 352
+        },
+        {
+          "id": "person-3",
+          "visible": 349
+        },
+        {
+          "id": "person-16",
+          "visible": 352
+        },
+        {
+          "id": "person-10",
+          "visible": 281
+        },
+        {
+          "id": "person-9",
+          "visible": 352
+        },
+        {
+          "id": "person-8",
+          "visible": 352
+        },
+        {
+          "id": "person-17",
+          "visible": 349
+        },
+        {
+          "id": "person-37",
+          "visible": 308
+        },
+        {
+          "id": "person-36",
+          "visible": 303
+        },
+        {
+          "id": "person-35",
+          "visible": 319
+        },
+        {
+          "id": "person-11",
+          "visible": 349
+        },
+        {
+          "id": "C3-person-9",
+          "visible": 344
+        },
+        {
+          "id": "person-4",
+          "visible": 352
+        },
+        {
+          "id": "person-6",
+          "visible": 356
+        },
+        {
+          "id": "person-7",
+          "visible": 349
+        },
+        {
+          "id": "person-5",
+          "visible": 352
+        },
+        {
+          "id": "person-34",
+          "visible": 304
+        },
+        {
+          "id": "person-33",
+          "visible": 315
+        },
+        {
+          "id": "person-32",
+          "visible": 303
+        },
+        {
+          "id": "bench-visitor",
+          "visible": 349
+        },
+        {
+          "id": "C3-person-6",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-1",
+          "visible": 349
+        },
+        {
+          "id": "C3-person-3",
+          "visible": 356
+        },
+        {
+          "id": "person-1",
+          "visible": 349
+        },
+        {
+          "id": "person-0",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-4",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-0",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-2",
+          "visible": 352
+        },
+        {
+          "id": "C3-person-5",
+          "visible": 349
+        },
+        {
+          "id": "C3-north-service-walker",
+          "visible": 352
+        }
+      ]
+    },
+    {
+      "name": "final matches current compose",
+      "passed": true
+    },
+    {
+      "name": "exact final2x",
+      "passed": true
+    },
+    {
+      "name": "native squint",
+      "passed": true
+    },
+    {
+      "name": "square crop exact3x",
+      "passed": true
+    },
+    {
+      "name": "street crop exact3x",
+      "passed": true
+    },
+    {
+      "name": "gate crop exact3x",
+      "passed": true
+    },
+    {
+      "name": "every building has native cast shade",
+      "passed": true,
+      "cast_records": 202
+    },
+    {
+      "name": "cobble-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "cobble-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "street-main-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "street-side-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "lane-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "gate-paving-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "ditch-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "street-edge-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 literal3x3",
+      "passed": true
+    },
+    {
+      "name": "puddle-c3 repeat exact4x",
+      "passed": true
+    },
+    {
+      "name": "mud-edge literal3x3",
+      "passed": true
+    },
+    {
+      "name": "mud-edge repeat exact4x",
+      "passed": true
+    }
+  ],
+  "passed": 262,
+  "failed": 0,
+  "mode_samples": 8798208,
+  "storeys": {
+    "3": 15,
+    "4": 9,
+    "1": 3,
+    "2": 13,
+    "5": 2
+  },
+  "buildings": 42,
+  "people": 40,
+  "entrances": [
+    {
+      "id": "C3-west-wedge-0",
+      "rect": [
+        208,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-west-wedge-1",
+      "rect": [
+        246,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-west-wedge-2",
+      "rect": [
+        372,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-middle-0",
+      "rect": [
+        516,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-middle-1",
+      "rect": [
+        584,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-baker",
+      "rect": [
+        784,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-narrow",
+      "rect": [
+        828,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-smith",
+      "rect": [
+        1068,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-apothecary",
+      "rect": [
+        1164,
+        768,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-east-return",
+      "rect": [
+        1212,
+        1056,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-smith",
+      "rect": [
+        150,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-cobbler",
+      "rect": [
+        348,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-east-0",
+      "rect": [
+        1206,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-east-1",
+      "rect": [
+        1308,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-east-2",
+      "rect": [
+        1400,
+        576,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-east-3",
+      "rect": [
+        1552,
+        624,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-east-4",
+      "rect": [
+        1644,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-north-east-5",
+      "rect": [
+        1686,
+        672,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-gate-inn",
+      "rect": [
+        1356,
+        1056,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-inn-east-wing",
+      "rect": [
+        1452,
+        1056,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-inn-stable",
+      "rect": [
+        1500,
+        864,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-east-return-0",
+      "rect": [
+        1596,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-east-return-1",
+      "rect": [
+        1692,
+        1056,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-0",
+      "rect": [
+        208,
+        1296,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-1",
+      "rect": [
+        304,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-2",
+      "rect": [
+        342,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-3",
+      "rect": [
+        516,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-4",
+      "rect": [
+        584,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-5",
+      "rect": [
+        684,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-6",
+      "rect": [
+        832,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-7",
+      "rect": [
+        876,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-8",
+      "rect": [
+        972,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-narrow-0",
+      "rect": [
+        1068,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-south-narrow-1",
+      "rect": [
+        1116,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-wall-poor-0",
+      "rect": [
+        1452,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-wall-poor-1",
+      "rect": [
+        1500,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-wall-poor-2",
+      "rect": [
+        1596,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "C3-wall-poor-3",
+      "rect": [
+        1740,
+        1344,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "cathedral",
+      "rect": [
+        538,
+        1056,
+        48,
+        48
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "guildhall",
+      "rect": [
+        927,
+        672,
+        48,
+        48
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "court-gate",
+      "rect": [
+        300,
+        1008,
+        24,
+        32
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "court-closure",
+      "rect": [
+        260,
+        912,
+        24,
+        32
+      ],
+      "blocked": 0
+    }
+  ]
+}

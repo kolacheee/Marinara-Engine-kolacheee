@@ -1,0 +1,6497 @@
+{
+  "paint": [
+    {
+      "id": "C3-west-wedge-0",
+      "painted": [
+        144,
+        288,
+        96,
+        288
+      ],
+      "footprint": [
+        144,
+        480,
+        96,
+        96
+      ],
+      "entrance": [
+        220,
+        576
+      ],
+      "overhang": [
+        144,
+        288,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-baker-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-short-chimney-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-west-wedge-1",
+      "painted": [
+        240,
+        336,
+        96,
+        288
+      ],
+      "footprint": [
+        240,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        258,
+        624
+      ],
+      "overhang": [
+        240,
+        336,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-smith-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 140,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 180,
+          "crop": [
+            0,
+            4,
+            16,
+            12
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 140,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 180,
+          "crop": [
+            0,
+            4,
+            16,
+            12
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 140,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 180,
+          "crop": [
+            0,
+            4,
+            16,
+            12
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-gable-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-west-wedge-2",
+      "painted": [
+        336,
+        384,
+        96,
+        288
+      ],
+      "footprint": [
+        336,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        384,
+        672
+      ],
+      "overhang": [
+        336,
+        384,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-apothecary-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-dormer-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-west-rear",
+      "painted": [
+        336,
+        288,
+        96,
+        144
+      ],
+      "footprint": [
+        336,
+        336,
+        96,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        336,
+        288,
+        96,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-stair-w2",
+          "x": 0,
+          "y": 96,
+          "layer": "wall"
+        },
+        {
+          "file": "roof-back-chimney-c3-w2",
+          "x": 0,
+          "y": 0,
+          "layer": "roof"
+        }
+      ]
+    },
+    {
+      "id": "C3-north-middle-0",
+      "painted": [
+        480,
+        288,
+        96,
+        288
+      ],
+      "footprint": [
+        480,
+        480,
+        96,
+        96
+      ],
+      "entrance": [
+        528,
+        576
+      ],
+      "overhang": [
+        480,
+        288,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-apothecary-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-north-middle-1",
+      "painted": [
+        576,
+        288,
+        96,
+        288
+      ],
+      "footprint": [
+        576,
+        480,
+        96,
+        96
+      ],
+      "entrance": [
+        596,
+        576
+      ],
+      "overhang": [
+        576,
+        288,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-cloth-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c0.png",
+          "x": 48,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "square-baker",
+      "painted": [
+        720,
+        336,
+        96,
+        336
+      ],
+      "footprint": [
+        720,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        796,
+        672
+      ],
+      "overhang": [
+        720,
+        336,
+        96,
+        240
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-baker-c3-w2.png",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-left-w2-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-hip-chimney-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-baker.png",
+          "x": 0,
+          "y": 232,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "painted": [
+        816,
+        432,
+        48,
+        240
+      ],
+      "footprint": [
+        816,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        840,
+        672
+      ],
+      "overhang": [
+        816,
+        432,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-door-v2-w1-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-gable-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "square-smith",
+      "painted": [
+        1056,
+        480,
+        48,
+        192
+      ],
+      "footprint": [
+        1056,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        1080,
+        672
+      ],
+      "overhang": [
+        1056,
+        480,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-shop-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 44,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 44,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 44,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            4,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-ridge-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "painted": [
+        1104,
+        480,
+        96,
+        288
+      ],
+      "footprint": [
+        1104,
+        672,
+        96,
+        96
+      ],
+      "entrance": [
+        1176,
+        768
+      ],
+      "overhang": [
+        1104,
+        480,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-shop-v1-w2-c0.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-left-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-deep-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-E.png",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            88,
+            0,
+            96,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-E.png",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            88,
+            0,
+            96,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-E.png",
+          "x": 88,
+          "y": 240,
+          "crop": [
+            88,
+            0,
+            96,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-apothecary.png",
+          "x": 0,
+          "y": 184,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "painted": [
+        1200,
+        720,
+        96,
+        336
+      ],
+      "footprint": [
+        1200,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1224,
+        1056
+      ],
+      "overhang": [
+        1200,
+        720,
+        96,
+        240
+      ],
+      "parts": [
+        {
+          "file": "side-ground-W",
+          "x": 0,
+          "y": 288,
+          "layer": "wall"
+        },
+        {
+          "file": "side-storey-W",
+          "x": 0,
+          "y": 240,
+          "layer": "wall"
+        },
+        {
+          "file": "side-storey-W",
+          "x": 0,
+          "y": 192,
+          "layer": "wall"
+        },
+        {
+          "file": "side-storey-W",
+          "x": 0,
+          "y": 144,
+          "layer": "wall"
+        },
+        {
+          "file": "side-storey-W",
+          "x": 0,
+          "y": 96,
+          "layer": "wall"
+        },
+        {
+          "file": "side-roof-d2-W",
+          "x": 0,
+          "y": 0,
+          "layer": "roof"
+        }
+      ]
+    },
+    {
+      "id": "west-smith",
+      "painted": [
+        144,
+        768,
+        96,
+        240
+      ],
+      "footprint": [
+        144,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        162,
+        1008
+      ],
+      "overhang": [
+        144,
+        768,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-smith-c3-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-right-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-smith.png",
+          "x": 32,
+          "y": 136,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "painted": [
+        336,
+        768,
+        96,
+        240
+      ],
+      "footprint": [
+        336,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        360,
+        1008
+      ],
+      "overhang": [
+        336,
+        768,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-shop-v2-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-right-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-cobbler.png",
+          "x": 32,
+          "y": 136,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-civic-rear-0",
+      "painted": [
+        816,
+        288,
+        48,
+        192
+      ],
+      "footprint": [
+        816,
+        384,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        816,
+        288,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "back-stair-w1",
+          "x": 0,
+          "y": 144,
+          "layer": "wall"
+        },
+        {
+          "file": "back-stair-w1",
+          "x": 0,
+          "y": 96,
+          "layer": "wall"
+        },
+        {
+          "file": "roof-back-w1",
+          "x": 0,
+          "y": 0,
+          "layer": "roof"
+        }
+      ]
+    },
+    {
+      "id": "C3-north-east-0",
+      "painted": [
+        1200,
+        288,
+        96,
+        336
+      ],
+      "footprint": [
+        1200,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        1218,
+        624
+      ],
+      "overhang": [
+        1200,
+        288,
+        96,
+        240
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-smith-c3-w2.png",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 188,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 228,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 268,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 308,
+          "crop": [
+            0,
+            4,
+            4,
+            28
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 332,
+          "crop": [
+            0,
+            44,
+            4,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 92,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 92,
+          "y": 188,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 92,
+          "y": 228,
+          "crop": [
+            0,
+            4,
+            4,
+            12
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 92,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 92,
+          "y": 236,
+          "crop": [
+            0,
+            44,
+            4,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w2-c0.png",
+          "x": 4,
+          "y": 289,
+          "crop": [
+            4,
+            0,
+            96,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w2-c0.png",
+          "x": 4,
+          "y": 241,
+          "crop": [
+            4,
+            0,
+            92,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w2-c0.png",
+          "x": 4,
+          "y": 193,
+          "crop": [
+            4,
+            0,
+            92,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-north-east-1",
+      "painted": [
+        1296,
+        384,
+        48,
+        240
+      ],
+      "footprint": [
+        1296,
+        528,
+        48,
+        96
+      ],
+      "entrance": [
+        1320,
+        624
+      ],
+      "overhang": [
+        1296,
+        384,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-door-v2-w1-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-north-east-2",
+      "painted": [
+        1392,
+        336,
+        96,
+        240
+      ],
+      "footprint": [
+        1392,
+        480,
+        96,
+        96
+      ],
+      "entrance": [
+        1412,
+        576
+      ],
+      "overhang": [
+        1392,
+        336,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-cloth-c3-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-gable-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-north-east-3",
+      "painted": [
+        1488,
+        288,
+        96,
+        336
+      ],
+      "footprint": [
+        1488,
+        528,
+        96,
+        96
+      ],
+      "entrance": [
+        1564,
+        624
+      ],
+      "overhang": [
+        1488,
+        288,
+        96,
+        240
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-potter-c3-w2.png",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c0.png",
+          "x": 48,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 288,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-north-east-4",
+      "painted": [
+        1632,
+        384,
+        48,
+        288
+      ],
+      "footprint": [
+        1632,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        1656,
+        672
+      ],
+      "overhang": [
+        1632,
+        384,
+        48,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v2-w1-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-north-east-5",
+      "painted": [
+        1680,
+        288,
+        96,
+        384
+      ],
+      "footprint": [
+        1680,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        1698,
+        672
+      ],
+      "overhang": [
+        1680,
+        288,
+        96,
+        288
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-smith-c3-w2.png",
+          "x": 0,
+          "y": 336,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c0.png",
+          "x": 48,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 196,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 236,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 196,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 16,
+          "y": 236,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 196,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 192,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 32,
+          "y": 236,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-deep-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof north hip/ridge",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-fill-hip-c3-w2.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "directional roof fill",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-deep-c3-w2.png",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "roof south hip/eave",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 193,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-east-rear-0",
+      "painted": [
+        1296,
+        288,
+        48,
+        144
+      ],
+      "footprint": [
+        1296,
+        336,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1296,
+        288,
+        48,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w1",
+          "x": 0,
+          "y": 96,
+          "layer": "wall"
+        },
+        {
+          "file": "roof-back-w1",
+          "x": 0,
+          "y": 0,
+          "layer": "roof"
+        }
+      ]
+    },
+    {
+      "id": "C3-east-rear-1",
+      "painted": [
+        1632,
+        336,
+        48,
+        144
+      ],
+      "footprint": [
+        1632,
+        384,
+        48,
+        96
+      ],
+      "entrance": null,
+      "overhang": [
+        1632,
+        336,
+        48,
+        48
+      ],
+      "parts": [
+        {
+          "file": "back-plain-ground-w1",
+          "x": 0,
+          "y": 96,
+          "layer": "wall"
+        },
+        {
+          "file": "roof-back-dormer-c3-w1",
+          "x": 0,
+          "y": 0,
+          "layer": "roof"
+        }
+      ]
+    },
+    {
+      "id": "C3-gate-inn",
+      "painted": [
+        1296,
+        720,
+        96,
+        336
+      ],
+      "footprint": [
+        1296,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1368,
+        1056
+      ],
+      "overhang": [
+        1296,
+        720,
+        96,
+        240
+      ],
+      "parts": [
+        {
+          "file": "out/city17/inn-front-w2-c0.png",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-left-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w1-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-inn.png",
+          "x": 0,
+          "y": 232,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-inn-east-wing",
+      "painted": [
+        1392,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1392,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1464,
+        1056
+      ],
+      "overhang": [
+        1392,
+        768,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-door-v1-w2-c0.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-dormer-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w2-c0.png",
+          "x": 0,
+          "y": 241,
+          "crop": [
+            0,
+            0,
+            96,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w2-c0.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            0,
+            96,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-inn-stable",
+      "painted": [
+        1488,
+        720,
+        96,
+        144
+      ],
+      "footprint": [
+        1488,
+        768,
+        96,
+        96
+      ],
+      "entrance": [
+        1512,
+        864
+      ],
+      "overhang": [
+        1488,
+        720,
+        96,
+        48
+      ],
+      "parts": [
+        {
+          "file": "stable-c3",
+          "x": 0,
+          "y": 0,
+          "layer": "complete connected house"
+        }
+      ]
+    },
+    {
+      "id": "C3-east-return-0",
+      "painted": [
+        1584,
+        720,
+        96,
+        288
+      ],
+      "footprint": [
+        1584,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        1608,
+        1008
+      ],
+      "overhang": [
+        1584,
+        720,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-shop-v2-w2-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-right-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-tailor.png",
+          "x": 32,
+          "y": 184,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-east-return-1",
+      "painted": [
+        1680,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1680,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1704,
+        1056
+      ],
+      "overhang": [
+        1680,
+        768,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v1-w2-c0.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-right-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-gable-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-scribe.png",
+          "x": 32,
+          "y": 184,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-0",
+      "painted": [
+        144,
+        1056,
+        96,
+        240
+      ],
+      "footprint": [
+        144,
+        1200,
+        96,
+        96
+      ],
+      "entrance": [
+        220,
+        1296
+      ],
+      "overhang": [
+        144,
+        1056,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-potter-c3-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-1",
+      "painted": [
+        240,
+        1056,
+        96,
+        288
+      ],
+      "footprint": [
+        240,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        316,
+        1344
+      ],
+      "overhang": [
+        240,
+        1056,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-baker-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-gable-deep-r-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/side-storey-W.png",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            0,
+            0,
+            8,
+            48
+          ],
+          "layer": "exposed step return",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-2",
+      "painted": [
+        336,
+        1104,
+        96,
+        240
+      ],
+      "footprint": [
+        336,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        354,
+        1344
+      ],
+      "overhang": [
+        336,
+        1104,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-smith-c3-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-chimney-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-3",
+      "painted": [
+        480,
+        1104,
+        96,
+        240
+      ],
+      "footprint": [
+        480,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        528,
+        1344
+      ],
+      "overhang": [
+        480,
+        1104,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-apothecary-c3-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-4",
+      "painted": [
+        576,
+        1104,
+        96,
+        240
+      ],
+      "footprint": [
+        576,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        596,
+        1344
+      ],
+      "overhang": [
+        576,
+        1104,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-cloth-c3-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-dormer-c3-w2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-5",
+      "painted": [
+        672,
+        1056,
+        48,
+        288
+      ],
+      "footprint": [
+        672,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        696,
+        1344
+      ],
+      "overhang": [
+        672,
+        1056,
+        48,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v2-w1-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w1-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-jetty-w1-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            4,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w1-c0.png",
+          "x": 0,
+          "y": 241,
+          "crop": [
+            0,
+            0,
+            48,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w1-c0.png",
+          "x": 0,
+          "y": 193,
+          "crop": [
+            0,
+            0,
+            48,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-jetty-w1-c0.png",
+          "x": 4,
+          "y": 145,
+          "crop": [
+            4,
+            0,
+            48,
+            6
+          ],
+          "layer": "jetty shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-6",
+      "painted": [
+        768,
+        1056,
+        96,
+        288
+      ],
+      "footprint": [
+        768,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        844,
+        1344
+      ],
+      "overhang": [
+        768,
+        1056,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-baker-c3-w2.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-7",
+      "painted": [
+        864,
+        1056,
+        48,
+        288
+      ],
+      "footprint": [
+        864,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        888,
+        1344
+      ],
+      "overhang": [
+        864,
+        1056,
+        48,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v1-w1-c1.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w1-c1.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w1-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 100,
+          "crop": [
+            0,
+            4,
+            4,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 0,
+          "y": 140,
+          "crop": [
+            0,
+            44,
+            4,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-gable-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-8",
+      "painted": [
+        960,
+        1056,
+        96,
+        288
+      ],
+      "footprint": [
+        960,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        984,
+        1344
+      ],
+      "overhang": [
+        960,
+        1056,
+        96,
+        192
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v2-w2-c0.png",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-sign-bay-right-w2.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w1-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 48,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 64,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 148,
+          "crop": [
+            0,
+            4,
+            16,
+            44
+          ],
+          "layer": "firewall body",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "layer": "firewall coping",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/firewall-w0.png",
+          "x": 80,
+          "y": 188,
+          "crop": [
+            0,
+            44,
+            16,
+            48
+          ],
+          "layer": "firewall flashing",
+          "relight": "east"
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/sign-butcher.png",
+          "x": 32,
+          "y": 184,
+          "crop": null,
+          "layer": "overlay",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-narrow-0",
+      "painted": [
+        1056,
+        1104,
+        48,
+        240
+      ],
+      "footprint": [
+        1056,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1080,
+        1344
+      ],
+      "overhang": [
+        1056,
+        1104,
+        48,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-arch-v1-w1-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-south-narrow-1",
+      "painted": [
+        1104,
+        1152,
+        48,
+        192
+      ],
+      "footprint": [
+        1104,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1128,
+        1344
+      ],
+      "overhang": [
+        1104,
+        1152,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v2-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w1-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w1-c0.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-wall-poor-0",
+      "painted": [
+        1392,
+        1152,
+        96,
+        192
+      ],
+      "footprint": [
+        1392,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        1464,
+        1344
+      ],
+      "overhang": [
+        1392,
+        1152,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-shop-w2-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-wall-poor-1",
+      "painted": [
+        1488,
+        1104,
+        96,
+        240
+      ],
+      "footprint": [
+        1488,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        1512,
+        1344
+      ],
+      "overhang": [
+        1488,
+        1104,
+        96,
+        144
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-arch-v1-w2-c0.png",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-timber-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-hip-w2-c2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-wall-poor-2",
+      "painted": [
+        1584,
+        1152,
+        48,
+        192
+      ],
+      "footprint": [
+        1584,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1608,
+        1344
+      ],
+      "overhang": [
+        1584,
+        1152,
+        48,
+        96
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-work-v2-w1-c1.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-plaster-w1-c1.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w1-c2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w1-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    },
+    {
+      "id": "C3-wall-poor-3",
+      "painted": [
+        1680,
+        1152,
+        96,
+        192
+      ],
+      "footprint": [
+        1680,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        1752,
+        1344
+      ],
+      "overhang": [
+        1680,
+        1152,
+        96,
+        96
+      ],
+      "parts": [
+        {
+          "file": "out/city17/ground-shop-w2-c0.png",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/storey-stone-w2-c0.png",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "facade",
+          "relight": null
+        },
+        {
+          "file": "out/city17/roof-ridge-w2-c2.png",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof",
+          "relight": null
+        },
+        {
+          "file": "out/city17/shadow-eave-w2-c0.png",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade",
+          "relight": null
+        }
+      ]
+    }
+  ],
+  "shadows": [
+    {
+      "id": "C3-west-wedge-0",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        144,
+        571,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-west-wedge-0",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        240,
+        432,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-west-wedge-1",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        240,
+        619,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-west-wedge-1",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        336,
+        432,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-west-wedge-2",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        336,
+        667,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-west-wedge-2",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        432,
+        528,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-west-rear",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        336,
+        427,
+        108,
+        6
+      ]
+    },
+    {
+      "id": "C3-west-rear",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        432,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C3-north-middle-0",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        480,
+        571,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-north-middle-0",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        576,
+        432,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-north-middle-1",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        576,
+        571,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-north-middle-1",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        672,
+        384,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "square-baker",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        720,
+        667,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "square-baker",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        816,
+        480,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        816,
+        667,
+        60,
+        18
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        864,
+        528,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "square-smith",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1056,
+        667,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "square-smith",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1104,
+        576,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1104,
+        763,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1200,
+        624,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "side": "south drawn eave/support",
+      "reach": 30,
+      "receiver": [
+        1200,
+        1051,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "square-east-return",
+      "side": "east",
+      "reach": 30,
+      "receiver": [
+        1296,
+        816,
+        30,
+        240
+      ]
+    },
+    {
+      "id": "west-smith",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        144,
+        1003,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "west-smith",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        240,
+        912,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        336,
+        1003,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        432,
+        864,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-civic-rear-0",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        816,
+        475,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C3-civic-rear-0",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        864,
+        384,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-north-east-0",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1200,
+        619,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-north-east-0",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1296,
+        432,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-north-east-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1296,
+        619,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C3-north-east-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1344,
+        528,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-north-east-2",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1392,
+        571,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-north-east-2",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1488,
+        432,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-north-east-3",
+      "side": "south drawn eave/support",
+      "reach": 30,
+      "receiver": [
+        1488,
+        619,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-north-east-3",
+      "side": "east",
+      "reach": 30,
+      "receiver": [
+        1584,
+        384,
+        30,
+        240
+      ]
+    },
+    {
+      "id": "C3-north-east-4",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1632,
+        667,
+        60,
+        18
+      ]
+    },
+    {
+      "id": "C3-north-east-4",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1680,
+        528,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-north-east-5",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1680,
+        667,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-north-east-5",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1776,
+        480,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-east-rear-0",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        1296,
+        427,
+        60,
+        6
+      ]
+    },
+    {
+      "id": "C3-east-rear-0",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        1344,
+        384,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C3-east-rear-1",
+      "side": "south drawn eave/support",
+      "reach": 6,
+      "receiver": [
+        1632,
+        475,
+        60,
+        6
+      ]
+    },
+    {
+      "id": "C3-east-rear-1",
+      "side": "east",
+      "reach": 6,
+      "receiver": [
+        1680,
+        432,
+        6,
+        48
+      ]
+    },
+    {
+      "id": "C3-gate-inn",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1296,
+        1051,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-gate-inn",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1392,
+        864,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-inn-east-wing",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1392,
+        1051,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-inn-east-wing",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1488,
+        912,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-inn-stable",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1488,
+        859,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C3-inn-stable",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1584,
+        768,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-east-return-0",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        1584,
+        1003,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-east-return-0",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1680,
+        864,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-east-return-1",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        1680,
+        1051,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "C3-east-return-1",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        1776,
+        864,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-south-0",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        144,
+        1291,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C3-south-0",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        240,
+        1200,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-south-1",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        240,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-south-1",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        336,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-south-2",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        336,
+        1339,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C3-south-2",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        432,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-south-3",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        480,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-south-3",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        576,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-south-4",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        576,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-south-4",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        672,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-south-5",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        672,
+        1339,
+        60,
+        24
+      ]
+    },
+    {
+      "id": "C3-south-5",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        720,
+        1152,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-south-6",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        768,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-south-6",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        864,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-south-7",
+      "side": "south drawn eave/support",
+      "reach": 24,
+      "receiver": [
+        864,
+        1339,
+        60,
+        24
+      ]
+    },
+    {
+      "id": "C3-south-7",
+      "side": "east",
+      "reach": 24,
+      "receiver": [
+        912,
+        1152,
+        24,
+        192
+      ]
+    },
+    {
+      "id": "C3-south-8",
+      "side": "south drawn eave/support",
+      "reach": 18,
+      "receiver": [
+        960,
+        1339,
+        108,
+        18
+      ]
+    },
+    {
+      "id": "C3-south-8",
+      "side": "east",
+      "reach": 18,
+      "receiver": [
+        1056,
+        1200,
+        18,
+        144
+      ]
+    },
+    {
+      "id": "C3-south-narrow-0",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1056,
+        1339,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C3-south-narrow-0",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1104,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-south-narrow-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1104,
+        1339,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C3-south-narrow-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1152,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-wall-poor-0",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1392,
+        1339,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C3-wall-poor-0",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1488,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-wall-poor-1",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1488,
+        1339,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C3-wall-poor-1",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1584,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-wall-poor-2",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1584,
+        1339,
+        60,
+        12
+      ]
+    },
+    {
+      "id": "C3-wall-poor-2",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1632,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "C3-wall-poor-3",
+      "side": "south drawn eave/support",
+      "reach": 12,
+      "receiver": [
+        1680,
+        1339,
+        108,
+        12
+      ]
+    },
+    {
+      "id": "C3-wall-poor-3",
+      "side": "east",
+      "reach": 12,
+      "receiver": [
+        1776,
+        1248,
+        12,
+        96
+      ]
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        480,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        528,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        576,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        624,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cathedral",
+      "receiver": [
+        672,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "guildhall",
+      "receiver": [
+        868,
+        644,
+        192,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        725,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        755,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        786,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        817,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        848,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "market-hall",
+      "receiver": [
+        879,
+        836,
+        32,
+        48
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 96
+    },
+    {
+      "id": "fountain",
+      "receiver": [
+        768,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "fountain",
+      "receiver": [
+        816,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "market-cross",
+      "receiver": [
+        1056,
+        1026,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "bench-pocket",
+      "receiver": [
+        632,
+        754,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "bench-pocket",
+      "receiver": [
+        654,
+        754,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cart",
+      "receiver": [
+        872,
+        906,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "cart",
+      "receiver": [
+        894,
+        906,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "crate",
+      "receiver": [
+        924,
+        904,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "crate",
+      "receiver": [
+        924,
+        904,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "barrel",
+      "receiver": [
+        898,
+        881,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "barrel",
+      "receiver": [
+        898,
+        881,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-inn-court-barrel",
+      "receiver": [
+        1556,
+        910,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-inn-court-barrel",
+      "receiver": [
+        1556,
+        910,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-inn-court-cart",
+      "receiver": [
+        1544,
+        1006,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-inn-court-cart",
+      "receiver": [
+        1566,
+        1006,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-inn-court-crate",
+      "receiver": [
+        1556,
+        1034,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-inn-court-crate",
+      "receiver": [
+        1556,
+        1034,
+        18,
+        22
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        0,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        48,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        96,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        144,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        192,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        240,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        288,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        336,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        384,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        432,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        480,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        528,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        576,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        624,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        672,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        720,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        768,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        816,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        864,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        912,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        960,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1008,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1056,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1104,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1152,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1200,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1248,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1296,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1344,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1392,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1440,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1488,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1536,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1584,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1632,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1680,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1728,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-r",
+      "receiver": [
+        1776,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1824,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-walk-alternate-r",
+      "receiver": [
+        1872,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        378,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        522,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        810,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        954,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        1098,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        1242,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        0,
+        1386,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        378,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        522,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        810,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        954,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        1098,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        1242,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-side",
+      "receiver": [
+        1872,
+        1386,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-0",
+      "receiver": [
+        0,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-0",
+      "receiver": [
+        48,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-336",
+      "receiver": [
+        336,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-336",
+      "receiver": [
+        384,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-768",
+      "receiver": [
+        768,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-768",
+      "receiver": [
+        816,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-1056",
+      "receiver": [
+        1056,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-1056",
+      "receiver": [
+        1104,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-1488",
+      "receiver": [
+        1488,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-1488",
+      "receiver": [
+        1536,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-1824",
+      "receiver": [
+        1824,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-north-tower-1824",
+      "receiver": [
+        1872,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-corner-bastion-wing",
+      "receiver": [
+        48,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "C3-corner-bastion-wing",
+      "receiver": [
+        96,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        0,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        48,
+        666,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        0,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        48,
+        1050,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        0,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        48,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        1824,
+        570,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        1872,
+        570,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        1824,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        1872,
+        1002,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        1824,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "wall-tower-r",
+      "receiver": [
+        1872,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        960,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        1008,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        1056,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "north-wall-stair",
+      "receiver": [
+        1104,
+        234,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gatehouse",
+      "receiver": [
+        1176,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gatehouse",
+      "receiver": [
+        1224,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    },
+    {
+      "id": "gatehouse",
+      "receiver": [
+        1272,
+        1434,
+        48,
+        24
+      ],
+      "drawing": "shadow-arcade-r",
+      "opacity": 80
+    }
+  ]
+}

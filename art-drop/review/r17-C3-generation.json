@@ -1,0 +1,206 @@
+[
+  {
+    "id": "cobble-a",
+    "prompt": "Use case: stylized-concept. Draw ONE seamless medieval street cobblestone square texture, shown exactly top down with square straight edges and no border, on a solid pure magenta #ff00ff backdrop with a slim magenta margin. It will be reduced to 96x96 native pixels, so use broad calm pixel clusters, irregular hand laid 6\u201312 native pixel stones of varied rectangular sizes, staggered joints, compact earth in joints, a few worn brown dirt pockets. Quiet muted warm grey-brown sandstone, only 6 flat value steps, evenly lit top left, tiny dark lower-right edges. Continuous uniform value over the whole tile, no centre spotlight, no vignette. Exact square grid. No grass, no objects, no outline framing the tile, no labels, no gradients, no isolated dots, no noise. A plausible old town road with random stone shapes and arrangements rather than a regular brick grid; detail stays calm at native size. Fill almost all the image with this single flat square texture. Generate at large size for mode reduction.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-7cfc5ec3-50de-4547-88e0-9b1e3b2be596.png",
+    "source": "r17-C3-source-cobble-a.png",
+    "size": [
+      96,
+      96
+    ],
+    "selected": false,
+    "output": null
+  },
+  {
+    "id": "cobble-b",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Draw ONE square medieval old-town cobblestone paving texture on solid magenta #FF00FF, slim margin. Flat top-down, straight square edges, no framing border. Designed to reduce to 96x96 native pixels. About 13 irregular staggered courses, stones mostly 6\u201312 pixels across, random length rectangular angular stones rather than regular bricks, embedded in dusty compact brown earth. Muted grey-brown with very low contrast, six flat shades; small shallow wet patches only two or three, no highlights larger than stones. Same brightness edge to edge. Top-left light, subtle lower-right edges. Strict chunky pixel clusters. No rounded tile corners, noise, specks, gradient, objects, grass, labels. Large clean pixel-art master.",
+    "source": "r17-C3-source-cobble-b.png",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-6aa571b0-0db4-4aec-a678-070acd3470c5.png",
+    "selected": true,
+    "output": "cobble-c3"
+  },
+  {
+    "id": "hip-a",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Draw ONE tall deep hipped medieval red-tile roof cap isolated on pure magenta #FF00FF. No walls or whole building. It will reduce to exactly 96 pixels wide by 192 high for a 48px-grid 3/4 top-down RPG city. Straight square footprint, long ridge running north-south, two broad lit-left/shaded-right tile planes, triangular HIP slopes at both the northern and southern ends, thick one-pixel final dark eave silhouette; no flat slab ends. Tiles in broad quiet 6\u20139px native courses, muted terracotta six-step ramp, top-left light, dark brown outline. Ridge is substantial and capped, one restrained weathered repair near the lower left. No chimney, windows, sky, ground, shadow mat, labels, specks, rounded corners, noise. Long slender roof volume with exposed roof planes, not a front elevation. Fill image with this single 1:2 aspect roof, solid magenta around.",
+    "source": "r17-C3-source-hip-a.png",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-1d8540cd-046b-40fb-9804-e22094ba2459.png",
+    "selected": false,
+    "output": null
+  },
+  {
+    "id": "shop-baker",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw ONE ground-floor medieval bakery shopfront modular game sprite on pure solid magenta #FF00FF. Exact wide 2:1 aspect rectangular full wall, for reduction to 96x48 native pixels. High three-quarter overhead front view matching classic pixel art timber-and-plaster townhouses: warm cream plaster, thick dark brown vertical timber posts, visible stone plinth top, recessed 22x30px usable door on RIGHT with lit step and small lantern. LEFT has wide ochre red striped canvas awning over two simple chunky bread trays with round loaves. Straight top timber course and straight bottom plinth meet square grid. No roof, no upper storey, no side background or ground outside footprint. Calm large masses, no small noise, one-native-pixel outline, top-left light. Door fully visible and accessible. Low shop window, broad supporting posts aligned to 48px attachment bays, natural depth in awning and sill. No text or labels, no sign board covering door.",
+    "source": "r17-C3-source-shop-baker.png",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-6ca42098-9d6a-42cb-a8c2-5e0e08da02ee.png",
+    "selected": true,
+    "output": "ground-baker-c3-w2"
+  },
+  {
+    "id": "hip-b",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Draw a single deep hipped tile roof asset, 3/4 overhead view like a classic hand-pixelled fantasy RPG town house. On solid magenta #FF00FF. Width-to-depth proportion exactly 1:2; final 96x192 native px. NO facade or walls. A long north-south ridge, clear hips clipping both ends of the ridge into angular trapezoidal roof planes, thick eaves meeting horizontal bottom edge. Muted warm terracotta, left lit top-left, right shaded dark red-brown, quiet broad tile clusters and 1px final outline. Add one tiny connected moss patch at a lower eave and one restrained repaired tile patch. No objects protruding, no noise, isolated flecks, soft paint, gradients, ground, borders, words. Entire visible roof fits into its tall rectangular canvas with square grid alignment. Keep tile rows consistent in size across whole cap.",
+    "source": "r17-C3-source-hip-b.png",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-1fcb4a69-5cd5-43f1-a37b-f82843e8b70f.png",
+    "selected": true,
+    "output": "roof-hip-deep-c3-w2"
+  },
+  {
+    "id": "shop-smith",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw ONE isolated medieval ground-floor shopfront on pure magenta #FF00FF. Wide rectangular 2:1 sprite, final96x48 native px. Classic 3/4 overhead RPG timber plaster town-house view; straight square top beam and stone plinth with top visible, warm cream plaster, substantial brown posts, recessed openings, one native pixel dark outline, top-left light. No roof, upper floors, text, ground outside, noise or isolated specks. Large calm painted clusters. LEFT a fully visible usable dark 22x30px door with lit threshold and lantern. RIGHT a broad open forge bay: small orange hearth inside deep stone recess, chunky black anvil silhouetted on the sill. A single slate-blue short awning over forge only. Four solid supporting posts, shop goods arranged in 2 clear groups. Dark architectural recesses, no smoke. Fill almost all image with the full wall rectangle.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-d7dd51f7-3a17-4427-847d-c4bedf612ba4.png",
+    "source": "r17-C3-source-shop-smith.png",
+    "selected": true,
+    "output": "ground-smith-c3-w2"
+  },
+  {
+    "id": "shop-apothecary",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw ONE isolated medieval ground-floor shopfront on pure magenta #FF00FF. Wide rectangular 2:1 sprite, final96x48 native px. Classic 3/4 overhead RPG timber plaster town-house view; straight square top beam and stone plinth with top visible, warm cream plaster, substantial brown posts, recessed openings, one native pixel dark outline, top-left light. No roof, upper floors, text, ground outside, noise or isolated specks. Large calm painted clusters. CENTER a fully visible dark usable door with lit projecting step. LEFT a recessed broad display window with three large green medicine bottles on a shelf, one amber jar; RIGHT a shuttered recessed window. Short muted green canvas hood over left window only. Lantern right of central doorway. Distinct door centered between two bays, coherent two-cell wall. Whole composition fits rectangle.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-166b93da-0323-4703-b3dd-6ac62b973383.png",
+    "source": "r17-C3-source-shop-apothecary.png",
+    "selected": true,
+    "output": "ground-apothecary-c3-w2"
+  },
+  {
+    "id": "shop-cloth",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw ONE isolated medieval ground-floor shopfront on pure magenta #FF00FF. Wide rectangular 2:1 sprite, final96x48 native px. Classic 3/4 overhead RPG timber plaster town-house view; straight square top beam and stone plinth with top visible, warm cream plaster, substantial brown posts, recessed openings, one native pixel dark outline, top-left light. No roof, upper floors, text, ground outside, noise or isolated specks. Large calm painted clusters. LEFT usable tall dark 22x30px doorway with lit step and small lantern, completely exposed. RIGHT wide recessed cloth merchant display with three broad folded rolls (muted slate blue, burgundy, ochre), thick sill. Short purple awning shading only the display. Very clear door-window arrangement and heavy rectangular posts. All architecture in the rectangular module.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-c447aea2-809c-4006-a267-51e762382155.png",
+    "source": "r17-C3-source-shop-cloth.png",
+    "selected": true,
+    "output": "ground-cloth-c3-w2"
+  },
+  {
+    "id": "shop-potter",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw ONE isolated medieval ground-floor shopfront on pure magenta #FF00FF. Wide rectangular 2:1 sprite, final96x48 native px. Classic 3/4 overhead RPG timber plaster town-house view; straight square top beam and stone plinth with top visible, warm cream plaster, substantial brown posts, recessed openings, one native pixel dark outline, top-left light. No roof, upper floors, text, ground outside, noise or isolated specks. Large calm painted clusters. RIGHT tall usable dark 22x30px doorway with projecting lit step and lantern; LEFT open pottery-workshop bay with three large terracotta jugs in clear silhouettes on thick stone counter. Wooden lifted shutter forms a simple flat angular awning, no striped canvas. Stone ground floor, chunky timber lintel, restrained cream plaster upper band. No tiny goods. Whole rectangular facade fills image.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-134b10cb-04d5-4fc7-90aa-27bf5aee3ac9.png",
+    "source": "r17-C3-source-shop-potter.png",
+    "selected": true,
+    "output": "ground-potter-c3-w2"
+  },
+  {
+    "id": "planter-tree",
+    "size": [
+      48,
+      72
+    ],
+    "prompt": "Single small medieval courtyard tree growing in a square wooden planter, isolated on pure magenta #FF00FF. High3/4 overhead pixel-art RPG prop final48x72 native pixels, matching a48px town grid. A modest pruned pear tree with three angular connected masses of muted olive-green foliage, visible crooked dark trunk, square heavy wooden tub with iron bands, visible soil top, lit upper-left edges. Few broad clustered leaf planes, one-native-pixel dark outline, no dots or confetti, no rounded blob canopy, no soft gradients, haze, grass patch, labels or ground shadow. Tree and tub one connected silhouette, calm materials. Fill frame leaving magenta margin.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-e7ea723f-bc82-4fff-87f2-c714e1a3d489.png",
+    "source": "r17-C3-source-planter-tree.png",
+    "selected": true,
+    "output": "planter-tree-c3"
+  },
+  {
+    "id": "lamp",
+    "size": [
+      24,
+      64
+    ],
+    "prompt": "Single medieval street lamp pixel-art prop isolated on solid magenta #FF00FF, high3/4 RPG overhead view, final24x64 native pixels. Slender dark forged iron post on a small square stone foot, projecting right arm holding a large square amber glass lantern under a pitched metal hood. Medieval practical shape, straight square edges, single native pixel dark outline, top-left lit edges, strong readable silhouette. No ground, soft light glow, cast-shadow mat, isolated specks, text or extra objects. Full single lamp centered, chunky pixel clusters, muted grey-brown metal and warm small panes.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-f361247e-e3e3-431c-87e2-a55bdfb9591b.png",
+    "source": "r17-C3-source-lamp.png",
+    "selected": true,
+    "output": "lamp-c3"
+  },
+  {
+    "id": "ditch",
+    "size": [
+      192,
+      96
+    ],
+    "prompt": "Draw ONE horizontal repeatable medieval city defensive ditch segment, top-down overhead pixel art, isolated on pure solid magenta#FF00FF. 2:1 aspect, final192x96 native px. Continuous horizontal low grey-brown cut earthen banks at top and bottom, central shallow dark desaturated blue-green water with a few broad angular ripples; small connected reeds clinging to banks, no scattered dots. Fairly straight square-grid channel, no rounded pool ends, extends completely to left and right edges so it can repeat sideways. Flat colours, muted olive and grey-brown banks, top-left light, strict chunky pixel clusters, quiet native6\u201312px stones in the bank. No architecture, bridge, labels, gradients, haze or noise. Narrow magenta margin outside rectangle.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-e70c6572-8c53-4403-9719-c7d558bc0453.png",
+    "source": "r17-C3-source-ditch.png",
+    "selected": true,
+    "output": "ditch-c3"
+  },
+  {
+    "id": "stable",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Draw ONE medieval inn stable whole sprite, isolated on solid pure magenta#FF00FF. Exact 2:3 aspect for final96x144 native px. Classic top-down three-quarter pixel art town view: roof takes upper half, deep muted terracotta hipped roof seen from above with broad tile rows; lower half stout dark timber posts and warm cream infill, wide open double stall bay with a recognisable small brown horse head at half-door, hay manger beside it and fully visible left human side door with stone step. Square grid48px. Top-left light, dark one native pixel silhouette, thick supporting beams, window recesses and eave shadow. No extra outbuildings, ground outside, text, soft paint, noise, isolated specks. Not isometric diamonds: front wall horizontal, north-south roof depth. Architecture fills canvas, no courtyard scene.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-9e9e59c1-8379-4757-94dc-2a60ed681f4b.png",
+    "source": "r17-C3-source-stable.png",
+    "selected": true,
+    "output": "stable-c3"
+  },
+  {
+    "id": "puddle",
+    "size": [
+      48,
+      24
+    ],
+    "prompt": "Draw ONE small street puddle with adjoining damp dirt as a pixel art terrain overlay on pure magenta #FF00FF. Final48x24 native pixels. Top down, angular irregular shallow puddle fitted between three worn square cobblestones, dark muted grey blue water, one broad soft-coloured but hard-edged reflection cluster, compact brown muddy edge; not an oval, not a round pool. Pixel clusters at native6px stone scale, few flat muted shades, top-left lit stone tops. No haze, fog, gradients, isolated dots, sparkles, noise, grass, text or objects. Hard stair-step outline into magenta, sparse use, a single connected paint patch.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-e464a1cd-32c8-44a2-8086-f8a779fc4b19.png",
+    "source": "r17-C3-source-puddle.png",
+    "selected": true,
+    "output": "puddle-c3"
+  },
+  {
+    "id": "street-edge",
+    "size": [
+      96,
+      24
+    ],
+    "prompt": "ONE horizontal medieval street verge strip isolated on pure magenta #FF00FF, pixel art high top-down game texture final96x24 pixels. Very wide4:1 strip. Upper long edge irregular angular dusty earth with a few connected short olive grass clumps feathering into magenta gaps, middle a continuous narrow warm-grey square stone kerb with darker brown gutter at its lower side, lower edge irregular worn cobbles blending into magenta via large interlocking angular stones. Same restrained muted grey-brown palette as an old paved town street. No rounded tile corners, no noise or scattered specks, no blur. Top-left subtle light, quiet6\u201310px native stone blocks. Both ends are square-cut and repeatable horizontally. Ground overlay only, no objects, labels or background scenery.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-439d7923-adc0-4127-a0eb-05ff02b50398.png",
+    "source": "r17-C3-source-street-edge.png",
+    "selected": true,
+    "output": "street-edge-c3"
+  },
+  {
+    "id": "gate-paving-b",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "One medieval main gate lane pavement asset isolated on solid pure magenta#FF00FF. A straight north-south path final96x96 native pixels. Hand-laid pale warm grey square/angular stones of random6\u201312px sizes embedded in compact dirt, two modest central wagon wheel grooves, narrow dark side gutters. TILEABLE top/bottom: horizontal end cuts straight; LEFT and RIGHT sides are irregular interlocking stair-step stones fading by alpha gaps to magenta within6 native pixels, so adjacent street texture can show through. No rounded corners. Low contrast6-tone pixel art, high overhead 3/4 ground, top-left light. No objects, grass, border frame, blur, haze, noise, isolated marks, text. The stone road fills the square canvas.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-06c6579a-feb4-4580-bfba-66487b7b8109.png",
+    "source": "r17-C3-source-gate-paving-b.png",
+    "selected": true,
+    "output": "gate-paving-c3"
+  },
+  {
+    "id": "gate-paving-a",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Draw ONE square medieval gate-road paving overlay on solid magenta #FF00FF for final96x96 native pixels. Top-down quiet pixel art. A vertical carriage route made of irregular 6\u201312 pixel warm grey stones, with two parallel subtle dusty wheel tracks near the middle and a darker gutter on each side. Full square coverage at top and bottom for vertical tiling; left and right edges transition into magenta through jagged interlocking whole cobblestone ends over about6 native pixels, not a straight rectangular boundary. No framing outline. Slightly lighter stones than normal street, muted grey brown, broad calm clusters, square grid, top-left light. No rounded borders, gradients, speckles, fog, props, words. Whole asset fills image except narrow magenta outside the stone edge.",
+    "path": "/home/kolache/.codex/generated_images/01a1ea8f-42c7-7943-a7c0-86763d03cb14/exec-e09861a3-a15b-40e2-89ca-ead3ffe7650f.png",
+    "source": "r17-C3-source-gate-paving-a.png",
+    "selected": false,
+    "output": null
+  }
+]

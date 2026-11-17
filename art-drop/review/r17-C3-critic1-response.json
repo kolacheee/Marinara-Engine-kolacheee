@@ -1,0 +1,96 @@
+{
+  "part": "C3",
+  "responds_to": "critic-r17C3-1.json",
+  "review_type": "Saved-art repair and reproducible checks; independent critic retained unchanged.",
+  "failed_roofs": {
+    "files": [
+      "roof-hip-deep-c3-w2",
+      "roof-hip-chimney-c3-w2",
+      "roof-hip-dormer-c3-w2"
+    ],
+    "resolution": "Fresh image-tool hip drawing selected from two alternatives; native96x144 caps plus separate96x48 fill. Dormer at12,66 within left plane3,32..44,104. Composer validates precomposited accents and rejects four-cell caps in final C3 fronts.",
+    "evidence": [
+      "r17-C3-critic1-cap-fill-and-accents-4x.png",
+      "r17-C3-critic1-directional-fill-seams-4x.png"
+    ]
+  },
+  "compose_problems": [
+    {
+      "problem": "Western main-street clearance",
+      "resolution": "Court roof moved from y672 to y768; western street-facing house reduced from3 to2 storeys. Main-road reaches overlap as full96px corridors. All twelve main reaches are checked, including both bent IDs. The former pinch at x240..335/y672..767 is fully visible and clear.",
+      "evidence": [
+        "r17-C3-critic1-west-width-3x.png",
+        "r17-C3-west-main-reveal-3x.png",
+        "r17-C3-verification.json"
+      ]
+    },
+    {
+      "problem": "Staggered-height joins",
+      "resolution": "Neighbour discovery uses overlapping roof/property paint bounds for all seven touching staggered pairs. World-space eaves determine exposed masonry height. Original drawn coping/flashing and lit/shaded bare walls cover the interface; independently lit posts mark exposed lower steps. Same-screen eaves get step returns rather than a fictitious upper wall.",
+      "evidence": [
+        "r17-C3-critic1-staggered-northeast-3x.png",
+        "r17-C3-critic1-staggered-west-3x.png",
+        "r17-C3-critic1-verification.json"
+      ]
+    },
+    {
+      "problem": "Roof contract and baked dormer bypass",
+      "resolution": "All final C3 cap PNGs are96 or144px high. The NE depth4 property references a3-cell cap and a separate native fill. Both the old192px cap input and ridge-crossing baked dormer are rejection-tested.",
+      "evidence": [
+        "r17-C3-critic1-verification.json"
+      ]
+    },
+    {
+      "problem": "Gate paving connections",
+      "resolution": "Image-tool dogleg B supplies continuous native stone material through the independently drawn mouth and both elbows. Five connector exports share identical world-phase opaque pixels. No larger-field substitution or rotated lighting remains.",
+      "evidence": [
+        "r17-C3-critic1-connected-road-material-3x.png",
+        "r17-C3-critic1-gate-paving-3x.png"
+      ]
+    },
+    {
+      "problem": "Greyscale route hierarchy",
+      "resolution": "The painted gate route stays26.4\u201327.3 luminance levels above the surrounding field at the square, north arm, elbow and south arm. The native greyscale final shows the uninterrupted path and retained civic/gate hierarchy.",
+      "evidence": [
+        "r17-city-final-squint.png",
+        "r17-C3-critic1-verification.json"
+      ]
+    },
+    {
+      "problem": "Visible massing",
+      "resolution": "Shorter caps change north ridge heights independently; explicit walls/returns explain the stepped frontages. Service-side roof recesses are fenced and dressed, and the deep NE hip uses a directional fill rather than a four-cell cap.",
+      "evidence": [
+        "r17-city-final-vs-r15-vs-today.png",
+        "r17-C3-critic1-staggered-west-3x.png",
+        "r17-C3-critic1-inn-roofs-3x.png"
+      ]
+    }
+  ],
+  "regenerated": [
+    "r17-city-final.png",
+    "r17-city-final-2x.png",
+    "r17-city-final-vs-r15-vs-today.png",
+    "r17-city-final-squint.png",
+    "r17-city-final-crop-square-3x.png",
+    "r17-city-final-crop-street-3x.png",
+    "r17-city-final-crop-gate-3x.png",
+    "r17-C3-*.png review sheets"
+  ],
+  "preservation": "All29 PNGs explicitly passed by critic-r17C3-1 are byte-identical;2404 existing production files protected. Prior successful layout features and both E repetition repairs retained.",
+  "storeys": {
+    "1": 3,
+    "2": 13,
+    "3": 15,
+    "4": 9,
+    "5": 2
+  },
+  "one_storey_percent": 7.142857142857143,
+  "validation": {
+    "scene_checks": 262,
+    "redraw_checks": 76,
+    "new_exact_mode_samples": 12533760,
+    "repeat_city_windows": 146,
+    "failures": 0
+  },
+  "limitations": "Saved-art tests and inspection; no engine playtest or new independent panel verdict."
+}

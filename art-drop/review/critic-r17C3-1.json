@@ -1,0 +1,250 @@
+{
+  "part": "C3",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "roof-hip-deep-c3-w2",
+    "roof-hip-chimney-c3-w2",
+    "roof-hip-dormer-c3-w2",
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x"
+  ],
+  "files": {
+    "cobble-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-deep-c3-w2": {
+      "status": "fail",
+      "problems": [
+        "The exported roof cap is 96x192: four 48px cells deep. BRIEF-17 B explicitly limits caps to two or three cells, with roof-fill for additional depth. This is a complete four-cell hip painting used directly as roof_file, not a compliant cap plus a separate directional fill. Matching the self-authored inventory does not satisfy that size rule."
+      ],
+      "fix": "Rework the hip into a 96x96 or 96x144 cap and compatible native directional fill/hip transition for deeper properties. Preserve the top-left planes, ridge, moss/repair clusters and dark outline through the join. Use image-tool drawing where the geometry must change, then register/mode-reduce as before; do not squeeze four cells of paint into three or construct replacement slopes in code. Rebuild its dependent variants and scenes."
+    },
+    "lamp-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "planter-tree-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "stable-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ditch-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-edge-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "puddle-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cloth-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-potter-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-paving-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-chimney-c3-w2": {
+      "status": "fail",
+      "problems": [
+        "The exported roof cap is 96x192: four 48px cells deep. BRIEF-17 B explicitly limits caps to two or three cells, with roof-fill for additional depth. This is a complete four-cell hip painting used directly as roof_file, not a compliant cap plus a separate directional fill. Matching the self-authored inventory does not satisfy that size rule."
+      ],
+      "fix": "Rework the hip into a 96x96 or 96x144 cap and compatible native directional fill/hip transition for deeper properties. Preserve the top-left planes, ridge, moss/repair clusters and dark outline through the join. Use image-tool drawing where the geometry must change, then register/mode-reduce as before; do not squeeze four cells of paint into three or construct replacement slopes in code. Rebuild its dependent variants and scenes."
+    },
+    "roof-hip-dormer-c3-w2": {
+      "status": "fail",
+      "problems": [
+        "The exported roof cap is 96x192: four 48px cells deep. BRIEF-17 B explicitly limits caps to two or three cells, with roof-fill for additional depth. This is a complete four-cell hip painting used directly as roof_file, not a compliant cap plus a separate directional fill. Matching the self-authored inventory does not satisfy that size rule.",
+        "The dormer-0-c0 overlay is pasted at native (36,92), across the hip's longitudinal ridge at about x=48. Its window/sill straddles the lit and shaded roof planes, with the ridge continuing directly above and below it; no drawn cheek/valley explains the penetration. It reads as a floating front window on the ridge at 1x. See critic-r17C3-1-ridge-dormer-8x.png. This appears on the west wedge at x336..432/y336..528 and the inn wing at x1392..1488/y720..912."
+      ],
+      "fix": "Rework the hip into a 96x96 or 96x144 cap and compatible native directional fill/hip transition for deeper properties. Preserve the top-left planes, ridge, moss/repair clusters and dark outline through the join. Use image-tool drawing where the geometry must change, then register/mode-reduce as before; do not squeeze four cells of paint into three or construct replacement slopes in code. Rebuild its dependent variants and scenes. Mount a compatible dormer wholly on one receiving slope, or redraw a convincing ridge-mounted structure with its own cheeks and flashing. Validate the actual composited overlay against the receiving plane; pre-baking it into roof_file currently bypasses the composer overlay check."
+    },
+    "roof-back-chimney-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-dormer-c3-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-short-chimney-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-dormer-c3-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-main-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-side-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lane-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "MAIN-STREET CLEARANCE / FIXES layout 1 and panel-2 item 8: the bent-west-market-road is assembled from offset 96px squares joined through 48px connectors. At scene x240..335, the shop ends at y624 and the rear-court roof begins at y672, leaving only a 48px visible throat before kerbs/shadows, rather than the required 96px main-street corridor. The road list explicitly marks these bent main segments clear=False, and the supplied route audit never checks their id. See critic-r17C3-1-evidence-west-width.png. If a roof is intended to overhang a wider ground route, this location has neither the required footprint/clearance proof nor a reveal state.",
+        "UNEQUAL-HEIGHT JOINS / FIXES layout 3 and panel-2 items 3,7: neighbours() skips every neighbour whose base differs. Seven touching front-facing pairs now have staggered bases; the new bends consequently bypass party-wall treatment. A clear example is C3-north-east-2 (x1392, base576, three storeys) beside C3-north-east-3 (x1488, base624, five storeys): both receive empty firewalls, and at x1488/y384..431 a windowed facade meets the lower hip without the prescribed bare side-wall/coping/flashing transition. See critic-r17C3-1-evidence-missing-firewall.png. The west wedge and the x1584/1680 eastern return have the same code-path omission. The old same-base height-test passing does not cover these new joins.",
+        "ROOF CONTRACT / BRIEF-17 B: c3_city_layout() places roof-hip-deep-c3-w2 and its chimney/dormer derivatives as four-cell caps. build() accepts them solely because their height is a whole multiple of 48, without enforcing the brief's two/three-cell cap limit. The dormer variant also bypasses roof receiving-plane checks by being precomposited, preserving the ridge-crossing error in the west block and inn wing.",
+        "PAVING CONNECTIONS / FIXES drawing 1: the gate route changes drawing at its elbow. c3_ground() uses gate-paving-c3 on vertical reaches, but replaces it with cobble-c3 plus 7 RGB levels on horizontal reaches and rotates only the alpha. At y1056 and y1152 around x1104..1296, the fine gate stones stop on straight rectangular ends and change into the larger field stones. In the square, x1104..1200/y768..1056 remains a pale, straight-sided strip. This is not the requested continuous painted blend through square, elbow and gate lane. See critic-r17C3-1-evidence-gate-elbow.png and the delivered square/gate crops.",
+        "NATIVE GREYSCALE NAVIGATION / BRIEF-17 critic and panel-2 item 14: the civic towers and gate remain recognisable, but the main route loses its hierarchy against the continuous same-value cobble field. The thin pale strip on the east of the square has a different texture; the horizontal gate-road reach largely disappears. A +7 value shift and isolated kerb lines do not give a continuous, immediately readable route from gate to square in r17-city-final-squint.png. Improve the connected route's painted material/value grouping and rejudge at literal 1x.",
+        "VISIBLE MASSING / FIXES layout 2 and panel-2 items 3,14: mixed floor counts are real, but much of the northern silhouette still aligns at y288, with taller facades compensated by shorter roof canvases. The x144..432 west block and x1392..1584 northeast pair remain broad rectangular roof/facade stacks; changing cap texture/direction alone has not supplied convincing side returns at the exposed step joins. Keep the new bends and height mix, but make ridge/eave height changes and the exposed side-wall transitions readable in the complete scene, not only in metadata or the separate seven-cell study."
+      ],
+      "fix": "Keep the actual C3 street-plan changes, inn court/stable, unequal tower spacing, ditch, five shopfronts and passing repetition repairs. Widen the western bend to a continuous 96px corridor and include every main-street id in clearance checks. Derive neighbour joins from overlapping property/roof geometry, including different base rows, and composite correctly lit drawn side walls, coping and flashing. Correct the three deep-cap exports and the dormer placement. Draw/register compatible gate-road elbow and square-transition paint so stone scale and phase continue through the bend without a rectangular texture substitution; make the route stand out at 1x in greyscale. Re-render all seven final deliverables and repeat the actual staggered-neighbour, route-width and two-identical-in-five checks."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "The 1920x1440 canvas is the correct 40x30 native grid, but the saved scene visibly contains the failed deep caps/ridge dormers, the 48px western main-street pinch, missing staggered-height party-wall joins and rectangular gate-paving transitions detailed under compose.py.",
+        "The square is populated and the inn/stable/wall changes are present. Those successes do not waive the unresolved BRIEF-17 and FIXES.md requirements."
+      ],
+      "fix": "Correct the named production pieces and compose.py issues, then render the complete native scene again; preserve the successful density, clear public approaches and market activity."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "This is an exact 3840x2880 nearest-neighbour 2x of the native scene. It faithfully enlarges the same failed roof joins, ridge dormers, street pinch and gate-paving discontinuities; scaling itself passes."
+      ],
+      "fix": "Regenerate from the corrected native final at exact nearest-neighbour 2x."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "All three panels are literal pixel-for-pixel 1x copies of their sources. The Round17 panel nevertheless contains the failed final scene, and its straight rectangular roof/facade masses and missing step returns remain conspicuous beside the references. The comparison cannot approve that unresolved assembly."
+      ],
+      "fix": "Replace only the Round17 panel after correcting the final scene; keep today's town and the Round15 mockup at literal 1x."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "Exact native greyscale conversion passes. Visual navigation does not: the gate-to-square route loses its material/value identity at the horizontal elbow and merges into the pervasive cobble field. The landmarks and gate themselves remain legible. See the compose.py navigation and paving findings."
+      ],
+      "fix": "Correct the connected main-road drawing/value grouping and elbow transition, then regenerate and judge the 1920x1440 greyscale at 1x."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop scaling passes. Along the square's east edge, scene x1104..1200/y768..1056, the gate paving is still a straight pale rectangular strip with a hard change at its southern end. The crop retains the unresolved route hierarchy and slab-like side/facade assembly; the six stalls, people and fountain are present and readable."
+      ],
+      "fix": "Fix the square-to-gate paving transition and connected building returns in compose.py, then regenerate this crop from the corrected final with nearest-neighbour 3x."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop scaling passes. The west wedge contains the ridge-straddling dormer, four-cell deep cap and untreated staggered joins. The rear-court roof beneath the middle shop leaves the main street only 48px of visible width at scene x240..335/y624..671. These are visible in this crop, not merely metadata discrepancies."
+      ],
+      "fix": "Repair the west bend's width and step joins and replace the failed cap/dormer arrangement; regenerate at exact 3x."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop scaling passes. The inn's east wing at x1392..1488/y720..912 uses the failed four-cell cap with a dormer crossing its ridge. The gate-road elbow also changes from fine gate paving to a rectangular patch of larger cobbles. The 192px inn frontage, stable and clear court path are otherwise visibly present."
+      ],
+      "fix": "Repair the inn roof assembly and gate-road elbow, retaining the stable court and its access, then regenerate at exact 3x."
+    },
+    "barrel": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "crate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "washing-line": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "bench-pocket": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "court-closure-r": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art critic for C3, round 1; this reviewer did not draw or modify the production art. Read BRIEF-17 in full, both panel briefs, FIXES.md, the NOTES drawing-method sections, the earlier E4 failure, current composer, C3 processing records and self-review evidence. Replaced the pre-existing self-review JSON with the required critic schema. Only this JSON and critic-r17C3-1-*.png review composites were authored; no out/city17 edits, branch changes, commits or pushes. Inspected all 23 C3 exports at literal 1x and nearest-neighbour 4x against fantasy-house-2, complete-house studies, required final images, the native final in four quadrants and the whole scene in twelve 4x tiles, with focused 1x/4x and 8x evidence. Inspected literal 3x3 repeats of cobble, main/side/lane, gate paving, ditch, street edge, puddle and retained mud edge at 1x/4x. Reviewed new and retained props on summer grass and paving, the court/side/rear and seven-cell studies, L/market/height regression evidence and normal/reveal actor proofs. No C3 seasonal partners are requested or present, so seasonal-ground and summer/season alpha comparisons are not applicable. Code confirmed the two deep-roof overlay variants preserve their donor alpha exactly, and nine retained civic recolours preserve their originals' alpha exactly. Replayed the supplied verifier read-only, suppressing its output-file write: all 223 supplied checks pass, including 8,798,208 exact RGBA mode samples, 43 standing/public approaches, unchanged protected production paint, hard alpha, zero hidden RGB, no detached one/two-pixel alpha islands and fixed shop course rows 0/47. All 23 hashes/dimensions match the inventory, but the three 192px cap heights violate the brief independently of that inventory. Confirmed exact final 2x, crop 3x, native grayscale and all three comparison panels by pixels. The sources and processing use the requested image-tool/magenta/registration/mode/palette/cleanup method; no procedural drawing violation was found. Storey histogram computed from the current 43 lots: 1=4, 2=12, 3=16, 4=9, 5=2; one-storey share 9.30%, passing the 25% ceiling. Views: 37 front, 4 rear, 1 side, 1 complete stable. The final resolved-piece audit passes 149 window/layer checks (300 including retained studies). Restoring either original E4 defect makes the audit fail; current north rear caps and both trade rows pass. Signs stay inside lots with visible doors. No street-front lawn was found in the final C3 district; its grass is confined to the court and churchyard. The inherited E regression scenes were used to assess the specific repetition repairs, not as evidence that their older village-like layouts satisfy the final district brief. FIXES coverage: the three stepped block forms, through alleys, real coordinate changes, one roof hue per property, actual 2-5 floor mix, gate-road inn with stable/court, uneven 7/9/6/9/7-cell north tower gaps, northwest paired bastion, north ditch, removal of the old long guildhall strip, five distinct new shopfronts and added/reused furniture are visibly present. Layout 1 remains incomplete on usable main-street width; layout 2/3 and drawing 3 remain incomplete on assembled roof/height transitions; drawing 1 remains incomplete at the gate-road joins. The northeast hip exists but its cap depth is noncompliant. Panel-2 coverage: square enclosure/population, access-type and return studies, court/stair/wood/well, grouped stalls, civic recolouring, public approaches, cast shadows, actor reveal proofs and deferred expansion are present. Items 3/7/8/14 are not fully satisfied by the final assemblies for the documented reasons. The five new individual shopfront drawings pass; the surrounding assembly still needs the documented geometry correction. BRIEF-17 takes precedence over panel reductions to sign size, optional jogs and removal of fixed course rows. The coordinator's 40x30 cells at 48px takes precedence over the earlier approximate 1200x900 canvas. Matching files, passing self-checks or reaching a review-round cap cannot waive visible failures. This is a saved-art review, not an engine playtest."
+}
