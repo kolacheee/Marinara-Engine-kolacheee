@@ -34,6 +34,7 @@ import {
 } from "./dungeon-map.js";
 import {
   SITE_LOCK_PROP,
+  SITE_STAIR_ROOMS,
   gameDungeonPlannedMap,
   sitePlanInputFor,
   siteTemplateForSet,
@@ -658,9 +659,29 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
     // A lone sentry, a pair or a squad of three, not always two (panel 2026-11-17).
     const holders = () =>
       fitted(setting, level_, group(site.holder, "standard", level_, 1 + Math.floor(random() * 3)), "normal");
+    // Guards by what the room is for (gamer panel 2026-11-17): the gate and the gatehouse always held, a
+    // barracks full, a stairwell mostly clear (a way up or down is not always a fight), a tower or the wall
+    // walk now and then.
+    const base = info.name.replace(/ \d+$/, "");
+    if (base === "Gate passage" || base === "Gatehouse")
+      return { area, key, role: "guard", level: level_, foes: holders() };
+    if (base === "Barracks" || base === "Guardroom" || base === "Guard room")
+      return {
+        area,
+        key,
+        role: "guard",
+        level: level_,
+        foes: fitted(setting, level_, group(site.holder, "standard", level_, 3 + Math.floor(random() * 2)), "normal"),
+      };
+    if (SITE_STAIR_ROOMS.has(base))
+      return random() < 0.15
+        ? { area, key, role: "guard", level: level_, foes: holders() }
+        : { area, key, role: "empty", level: level_, foes: [] };
     switch (info.use) {
       case "post":
-        return { area, key, role: "guard", level: level_, foes: holders() };
+        return random() < (base === "Corner tower" || base === "Wall walk" ? 0.5 : 1)
+          ? { area, key, role: "guard", level: level_, foes: holders() }
+          : { area, key, role: "empty", level: level_, foes: [] };
       // Guards keep the posts and some of the rooms they live in, not every room (panel 2026-11-16).
       case "holders":
         return random() < 0.4

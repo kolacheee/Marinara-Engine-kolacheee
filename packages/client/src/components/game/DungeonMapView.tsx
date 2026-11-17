@@ -262,8 +262,17 @@ export function DungeonMapView({
                 (each) => x >= each.x && x < each.x + each.w && y >= each.y && y < each.y + each.h,
               )!;
               const mid = { x: court.x + Math.floor(court.w / 2), y: court.y + Math.floor(court.h / 2) };
-              // A castle's ward is cobbled all over; a house's or a cloister's court is a garden crossed by paths.
-              paintBuildingCourt(ctx, x * T, y * T, building === "keep" || x === mid.x || y === mid.y, noise);
+              // A castle's ward is cobbled along its edges and paths with trodden grass between (gamer panel
+              // 2026-11-17: an all-stone ward read as a roofed hall); a house's or a cloister's court is a garden
+              // crossed by paths.
+              const edge =
+                x === court.x || y === court.y || x === court.x + court.w - 1 || y === court.y + court.h - 1;
+              const paved =
+                x === mid.x ||
+                y === mid.y ||
+                (building === "keep" &&
+                  (edge || cellNoise(Math.floor(x / 3), Math.floor(y / 3))(77) < 0.45));
+              paintBuildingCourt(ctx, x * T, y * T, paved, noise);
             } else
               // A house's cellars are flagged stone, not boards and carpet.
               paintBuildingFloor(

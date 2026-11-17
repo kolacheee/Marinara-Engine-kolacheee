@@ -794,7 +794,6 @@ const DORM: SiteRecipe = [
 const SITE_RECIPES: Record<string, SiteRecipe> = {
   "Entrance hall": [
     [STATUE, "corner", 2],
-    [T, "center", 1],
     [CHEST, "wall"],
   ],
   "Great hall": [
@@ -1074,12 +1073,13 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   ],
   "Inner ward": [
     [WELL, "center", 1],
-    [CART, "corner"],
+    [CART, "scatter", 2],
     [DUMMY, "scatter", 2],
-    [WOODPILE, "wall"],
-    [HAY, "corner"],
-    [BARREL, "corner"],
-    [CRATE, "corner"],
+    [WOODPILE, "wall", 2],
+    [HAY, "scatter", 2],
+    [BARREL, "corner", 2],
+    [CRATE, "scatter", 3],
+    [ANVIL, "wall"],
   ],
   "Cloister garth": [[WELL, "center", 1]],
   Cloister: [[WELL, "center", 1]],
@@ -1315,6 +1315,17 @@ const SITE_COURT_NAMES: Record<SiteTemplateId, string> = {
 
 /** How big a planned room grows, in cells, by its size. */
 const SITE_WANT = { 1: 12, 2: 26, 3: 46 } as const;
+/** The rooms a floor is built round: they grow to twice and more the size of the rest. */
+const SITE_SET_PIECES = new Set(["Great hall", "Ballroom", "Burial hall", "Undercroft", "Chapter house", "Long gallery"]);
+/** The stairwells, by every name they go by: kept clear of guards, so a stair is not always a fight. */
+export const SITE_STAIR_ROOMS: ReadonlySet<string> = new Set(
+  Object.values({
+    manor: ["Stair hall", "Back stairs", "Attic stair"],
+    keep: ["Stairwell", "Back stair", "Tower stair"],
+    temple: ["Crypt stair", "Night stair", "Belfry stair"],
+    crypt: ["Stair"],
+  }).flat(),
+);
 /** What a building's hidden room is called: behind a hidden door, with something worth finding. */
 const SITE_HIDDEN_ROOM: Record<SiteTemplateId, string> = {
   manor: "Priest hole",
@@ -1471,7 +1482,8 @@ function siteFrameOf(plan: SitePlan) {
     // The donjon across the back, its own wall between it and the ward; ranges of rooms along the curtain
     // either side and across the front; the ward open in the middle; the gate passage through the front
     // range between two gate towers; a round tower at each corner.
-    const nb = Math.round(H * 0.5);
+    // The ward is the castle's middle, nearly half of it (gamer panel 2026-11-17): the donjon a third.
+    const nb = Math.max(8, Math.round(H * 0.34));
     put(full, cellsOf({ x: L, y: T + nb, w: W, h: 1 }), 0);
     const yb = T + nb + 1;
     const side = W >= 32 ? 5 : 4;
@@ -1503,7 +1515,7 @@ function siteFrameOf(plan: SitePlan) {
       on: onGround,
       room: { name: "Gate passage", use: "post", size: 1, zone: "public", furniture: [] },
     });
-    const s = plan.wealth === 3 ? 4 : 3;
+    const s = plan.wealth === 3 ? 5 : 4;
     const [left, right] = [fx, fx + plan.width - 1];
     const towers = [
       { r: { x: left - s + 1, y: T, w: s, h: s }, out: left - s + 1 },
@@ -1528,7 +1540,8 @@ function siteFrameOf(plan: SitePlan) {
     upper = new Uint8Array(mapW * mapH);
     below = new Uint8Array(mapW * mapH);
     put(upper, cellsOf({ x: L, y: T, w: W, h: nb }));
-    put(below, cellsOf({ x: L, y: T, w: W, h: nb }));
+    // The dungeons run on under the ward as well, not a strip under the donjon alone.
+    put(below, cellsOf({ x: L, y: T, w: W, h: Math.min(H, nb + Math.round(H * 0.3)) }));
     const walk = [
       ...cellsOf({ x: L, y: yb, w: 2, h: B - yb + 1 }),
       ...cellsOf({ x: R - 1, y: yb, w: 2, h: B - yb + 1 }),
@@ -2030,7 +2043,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     return { name: times > 1 ? `${name} ${times}` : name, use: "squat", size: roomSize, zone: "service", furniture };
   };
   const rock = kind === "crypt";
-  const sum = planned.reduce((n, room) => n + SITE_WANT[room.size], 0) || 1;
+  // One space on a floor is the set piece, two or three times any other (gamer panel 2026-11-17).
+  const weight = (r: SitePlanRoom) => SITE_WANT[r.size] * (r.heart || SITE_SET_PIECES.has(r.name) ? 2.2 : 1);
+  const sum = planned.reduce((n, room) => n + weight(room), 0) || 1;
   const room = rock ? freeCount * 0.5 : freeCount;
   const scale = Math.max(0.6, Math.min(1.35, room / (sum * (rock ? 1 : 1.15))));
   const growers: number[] = [];
@@ -2038,7 +2053,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     growers.push(regions.length);
     regions.push({ kind: "room", room: r, target, zone: -1, ...(hidden ? { hidden: true as const } : {}) });
   };
-  for (const r of planned) add(r, Math.round(SITE_WANT[r.size] * scale));
+  for (const r of planned) add(r, Math.round(weight(r) * scale));
   planned = [];
   // The hidden room: small, deep, against an outer wall, behind a hidden door, with something worth it.
   // Never in a crypt: its walls are a tile pack's, with no hidden door drawn in them.
@@ -2252,9 +2267,21 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       }
     }
   };
-  spread((g) => regions[g]!.target * (rock ? 1.15 : 1.45), 2);
+  // A room squeezed to a sliver (two wide) or a scrap is no room: its space goes to its neighbours, and a
+  // planned room so lost takes a made-up room's space further on (gamer panel 2026-11-17).
+  const core = new Map([...grown].map((g) => [g, Math.min(box.get(g)!.x1 - box.get(g)!.x0, box.get(g)!.y1 - box.get(g)!.y0) + 1]));
+  spread((g) => regions[g]!.target * (rock ? 1.15 : 1.45), rock ? 2 : 3);
+  if (!rock)
+    for (const g of [...grown]) {
+      const region = regions[g]!;
+      if (region.hidden || region.room!.heart || (entry && SITE_ENTRY_ROOMS.has(region.room!.name))) continue;
+      if (core.get(g)! >= 4 && area.get(g)! >= 12) continue;
+      for (let c = 0; c < size; c++) if (at[c] === g) at[c] = -1;
+      grown.delete(g);
+    }
   if (!rock) {
-    spread(() => Infinity, 2);
+    // The hidden room stays small: it never takes what the others leave.
+    spread((g) => (regions[g]!.hidden ? regions[g]!.target : Infinity), 3);
     // What no room reached: a room of its own when there is space for one, else to its neighbour.
     const seen = new Uint8Array(size);
     for (let c = 0; c < size; c++) {
@@ -2275,6 +2302,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         growers.push(g);
         grown.add(g);
         for (const p of comp) at[p] = g;
+        continue;
+      }
+      // A strip too thin for a room, along a corridor, widens the corridor rather than giving some room a
+      // tail (gamer panel 2026-11-17).
+      if (!block) {
+        const pass = comp
+          .flatMap((p) => around(p))
+          .map((n) => at[n]!)
+          .find((n) => n >= 0 && regions[n]!.kind === "pass");
+        if (pass !== undefined) for (const p of comp) at[p] = pass;
       }
     }
     for (let changed = true; changed; ) {
@@ -2282,7 +2319,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       for (let c = 0; c < size; c++) {
         if (!free(c)) continue;
         const counts = new Map<number, number>();
-        for (const n of around(c)) if (at[n]! >= 0 && regions[at[n]!]!.kind === "room") counts.set(at[n]!, (counts.get(at[n]!) ?? 0) + 1);
+        for (const n of around(c))
+          if (at[n]! >= 0 && regions[at[n]!]!.kind === "room" && !regions[at[n]!]!.hidden)
+            counts.set(at[n]!, (counts.get(at[n]!) ?? 0) + 1);
         const best = [...counts.entries()].sort((p, q) => q[1] - p[1])[0];
         if (best) {
           at[c] = best[0];
@@ -2423,6 +2462,55 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           break;
         }
         if (ground[c] === "floor") break;
+      }
+    }
+  // Wall more than one thick inside the building (a blob where a space was dropped, a double wall) goes to
+  // the one room it touches, a cell at a time, until the walls are one thick (gamer panel 2026-11-17).
+  if (!rock)
+    for (let changed = true; changed; ) {
+      changed = false;
+      for (let c = mapW + 1; c < size - mapW - 1; c++) {
+        if (ground[c] !== "wall" || !mask[c] || hold[c]) continue;
+        const owners = new Set(around(c).filter((n) => ground[n] !== "wall").map((n) => at[n]!));
+        if (owners.size !== 1) continue;
+        const g = [...owners][0]!;
+        if (g < 0 || regions[g]!.kind !== "room") continue;
+        // Only out of a mass: some two-by-two of wall inside the building round this cell.
+        const mass = [
+          [1, mapW],
+          [-1, mapW],
+          [1, -mapW],
+          [-1, -mapW],
+        ].some(([dx, dy]) =>
+          [c + dx!, c + dy!, c + dx! + dy!].every((n) => ground[n] === "wall" && mask[n] && !hold[n]),
+        );
+        if (!mass) continue;
+        // And never so as to touch another space across a corner.
+        const x = c % mapW;
+        const corners = [c - mapW - 1, c - mapW + 1, c + mapW - 1, c + mapW + 1].filter(
+          (n) => Math.abs((n % mapW) - x) === 1,
+        );
+        if (corners.some((n) => ground[n] !== "wall" && at[n] !== g)) continue;
+        ground[c] = "floor";
+        at[c] = g;
+        cellsBy.get(g)?.push(c);
+        changed = true;
+      }
+    }
+  // Then a room's one-wide tails (a strip left along a wall) are wall again, from their free end in.
+  if (!rock)
+    for (let changed = true; changed; ) {
+      changed = false;
+      for (const [g, cells] of cellsBy) {
+        if (regions[g]!.kind !== "room") continue;
+        for (const c of cells) {
+          if (at[c] !== g || hold[c] || ground[c] !== "floor") continue;
+          if (around(c).filter((n) => at[n] === g && ground[n] === "floor").length > 1) continue;
+          ground[c] = "wall";
+          at[c] = -1;
+          changed = true;
+        }
+        if (changed) cellsBy.set(g, cells.filter((c) => at[c] === g));
       }
     }
   /** The biggest box inside a set of cells. */
@@ -2801,11 +2889,24 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     }
   }
 
+  // A passage's dead ends, where no door or stair is, are walled: no carpet runs into a blank wall.
+  for (let changed = true; changed; ) {
+    changed = false;
+    for (let c = mapW; c < size - mapW; c++) {
+      if (ground[c] !== "floor" || hold[c] || at[c]! < 0 || !isPassage(at[c]!)) continue;
+      if (around(c).filter((n) => ground[n] !== "wall" && ground[n] !== "rock").length > 1) continue;
+      ground[c] = "wall";
+      at[c] = -1;
+      changed = true;
+    }
+  }
   const rooms: DungeonRoom[] = [];
   const info: SiteLevelMap["rooms"] = [];
   const doors: Array<{ x: number; y: number; room: number; locked: boolean } | null> = [];
   const opens: Array<SiteSide | null> = [];
   const roomOf = new Map<SitePlanRoom, number>();
+  /** The hidden room: never where a key lies, as the way to it may be through the lock. */
+  const hiddenRooms = new Set<number>();
   const ways: SiteRect[] = nodes.filter((_, n) => alive(n) && isPassage(n));
   for (const [n, room] of [...owner.entries()].sort((p, q) => depth[p[0]]! - depth[q[0]]! || p[0] - q[0])) {
     const r = nodes[n]!;
@@ -2821,6 +2922,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             : "E";
     const k = rooms.length;
     roomOf.set(room, k);
+    if (regions[n]!.hidden) hiddenRooms.add(k);
     const shape = shapes.get(n);
     // An alcove is part of its room.
     const recess = alcoves.get(n);
@@ -2863,7 +2965,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   for (const at of secrets) props[cell(at.x, at.y)] = DUNGEON_SECRET_DOOR_PROP;
   // Solid with nothing open beside it is not wall but the land round the building.
   const solid = ground.map((g, i) => {
-    if (g !== "wall" || (mask[i] && !rock)) return false;
+    if (g !== "wall" || (mask[i] && (!rock || level.depth >= 0))) return false;
     const [x, y] = [i % mapW, Math.floor(i / mapW)];
     // A stone building's outer wall is two thick.
     for (let dy = -thick; dy <= thick; dy++)
@@ -2875,6 +2977,26 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     return true;
   });
   for (const [i, inside2] of solid.entries()) if (inside2) ground[i] = "rock";
+  // Land shut inside the walls on the ground floor (a pocket the outline left) is wall, never a patch of
+  // grass. Above, an enclosed hole is the open ward or light well below and stays open.
+  if (level.depth === 0 && !level.inset) {
+    const outside = new Uint8Array(size);
+    const queue: number[] = [];
+    for (let c = 0; c < size; c++) {
+      const x = c % mapW;
+      if ((x === 0 || x === mapW - 1 || c < mapW || c >= size - mapW) && ground[c] === "rock") {
+        outside[c] = 1;
+        queue.push(c);
+      }
+    }
+    for (let head = 0; head < queue.length; head++)
+      for (const n of around(queue[head]!))
+        if (!outside[n] && ground[n] === "rock") {
+          outside[n] = 1;
+          queue.push(n);
+        }
+    for (let c = 0; c < size; c++) if (ground[c] === "rock" && !outside[c]) ground[c] = "wall";
+  }
   // Flooded: water across the rooms' middles, never cutting a room off from its door.
   if (level.flooded)
     for (const area of rooms) {
@@ -2928,7 +3050,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     for (let i = 0; i < ground.length; i++) if (ground[i] === "liquid") ground[i] = "floor";
   // Locks: a locked room's door; its key in another room of the level that is open.
   const locks: SiteLevelLock[] = [];
-  const open = rooms.map((_, n) => n).filter((n) => !doors[n]?.locked);
+  const open = rooms.map((_, n) => n).filter((n) => !doors[n]?.locked && !hiddenRooms.has(n));
   for (const door of doors) {
     if (!door?.locked || !open.length) continue;
     props[cell(door.x, door.y)] = SITE_LOCK_PROP;
@@ -3021,14 +3143,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     };
     // Stacked together: heaps of one thing in a corner of the room, not dotted about the floor (panel
     // 2026-11-17).
-    const anchor = corners.length ? corners[Math.floor(random() * corners.length)]! : ([x0, y0] as [number, number]);
-    const clustered = () =>
-      everywhere().sort(
+    // Each kind of thing its own heap, in a corner of its own, so a big room or a ward is not all in one.
+    const clustered = () => {
+      const anchor = corners.length ? corners[Math.floor(random() * corners.length)]! : ([x0, y0] as [number, number]);
+      return everywhere().sort(
         (p, q) =>
           Math.abs(p[0] - anchor[0]) +
           Math.abs(p[1] - anchor[1]) -
           (Math.abs(q[0] - anchor[0]) + Math.abs(q[1] - anchor[1])),
       );
+    };
     // Every other cell along each wall in turn (starting at random), and only then the cells between.
     // A few cells held back to the end, so a row has gaps in it and not an even beat (panel round 4).
     const spread = (...lists: Array<Array<[number, number]>>) => {
