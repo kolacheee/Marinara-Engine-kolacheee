@@ -13,7 +13,7 @@ W nowym układzie każdy otwarty czat, postać, persona, lorebook, preset i apli
 Kliknij zakładkę prawym przyciskiem myszy na komputerze albo naciśnij ją i przytrzymaj na ekranie dotykowym, żeby otworzyć jej menu:
 
 - **Przesuń w lewo** i **Przesuń w prawo** przesuwają zakładkę o jedno miejsce. Na komputerze możesz ją też przeciągnąć.
-- **Dodaj do nowej grupy** umieszcza zakładkę w grupie. Gdy jesteś na zakładce należącej do grupy, zakładki tej grupy pojawiają się w drugim rzędzie pod górnym paskiem. Kliknij nazwę grupy, żeby zmienić jej nazwę lub ją zamknąć.
+- **Dodaj do nowej grupy** umieszcza zakładkę w grupie. Na komputerze możesz też przeciągnąć zakładkę na inną i chwilę ją tam przytrzymać: gdy tamta zakładka się podświetli, puść ją, a obie utworzą grupę (puść ją na grupie, żeby do niej dołączyła). Szybkie puszczenie tylko przenosi zakładkę. Przytrzymanie Shift przy puszczaniu od razu tworzy grupę. Gdy jesteś na zakładce należącej do grupy, zakładki tej grupy pojawiają się w drugim rzędzie pod górnym paskiem. Kliknij nazwę grupy, żeby zmienić jej nazwę lub ją zamknąć.
 - **Zamknij kartę** zamyka tę zakładkę, a **Zamknij inne karty** zamyka pozostałe.
 - **Otwórz ponownie zamkniętą kartę** przywraca ostatnio zamkniętą zakładkę.
 

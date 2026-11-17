@@ -13,7 +13,7 @@ Im neuen Layout bekommt jeder Chat, Charakter, jede Persona, jedes Lorebook, Pre
 Klick am Computer mit der rechten Maustaste auf einen Tab oder halte ihn auf einem Touchscreen gedrückt, um sein Menü zu öffnen:
 
 - **Move left** und **Move right** verschieben den Tab um eine Position. Am Computer kannst du ihn auch ziehen.
-- **Zu neuer Gruppe hinzufügen** ordnet den Tab einer Gruppe zu. Solange du einen Tab aus einer Gruppe geöffnet hast, erscheinen die Tabs dieser Gruppe in einer zweiten Zeile unter der oberen Leiste. Klick auf den Namen der Gruppe, um sie umzubenennen oder zu schließen.
+- **Zu neuer Gruppe hinzufügen** ordnet den Tab einer Gruppe zu. Am Computer kannst du einen Tab auch auf einen anderen Tab ziehen und ihn dort kurz ruhen lassen: Sobald der andere Tab aufleuchtet, lass los, und die beiden werden zu einer Gruppe (lass ihn auf einer Gruppe los, um ihn hinzuzufügen). Ein schnelles Loslassen verschiebt den Tab nur. Mit gedrückter Umschalttaste beim Loslassen wird sofort gruppiert. Solange du einen Tab aus einer Gruppe geöffnet hast, erscheinen die Tabs dieser Gruppe in einer zweiten Zeile unter der oberen Leiste. Klick auf den Namen der Gruppe, um sie umzubenennen oder zu schließen.
 - **Tab schließen** schließt den Tab, **Andere Tabs schließen** schließt die übrigen.
 - **Geschlossenen Tab erneut öffnen** bringt den zuletzt geschlossenen Tab zurück.
 

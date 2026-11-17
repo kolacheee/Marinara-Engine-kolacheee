@@ -1,6 +1,6 @@
 {
   "language": "ru",
-  "sourceCommit": "827821f4ed33dbc54efe357444ecebd6893b2a51",
+  "sourceCommit": "d17e1cb600cdeec90cd6234d02d71564932838d7",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -574,8 +574,8 @@
     },
     {
       "path": "home/tabs-and-drafts.md",
-      "sha256": "3e6597ef08d7bb22eb73afb7bfbe97bd4fafa08ed1cd538e2f6215fdbc97db27",
-      "bytes": 10288
+      "sha256": "8a5ad12c80ca93fe9ca7d0935ec637e4734b98c9f180d8df7b8a716beb9058fd",
+      "bytes": 10856
     },
     {
       "path": "home/tutorial.md",

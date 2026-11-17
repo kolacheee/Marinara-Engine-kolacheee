@@ -13,7 +13,7 @@ En el nuevo diseño, cada chat, personaje, persona (el perfil que te representa)
 Haz clic derecho en una pestaña en una computadora, o mantenla presionada en una pantalla táctil, para abrir su menú:
 
 - **Move left** (Mover a la izquierda) y **Move right** (Mover a la derecha) mueven la pestaña una posición. En una computadora también puedes arrastrarla.
-- **Add to new group** (Añadir a un grupo nuevo) coloca la pestaña en un grupo. Mientras estás en una pestaña agrupada, las pestañas del grupo aparecen en una segunda fila debajo de la barra superior. Haz clic en el nombre del grupo para cambiarle el nombre o cerrarlo.
+- **Add to new group** (Añadir a un grupo nuevo) coloca la pestaña en un grupo. En un ordenador también puedes arrastrar una pestaña sobre otra y dejarla ahí un momento: cuando la otra pestaña se ilumine, suéltala y las dos formarán un grupo (suéltala sobre un grupo para añadirla). Si la sueltas enseguida, solo se mueve. Si mantienes pulsado Mayús al soltarla, se agrupan al instante. Mientras estás en una pestaña agrupada, las pestañas del grupo aparecen en una segunda fila debajo de la barra superior. Haz clic en el nombre del grupo para cambiarle el nombre o cerrarlo.
 - **Close tab** (Cerrar pestaña) la cierra y **Close other tabs** (Cerrar las demás pestañas) cierra el resto.
 - **Reopen closed tab** (Volver a abrir la pestaña cerrada) recupera la última pestaña que cerraste.
 

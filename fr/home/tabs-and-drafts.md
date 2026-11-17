@@ -13,7 +13,7 @@ Dans la nouvelle disposition, chaque chat, personnage, persona, lorebook, preset
 Fais un clic droit sur un onglet sur ordinateur, ou un appui long sur un écran tactile, pour ouvrir son menu :
 
 - **Move left** (déplacer vers la gauche) et **Move right** (déplacer vers la droite) déplacent l'onglet d'une place. Sur ordinateur, tu peux aussi le faire glisser.
-- **Ajouter à un nouveau groupe** place l'onglet dans un groupe. Quand tu consultes un onglet regroupé, les onglets de son groupe s'affichent sur une deuxième ligne sous la barre du haut. Clique sur le nom du groupe pour le renommer ou le fermer.
+- **Ajouter à un nouveau groupe** place l'onglet dans un groupe. Sur ordinateur, tu peux aussi faire glisser un onglet sur un autre et l'y laisser un instant : quand l'autre onglet s'illumine, relâche-le et les deux forment un groupe (relâche-le sur un groupe pour l'y ajouter). Un relâchement rapide ne fait que déplacer l'onglet. Si tu maintiens Maj en relâchant, ils sont regroupés tout de suite. Quand tu consultes un onglet regroupé, les onglets de son groupe s'affichent sur une deuxième ligne sous la barre du haut. Clique sur le nom du groupe pour le renommer ou le fermer.
 - **Fermer l'onglet** ferme cet onglet, et **Fermer les autres onglets** ferme les autres.
 - **Rouvrir l'onglet fermé** rétablit le dernier onglet que tu as fermé.
 

@@ -13,7 +13,7 @@ No novo layout, cada chat, personagem, persona, lorebook, preset e aplicativo qu
 Clique com o botão direito em uma aba no computador ou toque nela e mantenha o dedo pressionado em uma tela sensível ao toque para abrir o menu:
 
 - **Mover para a esquerda** e **Mover para a direita** movem a aba uma posição. No computador, você também pode arrastá-la.
-- **Adicionar a novo grupo** coloca a aba em um grupo. Enquanto você estiver em uma aba agrupada, as abas do grupo aparecem em uma segunda linha abaixo da barra superior. Clique no nome do grupo para renomeá-lo ou fechá-lo.
+- **Adicionar a novo grupo** coloca a aba em um grupo. No computador, você também pode arrastar uma aba para cima de outra e deixá-la ali por um instante: quando a outra aba acender, solte e as duas viram um grupo (solte sobre um grupo para adicioná-la a ele). Soltar rápido só move a aba. Segurar Shift ao soltar agrupa na hora. Enquanto você estiver em uma aba agrupada, as abas do grupo aparecem em uma segunda linha abaixo da barra superior. Clique no nome do grupo para renomeá-lo ou fechá-lo.
 - **Fechar aba** fecha a aba, e **Fechar outras abas** fecha as demais.
 - **Reabrir aba fechada** traz de volta a última aba que você fechou.
 
