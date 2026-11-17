@@ -457,6 +457,13 @@ const SITE_SPARE_ROOMS: Record<SiteTemplateId, Record<"top" | "up" | "ground" | 
       ["Guard post", 2, [T, SHELF]],
       ["Cell", 1, [BED]],
       ["Powder store", 1, [CHEST, CHEST]],
+      ["Guardroom", 2, [T, SHELF, CHEST]],
+      ["Wine vault", 2, [CHEST, CHEST, SHELF]],
+      ["Sally port tunnel", 1, [CHEST]],
+      ["Strongroom", 1, [CHEST, CHEST, CHEST]],
+      ["Torture chamber", 2, [T, FIRE, CHEST]],
+      ["Charnel pit", 1, [CHEST]],
+      ["Cistern", 2, [CHEST]],
     ],
   },
   temple: {
@@ -1570,7 +1577,7 @@ function siteFrameOf(plan: SitePlan) {
     below = new Uint8Array(mapW * mapH);
     put(upper, cellsOf({ x: L, y: T, w: W, h: nb }));
     // The dungeons run on under the ward as well, not a strip under the donjon alone.
-    put(below, cellsOf({ x: L, y: T, w: W, h: Math.min(H, nb + Math.round(H * 0.3)) }));
+    put(below, cellsOf({ x: L, y: T, w: W, h: Math.min(H, nb + Math.round(H * 0.55)) }));
     const walk = [
       ...cellsOf({ x: L, y: yb, w: 2, h: B - yb + 1 }),
       ...cellsOf({ x: R - 1, y: yb, w: 2, h: B - yb + 1 }),
@@ -2037,7 +2044,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     // Galleries: from the way in to every stair and on to a few points cut further into the rock.
     const ends = [entryRegion, ...stairsHere].filter((n) => n >= 0);
     const points: number[] = [];
-    const want = 2 + plan.wealth;
+    // A castle's dungeons run out under its whole ward, not a knot of cells by the stair (panel 2026-11-17).
+    const want = (kind === "keep" ? 5 : 2) + plan.wealth;
     for (let tries = 0; tries < 200 && points.length < want; tries++) {
       const c = Math.floor(random() * size);
       if (
@@ -2111,7 +2119,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const weight = (r: SitePlanRoom) => SITE_WANT[r.size] * (r.heart || SITE_SET_PIECES.has(r.name) ? 2.2 : 1);
   const sum = planned.reduce((n, room) => n + weight(room), 0) || 1;
   const room = rock ? freeCount * 0.5 : freeCount;
-  const scale = Math.max(0.6, Math.min(1.35, room / (sum * (rock ? 1 : 1.15))));
+  const scale = Math.max(0.6, Math.min(rock ? 1.6 : 1.35, room / (sum * (rock ? 1 : 1.15))));
   const growers: number[] = [];
   const add = (r: SitePlanRoom, target: number, hidden = false) => {
     growers.push(regions.length);
@@ -2249,7 +2257,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const a = 1 + random() * 0.8;
     ratio.set(g, random() < 0.5 ? a : 1 / a);
   }
-  const takes = (g: number, c: number) => free(c) && zoneOf(c) === regions[g]!.zone;
+  // In rock a chamber is cut where there is rock to cut, whatever band it lies in (panel 2026-11-17: a castle's
+  // dungeons came out as five rooms in a field of rock).
+  const takes = (g: number, c: number) => free(c) && (rock || zoneOf(c) === regions[g]!.zone);
   {
     const done = new Set<number>();
     for (let guard = 0; guard < 20000; guard++) {
@@ -2420,6 +2430,47 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (best) {
           at[c] = best[0];
           changed = true;
+        }
+      }
+    }
+  }
+
+  // The line between two rooms runs straight: a cell of one tucked into the corner of another (a step down
+  // their shared wall, a notch) goes over to it, always the same way between the same two, until the line is
+  // square (gamer panel 2026-11-17: stepped walls read as stubs and broken partitions).
+  if (!rock) {
+    const plain = (g: number) => g >= 0 && regions[g]!.kind === "room" && !regions[g]!.hidden;
+    const count = new Map<number, number>();
+    for (let c = 0; c < size; c++) if (at[c]! >= 0) count.set(at[c]!, (count.get(at[c]!) ?? 0) + 1);
+    const winner = new Map<string, number>();
+    for (let pass = 0, changed = true; changed && pass < 60; pass++) {
+      changed = false;
+      for (let c = mapW + 1; c < size - mapW - 1; c++) {
+        const g = at[c]!;
+        if (!plain(g) || hold[c]) continue;
+        const x = c % mapW;
+        if (x === 0 || x === mapW - 1) continue;
+        const [n, s, w, e] = [at[c - mapW]!, at[c + mapW]!, at[c - 1]!, at[c + 1]!];
+        for (const h of new Set([n, s, w, e])) {
+          if (h === g || !plain(h)) continue;
+          const k = [n, s, w, e].filter((v) => v === h).length;
+          const vert = n === h ? -mapW : s === h ? mapW : 0;
+          const hor = w === h ? -1 : e === h ? 1 : 0;
+          if (k < 2 || (k === 2 && (!vert || !hor))) continue;
+          if (k === 2) {
+            // Never so as to cut the room in two: the cell across the corner from the other is its own.
+            if (at[c - vert - hor] !== g) continue;
+            const key = g < h ? `${g}:${h}` : `${h}:${g}`;
+            if (!winner.has(key))
+              winner.set(key, count.get(h)! / regions[h]!.target < count.get(g)! / regions[g]!.target ? h : g);
+            if (winner.get(key) !== h) continue;
+          }
+          if (count.get(g)! <= Math.max(9, 0.7 * regions[g]!.target)) continue;
+          at[c] = h;
+          count.set(g, count.get(g)! - 1);
+          count.set(h, count.get(h)! + 1);
+          changed = true;
+          break;
         }
       }
     }
@@ -2661,14 +2712,19 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (far < 0 || far >= size || ground[w] !== "wall" || hold[w] || !mask[w]) continue;
         const h = at[far]!;
         if (h < 0 || h === g || ground[far] !== "floor" || !cellsBy.has(h)) continue;
-        if (regions[h]!.kind !== "room" || regions[h]!.hidden) continue;
+        if ((regions[h]!.kind !== "room" && (regions[h]!.kind !== "pass" || cells.length > 10)) || regions[h]!.hidden)
+          continue;
         between.set(h, [...(between.get(h) ?? []), w]);
       }
-    const best = [...between].sort((p, q) => q[1].length - p[1].length)[0];
+    // Into a room beside it, failing that (a scrap) into the corridor it opens on, which widens.
+    const best = [...between].sort(
+      (p, q) =>
+        Number(regions[q[0]]!.kind === "room") - Number(regions[p[0]]!.kind === "room") || q[1].length - p[1].length,
+    )[0];
     if (!best || best[1].length < 2) continue;
     const [h, walls] = best;
     // The one that stays is the bigger; a planned room keeps its name over a made-up one.
-    const keep = cellsBy.get(h)!.length >= cells.length ? h : g;
+    const keep = regions[h]!.kind === "pass" || cellsBy.get(h)!.length >= cells.length ? h : g;
     const lose = keep === h ? g : h;
     for (const w of new Set(walls)) {
       ground[w] = "floor";
@@ -3287,13 +3343,19 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const long = along ? area.w : area.h;
     // A hall's, a dining room's or a refectory's tables make one long board down the middle.
     const feast = SITE_FEAST_ROOMS.has(siteBaseName(room.name));
-    const lines =
-      short >= 7 && !feast ? [Math.floor(short / 3), short - 1 - Math.floor(short / 3)] : [Math.floor((short - 1) / 2)];
+    // Not every hall sets its tables the same way: one long board, or two down either side of a clear
+    // middle; a crypt's tombs one row down the middle, rarely two (panel 2026-11-17: halls all alike,
+    // sarcophagi parked in rows).
+    const twin = short >= 7 && (feast ? random() < 0.5 : plan.template !== "crypt" || random() < 0.3);
+    const lines = twin ? [Math.floor(short / 3), short - 1 - Math.floor(short / 3)] : [Math.floor((short - 1) / 2)];
+    const breakAt = Math.floor(random() * 3);
     const middle: Array<[number, number]> = [];
     for (const line of lines)
       for (let k = short >= 3 ? 1 : 0; k < (short >= 3 ? long - 1 : long); k += feast || long < 5 ? 1 : 2)
         // A long board is broken every few places, so a hall has tables, not one endless row.
-        if (!feast || k % 5 !== 0) middle.push(along ? [x0 + k, y0 + line] : [x0 + line, y0 + k]);
+        if (!feast || (k + breakAt) % 5 !== 0) middle.push(along ? [x0 + k, y0 + line] : [x0 + line, y0 + k]);
+    // A crypt's burial rooms half the time lay their dead in niches along the walls instead.
+    const niches = plan.template === "crypt" && !room.heart && random() < 0.5;
     const pillars: Array<[number, number]> = [];
     if (short >= 5) for (let y = y0 + 1; y < y1; y += 3) for (let x = x0 + 1; x < x1; x += 3) pillars.push([x, y]);
     const shuffle = <T>(list: T[]) => {
@@ -3431,26 +3493,28 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             ? [...shuffle(corners), ...spread(backRow)]
             : kind === "wall"
               ? spread(backRow, ...sideRows, frontRow)
-              : kind === "center"
-                ? // A centrepiece or two in the very middle; a long board along it.
-                  count <= 2
-                  ? [...middle].sort(
-                      (p, q) =>
-                        Math.abs(p[0] - (x0 + x1) / 2) +
-                        Math.abs(p[1] - (y0 + y1) / 2) -
-                        Math.abs(q[0] - (x0 + x1) / 2) -
-                        Math.abs(q[1] - (y0 + y1) / 2),
-                    )
-                  : middle
-                : kind === "pillar"
-                  ? pillars
-                  : kind === "pews"
-                    ? pews
-                    : kind === "seats"
-                      ? seats()
-                      : kind === "scatter" && plan.template !== "crypt"
-                        ? clustered()
-                        : everywhere();
+              : kind === "center" && niches && count > 2
+                ? spread(backRow, ...sideRows)
+                : kind === "center"
+                  ? // A centrepiece or two in the very middle; a long board along it.
+                    count <= 2
+                    ? [...middle].sort(
+                        (p, q) =>
+                          Math.abs(p[0] - (x0 + x1) / 2) +
+                          Math.abs(p[1] - (y0 + y1) / 2) -
+                          Math.abs(q[0] - (x0 + x1) / 2) -
+                          Math.abs(q[1] - (y0 + y1) / 2),
+                      )
+                    : middle
+                  : kind === "pillar"
+                    ? pillars
+                    : kind === "pews"
+                      ? pews
+                      : kind === "seats"
+                        ? seats()
+                        : kind === "scatter" && plan.template !== "crypt"
+                          ? clustered()
+                          : everywhere();
       let placed = 0;
       for (const [x, y] of spots) {
         // Seats come with their table, outside the room's budget.

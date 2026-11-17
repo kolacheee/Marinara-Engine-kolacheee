@@ -231,6 +231,30 @@ export function DungeonMapView({
       });
     };
 
+    // A soft shadow on the floor along the foot of every wall, so the line of a room's walls reads at a
+    // glance even where floor and wall are the same stone (panel 2026-11-17: a crypt chapel's rooms could
+    // not be told apart).
+    const shadeWallFeet = (ctx: CanvasRenderingContext2D) => {
+      const g = (x: number, y: number) =>
+        x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
+      const solid = (x: number, y: number) => g(x, y) === "wall";
+      const depth = Math.max(3, Math.round(T * 0.22));
+      for (let y = 0; y < cells.height; y++)
+        for (let x = 0; x < cells.width; x++) {
+          if (g(x, y) !== "floor") continue;
+          const [px, py] = [x * T, y * T];
+          const edge = (x0: number, y0: number, x1: number, y1: number, w: number, h: number) => {
+            const grad = ctx.createLinearGradient(x0, y0, x1, y1);
+            grad.addColorStop(0, "rgba(0,0,0,0.42)");
+            grad.addColorStop(1, "rgba(0,0,0,0)");
+            ctx.fillStyle = grad;
+            ctx.fillRect(Math.min(x0, x1), Math.min(y0, y1), w, h);
+          };
+          if (solid(x, y - 1)) edge(px, py, px, py + depth, T, depth);
+          if (solid(x - 1, y)) edge(px, py, px + depth, py, depth, T);
+          if (solid(x + 1, y)) edge(px + T, py, px + T - depth, py, depth, T);
+        }
+    };
     if (coded) {
       const at = (x: number, y: number) =>
         x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
@@ -331,6 +355,7 @@ export function DungeonMapView({
           // A planned crypt's hall is set apart from its rooms; a carved place's ground is all one.
           else paintDungeonFloor(ctx, cells.set, x * T, y * T, noise, Boolean(cells.roomNames) && isHall(x, y));
         }
+      shadeWallFeet(ctx);
       // A rug in the quiet rooms people live in, under their furniture (panel 2026-11-17).
       if (building)
         cells.rooms.forEach((room, n) => {
@@ -578,6 +603,7 @@ export function DungeonMapView({
           if (piece >= 0) drawTile.edge(ctx, "dn_liquid", piece, x * T, y * T, cellNoise(x, y)(71));
         }
     }
+    shadeWallFeet(ctx);
     // A doorway through a wall's face (walls with their faces either side, floor in front and behind) gets
     // the pack's door, an arch two cells tall standing in the wall.
     const groundAt = (x: number, y: number) =>
