@@ -1056,7 +1056,7 @@ export function paintSiteLink(ctx: Ctx, kind: string, down: boolean, x: number, 
       px(ctx, "#6a4a30", x + bx, y + by, w, 2);
     return;
   }
-  if (kind === "ladder") {
+  if (kind === "ladder" || kind === "wall") {
     if (down) px(ctx, ink, x + 2, y + 1, 12, 14);
     px(ctx, "#7a5a34", x + 4, y, 2, T);
     px(ctx, "#7a5a34", x + 10, y, 2, T);
@@ -1119,6 +1119,25 @@ export function paintBuildingCourt(ctx: Ctx, x: number, y: number, path: boolean
 
 /** The earth and rock a building's cellars are dug into: packed earth with stones in it, never a void
  *  (panel 2026-11-17). */
+/** A castle's bailey: packed, trodden earth with cart ruts and a few tufts, one open yard rather than
+ *  beds of grass between paved strips (panel 2026-11-17). */
+export function paintBuildingYard(ctx: Ctx, x: number, y: number, noise: Noise) {
+  px(ctx, "#7a6448", x, y, T, T);
+  for (let k = 0; k < 8; k++)
+    px(
+      ctx,
+      noise(120 + k) < 0.5 ? "#6c583e" : "#86704f",
+      x + Math.floor(noise(130 + k) * 14),
+      y + Math.floor(noise(140 + k) * 15),
+      2 + Math.floor(noise(150 + k) * 3),
+      1,
+    );
+  if (noise(160) < 0.25)
+    px(ctx, "#5a4a34", x + 1 + Math.floor(noise(161) * 12), y + 2 + Math.floor(noise(162) * 11), 1, 1);
+  if (noise(163) < 0.18)
+    for (let k = 0; k < 3; k++)
+      px(ctx, "#5c7a3a", x + 4 + Math.floor(noise(164 + k) * 8) + k, y + 9 + Math.floor(noise(167) * 4), 1, 2);
+}
 export function paintBuildingEarth(ctx: Ctx, x: number, y: number, noise: Noise) {
   px(ctx, "#2b251f", x, y, T, T);
   for (let k = 0; k < 6; k++)

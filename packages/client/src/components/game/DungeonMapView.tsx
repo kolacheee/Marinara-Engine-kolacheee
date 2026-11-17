@@ -39,6 +39,7 @@ import { OVERWORLD_TILE, cellNoise, paintGuard, paintParty } from "../../lib/ove
 import {
   buildingStyleOf,
   paintBuildingCourt,
+  paintBuildingYard,
   paintBuildingFloor,
   buildingFloorKindOf,
   paintBuildingProp,
@@ -302,12 +303,16 @@ export function DungeonMapView({
               // A castle's ward is cobbled along its edges and paths with trodden grass between (gamer panel
               // 2026-11-17: an all-stone ward read as a roofed hall); a house's or a cloister's court is a garden
               // crossed by paths.
+              // A castle's ward is one open bailey of trodden earth, cobbled only down the way from the gate
+              // and across it, a little grass where nobody walks (panel 2026-11-17: paved strips round grass
+              // beds read as a cloister, then as a ring road).
+              const paved = x === mid.x || y === mid.y;
               const edge = x === court.x || y === court.y || x === court.x + court.w - 1 || y === court.y + court.h - 1;
-              const paved =
-                x === mid.x ||
-                y === mid.y ||
-                (building === "keep" && (edge || cellNoise(Math.floor(x / 3), Math.floor(y / 3))(77) < 0.45));
-              paintBuildingCourt(ctx, x * T, y * T, paved, noise);
+              if (building === "keep" && !paved)
+                if (edge && cellNoise(Math.floor(x / 2), Math.floor(y / 2))(77) < 0.35)
+                  paintBuildingCourt(ctx, x * T, y * T, false, noise);
+                else paintBuildingYard(ctx, x * T, y * T, noise);
+              else paintBuildingCourt(ctx, x * T, y * T, paved, noise);
             } else
               // A house's cellars are flagged stone, not boards and carpet.
               paintBuildingFloor(
@@ -544,9 +549,10 @@ export function DungeonMapView({
           const below = at(0, 1);
           if (below === "floor" || below === "liquid") {
             if (drawPatternCell(ctx, "dn_wall_face", x % 6, 1, x, y, pick)) continue;
-          } else if (buried) {
+          } else if (buried || cells.roomNames) {
             // Below ground a wall's top is the masonry it is cut in, like the rock round it, not a black rim
-            // round every chamber (layout rebuild 2026-11-17).
+            // round every chamber (layout rebuild 2026-11-17); a planned crypt's chapel is built of the same
+            // masonry, so its inner walls do not read as black slabs floating in the floor (panel 2026-11-17).
             if (drawTile(ctx, "dn_wall", x * T, y * T, pick)) continue;
           } else {
             const mask =

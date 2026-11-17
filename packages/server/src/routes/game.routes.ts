@@ -12406,6 +12406,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
             id: randomUUID(),
             level: link.level,
             from: kept.site.level,
+            via: link.kind,
             ...(kept.site.traps ? { traps: true } : {}),
             state: {
               seen: kept.site.seen,

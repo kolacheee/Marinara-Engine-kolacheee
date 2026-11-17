@@ -34,7 +34,7 @@ export type SiteTerrain = (typeof SITE_TERRAINS)[number];
 export type SiteFate = "war" | "sickness" | "famine" | "flood";
 
 /** Ways between levels: the main stair, the servants' stair, a ladder, a hidden stair, a collapsed floor. */
-export const SITE_LINK_KINDS = ["stairs", "servants", "ladder", "hidden", "hole"] as const;
+export const SITE_LINK_KINDS = ["stairs", "servants", "ladder", "hidden", "hole", "wall"] as const;
 export type SiteLinkKind = (typeof SITE_LINK_KINDS)[number];
 
 /** Prop slots every building set shares (dungeon_crypt's own slots agree: 4 a trap, 6 a portcullis). */
@@ -662,6 +662,10 @@ export function sitePlan(input: SitePlanInput): SitePlan {
       links.push({ upper: i, lower: i + 1, kind: "servants" });
     if (input.fate === "war" && upper.depth === 1 && lower.depth === 0)
       links.push({ upper: i, lower: i + 1, kind: "hole" });
+    // A castle's wall walk has a stair of its own down into the range below it, a second way between the
+    // floors that keeps clear of the donjon (panel 2026-11-17).
+    if (input.template === "keep" && upper.depth === 1 && lower.depth === 0 && !upper.inset)
+      links.push({ upper: i, lower: i + 1, kind: "wall" });
   }
   return {
     template: input.template,
@@ -1443,6 +1447,8 @@ function siteFrameOf(plan: SitePlan) {
   /** Where the main stairs want to stand, and the back stairs. */
   let mainAt = { x: cx + (random() < 0.5 ? -1 : 1) * (4 + Math.floor(random() * W * 0.15)), y: B - 4 };
   let backAt = { x: random() < 0.5 ? L + 2 : R - 2, y: T + Math.floor(H / 2) };
+  /** A castle's wall stair: its foot in the ward against a side range, its head on the wall walk above. */
+  let wallAt: { x: number; y: number; lower: { x: number; y: number } } | null = null;
 
   if (kind === "manor") {
     // The house's shape: a box, an L, a U round a forecourt, an H, or a T with its middle range forward.
@@ -1563,6 +1569,11 @@ function siteFrameOf(plan: SitePlan) {
       on: (level) => level.depth > 0 && !level.inset,
       room: { name: "Wall walk", use: "post", size: 3, zone: "public", furniture: [] },
     });
+    {
+      const east = random() < 0.5;
+      const y = yb + 1 + Math.floor(random() * Math.max(1, B - front - yb - 2));
+      wallAt = { x: east ? R - 1 : L + 1, y, lower: { x: east ? R - side : L + side - 1 + 1, y } };
+    }
     inset = { x: L + 3, y: T - 1, w: W - 6, h: nb + 2 };
     mainAt = { x: L + 3 + Math.floor(random() * 4), y: T + nb - 3 };
     backAt = { x: R - 3 - Math.floor(random() * 4), y: T + 2 };
@@ -1694,7 +1705,7 @@ function siteFrameOf(plan: SitePlan) {
   const taken = new Uint8Array(mapW * mapH);
   for (const each of fixed) for (const c of each.cells) for (const d of [0, -1, 1, -mapW, mapW]) taken[c + d] = 1;
   const wells: Array<{ r: SiteRect; levels: Set<number>; name: string }> = [];
-  const linkAt: Array<{ x: number; y: number }> = [];
+  const linkAt: Array<{ x: number; y: number; lower?: { x: number; y: number } }> = [];
   const pick = (
     w: number,
     h: number,
@@ -1729,6 +1740,7 @@ function siteFrameOf(plan: SitePlan) {
     { links: number[]; w: number; h: number; want: { x: number; y: number }; name: string }
   >();
   for (const [k, link] of plan.links.entries()) {
+    if (link.kind === "wall") continue;
     const ladder = !!plan.levels[link.upper]!.inset || !!plan.levels[link.lower]!.inset;
     const key = ladder
       ? `ladder${k}`
@@ -1789,6 +1801,7 @@ function siteFrameOf(plan: SitePlan) {
       room: { name: group.name, use: "post", size: 1, zone: "public", furniture: [] },
     });
   }
+  for (const [k, link] of plan.links.entries()) if (link.kind === "wall") linkAt[k] = wallAt ?? { x: cx, y: T + 1 };
   // The front door: in the middle of the front, through the whole outer wall.
   let iy = B;
   for (iy = mapH - 3; iy > 0 && !groundMask[at(cx, iy)]; iy--);
@@ -1847,7 +1860,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const links: SiteLevelLink[] = [];
   for (const [k, link] of plan.links.entries()) {
     if (link.upper !== index && link.lower !== index) continue;
-    const at = frame.linkAt[k]!;
+    const at = link.lower === index ? (frame.linkAt[k]!.lower ?? frame.linkAt[k]!) : frame.linkAt[k]!;
     links.push({ x: at.x, y: at.y, level: link.upper === index ? link.lower : link.upper, kind: link.kind });
   }
   /** Cells that stay floor whatever stands next to them: the links, the cell inside the front door. */
@@ -3582,6 +3595,8 @@ export function gameDungeonPlannedMap(input: {
   level?: number;
   /** The level the party comes from, to stand at the link from it. */
   from?: number;
+  /** The kind of way taken (main stairs, back stairs, the wall stair), to come out at its own end. */
+  via?: string;
   traps?: boolean;
   state?: SitePlanState;
 }): GameDungeonMap {
@@ -3602,7 +3617,11 @@ export function gameDungeonPlannedMap(input: {
   const traps = laid.traps
     .filter((trap) => !gone.has(`${level}:${trap.x}:${trap.y}`))
     .map((trap) => ({ ...trap, ...(found.has(`${level}:${trap.x}:${trap.y}`) ? { found: true as const } : {}) }));
-  const arrive = input.from !== undefined ? laid.links.find((link) => link.level === input.from) : undefined;
+  const arrive =
+    input.from === undefined
+      ? undefined
+      : (laid.links.find((link) => link.level === input.from && link.kind === input.via) ??
+        laid.links.find((link) => link.level === input.from));
   const at = arrive ? { x: arrive.x, y: arrive.y } : laid.map.entrance;
   return {
     ...kept,

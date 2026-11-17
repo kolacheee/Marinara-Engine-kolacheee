@@ -112,7 +112,11 @@ for (const template of SITE_TEMPLATE_IDS)
         for (const link of level.links) {
           assert.ok(dungeonWalkable(map, link.x, link.y), `${where}: its ${link.kind} stands on the floor`);
           const back = laid[link.level]!.links.find((other) => other.level === index && other.kind === link.kind);
-          assert.ok(back && back.x === link.x && back.y === link.y, `${where}: its ${link.kind} lines up`);
+          // A castle's wall stair climbs from the ward to the walk: its two ends stand apart.
+          assert.ok(
+            back && (link.kind === "wall" || (back.x === link.x && back.y === link.y)),
+            `${where}: its ${link.kind} lines up`,
+          );
         }
         assert.equal(
           new Set(level.links.map((link) => `${link.x},${link.y}`)).size,
