@@ -1,0 +1,623 @@
+{
+  "status": "PASS",
+  "checks": 40436,
+  "failures": [],
+  "exports": 45,
+  "new_image_drawings": 44,
+  "mode_samples_replayed": 18137088,
+  "passing_files_unchanged": 15,
+  "protected_files_unchanged": 12590,
+  "protected_changes": [],
+  "route_clearance": {
+    "L-block": [
+      {
+        "rect": [
+          336,
+          0,
+          48,
+          528
+        ],
+        "blocked": 0
+      },
+      {
+        "rect": [
+          576,
+          336,
+          48,
+          144
+        ],
+        "blocked": 0
+      },
+      {
+        "rect": [
+          0,
+          144,
+          384,
+          96
+        ],
+        "blocked": 0
+      }
+    ],
+    "market": [
+      {
+        "rect": [
+          384,
+          0,
+          96,
+          864
+        ],
+        "blocked": 0
+      },
+      {
+        "rect": [
+          144,
+          192,
+          48,
+          480
+        ],
+        "blocked": 0
+      },
+      {
+        "rect": [
+          336,
+          288,
+          192,
+          144
+        ],
+        "blocked": 0
+      },
+      {
+        "rect": [
+          336,
+          672,
+          144,
+          96
+        ],
+        "blocked": 0
+      }
+    ],
+    "height-test": [],
+    "junctions": []
+  },
+  "roof_coverage": {
+    "L-block": [
+      {
+        "rect": [
+          0,
+          240,
+          96,
+          240
+        ],
+        "uncovered": 0
+      },
+      {
+        "rect": [
+          96,
+          384,
+          240,
+          96
+        ],
+        "uncovered": 0
+      },
+      {
+        "rect": [
+          576,
+          192,
+          96,
+          96
+        ],
+        "uncovered": 0
+      }
+    ],
+    "market": [],
+    "height-test": [],
+    "junctions": []
+  },
+  "shadow_darkened_pixels": {
+    "L-block": 8618,
+    "market": 5760,
+    "height-test": 4032,
+    "junctions": 10337
+  },
+  "measurements": [
+    {
+      "file": "back-plain-ground-w1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        2304
+      ],
+      "colours": 19
+    },
+    {
+      "file": "back-plain-ground-w2",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 18
+    },
+    {
+      "file": "back-plain-ground-w3",
+      "size": [
+        144,
+        48
+      ],
+      "alpha_components": [
+        6912
+      ],
+      "colours": 22
+    },
+    {
+      "file": "back-plain-w1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        2304
+      ],
+      "colours": 22
+    },
+    {
+      "file": "back-plain-w2",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 19
+    },
+    {
+      "file": "back-plain-w3",
+      "size": [
+        144,
+        48
+      ],
+      "alpha_components": [
+        6912
+      ],
+      "colours": 22
+    },
+    {
+      "file": "back-stair-w1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        2304
+      ],
+      "colours": 18
+    },
+    {
+      "file": "back-stair-w2",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 20
+    },
+    {
+      "file": "back-stair-w3",
+      "size": [
+        144,
+        48
+      ],
+      "alpha_components": [
+        6912
+      ],
+      "colours": 21
+    },
+    {
+      "file": "corner-inner-roof",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 24
+    },
+    {
+      "file": "corner-inner-storey",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 24
+    },
+    {
+      "file": "corner-outer-L-roof",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 9
+    },
+    {
+      "file": "corner-outer-L-storey",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 23
+    },
+    {
+      "file": "corner-outer-R-roof",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 9
+    },
+    {
+      "file": "corner-outer-R-storey",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 20
+    },
+    {
+      "file": "deadend-cap-roof",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 9
+    },
+    {
+      "file": "deadend-cap-storey",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 13
+    },
+    {
+      "file": "fence-0",
+      "size": [
+        48,
+        24
+      ],
+      "alpha_components": [
+        615
+      ],
+      "colours": 10
+    },
+    {
+      "file": "fence-1",
+      "size": [
+        24,
+        48
+      ],
+      "alpha_components": [
+        384
+      ],
+      "colours": 10
+    },
+    {
+      "file": "lane",
+      "size": [
+        24,
+        48
+      ],
+      "alpha_components": [
+        1152
+      ],
+      "colours": 5
+    },
+    {
+      "file": "mud-edge",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        737
+      ],
+      "colours": 8
+    },
+    {
+      "file": "roof-back-w1",
+      "size": [
+        48,
+        96
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 8
+    },
+    {
+      "file": "roof-back-w2",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 9
+    },
+    {
+      "file": "roof-back-w3",
+      "size": [
+        144,
+        96
+      ],
+      "alpha_components": [
+        13824
+      ],
+      "colours": 9
+    },
+    {
+      "file": "side-ground",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 25
+    },
+    {
+      "file": "side-ground-E",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 25
+    },
+    {
+      "file": "side-ground-W",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 21
+    },
+    {
+      "file": "side-ground-d3",
+      "size": [
+        144,
+        48
+      ],
+      "alpha_components": [
+        6912
+      ],
+      "colours": 21
+    },
+    {
+      "file": "side-roof-d2",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 20
+    },
+    {
+      "file": "side-roof-d2-W",
+      "size": [
+        96,
+        96
+      ],
+      "alpha_components": [
+        9216
+      ],
+      "colours": 15
+    },
+    {
+      "file": "side-roof-d3",
+      "size": [
+        144,
+        144
+      ],
+      "alpha_components": [
+        20736
+      ],
+      "colours": 20
+    },
+    {
+      "file": "side-storey",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 20
+    },
+    {
+      "file": "side-storey-E",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 20
+    },
+    {
+      "file": "side-storey-W",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 18
+    },
+    {
+      "file": "side-storey-d3",
+      "size": [
+        144,
+        48
+      ],
+      "alpha_components": [
+        6912
+      ],
+      "colours": 20
+    },
+    {
+      "file": "street-junction",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        2304
+      ],
+      "colours": 5
+    },
+    {
+      "file": "street-junction-turn",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        2304
+      ],
+      "colours": 5
+    },
+    {
+      "file": "street-main",
+      "size": [
+        96,
+        48
+      ],
+      "alpha_components": [
+        4608
+      ],
+      "colours": 5
+    },
+    {
+      "file": "street-side",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        2304
+      ],
+      "colours": 5
+    },
+    {
+      "file": "tee-end-roof",
+      "size": [
+        144,
+        96
+      ],
+      "alpha_components": [
+        13824
+      ],
+      "colours": 9
+    },
+    {
+      "file": "tee-end-storey",
+      "size": [
+        144,
+        48
+      ],
+      "alpha_components": [
+        6912
+      ],
+      "colours": 19
+    },
+    {
+      "file": "yard-0",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        990
+      ],
+      "colours": 20
+    },
+    {
+      "file": "yard-1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        1302
+      ],
+      "colours": 20
+    },
+    {
+      "file": "yard-2",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        1594
+      ],
+      "colours": 24
+    },
+    {
+      "file": "yard-3",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_components": [
+        949
+      ],
+      "colours": 15
+    }
+  ],
+  "limitations": [
+    "Saved-art self-review, not independent or in-engine approval.",
+    "Current civic proxies defer final D skyline/gate and six distinct stall drawings."
+  ]
+}

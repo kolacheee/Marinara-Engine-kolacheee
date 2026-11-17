@@ -1,0 +1,249 @@
+{
+  "part": "C",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "compose.py",
+    "street-junction-turn"
+  ],
+  "files": {
+    "back-plain-ground-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-plain-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-plain-ground-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-plain-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-plain-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-plain-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-stair-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-stair-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "back-stair-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "build_c(view=\"wing\") crops side-roof-d2 / side-roof-d2-W at (0,8)-(96,72) and repeats that 64px interval into a 96px wing. The crop includes the beginning of the end-gable outline. This produces an isolated triangular gable-tip/notch partway along the supposed uninterrupted ridge, followed by a hard row reset. It is visible in every connected-node north wing. See critic-r17C-2-wing-crop-evidence.png, which marks the exact source interval and shows the actual result.",
+        "c_connected_layout() abuts the perpendicular wing to each node at scene y=144 (top row) or y=576 (bottom row) without a compatible drawn junction. The wing ridge stops at a horizontal rectangle edge; tile direction, tile size and slope shading change abruptly across it. The inner and tee cases are especially clear: no valley/ridge carries the incoming wing into the node. The outer and dead-end examples also retain a horizontal cut. Merely filling every pixel has not established seamless connected roof volumes. See critic-r17C-2-join-inner-4x.png, -join-tee-4x.png, -join-outer-L-4x.png, -join-outer-R-4x.png and -join-deadend-4x.png.",
+        "Directional ground shadows are incomplete in the C assemblies. c_render() paints east shadows only for explicitly supplied east_receiver rectangles, but the market has none. The exposed east side of the two-storey deep-side-property (building x=672..815, base=240) leaves ground at x=816..827, y=144..239 unchanged: all 1,152 pixels exactly equal the unshadowed ground render. A south shadow alone does not satisfy the required south/east grounding. See critic-r17C-2-east-shadow-4x.png. The new C tall/low examples likewise supply no east receivers."
+      ],
+      "fix": "Use a genuinely gable-free painted continuation with compatible wrap rows. Join the perpendicular wings using drawn adapters with continuous ridge/valley geometry, tile courses and shading; remove only the obsolete internal borders through registered native drawn contacts. Reuse passing caps where possible. Add height-responsive east receiving-surface masks wherever exposed C buildings should cast them, keeping routes clear and using the existing approved shadow drawings. Rebuild the connected outer/inner/T/dead-end proofs and the pilot, L-block, market and both C tall/low orientations at 1x/3x and greyscale. Do not change approved A/B exports."
+    },
+    "corner-inner-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "corner-inner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "corner-outer-L-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "corner-outer-L-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "corner-outer-R-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "corner-outer-R-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "deadend-cap-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "deadend-cap-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "fence-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "fence-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "lane": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "roof-back-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "roof-back-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "roof-back-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-ground-E": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-ground-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-ground-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-roof-d2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-roof-d2-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-roof-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-storey-E": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-storey-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "side-storey-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "street-junction": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "street-junction-turn": {
+      "status": "fail",
+      "problems": [
+        "The 48x48 export has a different paving scale from street-main, street-side and street-junction. Below/right of the kerb (approximately x=12..47, y=16..47), the surface is mostly broken 1-3px strokes and small irregular marks, rather than the adjoining fields' quiet 6-12px cobbles. It reads as fine scribble texture at 1x and as disconnected mortar fragments at 4x/8x. See critic-r17C-2-pieces-12.png and critic-r17C-2-detail-street-junction-turn-8x.png.",
+        "Against street-junction the whole tile forms a conspicuously darker, finer-textured square. The literal 3x3 repeat makes that material change and the repeated corner stamp obvious. The compositor uses only crop (4,7)-(13,16); hiding the rest of this drawing does not make the full exported tile acceptable. The intentional corner itself is not being failed for being directional."
+      ],
+      "fix": "Redraw the turn with the same cobble size, mortar weight and value distribution as street-junction. Retain a square kerb/gutter turn with clean entry/exit contacts. Register, mode-reduce, palette-lock and clean the drawing by the established method; do not generate replacement paving in code. Prove the full tile beside the main/side/junction surfaces as well as the actual cropped adapter."
+    },
+    "street-main": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "street-side": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "tee-end-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "tee-end-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "yard-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "yard-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "yard-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    },
+    "yard-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None for the exported PNG. Preserve its native pixels."
+    }
+  },
+  "notes": "Independent saved-art review of the current Part C submission, not an in-engine approval. Read BRIEF-17 in full, panel 1 and the drawing-method sections of NOTES; panel 2 is absent. Scope: all 45 C PNGs listed in r17-C-files.json, including retained rear-ground modules, east/west aliases, the west roof adapter and panel-assigned streets, plus compose.py. Every PNG was inspected as literal native pixels and nearest-neighbour 4x beside fantasy-house-2 (critic-r17C-2-pieces-00..14.png). Inspected every self/compatible-neighbour seam sheet, three-floor rear/stair/side assemblies, the five connected nodes, literal 3x3 street/lane/mud repeats, and fences/yard props on approved summer grass. No seasonal C partners exist or are required; seasonal overlays and summer/season alpha-mask comparisons are therefore not applicable. All 45 PNGs have the documented native sizes, alpha only 0/255, zero RGB under transparency and no detached one- or two-pixel alpha islands. All applicable wall modules exactly match COURSE.md rows 0/47. The previous ground-door stacking and side return registration failures are repaired; the yard well, washing/wood shelter, shed and tub tree are readable. Remaining join faults are assigned to composition, not to otherwise valid standalone cap PNGs. Re-rendered the actual unchanged compose.py functions into reviewer-prefixed PNGs: the 8x8 pilot, 16x12 L-block, irregular market, both 5|1 and 1|5 tests, and connected junctions, at 1x/3x with literal 1x round15-street/current-town comparisons and native greyscale squints. The current-town reference is a screenshot with 24px displayed cells; fantasy-house-2 supplies the native style comparison. Independent opaque-mask checks found no building/prop intrusion into the declared L-block or market clear routes (the intentional player marker is excluded), and zero holes in all three declared L-block required-roof regions. Deliberate fenced gardens are not roof holes. The market uses existing native fantasy-hall-1, fantasy-hall-0, fantasy-well-0 and two stall drawings as explicit Part D proxies. Cathedral/guildhall/gate hierarchy, market-cross art and six distinct full-size stalls remain deferred; the proxy church is not the skyline leader, so the final landmark/gate squint requirements are not passed. Round 15 is comparison only, not scene content. BRIEF-17 takes precedence over panel suggestions to remove fixed courses, permit lot-crossing overlays, omit the 24px lane or drop compulsory bends/jogs/wedges; those conflicts are not used to waive brief requirements. This review created only critic-r17C-2.json and critic-r17C-2-*.png composites under art-drop/review. SHA-256 checks confirm all 424 existing city17 files unchanged. No commit, push or branch change."
+}

@@ -1,0 +1,239 @@
+{
+  "part": "C",
+  "round": 3,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "back-plain-ground-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-plain-ground-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-plain-ground-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-plain-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-plain-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-plain-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-stair-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-stair-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "back-stair-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-inner-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-inner-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-outer-L-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-outer-L-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-outer-R-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "corner-outer-R-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "deadend-cap-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "deadend-cap-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fence-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fence-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lane": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-back-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-ground-E": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-ground-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-ground-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-roof-d2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-roof-d2-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-roof-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-storey-E": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-storey-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-storey-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-junction": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-junction-turn": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-main": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-side": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tee-end-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tee-end-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art review of Round 17 Part C, review round 3. Read BRIEF-17 in full, panel 1 and the drawing-method sections of NOTES; panel 2 is absent. Reviewed all 45 current C PNGs, including the ground-only rear modules, E/W aliases, west roof adapter and panel-assigned street surfaces, plus the current compose.py. No art was drawn or repaired by this reviewer.\n\nEvery PNG was inspected at literal 1x and nearest-neighbour 4x beside fantasy-house-2 in critic-r17C-3-pieces-00 through -22. Also inspected all self/compatible-family seam sheets, three-floor plain/stair/side assemblies, connected outer-L/outer-R/inner/T/dead-end roof assemblies, literal 3x3 repeats of all six street/lane/mud surfaces, and fences/yard details over approved summer grass. The repaired street-junction-turn was additionally inspected at 8x. There are no seasonal Part C partners, so seasonal overlays and summer/season alpha-mask comparisons are not applicable.\n\nIndependent pixel checks confirm all 45 exports have the documented native dimensions, alpha only 0/255, zero RGB under transparency and no detached one- or two-pixel alpha islands. Applicable wall modules exactly preserve COURSE.md rows 0 and 47. Ground-only rear doors remain at ground level; stacked stair galleries and side returns have continuous supports/contacts. Rear roofs retain square bounds and the shared ridge/eave registration. Fences join in their intended direction. The well, washing/wood shelter, low shed and tub tree remain legible at 1x. No remaining file-level size, light, outline, softness, accidental seam, material-scale or silhouette defect warrants a redo.\n\nBoth round-2 failures are resolved. street-junction-turn now has broad complete cobbles with compatible values and mortar weight; its full export no longer reads as a dark fine-textured patch. Repeated kerb turns in its stress sheet are intentional directional geometry, not a paving-field repeat prescription. compose.py no longer repeats a 64px crop containing a gable tip: the five connected roofs use consecutive regions of continuous painted assemblies. Inspected the complete north-wing/node contacts at 1x/3x and focused 4x; the prior horizontal cuts and orphan gable-tip resets are gone. The T valley reaches the reentrant corner. The standalone cap exports and their connected adapters both retain usable roof volumes. South/east receiving shadows are present, respect visible receiving surfaces and preserve the paving. Independently confirmed shadow coverage on all 1,152 previously missing market east-receiver pixels, and inspected both C tall/low orientations.\n\nRe-rendered the actual unchanged compose.py functions into reviewer-prefixed PNGs: the 8x8 pilot, 16x12 L-block, irregular market, both 5|1 and 1|5 height tests and connected junctions. Saved each at 1x and nearest-neighbour 3x, with comparisons to literal 1x round15-street and current-town, plus native greyscale squints. Exact 3x scene crops and focused joins support close inspection. The current-town reference is a screenshot displaying 24px cells; the native house reference supplies the style/scale comparison. Also inspected the pilot footprint/paint/entrance/overhang diagram and actor cutaway proof. The court actor remains visible; removing the front roof reveals the intentionally occluded actor.\n\nIndependent occupancy checks found zero opaque building/prop intrusions in all three declared L-block clear routes and all four market routes, excluding the intentional player marker. All three required L-block roof regions have zero uncovered pixels. The remaining interior grass belongs to deliberate fenced gardens/courts. The scenes show front/back rows, side returns, T/dead-end circulation, varied widths/heights and street shadows. Native greyscale preserves the route and building masses.\n\nThis pass is scoped to Part C. The market uses current fantasy-hall-1, fantasy-hall-0, fantasy-well-0 and two stall drawings as explicitly labelled Part D proxies. Final cathedral/guildhall/gate skyline hierarchy, market-cross art and six distinct full-size stalls remain deferred, not approved by this verdict; the proxy church is not the skyline leader. Round 15 is comparison only, with no Round 15 scene sprites. Approved A/B pieces are used as existing context. BRIEF-17 takes precedence over panel suggestions to remove fixed courses, permit lot-crossing overlays, omit the 24px lane or drop compulsory bends/jogs/wedges. The 5-7-cell property demonstration is treated as the composite house/yard/rear-property depth, retaining the brief's smaller individual building lots.\n\nCreated only critic-r17C-3.json and critic-r17C-3-*.png review composites under art-drop/review. A before/after SHA-256 aggregate over all 424 city17 files is identical (92e4c3d3dc8322bf7194ed1e5ff98c756f243e0bcf39c662e8dc8d57890363fe). No city17 file, branch, commit or remote was changed. This is independent saved-art acceptance for Part C, not an in-engine or final Part D/E acceptance."
+}

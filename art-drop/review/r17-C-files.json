@@ -1,0 +1,864 @@
+[
+  {
+    "file": "back-plain-ground-w1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "opaque": 2304,
+    "hash": "6c8c04e3c486049f44f63aa2e218eb0c50bff68a4c02b9e5afc7f478531dc753"
+  },
+  {
+    "file": "back-plain-ground-w2.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "7ecde2297487042410e79beba823ed5e41d3d690153954c0dad706f01238da31"
+  },
+  {
+    "file": "back-plain-ground-w3.png",
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "colours": 22,
+    "alpha": [
+      255
+    ],
+    "opaque": 6912,
+    "hash": "64c911595188de0d8116040bd84199585d005379f6542b014dfc339975610143"
+  },
+  {
+    "file": "back-plain-w1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 22,
+    "alpha": [
+      255
+    ],
+    "opaque": 2304,
+    "hash": "04894b79c35290dd59daf1b0cebc91111cdc615f9946a217c6a93a73b12bfe13"
+  },
+  {
+    "file": "back-plain-w2.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "eeb115e30623eee5d180e2cd30601ac19e78649377208e68a7c80d9a178c6e9d"
+  },
+  {
+    "file": "back-plain-w3.png",
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "colours": 22,
+    "alpha": [
+      255
+    ],
+    "opaque": 6912,
+    "hash": "908b854888604cec67793df8b3cf29acf4b67995a5c618ad683faff56c6c7d62"
+  },
+  {
+    "file": "back-stair-w1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "opaque": 2304,
+    "hash": "a6528aa2dba45b5ddbc6e46563f48b5c878031a261511018b502612f7c08aca7"
+  },
+  {
+    "file": "back-stair-w2.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "96bdb5c0ec1f0b71442b9cd384fc4f64afea79c9b9c759f88588910debf361ef"
+  },
+  {
+    "file": "back-stair-w3.png",
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "opaque": 6912,
+    "hash": "dde9e90eed2fceef5385d514809613f9c4298024bb573ba2d4b06dac16c1c9f0"
+  },
+  {
+    "file": "corner-inner-roof.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 24,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "b88401d7e42c9aa4c59567fd3e713b3e0722344f0f97f4e7b27335985d6c41b6"
+  },
+  {
+    "file": "corner-inner-storey.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 24,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "adf94c30584aa1cee771e1476fc519fcbd75934517a9e819c73d6581e85f8007"
+  },
+  {
+    "file": "corner-outer-L-roof.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "8dc6ba37967e6537fe87161d2aeca2c957a2e93adbcf15072de1c4746dfa63be"
+  },
+  {
+    "file": "corner-outer-L-storey.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 23,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "449911ffdac51e95d0a067af6095d814facf4250149cf725b6bf849315e0b955"
+  },
+  {
+    "file": "corner-outer-R-roof.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "c77bc9968bc3ccc0f577714fed89225d64da85b9e2f19cccb4a03e62def5257e"
+  },
+  {
+    "file": "corner-outer-R-storey.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "7faef4e8e815bffb2599967f5c748373069380bc04c92316a3a54dc4c69c38a8"
+  },
+  {
+    "file": "deadend-cap-roof.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "80797e35c77c8df4804bbc15c3909d007e7dbedfe48c0064dd78e93ab206477a"
+  },
+  {
+    "file": "deadend-cap-storey.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 13,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "7c4880381a782a00db698cb5de371b68243ec01d176b331aa18e5b8df76475e3"
+  },
+  {
+    "file": "fence-0.png",
+    "size": [
+      48,
+      24
+    ],
+    "bounds": [
+      0,
+      6,
+      48,
+      23
+    ],
+    "colours": 10,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 615,
+    "hash": "dacdfcfc6dcea2658b5fcfb48040814448b9b4709bdfb1a84d28b13f378ce144"
+  },
+  {
+    "file": "fence-1.png",
+    "size": [
+      24,
+      48
+    ],
+    "bounds": [
+      7,
+      0,
+      17,
+      48
+    ],
+    "colours": 10,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 384,
+    "hash": "7d91a34329b978c53b5d622fc247fcf228973bfa76db9861186b69ca721b69e0"
+  },
+  {
+    "file": "lane.png",
+    "size": [
+      24,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      24,
+      48
+    ],
+    "colours": 5,
+    "alpha": [
+      255
+    ],
+    "opaque": 1152,
+    "hash": "631ca07fbae8a4af4aa9f4a9e64566937162972e742c7407ae2fa397f0fa4b6d"
+  },
+  {
+    "file": "mud-edge.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      16,
+      0,
+      33,
+      48
+    ],
+    "colours": 8,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 737,
+    "hash": "07d84b7ea77b54a57ef073badb8ae53b7a7299449935124a7e72e699c3bd203b"
+  },
+  {
+    "file": "roof-back-w1.png",
+    "size": [
+      48,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      96
+    ],
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "d21b49de5b04aac84c67006a75ec1f5ceab0dd645289fd252f3085b8251a64b4"
+  },
+  {
+    "file": "roof-back-w2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "48fef78e6be105990b6d5bb084b5340253c2a8fad843d7de993b5ecaf6563ef0"
+  },
+  {
+    "file": "roof-back-w3.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "opaque": 13824,
+    "hash": "decc4eb4af2a69547e315f80952363dfa301566feed856e2e20f5df4ae879f3a"
+  },
+  {
+    "file": "side-ground.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 25,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "ed2a3ec53d8e092dd6cdac61fc7172191068e5ed3be042b2d439d5c39ce85d20"
+  },
+  {
+    "file": "side-ground-E.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 25,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "ed2a3ec53d8e092dd6cdac61fc7172191068e5ed3be042b2d439d5c39ce85d20"
+  },
+  {
+    "file": "side-ground-W.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "684da1200b3a15e963d1fd04e954e602d51c941bb8e2ee7285fff1c936efa9bb"
+  },
+  {
+    "file": "side-ground-d3.png",
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "opaque": 6912,
+    "hash": "c040623347ca75f69b22f9817714fa4c2c2697730196423bdc736a2246de237f"
+  },
+  {
+    "file": "side-roof-d2.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "3ded249916a57058f7011a9fc41d41af09bcaf3a0df31a9a64a852ee4d9820ab"
+  },
+  {
+    "file": "side-roof-d2-W.png",
+    "size": [
+      96,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      96
+    ],
+    "colours": 15,
+    "alpha": [
+      255
+    ],
+    "opaque": 9216,
+    "hash": "e73789408b0714ed5022ac07af1f8b98382eb8d1a098600fb8b9cbc0ee352886"
+  },
+  {
+    "file": "side-roof-d3.png",
+    "size": [
+      144,
+      144
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      144
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 20736,
+    "hash": "7efdeb0a4d48291c6d8e08b62270a699dc387b60c75b09d294ea473b8dcb9885"
+  },
+  {
+    "file": "side-storey.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "fc0a6db5dab6f4206409d34cb9917dcab0802fee7bb27d39ad399e1ad4c806e8"
+  },
+  {
+    "file": "side-storey-E.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "fc0a6db5dab6f4206409d34cb9917dcab0802fee7bb27d39ad399e1ad4c806e8"
+  },
+  {
+    "file": "side-storey-W.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 18,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "1abf949c1ff2df724fdb133be841f09b54cae459d6cfbd718248b7cfc13a6ade"
+  },
+  {
+    "file": "side-storey-d3.png",
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "colours": 20,
+    "alpha": [
+      255
+    ],
+    "opaque": 6912,
+    "hash": "cd86cda454d0dd902c576260734a38fb435025c3aa8fd7502aac24a47087c1ad"
+  },
+  {
+    "file": "street-junction.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 5,
+    "alpha": [
+      255
+    ],
+    "opaque": 2304,
+    "hash": "efed3111e8e11ff4c83d18ae0e7e3417ddfe903e257cee5d6c3d4f422bc1c041"
+  },
+  {
+    "file": "street-junction-turn.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 4,
+    "alpha": [
+      255
+    ],
+    "opaque": 2304,
+    "hash": "4443302b3b077168ac211b39f0bcdf216db62827ba435c6407e6cb3dc14bef6b"
+  },
+  {
+    "file": "street-main.png",
+    "size": [
+      96,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      96,
+      48
+    ],
+    "colours": 5,
+    "alpha": [
+      255
+    ],
+    "opaque": 4608,
+    "hash": "daaa5f9283d3530d84274b3cade7c90c6a606535371430ceb9ffdb4133bcbf78"
+  },
+  {
+    "file": "street-side.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "colours": 5,
+    "alpha": [
+      255
+    ],
+    "opaque": 2304,
+    "hash": "eea74c08c2074825f90196749c9345164c849c8c6df847a0ce29cb6f4b412615"
+  },
+  {
+    "file": "tee-end-roof.png",
+    "size": [
+      144,
+      96
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      96
+    ],
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "opaque": 13824,
+    "hash": "25983a4b27764f9ed227a3555769c6ae69e9d4956ce9b2f8c5d715bceb6c0ee4"
+  },
+  {
+    "file": "tee-end-storey.png",
+    "size": [
+      144,
+      48
+    ],
+    "bounds": [
+      0,
+      0,
+      144,
+      48
+    ],
+    "colours": 19,
+    "alpha": [
+      255
+    ],
+    "opaque": 6912,
+    "hash": "87c4c2f89c67751c31598c46418d2f7ae0cfe8729cfbfe36f6be7ad7561bcb93"
+  },
+  {
+    "file": "yard-0.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      7,
+      1,
+      41,
+      47
+    ],
+    "colours": 20,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 990,
+    "hash": "caa0059d8335bb48c6c10f3452397a986e79eb8a1c6091917e2cf6c2da68d5bf"
+  },
+  {
+    "file": "yard-1.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      3,
+      1,
+      45,
+      47
+    ],
+    "colours": 20,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 1302,
+    "hash": "6daf2a93ea5d5782d6451f74df979aa46768fc286c6a86518a6a8dee167fdc81"
+  },
+  {
+    "file": "yard-2.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      2,
+      1,
+      46,
+      47
+    ],
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 1594,
+    "hash": "02d8f17bcf20cb5a610c5f6ea8c003f5686053f0643894e22a6e6b6898219d4b"
+  },
+  {
+    "file": "yard-3.png",
+    "size": [
+      48,
+      48
+    ],
+    "bounds": [
+      4,
+      1,
+      44,
+      47
+    ],
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ],
+    "opaque": 949,
+    "hash": "1f9cb1701bf3ef899a6f7d6ee18fe2383e5e7f306b5831158d8ce4705d2c2126"
+  }
+]

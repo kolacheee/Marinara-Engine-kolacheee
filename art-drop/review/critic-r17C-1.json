@@ -1,0 +1,320 @@
+{
+  "part": "C",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "back-plain-w1",
+    "back-plain-w2",
+    "back-plain-w3",
+    "back-stair-w1",
+    "back-stair-w2",
+    "back-stair-w3",
+    "compose.py",
+    "corner-inner-roof",
+    "corner-inner-storey",
+    "corner-outer-L-roof",
+    "corner-outer-R-roof",
+    "fence-1",
+    "lane",
+    "mud-edge",
+    "roof-back-w1",
+    "roof-back-w2",
+    "roof-back-w3",
+    "side-roof-d2",
+    "side-roof-d3",
+    "side-storey",
+    "side-storey-E",
+    "side-storey-W",
+    "street-junction",
+    "street-main",
+    "street-side",
+    "yard-3"
+  ],
+  "files": {
+    "back-plain-w1": {
+      "status": "fail",
+      "problems": [
+        "The left door/step at approximately x=5..23 and bottom foundation are baked into every 48px module. In the three-storey rear proof they recur on upper floors as doors opening into air above floating stone plinths. Matching rows 0/47 does not make this a convincing stackable rear storey.",
+        "The upper-floor result reads as repeated ground-floor cards at 1x beside fantasy-house-2. See r17-C-back-stack-w1-1x.png and -4x.png."
+      ],
+      "fix": "Separate ground-only door/step/plinth treatment from the repeatable upper wall, or draw a supported external landing system. Keep the exact course rows and 48px spacing; demonstrate three floors with supported openings and the reference window/sill depth."
+    },
+    "back-plain-w2": {
+      "status": "fail",
+      "problems": [
+        "The right door/step at approximately x=72..88 and bottom foundation are baked into every 48px module. In the three-storey rear proof they recur on upper floors as doors opening into air above floating stone plinths. Matching rows 0/47 does not make this a convincing stackable rear storey.",
+        "The upper-floor result reads as repeated ground-floor cards at 1x beside fantasy-house-2. See r17-C-back-stack-w2-1x.png and -4x.png."
+      ],
+      "fix": "Separate ground-only door/step/plinth treatment from the repeatable upper wall, or draw a supported external landing system. Keep the exact course rows and 48px spacing; demonstrate three floors with supported openings and the reference window/sill depth."
+    },
+    "back-plain-w3": {
+      "status": "fail",
+      "problems": [
+        "The right door/step at approximately x=108..130 and bottom foundation are baked into every 48px module. In the three-storey rear proof they recur on upper floors as doors opening into air above floating stone plinths. Matching rows 0/47 does not make this a convincing stackable rear storey.",
+        "The upper-floor result reads as repeated ground-floor cards at 1x beside fantasy-house-2. See r17-C-back-stack-w3-1x.png and -4x.png."
+      ],
+      "fix": "Separate ground-only door/step/plinth treatment from the repeatable upper wall, or draw a supported external landing system. Keep the exact course rows and 48px spacing; demonstrate three floors with supported openings and the reference window/sill depth."
+    },
+    "back-stair-w1": {
+      "status": "fail",
+      "problems": [
+        "The flight at x≈4..37 climbs from the module bottom to its own raised door. Repeating at 48px offsets leaves the next flight starting in mid-air at the opposite end: no connecting landing or supporting return exists. See r17-C-back-stack-w1-1x.png / -4x.png.",
+        "The solid stone wedge beneath each flight becomes a suspended triangular mass on upper floors. This fails believable stacking despite matching boundary pixels."
+      ],
+      "fix": "Draw a repeatable stair/landing arrangement with matching endpoints at floor boundaries, or separate the ground flight from supported upper landings. Preserve painted tread tops, rail, door recess and course rows; prove a three-storey assembly."
+    },
+    "back-stair-w2": {
+      "status": "fail",
+      "problems": [
+        "The flight at x≈17..80 climbs from the module bottom to its own raised door. Repeating at 48px offsets leaves the next flight starting in mid-air at the opposite end: no connecting landing or supporting return exists. See r17-C-back-stack-w2-1x.png / -4x.png.",
+        "The solid stone wedge beneath each flight becomes a suspended triangular mass on upper floors. This fails believable stacking despite matching boundary pixels."
+      ],
+      "fix": "Draw a repeatable stair/landing arrangement with matching endpoints at floor boundaries, or separate the ground flight from supported upper landings. Preserve painted tread tops, rail, door recess and course rows; prove a three-storey assembly."
+    },
+    "back-stair-w3": {
+      "status": "fail",
+      "problems": [
+        "The flight at x≈78..136 climbs from the module bottom to its own raised door. Repeating at 48px offsets leaves the next flight starting in mid-air at the opposite end: no connecting landing or supporting return exists. See r17-C-back-stack-w3-1x.png / -4x.png.",
+        "The solid stone wedge beneath each flight becomes a suspended triangular mass on upper floors. This fails believable stacking despite matching boundary pixels."
+      ],
+      "fix": "Draw a repeatable stair/landing arrangement with matching endpoints at floor boundaries, or separate the ground flight from supported upper landings. Preserve painted tread tops, rail, door recess and course rows; prove a three-storey assembly."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "build_c() repeats the same rear ground-door/plinth or disconnected stair on every floor. Three-storey proofs expose unsupported doors/flights despite matching course rows.",
+        "The junction scene is five isolated rectangular buildings separated by grass. It does not connect corner-inner or tee-end to perpendicular wall/roof wings. Self-repeat sheets cannot prove these joins; the L-block uses the pre-existing Part B continuous L roof.",
+        "Side-floor corner positions and roof/wall face divisions do not align in the actual E/W assemblies. The height test exercises A/B geometry and does not expose these C return problems.",
+        "At L-block side openings the north-south kerb continues past the junction. Generic junction fill is overpainted by the intact street edge; the connecting opening needs a real curb/gutter transition.",
+        "The market main-road strip at x=384..479 runs 864px (18 cells) at unchanged width, and the L-block north-south strip runs 11 cells unchanged. These fail the brief’s maximum eight-cell unchanged street-width rule.",
+        "The north rear row repeats roof-back-w2 at x=0,144,240 and looks copy-pasted. The ground patterns add conspicuous stripes across the block/square.",
+        "The 8x8 pilot has footprint/court reservations, but its side building already has the mismatched return/gable assembly and cannot establish an approved combined volume."
+      ],
+      "fix": "After drawing repairs, compose connected outer/inner/T/dead-end arrangements using C pieces, with unlike front/back/side contacts and a tall/low C example. Use stack-safe rear placement, consistent corners and actual kerb openings. Introduce property-led width changes/setbacks within eight cells while retaining 96px main and 48px side clearances. Vary rear roofs and preserve deliberate fenced yards. Rebuild the pilot, seams and all 1x/3x/greyscale scenes without modifying approved A/B exports."
+    },
+    "corner-inner-roof": {
+      "status": "fail",
+      "problems": [
+        "The valley crosses the entire canvas from top-left to bottom-right and exits near x=95; the paired wall puts its internal corner/drain near x=48. In critic-r17C-1-assembly-inner.png these do not form one concave building.",
+        "Self-repeating this diagonal square does not establish either compatible L-wing attachment."
+      ],
+      "fix": "Draw a valley terminating over the actual inner wall corner, with two roof wings meeting at compatible slope, tile scale and eave height. Prove the concave join in a connected L block, preserving the intended court."
+    },
+    "corner-inner-storey": {
+      "status": "fail",
+      "problems": [
+        "The bays around x=14..43 and x=53..82 are parallel frontal rectangles divided by a pipe; the horizontal ledges run straight through the centre. This reads as a split-colour flat wall rather than an inward turn with receding returns.",
+        "Its central corner also does not receive the paired roof valley. See critic-r17C-1-assembly-inner.png."
+      ],
+      "fix": "Redraw the inward-facing returns with coherent projected sill/beam tops and a shaded recess; align the valley to that recess. Keep rows 0/47 intact and put the perspective cues inside the module; prove the gap-free joined L."
+    },
+    "corner-outer-L-roof": {
+      "status": "fail",
+      "problems": [
+        "In the actual assembly the diagonal hip reaches the bottom-left eave at x≈0, while the wall changes direction at x≈24. The roof planes do not sit over the wall faces they cover. See critic-r17C-1-assembly-outer-L.png."
+      ],
+      "fix": "Register the painted roof corner/eave turn to the existing wall corner near x=24, with coherent lit left and shaded return planes. Show a connected front row and perpendicular side row, with uninterrupted coverage and no doubled join."
+    },
+    "corner-outer-L-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "corner-outer-R-roof": {
+      "status": "fail",
+      "problems": [
+        "The diagonal hip reaches the bottom-right eave at x≈95, but the wall return begins near x=70. The roof and wall describe different corners in critic-r17C-1-assembly-outer-R.png."
+      ],
+      "fix": "Redraw/register the roof turn to the wall return near x=70. Preserve top-left lighting and demonstrate a connected right-hand block corner with both neighbouring roof planes."
+    },
+    "corner-outer-R-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "deadend-cap-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "deadend-cap-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "fence-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "fence-1": {
+      "status": "fail",
+      "problems": [
+        "The narrow run around x=9..16 is a jagged chain of brown lumps/cut-outs. It looks like a twisted stick at 1x; at 8x the posts and two rails cannot be followed as a coherent receding fence. See critic-r17C-1-prop-fence-1.png.",
+        "This does not match fence-0’s clear post/rail construction in the yards."
+      ],
+      "fix": "Redraw the north-south fence with a continuous top rail, distinguishable posts, one-pixel contour and readable gaps. Preserve end registration; demonstrate a vertical repeat and a corner connection to fence-0 over summer ground."
+    },
+    "lane": {
+      "status": "fail",
+      "problems": [
+        "The merged pale blocks and broken joints become a repeated ladder at 24px width; the same scarred centre recurs every tile. See critic-r17C-1-repeat-lane.png.",
+        "The connected ends and darker wall gutter do not read clearly enough as the requested lane_joined-style narrow route."
+      ],
+      "fix": "Draw a coherent 24x48 joined path with quiet small cobbles, continuous edge/gutter treatment and matching north/south contacts. Remove the central scar; keep required circulation tests at 48/96px clearance."
+    },
+    "mud-edge": {
+      "status": "fail",
+      "problems": [
+        "The large S-shaped rut and pale patches recur every 48px as an obvious wavy ribbon. The repeated motif is visible at native size and becomes especially conspicuous in the literal 3x3 field. See critic-r17C-1-repeat-mud-edge.png.",
+        "Wide flat tan/brown bands read as a smeared decorative stripe beside the approved grass rather than worn mud."
+      ],
+      "fix": "Redraw a restrained irregular muddy verge with smaller purposeful ruts and firm clusters. Keep the painted north/south ends continuous while avoiding one recognisable S motif. Review a long edge and the literal 3x3 repeat."
+    },
+    "roof-back-w1": {
+      "status": "fail",
+      "problems": [
+        "At 1x the single slope reads as a rectangular orange brick panel: nearly uniform tile courses and repeated highlights dominate the plane, while the top 12 rows read as broad horizontal bands rather than a convincing roof ridge. The assembled rear buildings remain flatter than fantasy-house-2. See r17-C-compatible-0-4x.png and the north row in critic-r17C-1-L-block-1x.png.",
+        "The diagonal highlight stamp on almost every tile produces a conspicuous regular pattern across neighbouring rear roofs and dominates the small rear windows at native size."
+      ],
+      "fix": "Redraw the single slope with a readable tiled ridge, consistent tile scale across all widths, quieter clustered highlights and clear recession toward the ridge. Give the eave lit thickness and a dark underside. Keep 96px depth, square coverage and shared contacts; review the mixed-width row beside the town house again."
+    },
+    "roof-back-w2": {
+      "status": "fail",
+      "problems": [
+        "At 1x the single slope reads as a rectangular orange brick panel: nearly uniform tile courses and repeated highlights dominate the plane, while the top 12 rows read as broad horizontal bands rather than a convincing roof ridge. The assembled rear buildings remain flatter than fantasy-house-2. See r17-C-compatible-0-4x.png and the north row in critic-r17C-1-L-block-1x.png.",
+        "The diagonal highlight stamp on almost every tile produces a conspicuous regular pattern across neighbouring rear roofs and dominates the small rear windows at native size."
+      ],
+      "fix": "Redraw the single slope with a readable tiled ridge, consistent tile scale across all widths, quieter clustered highlights and clear recession toward the ridge. Give the eave lit thickness and a dark underside. Keep 96px depth, square coverage and shared contacts; review the mixed-width row beside the town house again."
+    },
+    "roof-back-w3": {
+      "status": "fail",
+      "problems": [
+        "At 1x the single slope reads as a rectangular orange brick panel: nearly uniform tile courses and repeated highlights dominate the plane, while the top 12 rows read as broad horizontal bands rather than a convincing roof ridge. The assembled rear buildings remain flatter than fantasy-house-2. See r17-C-compatible-0-4x.png and the north row in critic-r17C-1-L-block-1x.png.",
+        "The body below the shared ridge has mottled irregular clusters conspicuously different from the cleaner w1/w2 tiles. Identical ridge/eave transfers have not made the adjoining material coherent."
+      ],
+      "fix": "Redraw the single slope with a readable tiled ridge, consistent tile scale across all widths, quieter clustered highlights and clear recession toward the ridge. Give the eave lit thickness and a dark underside. Keep 96px depth, square coverage and shared contacts; review the mixed-width row beside the town house again."
+    },
+    "side-ground": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "side-ground-E": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "side-ground-W": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "side-ground-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "side-roof-d2": {
+      "status": "fail",
+      "problems": [
+        "The gable/eave occupy virtually the full 96px width, but both side wall assemblies reserve a substantial strip for a receding return. The cap covers that strip as frontal gable: its faces agree with neither wall orientation. See critic-r17C-1-assembly-side-E.png and -side-W.png.",
+        "Using the identical cap for both orientations leaves front-facing gabled cards rather than coherent separately lit side ends along the north-south route."
+      ],
+      "fix": "Draw end-on roof geometry respecting the wall face/return widths and top-left light. Demonstrate an orientation adapter if one cap cannot fit E and W. Keep 96x96 bounds; prove connection to the front/back roof as well as vertical stacking."
+    },
+    "side-roof-d3": {
+      "status": "fail",
+      "problems": [
+        "The upper-slope tiles are substantially larger/taller than side-roof-d2 tiles, with broad flat faces and thick course shadows. Extra depth reads as enlarged material rather than more courses at the established native scale; conspicuous on the upper-right market property.",
+        "The full-width frontal gable also extends across the right wall return. See critic-r17C-1-assembly-side-d3.png."
+      ],
+      "fix": "Redraw the 144x144 cap with added depth at the d2/reference tile scale, coherent tile clusters and a gable/return division matching the walls. Preserve square opaque coverage; prove front/back and d2 neighbour joins at 1x/4x."
+    },
+    "side-storey": {
+      "status": "fail",
+      "problems": [
+        "The upper east return/post is near x=70..77, but side-ground-E turns near x=77..82. Stacking shifts the outside building corner sideways by several native pixels at the floor line. See critic-r17C-1-assembly-side-E.png.",
+        "The full-width gable above also spans the shaded return rather than agreeing with the front/side division."
+      ],
+      "fix": "Use the ground module’s projected corner coordinate and return width on every floor, then fit the roof faces to it. Keep the 96x48 canvas, fixed course rows and east shade; keep the unsuffixed alias identical to the corrected E export."
+    },
+    "side-storey-E": {
+      "status": "fail",
+      "problems": [
+        "The upper east return/post is near x=70..77, but side-ground-E turns near x=77..82. Stacking shifts the outside building corner sideways by several native pixels at the floor line. See critic-r17C-1-assembly-side-E.png.",
+        "The full-width gable above also spans the shaded return rather than agreeing with the front/side division."
+      ],
+      "fix": "Use the ground module’s projected corner coordinate and return width on every floor, then fit the roof faces to it. Keep the 96x48 canvas, fixed course rows and east shade; keep the unsuffixed alias identical to the corrected E export."
+    },
+    "side-storey-W": {
+      "status": "fail",
+      "problems": [
+        "The upper return/post near x=17..24 is shifted relative to the narrower ground return near x=13..19. In critic-r17C-1-assembly-side-W.png it visibly steps sideways across the pale floor belt."
+      ],
+      "fix": "Align the upper left return/post with side-ground-W, retaining separately painted west lighting. Keep the 48px floor pitch and exact course rows; prove three floors under the corrected side roof."
+    },
+    "side-storey-d3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "street-junction": {
+      "status": "fail",
+      "problems": [
+        "The field repeats exactly every 16 native rows. Slanted light patches form obvious diagonal bands across the market square at 1x. See critic-r17C-1-repeat-street-junction.png and -market-squint-1x.png.",
+        "This is generic paving fill with no transition for main/side street kerbs; the compositor leaves curb lines across connecting openings."
+      ],
+      "fix": "Draw a calmer, less identifiable repeat and painted kerb/gutter terminations for the actual T/corner connections. Prove the junction surrounded by main/side streets as well as in a literal repeat; code may only register/crop/composite the drawings."
+    },
+    "street-main": {
+      "status": "fail",
+      "problems": [
+        "The complete paving repeats exactly every 12 native rows. Broad dark mortar lanes and paired light bars form conspicuous ladders/stripes in the literal 3x3 field and horizontal L-block streets. See critic-r17C-1-repeat-street-main.png.",
+        "The high-contrast regular rhythm survives the 1x greyscale squint and competes with buildings instead of supplying quiet 6–12px cobbles."
+      ],
+      "fix": "Draw a longer, less regular cobble field with narrow consistent mortar and modest value variation. Tile-wrap complete painted courses without reducing them to a two-course stamp. Keep 96px width/gutters; terminate kerbs at junctions."
+    },
+    "street-side": {
+      "status": "fail",
+      "problems": [
+        "The same broken grout/pale zigzag repeats down the middle every 48px. Stone boundaries disappear/reappear around x=15..36, y=15..44; the field reads as scuffed panels rather than solid cobbles.",
+        "The transverse course at each vertical tile boundary creates a recurring beat. See critic-r17C-1-repeat-street-side.png and the long central L-block lane."
+      ],
+      "fix": "Paint complete quiet cobbles with continuous joints and controlled variation. Match top/bottom course phase, remove the distinctive central scar, and join gutters to actual junction transitions."
+    },
+    "tee-end-roof": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "tee-end-storey": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "yard-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "yard-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "yard-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required for this drawing. Assembly failures are assigned to the faulty component separately."
+    },
+    "yard-3": {
+      "status": "fail",
+      "problems": [
+        "The crown around x=9..37, y=1..29 is a few large smooth lobes with a thick dark lower band. It reads as a blob at 1x and lacks the leaf clusters of current-town trees. See critic-r17C-1-prop-yard-3.png at 1x/4x/8x."
+      ],
+      "fix": "Redraw compact leaf clusters with top-left highlights, small branch gaps and a consistent one-pixel contour. Preserve the readable tub/trunk; keep 48x48 bounds, hard alpha and no detached specks."
+    }
+  },
+  "notes": "Independent review of all 40 Part C PNGs plus compose.py. Read BRIEF-17 in full, panel 1, COURSE.md and NOTES.md method sections; panel 2 is absent. No production file was edited. All pieces were inspected at literal 1x and nearest-neighbour 4x beside fantasy-house-2 in per-file/atlas proofs. Code confirmed all 40 native/4x per-file views exactly match current exports. Inspected self/compatible seams, rear stacks, C assemblies, props on approved summer ground and literal 3x3 repeats of all five street/lane/mud surfaces; selected props also at 8x. No seasonal partners belong to this set, so seasonal overlays and summer/seasonal alpha-mask comparisons are not applicable. Mechanical checks pass for every PNG: required/documented native dimensions, RGBA, alpha only 0/255, zero hidden RGB, no one- or two-pixel 8-connected alpha islands, square opaque architectural footprints. Every rear/side/corner wall has exact course rows 0/47; all roof caps have one-pixel dark top/side boundaries. These do not waive depth, repetition or assembly failures. Re-rendered the 768x576 L-block, 864x864 market, 768x480 5|1 and 1|5 test, and corner scene by importing unchanged compose.py with bytecode disabled. Scene pixels match supplied renders; fresh critic-r17C-1-* outputs include exact 1x/3x, comparisons beside both unscaled references, and greyscale squints at 1x. Current-town displays 24px cells; fantasy-house-2 is the native-scale comparator. Required L-roof rectangles are filled and garden ground is deliberate; no accidental transparent roof hole is alleged. Street shadows are present and the A/B firewall joins remain intact. Current fantasy church/hall, well and two stall drawings are labelled Part D proxies: their skyline hierarchy, absent gate and six distinct stalls remain deferred, not charged as C asset failures. No Round 15 scene asset is used; its street is comparison only and course/palette donors remain the established contract. Part A trade signs were not regraded. BRIEF-17 wins over panel suggestions to drop compulsory bends/jogs/wedges, defer the 24px lane, remove fixed courses or allow overlays outside lots. The user no-commit/push/branch-change instruction overrides the brief’s push instruction. Passed wall drawings are not approval of a faulty paired roof/upper-floor assembly; failures are assigned to components that need changing. Evidence: critic-r17C-1-assembly-*.png, -repeat-*.png, -prop-*.png, -seams-*-1x.png and rebuilt comparisons. The aggregate SHA-256 of all out/city17 files was unchanged before/after review: 8778727bd58cee1dbb341f797b4e20f0545b2cc92b2105360208b1eee52b44d3. Review images only composite/crop/nearest-enlarge existing drawings; no production art was constructed."
+}

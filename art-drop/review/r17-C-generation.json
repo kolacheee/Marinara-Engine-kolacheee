@@ -1,0 +1,722 @@
+[
+  {
+    "id": "back-plain-w2-a",
+    "source": "r17-C-source-back-plain-w2-a.png",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated modular rear-wall panel for a fantasy pixel RPG city, at a large working size on perfectly solid #FF00FF magenta. It will reduce to exactly 96x48 native pixels: draw chunky square pixel art with that detail budget. Rectangular 2:1 panel, fills most of canvas with magenta margin, perfectly square corners and straight horizontal top/bottom. Warm cream plaster, muted brown heavy structural posts at outer edges only, small recessed shuttered back window at left, dim closed timber service door at right, drainpipe at far right. Visible top face on stone plinth and sill, top-left light, one native-pixel dark olive-brown silhouette. Quiet broad material masses like the supplied fantasy house; no roof, no freestanding scene, no extra beams or objects, no noise/specks/blur, no text. Top and bottom straight timber course to stack other floors. Front wall faces viewer in high 3/4 RPG perspective, show ledge and step top surfaces. This is back-plain-w2.",
+    "size": [
+      96,
+      48
+    ],
+    "selected": false,
+    "output": "back-plain-w2"
+  },
+  {
+    "id": "back-plain-w1",
+    "size": [
+      48,
+      48
+    ],
+    "output": "back-plain-w1",
+    "course": true,
+    "selected": true,
+    "desc": "REAR WALL 48x48 native, a SQUARE panel of one storey only, completely painted rectangle, NO ROOF. A dim shuttered service door on left and ONE very small recessed blue-grey window high on right; pipe at right outer edge. Thin timber course at top and bottom aligns across full width. Stone plinth with lit top, simple timber door step. Plain plaster has just two flat shades, no mottling. Fit the door and small window within the square.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR WALL 48x48 native, a SQUARE panel of one storey only, completely painted rectangle, NO ROOF. A dim shuttered service door on left and ONE very small recessed blue-grey window high on right; pipe at right outer edge. Thin timber course at top and bottom aligns across full width. Stone plinth with lit top, simple timber door step. Plain plaster has just two flat shades, no mottling. Fit the door and small window within the square.",
+    "source": "r17-C-source-back-plain-w1.png"
+  },
+  {
+    "id": "back-plain-w2-b",
+    "size": [
+      96,
+      48
+    ],
+    "output": "back-plain-w2",
+    "course": true,
+    "selected": true,
+    "desc": "REAR WALL 96x48 native. Exactly 2:1 rectangular panel completely filled with plain warm plaster wall, NO ROOF. One small recessed closed shutter on left; dim closed back door at right, grey drainpipe at far right. Flat very calm plaster with just ONE broad shadow under top beam, no random plaster patches. A stone plinth with top face, sill projecting, step. Thin straight top and bottom timber course for stacking. No lantern, no cat, no decorations.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR WALL 96x48 native. Exactly 2:1 rectangular panel completely filled with plain warm plaster wall, NO ROOF. One small recessed closed shutter on left; dim closed back door at right, grey drainpipe at far right. Flat very calm plaster with just ONE broad shadow under top beam, no random plaster patches. A stone plinth with top face, sill projecting, step. Thin straight top and bottom timber course for stacking. No lantern, no cat, no decorations.",
+    "source": "r17-C-source-back-plain-w2-b.png"
+  },
+  {
+    "id": "back-plain-w3",
+    "size": [
+      144,
+      48
+    ],
+    "output": "back-plain-w3",
+    "course": true,
+    "selected": true,
+    "desc": "REAR WALL 144x48 native. A long 3:1 rectangular panel fully painted, NO ROOF. Two small recessed shuttered blue-grey windows spaced on left and centre, dim closed back door on right, drainpipe at far right. Broad quiet cream plaster with only one broad eave shadow. Timber top/bottom course and edge posts; low stone plinth with lit top. No decorative framing, lantern, cat or extra props.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR WALL 144x48 native. A long 3:1 rectangular panel fully painted, NO ROOF. Two small recessed shuttered blue-grey windows spaced on left and centre, dim closed back door on right, drainpipe at far right. Broad quiet cream plaster with only one broad eave shadow. Timber top/bottom course and edge posts; low stone plinth with lit top. No decorative framing, lantern, cat or extra props.",
+    "source": "r17-C-source-back-plain-w3.png"
+  },
+  {
+    "id": "back-stair-w1-a",
+    "size": [
+      48,
+      48
+    ],
+    "output": "back-stair-w1",
+    "course": true,
+    "selected": false,
+    "desc": "REAR STAIR WALL 48x48 native, rectangular 1:1 single-storey panel, completely painted wall with straight thin timber top/bottom courses, NO ROOF. Simple exposed stone stair with 6 broad block steps rises from bottom left to a small timber landing and closed rear door high at right; small recessed window under landing, grey drainpipe on right. Entire staircase lies against this cream plaster wall inside panel; no scenery or ground outside. Exactly one diagonal stair flight, clear dark risers and lit top surfaces, plain substantial timber rail with only 3 upright supports. Keep calm bold form, fine stair treads will be lost at native size.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR STAIR WALL 48x48 native, rectangular 1:1 single-storey panel, completely painted wall with straight thin timber top/bottom courses, NO ROOF. Simple exposed stone stair with 6 broad block steps rises from bottom left to a small timber landing and closed rear door high at right; small recessed window under landing, grey drainpipe on right. Entire staircase lies against this cream plaster wall inside panel; no scenery or ground outside. Exactly one diagonal stair flight, clear dark risers and lit top surfaces, plain substantial timber rail with only 3 upright supports. Keep calm bold form, fine stair treads will be lost at native size.",
+    "source": "r17-C-source-back-stair-w1-a.png"
+  },
+  {
+    "id": "back-stair-w2-a",
+    "size": [
+      96,
+      48
+    ],
+    "output": "back-stair-w2",
+    "course": true,
+    "selected": false,
+    "desc": "REAR STAIR WALL 96x48 native, rectangular 2:1 single-storey panel, completely painted wall with straight thin timber top/bottom courses, NO ROOF. Simple exposed stone stair with 6 broad block steps rises from bottom left to a small timber landing and closed rear door high at right; small recessed window at left of stairs, grey drainpipe on right. Entire staircase lies against this cream plaster wall inside panel; no scenery or ground outside. Exactly one diagonal stair flight, clear dark risers and lit top surfaces, plain substantial timber rail with only 3 upright supports. Keep calm bold form, fine stair treads will be lost at native size.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR STAIR WALL 96x48 native, rectangular 2:1 single-storey panel, completely painted wall with straight thin timber top/bottom courses, NO ROOF. Simple exposed stone stair with 6 broad block steps rises from bottom left to a small timber landing and closed rear door high at right; small recessed window at left of stairs, grey drainpipe on right. Entire staircase lies against this cream plaster wall inside panel; no scenery or ground outside. Exactly one diagonal stair flight, clear dark risers and lit top surfaces, plain substantial timber rail with only 3 upright supports. Keep calm bold form, fine stair treads will be lost at native size.",
+    "source": "r17-C-source-back-stair-w2-a.png"
+  },
+  {
+    "id": "back-stair-w3-a",
+    "size": [
+      144,
+      48
+    ],
+    "output": "back-stair-w3",
+    "course": true,
+    "selected": false,
+    "desc": "REAR STAIR WALL 144x48 native, rectangular 3:1 single-storey panel, completely painted wall with straight thin timber top/bottom courses, NO ROOF. Simple exposed stone stair with 6 broad block steps rises from bottom left to a small timber landing and closed rear door high at right; small recessed window at left of stairs, grey drainpipe on right. Entire staircase lies against this cream plaster wall inside panel; no scenery or ground outside. Exactly one diagonal stair flight, clear dark risers and lit top surfaces, plain substantial timber rail with only 3 upright supports. Keep calm bold form, fine stair treads will be lost at native size.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR STAIR WALL 144x48 native, rectangular 3:1 single-storey panel, completely painted wall with straight thin timber top/bottom courses, NO ROOF. Simple exposed stone stair with 6 broad block steps rises from bottom left to a small timber landing and closed rear door high at right; small recessed window at left of stairs, grey drainpipe on right. Entire staircase lies against this cream plaster wall inside panel; no scenery or ground outside. Exactly one diagonal stair flight, clear dark risers and lit top surfaces, plain substantial timber rail with only 3 upright supports. Keep calm bold form, fine stair treads will be lost at native size.",
+    "source": "r17-C-source-back-stair-w3-a.png"
+  },
+  {
+    "id": "roof-back-w1",
+    "size": [
+      48,
+      96
+    ],
+    "output": "roof-back-w1",
+    "roof_only": true,
+    "selected": true,
+    "desc": "REAR ROOF 48px cell system, native 48x96 pixels, width:height 1:2. Exactly RECTANGULAR fully painted roof module, four square corners and straight vertical side verges, seen high from above. ONE broad south-facing terracotta roof slope, horizontal capped ridge very near top (at 12% height), narrow darker strip behind ridge, a substantial straight eave along bottom. Broad chunky staggered rectangular tile clusters: exactly 10 horizontal courses and 5 tiles across; each tile is squared at corners, low contrast material shading with top-left light. One pixel dark outside silhouette, no wall, gable, holes, chimney, dormer, ground or scenery. Ridge and eave must be parallel, roof covers ENTIRE rectangular footprint, not a trapezoid.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR ROOF 48px cell system, native 48x96 pixels, width:height 1:2. Exactly RECTANGULAR fully painted roof module, four square corners and straight vertical side verges, seen high from above. ONE broad south-facing terracotta roof slope, horizontal capped ridge very near top (at 12% height), narrow darker strip behind ridge, a substantial straight eave along bottom. Broad chunky staggered rectangular tile clusters: exactly 10 horizontal courses and 5 tiles across; each tile is squared at corners, low contrast material shading with top-left light. One pixel dark outside silhouette, no wall, gable, holes, chimney, dormer, ground or scenery. Ridge and eave must be parallel, roof covers ENTIRE rectangular footprint, not a trapezoid.",
+    "source": "r17-C-source-roof-back-w1.png"
+  },
+  {
+    "id": "roof-back-w2",
+    "size": [
+      96,
+      96
+    ],
+    "output": "roof-back-w2",
+    "roof_only": true,
+    "selected": true,
+    "desc": "REAR ROOF 48px cell system, native 96x96 pixels, width:height 2:2. Exactly RECTANGULAR fully painted roof module, four square corners and straight vertical side verges, seen high from above. ONE broad south-facing terracotta roof slope, horizontal capped ridge very near top (at 12% height), narrow darker strip behind ridge, a substantial straight eave along bottom. Broad chunky staggered rectangular tile clusters: exactly 10 horizontal courses and 10 tiles across; each tile is squared at corners, low contrast material shading with top-left light. One pixel dark outside silhouette, no wall, gable, holes, chimney, dormer, ground or scenery. Ridge and eave must be parallel, roof covers ENTIRE rectangular footprint, not a trapezoid.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR ROOF 48px cell system, native 96x96 pixels, width:height 2:2. Exactly RECTANGULAR fully painted roof module, four square corners and straight vertical side verges, seen high from above. ONE broad south-facing terracotta roof slope, horizontal capped ridge very near top (at 12% height), narrow darker strip behind ridge, a substantial straight eave along bottom. Broad chunky staggered rectangular tile clusters: exactly 10 horizontal courses and 10 tiles across; each tile is squared at corners, low contrast material shading with top-left light. One pixel dark outside silhouette, no wall, gable, holes, chimney, dormer, ground or scenery. Ridge and eave must be parallel, roof covers ENTIRE rectangular footprint, not a trapezoid.",
+    "source": "r17-C-source-roof-back-w2.png"
+  },
+  {
+    "id": "roof-back-w3",
+    "size": [
+      144,
+      96
+    ],
+    "output": "roof-back-w3",
+    "roof_only": true,
+    "selected": true,
+    "desc": "REAR ROOF 48px cell system, native 144x96 pixels, width:height 3:2. Exactly RECTANGULAR fully painted roof module, four square corners and straight vertical side verges, seen high from above. ONE broad south-facing terracotta roof slope, horizontal capped ridge very near top (at 12% height), narrow darker strip behind ridge, a substantial straight eave along bottom. Broad chunky staggered rectangular tile clusters: exactly 10 horizontal courses and 15 tiles across; each tile is squared at corners, low contrast material shading with top-left light. One pixel dark outside silhouette, no wall, gable, holes, chimney, dormer, ground or scenery. Ridge and eave must be parallel, roof covers ENTIRE rectangular footprint, not a trapezoid.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REAR ROOF 48px cell system, native 144x96 pixels, width:height 3:2. Exactly RECTANGULAR fully painted roof module, four square corners and straight vertical side verges, seen high from above. ONE broad south-facing terracotta roof slope, horizontal capped ridge very near top (at 12% height), narrow darker strip behind ridge, a substantial straight eave along bottom. Broad chunky staggered rectangular tile clusters: exactly 10 horizontal courses and 15 tiles across; each tile is squared at corners, low contrast material shading with top-left light. One pixel dark outside silhouette, no wall, gable, holes, chimney, dormer, ground or scenery. Ridge and eave must be parallel, roof covers ENTIRE rectangular footprint, not a trapezoid.",
+    "source": "r17-C-source-roof-back-w3.png"
+  },
+  {
+    "id": "side-ground-W",
+    "size": [
+      96,
+      48
+    ],
+    "output": "side-ground-W",
+    "course": true,
+    "selected": true,
+    "desc": "WEST SIDE GROUND WALL 96x48 native. Completely filled rectangular 2:1 panel with NO ROOF. Short lit west-facing return at LEFT one quarter, longer front plane on right 3/4; subtle change of tone at solid square corner post. One accessible recessed side door about 20x30 native pixels in longer plane, lit stone step, ONE small wall lantern beside it; one small shutter window on return. Warm stone lower wall and cream upper wall. Straight top/bottom courses. Depict volume through sills and plinth top surfaces without sloping rectangular outer edges.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. WEST SIDE GROUND WALL 96x48 native. Completely filled rectangular 2:1 panel with NO ROOF. Short lit west-facing return at LEFT one quarter, longer front plane on right 3/4; subtle change of tone at solid square corner post. One accessible recessed side door about 20x30 native pixels in longer plane, lit stone step, ONE small wall lantern beside it; one small shutter window on return. Warm stone lower wall and cream upper wall. Straight top/bottom courses. Depict volume through sills and plinth top surfaces without sloping rectangular outer edges.",
+    "source": "r17-C-source-side-ground-W.png"
+  },
+  {
+    "id": "side-ground-E",
+    "size": [
+      96,
+      48
+    ],
+    "output": "side-ground-E",
+    "course": true,
+    "selected": true,
+    "desc": "EAST SIDE GROUND WALL 96x48 native. Completely filled rectangular 2:1 panel with NO ROOF. Longer lit front plane LEFT three quarters, narrow dark east-facing return RIGHT quarter; vertical corner post separates them. One accessible recessed side door 20x30 native pixels on left plane, lit stone step and ONE small lantern beside it; one tiny shutter window on right return. Warm stone lower wall and cream upper wall. Darker shaded RIGHT return, top-left light unchanged. Straight thin top/bottom courses. Clear square edges.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. EAST SIDE GROUND WALL 96x48 native. Completely filled rectangular 2:1 panel with NO ROOF. Longer lit front plane LEFT three quarters, narrow dark east-facing return RIGHT quarter; vertical corner post separates them. One accessible recessed side door 20x30 native pixels on left plane, lit stone step and ONE small lantern beside it; one tiny shutter window on right return. Warm stone lower wall and cream upper wall. Darker shaded RIGHT return, top-left light unchanged. Straight thin top/bottom courses. Clear square edges.",
+    "source": "r17-C-source-side-ground-E.png"
+  },
+  {
+    "id": "side-storey-W",
+    "size": [
+      96,
+      48
+    ],
+    "output": "side-storey-W",
+    "course": true,
+    "selected": true,
+    "desc": "WEST SIDE UPPER WALL 96x48 native. Completely filled rectangular 2:1 panel NO ROOF, NO ground/steps/door. Short lit west return on LEFT quarter, longer front plane right three quarters, square corner post. One small recessed blue-grey two-pane window on each plane, substantial stone sill with top face. Broad calm cream plaster and structural brown edge posts, no diagonal timbers. Thin horizontal timber stacking course along top and bottom; square outer edges, subtle plane shading.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. WEST SIDE UPPER WALL 96x48 native. Completely filled rectangular 2:1 panel NO ROOF, NO ground/steps/door. Short lit west return on LEFT quarter, longer front plane right three quarters, square corner post. One small recessed blue-grey two-pane window on each plane, substantial stone sill with top face. Broad calm cream plaster and structural brown edge posts, no diagonal timbers. Thin horizontal timber stacking course along top and bottom; square outer edges, subtle plane shading.",
+    "source": "r17-C-source-side-storey-W.png"
+  },
+  {
+    "id": "side-storey-E",
+    "size": [
+      96,
+      48
+    ],
+    "output": "side-storey-E",
+    "course": true,
+    "selected": true,
+    "desc": "EAST SIDE UPPER WALL 96x48 native. Fully painted rectangular panel 2:1, no roof, door or ground. Long warm lit cream front plane LEFT three quarters; short visibly darker east return RIGHT quarter, substantial square corner post divides planes. One recessed blue-grey two-pane window on each plane, projecting stone sill with visible top. Simple edge posts, thin straight timber top/bottom course. No other beams or decorations. Keep window shapes square and calm.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. EAST SIDE UPPER WALL 96x48 native. Fully painted rectangular panel 2:1, no roof, door or ground. Long warm lit cream front plane LEFT three quarters; short visibly darker east return RIGHT quarter, substantial square corner post divides planes. One recessed blue-grey two-pane window on each plane, projecting stone sill with visible top. Simple edge posts, thin straight timber top/bottom course. No other beams or decorations. Keep window shapes square and calm.",
+    "source": "r17-C-source-side-storey-E.png"
+  },
+  {
+    "id": "side-roof-d3-a",
+    "size": [
+      144,
+      144
+    ],
+    "output": "side-roof-d3",
+    "selected": false,
+    "desc": "SIDE ROOF GABLE CAP 144x144 native, THREE cells deep. Fully painted SQUARE module. High 3/4 view, long vertical ridge from top centre to front lower centre. A broad terracotta roof with lit left slope, darker right slope, big chunky 8px tile clusters in 12 courses. Triangular timber and plaster gable end occupies BOTTOM 24%, with one small recessed shuttered attic opening. Sloping thick tile verges around gable, dark straight horizontal bottom eave. Outer footprint is completely square filled roof, never a triangular silhouette; no magenta corners or cutouts. No ground or lower storeys.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. SIDE ROOF GABLE CAP 144x144 native, THREE cells deep. Fully painted SQUARE module. High 3/4 view, long vertical ridge from top centre to front lower centre. A broad terracotta roof with lit left slope, darker right slope, big chunky 8px tile clusters in 12 courses. Triangular timber and plaster gable end occupies BOTTOM 24%, with one small recessed shuttered attic opening. Sloping thick tile verges around gable, dark straight horizontal bottom eave. Outer footprint is completely square filled roof, never a triangular silhouette; no magenta corners or cutouts. No ground or lower storeys.",
+    "source": "r17-C-source-side-roof-d3-a.png"
+  },
+  {
+    "id": "side-roof-d2-a",
+    "size": [
+      96,
+      96
+    ],
+    "output": "side-roof-d2",
+    "selected": false,
+    "desc": "SIDE ROOF GABLE CAP 96x96 native. Completely filled SQUARE modular cap. High 3/4 view like fantasy town roofs, ridge runs VERTICALLY from top centre toward lower centre, lit terracotta left plane and darker right plane seen from above. Gable triangular warm plaster end with one small recessed attic vent occupies BOTTOM 24% only; thick diagonal tiled roof verge bounds it and horizontal wooden bottom eave. Rectangular outer footprint fully filled with roof, square corners, no magenta notches. Broad eight-pixel rectangular tile clusters, about 8 courses deep, thin seams. No lower storeys or ground. The TOP corners are full roof, no triangular silhouette.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. SIDE ROOF GABLE CAP 96x96 native. Completely filled SQUARE modular cap. High 3/4 view like fantasy town roofs, ridge runs VERTICALLY from top centre toward lower centre, lit terracotta left plane and darker right plane seen from above. Gable triangular warm plaster end with one small recessed attic vent occupies BOTTOM 24% only; thick diagonal tiled roof verge bounds it and horizontal wooden bottom eave. Rectangular outer footprint fully filled with roof, square corners, no magenta notches. Broad eight-pixel rectangular tile clusters, about 8 courses deep, thin seams. No lower storeys or ground. The TOP corners are full roof, no triangular silhouette.",
+    "source": "r17-C-source-side-roof-d2-a.png"
+  },
+  {
+    "id": "yard-0",
+    "size": [
+      48,
+      48
+    ],
+    "output": "yard-0",
+    "overlay": true,
+    "selected": true,
+    "desc": "ONE small back-yard stone well with a timber crank and bucket, 48x48 native square canvas. View from high three-quarter angle, well rim shows deep dark opening and lit broad flat top blocks. 8 large squared grey stones define well, wooden winding spindle between two plain posts; one rope and simple bucket. No roof. Isolated object on magenta, no ground patch or cast shadow outside its feet. Compact well fills about 36x38 native pixels, no specks or grass.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE small back-yard stone well with a timber crank and bucket, 48x48 native square canvas. View from high three-quarter angle, well rim shows deep dark opening and lit broad flat top blocks. 8 large squared grey stones define well, wooden winding spindle between two plain posts; one rope and simple bucket. No roof. Isolated object on magenta, no ground patch or cast shadow outside its feet. Compact well fills about 36x38 native pixels, no specks or grass.",
+    "source": "r17-C-source-yard-0.png"
+  },
+  {
+    "id": "street-side",
+    "size": [
+      48,
+      48
+    ],
+    "output": "street-side",
+    "ground": true,
+    "selected": true,
+    "desc": "ONE square 48x48 native RPG cobbled side-street ground tile viewed directly overhead. Quiet warm grey rectangular flat-cut cobbles 6 to 12 pixels wide, NO black outlines: narrow subtle dark-grey mortar. 6 columns and 6 rows of squared cobbles. Narrow straight kerb and a slightly darker gutter run vertically along both LEFT and RIGHT sides; top and bottom continue seamlessly. Fully painted exact square surrounded by narrow magenta margin. Stone shading ONLY three close muted grey values, top-left light. No decorations, stones lying on top, moss, grass, scratches, noise, shine or vignette. Calm ground much lower contrast than buildings.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE square 48x48 native RPG cobbled side-street ground tile viewed directly overhead. Quiet warm grey rectangular flat-cut cobbles 6 to 12 pixels wide, NO black outlines: narrow subtle dark-grey mortar. 6 columns and 6 rows of squared cobbles. Narrow straight kerb and a slightly darker gutter run vertically along both LEFT and RIGHT sides; top and bottom continue seamlessly. Fully painted exact square surrounded by narrow magenta margin. Stone shading ONLY three close muted grey values, top-left light. No decorations, stones lying on top, moss, grass, scratches, noise, shine or vignette. Calm ground much lower contrast than buildings.",
+    "source": "r17-C-source-street-side.png"
+  },
+  {
+    "id": "fence-0",
+    "size": [
+      48,
+      24
+    ],
+    "output": "fence-0",
+    "overlay": true,
+    "selected": true,
+    "desc": "ONE straight wooden back-garden fence segment, native 48x24, horizontal view with visible top edges. Exactly three square flat-topped posts and two thick horizontal rails with 4 broad vertical boards, solid brown timber, no pointy pickets, no rounded corners, no plants. Dark one pixel outline, left top edges lit. Side-to-side repeatable endpoints on left/right, one flat baseline. Isolated on magenta with clear openings between slats and no scenery.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE straight wooden back-garden fence segment, native 48x24, horizontal view with visible top edges. Exactly three square flat-topped posts and two thick horizontal rails with 4 broad vertical boards, solid brown timber, no pointy pickets, no rounded corners, no plants. Dark one pixel outline, left top edges lit. Side-to-side repeatable endpoints on left/right, one flat baseline. Isolated on magenta with clear openings between slats and no scenery.",
+    "source": "r17-C-source-fence-0.png"
+  },
+  {
+    "id": "street-main",
+    "size": [
+      96,
+      48
+    ],
+    "output": "street-main",
+    "ground": true,
+    "selected": false,
+    "desc": "ONE rectangular 96x48 native RPG MAIN STREET ground module, view straight overhead. Double-width road runs vertically from top to bottom. Flat-cut SQUARE CORNER rectangular cobbles, two sizes 6x6 and12x6 native pixels, staggered running bond across width. 12 columns, 7 horizontal rows. Muted quiet warm GREY, only three close grey values, subtle mortar NOT black. Narrow straight kerb and darker gutter at far LEFT and RIGHT outer edges only, open straight top/bottom for seamless end repetition. Fully painted rectangle, no plants, cracks, pebbles, dirt noise, texture flecks, vignetting or shadows. Main road must be calm and readable under dark building shadow.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE rectangular 96x48 native RPG MAIN STREET ground module, view straight overhead. Double-width road runs vertically from top to bottom. Flat-cut SQUARE CORNER rectangular cobbles, two sizes 6x6 and12x6 native pixels, staggered running bond across width. 12 columns, 7 horizontal rows. Muted quiet warm GREY, only three close grey values, subtle mortar NOT black. Narrow straight kerb and darker gutter at far LEFT and RIGHT outer edges only, open straight top/bottom for seamless end repetition. Fully painted rectangle, no plants, cracks, pebbles, dirt noise, texture flecks, vignetting or shadows. Main road must be calm and readable under dark building shadow.",
+    "source": "r17-C-source-street-main.png"
+  },
+  {
+    "id": "street-junction",
+    "size": [
+      48,
+      48
+    ],
+    "output": "street-junction",
+    "ground": true,
+    "selected": true,
+    "desc": "ONE square 48x48 native pixel RPG junction/court paving tile. Completely filled square patch of quiet flat-cut squared warm grey cobbles, 6 to 12 native pixels across, seven offset courses. All FOUR EDGES are open continuation paving, no kerb, border, gutter or outline around patch. Only three close mid-grey shades, low contrast joints, NO black. Direct overhead view, top-left subtle light. No cracks, plants, specks, irregular loose stones, noise or extra objects. Intended seamless repeat ground, square edges not rounded.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE square 48x48 native pixel RPG junction/court paving tile. Completely filled square patch of quiet flat-cut squared warm grey cobbles, 6 to 12 native pixels across, seven offset courses. All FOUR EDGES are open continuation paving, no kerb, border, gutter or outline around patch. Only three close mid-grey shades, low contrast joints, NO black. Direct overhead view, top-left subtle light. No cracks, plants, specks, irregular loose stones, noise or extra objects. Intended seamless repeat ground, square edges not rounded.",
+    "source": "r17-C-source-street-junction.png",
+    "wrap_patch": [
+      8,
+      8,
+      32,
+      24
+    ]
+  },
+  {
+    "id": "side-roof-d2-b",
+    "size": [
+      96,
+      96
+    ],
+    "output": "side-roof-d2",
+    "selected": false,
+    "desc": "Alternative SIDE ROOF 96x96 native SQUARE fully painted modular tile. Broad terracotta roof recedes away from viewer to TOP edge, narrow vertical ridge in centre, lit left plane and muted dark right plane. At bottom only, small cream timber gable triangle with ONE shutter opening. Roof is 80% of image, gable 20%. TEN rows of rectangular clay tiles, each native tile about8x8px: small calm clusters, faint dark RED joints not heavy black grid. Match traditional warm painted fantasy pixel house rather than vector symbols. Absolutely square opaque external footprint, no holes or triangular outline. Broad lit top-left faces, thin dark olive outer silhouette, one thick brown eave along bottom.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative SIDE ROOF 96x96 native SQUARE fully painted modular tile. Broad terracotta roof recedes away from viewer to TOP edge, narrow vertical ridge in centre, lit left plane and muted dark right plane. At bottom only, small cream timber gable triangle with ONE shutter opening. Roof is 80% of image, gable 20%. TEN rows of rectangular clay tiles, each native tile about8x8px: small calm clusters, faint dark RED joints not heavy black grid. Match traditional warm painted fantasy pixel house rather than vector symbols. Absolutely square opaque external footprint, no holes or triangular outline. Broad lit top-left faces, thin dark olive outer silhouette, one thick brown eave along bottom.",
+    "source": "r17-C-source-side-roof-d2-b.png"
+  },
+  {
+    "id": "back-stair-w2-b",
+    "size": [
+      96,
+      48
+    ],
+    "output": "back-stair-w2",
+    "course": true,
+    "selected": true,
+    "desc": "Alternative 96x48 native 2:1 rear-wall module with exposed staircase. SIX chunky stone treads and dark risers rise diagonally from lower LEFT toward closed upper timber door RIGHT. One sturdy wooden handrail, only three support posts, plain cream plaster backing completely fills rectangle. Small blue-grey window on left wall, drainpipe right. Thin straight top and bottom courses for stacking; broad simple shapes, dark one pixel silhouette, no roof or ground scenery.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative 96x48 native 2:1 rear-wall module with exposed staircase. SIX chunky stone treads and dark risers rise diagonally from lower LEFT toward closed upper timber door RIGHT. One sturdy wooden handrail, only three support posts, plain cream plaster backing completely fills rectangle. Small blue-grey window on left wall, drainpipe right. Thin straight top and bottom courses for stacking; broad simple shapes, dark one pixel silhouette, no roof or ground scenery.",
+    "source": "r17-C-source-back-stair-w2-b.png"
+  },
+  {
+    "id": "back-stair-w1-b",
+    "size": [
+      48,
+      48
+    ],
+    "output": "back-stair-w1",
+    "course": true,
+    "selected": true,
+    "desc": "Alternative compact 48x48 native square rear-wall panel with outdoor stair: five wide solid STONE steps ascend from bottom LEFT to closed small upper back door RIGHT. A low thick rail with three supports, one small recessed window under landing, a drainpipe at far right. Plain warm plaster completely fills square, thin horizontal top/bottom stacking beam. Show step top faces clearly, deep risers, clean simple staircase; no thin decorative lines, no rounded corners, no roof. Whole stair fits inside the panel.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative compact 48x48 native square rear-wall panel with outdoor stair: five wide solid STONE steps ascend from bottom LEFT to closed small upper back door RIGHT. A low thick rail with three supports, one small recessed window under landing, a drainpipe at far right. Plain warm plaster completely fills square, thin horizontal top/bottom stacking beam. Show step top faces clearly, deep risers, clean simple staircase; no thin decorative lines, no rounded corners, no roof. Whole stair fits inside the panel.",
+    "source": "r17-C-source-back-stair-w1-b.png"
+  },
+  {
+    "id": "side-roof-d3-b",
+    "size": [
+      144,
+      144
+    ],
+    "output": "side-roof-d3",
+    "selected": true,
+    "desc": "Alternative deep SIDE ROOF square144x144 native, fully rectangular opaque footprint. High3/4 RPG town view. Warm terracotta roof viewed from above with central vertical ridge, broad lit left plane and shaded right plane. Small plaster gable at very bottom occupying20%height, with one small recessed shutter vent. Roof plane has SIXTEEN horizontal courses of small flat rectangular clay tiles, EIGHT tiles on EACH side of central ridge, size about8px across native. Small cohesive tile clusters matching an ordinary fantasy cottage, NO oversized slabs. Thin dark-red seams, one pixel outer outline, chunky eave. No holes, no lower storeys, no extensions, no chimneys.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative deep SIDE ROOF square144x144 native, fully rectangular opaque footprint. High3/4 RPG town view. Warm terracotta roof viewed from above with central vertical ridge, broad lit left plane and shaded right plane. Small plaster gable at very bottom occupying20%height, with one small recessed shutter vent. Roof plane has SIXTEEN horizontal courses of small flat rectangular clay tiles, EIGHT tiles on EACH side of central ridge, size about8px across native. Small cohesive tile clusters matching an ordinary fantasy cottage, NO oversized slabs. Thin dark-red seams, one pixel outer outline, chunky eave. No holes, no lower storeys, no extensions, no chimneys.",
+    "source": "r17-C-source-side-roof-d3-b.png"
+  },
+  {
+    "id": "corner-outer-L-storey",
+    "size": [
+      96,
+      48
+    ],
+    "output": "corner-outer-L-storey",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "OUTER LEFT CORNER UPPER STOREY 96x48 native, rectangular wall panel. A pronounced OUTWARD timber corner at one-third from LEFT, short lit west return left third, longer cream south plane right two-thirds. Deep small shuttered window on each face, projecting square stone sills, simple warm structural posts. No doors, roof, ground or props. Fully filled rectangle, straight thin top and bottom timber stacking course. Top-left light stays unchanged. Show substantial wall volume, not a flat diagram.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. OUTER LEFT CORNER UPPER STOREY 96x48 native, rectangular wall panel. A pronounced OUTWARD timber corner at one-third from LEFT, short lit west return left third, longer cream south plane right two-thirds. Deep small shuttered window on each face, projecting square stone sills, simple warm structural posts. No doors, roof, ground or props. Fully filled rectangle, straight thin top and bottom timber stacking course. Top-left light stays unchanged. Show substantial wall volume, not a flat diagram.",
+    "source": "r17-C-source-corner-outer-L-storey.png"
+  },
+  {
+    "id": "corner-outer-R-storey",
+    "size": [
+      96,
+      48
+    ],
+    "output": "corner-outer-R-storey",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "OUTER RIGHT CORNER UPPER STOREY 96x48 native, rectangular wall panel. Pronounced OUTWARD timber corner at two-thirds from left; longer lit cream south wall left two-thirds, short darker EAST return right third. One small deep recessed shutter window per plane, projecting thick stone sill, visible top edge. No doors, roof, ground or props. Fully filled rectangle, thin horizontal timber course along top and bottom for stacking, square outer silhouette. No extra beams.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. OUTER RIGHT CORNER UPPER STOREY 96x48 native, rectangular wall panel. Pronounced OUTWARD timber corner at two-thirds from left; longer lit cream south wall left two-thirds, short darker EAST return right third. One small deep recessed shutter window per plane, projecting thick stone sill, visible top edge. No doors, roof, ground or props. Fully filled rectangle, thin horizontal timber course along top and bottom for stacking, square outer silhouette. No extra beams.",
+    "source": "r17-C-source-corner-outer-R-storey.png"
+  },
+  {
+    "id": "corner-inner-storey",
+    "size": [
+      96,
+      48
+    ],
+    "output": "corner-inner-storey",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "INNER CONCAVE CORNER UPPER STOREY 96x48 native, completely painted rectangular panel. Two cream plaster wall planes meet in a recessed inward vertical corner at CENTRE, forming an inside courtyard corner. Left plane brighter, right plane shaded warm grey. Narrow drainpipe in the dark inside junction, one small deep window and lit stone sill on each plane. The top and bottom ledges turn INWARD toward the centre with visible top faces, outside canvas stays a full square-corner 2:1 rectangle. No roof, doors, stairs or scenery. Quiet masses, one-pixel outer outline.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. INNER CONCAVE CORNER UPPER STOREY 96x48 native, completely painted rectangular panel. Two cream plaster wall planes meet in a recessed inward vertical corner at CENTRE, forming an inside courtyard corner. Left plane brighter, right plane shaded warm grey. Narrow drainpipe in the dark inside junction, one small deep window and lit stone sill on each plane. The top and bottom ledges turn INWARD toward the centre with visible top faces, outside canvas stays a full square-corner 2:1 rectangle. No roof, doors, stairs or scenery. Quiet masses, one-pixel outer outline.",
+    "source": "r17-C-source-corner-inner-storey.png"
+  },
+  {
+    "id": "corner-outer-L-roof-a",
+    "size": [
+      96,
+      96
+    ],
+    "output": "corner-outer-L-roof",
+    "roof_only": true,
+    "selected": false,
+    "desc": "OUTER LEFT ROOF CORNER,96x96 native square opaque tile cap. High3/4 view. Roof ridge enters at TOP centre and turns toward RIGHT edge at centre. A clearly lit broad LEFT HIP plane slopes to lower-left outside corner, shaded smaller right roof plane. Terracotta roof wholly fills square; one diagonal hip cap from centre down to bottomLEFT corner, continuous 8px rectangular tile courses aligned to each plane. Deep eave on bottom and LEFT only, north/east are neighbour joins. ONE connected roof shape, no walls or ground, no roof hole, no arrows or diagram. Thin dark-red seams, quiet tile shading.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. OUTER LEFT ROOF CORNER,96x96 native square opaque tile cap. High3/4 view. Roof ridge enters at TOP centre and turns toward RIGHT edge at centre. A clearly lit broad LEFT HIP plane slopes to lower-left outside corner, shaded smaller right roof plane. Terracotta roof wholly fills square; one diagonal hip cap from centre down to bottomLEFT corner, continuous 8px rectangular tile courses aligned to each plane. Deep eave on bottom and LEFT only, north/east are neighbour joins. ONE connected roof shape, no walls or ground, no roof hole, no arrows or diagram. Thin dark-red seams, quiet tile shading.",
+    "source": "r17-C-source-corner-outer-L-roof-a.png"
+  },
+  {
+    "id": "corner-inner-roof-a",
+    "size": [
+      96,
+      96
+    ],
+    "output": "corner-inner-roof",
+    "roof_only": true,
+    "keep_lead": true,
+    "selected": true,
+    "desc": "INNER ROOF VALLEY join96x96 native, fully painted square modular roof cap. High3/4 overhead view of TWO terracotta pitched roof wings meeting in an INWARD concave junction. One dark recessed lead gutter DIAGONAL from upperLEFT to lowerRIGHT between tile planes, not a raised orange ridge. Left plane lit, right shaded. Broad rectangular roof tiles8px scale, clean valley edges with visible flashing. Both planes completely fill rectangle to its four square corners, no courtyard hole. Thin dark outline, no walls or scenery, no arrows or text.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. INNER ROOF VALLEY join96x96 native, fully painted square modular roof cap. High3/4 overhead view of TWO terracotta pitched roof wings meeting in an INWARD concave junction. One dark recessed lead gutter DIAGONAL from upperLEFT to lowerRIGHT between tile planes, not a raised orange ridge. Left plane lit, right shaded. Broad rectangular roof tiles8px scale, clean valley edges with visible flashing. Both planes completely fill rectangle to its four square corners, no courtyard hole. Thin dark outline, no walls or scenery, no arrows or text.",
+    "source": "r17-C-source-corner-inner-roof-a.png"
+  },
+  {
+    "id": "corner-outer-R-roof-a",
+    "size": [
+      96,
+      96
+    ],
+    "output": "corner-outer-R-roof",
+    "roof_only": true,
+    "selected": false,
+    "desc": "OUTER RIGHT ROOF CORNER,96x96 native square opaque tile cap. High3/4 view. Ridge enters TOP centre and turns toward LEFT edge at centre. One diagonal capped HIP from centre to bottomRIGHT outside corner. Broad lit left/front tile mass, visibly shaded RIGHT hip plane, top-left light does NOT mirror. Terracotta roof fully covers square canvas; 8px rectangular tile courses follow slopes, one substantial eave along bottom and RIGHT, north/west neighbour joins. One connected roof, no wall, ground, hole, labels or diagram, no rounded edges.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. OUTER RIGHT ROOF CORNER,96x96 native square opaque tile cap. High3/4 view. Ridge enters TOP centre and turns toward LEFT edge at centre. One diagonal capped HIP from centre to bottomRIGHT outside corner. Broad lit left/front tile mass, visibly shaded RIGHT hip plane, top-left light does NOT mirror. Terracotta roof fully covers square canvas; 8px rectangular tile courses follow slopes, one substantial eave along bottom and RIGHT, north/west neighbour joins. One connected roof, no wall, ground, hole, labels or diagram, no rounded edges.",
+    "source": "r17-C-source-corner-outer-R-roof-a.png"
+  },
+  {
+    "id": "deadend-cap-storey",
+    "size": [
+      96,
+      48
+    ],
+    "output": "deadend-cap-storey",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "DEAD-END TERMINAL UPPER WALL96x48native, fully painted2:1rectangle. Broad quiet stone wall facing viewer, small deep central paired blue-grey window and wide stone sill, dark narrow side return RIGHT. Large squared masonry courses with subtle mortar, substantial top coping and bottom course. This closes the end of a row across a little lane. Thin dark outside silhouette, no door, roof or scenery, no tiny random masonry marks.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. DEAD-END TERMINAL UPPER WALL96x48native, fully painted2:1rectangle. Broad quiet stone wall facing viewer, small deep central paired blue-grey window and wide stone sill, dark narrow side return RIGHT. Large squared masonry courses with subtle mortar, substantial top coping and bottom course. This closes the end of a row across a little lane. Thin dark outside silhouette, no door, roof or scenery, no tiny random masonry marks.",
+    "source": "r17-C-source-deadend-cap-storey.png"
+  },
+  {
+    "id": "tee-end-storey",
+    "size": [
+      144,
+      48
+    ],
+    "output": "tee-end-storey",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "T-JUNCTION END WALL 144x48 native long3:1 rectangular upper-storey panel, completely filled. Three clearly readable planes: central broad warm cream wall and two narrow shaded side returns, forms projecting end of row at T street junction. Two small recessed shutter windows in middle with broad lit stone sills; narrow flanking faces plain. Thick corner posts, calm plaster masses, simple thin horizontal timber top/bottom course. No roof, door, ground, extra decorative beams.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. T-JUNCTION END WALL 144x48 native long3:1 rectangular upper-storey panel, completely filled. Three clearly readable planes: central broad warm cream wall and two narrow shaded side returns, forms projecting end of row at T street junction. Two small recessed shutter windows in middle with broad lit stone sills; narrow flanking faces plain. Thick corner posts, calm plaster masses, simple thin horizontal timber top/bottom course. No roof, door, ground, extra decorative beams.",
+    "source": "r17-C-source-tee-end-storey.png"
+  },
+  {
+    "id": "tee-end-roof-a",
+    "size": [
+      144,
+      96
+    ],
+    "output": "tee-end-roof",
+    "roof_only": true,
+    "selected": false,
+    "desc": "T-shaped RIDGE JUNCTION roof cap144x96native, fully painted rectangular 3:2 module. Draw a continuous terracotta roof occupying ENTIRE rectangle, all four square corners filled. Raised capped ridge runs horizontally left-to-right at ONE THIRD height. Another ridge branches from its CENTRE vertically DOWN toward lower edge; two shallow diagonal VALLEY channels connect this centre to lower-left/lower-right, in roof paint. No exterior T-shaped cutout: only ridge pattern forms T, entire rectangular canvas roof. High3/4 view, lit left planes shaded right, tile scale8px,12courses. Substantial straight bottom eave, no walls, labels or holes.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. T-shaped RIDGE JUNCTION roof cap144x96native, fully painted rectangular 3:2 module. Draw a continuous terracotta roof occupying ENTIRE rectangle, all four square corners filled. Raised capped ridge runs horizontally left-to-right at ONE THIRD height. Another ridge branches from its CENTRE vertically DOWN toward lower edge; two shallow diagonal VALLEY channels connect this centre to lower-left/lower-right, in roof paint. No exterior T-shaped cutout: only ridge pattern forms T, entire rectangular canvas roof. High3/4 view, lit left planes shaded right, tile scale8px,12courses. Substantial straight bottom eave, no walls, labels or holes.",
+    "source": "r17-C-source-tee-end-roof-a.png"
+  },
+  {
+    "id": "corner-outer-L-roof-b",
+    "size": [
+      96,
+      96
+    ],
+    "output": "corner-outer-L-roof",
+    "roof_only": true,
+    "selected": true,
+    "desc": "REPLACEMENT SQUARE TERRACOTTA ROOF TILE,96x96 native. CRITICAL fully painted exact square, ALL FOUR corners are roof, external silhouette a square not a house outline. Draw full continuous roof texture over square. On it a capped ridge follows L: from TOP midpoint down to centre then RIGHT to right midpoint. A diagonal hip seam from centre to bottomLEFT corner. Lit left/front planes, darker upper-right plane. Eight-pixel squared terracotta tiles follow those planes; continuous thick brown eave along bottom and left. No magenta triangle, notch, hole or white gap anywhere inside outer square. No lower walls, objects, diagrams, numbers. Perspective depth through tile-plane shading.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REPLACEMENT SQUARE TERRACOTTA ROOF TILE,96x96 native. CRITICAL fully painted exact square, ALL FOUR corners are roof, external silhouette a square not a house outline. Draw full continuous roof texture over square. On it a capped ridge follows L: from TOP midpoint down to centre then RIGHT to right midpoint. A diagonal hip seam from centre to bottomLEFT corner. Lit left/front planes, darker upper-right plane. Eight-pixel squared terracotta tiles follow those planes; continuous thick brown eave along bottom and left. No magenta triangle, notch, hole or white gap anywhere inside outer square. No lower walls, objects, diagrams, numbers. Perspective depth through tile-plane shading.",
+    "source": "r17-C-source-corner-outer-L-roof-b.png"
+  },
+  {
+    "id": "corner-outer-R-roof-b",
+    "size": [
+      96,
+      96
+    ],
+    "output": "corner-outer-R-roof",
+    "roof_only": true,
+    "selected": true,
+    "desc": "REPLACEMENT SQUARE TERRACOTTA ROOF TILE,96x96 native. Entire exact SQUARE must be painted roof, ALL FOUR corners opaque and square. External silhouette square, not a house outline. Capped ridge follows reversed L from TOP midpoint to centre then LEFT to left midpoint. Diagonal hip seam centre to bottomRIGHT. Right/front hip plane darker; top-left lighting remains. Broad8px squared terracotta tile clusters, thick straight eave bottom/right. NO magenta triangle, notch, hole, transparent patch or missing corner. Continuous roof texture fills every part. No walls, diagram, arrows, text or objects.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. REPLACEMENT SQUARE TERRACOTTA ROOF TILE,96x96 native. Entire exact SQUARE must be painted roof, ALL FOUR corners opaque and square. External silhouette square, not a house outline. Capped ridge follows reversed L from TOP midpoint to centre then LEFT to left midpoint. Diagonal hip seam centre to bottomRIGHT. Right/front hip plane darker; top-left lighting remains. Broad8px squared terracotta tile clusters, thick straight eave bottom/right. NO magenta triangle, notch, hole, transparent patch or missing corner. Continuous roof texture fills every part. No walls, diagram, arrows, text or objects.",
+    "source": "r17-C-source-corner-outer-R-roof-b.png"
+  },
+  {
+    "id": "deadend-cap-roof-a",
+    "size": [
+      96,
+      96
+    ],
+    "output": "deadend-cap-roof",
+    "roof_only": true,
+    "selected": false,
+    "desc": "DEAD END TERMINAL HIPPED ROOF cap96x96 native. Fully opaque SQUARE roof footprint, all four square corners filled. High3/4 view. Central vertical capped ridge from top to centre, two diagonal hip caps branch from centre to both BOTTOM corners; a broad triangular front roof plane between hips, narrower left/right receding slopes. Left side brighter, right dark. Red terracotta squared tile clusters about8px, calm texture. Single thick straight bottom eave; thin dark top/side outline. No walls, gable window, ground, chimney, cutouts, missing corners or labels. Clear solid three-dimensional roof volume.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. DEAD END TERMINAL HIPPED ROOF cap96x96 native. Fully opaque SQUARE roof footprint, all four square corners filled. High3/4 view. Central vertical capped ridge from top to centre, two diagonal hip caps branch from centre to both BOTTOM corners; a broad triangular front roof plane between hips, narrower left/right receding slopes. Left side brighter, right dark. Red terracotta squared tile clusters about8px, calm texture. Single thick straight bottom eave; thin dark top/side outline. No walls, gable window, ground, chimney, cutouts, missing corners or labels. Clear solid three-dimensional roof volume.",
+    "source": "r17-C-source-deadend-cap-roof-a.png"
+  },
+  {
+    "id": "yard-1",
+    "size": [
+      48,
+      48
+    ],
+    "output": "yard-1",
+    "overlay": true,
+    "selected": true,
+    "desc": "ONE48x48native BACK GARDEN DETAIL: a very LOW timber firewood shelter, simple lean-to brown plank roof seen from high3/4, stacked split logs beneath, with a little washing line on two squared wooden posts behind it holding TWO large hanging cloths cream and muted blue. Compact combined yard vignette, shelter only24px wide and18px tall, washing posts34px tall. Bold clear shapes, woodpile three simple log layers, not dozens of circles. Isolated on magenta with no ground square, grass, stones or loose specks. Top-left light. Everything fits one square cell.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE48x48native BACK GARDEN DETAIL: a very LOW timber firewood shelter, simple lean-to brown plank roof seen from high3/4, stacked split logs beneath, with a little washing line on two squared wooden posts behind it holding TWO large hanging cloths cream and muted blue. Compact combined yard vignette, shelter only24px wide and18px tall, washing posts34px tall. Bold clear shapes, woodpile three simple log layers, not dozens of circles. Isolated on magenta with no ground square, grass, stones or loose specks. Top-left light. Everything fits one square cell.",
+    "source": "r17-C-source-yard-1.png"
+  },
+  {
+    "id": "yard-3",
+    "size": [
+      48,
+      48
+    ],
+    "output": "yard-3",
+    "overlay": true,
+    "selected": true,
+    "desc": "ONE SMALL TREE IN SQUARE TIMBER TUB for a back garden,48x48native. Compact leafy green tree canopy in three distinct stepped angular leaf masses, visible central brown trunk, stout square wooden planter tub with rim top visible and dark soil. High3/4RPG view, top-left light, green palette muted olive and fresh medium green, dark outline1native pixel. Large clean leaf clusters, no tiny leaf dots, no blob-like spherical canopy, no lone falling leaves, grass or ground patch. Plant fully contained within square, isolated magenta background.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE SMALL TREE IN SQUARE TIMBER TUB for a back garden,48x48native. Compact leafy green tree canopy in three distinct stepped angular leaf masses, visible central brown trunk, stout square wooden planter tub with rim top visible and dark soil. High3/4RPG view, top-left light, green palette muted olive and fresh medium green, dark outline1native pixel. Large clean leaf clusters, no tiny leaf dots, no blob-like spherical canopy, no lone falling leaves, grass or ground patch. Plant fully contained within square, isolated magenta background.",
+    "source": "r17-C-source-yard-3.png"
+  },
+  {
+    "id": "yard-2",
+    "size": [
+      48,
+      48
+    ],
+    "output": "yard-2",
+    "overlay": true,
+    "selected": true,
+    "desc": "ONE SMALL REAR SHED48x48native canvas, ordinary low garden storage shed, broad wooden door and plain timber wall, a low sloping terracotta tiled roof seen high3/4 from above occupying HALF object. Strong square corners, top-left light and dark east return, chunky tile clusters, visible stone threshold. Whole shed about40x36native, no window ornaments, no chimney or extra objects. Transparent destination but draw on magenta for keying. No ground patch, shadow outside silhouette, grass or specks.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE SMALL REAR SHED48x48native canvas, ordinary low garden storage shed, broad wooden door and plain timber wall, a low sloping terracotta tiled roof seen high3/4 from above occupying HALF object. Strong square corners, top-left light and dark east return, chunky tile clusters, visible stone threshold. Whole shed about40x36native, no window ornaments, no chimney or extra objects. Transparent destination but draw on magenta for keying. No ground patch, shadow outside silhouette, grass or specks.",
+    "source": "r17-C-source-yard-2.png"
+  },
+  {
+    "id": "lane",
+    "size": [
+      24,
+      48
+    ],
+    "output": "lane",
+    "ground": true,
+    "selected": true,
+    "desc": "ONE narrow back lane ground strip24x48native, aspect1:2. Pure TOP DOWN quiet grey squared cobbles, 3columns across by6offset rows down, stones6-8nativepx. Very narrow kerb and dark gutter on LEFT/RIGHT, open repeating top/bottom. Fully painted straight square-corner rectangle with magenta margin. Muted taupe-grey pavement, only3close shades, dark joints subtle, lane must be lighter than building shade. No black outlines, texture specks, cracks, vegetation, props or vignetting. Matches lane_joined style narrow paved lane.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE narrow back lane ground strip24x48native, aspect1:2. Pure TOP DOWN quiet grey squared cobbles, 3columns across by6offset rows down, stones6-8nativepx. Very narrow kerb and dark gutter on LEFT/RIGHT, open repeating top/bottom. Fully painted straight square-corner rectangle with magenta margin. Muted taupe-grey pavement, only3close shades, dark joints subtle, lane must be lighter than building shade. No black outlines, texture specks, cracks, vegetation, props or vignetting. Matches lane_joined style narrow paved lane.",
+    "source": "r17-C-source-lane.png"
+  },
+  {
+    "id": "mud-edge",
+    "size": [
+      48,
+      48
+    ],
+    "output": "mud-edge",
+    "silhouette": true,
+    "selected": true,
+    "desc": "ONE ground transition overlay48x48native. LEFT half is compact muddy brown earth with a few BROAD connected angular wheel-rut bands; RIGHT half perfectly solid magenta for keying to grass underlay. Mud edge descends from TOP to BOTTOM in a gently stepped square-pixel irregular boundary near centre, never rounded. Terrain is lowcontrast muted earthy brown with about4flat shades and NO isolated rocks, specks, noise, cracks, plants or objects. Entire top-to-bottom left side painted; no outer stroke around tile. Top-down orthogonal pixel RPG ground, not perspective. Subtle broad packed soil masses.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE ground transition overlay48x48native. LEFT half is compact muddy brown earth with a few BROAD connected angular wheel-rut bands; RIGHT half perfectly solid magenta for keying to grass underlay. Mud edge descends from TOP to BOTTOM in a gently stepped square-pixel irregular boundary near centre, never rounded. Terrain is lowcontrast muted earthy brown with about4flat shades and NO isolated rocks, specks, noise, cracks, plants or objects. Entire top-to-bottom left side painted; no outer stroke around tile. Top-down orthogonal pixel RPG ground, not perspective. Subtle broad packed soil masses.",
+    "source": "r17-C-source-mud-edge.png",
+    "crop": [
+      10,
+      10,
+      1244,
+      1244
+    ],
+    "edge": true
+  },
+  {
+    "id": "fence-1",
+    "size": [
+      24,
+      48
+    ],
+    "output": "fence-1",
+    "overlay": true,
+    "selected": true,
+    "desc": "ONE NORTH-SOUTH garden fence segment24x48native, high3/4 RPG view, slim vertical canvas. A low squared wooden plank fence recedes vertically toward TOP with three flat square posts at top/middle/bottom, lit top rail, east face darker, dark square feet. Fits side boundary of narrow garden, 48px long and at most18px wide. No diagonal isometric drift, no pointed pickets, no plants, ground, stones or loose specks. Magenta visible either side and through board gaps. Same brown timber family as plain fence, one native-pixel outline.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE NORTH-SOUTH garden fence segment24x48native, high3/4 RPG view, slim vertical canvas. A low squared wooden plank fence recedes vertically toward TOP with three flat square posts at top/middle/bottom, lit top rail, east face darker, dark square feet. Fits side boundary of narrow garden, 48px long and at most18px wide. No diagonal isometric drift, no pointed pickets, no plants, ground, stones or loose specks. Magenta visible either side and through board gaps. Same brown timber family as plain fence, one native-pixel outline.",
+    "source": "r17-C-source-fence-1.png"
+  },
+  {
+    "id": "corner-inner-roof-b",
+    "size": [
+      96,
+      96
+    ],
+    "output": "corner-inner-roof",
+    "roof_only": true,
+    "keep_lead": true,
+    "selected": false,
+    "desc": "Alternative96x96native INSIDE VALLEY roof join. A perfectly SQUARE filled terracotta roof tile, no missing corners. Two pitched roof planes converge on a recessed dark lead gutter from TOP LEFT corner to BOTTOM RIGHT corner; gutter only3native pixels wide with thin grey flashing. Tiles on left plane brightly lit top-left; right plane dark. Rectangular clay tiles8px across,10courses, understated dark-red seams. Strong believable concave valley, NOT raised ridge. Clean straight outer edges, no timber beams, ground, labels, chimneys or scenery.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative96x96native INSIDE VALLEY roof join. A perfectly SQUARE filled terracotta roof tile, no missing corners. Two pitched roof planes converge on a recessed dark lead gutter from TOP LEFT corner to BOTTOM RIGHT corner; gutter only3native pixels wide with thin grey flashing. Tiles on left plane brightly lit top-left; right plane dark. Rectangular clay tiles8px across,10courses, understated dark-red seams. Strong believable concave valley, NOT raised ridge. Clean straight outer edges, no timber beams, ground, labels, chimneys or scenery.",
+    "source": "r17-C-source-corner-inner-roof-b.png"
+  },
+  {
+    "id": "tee-end-roof-b",
+    "size": [
+      144,
+      96
+    ],
+    "output": "tee-end-roof",
+    "roof_only": true,
+    "selected": true,
+    "desc": "Alternative T-JUNCTION ROOF cap144x96native, filled square-corner rectangle3:2. Terracotta pitched roof ridge runs horizontally across image at1/3height; at centre branches straight DOWN to bottom eave. Two recessed dark-red valley seams fan toward bottomleft/bottomright corners. Lit left surfaces shaded east surfaces, small chunky rectangular clay tiles8px scale12courses, lowcontrast joints. All FOUR rectangle corners full painted roof, no cutout T silhouette. One continuous eave at bottom. No walls, roof holes, rafter projections, ground or text. Match classic fantasy cottage roof texture and top-left light.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative T-JUNCTION ROOF cap144x96native, filled square-corner rectangle3:2. Terracotta pitched roof ridge runs horizontally across image at1/3height; at centre branches straight DOWN to bottom eave. Two recessed dark-red valley seams fan toward bottomleft/bottomright corners. Lit left surfaces shaded east surfaces, small chunky rectangular clay tiles8px scale12courses, lowcontrast joints. All FOUR rectangle corners full painted roof, no cutout T silhouette. One continuous eave at bottom. No walls, roof holes, rafter projections, ground or text. Match classic fantasy cottage roof texture and top-left light.",
+    "source": "r17-C-source-tee-end-roof-b.png"
+  },
+  {
+    "id": "deadend-cap-roof-b",
+    "size": [
+      96,
+      96
+    ],
+    "output": "deadend-cap-roof",
+    "roof_only": true,
+    "selected": true,
+    "desc": "Alternative96x96native deadend hipped roof cap. Exact square painted footprint, all corners roof. Central ridge TOP to centre; two capped hip diagonals descend to BOTH bottomcorners enclosing triangular forward slope. Three roof planes, warm lit left plane and darker right plane, top-left light. Fine broad8px rectangular terracotta clay tile clusters in10courses, darkerRED seams, onepixeldark silhouette. Strong visible front eave as a straight brown ledge with lit top edge. No gable/wall, ground, objects, chimney, cutouts or exterior triangle.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative96x96native deadend hipped roof cap. Exact square painted footprint, all corners roof. Central ridge TOP to centre; two capped hip diagonals descend to BOTH bottomcorners enclosing triangular forward slope. Three roof planes, warm lit left plane and darker right plane, top-left light. Fine broad8px rectangular terracotta clay tile clusters in10courses, darkerRED seams, onepixeldark silhouette. Strong visible front eave as a straight brown ledge with lit top edge. No gable/wall, ground, objects, chimney, cutouts or exterior triangle.",
+    "source": "r17-C-source-deadend-cap-roof-b.png"
+  },
+  {
+    "id": "street-main-b",
+    "size": [
+      96,
+      48
+    ],
+    "output": "street-main",
+    "ground": true,
+    "selected": false,
+    "desc": "Replacement mainroad96x48native quiet RPG paving. Fully painted2:1rectangle. Road travels vertically. Small squared grey stones all SAME middle-grey material, long and short rectangles6x6 and12x6native in staggered courses; NO checkerboard of light/dark blocks. Exactly eight horizontal rows. Mortar darker but lowcontrast, never white. Narrow dark gutter and grey kerb along farLEFT and RIGHT. Open north/south ends continue repetition. Flat3colour palette warm grey stone#929080, shadow#78796c, highlight#a2967a. No bevel gradients, no dark outlines, noise, loose pebbles or scenery. Square corners, no rounded cobbles.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Replacement mainroad96x48native quiet RPG paving. Fully painted2:1rectangle. Road travels vertically. Small squared grey stones all SAME middle-grey material, long and short rectangles6x6 and12x6native in staggered courses; NO checkerboard of light/dark blocks. Exactly eight horizontal rows. Mortar darker but lowcontrast, never white. Narrow dark gutter and grey kerb along farLEFT and RIGHT. Open north/south ends continue repetition. Flat3colour palette warm grey stone#929080, shadow#78796c, highlight#a2967a. No bevel gradients, no dark outlines, noise, loose pebbles or scenery. Square corners, no rounded cobbles.",
+    "source": "r17-C-source-street-main-b.png"
+  },
+  {
+    "id": "pilot-person",
+    "size": [
+      16,
+      28
+    ],
+    "output": "pilot-person",
+    "overlay": true,
+    "selected": true,
+    "review_only": true,
+    "desc": "ONE ordinary fantasy town resident PLAYER SCALE FIGURE,16x28native. Head-to-toe compact three-quarter front standing pose; short brown hair, light skin, muted slate-blue tunic, brown trousers and boots. Arms at sides, two feet clearly separated, simple small face no facial detail beyond nose shadow, chunky pixels. Top-left light and onepixel dark outline. No weapons, scenery, ground patch or cast shadow. Person fills16x28native canvas and is a scale figure beside fantasy houses. Magenta background.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONE ordinary fantasy town resident PLAYER SCALE FIGURE,16x28native. Head-to-toe compact three-quarter front standing pose; short brown hair, light skin, muted slate-blue tunic, brown trousers and boots. Arms at sides, two feet clearly separated, simple small face no facial detail beyond nose shadow, chunky pixels. Top-left light and onepixel dark outline. No weapons, scenery, ground patch or cast shadow. Person fills16x28native canvas and is a scale figure beside fantasy houses. Magenta background.",
+    "source": "r17-C-source-pilot-person.png",
+    "crop": [
+      1142,
+      829,
+      1295,
+      1124
+    ]
+  },
+  {
+    "id": "back-stair-w3-b",
+    "size": [
+      144,
+      48
+    ],
+    "output": "back-stair-w3",
+    "course": true,
+    "selected": true,
+    "desc": "Alternative rear stair wall144x48native long3:1rectangle. One plain warm plaster facade fully fills panel. A robust exterior timber staircase at RIGHT half with six broad stone treads, rising to small closed upper rear door at right, simple rail3posts; TWO small recessed blue-grey windows at left, drainpipe far right. Thin straight top/bottom timber stacking courses; dark1px silhouette. Top-left light on step tops, dark risers, calm blank plaster, no roof/extra props. Stair must not stretch across entire width: compact right-hand flight with broad plain left wall.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. Alternative rear stair wall144x48native long3:1rectangle. One plain warm plaster facade fully fills panel. A robust exterior timber staircase at RIGHT half with six broad stone treads, rising to small closed upper rear door at right, simple rail3posts; TWO small recessed blue-grey windows at left, drainpipe far right. Thin straight top/bottom timber stacking courses; dark1px silhouette. Top-left light on step tops, dark risers, calm blank plaster, no roof/extra props. Stair must not stretch across entire width: compact right-hand flight with broad plain left wall.",
+    "source": "r17-C-source-back-stair-w3-b.png"
+  },
+  {
+    "id": "side-storey-d3",
+    "size": [
+      144,
+      48
+    ],
+    "output": "side-storey-d3",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "ONLY ONE SIDE UPPER-STOREY WALL MODULE144x48native long3:1rectangle. No roof, ground, doors, stairs or whole house. Fully painted warm cream wall; left80% lit front plane, right20% shaded EAST return divided by square corner post. Two recessed paired blue-grey windows on front, one smaller narrow window on return, projecting square stone sills. Broad quiet plaster masses and thin timber top/bottom stacking courses, outer corners square. Minimal framing, no decorations or stray texture.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONLY ONE SIDE UPPER-STOREY WALL MODULE144x48native long3:1rectangle. No roof, ground, doors, stairs or whole house. Fully painted warm cream wall; left80% lit front plane, right20% shaded EAST return divided by square corner post. Two recessed paired blue-grey windows on front, one smaller narrow window on return, projecting square stone sills. Broad quiet plaster masses and thin timber top/bottom stacking courses, outer corners square. Minimal framing, no decorations or stray texture.",
+    "source": "r17-C-source-side-storey-d3.png"
+  },
+  {
+    "id": "side-ground-d3",
+    "size": [
+      144,
+      48
+    ],
+    "output": "side-ground-d3",
+    "course": true,
+    "columns": true,
+    "selected": true,
+    "desc": "ONLY A SINGLE SIDE GROUND-FLOOR WALL MODULE144x48native, long3:1rectangle. NO ROOF OR COMPLETE HOUSE. Fully painted warm stone/plaster panel. Front plane occupies left80%, shaded EAST return right20% with corner post. Main side door20x30native in left half with lit stone step and small lantern; two small windows spaced right, one on return. Big plain material masses, structural posts only, top/bottom straight thin timber stacking course, square outside corners. No scenery.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONLY A SINGLE SIDE GROUND-FLOOR WALL MODULE144x48native, long3:1rectangle. NO ROOF OR COMPLETE HOUSE. Fully painted warm stone/plaster panel. Front plane occupies left80%, shaded EAST return right20% with corner post. Main side door20x30native in left half with lit stone step and small lantern; two small windows spaced right, one on return. Big plain material masses, structural posts only, top/bottom straight thin timber stacking course, square outside corners. No scenery.",
+    "source": "r17-C-source-side-ground-d3.png"
+  },
+  {
+    "id": "street-main-c",
+    "size": [
+      96,
+      48
+    ],
+    "output": "street-main",
+    "ground": true,
+    "selected": true,
+    "desc": "ONLY GROUND TEXTURE. NO BUILDING, NO HOUSE, NO OBJECT. Rectangular96x48native paving tile at2:1ratio seen PURE TOP DOWN. Lowcontrast muted warm grey squared cobblestones, staggered rows, each stone6or12px across. All stones same average middle grey, NOT checkerboard. Eight courses, narrow DARK GREY mortar, NOT white. Kerb/gutter3pxwide on left and right. Fully painted square-corner rectangle on magenta margin. Seamless top/bottom repeat. NO ROOF, NO WALL, NO SCENERY, NO TEXT, no stones scattered on top, no noise or cracks. Three close grey shades#78796c,#928f7d,#a2967a.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. ONLY GROUND TEXTURE. NO BUILDING, NO HOUSE, NO OBJECT. Rectangular96x48native paving tile at2:1ratio seen PURE TOP DOWN. Lowcontrast muted warm grey squared cobblestones, staggered rows, each stone6or12px across. All stones same average middle grey, NOT checkerboard. Eight courses, narrow DARK GREY mortar, NOT white. Kerb/gutter3pxwide on left and right. Fully painted square-corner rectangle on magenta margin. Seamless top/bottom repeat. NO ROOF, NO WALL, NO SCENERY, NO TEXT, no stones scattered on top, no noise or cracks. Three close grey shades#78796c,#928f7d,#a2967a.",
+    "source": "r17-C-source-street-main-c.png",
+    "wrap_patch": [
+      0,
+      0,
+      96,
+      12
+    ]
+  },
+  {
+    "id": "side-roof-d2-c",
+    "size": [
+      96,
+      96
+    ],
+    "output": "side-roof-d2",
+    "selected": true,
+    "source": "r17-C-source-side-roof-d2-c.png",
+    "prompt": "Edit the first image, a side gable roof module on magenta. Keep its SQUARE opaque footprint, exact outer edges, vertical ridge, gable and shutter opening, straight bottom eave, top-left lighting and magenta background. Change ONLY the terracotta tile pattern on the two roof slopes: the current tiles are much too large. Draw twice as many SMALLER overlapping rectangular clay tiles across and down, about TWELVE tiles total across the width and TWELVE horizontal courses down the roof. Native destination96x96. Match the finer clay tile scale and material in image2 fantasy house, but keep the first image's roof geometry unchanged. Quiet dark red joints, not black heavy grid; one-native-pixel outer dark olive outline. Crisp chunky square pixel art at large size on flat solid magenta. No whole house, added walls, props or text.",
+    "refs": [
+      "r17-C-source-side-roof-d2-b.png",
+      "../reference/r17/fantasy-house-2.png"
+    ]
+  }
+]

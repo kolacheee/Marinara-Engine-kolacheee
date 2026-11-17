@@ -1,0 +1,69 @@
+{
+  "scope": "Round17 PartC critic-r17C-1 repair self-review",
+  "independent_approval": false,
+  "engine_approval": false,
+  "brief_fail_list": [
+    {
+      "item": "Flat or cardboard beside the town houses",
+      "result": "Scoped visual pass",
+      "evidence": "All45 C exports inspected at literal1x/4x beside fantasy-house-2. Rear upper walls exclude ground doors/plinths; timber galleries have supported boundary landings. Roof turns fit wall corners; separate E/W caps and new d3 courses preserve the intended native material scale. See connected, side and stack proofs."
+    },
+    {
+      "item": "Bare ground inside areas that should be roof",
+      "result": "Scoped pass",
+      "evidence": "Square opaque C caps and the unchanged continuous B L roof cover all required roof rectangles. Deliberate courts remain grass and contain fences/yard objects. The five C node proofs now connect front/rear rows and perpendicular C roof wings."
+    },
+    {
+      "item": "Seams or gaps",
+      "result": "Scoped pass after registration cleanup",
+      "evidence": "Rows0/47 and eave contacts match the course donor. Registered side and hip landmarks align with passing ground/corner walls. New street fields use complete painted courses; kerbs open at intersections and use painted turn crops. Rebuilt self/compatible seams, three-storey stacks, connected nodes and literal paving repeats are linked in the review index."
+    },
+    {
+      "item": "Copy-pasted neighbours",
+      "result": "Scoped visual pass",
+      "evidence": "The L north rear row uses widths3/1/2/1 with stair/plain variation. New paving has no exact12/16row stamp. Fence and paving repetitions remain visible as materials at4x; at1x their lower contrast leaves buildings dominant. Six distinct stalls remain PartD."
+    },
+    {
+      "item": "Landmark is not biggest on its square",
+      "result": "Deferred to Part D; full-city acceptance not claimed",
+      "evidence": "The native current church/hall are explicitly labelled cathedral/guildhall proxies. The church is lower than the deep side building and cannot satisfy final skyline leadership."
+    },
+    {
+      "item": "Greyscale landmark, gate and main-street hierarchy",
+      "result": "Street route readable; landmark and gate deferred to Part D",
+      "evidence": "Four native greyscale renders are saved. The 96px central market route remains continuous and clear between the two stall groups; the current civic proxies do not establish the final skyline and no new gate is exported."
+    },
+    {
+      "item": "Trade sign cannot be named at native size",
+      "result": "Outside C export scope",
+      "evidence": "The panel assigns signs to A. Current A facades are reused without modification; C adds service/rear entrances rather than new trade signage."
+    },
+    {
+      "item": "Street has no shadow",
+      "result": "Pass in each saved C critic scene",
+      "evidence": "Current B shadow strips fall onto south receivers, with explicit east receivers retained in tall/low cases. Verification measures darkened receiver pixels in every scene. C exports themselves use only hard alpha."
+    }
+  ],
+  "panel_C": {
+    "combined_pilot": "384x384 / 8x8 cells, with A front, C rear/side entrance/court, drawn review actor and adjoining junction. Diagram separates painted bounds, ground footprints, entrances, permitted projections and civic/gate reservations. This is a self-reviewed pilot, not an independent approval.",
+    "deeper_properties": "The pilot reserves a 96x336 / 2x7-cell plot. L-block metadata records 5-7-cell plot depths, fenced garden strips, low shed, well, washing/wood and tub tree. The d3 return has its own 144px wall drawing; it is not a stretched 96px export.",
+    "circulation": "96px market through-route and 48px side/court routes are checked against actual building/prop alpha after placement. The drawn 24px lane is exported per BRIEF-17, but is not used as a required clear route.",
+    "streets": "New low-contrast full-tile cobbles with registered painted joints, kerbs/gutters, open junctions and separately drawn kerb turns. L and market widths change within eight cells. Transparent mud is shown as a long edge and literal repeat over approved summer grass."
+  },
+  "precedence": [
+    "BRIEF-17 retains jogs, a bent route and a stepped wedge/setback despite the panel's suggestion to drop compulsory wedges/jogs.",
+    "BRIEF-17 retains the 24px lane export; clear required routes use 48/96px.",
+    "BRIEF-17's fixed course rows and lot-contained overlays remain authoritative over panel suggestions to remove repeated belts or allow controlled projections beyond plot edges.",
+    "The current user instruction forbids commits, pushes and branch changes, overriding the brief's push instruction."
+  ],
+  "placeholders": [
+    "reference/r17/fantasy-hall-1.png as cathedral",
+    "reference/r17/fantasy-hall-0.png as guildhall",
+    "reference/r17/fantasy-well-0.png as market cross/fountain position",
+    "reference/r17/fantasy-stall-0.png and fantasy-stall-1.png in six positions"
+  ],
+  "round15_usage": "No city15 facade/roof/street sprite is placed in the scenes. The established course/palette donors are retained as the existing modular contract. round15-street.png appears only as the literal comparison reference.",
+  "review_entry": "r17-C-review.html",
+  "measurements": "r17-C-critic1-verification.json",
+  "response": "r17-C-critic1-response.json"
+}

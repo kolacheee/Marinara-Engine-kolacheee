@@ -1,0 +1,316 @@
+{
+  "scope": "Round17 PartC response to critic-r17C-1",
+  "independent_approval": false,
+  "engine_approval": false,
+  "original_critic": "critic-r17C-1.json (unchanged)",
+  "failed_pngs_repaired": 25,
+  "passing_pngs_byte_identical": 15,
+  "exports_now": 45,
+  "new_adapters": [
+    "back-plain-ground-w1",
+    "back-plain-ground-w2",
+    "back-plain-ground-w3",
+    "side-roof-d2-W",
+    "street-junction-turn"
+  ],
+  "method": "44 new large built-in image-tool drawings on solid magenta, with two alternatives for difficult pieces; two original upper-wall drawings re-registered. BOX registration at8x, material palette lock, exact mode of64samples, one-pixel cleanup, drawn native contact transfers. No production shapes/noise constructed in code.",
+  "records": [
+    "r17-C-critic1-generation.json",
+    "r17-C-critic1-processing.json",
+    "r17-C-critic1-native-joins.json",
+    "r17-C-critic1-verification.json"
+  ],
+  "files": {
+    "back-plain-w1": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New repeatable upper plaster walls have recessed windows, sills and drainpipes, with no ground door or stone plinth. Original ground drawings are retained byte-for-byte as back-plain-ground-w1..3 and appear only at floor zero. Rows 0/47 and 48px pitch are unchanged.",
+      "selected_source": "back-plain-w1",
+      "evidence": [
+        "r17-C-back-stack-w1-1x.png",
+        "r17-C-back-stack-w2-4x.png",
+        "r17-C-back-stack-w3-4x.png"
+      ]
+    },
+    "back-plain-w2": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New repeatable upper plaster walls have recessed windows, sills and drainpipes, with no ground door or stone plinth. Original ground drawings are retained byte-for-byte as back-plain-ground-w1..3 and appear only at floor zero. Rows 0/47 and 48px pitch are unchanged.",
+      "selected_source": "back-plain-w2",
+      "evidence": [
+        "r17-C-back-stack-w1-1x.png",
+        "r17-C-back-stack-w2-4x.png",
+        "r17-C-back-stack-w3-4x.png"
+      ]
+    },
+    "back-plain-w3": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New repeatable upper plaster walls have recessed windows, sills and drainpipes, with no ground door or stone plinth. Original ground drawings are retained byte-for-byte as back-plain-ground-w1..3 and appear only at floor zero. Rows 0/47 and 48px pitch are unchanged.",
+      "selected_source": "back-plain-w3",
+      "evidence": [
+        "r17-C-back-stack-w1-1x.png",
+        "r17-C-back-stack-w2-4x.png",
+        "r17-C-back-stack-w3-4x.png"
+      ]
+    },
+    "back-stair-w1": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn timber stair galleries replace suspended masonry wedges. Posts continue to the floor boundaries; horizontal landing beams connect the end of each rising flight to the next flight and support the door level. Tread tops, railing, recess and fixed courses remain visible in three-floor stacks.",
+      "selected_source": "back-stair-w1-b",
+      "evidence": [
+        "r17-C-critic1-proof-stair-1-4x.png",
+        "r17-C-critic1-proof-stair-2-4x.png",
+        "r17-C-critic1-proof-stair-3-4x.png"
+      ]
+    },
+    "back-stair-w2": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn timber stair galleries replace suspended masonry wedges. Posts continue to the floor boundaries; horizontal landing beams connect the end of each rising flight to the next flight and support the door level. Tread tops, railing, recess and fixed courses remain visible in three-floor stacks.",
+      "selected_source": "back-stair-w2-b",
+      "evidence": [
+        "r17-C-critic1-proof-stair-1-4x.png",
+        "r17-C-critic1-proof-stair-2-4x.png",
+        "r17-C-critic1-proof-stair-3-4x.png"
+      ]
+    },
+    "back-stair-w3": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn timber stair galleries replace suspended masonry wedges. Posts continue to the floor boundaries; horizontal landing beams connect the end of each rising flight to the next flight and support the door level. Tread tops, railing, recess and fixed courses remain visible in three-floor stacks.",
+      "selected_source": "back-stair-w3-a",
+      "evidence": [
+        "r17-C-critic1-proof-stair-1-4x.png",
+        "r17-C-critic1-proof-stair-2-4x.png",
+        "r17-C-critic1-proof-stair-3-4x.png"
+      ]
+    },
+    "roof-back-w1": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New single-slope drawings retain the 96px square depth. Narrow ridge tiles, smaller distant courses, curved tile lips, clustered highlights and a lit eave over a dark underside replace the broad horizontal ridge bands and diagonal highlight stamps. Mixed widths replace repeated w2 roofs in the north row.",
+      "selected_source": "roof-back-w1-b",
+      "evidence": [
+        "r17-C-compatible-0-1x.png",
+        "r17-C-atlas-05.png",
+        "r17-C-critic-L-block-comparison-3x.png"
+      ]
+    },
+    "roof-back-w2": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New single-slope drawings retain the 96px square depth. Narrow ridge tiles, smaller distant courses, curved tile lips, clustered highlights and a lit eave over a dark underside replace the broad horizontal ridge bands and diagonal highlight stamps. Mixed widths replace repeated w2 roofs in the north row.",
+      "selected_source": "roof-back-w2-b",
+      "evidence": [
+        "r17-C-compatible-0-1x.png",
+        "r17-C-atlas-05.png",
+        "r17-C-critic-L-block-comparison-3x.png"
+      ]
+    },
+    "roof-back-w3": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New single-slope drawings retain the 96px square depth. Narrow ridge tiles, smaller distant courses, curved tile lips, clustered highlights and a lit eave over a dark underside replace the broad horizontal ridge bands and diagonal highlight stamps. Mixed widths replace repeated w2 roofs in the north row.",
+      "selected_source": "roof-back-w3-a",
+      "evidence": [
+        "r17-C-compatible-0-1x.png",
+        "r17-C-atlas-05.png",
+        "r17-C-critic-L-block-comparison-3x.png"
+      ]
+    },
+    "side-storey": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Re-registered the original painted upper returns to the unchanged ground coordinates: east corner 80px, west corner 16px. The unsuffixed export is exactly the corrected east file. No passing ground or d3 wall was edited.",
+      "selected_source": "side-storey-E-register",
+      "evidence": [
+        "r17-C-critic1-proof-side-E-4x.png",
+        "r17-C-critic1-proof-side-W-4x.png"
+      ]
+    },
+    "side-storey-E": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Re-registered the original painted upper returns to the unchanged ground coordinates: east corner 80px, west corner 16px. The unsuffixed export is exactly the corrected east file. No passing ground or d3 wall was edited.",
+      "selected_source": "side-storey-E-register",
+      "evidence": [
+        "r17-C-critic1-proof-side-E-4x.png",
+        "r17-C-critic1-proof-side-W-4x.png"
+      ]
+    },
+    "side-storey-W": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 1,
+      "repair": "Re-registered the original painted upper returns to the unchanged ground coordinates: east corner 80px, west corner 16px. The unsuffixed export is exactly the corrected east file. No passing ground or d3 wall was edited.",
+      "selected_source": "side-storey-W-register",
+      "evidence": [
+        "r17-C-critic1-proof-side-E-4x.png",
+        "r17-C-critic1-proof-side-W-4x.png"
+      ]
+    },
+    "side-roof-d2": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn east cap divides the front/gable face from the shaded right return at 80px. A separately painted west orientation adapter divides at 16px; the compositor selects it for W. Both stay 96x96 and meet the corrected wall corners.",
+      "selected_source": "side-roof-d2-b",
+      "evidence": [
+        "r17-C-compatible-1-4x.png",
+        "r17-C-critic1-proof-side-E-4x.png",
+        "r17-C-critic1-proof-side-W-4x.png",
+        "r17-C-critic-junctions-1x.png"
+      ]
+    },
+    "side-roof-d3": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New 144x144 cap adds courses at the d2 material scale instead of enlarging tiles. Front/gable and return divide at 120px, over the passing d3 wall corner.",
+      "selected_source": "side-roof-d3-a",
+      "evidence": [
+        "r17-C-compatible-1-4x.png",
+        "r17-C-critic1-proof-side-d3-4x.png"
+      ]
+    },
+    "corner-inner-storey": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn receding sill and beam tops turn into a dark centre recess; the two window faces no longer sit on parallel frontal rectangles. Fixed course contacts remain on rows 0/47.",
+      "selected_source": "corner-inner-storey-b",
+      "evidence": [
+        "r17-C-critic1-proof-connected-inner-4x.png",
+        "r17-C-atlas-02.png"
+      ]
+    },
+    "corner-inner-roof": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn valley terminates over the centre wall recess near x48. Two sloping planes meet there and connect to the neighbouring roof row and perpendicular C roof wing.",
+      "selected_source": "corner-inner-roof-a",
+      "evidence": [
+        "r17-C-critic1-proof-connected-inner-4x.png",
+        "r17-C-critic-junctions-comparison-1x.png"
+      ]
+    },
+    "corner-outer-L-roof": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 1,
+      "repair": "Redrawn hip/eave turn is registered at x24 over the unchanged outer-L wall corner. The proof attaches a current A/B front, a C rear row and a perpendicular C roof wing.",
+      "selected_source": "corner-outer-L-roof-b",
+      "evidence": [
+        "r17-C-critic1-proof-connected-outer-L-4x.png"
+      ]
+    },
+    "corner-outer-R-roof": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 1,
+      "repair": "Redrawn hip/eave turn is registered at x70 over the unchanged outer-R wall corner, preserving the dark right return and top-left lighting. The proof attaches both horizontal neighbours and a perpendicular roof wing.",
+      "selected_source": "corner-outer-R-roof-b",
+      "evidence": [
+        "r17-C-critic1-proof-connected-outer-R-4x.png"
+      ]
+    },
+    "fence-1": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn continuous top and lower rails, distinct posts and open gaps replace the twig-like silhouette. Native drawn rail pixels register its N/S ends; a three-repeat run joins the unchanged fence-0 over summer ground.",
+      "selected_source": "fence-1-b",
+      "evidence": [
+        "r17-C-critic1-proof-fence-corner-4x.png"
+      ]
+    },
+    "yard-3": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 1,
+      "repair": "Redrawn small leaf clusters, branch gaps and top-left highlights replace the smooth crown lobes. The tub and trunk remain legible; alpha-component checks reject detached specks.",
+      "selected_source": "yard-3-b",
+      "evidence": [
+        "r17-C-atlas-11.png",
+        "r17-C-critic1-proof-fence-corner-1x.png"
+      ]
+    },
+    "street-main": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New full-length painted cobble field replaces the exact 12-row stamp. Source mortar bands and vertical joints are registered before mode sampling, preserving narrow joints and modest stone variation. Kerbs open where road rectangles meet.",
+      "selected_source": "street-main-a",
+      "evidence": [
+        "r17-C-repeat-street-main-4x.png",
+        "r17-C-critic1-proof-street-junction-4x.png",
+        "r17-C-critic-market-squint-1x.png"
+      ]
+    },
+    "street-side": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New complete quiet cobbles replace the broken pale centre scar. Painted joint registration and a source-row contact transfer keep the course boundary narrow; continuous gutters open into crossings.",
+      "selected_source": "street-side-b",
+      "evidence": [
+        "r17-C-repeat-street-side-4x.png",
+        "r17-C-critic1-proof-street-junction-4x.png"
+      ]
+    },
+    "street-junction": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New full 48px paving field removes the exact 16-row diagonal stamp. A separately image-drawn street-junction-turn supplies native kerb/gutter corner crops. The compositor removes crossing kerbs using native junction paint before applying those terminations.",
+      "selected_source": "street-junction-b",
+      "evidence": [
+        "r17-C-repeat-street-junction-4x.png",
+        "r17-C-critic1-proof-street-junction-4x.png",
+        "r17-C-critic-L-block-3x.png"
+      ]
+    },
+    "lane": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "Redrawn 24x48 complete cobbles with continuous edge/gutter treatment replace the pale ladder and scar. Required circulation remains 48/96px.",
+      "selected_source": "lane-b",
+      "evidence": [
+        "r17-C-repeat-lane-4x.png",
+        "r17-C-file-lane.png"
+      ]
+    },
+    "mud-edge": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 2,
+      "repair": "New restrained muddy verge has small short ruts and firm edge clusters instead of a large S and pale smeared bands. Source proportions and native end transfer preserve a continuous long run.",
+      "selected_source": "mud-edge-b",
+      "evidence": [
+        "r17-C-repeat-mud-edge-4x.png",
+        "r17-C-critic1-proof-mud-long-edge-4x.png"
+      ]
+    },
+    "compose.py": {
+      "status": "repaired; self-reviewed",
+      "problems_addressed": 7,
+      "repair": [
+        "Ground-only rear door/plinth adapters are selected only for floor zero; upper walls and supported stair galleries stack every48px.",
+        "Five connected C outer/inner/T/dead-end groups replace isolated node cards. Each contacts an A/B front and C rear plus a perpendicular roof wing cropped from current C side-roof paint. Dead-end road meets its cap. The main L keeps the passing continuous B roof.",
+        "E/W side wall and roof corners align. The enlarged height proof adds C east-five/rear-one and rear-one/west-five with native B firewall paint.",
+        "The road-union compositor removes kerbs from connecting openings with drawn junction paint and adds cropped image-drawn turns.",
+        "L north-south segments change width after5/3/3cells. Market main segments run6/5/2cells around square widenings; its side route also widens. Every explicit non-square street segment is at most8cells.",
+        "North rear roofs alternate widths3/1/2/1 and stair/plain walls; new quieter full-tile paving replaces short stamps.",
+        "Pilot, all four critic scenes, comparisons at1x/3x, native greyscale, per-file1x/4x and seam/repeat/contact proofs are regenerated. Existing A/B production PNGs remain byte-identical."
+      ],
+      "evidence": [
+        "r17-C-pilot-plan.png",
+        "r17-C-pilot-1x.png",
+        "r17-C-critic-junctions-comparison-1x.png",
+        "r17-C-critic-height-test-comparison-1x.png",
+        "r17-C-critic-L-block-comparison-1x.png",
+        "r17-C-critic-market-comparison-1x.png"
+      ]
+    }
+  },
+  "limitations": [
+    "This is the repair self-review, not an independent critic verdict or in-engine approval.",
+    "PartD civic proxies remain: current halls, well and two stall drawings in six positions; final cathedral/guildhall/gate hierarchy and distinct stalls are deferred.",
+    "No city15 scene asset is used; its course/palette donors retain the established contract, and round15-street is comparison only."
+  ],
+  "precedence": [
+    "BRIEF-17 retains fixed course rows, lot-contained overlays, the24px lane and compulsory bends/jogs/wedges over conflicting panel suggestions.",
+    "Panel2 was absent.",
+    "User prohibition on commit/push/branch changes overrides the brief push instruction."
+  ]
+}

@@ -1,0 +1,159 @@
+[
+  {
+    "id": "paving-a",
+    "source": "r17-C-critic2-source-paving-a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-df875faf-842f-45ab-9a2b-6cea87eea5a0.png",
+    "prompt": "Draw one square cobbled-street kerb TURN tile for a 48x48 native-pixel medieval RPG. Use the attached paving reference: match the LEFT street-junction field and middle street-side/main surfaces exactly in material scale and quiet value distribution. Redraw the far-right failed turn entirely. Output ONLY the new single tile enlarged to about 800x800 centered on flat solid #ff00ff magenta; no labels. Tile square, straight square perimeter, overhead square grid (NOT isometric). Quiet large rectangular 6-12 native-pixel cobbles, each stone a broad flat olive-grey face, one native-pixel mortar; about 6 stones across and 7 courses down. Colours mostly #8c8e7f and #949687; mortar #737669, restrained highlight #9d9f8f. At native x8,y10 a square kerb turns: a short vertical stone kerb running from bottom to y10 then horizontal right to edge, with a one-pixel dark gutter on its lower/right street side. No outer border. Keep whole paving field the SAME size of stones both sides of kerb. No small broken strokes, scratches, grit, dither, scattered flecks, texture noise, fine cracks, rounded corners, bevelled tile outline, perspective, grass, objects or shadows outside. Crisp hand-pixelled game style, flat broad clusters. This is a new painting using reference for scale; do not return a reference sheet.",
+    "size": [
+      48,
+      48
+    ],
+    "selected": false
+  },
+  {
+    "id": "paving-b",
+    "source": "r17-C-critic2-source-paving-b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-f50a2ec5-a67f-4180-9145-dcfd80d9d188.png",
+    "prompt": "Paint one new square cobbled street corner tile for 48x48 native pixels, enlarged on flat solid magenta. Attached image is MATERIAL REFERENCE, not layout to reproduce. Match the first three approved tiles: quiet large rectangular grey olive cobbles 6-12 native pixels across, one-pixel mortar, about 6 stones across and 7 courses vertically. Almost uniform face colour #8c8e7f, quiet variation #949687, mortar #737669. A square L shaped thin raised stone kerb turns near x8 y10, running from bottom to y10 and then right to right edge; gutter immediately right/below kerb. Kerb only 2 native pixels wide. Native tile square boundaries straight, flat orthographic overhead, no outer border. Whole field paved in same large stones, including below/right of kerb. Absolutely no scratches, grit, scribbles, tiny cracks, noise, fragments, rounded corners or extra objects. One clean coherent game pixel-art tile, fills 85 percent of image. No labels.",
+    "size": [
+      48,
+      48
+    ],
+    "selected": true,
+    "selection_reason": "Complete quiet stone faces and readable square kerb.",
+    "material_map": [
+      0,
+      2,
+      3,
+      4,
+      4
+    ]
+  },
+  {
+    "id": "corner-outer-L-a",
+    "source": "r17-C-critic2-source-corner-outer-L-a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-284e7e66-acde-4ba1-b2c0-3567123f5a39.png",
+    "prompt": "Use case precise-object-edit. Repair this narrow vertical terracotta roof composition as ONE continuous medieval pixel-art roof. First image is edit target, second is style reference only. Draw large on solid #FF00FF magenta with small margin. Target native dimensions 96 wide by192 high. Keep full rectangular outer silhouette. IMPORTANT remove all horizontal dividing ridges and the erroneous little black triangle at one-third height. The vertical terracotta ridge at 58% width must run smoothly without interruption from the TOP EDGE for the first 120 of192 native rows, then turn diagonally toward the lower LEFT corner as a convex hip. The broad left-facing plane is lit from top left, right plane shaded. Continuous tile courses and same 6-10px wide tiles throughout all192 rows, clear course direction around hip. Top96 rows have ONLY uninterrupted vertical ridge and two tiled slopes: NO gable triangles, NO eaves, NO transverse bar. Bottom96 preserves the attached cap's outer-L convex hip geometry and bottom horizontal eave. No wall body, no dormer, no chimney, no new outline inside where source pieces formerly met. Exact square corners, strict square pixel grid, 1 native px dark silhouette, flat colour clusters with 7 terracotta shades, no smears, haze, noisy fine texture. This is a seamless connected roof drawing, not two stacked independent roof tiles. Output a single roof no labels.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": false
+  },
+  {
+    "id": "corner-outer-L-b",
+    "source": "r17-C-critic2-source-corner-outer-L-b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-35bee0d2-3cf1-424d-84d5-bad7db9dccb3.png",
+    "prompt": "Edit target is first image; second image is only style reference. Paint ONE connected medieval terracotta roof assembly in crisp pixel game art on solid #ff00ff magenta with small margin. Target native size96x192, tall2:1 rectangle, strictly square edges. Keep bottom cap architecture but redraw the obsolete connection. The TOP96 native rows are an uninterrupted north-south roof wing: straight vertical ridge, light left slope and shaded right slope. No gable, triangle, crossbar, eave or notch anywhere in that upper half. Every tile course must flow continuously through the former middle seam. Same quiet6-10px rectangular tile size and seven terracotta colours as reference house, top-left light,1px dark silhouette, no noisy scratches, no dithering, no fog, no wall body, no objects, no labels. Convex LEFT HIP: ridge at x58 in upper half continues down to y120, then bends as one continuous diagonal hip to bottom-left corner. No horizontal border across y96; all192 rows one coherent roof volume. Make hip left face visibly lit and east face darker. Preserve bottom eave.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "selection_reason": "Clear uninterrupted ridge/hip and coarse continuous courses."
+  },
+  {
+    "id": "corner-inner-a",
+    "source": "r17-C-critic2-source-corner-inner-a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-08572cd2-7881-4a44-aa40-cdc481461a00.png",
+    "prompt": "Edit target is first image; second image is only style reference. Paint ONE connected medieval terracotta roof assembly in crisp pixel game art on solid #ff00ff magenta with small margin. Target native size96x192, tall2:1 rectangle, strictly square edges. Keep bottom cap architecture but redraw the obsolete connection. The TOP96 native rows are an uninterrupted north-south roof wing: straight vertical ridge, light left slope and shaded right slope. No gable, triangle, crossbar, eave or notch anywhere in that upper half. Every tile course must flow continuously through the former middle seam. Same quiet6-10px rectangular tile size and seven terracotta colours as reference house, top-left light,1px dark silhouette, no noisy scratches, no dithering, no fog, no wall body, no objects, no labels. CONCAVE INNER ROOF JUNCTION: upper wing ridge at x40 runs south into a proper crossed-roof valley junction in the lower half. Draw a diagonal recessed lead valley with terracotta tile courses naturally ending against it. Let incoming vertical ridge meet the sloping roof at a coherent three-dimensional ridge/valley junction around y125. Bottom edge preserves existing recessed internal corner, tiny visible cream/timber soffit and valley outlet. Do not leave a horizontal cutoff between upper wing and lower cap. Draw valley CONTINUOUS from its roof intersection down to the existing inner elbow at bottom x48. This is an inside corner (valley), not a raised convex hip.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": false
+  },
+  {
+    "id": "corner-inner-b",
+    "source": "r17-C-critic2-source-corner-inner-b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-c977f9de-767c-4fd9-b51c-6e76b222503d.png",
+    "prompt": "Repair first image into a SINGLE uninterrupted connected terracotta inner-corner roof, tall rectangular96x192 native pixel game asset drawn large on solid magenta. Second image style only. Erase middle horizontal seam and erroneous upper gable triangle. Top half is plain vertical ridge at x40, lit left and shaded right slopes; no crossbar or triangular end. In lower half draw convincing CONCAVE valley junction: ridge ends at a small junction around x40,y136, a narrow recessed slate flashing valley runs from left edge y112 through junction to inner eave x48,y180. Roof tile rows on both adjacent planes follow their different slope directions into this valley. Retain bottom cap recessed V-shaped eave, cream timber soffit and drain. Tile size6-10 native pixels, calm broad clusters, no speckles, sharp square outer silhouette. One coherent roof volume extending all192 rows, no midway eave or outline; top-left light, one-pixel dark outline, seven terracotta ramp, slate lead in valley. No objects, no labels.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "selection_reason": "Readable recessed valley, continuous ridge, calm sloped tile courses."
+  },
+  {
+    "id": "tee-end-a",
+    "source": "r17-C-critic2-source-tee-end-a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-f77d5c03-0650-4097-b206-0bd3574f6d4e.png",
+    "prompt": "Edit first image into ONE seamless T-roof junction. Style only from second house. Native144x192, draw large isolated on flat magenta. Silhouette MUST be exact reference: upper half only left96 pixels painted, upper-right48x96 empty magenta, lower half full144 pixels painted. TOP wing is vertical ridge at x40 continuous from top through y96 into junction. Remove little upper gable tip and every horizontal cutoff at halfway. The lower144x96 roof crossbar is a horizontal gable roof with horizontal ridge near y128; incoming vertical ridge joins it with two continuous diagonal valley lines flanking the junction. Retain southern cap's small triangular forward hip ending at the bottom and bottom eave. Draw unbroken ridge/valley geometry, coherent large6-10px tiles all areas, matching slope shading. High3/4 orthographic pixel RPG, top-left light,1px dark outline, seven terracotta colours. NO wall body, text, objects, scratches, dither or noisy fine detail. This is connected T roof volume not separately stacked tiles. Keep straight square step silhouette at x96,y96.",
+    "size": [
+      144,
+      192
+    ],
+    "selected": false
+  },
+  {
+    "id": "tee-end-b",
+    "source": "r17-C-critic2-source-tee-end-b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-6584fb4d-ecaf-4d69-8948-f370fb872407.png",
+    "prompt": "Draw a corrected single connected T ROOF, using first image as target silhouette and second for medieval pixel art style. Native144x192. Solid magenta around the sprite; upper-right48x96 must stay magenta. Upper-left96x96 roof wing has vertical ridge at x40. That vertical ridge must run STRAIGHT down to y120, where it meets a horizontal terracotta ridge running left-to-right across lower144x96 cap. NO horizontal cutoff or end gable at y96. At wing's reentrant x96,y96 corner a dark lead-flashed diagonal VALLEY runs inward toward x40,y120. Real roofs intersect: all ridge pieces meet, no dangling loose ends. Bottom cap retains forward triangular hip and eave at y192. Draw square-edged coarse pixel-art, native tile size6-10 pixels, rectilinear stair-stepped outlines, NOT curvy soft painting. Left slope lit, right shaded,7 terracotta shades and 1px outline. Same tiles throughout. No tiny black triangle in upper wing. No walls except thin eave. No labels, no objects, no little noisy cracks. Image a single solid joined roof volume.",
+    "size": [
+      144,
+      192
+    ],
+    "selected": false,
+    "selection_reason": "Superseded by C to carry valley to actual reentrant corner."
+  },
+  {
+    "id": "corner-outer-R-a",
+    "source": "r17-C-critic2-source-corner-outer-R-a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-26fc6f44-48b1-445e-8a53-fae4bbac593c.png",
+    "prompt": "First image edit target: repair the long roof as ONE connected whole. Second is style only. Native96x192, tall rectangular sprite enlarged on solid magenta with small margin. Keep strict rectangular silhouette. Remove upper triangle and middle transverse seam. Vertical ridge at native x40 runs uninterrupted from TOP EDGE down to y120, then turns smoothly as diagonal convex hip to bottom-RIGHT corner. Broad west plane is lit from top left, smaller east/right plane is distinctly darker. Complete tile courses run all192 rows with same6-10px tile scale; bend course direction naturally at hip. No horizontal line anywhere at y96. Top96 is gable-free roof continuation only. Preserve bottom horizontal eave. Strict square-grid pixel game art matching reference,7 terracotta shades,1px dark outline, calm clusters, no stipple/noise/haze. No wall, no objects, no labels.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "selection_reason": "Raised continuous ridge, shaded east face and right hip."
+  },
+  {
+    "id": "corner-outer-R-b",
+    "source": "r17-C-critic2-source-corner-outer-R-b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-1b2807a0-e8ac-49b5-a5fd-7ae6ae695a48.png",
+    "prompt": "Repair the first terracotta roof composition into ONE continuous connected outer-right hip roof; second house image is style only. Draw large tall96x192 native game sprite on solid magenta small margin. Entire square-cornered rectangle painted. Ridge at x40 runs straight from top edge to y120 then diagonal down-right to x95,y190. Remove ALL horizontal dividing bars and little triangles in upper96 rows. Continuous quiet8px-wide tile courses through former midpoint. Left plane warm lit, right plane dark shaded. Lower convex hip is simply continuation of same incoming roof, no line across the join. Coarse clean pixel-art same native scale as house,1px dark outline, seven flat terracotta shades, broad flat clusters, no airbrush/dither/grit. Preserve bottom eave. No walls, chimney, dormer, text or other objects.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": false
+  },
+  {
+    "id": "deadend-cap-a",
+    "source": "r17-C-critic2-source-deadend-cap-a.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-3794c858-6a2f-4882-acf7-970655c956f6.png",
+    "prompt": "First image edit target, second is style only: draw seamless long roof with a terminal HIP, native96x192 enlarged on solid magenta. One continuous rectangular silhouette with square outer corners. Ridge at native x48 runs vertically from very top to y128 then splits into two diagonals to bottom-left and bottom-right corners, creating a triangular hipped END plane over dead-end wall. Erase spurious gable-tip in upper half and middle horizontal cutoff. Top96 rows have ONLY unbroken vertical ridge and tiled slopes, no end triangles or crossbar. Lower96 integrates seamlessly with upper96, matching tile courses and tile size6-10 native px, top-left light on left slope, shaded right slope, front hip midtone. Bottom horizontal dark eave,1px outer outline,7 terracotta shades, calm crisp coarse pixel game art. No wall body, no objects, no labels, no rounded tile silhouette, no noise/fog.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": false
+  },
+  {
+    "id": "deadend-cap-b",
+    "source": "r17-C-critic2-source-deadend-cap-b.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-7e173c99-4dcc-4d34-a7d0-112881189eb1.png",
+    "prompt": "Paint repaired connected terracotta roof from first image, style of second house. Single tall96x192 native-pixel rectangle on flat magenta. Ridge vertical at x48 uninterrupted top to y124, branching to TWO diagonal hips terminating bottom corners; front triangular HIP is a roof plane with tile courses seen from above, NOT wall brick. All tiles6-10px broad same native scale. Upper96 rows contain nothing but continuous tiled slopes and straight ridge. Delete black triangle and midpoint line from input. Bottom96 seamlessly continues same volume, tiled eave at very bottom. Calm flat pixel clusters, square outer edges,1px outline, left face lit by top-left sun, right face shaded, front plane midtone,7 terracotta shades. Exact rectangular roof painted edge-to-edge within magenta margin, no rounded outline, no shadows outside, no wall, no objects, no text, no noise.",
+    "size": [
+      96,
+      192
+    ],
+    "selected": true,
+    "selection_reason": "Terminal hip reads as roof plane with coherent course direction."
+  },
+  {
+    "id": "tee-end-c",
+    "source": "r17-C-critic2-source-tee-end-c.png",
+    "original_source": "/home/kolache/.codex/generated_images/01a1e862-03e9-7883-91cb-8750abce70d9/exec-542be119-f59a-4fb8-9687-31b8dc55dad8.png",
+    "prompt": "Make ONE precise correction to this pixel-art roof drawing, keeping everything else the same, including exact tall L-shaped silhouette, solid magenta upper-right, material scale, colours, lighting, horizontal ridge and bottom hip. The narrow diagonal grey lead valley currently starts at the vertical ridge/horizontal ridge junction near image x300,y950 and ends FLOATING in the roof near x570,y700. REDRAW this grey valley so it instead runs as one continuous straight diagonal from x300,y950 ALL THE WAY to the actual concave silhouette corner at x724,y727, where magenta's left vertical edge meets the upper edge of the right-hand crossbar. It must touch that reentrant corner exactly with no gap or dangling upper end. Remove the obsolete floating grey end and restore terracotta tiles there. Adjust the few tiles along new valley so they terminate against its lead sides. Preserve all other painted architecture pixel art, the uninterrupted north ridge, square grid, muted seven-colour terracotta and one-pixel outline. Do not add geometry or objects. Return complete corrected image on the same solid magenta. Target native144x192; high resolution painting remains for mode reduction.",
+    "size": [
+      144,
+      192
+    ],
+    "selected": true,
+    "selection_reason": "Targeted third variant carries the lead valley all the way to the actual reentrant corner; keeps continuous ridge and crossbar."
+  }
+]

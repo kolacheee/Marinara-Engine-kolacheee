@@ -1,0 +1,64 @@
+{
+  "part": "C",
+  "responds_to": "critic-r17C-2.json",
+  "status": "repaired; saved-art self-review passes; independent review pending",
+  "files": {
+    "compose.py": {
+      "problems_addressed": [
+        "Removed the64px side-cap repeat entirely. Each north wing and node are consecutive regions of one new192px-high drawing: no gable-tip crop, repeated interval, row reset or halfway border.",
+        "Added five individually drawn continuous hip/valley/T/terminal roof assemblies. Selected from two variants per node, plus a third T-junction edit to carry lead flashing to the actual reentrant corner. Their drawing spans both sides of the former join; only the approved one-row lower eave contact is reused. Original standalone cap exports remain byte-identical.",
+        "Automatic height-responsive east receiving strips accompany south shadows for every building. Approved B paint is max-alpha unioned, clipped to actual visible ground using opaque building/roof/prop masks, and limited to112 alpha. All1152 formerly unshadowed market east pixels now receive shade; both C height orientations have exposed east receivers."
+      ],
+      "evidence": [
+        "r17-C-critic-junctions-1x.png",
+        "r17-C-critic2-join-inner-4x.png",
+        "r17-C-critic2-join-tee-4x.png",
+        "r17-C-critic2-east-shadow-4x.png",
+        "r17-C-critic2-verification.json"
+      ]
+    },
+    "street-junction-turn": {
+      "problems_addressed": [
+        "Full48x48 tile redrawn with built-in image tool, two variants, selected B. Broad complete6-12px cobbles, one-pixel mortar, square kerb/gutter. Source registered at8x, palette locked and mode sampled before one-pixel cleanup.",
+        "Globally mapped drawn stone-face tones onto the approved ground ramp. Mean native luma140.21 versus junction142.06. Full tile is proved alongside main/side/junction and in literal3x3 repeat; actual9x9 adapter is shown separately."
+      ],
+      "evidence": [
+        "r17-C-critic2-proof-paving-fields-1x.png",
+        "r17-C-critic2-proof-paving-fields-4x.png",
+        "r17-C-repeat-street-junction-turn-4x.png",
+        "r17-C-file-street-junction-turn.png"
+      ]
+    }
+  },
+  "brief_fail_list": {
+    "flat_cardboard": "Selected connected roofs retain lit/shaded planes, coherent ridges, hips, valley and eave; reviewed1x/4x beside fantasy-house-2. Existing passing walls unchanged.",
+    "bare_ground_in_roof_regions": "Zero holes in all three required L-block roof regions; fenced gardens remain deliberate.",
+    "seams_gaps": "All five north/node splits reproduce their continuous192px painting exactly. No repeat or internal border. Existing wall courses unchanged; all export seam sheets regenerated.",
+    "copy_paste_repetition": "Each connected node has its own drawing; north wings are unrepeated original paint. Inherited layouts retain varied fronts, backs and heights. Directional kerb repeat is a stress test, not a composed ground field.",
+    "landmark_hierarchy": "Deferred to D: current native halls/well/two stalls are proxies; church is not yet skyline leader.",
+    "greyscale_gate_landmarks_street": "Street routes and building masses readable at native greyscale; final skyline/gate prominence is deferred to D.",
+    "trade_sign_readability": "No Part C trade-sign export; approved A signs unchanged.",
+    "street_shadows": "South and exposed east receiving surfaces now shaded in pilot/L/market/both height orientations/connected proofs, without opaque route obstruction."
+  },
+  "method": {
+    "image_tool_drawings": 13,
+    "selected": 6,
+    "mode_samples": 15040512,
+    "passing_C_PNGs_unchanged": 44,
+    "protected_files_unchanged": 13324,
+    "seasonal_partners": "None in Part C."
+  },
+  "panel": "Panel2 absent. BRIEF-17 retains fixed courses, lot-contained overlays,24px lane export and compulsory bends/jogs/wedges where panel1 differs. Shadows are ground receivers; required clear routes stay48/96px.",
+  "scene_content": "Round17 A/B/C; current native fantasy halls, well and two stalls explicitly labelled D proxies. Round15 comparison only, no Round15 scene pieces.",
+  "replay": [
+    "python -B art-drop/review/r17-C-critic2-process.py",
+    "python -B art-drop/out/city17/compose.py",
+    "python -B art-drop/review/r17-C-critic2-proofs.py",
+    "python -B art-drop/review/r17-C-critic2-verify.py"
+  ],
+  "limits": [
+    "Saved-art self-review, not independent critic approval or in-engine testing.",
+    "No commit, push or branch change.",
+    "Checkout arrived at detached HEAD7330fe3852 and was left unchanged; no branch switch."
+  ]
+}

@@ -1,0 +1,822 @@
+[
+  {
+    "id": "back-plain-w2",
+    "output": "back-plain-w2",
+    "source": "r17-C-critic1-source-back-plain-w2.png",
+    "size": [
+      96,
+      48
+    ],
+    "course": true,
+    "selected": true,
+    "prompt": "Use case: stylized-concept. Draw ONE large pixel-art game tile on uniform solid #ff00ff magenta, straight rectangle with 2:1 width:height. A REPEATABLE UPPER REAR WALL module, equivalent to 96x48 native pixels, enlarged about 10x. Reference image is material/style only, not a whole house. Warm pale plaster with substantial dark timber end posts, two SMALL recessed shuttered rear windows with projecting stone sill TOP faces, short drainpipe at right continuing top to bottom. No roof, no ground, NO DOORS, NO steps, NO stone foundation or plinth. One thin straight timber course at very top and very bottom; calm wall masses. Top-left warm light, deep brown one-native-pixel contour, no blur, no texture speckle. Windows and sills convey the same crafted 3/4 depth as the reference. Entire module opaque and precisely rectangular, no rounded corners. Only this wall piece on magenta. Keep small muted slate window glass and warm brown shutters."
+  },
+  {
+    "id": "back-plain-w1",
+    "size": [
+      48,
+      48
+    ],
+    "course": true,
+    "prompt": "Use case: stylized-concept. Draw ONE large pixel-art game wall module on solid #ff00ff magenta. SQUARE shape, equivalent 48x48 native pixels, enlarged about 16x. Repeatable UPPER REAR plaster wall with ONE small deep recessed timber shuttered window with lit projecting stone sill, slim drainpipe at right edge. No roof, doors, ground, stairs or foundation plinth. Thin top and bottom dark timber courses, substantial end posts, quiet cream plaster. Clear visible sill top, dark recess, warm top-left light, muted glass. Same materials and native pixel scale as reference house. Fully opaque square rectangle, precise square corners, one-native-pixel brown contour. No gradients, blur or isolated specks. Calm hand-painted pixel clusters.",
+    "source": "r17-C-critic1-source-back-plain-w1.png",
+    "output": "back-plain-w1",
+    "selected": true
+  },
+  {
+    "id": "back-plain-w3",
+    "size": [
+      144,
+      48
+    ],
+    "course": true,
+    "prompt": "Draw ONE large pixel-art game UPPER REAR WALL module, horizontal rectangle 3:1, equivalent native 144x48, on solid #ff00ff. Quiet cream plaster, three SMALL dark inset rear windows, each with warm wooden shutters and a lit projecting sill top; dark timber end posts, a slim drainpipe right. Thin straight course beam at top and bottom. No roof, no doors, no steps, no foundation plinth. Entire rectangle opaque with square corners. Same top-left light and native detail scale as reference. Keep plaster calm and uncluttered. No surface flecks, smear, blur, diagonal stamped highlights or heavy hairline framing. Paint coherent deep windows as on fantasy-house-2. This is a repeatable upper-floor wall, not a building.",
+    "source": "r17-C-critic1-source-back-plain-w3.png",
+    "output": "back-plain-w3",
+    "selected": true
+  },
+  {
+    "id": "back-stair-w2-a",
+    "output": "back-stair-w2",
+    "size": [
+      96,
+      48
+    ],
+    "course": true,
+    "prompt": "Draw ONE large pixel-art game rear-wall STAIR MODULE on solid #ff00ff magenta, horizontal 2:1 rectangle equivalent 96x48 native. Not a whole house. Quiet cream plaster rear wall, one inset shuttered window at left and a small service door just right of centre. In front of wall a clearly supported wooden external stair rises all the way FROM BOTTOM LEFT TO TOP RIGHT. A continuous FULL-WIDTH wooden landing runs along BOTH TOP AND BOTTOM boundaries, so stacking identical modules vertically connects the top of each stair via a gallery to the next stair's bottom. Heavy supporting posts at x10% and90% continue unbroken TOP TO BOTTOM; diagonal timber brackets carry landings. Door threshold rests on bottom gallery. Open space beneath stair reveals plaster, NO solid triangular stone wedge. Painted tread tops, thin coherent handrail, one native pixel outline, top-left light. Restrained warm browns, dark recesses, deep cream plaster. Square opaque bounds, no roof/ground/plinth. Architectural construction must be legible at 96x48. Preserve matching landing endpoints.",
+    "source": "r17-C-critic1-source-back-stair-w2-a.png",
+    "selected": false
+  },
+  {
+    "id": "back-stair-w2-b",
+    "output": "back-stair-w2",
+    "size": [
+      96,
+      48
+    ],
+    "course": true,
+    "selected": true,
+    "prompt": "ONE enlarged pixel-art rear-wall STAIR MODULE on solid #ff00ff. Fully opaque square-edged rectangle. Cream plaster, timber posts continue from top to bottom. Supported outdoor wooden stairs, no solid stone triangle. Full-width horizontal gallery platforms at BOTH top and bottom boundaries connect each flight to the next module when stacked vertically; show lit plank tops and dark underside. Stair rises from bottom-left platform to top-right platform all the way to boundary. Thin coherent handrail, dark recessed small rear window, service door threshold on lower gallery. Top-left light, brown one-native-pixel outline, calm cream/brown palette. No roof, ground, foliage, noise or blur. Same native pixel scale as house reference. Canvas ratio 2:1, equivalent96x48 native pixels. Make the top landing plainly accessible at the stair head. Fewer stronger supporting beams; at most one window and one door. This is an alternative architectural drawing.",
+    "source": "r17-C-critic1-source-back-stair-w2-b.png"
+  },
+  {
+    "id": "back-stair-w1-a",
+    "output": "back-stair-w1",
+    "size": [
+      48,
+      48
+    ],
+    "course": true,
+    "prompt": "ONE enlarged pixel-art rear-wall STAIR MODULE on solid #ff00ff. Fully opaque square-edged rectangle. Cream plaster, timber posts continue from top to bottom. Supported outdoor wooden stairs, no solid stone triangle. Full-width horizontal gallery platforms at BOTH top and bottom boundaries connect each flight to the next module when stacked vertically; show lit plank tops and dark underside. Stair rises from bottom-left platform to top-right platform all the way to boundary. Thin coherent handrail, dark recessed small rear window, service door threshold on lower gallery. Top-left light, brown one-native-pixel outline, calm cream/brown palette. No roof, ground, foliage, noise or blur. Same native pixel scale as house reference. SQUARE canvas equivalent48x48 native. Compact steep stair with eight clear tread tops and two continuous corner posts. One tiny window and a small lower door. Keep construction very simple to read at48px.",
+    "source": "r17-C-critic1-source-back-stair-w1-a.png",
+    "selected": false
+  },
+  {
+    "id": "back-stair-w1-b",
+    "output": "back-stair-w1",
+    "size": [
+      48,
+      48
+    ],
+    "course": true,
+    "selected": true,
+    "prompt": "Draw ONE square 48x48 native-equivalent pixel-art rear wall stair tile ENLARGED on solid #ff00ff. Cream plaster timber wall with one small window and a bottom service door. ONE wooden staircase goes from BOTTOM LEFT at y46 ALL THE WAY TO TOP RIGHT at y2: the top tread MUST touch the TOP full-width gallery platform, NOT finish halfway down wall. Full-width galleries at exact top and bottom connect repeated flights. Thick wooden supporting posts at x4 and44 span entire height. Open plaster beneath diagonal stair, no stone wedge. 8 lit tread tops and continuous rail, visible brackets and depth. No roof or foundation. Square opaque rectangular footprint. Top-left light, one-pixel native brown contour, restrained colours, no noise. Same crafted window depth and palette as reference.",
+    "source": "r17-C-critic1-source-back-stair-w1-b.png"
+  },
+  {
+    "id": "back-stair-w3-a",
+    "output": "back-stair-w3",
+    "size": [
+      144,
+      48
+    ],
+    "course": true,
+    "prompt": "ONE pixel-art rear wall STAIR module, wide 3:1 rectangle equivalent 144x48 native, enlarged on solid magenta #ff00ff. On left half two small recessed shutter windows, quiet cream plaster. Right half has open timber exterior stair from bottom middle to TOP RIGHT, and service door below it. The uppermost tread MUST JOIN top boundary at y2, bottom tread y44. Full-width wooden galleries on exact top/bottom edges with lit top faces; three substantial vertical support posts span full module height. These connect repeated storeys and support doors at lower gallery. No solid wedge under stairs, no foundations, no roof or ground. Top-left light, dark one-pixel outline, warm muted palette matched to reference. Clear simple painted tread tops and continuous railing, depth through sill tops and shadows. Entire footprint opaque, square corners.",
+    "source": "r17-C-critic1-source-back-stair-w3-a.png",
+    "selected": true
+  },
+  {
+    "id": "back-stair-w3-b",
+    "output": "back-stair-w3",
+    "size": [
+      144,
+      48
+    ],
+    "course": true,
+    "selected": false,
+    "prompt": "Draw one enlarged pixel-art rear stair wall, 3:1 rectangle equivalent144x48px, solid magenta background. Left half quiet warm plaster with two small shuttered recessed windows. Right half an exterior timber stair that reaches the exact TOP landing, connected to full-width galleries at both TOP and BOTTOM. Three vertical posts continue full height, lit tread tops, handrail and braces, plaster visible beneath stairs (no stone wedge). A small dim shuttered service door stands on the bottom gallery below stairs. Thin top/bottom beams and one-native-pixel outline. Calm top-left lit material matching reference house. No roof, ground or foundation; no floating doors or disconnected stair head. Square opaque footprint. Make this alternate simpler, with fewer thicker readable treads and a clearly connected upper landing.",
+    "source": "r17-C-critic1-source-back-stair-w3-b.png"
+  },
+  {
+    "id": "roof-back-w2-a",
+    "output": "roof-back-w2",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "prompt": "Draw ONE SQUARE modular REAR ROOF cap, pixel art enlarged, equivalent96x96 native pixels. SOLID #ff00ff margin around an opaque square rectangle. Same high 3/4 view and terracotta roof material as reference house. SINGLE long receding slope: narrow 5px-high tiled ridge near TOP, slope fills nearly entire square, thick eave at BOTTOM with a 2px lit top and 2px dark underside. No gable wall, no windows, no chimneys, no facade. Individual terracotta tiles approx8x6 native at eave and slightly shorter toward ridge: 12 columns, 14-16 courses. Keep tiles coherent with modest variation, contiguous clusters of warm muted rust, only a few lit clusters at upper-left, no diagonal highlight stamped on each tile. Strong plane recession, dark right edge. Ridge consists of individual curved ridge-cap tiles seen from above, not flat horizontal bands. All four corners square, solid opaque coverage. Thin dark silhouette. Calm hand-painted pixel shapes, no blur, grit or specks.",
+    "source": "r17-C-critic1-source-roof-back-w2-a.png",
+    "selected": false,
+    "min_row_width": 0.5
+  },
+  {
+    "id": "roof-back-w2-b",
+    "output": "roof-back-w2",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "selected": true,
+    "prompt": "One SQUARE enlarged pixel-art rear roof tile, equivalent96x96 native. Solid magenta outside fully opaque square roof. High3/4 game view: one receding terracotta slope, segmented ridge in top5px, eave thickness with lit edge and dark underside in bottom4px. About12 staggered tiles across and15 courses down; shingles narrower/shorter near ridge. Muted dark red-brown terracotta, main faces quiet solid colour, only occasional clustered upper-left glints. No repeated bright diagonal stamp or identical scallops on every tile. Fine one-pixel course joints, subtle overlap. Deeply crafted same material as reference. Square silhouette, no gable wall or facade. No noise, blur, weather flecks, ornaments. Deliberate calm plane value/light variation to show recession, not orange brick wall.",
+    "source": "r17-C-critic1-source-roof-back-w2-b.png",
+    "min_row_width": 0.5
+  },
+  {
+    "id": "roof-back-w1-a",
+    "output": "roof-back-w1",
+    "size": [
+      48,
+      96
+    ],
+    "roof_only": true,
+    "prompt": "One TALL2:1 enlarged pixel-art roof module, native48wide x96high. On solid magenta outside fully opaque rectangle. Narrow rear roof: one long terracotta slope receding toward a clearly segmented ridge in TOP5px. 6 staggered tiles across and15 courses down at native8x6px scale, slightly shorter toward ridge. Bottom4px thick timber eave with lit top/dark underside. Calm muted rust-red tile faces, few clustered top-left highlights, narrow dark joints. No uniform diagonal highlight stamps. Match reference house roof material/perspective. NO walls or gable or doors or whole building; ONLY rectangular single-slope roof plane. Square corners, hard one-native-pixel dark outline, no transparency inside, no blur, speckle or rounded grid edges.",
+    "source": "r17-C-critic1-source-roof-back-w1-a.png",
+    "selected": false,
+    "min_row_width": 0.5
+  },
+  {
+    "id": "roof-back-w1-b",
+    "output": "roof-back-w1",
+    "size": [
+      48,
+      96
+    ],
+    "roof_only": true,
+    "selected": true,
+    "prompt": "Reference is roof MATERIAL and 3/4 perspective. Draw a new narrow version of this roof on solid #ff00ff. Portrait rectangle48x96 native-equivalent, enlarged, opaque square corners. Keep SAME TILE SIZE: six staggered tiles across, fifteen down, not squeezed tiny tiles. Calm deep terracotta/rust faces, subtle left lighting, only a few highlights. Segmented rounded ridge caps TOP5px, thick lit eave/dark underside BOTTOM4px. No facade, no gable, no whole building. One long single slope receding back to ridge, narrower/shorter tile courses near top. One pixel outline, crisp pixels. No strong diagonal highlight on every tile, no tiny specks or mottling. Keep plane quiet and dimensional.",
+    "source": "r17-C-critic1-source-roof-back-w1-b.png",
+    "min_row_width": 0.5
+  },
+  {
+    "id": "roof-back-w3-a",
+    "output": "roof-back-w3",
+    "size": [
+      144,
+      96
+    ],
+    "roof_only": true,
+    "prompt": "Draw a new WIDE version of this rear roof, on solid #ff00ff. Landscape3:2 rectangle equivalent144x96 native, enlarged. Same tile scale as reference roof, approximately18 staggered tiles across and15 courses down. Single receding slope with segmented tiled ridge in TOP5px, thick lit eave/dark underside BOTTOM4px. Calm muted terracotta masses, fine course overlaps, grouped top-left light, no identical diagonal stamps. Entire square-cornered rectangle opaque. No gable wall, facade, chimney or ornament. Keep tile scale consistent, more tiles across rather than enlarging them. Strong top-down recession to narrow ridge; one native pixel contour, no blur or grit.",
+    "source": "r17-C-critic1-source-roof-back-w3-a.png",
+    "selected": true,
+    "min_row_width": 0.5
+  },
+  {
+    "id": "roof-back-w3-b",
+    "output": "roof-back-w3",
+    "size": [
+      144,
+      96
+    ],
+    "roof_only": true,
+    "selected": false,
+    "prompt": "Single enlarged rear roof tile on solid magenta. Wide rectangle144x96 native-equivalent, fully opaque square corners. One terracotta slope high3/4 view. Segmented TOP ridge5px, thick BOTTOM eave4px. Native material SAME as house reference: eighteen small tiles across and fifteen staggered courses; each about8x6 pixels. Calm dark muted red-brown, restrained upper-left glints in only three or four groups, strong recession toward ridge. No noisy mottling, diagonal stamp per tile or bright orange grid. No wall, gable, chimney, or whole building. Square dark one-pixel silhouette. Alternative to earlier rear roof, slightly darker and simpler.",
+    "source": "r17-C-critic1-source-roof-back-w3-b.png",
+    "min_row_width": 0.5
+  },
+  {
+    "id": "side-roof-d2-a",
+    "output": "side-roof-d2",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Draw ONE enlarged modular SIDE ROOF cap, opaque96x96 native-equivalent square on solid magenta. High3/4 fantasy pixel art. Critical geometry: the wall below has broad FRONT face x0..79 and narrow EAST RETURN x80..95. Roof must turn at x80. Gable triangle at bottom occupies ONLY x0..79, apex at x40,y66, base y92. Narrow shaded right return roof plane occupies x80..95, eave turning at x80; it is NOT part of front gable. Roof ridge runs from x40,y0 to x40,y66, with lit left red tile plane and darker right plane. Roof fills entire square above gable. Very small warm plaster gable, timber frame, no window necessary. Calm muted terracotta tiles at8x6 native scale, thin joints, no diagonal highlight stamps. Bottom thick lit timber eave and dark underside, top-left light, one pixel contour, square corners. No wall storey, no ground, only roof cap. Match reference house style.",
+    "source": "r17-C-critic1-source-side-roof-d2-a.png",
+    "selected": false,
+    "columns": true
+  },
+  {
+    "id": "side-roof-d2-b",
+    "output": "side-roof-d2",
+    "size": [
+      96,
+      96
+    ],
+    "selected": true,
+    "prompt": "ONE SQUARE pixel-art SIDE roof cap, native96x96 equivalent ENLARGED on magenta. Exact geometry: broad gable face ends at x80, narrow shaded east return x80..95. Gable is small bottom triangle x0..80, apex x40,y74, base y91. Roof ridge x40 recedes from y74 to top. Fully OPAQUE square tile, no peaked outer outline: all top rows filled with roof. Red terracotta roof tiles SMALL, approx7x5 native: at least16 courses down EACH slope,12 across overall. Dense enough to match house reference, quiet clusters. Only restrained lit edges, no fat highlights or oversized tiles. Cream gable with timber braces, bottom eave turns at x80, two lit top rows and dark underside. One native pixel outline, top-left lighting. No wall storeys, no ground. Entire square covered, straight top and sides, precise square corners.",
+    "source": "r17-C-critic1-source-side-roof-d2-b.png",
+    "columns": true,
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        81,
+        80
+      ],
+      [
+        96,
+        96
+      ]
+    ]
+  },
+  {
+    "id": "side-roof-d2-W-a",
+    "output": "side-roof-d2-W",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "ONE SQUARE pixel-art WEST side roof adapter native96x96, enlarged on solid magenta. Top-left light is preserved, NOT mirrored lighting. LEFT RETURN is ONLY x0..15 and is lit; main gable face x16..95. The small bottom cream/timber gable triangle has apex x56,y74 and base fromx16 to95 aty92. Eave turns above the outside wall corner at x16. Roof ridge recedes from x56,y74 to x56,y0; quiet terracotta slopes fill square above, lit left plane/darker right plane. SMALL7x5 native tiles, at least16 courses vertically, NOT oversized tile plates. Thin dark outline square corners, entirely opaque square roof field, straight top. Bottom eave lit thickness and dark underside. No wall storeys, windows, ground or whole building. This must be coherent separately lit west-side counterpart to east side cap.",
+    "source": "r17-C-critic1-source-side-roof-d2-W-a.png",
+    "selected": false,
+    "columns": true
+  },
+  {
+    "id": "side-roof-d2-W-b",
+    "output": "side-roof-d2-W",
+    "size": [
+      96,
+      96
+    ],
+    "selected": true,
+    "prompt": "Draw one96x96 native-equivalent SQUARE pixel-art roof cap enlarged on magenta. Main gable face x16..95, NARROW LIT WEST RETURN x0..15. Gable small bottom triangle apexx56,y73 basey91. Ridge x56 fromtop to73. Exact right-angled outside corner/eave at x16. Opaque square roof, top perfectly straight. Small terracotta tiles about8x5native:14 courses on visible upper slope, quiet reddish brown faces with thin dark joints and ONLY occasional grouped highlights. Clean broad planes, no mottling/no repeated diagonal glints. Separately top-left lit west orientation. Bottom timber eave lit top and dark underside. Reference style/material, no wall storeys or ground. Ensure gable does not cover west return. Calm alternative.",
+    "source": "r17-C-critic1-source-side-roof-d2-W-b.png",
+    "columns": true,
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        96,
+        96
+      ]
+    ]
+  },
+  {
+    "id": "side-roof-d3-a",
+    "output": "side-roof-d3",
+    "size": [
+      144,
+      144
+    ],
+    "prompt": "Draw one SQUARE144x144 native-equivalent pixel-art SIDE roof cap enlarged on solid magenta. Deeper3-cell roof, same small tile scale as reference house, NOT enlarged tiles. At least22 courses of8x5native terracotta tiles down the roof and18across. Main gable face x0..119, shaded EAST RETURN x120..143. Roof eave turn exactly x120. Small cream timber gable triangle at bottom, apexx60,y114, basey139; ridge x60 fromtop to114. Entire square opaque roof coverage including top corners. Top-left light, lit left plane and darker east plane, quiet muted terracotta clusters, few highlights, thin dark contours and thin course overlaps. 4px bottom eave thickness. No window, facade floors or ground. Roof return right ofx120 is not part of frontal gable. Keep SMALL tiles throughout.",
+    "source": "r17-C-critic1-source-side-roof-d3-a.png",
+    "selected": true,
+    "columns": true,
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        122,
+        120
+      ],
+      [
+        144,
+        144
+      ]
+    ]
+  },
+  {
+    "id": "side-roof-d3-b",
+    "output": "side-roof-d3",
+    "size": [
+      144,
+      144
+    ],
+    "selected": false,
+    "prompt": "Single SQUARE modular side roof cap native144x144 equivalent, enlarged pixel art on solid magenta. Same high3/4 view and native tile size as reference. Small muted terracotta shingles8x5native,20-23 courses, warm left plane shaded right plane, quiet highlights. Roof entirely covers square, straight edges. Main gable bottom only spansx0..120, cream timber triangle apexx60,y115 andbasey139; east return roofx120..143 with eave corner exactlyx120. Ridge x60 recedes to top. Do not enlarge tiles with bigger canvas, use MORE small tiles. Keep subtle broad planes and restrained colour variation. 4px-thick timber bottom eave, lit top face/dark underside. No windows or walls or ground, no blur/mottling. Calm alternate composition.",
+    "source": "r17-C-critic1-source-side-roof-d3-b.png",
+    "columns": true
+  },
+  {
+    "id": "corner-inner-storey-a",
+    "output": "corner-inner-storey",
+    "size": [
+      96,
+      48
+    ],
+    "course": true,
+    "columns": true,
+    "prompt": "ONE pixel-art INNER CONCAVE CORNER upper-wall module on magenta,96x48 native equivalent enlarged2:1. Two perpendicular plaster wall returns meet INSIDE a shaded vertical recess exactly at centrex48. This is an INWARD courtyard corner, not a flat facade or convex corner. Left wall recedes up-right into centre; right wall recedes up-left into centre. Window jambs and sill tops on each wall are visibly foreshortened parallelograms following that wall. One tiny recessed shutter window on each face. Timber beams along upper/lower interior edges turn upward into centre with strong V-shaped receding perspective, while outermost top/bottom course boundary remains straight rectangular. Thin centre drainpipe in dark recessed join. Top-left light warm cream left face, dim taupe right face, dark brown outline. Square fully opaque2:1 rectangle, no roof/doors/ground/plinth. Real 3/4 depth, no parallel frontal windows divided by pipe. Same house style.",
+    "source": "r17-C-critic1-source-corner-inner-storey-a.png",
+    "selected": false
+  },
+  {
+    "id": "corner-inner-storey-b",
+    "output": "corner-inner-storey",
+    "size": [
+      96,
+      48
+    ],
+    "course": true,
+    "selected": true,
+    "prompt": "Draw ONE pixel-art96x48 native-equivalent courtyard INSIDE corner wall, enlarged on solid magenta. View down into CONCAVE inner corner, centrex48 is farthest from viewer, not convex. Critical projection: LEFT wall horizontal timbers and both window sill/header lines slope UP-RIGHT into centre (fromy12atx0 toy4atx48; bottom fromy44atx0 toy36atx48). RIGHT wall slopes UP-LEFT into centre (y12atx95 toy4atx48). ALL edges on each face are parallel, no conflicting slopes. Tiny inset shutter window per face follows same parallelogram projection, lit projecting sill tops. Dark central recessed drainpipe, cream left plaster dimmer right. Fully rectangular opaque module with thin straight course at very top/bottom outside the receding beams, square corners. No door/plinth/roof/ground. Deep3/4 returns, brown1pxnative contour, restrained detail, house-reference material.",
+    "source": "r17-C-critic1-source-corner-inner-storey-b.png"
+  },
+  {
+    "id": "corner-inner-roof-a",
+    "output": "corner-inner-roof",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": false,
+    "keep_lead": true,
+    "prompt": "Draw one SQUARE pixel-art INNER roof corner96x96native equivalent enlarged on magenta. A concave courtyard valley between two perpendicular red-tile roof wings, full opaque square roof coverage. Critical: dark lead valley runs FROM TOP LEFT to the eave termination at BOTTOM CENTRE x48,y92 (NOT bottomright). At that exact point the courtyard's inward wall/drainpipe beneath will be centredx48. Left tiled wing lit top-left, right wing dimmer; courses converge coherently into valley, native tiles8x5 pixels. Eaves turn inward above centre, thick timber lit tops/dark undersides. Valley must stay above its wall corner. Far right half continues roof toward adjoining perpendicular wing, calm tile scale matches house. No gable wall, no whole house, no stairs/ground. Hard square outer corners and one-pixel outline, no blur or random specks. Two convincing receding planes, not a flat square with diagonal stripe.",
+    "source": "r17-C-critic1-source-corner-inner-roof-a.png",
+    "selected": true
+  },
+  {
+    "id": "corner-inner-roof-b",
+    "output": "corner-inner-roof",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "keep_lead": true,
+    "selected": false,
+    "prompt": "ONE SQUARE96x96native-equivalent INNER CORNER ROOF tile, enlarged crisp pixel art, solid magenta outside. ONLY ROOF, no plaster wall or facade anywhere. Roof tiled planes meet at concave metal valley FROM TOPLEFT to BOTTOM CENTRE x48,y94. Valley terminates at centre edge, directly over inner wall drain below. Both roof wings continue to respective left/right edges with coherent perpendicular slope courses, 8x5native tile scale. Entire square opaque roof field. Very thin eave follows bottom, turn over centre. Restrained muted terracotta, lit left/shaded right, few highlight clusters, no noisy texture or diagonal stamp. Precise square outer edges, one-native-pixel outline. Geometry like courtyard L roof seen from above. No whole building, no wall band below eave. Calm readable material like reference house roof.",
+    "source": "r17-C-critic1-source-corner-inner-roof-b.png"
+  },
+  {
+    "id": "corner-outer-L-roof-a",
+    "output": "corner-outer-L-roof",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "prompt": "ONE SQUARE96x96native-equivalent pixel-art OUTER LEFT CORNER HIP ROOF module enlarged on solid magenta. Wall below turns at x24 (one quarter width), so roof HIP/eave corner MUST terminate at x24,y93, NOT at left canvas edge. Segmented hip ridge runs from x68,y0 diagonally to x24,y93. Narrow LEFT roof return is strongly top-left lit; broad main roof plane to right warm muted terracotta and darker. Eave turns at x24, lit thickness/dark underside. Full square opaque roof coverage, square outline, NO triangular cutout. Native tiles approx8x5 with calm clustered highlights and thin overlaps. Only roof tile, no wall/gable/facade/ground. Keep slope continuity for attachment to roof wings at north and east edges. One pixel dark outline, no blur/no specks. Match reference house roof scale and style.",
+    "source": "r17-C-critic1-source-corner-outer-L-roof-a.png",
+    "selected": false,
+    "columns": true
+  },
+  {
+    "id": "corner-outer-L-roof-b",
+    "output": "corner-outer-L-roof",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "columns": true,
+    "selected": true,
+    "prompt": "Draw a SQUARE modular pixel-art roof tile native96x96 enlarged on MAGENTA. Entire outline is straight square rectangle, NOT a perspective polygon. OUTER LEFT hip roof turn above wall corner at native x24: segmented diagonal hip from x65,y0 to EXACT x24,y92. Lit narrow WEST return plane left of hip, darker broader red tile main slope right of hip. BOTTOM eave turns atx24, painted lit top and dark underside. Tile scale8x5 native with at least14courses down, small restrained terracotta shingles; no large flat panels. Entire square filled with roof including corners, no gable or wall or ground. Thin brown native1px contour. Match reference roof material, quiet clusters and top-left lighting. This is a modular square crop of a roof corner, not a whole isolated roof silhouette.",
+    "source": "r17-C-critic1-source-corner-outer-L-roof-b.png",
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        18,
+        24
+      ],
+      [
+        65,
+        56
+      ],
+      [
+        96,
+        96
+      ]
+    ]
+  },
+  {
+    "id": "corner-outer-R-roof-a",
+    "output": "corner-outer-R-roof",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "columns": true,
+    "prompt": "ONE SQUARE96x96native-equivalent pixel-art OUTER RIGHT HIP roof corner enlarged on solid magenta. Full opaque square crop of roof, not whole polygon roof. The paired wall turns at x70, so diagonal hip ridge MUST terminate at x70,y92. Hip from x28,y0 to x70,y92; main front plane LEFT warm lit terracotta, narrow EAST return RIGHT darker. Bottom eave turns atx70 with lit timber thickness/dark underside. Top-left lighting preserved. SMALL tiles8x5native, at least14courses, calm rust tile faces/thin joints, no identical highlight stamps. Straight square outer edges, all four corners filled, dark1px outline. Only roof, no wall/facade/gable/ground. Same native material scale as house reference. Connectable to roof wings on north and west.",
+    "source": "r17-C-critic1-source-corner-outer-R-roof-a.png",
+    "selected": false
+  },
+  {
+    "id": "corner-outer-R-roof-b",
+    "output": "corner-outer-R-roof",
+    "size": [
+      96,
+      96
+    ],
+    "roof_only": true,
+    "columns": true,
+    "selected": true,
+    "prompt": "One square opaque roof tile96x96native equivalent enlarged pixel art on solid magenta. OUTER RIGHT HIP corner aligns with wall turnx70: thin segmented hip fromx28 at TOP to x70 at BOTTOM eave. Main LEFT roof plane warm lit terracotta, narrow RIGHT return strongly shaded. Both planes have clearly different coherent tile course directions, small tiles8x5native,15courses. Corner eave lit thickness/dark underside turns atx70. Quiet restrained highlights, never a bright stamp on every tile. Straight square top/sides, opaque corners, one-pixel silhouette. No walls/ground/facade/whole roof polygon. High3/4 view matching reference roof. Alternative with a calmer tile field.",
+    "source": "r17-C-critic1-source-corner-outer-R-roof-b.png",
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        28,
+        40
+      ],
+      [
+        77,
+        70
+      ],
+      [
+        96,
+        96
+      ]
+    ]
+  },
+  {
+    "id": "fence-1-a",
+    "output": "fence-1",
+    "size": [
+      24,
+      48
+    ],
+    "overlay": true,
+    "prompt": "Draw ONE enlarged pixel-art wooden fence section running due NORTH-SOUTH, viewed high3/4 RPG topdown, on solid magenta. Native canvas24wide48high, fence narrow centred atx12, spans full top/bottom with straight vertical axis. Three clearly square posts, continuous straight TOP RAIL and continuous lower rail, readable magenta gaps between posts/rails. Rails recede vertically up image, NOT a diagonal chain or twisted stick. Top-left lit warm golden wood top faces, dark brown sides, precise one-native-pixel outline. Plain sturdy medieval yard fence matching house timber. Simple clean pixel clusters, no grain speckles, lumps or curved silhouette. Design ends to join vertically; top rail meets both top and bottom boundary. Magenta visible all around and through fence gaps. Do not draw ground, house or grass.",
+    "source": "r17-C-critic1-source-fence-1-a.png",
+    "selected": false,
+    "box": [
+      10,
+      48
+    ]
+  },
+  {
+    "id": "fence-1-b",
+    "output": "fence-1",
+    "size": [
+      24,
+      48
+    ],
+    "overlay": true,
+    "selected": true,
+    "prompt": "ONE north-south wooden fence section on solid magenta, enlarged pixel art. Native24x48 canvas, painted fence about12px wide at centre. In high3/4 RPG view, two parallel wooden rails run vertically down image; their horizontal separation leaves a clear3px magenta gap. Three square posts cross both rails and visibly carry them, readable lit square caps. Fence axis dead vertical, ends join top and bottom. Top rail continuous and straight, lower rail visible beside it, no twists, no isolated sticks, no blobs. Warm ochre/brown timber matched to reference, top-left light, one-pixel dark contour. No ground or other objects. A legible constructed fence, not a decorative braid. Square posts, clean paint and generous simple negative gaps.",
+    "source": "r17-C-critic1-source-fence-1-b.png",
+    "box": [
+      10,
+      48
+    ]
+  },
+  {
+    "id": "yard-3-a",
+    "output": "yard-3",
+    "size": [
+      48,
+      48
+    ],
+    "overlay": true,
+    "prompt": "Draw ONE compact leafy tree in a square timber tub for a pixel-art fantasy RPG,48x48 native equivalent enlarged on solid magenta. Canopy about32pxwide29pxtall, visible short branching trunk, wooden square planter at bottom with rim top face and bands. CRITICAL leaf silhouette made of many small angular2-4native-pixel leafy clusters, tiny branch openings with magenta visible, irregular squared leaf tips; NOT three smooth balloon lobes or a thick dark bottom band. Top-left olive-green highlights, warm dark green underside interspersed with branch gaps; one-native-pixel dark contour. No detached leaves/specks, no spherical blobs, no ground or shadow puddle. Calm leaf clusters at native scale, readable tub/trunk preserved. Match fantasy-house reference pixel style and light, approved natural olive palette.",
+    "source": "r17-C-critic1-source-yard-3-a.png",
+    "selected": false
+  },
+  {
+    "id": "yard-3-b",
+    "output": "yard-3",
+    "size": [
+      48,
+      48
+    ],
+    "overlay": true,
+    "selected": true,
+    "prompt": "ONE compact tree in a square wooden tub, native48x48 enlarged crisp pixel-art game prop, on solid magenta. Refined alternative: smaller angular2-4px leaf clusters forming an airy irregular canopy32pxwide,29pxtall; readable branched trunk, 4-5 tiny negative branch gaps. Dark olive shadows in clusters, muted olive-green lit upper-left leaves; no solid dark bottom stripe or large smooth blobs. NO detached leaves or tiny isolated specks. Square timber tub with top rim and visible dark soil, strong short trunk. Same native outline scale and top-left light as house reference. No ground, no shadow puddle, no blur or noise. Keep tree well inside canvas, crown shape leafy and compact.",
+    "source": "r17-C-critic1-source-yard-3-b.png"
+  },
+  {
+    "id": "street-main-a",
+    "output": "street-main",
+    "size": [
+      96,
+      48
+    ],
+    "ground": true,
+    "prompt": "Draw ONE enlarged pixel-art game STREET texture tile on solid magenta margin. Opaque96wide48high native-equivalent RECTANGLE. TOP-DOWN orthographic square-grid paving, quiet grey-olive sandstone small cobbles6-12native pixels. Approximately12stones across and7irregular staggered courses down. Continuous narrow mortar1px, subtle value variation, complete solid cobbles with straight square corners. No diagonal highlight swipes, bright patches, big stripes, scuffs, centre scar, noise or smooth smear. Left/right long edges have narrow2px kerbs and1px darker wall gutters, north/south edges open for seamless continuation. All48rows distinct, NOT a repeated two-course stamp. Low contrast so buildings dominate. Neutral top-left light, flat palette clusters. Whole rectangle filled, precise square corners; no grass, objects, perspective trapezoid or border on north/south.",
+    "source": "r17-C-critic1-source-street-main-a.png",
+    "selected": true,
+    "joint_rows": [
+      [
+        0,
+        12
+      ],
+      [
+        118,
+        141
+      ],
+      [
+        247,
+        268
+      ],
+      [
+        372,
+        386
+      ],
+      [
+        497,
+        513
+      ],
+      [
+        616,
+        633
+      ],
+      [
+        726,
+        744
+      ],
+      [
+        827,
+        840
+      ]
+    ],
+    "joint_threshold": 100
+  },
+  {
+    "id": "street-main-b",
+    "output": "street-main",
+    "size": [
+      96,
+      48
+    ],
+    "ground": true,
+    "selected": false,
+    "prompt": "ONE96x48native-equivalent horizontal cobblestone road tile enlarged on solid magenta, topdown flat orthographic. Quiet LOW-CONTRAST olive grey stone paving, SMALL6-10px native complete squared cobbles in staggered courses of unequal lengths.7courses down and13-15 stones across. Every course different, not a repeated short stamp, no large recognizable light or dark patch. Thin continuous modest-dark joints, no bright diagonal marks, scuffs, smeared stone boundaries, noise, cracks or ladders.2px straight stone kerb and1px dark gutter down LEFT and RIGHT edges ONLY. Top/bottom open for vertical repeat, square corners. Opaque rectangular footprint. Restrained3-5stone tones close in value, top-left light. No grass, objects or perspective. Paint a long natural coherent repeat field.",
+    "source": "r17-C-critic1-source-street-main-b.png"
+  },
+  {
+    "id": "street-side-a",
+    "output": "street-side",
+    "size": [
+      48,
+      48
+    ],
+    "ground": true,
+    "prompt": "ONE SQUARE48x48native equivalent top-down pixel-art side street tile ENLARGED on solid magenta margin. Entire square opaque. Quiet warm grey-olive sandstone cobbles6-10pxnative, about6stonesacross7coursesdown, staggered complete rectangles, consistent narrow continuous mortar. Modest colour variation, no conspicuous bright zigzags, central scars, chipped flecks or scuffed panels. Slim straight2px kerb+1px gutter down LEFT/RIGHT edges, top/bottom OPEN matching course phase for repeat. No transverse thick bottom belt. No rounded corners, no noise or blur. All48rows independently painted with quiet variation, not a repeated12row stamp. Native street softer contrast than house, simple top-left light. No objects or ground outside.",
+    "source": "r17-C-critic1-source-street-side-a.png",
+    "selected": false
+  },
+  {
+    "id": "street-side-b",
+    "output": "street-side",
+    "size": [
+      48,
+      48
+    ],
+    "ground": true,
+    "selected": true,
+    "prompt": "ONE48x48pixel-native-equivalent SQUARE cobble street tile enlarged pixel art on magenta. Flat topdown grid. Precise ANGULAR square-edged grey olive stones,6-10pxnative;6stonesacross,7coursesdown. Calm narrow joints, almost uniform mid-grey value, only subtle purposeful variation. No rounded paving stones, realistic grit, diagonal highlights, patchy wear, central scar, dark horizontal belts or noisy flecks. Continuous straight2px stone curb with1px darker gutter on left/right. North/south contacts open, tileable and matching course phase. Every course individually arranged, no12row repeating stamp. Opaque square, no grass or props, no perspective.",
+    "source": "r17-C-critic1-source-street-side-b.png",
+    "joint_rows": [
+      [
+        0,
+        21
+      ],
+      [
+        185,
+        202
+      ],
+      [
+        362,
+        387
+      ],
+      [
+        513,
+        537
+      ],
+      [
+        712,
+        727
+      ],
+      [
+        881,
+        896
+      ],
+      [
+        1041,
+        1057
+      ],
+      [
+        1198,
+        1212
+      ]
+    ],
+    "joint_threshold": 100
+  },
+  {
+    "id": "street-junction-a",
+    "output": "street-junction",
+    "size": [
+      48,
+      48
+    ],
+    "ground": true,
+    "prompt": "ONE SQUARE48x48native-equivalent pixel-art COBBLE JUNCTION FIELD enlarged on solid magenta margin. Entire rectangle opaque grey-olive paving. NO curb or border anywhere: all four edges must join neighbouring road interiors seamlessly. Quiet complete ANGULAR stone cobbles6-10native pixels, staggered courses of mixed lengths,6-7courses. Thin continuous mortar, modest lowcontrast3-5 grey-olive tones; no bright clusters, diagonally striped highlights, repeated stamp, centre scar, grit or noise. Square corners and flat topdown camera. Draw a complete48x48 field with variation across all rows, NOT short12/16row pattern. This is the open centre of crossroads and irregular market squares. No objects or grass.",
+    "source": "r17-C-critic1-source-street-junction-a.png",
+    "selected": false
+  },
+  {
+    "id": "street-junction-b",
+    "output": "street-junction",
+    "size": [
+      48,
+      48
+    ],
+    "ground": true,
+    "selected": true,
+    "prompt": "Draw ONE square enlarged pixel-art paving tile on magenta. Native48x48 equivalent. EXACTLY SIX ROWS of stones down the square, aboutSIX cobbles across each row. Forty large complete rectangular angular cobbles total, not hundreds. Each stone6-10native pixels. Quiet warm grey olive palette, thin continuous lowcontrast mortar, no chips, cracks, diagonal highlights, specks or noise. Rows stagger with varied stone lengths, no obvious central motif. No border, NO kerbs, NO surrounding grass. Paving extends to all four straight square edges, opaque square coverage. Flat TOPDOWN2D game tile, simple crisp pixel shapes, not realistic grit. All six rows distinct and hand-arranged. This open square is a quiet junction/market field, not a brick wall.",
+    "source": "r17-C-critic1-source-street-junction-b.png",
+    "joint_rows": [
+      [
+        168,
+        198
+      ],
+      [
+        385,
+        409
+      ],
+      [
+        565,
+        591
+      ],
+      [
+        759,
+        778
+      ],
+      [
+        960,
+        983
+      ]
+    ],
+    "joint_threshold": 110,
+    "crop": [
+      50,
+      50,
+      1208,
+      1204
+    ],
+    "north_joint_donor": 7
+  },
+  {
+    "id": "lane-a",
+    "output": "lane",
+    "size": [
+      24,
+      48
+    ],
+    "ground": true,
+    "prompt": "ONE enlarged pixel-art narrow alley tile, portrait24wide48high native equivalent on solid magenta. Topdown square-grid cobbles, exactly THREE small6-8pxwide stone columns across and SEVEN staggered courses down. Subtle warm grey olive stones, complete angular contours and narrow continuous joints.1-2px darker gutters and straight small kerb edges down both left/right sides. TOP/BOTTOM contacts open to join lane vertically, no end bar, stairs or crosswise ladder rungs. All seven courses different, no centre scar, bright zigzag, diagonal stamps, grit or smear. Quiet3-5tones with narrow value spread. Opaque rectangular tile, square corners, no other objects or grass. A coherent joined walking route, lighter than building shadow.",
+    "source": "r17-C-critic1-source-lane-a.png",
+    "selected": false
+  },
+  {
+    "id": "lane-b",
+    "output": "lane",
+    "size": [
+      24,
+      48
+    ],
+    "ground": true,
+    "selected": true,
+    "prompt": "One portrait narrow alley ground tile24x48native equivalent enlarged on pure magenta. Pixel art, flat topdown. THREE angular complete stone cobbles across, SEVEN staggered rows down. Stones calm solid grey-olive flat faces, NO diagonal shading or texture within stones. Narrow continuous lowcontrast grout; subtle differences only between entire stones. Left/right continuous straight1px dark gutter beside2px kerb. Top/bottom OPEN, no transverse border. More lengths varied to avoid ladder, but each stone closed solid outline. No cracks, centre scar, gritty texture, smeared marks, round edges or realistic shading. Fully opaque rectangle with square corners. Clean joined route in quiet values, not decorative stripe.",
+    "source": "r17-C-critic1-source-lane-b.png",
+    "joint_rows": [
+      [
+        228,
+        238
+      ],
+      [
+        485,
+        506
+      ],
+      [
+        721,
+        742
+      ],
+      [
+        962,
+        982
+      ],
+      [
+        1194,
+        1219
+      ],
+      [
+        1430,
+        1451
+      ]
+    ],
+    "joint_threshold": 100
+  },
+  {
+    "id": "mud-edge-a",
+    "output": "mud-edge",
+    "size": [
+      48,
+      48
+    ],
+    "edge": true,
+    "silhouette": true,
+    "prompt": "ONE pixel-art muddy VERGE tile48x48native equivalent enlarged on solid magenta. Narrow irregular vertical worn-earth strip centredx24 extending through TOP and BOTTOM. About22pxwide. Firm SMALL angular earth clods and a few short straight shallow ruts, quiet brown/taupe. NO S-shaped rut, no wavy ribbon, no broad pale stripe, no puddles. Edges step irregularly into magenta with a few connected grass-root tufts, no detached specks. Deliberate compact clusters3-6pxnative, no noise, no smooth smear or haze. Top/bottom contacts similar width and colour for repeat. Top-left light muted, square-grid native48scale. No fence, no objects, no baked grass background. Magenta around strip becomes transparency.",
+    "source": "r17-C-critic1-source-mud-edge-a.png",
+    "selected": false,
+    "box": [
+      22,
+      48
+    ]
+  },
+  {
+    "id": "mud-edge-b",
+    "output": "mud-edge",
+    "size": [
+      48,
+      48
+    ],
+    "edge": true,
+    "silhouette": true,
+    "selected": true,
+    "prompt": "Draw one restrained worn muddy VERGE,48x48native-equivalent tile enlarged on solid magenta. Straight narrow vertical earthy band22pxwide centred in square canvas, irregular jagged pixel edge. Connected small hard clods3-6px and only three short straight shallow ruts. Quiet dull taupe/brown, minimal highlights, small grass-root tufts at two edges. NO large Scurve, wavy ribbon, broad pale patches, noise/specks, smooth blending, puddles, ground backdrop. Top/bottom exits samewidth andtone. Square-grid hard pixels and top-left light, no dark cartoon outline around mud. No detached marks; magenta all around becomes transparency. More understated than a path, it is the worn verge beside grass and wall.",
+    "source": "r17-C-critic1-source-mud-edge-b.png",
+    "box": [
+      22,
+      48
+    ]
+  },
+  {
+    "id": "street-junction-turn-a",
+    "output": "street-junction-turn",
+    "size": [
+      48,
+      48
+    ],
+    "ground": true,
+    "prompt": "ONE SQUARE48x48native-equivalent pixel-art STREET KERB TURN tile enlarged on solid magenta margin. Flat topdown. Quiet grey-olive small6-10px stone paving fills full square. A clearly painted2px raised kerb+1px darker gutter makes a precise square L-shaped convex turn near TOP LEFT: horizontal kerb along TOP fromx0 tox8, turns atx8,y8 then runs up to top? Instead show a simple solid right angle: kerb along TOP edge fromx12 to48 and along LEFT edge fromy12 to48, linked by a squared inset corner nearx8,y8. The remaining bottom/right open edges connect road. NO curved curb or rounded corners. Paint bevelled top-left stone top faces and darker gutter inside the turn. Distinct square-ended kerb stones, continuous dark narrow drainage channel, no stripe across centre. Calm angular cobbles, no noise/highcontrast pattern. This is a reusable junction corner patch, no objects/grass.",
+    "source": "r17-C-critic1-source-street-junction-turn-a.png",
+    "selected": true
+  },
+  {
+    "id": "side-storey-E-register",
+    "size": [
+      96,
+      48
+    ],
+    "output": "side-storey-E",
+    "course": true,
+    "selected": true,
+    "desc": "EAST SIDE UPPER WALL 96x48 native. Fully painted rectangular panel 2:1, no roof, door or ground. Long warm lit cream front plane LEFT three quarters; short visibly darker east return RIGHT quarter, substantial square corner post divides planes. One recessed blue-grey two-pane window on each plane, projecting stone sill with visible top. Simple edge posts, thin straight timber top/bottom course. No other beams or decorations. Keep window shapes square and calm.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. EAST SIDE UPPER WALL 96x48 native. Fully painted rectangular panel 2:1, no roof, door or ground. Long warm lit cream front plane LEFT three quarters; short visibly darker east return RIGHT quarter, substantial square corner post divides planes. One recessed blue-grey two-pane window on each plane, projecting stone sill with visible top. Simple edge posts, thin straight timber top/bottom course. No other beams or decorations. Keep window shapes square and calm.",
+    "source": "r17-C-source-side-storey-E.png",
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        75,
+        80
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "repair": "Original image-tool drawing registered to approved ground corner; no redraw needed."
+  },
+  {
+    "id": "side-storey-W-register",
+    "size": [
+      96,
+      48
+    ],
+    "output": "side-storey-W",
+    "course": true,
+    "selected": true,
+    "desc": "WEST SIDE UPPER WALL 96x48 native. Completely filled rectangular 2:1 panel NO ROOF, NO ground/steps/door. Short lit west return on LEFT quarter, longer front plane right three quarters, square corner post. One small recessed blue-grey two-pane window on each plane, substantial stone sill with top face. Broad calm cream plaster and structural brown edge posts, no diagonal timbers. Thin horizontal timber stacking course along top and bottom; square outer edges, subtle plane shading.",
+    "prompt": "Use case: stylized-concept. Draw ONE isolated production module for a fantasy pixel RPG city, large on perfectly flat solid #FF00FF magenta with a narrow margin. Chunky strict square pixels, broad quiet colour masses, no gradient, no noise, no specks, no weathering scratches, no text, no extra objects or animals. Native target described below; do not draw finer than that pixel budget. Muted warm cream plaster, brown timber, warm grey stone, terracotta where roof. Top-left light, deep olive-brown one-native-pixel outline, visible top faces of ledges, recessed openings, high 3/4 RPG view like a classic fantasy town. Straight grid architecture, sharp square corners, no rounded tile edges. WEST SIDE UPPER WALL 96x48 native. Completely filled rectangular 2:1 panel NO ROOF, NO ground/steps/door. Short lit west return on LEFT quarter, longer front plane right three quarters, square corner post. One small recessed blue-grey two-pane window on each plane, substantial stone sill with top face. Broad calm cream plaster and structural brown edge posts, no diagonal timbers. Thin horizontal timber stacking course along top and bottom; square outer edges, subtle plane shading.",
+    "source": "r17-C-source-side-storey-W.png",
+    "x_landmarks": [
+      [
+        0,
+        0
+      ],
+      [
+        21,
+        16
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "repair": "Original image-tool drawing registered to approved ground corner; no redraw needed."
+  }
+]
