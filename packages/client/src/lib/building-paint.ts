@@ -950,6 +950,30 @@ function paintBuildingDressing(
         }
       return;
     }
+    case 43: {
+      // A raised portcullis: the iron grate drawn up into its slot over the passage, its spiked foot
+      // hanging, the grooves it runs in cut down the passage walls.
+      const iron = ["#2e2e34", "#5a5a64", "#8a8a96"];
+      px(ctx, "#00000055", x, y + 7, 16, 2);
+      px(ctx, ink, x, y, 16, 7);
+      for (let bx = 1; bx < 16; bx += 3) {
+        px(ctx, iron[1]!, x + bx, y, 2, 7);
+        px(ctx, iron[2]!, x + bx, y, 1, 6);
+        px(ctx, iron[0]!, x + bx, y + 7, 2, 1);
+        px(ctx, iron[1]!, x + bx, y + 8, 1, 1);
+      }
+      px(ctx, iron[1]!, x, y + 2, 16, 1);
+      px(ctx, iron[1]!, x, y + 5, 16, 1);
+      if (!join.w) {
+        px(ctx, ink, x, y, 2, 16);
+        px(ctx, stone[2]!, x, y, 1, 16);
+      }
+      if (!join.e) {
+        px(ctx, ink, x + 14, y, 2, 16);
+        px(ctx, stone[2]!, x + 15, y, 1, 16);
+      }
+      return;
+    }
   }
 }
 

@@ -171,7 +171,8 @@ const PLANS: Record<string, SiteStamp[]> = {
     st(["2...2", ".7.7.", ".0.0.", ".7.7.", "....."], [2, 3], [1, 4]),
   ],
   // The founder's tomb: the one tomb on its platform among a ring of piers, torches at the corners.
-  "Founder's tomb": [st(["2.....2", ".7...7.", "...0...", ".7...7.", "......."], [3, 4], [2, 3])],
+  // One tomb between its pillars, the space round it widened, never a row of founders (panel round 23).
+  "Founder's tomb": [st(["2.....2", ".7...7.", "...0...", ".......", ".7...7."], [2, 3], [3, 4])],
   // An ossuary: skulls in the walls, bones heaped in the corners.
   Ossuary: [st(["NNNNN", "N...N", "n...n", "....."], [2, 3], [1, 3])],
   // A chapel below ground: the altar and its torches, a skeleton at prayer.

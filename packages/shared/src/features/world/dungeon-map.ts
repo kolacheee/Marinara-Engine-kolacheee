@@ -16,6 +16,8 @@ export type DungeonGround = (typeof DUNGEON_GROUND)[number];
 export const DUNGEON_EXIT_PROP = 5;
 /** A hidden door in a planned building's wall: drawn as wall, walked through like floor. */
 export const DUNGEON_SECRET_DOOR_PROP = 39;
+/** A keep's portcullis hung raised over its gate passage: drawn over the floor, walked under. */
+export const DUNGEON_PORTCULLIS_PROP = 43;
 
 export interface DungeonSet {
   id: string;
@@ -66,6 +68,7 @@ export const BUILDING_DRESSING = [
   "a cart",
   "a training dummy",
   "a woodpile",
+  "a raised portcullis",
 ] as const;
 
 /** A prop as one character of a kept map: "-" none, 0-9, then a-z for 10 on. */
@@ -348,7 +351,8 @@ export interface DungeonRoom {
 
 /** Whether a room holds a cell: in its main box or one of its other parts. */
 export function dungeonRoomHas(room: DungeonRoom, x: number, y: number): boolean {
-  const inBox = (r: { x: number; y: number; w: number; h: number }) => x >= r.x && x < r.x + r.w && y >= r.y && y < r.y + r.h;
+  const inBox = (r: { x: number; y: number; w: number; h: number }) =>
+    x >= r.x && x < r.x + r.w && y >= r.y && y < r.y + r.h;
   return inBox(room) || !!room.parts?.some(inBox);
 }
 
@@ -403,7 +407,10 @@ export function dungeonWalkable(map: DungeonMap, x: number, y: number): boolean 
   if (map.blocked?.has(i)) return false;
   return (
     map.ground[i] === "floor" &&
-    (map.props[i] === -1 || map.props[i] === DUNGEON_EXIT_PROP || map.props[i] === DUNGEON_SECRET_DOOR_PROP)
+    (map.props[i] === -1 ||
+      map.props[i] === DUNGEON_EXIT_PROP ||
+      map.props[i] === DUNGEON_SECRET_DOOR_PROP ||
+      map.props[i] === DUNGEON_PORTCULLIS_PROP)
   );
 }
 
@@ -923,7 +930,11 @@ export const gameDungeonMapSchema = z
             w: z.number().int(),
             h: z.number().int(),
             parts: z
-              .array(z.object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() }).strict())
+              .array(
+                z
+                  .object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() })
+                  .strict(),
+              )
               .max(24)
               .optional(),
           })

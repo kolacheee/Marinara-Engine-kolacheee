@@ -338,10 +338,11 @@ export function DungeonMapView({
                 else paintBuildingYard(ctx, x * T, y * T, noise);
               else paintBuildingCourt(ctx, x * T, y * T, paved, noise);
             } else
-              // A house's cellars are flagged stone, not boards and carpet.
+              // A house's cellars and a church's undercroft are flagged stone, not boards or marble (panel
+              // round 23).
               paintBuildingFloor(
                 ctx,
-                buried && building === "manor" ? "keep" : building,
+                buried ? "keep" : building,
                 x * T,
                 y * T,
                 isHall(x, y),
@@ -529,7 +530,7 @@ export function DungeonMapView({
               y + dy < cells.height &&
               cells.props[(y + dy) * cells.width + x + dx] === prop;
             const join =
-              (prop === 0 && building !== "temple") || prop === 25
+              (prop === 0 && building !== "temple") || prop === 25 || prop === 43
                 ? { w: same(-1, 0), e: same(1, 0), n: same(0, -1), s: same(0, 1) }
                 : undefined;
             paintBuildingProp(ctx, building, prop, x * T, y * T, join);

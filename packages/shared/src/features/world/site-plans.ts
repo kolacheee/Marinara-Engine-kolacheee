@@ -10,6 +10,7 @@ import { marinaraRandom } from "../marinara-classes.js";
 import { SITE_STAMP_LEGEND, siteStampStretch, siteStampsFor } from "./site-stamps.js";
 import {
   DUNGEON_EXIT_PROP,
+  DUNGEON_PORTCULLIS_PROP,
   DUNGEON_SECRET_DOOR_PROP,
   gameDungeonMapFromDungeon,
   type DungeonGround,
@@ -669,7 +670,8 @@ export function sitePlan(input: SitePlanInput): SitePlan {
     links.push({ upper: i, lower: i + 1, kind });
     if (input.wealth >= 2 && !upper.inset && kind === "stairs" && random() < 0.6)
       links.push({ upper: i, lower: i + 1, kind: "servants" });
-    if (input.fate === "war" && upper.depth === 1 && lower.depth === 0)
+    // Never through a tower top, whose one floor is its ladder.
+    if (input.fate === "war" && upper.depth === 1 && lower.depth === 0 && !upper.inset)
       links.push({ upper: i, lower: i + 1, kind: "hole" });
     // A castle's wall walk has a stair of its own down into the range below it, a second way between the
     // floors that keeps clear of the donjon (panel 2026-11-17).
@@ -1475,6 +1477,7 @@ function siteFrameOf(plan: SitePlan) {
         if (x >= 2 && y >= 2 && x < mapW - 2 && y < mapH - 2 && (!keep || keep(x, y))) out.push(at(x, y));
     return out;
   };
+  const within = (r: SiteRect, x: number, y: number) => x >= r.x && x < r.x + r.w && y >= r.y && y < r.y + r.h;
   const put = (mask: Uint8Array, cells: readonly number[], value = 1) => {
     for (const c of cells) mask[c] = value;
   };
@@ -1486,6 +1489,8 @@ function siteFrameOf(plan: SitePlan) {
   const fixed: SiteFixed[] = [];
   const onGround = (level: SitePlanLevel) => level.depth === 0 && !level.inset;
   let groundOnly: number[] = [];
+  /** The keep's portcullis, raised, across the gate passage. */
+  let portcullisAt: { x: number; y: number; w: number } | null = null;
   let lightWell: number[] = [];
   let upper: Uint8Array | undefined;
   let below: Uint8Array | undefined;
@@ -1503,6 +1508,8 @@ function siteFrameOf(plan: SitePlan) {
   /** A house's ground floor: the side of the front door its kitchen and offices are on. */
   let serviceSide = 0;
   /** A castle's stairs where its back range was laid by rule. */
+  /** A castle's donjon, where it was laid by rule. */
+  let donjonRect: SiteRect | null = null;
   let stairsAt: {
     main: { x: number; y: number };
     alt: { x: number; y: number };
@@ -1600,10 +1607,23 @@ function siteFrameOf(plan: SitePlan) {
       const kitchen = span(d + hw + sw + bw, kw);
       if (d + hw + sw + bw + kw <= W) {
         // The donjon's own wall: two thick, nothing grows in it.
-        for (const c of cellsOf({ x: donjon.x, y: T, w: donjon.w, h: nb })) zone[c] = -2;
+        // The donjon stands forward of the range into the ward, the biggest block in the castle (history
+        // panel round 23: a keep smaller than its hall is no keep).
+        const ext = Math.max(0, Math.min(4, Math.floor((B - front - yb) / 3)));
+        const nd = nb + ext;
+        donjonRect = { x: donjon.x, y: T, w: donjon.w, h: nd };
+        put(full, cellsOf({ x: donjon.x, y: T + nb, w: donjon.w, h: ext }));
+        for (const each of fixed)
+          if (each.kind === "court")
+            each.cells = each.cells.filter(
+              (c) =>
+                !within(donjonRect!, c % mapW, Math.floor(c / mapW)) &&
+                !within({ x: donjon.x - 1, y: T, w: donjon.w + 2, h: nd + 1 }, c % mapW, Math.floor(c / mapW)),
+            );
+        for (const c of cellsOf({ x: donjon.x, y: T, w: donjon.w, h: nd })) zone[c] = -2;
         fixed.push({
           kind: "room",
-          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nb - 2 }),
+          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nd - 2 }),
           on: onGround,
           claim: (room) => room.name === "Keep store",
           room: { name: "Keep store", use: "store", size: 2, zone: "private", furniture: [CHEST, CRATE, BARREL] },
@@ -1611,7 +1631,7 @@ function siteFrameOf(plan: SitePlan) {
         // Over it, the donjon's first floor: the guard room the stair comes up into.
         fixed.push({
           kind: "room",
-          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nb - 2 }),
+          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nd - 2 }),
           on: (level) => level.depth === 1 && !level.inset,
           claim: (room) => room.name === "Guard room",
           room: { name: "Guard room", use: "post", size: 2, zone: "public", furniture: [T, SHELF] },
@@ -1655,22 +1675,57 @@ function siteFrameOf(plan: SitePlan) {
         // one room round its stair, not a store between two stairwells (panel round 20 2026-11-17).
         stairsAt = {
           main: { x: westKeep ? donjon.x + donjon.w - 2.5 : donjon.x + 2.5, y: T + 2.5 },
-          tower: { x: donjon.x - 1, y: T - 1, w: donjon.w + 2, h: nb + 2 },
-          ladder: { x: westKeep ? donjon.x + 2 : donjon.x + donjon.w - 2, y: T + 2 },
-          alt: { x: westKeep ? donjon.x + 2.5 : donjon.x + donjon.w - 2.5, y: T + nb - 2.5 },
+          tower: { x: donjon.x - 1, y: T - 1, w: donjon.w + 2, h: nd + 2 },
+          ladder: { x: westKeep ? donjon.x + 2 : donjon.x + donjon.w - 2, y: T + nd - 2 },
+          alt: { x: westKeep ? donjon.x + 2.5 : donjon.x + donjon.w - 2.5, y: T + nd - 2.5 },
           back: { x: westKeep ? R - 2 : L + 2, y: T + nb - 2 },
         };
       }
     }
+    // A well house standing free in the ward, on the side away from the donjon (history panel round 23:
+    // a ward is a yard with buildings in it, not an empty square).
+    {
+      const [wx0, ww, wh] = [L + side, W - 2 * side, B - front - yb + 1];
+      const awayEast = donjonRect ? donjonRect.x + donjonRect.w / 2 < L + W / 2 : random() < 0.5;
+      if (ww >= 15 && wh >= 7) {
+        // Two clear of the side range, so the lane past it is a lane.
+        const bx = awayEast ? wx0 + ww - 7 : wx0 + 2;
+        const by = yb + 1;
+        const block = { x: bx, y: by, w: 5, h: 5 };
+        const court = fixed.find((each) => each.kind === "court");
+        const near = donjonRect && { x: donjonRect.x - 2, y: 0, w: donjonRect.w + 4, h: donjonRect.h + 2 };
+        const blocked = near && cellsOf(block).some((c) => within(near, c % mapW, Math.floor(c / mapW)));
+        if (court && !blocked) {
+          court.cells = court.cells.filter((c) => !within(block, c % mapW, Math.floor(c / mapW)));
+          for (const c of cellsOf(block)) zone[c] = -2;
+          fixed.push({
+            kind: "room",
+            cells: cellsOf({ x: bx + 1, y: by + 1, w: 3, h: 3 }),
+            on: onGround,
+            room: { name: "Well house", use: "store", size: 1, zone: "service", furniture: [WELL] },
+          });
+        }
+      }
+    }
     const td = 3;
+    // Two gate towers astride the passage, each a guard room the gate is worked from (panel round 23: the
+    // gate was a gap in the wall).
     const gateTowers = [
-      { x: gx - 3, y: B + 1, w: 3, h: td },
-      { x: gx + gw, y: B + 1, w: 3, h: td },
+      { x: gx - 4, y: B + 1, w: 3, h: td },
+      { x: gx + gw + 1, y: B + 1, w: 3, h: td },
     ];
     groundOnly = gateTowers.flatMap((r) => cellsOf(r));
     for (const c of groundOnly) zone[c] = c % mapW < cx ? 4 : 5;
+    for (const r of gateTowers)
+      fixed.push({
+        kind: "tower",
+        cells: cellsOf(r),
+        on: onGround,
+        room: { name: "Gate tower", use: "post", size: 1, zone: "public", furniture: [RACK] },
+      });
     const passage = cellsOf({ x: gx, y: B - front + 1, w: gw, h: front + td });
     groundOnly.push(...cellsOf({ x: gx, y: B + 1, w: gw, h: td }));
+    portcullisAt = { x: gx, y: B + 2, w: gw };
     fixed.push({
       kind: "pass",
       cells: passage,
@@ -1678,7 +1733,10 @@ function siteFrameOf(plan: SitePlan) {
       room: { name: "Gate passage", use: "post", size: 1, zone: "public", furniture: [] },
     });
     const s = plan.wealth === 3 ? 5 : 4;
-    const [left, right] = [fx, fx + plan.width - 1];
+    // Mirrored about the curtain: the east towers stood a cell further out than the west, so the one by the
+    // donjon was cut off and walled up (round 24 check: a corner tower lost in four keeps of five).
+    const left = fx;
+    const right = R + (L - left);
     const towers = [
       { r: { x: left - s + 1, y: T, w: s, h: s }, out: left - s + 1 },
       { r: { x: right, y: T, w: s, h: s }, out: right + s - 1 },
@@ -1702,6 +1760,7 @@ function siteFrameOf(plan: SitePlan) {
     upper = new Uint8Array(mapW * mapH);
     below = new Uint8Array(mapW * mapH);
     put(upper, cellsOf({ x: L, y: T, w: W, h: nb }));
+    if (donjonRect) put(upper, cellsOf(donjonRect));
     // The dungeons run on under the ward as well, not a strip under the donjon alone.
     put(below, cellsOf({ x: L, y: T, w: W, h: Math.min(H, nb + Math.round(H * 0.55)) }));
     const walk = [
@@ -1710,7 +1769,7 @@ function siteFrameOf(plan: SitePlan) {
       ...cellsOf({ x: L, y: T + nb, w: 2, h: B - T - nb + 1 }),
       ...cellsOf({ x: R - 1, y: T + nb, w: 2, h: B - T - nb + 1 }),
       ...cellsOf({ x: L + 2, y: B - 1, w: W - 4, h: 2 }),
-    ];
+    ].filter((c) => !donjonRect || !within(donjonRect, c % mapW, Math.floor(c / mapW)));
     put(upper, walk);
     for (const cells of towerCells) put(upper, cells);
     fixed.push({
@@ -1720,7 +1779,9 @@ function siteFrameOf(plan: SitePlan) {
       room: { name: "Wall walk", use: "post", size: 3, zone: "public", furniture: [] },
     });
     {
-      const east = random() < 0.5;
+      // On the side away from the donjon, which now stands forward into the ward.
+      const coin = random() < 0.5;
+      const east = donjonRect ? donjonRect.x + donjonRect.w / 2 < L + W / 2 : coin;
       const y = yb + 1 + Math.floor(random() * Math.max(1, B - front - yb - 2));
       wallAt = { x: east ? R - 1 : L + 1, y, lower: { x: east ? R - side : L + side - 1 + 1, y } };
     }
@@ -1745,8 +1806,11 @@ function siteFrameOf(plan: SitePlan) {
     };
     const nw = W >= 30 && sideRoom(11) >= 8 ? 11 : 9;
     const nx = cx - Math.floor(nw / 2);
-    const tw = Math.min(7, sideRoom(nw) - 1);
-    const sideTower = tw >= 7;
+    // A tower base no more than five square when there is room beside it for a side chapel (history panel
+    // round 23: a 7x7 tower base is a hall, not a tower); else out to the nave as before.
+    const spare = sideRoom(nw) - 1;
+    const tw = spare >= 9 ? 5 : Math.min(7, spare);
+    const sideTower = tw >= 7 || spare >= 9;
     const nh = 3;
     const ta = H >= 22 ? 4 : 3;
     const chh = H >= 18 ? 5 : 4;
@@ -1870,10 +1934,14 @@ function siteFrameOf(plan: SitePlan) {
     // cloister, its base a room of its own (all five testers 2026-11-17: a walled box in the nave reads as
     // a broken wall). Failing the room for it, over the west end as before.
     if (sideTower) {
-      const tx = left ? nx + nw + 1 : nx - 1 - tw;
+      // Five square in the outer corner, a side chapel's room left between it and the nave; else against
+      // the nave and out to the outer wall, so no strip of a room is left beside it (round 21 2026-11-17).
+      const square = spare >= 9;
+      const tx = square ? (left ? R - tw + 1 : L) : left ? nx + nw + 1 : nx - 1 - tw;
       const tyy = B - tw + 1;
-      // The base out to the outer wall, so no strip of a room is left beside it (round 21 2026-11-17).
-      const base = cellsOf({ x: left ? tx : L, y: tyy, w: left ? R - tx + 1 : nx - 1 - L, h: tw });
+      const base = square
+        ? cellsOf({ x: tx, y: tyy, w: tw, h: tw })
+        : cellsOf({ x: left ? tx : L, y: tyy, w: left ? R - tx + 1 : nx - 1 - L, h: tw });
       fixed.push({
         kind: "room",
         cells: base,
@@ -1881,7 +1949,10 @@ function siteFrameOf(plan: SitePlan) {
         room: { name: "Tower base", use: "post", size: 2, zone: "public", furniture: [CRATE] },
       });
       for (const c of base) zone[c] = -2;
-      inset = { x: tx - 1, y: tyy - 1, w: tw + 2, h: tw + 2 };
+      // The bell chamber as wide inside as the base below it.
+      inset = square
+        ? { x: tx - 2, y: tyy - 2, w: tw + 4, h: tw + 4 }
+        : { x: tx - 1, y: tyy - 1, w: tw + 2, h: tw + 2 };
       mainAt = { x: left ? R - 2 : L + 2, y: tyy - 3 };
     } else {
       mainAt = { x: left ? R - 2 : L + 2, y: B - 3 };
@@ -2007,9 +2078,11 @@ function siteFrameOf(plan: SitePlan) {
       : link.kind === "servants"
         ? backAt
         : link.kind === "stairs"
-          ? flip
-            ? mainAt
-            : (stairsAt?.alt ?? { x: 2 * cx - mainAt.x, y: T + B - mainAt.y })
+          ? stairsAt
+            ? stairsAt.main
+            : flip
+              ? mainAt
+              : { x: 2 * cx - mainAt.x, y: T + B - mainAt.y }
           : { x: L + 2 + random() * (W - 4), y: T + 2 + random() * (H - 4) };
     const [w, h] =
       ladder || link.kind === "hidden" || link.kind === "hole"
@@ -2078,6 +2151,7 @@ function siteFrameOf(plan: SitePlan) {
     maskOf,
     linkAt,
     door: { x: cx, y: iy + thick, ix: cx, iy },
+    portcullisAt,
   };
 }
 
@@ -2413,6 +2487,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   const nearEdge = new Uint8Array(size);
   for (let c = 0; c < size; c++) if (byOutside[c]) for (const n of around(c)) nearEdge[n] = 1;
+  // Near a tower or a gate tower, whose only way in it would take (seed 4 keep: a corner tower walled up
+  // behind a secret strongroom).
+  const nearTower = new Uint8Array(size);
+  for (let c = 0; c < size; c++)
+    if (at[c]! >= 0 && regions[at[c]!]!.kind === "tower")
+      for (let dy = -4; dy <= 4; dy++)
+        for (let dx = -4; dx <= 4; dx++) {
+          const [x, y] = [(c % mapW) + dx, Math.floor(c / mapW) + dy];
+          if (x >= 0 && y >= 0 && x < mapW && y < mapH) nearTower[y * mapW + x] = 1;
+        }
   for (const g of order) {
     const region = regions[g]!;
     const r = region.room!;
@@ -2468,6 +2552,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           if (r.name === "Dining room" || r.name === "Kitchen") s += Math.abs(x - frame.cx) * 0.4;
         }
         if (region.hidden && !nearEdge[c]) s += 2;
+        if (region.hidden && nearTower[c]) s += 6;
         if (byOutside[c] && !region.hidden) s += 0.3;
         // Room to grow: a big room's seed where there is space round it.
         const [x0, y0, x1, y1] = [
@@ -3203,7 +3288,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           found = m;
           break;
         }
-        if (!mask[m] || hold[m] || ground[m] === "floor") continue;
+        // A tower may go through the curtain it stands on (a cell outside the floor plan), never further.
+        const curtain = !mask[m] && regions[n]!.kind === "tower" && from.includes(c);
+        if ((!mask[m] && !curtain) || hold[m] || ground[m] === "floor") continue;
         back[m] = c;
         queue.push(m);
       }
@@ -3510,6 +3597,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   if (entry) props[cell(entrance.x, entrance.y)] = DUNGEON_EXIT_PROP;
   for (const at of secrets) props[cell(at.x, at.y)] = DUNGEON_SECRET_DOOR_PROP;
+  // The keep's portcullis hangs raised over the gate passage: drawn, walked under.
+  if (frame.portcullisAt && level.depth === 0 && !level.inset)
+    for (let k = 0; k < frame.portcullisAt.w; k++) {
+      const i = cell(frame.portcullisAt.x + k, frame.portcullisAt.y);
+      if (ground[i] === "floor" && props[i] === -1) props[i] = DUNGEON_PORTCULLIS_PROP;
+    }
   // Solid with nothing open beside it is not wall but the land round the building.
   const solid = ground.map((g, i) => {
     if (g !== "wall" || (mask[i] && (!rock || level.depth >= 0))) return false;
@@ -3586,6 +3679,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             ground[n] !== "floor" ||
             (props[n] !== -1 &&
               props[n] !== DUNGEON_EXIT_PROP &&
+              props[n] !== DUNGEON_PORTCULLIS_PROP &&
               (props[n] !== SITE_LOCK_PROP || !locks) &&
               props[n] !== DUNGEON_SECRET_DOOR_PROP)
           )
@@ -3603,7 +3697,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     if (!keys) return false;
     for (let c = 0; c < ground.length; c++) if (seen[c]) queue.push(c);
     spread(true);
-    return ground.every((g, i) => g !== "floor" || seen[i] || (props[i] !== -1 && props[i] !== DUNGEON_EXIT_PROP));
+    return ground.every(
+      (g, i) =>
+        g !== "floor" ||
+        seen[i] ||
+        (props[i] !== -1 && props[i] !== DUNGEON_EXIT_PROP && props[i] !== DUNGEON_PORTCULLIS_PROP),
+    );
   };
   // Water that cuts a room off is drained.
   if (level.flooded && !reachable())
@@ -3820,7 +3919,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const tiny = Math.min(area.w, area.h) < 3;
     // What the room is dressed with: its recipe by name where it has one (gamer panel 2026-11-17: a
     // kitchen has its range and barrels, a nave its pews), else its plan's furniture by slot.
-    const recipe = plan.template === "crypt" ? undefined : SITE_RECIPES[siteBaseName(room.name)];
+    const recipe = (plan.template === "crypt" ? undefined : SITE_RECIPES[siteBaseName(room.name)])?.filter(
+      // The ward's well is in its well house where it has one.
+      ([slot]) => !(slot === WELL && room.use === "open" && info.some((each) => each.name === "Well house")),
+    );
     const items: Array<{ slot: number; kind: SiteRole; count: number }> = recipe
       ? recipe.map(([slot, kind, n]) => ({
           // Books where people read; jars, pots and sacks on the shelves of stores and kitchens.
@@ -3902,7 +4004,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         const flip = random() < 0.5;
         for (let r = 0; r < deep; r++)
           for (let c = 0; c < across; c++) {
-            const slot = SITE_STAMP_LEGEND[grid[r]![c]!];
+            // A crypt's tile pack has no altar: its altar is a tomb, the altar tomb of a mortuary chapel.
+            const raw = SITE_STAMP_LEGEND[grid[r]![c]!];
+            const slot =
+              plan.template === "crypt" && raw !== undefined && raw > 7 ? (raw === ALTAR ? 0 : undefined) : raw;
             if (slot === undefined) continue;
             const k = flip ? across - 1 - c : c;
             const [x, y] =
@@ -4049,7 +4154,22 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   for (const recess of alcoves.values()) {
     const mid = recess[1]!;
     if (props[cell(mid.x, mid.y)] !== -1) continue;
-    props[cell(mid.x, mid.y)] = plan.template === "crypt" ? 0 : STATUE;
+    // A statue where people are received or pray; in a working room what that room keeps (panel round 23: a
+    // statue in a smithy).
+    const owner = rooms.findIndex((r) => [r, ...(r.parts ?? [])].some((b) => inside(b, mid.x, mid.y)));
+    const work =
+      owner >= 0 &&
+      /smith|kitchen|stable|store|cellar|barrack|armou?ry|bake|brew|pantry|buttery|larder|guard|gaol|scullery|laundry/iu.test(
+        info[owner]?.name ?? "",
+      );
+    props[cell(mid.x, mid.y)] =
+      plan.template === "crypt"
+        ? 0
+        : work
+          ? /armou?ry|guard|barrack/iu.test(info[owner]!.name)
+            ? RACK
+            : BARREL
+          : STATUE;
     // Never the piece that shuts a way: a recess can be the one way round a crowded room.
     if (!reachable()) props[cell(mid.x, mid.y)] = -1;
   }
