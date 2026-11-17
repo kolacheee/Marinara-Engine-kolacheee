@@ -1114,6 +1114,7 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [PALLET, "corner"],
     [CHAINS, "wall"],
     [BUCKET, "corner"],
+    [HAY, "corner"],
   ],
   "Interrogation room": [
     [T, "center", 1],
@@ -2716,7 +2717,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (far < 0 || far >= size || ground[w] !== "wall" || hold[w] || !mask[w]) continue;
         const h = at[far]!;
         if (h < 0 || h === g || ground[far] !== "floor" || !cellsBy.has(h)) continue;
-        if ((regions[h]!.kind !== "room" && (regions[h]!.kind !== "pass" || cells.length > 26)) || regions[h]!.hidden)
+        if ((regions[h]!.kind !== "room" && (regions[h]!.kind !== "pass" || cells.length > 32)) || regions[h]!.hidden)
           continue;
         between.set(h, [...(between.get(h) ?? []), w]);
       }
@@ -3377,8 +3378,18 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       E: run([x1, y0 + 1], [0, 1], area.h - 2),
     };
     const facing = { N: "S", S: "N", W: "E", E: "W" } as const;
-    const back = side ? facing[side] : "N";
-    const front = side ?? "S";
+    // A hall's high end is one of its short walls, so its long boards run down the hall away from the dais,
+    // not alongside it (history panel 2026-11-17).
+    const hallEnd = SITE_FEAST_ROOMS.has(siteBaseName(room.name)) && Math.max(area.w, area.h) >= 6;
+    const ends = area.w >= area.h ? (["W", "E"] as const) : (["N", "S"] as const);
+    const back = hallEnd
+      ? side && (ends as readonly string[]).includes(side)
+        ? facing[side]
+        : ends[Math.floor(random() * 2)]!
+      : side
+        ? facing[side]
+        : "N";
+    const front = hallEnd ? facing[back] : (side ?? "S");
     backRow.push(...walls[back]);
     frontRow.push(...walls[front]);
     for (const key of ["N", "S", "W", "E"] as const) if (key !== back && key !== front) sideRows.push(walls[key]);
@@ -3462,7 +3473,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       return Math.abs(p[0] - mx) + Math.abs(p[1] - my) - (Math.abs(q[0] - mx) + Math.abs(q[1] - my));
     });
     const reps = Math.max(1, Math.min(8, Math.round((area.w * area.h) / 14)));
-    let budget = Math.max(1, Math.floor((area.w * area.h) / 4));
+    // A cell is small but never bare: its straw, its bucket, its chains (panel 2026-11-17).
+    let budget = Math.max(/^(Cell|Oubliette)\b/u.test(room.name) ? 4 : 1, Math.floor((area.w * area.h) / 4));
     const tiny = Math.min(area.w, area.h) < 3;
     // What the room is dressed with: its recipe by name where it has one (gamer panel 2026-11-17: a
     // kitchen has its range and barrels, a nave its pews), else its plan's furniture by slot.
