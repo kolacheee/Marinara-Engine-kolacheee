@@ -767,12 +767,6 @@ const KITCHEN: SiteRecipe = [
   [CRATE, "corner"],
   [SHELF, "wall", 2],
 ];
-const BEDROOM: SiteRecipe = [
-  [BED, "back"],
-  [WARDROBE, "wall"],
-  [CHEST, "corner"],
-  [DESK, "wall"],
-];
 const STORE: SiteRecipe = [
   [CRATE, "scatter", "reps"],
   [BARREL, "corner", 2],
@@ -880,10 +874,31 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [DESK, "wall"],
     [CHEST, "corner", 2],
   ],
-  Bedroom: BEDROOM,
-  "Guest bedroom": BEDROOM,
-  "Guest chamber": BEDROOM,
-  "Governess's room": BEDROOM,
+  // Each bedroom something of its own (panel 2026-11-17: bed, wardrobe and chest everywhere).
+  Bedroom: [
+    [BED, "back"],
+    [WARDROBE, "wall"],
+    [BATH, "corner"],
+    [STOOL, "wall"],
+  ],
+  "Guest bedroom": [
+    [BED, "back"],
+    [CHEST, "corner"],
+    [FIRE, "wall"],
+    [STOOL, "wall"],
+  ],
+  "Guest chamber": [
+    [BED, "back"],
+    [DESK, "wall"],
+    [SHELF, "wall"],
+    [CHEST, "corner"],
+  ],
+  "Governess's room": [
+    [BED, "back"],
+    [DESK, "wall"],
+    [SHELF, "wall", 2],
+    [LECTERN, "corner"],
+  ],
   "Chaplain's room": [
     [BED, "back"],
     [DESK, "wall"],
@@ -2904,7 +2919,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const passages2 = Number(isPassage(edge.a)) + Number(isPassage(edge.b));
     // Loops: rooms open into each other often, so a floor is more than a tree of dead ends; room to room
     // more than room to corridor, so a way round skips the corridor.
-    const chance = edge.a === court || edge.b === court ? 0.6 : passages2 === 2 ? 0.6 : passages2 === 1 ? 0.12 : 0.4;
+    const chance = edge.a === court || edge.b === court ? 0.6 : passages2 === 2 ? 0.6 : passages2 === 1 ? 0.12 : 0.55;
     if (random() < chance)
       openEdge(
         edge,
@@ -2922,7 +2937,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const more = mine.filter((edge) => !opened.has(edge) && !lockedNode(edge.a === n ? edge.b : edge.a));
     const rooms2 = more.filter((edge) => !isPassage(edge.a === n ? edge.b : edge.a));
     const pool2 = rooms2.length ? rooms2 : more;
-    if (pool2.length && random() < 0.6) openEdge(pool2[Math.floor(random() * pool2.length)]!, false);
+    if (pool2.length && random() < 0.85) openEdge(pool2[Math.floor(random() * pool2.length)]!, false);
   }
   // Without a hidden room, now and then a hidden door makes a short way between rooms far apart.
   if (hiddenId < 0 && !rock && !level.inset && random() < 0.5) {
@@ -3296,9 +3311,24 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     // Stacked together: heaps of one thing in a corner of the room, not dotted about the floor (panel
     // 2026-11-17).
     // Each kind of thing its own heap, in a corner of its own, so a big room or a ward is not all in one.
+    // A castle's ward has its heaps out in the yard, a cart and its crates in each quarter, as cover to
+    // fight round, clear of the cobbled ways across it (panel 2026-11-17: props pushed into the corners
+    // left a bare field).
+    const ward = plan.template === "keep" && room.use === "open";
+    const [wx, wy] = [x0 + Math.floor((x1 - x0 + 1) / 2), y0 + Math.floor((y1 - y0 + 1) / 2)];
+    const quarters: Array<[number, number]> = [
+      [Math.round((x0 + wx) / 2), Math.round((y0 + wy) / 2)],
+      [Math.round((wx + x1) / 2), Math.round((y0 + wy) / 2)],
+      [Math.round((x0 + wx) / 2), Math.round((wy + y1) / 2)],
+      [Math.round((wx + x1) / 2), Math.round((wy + y1) / 2)],
+    ];
     const clustered = () => {
-      const anchor = corners.length ? corners[Math.floor(random() * corners.length)]! : ([x0, y0] as [number, number]);
-      return everywhere().sort(
+      const anchor = ward
+        ? quarters[Math.floor(random() * quarters.length)]!
+        : corners.length
+          ? corners[Math.floor(random() * corners.length)]!
+          : ([x0, y0] as [number, number]);
+      return (ward ? everywhere().filter(([x, y]) => x !== wx && y !== wy) : everywhere()).sort(
         (p, q) =>
           Math.abs(p[0] - anchor[0]) +
           Math.abs(p[1] - anchor[1]) -
