@@ -10917,7 +10917,7 @@
   "ui.chat.customemojiselectionsettings.selectAConnection": "Select a model…",
   "ui.chat.customemojiselectionsettings.useDescriptions": "Use descriptions",
   "ui.chat.customemojiselectionsettings.useDescriptionsHelp": "Rank emojis and stickers by their descriptions too, and show the descriptions next to the offered ones. Adds a few words per described one.",
-  "ui.chat.customemojiselectionsettings.visionHelp": "Models that read images get one picture sheet of the custom emojis and stickers in the chat, so they know what each one looks like. It costs a few hundred input tokens a reply, and does nothing when the chat's model can't read images or Image captioning is on.",
+  "ui.chat.customemojiselectionsettings.visionHelp": "Models that read images get one picture sheet of the custom emojis and stickers in the chat, so they know what each one looks like. It costs a few hundred input tokens a reply, and does nothing when the chat's model can't read images or Image captioning is on. A sheet holds up to 30 emojis and 12 stickers, the ones in the chat first.",
   "ui.chat.customemojiselectionsettings.visionLast": "Last message",
   "ui.chat.customemojiselectionsettings.visionOff": "Off",
   "ui.chat.customemojiselectionsettings.visionOfferedCount": "Offered ones on the sheet",
