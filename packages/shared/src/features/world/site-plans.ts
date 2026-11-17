@@ -1152,6 +1152,17 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   "Beacon platform": [[FIRE, "center", 1]],
   Lookout: [[CRATE, "corner"]],
   "Wall walk": [[RACK, "wall", 2]],
+  "Mural tower": [
+    [RACK, "wall"],
+    [CHEST, "corner"],
+    [FIRE, "back"],
+  ],
+  // The windlass the portcullis hangs from, its chains, the murder holes' stones.
+  "Gate chamber": [
+    [CHAINS, "center", 1],
+    [CRATE, "corner"],
+    [RACK, "wall"],
+  ],
   Garderobe: [[BATH, "corner"]],
   Narthex: [
     [FONT, "center", 1],
@@ -1489,6 +1500,8 @@ function siteFrameOf(plan: SitePlan) {
   const fixed: SiteFixed[] = [];
   const onGround = (level: SitePlanLevel) => level.depth === 0 && !level.inset;
   let groundOnly: number[] = [];
+  /** Where the front door stands across the front: the middle, but for a castle whose gate is off to one side. */
+  let doorX = cx;
   /** The keep's portcullis, raised, across the gate passage. */
   let portcullisAt: { x: number; y: number; w: number } | null = null;
   let lightWell: number[] = [];
@@ -1575,10 +1588,16 @@ function siteFrameOf(plan: SitePlan) {
     const side = W >= 32 ? 5 : 4;
     const front = 4;
     const gw = W >= 34 ? 3 : 2;
-    const gx = cx - Math.floor(gw / 2);
+    // The gate in the middle of the front, or off to one side of it (DM panel round 24: every castle the same
+    // plan); never so far over that its towers meet a corner tower.
+    const lean = Math.floor((W - 2 * side) / 4);
+    const shift = random() < 0.5 || lean < 3 ? 0 : (random() < 0.5 ? -1 : 1) * lean;
+    const gx = Math.max(L + side + 1, Math.min(R - side - gw, cx + shift - Math.floor(gw / 2)));
+    const gcx = gx + Math.floor(gw / 2);
+    doorX = gcx;
     for (let y = T; y <= B; y++)
       for (let x = L; x <= R; x++)
-        zone[at(x, y)] = y < T + nb ? 1 : y > B - front ? (x < cx ? 4 : 5) : x < L + side ? 2 : x > R - side ? 3 : 0;
+        zone[at(x, y)] = y < T + nb ? 1 : y > B - front ? (x < gcx ? 4 : 5) : x < L + side ? 2 : x > R - side ? 3 : 0;
     fixed.push({
       kind: "court",
       cells: cellsOf({ x: L + side, y: yb, w: W - 2 * side, h: B - front - yb + 1 }),
@@ -1715,7 +1734,7 @@ function siteFrameOf(plan: SitePlan) {
       { x: gx + gw + 1, y: B + 1, w: 3, h: td },
     ];
     groundOnly = gateTowers.flatMap((r) => cellsOf(r));
-    for (const c of groundOnly) zone[c] = c % mapW < cx ? 4 : 5;
+    for (const c of groundOnly) zone[c] = c % mapW < gcx ? 4 : 5;
     for (const r of gateTowers)
       fixed.push({
         kind: "tower",
@@ -1784,6 +1803,37 @@ function siteFrameOf(plan: SitePlan) {
       const east = donjonRect ? donjonRect.x + donjonRect.w / 2 < L + W / 2 : coin;
       const y = yb + 1 + Math.floor(random() * Math.max(1, B - front - yb - 2));
       wallAt = { x: east ? R - 1 : L + 1, y, lower: { x: east ? R - side : L + side - 1 + 1, y } };
+    }
+    // Along the walk: a mural tower part way down each side span, and the gate chamber over the gate where
+    // the portcullis is worked, each a room the walk passes (panel round 24: a bare ring that leads nowhere).
+    {
+      const span0 = T + nb + 1;
+      const span1 = B - 3;
+      for (const west of [true, false]) {
+        let my = Math.floor((span0 + span1) / 2) - 1;
+        if (wallAt && wallAt.x < cx === west && Math.abs(wallAt.y - my) < 4) my = wallAt.y + (my < wallAt.y ? -5 : 4);
+        if (my < span0 || my + 3 > span1 || side < 4) continue;
+        const r = { x: west ? L + 2 : R - 5, y: my, w: 4, h: 4 };
+        const cells = cellsOf(r).filter((c) => !donjonRect || !within(donjonRect, c % mapW, Math.floor(c / mapW)));
+        if (cells.length < 16) continue;
+        put(upper, cells);
+        fixed.push({
+          kind: "room",
+          cells,
+          on: (level) => level.depth === 1 && !level.inset,
+          room: { name: "Mural tower", use: "post", size: 1, zone: "public", furniture: [RACK, CHEST] },
+        });
+      }
+      const gate = cellsOf({ x: gx - 1, y: B - 4, w: gw + 2, h: 3 });
+      if (B - 4 > T + nb + 2) {
+        put(upper, gate);
+        fixed.push({
+          kind: "room",
+          cells: gate,
+          on: (level) => level.depth === 1 && !level.inset,
+          room: { name: "Gate chamber", use: "post", size: 1, zone: "public", furniture: [CHEST] },
+        });
+      }
     }
     inset = { x: L + 3, y: T - 1, w: W - 6, h: nb + 2 };
     mainAt = { x: L + 3 + Math.floor(random() * 4), y: T + nb - 3 };
@@ -2135,7 +2185,7 @@ function siteFrameOf(plan: SitePlan) {
   for (const [k, link] of plan.links.entries()) if (link.kind === "wall") linkAt[k] = wallAt ?? { x: cx, y: T + 1 };
   // The front door: in the middle of the front, through the whole outer wall.
   let iy = B;
-  for (iy = mapH - 3; iy > 0 && !groundMask[at(cx, iy)]; iy--);
+  for (iy = mapH - 3; iy > 0 && !groundMask[at(doorX, iy)]; iy--);
   return {
     mapW,
     mapH,
@@ -2150,7 +2200,7 @@ function siteFrameOf(plan: SitePlan) {
     fixed,
     maskOf,
     linkAt,
-    door: { x: cx, y: iy + thick, ix: cx, iy },
+    door: { x: doorX, y: iy + thick, ix: doorX, iy },
     portcullisAt,
   };
 }
@@ -4150,6 +4200,31 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       for (let k = 0; k < Math.ceil((area.w * area.h) / 6); k++)
         put(SITE_RUBBLE_PROP, area.x + Math.floor(random() * area.w), area.y + Math.floor(random() * area.h));
   }
+  // The way to a crypt's heart is lit: torches either side of the passage for the last cells to its door,
+  // so the founder's tomb is a place arrived at (panel round 24: no climax).
+  if (plan.template === "crypt")
+    for (const [k, door] of doors.entries()) {
+      if (!door || !info[k]?.heart) continue;
+      const room = rooms[k]!;
+      const ins = (x: number, y: number) => [room, ...(room.parts ?? [])].some((b) => inside(b, x, y));
+      for (const [dx, dy] of [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+      ] as const) {
+        if (ins(door.x + dx, door.y + dy) || ground[cell(door.x + dx, door.y + dy)] !== "floor") continue;
+        for (let step = 1; step <= 4; step += 2)
+          for (const side of [-1, 1]) {
+            const [x, y] = [door.x + dx * step + dy * side, door.y + dy * step + dx * side];
+            const i = cell(x, y);
+            if (ground[i] !== "floor" || props[i] !== -1 || linked.has(i) || ins(x, y)) continue;
+            props[i] = 2;
+            if (!reachable()) props[i] = -1;
+          }
+        break;
+      }
+    }
   // Each alcove holds one thing: a statue, or in a crypt a sarcophagus.
   for (const recess of alcoves.values()) {
     const mid = recess[1]!;

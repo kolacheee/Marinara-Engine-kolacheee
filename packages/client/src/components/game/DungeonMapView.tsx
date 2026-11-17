@@ -293,6 +293,51 @@ export function DungeonMapView({
           if (floorKinds[n] && dungeonRoomHas(room, x, y)) return floorKinds[n]!;
         return null;
       };
+      // A castle's battlements: the walls along its wall walk and its towers' tops, crenellated on the field
+      // side, a low parapet looking down into the ward on the other (panel round 24: a bare ring).
+      const ramparts = cells.rooms
+        .map((room, n) => ({ room, name: kept?.roomInfo?.[n]?.name ?? "" }))
+        .filter(({ name }) => /^(Wall walk|Corner tower|Mural tower|Gate chamber)/u.test(name))
+        .map(({ room }) => room);
+      const onRampart = (x: number, y: number) =>
+        building === "keep" &&
+        (siteDepth ?? 0) > 0 &&
+        at(x, y) === "floor" &&
+        ramparts.some((room) => dungeonRoomHas(room, x, y));
+      const [midX, midY] = [cells.width / 2, cells.height / 2];
+      const battlement = (x: number, y: number) => {
+        for (const [dx, dy] of [
+          [0, -1],
+          [0, 1],
+          [-1, 0],
+          [1, 0],
+        ] as const) {
+          // The walk beside it, or beyond one more course of a wall two thick.
+          const walk =
+            onRampart(x + dx, y + dy) || (at(x + dx, y + dy) === "wall" && onRampart(x + 2 * dx, y + 2 * dy));
+          if (!walk || at(x - dx, y - dy) !== "rock") continue;
+          // The field side when the land lies away from the middle of the map.
+          const outward = -dx * (x - midX) + -dy * (y - midY) > 0;
+          const [ox, oy] = [x * T, y * T];
+          const along = (k: number, len: number, depth: number, colour: string) => {
+            // A strip `len` long and `depth` deep on the land side of the cell, `k` along it.
+            if (dy !== 0) ((ctx.fillStyle = colour), ctx.fillRect(ox + k, dy > 0 ? oy : oy + T - depth, len, depth));
+            else ((ctx.fillStyle = colour), ctx.fillRect(dx > 0 ? ox : ox + T - depth, oy + k, depth, len));
+          };
+          if (outward) {
+            along(0, T, 7, "#3a3633");
+            for (let k = 0; k < T; k += 8) {
+              along(k + 1, 5, 6, "#8f8a82");
+              along(k + 1, 5, 1, "#b0aba2");
+            }
+          } else {
+            along(0, T, 4, "#3a3633");
+            along(0, T, 3, "#8f8a82");
+            along(0, T, 1, "#b0aba2");
+          }
+          return;
+        }
+      };
       for (let y = 0; y < cells.height; y++)
         for (let x = 0; x < cells.width; x++) {
           const ground = at(x, y);
@@ -308,8 +353,10 @@ export function DungeonMapView({
           if (ground === "wall") {
             const below = at(x, y + 1);
             const face = below === "floor" || below === "liquid";
-            if (building) paintBuildingWall(ctx, building, x * T, y * T, face, noise);
-            else paintDungeonWall(ctx, cells.set, x * T, y * T, face, noise);
+            if (building) {
+              paintBuildingWall(ctx, building, x * T, y * T, face, noise);
+              battlement(x, y);
+            } else paintDungeonWall(ctx, cells.set, x * T, y * T, face, noise);
           } else if (ground === "liquid") {
             if (building) paintBuildingWater(ctx, x * T, y * T, noise);
             else paintDungeonPool(ctx, cells.set, x * T, y * T, noise);
