@@ -690,11 +690,412 @@ const SITE_FEAST_ROOMS = new Set(["Great hall", "Dining room", "Refectory", "Ser
 /** Rooms where many sleep, so their beds go in rows. */
 const SITE_DORMS = new Set(["Barracks", "Servants' garret", "Servants' hall", "Monks' cells", "Officers' quarters"]);
 
+type SiteRole = "center" | "wall" | "back" | "corner" | "scatter" | "pillar" | "pews";
+// The furnishings past the first five (dungeon-map BUILDING_DRESSING), by slot.
+const BARREL = 8,
+  CRATE = 9,
+  WARDROBE = 10,
+  DESK = 11,
+  BATH = 12,
+  SEAT = 13,
+  ANVIL = 14,
+  STATUE = 15,
+  RACK = 17,
+  PALLET = 18,
+  RANGE = 19,
+  WELL = 20,
+  FONT = 21,
+  MANGER = 22,
+  LECTERN = 23,
+  ALTAR = 24,
+  PEW = 25,
+  TOMB = 26;
+type SiteRecipe = ReadonlyArray<readonly [slot: number, role: SiteRole, count?: number | "reps" | "all"]>;
+const KITCHEN: SiteRecipe = [
+  [RANGE, "back"],
+  [T, "center", 2],
+  [BARREL, "corner", 2],
+  [CRATE, "corner"],
+  [SHELF, "wall", 2],
+];
+const BEDROOM: SiteRecipe = [
+  [BED, "back"],
+  [WARDROBE, "wall"],
+  [CHEST, "corner"],
+  [DESK, "wall"],
+];
+const STORE: SiteRecipe = [
+  [CRATE, "scatter", "reps"],
+  [BARREL, "corner", 2],
+  [SHELF, "wall"],
+];
+const CHAPEL: SiteRecipe = [
+  [ALTAR, "back"],
+  [PEW, "pews", "all"],
+  [FIRE, "corner", 2],
+];
+const PARLOUR: SiteRecipe = [
+  [T, "center", 1],
+  [FIRE, "back"],
+  [WARDROBE, "wall"],
+  [SHELF, "wall"],
+  [STATUE, "corner"],
+];
+const DORM: SiteRecipe = [
+  [BED, "wall", "all"],
+  [CHEST, "corner", 2],
+];
+/** How a room is dressed by what it is (gamer panel 2026-11-17), for every building but the crypt (its
+ *  pack has its own furnishings). Rooms without a recipe use their plan's furniture. */
+const SITE_RECIPES: Record<string, SiteRecipe> = {
+  "Entrance hall": [
+    [STATUE, "corner", 2],
+    [T, "center", 1],
+    [CHEST, "wall"],
+  ],
+  "Great hall": [
+    [SEAT, "back"],
+    [FIRE, "wall"],
+    [T, "center", "all"],
+    [STATUE, "corner", 2],
+  ],
+  "Dining room": [
+    [T, "center", "all"],
+    [FIRE, "back"],
+    [WARDROBE, "wall"],
+  ],
+  Ballroom: [
+    [STATUE, "corner", 4],
+    [FIRE, "back"],
+  ],
+  Kitchen: KITCHEN,
+  Bakehouse: KITCHEN,
+  Pantry: [
+    [SHELF, "wall", "reps"],
+    [BARREL, "corner", 2],
+    [CRATE, "corner"],
+  ],
+  Larder: [
+    [SHELF, "wall", "reps"],
+    [BARREL, "corner"],
+    [CRATE, "corner"],
+  ],
+  "Butler's pantry": [
+    [SHELF, "wall", "reps"],
+    [WARDROBE, "wall"],
+    [CHEST, "corner"],
+  ],
+  "Servants' hall": [
+    [T, "center", "all"],
+    [FIRE, "back"],
+    [CHEST, "corner"],
+  ],
+  Library: [
+    [SHELF, "wall", "all"],
+    [DESK, "center", 1],
+    [LECTERN, "center", 1],
+  ],
+  Study: [
+    [DESK, "back"],
+    [SHELF, "wall", 3],
+    [CHEST, "corner"],
+  ],
+  "Steward's office": [
+    [DESK, "back"],
+    [SHELF, "wall", 2],
+    [CHEST, "corner", 2],
+  ],
+  "Muniment room": [
+    [SHELF, "wall", "reps"],
+    [DESK, "center", 1],
+    [CHEST, "corner", 2],
+  ],
+  Chapel: CHAPEL,
+  "Side chapel": CHAPEL,
+  "Chantry chapel": CHAPEL,
+  "Lady chapel": CHAPEL,
+  "Crypt chapel": CHAPEL,
+  "Master bedroom": [
+    [BED, "back"],
+    [FIRE, "wall"],
+    [WARDROBE, "wall", 2],
+    [DESK, "wall"],
+    [CHEST, "corner"],
+  ],
+  "Lord's chamber": [
+    [BED, "back"],
+    [FIRE, "wall"],
+    [WARDROBE, "wall"],
+    [DESK, "wall"],
+    [CHEST, "corner", 2],
+  ],
+  Bedroom: BEDROOM,
+  "Guest bedroom": BEDROOM,
+  "Guest chamber": BEDROOM,
+  "Governess's room": BEDROOM,
+  "Chaplain's room": [
+    [BED, "back"],
+    [DESK, "wall"],
+    [ALTAR, "wall"],
+  ],
+  Nursery: [
+    [BED, "wall", 2],
+    [CHEST, "corner"],
+    [CRATE, "corner"],
+  ],
+  "Dressing room": [
+    [WARDROBE, "wall", "reps"],
+    [CHEST, "corner"],
+  ],
+  Wardrobe: [
+    [WARDROBE, "wall", "reps"],
+    [CHEST, "corner"],
+  ],
+  Bathroom: [
+    [BATH, "center", 1],
+    [WARDROBE, "wall"],
+  ],
+  Laundry: [
+    [BATH, "center", 2],
+    [FIRE, "back"],
+    [CRATE, "corner", 2],
+  ],
+  Scullery: [
+    [BATH, "back"],
+    [BARREL, "corner", 2],
+    [T, "center", 1],
+  ],
+  Gallery: [[STATUE, "wall", "reps"]],
+  "Long gallery": [
+    [STATUE, "wall", "reps"],
+    [SHELF, "wall", 2],
+  ],
+  "Wine cellar": [
+    [BARREL, "wall", "all"],
+    [SHELF, "corner", 2],
+  ],
+  Brewhouse: [
+    [BARREL, "wall", "reps"],
+    [RANGE, "back"],
+  ],
+  "Store room": STORE,
+  "Cut cellar": STORE,
+  "Lumber cellar": STORE,
+  "Lumber room": STORE,
+  "Coal store": STORE,
+  "Attic store": STORE,
+  "Trunk room": [
+    [CHEST, "wall", "reps"],
+    [CRATE, "corner", 2],
+  ],
+  "Drying loft": [
+    [CRATE, "corner", 3],
+    [BARREL, "corner"],
+  ],
+  Storehouse: STORE,
+  Storeroom: STORE,
+  Granary: [
+    [CRATE, "scatter", "reps"],
+    [BARREL, "corner", 2],
+  ],
+  "Store vault": STORE,
+  "Cold room": [
+    [SHELF, "wall", "reps"],
+    [BARREL, "corner", 2],
+  ],
+  Vault: [[CHEST, "wall", "reps"]],
+  Treasury: [
+    [CHEST, "wall", "reps"],
+    [STATUE, "corner"],
+  ],
+  "Servants' garret": DORM,
+  "Maids' room": DORM,
+  Barracks: [
+    [BED, "wall", "all"],
+    [RACK, "back", 2],
+    [CHEST, "corner", 2],
+  ],
+  "Officers' quarters": [
+    [BED, "wall", 2],
+    [T, "center", 1],
+    [RACK, "wall"],
+    [CHEST, "corner"],
+  ],
+  "Monks' cells": [
+    [PALLET, "wall", 2],
+    [DESK, "wall"],
+  ],
+  Parlour: PARLOUR,
+  "Sitting room": PARLOUR,
+  "Morning room": PARLOUR,
+  Boudoir: PARLOUR,
+  "Music room": [
+    [LECTERN, "center", 2],
+    [FIRE, "back"],
+    [STATUE, "corner", 2],
+  ],
+  "Sewing room": [
+    [T, "center", 1],
+    [WARDROBE, "wall", 2],
+    [CRATE, "corner"],
+  ],
+  "Linen room": [
+    [WARDROBE, "wall", "reps"],
+    [CHEST, "corner"],
+  ],
+  "Gun room": [
+    [RACK, "wall", "reps"],
+    [CHEST, "corner"],
+  ],
+  Gatehouse: [
+    [RACK, "wall", 2],
+    [T, "center", 1],
+    [FIRE, "back"],
+    [BARREL, "corner"],
+  ],
+  "Guard room": [
+    [T, "center", 1],
+    [RACK, "wall", 2],
+    [FIRE, "back"],
+    [BARREL, "corner"],
+  ],
+  Guardroom: [
+    [T, "center", 1],
+    [RACK, "wall", 2],
+    [FIRE, "back"],
+  ],
+  "Guard post": [
+    [RACK, "wall"],
+    [FIRE, "back"],
+  ],
+  "Watch room": [
+    [T, "center", 1],
+    [RACK, "wall"],
+    [FIRE, "back"],
+  ],
+  Armoury: [
+    [RACK, "wall", "all"],
+    [CHEST, "corner", 2],
+  ],
+  Smithy: [
+    [ANVIL, "center", 1],
+    [FIRE, "back"],
+    [BARREL, "corner"],
+    [RACK, "wall", 2],
+    [CRATE, "corner"],
+  ],
+  Stables: [
+    [MANGER, "wall", "all"],
+    [CRATE, "corner", 2],
+  ],
+  Kennels: [
+    [PALLET, "wall", "reps"],
+    [BARREL, "corner"],
+  ],
+  "Well house": [
+    [WELL, "center", 1],
+    [BARREL, "corner", 2],
+  ],
+  "Well chamber": [
+    [WELL, "center", 1],
+    [BARREL, "corner"],
+  ],
+  Cistern: [[WELL, "center", 1]],
+  "Powder store": [[BARREL, "scatter", "reps"]],
+  "Corner tower": [
+    [RACK, "wall"],
+    [CRATE, "corner"],
+  ],
+  Solar: [
+    [T, "center", 1],
+    [FIRE, "back"],
+    [DESK, "wall"],
+    [SHELF, "wall"],
+  ],
+  "Gaoler's room": [
+    [T, "center", 1],
+    [CHEST, "corner"],
+    [RACK, "wall"],
+    [FIRE, "back"],
+  ],
+  Cell: [[PALLET, "corner"]],
+  "Interrogation room": [
+    [T, "center", 1],
+    [FIRE, "back"],
+    [RACK, "wall"],
+  ],
+  "Signal room": [[FIRE, "center", 1]],
+  "Beacon platform": [[FIRE, "center", 1]],
+  Lookout: [[CRATE, "corner"]],
+  "Wall walk": [[RACK, "wall", 2]],
+  Garderobe: [[BATH, "corner"]],
+  Narthex: [
+    [FONT, "center", 1],
+    [STATUE, "corner", 2],
+  ],
+  Nave: [
+    [PEW, "pews", "all"],
+    [STATUE, "corner", 2],
+  ],
+  Sanctuary: [
+    [ALTAR, "back"],
+    [FIRE, "corner", 2],
+    [STATUE, "corner", 2],
+  ],
+  Apse: [[ALTAR, "center", 1]],
+  Vestry: [
+    [WARDROBE, "wall", 2],
+    [CHEST, "corner"],
+    [SHELF, "wall"],
+  ],
+  Sacristy: [
+    [WARDROBE, "wall", 2],
+    [CHEST, "corner"],
+  ],
+  Refectory: [
+    [T, "center", "all"],
+    [LECTERN, "back"],
+  ],
+  Scriptorium: [
+    [DESK, "center", "reps"],
+    [SHELF, "wall", "reps"],
+  ],
+  "Chapter house": [
+    [PEW, "wall", "all"],
+    [LECTERN, "center", 1],
+  ],
+  Almonry: [
+    [T, "center", 1],
+    [CRATE, "corner", 2],
+    [CHEST, "corner"],
+  ],
+  "Bell chamber": [[CRATE, "corner"]],
+  "Ringers' loft": [[CHEST, "corner"]],
+  "Belfry stair": [[CRATE, "corner"]],
+  "Bell loft": [[CRATE, "corner", 2]],
+  "Clock room": [[SHELF, "wall", 2]],
+  Undercroft: [
+    [CRATE, "scatter", "reps"],
+    [BARREL, "corner", 2],
+  ],
+  Reliquary: [
+    [CHEST, "wall", 2],
+    [STATUE, "corner", 2],
+    [ALTAR, "back"],
+  ],
+  "Relic store": [[CHEST, "wall", "reps"]],
+  "Burial vault": [[TOMB, "center", "reps"]],
+  Charnel: [[SHELF, "wall", "reps"]],
+  Ossuary: [[SHELF, "wall", "reps"]],
+  "Family crypt": [
+    [TOMB, "center", "reps"],
+    [FIRE, "corner", 2],
+  ],
+  Tomb: [[TOMB, "center", 1]],
+};
+
 /** Where a piece of furniture stands in its room, by its prop slot. */
-function siteFurnitureRole(
-  template: SiteTemplateId,
-  slot: number,
-): "center" | "wall" | "back" | "corner" | "scatter" | "pillar" {
+function siteFurnitureRole(template: SiteTemplateId, slot: number): SiteRole {
   if (template === "crypt")
     return slot === 0 ? "center" : slot === 1 ? "scatter" : slot === 2 ? "wall" : slot === 7 ? "pillar" : "corner";
   return slot === 0 ? "center" : slot === 3 ? "back" : slot === 4 ? "corner" : "wall";
@@ -744,7 +1145,7 @@ const SITE_STYLES: Record<
   SiteTemplateId,
   { passage: number; wide: number; extra: readonly [number, number]; court: number; corner: number }
 > = {
-  manor: { passage: 0.5, wide: 0.5, extra: [1, 3], court: 0.25, corner: 0.5 },
+  manor: { passage: 0.5, wide: 0.5, extra: [1, 3], court: 0.25, corner: 0.8 },
   keep: { passage: 0.4, wide: 0.3, extra: [1, 3], court: 0.45, corner: 0.35 },
   temple: { passage: 0.35, wide: 0.3, extra: [0, 2], court: 0.4, corner: 0.4 },
   crypt: { passage: 0.7, wide: 0.1, extra: [2, 5], court: 0, corner: 0.5 },
@@ -972,7 +1373,13 @@ function siteFrame(plan: SitePlan) {
       for (let y = r.y; y < r.y + r.h; y++)
         for (let x = r.x; x < r.x + r.w; x++)
           // In a room, a stair stands against its wall, not in the middle of the floor.
-          if (passage || x === r.x || y === r.y || x === r.x + r.w - 1 || y === r.y + r.h - 1)
+          // In a passage, a stair rises at one end, a stairwell, not out in the middle of the corridor.
+          if (
+            passage
+              ? Math.max(r.w, r.h) < 5 ||
+                (r.w >= r.h ? x <= r.x + 1 || x >= r.x + r.w - 2 : y <= r.y + 1 || y >= r.y + r.h - 2)
+              : x === r.x || y === r.y || x === r.x + r.w - 1 || y === r.y + r.h - 1
+          )
             spots.push({ x, y, passage });
   const taken: Array<{ x: number; y: number }> = [];
   const far = (spot: { x: number; y: number }, gap: number) =>
@@ -988,7 +1395,8 @@ function siteFrame(plan: SitePlan) {
         )[0];
     } else {
       for (const want of [true, false])
-        for (const gap of [6, 4, 2]) {
+        // The ways up and down far apart, so a floor is crossed, not climbed past (panel 2026-11-17).
+        for (const gap of [14, 10, 6, 4, 2]) {
           if (pick) break;
           const choices = spots.filter((spot) => spot.passage === want && Math.abs(spot.x - cx) >= 2 && far(spot, gap));
           pick = choices[Math.floor(random() * choices.length)];
@@ -1264,10 +1672,13 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const great = claim((room) => SITE_HALL_ROOMS.has(room.name));
   if (great) {
     const worth = (n: number) => area(n) - (entry ? 10 * depth[n]! : 0);
-    const best = free().reduce<{ r: SiteRect; n: number } | undefined>(
-      (most, each) => (!most || worth(each.n) > worth(most.n) ? each : most),
-      undefined,
-    );
+    // Never the bailey: that is the yard, named below, and the hall would vanish under it.
+    const best = free()
+      .filter(({ n }) => n !== heroAt("court"))
+      .reduce<{ r: SiteRect; n: number } | undefined>(
+        (most, each) => (!most || worth(each.n) > worth(most.n) ? each : most),
+        undefined,
+      );
     if (best) owner.set(best.n, great);
   }
   // An open court: a space inside the ground floor, walled on every side.
@@ -1661,17 +2072,44 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const reps = Math.max(1, Math.min(5, Math.round((area.w * area.h) / 14)));
     let budget = Math.max(1, Math.floor((area.w * area.h) / 4));
     const tiny = Math.min(area.w, area.h) < 3;
-    for (const slot of room.furniture) {
-      const kind = siteFurnitureRole(plan.template, slot);
-      // A bed is one to a room but in a dormitory; everything else set out along a wall or down the middle
-      // repeats with the room's size.
-      const one = plan.template !== "crypt" && slot === BED && !SITE_DORMS.has(siteBaseName(room.name));
-      const count =
-        feast && kind === "center"
-          ? middle.length
-          : !one && (kind === "center" || kind === "wall" || kind === "scatter" || kind === "pillar")
-            ? reps
-            : 1;
+    // What the room is dressed with: its recipe by name where it has one (gamer panel 2026-11-17: a
+    // kitchen has its range and barrels, a nave its pews), else its plan's furniture by slot.
+    const recipe = plan.template === "crypt" ? undefined : SITE_RECIPES[siteBaseName(room.name)];
+    const items: Array<{ slot: number; kind: SiteRole; count: number }> = recipe
+      ? recipe.map(([slot, kind, n]) => ({
+          slot,
+          kind,
+          // A big room holds more of what stands round its walls than a small one (panel 2026-11-17).
+          count:
+            n === "all"
+              ? Infinity
+              : n === "reps"
+                ? reps
+                : (n ?? 1) * (kind === "center" ? 1 : Math.max(1, Math.floor((area.w * area.h) / 40))),
+        }))
+      : room.furniture.map((slot) => {
+          const kind = siteFurnitureRole(plan.template, slot);
+          // A bed is one to a room but in a dormitory; everything else set out along a wall or down the
+          // middle repeats with the room's size.
+          const one = plan.template !== "crypt" && slot === BED && !SITE_DORMS.has(siteBaseName(room.name));
+          const count =
+            feast && kind === "center"
+              ? middle.length
+              : !one && (kind === "center" || kind === "wall" || kind === "scatter" || kind === "pillar")
+                ? reps
+                : 1;
+          return { slot, kind, count };
+        });
+    // Pews: rows across the room, every other line, either side of an aisle down the middle, clear of both
+    // ends and of the side walls (panel 2026-11-17).
+    const pews: Array<[number, number]> = [];
+    if (short >= 5)
+      for (let k = 2; k < long - 2; k += 2)
+        for (let line = 1; line < short - 1; line++) {
+          if (Math.abs(line - (short - 1) / 2) < 1) continue;
+          pews.push(along ? [x0 + k, y0 + line] : [x0 + line, y0 + k]);
+        }
+    for (const { slot, kind, count } of items) {
       const spots = tiny
         ? everywhere()
         : kind === "back"
@@ -1681,10 +2119,21 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             : kind === "wall"
               ? spread(backRow, ...sideRows, frontRow)
               : kind === "center"
-                ? middle
+                ? // A centrepiece or two in the very middle; a long board along it.
+                  count <= 2
+                  ? [...middle].sort(
+                      (p, q) =>
+                        Math.abs(p[0] - (x0 + x1) / 2) +
+                        Math.abs(p[1] - (y0 + y1) / 2) -
+                        Math.abs(q[0] - (x0 + x1) / 2) -
+                        Math.abs(q[1] - (y0 + y1) / 2),
+                    )
+                  : middle
                 : kind === "pillar"
                   ? pillars
-                  : everywhere();
+                  : kind === "pews"
+                    ? pews
+                    : everywhere();
       let placed = 0;
       for (const [x, y] of spots) {
         if (placed >= count || budget <= 0) break;

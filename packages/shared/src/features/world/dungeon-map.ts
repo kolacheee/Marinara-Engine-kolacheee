@@ -23,7 +23,42 @@ export interface DungeonSet {
   floor: string;
   wall: string;
   liquid: string;
-  props: readonly [string, string, string, string, string, string, string, string];
+  props: readonly [string, string, string, string, string, string, string, string, ...string[]];
+}
+
+/** A building's furnishings past its first five (gamer panel 2026-11-17: rooms dressed for what they are),
+ *  slots 8 on, the same in every building set. */
+export const BUILDING_DRESSING = [
+  "barrels",
+  "crates and sacks",
+  "a wardrobe",
+  "a writing desk",
+  "a bathtub",
+  "a high seat",
+  "an anvil",
+  "a statue",
+  "a stone column",
+  "a weapon rack",
+  "a straw pallet",
+  "a cooking range",
+  "a well",
+  "a font",
+  "a manger",
+  "a lectern",
+  "an altar",
+  "a pew",
+  "a tomb",
+] as const;
+
+/** A prop as one character of a kept map: "-" none, 0-9, then a-z for 10 on. */
+export function dungeonPropChar(prop: number): string {
+  return prop < 0 ? "-" : prop < 10 ? String(prop) : String.fromCharCode(87 + prop);
+}
+
+export function dungeonPropOfChar(char: string): number {
+  if (char === "-") return -1;
+  const code = char.charCodeAt(0);
+  return code >= 97 ? code - 87 : Number(char);
 }
 
 export const DUNGEON_SETS: readonly DungeonSet[] = Object.freeze([
@@ -153,7 +188,17 @@ export const DUNGEON_SETS: readonly DungeonSet[] = Object.freeze([
     floor: "worn floorboards and rugs",
     wall: "panelled plaster walls",
     liquid: "standing water",
-    props: ["a table", "a bed", "bookshelves", "a hearth", "a chest", "a door", "a locked door", "rubble"],
+    props: [
+      "a table",
+      "a bed",
+      "bookshelves",
+      "a hearth",
+      "a chest",
+      "a door",
+      "a locked door",
+      "rubble",
+      ...BUILDING_DRESSING,
+    ],
   },
   {
     id: "building_keep",
@@ -165,12 +210,13 @@ export const DUNGEON_SETS: readonly DungeonSet[] = Object.freeze([
     props: [
       "a trestle table",
       "a cot",
-      "a weapon rack",
+      "shelves of stores",
       "a brazier",
       "a strongbox",
       "a door",
       "a locked door",
       "rubble",
+      ...BUILDING_DRESSING,
     ],
   },
   {
@@ -189,6 +235,7 @@ export const DUNGEON_SETS: readonly DungeonSet[] = Object.freeze([
       "a door",
       "a locked door",
       "rubble",
+      ...BUILDING_DRESSING,
     ],
   },
   {
@@ -820,7 +867,7 @@ export const gameDungeonMapSchema = z
       .max(MAP_MAX_CELLS),
     props: z
       .string()
-      .regex(/^[-0-7]+$/u)
+      .regex(/^[-0-9a-z]+$/u)
       .max(MAP_MAX_CELLS),
     rooms: z
       .array(z.object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() }).strict())
@@ -893,7 +940,7 @@ export function gameDungeonMapFromDungeon(map: DungeonMap, name: string, id: str
     width: map.width,
     height: map.height,
     ground: map.ground.map((cell) => GROUND_CHARS[cell]).join(""),
-    props: map.props.map((prop) => (prop < 0 ? "-" : String(prop))).join(""),
+    props: map.props.map(dungeonPropChar).join(""),
     rooms: map.rooms.slice(0, 40),
     entrance: map.entrance,
     at: map.entrance,
@@ -908,7 +955,7 @@ export function dungeonFromGameDungeonMap(map: GameDungeonMap): DungeonMap {
     width: map.width,
     height: map.height,
     ground: [...map.ground].map((char) => GROUND_OF[char] ?? "rock"),
-    props: [...map.props].map((char) => (char === "-" ? -1 : Number(char))),
+    props: [...map.props].map(dungeonPropOfChar),
     rooms: map.rooms,
     entrance: map.entrance,
     ...(map.hand ? { drawnProps: true as const } : {}),

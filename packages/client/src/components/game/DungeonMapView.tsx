@@ -40,6 +40,7 @@ import {
   paintBuildingFloor,
   paintBuildingProp,
   paintBuildingWall,
+  paintBuildingRug,
   paintBuildingWater,
   paintFoundTrap,
   paintSiteLink,
@@ -57,6 +58,22 @@ import {
 const T = OVERWORLD_TILE;
 type Point = { x: number; y: number };
 const WALK_MS_PER_CELL = 70;
+/** Rooms laid with a rug, and its colour. */
+const RUG_ROOMS: Readonly<Record<string, string>> = {
+  "Lord's chamber": "#7a1e22",
+  "Master bedroom": "#7a1e22",
+  Solar: "#6a2a4a",
+  "Guest bedroom": "#2a5a3a",
+  "Guest chamber": "#2a5a3a",
+  Parlour: "#7a3a1a",
+  "Sitting room": "#2a4a6a",
+  "Morning room": "#6a5a2a",
+  Boudoir: "#6a2a4a",
+  "Music room": "#3a2a5a",
+  Library: "#3a2a5a",
+  Study: "#5a3a1a",
+  Nursery: "#2a5a5a",
+};
 const WALK_LONGEST_MS = 3000;
 /** Without the set's art: the ground in plain colours. */
 const PLAIN = { floor: "#4a443d", wall: "#837767", liquid: "#245a78", prop: "#c9a86a" };
@@ -187,7 +204,7 @@ export function DungeonMapView({
       const courts = cells.rooms.filter((_, n) => kept?.roomInfo?.[n]?.use === "open");
       const inRoom = (x: number, y: number) =>
         cells.rooms.some((room) => x >= room.x && x < room.x + room.w && y >= room.y && y < room.y + room.h);
-      // The hall: floor outside every room, but for a doorway (walls either side), laid as the room's floor.
+      // The hall: floor outside every room, but for a doorway into one, laid as the room's floor.
       const isHall = (x: number, y: number) =>
         at(x, y) === "floor" &&
         !inRoom(x, y) &&
@@ -195,9 +212,22 @@ export function DungeonMapView({
         !inRoom(x - 1, y) &&
         !inRoom(x + 1, y) &&
         !inRoom(x, y - 1) &&
-        !inRoom(x, y + 1) &&
-        !(at(x - 1, y) === "wall" && at(x + 1, y) === "wall") &&
-        !(at(x, y - 1) === "wall" && at(x, y + 1) === "wall");
+        !inRoom(x, y + 1);
+      // A planned building's front door: a path out across the land to it, a porch's two columns either side.
+      const exitAt = outdoors && building ? cells.props.indexOf(DUNGEON_EXIT_PROP) : -1;
+      const door = exitAt >= 0 ? { x: exitAt % cells.width, y: Math.floor(exitAt / cells.width) } : null;
+      const out = door
+        ? ([
+            [0, 1],
+            [0, -1],
+            [-1, 0],
+            [1, 0],
+          ].find(([dx, dy]) => at(door.x + dx!, door.y + dy!) === "rock") ?? null)
+        : null;
+      const onPath = (x: number, y: number) =>
+        !!door &&
+        !!out &&
+        (out[0] === 0 ? x === door.x && (y - door.y) * out[1]! > 0 : y === door.y && (x - door.x) * out[0]! > 0);
       for (let y = 0; y < cells.height; y++)
         for (let x = 0; x < cells.width; x++) {
           const ground = at(x, y);
@@ -205,7 +235,7 @@ export function DungeonMapView({
           if (ground === "rock") {
             // Round a planned building's floors at and above the ground lies the land it stands on, not a
             // black void (panel 2026-11-16).
-            if (outdoors) paintBuildingCourt(ctx, x * T, y * T, false, noise);
+            if (outdoors) paintBuildingCourt(ctx, x * T, y * T, onPath(x, y), noise);
             else if (buried && building) paintBuildingWall(ctx, building, x * T, y * T, false, noise);
             else if (buried) paintDungeonWall(ctx, cells.set, x * T, y * T, false, noise);
             continue;
@@ -238,18 +268,43 @@ export function DungeonMapView({
           // A planned crypt's hall is set apart from its rooms; a carved place's ground is all one.
           else paintDungeonFloor(ctx, cells.set, x * T, y * T, noise, Boolean(cells.roomNames) && isHall(x, y));
         }
+      // A rug in the quiet rooms people live in, under their furniture (panel 2026-11-17).
+      if (building)
+        cells.rooms.forEach((room, n) => {
+          const name = (kept?.roomInfo?.[n]?.name ?? "").replace(/\s+\d+$/u, "");
+          const colour = RUG_ROOMS[name];
+          if (!colour || room.w < 5 || room.h < 5) return;
+          paintBuildingRug(ctx, (room.x + 1) * T, (room.y + 1) * T, (room.w - 2) * T, (room.h - 2) * T, colour);
+        });
       const wayOut = dungeonWayOutId(DUNGEON_SETS.find((each) => each.id === cells.set));
       const way = wayOut === "ladder" ? "ladder" : wayOut === "ladder_hatch" ? "hatch" : "stairs";
       for (let y = 0; y < cells.height; y++)
         for (let x = 0; x < cells.width; x++) {
           const prop = cells.props[y * cells.width + x]!;
           if (prop < 0) continue;
-          if (building) paintBuildingProp(ctx, building, prop, x * T, y * T);
-          else if (prop === DUNGEON_EXIT_PROP) {
+          if (building) {
+            const same = (dx: number, dy: number) =>
+              x + dx >= 0 &&
+              x + dx < cells.width &&
+              y + dy >= 0 &&
+              y + dy < cells.height &&
+              cells.props[(y + dy) * cells.width + x + dx] === prop;
+            const join =
+              (prop === 0 && building !== "temple") || prop === 25
+                ? { w: same(-1, 0), e: same(1, 0), n: same(0, -1), s: same(0, 1) }
+                : undefined;
+            paintBuildingProp(ctx, building, prop, x * T, y * T, join);
+          } else if (prop === DUNGEON_EXIT_PROP) {
             // The way: out on the first floor, up on the floors below it, and down where the floor goes on.
             const isDown = links.down?.x === x && links.down?.y === y;
             paintDungeonWay(ctx, way, isDown ? "down" : links.floor > 1 ? "up" : "out", x * T, y * T);
           } else paintDungeonProp(ctx, cells.set, prop, x * T, y * T);
+        }
+      if (door && out && building && building !== "keep")
+        for (const side of [-1, 1]) {
+          const cx = door.x + out[0]! + (out[0] === 0 ? 2 * side : 0);
+          const cy = door.y + out[1]! + (out[1] === 0 ? 2 * side : 0);
+          if (at(cx, cy) === "rock") paintBuildingProp(ctx, building, 16, cx * T, cy * T);
         }
       for (const link of links.list) paintSiteLink(ctx, link.kind, link.level > links.level, link.x * T, link.y * T);
       return canvas;
