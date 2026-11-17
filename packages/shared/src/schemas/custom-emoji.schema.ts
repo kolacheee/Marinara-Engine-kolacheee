@@ -17,6 +17,7 @@ export const createCustomEmojiSchema = z.object({
   filePath: z.string().min(1),
   width: z.number().int().positive().nullable().default(null),
   height: z.number().int().positive().nullable().default(null),
+  description: z.string().nullable().optional(),
 });
 
 export const updateCustomEmojiSchema = z.object({
@@ -49,6 +50,8 @@ export interface CustomEmojiSelectionPrefs {
   visionRecentCount: number;
   /** How many of this turn's offered emojis and stickers also go on the sheet, in offered order (0 = none). */
   visionOfferedCount: number;
+  /** Use the pictures' descriptions to rank the offered ones and show next to their names. */
+  useDescriptions: boolean;
 }
 
 export const CUSTOM_EMOJI_VISION_MODES = ["off", "last", "recent"] as const;
@@ -66,6 +69,7 @@ export const CUSTOM_EMOJI_SELECTION_DEFAULTS: CustomEmojiSelectionPrefs = {
   visionMode: "off",
   visionRecentCount: 6,
   visionOfferedCount: 6,
+  useDescriptions: true,
 };
 
 function clampWhole(value: unknown, min: number, max: number, fallback: number): number {
@@ -101,5 +105,7 @@ export function normalizeCustomEmojiSelection(raw: unknown): CustomEmojiSelectio
     CUSTOM_EMOJI_VISION_OFFERED_MAX,
     CUSTOM_EMOJI_SELECTION_DEFAULTS.visionOfferedCount,
   );
-  return { mode, maxCount, toolConnectionId, visionMode, visionRecentCount, visionOfferedCount };
+  const useDescriptions =
+    typeof obj.useDescriptions === "boolean" ? obj.useDescriptions : CUSTOM_EMOJI_SELECTION_DEFAULTS.useDescriptions;
+  return { mode, maxCount, toolConnectionId, visionMode, visionRecentCount, visionOfferedCount, useDescriptions };
 }
