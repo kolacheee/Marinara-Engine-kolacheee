@@ -101,6 +101,122 @@ export function paintBuildingWall(
   }
 }
 
+/** A room's own floor where its use calls for one (casual panel 2026-11-17: one floor for every room
+ *  of a building read as generated): tiles where water is used, flags in the stores, parquet in the fine
+ *  rooms, rushes on the barracks' stone, a marble check in the entrance hall. */
+export type BuildingFloorKind = "tiles" | "flags" | "parquet" | "rushes" | "marble";
+
+const FLOOR_OF: Readonly<Record<string, BuildingFloorKind>> = {
+  Kitchen: "tiles",
+  Scullery: "tiles",
+  Laundry: "tiles",
+  Bathroom: "tiles",
+  "Bath house": "tiles",
+  Dairy: "tiles",
+  Bakehouse: "tiles",
+  Brewhouse: "tiles",
+  Washhouse: "tiles",
+  "Still room": "tiles",
+  Pantry: "flags",
+  Larder: "flags",
+  Buttery: "flags",
+  "Store room": "flags",
+  Storeroom: "flags",
+  "Lumber room": "flags",
+  "Gun room": "flags",
+  Library: "parquet",
+  Study: "parquet",
+  Ballroom: "parquet",
+  Saloon: "parquet",
+  "Long gallery": "parquet",
+  "Drawing room": "parquet",
+  "Withdrawing room": "parquet",
+  "Music room": "parquet",
+  Barracks: "rushes",
+  Stables: "rushes",
+  Kennels: "rushes",
+  Guardroom: "rushes",
+  "Guard room": "rushes",
+  Mews: "rushes",
+  Granary: "rushes",
+  "Entrance hall": "marble",
+  Chapel: "marble",
+  Narthex: "marble",
+};
+
+export function buildingFloorKindOf(name: string | undefined): BuildingFloorKind | null {
+  return name ? (FLOOR_OF[name.replace(/\s+\d+$/u, "")] ?? null) : null;
+}
+
+function paintRoomFloor(ctx: Ctx, kind: BuildingFloorKind, x: number, y: number, noise: Noise) {
+  switch (kind) {
+    case "tiles": {
+      // Red quarry tiles, four to a cell, a little worn.
+      px(ctx, "#5a3428", x, y, T, T);
+      for (let cy = 0; cy < 2; cy++)
+        for (let cx = 0; cx < 2; cx++) {
+          const shade = noise(cx + cy * 2 + 30);
+          px(ctx, shade < 0.4 ? "#8a4a36" : shade < 0.8 ? "#94523c" : "#7c4232", x + cx * 8, y + cy * 8, 7, 7);
+        }
+      if (noise(40) < 0.2)
+        px(ctx, "#6a3a2c", x + 2 + Math.floor(noise(41) * 10), y + 2 + Math.floor(noise(42) * 10), 2, 1);
+      return;
+    }
+    case "flags": {
+      px(ctx, "#5c5750", x, y, T, T);
+      const split = 5 + Math.floor(noise(1) * 6);
+      px(ctx, "#47433d", x, y + split, T, 1);
+      px(ctx, "#47433d", x + 4 + Math.floor(noise(2) * 8), y, 1, split);
+      px(ctx, "#47433d", x + 2 + Math.floor(noise(3) * 10), y + split, 1, T - split);
+      px(ctx, "#47433d", x, y + 15, T, 1);
+      px(ctx, "#47433d", x + 15, y, 1, T);
+      return;
+    }
+    case "parquet": {
+      // Herringbone in a honey wood, set a little lighter than the boards elsewhere.
+      px(ctx, "#8a6438", x, y, T, T);
+      for (let k = 0; k < 4; k++) {
+        const flip = ((x / T + y / T + k) & 1) === 0;
+        px(ctx, flip ? "#9a7244" : "#7e5a32", x + (flip ? 0 : 8), y + k * 4, 8, 3);
+        px(ctx, flip ? "#7e5a32" : "#9a7244", x + (flip ? 8 : 0), y + k * 4, 8, 3);
+        px(ctx, "#6a4a2a", x, y + k * 4 + 3, T, 1);
+      }
+      px(ctx, "#6a4a2a", x + 7, y, 1, T);
+      return;
+    }
+    case "rushes": {
+      paintRoomFloor(ctx, "flags", x, y, noise);
+      for (let i = 0; i < 4; i++)
+        px(
+          ctx,
+          noise(50 + i) < 0.5 ? "#9a8442" : "#8a7438",
+          x + Math.floor(noise(54 + i) * 12),
+          y + Math.floor(noise(58 + i) * 15),
+          4,
+          1,
+        );
+      return;
+    }
+    case "marble": {
+      // A black-and-white check of marble slabs, one to a cell.
+      const light = ((x / T + y / T) & 1) === 0;
+      px(ctx, light ? "#d8d2c4" : "#3e3a3a", x, y, T, T);
+      px(ctx, light ? "#c4bdae" : "#2e2a2a", x, y + 15, T, 1);
+      px(ctx, light ? "#c4bdae" : "#2e2a2a", x + 15, y, 1, T);
+      if (noise(60) < 0.5)
+        px(
+          ctx,
+          light ? "#bdb5a5" : "#4e4848",
+          x + 3 + Math.floor(noise(61) * 8),
+          y + 4 + Math.floor(noise(62) * 8),
+          4,
+          1,
+        );
+      return;
+    }
+  }
+}
+
 /** A floor cell: a room's, or the hall's (set apart from the rooms). */
 export function paintBuildingFloor(
   ctx: Ctx,
@@ -111,7 +227,13 @@ export function paintBuildingFloor(
   noise: Noise,
   /** Whether the hall goes on above and below this cell, so a runner's borders mark only its edges. */
   hallGoesOn: { up: boolean; down: boolean } = { up: false, down: false },
+  /** The room's own floor, when its use calls for one. */
+  room: BuildingFloorKind | null = null,
 ) {
+  if (room && !hall) {
+    paintRoomFloor(ctx, room, x, y, noise);
+    return;
+  }
   if (style === "manor") {
     if (hall) {
       // A worn runner the length of the hall, bordered only where the hall ends.

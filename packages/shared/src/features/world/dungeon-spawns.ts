@@ -672,6 +672,8 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
         foes: fitted(setting, level_, group(site.holder, "standard", level_, 3 + Math.floor(random() * 2)), "normal"),
       };
     if (SITE_STAIR_ROOMS.has(base)) return { area, key, role: "empty", level: level_, foes: [] };
+    // The room the party walks into is never a fight on arrival (DM panel 2026-11-17).
+    if (distance[index]! >= 0 && distance[index]! <= 2) return { area, key, role: "empty", level: level_, foes: [] };
     switch (info.use) {
       case "post":
         return random() < (base === "Corner tower" || base === "Wall walk" ? 0.5 : 1)

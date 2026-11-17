@@ -40,6 +40,7 @@ import {
   buildingStyleOf,
   paintBuildingCourt,
   paintBuildingFloor,
+  buildingFloorKindOf,
   paintBuildingProp,
   paintBuildingWall,
   paintBuildingEarth,
@@ -259,6 +260,14 @@ export function DungeonMapView({
         !!door &&
         !!out &&
         (out[0] === 0 ? x === door.x && (y - door.y) * out[1]! > 0 : y === door.y && (x - door.x) * out[0]! > 0);
+      // Each room's own floor by what it is for; a house's cellars keep their flags.
+      const floorKinds =
+        building && !buried ? cells.rooms.map((_, n) => buildingFloorKindOf(kept?.roomInfo?.[n]?.name)) : [];
+      const floorKindAt = (x: number, y: number) => {
+        for (const [n, room] of cells.rooms.entries())
+          if (floorKinds[n] && dungeonRoomHas(room, x, y)) return floorKinds[n]!;
+        return null;
+      };
       for (let y = 0; y < cells.height; y++)
         for (let x = 0; x < cells.width; x++) {
           const ground = at(x, y);
@@ -312,6 +321,7 @@ export function DungeonMapView({
                   up: isHall(x, y - 1),
                   down: isHall(x, y + 1),
                 },
+                floorKindAt(x, y),
               );
           // A planned crypt's hall is set apart from its rooms; a carved place's ground is all one.
           else paintDungeonFloor(ctx, cells.set, x * T, y * T, noise, Boolean(cells.roomNames) && isHall(x, y));

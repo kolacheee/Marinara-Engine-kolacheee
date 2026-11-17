@@ -3052,9 +3052,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const solid = ground.map((g, i) => {
     if (g !== "wall" || (mask[i] && (!rock || level.depth >= 0))) return false;
     const [x, y] = [i % mapW, Math.floor(i / mapW)];
-    // A stone building's outer wall is two thick.
-    for (let dy = -thick; dy <= thick; dy++)
-      for (let dx = -thick; dx <= thick; dx++) {
+    // A stone building's outer wall is two thick; rock between vaults is rock past one course of masonry.
+    const t = rock ? 1 : thick;
+    for (let dy = -t; dy <= t; dy++)
+      for (let dx = -t; dx <= t; dx++) {
         const [nx, ny] = [x + dx, y + dy];
         if (nx < 0 || ny < 0 || nx >= mapW || ny >= mapH) continue;
         if (ground[cell(nx, ny)] !== "wall" && ground[cell(nx, ny)] !== "rock") return false;
