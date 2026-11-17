@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { normalizeCustomEmojiSelection } from "../../../packages/shared/src/index.js";
+import { normalizeCustomEmojiSelection, normalizeGalleryDescription } from "../../../packages/shared/src/index.js";
 import {
   buildConversationEmojiVisionLegend,
   createConversationAssetVisionCatalog,
@@ -12,13 +12,37 @@ import {
   insertConversationEmojiVisionLegend,
   rewriteStickerNamesWrittenAsEmojis,
 } from "../../../packages/server/src/services/generation/conversation-emoji-vision.js";
-import { listAdvertisedAssetNames } from "../../../packages/server/src/routes/generate/conversation-custom-assets.js";
+import {
+  buildCustomStickerAdvertisement,
+  listAdvertisedAssetNames,
+  semanticAssetText,
+} from "../../../packages/server/src/routes/generate/conversation-custom-assets.js";
 import { getSharp } from "../../../packages/server/src/utils/sharp.js";
 import { type RegressionCase, runNamedCases } from "../fixtures/named-cases.js";
 
 const history = (role: string, content: string) => ({ role, content, contextKind: "history" });
 
 const cases: RegressionCase[] = [
+  {
+    name: "descriptions are cleaned, ranked with the name, and listed next to offered stickers",
+    run: () => {
+      assert.equal(normalizeGalleryDescription("  shy cat\n\n hiding \u0007 "), "shy cat hiding");
+      assert.equal(normalizeGalleryDescription("   "), null);
+      assert.equal(normalizeGalleryDescription("x".repeat(600))!.length, 500);
+      assert.equal(semanticAssetText("cat_hide", "cat behind a pillow; shy"), "cat hide: cat behind a pillow; shy");
+      assert.equal(semanticAssetText("cat_hide", undefined), "cat hide");
+      assert.equal(normalizeCustomEmojiSelection({}).useDescriptions, true);
+
+      const responders = [{ charId: "a", name: "Ann" }];
+      const own = new Map([["a", ["hug", "wave"]]]);
+      const plain = buildCustomStickerAdvertisement(responders, [], own, 5);
+      assert.match(plain!, /Available stickers: sticker:hug: sticker:wave:$/);
+      const described = buildCustomStickerAdvertisement(responders, [], own, 5, (name) =>
+        name === "hug" ? "bear hug; warm" : undefined,
+      );
+      assert.match(described!, /Available stickers:\n- sticker:hug: \(bear hug; warm\)\n- sticker:wave:$/);
+    },
+  },
   {
     name: "a sticker name written as an emoji becomes the sticker, unless an emoji owns the name",
     run: () => {
@@ -94,6 +118,8 @@ const cases: RegressionCase[] = [
           catalog.emojiPaths.set(name, path);
         }
         catalog.offeredEmojis = ["star", "wave"];
+        catalog.emojiDescriptions.set("cat", "cat peeking; shy");
+        catalog.emojiDescriptions.set("wave", "waving hand");
         const messages = [
           { role: "system", content: "rules", contextKind: "system" },
           history("user", "older :cat:"),
@@ -118,7 +144,10 @@ const cases: RegressionCase[] = [
           catalog,
         );
         assert.ok(recent);
-        assert.match(recent.message.content, /1 = :wave: \(in the chat\)\n2 = :cat: \(in the chat\)$/);
+        assert.match(
+          recent.message.content,
+          /1 = :wave: \(in the chat\): waving hand\n2 = :cat: \(in the chat\): cat peeking; shy$/,
+        );
 
         const placed = [...messages];
         insertConversationEmojiVisionLegend(placed, recent.message);
