@@ -63,6 +63,16 @@ const MASS: Record<BuildingStyle, { fill: string; joint: string; light: string }
   temple: { fill: "#5a4c3c", joint: "#41372b", light: "#6a5a47" },
 };
 
+/** The end of a thin wall standing free into a room, or a door's jamb: a squared stone post capping it, so
+ *  the wall reads as ended on purpose (panel round 28: thin walls ending mid-air read as seams). */
+export function paintWallPost(ctx: Ctx, style: BuildingStyle, x: number, y: number, w: number, h: number) {
+  const mass = MASS[style];
+  px(ctx, mass.joint, x, y, w, h);
+  px(ctx, mass.light, x + 1, y + 1, w - 2, h - 2);
+  px(ctx, LOOK[style].trim, x + 1, y + 1, w - 2, 1);
+  px(ctx, mass.fill, x + 1, y + h - 2, w - 2, 1);
+}
+
 /** A wall cell: its top, and its face when a floor lies below it. */
 export function paintBuildingWall(
   ctx: Ctx,

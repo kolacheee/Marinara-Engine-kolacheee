@@ -44,6 +44,7 @@ import {
   buildingFloorKindOf,
   paintBuildingProp,
   paintBuildingWall,
+  paintWallPost,
   paintBuildingEarth,
   paintBuildingDais,
   paintBuildingRug,
@@ -468,6 +469,19 @@ export function DungeonMapView({
           ctx.translate(-dx * T, -dy * T);
           paintBuildingFloorCell(x + dx, y + dy);
           ctx.restore();
+        }
+        // A thin wall's free end: a stone post caps it.
+        const walls = [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+        ].filter(([dx, dy]) => at(x + dx!, y + dy!) === "wall").length;
+        if (walls <= 1 && building) {
+          const l = wallInset(x, y, -1, 0) ? WALL_INSET - 1 : 0;
+          const r = wallInset(x, y, 1, 0) ? WALL_INSET - 1 : 0;
+          const top = wallInset(x, y, 0, -1) ? WALL_INSET_TOP - 1 : 0;
+          if (l || r) paintWallPost(ctx, building, x * T + l, y * T + top, T - l - r, Math.min(T - l - r, T - top));
         }
       };
       if (building)
