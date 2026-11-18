@@ -1019,10 +1019,16 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [SHELF, "wall", "reps"],
     [BARREL, "corner", 2],
   ],
-  Vault: [[CHEST, "wall", "reps"]],
+  // A hoard heaped in a corner or two, not a shop shelf of chests round the walls (panel rounds 40-41).
+  Vault: [
+    [CHEST, "corner", 3],
+    [CHEST, "wall", 2],
+    [CRATE, "corner", 2],
+  ],
   Treasury: [
-    [CHEST, "wall", "reps"],
+    [CHEST, "corner", 3],
     [STATUE, "corner"],
+    [CHEST, "wall", 2],
   ],
   "Servants' garret": DORM,
   "Maids' room": DORM,
@@ -1234,17 +1240,22 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   "Bell loft": [[CRATE, "corner", 2]],
   "Clock room": [[SHELF, "wall", 2]],
   Undercroft: [
+    // Stores heaped by kind in a few bays, not a fringe along every wall (panel round 41: a spreadsheet of
+    // the dead).
     [TOMB, "center", 2],
-    [SKULLS, "wall", "reps"],
-    [CRATE, "corner", 2],
-    [BARREL, "corner"],
+    [SKULLS, "corner", 2],
+    [CRATE, "corner", 3],
+    [BARREL, "corner", 2],
   ],
   Reliquary: [
     [CHEST, "wall", 2],
     [STATUE, "corner", 2],
     [ALTAR, "back"],
   ],
-  "Relic store": [[CHEST, "wall", "reps"]],
+  "Relic store": [
+    [CHEST, "corner", 3],
+    [STATUE, "corner"],
+  ],
   "Burial vault": [[TOMB, "center", "reps"]],
   Charnel: [
     [SKULLS, "wall", "all"],
@@ -4347,7 +4358,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
                 : (n ?? 1) *
                   (kind === "center" || kind === "back" || SITE_ONE_OFF.has(slot) || room.use === "open"
                     ? 1
-                    : Math.max(1, Math.floor((area.w * area.h) / 40))),
+                    : // Heaps in the corners grow a little with the room, never into a fringe down its walls
+                      // (panel round 41: a big undercroft's crates and skulls lined every wall).
+                      Math.min(kind === "corner" ? 2 : Infinity, Math.max(1, Math.floor((area.w * area.h) / 40)))),
         }))
       : room.furniture.map((slot) => {
           const kind = siteFurnitureRole(plan.template, slot);
@@ -4461,7 +4474,15 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         : kind === "back"
           ? [...backMiddle, ...spread(...sideRows)]
           : kind === "corner"
-            ? [...shuffle(corners), ...spread(backRow)]
+            ? // Then heaped out from the corners, not strung along the back wall (panel round 41).
+              [
+                ...shuffle(corners),
+                ...everywhere().sort(
+                  (p, q) =>
+                    Math.min(...corners.map(([cx, cy]) => Math.abs(p[0] - cx) + Math.abs(p[1] - cy))) -
+                    Math.min(...corners.map(([cx, cy]) => Math.abs(q[0] - cx) + Math.abs(q[1] - cy))),
+                ),
+              ]
             : kind === "wall"
               ? spread(backRow, ...sideRows, frontRow)
               : kind === "center" && vaulted
@@ -4638,7 +4659,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         const along = dy !== 0;
         const span = along ? room.w : room.h;
         const offset = Math.floor(random() * 2);
-        for (let i = 1 + offset; i < span - 1 && cut < most; i += 2) {
+        // Spaced unevenly, a pair now and then and a gap, as dug graves are (panel round 41: evenly spaced
+        // niches read as crenellations).
+        for (let i = 1 + offset; i < span - 1 && cut < most; i += random() < 0.25 ? 1 : random() < 0.35 ? 3 : 2) {
+          if (random() < 0.15) continue;
           const [fx, fy] = along
             ? [room.x + i, dy < 0 ? room.y : room.y + room.h - 1]
             : [dx < 0 ? room.x : room.x + room.w - 1, room.y + i];

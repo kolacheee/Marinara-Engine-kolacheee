@@ -946,25 +946,42 @@ export function DungeonMapView({
         ctx.fillStyle = "rgba(6, 8, 16, 0.3)";
         for (const box of [room, ...(room.parts ?? [])]) ctx.fillRect(box.x * T, box.y * T, box.w * T, box.h * T);
       });
-      // The way round the held room: a scuffed trail of pale footprints through the rooms left to nobody,
-      // so the party can see there is a way past (panel round 30: the quiet way not visible on the map).
-      for (const [k, { x, y }] of (kept?.quietWay ?? []).entries()) {
-        // Every third cell only, a trail of scuffs rather than a line (panel round 39: overlays noisy).
-        if (inFog(x, y) || k % 3 !== 1) continue;
-        const cx = x * T + T / 2;
-        const cy = y * T + T / 2;
-        for (const [dx, dy] of [
-          [-5, k % 2 ? -3 : 1],
-          [2, k % 2 ? 1 : -3],
-        ] as const) {
-          // Faint, a scuff rather than a line (panel round 32: drawn bold it read as a debug overlay that
-          // spoiled the route and hid the furniture).
-          ctx.fillStyle = "rgba(20, 16, 12, 0.3)";
-          ctx.fillRect(cx + dx - 1, cy + dy - 1, 4, 5);
-          // Pale blue, apart from the guards' orange and red (panel round 37: lost among the fans and beats).
-          ctx.fillStyle = "rgba(170, 214, 255, 0.75)";
-          ctx.fillRect(cx + dx, cy + dy, 2, 3);
+      // The way round the held room: one thin dashed pale-blue path through the rooms left to nobody, so the
+      // party can see there is a way past (panel round 30: not visible; round 32: bold footprints read as a
+      // debug overlay; rounds 39-41: scattered scuffs read as stray dots, asked for one continuous path).
+      {
+        const way = kept?.quietWay ?? [];
+        const runs: Array<Array<{ x: number; y: number }>> = [];
+        let run: Array<{ x: number; y: number }> = [];
+        for (const step of way) {
+          const last = run[run.length - 1];
+          if (inFog(step.x, step.y) || (last && Math.abs(last.x - step.x) + Math.abs(last.y - step.y) !== 1)) {
+            if (run.length > 1) runs.push(run);
+            run = inFog(step.x, step.y) ? [] : [step];
+            continue;
+          }
+          run.push(step);
         }
+        if (run.length > 1) runs.push(run);
+        ctx.save();
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        for (const [width, colour, dash] of [
+          [4, "rgba(8, 10, 18, 0.35)", [] as number[]],
+          [2, "rgba(170, 214, 255, 0.8)", [5, 5]],
+        ] as const) {
+          ctx.lineWidth = width;
+          ctx.strokeStyle = colour;
+          ctx.setLineDash(dash);
+          for (const line of runs) {
+            ctx.beginPath();
+            line.forEach(({ x, y }, k) =>
+              k ? ctx.lineTo(x * T + T / 2, y * T + T / 2) : ctx.moveTo(x * T + T / 2, y * T + T / 2),
+            );
+            ctx.stroke();
+          }
+        }
+        ctx.restore();
       }
       // What the holders can see, while the party sneaks (owner 2026-11-18, "Add verticality and sightlines";
       // hidden otherwise): a fan from each guard along its facing, fading with distance, cut off where walls
