@@ -45,6 +45,8 @@ Hay 24, en cuatro categorías: **Milestone** (Hito), **Community** (Comunidad), 
 - **Collection** cuenta todo lo de ese tipo en tu biblioteca, incluidos los elementos importados y descargados. Para **Hoarder**, el personaje integrado Professor Mari nunca cuenta.
 - Para los logros de comunidad, basta con visitar el enlace. No necesitas registrarte en el otro sitio.
 
+El recorrido **Conceptos básicos de IA** y cada grupo de **A fondo** también tienen su logro: **Sin rueditas** por Conceptos básicos de IA, y luego **Visto y leído** (Conversation), **Actor de método** (Roleplay), **Abogado de las reglas** (Game), **A mover perillas** (Cualquier modo), **As de las tarjetas** (Personajes y tarjetas), **Fan de la letra pequeña** (Trucos de lorebooks), **Mago de las macros** (Trucos de prompts y macros), **Guardián de secretos** (Trucos de mensajes), **Maestro titiritero** (Agentes y conexiones), **Sonido y visión** (Voz, imágenes y música) y **Bajo el capó** (Temas y extensiones). Completar todas las guías de A fondo de todos los grupos desbloquea **Hasta el fondo**.
+
 ## Logros de los agentes
 
 Los agentes instalados pueden añadir sus propios logros. Aparecen en la misma ventana, después de los integrados, bajo un encabezado como **From Noodle** (De Noodle). Siguen las mismas reglas, y un agente puede mostrar sus propias imágenes de insignias.

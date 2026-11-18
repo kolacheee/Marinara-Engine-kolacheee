@@ -82,7 +82,7 @@ Dwa kafelki tylko do odczytu pokazują liczniki **Sections** i **Groups**.
 - **Conversation Mode** to pole tekstowe na prompt trybu Conversation w tym presecie. Zostaw je puste, żeby używać wbudowanego promptu.
 - **Roleplay Mode** nie da się tu edytować. Tryb Roleplay korzysta z promptu złożonego z twoich sekcji w **Sections**.
 - **Game Mode** to pole tekstowe na prompt trybu Game w tym presecie. Zostaw je puste, żeby używać wbudowanego promptu.
-- **Ustawienia historii gry** określa styl historii, przemoc i granice treści w trybie Game Mode. Włącz **Przenieś ustawienia historii do gier korzystających z tego presetu**: wybranie presetu dla gry ustawi wtedy jej styl i przemoc oraz doda te granice do własnych granic gry. Zobacz [Treść i styl historii](../game/getting-started.md#content-and-story-style).
+- **Ustawienia historii gry** określa styl historii, przemoc i granice treści w trybie Game Mode. Włącz **Przenieś ustawienia historii do gier korzystających z tego presetu**: wybranie presetu dla gry ustawi wtedy jej styl i przemoc oraz doda te granice do własnych granic gry. Zobacz [Treść i styl historii](../game/getting-started.md#story-style-violence-and-content-boundaries).
 
 Wbudowany **Marinara's Universal Preset** dostarcza tekst promptu, ale żadnych parametrów generowania. Jego starsze zapisane ustawienia próbkowania, rozumowania, formatowania i tokenów są ignorowane, a zamiast nich obowiązują ustawienia twojego konta, nadpisania czatu i wartości domyślne aplikacji. Aby go dostosować, utwórz edytowalną kopię.
 
@@ -179,7 +179,7 @@ Pod listą rozwijaną plakietka pokazuje, skąd pochodzi prompt.
 
 Pole tekstowe pokazuje prompt, który jest w użyciu. Edytuj je, żeby utworzyć lokalną kopię dla tego czatu. Jeśli twój tekst dokładnie odpowiada presetowi lub wartości domyślnej, Marinara traktuje go jako niezmieniony. Dopóki istnieje własna zmiana, widać ikonę resetowania (podpowiedź **Reset to default prompt**).
 
-Czaty Game mają więcej kontrolek. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett." **Wytyczne kategorii wiekowej**, **Styl historii**, **Przemoc** i **Granice treści** to ustawienia treści gry; zobacz [Treść i styl historii](../game/getting-started.md#content-and-story-style).
+Czaty Game mają więcej kontrolek. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett." **Wytyczne kategorii wiekowej**, **Styl historii**, **Przemoc** i **Granice treści** to ustawienia treści gry; zobacz [Treść i styl historii](../game/getting-started.md#change-them-during-a-game).
 
 ## Bloki decyzyjne i pamięć podręczna promptu
 

@@ -84,7 +84,7 @@ Deux cartes en lecture seule affichent le nombre de **Sections** et de **Groups*
 - **Conversation Mode** est un champ de texte pour le prompt Conversation de ce preset. Laisse-le vide pour utiliser le prompt intégré.
 - **Roleplay Mode** n'est pas modifiable ici. Le Roleplay utilise le prompt assemblé à partir de tes **Sections**.
 - **Game Mode** est un champ de texte pour le prompt Game de ce preset. Laisse-le vide pour utiliser le prompt intégré.
-- **Réglages de l'histoire du jeu** définit un style d'histoire, un niveau de violence et des limites de contenu pour Game Mode. Active **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset** : choisir ce preset pour une partie définit alors son style et son niveau de violence et ajoute ces limites à celles de la partie. Voir [Contenu et style de l'histoire](../game/getting-started.md#content-and-story-style).
+- **Réglages de l'histoire du jeu** définit un style d'histoire, un niveau de violence et des limites de contenu pour Game Mode. Active **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset** : choisir ce preset pour une partie définit alors son style et son niveau de violence et ajoute ces limites à celles de la partie. Voir [Contenu et style de l'histoire](../game/getting-started.md#story-style-violence-and-content-boundaries).
 
 Le **Marinara's Universal Preset** intégré fournit le texte du prompt, mais aucun paramètre de génération. Ses anciens réglages enregistrés d'échantillonnage, de raisonnement, de mise en forme et de tokens sont ignorés : ce sont les réglages de ton compte, les remplacements du chat et les valeurs par défaut de l'application qui s'appliquent. Crée une copie modifiable pour le personnaliser.
 
@@ -185,7 +185,7 @@ Sous le menu déroulant, un badge indique d'où vient le prompt.
 
 Le champ de texte montre le prompt utilisé. Modifie-le pour créer une copie locale au chat. Si ton texte correspond exactement au preset ou au prompt par défaut, Marinara considère qu'il n'est pas personnalisé. Tant qu'une modification personnalisée existe, une icône de réinitialisation apparaît (infobulle **Reset to default prompt**).
 
-Les chats Game ajoutent davantage de contrôles. **GM prompt style** (style de prompt du GM) ne remplace que le prompt Game, et une modification locale au chat l'emporte toujours. **Extra instructions** (instructions supplémentaires) ajoute du texte au prompt Game, jusqu'à 2 000 caractères, par exemple "Write in the style of Terry Pratchett." **Consignes de classification**, **Style de l'histoire**, **Violence** et **Limites de contenu** sont les réglages de contenu de la partie ; voir [Contenu et style de l'histoire](../game/getting-started.md#content-and-story-style).
+Les chats Game ajoutent davantage de contrôles. **GM prompt style** (style de prompt du GM) ne remplace que le prompt Game, et une modification locale au chat l'emporte toujours. **Extra instructions** (instructions supplémentaires) ajoute du texte au prompt Game, jusqu'à 2 000 caractères, par exemple "Write in the style of Terry Pratchett." **Consignes de classification**, **Style de l'histoire**, **Violence** et **Limites de contenu** sont les réglages de contenu de la partie ; voir [Contenu et style de l'histoire](../game/getting-started.md#change-them-during-a-game).
 
 <a id="decision-blocks-and-prompt-caching"></a>
 

@@ -77,6 +77,15 @@ Professor Mari może zrobić dla ciebie osobisty widget, jeśli ją o to poprosi
 | **Clock & calendar** (zegar i kalendarz) | Dzisiejsza data i godzina. | Nie |
 | **Achievements** | Twoje ostatnie i najbliższe osiągnięcia. Wymaga włączonego ustawienia Achievements. | Nie |
 
+### Podstawy AI i Zajrzyj głębiej
+
+Okno **Zobacz wszystkie** ma dwie dodatkowe zakładki:
+
+- **Podstawy AI**: krótkie oprowadzenie dla osób, które dopiero poznają AI. Wyjaśnia, czym jest model, jakich rodzajów używa Marinara oraz czym są tokeny i kontekst. Pomaga też skonfigurować model, jeśli chcesz (możesz pominąć ten krok). Kończy się spotkaniem z Professor Mari. Propozycja pojawia się raz, w małym oknie po samouczku powitalnym. Zobacz [Podstawy AI](ai-basics.md).
+- **Zajrzyj głębiej**: ustawienia, w których wybór nie jest oczywisty, i funkcje, które mało kto odkrywa, na przykład CSS w polu Notatki twórcy karty. Grupy, z których korzystasz najczęściej, są na początku listy.
+
+Każdy temat otwiera przewodnik przy ważnym, podświetlonym fragmencie, a pod nim pokazuje kartę z prostym wyjaśnieniem. Kliknij **Rozumiem**, żeby oznaczyć temat jako ukończony; w oprowadzeniu Podstawy AI otwiera to następny przystanek. Po ukończeniu ścieżki Podstawy ostatni wiersz widgetu proponuje temat z sekcji Zajrzyj głębiej. Ukończenie oprowadzenia Podstawy AI lub grupy tematów z sekcji Zajrzyj głębiej odblokowuje osiągnięcie z kategorii **Odkrywca**, a ukończenie wszystkich tych tematów – jeszcze jedno. Okno z propozycją oprowadzenia również podlega ustawieniu **Wskazówki o funkcjach**.
+
 ## Gdzie szukać pomocy
 
 - Zapytaj asystentkę Professor Mari na ekranie głównym.

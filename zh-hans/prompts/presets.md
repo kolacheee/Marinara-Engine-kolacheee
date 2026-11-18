@@ -82,7 +82,7 @@
 - **Conversation Mode**(对话模式) 是一个文本框，用来写这个预设的 Conversation 提示词。留空就用内置提示词。
 - **Roleplay Mode**(角色扮演模式) 在这里不能编辑。Roleplay 用的是你的 **Sections** 组装出来的提示词。
 - **Game Mode**(游戏模式) 是一个文本框，用来写这个预设的 Game 提示词。留空就用内置提示词。
-- **Game story settings**(游戏故事设置) 为 Game Mode 设置故事风格、暴力程度和内容边界。开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)：为游戏选择这个预设时，就会设置它的风格和暴力程度，并把这些边界添加到游戏已有的边界中。见[内容与故事风格](../game/getting-started.md#content-and-story-style)。
+- **Game story settings**(游戏故事设置) 为 Game Mode 设置故事风格、暴力程度和内容边界。开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)：为游戏选择这个预设时，就会设置它的风格和暴力程度，并把这些边界添加到游戏已有的边界中。见[内容与故事风格](../game/getting-started.md#story-style-violence-and-content-boundaries)。
 
 内置的 **Marinara's Universal Preset**(Marinara 通用预设) 只提供提示词文字，不提供生成参数。它旧版保存的采样、推理、格式和 Token 设置会被忽略，改用你的账号设置、聊天覆盖值和应用默认值。要自定义它，就创建一份可编辑的副本。
 
@@ -179,7 +179,7 @@ XML 适合大多数模型。只有某个模型在没有标签时回答得更好�
 
 文本框里显示正在使用的提示词。编辑它，就会生成一份只属于这个聊天的副本。如果你写的内容和预设或默认值完全一样，Marinara 就当作没有自定义。存在自定义修改时，会出现一个重置图标（提示文字是 **Reset to default prompt**(重置为默认提示词)）。
 
-Game 聊天还有更多控件。**GM prompt style**(GM 提示词风格) 只替换 Game 提示词，而聊天本地的修改仍然优先。**Extra instructions**(额外指令) 会把文字追加到 Game 提示词里，上限 2000 个字符，比如“Write in the style of Terry Pratchett.”**Rating guidelines**(分级准则)、**Story style**(故事风格)、**Violence**(暴力程度) 和 **Content boundaries**(内容边界) 是游戏的内容设置；见[内容与故事风格](../game/getting-started.md#content-and-story-style)。
+Game 聊天还有更多控件。**GM prompt style**(GM 提示词风格) 只替换 Game 提示词，而聊天本地的修改仍然优先。**Extra instructions**(额外指令) 会把文字追加到 Game 提示词里，上限 2000 个字符，比如“Write in the style of Terry Pratchett.”**Rating guidelines**(分级准则)、**Story style**(故事风格)、**Violence**(暴力程度) 和 **Content boundaries**(内容边界) 是游戏的内容设置；见[内容与故事风格](../game/getting-started.md#change-them-during-a-game)。
 
 ## 判定块与提示词缓存
 

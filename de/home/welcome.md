@@ -77,6 +77,15 @@ Professor Mari baut dir ein persönliches Widget, wenn du sie darum bittest. Auc
 | **Clock & calendar** (Uhr und Kalender) | Das heutige Datum und die Uhrzeit. | Nein |
 | **Achievements** | Deine neuesten und deine fast erreichten Errungenschaften. Die Achievements-Einstellung muss eingeschaltet sein. | Nein |
 
+### KI-Grundlagen und Vertiefungen
+
+Unter **Alle ansehen** gibt es zwei weitere Tabs:
+
+- **KI-Grundlagen**: eine kurze Tour für alle, die neu beim Chatten mit KI sind. Sie erklärt, was ein Modell ist, welche Arten Marinara nutzt und was Tokens und Kontext bedeuten. Wenn du möchtest, hilft sie dir auch, ein Modell einzurichten (diesen Schritt kannst du überspringen). Zum Schluss lernst du Professor Mari kennen. Nach der Willkommenstour wird sie dir einmal in einem kleinen Fenster angeboten. Siehe [KI-Grundlagen](ai-basics.md).
+- **Vertiefungen**: Einstellungen, bei denen die Wahl nicht auf der Hand liegt, und Funktionen, die nur wenige entdecken, etwa CSS in den **Notizen des Erstellers** einer Karte. Die Gruppen, die du am häufigsten nutzt, stehen zuerst.
+
+Jede Station öffnet ihre Anleitung an der passenden Stelle und hebt diese hervor. Darunter erklärt eine Karte den Inhalt in einfachen Worten. Klick auf **Verstanden**, um die Station abzuhaken; in **KI-Grundlagen** öffnet sich damit die nächste Station. Sobald du den **Core**-Pfad abgeschlossen hast, schlägt die letzte Zeile des Widgets eine Vertiefung vor. Schließt du **KI-Grundlagen** oder eine Gruppe von Vertiefungen ab, schaltest du eine Errungenschaft der Kategorie **Explorer** frei. Hast du alle Vertiefungen abgeschlossen, kommt eine weitere hinzu. Auch das Angebotsfenster richtet sich nach **Feature tips**.
+
 ## Wo du Hilfe bekommst
 
 - Frag Professor Mari auf dem Home-Bildschirm.

@@ -82,7 +82,7 @@
 - **Conversation Mode**(대화 모드)는 이 프리셋의 Conversation 프롬프트를 넣는 텍스트 상자입니다. 비워 두면 내장 프롬프트를 씁니다.
 - **Roleplay Mode**(롤플레이 모드)는 여기서 편집할 수 없습니다. Roleplay는 **Sections**에서 조립한 프롬프트를 씁니다.
 - **Game Mode**(게임 모드)는 이 프리셋의 Game 프롬프트를 넣는 텍스트 상자입니다. 비워 두면 내장 프롬프트를 씁니다.
-- **Game story settings**(게임 이야기 설정)는 Game Mode의 이야기 스타일, 폭력, 콘텐츠 제한을 정합니다. **Bring story settings to games that use this preset**(이 프리셋을 사용하는 게임에 이야기 설정 적용)을 켜세요. 게임에 이 프리셋을 고르면 스타일과 폭력이 설정되고 게임 자체의 콘텐츠 제한에 이 제한이 추가됩니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#content-and-story-style)을 참고하세요.
+- **Game story settings**(게임 이야기 설정)는 Game Mode의 이야기 스타일, 폭력, 콘텐츠 제한을 정합니다. **Bring story settings to games that use this preset**(이 프리셋을 사용하는 게임에 이야기 설정 적용)을 켜세요. 게임에 이 프리셋을 고르면 스타일과 폭력이 설정되고 게임 자체의 콘텐츠 제한에 이 제한이 추가됩니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#story-style-violence-and-content-boundaries)을 참고하세요.
 
 기본 제공 **Marinara's Universal Preset**(Marinara 범용 프리셋)은 프롬프트 텍스트는 제공하지만 생성 파라미터는 제공하지 않습니다. 예전에 저장된 샘플링, 추론, 서식, 토큰 설정은 무시되고, 대신 계정 설정, 채팅별 덮어쓰기, 앱 기본값이 적용됩니다. 사용자 지정하려면 수정 가능한 복사본을 만드세요.
 
@@ -179,7 +179,7 @@
 
 텍스트 상자에는 사용 중인 프롬프트가 표시됩니다. 내용을 고치면 채팅 전용 사본이 만들어집니다. 입력한 글이 프리셋이나 기본값과 완전히 같으면 Marinara는 사용자 지정이 아닌 것으로 처리합니다. 사용자 지정 편집본이 있는 동안에는 툴팁이 **Reset to default prompt**(기본 프롬프트로 초기화)인 초기화 아이콘이 나타납니다.
 
-Game 채팅에는 컨트롤이 더 있습니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다. **Rating guidelines**(등급 지침), **Story style**(이야기 스타일), **Violence**(폭력), **Content boundaries**(콘텐츠 제한)는 게임의 콘텐츠 설정입니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#content-and-story-style)을 참고하세요.
+Game 채팅에는 컨트롤이 더 있습니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다. **Rating guidelines**(등급 지침), **Story style**(이야기 스타일), **Violence**(폭력), **Content boundaries**(콘텐츠 제한)는 게임의 콘텐츠 설정입니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#change-them-during-a-game)을 참고하세요.
 
 ## 판정 블록과 프롬프트 캐시
 

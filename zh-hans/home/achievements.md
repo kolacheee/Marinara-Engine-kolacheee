@@ -45,6 +45,8 @@
 - **Collection** 统计的是你资料库里该类型的全部内容，包括导入和下载来的。对于 **Hoarder**，内置的 Professor Mari 角色永远不计入。
 - 社区类成就只要点开链接就算数，不需要在对方网站上注册。
 
+**AI basics**(AI 入门) 导览和 **Deep dives**(深入探索) 的每个分组也各有一项成就：AI 入门对应 **Training Wheels Off**(拆掉辅助轮)，接着是 **Read Receipts**(已读回执)（对话）、**Method Actor**(戏精本精)（角色扮演）、**Rules Lawyer**(规则律师)（游戏）、**Knob Twiddler**(调参达人)（所有模式通用）、**Card Shark**(玩卡高手)（角色与卡片）、**Footnote Fanatic**(脚注狂魔)（世界书技巧）、**Macro Magician**(宏法师)（提示词与宏技巧）、**Secret Keeper**(守口如瓶)（消息技巧）、**Puppet Master**(提线大师)（智能体与连接）、**Sound And Vision**(有声有色)（语音、图片与音乐）和 **Under The Hood**(揭开引擎盖)（主题与扩展）。完成所有分组里的每一项深入探索，会解锁 **Off The Deep End**(一头扎到底)。
+
 ## 智能体的成就
 
 已安装的智能体可以添加自己的成就。它们显示在同一个窗口里，位于内置成就之后，归在 **From Noodle**(来自 Noodle) 这样的标题下。它们遵循相同的规则，智能体还可以显示自己的徽章图片。

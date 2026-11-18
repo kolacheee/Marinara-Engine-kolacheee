@@ -45,6 +45,8 @@ Jest ich 24, w czterech kategoriach: **Milestone**, **Community**, **Creation** 
 - Kategoria **Collection** liczy wszystkie elementy danego typu w twojej bibliotece, także zaimportowane i pobrane. Przy odznace **Hoarder** wbudowana postać Professor Mari nigdy się nie liczy.
 - W przypadku osiągnięć społecznościowych wystarczy odwiedzić link. Nie trzeba się rejestrować w drugim serwisie.
 
+Oprowadzenie **Podstawy AI** i każda grupa z sekcji **Zajrzyj głębiej** również mają własne osiągnięcie: **Bez bocznych kółek** za Podstawy AI, a dalej **Odczytano** (Conversation), **Żyję tą rolą** (Roleplay), **Paragraf na smoka** (Game), **Kręcę, więc jestem** (Dowolny tryb), **As w rękawie** (Postacie i karty), **Jeszcze jeden przypis** (Sztuczki z lorebookami), **Makroczary** (Sztuczki z promptami i makrami), **Usta na kłódkę** (Sztuczki z wiadomościami), **Za sznurki pociągam ja** (Agenci i połączenia), **Dźwięk i wizja** (Głos, obrazy i muzyka) i **Pod maską** (Motywy i rozszerzenia). Ukończenie wszystkich tematów we wszystkich grupach sekcji Zajrzyj głębiej odblokowuje **Na głęboką wodę**.
+
 ## Osiągnięcia od agentów
 
 Zainstalowani agenci mogą dodawać własne osiągnięcia. Pojawiają się one w tym samym oknie, za wbudowanymi, pod nagłówkiem takim jak **From Noodle** (od agenta Noodle). Działają według tych samych zasad, a agent może pokazywać własną grafikę odznaki.

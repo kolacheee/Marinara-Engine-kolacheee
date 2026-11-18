@@ -77,6 +77,15 @@ A Professor Mari pode criar um widget pessoal para você, se você pedir. Os age
 | **Clock & calendar** (relógio e calendário) | A data e a hora de hoje. | Não |
 | **Achievements** (conquistas) | As suas conquistas mais recentes e as mais perto de sair. Precisa da configuração Achievements ativada. | Não |
 
+### Noções básicas de IA e Aprofundamentos
+
+**Ver todos** tem mais duas abas:
+
+- **Noções básicas de IA**: um tour curto para quem está começando com IA. Explica o que é um modelo, os tipos que Marinara usa, tokens e contexto, e ajuda você a configurar um modelo se quiser (essa etapa pode ser pulada). Termina com a Professor Mari. O tour é oferecido uma vez, em uma janela pequena depois do tutorial de boas-vindas. Veja [Noções básicas de IA](ai-basics.md).
+- **Aprofundamentos**: configurações em que a escolha não é óbvia e recursos que pouca gente encontra, como CSS nas Notas do criador de um card. Os grupos que você mais usa aparecem primeiro.
+
+Cada item abre o guia no trecho relevante, em destaque, com um cartão abaixo que o explica em palavras simples. Clique em **Entendi** para marcar o item como concluído; em Noções básicas de IA, isso abre a próxima parada. Depois que você termina a trilha Essencial, a última linha do widget sugere um aprofundamento. Concluir Noções básicas de IA ou um grupo de aprofundamentos desbloqueia uma conquista da categoria **Explorador**, e concluir todos os aprofundamentos desbloqueia mais uma. A janela que oferece o tour também segue a configuração **Dicas de recursos**.
+
 ## Onde buscar ajuda
 
 - Pergunte à Professor Mari na tela inicial.

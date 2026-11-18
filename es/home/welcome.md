@@ -73,6 +73,15 @@ Professor Mari puede crearte un widget personal si se lo pides. Los agentes inst
 | **Clock & calendar** (Reloj y calendario) | La fecha y la hora de hoy. | No |
 | **Achievements** | Tus logros más recientes y los más cercanos. Necesita el ajuste de logros activado. | No |
 
+### Conceptos básicos de IA y A fondo
+
+**Ver todos** tiene dos pestañas más:
+
+- **Conceptos básicos de IA**: un recorrido breve para quienes empiezan con la IA. Explica qué es un modelo, los tipos que usa Marinara, los tokens y el contexto, y te ayuda a configurar un modelo si quieres (puedes omitir ese paso). Termina con Professor Mari. Se ofrece una vez, en una ventana pequeña después del tutorial de bienvenida. Consulta [Conceptos básicos de IA](ai-basics.md).
+- **A fondo**: ajustes en los que no es evidente qué elegir y funciones que poca gente encuentra, como el CSS en las Notas del creador de una tarjeta. Los grupos que más usas aparecen primero.
+
+Cada uno abre su guía en el pasaje relevante, resaltado, con una tarjeta debajo que lo explica en palabras sencillas. Haz clic en **Entendido** para marcarlo como completado; en Conceptos básicos de IA, esto abre la siguiente parada. Cuando terminas el recorrido Esencial, la última fila del widget sugiere una guía de A fondo. Completar Conceptos básicos de IA o un grupo de A fondo desbloquea un logro de **Explorador**, y completar todas las guías de A fondo desbloquea uno más. La ventana que ofrece el recorrido también respeta el ajuste **Consejos de funciones**.
+
 ## Dónde conseguir ayuda
 
 - Pregúntale a Professor Mari en la pantalla de inicio.

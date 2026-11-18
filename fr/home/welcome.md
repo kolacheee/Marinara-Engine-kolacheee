@@ -77,6 +77,15 @@ Professor Mari peut te créer un widget personnel si tu le lui demandes. Les age
 | **Clock & calendar** (horloge et calendrier) | La date et l'heure du jour. | Non |
 | **Achievements** | Tes derniers succès et ceux qui sont les plus proches. Le réglage Achievements doit être activé. | Non |
 
+### Les bases de l'IA et Pour aller plus loin
+
+**Tout voir** propose deux onglets supplémentaires :
+
+- **Les bases de l'IA** : une courte visite pour ceux qui découvrent l'IA. Elle explique ce qu'est un modèle, les types utilisés par Marinara, les tokens et le contexte, et t'aide à configurer un modèle si tu le souhaites (tu peux passer cette étape). Elle se termine avec Professor Mari. Elle est proposée une seule fois, dans une petite fenêtre après le tutoriel d'accueil. Voir [Les bases de l'IA](ai-basics.md).
+- **Pour aller plus loin** : des réglages dont le choix n'est pas évident et des fonctions peu connues, comme le CSS dans les Notes du créateur d'une fiche. Les groupes que tu utilises le plus sont présentés en premier.
+
+Chaque étape ouvre son guide au passage utile, mis en évidence, avec une carte en dessous qui l'explique simplement. Clique sur **Compris** pour la cocher ; dans Les bases de l'IA, cela ouvre l'étape suivante. Une fois le parcours Essentiel terminé, la dernière ligne du widget te propose un guide approfondi. Terminer Les bases de l'IA ou un groupe de guides approfondis débloque un succès **Explorateur** ; terminer tous les guides approfondis en débloque un de plus. La fenêtre qui propose la visite respecte elle aussi le réglage **Conseils sur les fonctionnalités**.
+
 ## Où trouver de l'aide
 
 - Pose tes questions à Professor Mari sur l'écran d'accueil.

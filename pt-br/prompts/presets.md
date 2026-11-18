@@ -82,7 +82,7 @@ Dois cartões somente leitura mostram as contagens de **Sections** e **Groups**.
 - **Conversation Mode** é uma caixa de texto para o prompt de Conversation deste preset. Deixe vazia para usar o prompt integrado.
 - **Roleplay Mode** não é editável aqui. O Roleplay usa o prompt montado a partir das suas **Sections**.
 - **Game Mode** é uma caixa de texto para o prompt de Game deste preset. Deixe vazia para usar o prompt integrado.
-- **Configurações da história do jogo** define um estilo de história, violência e limites de conteúdo para o Game Mode. Ative **Levar as configurações da história para jogos que usam este preset**: escolher o preset para um jogo passa a definir o estilo e a violência dele e acrescenta esses limites aos do próprio jogo. Veja [Conteúdo e estilo da história](../game/getting-started.md#content-and-story-style).
+- **Configurações da história do jogo** define um estilo de história, violência e limites de conteúdo para o Game Mode. Ative **Levar as configurações da história para jogos que usam este preset**: escolher o preset para um jogo passa a definir o estilo e a violência dele e acrescenta esses limites aos do próprio jogo. Veja [Conteúdo e estilo da história](../game/getting-started.md#story-style-violence-and-content-boundaries).
 
 O **Marinara's Universal Preset** integrado fornece o texto do prompt, mas nenhum parâmetro de geração. As configurações antigas de amostragem, raciocínio, formatação e tokens salvas nele são ignoradas, e no lugar delas valem as configurações da sua conta, as substituições do chat e os padrões do aplicativo. Crie uma cópia editável para personalizá-lo.
 
@@ -179,7 +179,7 @@ Abaixo do menu suspenso, um selo mostra de onde vem o prompt.
 
 A caixa de texto mostra o prompt em uso. Edite-a para criar uma cópia local deste chat. Se o seu texto for idêntico ao do preset ou ao padrão, Marinara o considera não personalizado. Enquanto existe uma edição personalizada, aparece um ícone de redefinir (dica **Reset to default prompt**).
 
-Os chats de Game acrescentam mais controles. **GM prompt style** (estilo de prompt do GM) substitui só o prompt de Game, e uma edição local do chat ainda prevalece. **Extra instructions** (instruções extras) acrescenta texto ao prompt de Game, até 2000 caracteres, como "Write in the style of Terry Pratchett." **Diretrizes de classificação**, **Estilo da história**, **Violência** e **Limites de conteúdo** são as configurações de conteúdo do jogo; veja [Conteúdo e estilo da história](../game/getting-started.md#content-and-story-style).
+Os chats de Game acrescentam mais controles. **GM prompt style** (estilo de prompt do GM) substitui só o prompt de Game, e uma edição local do chat ainda prevalece. **Extra instructions** (instruções extras) acrescenta texto ao prompt de Game, até 2000 caracteres, como "Write in the style of Terry Pratchett." **Diretrizes de classificação**, **Estilo da história**, **Violência** e **Limites de conteúdo** são as configurações de conteúdo do jogo; veja [Conteúdo e estilo da história](../game/getting-started.md#change-them-during-a-game).
 
 ## Blocos de decisão e cache de prompts
 

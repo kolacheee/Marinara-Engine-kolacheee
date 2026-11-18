@@ -84,7 +84,7 @@ Zwei schreibgeschützte Karten zeigen die Anzahl der **Sections** und **Groups**
 - **Conversation Mode** ist ein Textfeld für den Conversation-Prompt dieses Presets. Lass es leer, um den eingebauten Prompt zu nutzen.
 - **Roleplay Mode** lässt sich hier nicht bearbeiten. Roleplay nutzt den Prompt, der aus deinen **Sections** zusammengesetzt wird.
 - **Game Mode** ist ein Textfeld für den Game-Prompt dieses Presets. Lass es leer, um den eingebauten Prompt zu nutzen.
-- Unter **Game-Story-Einstellungen** legst du Erzählstil, Gewalt und inhaltliche Grenzen für Game Mode fest. Schalte **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden** ein: Wenn du das Preset für ein Spiel auswählst, legt es dessen Stil und Gewalt fest und ergänzt die eigenen Grenzen des Spiels um diese Grenzen. Siehe [Inhalte und Erzählstil](../game/getting-started.md#content-and-story-style).
+- Unter **Game-Story-Einstellungen** legst du Erzählstil, Gewalt und inhaltliche Grenzen für Game Mode fest. Schalte **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden** ein: Wenn du das Preset für ein Spiel auswählst, legt es dessen Stil und Gewalt fest und ergänzt die eigenen Grenzen des Spiels um diese Grenzen. Siehe [Inhalte und Erzählstil](../game/getting-started.md#story-style-violence-and-content-boundaries).
 
 Das integrierte **Marinara's Universal Preset** liefert Prompt-Text, aber keine Generierungsparameter. Seine älteren gespeicherten Einstellungen für Sampling, Reasoning, Formatierung und Tokens werden ignoriert; stattdessen gelten deine Kontoeinstellungen, Chat-Überschreibungen und die Standardwerte der App. Erstelle eine bearbeitbare Kopie, um es anzupassen.
 
@@ -185,7 +185,7 @@ Unter dem Dropdown-Menü zeigt ein Abzeichen, woher der Prompt stammt.
 
 Das Textfeld zeigt den Prompt, der gerade gilt. Bearbeite ihn, um eine chatlokale Kopie anzulegen. Stimmt dein Text exakt mit dem Preset oder dem Standard überein, wertet Marinara ihn nicht als Anpassung. Solange eine eigene Bearbeitung existiert, erscheint ein Symbol zum Zurücksetzen (Tooltip **Reset to default prompt**).
 
-Game-Chats haben weitere Bedienelemente. **GM prompt style** (GM-Prompt-Stil) ersetzt nur den Game-Prompt, und eine chatlokale Bearbeitung hat weiterhin Vorrang. **Extra instructions** (zusätzliche Anweisungen) ergänzt den Game-Prompt um Text, bis zu 2.000 Zeichen, etwa „Write in the style of Terry Pratchett.“ **Altersfreigabe-Richtlinien**, **Erzählstil**, **Gewalt** und **Inhaltliche Grenzen** sind die Inhaltseinstellungen des Spiels; siehe [Inhalte und Erzählstil](../game/getting-started.md#content-and-story-style).
+Game-Chats haben weitere Bedienelemente. **GM prompt style** (GM-Prompt-Stil) ersetzt nur den Game-Prompt, und eine chatlokale Bearbeitung hat weiterhin Vorrang. **Extra instructions** (zusätzliche Anweisungen) ergänzt den Game-Prompt um Text, bis zu 2.000 Zeichen, etwa „Write in the style of Terry Pratchett.“ **Altersfreigabe-Richtlinien**, **Erzählstil**, **Gewalt** und **Inhaltliche Grenzen** sind die Inhaltseinstellungen des Spiels; siehe [Inhalte und Erzählstil](../game/getting-started.md#change-them-during-a-game).
 
 <a id="decision-blocks-and-prompt-caching"></a>
 

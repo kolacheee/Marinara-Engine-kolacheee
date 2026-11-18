@@ -45,6 +45,8 @@
 - **Collection**은 가져오거나 다운로드한 항목을 포함해 라이브러리에 있는 해당 종류를 모두 셉니다. **Hoarder**에서는 기본 제공 캐릭터인 Professor Mari를 절대 세지 않습니다.
 - 커뮤니티 업적은 링크를 방문하기만 해도 충분합니다. 해당 사이트에 가입할 필요는 없습니다.
 
+**AI basics**(AI 기초) 투어와 **Deep dives**(심화 탐구)의 각 그룹에도 업적이 있습니다. AI basics를 마치면 **Training Wheels Off**(보조 바퀴 졸업)가 열립니다. 그룹별로는 **Read Receipts**(읽음 확인)가 **Conversation**(대화), **Method Actor**(메소드 연기자)가 **Roleplay**(롤플레이), **Rules Lawyer**(규칙 변호사)가 **Game**(게임), **Knob Twiddler**(설정 만지작)가 **Any mode**(모든 모드), **Card Shark**(카드의 고수)가 **Characters and cards**(캐릭터와 카드), **Footnote Fanatic**(각주 수집광)이 **Lorebook tricks**(로어북 활용법), **Macro Magician**(매크로 마법사)이 **Prompt and macro tricks**(프롬프트와 매크로 활용법), **Secret Keeper**(비밀 지킴이)가 **Message tricks**(메시지 활용법), **Puppet Master**(인형술사)가 **Agents and connections**(에이전트와 연결), **Sound And Vision**(눈과 귀가 호강)이 **Voice, pictures and music**(음성, 그림과 음악), **Under The Hood**(속까지 들여다보기)가 **Themes and extending**(테마와 확장)에 해당합니다. 모든 그룹의 심화 탐구를 전부 마치면 **Off The Deep End**(끝까지 잠수)가 열립니다.
+
 ## 에이전트의 업적
 
 설치한 에이전트는 자체 업적을 추가할 수 있습니다. 이 업적은 같은 창에서 기본 제공 업적 뒤에 **From Noodle**(Noodle에서 제공) 같은 제목 아래로 표시됩니다. 같은 규칙을 따르며, 에이전트는 자체 배지 그림을 보여 줄 수 있습니다.

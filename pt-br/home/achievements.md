@@ -45,6 +45,8 @@ São 24, em quatro categorias: **Milestone**, **Community**, **Creation** e **Co
 - **Collection** conta tudo daquele tipo na sua biblioteca, inclusive itens importados e baixados. Em **Hoarder**, a personagem Professor Mari, que já vem no aplicativo, nunca conta.
 - Nas conquistas de comunidade, basta visitar o link. Não é preciso se cadastrar no outro site.
 
+O tour **Noções básicas de IA** e cada grupo de **Aprofundamentos** também têm uma conquista: **Sem rodinhas** para Noções básicas de IA, depois **Visualizado** (Conversation), **Ator de método** (Roleplay), **Advogado das regras** (Game), **Rei dos ajustes** (Qualquer modo), **Ás dos cards** (Personagens e cards), **Fã de notas de rodapé** (Truques de lorebook), **Mago das macros** (Truques de prompts e macros), **Guardião dos segredos** (Truques de mensagens), **Mestre das marionetes** (Agentes e conexões), **Som e visão** (Voz, imagens e música) e **Debaixo do capô** (Temas e extensões). Concluir todos os aprofundamentos de todos os grupos desbloqueia **Mergulho sem volta**.
+
 ## Conquistas dos agentes
 
 Os agentes instalados podem adicionar conquistas próprias. Elas aparecem na mesma janela, depois das integradas, sob um título como **From Noodle** (do Noodle). Elas seguem as mesmas regras, e um agente pode mostrar a própria arte de medalha.

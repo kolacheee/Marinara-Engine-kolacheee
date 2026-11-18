@@ -1,6 +1,6 @@
 {
   "language": "pl",
-  "sourceCommit": "d17e1cb600cdeec90cd6234d02d71564932838d7",
+  "sourceCommit": "b301dd302",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -564,8 +564,13 @@
     },
     {
       "path": "home/achievements.md",
-      "sha256": "e0cbe279324367bbfc846184845101fbd1bff5641e7b81de8a7395dca274ed4a",
-      "bytes": 6073
+      "sha256": "0786544e694c861fb13c12c8756bc3bd115ab4a9655cc4ba1ee3b43ccfc7a1cc",
+      "bytes": 6819
+    },
+    {
+      "path": "home/ai-basics.md",
+      "sha256": "ccd8ddccc4ca9ef9bbf0ec31b6b3a57e3e7519a805db6a22df6584c5c39264c2",
+      "bytes": 4265
     },
     {
       "path": "home/professor-mari.md",
@@ -584,8 +589,8 @@
     },
     {
       "path": "home/welcome.md",
-      "sha256": "a26210cf22aa83b2a7852aa890712a8cba05c09bb1ba1a1b543f1cdf963da9c3",
-      "bytes": 9307
+      "sha256": "c046d6a771097f1447256c8258ba4323c9c14a147e8d8c5a6f9825f17233c354",
+      "bytes": 10656
     },
     {
       "path": "installation/android-termux.md",
@@ -729,8 +734,8 @@
     },
     {
       "path": "prompts/presets.md",
-      "sha256": "f7b5e5874cc81a38237b2a629aa3875e94252c58517e3c4385b3dc09b1f24022",
-      "bytes": 16645
+      "sha256": "ea8e74061d750e71c885ac2a709adefc53833095485cc59559d494d1f2ad9f6a",
+      "bytes": 16667
     },
     {
       "path": "prompts/prompt-overrides.md",

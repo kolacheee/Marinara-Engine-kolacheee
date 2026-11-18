@@ -84,7 +84,7 @@
 - **Conversation Mode**は、このプリセットのConversationプロンプトを入れるテキスト欄です。空のままにすると、内蔵のプロンプトを使います。
 - **Roleplay Mode**はここでは編集できません。Roleplayは、**Sections**から組み立てたプロンプトを使います。
 - **Game Mode**は、このプリセットのGameプロンプトを入れるテキスト欄です。空のままにすると、内蔵のプロンプトを使います。
-- **Game story settings**(Gameの物語設定)では、Game Modeの物語のスタイル、暴力表現、コンテンツの境界線を設定します。**Bring story settings to games that use this preset**(このプリセットを使うゲームに物語設定を適用)をオンにしてください。ゲームでこのプリセットを選ぶと、スタイルと暴力表現が設定され、ゲーム自体の境界線にこれらの境界線が追加されます。[コンテンツと物語のスタイル](../game/getting-started.md#content-and-story-style)を参照してください。
+- **Game story settings**(Gameの物語設定)では、Game Modeの物語のスタイル、暴力表現、コンテンツの境界線を設定します。**Bring story settings to games that use this preset**(このプリセットを使うゲームに物語設定を適用)をオンにしてください。ゲームでこのプリセットを選ぶと、スタイルと暴力表現が設定され、ゲーム自体の境界線にこれらの境界線が追加されます。[コンテンツと物語のスタイル](../game/getting-started.md#story-style-violence-and-content-boundaries)を参照してください。
 
 組み込みの**Marinara's Universal Preset**(Marinaraの汎用プリセット)は、プロンプトの文章を提供しますが、生成パラメーターは指定しません。このプリセットに以前保存されたサンプリング、推論、書式、トークンの設定は無視され、代わりにアカウントの設定、チャットの上書き、アプリのデフォルトが適用されます。カスタマイズするには、編集できるコピーを作ってください。
 
@@ -185,7 +185,7 @@
 
 テキスト欄には、使用中のプロンプトが表示されます。編集すると、このチャットだけのコピーができます。テキストがプリセットやデフォルトと完全に一致する場合、Marinaraはカスタマイズされていないものとして扱います。カスタムの編集があるあいだは、リセットのアイコン(ツールチップは**Reset to default prompt**)が表示されます。
 
-Gameチャットには、さらに設定があります。**GM prompt style**(GMのプロンプトスタイル)はGameプロンプトだけを置き換えますが、チャットだけの編集があればそちらが優先されます。**Extra instructions**(追加の指示)は、Gameプロンプトに文章を追加します。上限は2000文字で、たとえば「Write in the style of Terry Pratchett.」のように書きます。**Rating guidelines**(レーティングのガイドライン)、**Story style**(物語のスタイル)、**Violence**(暴力表現)、**Content boundaries**(コンテンツの境界線)は、ゲームのコンテンツ設定です。[コンテンツと物語のスタイル](../game/getting-started.md#content-and-story-style)を参照してください。
+Gameチャットには、さらに設定があります。**GM prompt style**(GMのプロンプトスタイル)はGameプロンプトだけを置き換えますが、チャットだけの編集があればそちらが優先されます。**Extra instructions**(追加の指示)は、Gameプロンプトに文章を追加します。上限は2000文字で、たとえば「Write in the style of Terry Pratchett.」のように書きます。**Rating guidelines**(レーティングのガイドライン)、**Story style**(物語のスタイル)、**Violence**(暴力表現)、**Content boundaries**(コンテンツの境界線)は、ゲームのコンテンツ設定です。[コンテンツと物語のスタイル](../game/getting-started.md#change-them-during-a-game)を参照してください。
 
 <a id="decision-blocks-and-prompt-caching"></a>
 
