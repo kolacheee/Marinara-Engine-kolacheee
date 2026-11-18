@@ -88,6 +88,10 @@ export interface DungeonArea {
   wayDown?: true;
   /** Its holders walk it, back and forth along its length (a wall walk, a long passage), rather than stand. */
   patrol?: true;
+  /** Its holders are asleep, off watch (a barracks at rest): a party can slip past or catch them unready. */
+  asleep?: true;
+  /** Its one sentry keeps watch from a gallery over the room. */
+  gallery?: true;
   role: DungeonAreaRole;
   level: number;
   foes: MarinaraEncounterFoe[];
@@ -755,6 +759,55 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
   for (const [n, area] of areas.entries())
     if (area.role === "guard" && !area.patrol && /^Wall walk/u.test(map.roomInfo![n]!.name))
       areas[n] = { ...area, patrol: true };
+  // Set-ups by hand, not a pair in every room (owner 2026-11-18, "Authored guard set-ups"; panel rounds 35-36).
+  const near = (n: number) => distance[n]! >= 0 && distance[n]! <= 2;
+  const baseOf = (n: number) => map.roomInfo![n]!.name.replace(/ \d+$/u, "");
+  const lone = (n: number) =>
+    fitted(setting, areas[n]!.level, group(site.holder, "standard", areas[n]!.level, 1), "normal");
+  // A barracks off watch: its sleepers lie in their beds, to be crept past or caught unready.
+  for (const [n, area] of areas.entries())
+    if (area.role === "guard" && baseOf(n) === "Barracks" && random() < 0.65) areas[n] = { ...area, asleep: true };
+  // A hall with a gallery: one sentry up on it over the floor, the room's only watch.
+  const raised = map.gallery ?? [];
+  for (const [n, room] of map.rooms.entries()) {
+    if (!raised.some(({ x, y }) => dungeonRoomHas(room, x, y))) continue;
+    const area = areas[n]!;
+    const info = map.roomInfo![n]!;
+    if (area.role === "heart" || area.patrol || near(n) || info.quiet || info.use === "quiet") continue;
+    if (area.role === "guard" || ((area.role === "empty" || area.role === "lair") && random() < 0.8))
+      areas[n] = { ...area, role: "guard", gallery: true, foes: lone(n) };
+  }
+  // Guards kept to a few rooms that matter: the gate, the barracks, the held post, the gallery, the heart, the
+  // way down and the patrols; of the rest, one room kept, the others left (a pair in every room read as
+  // spread evenly, not placed).
+  const keep = (n: number) => {
+    const area = areas[n]!;
+    return (
+      area.role !== "guard" ||
+      area.patrol ||
+      area.gallery ||
+      area.wayDown ||
+      !!map.roomInfo![n]!.post ||
+      /^(Gate passage|Gatehouse|Barracks|Guardroom|Guard room)$/u.test(baseOf(n))
+    );
+  };
+  const loose = areas.map((_, n) => n).filter((n) => !keep(n));
+  for (const n of loose.slice(1)) areas[n] = { ...areas[n]!, role: "empty", foes: [] };
+  // A sentry walking the way round (panel round 36: a way past with nothing on it is no choice): the longest
+  // room on it now and then has one guard pacing it, so crossing it is a matter of timing.
+  const crossing = map.rooms
+    .map((room, n) => ({ n, long: Math.max(room.w, room.h) }))
+    .filter(
+      ({ n, long }) =>
+        map.roomInfo![n]!.quiet &&
+        map.roomInfo![n]!.use !== "quiet" &&
+        !map.roomInfo![n]!.heart &&
+        long >= 6 &&
+        !near(n),
+    )
+    .sort((p, q) => q.long - p.long)[0];
+  if (crossing && random() < 0.6)
+    areas[crossing.n] = { ...areas[crossing.n]!, role: "guard", patrol: true, foes: lone(crossing.n) };
   return areas;
 }
 
@@ -1008,7 +1061,13 @@ export function dungeonSpawnPromptText(input: {
           ? " (the way down)"
           : area.role === "rest"
             ? " (quiet: safe to rest)"
-            : "";
+            : area.asleep
+              ? " (asleep: a careful party can slip past or catch them unready)"
+              : area.gallery
+                ? " (one sentry watching from the gallery above the floor)"
+                : area.patrol
+                  ? " (on patrol: walking its length back and forth)"
+                  : "";
     const where = area.area === here ? " (the party is here)" : "";
     const who = foes.length
       ? dungeonRosterWords(foes, setting)

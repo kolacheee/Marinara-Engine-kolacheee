@@ -1218,6 +1218,8 @@ export function useDungeonMap(chatId: string, turnKey: string | null, enabled: b
           face?: { x: number; y: number };
           /** They stand on a gallery over the room. */
           raised?: boolean;
+          /** Asleep, off watch. */
+          asleep?: boolean;
         }>;
         /** The party is sneaking: the guards' sight shows (owner 2026-11-18). */
         sneaking?: boolean;

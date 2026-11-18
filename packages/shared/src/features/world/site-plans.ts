@@ -4781,16 +4781,19 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           .map((b) => cellAt(b, 1));
         const stepPool = stepCaps.length ? stepCaps : railEnds;
         if (!stepPool.length) continue;
-        const step = stepPool[Math.floor(random() * stepPool.length)]!;
+        // Steps at both ends where both can have them, so the gallery is a way round and not a dead end (panel
+        // round 36), the far ones now and then left out.
+        const steps =
+          stepPool.length > 1 && random() < 0.75 ? stepPool : [stepPool[Math.floor(random() * stepPool.length)]!];
         const mine = [...walk, ...rail, ...caps];
         // What stood there is moved off: the gallery's walk is kept clear.
         const was = mine.map((c) => [c, props[c]!] as const);
-        for (const c of mine) props[c] = c === step || walk.includes(c) ? -1 : RAIL;
+        for (const c of mine) props[c] = steps.includes(c) || walk.includes(c) ? -1 : RAIL;
         if (!reachable()) {
           for (const [c, p] of was) props[c] = p;
           continue;
         }
-        gallery.push(...walk, step);
+        gallery.push(...walk, ...steps);
         break;
       }
     }

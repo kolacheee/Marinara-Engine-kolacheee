@@ -1072,6 +1072,23 @@ export function DungeonMapView({
         if (guard.count > 2) paintGuard(ctx, guard.x * T - 1, guard.y * T - 8, false);
         if (guard.count > 1) paintGuard(ctx, guard.x * T + 7, guard.y * T - 5, false);
         paintGuard(ctx, guard.x * T + (guard.count > 1 ? -3 : 1), guard.y * T - 3, guard.heart);
+        // Asleep, off watch (owner 2026-11-18, "Authored guard set-ups"): a drift of z's over them.
+        if (guard.asleep)
+          for (const [k, [zx, zy, zs]] of (
+            [
+              [T - 4, -10, 5],
+              [T + 2, -16, 4],
+              [T + 7, -21, 3],
+            ] as const
+          ).entries()) {
+            const [ox, oy] = [guard.x * T + zx, guard.y * T + zy];
+            ctx.fillStyle = "rgba(10, 12, 24, 0.85)";
+            ctx.fillRect(ox - 1, oy - 1, zs + 2, zs + 2);
+            ctx.fillStyle = k === 0 ? "#cfe0ff" : "#a8c0f0";
+            ctx.fillRect(ox, oy, zs, 1);
+            ctx.fillRect(ox, oy + zs - 1, zs, 1);
+            for (let d = 1; d < zs - 1; d++) ctx.fillRect(ox + zs - 1 - d, oy + d, 1, 1);
+          }
         // The guards who carry a locked room's key: a gold key over them (panel round 31: who holds it).
         if (guard.key) {
           const [kx, ky] = [guard.x * T + T - 6, guard.y * T - 10];

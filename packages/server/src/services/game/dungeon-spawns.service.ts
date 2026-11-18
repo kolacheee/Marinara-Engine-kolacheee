@@ -268,6 +268,8 @@ export interface DungeonGuardMark {
   face?: { x: number; y: number };
   /** They stand on a gallery over the room. */
   raised?: boolean;
+  /** They are asleep, off watch: no sight to show. */
+  asleep?: boolean;
 }
 
 /** The step from one cell toward another, kept to one axis unless it is plainly diagonal. */
@@ -372,7 +374,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const raised = (here.map.gallery ?? []).filter(
       ({ x, y }) => inRoom(x, y) && dungeonWalkable(cells, x, y) && !onLink(x, y),
     );
-    if (raised.length && area.role !== "heart") {
+    if (raised.length && area.gallery) {
       const mid = raised[Math.floor(raised.length / 2)]!;
       const face = stepToward(mid, centre);
       return [
@@ -392,16 +394,18 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const face =
       area.role === "heart" && door
         ? stepToward(at, door)
-        : held
-          ? stepToward(held, at.x === held.x && at.y === held.y ? centre : at)
-          : stepToward(at, door ?? centre);
+        : held && (at.x !== centre.x || at.y !== centre.y)
+          ? stepToward(at, centre)
+          : held
+            ? stepToward(held, at)
+            : stepToward(at, door ?? centre);
     return [
       {
         ...at,
         area: area.area,
         count: foes.length,
         heart: area.role === "heart",
-        face,
+        ...(area.asleep ? { asleep: true } : { face }),
         ...(post ? { post } : {}),
         ...key,
       },
