@@ -1,0 +1,687 @@
+{
+  "size": [
+    768,
+    576
+  ],
+  "lots": [
+    {
+      "id": "proof-0",
+      "x": 48,
+      "base": 240,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 2,
+        "roof_file": "roof-hip-cross-c5-w2",
+        "panels": [
+          "ground-baker-c4-w2",
+          "floor-a-c5-w2"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        48,
+        144,
+        96,
+        96
+      ],
+      "entrance": [
+        72,
+        240
+      ],
+      "painted": [
+        48,
+        48,
+        96,
+        192
+      ],
+      "overhang": [
+        48,
+        48,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "proof-1",
+      "x": 144,
+      "base": 240,
+      "spec": {
+        "c5": true,
+        "width": 1,
+        "floors": 2,
+        "roof_file": "roof-gable-c5-w1",
+        "panels": [
+          "ground-door-v1-w1-c0",
+          "floor-b-right-c5-w1"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 24,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        144,
+        144,
+        48,
+        96
+      ],
+      "entrance": [
+        168,
+        240
+      ],
+      "painted": [
+        144,
+        48,
+        48,
+        192
+      ],
+      "overhang": [
+        144,
+        48,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "proof-2",
+      "x": 192,
+      "base": 240,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 2,
+        "roof_file": "roof-gable-d2-c5-w2",
+        "panels": [
+          "ground-door-v2-w2-c0",
+          "storey-shuttered-c4-w2"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        192,
+        144,
+        96,
+        96
+      ],
+      "entrance": [
+        216,
+        240
+      ],
+      "painted": [
+        192,
+        48,
+        96,
+        192
+      ],
+      "overhang": [
+        192,
+        48,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "proof-3",
+      "x": 288,
+      "base": 240,
+      "spec": {
+        "c5": true,
+        "width": 1,
+        "floors": 2,
+        "roof_file": "roof-gable-c5-w1",
+        "panels": [
+          "ground-work-v2-w1-c0",
+          "storey-oriel-w1-c0"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 24,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        288,
+        144,
+        48,
+        96
+      ],
+      "entrance": [
+        312,
+        240
+      ],
+      "painted": [
+        288,
+        48,
+        48,
+        192
+      ],
+      "overhang": [
+        288,
+        48,
+        48,
+        96
+      ]
+    },
+    {
+      "id": "proof-4",
+      "x": 336,
+      "base": 240,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 2,
+        "roof_file": "roof-cross-c5-w2",
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        336,
+        144,
+        96,
+        96
+      ],
+      "entrance": [
+        360,
+        240
+      ],
+      "painted": [
+        336,
+        48,
+        96,
+        192
+      ],
+      "overhang": [
+        336,
+        48,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "proof-5",
+      "x": 480,
+      "base": 288,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 2,
+        "roof_file": "roof-hip-d2-c5-w2",
+        "panels": [
+          "ground-smith-c4-w2",
+          "floor-b-c5-w2"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        480,
+        192,
+        96,
+        96
+      ],
+      "entrance": [
+        504,
+        288
+      ],
+      "painted": [
+        480,
+        96,
+        96,
+        192
+      ],
+      "overhang": [
+        480,
+        96,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "proof-6",
+      "x": 576,
+      "base": 288,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 2,
+        "roof_file": "roof-hip-d2-c5-w2",
+        "panels": [
+          "ground-door-v2-w2-c0",
+          "storey-recessed-c4-w2"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        576,
+        192,
+        96,
+        96
+      ],
+      "entrance": [
+        600,
+        288
+      ],
+      "painted": [
+        576,
+        96,
+        96,
+        192
+      ],
+      "overhang": [
+        576,
+        96,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "proof-7",
+      "x": 48,
+      "base": 528,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 3,
+        "roof_file": "roof-hip-d2-c5-w2",
+        "panels": [
+          "ground-work-v2-w2-c0",
+          "storey-arrangement-a-c4-w2",
+          "storey-arrangement-b-c4-w2"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        48,
+        432,
+        96,
+        96
+      ],
+      "entrance": [
+        72,
+        528
+      ],
+      "painted": [
+        48,
+        288,
+        96,
+        240
+      ],
+      "overhang": [
+        48,
+        288,
+        96,
+        144
+      ]
+    },
+    {
+      "id": "proof-8",
+      "x": 144,
+      "base": 528,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 3,
+        "roof_file": "roof-hip-d2-c5-w2",
+        "panels": [
+          "ground-baker-c4-w2",
+          "storey-arrangement-c-c4-w2",
+          "storey-oriel-w2-c0"
+        ],
+        "overlays": [],
+        "returns": [
+          "right"
+        ],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          },
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "roof_contacts": [
+          {
+            "side": "right",
+            "roof": "roof-hip-d2-c5-w2",
+            "top": 0,
+            "neighbour": "proof-connected-rear-wing"
+          }
+        ],
+        "abutments": []
+      },
+      "footprint": [
+        144,
+        432,
+        96,
+        96
+      ],
+      "entrance": [
+        168,
+        528
+      ],
+      "painted": [
+        144,
+        288,
+        96,
+        240
+      ],
+      "overhang": [
+        144,
+        288,
+        96,
+        144
+      ]
+    },
+    {
+      "id": "proof-connected-rear-wing",
+      "x": 240,
+      "base": 528,
+      "spec": {
+        "c5": true,
+        "width": 2,
+        "floors": 2,
+        "roof_file": "roof-hip-d2-c5-w2",
+        "panels": [
+          "ground-smith-c4-w2",
+          "floor-a-c5-w2"
+        ],
+        "overlays": [],
+        "returns": [],
+        "storeys": [
+          {
+            "kind": "timber",
+            "colour": 0
+          }
+        ],
+        "roof": "gable",
+        "entrance_dx": 72,
+        "tone": "",
+        "complete_file": "house-rear-wing-c5r2",
+        "roof_contacts": [],
+        "abutments": []
+      },
+      "footprint": [
+        240,
+        432,
+        96,
+        96
+      ],
+      "entrance": [
+        288,
+        528
+      ],
+      "rear_wing_footprint": [
+        288,
+        384,
+        48,
+        48
+      ],
+      "foreground_mask": [
+        0,
+        0,
+        96,
+        192
+      ],
+      "painted": [
+        240,
+        288,
+        96,
+        240
+      ],
+      "overhang": [
+        240,
+        288,
+        96,
+        144
+      ]
+    }
+  ],
+  "props": [
+    {
+      "file": "fence-0",
+      "x": 336,
+      "base": 360,
+      "id": "dead-end-court-gate"
+    },
+    {
+      "file": "yard-0",
+      "x": 336,
+      "base": 408,
+      "id": "dead-end-well"
+    }
+  ],
+  "roads": [
+    {
+      "rect": [
+        48,
+        240,
+        384,
+        48
+      ],
+      "kind": "side",
+      "file": "street-side-c3",
+      "id": "L-T-dead-end",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        432,
+        48,
+        48,
+        480
+      ],
+      "kind": "side",
+      "file": "street-side-c3",
+      "id": "L-T-dead-end",
+      "horizontal": false,
+      "clear": true
+    },
+    {
+      "rect": [
+        480,
+        288,
+        192,
+        48
+      ],
+      "kind": "side",
+      "file": "street-side-c3",
+      "id": "L-T-dead-end",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        48,
+        528,
+        624,
+        48
+      ],
+      "kind": "side",
+      "file": "street-side-c3",
+      "id": "L-T-dead-end",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        336,
+        288,
+        96,
+        48
+      ],
+      "kind": "side",
+      "file": "street-side-c3",
+      "id": "L-T-dead-end",
+      "horizontal": true,
+      "clear": true
+    },
+    {
+      "rect": [
+        336,
+        480,
+        96,
+        48
+      ],
+      "kind": "side",
+      "file": "street-side-c3",
+      "id": "L-T-dead-end",
+      "horizontal": true,
+      "clear": true
+    }
+  ],
+  "plots": [
+    {
+      "id": "connected-wing-property",
+      "principal": "proof-connected-rear-wing",
+      "front": [
+        240,
+        432,
+        96,
+        96
+      ],
+      "rear": [
+        288,
+        384,
+        48,
+        48
+      ],
+      "yard": [
+        240,
+        384,
+        48,
+        48
+      ]
+    }
+  ],
+  "courts": [
+    {
+      "id": "rear-wing-court",
+      "rect": [
+        336,
+        336,
+        96,
+        144
+      ],
+      "access": [
+        384,
+        480,
+        48,
+        48
+      ]
+    }
+  ],
+  "square": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "square_notch": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

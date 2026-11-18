@@ -1,0 +1,708 @@
+{
+  "part": "C5",
+  "round": 3,
+  "verdict": "fail",
+  "failed": [
+    "compose.py",
+    "r17-C5-review.py",
+    "r17-C5-cap-fill-joins-1x",
+    "r17-C5-cap-fill-joins-4x",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint"
+  ],
+  "files": {
+    "church-porch-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "court-closure-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-a-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-a-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-a-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-b-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-b-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-b-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-c-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-c-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-c-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fountain-shadow-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-connector-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-guard-bay-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cobbler-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-tailor-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guard-notice-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-rear-wing-c5r2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-left-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-return-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-left-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-left-c5r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-left-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-right-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-right-c5r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-right-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-left-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-left-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-left-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-right-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-right-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-right-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-filled-gable-c5r1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-filled-gable-c5r1-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-filled-gable-c5r1-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d2-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d2-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d3-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d3-c5-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d3-c5-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-d2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-d2-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-d2-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-hip-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-hip-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-hip-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-b-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-b-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shop-apothecary-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shop-cobbler-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shop-tailor-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-east-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-east-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-slabs-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-right-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v0-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v1-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v3-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v4-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v5-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "townhall-market-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-access-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-shoulder-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "washing-short-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 5/6/17, the coordinator's continuous-frontage/no-freestanding-house rule, and the operator's joined-block requirement remain unmet in the southern district. south-L-1 has ground footprint [240,1248,96,96], while south-L-2 is [336,1152,48,96]. Their only contact is the point (336,1248): they share zero pixels of wall length. The new south-L-return is [528,1152,48,96], while south-L-3 is [576,1248,48,96]; these likewise meet only at (576,1248). The final still reads as individual narrow towers stepping past one another, rather than a connected L frontage. Roof/facade paint overlapping in screen space does not supply the missing ground-level wing. See critic-r17C5-3-south-footprints-1x/4x.png and the two south-*-contact-8x.png crops.",
+        "south-corner-workshop at [432,1152,48,96] has no positive-length shared edge with any house lot. It remains an isolated two-storey stack between the service lanes. The southern L was a specific layout repair; this is not resolved by the separate, now-correct connected-rear-wing acceptance example.",
+        "c5_contacts() and the connected-frontage section of c4_instance_audit() accept adjacent x extents whenever abs(base difference)<=96. With the declared 96px-deep principal footprints, a 96px base offset gives a corner-only contact. Consequently the compositor calls these lots neighbours and adds receiving-wall treatment even though their ground footprints do not form a connected frontage. The passing repeated-piece audit is not a proof of ground-level block connectivity."
+      ],
+      "fix": "Rework these southern placements into actual joined L/stepped blocks. Shift or extend the returns by a registered 48px course, or use a legal attached wing, so each intended connection has at least a 48px shared ground edge. Join or incorporate south-corner-workshop into its block while preserving the 48px bent public alley, 24px service passage, low-quarter heights, yards and clear wall lane. Derive architectural adjacency from positive-length shared footprint edges, and add a ground-plan proof of the final southern district. Preserve the repaired cap/abutment art, mixed roof families and two-in-five selections; rerender the full-city derivatives after the layout repair."
+    },
+    "r17-C5-review.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/4/20: pieces() labels a sheet 'cap-fill-joins', but pair() only lays the left fill, right fill, complete cap and slate complete cap side by side with gaps. Since the second redraw, roof-filled-gable-c5r1-w2 is a single cap-b image-tool drawing, not an assembly containing either directional fill. c5_build() places a complete roof_file, and the current final's draw records contain no roof-fill placement. The replacement cap now passes as a drawing, but this sheet no longer exposes any cap-to-fill, fill-to-ridge or fill-to-end contact. It cannot establish the required continuous slope/tile direction and seamless extension.",
+        "The actual final southern footprint connections identified under compose.py are not covered by the connected L acceptance house. The new rear-wing proof is a real improvement, but it is a different assembly and does not validate the final district's point-only connections."
+      ],
+      "fix": "Add an actual registered roof assembly using the directional fill exports, ridge and end/hip/valley transitions, and show its contacts at native size and nearest-neighbour 4x/8x. Keep the passing complete-cap comparison as a separate whole-drawing proof. Also render the final southern block with its ground footprints and shared wall lengths; reject corner-only contacts as continuous frontages. Do not count asset existence, matching alpha or side-by-side swatches as a passing join test."
+    },
+    "r17-C5-cap-fill-joins-1x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/4/20: the sheet shows four disconnected swatches. The object labelled 'joined cap' is now a single complete cap drawing; neither displayed fill participates in it. There is no visible cap/fill/ridge/end junction to inspect, so the required modular roof-continuity proof is still absent. The new complete cap itself passes."
+      ],
+      "fix": "Replace or supplement this sheet with a genuine cap-plus-fill assembly with matching directional transitions. Show the assembled roof at 1x and exact nearest-neighbour 4x, with an 8x contact crop if needed; retain a labelled complete-cap comparison separately."
+    },
+    "r17-C5-cap-fill-joins-4x": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/4/20: the sheet shows four disconnected swatches. The object labelled 'joined cap' is now a single complete cap drawing; neither displayed fill participates in it. There is no visible cap/fill/ridge/end junction to inspect, so the required modular roof-continuity proof is still absent. The new complete cap itself passes."
+      ],
+      "fix": "Replace or supplement this sheet with a genuine cap-plus-fill assembly with matching directional transitions. Show the assembled roof at 1x and exact nearest-neighbour 4x, with an 8x contact crop if needed; retain a labelled complete-cap comparison separately."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "The southern block around x240..720/y1152..1344 still fails continuous frontage: the intended joins at (336,1248) and (576,1248) touch only at ground-footprint corners, and the house at x432..480/y1152..1248 is detached. See the annotated footprint composite and 8x contact crops. This prevents acceptance under FIXES 5/6/17 and the standing instruction to join the blocks.",
+        "The rest of the major cycle changes are visible: bent gate road past the inn, inhabited side lanes, stepped northern groups, mixed heights/roof families, uneven wall towers, an enclosed populated square, directional door landings and repaired roof/party-wall/fountain contacts. This is a targeted remaining layout failure, not a finding that C5 only changed colours."
+      ],
+      "fix": "Make the southern connections real at ground level, keep the narrow routes and enclosed working yards, then regenerate and inspect the native 1920x1440 final. The individual C5 PNGs do not require blanket redrawing for this finding."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3840x2880 nearest-neighbour scaling passes, but the image retains the disconnected southern frontage described under r17-city-final."
+      ],
+      "fix": "Regenerate by nearest-neighbour 2x from the corrected native final."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "All three panels are correctly labelled and pixel-identical to their sources at literal 1x. The C5 panel still contains the failed southern block connections."
+      ],
+      "fix": "Preserve the native today/R15 panels and replace the C5 panel after the southern layout repair."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "The image is the exact native greyscale conversion. The square, church, gate and pale main route are readable, but the southern houses still appear as disconnected stacks; greyscale does not repair the missing ground-level L connections."
+      ],
+      "fix": "Regenerate from the repaired final, preserving the improved civic/main-road value hierarchy."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-L-T-dead-end-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-seven-cell-gable-hip-wing-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-tall-low-left-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-tall-low-right-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-curtain-stair-tower-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-outer-turn-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-C5-gate-wall-connectors-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art critic for Round 17 Part C5, round 3. I did not draw or edit the art. Read BRIEF-17 in full, both panel briefs, the NOTES drawing-method sections and all twenty triaged cycle-5 fixes, and inspected compose.py, the current proof generator and the preceding critic/repair records. The final critic-only instruction controls: only this JSON and critic-r17C5-3-*.png review composites were written; no production files, branch, commits or pushes were changed. Precedence: BRIEF-17 retains its fixed courses, 1-2-cell principal lots plus yards, twice-R15 sign scale, lot-contained overlays, specified landmark footprints and eight-cell route rule over conflicting panel waivers. The coordinator's 40x30 native 48px cells require 1920x1440; the earlier approximate 1200x900 is not a size failure. Inspected every one of the 116 current C5 production PNGs at literal 1x and nearest-neighbour 4x on fresh assets-01..22 sheets; inspected native final/comparison/squint, exact saved derivative crops, reference-house comparisons, court/entry normal-and-reveal proofs, the actual L/T and seven-cell rear-wing assemblies, both tall/low hands and all nine width pairs, complete wall/stair/outer-turn/gate contacts, signs and matching goods. Fresh 3x3 repeat sheets cover both directional roof fills and all eight ground receivers (slabs, main paving, workyard, cobble, main/side street, lane, ditch); longitudinal street/ditch contacts were assessed according to their intended orientation. Props were mounted on summer grass and workyard paving at 1x/4x. No seasonal partners belong to C5, so seasonal-ground/season-mask overlays are not applicable. Code compared all 42 roof palette-partner alpha masks with their sources: zero differences. Technical checks: all 116 inventory dimensions and SHA-256 hashes match; alpha is only 0/255, transparent RGB is zero, no detached 1-2px alpha components were found, and every applicable facade retains the required rows 0/47. Independently replayed exact 64-vote RGBA modes for the initial, first-repair and second-repair records: 14,106,624 + 11,585,536 + 10,321,920 samples, zero mismatches, with matching source hashes. Fresh in-memory c5_render output exactly matches the saved native final. The 2x export, all three 3x crops, greyscale and all three comparison panels are pixel-exact derivatives. Repetition checks on actual current draws returned zero failures in 167 final-city windows, 20 C5 L/T windows, 22 retained E L-block windows, 47 retained market windows and 20 retained height-test windows. The original E rear-cap and forced-eight-shop patterns are no longer present. This audit is not a substitute for physical block connectivity, as documented in the failure. Storey histogram for 41 modular buildings: 1:3, 2:15, 3:11, 4:8, 5:4. Including separate sheds/ranges/open hall and staircourt: 49 buildings, 1:10, 2:16, 3:11, 4:8, 5:4; one-storey share 20.408%. Civic/defensive landmarks and their porch/toll attachments are separate from house-storey counts. Roof mix: 20 terracotta, 13 slate, 8 brown. No frontage grass is painted in the final. Cycle-5 coverage: complete pitched caps (1), single contour ownership and continuous returns (2/3), restrained material families/angular hall (4), real northern yards/courts (5), inhabited side doors and bent routes (6), framed 10x7 notched square (7), east church porch/churchyard (8), distinct paving and gate approach (9), contacted caster shade (10), joined defences/access stair (11/19), mounted readable trades and matching goods (12/13), usable inn/side doors and reveal states (14), structural/window/height variety (15), three vendors used twice plus directed customers/porter/bench visitor/guard (16), lower southern houses/forge/workyards (17), and secondary recess destinations (18) are visibly addressed. Remaining exceptions are the southern physical connections within items 5/6/17 and the missing actual modular roof-contact acceptance proof within items 1/4/20. The second redraw resolves the previous source failures: complete cap has no spliced interior, slate houses preserve facade materials, directional doors/porch have real painted landings, the fountain shadow contacts its painted foot at y1006, and rectangular roof-textured abutment tabs are gone. The new rear-wing/L acceptance drawing is connected and passes. All 116 production PNGs pass as individual drawings in this review; their isolated approval does not certify every possible unshown modular join. The three named final crops pass because they exclude the failed southern connection area and show the repaired details. The full-city derivatives fail for the visible southern layout defect. This is a saved-art review, not a runtime collision/pathfinding or in-engine playtest."
+}

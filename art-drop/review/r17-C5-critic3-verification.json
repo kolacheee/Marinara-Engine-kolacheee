@@ -1,0 +1,837 @@
+{
+  "passed": 183,
+  "failed": 0,
+  "passing_pngs_preserved": 126,
+  "new_production_pngs": 4,
+  "source_drawings": 2,
+  "mode_samples": 2654208,
+  "checks": [
+    {
+      "name": "church-porch-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "court-closure-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-a-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-a-left-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-a-right-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-b-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-b-left-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-b-right-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-c-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-c-left-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "floor-c-right-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "forge-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "fountain-shadow-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "gate-connector-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "gate-guard-bay-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "ground-cobbler-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "ground-tailor-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "guard-notice-c5r1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "house-rear-wing-c5r2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "inn-front-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "party-left-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "party-return-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "party-right-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w3 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w3-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w3-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-left-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-left-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-left-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-right-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-right-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-right-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w1-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w1-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d2-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d2-c5-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d2-c5-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d3-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d3-c5-w1-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d3-c5-w1-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-c5-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-c5-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w3 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w3-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w3-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-d2-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-d2-c5-w2-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-d2-c5-w2-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-end-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-end-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-end-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-narrow-hip-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-narrow-hip-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-narrow-hip-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-b-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-b-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-b-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-c5-brown passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-c5-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "shop-apothecary-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "shop-cobbler-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "shop-tailor-c5-w1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "side-house-east-c5r1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "side-house-east-c5r1-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "side-house-west-c5r1 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "side-house-west-c5r1-slate passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "square-slabs-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-right-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v0-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v1-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v2-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v3-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v4-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v5-c5-w2 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "townhall-market-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "vendor-a-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "vendor-b-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "vendor-c-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-access-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-curtain-b-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-curtain-c-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-curtain-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-shoulder-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-top-a-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-top-b-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-top-c-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-tower-a-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-tower-b-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "wall-tower-c-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "washing-short-c5 passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-city-final-crop-square-3x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-city-final-crop-street-3x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-city-final-crop-gate-3x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-L-T-dead-end-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-seven-cell-gable-hip-wing-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-tall-low-left-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-tall-low-right-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-curtain-stair-tower-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-outer-turn-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "r17-C5-gate-wall-connectors-1x passing PNG unchanged",
+      "passed": true
+    },
+    {
+      "name": "all prior files outside named C5 scope preserved",
+      "passed": true,
+      "changed": []
+    },
+    {
+      "name": "south-L-0 / south-L-1 actual shared ground wall",
+      "passed": true,
+      "length": 48,
+      "edges": [
+        {
+          "axis": "vertical",
+          "segment": [
+            240,
+            1248,
+            240,
+            1296
+          ],
+          "length": 48
+        }
+      ]
+    },
+    {
+      "name": "south-L-0 / south-L-1 wall paint fills shared edge",
+      "passed": true,
+      "painted_contact": 48
+    },
+    {
+      "name": "south-L-1 / south-L-2 actual shared ground wall",
+      "passed": true,
+      "length": 48,
+      "edges": [
+        {
+          "axis": "vertical",
+          "segment": [
+            336,
+            1248,
+            336,
+            1296
+          ],
+          "length": 48
+        }
+      ]
+    },
+    {
+      "name": "south-L-1 / south-L-2 wall paint fills shared edge",
+      "passed": true,
+      "painted_contact": 48
+    },
+    {
+      "name": "south-L-return / south-L-3 actual shared ground wall",
+      "passed": true,
+      "length": 48,
+      "edges": [
+        {
+          "axis": "vertical",
+          "segment": [
+            576,
+            1200,
+            576,
+            1248
+          ],
+          "length": 48
+        }
+      ]
+    },
+    {
+      "name": "south-L-return / south-L-3 wall paint fills shared edge",
+      "passed": true,
+      "painted_contact": 48
+    },
+    {
+      "name": "south-L-3 / south-L-4 actual shared ground wall",
+      "passed": true,
+      "length": 48,
+      "edges": [
+        {
+          "axis": "vertical",
+          "segment": [
+            624,
+            1248,
+            624,
+            1296
+          ],
+          "length": 48
+        }
+      ]
+    },
+    {
+      "name": "south-L-3 / south-L-4 wall paint fills shared edge",
+      "passed": true,
+      "painted_contact": 48
+    },
+    {
+      "name": "south-L-4 / south-square-west actual shared ground wall",
+      "passed": true,
+      "length": 96,
+      "edges": [
+        {
+          "axis": "vertical",
+          "segment": [
+            672,
+            1248,
+            672,
+            1344
+          ],
+          "length": 96
+        }
+      ]
+    },
+    {
+      "name": "south-L-4 / south-square-west wall paint fills shared edge",
+      "passed": true,
+      "painted_contact": 96
+    },
+    {
+      "name": "detached workshop incorporated into attached return",
+      "passed": true
+    },
+    {
+      "name": "southern footprints preserve public and private routes",
+      "passed": true,
+      "overlaps": []
+    },
+    {
+      "name": "48px bent alley remains",
+      "passed": true
+    },
+    {
+      "name": "24px service passage remains",
+      "passed": true
+    },
+    {
+      "name": "southern yards remain",
+      "passed": true
+    },
+    {
+      "name": "south-L-1 former corner-only connection rejected",
+      "passed": true
+    },
+    {
+      "name": "south-L-1 corner-only roof receiving treatment rejected",
+      "passed": true
+    },
+    {
+      "name": "south-L-return former corner-only connection rejected",
+      "passed": true
+    },
+    {
+      "name": "south-L-return corner-only roof receiving treatment rejected",
+      "passed": true
+    },
+    {
+      "name": "west-0 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "north-middle-1 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "square-apothecary receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "square-apothecary receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "merchant-3 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "merchant-4 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "inn-square-wing receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "south-L-0 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "south-L-2 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "south-square-1 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "poor-1 receiving wall has real ground adjacency",
+      "passed": true
+    },
+    {
+      "name": "audit frontage edges all have real physical wall contact",
+      "passed": true
+    },
+    {
+      "name": "final repetition remains within two-in-five",
+      "passed": true,
+      "windows": 167
+    },
+    {
+      "name": "ground plan uses final district footprints",
+      "passed": true
+    },
+    {
+      "name": "critic3-roof-a exact 64-vote mode and saved source",
+      "passed": true
+    },
+    {
+      "name": "critic3-roof-b exact 64-vote mode and saved source",
+      "passed": true
+    },
+    {
+      "name": "3 cell assembly actual exported-paint provenance",
+      "passed": true,
+      "source_pixels": {
+        "4": 16192,
+        "1": 1504,
+        "2": 1536,
+        "3": 1504
+      },
+      "mismatches": 0
+    },
+    {
+      "name": "3 cell cap/fill/ridge/end has no interior alpha gaps",
+      "passed": true
+    },
+    {
+      "name": "3 cell source labels match saved proof",
+      "passed": true
+    },
+    {
+      "name": "4 cell assembly actual exported-paint provenance",
+      "passed": true,
+      "source_pixels": {
+        "4": 16288,
+        "1": 3760,
+        "2": 3840,
+        "3": 3760
+      },
+      "mismatches": 0
+    },
+    {
+      "name": "4 cell cap/fill/ridge/end has no interior alpha gaps",
+      "passed": true
+    },
+    {
+      "name": "4 cell source labels match saved proof",
+      "passed": true
+    },
+    {
+      "name": "5 cell assembly actual exported-paint provenance",
+      "passed": true,
+      "source_pixels": {
+        "4": 16384,
+        "1": 6016,
+        "2": 6144,
+        "3": 6016
+      },
+      "mismatches": 0
+    },
+    {
+      "name": "5 cell cap/fill/ridge/end has no interior alpha gaps",
+      "passed": true
+    },
+    {
+      "name": "5 cell source labels match saved proof",
+      "passed": true
+    },
+    {
+      "name": "cap-fill-joins exact nearest4x",
+      "passed": true
+    },
+    {
+      "name": "cap-fill-contact-guides exact nearest4x",
+      "passed": true
+    },
+    {
+      "name": "southern-ground-plan exact nearest4x",
+      "passed": true
+    },
+    {
+      "name": "complete-cap-comparison exact nearest4x",
+      "passed": true
+    },
+    {
+      "name": "cap-to-fill exact nearest8x contact",
+      "passed": true
+    },
+    {
+      "name": "fill-to-ridge exact nearest8x contact",
+      "passed": true
+    },
+    {
+      "name": "fill-to-end exact nearest8x contact",
+      "passed": true
+    },
+    {
+      "name": "fill-repeat exact nearest8x contact",
+      "passed": true
+    },
+    {
+      "name": "general exports routes thresholds repetition and final derivatives pass",
+      "passed": true,
+      "suite_passed": 513
+    },
+    {
+      "name": "current-town comparison literal1x",
+      "passed": true
+    },
+    {
+      "name": "r15-city-mockup comparison literal1x",
+      "passed": true
+    },
+    {
+      "name": "r17-city-final comparison literal1x",
+      "passed": true
+    }
+  ]
+}

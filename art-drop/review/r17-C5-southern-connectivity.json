@@ -1,0 +1,145 @@
+{
+  "crop": [
+    96,
+    1008,
+    768,
+    1392
+  ],
+  "lots": [
+    {
+      "id": "south-L-0",
+      "footprint": [
+        144,
+        1200,
+        96,
+        96
+      ],
+      "incorporated_lots": []
+    },
+    {
+      "id": "south-L-1",
+      "footprint": [
+        240,
+        1248,
+        96,
+        96
+      ],
+      "incorporated_lots": []
+    },
+    {
+      "id": "south-L-2",
+      "footprint": [
+        336,
+        1200,
+        48,
+        96
+      ],
+      "incorporated_lots": [
+        "south-corner-workshop"
+      ]
+    },
+    {
+      "id": "south-L-3",
+      "footprint": [
+        576,
+        1200,
+        48,
+        96
+      ],
+      "incorporated_lots": []
+    },
+    {
+      "id": "south-L-4",
+      "footprint": [
+        624,
+        1248,
+        48,
+        96
+      ],
+      "incorporated_lots": []
+    },
+    {
+      "id": "south-square-west",
+      "footprint": [
+        672,
+        1248,
+        48,
+        96
+      ],
+      "incorporated_lots": []
+    },
+    {
+      "id": "south-L-return",
+      "footprint": [
+        528,
+        1152,
+        48,
+        96
+      ],
+      "incorporated_lots": []
+    }
+  ],
+  "edges": [
+    {
+      "a": "south-L-0",
+      "b": "south-L-1",
+      "axis": "vertical",
+      "segment": [
+        240,
+        1248,
+        240,
+        1296
+      ],
+      "length": 48
+    },
+    {
+      "a": "south-L-1",
+      "b": "south-L-2",
+      "axis": "vertical",
+      "segment": [
+        336,
+        1248,
+        336,
+        1296
+      ],
+      "length": 48
+    },
+    {
+      "a": "south-L-3",
+      "b": "south-L-4",
+      "axis": "vertical",
+      "segment": [
+        624,
+        1248,
+        624,
+        1296
+      ],
+      "length": 48
+    },
+    {
+      "a": "south-L-3",
+      "b": "south-L-return",
+      "axis": "vertical",
+      "segment": [
+        576,
+        1200,
+        576,
+        1248
+      ],
+      "length": 48
+    },
+    {
+      "a": "south-L-4",
+      "b": "south-square-west",
+      "axis": "vertical",
+      "segment": [
+        672,
+        1248,
+        672,
+        1344
+      ],
+      "length": 96
+    }
+  ],
+  "rule": "Positive shared ground edge >=48px. Corner-only contacts do not join a frontage."
+}

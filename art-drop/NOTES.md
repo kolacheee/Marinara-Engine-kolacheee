@@ -1,3 +1,180 @@
+# Round 17 — Part C5: critic-r17C5-3 redraw
+
+Repaired the **actual southern frontage**: both former point-only joins now
+share **48px ground walls**; the detached workshop is incorporated into the
+attached western return. The **48px bent alley**, **24px service passage**,
+yards and wall lane remain clear. Architectural adjacency now requires a
+positive shared footprint edge, with corner-only regression checks.
+[Final southern ground plan](review/r17-C5-southern-ground-plan-1x.png).
+
+**Two built-in image-tool drawings on solid magenta**, selecting **B**, supply
+four new matched roof exports. Same method: painted registration, palette
+lock, exact **8×8 RGBA mode**, one-pixel outline cleanup, hard **0/255 alpha**,
+zero hidden RGB. Code only registers, reduces, cleans, wraps and composites
+paint. Real cap/fill/ridge/end assemblies at three depths replace the swatch
+proxy, with **1×/4×/8×** contact proofs and source maps.
+[Prompts](review/r17-C5-critic3-generation.json) ·
+[Processing](review/r17-C5-critic3-processing.json).
+
+Regenerated all seven final outputs and C5 sheets. **513 general + 183 focused
+checks pass**; **126 passing PNGs remain byte-identical**. Replayed **2,654,208
+new mode samples**. Modular storeys **1:3, 2:14, 3:11, 4:8, 5:4**; including
+ancillary buildings **1:10, 2:15, 3:11, 4:8, 5:4** (**20.83%** one-storey).
+Roof mix: **20 terracotta / 13 slate / 7 brown**.
+
+[Final city](review/r17-city-final.png) · [Review index](review/r17-C5-review.html) ·
+[All fixes and brief precedence](review/r17-C5-critic3-response.json).
+BRIEF-17 still overrides conflicting panel waivers on lot depth, sign scale,
+gate footprint, overlay containment and eight-cell street variation.
+Saved-art self-checks, not independent approval or runtime testing. No
+seasonal partners, branch change, commit or push; edits stay in `art-drop/`.
+
+# Round 17 — Part C5: critic-r17C5-2 redraw
+
+Replaced all **15 failed production PNGs**, added one connected rear-wing
+house, and preserved all **100 passing PNGs byte-for-byte**. **13 large
+built-in image-tool drawings on solid magenta** supplied the repairs, with
+two candidates for the cap, each directional house, porch and rear wing.
+Same method: painted registration, palette lock, exact **8×8 RGBA mode**,
+native outline cleanup, hard **0/255 alpha**, zero hidden RGB. Code only
+registers, reduces, masks and composites drawn paint.
+[Prompts/selections](review/r17-C5-critic2-generation.json) ·
+[Processing](review/r17-C5-critic2-processing.json).
+
+Removed roof-textured abutment tabs; a single **8px taller-lot return** now
+receives cap-specific flashing. Redrew the continuous filled cap, actual
+east/west lane doors and east-wall church porch; explicit roof masks preserve
+facades across colourways. The fountain shadow contacts its painted foot at
+**y1006**. Connected L/rear-wing proofs replace the detached substitute house.
+The accepted bent streets, alleys, inn road, heights and uneven towers remain.
+
+Regenerated all seven final renders and C5 sheets, including both tall/low
+hands for every width pair and painted-threshold normal/reveal views.
+**501 general + 189 focused checks pass**, including **10,321,920 new mode
+samples**. Modular storeys **1:3, 2:15, 3:11, 4:8, 5:4**; including ancillary
+buildings **1:10, 2:16, 3:11, 4:8, 5:4** (**20.41%** one-storey).
+Roof mix remains **20 terracotta / 13 slate / 8 brown**.
+
+[Final city](review/r17-city-final.png) · [Review index](review/r17-C5-review.html) ·
+[All twenty fixes and brief/panel precedence](review/r17-C5-critic2-response.json) ·
+[Focused checks](review/r17-C5-critic2-verification.json).
+Saved-art verification, not an independent critic verdict or runtime test.
+No seasonal partners apply. All authored changes stay in `art-drop/`;
+no branch change, commit or push.
+
+# Round 17 — Part C5: critic-r17C5-1 redraw
+
+Repaired all **22 failed production PNGs**, added **14 supporting pieces**, and
+kept all **79 passing C5 PNGs byte-identical**. **25 large image-tool drawings
+on solid magenta** supply the redraws, including multiple roof, inn, porch and
+side-house candidates. Same method: register, palette-lock, exact **8×8 RGBA
+mode sampling**, native outline cleanup, hard alpha **0/255**, zero hidden RGB.
+Code only registers, reduces, cleans, tile-wraps and composites drawn paint.
+[Prompts/sources](review/r17-C5-critic1-generation.json) ·
+[Processing/selections](review/r17-C5-critic1-processing.json).
+
+Reworked the lane edges with complete side houses, aligned legal rear yards,
+closed the northwest roof hole, reclaimed southern paving with an L-return
+and bent alley, and enclosed the eastern service court. Redrew human-scale
+church/toll entrances, inn access, cobbler goods, narrow windows, short caps,
+opaque roof fills and coherent curtain masonry. Wall contacts have single
+ownership; tall/low joins use drawn abutments; shadows project whole casters.
+Clearance now includes stationary people.
+
+Regenerated all seven final deliverables and the C5 review sheets, including
+actual L/T repetition, both tall/low joins, cap/fill repeats, property cutaways
+and the church door reveal. **498 general + 181 focused checks pass**,
+including **11,585,536 new mode samples**. Modular storeys **1:3, 2:15, 3:11,
+4:8, 5:4**; including ancillary buildings **1:10, 2:16, 3:11, 4:8, 5:4** —
+**20.41% one-storey**. Roof mix: **20 terracotta / 13 slate / 8 brown**.
+
+[Final city](review/r17-city-final.png) · [Review index](review/r17-C5-review.html) ·
+[All twenty fixes](review/r17-C5-critic1-response.json) ·
+[Focused verification](review/r17-C5-critic1-verification.json).
+BRIEF-17 still overrides conflicting panel suggestions. These are saved-art
+checks, not independent panel approval or runtime tests. All edits stay in
+`art-drop/`; no branch change, commit or push.
+
+# Round 17 — Part C5
+
+Rebuilt the **40×30-cell district** against the twenty cycle-5 fixes. Continuous
+frontages now follow a western stepped block, northeastern merchant trapezoid
+and southern L, with inhabited side streets, bounded service alleys and a bent
+**96px gate road** leading past the inn. The **10×7-cell civic square**, with a
+2×2 notch, has the church west, guildhall north, inn range east and market hall
+south. Six stalls, fountain, cross, unloading cart and **26 visible townsfolk**
+occupy it. Uneven wall towers, the new access stair and clear wall lane remain.
+This is a street-plan rebuild as well as an art pass.
+
+**32 large built-in image-tool drawings on solid magenta** supply complete
+pitched roofs, three floor arrangements, recessed sign bays, matching shop
+goods, an inn frontage, court closure, party return, curtain/stair masonry,
+church porch, forge, three vendors, square slabs and fountain shadow. Difficult
+long roofs, inn, valley and court assemblies have two candidates; selection
+sheets retain both. Selected **B** for the long gable and inn, **A** for the
+compact stair court. Two transverse roof and two curtain drawings supply
+structural variants. Same established method: register the drawing, palette
+lock without dithering, exact **8×8 RGBA mode sampling**, native cleanup of
+specks and doubled outlines, alpha **0/255**, zero RGB under transparency.
+Code crops, registers, reduces, recolours and composites drawn paint; it does
+not draw replacement building shapes or noise.
+[Prompts and sources](review/r17-C5-generation.json),
+[processing and selections](review/r17-C5-processing.json).
+
+Added **101 C5 PNGs** in `out/city17/` and extended `compose.py`. Roofs span
+**48/96/144px widths** and **96/144px depths**; roofs have six-colour ramps.
+Slates and browns retain each red roof's alpha pixel-for-pixel. Shared contours
+have one owner; continuous **8px party returns** receive lower eaves without
+restarting a cap every floor. New and composited facade modules retain the
+original course rows **0/47**. The facade/goods/inn pieces use native **48px**
+courses; vendors are **16×32**, porch/forge/toll bay **48×48**, curtain and access
+wall **96×144**, and the stair court **96×96**. Roof mix is **18 terracotta,
+12 slate, 8 brown**: **47.37%** terracotta, one family per block. No seasonal
+partners are introduced.
+
+The final is **1920×1440 at 1×**, exact **3840×2880 at 2×**. The coordinator's
+40×30 native cells supersede the earlier approximate 1200×900 canvas.
+[Final city](review/r17-city-final.png),
+[2×](review/r17-city-final-2x.png),
+[today / Round 15 / C5 at literal 1×](review/r17-city-final-vs-r15-vs-today.png),
+[current greyscale](review/r17-city-final-squint.png),
+[review index](review/r17-C5-review.html).
+The square/street/gate crops are exact **3×**. Every new piece has **1×/4×**
+and self/variant sheets; all eight ground bases used here have literal **3×3**
+repeats at **1×/4×**. Additional proofs show the 8×8 corner pilot, 16×12
+L/T/dead-end block, seven-cell roof composition, both tall/low orientations,
+all nine neighbouring width pairs, full wall contacts, actor supports and
+normal/reveal views.
+
+**445 acceptance checks pass**, including replay of **14,106,624 mode
+samples**, fixed stack courses, hard alpha/hidden RGB, palette silhouettes,
+exact review scales, painted approaches, route connectivity, resolved-piece
+and exposed-window repetition, and negative tests for the original Part E
+rear-roof and eight-shop defects. Those Part E corrections were already in
+this checkout; they are preserved and verified, not claimed as new repairs.
+The longest unbranched route is **384px / eight cells**. Public and private
+clear routes use **96/48/24px** widths; the fountain keeps **48px** to the hall.
+Caster masks are unioned once at **96/255 opacity**, within the brief's 50%
+limit, and clipped to their receiving surface and owning width.
+
+Storey histogram for **38 modular house/shop/rear stacks**:
+**1:4, 2:8, 3:12, 4:10, 5:4** — **10.53%** one-storey. Including all seven
+separate sheds/ranges/open hall and the two-storey staircourt closure gives
+**46 buildings: 1:11, 2:9, 3:12, 4:10, 5:4** — **23.91%** one-storey.
+Civic/defensive landmarks and their attached porch/toll bay are listed
+separately from house-storey counts. No frontage lawns are used.
+[Verification](review/r17-C5-verification.json),
+[resolved repetition audit](review/r17-C5-repeat-audit.json),
+[all twenty fixes and panel responses](review/r17-C5-response.json).
+
+**18,442 prior files outside the named edit scope remain byte-identical**.
+BRIEF-17 wins over panel suggestions for smaller signs, deeper principal
+lots, wider gate footprints, cross-lot shadows and waiving the eight-cell
+street rule. The square expansion stays within the coordinator's maximum.
+These are saved-art and authored-layout checks, not independent panel
+approval or runtime collision/pathfinding tests. Replay commands are in the
+response. All changes are inside `art-drop/`; no commit, push or branch change.
+
 # Round 17 — Part C4: critic-r17C4-2 redraw
 
 Repaired the complete **48px north-access shop court**, both roof-adapter

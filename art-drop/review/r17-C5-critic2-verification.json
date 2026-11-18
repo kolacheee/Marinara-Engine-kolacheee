@@ -1,0 +1,854 @@
+{
+  "passed": 189,
+  "failed": 0,
+  "replaced": 15,
+  "passing_preserved": 100,
+  "source_drawings": 13,
+  "mode_samples": 10321920,
+  "checks": [
+    {
+      "name": "church-porch-c5 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "court-closure-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-a-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-a-left-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-a-right-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-b-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-b-left-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-b-right-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-c-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-c-left-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "floor-c-right-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "forge-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "fountain-shadow-c5 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "gate-connector-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "gate-guard-bay-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "ground-apothecary-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "ground-cobbler-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "ground-tailor-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "guard-notice-c5r1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "inn-front-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "party-left-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "party-return-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "party-right-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1-brown failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1-slate failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1-brown failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1-slate failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w2-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w2-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w3 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w3-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-cross-c5-w3-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-left-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-left-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-left-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-right-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-right-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-fill-right-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2-brown failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2-slate failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w1-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w1-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w2-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-c5-w2-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d2-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d2-c5-w2-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d2-c5-w2-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d3-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d3-c5-w1-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-gable-d3-c5-w1-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-c5-w2-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-c5-w2-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w2-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w2-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w3 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w3-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-cross-c5-w3-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-d2-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-d2-c5-w2-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-d2-c5-w2-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-end-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-end-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-hip-end-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-narrow-hip-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-narrow-hip-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-narrow-hip-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-ridge-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-b-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-b-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-b-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-c5-brown passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "roof-valley-c5-slate passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "shop-apothecary-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "shop-cobbler-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "shop-tailor-c5-w1 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "side-house-east-c5r1 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "side-house-east-c5r1-slate failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "side-house-west-c5r1 failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "side-house-west-c5r1-slate failed drawing replaced",
+      "passed": true
+    },
+    {
+      "name": "square-slabs-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-right-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v0-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v1-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v2-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v3-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v4-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "storey-sign-bay-v5-c5-w2 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "townhall-market-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "vendor-a-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "vendor-b-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "vendor-c-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-access-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-curtain-b-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-curtain-c-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-curtain-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-shoulder-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-top-a-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-top-b-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-top-c-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-tower-a-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-tower-b-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "wall-tower-c-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "washing-short-c5 passing file preserved",
+      "passed": true
+    },
+    {
+      "name": "all prior files outside C5 scope preserved",
+      "passed": true,
+      "changed": []
+    },
+    {
+      "name": "cap-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "cap-b exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "east-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "east-b exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "west-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "west-b exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "porch-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "porch-b exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "abut-left-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "abut-right-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "shadow-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "wing-a exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "wing-b exact 64-vote mode and source hash",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2 slate only traced roof material changes",
+      "passed": true
+    },
+    {
+      "name": "roof-filled-gable-c5r1-w2 brown only traced roof material changes",
+      "passed": true
+    },
+    {
+      "name": "side-house-east-c5r1 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "side-house-east-c5r1 slate only traced roof material changes",
+      "passed": true
+    },
+    {
+      "name": "side-house-west-c5r1 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "side-house-west-c5r1 slate only traced roof material changes",
+      "passed": true
+    },
+    {
+      "name": "church-porch-c5 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "fountain-shadow-c5 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-left-c5r1 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "roof-abut-right-c5r1 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "house-rear-wing-c5r2 hard alpha and zero hidden RGB",
+      "passed": true
+    },
+    {
+      "name": "west-2 anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        96,
+        176
+      ],
+      "threshold": [
+        52,
+        176,
+        77,
+        157
+      ]
+    },
+    {
+      "name": "west-2 no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "north-middle-0 anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        0,
+        174
+      ],
+      "threshold": [
+        22,
+        164,
+        43,
+        174
+      ]
+    },
+    {
+      "name": "north-middle-0 no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "merchant-2 anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        0,
+        174
+      ],
+      "threshold": [
+        22,
+        164,
+        43,
+        174
+      ]
+    },
+    {
+      "name": "merchant-2 no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "west-lane-workshop anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        96,
+        176
+      ],
+      "threshold": [
+        52,
+        176,
+        77,
+        157
+      ]
+    },
+    {
+      "name": "west-lane-workshop no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "east-lane-workshop anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        0,
+        174
+      ],
+      "threshold": [
+        22,
+        164,
+        43,
+        174
+      ]
+    },
+    {
+      "name": "east-lane-workshop no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "east-rear-house anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        96,
+        176
+      ],
+      "threshold": [
+        52,
+        176,
+        77,
+        157
+      ]
+    },
+    {
+      "name": "east-rear-house no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "middle-side-workshop anchor touches painted side landing",
+      "passed": true,
+      "local": [
+        0,
+        174
+      ],
+      "threshold": [
+        22,
+        164,
+        43,
+        174
+      ]
+    },
+    {
+      "name": "middle-side-workshop no slate facade cutoff",
+      "passed": true
+    },
+    {
+      "name": "(1, 1)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(1, 1)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(1, 2)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(1, 2)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(1, 3)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(1, 3)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(2, 1)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(2, 1)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(2, 2)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(2, 2)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(2, 3)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(2, 3)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(3, 1)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(3, 1)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(3, 2)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(3, 2)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(3, 3)(5, 1) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "(3, 3)(1, 5) single taller-lot receiving wall and cap-specific flashing",
+      "passed": true
+    },
+    {
+      "name": "L frontage and integral rear wing are physically connected",
+      "passed": true,
+      "touching_rows": 91,
+      "principal": [
+        240,
+        432,
+        96,
+        96
+      ],
+      "rear_wing": [
+        288,
+        384,
+        48,
+        48
+      ]
+    },
+    {
+      "name": "rear wing has painted notch and continuous valley silhouette",
+      "passed": true
+    },
+    {
+      "name": "actual L/T layout repetition",
+      "passed": true
+    },
+    {
+      "name": "fountain broad contact joins painted foot without blank row",
+      "passed": true,
+      "painted_foot": 1006,
+      "shadow_top": 1006,
+      "contact_width": 83
+    },
+    {
+      "name": "fountain union opacity below 50percent",
+      "passed": true
+    },
+    {
+      "name": "west-lane-workshop exact native/reveal proof scaling",
+      "passed": true
+    },
+    {
+      "name": "west-2 exact native/reveal proof scaling",
+      "passed": true
+    },
+    {
+      "name": "north-middle-0 exact native/reveal proof scaling",
+      "passed": true
+    },
+    {
+      "name": "middle-side-workshop exact native/reveal proof scaling",
+      "passed": true
+    },
+    {
+      "name": "east-lane-workshop exact native/reveal proof scaling",
+      "passed": true
+    },
+    {
+      "name": "merchant-2 exact native/reveal proof scaling",
+      "passed": true
+    },
+    {
+      "name": "general geometry exports repetition and exact final derivatives pass",
+      "passed": true,
+      "suite_passed": 501
+    },
+    {
+      "name": "saved final matches current composer",
+      "passed": true
+    },
+    {
+      "name": "current-town literal 1x comparison panel",
+      "passed": true
+    },
+    {
+      "name": "r15-city-mockup literal 1x comparison panel",
+      "passed": true
+    },
+    {
+      "name": "r17-city-final literal 1x comparison panel",
+      "passed": true
+    }
+  ]
+}

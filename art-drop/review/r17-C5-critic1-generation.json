@@ -1,0 +1,227 @@
+[
+  {
+    "id": "church-a",
+    "source": "r17-C5-critic1-source-church-a.png",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Human-scale east church porch, 21x32 doorway, 48x48 allocation, supported ground stair, top-left light, solid magenta."
+  },
+  {
+    "id": "gable-a",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged pixel-art sprite on perfectly flat #ff00ff magenta. Strict square native pixels, high 3/4 RPG view, top-left light, one native pixel dark outer contour, calm materials matching supplied house. No noise, specks, soft shading, text, labels, ground or scene. Native target 96x96 pixels. Sprite fills a square with thin magenta margin. A complete shallow medieval terracotta roof cap, viewed from high above, front facing south. 6-10 native pixel tile clusters, 4-6 muted warm terracotta tones. Roof has depth AND width: broad planes recede into screen; center ridge north-to-south; continuous left slope lighter, right slope darker. Side contours taper smoothly and monotonically to back, with NO cut, ledge or shoulder halfway. Whole foreground eave reaches full width. No dormers, chimneys or walls. A complete square-proportioned GABLED cap. Ridge extends from the back apex to the front gable peak. Small triangular timber gable under front roof edges. Make the roof a single coherent volume.",
+    "source": "r17-C5-critic1-source-gable-a.png"
+  },
+  {
+    "id": "gable-b",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged pixel-art sprite on perfectly flat #ff00ff magenta. Strict square native pixels, high 3/4 RPG view, top-left light, one native pixel dark outer contour, calm materials matching supplied house. No noise, specks, soft shading, text, labels, ground or scene. Native target 96x96 pixels. Sprite fills a square with thin magenta margin. A complete shallow medieval terracotta roof cap, viewed from high above, front facing south. 6-10 native pixel tile clusters, 4-6 muted warm terracotta tones. Roof has depth AND width: broad planes recede into screen; center ridge north-to-south; continuous left slope lighter, right slope darker. Side contours taper smoothly and monotonically to back, with NO cut, ledge or shoulder halfway. Whole foreground eave reaches full width. No dormers, chimneys or walls. Alternative GABLED cap candidate: slightly lower pitch and broader left roof plane. Unbroken diagonal courses connect to the central ridge. Narrow timber triangle at front. Keep the taper perfectly continuous.",
+    "source": "r17-C5-critic1-source-gable-b.png"
+  },
+  {
+    "id": "hip-a",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged pixel-art sprite on perfectly flat #ff00ff magenta. Strict square native pixels, high 3/4 RPG view, top-left light, one native pixel dark outer contour, calm materials matching supplied house. No noise, specks, soft shading, text, labels, ground or scene. Native target 96x96 pixels. Sprite fills a square with thin magenta margin. A complete shallow medieval terracotta roof cap, viewed from high above, front facing south. 6-10 native pixel tile clusters, 4-6 muted warm terracotta tones. Roof has depth AND width: broad planes recede into screen; center ridge north-to-south; continuous left slope lighter, right slope darker. Side contours taper smoothly and monotonically to back, with NO cut, ledge or shoulder halfway. Whole foreground eave reaches full width. No dormers, chimneys or walls. A complete HIPPED cap: center ridge ends short of foreground, two hips descend to front corners, smaller triangular front roof plane continuous with side planes. No timber gable. No oversize brick pattern on front hip.",
+    "source": "r17-C5-critic1-source-hip-a.png"
+  },
+  {
+    "id": "inn-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE pixel art medieval RPG architectural module, enlarged, on solid pure #ff00ff magenta background, no labels. Match reference warm grey stone, brown timber and warm cream plaster, muted palette, high 3/4 view top-left lighting. Crisp square clusters, outer contour one native pixel, no noise or gradients or haze. Wide 2:1 rectangular 96x48 native ground-floor INN frontage only, no roof or upper floor. Left 48px room entrance has a dominant tall 22x32 dark wooden door, large visible golden lit wall lantern, 32px wide by 8px deep stone threshold occupying bottom eight pixels. Right 48px is recessed courtyard through-passage: dark upper arch, receding pale grey paving, a SMALL dim far exit; less contrast than the room entrance. Stone piers, wooden horizontal top course. Door must be tall enough for a 32px person. Keep complete frontage flush square left/right edges, no billboard, no sign. One lantern and one wide lit step strongly mark left door. Fill width and height.",
+    "source": "r17-C5-critic1-source-inn-a.png"
+  },
+  {
+    "id": "inn-b",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE pixel art medieval RPG architectural module, enlarged, on solid pure #ff00ff magenta background, no labels. Match reference warm grey stone, brown timber and warm cream plaster, muted palette, high 3/4 view top-left lighting. Crisp square clusters, outer contour one native pixel, no noise or gradients or haze. Alternative INN frontage, same native 96x48 flat rectangular module. Left half: 24px wide doorway extending from y5 to y39; warm amber lantern to left of doorway, chunky 32x8px supported stone step at y40..47. Right half: 38px wide courtyard arch with wooden top beam and quiet dark tunnel; receding medium grey paving reaches a small low-contrast far opening. No white patch. Top beam and side stone piers reach canvas edges. No roof, no upper storey, no lettering, no small-house proportions. Public left door is dominant, entrance tall at human scale.",
+    "source": "r17-C5-critic1-source-inn-b.png"
+  },
+  {
+    "id": "guard",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE pixel art medieval RPG architectural module, enlarged, on solid pure #ff00ff magenta background, no labels. Match reference warm grey stone, brown timber and warm cream plaster, muted palette, high 3/4 view top-left lighting. Crisp square clusters, outer contour one native pixel, no noise or gradients or haze. Native target 48x48, square medieval guard/toll entrance wall BAY ONLY. Door on RIGHT occupies 20px width and 34px height, dark timber vertical boards and heavy post; threshold 5px high reaches bottom. Toll window on LEFT is 18x18 with a counter and a single closed ledger inside, its sill at person's waist. Substantial warm grey stone piers and flat top beam, one amber lantern over center post. NO miniature roof, turret, towers or whole building. This is a human-scale wall at ground floor, 16x32 person fits the door. Square full width silhouette.",
+    "source": "r17-C5-critic1-source-guard.png"
+  },
+  {
+    "id": "fill-left",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE large square pixel-art MATERIAL TILE on solid pure magenta background, a thin magenta margin surrounding a completely painted square. No object perspective taper, no frame, no dark outline around tile, no border. The square is a CONTINUOUS seamless texture for both-axis repetition, opposite edges match exactly. No cracks, specks, noise, text or gradients. Top-left light in clean pixel clusters. 48x48 native medieval terracotta LEFT roof slope interior. Six muted warm terracotta colours. Clay tiles form parallel courses rising diagonally toward upper right, two pixels of rise over each eight pixels of run. Each tile is about 8px long and 4px high. About six tiles across, twelve courses down. Consistent staggered joints and calm broad tile faces. NO ridge, eave, hip, exterior silhouette or dark strip. This is an interior slope, paint covers every corner. Texture like the supplied house roof.",
+    "source": "r17-C5-critic1-source-fill-left.png"
+  },
+  {
+    "id": "fill-right",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE large square pixel-art MATERIAL TILE on solid pure magenta background, a thin magenta margin surrounding a completely painted square. No object perspective taper, no frame, no dark outline around tile, no border. The square is a CONTINUOUS seamless texture for both-axis repetition, opposite edges match exactly. No cracks, specks, noise, text or gradients. Top-left light in clean pixel clusters. 48x48 native medieval terracotta RIGHT roof slope interior. Shaded restrained reddish-brown clay tiles in six muted colours. Parallel courses descend diagonally toward lower right, two pixels of drop over each eight pixels of run. Each tile about 8px long and 4px high. Consistent staggered joints, calm flat tile faces. NO ridge, eave, hip, exterior silhouette or dark strip. Completely opaque square interior; paint every corner. This slope is shaded from top-left light.",
+    "source": "r17-C5-critic1-source-fill-right.png"
+  },
+  {
+    "id": "slabs",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE large square pixel-art MATERIAL TILE on solid pure magenta background, a thin magenta margin surrounding a completely painted square. No object perspective taper, no frame, no dark outline around tile, no border. The square is a CONTINUOUS seamless texture for both-axis repetition, opposite edges match exactly. No cracks, specks, noise, text or gradients. Top-left light in clean pixel clusters. 96x96 native medieval civic square paving, viewed straight down. Large rectangular grey warm limestone slabs, dimensions roughly 24-36px long, 12-18px high. Very restrained five-colour pale grey-brown palette, shallow mortar only slightly darker. Staggered courses extend CONTINUOUSLY to all four edges, no edge outline or square tile frame. Interlocking slab shapes at boundaries. No heavy grid, no bright scratches, no texture noise. All corners filled. Paint a seamless periodic paving sample for a public square.",
+    "source": "r17-C5-critic1-source-slabs.png"
+  },
+  {
+    "id": "cobbler-a",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged pixel-art facade module on perfectly flat pure #ff00ff magenta background, thin margin. Native 48x48 square, muted warm cream plaster, brown structural timber and grey stone, high 3/4 RPG style from the reference, top-left light, one native pixel dark outline, crisp square pixels. Whole square module flush sides, top horizontal beam, bottom horizontal attachment course. No roof, no story above, no label, no noise, no blur. GROUND FLOOR COBBLER, entire left third has a dark 14x30px public door, lantern and lit step. Right two thirds is a broad recessed shop counter window with BRIGHT enough backdrop: on counter are exactly TWO SEPARATED BOOTS, one near-black boot and one medium reddish-brown boot, shafts upright, projecting toes point in different directions, each about 8x12px; and ONE ochre leather roll with a clearly dark spiral end. Boots must be separate silhouettes with a gap. No bread, no random stock, no tiny marks, no awning hiding goods. Goods the main idea in two/three clear masses.",
+    "source": "r17-C5-critic1-source-cobbler-a.png"
+  },
+  {
+    "id": "oriel",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged pixel-art facade module on perfectly flat pure #ff00ff magenta background, thin margin. Native 48x48 square, muted warm cream plaster, brown structural timber and grey stone, high 3/4 RPG style from the reference, top-left light, one native pixel dark outline, crisp square pixels. Whole square module flush sides, top horizontal beam, bottom horizontal attachment course. No roof, no story above, no label, no noise, no blur. UPPER FLOOR narrow complete ORIEL window, centered inside the 48px bay. Window 28px wide, both left and right solid jambs visible, lit left return, shaded right return, supported projecting stone sill with visible top ending INSIDE side posts. About 6px plaster margin each side. Deep dark panes, one pair of vertical mullions. Closed complete contour, NOT cropped from a wider window. No extra beams or hairline decorations.",
+    "source": "r17-C5-critic1-source-oriel.png"
+  },
+  {
+    "id": "recess",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged pixel-art facade module on perfectly flat pure #ff00ff magenta background, thin margin. Native 48x48 square, muted warm cream plaster, brown structural timber and grey stone, high 3/4 RPG style from the reference, top-left light, one native pixel dark outline, crisp square pixels. Whole square module flush sides, top horizontal beam, bottom horizontal attachment course. No roof, no story above, no label, no noise, no blur. UPPER FLOOR narrow complete recessed WORKSHOP window opening. Broad dark recess 28px wide with both solid left and right wooden jambs, an open shutter on left, visible projecting sill top fully contained between the exterior side posts. At least 5px wall margins both sides. Window occupies central two-thirds; calm wall masses above/below. Whole opening fully visible and enclosed, not cut at edge. No goods, no roof, no extra hairline timber.",
+    "source": "r17-C5-critic1-source-recess.png"
+  },
+  {
+    "id": "wall-a",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE pixel-art square medieval city wall MASONRY BODY material panel on solid magenta with a thin margin. Native96x96, enlarged. Grey-brown stone, restrained 6-colour ramp top-left light. Draw exactly about SIX stones across and SIXTEEN courses down, stones12-20px long by6px high, staggered interlocking joints, quiet one-pixel mortar, few shaped highlights, NO specks or weathering noise. NO outline, frame, columns, parapet or bevel at outer edges. Masonry runs through all four boundaries. Two narrow slit windows integrated in upper third, no boxed patches. Opposing edge courses match. Same material as neighbouring reference wall. Flat front wall with only lit top faces to stones. Not giant boulders.",
+    "source": "r17-C5-critic1-source-wall-a.png"
+  },
+  {
+    "id": "wall-c",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE seamless modular medieval grey-brown stone city-wall body panel for pixel art RPG,96x96 native, drawn large on a thin solid magenta margin. SIX staggered dressed stones across and SIXTEEN courses vertically. Each stone12-20x6 native pixels; quiet fine mortar and flat broad stone masses; top-left lighting, six muted grey-brown tones. One small dark slit in lower right, several slightly darker replacement stones scattered within existing courses, no rectangular repair patch. No outer frame, borders, parapet or side posts. Paint all corners. Interlocking stone courses cross all edges, square geometry, no rounded boulders, no noise or speckling.",
+    "source": "r17-C5-critic1-source-wall-c.png"
+  },
+  {
+    "id": "notice",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE medieval guard noticeboard sprite, native48x48 pixel art enlarged on solid #ff00ff magenta. Rectangular dark brown timber noticeboard supported by two substantial posts down to bottom. Three parchment notices nailed to it, one large muted crimson wax seal, small crossed spear emblem at top. Square flat top beam, no roof, cross or religious imagery, no letters. High3/4 view top-left lighting and one native pixel dark outline, restrained warm wood/cream and grey ramp. Broad clean masses, no noise, no specks, no rounded corners. Match a 16x32 townsfolk scale.",
+    "source": "r17-C5-critic1-source-notice.png"
+  },
+  {
+    "id": "side-east-a",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE complete two-storey medieval lane-facing townhouse sprite, native96px wide192px tall, enlarged portrait on flat pure #ff00ff magenta, same high3/4 RPG view as reference. Deep terracotta gabled roof fills upper HALF of sprite, two storeys fill lower HALF. Tile clusters6-10native px, broad warm cream plaster and dark timber masses, grey stone base. One pixel contour, top-left light, shaded right face. No noise, no mottled yellow stone, no specks, no ground outside footprint. Square-grid upright house; no isometric diamond base, no cast shadow. Roof extends edge-to-edge at eave, single coherent volume. Two dark recessed shuttered windows per floor, lit sill tops. All door/window details human-scale with a20x32px door. Calm material matching reference. The inhabited LONG EAST SIDE faces the lane at RIGHT. Broad right side wall (about2/3 width) has public door and lit step at its south/right foot, a visible lantern, and workshop window north of it. Narrow south gable face at LEFT third. Ridge recedes toward upper-right; complete shaded side return below roof. This turns a corner into a north-south lane, not a flat south elevation.",
+    "source": "r17-C5-critic1-source-side-east-a.png"
+  },
+  {
+    "id": "side-west-a",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE complete two-storey medieval lane-facing townhouse sprite, native96px wide192px tall, enlarged portrait on flat pure #ff00ff magenta, same high3/4 RPG view as reference. Deep terracotta gabled roof fills upper HALF of sprite, two storeys fill lower HALF. Tile clusters6-10native px, broad warm cream plaster and dark timber masses, grey stone base. One pixel contour, top-left light, shaded right face. No noise, no mottled yellow stone, no specks, no ground outside footprint. Square-grid upright house; no isometric diamond base, no cast shadow. Roof extends edge-to-edge at eave, single coherent volume. Two dark recessed shuttered windows per floor, lit sill tops. All door/window details human-scale with a20x32px door. Calm material matching reference. The inhabited LONG WEST SIDE faces the lane at LEFT. Broad left side wall (about2/3 width) has public door and lit step at its south/left foot, a lantern, and workshop window north of it. Narrow south gable face at RIGHT third. Ridge recedes toward upper-left. Relight so top and left are lit, right return is shaded, never mirror the lighting. This turns a corner into a north-south lane.",
+    "source": "r17-C5-critic1-source-side-west-a.png"
+  },
+  {
+    "id": "hip-b",
+    "size": [
+      96,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE square96x96 native medieval terracotta HIPPED roof cap, enlarged pixel art on flat #ff00ff magenta. High3/4 town roof like reference. Complete smooth taper; single center ridge back-to-front ending above lower triangular hip, left slope lit/right shaded. Front hip uses same8x4px small clay tile size as side slopes, staggered fine angular tiles, NOT coarse bricks. No shoulders, splice or mid-height ledge. Front eave full96px width, one dark pixel outline, thin eave, broad calm6-colour warm terracotta ramp, no noise, no chimney/dormer/wall/ground. Whole silhouette fits96x96 with no cut in slope.",
+    "source": "r17-C5-critic1-source-hip-b.png"
+  },
+  {
+    "id": "side-east-b",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE complete native96x192 two-storey townhouse in high3/4 RPG pixel-art. SOLID pure magenta background. Narrow south gable on LEFT24px, long EAST facing side on RIGHT72px with tall20x32 door at bottom-right and workshop shutter bay farther north. Roof upper96px recedes toward upper-right, deep warm terracotta roof of angular small6-8px tiles, no dormer or chimney. Lower96px contains exactly two48px storeys, broad cream plaster planes and restrained timber frame, grey stone base. Right-hand long wall is shaded, top/left roof lit, one-pixel dark outside edge. Ground contact straight, no surrounding ground/noise/rounded corners. Match supplied house material, larger recessed windows, calm timber not stripes. Include a complete stone doorstep at right facing lane.",
+    "source": "r17-C5-critic1-source-side-east-b.png"
+  },
+  {
+    "id": "side-west-b",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE complete native96x192 two-storey townhouse high3/4 pixel-art. Pure magenta background. Narrow south gable on RIGHT24px; long WEST facing side on LEFT72px with a tall20x32 door at bottom-left and shuttered workshop bay farther north. Roof occupies upper96px, receding toward upper-left, warm terracotta angular6-8px tiles, no dormer/chimney. Exactly two48px storeys below, cream plaster timber frame and grey plinth. Top-left illuminated, right gable shaded; relit west facing house. Square native pixel clusters one-pixel dark outline, no noisy texture, soft shade or scattered specks. Side step supported down to ground. Whole house fills canvas edge-to-edge with only magenta outside silhouette.",
+    "source": "r17-C5-critic1-source-side-west-b.png"
+  },
+  {
+    "id": "church-b",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. Single human-scale east-facing stone CHURCH DOOR and LANDING only. 48x48 native pixel-art module enlarged on pure magenta. A tall DARK rectangular wooden door32px high20px wide on left, stone jamb/cornice only4px at top, no pitched roof, no miniature chapel. Door wall seen high3/4, lit top-left grey-brown limestone. Porch landing is broad on right with two chunky6px risers descending fully to bottom-right, supported stone fill beneath, no floating stairs. One amber lantern beside door, clear pale threshold. Dark1px contour, broad calm grey stone and dark brown wood, no decoration/noise/rounded corners. Person16x32 fits opening. Door occupies two thirds of sprite height.",
+    "source": "r17-C5-critic1-source-church-b.png"
+  },
+  {
+    "id": "church-c",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: precise-object-edit. Redraw this medieval stone doorway module on pure #ff00ff magenta, same pixel art material, but make doorway enormous relative to module. Native48x48: opening21px wide32px high at x8..29/y4..36, stone jambs atx3..7and30..34. Door occupies most of left three quarters. One amber lantern atx36/y8. No roof and only2px lintel. Bottom stone step is36px wide8px tall atx4..40/y40..47, only two risers, no long staircase. Side landing small at right, complete grey stone support down to bottom. This is a human-scale PUBLIC DOOR not a small building. Square pixel clusters, flat material, top-left light, one-pixel outline. No speckled texture. Preserve fully supported foot. Match house stone palette. The whole door aperture must fit a16x32 person.",
+    "source": "r17-C5-critic1-source-church-c.png"
+  },
+  {
+    "id": "abut-left",
+    "size": [
+      24,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE medieval RPG pixel-art ROOF-TO-HIGH-WALL ABUTMENT STRIP, native24px wide96px tall, enlarge with solid #ff00ff magenta margin. A very narrow vertical grey stone party wall at LEFT edge,8px wide, with continuous quiet small masonry courses and one thin light coping top. To its right is a narrow terracotta roof junction wedge, lead flashing follows diagonal stair-step seam from upper-right toward lower-left down the strip. This adapter fills the triangular gap between a full-height vertical party wall on left and a lower roof slope on right. Paint the entire rectangular strip; NO outer thick frame or decorative borders. Roof tiles6-8px long, warm muted terracotta, top-left light, dark onepixel edge only actual silhouette. Grey lead coping2-3px follows sloping roof contact all the way down. Calm painted materials, no specks/noise/blur, no building or scene/text. Keep rectangular squared edges.",
+    "source": "r17-C5-critic1-source-abut-left.png"
+  },
+  {
+    "id": "abut-right",
+    "size": [
+      24,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE medieval RPG pixel-art ROOF-TO-HIGH-WALL ABUTMENT STRIP, native24px wide96px tall, enlarge with pure #ff00ff magenta margin. Narrow vertical grey stone party wall at RIGHT edge8px wide, continuous restrained masonry and one coping top. To left narrow terracotta roof junction wedge; thin grey lead flashing follows diagonal step seam from upper-left toward lower-right down the strip. Adapter fills gap between lower roof on LEFT and tall wall on RIGHT. Entire rectangular strip painted; no external frame. Roof tile6-8px clusters, muted warm terracotta, top-left illuminated and right wall shaded, onepixel true contours. Lead2-3px follows receiving roof contact. No generic box borders, noise, specks, blur, scene/text. Square native pixel art.",
+    "source": "r17-C5-critic1-source-abut-right.png"
+  }
+]

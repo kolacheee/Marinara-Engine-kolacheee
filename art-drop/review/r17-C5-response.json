@@ -1,0 +1,344 @@
+{
+  "part": "C5",
+  "status": "Author implementation and saved-art verification. No independent panel approval or runtime collision/pathfinding test.",
+  "fixes": [
+    {
+      "item": 1,
+      "implementation": "Complete 96x144 gables/hips, 96x96 and144x96 transverse roofs,48x96/144 narrow caps. Two long-gable candidates; selected B. Two transverse and two valley candidates. Directional48px fills, ridge, valley and hip ends are native crops of drawn volumes. Northeast rear house at1392,288 and west/slate houses use complete caps.",
+      "evidence": [
+        "r17-C5-long-roof-selection-1x.png",
+        "r17-C5-house-reference-0-4x.png",
+        "r17-C5-northeast-properties-1x.png",
+        "r17-C5-transverse-roof-forms-4x.png"
+      ]
+    },
+    {
+      "item": 2,
+      "implementation": "The compositor suppresses one redundant touching outline pixel while retaining48px lot pitch. No whole-sprite overlap or lot shrink. All nine w1/w2/w3 neighbouring width pairs and both height orientations are supplied.",
+      "evidence": [
+        "r17-C5-neighbours-w1-w3-3x.png",
+        "r17-C5-neighbours-w3-w2-3x.png",
+        "r17-C5-tall-low-left-3x.png",
+        "r17-C5-tall-low-right-3x.png"
+      ]
+    },
+    {
+      "item": 3,
+      "implementation": "New drawn8px party returns use one top coping and a continuous144px masonry body with native body-period extension. Flashing is placed at the actual lower neighbour eave. Receiving paint stays within the taller lot; normal base-row order remains.",
+      "evidence": [
+        "r17-C5-tall-low-left-3x.png",
+        "r17-C5-tall-low-right-3x.png",
+        "r17-C5-piece-party-left-c5-4x.png"
+      ]
+    },
+    {
+      "item": 4,
+      "implementation": "Six-value terracotta roofs with matching slate/brown substitutions; alpha identical per partner. Angular market-hall roof replaces scallops. New broad facade arrangements and recessed sign/window bays. The eastern guildhall/merchant group is slate; roof material changes follow block divisions. Roof palette counts:18 red,12 slate,8 brown.",
+      "evidence": [
+        "r17-C5-piece-townhall-market-c5-4x.png",
+        "r17-C5-northeast-properties-1x.png",
+        "r17-C5-square-1x.png"
+      ]
+    },
+    {
+      "item": 5,
+      "implementation": "North frontages rebuilt as48/96px lots, with rear houses,48px yard strips, varied wood/laundry/shed boundaries and party-aligned returns. New96x96 stair/wood closure (two candidates, A retained) encloses the craft court; forge and well occupy its west half, leaving48px access. East rear yard has a24px gate to the wall lane; west rear property uses a street arch.",
+      "evidence": [
+        "r17-C5-northwest-properties-1x.png",
+        "r17-C5-northeast-properties-1x.png",
+        "r17-C5-craft-court-3x.png",
+        "r17-C5-court-selection-4x.png"
+      ]
+    },
+    {
+      "item": 6,
+      "implementation": "New street plan: northwestern stepped frontage, northeastern stepped trapezoid, southern L, narrow inhabited side slots, civic T and bent gate road. Side-ground bays face both x432 and x1344 slots. Clear96/48/24px routes, physically bounded southern service lanes and a connected48px wall lane. Longest unbranched reach is384px.",
+      "evidence": [
+        "r17-C5-anchors-and-routes-1x.png",
+        "r17-C5-street-1x.png",
+        "r17-C5-northeast-properties-1x.png"
+      ]
+    },
+    {
+      "item": 7,
+      "implementation": "Church west, guildhall north, inhabited inn wing east;192x144 hall moved to south rim at768,1056. Square is10x7 cells with2x2 northwest notch. Six stalls in two triplets with48px browsing aisle; fountain/cross open middle and48px fountain-to-hall clearance. Expansion from the suggested8x6 retains the required gate route and public landings.",
+      "evidence": [
+        "r17-C5-square-1x.png",
+        "r17-C5-square-3x.png"
+      ]
+    },
+    {
+      "item": 8,
+      "implementation": "New image-drawn48x48 east church porch at672,912 with48px east approach. The144x96 northern churchyard has joined boundary returns and a48px east gate, bench/tree and seated visitor. Guildhall clock and church tower remain distinct civic silhouettes.",
+      "evidence": [
+        "r17-C5-square-1x.png",
+        "r17-C5-church-actor-proof-3x.png"
+      ]
+    },
+    {
+      "item": 9,
+      "implementation": "New five-value quiet slab painting for the square, pale main-road paving, smaller side cobbles and dark private yards. Native painted kerb strips follow real routes, with internal join edges omitted. Tower values subdued; current greyscale linked from index.",
+      "evidence": [
+        "r17-C5-square-squint-1x.png",
+        "r17-C5-street-squint-1x.png",
+        "r17-C5-repeat-square-slabs-c5-4x.png"
+      ]
+    },
+    {
+      "item": 10,
+      "implementation": "New continuous96x48 drawn fountain shadow. Other caster alpha comes from the actual building, wall, tower or gate silhouette, registered to ground depth, joined in one union and clipped off occupied receivers. Own-width casts and96/255 maximum opacity prevent doubled darkness/cross-lot spill. Wall casts include projecting towers.",
+      "evidence": [
+        "r17-C5-square-3x.png",
+        "r17-C5-wall-stair-3x.png",
+        "r17-C5-gate-3x.png"
+      ]
+    },
+    {
+      "item": 11,
+      "implementation": "Two new96x144 curtain drawings plus a structural native third variant share2px endpoints. New wall access/stair drawing,48px shoulders, gate connectors and native parapet caps. Tower geometry and apertures retained with quieter values. Full curtain/stair/tower, outer turn and both gate contacts are shown.",
+      "evidence": [
+        "r17-C5-curtain-stair-tower-3x.png",
+        "r17-C5-outer-turn-3x.png",
+        "r17-C5-gate-wall-connectors-3x.png"
+      ]
+    },
+    {
+      "item": 12,
+      "implementation": "Retained doubled round15 trade signs, mounted over new recessed architectural bays instead of cream billboards. Six structurally different exposed window partners prevent hidden-window repetition. Signs stay in96px lots and above doors. All eight are shown at1x/4x. BRIEF-17 overrides smaller panel board caps.",
+      "evidence": [
+        "r17-C5-eight-signs-1x.png",
+        "r17-C5-square-1x.png",
+        "r17-C5-goods-and-access-4x.png"
+      ]
+    },
+    {
+      "item": 13,
+      "implementation": "New48px image-drawn apothecary bottles/mortar, cobbler boots/leather, and tailor cloth/garment fronts replace bread displays. Native door partners produce96px shop grounds with fixed rows0/47. Baker keeps its loaf display.",
+      "evidence": [
+        "r17-C5-goods-and-access-4x.png",
+        "r17-C5-piece-ground-apothecary-c5-w2-4x.png",
+        "r17-C5-piece-ground-cobbler-c5-w2-4x.png"
+      ]
+    },
+    {
+      "item": 14,
+      "implementation": "Two96x48 inn-front candidates; B selected for western room door, lit step/lantern and east passage. Inn sits on the gate-road bend, with a48px southern public landing and served rear court. Side entries use directional faces; plain rear/scenery fronts are quieter.",
+      "evidence": [
+        "r17-C5-inn-selection-4x.png",
+        "r17-C5-gate-1x.png",
+        "r17-C5-inn-actor-proof-3x.png"
+      ]
+    },
+    {
+      "item": 15,
+      "implementation": "Three newly drawn96px floor arrangements and native48px halves, six sign/window partners, gable/hip/cross/valley forms, a distinct narrow hip, staggered north roof ends and rear transverse ranges. Resolved RGBA, colour-independent motif, exposed-window and vertical-stack audits scan every five-owner run. Retained Part E L-block/market fixes pass, and tests reproduce both old defects.",
+      "evidence": [
+        "r17-C5-piece-floor-a-c5-w2-4x.png",
+        "r17-C5-seven-cell-gable-hip-wing-3x.png",
+        "r17-C5-retained-L-block-1x.png",
+        "r17-C5-retained-market-1x.png"
+      ]
+    },
+    {
+      "item": 16,
+      "implementation": "Three newly drawn16x32 vendors used exactly twice with varied counter positions. Two customers face goods; cart occupies48px loading pocket south of stalls beside the hall with porter/crate. Seated church visitor and visible gate guard. All26 scene actors retain visible pixels; normal/reveal proofs separate overhead paint from supports.",
+      "evidence": [
+        "r17-C5-stall-actor-proof-3x.png",
+        "r17-C5-church-actor-proof-3x.png",
+        "r17-C5-gate-actor-proof-3x.png",
+        "r17-C5-square-1x.png"
+      ]
+    },
+    {
+      "item": 17,
+      "implementation": "Southern brown groups use one/two-storey houses, low sheds, patched shutters and bounded workyards, while square/gate-road trades use3\u20135 floors. New48px forge/toolrack in craft court.38 house stacks contain4 one-storey buildings; including7 separate sheds/ranges/hall and the two-storey staircourt closure yields11/46 (23.91%).",
+      "evidence": [
+        "r17-C5-craft-court-3x.png",
+        "r17-C5-gate-1x.png",
+        "r17-C5-anchors-and-routes-1x.png"
+      ]
+    },
+    {
+      "item": 18,
+      "implementation": "NE merchant shrine sits in a96x48 recess with its approach free. North-wall96x48 bench and guard-notice pockets sit on the building side of the lane. Bench was moved into the other half of its recess to reconnect the northern branch to the wall lane.",
+      "evidence": [
+        "r17-C5-northeast-properties-1x.png",
+        "r17-C5-street-1x.png",
+        "r17-C5-anchors-and-routes-1x.png"
+      ]
+    },
+    {
+      "item": 19,
+      "implementation": "New northern access stair has a visible walk-level door and matching landing/shoulders. Existing recessed gate/overhead/support art retained; a new48px toll/guard attachment occupies the east-side recess without narrowing the96px opening. Uneven tower intervals retained.",
+      "evidence": [
+        "r17-C5-wall-stair-3x.png",
+        "r17-C5-gate-wall-connectors-3x.png",
+        "r17-C5-gate-actor-proof-3x.png"
+      ]
+    },
+    {
+      "item": 20,
+      "implementation": "Full final1x, exact2x, literal1x today/R15 comparison, current greyscale, square/street/gate3x crops. All101 production pieces have1x/4x and self/variant sheets; all eight used ground bases have literal3x3 repeats. New16x12 L/T/dead-end and8x8 corner pilot, both tall/low hands, all width pairs, wall joins, annotations and normal/reveal actor views. Saved-art checks only, not runtime collision/pathfinding or independent panel approval.",
+      "evidence": [
+        "r17-C5-L-T-dead-end-1x.png",
+        "r17-C5-corner-pilot-4x.png",
+        "r17-C5-anchors-and-routes-1x.png"
+      ]
+    }
+  ],
+  "panel_2": [
+    {
+      "item": 1,
+      "fixes": [
+        6,
+        7,
+        8
+      ],
+      "resolution": "10x7 envelope plus2x2 notch retains96px gate approach and public exits within coordinator maximum."
+    },
+    {
+      "item": 2,
+      "fixes": [
+        1,
+        3,
+        4
+      ],
+      "resolution": "Complete two-storey reference-house pairs and corner pilot; C5 sheet includes96/144px cap depths."
+    },
+    {
+      "item": 3,
+      "fixes": [
+        1,
+        3,
+        15
+      ],
+      "resolution": "Seven-cell gable/low-hip/rear-wing and both receiving-return orientations."
+    },
+    {
+      "item": 4,
+      "fixes": [
+        4,
+        12,
+        13,
+        15
+      ],
+      "resolution": "Existing baker/smith plus new apothecary; new broad floor arrangements and matching goods."
+    },
+    {
+      "item": 5,
+      "fixes": [
+        6,
+        14,
+        20
+      ],
+      "resolution": "Directional doors, lit inn landing, quiet rear/scenery doors, street arch and paint-tested ordinary24x32/public48px approaches."
+    },
+    {
+      "item": 6,
+      "fixes": [
+        12
+      ],
+      "resolution": "Architectural mounting retained; proposed smaller sign caps conflict with BRIEF-17 doubled round15 scale and are not adopted."
+    },
+    {
+      "item": 7,
+      "fixes": [
+        3,
+        5,
+        6
+      ],
+      "resolution": "Retained directional side houses and new party returns/court closure. Deeper plot proposal constrained to1\u20132-cell principal footprints plus rear strips."
+    },
+    {
+      "item": 8,
+      "fixes": [
+        6,
+        18,
+        20
+      ],
+      "resolution": "Gate-connected96/48/24 routes. BRIEF-17 eight-cell variation, T, bend and wedge requirements remain; proposed waiver not adopted."
+    },
+    {
+      "item": 9,
+      "fixes": [
+        5,
+        17
+      ],
+      "resolution": "Inhabited stair/wood/forge/well court; separate48px access and supported overhead laundry."
+    },
+    {
+      "item": 10,
+      "fixes": [
+        7,
+        16
+      ],
+      "resolution": "Six stalls,48px aisle, vendor strips, clear through-route, fountain clearance and cart/porter."
+    },
+    {
+      "item": 11,
+      "fixes": [
+        8,
+        11,
+        19
+      ],
+      "resolution": "Retained civic grey-brown landmarks, public entries and recessed gate; required footprints retained."
+    },
+    {
+      "item": 12,
+      "fixes": [
+        10
+      ],
+      "resolution": "Caster footprints and contact shadows; cross-lot permission conflicts with BRIEF-17 and is not adopted."
+    },
+    {
+      "item": 13,
+      "fixes": [
+        16,
+        20
+      ],
+      "resolution": "Footprints, anchors, routes, entrances/supports and normal/reveal states; no runtime claim."
+    },
+    {
+      "item": 14,
+      "fixes": [
+        20
+      ],
+      "resolution": "Complete populated scene comparisons at1x/3x and current squint; broad roofs/materials and resolved motif repetition audit."
+    },
+    {
+      "item": 15,
+      "fixes": [
+        20
+      ],
+      "resolution": "Only C5-required assets/layout/proofs. No runtime renderer/pathfinding work, alternate city catalogue or unrelated expansion."
+    }
+  ],
+  "panel_1_C_R": {
+    "items": [
+      1,
+      4,
+      5,
+      12,
+      13
+    ],
+    "resolution": "Native8x8 corner pilot,1\u20132-cell principal footprints with rear strips, directional entries,96/48/24 connected routes, purposeful court/market activity and annotated normal/reveal comparisons. Deeper5\u20137-cell lots and waivers of wedges/jogs conflict with BRIEF-17 and are not adopted."
+  },
+  "precedence": [
+    "Coordinator40x30 cells at48px requires1920x1440, overriding approximate1200x900.",
+    "BRIEF-17 wins for sign scale,1\u20132-cell principal lots,3x4 gate/2x3 tower footprints, eight-cell street variation and lot-contained shadows.",
+    "Square expanded to10x7 with2x2 notch to retain clear approaches and hall south; within coordinator approximately10x8 maximum.",
+    "User forbids commit/push/branch changes and edits outside art-drop; brief push instruction is overridden."
+  ],
+  "commands": [
+    "python -B art-drop/review/r17-C5-process.py",
+    "python -B art-drop/out/city17/compose.py --part C5",
+    "python -B art-drop/review/r17-C5-review.py",
+    "python -B art-drop/review/r17-C5-verify.py"
+  ],
+  "sources": "r17-C5-generation.json",
+  "processing": "r17-C5-processing.json",
+  "exports": "r17-C5-files.json",
+  "verification": "r17-C5-verification.json",
+  "repetition": "r17-C5-repeat-audit.json",
+  "review": "r17-C5-review.html"
+}

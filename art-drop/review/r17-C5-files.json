@@ -1,0 +1,1521 @@
+{
+  "roof-gable-c5-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "5e1e31cb6cc453283b607cdf61f3ab5ec21fe271b7f7661e730eb32c53688fe0",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-cross-c5-w3": {
+    "size": [
+      144,
+      96
+    ],
+    "sha256": "980bece2b16fc77c0313c53ee5bc2795177a2cfb8f4e0a4454185a7b178a0bfd",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-cross-c5-w3": {
+    "size": [
+      144,
+      96
+    ],
+    "sha256": "c6189cfb8f90623c2ee105296076621e13e05d7e6bb209e53acf6a8334d24277",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-c5-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "73a0220a7bc3b5b383c2fad79e814c58849cbc7fa51ba5718aa8c0499bf3c8a2",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-c5-w1": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "859310c8a649ee70b241cce3dd864ed0a1672bbf4914b8867711db746e06530e",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "shop-apothecary-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "68444fb03a6354571476ae06808fdd78d7ccbe8dc873d3f0b34a28983f3f47b1",
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "shop-cobbler-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f6cca9f6942c8b3758daaae77d6e25e4f1dbaab16dc2db5c34e04c5e9c814459",
+    "colours": 14,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "shop-tailor-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "c54be7f0e6c87a5f4a7c1d2f2a14ecf323978e303b473b65f4a3ec7d85df138a",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "inn-front-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "745d40c90e02489547325d92dafb0196917c94136d27b195061af70ab5aaa4dd",
+    "colours": 16,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-a-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "fc33a64b5b8c44bb2796614053cd58227a99d1cc976f03580894063f5dab7c84",
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-b-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "5e7a4a492f41b95732e793c54320668c1c433922f39d0ba340e9301cdaa19520",
+    "colours": 16,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-c-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "b4fe9f5c7c4a274845aa1718e6914012d0f2e54237461f3e7c1cc702c1f8341d",
+    "colours": 11,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "party-return-c5": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "370e8244e132f84ea246d91fdf5d717f5a884e09c014e19c84e082bbed5b8394",
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "vendor-a-c5": {
+    "size": [
+      16,
+      32
+    ],
+    "sha256": "980023e1c5c84577f956382b817197943e2316a00edb83f943b56bff1bd79a91",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "vendor-b-c5": {
+    "size": [
+      16,
+      32
+    ],
+    "sha256": "7469b8396651cfdb7c618ce2104a797a35c031d0da2d2450dc281f018e9a92aa",
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "vendor-c-c5": {
+    "size": [
+      16,
+      32
+    ],
+    "sha256": "145dfe39c00bbeb4693681ab42ede3e979d3c437b44a7ef3b45534557bab5fbc",
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-curtain-c5": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "5deb4c096d1f281c7e57d0863f43df5a73d7df3ca4d7539e35ab80a7db5bacdf",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-curtain-b-c5": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "b5ff112823ee73e33c211c97794201b1b06261e21ac506071bf141a8e74e168a",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-access-c5": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "955c99e2a278a901437aaadff94771d2afb48c4cd4980fc6fe9046a0753b2058",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "square-slabs-c5": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "f80b475bd2f3f8b6f1807fc273ae2d42c1a034734317c70a83794ffdb122f3a7",
+    "colours": 5,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "forge-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f46773c3e9362d22828681ee526e441ea5889c26bfb9817ef0bed8cbf4451477",
+    "colours": 34,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "church-porch-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "bec0c463e5dfa7cb67d829aaae0142a88afa5aa0f1c1d85d1e1ace96409687e3",
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "726e1a65ef26566c63c48b7a72af14ba46791a62191daea84955c25beadbc3c8",
+    "colours": 15,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-valley-b-c5": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "f0a1f1eb967acaf54aecb13d982917f062dab733af61d63dd1be095cc2fefe45",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "fountain-shadow-c5": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "7c7924654307d388cec65290b93cca78e3904a7b57a7c21e8ed1d3ab79b83903",
+    "colours": 2,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "gate-guard-bay-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "299496fb255d69c6211ef21128f7945ead84f3b547ed70f0f35273d595d4fbee",
+    "colours": 14,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "court-closure-c5": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "b8cbbbc4708fd80a12ac5e4c20eb6c64217008df21860df900a3b84c363cca67",
+    "colours": 32,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-narrow-hip-c5": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "2bcd1297506e6c728d59db9f682db50d75489ebad033667af3250568fc8eff76",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-cross-c5-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "c8ec5e30a00782d3adf08113f48559c427cd15083698c8efaf5f4876b605f3ae",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-cross-c5-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "b0d6e9ac2f94e45b92d928d09a9decca2c486553d8cbd358ffa03f4ec44afeda",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-d2-c5-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "ff4a9115bc687b7642457ead4ec9253981a138cdf6012b73ebb95ec3fff0cf4b",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-d2-c5-w2": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "3fff8abb165107b328d56d262390b3c98ccee67b8add042becde84dd62f8620f",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-d3-c5-w1": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "5b696b2ed406ffbe6788324374f067ea8f05d6b42307c393d17f933b505a034d",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-left-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "934d165b523b93f4aa886f189587cf3bedaa2e4cebfc1eb807aa219ec76debca",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-right-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "749845fd9cedb246569d7308dd074a34a2676ab73045588d18d79b149c206ec2",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-ridge-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "658ab21763153fd670b10d12c0a110448bd2a222e0d355645ceab733cda06e89",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-end-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "ec19cb718ae8e781fd4c12e4c9717cdd5b181177a391dd7df63ea61d349eca39",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-valley-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "84f16ddf624730fd4660c17277ae071cbedd7137e22ff7ba4fbb81f64410f1f8",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-a-left-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "10b39473d9dde45df73461be19bc6c50be4d8a63e321e3df768965ed9b66ee1f",
+    "colours": 15,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-a-right-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f28515a33986a461481803422c4f08cb6dcb9d107a77a1368b8dca14b399d238",
+    "colours": 16,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-b-left-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "acf347c81187ecd9a5f3c50ca0474f96bdf44c9ff6059e754a6bb3f4b83af6a9",
+    "colours": 15,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-b-right-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "360e86041d45ec582beba07db06babb1310ba7824b58bea9725e9feed8690240",
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-c-left-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "51434b318a7b1e2ff0ee0f6341b977ab57dcd263aa980ae0ba78229ca87bd1c8",
+    "colours": 13,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "floor-c-right-c5-w1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "2b931e11862f7d36f9f06aeeff3a72644aace1cd56fa90f5d1419b2e16846ed8",
+    "colours": 10,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-right-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "15d3abdda98988455e602f537ff67599d35ddd82dc211cfee3ad8fc215e434f2",
+    "colours": 15,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-v0-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "610f132b3d80c6b92894e79022c39c12ad41c31c0fc59affa7bdffa4d61a1937",
+    "colours": 17,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-v1-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "71fbc5c4f10cf8ab1956d8688dd0122f364088beefc2391e8fe506e322b8386c",
+    "colours": 12,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-v2-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "069be59d80a48634d196594452cc3c30a5277db478f32973b6d33045e24100c8",
+    "colours": 10,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-v3-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "c3c378f23f630beaef52bc85c0d3d4647f2b174b113306135d9cb7b612ec61c6",
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-v4-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "f15048a4e27d443374b2d9b9aea36948d5d55b5f0162299726cca5fb87eedd5e",
+    "colours": 9,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "storey-sign-bay-v5-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "eca68609ff0db0a4cf430050dbf8cfc4bddaf7c24f19467056847c15938f3213",
+    "colours": 11,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "ground-apothecary-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "d9b22dea373722160e135b58b46a1e19472f17f477b57d126af35a57eb243b1e",
+    "colours": 24,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "ground-cobbler-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "18e65c6f382dee5e3cabf7e4ac958060f578ea273d63b7acbf2a0d264ff87700",
+    "colours": 21,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "ground-tailor-c5-w2": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "a4c7b39bcee67b349a2fb7e50ed702bb84d352334b6637438ea6fd05ec09b536",
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "party-left-c5": {
+    "size": [
+      8,
+      144
+    ],
+    "sha256": "5c738f50c469e16ac07b413b6d337795282fcdd1485eac2442e43e1977e6f53b",
+    "colours": 7,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "party-right-c5": {
+    "size": [
+      8,
+      144
+    ],
+    "sha256": "f24ccbc9a5f5deca47bfafef849b22af394e79500fd1d0598f73502c67b4882f",
+    "colours": 5,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-curtain-c-c5": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "82cff74784cb2022fc48f8885755445b0829c9bfda68b4d7a5b526f09a9a54c5",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-shoulder-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "870579f154798ee6f836ca23b410eea62287029f2336e5b13fef90b780984e3d",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "gate-connector-c5": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "5ab91464aa807b117f2c7344b834799d8c54e677dd98cdf493f7f53cd93f0dd3",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-top-a-c5": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "eaf4e9fd8f04240febc70f486a860a43c48435639e73ba34d9c83ed27acd37f6",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-top-b-c5": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "75fc2976c91118b238ccd0f44ebd7b4c3f418b96c2b704ec5e861dc970c342db",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-top-c-c5": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "8cacc72f7ea8f8a95a6fa3f0fea7ac928b02274a526d99c413e6b21d47205c93",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "townhall-market-c5": {
+    "size": [
+      192,
+      144
+    ],
+    "sha256": "e89bcdc00c7b9e081c50105ca8c6cdefefcad032cb93e91cb027f4e3386a1cd9",
+    "colours": 28,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "washing-short-c5": {
+    "size": [
+      48,
+      32
+    ],
+    "sha256": "94c5e2071a732cbeddcbde5aa545c50d85546897735a9ac67f339d20758dc0c6",
+    "colours": 14,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-c5-w2-slate": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "3efc55178243827dc400623ff2c0873f8e8312a0755c07b7cdfde690b3ac7fa5",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-c5-w2-brown": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "e84814baf93475b6e5e2f13948fab7bde0fbedb85dd63888bbf86b3464c25a93",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-cross-c5-w3-slate": {
+    "size": [
+      144,
+      96
+    ],
+    "sha256": "8adfdba77b416f2e80e78518f3faefb4de6c961817d196e807a301860c6a6695",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-cross-c5-w3-brown": {
+    "size": [
+      144,
+      96
+    ],
+    "sha256": "58981abcbb65b03ab386f1024a29135ac8b68d7f83edfafd40430ade0f9f6765",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-cross-c5-w3-slate": {
+    "size": [
+      144,
+      96
+    ],
+    "sha256": "41543bbf0e15bd90cf9ddc86142eb2d121f36c74ec28c22cf2244ce6fd84a354",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-cross-c5-w3-brown": {
+    "size": [
+      144,
+      96
+    ],
+    "sha256": "cd83626f0047a6b718dd8501d2ad0d090c5b719198b1ca0e153f79b0a77cbb4c",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-c5-w2-slate": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "195ea67a28c98109e4dd0d2d1b9df324b0b5e5e1edb8c33f91b4ea3b18e3af9e",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-c5-w2-brown": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "859f0fd914e473412f59c38789dd8fc56db19714654cbaa5063a13e1d08760e1",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-c5-w1-slate": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "b03c988eddc1e851702fb89d172d280c8eca52f34dba3b087508487304c6deee",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-c5-w1-brown": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "b35fdbfffd2679932019175e70acf2ef823361eaba70a79cc4a2b7a327ea1740",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-valley-b-c5-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "2eb286f1e34388a086a8cb9d64df29ec6ce6eb220e96c43ea25ee5e6296171a9",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-valley-b-c5-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "6959a387116ad1b395b2672c7cde4ed784a06204c0fbf766394cf8eb229eee71",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-narrow-hip-c5-slate": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "23e2cc50746caecf10e3aecc06709f6882b11f7d0e4d27423fd0f89545a3901c",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-narrow-hip-c5-brown": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "f5ffe0f554932043db8e84c29ac284b7bfb831d1049253746cecb18b23f4c120",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-cross-c5-w2-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "ccf4bb355df5d956ff5e2618df8fd18405b9285a40c5c302405de5969d9015ee",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-cross-c5-w2-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "936efb5cbf51142b8538fc6fd62747bc45b1829d15fd604169decac5e6b35b92",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-cross-c5-w2-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "970682bbf236baa812ab6c88c859ee3c90aec2b2ecde7e4e033a392f826bf724",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-cross-c5-w2-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "9ad64ed4f82d9867e09404465609dca86e561aa59b1c27f681f8643565cc14a7",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-d2-c5-w2-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "3c2d95d19f82e2324aecef76c13f4070907243f8a8135c62c558c56032875f7a",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-d2-c5-w2-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "5a27fd4bd3fdff5cfe924a4f618d6c9cd31f3cfbe5a7d932c019a780eb828873",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-d2-c5-w2-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "e486a86b99aa7917378933aace9837b03f29077a94a2e82619cb30e6ba3fb0e3",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-d2-c5-w2-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "cbb749ed6d3ea3b1a010aabb80538400300e2faa03228099fd09af118b18740a",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-d3-c5-w1-slate": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "73d261b76d9ec5721f99f8b134eb20c646224c985a3d82b2b45bf0e90f2a5ee1",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-gable-d3-c5-w1-brown": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "4af732da1ab29f5c16f9ae094386d62d52971c2585463dc8c1473460066b1df9",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-left-c5-slate": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "5d866eda1a3a6db94fa6435e45ea30127ed8750d1cb1e137ce7b220fd97f5468",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-left-c5-brown": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "fd23de0c7fbf1e96167e23713e55732e6d9a6c2cca7e3cf351714af86ad6668c",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-right-c5-slate": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "d3d49d9e8afe7c10c27d6531e09fee9c0cb7674f7c9e42014e1e58e132388fe9",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-right-c5-brown": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "1ea2835b176f2537c15186f7211ea8f6ff5de19339a9158ea60893d4408cec92",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-ridge-c5-slate": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "2c593ef195ed7de678455a3e88fb6bc9e531cf31357bfba13ec435d539254223",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-ridge-c5-brown": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "bf59ec120865678f7ca48226eca2140052546f521646885821a0f02589c976e5",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-end-c5-slate": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "46a44c97d9c04b32a268a8c0f39631fa70089bdf6c24a4b1c995ce87653b5a53",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-hip-end-c5-brown": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b275df56fc6e681685cbff5d068d40e3eb6c31e75e227858a23fb3879afe02d1",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-valley-c5-slate": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "766f1d7d93449330d6699bbdf7602ca9e34b80f8af4b633eece8bf51bfeacf0b",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-valley-c5-brown": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "829f041ded403e503ca07b88e6c35ea51c841785883e0d87f0ff91a0c3bc9088",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-tower-a-c5": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "46a47df41b0605524e92a508a6cf320d0e603406af4de1286f051f71f4d0624d",
+    "colours": 26,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-tower-b-c5": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "c79390709b1d4c8f03d93e5aba0d28679c4030025cebfdb362e3335e44b4ba7c",
+    "colours": 30,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "wall-tower-c-c5": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "383d3979895875d65de7ecbecf55fa92caacb7514b21e6272c50a1402dd43c3b",
+    "colours": 29,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "guard-notice-c5r1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e51e0deda62f0bac1187be3b288fd9c829a58408d29ba4f6230082d6cb89116e",
+    "colours": 11,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "side-house-east-c5r1": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "94bdc9224ac7a0a303ba61c421b670d8749b0f2bd198a2626a7d4e86323a07f1",
+    "colours": 20,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "side-house-west-c5r1": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "a83f3a1facd7a9efb5d5c50b4aca6b5a47f20e229ec88139028436ce2e3e681e",
+    "colours": 25,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "side-house-east-c5r1-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "5fb623cee3e1fd35253180a94aa27c8cbac4fd0c902a2eec891adb45afcd760d",
+    "colours": 26,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "side-house-west-c5r1-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "84bfa1357b0eb9771b58fe6118cbbdfa425baa80ea2fa2e8fdf1dabf432d3e20",
+    "colours": 31,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-abut-left-c5r1": {
+    "size": [
+      24,
+      96
+    ],
+    "sha256": "5355d2ce28750d63a0d7b969b05f6c605adab4eaa2bd99d813134545337ef42b",
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-abut-right-c5r1": {
+    "size": [
+      24,
+      96
+    ],
+    "sha256": "f2d181fa4c42e948f4a191339954b1abc4855c45afab90201d2c02839503d5fa",
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-abut-left-c5r1-slate": {
+    "size": [
+      24,
+      96
+    ],
+    "sha256": "5355d2ce28750d63a0d7b969b05f6c605adab4eaa2bd99d813134545337ef42b",
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-abut-left-c5r1-brown": {
+    "size": [
+      24,
+      96
+    ],
+    "sha256": "5355d2ce28750d63a0d7b969b05f6c605adab4eaa2bd99d813134545337ef42b",
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-abut-right-c5r1-slate": {
+    "size": [
+      24,
+      96
+    ],
+    "sha256": "f2d181fa4c42e948f4a191339954b1abc4855c45afab90201d2c02839503d5fa",
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-abut-right-c5r1-brown": {
+    "size": [
+      24,
+      96
+    ],
+    "sha256": "f2d181fa4c42e948f4a191339954b1abc4855c45afab90201d2c02839503d5fa",
+    "colours": 8,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-filled-gable-c5r1-w2": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "d4c7bf25ca05f6da2963ae267876cf53f2de7a8ef8bb70a9efcd2999844696d5",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-filled-gable-c5r1-w2-slate": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "bc3ea8b88f07276a1a9ca03f329f784afd3b5b8a1b3e9e64e8c38c62064ebf34",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-filled-gable-c5r1-w2-brown": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "7035eb60f7993a59e60c376c0b15b10cdf311df1f1791a6189baecf7c146cf86",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "house-rear-wing-c5r2": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "57190045b8b97014b202c76f33670921f5105abdd895e1927cb77a1feaea3a81",
+    "colours": 23,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-extension-cap-c5r3-w3": {
+    "size": [
+      144,
+      144
+    ],
+    "sha256": "f2563ccebdb07cab11435f15601d9c559838b2e6560cc86bb222b724683a5eb2",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-left-c5r3": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "86908490bf49692caabc33fe4870442309372199cab03cc9936cf250ce1acdc8",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-ridge-c5r3": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "509408f6fff64c9be68ef1bfd03aa02a64c5baed59b57bf0251a5f2ca094ed55",
+    "colours": 6,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  },
+  "roof-fill-right-c5r3": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "bbe78c3be6b82d2e2131a69e27ccf5a467b417992adc1722eb2eebbab9aa3bf8",
+    "colours": 4,
+    "alpha": [
+      255
+    ],
+    "hidden_rgb": 0
+  }
+}

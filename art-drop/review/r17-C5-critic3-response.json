@@ -1,0 +1,94 @@
+{
+  "round": "Round17 Part C5: critic-r17C5-3 repair",
+  "scope": "Targeted repair of final southern connectivity and missing actual modular roof proof. No passing PNG was overwritten with changed content.",
+  "failed_files": {
+    "compose.py": "Both adjacency consumers use positive shared ground edges; southern placements now share48px walls and the detached workshop is incorporated.",
+    "r17-C5-review.py": "Real roof-export assembly, source maps and final southern footprint proof now replace disconnected swatches.",
+    "r17-C5-cap-fill-joins-1x": "Real roof-export assembly, source maps and final southern footprint proof now replace disconnected swatches.",
+    "r17-C5-cap-fill-joins-4x": "Real roof-export assembly, source maps and final southern footprint proof now replace disconnected swatches.",
+    "r17-city-final": "Actual southern ground contacts and measured frontage graph repaired; regenerated final derivatives.",
+    "r17-city-final-2x": "Actual southern ground contacts and measured frontage graph repaired; regenerated final derivatives.",
+    "r17-city-final-vs-r15-vs-today": "Actual southern ground contacts and measured frontage graph repaired; regenerated final derivatives.",
+    "r17-city-final-squint": "Actual southern ground contacts and measured frontage graph repaired; regenerated final derivatives."
+  },
+  "method": {
+    "tool": "built-in image_gen",
+    "source_drawings": 2,
+    "selected": "B",
+    "process": "solid magenta; painted-bounds8x BOX registration; fixed palette; exact64-vote RGBA mode; native palette/outline cleanup; hard0/255 alpha; zero transparent RGB; native cropping, wrapping and composition only",
+    "new_exports": [
+      "roof-extension-cap-c5r3-w3",
+      "roof-fill-left-c5r3",
+      "roof-ridge-c5r3",
+      "roof-fill-right-c5r3"
+    ],
+    "generation": "r17-C5-critic3-generation.json",
+    "processing": "r17-C5-critic3-processing.json"
+  },
+  "fixes": {
+    "1": "Preserved every approved complete cap and legacy directional fill. Added a matched four-export extension kit from image-tool candidate B: 144x144 drawn end master and 48x48 left fill, ridge and right fill. The compositor constructs actual 3/4/5-cell-deep roofs from those exports with source ownership maps, not a complete-cap proxy. Native 1x/4x assembly and 8x cap/fill/ridge/end/repeat contacts expose the real joins.",
+    "2": "Retained from the preceding repair: 48px pitch retained. One continuous8px receiving wall belongs to the taller lot; row registration removes transparent course-edge slivers. Both tall/low hands and all nine width pairs are shown at1x/3x. Existing shared-outline suppression remains.",
+    "3": "Retained from the preceding repair: Redrew two separately lit masonry/flashing donors. The compositor no longer fills the lower roof inverse-alpha with24px roof-textured tabs. A single8px return inside the taller lot receives native metal paint registered to the actual lower-cap silhouette, independent of cap width/depth. No duplicated wall band.",
+    "4": "The new matched extension set uses one drawing, one registered tile scale, shallow consistent courses, a six-colour roof ramp and retained gable plaster. Original approved roof/facade materials remain byte-identical. Native end contours are cleaned to one pixel; no noise or replacement shapes are generated in code.",
+    "5": "Repaired the final southern district itself. south-L-2 moves to baseline1296, giving south-L-1 a48px shared wall. south-L-3 moves to baseline1296, giving south-L-return and south-L-4 each48px contact. The detached workshop is incorporated into south-L-2, using its approved upper bay and the existing workshop ground floor. Legal yards and service passage remain. The actual final ground plan, not the separate acceptance sample, shows every shared wall.",
+    "6": "Retained accepted bent routes and inhabited side entries. The48px public alley at[480,1104,48,144],24px service passage at[384,1104,24,144] and clear inner wall lane remain. Both adjacency consumers now require positive shared footprint edges; corner-only contact is explicitly rejected.",
+    "7": "Retained from the preceding repair: Preserved passing cycle-5 work: Retained the populated10x7 L square with2x2 notch: church west, guildhall north, inn east, market hall south; six stalls, fountain and cross.",
+    "8": "Retained from the preceding repair: Redrew48x48 east church porch in the receding east-wall plane. Two candidates; B selected. Its threshold rises up-right, landing reaches the east edge at local(48,40), approach anchor(720,1000). Normal/reveal actors demonstrate the actual doorway. Enclosed churchyard and civic skyline preserved.",
+    "9": "Retained from the preceding repair: Preserved passing cycle-5 work: Repainted slab texture without a frame, registered/mode-reduced and tile-wrapped using only drawn pixels. Kerbs belong to actual routes. Removed obsolete eastern private route beneath new frontage.",
+    "10": "Retained from the preceding repair: Redrew96x48 fountain shadow as one broad-contact southeast cast. Its top meets the painted fountain foot at y1006 rather than the transparent canvas bottom1008. Whole-caster union, receiver clipping and96/255 opacity remain; no detached spike or doubled shade.",
+    "11": "Retained from the preceding repair: Preserved passing cycle-5 work: Both failed curtain bodies redrawn as coherent12-20px-length masonry under retained compatible parapets. Single ownership extends to curtain/stair/tower contacts. Full wall proofs regenerated.",
+    "12": "Retained from the preceding repair: Preserved passing cycle-5 work: Retained all eight passing signs and recessed architectural sign bays; signs remain inside their lots and above clear doors.",
+    "13": "Retained from the preceding repair: Preserved passing cycle-5 work: Cobbler redraw has two separated upright boots with toes and a spiral-ended leather roll; rebuilt its two-cell partner with the existing right door bay. Other passing goods unchanged.",
+    "14": "Retained from the preceding repair: Passing inn/toll fronts unchanged. New lane doors have approximately20-24px projected opening widths, lanterns and diagonal steps; painted landings connect to actual side approaches. Normal/reveal entry proofs retain supports and show both approach and threshold actors.",
+    "15": "Retained approved structural forms and varied bays; merged the detached workshop into the attached return. Every five-lot run remains within the resolved-piece limit. Roof mix is20 terracotta/13 slate/7 brown, exactly50percent terracotta.",
+    "16": "Retained from the preceding repair: Preserved passing cycle-5 work: Retained three distinct vendors, each used twice, plus porter/cart, seated visitor and guard. Activity placement and the clearance verifier include people alpha; stationary bodies move into legal pockets.",
+    "17": "The workshop is now part of the attached two-storey western return. Southern sheds, workyards and forge remain. Modular storeys1:3,2:14,3:11,4:8,5:4; with ancillary buildings1:10,2:15,3:11,4:8,5:4. Inclusive one-storey share20.83percent.",
+    "18": "Retained from the preceding repair: Preserved passing cycle-5 work: Replaced the guard-recess shrine with a purpose-drawn noticeboard. Bench/notice recesses have boundary returns on the building side with their48px mouths clear.",
+    "19": "Retained from the preceding repair: Preserved passing cycle-5 work: Retained the passing north wall access stair, gate recession and uneven tower rhythm. Human-scale toll bay now has a full door, counter and lantern beside the clear gate.",
+    "20": "Regenerated all seven final outputs and all C5 proof sheets. Replaced disconnected cap/fill swatches with real registered assemblies, separate complete-cap comparison, pixel-source maps, native/4x/8x contact views and a complete house reference comparison. Added the actual final southern plan and close-up contact crops.513 general and183 focused checks pass, with negative corner-only fixtures, independent rectangle arithmetic and exact source-pixel replay.126 critic-passing PNGs remain byte-identical."
+  },
+  "conflicts": "BRIEF-17 retains precedence for signs twice Round15 scale,1-2-cell principal lots plus yards,48px registration,3x4 gate allocation, lot-contained overlays and eight-cell route variation. Coordinator40x30cells requires1920x1440 native pixels.",
+  "validation": {
+    "general_passed": 513,
+    "focused_passed": 183,
+    "failed": 0,
+    "passing_pngs_preserved": 126,
+    "new_mode_samples": 2654208,
+    "modular_storeys": {
+      "1": 3,
+      "2": 14,
+      "3": 11,
+      "4": 8,
+      "5": 4
+    },
+    "inclusive_storeys": {
+      "1": 10,
+      "2": 15,
+      "3": 11,
+      "4": 8,
+      "5": 4
+    },
+    "inclusive_one_storey_percent": 20.833333333333332,
+    "roof_mix": {
+      "terracotta": 20,
+      "slate": 13,
+      "brown": 7
+    }
+  },
+  "proofs": [
+    "r17-C5-southern-ground-plan-1x.png",
+    "r17-C5-southern-connectivity.json",
+    "r17-C5-cap-fill-joins-1x.png",
+    "r17-C5-cap-fill-contact-guides-4x.png",
+    "r17-C5-roof-assembly.json",
+    "r17-C5-modular-roof-house-4x.png"
+  ],
+  "replay": [
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-critic3-process.py",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/out/city17/compose.py --part C5",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-review.py",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-verify.py",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-critic3-verify.py"
+  ],
+  "limits": "Saved-art self-verification, not an independent critic verdict or runtime collision/pathfinding test. All authored files are under art-drop. No seasonal partners apply. No commit, push or branch change."
+}

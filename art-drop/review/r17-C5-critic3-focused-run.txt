@@ -1,0 +1,8 @@
+{
+  "passed": 183,
+  "failed": 0,
+  "passing_pngs_preserved": 126,
+  "new_production_pngs": 4,
+  "source_drawings": 2,
+  "mode_samples": 2654208
+}

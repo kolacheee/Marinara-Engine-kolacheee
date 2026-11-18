@@ -1,0 +1,1192 @@
+{
+  "entrances": [
+    {
+      "id": "west-0",
+      "box": [
+        204,
+        672,
+        228,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-1",
+      "box": [
+        252,
+        720,
+        276,
+        752
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-2",
+      "box": [
+        432,
+        644,
+        464,
+        668
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-middle-0",
+      "box": [
+        448,
+        642,
+        480,
+        666
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "north-middle-1",
+      "box": [
+        672,
+        648,
+        704,
+        672
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-baker",
+      "box": [
+        780,
+        672,
+        804,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-narrow",
+      "box": [
+        828,
+        672,
+        852,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-smith-bay",
+      "box": [
+        1068,
+        672,
+        1092,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "square-apothecary",
+      "box": [
+        1164,
+        672,
+        1188,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "merchant-0",
+      "box": [
+        1260,
+        672,
+        1284,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "merchant-1",
+      "box": [
+        1308,
+        672,
+        1332,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "merchant-2",
+      "box": [
+        1360,
+        690,
+        1392,
+        714
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "merchant-3",
+      "box": [
+        1548,
+        672,
+        1572,
+        704
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "merchant-4",
+      "box": [
+        1644,
+        720,
+        1668,
+        752
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "merchant-5",
+      "box": [
+        1776,
+        696,
+        1808,
+        720
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-lane-workshop",
+      "box": [
+        432,
+        452,
+        464,
+        476
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-lane-workshop",
+      "box": [
+        1360,
+        498,
+        1392,
+        522
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-rear-house",
+      "box": [
+        1776,
+        452,
+        1808,
+        476
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-smith",
+      "box": [
+        204,
+        1008,
+        228,
+        1040
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-cobbler",
+      "box": [
+        396,
+        1008,
+        420,
+        1040
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "inn-square-wing",
+      "box": [
+        1168,
+        1028,
+        1200,
+        1052
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "gate-road-inn",
+      "box": [
+        1296,
+        1056,
+        1344,
+        1104
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "inn-east-wing",
+      "box": [
+        1452,
+        1056,
+        1476,
+        1088
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-tailor",
+      "box": [
+        1644,
+        1056,
+        1668,
+        1088
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "east-scribe",
+      "box": [
+        1740,
+        1056,
+        1764,
+        1088
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-L-0",
+      "box": [
+        204,
+        1296,
+        228,
+        1328
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-L-1",
+      "box": [
+        300,
+        1344,
+        324,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-L-2",
+      "box": [
+        348,
+        1296,
+        372,
+        1328
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-L-3",
+      "box": [
+        588,
+        1296,
+        612,
+        1328
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-L-4",
+      "box": [
+        636,
+        1344,
+        660,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-square-west",
+      "box": [
+        684,
+        1344,
+        708,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-square-0",
+      "box": [
+        1020,
+        1344,
+        1044,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-square-1",
+      "box": [
+        1068,
+        1344,
+        1092,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "poor-0",
+      "box": [
+        1452,
+        1344,
+        1476,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "poor-1",
+      "box": [
+        1500,
+        1296,
+        1524,
+        1328
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "poor-2",
+      "box": [
+        1548,
+        1248,
+        1572,
+        1280
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "poor-3",
+      "box": [
+        1740,
+        1344,
+        1764,
+        1376
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "west-rear-range",
+      "box": [
+        300,
+        432,
+        324,
+        464
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "middle-side-workshop",
+      "box": [
+        448,
+        450,
+        480,
+        474
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "south-L-return",
+      "box": [
+        540,
+        1248,
+        564,
+        1280
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "court-closure",
+      "box": [
+        252,
+        912,
+        276,
+        944
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "cathedral",
+      "box": [
+        538,
+        1056,
+        586,
+        1104
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "guildhall",
+      "box": [
+        927,
+        672,
+        975,
+        720
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "market-hall",
+      "box": [
+        852,
+        1200,
+        876,
+        1232
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "church-east-door",
+      "box": [
+        720,
+        976,
+        768,
+        1024
+      ],
+      "blocked": 0
+    },
+    {
+      "id": "gate-toll-bay",
+      "box": [
+        1320,
+        1344,
+        1344,
+        1376
+      ],
+      "blocked": 0
+    }
+  ],
+  "routes": [
+    {
+      "id": "gate-road",
+      "rect": [
+        1200,
+        1152,
+        96,
+        288
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-road",
+      "rect": [
+        1104,
+        1056,
+        288,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-road",
+      "rect": [
+        1104,
+        768,
+        96,
+        288
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-road",
+      "rect": [
+        1104,
+        672,
+        288,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-road",
+      "rect": [
+        1296,
+        672,
+        96,
+        144
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-road",
+      "rect": [
+        1392,
+        720,
+        384,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "civic-access",
+      "rect": [
+        480,
+        672,
+        96,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "civic-access",
+      "rect": [
+        720,
+        672,
+        384,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        144,
+        672,
+        96,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        240,
+        720,
+        96,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        336,
+        672,
+        96,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        432,
+        288,
+        48,
+        384
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        432,
+        672,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        672,
+        384,
+        48,
+        288
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        1344,
+        336,
+        48,
+        336
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        1584,
+        288,
+        48,
+        384
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        432,
+        768,
+        48,
+        288
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        96,
+        1008,
+        336,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        480,
+        1056,
+        240,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        720,
+        1056,
+        48,
+        288
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        1488,
+        1008,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        1488,
+        1056,
+        288,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        1776,
+        816,
+        48,
+        240
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "south-L-bent-alley",
+      "rect": [
+        480,
+        1104,
+        48,
+        144
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "stepped-side",
+      "rect": [
+        912,
+        1200,
+        48,
+        144
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "private-service",
+      "rect": [
+        384,
+        1104,
+        24,
+        144
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "private-service",
+      "rect": [
+        1656,
+        1104,
+        24,
+        144
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "craft-alley-mouth",
+      "rect": [
+        384,
+        1056,
+        48,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        288,
+        912,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        1488,
+        864,
+        48,
+        192
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        720,
+        960,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        720,
+        696,
+        48,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        1536,
+        672,
+        48,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        1344,
+        288,
+        48,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        672,
+        288,
+        48,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        672,
+        336,
+        48,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        1008,
+        240,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "destination",
+      "rect": [
+        1776,
+        624,
+        96,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "north-wall-lane",
+      "rect": [
+        96,
+        240,
+        336,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "north-wall-lane",
+      "rect": [
+        432,
+        240,
+        384,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "north-wall-lane",
+      "rect": [
+        816,
+        240,
+        384,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "north-wall-lane",
+      "rect": [
+        1200,
+        240,
+        384,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "north-wall-lane",
+      "rect": [
+        1584,
+        240,
+        240,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "wall-service",
+      "rect": [
+        96,
+        288,
+        48,
+        336
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "wall-service",
+      "rect": [
+        96,
+        624,
+        48,
+        384
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "wall-service",
+      "rect": [
+        96,
+        1008,
+        48,
+        336
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "wall-service",
+      "rect": [
+        1776,
+        288,
+        48,
+        336
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "wall-service",
+      "rect": [
+        1776,
+        624,
+        48,
+        384
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "wall-service",
+      "rect": [
+        1776,
+        1008,
+        48,
+        336
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "south-wall-lane",
+      "rect": [
+        96,
+        1344,
+        288,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "south-wall-lane",
+      "rect": [
+        576,
+        1344,
+        192,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "south-wall-lane",
+      "rect": [
+        960,
+        1344,
+        144,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "south-wall-lane",
+      "rect": [
+        1392,
+        1344,
+        144,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "south-wall-lane",
+      "rect": [
+        1728,
+        1344,
+        96,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        384,
+        1248,
+        192,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        384,
+        1296,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        528,
+        1296,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        768,
+        1248,
+        192,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        768,
+        1296,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        912,
+        1296,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        1536,
+        1248,
+        192,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        1536,
+        1296,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "tower-service-turn",
+      "rect": [
+        1680,
+        1296,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-inner-service",
+      "rect": [
+        1104,
+        1248,
+        48,
+        144
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-inner-service",
+      "rect": [
+        1104,
+        1248,
+        288,
+        48
+      ],
+      "blocked": 0,
+      "owners": []
+    },
+    {
+      "id": "gate-inner-service",
+      "rect": [
+        1344,
+        1248,
+        48,
+        96
+      ],
+      "blocked": 0,
+      "owners": []
+    }
+  ]
+}

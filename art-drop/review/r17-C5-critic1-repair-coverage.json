@@ -1,0 +1,177 @@
+[
+  {
+    "file": "art-drop/out/city17/shop-cobbler-c5-w1.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/inn-front-c5-w2.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/wall-curtain-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/square-slabs-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/church-porch-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/gate-guard-bay-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-gable-d2-c5-w2.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-hip-d2-c5-w2.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-fill-left-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-fill-right-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/floor-b-left-c5-w1.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/floor-c-left-c5-w1.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/ground-cobbler-c5-w2.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/wall-curtain-c-c5.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-gable-d2-c5-w2-slate.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-gable-d2-c5-w2-brown.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-hip-d2-c5-w2-slate.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-hip-d2-c5-w2-brown.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-fill-left-c5-slate.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-fill-left-c5-brown.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-fill-right-c5-slate.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/roof-fill-right-c5-brown.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/out/city17/compose.py",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-C5-review.py",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-C5-L-T-dead-end-1x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-C5-L-T-dead-end-3x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-C5-L-T-dead-end-comparison-1x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-C5-L-T-dead-end-comparison-3x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final-2x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final-vs-r15-vs-today.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final-squint.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final-crop-square-3x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final-crop-street-3x.png",
+    "exists": true,
+    "changed": true
+  },
+  {
+    "file": "art-drop/review/r17-city-final-crop-gate-3x.png",
+    "exists": true,
+    "changed": true
+  }
+]

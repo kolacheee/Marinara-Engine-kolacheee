@@ -1,0 +1,11 @@
+{
+  "buildings": 40,
+  "storeys": {
+    "5": 4,
+    "3": 11,
+    "2": 14,
+    "4": 8,
+    "1": 3
+  },
+  "single_storey_fraction": 0.075
+}

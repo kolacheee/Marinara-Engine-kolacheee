@@ -1,0 +1,119 @@
+[
+  {
+    "id": "cap-a",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Use case: stylized-concept. A SINGLE enlarged pixel-art RPG roof cap sprite on SOLID PURE MAGENTA #ff00ff, no ground, no labels, no scene. Tall 2:3 aspect painted bounding box for final native 96x144. High three-quarter overhead view matching supplied medieval game house: ridge recedes north away from us, broad lit left slope and shaded right slope. Terracotta with large orderly 6-10-native-pixel angular tile clusters. Draw one complete deep GABLED roof volume with uninterrupted same-size tiles from back ridge to foreground eave. Foreground has distinct triangular cream-plaster and timber gable face BELOW the tiles, with dark timber beam and continuous thick front eave. Preserve coherent ridge, no transverse seams, no inserted patch or repeated fields. One native pixel exterior dark outline, top-left light, 6 restrained terracotta tones, calm broad shapes. No mottling, hairlines, specks, haze, blur, rounded corners, dormers or chimneys. Fill nearly the whole tall canvas with narrow magenta margin. This is candidate A.",
+    "source": "r17-C5-critic2-source-cap-a.png"
+  },
+  {
+    "id": "cap-b",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Use case: stylized-concept. A SINGLE enlarged pixel-art RPG roof cap sprite on SOLID PURE MAGENTA #ff00ff, no ground, no labels, no scene. Tall 2:3 aspect painted bounding box for final native 96x144. High three-quarter overhead view matching supplied medieval game house: ridge recedes north away from us, broad lit left slope and shaded right slope. Terracotta with large orderly 6-10-native-pixel angular tile clusters. Draw one complete deep GABLED roof volume with uninterrupted same-size tiles from back ridge to foreground eave. Foreground has distinct triangular cream-plaster and timber gable face BELOW the tiles, with dark timber beam and continuous thick front eave. Preserve coherent ridge, no transverse seams, no inserted patch or repeated fields. One native pixel exterior dark outline, top-left light, 6 restrained terracotta tones, calm broad shapes. No mottling, hairlines, specks, haze, blur, rounded corners, dormers or chimneys. Fill nearly the whole tall canvas with narrow magenta margin. This is candidate A. Candidate B: make the tile pattern quieter, slightly smaller tiles than A; broad coherent unbroken planar roof and continuous foreground gable. Four red roof shades and cream/brown gable. Keep silhouette a deep roof, not a thin triangle.",
+    "source": "r17-C5-critic2-source-cap-b.png"
+  },
+  {
+    "id": "east-a",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. Native target 96 wide x192 tall. Complete TWO STOREY corner workshop house, half upper volume terracotta roof viewed from above, lower warm ivory plaster, dark brown beams, grey stone base. The EAST facing wall is the wide RIGHT THIRD of house, clearly receding diagonally up-right. The main south front occupies LEFT TWO THIRDS. ONE USABLE ENTRY ONLY ON RIGHT SIDE PLANE, NOT on south front: a tall 24x34 native pixel dark door drawn as a parallelogram in that diagonal wall; its threshold and thick projecting stone landing are slanted UP-RIGHT, extending to the RIGHT EDGE, so a person approaches horizontally FROM THE RIGHT. A big gold lit lantern on the side jamb. Door opening comfortably fits16x32 person. The front holds one dim shuttered workshop window, NO front door or front step. Upper windows follow each face, two simple window types. Stone landing within entire96px property width. Top-left light bright front and roof left, shaded right wall but clear lantern/step. Roof paint distinct rust-red and facade brown/cream, no red facade. Preserve full height, calm masses, no mini door. Candidate A.",
+    "source": "r17-C5-critic2-source-east-a.png"
+  },
+  {
+    "id": "east-b",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. Native target 96 wide x192 tall. Complete TWO STOREY corner workshop house, half upper volume terracotta roof viewed from above, lower warm ivory plaster, dark brown beams, grey stone base. The EAST facing wall is the wide RIGHT THIRD of house, clearly receding diagonally up-right. The main south front occupies LEFT TWO THIRDS. ONE USABLE ENTRY ONLY ON RIGHT SIDE PLANE, NOT on south front: a tall 24x34 native pixel dark door drawn as a parallelogram in that diagonal wall; its threshold and thick projecting stone landing are slanted UP-RIGHT, extending to the RIGHT EDGE, so a person approaches horizontally FROM THE RIGHT. A big gold lit lantern on the side jamb. Door opening comfortably fits16x32 person. The front holds one dim shuttered workshop window, NO front door or front step. Upper windows follow each face, two simple window types. Stone landing within entire96px property width. Top-left light bright front and roof left, shaded right wall but clear lantern/step. Roof paint distinct rust-red and facade brown/cream, no red facade. Preserve full height, calm masses, no mini door. Candidate B. Slightly broaden the right-side doorway plane to occupy 40 percent of house width; leave only one broad dim window on front. Short two-step landing reaches right canvas edge. No dormer or chimney; broad unbroken gabled roof, quiet 6-10px tile clusters. Door side entrance is the main feature.",
+    "source": "r17-C5-critic2-source-east-b.png"
+  },
+  {
+    "id": "west-a",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. Native target96 wide x192 tall. Complete TWO STOREY corner workshop house. VIEW FROM SOUTHWEST: LEFT40% is visible WEST SIDE WALL receding diagonally UP-LEFT; RIGHT60% is south front with horizontal windows. Terracotta gable roof broad upper half, ivory plaster and dark brown timber below, grey stone plinth. ONLY usable door is on LEFT WEST-FACING SIDE PLANE: door24x34 native, slanted lintel and threshold slope DOWN-RIGHT along receding left wall. Substantial lit projecting stone landing extends LEFT to the canvas edge so person approaches FROM LEFT. Large golden lantern on left-facing jamb. Main right front has one dim workshop window, NO front door and NO south step. Above are simple two-window families. Entire door/landing fit96px property. Light top LEFT: west door wall LIGHTER than south front; left roof lit, right roof shaded. No mirroring lighting from another image. Strong geometric side-facing entrance, no squeezed doorway. Candidate A.",
+    "source": "r17-C5-critic2-source-west-a.png"
+  },
+  {
+    "id": "west-b",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. Native target96 wide x192 tall. Complete TWO STOREY corner workshop house. VIEW FROM SOUTHWEST: LEFT48% is visible WEST SIDE WALL receding diagonally UP-LEFT; RIGHT52% is south front with horizontal windows. Terracotta gable roof broad upper half, ivory plaster and dark brown timber below, grey stone plinth. ONLY usable door is on LEFT WEST-FACING SIDE PLANE: door24x34 native, slanted lintel and threshold slope DOWN-RIGHT along receding left wall. Substantial lit projecting stone landing extends LEFT to the canvas edge so person approaches FROM LEFT. Large golden lantern on left-facing jamb. Main right front has one dim workshop window, NO front door and NO south step. Above are simple two-window families. Entire door/landing fit96px property. Light top LEFT: west door wall LIGHTER than south front; left roof lit, right roof shaded. No mirroring lighting from another image. Strong geometric side-facing entrance, no squeezed doorway. Candidate B. The WEST LEFT SIDE must be almost HALF the visible width. Its door must occupy at least a QUARTER of total sprite width. Big human doorway, not narrow slit. No chimney or dormer. Broad simple left roof slope. Landing fits within left edge with visible entire stone edging; no off-canvas crop.",
+    "source": "r17-C5-critic2-source-west-b.png"
+  },
+  {
+    "id": "porch-a",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. Draw ONE compact medieval church EAST-WALL doorway and supported landing, native48x48 square allocation, near full frame. High 3/4 view FROM SOUTHEAST. Door-wall is a RECeding DIAGONAL plane up-right across picture; ALL lintel, threshold, landing-back edges rise UP-RIGHT at approximately35 degrees, NOT horizontal. Door is large30px wide projected x32 tall on that diagonal plane; dark red-brown planks, grey-brown stone surround thickness, small amber lantern at upper jamb. Landing extends to RIGHT for approach FROM EAST; TWO broad stone steps exposed on right. Top-left light. No church building, roof, pillar tower or ground rectangle. This is a wall-attached door PORTAL only, no free-standing southern facade. Deep doorway recess and thick jamb with diagonal perspective, continuous supported stairs under it. Dark one-pixel outline, restrained grey-brown stone, no texture noise. Candidate A.",
+    "source": "r17-C5-critic2-source-porch-a.png"
+  },
+  {
+    "id": "porch-b",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. Draw ONE compact medieval church EAST-WALL doorway and supported landing, native48x48 square allocation, near full frame. High 3/4 view FROM SOUTHEAST. Door-wall is a RECeding DIAGONAL plane up-right across picture; ALL lintel, threshold, landing-back edges rise UP-RIGHT at approximately35 degrees, NOT horizontal. Door is large30px wide projected x32 tall on that diagonal plane; dark red-brown planks, grey-brown stone surround thickness, small amber lantern at upper jamb. Landing extends to RIGHT for approach FROM EAST; TWO broad stone steps exposed on right. Top-left light. No church building, roof, pillar tower or ground rectangle. This is a wall-attached door PORTAL only, no free-standing southern facade. Deep doorway recess and thick jamb with diagonal perspective, continuous supported stairs under it. Dark one-pixel outline, restrained grey-brown stone, no texture noise. Candidate B. Use a plain slanted rectangular lintel, not gothic point. Slightly steeper35-degree receding diagonal door threshold. Door fill takes most of48x48 allocation, fewer big stones, one short 4px-high step at bottom-right. Lantern and light step clear at1x. Keep solid magenta border entirely around sprite; no clipped stair.",
+    "source": "r17-C5-critic2-source-porch-b.png"
+  },
+  {
+    "id": "abut-left-a",
+    "size": [
+      24,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. ONE narrow exposed medieval party-wall masonry return strip, native24px wide by96px high, straight SQUARE RECTANGULAR boundary. Plain continuous grey-brown stone receiving WALL ONLY, no roof tiles whatsoever. Tall narrow24:96 painted rectangle centered on magenta. Top coping3px deep, lower masonry has sparse horizontal stone courses of12-20 native pixels. RIGHT EDGE has a narrow3px lead-grey metal flashing channel lit at upper/left edge, dark one-pixel exterior. Light comes from top-left, this EAST-facing exposed wall is shaded warm-grey. Calm6-tone stone, never orange or terracotta. A continuous wall body from top to bottom, not a strip restarted each storey. This strip will be registered to the exact neighboring roof silhouette; leave all rectangular wall filled opaque. No diagonal roof, triangles, checkerboard, specks or freestanding tower.",
+    "source": "r17-C5-critic2-source-abut-left-a.png"
+  },
+  {
+    "id": "abut-right-a",
+    "size": [
+      24,
+      96
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. ONE narrow exposed medieval party-wall masonry return strip, native24px wide by96px high, straight SQUARE RECTANGULAR boundary. Plain continuous grey-brown stone receiving WALL ONLY, no roof tiles whatsoever. Tall narrow24:96 painted rectangle centered on magenta. Top coping3px deep, lower masonry has sparse horizontal stone courses of12-20 native pixels. LEFT EDGE has a narrow3px lead-grey metal flashing channel lit at upper/left edge, dark one-pixel exterior. Light comes from top-left, this WEST-facing exposed wall is softly lit warm-grey, left face brighter and right edge shaded. Calm6-tone stone, never orange or terracotta. A continuous wall body from top to bottom, not a strip restarted each storey. This strip will be registered to the exact neighboring roof silhouette; leave all rectangular wall filled opaque. No diagonal roof, triangles, checkerboard, specks or freestanding tower.Alternative receiving wall hand. Restrained low-contrast stones, no thick black internal joints.",
+    "source": "r17-C5-critic2-source-abut-right-a.png"
+  },
+  {
+    "id": "shadow-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. A single flat BLACK CAST-SHADOW MASK of the supplied square stone fountain, no fountain itself. Target96 wide48 high, horizontal2:1 canvas. Shadow is lying FLAT on ground, cast down-right by top-left light. The TOP EDGE is the very BROAD straight80px CONTACT EDGE of the square basin's foreground foot, beginning near left canvas edge. From that broad top contact the shadow extends diagonally DOWN-RIGHT as a low solid angular quadrilateral; at far lower RIGHT a short connected narrow projection from the fountain central pedestal. Broad nearest side, narrower farther side. Entire shape solid uniform near-black, no shading or holes or outline within it. Pure solid MAGENTA outside. One continuous angular pixel polygon with square stepped boundaries, no detached pieces, NO upright fountain-like silhouette, NO thin spike at top. Leave slim magenta margin.",
+    "source": "r17-C5-critic2-source-shadow-a.png"
+  },
+  {
+    "id": "wing-a",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. One complete TWO STOREY medieval town house WITH CONNECTED REAR WING, native96px wide by240px tall. High overhead 3/4 view, not isometric diamond. Plan is unmistakable L: principal two-cell-wide front crossbar occupies bottom96px of sprite, a ONE-cell-wide rear wing attached to its RIGHT HALF extends NORTH/up by96px; the upper LEFT is empty MAGENTA court notch. Both volumes join at an actual tiled VALLEY near center, one terracotta roof family, no separate buildings/gaps. Roofs occupy most of upper sprite, same6-10px angular tile scale, broad lit left planes, shaded right planes, one continuous physical L volume. Front at bottom has cream plaster two-storey facade with recessed shutters, a dark door with lit step and lantern, stone plinth. Right tall rear wing has narrower roof with ridge north-to-south, meeting main transverse ridge at right angle. No chimney/dormer, yard, fence, props, scenery or text. This is one attached building, silhouette has rear protrusion and court notch. The rear wing is visible above roof crossbar, no invented wall gaps. Candidate A.",
+    "source": "r17-C5-critic2-source-wing-a.png"
+  },
+  {
+    "id": "wing-b",
+    "size": [
+      96,
+      240
+    ],
+    "prompt": "Use case: stylized-concept. ONE enlarged medieval RPG pixel-art sprite on perfectly solid #ff00ff MAGENTA. No scenery, text or labels. Crisp square pixel clusters, top-left light, one native pixel dark contour, calm materials and low colour count like reference. No blur, haze, isolated specks, noisy microtexture or rounded grid edges. One complete TWO STOREY medieval town house WITH CONNECTED REAR WING, native96px wide by240px tall. High overhead 3/4 view, not isometric diamond. Plan is unmistakable L: principal two-cell-wide front crossbar occupies bottom96px of sprite, a ONE-cell-wide rear wing attached to its RIGHT HALF extends NORTH/up by96px; the upper LEFT is empty MAGENTA court notch. Both volumes join at an actual tiled VALLEY near center, one terracotta roof family, no separate buildings/gaps. Roofs occupy most of upper sprite, same6-10px angular tile scale, broad lit left planes, shaded right planes, one continuous physical L volume. Front at bottom has cream plaster two-storey facade with recessed shutters, a dark door with lit step and lantern, stone plinth. Right tall rear wing has narrower roof with ridge north-to-south, meeting main transverse ridge at right angle. No chimney/dormer, yard, fence, props, scenery or text. This is one attached building, silhouette has rear protrusion and court notch. The rear wing is visible above roof crossbar, no invented wall gaps. Candidate B. Make the actual INNER VALLEY clearly visible as a narrow dark diagonal gutter between crossing slopes. Rear ridge ends against the foreground cross ridge. Lower roof left end is HIPPED, no front triangular gable needed. Building only two storeys, recessed big windows and modest human door. Don't make the rear wing look like a vertical tower; it is a roof seen from above at the same eave height.",
+    "source": "r17-C5-critic2-source-wing-b.png"
+  }
+]

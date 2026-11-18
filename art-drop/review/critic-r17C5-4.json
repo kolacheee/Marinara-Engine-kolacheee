@@ -1,0 +1,751 @@
+{
+  "part": "C5",
+  "round": 4,
+  "verdict": "fail",
+  "failed": [
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x"
+  ],
+  "files": {
+    "roof-gable-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-cross-c5-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-cross-c5-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "shop-apothecary-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "shop-cobbler-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "shop-tailor-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "inn-front-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-a-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-b-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-c-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "party-return-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "vendor-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "vendor-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "vendor-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-curtain-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-curtain-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-access-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "square-slabs-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "forge-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "church-porch-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-valley-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "fountain-shadow-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "gate-guard-bay-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "court-closure-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No source redraw required for the reported failure; repair the disconnected instances in compose.py."
+    },
+    "roof-narrow-hip-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-cross-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-cross-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-d2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-d2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-d3-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-left-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-right-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-ridge-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-end-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-valley-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-a-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-a-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-b-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-b-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-c-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "floor-c-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-right-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-v0-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-v1-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-v2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-v3-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-v4-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "storey-sign-bay-v5-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "ground-apothecary-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "ground-cobbler-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "ground-tailor-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "party-left-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "party-right-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-curtain-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-shoulder-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "gate-connector-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-top-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-top-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-top-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "townhall-market-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "washing-short-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-cross-c5-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-cross-c5-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-cross-c5-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-cross-c5-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-c5-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-c5-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-valley-b-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-valley-b-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-narrow-hip-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-narrow-hip-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-cross-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-cross-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-cross-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-cross-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-d2-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-d2-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-d2-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-d2-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-d3-c5-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-gable-d3-c5-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-left-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-left-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-right-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-right-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-ridge-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-ridge-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-end-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-hip-end-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-valley-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-valley-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-tower-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-tower-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "wall-tower-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "guard-notice-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "side-house-east-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No source redraw required for the reported failure; repair the disconnected instances in compose.py."
+    },
+    "side-house-west-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No source redraw required for the reported failure; repair the disconnected instances in compose.py."
+    },
+    "side-house-east-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No source redraw required for the reported failure; repair the disconnected instances in compose.py."
+    },
+    "side-house-west-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No source redraw required for the reported failure; repair the disconnected instances in compose.py."
+    },
+    "roof-abut-left-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-abut-right-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-abut-left-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-abut-left-c5r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-abut-right-c5r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-abut-right-c5r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-filled-gable-c5r1-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-filled-gable-c5r1-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-filled-gable-c5r1-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "house-rear-wing-c5r2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-extension-cap-c5r3-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-left-c5r3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-ridge-c5r3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "roof-fill-right-c5r3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None; source drawing passes the C5 inspection."
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "Continuous frontage still fails in the north-middle and northeast groups (FIXES 5/6 and the coordinator rule). middle-side-workshop has ground rectangle [480,384,96,96], east-lane-workshop [1392,432,96,96], and east-rear-house [1680,384,96,96]. None shares a positive-length ground edge with another principal building or an architectural prop. Their gaps to the front houses are 96 px, 96 px (48 px to the adjacent merchant-3), and 144 px respectively. Projected roofs conceal some of the disconnected ground plan; they do not make attached wings. Evidence: critic-r17C5-4-lane-islands-1x.png and critic-r17C5-4-ne-islands-1x.png.",
+        "The southeast poor-3 house is freestanding on paving at ground rectangle [1728,1248,48,96]. It has no attached house or rear wing, and the shed farther north and boundary fences do not join it into a built frontage. This is the remaining village-house island most clearly visible at native scale. Evidence: critic-r17C5-4-se-island-1x.png.",
+        "The craft court is joined only at corners. west-smith [144,912,96,96] and west-cobbler [336,912,96,96] meet court-closure [240,816,96,96] only at (240,912) and (336,912). Both shared_ground_edges results are empty. The elevated closure painting appears to bridge the towers, but no wall length connects either shop to it. Evidence: critic-r17C5-4-craft-contacts-1x.png.",
+        "The positive-length shared_ground_edges implementation is now correct, but the final layout still contains six isolated principal-building nodes. Repetition passes on the derived connected chains do not establish that every frontage is connected. The focused southern repair proof misses the same defect in other districts (FIXES 20)."
+      ],
+      "fix": "Rework these six placements into attached frontages on the 48 px grid. Join the lane-facing houses to their own blocks with legal drawn returns/rear wings; move or merge poor-3 into an attached poor-quarter return; give both craft shops a real shared wall with the rear closure, preferably at least one 48 px course of ground contact. Use image-drawn architecture if a new connector is needed. Preserve 1–2-cell principal depths, enclosed 48 px rear strips, the 96/48/24 px public/service widths, the continuous inner-wall lane, and all door approaches. Fences, shadows and projected roof overlap are not substitute house connections. Re-run repetition and storey counts after joining the buildings, then regenerate the affected final renders. Extend the ground-plan acceptance proof to every district and explicitly flag disconnected street-facing houses and corner-only connections."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "Continuous frontage still fails in the north-middle and northeast groups (FIXES 5/6 and the coordinator rule). middle-side-workshop has ground rectangle [480,384,96,96], east-lane-workshop [1392,432,96,96], and east-rear-house [1680,384,96,96]. None shares a positive-length ground edge with another principal building or an architectural prop. Their gaps to the front houses are 96 px, 96 px (48 px to the adjacent merchant-3), and 144 px respectively. Projected roofs conceal some of the disconnected ground plan; they do not make attached wings. Evidence: critic-r17C5-4-lane-islands-1x.png and critic-r17C5-4-ne-islands-1x.png.",
+        "The southeast poor-3 house is freestanding on paving at ground rectangle [1728,1248,48,96]. It has no attached house or rear wing, and the shed farther north and boundary fences do not join it into a built frontage. This is the remaining village-house island most clearly visible at native scale. Evidence: critic-r17C5-4-se-island-1x.png.",
+        "The craft court is joined only at corners. west-smith [144,912,96,96] and west-cobbler [336,912,96,96] meet court-closure [240,816,96,96] only at (240,912) and (336,912). Both shared_ground_edges results are empty. The elevated closure painting appears to bridge the towers, but no wall length connects either shop to it. Evidence: critic-r17C5-4-craft-contacts-1x.png."
+      ],
+      "fix": "Rework these six placements into attached frontages on the 48 px grid. Join the lane-facing houses to their own blocks with legal drawn returns/rear wings; move or merge poor-3 into an attached poor-quarter return; give both craft shops a real shared wall with the rear closure, preferably at least one 48 px course of ground contact. Use image-drawn architecture if a new connector is needed. Preserve 1–2-cell principal depths, enclosed 48 px rear strips, the 96/48/24 px public/service widths, the continuous inner-wall lane, and all door approaches. Fences, shadows and projected roof overlap are not substitute house connections. Re-run repetition and storey counts after joining the buildings, then regenerate the affected final renders."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "Exact nearest-neighbour 2x export is technically correct, but it reproduces the three detached side-street houses, freestanding poor-3, and corner-only craft-court connections identified in r17-city-final."
+      ],
+      "fix": "Repair the placements in compose.py, regenerate the native final, and export its exact nearest-neighbour 2x image."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The three comparison panels are correctly placed at native scale. The C5 panel nevertheless shows the same disconnected frontages and southeast island as r17-city-final; the comparison therefore cannot be accepted as a finished dense-city showcase."
+      ],
+      "fix": "Replace the C5 panel with the corrected native final, preserving the current native-scale reference panels and correct C5 label."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "The greyscale conversion matches the native final exactly and the civic centre remains legible. It also preserves the detached side-house masses, open paving around poor-3 and corner-only craft-court connections, so the frontage-layout acceptance requirement still fails."
+      ],
+      "fix": "Regenerate from the corrected native final after the frontage repairs; colour changes alone will not address this failure."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Exact nearest-neighbour 3x crop; the notched square, six occupied stalls, civic thresholds, fountain, market cross and southern market hall are visibly present."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "The exact 3x crop includes the detached middle-side-workshop on the x432–480 lane. In original city coordinates its footprint is [480,384,96,96], separated by 96 px from north-middle-0/1 at y576. The upper paint overlaps the tall neighbour visually without a ground-level house connection."
+      ],
+      "fix": "Attach the middle-side workshop to the north-middle block with a legal drawn return and retain the 48 px lane and visible western door. Regenerate this crop from the repaired final."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "The exact 3x crop includes poor-3 at original ground coordinates [1728,1248,48,96], standing alone on paving east of the southern wall tower. The clear gate road does not cure this remaining freestanding frontage house."
+      ],
+      "fix": "Move or merge poor-3 into a genuinely attached low frontage without obstructing the inner-wall lane or gate circulation, then regenerate this crop."
+    },
+    "r17-C5-cap-fill-joins-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Current cap/fill/ridge/end assembly repairs the earlier roof-volume failure."
+    },
+    "r17-C5-cap-fill-joins-4x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Nearest-neighbour enlargement confirms the current assembled roof contacts."
+    },
+    "r17-C5-modular-roof-house-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Current extended roof reads as a complete pitched volume beside the reference."
+    },
+    "r17-C5-house-reference-0-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Native house/reference comparison has compatible perspective, light and material scale."
+    },
+    "r17-C5-seven-cell-gable-hip-wing-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Gable/hip/wing composition retains depth and joined frontage."
+    },
+    "r17-C5-tall-low-left-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Tall-left/low-right stack and receiving return pass."
+    },
+    "r17-C5-tall-low-right-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Low-left/tall-right stack and receiving return pass."
+    },
+    "r17-C5-curtain-stair-tower-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Curtain, stair and tower contacts pass at native and enlarged scale."
+    },
+    "r17-C5-L-T-dead-end-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Retained acceptance block has the required form changes and passes the resolved-piece repetition audit."
+    },
+    "r17-C5-southern-ground-plan-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. The two previously failed southern L contacts now each share 48 px; the detached southern workshop was incorporated into the return."
+    },
+    "r17-C5-eight-signs-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. All eight trade signs remain recognizable at native scale with brief-compliant allocations."
+    },
+    "r17-C5-church-actor-proof-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Church approach and reveal demonstrate the usable east-side attachment."
+    },
+    "r17-C5-inn-actor-proof-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Inn entrance and through-passage remain distinct in the saved-art reveal."
+    },
+    "r17-C5-stall-actor-proof-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Three vendor silhouettes, each used twice, and customer activity are visible."
+    },
+    "r17-C5-gate-actor-proof-1x": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Gate passage, guard and toll attachment remain legible in normal and reveal views."
+    }
+  },
+  "notes": "Independent harsh C5 round-4 review. Verdict is FAIL for six disconnected street-facing principal buildings, not for the repaired southern L contacts or current source drawings. All coordinates are native final-image coordinates; rectangles are [x,y,width,height] and use compose.py physical ground_footprints, not sprite tops. All six have zero positive-length contact with another principal building; checks against declared architectural-prop footprints also find no connection. The west-smith/cobbler contact with court-closure is point-only. The previous critic-r17C5-3 southern failures are resolved: south-L-1/south-L-2 share the 48 px segment at x336,y1248–1296, and south-L-return/south-L-3 share 48 px at x576,y1200–1248. The old south-corner-workshop is incorporated into south-L-2. The current shared_ground_edges correctly rejects point contacts. This review extends that same criterion to the whole district. Scope and viewing: read BRIEF-17 in full, both panel briefs, NOTES method sections and all 20 FIXES items. Inspected all 120 C5 manifest exports at literal 1x and nearest-neighbour 4x on 45 critic asset plates; examined the complete 1920x1440 city at 1x and as sixteen exact 4x tiles, the named crops, native comparison references and greyscale. Inspected roof joins at 8x, complete roof/reference proofs, both tall/low orientations, the L/T proof and curtain/stair/tower proof. Literal 3x3 repeats cover the active paving, workyard, cobbles, roads, lane, ditch and roof fills; directional roads/ditches and roof fills are judged on their intended joining axes as well as the full repeat. Props were composited over summer grass and workyard ground. No seasonal exports belong to C5, so summer/winter partner overlays are not applicable; all 42 slate/brown palette partners have byte-identical alpha masks to their source. Independent technical checks: all 120 exports match manifest sizes/hashes, use alpha 0/255, have zero RGB under transparency, and have no detached 1–2-pixel alpha components. All 24 applicable facade panels preserve course rows 0 and 47. Replayed all 72 recorded registered-image reductions (38,668,288 source samples) using exact 8x8 RGBA mode with deterministic tie-breaking; every mode image and source hash matches. Fresh in-memory compose output equals the saved native final; 2x and three 3x crops are exact nearest-neighbour derivatives, squint equals native greyscale, and comparison panels are pixel-identical to their native sources. Repetition: current final 167 audited five-piece windows, L/T acceptance 20, retained E L-block 22, market 47 and height-test 20 all have zero failures. Reintroducing the old north-rear cap and all-eight-identical trade-shop defects makes the auditor reject them. These are saved-art and composition checks, not runtime collision/pathfinding tests. Storeys: 40 modular principals, histogram {1:3,2:14,3:11,4:8,5:4}, 7.5% one-storey. Including seven one-storey ancillary ranges/market hall and the two-storey court closure gives 48 buildings, histogram {1:10,2:15,3:11,4:8,5:4}, 20.8333% one-storey, below 25%. Church/guildhall and defensive towers are separate landmarks. Roof mix is 20 terracotta, 13 slate, 7 brown among modular principals: terracotta is exactly 50%. FIXES coverage: the current art visibly addresses pitched roof volumes/joins/returns and materials (1–4), irregular occupied civic square and church access (7–8), differentiated ground/contact shade (9–10), defensive joins and operation (11,19), integrated trades/goods/entrances (12–14), building/roof variety and repetition (15), purposeful market activity (16), low working/poor forms and forge (17), and secondary destinations (18). Property attachment and inhabited continuous edges remain incomplete in the locations above (5–6 and coordinator/standing frontage rules); consequently full-city acceptance in 20 remains incomplete despite the repaired focused proofs. No frontage lawn was observed. The street plan does have bends, T-junctions, stepped blocks, mixed heights, a gate-road inn and uneven towers; this is not merely a colour-change submission. BRIEF-17 takes precedence over panel suggestions to shrink signs, deepen principal lots or waive the eight-cell street-change rule. The coordinator 40x30-cell directive correctly takes precedence over the approximate 1200x900 showcase suggestion. No extra source-art failure is assigned to an intact drawing merely because an instance is misplaced. Only critic-r17C5-4.json and critic-r17C5-4-*.png review artifacts were written; no production artwork, compositor, notes, branches, commits or pushes were changed."
+}

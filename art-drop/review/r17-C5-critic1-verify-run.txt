@@ -1,0 +1,29 @@
+{
+  "passed": 498,
+  "failed": 0,
+  "mode_samples": 14106624,
+  "exports": 115,
+  "buildings": 41,
+  "storeys": {
+    "5": 4,
+    "3": 11,
+    "2": 15,
+    "4": 8,
+    "1": 3
+  },
+  "single_storey_percent": 7.317073170731708,
+  "roof_mix": {
+    "terracotta": 20,
+    "slate": 13,
+    "brown": 8
+  },
+  "inclusive_storeys": {
+    "5": 4,
+    "3": 11,
+    "2": 16,
+    "4": 8,
+    "1": 10
+  },
+  "inclusive_buildings": 49,
+  "actors": 26
+}

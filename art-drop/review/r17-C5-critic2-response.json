@@ -1,0 +1,72 @@
+{
+  "round": "17 C5 critic-r17C5-2 redraw",
+  "scope": "15 failed production PNGs replaced; one supporting rear-wing PNG added;100 passing production PNGs unchanged. Only art-drop C5 files, compose.py and NOTES changed. No branch change, commit or push.",
+  "method": "13 large built-in image-tool drawings on solid magenta. Painted landmark/course registration to8x working lattice, fixed palette without dithering, exact64-vote RGBA mode, one-pixel native cleanup, alpha0/255 and zero RGB under transparency. Code only registers, reduces, selects material masks and composites drawn paint.",
+  "fixes": {
+    "1": "Replaced the spliced96x144 cap with a single continuous image-tool roof drawing, including original painted foreground gable/eave. No eroded-alpha texture replacement. Two candidates retained; B selected. Passing shallow caps and directional fill assets are unchanged.",
+    "2": "48px pitch retained. One continuous8px receiving wall belongs to the taller lot; row registration removes transparent course-edge slivers. Both tall/low hands and all nine width pairs are shown at1x/3x. Existing shared-outline suppression remains.",
+    "3": "Redrew two separately lit masonry/flashing donors. The compositor no longer fills the lower roof inverse-alpha with24px roof-textured tabs. A single8px return inside the taller lot receives native metal paint registered to the actual lower-cap silhouette, independent of cap width/depth. No duplicated wall band.",
+    "4": "New complete cap uses uninterrupted tile courses; slate and brown partners select explicitly traced roof paint and preserve the gable. Both directional houses use explicit roof-material masks; facades/windows stay pixel-identical between colourways. Passing angular hall and other roof sources remain unchanged.",
+    "5": "Preserved legal ground-aligned rear yards and bounded service courts. Added a single drawn96x240 rear-wing house with integral L roof/valley and two-cell principal facade. The16x12 proof uses it touching the preceding frontage at x240, with the attached rear footprint, court and dead-end closure declared separately.",
+    "6": "Redrew the east/west lane houses with doors physically painted on their corresponding side planes, diagonal lit thresholds, wide landings and lanterns. Each long slot retains its inhabited bays. Actual painted threshold/landing coordinates replace guessed anchors. Preserved all bent streets, T junctions, stepped blocks, southern L and enclosed east apron.",
+    "7": "Preserved passing cycle-5 work: Retained the populated10x7 L square with2x2 notch: church west, guildhall north, inn east, market hall south; six stalls, fountain and cross.",
+    "8": "Redrew48x48 east church porch in the receding east-wall plane. Two candidates; B selected. Its threshold rises up-right, landing reaches the east edge at local(48,40), approach anchor(720,1000). Normal/reveal actors demonstrate the actual doorway. Enclosed churchyard and civic skyline preserved.",
+    "9": "Preserved passing cycle-5 work: Repainted slab texture without a frame, registered/mode-reduced and tile-wrapped using only drawn pixels. Kerbs belong to actual routes. Removed obsolete eastern private route beneath new frontage.",
+    "10": "Redrew96x48 fountain shadow as one broad-contact southeast cast. Its top meets the painted fountain foot at y1006 rather than the transparent canvas bottom1008. Whole-caster union, receiver clipping and96/255 opacity remain; no detached spike or doubled shade.",
+    "11": "Preserved passing cycle-5 work: Both failed curtain bodies redrawn as coherent12-20px-length masonry under retained compatible parapets. Single ownership extends to curtain/stair/tower contacts. Full wall proofs regenerated.",
+    "12": "Preserved passing cycle-5 work: Retained all eight passing signs and recessed architectural sign bays; signs remain inside their lots and above clear doors.",
+    "13": "Preserved passing cycle-5 work: Cobbler redraw has two separated upright boots with toes and a spiral-ended leather roll; rebuilt its two-cell partner with the existing right door bay. Other passing goods unchanged.",
+    "14": "Passing inn/toll fronts unchanged. New lane doors have approximately20-24px projected opening widths, lanterns and diagonal steps; painted landings connect to actual side approaches. Normal/reveal entry proofs retain supports and show both approach and threshold actors.",
+    "15": "Preserved mixed real roof forms, mixed heights and the20/13/8 roof-family counts. Explicit material masks prevent the previous rectangular slate cutoff through upper facade windows. No passing floor/roof exports changed.",
+    "16": "Preserved passing cycle-5 work: Retained three distinct vendors, each used twice, plus porter/cart, seated visitor and guard. Activity placement and the clearance verifier include people alpha; stationary bodies move into legal pockets.",
+    "17": "Preserved passing cycle-5 work: Kept low southern/poor houses, enclosed workyards, lean-tos and forge. Main square shops retain3-5-storey stacks. Storey histogram reports modular and ancillary-inclusive totals.",
+    "18": "Preserved passing cycle-5 work: Replaced the guard-recess shrine with a purpose-drawn noticeboard. Bench/notice recesses have boundary returns on the building side with their48px mouths clear.",
+    "19": "Preserved passing cycle-5 work: Retained the passing north wall access stair, gate recession and uneven tower rhythm. Human-scale toll bay now has a full door, counter and lantern beside the clear gate.",
+    "20": "Regenerated every C5 piece/seam/ground/scene proof and all seven named final derivatives. Connected L proof and seven-cell gable/low-hip/rear-wing assembly now use an actual drawn attached rear wing. Added both5/1 orientations for all nine width pairs, measured doorway normal/reveal proofs, candidate sheets and roof-material masks. Exact export/geometry checks supplement visual inspection; they are not independent critic approval."
+  },
+  "conflicts": "BRIEF-17 retains precedence for signs twice Round15 scale,1-2-cell principal lots plus yards,48px registration,3x4 gate allocation, lot-contained overlays and eight-cell route variation. Coordinator40x30cells requires1920x1440 native pixels.",
+  "replay": [
+    "python -B art-drop/review/r17-C5-critic2-process.py",
+    "python -B art-drop/out/city17/compose.py --part C5",
+    "python -B art-drop/review/r17-C5-review.py",
+    "python -B art-drop/review/r17-C5-verify.py",
+    "python -B art-drop/review/r17-C5-critic2-verify.py"
+  ],
+  "limits": "Saved-art and authored-layout verification. No runtime collision/pathfinding claim and no new independent critic verdict. BRIEF-17 and current operator instructions override conflicting panel proposals. No seasonal assets were requested; roof colour partners retain alpha exactly.",
+  "selection": {
+    "cap": "B: continuous tile rhythm and intact front gable",
+    "east-house": "B: wide side door and clear two-step landing",
+    "west-house": "B: readable independently lit west plane",
+    "church-porch": "B: clear diagonal rectangular portal",
+    "rear-wing": "B: explicit inner valley and lower hip connection"
+  },
+  "validation": {
+    "passed": 189,
+    "failed": 0,
+    "replaced": 15,
+    "passing_preserved": 100,
+    "source_drawings": 13,
+    "mode_samples": 10321920,
+    "general_checks_passed": 501,
+    "general_checks_failed": 0,
+    "storeys": {
+      "5": 4,
+      "3": 11,
+      "2": 15,
+      "4": 8,
+      "1": 3
+    },
+    "inclusive_storeys": {
+      "5": 4,
+      "3": 11,
+      "2": 16,
+      "4": 8,
+      "1": 10
+    },
+    "roof_mix": {
+      "terracotta": 20,
+      "slate": 13,
+      "brown": 8
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "round": "17 C5 critic-r17C5-1 redraw",
+  "scope": "Only art-drop; failed C5 production assets, additions supporting failed composition, compose.py, C5 review artifacts and NOTES. No branch change, commit or push.",
+  "method": "25 built-in image-tool drawings on solid magenta; registration, palette lock, exact8x8 RGBA mode, hard alpha, zero hiddenRGB, native cleanup; code only registers/reduces/cleans/tile-wraps/composites drawn paint.",
+  "fixes": {
+    "1": "Redrew both96px-deep caps without deleted middle rows; opaque left/right fills wrap through native source-pixel cuts. A complete joined cap retains its drawn ridge, eave and exterior adapters and is used on north-middle-1.",
+    "2": "Retained48px lot pitch. Shared contour ownership now visits wall/curtain/stair contacts as well as modular houses; all nine width pairs regenerated.",
+    "3": "Continuous tall party returns now register coping columns to actual lower-roof alpha. New image-painted abutment strips close lower-roof gaps in both orientations, with explicit lower-lot ownership.",
+    "4": "New short caps/fills use6-colour reference ramps and consistent tile clusters. Replaced the old mottled inn tower-house with a coherent modular elevation. Passing roof/hall PNGs remain unchanged.",
+    "5": "Removed sprite-top-derived yard props. Eight principal yards now directly adjoin their ground footprints; northwest rear wing has a complete rectangular cap and a separate bounded court. Normal/reveal property evidence added.",
+    "6": "Two complete inhabited side bays now face each long western/eastern slot; southern surplus paving is reclaimed by an L-return and a48px bent alley; surplus east-wall strip is a fenced service court.",
+    "7": "Retained the populated10x7 L square with2x2 notch: church west, guildhall north, inn east, market hall south; six stalls, fountain and cross.",
+    "8": "Three porch candidates; selected human-scale C with a broad door and supported8px step. Reanchored to actual east wall foot atbase1008 and demonstrated doorway occupancy/reveal. Retained enclosed churchyard and skyline.",
+    "9": "Repainted slab texture without a frame, registered/mode-reduced and tile-wrapped using only drawn pixels. Kerbs belong to actual routes. Removed obsolete eastern private route beneath new frontage.",
+    "10": "Shadows project complete painted caster alpha, not compressed lower bands: taller towers project farther than curtains, and roof/overhang shape survives. Receiver masks and owned aprons are explicit; one union at96alpha.",
+    "11": "Both failed curtain bodies redrawn as coherent12-20px-length masonry under retained compatible parapets. Single ownership extends to curtain/stair/tower contacts. Full wall proofs regenerated.",
+    "12": "Retained all eight passing signs and recessed architectural sign bays; signs remain inside their lots and above clear doors.",
+    "13": "Cobbler redraw has two separated upright boots with toes and a spiral-ended leather roll; rebuilt its two-cell partner with the existing right door bay. Other passing goods unchanged.",
+    "14": "Two new inn drawings; selected A for the clear lit western door, broad step and subordinate eastern passage. Toll doorway also rebuilt at person scale.",
+    "15": "Redrew complete one-cell oriel/recess arrangements. Mixed roof forms/colours and heights retained; added relit side-house forms. Every acceptance layout now has actual resolved-piece auditing.",
+    "16": "Retained three distinct vendors, each used twice, plus porter/cart, seated visitor and guard. Activity placement and the clearance verifier include people alpha; stationary bodies move into legal pockets.",
+    "17": "Kept low southern/poor houses, enclosed workyards, lean-tos and forge. Main square shops retain3-5-storey stacks. Storey histogram reports modular and ancillary-inclusive totals.",
+    "18": "Replaced the guard-recess shrine with a purpose-drawn noticeboard. Bench/notice recesses have boundary returns on the building side with their48px mouths clear.",
+    "19": "Retained the passing north wall access stair, gate recession and uneven tower rhythm. Human-scale toll bay now has a full door, counter and lantern beside the clear gate.",
+    "20": "Regenerated final1x/2x/native comparison/squint/three3x crops and C5 piece/scene proofs. L/T test uses three distinct wide caps and an inhabited return; exact test layout is audited. Added real tall/low adapters, fill repetitions/joins, property cutaway, corner pilot and differing church reveal."
+  },
+  "conflicts": "BRIEF-17 retains precedence for signs twice Round15 scale,1-2-cell principal lots plus yards,48px registration,3x4 gate allocation, lot-contained overlays and eight-cell route variation. Coordinator40x30cells requires1920x1440 native pixels.",
+  "replay": [
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-critic1-process.py",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/out/city17/compose.py --part C5",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-review.py",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-verify.py",
+    "PYTHONDONTWRITEBYTECODE=1 python art-drop/review/r17-C5-critic1-verify.py"
+  ],
+  "limits": "Saved-art verification and author inspection; no independent panel approval or runtime collision/pathfinding claim.",
+  "validation": {
+    "passed": 181,
+    "sources": 25,
+    "mode_samples": 11585536,
+    "passing_unchanged": 79,
+    "replaced": 22,
+    "general_checks": 498,
+    "focused_checks": 181,
+    "failures": 0
+  }
+}

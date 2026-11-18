@@ -1,0 +1,8160 @@
+{
+  "paint": [
+    {
+      "id": "west-0",
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 336,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-a-c5-w2",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-b-c5-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-c-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 192,
+          "crop": [
+            21,
+            12,
+            22,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-gable-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        144,
+        288,
+        96,
+        384
+      ],
+      "footprint": [
+        144,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        216,
+        672
+      ]
+    },
+    {
+      "id": "west-1",
+      "parts": [
+        {
+          "file": "ground-arch-v2-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-c-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        240,
+        480,
+        96,
+        240
+      ],
+      "footprint": [
+        240,
+        624,
+        96,
+        96
+      ],
+      "entrance": [
+        264,
+        720
+      ]
+    },
+    {
+      "id": "west-2",
+      "parts": [
+        {
+          "file": "side-house-east-c5r1",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-east-c5r1",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-east-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        336,
+        480,
+        96,
+        192
+      ],
+      "footprint": [
+        336,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        432,
+        656
+      ]
+    },
+    {
+      "id": "north-middle-0",
+      "parts": [
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        480,
+        480,
+        96,
+        192
+      ],
+      "footprint": [
+        480,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        480,
+        654
+      ]
+    },
+    {
+      "id": "north-middle-1",
+      "parts": [
+        {
+          "file": "side-ground-E",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "side-storey-E",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-b-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            1,
+            12,
+            2,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-filled-gable-c5r1-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        576,
+        336,
+        96,
+        336
+      ],
+      "footprint": [
+        576,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        672,
+        660
+      ]
+    },
+    {
+      "id": "square-baker",
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v0-c5-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v2-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-arrangement-a-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-baker-c4",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        720,
+        336,
+        96,
+        336
+      ],
+      "footprint": [
+        720,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        792,
+        672
+      ]
+    },
+    {
+      "id": "square-narrow",
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c0",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-right-c5-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-d3-c5-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        816,
+        336,
+        48,
+        336
+      ],
+      "footprint": [
+        816,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        840,
+        672
+      ]
+    },
+    {
+      "id": "square-smith-bay",
+      "parts": [
+        {
+          "file": "ground-door-w1-c0",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-b-right-c5-w1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-right-c5-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-d3-c5-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1056,
+        336,
+        48,
+        336
+      ],
+      "footprint": [
+        1056,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        1080,
+        672
+      ]
+    },
+    {
+      "id": "square-apothecary",
+      "parts": [
+        {
+          "file": "ground-apothecary-c5-w2",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v3-c5-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v5-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-c-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-arrangement-c-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            1,
+            12,
+            2,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            21,
+            12,
+            22,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-cross-c5-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-apothecary-c4",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1104,
+        336,
+        96,
+        336
+      ],
+      "footprint": [
+        1104,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        1176,
+        672
+      ]
+    },
+    {
+      "id": "merchant-0",
+      "parts": [
+        {
+          "file": "ground-door-v2-w2-c0",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-c-c5-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-recessed-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-c5-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1200,
+        336,
+        96,
+        336
+      ],
+      "footprint": [
+        1200,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        1272,
+        672
+      ]
+    },
+    {
+      "id": "merchant-1",
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c0",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-right-c5-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-d3-c5-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1296,
+        336,
+        48,
+        336
+      ],
+      "footprint": [
+        1296,
+        576,
+        48,
+        96
+      ],
+      "entrance": [
+        1320,
+        672
+      ]
+    },
+    {
+      "id": "merchant-2",
+      "parts": [
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        1392,
+        528,
+        96,
+        192
+      ],
+      "footprint": [
+        1392,
+        624,
+        96,
+        96
+      ],
+      "entrance": [
+        1392,
+        702
+      ]
+    },
+    {
+      "id": "merchant-3",
+      "parts": [
+        {
+          "file": "ground-smith-c4-w2",
+          "x": 0,
+          "y": 336,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-oriel-w2-c0",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-c5-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-b-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-c-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 240,
+          "crop": [
+            1,
+            12,
+            2,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-hip-c5-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1488,
+        288,
+        96,
+        384
+      ],
+      "footprint": [
+        1488,
+        576,
+        96,
+        96
+      ],
+      "entrance": [
+        1560,
+        672
+      ]
+    },
+    {
+      "id": "merchant-4",
+      "parts": [
+        {
+          "file": "ground-door-v2-w1-c0",
+          "x": 0,
+          "y": 336,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-c-right-c5-w1",
+          "x": 0,
+          "y": 288,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-b-right-c5-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 40,
+          "y": 144,
+          "crop": [
+            21,
+            12,
+            22,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-gable-d3-c5-w1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1632,
+        336,
+        48,
+        384
+      ],
+      "footprint": [
+        1632,
+        624,
+        48,
+        96
+      ],
+      "entrance": [
+        1656,
+        720
+      ]
+    },
+    {
+      "id": "merchant-5",
+      "parts": [
+        {
+          "file": "side-ground-E",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "side-storey-E",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-shuttered-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-cross-c5-w2-slate",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1680,
+        480,
+        96,
+        240
+      ],
+      "footprint": [
+        1680,
+        624,
+        96,
+        96
+      ],
+      "entrance": [
+        1776,
+        708
+      ]
+    },
+    {
+      "id": "west-lane-workshop",
+      "parts": [
+        {
+          "file": "side-house-east-c5r1",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-east-c5r1",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-east-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        336,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        336,
+        384,
+        96,
+        96
+      ],
+      "entrance": [
+        432,
+        464
+      ]
+    },
+    {
+      "id": "east-lane-workshop",
+      "parts": [
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        1392,
+        336,
+        96,
+        192
+      ],
+      "footprint": [
+        1392,
+        432,
+        96,
+        96
+      ],
+      "entrance": [
+        1392,
+        510
+      ]
+    },
+    {
+      "id": "east-rear-house",
+      "parts": [
+        {
+          "file": "side-house-east-c5r1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-east-c5r1-slate",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-east-c5r1-slate",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        1680,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        1680,
+        384,
+        96,
+        96
+      ],
+      "entrance": [
+        1776,
+        464
+      ]
+    },
+    {
+      "id": "west-smith",
+      "parts": [
+        {
+          "file": "ground-smith-c4-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v5-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v1-c5-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-smith-c4",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        144,
+        768,
+        96,
+        240
+      ],
+      "footprint": [
+        144,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        216,
+        1008
+      ]
+    },
+    {
+      "id": "west-cobbler",
+      "parts": [
+        {
+          "file": "ground-cobbler-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v1-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v3-c5-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-cobbler-c4",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        336,
+        768,
+        96,
+        240
+      ],
+      "footprint": [
+        336,
+        912,
+        96,
+        96
+      ],
+      "entrance": [
+        408,
+        1008
+      ]
+    },
+    {
+      "id": "inn-square-wing",
+      "parts": [
+        {
+          "file": "side-ground-W",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "side-storey-W",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-b-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-c-c5-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            21,
+            12,
+            22,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-gable-d2-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1200,
+        768,
+        96,
+        288
+      ],
+      "footprint": [
+        1200,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1200,
+        1040
+      ]
+    },
+    {
+      "id": "gate-road-inn",
+      "parts": [
+        {
+          "file": "inn-front-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v1-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v3-c5-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-inn-c4",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1296,
+        816,
+        96,
+        240
+      ],
+      "footprint": [
+        1296,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1320,
+        1056
+      ]
+    },
+    {
+      "id": "inn-east-wing",
+      "parts": [
+        {
+          "file": "ground-arch-v1-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-arrangement-b-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-arrangement-c-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1392,
+        816,
+        96,
+        240
+      ],
+      "footprint": [
+        1392,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1464,
+        1056
+      ]
+    },
+    {
+      "id": "east-tailor",
+      "parts": [
+        {
+          "file": "ground-tailor-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v3-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v5-c5-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-tailor-c4",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1584,
+        816,
+        96,
+        240
+      ],
+      "footprint": [
+        1584,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1656,
+        1056
+      ]
+    },
+    {
+      "id": "east-scribe",
+      "parts": [
+        {
+          "file": "ground-work-v2-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v5-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v1-c5-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-scribe-c4",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1680,
+        816,
+        96,
+        240
+      ],
+      "footprint": [
+        1680,
+        960,
+        96,
+        96
+      ],
+      "entrance": [
+        1752,
+        1056
+      ]
+    },
+    {
+      "id": "south-L-0",
+      "parts": [
+        {
+          "file": "ground-smith-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-arrangement-a-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-left-c5r1",
+          "x": 88,
+          "y": 96,
+          "crop": [
+            21,
+            12,
+            22,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-cross-c5-w2-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        144,
+        1104,
+        96,
+        192
+      ],
+      "footprint": [
+        144,
+        1200,
+        96,
+        96
+      ],
+      "entrance": [
+        216,
+        1296
+      ]
+    },
+    {
+      "id": "south-L-1",
+      "parts": [
+        {
+          "file": "ground-door-v2-w2-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-arrangement-c-c4-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-c5-w2-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        240,
+        1104,
+        96,
+        240
+      ],
+      "footprint": [
+        240,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        312,
+        1344
+      ]
+    },
+    {
+      "id": "south-L-2",
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-b-right-c5-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            1,
+            12,
+            2,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-gable-c5-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        336,
+        1104,
+        48,
+        192
+      ],
+      "footprint": [
+        336,
+        1200,
+        48,
+        96
+      ],
+      "entrance": [
+        360,
+        1296
+      ]
+    },
+    {
+      "id": "south-L-3",
+      "parts": [
+        {
+          "file": "ground-door-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-c5-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        576,
+        1104,
+        48,
+        192
+      ],
+      "footprint": [
+        576,
+        1200,
+        48,
+        96
+      ],
+      "entrance": [
+        600,
+        1296
+      ]
+    },
+    {
+      "id": "south-L-4",
+      "parts": [
+        {
+          "file": "ground-door-v1-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-b-right-c5-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-c-right-c5-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-c5-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        624,
+        1104,
+        48,
+        240
+      ],
+      "footprint": [
+        624,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        648,
+        1344
+      ]
+    },
+    {
+      "id": "south-square-west",
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c0",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-narrow-hip-c5",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        672,
+        1104,
+        48,
+        240
+      ],
+      "footprint": [
+        672,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        696,
+        1344
+      ]
+    },
+    {
+      "id": "south-square-0",
+      "parts": [
+        {
+          "file": "ground-baker-c4-w2",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-sign-bay-v2-c5-w2",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-sign-bay-v4-c5-w2",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "sign-butcher-c4",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "trade sign"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 145,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        960,
+        1056,
+        96,
+        288
+      ],
+      "footprint": [
+        960,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        1032,
+        1344
+      ]
+    },
+    {
+      "id": "south-square-1",
+      "parts": [
+        {
+          "file": "ground-door-v1-w1-c0",
+          "x": 0,
+          "y": 240,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-b-right-c5-w1",
+          "x": 0,
+          "y": 192,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "floor-c-right-c5-w1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "storey-oriel-w1-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            1,
+            12,
+            2,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-gable-c5-w1",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1056,
+        1056,
+        48,
+        288
+      ],
+      "footprint": [
+        1056,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1080,
+        1344
+      ]
+    },
+    {
+      "id": "poor-0",
+      "parts": [
+        {
+          "file": "ground-work-v1-w2-c1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "storey-arrangement-c-c4-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-hip-cross-c5-w2-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1392,
+        1152,
+        96,
+        192
+      ],
+      "footprint": [
+        1392,
+        1248,
+        96,
+        96
+      ],
+      "entrance": [
+        1464,
+        1344
+      ]
+    },
+    {
+      "id": "poor-1",
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-a-left-c5-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            0,
+            8,
+            96
+          ],
+          "layer": "single continuous receiving wall inside taller lot"
+        },
+        {
+          "file": "roof-abut-right-c5r1",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            1,
+            12,
+            2,
+            15
+          ],
+          "layer": "cap-specific flashing registered to painted lower silhouette"
+        },
+        {
+          "file": "roof-gable-c5-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1488,
+        1104,
+        48,
+        192
+      ],
+      "footprint": [
+        1488,
+        1200,
+        48,
+        96
+      ],
+      "entrance": [
+        1512,
+        1296
+      ]
+    },
+    {
+      "id": "poor-2",
+      "parts": [
+        {
+          "file": "ground-work-v1-w1-c1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-gable-c5-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1536,
+        1104,
+        48,
+        144
+      ],
+      "footprint": [
+        1536,
+        1152,
+        48,
+        96
+      ],
+      "entrance": [
+        1560,
+        1248
+      ]
+    },
+    {
+      "id": "poor-3",
+      "parts": [
+        {
+          "file": "ground-work-v2-w1-c1",
+          "x": 0,
+          "y": 144,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "floor-c-right-c5-w1",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "storey"
+        },
+        {
+          "file": "roof-gable-c5-w1-brown",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        1728,
+        1152,
+        48,
+        192
+      ],
+      "footprint": [
+        1728,
+        1248,
+        48,
+        96
+      ],
+      "entrance": [
+        1752,
+        1344
+      ]
+    },
+    {
+      "id": "west-rear-range",
+      "parts": [
+        {
+          "file": "back-plain-ground-w2",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-cross-c5-w2",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w2-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        240,
+        288,
+        96,
+        144
+      ],
+      "footprint": [
+        240,
+        336,
+        96,
+        96
+      ],
+      "entrance": [
+        312,
+        432
+      ]
+    },
+    {
+      "id": "middle-side-workshop",
+      "parts": [
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 0,
+          "crop": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "layer": "roof"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 144,
+          "crop": [
+            0,
+            144,
+            96,
+            192
+          ],
+          "layer": "ground"
+        },
+        {
+          "file": "side-house-west-c5r1-slate",
+          "x": 0,
+          "y": 96,
+          "crop": [
+            0,
+            96,
+            96,
+            144
+          ],
+          "layer": "storey"
+        }
+      ],
+      "painted": [
+        480,
+        288,
+        96,
+        192
+      ],
+      "footprint": [
+        480,
+        384,
+        96,
+        96
+      ],
+      "entrance": [
+        480,
+        462
+      ]
+    },
+    {
+      "id": "south-L-return",
+      "parts": [
+        {
+          "file": "ground-door-w1-c0",
+          "x": 0,
+          "y": 96,
+          "crop": null,
+          "layer": "ground"
+        },
+        {
+          "file": "roof-narrow-hip-c5",
+          "x": 0,
+          "y": 0,
+          "crop": null,
+          "layer": "roof"
+        },
+        {
+          "file": "shadow-eave-w1-c0",
+          "x": 0,
+          "y": 97,
+          "crop": null,
+          "layer": "eave shade"
+        }
+      ],
+      "painted": [
+        528,
+        1104,
+        48,
+        144
+      ],
+      "footprint": [
+        528,
+        1152,
+        48,
+        96
+      ],
+      "entrance": [
+        552,
+        1248
+      ]
+    }
+  ],
+  "shadows": [
+    {
+      "owner": "west-0",
+      "source": "roof-gable-c5-w2",
+      "receiver": [
+        144,
+        672,
+        96,
+        49
+      ],
+      "owned_ground_apron": [
+        144,
+        672,
+        96,
+        49
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "west-1",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        240,
+        720,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        240,
+        720,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "west-2",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        336,
+        672,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        336,
+        672,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-middle-0",
+      "source": "roof-cross-c5-w2-slate",
+      "receiver": [
+        480,
+        672,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        480,
+        672,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-middle-1",
+      "source": "roof-filled-gable-c5r1-w2-slate",
+      "receiver": [
+        576,
+        672,
+        96,
+        43
+      ],
+      "owned_ground_apron": [
+        576,
+        672,
+        96,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "square-baker",
+      "source": "roof-hip-c5-w2",
+      "receiver": [
+        720,
+        672,
+        96,
+        43
+      ],
+      "owned_ground_apron": [
+        720,
+        672,
+        96,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "square-narrow",
+      "source": "roof-gable-d3-c5-w1",
+      "receiver": [
+        816,
+        672,
+        48,
+        43
+      ],
+      "owned_ground_apron": [
+        816,
+        672,
+        48,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "square-smith-bay",
+      "source": "roof-gable-d3-c5-w1-slate",
+      "receiver": [
+        1056,
+        672,
+        48,
+        43
+      ],
+      "owned_ground_apron": [
+        1056,
+        672,
+        48,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "square-apothecary",
+      "source": "roof-cross-c5-w2-slate",
+      "receiver": [
+        1104,
+        672,
+        96,
+        43
+      ],
+      "owned_ground_apron": [
+        1104,
+        672,
+        96,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-0",
+      "source": "roof-hip-c5-w2-slate",
+      "receiver": [
+        1200,
+        672,
+        96,
+        43
+      ],
+      "owned_ground_apron": [
+        1200,
+        672,
+        96,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-1",
+      "source": "roof-gable-d3-c5-w1-slate",
+      "receiver": [
+        1296,
+        672,
+        48,
+        43
+      ],
+      "owned_ground_apron": [
+        1296,
+        672,
+        48,
+        43
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-2",
+      "source": "roof-cross-c5-w2-slate",
+      "receiver": [
+        1392,
+        720,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        1392,
+        720,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-3",
+      "source": "roof-hip-c5-w2-slate",
+      "receiver": [
+        1488,
+        672,
+        96,
+        49
+      ],
+      "owned_ground_apron": [
+        1488,
+        672,
+        96,
+        49
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-4",
+      "source": "roof-gable-d3-c5-w1-slate",
+      "receiver": [
+        1632,
+        720,
+        48,
+        49
+      ],
+      "owned_ground_apron": [
+        1632,
+        720,
+        48,
+        49
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-5",
+      "source": "roof-hip-cross-c5-w2-slate",
+      "receiver": [
+        1680,
+        720,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1680,
+        720,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "west-lane-workshop",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        336,
+        480,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        336,
+        480,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "east-lane-workshop",
+      "source": "roof-cross-c5-w2-slate",
+      "receiver": [
+        1392,
+        528,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        1392,
+        528,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "east-rear-house",
+      "source": "roof-cross-c5-w2-slate",
+      "receiver": [
+        1680,
+        480,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        1680,
+        480,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "west-smith",
+      "source": "roof-hip-cross-c5-w2",
+      "receiver": [
+        144,
+        1008,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        144,
+        1008,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "west-cobbler",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        336,
+        1008,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        336,
+        1008,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "inn-square-wing",
+      "source": "roof-gable-d2-c5-w2",
+      "receiver": [
+        1200,
+        1056,
+        96,
+        37
+      ],
+      "owned_ground_apron": [
+        1200,
+        1056,
+        96,
+        37
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "gate-road-inn",
+      "source": "roof-hip-cross-c5-w2",
+      "receiver": [
+        1296,
+        1056,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1296,
+        1056,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "inn-east-wing",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        1392,
+        1056,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1392,
+        1056,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "east-tailor",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        1584,
+        1056,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1584,
+        1056,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "east-scribe",
+      "source": "roof-hip-cross-c5-w2",
+      "receiver": [
+        1680,
+        1056,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1680,
+        1056,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-L-0",
+      "source": "roof-cross-c5-w2-brown",
+      "receiver": [
+        144,
+        1296,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        144,
+        1296,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-L-1",
+      "source": "roof-hip-c5-w2-brown",
+      "receiver": [
+        240,
+        1344,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        240,
+        1344,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-L-2",
+      "source": "roof-gable-c5-w1-brown",
+      "receiver": [
+        336,
+        1296,
+        48,
+        25
+      ],
+      "owned_ground_apron": [
+        336,
+        1296,
+        48,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-L-3",
+      "source": "roof-gable-c5-w1",
+      "receiver": [
+        576,
+        1296,
+        48,
+        25
+      ],
+      "owned_ground_apron": [
+        576,
+        1296,
+        48,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-L-4",
+      "source": "roof-gable-c5-w1",
+      "receiver": [
+        624,
+        1344,
+        48,
+        31
+      ],
+      "owned_ground_apron": [
+        624,
+        1344,
+        48,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-square-west",
+      "source": "roof-narrow-hip-c5",
+      "receiver": [
+        672,
+        1344,
+        48,
+        31
+      ],
+      "owned_ground_apron": [
+        672,
+        1344,
+        48,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-square-0",
+      "source": "roof-gable-c5-w2",
+      "receiver": [
+        960,
+        1344,
+        96,
+        37
+      ],
+      "owned_ground_apron": [
+        960,
+        1344,
+        96,
+        37
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-square-1",
+      "source": "roof-gable-c5-w1",
+      "receiver": [
+        1056,
+        1344,
+        48,
+        37
+      ],
+      "owned_ground_apron": [
+        1056,
+        1344,
+        48,
+        37
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "poor-0",
+      "source": "roof-hip-cross-c5-w2-brown",
+      "receiver": [
+        1392,
+        1344,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        1392,
+        1344,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "poor-1",
+      "source": "roof-gable-c5-w1-brown",
+      "receiver": [
+        1488,
+        1296,
+        48,
+        25
+      ],
+      "owned_ground_apron": [
+        1488,
+        1296,
+        48,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "poor-2",
+      "source": "roof-gable-c5-w1-brown",
+      "receiver": [
+        1536,
+        1248,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1536,
+        1248,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "poor-3",
+      "source": "roof-gable-c5-w1-brown",
+      "receiver": [
+        1728,
+        1344,
+        48,
+        25
+      ],
+      "owned_ground_apron": [
+        1728,
+        1344,
+        48,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "west-rear-range",
+      "source": "roof-cross-c5-w2",
+      "receiver": [
+        240,
+        432,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        240,
+        432,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "middle-side-workshop",
+      "source": "roof-cross-c5-w2-slate",
+      "receiver": [
+        480,
+        480,
+        96,
+        25
+      ],
+      "owned_ground_apron": [
+        480,
+        480,
+        96,
+        25
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-L-return",
+      "source": "roof-narrow-hip-c5",
+      "receiver": [
+        528,
+        1248,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        528,
+        1248,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-0",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        0,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-0",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        0,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        0,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-1",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        96,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        96,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-1",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        96,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        96,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-2",
+      "source": "wall-curtain-c-c5",
+      "receiver": [
+        192,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        192,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-2",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        192,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        192,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-3",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        288,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        288,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-3",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        288,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        288,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-4",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        384,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        384,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-4",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        384,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        384,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-5",
+      "source": "wall-curtain-c-c5",
+      "receiver": [
+        480,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        480,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-5",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        480,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        480,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-6",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        576,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        576,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-6",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        576,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        576,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-7",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        672,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        672,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-7",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        672,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        672,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-8",
+      "source": "wall-curtain-c-c5",
+      "receiver": [
+        768,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        768,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-8",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        768,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        768,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-9",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        864,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        864,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-9",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        864,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        864,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-10",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        960,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        960,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-10",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        960,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        960,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-11",
+      "source": "wall-curtain-c-c5",
+      "receiver": [
+        1056,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1056,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-11",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        1056,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1056,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-12",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        1152,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1152,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-13",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        1248,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1248,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-14",
+      "source": "wall-curtain-c-c5",
+      "receiver": [
+        1344,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1344,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-14",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        1344,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1344,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-15",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        1440,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1440,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-15",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        1440,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1440,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-16",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        1536,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1536,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-16",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        1536,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1536,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-17",
+      "source": "wall-curtain-c-c5",
+      "receiver": [
+        1632,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1632,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-17",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        1632,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1632,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-18",
+      "source": "wall-curtain-c5",
+      "receiver": [
+        1728,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1728,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-18",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        1728,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1728,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-curtain-19",
+      "source": "wall-curtain-b-c5",
+      "receiver": [
+        1824,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        1824,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-curtain-19",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        1824,
+        1440,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1824,
+        1440,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        0,
+        384,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        384,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-b-c4",
+      "source": "wall-side-b-c4",
+      "receiver": [
+        0,
+        528,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        528,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-c-c4",
+      "source": "wall-side-c-c4",
+      "receiver": [
+        0,
+        672,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        672,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        0,
+        816,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        816,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-b-c4",
+      "source": "wall-side-b-c4",
+      "receiver": [
+        0,
+        960,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        960,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-c-c4",
+      "source": "wall-side-c-c4",
+      "receiver": [
+        0,
+        1104,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        1104,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        0,
+        1248,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        1248,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-b-c4",
+      "source": "wall-side-b-c4",
+      "receiver": [
+        0,
+        1392,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        0,
+        1392,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        384,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        384,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-b-c4",
+      "source": "wall-side-b-c4",
+      "receiver": [
+        1872,
+        528,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        528,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-c-c4",
+      "source": "wall-side-c-c4",
+      "receiver": [
+        1872,
+        672,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        672,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        816,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        816,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-b-c4",
+      "source": "wall-side-b-c4",
+      "receiver": [
+        1872,
+        960,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        960,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-c-c4",
+      "source": "wall-side-c-c4",
+      "receiver": [
+        1872,
+        1104,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        1104,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        1248,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        1248,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-b-c4",
+      "source": "wall-side-b-c4",
+      "receiver": [
+        1872,
+        1392,
+        48,
+        19
+      ],
+      "owned_ground_apron": [
+        1872,
+        1392,
+        48,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-tower-0",
+      "source": "wall-tower-a-c5",
+      "receiver": [
+        0,
+        240,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        0,
+        240,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-tower-336",
+      "source": "wall-tower-b-c5",
+      "receiver": [
+        336,
+        240,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        336,
+        240,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-tower-768",
+      "source": "wall-tower-c-c5",
+      "receiver": [
+        768,
+        240,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        768,
+        240,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-tower-1056",
+      "source": "wall-tower-a-c5",
+      "receiver": [
+        1056,
+        240,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1056,
+        240,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-tower-1488",
+      "source": "wall-tower-b-c5",
+      "receiver": [
+        1488,
+        240,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1488,
+        240,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-tower-1824",
+      "source": "wall-tower-c-c5",
+      "receiver": [
+        1824,
+        240,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1824,
+        240,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-0",
+      "source": "wall-tower-c-c5",
+      "receiver": [
+        0,
+        672,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        0,
+        672,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-1",
+      "source": "wall-tower-b-c5",
+      "receiver": [
+        0,
+        1056,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        0,
+        1056,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-2",
+      "source": "wall-tower-a-c5",
+      "receiver": [
+        0,
+        1440,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        0,
+        1440,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-3",
+      "source": "wall-tower-a-c5",
+      "receiver": [
+        1824,
+        576,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1824,
+        576,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-4",
+      "source": "wall-tower-b-c5",
+      "receiver": [
+        1824,
+        1008,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1824,
+        1008,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-5",
+      "source": "wall-tower-c-c5",
+      "receiver": [
+        1824,
+        1440,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1824,
+        1440,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-6",
+      "source": "wall-tower-c-c5",
+      "receiver": [
+        432,
+        1440,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        432,
+        1440,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-7",
+      "source": "wall-tower-b-c5",
+      "receiver": [
+        816,
+        1440,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        816,
+        1440,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "tower-8",
+      "source": "wall-tower-a-c5",
+      "receiver": [
+        1584,
+        1440,
+        96,
+        31
+      ],
+      "owned_ground_apron": [
+        1584,
+        1440,
+        96,
+        31
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "gatehouse",
+      "source": "gatehouse-c4",
+      "receiver": [
+        1176,
+        1440,
+        144,
+        51
+      ],
+      "owned_ground_apron": [
+        1176,
+        1440,
+        144,
+        51
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "gate-east-connector",
+      "source": "gate-connector-c5",
+      "receiver": [
+        1296,
+        1440,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1296,
+        1440,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-wall-stair",
+      "source": "wall-access-c5",
+      "receiver": [
+        960,
+        240,
+        96,
+        19
+      ],
+      "owned_ground_apron": [
+        960,
+        240,
+        96,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "gate-west-connector",
+      "source": "gate-connector-c5",
+      "receiver": [
+        1152,
+        1440,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1152,
+        1440,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-side-contact-0",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        0,
+        240,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        0,
+        240,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-side-contact-1872",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        1872,
+        240,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1872,
+        240,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "walk-shoulder-864",
+      "source": "wall-shoulder-c5",
+      "receiver": [
+        864,
+        144,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        864,
+        144,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "walk-shoulder-1008",
+      "source": "wall-shoulder-c5",
+      "receiver": [
+        1008,
+        144,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1008,
+        144,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "court-well",
+      "source": "yard-0",
+      "receiver": [
+        240,
+        1008,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        1008,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "court-laundry",
+      "source": "washing-short-c5",
+      "receiver": [
+        240,
+        984,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        984,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "court-closure",
+      "source": "court-closure-c5",
+      "receiver": [
+        240,
+        912,
+        96,
+        13
+      ],
+      "owned_ground_apron": [
+        240,
+        912,
+        96,
+        13
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "court-gate",
+      "source": "fence-0",
+      "receiver": [
+        240,
+        1008,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        1008,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "craft-forge",
+      "source": "forge-c5",
+      "receiver": [
+        288,
+        912,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        288,
+        912,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        336,
+        1008,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        336,
+        1008,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "inn-storage",
+      "source": "stable-range-c4",
+      "receiver": [
+        1488,
+        864,
+        96,
+        7
+      ],
+      "owned_ground_apron": [
+        1488,
+        864,
+        96,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        1536,
+        1056,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1536,
+        1056,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "planter-tree-c3",
+      "source": "planter-tree-c3",
+      "receiver": [
+        1536,
+        948,
+        48,
+        10
+      ],
+      "owned_ground_apron": [
+        1536,
+        948,
+        48,
+        10
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "cart",
+      "source": "cart",
+      "receiver": [
+        1536,
+        1048,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1536,
+        1048,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-shed-144",
+      "source": "lean-to-c4",
+      "receiver": [
+        144,
+        1104,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        144,
+        1104,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        144,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        144,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        192,
+        1148,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        192,
+        1148,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "south-shed-240",
+      "source": "lean-to-c4",
+      "receiver": [
+        240,
+        1104,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        1104,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        240,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        288,
+        1148,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        288,
+        1148,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "lean-to-c4",
+      "source": "lean-to-c4",
+      "receiver": [
+        1440,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1440,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "district-poor-shutter",
+      "source": "district-poor-shutter",
+      "receiver": [
+        1440,
+        1180,
+        24,
+        7
+      ],
+      "owned_ground_apron": [
+        1440,
+        1180,
+        24,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "lean-to-c4",
+      "source": "lean-to-c4",
+      "receiver": [
+        1728,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1728,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "district-poor-shutter",
+      "source": "district-poor-shutter",
+      "receiver": [
+        1728,
+        1180,
+        24,
+        7
+      ],
+      "owned_ground_apron": [
+        1728,
+        1180,
+        24,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1392,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1392,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1480,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1480,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        1392,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1392,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1488,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1488,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1576,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1576,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        1488,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1488,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1680,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1680,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1768,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1768,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        1680,
+        1152,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1680,
+        1152,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        768,
+        1248,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        768,
+        1248,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        768,
+        1248,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        768,
+        1248,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "barrel",
+      "source": "barrel",
+      "receiver": [
+        792,
+        1232,
+        24,
+        7
+      ],
+      "owned_ground_apron": [
+        792,
+        1232,
+        24,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "cathedral",
+      "source": "cathedral-r",
+      "receiver": [
+        480,
+        1056,
+        240,
+        55
+      ],
+      "owned_ground_apron": [
+        480,
+        1056,
+        240,
+        55
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "guildhall",
+      "source": "guildhall-r",
+      "receiver": [
+        864,
+        672,
+        192,
+        51
+      ],
+      "owned_ground_apron": [
+        864,
+        672,
+        192,
+        51
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "guildhall-public-entry",
+      "source": "guildhall-entry-r",
+      "receiver": [
+        935,
+        672,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        935,
+        672,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "market-hall",
+      "source": "townhall-market-c5",
+      "receiver": [
+        768,
+        1200,
+        192,
+        19
+      ],
+      "owned_ground_apron": [
+        768,
+        1200,
+        192,
+        19
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "church-east-door",
+      "source": "church-porch-c5",
+      "receiver": [
+        672,
+        1008,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        672,
+        1008,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fountain",
+      "source": "fountain-shadow-c5",
+      "receiver": [
+        768,
+        1006,
+        96,
+        49
+      ],
+      "owned_ground_apron": [
+        768,
+        1006,
+        96,
+        49
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "market-cross",
+      "source": "market-cross-r",
+      "receiver": [
+        1056,
+        1008,
+        48,
+        13
+      ],
+      "owned_ground_apron": [
+        1056,
+        1008,
+        48,
+        13
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-top-a-c5",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        576,
+        696,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        576,
+        696,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-top-b-c5",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        624,
+        696,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        624,
+        696,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-top-c-c5",
+      "source": "wall-top-c-c5",
+      "receiver": [
+        672,
+        696,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        672,
+        696,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-side-a-c4",
+      "source": "wall-side-a-c4",
+      "receiver": [
+        704,
+        768,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        704,
+        768,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-top-a-c5",
+      "source": "wall-top-a-c5",
+      "receiver": [
+        576,
+        768,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        576,
+        768,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "wall-top-b-c5",
+      "source": "wall-top-b-c5",
+      "receiver": [
+        672,
+        768,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        672,
+        768,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "planter-tree-c3",
+      "source": "planter-tree-c3",
+      "receiver": [
+        576,
+        750,
+        48,
+        10
+      ],
+      "owned_ground_apron": [
+        576,
+        750,
+        48,
+        10
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "bench-pocket",
+      "source": "bench-pocket",
+      "receiver": [
+        624,
+        752,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        624,
+        752,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "stall-0",
+      "source": "stall-0",
+      "receiver": [
+        912,
+        816,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        912,
+        816,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "stall-1",
+      "source": "stall-1",
+      "receiver": [
+        960,
+        816,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        960,
+        816,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "stall-2",
+      "source": "stall-2",
+      "receiver": [
+        1008,
+        816,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1008,
+        816,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "stall-3",
+      "source": "stall-3",
+      "receiver": [
+        912,
+        912,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        912,
+        912,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "stall-4",
+      "source": "stall-4",
+      "receiver": [
+        960,
+        912,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        960,
+        912,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "stall-5",
+      "source": "stall-5",
+      "receiver": [
+        1008,
+        912,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1008,
+        912,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "market-loading-cart",
+      "source": "cart",
+      "receiver": [
+        966,
+        1052,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        966,
+        1052,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "crate",
+      "source": "crate",
+      "receiver": [
+        1038,
+        1052,
+        24,
+        7
+      ],
+      "owned_ground_apron": [
+        1038,
+        1052,
+        24,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        720,
+        768,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        720,
+        768,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        768,
+        768,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        768,
+        768,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        808,
+        768,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        808,
+        768,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "bench-pocket",
+      "source": "bench-pocket",
+      "receiver": [
+        728,
+        792,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        728,
+        792,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "cat",
+      "source": "cat",
+      "receiver": [
+        733,
+        783,
+        20,
+        7
+      ],
+      "owned_ground_apron": [
+        733,
+        783,
+        20,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "merchant-shrine",
+      "source": "shrine-r",
+      "receiver": [
+        1488,
+        720,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1488,
+        720,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "north-well-bench",
+      "source": "bench-pocket",
+      "receiver": [
+        720,
+        336,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        720,
+        336,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "guard-notice",
+      "source": "guard-notice-c5r1",
+      "receiver": [
+        1296,
+        336,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1296,
+        336,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "gate-toll-bay",
+      "source": "gate-guard-bay-c5",
+      "receiver": [
+        1296,
+        1344,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1296,
+        1344,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        408,
+        1152,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        408,
+        1152,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-b-c4",
+      "source": "fence-v-b-c4",
+      "receiver": [
+        408,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        408,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-c-c4",
+      "source": "fence-v-c-c4",
+      "receiver": [
+        408,
+        1248,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        408,
+        1248,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1648,
+        1152,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1648,
+        1152,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-b-c4",
+      "source": "fence-v-b-c4",
+      "receiver": [
+        1648,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1648,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-c-c4",
+      "source": "fence-v-c-c4",
+      "receiver": [
+        1648,
+        1248,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1648,
+        1248,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1680,
+        1152,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1680,
+        1152,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-c-c4",
+      "source": "fence-v-c-c4",
+      "receiver": [
+        1680,
+        1248,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1680,
+        1248,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "guild-service-closure",
+      "source": "fence-0",
+      "receiver": [
+        1008,
+        360,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1008,
+        360,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "east-wall-lean-to",
+      "source": "lean-to-c4",
+      "receiver": [
+        1824,
+        624,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1824,
+        624,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1824,
+        624,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1824,
+        624,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-b-c4",
+      "source": "fence-v-b-c4",
+      "receiver": [
+        1824,
+        720,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1824,
+        720,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-v-c-c4",
+      "source": "fence-v-c-c4",
+      "receiver": [
+        1824,
+        768,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1824,
+        768,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-0",
+      "source": "fence-0",
+      "receiver": [
+        1824,
+        768,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1824,
+        768,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        1840,
+        720,
+        24,
+        7
+      ],
+      "owned_ground_apron": [
+        1840,
+        720,
+        24,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        144,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        144,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        232,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        232,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        144,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        144,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        192,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        192,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        152,
+        572,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        152,
+        572,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        240,
+        624,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        624,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        328,
+        624,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        328,
+        624,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        240,
+        600,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        600,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        288,
+        600,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        288,
+        600,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-3",
+      "source": "yard-3",
+      "receiver": [
+        248,
+        620,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        248,
+        620,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        576,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        576,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        664,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        664,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        576,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        576,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        624,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        624,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        584,
+        572,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        584,
+        572,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1200,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1200,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1288,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1288,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        1200,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1200,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        1248,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1248,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-2",
+      "source": "yard-2",
+      "receiver": [
+        1208,
+        572,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        1208,
+        572,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1488,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1488,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1576,
+        576,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1576,
+        576,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        1488,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1488,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        1536,
+        552,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1536,
+        552,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-2",
+      "source": "yard-2",
+      "receiver": [
+        1496,
+        572,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        1496,
+        572,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1680,
+        624,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1680,
+        624,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1768,
+        624,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1768,
+        624,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        1680,
+        600,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1680,
+        600,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        1728,
+        600,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1728,
+        600,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-3",
+      "source": "yard-3",
+      "receiver": [
+        1688,
+        620,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        1688,
+        620,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        144,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        144,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        232,
+        1200,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        232,
+        1200,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        144,
+        1176,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        144,
+        1176,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        192,
+        1176,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        192,
+        1176,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        152,
+        1196,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        152,
+        1196,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        240,
+        1248,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        1248,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        328,
+        1248,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        328,
+        1248,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        240,
+        1224,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        1224,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-c-c4",
+      "source": "fence-h-c-c4",
+      "receiver": [
+        288,
+        1224,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        288,
+        1224,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-3",
+      "source": "yard-3",
+      "receiver": [
+        248,
+        1244,
+        32,
+        7
+      ],
+      "owned_ground_apron": [
+        248,
+        1244,
+        32,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        240,
+        480,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        240,
+        480,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "yard-1",
+      "source": "yard-1",
+      "receiver": [
+        264,
+        476,
+        24,
+        7
+      ],
+      "owned_ground_apron": [
+        264,
+        476,
+        24,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        1296,
+        312,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        1296,
+        312,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        1296,
+        336,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        1296,
+        336,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-h-b-c4",
+      "source": "fence-h-b-c4",
+      "receiver": [
+        720,
+        312,
+        48,
+        7
+      ],
+      "owned_ground_apron": [
+        720,
+        312,
+        48,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    },
+    {
+      "owner": "fence-1",
+      "source": "fence-1",
+      "receiver": [
+        760,
+        336,
+        8,
+        7
+      ],
+      "owned_ground_apron": [
+        760,
+        336,
+        8,
+        7
+      ],
+      "opacity": 96,
+      "projection": [
+        0.09,
+        0.125
+      ],
+      "whole_caster": true,
+      "method": "native full painted silhouette projected southeast; own ground apron; receiver clipping; one union"
+    }
+  ]
+}

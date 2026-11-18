@@ -1,0 +1,10 @@
+/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C5-critic2-process.py:39: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  vals=[(*c,255) if a>=128 else (0,0,0,0) for c,a in zip(rgb.getdata(),reg.getchannel('A').getdata())];reg.putdata(vals)
+/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C5-critic2-process.py:72: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  mask.putdata([255 if m and q[3] and q[0]>q[1]*1.25 and q[0]>q[2]*1.45 else 0 for m,q in zip(mask.getdata(),a.getdata())])
+/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C5-critic2-process.py:84: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  b.putdata([(*mp.get(q[:3],q[:3]),q[3]) if m else q for q,m in zip(a.getdata(),mask.getdata())])
+/home/kolache/Downloads/marinara-art-r14/art-drop/review/r17-C5-critic2-process.py:89: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  a.putdata([q if q[3] else (0,0,0,0) for q in a.getdata()]);a.save(O/(n+'.png'));v=list(a.getdata())
+13 drawings reduced
+16 exports written

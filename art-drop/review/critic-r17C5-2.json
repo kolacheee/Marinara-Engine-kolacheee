@@ -1,0 +1,730 @@
+{
+  "part": "C5",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "church-porch-c5",
+    "fountain-shadow-c5",
+    "roof-abut-left-c5r1",
+    "roof-abut-left-c5r1-brown",
+    "roof-abut-left-c5r1-slate",
+    "roof-abut-right-c5r1",
+    "roof-abut-right-c5r1-brown",
+    "roof-abut-right-c5r1-slate",
+    "roof-filled-gable-c5r1-w2",
+    "roof-filled-gable-c5r1-w2-brown",
+    "roof-filled-gable-c5r1-w2-slate",
+    "side-house-east-c5r1",
+    "side-house-east-c5r1-slate",
+    "side-house-west-c5r1",
+    "side-house-west-c5r1-slate",
+    "compose.py",
+    "r17-C5-review.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x"
+  ],
+  "files": {
+    "church-porch-c5": {
+      "status": "fail",
+      "problems": [
+        "FIXES 8 and panel-2 5/11: the repaired doorway is now large enough, but remains a flat south-facing door/step panel pasted over the receding east wall. Its horizontal threshold does not follow that wall/landing perspective. At final x672..720/y960..1008 it reads as a freestanding facade patch rather than an east-facing public porch.",
+        "The metadata declares an east approach at (720,984), while the painted threshold is below the door near y1008; the reveal actor stands in front of that panel. This does not prove access through the declared east-facing doorway. See critic-r17C5-2-detail-porch.png."
+      ],
+      "fix": "Draw the door and supported landing in the cathedral east wall plane, with visible thickness/return and a correctly oriented approach. Retain the 48x48 allocation and current human scale. Register the threshold from the drawing and show a person using that exact entrance at 1x."
+    },
+    "court-closure-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-a-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-a-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-a-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-b-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-b-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-b-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-c-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-c-left-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "floor-c-right-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "fountain-shadow-c5": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10: this is still an upright fountain-like silhouette stamp, not a continuous base-contact shadow. Its first nine rows are only 3px wide, widening to 96px at the far edge. In the final the broad shadow floats south of the fountain rather than joining its broad foot.",
+        "The fountain paint ends at global y1006; row1007 is empty and the shadow begins at y1008 with the thin spike. The detached silhouette is conspicuous above the market hall in critic-r17C5-2-detail-square-contact.png."
+      ],
+      "fix": "Reshape/reorient the drawn shadow so its broad contact edge joins the actual fountain foot and its projected form falls down/right. Register to painted bounds, not the transparent canvas bottom. Keep the 96x48 overlay, hard mask, single union and opacity at most 50%."
+    },
+    "gate-connector-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-guard-bay-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cobbler-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-tailor-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guard-notice-c5r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-front-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-left-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-return-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-abut-left-c5r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/3/20: the production tall/low join exposes a roof-painted rectangular tab above the lower slope. It is particularly clear in the left-high proof at x144..168/y264..360 and the right-high proof beside x144. The adapter does not continue the lower roof pitch; its diagonal flashing and tile courses meet a differently pitched cap at a hard cut.",
+        "The same defect appears across all nine width-neighbour proofs and on the final inn join near x1296/y816. There are two adjacent masonry strips instead of one coherent receiving wall. See critic-r17C5-2-join-tall-low-left-8x.png, critic-r17C5-2-join-tall-low-right-8x.png and critic-r17C5-2-widths-1..3.png."
+      ],
+      "fix": "Draw a cap-specific abutment with a continuous receiving masonry plane and coping/flashing following that cap. The exposed area above the lower slope must read as the taller party wall, not a rectangular patch of roof tiles. Mask and register it against both actual silhouettes in compose.py; retain 48px lot pitch and a single exterior contour. Recheck both hands and all nine width pairs."
+    },
+    "roof-abut-left-c5r1-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/3/20: the production tall/low join exposes a roof-painted rectangular tab above the lower slope. It is particularly clear in the left-high proof at x144..168/y264..360 and the right-high proof beside x144. The adapter does not continue the lower roof pitch; its diagonal flashing and tile courses meet a differently pitched cap at a hard cut.",
+        "The same defect appears across all nine width-neighbour proofs and on the final inn join near x1296/y816. There are two adjacent masonry strips instead of one coherent receiving wall. See critic-r17C5-2-join-tall-low-left-8x.png, critic-r17C5-2-join-tall-low-right-8x.png and critic-r17C5-2-widths-1..3.png."
+      ],
+      "fix": "Draw a cap-specific abutment with a continuous receiving masonry plane and coping/flashing following that cap. The exposed area above the lower slope must read as the taller party wall, not a rectangular patch of roof tiles. Mask and register it against both actual silhouettes in compose.py; retain 48px lot pitch and a single exterior contour. Recheck both hands and all nine width pairs."
+    },
+    "roof-abut-left-c5r1-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/3/20: the production tall/low join exposes a roof-painted rectangular tab above the lower slope. It is particularly clear in the left-high proof at x144..168/y264..360 and the right-high proof beside x144. The adapter does not continue the lower roof pitch; its diagonal flashing and tile courses meet a differently pitched cap at a hard cut.",
+        "The same defect appears across all nine width-neighbour proofs and on the final inn join near x1296/y816. There are two adjacent masonry strips instead of one coherent receiving wall. See critic-r17C5-2-join-tall-low-left-8x.png, critic-r17C5-2-join-tall-low-right-8x.png and critic-r17C5-2-widths-1..3.png."
+      ],
+      "fix": "Draw a cap-specific abutment with a continuous receiving masonry plane and coping/flashing following that cap. The exposed area above the lower slope must read as the taller party wall, not a rectangular patch of roof tiles. Mask and register it against both actual silhouettes in compose.py; retain 48px lot pitch and a single exterior contour. Recheck both hands and all nine width pairs."
+    },
+    "roof-abut-right-c5r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/3/20: the production tall/low join exposes a roof-painted rectangular tab above the lower slope. It is particularly clear in the left-high proof at x144..168/y264..360 and the right-high proof beside x144. The adapter does not continue the lower roof pitch; its diagonal flashing and tile courses meet a differently pitched cap at a hard cut.",
+        "The same defect appears across all nine width-neighbour proofs and on the final inn join near x1296/y816. There are two adjacent masonry strips instead of one coherent receiving wall. See critic-r17C5-2-join-tall-low-left-8x.png, critic-r17C5-2-join-tall-low-right-8x.png and critic-r17C5-2-widths-1..3.png."
+      ],
+      "fix": "Draw a cap-specific abutment with a continuous receiving masonry plane and coping/flashing following that cap. The exposed area above the lower slope must read as the taller party wall, not a rectangular patch of roof tiles. Mask and register it against both actual silhouettes in compose.py; retain 48px lot pitch and a single exterior contour. Recheck both hands and all nine width pairs."
+    },
+    "roof-abut-right-c5r1-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/3/20: the production tall/low join exposes a roof-painted rectangular tab above the lower slope. It is particularly clear in the left-high proof at x144..168/y264..360 and the right-high proof beside x144. The adapter does not continue the lower roof pitch; its diagonal flashing and tile courses meet a differently pitched cap at a hard cut.",
+        "The same defect appears across all nine width-neighbour proofs and on the final inn join near x1296/y816. There are two adjacent masonry strips instead of one coherent receiving wall. See critic-r17C5-2-join-tall-low-left-8x.png, critic-r17C5-2-join-tall-low-right-8x.png and critic-r17C5-2-widths-1..3.png."
+      ],
+      "fix": "Draw a cap-specific abutment with a continuous receiving masonry plane and coping/flashing following that cap. The exposed area above the lower slope must read as the taller party wall, not a rectangular patch of roof tiles. Mask and register it against both actual silhouettes in compose.py; retain 48px lot pitch and a single exterior contour. Recheck both hands and all nine width pairs."
+    },
+    "roof-abut-right-c5r1-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/3/20: the production tall/low join exposes a roof-painted rectangular tab above the lower slope. It is particularly clear in the left-high proof at x144..168/y264..360 and the right-high proof beside x144. The adapter does not continue the lower roof pitch; its diagonal flashing and tile courses meet a differently pitched cap at a hard cut.",
+        "The same defect appears across all nine width-neighbour proofs and on the final inn join near x1296/y816. There are two adjacent masonry strips instead of one coherent receiving wall. See critic-r17C5-2-join-tall-low-left-8x.png, critic-r17C5-2-join-tall-low-right-8x.png and critic-r17C5-2-widths-1..3.png."
+      ],
+      "fix": "Draw a cap-specific abutment with a continuous receiving masonry plane and coping/flashing following that cap. The exposed area above the lower slope must read as the taller party wall, not a rectangular patch of roof tiles. Mask and register it against both actual silhouettes in compose.py; retain 48px lot pitch and a single exterior contour. Recheck both hands and all nine width pairs."
+    },
+    "roof-cross-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-cross-c5-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-left-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-left-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-left-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-right-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-right-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-fill-right-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-filled-gable-c5r1-w2": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/4/20: the filled cap still has visible texture construction joints. The repeated 48px interior fields stop against the retained ridge/outer strips; tile lines change phase and direction at the field resets and at the roughly x44/x52 ridge band. The left plane shows conspicuous horizontal interruptions around native y48 and y96.",
+        "The interior fill also paints across the original lower gable detail because its mask is based on alpha erosion rather than the roof material/plane. At 1x this is a different roof language from the unfilled cap and its adjacent houses. The final slate example occupies x576..672/y336..480. See critic-r17C5-2-detail-roof-fill.png and assets-07/08."
+      ],
+      "fix": "Draw or register matching slope/end/ridge transitions at one tile scale. Preserve the front gable and eave as separate painted surfaces; do not fill every opaque interior region with roof texture. Make one complete continuous cap pass at native size before updating its slate and brown partners."
+    },
+    "roof-filled-gable-c5r1-w2-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/4/20: the filled cap still has visible texture construction joints. The repeated 48px interior fields stop against the retained ridge/outer strips; tile lines change phase and direction at the field resets and at the roughly x44/x52 ridge band. The left plane shows conspicuous horizontal interruptions around native y48 and y96.",
+        "The interior fill also paints across the original lower gable detail because its mask is based on alpha erosion rather than the roof material/plane. At 1x this is a different roof language from the unfilled cap and its adjacent houses. The final slate example occupies x576..672/y336..480. See critic-r17C5-2-detail-roof-fill.png and assets-07/08."
+      ],
+      "fix": "Draw or register matching slope/end/ridge transitions at one tile scale. Preserve the front gable and eave as separate painted surfaces; do not fill every opaque interior region with roof texture. Make one complete continuous cap pass at native size before updating its slate and brown partners."
+    },
+    "roof-filled-gable-c5r1-w2-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/4/20: the filled cap still has visible texture construction joints. The repeated 48px interior fields stop against the retained ridge/outer strips; tile lines change phase and direction at the field resets and at the roughly x44/x52 ridge band. The left plane shows conspicuous horizontal interruptions around native y48 and y96.",
+        "The interior fill also paints across the original lower gable detail because its mask is based on alpha erosion rather than the roof material/plane. At 1x this is a different roof language from the unfilled cap and its adjacent houses. The final slate example occupies x576..672/y336..480. See critic-r17C5-2-detail-roof-fill.png and assets-07/08."
+      ],
+      "fix": "Draw or register matching slope/end/ridge transitions at one tile scale. Preserve the front gable and eave as separate painted surfaces; do not fill every opaque interior region with roof texture. Make one complete continuous cap pass at native size before updating its slate and brown partners."
+    },
+    "roof-gable-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d2-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d2-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d3-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d3-c5-w1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-gable-d3-c5-w1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w3-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-cross-c5-w3-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-d2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-d2-c5-w2-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-d2-c5-w2-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-hip-end-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-hip-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-hip-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-hip-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-ridge-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-b-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-b-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c5-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-valley-c5-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shop-apothecary-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shop-cobbler-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "shop-tailor-c5-w1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-east-c5r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 6/14 and panel-2 5/7: the intended usable lane door at the extreme right is squeezed to roughly 10-12 px width, substantially narrower than the established person and the requested usable-door opening. It has no readable lit lantern at 1x; the workshop recess dominates the interaction cue.",
+        "The saved placement labels an east-facing entrance at the outer canvas edge, while the step is under the front-facing door panel. It does not convincingly demonstrate a person turning from the lane into this door. See assets-19 and critic-r17C5-2-detail-west-lane.png."
+      ],
+      "fix": "Redraw a human-scale lane entrance with sufficient door width, a clear lit threshold/step and lantern, and a door/landing plane consistent with the side face. Fit the workshop and entrance inside the 96px property, then register a real approach against the painted doorway."
+    },
+    "side-house-east-c5r1-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 6/14 and panel-2 5/7: the intended usable lane door at the extreme right is squeezed to roughly 10-12 px width, substantially narrower than the established person and the requested usable-door opening. It has no readable lit lantern at 1x; the workshop recess dominates the interaction cue.",
+        "The saved placement labels an east-facing entrance at the outer canvas edge, while the step is under the front-facing door panel. It does not convincingly demonstrate a person turning from the lane into this door. See assets-19 and critic-r17C5-2-detail-west-lane.png.",
+        "The roof colour substitution visibly turns much of the upper-storey plaster, beams and window surrounds slate blue, then stops across the windows at native row 95. The source comparison has 2103 changed pixels in rows 60..95, including 57 on row 95. This is a rectangular colour-mask cutoff through the facade, not coherent material shading."
+      ],
+      "fix": "Redraw a human-scale lane entrance with sufficient door width, a clear lit threshold/step and lantern, and a door/landing plane consistent with the side face. Fit the workshop and entrance inside the 96px property, then register a real approach against the painted doorway. Use an actual roof-material mask for the slate partner; leave all non-roof wall/window paint unchanged."
+    },
+    "side-house-west-c5r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 6/14 and panel-2 5/7: this is a south-facing front door on a house with a shaded east return, not the required west-facing lane entrance. The visible threshold is approximately local x16..40/y184..191, while compose.py claims the entrance is at local x0/y176 facing west.",
+        "Consequently the four placements on the east sides of the x432..480 and x1344..1392 streets do not prove the stated two west-facing door bays. At north-middle-0, the actual south threshold is also partly screened by the cathedral spire. See critic-r17C5-2-west-door-anchor-4x.png."
+      ],
+      "fix": "Redraw the west-facing doorway and return so the lit step and door plane actually face the lane. Keep the opposite hand independently lit from the top left. Derive entrance/approach coordinates from the painted threshold and demonstrate that actual entry, including its normal/reveal state."
+    },
+    "side-house-west-c5r1-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 6/14 and panel-2 5/7: this is a south-facing front door on a house with a shaded east return, not the required west-facing lane entrance. The visible threshold is approximately local x16..40/y184..191, while compose.py claims the entrance is at local x0/y176 facing west.",
+        "Consequently the four placements on the east sides of the x432..480 and x1344..1392 streets do not prove the stated two west-facing door bays. At north-middle-0, the actual south threshold is also partly screened by the cathedral spire. See critic-r17C5-2-west-door-anchor-4x.png.",
+        "The alleged roof-only recolour also changes upper-window surround/eave-adjacent wall pixels: the processing loop recolours warm pixels throughout rows 0..95 rather than selecting the roof surface. The altered trim ends at a fixed horizontal row."
+      ],
+      "fix": "Redraw the west-facing doorway and return so the lit step and door plane actually face the lane. Keep the opposite hand independently lit from the top left. Derive entrance/approach coordinates from the painted threshold and demonstrate that actual entry, including its normal/reveal state. Recolour only an explicit roof-material mask, preserving facade paint pixel-for-pixel."
+    },
+    "square-slabs-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-right-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v0-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v1-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v2-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v3-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v4-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-sign-bay-v5-c5-w2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "townhall-market-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-access-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-shoulder-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-b-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-c-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "washing-short-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/2/3: c5_build() places the 24x96 abutment in the inverse alpha of any 96px-deep lower cap, without matching that cap pitch or closing it against the taller wall. This creates the rectangular roof tabs and doubled receiving-wall treatment visible in both tall/low orientations and all nine width pairs. The inn join at x1296/y816 inherits it.",
+        "FIXES 4: the final roof at x576..672/y336..480 uses the visibly spliced roof-filled-gable-c5r1-w2-slate. The new slate side-house at x1680..1776/y288..480 also contains a hard colour cutoff through its upper facade.",
+        "FIXES 6/14/20: side() invents W/E entrance anchors at canvas edges instead of the painted thresholds. north-middle-0 is declared(480,656)W; its visible door is on the south front around x496..520/y664..672. The cathedral paints 309 pixels over the illustrative 24x32 south approach[496,672,520,704] in the normal view. This is an art-visibility problem, not a runtime collision claim; the current side-door proof tests the wrong place.",
+        "FIXES 8: the church east-entry anchor(720,984) does not correspond to the horizontal south-facing threshold of the porch panel. Correct the source perspective and anchor together.",
+        "FIXES 10: fountain shadows are pasted at canvas base 1008, leaving a blank row below the actual painted foot and presenting the narrow tip nearest the object. Join the cast shape to the real receiving edge.",
+        "FIXES 5/6/20: the claimed L/T acceptance block still consists of separate straight frontage groups. The lower row ends at x288; the purported inhabited return starts at x336, with a 48px gap and no joining wing. A new side-house placed beside the row does not establish a connected L-shaped block. The seven-cell acceptance assembly likewise substitutes a complete side house for the requested rear-wing house. These proofs do not visibly establish all the required property/junction forms.",
+        "The city does contain real changes: mixed heights, lower southern houses, a bent gate route past the inn, stepped lots, distinct paving and unequal tower intervals. Those changes, and the passing repetition audit, do not waive the remaining source/entrance/assembly failures."
+      ],
+      "fix": "Repair the directional doorway drawings and cap-specific joins first. Use painted thresholds and actual receiving surfaces for entry and shadow placement. Build a genuinely connected L/return and rear-wing acceptance assembly, keeping the 96/48/24px routes and legal yards. Check native scenes and exact 4x contacts, then regenerate all seven final images and the affected proofs."
+    },
+    "r17-C5-review.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 20: the cap-fill proof displays a joined cap with visible material seams; the neighbour/tall-low proofs expose rectangular adapter tabs. Producing these sheets cannot count as passing their visual acceptance.",
+        "acceptance_layout() does repair the old three-identical-cap defect, but its supposed L return is a separate house at x336..432 beside a lower row ending at x288. The resulting48px gap does not demonstrate a connected L block.",
+        "The seven-cell gable/hip/wing proof uses side-house-east-c5r1 as the third piece; it is a complete front/side house rather than a demonstrated rear-wing connection. Side-door proof anchors are not aligned to their painted doors."
+      ],
+      "fix": "Keep the repaired resolved-piece checks. Rebuild the geometric proofs with actual joined L/rear-wing pieces, valid cap transitions and painted entrance anchors; include normal/reveal actors at those thresholds. Reject visibly broken joins even when size/alpha/hash checks pass."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "The final retains visibly incompatible roof abutments (notably the inn join near x1296/y816), a spliced filled slate roof at x576..672/y336..480, and the upper-facade recolour cutoff in the northeast side house.",
+        "The claimed lane-facing and church-east entrances are not consistently represented by the painted door planes/thresholds. The fountain shadow remains detached. See source and compose.py entries for exact fixes.",
+        "Native grid, mixed roof families, storey distribution, absence of frontage grass, six-stall population and the audited two-in-five rule pass. The remaining FIXES items prevent final acceptance."
+      ],
+      "fix": "Repair the named source/assembly failures and rerender at 1920x1440 native pixels, preserving the successful street-plan, height, roof-colour and activity changes."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "It is an exact nearest-neighbour 2x copy, but preserves the failed roof/entry/shadow assemblies of r17-city-final."
+      ],
+      "fix": "Regenerate from the corrected native final at 3840x2880 with nearest-neighbour."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The three panels are literal 1x pixel-identical copies of their sources and correctly labelled C5. The C5 panel still shows the failed filled-cap/abutment/side-entry assemblies; a correct comparison export does not approve them."
+      ],
+      "fix": "Keep the native today/R15 panels; replace the C5 panel after correcting and reviewing the final."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "Exact native greyscale conversion passes. The square surface and gate road are substantially clearer than in the first review, but the incompatible roof tabs, interrupted filled-cap texture and detached fountain cast remain visible. It cannot serve as a passing final acceptance render."
+      ],
+      "fix": "Regenerate after the source/composition repairs, and retain the improved square/main-route value separation."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x scaling passes. The crop exposes the pasted front-facing church porch and detached fountain shadow; the inn roof contact still contains the rectangular abutment patch."
+      ],
+      "fix": "Correct the church entry plane/anchor, fountain contact and inn roof join, then regenerate the same crop."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x scaling passes. The crop contains the spliced filled slate roof and the new side houses whose declared side-entry anchors do not match the painted doors. The western-facing house south doorstep is partly screened by the cathedral spire."
+      ],
+      "fix": "Correct the filled roof, directional door drawings and actual approach/reveal placements before regenerating."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x scaling passes. The inn roof junction still shows an upright rectangular roof patch against the taller western wing; the crop therefore fails the required seamless unequal-height join.",
+        "The redrawn inn front and human-scale guard/toll bay are improvements and are not being failed for the obsolete first-review door-size defects."
+      ],
+      "fix": "Replace the incompatible abutment and register the receiving wall/lower slope, then regenerate the crop while preserving the repaired inn/toll fronts."
+    }
+  },
+  "notes": "Independent critic of the saved C5 revision; no production PNG, compose.py, original review artifact, branch or git state was edited. Only this JSON and critic-r17C5-2-*.png evidence composites were written. Read BRIEF-17 in full, both panel briefs, all 20 FIXES, the NOTES method sections, critic-r17E-4 and the previous C5 verdict/response. Inspected all 115 C5 exports at literal 1x and nearest-neighbour 4x in 27 asset sheets; inspected1x city quadrants, named finals, comparisons, grounds, props, source neighbours, actor proofs and all nine width joins, with 4x/8x targeted evidence. All eight used ground receivers and both slope fills were inspected in literal 3x3 repetitions. New/retained props were inspected on summer workyard/paving. C5 introduces no seasonal exports: seasonal-ground and summer/winter mask tests are not applicable. All 42 red/slate/brown alpha comparisons are pixel-identical. Independently checked 115 manifest dimensions, alpha 0/255, zero RGB under transparency, no isolated alpha components of one/two pixels, and 24 facade course donors at rows0/47: all pass. Replayed all 57 retained image-tool drawing reductions:25,692,160 registered RGBA samples, with exact 64-vote modes and source hashes matching. These processing passes do not validate the failed composition/material masks. Regenerated the final in memory without writing production outputs; its bytes match the saved image. Verified exact 2x, greyscale, all three 3x crops and all three native comparison panels. Storey histogram from 41 modular buildings:1=3,2=15,3=11,4=8,5=4 (7.32% one-storey). Inclusive ancillary count 49:1=10,2=16,3=11,4=8,5=4 (20.41%). Civic/defensive landmarks and attached porch/toll bay are separate. Roof mix 20 terracotta/13 slate/8 brown (48.78% terracotta). No frontage lawns observed in the final. The actual final, retained E L-block/market/height layouts and current C5 L/T layout pass the resolved-piece audit. The former E rear-cap/eight-trade-shop defects and the first C5 proof-cap repetition are not repeated as current failures. All eight trade symbols are nameable at 1x; three vendor silhouettes are used twice each. FIXES disposition:1 partial/fail (short caps and opaque fills repaired; assembled filled cap/abutments fail);2 partial/fail (pitch retained and outline suppression improved, but added join geometry still exposes an extra tab/return);3 fail (cap-specific receiving-wall/flashing continuity);4 partial/fail (mixed block roof families retained, but filled-cap texture and slate facade masks fail);5 partial (ground-aligned yards improved; connected L/rear-wing proof remains inadequate);6 fail (new inhabited bays provided, but side-door orientation/anchors do not demonstrate the required lane entries);7 addressed (10x7 notched square, church west, guildhall north, inn east, hall south, six stalls and fountain/cross);8 partial/fail (churchyard/human scale improved, east porch perspective/entry not resolved);9 addressed (quiet slabs, pale main road, differentiated courts; old tile frames repaired);10 partial/fail (unioned height-responsive shadows improved, fountain contact fails);11 substantially addressed (new curtain bodies, shoulders, stair and gate contacts present; no obsolete oversized-patch failure retained);12 addressed (recognisable mounted signs and recessed bays);13 addressed (bottles/mortar, boots/leather and cloth goods now distinct);14 partial/fail (inn repaired, new side entries remain inadequate);15 partial/fail (mixed real roof forms and height counts pass, new side colour masks/roof joins do not);16 addressed in the authored scene (three vendors, customers, loading cart/porter, seated visitor and gate guard; stationary actors included by the saved-art verifier);17 addressed (low southern houses, yards/sheds and forge);18 addressed (bench/shrine destinations and an actual guard noticeboard);19 substantially addressed (stair/access, gate groove and repaired human-scale toll bay);20 fail (visibly broken compatible-join and directional-access proofs; L/rear-wing construction still not established). BRIEF-17 takes precedence over conflicting panel proposals: this verdict does not demand smaller signs, larger gate footprint, deeper principal lots, cross-lot overlays or waiver of street variation. The coordinator 40x30 native-cell requirement justifies 1920x1440. The actual plan was reworked; this is not a claim that only colours changed. No runtime collision/pathfinding test or independent panel approval is claimed. Verdict remains fail because the named visible defects would require a redraw or composition repair."
+}

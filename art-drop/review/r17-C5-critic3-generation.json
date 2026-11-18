@@ -1,0 +1,36 @@
+[
+  {
+    "id": "critic3-roof-a",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Production medieval RPG modular pixel-art roof transition master, variant A. Draw ONE isolated long gabled terracotta roof on a pure solid #FF00FF magenta background. The attached roof swatch sheet is the material reference: match the LEFT FILL and RIGHT FILL and RIDGE swatches' shallow diagonal brick courses, muted rusty palette, bold 6\u201310 native-pixel tile clusters, lit left plane and shadowed right plane. House is style reference only. New roof will register to 144x144 native pixels. Orthographic high 3/4 south-facing gable roof, central straight vertical ridge, symmetrical vertical eaves, no perspective vanishing, NO building facade. Precisely broad/shallow roof cross-section: rear ridge tip at horizontal centre/top, shoulders at left and right edges about one sixth down; long left and right slopes run parallel vertically; front ridge tip at centre 5/6 down, eaves meet lower left and right corners, with a small timber/plaster gable triangle and one straight dark eave along the bottom. Full-width painted rectangular middle between top/bottom ends, so the middle can be extended with modular fill tiles. All roof rows and tile courses slope gently UP to the centre from the left and DOWN from centre to right at about 1 rise per 3 across, exactly the shallow angle of the ridge swatch. Top-left light, one native-pixel dark exterior outline. Clean square pixel steps. Restrained 6-colour roof ramp. No scallops, rounded tiles, weathering specks, stippling, gradients, blur, cast shadow, props, chimneys, text, labels, sheet grid or multiple objects. Draw large at about 1000 pixels square with clear magenta margins; I will mode-reduce to native pixels.",
+    "referenced_image_paths": [
+      "art-drop/review/r17-C5-critic3-roof-inspect.png",
+      "art-drop/reference/r17/fantasy-house-2.png"
+    ],
+    "transparent_background": false,
+    "source": "r17-C5-critic3-source-roof-a.png",
+    "source_sha256": "7c5b8a624561a16a4d1a263df7e8e3b41daeda0d63e10b3d6a712f3b9de03fd3",
+    "native_size": [
+      144,
+      144
+    ],
+    "selected": false
+  },
+  {
+    "id": "critic3-roof-b",
+    "tool": "built-in image_gen",
+    "prompt": "Production pixel-art game roof transition master, alternative B. Draw ONE broad long gabled terracotta roof alone on pure solid magenta #FF00FF. Match the reference swatch sheet's first row: LEFT FILL, RIGHT FILL and RIDGE, those restrained shallow sloping 6\u201310 pixel tile clusters. Designed for 144x144 native pixels, large drawing now. Back ridge apex at (72,0), back eave shoulders at (0,24),(144,24), straight vertical sides down to (0,144),(144,144). Front ridge reaches (72,120), front timber/plaster gable closes to the bottom straight horizontal eave. Very long substantial roof seen from above; no facade. Continuous central vertical ridge, slopes with shallow diagonal rows rising 1 for each 3 across toward ridge from the left, descending from ridge to right. TOP LEFT lit orange-rust slope, RIGHT darker brown-rust slope. Keep roof middle fully painted and rectangular, constant-width, with tile directions and scale matching all the attached fill swatches; it will receive registered fill extensions. Quiet materials, angular clay rectangles, chunky readable clusters, six flat colours, dark thin exterior outline, crisp squared pixel steps. Please leave generous magenta margins all round. No scene, cast shadows, chimney, decorations, scalloped tiles, noise, specks, texture blur, gradient, labels or text. Use the house only as stylistic reference.",
+    "referenced_image_paths": [
+      "art-drop/review/r17-C5-critic3-roof-inspect.png",
+      "art-drop/reference/r17/fantasy-house-2.png"
+    ],
+    "transparent_background": false,
+    "source": "r17-C5-critic3-source-roof-b.png",
+    "source_sha256": "1797ecaea5c242814e6b11f5782edfa66f923e4fb289a2708598091c67dcff33",
+    "native_size": [
+      144,
+      144
+    ],
+    "selected": true
+  }
+]
