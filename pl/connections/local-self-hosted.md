@@ -81,6 +81,12 @@ W systemie Android to ustawienie jest domyślnie włączone, gdy go nie ustawisz
 
 Ten sam model może odpowiadać na pytania decyzyjne, na przykład sprawdzać aktywację agentów, bez ładowania drugiej kopii. Otwórz **Biblioteka → Połączenia**, kliknij **Dodaj połączenie**, otwórz zakładkę **Decyzja**, wybierz **Własny serwer decyzyjny** i wpisz ten sam adres. (W klasycznym układzie menu **⋯** modelu ma skrót **Używaj tego modelu do decyzji**, który wypełnia adres za ciebie.) Zobacz [Modele decyzyjne](decision-models.md#on-a-server-you-already-run).
 
+## Żądania według kolejności zadań
+
+Przy połączeniu Custom z serwerem na twoim komputerze lub w sieci domowej Marinara wysyła dwa żądania naraz, według kolejności zadań: najpierw agenci działający przed odpowiedzią, potem odpowiedź, następnie agenci działający równolegle z nią lub po niej, a na końcu wszystko inne. Jedno z dwóch miejsc pozostaje wolne na odpowiedź, więc tracker ani pomocnik pamięci nigdy nie opóźniają jej swoim żądaniem.
+
+Jeśli twój serwer obsługuje jednocześnie inną liczbę żądań (na przykład przez `OLLAMA_NUM_PARALLEL` w Ollama albo ustawienie równoległości w LM Studio lub KoboldCpp), otwórz **Edytuj konto** → **Więcej opcji** i ustaw **Równoległe żądania** na tę samą liczbę. Przy limicie co najmniej dwóch żądań trackery i zadania w tle zostawiają jedno wolne miejsce na odpowiedź. Przy limicie 1 wszystkie żądania są obsługiwane ściśle po kolei, więc odpowiedź może czekać na zakończenie pracy działającego trackera.
+
 ## Przełącznik Treat as local/custom endpoint
 
 W oknie **Edit model** przełącznik **Treat as local/custom endpoint** (traktuj jako endpoint lokalny lub własny) znajduje się w sekcji **Local / custom endpoint**. Domyślnie jest wyłączony. Pojawia się tylko przy starszych modelach, które nie są powiązane z kontem. Modele dodawane teraz nigdy go nie pokazują.

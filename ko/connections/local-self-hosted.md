@@ -85,6 +85,12 @@ Android에서는 이 설정을 따로 지정하지 않으면 기본적으로 켜
 
 같은 모델이 두 번째 사본을 불러오지 않고도 에이전트 활성화 확인 같은 판정 질문에 답할 수 있습니다. **Library → Connections**를 열고 **Add connection**을 클릭한 다음 **Decision**(판단) 탭을 열고 **Own decision server**(자체 판단 서버)를 골라 같은 주소를 입력하세요. (클래식 레이아웃에서는 모델의 **⋯**에 있는 **Use this model for decisions**(이 모델을 결정에 사용) 바로가기가 주소를 채워 줍니다.) [Decision 모델](decision-models.md#on-a-server-you-already-run)을 참고하세요.
 
+## 작업 순서에 따른 요청 처리
+
+내 컴퓨터나 홈 네트워크의 서버에 대한 Custom 연결은 Marinara의 요청을 한 번에 2개씩 받습니다. 처리 순서는 답변 전에 실행되는 에이전트, 답변, 답변과 함께 또는 답변 후에 실행되는 에이전트, 그 밖의 모든 작업입니다. 두 자리 중 하나는 답변용으로 비워 두므로, 트래커나 기억 보조 작업 때문에 답변이 뒤에서 기다리는 일이 없습니다.
+
+서버가 한 번에 처리하는 요청 수가 다르다면(예: Ollama의 `OLLAMA_NUM_PARALLEL` 또는 LM Studio나 KoboldCpp의 병렬 처리 설정), **Edit account**(계정 편집) → **More options**(추가 옵션)를 열고 **Parallel requests**(병렬 요청)를 같은 수로 설정하세요. 2개 이상이면 트래커와 백그라운드 작업은 답변용으로 한 자리를 비워 둡니다. 1이면 모든 요청을 반드시 하나씩 처리하므로, 실행 중인 트래커가 끝날 때까지 답변이 기다릴 수 있습니다.
+
 ## Treat as local/custom endpoint 토글
 
 **Edit model**에서 **Local / custom endpoint**(로컬/사용자 지정 엔드포인트) 아래에 **Treat as local/custom endpoint**(로컬/사용자 지정 엔드포인트로 취급) 토글이 있습니다. 기본값은 꺼짐입니다. 계정에 묶여 있지 않은 이전 모델에만 표시됩니다. 지금 추가하는 모델에는 표시되지 않습니다.

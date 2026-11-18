@@ -81,6 +81,12 @@ Sur Android, ce réglage est activé par défaut tant que tu ne le définis pas.
 
 Le même modèle peut répondre aux questions de décision, comme les vérifications d'activation des agents, sans charger une seconde copie. Ouvre **Library → Connections**, clique sur **Add connection**, ouvre l'onglet **Décision**, choisis **Own decision server** (ton propre serveur de décision) et saisis la même adresse. (Dans la disposition classique, le menu **⋯** du modèle propose un raccourci **Use this model for decisions** (utiliser ce modèle pour les décisions) qui remplit les champs à ta place.) Voir [Modèles de décision](decision-models.md#on-a-server-you-already-run).
 
+## Les requêtes passent dans l'ordre des tâches
+
+Une connexion Custom à un serveur sur ton propre ordinateur ou ton réseau domestique reçoit deux requêtes à la fois de Marinara, dans l'ordre des tâches : les agents qui s'exécutent avant la réponse, puis la réponse, puis les agents qui s'exécutent en parallèle ou après elle, puis tout le reste. Une des deux places reste libre pour la réponse : un tracker ou un assistant de mémoire ne fait donc jamais attendre la réponse derrière lui.
+
+Si ton serveur exécute un nombre différent de requêtes à la fois (par exemple avec `OLLAMA_NUM_PARALLEL` dans Ollama, ou le réglage de parallélisme dans LM Studio ou KoboldCpp), ouvre **Edit account** (modifier le compte) → **More options** (plus d'options) et règle **Parallel requests** (requêtes en parallèle) sur le même nombre. Avec deux requêtes simultanées ou plus, les trackers et les tâches en arrière-plan laissent une place libre pour la réponse. Avec 1, tout passe strictement une requête à la fois : une réponse peut donc attendre qu'un tracker en cours termine son travail.
+
 ## L'interrupteur Treat as local/custom endpoint
 
 Dans **Edit model**, un interrupteur nommé **Treat as local/custom endpoint** (traiter comme un point d'accès local ou personnalisé) se trouve sous **Local / custom endpoint** (point d'accès local ou personnalisé). Il est désactivé par défaut. Il ne s'affiche que pour les anciens modèles qui ne sont pas liés à un compte. Les modèles que tu ajoutes aujourd'hui ne l'affichent jamais.

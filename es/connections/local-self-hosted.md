@@ -85,6 +85,12 @@ En Android, este ajuste está activado de forma predeterminada cuando no lo conf
 
 El mismo modelo puede responder preguntas de decisión, como las comprobaciones de activación de agentes, sin cargar una segunda copia. Abre **Library → Connections**, haz clic en **Add connection**, abre la pestaña **Decision** (Decisión), elige **Own decision server** (Servidor de decisiones propio) y escribe la misma dirección. (En la distribución clásica, el menú **⋯** del modelo tiene el acceso directo **Use this model for decisions**, Usar este modelo para decisiones; este rellena los campos por ti.) Consulta [Modelos de decisión](decision-models.md#on-a-server-you-already-run).
 
+## Las solicitudes se procesan por orden de tarea
+
+Una conexión Custom a un servidor en tu propia computadora o red doméstica recibe dos solicitudes a la vez de Marinara, por orden de tarea: primero los agentes que se ejecutan antes de la respuesta, luego la respuesta, después los agentes que se ejecutan junto a ella o después de ella y, por último, todo lo demás. Uno de los dos espacios se reserva para la respuesta, así que un rastreador o un auxiliar de memoria nunca hace que la respuesta tenga que esperar detrás de él.
+
+Si tu servidor ejecuta un número distinto de solicitudes a la vez (por ejemplo, `OLLAMA_NUM_PARALLEL` en Ollama o el ajuste de solicitudes en paralelo en LM Studio o KoboldCpp), abre **Edit account** (Editar cuenta) → **More options** (Más opciones) y establece **Parallel requests** (Solicitudes en paralelo) en el mismo número. Con dos o más, los rastreadores y las tareas en segundo plano dejan un espacio libre para la respuesta. Con 1, todo se ejecuta estrictamente de uno en uno, así que una respuesta puede tener que esperar a que termine un rastreador en ejecución.
+
 ## El interruptor Treat as local/custom endpoint
 
 En **Edit model**, un interruptor llamado **Treat as local/custom endpoint** (Tratar como endpoint local/personalizado) está en **Local / custom endpoint** (Endpoint local / personalizado). Está desactivado de forma predeterminada. Solo aparece en modelos antiguos que no están vinculados a una cuenta. Los modelos que añades ahora nunca lo muestran.

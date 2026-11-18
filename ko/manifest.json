@@ -1,6 +1,6 @@
 {
   "language": "ko",
-  "sourceCommit": "9290299798f4e5c0dda44a052a4ca695979914d9",
+  "sourceCommit": "586b4a304e963b7337f5f91e3126e28aece165e5",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -239,8 +239,8 @@
     },
     {
       "path": "connections/connecting-to-a-provider.md",
-      "sha256": "0fdcd71fead188e4781ba5f2d82344b0cb6ba377c5b0c8ca90ba91df15198f05",
-      "bytes": 14780
+      "sha256": "58212bf37c33e903fd481f0bbf6bf30181b4f1d4481197e4b371eb17006cfdf8",
+      "bytes": 15233
     },
     {
       "path": "connections/decision-models.md",
@@ -254,8 +254,8 @@
     },
     {
       "path": "connections/local-self-hosted.md",
-      "sha256": "6062064d830151aa43418d79f85efc294696ceb1c150501aee7fab9fdb4b85ef",
-      "bytes": 9800
+      "sha256": "43b7c0cc23f21763534ace011a3e1bbf9ec0f6de0d1bed17e00c2c52af65c490",
+      "bytes": 10845
     },
     {
       "path": "connections/organizing-connections.md",
