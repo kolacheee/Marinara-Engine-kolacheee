@@ -70,7 +70,7 @@ cd Marinara-Engine
 
 ## Marinara 업데이트하기
 
-`./start-termux.sh`를 실행할 때마다 런처는 GitHub에서 새 버전을 확인하고, 시작하기 전에 업데이트합니다. 업데이트 없이 시작하려면 `--skip-update`를 붙이세요. 다른 옵션과 APK 업데이트 단계는 [Marinara Engine 업데이트](../UPGRADING.md#android-termux)를 참고하세요.
+`./start-termux.sh`를 실행할 때마다 런처는 GitHub에서 새 버전을 확인하고, 시작하기 전에 업데이트합니다. 업데이트 없이 시작하려면 `--skip-update`를 붙이세요. UI 개편 플레이테스트 같은 테스트 브랜치에서는 런처가 GitHub의 해당 브랜치를 따릅니다. GitHub에서 그 브랜치의 이력이 다시 작성되면, 직접 만든 커밋이 없는 한 로컬 사본도 자동으로 새 버전으로 이동합니다. 다른 옵션과 APK 업데이트 단계는 [Marinara Engine 업데이트](../UPGRADING.md#android-termux)를 참고하세요.
 
 런처는 업데이트하는 동안 로컬 pnpm 캐시에서 쓰지 않는 패키지도 정리합니다. 예전 릴리스가 쌓여 저장 공간을 몇 기가바이트씩 차지하는 일을 막아 줍니다. 채팅과 설정은 건드리지 않습니다.
 

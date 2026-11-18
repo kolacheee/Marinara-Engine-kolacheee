@@ -52,7 +52,7 @@
 패널에는 **Prompts**, **Regexes**(정규식), **Tools**(도구), **Profiles**의 네 탭이 있습니다. 각 탭 맨 위에는 같은 버튼 줄과 검색창이 있습니다. **Prompts** 탭에서는 **Create preset**으로 만들고, **Import preset**으로 `.json` 파일을 불러오며, **Select presets**로 여러 프리셋을 한 번에 내보내거나 삭제하세요. **Select all presets**는 검색 결과에 표시된 모든 프리셋을 체크합니다. **Regexes** 탭에는 정규식 스크립트가 있습니다. [정규식 스크립트](../extending/regex-scripts.md#manage-your-scripts)를 참고하세요. **Tools** 탭에는 사용자 지정 도구가 있습니다. [사용자 지정 도구](../extending/custom-tools.md)를 참고하세요. **Profiles** 탭에는 채팅 설정 프로필이 있습니다. [설정 프로필](../chats/settings-profiles.md#the-profiles-tab)을 참고하세요.
 
 - **Search presets**는 목록을 걸러 냅니다.
-- 정렬 메뉴에서는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest** 중에서 고릅니다. **Manual order**에서는 행을 끌거나, 포커스가 있는 행에서 <kbd>Alt</kbd>+<kbd>Up</kbd> 또는 <kbd>Alt</kbd>+<kbd>Down</kbd>을 누르세요. 터치스크린에서는 행을 길게 눌러 집어 드세요.
+- 정렬 메뉴에서는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens**(토큰 많은 순), **Fewest tokens**(토큰 적은 순) 중에서 고릅니다. 크기는 활성화된 섹션 자체의 텍스트, 즉 프리셋이 항상 보내는 지시를 셉니다. 캐릭터, 로어북, 채팅 기록 같은 마커 섹션은 채팅마다 채워지므로 세지 않습니다. 각 행에 추정치가 표시됩니다. **Manual order**에서는 행을 끌거나, 포커스가 있는 행에서 <kbd>Alt</kbd>+<kbd>Up</kbd> 또는 <kbd>Alt</kbd>+<kbd>Down</kbd>을 누르세요. 터치스크린에서는 행을 길게 눌러 집어 드세요.
 - **New Folder**(새 폴더)로 프리셋을 폴더로 묶을 수 있습니다. 프리셋을 폴더 위로 끌어다 놓고, 폴더 이름은 더블 클릭하거나 두 번 탭해서 바꾸세요.
 
 각 행에는 이름, 래핑 형식, 섹션 개수, 작성자가 표시됩니다. 별표로 지정한 기본 프리셋에는 **DEFAULT**(기본) 배지가 붙습니다. 행을 클릭하면 프리셋이 열립니다.
@@ -82,7 +82,29 @@
 - **Conversation Mode**(대화 모드)는 이 프리셋의 Conversation 프롬프트를 넣는 텍스트 상자입니다. 비워 두면 내장 프롬프트를 씁니다.
 - **Roleplay Mode**(롤플레이 모드)는 여기서 편집할 수 없습니다. Roleplay는 **Sections**에서 조립한 프롬프트를 씁니다.
 - **Game Mode**(게임 모드)는 이 프리셋의 Game 프롬프트를 넣는 텍스트 상자입니다. 비워 두면 내장 프롬프트를 씁니다.
-- **Game story settings**(게임 이야기 설정)는 Game Mode의 이야기 스타일, 폭력, 콘텐츠 제한을 정합니다. **Bring story settings to games that use this preset**(이 프리셋을 사용하는 게임에 이야기 설정 적용)을 켜세요. 게임에 이 프리셋을 고르면 스타일과 폭력이 설정되고 게임 자체의 콘텐츠 제한에 이 제한이 추가됩니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#story-style-violence-and-content-boundaries)을 참고하세요.
+- **Game story settings**(게임 이야기 설정)는 Game Mode에 이야기 스타일, 폭력, 콘텐츠 제한을 적용합니다. [게임 이야기 설정](#game-story-settings)을 참고하세요.
+
+#### 게임 이야기 설정
+
+프리셋에 이야기 스타일, 폭력 수준, 콘텐츠 제한을 담아 Game Mode에 적용하면 게임마다 다시 설정하지 않아도 됩니다. [이야기 스타일, 폭력, 콘텐츠 제한](../game/getting-started.md#story-style-violence-and-content-boundaries)을 참고하세요.
+
+1. **Prompts** 탭의 **Game story settings** 아래에서 **Bring story settings to games that use this preset**(이 프리셋을 사용하는 게임에 이야기 설정 적용)을 켜세요.
+2. **Story style**(이야기 스타일)과 **Violence**(폭력) 수준을 고르세요. **Follow rating**(등급 따르기)은 각 게임의 폭력을 해당 등급의 기본값으로 유지합니다.
+3. 선택 사항: **Content boundaries**(콘텐츠 제한)를 한 줄에 하나씩 적으세요.
+4. **Save**를 클릭하세요.
+
+설정 마법사나 **Chat Settings → Prompt Preset**(채팅 설정 → 프롬프트 프리셋)에서 게임에 프리셋을 고르면 게임이 프리셋의 이야기 스타일과 폭력 수준을 적용합니다. 프리셋의 콘텐츠 제한은 게임에 이미 있는 제한에 추가되므로 게임 자체의 제한은 하나도 지워지지 않습니다. 나중에 프리셋을 편집해도 이미 그 프리셋을 고른 게임은 바뀌지 않습니다. 이 설정은 프리셋을 복제하거나 내보내거나 가져올 때 유지됩니다.
+
+#### 게임 이야기 설정
+
+프리셋에 이야기 스타일, 폭력 수준, 콘텐츠 제한을 담아 Game Mode에 적용하면 게임마다 다시 설정하지 않아도 됩니다. [이야기 스타일, 폭력, 콘텐츠 제한](../game/getting-started.md#story-style-violence-and-content-boundaries)을 참고하세요.
+
+1. **Prompts** 탭의 **Game story settings** 아래에서 **Bring story settings to games that use this preset**을 켜세요.
+2. **Story style**과 **Violence** 수준을 고르세요. **Follow rating**은 각 게임의 폭력을 해당 등급의 기본값으로 유지합니다.
+3. 선택 사항: **Content boundaries**를 한 줄에 하나씩 적으세요.
+4. **Save**를 클릭하세요.
+
+설정 마법사나 **Chat Settings → Prompt Preset**에서 게임에 프리셋을 고르면 게임이 프리셋의 이야기 스타일과 폭력 수준을 적용합니다. 프리셋의 콘텐츠 제한은 게임에 이미 있는 제한에 추가되므로 게임 자체의 제한은 하나도 지워지지 않습니다. 나중에 프리셋을 편집해도 이미 그 프리셋을 고른 게임은 바뀌지 않습니다. 이 설정은 프리셋을 복제하거나 내보내거나 가져올 때 유지됩니다.
 
 기본 제공 **Marinara's Universal Preset**(Marinara 범용 프리셋)은 프롬프트 텍스트는 제공하지만 생성 파라미터는 제공하지 않습니다. 예전에 저장된 샘플링, 추론, 서식, 토큰 설정은 무시되고, 대신 계정 설정, 채팅별 덮어쓰기, 앱 기본값이 적용됩니다. 사용자 지정하려면 수정 가능한 복사본을 만드세요.
 
@@ -179,7 +201,7 @@
 
 텍스트 상자에는 사용 중인 프롬프트가 표시됩니다. 내용을 고치면 채팅 전용 사본이 만들어집니다. 입력한 글이 프리셋이나 기본값과 완전히 같으면 Marinara는 사용자 지정이 아닌 것으로 처리합니다. 사용자 지정 편집본이 있는 동안에는 툴팁이 **Reset to default prompt**(기본 프롬프트로 초기화)인 초기화 아이콘이 나타납니다.
 
-Game 채팅에는 컨트롤이 더 있습니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다. **Rating guidelines**(등급 지침), **Story style**(이야기 스타일), **Violence**(폭력), **Content boundaries**(콘텐츠 제한)는 게임의 콘텐츠 설정입니다. [콘텐츠와 이야기 스타일](../game/getting-started.md#change-them-during-a-game)을 참고하세요.
+Game 채팅에는 컨트롤이 더 있습니다. **Story style**, **Violence**, **Content boundaries**, **Rating guidelines**(등급 지침)는 게임 이야기에 포함될 수 있는 내용을 정합니다. [게임 중에 바꾸기](../game/getting-started.md#change-them-during-a-game)를 참고하세요. 나머지 두 컨트롤은 프롬프트를 조정합니다. **GM prompt style**(GM 프롬프트 스타일)은 Game 프롬프트만 대체하며, 채팅 전용 편집본이 여전히 우선합니다. **Extra instructions**(추가 지침)는 Game 프롬프트에 글을 덧붙입니다. 길이는 2000자까지이며, "Write in the style of Terry Pratchett." 같은 지시를 넣을 수 있습니다.
 
 ## 판정 블록과 프롬프트 캐시
 

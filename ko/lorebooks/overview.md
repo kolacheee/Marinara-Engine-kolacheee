@@ -67,9 +67,22 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 스위치 아래의 **Semantic search (embeddings)**(시맨틱 검색) 패널은 [로어북 시맨틱 검색](semantic-search.md)에서 다룹니다.
 
+## 로어북에 그림 넣기
+
+그림은 **Lorebooks** 페이지의 표와 갤러리 타일, 로어북 선택 창에 표시됩니다.
+
+1. 로어북을 열고 **Book settings**를 클릭하세요. **Picture**(사진)는 **Enabled** 옆에 있습니다.
+2. **Upload**(업로드)(또는 **Replace**(교체))를 클릭해 파일을 고르거나, **Generate with AI**를 클릭해 이미지 생성 연결로 표지를 만드세요. **Generate with AI**는 이미지 생성 연결을 설정하면 나타납니다.
+3. **Adjust crop**(자르기 조정)(또는 작은 그림)을 클릭하세요. 그림 위의 정사각형을 끌어 표시할 부분을 고르고, 모서리를 끌어 크기를 조절하세요.
+4. **Save**(저장)를 클릭하세요.
+
+새 그림은 자르지 않은 상태로 시작합니다. 그림을 없애려면 **Adjust crop**을 열고 **Remove**(제거)를 클릭하세요.
+
+클래식 레이아웃에서는 로어북의 **Overview** 탭 맨 위에 있는 **Image**(이미지) 섹션이 그림에 해당하며, 버튼은 같습니다.
+
 ## Lorebooks 페이지
 
-**Library → Lorebooks**(라이브러리 → 로어북)를 여세요. 위쪽에는 **Import**([로어북 가져오기와 내보내기](import-export.md) 참고)와 **New lorebook**(새 로어북)이 있습니다. 그 아래에는 다음이 있습니다.
+**Library → Lorebooks**(라이브러리 → 로어북)를 여세요. 위쪽에는 **Browse online**(온라인에서 찾아보기)(Chub에서 다운로드할 수 있는 로어북, [로어북 가져오기와 내보내기](import-export.md#download-a-lorebook-from-chub) 참고), **Import**([로어북 가져오기와 내보내기](import-export.md) 참고)와 **New lorebook**(새 로어북)이 있습니다. 그 아래에는 다음이 있습니다.
 
 - **All kinds**(모든 종류)로 목록을 **Global**, **World**, **Character**, **NPC**, **Spellbook** 로어북으로 좁힐 수 있습니다.
 - **List**(목록)와 **Gallery**(갤러리)로 표와 그림 타일 보기 사이를 전환합니다.
@@ -86,7 +99,9 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 ## 클래식 레이아웃의 Lorebooks 패널
 
-클래식 패널은 같은 폴더와 순서를 목록으로 보여 줍니다. 패널 위쪽에는 아이콘 버튼이 3개 있으며, 마우스를 올리면 이름이 표시됩니다.
+클래식 패널은 같은 폴더와 순서를 목록으로 보여 줍니다. 패널 위쪽의 **Download**(다운로드)는 다운로드할 수 있는 로어북을 Card Browser에서 열고, **Open Library**(라이브러리 열기)는 로어북의 그림, 설명, 항목 수를 보여 주는 전체 페이지인 Lorebook Library를 엽니다. 그곳에서 로어북을 클릭하면 더 크게 볼 수 있습니다. **Edit Lorebook**(로어북 편집)은 편집기를 열고, **Active**(활성)는 모든 채팅에서 로어북을 켜거나 끕니다.
+
+그 아래에는 아이콘 버튼이 3개 있으며, 마우스를 올리면 이름이 표시됩니다.
 
 - **New**는 **Create Lorebook** 창을 엽니다.
 - **Import**(가져오기)는 **Import Lorebook**(로어북 가져오기) 창을 엽니다. [로어북 가져오기와 내보내기](import-export.md)를 참고하세요.
@@ -96,7 +111,7 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 - **Search lorebooks**(로어북 검색)는 이름, 설명, 연결된 캐릭터나 페르소나 이름, 태그로 걸러 냅니다. 여기서도 `tag:name`을 사용할 수 있습니다.
 - 검색 상자 옆의 **Tags**(태그)는 고른 태그가 모두 있는 로어북만 보여 주거나, **Untagged**(태그 없음)인 로어북만 보여 줍니다. [태그](../characters/library-organization.md#tags)를 참고하세요.
-- **Sort order**(정렬 순서)에는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Token Budget**이 있습니다. **Manual order**에서는 로어북을 원하는 자리로 끌어다 놓거나 <kbd>Alt</kbd>+<kbd>Up</kbd>과 <kbd>Alt</kbd>+<kbd>Down</kbd>을 사용하세요.
+- **Sort order**(정렬 순서)에는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens**(토큰 많은 순), **Fewest tokens**(토큰 적은 순)가 있습니다. 크기 정렬은 비활성 항목을 포함한 로어북의 모든 항목의 추정 크기를 사용하며, 이 크기는 각 행에도 표시됩니다. **Manual order**에서는 로어북을 원하는 자리로 끌어다 놓거나 <kbd>Alt</kbd>+<kbd>Up</kbd>과 <kbd>Alt</kbd>+<kbd>Down</kbd>을 사용하세요.
 - **New Folder**(새 폴더)는 라이브러리 폴더를 만듭니다. 로어북을 폴더 위로 끌어다 놓으세요. 휴대폰에서는 로어북을 길게 누른 다음 끌어다 놓으세요. 이 폴더는 로어북 안의 항목 폴더와는 별개입니다.
 
 행마다 **Copy**(복사) 버튼과 **Delete**(삭제) 버튼이 있습니다. **Copy**는 로어북을 복제합니다. 두 버튼은 행 위에 마우스를 올리면 나타나고, 모바일에서는 항상 보입니다. 꺼 둔 로어북에는 **OFF**(꺼짐) 배지가 붙습니다. 그림을 클릭하면 그림을 올리거나 바꿀 수 있습니다.

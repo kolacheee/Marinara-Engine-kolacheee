@@ -7,7 +7,7 @@
 1. **Settings → General → Confirmations & Help**(설정 → 일반 → 확인 및 도움말)를 여세요.
 2. **Walkthroughs**(안내)에서 **Replay the welcome tour**(환영 둘러보기 다시 보기)를 클릭하세요.
 
-홈의 **Learn the engine**(엔진 배우기) 위젯에서 **Replay tutorial**(튜토리얼 다시 보기)을 클릭해도 됩니다. 투어가 첫 단계부터 다시 시작합니다.
+홈의 **Things to try**(시도해 볼 것) 위젯에서 **See all**(모두 보기)을 열고 **Replay tutorial**(튜토리얼 다시 보기)을 클릭해도 됩니다. 투어가 첫 단계부터 다시 시작합니다.
 
 **Walkthroughs**에는 버튼이 두 개 더 있습니다. **Replay the computer walkthrough**(컴퓨터 안내 다시 보기)(또는 태블릿, 휴대폰)는 현재 기기 종류에 맞는 짧은 안내를 다시 보여 주고, **Show chat mode tips again**(채팅 모드 도움말 다시 보기)은 각 채팅 모드의 도움말을 다시 표시합니다. [기기별 안내](#walkthroughs-for-each-device)를 참고하세요.
 

@@ -158,11 +158,11 @@ Character Editor는 채팅 영역을 전체 화면 작업 공간으로 바꿉니
 
 **Voice** 탭에서는 Text to Speech(음성 합성)가 이 캐릭터를 소리 내어 읽을 때 어떤 목소리로 들릴지 정합니다.
 
-- **Voice**. 이 캐릭터의 목소리입니다. 바꾸면 **Save**를 누르지 않아도 바로 저장됩니다. **Connections → Text to Speech**(연결 → TTS)에 있는 이 캐릭터의 행과 같은 설정입니다. 비워 두면 기본 목소리를 씁니다. AU 사본의 원본처럼 이름이 같은 카드에 목소리가 있으면, 이 카드도 그 목소리를 쓰기 때문에 빈 입력란에 그 목소리 이름이 표시됩니다.
+- **Voice**. 이 캐릭터의 목소리입니다. 바꾸면 **Save**를 누르지 않아도 바로 저장됩니다. **Connections**(연결)의 **Voice** 작업 설정에 있는 이 캐릭터의 행과 같은 설정입니다. 비워 두면 기본 목소리를 씁니다. AU 사본의 원본처럼 이름이 같은 카드에 목소리가 있으면, 이 카드도 그 목소리를 쓰기 때문에 빈 입력란에 그 목소리 이름이 표시됩니다.
 - **Preview**(미리 듣기). 그 목소리로 짧은 문장을 재생합니다. 문장에는 캐릭터 이름이 들어가고, **Phonetic name**(발음 표기 이름)을 설정했다면 그 이름이 들어갑니다.
 - **Phonetic name**. 발음을 바로잡을 때만 쓰는 선택 항목입니다. 카드의 일부이므로 유지하려면 **Save**를 클릭하세요.
 
-Text to Speech가 꺼져 있거나 모든 캐릭터가 한 목소리를 함께 쓰면 **Voice** 입력란 대신 짧은 안내 문구가 표시됩니다. 한 목소리를 함께 쓰는 경우에는 안내 문구에 **Use a voice per character**(캐릭터별 음성 사용)가 함께 나옵니다. **Open Text to Speech settings**(TTS 설정 열기)를 누르면 Connections가 열립니다. [Text to Speech(TTS) 설정](../media/tts-setup.md)을 참고하세요.
+Text to Speech가 꺼져 있거나 모든 캐릭터가 한 목소리를 함께 쓰면 **Voice** 입력란 대신 짧은 안내 문구가 표시됩니다. 한 목소리를 함께 쓰는 경우에는 안내 문구에 **Use a voice per character**(캐릭터별 음성 사용)가 함께 나옵니다. **Open Text to Speech settings**(TTS 설정 열기)를 누르면 **Connections**의 **Voice** 작업 설정이 열립니다. [Text to Speech(TTS) 설정](../media/tts-setup.md)을 참고하세요.
 
 ## Advanced 탭
 
@@ -204,7 +204,7 @@ Text to Speech가 꺼져 있거나 모든 캐릭터가 한 목소리를 함께 �
 
 ## 버전 히스토리
 
-**Automatic versioning**이 켜져 있으면 저장할 때마다 **Metadata** 탭의 **Version history**에 스냅샷이 추가될 수 있습니다. 그 전까지는 `Previous card states will appear here after the next edit.`이 표시됩니다. 저장된 스냅샷 수는 카운터로 확인할 수 있습니다.
+**Automatic versioning**이 켜져 있으면 저장할 때마다 **Metadata** 탭의 **Version history**에 스냅샷이 추가될 수 있습니다. 그 전까지는 `Previous card states will appear here after the next edit.`이 표시됩니다. 저장된 스냅샷 수는 카운터로 확인할 수 있습니다. 더 새로운 카드로 캐릭터를 업데이트할 때는 스위치가 꺼져 있어도 항상 먼저 스냅샷을 저장합니다. [이미 있는 캐릭터 업데이트하기](import-export.md#update-a-character-you-already-have)를 참고하세요.
 
 저장된 버전과 현재 카드를 비교하려면 다음과 같이 하세요.
 

@@ -5,7 +5,7 @@
 ## 가장 먼저 해 볼 것
 
 1. 페이지를 강제로 새로 고치세요. Windows나 Linux에서는 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>, Mac에서는 <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>을 누르세요.
-2. 서버 콘솔(Marinara를 실행하는 터미널 창)에 빨간색 오류 줄이 있는지 확인하세요. 대개 그 줄이 진짜 원인을 알려 줍니다.
+2. 서버 콘솔(Marinara를 실행하는 터미널 창)에 빨간색 오류 줄이 있는지 확인하세요. 대개 그 줄이 진짜 원인을 알려 줍니다. 서버가 다른 곳(NAS, VPS, Docker)에서 실행된다면 **Settings → Advanced → Open Console**(설정 → 고급 → 콘솔 열기)을 열어 앱에서 같은 줄을 읽으세요.
 3. 도움을 요청하려면 먼저 **Debug mode**(디버그 모드)를 켜세요. [도움 더 받기](#get-more-help)를 참고하세요.
 
 <a id="my-character-does-not-reply"></a>
@@ -88,6 +88,7 @@ CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 | 모델이 파라미터가 필요하다고 하는 경우 | 그 파라미터의 스위치를 켜세요. |
 | **This model's chat template needs user and assistant messages to take turns** | llama.cpp에서 실행하는 Mistral 기반 모델 같은 일부 로컬 모델은 메시지가 번갈아 와야 합니다. Marinara는 연달아 이어진 메시지를 합친 뒤 한 번 다시 시도합니다. 그래도 계속되면 **Chat Settings → Advanced Parameters**에서 **Post-Processing Messages**(메시지 후처리)를 **Single User Message**(단일 사용자 메시지)로 설정하거나, 덜 엄격한 채팅 템플릿으로 모델을 실행하세요. |
 | **The AI returned an empty response. Try sending your message again.** | 다시 보내세요. 같은 문제가 반복되면 다른 모델이나 계정을 써 보세요. |
+| **The model declined this request** | 모델이 이 답변 작성을 거부했습니다. Game Mode에서는 [모델이 턴을 거부할 때](game/getting-started.md#the-model-declines-a-turn)를 참고하세요. 다른 모드에서는 다시 시도한 뒤 다른 모델, 프리셋이나 캐릭터 카드를 사용하세요. |
 | **A generation is already in progress for this chat** | 답변이 아직 스트리밍 중입니다. 기다리거나 **Stop**(중지)을 클릭한 다음 다시 시도하세요. |
 | **No connections are marked for the random pool** | 무작위 라우팅이 켜져 있지만 풀에 계정이 없습니다. 계정을 하나 추가하거나 무작위 라우팅을 끄세요. |
 | 모든 메시지가 네트워크 오류로 실패하고, 컴퓨터가 프록시를 거쳐야만 인터넷에 접속할 수 있는 경우 | Marinara에 프록시를 알려 주세요. [아웃바운드 HTTP 프록시](CONFIGURATION.md#outbound-http-proxy)를 참고하세요. |

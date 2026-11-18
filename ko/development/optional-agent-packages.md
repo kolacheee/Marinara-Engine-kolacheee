@@ -94,6 +94,9 @@ globalThis.__MARINARA_HOST__ = {
 | `modules` | 베어 지정자를 키로 하는 라이브러리 모듈입니다(아래 참고). |
 | `queryClient` | Engine이 렌더링에 쓰는 단 하나의 React Query `QueryClient`입니다. |
 | `components.Modal` | 오버레이 순서, Escape 키와 뒤로 가기 버튼 처리를 갖춘 Engine의 `Modal`입니다. |
+| `components.Switch`, `components.Checkbox` | Capability API 1.830부터 제공되는 Engine의 공용 스위치와 체크박스로, 패키지의 모양을 호스트와 맞출 수 있습니다. |
+| `components.Spinner` | Capability API 1.830부터 제공되는 Engine의 공용 로딩 표시입니다. `label`을 전달하지 않으면 화면 읽기 프로그램에 숨겨지며, 전달하면 상태 영역이 됩니다. |
+| `components.showConfirmDialog` | Capability API 1.830부터 제공되는 Engine의 확인 대화 상자이며, `services.dialogs.showConfirmDialog`와 같은 함수입니다. |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 모듈입니다. |
 | `api` | `lib/api-client.ts` 모듈(`api`, `ApiError`, `getApiErrorMessage`, ...)입니다. |
 

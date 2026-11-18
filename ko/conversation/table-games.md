@@ -62,15 +62,15 @@
 
 ## Chess
 
-설정 창의 제목은 **Start Chess**입니다.
+설정 창의 제목은 **Start Chess**입니다. **Opponent**에서 상대 캐릭터를 하나 고르세요(기본값은 첫 번째 캐릭터). 그룹 채팅에서는 나머지 캐릭터가 계속 대화합니다. **Your color**는 **White**, **Random**(기본값), **Black** 중에서 고르세요. **Start game**을 클릭하세요.
 
-**Opponent**에서 상대 캐릭터를 하나 고르세요(기본값은 첫 번째 캐릭터). 그룹 채팅에서는 나머지 캐릭터가 계속 대화합니다. **Your color**는 **White**, **Random**(기본값), **Black** 중에서 고르세요. **Start game**을 클릭하세요. 내 기물 하나를 클릭해 선택하세요. 둘 수 있는 수는 점으로, 잡는 수는 고리로 표시됩니다. Black으로 두면 판이 뒤집힙니다. 폰이 마지막 랭크에 닿으면 "Promote to:"(Queen, Rook, Bishop, Knight)가 열립니다. 배너가 체크메이트, 사유가 있는 무승부, "Game over"를 알려 주며, 게임판 아래의 띠에는 최근 수가 나열됩니다.
+내 기물 하나를 클릭해 선택하세요. 둘 수 있는 수는 점으로, 잡는 수는 고리로 표시됩니다. Black으로 두면 판이 뒤집힙니다. 폰이 마지막 랭크에 닿으면 "Promote to:"(Queen, Rook, Bishop, Knight)가 열립니다. 배너가 체크메이트, 사유가 있는 무승부, "Game over"를 알려 주며, 게임판 아래의 띠에는 최근 수가 나열됩니다.
 
 ## Poker
 
-설정 창의 제목은 **Start Poker**입니다. 테이블에는 2명에서 8명까지 앉을 수 있습니다. 7명이 되면 나머지는 흐려집니다.
+설정 창의 제목은 **Start Poker**입니다. 테이블에는 2명에서 8명까지 앉을 수 있습니다.
 
-- **Players**: 앉힐 캐릭터를 체크하세요.
+- **Players**: 앉힐 캐릭터를 체크하세요. 7명이 되면 나머지는 흐려집니다.
 - **Dealer**: 기본값은 **House dealer (silent)**이며, 아무 말 없이 카드만 나눕니다. 또는 핸드와 쇼다운을 중계할 캐릭터를 고르세요.
 - **Starting stack**: 플레이어당 칩이며 100에서 1,000,000까지입니다. 기본값은 **1000**입니다.
 - **Small blind**: 빅 블라인드는 이 값의 2배입니다. 기본값은 **10**입니다.
@@ -114,7 +114,7 @@
 
 **Chat Settings** → **Agents** → **Commands**를 열거나, 채팅을 만들 때 **Automation**(자동화) 단계를 쓰세요. 마스터 **Commands** 스위치는 테이블 게임, 셀카, 통화를 포함해 캐릭터가 실행하는 모든 동작을 통제합니다. 이 스위치가 꺼져 있으면 캐릭터는 스스로 아무것도 시작하지 않습니다.
 
-설치한 게임마다 자체 스위치가 있으며, 직접 끄지 않으면 켜져 있습니다. **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe**, **Rock-Paper-Scissors**입니다. [캐릭터가 쓸 수 있는 Commands 고르기](getting-started.md#choose-which-commands-a-character-can-use)를 참고하세요.
+설치한 게임마다 자체 스위치가 있으며, 직접 끄지 않으면 켜져 있습니다. **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe**, **Rock-Paper-Scissors**입니다. Blackjack이나 Wordle 같은 다른 게임 패키지에는 해당 게임 이름의 스위치가 생깁니다. [캐릭터가 쓸 수 있는 Commands 고르기](getting-started.md#choose-which-commands-a-character-can-use)를 참고하세요.
 
 이 스위치들은 캐릭터가 하는 일만 통제합니다. 게임의 슬래시 명령어와 "let's play" 문구는 스위치가 꺼져 있어도 작동합니다.
 

@@ -146,7 +146,7 @@ OpenAI, OpenRouter, xAI, NanoGPT, Arli AI, Z.AI, Google의 이미지 및 동영�
 
 ## Decision
 
-**Decision** 탭의 타일은 **TypeSafe**(기본 주소 `https://api.typesafe.ai`), **Own decision server**(자체 판단 서버), **Built-in model (decisions)**(결정 사이드카, 실험적)입니다. OpenAI 채팅 형식을 쓰는 채팅 서비스도 판정을 할 수 있지만, 로그 확률(가능한 답마다 매기는 점수)을 반환하는 모델에서만 가능합니다. Decision 모델은 채팅에 관한 예/아니요 질문에 답합니다. [Decision 모델](decision-models.md)을 참고하세요.
+**Decision** 탭의 타일은 **TypeSafe**(기본 주소 `https://api.typesafe.ai`), **Own decision server**(자체 판단 서버), **Built-in model (decisions)**(결정 사이드카, 실험적)입니다. 이 탭에는 자체 Decision 모델이 있는 **NanoGPT**, **OpenRouter**, **Google Gemini**도 나옵니다([NanoGPT를 통해 사용하기](decision-models.md#through-nanogpt)와 [OpenRouter나 Google Gemini를 통해 사용하기](decision-models.md#through-openrouter-or-google-gemini) 참고). OpenAI 채팅 형식을 쓰는 다른 채팅 서비스도 판정을 할 수 있지만, 로그 확률(가능한 답마다 매기는 점수)을 반환하는 모델에서만 가능합니다. Decision 모델은 채팅에 관한 예/아니요 질문에 답합니다. [Decision 모델](decision-models.md)을 참고하세요.
 
 ## Audio
 
@@ -189,7 +189,7 @@ Game마다 오디오 생성을 켜거나, Roleplay의 명령 설정에서 **Soun
 
 ## 임베딩
 
-임베딩은 텍스트를 숫자 목록으로 바꿔 Marinara가 관련 텍스트를 찾을 수 있게 합니다. 로어북 시맨틱 검색과 Memory Recall(기억 회상)이 임베딩을 사용합니다. 채팅 서비스는 대부분 모델 편집기의 **Semantic search (embeddings)**(시맨틱 검색) 아래에서 임베딩 모델과 선택 사항인 **Embedding endpoint URL**(임베딩 엔드포인트 URL)을 설정할 수 있습니다.
+임베딩은 텍스트를 숫자 목록으로 바꿔 Marinara가 관련 텍스트를 찾을 수 있게 합니다. 로어북 시맨틱 검색과 Memory Recall(기억 회상)이 임베딩을 사용합니다. 채팅 서비스는 대부분 모델의 **Edit model** 창에서 **More**(더보기) → **Semantic search (embeddings)**(시맨틱 검색) 아래에서 임베딩 모델과 선택 사항인 **Embedding endpoint URL**(임베딩 엔드포인트 URL)을 설정할 수 있습니다.
 
 **Anthropic**, **Claude (Subscription)**, **OpenAI (ChatGPT)**, **Grok CLI (Subscription)**은 임베딩을 만들 수 없습니다. 이런 서비스에서는 **Embedding provider**(임베딩 연결) 드롭다운으로 다른 계정을 빌려 쓰세요. OpenAI 호환 계정, **Google Gemini**, **Built-in model**(내장 모델) 등을 쓸 수 있습니다.
 

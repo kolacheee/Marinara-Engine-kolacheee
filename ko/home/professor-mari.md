@@ -11,7 +11,7 @@ Professor Mari는 홈 화면에 있는 내장 어시스턴트입니다. 앱을 �
 
 Professor Mari가 별도 탭에서 열립니다. 어느 화면에서든 부를 수도 있습니다. <kbd>Ctrl</kbd>+<kbd>K</kbd>를 누르고 질문을 입력한 다음 **Ask Prof. Mari**를 고르세요. 팝업 창으로 열려면 <kbd>Ctrl</kbd>+<kbd>J</kbd>(Mac에서는 <kbd>⌘</kbd>+<kbd>J</kbd>)를 누르세요. 휴대폰에서는 상단 바의 제목을 탭하세요. 창 머리글에는 대기 중일 때 **Ready to help**(도움말 준비됨), 작업 중일 때 **Working on it...**(처리 중...)이라고 표시됩니다.
 
-평소 쓰는 말로 메시지를 입력하고 <kbd>Enter</kbd>를 누르세요. <kbd>Shift</kbd>+<kbd>Enter</kbd>는 줄바꿈을 넣습니다. Professor Mari 설정에서 **Enter sends to Professor Mari**(Enter로 Professor Mari에게 전송)를 끄면 <kbd>Enter</kbd>는 줄바꿈을 넣고 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>로 보냅니다. 첫 메시지를 보내면 **Hello World** 업적이 열립니다.
+평소 쓰는 말로 메시지를 입력하고 <kbd>Enter</kbd>를 누르세요. <kbd>Shift</kbd>+<kbd>Enter</kbd>는 줄바꿈을 넣습니다. Professor Mari 설정에서 **Enter sends to Professor Mari**(Enter로 Professor Mari에게 전송)를 끄면 <kbd>Enter</kbd>는 줄바꿈을 넣고 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>나 Send 버튼으로 보냅니다. 토글은 기기별로 저장되므로 휴대폰에서는 끄고 컴퓨터에서는 켜 둘 수 있습니다. 첫 메시지를 보내면 **Hello World** 업적이 열립니다.
 
 Professor Mari의 설정은 모두 **Settings → General → Professor Mari → Open**(설정 → 일반 → Professor Mari → 열기)이나 Search(검색)의 톱니바퀴에 있습니다. 컴퓨터에서는 **Professor Mari window**(Professor Mari 창) 아래의 **Height**(높이)와 **Width**(너비) 슬라이더로 창 크기를 바꿀 수 있습니다. 휴대폰에서는 창이 화면을 가득 채웁니다.
 
@@ -39,7 +39,7 @@ Professor Mari는 항목을 편집하기 전에 먼저 읽고, 요청이 모호�
 - 테마, 에이전트, 프롬프트 프리셋, Personal Extension(개인 확장) 초안 만들기와 편집하기. 초안은 코드를 직접 읽고 **Library → Extensions**(라이브러리 → 확장)에서 승인하기 전까지 꺼져 있습니다.
 - 프리셋 전체를 갈아 끼우지 않고 프리셋의 한 섹션만 그 자리에서 편집하기.
 - 다운로드 가능한 에이전트를 비교하고 목적에 맞는 것을 알려 주기. 설치는 **Library → Agents**(라이브러리 → 에이전트)로 안내합니다. [다운로드 가능한 에이전트 레퍼런스](../agents/built-in-agents.md)를 참고하세요.
-- 아바타, 스프라이트, 배경, 테마 그림 같은 이미지 만들기와 지정하기, 이미지 자르기, 여백 다듬기, 크기 조절, 단색 배경 지우기. 먼저 이미지 생성 계정이 있어야 합니다. 계정을 대신 만들어 주지는 않습니다. 테마 그림은 [Professor Mari에게 그림 만들기 부탁하기](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)를 참고하세요.
+- 아바타, 스프라이트, 배경, 테마 그림 같은 이미지 만들기와 지정하기, 이미지 자르기, 여백 다듬기, 크기 조절, 단색 배경 지우기. 먼저 이미지 생성 계정이 있어야 합니다. 계정을 대신 만들어 주지는 않습니다. 테마 그림은 [Professor Mari에게 그림 만들기 부탁하기](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)를 참고하세요. Professor Mari가 만든 이미지를 클릭하면 전체 크기로 열어 프롬프트를 읽고, 다운로드하거나, 프롬프트를 편집해 재생성할 수 있습니다. 새 이미지는 답변의 이전 이미지를 교체합니다.
 - 캐릭터나 세계관을 조사할 때 공개된 Fandom 위키 문서 찾아보기.
 
 ### 칩으로 시작하기
@@ -136,7 +136,7 @@ Professor Mari가 캐릭터, 페르소나, 로어북, 프리셋을 만들거나 
 
 ### 명령 사용하기(/)
 
-줄 맨 앞에서 `/` 문자를 입력하면 Professor Mari의 명령 목록이 열립니다. 계속 입력해 목록을 거른 다음 <kbd>Enter</kbd>를 누르세요. 목록에는 내 스킬과 기억도 표시됩니다. 그중 하나를 고르면 `@`처럼 링크됩니다.
+줄 맨 앞이나 공백 뒤에서 `/` 문자를 입력하면 Professor Mari의 명령 목록이 열리므로, 메시지 하나에 여러 명령을 쓸 수 있습니다. 계속 입력해 목록을 거른 다음 <kbd>Enter</kbd>를 누르세요. 목록에는 내 스킬과 기억도 표시됩니다. 그중 하나를 고르면 `@`처럼 링크됩니다.
 
 | 명령 | 동작 |
 | --- | --- |
@@ -233,7 +233,7 @@ Professor Mari가 작업하는 동안 창을 닫아도 됩니다. 상단 바 아
 
 ## FAQ 읽기
 
-홈의 **Learn the engine**(엔진 배우기) 위젯에서 **Read FAQ**(FAQ 보기)를 클릭하거나 클래식 레이아웃에서 **FAQ** 북마크를 클릭하면 **Professor Mari's FAQ**(Mari 교수님의 FAQ)가 열립니다. FAQ는 AI 채팅이 아니라 미리 적어 둔 고정 목록이라 내 설정을 알지 못합니다. **Search FAQ**(FAQ 검색)에 입력하면 질문이 걸러집니다. 질문마다 **Setup**, **Connections**, **Game Mode** 같은 분류 태그가 붙습니다. 질문을 탭하면 답변을 읽을 수 있습니다.
+홈의 **Things to try**(시도해 볼 것) 위젯에서 **See all**(모두 보기)을 연 다음 **Read FAQ**(FAQ 보기)를 클릭하거나 클래식 레이아웃에서 **FAQ** 북마크를 클릭하면 **Professor Mari's FAQ**(Mari 교수님의 FAQ)가 열립니다. FAQ는 AI 채팅이 아니라 미리 적어 둔 고정 목록이라 내 설정을 알지 못합니다. **Search FAQ**(FAQ 검색)에 입력하면 질문이 걸러집니다. 질문마다 **Setup**, **Connections**, **Game Mode** 같은 분류 태그가 붙습니다. 질문을 탭하면 답변을 읽을 수 있습니다.
 
 ## 한계와 안전
 

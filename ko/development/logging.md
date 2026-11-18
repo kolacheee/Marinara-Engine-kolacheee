@@ -42,7 +42,7 @@ ID는 `AsyncLocalStorage` 컨텍스트(`lib/log-context.ts`)에 저장합니다.
 
 `LOG_DISABLE_REQUEST_LOGGING`는 이전처럼 동작하며 중단 줄도 끕니다.
 
-`pnpm dev`에서 pino-pretty는 기본적으로 숨기는 `hostname`과 `bootId`를 감춥니다. 운영 JSON 출력에는 둘 다 남습니다.
+터미널에는 pino-pretty 형식의 줄이 출력됩니다. `pnpm dev`와 표준 출력이 터미널인 운영 서버(런처)가 이에 해당합니다. 다른 곳으로 보내는 운영 출력은 줄마다 객체 하나가 담긴 JSON입니다. `LOG_FORMAT=pretty|json`으로 이 선택을 덮어쓸 수 있으며, Termux 런처는 출력이 `tee`를 거쳐 터미널에 도달하므로 `pretty`를 설정합니다. pino-pretty는 `hostname`(기본 동작)과 `bootId`를 숨기며, JSON 출력에는 둘 다 남습니다.
 
 <a id="startup-timeline"></a>
 
@@ -109,11 +109,24 @@ logger.debug({ err }, "[game/scene-wrap] Unparsed LLM response: %s", raw.slice(0
 
 UI 디버그 토글은 계속 `logDebugOverride`를 통해 동작합니다. `LOG_LEVEL`이 debug를 숨길 때 프롬프트를 보는 정해진 방법입니다.
 
+프롬프트 텍스트는 `%s`로 그대로 출력하세요. 구조화된 값(메시지 배열, 제공자 요청 본문, 파싱한 답변)은 `%j`나 `JSON.stringify(value)` 대신 `debugJson(value)`를 `%s`에 전달하세요. 들여쓴 JSON을 출력하되 문자열 안의 줄바꿈을 실제 줄바꿈으로 표시하므로 여러 줄짜리 프롬프트도 읽기 쉽고, 해당 줄을 출력할 때만 렌더링합니다. 가리는 용도의 replacer는 `JSON.stringify`와 마찬가지로 두 번째 인수에 넣습니다. 앱 안의 디버그 화면은 `@marinara-engine/shared`의 `readableJson`으로 같은 텍스트를 출력합니다. `debug-log-line-breaks` 회귀 테스트가 이 동작과 형식 선택을 검증합니다.
+
+인라인 미디어는 전체가 로그에 들어가지 않습니다. `debugJson`은 각 base64 페이로드를 `[image/png base64, ~1.2 MB: iVBORw0KGgoAAAA...ElFTkSuQmCC]` 같은 표시로 바꿉니다. 유형, 크기, 처음과 마지막 16자가 담깁니다. 문자열 전체나 텍스트 안의 `data:` URL과 Anthropic 및 Google 미디어 부분의 단독 `data` 필드를 처리하며, base64가 여러 줄에 걸쳐 있어도 적용됩니다. `msg` 직렬화기는 일반 `%s`와 `%j` 줄의 `data:` URL에도 같은 처리를 합니다. 단독 `data` 필드는 `debugJson`을 거쳐야만 줄어듭니다. 출력되는 사본만 바뀌며 전달한 값은 절대 수정하지 않습니다. `.env`에 `LOG_INLINE_MEDIA=full`을 설정하면 페이로드를 다시 전체로 출력합니다. `log-inline-media` 회귀 테스트가 이를 검증합니다.
+
+## 앱 안의 콘솔
+
+Settings(설정) → Advanced(고급) → **Open Console**(콘솔 열기)은 터미널에 접근하기 어려운 설치(NAS, VPS, Docker, Termux)를 위해 최근 서버 로그 줄을 앱에 표시합니다.
+
+- `lib/log-buffer.ts`는 최근 1,500줄을 메모리에 보관하며, 최대 약 400만 자입니다. 각 메시지와 필드 블록은 16,000자에서 잘립니다. 디스크에는 아무것도 쓰지 않으며, 재시작하면 비워집니다.
+- `logger.ts`는 Pino의 `hooks.streamWrite`를 통해 직렬화된 모든 줄을 복사하므로, 버퍼에는 같은 `LOG_LEVEL`에서 터미널이나 로그 파일에 전달된 내용이 담깁니다. dotenv의 `injected env` 줄이나 자식 프로세스의 원시 출력처럼 Pino를 거치지 않는 줄은 담기지 않습니다.
+- `GET /api/admin/logs?afterId=`는 `afterId` 이후의 줄과 함께 `latestId`, `truncated`(이번 읽기 전에 줄이 삭제되었는지), 서버의 `logLevel`을 반환합니다. `requirePrivilegedAccess`로 보호되며 `no-store`입니다. 라우트의 `logLevel: "silent"`로 실행되므로 콘솔 자체의 폴링은 절대 표시되지 않습니다.
+- 이 페이지의 규칙은 여기에도 적용됩니다. warn이나 error로 기록한 내용은 원격 관리자가 앱에서 읽게 되므로, 프롬프트와 제공자 본문은 debug로 유지하세요.
+
 <a id="checks"></a>
 
 ## 검사
 
-`logging-request-trail`, `logging-failure-lines`, `logging-startup-timeline` 회귀가 이 페이지를 검증합니다.
+`logging-request-trail`, `logging-failure-lines`, `logging-startup-timeline` 회귀가 이 페이지를 검증하며, `server-console-logs`는 앱 안의 콘솔을 검증합니다.
 
 ```sh
 node scripts/run-regressions.mjs --filter logging-

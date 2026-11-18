@@ -68,7 +68,7 @@ Professor Mari에게 부탁하면 개인 위젯을 만들어 줍니다. 설치�
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari**(Professor Mari에게 묻기)는 Professor Mari와의 채팅을 엽니다. | 예 |
 | **Recent chats**(최근 채팅) | 최근 채팅입니다. 하나를 클릭하면 다시 열립니다. 비어 있으면 **Your chats will show here**(채팅이 여기에 표시됩니다)라고 표시됩니다. | 예 |
-| **Learn the engine**(엔진 배우기) | **Documentation**, **Replay tutorial**(튜토리얼 다시 보기), **Read FAQ**(FAQ 보기)로 가는 링크입니다. | 예 |
+| **Things to try**(시도해 볼 것) | 기능 하나씩을 다루는 다음 세 가지 작은 시도를 제안합니다. 모두 해 보거나 팁을 끄면 대신 **Documentation**, **Replay tutorial**(튜토리얼 다시 보기), **Read FAQ**(FAQ 보기)를 표시합니다. [시도해 볼 것](#things-to-try)을 참고하세요. | 예 |
 | **What's New**(새 소식) | **See what's new**(새로운 기능 보기)와 **Read release notes**(릴리스 노트 보기)입니다. | 예 |
 | **Community**(커뮤니티) | **Discord**, **Support**, **Credits**로 가는 링크입니다. | 예 |
 | **Character Library**(캐릭터 라이브러리) | 날마다 새로 고른 내 캐릭터입니다. | 아니요 |
@@ -76,6 +76,18 @@ Professor Mari에게 부탁하면 개인 위젯을 만들어 줍니다. 설치�
 | **Character of the Day**(오늘의 캐릭터) | 라이브러리의 캐릭터 하나를 **Start a chat**(채팅 시작), **View character**(캐릭터 보기)와 함께 보여 줍니다. | 아니요 |
 | **Clock & calendar**(시계 및 달력) | 오늘 날짜와 시간입니다. | 아니요 |
 | **Achievements** | 최근 업적과 가장 가까운 다음 업적입니다. Achievements 설정이 켜져 있어야 합니다. | 아니요 |
+
+## 시도해 볼 것
+
+**Things to try** 위젯은 다음에 시도할 기능 세 가지를 제안합니다. 각 과제는 이전 과제에 이어집니다. 갤러리 사진을 스티커로 만들고, 그 스티커를 채팅에서 보내는 식입니다.
+
+- 과제를 클릭하면 앱의 해당 위치가 열립니다. 해당 위치가 없으면 가이드가 열립니다.
+- 체크 표시를 클릭하면 완료로 표시하고, 가위표를 클릭하면 건너뜁니다. 건너뛴 과제는 다시 표시되지 않습니다.
+- 해당 모드의 채팅이나 스티커 라벨처럼 Marinara가 완료를 확인할 수 있는 과제는 대부분 자동으로 체크됩니다. 나머지는 직접 체크하세요.
+- **See all**은 모든 과제를 코스별로 나열하고 **Show me**(위치 보기)를 함께 표시합니다. 코스의 과제는 먼저 해야 할 과제를 마치면 나타납니다. **Only in this layout**(이 레이아웃에서만) 아래의 코스는 새 레이아웃의 기능을 다룹니다.
+- 코스를 마치면 해당 **Explorer** 업적이 열립니다.
+
+위젯은 **Settings > General > Confirmations & Help**(설정 > 일반 > 확인 및 도움말)의 **Feature tips** 설정을 따릅니다. 팁을 끄면 가이드 링크가 표시됩니다. 진행 상황은 이 브라우저에 저장됩니다.
 
 ### AI 기초와 심화 탐구
 
@@ -89,7 +101,7 @@ Professor Mari에게 부탁하면 개인 위젯을 만들어 줍니다. 설치�
 ## 도움받는 곳
 
 - 홈 화면에서 Professor Mari에게 물어보세요.
-- 빠른 답을 보려면 **Learn the engine** 위젯에서 **Read FAQ**를 클릭하세요.
+- 빠른 답을 보려면 **Things to try** 위젯에서 **See all**을 연 다음 **Read FAQ**를 클릭하세요.
 - 앱 안의 가이드를 보려면 상단 바에서 **Docs**를 클릭하세요.
 - **Community** 위젯에서 **Discord**를 클릭하면 커뮤니티로 연결되고, **Support**를 클릭하면 프로젝트를 후원할 수 있습니다.
 

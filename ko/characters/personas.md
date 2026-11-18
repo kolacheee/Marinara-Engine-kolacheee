@@ -40,7 +40,7 @@ Characters 페이지와 같은 도구를 쓸 수 있습니다. 카드의 **⋯**
 | **Import**(가져오기) | **Import Persona**(페르소나 가져오기) 창을 엽니다. |
 | **Select**(선택) | 일괄 삭제와 내보내기를 위한 선택 모드를 켭니다. |
 | 검색 상자 | 플레이스홀더는 **Search personas/tags**(페르소나/태그 검색)입니다. 이름, 설명, 코멘트, 태그에서 찾습니다. 태그 검색은 [검색](library-organization.md#search)을 참고하세요. |
-| 정렬 드롭다운 | **Manual order**, **A-Z**, **Z-A**, **Newest**, **Oldest**, **Tokens**(프롬프트 크기 추정치). |
+| 정렬 드롭다운 | **Manual order**, **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens**(토큰 많은 순), **Fewest tokens**(토큰 적은 순)(예상 크기이며 각 행에도 표시됩니다). |
 | **New Folder**(새 폴더) | 폴더를 만듭니다. |
 | **Tags**(태그) | 필터링할 태그 목록을 펼칩니다. |
 
