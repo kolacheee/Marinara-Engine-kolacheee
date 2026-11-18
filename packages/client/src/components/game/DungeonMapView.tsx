@@ -1406,7 +1406,7 @@ export function DungeonMapView({
         mound(2, ["#4e3008", "#8a5a12", "#a46e18", "#b98222", "#c8922c"]);
         ctx.save();
         ctx.clip();
-        const hx = T * 0.36;
+        const hx = T * 0.26;
         const hh = hx * Math.sqrt(3);
         const [x0, x1] = [Math.min(...shownLair.map((c) => c.x)) - 1, Math.max(...shownLair.map((c) => c.x)) + 2];
         const [y0, y1] = [Math.min(...shownLair.map((c) => c.y)) - 1, Math.max(...shownLair.map((c) => c.y)) + 2];

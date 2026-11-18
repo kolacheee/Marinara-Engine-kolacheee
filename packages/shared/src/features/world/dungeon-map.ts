@@ -1214,11 +1214,14 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
   });
   const entry = made.rooms.findIndex((room) => dungeonRoomHas(room, made.entrance.x, made.entrance.y));
   const far = Math.max(1, ...distance);
+  // The chamber with the most open dry floor, not the biggest box: a room half pool split the hoard (lair
+  // panel 2 renders).
+  const openFloor = (room: DungeonRoom) =>
+    dungeonRoomCells(room).filter(({ x, y }) => made.ground[y * made.width + x] === "floor").length;
   let lairRoom = -1;
   made.rooms.forEach((room, index) => {
     if (index === entry || distance[index]! < far * 0.5) return;
-    const size = dungeonRoomCells(room).length;
-    if (lairRoom < 0 || size > dungeonRoomCells(made.rooms[lairRoom]!).length) lairRoom = index;
+    if (lairRoom < 0 || openFloor(room) > openFloor(made.rooms[lairRoom]!)) lairRoom = index;
   });
   if (lairRoom < 0) return kept;
   const at = (x: number, y: number) => y * made.width + x;
