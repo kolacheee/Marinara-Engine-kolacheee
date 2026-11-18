@@ -1245,25 +1245,57 @@ export function DungeonMapView({
       const inLair = new Set(lairCells.map(({ x, y }) => `${x},${y}`));
       const hasF = (x: number, y: number) => inLair.has(`${x},${y}`);
       const hash = (a: number, b: number) => ((a * 73856093) ^ (b * 19349663)) >>> 0;
-      /** A cell's mass, full where it joins its neighbours, its outer sides inset and rimmed. */
-      const mass = (x: number, y: number, fill: string, rim: string, inset = 2) => {
-        const [ox, oy] = [x * T, y * T];
-        const l = hasF(x - 1, y) ? 0 : inset;
-        const r = hasF(x + 1, y) ? 0 : inset;
-        const t = hasF(x, y - 1) ? 0 : inset;
-        const b = hasF(x, y + 1) ? 0 : inset;
-        ctx.fillStyle = "rgba(8, 5, 2, 0.55)";
-        ctx.fillRect(ox + l + 1, oy + t + 1, T - l - r, T - t - b);
-        ctx.fillStyle = rim;
-        ctx.fillRect(ox + l, oy + t, T - l - r, T - t - b);
-        ctx.fillStyle = fill;
-        ctx.fillRect(
-          ox + l + (l ? 1 : 0),
-          oy + t + (t ? 1 : 0),
-          T - l - r - (l ? 1 : 0) - (r ? 1 : 0),
-          T - t - b - (t ? 1 : 0) - (b ? 1 : 0),
-        );
-      };
+      // A planned building's lair floor is dug, not built: its walls rough rock over the dressed courses (lair
+      // panel 1: ashlar walls round a dragon's cavern read as a cellar).
+      if (lairKind && lairCells.length && kept?.roomInfo && cells) {
+        for (let y = 0; y < cells.height; y++)
+          for (let x = 0; x < cells.width; x++) {
+            if (cells.ground[y * cells.width + x] !== "wall" || inFog(x, y)) continue;
+            const [ox, oy] = [x * T, y * T];
+            const v = hash(x + 11, y + 5);
+            ctx.fillStyle = "rgba(46, 40, 34, 0.72)";
+            ctx.fillRect(ox, oy, T, T);
+            for (let n = 0; n < 4; n++) {
+              const h = hash(x * 5 + n, y * 3 - n * 7);
+              const [lx, ly, lw, lh] = [h % 9, (h >> 4) % 9, 4 + ((h >> 8) % 5), 3 + ((h >> 11) % 4)];
+              ctx.fillStyle = n % 2 ? "rgba(98, 88, 74, 0.55)" : "rgba(70, 62, 52, 0.6)";
+              ctx.fillRect(ox + lx, oy + ly, lw, lh);
+              ctx.fillStyle = "rgba(150, 138, 118, 0.3)";
+              ctx.fillRect(ox + lx, oy + ly, lw, 1);
+            }
+            if (v % 5 === 0) {
+              ctx.fillStyle = "rgba(12, 10, 8, 0.6)";
+              ctx.fillRect(ox + (v % 10), oy + 2 + (v % 7), 1, 5);
+            }
+          }
+      }
+      if (lairKind === "drowned" && lairCells.length) {
+        // The deep pool: soft-edged, darkest in its middle, each cell a pool of shade that runs into the next
+        // (lair panel 1: a square-edged dark overlay).
+        ctx.save();
+        for (const { x, y } of lairCells) {
+          if (inFog(x, y)) continue;
+          const [cx, cy] = [(x + 0.5) * T, (y + 0.5) * T];
+          const deep = ctx.createRadialGradient(cx, cy, 1, cx, cy, T * 1.05);
+          deep.addColorStop(0, "rgba(2, 14, 26, 0.3)");
+          deep.addColorStop(1, "rgba(2, 14, 26, 0)");
+          ctx.fillStyle = deep;
+          ctx.fillRect(cx - T * 1.1, cy - T * 1.1, T * 2.2, T * 2.2);
+        }
+        ctx.restore();
+      }
+      if (lairKind === "haven" && lairCells.length) {
+        // Grave mist pooled over the coffins and drifting out across the hall, pale and low.
+        for (const [k, { x, y }] of lairCells.entries()) {
+          if (inFog(x, y)) continue;
+          const [cx, cy] = [(x + 0.5 + ((k % 3) - 1) * 0.6) * T, (y + 0.8) * T];
+          const mist = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 2.6);
+          mist.addColorStop(0, "rgba(200, 205, 225, 0.26)");
+          mist.addColorStop(1, "rgba(200, 205, 225, 0)");
+          ctx.fillStyle = mist;
+          ctx.fillRect(cx - T * 2.7, cy - T * 2.7, T * 5.4, T * 5.4);
+        }
+      }
       if (lairKind === "sanctum" && lairCells.length >= 4) {
         // The circle the ward stones stand on, scored into the floor and faintly lit.
         const mx = lairCells.reduce((n, c) => n + c.x, 0) / lairCells.length;
@@ -1280,35 +1312,128 @@ export function DungeonMapView({
         ctx.stroke();
         ctx.restore();
       }
-      if (lairKind === "breach") {
-        // The rift: one crack joined cell to cell, black with fire in it, a glow round it.
-        const centre = (c: { x: number; y: number }) => [(c.x + 0.5) * T, (c.y + 0.5) * T] as const;
-        const joins: Array<[readonly [number, number], readonly [number, number]]> = [];
-        for (const c of lairCells)
-          for (const [dx, dy] of [
-            [1, 0],
-            [0, 1],
-            [1, 1],
-            [1, -1],
-          ] as const)
-            if (hasF(c.x + dx, c.y + dy)) joins.push([centre(c), centre({ x: c.x + dx, y: c.y + dy })]);
+      if (lairKind === "breach" && lairCells.length >= 2) {
+        // The rift: one jagged fissure down the middle of its cells, black with fire in it, a glow round it,
+        // wide in its middle and closing at its ends (lair panel 1: a cell-wide seam; its re-render: joining
+        // every cell to its neighbours drew a lattice).
+        const xs = lairCells.map((c) => c.x);
+        const ys = lairCells.map((c) => c.y);
+        const long = Math.max(...xs) - Math.min(...xs) >= Math.max(...ys) - Math.min(...ys);
+        const steps = new Map<number, number[]>();
+        for (const c of lairCells) {
+          const k = long ? c.x : c.y;
+          steps.set(k, [...(steps.get(k) ?? []), long ? c.y : c.x]);
+        }
+        const line = [...steps.entries()]
+          .sort((p, q) => p[0] - q[0])
+          .map(([k, across], i) => {
+            const mid = across.reduce((n, a) => n + a, 0) / across.length + 0.5;
+            const jag = ((hash(k, i) % 7) - 3) / 10;
+            return long ? ([(k + 0.5) * T, (mid + jag) * T] as const) : ([(mid + jag) * T, (k + 0.5) * T] as const);
+          });
         ctx.save();
         ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         for (const [width, style] of [
-          [12, "rgba(255, 80, 20, 0.18)"],
-          [6, "#140604"],
-          [3, "#ff5a14"],
-          [1, "#ffd27a"],
+          [30, "rgba(255, 80, 20, 0.14)"],
+          [18, "#2a0e06"],
+          [12, "#140604"],
+          [5, "#ff5a14"],
+          [2, "#ffd27a"],
         ] as const) {
-          ctx.lineWidth = width;
           ctx.strokeStyle = style;
-          ctx.beginPath();
-          for (const [a, b] of joins) {
-            ctx.moveTo(...a);
-            ctx.lineTo(...b);
+          // Each stretch narrows toward the rift's ends.
+          for (let i = 1; i < line.length; i++) {
+            const t = Math.min(i, line.length - i) / Math.max(1, line.length / 2);
+            ctx.lineWidth = width * (0.45 + 0.55 * Math.min(1, t * 1.6));
+            ctx.beginPath();
+            ctx.moveTo(...line[i - 1]!);
+            ctx.lineTo(...line[i]!);
+            ctx.stroke();
           }
-          ctx.stroke();
         }
+        ctx.restore();
+      }
+      // A heap, a nest or a crust drawn as one rounded mound (lair panel 1 and its re-render: cell squares read
+      // as a slab): overlapping discs, a dark rim, the body, then lighter where the mass is deepest. Stray cells
+      // at its fringe would stand as lone bumps, so a cell needs `least` neighbours in it to be part of it.
+      const shownLair = lairCells.filter(({ x, y }) => !inFog(x, y));
+      const depth = (x: number, y: number) =>
+        [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+          [1, 1],
+          [-1, -1],
+          [1, -1],
+          [-1, 1],
+        ].filter(([dx, dy]) => hasF(x + dx!, y + dy!)).length;
+      const mound = (least: number, shades: readonly [string, string, string, string, string]) => {
+        const body = shownLair.filter(({ x, y }) => depth(x, y) >= least);
+        const disc = (r: number, dx: number, dy: number, only: number, jitter: boolean) => {
+          ctx.beginPath();
+          for (const { x, y } of body) {
+            if (depth(x, y) < only) continue;
+            const j = jitter ? (hash(x, y) % 4) / 25 : 0;
+            const [cx, cy] = [(x + 0.5) * T + dx, (y + 0.5) * T + dy];
+            ctx.moveTo(cx + (r + j) * T, cy);
+            ctx.arc(cx, cy, (r + j) * T, 0, Math.PI * 2);
+          }
+        };
+        for (const [r, fill, only, dx, dy, jitter] of [
+          [0.8, "rgba(8, 5, 2, 0.55)", 0, 1, 3, true],
+          [0.76, shades[0], 0, 0, 0, true],
+          [0.68, shades[1], 0, 0, 0, true],
+          [0.74, shades[2], 5, 0, -1, false],
+          [0.7, shades[3], 7, 0, -2, false],
+          [0.62, shades[4], 8, -1, -3, false],
+        ] as const) {
+          ctx.fillStyle = fill;
+          disc(r, dx, dy, only, jitter);
+          ctx.fill();
+        }
+        // The whole mound's outline, for a texture clipped to it.
+        disc(0.68, 0, 0, 0, true);
+      };
+      if (lairKind === "hoard" && shownLair.length) mound(3, ["#5e3f0c", "#a27418", "#bf8f26", "#d3a836", "#e2bc4c"]);
+      if (lairKind === "den" && shownLair.length)
+        // The nest: a matted heap of hide, straw and old bone where the beast sleeps.
+        mound(4, ["#3a2c20", "#5c4632", "#6e563c", "#7c6448", "#8a7356"]);
+      if (lairKind === "hive" && shownLair.length) {
+        // The comb: a waxy crust over the walls, its six-sided cells pressed into it on one grid so they run on
+        // unbroken, a few capped pale with brood.
+        mound(2, ["#4e3008", "#8a5a12", "#a46e18", "#b98222", "#c8922c"]);
+        ctx.save();
+        ctx.clip();
+        const hx = T * 0.36;
+        const hh = hx * Math.sqrt(3);
+        const [x0, x1] = [Math.min(...shownLair.map((c) => c.x)) - 1, Math.max(...shownLair.map((c) => c.x)) + 2];
+        const [y0, y1] = [Math.min(...shownLair.map((c) => c.y)) - 1, Math.max(...shownLair.map((c) => c.y)) + 2];
+        ctx.lineWidth = 1;
+        for (let col = Math.floor((x0 * T) / (hx * 1.5)); col * hx * 1.5 < x1 * T; col++)
+          for (let row = Math.floor((y0 * T) / hh); row * hh < y1 * T; row++) {
+            const cx = col * hx * 1.5;
+            const cy = row * hh + (col % 2 ? hh / 2 : 0);
+            ctx.beginPath();
+            for (let k = 0; k < 6; k++) {
+              const ang = (Math.PI / 3) * k;
+              const [px, py] = [cx + Math.cos(ang) * (hx - 0.6), cy + Math.sin(ang) * (hx - 0.6)];
+              if (k) ctx.lineTo(px, py);
+              else ctx.moveTo(px, py);
+            }
+            ctx.closePath();
+            const h = hash(col + 7, row + 3);
+            if (h % 9 === 0) {
+              ctx.fillStyle = "#ecdcaa";
+              ctx.fill();
+            } else if (h % 4 === 0) {
+              ctx.fillStyle = "rgba(60, 30, 4, 0.45)";
+              ctx.fill();
+            }
+            ctx.strokeStyle = "rgba(58, 32, 4, 0.75)";
+            ctx.stroke();
+          }
         ctx.restore();
       }
       for (const { x, y } of lairCells) {
@@ -1318,8 +1443,7 @@ export function DungeonMapView({
         if (lairKind === "hoard") {
           // One heap of coin: rimmed where it meets the floor, brighter at its crown, coins glinting over it.
           const crown = hasF(x - 1, y) && hasF(x + 1, y) && hasF(x, y - 1) && hasF(x, y + 1);
-          mass(x, y, crown ? "#c99a2c" : "#a97a1e", "#6a4810", 3);
-          for (let n = 0; n < 7; n++) {
+          for (let n = 0; n < 4; n++) {
             const h = hash(x * 7 + n, y * 13 - n);
             const cx = 3 + (h % (T - 6));
             const cy = 3 + ((h >> 5) % (T - 6));
@@ -1376,47 +1500,52 @@ export function DungeonMapView({
           ctx.fillStyle = "rgba(70, 48, 28, 0.75)";
           ctx.fillRect(ox + 1, oy + 13, 3, 2);
           ctx.fillRect(ox + 12, oy + 14, 3, 1);
+          // A candle stand at its head, lit.
+          const side = v % 2 ? T - 3 : 1;
+          ctx.fillStyle = "#2a2420";
+          ctx.fillRect(ox + side, oy + 4, 2, 7);
+          ctx.fillStyle = "#e8e0c8";
+          ctx.fillRect(ox + side, oy + 2, 2, 2);
+          ctx.fillStyle = "#ffcf5a";
+          ctx.fillRect(ox + side, oy, 2, 2);
         } else if (lairKind === "den") {
-          // Gnawed bones: two or three lying askew, a skull now and then, on a dark stain.
-          ctx.fillStyle = "rgba(40, 20, 10, 0.35)";
-          ctx.fillRect(ox + 1, oy + 2, T - 2, T - 3);
+          // Gnawed bones: one or two lying askew (a knuckle at each end), a skull now and then.
           const bone = (x0: number, y0: number, dx: number, dy: number, len: number) => {
+            const [ex, ey] = [x0 + dx * len, y0 + dy * len];
+            const [px, py] = dy === 0 ? [0, 1] : dx === 0 ? [1, 0] : [1, 0];
+            const knobs = [
+              [x0 - px, y0 - py],
+              [x0 + px, y0 + py],
+              [ex - px, ey - py],
+              [ex + px, ey + py],
+            ];
             ctx.fillStyle = "rgba(10, 8, 6, 0.6)";
             for (let i = 0; i <= len; i++) ctx.fillRect(ox + x0 + dx * i + 1, oy + y0 + dy * i + 1, 2, 2);
-            ctx.fillStyle = "#e4d8bc";
+            for (const [kx, ky] of knobs) ctx.fillRect(ox + kx! + 1, oy + ky! + 1, 2, 2);
+            ctx.fillStyle = "#d8ccb0";
             for (let i = 0; i <= len; i++) ctx.fillRect(ox + x0 + dx * i, oy + y0 + dy * i, 2, 2);
-            ctx.fillRect(ox + x0 - 1, oy + y0, 2, 2);
-            ctx.fillRect(ox + x0 + dx * len + 1, oy + y0 + dy * len, 2, 2);
+            ctx.fillStyle = "#ece2c8";
+            for (const [kx, ky] of knobs) ctx.fillRect(ox + kx!, oy + ky!, 2, 2);
           };
           const turn = v % 4;
-          bone(2, 3 + (turn % 2), 1, turn < 2 ? 1 : 0, 6);
-          bone(8, 11 - (turn % 3), 1, turn === 3 ? -1 : 0, 4);
-          if (v % 4 === 0) {
+          bone(3, 4 + (turn % 3) * 2, 1, turn === 1 ? 1 : turn === 2 ? -1 : 0, 7);
+          if (v % 3 === 0) bone(5 + (turn % 2) * 4, 3, 0, 1, 6);
+          if (v % 5 === 0) {
+            ctx.fillStyle = "rgba(10, 8, 6, 0.6)";
+            ctx.fillRect(ox + 10, oy + 9, 5, 5);
             ctx.fillStyle = "#ece2c8";
-            ctx.fillRect(ox + 9, oy + 3, 5, 4);
-            ctx.fillRect(ox + 10, oy + 7, 3, 1);
+            ctx.fillRect(ox + 9, oy + 8, 5, 4);
+            ctx.fillRect(ox + 10, oy + 12, 3, 1);
             ctx.fillStyle = "#2a2218";
-            ctx.fillRect(ox + 10, oy + 4, 1, 1);
-            ctx.fillRect(ox + 12, oy + 4, 1, 1);
+            ctx.fillRect(ox + 10, oy + 9, 1, 1);
+            ctx.fillRect(ox + 12, oy + 9, 1, 1);
           }
         } else if (lairKind === "drowned") {
           // Deep water: darker than the wading water, its surface still, a pale glint now and then.
-          ctx.fillStyle = "rgba(4, 18, 30, 0.5)";
-          ctx.fillRect(ox, oy, T, T);
           if (v % 3 === 0) {
             ctx.fillStyle = "rgba(140, 200, 220, 0.3)";
             ctx.fillRect(ox + 3 + (v % 6), oy + 6 + (v % 5), 5, 1);
           }
-        } else if (lairKind === "hive") {
-          // Comb: one crust of amber resin along the wall, its cells laid on the map's own grid so they run on
-          // from cell to cell, a few of them pale with brood.
-          mass(x, y, "#9a6a18", "#4e3008", 2);
-          for (let py = oy; py < oy + T; py += 4)
-            for (let px = ox + ((py / 4) % 2) * 2; px < ox + T; px += 4) {
-              const h = hash(px, py);
-              ctx.fillStyle = h % 7 === 0 ? "#efe2b0" : "#4a2a06";
-              if (px + 3 <= ox + T && py + 3 <= oy + T) ctx.fillRect(px + 1, py + 1, 2, 2);
-            }
         }
       }
       const stony = kept?.site?.template === "crypt" || (kept?.site?.levels[kept.site.level]?.depth ?? 0) < 0;

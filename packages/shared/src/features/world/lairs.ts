@@ -6,7 +6,7 @@
 // dangerous enough for a boss (band 5 and up); elsewhere it is a cold lair, its maker long gone. The story
 // can make one with `[site: lair=<kind>]`. Pure and seeded.
 // ──────────────────────────────────────────────
-import { marinaraRandom } from "../marinara-classes.js";
+import { marinaraRandom, type MarinaraArchetype } from "../marinara-classes.js";
 import type { MarinaraBestiarySetting } from "../marinara-bestiary.js";
 import { registerMarinaraEnemySkills, type MarinaraEffect } from "../marinara-combat.js";
 
@@ -235,7 +235,7 @@ export function dungeonLairFeature(input: {
         (p, q) => fromDoor(q) - fromDoor(p) || fromMid(p) - fromMid(q),
       );
       const heart = middle[Math.floor(random() * Math.min(3, middle.length))]!;
-      return near(heart, Math.max(4, Math.round(cells.length * 0.22))).filter((c) => !input.walls(c) || random() < 0.3);
+      return near(heart, Math.max(4, Math.round(cells.length * 0.3))).filter((c) => !input.walls(c) || random() < 0.3);
     }
     case "sanctum": {
       // A ring, every other cell a stone, round the middle.
@@ -252,9 +252,15 @@ export function dungeonLairFeature(input: {
       }
       return out;
     }
-    case "den":
-      // Bones heaped by the walls and strewn over the floor.
-      return cells.filter((c) => (input.walls(c) ? random() < 0.35 : random() < 0.07) && fromDoor(c) > 1);
+    case "den": {
+      // Bones heaped by the walls and strewn over the floor, and its nest of them, far from the doors (lair
+      // panel 1: a few strewn bones read as any cave).
+      const far = [...cells].filter((c) => !input.walls(c)).sort((p, q) => fromDoor(q) - fromDoor(p))[0];
+      const nest = new Set(far !== undefined ? near(far, Math.max(4, Math.round(cells.length * 0.14))) : []);
+      return cells.filter(
+        (c) => nest.has(c) || ((input.walls(c) ? random() < 0.4 : random() < 0.08) && fromDoor(c) > 1),
+      );
+    }
     case "breach": {
       // A crack across the long way of the chamber, wandering a cell either side of the middle line.
       const long = spanX >= spanY;
@@ -266,8 +272,11 @@ export function dungeonLairFeature(input: {
       for (const step of steps) {
         if (random() < 0.35) drift += random() < 0.5 ? -1 : 1;
         drift = Math.max(-1, Math.min(1, drift));
-        const at = cells.find((c) => key(c) === step && Math.round(across(c)) === drift);
-        if (at !== undefined && fromDoor(at) > 1) out.push(at);
+        // Two cells wide where the floor allows (lair panel 1: one cell read as a seam, not a rift).
+        for (const off of [drift, drift + (drift > 0 ? -1 : 1)]) {
+          const at = cells.find((c) => key(c) === step && Math.round(across(c)) === off);
+          if (at !== undefined && fromDoor(at) > 1) out.push(at);
+        }
       }
       return out;
     }
@@ -279,19 +288,32 @@ export function dungeonLairFeature(input: {
           fromDoor(c) > 2 &&
           fromMid(c) < Math.max(1.5, Math.min(spanX, spanY) * 0.38 + random() * 0.6),
       );
-    case "hive":
-      // Comb in clumps on the walls.
+    case "hive": {
+      // Comb grown over the walls two cells deep, broken only where it thins (lair panel 1: clumps of one
+      // cell read as squares, not a hive).
+      const inSet = new Set(cells);
+      const byWall = (c: number) =>
+        input.walls(c) || [c - 1, c + 1, c - width, c + width].some((n) => inSet.has(n) && input.walls(n));
       return cells.filter(
-        (c) => input.walls(c) && fromDoor(c) > 1 && (Math.floor(xy(c)[0] / 2) + Math.floor(xy(c)[1] / 2)) % 3 !== 0,
+        (c) => byWall(c) && fromDoor(c) > 1 && (input.walls(c) || (Math.floor(xy(c)[0] / 3) + Math.floor(xy(c)[1] / 3)) % 4 !== 0),
       );
+    }
   }
 }
 
 // ── Lair actions in a Classic fight (owner 2026-11-18: MRPG combat is turn-based in its own instance, so the
 // lair's field is carried into it) ──
 
+/** What a lair action calls up in a Classic fight: fresh minions on its maker's side, at most `count` of
+ *  them standing at once (more than that and the action falls back to its effect). */
+export interface DungeonLairSummon {
+  name: string;
+  archetype: MarinaraArchetype;
+  count: number;
+}
+
 /** A lair action: what the lair does once a round, on its maker's side, while its maker stands. */
-type LairAction = MarinaraEffect & { label: string };
+type LairAction = MarinaraEffect & { label: string; summon?: DungeonLairSummon };
 
 const strike = (power: number, type: MarinaraEffect["type"], extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
   kind: "damage",
@@ -306,9 +328,10 @@ const strike = (power: number, type: MarinaraEffect["type"], extra: Partial<Mari
   ...extra,
 });
 
-/** Each kind's lair actions, in the order they come round, one a round (D&D's initiative count 20): the
- *  lair's field (`field`) as things that happen in a fight. Modest beside the maker's own blows: the lair
- *  is pressure and position, not a second boss. */
+/** Each kind's lair actions, one a round (D&D's initiative count 20), in a shuffled order that never
+ *  repeats the last one, each told a round ahead: the lair's field (`field`) as things that happen in a
+ *  fight. Modest beside the maker's own blows: the lair is pressure and position, not a second boss. No two
+ *  kinds share a set: each lair fights like itself (lair panel 1, 2026-11-18). */
 export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Record<string, LairAction>>>> = {
   hoard: {
     "lair-falling-stone": {
@@ -324,44 +347,55 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       duration: 2,
       ranged: true,
     },
+    // The heap gives way under one of them: buried to the waist in coin for a turn.
     "lair-sliding-gold": {
       label: "Sliding Gold",
       kind: "status",
-      target: "all-enemies",
-      status: "slow",
+      target: "enemy",
+      status: "stun",
       chance: 0.5,
-      duration: 2,
+      duration: 1,
       ranged: true,
     },
   },
   sanctum: {
     "lair-death-ward": {
       label: "Death Ward",
-      ...strike(1.5, "dark", { applies: { status: "wither", chance: 0.5, duration: 2, power: 0.04 } }),
+      ...strike(1, "dark", { applies: { status: "wither", chance: 0.4, duration: 2, power: 0.04 } }),
     },
+    // The circle closes on whoever stands in it: the front of the party, nearest the master.
     "lair-binding-circle": {
       label: "Binding Circle",
       kind: "status",
-      target: "enemy",
+      target: "front-row",
       status: "entangle",
+      chance: 0.45,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-dead-answer": {
+      label: "The Dead Answer",
+      summon: { name: "Risen Bones", archetype: "blade", count: 1 },
+      ...strike(1, "dark"),
+    },
+  },
+  haven: {
+    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.3, duration: 1 },
+    "lair-thralls-gaze": {
+      label: "Thrall's Gaze",
+      kind: "status",
+      target: "enemy",
+      status: "confuse",
       chance: 0.5,
       duration: 2,
       ranged: true,
     },
-    "lair-dead-answer": { label: "The Dead Answer", kind: "heal", target: "self", pctOfMax: 0.02 },
-  },
-  haven: {
-    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.3, duration: 1 },
-    "lair-living-shadow": {
-      label: "Living Shadow",
-      kind: "debuff",
-      target: "all-enemies",
-      stat: "skill",
-      pct: -0.2,
-      duration: 2,
-      ranged: true,
+    // The chamber drinks for its master: it scales with what the maker hits with (a courtier is all speed
+    // and blade, no spellcraft; lair sim 8: as a spell it hardly scratched).
+    "lair-blood-tithe": {
+      label: "Blood Tithe",
+      ...strike(1, "dark", { scales: "strength", damage: "physical", drain: 0.5 }),
     },
-    "lair-blood-tithe": { label: "Blood Tithe", ...strike(1.5, "dark", { drain: 0.5 }) },
   },
   den: {
     "lair-shifting-bones": {
@@ -407,7 +441,8 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     "lair-something-comes": {
       label: "Something Comes Through",
-      ...strike(2.5, "fire", { areaPct: 0.3 }),
+      summon: { name: "Rift-Spawn", archetype: "blade", count: 1 },
+      ...strike(2, "fire", { areaPct: 0.3 }),
     },
   },
   drowned: {
@@ -424,7 +459,15 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       duration: 1,
       ranged: true,
     },
-    "lair-murk": { label: "Murk", kind: "buff", target: "self", stat: "evasion", pct: 0.3, duration: 1 },
+    "lair-rising-water": {
+      label: "Rising Water",
+      kind: "debuff",
+      target: "all-enemies",
+      stat: "speed",
+      pct: -0.2,
+      duration: 2,
+      ranged: true,
+    },
   },
   hive: {
     "lair-swarm": {
@@ -446,6 +489,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     "lair-brood-call": {
       label: "The Brood Answers",
+      summon: { name: "Brood Stinger", archetype: "scout", count: 2 },
       kind: "buff",
       target: "self",
       stat: "damage",
@@ -456,13 +500,17 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
 };
 
 registerMarinaraEnemySkills(
-  Object.fromEntries(Object.values(DUNGEON_LAIR_ACTIONS).flatMap((actions) => Object.entries(actions))),
+  Object.fromEntries(
+    Object.values(DUNGEON_LAIR_ACTIONS).flatMap((actions) =>
+      Object.entries(actions).map(([id, { summon: _summon, ...action }]) => [id, action]),
+    ),
+  ),
 );
 
-/** The lair action a lair takes in a round (from 1): its kind's actions in turn. */
-export function dungeonLairActionFor(kind: DungeonLairKind, round: number): string {
-  const ids = Object.keys(DUNGEON_LAIR_ACTIONS[kind]);
-  return ids[(Math.max(1, round) - 1) % ids.length]!;
+/** The lair action that comes next: any of its kind's actions but the one just taken, picked by `random`. */
+export function dungeonLairActionFor(kind: DungeonLairKind, last: string | undefined, random: () => number): string {
+  const ids = Object.keys(DUNGEON_LAIR_ACTIONS[kind]).filter((id) => id !== last);
+  return ids[Math.min(ids.length - 1, Math.floor(random() * ids.length))]!;
 }
 
 /** The board a fight in a lair's great chamber is laid out as (Tactical): the cavern, the vault, the hall. */
@@ -480,5 +528,5 @@ export const DUNGEON_LAIR_BOARD: Readonly<Record<DungeonLairKind, string>> = {
 export function dungeonLairFightText(kind: DungeonLairKind): string {
   const spec = DUNGEON_LAIRS[kind];
   const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]).map((action) => action.label);
-  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (${actions.join(", ")}); narrate those as the chamber turning on the party, and never add other lair effects.`;
+  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.join(", ")}); narrate those as the chamber turning on the party (anything it calls up comes out of the chamber itself), and never add other lair effects.`;
 }

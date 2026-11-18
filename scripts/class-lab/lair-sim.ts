@@ -3,7 +3,8 @@
  * chamber as a dungeon's heart sets it, against the reference parties at its level, with the lair acting
  * once a round and without, through the combat director with the Engine's AI on both sides (reasons log on).
  *
- *   tsx scripts/class-lab/lair-sim.ts [fightsPerParty]
+ *   tsx scripts/class-lab/lair-sim.ts [fightsPerParty] [kind]
+ *   LAIR_DROP=<action id> leaves one lair action out (what each action adds).
  */
 import { marinaraEnemySpec, marinaraEnemyFamily } from "../../packages/shared/src/features/marinara-bestiary.js";
 import type { MarinaraEvent } from "../../packages/shared/src/features/marinara-combat.js";
@@ -16,8 +17,16 @@ import { enemyFighter, playFight, referenceParty, REFERENCE_PARTIES, seedOf, REA
 
 const fpp = Number(process.argv[2] ?? "2");
 const LEVELS = [6, 10, 16];
+const only = process.argv[3];
+// The director reads the built package's table: drop from that one.
+if (process.env.LAIR_DROP) {
+  const built = (await import("@marinara-engine/shared")) as unknown as {
+    DUNGEON_LAIR_ACTIONS: Record<string, Record<string, unknown>>;
+  };
+  for (const actions of Object.values(built.DUNGEON_LAIR_ACTIONS)) delete actions[process.env.LAIR_DROP];
+}
 console.log("reasons log:", REASON_LOG);
-for (const kind of DUNGEON_LAIR_KINDS) {
+for (const kind of DUNGEON_LAIR_KINDS.filter((k) => !only || k === only)) {
   const lairIds = new Set(Object.keys(DUNGEON_LAIR_ACTIONS[kind]).map((id) => `enemy:${id}`));
   for (const level of LEVELS) {
     const maker = DUNGEON_LAIRS[kind].makers.find((id) => {

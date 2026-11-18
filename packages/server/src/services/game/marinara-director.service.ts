@@ -11,6 +11,9 @@
 
 import { logRateLimited } from "../../lib/log-rate-limit.js";
 import {
+  buildMarinaraEnemy,
+  MARINARA_GENERIC_FOE_SKILL,
+  MARINARA_ROUND_TIME,
   MARINARA_TAME,
   MARINARA_SKILL_EFFECTS,
   MARINARA_ENEMY_SKILLS,
@@ -100,7 +103,7 @@ export interface MarinaraDirectorState {
   eventTap?: MarinaraEvent[];
   /** A fight in a creature's lair (owner 2026-11-18): the lair acts once a round, at the round's start, on its
    *  maker's side while its maker stands; `round` is the last round it acted in. */
-  lair?: { kind: DungeonLairKind; makerId: string; round: number };
+  lair?: { kind: DungeonLairKind; makerId: string; round: number; next?: string; summoned?: number };
 }
 
 /** How many AI reasons a fight keeps. */
@@ -662,7 +665,7 @@ export function nextMarinaraTurn(
     const actor = nextMarinaraActor(state.fighters);
     if (!actor) return { round: roundOf(state) };
     const round = marinaraRoundAt(actor.next);
-    if (lairActs(state, seed, tactical, log, round)) continue;
+    if (lairActs(state, seed, tactical, log, round, actor.next)) continue;
     const ctx = context(state, seed, tactical);
     const start = beginMarinaraTurn(actor, state.fighters, ctx);
     record(state, ctx, log);
@@ -687,27 +690,61 @@ export function lairActs(
   tactical: boolean,
   log: MarinaraLog,
   round: number,
+  now = 0,
 ): boolean {
   const lair = state.lair;
   if (!lair || round <= lair.round) return false;
   lair.round = round;
   const maker = marinaraFighter(state, lair.makerId);
   if (!maker || maker.hp <= 0) return false;
-  const id = dungeonLairActionFor(lair.kind, round);
-  const action = DUNGEON_LAIR_ACTIONS[lair.kind][id]!;
+  // A young lair (its maker under level 10) stirs every other round, an old one every round (lair sim 8-10:
+  // at level 6 a lair acting every round took a deathless sorcerer's fights from a sure win to a coin flip).
+  if (maker.level < 10 && round % 2 === 0) return false;
   const ctx = context(state, seed, tactical);
   const foes = living(state.fighters).filter((f) => f.side !== maker.side);
   if (!foes.length) return false;
+  const id = lair.next ?? dungeonLairActionFor(lair.kind, undefined, ctx.random);
+  const action = DUNGEON_LAIR_ACTIONS[lair.kind][id]!;
   const target = foes[Math.floor(ctx.random() * foes.length)]!;
   log(`The lair acts: ${action.label}.`, "marinara:lair", maker.id);
-  // On a board the chamber itself acts: an area lands on every foe wherever they stand.
-  releaseMarinaraCharge(
-    maker,
-    { skillId: `enemy:${id}`, targetId: action.target === "self" ? maker.id : target.id },
-    state.fighters,
-    ctx,
-    tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
-  );
+  // What it calls up joins its maker's side (Classic only: a board has no free square to put it on).
+  const summon = action.summon;
+  const standing = summon
+    ? living(state.fighters).filter((f) => f.lairSummon && f.side === maker.side).length
+    : 0;
+  // At most `count` standing at once and twice that in a fight: the lair calls up a few, not an endless
+  // stream the party must cut through to reach the maker (lair sim 7: re-raised bones took every blow).
+  const room = summon ? Math.min(summon.count - standing, summon.count * 2 - (lair.summoned ?? 0)) : 0;
+  if (summon && !tactical && room > 0) {
+    lair.summoned = (lair.summoned ?? 0) + room;
+    for (let n = 0; n < room; n++) {
+      const fighter = buildMarinaraEnemy({
+        id: `lair-${round}-${n}-${state.fighters.length}`,
+        name: summon.name,
+        archetype: summon.archetype,
+        level: Math.max(1, maker.level - 4),
+        tier: "minion",
+        enemySkills: [MARINARA_GENERIC_FOE_SKILL[summon.archetype]],
+      });
+      fighter.side = maker.side;
+      fighter.lairSummon = true;
+      // It comes out of the chamber and acts in the round after.
+      fighter.next = now + MARINARA_ROUND_TIME * (0.5 + ctx.random() * 0.5);
+      state.fighters.push(fighter);
+      log(`${summon.name} comes out of the chamber.`, "marinara:lair", fighter.id);
+    }
+  } else {
+    // On a board the chamber itself acts: an area lands on every foe wherever they stand.
+    releaseMarinaraCharge(
+      maker,
+      { skillId: `enemy:${id}`, targetId: action.target === "self" ? maker.id : target.id },
+      state.fighters,
+      ctx,
+      tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
+    );
+  }
+  lair.next = dungeonLairActionFor(lair.kind, id, ctx.random);
+  log(`The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}.`, "marinara:lair", maker.id);
   record(state, ctx, log);
   return true;
 }

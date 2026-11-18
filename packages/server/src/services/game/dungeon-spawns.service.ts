@@ -389,7 +389,17 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       area.role === "heart" && door
         ? { x: Math.round((door.x + centre.x) / 2), y: Math.round((door.y + centre.y) / 2) }
         : undefined;
-    const middle = here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre);
+    // A lair's maker keeps its own feature: on its hoard, among its coffins, at the rift's lip, at the pool's
+    // edge (lair panel 1, 2026-11-18: makers stood in another room or far from what makes the lair).
+    const feature = area.role === "heart" ? (here.map.lairFeature ?? []).filter(({ x, y }) => inRoom(x, y)) : [];
+    const heap = feature.length
+      ? {
+          x: Math.round(feature.reduce((sum, c) => sum + c.x, 0) / feature.length),
+          y: Math.round(feature.reduce((sum, c) => sum + c.y, 0) / feature.length),
+        }
+      : undefined;
+    const middle =
+      heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&

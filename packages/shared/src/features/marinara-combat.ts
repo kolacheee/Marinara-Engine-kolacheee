@@ -819,6 +819,8 @@ export interface MarinaraFighter {
   id: string;
   name: string;
   side: "party" | "enemy";
+  /** Called up mid-fight by a creature's lair (a lair action's summon). */
+  lairSummon?: true;
   row: "front" | "back";
   archetype?: MarinaraArchetype;
   stats: MarinaraStats;

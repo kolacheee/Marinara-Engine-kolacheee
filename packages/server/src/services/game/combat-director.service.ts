@@ -68,6 +68,7 @@ import {
   mirrorMarinaraUnits,
   nextMarinaraTurn,
   lairActs,
+  marinaraCombatant,
   performMarinaraAction,
   type MarinaraDirectorState,
 } from "./marinara-director.service.js";
@@ -748,6 +749,15 @@ function sync(s: CombatDirectorState) {
       // A Channeler-tree caster the AI runs channels the element each foe fears; one the player runs, by hand.
       if (fighter && marinaraCanChannel(fighter)) fighter.channelManual = manual(s, u as Unit);
     }
+    // What a lair calls up mid-fight joins the foes' units (Classic only; a board takes no summons).
+    if (!s.tactical)
+      for (const fighter of s.marinara.fighters)
+        if (fighter.lairSummon && fighter.hp > 0 && fighter.side === "enemy" && !get(s, fighter.id)) {
+          const u = marinaraCombatant(fighter);
+          u.tactics = assignCombatTactics(u, s.seed);
+          u.skillCooldowns = {};
+          s.enemies.push(u);
+        }
     mirrorMarinaraUnits(
       s.marinara,
       s.tactical ? (s.tactical.units as unknown as Combatant[]) : [...s.party, ...s.enemies],

@@ -1224,8 +1224,13 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
   const at = (x: number, y: number) => y * made.width + x;
   const cells = dungeonRoomCells(made.rooms[lairRoom]!).map(({ x, y }) => at(x, y));
   const inRoom = new Set(cells);
+  // The great chamber is the maker's alone: the cave's odds and ends (crates, barrels, a lamp) are cleared
+  // from it, the way in and out kept (lair panel 1: an ordinary cave room with a heap in it).
+  const keep = new Set([at(made.entrance.x, made.entrance.y), ...(kept.down ? [at(kept.down.x, kept.down.y)] : [])]);
+  const cleared = new Set(cells.filter((c) => made.props[c] !== -1 && made.props[c] !== DUNGEON_EXIT_PROP && !keep.has(c)));
+  const props = cleared.size ? [...kept.props].map((char, i) => (cleared.has(i) ? "-" : char)).join("") : kept.props;
   const open = cells.filter(
-    (c) => made.ground[c] === "floor" && made.props[c] === -1 && c !== at(made.entrance.x, made.entrance.y),
+    (c) => made.ground[c] === "floor" && (made.props[c] === -1 || cleared.has(c)) && !keep.has(c),
   );
   // The doors: open cells just outside the room that lead into it.
   const doors: number[] = [];
@@ -1265,6 +1270,7 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
   return {
     ...kept,
     ground,
+    props,
     lairRoom,
     ...(feature.length
       ? { lairFeature: feature.map((c) => ({ x: c % made.width, y: Math.floor(c / made.width) })) }
