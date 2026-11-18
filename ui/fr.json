@@ -11451,6 +11451,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "Configuration de {{value1}}",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veo accepte 4, 6 ou 8 secondes. Les références de boucle de personnage utilisent l'avatar comme première et dernière image et durent 8 secondes.",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "Valeurs vidéo par défaut",
+  "ui.decision.visionRequired": "Nécessite un modèle de décision qui lit les images. Choisis Liquid d1, Valen ou Winnow dans Connexions › Sur cet appareil › Modèle intégré (décisions).",
   "ui.decision.visionRequiredLabel": "Pourquoi cette option est indisponible",
   "ui.diagnostics.accessWarningBanner.review": "Examiner l'accès",
   "ui.diagnostics.accessWarningBanner.title": "D'autres personnes peuvent ouvrir Marinara sans mot de passe",
