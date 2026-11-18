@@ -64,7 +64,7 @@ export const DUNGEON_LAIRS: Readonly<Record<DungeonLairKind, DungeonLairSpec>> =
     region:
       "Round it the land is wrong: graves found opened, a cold that does not lift at noon, animals that will not cross the old road, dreams of a voice reading names.",
     field:
-      "Its ward stones pulse with death, its circle binds whoever stands in it, and the dead in the walls answer it: the sanctum can drain the living, hold a fighter fast or raise the fallen.",
+      "Its ward stones pulse with death, its circle binds whoever stands in it, and the dead in the walls answer it: the sanctum can drain the living, hold a fighter fast or feed its master from the dead.",
   },
   haven: {
     kind: "haven",
@@ -75,7 +75,7 @@ export const DUNGEON_LAIRS: Readonly<Record<DungeonLairKind, DungeonLairSpec>> =
     region:
       "Near it people go missing a few at a time, the pale ones who come back will not say where they were, rats and bats are bold, and nobody goes out after dark.",
     field:
-      "Mist pours along the floor, the shadows answer its master and its thralls know every door: the haven can hide its lord in mist, darken a corner or call its thralls from the walls.",
+      "Mist pours along the floor, the shadows answer its master and its thralls know every door: the haven can hide its lord in mist, set the shadows on the party or drink from the living for it.",
   },
   den: {
     kind: "den",
