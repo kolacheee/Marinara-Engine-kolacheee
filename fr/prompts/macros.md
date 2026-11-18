@@ -283,6 +283,7 @@ Une condition peut aussi interroger ton Decision model (modèle de décision) su
 - `sticky:3 cooldown:5` maintient un oui pendant trois tours, puis le met en pause pendant cinq. Voir [Sticky et cooldown](conditional-prompts.md#sticky-and-cooldown).
 - `until:"..."` ou `while:"..."` maintient un oui aussi longtemps qu'un second énoncé le permet. Voir [Until et while](conditional-prompts.md#until-and-while).
 - `every:3` n'interroge un énoncé que tous les trois tours. Voir [Vérifier tous les quelques tours](conditional-prompts.md#checking-every-few-turns).
+- `pictures:1`, `clips:1` et `media_within:3` permettent à un modèle intégré capable de les lire d'examiner les images et les clips les plus récents du chat, et d'attendre qu'il y en ait un. Voir [Images et clips](conditional-prompts.md#pictures-and-clips).
 - `priority:high` ou `priority:low` choisit les énoncés qui tiennent dans un plan de prompt. Voir [Priorité](conditional-prompts.md#priority) et [Limites et coût](conditional-prompts.md#limits-and-cost).
 
 ## Erreurs fréquentes

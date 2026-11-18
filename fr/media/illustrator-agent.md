@@ -123,6 +123,19 @@ Illustrator peint aussi des arrière-plans. Sur la carte Illustrator dans **Rég
 
 Les trois sont désactivés par défaut. Voir [Arrière-plans créés par Illustrator](scene-backgrounds.md).
 
+## Vérifier les images avec un modèle de décision
+
+Avec un [modèle de décision intégré capable de lire les images](../connections/decision-models.md#features-that-look-at-pictures) (Liquid d1, Valen ou Winnow), la carte Illustrator propose trois réglages supplémentaires. Tous sont désactivés par défaut et grisés avec un ⓘ en l'absence d'un tel modèle.
+
+- **Vérification des images** examine chaque nouvelle image, version météo et selfie, et vérifie que l'image montre ce qui a été demandé. Un selfie est aussi comparé à l'avatar du personnage. **En créer une autre si elle ne correspond pas** crée une nouvelle image après un échec. **Toujours en créer deux et garder la meilleure** crée deux images et garde la meilleure. Chaque image supplémentaire est une génération d'image de plus.
+- **Vérifier aussi** (sous **Vérification des images**) ajoute tes propres vérifications, une par ligne, jusqu'à 6, par exemple `Kaelen has short red hair`. Commence une ligne par `not:` pour quelque chose que l'image ne doit pas montrer, par exemple `not: The picture has writing or a watermark`.
+- **Ne pas créer d'image si la dernière montre déjà la scène** compare l'image la plus récente du chat avec ce qui va être dessiné et évite de refaire la même scène. Les images que tu demandes sont toujours créées.
+- **Réutiliser un arrière-plan de la bibliothèque qui ressemble au lieu** affiche un arrière-plan de la bibliothèque correspondant au nouveau lieu au lieu d'en créer un. Voir [Réutiliser les images que tu as déjà](scene-backgrounds.md#reusing-pictures-you-already-have).
+
+Dans un chat Conversation, **Vérification des images** se trouve sur la carte Illustrator pour les selfies.
+
+Une vérification qui ne peut pas s'exécuter compte comme réussie : l'image est donc conservée.
+
 ## Plusieurs personnages avec NovelAI
 
 Quand le modèle d'image de l'agent Illustrator est NovelAI avec un modèle V4, V4.5 ou V5, le modèle qui rédige le prompt ajoute une description de personnage pour chaque personnage visible. Chaque description contient l'apparence, l'expression, la pose et la position approximative du personnage dans l'image. Marinara compare les descriptions à la liste des personnages de la scène, écarte celles qu'il ne peut pas associer et envoie les autres à NovelAI comme prompts de personnage natifs, à côté du prompt principal. Cela évite que les cheveux, les vêtements et les autres traits se mélangent entre les personnages. Les images issues du bouton **Illustrate** et de la commande `[illustrate]` d'un personnage reçoivent les mêmes descriptions.

@@ -142,6 +142,8 @@ Une condition peut demander à ton modèle de décision ce qui se passe dans le 
 
 Avant de commencer : choisis un modèle de décision sous **Decision model** (modèle de décision) dans le panneau **Connections** (Connexions). [Modèles de décision](../connections/decision-models.md) explique ce que c'est et comment en choisir un. Pour décider si une entrée de lorebook entière s'active, utilise plutôt son champ [Decision](../lorebooks/entries.md#decision-activation).
 
+Il peut répondre par oui ou non (`decision:`) ou choisir une réponse parmi plusieurs (`decision_choice:`), et un modèle intégré capable de lire les images peut aussi examiner les images et les clips du chat. Pour les types de réponses et d'autres exemples, voir [Ce à quoi un modèle de décision peut répondre](../connections/decision-models.md#what-a-decision-model-can-answer).
+
 Quelques idées : décrire un nouveau lieu seulement si la scène a changé d'endroit, charger les règles de rythme du combat uniquement pendant un combat, retenir l'intensification dans un preset à progression lente, ou, dans un bloc de groupe, faire répondre directement le seul personnage interpellé.
 
 ### Oui ou non : `decision:`
@@ -254,6 +256,20 @@ Quand un plan de prompt contient plus d'énoncés que le budget **Decision state
 - Les énoncés au-delà de la limite valent non, en commençant par la priorité la plus basse, et Peek Prompt les liste.
 - Un énoncé écrit à plusieurs endroits utilise la priorité la plus haute.
 - Les énoncés propres au prompt (preset, fiches, persona, notes d'auteur) sont planifiés en premier. Les énoncés de lorebook utilisent les places restantes, quelle que soit leur priorité.
+
+### Images et clips
+
+Un modèle de décision intégré capable de lire les images (Liquid d1, Valen, Winnow) peut aussi examiner les images et les clips du chat. Il le fait uniquement si l'énoncé le demande : `pictures:N` envoie les N images les plus récentes (jusqu'à 3), et `clips:1` envoie le clip le plus récent (version complète de Valen uniquement). Sans ces modificateurs, seul le texte est envoyé.
+
+```text
+{{#if decision:"The picture shows the character at the beach" pictures:1}}...{{/if}}
+{{#if decision:"The clip ends somewhere new" clips:1 media_within:2}}...{{/if}}
+```
+
+- Les images sont les fichiers téléversés, les selfies de la galerie et les illustrations ; les clips sont les vidéos de scène générées. Leur taille est d'abord réduite.
+- Chaque image ou clip ralentit l'énoncé. Les détails du modèle indiquent le temps nécessaire sur ton ordinateur une fois qu'il y a fonctionné.
+- `media_within:N` ne pose l'énoncé que si l'un des N derniers messages contient une image (ou un clip, avec `clips:`). Aux autres tours, il vaut non et n'est pas posé.
+- Les énoncés qui demandent les mêmes images partagent une seule requête. Un modèle qui ne lit que le texte, ou une connexion Decision hébergée, n'en reçoit jamais.
 
 Tu peux combiner tous les modificateurs dans n'importe quel ordre : `decision:"..." priority:high sticky:3 cooldown:5 every:2`.
 

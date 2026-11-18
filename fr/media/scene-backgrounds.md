@@ -42,6 +42,8 @@ Avant de peindre un nouveau lieu, Illustrator cherche une image que tu as déjà
 
 La casse, les accents et "'s" ne comptent pas, et le nom le plus précis l'emporte sur un simple `bedroom.png`. Si une image convient, elle est affichée (avec la météo de l'histoire, si cette version existe) et rien n'est peint. Seul un lieu sans correspondance reçoit une nouvelle image.
 
+Si aucun nom ne correspond et que tu as activé **Réutiliser un arrière-plan de la bibliothèque qui ressemble au lieu** sur la carte Illustrator, un [modèle de décision capable de lire les images](../connections/decision-models.md#features-that-look-at-pictures) examine jusqu'à 4 images de la bibliothèque qui partagent un mot avec le lieu et affiche celle qui correspond. Une nouvelle image n'est créée que si aucune ne convient. Ce réglage est désactivé par défaut et grisé sans un tel modèle.
+
 Pour qu'un lieu conserve son image, donne au fichier le nom du lieu (`kitchen.png` pour "Kitchen"), ou ajoute-lui un tag d'au moins deux mots, comme `smith house kitchen` (voir [Ajouter un tag à un arrière-plan](../appearance/chat-backgrounds.md#tag-a-background)). Les tags d'un seul mot comme `kitchen` ou `night` sont ignorés ici, car ils décrivent généralement l'apparence d'une image.
 
 ## Versions météo des arrière-plans
