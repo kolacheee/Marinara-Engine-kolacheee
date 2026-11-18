@@ -103,7 +103,7 @@ Klipy korzystają z modelu wideo ustawionego w **Scene Videos** (wideo sceny), a
 - Nadal możesz animować obraz z galerii. Przy **Clips only** przycisk **Illustrate** przy wiadomości tworzy klip.
 - Swipe odpowiedzi, która dostała klip, liczy się jako nowa odpowiedź i może dostać własny klip. Wcześniejszy swipe zachowuje swój klip.
 
-**First frame**, w tej samej sekcji, ustala, od czego zaczyna się każdy klip w trybie Roleplay: klipy agenta Illustrator, komenda `/video` i przycisk **Video** (wideo) w galerii. Do wyboru jest nowy obraz agenta Illustrator, awatar lub sprite wymienionej postaci, obraz z awatarem jako zastępstwem albo brak obrazu. Wiadomości wideo w trybie Conversation korzystają z tego samego ustawienia.
+**First frame**, w tej samej sekcji, ustala, od czego zaczyna się każdy klip w trybie Roleplay: klipy agenta Illustrator, komenda `/video` i przycisk **Wideo** w galerii. Do wyboru jest nowy obraz agenta Illustrator, awatar lub sprite wymienionej postaci, obraz z awatarem jako zastępstwem albo brak obrazu. Wiadomości wideo w trybie Conversation korzystają z tego samego ustawienia.
 
 - **Clips only** z awatarem lub bez obrazu: żaden obraz nie jest rysowany. Klip powstaje ze sceny i ruchu opisanych przez agenta Illustrator.
 - **Pictures and clips**: obraz nadal się pokazuje, a tylko klip zaczyna się od awatara lub od niczego.
@@ -122,6 +122,19 @@ Illustrator maluje też tła. Na karcie agenta Illustrator w **Ustawienia czatu 
 - **Decision Model Checks** (sprawdzanie modelem decyzyjnym) zleca modelowi decyzyjnemu sprawdzanie każdej odpowiedzi pod kątem nowego miejsca lub pogody, żeby tła nie musiały czekać na interwał uruchamiania.
 
 Wszystkie trzy opcje są domyślnie wyłączone. Zobacz [Tła tworzone przez agenta Illustrator](scene-backgrounds.md).
+
+## Sprawdzanie obrazów modelem decyzyjnym
+
+Przy wbudowanym [modelu decyzyjnym odczytującym obrazy](../connections/decision-models.md#features-that-look-at-pictures) (Liquid d1, Valen lub Winnow) karta Illustrator oferuje jeszcze trzy ustawienia. Wszystkie są domyślnie wyłączone, a bez takiego modelu – wyszarzone z ikoną ⓘ.
+
+- **Sprawdzanie obrazów** ogląda każdy nowy obraz, wersję pogodową i selfie oraz sprawdza, czy przedstawia to, o co proszono. Selfie jest też porównywane z awatarem postaci. **Utwórz kolejny, jeśli nie pasuje** rysuje jeszcze raz po nietrafionym wyniku. **Zawsze twórz dwa i zachowuj lepszy** rysuje dwa obrazy i zachowuje lepszy. Każdy dodatkowy obraz to kolejne generowanie obrazu.
+- **Sprawdź też** (pod **Sprawdzanie obrazów**) dodaje twoje własne sprawdzenia, po jednym w wierszu, najwyżej 6, na przykład `Kaelen has short red hair`. Zacznij wiersz od `not:`, jeśli obraz nie może czegoś przedstawiać, na przykład `not: The picture has writing or a watermark`.
+- **Pomiń obraz, jeśli najnowszy już to przedstawia** porównuje najnowszy obraz z czatu z tym, co ma zostać narysowane, i pomija powtórkę. Obrazy, o które prosisz, powstają zawsze.
+- **Użyj ponownie tła z biblioteki, które wygląda jak to miejsce** pokazuje tło z biblioteki pasujące do nowego miejsca, zamiast je malować. Zobacz [Ponowne używanie posiadanych obrazów](scene-backgrounds.md#reusing-pictures-you-already-have).
+
+W czacie w trybie Conversation opcja **Sprawdzanie obrazów** znajduje się na karcie Illustrator i dotyczy selfie.
+
+Sprawdzenie, którego nie da się wykonać, liczy się jako zaliczone, więc obraz zostaje zachowany.
 
 ## Wiele postaci w usłudze NovelAI
 

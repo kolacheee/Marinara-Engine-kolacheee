@@ -283,6 +283,7 @@ Warunek może też zapytać twój model decyzyjny o scenę, na przykład `{{#if 
 - `sticky:3 cooldown:5` zachowuje odpowiedź tak przez trzy tury, a potem wstrzymuje ją na pięć. Zobacz [Sticky i cooldown](conditional-prompts.md#sticky-and-cooldown).
 - `until:"..."` lub `while:"..."` zachowuje odpowiedź tak tak długo, jak pozwala na to drugie stwierdzenie. Zobacz [Until i while](conditional-prompts.md#until-and-while).
 - `every:3` zadaje pytanie o stwierdzenie tylko co trzy tury. Zobacz [Sprawdzanie co kilka tur](conditional-prompts.md#checking-every-few-turns).
+- `pictures:1`, `clips:1` i `media_within:3` pozwalają wbudowanemu modelowi, który je odczytuje, oglądać najnowsze obrazy i klipy z czatu oraz czekać na ich pojawienie się. Zobacz [Obrazy i klipy](conditional-prompts.md#pictures-and-clips).
 - `priority:high` lub `priority:low` decyduje, które stwierdzenia zmieszczą się w planie promptu. Zobacz [Priorytet](conditional-prompts.md#priority) i [Limity i koszty](conditional-prompts.md#limits-and-cost).
 
 ## Częste błędy

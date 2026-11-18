@@ -17,7 +17,7 @@ Sprite'y widać na ekranie w trybie Roleplay Mode i Game Mode, ale nie w czatach
 2. Kliknij zakładkę **Obrazy**, a potem **Sprite'y** u jej góry.
 3. Na górze wybierz kategorię: **Facial Expressions**, **Full-body** albo **Clips**.
 
-Poniższe sekcje opisują kategorie **Facial Expressions** i **Full-body**. Kategoria **Clips** (klipy) należy do funkcji rozmów. Zobacz [Rozmowy audio i wideo w trybie Conversation](../conversation/calls.md).
+Poniższe sekcje opisują kategorie **Facial Expressions** i **Full-body**. Kategoria **Klipy** należy do funkcji rozmów. Zobacz [Rozmowy audio i wideo w trybie Conversation](../conversation/calls.md).
 
 <a id="upload-your-own-sprites"></a>
 
@@ -106,7 +106,8 @@ Zanim zaczniesz: dodaj połączenie do generowania obrazów. Do animowanych spri
 5. Wpisz **Appearance Description** (opis wyglądu). To pole jest wymagane.
 6. Opcjonalnie włącz **Transparent sprite background** (przezroczyste tło sprite'a). Marinara robi tło przezroczyste. Jeśli usługa tego nie potrafi, Marinara rysuje jednolite tło zielone, magentowe albo cyjanowe, które różni się od kolorów z pola **Appearance Description**, a potem je usuwa.
 7. Ustaw **Expression Count** (liczba wyrazów twarzy) albo, przy całych sylwetkach, **Pose Count** (liczba póz) i wybierz, które wyrazy twarzy albo pozy mają powstać.
-8. Kliknij **Generate** (generuj).
+8. Opcjonalnie, dla wyrazów twarzy: zaznacz **Oznacz twarze, które nie pasują do przypisanej miny**. [Model decyzyjny odczytujący obrazy](../connections/decision-models.md#features-that-look-at-pictures) ogląda każdą twarz po narysowaniu i oznacza te, które mogą nie oddawać swojego wyrazu, etykietą **Sprawdź**, żeby można było odznaczyć je albo narysować ponownie. Każda twarz zajmuje chwilę. Bez takiego modelu pole wyboru jest wyszarzone.
+9. Kliknij **Generate** (generuj).
 
 Gdy obrazy dotrą, każdy z nich możesz włączyć albo wyłączyć, zmienić mu nazwę i wykadrować. Potem zapisz zaznaczone obrazy w sprite'ach postaci. Jeśli dokładnie jeden zapisany sprite w tej kategorii ma wygenerowaną etykietę, zapis zastępuje jego obraz i zachowuje jego folder oraz uchwyt. Sprite, któremu zmieniono nazwę na inną niż ta etykieta, zostaje zachowany. Przy powtarzających się etykietach w różnych folderach zastąp właściwy sprite ręcznie.
 

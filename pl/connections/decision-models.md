@@ -1,10 +1,63 @@
 # Modele decyzyjne
 
-Model decyzyjny to mały model, który odpowiada aplikacji Marinara na pytania typu tak lub nie, na przykład "Does the latest message move the scene to a new place?". Korzystają z niego lorebooki, niestandardowi agenci, prompty i czaty grupowe. Jest opcjonalny. Bez niego czaty nadal działają, a każda funkcja korzysta z zachowania zastępczego opisanego w sekcji [Gdzie Marinara go używa](#where-marinara-uses-it).
+Model decyzyjny to mały model, który odpowiada aplikacji Marinara na krótkie pytania o twój czat, na przykład "Czy ostatnia wiadomość przenosi scenę w nowe miejsce?" albo "Jaki nastrój ma Kaelen: zły, smutny czy spokojny?". Niektóre potrafią też oglądać obrazy i klipy z czatu. Korzystają z niego lorebooki, niestandardowi agenci, prompty, czaty grupowe i Illustrator. Jest opcjonalny. Bez niego czaty nadal działają, a każda funkcja korzysta z zachowania zastępczego opisanego w sekcji [Gdzie Marinara go używa](#where-marinara-uses-it).
 
-Jego odpowiedzi sterują działaniem aplikacji Marinara i nigdy nie trafiają na czat. Model ocenia stwierdzenie liczbą od 0 do 1. Marinara porównuje tę liczbę z progiem i traktuje wynik jako tak lub nie. Model może też wybrać jedną odpowiedź z krótkiej listy, na przykład "angry", "sad" albo "none of these".
+Jego odpowiedzi sterują działaniem aplikacji Marinara i nigdy nie trafiają na czat. Rodzaje pytań i przykłady znajdziesz w sekcji [Na co może odpowiedzieć model decyzyjny](#what-a-decision-model-can-answer).
 
 Nasza rada: jeśli nie masz pewności, zostaw ustawienie **None** (brak). Jeśli chcesz korzystać z decyzji, użyj modelu wbudowanego, który być może już masz, albo modelu czatu na serwerze, który już uruchamiasz. Żadna z tych opcji nie kosztuje nic dodatkowo.
+
+## Na co może odpowiedzieć model decyzyjny
+
+Każda odpowiedź wraca jako liczba od 0 do 1: określa pewność modelu. Marinara zamienia tę liczbę w odpowiedź potrzebną danej funkcji.
+
+### Tak lub nie
+
+Model czyta stwierdzenie i określa, na ile prawdopodobne jest, że jest ono prawdziwe. Marinara porównuje to z [progiem](#thresholds): wynik równy progowi lub wyższy oznacza tak. To najczęstszy rodzaj, używany przez pytania aktywacyjne, pola **Decyzja** w lorebookach, `{{#if decision:"..."}}` i sprawdzenia agenta Illustrator.
+
+| Stwierdzenie | Co może przełączać |
+| --- | --- |
+| `In the latest message, the characters move to a different location` | Tracker aktualizuje lokalizację tylko w turach, w których się zmieniła. |
+| `In the latest message, a dragon is physically present` | Wpis lorebooka o smokach trafia do promptu. |
+| `{{user}} asked a question that {{char}} has not answered yet` | Wiersz promptu przypomina modelowi, żeby na nie odpowiedział. |
+| `The latest message describes a fight` | Agent walki uruchamia się tylko w tej turze. |
+
+### Jedna z kilku odpowiedzi
+
+Model wybiera najlepiej pasującą odpowiedź z krótkiej listy, którą napiszesz. Marinara pyta o każdą opcję i zachowuje tę z najwyższym wynikiem, więc dostajesz jedną odpowiedź, a nie kilka. Użyj `{{#if decision_choice:"..." == "..."}}`:
+
+```text
+{{#if decision_choice:"Kaelen's mood in the latest message" == "angry"}}
+Kaelen speaks in short, clipped sentences.
+{{else if decision_choice:"Kaelen's mood in the latest message" == "sad"}}
+Kaelen speaks quietly and avoids eye contact.
+{{else if decision_choice:"Kaelen's mood in the latest message" == "calm"}}
+Kaelen speaks normally.
+{{/if}}
+```
+
+Inne listy, które dobrze się sprawdzają: rodzaj sceny (`combat`, `dialogue`, `exploration`, `rest`), pora dnia (`morning`, `afternoon`, `evening`, `night`) albo pomieszczenie w domu, w którym rozgrywa się scena. Opcje powinny wyraźnie się różnić; dodaj też taką jak `none of these`, jeśli żadna może nie pasować. Agenci używają tego samego mechanizmu do wyboru jednego z kilku zestawów instrukcji, a Illustrator wybiera nim rodzaj pogody.
+
+### Wynik liczbowy
+
+Niektóre funkcje używają samej liczby zamiast tak lub nie. [Smart response order](../chats/group-chats.md#response-order-individual-only) ocenia prawdopodobieństwo, że każda postać odezwie się jako następna, i wybiera najwyższy wynik. [Advanced Memory](../agents/memory.md#optional-decision-model) ocenia, jak istotna jest każda dawna scena. Opcja **Testuj decyzje** w Peek Prompt pokazuje wynik każdego stwierdzenia, co pomaga wybrać próg. Zobacz [Testowanie stwierdzeń decyzyjnych](../chats/peek-prompt.md#testing-decision-statements).
+
+### Obrazy i klipy
+
+Wbudowany model decyzyjny odczytujący obrazy może odpowiadać na te same rodzaje pytań o obrazy z czatu, na przykład `The picture shows the character at the beach`. Liquid d1, Valen i Winnow odczytują obrazy, a pełne wydanie Valen odczytuje też krótkie klipy. Pozostałe modele oraz wszystkie konta hostowane lub serwerowe odczytują tylko tekst i nigdy nie otrzymują obrazów.
+
+Obrazy nigdy nie są wysyłane bez twojego żądania, ponieważ każdy z nich wydłuża odpowiedź:
+
+- W stwierdzeniu dodaj `pictures:1` (najwyżej 3) albo `clips:1`. Dodaj `media_within:2`, żeby pytać tylko wtedy, gdy jedna z 2 najnowszych wiadomości zawiera obraz. Zobacz [Obrazy i klipy](../prompts/conditional-prompts.md#pictures-and-clips).
+- We wpisie lorebooka ustaw **Pokaż modelowi decyzyjnemu** pod polem **Decyzja**. Zobacz [Aktywacja przez decyzję](../lorebooks/entries.md#decision-activation).
+- Przy pytaniu aktywacyjnym własnego agenta ustaw **Pokaż modelowi decyzyjnemu**. Zobacz [Pytania aktywacyjne](../agents/custom-agents.md#activation-questions).
+- Wbudowane funkcje obrazów w aplikacji Marinara: zobacz [Funkcje oglądające obrazy](#features-that-look-at-pictures).
+
+### Co podaje strona modelu
+
+Strona każdego wbudowanego modelu decyzyjnego pokazuje dwa wiersze:
+
+- **Odpowiedzi** podaje, do jakich odpowiedzi model został zbudowany: **Tak/nie**, **Wybór ważony**, **Ocena na skali**, a dla niektórych **Ramki na obrazie** (wskazujące położenie obiektów). Marinara zadaje pytania tak/nie i pytania z wyborem oraz odczytuje ich wyniki. Jeszcze nie pyta o prostokąty, więc ten wiersz tylko opisuje model.
+- **Odczytuje** wymienia **Tekst**, **Obrazy** i **Wideo**. Rodzaj odczytywany tylko przez inne wydanie modelu jest podany za pozostałymi, na przykład "Wideo w pełnej wersji".
 
 ## Wybór modelu decyzyjnego
 
@@ -31,15 +84,15 @@ Pozycje, które nie mogą teraz odpowiadać, pozostają na liście, wyszarzone, 
 - **Model, który już działa w ramach modelu wbudowanego.** Bez dodatkowych kosztów. Najlepszy wybór dla większości osób korzystających z modelu wbudowanego.
 - **Model czatu na własnym serwerze** (Ollama, LM Studio, llama.cpp lub inny serwer zgodny z OpenAI). Bez dodatkowych kosztów. Dobry wybór, gdy model działa poza aplikacją Marinara, bo nie jest ładowany dwa razy.
 - **Hostowany model decyzyjny** (TypeSafe, OpenRouter, NanoGPT lub Google Gemini). Płatny za każde żądanie, a jedna tura może wysłać ich kilka. Subskrypcja NanoGPT obejmuje część modeli decyzyjnych, a OpenRouter udostępnia też kilka darmowych. Dobry wybór dla telefonów i komputerów bez lokalnego modelu.
-- **Wbudowany model decyzyjny.** Zajmuje osobne miejsce na dysku i osobną pamięć GPU. Wymaga systemu Linux x86-64 i obsługiwanej karty graficznej NVIDIA. Dla osób, które chcą mieć osobny model decyzyjny obok modelu czatu.
+- **Wbudowany model decyzyjny.** Wyspecjalizowany model decyzyjny, który Marinara pobiera i uruchamia obok twojego modelu czatu, z własnym miejscem na dysku i zużyciem pamięci. Większość działa na prawie każdym komputerze, część na samym procesorze. Jedyny wybór, który pozwala oglądać obrazy i klipy. Zobacz [Instalacja modelu decyzyjnego przez aplikację Marinara](#let-marinara-install-a-decision-model).
 
 Jeśli masz już uruchomiony model lokalny, wypróbuj najpierw jego i testuj tury z własnych czatów. Sformułowania mają duże znaczenie. Zobacz [Pisanie stwierdzeń](../prompts/conditional-prompts.md#writing-statements).
 
 Jev i Open-Jev to różne modele. Jev to hostowany model firmy TypeSafe, dostępny bezpośrednio lub przez usługę OpenRouter. [Open-Jev](https://huggingface.co/ZefanCai/Open-Jev-2B) to osobno opublikowany model oparty na Qwen, który Marinara może uruchomić lokalnie. Testy Open-Jev nie mierzą hostowanego modelu Jev.
 
-W systemie Android (Termux) **Built-in decision model** (wbudowany model decyzyjny) nie działa, a mały model lokalny na procesorze telefonu może być zbyt wolny. Praktycznym wyborem jest konto hostowane, na przykład Jev przez usługę OpenRouter. Zobacz [Konfiguracja połączenia Decision](#set-up-a-decision-account).
+W systemie Android (Termux) jako **Built-in decision model** (wbudowany model decyzyjny) dostępne są tylko JevK5 i Liquid d1, a procesor telefonu może być dla nich zbyt wolny. Praktycznym wyborem jest konto hostowane, na przykład Jev przez usługę OpenRouter. Zobacz [Konfiguracja połączenia Decision](#set-up-a-decision-account).
 
-Presety, karty i agentów pisz z myślą o "modelu decyzyjnym", nigdy jako "wymaga Jev". Z każdym modelem używają tej samej składni stwierdzeń, ale różne modele mogą dawać różne odpowiedzi. Przy imporcie treści korzystającej z decyzji, w tym niestandardowych agentów i instalacji oficjalnych agentów, Marinara pokazuje informację z linkiem do tego przewodnika. Przywrócenie całego profilu z pliku ZIP jej nie pokazuje.
+Presety, karty i agentów pisz z myślą o "modelu decyzyjnym", nigdy jako "wymaga Jev". Stwierdzenie żądające obrazów nadal działa z modelem odczytującym tylko tekst: otrzymuje on sam tekst. Z każdym modelem używają tej samej składni stwierdzeń, ale różne modele mogą dawać różne odpowiedzi. Przy imporcie treści korzystającej z decyzji, w tym niestandardowych agentów i instalacji oficjalnych agentów, Marinara pokazuje informację z linkiem do tego przewodnika. Przywrócenie całego profilu z pliku ZIP jej nie pokazuje.
 
 ## Używanie modelu wbudowanego
 
@@ -141,7 +194,23 @@ Usunięcie konta, którego klucz służy do decyzji, pokazuje ostrzeżenie. Kont
 - [Sprawdzanie modelem decyzyjnym w Illustrator](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model) sprawdza każdą odpowiedź w trybie Roleplay pod kątem nowego miejsca lub pogody, jeśli włączysz je w ustawieniach Illustrator danego czatu. Bez odpowiedzi: tła zmieniają się tylko wtedy, gdy zażąda tego Illustrator albo World State, tak jak wcześniej.
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model) może używać własnego modelu decyzyjnego do wykrywania granic scen i wybierania wspomnień w trybie Roleplay. Włącz **Use Decision model** (używaj modelu decyzyjnego) w ustawieniach Advanced Memory tego czatu. Bez odpowiedzi: nieudane decyzje przechodzą na zwykłe przywoływanie lub sprawdzenia scen. Podsumowania nadal pisze model pomocniczy.
 
+- [Funkcje oglądające obrazy](#features-that-look-at-pictures) sprawdzają nowe obrazy, pomijają powtórki, używają ponownie teł i oznaczają twarze sprite'ów, jeśli je włączysz. Wymagają modelu decyzyjnego odczytującego obrazy.
+
 Pytanie aktywacyjne decyduje, czy agent się uruchomi. Stwierdzenie decyzyjne w jego prompcie decyduje, jakie instrukcje dostanie uruchomiony agent. Używaj `{{#if decision:"..."}}` do warunków tak/nie i `{{#if decision_choice:"..." == "..."}}` do wyboru spośród odpowiedzi.
+
+### Funkcje oglądające obrazy
+
+Wymagają wbudowanego modelu decyzyjnego odczytującego obrazy (Liquid d1, Valen lub Winnow). Wszystkie są wyłączone, dopóki ich nie włączysz. Bez takiego modelu są wyszarzone, a ⓘ wyjaśnia przyczynę. Wcześniej włączoną opcję nadal można wyłączyć.
+
+| Funkcja | Gdzie | Działanie |
+| --- | --- | --- |
+| **Sprawdzanie obrazów** | **Ustawienia czatu → Agenci → Illustrator** | Ogląda każdy nowy obraz agenta Illustrator, wersję pogodową i selfie oraz sprawdza, czy przedstawia to, o co proszono. Selfie jest też porównywane z awatarem postaci. **Utwórz kolejny, jeśli nie pasuje** rysuje jeszcze raz po nietrafionym wyniku. **Zawsze twórz dwa i zachowuj lepszy** rysuje dwa obrazy i zachowuje lepiej pasujący. Każdy dodatkowy obraz kosztuje kolejne generowanie obrazu. |
+| **Sprawdź też** | Pod **Sprawdzanie obrazów** | Twoje własne sprawdzenia, po jednym w wierszu, najwyżej 6, na przykład `Kaelen has short red hair`. Zacznij wiersz od `not:`, jeśli obraz nie może czegoś przedstawiać, na przykład `not: The picture has writing or a watermark`. |
+| **Pomiń obraz, jeśli najnowszy już to przedstawia** | Karta Illustrator | Przed rysowaniem porównuje najnowszy obraz z czatu z tym, co ma zostać narysowane, i pomija go, gdy pokazałby ponownie tę samą scenę. Obrazy, o które prosisz, powstają zawsze. |
+| **Użyj ponownie tła z biblioteki, które wygląda jak to miejsce** | Karta Illustrator | Gdy żadne tło w bibliotece nie ma nazwy nowego miejsca, ogląda najwyżej 4 tła mające z nią wspólne słowa i pokazuje pasujące zamiast malować nowe. Zobacz [Ponowne używanie posiadanych obrazów](../media/scene-backgrounds.md#reusing-pictures-you-already-have). |
+| **Oznacz twarze, które nie pasują do przypisanej miny** | Okno **Generuj sprite'y**, tylko wyrazy twarzy | Ogląda każdą twarz po narysowaniu i oznacza te, które mogą nie oddawać swojego wyrazu, żeby można było odznaczyć je albo narysować ponownie. Zobacz [Generowanie sprite'ów przez AI](../characters/sprites.md#generate-sprites-with-ai). |
+
+Sprawdzenie, którego nie da się wykonać, bo model jest wyłączony, wolny albo zawodzi, liczy się jako zaliczone: obraz zostaje zachowany w wygenerowanej postaci.
 
 ## Co widzi model
 
@@ -168,7 +237,7 @@ Prawdopodobieństwa nie są porównywalne między modelami. Ten sam przykład mo
 
 - **Built-in model albo konto z modelem czatu zgodnym z OpenAI:** 0,5
 - **Konto TypeSafe, OpenRouter, NanoGPT, Google Gemini lub Custom System One:** 0,5
-- **Built-in decision model:** zalecenie z manifestu modelu: 0,1 dla Open-Jev 2B i 9B
+- **Built-in decision model:** zalecenie samego modelu, tam gdzie było to możliwe zmierzone na turach roleplay: 0,3 dla JevK5, Liquid d1 i Valen-Decision 1.5 4B; 0,5 dla pełnego wydania Valen i Winnow (jeszcze bez pomiarów); 0,1 dla Open-Jev 2B i 9B
 
 Ustawienie agenta **Run when probability is at least** (uruchom, gdy prawdopodobieństwo wynosi co najmniej) nadpisuje tę wartość. Gdy zapisana wartość jest inna, edytor proponuje przywrócenie zalecenia modelu. Sprawdzaj je po każdej zmianie modelu. Stwierdzenia w promptach i pola Decision w lorebookach używają domyślnego progu modelu, a próg agenta go nie zmienia.
 
@@ -182,7 +251,7 @@ Decyzja, która nie dotrze na czas, oznacza brak odpowiedzi, a generowanie trwa 
 - **Model decyzyjny NanoGPT:** 4 sekundy albo twój **Limit czasu**. W pomiarach odpowiadał w 0,4 do 2,5 sekundy.
 - **Konto z modelem czatu zgodnym z OpenAI:** 4 sekundy albo twój **Time limit**. Model, który musi najpierw rozumować, dostaje co najmniej 20 sekund.
 - **Built-in model:** 4 sekundy. Model, który musi najpierw rozumować, dostaje 20 sekund.
-- **Built-in decision model:** 4 sekundy na pierwsze stwierdzenie. Każde kolejne dostaje zmierzony czas modelu: 0,35 sekundy dla Open-Jev 2B i 0,8 sekundy dla Open-Jev 9B. Model zainstalowany z repozytorium dostaje po 4 sekundy na każde.
+- **Built-in decision model:** Open-Jev dostaje 4 sekundy na pierwsze stwierdzenie, a każde kolejne dostaje zmierzony czas: 0,35 sekundy dla 2B i 0,8 sekundy dla 9B. Pozostałe modele mierzą szybkość odczytu przy każdym uruchomieniu i dostosowują do niej limity, więc wolny procesor dostaje więcej czasu. Każdy obraz lub klip żądany przez stwierdzenie dodatkowo wydłuża ten czas. Dopóki model nie uruchomi się po raz pierwszy, dostaje 4 sekundy na każde stwierdzenie, 30 sekund na każdy obraz i 60 na każdy klip.
 
 Anulowanie generowania zatrzymuje żądania decyzyjne.
 
@@ -211,37 +280,56 @@ Każdy model może odpowiedzieć błędnie, a poprawne odpowiedzi tak mogą wypa
 - **Agent z pytaniem aktywacyjnym działa w każdej turze.** Model decyzyjny nie jest ustawiony albo nie odpowiada, więc agent działa tak, jakby nie miał pytania. Uruchom test.
 - **Gałąź decyzyjna w prompcie nigdy się nie pojawia.** Zobacz [Gdy gałąź decyzyjna nigdy się nie pojawia](../prompts/conditional-prompts.md#when-a-decision-branch-never-appears).
 - **Smart response order nadal wykonuje zwykłe wywołanie AI.** Przełącznik jest wyłączony albo model decyzyjny nie odpowiedział w tej turze.
+- **Ustawienia obrazów są wyszarzone z ikoną ⓘ.** Wybrany model decyzyjny odczytuje tylko tekst albo nie ustawiono modelu decyzyjnego. Wybierz Liquid d1, Valen lub Winnow jako **Built-in decision model**. Zobacz [Który wbudowany model decyzyjny wybrać](#which-built-in-decision-model).
+- **Stwierdzenie z `pictures:` oznacza nie.** Przy `media_within:` żadna z najnowszych wiadomości nie zawierała obrazu. W przeciwnym razie obraz wydłużył odpowiedź ponad limit czasu. Wiersz **Na tym komputerze** na stronie modelu pokazuje, ile czasu zajmuje obraz.
+- **Model informuje, że nie może tu działać.** Przyczyna pod listą podaje, czego brakuje, na przykład funkcji procesora, odpowiedniej generacji karty graficznej albo biblioteki. Wybierz inny model; Liquid d1 i JevK5 działają na prawie każdym komputerze.
 - **Automate active characters idzie za agentem Character Tracker.** Model nie odpowiedział dla każdej postaci, najpierw rozumuje, a **Also gate agents that run before the reply** jest wyłączone, albo obsada jest zbyt duża na dane wejściowe modelu nawet w postaci samych imion.
 
 Żeby zobaczyć wyniki i dane wyjściowe decyzji podczas generowania, włącz Debug Mode albo ustaw poziom logowania na debug. Zobacz [Poziomy logowania](../CONFIGURATION.md#logging-levels). Żeby przetestować własne stwierdzenia bez generowania odpowiedzi, otwórz **Peek Prompt → Decision diagnostics → Test decisions** (Peek Prompt, diagnostyka decyzji, testowanie decyzji). Jawne testy wywołują wybrany model i w usłudze hostowanej mogą kosztować. Zobacz [Testowanie stwierdzeń decyzyjnych](../chats/peek-prompt.md#testing-decision-statements).
 
 ## Instalacja modelu decyzyjnego przez aplikację Marinara
 
-**Built-in decision model** to eksperymentalny, wyspecjalizowany model decyzyjny, który Marinara pobiera i uruchamia jako osobny lokalny proces obok twojego modelu czatu. Jego zużycie pamięci dodaje się do zużycia modelu czatu. Jeśli masz już model lokalny, najpierw wypróbuj jego decyzje.
+**Built-in decision model** to wyspecjalizowany model decyzyjny, który Marinara pobiera i uruchamia na twoim komputerze obok twojego modelu czatu. Nic nie opuszcza twojego komputera. Jego zużycie pamięci dodaje się do zużycia modelu czatu. Jeśli masz już uruchomiony model lokalny, najpierw wypróbuj jego decyzje.
 
-Modele Open-Jev wymagają systemu Linux **x86-64**, karty graficznej NVIDIA o compute capability 7.5 lub wyższym (Turing, seria RTX 20 lub nowsza) i sterownika w wersji 580 lub nowszej. Linux ARM i starsze karty nie są obsługiwane. Gdy model nie może działać, opcja pozostaje widoczna, wyjaśnia przyczynę i proponuje **Set up a Decision provider instead** (konfiguracja dostawcy Decision zamiast tego).
+### Który wbudowany model decyzyjny wybrać
 
-| Model | Pobierany model | Dysk ze środowiskiem uruchomieniowym | Pamięć GPU |
-| --- | --- | --- | --- |
-| Open-Jev 2B | Około 4,6 GB | Około 10 GB | Około 4,8 GB (4,5 GiB) |
-| Open-Jev 9B | Około 19,4 GB | Około 25,3 GB | Około 23,6 GB (22 GiB) |
+| Model | Pobieranie | Odczytuje | Języki | Działa na |
+| --- | --- | --- | --- | --- |
+| **JevK5 4B** | Około 2,7 GB | Tekst | Angielski | Prawie każdy komputer: grafika NVIDIA, AMD, Intel lub Apple albo sam procesor. Używa tego samego środowiska uruchomieniowego co model wbudowany. |
+| **JevK5 2B** | Około 2 GB | Tekst | Angielski | Tak jak 4B. Szybszy na procesorze lub małej karcie graficznej, nieco mniej dokładny. |
+| **Liquid d1 3B** | Około 2,3 GB | Tekst, obrazy | 16, w tym japoński, chiński, koreański, niemiecki, hiszpański i rosyjski | Prawie każdy komputer. Dobry wybór do czatów w językach innych niż angielski. Bezpłatny dla osób prywatnych i firm o rocznych przychodach poniżej 10 milionów dolarów. |
+| **Valen-Decision 1.5 4B** | Około 5,8 GB | Tekst, obrazy | 8 sprawdzonych | System Linux z 64-bitowym procesorem Intel lub AMD, tylko na procesorze. |
+| **Valen-Decision 1.5 2B (pełne wydanie)** | Około 6,4 GB | Tekst, obrazy, klipy | Nie podano | System Windows, macOS na Apple silicon i Linux, na procesorze. Wymaga około 6 GB pamięci. |
+| **Valen-Decision 1.5 4B (pełne wydanie)** | Około 11,8 GB | Tekst, obrazy, klipy | 8 sprawdzonych | Tak jak 2B. Wymaga około 12 GB pamięci; jest wolniejszy, ale dokładniejszy. |
+| **Winnow E4B** | Około 9 GB | Tekst, obrazy | Nie podano | Tylko system Linux z kartą NVIDIA z serii RTX 50, bibliotekami CUDA 13 i procesorem z AVX-512 (na przykład AMD Ryzen 7000 lub 9000; obecne procesory Intel do laptopów i komputerów stacjonarnych go nie mają). Wymaga około 11 GB pamięci graficznej. |
+| **Open-Jev 2B** | Około 4,6 GB | Tekst | Angielski | System Linux z kartą NVIDIA z serii RTX 20 lub nowszą i sterownikiem 580 lub nowszym. Używa około 4,8 GB pamięci graficznej i 10 GB dysku. |
+| **Open-Jev 9B** | Około 19,4 GB | Tekst | Angielski | Tak jak 2B. Używa około 23,6 GB pamięci graficznej, więc na karcie 24 GB nic więcej się obok niego nie zmieści. |
 
-To szacunki katalogu. Model 9B pozostawia niewielki zapas na karcie 24 GB. Sprawdź ocenę instalatora dla swojej karty.
+W 20 turach roleplay w 8 językach JevK5 4B, Liquid d1 i Valen-Decision 1.5 4B odpowiedziały poprawnie na wszystkie 20. Wybierz Liquid d1, jeśli nie masz pewności, albo pełne wydanie Valen, jeśli chcesz odczytywać klipy.
 
-1. Kliknij **Dodaj konto** w panelu **Połączenia** i kliknij **Model wbudowany (decyzje)** na zakładce **Decyzja** (widocznej, gdy ten komputer może go uruchomić). Otworzy się okno o tytule **Wbudowany model decyzyjny**. Możesz je też otworzyć ze strony karty **Model wbudowany**.
-2. Przeczytaj ostrzeżenie, a potem włącz **Use the built-in decision model** (używanie wbudowanego modelu decyzyjnego). Okno **Turn on the built-in decision model?** (włączyć wbudowany model decyzyjny?) pokazuje ocenę twojego komputera. Kliknij **Enable** (włącz) albo **Enable anyway** (włącz mimo to), gdy ocena jest ostrzeżeniem.
-3. W sekcji **Available decision models** (dostępne modele decyzyjne) wybierz **Open-Jev 2B** albo **Open-Jev 9B**. Kliknij **Download and install** (pobierz i zainstaluj) i potwierdź rozmiar, ocenę sprzętu i licencje. Wcześniej nic nie jest pobierane.
-4. Kliknij wiersz **Decision** w grupie **Behind the scenes** i wybierz **Built-in model (decisions)**.
+Zanim cokolwiek zostanie pobrane, Marinara sprawdza, czy twój komputer może uruchomić model: system, funkcje procesora, kartę graficzną i jej biblioteki oraz wolną pamięć. Model, który nie może działać, pozostaje na liście z oznaczeniem **(nie może tu działać)** i podaje przyczynę.
 
-Inne kontrolki w tym oknie:
+### Instalacja modelu
 
-- **Install from a repository** (instalacja z repozytorium) przyjmuje model decyzyjny z serwisu HuggingFace w postaci `owner/model-name`. Kliknij **Check** (sprawdź). Marinara czyta manifest repozytorium, sprawdza, czy odpowiada on środowisku uruchomieniowemu dostarczanemu w tej wersji aplikacji, i pokazuje wagi bazowe oraz łączny rozmiar. Repozytorium, za które nie może poręczyć, zostaje odrzucone z podaniem przyczyny. Potem kliknij **Download and install this one** (pobierz i zainstaluj ten model).
-- **GPU** wybiera kartę na komputerze z kilkoma kartami graficznymi NVIDIA. Zmiana karty zatrzymuje model, który uruchamia się ponownie na nowej karcie.
-- **Start this model when Marinara starts** (uruchamianie tego modelu przy starcie aplikacji Marinara) jest opcjonalne. Gdy jest wyłączone, model uruchamia się wtedy, gdy agent pierwszy raz go potrzebuje.
-- **Remove files** (usuń pliki) usuwa model i jego środowisko uruchomieniowe. Wyłączenie modelu zatrzymuje proces i zachowuje pliki.
-- **Reinstall** (ponowna instalacja) pojawia się, gdy zainstalowany model nie może się uruchomić, bo brakuje jego plików lub środowiska uruchomieniowego albo są one nieaktualne, zwykle po aktualizacji. Model dostaje oznaczenie **Needs reinstall**, a wiersz **Decision** pokazuje **Not set up**. Ponowna instalacja zachowuje pliki, które są już pobrane i kompletne, więc zwykle pobierają się ponownie tylko pakiety Python środowiska uruchomieniowego.
+1. Otwórz **Biblioteka → Połączenia**. W sekcji **Na tym urządzeniu** kliknij **Model wbudowany (decyzje)**. Możesz też przejść przez **Nowe połączenie → Model wbudowany**.
+2. Wybierz model na liście **Model**. Pod nią znajdziesz jego opis, następnie **Odpowiedzi** i **Odczytuje** (zobacz [Co podaje strona modelu](#what-a-model-page-lists)), języki i licencje.
+3. Kliknij **Pobierz** z nazwą i rozmiarem modelu. Potwierdź rozmiar, ocenę sprzętu i licencje. Wcześniej nic nie jest pobierane.
+4. Kliknij **Używaj do Decyzji** albo wybierz **Model wbudowany (decyzje)** w wierszu **Decyzje** w sekcji **Domyślne**.
 
-Pierwsza odpowiedź modelu po uruchomieniu jest wolniejsza, więc podczas ładowania Marinara zadaje jedno pytanie rozgrzewające. Jeśli się nie uda, model i tak się uruchamia, a opóźnienie spada na pierwsze prawdziwe pytanie. Tura z wieloma stwierdzeniami w długim czacie trwa dłużej. Open-Jev 2B potrzebuje w długim czacie około ćwierci sekundy na stwierdzenie.
+Po uruchomieniu modelu jego strona pokazuje też **Na tym komputerze** z czasem, jaki zajęło mu przetworzenie kilku tur czatu, obrazu i klipu, jeśli je odczytuje. Te czasy pochodzą z twojego komputera, więc mówią, o ile wolniejsze staje się stwierdzenie, gdy żąda obrazu.
+
+Żeby przełączyć model, wybierz inny z listy. Pobrany wcześniej model ma oznaczenie **(pobrany)**, a **Użyj tego modelu** przełącza na niego bez ponownego pobierania.
+
+Inne kontrolki na tej stronie:
+
+- **Wyłącz** zatrzymuje model i zachowuje jego pliki. **Włącz** uruchamia go ponownie.
+- **Działa na** wybiera kartę na komputerze z kilkoma kartami NVIDIA. Zmiana zatrzymuje model, który uruchamia się ponownie na nowej karcie.
+- **Uruchamia się** ma domyślną wartość **Gdy agent pierwszy raz go potrzebuje** albo **Razem z Marinarą**.
+- **Zainstaluj z repozytorium** przyjmuje model decyzyjny z serwisu Hugging Face w postaci `owner/model-name`: checkpoint Open-Jev, GGUF deklarujący się jako model decyzyjny albo pakiet Valen GGUF. Dodaj `:Q8_0` po nazwie, żeby wybrać jeden rozmiar GGUF. Kliknij **Sprawdź**. Marinara odczytuje, co pliki mówią o sobie, i pokazuje rozmiar oraz licencje. Repozytorium, za które nie może poręczyć, zostaje odrzucone z podaniem przyczyny. Potem kliknij **Pobierz i zainstaluj ten**.
+- **Usuń pliki** usuwa model i jego środowisko uruchomieniowe.
+- **Zainstaluj ponownie** pojawia się, gdy zainstalowany model nie może się uruchomić, bo brakuje jego plików lub środowiska uruchomieniowego albo są one nieaktualne, zwykle po aktualizacji. Model ma oznaczenie **Wymaga ponownej instalacji**. Ponowna instalacja zachowuje pliki, które są już pobrane i kompletne, więc zwykle pobiera się ponownie tylko środowisko uruchomieniowe.
+
+Pierwsza odpowiedź modelu po uruchomieniu jest wolniejsza, więc podczas ładowania Marinara zadaje jedno pytanie rozgrzewające. Jeśli się nie uda, model i tak się uruchamia, a opóźnienie spada na pierwsze prawdziwe pytanie. Jeśli model zatrzyma się zaraz po uruchomieniu, strona podaje przyczynę, na przykład brak potrzebnej funkcji procesora.
 
 ### Samodzielne uruchamianie Strands decider
 

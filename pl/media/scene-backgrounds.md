@@ -42,6 +42,8 @@ Zanim Illustrator namaluje nowe miejsce, szuka obrazu, który już masz, w tej k
 
 Wielkość liter, akcenty i "'s" nie mają znaczenia, a najbardziej szczegółowa nazwa ma pierwszeństwo przed zwykłym `bedroom.png`. Jeśli znajdzie pasujący obraz, wyświetla go (w wersji odpowiadającej pogodzie w historii, jeśli taka istnieje) i niczego nie maluje. Nowy obraz powstaje tylko dla miejsca bez dopasowania.
 
+Jeśli żadna nazwa nie pasuje i włączysz **Użyj ponownie tła z biblioteki, które wygląda jak to miejsce** na karcie Illustrator, [model decyzyjny odczytujący obrazy](../connections/decision-models.md#features-that-look-at-pictures) ogląda najwyżej 4 obrazy z biblioteki, które mają wspólne słowo z nazwą miejsca, i pokazuje pasujący obraz. Dopiero gdy żaden nie pasuje, powstaje nowy. Opcja jest domyślnie wyłączona i wyszarzona bez takiego modelu.
+
 Żeby miejsce zachowało swój obraz, nadaj plikowi nazwę tego miejsca (`kitchen.png` dla "Kitchen") albo dodaj tag z co najmniej dwóch słów, taki jak `smith house kitchen` (zobacz [Tagowanie tła](../appearance/chat-backgrounds.md#tag-a-background)). Tagi jednowyrazowe, takie jak `kitchen` lub `night`, są tutaj pomijane, bo zwykle opisują wygląd obrazu.
 
 ## Wersje teł dopasowane do pogody
