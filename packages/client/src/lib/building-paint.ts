@@ -520,11 +520,16 @@ export function paintBuildingProp(
       px(ctx, "#5e5e68", x + 2, y + 3, 12, 2);
       px(ctx, "#5e5e68", x + 2, y + 12, 12, 2);
       px(ctx, "#7c7c86", x + 2, y + 3, 12, 1);
-      px(ctx, ink, x + 6, y + 6, 5, 6);
-      px(ctx, "#d8b040", x + 7, y + 8, 3, 3);
-      px(ctx, "#a08020", x + 7, y + 6, 1, 2);
-      px(ctx, "#a08020", x + 9, y + 6, 1, 2);
-      px(ctx, ink, x + 8, y + 9, 1, 1);
+      // The padlock big and gold, the colour of the key that opens it, and the frame picked out in it, so a
+      // lock and its key pair up at a glance (panel round 33: padlocks too small to find).
+      px(ctx, "#f2c14e", x + 1, y, 1, T);
+      px(ctx, "#f2c14e", x + 14, y, 1, T);
+      px(ctx, ink, x + 4, y + 4, 8, 9);
+      px(ctx, "#f2c14e", x + 5, y + 7, 6, 5);
+      px(ctx, "#c89a2a", x + 5, y + 4, 1, 3);
+      px(ctx, "#c89a2a", x + 10, y + 4, 1, 3);
+      px(ctx, "#c89a2a", x + 5, y + 4, 6, 1);
+      px(ctx, ink, x + 7, y + 9, 2, 2);
       return;
     }
     case 2: {

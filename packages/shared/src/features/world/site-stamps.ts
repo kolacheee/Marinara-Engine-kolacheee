@@ -172,7 +172,9 @@ const PLANS: Record<string, SiteStamp[]> = {
   "Entrance hall": [st(["Z.Z", "...", "..."], [1, 2], [1, 3]), st(["Z.C.Z", ".....", "....."], [1, 2], [1, 3])],
   // A crypt's burial hall: piers in rows, the dead between them, torches at the head.
   "Burial hall": [
-    st(["2.0.2", ".....", "7.0.7", ".....", "7.0.7", "....."], [2, 3], [2, 4]),
+    // Widened by the empty bays either side, not by more rows of the dead (panel round 33: a hall stretched
+    // to some fifty tombs in a grid).
+    st(["2.0.2", ".....", "7.0.7", ".....", "7.0.7", "....."], [1, 2], [2, 4], undefined, true),
     st(["2...2", ".7.7.", ".0.0.", ".7.7.", "....."], [2, 3], [1, 4]),
   ],
   // The founder's tomb: the one tomb in the middle of a ring of piers, its grave goods against the back wall
