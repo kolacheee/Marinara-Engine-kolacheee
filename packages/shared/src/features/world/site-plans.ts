@@ -723,6 +723,8 @@ export interface SiteLevelMap {
   links: SiteLevelLink[];
   locks: SiteLevelLock[];
   traps: SiteLevelTrap[];
+  /** The way round the held room, cell by cell, through the rooms left to nobody. */
+  quietWay?: Array<{ x: number; y: number }>;
 }
 
 /** The rooms that are a level's great room: the biggest space on it. */
@@ -4553,6 +4555,51 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       traps.push({ x, y, dc: 10 + plan.wealth * 2 + Math.floor(random() * 4) - level.depth });
     }
   }
+  // The heart's hoard (panel round 30: the payoff not where the fight is): what the holders keep, two or three
+  // chests together against the wall farthest from the door, behind whoever holds the room.
+  {
+    const k = info.findIndex((each) => each.heart);
+    const box = k >= 0 ? rooms[k] : undefined;
+    if (box) {
+      const chest = plan.template === "crypt" ? 3 : CHEST;
+      const cells: number[] = [];
+      for (const b of [box, ...(box.parts ?? [])])
+        for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) cells.push(cell(x, y));
+      const doors = [...doorCells].filter((d) => around(d).some((m) => cells.includes(m)));
+      const far = (c: number) =>
+        Math.min(
+          99,
+          ...doors.map(
+            (d) => Math.abs((d % mapW) - (c % mapW)) + Math.abs(Math.floor(d / mapW) - Math.floor(c / mapW)),
+          ),
+        );
+      const have = cells.filter((c) => props[c] === chest).length;
+      const spots = cells
+        .filter(
+          (c) =>
+            ground[c] === "floor" &&
+            props[c] === -1 &&
+            !linked.has(c) &&
+            !traps.some((trap) => cell(trap.x, trap.y) === c) &&
+            around(c).some((m) => ground[m] === "wall"),
+        )
+        .sort((p, q) => far(q) - far(p));
+      const anchor = spots[0];
+      let placed = 0;
+      if (anchor !== undefined)
+        for (const c of spots
+          .filter(
+            (c) =>
+              Math.abs((c % mapW) - (anchor % mapW)) + Math.abs(Math.floor(c / mapW) - Math.floor(anchor / mapW)) <= 2,
+          )
+          .slice(0, 4)) {
+          if (have + placed >= 3) break;
+          props[c] = chest;
+          if (reachable()) placed++;
+          else props[c] = -1;
+        }
+    }
+  }
   map.entrance = entrance;
   // The rooms the way round goes through, left to nobody.
   const quietPath = keepRound ? round(true) : null;
@@ -4587,7 +4634,18 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   } else
     for (const [k, each] of info.entries())
       if (each.post) info[k] = { name: each.name, use: each.use, ...(each.heart ? { heart: true as const } : {}) };
-  return { map, rooms: info, links, locks, traps };
+  // The way round as the party will see it: its cells from where it leaves the main way to where it rejoins,
+  // through the quiet rooms and the doors between them (panel round 30: the way round not visible).
+  const quietWay = quietPath
+    ? quietPath
+        .filter((c) => {
+          if (ground[c] === "wall") return false;
+          const k = at[c]! >= 0 ? roomOfRegion.get(at[c]!) : undefined;
+          return k === undefined ? at[c]! < 0 || regions[at[c]!]!.kind !== "room" : !!info[k]!.quiet;
+        })
+        .map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) }))
+    : [];
+  return { map, rooms: info, links, locks, traps, ...(quietWay.length >= 3 ? { quietWay } : {}) };
 }
 
 // ── As the game keeps it ──
@@ -4683,6 +4741,7 @@ export function gameDungeonPlannedMap(input: {
     props: props.join(""),
     entrance: laid.map.entrance,
     at,
+    ...(laid.quietWay ? { quietWay: laid.quietWay } : {}),
     roomInfo: laid.rooms.map((room) => ({
       name: room.name,
       use: room.use,

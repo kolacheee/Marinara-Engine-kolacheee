@@ -843,6 +843,12 @@ export const gameDungeonMapSchema = z
       )
       .max(40)
       .optional(),
+    /** The way round the held room, drawn as a scuffed trail so the party can see there is one (panel
+     *  round 30). */
+    quietWay: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(600)
+      .optional(),
     /** The plan it is a level of, and what the party has done there on every level: which level this is,
      *  each level's name, the rooms seen on each, the locks opened and the traps found and gone. */
     site: z

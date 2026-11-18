@@ -690,7 +690,9 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
     if (distance[index]! >= 0 && distance[index]! <= 2) return { area, key, role: "empty", level: level_, foes: [] };
     switch (info.use) {
       case "post":
-        return random() < (base === "Corner tower" || base === "Wall walk" ? 0.5 : 1)
+        // A corner tower or a stretch of wall walk only now and then: the patrol keeps the walk, and a lone
+        // figure in every tower reads as decoration (panel round 30).
+        return random() < (base === "Corner tower" || base === "Wall walk" ? 0.25 : 1)
           ? { area, key, role: "guard", level: level_, foes: holders() }
           : { area, key, role: "empty", level: level_, foes: [] };
       // Guards keep the posts and some of the rooms they live in, not every room (panel 2026-11-16).

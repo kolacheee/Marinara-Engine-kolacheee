@@ -863,6 +863,22 @@ export function DungeonMapView({
       }
       // The holders' posts (dungeon spawns): who stands guard where, the heart's chief crowned.
       // A post of more than one shows a second figure a step behind the first.
+      // The way round the held room: a scuffed trail of pale footprints through the rooms left to nobody,
+      // so the party can see there is a way past (panel round 30: the quiet way not visible on the map).
+      for (const [k, { x, y }] of (kept?.quietWay ?? []).entries()) {
+        if (inFog(x, y) || k % 3 === 2) continue;
+        const cx = x * T + T / 2;
+        const cy = y * T + T / 2;
+        for (const [dx, dy] of [
+          [-5, k % 2 ? -3 : 1],
+          [2, k % 2 ? 1 : -3],
+        ] as const) {
+          ctx.fillStyle = "rgba(20, 16, 12, 0.35)";
+          ctx.fillRect(cx + dx - 1, cy + dy - 1, 4, 5);
+          ctx.fillStyle = "rgba(236, 226, 196, 0.8)";
+          ctx.fillRect(cx + dx, cy + dy, 2, 3);
+        }
+      }
       // A patrol's beat: a line of footfalls along the walk it keeps, a bar at each end where it turns,
       // outlined so it reads on stone and rugs alike (panel round 26: too faint).
       for (const guard of guards) {
