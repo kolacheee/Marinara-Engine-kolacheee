@@ -863,6 +863,13 @@ export function DungeonMapView({
       }
       // The holders' posts (dungeon spawns): who stands guard where, the heart's chief crowned.
       // A post of more than one shows a second figure a step behind the first.
+      // The rooms of the way round are unlit, the held room's torch the light on the main way, so the bypass
+      // reads as the dark way past (panel round 32: a sneak route through lit rooms reads as a decal).
+      cells?.rooms.forEach((room, n) => {
+        if (!kept?.roomInfo?.[n]?.quiet || inFog(room.x, room.y)) return;
+        ctx.fillStyle = "rgba(6, 8, 16, 0.3)";
+        for (const box of [room, ...(room.parts ?? [])]) ctx.fillRect(box.x * T, box.y * T, box.w * T, box.h * T);
+      });
       // The way round the held room: a scuffed trail of pale footprints through the rooms left to nobody,
       // so the party can see there is a way past (panel round 30: the quiet way not visible on the map).
       for (const [k, { x, y }] of (kept?.quietWay ?? []).entries()) {
