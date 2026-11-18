@@ -153,6 +153,15 @@ Mais detalhes:
 - A ativação por decisão vale só para turnos de chat. A configuração de Game e as varreduras que os agentes fazem para si mesmos leem as entradas de decisão como não.
 - Um `{{#if decision:"..."}}` dentro do conteúdo da entrada é diferente. Ele corta o texto de uma entrada que já foi ativada.
 
+### Deixar o modelo de decisão ver imagens
+
+Com um modelo de decisão embutido que lê imagens (Liquid d1, Valen ou Winnow), a declaração pode ser sobre as imagens do chat, como `The newest picture shows a dragon`. Abaixo do campo **Decisão**, **Mostrar ao modelo de decisão** tem duas listas:
+
+- **Imagens**: **Nenhuma imagem** (o padrão), ou as 1 a 3 imagens mais recentes do chat. Cada imagem torna a declaração mais lenta.
+- **Perguntar só quando houver uma imagem em**: **Qualquer mensagem (perguntar sempre)**, ou nas 1 a 20 mensagens mais recentes. Sem uma imagem ali, a declaração conta como não e não é perguntada.
+
+Sem um modelo que leia imagens, essas opções ficam em cinza, com um ⓘ que explica o motivo, e a declaração recebe só o texto. Quando várias entradas compartilham uma declaração, ela é perguntada uma vez com o maior número de imagens pedido por qualquer uma delas. Veja [O que um modelo de decisão pode responder](../connections/decision-models.md#pictures-and-clips).
+
 ## Grupos, filtros e outras opções
 
 A gaveta expandida tem mais campos.

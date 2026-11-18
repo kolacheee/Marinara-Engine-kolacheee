@@ -123,6 +123,19 @@ O Illustrator também cria planos de fundo. No cartão do Illustrator em **Chat 
 
 As três opções vêm desativadas por padrão. Veja [Planos de fundo criados pelo Illustrator](scene-backgrounds.md).
 
+## Verificar imagens com um modelo de decisão
+
+Com um [modelo de decisão embutido que lê imagens](../connections/decision-models.md#features-that-look-at-pictures) (Liquid d1, Valen ou Winnow), o cartão do Illustrator oferece mais três configurações. Todas vêm desativadas por padrão e ficam em cinza com um ⓘ quando não há um modelo desse tipo.
+
+- **Verificação de imagens** analisa cada nova imagem, versão de clima e selfie e verifica se ela mostra o que foi pedido. Uma selfie também é comparada com o avatar do personagem. **Criar outra se não corresponder** desenha mais uma vez após uma falha. **Sempre criar duas e manter a melhor** desenha duas e mantém a melhor. Cada imagem extra é outra geração de imagem.
+- **Verificar também** (abaixo de **Verificação de imagens**) acrescenta as suas próprias verificações, uma por linha, até 6, como `Kaelen has short red hair`. Comece uma linha com `not:` para algo que a imagem não deve mostrar, como `not: The picture has writing or a watermark`.
+- **Pular uma imagem se a mais recente já mostra o mesmo** compara a imagem mais recente do chat com o que está prestes a ser desenhado e pula uma repetição. As imagens que você pede sempre são criadas.
+- **Reutilizar um plano de fundo da biblioteca parecido com o local** mostra um plano de fundo da biblioteca que corresponda a um lugar novo em vez de pintar um. Veja [Reutilizar as imagens que você já tem](scene-backgrounds.md#reusing-pictures-you-already-have).
+
+Em um chat de Conversation, **Verificação de imagens** fica no cartão do Illustrator para selfies.
+
+Uma verificação que não consegue rodar conta como aprovada, então a imagem é mantida.
+
 ## Vários personagens na NovelAI
 
 Quando o modelo de imagem do Illustrator é a NovelAI com um modelo V4, V4.5 ou V5, o modelo que escreve o prompt acrescenta uma descrição de personagem para cada personagem visível. Cada descrição traz a aparência, a expressão, a pose e a posição aproximada daquele personagem no quadro. Marinara compara as descrições com a lista de personagens da cena, descarta as que não consegue associar e envia as demais à NovelAI como prompts nativos de personagem, junto com o prompt principal. Isso evita que cabelo, roupas e outros traços se misturem entre os personagens. As imagens de **Illustrate** e do comando `[illustrate]` de um personagem recebem as mesmas descrições.

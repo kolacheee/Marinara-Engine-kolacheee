@@ -283,6 +283,7 @@ Uma condição também pode consultar o seu modelo de decisão sobre a cena, por
 - `sticky:3 cooldown:5` mantém um sim por três turnos e depois deixa a declaração em descanso por cinco. Veja [Sticky e cooldown](conditional-prompts.md#sticky-and-cooldown).
 - `until:"..."` ou `while:"..."` mantém um sim enquanto uma segunda declaração permitir. Veja [Until e while](conditional-prompts.md#until-and-while).
 - `every:3` só pergunta uma declaração a cada três turnos. Veja [Verificar a cada poucos turnos](conditional-prompts.md#checking-every-few-turns).
+- `pictures:1`, `clips:1` e `media_within:3` deixam um modelo embutido que lê essas mídias analisar as imagens e os clipes mais recentes do chat e esperar por um deles. Veja [Imagens e clipes](conditional-prompts.md#pictures-and-clips).
 - `priority:high` ou `priority:low` escolhe quais declarações cabem em um plano de prompt. Veja [Prioridade](conditional-prompts.md#priority) e [Limites e custo](conditional-prompts.md#limits-and-cost).
 
 ## Erros comuns

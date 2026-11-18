@@ -42,6 +42,8 @@ Antes de pintar um novo lugar, o Illustrator procura uma imagem que você já te
 
 Maiúsculas, minúsculas, acentos e "'s" não fazem diferença, e o nome mais específico tem prioridade sobre um simples `bedroom.png`. Se uma imagem corresponder, ela é mostrada (com o clima da história, quando essa versão existe) e nada é pintado. Só um lugar sem correspondência recebe uma nova imagem.
 
+Se nenhum nome corresponder e você tiver ativado **Reutilizar um plano de fundo da biblioteca parecido com o local** no cartão do Illustrator, um [modelo de decisão que lê imagens](../connections/decision-models.md#features-that-look-at-pictures) analisa até 4 imagens da biblioteca que compartilhem uma palavra com o lugar e mostra uma que corresponda. Só quando nenhuma corresponde é que uma nova imagem é pintada. A opção vem desativada por padrão e fica em cinza sem um modelo desse tipo.
+
 Para garantir que um lugar mantenha a imagem, dê ao arquivo o nome do lugar (`kitchen.png` para "Kitchen") ou adicione uma tag de duas ou mais palavras, como `smith house kitchen` (veja [Adicionar tags a um plano de fundo](../appearance/chat-backgrounds.md#tag-a-background)). Tags de uma palavra só, como `kitchen` ou `night`, são ignoradas aqui, porque geralmente descrevem a aparência de uma imagem.
 
 ## Versões dos planos de fundo para cada clima
