@@ -42,6 +42,8 @@ Illustratorは新しい場所を描く前に、次の順で手持ちの画像を
 
 大文字と小文字、アクセント記号、「's」は区別せず、単なる`bedroom.png`よりも具体的な名前を優先します。合う画像があれば、その画像を表示し(物語の天気に合った版があればそれを使います)、新しく描くことはありません。一致する画像がない場所だけに、新しい画像が作られます。
 
+名前に一致するものがなく、Illustratorカードで**Reuse a library background that looks like the place**(場所に合うライブラリーの背景を再利用)をオンにしている場合、[画像を読み取れる判定モデル](../connections/decision-models.md#features-that-look-at-pictures)が、場所の名前と共通の単語を持つライブラリーの画像を最大4枚確認し、合うものを表示します。どれも合わない場合にだけ、新しい画像を描きます。デフォルトではオフで、対応するモデルがなければグレー表示になります。
+
 同じ場所で同じ画像を使い続けるには、場所に合わせたファイル名(「Kitchen」なら`kitchen.png`)にするか、`smith house kitchen`のような2語以上のタグを付けます([背景にタグを付ける](../appearance/chat-backgrounds.md#tag-a-background)を参照)。`kitchen`や`night`のような1語だけのタグは、通常は画像の見た目を表すため、ここでは無視されます。
 
 ## 天気に合わせた背景

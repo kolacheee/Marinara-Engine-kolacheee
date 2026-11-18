@@ -123,6 +123,19 @@ Illustratorは背景も描きます。**Chat Settings → Agents**(チャット�
 
 3つともデフォルトはオフです。[Illustratorが作る背景](scene-backgrounds.md)を参照してください。
 
+## 判定モデルによる画像の確認
+
+[画像を読み取れる内蔵の判定モデル](../connections/decision-models.md#features-that-look-at-pictures)(Liquid d1、Valen、Winnow)があれば、Illustratorカードでさらに3つの設定を使えます。いずれもデフォルトではオフで、対応するモデルがない場合はⓘ付きのグレー表示になります。
+
+- **Picture check**(画像の確認)は、新しい画像、天候別の画像、自撮り写真を1枚ずつ見て、依頼どおりに描かれているか確認します。自撮り写真はキャラクターのアバターとも比較します。**Make another if it doesn't match**(合っていなければもう1枚作る)は、合わない場合にもう1回描きます。**Always make two, keep the better**(常に2枚作り、よいほうを残す)は、2枚描いてよいほうを残します。追加の画像1枚ごとに、画像生成がもう1回行われます。
+- **Also check**(追加の確認、**Picture check**の下)では、`Kaelen has short red hair`のような独自の確認項目を、1行に1つ、最大6つまで追加できます。画像に含めてはいけないものは、`not: The picture has writing or a watermark`のように、行頭に`not:`を付けてください。
+- **Skip a picture the newest one already shows**(最新の画像と同じ内容の画像を省く)は、チャットの最新の画像とこれから描く内容を比較し、同じ内容なら省きます。明示的に依頼した画像は、必ず作られます。
+- **Reuse a library background that looks like the place**(場所に合うライブラリーの背景を再利用)は、新しい場所に合う背景をライブラリーから表示し、新たには描きません。[手持ちの画像を再利用する](scene-backgrounds.md#reusing-pictures-you-already-have)を参照してください。
+
+Conversationのチャットでは、自撮り写真用の**Picture check**がIllustratorカードにあります。
+
+確認を実行できない場合は合格として扱い、画像を残します。
+
 ## NovelAIで複数のキャラクターを描く
 
 Illustratorの画像モデルがNovelAIのV4、V4.5、V5モデルの場合、プロンプトを書くモデルは、画面に登場するキャラクターごとに1つずつキャラクターの記述を追加します。各記述には、そのキャラクターの外見、表情、ポーズ、画面内のおおよその位置が含まれます。Marinaraは記述をシーンのキャラクター一覧と照合し、対応するキャラクターが見つからないものを除いて、残りをNovelAI標準のキャラクタープロンプトとして、メインプロンプトと一緒にNovelAIへ送ります。これにより、髪や服などの特徴がキャラクター間で混ざるのを防ぎます。**Illustrate**や、キャラクターの`[illustrate]`コマンドで作る画像にも、同じ記述が付きます。

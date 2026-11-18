@@ -178,8 +178,9 @@ Marinaraは`editedText`を返信と差し替えます。`changes`のメモは、
 
 1. カスタムエージェントを開きます。
 2. 最大500文字の**Question**(質問)を入力します。マクロの`{{user}}`と`{{char}}`も使えます。
-3. **Run when probability is at least**(実行に必要な最小確率)に、このエージェントのしきい値を設定します。「はい」の確率がこの値以上のときにエージェントが動くため、値を高くするほど実行を省く回数が増えます。エディターには、使っているモデルに合わせた推奨値が表示されます。ローカルのチャットモデルとDecisionアカウントでは0.5、組み込みのOpen-Jevモデルでは0.1です。モデルを切り替えたら、自分のチャットで値を確認してください。[しきい値](../connections/decision-models.md#thresholds)を参照してください。
-4. 任意: **Bypass the question after this many messages without a successful run**(指定メッセージ数の間に実行が成功しなければ質問を省略)を設定します。その数のメッセージが進むと質問が省略されるため、「いいえ」と答え続けるモデルがエージェントをずっと止めてしまうことはありません。キーワードと周期は引き続き適用されます。
+3. **Run when probability is at least**(実行に必要な最小確率)に、このエージェントのしきい値を設定します。「はい」の確率がこの値以上のときにエージェントが動くため、値を高くするほど実行を省く回数が増えます。エディターには、使っているモデルに合わせた推奨値が表示されます。ローカルのチャットモデルとDecisionアカウントでは0.5、ほとんどの内蔵の判定モデルでは0.3または0.5、組み込みのOpen-Jevモデルでは0.1です。モデルを切り替えたら、自分のチャットで値を確認してください。[しきい値](../connections/decision-models.md#thresholds)を参照してください。
+4. 任意: **Show the decision model**(判定モデルに見せるもの)で、質問の対象にする**Pictures**(画像、最新の1～3枚)または**Clips**(クリップ)を選び、**Ask only when a picture or clip is in**(画像またはクリップがある場合のみ質問)で直近何件のメッセージを対象にするかを指定します。これには画像やクリップを読み取れる内蔵の判定モデル(Liquid d1、Valen、Winnow。クリップにはValenのフルリリース版)が必要で、それ以外ではグレー表示になります。対象範囲を設定すると、その範囲に画像やクリップがないターンにはエージェントを実行しません。画像やクリップが増えるほど、質問への回答に時間がかかります。[画像とクリップ](../connections/decision-models.md#pictures-and-clips)を参照してください。
+5. 任意: **Bypass the question after this many messages without a successful run**(指定メッセージ数の間に実行が成功しなければ質問を省略)を設定します。その数のメッセージが進むと質問が省略されるため、「いいえ」と答え続けるモデルがエージェントをずっと止めてしまうことはありません。キーワードと周期は引き続き適用されます。
 
 質問は、`The latest message moves the scene to a new place.`のように、最新のメッセージについて述べる文として書いてください。小型のモデルは、`Did the scene change?`よりもこちらのほうが安定して答えました。[判定文の書き方](../prompts/conditional-prompts.md#writing-statements)を参照してください。
 

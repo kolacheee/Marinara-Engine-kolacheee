@@ -142,6 +142,8 @@ Before replying, write your plan inside <plan></plan> tags.
 
 始める前に: **Connections**(接続)パネルの**Decision model**(判定モデル)でDecisionモデルを選んでください。どういうものか、どう選ぶかは[Decisionモデル](../connections/decision-models.md)を参照してください。ロアブックのエントリー全体が起動するかどうかを決めるには、代わりにエントリーの[Decision](../lorebooks/entries.md#decision-activation)欄を使います。
 
+はい・いいえで答えたり(`decision:`)、複数の回答から1つを選んだり(`decision_choice:`)できます。画像を読み取れる内蔵モデルなら、チャットの画像やクリップも確認できます。回答の種類とその他の例は、[判定モデルが答えられること](../connections/decision-models.md#what-a-decision-model-can-answer)を参照してください。
+
 使い方の例としては、場面が移ったときだけ新しい場所を描写する、戦闘中だけ戦闘の進行ルールを読み込む、関係をゆっくり育てるプリセットで関係の進展を控える、グループブロックで話しかけられたキャラクターだけに直接答えさせる、といったものがあります。
 
 ### はい・いいえ: `decision:`
@@ -254,6 +256,20 @@ Describe the new weather in a sentence.
 - 上限を超えた文は、優先順位の低いものからいいえとして扱われ、Peek Promptに一覧表示されます。
 - 複数の場所に書いた同じ文は、指定された中で最も高い優先順位を使います。
 - プロンプト自身の判定文(プリセット、カード、ペルソナ、作者メモ)を先に計画します。ロアブックの判定文は、優先順位に関係なく、残った枠を使います。
+
+### 画像とクリップ
+
+画像を読み取れる内蔵の判定モデル(Liquid d1、Valen、Winnow)は、チャットの画像やクリップも確認できます。判定文で指定した場合にだけ送られます。`pictures:N`は最新の画像N枚(最大3枚)、`clips:1`は最新のクリップ(Valenのフルリリース版のみ)を送ります。指定しなければ、テキストだけが送られます。
+
+```text
+{{#if decision:"The picture shows the character at the beach" pictures:1}}...{{/if}}
+{{#if decision:"The clip ends somewhere new" clips:1 media_within:2}}...{{/if}}
+```
+
+- 画像にはアップロードした画像、ギャラリーの自撮り写真、イラストが含まれます。クリップは生成されたシーン動画です。それぞれ縮小してから送られます。
+- 画像やクリップが増えるほど、判定文への回答に時間がかかります。モデルを一度実行すると、そのコンピューターで1枚や1本にかかる時間がモデルの詳細に表示されます。
+- `media_within:N`は、直近N件のメッセージのどれかに画像(`clips:`の場合はクリップ)があるときだけ判定文を尋ねます。それ以外のターンでは、いいえとして扱われ、質問は行われません。
+- 同じ画像を要求する判定文は、1つのリクエストを共有します。テキストだけを読み取るモデルや、ホスト型のDecision接続に画像が送られることはありません。
 
 修飾子はすべて、任意の順序で組み合わせられます。たとえば`decision:"..." priority:high sticky:3 cooldown:5 every:2`のように書きます。
 

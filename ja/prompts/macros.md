@@ -283,6 +283,7 @@ Outletマクロは、Conversation、Roleplay、Game Modeのプロンプトのセ
 - `sticky:3 cooldown:5`は、はいを3ターン保ち、その後5ターン休ませます。[StickyとCooldown](conditional-prompts.md#sticky-and-cooldown)を参照してください。
 - `until:"..."`または`while:"..."`は、2つ目の文が許す限り、はいを保ちます。[UntilとWhile](conditional-prompts.md#until-and-while)を参照してください。
 - `every:3`は、3ターンごとにだけ文を尋ねます。[数ターンごとの確認](conditional-prompts.md#checking-every-few-turns)を参照してください。
+- `pictures:1`、`clips:1`、`media_within:3`を使うと、対応する内蔵モデルにチャットの最新の画像やクリップを見せたり、画像やクリップが届くまで待たせたりできます。[画像とクリップ](conditional-prompts.md#pictures-and-clips)を参照してください。
 - `priority:high`または`priority:low`は、プロンプトの計画に収める文を選びます。[優先順位](conditional-prompts.md#priority)と[制限と費用](conditional-prompts.md#limits-and-cost)を参照してください。
 
 ## よくある失敗
