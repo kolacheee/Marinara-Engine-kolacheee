@@ -3504,6 +3504,11 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   const hasLink = (n: number) => links.some((link) => at[cell(link.x, link.y)] === n);
   for (const [n, room] of owner)
     if (room.locked && (degree[n] !== 1 || hasLink(n) || n === start)) owner.set(n, { ...room, locked: undefined });
+  // The heart behind a locked door where it is a room at the end of its way, its key kept by the holders
+  // elsewhere on the floor (panel round 31: no locks and keys).
+  for (const [n, room] of owner)
+    if (room.heart && !room.locked && degree[n] === 1 && !hasLink(n) && n !== start)
+      owner.set(n, { ...room, locked: true });
   const court = regions.findIndex((region, n) => region.kind === "court" && alive(n));
 
   /** Each room's alcove, the cells of it, where it has one. */
@@ -4065,7 +4070,15 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     });
   for (const door of doors) {
     if (!door?.locked || !open.length) continue;
-    locks.push({ x: door.x, y: door.y, room: door.room, key: open[Math.floor(random() * open.length)]! });
+    // The heart's key where its holders keep the way, else in a room they live in, else anywhere open.
+    const keepers = info[door.room]?.heart
+      ? [
+          open.filter((n) => info[n]?.post),
+          open.filter((n) => info[n]?.use === "holders" || info[n]?.use === "post"),
+        ].find((list) => list.length)
+      : undefined;
+    const choices = keepers ?? open;
+    locks.push({ x: door.x, y: door.y, room: door.room, key: choices[Math.floor(random() * choices.length)]! });
     keyRooms.push(rooms[locks[locks.length - 1]!.key]!);
   }
   // Furniture against each room's back wall (the one facing its door), then rubble in ruined rooms;

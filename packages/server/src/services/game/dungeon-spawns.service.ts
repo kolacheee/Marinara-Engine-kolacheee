@@ -300,7 +300,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     // The chief keeps the middle of the heart.
     const inRoom = (x: number, y: number) => dungeonRoomHas(room, x, y);
     const doors: Array<{ x: number; y: number }> = [];
-    if (here.map.roomInfo && area.role !== "heart")
+    if (here.map.roomInfo)
       for (const { x, y } of dungeonRoomCells(room))
         for (const [dx, dy] of [
           [1, 0],
@@ -326,7 +326,14 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const watch = held
       ? { x: held.x + Math.sign(centre.x - held.x), y: held.y + Math.sign(centre.y - held.y) }
       : undefined;
-    const middle = here.map.roomInfo ? (watch ?? centre) : (stair ?? farDoor ?? centre);
+    // The chief stands between the door and what the heart keeps, not on the tomb or the dais itself (panel
+    // round 31: guards parked on the founder's tomb).
+    const door = sorted[sorted.length - 1];
+    const guarding =
+      area.role === "heart" && door
+        ? { x: Math.round((door.x + centre.x) / 2), y: Math.round((door.y + centre.y) / 2) }
+        : undefined;
+    const middle = here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre);
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&
