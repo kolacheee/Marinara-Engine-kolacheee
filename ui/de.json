@@ -11448,6 +11448,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "Einrichtung für {{value1}}",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veo akzeptiert 4, 6 oder 8 Sekunden. Loop-Referenzen für Charaktere nutzen den Avatar als ersten und letzten Frame und laufen 8 Sekunden.",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "Video-Standardwerte",
+  "ui.decision.visionRequired": "Benötigt ein Entscheidungsmodell, das Bilder lesen kann. Wähle Liquid d1, Valen oder Winnow unter Verbindungen › Auf diesem Gerät › Integriertes Modell (Entscheidungen).",
   "ui.decision.visionRequiredLabel": "Warum dies nicht verfügbar ist",
   "ui.diagnostics.accessWarningBanner.review": "Zugriff prüfen",
   "ui.diagnostics.accessWarningBanner.title": "Andere können Marinara ohne Passwort öffnen",
