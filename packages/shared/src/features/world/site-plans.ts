@@ -1072,6 +1072,8 @@ export interface SiteLevelMap {
   quietWayLong?: Array<{ x: number; y: number }>;
   /** Loose boards or rubble on the way round, which give a sneaking party away. */
   creaks?: Array<{ x: number; y: number }>;
+  /** Fallen stone over a crypt's ruined rooms, walked over (its pack has no rubble prop). */
+  rubble?: Array<{ x: number; y: number }>;
   /** A hidden door that leads past the held room (panel round 46). */
   secretWay?: { x: number; y: number };
   /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
@@ -4864,6 +4866,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       }
     } else props[cell((sideLock as { x: number }).x, (sideLock as { y: number }).y)] = -1;
   }
+  /** Fallen stone in a crypt's ruined rooms, drawn over its floor (its pack has no rubble). */
+  const rubble: number[] = [];
   // Furniture against each room's back wall (the one facing its door), then rubble in ruined rooms;
   // never closing a way.
   const doorCells = new Set(doors.flatMap((door) => (door ? [cell(door.x, door.y)] : [])));
@@ -5310,7 +5314,19 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       const spots = pick === COBWEB ? [...shuffle(corners), ...everywhere()] : everywhere();
       for (const [x, y] of spots) if (!near(x, y) && put(pick, x, y)) break;
     }
-    if (room.ruined)
+    if (room.ruined && plan.template === "crypt") {
+      // A crypt's ruined room has had its vault come down: a heap of fallen stone spread from one corner,
+      // and loose stones strewn beyond it (panel round 52, the owner's "fallen burials").
+      const [cx0, cy0] = corners[Math.floor(random() * corners.length)]!;
+      const loose = (x: number, y: number) => ground[cell(x, y)] === "floor" && props[cell(x, y)]! < 0;
+      const heap = everywhere()
+        .filter(([x, y]) => loose(x, y))
+        .sort((p, q) => Math.abs(p[0] - cx0) + Math.abs(p[1] - cy0) - (Math.abs(q[0] - cx0) + Math.abs(q[1] - cy0)));
+      const many = Math.ceil((area.w * area.h) / 4);
+      for (const [x, y] of heap.slice(0, Math.ceil(many * 0.6))) rubble.push(cell(x, y));
+      for (const [x, y] of shuffle(heap.slice(Math.ceil(many * 0.6))).slice(0, Math.ceil(many * 0.4)))
+        rubble.push(cell(x, y));
+    } else if (room.ruined)
       for (let k = 0; k < Math.ceil((area.w * area.h) / 6); k++)
         put(SITE_RUBBLE_PROP, area.x + Math.floor(random() * area.w), area.y + Math.floor(random() * area.h));
     // A fall of the vault or ceiling in one corner of a room a floor, heaped where it came down: something
@@ -5883,6 +5899,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     ...(quietWay.length >= 3 ? { quietWay } : {}),
     ...(quietWay.length >= 3 && quietWayLong.length >= 3 ? { quietWayLong } : {}),
     ...(creaks.length >= 2 ? { creaks } : {}),
+    ...(rubble.length ? { rubble: rubble.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
     ...(secretWay && postRegion >= 0 ? { secretWay } : {}),
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
@@ -5985,6 +6002,7 @@ export function gameDungeonPlannedMap(input: {
     ...(laid.quietWayLong ? { quietWayLong: laid.quietWayLong } : {}),
     ...(laid.gallery ? { gallery: laid.gallery } : {}),
     ...(laid.creaks ? { creaks: laid.creaks } : {}),
+    ...(laid.rubble ? { rubble: laid.rubble } : {}),
     ...(laid.secretWay ? { secretWay: laid.secretWay } : {}),
     roomInfo: laid.rooms.map((room) => ({
       name: room.name,

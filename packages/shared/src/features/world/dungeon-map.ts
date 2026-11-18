@@ -902,6 +902,11 @@ export const gameDungeonMapSchema = z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(8)
       .optional(),
+    /** Fallen stone over a crypt's ruined rooms (owner 2026-11-18: varied big sites). */
+    rubble: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(400)
+      .optional(),
     /** A hidden door that leads past the held room (panel round 46). */
     secretWay: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
     /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */

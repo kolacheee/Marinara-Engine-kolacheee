@@ -1182,6 +1182,31 @@ export function DungeonMapView({
       }
       // Loose boards (rubble below ground) on the way round, which give a sneaking party away (owner 2026-11-18):
       // sprung planks askew, or a scatter of loose stones.
+      // Fallen stone where a crypt's vault came down (owner 2026-11-18: varied big sites): broken blocks
+      // heaped over the floor, walked over.
+      for (const [k, { x, y }] of (kept?.rubble ?? []).entries()) {
+        if (inFog(x, y)) continue;
+        const [ox, oy] = [x * T, y * T];
+        const turn = (k * 7 + x * 3 + y * 5) % 4;
+        const blocks = [
+          [1, 2, 6, 5],
+          [8, 1, 5, 4],
+          [4, 8, 7, 5],
+          [11, 7, 4, 4],
+          [1, 11, 4, 3],
+          [9, 12, 5, 3],
+        ] as const;
+        for (const [n, [bx, by, bw, bh]] of blocks.entries()) {
+          if ((n + turn) % 5 === 4) continue;
+          const [dx, dy] = turn % 2 ? [T - bx - bw, by] : [bx, by];
+          ctx.fillStyle = "rgba(10, 8, 6, 0.75)";
+          ctx.fillRect(ox + dx + 1, oy + dy + 1, bw, bh);
+          ctx.fillStyle = (n + turn) % 3 === 0 ? "#9c9384" : (n + turn) % 3 === 1 ? "#857c6e" : "#b0a796";
+          ctx.fillRect(ox + dx, oy + dy, bw, bh);
+          ctx.fillStyle = "rgba(255, 248, 230, 0.25)";
+          ctx.fillRect(ox + dx, oy + dy, bw, 1);
+        }
+      }
       const stony = kept?.site?.template === "crypt" || (kept?.site?.levels[kept.site.level]?.depth ?? 0) < 0;
       for (const [k, { x, y }] of (kept?.creaks ?? []).entries()) {
         if (inFog(x, y)) continue;
