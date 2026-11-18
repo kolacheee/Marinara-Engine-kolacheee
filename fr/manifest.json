@@ -1,6 +1,6 @@
 {
   "language": "fr",
-  "sourceCommit": "90db382afbab6444f2286638442184c05030870a",
+  "sourceCommit": "9290299798f4e5c0dda44a052a4ca695979914d9",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -574,8 +574,8 @@
     },
     {
       "path": "home/ai-basics.md",
-      "sha256": "57aa4be6b85dc9285b84743bc1935e244940ba6019b35dc49db0dbe644152183",
-      "bytes": 5131
+      "sha256": "3e457203aa20e1fb9f7b8b0ed8f7c3fc8a3fb3eb169c5fcdb1c7c01a131335a0",
+      "bytes": 5208
     },
     {
       "path": "home/professor-mari.md",
