@@ -11448,6 +11448,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "{{value1}}の設定",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veoは4、6、8秒に対応しています。キャラクターのループの参照では、アバターを最初と最後のフレームに使い、8秒で実行します。",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "動画のデフォルト",
+  "ui.decision.visionRequired": "画像を読み取れる判断モデルが必要です。接続 › このデバイス上 › 内蔵モデル(判断)でLiquid d1、Valen、Winnowのいずれかを選んでください。",
   "ui.decision.visionRequiredLabel": "利用できない理由",
   "ui.diagnostics.accessWarningBanner.review": "アクセスを確認",
   "ui.diagnostics.accessWarningBanner.title": "ほかの相手がパスワードなしでMarinaraを開けます",
