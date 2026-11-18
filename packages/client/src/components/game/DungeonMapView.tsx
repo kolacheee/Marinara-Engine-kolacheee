@@ -1072,6 +1072,40 @@ export function DungeonMapView({
           ctx.stroke();
         }
       }
+      // Loose boards (rubble below ground) on the way round, which give a sneaking party away (owner 2026-11-18):
+      // sprung planks askew, or a scatter of loose stones.
+      const stony = kept?.site?.template === "crypt" || (kept?.site?.levels[kept.site.level]?.depth ?? 0) < 0;
+      for (const [k, { x, y }] of (kept?.creaks ?? []).entries()) {
+        if (inFog(x, y)) continue;
+        const [ox, oy] = [x * T, y * T];
+        if (stony)
+          for (const [dx, dy, w] of [
+            [3, 4, 3],
+            [9, 3, 2],
+            [6, 9, 3],
+            [11, 11, 2],
+            [2, 12, 2],
+          ] as const) {
+            ctx.fillStyle = "rgba(12, 10, 8, 0.7)";
+            ctx.fillRect(ox + dx, oy + dy + 1, w + 1, w);
+            ctx.fillStyle = k % 2 ? "#a49a88" : "#8e8574";
+            ctx.fillRect(ox + dx, oy + dy, w, w - 1);
+          }
+        else
+          for (const [dy, tilt] of [
+            [3, k % 2 ? 1 : -1],
+            [9, k % 2 ? -1 : 1],
+          ] as const) {
+            ctx.fillStyle = "rgba(12, 8, 4, 0.75)";
+            ctx.fillRect(ox + 1, oy + dy - 1, T - 2, 5);
+            ctx.fillStyle = "#b07c46";
+            for (let px = 1; px < T - 1; px++)
+              ctx.fillRect(ox + px, oy + dy + Math.round(((px - T / 2) * tilt) / 8), 1, 3);
+            ctx.fillStyle = "#e0b070";
+            ctx.fillRect(ox + 3, oy + dy + Math.round(((3 - T / 2) * tilt) / 8), 1, 1);
+            ctx.fillRect(ox + T - 4, oy + dy + Math.round(((T - 4 - T / 2) * tilt) / 8), 1, 1);
+          }
+      }
       // A patrol's beat: a line of footfalls along the walk it keeps, a bar at each end where it turns,
       // outlined so it reads on stone and rugs alike (panel round 26: too faint).
       for (const guard of guards) {

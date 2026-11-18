@@ -736,6 +736,8 @@ export interface SiteLevelMap {
   traps: SiteLevelTrap[];
   /** The way round the held room, cell by cell, through the rooms left to nobody. */
   quietWay?: Array<{ x: number; y: number }>;
+  /** Loose boards or rubble on the way round, which give a sneaking party away. */
+  creaks?: Array<{ x: number; y: number }>;
   /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
   gallery?: Array<{ x: number; y: number }>;
 }
@@ -4887,6 +4889,23 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         })
         .map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) }))
     : [];
+  // The way round at a price on some floors (owner 2026-11-18, "Vary each floor's set-up"; panel round 38: the way
+  // round cost nothing): a stretch of loose boards, or rubble below ground, part way along it.
+  const creaks: Array<{ x: number; y: number }> = [];
+  if (quietWay.length >= 8 && random() < 0.45) {
+    const clear = (p: { x: number; y: number }) => {
+      const c = cell(p.x, p.y);
+      return (
+        ground[c] === "floor" &&
+        props[c] === -1 &&
+        !linked.has(c) &&
+        !doorCells.has(c) &&
+        !traps.some((trap) => trap.x === p.x && trap.y === p.y)
+      );
+    };
+    const mid = Math.floor(quietWay.length / 2);
+    for (const p of [quietWay[mid]!, quietWay[mid + 1]!, quietWay[mid - 1]!]) if (p && clear(p)) creaks.push(p);
+  }
   return {
     map,
     rooms: info,
@@ -4894,6 +4913,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     locks,
     traps,
     ...(quietWay.length >= 3 ? { quietWay } : {}),
+    ...(creaks.length >= 2 ? { creaks } : {}),
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
 }
@@ -4993,6 +5013,7 @@ export function gameDungeonPlannedMap(input: {
     at,
     ...(laid.quietWay ? { quietWay: laid.quietWay } : {}),
     ...(laid.gallery ? { gallery: laid.gallery } : {}),
+    ...(laid.creaks ? { creaks: laid.creaks } : {}),
     roomInfo: laid.rooms.map((room) => ({
       name: room.name,
       use: room.use,

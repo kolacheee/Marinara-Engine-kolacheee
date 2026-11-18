@@ -806,8 +806,25 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
         !near(n),
     )
     .sort((p, q) => q.long - p.long)[0];
-  if (crossing && random() < 0.6)
+  // Each floor its own set-up (owner 2026-11-18, "Vary each floor's set-up"; panel round 38: every floor ran
+  // the same beats): the post held with the way round free; the post walked by a patrol rather than held;
+  // the post's holders asleep at it; or the post held and the way round watched as well.
+  const roll = random();
+  const setup = roll < 0.35 ? "held" : roll < 0.55 ? "walked" : roll < 0.75 ? "sleeping" : "watched";
+  const post = map.roomInfo!.findIndex((info) => info.post);
+  if (post >= 0 && areas[post]!.role === "guard" && !areas[post]!.gallery) {
+    if (setup === "walked") areas[post] = { ...areas[post]!, patrol: true };
+    if (setup === "sleeping") areas[post] = { ...areas[post]!, asleep: true };
+  }
+  if (crossing && (setup === "watched" || (setup === "held" && random() < 0.4)))
     areas[crossing.n] = { ...areas[crossing.n]!, role: "guard", patrol: true, foes: lone(crossing.n) };
+  // The gate now and then lightly kept: one at the gate, its guardrooms dozing.
+  if (random() < 0.4)
+    for (const [n, area] of areas.entries()) {
+      if (area.role !== "guard") continue;
+      if (/^(Gate passage|Gatehouse)$/u.test(baseOf(n))) areas[n] = { ...area, foes: lone(n) };
+      else if (/^(Guardroom|Guard room)$/u.test(baseOf(n)) && random() < 0.6) areas[n] = { ...area, asleep: true };
+    }
   return areas;
 }
 

@@ -306,7 +306,28 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
         dungeonRoomCells(room)
           .filter(({ x, y }) => dungeonWalkable(cells, x, y) && (long ? y : x) === k)
           .sort((p, q) => (long ? p.x - q.x : p.y - q.y));
-      const line = tries.map(lineOn).sort((p, q) => q.length - p.length)[0]!;
+      // The line that runs past the most cover (panel round 38: beats through the open middle of a ward gave
+      // nothing to time against or hide behind), then the longest.
+      const cover = (line: Array<{ x: number; y: number }>) =>
+        line.filter(({ x, y }) =>
+          [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+          ].some(([dx, dy]) => {
+            const [nx, ny] = [x + dx!, y + dy!];
+            return (
+              nx >= 0 && ny >= 0 && nx < cells.width && ny < cells.height && cells.props[ny * cells.width + nx]! >= 0
+            );
+          }),
+        ).length;
+      const pool = long ? [room.y + 1, room.y + room.h - 2, ...tries] : [room.x + 1, room.x + room.w - 2, ...tries];
+      const line =
+        [...new Set(pool)]
+          .map(lineOn)
+          .filter((each) => each.length >= 3)
+          .sort((p, q) => q.length + 2 * cover(q) - (p.length + 2 * cover(p)))[0] ?? tries.map(lineOn)[0]!;
       if (line.length >= 3) {
         const step = (today * 7 + area.area * 3) % (2 * line.length - 2);
         const at = line[step < line.length ? step : 2 * line.length - 2 - step]!;

@@ -892,6 +892,11 @@ export const gameDungeonMapSchema = z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(600)
       .optional(),
+    /** Loose boards or rubble on the way round that give a sneaking party away (owner 2026-11-18). */
+    creaks: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(8)
+      .optional(),
     /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */
     gallery: z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
@@ -1404,6 +1409,17 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
       }${
         map.locks?.length
           ? ` Locked: ${map.locks.map((lock) => `area ${lock.room + 1}${map.roomInfo?.[lock.room] ? ` (${map.roomInfo[lock.room]!.name})` : ""}, its key in area ${lock.key + 1}`).join("; ")}. The Engine opens a lock when the party walks into its key's area; [map: unlock area=N] opens one the story opens (forced, picked, a key given).`
+          : ""
+      }${
+        map.creaks?.length
+          ? ` Loose ${site.template === "crypt" || (site.levels[site.level]?.depth ?? 0) < 0 ? "rubble" : "boards"} on the way round in ${[
+              ...new Set(
+                map.creaks.map((c) => {
+                  const area = dungeonAreaAt(map, c.x, c.y);
+                  return area ? `area ${area}` : "a passage";
+                }),
+              ),
+            ].join(", ")}: anyone sneaking over them makes a stealth check or is heard by the nearest holders.`
           : ""
       }${
         map.traps?.some((trap) => trap.found)
