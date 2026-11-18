@@ -1,0 +1,82 @@
+[
+  {
+    "id": "roof_a",
+    "size": [
+      48,
+      144
+    ],
+    "source": "r17-C6-critic2-source-roof_a.png",
+    "prompt": "Use case: precise-object-edit. Draw one replacement right-hand medieval roof abutment game sprite, enlarged pixel art on perfectly solid #FF00FF magenta. Reference 1 accepted left-hand abutment shows material and native tile scale; reference 2 accepted complete cap shows overlapping tile clusters; reference 3 is the defective right-hand abutment whose geometry to preserve. Replace the scratched dash texture with fully connected overlapping terracotta pantile courses, each tile roughly 7 native pixels wide by 4 high, broad lit top and dark underside, three primary warm material values. One broad plane recedes away upward, top edge rises slightly toward RIGHT. Narrow continuous grey-brown masonry receiving wall along RIGHT edge, one coping at top, unbroken thin flashing between roof and wall. Target native canvas 48x144: roof occupies x1..39, masonry x40..47. Roof and masonry reach the bottom edge together with continuous horizontal eave; straight square outside sides, no tapering foot, no specks. Draw enlarged at least 6x the native size and keep total long narrow sprite completely within magenta margin. Crisp one-native-pixel dark outline, top-left light, no labels, no extra objects, no haze, no cast ground shadow. Distinct complete raised overlapping tiles, NOT scattered strokes or scratches. This is variant A.",
+    "selected": false
+  },
+  {
+    "id": "roof_b",
+    "size": [
+      48,
+      144
+    ],
+    "source": "r17-C6-critic2-source-roof_b.png",
+    "prompt": "Use case: precise-object-edit. Draw one replacement right-hand medieval roof abutment game sprite, enlarged pixel art on perfectly solid #FF00FF magenta. Reference 1 accepted left-hand abutment shows material and native tile scale; reference 2 accepted complete cap shows overlapping tile clusters; reference 3 is the defective right-hand abutment whose geometry to preserve. Replace the scratched dash texture with fully connected overlapping terracotta pantile courses, each tile roughly 7 native pixels wide by 4 high, broad lit top and dark underside, three primary warm material values. One broad plane recedes away upward, top edge rises slightly toward RIGHT. Narrow continuous grey-brown masonry receiving wall along RIGHT edge, one coping at top, unbroken thin flashing between roof and wall. Target native canvas 48x144: roof occupies x1..39, masonry x40..47. Roof and masonry reach the bottom edge together with continuous horizontal eave; straight square outside sides, no tapering foot, no specks. Draw enlarged at least 6x the native size and keep total long narrow sprite completely within magenta margin. Crisp one-native-pixel dark outline, top-left light, no labels, no extra objects, no haze, no cast ground shadow. Distinct complete raised overlapping tiles, NOT scattered strokes or scratches. This is variant B. Use a calmer and more evenly laid roof with 35 overlapping courses, approximately six tiles across the slope. Connected orderly rectangular tile shoulders with muted three-value shading, staggered seams. Each overlapping course has a continuous two-tone lip rather than black scratches. Plain terracotta masses, no mottling. Right masonry receiver only eight of the 48 native pixels wide. Keep a tiny shaded return on each tile. No decorative roughness.",
+    "selected": true
+  },
+  {
+    "id": "wall_left",
+    "size": [
+      16,
+      96
+    ],
+    "source": "r17-C6-critic2-source-wall_left.png",
+    "prompt": "Use case: stylized-concept. Draw ONE tall narrow masonry party-wall receiving strip for a medieval pixel-art modular town, on solid #FF00FF magenta. It will register to 16x96 native pixels and its plain central masonry can repeat downward to five floors. A continuous tall RECTANGLE from top to bottom, parallel straight square left/right edges, absolutely no narrowing or foot taper. Grey-brown quiet ashlar stones in broad blocks. This is the LEFT exposed end of a merchant facade, light from upper-left: softly lit left edge and moderately shaded face facing viewer/right. A single small coping at very top, a continuous 1-native-pixel DARK exposed outline at the RIGHT edge where it meets plaster; no projections crossing that straight edge. No windows, doors, ornament, stripes, detached pieces, bevel triangles, moss, noise, outline thicker than one native pixel. Enough opaque material at BOTH bottom corners to continue into another course. Same material ramp as reference stone, restrained mortar. Enlarged carefully drawn game sprite, target exactly sixteen native columns, not a tower. Continuous straight-edged masonry body is essential.",
+    "selected": true
+  },
+  {
+    "id": "wall_right",
+    "size": [
+      16,
+      96
+    ],
+    "source": "r17-C6-critic2-source-wall_right.png",
+    "prompt": "Draw ONE tall straight narrow RIGHT-facing masonry party-wall return for a medieval town pixel-art sprite, enlarged on perfectly solid #FF00FF magenta. Target sixteen native pixels wide by ninety-six high. Rectangle with exactly parallel straight vertical sides and completely filled square bottom corners. Continuous ashlar masonry with light from TOP LEFT: right-facing plane is shaded grey-brown, thin lit left corner, single dark straight outline on outer right edge. ONE coping at top, no base plinth, no taper at bottom; the body courses repeat down to five storeys. Large calm stone blocks about 8x6 native pixels; low-contrast mortar, crisp discreet pixel clusters, three stone values. No cracks, specks, windows, bevel triangles, border boxes, steps, foot or floating fragments. Draw the entire continuous structural strip, on solid magenta, all else empty. Reference shows the game's restrained stone ramp and lighting. It must read as a narrow shaded return joining a building facade to a roof, never a freestanding decorative column.",
+    "selected": true
+  },
+  {
+    "id": "fence_a",
+    "size": [
+      8,
+      48
+    ],
+    "source": "r17-C6-critic2-source-fence_a.png",
+    "prompt": "Draw one narrow continuous medieval timber property boundary seen from a high three-quarter RPG town view, running NORTH–SOUTH vertically through the picture. Native target 8 pixels wide x48 pixels long, enlarged on perfectly solid magenta #FF00FF. This is a SIDE-FACING close-boarded timber fence: continuous warm dark oak boards and two unbroken connected rails run the full vertical length from the top edge to the bottom edge. Grounded square timber posts at intervals, flush side edges. It must read as a connected fence separating a working yard on left from street on right, not a pair of floating posts or a ladder. Single-pixel dark outline, light top-left with lit upper-left wood faces, dark right face, three muted brown values. No transparent horizontal gaps across the strip at ANY height; at least the uninterrupted rail must join all posts through the full length. Full square ends for seamless end-to-end joining. No scenery, ground plane, grass, shadows outside the fence, text, labels, specks, blur. 48px game grid scale. Variant A.",
+    "selected": true
+  },
+  {
+    "id": "fence_b",
+    "size": [
+      8,
+      48
+    ],
+    "source": "r17-C6-critic2-source-fence_b.png",
+    "prompt": "Draw one narrow continuous medieval timber property boundary seen from a high three-quarter RPG town view, running NORTH–SOUTH vertically through the picture. Native target 8 pixels wide x48 pixels long, enlarged on perfectly solid magenta #FF00FF. This is a SIDE-FACING close-boarded timber fence: continuous warm dark oak boards and two unbroken connected rails run the full vertical length from the top edge to the bottom edge. Grounded square timber posts at intervals, flush side edges. It must read as a connected fence separating a working yard on left from street on right, not a pair of floating posts or a ladder. Single-pixel dark outline, light top-left with lit upper-left wood faces, dark right face, three muted brown values. No transparent horizontal gaps across the strip at ANY height; at least the uninterrupted rail must join all posts through the full length. Full square ends for seamless end-to-end joining. No scenery, ground plane, grass, shadows outside the fence, text, labels, specks, blur. 48px game grid scale. Variant B. Show a continuous visible top rail running north–south vertically, and a continuous darker side wall made of tightly spaced boards on its RIGHT. Two or three squared post caps interrupt the rail but do not detach. Use a small magenta margin around the entire sprite, draw straight unclipped square top and bottom ends. This is a fence receding northward, seen from above, not a front-facing upright plank. Clear high three-quarter projection.",
+    "selected": true
+  },
+  {
+    "id": "gate_a",
+    "size": [
+      96,
+      64
+    ],
+    "source": "r17-C6-critic2-source-gate_a.png",
+    "prompt": "Use case: stylized-concept. Draw a single structural masonry bridging chamber/bearing module for the gatehouse in reference1. Reference2 is the accepted low dark front chamber that will overlap the bottom part of this new asset. Target native canvas96 wide x64 high, enlarged 10x or more, isolated solid magenta #FF00FF. The entire object is a broad RECTANGULAR grey-brown ashlar masonry lintel chamber. A shallow FLAT stone roof with top face seen from the high three-quarter view; no gabled roof, no slate, no terracotta. Continuous broad wall below it, restrained stone courses, two small shuttered loopholes, solid square bearing cheeks at left and right reaching all the way to bottom. Full painted coverage across all96 columns below first4 rows; no empty arches, no undercroft, no splayed foot, no trapezoid. Roof has crisp square ends with a top-left lit lip; dark right wall return, ONE native pixel exposed outline. This sits BETWEEN the two gatehouse towers, above the open ground portal; do not draw towers or portal. Stone colours match reference1 tower shafts, grey brown muted light warm stone, dark mortar restrained. Avoid scratches, cracks, noise, fancy carvings and dramatic black shadows. Variant A.",
+    "selected": false
+  },
+  {
+    "id": "gate_b",
+    "size": [
+      96,
+      64
+    ],
+    "source": "r17-C6-critic2-source-gate_b.png",
+    "prompt": "Use case: stylized-concept. Draw a single structural masonry bridging chamber/bearing module for the gatehouse in reference1. Reference2 is the accepted low dark front chamber that will overlap the bottom part of this new asset. Target native canvas96 wide x64 high, enlarged 10x or more, isolated solid magenta #FF00FF. The entire object is a broad RECTANGULAR grey-brown ashlar masonry lintel chamber. A shallow FLAT stone roof with top face seen from the high three-quarter view; no gabled roof, no slate, no terracotta. Continuous broad wall below it, restrained stone courses, two small shuttered loopholes, solid square bearing cheeks at left and right reaching all the way to bottom. Full painted coverage across all96 columns below first4 rows; no empty arches, no undercroft, no splayed foot, no trapezoid. Roof has crisp square ends with a top-left lit lip; dark right wall return, ONE native pixel exposed outline. This sits BETWEEN the two gatehouse towers, above the open ground portal; do not draw towers or portal. Stone colours match reference1 tower shafts, grey brown muted light warm stone, dark mortar restrained. Avoid scratches, cracks, noise, fancy carvings and dramatic black shadows. Variant B. More compact stonework, calm large blocks matching the accepted tower; exact frontal registration, front wall is a complete rectangle. Draw a low horizontal ledge at its base that physically bears on both tower cheeks. Shallow top plane occupies only about10 native rows, body54 rows. Muted buff-grey, NO golden yellow or orange stone, NO diagonal receding outer foot.",
+    "selected": true
+  }
+]

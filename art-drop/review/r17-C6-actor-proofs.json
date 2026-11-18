@@ -1,0 +1,58 @@
+[
+  {
+    "name": "gate-under",
+    "feet": [
+      1248,
+      1392
+    ],
+    "actor_canvas": [
+      24,
+      48
+    ],
+    "visible_fraction_after_reveal": 1.0,
+    "foreground_mask": "separate authored reveal mask",
+    "sorting": "feet, then foreground; no runtime collision claim"
+  },
+  {
+    "name": "gate-front",
+    "feet": [
+      1248,
+      1440
+    ],
+    "actor_canvas": [
+      24,
+      48
+    ],
+    "visible_fraction_after_reveal": 1.0,
+    "foreground_mask": "separate authored reveal mask",
+    "sorting": "feet, then foreground; no runtime collision claim"
+  },
+  {
+    "name": "church-east",
+    "feet": [
+      720,
+      1024
+    ],
+    "actor_canvas": [
+      24,
+      48
+    ],
+    "visible_fraction_after_reveal": 1.0,
+    "foreground_mask": "separate authored reveal mask",
+    "sorting": "feet, then foreground; no runtime collision claim"
+  },
+  {
+    "name": "court-entry",
+    "feet": [
+      312,
+      696
+    ],
+    "actor_canvas": [
+      24,
+      48
+    ],
+    "visible_fraction_after_reveal": 1.0,
+    "foreground_mask": "separate authored reveal mask",
+    "sorting": "feet, then foreground; no runtime collision claim"
+  }
+]

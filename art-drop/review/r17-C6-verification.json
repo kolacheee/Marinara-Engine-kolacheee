@@ -1,0 +1,2266 @@
+{
+  "checks": 437,
+  "passed": 437,
+  "failed": [],
+  "measurements": {
+    "modular_buildings": 57,
+    "modular_storeys": {
+      "5": 1,
+      "3": 18,
+      "2": 32,
+      "4": 4,
+      "1": 2
+    },
+    "all_ordinary_buildings": 66,
+    "storeys_including_ancillary": {
+      "5": 1,
+      "3": 18,
+      "2": 33,
+      "4": 4,
+      "1": 10
+    },
+    "single_storey_fraction": 0.15151515151515152,
+    "roof_colours": {
+      "terracotta": 29,
+      "slate": 18,
+      "brown": 10
+    },
+    "native_size": [
+      1920,
+      1440
+    ],
+    "grid": 48,
+    "cells": [
+      40,
+      30
+    ],
+    "square": [
+      720,
+      720,
+      480,
+      336
+    ],
+    "square_notch": [
+      720,
+      720,
+      96,
+      96
+    ],
+    "repeat_windows": 42,
+    "route_collisions": [],
+    "replayed_mode_samples": 40706048,
+    "protected_files": 19989
+  },
+  "items": [
+    {
+      "name": "fresh composition equals saved final",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "exact nearest2x",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "exact greyscale squint",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "actor-proof-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "actor-proof-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "bed-pictogram-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "bed-pictogram-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "cart-unload-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "cart-unload-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-entry-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-entry-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-porch-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-porch-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-apothecary-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-apothecary-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-baker-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-baker-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-cobbler-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-cobbler-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-smith-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "display-smith-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry-b-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "forge-smoke-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "forge-smoke-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-bearing-c6r2 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-bearing-c6r2 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-bridge-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-bridge-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-landing-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-landing-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-stair-lower-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-stair-lower-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-apothecary-entry-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-apothecary-entry-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-apothecary-entry-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker-entry-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker-entry-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker-entry-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-cobbler-entry-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-cobbler-entry-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-cobbler-entry-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-a-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-a-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-a-c6r1 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-b-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-b-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-b-c6r1 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-c-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-c-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-c-c6r1 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-passage-w2-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-passage-w2-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-passage-w2-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-smith-entry-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-smith-entry-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-smith-entry-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "guildhall-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "guildhall-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-b-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "market-hall-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "market-hall-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "packed-yard-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "packed-yard-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "party-left-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "party-left-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "party-right-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "party-right-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "passage-entry-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "passage-entry-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "passage-entry-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "receiving-wall-left-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "receiving-wall-left-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "receiving-wall-right-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "receiving-wall-right-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "return-house-a-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "return-house-a-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "return-house-b-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "return-house-b-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "return-house-c-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "return-house-c-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6-brown hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6-brown zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6-slate hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6-slate zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-scribe-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-scribe-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-tailor-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-tailor-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-a-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-a-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-a-c6r1 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-b-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-b-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-b-c6r1 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-c-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-c-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-c-c6r1 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-a-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-b-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-plaster-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-plaster-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-plaster-c6 fixed courses",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-bell-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-bell-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-open-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-open-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-fold-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-fold-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-hand-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-hand-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-weigh-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-weigh-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-c-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-c-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-top-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-top-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-top-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-top-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-top-c-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-top-c-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-a-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-a-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-b-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-b-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-c-c6 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-c-c6 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-stone-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-stone-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-stone-c6r2 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-stone-c6r2 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-wood-b-c6r2 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-wood-b-c6r2 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-wood-c6r1 hard alpha",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "yard-boundary-wood-c6r1 zero hidden RGB",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a-d2-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-a-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-b-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "house-c-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-a-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-b-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-house-c-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-d2-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-a-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-narrow-b-c6r1-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6-brown alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west-c6-slate alpha matches terracotta",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "cobble-c3 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "main-paving-c4 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "street-main-c3 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "street-side-c3 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "lane-c3 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "workyard-c4 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "mud-edge literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "square-slabs-c5 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ditch-c3 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "packed-yard-c6r1 literal3x3",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "heightleft shared48/96px ground contact",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "heightright shared48/96px ground contact",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "assembled house contacts: 18 hand/material/family cases and all16 city pairs",
+      "pass_": true,
+      "detail": {
+        "cases": 18,
+        "city_pairs": 16,
+        "probe_pixels": 23348,
+        "failures": []
+      }
+    },
+    {
+      "name": "unlike96 no exposed paving channels",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "unlike96slate no exposed paving channels",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "unlike96brown no exposed paving channels",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "unlike144 no exposed paving channels",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "unlike144slate no exposed paving channels",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "unlike144brown no exposed paving channels",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wallab compatible first/last2 columns",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wallbc compatible first/last2 columns",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wallca compatible first/last2 columns",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "north-curtain- at most two pixel-identical panels in five",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "name": "south-curtain- at most two pixel-identical panels in five",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "name": "gate-under actor visible in reveal",
+      "pass_": true,
+      "detail": 1.0
+    },
+    {
+      "name": "gate-front actor visible in reveal",
+      "pass_": true,
+      "detail": 1.0
+    },
+    {
+      "name": "church-east actor visible in reveal",
+      "pass_": true,
+      "detail": 1.0
+    },
+    {
+      "name": "court-entry actor visible in reveal",
+      "pass_": true,
+      "detail": 1.0
+    },
+    {
+      "name": "two identical resolved pieces in every five frontage houses",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "name": "comprehensive architectural chains and exposed crops",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "name": "PartE L-block resolved repetition",
+      "pass_": true,
+      "detail": {
+        "windows": 28,
+        "failures": []
+      }
+    },
+    {
+      "name": "PartE market resolved repetition",
+      "pass_": true,
+      "detail": {
+        "windows": 21,
+        "failures": []
+      }
+    },
+    {
+      "name": "PartE height-test resolved repetition",
+      "pass_": true,
+      "detail": {
+        "windows": 16,
+        "failures": []
+      }
+    },
+    {
+      "name": "all clear route rectangles avoid solid support footprints",
+      "pass_": true,
+      "detail": []
+    },
+    {
+      "name": "principal widths/depths48or96",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "guildhall192frontage at720",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "six stalls two rows",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "96px turning pocket",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "all ground shadows under50percent",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "shadow receiving strips remain in owned frontage",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "one-storey share including ancillaries <=25%",
+      "pass_": true,
+      "detail": {
+        "5": 1,
+        "3": 18,
+        "2": 33,
+        "4": 4,
+        "1": 10
+      }
+    },
+    {
+      "name": "mixed roof colours about half terracotta",
+      "pass_": true,
+      "detail": {
+        "terracotta": 29,
+        "slate": 18,
+        "brown": 10
+      }
+    },
+    {
+      "name": "ground-baker exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "ground-baker source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-merchant-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-plaster exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "storey-plaster source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "roof-merchant-c source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "inn-porch-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "side-house-west source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-entry-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-entry-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-entry-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "church-entry-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "market-hall-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "market-hall-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "market-hall-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "market-hall-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-c exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "wall-curtain-c source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-open exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-open source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-bell exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "tower-bell source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-bridge exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "gate-bridge source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-weigh exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-weigh source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-fold exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-fold source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-hand exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "vendor-hand source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "cart-unload exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "cart-unload source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-tailor exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-tailor source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-scribe exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "sign-scribe source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "door-entry-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "passage-entry exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "passage-entry source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "bed-pictogram exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "bed-pictogram source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 roof_a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 roof_a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 roof_b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 roof_b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 wall_left exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 wall_left source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 wall_right exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 wall_right source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 fence_a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 fence_a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 fence_b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 fence_b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 gate_a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 gate_a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 gate_b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic2 gate_b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 abutment-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 abutment-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 abutment-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 abutment-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 house-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 house-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 house-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 house-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 tower-open-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 tower-open-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 tower-bell-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 tower-bell-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 landing-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 landing-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 guildhall-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 guildhall-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 church-porch-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 church-porch-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 landing-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 landing-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 church-porch-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 church-porch-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 house-c exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 house-c source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 guildhall-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 guildhall-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 gate-stair-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 gate-stair-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 gate-stair-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 gate-stair-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 narrow-roof-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 narrow-roof-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 narrow-roof-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 narrow-roof-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 packed-yard-a exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 packed-yard-a source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 packed-yard-b exact64sample mode",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "critic1 packed-yard-b source hash",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "final ground fully opaque",
+      "pass_": true,
+      "detail": null
+    },
+    {
+      "name": "pre-existing protected files byte-identical",
+      "pass_": true,
+      "detail": []
+    }
+  ],
+  "scope": "Saved-art self-checks; no independent panel or runtime claims"
+}

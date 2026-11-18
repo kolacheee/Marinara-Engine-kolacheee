@@ -1,0 +1,159 @@
+{
+  "part": "C6",
+  "scope": "Saved-art implementation and self-review; not independent panel approval or runtime navigation testing",
+  "fixes": [
+    {
+      "item": 1,
+      "status": "addressed",
+      "change": "Connected northwest and northeast side/rear ranges; replaced southern slivers with96px houses. Thirteen enclosed48px rear strips, attached stores and24px passages; all49 modular houses have a positive shared ground edge.",
+      "evidence": "r17-C6-footprints-clearance-1x.png"
+    },
+    {
+      "item": 2,
+      "status": "addressed",
+      "change": "Continuous96px portal road at x1200\u20131296 turns through y1056\u20131152. The inn turning pocket,48px side streets,24px lanes, northwest T/elbow, stepped northeast wedge and southern stagger are built geometry. Gate service lane routes north of the supports.",
+      "evidence": "r17-C6-layout.json"
+    },
+    {
+      "item": 3,
+      "status": "addressed",
+      "change": "New96px merchant/stone entrance and upper modules,96/144px-deep caps, continuous12px masonry returns and fixed connection courses; complete two-storey pilot beside fantasy-house-2.",
+      "evidence": "r17-C6-house-reference-4x.png"
+    },
+    {
+      "item": 4,
+      "status": "addressed",
+      "change": "Two drawn abutment hands,96/144px versions and three roof colours; receiving masonry before caps and native flashing afterward. Both five-/one-storey hands shown.",
+      "evidence": "r17-C6-tall-low-left-3x.png"
+    },
+    {
+      "item": 5,
+      "status": "addressed",
+      "change": "Guildhall frontage advances to base720; immediately adjacent narrow houses lose one floor. A48px forecourt fronts its192px arcade.",
+      "evidence": "r17-C6-square-squint-1x.png"
+    },
+    {
+      "item": 6,
+      "status": "addressed",
+      "change": "Drawn96x48 east church steps inside the shifted5x6 cathedral allocation; new192x144 northern arcade faces the square from the southern market hall. Churchyard remains enclosed.",
+      "evidence": "r17-C6-square-1x.png"
+    },
+    {
+      "item": 7,
+      "status": "addressed",
+      "change": "New recessed48px entrance bay and lit landing for baker, apothecary, smith and cobbler; distinct painted goods occupy the companion48px bay. New96px inn porch and16x8 bed emblem. Clear24x32 standing areas for all five named entrances.",
+      "evidence": "r17-C6-layout-connections.json"
+    },
+    {
+      "item": 8,
+      "status": "addressed",
+      "change": "New painted open passage at both ends of the24px northwestern route. Rear fence leaves that opening clear; pump court stays96x48 at240,432. Entering person moved to the route; single-actor normal/reveal proof.",
+      "evidence": "r17-C6-court-entry-normal-reveal-3x.png"
+    },
+    {
+      "item": 9,
+      "status": "addressed",
+      "change": "Three new96x144 curtain drawings share the registered master courses, parapet and identical first/last two columns. Slit and8px repair joints stay internal. Southern top selections continue their three-piece sequence across the gate interruption.",
+      "evidence": "r17-C6-curtain-stair-tower-3x.png"
+    },
+    {
+      "item": 10,
+      "status": "addressed",
+      "change": "Selected roof C after three painted cap candidates; quieter locked terracotta/slate/shingle ramps, broad light/shade planes, consistent native course registration and corresponding drawn valley pieces replace selected roof runs.",
+      "evidence": "r17-C6-variants-roof-merchant-c-c6-3x.png"
+    },
+    {
+      "item": 11,
+      "status": "addressed",
+      "change": "Hard southeast projections derive from the drawn structural facade rows, respond to storey height and union once at88/255 opacity. Native eave/return shading remains separate; ground receivers mask architecture and remain within owned frontage strips.",
+      "evidence": "r17-C6-placements.json"
+    },
+    {
+      "item": 12,
+      "status": "addressed",
+      "change": "The proven apothecary repeat is replaced by the single-recess plaster module. Pixel hashes count underlying panels across floors even under cropped edge returns, complete side houses, property groups and side-lane interruptions. Northeast upper-floor and narrow-floor repeats also corrected.",
+      "evidence": "r17-C6-repeat-audit.json"
+    },
+    {
+      "item": 13,
+      "status": "addressed",
+      "change": "New opposite-facing96x192 houses alternate with existing northern side houses. Open battlement and banner/bell tops share original shafts with the roofed watch variant. Southern96px houses stagger a full48px with continuous exposed masonry. Uneven tower spacing retained.",
+      "evidence": "r17-C6-street-1x.png"
+    },
+    {
+      "item": 14,
+      "status": "addressed",
+      "change": "Redrawn scissors and quill signs retain twice-R15 canvas scale, with lit rim, dark thickness and visible brackets. Full-size signs sit in dedicated upper sign niches clear of entrances.",
+      "evidence": "r17-C6-piece-sign-tailor-c6-4x.png"
+    },
+    {
+      "item": 15,
+      "status": "addressed",
+      "change": "Six48px stalls at x960/1008/1056 have base rows816/912,48px aisle and96px eastern route. Fountain starts816, leaving48px to the church steps; stores moved into market-hall bays.",
+      "evidence": "r17-C6-square-3x.png"
+    },
+    {
+      "item": 16,
+      "status": "addressed",
+      "change": "New96x48 bridging chamber and48px bearing/landing augment the preserved3x4 gatehouse. Tower heights and portal remain intact; support footprints are separate from overhead art.",
+      "evidence": "r17-C6-gate-under-normal-reveal-3x.png"
+    },
+    {
+      "item": 17,
+      "status": "addressed",
+      "change": "Covered48x48 fuel/tool store attaches to the western smith, with native gutter drain. Southern private strips use packed mud-edge ground and attached yard props; east-wall storage retains its clear service passage.",
+      "evidence": "r17-C6-layout.json"
+    },
+    {
+      "item": 18,
+      "status": "addressed",
+      "change": "The northeast shrine has a48x96 apron; the connected northwest court has a48px pump. Native angular24x48 forge smoke is contained at the western workshop.",
+      "evidence": "r17-C6-street-1x.png"
+    },
+    {
+      "item": 19,
+      "status": "addressed",
+      "change": "Three new second-row vendor drawings weigh, fold and hand over goods; two shoppers share a counter. New48px unloading cart/worker sits in the inn court outside walking routes.",
+      "evidence": "r17-C6-all-pieces-4-1x.png"
+    },
+    {
+      "item": 20,
+      "status": "addressed",
+      "change": "Saved16x12 L/T/dead-end, civic square, both height-transition hands, self/variant seams, literal references, greyscale, footprints/overhangs and24x48 actors at the exact requested gate/church feet. Every export has1x/4x sheets; all nine ground bases have literal3x3 repeats.",
+      "evidence": "r17-C6-review.html"
+    }
+  ],
+  "brief_precedence": [
+    "BRIEF-17 retains universal fixed rows0/47 despite panel2 constrained-stack suggestion.",
+    "Building ground footprints remain1\u20132 cells deep. Deeper projected roofs and separate rear strips do not enlarge ground footprints.",
+    "Signs retain twice-R15 scale; panel2 maximum32x40 assemblies is overridden.",
+    "Owned overlay strips remain lot-contained; unrestricted cross-lot shadows are rejected.",
+    "Actual frontage turns and junctions remain within eight-cell runs; panel2 waiver is rejected.",
+    "Gate remains3x4 with original tower heights; guildhall remains4x4. No footprint enlargement or tower shortening.",
+    "Coordinator40x30-cell district sets the1920x1440 native output. Square is10x7 with2x2 notch, within the maximum10x8 and minimum6x5 requirements."
+  ],
+  "panel2": {
+    "enclosure": "C6 fixes1,2,5,6,15",
+    "complete_house": "C6 fixes3,4",
+    "roof_and_elevations": "C6 fixes3,4,10,12,13; preserved approved wider assemblies",
+    "access_and_signs": "C6 fixes7,8,14",
+    "side_rear_courts": "C6 fixes1,8,17,18; precise C6 northwest court coordinates retained",
+    "routes": "C6 fixes2,15,16",
+    "landmarks": "C6 fixes5,6,16",
+    "shadows": "C6 fix11 with BRIEF containment",
+    "visibility_and_whole_scene": "C6 fix20",
+    "scope": "Only C6 artwork/composition/review; no runtime expansion"
+  },
+  "legacy_E": "Resolved-pixel audits of L-block, market and height-test pass; prior repaired selections preserved byte-for-byte.",
+  "selections": {
+    "roof": "C selected from A/B/C; A/B rejected",
+    "abutments": "A plus cropped painted roof/return from B",
+    "inn": "B selected from A/B",
+    "side_house": "A and separate opposite-facing drawing; B rejected",
+    "church_entry": "A selected from A/B",
+    "market_hall": "B north-facing arcade selected from A/B",
+    "entry": "second isolated entrance selected; first whole-house response rejected",
+    "passage": "additional isolated open tunnel drawing",
+    "other": "All remaining drawings serve registered exports or native painted composites"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "scope": "Static authored geometry only; no runtime pathfinding claim",
+  "checks": [
+    {
+      "name": "every modular house has a positive-length shared wall with a building or attached store",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "square-baker24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "square-apothecary24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "west-smith24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "west-cobbler24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "gate-road-inn24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "continuous designated main-road union from portal to eastern square",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main road width never less than96",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southern whole-house stagger exactly48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gate preserved3x4 ground allocation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "church east porch within5x6 church allocation",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 11,
+  "failed": []
+}

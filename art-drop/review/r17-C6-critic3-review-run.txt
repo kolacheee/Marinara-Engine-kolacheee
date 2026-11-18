@@ -1,0 +1,54 @@
+{
+  "checks": 437,
+  "passed": 437,
+  "failed": [],
+  "metrics": {
+    "modular_buildings": 57,
+    "modular_storeys": {
+      "5": 1,
+      "3": 18,
+      "2": 32,
+      "4": 4,
+      "1": 2
+    },
+    "all_ordinary_buildings": 66,
+    "storeys_including_ancillary": {
+      "5": 1,
+      "3": 18,
+      "2": 33,
+      "4": 4,
+      "1": 10
+    },
+    "single_storey_fraction": 0.15151515151515152,
+    "roof_colours": {
+      "terracotta": 29,
+      "slate": 18,
+      "brown": 10
+    },
+    "native_size": [
+      1920,
+      1440
+    ],
+    "grid": 48,
+    "cells": [
+      40,
+      30
+    ],
+    "square": [
+      720,
+      720,
+      480,
+      336
+    ],
+    "square_notch": [
+      720,
+      720,
+      96,
+      96
+    ],
+    "repeat_windows": 42,
+    "route_collisions": [],
+    "replayed_mode_samples": 40706048,
+    "protected_files": 19989
+  }
+}

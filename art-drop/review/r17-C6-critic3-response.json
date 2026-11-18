@@ -1,0 +1,120 @@
+{
+  "part": "C6",
+  "responding_to": "critic-r17C6-3.json",
+  "scope": "Saved-art repair and self-verification; not independent critic or runtime approval.",
+  "new_drawings": 0,
+  "reason": "Every standalone drawing passed critic round3; its remaining failures are assembled contacts. Reuse the approved drawn paint and preserve all passing exports.",
+  "production_pngs_unchanged": 2756,
+  "method": "Native crop, tile-wrap, alpha-contour masking and compositing of approved image-tool masonry/flashing. No constructed replacement shapes or noise; original source generation/reduction provenance retained.",
+  "failed_file_responses": {
+    "compose.py": {
+      "repair": "Replaced canvas-top vertical strips with actual assembled-contour masonry backing, one coping and neutral drawn flashing. All16 actual-city pairs and18 hand/material/family cases have zero exposed-background pixels.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final-2x": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final-squint": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final-crop-square-3x": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final-crop-street-3x": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    },
+    "r17-city-final-crop-gate-3x": {
+      "repair": "Regenerated from the repaired composer; exact native/scaled/greyscale/comparison derivatives verified.",
+      "evidence": [
+        "r17-C6-critic3-verification.json",
+        "r17-C6-verification.json"
+      ]
+    }
+  },
+  "fixes": {
+    "1": "Retained the accepted enclosed property strips and joined ranges; plan equality checked.",
+    "2": "Retained continuous96px gate-road turn, turning pocket, tower-foot bends, T-junctions and48/24px routes; layout checks pass.",
+    "3": "Kept all approved complete-house drawings byte-identical and regenerated reference comparisons.",
+    "4": "Replaced canvas-top vertical strips with actual assembled-contour masonry backing, one coping and neutral drawn flashing. All16 actual-city pairs and18 hand/material/family cases have zero exposed-background pixels.",
+    "5": "Kept guildhall at base720 with broad arcade and accepted lower flanks; refreshed greyscale.",
+    "6": "Kept supported church east porch and square-facing market hall; refreshed square and actor proofs.",
+    "7": "Kept approved shop thresholds, porch, bed symbol and displays; clearance checks pass.",
+    "8": "Northwest deliberate court remains pixel-identical; passage and actor normal/reveal sheets regenerated.",
+    "9": "Kept approved curtain/tower/stair drawings and contacts byte-identical; regenerated seams.",
+    "10": "Removed all arbitrary roof-paint flashing crops. The new contour assembly uses only neutral drawn flashing and matching material partners; all roof drawings and their tile scale remain unchanged.",
+    "11": "Retained the accepted owned ground/roof/wall shadow system. New join paint enters occupancy before shadow masking, avoiding ground shade inside the closed contacts.",
+    "12": "All42 five-house frontage windows and comprehensive/legacy repetition audits pass; approved bay retained.",
+    "13": "Kept alternate houses, mixed heights, uneven towers and full48px southern stagger.",
+    "14": "Kept bracketed, shaded trade signs and clear thresholds; native source exports unchanged.",
+    "15": "Retained six stalls, browsing aisle, eastern96px through-route, fountain approaches and occupied market bays.",
+    "16": "Kept gate bearing, intact tower shafts, portal and supported walk; normal/reveal proofs refreshed.",
+    "17": "Kept enclosed packed-earth trade yards, attached stores, laundry/wood and drain.",
+    "18": "Kept shrine apron, northwest pump and forge smoke.",
+    "19": "Kept active vendor poses, paired shoppers and unloading cart outside clear routes.",
+    "20": "Regenerated final1x/2x, greyscale, reference comparison, all3x crops, current C6 scene/seam/actor sheets. Added background-independence checks on actual assembled houses and isolated city pairs; original compositor demonstrably fails those regression checks."
+  },
+  "verification": {
+    "targeted": 127,
+    "review": 437,
+    "layout": 11,
+    "assembled_variants": 18,
+    "isolated_city_contacts": 16,
+    "contact_probe_pixels": 23348,
+    "mode_samples_replayed": 40706048
+  },
+  "storeys": {
+    "5": 1,
+    "3": 18,
+    "2": 32,
+    "4": 4,
+    "1": 2
+  },
+  "storeys_including_ancillary": {
+    "5": 1,
+    "3": 18,
+    "2": 33,
+    "4": 4,
+    "1": 10
+  },
+  "roof_colours": {
+    "terracotta": 29,
+    "slate": 18,
+    "brown": 10
+  },
+  "panel_conflicts": "BRIEF-17 prevails on fixed48px courses,1\u20132-cell ground depth, sign scale, lot-contained overlays, compulsory street variation and landmark/gate allocations, as already recorded in FIXES.md.",
+  "seasonal_partners": "None apply; all PNGs unchanged.",
+  "git": "No branch change, commit or push."
+}

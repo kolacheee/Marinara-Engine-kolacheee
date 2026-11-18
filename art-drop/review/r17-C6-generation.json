@@ -1,0 +1,322 @@
+[
+  {
+    "id": "ground-baker",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Draw one modular medieval merchant shop ground-floor piece, game pixel art, solid uniform magenta #ff00ff background. Reference the attached town-house sprite's chunky angular high 3/4 construction, warm brown beams and grey-brown stone, top-left lighting, thin dark outlines. This is JUST a 96x48 native-pixel ground floor, drawn large at approximately 8x scale with visible square pixels, wide 2:1 rectangle filling frame. Flat square top and bottom connection courses, no roof. Rightmost 14 native pixels form a substantial shaded side return, continuous stone foundation with lit top. Left bay contains a recessed baker's shop counter with three broad bread shapes; right-central bay contains a 24px wide, 30px tall dark usable doorway, a bright 24x8 landing below and a 6x10 hanging lantern. Door opening is real depth, threshold projects. Calm material clusters, no triangular plaster bevels, no decorative hairlines, no blobs, isolated pixels, noise, text or ground beyond the piece. Keep drawing rectangular and wall thickness convincing.",
+    "source": "r17-C6-source-ground-baker.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "storey-merchant-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One rectangular 96x48 upper storey module ONLY, no roof or ground. Two broad 24x28 shuttered recessed windows centred in the left 80px front face; same sober warm plaster and timber frame as the reference. Align main vertical posts at x0,40,80. Rightmost 16px is a CONTINUOUS substantial shaded timber/plaster return, not an inset bevel. Two pixel sill tops, two pixel shadow beneath, thick projecting sill. Completely flat horizontal top/bottom attachment courses. Square rectangular contour; no sloping bottom. Sparse beams, no red decorative panel.",
+    "source": "r17-C6-source-storey-merchant-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "storey-plaster",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One rectangular 96x48 plaster upper-storey module ONLY, no roof or ground. Exactly ONE 24x28 shuttered dark recessed window at native position x36 y8. Plain muted warm cream plaster mass, restrained sill with 2px lit top and 1px shadow. Slim sober timber posts at ends, continuous flat top and bottom connection courses. No triangular plaster bevels, no diagonal beams, no extra windows. Rightmost 12px continuous shaded return. Square rectangular outline.",
+    "source": "r17-C6-source-storey-plaster.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "roof-merchant-a",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. A single complete deep terracotta gable roof cap ONLY, 96 native pixels wide by 144 deep. High 3/4 game view, long ridge receding vertically north from centred front gable at bottom. Continuous wide rectangular painted roof body and thick dark eave across full 96px bottom; small triangular timber gable face at bottom. Roof viewed largely from above. Broad lit LEFT slope, shaded RIGHT slope, only THREE main tile values plus outline. Tile clusters all approximately 6\u20138 native px wide and 3\u20134 px deep, same scale through slopes and end triangle. Straight square sides, NOT pinched/tapered inward; fills full rectangle, no empty paving wedges. Native clean stepped pixels not scallops, no scratches or isolated dark dots. No chimney, no dormer, no walls.",
+    "source": "r17-C6-source-roof-merchant-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "roof-merchant-b",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Alternative complete deep terracotta HIP roof cap ONLY for 96x144 native pixels. Same top-down 3/4 view as the reference roofs; broad lit left slope and darker right slope, short straight north-south ridge, broad hipped southern end. Full-width 96px southern eave. Fairly rectangular complete roof envelope, small angular hips at top, no pinched middle. Exactly THREE main terracotta material values plus outline. Repeated broad rectangular tile clusters 6\u20138px wide 3\u20134px deep CONSISTENT across all slopes; calm flat clusters no granular texture or scratches or scallops. No walls, no chimney, no isolated specks. Fill most of tall frame.",
+    "source": "r17-C6-source-roof-merchant-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "roof-merchant-c",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Draw ONE complete long terracotta roof cap, native canvas 96x144. Long north-south ridge, front gable bottom, rectangular full-width body. Critical tile density: exactly SIX tiles across EACH half slope (twelve across entire96px width) and approximately THIRTY-SIX horizontal courses down144px depth. Each tile native6\u20138px wide 3\u20134px high. Dense enough to match small reference house but NOT scratches; big simple rectangular connected colour clusters, three main terracotta values. Lit left, shaded right. Entire sides of the roof straight vertical, bottom full-width eave; thick gable timber bottom. NO stepped narrowing, no transparent cut-ins, no brick-grid different scale at the end. Native pixel-art enlarged, no walls, no chimney, magenta outside.",
+    "source": "r17-C6-source-roof-merchant-c.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "abutment-a",
+    "size": [
+      48,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE narrow 48x144 roof valley/party-wall transition viewed from above in the reference high3/4 projection. Leftmost12px are a continuous vertical grey-brown exposed masonry receiving wall with a single lit coping at top; along its right base a continuous dark metal FLASHING strip. Remaining36px are a complete terracotta tile slope extending full height, broad6\u20138px by3\u20134px tile clusters (five tiles across,36 courses down), south eave projecting. Square full rectangular painted piece with flat connection ends, no holes. This joins a taller house on left to lower roof on right. One outline only, muted three roof values, calm masonry.",
+    "source": "r17-C6-source-abutment-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "abutment-b",
+    "size": [
+      48,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE 48x144 native roof abutment strip for a lower roof meeting a taller neighbour on the RIGHT. RIGHTMOST12px continuous shaded grey-brown masonry receiving wall, one coping cap at north/top, continuous thin metal flashing at its left foot. Left36px complete lit terracotta roof slope. Straight rectangular silhouette full width, flat top and bottom no tapering. Thirty-six rows of calm rectangular6\u20138x3\u20134px tiles, no flecks. Strong broad planes, simple crisp angular pixels, no ground. Preserve lit upper-left and shaded right, DO NOT mirror the lighting.",
+    "source": "r17-C6-source-abutment-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "door-entry",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE 48x48 native usable shop entrance bay, square rectangle. Grey-brown stone ground floor with substantial 5px jambs and visible foundation top. Central recessed dark open doorway24px wide and30px tall, below it a bright clearly projecting24x8 landing. Warm lantern exactly6x10px mounted right of opening above head height. Heavy straight lintel, no arch and no window. Flat top/bottom connection courses; completely rectangular boundary. Simple two-tone stone and sober brown timber, no goods and no sign. Door MUST read enterable rather than shuttered.",
+    "source": "r17-C6-source-door-entry.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "inn-porch-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONLY a wide shallow rectangular medieval inn GROUND FLOOR MODULE, native96x48. No upper storey and NO main roof: an attached96px wide porch fascia with two stout support posts, open recessed24px wide lodging door at left-centre, bright24x8 stone landing and6x10 lantern. At right a separate courtyard passage24px wide with a squared lintel, sunlit paving visibly continuing to a pale far exit. An unlettered simple BED pictogram16x8 inset on porch fascia above lodging door. Warm timber, stone lower walls, cream plaster. Front high3/4 shallow view, straight rectangular top and base attachment courses. Only this single storey, no chimney, no surroundings.",
+    "source": "r17-C6-source-inn-porch-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "inn-porch-b",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Alternative single wide96x48 native GROUND FLOOR MODULE for medieval inn, drawn as a2:1 rectangle ONLY no building above. Strong96px wide projecting timber PORCH covers left lodging entrance and right daylight court passage. Left lodging door24px wide,30px tall dark recessed open rectangle, bright24x8 landing,6x10 lantern. Bed icon16x8 on lintel over left door. Right passage squared lintel and pale stone paving running through to sunny exit. Heavy porch posts anchored on stone plinth, no objects on steps. Calm muted wood and grey-brown masonry. Sharp square pixel edges, fixed flat top/bottom courses. No roof, chimney, upstairs, lettering or scenery.",
+    "source": "r17-C6-source-inn-porch-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "side-house-a",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE complete two-storey medieval side-facing house, native96x192px. High3/4 view matching reference. Visible EAST/right side wall takes40% of width, with usable side door and pale landing ending exactly at right edge near bottom. Front toward southwest, two upper shutter windows, ground stonework and one shuttered service window. Alternative silhouette to reference: short HIP roof termination and ONE low broad dormer, no pointed gable. Warm sober plaster, vertically aligned brown timber posts, no decorative panels. Long terracotta roof96px deep occupying top half, walls below96px. Broad muted roof tiles6\u20138px. Continuous foundations and recessed windows, shaded right return. Top-left light. Square edges, no ground outside, no chimney.",
+    "source": "r17-C6-source-side-house-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "side-house-b",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE complete two-storey side-facing medieval town house native96x192, same landing anchors but alternative roof silhouette. EAST-facing usable door low on right side, right-facing landing reaches right edge16px above bottom. Roof occupies top96px: half-hipped terracotta roof with one small square skylight, no front pointed gable and no dormer. Below, stone base and timber/plaster upper, broad two-bay windows, continuous shaded right wall and foundation. Right visible wall40% width. Top-left lit, not mirrored. Consistent6\u20138px tiles, calm architecture not ornament, native angular pixels, magenta outside.",
+    "source": "r17-C6-source-side-house-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "side-house-west",
+    "size": [
+      96,
+      192
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Single complete medieval two-storey town house96x192 native sprite, high3/4 RPG view. The visible side wall is on the LEFT and faces WEST, taking35% width. Put usable dark recessed side entrance with lantern in LEFT side, bright stone landing touching LEFT canvas edge16px above bottom. Front faces southeast, has one wide shuttered window and a closed service shutter downstairs. Short half-hipped terracotta roof with low dormer, roof fills top96px. Ground floor grey-brown stone, upper warm cream plaster with sober timber. Top-left light means LEFT side is lit, RIGHT front slightly darker. Do NOT mirror reference shading. Thin outlines, chunky pixel clusters, rectangular foundation. No ground or shadows outside house, magenta backdrop.",
+    "source": "r17-C6-source-side-house-west.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "church-entry-a",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONLY a projecting east-facing church entrance and steps assembly,96x48 native piece. Grey-brown stone Gothic small doorway with recessed dark open portal, heavy jambs and modest pointed lintel at LEFT half. Its FRONT faces EAST/right; broad shallow lit steps descend toward RIGHT edge with a24px landing at right. Long96px wide48px high shallow projection, should attach to a church side wall on LEFT and face a market square on RIGHT. Roofless, no tower, no church body. Native sharp angular pixels, one-pixel outline, top-left light, restrained masonry with sparse joints, no ornament, no text, no surroundings.",
+    "source": "r17-C6-source-church-entry-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "church-entry-b",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Alternative96x48 native church EAST entrance assembly ONLY. Portal set in substantial grey-brown stone wall at left third; open dark pointed doorway faces right/EAST, lit jambs and simple buttress. Four broad stone steps descend to RIGHT into wide landing, visible top faces, squared ends. Shallow high3/4 viewpoint, no roof or church body. Low contrast masonry, no mottled chips, no ornament. Top-left light, dark single-pixel outline. Solid magenta surrounding crisp silhouette, fits2:1 horizontal rectangle.",
+    "source": "r17-C6-source-church-entry-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "market-hall-a",
+    "size": [
+      192,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE entire medieval open-sided MARKET HALL192x144 native sprite, high3/4 RPG view. Critical design: the NORTH/square-facing edge at TOP of sprite has a prominent OPEN ARCADE of four broad stone arches with dark interiors, visible tops of pillars, open through-view, and counters WITHIN bays. The main terracotta gable roof is set back toward SOUTH/bottom of image, so it DOES NOT conceal the north arcade. A shallow low clerestory roof in rear, arcade canopies project NORTH. This is a low civic market hall viewed from its northern entrance, four bays across192px,144px deep total. Stone grey-brown, timber restrained, roof tiles6\u20138px, thick eaves, simple strong masses. Top-left light. No people, surroundings, grass, text, extra towers.",
+    "source": "r17-C6-source-market-hall-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "market-hall-b",
+    "size": [
+      192,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. A medieval OPEN MARKET PAVILION, native192x144, high top-down three-quarter RPG sprite. Camera looks from NORTHWEST toward southeast so NORTH entrance faces viewer at the TOP-LEFT edge. Four stone archways along the upper/northern facade MUST appear in the TOP HALF of image; lower/southern half contains the low terracotta roof behind them. Show a deliberate game-visibility CUTAWAY along the near/north roof edge so all four entry arches and their stone bases are visible, with goods counters under the roof. Flat square grid footprint, no isometric diamond base. No tall roof hiding the arcade. Like a dollhouse cutaway of a low public hall: short rear roof, open north colonnade, side pillars, stone floor. Grey-brown stone, brown timber, calm tiles. Main arcade faces UP the screen toward the city square. No text, people, ground or extra building.",
+    "source": "r17-C6-source-market-hall-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "wall-curtain-a",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE repeatable straight medieval curtain-wall panel96x144 native, FRONT high3/4 view. Completely RECTANGULAR lower body, NO side return, no vertical outer border or boxed edge. Identical horizontal masonry course heights every8 native pixels. Grey-brown ashlar stones16\u201324px wide, low contrast mortar, no chips or moss. Top32px contains crenellated parapet, visible4px top walk and corbels. Crenels use24px horizontal period and square teeth, top parapet thickness12px. Full panel coverage below y32 through bottom144; first/last2px continue same stone courses, neither outlined. One thin outline only on exposed upper crenels and bottom. Quiet light from top left, no objects, no tower.",
+    "source": "r17-C6-source-wall-curtain-a.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "wall-curtain-b",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One seamless straight city CURTAIN WALL96x144 native rectangular panel. Top32px crenellated parapet with squared24px-period teeth,4px walk top and corbels. Body from y32 to144 grey-brown ashlar with EXACT8px-high horizontal courses and16\u201324px wide blocks. Low contrast mortar, almost flat stone planes. Variation B: single narrow recessed arrow slit in middle third, a few broad replaced stones away from edges. NO chips, moss, vertical border, side face or tower. Square first/last2 columns continue masonry with no dark outline. Top-left light, matching sober medieval stone. Solid magenta outside top teeth, bottom flat.",
+    "source": "r17-C6-source-wall-curtain-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "wall-curtain-c",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One seamless straight city CURTAIN WALL96x144 native rectangular panel. Top32px crenellated parapet with squared24px-period teeth,4px walk top and corbels. Body from y32 to144 grey-brown ashlar with EXACT8px-high horizontal courses and16\u201324px wide blocks. Low contrast mortar, calm stone. Variation C: explicit narrow8px repair joint confined at x48, flatter older stones alongside it. NO weathering specks, chips, moss, vertical outer border, side face or tower. Full first/last2 columns continue identical8px masonry courses with no dark edge. Flat bottom, top-left light. One piece on magenta.",
+    "source": "r17-C6-source-wall-curtain-c.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "tower-open",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE square medieval interval-tower upper section96x144 native pixels. OPEN BATTLEMENT top, no roof. High3/4 view with visible squared crenels around walk platform, little staircase inside, plain grey-brown masonry shaft below with one small slit window. Top-left lit front/left, darker12px right return. Bottom48px compatible rectangular stone shaft, width96, stone courses8px high. Top battlement subordinate modest height, no tall spire. Crisp single pixel outer contour, low contrast mortar, no cracks/specks/ground. No whole tall tower, just upper section.",
+    "source": "r17-C6-source-tower-open.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "tower-bell",
+    "size": [
+      96,
+      144
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONE medieval interval-tower upper section96x144 native pixels. Small squat roofed BELL watch post on battlement, unlettered muted red banner hanging at left, ONE visible bell under low slate roof. Grey-brown stone square tower shaft with8px masonry courses and a12px shaded right return, bottom48px flat rectangular96px-wide joining shaft. High3/4 top-down game view, lit top-left. Subordinate to cathedral/gate, low roof no pointed tall spire. Sharp angular clusters and dark thin outline, calm stones, no chips/noise, no ground. Roofed bell top distinctly different from an open battlement.",
+    "source": "r17-C6-source-tower-bell.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "gate-bridge",
+    "size": [
+      96,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ONLY one96x48 native medieval gatehouse BRIDGING CHAMBER, horizontal2:1 rectangular sprite. Grey-brown masonry room with two arrow loops, low slate shed roof, strong8px bearing corbels protruding at both ends to sit into adjoining towers. No towers included. Bottom is a wide dark stone lintel above an OPEN road, NOT filled arch and no portcullis. Small door on right end opening onto a supported landing. Top-left lit, shaded right,8px ashlar courses matching city wall. High3/4 shallow top face, calm stone, no cracks/noise, solid magenta outside.",
+    "source": "r17-C6-source-gate-bridge.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "vendor-weigh",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One medieval market vendor in a48x48 native actor cell, high3/4 top-down RPG perspective. Actual adult character about16px wide32px tall centred. Wears muted burgundy apron, bends toward a tiny brass balance scale and WEIGHS a sack of grain, two hands engaged, distinct sideways pose. Scale and hands form legible big blocks. Boots visible, no stall/counter scenery or ground; vendor and handheld scale only. Top-left light, restrained palette, chunky hard angular pixels, no isolated specks, solid magenta.",
+    "source": "r17-C6-source-vendor-weigh.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "vendor-fold",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One full-body medieval cloth seller in48x48 native actor cell, actual person about18x34px. High3/4 overhead RPG view. Woman in muted blue apron and cream headscarf leans forward FOLDING a broad teal cloth held horizontally in both hands, elbows clearly different heights, boots visible. No counter or stall, just person and cloth. Chunky hard pixels, top-left light, few colours, no ground and no cast-shadow mat, magenta surrounding.",
+    "source": "r17-C6-source-vendor-fold.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "vendor-hand",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. One full-body medieval spice seller,48x48 native actor cell, actual person18x34px. High3/4 overhead RPG view. Wears muted green tunic and brown apron, turns right and EXTENDS ONE ARM handing a wrapped cream parcel to customer outside image. Other hand holds small pouch. Distinct active side-on stance, two boots visible, no stall/counter/background/shadow, few calm colour clusters, hard pixel outline, top-left light.",
+    "source": "r17-C6-source-vendor-hand.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "cart-unload",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Single medieval wooden handcart with ONE worker unloading a crate beside it,48x48 native sprite cell. High3/4 top-down game view. Two clearly separated wooden wheels, low plank cart holding two large sacks, handles at lower-left. Small adult worker native16x30 on right side bends with both arms lifting one square crate. Fits within48px, clear connected silhouette, no random props. Warm muted brown wood, cream sacks, green tunic, top-left light, one pixel outline, no ground or shadow blob. Magenta outside.",
+    "source": "r17-C6-source-cart-unload.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "sign-tailor",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Single medieval hanging TAILOR sign, native64x72 canvas, dark muted plum rectangular board about48x48 with clipped square corners. Bold simple cream SCISSORS silhouette immediately recognisable, no text. Physical1px light top rim and2px dark right/bottom wood thickness. At top left an8\u201312px long brown iron bracket attached visibly to board by two simple hangers. No elaborate scrolls, decoration, lettering or noise. Board subdued contrast, symbol clear, top-left light. Solid magenta outside.",
+    "source": "r17-C6-source-sign-tailor.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "sign-scribe",
+    "size": [
+      64,
+      72
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ISOLATED OBJECT ONLY: a hanging wooden shop SIGN. Absolutely NO house, no facade, no building, no roof, no character. One muted navy board with bold ivory QUILL and inkwell silhouette.64x72 native canvas, board48x48, iron bracket8\u201312px at top-left and two short hangers.1px lit top rim,2px dark right/bottom thickness, tangible wood edges. Quiet bold readable symbol, no text, no ornamental scrolls. Center sign alone on flat magenta.",
+    "source": "r17-C6-source-sign-scribe.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "door-entry-b",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. ISOLATED ARCHITECTURE MODULE ONLY: a48x48 square STONE DOOR BAY, no complete building, no roof, no upper floor, no window. Large recessed open doorway24px wide30px tall,24x8 bright stone landing below,6x10 lantern to right. Square lintel at top. Grey-brown stones with large calm clusters, foundation top visible. Top and bottom dead flat horizontal attachment courses. Fill square frame with this one ground-floor bay only, solid magenta outside. Top-left light, crisp native square pixels.",
+    "source": "r17-C6-source-door-entry-b.png",
+    "tool": "built-in image tool"
+  },
+  {
+    "id": "passage-entry",
+    "size": [
+      48,
+      48
+    ],
+    "prompt": "Pixel-art medieval city game kit piece, drawn LARGE on perfectly solid magenta #ff00ff with margin, to be reduced by mode sampling to native size. Use the reference town house's high 3/4 view, top-left light, dark single native pixel exterior outline, square angular grid edges, calm warm plaster and brown timber and grey-brown stone. No lettering, blur, smoothing, specks, noise, triangular plaster bevels or floating decorative marks. Large architectural masses, sills with lit tops and dark recesses. Draw ONE isolated square ground-floor PASSAGE module, a 48x48 native cell enlarged roughly24x. This is only ONE floor bay, no house, no roof, no upper floor. Broad grey-brown masonry piers at left and right, continuous straight stone lintel across the top, dark timber lining underneath. A LARGE OPEN RECTANGULAR pedestrian tunnel occupies the middle half of the bay width (native x12..36), from native y10 to the bottom; show SOLID PURE MAGENTA through the open tunnel to allow background paving. No door leaf, NO WINDOW, NO SHOP, no counter, no awning. Clear open walk-through passage with readable 24px width and36px height. A small6x10 warm lantern on the left pier. A shallow lit stone landing at the bottom edge, native24x4, with angular square corners. Keep horizontal fixed masonry connection courses along the top and bottom rows, except the tunnel naturally interrupts the bottom stone. Exact broad square module silhouette, subtle exposed right side depth and sharp dark one-pixel outline. This is a public access tunnel under a townhouse, not an arch topped with a curved outline.",
+    "source": "r17-C6-source-passage-entry.png",
+    "tool": "built-in image tool"
+  }
+]

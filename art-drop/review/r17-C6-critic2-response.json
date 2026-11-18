@@ -1,0 +1,109 @@
+{
+  "part": "C6",
+  "responding_to": "critic-r17C6-2.json",
+  "scope": "Saved-art repair and self-verification; not an independent critic verdict or runtime approval.",
+  "drawings": 8,
+  "selected": "roof B; both separately lit masonry hands; both continuous fence candidates; gate bearing B",
+  "failed_exports_replaced": 9,
+  "additional_support_exports": 3,
+  "method": "Built-in image tool on solid magenta; painted registration, fixed palette, exact8x8 RGBA mode, native outline cleanup, alpha0/255, zero hidden RGB. Code registers, crops, wraps, masks and composites drawn paint.",
+  "failed_file_responses": {
+    "abutment-b-c6-brown": {
+      "repair": "Redrawn from two image-tool candidates; selected B, registered/mode reduced at48x144, native middle-course removal to48x96, material-only slate/brown partners. Unlike assemblies use masonry receivers and flashing, not exposed paving.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "abutment-b-c6-slate": {
+      "repair": "Redrawn from two image-tool candidates; selected B, registered/mode reduced at48x144, native middle-course removal to48x96, material-only slate/brown partners. Unlike assemblies use masonry receivers and flashing, not exposed paving.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "abutment-b-c6": {
+      "repair": "Redrawn from two image-tool candidates; selected B, registered/mode reduced at48x144, native middle-course removal to48x96, material-only slate/brown partners. Unlike assemblies use masonry receivers and flashing, not exposed paving.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "abutment-b-d2-c6-brown": {
+      "repair": "Redrawn from two image-tool candidates; selected B, registered/mode reduced at48x144, native middle-course removal to48x96, material-only slate/brown partners. Unlike assemblies use masonry receivers and flashing, not exposed paving.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "abutment-b-d2-c6-slate": {
+      "repair": "Redrawn from two image-tool candidates; selected B, registered/mode reduced at48x144, native middle-course removal to48x96, material-only slate/brown partners. Unlike assemblies use masonry receivers and flashing, not exposed paving.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "abutment-b-d2-c6": {
+      "repair": "Redrawn from two image-tool candidates; selected B, registered/mode reduced at48x144, native middle-course removal to48x96, material-only slate/brown partners. Unlike assemblies use masonry receivers and flashing, not exposed paving.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "receiving-wall-left-c6r1": {
+      "repair": "New image-tool masonry, straight one-pixel exposed edge, opaque16px body through240px and one coping. Full house fronts are reserved beside it, preserving complete windows.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "receiving-wall-right-c6r1": {
+      "repair": "New image-tool masonry, straight one-pixel exposed edge, opaque16px body through240px and one coping. Full house fronts are reserved beside it, preserving complete windows.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "yard-boundary-wood-c6r1": {
+      "repair": "Replaced disconnected post crops with continuous drawn timber rails/boards. New alternate timber and shaded masonry constructions support non-repeating closed boundaries.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "compose.py": {
+      "repair": "Repaired property connections, commercial heights, window-free return assembly, gate bearings and unlike-roof contacts. Kept accepted roads, roofs, civic massing, market and repetition corrections.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final-2x": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final-squint": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final-crop-square-3x": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final-crop-street-3x": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    },
+    "r17-city-final-crop-gate-3x": {
+      "repair": "Regenerated from the repaired native composer; exact NN scaling/crops and greyscale/reference panels verified.",
+      "proof": "r17-C6-critic2-final-proof.json"
+    }
+  },
+  "fixes": {
+    "1": "Subdivided opposed rear strips into actual48/96px yards, joined former gaps to the principal footprints and drew continuous side boundaries. Raised inn rear fronts to3 storeys and eastern trade fronts to2.",
+    "2": "Retained the accepted96px gate elbow,48px side routes,24px passages, northwest T, stepped northeast group, southern L/stagger and uneven tower-foot detours.",
+    "3": "Reserved window-free16px receiving margins. Translated complete80px painted house fronts intact; other full bays use8x BOX/64-vote mode registration. Usable ground entries retain their original coordinates.",
+    "4": "Replaced both receiver drawings with full-height continuous masonry, native48px body repeats and one coping. Unlike48/96/48 roofs now meet over drawn receivers, with drawn flashing last; both depths and all colourways have zero paving channels.",
+    "5": "Retained the passing broad guildhall at base720 and its lowered flanks and48px forecourt.",
+    "6": "Retained the supported east church porch and square-facing market hall; replaced the broken churchyard post sequence with continuous drawn timber and shaded masonry boundaries.",
+    "7": "Preserved the passing recessed shop thresholds, lanterns, inn porch/bed emblem and displays. Added an exact-pixel check for the northwest passage opening.",
+    "8": "Kept the pump court,24px covered passage and actor reveal proofs; removed boundary crossings at its shared fence and moved the woodpile off the passage.",
+    "9": "Kept every passing curtain/tower PNG byte-identical; refreshed all wall/stair/tower contacts.",
+    "10": "Two image-tool roof candidates; selected B with broad connected overlapping tile courses. Red, slate and brown partners retain identical alpha at both native depths.",
+    "11": "Retained the accepted southeast hard shadows, separate ground/roof/wall receivers and lot ownership. Refreshed final shadow checks.",
+    "12": "Resolved source/crop audits and legacy E layouts retain zero repeated-piece violations; new fence rows cycle three distinct constructions.",
+    "13": "Kept alternate side houses, tower tops and the full48px southern stagger. Five exposed commercial fronts are taller without changing the roof-colour mix.",
+    "14": "Kept every passing full-scale trade sign; original mounting/door coordinates remain in use.",
+    "15": "Kept six stalls, two triplets,48px aisle,96px eastern route, fountain/cross and clear civic approaches.",
+    "16": "Removed the rectangular gate subtraction entirely. Two image-tool bearing candidates supplied a fitted stone chamber over the old roof; passing bridge and landing remain. Original tower/portal pixels are intact and no blue roof pixels remain visible.",
+    "17": "Working yards now reach their actual frontages through subdivided owned strips; retained attached fuel stores, gutter drain, packing surfaces and eastern storage.",
+    "18": "Retained the shrine apron, northwest pump and visible hard-edged forge smoke.",
+    "19": "Retained the three active vendor drawings, paired shoppers and single inn unloading cart.",
+    "20": "Regenerated native/2x/final comparisons, squint, exact3x crops, L/T/dead-end and market views, both tall/low hands, all export/seam/variant sheets, actor/reveal states and structural closure proofs."
+  },
+  "precedence": "BRIEF-17 overrides panel waivers on fixed courses,1\u20132-cell ground footprints, twice-R15 signs, lot-contained overlays, compulsory street variation and landmark allocations. The coordinator40x30-cell requirement sets the1920x1440 native canvas.",
+  "artwork_inventory": "r17-C6-files.json",
+  "verification": [
+    "r17-C6-verification.json",
+    "r17-C6-critic2-final-proof.json",
+    "r17-C6-layout-connections.json"
+  ]
+}

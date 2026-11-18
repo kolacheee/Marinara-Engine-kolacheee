@@ -1,0 +1,256 @@
+{
+  "scope": "Static authored geometry only; no runtime pathfinding claim",
+  "checks": [
+    {
+      "name": "every modular house has a positive-length shared wall with a building or attached store",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "square-baker24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "square-apothecary24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "west-smith24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "west-cobbler24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "gate-road-inn24x32 standing area clear of solid supports",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "continuous designated main-road union from portal to eastern square",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main road width never less than96",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southern whole-house stagger exactly48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gate preserved3x4 ground allocation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "church east porch within5x6 church allocation",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 11,
+  "failed": [],
+  "shared_edges": {
+    "west-0": [
+      "west-1"
+    ],
+    "west-1": [
+      "west-0",
+      "west-2"
+    ],
+    "west-2": [
+      "west-1",
+      "west-T-projection"
+    ],
+    "north-middle-0": [
+      "north-middle-1"
+    ],
+    "north-middle-1": [
+      "north-middle-0"
+    ],
+    "square-baker": [
+      "square-narrow"
+    ],
+    "square-narrow": [
+      "guildhall",
+      "square-baker"
+    ],
+    "square-smith-bay": [
+      "guildhall",
+      "square-apothecary"
+    ],
+    "square-apothecary": [
+      "merchant-0",
+      "square-smith-bay"
+    ],
+    "merchant-0": [
+      "merchant-1",
+      "square-apothecary"
+    ],
+    "merchant-1": [
+      "merchant-0"
+    ],
+    "merchant-2": [
+      "merchant-3"
+    ],
+    "merchant-3": [
+      "merchant-2"
+    ],
+    "merchant-5": [
+      "merchant-end"
+    ],
+    "west-lane-workshop": [
+      "west-rear-range"
+    ],
+    "east-lane-workshop": [
+      "lean-to-c4",
+      "merchant-rear-range"
+    ],
+    "east-rear-house": [
+      "lean-to-c4"
+    ],
+    "west-smith": [
+      "craft-covered-fuel"
+    ],
+    "west-cobbler": [
+      "lean-to-c4"
+    ],
+    "inn-square-wing": [
+      "gate-road-inn"
+    ],
+    "gate-road-inn": [
+      "inn-east-wing",
+      "inn-square-wing"
+    ],
+    "inn-east-wing": [
+      "gate-road-inn"
+    ],
+    "east-tailor": [
+      "east-scribe"
+    ],
+    "east-scribe": [
+      "east-tailor"
+    ],
+    "south-L-0": [
+      "south-L-1"
+    ],
+    "south-L-1": [
+      "south-L-0",
+      "south-L-2"
+    ],
+    "south-L-2": [
+      "south-L-1",
+      "south-elbow-neck"
+    ],
+    "south-square-0": [
+      "south-square-1"
+    ],
+    "south-square-1": [
+      "south-square-0"
+    ],
+    "poor-0": [
+      "lean-to-c4",
+      "poor-1"
+    ],
+    "poor-1": [
+      "poor-0",
+      "poor-2"
+    ],
+    "poor-2": [
+      "poor-1"
+    ],
+    "west-rear-range": [
+      "west-lane-workshop",
+      "west-rear-shoulder"
+    ],
+    "middle-side-workshop": [
+      "middle-rear-east"
+    ],
+    "west-T-projection": [
+      "west-2"
+    ],
+    "merchant-end": [
+      "east-wall-lean-to",
+      "merchant-5"
+    ],
+    "merchant-rear-range": [
+      "east-lane-workshop"
+    ],
+    "south-stagger-west": [
+      "south-elbow-house",
+      "south-stagger-east"
+    ],
+    "south-stagger-east": [
+      "south-stagger-west"
+    ],
+    "poor-east-wide": [
+      "lean-to-c4"
+    ],
+    "hall-rear-west": [
+      "baker-rear-end",
+      "hall-rear-east"
+    ],
+    "hall-rear-east": [
+      "hall-rear-west"
+    ],
+    "south-elbow-neck": [
+      "south-L-2",
+      "south-elbow-house"
+    ],
+    "south-elbow-house": [
+      "south-elbow-neck",
+      "south-stagger-west"
+    ],
+    "northeast-rear-west": [
+      "apothecary-rear-house",
+      "northeast-rear-end"
+    ],
+    "northeast-rear-end": [
+      "northeast-rear-west"
+    ],
+    "west-rear-shoulder": [
+      "west-rear-range"
+    ],
+    "middle-rear-east": [
+      "middle-side-workshop"
+    ],
+    "baker-rear-house": [
+      "baker-rear-end"
+    ],
+    "baker-rear-end": [
+      "baker-rear-house",
+      "hall-rear-west"
+    ],
+    "apothecary-rear-house": [
+      "northeast-rear-west"
+    ],
+    "inn-rear-west": [
+      "inn-rear-middle"
+    ],
+    "inn-rear-middle": [
+      "inn-rear-east",
+      "inn-rear-west"
+    ],
+    "inn-rear-east": [
+      "inn-rear-middle"
+    ],
+    "tailor-rear": [
+      "scribe-rear"
+    ],
+    "scribe-rear": [
+      "tailor-rear"
+    ],
+    "poor-rear-west": [
+      "lean-to-c4"
+    ]
+  }
+}

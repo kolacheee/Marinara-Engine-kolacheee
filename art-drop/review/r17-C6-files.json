@@ -1,0 +1,1306 @@
+{
+  "abutment-a-c6-brown": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "1140c7af714aed8cd6325072d44212a40e90d48347598a83a83f895d08c16edd",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-a-c6-slate": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "e97e643fbf5bcd2615b19efd2f07717754d2f2b20a05452699d09b1d3a5d93dd",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-a-c6": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "0502a054a68e9e271558340ef510e9134098f43b625bcc4b403f30354678d374",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-a-d2-c6-brown": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "8e4bd645e0e4732332d5f8f018b205e27b8d3b4d899ec1af270b2391c72c3832",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-a-d2-c6-slate": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "41383ad55b20a2e59d691ac371f08215440b509e771a81ad1cf79c8aa16b0bfe",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-a-d2-c6": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "aa631090243ecfc3f25d3d8854012557449c42d6907a7b14e5c8cf5b6d638b82",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-b-c6-brown": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "f13440f60cd4e9d2ad2e96882ab5272deb586b6ae73b714cde8c484e8ed6df12",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-b-c6-slate": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "fcb4a448352d8eb8b1475ece4ef969392057e3580b78b87c8dbdcd53b0e3f120",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-b-c6": {
+    "size": [
+      48,
+      144
+    ],
+    "sha256": "9c96a4152ed9973b5a6171b56964c06786e1ee609c114bc3dbbfa1571e4cdd8b",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-b-d2-c6-brown": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "08723659aaf87058845d265b0c93fb961d043857598bbdf66774c48a17c13de5",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-b-d2-c6-slate": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "610dfa70bb73e669598f83b8303e06b007952dccea3e57e7de70eb044c0d8d91",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "abutment-b-d2-c6": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "6de9126cd440415367716f51aec5b43c8f58a91d5eaaa8a7140047fdcf5de370",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "actor-proof-c6": {
+    "size": [
+      24,
+      48
+    ],
+    "sha256": "b45e9837b76226a99362f4036fad88d1dc7e065bb941b6e0f9ec1959c090161c",
+    "colours": 21,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "bed-pictogram-c6": {
+    "size": [
+      16,
+      8
+    ],
+    "sha256": "e28f73e0c7ccce946a91a0837347a0a3a616a78a1ea22d74aff06e625984f3dc",
+    "colours": 6,
+    "alpha": [
+      255
+    ]
+  },
+  "cart-unload-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "142e9e1e1a5a094ba7cd9f34c16b249c5b4835bf4011de99706606ef4c1424f4",
+    "colours": 25,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "church-entry-a-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "2f90c30cc7e5278d42f9b8b9fea53aed0f77fadccf1d60d640638934343e38ed",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "church-porch-c6r1": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "b3e23c8d3b918fc2a1d919120f6f7a4ee83d96f3717ac1f6dd7e90112974cb3a",
+    "colours": 8,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "display-apothecary-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "68444fb03a6354571476ae06808fdd78d7ccbe8dc873d3f0b34a28983f3f47b1",
+    "colours": 17,
+    "alpha": [
+      255
+    ]
+  },
+  "display-baker-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "552e289b670b3331c4f3f8940e86800e3cd99dd258b84c36cf69e50189af9a8d",
+    "colours": 13,
+    "alpha": [
+      255
+    ]
+  },
+  "display-cobbler-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f6cca9f6942c8b3758daaae77d6e25e4f1dbaab16dc2db5c34e04c5e9c814459",
+    "colours": 14,
+    "alpha": [
+      255
+    ]
+  },
+  "display-smith-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f46773c3e9362d22828681ee526e441ea5889c26bfb9817ef0bed8cbf4451477",
+    "colours": 34,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "door-entry-b-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "90d6d80a4582017debb182fecce5b413225af27263faea61b50b41850149d8b9",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "forge-smoke-c6": {
+    "size": [
+      24,
+      48
+    ],
+    "sha256": "43ceb5face6e7ba0649182d514d0574fa76dc457e567b9eee507d6133eac5583",
+    "colours": 8,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "gate-bearing-c6r2": {
+    "size": [
+      96,
+      64
+    ],
+    "sha256": "1b42c0ee99291d1680bf962083be2665bf35e1967f361759580d2941dcdb41be",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "gate-bridge-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "cac6f752bedb22dcb3457d68840ab3e5b3acdd2fba6a6c844560bc6ee252602a",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "gate-landing-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "70717867c85d89c3f6a90865d14151eea7da8f97b91920b2929a900b8bdee5a0",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "gate-stair-lower-c6r1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "6e4f6f4a2f97ffd425116883dfe3dd7f2d8172ae00679e65c820b5f20e75722a",
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-apothecary-entry-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "c79d1af24c40de7737f3beecac2d9dfb5ddb77aaae2eb5bfee1ba900e4ed6fef",
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-baker-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "b3f7a62d1dae8457546c3bbecb7489c9b926d2023297038b32bd3599f21ce4f9",
+    "colours": 13,
+    "alpha": [
+      255
+    ]
+  },
+  "ground-baker-entry-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "6b9e04aa43876af5f4597e5a923292140c4830f419107c059570c70fd890789e",
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-cobbler-entry-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "ba1e8362f76e3afce5f67d5778c99a13d6e4e4a69193049a7d801c2d899f5f01",
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-house-a-c6r1": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "69ab5f7ef5c99875f6e3bb0f1072c804e9e6f4de63924d2676e03a61046ac25b",
+    "colours": 23,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-house-b-c6r1": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "8af6d12f5120a0d51758e5846973624cdcf6d97430f673b08b1ddbed503fb4cf",
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-house-c-c6r1": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "95dd6ef16ac4f7800db23c0c8e70ab1f571e2657df4e9a7d6d364672b48e8d86",
+    "colours": 23,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-passage-w2-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "a86003a1cde25672b1012a4b2ef5e2357dd3b437227ea0ed8f2d8898806dc37b",
+    "colours": 26,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "ground-smith-entry-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "c0e0a4a4761ecf8a8f012f660ff6b34e6b8e1a67e32e70eda67a8b7e1815760d",
+    "colours": 17,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "guildhall-c6r1": {
+    "size": [
+      192,
+      384
+    ],
+    "sha256": "4a5fcf15c4b643cb0b34c60ed4c3b095c69e191a3ceba003ed075d8d04666d78",
+    "colours": 36,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-a-c6r1-brown": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "a7ddd7951172fc754378e64cf87ccc11b8c10ae4581a6ea96072f1a10416b859",
+    "colours": 33,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-a-c6r1-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "e01730bb30f49ec54c9ab551250a82a4b5b3add410cdbd5a89f6f3452abd8cad",
+    "colours": 33,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-a-c6r1": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "165b1e9d41b4e54f88ac93683d8863a6203784121aaa34b438840c032cca44a5",
+    "colours": 27,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-b-c6r1-brown": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "6a588964ebfc0820a5528b26c7d0744059cf6e65573cdd478128add63fd28854",
+    "colours": 32,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-b-c6r1-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "4e9cdb376df21ccb45c125c5b66e3d0ccc8a7f8c0e4b6c1e59d8806041465afa",
+    "colours": 32,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-b-c6r1": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "2808942e22ae89591586a9e89ec8f468a6cc0b27ac6e0099df33099e54928a7c",
+    "colours": 26,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-c-c6r1-brown": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "09b8670bf45ccee2034270b34d86f73bf2682f2bcd367a476d4ea993d3940bc9",
+    "colours": 32,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-c-c6r1-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "5ec598a78cd6c9a68c5aef8fcc8c7d0f12e02bb474ed302fa022d47a543ecd2d",
+    "colours": 32,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "house-c-c6r1": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "5ba29f41d8cac80caf57557bc777f4fb957cdd601f673f45f65d1afbc5bb004d",
+    "colours": 27,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "inn-porch-b-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "0a381b5d5a527cb465988ca7e68cc361f9edcfbf03af3a53e2cf1ba8ce247b2b",
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "market-hall-b-c6": {
+    "size": [
+      192,
+      144
+    ],
+    "sha256": "25d1f0d8a45dea6d7ce83c045ddef251ae3118f6e65a2985a504ea9c9dbe7a8c",
+    "colours": 37,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "packed-yard-c6r1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "32edfed99e26126e82e7f5a4295ec48cb1d1599902d8b328de5fb5cc003008e7",
+    "colours": 3,
+    "alpha": [
+      255
+    ]
+  },
+  "party-left-c6": {
+    "size": [
+      12,
+      144
+    ],
+    "sha256": "a64061abf788058ac9173f14ebcb94b8134ea0f258149efed13a2a28163d5f40",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "party-right-c6": {
+    "size": [
+      12,
+      144
+    ],
+    "sha256": "b35cc3bb3cc211351f2b9d80070cd81ca8b6ff464ed21b798499505b836609af",
+    "colours": 12,
+    "alpha": [
+      255
+    ]
+  },
+  "passage-entry-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "09f6de1749b0f26496dfa7fc11b2fa25359d9e38c0ced4daec71d59d07977de0",
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "receiving-wall-left-c6r1": {
+    "size": [
+      16,
+      240
+    ],
+    "sha256": "2b6c627d354c19ff561732998c9bc46d1175929771380dcdc3f93ee05fbaae28",
+    "colours": 7,
+    "alpha": [
+      255
+    ]
+  },
+  "receiving-wall-right-c6r1": {
+    "size": [
+      16,
+      240
+    ],
+    "sha256": "569c16b64de9ea754b9bf18548232e69458870b77e1543f5ec7a34d60535d308",
+    "colours": 7,
+    "alpha": [
+      255
+    ]
+  },
+  "return-house-a-c6r1": {
+    "size": [
+      16,
+      96
+    ],
+    "sha256": "e58bd44ccee380322cd0d463677173fde5999e06fa65b6dca5b1e8e18b715eab",
+    "colours": 13,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "return-house-b-c6r1": {
+    "size": [
+      16,
+      96
+    ],
+    "sha256": "4edf35c6c1a066e44b7b9cd505a1d2797722afe15d67a5d4035a897d8c062d89",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "return-house-c-c6r1": {
+    "size": [
+      16,
+      96
+    ],
+    "sha256": "d4545a3a197b5d8c4934a17fdcd6ef81cc3030c5cbf12fc853f58f72c4ba3ef7",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-a-c6r1-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "bfe53b11b5a1488179f7aa56da915eaba2748828862d9efd822f7090697d5aae",
+    "colours": 20,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-a-c6r1-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "7e0cbd642f49ceeb5e58e1cf1e8e31908a7ae96a20798bf9e90f7734ae6c6b89",
+    "colours": 20,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-a-c6r1": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "85c22fab1434a8a7113d3832fb1190f782e9a2a2793c42436f70d30461b9711d",
+    "colours": 26,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-b-c6r1-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "41ea2a6284f391085af7ce584d99ad165edc12614f967b554ee549e2d1a34a51",
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-b-c6r1-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "637ad2ce7327ce34a9a0c916c95ac0372ef0c933ca20a17d9a46fa91ebca89b6",
+    "colours": 15,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-b-c6r1": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "1cd7812261525b7e89696f928327f7d76855840c71f8743caa4b249871ad4e42",
+    "colours": 20,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-c-c6r1-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "0b30e4ac68a9a39b63d3388c4b2ba340bd1156d7aa2367ad2966d187d53165ae",
+    "colours": 21,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-c-c6r1-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "333701f4339e1b2369ab8cc03e1f1895786303a09b044158187a1c0cbf5cf50c",
+    "colours": 21,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-house-c-c6r1": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "4ebe51ba1be2df4744b6417a4c34c50c566de69b36ad353b7f52a3f98e79705c",
+    "colours": 27,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-merchant-c-c6-brown": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "ee19f7d0aa552df688ff21646ae2c95d3add55ba30044acffaaf8e205f739d14",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-merchant-c-c6-slate": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "9a72d24816bc087df909cdd6a4d0b47a4c03cd5e3f3504b976f4f57db2f4e46f",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-merchant-c-c6": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "1a1578c14a8228f569fbe4c56233f33ebbca231dc25ffeea90d56a1e1d914790",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-merchant-d2-c6-brown": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "bee50e3bbb18f2a32e6889554d97ec7767170757c66721ad9e7d216f481e4a89",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-merchant-d2-c6-slate": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "064cb3df6bd3ad7332c488b4201d8f252786ba3dcf70738d8e14820feea223ef",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-merchant-d2-c6": {
+    "size": [
+      96,
+      96
+    ],
+    "sha256": "6dad9f0942982d1893a8ad70a0260ebd9769f9aed9400a3d08fc1f7709fd84d2",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-narrow-a-c6r1-brown": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "a2fec3e1a3202cda649470199411f5d4c8deeaede20f3026d328bcd53b4915ca",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-narrow-a-c6r1-slate": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "b5f5adccd48973e626f12b284ab7a0b177bc2941f7a94c924a14ffc6bf3bff01",
+    "colours": 12,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-narrow-a-c6r1": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "dee0d10d0fbea6be61cce1021f17fd74107b8c3d7245459342d9b49e2e37b1a8",
+    "colours": 16,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-narrow-b-c6r1-brown": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "1c944f06979da47ab76b33ce5905d0fe2e8ebc30db594ea494266b57b2e03f21",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-narrow-b-c6r1-slate": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "8f3355c9d2a780ff1fb7a5be11af44cba2504a47d7296bf39cefce77515f7db7",
+    "colours": 7,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "roof-narrow-b-c6r1": {
+    "size": [
+      48,
+      96
+    ],
+    "sha256": "108b469477cb6b97c918d79335fd013f92863ce20cdbfd3744af44744fc098d2",
+    "colours": 8,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "side-house-a-c6-brown": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "640089dbccd0ce398b3a357d32921c44fb0a45513d2823837451d6d642a2d3d3",
+    "colours": 27,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "side-house-a-c6-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "1f6d87c1d41eb8ec458084440f3a7d9da6dcf4af4d1bbe0903873ff658c5d325",
+    "colours": 27,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "side-house-a-c6": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "2aa033ae0c63e494d4dd4ccf12e21d47009081a89ca3b58fbafea509f50eb436",
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "side-house-west-c6-brown": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "2e55f32ec268b8acb2b2d13011fde6d4d21e819aaca49ed32e355ba94b02e0ba",
+    "colours": 28,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "side-house-west-c6-slate": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "927d0ae62fcf7a84bbd6d77d74e8ec50373eeae52bbdec48e0f8ae48b6a8c5ad",
+    "colours": 28,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "side-house-west-c6": {
+    "size": [
+      96,
+      192
+    ],
+    "sha256": "895149a919033597575eb8308855c648da3f3df64fceb42ae572a846bb01cdcb",
+    "colours": 22,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "sign-scribe-c6": {
+    "size": [
+      64,
+      72
+    ],
+    "sha256": "f120ed07bb8d0c270f7f38f9de394ceb43743b66bea3700f7699d9f41f6d1459",
+    "colours": 23,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "sign-tailor-c6": {
+    "size": [
+      64,
+      72
+    ],
+    "sha256": "258aafde0f4b41540e5e8fd23dc8339f77861f5bb8e21c0c90bd9a9584c4d89a",
+    "colours": 23,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "storey-house-a-c6r1": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "fd90c575dde44fbf9ab91a723f93e260805a3594f6e9b924e9e2936639456ede",
+    "colours": 18,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "storey-house-b-c6r1": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "564b6e99e52c75e813e1ee82bcef66d8b5189b1bdd9f14001f9aea3b0dcdf111",
+    "colours": 19,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "storey-house-c-c6r1": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "41f533b759c828419dbbfb4079ff5c27f3e025395ea073aae077c5e43483f660",
+    "colours": 24,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "storey-merchant-a-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "467212be431a385e4066edadc00bfa437eb4c0e31696ee189b274ab1057f5f7a",
+    "colours": 12,
+    "alpha": [
+      255
+    ]
+  },
+  "storey-merchant-b-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "bb0eb46c540877fd45d99e259453e74fc2b39b5b85f743706ff668f20115a6b4",
+    "colours": 15,
+    "alpha": [
+      255
+    ]
+  },
+  "storey-plaster-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "70ee38dbfa0ac97f2b0b0a1e2fdefb77c16a089b4362055e889b3191681af90f",
+    "colours": 13,
+    "alpha": [
+      255
+    ]
+  },
+  "tower-bell-c6": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "51d53f23b00a971df308c9ee3bbf73edbe87ac92544e40259eadd67d27443228",
+    "colours": 10,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "tower-open-c6": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "8b031af4303f3b32dfc38c0c92eb6beafecbcdda256f60946431906f87946c31",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "vendor-fold-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "d24f97d453f3c10c3ce23bcf789f376e1948f7ccf73c9b5f28d28f838afcd319",
+    "colours": 23,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "vendor-hand-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "a6d1034db6e3d77a807731bed3548a04bffd75b3c7b993a4b95f91ad1575ccb4",
+    "colours": 21,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "vendor-weigh-c6": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "40e0696d7acc4849f3bc428b7d7ae130b3df46e699069dfd1d114ba2b0c68528",
+    "colours": 21,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-curtain-a-c6": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "765da43c87140015fdca2f5ab9c3570a5712e19632eada2e41d69afab23c3dc2",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-curtain-b-c6": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "ec09ca2619284cd9fe31b82cf874c2ba1def33760e2c809024eb6e641ff721fa",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-curtain-c-c6": {
+    "size": [
+      96,
+      144
+    ],
+    "sha256": "caf749e6ff4266fbfe85f1fe6d362d47265f40802aa9f853160ee19bdabe435d",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-top-a-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "4fe77d8545bb8339e3df9fd462d1b332db41981b09ac05b3fc3e1d79ed8f37e4",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-top-b-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "64f843d691eb6682461484e04af9cf091ca7ca5b86a3c705de4f3e0bc81cfddc",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-top-c-c6": {
+    "size": [
+      96,
+      48
+    ],
+    "sha256": "dc6f15efd4e56897ecfc9f036c4f2d27a9a12fcb516f4ce95510047f0a22ef8f",
+    "colours": 5,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-tower-a-c6": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "c53a0fd52ea5581c32d8913a8fe10ec572dca30ae32d63debdcdb5518103a23f",
+    "colours": 27,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-tower-b-c6": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "712150523387fcdab6dfeb8b5559f87094440879860f527438e88d93e07519ab",
+    "colours": 36,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "wall-tower-c-c6": {
+    "size": [
+      96,
+      240
+    ],
+    "sha256": "383d3979895875d65de7ecbecf55fa92caacb7514b21e6272c50a1402dd43c3b",
+    "colours": 29,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "yard-boundary-stone-c6r1": {
+    "size": [
+      8,
+      48
+    ],
+    "sha256": "70338e90d339a47643e3a153d39e9711b68341cb31532be280c005a419b6372c",
+    "colours": 10,
+    "alpha": [
+      255
+    ]
+  },
+  "yard-boundary-stone-c6r2": {
+    "size": [
+      8,
+      48
+    ],
+    "sha256": "a9daaf8b6f6830b2ebdb9cc2ca9902d876daae619bd74499f312ab893c28cb17",
+    "colours": 6,
+    "alpha": [
+      255
+    ]
+  },
+  "yard-boundary-wood-b-c6r2": {
+    "size": [
+      8,
+      48
+    ],
+    "sha256": "215ce926c9fcf614d825196252f8412227b904381c765dbc8c372ca2d477187e",
+    "colours": 6,
+    "alpha": [
+      255
+    ]
+  },
+  "yard-boundary-wood-c6r1": {
+    "size": [
+      8,
+      48
+    ],
+    "sha256": "4890c30cd8125bfe5981bc4ba3f452291b4f2f8f21520344716d029261ebbb44",
+    "colours": 6,
+    "alpha": [
+      255
+    ]
+  }
+}

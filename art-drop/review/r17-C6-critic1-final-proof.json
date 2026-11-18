@@ -1,0 +1,229 @@
+{
+  "checks": [
+    {
+      "name": "saved native equals fresh final render",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fully opaque final with no yard holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all passing/pre-existing city PNGs unchanged",
+      "passed": true,
+      "detail": {
+        "count": 873,
+        "changed": []
+      }
+    },
+    {
+      "name": "abutment-b-c6-brown actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6 actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-slate actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6 actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-b-c6 actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-brown actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wall-tower-a-c6 actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gate-landing-c6 actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-slate actually repaired",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square-baker trade visible in final",
+      "passed": true,
+      "detail": 2201
+    },
+    {
+      "name": "square-apothecary trade visible in final",
+      "passed": true,
+      "detail": 2068
+    },
+    {
+      "name": "west-smith trade visible in final",
+      "passed": true,
+      "detail": 2180
+    },
+    {
+      "name": "west-cobbler trade visible in final",
+      "passed": true,
+      "detail": 2459
+    },
+    {
+      "name": "gate-road-inn trade visible in final",
+      "passed": true,
+      "detail": 2301
+    },
+    {
+      "name": "east-tailor trade visible in final",
+      "passed": true,
+      "detail": 2774
+    },
+    {
+      "name": "east-scribe trade visible in final",
+      "passed": true,
+      "detail": 2584
+    },
+    {
+      "name": "south-square-0 trade visible in final",
+      "passed": true,
+      "detail": 2352
+    },
+    {
+      "name": "forge smoke visible in final pixels",
+      "passed": true,
+      "detail": 419
+    },
+    {
+      "name": "only one inn unloading cart",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "supported church porch at ground1056",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no obsolete blue cap in gate assembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "three distinct receiving surfaces",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "maximum structural shadow <=50percent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "north curtain joins retain continuous shade",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "one-storey ordinary buildings <=25percent",
+      "passed": true,
+      "detail": {
+        "5": 1,
+        "3": 15,
+        "2": 31,
+        "4": 4,
+        "1": 15
+      }
+    }
+  ],
+  "passed": 28,
+  "failed": [],
+  "sign_visibility": [
+    {
+      "owner": "square-baker",
+      "signs": [
+        "sign-baker-c4"
+      ],
+      "visible_changed_pixels": 2201
+    },
+    {
+      "owner": "square-apothecary",
+      "signs": [
+        "sign-apothecary-c4"
+      ],
+      "visible_changed_pixels": 2068
+    },
+    {
+      "owner": "west-smith",
+      "signs": [
+        "sign-smith-c4"
+      ],
+      "visible_changed_pixels": 2180
+    },
+    {
+      "owner": "west-cobbler",
+      "signs": [
+        "sign-cobbler-c4"
+      ],
+      "visible_changed_pixels": 2459
+    },
+    {
+      "owner": "gate-road-inn",
+      "signs": [
+        "sign-inn-c4"
+      ],
+      "visible_changed_pixels": 2301
+    },
+    {
+      "owner": "east-tailor",
+      "signs": [
+        "sign-tailor-c6"
+      ],
+      "visible_changed_pixels": 2774
+    },
+    {
+      "owner": "east-scribe",
+      "signs": [
+        "sign-scribe-c6"
+      ],
+      "visible_changed_pixels": 2584
+    },
+    {
+      "owner": "south-square-0",
+      "signs": [
+        "sign-butcher-c4"
+      ],
+      "visible_changed_pixels": 2352
+    }
+  ],
+  "storeys": {
+    "5": 1,
+    "3": 15,
+    "2": 30,
+    "4": 4,
+    "1": 7
+  },
+  "storeys_including_ancillary": {
+    "5": 1,
+    "3": 15,
+    "2": 31,
+    "4": 4,
+    "1": 15
+  },
+  "one_storey_fraction": 0.22727272727272727,
+  "scope": "Final saved-art self-checks; not independent panel approval or runtime navigation."
+}

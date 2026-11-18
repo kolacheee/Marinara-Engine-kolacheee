@@ -1,0 +1,1613 @@
+{
+  "checks": [
+    {
+      "name": "all passing and earlier city PNGs byte-identical",
+      "passed": true,
+      "detail": {
+        "count": 914,
+        "changed": []
+      }
+    },
+    {
+      "name": "yard-boundary-wood-c6r1 failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6 failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6 failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-slate failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "receiving-wall-left-c6r1 failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "receiving-wall-right-c6r1 failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-slate failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-c6-brown failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abutment-b-d2-c6-brown failed drawing actually replaced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fresh native equals saved final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square exact3x crop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "street exact3x crop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gate exact3x crop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "left full240px receiver has no transparent slit",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "left all16 columns opaque throughout body",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "left single-pixel straight exposed outline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "right full240px receiver has no transparent slit",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "right all16 columns opaque throughout body",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "right single-pixel straight exposed outline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ground-house-a-c6r1 left margin keeps full80px facade without window clipping",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-a-c6r1 left margin keeps full80px facade without window clipping",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-b-c6r1 left margin keeps full80px facade without window clipping",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storey-house-c-c6r1 left margin keeps full80px facade without window clipping",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest24px passage retains exact entrance paint and coordinates",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn-rear-west district-specific commercial height",
+      "passed": true,
+      "detail": 3
+    },
+    {
+      "name": "inn-rear-middle district-specific commercial height",
+      "passed": true,
+      "detail": 3
+    },
+    {
+      "name": "inn-rear-east district-specific commercial height",
+      "passed": true,
+      "detail": 3
+    },
+    {
+      "name": "tailor-rear district-specific commercial height",
+      "passed": true,
+      "detail": 2
+    },
+    {
+      "name": "scribe-rear district-specific commercial height",
+      "passed": true,
+      "detail": 2
+    },
+    {
+      "name": "all original gate tower and portal pixels retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no obsolete slate pixels visible over the bridge",
+      "passed": true,
+      "detail": {
+        "inspected": 1196,
+        "residual": []
+      }
+    },
+    {
+      "name": "bearing paint meets both intact tower faces",
+      "passed": true,
+      "detail": [
+        1460,
+        1473
+      ]
+    },
+    {
+      "name": "closed-side-0 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-1 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-2 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-3 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-4 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-5 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-6 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-7 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-8 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-9 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-10 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-11 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-12 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-13 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-14 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-15 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-16 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-17 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-18 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-19 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-20 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-21 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-22 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-23 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-24 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-25 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-26 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-27 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-28 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-29 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-30 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-31 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-32 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-33 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-34 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-35 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-36 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-37 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-38 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-39 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-40 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-41 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-42 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-43 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-44 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-45 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-46 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-47 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-48 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-49 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-50 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-51 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-52 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-53 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-54 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-55 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-56 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-57 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-58 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-59 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-60 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-61 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-62 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-63 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-64 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-65 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-66 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-67 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-68 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-69 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-70 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-71 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-72 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-73 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-74 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-75 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-76 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-77 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-78 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-79 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-80 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-81 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-82 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-83 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-84 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-85 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-86 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-87 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-88 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-89 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-90 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-91 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-92 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-93 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-94 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-95 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-96 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-97 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-98 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-99 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-100 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-101 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-102 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-103 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-104 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-105 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-106 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-107 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-108 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-109 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-110 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-111 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-112 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-113 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-114 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-115 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-116 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-117 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-118 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-119 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-120 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-121 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-122 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-123 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-124 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-125 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-126 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-side-127 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-0-624 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-1-720 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-2-768 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-3-816 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-4-864 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-5-912 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-6-960 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-7-1008 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-8-1104 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-9-1152 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-10-1200 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-11-1248 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-12-1296 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-13-1488 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-14-1536 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-15-240 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-16-288 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-16-324 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-17-576 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-18-1392 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-19-1440 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-20-1632 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-21-1680 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-22-1728 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-23-480 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-24-528 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-25-576 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-26-1200 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-27-1248 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-28-1296 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-29-1344 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-30-1392 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-31-1440 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-32-1584 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-33-1632 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-34-1680 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-35-1728 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-36-144 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-37-192 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-38-240 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-39-288 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-40-144 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-41-192 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-42-1680 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-43-1728 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-44-240 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-45-288 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "closed-rear-46-336 continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "western-churchyard continuous actual boundary paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "middle former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "east former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest-west former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "southwest-middle former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "eastern-trades former rear/front gap entirely assigned to connected working strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "every rear strip48/96px wide and deep",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nw-rear connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        240,
+        336,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "nw-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        240,
+        624,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "middle-west connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        480,
+        384,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "middle-rear connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        480,
+        384,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "middle-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        528,
+        624,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "middle-east-rear connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        576,
+        336,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "middle-east-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        528,
+        624,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "middle-tall connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        624,
+        576,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "baker-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        720,
+        336,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "baker-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        720,
+        576,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "baker-narrow-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        816,
+        336,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "baker-narrow-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        816,
+        576,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "hall-west connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        864,
+        528,
+        192,
+        192
+      ]
+    },
+    {
+      "name": "hall-east connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        864,
+        528,
+        192,
+        192
+      ]
+    },
+    {
+      "name": "apothecary-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1104,
+        336,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "apothecary-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1104,
+        576,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "merchant-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1200,
+        336,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "merchant-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1200,
+        576,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "merchant-narrow-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1296,
+        336,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "merchant-narrow-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1296,
+        576,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "ne-side connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1392,
+        624,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "ne-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1488,
+        576,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "east-west connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1632,
+        624,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "east-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1680,
+        384,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "east-end connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1728,
+        624,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "sw-west-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        144,
+        1200,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "sw-west-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        144,
+        1200,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "sw-middle-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        240,
+        1248,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "sw-middle-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        240,
+        1248,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "sw-end connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        336,
+        1200,
+        48,
+        96
+      ]
+    },
+    {
+      "name": "inn-west-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1200,
+        768,
+        96,
+        48
+      ]
+    },
+    {
+      "name": "inn-west-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1200,
+        960,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "inn-middle-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1296,
+        768,
+        96,
+        48
+      ]
+    },
+    {
+      "name": "inn-middle-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1296,
+        960,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "inn-east-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1392,
+        768,
+        96,
+        48
+      ]
+    },
+    {
+      "name": "inn-east-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1392,
+        960,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "tailor-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1584,
+        768,
+        96,
+        48
+      ]
+    },
+    {
+      "name": "tailor-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1584,
+        960,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "scribe-back connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1680,
+        768,
+        96,
+        48
+      ]
+    },
+    {
+      "name": "scribe-front connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1680,
+        960,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "poor-east connected to actual principal footprint",
+      "passed": true,
+      "detail": [
+        1680,
+        1152,
+        96,
+        96
+      ]
+    },
+    {
+      "name": "churchyard full288px west boundary has no open row",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest24px passage crosses both subdivided rear strips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unlike96 both contacts contain no ground holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unlike96slate both contacts contain no ground holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unlike96brown both contacts contain no ground holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unlike144 both contacts contain no ground holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unlike144slate both contacts contain no ground holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unlike144brown both contacts contain no ground holes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "one-storey fraction below25percent including ancillary buildings",
+      "passed": true,
+      "detail": {
+        "5": 1,
+        "3": 18,
+        "2": 33,
+        "4": 4,
+        "1": 10
+      }
+    }
+  ],
+  "passed": 274,
+  "failed": [],
+  "protected_city_pngs": 914,
+  "storeys": {
+    "5": 1,
+    "3": 18,
+    "2": 32,
+    "4": 4,
+    "1": 2
+  },
+  "storeys_including_ancillary": {
+    "5": 1,
+    "3": 18,
+    "2": 33,
+    "4": 4,
+    "1": 10
+  },
+  "one_storey_fraction": 0.15151515151515152,
+  "scope": "Saved-art self-checks; not independent panel approval or runtime collision/navigation tests"
+}

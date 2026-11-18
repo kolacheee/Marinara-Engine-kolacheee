@@ -1,0 +1,14 @@
+{
+  "L-block": {
+    "windows": 28,
+    "failures": []
+  },
+  "market": {
+    "windows": 21,
+    "failures": []
+  },
+  "height-test": {
+    "windows": 16,
+    "failures": []
+  }
+}

@@ -6,7 +6,7 @@
 
 Creates the 16x12 L-block, irregular market, both tall/low joins, 1x/3x
 comparisons and greyscale squint renders. Per-export proofs are delegated to
-review/r17-C-review.py. No native asset is resampled during composition.
+review/r17-C-review.py. Native drawing registration uses exact mode sampling.
 Every building is bottom-left anchored. Facade origin spacing remains 48px.
 Spec storeys are bottom-to-top. Parts are drawn ground, storeys, roof, overlays;
 standing objects are sorted by base row. End strips reveal only 3 outer pixels.
@@ -16,6 +16,7 @@ Part B roofs, joins, firewall and masked shadows are native city17 assets.
 Part C adds rear rows, separately lit side returns, corner nodes, fenced
 yards and quiet street surfaces. Part D adds native whole civic and market sprites.
 Default output is scoped to r17-E review files; --part C/D replays historical parts.
+C6 reserves facade receiving margins by documented8x mode registration.
 """
 
 import argparse
@@ -581,6 +582,7 @@ def c_connected_roof(node):
 
 def build_c(spec):
     """Native front/back/side assembly. Every module anchors at bottom left."""
+    if spec.get('c6'):return c6_build(spec)
     if spec.get('c5'):return c5_build(spec)
     if spec.get('c4'):return c4_build(spec)
     if spec.get('view')=='complete':
@@ -1899,6 +1901,9 @@ def r_render(l,reveal=False):
 def c4_owned_prop(l,p):
     """Cut curtains back to projecting towers even across unequal base rows."""
     a=r_prop_image(p)
+    if p.get('assembly_cutouts'):
+        a=a.copy()
+        for box in p['assembly_cutouts']:a.paste((0,0,0,0),tuple(box))
     if not p.get('wall') or p.get('attachment') or 'tower' in p['file'] or p.get('id')=='gatehouse':return a
     a=a.copy();x,y=p['x'],p['base']-a.height;alpha=a.getchannel('A')
     for t in l['props']:
@@ -3391,9 +3396,756 @@ def c5_main():
     print('C5',len(l['lots']),'buildings',dict(hist))
 
 
+# Cycle6: occupied property strips and destination-led circulation.
+@lru_cache(maxsize=128)
+def c6_end_panel(n,side,both=False):
+    """Reserve a masonry margin without cutting a window, sill or doorway.
+
+    Complete-house modules have an authored80px frontage and16px right return;
+    translate that entire frontage to the opposite hand. Older96px-wide bays
+    are registered to80px using the same8x BOX /64-sample mode reduction.
+    """
+    from collections import Counter
+    donor=asset(n);a=Image.new('RGBA',donor.size);width=64 if both else 80
+    if '-house-' in n and not both:
+        front=donor.crop((0,0,80,48))
+    else:
+        if '-house-' in n:donor=donor.crop((0,0,80,48))
+        reg=donor.resize((width*8,48*8),Image.Resampling.BOX);v=list(reg.get_flattened_data());raw=[];sw=width*8
+        for y in range(48):
+            for x in range(width):
+                votes=Counter(q for yy in range(8) for q in v[(y*8+yy)*sw+x*8:(y*8+yy)*sw+x*8+8]);raw.append(min(votes,key=lambda q:(-votes[q],q)))
+        front=Image.new('RGBA',(width,48));front.putdata(raw)
+    a.paste(front,(16 if side=='left' else 0,0))
+    return a
+
+
+def c6_unlike_roofs(depth=144,tone=''):
+    """Actual unlike caps joined over continuous drawn masonry/flashing.
+
+    Each48px end and the96px middle retain their native anchor. The joint
+    receivers are under the roofs, with their flashing over the contact last.
+    """
+    suffix='-'+tone if tone else '';d2='-d2' if depth==96 else ''
+    a=Image.new('RGBA',(192,depth));parts=[]
+    def put(n,x,crop=None):
+        im=asset(n);im=im.crop(crop) if crop else im;a.alpha_composite(im,(x,0));parts.append(dict(file=n,x=x,crop=crop))
+    # One continuous receiving face, one coping, no transparent taper or foot.
+    put('receiving-wall-right-c6r1',40,[0,0,16,depth]);put('receiving-wall-left-c6r1',136,[0,0,16,depth])
+    put('abutment-a'+d2+'-c6'+suffix,0)
+    put('roof-merchant-'+('d2' if depth==96 else 'c')+'-c6'+suffix,48)
+    put('abutment-b'+d2+'-c6'+suffix,144)
+    # The thin drawn metal/stone contact belongs to each receiver, not a
+    # procedural line. Use the painted two-column flashing, at native scale.
+    put('abutment-b'+d2+'-c6'+suffix,46,[39,0,41,depth])
+    put('abutment-b'+d2+'-c6'+suffix,142,[39,0,41,depth])
+    return a,parts
+
+
+def c6_build(s):
+    if s.get('complete_file'):return c4_build(s)
+    roof=asset(s['roof_file']);w=s['width']*48;h=roof.height+s['floors']*48
+    a=Image.new('RGBA',(w,h));parts=[]
+    def put(n,x,y,crop=None,layer='storey'):
+        b=asset(n);b=b.crop(crop) if crop else b
+        a.alpha_composite(b,(x,y));parts.append(dict(file=n,x=x,y=y,crop=crop,layer=layer))
+    receiving=s.get('returns',[]) if s.get('house_family') and w==96 else []
+    # One facade corner owns the16px receiver. Two-sided houses retain a
+    # native16px margin each, registering the complete bay into their middle.
+    for j,n in enumerate(s['panels']):
+        yy=h-48*(j+1)
+        if receiving and (j>0 or '-house-' in n):
+            side='left' if 'left' in receiving else 'right';panel=c6_end_panel(n,side,len(set(receiving))==2)
+            a.alpha_composite(panel,(0,yy));parts.append(dict(file=n,x=0,y=yy,layer='whole facade registered beside window-free masonry margin',receiving=receiving))
+        else:put(n,0,yy,layer='ground' if j==0 else 'storey')
+    if s.get('house_family'):
+        # The receding end is the painted side of a complete house, never a
+        # front-facing masonry column. Native floor-joint paint connects bays.
+        family=s['house_family'];side=asset('return-house-'+family+'-c6r1')
+        for j in range(s['floors'] if not receiving else 0):
+            yy=h-48*(j+1);sy=48 if j==0 else 0
+            hand='abc'[('abc'.index(family)+j)%3]
+            # Earlier approved24px door bays end at x84. Their stone plinth
+            # receives an8px return, preserving the whole opening and landing.
+            rw=8 if j==0 and not s['panels'][0].startswith('ground-house-') else 16
+            put('return-house-'+hand+'-c6r1',w-rw,yy,crop=[16-rw,sy,16,sy+48],layer='receding architectural return')
+        for j in range(1,s['floors'] if not receiving else 1):
+            # One native paint row removes a doubled connection outline; the
+            # full fixed-course exports are unchanged, with no8px floor belt.
+            put(s['panels'][j],0,h-48*j-1,crop=[0,1,w,2],layer='one-pixel course cleanup overlay')
+    # Continuous receiving faces are native painted masonry, with one coping.
+    for side in ([] if s.get('house_family') else s.get('returns',[])):
+        n='party-'+side+'-c6';donor=asset(n);x=0 if side=='left' else w-12
+        for y in range(roof.height,h-1):
+            sy=y-roof.height;sy=sy if sy<144 else 16+(sy-16)%112
+            a.paste(donor.crop((0,sy,12,sy+1)),(x,y))
+        parts.append(dict(file=n,x=x,y=roof.height,layer='continuous12px masonry receiving return'))
+    if s.get('house_family'):
+        for side in s.get('returns',[]):
+            n='receiving-wall-'+side+'-c6r1';height=h-roof.height
+            # Usable ground bays retain their authored entrance coordinates.
+            # Upper masonry terminates on their existing stone ground floor.
+            if '-house-' not in s['panels'][0]:height-=48
+            put(n,0 if side=='left' else w-16,roof.height,crop=[0,0,16,height],layer='continuous masonry receiving return')
+    # Painted abutments own the empty margins of selected caps. Genuine courts
+    # are separate ground properties and never part of these roof receivers.
+    if s.get('close_roof') and w>=96 and not s.get('house_family'):
+        tone=s.get('tone','');suffix='-'+tone if tone else ''
+        for side,x in [('a',0),('b',w-48)]:
+            n='abutment-'+side+('-d2' if roof.height==96 else '')+'-c6'+suffix
+            put(n,x,0,layer='roof valley and receiving wall before cap')
+    put(s['roof_file'],0,0,layer='roof')
+    # Height contacts need both assembled silhouettes. c6_join_houses places
+    # their masonry before the lower house and flashing on its painted edge;
+    # a crop at the transparent roof-canvas top is not a contact.
+    for p in s.get('overlays',[]):put(p['file'],p['x'],h+p.get('y_offset',-144),layer='trade sign within lot')
+    put('shadow-eave-w'+str(s['width'])+'-c0',0,roof.height+1,layer='contact eave shade')
+    return a,parts
+
+
+def c6_city_layout():
+    l=c5_city_layout();l.update(c6=True)
+    def get(n):return next(b for b in l['lots'] if b['id']==n)
+    def prop(n,x,base,**kw):
+        p=dict(file=n,x=x,base=base,**kw);l['props'].append(p);return p
+    def road(rect,kind='side',name='C6-route',clear=True):
+        l['roads'].append(dict(rect=rect,kind=kind,id=name,horizontal=rect[2]>rect[3],file={'main':'street-main-c3','side':'street-side-c3','lane':'lane-c3','square':'square-slabs-c5'}[kind],clear=clear))
+    def add(name,x,base,w,n,i,group,tone='',depth=96,complete=None):
+        s=c5_spec(w,n,i,tone)
+        if complete:s['complete_file']=complete
+        b=dict(id=name,x=x,base=base,spec=s,frontage_group=group,footprint=[x,base-depth,w*48,depth],entrance=[x+(72 if w==2 else 24),base],ground_depth=depth)
+        l['lots'].append(b);return b
+    def change(b,x=None,base=None,w=None,n=None):
+        if x is not None:b['x']=x
+        if base is not None:b['base']=base
+        if w is not None or n is not None:
+            s=b['spec'];b['spec']=c5_spec(w or s['width'],n or s['floors'],len(l['lots'])+b['x']//48,s.get('tone',''))
+        b['footprint']=[b['x'],b['base']-b.get('ground_depth',96),b['spec']['width']*48,b.get('ground_depth',96)]
+        b['entrance']=[b['x']+(72 if b['spec']['width']==2 else 24),b['base']]
+    # Remove obsolete property scaffolding; rebuild enclosures from actual ground.
+    l['plots']=[]
+    l['props']=[p for p in l['props'] if not p.get('owner','').endswith('-legal-yard') and p.get('owner') not in ('west-rear-court','south-yard','poor-yard','hall-service','north-recess','guard-recess') and p.get('id') not in ('south-shed-144','south-shed-240','north-well-bench','guard-notice','guild-service-closure')]
+    l['courts']=[p for p in l['courts'] if p['id'] not in ('west-rear-court','hall-service','north-recess','guard-recess')]
+    # NW side street bends around an actual built projection at its T-junction.
+    get('west-lane-workshop')['spec']['complete_file']='side-house-a-c6'
+    add('west-attached-middle',336,576,2,2,4,'west-side',complete='side-house-east-c5r1')
+    get('west-2')['spec']['complete_file']='side-house-a-c6'
+    change(get('west-2'),base=720)
+    add('west-side-link',336,624,2,1,9,'west-side',depth=48)
+    add('west-T-projection',432,720,1,2,10,'west-wedge')
+    change(get('north-middle-0'),x=528,base=720)
+    get('north-middle-0')['spec']['complete_file']='side-house-west-c6-slate'
+    change(get('north-middle-1'),x=624,w=1,n=4)
+    add('middle-attached-link',480,576,2,2,12,'north-middle','slate',complete='side-house-west-c6-slate')
+    get('middle-side-workshop')['spec']['complete_file']='side-house-west-c5r1-slate'
+    # North court remains an intentional48px working strip with a southern
+    # passage. The passage is overhead-covered; support footprints exclude it.
+    b=get('west-1');b['passage']=[300,432,24,288];b['footprints']=[[240,624,60,96],[324,624,12,96]];b['foreground_mask']=[60,0,84,240]
+    b['entrance']=[312,720];b['spec']['panels'][0]='ground-passage-w2-c6'
+    l['courts'].append(dict(id='northwest-pump-court',rect=[240,432,96,48],access=[300,432,24,288]))
+    road([300,432,24,288],'lane','northwest-covered-passage')
+    prop('yard-0',240,480,id='northwest-pump',owner='northwest-pump-court')
+    prop('fence-1',240,480,crop=[7,0,15,48],owner='northwest-pump-court')
+    prop('passage-entry-c6',288,480,id='northwest-rear-opening',owner='northwest-pump-court',foreground_mask=[12,10,36,44],overhead=True)
+    # Northeast trapezoid: linked rear ranges, selected wider houses, one
+    # shared alley per property group. The shrine terminates its own apron.
+    get('east-lane-workshop')['spec']['complete_file']='side-house-west-c6-slate'
+    add('merchant-west-link',1392,624,2,2,13,'merchant-side','slate',complete='side-house-west-c5r1-slate')
+    get('merchant-2')['spec']['complete_file']='side-house-west-c6-slate'
+    get('east-rear-house')['spec']['complete_file']='side-house-a-c6-slate'
+    add('merchant-east-link',1680,576,2,2,14,'merchant-side','slate',complete='side-house-east-c5r1-slate')
+    add('merchant-east-store',1680,624,2,1,15,'merchant-side','slate',depth=48)
+    # Merge the narrow eastern sliver into a96px coherent house; keep24px
+    # alley on its west and the original48px outer wall route on its east.
+    l['lots']=[b for b in l['lots'] if b['id']!='merchant-4']
+    change(get('merchant-5'),x=1632,w=2,n=3)
+    add('merchant-end',1728,720,1,2,19,'merchant-trapezoid','slate')
+    add('merchant-rear-range',1488,480,2,2,22,'merchant-rear','slate')
+    add('merchant-rear-link',1488,576,2,2,23,'merchant-rear','slate')
+    # Southern comb becomes two full houses with a complete48px stagger.
+    l['lots']=[b for b in l['lots'] if b['id'] not in ('south-L-3','south-L-4','south-square-west','south-L-return','poor-3')]
+    add('south-stagger-west',528,1248,2,2,24,'square-south')
+    add('south-stagger-east',624,1296,2,3,25,'square-south')
+    add('poor-east-wide',1680,1248,2,2,26,'poor-wall','brown')
+    add('cobbler-attached-rear',336,912,2,2,31,'craft-rear',depth=48)
+    add('poor-east-rear',1680,1152,2,2,32,'poor-wall','brown',depth=48)
+    # The guildhall advances to the square. Its two closest flanks lose one
+    # floor; prescribed192px frontage/allocation is unchanged.
+    for name in ('square-narrow','square-smith-bay'):
+        b=get(name);s=b['spec'];s['floors']-=1;s['panels']=s['panels'][:s['floors']]
+    get('square-apothecary')['spec']['panels'][-2]='storey-plaster-c6'
+    for p in l['props']:
+        ident=p.get('id','')
+        if ident in ('guildhall','guildhall-public-entry'):
+            p['base']+=48
+            if 'footprint' in p:p['footprint'][1]+=48
+            if 'entrance' in p:p['entrance'][1]+=48
+        if ident=='cathedral':
+            p.update(x=528,footprint=[528,768,240,288],entrance=[624,1056],overhang=[528,624,240,144])
+        if ident=='fountain':p.update(x=816,footprint=[816,912,96,96])
+        if ident=='gatehouse':p['ground_footprints']=[[1176,1248,24,192],[1296,1248,24,192]]
+        if ident.startswith('stall-') or ident.startswith('vendor-'):
+            p['x']+=48
+            if 'footprint' in p:p['footprint'][0]+=48
+        if ident=='church-east-door':
+            p.update(file='church-entry-a-c6',x=672,base=960,footprint=[672,912,96,48],entrance=[768,948],foreground_mask=[0,0,48,44],sort_base=1057)
+        if ident=='market-hall':
+            p.update(file='market-hall-b-c6',entrance=[864,1056],entrance_direction='N',foreground_mask=[0,0,192,72])
+        if ident=='life-2':p.update(x=304,base=700,role='entering northwest covered passage')
+        if ident=='life-0':p.update(x=900,base=716,role='guildhall visitor')
+        if ident=='life-12':p.update(x=784,base=986,role='church east entry visitor')
+        if ident=='merchant-shrine':p.update(x=1512,base=720)
+        if ident=='market-loading-cart':p.update(x=784,base=1188,crop=[0,0,48,48],owner='market-hall-bay')
+        if p.get('role')=='unloading porter':p.update(x=836,base=1190)
+        if p.get('owner')=='market-loading':p.update(x=872,base=1192,owner='market-hall-bay')
+        if ident.startswith('vendor-') and ident[-1:] in '345':
+            j=int(ident[-1])-3;p.update(file=['vendor-weigh-c6','vendor-fold-c6','vendor-hand-c6'][j],x=960+j*48,base=872,role=['weighing goods','folding cloth','handing purchase'][j])
+        if ident.startswith('north-curtain-'):p['file']='wall-curtain-'+'abc'[int(ident.rsplit('-',1)[1])%3]+'-c6'
+        if ident.startswith('south-curtain-'):p['file']='wall-top-'+'bca'[int(ident.rsplit('-',1)[1])%3]+'-c6'
+        if p['file'].startswith('wall-tower-') and p['file'].endswith('-c5'):p['file']=p['file'][:-1]+'6'
+    for p in l['props']:
+        if p.get('role')=='customer facing bread':p.update(x=978,base=850)
+        if p.get('role')=='customer facing goods':p.update(x=974,base=946)
+        if p.get('role')=='jug filler':p.update(x=922,base=990)
+    # Continue the resolved sequence across the portal's missing wall panels.
+    for i,p in enumerate(sorted((p for p in l['props'] if p.get('id','').startswith('south-curtain-')),key=lambda p:p['x'])):
+        p['file']='wall-top-'+'bca'[i%3]+'-c6'
+    prop('person-customer-c4',996,946,role='paired shopper at fruit counter')
+    l['courts'].append(dict(id='western-churchyard',rect=[480,768,48,288],access=[480,720,48,48]))
+    for base in range(816,1057,48):prop('fence-1',480,base,crop=[7,0,15,48],owner='western-churchyard')
+    prop('cart-unload-c6',1536,1048,id='inn-unloading',owner='inn-court')
+    prop('gate-bridge-c6',1200,1336,id='gate-bridge',sort_base=1441,wall=True,attachment=True,overhead=True,footprint=[1200,1288,96,48],foreground_mask=[0,0,96,48])
+    prop('gate-landing-c6',1296,1336,id='gate-wall-landing',wall=True,attachment=True,sort_base=1441,overhead=True)
+    prop('lean-to-c4',240,960,id='craft-covered-fuel',owner='craft-court',footprint=[240,912,48,48],attached_to='west-smith')
+    prop('forge-smoke-c6',280,872,id='forge-cue',owner='craft-court',overhead=True)
+    # Public roads are specified anew, not left as bright patches from C5.
+    l['roads']=[]
+    for rect in ([1200,1056,96,384],[1104,1056,192,96],[1104,768,96,288]):road(rect,'main','gate-to-square')
+    road([1200,1056,96,96],'main','inn-turning-pocket')
+    road([864,720,192,48],name='guildhall-forecourt')
+    for rect in ([432,288,48,288],[432,576,96,48],[480,624,48,144],[432,768,48,288],[672,384,48,288],[672,672,192,48],[720,1056,48,288],[480,1056,240,48],[480,1104,48,192],[96,1008,336,48],[1344,336,48,384],[1392,720,192,48],[1584,288,48,384],[1584,672,48,96],[1632,720,144,48],[1776,768,48,288],[1488,1008,48,96],[1296,1056,192,48],[1488,1056,288,48],[912,1200,48,144]):road(rect,name='bent-side-street')
+    for rect in ([144,672,96,48],[240,720,240,48],[336,720,96,48],[528,720,144,48]):road(rect,name='northwest-T-arms')
+    for rect in ([300,432,24,288],[384,1104,24,144],[1656,1104,24,144],[1608,384,24,240]):road(rect,'lane','shared-private-passage')
+    for rect in ([288,912,48,96],[1488,864,48,192],[720,960,48,96],[768,912,48,96],[720,696,48,48],[1512,720,48,96],[1776,624,96,48]):road(rect,name='destination-apron')
+    for x in (96,1776):
+        for y,h in ((288,336),(624,384),(1008,336)):road([x,y,48,h],name='wall-service')
+    for x,w in ((96,336),(432,384),(816,384),(1200,384),(1584,240)):road([x,240,w,48],name='north-wall-lane')
+    for x,w in ((96,288),(576,192),(960,144),(1392,144),(1728,96)):road([x,1344,w,48],name='south-wall-lane')
+    for x in (432,816,1584):
+        for rect in ([x-48,1248,192,48],[x-48,1296,48,96],[x+96,1296,48,96]):road(rect,name='tower-service-turn')
+    for rect in ([1104,1200,48,192],[1104,1200,288,48],[1344,1200,48,144]):road(rect,name='gate-inner-service')
+    road([672,288,48,96],name='north-court-T')
+    road([1008,288,48,240],name='guild-rear-service')
+    road(l['square'],'square','square',False)
+    # Actual short rear plots with closed boundaries and one shared passage.
+    for idx,name in enumerate(('west-0','west-1','north-middle-1','square-baker','square-apothecary','merchant-0','merchant-3','merchant-5','south-L-0','south-L-1','south-stagger-west','poor-0','poor-east-wide')):
+        b=get(name);x,y,w,d=b['footprint'];own=name+'-property';yard=[x,y-48,w,48]
+        l['plots'].append(dict(id=own,principal=name,front=b['footprint'],yard=yard,rear=[x,y-96,w,48],passage=[x+w-24,y-48,24,48]))
+        for xx in range(x,x+w,48):
+            fence='fence-h-'+('b' if idx%2 else 'c')+'-c4'
+            if name=='west-1' and xx==288:
+                prop(fence,xx,y-24,crop=[0,0,12,48],owner=own,architectural=True)
+                prop(fence,xx+36,y-24,crop=[36,0,48,48],owner=own,architectural=True)
+            else:prop(fence,xx,y-24,owner=own,architectural=True)
+        for xx in (x,x+w-8):prop('fence-1',xx,y,crop=[7,0,15,48],owner=own,architectural=True)
+        if idx%3==0:prop('lean-to-c4',x,y-48,owner=own,attached_to=name)
+        else:prop('yard-'+str(1+idx%3),x+8,y-4,crop=[0,20,min(32,w-16),48],owner=own,attached_to=name)
+    # Architectural strips close gaps between side houses and rear wings.
+    for x,base,own in [(240,576,'northwest-pump-court'),(1632,480,'merchant-rear'),(1392,1152,'poor-yard'),(1680,1152,'poor-yard')]:
+        prop('fence-0',x,base,owner=own);prop('fence-1',x,base,crop=[7,0,15,48],owner=own)
+    # Exact96px roofs and quiet coherent upper floors replace selected slivers.
+    upper=['storey-merchant-a-c6','storey-plaster-c6','storey-merchant-b-c6','storey-recessed-c4-w2','storey-shuttered-c4-w2','storey-arrangement-a-c4-w2','storey-arrangement-b-c4-w2','storey-arrangement-c-c4-w2','storey-timber-w2-c0','storey-plaster-w2-c0','storey-stone-w2-c0','storey-oriel-w2-c0']
+    for idx,b in enumerate(l['lots']):
+        s=b['spec'];w=s['width'];tone=s.get('tone','');suffix='-'+tone if tone else ''
+        if not s.get('complete_file') and w==2:
+            # Native course count makes the upper structure coherent; choose
+            # different whole arrangements rather than red panel bevels.
+            s['panels'][1:]=[upper[(idx*3+j)%len(upper)] for j in range(s['floors']-1)]
+            s['roof_file']=['roof-merchant-c-c6','roof-merchant-d2-c6','roof-hip-c5-w2'][idx%3]+suffix
+            s['close_roof']=True
+        if b['id']=='square-apothecary':s['panels'][s['floors']-4]='storey-plaster-c6'
+        trade={'square-baker':'baker','square-apothecary':'apothecary','west-smith':'smith','west-cobbler':'cobbler'}.get(b['id'])
+        if trade:s['panels'][0]='ground-'+trade+'-entry-c6';b['entrance']=[b['x']+72,b['base']]
+        if b['id']=='gate-road-inn':s['panels'][0]='inn-porch-b-c6';b['entrance']=[b['x']+24,b['base']]
+        for ov in s.get('overlays',[]):
+            if ov['file'] in ('sign-tailor-c4','sign-scribe-c4'):ov['file']=ov['file'].replace('-c4','-c6')
+        b['footprint']=[b['x'],b['base']-b.get('ground_depth',96),w*48,b.get('ground_depth',96)]
+        b['painted']=[b['x'],b['base']-c6_build(s)[0].height,w*48,c6_build(s)[0].height]
+    # Restore sign niches so full-sized signs never cover an entrance/window.
+    for b in l['lots']:
+        s=b['spec']
+        if s.get('overlays') and s['width']==2:
+            for j in range(1,min(3,len(s['panels']))):s['panels'][j]='storey-sign-bay-v'+str((b['x']//48+j)%6)+'-c5-w2'
+    get('square-apothecary')['spec']['panels'][3]='storey-plaster-c6'
+    get('square-smith-bay')['spec']['panels'][1]='storey-plaster-w1-c0'
+    get('merchant-5')['spec']['panels'][1]='storey-arrangement-b-c4-w2'
+    for name in ('south-stagger-west','south-stagger-east'):get(name)['spec']['roof_file']='roof-merchant-d2-c6'
+    l=c5_contacts(l)
+    # Wider exposed return on every stagger, within its own property.
+    for b in l['lots']:
+        if b['id'] in ('south-stagger-west','south-stagger-east','merchant-5'):
+            b['spec']['returns']=list(set(b['spec'].get('returns',[])+['right']))
+    l['clear_routes']=[r['rect'] for r in l['roads'] if r.get('clear')]
+    l['features'].update(cycle='C6',layout='built NW48px elbow/T; connected side/rear ranges; northeast stepped trapezoid; southern96px houses with48px whole-building stagger; inn on continuous96px gate elbow; uneven wall towers',shadow='hard southeast projection of drawn structural caster, owned receivers, one opacity union',guildhall_base=720,gate_turn=[1200,1056,96,96])
+    return c6_critic2_layout(c6_critic1_layout(l))
+
+
+def c6_critic1_layout(l):
+    """Close real properties; remove stacked independent roofs and false routes."""
+    def get(n):return next(b for b in l['lots'] if b['id']==n)
+    def prop(file,x,base,**kw):
+        p=dict(file=file,x=x,base=base,**kw);l['props'].append(p);return p
+    def road(rect,name,kind='side'):
+        l['roads'].append(dict(id=name,rect=rect,kind=kind,horizontal=rect[2]>rect[3],file={'side':'street-side-c3','lane':'lane-c3','main':'street-main-c3'}[kind],clear=True))
+    def add(name,x,base,w,n,i,tone='',group='closed-rear'):
+        b=dict(id=name,x=x,base=base,spec=c5_spec(w,n,i,tone),frontage_group=group,ground_depth=96,footprint=[x,base-96,w*48,96],entrance=[x+24,base]);l['lots'].append(b);return b
+    # A single front and a single rear range enclose a strip. The former
+    # intermediate whole houses repeatedly restarted roofs over living floors.
+    removed={'west-attached-middle','west-side-link','middle-attached-link','merchant-west-link','merchant-east-link','merchant-east-store','merchant-rear-link','poor-east-rear','cobbler-attached-rear'}
+    l['lots']=[b for b in l['lots'] if b['id'] not in removed]
+    get('merchant-rear-range')['base']=480
+    get('merchant-rear-range')['spec']['floors']=2
+    get('merchant-3')['spec']['floors']=3
+    get('poor-east-wide')['base']=1248
+    # Side houses remain separate, readable volumes with one roof apiece.
+    get('east-rear-house')['x']=1680
+    get('merchant-5')['spec']['floors']=2
+    # Restore civic hierarchy: neighbouring roof shoulders stop below the hall.
+    for name in ('square-baker','square-apothecary','merchant-0'):
+        b=get(name);b['spec']['floors']=3
+    for name in ('square-narrow','square-smith-bay'):
+        b=get(name);b['spec']['floors']=3
+    add('hall-rear-west',864,432,2,2,41,'','hall-rear')
+    add('hall-rear-east',960,432,2,2,42,'','hall-rear')
+    # A physical southern L links the formerly isolated comb across its gap.
+    add('south-elbow-neck',384,1248,1,2,43,'brown','south-L')
+    add('south-elbow-house',432,1200,2,2,44,'brown','south-L')
+    # A northern roofed range closes the northeast property strip; two joined
+    # rear homes are offset from the front ridges, rather than piled over them.
+    add('northeast-rear-west',1200,432,2,2,45,'slate','merchant-rear')
+    add('northeast-rear-end',1296,432,1,2,46,'slate','merchant-rear')
+    for name,x,base,w,n,i,tone,group in [
+        ('west-rear-shoulder',144,432,2,2,47,'','west-rear'),
+        ('middle-rear-east',576,432,1,2,48,'slate','north-middle'),
+        ('baker-rear-house',720,432,2,2,49,'','civic-rear'),
+        ('baker-rear-end',816,432,1,2,50,'','civic-rear'),
+        ('apothecary-rear-house',1104,432,2,2,51,'slate','merchant-rear'),
+        ('inn-rear-west',1200,864,2,2,52,'','inn-rear'),
+        ('inn-rear-middle',1296,864,2,2,53,'','inn-rear'),
+        ('inn-rear-east',1392,864,2,2,54,'','inn-rear'),
+        ('tailor-rear',1584,864,2,2,55,'','east-craft-rear'),
+        ('scribe-rear',1680,864,2,2,56,'','east-craft-rear'),
+        ('poor-rear-west',1392,1200,2,1,57,'brown','poor-wall')]:
+        add(name,x,base,w,n,i,tone,group)
+    get('west-rear-range')['spec']['floors']=2
+    for name in ('inn-rear-west','inn-rear-middle','inn-rear-east','tailor-rear','scribe-rear'):
+        b=get(name);b['base']=816;b['ground_depth']=48;b['spec']['floors']=1
+    # Replace only selected scene panels; the approved source exports stay put.
+    upper=['storey-house-a-c6r1','storey-house-b-c6r1','storey-house-c-c6r1','storey-merchant-a-c6','storey-plaster-c6','storey-merchant-b-c6','storey-recessed-c4-w2','storey-shuttered-c4-w2','storey-arrangement-a-c4-w2','storey-arrangement-b-c4-w2','storey-arrangement-c-c4-w2','storey-timber-w2-c0','storey-plaster-w2-c0','storey-stone-w2-c0','storey-oriel-w2-c0']
+    for idx,b in enumerate(l['lots']):
+        s=b['spec'];s['c6']=True;s['join_phase']=idx;n=s['floors'];w=s['width'];s['panels']=s['panels'][:n]
+        if not s.get('complete_file') and w==2:
+            family='abc'[idx%3];tone=s.get('tone','');suffix='-'+tone if tone else ''
+            s.update(house_family=family,close_roof=False,roof_file='roof-house-'+family+'-c6r1'+suffix)
+            s['panels'][1:]=[upper[(idx*3+j)%len(upper)] for j in range(n-1)]
+            # Full paired floor arrangements are retained where the reference
+            # comparisons exposed front-pilaster stacks.
+            if b['id'] in ('west-0','merchant-3','south-stagger-west','south-stagger-east'):
+                s['panels'][0]='ground-house-'+family+'-c6r1'
+            if s.get('overlays'):
+                for j in range(1,min(n,3)):s['panels'][j]='storey-sign-bay-v'+str((idx+j)%6)+'-c5-w2'
+            if b['id']=='square-apothecary':s['panels'][-1]='storey-plaster-c6'
+        elif not s.get('complete_file') and w==1:
+            tone=s.get('tone','');s['roof_file']='roof-narrow-'+'ab'[idx%2]+'-c6r1'+('-'+tone if tone else '')
+        while len(s['panels'])<n:s['panels'].append(upper[(idx+len(s['panels']))%len(upper)])
+        b['footprint']=[b['x'],b['base']-b.get('ground_depth',96),48*w,b.get('ground_depth',96)]
+        b['entrance']=[b['x']+(72 if w==2 else 24),b['base']]
+        b['painted']=[b['x'],b['base']-c6_build(s)[0].height,48*w,c6_build(s)[0].height]
+    get('west-1')['entrance']=[312,720]
+    get('gate-road-inn')['entrance']=[1320,1056]
+    get('west-1')['spec']['panels'][0]='ground-passage-w2-c6'
+    # Delete inherited overlapping carts, obsolete strip fencing and the floating
+    # upper doorway. Purposeful court props are retained within their enclosure.
+    l['props']=[p for p in l['props'] if not p.get('owner','').endswith('-property') and not (p.get('owner')=='inn-court' and p['file']=='cart') and p.get('id') not in ('guildhall-public-entry','inn-storage','gate-toll-bay')]
+    for p in l['props']:
+        ident=p.get('id','')
+        if ident=='guildhall':p.update(file='guildhall-c6r1',base=720,entrance=[960,720])
+        if ident=='church-east-door':p.update(file='church-porch-c6r1',x=672,base=1056,footprint=[672,960,96,96],entrance=[752,1056],sort_base=1057,foreground_mask=[0,0,44,42])
+        if ident=='forge-cue':p.update(x=290,base=844,sort_base=913)
+        if ident=='gate-wall-landing':p.update(base=1368,sort_base=1442)
+        if ident=='gatehouse':p.update(assembly_cutouts=[[24,208,120,248]],foreground_mask=[24,0,120,344])
+        if ident=='life-12':p.update(x=770,base=1048)
+        if ident=='inn-unloading':p.update(x=1536,base=1048,sort_base=1057)
+        # Actual tower feet project48px into the old straight service strip.
+        if ident.startswith('north-tower-') and p['x'] not in (0,1824):
+            p['base']=288;p['footprint'][1]+=48
+    prop('gate-stair-lower-c6r1',1296,1416,id='gate-walk-stair',wall=True,attachment=True,sort_base=1442,overhead=True)
+    # Repeated boundaries have three actual construction motifs, not aliases.
+    church=sorted([p for p in l['props'] if p.get('owner')=='western-churchyard'],key=lambda p:p['base'])
+    for i,p in enumerate(church):
+        p['file']=['fence-1','fence-0','yard-boundary-stone-c6r1'][i%3]
+        p['crop']=[7,0,15,48] if i%3==0 else [0,0,8,24] if i%3==1 else [0,0,8,48]
+        if i%3==1:
+            # A horizontal fence post contains24px of drawn upright; two
+            # native copies complete a48px boundary without synthesizing art.
+            p['crop']=[0,0,8,24];prop('fence-0',p['x'],p['base']-24,crop=[0,0,8,24],owner='western-churchyard-post')
+    # Real bent wall lane, with elbows around the four protruding tower bases.
+    l['roads']=[r for r in l['roads'] if r['id'] not in ('north-wall-lane','guild-rear-service','wall-service') and r['rect'] not in ([384,1104,24,144],[672,288,48,96],[480,1104,48,192],[1776,768,48,288],[1776,624,96,48])]
+    cursor=96
+    for x in (336,768,1056,1488):
+        if x-48>cursor:road([cursor,240,x-48-cursor,48],'north-wall-lane')
+        road([x-48,240,48,96],'north-wall-elbow')
+        road([x-48,288,192,48],'north-wall-offset')
+        road([x+96,240,48,96],'north-wall-elbow')
+        cursor=x+144
+    road([cursor,240,1824-cursor,48],'north-wall-lane')
+    # The side service lanes follow the actual curtain recesses and tower
+    # projections too; no chopped-up records disguise a straight long corridor.
+    for rect in ([48,240,96,48],[48,288,48,192],[48,480,96,48],[96,480,48,240],[48,672,96,48],[48,720,48,144],[48,864,96,48],[96,864,48,240],[48,1056,96,48],[48,1104,48,144],[48,1248,96,48],[96,1248,48,144]):road(rect,'west-wall-service-bend')
+    for rect in ([1776,240,96,48],[1824,288,48,96],[1776,384,96,48],[1776,384,48,240],[1776,576,96,48],[1824,624,48,192],[1776,816,96,48],[1776,816,48,240],[1776,1008,96,48],[1824,1056,48,192],[1776,1248,96,48],[1776,1248,48,144]):road(rect,'east-wall-service-bend')
+    # Storage swaps to the property side of that lane, still outside its clear48px.
+    for p in l['props']:
+        if p.get('owner')=='east-wall-service-court':
+            p['x']-=48
+            if 'footprint' in p:p['footprint'][0]-=48
+            if p['base']==624:p['base']=672
+            if p['file'].startswith('lean-to'):p['footprint']=[p['x'],p['base']-48,48,48]
+    for court in l['courts']:
+        if court['id']=='east-wall-service-court':court['rect']=[1776,624,48,144]
+    road([384,1056,48,96],'southern-L-bend')
+    road([384,1056,144,48],'southern-L-bend')
+    road([336,1104,96,48],'southern-L-dead-end')
+    road([336,1104,48,96],'southern-L-dead-end')
+    road([528,288,144,48],'northwest-rear-access')
+    road([864,432,192,48],'hall-rear-access')
+    # Close every working strip with two side boundaries and a continuous rear
+    # boundary. The front is an occupied building; a24px opening has a destination.
+    l['plots']=[]
+    strips=[('northwest-strip',[240,432,96,96],'west-1'),('middle-strip',[480,480,192,96],'north-middle-0'),('hall-strip',[720,432,336,96],'hall-rear-west'),('apothecary-strip',[1104,432,240,96],'square-apothecary'),('northeast-strip',[1392,528,192,96],'merchant-2'),('east-strip',[1632,480,144,96],'merchant-5'),('southwest-strip',[144,1056,240,96],'south-L-0'),('inn-back-strip',[1200,864,288,96],'gate-road-inn'),('east-trade-strip',[1584,864,192,96],'east-scribe'),('south-east-strip',[1680,1104,96,48],'poor-east-wide')]
+    for i,(name,rect,principal) in enumerate(strips):
+        x,y,w,h=rect;l['plots'].append(dict(id=name,principal=principal,yard=rect,front=get(principal)['footprint'],rear=[x,y-48,w,48],passage=[x+w-24,y,24,h],closed=True))
+        for j,xx in enumerate(range(x,x+w,48)):
+            prop(['fence-0','fence-h-b-c4','fence-h-c-c4'][(i+j)%3],xx,y+24,owner=name,architectural=True,id=name+'-north-'+str(j))
+        for side,xx in enumerate((x,x+w-8)):
+            for j,base in enumerate(range(y+48,y+h+1,48)):
+                nn=['fence-1','yard-boundary-stone-c6r1','fence-1'][(i+j+side)%3]
+                crop=[7,0,15,48] if nn=='fence-1' else None
+                prop(nn,xx,base,owner=name,architectural=True,**({'crop':crop} if crop else {}))
+        if name=='south-east-strip':
+            prop('lean-to-c4',x,y+48,owner=name,attached_to=principal,footprint=[x,y,48,48])
+        prop('yard-'+str(1+i%3),x+48,y+h-8,owner=name,crop=[0,16,32,48],attached_to=principal)
+    # The northwest pump passage remains visibly open at its northern gate.
+    l['props']=[p for p in l['props'] if p.get('id')!='northwest-strip-north-1']
+    prop('lean-to-c4',384,912,owner='craft-court',attached_to='west-cobbler',footprint=[384,864,48,48])
+    prop('lean-to-c4',1728,528,owner='east-strip',attached_to='east-rear-house',footprint=[1728,480,48,48])
+    prop('lean-to-c4',1392,1248,owner='poor-yard',attached_to='poor-rear-west',footprint=[1392,1200,48,48])
+    prop('lean-to-c4',1392,576,owner='northeast-strip',attached_to='east-lane-workshop',footprint=[1392,528,48,48])
+    prop('fence-0',336,1200,owner='southwest-strip',id='southern-dead-end-court-gate')
+    # Resolve vertical boundary sequences globally, including inherited ends.
+    from collections import defaultdict
+    fences=defaultdict(list)
+    for p in l['props']:
+        a=r_prop_image(p)
+        if p['file'].startswith(('fence-','yard-boundary-')) and a.width<=8 and a.height==48:fences[p['x']].append(p)
+    for xx,row in fences.items():
+        row.sort(key=lambda p:p['base'])
+        for i,p in enumerate(row):
+            p['file']=['fence-1','yard-boundary-stone-c6r1','yard-boundary-wood-c6r1'][i%3]
+            if i%3==0:p['crop']=[7,0,15,48]
+            else:p.pop('crop',None)
+    # A broad transverse roof closes the civic rear apron without another tall
+    # facade; yard ground stays separately owned and visibly enclosed.
+    l['clear_routes']=[r['rect'] for r in l['roads'] if r.get('clear')]
+    l['features'].update(critic1='closed rear boundaries; actual tower-foot lane bends; southern L neck; no overlapping whole-house roof columns',guildhall_body='broad192px stone arcade within192px frontage',church_steps='solid masonry porch reaches cathedral ground baseline1056')
+    get('south-stagger-west')['spec']['house_family']='c'
+    return c5_contacts(l)
+
+
+def c6_critic2_layout(l):
+    """Attach each rear strip to real masonry and close its physical perimeter."""
+    def get(n):return next(b for b in l['lots']+l['props'] if b.get('id')==n)
+    def prop(file,x,base,**kw):
+        p=dict(file=file,x=x,base=base,**kw);l['props'].append(p);return p
+    # These are commercial frontages on the square/side street, not low sheds.
+    upper=['storey-house-a-c6r1','storey-house-b-c6r1','storey-house-c-c6r1','storey-recessed-c4-w2','storey-shuttered-c4-w2','storey-arrangement-a-c4-w2','storey-arrangement-b-c4-w2','storey-arrangement-c-c4-w2','storey-merchant-a-c6','storey-merchant-b-c6']
+    for i,name in enumerate(('inn-rear-west','inn-rear-middle','inn-rear-east','tailor-rear','scribe-rear')):
+        b=get(name);s=b['spec'];n=3 if i<3 else 2
+        s['floors']=n;s['panels']=s['panels'][:1]+[upper[(i*2+j)%len(upper)] for j in range(n-1)]
+    # Replace the destructive rectangle with drawn bearing paint. The original
+    # shafts remain whole; the old cap is covered, never cut out of the towers.
+    for p in l['props']:
+        if p.get('id')=='gatehouse':
+            p.pop('assembly_cutouts',None)
+        if p.get('owner')=='northwest-strip' and p['file'].startswith('yard-'):
+            p['x']=248
+    prop('gate-bearing-c6r2',1200,1320,id='gate-bearing',sort_base=1440.5,wall=True,attachment=True,overhead=True,foreground_mask=[0,0,96,64])
+    oldowners={p['id'] for p in l['plots']}|{'western-churchyard','western-churchyard-post'}
+    l['props']=[p for p in l['props'] if not (p.get('owner') in oldowners and p['file'].startswith(('fence-','yard-boundary-')))]
+    # A front and a rear range may each own a48/96px yard. Opposing rear
+    # strips share a fence; none stops short with an unassigned paving gap.
+    l['plots']=[]
+    strips=[
+      ('nw-rear',[240,432,96,96],'west-rear-range','north'),
+      ('nw-front',[240,528,96,96],'west-1','south'),
+      ('middle-west',[480,480,48,96],'middle-side-workshop','north'),
+      ('middle-rear',[528,480,48,96],'middle-side-workshop','north'),
+      ('middle-front',[528,576,96,48],'north-middle-0','south'),
+      ('middle-east-rear',[576,432,48,96],'middle-rear-east','north'),
+      ('middle-east-front',[576,528,48,48],'north-middle-0','linked'),
+      ('middle-tall',[624,480,48,96],'north-middle-1','south'),
+      ('baker-back',[720,432,96,48],'baker-rear-house','north'),
+      ('baker-front',[720,480,96,96],'square-baker','south'),
+      ('baker-narrow-back',[816,432,48,48],'baker-rear-end','north'),
+      ('baker-narrow-front',[816,480,48,96],'square-narrow','south'),
+      ('hall-west',[864,480,96,48],'guildhall','south'),
+      ('hall-east',[960,480,96,48],'guildhall','south'),
+      ('apothecary-back',[1104,432,96,48],'apothecary-rear-house','north'),
+      ('apothecary-front',[1104,480,96,96],'square-apothecary','south'),
+      ('merchant-back',[1200,432,96,48],'northeast-rear-west','north'),
+      ('merchant-front',[1200,480,96,96],'merchant-0','south'),
+      ('merchant-narrow-back',[1296,432,48,48],'northeast-rear-end','north'),
+      ('merchant-narrow-front',[1296,480,48,96],'merchant-1','south'),
+      ('ne-side',[1392,528,96,96],'merchant-2','south'),
+      ('ne-front',[1488,480,96,96],'merchant-3','south'),
+      ('east-west',[1632,528,96,96],'merchant-5','south'),
+      ('east-back',[1680,480,96,48],'east-rear-house','north'),
+      ('east-end',[1728,528,48,96],'merchant-end','south'),
+      ('sw-west-back',[144,1056,96,48],'south-L-0','linked'),
+      ('sw-west-front',[144,1104,96,96],'south-L-0','south'),
+      ('sw-middle-back',[240,1056,96,96],'south-L-1','linked'),
+      ('sw-middle-front',[240,1152,96,96],'south-L-1','south'),
+      ('sw-end',[336,1152,48,48],'south-L-2','south'),
+      ('inn-west-back',[1200,816,96,48],'inn-rear-west','north'),
+      ('inn-west-front',[1200,864,96,96],'inn-square-wing','south'),
+      ('inn-middle-back',[1296,816,96,48],'inn-rear-middle','north'),
+      ('inn-middle-front',[1296,864,96,96],'gate-road-inn','south'),
+      ('inn-east-back',[1392,816,96,48],'inn-rear-east','north'),
+      ('inn-east-front',[1392,864,96,96],'inn-east-wing','south'),
+      ('tailor-back',[1584,816,96,48],'tailor-rear','north'),
+      ('tailor-front',[1584,864,96,96],'east-tailor','south'),
+      ('scribe-back',[1680,816,96,48],'scribe-rear','north'),
+      ('scribe-front',[1680,864,96,96],'east-scribe','south'),
+      ('poor-east',[1680,1104,96,48],'poor-east-wide','south'),
+    ]
+    vertical={};horizontal={}
+    # A source-painted rail is kept at every boundary pixel. Shared edges have
+    # one owner and meet side rails without duplicate outlines or floating posts.
+    for name,rect,principal,hand in strips:
+        x,y,w,h=rect;front=get(principal)['footprint'];passage=None
+        if name.startswith('nw-'):passage=[300,y,24,h]
+        elif name.startswith(('inn-east','scribe-')):passage=[x+w-24,y,24,h]
+        l['plots'].append(dict(id=name,principal=principal,yard=rect,front=front,attachment=hand,passage=passage,boundary_edges=['north','east','south','west']))
+        for xx in (x,x+w-8):
+            for yy in range(y,y+h,48):vertical.setdefault((xx,yy),name)
+        for yy in (y,y+h):
+            # A house foundation is already a closed boundary; do not put a
+            # fence through its door or across its48px approach inside the yard.
+            if (hand=='north' and yy==y) or (hand=='south' and yy==y+h):continue
+            for xx in range(x,x+w,48):horizontal.setdefault((xx,yy),(name,passage))
+    for i,((x,y),owner) in enumerate(sorted(vertical.items())):
+        file=['yard-boundary-wood-c6r1','yard-boundary-stone-c6r2','yard-boundary-wood-b-c6r2'][i%3]
+        prop(file,x,y+48,id=f'closed-side-{i}',owner=owner,architectural=True,boundary_rect=[x,y,8,48])
+    rowindex={}
+    for i,((x,y),(owner,passage)) in enumerate(sorted(horizontal.items(),key=lambda q:(q[0][1],q[0][0]))):
+        j=rowindex.get(y,0);rowindex[y]=j+1
+        file=['fence-0','fence-h-b-c4','fence-h-c-c4'][j%3]
+        cuts=[(x,x+48)]
+        if passage and x<passage[0]+24 and x+48>passage[0]:cuts=[(x,min(x+48,passage[0])),(max(x,passage[0]+24),x+48)]
+        for a,b in cuts:
+            if b>a:prop(file,a,y+16,crop=[a-x,0,b-x,24],id=f'closed-rear-{i}-{a}',owner=owner,architectural=True,boundary_rect=[a,y,b-a,1])
+    # Churchyard has a continuous west rail; the north entrance stays open.
+    for i,y in enumerate(range(768,1056,48)):
+        prop(['yard-boundary-stone-c6r2','yard-boundary-wood-c6r1','yard-boundary-wood-b-c6r2'][i%3],480,y+48,owner='western-churchyard',boundary_rect=[480,y,8,48])
+    prop('fence-h-c-c4',480,1071,owner='western-churchyard',boundary_rect=[480,1055,48,1])
+    # Remove the older post fragments inside the intentionally open pump court.
+    l['props']=[p for p in l['props'] if not (p.get('owner')=='northwest-pump-court' and p['file'].startswith('fence-'))]
+    l=c5_contacts(l)
+    for b in l['lots']:
+        a=c6_build(b['spec'])[0];b['painted']=[b['x'],b['base']-a.height,a.width,a.height]
+    l['features']['critic2']='attached, subdivided opposing rear strips; continuous rails and window-free masonry margins; commercial heights restored; drawn gate bearing over intact tower shafts'
+    return l
+
+
+def c6_ground(l):
+    im=repeat(asset('cobble-c3'),tuple(l['size']));im.paste(repeat(asset('ditch-c3'),(1920,96)),(0,0))
+    def field(n,rect):
+        x,y,w,h=rect;a=asset(n);im.alpha_composite(repeat(a,(w+a.width,h+a.height)).crop((x%a.width,y%a.height,x%a.width+w,y%a.height+h)),(x,y))
+    for p in l['plots']:field('packed-yard-c6r1',p['yard'])
+    for p in l['courts']:field('packed-yard-c6r1' if p['id'] in ('craft-court','northwest-pump-court','inn-court','east-wall-service-court') else 'workyard-c4',p['rect'])
+    for p in l['plots']:
+        if p['yard'][1]>1008:field('mud-edge',p['yard'])
+    field('square-slabs-c5',l['square']);field('workyard-c4',l['square_notch'])
+    for r in l['roads']:
+        if r['kind']=='main':field('main-paving-c4',r['rect'])
+        elif r['kind']=='lane':field('workyard-c4',r['rect'])
+        elif r['id']=='destination-apron' and r['rect'][0]==1512:field('main-paving-c4',r['rect'])
+    # Drawn gutter/kerb strips have a single boundary owner through junctions.
+    routes=[r for r in l['roads'] if r['kind'] in ('main','side')]
+    def at(x,y,kind):return any(r['kind']==kind and r['rect'][0]<=x<r['rect'][0]+r['rect'][2] and r['rect'][1]<=y<r['rect'][1]+r['rect'][3] for r in routes)
+    for r in routes:
+        x,y,w,h=r['rect'];t=asset(r['file']);k=6 if r['kind']=='main' else 2
+        if r['horizontal']:
+            t=t.transpose(Image.Transpose.ROTATE_90)
+            for xx in range(x,x+w):
+                for sy,dy,oy in ((0,y,y-1),(t.height-k,y+h-k,y+h)):
+                    if not at(xx,oy,r['kind']):im.paste(t.crop((xx%t.width,sy,xx%t.width+1,sy+k)),(xx,dy))
+        else:
+            for yy in range(y,y+h):
+                for sx,dx,ox in ((0,x,x-1),(t.width-k,x+w-k,x+w)):
+                    if not at(ox,yy,r['kind']):im.paste(t.crop((sx,yy%t.height,sx+k,yy%t.height+1)),(dx,yy))
+    # Short drain is a native gutter crop at the workshop's fuel-store foot.
+    im.paste(repeat(asset('street-side-c3').crop((0,0,4,48)),(4,96)),(284,912))
+    return im
+
+
+def c6_join_houses(ordered):
+    """Join only ground-adjacent houses, using their actual painted contours.
+
+    All repair pixels come from approved drawn masonry and neutral flashing.
+    Row crops wrap native masonry into the lower lot's exterior alpha margin;
+    no roof tiles, replacement polygons or new texture are drawn here. The
+    lower sprite then covers that receiver, and the drawn two-column flashing
+    follows its roof edge last. Intentional courts have no shared ground edge.
+    """
+    houses={e[5]:e for e in ordered if 'spec' in e[6]}
+    originals={name:e[4].copy() for name,e in houses.items()};records=[]
+    for name,tall in houses.items():
+        for contact in tall[6]['spec'].get('roof_contacts',[]):
+            low=houses[contact['neighbour']];source=originals[low[5]]
+            hand='left' if contact['side']=='right' else 'right'
+            receiver='receiving-wall-'+contact['side']+'-c6r1'
+            masonry=asset(receiver)
+            tone=low[6]['spec'].get('tone','');suffix='-'+tone if tone else ''
+            # B's39/40 columns are continuous neutral flashing. A's apparent
+            # contact meanders into tile paint, so it cannot supply a strip.
+            # Reverse only this two-pixel edge for the other hand; the masonry
+            # itself uses its separately lit left/right drawing unchanged.
+            flashing='abutment-b-c6'+suffix
+            metal=asset(flashing);sx=39
+            roof_height=source.height-low[6]['spec']['floors']*48
+            under=Image.new('RGBA',source.size);over=Image.new('RGBA',source.size)
+            rows=[];first_row=None;alpha=source.getchannel('A')
+            for y in range(source.height):
+                gy=low[3]+y
+                # The taller receiving facade, not its free roof/sky, must
+                # actually occupy the other side of this property boundary.
+                ty=gy-tall[3];ta=originals[name]
+                if not 0<=ty<ta.height:continue
+                tx=ta.width-1 if hand=='left' else 0
+                if not ta.getpixel((tx,ty))[3]:continue
+                edge=alpha.crop((0,y,source.width,y+1)).getbbox()
+                if not edge:continue
+                x0,x1=(0,edge[0]) if hand=='left' else (edge[2],source.width)
+                if x0==x1:continue
+                # Match the receiver's existing course phase on the taller
+                # facade; wrap only its uninterrupted body, below the coping.
+                if first_row is None:first_row=y
+                ry=ty-(ta.height-tall[6]['spec']['floors']*48)
+                ry=0 if y==first_row else 1+(ry-1)%(masonry.height-1)
+                row=repeat(masonry.crop((0,ry,masonry.width,ry+1)),(source.width,1))
+                under.paste(row.crop((x0,0,x1,1)),(x0,y))
+                if y<roof_height:
+                    fx=x1-1 if hand=='left' else x0-1
+                    sy=16+(y%112)
+                    strip=metal.crop((sx,sy,sx+2,sy+1))
+                    if hand=='left':strip=strip.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+                    over.paste(strip,(fx,y))
+                rows.append([y,x0,x1])
+            assembled=under;assembled.alpha_composite(low[4]);assembled.alpha_composite(over)
+            low[4]=assembled
+            records.append(dict(tall=name,lower=low[5],side=hand,
+                receiver=receiver,flashing=flashing,flashing_columns=[sx,sx+2],
+                flashing_reversed=hand=='left',
+                roof_eave=low[3]+roof_height,owned_rows=rows,
+                order=['drawn masonry','complete lower house','contour flashing']))
+    return records
+
+
+def c6_render(l,reveal=False,actors=None):
+    im=c6_ground(l);ordered=[];records=[];casts=Image.new('L',im.size);occupied=Image.new('L',im.size);shadows=[]
+    for b in l['lots']:
+        a,parts=c6_build(b['spec'])
+        ordered.append([b['base'],0,b['x'],b['base']-a.height,a,b['id'],b]);records.append(dict(id=b['id'],parts=parts,painted=[b['x'],b['base']-a.height,a.width,a.height],footprint=b['footprint'],entrance=b.get('entrance')))
+    joins=c6_join_houses(ordered)
+    for record in records:
+        record['assembled_contacts']=[j for j in joins if j['lower']==record['id']]
+    if reveal:
+        for entry in ordered:
+            if entry[6].get('foreground_mask'):
+                entry[4]=entry[4].copy();entry[4].paste((0,0,0,0),tuple(entry[6]['foreground_mask']))
+    for p in l['props']:
+        a=c4_owned_prop(l,p);priority=p.get('layer',1)
+        if p.get('wall'):priority=3 if 'tower' in p['file'] or p.get('id')=='gatehouse' else 2 if p.get('attachment') else -1
+        if reveal and p.get('foreground_mask'):a=a.copy();a.paste((0,0,0,0),tuple(p['foreground_mask']))
+        ordered.append([p.get('sort_base',p['base']),priority,p['x'],p['base']-a.height,a,p.get('id',p['file']),p])
+    # Receivers own their masks. A continuous group cast is calculated before
+    # splitting it into lot-owned strips, so a panel edge cannot reset sunlight.
+    source_casts=[];receivers=[]
+    for base,z,x,y,a,ident,b in ordered:
+        q=Image.new('L',im.size);q.paste(a.getchannel('A'),(x,y));occupied=ImageChops.lighter(occupied,q)
+        if b.get('role') or b.get('file')=='person' or b.get('overhead'):continue
+        height=b.get('spec',{}).get('floors',max(1,a.height//72))*48
+        depth=min(48,max(8,height//5));alpha=a.getchannel('A')
+        # Project the drawn foundation silhouette, including its real returns.
+        row=Image.new('L',(a.width,1))
+        for sy in range(max(0,a.height-8),a.height):row=ImageChops.lighter(row,alpha.crop((0,sy,a.width,sy+1)))
+        q=Image.new('L',im.size)
+        for dy in range(depth+1):q.paste(row,(x+dy//2,b['base']-1+dy))
+        source_casts.append((b['base'],q,ident))
+        receivers.append((ident,[x,b['base']-1,a.width,depth+1],b['base']))
+    for ident,rect,base in receivers:
+        x,y,w,h=rect;owned=Image.new('L',(w,h))
+        for other_base,q,caster in source_casts:
+            if abs(base-other_base)<=48:owned=ImageChops.lighter(owned,q.crop((x,y,x+w,y+h)))
+        prior=casts.crop((x,y,x+w,y+h));casts.paste(ImageChops.lighter(prior,owned),(x,y))
+        shadows.append(dict(owner=ident,receiver=rect,owned_ground_apron=rect,opacity=88,projection=[.5,1],method='continuous foundation cast partitioned into owned receiver strips',surface='ground'))
+    casts=ImageChops.multiply(casts,ImageChops.invert(occupied))
+    shade=Image.new('RGBA',im.size,(20,22,21,0));shade.putalpha(casts.point(lambda v:v*88//255));im.alpha_composite(shade)
+    # Receiving walls and roofs are separate from ground. A taller neighbour's
+    # drawn silhouette casts onto the lower property's own exposed roof plane;
+    # eaves project onto that property's own facade. Union opacity, never add.
+    for oi,(base,z,x,y,a,ident,b) in enumerate(ordered):
+        if 'spec' not in b:continue
+        alpha=a.getchannel('A');rh=a.height-48*b['spec']['floors']
+        roofmask=Image.new('L',a.size);roofmask.paste(alpha.crop((0,0,a.width,rh)),(0,0))
+        wallmask=ImageChops.subtract(alpha,roofmask);rm=Image.new('L',a.size);wm=Image.new('L',a.size)
+        cap=alpha.crop((0,0,a.width,rh))
+        for dy in (2,3,4):
+            cast=Image.new('L',a.size);cast.paste(cap,(dy//2,dy));wm=ImageChops.lighter(wm,ImageChops.multiply(cast,wallmask))
+        for obase,oz,ox,oy,other,oid,ob in ordered:
+            if 'spec' not in ob or oid==ident or ob['spec']['floors']<=b['spec']['floors']:continue
+            if not shared_ground_edges(b,ob):continue
+            for dx,dy in ((2,4),(4,8),(6,12)):
+                cast=Image.new('L',a.size);cast.paste(other.getchannel('A'),(ox-x+dx,oy-y+dy));rm=ImageChops.lighter(rm,ImageChops.multiply(cast,roofmask))
+        mask=ImageChops.lighter(rm,wm);sh=Image.new('RGBA',a.size,(20,22,21,0));sh.putalpha(mask.point(lambda v:v*72//255));a=a.copy();a.alpha_composite(sh);ordered[oi][4]=a
+        for surface,mask in [('roof',rm),('wall',wm)]:
+            if mask.getbbox():shadows.append(dict(owner=ident,receiver=[x,y,a.width,a.height],owned_ground_apron=[x,y,a.width,a.height],opacity=72,surface=surface,method='drawn silhouette projected onto separately masked owned surface'))
+    for actor in actors or []:
+        a=asset(actor.get('file','person-customer-c4'));x,base=actor['feet'];x-=a.width//2
+        ordered.append([actor.get('surface_sort',base),2,x,base-a.height,a,'proof-actor',actor])
+    for base,z,x,y,a,ident,b in sorted(ordered,key=lambda t:(t[0],t[1],t[2])):im.alpha_composite(a,(x,y))
+    return im,records,shadows
+
+
+def c6_main():
+    from collections import Counter
+    l=c6_city_layout();im,records,shadows=c6_render(l)
+    im.save(REVIEW/'r17-city-final.png');im.resize((3840,2880),NEAREST).save(REVIEW/'r17-city-final-2x.png');im.convert('L').save(REVIEW/'r17-city-final-squint.png')
+    for n,box in {'square':(480,336,1200,1200),'street':(96,240,720,816),'gate':(1104,768,1776,1440)}.items():
+        a=im.crop(box);a.resize((a.width*3,a.height*3),NEAREST).save(REVIEW/f'r17-city-final-crop-{n}-3x.png')
+    refs=[('TODAY / literal1x',Image.open(ART/'reference/r17/current-town.png').convert('RGBA')),('ROUND15 / literal1x',Image.open(REVIEW/'r15-city-mockup.png').convert('RGBA')),('ROUND17 C6 / literal1x /48px grid',im)]
+    sheet=Image.new('RGBA',(sum(a.width for _,a in refs)+64,max(a.height for _,a in refs)+48),(35,39,34,255));d=ImageDraw.Draw(sheet);x=16
+    for title,a in refs:d.text((x,10),title,fill='white');sheet.alpha_composite(a,(x,32));x+=a.width+16
+    sheet.save(REVIEW/'r17-city-final-vs-r15-vs-today.png')
+    hist=Counter(b['spec']['floors'] for b in l['lots'])
+    for name,data in [('layout',l),('placements',dict(paint=records,shadows=shadows)),('layout-audit',dict(buildings=len(l['lots']),storeys=dict(hist),single_storey_fraction=hist[1]/len(l['lots'])))]: (REVIEW/f'r17-C6-{name}.json').write_text(json.dumps(data,indent=2))
+    print('C6',len(l['lots']),'buildings',dict(hist))
+
+
 if __name__=='__main__':
     import sys
-    if '--part' in sys.argv and sys.argv[sys.argv.index('--part')+1]=='C5':c5_main()
+    if '--part' in sys.argv and sys.argv[sys.argv.index('--part')+1]=='C6':c6_main()
+    elif '--part' in sys.argv and sys.argv[sys.argv.index('--part')+1]=='C5':c5_main()
     elif '--part' in sys.argv and sys.argv[sys.argv.index('--part')+1]=='C4':c4_main()
     elif '--part' in sys.argv and sys.argv[sys.argv.index('--part')+1]=='C3':c3_main()
     elif '--part' in sys.argv and sys.argv[sys.argv.index('--part')+1]=='R':r_main()

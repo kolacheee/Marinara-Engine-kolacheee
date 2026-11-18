@@ -1,0 +1,599 @@
+{
+  "part": "C6",
+  "round": 4,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "abutment-a-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "actor-proof-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "bed-pictogram-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart-unload-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-entry-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-porch-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-apothecary-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-baker-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-cobbler-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-smith-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "door-entry-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-smoke-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-bearing-c6r2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-bridge-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-landing-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-stair-lower-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cobbler-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-passage-w2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guildhall-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-c-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-c-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-porch-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "market-hall-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "packed-yard-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-left-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "passage-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "receiving-wall-left-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "receiving-wall-right-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-a-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-a-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-b-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-b-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-c-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-c-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-a-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-a-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-b-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-b-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-merchant-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-merchant-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tower-bell-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tower-open-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-fold-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-hand-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-weigh-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-boundary-stone-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-boundary-stone-c6r2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-boundary-wood-b-c6r2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-boundary-wood-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-2x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-squint": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent saved-art critic for Round 17 Part C6, round 4. Read BRIEF-17 in full, both panel briefs, the NOTES drawing-method sections, all twenty C6 FIXES items, the earlier Part E failure and C6 round-3 failure/repair records. The final critic-only instruction controls: no production art, compose.py, notes, branches, commits or pushes changed. Only this JSON and critic-r17C6-4-*.png inspection composites were written. BRIEF-17 retains precedence over conflicting panel waivers on fixed courses, 1\u20132-cell building ground footprints, lot-contained overlays, mandatory street variation and trade-sign scale. The coordinator's 40x30-cell district requires a native 1920x1440 canvas rather than the earlier approximate 1200x900 description; the operator's mixed-roof, one-colour-per-building direction is retained.\n\nInspected all 110 C6 inventory PNGs at literal native 1x and nearest-neighbour 4x, with a separate lower-guildhall detail to avoid clipping the tall sprite. Inspected the entire current final at 1x and in twenty contiguous 4x scene crops, the complete-house/reference comparison, both five-/one-storey contacts, curtain/stair/tower assembly, the 16x12 L/T/dead-end extract, square, street and gate, native greyscale, current town and R15 references. Examined the previously rejected contacts at native city (624,528), (1296,480), (1488,528) and (1488,1200), and an 8x complete-house contact detail. These now contain continuous drawn masonry and neutral contour flashing, with no exposed paving wedge or arbitrary terracotta stripe on slate/brown roofs. Fresh execution of the retained two-background contact probes found zero exposed pixels over 23,348 tested contact pixels, covering 18 hand/material/house-family cases and 16 isolated actual-city pairs. The intentional northwest court remains open and distinct from these repaired contacts.\n\nAll 110 PNGs match their recorded sizes and SHA-256 hashes, have alpha only 0/255, zero RGB under transparency, no detached one- or two-pixel alpha islands, and the required connection rows on applicable 48px facade modules. All 32 slate/brown colourway alpha masks match their terracotta sources pixel-for-pixel. No seasonal partners belong to this C6 inventory, so seasonal-ground and summer/season silhouette tests are not applicable. Inspected the props against summer grass and city paving. Inspected literal 3x3 repeats at native/4x for cobble-c3, main-paving-c4, street-main-c3, street-side-c3, lane-c3, workyard-c4, mud-edge, square-slabs-c5, ditch-c3 and packed-yard-c6r1. Road/ditch/edge strips are assessed along their intended repeat direction; their deliberate parallel edges in a two-dimensional test are not accidental seams. No blocking seam, soft fringe, magenta residue, scale mismatch or unintended isolated mark was found. Replayed all retained C6, critic1 and critic2 registered 8x8 RGBA modes: 40,706,048 samples, zero mode mismatches and zero source-hash mismatches. This is provenance verification, not a new drawing operation.\n\nFIXES review: (1) northern/eastern/southern property strips are enclosed and subdivided, with joined side/rear ranges, attached stores and deliberate courts rather than frontage lawns. (2) the 96px gate road runs through its southern portal and westward elbow at y1056\u20131152, with the inn turning pocket; side streets, 24px passages, T-junctions, stepped block edges and tower-foot detours are visibly present. (3) complete merchant houses have deep roofs, shaded returns, recessed/silled windows and stone grounds beside fantasy-house-2. (4) repaired roof/height contacts pass in the actual assembled houses, not merely the isolated adapter sheet. (5) the guildhall has a broad light-stone body, dark arcade and clock at base y720, with a clear forecourt and lower flanks. (6) the church has a supported east entrance and the southern hall exposes its arcade toward the square. (7) major trade thresholds, lit landings, lanterns, displays and the inn porch/bed emblem read at 1x. (8) the northwest pump court has a visible rear opening and matching passage, demonstrated with an actor reveal. (9) curtain courses, parapets and tower/stair contacts align without the former boxed panel borders; explicit weathered repair joints are retained. (10) roof materials retain coherent courses and lit/shaded planes; the false red contact strips are gone. (11) ground, roof and wall shadow receivers are separate, hard-edged and southeast-directed; recorded opacity is 88/255 on ground and 72/255 on roof/wall, below 50%, without doubled contact darkness. (12) the single shuttered plaster bay is present and resolved-piece audits pass. (13) alternate side houses, varied tower tops, mixed heights and the southern whole-house stagger break the former comb/pair rhythm. (14) quill/scissors and the other trade signs are identifiable at native scale and mounted clear of usable doors. (15) six stalls form two triplets, with browsing space and the eastern through-route clear of fountain/cross. (16) the gate chamber has bearings and a supported landing/stair while retaining its towers and open portal. (17) workshop fuel storage/drain and enclosed packed-earth trade yards attach to their trades. (18) the shrine apron, northwest pump and hard-edged forge smoke supply route destinations. (19) weighing, cloth-folding and handover poses, paired customers and the unloading cart/worker are visible. (20) current native/scaled/reference/squint/footprint/lot and normal/reveal proofs exist and agree with the composition; gate actors at (1248,1392)/(1248,1440), the church stair actor and the court-entry actor remain readable in their reveal states.\n\nFreshly rendered compose.py output is pixel-identical to r17-city-final.png. The 2x image, all three 3x crops and greyscale conversion are exact derivatives. All three comparison panels preserve their source images at literal 1x. Footprint checks found no intersections between declared clear routes and solid supports, and ordinary building footprints are 48/96px wide and deep. Re-executed the comprehensive C6 repetition audit and the original Part E L-block/market/height audits: no failures (legacy five-lot windows 28/21/16). The former repeated northern rear cap and forced eight-shop ground-floor selection are repaired; signs stay within lots and doors remain visible. The current C6 frontage audit reports 42 five-house windows without an identical resolved piece appearing more than twice.\n\nCode-counted storey histogram across 57 modular buildings, storeys 1/2/3/4/5: 2/32/18/4/1. Including nine ancillary buildings: 10/33/18/4/1 across 66, or 15.15% one-storey, below the 25% limit. Modular roof colours are 29 terracotta, 18 slate and 10 brown (50.88% terracotta). The market is occupied at 1x; the guildhall/church, gate and main route remain legible in greyscale. No remaining blocking C6 or inherited Part R defect was found. Approval is for the saved art and authored composition/proofs only; it does not establish runtime collision, pathfinding or automatic actor-fading behaviour."
+}

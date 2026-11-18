@@ -1,3 +1,161 @@
+# Round 17 — Part C6: critic-r17C6-3 redraw
+
+Repaired the **composer-only failures** using the approved image-tool drawings.
+All 110 reviewed sprites passed; **all 2,756 production PNGs remain byte-identical**.
+The composer now registers masonry to each lower house's actual painted contour,
+composites it behind that house, then follows the roof contact with neutral drawn
+flashing from the correct colour partner. Removed the arbitrary terracotta strips
+and closed the complete-house paving wedges. No new drawing or procedural art.
+The existing magenta / registered 8×8 mode / locked-palette / hard-alpha method
+is preserved; **40,706,048 source mode samples** replay successfully.
+
+Regenerated all seven final exports and current C6 review sheets. Both hands,
+three roof colours and three house-family pairs pass **18 regression cases**;
+all **16 isolated city contacts** pass, covering **23,348 contact pixels**.
+The checks reproduce the old holes. **127 targeted, 437 review and 11 layout
+checks pass**. The northwest court is pixel-identical; accepted streets, yards,
+market, inn, mixed roofs and uneven towers remain intact.
+[Final city](review/r17-city-final.png) · [Review sheets](review/r17-C6-review.html)
+· [Contact checks](review/r17-C6-critic3-verification.json)
+· [Critic and FIXES response](review/r17-C6-critic3-response.json).
+
+Storeys **1/2/3/4/5: 2/32/18/4/1** across 57 modular buildings; including
+ancillaries, **10/33/18/4/1** across 66 (**15.15% one-storey**). Roofs remain
+**29 terracotta / 18 slate / 10 brown**; repetition and route checks pass.
+BRIEF-17 retains precedence over the recorded panel waivers. Saved-art
+self-checks only; independent critic approval remains separate. No seasonal
+partners changed, and no branch change, commit or push was made.
+
+# Round 17 — Part C6: critic-r17C6-2 redraw
+
+Repaired all **nine failed exports** and the failed assemblies; added three
+support pieces. **Eight built-in image-tool drawings on solid magenta** supplied
+two roof candidates, separately lit masonry returns, two continuous fences and
+two gate-bearing candidates. Selected roof **B** and gate **B**. Painted
+registration → fixed palette → exact **8×8 RGBA mode** → native outline cleanup,
+**0/255 alpha and zero hidden RGB**. Native crops/wraps/composites only; no
+procedural replacement drawing. [Prompts/selections](review/r17-C6-critic2-generation.json)
+· [Processing](review/r17-C6-critic2-processing.json).
+
+Joined and subdivided the rear working strips, closed the churchyard, preserved
+the northwest passage, raised the five commercial frontages to **3/3/3/2/2
+storeys**, reserved window-free receiver margins and joined unlike roofs over
+continuous masonry/flashing. Replaced the gate's destructive cutout with drawn
+bearings while retaining both tower shafts. Kept the accepted bent streets,
+southern stagger, uneven towers, market and mixed roof colours. Regenerated all
+final renders and current C6 review/seam/actor sheets.
+[Final city](review/r17-city-final.png) · [Review index](review/r17-C6-review.html)
+· [Every critic/FIXES item](review/r17-C6-critic2-response.json).
+
+**57 modular buildings:** storeys **1:2, 2:32, 3:18, 4:4, 5:1**. Including
+ancillaries: **66**, **1:10, 2:33, 3:18, 4:4, 5:1**; **15.15% one-storey**.
+Roofs: **29 terracotta / 18 slate / 10 brown**. **914 passing/earlier city PNGs
+remain byte-identical.** New source processing covers **1,916,928 mode samples**.
+**436 review, 274 targeted pixel/boundary and 11 layout checks pass.**
+No seasonal partners apply. [Structural/pixel checks](review/r17-C6-critic2-final-proof.json)
+· [Review checks](review/r17-C6-verification.json).
+
+BRIEF-17 retains precedence over panel waivers on fixed courses, footprints,
+sign scale, lot-contained overlays, mandatory street variation and landmark
+allocations. These are saved-art self-checks, not independent panel or runtime
+approval. Changes stay in `art-drop/`; no branch change, commit or push.
+
+# Round 17 — Part C6: critic-r17C6-1 redraw
+
+Repaired all nine failed PNG exports and rebuilt the C6 assemblies. **19 built-in
+image-tool paintings on solid magenta**, including alternatives, supplied the
+opposite-hand abutment, continuous tower shafts, merchant volumes, narrow roofs,
+broad stone guildhall, supported church porch, gate landing/stair and packed-earth
+yards. Same method: painted registration, palette lock, exact **8×8 RGBA mode**,
+native outline cleanup, **0/255 alpha and zero hidden RGB**. Code only registers,
+reduces, wraps, masks and composites drawn paint. [Prompts/selections](review/r17-C6-critic1-generation.json)
+and [processing record](review/r17-C6-critic1-processing.json).
+
+The street plan now has actual tower-foot bends, a connected southern L/stagger,
+closed rear strips and distinct working yards. Removed overlapping roof columns,
+exposed the scribe and forge, grounded church steps, broadened the guildhall,
+connected the gate walk, varied fences and removed the duplicate inn cart.
+Ground, roof and wall shadows use separate owned receivers. All final renders
+and C6 inspection/seam/actor sheets were refreshed. [Final city](review/r17-city-final.png)
+· [Review index](review/r17-C6-review.html) · [Twenty-item response](review/r17-C6-critic1-response.json).
+
+**57 modular buildings:** storeys **1:7, 2:30, 3:15, 4:4, 5:1**. Including
+ancillaries: **66**, **1:15, 2:31, 3:15, 4:4, 5:1**; **22.73% one-storey**.
+Roofs: **29 terracotta / 18 slate / 10 brown**. Comprehensive and frontage
+repetition audits, legacy E checks and clear-route checks pass; all eight trade
+signs and forge smoke are visible in final pixels. **873 protected city PNGs
+remain byte-identical.** No seasonal partners apply.
+
+BRIEF-17 wins over panel waivers on fixed courses, footprints, sign scale,
+lot-contained overlays, compulsory street variation and landmark allocations.
+These are saved-art self-checks, **not independent panel or runtime approval**.
+Changes stay in `art-drop/`; no branch change, commit or push.
+
+# Round 17 — Part C6
+
+Replanned the **40×30-cell district**: connected northwest and northeast
+side/rear ranges, a built northwest **T/elbow**, a stepped northeast block,
+**96px southern houses staggered by 48px**, enclosed working strips and
+**24px passages**. Every modular house now shares a positive-length ground
+wall with a neighbour or attached store. The **96px gate road** turns west
+through **y1056–1152** into the square; the inn remains on this road, with a
+clear turning pocket. Side streets remain **48px**, and the wall towers keep
+uneven intervals. There are no frontage lawns.
+
+**32 large built-in image-tool drawings on solid magenta** supplied the
+repairs, with three cap candidates and paired candidates for the difficult
+abutment, inn, side-house, church-entry, market-hall and doorway work. Code
+registers the painted parts, locks the palette, reduces each native pixel by
+an exact **8×8 RGBA mode vote**, cleans the one-pixel outlines and isolated
+pixels, and exports **0/255 alpha with zero RGB under transparency**. Native
+course transfer, masking, wrapping and compositing reuse drawn paint; code
+does not construct replacement shapes or noise. **33 registrations** include
+the separately registered **16×8 bed emblem**, replaying **19,030,016 samples**.
+[Prompts/source drawings](review/r17-C6-generation.json) ·
+[Registration and cleanup](review/r17-C6-processing.json) ·
+[Native painted operations](review/r17-C6-native-operations.json).
+
+Added **66 transparent PNG exports** in `out/city17/`: coherent shop/upper
+floors, open passage and inn porch, opposite-facing houses, **96/144px roofs**
+and abutments in terracotta/slate/brown, **12px masonry returns**, east church
+steps, north-facing market arcade, matched curtain walls, open/bell tower
+tops, gate chamber/landing, mounted scissors/quill signs, three active
+vendors and an unloading cart/worker. The guildhall advances to **base y720**;
+its two immediate flanks lose a floor. The **10×7-cell square with 2×2 notch**
+has six stalls in two triplets, a **48px aisle**, **96px eastern route**, and
+**48px church/fountain clearance**. The northwest court has an open painted
+passage, rear exit and pump. Workshop fuel storage and its drain attach to
+the craft frontage. [Export sizes/hashes](review/r17-C6-files.json).
+
+`compose.py --part C6` regenerates all seven final deliverables: native
+**1920×1440**, exact **3840×2880 nearest-neighbour 2×**, literal 1× comparison with R15 and
+today, greyscale squint, and square/street/gate 3× crops. The C6 review index
+includes every export at **1×/4×**, every ground base in a literal **3×3
+repeat at 1×/4×**, self/variant seams, the **16×12 L/T/dead-end scene**, both
+five-/one-storey contacts, property/clearance overlays, and exact **24×48
+actor** normal/reveal proofs at the gate, church and northwest passage.
+[Final city](review/r17-city-final.png) · [Review index](review/r17-C6-review.html).
+
+Measurements: **49 modular houses**, storeys **1:4, 2:24, 3:12, 4:6, 5:3**.
+Including attached/service buildings: **59**, storeys **1:13, 2:25, 3:12,
+4:6, 5:3** — **22.03% one-storey**. Modular roof colours: **22 terracotta /
+19 slate / 8 brown**. Hard structural cast shade unions once at **88/255**;
+contact eave/return shading stays separate. Resolved-piece checks cross
+floors, property groups, side lanes and the gate interruption; the inherited
+Part E L-block/market/height layouts also pass their existing pixel-identity
+audit. **19,989 pre-existing protected files remain byte-identical**.
+**263 artwork checks and 11 static layout checks pass.**
+[QC](review/r17-C6-verification.json) ·
+[Static connections/entrance approaches](review/r17-C6-layout-connections.json) ·
+[All twenty fixes and panel decisions](review/r17-C6-response.json).
+
+BRIEF-17 wins over panel waivers on fixed courses, 1–2-cell building ground
+depth, twice-R15 sign scale, lot-contained overlays, compulsory street
+variation and civic/gate allocations. The coordinator's 40×30-cell district
+sets the native canvas size. These are saved-art self-checks, not independent
+panel approval or runtime collision/pathfinding tests. No seasonal partners
+apply. Authored changes stay in `art-drop/`; no branch change, commit or push.
+
 # Round 17 — Part C5: critic-r17C5-3 redraw
 
 Repaired the **actual southern frontage**: both former point-only joins now

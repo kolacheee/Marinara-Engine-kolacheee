@@ -1,0 +1,491 @@
+{
+  "part": "C6",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "abutment-b-c6-brown",
+    "abutment-b-c6-slate",
+    "abutment-b-c6",
+    "abutment-b-d2-c6-brown",
+    "abutment-b-d2-c6-slate",
+    "abutment-b-d2-c6",
+    "gate-landing-c6",
+    "wall-tower-a-c6",
+    "wall-tower-b-c6",
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x"
+  ],
+  "files": {
+    "abutment-a-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-c6-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4/10: the roof face left of the masonry strip uses large, ruler-straight rectangular courses, visibly coarser and more frontal than abutment-a and the merchant cap. The A/B variant sheets show incompatible course spacing and tile construction; recolouring or removing middle rows retains this mismatch. This is not a compatible opposite-hand valley/abutment family."
+      ],
+      "fix": "Redraw this hand using the cap's foreshortened tile courses and broad material planes, approximately 6–8 px by 3–4 px clusters. Register the slope, coping and flashing to its actual partner and inspect an exposed unlike join at 1x/4x; preserve the 48x96 or 48x144 canvas and palette-partner alpha."
+    },
+    "abutment-b-c6-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4/10: the roof face left of the masonry strip uses large, ruler-straight rectangular courses, visibly coarser and more frontal than abutment-a and the merchant cap. The A/B variant sheets show incompatible course spacing and tile construction; recolouring or removing middle rows retains this mismatch. This is not a compatible opposite-hand valley/abutment family."
+      ],
+      "fix": "Redraw this hand using the cap's foreshortened tile courses and broad material planes, approximately 6–8 px by 3–4 px clusters. Register the slope, coping and flashing to its actual partner and inspect an exposed unlike join at 1x/4x; preserve the 48x96 or 48x144 canvas and palette-partner alpha."
+    },
+    "abutment-b-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4/10: the roof face left of the masonry strip uses large, ruler-straight rectangular courses, visibly coarser and more frontal than abutment-a and the merchant cap. The A/B variant sheets show incompatible course spacing and tile construction; recolouring or removing middle rows retains this mismatch. This is not a compatible opposite-hand valley/abutment family."
+      ],
+      "fix": "Redraw this hand using the cap's foreshortened tile courses and broad material planes, approximately 6–8 px by 3–4 px clusters. Register the slope, coping and flashing to its actual partner and inspect an exposed unlike join at 1x/4x; preserve the 48x96 or 48x144 canvas and palette-partner alpha."
+    },
+    "abutment-b-d2-c6-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4/10: the roof face left of the masonry strip uses large, ruler-straight rectangular courses, visibly coarser and more frontal than abutment-a and the merchant cap. The A/B variant sheets show incompatible course spacing and tile construction; recolouring or removing middle rows retains this mismatch. This is not a compatible opposite-hand valley/abutment family."
+      ],
+      "fix": "Redraw this hand using the cap's foreshortened tile courses and broad material planes, approximately 6–8 px by 3–4 px clusters. Register the slope, coping and flashing to its actual partner and inspect an exposed unlike join at 1x/4x; preserve the 48x96 or 48x144 canvas and palette-partner alpha."
+    },
+    "abutment-b-d2-c6-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4/10: the roof face left of the masonry strip uses large, ruler-straight rectangular courses, visibly coarser and more frontal than abutment-a and the merchant cap. The A/B variant sheets show incompatible course spacing and tile construction; recolouring or removing middle rows retains this mismatch. This is not a compatible opposite-hand valley/abutment family."
+      ],
+      "fix": "Redraw this hand using the cap's foreshortened tile courses and broad material planes, approximately 6–8 px by 3–4 px clusters. Register the slope, coping and flashing to its actual partner and inspect an exposed unlike join at 1x/4x; preserve the 48x96 or 48x144 canvas and palette-partner alpha."
+    },
+    "abutment-b-d2-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4/10: the roof face left of the masonry strip uses large, ruler-straight rectangular courses, visibly coarser and more frontal than abutment-a and the merchant cap. The A/B variant sheets show incompatible course spacing and tile construction; recolouring or removing middle rows retains this mismatch. This is not a compatible opposite-hand valley/abutment family."
+      ],
+      "fix": "Redraw this hand using the cap's foreshortened tile courses and broad material planes, approximately 6–8 px by 3–4 px clusters. Register the slope, coping and flashing to its actual partner and inspect an exposed unlike join at 1x/4x; preserve the 48x96 or 48x144 canvas and palette-partner alpha."
+    },
+    "actor-proof-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "bed-pictogram-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart-unload-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-entry-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-apothecary-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-baker-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-cobbler-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-smith-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "door-entry-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-smoke-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-bridge-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-landing-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 16: this 48x48 piece is a cropped chamber/door facade, not a readable supported landing. At x1296–1344, y1288–1336 it duplicates the chamber's right-hand door and roof, then terminates above the wall without a visible walking platform connecting to the wall-walk."
+      ],
+      "fix": "Draw a 48 px landing with a visible floor top, supports/bearing, and a clear connection between the tower doorway and wall-walk. Register it to the chamber and gate wall, outside the road; remove the duplicated half-chamber appearance."
+    },
+    "ground-apothecary-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cobbler-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-passage-w2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-porch-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "market-hall-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-left-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "passage-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-merchant-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-merchant-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tower-bell-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tower-open-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-fold-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-hand-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-weigh-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9/13: at local y≈96 the new dark upper shaft ends in a straight cut across the older light shaft. Its almost-black east face abruptly becomes warm brown; stone courses, window surround and exposed contour do not continue. This splice is repeated prominently around the perimeter, including x1056–1152, y64–144."
+      ],
+      "fix": "Draw a compatible transition from the open battlement to the existing shaft. Continue both masonry faces, course heights and window geometry across the splice, with one intentional coping if needed; do not terminate a dark face in an unexplained horizontal rectangle."
+    },
+    "wall-tower-b-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 9/13: the bell-top insertion cuts into the upper slit/window of the retained shaft near local y≈96. The small grey/red upper masonry changes abruptly to large cream courses, with a visibly severed surround and mismatched right-hand return. See the tower at x336–432, y64–144 and the curtain/stair/tower proof."
+      ],
+      "fix": "Redraw the join as one continuous shaft below the bell platform, aligning the window, courses and shaded return. Keep the current height, grid and top treatment; check the whole tower and wall/stair contacts, not just the independent top."
+    },
+    "wall-tower-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cobble-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-main-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-side-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lane-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "workyard-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-slabs-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ditch-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "P0, repetition rule / FIXES 12/20: six identical fence-1 crops form the churchyard's west boundary at x480, with bases y816,864,912,960,1008,1056. Both five-piece windows contain FIVE identical resolved pieces. Calling r_repeat_audit(c6_city_layout()) reports these hash and motif failures. The new 40-window frontage-only audit misses them. The original Part E roof/shop failures are repaired, but the rule still fails elsewhere.",
+        "P0, hidden trade / FIXES 1/4/14/20: east-scribe's sign-scribe-c6 is placed at x1680,y912, but poor-east-rear paints a brown roof over the entire trade frontage from y912 onward. Removing the scribe overlay from an independent in-memory render changes just ONE pixel, at (1693,914). Its quill cannot be named at 1x, and the associated shop/door is buried. The red roof above the brown roof reads as a two-colour roof column, not separate coherent properties.",
+        "P0, missing required cue / FIXES 18: forge-smoke-c6 at x280,base872 is wholly occluded by the later craft-court architecture. Removing forge-cue changes ZERO rendered pixels. A source export and placement record do not visibly satisfy the forge-smoke requirement.",
+        "P0, church access / FIXES 6/20: church-entry-a-c6 is pasted across the church's window/buttress at x672–768,y912–960. Its long stair slab floats above the ground and has no supporting volume or descending connection to the square; the church base is y1056. The actor at (720,1000) is invisible in the normal proof, and the reveal obtains visibility by erasing a rectangular part of the church wall. This does not establish a coherent east-facing ground entrance. See critic-r17C6-1-floating-church-entry-4x.png.",
+        "P0, enclosure / FIXES 1/2 and coordinator: the northwest, northeast and southern groups still read as narrow building islands on continuous cobbles. Examples are the broad rear apron x864–1056,y288–528, the open northeast slots around x1584–1680,y288–480, and the southern frontage groups separated by broad undifferentiated paving. A positive-length ground contact with any one neighbour/store is insufficient evidence of closed property strips or continuous street frontage. The new north/south rear assemblies also overlap vertically instead of providing legible enclosed blocks.",
+        "P0, compulsory street variation / FIXES 2: the five north-wall-lane rectangles merge into one unchanged 1728x48 strip, x96–1824,y240–288. Dividing it into records of at most 384 px has not introduced an actual frontage jog, bend or width change. The northwest elbow and 48 px southern stagger are real improvements, but the long-run rule is not met everywhere.",
+        "P0, volume / FIXES 3/4 and panel 2 house approval: the complete merchant-house comparison still has a tall rectangular roof over a flat panel stack. The 12 px masonry strip reads as a front pilaster, not a receding shaded end connected to eave and plinth. In the five-/one-storey proofs the coping starts below the eave and the lower roof merely butts against that stripe. Thick repeated floor belts and unrelated bay arrangements remain conspicuous in west-0 and merchant-3. The house does not yet read as the reference house's architectural neighbour.",
+        "P0, roof assembly / FIXES 4/10/13: x1488–1584,y240–432 shows successive caps restarting in the same vertical roof column, including a straight transverse restart around y288. At x1632–1776,y480–624 the side-house/flat cap/narrow roof overlap without a convincing valley or height transition. Side-house roofs also hide earlier houses' lower facades. Close contacts using roof and wall geometry for the actual footprint and height, rather than overlapping whole painted rectangles.",
+        "P0, material scale / FIXES 10: the old hip beside the guildhall at x720–816,y336–480 and its slate partner at x1104–1200,y288–432 still switch from broken fine dashes on the slope to a large straight brick grid on the end triangle. New merchant caps and large-tile side houses introduce still other scales. The six abutment-b exports do not supply compatible courses. The whole roof family has not been unified.",
+        "P0, civic hierarchy / FIXES 5: the guildhall has moved to base y720 and its immediate infill flanks are lower, but its occupied body is still a small ornate insertion below the neighbouring merchant roof masses. At 1x greyscale the clock is recognizable while the arcade/body remains subordinate to the surrounding window stacks. The requested broad dominant civic mass and quieter neighbours are not visibly achieved.",
+        "P0, shadows / FIXES 11: the north curtain's shadow restarts with a lit triangular notch at each panel boundary, for example x480/576/672,y240–264. Attached frontage shadows likewise stop at the lot's right edge and restart rather than continuing through a shared contact. c6_render projects each bottom 48 px caster row into a width-clipped apron, then subtracts all occupied architecture; it supplies no separate receiving-wall/roof projection. Opacity 88/255 and angular edges pass, but the structural continuity requirement does not. See critic-r17C6-1-wall-shadow-resets-4x.png.",
+        "P0, tower integration / FIXES 9/13: the open and bell tower composites have exposed cut-and-paste shaft transitions, repeated across the city. Matching curtain A/B/C edge columns does not establish compatibility with these towers or the darker stair return. See the two failed tower PNG entries.",
+        "P1, gate working structure / FIXES 16: the new bridge and cropped landing form a dark double-door strip pasted in front of the original blue roof and light towers. The cropped landing has no readable supported route to the curtain wall-walk. Rework the bearing and walkway connections as one assembly within the stated allocations; the current gate silhouette and open portal can be retained.",
+        "P1, service yards / FIXES 17: c6_ground uses paste for the transparent mud-edge overlay, replacing the base ground rather than compositing over it. The final contains 30 fully transparent holes at x1392, y1200–1240. These are accidental ground/roof-edge holes, not intentional transparent canvas. Paint the packed-yard base first and alpha-composite the mud edge; test final ground coverage.",
+        "P1, activities / FIXES 19: the inherited cart and cart-unload-c6 are both placed at x1536,base1048. This is an overlapping old/new cart assembly, not replacement of the old cart with one unloading cart and worker. Remove the redundant cart placement and check that the worker and handles remain legible behind the fence.",
+        "P0, acceptance / FIXES 20: numerical self-check success is not visual approval. The normal/reveal church proof still shows unsupported steps; the house and tall/low proofs retain flat volumes; the final contains a hidden trade, invisible forge cue and repeated fence chain. Re-run both the comprehensive existing repeat audit and the new frontage audit, and inspect the actual final after all receivers/overhangs have been composited."
+      ],
+      "fix": "Replan and close the property strips and actual street frontages first, preserving the successful northwest bend, wider southern houses, mixed roofs, 96 px gate road and square size. Resolve footprint/paint depth and draw order so every required entrance, sign and activity remains visible. Draw coherent house returns, matching roof/abutment texture, tower transitions and a real gate landing with the image tool; ground the church's east steps. Continue lot-owned shadows across compatible joins using separate ground/roof/wall receivers. Vary the six churchyard fence placements, alpha-composite mud-edge over an opaque yard, and replace the old inn cart. Then regenerate all seven final deliverables and acceptance proofs, checking the documented coordinates at 1x/4x."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "The native 1920x1440 scene fails for the composition findings recorded under compose.py: incomplete enclosure/variation, hidden scribe and smoke, floating church entrance, roof and tower contacts, shadow resets, repeated fence chain and accidental transparent ground pixels. Format and native dimensions pass."
+      ],
+      "fix": "Replan and close the property strips and actual street frontages first, preserving the successful northwest bend, wider southern houses, mixed roofs, 96 px gate road and square size. Resolve footprint/paint depth and draw order so every required entrance, sign and activity remains visible. Draw coherent house returns, matching roof/abutment texture, tower transitions and a real gate landing with the image tool; ground the church's east steps. Continue lot-owned shadows across compatible joins using separate ground/roof/wall receivers. Vary the six churchyard fence placements, alpha-composite mud-edge over an opaque yard, and replace the old inn cart. Then regenerate all seven final deliverables and acceptance proofs, checking the documented coordinates at 1x/4x."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "Exact nearest-neighbour 3840x2880 enlargement verified. It reproduces the failed native scene's defects, including the concealed scribe, tower splices, floating steps and fence repetition."
+      ],
+      "fix": "Regenerate from the corrected native final with nearest-neighbour 2x scaling."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "All three panels are literal native-scale copies; the C6 panel matches after compositing its transparency over the sheet background. The comparison nevertheless exposes the failed C6 enclosure and flat merchant stacks, which still do not match the reference town-house volumes."
+      ],
+      "fix": "Repair the C6 scene and rebuild the literal 1x comparison; retain the current reference scales and labels."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "Exact luminance conversion verified. The guildhall's body remains subordinate to its neighbours, the roof/house groups remain isolated in a paving field, and repeated hard shadow resets remain visible. The gate and continuous main-road value are improved and are not failed merely for being occluded by gate art."
+      ],
+      "fix": "Recheck the broad guildhall/house value hierarchy and connected block masses in greyscale after structural repairs; regenerate directly from the corrected native scene."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop verified. The floating east church steps at source x672–768,y912–960, flat northern merchant stacks, incompatible hip texture and weak hall-body hierarchy remain visible. Six stalls, the fountain, cross and eastern through-route are present."
+      ],
+      "fix": "Repair those source-scene assemblies and regenerate this exact nearest-neighbour crop."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop verified. The northwest remains a collection of overlapping side-house/roof columns; the new merchant reference still has flat stacked fronts and a pilaster-like return. The intentional pump court exists, but the surrounding roof/side-house contacts are unresolved."
+      ],
+      "fix": "Build coherent joined properties around the retained court and actual bend, then regenerate this crop."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "Exact 3x crop verified. The eastern scribe facade/sign is covered by the brown poor-quarter roof, the roof column restarts, the gate landing is a duplicated half-chamber, and the new unloading cart overlaps the old cart. The crop also includes the 30 transparent edge pixels at source x1392,y1200–1240."
+      ],
+      "fix": "Repair eastern depth/draw order, the gate landing, cart replacement and ground alpha, then regenerate this crop."
+    }
+  },
+  "notes": "Independent harsh saved-art critic, C6 round 1. The final critic-only instruction controls: no production art, composer, notes, branches, commits or pushes were changed. Only this JSON and critic-r17C6-1-*.png review composites were written. Read BRIEF-17 in full, both panel briefs, all twenty C6 fixes and the five underlying reviews, the Part E critic and NOTES method sections. BRIEF-17 takes precedence over panel waivers for fixed rows, 1–2-cell building depth, twice-R15 sign scale, lot-contained overlays, compulsory street variation and civic/gate allocations; the coordinator's 40x30 cells sets 1920x1440 rather than the earlier approximate 1200x900. Inspected all 66 C6 exports at exact native scale and nearest-neighbour 4x, their colour partners, the complete city at 1x and sixteen 4x crops covering it, its squint, native reference houses/halls, the complete-house 1x/4x proof, both tall/low hands, wall/stair contacts, roof/abutment variant sheets and actor normal/reveal proofs. The 2x and all three 3x deliveries are pixel-exact rescalings of the inspected final; the comparison is exact over its opaque backing. Inspected all nine reused ground bases in literal 3x3 repeats at 1x/4x, and life props over summer grass, city cobbles and courtyard ground. There are no seasonal partners in C6, so seasonal-ground/seasonal-silhouette tests are not applicable; all sixteen slate/brown alpha masks match their terracotta source exactly. All 66 exports match inventory dimensions, have alpha only 0/255, zero RGB under transparency and no detached one/two-pixel alpha components. All ten checked C6 ground/upper/inn stack modules preserve course rows 0/47. Curtain A-B/B-C/C-A first/last two columns match. Retained image-tool prompts, mode-sampling records and native compositing operations were reviewed; this review did not generate replacement art or replay every recorded mode sample. Imported compose.py with bytecode disabled; a fresh in-memory C6 render exactly matches the saved final. Independently recounted 49 modular buildings: storeys 1:4, 2:24, 3:12, 4:6, 5:3. The supplied ancillary-inclusive accounting is 59 buildings, 1:13, 2:25, 3:12, 4:6, 5:3 (22.03% one-storey), below 25%. Roof-family count independently confirmed: 22 terracotta, 19 slate, 8 brown; mixed roofs are preserved. No frontage lawn was found. The square is 480x336 (10x7 cells) with a 96x96 notch; six stalls and the gate road are present. Independently hashed the saved forty consecutive-house windows: no facade/roof count violation in those windows. Part E L-block/market/height audits pass (28/21/16 windows). The broader existing audit FAILS the churchyard fence chain, as recorded above. The frontend/runtime was not exercised and no collision/pathfinding approval is claimed. Fix-by-fix disposition: 1 incomplete enclosure; 2 main gate route improved but long unchanged wall lane/enclosure still fail; 3 house-depth approval fails; 4 contacts/occlusion incomplete; 5 required move and lower flanks done but civic mass still fails; 6 north arcade provided but east church steps fail integration; 7 named shop openings/landings and inn porch/bed cue provided; 8 pump court, open passage and reveal provided, subject to the surrounding assembly failures; 9 curtain edge contract repaired but tower/stair assembly incomplete; 10 family texture scale incomplete; 11 opacity/angularity improved but structural joins fail; 12 original facade repeat repaired but global repetition still fails on fences; 13 alternate side-house art and southern stagger provided, with roof/tower integration still failing; 14 new symbols readable as files but scribe hidden in final; 15 six stalls/two rows and eastern route retained; 16 working gate landing fails; 17 fuel/store provided but yard-alpha compositing fails; 18 shrine/pump visible but forge smoke invisible; 19 varied vendors and paired shoppers provided but cart replacement duplicates the old placement; 20 proofs exist and technical scales pass, but visible blockers remain. A pass on an isolated PNG does not approve its placement. The nine failed asset entries identify drawing/asset-assembly faults; the other visible failures are assigned to compose.py and its seven final render products."
+}

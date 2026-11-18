@@ -1,0 +1,119 @@
+{
+  "part": "C6",
+  "critic": "critic-r17C6-1",
+  "scope": "Implemented repair with saved-art self-review. Independent critic has not rerun.",
+  "fixes": [
+    {
+      "item": 1,
+      "status": "implemented and self-reviewed",
+      "change": "Closed rear property strips with complete rear ranges, continuous side/rear boundaries, attached stores and distinct packed-earth courts; removed intermediate overlapping whole-house columns."
+    },
+    {
+      "item": 2,
+      "status": "implemented and self-reviewed",
+      "change": "Kept the 96px gate road and turning pocket. Built tower-foot detours on north/east/west service lanes, the northwest elbow/T and joined southern L neck; all declared clear routes avoid solid supports."
+    },
+    {
+      "item": 3,
+      "status": "implemented and self-reviewed",
+      "change": "Three complete image-tool merchant houses provide coherent 96px ground/upper/roof modules and actual 16px receding ends. Approved trade thresholds retain their opening via an 8px plinth return. Updated native/4x house proof."
+    },
+    {
+      "item": 4,
+      "status": "implemented and self-reviewed",
+      "change": "Redrew the failed opposite-hand abutment; both 96/144px depths and three colours retain matching alpha. Added continuous masonry receiving faces and actual-cap flashing; rendered exposed unlike joins and both tall/low hands."
+    },
+    {
+      "item": 5,
+      "status": "implemented and self-reviewed",
+      "change": "Redrew a broader 192px stone guildhall body with dark arcade. Retained base 720, lowered merchant flanks and 48px forecourt; checked final greyscale hierarchy."
+    },
+    {
+      "item": 6,
+      "status": "implemented and self-reviewed",
+      "change": "Replaced the floating side steps in the scene with a supported 96px church porch reaching base 1056; retained the passing north-facing market hall. Church actor stands on its stair receiver, without erasing cathedral masonry."
+    },
+    {
+      "item": 7,
+      "status": "implemented and self-reviewed",
+      "change": "Kept passing recessed doors, lit landings, lanterns, inn porch/bed cue and shop goods. Clear 24x 32 standing areas verified for all five named entrances."
+    },
+    {
+      "item": 8,
+      "status": "implemented and self-reviewed",
+      "change": "Preserved the northwest pump court and paved covered passage. Kept the rear opening unobstructed and regenerated normal/reveal actor proofs."
+    },
+    {
+      "item": 9,
+      "status": "implemented and self-reviewed",
+      "change": "Kept all passing curtain variants unchanged. Redrew both failed towers as complete continuous shafts; regenerated curtain/stair/tower contacts."
+    },
+    {
+      "item": 10,
+      "status": "implemented and self-reviewed",
+      "change": "Replaced scene hip and narrow-cap selections with foreshortened image-tool roof families; corrected the B abutment texture. Used matched terracotta/slate/brown palettes."
+    },
+    {
+      "item": 11,
+      "status": "implemented and self-reviewed",
+      "change": "Computed continuous structural casts before partitioning owned ground receivers; separate roof/wall masks receive eave and neighbour casts. Shadow union is 88/255 on ground and 72/255 on roof/wall, with no panel-boundary light resets."
+    },
+    {
+      "item": 12,
+      "status": "implemented and self-reviewed",
+      "change": "Both whole-frontage and comprehensive resolved/cropped-piece audits pass; churchyard boundaries alternate actual wood/stone constructions. Legacy Part E audits remain clear."
+    },
+    {
+      "item": 13,
+      "status": "implemented and self-reviewed",
+      "change": "Retained passing alternate side-house silhouettes; removed piled roof columns, added a full southern 48px building stagger and continuous receiving walls. Open/bell tower shafts now match their tops."
+    },
+    {
+      "item": 14,
+      "status": "implemented and self-reviewed",
+      "change": "Kept passing trade-sign exports unchanged. Exposed scribe frontage and checked all eight trades against final pixels; each changes over 2000 rendered pixels when its sign is removed."
+    },
+    {
+      "item": 15,
+      "status": "implemented and self-reviewed",
+      "change": "Retained six stalls/two rows, fountain/cross, browsing aisle,96px eastern route and guildhall/church approaches. Working courts remain enclosed off the public lanes."
+    },
+    {
+      "item": 16,
+      "status": "implemented and self-reviewed",
+      "change": "Redrew a continuous supported landing/stair connector. Removed the redundant toll bay and masked the superseded blue cap beneath the passing bridging chamber. Preserved portal, towers and 3x 4 gate ground allocation."
+    },
+    {
+      "item": 17,
+      "status": "implemented and self-reviewed",
+      "change": "Added image-tool packed-earth yard paint, alpha-composited mud edges over opaque ground, and kept attached fuel storage and east-wall storage outside the bent service route. Final alpha is fully 255."
+    },
+    {
+      "item": 18,
+      "status": "implemented and self-reviewed",
+      "change": "Moved forge smoke into visible final paint; retained shrine apron and northwest pump. Smoke affects 419 final pixels instead of zero."
+    },
+    {
+      "item": 19,
+      "status": "implemented and self-reviewed",
+      "change": "Kept passing active vendor drawings and paired shoppers. Removed the old inn cart; one unloading cart/worker remains, composited visibly at the courtyard edge."
+    },
+    {
+      "item": 20,
+      "status": "implemented and self-reviewed",
+      "change": "Regenerated all final renders, comparisons, squints, exact 2x/3x crops, every piece/seam sheet, old inspection sheets, footprint/clearance and actor proofs. Saved-art self-review only; no independent panel or runtime approval claimed."
+    }
+  ],
+  "preservation": "All873 pre-existing city PNGs other than the nine failed entries remain byte-identical.",
+  "brief_conflicts": "BRIEF-17 retains fixed rows0/47,48px grid,1\u20132-cell building footprints, twice-R15 trade-sign scale, lot-owned overlays, compulsory street variation and civic/gate allocations. Coordinator40x30 cells sets1920x1440.",
+  "evidence": [
+    "r17-city-final.png",
+    "r17-C6-review.html",
+    "r17-C6-verification.json",
+    "r17-C6-layout-connections.json",
+    "r17-C6-critic1-comprehensive-repeat.json",
+    "r17-C6-critic1-final-proof.json",
+    "r17-C6-critic1-generation.json",
+    "r17-C6-critic1-processing.json"
+  ]
+}

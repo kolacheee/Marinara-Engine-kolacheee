@@ -1,0 +1,698 @@
+{
+  "part": "C6",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "abutment-b-c6-brown",
+    "abutment-b-c6-slate",
+    "abutment-b-c6",
+    "abutment-b-d2-c6-brown",
+    "abutment-b-d2-c6-slate",
+    "abutment-b-d2-c6",
+    "receiving-wall-left-c6r1",
+    "receiving-wall-right-c6r1",
+    "yard-boundary-wood-c6r1",
+    "compose.py",
+    "r17-city-final",
+    "r17-city-final-2x",
+    "r17-city-final-vs-r15-vs-today",
+    "r17-city-final-squint",
+    "r17-city-final-crop-square-3x",
+    "r17-city-final-crop-street-3x",
+    "r17-city-final-crop-gate-3x"
+  ],
+  "files": {
+    "abutment-a-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-a-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "abutment-b-c6-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10 remains unresolved. Across the roof plane, approximately x2–39, the replacement paint is scattered horizontal dashes on a nearly flat material value. It does not form the requested coherent 6–8 px by 3–4 px tile clusters or a consistent foreshortened course. At native scale it reads as a scratched strip beside the raised, overlapping tiles of abutment-a and the complete-house roofs.",
+        "The colourway retains this drawing defect. Hard alpha, palette locking and the correct 48 px width do not make the roof texture compatible. See critic-r17C6-2-abutment-b-c6-detail-8x.png, critic-r17C6-2-abutment-b-d2-c6-detail-8x.png and the existing unlike-abutment proof."
+      ],
+      "fix": "Redraw the roof plane with the image tool using the accepted roof family as reference: broad lit/shaded material planes, connected overlapping tile clusters and courses that meet its intended neighbour. Register and mode-reduce it at native size; keep the masonry receiver and hard alpha. Derive the slate/brown partners from the accepted drawing without changing its alpha mask, then inspect both depths in unlike-neighbour assemblies."
+    },
+    "abutment-b-c6-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10 remains unresolved. Across the roof plane, approximately x2–39, the replacement paint is scattered horizontal dashes on a nearly flat material value. It does not form the requested coherent 6–8 px by 3–4 px tile clusters or a consistent foreshortened course. At native scale it reads as a scratched strip beside the raised, overlapping tiles of abutment-a and the complete-house roofs.",
+        "The colourway retains this drawing defect. Hard alpha, palette locking and the correct 48 px width do not make the roof texture compatible. See critic-r17C6-2-abutment-b-c6-detail-8x.png, critic-r17C6-2-abutment-b-d2-c6-detail-8x.png and the existing unlike-abutment proof."
+      ],
+      "fix": "Redraw the roof plane with the image tool using the accepted roof family as reference: broad lit/shaded material planes, connected overlapping tile clusters and courses that meet its intended neighbour. Register and mode-reduce it at native size; keep the masonry receiver and hard alpha. Derive the slate/brown partners from the accepted drawing without changing its alpha mask, then inspect both depths in unlike-neighbour assemblies."
+    },
+    "abutment-b-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10 remains unresolved. Across the roof plane, approximately x2–39, the replacement paint is scattered horizontal dashes on a nearly flat material value. It does not form the requested coherent 6–8 px by 3–4 px tile clusters or a consistent foreshortened course. At native scale it reads as a scratched strip beside the raised, overlapping tiles of abutment-a and the complete-house roofs.",
+        "The colourway retains this drawing defect. Hard alpha, palette locking and the correct 48 px width do not make the roof texture compatible. See critic-r17C6-2-abutment-b-c6-detail-8x.png, critic-r17C6-2-abutment-b-d2-c6-detail-8x.png and the existing unlike-abutment proof."
+      ],
+      "fix": "Redraw the roof plane with the image tool using the accepted roof family as reference: broad lit/shaded material planes, connected overlapping tile clusters and courses that meet its intended neighbour. Register and mode-reduce it at native size; keep the masonry receiver and hard alpha. Derive the slate/brown partners from the accepted drawing without changing its alpha mask, then inspect both depths in unlike-neighbour assemblies."
+    },
+    "abutment-b-d2-c6-brown": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10 remains unresolved. Across the roof plane, approximately x2–39, the replacement paint is scattered horizontal dashes on a nearly flat material value. It does not form the requested coherent 6–8 px by 3–4 px tile clusters or a consistent foreshortened course. At native scale it reads as a scratched strip beside the raised, overlapping tiles of abutment-a and the complete-house roofs.",
+        "The colourway retains this drawing defect. Hard alpha, palette locking and the correct 48 px width do not make the roof texture compatible. See critic-r17C6-2-abutment-b-c6-detail-8x.png, critic-r17C6-2-abutment-b-d2-c6-detail-8x.png and the existing unlike-abutment proof."
+      ],
+      "fix": "Redraw the roof plane with the image tool using the accepted roof family as reference: broad lit/shaded material planes, connected overlapping tile clusters and courses that meet its intended neighbour. Register and mode-reduce it at native size; keep the masonry receiver and hard alpha. Derive the slate/brown partners from the accepted drawing without changing its alpha mask, then inspect both depths in unlike-neighbour assemblies."
+    },
+    "abutment-b-d2-c6-slate": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10 remains unresolved. Across the roof plane, approximately x2–39, the replacement paint is scattered horizontal dashes on a nearly flat material value. It does not form the requested coherent 6–8 px by 3–4 px tile clusters or a consistent foreshortened course. At native scale it reads as a scratched strip beside the raised, overlapping tiles of abutment-a and the complete-house roofs.",
+        "The colourway retains this drawing defect. Hard alpha, palette locking and the correct 48 px width do not make the roof texture compatible. See critic-r17C6-2-abutment-b-c6-detail-8x.png, critic-r17C6-2-abutment-b-d2-c6-detail-8x.png and the existing unlike-abutment proof."
+      ],
+      "fix": "Redraw the roof plane with the image tool using the accepted roof family as reference: broad lit/shaded material planes, connected overlapping tile clusters and courses that meet its intended neighbour. Register and mode-reduce it at native size; keep the masonry receiver and hard alpha. Derive the slate/brown partners from the accepted drawing without changing its alpha mask, then inspect both depths in unlike-neighbour assemblies."
+    },
+    "abutment-b-d2-c6": {
+      "status": "fail",
+      "problems": [
+        "FIXES 10 remains unresolved. Across the roof plane, approximately x2–39, the replacement paint is scattered horizontal dashes on a nearly flat material value. It does not form the requested coherent 6–8 px by 3–4 px tile clusters or a consistent foreshortened course. At native scale it reads as a scratched strip beside the raised, overlapping tiles of abutment-a and the complete-house roofs.",
+        "The colourway retains this drawing defect. Hard alpha, palette locking and the correct 48 px width do not make the roof texture compatible. See critic-r17C6-2-abutment-b-c6-detail-8x.png, critic-r17C6-2-abutment-b-d2-c6-detail-8x.png and the existing unlike-abutment proof."
+      ],
+      "fix": "Redraw the roof plane with the image tool using the accepted roof family as reference: broad lit/shaded material planes, connected overlapping tile clusters and courses that meet its intended neighbour. Register and mode-reduce it at native size; keep the masonry receiver and hard alpha. Derive the slate/brown partners from the accepted drawing without changing its alpha mask, then inspect both depths in unlike-neighbour assemblies."
+    },
+    "actor-proof-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "bed-pictogram-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "cart-unload-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-entry-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "church-porch-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-apothecary-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-baker-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-cobbler-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "display-smith-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "door-entry-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "forge-smoke-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-bridge-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-landing-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "gate-stair-lower-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-apothecary-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-baker-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-cobbler-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-passage-w2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ground-smith-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "guildhall-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-c-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-c-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "inn-porch-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "market-hall-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "packed-yard-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-left-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "party-right-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "passage-entry-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "receiving-wall-left-c6r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 3/4: this supposedly continuous 16×240 masonry return has completely transparent rows y190 and y191 across all 16 columns. It ends one donor section and restarts another below a two-pixel slit.",
+        "The tall-on-right proof also exposes a jagged, unoutlined masonry edge crossing the left-hand window bays. A cropped tower edge has been used as a facade receiver without a compatible frontage. See critic-r17C6-2-receiving-wall-left-c6r1-gap-8x.png and critic-r17C6-2-tall-low-right-4x.png."
+      ],
+      "fix": "Replace the tapered donor foot with continuous drawn masonry and a clean exposed edge, preserving the 16 px registration. Give the receiver a compatible window-free frontage margin, one coping and continuous flashing; test the full 240 px height and the five-/one-storey contact in both hands."
+    },
+    "receiving-wall-right-c6r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 4: the 16×240 receiver tapers away and is entirely transparent on rows y188–191, then abruptly restarts at y192. This is a four-pixel break in a load-bearing masonry strip, not continuous height-change receiving paint.",
+        "See critic-r17C6-2-receiving-wall-right-c6r1-gap-8x.png. Shorter crops can conceal the defect; the full-height export and tall stack must also work."
+      ],
+      "fix": "Register a continuous painted 16 px return without the donor tower’s tapered foot. Keep one coping and an unbroken wall/flashing contact through all five storeys, with an opaque seam at the extension join."
+    },
+    "return-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "return-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-a-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-a-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-b-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-b-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-c-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-c-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-merchant-d2-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-a-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-a-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-b-c6r1-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-b-c6r1-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "roof-narrow-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6-brown": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6-slate": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "side-house-west-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-scribe-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "sign-tailor-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-house-a-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-house-b-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-house-c-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-merchant-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-merchant-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "storey-plaster-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tower-bell-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "tower-open-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-fold-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-hand-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "vendor-weigh-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-curtain-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-top-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-a-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-b-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "wall-tower-c-c6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-boundary-stone-c6r1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "yard-boundary-wood-c6r1": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/6/17: the 8×48 boundary is two disconnected upright fragments, not a continuous side fence. Rows y0–5, y23–29 and y47 are completely transparent; there is no rail or wall joining the two pieces.",
+        "Repeated down property sides, this becomes a dotted line of floating posts with openings to public paving. This is visible in the east working yard and in the same post-crop technique along the churchyard. See critic-r17C6-2-yard-boundary-wood-c6r1-gap-8x.png, critic-r17C6-2-yard-gaps-4x.png and critic-r17C6-2-churchyard-posts-4x.png."
+      ],
+      "fix": "Draw a continuous side-facing fence with rails and grounded posts, or use a genuinely continuous painted masonry boundary. Match its ends to the horizontal rear fence and building returns. Do not turn a pair of disconnected post crops into a claimed closed boundary."
+    },
+    "cobble-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "main-paving-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-main-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "street-side-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "lane-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "workyard-c4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "mud-edge": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "square-slabs-c5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "ditch-c3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "compose.py": {
+      "status": "fail",
+      "problems": [
+        "FIXES 1/17 — Property enclosures are still incomplete. The northwest yard is [240,432,96,96], ending at y528, while its declared front west-1 begins at y624: 96 px of paving separate them. The southwest yard ends at y1152 but south-L-0 starts at y1200, leaving 48 px. Middle/east strips similarly stop 48 px before their fronts. The narrow side boundaries stop with those rectangles, and some consist of disconnected posts. A closed=True record and one shared edge somewhere in a building group do not establish a closed front/side/rear property. Connect the actual side buildings and boundaries, subdivide long strips into plots, and retain only the intentional 24 px shared passages.",
+        "Coordinator height rule / FIXES 1 — c6_critic1_layout explicitly reduces inn-rear-west, inn-rear-middle, inn-rear-east, tailor-rear and scribe-rear to one storey. Their footprints are x1200–1488 and x1584–1776, y768–816. These are exposed shop frontages near the square/inn and eastern trade street, outside the poor wall quarter; they are not enclosed 48×48 lean-tos. They visibly recreate a band of little village shops. Raise side-street fronts to 2–3 storeys and any square/main-road fronts to 3–5, relocating or reworking rear assemblies if necessary. The global one-storey percentage passes but does not waive the location-specific rule. Evidence: critic-r17C6-2-low-mainstreet-1x.png and -4x.png.",
+        "FIXES 16 — The gatehouse assembly_cutouts=[24,208,120,248] removes a 96×40 rectangle at world x1200–1295, y1248–1287 from gatehouse-c4. It cuts through the inner tower masonry as well as the obsolete roof, exposing a rectangular paving window and truncating the tower faces above the chamber. Blue roof fragments also remain immediately over the new dark bridge. The bridge/landing assets themselves are improved, but this assembled gate is not structurally believable. Mask only the actual obsolete roof pixels, or redraw the joined chamber/tower bearing region, preserving both continuous shafts and the 96 px route. Evidence: critic-r17C6-2-gate-cutout-1x.png and -4x.png.",
+        "FIXES 3/4 — c6_build pastes a 16 px receiving strip directly over the left edge of otherwise complete window panels. In the tall-on-right proof it cuts through multiple window/sill assemblies and leaves a stair-stepped edge without a coherent shaded return. The receiving-strip exports additionally contain the transparent rows reported above. Provide compatible window-free end bays, continuous side masonry and flashing in the correct order; do not cover a window with a tower crop and count that as architectural depth.",
+        "FIXES 4/10 — The refreshed unlike-abutment proof still contains exposed paving channels between abutment-a and the central 96 px roof, and between that roof and abutment-b. The A roof’s sloping free edge is simply butted against a different cap; the B paint has no compatible tile course. Close these with correctly registered drawn valleys/flashing and shared eaves, then show the actual unlike contacts without paving wedges. A tiled self-contact sheet does not establish this join.",
+        "FIXES 20 — The proofs exist, but their visible content still contains the broken receiver, window occlusion, dotted yard boundaries and damaged gate assembly. The saved proof check titled no obsolete blue cap in gate assembly does not establish correct masonry or eliminate all visible roof remnants. Update geometric and visible-pixel assertions to cover these failure modes, then regenerate the seven final deliverables and acceptance proofs after the repairs."
+      ],
+      "fix": "Repair the actual front/rear/side footprint connections and the five low commercial frontages; use continuous drawn boundary and receiver pieces; limit the gate mask to obsolete roof paint; assemble unlike roofs with their intended overlaps and flashing. Preserve the successful street bends, 48 px southern stagger, uneven towers, roof colour mix, square/gate-road clearances and repetition fixes. Re-render all outputs and visually inspect them at native scale and nearest-neighbour 4×."
+    },
+    "r17-city-final": {
+      "status": "fail",
+      "problems": [
+        "The saved image accurately reproduces the current composer, but the composition still fails: detached/incompletely fenced rear strips, five one-storey commercial frontages outside the poor quarter, and the rectangular gate-tower cutout. See the compose.py entry for exact coordinates and repairs.",
+        "This is a visual acceptance failure, not an image-size or scaling failure. The street replan, mixed roof hues, stronger guildhall and populated six-stall square are visible improvements and are not being rejected as absent."
+      ],
+      "fix": "Repair the asset and composition failures, then regenerate the native 1920×1440 showcase from compose.py."
+    },
+    "r17-city-final-2x": {
+      "status": "fail",
+      "problems": [
+        "The saved image accurately reproduces the current composer, but the composition still fails: detached/incompletely fenced rear strips, five one-storey commercial frontages outside the poor quarter, and the rectangular gate-tower cutout. See the compose.py entry for exact coordinates and repairs.",
+        "This is a visual acceptance failure, not an image-size or scaling failure. The street replan, mixed roof hues, stronger guildhall and populated six-stall square are visible improvements and are not being rejected as absent."
+      ],
+      "fix": "Regenerate after the native showcase passes, using exact nearest-neighbour 2× scaling."
+    },
+    "r17-city-final-vs-r15-vs-today": {
+      "status": "fail",
+      "problems": [
+        "The current-town and R15 panels and the 1× comparison layout are correct. The C6 panel contains the same failed enclosure, height-distribution and gate-assembly details as r17-city-final; placing it beside the references does not resolve them."
+      ],
+      "fix": "Keep the reference panels at 1× and replace the C6 panel with the repaired native render."
+    },
+    "r17-city-final-squint": {
+      "status": "fail",
+      "problems": [
+        "This is a correct greyscale conversion, and the broader guildhall is more legible. It nevertheless exposes the low commercial band at y768–816, the separated property groups and the rectangular break above the gate bridge; these are structural failures that persist without colour."
+      ],
+      "fix": "Regenerate greyscale from the repaired native showcase and reassess the enclosed-block massing and gate silhouette."
+    },
+    "r17-city-final-crop-square-3x": {
+      "status": "fail",
+      "problems": [
+        "The crop is an exact nearest-neighbour enlargement. Along its west edge, the churchyard boundary remains a broken sequence of post fragments rather than an enclosure; the middle rear strip at world x480–672, y480–576 also stops short of its front building at y624. The square is populated, but the required enclosed property/churchyard treatment is not complete."
+      ],
+      "fix": "Repair the continuous boundaries and actual front/rear connections visible in this crop, then regenerate it from the final native image."
+    },
+    "r17-city-final-crop-street-3x": {
+      "status": "fail",
+      "problems": [
+        "The crop correctly enlarges the current image. It shows the northwest/middle yards disconnected from their declared fronts, post-fragment boundaries, and the tall-house receiver/window contact problems. These violate FIXES 1, 3 and 4 despite the improved northwest T-junction."
+      ],
+      "fix": "Repair the northwest and middle property connections and tall/short masonry contacts, preserve the intentional court passage, and regenerate the crop."
+    },
+    "r17-city-final-crop-gate-3x": {
+      "status": "fail",
+      "problems": [
+        "The exact 3× crop includes the rectangular paving cutout through the gate’s inner tower faces at world x1200–1295, y1248–1287, with residual blue roof fragments above the dark bridging chamber.",
+        "Its upper edge also exposes the one-storey commercial row at y768–816 outside the poor quarter. Both defects are already visible at native scale."
+      ],
+      "fix": "Repair the gate masking/bearings and the commercial frontage heights, retaining the clear 96 px road, then regenerate the crop."
+    }
+  },
+  "notes": "Independent C6 round-2 review of the current files, not the drawing pass. Read BRIEF-17 in full, both panel briefs, cycle-6 FIXES and panel reviews, the NOTES drawing/reduction method, and the earlier E/C6 findings. Inspected all 107 C6 inventory PNGs at native size and nearest-neighbour 4×; inspected all 16 regions of the final city at 4×, full-height guildhall separately, and selected defects at 8×. Checked the comparison references, named final derivatives, whole-house, L/T/dead-end, civic-square, tall/short in both hands, unlike-roof, wall/stair/tower and actor/reveal proofs. Review-only composites are critic-r17C6-2-*.png; no city17 art or composer was edited.\n\nTechnical passes: all 107 C6 assets match their inventory dimensions and hashes, have alpha only 0/255 and zero RGB under transparent pixels. The facade modules retain identical connection paint on rows 0 and 47. All 32 slate/brown partner masks compared byte-for-byte with their corresponding base drawing match. There are no seasonal partners in this C6 inventory, so seasonal-ground/summer-silhouette testing is not applicable; colourways were not mistaken for seasons. Inspected ten relevant grounds in literal 3×3 repeats at native and 4×, and the new small props over approved summer grass, cobbles and packed working-yard ground. No additional ground seam, soft-alpha or dirty-transparency failure was found.\n\nThe saved 1920×1440 final equals a fresh in-memory c6_render. The 3840×2880 output is exact NN 2×, all three named crops are exact NN 3× of their registered source rectangles, the squint is the correct greyscale conversion, and the comparison embeds the current-town, R15 and C6 sources at 1×. None fails for resampling. The 40×30-cell coordinator requirement supersedes the older approximate 1200×900 showcase size.\n\nRepetition passes: independently recomputed 42 five-house frontage windows by resolved image hashes, with zero failures; reran the broader architectural/crop audit (511 instances, 203 windows), with zero reported failures; reran the legacy E L-block, market and height layouts, with no repetition failure. The former north rear-cap and eight forced trade-shop repeats are fixed. Modular storey histogram: 1:7, 2:30, 3:15, 4:4, 5:1 (57 buildings). Including the existing ancillary building classification: 1:15, 2:31, 3:15, 4:4, 5:1 (66; 22.73% one-storey), so the overall <=25% threshold passes. The five misplaced one-storey shop fronts still fail the separate district-height rule. Roof tones among modular buildings: 29 terracotta, 18 slate, 10 brown; mixed roofs are retained. No street-frontage lawn was found.\n\nFIXES dispositions: 1 FAIL (physical enclosures and misplaced low fronts); 2 substantive layout/route work is visible (96 px gate elbow, northwest jogs, tower-foot detours and stepped district fronts), retained subject to the property repairs; 3 FAIL in tall-stack assembly although the newly drawn complete-house pilots improve depth; 4 FAIL (receiver slits, window clipping and unlike-roof contacts); 5 addressed (broad guildhall at base720 and lower flanks); 6 partly addressed (supported east church porch and square-facing market arcade), FAIL for the churchyard enclosure; 7 addressed at the key shop thresholds/inn porch; 8 route and reveal proof present, retain the deliberate northwest court; 9 repaired curtain/tower joins pass; 10 FAIL for the six abutment-B variants; 11 structural receiver-aware shadows and joined wall-run shade improve the prior mats; 12 resolved repetition passes; 13 alternate side houses, tower tops and the southern 48 px stagger are visible; 14 full-scale signs, rims/brackets and named trade symbols are visible, including the scribe; 15 six stalls and market through-routes retained; 16 FAIL in gate assembly, while the redrawn landing/stair pieces pass individually; 17 packed working yards, attached stores and drain are present but enclosure is still incomplete; 18 shrine apron, pump and visible hard-edged forge smoke present; 19 distinct vendors and one inn unloading cart present; 20 FAIL acceptance because proofs visibly retain the listed defects. Saved draw-order/clearance proofs are not runtime collision or navigation tests.\n\nBRIEF-17 governs the earlier panel conflicts: keep 1–2-cell ground footprints with separate rear strips, twice-R15 signs, lot-contained shadows, prescribed landmark footprints, fixed courses and mandatory street variation. Do not shrink signs, shorten gate towers, extend shadow ownership or count 144 px projected roofs as 144 px ground footprints to repair these findings. Passing entries concern the inspected individual exports; their use in a failed assembly is identified under compose.py and the affected renders."
+}

@@ -1,0 +1,211 @@
+[
+  {
+    "id": "abutment-a",
+    "source": "r17-C6-critic1-source-abutment-a.png",
+    "prompt": "Pixel-art game architectural sprite drawn LARGE on perfectly solid #ff00ff magenta. Reference 1 is approved opposite-hand abutment (48x144 native); reference 2 is the matching merchant cap (96x144). Draw ONLY a new RIGHT-HAND roof abutment, slender 1:3 aspect ratio. Native target 48x144. On RIGHT edge a 12px wide substantial warm grey stone party-wall receiving face, continuous bottom to top with a single pale coping at top, dark right face and thin metal flashing at LEFT foot of masonry. LEFT remaining 36px is terracotta roof slope seen from ABOVE with foreshortened tile clusters exactly like reference 2: about 6\u20138 native pixels wide and 3\u20134 deep, 35\u201340 courses over full height, staggered muted short marks, NOT a frontal brick grid. Roof slopes and terminates at same bottom eave as reference. 3 main material values, top-left lighting, crisp angular pixels, 1px exposed outline. Solid complete roof surface with broad lit plane, no flecks or microtexture, no framing border, text, ground shadow, extra pieces. Enlarge this one sprite to occupy most canvas, large uniform pixel blocks suitable for mode reduction. Keep masonry face intentionally separate from roof clay.",
+    "size": [
+      48,
+      144
+    ],
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "abutment-b",
+    "size": [
+      48,
+      144
+    ],
+    "source": "r17-C6-critic1-source-abutment-b.png",
+    "prompt": "Pixel-art game architectural sprite drawn LARGE on perfectly solid #ff00ff magenta. Reference 1 is approved opposite-hand abutment (48x144 native); reference 2 is the matching merchant cap (96x144). Draw ONLY a new RIGHT-HAND roof abutment, slender 1:3 aspect ratio. Native target 48x144. On RIGHT edge a 12px wide substantial warm grey stone party-wall receiving face, continuous bottom to top with a single pale coping at top, dark right face and thin metal flashing at LEFT foot of masonry. LEFT remaining 36px is terracotta roof slope seen from ABOVE with foreshortened tile clusters exactly like reference 2: about 6\u20138 native pixels wide and 3\u20134 deep, 35\u201340 courses over full height, staggered muted short marks, NOT a frontal brick grid. Roof slopes and terminates at same bottom eave as reference. 3 main material values, top-left lighting, crisp angular pixels, 1px exposed outline. Solid complete roof surface with broad lit plane, no flecks or microtexture, no framing border, text, ground shadow, extra pieces. Enlarge this one sprite to occupy most canvas, large uniform pixel blocks suitable for mode reduction. Keep masonry face intentionally separate from roof clay. Alternative B: make the roof courses nearly horizontal with a subtle 1-in-8 receding rise to the right, not steep diagonal stripes. Roof edge must be straight, NOT scalloped. Match the reference's tiny staggered 6x3 clusters. Keep masonry 12/48 width. About 40 courses over height.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "house-a",
+    "size": [
+      96,
+      192
+    ],
+    "source": "r17-C6-critic1-source-house-a.png",
+    "prompt": "Draw a single complete TWO-STOREY medieval merchant corner house as LARGE crisp pixel art on solid #ff00ff. Style reference is the attached current game house. Native canvas 96x192, enlarged greatly. Roof cap canvas top96px, two wall storeys each48px below. Roof is a high3/4 terracotta pitched roof, front gable and receding ridge, broad deep roof planes seen from above with 6\u20138px by3\u20134px tile clusters. Avoid long rectangular roof or front brick-grid triangles. Roof can have empty magenta in upper24px. Front facade80px wide plus a continuous16px shaded RIGHT RETURN seen receding backwards/upwards12px, connected from the roof eave down through walls to stone plinth. Right return has masonry front corner and visible narrow timber side wall plane, NOT a frontal pilaster. Ground floor warm grey STONE with a bread shop left, real24px door right, pale24x8 landing, lantern. Upper floor warm plaster/oak, one pair of large recessed shuttered windows with sill TOPS and narrow undershadows. No massive horizontal floor belts, beams only2\u20133px native thick. Top-left light, shadowed right plane, precise1px dark outline, same native detail scale as reference. Square angular geometry. Complete coherent house volume, no text, no scene, no ground shadow.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "house-b",
+    "size": [
+      96,
+      192
+    ],
+    "source": "r17-C6-critic1-source-house-b.png",
+    "prompt": "Draw a single complete TWO-STOREY medieval corner merchant house as LARGE crisp pixel art on perfectly solid #ff00ff. Match attached game's high3/4 view, top-left light, single-pixel outline, warm plaster/oak and grey-brown stone. Native canvas96x192; top96 roof cap, two48px wall floors. Alternative house: asymmetrical HIPPED terracotta roof with one squat chimney, broad visible roof plane seen from above, small foreshortened6x3px tile clusters continuous across hip, no ruler brick triangle. Front80px plus16px dark RIGHT SIDE recedes up/back12px, visibly attached to eave and plinth. Upper floor: one wide recessed TRIPLE window with shutters and visible sill top, calm plaster. Ground stone: real24px recessed entrance LEFT with pale landing and6x10 lantern, merchant goods shelf RIGHT. Align support posts and upper bays as one coherent house. Thin2px floor beam, no floor belts or panels. Square angles, not rounded corners. No scene, ground shadow, text, haze, microtexture. Fill frame with large sprite, enough magenta margin.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "tower-open-a",
+    "size": [
+      96,
+      240
+    ],
+    "source": "r17-C6-critic1-source-tower-open-a.png",
+    "prompt": "Redraw attached medieval OPEN BATTLEMENT square wall tower as ONE CONTINUOUS architectural sprite, LARGE pixel art on solid #ff00ff magenta. Retain same96x240 native canvas aspect and overall tower height, open battlement top treatment, lower door and high slit windows. Fix current horizontal shaft splice: warm grey-brown masonry front and shaded right return must continue consistently from battlement to foot, with same rectangular stone course sizes; no abrupt change of cream/light to near-black, no cut windows, no separate panels. Front about76px wide and shaded east side20px; right face 2value steps darker, not black. One small coping beneath parapet, subtle floor stringcourse at most, continuous window surrounds, wide blocks not noise. High3/4 view/top faces visible, top-left light,1native pixel dark exposed outline. Match game reference palette, squarish crenels and hard angular pixels. No ground, cast shadow, labels or extra structures.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "tower-bell-a",
+    "size": [
+      96,
+      240
+    ],
+    "source": "r17-C6-critic1-source-tower-bell-a.png",
+    "prompt": "Redraw attached medieval BELL WATCH wall tower as ONE CONTINUOUS architectural sprite, LARGE pixel art on solid #ff00ff magenta. Retain same96x240 native canvas aspect and overall tower height, slate canopy over small open red-timber bell platform/banner at top, lower tower door and slit windows. Fix shaft splice: warm grey-brown masonry front and shaded right return must continue consistently beneath bell platform to foot. Same stone course scale; complete intact single upper slit surround; no abrupt material seam or cut window, no pasted shaft rectangles. Front76px wide plus20px shaded east return. Not black, moderately darker stone. One coping under open platform. Broad calm rectangular stones, quiet mortar, no specks. High3/4 view, top-left light,1native pixel dark exposed outline, square hard angles. No ground, cast shadow, labels or extra structures.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "landing-a",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-C6-critic1-source-landing-a.png",
+    "prompt": "Draw one medieval gate wall-walk LANDING, enlarged crisp game pixel-art sprite on solid #ff00ff magenta, native48x48. It bridges left tower door to right curtain wall walk. NO roof, NO door, NO chamber. At upper half a rectangular stone walking platform, floor TOP clearly visible in high3/4 view, top-left light. Floor from left edge to right edge, recessed dark small parapet BACK only with open left/right ends. Two substantial stone corbels/bearings support the front underside, descending to bottom48px, no floating slab, no ground shadow. Match attached chamber's muted grey-brown stone, 1px dark outline, quiet masonry, straight square geometry. The walking surface runs horizontally at native y16\u201328. Large flat planes, subdued mortar, no specks, no text.",
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "guildhall-a",
+    "size": [
+      192,
+      384
+    ],
+    "source": "r17-C6-critic1-source-guildhall-a.png",
+    "prompt": "Redraw the attached medieval guildhall as a LARGE crisp pixel-art single sprite on pure #ff00ff magenta. Same192px native width and400px native height budget, same central pointed slate clock-bell turret and terracotta roof. Improve CIVIC MASS: bottom192px tall body must occupy almost the FULL192px width, broad warm grey-brown STONE hall, dark three-bay arcade at ground with thick square pillars and central usable entrance/steps, upper hall with three broad recessed windows. Main terracotta roof high3/4 view with small6x3px foreshortened tile clusters, horizontal broad mass. Tall narrow central clock tower rises above roof, one simple large clock and bell opening; turret quieter ornament. Make stone body visually dominant, less timber fretwork, no tiny dormers or multiple decorations. Top-left light, visible12px shaded right return,1px dark outline, simple square hard geometry, muted material ramps like reference. No background scene, text, banners or ground shadow.",
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "church-porch-a",
+    "size": [
+      96,
+      96
+    ],
+    "source": "r17-C6-critic1-source-church-porch-a.png",
+    "prompt": "Draw a coherent EAST-FACING church side entrance with supported steps as a single LARGE pixel-art sprite on pure magenta #ff00ff. Native96x96 canvas. Door and little stone gabled porch at LEFT facing right/east; dark24x32 door opening, one lantern, attached side wall. A small stone landing joins the door then FOUR broad descending steps travel RIGHT to ground at bottom-right, occupied right half; full solid masonry wedge/cheek below stairs extends all the way to bottom, NO floating thin slab. The floor footline is at y96, upper landing about y60, visible floor tops in high3/4 game view. Medieval muted warm-grey church limestone same as attached reference, top-left light, shaded right faces, crisp1px outline, broad calm stone blocks, no ornate decoration, no ground shadow, text, foliage or people.",
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "landing-b",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-C6-critic1-source-landing-b.png",
+    "prompt": "Alternate single medieval gate wall-walk LANDING on pure #ff00ff, LARGE crisp pixel art, target48x48. A broad top-visible flat stone walkway at y12\u201328, supported underneath by a continuous masonry pier on RIGHT and a triangular corbel on LEFT. Both ends open horizontally to tower door and curtain walk. Low rear safety parapet only. Clearly usable walking FLOOR, no door/chamber/roof/turret. Right support runs down to bottom.3/4 view top-left light, grey-brown game masonry matching attached image, single1px dark outline, quiet large rectangular stones. Hard square edges, no blur/no cast shadow/no labels.",
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "church-porch-b",
+    "size": [
+      96,
+      96
+    ],
+    "source": "r17-C6-critic1-source-church-porch-b.png",
+    "prompt": "Alternate coherent EAST-FACING medieval church SIDE ENTRANCE, enlarged pixel art on solid #ff00ff. Native96x96. Dark recessed24x32 door and short angular stone canopy at left, facing RIGHT. A wide stone landing below door and3broad steps descend toward lower-right. The entire stair is supported by substantial continuous masonry SIDE CHEEK visible beneath each step, fully down to ground baseline y96. Foot arrives near right x90. Top landing about y62. No floating slabs. Lit lantern at doorway, pale step TOPS, shaded vertical risers. Same muted grey-brown stone as reference, high3/4 view, top-left light, crisp1px outline, straight square edges, restrained4value masonry, no ornate spire, ground shadow, text, people or scenery.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "house-c",
+    "size": [
+      96,
+      192
+    ],
+    "source": "r17-C6-critic1-source-house-c.png",
+    "prompt": "One complete TWO-STOREY medieval merchant corner house, LARGE crisp pixel art on solid #ff00ff. Native96x192 canvas, lower two48px storeys, top96px roof canvas with magenta space above roof. Match attached game's3/4 view. Muted terracotta steep CROSS-GABLED roof seen from above with small6x3px tile clusters and one short ridge, no dormer. Front80px plus a continuous16px dark RIGHT receding side, connected eave to plinth, no frontal pilaster. Upper: single broad projecting square oriel window on LEFT, closed pair shutters RIGHT, plaster and restrained oak supports, thin floor beam. Ground: warm grey stone with wide double door right, small shuttered shop left; lit24x8step and readable lantern. Broad coherent shaded material planes,2px window sill top and1px undershadow, top-left light,1px hard outline. Avoid excessive framing, repeated horizontal floor bands, microtexture, noise, rounded grid edges, text, ground shadow.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "guildhall-b",
+    "size": [
+      192,
+      384
+    ],
+    "source": "r17-C6-critic1-source-guildhall-b.png",
+    "prompt": "Alternate design of attached medieval guildhall, same central slate clock-bell spire and terracotta roof, on pure #ff00ff, LARGE pixel art. Native192x384, bottom192px is BROAD grey-brown stone civic body occupying full width, above that64px roof mass and128px slim central clock tower/pointed slate spire. Huge three-bay dark ground arcade with square bearing piers, center public door and steps; upper floor3broad calm recessed windows. Broad roof seen from above, fine6x3px tiles uniform across hip. Light front stone and12px darker right side, clear eave projection. Must look weightier/larger than merchant house, simpler than ornate reference, no timber lattice, balconies, small ornament or text. Top-left light,1px outline, precise square native pixels, no ground or cast shadow.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "gate-stair-a",
+    "size": [
+      48,
+      96
+    ],
+    "source": "r17-C6-critic1-source-gate-stair-a.png",
+    "prompt": "Draw ONE complete gate-wall stair connector, LARGE crisp pixel-art sprite, pure solid #ff00ff background. Native48x96 tall. At TOP a48px-wide stone LANDING with visible floor top, walkway connects off LEFT edge to a tower door, NO door or roof on this asset. Then a narrow supported masonry stair descends diagonally toward LOWER RIGHT to meet the curtain-wall walk at bottom. 6 clear angular stair treads, solid stone cheek supports, calm grey-brown masonry matching attached gate bridge. Upper landing floor native y16; lower walkway floor y88. Full solid support masonry under stairs, no floating parts. Keep horizontal LEFT entrance at top and horizontal RIGHT exit at bottom open, modest rear parapet only. Top-left light, high3/4 game view, native1px dark outline, square edges, no noise, cast shadow, ground, text. Variant a: stair visible down the right side with back safety parapet.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "gate-stair-b",
+    "size": [
+      48,
+      96
+    ],
+    "source": "r17-C6-critic1-source-gate-stair-b.png",
+    "prompt": "Draw ONE complete gate-wall stair connector, LARGE crisp pixel-art sprite, pure solid #ff00ff background. Native48x96 tall. At TOP a48px-wide stone LANDING with visible floor top, walkway connects off LEFT edge to a tower door, NO door or roof on this asset. Then a narrow supported masonry stair descends diagonally toward LOWER RIGHT to meet the curtain-wall walk at bottom. 6 clear angular stair treads, solid stone cheek supports, calm grey-brown masonry matching attached gate bridge. Upper landing floor native y16; lower walkway floor y88. Full solid support masonry under stairs, no floating parts. Keep horizontal LEFT entrance at top and horizontal RIGHT exit at bottom open, modest rear parapet only. Top-left light, high3/4 game view, native1px dark outline, square edges, no noise, cast shadow, ground, text. Variant b: stair along front with broad continuous right bearing.",
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "narrow-roof-b",
+    "size": [
+      48,
+      96
+    ],
+    "source": "r17-C6-critic1-source-narrow-roof-b.png",
+    "prompt": "Single NARROW medieval roof cap, enlarged pixel-art architectural sprite on pure #ff00ff. Native canvas48x96, painted roof occupies lower80px, magenta top16. Match attached game's high3/4 roof view, not a flat front or tall rectangular carpet. One small terracotta hipped roof, short ridge recedes toward upper-right, broad lit left slope and shaded right hip, no dormer. Foreshortened short tile clusters about6native px wide3px deep, three muted terracotta values, quiet marks, coherent scale on every slope and hip. Bottom eave horizontal,48pxwide, dark2px eave underside. Sharp angular pixel edges,1px dark outline, top-left lighting, no haze/specks/noise. Roof ONLY, no wall floors, text, ground or shadow.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "narrow-roof-a",
+    "size": [
+      48,
+      96
+    ],
+    "source": "r17-C6-critic1-source-narrow-roof-a.png",
+    "prompt": "Single NARROW medieval roof cap, enlarged pixel-art architectural sprite on pure #ff00ff. Native canvas48x96, painted roof occupies lower80px, magenta top16. Match attached game's high3/4 roof view, not a flat front or tall rectangular carpet. One small terracotta cross-gabled roof, gable triangular plaster face centered toward viewer, ridge recedes backward-right, small chimney rearleft. Foreshortened short tile clusters about6native px wide3px deep, three muted terracotta values, quiet marks, coherent scale on every slope and hip. Bottom eave horizontal,48pxwide, dark2px eave underside. Sharp angular pixel edges,1px dark outline, top-left lighting, no haze/specks/noise. Roof ONLY, no wall floors, text, ground or shadow.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  },
+  {
+    "id": "packed-yard-a",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-C6-critic1-source-packed-yard-a.png",
+    "prompt": "Draw a square seamless PACKED EARTH medieval city working-yard ground tile, LARGE pixel art on pure #ff00ff magenta surrounding margin. Native48x48, enlarge uniformly. The tile itself fills a perfectly straight-edged square, no rounded corners. NOT cobblestones: compacted warm grey-brown earth, broad quiet continuous flattened clay planes with a few connected angular wear marks;3main values, low contrast, NO noise/grain/specks/random dots/cracks/rocks/grass. Match attached game's material quietness and native pixel size. Brown earth clearly distinct from grey cobble, midvalue around RGB118,104,82 with muted light134,119,96 and shade100,88,69. Subtle top-left light, no castshadow. Pattern must tile seamlessly on all four edges without border or dark frame. Variant a: broad compressed earthen surface. No perspective, props, text or labels.",
+    "selected": false,
+    "selection_note": "Retained alternative; not selected for production."
+  },
+  {
+    "id": "packed-yard-b",
+    "size": [
+      48,
+      48
+    ],
+    "source": "r17-C6-critic1-source-packed-yard-b.png",
+    "prompt": "Draw a square seamless PACKED EARTH medieval city working-yard ground tile, LARGE pixel art on pure #ff00ff magenta surrounding margin. Native48x48, enlarge uniformly. The tile itself fills a perfectly straight-edged square, no rounded corners. NOT cobblestones: compacted warm grey-brown earth, broad quiet continuous flattened clay planes with a few connected angular wear marks;3main values, low contrast, NO noise/grain/specks/random dots/cracks/rocks/grass. Match attached game's material quietness and native pixel size. Brown earth clearly distinct from grey cobble, midvalue around RGB118,104,82 with muted light134,119,96 and shade100,88,69. Subtle top-left light, no castshadow. Pattern must tile seamlessly on all four edges without border or dark frame. Variant b: slightly more flattened clay wear, still mostly calm flat ground. No perspective, props, text or labels.",
+    "selected": true,
+    "selection_note": "Used in native production drawings/registered modules."
+  }
+]

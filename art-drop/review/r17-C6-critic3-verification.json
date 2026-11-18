@@ -1,0 +1,1303 @@
+{
+  "passed": 127,
+  "checks": 127,
+  "failed": [],
+  "items": [
+    {
+      "name": "fresh render equals final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row361 reproduces prior paving gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row361 closed with drawn paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row370 reproduces prior paving gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row370 closed with drawn paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row414 reproduces prior paving gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row414 closed with drawn paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row430 reproduces prior paving gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "critic row430 closed with drawn paint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "left-terracotta-ab assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 1313,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-terracotta-ab regression catches original compositor",
+      "passed": true,
+      "detail": 1313
+    },
+    {
+      "name": "left-terracotta-bc assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 797,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-terracotta-bc regression catches original compositor",
+      "passed": true,
+      "detail": 797
+    },
+    {
+      "name": "left-terracotta-ca assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 1293,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-terracotta-ca regression catches original compositor",
+      "passed": true,
+      "detail": 1293
+    },
+    {
+      "name": "left-slate-ab assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 1313,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-slate-ab regression catches original compositor",
+      "passed": true,
+      "detail": 1313
+    },
+    {
+      "name": "left-slate-bc assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 797,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-slate-bc regression catches original compositor",
+      "passed": true,
+      "detail": 797
+    },
+    {
+      "name": "left-slate-ca assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 1293,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-slate-ca regression catches original compositor",
+      "passed": true,
+      "detail": 1293
+    },
+    {
+      "name": "left-brown-ab assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 1313,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-brown-ab regression catches original compositor",
+      "passed": true,
+      "detail": 1313
+    },
+    {
+      "name": "left-brown-bc assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 797,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-brown-bc regression catches original compositor",
+      "passed": true,
+      "detail": 797
+    },
+    {
+      "name": "left-brown-ca assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-0",
+          "lower": "height-1",
+          "pixels": 1293,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "left-brown-ca regression catches original compositor",
+      "passed": true,
+      "detail": 1293
+    },
+    {
+      "name": "right-terracotta-ab assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 748,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-terracotta-ab regression catches original compositor",
+      "passed": true,
+      "detail": 748
+    },
+    {
+      "name": "right-terracotta-bc assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 740,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-terracotta-bc regression catches original compositor",
+      "passed": true,
+      "detail": 740
+    },
+    {
+      "name": "right-terracotta-ca assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 1243,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-terracotta-ca regression catches original compositor",
+      "passed": true,
+      "detail": 1243
+    },
+    {
+      "name": "right-slate-ab assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 748,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-slate-ab regression catches original compositor",
+      "passed": true,
+      "detail": 748
+    },
+    {
+      "name": "right-slate-bc assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 740,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-slate-bc regression catches original compositor",
+      "passed": true,
+      "detail": 740
+    },
+    {
+      "name": "right-slate-ca assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 1243,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-slate-ca regression catches original compositor",
+      "passed": true,
+      "detail": 1243
+    },
+    {
+      "name": "right-brown-ab assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 748,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-brown-ab regression catches original compositor",
+      "passed": true,
+      "detail": 748
+    },
+    {
+      "name": "right-brown-bc assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 740,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-brown-bc regression catches original compositor",
+      "passed": true,
+      "detail": 740
+    },
+    {
+      "name": "right-brown-ca assembled contour has zero exposed-background pixels",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "height-1",
+          "lower": "height-0",
+          "pixels": 1243,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "right-brown-ca regression catches original compositor",
+      "passed": true,
+      "detail": 1243
+    },
+    {
+      "name": "west-0 / west-1 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "west-0",
+          "lower": "west-1",
+          "pixels": 1145,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "west-1 / west-2 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "west-1",
+          "lower": "west-2",
+          "pixels": 657,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "north-middle-1 / north-middle-0 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "north-middle-1",
+          "lower": "north-middle-0",
+          "pixels": 3,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "merchant-1 / merchant-0 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "merchant-1",
+          "lower": "merchant-0",
+          "pixels": 47,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "merchant-3 / merchant-2 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "merchant-3",
+          "lower": "merchant-2",
+          "pixels": 860,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "inn-square-wing / gate-road-inn isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "inn-square-wing",
+          "lower": "gate-road-inn",
+          "pixels": 336,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "south-L-0 / south-L-1 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "south-L-0",
+          "lower": "south-L-1",
+          "pixels": 570,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "south-L-2 / south-L-1 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "south-L-2",
+          "lower": "south-L-1",
+          "pixels": 35,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "south-square-1 / south-square-0 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "south-square-1",
+          "lower": "south-square-0",
+          "pixels": 47,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "poor-1 / poor-0 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "poor-1",
+          "lower": "poor-0",
+          "pixels": 61,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "west-rear-range / west-lane-workshop isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "west-rear-range",
+          "lower": "west-lane-workshop",
+          "pixels": 344,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "merchant-rear-range / east-lane-workshop isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "merchant-rear-range",
+          "lower": "east-lane-workshop",
+          "pixels": 253,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "south-elbow-neck / south-L-2 isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "south-elbow-neck",
+          "lower": "south-L-2",
+          "pixels": 18,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "south-elbow-house / south-stagger-west isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "south-elbow-house",
+          "lower": "south-stagger-west",
+          "pixels": 407,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "south-elbow-house / south-elbow-neck isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "south-elbow-house",
+          "lower": "south-elbow-neck",
+          "pixels": 103,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "middle-rear-east / middle-side-workshop isolated actual-city contact opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "middle-rear-east",
+          "lower": "middle-side-workshop",
+          "pixels": 60,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "all complete-city contact margins opaque",
+      "passed": true,
+      "detail": [
+        {
+          "tall": "west-0",
+          "lower": "west-1",
+          "pixels": 1145,
+          "exposed": []
+        },
+        {
+          "tall": "west-1",
+          "lower": "west-2",
+          "pixels": 657,
+          "exposed": []
+        },
+        {
+          "tall": "north-middle-1",
+          "lower": "north-middle-0",
+          "pixels": 3,
+          "exposed": []
+        },
+        {
+          "tall": "merchant-1",
+          "lower": "merchant-0",
+          "pixels": 47,
+          "exposed": []
+        },
+        {
+          "tall": "merchant-3",
+          "lower": "merchant-2",
+          "pixels": 860,
+          "exposed": []
+        },
+        {
+          "tall": "inn-square-wing",
+          "lower": "gate-road-inn",
+          "pixels": 336,
+          "exposed": []
+        },
+        {
+          "tall": "south-L-0",
+          "lower": "south-L-1",
+          "pixels": 570,
+          "exposed": []
+        },
+        {
+          "tall": "south-L-2",
+          "lower": "south-L-1",
+          "pixels": 35,
+          "exposed": []
+        },
+        {
+          "tall": "south-square-1",
+          "lower": "south-square-0",
+          "pixels": 47,
+          "exposed": []
+        },
+        {
+          "tall": "poor-1",
+          "lower": "poor-0",
+          "pixels": 61,
+          "exposed": []
+        },
+        {
+          "tall": "west-rear-range",
+          "lower": "west-lane-workshop",
+          "pixels": 344,
+          "exposed": []
+        },
+        {
+          "tall": "merchant-rear-range",
+          "lower": "east-lane-workshop",
+          "pixels": 253,
+          "exposed": []
+        },
+        {
+          "tall": "south-elbow-neck",
+          "lower": "south-L-2",
+          "pixels": 18,
+          "exposed": []
+        },
+        {
+          "tall": "south-elbow-house",
+          "lower": "south-stagger-west",
+          "pixels": 407,
+          "exposed": []
+        },
+        {
+          "tall": "south-elbow-house",
+          "lower": "south-elbow-neck",
+          "pixels": 103,
+          "exposed": []
+        },
+        {
+          "tall": "middle-rear-east",
+          "lower": "middle-side-workshop",
+          "pixels": 60,
+          "exposed": []
+        }
+      ]
+    },
+    {
+      "name": "west-0 / west-1 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "west-0 / west-1 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "west-1 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "west-1 / west-2 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "west-1 / west-2 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "west-2 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "north-middle-1 / north-middle-0 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "north-middle-1 / north-middle-0 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "north-middle-0 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "merchant-1 / merchant-0 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "merchant-1 / merchant-0 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "merchant-0 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "merchant-3 / merchant-2 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "merchant-3 / merchant-2 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "merchant-2 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "west-rear-range / west-lane-workshop correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "west-rear-range / west-lane-workshop flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "west-lane-workshop repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "merchant-rear-range / east-lane-workshop correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "merchant-rear-range / east-lane-workshop flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "east-lane-workshop repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn-square-wing / gate-road-inn correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "inn-square-wing / gate-road-inn flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "gate-road-inn repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-L-0 / south-L-1 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-L-0 / south-L-1 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "south-L-1 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-L-2 / south-L-1 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-L-2 / south-L-1 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "south-L-1 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-elbow-neck / south-L-2 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-elbow-neck / south-L-2 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "south-L-2 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-square-1 / south-square-0 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-square-1 / south-square-0 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "south-square-0 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "poor-1 / poor-0 correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "poor-1 / poor-0 flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "poor-0 repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "middle-rear-east / middle-side-workshop correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "middle-rear-east / middle-side-workshop flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "middle-side-workshop repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-elbow-house / south-stagger-west correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-elbow-house / south-stagger-west flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "south-stagger-west repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-elbow-house / south-elbow-neck correct material partner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "south-elbow-house / south-elbow-neck flashing has no terracotta tile paint",
+      "passed": true,
+      "detail": [
+        [
+          43,
+          40,
+          29,
+          255
+        ],
+        [
+          77,
+          72,
+          60,
+          255
+        ],
+        [
+          105,
+          100,
+          85,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "south-elbow-neck repair contained in owning lot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "northwest deliberate court pixel-identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted roads unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted plots unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted courts unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted props unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted square unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted square_notch unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted house plans and heights unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exact2x export",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exact greyscale",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "square exact3x crop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "street exact3x crop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "gate exact3x crop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "today native comparison panel",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "r15 native comparison panel",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C6 native comparison panel",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all passing production PNGs byte-identical",
+      "passed": true,
+      "detail": {
+        "count": 2756,
+        "changed": []
+      }
+    }
+  ],
+  "assembled_test_cases": 18,
+  "isolated_city_contacts": 16,
+  "contact_probe_pixels": 23348,
+  "protected_production_pngs": 2756,
+  "storeys": {
+    "5": 1,
+    "3": 18,
+    "2": 32,
+    "4": 4,
+    "1": 2
+  },
+  "storeys_including_ancillary": {
+    "5": 1,
+    "3": 18,
+    "2": 33,
+    "4": 4,
+    "1": 10
+  },
+  "scope": "Saved-art self-checks; no independent panel or runtime approval"
+}
