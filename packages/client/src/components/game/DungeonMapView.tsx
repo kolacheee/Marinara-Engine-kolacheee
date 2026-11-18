@@ -1047,6 +1047,10 @@ export function DungeonMapView({
               const n = ny * cells.width + nx;
               if (nx < 0 || ny < 0 || nx >= cells.width || ny >= cells.height || inFog(nx, ny)) continue;
               if (cells.ground[n] !== "floor" || raisedSet.has(n) || cells.props[n] === 44) continue;
+              // Only straight down off the rail, not past its ends or over the steps (panel round 45).
+              const [bx, by] = [rx - dx, ry - dy];
+              if (bx < 0 || by < 0 || bx >= cells.width || by >= cells.height) continue;
+              if (!raisedSet.has(by * cells.width + bx)) continue;
               ctx.save();
               ctx.beginPath();
               ctx.rect(nx * T, ny * T, T, T);
@@ -1100,14 +1104,15 @@ export function DungeonMapView({
             ctx.closePath();
           };
           const light = ctx.createRadialGradient(gx, gy, T * 0.5, gx, gy, reach);
-          // A gallery's watcher in a paler gold, to tell the long look from above apart.
-          const tint = guard.raised ? "255, 226, 130" : "255, 150, 70";
+          // A gallery's watcher in violet, to tell the long look from above apart (panel round 45: a pale gold
+          // fan was lost on marble).
+          const tint = guard.raised ? "196, 150, 255" : "255, 150, 70";
           light.addColorStop(0, `rgba(${tint}, 0.26)`);
           light.addColorStop(1, `rgba(${tint}, 0.03)`);
           ctx.fillStyle = light;
           fan();
           ctx.fill();
-          ctx.strokeStyle = guard.raised ? "rgba(255, 236, 160, 0.9)" : "rgba(255, 196, 110, 0.75)";
+          ctx.strokeStyle = guard.raised ? "rgba(214, 186, 255, 0.95)" : "rgba(255, 196, 110, 0.75)";
           ctx.lineWidth = 1.5;
           ctx.setLineDash([4, 3]);
           fan();
@@ -1177,10 +1182,30 @@ export function DungeonMapView({
         for (const [k, { x, y }] of guard.beat.entries()) {
           const cx = x * T + T / 2;
           const cy = y * T + T / 2;
-          // The ends where it turns, and a footfall every other cell between (panel round 39: a line of bright
-          // squares read as debug dots).
+          // The ends where it turns, and a chevron every other cell between pointing along the walk (panel
+          // round 45: squares read as debris).
           if (k === 0 || k === guard.beat.length - 1) dot(cx - 4, cy - 1, 8, 3);
-          else if (k % 2 === 0) dot(cx + (k % 4 ? -4 : 1), cy - 1, 3, 3);
+          else if (k % 2 === 0) {
+            const [a, b] = [guard.beat[k - 1]!, guard.beat[k + 1]!];
+            const angle = Math.atan2(b.y - a.y, b.x - a.x);
+            const at = (r: number, t: number) => [cx + Math.cos(angle + t) * r, cy + Math.sin(angle + t) * r] as const;
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+            for (const [style, width] of [
+              ["rgba(16, 10, 12, 0.75)", 4],
+              ["#c8453a", 2],
+            ] as const) {
+              ctx.strokeStyle = style;
+              ctx.lineWidth = width;
+              ctx.beginPath();
+              ctx.moveTo(...at(4, 2.3));
+              ctx.lineTo(...at(3, 0));
+              ctx.lineTo(...at(4, -2.3));
+              ctx.stroke();
+            }
+            ctx.lineCap = "butt";
+            ctx.lineJoin = "miter";
+          }
         }
       }
       // The held post on the main way keeps a light burning beside it: a standing torch and its pool.

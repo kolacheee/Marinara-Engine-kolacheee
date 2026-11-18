@@ -161,7 +161,7 @@ const PLANS: Record<string, SiteStamp[]> = {
     st(["SSSSS", ".....", "cc.bb", ".....", "....."], [2, 3], [3, 4]),
   ],
   Pantry: [st(["jjjj", "j..j", "....", "b..c"], [1, 3], [1, 3])],
-  Treasury: [st(["CCC", ".C.", "...", "Z.Z"], [1, 2], [2, 3], [7, 6])],
+  Treasury: [st(["CC..", "C...", "....", "Z..Z"], [2, 3], [2, 3], [7, 6])],
   // Scriptorium: desks in rows facing the back wall, the shelves of books along it.
   Scriptorium: [st(["SS.SS", ".....", "D.D.D", ".....", "D.D.D", "....."], [3, 5], [2, 4])],
   // The chapter house: benches round its walls, the lectern in the middle.
