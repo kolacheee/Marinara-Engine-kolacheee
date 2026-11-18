@@ -57,9 +57,10 @@ Gdy agent **Hierarchical Maps** jest pobrany (teraz nazywa się World Maps, zoba
 | Genre | Fantasy | Można wybrać kilka, a także dopisać własne. Zestaw settingu wybrany wcześniej ustawia własny gatunek. |
 | Tone | Heroic | Można wybrać kilka. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** albo **Brutal**. Wyższe ustawienia utrudniają walki: w grze MRPG dodają liczniejszych i silniejszych przeciwników (zobacz [Walki w grze MRPG](combat.md#battles-in-an-mrpg-game)), a w grze Legacy zwiększają obrażenia zadawane przez wrogów (zobacz [Skalowanie trudności](combat.md#difficulty-scaling)). |
-| Kategoria treści (treści seksualne) | SFW | **SFW** albo **NSFW**. Dotyczy tylko treści seksualnych. NSFW dopuszcza dosłowne sceny, nie wymusza ich. |
-| Styl historii | Standardowy | **Standardowy** albo **Łagodny**. Zobacz [Treść i styl historii](#content-and-story-style). |
-| Przemoc | Poważna (Drastyczna przy NSFW) | **Łagodna**, **Poważna** albo **Drastyczna**. |
+| Kategoria treści (treści seksualne) | SFW | **SFW** albo **NSFW**. Dotyczy tylko treści seksualnych. NSFW je dopuszcza, nie wymusza ich. |
+| Styl historii | Standardowy | **Łagodny** oznacza mniej stresujące prowadzenie przez GM. Zobacz [Styl historii, przemoc i granice treści](#story-style-violence-and-content-boundaries). |
+| Przemoc | Poważna (SFW) albo Drastyczna (NSFW) | **Łagodna**, **Poważna** albo **Drastyczna**. Ustawiana niezależnie od kategorii treści. |
+| Granice treści | Brak | Tematy, które GM pomija w historii. |
 | Language | English | W tym języku powstaje cały tekst w grze. |
 | Game Master Mode | Standalone GM | **Character GM** (GM z karty postaci) używa jednej z twoich kart postaci jako postaci GM. |
 | Scene effects model | Built-in model | Dopiero po jego pobraniu. Do tego czasu wartość domyślna to **Skip - use inline tags from GM**. |
@@ -71,17 +72,42 @@ Gdy agent **Hierarchical Maps** jest pobrany (teraz nazywa się World Maps, zoba
 | Start Muted | Off | Gra zaczyna się z wyciszonym całym dźwiękiem. |
 | Game Presentation | Standard | Zobacz niżej. |
 
-### Treść i styl historii
+### Styl historii, przemoc i granice treści
 
-Krok **Świat** zawiera poniższe ustawienia określające, co może pojawić się w historii. W trwającej grze wszystkie znajdziesz w **Ustawienia czatu → Preset promptu**.
+Krok **Świat** ma cztery ustawienia określające, co może pojawić się w historii i jak mocne będzie. Są zebrane pod **Kategoria treści (treści seksualne)**. Po rozpoczęciu gry możesz zmieniać wszystkie poza kategorią treści. Zobacz [Zmiana podczas gry](#change-them-during-a-game).
 
-- **Kategoria treści (treści seksualne)**: **SFW** zachowuje romans i czułość, a sceny seksu pozostawia poza kadrem. **NSFW** pozwala opisywać je dosłownie. Nie określa przemocy ani tonu.
-- **Edytuj wytyczne kategorii wiekowej**, pod kategorią treści, pokazuje tekst, który mistrz gry otrzymuje jako zasady dotyczące treści gry. Dostosuj go do swojej gry; **Przywróć domyślne** przywraca tekst domyślny dla danej kategorii. Niezmieniony tekst podąża za ustawieniem domyślnym, więc późniejsze ulepszenia trafiają też do twojej gry. W trwającej grze jest to **Wytyczne kategorii wiekowej**.
-- **Styl historii**: **Standardowy** utrzymuje wysoką stawkę, więc błędy i pech mają realne konsekwencje. **Łagodny** służy historiom o mniejszym napięciu: niepowodzeniom bez kary lub traumy, mniejszej liczbie rzutów na rzeczy poza kontrolą postaci oraz przestrzeni na pocieszenie i odpoczynek.
-- **Przemoc**: **Łagodna**, **Poważna** albo **Drastyczna**, ustawiana niezależnie od kategorii treści. Jeśli jej nie wybierzesz, jest **Poważna** przy SFW i **Drastyczna** przy NSFW.
-- **Granice treści**: tematy, które mistrz gry pomija w historii, po jednym w wierszu, np. `harm to animals`. To nieprzekraczalne granice w każdym stylu i kategorii, a twoje własne wytyczne kategorii nie mogą ich usunąć. Ponieważ historię pisze AI, nie da się zagwarantować, że wymieniony temat nigdy się nie pojawi.
+| Ustawienie | O czym decyduje |
+| --- | --- |
+| **Kategoria treści (treści seksualne)** | **SFW**: romans i czułość, a sceny seksu pozostają poza kadrem. **NSFW**: sceny seksu można opisywać dosłownie. Nie decyduje o niczym innym. |
+| **Styl historii** | **Standardowy**: błędy i pech mają realne konsekwencje. **Łagodny**: prawdziwe wyzwania, ale niepowodzenia nie przeradzają się w karę lub traumę. |
+| **Przemoc** | **Łagodna**, **Poważna** albo **Drastyczna**: sposób przedstawiania przemocy. Początkowo jest **Poważna** przy SFW i **Drastyczna** przy NSFW, zgodnie z dotychczasowym znaczeniem tych kategorii. |
+| **Granice treści** | Tematy, których nigdy nie chcesz w historii, po jednym w wierszu, np. `harm to animals`. |
 
-Preset promptu też może je zawierać: w zakładce **Prompty** presetu znajdziesz **Ustawienia historii gry** z opcją **Przenieś ustawienia historii do gier korzystających z tego presetu**. Przemoc może też mieć wartość **Zgodnie z kategorią**. Wybranie tego presetu dla gry ustawia jej styl i przemoc oraz dodaje jego granice do granic samej gry. Scena rozpoczęta z gry przejmuje jej kategorię, wytyczne, przemoc, styl i granice.
+#### Łagodny styl historii
+
+Wybierz **Łagodny**, jeśli chcesz cieszyć się historią i jej postaciami bez karania przez GM za każde potknięcie. W tym stylu:
+
+- Niepowodzenia kosztują czas, reputację, zasoby albo wymagają obrania okrężnej drogi. GM nie odpowiada na nie urazem, upokorzeniem, utratą kogoś bliskiego ani traumą, do której nie zmierza twoja gra.
+- GM prosi o test umiejętności tylko wtedy, gdy liczy się umiejętność lub wybór twojej postaci. Nigdy nie wykonuje rzutu przeciwko czemuś poza jej kontrolą, takiemu jak niepełnosprawność, dolegliwość, ciało lub pochodzenie. Zobacz [Testy umiejętności w łagodnej grze](dice-and-skill-checks.md#skill-checks-in-a-gentle-game).
+- Świat jest planowany z ciepłem: wątki wyrastają z nadziei i relacji równie często jak z ran, a zwroty akcji zaskakują, zamiast zdradzać twoje zaufanie.
+
+Styl **Łagodny** zastępuje tylko wbudowane instrukcje GM. Jeśli napiszesz własny **GM Prompt**, GM zachowa twój tekst. Walka, obrażenia i ustawienie trudności działają tak samo w obu stylach.
+
+#### Granice treści
+
+Wpisz po jednym temacie w wierszu, najwyżej 40 tematów i łącznie 2 000 znaków. Wszystko ponad którykolwiek limit jest pomijane. GM traktuje każdy temat jako nieprzekraczalną granicę, nadrzędną wobec kategorii, tonu, osobowości postaci i fabuły. Nie porusza tych tematów, nie używa ich jako groźby, zwrotu akcji lub historii postaci ani ich nie sugeruje. Jeśli poruszysz taki temat samodzielnie, GM ograniczy go do minimum i przejdzie dalej. Granice działają w obu stylach historii i obu kategoriach, a własne wytyczne kategorii nie mogą ich usunąć.
+
+> **Uwaga:** Historię pisze model AI, więc Marinara nie może zagwarantować, że wymieniony temat nigdy się nie pojawi. Jeśli się pojawi, wybierz inny swipe albo edytuj odpowiedź.
+
+#### Edycja wytycznych kategorii
+
+Pod przyciskami kategorii rozwiń **Edytuj wytyczne kategorii wiekowej**, żeby zobaczyć tekst, który GM otrzymuje dla wybranej kategorii, przemocy i stylu historii. Edytuj go, żeby ustalić własne zasady treści dla tej gry, albo kliknij **Przywróć domyślne**, żeby wrócić do wbudowanego tekstu. Dopóki pozostaje bez zmian, podąża za wybraną kategorią, przemocą i stylem.
+
+#### Zmiana podczas gry
+
+Otwórz **Ustawienia czatu → Preset promptu**. W grze ta sekcja zawiera też **Styl historii**, **Przemoc**, **Granice treści** i **Wytyczne kategorii wiekowej**. Zmiany obowiązują od następnej tury. Sama kategoria treści jest ustalona na stałe po utworzeniu gry.
+
+Preset promptu może też zawierać styl historii, poziom przemocy i granice, żeby można było używać ich w każdej grze. Zobacz [Ustawienia historii gry](../prompts/presets.md#game-story-settings).
 
 ### Wybór zasad
 
@@ -191,7 +217,15 @@ Jeśli zapytanie prawie się udało, Marinara proponuje okno dialogowe **Repair 
 
 ### Postać GM opowiada pogodnie mimo wybranego mrocznego tonu
 
-Część modeli pozostaje radosna. Dopisz wyraźną instrukcję w polu preferencji w kreatorze, na przykład "utrzymuj ponury ton narracji, nie łagodź porażek". Albo przełącz się na model, którego domyślny głos pasuje do tonu.
+Sprawdź, czy **Styl historii** gry to **Standardowy**: **Łagodny** celowo łagodzi niepowodzenia (zobacz [Łagodny styl historii](#the-gentle-story-style)). Część modeli pozostaje radosna. Dopisz wyraźną instrukcję w polu preferencji w kreatorze, na przykład "utrzymuj ponury ton narracji, nie łagodź porażek". Albo przełącz się na model, którego domyślny głos pasuje do tonu.
+
+### Model odmawia napisania tury
+
+Powiadomienie **The model declined this request** (model odmówił wykonania tego żądania) pojawia się, gdy model odmawia napisania tury. Niektóre modele odmawiają ze względu na konkretne sformułowania w wytycznych kategorii gry, presecie albo karcie postaci. Spróbuj kolejno:
+
+1. Ponów turę. Niektóre odmowy są jednorazowe.
+2. Jeśli wytyczne kategorii były edytowane, otwórz **Ustawienia czatu → Preset promptu** i przywróć wbudowany tekst w polu **Wytyczne kategorii wiekowej**.
+3. Wypróbuj inny model dla tej gry.
 
 ## Gdzie szukać poszczególnych tematów
 

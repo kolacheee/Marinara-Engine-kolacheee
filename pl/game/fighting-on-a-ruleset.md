@@ -69,8 +69,6 @@ Niektóre zestawy z pulą prowadzą inicjatywę jako jedną liczbę na całą wa
 
 Zestaw zasad, który rzuca kośćmi narracyjnymi z symbolami, na przykład system w stylu Genesys, używa ich także w walce. Przy ataku twoje kości rzuca się przeciw kościom trudności celu, symbole anulują się tak jak przy teście, a to, co pozostanie, decyduje o trafieniu. Zestaw zasad określa, co dają pozostałe symbole, więc nigdy nie pyta się o to GM.
 
-<a id="contests"></a>
-
 ## Testy przeciwstawne
 
 Zestaw zasad może pozwolić każdemu uczestnikowi walki rozpocząć test przeciwstawny: rzut przeciw przeciwnikowi. Możesz chwycić kogoś, przewrócić go albo odepchnąć lub wyrwać się z chwytu. Obie strony rzucają i dodają własną wartość, wygrywa wyższa suma, a menu przed wyborem pokazuje twoją szansę na wygraną.
@@ -91,8 +89,6 @@ Niektóre zdolności są odpowiedzią na ruch innego uczestnika walki, zamiast b
 a ty masz odpowiedź na ten moment. Po trafieniu dziennik podaje wynik rzutu ataku i wartość, przeciwko której go wykonano, więc widać, czy odpowiedź taka jak Shield zamieniłaby go w chybienie. Jeśli jej użyjesz, ten sam rzut jest sprawdzany ponownie, a dziennik podaje, czy nadal trafia.
 
 Przeciwnicy też mogą odpowiadać, na przykład własną paradą. Kontra może powstrzymać zdolność przeciwnika, zanim zadziała, niezależnie od tego, w kogo była wymierzona, o ile przeciwnik jest w zasięgu kontry. Zestaw zasad może określić, że kontra odpowiada tylko na niektóre rodzaje zdolności, na przykład zaklęcia. Koszt powstrzymanej zdolności i tak zostaje wydany, a na kontrę nic nie może odpowiedzieć.
-
-<a id="on-a-battlefield"></a>
 
 ## Na polu bitwy
 

@@ -68,9 +68,9 @@ Kliknij jedną ze swoich figur, aby ją wybrać. Dozwolone ruchy pokazują się 
 
 ## Poker
 
-Okno konfiguracji ma tytuł **Start Poker**. Przy stole mieści się od 2 do 8 graczy. Przy siedmiu pozostałe miejsca są wyszarzone.
+Okno konfiguracji ma tytuł **Start Poker**. Przy stole mieści się od 2 do 8 graczy.
 
-- **Players**: zaznacz postacie do posadzenia przy stole.
+- **Players**: zaznacz postacie do posadzenia przy stole. Po zaznaczeniu siedmiu pozostałe są wyszarzone.
 - **Dealer**: **House dealer (silent)** (domyślnie) rozdaje bez komentarza. Możesz też wybrać postać, która ogłasza rozdania i pokazy kart.
 - **Starting stack**: żetony na gracza, od 100 do 1 000 000. Domyślnie **1000**.
 - **Small blind**: duży blind jest dwa razy większy. Domyślnie **10**.
@@ -94,13 +94,13 @@ Kliknij **Start game**. W twojej kolejce wybierz jedno z proponowanych uderzeń,
 
 W grze **Tic-Tac-Toe** wybierz przeciwnika i to, czy grasz **X**, **O**, czy losowym znakiem. X rusza pierwszy. W swojej kolejce kliknij puste pole. Niedozwolone ruchy są blokowane, a wygrane i remisy są wykrywane.
 
-W grze **Rock-Paper-Scissors** wybierz przeciwnika i mecz do dwóch wygranych z trzech, pięciu lub siedmiu partii. W każdej rundzie wybierz **Rock**, **Paper** albo **Scissors**. Wybory pozostają ukryte, dopóki obie strony ich nie złożą, a potem aktualizują się wynik i licznik.
+W grze **Rock-Paper-Scissors** wybierz przeciwnika i mecz do dwóch, trzech lub czterech wygranych, czyli maksymalnie trzech, pięciu lub siedmiu partii. W każdej rundzie wybierz **Rock**, **Paper** albo **Scissors**. Wybory pozostają ukryte, dopóki obie strony ich nie złożą, a potem aktualizują się wynik i licznik.
 
 ## Zakończ grę wcześniej
 
 Każda plansza ma przycisk X.
 
-- **UNO**: **End game**. Najpierw pyta "End this UNO game?".
+- **UNO**: **End game**. Najpierw pyta "End this game?".
 - **Chess**: **Resign**. Najpierw pyta "Resign and end this game?".
 - **Poker**: **End game**. Najpierw pyta "End this poker game?". Po zakończeniu sesji przycisk nazywa się **Close**.
 - **8-Ball Pool**: **End game**. Najpierw pyta "End this pool game?". Po zakończeniu meczu przycisk nazywa się **Close**.
@@ -112,7 +112,7 @@ Przedwczesne zakończenie gry usuwa jej stan i nie zapisuje zwycięzcy.
 
 Otwórz **Chat Settings → Agents → Commands** albo użyj kroku **Automation** przy tworzeniu czatu. Główny przełącznik **Commands** steruje wszystkimi działaniami uruchamianymi przez postacie, w tym grami stołowymi, selfie i rozmowami. Gdy jest wyłączony, postacie nie rozpoczynają niczego samodzielnie.
 
-Każda zainstalowana gra ma własny przełącznik, który jest włączony, chyba że go wyłączysz: **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** i **Rock-Paper-Scissors**. Zobacz [Wybierz, których komend może używać postać](getting-started.md#choose-which-commands-a-character-can-use).
+Każda zainstalowana gra ma własny przełącznik, który jest włączony, chyba że go wyłączysz: **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** i **Rock-Paper-Scissors**. Inne pakiety gier, takie jak Blackjack czy Wordle, dostają przełącznik nazwany tak jak gra. Zobacz [Wybierz, których komend może używać postać](getting-started.md#choose-which-commands-a-character-can-use).
 
 Te przełączniki kontrolują tylko to, co robią postacie. Komenda slash gry i fraza "let's play" działają nawet wtedy, gdy przełącznik jest wyłączony.
 

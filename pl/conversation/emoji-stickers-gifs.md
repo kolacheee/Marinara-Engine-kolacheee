@@ -17,10 +17,11 @@ Zakładka **Tools** pokazuje się też wtedy, gdy włączone są inne narzędzia
 
 Własne emoji to mały obraz, który wgrywasz raz i używasz w każdym czacie Conversation. W napisanej wiadomości zapisuje się je jako kod skrótu: nazwa między dwukropkami, na przykład `:kekw:`.
 
-1. Przejdź do zakładki **Emoji**, a potem do zakładki z gwiazdką **Custom emojis**.
+1. Otwórz panel i przejdź do zakładki **Emoji**, a potem do zakładki z gwiazdką **Custom emojis**.
 2. Kliknij **Upload** (wgraj) i wybierz jeden plik obrazu lub więcej.
 3. W oknie **Name this emoji** wpisz nazwę i kliknij **Add** (dodaj).
-4. Emoji pojawia się w siatce **Custom emojis**.
+
+Emoji pojawia się w siatce **Custom emojis**.
 
 Reguły:
 
@@ -93,15 +94,45 @@ Przycisk tagu pokazuje teraz tę nazwę. Obowiązują te same limity rozmiaru, a
 
 Aplikacja informuje odpowiadającą postać, których własnych emoji i naklejek może używać. Aby zmienić sposób ich wyboru, kliknij ikonę koła zębatego **Selection preferences** na górze zakładki **Custom emojis** lub **Stickers**. Obie otwierają to samo ustawienie, zapisywane dla każdego czatu osobno.
 
-- **Semantic** (domyślnie): oferuje te, które najlepiej pasują do ostatniej rozmowy. Używa małego modelu na twoim komputerze. Jeśli nie jest dostępny, wybiera losowo.
+- **Semantic** (domyślnie): oferuje te, które najlepiej pasują do ostatniej rozmowy. Używa małego modelu na twoim komputerze. Jeśli nie jest dostępny, wybiera losowo. Gdy odpowiada jedna postać, jej własne emoji i naklejki są oceniane razem ze wspólnymi, a przy zbliżonych wynikach wygrywają jej własne.
 - **Random**: oferuje losowy zestaw przy każdej odpowiedzi.
 - **Tool-call**: model wybiera pasujące przy każdej odpowiedzi. Wybierz model w polu **Select a model...**. Jeśli żaden nie jest ustawiony albo wybór się nie uda, używa trybu Semantic. Jest pomijany, gdy w jednej grupowej turze odpowiada kilka postaci.
 
 **Max offered (each)** to liczba nazw emoji i nazw naklejek oferowanych na turę. Domyślnie jest to 20, w zakresie od 1 do 100.
 
+Jeśli postać zapisze nazwę naklejki jak emoji, np. `:hug:` zamiast `sticker:hug:`, odpowiedź pokaże naklejkę. Dzieje się tak tylko wtedy, gdy żadne własne emoji nie ma tej nazwy.
+
+### Opisywanie emoji i naklejek
+
+Opis mówi, co przedstawia emoji lub naklejka i jakie wyraża emocje, np. "kot wyglądający zza poduszki; nieśmiały, zawstydzony". Pomaga, gdy nazwa nie wyjaśnia znaczenia obrazka.
+
+- Żeby go napisać, kliknij **Edytuj** na zakładce **Własne emoji** lub **Naklejki**, a potem mały przycisk opisu w rogu kafelka. Dla elementu oznaczonego w galerii kliknij jego przycisk tagu i wybierz **Dodaj opis**.
+- Żeby opisy napisało AI, kliknij **Edytuj**, a potem **Opisz z AI**. Model **Odczytywanie obrazów** ogląda każdy obrazek i pisze krótki opis. Jeśli część już ma opis, wybierz **Opisz tylko te bez opisu** (tylko te bez opisu) albo **Opisz wszystkie ponownie**.
+
+Zanim zaczniesz: opisy AI wymagają modelu odczytującego obrazy. Marinara używa modelu **Odczytywanie obrazów**, jeśli ustawisz go pod **Za kulisami** w ustawieniach połączeń, a w przeciwnym razie modelu twoich agentów.
+
+Korzystają z nich dwa ustawienia w **Preferencje wyboru**:
+
+- **Używaj opisów** (domyślnie włączone): w trybach **Semantyczny** i **Wywołanie narzędzia** wybiera oferowane elementy na podstawie opisu i nazwy. Nic nie dodaje do promptu.
+- **Pokazuj opisy modelowi** (domyślnie wyłączone): dodatkowo podaje opis każdego oferowanego elementu obok jego nazwy, żeby model znał jego znaczenie. Przy domyślnych 20 oferowanych elementach dodaje około 1 000 do 1 800 tokenów wejściowych na odpowiedź.
+
+Opisy używane tylko do wybierania oferowanych elementów nie uczą modelu znaczenia nazwy. Jeśli nazwa oznacza przeciwieństwo wyrażanych emocji, jak sarkastyczne `:fine:`, włącz **Pokazuj opisy modelowi** albo **Pokazuj je modelowi**.
+
+### Pokazywanie modelowi
+
+Zwykle model widzi tylko nazwy twoich własnych emoji i naklejek. Jeśli model czatu odczytuje obrazy, opcja **Pokazuj je modelowi** w tym samym panelu wysyła mu też obrazki, żeby wiedział, jak każdy wygląda. Pomaga to szczególnie przy nazwach, które nie opisują obrazka.
+
+- **Wyłączone** (domyślnie): tylko nazwy.
+- **Ostatnia wiadomość**: pokazuje własne emoji i naklejki z najnowszej wiadomości.
+- **Ostatnie**: pokazuje elementy z kilku ostatnich wiadomości. **Wiadomości do sprawdzenia** określa ich liczbę, od 2 do 20. Domyślnie 6.
+
+**Udostępnione elementy na arkuszu** dodaje do obrazków tyle oferowanych emoji i tyle oferowanych naklejek, od 0 do 30. Domyślnie 6. Arkusz mieści do 30 emoji i 12 naklejek; pierwszeństwo mają te z czatu, więc oferowane elementy wypełniają pozostałe miejsce.
+
+Model otrzymuje przy każdej odpowiedzi jeden obraz z ponumerowanymi emoji i jeden z ponumerowanymi naklejkami, z dokładnymi nazwami w tekście. Kosztuje to dodatkowe tokeny wejściowe przy każdej odpowiedzi (tokeny to małe fragmenty tekstu i obrazów, za które usługa nalicza opłaty), około 1 000 przy ustawieniach domyślnych. Nie działa, gdy model czatu nie odczytuje obrazów albo włączone jest **Opisywanie obrazów**. Jeśli model odrzuca obrazy, Marinara wysyła tylko nazwy.
+
 ## Reakcje używają tylko głównych własnych emoji
 
-Na wiadomość możesz zareagować własnym emoji, ale tylko z emoji wgranych w zakładce **Custom emojis**. Emoji, naklejki i GIF-y oznaczone w galerii nie są dostępne jako reakcje. Zobacz [Reaguj i otrzymuj powiadomienia](getting-started.md#react-and-get-notified).
+Na wiadomość możesz zareagować własnym emoji, ale tylko z emoji wgranych w zakładce **Custom emojis**. Emoji, naklejki i GIF-y oznaczone w galerii nie są dostępne jako reakcje. Gdy postać reaguje nazwą naklejki, reakcja pokazuje tę naklejkę. Zobacz [Reaguj i otrzymuj powiadomienia](getting-started.md#react-and-get-notified).
 
 ## Powiązane przewodniki
 

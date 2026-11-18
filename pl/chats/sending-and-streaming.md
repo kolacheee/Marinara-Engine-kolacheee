@@ -15,7 +15,7 @@ Jeśli to nie zadziałało: gdy czat nie ma ustawionego modelu, odpowiedź od ra
 
 ### Ustawienie Send on Enter
 
-Znajdziesz je w **Ustawienia → Czatowanie → Pole wiadomości**. Każdy tryb czatu ma własny przełącznik.
+Znajdziesz je w **Ustawienia → Czatowanie → Pole wiadomości**. Każdy tryb czatu ma własny przełącznik, zapisywany na urządzeniu, na którym go ustawisz, więc telefon i komputer mogą mieć inne ustawienia.
 
 | Tryb czatu | Domyślnie | Gdy wyłączone |
 | --- | --- | --- |

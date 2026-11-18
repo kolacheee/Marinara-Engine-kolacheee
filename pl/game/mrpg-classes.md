@@ -9,8 +9,6 @@ Klasy MRPG nie są używane w dwóch rodzajach gier:
 
 Przebieg walki z klasami MRPG opisuje część [Walki w grze MRPG](combat.md#battles-in-an-mrpg-game).
 
-<a id="how-it-works"></a>
-
 ## Jak to działa
 
 - Każda postać szkoli się w dwóch z ośmiu **drzewek**: wybranym przez ciebie **głównym drzewku** i **siostrzanym drzewku**, które otwiera jej temperament.
@@ -18,8 +16,6 @@ Przebieg walki z klasami MRPG opisuje część [Walki w grze MRPG](combat.md#bat
 - Wygrywanie walk daje doświadczenie. Statystyki postaci wynikają z jej **aktywnej klasy** i rosną, gdy ta klasa zdobywa poziomy.
 - Na poziomie klasy 10 klasę można awansować do klasy zaawansowanej, a na poziomie 20 do klasy mistrzowskiej. Najwyższy poziom to 30.
 - Poza walką postać może przełączyć się na dowolną odblokowaną klasę i przenieść maksymalnie cztery umiejętności z innych klas, w których się szkoliła.
-
-<a id="the-eight-trees"></a>
 
 ## Osiem drzewek
 
@@ -35,8 +31,6 @@ Przebieg walki z klasami MRPG opisuje część [Walki w grze MRPG](combat.md#bat
 | **Herald** | Tylny | Dowódcy, którzy wydają rozkazy i śpiewają pieśni wzmacniające drużynę. | Coordinated, Disciplined |
 
 Najlepiej radzi sobie drużyna z mieszanką drzewek. Trafienia wręcz w tylny szereg zadają połowę obrażeń, więc drzewka tylnego szeregu polegają na przednim szeregu, który utrzymuje linię (zobacz [Szeregi](combat.md#rows)).
-
-<a id="classes-in-each-tree"></a>
 
 ### Klasy w każdym drzewku
 
@@ -55,8 +49,6 @@ Każde drzewko ma siedem klas. Klasa podstawowa awansuje na poziomie klasy 10 do
 
 Zakładka **Classes** (klasy) arkusza postaci opisuje każdą klasę i wymienia jej umiejętności wraz z poziomem klasy, na którym postać się ich uczy.
 
-<a id="choose-a-characters-trees"></a>
-
 ## Wybieranie drzewek postaci
 
 **Główne drzewko.** Wybierz je przed grą w sekcji **Game Mode** zakładki **Stats** na karcie postaci z biblioteki albo persony (zobacz [Wybory MRPG na karcie](../characters/colors-and-stats.md#mrpg-picks-on-a-card)). Po pozostawieniu opcji **Auto** drzewko jest odczytywane z opisu postaci, a w grze również z jej klasy i zdolności. Postać, której karta nie wskazuje żadnego drzewka, zaczyna jako Blade. Dopóki postać nie zdobędzie pierwszego punktu doświadczenia, drzewko można też zmienić w grze na zakładce **Classes** jej arkusza, w polu **Main tree** (główne drzewko).
@@ -66,8 +58,6 @@ Zakładka **Classes** (klasy) arkusza postaci opisuje każdą klasę i wymienia 
 **Siostrzane drzewko.** Gdy gra tworzy kartę postaci do gry, Game Master odczytuje jej temperament z pól Description i personality: sposób, w jaki podchodzi do walki. Ten temperament otwiera siostrzane drzewko z powyższej tabeli. Jeśli zależy ci na konkretnym siostrzanym drzewku, napisz pole Description z myślą o odpowiednim temperamencie. Arkusz pokazuje temperament obok siostrzanego drzewka, na przykład "from Cautious". Fabuła może później zmienić temperament postaci, ale jej siostrzane drzewko pozostaje takie jak na początku.
 
 Postać, której temperament otwiera jej własne główne drzewko, na przykład Reckless Blade, jest **Pure**: szkoli się tylko w jednym drzewku i uzyskuje dostęp do jego ścieżki przeznaczonej wyłącznie dla Pure.
-
-<a id="what-the-stats-mean"></a>
 
 ## Co oznaczają statystyki
 
@@ -89,8 +79,6 @@ Za umiejętności płaci się dwoma zasobami:
 
 Te same statystyki są używane w testach umiejętności poza walką. Zobacz [Testy umiejętności](#skill-checks).
 
-<a id="levels-and-experience"></a>
-
 ## Poziomy i doświadczenie
 
 **Doświadczenie.** Wygrana walka daje doświadczenie za każdego pokonanego przeciwnika, w tym takiego, który się poddał albo uciekł. Połowa jest dzielona równo między wszystkich uczestników walki, a druga połowa według wkładu każdej postaci: obrażeń, leczenia i wsparcia. Przeciwnicy poniżej poziomu postaci dają mniej doświadczenia, a powyżej jej poziomu więcej. Postać poniżej średniego poziomu drużyny dostaje dodatkowo połowę tej wartości. Przegrana walka lub ucieczka nie daje nic.
@@ -105,15 +93,11 @@ Oznacza to, że nowo podjęta klasa zaczyna z możliwościami poziomu 1. Przeł�
 
 Tempo rozwoju jest ukryte. Po włączeniu opcji **Debug** (debugowanie) zakładka **Status** pokazuje dokładną szansę wzrostu każdej statystyki.
 
-<a id="switch-classes-and-carry-skills"></a>
-
 ## Zmienianie klas i przenoszenie umiejętności
 
 Klasy zmienia się poza walką, na zakładce **Classes**. Wybierz klasę, żeby zobaczyć jej umiejętności i to, co postać straci po zmianie, a następnie wybierz **Take up** (podejmij), jeśli postać jeszcze nie szkoliła się w tej klasie, albo **Switch to** (przełącz na), jeśli szkoliła się w niej wcześniej i zachowała osiągnięty poziom klasy.
 
 Postać korzysta tylko z umiejętności swojej aktywnej klasy oraz maksymalnie czterech umiejętności **przeniesionych** z innych klas, w których się szkoliła. Wybierz je na zakładce **Skills** w sekcji **Carry from other classes** (przenieś z innych klas). Przeniesiona umiejętność korzysta z własnych statystyk postaci. Niektóre umiejętności należą do całego drzewka, na przykład Cover klasy Guard, i każda klasa z tego drzewka zachowuje je bez zajmowania miejsca. Gdy zmiana klasy usunęłaby używaną umiejętność, arkusz najpierw ostrzega, aby można ją było przenieść.
-
-<a id="the-character-sheet"></a>
 
 ## Arkusz postaci
 
@@ -130,13 +114,9 @@ Broń decyduje o statystykach ataku: kostur, różdżka albo magiczny katalizato
 
 **Trwała śmierć.** Gdy opcja **Permadeath** (trwała śmierć; opcja konfiguracji w kroku **World** kreatora, domyślnie wyłączona) jest włączona, członek drużyny, który padnie w walce i nie zostanie uratowany przed jej końcem, przepada na zawsze. Gdy jest wyłączona, polegli wstają po walce.
 
-<a id="skill-checks"></a>
-
 ## Testy umiejętności
 
 Testy poza walką korzystają ze statystyk MRPG postaci, które daje jej aktywna klasa. Każda umiejętność opiera się na jednej statystyce, na przykład Stealth na Speed, a Persuasion na Luck. Pełną listę i premię zapewnianą przez każdą statystykę znajdziesz w przewodniku [Rzuty kośćmi i testy umiejętności](dice-and-skill-checks.md#how-the-result-is-decided).
-
-<a id="new-party-members-and-shared-games"></a>
 
 ## Nowi członkowie drużyny i gry współdzielone
 
@@ -149,8 +129,6 @@ Testy poza walką korzystają ze statystyk MRPG postaci, które daje jej aktywna
 - **Powracający gość.** Po wyjściu gościa jego postać pozostaje w grze wraz ze swoim poziomem, wyposażeniem i oswojonymi bestiami. Pod nieobecność gracza postać nie bierze udziału w walkach, nie zdobywa doświadczenia i jest pomijana w scenach. Po powrocie gość gra tą samą postacią na poziomie, na którym ją zostawił.
 
 Testy umiejętności każdego gracza korzystają ze statystyk jego własnej postaci.
-
-<a id="move-a-legacy-game-to-mrpg"></a>
 
 ## Przenoszenie gry Legacy do MRPG
 
@@ -171,8 +149,6 @@ Po potwierdzeniu przyciskiem **Upgrade the party** (ulepszenie drużyny):
 > **Ostrzeżenie:** Ulepszenie jest jednokierunkowe. Gra przeniesiona do klas MRPG nie może wrócić do arkuszy Legacy.
 
 Ulepszenie nie jest dostępne podczas walki. Najpierw zakończ walkę. Gry rozgrywanej z zestawem zasad nie można ulepszyć: zachowuje arkusze swojego zestawu zasad.
-
-<a id="related-guides"></a>
 
 ## Powiązane przewodniki
 

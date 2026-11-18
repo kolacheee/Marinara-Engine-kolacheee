@@ -95,7 +95,7 @@ Wywołanie `marinara.ui.showWindow({ title, elements, onEvent, onClose })` zwrac
 - `panel`: wpis, który otwiera zaufany panel boczny **Extensions** aplikacji Marinara Engine.
 - `command`: wpis w oknie Command Center, który uruchamia istniejący `button`, `menu-item` lub `panel` z tej samej wersji rozszerzenia.
 
-Wkłady `command` zawierają `targetContributionId` i nie mają wywołań zwrotnych `onActivate` ani `onEvent`. Host rozwiązuje cel na podstawie identyfikatora rozszerzenia, skrótu treści i identyfikatora wkładu. Brakujący cel albo cel z innej wersji kończy się odmową. Na przykład:
+Polecenia zawierają `targetContributionId` i nie mają wywołań zwrotnych `onActivate` ani `onEvent`. Host rozwiązuje cel na podstawie identyfikatora rozszerzenia, skrótu treści i identyfikatora wkładu. Brakujący cel albo cel z innej wersji kończy się odmową. Na przykład:
 
 ```js
 marinara.ui.registerContribution({

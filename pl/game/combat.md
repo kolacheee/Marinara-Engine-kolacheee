@@ -45,13 +45,9 @@ Jeśli plansza pokazuje **Resolving…** (rozstrzyganie), poczekaj chwilę. **Re
 
 To, kto i kiedy działa, zależy od ustawienia **Turn order** (kolejność tur). Zobacz [Kolejność tur](#turn-order). Ręcznie wykonane plansze i zasady terenu opisuje część [Walka taktyczna i teren](#tactical-battles-and-terrain).
 
-<a id="battles-in-an-mrpg-game"></a>
-
 ## Walki w grze MRPG
 
 W grze korzystającej z klas MRPG każdy członek drużyny walczy swoją aktywną klasą: jej statystykami, umiejętnościami i wyposażeniem z arkusza (zobacz [Klasy MRPG](mrpg-classes.md)). Przeciwnicy walczą według kategorii: minion, standard, elite albo boss. Panel obok walki pokazuje, kto działa jako następny, klasę, poziom, szereg i zasoby każdego walczącego, a na końcu także to, co zdobyła drużyna.
-
-<a id="turns-skills-and-resources"></a>
 
 ### Tury, umiejętności i zasoby
 
@@ -60,8 +56,6 @@ W grze korzystającej z klas MRPG każdy członek drużyny walczy swoją aktywn�
 - **Obrona.** Akcja **Defend** podnosi Defense o połowę do następnej tury walczącego i przywraca więcej Stamina.
 - **Amunicja i żywioły.** Marksman ładuje rodzaj amunicji, a Channeler skupia żywioł, korzystając z panelu obok walki. Obie zmiany są darmowe. Jeśli pozostawisz wybór grze, AI dobierze najlepszą opcję dla danego celu.
 
-<a id="hitting-and-damage"></a>
-
 ### Trafienia i obrażenia
 
 - **Szansa trafienia** rośnie wraz ze Skill i Luck atakującego, a maleje wraz ze Speed i Luck celu. Nigdy nie spada poniżej 25%.
@@ -69,21 +63,15 @@ W grze korzystającej z klas MRPG każdy członek drużyny walczy swoją aktywn�
 - **Obrażenia.** Atak bronią zadaje obrażenia równe Strength plus moc ataku, pomniejszone o Defense celu. Zaklęcie albo trafienie kosturem, różdżką lub magicznym katalizatorem korzysta zamiast tego z Magic przeciwko Resistance. Moc rośnie nieco wraz z poziomem, tak jak w przypadku lepszego wyposażenia.
 - **Rodzaje obrażeń.** Każde trafienie ma rodzaj: cięte, kłute lub obuchowe dla broni; żywioł (ogień, lód, błyskawica, wiatr, drewno, ziemia, woda albo metal); światło lub mrok. Przeciwnik może być podatny na dany rodzaj (obrażenia większe o połowę), odporny na niego (połowa obrażeń), niewrażliwy albo może go pochłaniać. Podatność lub odporność pojawia się przy przeciwniku, gdy trafienie ją odkryje, a drużyna zapamiętuje ją dla każdego przeciwnika tego rodzaju. Podatności na żywioły wynikają z cyklu pięciu faz, w którym każdy żywioł pokonuje następny: drewno rozsadza ziemię, ziemia tamuje wodę, woda gasi ogień, ogień topi metal, a metal ścina drewno.
 
-<a id="rows"></a>
-
 ### Szeregi
 
 Walka Turn-Based ma po każdej stronie szereg przedni i tylny. Trafienie wręcz w tylny szereg zadaje połowę obrażeń w obie strony, natomiast ataki dystansowe i zaklęcia zadają pełne obrażenia w obu szeregach. Gdy po jednej stronie nikt nie stoi w przednim szeregu, jej tylny szereg staje się przednim. Każda klasa ma domyślny szereg, który można zmienić na zakładce **Status** jej arkusza. Walki Tactical nie mają szeregów: to pozycje na planszy decydują, kto może kogo dosięgnąć.
-
-<a id="taunts-yielding-and-taming"></a>
 
 ### Prowokowanie, poddawanie się i oswajanie
 
 - **Provoke.** Umiejętność Provoke klasy Sentinel sprawia, że każdy przeciwnik przez 2 tury obiera za cel postać Sentinel. Na planszy przeciwnik, który nie może do niej dotrzeć, podchodzi tak blisko, jak może, i zamiast tego przygotowuje akcję.
 - **Poddanie się.** Inteligentny przeciwnik, który przegrywa, może się poddać albo uciec. Gdy pozostają tylko przeciwnicy, którzy się poddali, gra pyta o **Spare them** (oszczędź ich) albo **Finish them** (wykończ ich). W obu przypadkach drużyna dostaje łupy i doświadczenie. Przeciwnik z łupem, który ucieknie, zabiera zdobycz ze sobą.
 - **Oswajanie.** Tracker może oswoić dziką bestię, której zostało mniej niż 30% HP. Bestia opuszcza walkę i staje się towarzyszem, którego postać zachowuje nawet po przegranej walce.
-
-<a id="after-the-fight"></a>
 
 ### Po walce
 
@@ -114,8 +102,6 @@ Aby wyłączyć QTE, na przykład do gry z czytnikiem ekranu albo bez limitów c
 
 Na telefonie przyciski akcji trzymają się dołu ekranu. Panele, które się nie mieszczą, przenoszą się do wysuwanej od dołu szuflady z czterema zakładkami: **Party** (członkowie drużyny i ich zdrowie), **Boss Mechanics** (zasady specjalne walki), **Dialogue** (kwestie wypowiadane przez walczących w bitwie) i **Combat Log** (zapis runda po rundzie). Dotknij zakładki, żeby otworzyć jej szufladę. Aby ją zamknąć, dotknij miejsca poza szufladą albo jej przycisku zamykania.
 
-<a id="how-combat-math-works"></a>
-
 ## Jak liczona jest walka
 
 Zasady w tej części dotyczą gier **Legacy** oraz gier, których zestaw zasad użycza arkusza walkom aplikacji Marinara. Gra korzystająca z klas **MRPG**, czyli każda nowa gra, walczy zamiast tego według zasad opisanych w części [Walki w grze MRPG](#battles-in-an-mrpg-game).
@@ -132,8 +118,6 @@ O każdej rundzie decyduje stała matematyka rzutów kośćmi, a nie AI. Dzięki
 4. Trafienie krytyczne pada przy naturalnej dwudziestce albo gdy atakujący przebije obrońcę o 10 lub więcej.
 
 **Obrażenia.** Przy trafieniu obrażenia bazowe wynikają ze statystyki Attack atakującego i rosną wraz z poziomem. Do tego dochodzą dodatkowe kości d6, a walczący na wyższych poziomach rzucają ich więcej. Trafienie krytyczne mnoży sumę przez 1,5. Następnie Defense broniącego się blokuje z tych obrażeń do 40 procent własnej wartości.
-
-<a id="difficulty-scaling"></a>
 
 ### Skalowanie trudności
 
@@ -177,8 +161,6 @@ To, co wypada, zależy od settingu. Gra z zestawem settingu daje łupy z tego ze
 
 ## Informacje: walka taktyczna
 
-<a id="tactical-battles-and-terrain"></a>
-
 ### Walka taktyczna i teren
 
 Przy tworzeniu gry nie ma ustawień pola bitwy do wypełnienia. Każda walka dostaje własną planszę, wygenerowaną z nowego ziarna i krótkiego opisu sceny przygotowanego przez GM. GM podaje środowisko, formację i krótki opis terenu, który może prosić o obszary terenu i bariery przy środku albo przy krawędzi. Marinara tworzy dokładny układ pól i pozycje początkowe. Zaakceptowane pole bitwy jest zapisywane, więc odświeżenie przywraca tę planszę.
@@ -210,8 +192,6 @@ Jednostki z ustaloną zdolnością lotu albo teleportacji poruszają się inacze
 
 Oba specjalne rodzaje ruchu korzystają z bieżącej puli ruchu i odległości liczonej w liniach prostych (nie po przekątnej). Zachowują premie terenu docelowego do obrony i uniku oraz ignorują wysokość. Wysokość lotu, sufity oraz koszty i wymogi widoczności właściwe konkretnym zaklęciom nie są modelowane. Przywoływanie nie jest jeszcze częścią własnego systemu walki aplikacji Marinara.
 
-<a id="turn-order"></a>
-
 ### Kolejność tur
 
 Bitwa Tactical rozgrywa tury na jeden z dwóch sposobów:
@@ -220,8 +200,6 @@ Bitwa Tactical rozgrywa tury na jeden z dwóch sposobów:
 - **Your whole party, then the enemies** (najpierw cała drużyna, potem wrogowie): każda jednostka drużyny może działać, a potem rozgrywa się faza wroga. Tak działają gry VN.
 
 Aby to zmienić, otwórz **Chat Settings**, rozwiń sekcję **Combat Style** i wybierz **Turn order**. To ustawienie pojawia się, gdy **Battle system** to Tactical, chyba że zestaw zasad gry prowadzi własne walki. Zmiana obowiązuje od następnej bitwy. Trwająca bitwa zachowuje swoją kolejność.
-
-<a id="sight-cover-and-height"></a>
 
 ### Widzenie, osłona i wysokość
 

@@ -45,6 +45,10 @@ Umiejętność lub rzut obronny może mieć `cap`, odwołanie do wartości będ�
 
 `max` zwykłego toru może być odwołaniem do wartości zamiast liczby, więc jego długość wyznacza wartość posiadana przez postać: `"max": { "field": "willpower_rating" }`. Jego `min` i `default` pozostają liczbami. Tor ran z nazwanymi poziomami ma `max` równe liczbie poziomów; tor z numerowanymi polami jest tak długi jak jego własne `max` (zobacz niżej Numerowane pola). `alwaysShow: true` wypisuje tor w bloku arkusza dla Game Master nawet przy wartości domyślnej, dla wartości ważnej w każdej turze; bez tego tor na wartości domyślnej jest pomijany, bo trzy rzuty przeciw śmierci na zerze niczego nie mówią. Te trzy wymagają Capability API 1.37 w zestawie dostarczanym jako pakiet.
 
+`sheet.progress` (Capability API 1.829) daje każdej wyuczonej umiejętności wskaźnik ćwiczeń: postęp od 0 do 99 w kierunku następnej rangi. `{}` go włącza, a `except` wymienia sekcje umiejętności bez ćwiczeń, np. wiedzę, którą się kupuje zamiast zdobywać przez używanie. Game Master zmienia go przez `[sheet: op="practice" skill="Skill" by="5"]` albo ustawia przez `to="N"`, a gracz może go poprawić w arkuszu. Zatrzymuje się na 99 i dotyczy tylko wyuczonej umiejętności poniżej najwyższej rangi. Zmiana rangi przez `op="advance"` zeruje ćwiczenia tej umiejętności, a ponowny zapis tej samej rangi je zachowuje. Ćwiczenia zapisują się z wiadomością, jak tor, więc swipe lub ponowne generowanie je cofa. Blok arkusza dla Game Master pokazuje je po umiejętności: `Smithing +2 (60%)`. Ręczna zmiana rangi w arkuszu zachowuje ćwiczenia; popraw je tam również. Użyj tego w systemach uczenia się przez używanie, w których awans rangi nadal wynika z czegoś innego: arkuszu LitRPG, którego System ogłasza rangi, albo znacznikach doświadczenia RuneQuest.
+
+Bieżąca pula lub zwykły tor może ustawić `"display": "bar"`, żeby pokazać w swoim wierszu arkusza pasek wypełnienia obok liczby dla czegoś odczytywanego jednym spojrzeniem, np. zdrowia lub stresu. `"dots"` pokazuje zamiast tego rząd kropek, po jednej na punkt aż do maksimum, wypełnionych do bieżącej wartości, dla wartości liczonych kropkami, np. głodu lub człowieczeństwa. Skala schodząca poniżej 0 albo przekraczająca 20 pokazuje się jako pasek, bo kropki nie liczą poniżej zera, a tak długiego rzędu nie da się odczytać jednym spojrzeniem. `"counter"` albo pominięcie ustawienia pokazuje tylko liczbę. Tor ran rysuje własne pola i ignoruje to ustawienie. Przyjmują je też pule arkusza drużyny. W zestawie dostarczanym jako pakiet wymaga to Capability API 1.828.
+
 ## Stany bieżące: forma, postawa, światło
 
 Pole wyliczeniowe wybiera się przy tworzeniu postaci i ten wybór zostaje, a stan jest tylko włączony albo wyłączony. **Stan bieżący** to jedna wartość z zamkniętego zbioru, która zmienia się podczas gry: forma zmiennokształtnego, postawa w walce, jasność latarni.
@@ -89,8 +93,6 @@ Pole wyliczeniowe wybiera się przy tworzeniu postaci i ten wybór zostaje, a st
 - Warstwa może usunąć z pola wartość, dla której tabela ma wiersz. Ten wiersz nie jest odczytywany, gdy warstwa jest włączona.
 
 Stany bieżące, `enumTable` i krok odpoczynku wskazujący `state` wymagają Capability API 1.42 w zestawie dostarczanym jako pakiet.
-
-<a id="wound-tracks-health-that-is-a-track-not-a-number"></a>
 
 ## Tory ran: zdrowie jako tor zamiast liczby
 
@@ -208,8 +210,6 @@ Wynik podaje, co dodał arkusz (`adjust="-2"` w zapisie i wiersz na karcie rzutu
 ## Odpoczynki
 
 Odpoczynek jest listą kroków odnowienia i rzeczy do wyczyszczenia. Każdy wskazuje jeden cel (`pool`, `poolGroup`, `listPools`, `track` lub `state`) i ustawia go (`"to": "max"`, `"to": "min"` albo liczba) lub zmienia (`"by": { "const": 1 }` albo `"by": { "fractionOfMax": 0.5 }`). Krok wskazujący tor ran może go tylko leczyć, więc jego `by` jest ujemne; zobacz wyżej. Krok wskazujący stan bieżący tylko go ustawia, na `"default"` albo jedną z jego wartości. Krok `poolGroup` z `fractionOfMax` zmienia każdą pulę grupy o jej własny ułamek; dodaj `"shared": true` (Capability API 1.77), aby zamiast tego obliczyć ułamek od maksimum całej grupy i rozdzielić wynik między pule grupy w kolejności, w jakiej wymienia je arkusz, każdej najwyżej tyle, ile jej brakuje. Długi odpoczynek z 5e, "połowa całkowitej liczby" kości wytrzymałości postaci przechowywanych w osobnej puli dla każdego rodzaju kości, to `{ "poolGroup": "hit_dice", "by": { "fractionOfMax": 0.5, "round": "down", "min": 1 }, "shared": true }`.
-
-<a id="game-master-text"></a>
 
 ## Tekst Game Master
 

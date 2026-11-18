@@ -38,8 +38,6 @@ Ekran główny widać wtedy, gdy nie jest otwarty żaden czat. U góry są powit
 
 W klasycznym układzie (po wyłączeniu opcji **Ustawienia → Wygląd → Motyw → Nowy układ (podgląd przebudowy interfejsu)**) ekran główny wygląda jak przeglądarka internetowa: ma zakładki, pasek wyszukiwania i skróty do **Discord**, **Wesprzyj**, **Twórcy**, **Dokumentacja**, **Samouczek**, **FAQ**, **Osiągnięcia** i **Widgety**.
 
-<a id="choose-a-chat-mode"></a>
-
 ## Wybór trybu czatu
 
 Tryb wybierasz przy rozpoczynaniu czatu.
@@ -47,8 +45,6 @@ Tryb wybierasz przy rozpoczynaniu czatu.
 - **Conversation**: zwykły czat z AI w stylu komunikatora. Zobacz [Tryb Conversation: pierwsze kroki](../conversation/getting-started.md).
 - **Roleplay**: opowieść z jedną lub kilkoma postaciami. Aplikacja śledzi scenę, na przykład miejsce i czas. Zobacz [Tryb Roleplay: pierwsze kroki](../roleplay/getting-started.md).
 - **Game**: gra jednoosobowa. AI występuje jako Game Master (mistrz gry), który opowiada historię. Dostajesz grupę towarzyszy (drużynę), rzuty kośćmi, mapy i zadania. Zobacz [Game Mode: pierwsze kroki](../game/getting-started.md).
-
-<a id="home-widgets"></a>
 
 ## Widgety ekranu głównego
 
@@ -68,7 +64,7 @@ Professor Mari może zrobić dla ciebie osobisty widget, jeśli ją o to poprosi
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari** (zapytaj Professor Mari) otwiera jej czat. | Tak |
 | **Recent chats** (ostatnie czaty) | Twoje najnowsze czaty. Kliknij czat, żeby otworzyć go ponownie. Gdy nie ma czatów: **Your chats will show here**. | Tak |
-| **Learn the engine** (poznaj aplikację) | Linki do **Documentation**, **Replay tutorial** (powtórz samouczek) i **Read FAQ** (przeczytaj FAQ). | Tak |
+| **Do wypróbowania** | Kolejne trzy drobne zadania do wypróbowania, każde dotyczące jednej funkcji. Po wypróbowaniu wszystkich albo wyłączeniu wskazówek pokazuje zamiast nich **Dokumentacja**, **Powtórz samouczek** i **Przeczytaj FAQ**. Zobacz [Do wypróbowania](#things-to-try). | Tak |
 | **What's New** (co nowego) | **See what's new** (zobacz nowości) i **Read release notes** (przeczytaj informacje o wydaniu). | Tak |
 | **Community** (społeczność) | Linki do **Discord**, **Support** i **Credits**. | Tak |
 | **Character Library** (biblioteka postaci) | Codziennie nowy wybór twoich postaci. | Nie |
@@ -76,6 +72,18 @@ Professor Mari może zrobić dla ciebie osobisty widget, jeśli ją o to poprosi
 | **Character of the Day** (postać dnia) | Jedna postać z twojej biblioteki, z przyciskami **Start a chat** (rozpoczęcie czatu) i **View character** (podgląd postaci). | Nie |
 | **Clock & calendar** (zegar i kalendarz) | Dzisiejsza data i godzina. | Nie |
 | **Achievements** | Twoje ostatnie i najbliższe osiągnięcia. Wymaga włączonego ustawienia Achievements. | Nie |
+
+## Do wypróbowania
+
+Widget **Do wypróbowania** podsuwa kolejne trzy funkcje do wypróbowania. Każde zadanie korzysta z poprzedniego: obraz z galerii staje się naklejką, a naklejka trafia do czatu.
+
+- Kliknij zadanie, żeby otworzyć odpowiednie miejsce w aplikacji. Jeśli nie ma takiego miejsca, otwiera się przewodnik.
+- Kliknij znak zaznaczenia, żeby oznaczyć zadanie jako ukończone, albo krzyżyk, żeby je pominąć. Pominięte zadanie nie pojawi się ponownie.
+- Większość zadań zaznacza się sama, gdy Marinara rozpozna ich wykonanie, na przykład czat w danym trybie albo etykietę naklejki. Pozostałe zaznacz samodzielnie.
+- **Zobacz wszystkie** pokazuje wszystkie zadania według ścieżek, z przyciskiem **Pokaż mi**. Zadania danej ścieżki pojawiają się po ukończeniu tych, na których się opierają. Ścieżki pod **Tylko w tym układzie** obejmują funkcje nowego układu.
+- Ukończenie ścieżki odblokowuje jej osiągnięcie z kategorii **Odkrywca**.
+
+Widget podlega ustawieniu **Wskazówki o funkcjach** w **Ustawienia > Ogólne > Potwierdzenia i pomoc**. Gdy wskazówki są wyłączone, pokazuje linki do przewodników. Postępy zapisują się w tej przeglądarce.
 
 ### Podstawy AI i Zajrzyj głębiej
 
@@ -89,7 +97,7 @@ Każdy temat otwiera przewodnik przy ważnym, podświetlonym fragmencie, a pod n
 ## Gdzie szukać pomocy
 
 - Zapytaj asystentkę Professor Mari na ekranie głównym.
-- Kliknij **Przeczytaj FAQ** w widgecie **Poznaj silnik**, żeby znaleźć szybkie odpowiedzi.
+- Otwórz **Zobacz wszystkie** w widgecie **Do wypróbowania**, a potem **Przeczytaj FAQ**, żeby znaleźć szybkie odpowiedzi.
 - Kliknij **Docs** na górnym pasku, żeby przeczytać przewodniki w aplikacji.
 - Kliknij **Discord** w widgecie **Społeczność**, żeby trafić do społeczności, albo **Wesprzyj**, żeby wesprzeć projekt.
 

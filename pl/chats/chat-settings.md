@@ -25,7 +25,7 @@ To, które sekcje widać, zależy od trybu czatu. Sekcję **Impersonate** opisuj
 - **Chat Name** (nazwa czatu): nazwa na liście czatów. Kliknij ją, aby ją zmienić. Nigdy nie trafia do modelu.
 - **Chat Branches** (gałęzie czatu): przełączanie, zmiana nazw, eksport i import gałęzi. Zobacz [Gałęzie czatu](branches.md).
 - **Connection** (połączenie): model, który odpowiada w tym czacie. Opis niżej.
-- **Prompt Preset** (preset promptu): zapisana struktura promptu dla tego czatu.
+- **Prompt Preset** (preset promptu): zapisana struktura promptu dla tego czatu. W grze zawiera też styl historii, przemoc, granice treści i wytyczne kategorii. Zobacz [Zmiana podczas gry](../game/getting-started.md#change-them-during-a-game).
 - **Advanced Parameters** (parametry zaawansowane): nadpisuje w tym czacie ustawienia generowania, takie jak temperatura. Zobacz [Parametry generowania](../prompts/generation-parameters.md).
 - **Persona**: postać, w którą się wcielasz. Zobacz [Wybór persony w czacie](../characters/choosing-your-persona.md). (Conversation, Roleplay.)
 - **Characters** (postacie): postacie w czacie. (Conversation, Roleplay.)
@@ -78,8 +78,6 @@ Nazwy składają się z liter, cyfr i podkreśleń, zaczynają się od litery lu
 
 Przy wielu zmiennych kliknij **Search and edit all in the State Editor** (szukaj i edytuj wszystko w State Editor). Pokazuje wszystkie zmienne na jednej liście, więc możesz je przeszukiwać, edytować, wklejać wiele naraz jako JSON i przejrzeć zmiany przed zapisem. Zobacz [State Editor](../roleplay/hud-and-trackers.md#the-state-editor). Inne makra w podwójnych klamrach opisuje przewodnik [Makra promptów](../prompts/macros.md).
 
-<a id="settings-profiles"></a>
-
 ## Profile ustawień
 
 Profil ustawień to zapisany zestaw ustawień czatu, który da się zastosować w innych czatach. Pasek profilu znajduje się na górze panelu i nie pojawia się w trybie Game. Zapisywanie, stosowanie, import, eksport i wybór profilu domyślnego opisuje przewodnik [Profile ustawień](settings-profiles.md).
@@ -107,8 +105,6 @@ Te przyciski są na pasku tytułu.
 
 Gdy Tracker Panel nie jest widoczny, trackery na komputerze korzystają z [okna Trackers](../roleplay/hud-and-trackers.md#the-trackers-window). Jeśli obok wiadomości jest mało miejsca, okno zaczyna jako mały przycisk **Trackers**. Użyj kości, aby znów pokazać Tracker Panel.
 
-<a id="popping-a-section-out-into-its-own-window"></a>
-
 ## Wydzielanie sekcji do osobnego okna
 
 Wydziel sekcję, aby dostała własne okno.
@@ -121,15 +117,11 @@ Wydziel sekcję, aby dostała własne okno.
 
 Na telefonie wydzielenie zamyka Chat Settings i dodaje sekcję do menu **Chat tools** (narzędzia czatu) z trzema kropkami. Dotknij kropek, a potem okrągłej ikony sekcji. Dotknij **Put back in Chat Settings**, aby ją przywrócić.
 
-<a id="the-phones-chat-tools-menu"></a>
-
 ## Menu Chat tools na telefonie
 
 Przesuwany przycisk z trzema kropkami zbiera narzędzia wyjęte z Chat Settings. Dotknij go, aby rozwinąć okrągłe przyciski z ikonami, a potem dotknij narzędzia. Ponownie dotknij kropek, aby je zwinąć. Przyciski trackerów, przycisk mapy Game i Character Profiles pozostają osobno.
 
 Przeciągnij przycisk z trzema kropkami, aby przesunąć menu. Otwórz je i użyj blokady u góry, aby je unieruchomić. Gdy menu jest odblokowane, przeciągnij narzędzie w górę lub w dół, aby zmienić jego miejsce, albo zaznacz je klawiaturą i użyj strzałek. Blokada uniemożliwia zarówno przesuwanie, jak i zmianę kolejności. Menu korzysta z twojego stylu widgetów czatu.
-
-<a id="control-windows-and-their-buttons"></a>
 
 ## Okna narzędzi i ich przyciski
 
@@ -144,8 +136,6 @@ Przeciągnij przycisk, aby go przesunąć. Pobliskie przyciski wyrównują się 
 ## Każdy czat zapamiętuje własny układ okien
 
 Każdy czat zapamiętuje rozmiary i położenia okien, przypięcia i blokady, wydzielone sekcje oraz położenia przycisków. Położenia na telefonie oraz kolejność i blokada menu Chat tools zapisują się oddzielnie od położeń na komputerze. [Profil ustawień](settings-profiles.md) może zapisać układ do użycia w innych czatach.
-
-<a id="choosing-a-layout-for-new-chats"></a>
 
 ## Wybieranie układu dla nowych czatów
 

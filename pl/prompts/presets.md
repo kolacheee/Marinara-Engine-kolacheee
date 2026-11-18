@@ -52,7 +52,7 @@ Skrypty regex mają własną stronę, [Biblioteka → Skrypty regex](../extendin
 Panel ma cztery zakładki: **Prompty**, **Regexy**, **Narzędzia** i **Profile**. Każda ma u góry ten sam rząd przycisków i pole wyszukiwania. W zakładce **Prompty** użyj **Utwórz preset**, żeby utworzyć preset, **Importuj preset**, żeby wczytać plik `.json`, albo **Zaznacz presety**, żeby wyeksportować lub usunąć kilka naraz; **Zaznacz wszystkie presety** zaznacza każdy preset widoczny w wynikach wyszukiwania. Zakładka **Regexy** zawiera skrypty regex; zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts). Zakładka **Narzędzia** zawiera własne narzędzia; zobacz [Własne narzędzia](../extending/custom-tools.md). Zakładka **Profile** zawiera profile ustawień czatu; zobacz [Profile ustawień](../chats/settings-profiles.md#the-profiles-tab).
 
 - Pole **Search presets** (wyszukiwanie presetów) filtruje listę.
-- Menu sortowania oferuje opcje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest** i **Oldest**. Przy **Manual order** przeciągnij wiersz albo naciśnij <kbd>Alt</kbd>+<kbd>Up</kbd> lub <kbd>Alt</kbd>+<kbd>Down</kbd> na zaznaczonym wierszu. Na ekranie dotykowym naciśnij i przytrzymaj wiersz, żeby go podnieść.
+- Menu sortowania oferuje opcje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Najwięcej tokenów** i **Najmniej tokenów**. Rozmiar obejmuje własny tekst włączonych sekcji, czyli instrukcje, które preset zawsze wysyła. Sekcje znacznikowe, takie jak postać, lorebook i historia czatu, są wypełniane osobno dla każdego czatu i nie są wliczane. Każdy wiersz pokazuje szacowaną liczbę tokenów. Przy **Manual order** przeciągnij wiersz albo naciśnij <kbd>Alt</kbd>+<kbd>Up</kbd> lub <kbd>Alt</kbd>+<kbd>Down</kbd> na zaznaczonym wierszu. Na ekranie dotykowym naciśnij i przytrzymaj wiersz, żeby go podnieść.
 - **New Folder** (nowy folder) grupuje presety. Przeciągnij preset na folder, a nazwę folderu zmień podwójnym kliknięciem lub podwójnym stuknięciem.
 
 Każdy wiersz pokazuje nazwę, format opakowania, liczbę sekcji i autora. Plakietka **DEFAULT** oznacza preset domyślny wyróżniony gwiazdką. Kliknij wiersz, żeby go otworzyć.
@@ -82,7 +82,29 @@ Dwa kafelki tylko do odczytu pokazują liczniki **Sections** i **Groups**.
 - **Conversation Mode** to pole tekstowe na prompt trybu Conversation w tym presecie. Zostaw je puste, żeby używać wbudowanego promptu.
 - **Roleplay Mode** nie da się tu edytować. Tryb Roleplay korzysta z promptu złożonego z twoich sekcji w **Sections**.
 - **Game Mode** to pole tekstowe na prompt trybu Game w tym presecie. Zostaw je puste, żeby używać wbudowanego promptu.
-- **Ustawienia historii gry** określa styl historii, przemoc i granice treści w trybie Game Mode. Włącz **Przenieś ustawienia historii do gier korzystających z tego presetu**: wybranie presetu dla gry ustawi wtedy jej styl i przemoc oraz doda te granice do własnych granic gry. Zobacz [Treść i styl historii](../game/getting-started.md#story-style-violence-and-content-boundaries).
+- **Ustawienia historii gry** przenosi styl historii, przemoc i granice treści do trybu Game Mode. Zobacz [Ustawienia historii gry](#game-story-settings).
+
+#### Ustawienia historii gry
+
+Preset może przenosić styl historii, poziom przemocy i granice treści do trybu Game Mode, żeby nie trzeba było ustawiać ich dla każdej gry. Zobacz [Styl historii, przemoc i granice treści](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Na zakładce **Prompty**, pod **Ustawienia historii gry**, włącz **Przenieś ustawienia historii do gier korzystających z tego presetu**.
+2. Wybierz **Styl historii** i poziom **Przemoc**. Opcja **Zgodnie z kategorią** zachowuje domyślną przemoc wynikającą z kategorii każdej gry.
+3. Opcjonalnie: wpisz **Granice treści**, po jednej w wierszu.
+4. Kliknij **Zapisz**.
+
+Gdy wybierzesz preset dla gry w kreatorze konfiguracji albo w **Ustawienia czatu → Preset promptu**, gra przejmuje styl historii i przemoc presetu. Granice presetu są dodawane do granic, które gra już ma, więc żadne własne granice gry nie znikają. Późniejsze zmiany presetu nie zmieniają gier, które już go wybrały. Ustawienie jest zachowywane przy duplikowaniu, eksporcie i imporcie presetu.
+
+#### Ustawienia historii gry
+
+Preset może przenosić styl historii, poziom przemocy i granice treści do trybu Game Mode, żeby nie trzeba było ustawiać ich dla każdej gry. Zobacz [Styl historii, przemoc i granice treści](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Na zakładce **Prompty**, pod **Ustawienia historii gry**, włącz **Przenieś ustawienia historii do gier korzystających z tego presetu**.
+2. Wybierz **Styl historii** i poziom **Przemoc**. Opcja **Zgodnie z kategorią** zachowuje domyślną przemoc wynikającą z kategorii każdej gry.
+3. Opcjonalnie: wpisz **Granice treści**, po jednej w wierszu.
+4. Kliknij **Zapisz**.
+
+Gdy wybierzesz preset dla gry w kreatorze konfiguracji albo w **Ustawienia czatu → Preset promptu**, gra przejmuje styl historii i przemoc presetu. Granice presetu są dodawane do granic, które gra już ma, więc żadne własne granice gry nie znikają. Późniejsze zmiany presetu nie zmieniają gier, które już go wybrały. Ustawienie jest zachowywane przy duplikowaniu, eksporcie i imporcie presetu.
 
 Wbudowany **Marinara's Universal Preset** dostarcza tekst promptu, ale żadnych parametrów generowania. Jego starsze zapisane ustawienia próbkowania, rozumowania, formatowania i tokenów są ignorowane, a zamiast nich obowiązują ustawienia twojego konta, nadpisania czatu i wartości domyślne aplikacji. Aby go dostosować, utwórz edytowalną kopię.
 
@@ -179,7 +201,7 @@ Pod listą rozwijaną plakietka pokazuje, skąd pochodzi prompt.
 
 Pole tekstowe pokazuje prompt, który jest w użyciu. Edytuj je, żeby utworzyć lokalną kopię dla tego czatu. Jeśli twój tekst dokładnie odpowiada presetowi lub wartości domyślnej, Marinara traktuje go jako niezmieniony. Dopóki istnieje własna zmiana, widać ikonę resetowania (podpowiedź **Reset to default prompt**).
 
-Czaty Game mają więcej kontrolek. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett." **Wytyczne kategorii wiekowej**, **Styl historii**, **Przemoc** i **Granice treści** to ustawienia treści gry; zobacz [Treść i styl historii](../game/getting-started.md#change-them-during-a-game).
+Czaty Game mają więcej kontrolek. **Styl historii**, **Przemoc**, **Granice treści** i **Wytyczne kategorii wiekowej** określają, co może zawierać fabuła gry. Zobacz [Zmiana podczas gry](../game/getting-started.md#change-them-during-a-game). Dwie kolejne kontrolki kształtują prompt. **GM prompt style** (styl promptu mistrza gry) zastępuje tylko prompt trybu Game, a lokalna zmiana w czacie nadal ma pierwszeństwo. **Extra instructions** (dodatkowe instrukcje) dodaje tekst do promptu trybu Game, do 2000 znaków, na przykład "Write in the style of Terry Pratchett."
 
 ## Bloki decyzyjne i pamięć podręczna promptu
 

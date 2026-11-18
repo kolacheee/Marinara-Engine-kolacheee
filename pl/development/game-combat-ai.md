@@ -69,8 +69,6 @@ Cautious i Cowardly powinny dawać różne wyniki: zdrowy Cautious Marksman zajm
 
 Nie wprowadzaj synonimów ocenianych identycznie. Cruel to głównie Opportunistic, chyba że zasady obsługują osobny cel. Strategic lepiej zarezerwować dla rzeczywistego ograniczonego planowania niż etykiety oznaczającej lepszą skuteczność we wszystkim. Odwaga i inteligencja nie muszą być przeciwległymi końcami jednej skali.
 
-<a id="assigning-profiles-role-experience-personality-then-seeded-variety"></a>
-
 ## Przypisywanie profili: rola, doświadczenie, osobowość, potem różnorodność z ziarnem
 
 ### Kolejność pierwszeństwa
@@ -147,8 +145,6 @@ Zapisuj zaakceptowane wskazówki/pochodzenie potrzebne do wyjaśnienia przypisan
 - Dziennik walki podaje przyczynę testu morale przed rzutem, zmianę temperamentu i jej przyczynę, kogo pociągnięto za sobą podczas chodzenia, pozostanie stworzenia terytorialnego na swoim terenie oraz poddanie się drużyny. Stworzenie, które się poddało, pozostaje na planszy w miejscu poddania.
 - W walkach zestawu zasad ocena obrażeń ciosu to oczekiwana krzywda względem średniego zdrowia strony celu, niezależnie od tego, kto go otrzymuje, więc wyższe zdrowie rycerza nie obniża wartości Multiattack przeciw niemu w porównaniu z taką samą krzywdą zadaną czarodziejowi. Cios, który powaliłby cel, jest ważony względem zdrowia tego celu, ale nigdy nie traktuje się go jako mniej wytrzymałego niż trzy czwarte tej średniej.
 
-<a id="mindless-an-exact-pursuit-contract"></a>
-
 ## Mindless: ścisły kontrakt pościgu
 
 To żądana reguła projektu dla Beast/Monstrosity, nie twierdzenie, że takie etykiety implikują to zachowanie w oficjalnych zasadach stołowych lub u rzeczywistych zwierząt.
@@ -196,8 +192,6 @@ Stosuj znormalizowane czynniki oczekiwanych obrażeń, prawdopodobieństwa dobic
 
 To małe podejście oparte na użyteczności: porównuj legalne akcje na spójnych skalach i zmieniaj priorytety według osobowości. Ogólne podejście i bezwładność decyzji opisuje David "Rez" Graham w [An Introduction to Utility Theory](https://www.gameaipro.com/GameAIPro/GameAIPro_Chapter09_An_Introduction_to_Utility_Theory.pdf). Konkretne profile, wzór, ustawienia i plan integracji tutaj to zalecenia projektowe właściwe dla Marinara.
 
-<a id="practical-guardrails"></a>
-
 ### Praktyczne zabezpieczenia
 
 - Obliczaj prognozy z hipotetycznej pozycji docelowej, uwzględniając teren, bez zmiany aktywnego stanu i zużycia RNG. Prawdopodobieństwo kontry musi odpowiadać faktycznym regułom trafienia/przetrwania/kontry; nie opisuj strzału 50% jako pewnej eliminacji.
@@ -242,8 +236,6 @@ Proponowane strojenie początkowe: znormalizuj użyteczność do stałej skali; 
 **Puszczanie powalonych i jeńcy.** Posiadacz puszcza za darmo (`rulesetLetGoOfHeld`) trzymanych wrogów, którzy są powaleni, gdy inny wróg jest jeszcze na nogach, chyba że jest okrutny, a gra pozwala uderzać powalonych. Odepchnięcie lub pochwycenie kogoś, kogo już trzyma, nie ma wartości, podobnie jak odepchnięcie, gdy nie ma dokąd kogoś przesunąć, więc krokodyl gryzie tego, kogo ma w szczękach. Skupienie głodnego stworzenia na trzymanej ofierze liczy się tylko przy ciosach. Jeniec zachowuje swoje pole: można przez nie przejść, ale nie można się na nim zatrzymać, tak jak na polu powalonego uczestnika walki; jego znacznik ma białą obwódkę i większą flagę.
 
 **Strzały Multiattack i otwarty teren.** Porównanie strzałów z daleka liczy każdy cios Multiattack tyle razy, ile jest wykonywany, i zestawia najlepszy możliwy do użycia atak wręcz z najlepszym możliwym do użycia atakiem dystansowym, więc dwa strzały Longbow zwiadowcy przeważają nad jego dwoma Shortsword. Stworzenie większe niż jedno pole wybiera otwarty teren zamiast szczeliny wymagającej przeciskania się w tej samej odległości; ciosy ze szczeliny, do której musiałoby się wcisnąć, są warte 0.6 takich samych ciosów z otwartego terenu (`RULESET_SQUEEZED_BLOWS`), a gdy już się przeciska, ciosy z otwartego terenu są warte odpowiednio więcej, więc wychodzi, by uderzyć.
-
-<a id="boss-turns-controlled-by-the-gm"></a>
 
 ## Tury bossów sterowane przez GM
 
@@ -347,8 +339,6 @@ Przykładowe starcie na tej samej mapie:
 
 Inne ziarno może dać Cowardly Bruiser i Opportunistic Marksman, zmieniając przebieg. Odświeżenie nie może tego zrobić. Późniejsze pojawienie się tego samego nazwanego bossa powinno zachować jego nawyki, chyba że zmieni je fabuła lub jawna edycja.
 
-<a id="current-ordinary-ai-implementation-boundary"></a>
-
 ## Granica obecnej implementacji zwykłego AI
 
 Wdrożone słownictwo polityki: Mindless, Reckless, Cautious, Opportunistic, Protective, Supportive, Disciplined, Cowardly, **Patient, Methodical i Coordinated**. Pozostałe przymiotniki poniżej to pomysły, nie ukryte ustawienia wykonawcze.
@@ -400,8 +390,6 @@ Trzy zamówione dodatki również różnią się zależnie od klasy:
 
 Te opisy są celami strojenia. Pierwsza implementacja używa ogólnego obsługiwanego modelu wzmocnienia/osłabienia obrony; bogatsze kombinacje zależne od klasy wymagają właściwych zdolności i scenariuszy regresyjnych.
 
-<a id="summoning-design-extension"></a>
-
 ## Rozszerzenie projektu Summoning
 
 Zacznij bez siatki. Przywołanie to rzeczywisty uczestnik walki ze stabilnym ID starcia, odwołaniem do właściciela, stroną, profilem, kontrolerem, czasem trwania, kosztem zasobów i jawnym budżetem aktywacji. Klasa zmienia legalny zestaw zdolności; przymiotnik zmienia priorytety jak w Classic.
@@ -412,11 +400,7 @@ Zestaw zasad określa, czy polecenia zużywają akcję właściciela, czy przywo
 
 KO właściciela, urok/zmiana strony, odwołanie, wygaśnięcie czasu, porażka drużyny i koniec starcia wymagają jawnych reguł sprzątania. Zachowuj właściciela i pozostały czas po odświeżeniu/imporcie. Pokonane przywołanie nie jest przedmiotem ani stałym członkiem drużyny. Koszt zaklęcia/MP odejmuj raz przy zaakceptowanym utworzeniu. Akcje przywołań nie mogą tworzyć okien legendarnych poza regułami uprawnienia utrwalonego modyfikatora bossa.
 
-<a id="gm-bosses-legendary-actions-and-reactions"></a>
-
 ## Bossowie GM, legendarne akcje i reakcje
-
-<a id="implemented-generic-engine-adapter"></a>
 
 ### Wdrożony ogólny adapter Engine
 
@@ -504,8 +488,6 @@ Minimalny zapisany kontrakt: ID starcia, rewizja, ID/kursor aktywacji, zatwierdz
 UI: pokaż pozostałe punkty legendarne, dostępność reakcji i koszt oferowanej zdolności; oznacz przewidywanie względem reakcji wyzwolonej. Pokaż powód przerwania i czy pierwotne zaklęcie wykonuje się, zawodzi czy wymaga nowego wyboru. Udostępnij dostępnie namysł/oczekiwanie, ponowienie/wariant zastępczy i anulowanie. Zapowiadaj ładowane ataki, gdy wymagają tego zasady. Nie twierdź, że lokalny wariant zastępczy wybrał GM. Wewnętrzne wyniki oceniania/prompty pozostaw poza menu akcji gracza.
 
 Wymagane dowody: poprawne zaklęcia/zasoby/przedmioty drużyny w kontekście GM; prognoza przy wyczerpanych zasobach; wiarygodne, ale błędne przewidywanie Fireball; brak wycieku szkiców/kolejki poleceń; brak wymuszania decyzji klikaniem/ponownym wyborem; legalna zmiana akcji gracza po przewidywaniu; natywny czas 5e względem włączonej reguły domowej; Counterspell dopiero po legalnym wyzwalaczu rzucania; pominięcie słabego zaklęcia i reakcja na śmiertelne; brak MP/slotu/reakcji; jednokrotny koszt nieudanej kontry; zwrot pierwotnego zaklęcia właściwy zasadom; zabroniona widoczność/zasięg; wielu reagujących i kontrowane kontry; brak dodatkowego okna legendarnego od ruchu/dodatkowego ataku/reakcji; poprawne miejsce inicjatywy Classic; unieważniona zakolejkowana akcja ręczna; pominięte jednostki Tactical/uprawnienia przywołań; wyczerpany budżet legendarny; odnowienie dokładnie raz; śmierć/wynik podczas oczekiwania; duplikaty żądań; timeout i spóźniony sukces; odświeżenie, równoległe karty, rozgałęzienie/cofnięcie i zmiana ustawień. Po deterministycznych testach tras dodaj sprawdzenie rzeczywistego dostawcy i reprezentatywnego tempa mobilnego.
-
-<a id="encounter-environment-agent-handoff"></a>
 
 ## Przekazanie prac nad Agentem środowiska starcia
 

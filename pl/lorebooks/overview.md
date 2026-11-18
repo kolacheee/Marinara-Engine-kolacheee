@@ -67,9 +67,22 @@ Zakładka ma też takie przełączniki.
 
 Panel **Semantic search (embeddings)** pod przełącznikami opisuje przewodnik [Wyszukiwanie semantyczne w lorebookach](semantic-search.md).
 
+## Dodawanie obrazu do lorebooka
+
+Obraz jest widoczny na stronie **Księgi wiedzy** (w tabeli i na kafelkach galerii) oraz na listach wyboru lorebooków.
+
+1. Otwórz lorebook i kliknij **Book settings** (ustawienia lorebooka). Pole **Obraz** znajduje się obok **Włączone**.
+2. Kliknij **Prześlij** (lub **Zastąp**) i wybierz plik albo kliknij **Wygeneruj z AI**, żeby utworzyć okładkę przy użyciu połączenia do generowania obrazów. Przycisk **Wygeneruj z AI** pojawia się po skonfigurowaniu takiego połączenia.
+3. Kliknij **Dostosuj kadrowanie** (albo mały obraz). Przeciągnij kwadrat na obrazie, żeby wybrać widoczną część, i przeciągnij jego rogi, żeby zmienić rozmiar.
+4. Kliknij **Zapisz**.
+
+Nowy obraz początkowo nie jest przycięty. Żeby go usunąć, otwórz **Dostosuj kadrowanie** i kliknij **Usuń**.
+
+W klasycznym układzie obraz znajduje się w sekcji **Obraz** u góry zakładki **Przegląd** lorebooka, z tymi samymi przyciskami.
+
 ## Strona lorebooków
 
-Otwórz **Biblioteka → Księgi wiedzy**. U góry są przyciski **Importuj** (zobacz [Import i eksport lorebooków](import-export.md)) i **Nowy lorebook**. Poniżej:
+Otwórz **Biblioteka → Księgi wiedzy**. U góry są przyciski **Przeglądaj online** (lorebooki do pobrania z serwisu Chub, zobacz [Importowanie i eksportowanie lorebooków](import-export.md#download-a-lorebook-from-chub)), **Importuj** (zobacz [Import i eksport lorebooków](import-export.md)) i **Nowy lorebook**. Poniżej:
 
 - **Wszystkie rodzaje** zawęża listę do lorebooków typu **Globalny**, **Świat**, **Postać**, **NPC** lub **Księga zaklęć**.
 - **Lista** i **Galeria** przełączają widok między tabelą a kafelkami z obrazami.
@@ -86,7 +99,9 @@ Kliknij lorebook, żeby go otworzyć.
 
 ## W klasycznym układzie: panel lorebooków
 
-Klasyczny panel pokazuje te same foldery i kolejność w formie listy. Na górze panelu są trzy przyciski z ikonami. Ich nazwy widać po najechaniu na nie kursorem.
+Klasyczny panel pokazuje te same foldery i kolejność w formie listy. U góry panelu przycisk **Pobierz** otwiera przeglądarkę kart z lorebookami do pobrania, a **Otwórz bibliotekę** otwiera bibliotekę lorebooków, czyli całostronicowy widok twoich lorebooków z obrazami, opisami i liczbą wpisów. Kliknij tam lorebook, żeby zobaczyć go w powiększeniu; **Edytuj lorebook** otwiera edytor, a **Aktywny** włącza lub wyłącza lorebook we wszystkich czatach.
+
+Poniżej są trzy przyciski z ikonami. Ich nazwy widać po najechaniu na nie kursorem.
 
 - **New** otwiera okno **Create Lorebook**.
 - **Import** (import) otwiera okno **Import Lorebook**. Zobacz [Importowanie i eksportowanie lorebooków](import-export.md).
@@ -96,7 +111,7 @@ Pod przyciskami:
 
 - Pole **Search lorebooks** filtruje po nazwie, opisie, nazwach powiązanych postaci i person oraz po tagach. Działa tu też `tag:name`.
 - **Tagi** obok pola wyszukiwania pokazują tylko lorebooki ze wszystkimi wybranymi tagami albo **Bez tagów**. Zobacz [Tagi](../characters/library-organization.md#tags).
-- Lista **Sort order** oferuje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest**, **Oldest** i **Token Budget**. Przy opcji **Manual order** przeciągnij lorebooki na miejsce albo użyj <kbd>Alt</kbd>+<kbd>Up</kbd> i <kbd>Alt</kbd>+<kbd>Down</kbd>.
+- Lista **Sort order** oferuje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Najwięcej tokenów** i **Najmniej tokenów**. Sortowanie według rozmiaru korzysta z szacowanej wielkości wszystkich wpisów lorebooka, także wyłączonych, którą widać też w każdym wierszu. Przy opcji **Manual order** przeciągnij lorebooki na miejsce albo użyj <kbd>Alt</kbd>+<kbd>Up</kbd> i <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (nowy folder) tworzy folder biblioteki. Przeciągnij na niego lorebook. Na telefonie przytrzymaj lorebook, a potem go przeciągnij. Te foldery to co innego niż foldery wpisów wewnątrz lorebooka.
 
 Każdy wiersz ma przyciski **Copy** (kopiowanie, tworzy kopię lorebooka) i **Delete** (usunięcie). Pojawiają się po najechaniu kursorem na wiersz, a na urządzeniach mobilnych widać je zawsze. Wyłączony lorebook ma plakietkę **OFF**. Kliknij obrazek, żeby go wgrać albo podmienić.

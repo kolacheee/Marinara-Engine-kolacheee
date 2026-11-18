@@ -11,6 +11,8 @@ Karta postaci to plik z imieniem jednej postaci, jej osobowością, powitaniem i
 
 Panel Card Browser wypełnia cały obszar treści i ma tytuł **Browse character cards online** (przeglądanie kart postaci online). Aby wyjść, kliknij strzałkę wstecz w lewym górnym rogu.
 
+Przycisk **Pobierz** w panelu **Księgi wiedzy** otwiera tę samą przeglądarkę, ale z lorebookami do pobrania. Zobacz [Pobieranie lorebooka z Chub](../lorebooks/import-export.md#download-a-lorebook-from-chub).
+
 Po zamknięciu i ponownym otwarciu ostatnie wyszukiwanie, filtry i wybrana postać nadal tam są. Przeładowanie aplikacji je resetuje.
 
 ## Wybór źródła
@@ -101,6 +103,12 @@ Zanim zaczniesz: do czatu z postacią potrzebne będzie działające połączeni
 
 Jeśli to nie zadziałało: przeczytaj komunikat o błędzie w powiadomieniu. W źródle **JannyAI** najczęstszą przyczyną jest blokada Cloudflare (zobacz sekcję Rozwiązywanie problemów poniżej).
 
+### Aktualizowanie posiadanej postaci
+
+Jeśli importowana karta jest już w twojej bibliotece (została wcześniej pobrana z tej samej strony albo ma to samo imię i twórcę), import zatrzymuje się na ekranie **Już w twojej bibliotece**. Wybierz **Zaktualizuj "Name"**, żeby zaktualizować swoją kopię na miejscu, **Dodaj jako nową postać**, żeby zachować obie, albo **Pomiń tę kartę**. Żeby powiązać kartę z postacią pozyskaną inną drogą, kliknij **Zaktualizuj posiadaną postać...** w oknie **Importuj kartę** i wybierz ją z listy. Zobacz [Aktualizowanie posiadanej postaci](import-export.md#update-a-character-you-already-have).
+
+Żeby poszukać nowszej wersji pobranej tu karty, otwórz postać, kliknij **⋯** obok **Zapisz** i wybierz **Sprawdź aktualizację**. Przeglądarka kart otworzy się na tej karcie.
+
 ### Pobieranie jako PNG
 
 Kliknij **Download as PNG** (pobranie jako PNG) w widoku szczegółów, żeby zapisać kartę na urządzeniu jako standardową kartę postaci w formacie PNG, bez dodawania jej do biblioteki. W trakcie pracy przycisk pokazuje napis **Building PNG...**. Działa to w każdym źródle, a plik nosi nazwę postaci, na przykład `Some_Character.png`. Karta PNG to plik obrazu z danymi postaci zapisanymi w środku. Można się nią podzielić albo zaimportować ją do innej aplikacji.
@@ -115,8 +123,6 @@ Kliknij **Download as PNG** (pobranie jako PNG) w widoku szczegółów, żeby za
 | **PlotLight is busy.** | Odczekaj liczbę sekund podaną w komunikacie, a potem spróbuj ponownie. |
 | **PlotLight doesn't offer this for download.** | Autor może nie zezwalać na pobieranie albo karta nie jest już publiczna. Sprawdź to przez link **View on PlotLight**. |
 | Wyszukiwanie się nie udaje albo źródło przestaje działać. | Publiczne strony mogą w każdej chwili się zmienić albo zablokować dostęp. Spróbuj później albo pobierz kartę ze strony i użyj zwykłego importu. Zobacz [Importowanie i eksportowanie kart postaci](import-export.md). |
-
-<a id="log-in-to-pygmalion"></a>
 
 ## Logowanie do serwisu Pygmalion
 

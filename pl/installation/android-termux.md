@@ -70,7 +70,7 @@ cd Marinara-Engine
 
 ## Aktualizowanie aplikacji Marinara Engine
 
-Przy każdym uruchomieniu `./start-termux.sh` program uruchamiający sprawdza w serwisie GitHub, czy jest nowsza wersja, i aktualizuje aplikację przed startem. Żeby uruchomić aplikację bez aktualizacji, dodaj `--skip-update`. Więcej opcji i kroki aktualizacji pliku APK znajdziesz w dokumencie [Aktualizacja aplikacji Marinara Engine](../UPGRADING.md#android-termux).
+Przy każdym uruchomieniu `./start-termux.sh` program uruchamiający sprawdza w serwisie GitHub, czy jest nowsza wersja, i aktualizuje aplikację przed startem. Żeby uruchomić aplikację bez aktualizacji, dodaj `--skip-update`. Na gałęzi testowej, na przykład do testów przebudowanego interfejsu, program uruchamiający śledzi tę gałąź w serwisie GitHub. Jeśli jej historię tam przepisano, twoja kopia samoczynnie przejdzie na nową wersję, o ile nie ma w niej twoich własnych commitów. Więcej opcji i kroki aktualizacji pliku APK znajdziesz w dokumencie [Aktualizacja aplikacji Marinara Engine](../UPGRADING.md#android-termux).
 
 Podczas aktualizacji program uruchamiający usuwa też nieużywane pakiety z lokalnej pamięci podręcznej pnpm. Dzięki temu stare wydania nie zajmują kilku gigabajtów miejsca. Program nie rusza przy tym twoich czatów ani ustawień.
 

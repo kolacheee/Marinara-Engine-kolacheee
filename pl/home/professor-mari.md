@@ -2,8 +2,6 @@
 
 Professor Mari to wbudowana asystentka na ekranie głównym. Wyjaśnia działanie aplikacji, pomaga ją skonfigurować oraz tworzy i edytuje dla ciebie postacie, persony, lorebooki i presety. Jej zmiany możesz przez ograniczony czas cofnąć z karty zmiany (zobacz [Sprawdzanie jej zmian](#reviewing-her-changes)).
 
-<a id="where-to-find-her"></a>
-
 ## Gdzie ją znaleźć
 
 1. Przejdź na ekran główny. Pojawia się on wtedy, gdy żaden czat nie jest otwarty.
@@ -11,7 +9,7 @@ Professor Mari to wbudowana asystentka na ekranie głównym. Wyjaśnia działani
 
 Otworzy się w osobnej zakładce. Możesz do niej dotrzeć też z każdego ekranu: naciśnij <kbd>Ctrl</kbd>+<kbd>K</kbd>, wpisz pytanie i wybierz **Zapytaj Professor Mari**, naciśnij <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> na Macu), żeby otworzyć jej wyskakujące okno, albo na telefonie dotknij tytułu na górnym pasku. Jej nagłówek pokazuje **Gotowa do pomocy**, kiedy czeka, i **Pracuję nad tym...**, kiedy pracuje.
 
-Wpisz wiadomość zwykłym językiem i naciśnij <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> dodaje nową linię. Jeśli w jej ustawieniach wyłączysz **Enter sends to Professor Mari** (wysyłanie do Professor Mari klawiszem Enter), <kbd>Enter</kbd> doda nową linię, a wiadomość wyśle <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. Pierwsza wiadomość odblokowuje osiągnięcie **Hello World**.
+Wpisz wiadomość zwykłym językiem i naciśnij <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> dodaje nową linię. Jeśli w jej ustawieniach wyłączysz **Enter sends to Professor Mari** (wysyłanie do Professor Mari klawiszem Enter), <kbd>Enter</kbd> doda nową linię, a wiadomość wyśle <kbd>Ctrl</kbd>+<kbd>Enter</kbd> albo przycisk Wyślij. Przełącznik jest zapisywany osobno na każdym urządzeniu, więc możesz go wyłączyć na telefonie i zostawić włączony na komputerze. Pierwsza wiadomość odblokowuje osiągnięcie **Hello World**.
 
 Wszystkie jej ustawienia są w **Ustawienia → Ogólne → Professor Mari → Otwórz** albo pod ikoną zębatki w wyszukiwarce Search. Na komputerze rozmiar jej okna zmieniają suwaki **Height** (wysokość) i **Width** (szerokość) w sekcji **Professor Mari window** (okno Professor Mari). Na telefonie jej okno wypełnia cały ekran.
 
@@ -39,7 +37,7 @@ Zanim coś edytuje, najpierw to czyta, a gdy prośba jest niejasna, dopytuje.
 - Utworzenie lub edycja motywu, agenta, presetu promptu albo szkicu rozszerzenia Personal Extension. Szkic pozostaje wyłączony, dopóki nie przeczytasz jego kodu i nie zatwierdzisz go w **Biblioteka → Rozszerzenia**.
 - Edycja jednej sekcji presetu na miejscu, bez podmieniania całego presetu.
 - Porównanie agentów do pobrania i podpowiedź, które pasują do twojego celu. Do instalacji asystentka kieruje cię do **Biblioteka → Agenci**. Zobacz [Agenci do pobrania: przegląd pakietów](../agents/built-in-agents.md).
-- Tworzenie lub przypisywanie obrazów, takich jak awatary, sprite'y, tła i obrazy motywu, oraz kadrowanie, przycinanie, zmienianie ich rozmiaru i usuwanie z nich jednolitego tła. Najpierw potrzebne jest konto do generowania obrazów. Asystentka sama go nie utworzy. O grafice motywu przeczytasz w sekcji [Poproś Professor Mari o stworzenie grafiki](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
+- Tworzenie lub przypisywanie obrazów, takich jak awatary, sprite'y, tła i obrazy motywu, oraz kadrowanie, przycinanie, zmienianie ich rozmiaru i usuwanie z nich jednolitego tła. Najpierw potrzebne jest konto do generowania obrazów. Asystentka sama go nie utworzy. O grafice motywu przeczytasz w sekcji [Poproś Professor Mari o stworzenie grafiki](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art). Kliknij stworzony przez nią obraz, żeby otworzyć go w pełnym rozmiarze, przeczytać użyty prompt, pobrać go albo zmienić prompt i wygenerować obraz ponownie. Nowy obraz zastępuje poprzedni w jej odpowiedzi.
 - Wyszukiwanie publicznych stron wiki Fandom, gdy zbierasz informacje o postaci albo świecie.
 
 ### Zacznij od kafelka
@@ -59,8 +57,6 @@ Te miejsca otwierają asystentkę ze szkicem do edycji i małym kafelkiem **Cont
 
 Asystentka nie dostaje całego elementu tylko dlatego, że masz otwarty jego edytor.
 
-<a id="pick-an-account-for-her"></a>
-
 ## Wybór konta dla asystentki
 
 Zanim zaczniesz: dodaj konto do generowania tekstu. Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md).
@@ -70,8 +66,6 @@ Zanim zaczniesz: dodaj konto do generowania tekstu. Zobacz [Łączenie z dostawc
 3. Kliknij model na liście, żeby go użyć. Model zapisuje się w koncie, więc twoje inne czaty na tym koncie też się na niego przełączają. **Built-in model** nie ma listy modeli.
 
 Na telefonie dotknij konta, żeby go użyć, albo dotknij strzałki na końcu jego wiersza, żeby najpierw zobaczyć jego modele. Gdy nie ma jeszcze żadnych kont, lista pokazuje **Add a connection** (dodanie połączenia).
-
-<a id="reviewing-her-changes"></a>
 
 ## Sprawdzanie jej zmian
 
@@ -132,11 +126,9 @@ Wpisz `@`, żeby wskazać asystentce coś z twojej biblioteki. Otworzy się list
 
 Powiązanie jest wysyłane jednorazowo, razem z wiadomością, w której je dodajesz. Potem asystentka widzi tylko jednolinijkową notatkę i w razie potrzeby czyta element ponownie. Jedna wiadomość może zawierać do 8 powiązań. Jeśli razem zajmują więcej niż mniej więcej jedną czwartą kontekstu modelu, najwyżej 60 000 znaków, ostatnie nie są wysyłane. Asystentka dostaje zamiast nich notatkę i może je przeczytać sama. Powiązane elementy są traktowane jako informacje, nigdy jako instrukcje.
 
-<a id="commands-with-"></a>
-
 ### Komendy z /
 
-Wpisz `/` na początku wiersza, żeby wyświetlić jej komendy. Pisz dalej, żeby filtrować, a potem naciśnij <kbd>Enter</kbd>. Lista pokazuje też twoje dokumenty Skill i wspomnienia. Wybranie pozycji wiąże ją, tak samo jak `@`.
+Wpisz `/` na początku wiersza albo po spacji, żeby wyświetlić jej komendy. Dzięki temu jedna wiadomość może zawierać ich kilka. Pisz dalej, żeby filtrować, a potem naciśnij <kbd>Enter</kbd>. Lista pokazuje też twoje dokumenty Skill i wspomnienia. Wybranie pozycji wiąże ją, tak samo jak `@`.
 
 | Komenda | Co robi |
 | --- | --- |
@@ -149,8 +141,6 @@ Wpisz `/` na początku wiersza, żeby wyświetlić jej komendy. Pisz dalej, żeb
 | `/model` | Pozwala wybrać konto, którego używa asystentka |
 | `/permissions` | Pozwala wybrać, co asystentka może zmieniać |
 | `/approvals` | Otwiera zmiany czekające na ciebie (tylko gdy jakaś czeka) |
-
-<a id="sending-messages-while-she-works"></a>
 
 ## Wysyłanie wiadomości, gdy asystentka pracuje
 
@@ -233,7 +223,7 @@ Kiedy prośba się nie uda, czat zachowuje przyczynę i pokazuje **Retry** (pon�
 
 ## Czytanie FAQ
 
-Kliknij **Przeczytaj FAQ** w widgecie **Poznaj silnik** na ekranie głównym (albo skrót **FAQ** w klasycznym układzie), żeby otworzyć **FAQ Professor Mari**. To stała, spisana lista, a nie czat z AI, więc nie zna twojej konfiguracji. Wpisz coś w polu **Search FAQ** (szukaj w FAQ), żeby przefiltrować pytania. Każde pytanie ma tag kategorii, na przykład **Setup**, **Connections** albo **Game Mode**. Dotknij pytania, żeby przeczytać odpowiedź.
+Otwórz **Zobacz wszystkie** w widgecie **Do wypróbowania** na ekranie głównym i kliknij **Przeczytaj FAQ** (albo skrót **FAQ** w klasycznym układzie), żeby otworzyć **FAQ Professor Mari**. To stała, spisana lista, a nie czat z AI, więc nie zna twojej konfiguracji. Wpisz coś w polu **Search FAQ** (szukaj w FAQ), żeby przefiltrować pytania. Każde pytanie ma tag kategorii, na przykład **Setup**, **Connections** albo **Game Mode**. Dotknij pytania, żeby przeczytać odpowiedź.
 
 ## Ograniczenia i bezpieczeństwo
 
@@ -275,8 +265,6 @@ Asystentka może czytać i zmieniać pliki programu aplikacji Marinara Engine or
 - Zmiany w manifestach zależności, plikach blokad, programach uruchamiających, instalatorach i przepływach CI najpierw czekają na twoje zatwierdzenie. Skrypty instalacyjne pakietów pozostają wyłączone.
 - Polecenia same kończą się po krótkim czasie.
 - Jeśli aplikacja Marinara Engine nie może zapewnić piaskownicy powłoki dla systemu macOS albo Linux, surowe polecenia powłoki i `mari code check` są wyłączone. Asystentka nadal może korzystać z uporządkowanych narzędzi do plików i danych aplikacji.
-
-<a id="held-changes-for-files-and-libraries"></a>
 
 ### Wstrzymane zmiany plików i bibliotek
 

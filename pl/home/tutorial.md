@@ -7,7 +7,7 @@ Samouczek to oprowadzenie z przewodnikiem, które uruchamia się przy pierwszym 
 1. Otwórz **Ustawienia → Ogólne → Potwierdzenia i pomoc**.
 2. W sekcji **Przewodniki** kliknij **Odtwórz ponownie powitalny samouczek**.
 
-Możesz też kliknąć **Powtórz samouczek** w widgecie **Poznaj silnik** na ekranie głównym. Samouczek zaczyna się od nowa, od pierwszego kroku.
+Możesz też otworzyć **Zobacz wszystkie** w widgecie **Do wypróbowania** na ekranie głównym i kliknąć **Powtórz samouczek**. Samouczek zaczyna się od nowa, od pierwszego kroku.
 
 Sekcja **Przewodniki** ma jeszcze dwa przyciski. **Odtwórz ponownie przewodnik (komputer)** (albo tablet lub telefon) powtarza krótkie oprowadzenie dla rodzaju urządzenia, którego używasz, a **Pokaż ponownie wskazówki trybów czatu** przywraca wskazówki każdego trybu czatu. Zobacz [Oprowadzenie dla każdego urządzenia](#walkthroughs-for-each-device).
 

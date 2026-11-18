@@ -64,8 +64,6 @@ Pełna biblioteka zapamiętuje zaznaczoną kartę, kolejność sortowania i pozy
 
 Każdy wiersz pokazuje awatar, nazwę, opcjonalną linię z tytułem, autora i wersję, do 3 tagów oraz przybliżoną liczbę tokenów. Mała plakietka z gwiazdką oznacza ulubioną postać. Po najechaniu na wiersz pojawiają się **Duplicate** (duplikowanie) i **Delete** (usuwanie). Przy dużej liczbie postaci kliknij **Load more** (wczytanie kolejnych) na dole, żeby wczytać następną stronę.
 
-<a id="search"></a>
-
 ## Wyszukiwanie
 
 Wpisz tekst w pole wyszukiwania na górze. Tekst zastępczy to **Search characters or tag:name** (**Szukaj postaci/tagów** w klasycznym układzie). Zwykły tekst jest porównywany z nazwą postaci, tytułem, opisem i tagami, bez rozróżniania wielkości liter. Po wpisaniu `knight` zobaczysz każdą postać, która ma "knight" w którymkolwiek z tych miejsc.
@@ -92,6 +90,10 @@ Lista rozwijana sortowania w klasycznym panelu zawiera:
 | **Newest** | Najpierw ostatnio utworzone. |
 | **Oldest** | Najpierw najstarsze. |
 | **Favorites** | Najpierw ulubione, potem cała reszta. |
+| **Najwięcej tokenów** | Najpierw największe karty, według szacowanego rozmiaru widocznego w każdym wierszu. Foldery są sortowane według sumy rozmiarów swoich kart. |
+| **Najmniej tokenów** | Najpierw najmniejsze karty. |
+
+Sortowanie według rozmiaru pomaga znaleźć karty do skrócenia lub rozbudowania. Licznik szacuje rozmiar tekstu samej karty; nie jest to liczba tokenów obliczona przez tokenizer twojego modelu. Persony, lorebooki i presety promptów oferują te same dwa sposoby sortowania.
 
 Żeby ustawić własną kolejność, przeciągnij wiersz w górę lub w dół albo naciśnij <kbd>Alt</kbd>+<kbd>Up</kbd> lub <kbd>Alt</kbd>+<kbd>Down</kbd> na wierszu, który ma fokus. Każdy z tych sposobów przełącza sortowanie na **Manual order** (kolejność ręczna).
 

@@ -4,8 +4,6 @@ Ten przewodnik wymienia ustawienia serwera, które można zmienić za pomocą zm
 
 Konta AI, postacie i opcje czatu ustawia się w aplikacji. Jak dodać konto AI, opisuje przewodnik [Łączenie z dostawcą AI](connections/connecting-to-a-provider.md).
 
-<a id="edit-the-env-file"></a>
-
 ## Edycja pliku .env
 
 Marinara tworzy pusty plik `.env` przy pierwszym uruchomieniu. Każda linia ma postać `KEY=value`. Linie zaczynające się od `#` to komentarze.
@@ -29,8 +27,6 @@ Plik `.env` to dane, a nie skrypt powłoki. Marinara nie wykonuje `$`, `$(...)` 
 
 Serwer odczytuje `.env` niezależnie od sposobu uruchomienia. Programy uruchamiające (`start.bat`, `start.sh`, `start-termux.sh`) dodatkowo ustawiają `HOST=0.0.0.0`, żeby inne urządzenia mogły się połączyć, i otwierają przeglądarkę, gdy serwer jest gotowy. `AUTO_OPEN_BROWSER=false` to wyłącza. Przy samym `pnpm start` serwer nasłuchuje tylko na tym komputerze, chyba że ustawisz `HOST`.
 
-<a id="restart-or-hot-reload"></a>
-
 ## Ponowne uruchomienie albo przeładowanie w locie
 
 Marinara obserwuje plik `.env` w trakcie pracy. Większość ustawień zaczyna działać niemal od razu, bez restartu. Przy każdej zmianie w logu pojawia się linia `[env-watcher]`. Jeśli obserwacji nie da się uruchomić, serwer sprawdza plik co 30 sekund i informuje o tym w logu.
@@ -50,8 +46,6 @@ Te ustawienia są odczytywane tylko przy starcie. Zmiana któregokolwiek z nich 
 Programy uruchamiające odczytują `AUTO_UPDATE_ENABLED` przed startem serwera, więc zmiana działa od następnego uruchomienia, a log o niej nie ostrzega.
 
 Ustawienia kontroli dostępu i sekrety (`BASIC_AUTH_USER`, `BASIC_AUTH_PASS`, `IP_ALLOWLIST`, `ADMIN_SECRET`, `CSRF_TRUSTED_ORIGINS`) nie wymagają restartu.
-
-<a id="access-control"></a>
 
 ## Kontrola dostępu
 
@@ -107,8 +101,6 @@ openssl rand -hex 32
 
 Marinara trzyma dane w zwykłych plikach JSON, więc kopie zapasowe można kopiować i czytać. Co zawiera każdy folder, wyjaśnia przewodnik [Gdzie Marinara przechowuje dane](data/where-data-is-stored.md).
 
-<a id="logging-levels"></a>
-
 ## Poziomy logowania
 
 `LOG_LEVEL` ustala, ile szczegółów wypisuje serwer. Ukrywa wszystko poniżej wybranego poziomu.
@@ -125,6 +117,7 @@ Marinara trzyma dane w zwykłych plikach JSON, więc kopie zapasowe można kopio
 | `LOG_LEVEL` | `warn` | Poziom opisany wyżej. |
 | `LOG_PRESET` | `default` | `prompt-connections` pokazuje te same szczegóły promptu i modelu co `debug`, ale ukrywa rutynowe linie żądań w rodzaju `GET /api/chats`. |
 | `LOG_DISABLE_REQUEST_LOGGING` | `false` | `true` ukrywa rutynowe linie żądań i zachowuje wybrany poziom. Wymaga restartu. |
+| `LOG_INLINE_MEDIA` | `short` | `short` pokazuje obrazy i inne pliki base64 w danych debugowania jako krótki znacznik z typem i rozmiarem. `full` pokazuje je w całości, co może oznaczać kilka MB na prompt. |
 | `LOG_FORMAT` | automatycznie | `pretty` wszędzie wypisuje czytelne linie, na przykład żeby czytać w `docker logs` prompty zapisywane przez **Debug mode** (tryb diagnostyczny). `json` wypisuje jeden obiekt JSON na linię. Wymaga restartu. |
 
 W terminalu serwer wypisuje czytelne linie. W innych miejscach, na przykład w logach kontenera Docker, serwer produkcyjny wypisuje linie JSON. Program uruchamiający dla środowiska Termux żąda czytelnych linii. Logowanie po stronie przeglądarki jest osobne i `LOG_LEVEL` nim nie steruje.
@@ -193,13 +186,9 @@ Domyślnie żądania wychodzące do usług AI, usług obrazów i webhooków odrz
 
 Jak podłączyć model lokalny albo samodzielnie hostowany, opisuje przewodnik [Podłączanie modelu lokalnego lub samodzielnie hostowanego](connections/local-self-hosted.md).
 
-<a id="feature-switches"></a>
-
 ## Przełączniki funkcji
 
 Opcjonalne zachowania serwera, na przykład ponawianie nieudanych wywołań dostawcy (**Ustawienia → Zaawansowane → Limity czasu i ponawianie**) albo utrzymywanie stałych wyborów grup lorebooka (**Ustawienia → Zaawansowane → Księgi wiedzy**), mają przełączniki w ustawieniach. Wszystkie są domyślnie wyłączone. Kilka z nich ma zmienną, która po ustawieniu wygrywa z przełącznikiem. Zobacz [Przełączniki funkcji](configuration/features.md).
-
-<a id="marinara-notices"></a>
 
 ## Powiadomienia Marinara
 
@@ -218,8 +207,6 @@ Powiadomienia to krótkie ostrzeżenia od opiekunów projektu, na przykład o pr
 Forki mogą skierować `MARINARA_NOTICES_URL` na własny plik.
 
 Żeby znaleźć serwer powiadomień, a przy włączonym [wychodzącym proxy](#outbound-http-proxy) także to proxy, Marinara czyta plik hosts i wysyła zapytania bezpośrednio do serwerów DNS. Nazwy znane tylko twojej sieci lokalnej, takie jak nazwy `.local` albo krótkie nazwy bez domeny inne niż `localhost`, nie działają. W środowisku Termux serwery DNS to te zapisane w pliku `$PREFIX/etc/resolv.conf`: serwery Google `8.8.8.8` i `8.8.4.4`, chyba że zmienisz ten plik.
-
-<a id="optional-multiplayer"></a>
 
 ## Opcjonalna gra wieloosobowa
 
@@ -261,8 +248,6 @@ Zewnętrzne pliki agentów, foldery i repozytoria są zablokowane. Żeby je dopu
 
 Każdy import najpierw pokazuje, o jakie uprawnienia prosi agent. Uprawnienia trzeba zatwierdzić wprost. Dołączone funkcje i wybory narzędzi nie są importowane, wygenerowany kod CSS jest oczyszczany, a działania wynikowe są sprawdzane względem zatwierdzonych uprawnień. Wyłączenie tej blokady zatrzymuje zaimportowanych agentów. Nie dotyczy to agentów utworzonych w aplikacji Marinara Engine ani pakietów oficjalnych.
 
-<a id="custom-agent-repositories"></a>
-
 ### Własne repozytoria agentów
 
 Repozytoria są domyślnie wyłączone, bo ich prompty i narzędzia są niesprawdzone. Ustaw `ENABLE_CUSTOM_AGENT_REPOS=true`, włącz **Allow custom Agent imports**, a potem otwórz **Biblioteka → Agenci → Własne źródła**, żeby podejrzeć publiczne repozytorium w serwisie GitHub. Dodanie źródła i zastosowanie późniejszych zmian wymagają potwierdzenia. Synchronizacja jest ręczna, a Marinara nigdy nie klonuje repozytoriów ani nie odpytuje ich w tle. Przyjmowane są tylko adresy URL głównego katalogu repozytorium w serwisie GitHub.
@@ -292,8 +277,6 @@ Nazwy importowanych zestawów zasad zawierają nazwę właściciela repozytorium
 Przy synchronizacji zdalne wartości promptów, ustawień i narzędzi zastępują pokazane w podglądzie wartości zarządzane z repozytorium. Twoje wybory kont i grafik pozostają lokalne. Jeśli agent zniknie u źródła, zostaje zwykłym agentem lokalnym i traci tylko powiązanie z repozytorium. Usunięcie źródła działa tak samo, a jego zestawy zasad pozostają zainstalowane.
 
 Własni agenci mogą też włączyć **Previous output** (poprzedni wynik) w sekcji Context Sources, żeby odczytać swój ostatni pomyślny wynik. Przy włączonym **JSON context output** (wynik kontekstu w JSON) zwracaj `{"text":"main prompt content","agent-context":"private continuation context"}`. Do głównego promptu trafia tylko `text`. **Hide output as spoilers** (ukryj wynik jako spoiler) zostawia zapisane wyniki zwinięte. Regeneracja pomija zastępowaną turę, a usunięte wiadomości i nieaktywne swipe'y nie mogą dostarczać kontekstu.
-
-<a id="external-extensions"></a>
 
 ### Rozszerzenia zewnętrzne
 
@@ -357,8 +340,6 @@ Konta wideo konfiguruje się w aplikacji. Te ustawienia tylko dostrajają zadani
 | `SEEDANCE_VIDEO_POLL_INTERVAL_MS` | `10000` | Jak często sprawdza zadanie Seedance. |
 | `VIDEO_REFERENCE_PUBLIC_BASE_URL` | pusta | Publiczny adres HTTPS tego serwera dla usług, które muszą pobrać obraz odniesienia po adresie URL. |
 
-<a id="lorebooks"></a>
-
 ### Lorebooki
 
 Oba ustawienia są domyślnie wyłączone i działają od następnego generowania po zmianie `.env`. Gdy zmienna `LOREBOOK_STABLE_GROUP_WINNERS` jest ustawiona, wygrywa z przełącznikiem **Stable lorebook picks** (stałe wybory lorebooka) w **Ustawienia → Zaawansowane → Księgi wiedzy**. W przeciwnym razie decyduje przełącznik. Zobacz [Przełączniki funkcji](configuration/features.md).
@@ -369,8 +350,6 @@ Oba ustawienia są domyślnie wyłączone i działają od następnego generowani
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | Zapisuje pełny tekst aktywowanych wpisów tylko przy najnowszej wiadomości asystenta lub narratora. Starsze wiadomości zachowują identyfikatory wpisów, klucze i wyniki. Znacznie zmniejsza czaty z dużymi lorebookami. Jeśli nowsze wiadomości zostaną usunięte, Active Context i ponowienia agentów pokazują bieżący tekst wpisu dla wiadomości, która znów jest najnowsza. |
 
 Skrypt `scripts/compact-lorebook-scans.mjs` stosuje tę samą regułę do starszych czatów. Najpierw zatrzymaj serwer. Bez `--apply` skrypt wykonuje tylko próbę, a przed zapisem tworzy kopię zapasową obu tabel wiadomości.
-
-<a id="robustness"></a>
 
 ### Odporność
 
@@ -402,8 +381,6 @@ Wszystkie ustawienia są domyślnie wyłączone, co zachowuje dotychczasowe dzia
 | `SIDECAR_RUNTIME_INSTALL_ENABLED` | `false` (program uruchamiający dla systemu Windows ustawia `true`) | Pozwala zainstalować środowisko **Built-in model** (model wbudowany) bez nagłówka administracyjnego na pętli zwrotnej. |
 
 Jak skonfigurować **Built-in model**, opisuje przewodnik [Konfiguracja modelu wbudowanego](connections/local-model.md).
-
-<a id="outbound-http-proxy"></a>
 
 ### Wychodzące proxy HTTP
 

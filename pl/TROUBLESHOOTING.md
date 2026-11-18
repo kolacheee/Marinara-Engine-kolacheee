@@ -5,10 +5,8 @@ Znajdź swój objaw i wykonaj opisaną naprawę. Większość problemów znika p
 ## Od czego zacząć
 
 1. Odśwież stronę z pominięciem pamięci podręcznej: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> w systemie Windows lub Linux, <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> na komputerze Mac.
-2. Zajrzyj do konsoli serwera (okna terminala, w którym działa Marinara) i poszukaj czerwonych linii z błędami. Zwykle nazywają one prawdziwy problem.
+2. Zajrzyj do konsoli serwera (okna terminala, w którym działa Marinara) i poszukaj czerwonych linii z błędami. Zwykle nazywają one prawdziwy problem. Jeśli serwer działa gdzie indziej (na NAS, VPS lub w kontenerze Docker), otwórz **Ustawienia → Zaawansowane → Otwórz konsolę**, żeby przeczytać te same linie w aplikacji.
 3. Jeśli chcesz poprosić o pomoc, najpierw włącz **Debug mode** (tryb diagnostyczny). Zobacz [Uzyskiwanie dalszej pomocy](#get-more-help).
-
-<a id="my-character-does-not-reply"></a>
 
 ## Postać nie odpowiada
 
@@ -75,8 +73,6 @@ Pętla zwrotna, adresy sieci prywatnych, Tailscale i mostek Docker są zaufane a
 CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 ```
 
-<a id="connection-and-generation-errors"></a>
-
 ## Błędy połączeń i generowania
 
 Błędy generowania pojawiają się jako powiadomienie na dole ekranu. Podaje ono przyczynę i zostaje na ekranie wystarczająco długo, żeby dało się je skopiować.
@@ -88,6 +84,7 @@ Błędy generowania pojawiają się jako powiadomienie na dole ekranu. Podaje on
 | Model zgłasza, że parametr jest wymagany | Włącz przełącznik tego parametru. |
 | **This model's chat template needs user and assistant messages to take turns** | Niektóre modele lokalne, na przykład modele z rodziny Mistral uruchamiane przez llama.cpp, wymagają wiadomości na przemian. Marinara łączy wiadomości następujące bezpośrednio po sobie i jeden raz próbuje ponownie. Jeśli problem nie znika, ustaw **Post-Processing Messages** (przetwarzanie wiadomości) na **Single User Message** (jedna wiadomość użytkownika) w **Chat Settings → Advanced Parameters** albo udostępnij model z mniej restrykcyjnym szablonem czatu. |
 | **The AI returned an empty response. Try sending your message again.** | Wyślij wiadomość ponownie. Jeśli to się powtarza, spróbuj innego modelu albo konta. |
+| **The model declined this request** (model odrzucił to żądanie) | Model odmówił napisania tej odpowiedzi. W trybie Game Mode zobacz [Model odmawia rozegrania tury](game/getting-started.md#the-model-declines-a-turn). W pozostałych trybach ponów próbę, a potem spróbuj innego modelu, presetu lub karty postaci. |
 | **A generation is already in progress for this chat** | Odpowiedź wciąż się generuje. Poczekaj albo kliknij **Stop** (zatrzymaj), a potem spróbuj ponownie. |
 | **No connections are marked for the random pool** | Losowe kierowanie jest włączone, ale w puli nie ma żadnego konta. Dodaj konto albo wyłącz losowe kierowanie. |
 | Każda wiadomość kończy się błędem sieci, a komputer łączy się z internetem tylko przez proxy | Wskaż to proxy aplikacji Marinara. Zobacz [Wychodzące proxy HTTP](CONFIGURATION.md#outbound-http-proxy). |
@@ -100,8 +97,6 @@ Problemy tuż po aktualizacji, najpierw w prostych słowach:
 - Czaty albo presety wyglądają na zniknięte: zobacz [Po aktualizacji wydaje się, że brakuje danych](#data-seems-missing-after-an-update). Dane prawie zawsze nadal są na dysku.
 - Czaty wyglądają na puste po powrocie do starszej wersji: zobacz [Po przejściu na starszą wersję czaty nie pokazują wiadomości](#chats-show-no-messages-after-switching-to-an-older-version).
 
-<a id="blank-stale-or-old-looking-screen"></a>
-
 ### Pusty, nieodświeżony lub staro wyglądający ekran
 
 Serwer działa, ale przeglądarka pokazuje pustą stronę albo aplikacja po aktualizacji wygląda staro. Przeglądarka trzyma kopię aplikacji internetowej zapisaną w pamięci podręcznej.
@@ -110,8 +105,6 @@ Serwer działa, ale przeglądarka pokazuje pustą stronę albo aplikacja po aktu
 2. Jeśli to nie pomaga, otwórz **Settings → Advanced → Updates** (ustawienia, zaawansowane, aktualizacje) i kliknij **Refresh App** (odświeżenie aplikacji).
 
 **Refresh App** czyści service worker przeglądarki (skrypt działający w tle, który zapisuje aplikację w pamięci podręcznej) oraz pamięć podręczną, a potem przeładowuje stronę. Nie zmienia danych i nie aktualizuje serwera. Aby zaktualizować samą aplikację, zobacz [Aktualizacja aplikacji Marinara Engine](UPGRADING.md).
-
-<a id="blank-page-or-javascript-served-as-html-after-an-update"></a>
 
 ### Pusta strona lub JavaScript zwracany jako HTML po aktualizacji
 
@@ -123,13 +116,9 @@ Błąd taki jak "Failed to load module script" z typem `text/html` oznacza, że 
 
 Jeśli nadal się nie udaje, zgłoś pełny URL pliku, którego nie udało się wczytać, status HTTP, Content-Type i pierwszy wiersz odpowiedzi, razem z wynikiem programu uruchamiającego.
 
-<a id="data-seems-missing-after-an-update"></a>
-
 ### Po aktualizacji wydaje się, że brakuje danych
 
 Nie usuwaj żadnych folderów z danymi. Marinara trzyma bieżące dane w folderze `storage` wewnątrz swojego folderu z danymi. Poszukaj folderu `storage` w `packages/server/data/` i w `data/`. Serwer wypisuje przy starcie foldery, które rozpoznał.
-
-<a id="chats-show-no-messages-after-switching-to-an-older-version"></a>
 
 ### Po przejściu na starszą wersję czaty nie pokazują wiadomości
 
@@ -201,8 +190,6 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=1 pnpm --config.trustPolicy=off --config.confirmModu
 
 Czaty i ustawienia pozostają nienaruszone. Jeśli Sharp nadal nie może się załadować, Marinara działa dalej z wyłączonym przetwarzaniem obrazów. Istniejące miniatury nadal się wyświetlają, zamiast nowych pojawia się obraz w pełnym rozmiarze, a generowanie sprite'ów i wbudowane usuwanie tła są niedostępne. Nie zastępuj biblioteki Sharp inną wersją. Zachowaj pełny komunikat błędu do zgłoszenia.
 
-<a id="browser-opens-before-startup-finishes"></a>
-
 ### Przeglądarka otwiera się przed zakończeniem uruchamiania
 
 Zaktualizuj aplikację i uruchom ją ponownie przez program uruchamiający. Otwiera on przeglądarkę dopiero wtedy, gdy serwer zgłosi gotowość. Jeśli start się nie powiedzie, żadna karta się nie otworzy, więc zachowaj błąd z terminala. Aby otwierać aplikację samodzielnie, ustaw `AUTO_OPEN_BROWSER=false`.
@@ -265,8 +252,6 @@ pnpm --config.trustPolicy=off --config.confirmModulesPurge=false install --froze
 4. **Embedding unavailable** oznacza, że żadne źródło embeddingów nie działa. Skonfiguruj konto do embeddingów albo pozwól wczytać wbudowany model. Aby używać jednego źródła we wszystkich czatach, wybierz je w polu **Embeddings** (embeddingi) w sekcji **Defaults** (ustawienia domyślne) panelu **Connections**.
 
 Wspomnienie powstaje dopiero po co najmniej 5 nowych wiadomościach. Funkcja pokazuje tylko wspomnienia, które mocno pasują do nowej wiadomości, więc może nie zwrócić nic nawet wtedy, gdy wspomnienia istnieją.
-
-<a id="advanced-memory-says-scenes-need-attention"></a>
 
 ### Advanced Memory zgłasza sceny wymagające uwagi
 
@@ -410,8 +395,6 @@ Aplikacja tworzy własne prywatne poświadczenie localhost i loguje się automat
 
 Sprawdź też, czy aplikacja i Termux używają tego samego portu. Domyślnie jest to `7860`. Jeśli aplikację zbudowano z innym portem, ustaw pasujący `PORT` w pliku `.env` środowiska Termux.
 
-<a id="android-localhost-opens-the-login-page-or-returns-401503"></a>
-
 ### Android localhost otwiera stronę logowania albo zwraca 401/503
 
 Instalacje środowiska Termux zarządzane przez plik APK chronią localhost prywatnym sekretem osobnym dla każdej instalacji, a aplikacja loguje się automatycznie. Jeśli strona logowania pojawia się wewnątrz aplikacji, zainstaluj [najnowszy plik APK](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk), ponownie dotknij **Install / Start Marinara** i wróć, gdy Termux skończy pracę.
@@ -484,8 +467,6 @@ pnpm store prune
 
 Jeśli obraz lite restartuje się przy każdym żądaniu do AI na Raspberry Pi 4 albo podobnym urządzeniu ARM, sprawdź kod wyjścia. Kod 132 lub SIGILL (procesor trafił na instrukcję, której nie potrafi wykonać) wskazuje na znany problem po stronie źródła w kompilacji Node w obrazie lite na części układów ARM. Na tym urządzeniu używaj zwykłego obrazu.
 
-<a id="a-server-extension-says-no-supported-sandbox-is-available"></a>
-
 ### Rozszerzenie Server Extension zgłasza brak obsługiwanej piaskownicy
 
 Rozszerzenia Server Extensions i surowe polecenia powłoki Professor Mari działają wyłącznie z mechanizmem Seatbelt w systemie macOS albo Bubblewrap w systemie Linux. Na natywnym hoście z systemem Linux zainstaluj `bwrap` i uruchom aplikację Marinara ponownie. Oficjalny obraz Docker zawiera Bubblewrap, ale domyślny kontener nie może tworzyć jego zagnieżdżonych przestrzeni nazw, więc Marinara pozostawia te funkcje wyłączone.
@@ -530,8 +511,6 @@ Pakiet ponownie wyeksportowany z pustą listą uprawnień jest traktowany jak be
 
 Po wyłączeniu rozszerzenia z pełnym dostępem do strony odśwież aplikację Marinara, jeśli pozostał element paska narzędzi, nakładka albo nasłuch zdarzeń. Sprzątanie odbywa się w miarę możliwości, bo kod strony może wywołać skutki uboczne, których Marinara nie śledzi.
 
-<a id="multiplayer-connection-or-turn-problems"></a>
-
 ## Problemy z połączeniem lub turami wieloosobowymi
 
 | Objaw | Rozwiązanie |
@@ -549,8 +528,6 @@ Zgłaszając błąd połączenia, podaj tryb, platformę, widoczny błąd i info
 ## Instalacja jako PWA w przeglądarce Chrome w systemie Android zawodzi przy włączonym logowaniu
 
 Użyj adresu HTTPS, zaloguj się i odśwież stronę po aktualizacji aplikacji Marinara. Aplikacja pobiera manifest z danymi uwierzytelniającymi, więc logowanie może pozostać włączone. Jeśli instalacja nadal jest niedostępna, sprawdź, czy proxy zwraca `/manifest.json` jako JSON, a nie stronę logowania lub błąd.
-
-<a id="get-more-help"></a>
 
 ## Uzyskiwanie dalszej pomocy
 

@@ -83,7 +83,7 @@ Gwiazdka obok listy rozwijanej oznacza profil używany automatycznie w nowych cz
 
 **Export settings profile (.json)** pobiera plik `.marinara-settings-profile.json`, który można zachować jako kopię zapasową albo udostępnić. **Import settings profile (.json)** tworzy nowy profil ze zgodnego pliku i nigdy nie nadpisuje istniejącego. Starsze eksporty nadal da się importować. Nieudany import pokazuje komunikat **Import failed**.
 
-Profile przechowują ustawienia, a nie tajne dane dostawców. Wyeksportowany albo zaimportowany profil pomija też webhook kopii czatu w serwisie Discord, adres DeepLX, klucz DeepL i adres Intiface. Profile zapisane w tej instalacji je zachowują. Wyeksportowane pliki nie zawierają persony ani lorebooków, ponieważ istnieją one tylko w tej instalacji.
+Profile przechowują ustawienia, a nie tajne dane dostawców. Wyeksportowany albo zaimportowany profil pomija też webhook kopii czatu w serwisie Discord, adres DeepLX, klucz DeepL i adres Intiface. Profile zapisane w tej instalacji je zachowują. Wyeksportowane pliki nie zawierają persony, lorebooków ani wyborów zmiennych presetu, ponieważ istnieją one tylko w tej instalacji.
 
 ## Profil Default
 
@@ -115,7 +115,7 @@ Profil może też przechowywać **wybory początkowe**: personę, lorebooki do w
 - **Save current chat settings into this profile** zachowuje personę, lorebooki i tło zapisane w samym profilu. Profil bez tła przejmuje tło czatu, gdy zapisujesz do niego ustawienia.
 - Aktualizacja innych czatów nigdy nie zmienia ich persony, lorebooków ani tła.
 
-Profil nie zastępuje treści należących do czatu: postaci, sprite'ów, podsumowania, tagów ani promptu sceny. Nie zawiera też historii rozmowy ani bieżącego stanu, takiego jak zmienne makr, postacie wyłączone przez ciebie czy pokój gry wieloosobowej.
+Profil nie zastępuje treści należących do czatu: postaci, sprite'ów, podsumowania, tagów, promptu sceny ani **Notatek autora**. Nie zawiera też historii rozmowy ani bieżącego stanu, takiego jak zmienne makr, postacie wyłączone przez ciebie czy pokój gry wieloosobowej. Profil zapisany we wcześniejszej wersji może nadal zawierać **Notatki autora**, ale zastosowanie go zachowuje własne notatki czatu.
 
 ### Co kopiuje Save and update
 
@@ -135,7 +135,7 @@ Wszystko inne zostaje tak, jak jest w danym czacie:
 - Połączenie, preset promptu i własny prompt czatu.
 - Fabuła i postacie czatu.
 - Lorebooki i tło czatu.
-- Notatki i postęp czatu.
+- **Notatki autora** i postęp czatu.
 - To, których komend Roleplay może używać tylko narrator czatu.
 - To, czy Noodle może korzystać z wiadomości czatu.
 

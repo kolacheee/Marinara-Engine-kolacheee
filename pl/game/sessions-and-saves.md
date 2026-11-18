@@ -14,8 +14,6 @@ Nie ma przycisku zapisu. Gra zapisuje się sama w trakcie rozgrywki.
 
 Powrót do wcześniejszego momentu opisuje sekcja [Jak gra zapisuje postępy](#how-your-game-saves).
 
-<a id="opening-session"></a>
-
 ## Otwieranie Session
 
 W **Session** (sesja) kończy się sesje, zaczyna nowe i czyta historię.
@@ -26,8 +24,6 @@ W **Session** (sesja) kończy się sesje, zaczyna nowe i czyta historię.
 4. Do wyboru są dwie zakładki: **Session History** (historia sesji) i **Journal** (dziennik). Do sterowania sesjami zostań w zakładce **Session History**.
 
 Jeśli okno zostało przeniesione przyciskiem **Put back in Chat Settings**, otwórz zamiast niego sekcję **Session** w Chat Settings.
-
-<a id="end-a-session"></a>
 
 ## Kończenie sesji
 
@@ -104,7 +100,7 @@ Game Mode przechowuje migawkę konfiguracji użytej przy tworzeniu każdej nowej
 3. Przejrzyj zapisaną przygodę, obsadę, model, prompt (tekst, który Marinara wysyła do AI), parametry generowania oraz ustawienia wizualne, storyboardu i narzędzi świata.
 4. Kliknij **Copy setup** (kopiowanie konfiguracji), żeby skopiować tekst, albo **Download setup** (pobranie konfiguracji), żeby zapisać plik tekstowy.
 
-> **Ostrzeżenie:** Tekst zawiera twoje długie preferencje gracza i własne instrukcje dla GM. Przeczytaj go przed publikacją. Dane logowania, adresy serwerów, klucze API i lokalne identyfikatory bazy danych nigdy się w nim nie znajdują.
+> **Ostrzeżenie:** Tekst zawiera twoje długie preferencje gracza i własne instrukcje dla GM. Pobrany plik zawiera też wytyczne dotyczące kategorii wiekowej gry i granice treści. Przeczytaj go przed publikacją. Dane logowania, adresy serwerów, klucze API i lokalne identyfikatory bazy danych nigdy się w nim nie znajdują.
 
 Karty postaci, persony, lorebooki, modele i konta są wymienione z nazwy, ale nie są dołączane, więc druga osoba potrzebuje własnych odpowiedników. Kampanie utworzone przed wprowadzeniem migawek nie odzyskają ustawień, których nigdy nie zapisano, dlatego sekcja **Initial Game Setup** pojawia się tylko wtedy, gdy istnieje wiarygodna migawka.
 
@@ -118,8 +114,6 @@ Karty postaci, persony, lorebooki, modele i konta są wymienione z nazwy, ale ni
 Widok może pokazywać **World Overview**, **Story Arc**, **Plot Twists**, **Party Arcs** oraz zapisane **Maps**, **NPCs** i **Character Cards**. Kliknij ten sam przycisk, teraz opisany jako **Hide Spoilers**, żeby je ukryć.
 
 Żeby zmienić te notatki, kliknij **Edit Spoilers**, zmień tekst i kliknij **Save Spoilers**. Część pól ma postać JSON, czyli ustrukturyzowanego formatu tekstowego. Edytuj je tylko wtedy, gdy znasz ten format, bo błędny JSON się nie zapisze.
-
-<a id="editing-game-data-by-hand"></a>
 
 ## Ręczna edycja danych gry
 
@@ -146,8 +140,6 @@ Zasady, których pilnuje sprawdzanie:
 - **World Edits** przechowuje twoje ręczne zmiany nałożone na świat, na przykład nowe nazwy miejsc albo dodane osoby. Sam świat nigdy się nie zmienia.
 
 Okno działa jak State Editor w trybie Roleplay. Zobacz [State Editor](../roleplay/hud-and-trackers.md#the-state-editor).
-
-<a id="how-your-game-saves"></a>
 
 ## Jak gra zapisuje postępy
 

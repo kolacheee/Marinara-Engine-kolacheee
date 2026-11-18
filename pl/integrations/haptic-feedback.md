@@ -12,6 +12,8 @@ Marinara Engine nie rozmawia z urządzeniem bezpośrednio. Wysyła komendy do da
 
 Jeśli aplikacja Intiface Central nie działa z uruchomionym serwerem, Marinara nie wyśle sygnałów dotykowych. Potrzebny jest też zainstalowany agent **Haptic Feedback**. Zobacz [Agenci: pomocnicy AI w czatach](../agents/agents-overview.md).
 
+> **Wskazówka:** Nie masz jeszcze zabawki? Nic nie szkodzi, możesz teraz kupić ją ze zniżką w [Lovense](https://www.lovense.com/r/dupchb)!
+
 ## Dodanie agenta Haptic Feedback
 
 1. Otwórz czat w trybie Conversation, Roleplay lub Game.
@@ -69,8 +71,6 @@ W każdym trybie czatu karta pokazuje kontrolkę **Touch sensitivity** (czułoś
 ## Przypadkowy kontakt
 
 Przełącznik **Incidental contact** (przypadkowy kontakt) z opisem "Tiny taps for accidental brushes and bumps." jest domyślnie wyłączony. Gdy jest wyłączony, AI pomija drobne przypadkowe dotknięcia i wysyła sygnały tylko przy kontakcie celowym lub zdecydowanym. Włącz go, żeby dostawać delikatne stuknięcia także przy muśnięciach i potrąceniach.
-
-<a id="use-it-from-another-device"></a>
 
 ## Korzystanie z innego urządzenia
 

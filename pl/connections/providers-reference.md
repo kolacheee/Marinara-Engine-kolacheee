@@ -145,7 +145,7 @@ Zobacz [Dostawcy generowania obrazów i konfiguracja](../media/image-providers.m
 
 ## Decision
 
-W zakładce **Decyzje** są kafelki **TypeSafe** (domyślny adres `https://api.typesafe.ai`), **Own decision server** (własny serwer decyzyjny) i **Built-in model (decisions)** (model wbudowany, decyzje). Usługi czatu korzystające z formatu czatu OpenAI też mogą obsługiwać decyzje, ale tylko z modelem, który zwraca logarytmy prawdopodobieństw (oceny każdej możliwej odpowiedzi). Model decyzyjny odpowiada na pytania typu tak lub nie dotyczące twojego czatu. Zobacz [Modele decyzyjne](decision-models.md).
+W zakładce **Decyzje** są kafelki **TypeSafe** (domyślny adres `https://api.typesafe.ai`), **Own decision server** (własny serwer decyzyjny) i **Built-in model (decisions)** (model wbudowany, decyzje). Zakładka zawiera też **NanoGPT**, **OpenRouter** i **Google Gemini**, które mają własne modele decyzyjne (zobacz [Przez NanoGPT](decision-models.md#through-nanogpt) i [Przez OpenRouter lub Google Gemini](decision-models.md#through-openrouter-or-google-gemini)). Inne usługi czatu korzystające z formatu czatu OpenAI też mogą obsługiwać decyzje, ale tylko z modelem, który zwraca logarytmy prawdopodobieństw (oceny każdej możliwej odpowiedzi). Model decyzyjny odpowiada na pytania typu tak lub nie dotyczące twojego czatu. Zobacz [Modele decyzyjne](decision-models.md).
 
 ## Audio
 
@@ -184,7 +184,7 @@ Włącz generowany dźwięk osobno dla każdej gry albo włącz **Sound effects*
 
 ## Embeddingi
 
-Embeddingi zamieniają tekst na listy liczb, dzięki czemu Marinara może znajdować powiązany tekst. Napędzają wyszukiwanie semantyczne w lorebookach i funkcję Memory Recall. Większość usług czatu pozwala ustawić model embeddingów i opcjonalne pole **Embedding endpoint URL** (adres URL endpointu embeddingów) w sekcji **Semantic search (embeddings)** w edytorze modelu.
+Embeddingi zamieniają tekst na listy liczb, dzięki czemu Marinara może znajdować powiązany tekst. Napędzają wyszukiwanie semantyczne w lorebookach i funkcję Memory Recall. Większość usług czatu pozwala ustawić model embeddingów i opcjonalne pole **Embedding endpoint URL** (adres URL endpointu embeddingów) w sekcji **Więcej** → **Wyszukiwanie semantyczne (embeddingi)** w oknie **Edytuj model**.
 
 **Anthropic**, **Claude (Subscription)**, **OpenAI (ChatGPT)** i **Grok CLI (Subscription)** nie potrafią tworzyć embeddingów. W ich przypadku użyj listy rozwijanej **Embedding provider** (dostawca embeddingów), żeby pożyczyć inne konto, na przykład zgodne z OpenAI, **Google Gemini** albo **Built-in model** (model wbudowany).
 

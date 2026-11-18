@@ -55,6 +55,7 @@ Każda rodzina ma własny przełącznik. Wszystkie są na początku włączone z
 | **8-Ball Pool** | Rozstawić bile do gry w bilard. | 8-Ball Pool |
 | **Tic-Tac-Toe** | Przyjąć wyzwanie do kółka i krzyżyka. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Przyjąć partię. | Rock-Paper-Scissors |
+| Inne gry, nazwane od danej gry | Rozpocznij albo zaakceptuj tę grę. | Ta gra, np. Blackjack lub Wordle |
 
 Informacje o **Influence** i **Notes** znajdziesz w [Łączenie czatu Conversation z czatem Roleplay lub Game](../chats/connected-chats.md). Ostatnia kolumna podaje agenta, którego trzeba zainstalować z **Biblioteka → Agenci**.
 

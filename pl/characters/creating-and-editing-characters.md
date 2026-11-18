@@ -63,8 +63,6 @@ Zakładka **Obrazy** zbiera wszystko, co dotyczy wyglądu postaci na obrazach. P
 
 Zakładka **Obrazy** persony ma te same części z wyjątkiem pola **Instrukcje selfie**.
 
-<a id="metadata-tab"></a>
-
 ## Zakładka Metadata
 
 Zakładka **Metadata** zbiera dane o tożsamości karty i jej porządkowaniu. Pomagają sortować, udostępniać i śledzić kartę. Większość z nich nie trafia do AI.
@@ -81,8 +79,6 @@ Zakładka **Metadata** zbiera dane o tożsamości karty i jej porządkowaniu. Po
 **Split description into fields** (podział opisu na pola) to przycisk pod polem **Version**. Przenosi oznaczone etykietami fragmenty tekstu (osobowość, wygląd, historię, scenariusz, zasady, przykładowy dialog) z pola **Description** do osobnych pól. Najpierw widać krótkie podsumowanie, a zastosowanie zmian zapisuje kartę jako nową wersję. Przycisk jest nieaktywny, dopóki pole **Description** jest puste.
 
 Na tej zakładce jest też panel **Version history** (historia wersji). Zobacz [Historia wersji](#version-history).
-
-<a id="card-tab"></a>
 
 ## Zakładka Card
 
@@ -112,8 +108,6 @@ Sekcja **Dialogue & Greetings** ustala, jak zaczyna się czat i jak brzmi posta�
 ```
 
 Powitania i przykładowe wiadomości mogą pokazywać obrazy z galerii postaci. Zobacz [Ponowne używanie obrazu z galerii w wiadomościach i powitaniach](galleries.md#reuse-a-gallery-image-in-messages-and-greetings). Gdy powitania pokazują obrazy z innych stron internetowych, przycisk **Save images locally** (zapisanie obrazów lokalnie) zachowuje ich kopię w galerii. Zobacz [Zapisywanie obrazów z sieci w powitaniach](galleries.md#save-web-images-from-greetings).
-
-<a id="write-a-card-field-with-the-wand"></a>
 
 ### Generowanie pola karty różdżką
 
@@ -158,11 +152,11 @@ Rozmiar obrazka pochodzi z rozmiaru obrazów **Portraits** (portrety) w ustawien
 
 Zakładka **Voice** (głos) ustala, jak brzmi postać, kiedy funkcja Text to Speech (synteza mowy) czyta jej wypowiedzi na głos.
 
-- **Voice**. Głos tej postaci. Zmiana zapisuje się od razu, bez klikania **Save**. To samo ustawienie co wiersz tej postaci w sekcji **Connections → Text to Speech** (połączenia, synteza mowy). Puste pole oznacza głos domyślny. Jeśli karta o pasującej nazwie, na przykład oryginał kopii AU, ma głos, w pustym polu widać nazwę tego głosu, bo ta karta również z niego korzysta.
+- **Voice**. Głos tej postaci. Zmiana zapisuje się od razu, bez klikania **Save**. To samo ustawienie co wiersz tej postaci w ustawieniach zadania **Głos** w panelu **Połączenia**. Puste pole oznacza głos domyślny. Jeśli karta o pasującej nazwie, na przykład oryginał kopii AU, ma głos, w pustym polu widać nazwę tego głosu, bo ta karta również z niego korzysta.
 - **Preview** (Odsłuchaj). Odtwarza krótką kwestię tym głosem. Pada w niej nazwa postaci albo, jeśli jest ustawiona, nazwa z pola **Phonetic name** (nazwa fonetyczna).
 - **Phonetic name**. Opcjonalny zapis, który służy wyłącznie do poprawienia wymowy. Należy do karty, więc kliknij **Save**, żeby go zachować.
 
-Kiedy funkcja Text to Speech jest wyłączona albo wszystkie postacie mają jeden wspólny głos, w miejscu pola **Voice** pojawia się krótka uwaga. Przy jednym wspólnym głosie uwaga proponuje przycisk **Use a voice per character** (osobny głos dla każdej postaci). Przycisk **Open Text to Speech settings** (otwarcie ustawień syntezy mowy) otwiera panel Connections. Zobacz [Konfiguracja syntezy mowy (TTS)](../media/tts-setup.md).
+Kiedy funkcja Text to Speech jest wyłączona albo wszystkie postacie mają jeden wspólny głos, w miejscu pola **Voice** pojawia się krótka uwaga. Przy jednym wspólnym głosie uwaga proponuje przycisk **Use a voice per character** (osobny głos dla każdej postaci). Przycisk **Open Text to Speech settings** (otwarcie ustawień syntezy mowy) otwiera ustawienia zadania **Głos** w panelu **Połączenia**. Zobacz [Konfiguracja syntezy mowy (TTS)](../media/tts-setup.md).
 
 ## Zakładka Advanced
 
@@ -173,8 +167,6 @@ Zakładka **Advanced** zbiera ustawienia promptu. Przy zwykłej postaci zostaw j
 - **Depth Prompt**. Tekst wstawiany do historii czatu. **Depth** (głębokość) to liczba wiadomości wstecz: 0 oznacza miejsce tuż za ostatnią wiadomością. Domyślnie 4. **Role** (rola) to **System**, **User** albo **Assistant**. Domyślnie System.
 
 Sekcja **Regex Scripts** zbiera skrypty typu znajdź i zamień, działające tylko dla tej jednej postaci. Zobacz [Skrypty regex](../extending/regex-scripts.md).
-
-<a id="use-an-alternative-field-in-selected-chats"></a>
 
 ## Alternatywne pola w wybranych czatach
 
@@ -200,11 +192,9 @@ Zasady:
 
 Aby usunąć wariant, kliknij jego przycisk kosza, potwierdź **Delete** (usunięcie), a potem kliknij **Save**. Jego czaty wracają do oryginalnego pola. Usunięcie wariantu nigdy nie usuwa oryginalnego pola.
 
-<a id="version-history"></a>
-
 ## Historia wersji
 
-Gdy przełącznik **Automatic versioning** jest włączony, każdy zapis może dołożyć migawkę do panelu **Version history** na zakładce **Metadata**. Do tego czasu panel pokazuje tekst `Previous card states will appear here after the next edit.` Licznik podaje liczbę zapisanych migawek.
+Gdy przełącznik **Automatic versioning** jest włączony, każdy zapis może dołożyć migawkę do panelu **Version history** na zakładce **Metadata**. Do tego czasu panel pokazuje tekst `Previous card states will appear here after the next edit.` Licznik podaje liczbę zapisanych migawek. Aktualizacja postaci z nowszej karty zawsze najpierw zapisuje migawkę, nawet przy wyłączonym przełączniku. Zobacz [Aktualizowanie posiadanej postaci](import-export.md#update-a-character-you-already-have).
 
 Porównanie zapisanej wersji z bieżącą kartą:
 

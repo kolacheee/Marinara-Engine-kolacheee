@@ -45,6 +45,10 @@ Jest ich 24, w czterech kategoriach: **Milestone**, **Community**, **Creation** 
 - Kategoria **Collection** liczy wszystkie elementy danego typu w twojej bibliotece, także zaimportowane i pobrane. Przy odznace **Hoarder** wbudowana postać Professor Mari nigdy się nie liczy.
 - W przypadku osiągnięć społecznościowych wystarczy odwiedzić link. Nie trzeba się rejestrować w drugim serwisie.
 
+## Osiągnięcia Odkrywcy
+
+Ukończenie każdego zadania na ścieżce **Do wypróbowania** odblokowuje osiągnięcie tej ścieżki w kategorii **Odkrywca**. Każda ścieżka ma jedno: **Prosto z pieca** za Podstawy, a dalej **Obsada jak stąd do Hollywood**, **Fotograficzny bakcyl**, **Wiecznie online**, **Mistrz scenografii**, **Strażnik opowieści**, **Pancerz fabularny**, **Rzuć na inicjatywę**, **Zaklinanie promptów**, **Czas na przemeblowanie** i **Na pełnych bajerach**. W nowym układzie dochodzą **Jeszcze jedna zakładka**, **Porządek musi być**, **W pogoni za burzą** i **Jak cię widzą, tak cię piszą**. Pominięte zadania się nie liczą, więc jeśli zadanie jest wykonane, zaznacz je zamiast pomijać. Zobacz [Pierwsze kroki](welcome.md#things-to-try).
+
 Oprowadzenie **Podstawy AI** i każda grupa z sekcji **Zajrzyj głębiej** również mają własne osiągnięcie: **Bez bocznych kółek** za Podstawy AI, a dalej **Odczytano** (Conversation), **Żyję tą rolą** (Roleplay), **Paragraf na smoka** (Game), **Kręcę, więc jestem** (Dowolny tryb), **As w rękawie** (Postacie i karty), **Jeszcze jeden przypis** (Sztuczki z lorebookami), **Makroczary** (Sztuczki z promptami i makrami), **Usta na kłódkę** (Sztuczki z wiadomościami), **Za sznurki pociągam ja** (Agenci i połączenia), **Dźwięk i wizja** (Głos, obrazy i muzyka) i **Pod maską** (Motywy i rozszerzenia). Ukończenie wszystkich tematów we wszystkich grupach sekcji Zajrzyj głębiej odblokowuje **Na głęboką wodę**.
 
 ## Osiągnięcia od agentów
@@ -52,8 +56,6 @@ Oprowadzenie **Podstawy AI** i każda grupa z sekcji **Zajrzyj głębiej** równ
 Zainstalowani agenci mogą dodawać własne osiągnięcia. Pojawiają się one w tym samym oknie, za wbudowanymi, pod nagłówkiem takim jak **From Noodle** (od agenta Noodle). Działają według tych samych zasad, a agent może pokazywać własną grafikę odznaki.
 
 Jeśli usuniesz agenta, jego sekcja zniknie, a twoje odblokowania zostaną zachowane. Jeśli zainstalujesz go ponownie, znów będą widoczne jako odblokowane. Licznik na górze uwzględnia zainstalowanych agentów.
-
-<a id="turn-achievements-on-or-off"></a>
 
 ## Włączanie i wyłączanie osiągnięć
 

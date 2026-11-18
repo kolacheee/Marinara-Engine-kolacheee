@@ -77,8 +77,6 @@ Na pasku narzędzi są ikony eksportu, importu, przebudowy i wyczyszczenia wspom
 - Po zmianie modelu embeddingów stare fragmenty przestają pasować. Przebuduj je.
 - Usunięcie wiadomości czatu usuwa też jego fragmenty.
 
-<a id="chat-summary-roleplay"></a>
-
 ## Chat Summary (Roleplay)
 
 Chat Summary ściska starsze wiadomości w krótkie streszczenia, nazywane wpisami podsumowania. Każdy wpis może napisać AI albo ty, a każdy da się włączyć i wyłączyć. Funkcja jest przeznaczona wyłącznie dla czatów Roleplay.
@@ -143,8 +141,6 @@ Okno pokazuje najpierw tygodnie, a potem dni, których jeszcze nie zwinięto w t
 
 Dzień może nie mieć podsumowania, na przykład po imporcie starego czatu. W oknie panel **Missing Summaries** (brakujące podsumowania) ma przycisk **Backfill** (uzupełnij). Ponawia on próbę dla najwyżej 14 ostatnich dni naraz. Zmiana modelu podsumowań nie przepisuje istniejących wpisów dziennych ani tygodniowych.
 
-<a id="advanced-memory-recall-roleplay-and-game-mode"></a>
-
 ## Advanced Memory Recall (Roleplay i Game Mode)
 
 Advanced Memory Recall to opcjonalny tryb, który wspólnie zarządza oknem bieżącej historii, podsumowaniami ciągłości i starymi fragmentami. Dzieli czat na sceny, podsumowuje każdą zakończoną scenę i przywołuje sceny oraz dokładne wiadomości, które mają znaczenie dla danej odpowiedzi. Działa bez przełącznika Agents i nie wymaga pobieranego agenta.
@@ -189,8 +185,6 @@ Jeśli odzyskana historia zmieni scenę objętą ręczną poprawką, wyłącz t�
 
 Gałąź utworzona z przygotowanego czatu, na przykład przyciskiem **Branch from here** (utworzenie gałęzi stąd), zachowuje jego Advanced Memory. Gałąź utworzona w środku sceny ponownie otwiera tę scenę: jej stare podsumowanie zostaje odrzucone, a nowe powstaje, gdy scena się zamknie. Czat zaimportowany jako nowa gałąź jest przygotowywany jak zwykle.
 
-<a id="fixing-memory-problems"></a>
-
 ### Naprawianie problemów z pamięcią
 
 Gdy coś w pamięci czatu jest zepsute, na przycisku **Chat Settings** pojawia się stale świecąca kropka w twoim kolorze akcentu, a powiadomienie podaje, ile scen ma problemy. Każdy zestaw problemów jest zgłaszany raz, a kropka pozostaje, dopóki nie zostaną rozwiązane. W **Chat Settings → Memory Recall** problemy są wymienione nad ustawieniami. **Access memories for this chat** pokazuje tę samą kropkę.
@@ -215,8 +209,6 @@ Jeśli zmiany scen zostały przeoczone, na przykład gdy scena nigdy się nie sk
 
 Advanced Memory ponownie wyszukuje zmiany scen w tych wiadomościach i podsumowuje sceny, które się zmieniły. Używa modelu decyzyjnego, gdy włączone jest **Use Decision model**, a w przeciwnym razie modelu pomocniczego. Sceny spoza zakresu zachowują swoje granice i podsumowania. Jeśli zmieniłoby się podsumowanie edytowane przez ciebie, ponowne skanowanie zatrzymuje się i wskazuje tę scenę.
 
-<a id="optional-decision-model"></a>
-
 ### Opcjonalny model decyzyjny
 
 Model decyzyjny to mały model, który odpowiada na pytania typu tak lub nie. Jest domyślnie wyłączony i zapisywany osobno dla każdego czatu Roleplay.
@@ -229,8 +221,6 @@ Ten wybór jest niezależny od globalnego domyślnego modelu decyzyjnego.
 Model wykrywa granice scen podczas przygotowania historii i sprawdzania trwających scen. Przed nową odpowiedzią wybiera wspomnienia w dwóch przebiegach. Szczegóły opisuje sekcja [Jak działa przywoływanie decyzyjne](#how-decision-recall-works).
 
 Konta u zewnętrznych dostawców otrzymują niedawny tekst rozmowy oraz wstępnie wybrane podsumowania lub wiadomości do oceny i mogą naliczać opłaty za kilka żądań przy jednej odpowiedzi. Przywoływanie filtruje dostęp postaci przed wysłaniem kandydatów.
-
-<a id="deciding-who-sees-new-messages"></a>
 
 ### Decydowanie, kto widzi nowe wiadomości
 
@@ -258,8 +248,6 @@ Przy włączonym Advanced Memory nowa odpowiedź postaci może zmienić scenę a
 - Swipe albo ponowne wygenerowanie części tworzy nową wersję tylko tej wiadomości. W przypadku wcześniejszej części nowa wersja zachowuje tekst sprzed pierwszego podziału.
 - Funkcje Continue i Impersonate nigdy nie dzielą odpowiedzi.
 
-<a id="character-recollections"></a>
-
 ### Osobiste wspomnienia postaci
 
 Włącz **Character recollections**, żeby każda postać miała własne wspomnienie sceny. Opcja jest domyślnie wyłączona.
@@ -285,8 +273,6 @@ Edycja i wyłączanie:
 
 - W **Access memories for this chat** otwórz scenę, żeby przeczytać i edytować każde osobiste wspomnienie. Edytowane wspomnienie jest oznaczone etykietą **Manually edited** (edytowano ręcznie) i nigdy nie zostaje zastąpione. **Delete** na dobre usuwa je z promptów, ale możesz wpisać nowe.
 - Wyłączenie ustawienia zachowuje zapisane osobiste wspomnienia, ale nie trafiają one do promptów. Eksport, import i gałęzie je obejmują.
-
-<a id="in-game-mode"></a>
 
 ### W trybie Game Mode
 
@@ -365,8 +351,6 @@ Otwórz je, żeby przeszukiwać ponumerowane podsumowania scen, sprawdzać ich r
 - Nowe podsumowania oznaczają widoczność wiadomości, opisują wspólne wydarzenia zwykłym tekstem i używają `{{#if character == "Name"}}…{{/if}}` dla prywatnych części. Jeśli zmieni się widoczność albo postać docelowa podsumowania, stare podsumowanie nie jest udostępniane postaciom z częściowym dostępem, dopóki ponownie nie przygotujesz tej sceny (**Fix** robi to dla każdej takiej sceny) albo nie sprawdzisz i nie zapiszesz jej warunków prywatności. Postać, która dołącza później, się nie liczy, chyba że widzi tylko część sceny. Starsze podsumowania wymagają jednego uruchomienia **Fix** po dołączeniu postaci. Postacie z dostępem do wszystkich wiadomości źródłowych nadal mogą przywołać scenę. Ręcznie poprawiony tekst nigdy nie jest po cichu przepisywany.
 - Daty sceny są wspólne dla wszystkich przypisanych uczestników. Surowe fragmenty nigdy nie zawierają wiadomości ukrytych przed postacią ani szeptów. Podsumowanie z częściami tylko dla niektórych postaci nadal dostaje fragment, który cytuje tylko to, co dana postać widziała. Żeby wiadomość nie trafiła do pamięci postaci, ukryj ją przed tą postacią.
 - W scalonym czacie grupowym przywoływanie obejmuje to, co pamięta co najmniej jedna postać. Scena lub prywatna część, której nie zna każda postać, jest oznaczana, na przykład "known only to Kaito". Fragment cytuje tylko wiadomości, które widziała każda postać pamiętająca scenę. Wspomnienia, których nie pamięta żadna postać, na przykład sceny dostępne tylko narratorowi, pozostają pominięte. W czatach grupowych, w których postacie odpowiadają po kolei, każda postać przywołuje tylko własne wspomnienia.
-
-<a id="how-decision-recall-works"></a>
 
 ### Jak działa przywoływanie decyzyjne
 

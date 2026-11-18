@@ -49,13 +49,9 @@ Jeśli to nie zadziałało: tekst, który nie jest zapisem `NdM` ani samym `dM`,
 
 Możesz rzucić najwyżej 100 kośćmi naraz, a każda kość może mieć najwyżej 1000 ścianek. Zwykły rzut powyżej tych limitów zostaje do nich przycięty, a karta pokazuje przyciętą notację, więc `500d6` daje kartę `100d6`. Rzut z zachowywaniem lub odrzucaniem kości powyżej limitów, taki jak `101d6kh3`, zostaje odrzucony z błędem przekroczenia zakresu, ponieważ przycięcie zmieniłoby to, które kości zostają zachowane.
 
-<a id="skill-checks"></a>
-
 ## Testy umiejętności
 
 Test umiejętności sprawdza coś ryzykownego, na przykład skradanie, dostrzeżenie poszlaki albo przekonanie postaci NPC (postaci niezależnej). Testu nie zaczynasz samodzielnie. GM wywołuje go w swojej narracji, a Marinara zamienia go w animowany rzut d20 z banerem wyniku. Baner pokazuje umiejętność i liczbę do osiągnięcia, na przykład **Stealth Check** (test skradania) z **DC 15**. Każdy rozstrzygnięty test dostaje osobny baner, po kartach rzutów czekających w kolejce.
-
-<a id="how-the-result-is-decided"></a>
 
 ### Jak liczy się wynik
 
@@ -65,8 +61,6 @@ Test rzuca jedną kością d20 i dodaje dwa modyfikatory:
 - Modyfikator statystyki wynikający ze statystyki, na której opiera się umiejętność. Dostępne statystyki zależą od rodzaju gry, jak opisano niżej.
 
 W grze współdzielonej każdy test korzysta ze statystyk postaci, którą wskazuje.
-
-<a id="mrpg-games"></a>
 
 #### Gry MRPG
 
@@ -84,13 +78,9 @@ W grze z klasami **MRPG**, czyli każdej nowej grze, modyfikator statystyki poch
 
 Test dodaje jedną piątą części tej statystyki powyżej 3, zaokrągloną w dół, od -1 do +5. Słaba statystyka (2 lub mniej) odejmuje 1, zwykła nie dodaje nic, najlepsza statystyka nowej postaci dodaje około +1, statystyka na poziomie 10 dodaje +2, a najlepsza na najwyższym poziomie +5. Ponieważ statystyki wynikają z aktywnej klasy, zmiana klasy zmienia również te premie.
 
-<a id="legacy-games"></a>
-
 #### Gry Legacy
 
 W grze **Legacy** modyfikator pochodzi z atrybutu przypisanego do umiejętności na arkuszu postaci. Każda umiejętność ma automatycznie przypisany jeden atrybut: Stealth korzysta z Dexterity, Perception z Wisdom, a Persuasion z Charisma. Umiejętność, której Marinara nie rozpoznaje, korzysta z Intelligence.
-
-<a id="the-result"></a>
 
 #### Wynik
 
@@ -100,6 +90,15 @@ Jeśli suma osiągnie DC albo je przebije, test się udaje. Dwa wyniki rzutu uni
 - Naturalna 1 to **CRITICAL FAILURE** (porażka krytyczna) i zawsze oznacza niezdany test.
 
 Baner pokazuje **CRITICAL SUCCESS**, **SUCCESS** (sukces), **FAILURE** (porażka) albo **CRITICAL FAILURE**.
+
+### Testy umiejętności w grze o łagodnym stylu
+
+W grze ze stylem opowieści **Łagodny** GM wywołuje mniej testów, a sam rzut działa tak samo. Zobacz [Łagodny styl opowieści](getting-started.md#the-gentle-story-style).
+
+- GM prosi o test tylko wtedy, gdy własna umiejętność lub wybór twojej postaci może zmienić wynik.
+- Nigdy nie wykonuje rzutu przeciwko czemuś, na co twoja postać nie ma wpływu lub co jest częścią jej tożsamości, jak niepełnosprawność, choroba przewlekła, jej ciało czy pochodzenie. Opowieść przedstawia to jako część postaci, wraz ze sposobami, którymi już sobie radzi.
+- Życzliwość, zaufanie i rozwój relacji między postaciami wynikają z tego, co wspólnie robią, a nie z rzutu.
+- Nieudany test oznacza niepowodzenie próby, a nie porażkę samej postaci: próba się nie udaje, trwa dłużej, coś kosztuje lub przyciąga uwagę. **CRITICAL FAILURE** oznacza większą komplikację, a nie katastrofę.
 
 ### Ułatwienie i utrudnienie
 
@@ -111,15 +110,11 @@ Zanim dojdzie do testu, dodaj do kolejki `d20` z menu kości. Test użyje wtedy 
 
 Jak GM kończy turę po rzucie i ile to kosztuje, opisuje część [Jak opisywana jest tura z rzutem](#how-a-rolled-turn-is-narrated).
 
-<a id="games-that-use-a-ruleset"></a>
-
 ### Gry z zestawem zasad
 
 W grze z zestawem zasad, na przykład 5e (SRD 5.1), testy korzystają z kości, skali trudności i modyfikatorów arkusza postaci określonych przez zestaw, a w niektórych zestawach zasad – z puli kości lub kości z symbolami. Zobacz [Testy z zestawem zasad](rulesets.md#checks-on-a-ruleset).
 
 ## Szczegóły
-
-<a id="how-a-rolled-turn-is-narrated"></a>
 
 ### Jak opisywana jest tura z rzutem
 
@@ -134,8 +129,6 @@ Gdy GM wywołuje test w tekście, Marinara rozstrzyga rzut i ma trzy sposoby dok
 Przy **Narrate dice outcomes immediately**, jeśli dodatkowe żądanie się nie powiedzie, tura zachowuje rozstrzygnięte wyniki w dzienniku, bez zapisywania zgadywanego lub częściowego wyniku. Przy turze pozostaje komunikat z przyciskiem **Regenerate turn** (wygeneruj turę ponownie), także po ponownym załadowaniu. Żądanie bez żadnego rzeczywistego rzutu nigdy nie uruchamia dodatkowego żądania.
 
 Na połączeniu obsługującym narzędzie kości GM może zamiast tego uzyskać rzeczywisty rzut już podczas generowania. Karta rzutu pojawia się, gdy tylko narzędzie zwróci wynik, a zakończony test zapisuje ten wynik bez ponownego rzucania.
-
-<a id="finishing-a-rolled-turn-in-one-request"></a>
 
 #### Kończenie tury z rzutami jednym żądaniem
 
@@ -154,8 +147,6 @@ Test zapisany w żadnej z tych form przechodzi na ostatnie z tych zachowań, wi�
 - Tura nadal może kosztować więcej niż jedno żądanie w dwóch przypadkach: gdy **Enable Tool Use** (zezwolenie na korzystanie z narzędzi) jest włączone, a narzędzie kości jest na twojej liście narzędzi (wywołanie narzędzia kosztuje pełną dodatkową rundę), albo gdy **Game tool provider** (dostawca dla narzędzi gry) jest ustawiony na coś innego niż **Same as narrator** (takie samo jak narrator), bo wtedy zawsze wykonuje się żądanie planowania.
 - Gdy czegoś nie da się rzucić, liczbę zastępuje krótki komunikat, a nigdy wymyślona wartość. **Logs** podaje, co pominięto.
 - Podczas pisania tury znaczniki i bloki rozgałęzień są wstrzymywane w strumieniowanym tekście, więc nigdy nie widzisz, jak liczba się zmienia.
-
-<a id="symbol-dice-by-name"></a>
 
 ### Kości symboliczne po nazwie
 

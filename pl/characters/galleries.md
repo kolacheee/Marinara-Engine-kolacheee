@@ -1,6 +1,6 @@
 # Galerie postaci i person
 
-**Galeria**, część zakładki **Obrazy** w edytorach postaci i person, przechowuje obrazy i filmy powiązane z postacią lub personą, więc zostają nawet po usunięciu czatów. Używaj jej do arkuszy referencyjnych, wariantów strojów i zaimportowanych paczek obrazów. Możesz też oznaczyć obraz z galerii jako własne emoji, naklejkę albo tło, które towarzyszy postaci w każdym czacie.
+**Galeria**, część zakładki **Obrazy** w edytorach postaci i person, przechowuje obrazy i filmy powiązane z postacią lub personą, więc zostają nawet po usunięciu czatów. Używaj jej do arkuszy referencyjnych, wariantów strojów i zaimportowanych paczek obrazów. Możesz też tworzyć nowe obrazy przy użyciu AI i oznaczyć obraz z galerii jako własne emoji, naklejkę albo tło, które towarzyszy postaci w każdym czacie.
 
 ## Gdzie znaleźć galerię
 
@@ -28,6 +28,39 @@ Kliknij obraz, żeby zobaczyć go w powiększeniu. Każdy kafelek ma przycisk po
 3. Poczekaj na koniec wgrywania.
 
 Obsługiwane formaty to MP4, WebM i MOV. Najnowsze wideo są na początku listy. To, które wideo ze scen i klipy pojawiają się u której postaci, opisuje sekcja [Które wideo są wymieniane](#which-videos-are-listed).
+
+## Tworzenie obrazów przy użyciu AI
+
+Przycisk **Utwórz z AI** w galerii tworzy nowe obrazy dla tej postaci lub persony przy użyciu twojego połączenia do generowania obrazów. W polu **Typ** wybierz, co chcesz utworzyć:
+
+| Typ | Co otrzymujesz |
+| --- | --- |
+| **Karta postaci** | Arkusz referencyjny, zapisywany tak samo jak z sekcji **Arkusz postaci**. |
+| **Tło** | Szeroki obraz miejsca, którego punktem wyjścia jest scenariusz karty. Trafia do galerii i jest oznaczany jako tło czatu. |
+| **Arkusz naklejek** | Jeden obraz z kilkoma naklejkami, dzielony na osobny obraz dla każdej naklejki. |
+| **Arkusz emoji** | To samo, w postaci małych emoji twarzy. |
+
+Zanim zaczniesz: dodaj połączenie do generowania obrazów.
+
+1. Otwórz **Obrazy → Galeria** i kliknij **Utwórz z AI**.
+2. Wybierz **Typ** i edytuj prompt, jeśli chcesz innego wyglądu lub miejsca.
+3. Dla arkusza naklejek lub emoji podaj nazwy w polu **Naklejki do narysowania** albo **Emoji do narysowania**, rozdzielając je przecinkami. Na jednym arkuszu mieści się do 16 elementów.
+4. Kliknij **Generuj**.
+5. Kliknij **Zapisz jako tło**, **Zapisz naklejki**, **Zapisz emoji** albo **Zapisz jako arkusz postaci**.
+
+### Poprawianie podziału arkusza
+
+Po wygenerowaniu arkusza naklejek lub emoji każda naklejka jest rozpoznawana po obrysie, jej zielone tło jest usuwane, a ona pojawia się jako osobny kafelek z nazwą. Zapisane naklejki mają najwyżej 512 na 512 pikseli, a emoji najwyżej 256 na 256. Każdy element jest oznaczany swoją nazwą.
+
+- Kliknij kafelek, żeby go zachować lub pominąć. Pominięte kafelki nie są zapisywane.
+- Edytuj nazwę pod kafelkiem, żeby ją zmienić.
+- Kliknij **Wytnij ponownie ramką** na kafelku, żeby umieścić ramkę na całym arkuszu. Przeciągnij ramkę, pociągnij za jej rogi albo narysuj nową wokół naklejki, a potem kliknij **Użyj tej ramki**.
+- Kliknij **Dodaj naklejkę** albo **Dodaj emoji**, żeby wyciąć pominięty element.
+- Kliknij **Wytnij ponownie**, żeby rozpocząć wycinanie od nowa i cofnąć swoje ramki.
+
+### Samodzielne napisanie całego promptu
+
+Prompt wysyłany do modelu obrazów powstaje na podstawie pól w oknie. Żeby zmienić go w całości, na przykład poprosić o naklejki z rzeczami lubianymi przez postać, a nie tylko z samą postacią, kliknij **Edytuj pełny prompt**. Jest wysyłany dokładnie w napisanej przez ciebie postaci. Zmiany w pozostałych polach trafiają do niego dopiero po kliknięciu **Zbuduj ponownie**, co zastępuje też twoje zmiany. Kliknij przycisk zamknięcia obok **Zbuduj ponownie**, żeby wrócić do promptu tworzonego z pól.
 
 ## Oznaczanie obrazu z galerii jako własne emoji lub naklejka
 
@@ -66,7 +99,16 @@ Obrazy wygenerowane na czacie możesz przenieść tutaj z galerii czatu przycisk
 
 Eksport w formacie **Marinara Native** zachowuje wszystkie oznaczenia (emoji, naklejki i tła) wraz z galerią.
 
-<a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
+## Opisywanie obrazów
+
+Każdy obraz w galerii może mieć krótki opis tego, co przedstawia. Czaty w trybie Conversation używają opisów oznaczonych emoji i naklejek, żeby wybrać, które zaproponować (zobacz [Opisywanie emoji i naklejek](../conversation/emoji-stickers-gifs.md#describe-emojis-and-stickers)). Opis jest zapisywany wraz z obrazem i trafia do eksportu **Marinara Native**.
+
+- Żeby go napisać, kliknij przycisk tagu w lewym górnym rogu obrazu i wybierz **Dodaj opis** albo **Edytuj opis**, żeby go zmienić.
+- Żeby zlecić pisanie AI, kliknij **Zaznacz obrazy**, wybierz obrazy, a potem kliknij **Opisz z AI**. Model **Odczytywanie obrazów** ogląda każdy z nich i pisze krótki opis. Jeśli część ma już opis, wybierz opisanie tylko tych bez opisu albo wszystkich ponownie.
+
+Zanim zaczniesz: opisy AI wymagają modelu, który potrafi odczytywać obrazy. Marinara używa modelu **Odczytywanie obrazów**, jeśli ustawisz go w sekcji **Za kulisami** w ustawieniach połączenia, a w przeciwnym razie modelu agentów. Jednocześnie wysyłanych jest do 8 obrazów, więc duży wybór zajmuje chwilę.
+
+Galeria samego czatu ma tę samą opcję **Opisz z AI** w trybie zaznaczania.
 
 ## Ponowne używanie obrazu z galerii w wiadomościach i powitaniach
 
@@ -92,8 +134,6 @@ Gdzie to nie działa:
 
 Pełne łącze zawiera wewnętrzny identyfikator postaci, a identyfikatory powstają od nowa przy imporcie postaci, więc pełne łącza psują się u każdego, komu udostępnisz postać. Format `self` nie zawiera identyfikatora. Przetrwa eksport i import w formacie **Marinara Native**, bo obrazy galerii podróżują w eksporcie razem z nazwami plików. Eksporty **Compatible PNG Card** i **Compatible JSON** nie zawierają galerii, więc po takim udostępnieniu żadne odwołanie do galerii nie zadziała. Gdy postać używa obrazów z galerii, użyj formatu **Marinara Native**.
 
-<a id="save-web-images-from-greetings"></a>
-
 ### Zapisywanie obrazów z sieci w powitaniach
 
 Wiele kart pokazuje w powitaniach obrazy z innych stron internetowych, a takie łącza mogą przestać działać. Gdy pola **First Message** lub **Alternate Greetings** pokazują obrazy z sieci, sekcja **Dialogue & Greetings** ma przycisk **Save images locally** (zapisanie obrazów lokalnie).
@@ -105,8 +145,6 @@ Wiele kart pokazuje w powitaniach obrazy z innych stron internetowych, a takie �
 Nic nie jest pobierane, dopóki nie klikniesz przycisku. Zapisywane są tylko obrazy PNG, JPEG, GIF i WebP o rozmiarze do 10 MB i do 40 megapikseli. Łącza do twojego komputera lub sieci domowej są odrzucane. Obraz, którego nie da się zapisać, zachowuje łącze internetowe, a powiadomienie wyjaśnia przyczynę.
 
 **Restore web links** (przywrócenie łączy internetowych) wstawia z powrotem do powitań oryginalne łącza. Zapisane kopie zostają w galerii, dopóki ich nie usuniesz. Obrazy z lorebooków nie są objęte tą funkcją.
-
-<a id="which-videos-are-listed"></a>
 
 ## Które wideo są wymieniane
 

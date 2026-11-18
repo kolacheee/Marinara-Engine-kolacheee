@@ -94,6 +94,9 @@ Ta właściwość nie jest zapisywalna ani konfigurowalna, a przestrzeń nazw or
 | `modules` | Moduły bibliotek według samego specyfikatora (poniżej). |
 | `queryClient` | Jedyny `QueryClient` React Query, z którym renderuje się silnik. |
 | `components.Modal` | `Modal` silnika, z jego kolejnością nakładek oraz obsługą klawisza Escape i przycisku Wstecz. |
+| `components.Switch`, `components.Checkbox` | Od Capability API 1.830: wspólny przełącznik i pole wyboru silnika, dzięki którym pakiet pasuje do wyglądu hosta. |
+| `components.Spinner` | Od Capability API 1.830: wspólny pierścień ładowania silnika. Jest ukryty przed czytnikami ekranu, chyba że przekażesz `label`, co nadaje mu rolę obszaru statusu. |
+| `components.showConfirmDialog` | Od Capability API 1.830: okno potwierdzenia silnika, ta sama funkcja co `services.dialogs.showConfirmDialog`. |
 | `data.emojiCatalog` | Moduł `lib/emoji-catalog.generated.ts`. |
 | `api` | Moduł `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 

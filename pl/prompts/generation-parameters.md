@@ -42,6 +42,8 @@ Każdy parametr liczbowy ma pole do wpisania wartości i przełącznik Send (zob
 - Przy włączonym przełączniku Send wartość **Off** prosi usługę o wyłączenie myślenia, o ile wiadomo, że model to obsługuje. Część modeli nie potrafi wyłączyć myślenia i nadal może zwracać rozumowanie. Gdy myślenia ma nie być, wybierz model, który nie rozumuje.
 - Przy wyłączonym przełączniku Send nie jest wysyłana żadna preferencja co do rozumowania, a usługa używa własnego ustawienia domyślnego.
 
+MiniMax M3.1 Flash w NanoGPT zawsze rozumuje. Oferuje poziomy od **Niski** do **Maks.**. NanoGPT używa poziomu **Maks.**, gdy nie otrzyma ustawienia wysiłku, a Marinara wysyła **Niski** dla wcześniej zapisanej opcji **Wył.**.
+
 **Verbosity** ustala, jak długie i szczegółowe mają być odpowiedzi: **None**, **Low**, **Medium** albo **High**. Korzystają z tego tylko niektóre modele.
 
 ## Wskazówki dotyczące dostrajania
@@ -56,8 +58,6 @@ Zmieniaj po jednym ustawieniu naraz, żeby widzieć, co pomogło. To zasady z do
 | Postać powtarza te same sformułowania | Podnieś nieco **Frequency** albo **Presence**, do wartości między 0,3 a 0,6. |
 
 Aby zobaczyć, jakie parametry wysłano z daną wiadomością, użyj funkcji **Peek Prompt**. Pokazuje złożony prompt, a do tego model, temperaturę, maksymalną liczbę tokenów, poziom rozumowania i więcej.
-
-<a id="the-send-switch"></a>
 
 ## Przełącznik Send
 
@@ -152,11 +152,11 @@ Marinara ustala każdy parametr według tej listy. Późniejsze pozycje nadpisuj
 
 Wiersz **Effective** obok parametru pokazuje wartość, która wygrywa, i warstwę, z której pochodzi, na przykład **Effective: 16384 · this chat** albo **Effective: 4096 · output token cap**, gdy obowiązuje limit konta. Wyłączony przełącznik Send pokazuje **not sent**. Usługi nadal mogą wymagać parametrów lub dostosowywać nieobsługiwane wartości. Custom Parameters i dopasowanie do kontekstu mogą zmienić ostateczne żądanie. Zresetowanie parametrów czatu usuwa tylko nadpisanie tego czatu (pozycja 3). Wartość pochodzi wtedy z **Chat defaults** konta, jeśli są ustawione, a w przeciwnym razie z presetu. Reguły trybu i limity odpowiedzi (pozycje 4 i 5) nadal obowiązują potem.
 
-<a id="parameters-for-agents"></a>
-
 ## Parametry agentów
 
-Wywołania agentów korzystają z **Chat defaults** zapisanych w koncie, na którym działają: własnym koncie agenta albo koncie czatu, gdy agent nie ma własnego. Przełączniki Send i limity modeli działają tak samo jak przy odpowiedzi na czacie. Presety i **Advanced Parameters** czatu nie zmieniają wywołań agentów, z wyjątkiem opisanej niżej reguły temperatury.
+Wywołania agentów korzystają z **Chat defaults** zapisanych w koncie, na którym działają: własnym koncie agenta albo koncie czatu, gdy agent nie ma własnego. Przełączniki Send i limity modeli działają tak samo jak przy odpowiedzi na czacie. Poniższe reguły wyjaśniają, kiedy agenci korzystają z ustawień **Advanced Parameters** czatu.
+
+W trybie Roleplay ustawienie **Wysiłek rozumowania** czatu i jego przełącznik Send dotyczą też opcji **Model promptów** agenta Illustrator. Automatyczne ilustracje, komendy narratora i ręcznie tworzone ilustracje korzystają z tego ustawienia czatu, jeśli je ustawisz. Model zapasowy używa własnego zapisanego poziomu wysiłku, jeśli go ma.
 
 - **Wysyłane do agentów:** Temperature, Top P, Top K, Frequency, Presence, Reasoning Effort, Verbosity, Service Tier, Custom Parameters, własne nagłówki oraz dodatkowe parametry, takie jak Top A albo ziarno losowości, dodane w **Settings** (Ustawienia), potem **Advanced** (zaawansowane), a następnie **Parameters**. Parametr z wyłączonym przełącznikiem Send nie jest wysyłany.
 - **Niewysyłane do agentów:** Max Output Tokens, sekwencje zatrzymania, prefille, Thinking Tags i inne ustawienia formatu promptu. Każdy agent zachowuje własne **Max Output Tokens**.
