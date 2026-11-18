@@ -94,15 +94,45 @@ El botón de etiqueta ahora muestra el nombre. Se aplican las mismas reglas de t
 
 Marinara le dice al personaje que responde qué emojis y stickers personalizados puede usar. Para cambiar cómo los elige, haz clic en el engranaje **Selection preferences** en la parte superior de la pestaña **Custom emojis** o **Stickers**. Ambos abren el mismo ajuste, guardado por chat.
 
-- **Semantic** (predeterminada): ofrece los que mejor encajan con la conversación reciente. Usa un modelo pequeño en tu propia computadora. Si eso no está disponible, elige al azar.
+- **Semantic** (predeterminada): ofrece los que mejor encajan con la conversación reciente. Usa un modelo pequeño en tu propia computadora. Si eso no está disponible, elige al azar. Cuando responde un personaje, sus propios emojis y stickers se ordenan junto con los compartidos, y los suyos tienen prioridad cuando las puntuaciones son parecidas.
 - **Random**: ofrece un conjunto aleatorio en cada respuesta.
 - **Tool-call**: un modelo elige los adecuados en cada respuesta. Elige un modelo en **Select a model...**. Si no hay ninguno definido o falla, usa el modo semántico. Se omite cuando varios personajes responden en un mismo turno grupal.
 
 **Max offered (each)** es cuántos nombres de emoji y cuántos nombres de sticker se ofrecen por turno. El valor predeterminado es 20, de 1 a 100.
 
+Si un personaje escribe el nombre de un sticker como si fuera un emoji, por ejemplo `:hug:` en vez de `sticker:hug:`, la respuesta muestra el sticker. Esto ocurre solo cuando ningún emoji personalizado tiene ese nombre.
+
+### Describir emojis y stickers
+
+Una descripción dice qué muestra un emoji o sticker y qué emoción transmite, por ejemplo "gato asomándose sobre una almohada; tímido, avergonzado". Ayuda cuando el nombre no indica qué significa la imagen.
+
+- Para escribir una, haz clic en **Edit** en la pestaña **Custom emojis** o **Stickers**, y luego en el pequeño botón de descripción en la esquina de una ficha. Para uno etiquetado en la galería, haz clic en su botón de etiqueta y elige **Add description** (Agregar descripción).
+- Para que la IA las escriba, haz clic en **Edit** y luego en **Describe with AI** (Describir con IA). El modelo de **Image reading** (Lectura de imágenes) mira cada imagen y escribe una descripción breve. Si algunas ya tienen una, elige **Describe only the … without** (Describir solo los … sin descripción), solo los que no tienen ninguna, o **Describe all … again** (Volver a describir todos los …).
+
+Antes de empezar: las descripciones de IA necesitan un modelo que pueda leer imágenes. Marinara usa el modelo de **Image reading** si configuraste uno en **Behind the scenes** (Entre bastidores) en los ajustes de conexión, y de lo contrario el modelo de tus agentes.
+
+Dos ajustes de **Selection preferences** las usan:
+
+- **Use descriptions** (Usar descripciones), activado de forma predeterminada: ordena por la descripción además del nombre al elegir cuáles ofrecer, en **Semantic** y **Tool-call**. No agrega nada al prompt.
+- **Show descriptions to the model** (Mostrar descripciones al modelo), desactivado de forma predeterminada: también enumera la descripción de cada elemento ofrecido junto a su nombre, para que el modelo sepa qué significa. Agrega aproximadamente de 1.000 a 1.800 tokens de entrada por respuesta con el valor predeterminado de 20 elementos ofrecidos.
+
+Las descripciones que solo eligen cuáles se ofrecen no enseñan al modelo qué significa un nombre. Si un nombre dice lo contrario de la emoción que transmite, como un `:fine:` sarcástico, activa **Show descriptions to the model** o **Show them to the model** (Mostrarlos al modelo).
+
+### Mostrarlos al modelo
+
+Normalmente el modelo solo ve los nombres de tus emojis y stickers personalizados. Si el modelo del chat puede leer imágenes, **Show them to the model**, en el mismo panel, también le envía imágenes para que sepa cómo es cada uno. Esto ayuda sobre todo con los nombres que no describen la imagen.
+
+- **Off** (Desactivado), predeterminado: solo nombres.
+- **Last message** (Último mensaje): muestra los emojis y stickers personalizados del mensaje más reciente.
+- **Recent** (Recientes): muestra los de los últimos mensajes. **Messages to look at** (Mensajes que revisar) establece cuántos, de 2 a 20. El valor predeterminado es 6.
+
+**Offered ones on the sheet** (Elementos ofrecidos en la hoja) agrega esa cantidad de emojis ofrecidos y esa cantidad de stickers ofrecidos a las imágenes, de 0 a 30. El valor predeterminado es 6. Una hoja contiene hasta 30 emojis y 12 stickers; los del chat van primero, así que los ofrecidos llenan el espacio que queda.
+
+El modelo recibe una imagen de emojis numerados y otra de stickers numerados en cada respuesta, con los nombres exactos en texto. Esto cuesta tokens de entrada adicionales por respuesta (los tokens son los fragmentos pequeños de texto e imágenes por los que cobra un servicio), aproximadamente 1.000 con los valores predeterminados. No hace nada cuando el modelo del chat no puede leer imágenes o **Image captioning** (Descripción de imágenes) está activado. Si el modelo rechaza las imágenes, Marinara envía solo los nombres.
+
 ## Las reacciones usan solo tus emojis personalizados principales
 
-Puedes reaccionar a un mensaje con un emoji personalizado, pero solo con los emojis que subiste en la pestaña **Custom emojis**. Los emojis, stickers y GIF etiquetados desde la galería no están disponibles como reacciones. Consulta [Reaccionar y recibir avisos](getting-started.md#react-and-get-notified).
+Puedes reaccionar a un mensaje con un emoji personalizado, pero solo con los emojis que subiste en la pestaña **Custom emojis**. Los emojis, stickers y GIF etiquetados desde la galería no están disponibles como reacciones. Cuando un personaje reacciona con el nombre de un sticker, la reacción muestra ese sticker. Consulta [Reaccionar y recibir avisos](getting-started.md#react-and-get-notified).
 
 ## Guías relacionadas
 

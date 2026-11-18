@@ -22,8 +22,6 @@ Secciones de esta página:
 
 Las armaduras, las armas, las pociones, el equipo, la munición y el dinero son objetos. Un bloque opcional `items` declara las palabras con las que se escribe cada objeto de tu conjunto, y un catálogo con `holds: "items"` enumera los propios objetos. Ambos necesitan Capability API 1.49; `rarityCaps` y `propose` del bloque, que rigen los objetos que inventa el Game Master, necesitan 1.51; un valor que lee los objetos de un personaje (`itemStat`) necesita 1.52; lo que hace un objeto en las pruebas mientras se lleva puesto o encima, con los límites de `bonus` del bloque, necesita 1.53; lo que un objeto exige a quien lo lleva puesto y los atributos que cambia necesitan 1.54; el `attack` de un arma necesita 1.55; lo que hace un objeto en un combate necesita 1.56; lo que dispara un arma y lo que tiene cargado necesitan 1.57; los modos de un arma, el ataque con la mano secundaria, el mínimo y los estados al impactar necesitan 1.58; lo que hace usar un objeto en un combate, con las cargas que contiene, necesita 1.59; un uso que restaura una reserva necesita 1.60; las cargas recuperadas al descansar o un objeto que se rompe al vaciarse necesitan 1.61; un uso que pide antes una prueba (`gate`) necesita 1.62; las tablas de botín y el botín de una criatura necesitan 1.63; una línea de botín que suelta monedas o una capa que retira monedas necesita 1.64; un mercado, el lugar `sold` de un objeto y un `service` necesitan 1.65; un día de mercado (unos fondos diarios, `buyBack`, el `stock` de un vendedor, una cantidad `limited` o un `sold` que no nombra ningún lugar) necesita 1.69; un efecto adicional que se activa con las armas que se empuñan (`weapons`) necesita 1.70; el equipo inicial (`startingGear`) necesita 1.78; un objeto arriesgado, una falsificación o un vendedor deshonesto necesitan 1.79, y el `unsold` de un mercado (o el `items` de una capa) necesita 1.813.
 
-<a id="the-items-block"></a>
-
 ## El bloque de objetos
 
 El bloque va en `items`, en el nivel superior del archivo. Este es el de Ember Roads, algo abreviado:
@@ -105,8 +103,6 @@ El bloque va en `items`, en el nivel superior del archivo. Este es el de Ember R
 - `freeform`: en qué se convierte un objeto que escribe el jugador. `"plain"` (predeterminado) lo conserva como objeto sin reglas, como hasta ahora. `"refuse"` solo permite objetos de tu conjunto.
 - `lootTables` (Capability API 1.63): opcional, hasta 24. Lo que sueltan las criaturas de un combate ganado y el `[loot:]` del Game Master (consulta Botín, más abajo).
 
-<a id="an-item"></a>
-
 ## Un objeto
 
 Un catálogo de objetos no declara `feeds`:
@@ -150,8 +146,6 @@ Cada entrada lleva un `item` en vez de `rows` o una `creature`:
 
 Un objeto no lleva `mechanics`: lo que hace se escribe en su bloque `item`.
 
-<a id="what-reads-items"></a>
-
 ## Dónde se leen los objetos
 
 Todo lo anterior se comprueba al importar el conjunto, y tus catálogos de objetos se distribuyen con él. En una partida, los lee el inventario de Game Mode:
@@ -175,8 +169,6 @@ Todo lo anterior se comprueba al importar el conjunto, y tus catálogos de objet
 
 En una batalla Turn-Based o Tactical, cada uno de tus objetos con un `use` hace ahí lo que indica, y uno sin él no se ofrece (consulta Objetos en batallas Turn-Based y Tactical, más abajo). Diga lo que diga `native`, la ficha puede leer tus objetos (abajo), un arma empuñada es un ataque en un combate del conjunto y dispara lo que saca de la bolsa, lo que hace un objeto mientras se lleva puesto o encima cuenta en él (consulta Armadura y efectos puestos en un combate, más abajo), un objeto con un `use` se usa según sus propias reglas, en un combate y fuera de él (consulta Usar objetos en un combate y Usar objetos fuera de un combate, más abajo), y tus `currencies` son el dinero del grupo (consulta Dinero, más abajo).
 
-<a id="items-on-the-sheet"></a>
-
 ## Objetos en la ficha
 
 Una referencia de valor puede leer los objetos que tiene un personaje con `itemStat` (Capability API 1.52). Ember Roads suma la guardia de la armadura que lleva puesta un viajero a su Guard, que es lo que debe superar un golpe:
@@ -199,8 +191,6 @@ Una referencia de valor puede leer los objetos que tiene un personaje con `itemS
 Los objetos cambian durante el juego, así que `itemStat` sigue la misma regla que una lectura viva: el `max` de una reserva o de un contador, la bonificación de competencia, `binding.max`, los números de `carry` y la columna escalada o el escalado de un catálogo no pueden leerlo, ni siquiera mediante un valor derivado. En cualquier otro lugar donde se lea un número, sí puede: un valor derivado, el `adjust` de una prueba, el `cap` de una habilidad, la defensa, la absorción o la iniciativa de un combate.
 
 Los objetos de un personaje son los de su propia bolsa. La tarjeta del jugador (la que lleva el nombre del personaje con el que juega el chat o, si no, la primera) lee la bolsa del jugador, y cada una de las demás tarjetas, la suya. Solo cuentan los objetos de tu conjunto, porque un objeto simple no tiene estadísticas que leer. La ficha en pantalla, una prueba, el bloque de ficha del Game Master y un combate al empezar leen lo que tiene cada personaje en ese momento. Fuera de una partida, en el editor de fichas o en la revisión de una importación, nadie tiene nada e `itemStat` lee su `default`.
-
-<a id="checks-outside-a-fight"></a>
 
 ## Pruebas fuera de un combate
 
@@ -255,13 +245,12 @@ En una prueba:
 
 Gravewatch muestra lo mismo en una reserva: la Dawn bell vinculada añade un dado a Ward, y Rattled quita uno de Soothe y de Barter.
 
-<a id="typed-defenses-from-conditions-levels-items-and-sheet-rows"></a>
-
 ## Defensas por tipo de daño de estados, niveles, objetos y filas de la ficha
 
 `combat.conditions[]` y `combat.levels[]` pueden conceder `resist`, `vulnerable`, `immune` (de 1 a 30 entradas cada uno) y `conditionImmunities` (de 1 a 40 IDs de estado). Se aplican mientras dura el estado o mientras se alcanza el umbral del nivel. Una inmunidad a un estado recién obtenida termina ese estado si ya está activo e impide volver a aplicarlo. La inmunidad tiene prioridad sobre la resistencia; la resistencia y la vulnerabilidad se anulan. Varias resistencias nunca reducen el daño a la mitad dos veces.
 
-`resist` e `immune` usan la forma de las criaturas: una palabra de daño o `{ "type": "bludgeoning", "except": ["magical"] }`. Cualquier etiqueta nombrada en el golpe se salta esa entrada. `vulnerable` sigue siendo solo palabras de daño. La misma forma de excepción funciona en los efectos `worn` y `carried` de los objetos. Declara las etiquetas de excepción en `items.tags` y ponlas en las cualidades del arma o del conjuro. Por ejemplo, Stoneskin es una asignación de estado:
+`resist` e `immune` usan la forma de las criaturas: una palabra de daño o `{ "type": "bludgeoning",
+"except": ["magical"] }`. Cualquier etiqueta nombrada en el golpe se salta esa entrada. `vulnerable` sigue siendo solo palabras de daño. La misma forma de excepción funciona en los efectos `worn` y `carried` de los objetos. Declara las etiquetas de excepción en `items.tags` y ponlas en las cualidades del arma o del conjuro. Por ejemplo, Stoneskin es una asignación de estado:
 
 ```json
 {
@@ -283,8 +272,6 @@ Para los rasgos de ascendencia o de catálogo, `combat.sheetHides` contiene hast
 ```
 
 Cada fila aporta palabras separadas por comas, recortadas y comparadas sin distinguir mayúsculas de minúsculas; las palabras vacías se omiten. Añadir una fila con `"fire"` añade resistencia al fuego; eliminarla quita esa fuente. Las palabras de resistencia e inmunidad pueden incluir `except`, como en `"bludgeoning except magical silvered"`. Las vulnerabilidades y las inmunidades a estados son palabras simples. Las palabras de daño declaradas desconocidas en el texto de la ficha se ignoran, igual que los IDs de estado desconocidos; una columna enum para inmunidades a estados solo debe declarar IDs de estado al importar. Los resúmenes de la ficha, de la batalla y del Game Master incluyen estas defensas y sus excepciones.
-
-<a id="weapons-in-a-fight"></a>
 
 ## Armas en un combate
 
@@ -313,8 +300,6 @@ Las propiedades de un arma son lo que llevan sus golpes. Una entrada `resist` o 
 
 Los detalles del arma y la línea del Game Master indican lo que hace: `attack (Action): Brawn to hit, 1d6 + Brawn cut, reach 2 paces, range 10 to 20 paces`, con `1d8 with a hand free` para la boar spear de Ember Roads y `at 6` junto a la pala de Gravewatch.
 
-<a id="ammunition-and-reloading"></a>
-
 ### Munición y recarga
 
 Un arma puede disparar algo y puede tener una cantidad cargada propia (Capability API 1.57). El arco de caza de Ember Roads dispara flechas, y la pistola de guardia de Gravewatch lleva una bala, cargada con la munición y la pólvora del guardián:
@@ -332,8 +317,6 @@ Un arma puede disparar algo y puede tener una cantidad cargada propia (Capabilit
 - `clip`: una cantidad cargada que el arma lleva consigo. `max` es cuánto contiene, escrito o leído de una estadística numérica del objeto, y `reload` es el presupuesto que gasta una recarga. Un ataque gasta lo cargado en vez de tomar de la bolsa, y el arma solo se ofrece mientras contenga suficiente para uno. Una opción **Reload** (Recargar) en el menú del combate gasta `reload` y la llena: desde la bolsa si tiene `ammo` (todo lo que aún contenga la bolsa si es menos) y por completo si no tiene. La cantidad se guarda en la pila de inventario del arma, así que una pistola vaciada en un combate sigue vacía en el siguiente. Un arma que nadie ha disparado aún está cargada, y también una que un jugador combina en una pila de varias, porque una cantidad cargada pertenece a un arma. Las balas de un cargador no se recogen tras un combate, así que `recover` es para un arma sin cargador.
 
 Lo que un combate dispara, carga y recoge se escribe en el inventario a medida que se da cada paso, igual que la salud del grupo, y el diario indica lo que se usó. Se rechaza un paso cuya pila ya no existe o contiene menos de lo que contaba el combate, igual que un objeto gastado que el combate no encuentra. El registro del combate indica cada disparo, recarga y recogida ("Hunting bow: 2 left to shoot.", "Ada loads 1 into Watch pistol: 1 of 1 loaded."), y los detalles del objeto y la línea del Game Master indican lo que dispara y contiene el arma: `ammunition Arrow (1 an attack, 50% picked up after a won fight)` y `holds 1, reload (Act)`.
-
-<a id="modes-a-second-weapon-a-floor-and-conditions-on-a-hit"></a>
 
 ### Modos, una segunda arma, un mínimo y estados al impactar
 
@@ -363,8 +346,6 @@ Un arma puede tener otras formas de hacer su ataque, una compañera en la mano s
 
 Los detalles del arma y la línea del Game Master lo indican todo: `modes Volley (2 shots, -2 to hit, up to 2 targets)`, `off hand (Quick)`, `at least 1 on a hit before resistance`, `+3d6 slashing against Dragon` y `Marked for 2 rounds when a hit deals 2 or more`.
 
-<a id="armor-and-worn-effects-in-a-fight"></a>
-
 ## Armadura y efectos puestos en un combate
 
 Lo que hace un objeto mientras se lleva puesto o encima también puede cambiar un combate (Capability API 1.56) para su portador, junto a sus estados y niveles. Cada uno toma las partes de un estado que lee un combate:
@@ -390,8 +371,6 @@ El widow's ring maldito de Gravewatch cuesta un dado en cada ataque, su Dawn bel
 Un combate lee cada objeto una vez, con el nombre de la pila ("Widow's ring" junto a una tirada en el registro, y en una defensa), igual que una prueba; el `otherwise` de un requisito no cumplido también cuenta en un combate, así que una armadura demasiado pesada para quien la lleva puede costar velocidad. Los detalles de un objeto y la línea del Game Master lo indican todo ("While worn: -1 on attacks", "worn: +1 on checks (Ward), immune to Rattled"). Una armadura que suma a una defensa o a una absorción es una estadística de objeto leída con `itemStat` (consulta Objetos en la ficha), igual que el Guard de Ember Roads lee el abrigo que se lleva puesto.
 
 **Dureza.** Si la iniciativa es un número que mueven los ataques, `combat.pool.hardness` es la dureza de un combatiente, leída de su ficha al empezar el combate (la de su armadura, mediante `itemStat`), y una criatura da su propia `hardness`. Un golpe que gasta cuyos dados están por debajo de ella impacta y no hace nada: el número de quien lo hace sigue volviendo a la base, el registro lo indica ("Ada's Grave spade lands on the warden with 5 dice, below a hardness of 6, and does nothing.") y el menú no le prevé ningún daño. Solo puede tenerla un conjunto con un estilo que gasta, y una criatura escrita como ficha la toma de la ficha.
-
-<a id="using-items-in-a-fight"></a>
 
 ## Usar objetos en un combate
 
@@ -442,8 +421,6 @@ Un objeto puede usarse en un combate (Capability API 1.59): una cataplasma sobre
 
 Lo que un combate consume y las cargas que deja se escriben en el inventario a medida que se da cada paso, igual que los disparos de un arma, y el diario indica lo que se usó. El registro del combate indica cada uso ("Poultice: 1 of 2 left.", "Dawn bell: 2 of 3 left."). Un miembro del grupo que interpreta el motor solo usa una curación en alguien herido, y nadie usa un objeto para golpear a alguien que se aleja. Los detalles del objeto y la línea del Game Master indican lo que hace usarlo: "Use (Action): heals 1d4 + 1, range 0 paces, used up" y `use (Act): Steel 7 save negates it, Rattled, 1 of 3 charges`, y los detalles muestran las cargas que quedan. Un objeto que el Game Master inventa `like=` uno de los tuyos se usa como ese, cargas incluidas.
 
-<a id="items-in-turn-based-and-tactical-battles"></a>
-
 ## Objetos en batallas Turn-Based y Tactical
 
 Un conjunto que no resuelve sus propios combates los deja a las batallas Turn-Based y Tactical propias de Game Mode, donde se pregunta a un modelo qué hacen los objetos del inventario cuando empieza un combate. Tus objetos no se adivinan: cada uno con un `use` hace lo que este indica, con los números propios del motor, y la suposición del Game Master solo se pide para los objetos que no son tuyos (y para ninguno con `native: false`).
@@ -459,8 +436,6 @@ Un conjunto que no resuelve sus propios combates los deja a las batallas Turn-Ba
 - Un objeto sin `use` no se ofrece en estas batallas, ni tampoco una curación sin `amount`.
 
 El motor calcula por sí mismo el efecto de cada objeto, así que lo que envía la pantalla nunca decide lo que hace uno de tus objetos.
-
-<a id="loot"></a>
 
 ## Botín
 
@@ -491,8 +466,6 @@ Un combate ganado suelta botín en toda partida de Game Mode, una vez, en las bo
 - Lo que se suelta va a la vista compartida igual que una adición, preguntando primero a la bolsa del jugador, y lo que nadie puede llevar se queda atrás. El resumen que recibe el Game Master indica lo que se soltó y que ya está en las bolsas, el diario lo indica y una notificación lo muestra.
 - El Game Master tira una tabla en la historia con `[loot: table="grave_goods" who="Ada"]` (`who=` para la bolsa de un personaje), medido desde donde empezó el turno, igual que sus etiquetas de inventario, así que una respuesta regenerada suelta una sola vez. Cada objeto que se suelta se responde como una adición, y sus instrucciones enumeran tus tablas.
 
-<a id="money"></a>
-
 ## Dinero
 
 Tus `currencies` son el dinero del grupo. Una moneda es un objeto en las bolsas, una pila de cada moneda como cualquier otra, con el nombre de su `label`:
@@ -502,8 +475,6 @@ Tus `currencies` son el dinero del grupo. Una moneda es un objeto en las bolsas,
 - Una línea sobre las pilas del inventario muestra las monedas de cada familia a la vista y su valor en la moneda más pequeña de la familia. El Game Master ve ese valor junto a cada bolsa (`Coin worth 432 pennies`, o `no coins` para un monedero vacío, con la bolsa del jugador incluida aunque no contenga nada), y el `cost` de un objeto junto al objeto (`costs 3 shillings`).
 - El Game Master paga con `[inventory: action="pay" amount="3 shillings" who="Ada"]` y cobra con `action="earn"`. `amount` es una cantidad y una moneda, por su ID o etiqueta, en singular o plural, con cualquier combinación de mayúsculas (`1 penny`, `12 pennies`). Un pago sale de una bolsa (la del jugador sin `who=`), solo en la familia propia de la moneda: primero van las monedas más grandes que caben, después se cambia la moneda más pequeña restante que cubre lo que aún se debe, y el cambio vuelve en las monedas más pequeñas de la familia, empezando por las más grandes. La respuesta indica lo que se pagó y lo que volvió: pagar 3 shillings de un monedero que contiene una crown es `Paid with crowns ×1; shillings ×2 back.` Se rechaza un pago que la bolsa no puede cubrir (`cannot-afford`), una moneda que no tienes (`unknown-coin`) y cualquier pago en un conjunto sin monedas (`no-currencies`). Un cobro es una adición de esa moneda, a la bolsa de `who` o repartida según la regla de carga. El diario enumera lo gastado y lo cobrado, y una notificación lo muestra. Sus instrucciones enumeran tus monedas, y solo las tiene un conjunto que tenga alguna.
 - Comprar es un pago seguido de una adición o, en un conjunto con mercado, un `buy` (abajo). No hay pantalla de tienda.
-
-<a id="starting-gear"></a>
 
 ## Equipo inicial
 
@@ -542,8 +513,6 @@ Tus `currencies` son el dinero del grupo. Una moneda es un objeto en las bolsas,
 - `fits` lee la ficha sin su estado vivo, igual que la carga. Solo ordena la lista.
 - Tomarlo es todo o nada: el equipo demasiado pesado para quien lo va a llevar se rechaza entero, y el cuadro de diálogo indica cuánto pesa frente a lo que aún puede llevar. Un objeto que una capa saca de la partida se omite y se nombra, igual que una lista de la que saca todos los objetos; las monedas de un tipo que una capa saca se pagan en la moneda más grande que quede del mismo valor, y el cuadro de diálogo las muestra así. Se rechaza el equipo del que no queda nada, para que nunca se marque como tomado a cambio de nada. Un servicio nunca se ofrece desde una lista.
 - La importación comprueba cada objeto (en un catálogo incluido en el archivo; un catálogo en su propio archivo se comprueba al tomar el equipo), moneda, objeto simple y referencia `fits`, rechaza un servicio y rechaza una cantidad que necesitaría más pilas de las que admite una bolsa a la vez.
-
-<a id="markets"></a>
 
 ## Mercados
 
@@ -640,8 +609,6 @@ Capability API 1.79 permite que un objeto sea arriesgado o una falsificación, y
 - **Puesta o llevada**: una falsificación hace en la ficha del personaje lo que hace en realidad (sus efectos `worn` o `carried` y sus estadísticas). El primer cambio de inventario tras el cual la ficha muestra un número, o lo que suma una prueba, que no daría el objeto por el que se hace pasar la descubre, y el diario y la pantalla indican lo que era. Una diferencia que solo lee un combate (una resistencia) no la descubre, ni tampoco un cambio solo en la ficha hasta el siguiente cambio de inventario. En un combate, un arma falsa puesta sigue atacando como el arma por la que se hace pasar.
 - Con la confianza de un solo jugador, Peek Prompt muestra la vista del Game Master, incluida la verdad.
 
-<a id="spotting-fakes"></a>
-
 ### Detectar falsificaciones
 
 Capability API 1.802 permite que un personaje reconozca una falsificación como tal, mediante una prueba que haga o al advertirla antes de que nadie pague. El Engine no conoce ninguna de las pruebas por su nombre: las escribe el conjunto de reglas.
@@ -684,8 +651,6 @@ Capability API 1.802 permite que un personaje reconozca una falsificación como 
 - **Darse cuenta antes de comprar**: cuando una compra daría una falsificación de un vendedor deshonesto, cada uno de los demás miembros del grupo evalúa todas las pruebas que puede hacer sobre ella y el vendedor, sin dados: `items.passiveBase` (10 de forma predeterminada) más su número, 5 más con ventaja y 5 menos con desventaja. El primero que alcanza una dificultad se ha dado cuenta: no se paga nada y la compra recibe la respuesta `reason="held"`, con quién se dio cuenta de qué. Se pide al Game Master que lo interprete como ese compañero advirtiendo al comprador dentro del personaje, sin acusar al vendedor en su cara a menos que la personalidad de ese compañero lo lleve a hacerlo, y que deje decidir al comprador. No se le dice nada más al jugador. Si se vuelve a solicitar la misma compra a ese vendedor ese día, se lleva a cabo. `items.warnBy: "roll"` tira esas pruebas en su lugar.
 - **Desenmascarar falsificaciones**: `items.revealsFakes` enumera los medios para desenmascarar falsificaciones que un personaje puede lanzar sobre un objeto (un conjuro, un ritual), cada uno con un `id`, su `label` y, para uno que solo detecta algunas falsificaciones, los `tags` que llevan o las propias falsificaciones por referencia (`items`, que solo pueden ser falsificaciones). Nombrar las falsificaciones evita ponerles una etiqueta que las delate: una poción de veneno etiquetada como "poison" se delataría junto a la poción de curación por la que se hace pasar. `[inventory: action="inspect" item="Potion of Healing" who="Mira" with="Identify"]` nombra uno: una falsificación que ese medio detecta queda identificada, una cuyo `foolsReveal` lo enumera se muestra como aquello por lo que se hace pasar, y una falsificación que no puede detectar, o un objeto real, no muestra nada ("auténtico" para un medio que detecta cualquier falsificación; en otro caso, "incierto"). No gasta ningún intento; el coste de lanzarlo queda a cargo del Game Master, como el de cualquier conjuro.
 - Un conjunto de reglas que use cualquiera de estas opciones necesita Capability API 1.802. Se rechazan al instalar los `tells` propios de una falsificación o `foolsReveal` en un objeto que no sea una falsificación, un objeto de `carries` o de `revealsFakes` que no pertenezca al conjunto de reglas (una falsificación, para `items`), y un ID de `foolsReveal` que no esté enumerado en `revealsFakes`.
-
-<a id="using-items-outside-a-fight"></a>
 
 ## Usar objetos fuera de un combate
 

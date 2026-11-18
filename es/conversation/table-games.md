@@ -100,7 +100,7 @@ En **Rock-Paper-Scissors**, elige al oponente y una partida al mejor de tres, ci
 
 Cada tablero tiene un botón X.
 
-- **UNO**: **End game**. Antes pregunta "End this UNO game?".
+- **UNO**: **End game**. Antes pregunta "End this game?".
 - **Chess**: **Resign**. Pregunta "Resign and end this game?" primero.
 - **Poker**: **End game**. Pregunta "End this poker game?" primero. Después de que termina la sesión dice **Close**.
 - **8-Ball Pool**: **End game**. Pregunta "End this pool game?" primero. Después de que termina la partida dice **Close**.
@@ -108,13 +108,11 @@ Cada tablero tiene un botón X.
 
 Terminar un juego antes de tiempo borra su estado y no registra ningún ganador.
 
-<a id="let-characters-start-games-on-their-own"></a>
-
 ## Dejar que los personajes empiecen juegos por su cuenta
 
 Abre **Chat Settings → Agents → Commands**, o usa el paso **Automation** cuando creas el chat. El interruptor general **Commands** controla todas las acciones que ejecutan los personajes, incluidos los juegos de mesa, las selfies y las llamadas. Con él desactivado, los personajes no empiezan nada por su cuenta.
 
-Cada juego instalado tiene su propio interruptor, activado a menos que lo desactives: **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** y **Rock-Paper-Scissors**. Consulta [Elegir qué Commands puede usar un personaje](getting-started.md#choose-which-commands-a-character-can-use).
+Cada juego instalado tiene su propio interruptor, activado a menos que lo desactives: **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** y **Rock-Paper-Scissors**. Otros paquetes de juegos, como Blackjack o Wordle, reciben un interruptor con el nombre del juego. Consulta [Elegir qué Commands puede usar un personaje](getting-started.md#choose-which-commands-a-character-can-use).
 
 Estos interruptores controlan solo lo que hacen los personajes. El comando con barra de un juego y la frase "let's play" funcionan incluso con su interruptor desactivado.
 

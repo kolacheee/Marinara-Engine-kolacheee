@@ -11,6 +11,8 @@ Una tarjeta de personaje es un archivo que guarda el nombre, la personalidad, el
 
 El Card Browser ocupa toda el área de contenido, con el título **Browse character cards online** (Explorar tarjetas de personaje en línea). Para salir, haz clic en la flecha hacia atrás de la esquina superior izquierda.
 
+El botón **Download** del panel **Lorebooks** abre el mismo explorador con lorebooks descargables en lugar de tarjetas. Consulta [Descargar un lorebook de Chub](../lorebooks/import-export.md#download-a-lorebook-from-chub).
+
 Si lo cierras y lo vuelves a abrir, tu última búsqueda, tus filtros y el personaje seleccionado siguen ahí. Al recargar la app se reinician.
 
 ## Elegir una fuente
@@ -101,6 +103,12 @@ Antes de empezar: para chatear con el personaje necesitarás una conexión de te
 
 Si no funcionó: lee el mensaje de error del aviso emergente. En **JannyAI**, un bloqueo de Cloudflare es la causa más común (consulta Solución de problemas más abajo).
 
+### Actualizar un personaje que ya tienes
+
+Si la tarjeta que importas ya está en tu biblioteca (descargada antes de la misma página, o con el mismo nombre y creador), la importación se detiene en **Already in your library** (Ya está en tu biblioteca). Elige **Update "Name"** (Actualizar "Nombre") para actualizar tu copia en su lugar, **Add as a new character** (Agregar como personaje nuevo) para conservar ambas, o **Skip this card** (Omitir esta tarjeta). Para vincular la tarjeta a un personaje que llegó por otra vía, haz clic en **Update a character you already have…** (Actualizar un personaje que ya tienes…) en la ventana **Import Card** y elígelo de la lista. Consulta [Actualizar un personaje que ya tienes](import-export.md#update-a-character-you-already-have).
+
+Para buscar una versión más reciente de una tarjeta que descargaste aquí, abre el personaje, haz clic en **⋯** junto a **Save** (Guardar) y elige **Check for update** (Buscar actualización). El Card Browser se abre en esa tarjeta.
+
 ### Download as PNG
 
 Haz clic en **Download as PNG** (Descargar como PNG) en la vista de detalle para guardar la tarjeta en tu dispositivo como una tarjeta de personaje PNG estándar, sin añadirla a tu biblioteca. El botón muestra **Building PNG...** (Creando PNG...) mientras trabaja. Funciona en todas las fuentes, y el archivo lleva el nombre del personaje, como `Some_Character.png`. Una tarjeta PNG es una imagen con los datos del personaje guardados dentro. Puedes compartirla o importarla a otra app.
@@ -115,8 +123,6 @@ Haz clic en **Download as PNG** (Descargar como PNG) en la vista de detalle para
 | **PlotLight is busy.** | Espera los segundos que indica el mensaje y luego inténtalo de nuevo. |
 | **PlotLight doesn't offer this for download.** | Puede que el creador no permita las descargas, o que la tarjeta ya no sea pública. Usa **View on PlotLight** para comprobarlo. |
 | Una búsqueda falla o una fuente deja de funcionar. | Los sitios públicos cambian o bloquean el acceso en cualquier momento. Inténtalo más tarde, o descarga la tarjeta desde el sitio y usa la importación normal. Consulta [Importar y exportar tarjetas de personaje](import-export.md). |
-
-<a id="log-in-to-pygmalion"></a>
 
 ## Iniciar sesión en Pygmalion
 

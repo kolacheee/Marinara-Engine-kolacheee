@@ -29,8 +29,6 @@ Activa **Generate Schedules** y luego elige tu zona horaria en el campo que apar
 
 Cámbialas más tarde en **Chat Settings → Autonomous Messaging**. Si los personajes escriben demasiado, desactiva **Autonomous Messages** allí, o pon tu presencia en **Do Not Disturb**.
 
-<a id="choose-which-commands-a-character-can-use"></a>
-
 ## Elegir qué Commands puede usar un personaje
 
 Los Commands son acciones que el personaje decide hacer por sí mismo. Tú no los escribes. Tras la configuración, abre **Chat Settings → Agents → Commands**. El interruptor general **Commands** controla todas las familias: cuando está desactivado, ninguna familia funciona.
@@ -57,10 +55,9 @@ Cada familia tiene su propio interruptor. Todas empiezan activadas excepto **Vid
 | **8-Ball Pool** | Armar una partida de billar. | 8-Ball Pool |
 | **Tic-Tac-Toe** | Aceptar un desafío de tres en raya. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Aceptar una partida. | Rock-Paper-Scissors |
+| Otros juegos, con el nombre del juego | Inicia o acepta ese juego. | Ese juego, como Blackjack o Wordle |
 
 Para **Influence** y **Notes**, consulta [Chats conectados](../chats/connected-chats.md). La última columna indica el agente que debes instalar desde **Library → Agents**.
-
-<a id="your-presence-status"></a>
 
 ## Tu estado de presencia
 
@@ -76,8 +73,6 @@ Tu presencia es una píldora de color en la parte inferior de la lista de chats.
 Si sigues en **Active** y no haces nada durante 10 minutos, Marinara pone **Idle** y vuelve a poner **Active** cuando regresas. Si eliges tú un estado, este cambio automático se detiene hasta que elijas **Active** de nuevo. **Idle** no detiene los mensajes de contacto.
 
 Junto a la píldora está el cuadro de estado, que muestra "What's up?" cuando está vacío. Escribe allí tu actividad actual (hasta 120 caracteres) para que los personajes lo sepan. Las entradas recientes aparecen en **Recent status** para que puedas reutilizarlas.
-
-<a id="react-and-get-notified"></a>
 
 ## Reaccionar y recibir avisos
 

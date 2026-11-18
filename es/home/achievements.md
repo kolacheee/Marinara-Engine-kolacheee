@@ -45,6 +45,10 @@ Hay 24, en cuatro categorías: **Milestone** (Hito), **Community** (Comunidad), 
 - **Collection** cuenta todo lo de ese tipo en tu biblioteca, incluidos los elementos importados y descargados. Para **Hoarder**, el personaje integrado Professor Mari nunca cuenta.
 - Para los logros de comunidad, basta con visitar el enlace. No necesitas registrarte en el otro sitio.
 
+## Logros de Explorador
+
+Completar todas las tareas de un recorrido de **Cosas para probar** desbloquea el logro de ese recorrido, en la categoría **Explorador**. Hay uno por recorrido: **Recién salido del horno** para Esenciales, y luego **Reparto de lujo**, **Sonríe para la foto**, **Siempre en línea**, **Entre bambalinas**, **Guardián del trasfondo**, **Con el guion de mi lado**, **¡Tira iniciativa!**, **Susurrador de prompts**, **Decoración de interiores** y **Con todos los adornos**. En el nuevo diseño, también **Una pestaña más**, **Cada cosa en su lugar**, **A la caza de tormentas** y **De punta en blanco**. Las tareas omitidas no cuentan, así que marca una tarea como hecha si la completaste. Consulta [Primeros pasos](welcome.md#things-to-try).
+
 El recorrido **Conceptos básicos de IA** y cada grupo de **A fondo** también tienen su logro: **Sin rueditas** por Conceptos básicos de IA, y luego **Visto y leído** (Conversation), **Actor de método** (Roleplay), **Abogado de las reglas** (Game), **A mover perillas** (Cualquier modo), **As de las tarjetas** (Personajes y tarjetas), **Fan de la letra pequeña** (Trucos de lorebooks), **Mago de las macros** (Trucos de prompts y macros), **Guardián de secretos** (Trucos de mensajes), **Maestro titiritero** (Agentes y conexiones), **Sonido y visión** (Voz, imágenes y música) y **Bajo el capó** (Temas y extensiones). Completar todas las guías de A fondo de todos los grupos desbloquea **Hasta el fondo**.
 
 ## Logros de los agentes
@@ -52,8 +56,6 @@ El recorrido **Conceptos básicos de IA** y cada grupo de **A fondo** también t
 Los agentes instalados pueden añadir sus propios logros. Aparecen en la misma ventana, después de los integrados, bajo un encabezado como **From Noodle** (De Noodle). Siguen las mismas reglas, y un agente puede mostrar sus propias imágenes de insignias.
 
 Si eliminas un agente, su sección desaparece y tus desbloqueos se conservan. Si vuelves a instalarlo, vuelven a aparecer como desbloqueados. El contador de la parte superior incluye los agentes que tienes instalados.
-
-<a id="turn-achievements-on-or-off"></a>
 
 ## Activar o desactivar los logros
 

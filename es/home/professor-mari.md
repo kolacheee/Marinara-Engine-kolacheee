@@ -2,8 +2,6 @@
 
 Professor Mari es el asistente integrado de la pantalla de inicio. Explica la app, te ayuda a configurarla y crea o edita por ti personajes, personas, lorebooks (libros de trasfondo) y presets (ajustes guardados). Puedes deshacer sus cambios desde la tarjeta de cambios durante un tiempo limitado (consulta [Revisar sus cambios](#reviewing-her-changes)).
 
-<a id="where-to-find-her"></a>
-
 ## Dónde encontrarla
 
 1. Ve a la pantalla de inicio. Aparece cuando no hay ningún chat abierto.
@@ -11,7 +9,7 @@ Professor Mari es el asistente integrado de la pantalla de inicio. Explica la ap
 
 Se abre en su propia pestaña. También puedes llegar a ella desde cualquier pantalla: pulsa <kbd>Ctrl</kbd>+<kbd>K</kbd>, escribe tu pregunta y elige **Ask Prof. Mari** (Pregúntale a Professor Mari), pulsa <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> en un Mac) para abrir su ventana emergente, o en un teléfono toca el título de la barra superior. Su cabecera muestra **Ready to help** (Lista para ayudar) cuando está inactiva y **Working on it...** (Trabajando en ello...) mientras trabaja.
 
-Escribe tu mensaje en lenguaje sencillo y pulsa <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> añade una línea nueva. Si desactivas **Enter sends to Professor Mari** (Enter envía a Professor Mari) en sus ajustes, <kbd>Enter</kbd> añade una línea nueva y <kbd>Ctrl</kbd>+<kbd>Enter</kbd> envía. Tu primer mensaje desbloquea el logro **Hello World**.
+Escribe tu mensaje en lenguaje sencillo y pulsa <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> añade una línea nueva. Si desactivas **Enter sends to Professor Mari** (Enter envía a Professor Mari) en sus ajustes, <kbd>Enter</kbd> añade una línea nueva y <kbd>Ctrl</kbd>+<kbd>Enter</kbd> o el botón Send (Enviar) envía. El interruptor se guarda por dispositivo, así que puedes desactivarlo en tu teléfono y mantenerlo activado en tu computadora. Tu primer mensaje desbloquea el logro **Hello World**.
 
 Todos sus ajustes están en **Settings → General → Professor Mari → Open** (Configuración → General → Professor Mari → Abrir), o en el engranaje de Search. En una computadora, los controles deslizantes **Height** (Alto) y **Width** (Ancho) de **Professor Mari window** (Ventana de Professor Mari) cambian el tamaño de su ventana. En un teléfono, su ventana ocupa toda la pantalla.
 
@@ -39,7 +37,7 @@ Lee un elemento antes de editarlo, y pregunta cuando tu solicitud es vaga.
 - Crear o editar un tema, un agente, un preset de prompt o un borrador de Personal Extension (Extensión personal). Un borrador permanece desactivado hasta que lees su código y lo apruebas en **Library → Extensions** (Biblioteca → Extensiones).
 - Editar una sección de un preset directamente, en lugar de reemplazar el preset entero.
 - Comparar los agentes descargables y decirte cuáles encajan con tu objetivo. Te envía a **Library → Agents** (Biblioteca → Agentes) para instalarlos. Consulta [Referencia de agentes descargables](../agents/built-in-agents.md).
-- Crear o asignar imágenes como avatares, sprites, fondos y las imágenes de un tema, y recortarlas, quitarles los bordes, cambiarles el tamaño o eliminar un fondo plano. Primero necesitas una cuenta de generación de imágenes. Ella no crea una. Para el arte de un tema, consulta [Pedirle a Professor Mari que cree el arte](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
+- Crear o asignar imágenes como avatares, sprites, fondos y las imágenes de un tema, y recortarlas, quitarles los bordes, cambiarles el tamaño o eliminar un fondo plano. Primero necesitas una cuenta de generación de imágenes. Ella no crea una. Para el arte de un tema, consulta [Pedirle a Professor Mari que cree el arte](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art). Haz clic en una imagen que haya creado para abrirla a tamaño completo, leer el prompt que la generó, descargarla o editar el prompt y regenerarla. La imagen nueva reemplaza la anterior en su respuesta.
 - Consultar páginas públicas de wikis de Fandom cuando investigas un personaje o un mundo.
 
 ### Empezar con un chip
@@ -59,8 +57,6 @@ Estos lugares la abren con un borrador editable y un pequeño chip **Context** (
 
 No recibe un elemento completo solo porque hayas abierto su editor.
 
-<a id="pick-an-account-for-her"></a>
-
 ## Elegir una cuenta para ella
 
 Antes de empezar: añade una cuenta para generación de texto. Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md).
@@ -70,8 +66,6 @@ Antes de empezar: añade una cuenta para generación de texto. Consulta [Conecta
 3. Haz clic en un modelo de la lista para usarlo. El modelo se guarda en la cuenta, así que tus otros chats con esa cuenta también cambian. El **Built-in model** no tiene lista de modelos.
 
 En un teléfono, toca una cuenta para usarla, o toca la flecha del final de su fila para ver primero sus modelos. Si aún no tienes cuentas, la lista muestra **Add a connection** (Añadir una conexión).
-
-<a id="reviewing-her-changes"></a>
 
 ## Revisar sus cambios
 
@@ -132,11 +126,9 @@ Escribe `@` para señalarle algo de tu biblioteca. Se abre una lista, agrupada e
 
 Un vínculo se envía una vez, con el mensaje en el que lo añades. Después, ella ve una nota de una línea y vuelve a leer el elemento si lo necesita. Un mensaje admite hasta 8 vínculos. Si suman más de aproximadamente un cuarto del contexto del modelo, 60.000 caracteres como máximo, los últimos no se envían. En su lugar ella recibe una nota y puede leerlos por sí misma. Los elementos vinculados cuentan como información, nunca como instrucciones.
 
-<a id="commands-with-"></a>
-
 ### Comandos con /
 
-Escribe `/` al principio de una línea para ver la lista de sus comandos. Sigue escribiendo para filtrar y luego pulsa <kbd>Enter</kbd>. La lista también muestra tus Skills y Memories. Al elegir uno se vincula, igual que con `@`.
+Escribe `/` al principio de una línea o después de un espacio para ver la lista de sus comandos, de modo que un mensaje pueda usar varios. Sigue escribiendo para filtrar y luego pulsa <kbd>Enter</kbd>. La lista también muestra tus Skills y Memories. Al elegir uno se vincula, igual que con `@`.
 
 | Comando | Qué hace |
 | --- | --- |
@@ -149,8 +141,6 @@ Escribe `/` al principio de una línea para ver la lista de sus comandos. Sigue 
 | `/model` | Elige la cuenta que usa ella |
 | `/permissions` | Elige qué puede cambiar ella |
 | `/approvals` | Abre los cambios que te esperan (solo mientras haya uno pendiente) |
-
-<a id="sending-messages-while-she-works"></a>
 
 ## Enviar mensajes mientras ella trabaja
 
@@ -233,7 +223,7 @@ Cuando una solicitud falla, el chat conserva el motivo y muestra **Retry** (Rein
 
 ## Leer la FAQ
 
-Haz clic en **Read FAQ** (Leer la FAQ) en el widget **Learn the engine** (Aprende a usar el motor) de Inicio, o en el marcador **FAQ** del diseño clásico, para abrir **Professor Mari's FAQ** (La FAQ de Professor Mari). Es una lista fija y escrita, no el chat con IA, así que no conoce tu configuración. Escribe en **Search FAQ** (Buscar en la FAQ) para filtrar. Cada pregunta tiene una etiqueta de categoría como **Setup** (Configuración), **Connections** o **Game Mode**. Toca una pregunta para leer la respuesta.
+Abre **See all** (Ver todo) en el widget **Things to try** (Cosas para probar) de Inicio y haz clic en **Read FAQ** (Leer la FAQ), o en el marcador **FAQ** del diseño clásico, para abrir **Professor Mari's FAQ** (La FAQ de Professor Mari). Es una lista fija y escrita, no el chat con IA, así que no conoce tu configuración. Escribe en **Search FAQ** (Buscar en la FAQ) para filtrar. Cada pregunta tiene una etiqueta de categoría como **Setup** (Configuración), **Connections** o **Game Mode**. Toca una pregunta para leer la respuesta.
 
 ## Límites y seguridad
 
@@ -261,7 +251,7 @@ Estas partes son para quienes editan los propios archivos de Marinara o quieren 
 
 ### Entorno de ejecución
 
-En **Runtime** (Entorno de ejecución) puedes elegir **Pi (experimental)**, la opción predeterminada, o **Classic** (Clásico). Pi es un modo en el que ella piensa más antes de actuar y resuelve tareas más largas. Si tu cuenta no puede ejecutar Pi, usa Classic. El cambio se aplica desde su siguiente respuesta, y Undo funciona igual en ambos. Si se comporta de forma extraña en Pi, cambia a Classic.
+En **Runtime** (Entorno de ejecución) puedes elegir **Pi (experimental)**, la opción predeterminada, o **Classic** (Clásico). Pi es un modo en el que ella piensa más antes de actuar y resuelve tareas más largas. Si tu cuenta no puede ejecutar Pi, ella usa Classic. El cambio se aplica desde su siguiente respuesta, y Undo funciona igual en ambos. Si se comporta de forma extraña en Pi, cambia a Classic.
 
 **Read the handbook before the first write** (Leer el manual antes de la primera escritura), también en **Runtime**, está activado de forma predeterminada. Su primer cambio en un área con un skill integrado se rechaza hasta que haya leído ese skill. Esto ayuda a los modelos más pequeños. Solo tú puedes desactivarlo.
 
@@ -275,8 +265,6 @@ Puede leer y cambiar los propios archivos de programa de Marinara y ejecutar com
 - Los manifiestos de dependencias, los archivos de bloqueo, los lanzadores, los instaladores y los flujos de CI se preparan primero para tu aprobación. Los scripts de instalación de paquetes permanecen desactivados.
 - Los comandos se detienen solos tras un corto tiempo.
 - Si Marinara no puede proporcionar su entorno aislado de shell de macOS o Linux, los comandos de shell sin procesar y `mari code check` quedan desactivados. Ella todavía puede usar las herramientas estructuradas de archivos y de datos de la app.
-
-<a id="held-changes-for-files-and-libraries"></a>
 
 ### Cambios retenidos para archivos y bibliotecas
 

@@ -49,13 +49,9 @@ Si no funcionó: un texto que no sea `NdM` o un simple `dM`, seguido opcionalmen
 
 Puedes tirar como máximo 100 dados a la vez, y cada dado puede tener como máximo 1000 caras. Una tirada simple que los supere se reduce a esos límites y la tarjeta muestra la notación reducida, así que `500d6` da una tarjeta `100d6`. Una tirada que conserva o descarta dados y supera los límites, como `101d6kh3`, se rechaza con un error de fuera de rango, porque reducirla cambiaría qué dados se conservan.
 
-<a id="skill-checks"></a>
-
 ## Pruebas de habilidad
 
 Una prueba de habilidad pone a prueba algo arriesgado, como escabullirte, detectar una pista o convencer a un NPC (personaje no jugador). Tú no la inicias. El GM la pide en su narración, y Marinara la convierte en una tirada de d20 animada con un banner de resultado. El banner muestra la habilidad y el objetivo, por ejemplo **Stealth Check** con **DC 15**. Cada prueba resuelta recibe su propio banner, después de las tarjetas de dados en cola.
-
-<a id="how-the-result-is-decided"></a>
 
 ### Cómo se decide el resultado
 
@@ -65,8 +61,6 @@ La prueba tira un d20 y suma dos modificadores:
 - Un modificador de estadística, a partir de la estadística en la que se apoya la habilidad. Las estadísticas dependen de la partida, como se explica abajo.
 
 En una partida compartida, cada prueba lee las estadísticas del personaje al que nombra.
-
-<a id="mrpg-games"></a>
 
 #### Partidas MRPG
 
@@ -84,13 +78,9 @@ En una partida con clases **MRPG**, como todas las partidas nuevas, el modificad
 
 La prueba suma la quinta parte de lo que esa estadística supere 3, redondeada hacia abajo, de -1 a +5. Una estadística baja (2 o menos) resta 1, una normal no suma nada, la mejor estadística de un personaje nuevo suma aproximadamente +1, una de nivel 10 suma +2 y la mejor en el nivel máximo suma +5. Como las estadísticas dependen de la clase activa, cambiar de clase también cambia estos bonos.
 
-<a id="legacy-games"></a>
-
 #### Partidas Legacy
 
 En una partida **Legacy**, el modificador procede del atributo que gobierna la habilidad en la ficha del personaje. Cada habilidad se asigna a uno automáticamente: Stealth usa Dexterity, Perception usa Wisdom y Persuasion usa Charisma. Una habilidad que Marinara no reconoce usa Intelligence.
-
-<a id="the-result"></a>
 
 #### El resultado
 
@@ -100,6 +90,15 @@ Si el total alcanza o supera la DC, la prueba tiene éxito. Dos tiradas anulan e
 - Un 1 natural es un **CRITICAL FAILURE** (Fallo crítico) y siempre falla.
 
 El banner muestra **CRITICAL SUCCESS**, **SUCCESS** (Éxito), **FAILURE** (Fallo) o **CRITICAL FAILURE**.
+
+### Pruebas de habilidad en una partida Gentle
+
+En una partida con el estilo de historia **Gentle** (Amable), el GM pide menos pruebas, y la tirada en sí funciona igual. Consulta [El estilo de historia Gentle](getting-started.md#the-gentle-story-style).
+
+- El GM solo pide una prueba cuando la habilidad o la decisión de tu propio personaje puede cambiar el resultado.
+- Nunca tira contra algo que tu personaje no puede controlar o que forma parte de quién es, como una discapacidad, una condición crónica, su cuerpo o su trasfondo. La historia lo muestra como parte del personaje, con las formas en que ya se adapta.
+- La amabilidad, la confianza y el crecimiento entre personajes surgen de lo que hacen juntos, no de una tirada.
+- Una prueba fallida supone un revés para el intento, no para el personaje: falla, tarda más, cuesta algo o llama la atención. Un **CRITICAL FAILURE** es una complicación mayor, no una catástrofe.
 
 ### Ventaja y desventaja
 
@@ -111,15 +110,11 @@ Pon en cola un `d20` desde el menú de dados antes de que ocurra la prueba. La p
 
 Para saber cómo termina el GM un turno después de una tirada, y cuánto cuesta, consulta [Cómo se narra un turno con dados](#how-a-rolled-turn-is-narrated).
 
-<a id="games-that-use-a-ruleset"></a>
-
 ### Partidas con un conjunto de reglas
 
 En una partida con un conjunto de reglas, como 5e (SRD 5.1), las pruebas usan los propios dados, la escala de dificultad y los modificadores de la ficha del conjunto de reglas, y en algunos conjuntos de reglas, una reserva de dados o dados de símbolos. Consulta [Pruebas con un conjunto de reglas](rulesets.md#checks-on-a-ruleset).
 
 ## Referencia
-
-<a id="how-a-rolled-turn-is-narrated"></a>
 
 ### Cómo se narra un turno con dados
 
@@ -134,8 +129,6 @@ Cuando el GM pide una prueba por texto, Marinara resuelve los dados y tiene tres
 Con **Narrate dice outcomes immediately**, si la solicitud adicional falla, el turno conserva los resultados resueltos en su registro sin guardar un desenlace inventado o parcial. Un aviso con un botón **Regenerate turn** (Regenerar turno) permanece en el turno, incluso después de recargar. Una solicitud sin tiradas reales nunca activa la solicitud adicional.
 
 En una conexión compatible con la herramienta de dados, el GM puede obtener en su lugar una tirada real durante la generación. La tarjeta de dados aparece en cuanto responde la herramienta, y la prueba completada registra ese resultado sin volver a tirar.
-
-<a id="finishing-a-rolled-turn-in-one-request"></a>
 
 #### Terminar un turno con dados en una sola solicitud
 
@@ -154,8 +147,6 @@ Una prueba que no se escriba de ninguna de estas formas recurre al último compo
 - Un turno aún puede costar más de una solicitud en dos casos: si **Enable Tool Use** (Activar el uso de herramientas) está activado y la herramienta de dados está en tu lista de herramientas (una llamada a una herramienta cuesta una ronda completa adicional), o si hay configurado un **Game tool provider** (Proveedor de herramientas del juego) distinto de **Same as narrator** (El mismo que el narrador), que siempre hace una solicitud de planificación.
 - Cuando algo no puede tirarse, un aviso breve sustituye al número, nunca un valor inventado. **Logs** indica qué se omitió.
 - Mientras se escribe el turno, los marcadores y los bloques de ramas se retienen del texto en streaming, así que nunca ves cambiar un número.
-
-<a id="symbol-dice-by-name"></a>
 
 ### Dados de símbolos por nombre
 

@@ -25,7 +25,7 @@ Para una primera prueba, elige **Static Result**: no necesita nada más.
 Reglas para nombres y descripciones:
 
 - El nombre tiene de 1 a 100 caracteres. La descripción tiene de 1 a 500 caracteres.
-- Dos herramientas no pueden compartir un nombre, y una herramienta no puede usar un nombre integrado como `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search` o `update_about_me`. Un choque muestra un mensaje como `"your_name" is a reserved built-in tool name.`
+- Dos herramientas no pueden compartir un nombre, y una herramienta no puede usar un nombre integrado como `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search`, `web_fetch` o `update_about_me`. Un choque muestra un mensaje como `"your_name" is a reserved built-in tool name.`
 - Si sales del editor con cambios sin guardar, un aviso ofrece **Keep editing** (Seguir editando), **Discard** (Descartar) o **Save & close** (Guardar y cerrar).
 
 ## Administrar tus herramientas
@@ -38,8 +38,6 @@ En la página **Custom tools**, cada herramienta de la lista muestra su nombre, 
 - **Select**, encima de la lista, te permite elegir varias herramientas y luego **Export** o **Delete** desde la barra que hay debajo de la lista.
 
 En el diseño clásico, el encabezado de **Functions** tiene **Create function**, **Import functions from ZIP or JSON** y **Export functions to ZIP**, y cada fila tiene **Edit function** y **Delete Function**.
-
-<a id="add-parameters"></a>
 
 ## Añadir parámetros
 
@@ -54,8 +52,6 @@ Los parámetros son las entradas que la IA envía cuando llama a tu herramienta.
 Añade más filas con **Add Parameter**, o quita una fila con su botón de menos. Una fila con el nombre vacío se descarta al guardar.
 
 Si parece que la IA nunca llama a una herramienta importada, puede que sus parámetros no sean válidos, y entonces la app omite la herramienta sin avisarte. Borra los parámetros y vuelve a añadirlos a mano.
-
-<a id="choose-an-execution-type"></a>
 
 ## Elegir un tipo de ejecución
 
@@ -154,6 +150,8 @@ Crear una herramienta no hace que la IA la use. También tienes que activar el u
 4. Comprueba que funciona: pregúntale a la IA algo que responda tu herramienta, como "What are your store hours?" para el ejemplo `store_hours`. La respuesta debería usar el texto de la herramienta.
 
 Con **Enable Tool Use** activado y nada añadido debajo, el chat puede usar todas las herramientas habilitadas globalmente que admita: las herramientas integradas más cada herramienta personalizada cuyo interruptor esté activado en **Library → Custom tools**. Los chats de Game también necesitan **Let the GM search lore** (Permitir que el GM busque trasfondo) para `search_lorebook`.
+
+> **Nota:** Algunas herramientas integradas siguen desactivadas hasta que las marcas, incluso con **Enable Tool Use** activado. Una de ellas es `web_fetch`, porque permite que la IA elija qué dirección web leer. Las herramientas de Spotify funcionan igual.
 
 Para limitar un chat a un conjunto elegido:
 

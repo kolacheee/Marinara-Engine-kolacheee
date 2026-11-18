@@ -45,6 +45,10 @@ Una habilidad o salvación puede llevar un `cap`, una referencia de valor que es
 
 El `max` de un contador simple puede ser una referencia de valor en vez de un número, para que una puntuación del personaje determine hasta dónde llega: `"max": { "field": "willpower_rating" }`. Su `min` y su `default` siguen siendo números. Un contador de heridas con niveles con nombre tiene un `max` igual a su número de niveles; un contador de casillas numeradas tiene la longitud que indica su propio `max` (consulta Casillas numeradas más abajo). `alwaysShow: true` muestra un contador en el bloque de ficha del GM incluso en su valor predeterminado, para una puntuación que importa en cada turno; sin él, un contador en su valor predeterminado se omite, porque tres salvaciones contra la muerte a cero no dicen nada. Estos tres requieren Capability API 1.37 en un conjunto empaquetado.
 
+`sheet.progress` (Capability API 1.829) da a cada habilidad entrenada un medidor de práctica: progreso de 0 a 99 hacia su siguiente rango. `{}` lo activa, y `except` enumera las secciones de habilidades que no acumulan práctica, como conocimientos que se compran en vez de aprenderse con el uso. El Game Master lo cambia con `[sheet: op="practice" skill="Skill" by="5"]`, o con `to="N"` para fijarlo, y el jugador puede corregirlo en la ficha. Se detiene en 99, y solo lo recibe una habilidad entrenada por debajo del rango máximo. Un cambio de rango con `op="advance"` reinicia esa habilidad en 0, y escribir otra vez el mismo rango lo conserva. La práctica se guarda con el mensaje, como un contador, así que un swipe o una regeneración la devuelve al estado anterior. El bloque de ficha del Game Master la muestra después de la habilidad: `Smithing +2 (60%)`. Un rango cambiado a mano en la ficha conserva su práctica; corrígela también ahí. Úsalo para sistemas que aprenden con el uso, donde subir de rango sigue dependiendo de otra cosa: una ficha LitRPG cuyo System anuncia los rangos, o las marcas de experiencia de RuneQuest.
+
+Una reserva viva o un contador simple pueden definir `"display": "bar"` para mostrar una barra de progreso en su fila de la ficha, junto al número, para algo que el jugador lee de un vistazo, como Salud o Estrés. `"dots"` muestra en su lugar una fila de puntos, uno por cada punto hasta su máximo, rellenos hasta su valor, para una puntuación que se cuenta en puntos como Hambre o Humanidad. Una escala que baja de 0 o supera 20 se muestra como barra, porque los puntos no pueden contar por debajo de nada y una fila tan larga no se lee de un vistazo. `"counter"`, u omitirlo, muestra solo el número. Un contador de heridas dibuja sus propias casillas y lo ignora. Las reservas de una ficha de grupo también lo aceptan. Esto requiere Capability API 1.828 en un conjunto empaquetado.
+
 ## Estados vivos: una forma, una postura, una luz
 
 Un campo enum se elige al crear el personaje y no cambia, y un estado solo está activado o desactivado. Un **estado vivo** es un valor de un conjunto cerrado que cambia durante el juego: la forma de un cambiaformas, una postura de combate, cuánto alumbra una linterna.
@@ -89,8 +93,6 @@ Un campo enum se elige al crear el personaje y no cambia, y un estado solo está
 - Una capa puede retirar un valor de un campo para el que una tabla tiene una fila. Esa fila nunca se lee mientras la capa está activa.
 
 Los estados vivos, `enumTable` y un paso de descanso que nombra un `state` requieren Capability API 1.42 en un conjunto empaquetado.
-
-<a id="wound-tracks-health-that-is-a-track-not-a-number"></a>
 
 ## Contadores de heridas: salud en una escala de marcas
 
@@ -208,8 +210,6 @@ El resultado indica lo que añadió la ficha (`adjust="-2"` en el registro y una
 ## Descansos
 
 Un descanso es una lista de restauraciones y elementos que borrar. Cada paso nombra un objetivo (`pool`, `poolGroup`, `listPools`, `track` o `state`) y lo fija (`"to": "max"`, `"to": "min"` o un número) o modifica (`"by": { "const": 1 }` o `"by": { "fractionOfMax": 0.5 }`). Si nombra un contador de heridas, solo puede curarlo, así que su `by` es negativo; consulta arriba. Un paso que nombra un estado vivo solo lo fija, en `"default"` o en uno de sus valores. Un paso `poolGroup` con `fractionOfMax` cambia cada reserva del grupo según su propia fracción; añade `"shared": true` (Capability API 1.77) para calcular la fracción sobre el máximo de todo el grupo y repartirla entre las reservas del grupo en el orden en que las lista la ficha, cada una hasta lo que le falta. El descanso largo de 5e, "la mitad del número total de" dados de golpe del personaje, guardados en una reserva por dado, es `{ "poolGroup": "hit_dice", "by": { "fractionOfMax": 0.5, "round": "down", "min": 1 }, "shared": true }`.
-
-<a id="game-master-text"></a>
 
 ## Texto del Game Master
 

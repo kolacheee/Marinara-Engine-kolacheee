@@ -59,8 +59,6 @@ de entradas de lore elegibles, el análisis de respuestas tipo JSON y las llamad
 Las credenciales de conexión, las implementaciones de proveedor, los manejadores de base de datos y los objetos de almacenamiento
 siguen siendo privados del Engine.
 
-<a id="host-client-namespace"></a>
-
 ### Espacio de nombres del cliente host
 
 El Engine es dueño del estado de su cliente y de sus bibliotecas, y los clientes de los paquetes de agentes los usan en lugar de empaquetar copias propias. Una copia mantiene su propio estado: los clientes de paquetes que empaquetaban el store de ajustes de la interfaz guardaban una versión más antigua de ese store encima de los ajustes del Engine en cada carga (Pasta-Devs/Marinara-Agents#1478), y cada store de chat empaquetado conservaba el chat que estaba abierto cuando se cargó la página.
@@ -95,14 +93,15 @@ La propiedad no se puede sobrescribir ni reconfigurar, y el espacio de nombres y
 | `modules`           | Módulos de bibliotecas, indexados por especificador simple (más abajo).                                                                                                                                    |
 | `queryClient`       | El único `QueryClient` de React Query con el que renderiza el Engine.                                                                                                                                      |
 | `components.Modal`  | El `Modal` del Engine, con su orden de superposiciones y su manejo de Escape y del botón Atrás.                                                                                                            |
+| `components.Switch`, `components.Checkbox` | Desde la API de capacidades 1.830, el interruptor y la casilla compartidos del Engine, para que un paquete coincida con el aspecto del host. |
+| `components.Spinner` | Desde la API de capacidades 1.830, el anillo de carga compartido del Engine. Se oculta a los lectores de pantalla salvo que pases un `label`, que lo convierte en una región de estado. |
+| `components.showConfirmDialog` | Desde la API de capacidades 1.830, el cuadro de diálogo de confirmación del Engine, la misma función que `services.dialogs.showConfirmDialog`. |
 | `data.emojiCatalog` | El módulo `lib/emoji-catalog.generated.ts`.                                                                                                                                                                |
 | `api`               | El módulo `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...).                                                                                                                              |
 
 Un paquete lee un miembro solo después de comprobarlo, por ejemplo
 `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`.
-
 Para descargar imágenes, usa `shouldUseIosImageShare()` y sigue la misma política de plataforma que la galería. En iPhone, prepara la imagen con `prepareImageSave(url, filename)` antes del gesto de guardar y llama a `savePreparedImageToDevice(prepared)` directamente desde ese gesto. Si se cancela el uso compartido, no muestra un error; si falla, no lo sustituye por una vista previa de descarga de WebKit. Las demás plataformas usan `downloadUrlToDevice`. Estas funciones guardan en el dispositivo del cliente, incluso si el servidor de Engine se ejecuta en Docker.
-
 El espacio de nombres solo crece: un miembro nuevo llega con una versión menor de la API de capacidades, y un paquete que lo necesita exige esa versión menor. Los paquetes compilados para el espacio de nombres exigen la versión de la API de capacidades que lo añadió, así que un Engine más antiguo nunca los instala y conserva la versión que tiene. Si aun así falta un miembro, el paquete nunca recurre a una copia empaquetada de un servicio del Engine que tenga estado: los stores `ui` y `chat` pasan a ser copias de solo lectura que nunca escriben, y cualquier otro miembro informa de que la función necesita un Marinara Engine más reciente.
 
 **Módulos del host.** `modules[specifier]` es un espacio de nombres de módulo completo, incluido `default` cuando la biblioteca lo tiene. `MARINARA_HOST_MODULE_IMPORTS` en el contrato del cliente asigna a cada slot público la dependencia que importa. La mayoría conserva su propio nombre. El slot estable `framer-motion` se asigna a `framer-motion-v13` (un alias de npm fijado exactamente a Motion 13.5.1), mientras que el slot opcional `motion/react` se asigna a la dependencia principal `framer-motion` 14 del Engine. Las herramientas de paquetes usan esta asignación tanto para el inventario de exportaciones como para las rutas de TypeScript; los nombres de los slots públicos no tienen por qué ser dependencias físicas. Los especificadores son `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `@tanstack/react-query`, `zustand`, `zustand/middleware`, `sonner`, `zod`, `i18next`, `react-i18next`, `framer-motion`, `motion/react`, `tailwind-merge` y `clsx`. La compilación de un paquete resuelve estos especificadores a adaptadores (shims) que leen el espacio de nombres, así que el paquete renderiza con el único React del Engine y comparte su caché de React Query y sus avisos.
@@ -125,7 +124,7 @@ El espacio de nombres solo crece: un miembro nuevo llega con una versión menor 
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ui`        | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat`      | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `agent`     | `setYoutubePlay`, `reset`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `agent`     | `setYoutubePlay`, `setPackageActivity`, `reset`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `sidecar`   | `modelDownloaded`, `modelDisplayName`, `fetchStatus`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `dialog`    | `dialog`, `openDialog`, `closeDialog`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `gallery`   | `pinImage`, `pinVideo`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -263,9 +262,7 @@ El documento es `{ "schemaVersion": 1, "verbs": [ … ] }`, con 1–16 verbos. C
 ```
 
 Un nombre de verbo sigue `[a-z][a-z0-9_]*`, tiene como máximo 32 caracteres y no puede coincidir con etiquetas entre corchetes del GM del motor. La comprobación ignora mayúsculas: el recordatorio escribe `[Note:` y `[Book:`, pero la expresión de análisis no distingue el caso; `note` ocultaría la etiqueta del diario. El conjunto reservado procede de todas las etiquetas que pueden representar los recordatorios de GM y grupo en cualquiera de sus ramas y de los cinco analizadores de narración: el analizador de etiquetas y formateador del cliente, el editor de segmentos del servidor, el analizador de escenas del sidecar y el reescritor de diálogo de la ruta de generación. Su vocabulario incluye además `main`, `side`, `extra`, `action`, `thought`, `whisper` y el par `qte_bonus` / `qte_result`, que solo reconoce el formateador. Un verbo `whisper` haría desaparecer `[whisper:Tam]` de una línea de diálogo antes de guardarla y esta dejaría de ser diálogo permanentemente.
-
 Las pruebas de regresión fijan también los extractores: cada analizador que aporta nombres exclusivos, como `party-chat` / `party-turn` o el par QTE, debe seguir aportándolos. Si una fuente deja de analizarse, falla la compilación en vez de reducir silenciosamente el conjunto. Los otros tres también se recorren para detectar etiquetas nuevas. Esto no garantiza exhaustividad: una etiqueta en un archivo no examinado o escrita de una forma que el extractor no entienda puede escapar; amplía el conjunto cuando aparezca un analizador nuevo. También se reservan palabras comunes como `action`, `state`, `status` y `note`; su rechazo suele deberse a esta regla, no a un error tipográfico.
-
 `description` ocupa una línea de 1–200 caracteres sin corchetes ni saltos, porque se inserta literalmente en `COMMANDS:`. Además de CR y LF, se prohíben `U+0085`, `U+2028`, `U+2029`, los controles C0 y DEL, incluida la tabulación, que deforman el bloque. Sin embargo, después se expanden las macros de todo el recordatorio: `{{…}}` dentro de la descripción se expande, incluso `{{setvar::…}}`, que escribe variables de chat. No concede más acceso que `chat-write`, pero evita esas llaves salvo que sea intencionado. Un verbo admite hasta seis argumentos `{ name, type, enum?, maxLength?, optional? }`, con nombres `[a-z][a-zA-Z0-9_]*` de hasta 32 caracteres. A diferencia del verbo, admiten mayúsculas porque son claves JSON, no etiquetas. Solo las cadenas admiten `enum` con 1–16 valores distintos; los duplicados se rechazan. Una cadena sin enumeración debe declarar `maxLength` de 1–500, pues el análisis acotado del ejecutor no hereda otro límite y podría admitir toda la narración. Declarar `enum` y `maxLength` juntos se rechaza: la enumeración ya limita el valor. La carga es JSON plano de una línea; un `}` anidado cierra la coincidencia antes de tiempo. Solo se analiza una instancia de cada nombre por mensaje, por lo que un verbo repetido se aplica una vez.
 
 No necesitas explicar los argumentos en la descripción. La tabla analizada genera un esquema de carga, la descripción y un ejemplo que se puede copiar:
@@ -289,11 +286,9 @@ Si un turno contiene ambos tipos, el evento síncrono llega antes de que termine
 El motor solo valida forma: nombres y tipos de argumentos, pertenencia a enumeraciones y límites de cadenas. La semántica pertenece al paquete: no se pueden enumerar personajes al declarar un mundo compilado por chat. El rechazo del paquete a un verbo de estado es solo orientativo, pues los metadatos ya están guardados al recibirlo. Para un evento es vinculante: el motor no guardó nada y el paquete puede rechazar realmente un nombre desconocido.
 
 `metadataKey` debe pertenecer al paquete según tres reglas: comienza con su ID normalizado a camelCase (`hierarchical-maps` → `hierarchicalMaps`), continúa con un sufijo no vacío que empieza en mayúscula, y el ID normalizado no puede ser un espacio de nombres del motor ni extenderlo a partir de una mayúscula. Así un paquete no se apropia del prefijo de otro. La lista del motor deriva de todas las claves superiores de `ChatMetadata`, sus constantes de claves y claves presentes solo en la firma de índice, como `encounterActive`, `internalAssistant` e `imageGenConnectionId`, invisibles para las dos primeras fuentes.
-
 Ese tercer grupo requiere siete fuentes: los objetos de `patchMetadata`/`updateMetadata`; los objetos devueltos por callbacks de actualización, de frecuencia similar; la mutación `useUpdateChatMetadata()` y la propiedad `onMetadataChange` del cliente, que nunca pasan por `patchMetadata`; las llamadas directas `PATCH /chats/:id/metadata`, usadas para claves de combate, escena y narración sin pasar por el hook; las lecturas `chatMetadata.key` y `chat.metadata.key`; las lecturas del resultado de `parseChatMetadata(…)`, la forma más común y la única que detecta `scenario`; y la lista manual de claves por chat para perfiles de ajustes, que cubre claves leídas y escritas a través de límites entre funciones.
 
 Las regresiones fijan todas las fuentes y extractores. Hay dos límites deliberados. Las escrituras con una variable o resultado de función, como `patchMetadata(id, hydratedMeta)` o su equivalente en la ruta de metadatos, contienen claves que un barrido estático no puede leer: hay veinte y la prueba fija esa cifra; una vigesimoprimera exige revisión manual. Las lecturas dentro de una función auxiliar desde un parámetro también quedan fuera: ocurre con `spatialContext`, escrito por el cliente de `hierarchical-maps` distribuido desde Agents y leído aquí mediante un auxiliar y análisis local al archivo. La lista manual cubre ese segundo hueco; por eso una de las siete fuentes es seleccionada a mano. Se reconocen los límites en vez de afirmar que no existen. `persona` es además un mínimo añadido a mano que hoy no produce ninguna fuente.
-
 La tercera regla rechaza paquetes enteros deliberadamente: `conversation-calls` se convierte en `conversationCalls`, y `conversationCalls` + `Enabled` ya es una clave del motor. Ese paquete no puede poseer claves bajo su ID; tampoco `noodle` ni `background`, este último porque `background` ya es por sí misma una clave de metadatos del chat de Engine. Sí pueden declarar eventos, que no poseen claves. Las claves son planas y superiores porque esa es la forma que ya lee el reconciliador del paquete.
 
 Los comandos del modelo declarados por un paquete solo se ejecutan si el paquete declara `chat-write`, está instalado y está listo. Este permiso también controla las escrituras mediante la API de persistencia del paquete, incluidos mensajes, metadatos del chat, eventos de roleplay e instantáneas espaciales. `chat-read` controla las lecturas de chats, mensajes, estado del juego e instantáneas espaciales. Las mismas comprobaciones se aplican dentro de las transacciones de persistencia y los bloqueos del chat; el permiso de escritura no concede implícitamente permiso de lectura. Las llamadas de persistencia del propio motor siguen siendo de confianza.
@@ -451,8 +446,6 @@ El servidor de un paquete no se ejecuta desde `DATA_DIR/capability-packages/vers
 - **Limpieza al arrancar.** Una caída o una detención forzada se salta la limpieza de una copia. En cada arranque, antes de que se active ningún paquete, el Engine elimina todas las entradas de `capability-runtime-snapshots` excepto los enlaces compartidos de `node_modules`, porque ninguna de ellas puede estar en uso por el nuevo proceso. Antes hace que los archivos de solo lectura se puedan escribir, algo que Windows necesita, y nunca sigue los enlaces. Solo el proceso que tiene la concesión de escritura del almacenamiento llega a este paso, así que un segundo Engine iniciado sobre la misma carpeta de datos se detiene al abrir el almacenamiento y nunca elimina las copias de un Engine en ejecución.
 - **Versiones conservadas.** `versions/<id>` conserva la versión actual y `previousVersion`, que la reversión restaura cuando un nuevo tiempo de ejecución del servidor no consigue arrancar. Las versiones más antiguas, y una versión desde la que se revirtió una actualización fallida, se eliminan después de una activación o una actualización correctas y en el arranque. Un paquete cuya actualización espera un reinicio (`restart-required`), o cuyo tiempo de ejecución todavía no ha arrancado (`readiness: "pending"`), conserva todas las versiones hasta que arranque.
 - **Nunca se elimina:** los datos de los paquetes (carpetas como `DATA_DIR/long-term-memory` y las tablas del paquete en `storage`), los chats, los ajustes, `installed.json`, las decisiones de actualización, las carpetas `.install-*` y las carpetas de `versions/` de ids que no están en el registro. La desinstalación sigue quitando el código del paquete y conservando sus datos.
-
-<a id="compatibility-migration"></a>
 
 ## Migración de compatibilidad
 
@@ -852,8 +845,6 @@ como `seasons` (ID de lugar a estación, `*` para el mundo entero) desde
 `GET /api/game/:chatId/overworld`; un campo de batalla creado lleva las estaciones iniciales de sus
 casillas como `seasons`, con claves `"x,y"`.
 
-<a id="capability-api-1355-ruleset-overlays"></a>
-
 #### Capability API 1.355: superposiciones de conjuntos de reglas
 
 El paquete de mapa de una Experience puede añadir contenido a los conjuntos de reglas de sus partidas
@@ -919,8 +910,6 @@ Un mapa a mano también puede llevar sus propias palabras para el Game Master:
 Entonces se le describe el mapa al Game Master como "Un lugar hecho a mano (tierra con rastrojos,
 muros de maíz en pie), con una zanja de agua de lluvia; dentro: un espantapájaros (2), un santuario de
 muñecas de maíz", en vez de decir solo que se hizo a mano. Ambos necesitan una Experience que declare 1.357.
-
-<a id="capability-api-1359-items-that-cost-a-story-number"></a>
 
 #### Capability API 1.359: objetos que cuestan un número de historia
 
@@ -1170,8 +1159,6 @@ Reglas que conviene conocer:
 
 `scenes` se rechaza en un manifiesto que declara un `capabilityApi` anterior a 1.66.
 
-<a id="capability-api-1376-home-browser-fullscreen"></a>
-
 ### Capability API 1.376: pantalla completa del navegador de Home
 
 Una vista `home-browser-tab` recibe `capabilityProps.browserFullscreen`:
@@ -1181,8 +1168,6 @@ Una vista `home-browser-tab` recibe `capabilityProps.browserFullscreen`:
 - `enterLabel` y `exitLabel`: etiquetas accesibles localizadas para el botón.
 
 Es pantalla completa dentro de la aplicación: se ocultan las pestañas, la barra de direcciones y los marcadores de Home, mientras que la barra superior de Engine sigue disponible. No llama a la API Fullscreen del navegador ni requiere que el navegador la admita. El estado es temporal y se reinicia al salir del paquete o de Home. Mantén un botón para salir en todas las pantallas del paquete y usa `aria-pressed` para reflejar `active`. Los cambios de propiedades deben actualizar el botón sin sustituir los formularios sin terminar. Los paquetes que dependan de este control declaran Capability API 1.376 o posterior; los anteriores pueden mantener sus diseños actuales.
-
-<a id="capability-api-1814-cache-the-stable-part-of-a-package-prompt"></a>
 
 ### Capability API 1.814: guardar en caché la parte estable del prompt de un paquete
 
@@ -1227,8 +1212,6 @@ const result = await model.chatComplete([
 const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 ```
 
-<a id="capability-api-1815-choose-how-long-a-marked-prompt-stays-cached"></a>
-
 ### Capability API 1.815: elegir cuánto tiempo permanece en caché un prompt marcado
 
 `chatComplete` acepta `cacheTtl: "5m" | "1h"`: cuánto tiempo permanece en caché en Anthropic el prompt hasta los mensajes
@@ -1240,8 +1223,6 @@ también la ignoran los proveedores que guardan en caché por su cuenta (OpenAI,
 donde se aplica el tiempo de caché de la conexión.
 
 Los Engines anteriores ignoran la opción, así que un paquete siempre puede pasarla. Declara 1.815 cuando el paquete dependa de ella.
-
-<a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: imágenes GIF animadas
 
@@ -1275,8 +1256,6 @@ const isGif = result.mimeType === "image/gif";
 
 En un Engine 1.816, captura `code === "animation-unsupported"` para pintar una imagen fija en su lugar. Declara 1.816 solo cuando el paquete no pueda funcionar sin GIFs. No se necesita ningún permiso.
 
-<a id="capability-api-1817-telling-a-package-that-a-chat-was-branched"></a>
-
 ### Capability API 1.817: avisar a un paquete de que se creó una rama de un chat
 
 El servicio `long-term-memory:runtime` puede añadir un método opcional `chatBranched({ chatId, parentChatId })`.
@@ -1287,8 +1266,6 @@ ya se pueden leer dentro de la llamada. Un paquete puede usarlo para corregir la
 Los errores y las llamadas que tardan más de unos segundos se registran y se ignoran; la rama se devuelve de todos modos. Sin
 el método, nada cambia. Es una interfaz flexible: los Engines anteriores nunca lo llaman, así que el paquete debe seguir funcionando
 cuando falta la llamada. No se necesita ningún permiso.
-
-<a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 
 ### Capability API 1.818: embeddings de una conexión que elige el paquete
 
@@ -1394,8 +1371,6 @@ const scenes = (await api.runtime.persistence.listChatSummaries?.(chatId))?.adva
 
 Un paquete con `contributions.agentDetail` puede establecer `"header": "engine"`. Entonces, Engine dibuja el mismo encabezado que en las demás páginas de agentes: Atrás, el banner y el logotipo de la tienda, el nombre, el interruptor Active del chat abierto y Administrar paquete. La vista `detail` recibe dos propiedades adicionales: `engineHeader: true` y `headerSlot`, un elemento en las acciones del encabezado. Oculta tu propio encabezado cuando `engineHeader` esté establecido y representa los botones adicionales del encabezado (por ejemplo, «Agregar recuerdos» o ayuda) dentro de `headerSlot` con un portal de React o `appendChild`. `headerSlot` es `null` en la primera representación, así que espera a la siguiente actualización de las propiedades. Sin el indicador, el paquete conserva la página completa como antes. Declara Capability API 1.390 cuando lo establezcas.
 
-<a id="capability-api-1389-hide-or-show-messages-from-the-ai"></a>
-
 ### Capability API 1.389: ocultar o mostrar mensajes a la IA
 
 `persistence.setMessagesHiddenFromAI(chatId, messageIds, hidden)` oculta los mensajes de un chat a la IA,
@@ -1413,8 +1388,6 @@ Los Engines anteriores no tienen este método: comprueba que exista o declara 1.
 const hidden = (await api.runtime.persistence.setMessagesHiddenFromAI?.(chatId, messageIds, true)) ?? [];
 ```
 
-<a id="capability-api-1388-a-service-only-the-engine-can-read"></a>
-
 ### Capability API 1.388: un servicio que solo el Engine puede leer
 
 Todo servicio que registra un paquete se puede leer desde cualquier otro paquete mediante `runtime.services.get(key)`. Un
@@ -1429,8 +1402,6 @@ su propietario. Liberar el servicio borra el indicador, por lo que la clave pued
 1.388 ignora el argumento, así que el servicio sigue siendo legible allí; no dependas de `hostOnly` para mantenerlo en secreto en Engines
 anteriores.
 
-<a id="capability-api-1387-read-a-chats-summaries"></a>
-
 ### Capability API 1.387: leer los resúmenes de un chat
 
 `persistence.listChatSummaries(chatId)` devuelve los resúmenes que Engine conserva para un chat, de modo que un paquete no tenga que extraerlos de los metadatos del chat. Requiere el permiso `chat-read`, como `listMessages`, y devuelve copias:
@@ -1444,8 +1415,6 @@ Un chat sin resúmenes, o uno que no se encuentra, recibe valores vacíos. Los E
 ```ts
 const { day, week, rolling, gameSessions } = (await api.runtime.persistence.listChatSummaries?.(chatId)) ?? {};
 ```
-
-<a id="capability-api-1386-open-a-connection-and-raw-generation-for-packages"></a>
 
 ### Capability API 1.386: abrir una conexión y generar texto en bruto desde paquetes
 
@@ -1464,8 +1433,6 @@ Un paquete de navegador también puede generar texto con una conexión guardada 
 - `debugMode` (1.386): pasa el `debugMode` de la vista del navegador. Si es true o el servidor se ejecuta con `DEBUG_AGENTS`, registra los mensajes finales enviados al proveedor y la respuesta. El cuerpo es estricto y los Engines anteriores rechazan el campo: envíalo solo cuando sea true, desde un paquete que declare 1.386.
 
 Los eventos son `raw_started` (`{ runId }`), `token` (el siguiente fragmento de texto), `result` (`{ content }`, el texto completo), `aborted`, `error` (el mensaje), `fallback_used` cuando respondió la conexión de respaldo de Engine, y `done`, siempre al final.
-
-<a id="capability-api-150-professor-mari-actions"></a>
 
 ### Capability API 1.50: acciones de Professor Mari
 
@@ -1533,8 +1500,6 @@ Reglas que conviene conocer:
 - Desactivar o eliminar el paquete oculta sus insignias. Los desbloqueos se conservan, igual que los de las insignias propias de Engine, y vuelven a mostrarse cuando el paquete regresa.
 
 `api.registerAchievements` y `api.runtime.achievements` solo existen en un Engine de esta versión o posterior, así que un paquete que los utilice declara `capabilityApi` 1.36.
-
-<a id="capability-api-135-agent-home-widgets"></a>
 
 ### Capability API 1.35: widgets Home de agentes
 
@@ -1640,8 +1605,6 @@ Los paquetes del servidor pueden usar `api.runtime.integrations` para acceder a 
 - `speech.transcribe(audio, { filename, mimeType, signal })` envía el audio grabado al servidor de voz a texto que el usuario configuró en **Connections → Speech to Text** (Conexiones → Voz a texto) y se resuelve con la transcripción, o con `null` mientras ese servidor está desactivado, para que el paquete conserve su propia transcripción. Aplica la política de URL del host (`STT_LOCAL_URLS_ENABLED`) y sus límites de tamaño y tiempo, y nunca expone la clave guardada. `speech` es opcional y no requiere una API de capacidades más reciente: comprueba `typeof api.runtime.integrations?.speech?.transcribe === "function"` y recurre a tu alternativa en los motores anteriores.
 
 `@marinara-engine/shared` exporta los tipos compartidos de solicitud y resultado. Conserva en el paquete la construcción de prompts y la orquestación propias; usa estos puntos del host para E/S de proveedores en vez de copiar servicios del motor. Los tipos y auxiliares puros pueden seguir empaquetándose.
-
-<a id="package-audio"></a>
 
 ### Audio de los paquetes
 

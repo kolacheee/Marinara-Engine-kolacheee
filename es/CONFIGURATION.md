@@ -4,8 +4,6 @@ Esta guía lista los ajustes del servidor que puedes cambiar con variables de en
 
 Tus cuentas de IA, personajes y opciones de chat se configuran dentro de la app. Para añadir una cuenta de IA, consulta [Conectarse a un proveedor de IA](connections/connecting-to-a-provider.md).
 
-<a id="edit-the-env-file"></a>
-
 ## Editar el archivo .env
 
 Marinara crea un `.env` vacío la primera vez que arranca. Cada línea es `KEY=value`. Las líneas que empiezan con `#` son comentarios.
@@ -29,8 +27,6 @@ BASIC_AUTH_PASS=correct-horse-battery-staple
 
 El servidor lee `.env` sin importar cómo lo inicies. Los lanzadores (`start.bat`, `start.sh`, `start-termux.sh`) también establecen `HOST=0.0.0.0` para que otros dispositivos puedan conectarse, y abren tu navegador cuando el servidor está listo. `AUTO_OPEN_BROWSER=false` lo impide. Con `pnpm start` a secas, el servidor escucha solo en esta computadora a menos que establezcas `HOST`.
 
-<a id="restart-or-hot-reload"></a>
-
 ## Reinicio o recarga en caliente
 
 Marinara vigila `.env` mientras se ejecuta. La mayoría de los ajustes se aplican casi de inmediato, sin reinicio. El registro muestra una línea `[env-watcher]` por cada cambio. Si la vigilancia no puede iniciarse, el servidor comprueba el archivo cada 30 segundos y lo indica en el registro.
@@ -50,8 +46,6 @@ Estos ajustes solo se leen al arrancar. Cambiar uno necesita un reinicio, y el r
 Los lanzadores leen `AUTO_UPDATE_ENABLED` antes de que arranque el servidor, así que un cambio se aplica a partir del próximo arranque y el registro no lo advierte.
 
 Los ajustes de control de acceso y los secretos (`BASIC_AUTH_USER`, `BASIC_AUTH_PASS`, `IP_ALLOWLIST`, `ADMIN_SECRET`, `CSRF_TRUSTED_ORIGINS`) no necesitan reinicio.
-
-<a id="access-control"></a>
 
 ## Control de acceso
 
@@ -107,8 +101,6 @@ openssl rand -hex 32
 
 Marinara guarda tus datos como archivos JSON simples, así que puedes copiar y leer las copias de seguridad. Para saber qué contiene cada carpeta, consulta [Dónde se guardan tus datos](data/where-data-is-stored.md).
 
-<a id="logging-levels"></a>
-
 ## Niveles de registro
 
 `LOG_LEVEL` establece cuánto imprime el servidor. Oculta todo lo que esté por debajo del nivel que elijas.
@@ -125,6 +117,7 @@ Marinara guarda tus datos como archivos JSON simples, así que puedes copiar y l
 | `LOG_LEVEL` | `warn` | El nivel de arriba. |
 | `LOG_PRESET` | `default` | `prompt-connections` muestra el mismo detalle de prompt y modelo que `debug`, pero oculta las líneas de solicitud rutinarias como `GET /api/chats`. |
 | `LOG_DISABLE_REQUEST_LOGGING` | `false` | `true` oculta las líneas de solicitud rutinarias y conserva tu nivel. Necesita un reinicio. |
+| `LOG_INLINE_MEDIA` | `short` | `short` muestra las imágenes y otros archivos base64 en la salida de depuración como un marcador breve con su tipo y tamaño. `full` los muestra completos, lo que puede ocupar varios MB por prompt. |
 | `LOG_FORMAT` | automático | `pretty` imprime líneas legibles en todas partes, por ejemplo para leer los prompts de **Debug mode** (Modo de depuración) en `docker logs`. `json` imprime un objeto JSON por línea. Necesita un reinicio. |
 
 En una terminal, el servidor imprime líneas legibles. En otros lugares, como los registros de Docker, un servidor de producción imprime líneas JSON. El lanzador de Termux pide líneas legibles. El registro del navegador es aparte y no lo controla `LOG_LEVEL`.
@@ -193,13 +186,9 @@ De forma predeterminada, las solicitudes salientes a servicios de IA, servicios 
 
 Para conectar un modelo local o autoalojado, consulta [Conectar un modelo local o autoalojado](connections/local-self-hosted.md).
 
-<a id="feature-switches"></a>
-
 ## Interruptores de funciones
 
 Los comportamientos opcionales del servidor, como reintentar las llamadas fallidas al proveedor (**Settings → Advanced → Timeouts & Retries**) o mantener estables las selecciones de grupos del lorebook (**Settings → Advanced → Lorebooks** (Configuración → Avanzado → Lorebooks)), son interruptores de Configuración. Todos están desactivados de forma predeterminada. Algunos tienen una variable que, cuando está definida, tiene prioridad sobre el interruptor. Consulta [Interruptores de funciones](configuration/features.md).
-
-<a id="marinara-notices"></a>
 
 ## Avisos de Marinara
 
@@ -218,8 +207,6 @@ Para desactivar los avisos, establece `MARINARA_NOTICES_ENABLED=false`.
 Las bifurcaciones pueden apuntar `MARINARA_NOTICES_URL` a su propio archivo.
 
 Para encontrar el servidor de avisos, y también el proxy cuando hay un [proxy saliente](#outbound-http-proxy) activado, Marinara lee el archivo hosts y consulta directamente a los servidores DNS. Los nombres que solo conoce tu red local, como los nombres `.local` o los nombres cortos sin dominio distintos de `localhost`, no funcionan. En Termux, los servidores DNS son los de `$PREFIX/etc/resolv.conf`: `8.8.8.8` y `8.8.4.4` de Google, salvo que edites ese archivo.
-
-<a id="optional-multiplayer"></a>
 
 ## Multijugador opcional
 
@@ -260,8 +247,6 @@ Instala los agentes propios opcionales en la app: **Library → Agents** (Biblio
 Los archivos, las carpetas y los repositorios de agentes externos están bloqueados. Para permitirlos, activa **Allow custom Agent imports** (Permitir importaciones de agentes personalizados) en **Settings → Advanced → Security**. Esto no necesita ninguna variable de entorno. Los controles de importación permanecen atenuados hasta que lo hagas.
 
 Cada importación muestra primero las capacidades que solicita el agente. Los permisos necesitan aprobación explícita. No se importan las funciones incluidas ni las selecciones de herramientas, se sanea el CSS generado y se comprueban las acciones de resultado con las capacidades aprobadas. Desactivar la puerta detiene los agentes importados. Los agentes creados en Marinara y los paquetes oficiales no se ven afectados.
-
-<a id="custom-agent-repositories"></a>
 
 ### Repositorios de agentes personalizados
 
@@ -355,8 +340,6 @@ Las cuentas de video se configuran en la app. Estos ajustes solo afinan los trab
 | `SEEDANCE_VIDEO_POLL_INTERVAL_MS` | `10000` | Con qué frecuencia comprueba un trabajo de Seedance. |
 | `VIDEO_REFERENCE_PUBLIC_BASE_URL` | vacío | Dirección HTTPS pública de este servidor, para los servicios que deben obtener una imagen de referencia por URL. |
 
-<a id="lorebooks"></a>
-
 ### Lorebooks
 
 Ambos están desactivados de forma predeterminada y se aplican en la siguiente generación tras un cambio en `.env`. Cuando `LOREBOOK_STABLE_GROUP_WINNERS` está definida, tiene prioridad sobre el interruptor **Stable lorebook picks** (Selecciones estables del lorebook) de **Settings → Advanced → Lorebooks**. Si no, decide el interruptor. Consulta [Interruptores de funciones](configuration/features.md).
@@ -367,8 +350,6 @@ Ambos están desactivados de forma predeterminada y se aplican en la siguiente g
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | Guarda el texto completo de las entradas activadas solo en el mensaje de asistente o narrador más reciente. Los mensajes más antiguos conservan los ID, las claves y las puntuaciones de las entradas. Hace mucho más pequeños los chats con lorebooks grandes. Si se borran mensajes más recientes, Active Context y los reintentos de agentes muestran el texto actual de la entrada para el mensaje que vuelve a ser el más reciente. |
 
 `scripts/compact-lorebook-scans.mjs` aplica la misma regla a los chats más antiguos. Detén primero el servidor. Es una simulación a menos que pases `--apply`, y hace una copia de seguridad de ambas tablas de mensajes antes de escribir.
-
-<a id="robustness"></a>
 
 ### Robustez
 
@@ -400,8 +381,6 @@ Todos están desactivados de forma predeterminada, lo que mantiene el comportami
 | `SIDECAR_RUNTIME_INSTALL_ENABLED` | `false` (el lanzador de Windows establece `true`) | Permite que el runtime del **Built-in model** (Modelo integrado) se instale sin un encabezado de administrador en loopback. |
 
 Para el **Built-in model**, consulta [Configuración del modelo integrado](connections/local-model.md).
-
-<a id="outbound-http-proxy"></a>
 
 ### Proxy HTTP saliente
 

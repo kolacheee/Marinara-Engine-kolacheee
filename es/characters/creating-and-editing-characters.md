@@ -63,8 +63,6 @@ La pestaña **Images** reúne los ajustes del aspecto del personaje en las imág
 
 La pestaña **Images** de una persona tiene las mismas secciones, excepto **Selfie instructions**.
 
-<a id="metadata-tab"></a>
-
 ## Pestaña Metadata
 
 La pestaña **Metadata** contiene los detalles de identidad y organización. Te ayudan a ordenar, compartir y hacer seguimiento de una tarjeta. La mayoría no se envían a la IA.
@@ -81,8 +79,6 @@ La pestaña **Metadata** contiene los detalles de identidad y organización. Te 
 **Split description into fields** (Dividir la descripción en campos) es un botón debajo de **Version**. Mueve el texto etiquetado (personalidad, apariencia, historia, escenario, reglas, diálogo de ejemplo) de **Description** a sus propios campos. Primero ves un resumen breve, y al aplicarlo la tarjeta se guarda como una nueva versión. El botón está desactivado mientras **Description** está vacío.
 
 El panel **Version history** (Historial de versiones) también está en esta pestaña. Consulta [Historial de versiones](#version-history).
-
-<a id="card-tab"></a>
 
 ## Pestaña Card
 
@@ -112,8 +108,6 @@ La sección **Dialogue & Greetings** define cómo se abre un chat y cómo suena 
 ```
 
 Los saludos y los mensajes de ejemplo pueden mostrar imágenes de la Gallery del personaje. Consulta [Reutilizar una imagen de galería en mensajes y saludos](galleries.md#reuse-a-gallery-image-in-messages-and-greetings). Cuando los saludos muestran imágenes de otros sitios web, **Save images locally** (Guardar imágenes localmente) conserva una copia en la Gallery. Consulta [Guardar imágenes web de los saludos](galleries.md#save-web-images-from-greetings).
-
-<a id="write-a-card-field-with-the-wand"></a>
 
 ### Escribir un campo de la tarjeta con la varita
 
@@ -154,17 +148,15 @@ Antes de empezar: añade una conexión de generación de imágenes. El botón de
 
 El tamaño de la imagen viene del tamaño de imagen **Portraits** en los ajustes de generación de imágenes. De forma predeterminada es 1024 por 1024. Si **Expose media prompts before sending** (Mostrar los prompts de medios antes de enviarlos) está activado, aparece un paso de revisión del prompt antes de cada solicitud.
 
-<a id="images-tab"></a>
-
 ## Pestaña Voice
 
 La pestaña **Voice** define cómo suena el personaje cuando Text to Speech (texto a voz) lo lee en voz alta.
 
-- **Voice**. La voz de este personaje. Un cambio se guarda de inmediato, sin **Save**. Es el mismo ajuste que la fila de este personaje en **Connections → Text to Speech** (Conexiones → Text to Speech). Deja el campo vacío para usar la voz predeterminada. Si una tarjeta con un nombre coincidente tiene una voz, como el original de una copia AU, el campo vacío muestra el nombre de esa voz, porque esta tarjeta también la usa.
+- **Voice**. La voz de este personaje. Un cambio se guarda de inmediato, sin **Save**. Es el mismo ajuste que la fila de este personaje en los ajustes de la tarea **Voice** de **Connections** (Conexiones). Deja el campo vacío para usar la voz predeterminada. Si una tarjeta con un nombre coincidente tiene una voz, como el original de una copia AU, el campo vacío muestra el nombre de esa voz, porque esta tarjeta también la usa.
 - **Preview** (Probar). Reproduce una frase corta con esa voz. La frase dice el nombre del personaje, o el **Phonetic name** cuando hay uno definido.
 - **Phonetic name**. Una escritura opcional que se usa solo para corregir la pronunciación. Forma parte de la tarjeta, así que haz clic en **Save** para conservarlo.
 
-Si Text to Speech está desactivado, o todos los personajes comparten una sola voz, una nota breve reemplaza el campo **Voice**. Con una sola voz compartida, la nota ofrece **Use a voice per character** (Usar una voz por personaje). **Open Text to Speech settings** (Abrir los ajustes de Text to Speech) abre Connections. Consulta [Configuración de Text to Speech (TTS)](../media/tts-setup.md).
+Si Text to Speech está desactivado, o todos los personajes comparten una sola voz, una nota breve reemplaza el campo **Voice**. Con una sola voz compartida, la nota ofrece **Use a voice per character** (Usar una voz por personaje). **Open Text to Speech settings** (Abrir los ajustes de Text to Speech) abre los ajustes de la tarea **Voice** de **Connections**. Consulta [Configuración de Text to Speech (TTS)](../media/tts-setup.md).
 
 ## Pestaña Advanced
 
@@ -175,8 +167,6 @@ La pestaña **Advanced** contiene controles de prompt. Déjalos vacíos para un 
 - **Depth Prompt**. Texto inyectado en el historial del chat. **Depth** es cuántos mensajes hacia atrás: 0 es justo después del último mensaje. El valor predeterminado es 4. **Role** es **System**, **User** o **Assistant**. El valor predeterminado es System.
 
 La sección **Regex Scripts** contiene scripts de buscar y reemplazar para este único personaje. Consulta [Scripts de regex](../extending/regex-scripts.md).
-
-<a id="use-an-alternative-field-in-selected-chats"></a>
 
 ## Usar un campo alternativo en chats seleccionados
 
@@ -202,11 +192,9 @@ Reglas:
 
 Para quitar una alternativa, haz clic en su botón de papelera, confirma con **Delete** (Eliminar) y luego haz clic en **Save**. Sus chats vuelven al campo original. Eliminar una alternativa nunca elimina el campo original.
 
-<a id="version-history"></a>
-
 ## Historial de versiones
 
-Mientras **Automatic versioning** está activado, cada guardado puede añadir una instantánea a **Version history** en la pestaña **Metadata**. Hasta entonces, el panel dice `Previous card states will appear here after the next edit.` Un contador muestra cuántas instantáneas hay guardadas.
+Mientras **Automatic versioning** está activado, cada guardado puede añadir una instantánea a **Version history** en la pestaña **Metadata**. Hasta entonces, el panel dice `Previous card states will appear here after the next edit.` Un contador muestra cuántas instantáneas hay guardadas. Actualizar el personaje desde una tarjeta más reciente siempre guarda primero una instantánea, incluso con el interruptor desactivado. Consulta [Actualizar un personaje que ya tienes](import-export.md#update-a-character-you-already-have).
 
 Para comparar una versión guardada con tu tarjeta actual:
 

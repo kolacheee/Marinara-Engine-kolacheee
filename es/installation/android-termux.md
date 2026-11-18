@@ -70,7 +70,7 @@ Para detener el servidor, pulsa <kbd>Ctrl</kbd>+<kbd>C</kbd> en Termux.
 
 ## Actualizar Marinara
 
-Cada vez que ejecutas `./start-termux.sh`, el lanzador comprueba en GitHub si hay una versión más nueva y actualiza antes de iniciarse. Para iniciar sin actualizar, añade `--skip-update`. Para ver más opciones y los pasos para actualizar el APK, consulta [Actualizar Marinara Engine](../UPGRADING.md#android-termux).
+Cada vez que ejecutas `./start-termux.sh`, el lanzador comprueba en GitHub si hay una versión más nueva y actualiza antes de iniciarse. Para iniciar sin actualizar, añade `--skip-update`. En una rama de prueba, como la prueba de la renovación de la interfaz, el lanzador sigue esa rama en GitHub. Si la rama se reescribió allí, tu copia pasa a la nueva versión por sí sola, siempre que no hayas hecho commits propios. Para ver más opciones y los pasos para actualizar el APK, consulta [Actualizar Marinara Engine](../UPGRADING.md#android-termux).
 
 El lanzador también elimina los paquetes sin usar de su caché local de pnpm durante las actualizaciones. Esto evita que las versiones antiguas llenen varios gigabytes de almacenamiento. No toca tus chats ni tu configuración.
 

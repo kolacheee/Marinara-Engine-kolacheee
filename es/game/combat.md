@@ -45,13 +45,9 @@ Si el tablero muestra **Resolving…** (Resolviendo…), espera un momento. **Re
 
 Quién actúa y cuándo depende de **Turn order** (Orden de turnos). Consulta [Orden de turnos](#turn-order). Los tableros hechos a mano y las reglas del terreno están en [Batallas tácticas y terreno](#tactical-battles-and-terrain).
 
-<a id="battles-in-an-mrpg-game"></a>
-
 ## Batallas en una partida MRPG
 
 En una partida con clases MRPG, cada miembro del grupo combate con su clase activa: sus estadísticas, sus habilidades y el equipo de su ficha (consulta [Clases MRPG](mrpg-classes.md)). Los oponentes combaten según su categoría: minion, standard, elite o boss. Un panel junto a la pelea muestra quién actúa a continuación, la clase, el nivel, la fila y los recursos de cada luchador y, al final, lo que ganó el grupo.
-
-<a id="turns-skills-and-resources"></a>
 
 ### Turnos, habilidades y recursos
 
@@ -60,8 +56,6 @@ En una partida con clases MRPG, cada miembro del grupo combate con su clase acti
 - **Defender.** Aumenta la Defense en un 50% hasta el siguiente turno del luchador y recupera más Stamina.
 - **Munición y elementos.** Un Marksman carga un tipo de munición y un Channeler canaliza un elemento desde el panel junto a la pelea. Cambiar cualquiera de los dos es gratis. Si no intervienes, la IA elige el mejor para el objetivo.
 
-<a id="hitting-and-damage"></a>
-
 ### Golpes y daño
 
 - La **probabilidad de acertar** aumenta con el Skill y la Luck del atacante y disminuye con el Speed y la Luck del objetivo. Nunca baja del 25%.
@@ -69,21 +63,15 @@ En una partida con clases MRPG, cada miembro del grupo combate con su clase acti
 - **Daño.** Un ataque con arma causa la Strength más la potencia del ataque, menos la Defense del objetivo. Un conjuro, o un golpe con un bastón, una varita o un foco, usa Magic contra Resistance. La potencia aumenta un poco con el nivel, como lo haría con equipo mejor.
 - **Tipos de daño.** Cada golpe tiene un tipo: cortante, perforante o contundente para las armas; un elemento (fuego, hielo, rayo, viento, madera, tierra, agua o metal); o luz u oscuridad. Un enemigo puede ser débil ante un tipo (recibe un 50% más), resistirlo (recibe la mitad), ser inmune o absorberlo. Una debilidad o resistencia se muestra en el enemigo una vez que un golpe la ha descubierto, y el grupo la recuerda para todos los enemigos de ese tipo. Las debilidades elementales de los enemigos siguen el ciclo de cinco fases, en el que cada elemento vence al siguiente: la madera separa la tierra, la tierra contiene el agua, el agua apaga el fuego, el fuego funde el metal y el metal corta la madera.
 
-<a id="rows"></a>
-
 ### Filas
 
 Una batalla Turn-Based tiene una fila delantera y una trasera en cada lado. Un golpe cuerpo a cuerpo contra la fila trasera causa la mitad de daño, en ambos sentidos, mientras que los ataques a distancia y los conjuros causan todo el daño a cualquiera de las filas. Cuando no queda nadie en la fila delantera de un bando, su fila trasera pasa a ser la delantera. Cada clase tiene una fila predeterminada, y puedes cambiar la fila de un personaje en la pestaña **Status** (Estado) de su ficha. Las batallas Tactical no tienen filas: las posiciones del tablero deciden quién puede alcanzar a quién.
-
-<a id="taunts-yielding-and-taming"></a>
 
 ### Provocaciones, rendición y domesticación
 
 - **Provoke.** El Provoke de un Sentinel hace que todos los enemigos ataquen al Sentinel durante 2 turnos. En un tablero, un enemigo que no pueda alcanzarlo se acerca todo lo posible y se prepara en su lugar.
 - **Rendición.** Un enemigo inteligente que está perdiendo puede rendirse o huir. Cuando los únicos enemigos que quedan se han rendido, la pelea pregunta **Spare them** (Perdonarlos) o **Finish them** (Acabar con ellos). De cualquier forma, el grupo recibe su botín y experiencia. Un enemigo que lleva un tesoro y huye escapa con su premio.
 - **Domesticación.** Un Tracker puede domesticar a una bestia salvaje que esté por debajo del 30% de HP. Sale de la pelea y se convierte en compañero, que se conserva incluso si después se pierde la pelea.
-
-<a id="after-the-fight"></a>
 
 ### Después de la pelea
 
@@ -114,8 +102,6 @@ Para desactivar los QTE, si juegas con un lector de pantalla o sin límite de ti
 
 En un teléfono, los botones de acción se fijan en la parte inferior de la pantalla. Los paneles que no caben pasan a un cajón que se desliza hacia arriba, con cuatro pestañas: **Party** (Grupo: los miembros y su salud), **Boss Mechanics** (Mecánicas de jefe: las reglas especiales de la pelea), **Dialogue** (Diálogo: las líneas de batalla que dicen los luchadores) y **Combat Log** (Registro de combate: el registro ronda a ronda). Toca una pestaña para abrir su cajón. Toca fuera del cajón o su botón de cerrar para cerrarlo.
 
-<a id="how-combat-math-works"></a>
-
 ## Cómo funcionan las matemáticas del combate
 
 Las reglas de esta sección son para partidas **Legacy** y para partidas cuyo conjunto de reglas presta su ficha a las batallas de Marinara. Una partida con clases **MRPG**, como todas las partidas nuevas, combate según las reglas de [Batallas en una partida MRPG](#battles-in-an-mrpg-game).
@@ -132,8 +118,6 @@ Cada ronda se decide con matemáticas de dados fijas, no con la IA. Esto hace qu
 4. Un golpe crítico ocurre con un 20 natural, o cuando el atacante supera al defensor por 10 o más.
 
 **Daño.** En un golpe acertado, el daño base viene de la estadística de Ataque del atacante y crece con el nivel. Se suman dados d6 extra, y los luchadores de nivel más alto tiran más de ellos. Un golpe crítico multiplica el total por 1,5. Después, la Defensa del defensor bloquea de ese daño hasta el 40 por ciento de su propio valor.
-
-<a id="difficulty-scaling"></a>
 
 ### Escalado de dificultad
 
@@ -177,8 +161,6 @@ Lo que cae depende de tu ambientación. Una partida con kit de ambientación sue
 
 ## Referencia: batallas tácticas
 
-<a id="tactical-battles-and-terrain"></a>
-
 ### Batallas tácticas y terreno
 
 No hay ajustes del campo de batalla que completar al crear una partida. Cada pelea recibe su propio tablero, generado a partir de una semilla nueva y de la descripción breve del GM para la escena. El GM proporciona el entorno, la formación y una descripción breve del terreno, que puede pedir áreas de terreno y barreras cerca del centro o de un borde. Marinara crea las casillas y las posiciones iniciales exactas. El campo de batalla aceptado se guarda, por lo que recargar restaura ese tablero.
@@ -210,8 +192,6 @@ Las unidades con una capacidad establecida de vuelo o teletransporte se mueven d
 
 Ambos modos especiales usan la capacidad de movimiento actual y la distancia en línea recta (no en diagonal) entre casillas. Conservan las bonificaciones de defensa y evasión del terreno de destino e ignoran la altura. No se modelan la altitud de un volador, los techos, los costes específicos de hechizos ni los requisitos de visión específicos de hechizos. Las invocaciones todavía no forman parte del combate propio de Marinara.
 
-<a id="turn-order"></a>
-
 ### Orden de turnos
 
 Una batalla Tactical reparte los turnos de una de dos formas:
@@ -220,8 +200,6 @@ Una batalla Tactical reparte los turnos de una de dos formas:
 - **Your whole party, then the enemies** (Todo tu grupo y luego los enemigos): cada unidad del grupo puede actuar y luego se juega la fase enemiga. Las partidas VN usan este modo.
 
 Para cambiarlo, abre **Chat Settings**, expande **Combat Style** y elige un **Turn order**. Aparece mientras el **Battle system** es Tactical, salvo que el conjunto de reglas de la partida resuelva sus propias peleas. El cambio se aplica a partir de la siguiente batalla. Una batalla en curso conserva su orden.
-
-<a id="sight-cover-and-height"></a>
 
 ### Visión, cobertura y altura
 

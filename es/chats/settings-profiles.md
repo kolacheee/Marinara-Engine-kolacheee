@@ -75,8 +75,6 @@ Cada chat conserva su propia copia de los ajustes de un perfil, así que guardar
 
 Cuando ningún otro chat usa el perfil, **Save** funciona sin preguntar. Las salas multijugador nunca se actualizan de esta forma.
 
-<a id="choosing-the-default-profile"></a>
-
 ## Elegir el perfil predeterminado
 
 La estrella junto al menú desplegable marca el perfil que se usa automáticamente en los chats nuevos de ese modo. Solo un perfil por modo puede ser el predeterminado. Las etiquetas son **Mark this profile as default for new chats in this mode** (Marcar este perfil como predeterminado para los chats nuevos de este modo), **This profile is the default for new chats in this mode** (Este perfil es el predeterminado para los chats nuevos de este modo) y **Select a profile to mark it as default** (Selecciona un perfil para marcarlo como predeterminado). También puedes marcar **Make this the default** en el creador.
@@ -85,13 +83,11 @@ La estrella junto al menú desplegable marca el perfil que se usa automáticamen
 
 **Export settings profile (.json)** descarga un archivo `.marinara-settings-profile.json` que puedes guardar como copia de seguridad o compartir. **Import settings profile (.json)** crea un perfil nuevo a partir de un archivo compatible y nunca sobrescribe uno existente. Las exportaciones anteriores también se pueden importar. Una importación fallida muestra **Import failed** (No se pudo importar).
 
-Los perfiles guardan ajustes, no secretos del proveedor. Un perfil exportado o importado también deja fuera el webhook de Discord Mirror, la dirección de DeepLX, la clave de DeepL y la dirección de Intiface. Los perfiles que guardas en esta instalación los conservan. Los archivos exportados omiten la persona y los lorebooks, porque solo existen en esta instalación.
+Los perfiles guardan ajustes, no secretos del proveedor. Un perfil exportado o importado también deja fuera el webhook de Discord Mirror, la dirección de DeepLX, la clave de DeepL y la dirección de Intiface. Los perfiles que guardas en esta instalación los conservan. Los archivos exportados omiten la persona, los lorebooks y las opciones de variables del preset, porque pertenecen a esta instalación.
 
 ## El perfil Default
 
 Conversation y Roleplay tienen cada uno un perfil integrado **Default** (Predeterminado). Aplicarlo restaura los ajustes controlados por el perfil a los valores predeterminados de Marinara para ese modo. No se puede renombrar, sobrescribir ni eliminar. Los controles desactivados dicen **Cannot save into the Default profile**, **Cannot rename the Default profile** y **Cannot delete the Default profile**.
-
-<a id="favorite-window-layouts"></a>
 
 ## Diseños de ventanas favoritos
 
@@ -119,7 +115,7 @@ Un perfil también puede guardar **selecciones iniciales**: una persona, loreboo
 - **Save current chat settings into this profile** conserva la persona, los lorebooks y el fondo propios del perfil. Un perfil sin fondo toma el fondo del chat cuando guardas en él.
 - Actualizar otros chats nunca cambia su persona, sus lorebooks ni su fondo.
 
-Un perfil no reemplaza el contenido propio del chat: los personajes, los sprites, el resumen, las etiquetas y el prompt de escena. Tampoco guarda el historial de conversación ni ningún estado en curso, como las variables de macro, los personajes que desactivaste o una sala multijugador.
+Un perfil no reemplaza el contenido propio del chat: los personajes, los sprites, el resumen, las etiquetas, el prompt de escena y **Author's Notes** (Notas del autor). Tampoco guarda el historial de conversación ni ningún estado en curso, como las variables de macro, los personajes que desactivaste o una sala multijugador. Un perfil guardado en una versión anterior puede conservar **Author's Notes**, pero al aplicarlo se mantienen las propias del chat.
 
 ### Qué copia Save and update
 
@@ -139,7 +135,7 @@ Todo lo demás se queda como lo tiene cada chat:
 - Su conexión, su preset de prompt y su prompt personalizado.
 - Su historia y sus personajes.
 - Sus lorebooks y su fondo.
-- Sus notas y su progreso.
+- Sus **Author's Notes** y su progreso.
 - Qué comandos de Roleplay solo puede usar su narrador.
 - Si Noodle puede usar sus mensajes.
 

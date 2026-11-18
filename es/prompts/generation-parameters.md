@@ -42,6 +42,8 @@ Cada parámetro numérico tiene una casilla de entrada y un interruptor de enví
 - Con el interruptor de envío activado, **Off** le pide al proveedor que desactive el razonamiento, cuando se sabe que el modelo lo admite. Algunos modelos no pueden desactivar el razonamiento y pueden seguir devolviéndolo. Elige un modelo sin razonamiento cuando sea imprescindible que no lo haya.
 - Con el interruptor de envío desactivado, no se envía ninguna preferencia de razonamiento, y el proveedor usa su propio valor predeterminado.
 
+MiniMax M3.1 Flash en NanoGPT siempre razona. Ofrece desde **Low** hasta **Max**. NanoGPT usa **Max** cuando no recibe un esfuerzo, y Marinara envía **Low** para un **Off** guardado anteriormente.
+
 **Verbosity** (Verbosidad) fija cuán largas y detalladas deben ser las respuestas: **None**, **Low**, **Medium** o **High**. Solo algunos modelos lo usan.
 
 ## Consejos de ajuste
@@ -56,8 +58,6 @@ Cambia un ajuste a la vez para que puedas saber qué ayudó. Son reglas generale
 | Un personaje repite la misma forma de expresarse | Sube **Frequency** o **Presence** un poco, a un valor entre 0.3 y 0.6. |
 
 Para ver qué parámetros se enviaron en un mensaje, usa **Peek Prompt**. Muestra el prompt (las instrucciones enviadas a la IA) ensamblado más el modelo, la temperatura, el máximo de tokens, el esfuerzo de razonamiento y más.
-
-<a id="the-send-switch"></a>
 
 ## El interruptor de envío
 
@@ -152,11 +152,11 @@ Marinara resuelve cada parámetro recorriendo esta lista. Los elementos posterio
 
 La línea **Effective** junto a un parámetro muestra el valor que gana y de qué capa viene, por ejemplo **Effective: 16384 · this chat**, o **Effective: 4096 · output token cap** cuando se aplica un límite de la cuenta. Un interruptor de envío desactivado muestra **not sent**. Los proveedores todavía pueden exigir parámetros o ajustar valores no compatibles. Custom Parameters y el ajuste al contexto pueden cambiar la solicitud final. Restablecer los parámetros del chat solo quita la sustitución de este chat (elemento 3). El valor viene entonces de los **Chat defaults** de la cuenta, si están configurados, o si no, del preset. Las reglas del modo y los límites de salida (elementos 4 y 5) se siguen aplicando después.
 
-<a id="parameters-for-agents"></a>
-
 ## Parámetros para agentes
 
-Las llamadas de los agentes usan los **Chat defaults** guardados en la cuenta con la que se ejecutan: la cuenta propia del agente, o la del chat si el agente no tiene una. Los interruptores de envío y los límites del modelo se aplican como en una respuesta del chat. Los presets y los **Advanced Parameters** de un chat no cambian las llamadas de los agentes, salvo por la regla de temperatura de más abajo.
+Las llamadas de los agentes usan los **Chat defaults** guardados en la cuenta con la que se ejecutan: la cuenta propia del agente, o la del chat si el agente no tiene una. Los interruptores de envío y los límites del modelo se aplican como en una respuesta del chat. Las reglas de abajo explican cuándo usan los agentes los **Advanced Parameters** de un chat.
+
+En Roleplay, el **Reasoning Effort** de un chat y su interruptor de envío también se aplican al **Prompt Model** (Modelo de prompt) de Illustrator. Las ilustraciones automáticas, los comandos del narrador y las ilustraciones manuales usan ese ajuste del chat cuando lo configuras. El modelo de respaldo usa su propio esfuerzo guardado cuando tiene uno.
 
 - **Se envían a los agentes:** Temperature, Top P, Top K, Frequency, Presence, Reasoning Effort, Verbosity, Service Tier, Custom Parameters, los encabezados personalizados y los parámetros adicionales que agregas en **Settings** (Configuración), luego **Advanced** (Avanzado) y luego **Parameters** (Parámetros), como Top A o una semilla. Un parámetro con el interruptor de envío desactivado no se envía.
 - **No se envían a los agentes:** Max Output Tokens, secuencias de parada, prefills, Thinking Tags y otros ajustes de formato del prompt. Cada agente conserva su propio **Max Output Tokens**.

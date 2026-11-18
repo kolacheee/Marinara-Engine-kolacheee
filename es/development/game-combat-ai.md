@@ -69,8 +69,6 @@ Cautious y Cowardly deben divergir: un Cautious Marksman sano toma buena posici�
 
 Evita sinónimos con idéntica puntuación. Cruel equivale sobre todo a Opportunistic salvo objetivos distintos admitidos. Reserva Strategic para planificación acotada real, no para "mejor en todo". Valentía e inteligencia no son extremos opuestos obligatorios.
 
-<a id="assigning-profiles-role-experience-personality-then-seeded-variety"></a>
-
 ## Asignación: rol, experiencia, personalidad y variedad con semilla
 
 ### Prioridad
@@ -147,8 +145,6 @@ Guarda indicaciones/procedencia aceptadas para explicar la asignación, no trans
 - El registro de la pelea indica qué activó una prueba de moral antes de su tirada, un cambio de temperamento y qué lo causó, a quién arrastró un desplazamiento, una criatura Territorial que mantiene su terreno y una rendición del grupo. Una criatura que se rinde permanece en el tablero donde se rindió.
 - En las peleas de conjunto de reglas, la puntuación de daño de un golpe es su daño esperado con respecto a la salud media del bando de su objetivo, sea quien sea quien lo reciba, de modo que la mayor salud de un caballero no hace que un Multiattack contra él valga menos que el mismo daño contra el mago. Un golpe que haría caer a su objetivo se pondera según la salud del propio objetivo, sin considerarlo nunca más frágil que tres cuartos de esa media.
 
-<a id="mindless-an-exact-pursuit-contract"></a>
-
 ## Mindless: contrato exacto de persecución
 
 Es una regla solicitada del proyecto para Beast/Monstrosity, no una afirmación sobre reglas oficiales de mesa o conducta animal real.
@@ -196,8 +192,6 @@ Normaliza daño esperado, probabilidad de remate, curación/apoyo útil, riesgo 
 
 Es una puntuación de utilidad pequeña: compara acciones legales con escalas coherentes y prioridades de personalidad. David "Rez" Graham describe el enfoque y la inercia de decisión en [Introducción a la teoría de utilidad](https://www.gameaipro.com/GameAIPro/GameAIPro_Chapter09_An_Introduction_to_Utility_Theory.pdf). Perfiles, fórmula, valores e integración concretos aquí son recomendaciones propias de Marinara.
 
-<a id="practical-guardrails"></a>
-
 ### Protecciones prácticas
 
 - Calcula previsiones desde el destino hipotético y su terreno sin mutar estado ni consumir RNG. La probabilidad de contraataque debe coincidir con impacto/supervivencia/reglas; 50% de tiro no es muerte segura.
@@ -242,8 +236,6 @@ Ajuste propuesto: utilidad en escala fija; novice elige dentro de 0,15 del mejor
 **Soltar a los caídos y prisioneros.** Un portador suelta, sin coste (`rulesetLetGoOfHeld`), a los enemigos caídos que sujeta mientras siga en pie otro enemigo, salvo que sea Cruel y el juego permita golpear a los caídos. Empujar o agarrar a alguien a quien ya sujeta no vale nada, al igual que un empujón sin ningún lugar adonde enviarlo, de modo que un cocodrilo muerde a quien tiene entre sus mandíbulas. El enfoque de una criatura Hungry en su presa sujeta solo cuenta los golpes. Un prisionero conserva su casilla: se puede pasar por ella, pero nunca detenerse en ella, como en la de un combatiente caído; su token tiene un anillo blanco y una bandera más grande.
 
 **Disparos de Multiattack y terreno abierto.** La comparación de disparos desde lejos cuenta cada golpe de un Multiattack tantas veces como se ejecuta, y compara el mejor ataque cuerpo a cuerpo utilizable con el mejor ataque a distancia utilizable, de modo que los dos disparos de Longbow de un explorador pesan más que sus dos Shortswords. Una criatura de más de una casilla prefiere el terreno abierto a un paso donde deba apretarse a la misma distancia; los golpes desde un paso en el que tendría que apretarse valen 0.6 de lo que valen los mismos desde terreno abierto (`RULESET_SQUEEZED_BLOWS`), y una vez apretada, los golpes desde terreno abierto valen esa misma proporción más, por lo que sale para golpear.
-
-<a id="boss-turns-controlled-by-the-gm"></a>
 
 ## Turnos de jefes controlados por GM
 
@@ -347,8 +339,6 @@ Ejemplo en el mismo mapa:
 
 Otra semilla puede dar Cowardly Bruiser y Opportunistic Marksman y cambiar el combate. Una recarga no. El mismo jefe debe conservar hábitos al reaparecer salvo cambio narrativo o edición explícita.
 
-<a id="current-ordinary-ai-implementation-boundary"></a>
-
 ## Límite actual de IA ordinaria
 
 Vocabulario implementado: Mindless, Reckless, Cautious, Opportunistic, Protective, Supportive, Disciplined, Cowardly, **Patient, Methodical y Coordinated**. Otros adjetivos siguientes son ideas, no ajustes ocultos.
@@ -400,8 +390,6 @@ Los tres añadidos solicitados también varían por clase:
 
 Son metas de ajuste. La primera implementación usa defensa mejorada/debilitada genérica; combinaciones de clase más ricas necesitan habilidades y regresiones correspondientes.
 
-<a id="summoning-design-extension"></a>
-
 ## Extensión Summoning
 
 Empieza sin cuadrícula. Una invocación es combatiente real con ID estable, propietario, bando, perfil, controlador, duración, costo y presupuesto de activación explícitos. Clase modifica capacidades legales; adjetivo prioridades como Classic.
@@ -412,11 +400,7 @@ Las reglas deciden si ordenar consume acción del dueño, si actúa inmediatamen
 
 KO del dueño, encanto/cambio de bando, retirada, expiración, derrota grupal y fin del encuentro requieren limpieza explícita. Guarda propietario/duración restante ante recarga/importación. Una invocación derrotada no es objeto ni miembro permanente. Cobra hechizo/MP una vez al aceptar creación. Sus acciones no fabrican ventanas legendarias fuera de la elegibilidad del modificador fijo.
 
-<a id="gm-bosses-legendary-actions-and-reactions"></a>
-
 ## Jefes GM, acciones legendarias y reacciones
-
-<a id="implemented-generic-engine-adapter"></a>
 
 ### Adaptador genérico Engine implementado
 
@@ -504,8 +488,6 @@ Contrato mínimo guardado: ID/revisión del encuentro; ID/cursor de activación;
 Interfaz: muestra puntos legendarios, reacción disponible y costo; distingue anticipación de reacción disparada. Explica interrupción y si el hechizo se resuelve, falla o necesita nueva elección. Pensamiento/espera, reintento/alternativa y cancelación accesibles. Anuncia cargas cuando corresponda. No atribuyas alternativas locales al GM. No muestres puntuaciones/prompts internos en menú del jugador.
 
 Pruebas requeridas: hechizos/recursos/objetos correctos en contexto; previsión con reservas agotadas; predicción Fireball plausible pero errónea; sin filtración de borradores/órdenes; sin explotar clics/reselección; jugador cambia acción legal tras anticipación; tiempo 5e nativo frente a regla casera; Counterspell solo tras lanzamiento legal; pasar hechizo débil frente a responder al letal; sin MP/slot/reacción; costo único al fallar; reembolso original según reglas; visibilidad/alcance prohibidos; múltiples reactores y contras anidadas; sin ventana legendaria extra por movimiento/golpe adicional/reacción; posición Classic correcta; orden manual invalidada; unidades omitidas Tactical/elegibilidad de invocación; presupuesto agotado; renovación una vez; muerte/final mientras espera; duplicados; timeout y éxito tardío; recarga, multipestaña, rama/rebobinado y cambios de ajustes. Después de rutas deterministas, valida proveedor real y ritmo móvil representativo.
-
-<a id="encounter-environment-agent-handoff"></a>
 
 ## Guía del agente de entorno del encuentro
 

@@ -1,6 +1,6 @@
 # Galerías de personaje y de persona
 
-La **Gallery** (Galería), parte de la pestaña **Images** (Imágenes) de los editores de personaje y de persona, guarda imágenes y videos adjuntos a un personaje o una persona, así que se conservan aunque borres chats. Úsala para hojas de referencia, variantes de atuendo y paquetes de imágenes importados. También puedes etiquetar una imagen de la galería como emoji personalizado, sticker o fondo que sigue al personaje en todos los chats.
+La **Gallery** (Galería), parte de la pestaña **Images** (Imágenes) de los editores de personaje y de persona, guarda imágenes y videos adjuntos a un personaje o una persona, así que se conservan aunque borres chats. Úsala para hojas de referencia, variantes de atuendo y paquetes de imágenes importados. También puedes crear imágenes nuevas con IA y etiquetar una imagen de la galería como emoji personalizado, sticker o fondo que sigue al personaje en todos los chats.
 
 ## Encontrar la galería
 
@@ -28,6 +28,39 @@ Haz clic en una imagen para verla más grande. Cada miniatura tiene un control p
 3. Espera a que termine la subida.
 
 Los tipos admitidos son MP4, WebM y MOV. Los videos más recientes aparecen primero. Para ver qué videos de escena y qué clips aparecen para cada personaje, consulta [Qué videos aparecen en la lista](#which-videos-are-listed).
+
+## Crear imágenes con IA
+
+**Create with AI** (Crear con IA) en la Gallery crea imágenes nuevas para este personaje o persona con tu conexión de generación de imágenes. Elige qué crear en **Type** (Tipo):
+
+| Tipo                | Qué obtienes                                                                                                               |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Character sheet** (Hoja de personaje) | Una hoja de referencia, guardada de la misma forma que desde la sección **Character Sheet**.                                             |
+| **Background** (Fondo)      | Una imagen ancha de un lugar, que parte del escenario de la tarjeta. Se guarda en la Gallery y se etiqueta como fondo de chat. |
+| **Sticker sheet** (Hoja de stickers)   | Una imagen con varios stickers, recortada para que haya un sticker por imagen.                                                       |
+| **Emoji sheet** (Hoja de emojis)     | Lo mismo, como pequeños emojis de caras.                                                                                             |
+
+Antes de empezar: agrega una conexión de generación de imágenes.
+
+1. Abre **Images → Gallery** y haz clic en **Create with AI**.
+2. Elige un **Type** y edita el prompt (las instrucciones enviadas a la IA) si quieres otro aspecto o lugar.
+3. Para una hoja de stickers o emojis, enumera los nombres en **Stickers to draw** (Stickers a dibujar) o **Emoji to draw** (Emojis a dibujar), separados por comas. Caben hasta 16 en una hoja.
+4. Haz clic en **Generate** (Generar).
+5. Haz clic en **Save as Background** (Guardar como fondo), **Save Stickers** (Guardar stickers) o **Save Emoji** (Guardar emojis), o en **Save as Character Sheet** (Guardar como hoja de personaje).
+
+### Corregir el recorte de una hoja
+
+Después de generar una hoja de stickers o emojis, se encuentra cada sticker por su contorno, se elimina su fondo verde y aparece en su propia miniatura con su nombre. Los stickers guardados miden como máximo 512 por 512 píxeles y los emojis, 256 por 256, y cada uno se etiqueta con su nombre.
+
+- Haz clic en una miniatura para conservarla u omitirla. Las miniaturas omitidas no se guardan.
+- Edita el nombre debajo de una miniatura para cambiarlo.
+- Haz clic en **Recut with a box** (Recortar de nuevo con un recuadro) en una miniatura para colocar un recuadro sobre la hoja completa. Arrastra el recuadro, tira de sus esquinas o dibuja uno nuevo alrededor del sticker; luego haz clic en **Use this box** (Usar este recuadro).
+- Haz clic en **Add a sticker** (Añadir un sticker) o **Add an emoji** (Añadir un emoji) para recortar uno que se haya omitido.
+- Haz clic en **Cut again** (Recortar de nuevo) para empezar de nuevo el recorte y deshacer tus recuadros.
+
+### Escribir tú todo el prompt
+
+El prompt que se envía al modelo de imágenes se construye a partir de los campos del cuadro de diálogo. Para cambiarlo entero, por ejemplo para pedir stickers de cosas que le gustan al personaje y no solo del personaje, haz clic en **Edit full prompt** (Editar el prompt completo). Se envía exactamente como lo escribes. Los cambios en los demás campos solo se agregan cuando haces clic en **Rebuild** (Regenerar), que también reemplaza tus ediciones. Haz clic en el botón de cerrar junto a **Rebuild** para volver al prompt construido.
 
 ## Etiquetar una imagen de la galería como emoji o sticker personalizado
 
@@ -66,7 +99,16 @@ Las imágenes pintadas en un chat se pueden mover aquí desde la galería del ch
 
 Al exportar como **Marinara Native**, se conservan todas las etiquetas (emoji, sticker y fondo) junto con la galería.
 
-<a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
+## Describir imágenes
+
+Cualquier imagen de la galería puede tener una descripción breve de lo que muestra. Los chats de Conversation usan las descripciones de los emojis y stickers etiquetados para elegir cuáles ofrecer (consulta [Describir emojis y stickers](../conversation/emoji-stickers-gifs.md#describe-emojis-and-stickers)). La descripción se guarda con la imagen y viaja en una exportación **Marinara Native**.
+
+- Para escribir una, haz clic en el botón de etiqueta de la esquina superior izquierda de la imagen y elige **Add description** (Agregar descripción), o **Edit description** (Editar descripción) para cambiarla.
+- Para que las escriba la IA, haz clic en **Select images** (Seleccionar imágenes), elige las imágenes y luego haz clic en **Describe with AI** (Describir con IA). El modelo **Image reading** (Lectura de imágenes) mira cada una y escribe una descripción breve. Si algunas ya tienen una, elige describir solo las que no tienen o todas de nuevo.
+
+Antes de empezar: las descripciones con IA necesitan un modelo que pueda leer imágenes. Marinara usa el modelo **Image reading** si configuras uno en **Behind the scenes** (Entre bastidores) en los ajustes de tu conexión y, en caso contrario, el modelo de tus agentes. Se envían hasta 8 imágenes a la vez, así que una selección grande tarda un momento.
+
+La galería propia de un chat tiene el mismo **Describe with AI** en su modo de selección.
 
 ## Reutilizar una imagen de la galería en mensajes y saludos
 
@@ -92,8 +134,6 @@ No funciona en:
 
 Un enlace completo contiene el id interno del personaje, y los ids se vuelven a generar al importar un personaje, así que los enlaces completos se rompen para cualquiera con quien compartas el personaje. La forma `self` no lleva id. Sobrevive a una exportación e importación **Marinara Native**, porque las imágenes de la galería viajan dentro de la exportación con sus nombres de archivo. Las exportaciones **Compatible PNG Card** y **Compatible JSON** no incluyen la galería, así que ninguna referencia de galería puede funcionar después de compartir de esa forma. Usa **Marinara Native** cuando un personaje use imágenes de la galería.
 
-<a id="save-web-images-from-greetings"></a>
-
 ### Guardar imágenes web de los saludos
 
 Muchas tarjetas muestran en sus saludos imágenes de otros sitios web, y esos enlaces pueden romperse. Cuando **First Message** o **Alternate Greetings** muestran imágenes web, **Dialogue & Greetings** (Diálogo y saludos iniciales) tiene un botón **Save images locally** (Guardar imágenes localmente).
@@ -105,8 +145,6 @@ Muchas tarjetas muestran en sus saludos imágenes de otros sitios web, y esos en
 No se descarga nada hasta que haces clic en el botón. Solo se guardan imágenes PNG, JPEG, GIF y WebP de hasta 10 MB y 40 megapíxeles. Se rechazan los enlaces a tu propia computadora o a tu red doméstica. Una imagen que no se puede guardar conserva su enlace web, y un aviso explica por qué.
 
 **Restore web links** (Restaurar enlaces web) vuelve a poner los enlaces originales en los saludos. Las copias guardadas permanecen en la galería hasta que las borres. Las imágenes de los lorebooks quedan fuera de esta función.
-
-<a id="which-videos-are-listed"></a>
 
 ## Qué videos aparecen en la lista
 

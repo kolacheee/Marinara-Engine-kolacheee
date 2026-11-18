@@ -145,7 +145,7 @@ Consulta [Proveedores y configuración de generación de imágenes](../media/ima
 
 ## Decisión
 
-En la pestaña **Decision**, las fichas son **TypeSafe** (dirección predeterminada `https://api.typesafe.ai`), **Own decision server** (Servidor de decisiones propio) y **Built-in model (decisions)** (Modelo integrado: decisiones). Los servicios de chat que usan el formato de chat de OpenAI también pueden hacer decisiones, pero solo con un modelo que devuelva log-probabilidades (puntuaciones para cada respuesta posible). Un modelo de decisión responde preguntas de sí o no sobre tu chat. Consulta [Modelos de decisión](decision-models.md).
+En la pestaña **Decision**, las fichas son **TypeSafe** (dirección predeterminada `https://api.typesafe.ai`), **Own decision server** (Servidor de decisiones propio) y **Built-in model (decisions)** (Modelo integrado: decisiones). La pestaña también enumera **NanoGPT**, **OpenRouter** y **Google Gemini**, que tienen modelos de decisión propios (consulta [A través de NanoGPT](decision-models.md#through-nanogpt) y [A través de OpenRouter o Google Gemini](decision-models.md#through-openrouter-or-google-gemini)). Otros servicios de chat que usan el formato de chat de OpenAI también pueden hacer decisiones, pero solo con un modelo que devuelva log-probabilidades (puntuaciones para cada respuesta posible). Un modelo de decisión responde preguntas de sí o no sobre tu chat. Consulta [Modelos de decisión](decision-models.md).
 
 ## Audio
 
@@ -161,8 +161,6 @@ En **Voice**, un servicio de audio pronuncia las voces de los personajes y la na
 Cada fuente rellena una dirección y un modelo predeterminados. **Default voice** (Voz predeterminada) es la voz que se usa cuando no hay nada más específico configurado, como una voz por personaje. **Request timeout (seconds)** (Tiempo de espera de la solicitud, en segundos) es cuánto espera Marinara por una línea hablada. Súbelo para un servidor de voz lento.
 
 Para elegir la cuenta de voz que Marinara usa de forma predeterminada, haz clic en **Voice (Text to Speech)** (Voz: texto a voz) en el cuadro **Defaults** (Valores predeterminados). Para leer mensajes en voz alta con una de ellas, elígela como **Source** (Fuente) en la tarjeta **Text to Speech** (Texto a voz). Consulta [Configuración de Text to Speech (TTS)](../media/tts-setup.md) y [Usar una conexión de Audio](../media/tts-setup.md#use-a-voice-model-from-an-account).
-
-<a id="music--sound-effects"></a>
 
 ## Música y efectos de sonido
 

@@ -25,7 +25,7 @@ Las secciones que ves dependen del modo del chat. La sección **Impersonate** se
 - **Chat Name** (Nombre del chat): el nombre que aparece en tu lista de chats. Haz clic en él para cambiarlo. Nunca se envía al modelo.
 - **Chat Branches** (Ramas de chat): cambia, renombra, exporta e importa ramas. Consulta [Ramas de chat](branches.md).
 - **Connection** (Conexión): qué modelo responde en este chat. Consulta más abajo.
-- **Prompt Preset** (Preset de prompt): la estructura guardada del prompt (las instrucciones enviadas a la IA) de este chat.
+- **Prompt Preset** (Preset de prompt): la estructura guardada del prompt (las instrucciones enviadas a la IA) de este chat. En una partida, también contiene el estilo de la historia, la violencia, los límites de contenido y las directrices de clasificación. Consulta [Cambiarlos durante una partida](../game/getting-started.md#change-them-during-a-game).
 - **Advanced Parameters** (Parámetros avanzados): anula ajustes de generación, como la temperatura, para este chat. Consulta [Parámetros de generación](../prompts/generation-parameters.md).
 - **Persona**: a quién interpretas tú. Consulta [Elegir tu persona en un chat](../characters/choosing-your-persona.md). (Conversation, Roleplay.)
 - **Characters** (Personajes): los personajes del chat. (Conversation, Roleplay.)
@@ -78,8 +78,6 @@ Los nombres usan letras, números y guiones bajos, empiezan con una letra o un g
 
 Si tienes muchas variables, haz clic en **Search and edit all in the State Editor** (Buscar y editar todo en el State Editor). Muestra todas las variables para que puedas buscar, editar, pegar muchas a la vez como JSON y revisar los cambios antes de guardar. Consulta [El State Editor](../roleplay/hud-and-trackers.md#the-state-editor). Para otras macros con llaves dobles, consulta [Macros de prompt](../prompts/macros.md).
 
-<a id="settings-profiles"></a>
-
 ## Perfiles de ajustes
 
 Un perfil de ajustes es un paquete guardado de ajustes del chat que puedes aplicar a otros chats. La barra de perfiles está en la parte superior del panel y no aparece en Game. Cómo guardar, aplicar, importar, exportar y elegir uno predeterminado se explica en [Perfiles de ajustes](settings-profiles.md).
@@ -107,8 +105,6 @@ Estos botones están en la barra de título.
 
 Cuando el Tracker Panel no se muestra, los trackers de computadora usan la [ventana Trackers](../roleplay/hud-and-trackers.md#the-trackers-window). Si hay poco espacio junto a tus mensajes, empieza como un botón pequeño **Trackers**. Usa el dado para volver a mostrar el Tracker Panel.
 
-<a id="popping-a-section-out-into-its-own-window"></a>
-
 ## Sacar una sección a su propia ventana
 
 Saca una sección para darle su propia ventana.
@@ -121,15 +117,11 @@ Saca una sección para darle su propia ventana.
 
 En un teléfono, sacar una sección cierra Chat Settings y la añade al menú de tres puntos **Chat tools** (Herramientas del chat). Toca los puntos y luego el icono redondo de la sección. Toca **Put back in Chat Settings** para devolverla.
 
-<a id="the-phones-chat-tools-menu"></a>
-
 ## El menú Chat tools del teléfono
 
 El botón móvil de tres puntos reúne las herramientas que sacaste de Chat Settings. Tócalo para desplegar botones redondos con iconos y luego toca una herramienta. Vuelve a tocar los puntos para plegarlos. Los botones de los trackers, el botón del mapa de Game y Character Profiles siguen separados.
 
 Arrastra el botón de tres puntos para mover el menú. Ábrelo y usa el candado de arriba para dejarlo fijo en su sitio. Mientras está desbloqueado, arrastra una herramienta hacia arriba o hacia abajo para cambiar su orden, o coloca el foco en ella y usa las teclas de flecha. Bloquearlo impide tanto moverlo como cambiar el orden. El menú sigue tu estilo de widgets del chat.
-
-<a id="control-windows-and-their-buttons"></a>
 
 ## Ventanas de controles y sus botones
 
@@ -144,8 +136,6 @@ Arrastra un botón para moverlo. Los botones cercanos se alinean mientras lo arr
 ## Cada chat guarda su propio diseño de ventanas
 
 Cada chat recuerda los tamaños y las posiciones de las ventanas, las fijaciones y los bloqueos, las secciones separadas y las posiciones de los botones. Las posiciones del teléfono y el orden y el bloqueo de Chat tools se guardan por separado de las posiciones de computadora. Un [perfil de ajustes](settings-profiles.md) puede guardar un diseño para otros chats.
-
-<a id="choosing-a-layout-for-new-chats"></a>
 
 ## Elegir un diseño para chats nuevos
 

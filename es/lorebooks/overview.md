@@ -67,9 +67,22 @@ La pestaña también tiene estos interruptores.
 
 El panel **Semantic search (embeddings)** (Búsqueda semántica: embeddings), debajo de los interruptores, se explica en [Búsqueda semántica para lorebooks](semantic-search.md).
 
+## Dar una imagen a un lorebook
+
+La imagen aparece en la página **Lorebooks** (en la tabla y en las fichas de la galería) y en los selectores de lorebooks.
+
+1. Abre el lorebook y haz clic en **Book settings** (Ajustes del libro). **Picture** (Imagen) está junto a **Enabled**.
+2. Haz clic en **Upload** (Subir) o **Replace** (Reemplazar) y elige un archivo, o haz clic en **Generate with AI** (Generar con IA) para crear una portada con tu conexión de generación de imágenes. **Generate with AI** aparece cuando configuras una.
+3. Haz clic en **Adjust crop** (Ajustar recorte) o en la imagen pequeña. Arrastra el cuadrado sobre la imagen para elegir la parte que se muestra y arrastra sus esquinas para cambiar su tamaño.
+4. Haz clic en **Save** (Guardar).
+
+Una imagen nueva empieza sin recortar. Para quitarla, abre **Adjust crop** y haz clic en **Remove** (Quitar).
+
+En el diseño clásico, la imagen está en la sección **Image** (Imagen), en la parte superior de la pestaña **Overview** del lorebook, con los mismos botones.
+
 ## La página Lorebooks
 
-Abre **Library → Lorebooks** (Biblioteca → Lorebooks). En la parte superior están **Import** (Importar; consulta [Importar y exportar lorebooks](import-export.md)) y **New lorebook** (Nuevo lorebook). Debajo:
+Abre **Library → Lorebooks** (Biblioteca → Lorebooks). En la parte superior están **Browse online** (Explorar en línea; lorebooks que puedes descargar de Chub, consulta [Importar y exportar lorebooks](import-export.md#download-a-lorebook-from-chub)), **Import** (Importar; consulta [Importar y exportar lorebooks](import-export.md)) y **New lorebook** (Nuevo lorebook). Debajo:
 
 - **All kinds** (Todos los tipos) limita la lista a lorebooks **Global**, **World**, **Character**, **NPC** o **Spellbook**.
 - **List** (Lista) y **Gallery** (Galería) alternan entre una tabla y fichas con imágenes.
@@ -86,7 +99,9 @@ Haz clic en un lorebook para abrirlo.
 
 ## En el diseño clásico: el panel Lorebooks
 
-El panel clásico muestra las mismas carpetas y el mismo orden en forma de lista. En la parte superior del panel, tres botones de icono muestran su nombre cuando pasas el cursor sobre ellos.
+El panel clásico muestra las mismas carpetas y el mismo orden en forma de lista. En la parte superior del panel, **Download** (Descargar) abre el Card Browser con los lorebooks descargables, y **Open Library** (Abrir biblioteca) abre la Lorebook Library, una vista de página completa de tus lorebooks con sus imágenes, descripciones y recuentos de entradas. Haz clic en un lorebook allí para verlo más grande; **Edit Lorebook** (Editar lorebook) abre el editor, y **Active** (Activo) activa o desactiva el lorebook para todos los chats.
+
+Debajo, tres botones de icono muestran su nombre cuando pasas el cursor sobre ellos.
 
 - **New** abre la ventana **Create Lorebook**.
 - **Import** (Importar) abre la ventana **Import Lorebook** (Importar lorebook). Consulta [Importar y exportar lorebooks](import-export.md).
@@ -96,7 +111,7 @@ Debajo de los botones:
 
 - **Search lorebooks** (Buscar lorebooks) filtra por nombre, descripción, nombres de personajes o personas vinculados y etiquetas. `tag:name` también funciona aquí.
 - **Tags** (Etiquetas), junto al cuadro de búsqueda, muestra solo los lorebooks con todas las etiquetas que elijas, o **Untagged** (Sin etiquetas). Consulta [Etiquetas](../characters/library-organization.md#tags).
-- **Sort order** (Orden) ofrece **Manual order** (Orden manual), **A-Z**, **Z-A**, **Newest**, **Oldest** y **Token Budget**. Con **Manual order**, arrastra los lorebooks a su lugar, o usa <kbd>Alt</kbd>+<kbd>Up</kbd> y <kbd>Alt</kbd>+<kbd>Down</kbd>.
+- **Sort order** (Orden) ofrece **Manual order** (Orden manual), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens** (Más tokens) y **Fewest tokens** (Menos tokens). Los órdenes por tamaño usan el tamaño estimado de todas las entradas de un lorebook, incluidas las desactivadas, que también se muestra en cada fila. Con **Manual order**, arrastra los lorebooks a su lugar, o usa <kbd>Alt</kbd>+<kbd>Up</kbd> y <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (Nueva carpeta) crea una carpeta de biblioteca. Arrastra un lorebook sobre ella. En un teléfono, mantén pulsado el lorebook y luego arrástralo. Estas carpetas son distintas de las carpetas de entradas que hay dentro de un lorebook.
 
 Cada fila tiene los botones **Copy** (Copiar: duplica el lorebook) y **Delete** (Eliminar). Aparecen cuando pasas el cursor sobre la fila y en los teléfonos siempre están visibles. Un lorebook desactivado muestra una insignia **OFF**. Haz clic en la imagen para subirla o reemplazarla.

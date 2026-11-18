@@ -40,7 +40,7 @@ El panel clásico **Personas** muestra las mismas carpetas y el mismo orden en f
 | **Import** (Importar) | Abre la ventana **Import Persona** (Importar persona). |
 | **Select** (Seleccionar) | Activa el modo de selección para eliminar y exportar en lote. |
 | Cuadro de búsqueda | Texto de marcador de posición **Search personas/tags** (Buscar personas/etiquetas). Coincide con el nombre, la descripción, el comentario y las etiquetas. Para las búsquedas por etiquetas, consulta [Búsqueda](library-organization.md#search). |
-| Menú desplegable de orden | **Manual order** (Orden manual), **A-Z**, **Z-A**, **Newest** (Más recientes), **Oldest** (Más antiguas) o **Tokens** (tamaño estimado del prompt). |
+| Menú desplegable de orden | **Manual order** (Orden manual), **A-Z**, **Z-A**, **Newest** (Más recientes), **Oldest** (Más antiguas), **Most tokens** (Más tokens) o **Fewest tokens** (Menos tokens), por tamaño estimado, que también se muestra en cada fila. |
 | **New Folder** (Nueva carpeta) | Crea una carpeta. |
 | **Tags** (Etiquetas) | Despliega la lista de etiquetas para filtrar. |
 
@@ -84,8 +84,6 @@ La pestaña **Metadata** muestra:
 - **Tags**.
 - **Creator Notes** (Notas del creador), que nunca se envían a la IA.
 
-<a id="card-tab"></a>
-
 ### Pestaña Card
 
 La pestaña **Card** contiene los campos que te describen ante la IA. Cada uno tiene una estimación en vivo de tokens (fragmentos de texto).
@@ -107,8 +105,6 @@ Estas funciones son iguales que en los personajes, pero con la persona como suje
 - El botón de varita encima de cada campo lo escribe por ti. Consulta [Escribir un campo de la tarjeta con la varita](creating-and-editing-characters.md#write-a-card-field-with-the-wand).
 - **Add Alternative Field** (Añadir campo alternativo), debajo de cada campo, da a los chats seleccionados una versión distinta. La lista **Active in** (Activo en) solo muestra los chats que usan esta persona, y las asignaciones se pausan cuando un chat elige otra persona. Puedes poner nombre a cada alternativa y cambiar entre ellas desde **Chat Settings → Card Field Alternatives** (Ajustes del chat → Alternativas de campos de la tarjeta). Consulta [Usar un campo alternativo en chats seleccionados](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats).
 - **Version history** (Historial de versiones) está en la pestaña **Metadata**. Antes de tu primera edición dice `Previous persona states will appear here after the next edit.` **Reset** (Restablecer) elimina todas las instantáneas y establece la versión en 1.0. Consulta [Historial de versiones](creating-and-editing-characters.md#version-history).
-
-<a id="stats-tab"></a>
 
 ### Pestaña Stats
 

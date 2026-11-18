@@ -2,8 +2,6 @@
 
 La página **Characters** (Personajes) de la Library (a la derecha) enumera todos los personajes que has creado o importado. Úsala para buscar, ordenar, agrupar personajes en carpetas, marcar favoritos, filtrar por etiquetas y exportar o eliminar muchos a la vez.
 
-<a id="the-characters-page"></a>
-
 ## La página Characters
 
 Abre **Library → Characters** (Biblioteca → Personajes). La página muestra tus personajes como tarjetas de retrato. En la parte superior:
@@ -19,8 +17,6 @@ Abre **Library → Characters** (Biblioteca → Personajes). La página muestra 
 - **New folder** (Nueva carpeta; el icono de carpeta) y **Select** (Seleccionar; el icono de marca de verificación) están junto al título de la página.
 
 Haz clic en una tarjeta para abrir el personaje. Su botón **Chat** (Chatear) inicia un chat con ese personaje. Si tienes muchos personajes, haz clic en **Load more** (Cargar más) al final.
-
-<a id="a-cards-actions"></a>
 
 ### Acciones de una tarjeta
 
@@ -68,8 +64,6 @@ La biblioteca completa conserva la tarjeta seleccionada, el orden y la posición
 
 Cada fila muestra el avatar, el nombre, una línea de título opcional, el creador y la versión, hasta 3 etiquetas y una estimación aproximada de tokens (fragmentos de texto). Una pequeña insignia de estrella marca un favorito. Pasa el cursor sobre una fila para ver **Duplicate** (Duplicar) y **Delete** (Eliminar). Si tienes muchos personajes, haz clic en **Load more** (Cargar más) en la parte inferior para cargar la siguiente página.
 
-<a id="search"></a>
-
 ## Búsqueda
 
 Escribe en el cuadro de búsqueda de la parte superior. El texto de marcador de posición dice **Search characters or tag:name** (Buscar personajes o tag:nombre); en el diseño clásico, dice **Search characters/tags** (Buscar personajes/etiquetas). El texto simple coincide con el nombre, el título, la descripción y las etiquetas de un personaje, sin distinguir mayúsculas de minúsculas. Si escribes `knight`, se muestran todos los personajes con "knight" en cualquiera de esos campos.
@@ -96,6 +90,10 @@ El menú desplegable de orden del panel clásico tiene:
 | **Newest** (Más recientes) | Primero los creados más recientemente. |
 | **Oldest** (Más antiguos) | Primero los creados hace más tiempo. |
 | **Favorites** (Favoritos) | Primero los favoritos, luego el resto. |
+| **Most tokens** (Más tokens) | Primero las tarjetas más grandes, por el tamaño estimado que se muestra en cada fila. Las carpetas se ordenan por el total de sus tarjetas. |
+| **Fewest tokens** (Menos tokens) | Primero las tarjetas más pequeñas. |
+
+Los órdenes por tamaño te ayudan a encontrar tarjetas que reducir o ampliar. El recuento es una estimación del texto de la propia tarjeta, no un recuento del tokenizador de tu modelo. Las personas, los lorebooks y los presets de prompt ofrecen los mismos dos órdenes.
 
 Para fijar un orden manual, arrastra una fila hacia arriba o hacia abajo, o pulsa <kbd>Alt</kbd>+<kbd>Up</kbd> o <kbd>Alt</kbd>+<kbd>Down</kbd> en una fila con el foco. Cualquiera de las dos cosas cambia el orden a **Manual order**.
 
@@ -150,8 +148,6 @@ En el panel clásico, cuando tus personajes tienen etiquetas, aparece un botón 
 - **Clear** (Limpiar) aparece una vez que hay un filtro de etiqueta activo. Haz clic en él para limpiar los filtros de etiqueta.
 
 Para excluir una etiqueta, en cambio, usa `-tag:` en el cuadro de búsqueda, como se muestra en [Búsqueda](#search).
-
-<a id="export-or-delete-many-characters"></a>
 
 ## Exportar o eliminar muchos personajes (diseño clásico)
 

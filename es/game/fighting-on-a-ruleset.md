@@ -69,8 +69,6 @@ Algunos conjuntos de reservas mantienen la iniciativa como un único número par
 
 Un conjunto de reglas que tira dados con símbolos narrativos, como un sistema de estilo Genesys, también los usa para pelear. Un ataque tira tus dados contra los dados de dificultad del objetivo, los símbolos se cancelan como en una prueba y lo que queda decide si impacta. El conjunto de reglas indica qué compran los símbolos sobrantes, así que nunca se le pregunta al GM.
 
-<a id="contests"></a>
-
 ## Enfrentamientos
 
 Un conjunto de reglas puede permitir que cualquiera en una pelea inicie un enfrentamiento: una tirada contra un oponente. Puedes agarrar a alguien, derribarlo o apartarlo de un empujón, o liberarte de un agarre. Ambos lados tiran y suman su propio número, gana el total más alto, y el menú muestra tu probabilidad de ganar antes de elegir.
@@ -91,8 +89,6 @@ Algunas habilidades responden a la jugada de otro combatiente en vez de usarse e
 y tienes una respuesta para ese momento. Después de un impacto, el registro indica qué sacó el ataque y contra qué se hizo, para que veas si una respuesta como Shield lo convertiría en un fallo. Si la usas, se vuelve a comprobar la misma tirada y el registro indica si sigue acertando.
 
 Los oponentes también pueden responder, con una parada propia. Una reacción que anula puede detener la habilidad de un oponente antes de que ocurra, sea cual sea su objetivo, mientras el oponente esté dentro del alcance de esa reacción. Un conjunto de reglas puede indicar que solo responde a algunos tipos de habilidad, como los conjuros. Lo que costaba la habilidad detenida se gasta igualmente, y nada puede responder a una reacción que anula.
-
-<a id="on-a-battlefield"></a>
 
 ## En un campo de batalla
 

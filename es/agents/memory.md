@@ -141,8 +141,6 @@ La ventana lista primero las semanas y luego los días que aún no se han inclui
 
 A un día le puede faltar su resumen, por ejemplo después de importar un chat antiguo. En la ventana, el panel **Missing Summaries** tiene un botón **Backfill**. Reintenta hasta 14 días recientes a la vez. Cambiar el modelo de resumen no reescribe las entradas de día o de semana que ya existen.
 
-<a id="advanced-memory-recall-roleplay-and-game-mode"></a>
-
 ## Advanced Memory Recall (Roleplay y Game Mode)
 
 Advanced Memory Recall es un modo opcional que gestiona conjuntamente la ventana del historial actual, los resúmenes de continuidad y los fragmentos antiguos. Divide el chat en escenas, resume cada escena terminada y recupera las escenas y los mensajes exactos que importan para cada respuesta. Funciona sin el interruptor Agents y no necesita ningún agente descargable.
@@ -187,8 +185,6 @@ Si el historial recuperado cambia una escena cubierta por una corrección manual
 
 Una rama creada a partir de un chat preparado, por ejemplo con **Branch from here** (Ramificar desde aquí), conserva su Advanced Memory. Una rama creada dentro de una escena vuelve a abrir esa escena: su resumen anterior se elimina y se escribe uno nuevo cuando la escena se cierra. Un chat importado como rama nueva se prepara como de costumbre.
 
-<a id="fixing-memory-problems"></a>
-
 ### Reparar problemas de memoria
 
 Cuando algo falla en la memoria de un chat, aparece un punto fijo con tu color de acento en el botón **Chat Settings**, y un aviso indica cuántas escenas tienen problemas. Cada conjunto de problemas se anuncia una sola vez, y el punto se mantiene hasta que se resuelvan. En **Chat Settings → Memory Recall**, los problemas aparecen en una lista encima de los ajustes. **Access memories for this chat** muestra el mismo punto.
@@ -213,8 +209,6 @@ Si se pasaron por alto cambios de escena, por ejemplo cuando una escena nunca te
 
 Advanced Memory vuelve a buscar los cambios de escena en esos mensajes y resume las escenas que cambiaron. Usa el modelo de decisión cuando **Use Decision model** está activado y, si no, el Helper model. Las escenas fuera del rango conservan sus límites y resúmenes. Si fuera a cambiar un resumen que editaste, el nuevo escaneo se detiene y nombra esa escena.
 
-<a id="optional-decision-model"></a>
-
 ### Modelo de decisión opcional
 
 Un modelo de decisión es un modelo pequeño que responde preguntas de sí o no. Está desactivado de forma predeterminada y se guarda por cada chat de Roleplay.
@@ -227,8 +221,6 @@ Esta elección es independiente del valor predeterminado global de decisión.
 El modelo encuentra los límites de escena al preparar el historial y al comprobar las escenas en curso. Antes de una respuesta nueva, elige las memorias en dos pasadas. Consulta [Cómo funciona la recuperación con el modelo de decisión](#how-decision-recall-works) para ver los detalles.
 
 Las cuentas de servicios alojados reciben el texto de la conversación reciente y las recapitulaciones o los mensajes preseleccionados que se evalúan, y pueden cobrar por varias solicitudes en cada respuesta. La recuperación filtra el acceso de los personajes antes de enviar candidatos.
-
-<a id="deciding-who-sees-new-messages"></a>
 
 ### Decidir quién ve los mensajes nuevos
 
@@ -256,8 +248,6 @@ Con Advanced Memory activado, una respuesta nueva de un personaje puede cambiar 
 - Un swipe (respuesta alternativa) o una regeneración de una parte da una versión nueva solo de ese mensaje. En una parte anterior, la versión nueva conserva el texto anterior a la primera separación.
 - Continue e Impersonate nunca se dividen.
 
-<a id="character-recollections"></a>
-
 ### Recuerdos personales de los personajes
 
 Activa **Character recollections** para dar a cada personaje su propio recuerdo de una escena. Está desactivado de forma predeterminada.
@@ -283,8 +273,6 @@ Edición y desactivación:
 
 - En **Access memories for this chat**, abre una escena para leer y editar cada recuerdo personal. Uno editado se marca como **Manually edited** (Editado manualmente) y nunca se reemplaza. **Delete** lo quita de los prompts para siempre, pero puedes escribir uno nuevo.
 - Desactivar el ajuste conserva los recuerdos personales guardados y los deja fuera de los prompts. La exportación, la importación y las ramas los incluyen.
-
-<a id="in-game-mode"></a>
 
 ### En Game Mode
 
@@ -363,8 +351,6 @@ Para mantener una escena fuera de la recuperación, desactiva su registro de mem
 - Las nuevas recapitulaciones indican la visibilidad de los mensajes, describen los hechos compartidos en texto normal y usan `{{#if character == "Name"}}…{{/if}}` para las secciones privadas. Si cambia la visibilidad o el personaje para quien se escribió una recapitulación, la recapitulación anterior se retiene para quienes tienen acceso parcial hasta que prepares de nuevo esa escena (**Fix** lo hace con todas las escenas en esa situación) o revises y guardes sus condiciones privadas. Un personaje que se une más tarde no cuenta, salvo que solo pueda ver parte de la escena. Las recapitulaciones antiguas necesitan un **Fix** después de que se una un personaje. Quienes pueden acceder a todos los mensajes de origen aún pueden recuperarla. El texto corregido manualmente nunca se reescribe sin avisar.
 - Las fechas de la escena las comparten todos los participantes asignados. Los fragmentos originales nunca incluyen mensajes ocultos para el personaje ni susurros. Un resumen con partes solo para algunos personajes aun así recibe un fragmento, que solo cita lo que ese personaje vio. Para mantener un mensaje fuera de la memoria de un personaje, ocúltaselo a ese personaje.
 - En un chat grupal combinado, la recuperación incluye lo que recuerda al menos un personaje. Una escena o una parte privada que no conocen todos los personajes se marca, por ejemplo con "known only to Kaito". Un fragmento solo cita los mensajes que vieron todos los personajes que recuerdan la escena. Las memorias que no recuerda ningún personaje, como las escenas reservadas al narrador, quedan fuera. En los chats grupales en los que los personajes responden de uno en uno, cada personaje solo recupera las suyas.
-
-<a id="how-decision-recall-works"></a>
 
 ### Cómo funciona la recuperación con el modelo de decisión
 

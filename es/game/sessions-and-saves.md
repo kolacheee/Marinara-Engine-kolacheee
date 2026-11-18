@@ -14,8 +14,6 @@ No hay botón de guardar. Tu juego se guarda solo mientras juegas.
 
 Para volver a un momento anterior, consulta [Cómo se guarda tu juego](#how-your-game-saves).
 
-<a id="opening-session"></a>
-
 ## Abrir Session
 
 En **Session** terminas sesiones, empiezas otras nuevas y lees tu historial.
@@ -26,8 +24,6 @@ En **Session** terminas sesiones, empiezas otras nuevas y lees tu historial.
 4. Tiene dos pestañas: **Session History** (Historial de sesiones) y **Journal** (Diario). Quédate en **Session History** para los controles de sesión.
 
 Si usaste **Put back in Chat Settings** para mover esta ventana, abre en su lugar la sección **Session** de Chat Settings.
-
-<a id="end-a-session"></a>
 
 ## Terminar una sesión
 
@@ -104,7 +100,7 @@ Game Mode conserva una instantánea de la configuración usada para crear cada c
 3. Revisa la aventura guardada, el reparto, el modelo, el prompt (las instrucciones enviadas a la IA), los parámetros de generación, y los ajustes visuales, de storyboard (secuencia de viñetas) y de herramientas de mundo.
 4. Haz clic en **Copy setup** (Copiar configuración) para copiar el texto, o en **Download setup** (Descargar configuración) para guardar un archivo de texto.
 
-> **Advertencia:** El texto incluye tus preferencias largas de jugador y las instrucciones personalizadas del GM. Léelo antes de publicarlo. Las credenciales, las URL de servidor, las API keys (claves de API) y los ID de base de datos local nunca se incluyen.
+> **Advertencia:** El texto incluye tus preferencias largas de jugador y las instrucciones personalizadas del GM. Un archivo descargado también contiene las pautas de clasificación y los límites de contenido del juego. Léelo antes de publicarlo. Las credenciales, las URL de servidor, las API keys (claves de API) y los ID de base de datos local nunca se incluyen.
 
 Las tarjetas de personaje, las personas, los lorebooks, los modelos y las cuentas se nombran, pero no se empaquetan, así que otro jugador necesita sus propios equivalentes. Las campañas creadas antes de que existieran las instantáneas no pueden recuperar ajustes que nunca se guardaron, así que **Initial Game Setup** aparece solo cuando existe una instantánea fiable.
 
@@ -118,8 +114,6 @@ Las tarjetas de personaje, las personas, los lorebooks, los modelos y las cuenta
 La vista puede mostrar **World Overview** (Visión general del mundo), **Story Arc**, **Plot Twists**, **Party Arcs**, y los **Maps** (Mapas), **NPCs** y **Character Cards** (Tarjetas de personaje) guardados. Haz clic en el mismo botón, que ahora dice **Hide Spoilers** (Ocultar spoilers), para ocultarlas.
 
 Para cambiar estas notas, haz clic en **Edit Spoilers** (Editar spoilers), edita el texto y haz clic en **Save Spoilers** (Guardar spoilers). Algunos campos son JSON, un formato de texto estructurado. Edítalos solo si conoces el formato, porque un JSON incorrecto no se guardará.
-
-<a id="editing-game-data-by-hand"></a>
 
 ## Editar los datos del juego a mano
 
@@ -146,8 +140,6 @@ Reglas que imponen las comprobaciones:
 - **World Edits** guarda tus ediciones a mano sobre el mundo, como lugares renombrados o personas añadidas. El mundo en sí nunca cambia.
 
 La ventana funciona como el State Editor de Roleplay. Consulta [El State Editor](../roleplay/hud-and-trackers.md#the-state-editor).
-
-<a id="how-your-game-saves"></a>
 
 ## Cómo se guarda tu juego
 

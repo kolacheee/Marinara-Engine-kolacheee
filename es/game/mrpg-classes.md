@@ -9,8 +9,6 @@ Dos tipos de partida no usan clases MRPG:
 
 Para saber cómo se desarrolla una pelea con clases MRPG, consulta [Batallas en una partida MRPG](combat.md#battles-in-an-mrpg-game).
 
-<a id="how-it-works"></a>
-
 ## Cómo funciona
 
 - Cada personaje se entrena en dos de los ocho **árboles**: un **árbol principal** que eliges y un **árbol hermano** que abre su temperamento.
@@ -18,8 +16,6 @@ Para saber cómo se desarrolla una pelea con clases MRPG, consulta [Batallas en 
 - Ganar peleas da experiencia. Las estadísticas de un personaje proceden de su **clase activa** y aumentan a medida que esa clase gana niveles.
 - En el nivel de clase 10, una clase puede ascender a una clase avanzada, y en el nivel de clase 20, a una clase maestra. Los niveles terminan en el 30.
 - Fuera de las batallas, un personaje puede cambiar a cualquier clase que haya desbloqueado y llevar hasta cuatro habilidades de otras clases en las que se haya entrenado.
-
-<a id="the-eight-trees"></a>
 
 ## Los ocho árboles
 
@@ -35,8 +31,6 @@ Para saber cómo se desarrolla una pelea con clases MRPG, consulta [Batallas en 
 | **Herald** | Trasera | Líderes de batalla que dan órdenes y cantan canciones que fortalecen al grupo. | Coordinated, Disciplined |
 
 Un grupo con una mezcla de árboles obtiene mejores resultados. Los golpes cuerpo a cuerpo contra la fila trasera causan la mitad de daño, por lo que los árboles de la fila trasera dependen de la delantera para mantener la línea (consulta [Filas](combat.md#rows)).
-
-<a id="classes-in-each-tree"></a>
 
 ### Clases de cada árbol
 
@@ -55,8 +49,6 @@ Cada árbol tiene siete clases. La clase base asciende en el nivel de clase 10 a
 
 La pestaña **Classes** (Clases) de la ficha de personaje describe cada clase y enumera sus habilidades junto con el nivel de clase en el que se aprende cada una.
 
-<a id="choose-a-characters-trees"></a>
-
 ## Elegir los árboles de un personaje
 
 **Árbol principal.** Elígelo antes de la partida, en la sección **Game Mode** de la pestaña **Stats** (Estadísticas) de un personaje o una persona de la biblioteca (consulta [Elecciones MRPG en una tarjeta](../characters/colors-and-stats.md#mrpg-picks-on-a-card)). Déjalo en **Auto** y se deducirá de la descripción del personaje y, dentro de la partida, también de su clase y sus habilidades. Un personaje cuya tarjeta no nombre ningún árbol empieza como Blade. Hasta que un personaje gane su primera experiencia, también puedes cambiarlo dentro de la partida, en la pestaña **Classes** de su ficha, bajo **Main tree** (Árbol principal).
@@ -66,8 +58,6 @@ La pestaña **Classes** (Clases) de la ficha de personaje describe cada clase y 
 **Árbol hermano.** Cuando la partida crea la tarjeta de juego de un personaje, el Game Master deduce su temperamento de su Description y personalidad: cómo afronta una pelea. Ese temperamento abre el árbol hermano de la tabla anterior. Si quieres un árbol hermano concreto, escribe la Description teniendo esto en cuenta. La ficha muestra el temperamento junto al árbol hermano, por ejemplo "from Cautious". La historia puede cambiar más adelante el temperamento de un personaje, pero su árbol hermano sigue siendo aquel con el que empezó.
 
 Un personaje cuyo temperamento abre su propio árbol principal, como un Reckless Blade, es **Pure**: se entrena en un solo árbol y se le abre la línea exclusiva para Pure.
-
-<a id="what-the-stats-mean"></a>
 
 ## Qué significan las estadísticas
 
@@ -89,8 +79,6 @@ Dos recursos pagan las habilidades:
 
 Las mismas estadísticas se usan para las pruebas de habilidad fuera de las batallas. Consulta [Pruebas de habilidad](#skill-checks).
 
-<a id="levels-and-experience"></a>
-
 ## Niveles y experiencia
 
 **Experiencia.** Una pelea ganada da experiencia por cada enemigo que derrota el grupo, incluidos los que se rindieron o huyeron. La mitad se reparte por igual entre todos los que combatieron, y la otra mitad según lo que hizo cada uno: daño, sanación y apoyo. Los enemigos por debajo del nivel de un personaje dan menos y los que están por encima dan más, y un personaje por debajo del nivel medio del grupo gana un 50% más. Una pelea perdida o de la que se huye no da nada.
@@ -105,15 +93,11 @@ Esto significa que una clase que se acaba de empezar tiene el cuerpo de nivel 1.
 
 Las tasas de crecimiento están ocultas. Con **Debug** (Depuración) activado, la pestaña **Status** (Estado) muestra la probabilidad exacta de que aumente cada estadística.
 
-<a id="switch-classes-and-carry-skills"></a>
-
 ## Cambiar de clase y llevar habilidades
 
 Las clases se cambian fuera de las batallas, en la pestaña **Classes**. Elige una clase para ver sus habilidades y lo que dejarías atrás al cambiar, y luego selecciona **Take up** (Empezar) para una clase que aún no se haya entrenado o **Switch to** (Cambiar a) para una entrenada anteriormente, en el nivel de clase que alcanzó.
 
 Un personaje solo usa las habilidades de su clase activa, además de hasta cuatro habilidades **llevadas** de otras clases en las que se haya entrenado. Elígelas en la pestaña **Skills** (Habilidades), bajo **Carry from other classes** (Llevar de otras clases). Una habilidad llevada usa las estadísticas propias del personaje. Algunas habilidades pertenecen a un árbol entero, como Cover de Guard, y todas las clases de ese árbol las conservan sin ocupar un espacio. Cuando un cambio haría que perdieras una habilidad que has estado usando, la ficha te avisa primero para que puedas llevarla.
-
-<a id="the-character-sheet"></a>
 
 ## La ficha de personaje
 
@@ -130,13 +114,9 @@ El arma decide en qué se basa un ataque: un bastón, una varita o un foco ataca
 
 **Muerte permanente.** Con **Permadeath** (Muerte permanente) activado —una opción de configuración del paso **World** (Mundo) del asistente, desactivada de forma predeterminada—, un miembro del grupo que cae en una pelea y no se salva antes de que termine desaparece para siempre. Si está desactivado, quienes cayeron vuelven a levantarse después de la pelea.
 
-<a id="skill-checks"></a>
-
 ## Pruebas de habilidad
 
 Las pruebas fuera de las batallas usan las estadísticas MRPG del personaje, las que le da su clase activa. Cada habilidad se apoya en una estadística, como Stealth en Speed o Persuasion en Luck. Consulta [Dados y pruebas de habilidad](dice-and-skill-checks.md#how-the-result-is-decided) para ver la lista completa y el bono que da cada estadística.
-
-<a id="new-party-members-and-shared-games"></a>
 
 ## Miembros nuevos del grupo y partidas compartidas
 
@@ -149,8 +129,6 @@ Las pruebas fuera de las batallas usan las estadísticas MRPG del personaje, las
 - **Un invitado que regresa.** El personaje de un invitado permanece en la partida cuando se va, con su nivel, su equipo y sus bestias domesticadas. Mientras su jugador no está, el personaje no participa en las peleas, no gana experiencia y se queda fuera de las escenas. Cuando el invitado vuelve, juega con el mismo personaje y el nivel con el que se fue.
 
 Las pruebas de habilidad de cada jugador leen las estadísticas de su propio personaje.
-
-<a id="move-a-legacy-game-to-mrpg"></a>
 
 ## Migrar una partida Legacy a MRPG
 
@@ -171,8 +149,6 @@ Cuando confirmas con **Upgrade the party** (Actualizar el grupo):
 > **Advertencia:** La actualización es unidireccional. Una partida que haya migrado a clases MRPG no puede volver a las fichas Legacy.
 
 La actualización no se ofrece durante una pelea. Termina primero la pelea. Una partida que usa un conjunto de reglas no se puede actualizar: conserva las fichas de su conjunto de reglas.
-
-<a id="related-guides"></a>
 
 ## Guías relacionadas
 

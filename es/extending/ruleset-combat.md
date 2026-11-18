@@ -25,8 +25,6 @@ Secciones de esta página:
   - [Ventanas: mantener abierto el combate](#windows-holding-the-fight-open)
   - [Todavía no](#not-yet)
 
-<a id="battles-lending-the-sheet-to-marinaras-combat"></a>
-
 ## Batallas: prestar la ficha al combate de Marinara
 
 De forma predeterminada, una batalla no conoce la ficha. Construye los combatientes como siempre; un personaje puede salir de una pelea sin cambios en los puntos de golpe de su ficha.
@@ -46,8 +44,6 @@ El bloque opcional `battle` cambia eso en una sola dirección: presta las cifras
 - `slots`: opcional. Reservas gastadas de una en una, cada una con `level` de 1 a 9: `[{ "pool": "slots_1", "level": 1 }]`. Cada nivel y reserva se usa una sola vez.
 - `skills`: opcional, hasta ocho. Listas cuyas filas pasan a ser habilidades de combate. Solo cuentan filas de tus catálogos cuya entrada tenga `mechanics`: una fila escrita a mano no expresa efectos numéricos. `onlyWhen` nombra una columna booleana que debe estar activada, como un conjuro preparado. `alwaysWhen` nombra una columna y un valor que permiten entrar de todos modos, como conjuros que no requieren preparación. Es la excepción a `onlyWhen` y se rechaza sin él.
 
-<a id="what-is-carried-in-and-what-is-carried-out"></a>
-
 ### Qué entra y qué vuelve
 
 **Al entrar**, para cada miembro cuya ficha tiene la partida: la proporción de salud determina el punto inicial en la barra de Marinara; la reserva de energía se convierte en MP; cada reserva de espacios se convierte en espacios de ese nivel; las filas marcadas se convierten en habilidades. Salud máxima, ataque, defensa, velocidad y nivel siguen siendo cifras de Marinara. Una reserva de salud a cero hace empezar caído; por encima de cero nunca se empieza con menos de un punto, para que el redondeo no derribe a alguien por una proporción pequeña.
@@ -57,8 +53,6 @@ El bloque opcional `battle` cambia eso en una sola dirección: presta las cifras
 **En ninguna dirección**: tiradas de ataque, salvaciones, concentración y efectos de pagar más. Están en `mechanics` para que los lea un sistema de combate completo en el futuro; este puente no los aplica y el conjunto no debe afirmar que sí.
 
 Una batalla abandonada no escribe nada. Si borras el mensaje que la inició o nunca llega al final, la ficha queda igual: la pelea no ocurrió.
-
-<a id="how-an-entry-becomes-a-skill"></a>
 
 ### Cómo se convierte una entrada en habilidad
 
@@ -72,8 +66,6 @@ El bloque `mechanics` se interpreta así:
 - `buff` y `debuff` se convierten en los efectos propios de Marinara. Otras promesas del texto, como quitar un estado de la ficha, no se aplican. Omite `mechanics` si el efecto solo tiene sentido fuera de batalla.
 
 `coverage.combat` sigue siendo independiente y conserva su significado: actívalo solo si las batallas siguen las reglas de tu sistema.
-
-<a id="combat-a-fight-your-own-rules-resolve"></a>
 
 ## Combate: una pelea que resuelven tus propias reglas
 
@@ -142,8 +134,6 @@ Ese es todo el bloque Ember Roads y sus partidas lo usan para combatir. El borra
   "concentration": { "text": "concentration", "save": "con_save", "floor": 10, "fromDamage": 0.5 }
 }
 ```
-
-<a id="every-key"></a>
 
 ### Todas las claves
 
@@ -302,8 +292,6 @@ Ese es todo el bloque Ember Roads y sus partidas lo usan para combatir. El borra
 
   Se informa al Game Master del valor de cada nivel y del presupuesto del grupo antes de que escriba una pelea. Si inventa una pelea cuyo valor supera el presupuesto, se reduce: el oponente inventado de mayor valor baja un nivel, y vuelve a bajar hasta que se ajuste; una pelea con un jefe puede llegar al siguiente paso superior. Una criatura de bestiario y una que regresa de una pelea anterior se cuentan tal como son, y la pelea de una historia pertenece a su autor. Las reducciones se indican en los ajustes de la pelea.
 
-<a id="saves-against-conditions-damage-or-magic"></a>
-
 ### Salvaciones contra estados, daño o magia
 
 Un modificador con `to: "saves"` puede llevar `against`. Necesita al menos uno de `conditions` (IDs de estado de la ficha), `damage` (tipos de daño) o `magic: true`. Basta con una coincidencia cualquiera; `saves` sigue restringiendo qué salvación, como una condición Y adicional. Usa el `mode: "advantage"` del modificador, no `effects`, para restringir la ventaja de esta forma. Estos modificadores funcionan en estados, en niveles de contador o derivados alcanzados y en efectos de objetos. Para los rasgos de raza, deriva un valor de la raza elegida en la ficha y vincula el modificador a un nivel que se alcanza cuando ese valor es 1. Modificadores de ejemplo:
@@ -328,8 +316,6 @@ Un modificador con `to: "saves"` puede llevar `against`. Necesita al menos uno d
 ```
 
 Brave usa `conditions: ["frightened"]`. Magic Resistance usa `magic: true` sin `saves`, en un nivel derivado de la ficha o un nivel de contador de una criatura. El `applies` de una acción cuenta aunque la salvación evite el estado; su daño incluye cada cláusula `plus`. Los nombres de daño se comparan sin distinguir mayúsculas de minúsculas. La magia es la cualidad `"magical"` de 1.101: las `mechanics.qualities` de un catálogo (incluso sin daño), el `damage.qualities` de la acción de una criatura o las etiquetas de un objeto arma. Un conjuro debe llevar esa cualidad; su nombre o su catálogo por sí solos no lo hacen mágico. Una salvación para terminar un estado, incluidos `saveWhenDamaged` y `saveEnds.at: "damaged"`, es solo contra ese estado. Las salvaciones de concentración y de muerte no son contra nada. Fuera del combate, las peticiones de salvación del Game Master no llevan un origen ni un estado estructurados; `against` nunca coincide con esas peticiones. La ficha, los detalles del objeto, los detalles de la batalla y el resumen de la ficha del Game Master muestran estas restricciones. Requiere schemaVersion 2 y capabilityApi 1.134 o posterior.
-
-<a id="a-fight-thrown-in-pools-dice-pool"></a>
 
 ### Un combate tirado con reservas: `dice-pool`
 
@@ -363,8 +349,6 @@ El daño de cada objetivo se tira para ese objetivo, porque lo que ganó un impa
 Gravewatch está escrito así: sus guardianes tiran una puntuación y un oficio, absorben los golpes contundentes con Sinew y no absorben en absoluto los desgarros, pueden gastar un punto de Resolve por turno y vuelven a tirar la iniciativa cada ronda.
 
 **Declarar en orden inverso no está implementado.** Algunos sistemas hacen que todos declaren su acción antes de que nadie actúe, empezando por el más lento. En un combate donde cada combatiente elige una acción cuando llega su turno, declarar primero no cambia nada que lea ninguna regla, así que no hay nada que pueda decir una clave.
-
-<a id="a-fight-thrown-in-symbol-dice-symbol-pool"></a>
 
 ### Un combate tirado con dados de símbolos: `symbol-pool`
 
@@ -404,8 +388,6 @@ El motor compra, para cada bando, los gastos de mayor valor que permiten los sí
 
 **Lo que sigue en manos del Game Master.** El coste de un gasto pertenece al conjunto, no a cada arma, así que un arma con su propia puntuación de crítico se escribe como un gasto compartido por el conjunto; la tabla propia de un crítico la tira el Game Master. La ventaja en una salvación, una prueba o un enfrentamiento no compra nada: solo se gasta la tirada de un ataque. Mejorar los dados de dificultad en un combate no está implementado.
 
-<a id="minimum-damage-dice"></a>
-
 ### Dados de daño mínimos
 
 Un combate de reservas puede conservar dados incluso contra una absorción alta, como hace el **Overwhelming** de Exalted:
@@ -417,8 +399,6 @@ Un combate de reservas puede conservar dados incluso contra una absorción alta,
 Esto es `combat.damage.minimum`, una referencia de valor que se lee de la ficha actual del **atacante**. Después de que la absorción estática quite dados a la primera reserva de daño de un impacto, la reserva sube al menos hasta este número. Son dados enteros, redondeados hacia abajo y limitados entre cero y `resolution.pool.max`, no éxitos automáticos: cada dado que sobrevive puede fallar. La absorción tirada sigue quitando éxitos después de la tirada de daño; no reduce una reserva de dados, así que el mínimo no protege los éxitos frente a ella. La resistencia y la inmunidad se siguen aplicando. Los golpes que gastan iniciativa ignoran el mínimo, igual que ignoran el daño del arma y la absorción; los golpes que quitan iniciativa lo usan.
 
 Un arma puede sustituir el mínimo común con `item.attack.damage.minimum`. Acepta las mismas referencias de valor sobre quien la sostiene, o `{ "stat": "overwhelming" }` para una de las estadísticas numéricas propias del objeto. Un cero declarado también sustituye al mínimo común. Esto es distinto del `floor` de arma existente, que garantiza una cantidad de daño después de la absorción. Las cláusulas de daño adicionales y los efectos adicionales no reciben otro mínimo. El registro del combate y el diario muestran el mínimo resuelto junto a los dados. Tanto la clave de combate como la clave del arma requieren **Capability API 1.146** en un paquete, incluidas las armas de archivos de catálogo externos.
-
-<a id="a-hit-that-dazes"></a>
 
 ### Un impacto que aturde
 
@@ -434,8 +414,6 @@ Un arma puede sustituir el mínimo común con `item.attack.damage.minimum`. Acep
 `combat.daze` es para los combates de reservas. `over` lee la ficha actual del **objetivo**, justo antes del impacto. Un solo impacto debe infligir **estrictamente más** daño que ese número, después de la absorción, las salvaciones y la resistencia. Sus cláusulas de daño cuentan juntas; los impactos separados nunca se acumulan para aturdir. En un contador que marca por golpe, un impacto que causa daño cuenta como un nivel. Un golpe que quita iniciativa en vez de salud no puede aturdir. Por ahora, `measure` solo es `"damage"`.
 
 El objetivo se salta exactamente su siguiente turno. Los impactos que aturden antes de ese turno no acumulan más turnos saltados. El turno saltado sigue haciendo avanzar los relojes de los estados y el resto de la contabilidad de turnos, incluidos los cambios de ronda y la iniciativa que se vuelve a tirar. Guardar y volver a cargar el combate conserva el salto pendiente. `condition`, cuando aparece, nombra un estado declarado de la ficha. El combate lo marca hasta que pasa el turno saltado o termina el combate. Un estado que ya estaba presente se deja como está; la inmunidad al estado impide la marca, pero no el salto. `text` es una narración opcional, no otro efecto. El registro y el contexto de combate del Game Master registran el impacto y el salto. La clave requiere **Capability API 1.147**.
-
-<a id="the-target-chooses-the-wound-kind"></a>
 
 ### El objetivo elige el tipo de herida
 
@@ -455,8 +433,6 @@ Añade `remap` a la asignación existente `combat.damageKinds`; conserva su `def
 Un combate de reservas elige primero el tipo del ataque con su asignación normal y después lee el `when` de cada reasignación en el **objetivo**. Un número distinto de cero activa la regla. `from` y `to` deben ser tipos del contador de heridas de salud. Gana la primera regla que coincide; las reasignaciones no se encadenan. Se pueden dar como máximo 12. Con `tags`, al menos una debe coincidir con el ataque: un arma ya lleva `item.tags`, y las mecánicas de catálogo y el daño de las criaturas ya llevan `qualities`. Estos nombres proceden de `items.tags`. Sin `tags`, puede coincidir cualquier ataque de ese tipo. No hace falta ningún campo nuevo de etiqueta de ataque.
 
 El tipo resultante decide tanto la **absorción** como las marcas de herida. Así, el impacto letal de un arma de fuego puede volverse contundente contra un vampiro y usar la absorción contundente; la misma arma de fuego contra otra persona, o una hoja contra ese vampiro, conserva su tipo normal. El _tipo_ de daño original del ataque no cambia para la resistencia y la inmunidad. Cada cláusula de daño usa su propio tipo y las etiquetas del ataque. El registro del combate y el diario muestran los tipos original y reasignado, y la previsión de daño lee la misma regla. Una criatura simple sin ficha puede cumplir una referencia constante, pero no puede aportar valores de ficha para estas reglas; dale una ficha de criatura para eso. Solo la nueva clave `remap` requiere **Capability API 1.148**; las asignaciones de tipos de daño anteriores mantienen su compatibilidad actual.
-
-<a id="initiative-that-attacks-move"></a>
 
 ### Iniciativa que mueven los ataques
 
@@ -484,8 +460,6 @@ Algunos sistemas de reservas mantienen la iniciativa como un número durante tod
 - **Derrumbarse.** Un número que cae hasta `crash.at` o por debajo se ha derrumbado: se le aplica la `condition` (uno de tus propios estados, y opcional), y quien lo llevó hasta ahí gana `bonus`. Un fallo que derrumba a quien lo hizo no da bonificación a nadie. Un combatiente derrumbado no puede gastar. El derrumbe se levanta, estado incluido, cuando su número vuelve a superar la línea, después de `recoverAfter` de sus propios turnos (su número vuelve a `base` al empezar ese turno) y cuando termina el combate, termine como termine. Alguien cuya tirada de apertura esté en la línea o por debajo empieza el combate derrumbado. `base` debe estar por encima de `crash.at`, o volver a él lo derrumbaría de nuevo.
 
 El menú muestra la previsión propia de cada estilo: la probabilidad de impactar, y lo que tomaría un estilo que toma o el daño que haría uno que gasta. El panel de estado muestra el número de todos, y el registro indica cada cambio y su motivo: "Ada gains 5 initiative for crashing Rats, and is on 14." El selector del motor evalúa un golpe que toma con un turno de antelación: tomar y después gastar frente a gastar ahora y de nuevo desde la base.
-
-<a id="what-a-fight-reads-from-mechanics"></a>
 
 ### Qué lee un combate de `mechanics`
 
@@ -532,9 +506,8 @@ Una entrada del nuevo `kind: "rider"` es PASIVA: nadie la ejecuta, nunca aparece
 }
 ```
 
-`sources` identifica las listas de ataques de las que procede y `requires` una columna de sus filas con valor verdadero, de modo que un efecto adicional que solo se activa con ciertas armas puede especificarlas sin que Engine sepa qué es un arma; no indicar ninguna significa cualquier impacto de su poseedor. Un arma empuñada desde la bolsa no es una fila, así que `weapons` (Capability API 1.70) nombra además las propiedades de objeto con las que se activa: `"weapons": { "tags": ["finesse", "ranged"] }` se activa con un impacto de un arma empuñada que tenga cualquiera de esas propiedades, incluido su golpe con la mano secundaria. Nombrar solo `weapons` no se activa con ninguna fila, y nombrar solo filas no se activa con ninguna arma empuñada. `when` acepta CUALQUIERA de sus opciones: `advantage` es la inclinación final de la tirada de ataque, y `ally-adjacent` es un aliado del atacante que esté en pie y pueda actuar, a una casilla del objetivo en un tablero o en cualquier lugar si no hay tablero. `ally-adjacent-no-disadvantage` (Capability API 1.126) exige además que la tirada final no tenga desventaja una vez que la ventaja y la desventaja se anulan; el ejemplo anterior lo usa para Sneak Attack. `oncePer` es `turn` (se renueva al inicio de todos los turnos, de modo que un golpe realizado mientras actúa otra persona todavía puede incluir uno) o `round`. `amount` crece con el `scales` de la propia entrada, y `type` es el tipo de daño, cuyo valor predeterminado es el del propio golpe.
-
-<a id="creatures-a-bestiary-a-fight-reads"></a>
+`sources` identifica las listas de ataques de las que procede y `requires` una columna de sus filas con valor verdadero, de modo que un efecto adicional que solo se activa con ciertas armas puede especificarlas sin que Engine sepa qué es un arma; no indicar ninguna significa cualquier impacto de su poseedor. Un arma empuñada desde la bolsa no es una fila, así que `weapons` (Capability API 1.70) nombra además las propiedades de objeto con las que se activa: `"weapons": { "tags": ["finesse",
+"ranged"] }` se activa con un impacto de un arma empuñada que tenga cualquiera de esas propiedades, incluido su golpe con la mano secundaria. Nombrar solo `weapons` no se activa con ninguna fila, y nombrar solo filas no se activa con ninguna arma empuñada. `when` acepta CUALQUIERA de sus opciones: `advantage` es la inclinación final de la tirada de ataque, y `ally-adjacent` es un aliado del atacante que esté en pie y pueda actuar, a una casilla del objetivo en un tablero o en cualquier lugar si no hay tablero. `ally-adjacent-no-disadvantage` (Capability API 1.126) exige además que la tirada final no tenga desventaja una vez que la ventaja y la desventaja se anulan; el ejemplo anterior lo usa para Sneak Attack. `oncePer` es `turn` (se renueva al inicio de todos los turnos, de modo que un golpe realizado mientras actúa otra persona todavía puede incluir uno) o `round`. `amount` crece con el `scales` de la propia entrada, y `type` es el tipo de daño, cuyo valor predeterminado es el del propio golpe.
 
 ### Criaturas: un bestiario que lee el combate
 
@@ -722,8 +695,6 @@ Después, ambos quedan limitados a su nivel:
 
 Tu propio bestiario nunca se limita. Son datos que escribiste tú, así que Engine los acepta tal como están.
 
-<a id="positions-a-fight-on-a-board"></a>
-
 ### Posiciones: un combate sobre un tablero
 
 Un combate se desarrolla en el teatro de la mente hasta que tu bloque indica cuánto vale una casilla de tablero. Declara `distance` y podrá librarse sobre una cuadrícula; entonces movimiento, alcance, distancias, áreas, línea de visión, cobertura y golpes contra quien se aleja empiezan a tener significado. Todos son números que escribiste tú; Engine proporciona el tablero y nada más.
@@ -857,8 +828,6 @@ La pregunta es una VENTANA y detiene todo el combate: nada más se mueve hasta q
 
 **Rechazos que puedes ver.** `out-of-reach` (más lejos de lo que alcanza), `no-line-of-sight` (algo sólido en medio), `unreachable` (una casilla cuyo coste no puede pagar el movimiento o en la que no puede terminar) y `bad-cell` (una forma dirigida a un lugar al que no puede apuntar).
 
-<a id="what-a-fight-does-with-your-block-on-the-server"></a>
-
 ### Qué hace un combate con tu bloque en el servidor
 
 Una partida cuyo conjunto de reglas declare `combat` obtiene un combate resuelto por él, sobre la misma batalla guardada que siempre ha usado Engine:
@@ -869,15 +838,11 @@ Una partida cuyo conjunto de reglas declare `combat` obtiene un combate resuelto
 - **Tu menú es la única fuente de legalidad.** Todo aquel que actúa, jugador u oponente, elige un identificador del mismo menú que produce tu bloque. Un oponente controlado por Engine elige de él con las tácticas del propio Engine; a uno controlado por el Game Master se le pide elegir un identificador de ese mismo menú, mostrándole tus números sin decirle nunca qué harán los dados.
 - **Tus dados.** Un combate lleva su propia semilla y un cursor, por lo que uno recuperado del disco continúa con los dados que habría tirado.
 
-<a id="on-screen"></a>
-
 ### En pantalla
 
 El combate se desarrolla en la pantalla de batalla con tus palabras. El menú contiene tus ataques, tus capacidades, tus enfrentamientos y las acciones estándar que enumeraste, indicando cada una qué gasta de tus presupuestos y reservas. Se muestran el orden de turnos, la ronda, cada condición que identificaste con sus rondas restantes, los puntos temporales, la concentración y los dos contadores de tu regla de agonía. El registro imprime la aritmética real en tus términos: "Juno attacks Rust jackal with Road axe: 8 (5 + 3) + 3 = 11 against Guard 6, a hit." Cada acción aceptada se escribe en la ficha al ocurrir, por lo que recargar a mitad del combate es exacto y después se indica al Game Master que no vuelva a cambiar esos números.
 
 Un combate con posiciones se dibuja en el tablero en lugar del escenario de retratos; véase Posiciones para saber qué hace el jugador con él. Toda distancia en él, en el menú y en el registro se expresa en TU unidad: "Juno moves to 4, 6 for 6 paces and has 2 paces left."
-
-<a id="contests-grabbing-shoving-breaking-free"></a>
 
 ### Enfrentamientos: agarrar, empujar, liberarse
 
@@ -932,8 +897,6 @@ Algunos movimientos no son un ataque contra una defensa, sino un enfrentamiento:
 - Las pruebas de un oponente que inventa un Game Master se limitan a su nivel, igual que su probabilidad de acertar.
 
 Los enfrentamientos requieren Capability API 1.43 en un conjunto empaquetado.
-
-<a id="windows-holding-the-fight-open"></a>
 
 ### Ventanas: mantener abierto el combate
 
@@ -1127,8 +1090,6 @@ Su entrada de `combat.conditions` es `{ "condition": "feather_falling", "fallsSa
   "applies": [{ "condition": "feather_falling", "duration": { "rounds": 10 } }]
 }
 ```
-
-<a id="not-yet"></a>
 
 ### Todavía no
 

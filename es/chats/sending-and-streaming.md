@@ -15,7 +15,7 @@ Si no funcionó: si el chat no tiene ningún modelo configurado, la respuesta fa
 
 ### Send on Enter
 
-Está en **Settings → Chatting → Message Box** (Configuración → Chateando → Cuadro de mensaje). Hay un interruptor por cada modo de chat.
+Está en **Settings → Chatting → Message Box** (Configuración → Chateando → Cuadro de mensaje). Hay un interruptor por cada modo de chat, guardado en el dispositivo donde lo configuras, así que un teléfono y una computadora pueden tener valores distintos.
 
 | Modo de chat | Predeterminado | Cuando está desactivado |
 | --- | --- | --- |
@@ -80,8 +80,6 @@ Para que esto funcione, el modelo debe devolver su razonamiento. Algunos modelos
 ## Detener una respuesta
 
 Haz clic en el botón de detener, que es el botón **Send** mientras una respuesta está en streaming. El texto que ya llegó suele conservarse. Detener a propósito nunca muestra un error.
-
-<a id="retry-without-retyping"></a>
 
 ## Reintentar sin volver a escribir
 

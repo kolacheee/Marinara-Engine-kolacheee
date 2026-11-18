@@ -64,7 +64,7 @@ Professor Mari puede crearte un widget personal si se lo pides. Los agentes inst
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari** (Pregúntale a Professor Mari) abre su chat. | Sí |
 | **Recent chats** (Chats recientes) | Tus últimos chats. Haz clic en uno para reabrirlo. Vacío: **Your chats will show here** (Tus chats aparecerán aquí). | Sí |
-| **Learn the engine** (Aprende a usar el motor) | Enlaces a **Documentation**, **Replay tutorial** (Repetir tutorial) y **Read FAQ** (Leer la FAQ). | Sí |
+| **Things to try** (Cosas para probar) | Las siguientes tres pequeñas tareas para probar, una función por tarea. Cuando las hayas probado todas o desactives los consejos, muestra **Documentation**, **Replay tutorial** (Repetir tutorial) y **Read FAQ** (Leer la FAQ) en su lugar. Consulta [Cosas para probar](#things-to-try). | Sí |
 | **What's New** (Novedades) | **See what's new** (Ver las novedades) y **Read release notes** (Leer las notas de la versión). | Sí |
 | **Community** (Comunidad) | Enlaces a **Discord**, **Support** y **Credits**. | Sí |
 | **Character Library** (Biblioteca de personajes) | Una selección nueva de tus personajes cada día. | No |
@@ -72,6 +72,18 @@ Professor Mari puede crearte un widget personal si se lo pides. Los agentes inst
 | **Character of the Day** (Personaje del día) | Un personaje de tu biblioteca, con **Start a chat** (Empezar un chat) y **View character** (Ver personaje). | No |
 | **Clock & calendar** (Reloj y calendario) | La fecha y la hora de hoy. | No |
 | **Achievements** | Tus logros más recientes y los más cercanos. Necesita el ajuste de logros activado. | No |
+
+## Cosas para probar
+
+El widget **Things to try** sugiere las siguientes tres funciones para probar. Cada tarea se apoya en la anterior: una imagen de la galería se convierte en un sticker y el sticker se envía en un chat.
+
+- Haz clic en una tarea para abrir su lugar en la app. Si no tiene uno, se abre su guía.
+- Haz clic en la marca para darla por hecha, o en la cruz para omitirla. Una tarea omitida no vuelve a aparecer.
+- La mayoría de las tareas se marcan solas cuando Marinara detecta que las completaste, como un chat en ese modo o una etiqueta de sticker. Marca las demás tú.
+- **Ver todo** enumera todas las tareas por recorrido, con **Muéstrame**. Las tareas de un recorrido aparecen cuando se completan aquellas en las que se apoyan. Los recorridos bajo **Solo en este diseño** abarcan funciones del nuevo diseño.
+- Completar un recorrido desbloquea su logro de **Explorador**.
+
+El widget respeta **Consejos de funciones** en **Settings > General > Confirmations & Help** (Configuración > General > Confirmaciones y ayuda). Con los consejos desactivados, muestra los enlaces a las guías. El progreso se guarda en este navegador.
 
 ### Conceptos básicos de IA y A fondo
 
@@ -85,7 +97,7 @@ Cada uno abre su guía en el pasaje relevante, resaltado, con una tarjeta debajo
 ## Dónde conseguir ayuda
 
 - Pregúntale a Professor Mari en la pantalla de inicio.
-- Haz clic en **Read FAQ** (Leer la FAQ) en el widget **Learn the engine** (Aprende a usar el motor) para obtener respuestas breves.
+- Abre **Ver todo** en el widget **Things to try** y luego **Read FAQ** para obtener respuestas breves.
 - Haz clic en **Docs** en la barra superior para abrir las guías dentro de la app.
 - Haz clic en **Discord** en el widget **Community** (Comunidad) para llegar a la comunidad, o en **Support** para apoyar el proyecto.
 
