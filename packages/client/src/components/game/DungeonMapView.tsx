@@ -866,19 +866,19 @@ export function DungeonMapView({
       // The way round the held room: a scuffed trail of pale footprints through the rooms left to nobody,
       // so the party can see there is a way past (panel round 30: the quiet way not visible on the map).
       for (const [k, { x, y }] of (kept?.quietWay ?? []).entries()) {
-        if (inFog(x, y)) continue;
+        if (inFog(x, y) || k % 3 === 2) continue;
         const cx = x * T + T / 2;
         const cy = y * T + T / 2;
         for (const [dx, dy] of [
           [-5, k % 2 ? -3 : 1],
           [2, k % 2 ? 1 : -3],
         ] as const) {
-          // Bolder than at first, outlined so it reads on flags and carpets alike (panel round 31: lost on
-          // the flagstones, debris on the carpets).
-          ctx.fillStyle = "rgba(16, 12, 10, 0.7)";
-          ctx.fillRect(cx + dx - 1, cy + dy - 1, 5, 6);
-          ctx.fillStyle = "#f2e6c4";
-          ctx.fillRect(cx + dx, cy + dy, 3, 4);
+          // Faint, a scuff rather than a line (panel round 32: drawn bold it read as a debug overlay that
+          // spoiled the route and hid the furniture).
+          ctx.fillStyle = "rgba(20, 16, 12, 0.3)";
+          ctx.fillRect(cx + dx - 1, cy + dy - 1, 4, 5);
+          ctx.fillStyle = "rgba(236, 226, 196, 0.6)";
+          ctx.fillRect(cx + dx, cy + dy, 2, 3);
         }
       }
       // A patrol's beat: a line of footfalls along the walk it keeps, a bar at each end where it turns,
