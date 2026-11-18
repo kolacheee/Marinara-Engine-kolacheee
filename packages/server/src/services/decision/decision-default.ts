@@ -266,8 +266,8 @@ export async function resolveDecisionBackend(
               questions,
               timeoutMs: perStatementLimitMs(
                 answersAskedFor(questions),
-                DECISION_TIMEOUT_MS.sidecar,
-                resolved.perQuestionMs ?? DECISION_TIMEOUT_MS.sidecar,
+                resolved.firstAnswerMs ?? DECISION_TIMEOUT_MS.sidecar,
+                resolved.perQuestionMs ?? resolved.firstAnswerMs ?? DECISION_TIMEOUT_MS.sidecar,
               ),
               signal,
               questionShape: calibration.questionShape,

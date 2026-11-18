@@ -18,6 +18,7 @@ import type { SidecarDecisionModelInfo } from "@marinara-engine/shared";
 import { runWithRootLogContext } from "../../lib/log-context.js";
 import { logger } from "../../lib/logger.js";
 import { getDataDir } from "../../utils/data-dir.js";
+import { assertInsideDir } from "../../utils/security.js";
 import { askNoulQuestions } from "../decision/system-one.client.js";
 import {
   artifactSnapshotPath,
@@ -27,7 +28,10 @@ import {
 } from "./decision-runtime.service.js";
 import { configuredCudaIndex, preflightDecisionModel } from "./decision-preflight.js";
 import { getMeasuredProcessBytes } from "./sidecar-footprint.js";
-import { localModelManager } from "./local-model-manager.js";
+import { localModelManager, type LocalModelPlacement } from "./local-model-manager.js";
+import { decisionServerInstall, type DecisionServerInstall } from "./decision-server-runtimes.js";
+import { DecisionSystemOneShim, type DecisionShimMode } from "./decision-systemone-shim.js";
+import { createServer } from "node:net";
 
 const LOG_PATH = join(getDataDir(), "sidecar-runtime", "decision", "server.log");
 /** Loading 4.5 GB of weights and building the LoRA takes a while on a cold cache. */
@@ -36,6 +40,22 @@ const READY_TIMEOUT_MS = 180_000;
 const START_BACKOFF_MS = 60_000;
 /** The first request on a cold kernel cache took 14.4 s once; a warm-up never waits longer than this. */
 const WARM_UP_TIMEOUT_MS = 60_000;
+
+/**
+ * A short scene the model has not seen at start, for timing how fast it reads. About
+ * 400 tokens in every tokenizer these models use; the exact count only scales the
+ * estimate, and the limits built on it have wide margins.
+ */
+const MEASURE_STATE_TOKENS = 400;
+const MEASURE_STATE = {
+  recent_messages: Array.from({ length: 8 }, (_, index) => ({
+    role: index % 2 === 0 ? "user" : "assistant",
+    name: index % 2 === 0 ? "User" : "Narrator",
+    content:
+      `Turn ${index + 1}. The lantern swings above the harbour gate while the rain keeps falling on the stones. ` +
+      "A guard in a grey coat checks the papers of each traveller, and the line moves slowly toward the ferry.",
+  })),
+};
 
 export interface DecisionProcessStatus {
   running: boolean;
@@ -70,6 +90,12 @@ class DecisionProcessService {
   private warmUpAbort: AbortController | null = null;
   /** The catalog's measured footprint of the model that is running. */
   private runningVramBytes: number | null = null;
+  /** Which memory the running model is in. */
+  private runningPlacement: LocalModelPlacement = "gpu";
+  /** The `/v1/systemone` front of a model that needs one (JevK5, Valen). */
+  private shim: DecisionSystemOneShim | null = null;
+  /** One short question's time on this machine, from the warm-up. */
+  private msPerToken: number | null = null;
 
   getStatus(): DecisionProcessStatus {
     return {
@@ -143,12 +169,15 @@ class DecisionProcessService {
   private async start(model: SidecarDecisionModelInfo): Promise<string | null> {
     const generation = this.generation;
     const stopped = () => generation !== this.generation;
-    if (!decisionRuntimeInstalled()) {
+    const gguf = model.runtime !== "open_jev_torch";
+    if (gguf ? !decisionServerInstall(model.runtime) : !decisionRuntimeInstalled()) {
       this.error = "The decision runtime is not installed.";
       return null;
     }
-    const checkpoint = join(artifactSnapshotPath(model.artifacts[0]!), "package", "checkpoint");
-    if (!existsSync(checkpoint)) {
+    const checkpoint = gguf
+      ? decisionModelFilePath(model)
+      : join(artifactSnapshotPath(model.artifacts[0]!), "package", "checkpoint");
+    if (!checkpoint || !existsSync(checkpoint)) {
       this.error = "The decision model is not downloaded.";
       return null;
     }
@@ -163,7 +192,8 @@ class DecisionProcessService {
 
     // Other built-in models that are not working on anything step aside if the card is
     // short, before the recheck below weighs what is free.
-    await localModelManager.prepareToLoad("decision", model.vramBytes, "gpu");
+    this.runningPlacement = decisionPlacement(model);
+    await localModelManager.prepareToLoad("decision", model.vramBytes, this.runningPlacement);
     if (stopped()) return null;
 
     // Conditions change after an install: a bigger sidecar model, a longer context, a
@@ -178,6 +208,7 @@ class DecisionProcessService {
     }
     // The last check before spawning, with nothing awaited between it and the spawn.
     if (stopped()) return null;
+    if (gguf) return this.startGguf(model, checkpoint, generation);
 
     const runtime = decisionRuntimeService.getPaths();
     mkdirSync(join(LOG_PATH, ".."), { recursive: true });
@@ -297,7 +328,7 @@ class DecisionProcessService {
     if (baseUrl && !stopped() && this.child === child) {
       const abort = new AbortController();
       this.warmUpAbort = abort;
-      const failed = await this.warmUp(baseUrl, model, abort.signal).finally(() => {
+      const failed = await this.timedWarmUp(baseUrl, model, abort.signal).finally(() => {
         if (this.warmUpAbort === abort) this.warmUpAbort = null;
       });
       // Only while the process is still ours and running. A stop or an exit during the
@@ -319,6 +350,150 @@ class DecisionProcessService {
     return baseUrl;
   }
 
+  /**
+   * Launch a GGUF decision model on its llama.cpp server.
+   *
+   * The port is picked here (llama-server does not report a port chosen by the
+   * system), and readiness is its `/health` answering, the same way the utility and
+   * embedding slots start. On a graphics-card build a start that fails is tried once
+   * more on the processor, as the chat model does.
+   */
+  private async startGguf(
+    model: SidecarDecisionModelInfo,
+    modelPath: string,
+    generation: number,
+  ): Promise<string | null> {
+    const stopped = () => generation !== this.generation;
+    const install = decisionServerInstall(model.runtime);
+    if (!install) {
+      this.error = "The decision runtime is not installed.";
+      return null;
+    }
+    const plans = install.gpu && model.runtime !== "winnow_cuda" ? [true, false] : [install.gpu];
+    for (const [index, onGpu] of plans.entries()) {
+      if (stopped()) return null;
+      const port = await allocateLoopbackPort();
+      const launch = ggufLaunch(model, modelPath, install, port, onGpu);
+      mkdirSync(join(LOG_PATH, ".."), { recursive: true });
+      const log = createWriteStream(LOG_PATH, { flags: "a" });
+      log.write(
+        `\n[marinara] ${new Date().toISOString()} starting ${model.label} (${install.variant}${onGpu ? "" : ", processor"})\n`,
+      );
+      const child = spawn(install.executable, launch.args, {
+        cwd: install.directory,
+        // The same allowlist as Open-Jev: nothing the engine holds is handed over.
+        env: { ...inheritedEnv(), ...launch.env },
+        stdio: ["ignore", "pipe", "pipe"],
+        windowsHide: true,
+      });
+      this.child = child;
+      this.modelId = model.id;
+      this.error = null;
+      let tail = "";
+      const capture = (chunk: unknown) => {
+        const text = String(chunk);
+        log.write(text);
+        tail = `${tail}${text}`.slice(-4000);
+      };
+      child.stdout?.on("data", capture);
+      child.stderr?.on("data", capture);
+      child.on("error", (error) => {
+        logger.warn(error, "[decision-sidecar] Could not start");
+        if (this.child === child) this.error = error.message;
+      });
+      child.on("close", (code) => {
+        log.end();
+        if (this.child === child) {
+          this.child = null;
+          this.baseUrl = null;
+          this.error = `The decision model's server exited with code ${code}.`;
+          this.warmUpAbort?.abort();
+          void this.shim?.stop();
+          this.shim = null;
+          localModelManager.noteStopped("decision");
+        }
+      });
+      const serverUrl = `http://127.0.0.1:${port}`;
+      const ready = await waitForHealth(serverUrl, () => this.child === child && !stopped(), READY_TIMEOUT_MS);
+      if (!ready) {
+        const reason = this.child === child ? "did not finish loading in time" : "stopped while loading";
+        if (this.child === child) await this.terminate();
+        if (stopped()) return null;
+        const lastLine = tail.trim().split(/\r?\n/u).filter(Boolean).slice(-1)[0] ?? "";
+        this.error = `The decision model ${reason}.${lastLine ? ` ${lastLine.slice(0, 300)}` : ""}`;
+        if (index < plans.length - 1) {
+          logger.warn("[decision-sidecar] %s failed on the graphics card; trying the processor", model.label);
+          continue;
+        }
+        return null;
+      }
+
+      let baseUrl = serverUrl;
+      if (launch.shim) {
+        const shim = new DecisionSystemOneShim(serverUrl, launch.shim);
+        baseUrl = await shim.start();
+        this.shim = shim;
+      }
+      if (!stopped() && this.child === child) {
+        const abort = new AbortController();
+        this.warmUpAbort = abort;
+        const failed = await this.timedWarmUp(baseUrl, model, abort.signal).finally(() => {
+          if (this.warmUpAbort === abort) this.warmUpAbort = null;
+        });
+        if (failed && !stopped() && this.child === child)
+          logger.warn("[decision-sidecar] Warm-up request failed (%s); the first question may be slow", failed);
+      }
+      if (stopped() || this.child !== child) {
+        if (this.child === child) await this.terminate();
+        return null;
+      }
+      this.baseUrl = baseUrl;
+      this.runningVramBytes = model.vramBytes;
+      this.runningPlacement = onGpu ? decisionPlacement(model) : "cpu";
+      localModelManager.noteLoaded("decision");
+      logger.info("[decision-sidecar] %s ready (%s%s)", model.label, install.variant, onGpu ? "" : ", processor");
+      return baseUrl;
+    }
+    return null;
+  }
+
+  /**
+   * The warm-up, timed, so request limits can follow this machine's real speed.
+   *
+   * The first answer pays one-off costs, so the speed is read from a second question
+   * over a scene it has not seen. A repeat of the first would come from the prompt
+   * cache and report a speed no real scene gets.
+   */
+  private async timedWarmUp(
+    baseUrl: string,
+    model: SidecarDecisionModelInfo,
+    signal: AbortSignal,
+  ): Promise<string | undefined> {
+    const failed = await this.warmUp(baseUrl, model, signal);
+    this.msPerToken = null;
+    // Open-Jev runs on an NVIDIA card with fixed, curated limits, so it is not timed.
+    if (!failed && !signal.aborted && model.runtime !== "open_jev_torch") {
+      const started = Date.now();
+      const second = await this.warmUp(baseUrl, model, signal, MEASURE_STATE);
+      if (!second) this.msPerToken = (Date.now() - started) / MEASURE_STATE_TOKENS;
+    }
+    return failed;
+  }
+
+  /**
+   * How long reading one token of a scene took on this machine once loaded, or null
+   * before a start. A model on the processor reads tens of tokens a second where a
+   * graphics card reads thousands, so the request limits are scaled from this rather
+   * than fixed.
+   */
+  measuredMsPerToken(): number | null {
+    return this.isLoaded() ? this.msPerToken : null;
+  }
+
+  placement(): LocalModelPlacement {
+    return this.runningPlacement;
+  }
+
   isLoaded(): boolean {
     return !!this.child && !!this.baseUrl;
   }
@@ -337,6 +512,7 @@ class DecisionProcessService {
     baseUrl: string,
     model: SidecarDecisionModelInfo,
     signal: AbortSignal,
+    state: unknown = { recent_messages: [{ role: "user", name: "User", content: "The door is open." }] },
   ): Promise<string | undefined> {
     const result = await askNoulQuestions({
       connection: {
@@ -344,9 +520,9 @@ class DecisionProcessService {
         endpoint: `${baseUrl}/v1/systemone`,
         apiKey: "",
         model: "jev-latest",
-        maxStateTokens: 256,
+        maxStateTokens: 1024,
       },
-      state: { recent_messages: [{ role: "user", name: "User", content: "The door is open." }] },
+      state,
       questions: [{ id: "warm-up", instructions: "The door is open." }],
       timeoutMs: WARM_UP_TIMEOUT_MS,
       signal,
@@ -391,6 +567,9 @@ class DecisionProcessService {
     const child = this.child;
     this.child = null;
     this.baseUrl = null;
+    const shim = this.shim;
+    this.shim = null;
+    await shim?.stop();
     localModelManager.noteStopped("decision");
     if (!child) return;
     await new Promise<void>((resolve) => {
@@ -416,6 +595,178 @@ class DecisionProcessService {
   }
 }
 
+/** Where a model's weights live, for the memory check and the unload order. */
+export function decisionPlacement(model: SidecarDecisionModelInfo): LocalModelPlacement {
+  const memory = model.memory ?? "nvidia";
+  if (memory === "cpu") return "cpu";
+  if (memory === "nvidia") return "gpu";
+  return decisionServerInstall(model.runtime)?.gpu ? "gpu" : "cpu";
+}
+
+/** The GGUF a downloaded model loads, or null for Open-Jev. */
+export function decisionModelFilePath(model: SidecarDecisionModelInfo): string | null {
+  if (model.runtime === "open_jev_torch" || !model.modelFile || !model.artifacts[0]) return null;
+  const snapshot = artifactSnapshotPath(model.artifacts[0]);
+  try {
+    return assertInsideDir(snapshot, join(snapshot, model.modelFile));
+  } catch {
+    return null;
+  }
+}
+
+async function allocateLoopbackPort(): Promise<number> {
+  return new Promise((resolvePort, reject) => {
+    const server = createServer();
+    server.on("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      if (!address || typeof address === "string") {
+        server.close(() => reject(new Error("Failed to allocate a localhost port")));
+        return;
+      }
+      const port = address.port;
+      server.close((error) => (error ? reject(error) : resolvePort(port)));
+    });
+  });
+}
+
+async function waitForHealth(baseUrl: string, alive: () => boolean, timeoutMs: number): Promise<boolean> {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (!alive()) return false;
+    try {
+      const response = await fetch(`${baseUrl}/health`, { signal: AbortSignal.timeout(2000) });
+      if (response.ok) return true;
+    } catch {
+      // Still loading.
+    }
+    await new Promise((wait) => setTimeout(wait, 500));
+  }
+  return false;
+}
+
+/**
+ * The command line for a GGUF decision model, by runtime.
+ *
+ * - llama.cpp (both kinds): one slot, the model's context, all layers on the card
+ *   when there is one. Prompt caching is left at llama.cpp's default for the letters
+ *   readout (the state is the shared start of every question) and off for native
+ *   decision models, which llama.cpp itself recommends.
+ * - Valen: its authors' command, processor only, the whole request in one batch.
+ * - Winnow: its authors' direct-decision command for the E4B text profile.
+ */
+export function ggufLaunch(
+  model: SidecarDecisionModelInfo,
+  modelPath: string,
+  install: Pick<DecisionServerInstall, "variant" | "directory">,
+  port: number,
+  onGpu: boolean,
+): { args: string[]; env: NodeJS.ProcessEnv; shim: DecisionShimMode | null } {
+  const ctx = String(model.maxLengthTokens);
+  const common = ["--host", "127.0.0.1", "--port", String(port)];
+  if (model.runtime === "valen_gguf") {
+    return {
+      args: [
+        "-m",
+        modelPath,
+        "--load-mode",
+        "none",
+        "--device",
+        "none",
+        "-ngl",
+        "0",
+        ...common,
+        "-c",
+        ctx,
+        "-b",
+        ctx,
+        "-ub",
+        ctx,
+        "--parallel",
+        "1",
+        "--no-warmup",
+      ],
+      env: { LD_LIBRARY_PATH: [install.directory, process.env.LD_LIBRARY_PATH].filter(Boolean).join(":") },
+      shim: { kind: "text-state" },
+    };
+  }
+  if (model.runtime === "winnow_cuda") {
+    return {
+      args: [
+        "--model",
+        modelPath,
+        "--alias",
+        "Winnow-E4B",
+        "--ctx-size",
+        ctx,
+        "--parallel",
+        "1",
+        "--n-gpu-layers",
+        "999",
+        "--fit",
+        "off",
+        "--flash-attn",
+        "on",
+        "--cache-type-k",
+        "f16",
+        "--cache-type-v",
+        "f16",
+        "--no-context-shift",
+        "--offline",
+        "--lazy-mode",
+        "off",
+        "--split-mode",
+        "none",
+        "--override-tensor",
+        "^(token_embd|per_layer_token_embd)\\.weight$=CUDA0",
+        "--batch-size",
+        "2048",
+        "--ubatch-size",
+        "1024",
+        ...common,
+        "--jinja",
+        "--reasoning",
+        "off",
+        "--no-warmup",
+        "--cache-ram",
+        "0",
+        "--no-mmproj",
+        "--spec-type",
+        "none",
+      ],
+      env: {
+        CUDA_DEVICE_ORDER: "PCI_BUS_ID",
+        CUDA_VISIBLE_DEVICES: String(configuredCudaIndex()),
+        WINNOW_MANAGED_LAUNCH: "1",
+        WINNOW_RESIDENT_MTP: "0",
+        WINNOW_RESIDENT_VISION_MTP: "0",
+        WINNOW_CONTEXT: ctx,
+        WINNOW_CHAT_CONTEXT: ctx,
+        WINNOW_CHAT_PARALLEL: "1",
+        WINNOW_HEAD: "selected",
+        WINNOW_CACHE: "f16",
+        WINNOW_PIPELINE: "optimized",
+        WINNOW_MEMORY: "exclusive",
+        WINNOW_PARALLEL: "4",
+        WINNOW_BATCH: "2048",
+        WINNOW_UBATCH: "1024",
+      },
+      shim: null,
+    };
+  }
+  const args = ["-m", modelPath, ...common, "--ctx-size", ctx, "--parallel", "1", "-ngl", onGpu ? "999" : "0"];
+  if (!onGpu) args.push("--device", "none");
+  if (model.runtime === "llama_systemone") {
+    // Native decision models read the whole prompt in one batch for some types (laya, clef, d3).
+    args.push("--batch-size", ctx, "--ubatch-size", ctx);
+  }
+  return {
+    args,
+    env: {},
+    shim: model.runtime === "llama_letters" && model.letterReadout ? { kind: "letters", ...model.letterReadout } : null,
+  };
+}
+
 export const decisionProcessService = new DecisionProcessService();
 
 localModelManager.register({
@@ -423,7 +774,7 @@ localModelManager.register({
   label: () => "The decision model",
   isLoaded: () => decisionProcessService.isLoaded(),
   footprintBytes: () => decisionProcessService.footprintBytes(),
-  // It runs on an NVIDIA card through CUDA.
-  placement: () => "gpu",
+  // Open-Jev and Winnow run on an NVIDIA card; the llama.cpp models wherever they loaded.
+  placement: () => decisionProcessService.placement(),
   unload: () => decisionProcessService.stop(),
 });

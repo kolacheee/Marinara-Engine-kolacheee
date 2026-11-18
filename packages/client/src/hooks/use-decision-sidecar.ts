@@ -13,6 +13,11 @@ export interface DecisionSidecarModel {
   downloadSizeBytes: number;
   diskBytes: number;
   vramBytes: number;
+  /** What `vramBytes` is weighed against: an NVIDIA card, system memory, or either (llama.cpp). */
+  memory?: "nvidia" | "cpu" | "llama";
+  runtime?: string;
+  /** Plain words for the languages it was checked on, when known. */
+  languages?: string | null;
   licenses: string[];
   downloaded: boolean;
   preflight: {
@@ -119,6 +124,7 @@ export function useInspectDecisionRepo() {
           downloadSizeBytes: number;
           diskBytes: number;
           vramBytes: number;
+          memory?: "nvidia" | "cpu" | "llama";
           licenses: string[];
           artifacts: Array<{ repoId: string; revision: string }>;
         };

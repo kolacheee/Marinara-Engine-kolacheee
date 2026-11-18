@@ -11,6 +11,7 @@
  * `openai.provider.ts` drops `logprobs` and `top_logprobs` unless a caller sets them
  * explicitly, and the whole method depends on those two fields arriving intact.
  */
+import { DECISION_TIMEOUT_MS } from "@marinara-engine/shared";
 import {
   DECISION_SIDECAR_DEFAULT_SETTINGS,
   findDecisionModel,
@@ -35,6 +36,7 @@ import {
   isDecisionRuntimeSupported,
 } from "../sidecar/decision-runtime.service.js";
 import { utilitySidecarService } from "../utility-sidecar/utility-sidecar.service.js";
+import { decisionServerInstall } from "../sidecar/decision-server-runtimes.js";
 
 /** A slot that is ready to answer, with everything a request needs. */
 export interface ResolvedDecisionSlot {
@@ -64,6 +66,11 @@ export interface ResolvedDecisionSlot {
   calibration?: DecisionCalibration;
   /** Measured extra time per question, for a model that answers them one at a time. */
   perQuestionMs?: number;
+  /**
+   * The limit for a request's first answer, when this machine's measured speed calls
+   * for more than the fixed default (a model running on the processor).
+   */
+  firstAnswerMs?: number;
   /**
    * The input limit this model was launched with.
    *
@@ -119,18 +126,27 @@ export function describeDecisionSlot(
   }
   // The decision sidecar. Each reason is different and each has a different fix, so
   // they are never collapsed into one "unavailable".
-  if (!isDecisionRuntimeSupported())
-    return {
-      available: false,
-      reason: "unsupported_platform",
-      detail: "Requires Linux with an NVIDIA GPU",
-    };
   const settings = decisionSidecarSettings();
-  if (!settings.enabled) return { available: false, reason: "not_enabled" };
   const model = installedDecisionModel(settings);
-  if (model && decisionRuntimeNeedsUpdate() && decisionRuntimeService.modelDownloaded(model))
+  // Open-Jev's Python runtime is Linux x64 only, but the llama.cpp models run nearly
+  // everywhere, so with nothing installed the entry is offered on every platform and
+  // each model's own install is refused where it cannot run. A runtime other than
+  // Open-Jev was refused at install on a machine without a build for it.
+  if (!settings.enabled) return { available: false, reason: "not_enabled" };
+  if (model?.runtime === "open_jev_torch" && !isDecisionRuntimeSupported())
+    return { available: false, reason: "unsupported_platform", detail: "Requires Linux with an NVIDIA GPU" };
+  if (
+    model?.runtime === "open_jev_torch" &&
+    decisionRuntimeNeedsUpdate() &&
+    decisionRuntimeService.modelDownloaded(model)
+  )
     return { available: false, reason: "needs_update" };
-  if (!model || !decisionRuntimeInstalled() || !decisionRuntimeService.modelDownloaded(model))
+  const runtimeHere = model
+    ? model.runtime === "open_jev_torch"
+      ? decisionRuntimeInstalled()
+      : decisionServerInstall(model.runtime) !== null
+    : false;
+  if (!model || !runtimeHere || !decisionRuntimeService.modelDownloaded(model))
     return { available: false, reason: "not_installed" };
   return { available: true, label: model.label };
 }
@@ -267,7 +283,7 @@ export async function resolveDecisionSlot(
         label: model.label,
         protocol: "system_one",
         calibration: model.calibration,
-        perQuestionMs: model.perQuestionMs,
+        ...decisionTiming(model),
         maxLengthTokens: model.maxLengthTokens,
         // A purpose-built decision model never reasons: it scores candidates in one
         // forward pass and has no text to think in.
@@ -337,4 +353,28 @@ export function setDecisionSlotThinking(slot: DecisionLocalSlot, thinking: Decis
   // which is a real bug this had once already.
   if (slot === "utility") utilitySidecarService.setDecisionThinking(thinking);
   else if (slot === "primary") sidecarModelService.setDecisionThinking(thinking);
+}
+
+/**
+ * Request limits that follow this machine's measured speed.
+ *
+ * Open-Jev runs on an NVIDIA card and answers in tens of milliseconds, so it keeps the
+ * fixed limit and its curated per-question cost. A GGUF model may be on the processor,
+ * where reading a long scene takes a minute, and a fixed four-second limit would time
+ * out every gate. Its limits come from the reading speed the process timed at start:
+ * the first answer reads the whole scene, up to the model's input limit; later ones
+ * reuse most of it from the prompt cache.
+ */
+export function decisionTiming(model: SidecarDecisionModelInfo): { perQuestionMs?: number; firstAnswerMs?: number } {
+  if (model.runtime === "open_jev_torch") return model.perQuestionMs ? { perQuestionMs: model.perQuestionMs } : {};
+  const msPerToken = decisionProcessService.measuredMsPerToken();
+  if (msPerToken === null) return model.perQuestionMs ? { perQuestionMs: model.perQuestionMs } : {};
+  const clamp = (value: number, low: number, high: number) => Math.round(Math.min(high, Math.max(low, value)));
+  return {
+    firstAnswerMs: clamp(msPerToken * model.maxLengthTokens * 1.25 + 2_000, DECISION_TIMEOUT_MS.sidecar, 180_000),
+    // A model with recurrent layers (JevK5, d1) rewinds its cache to the last saved
+    // checkpoint rather than to the exact end of the scene, so each further question
+    // re-reads a few hundred tokens: about 520 on JevK5 4B, measured 2026-11-18.
+    perQuestionMs: model.perQuestionMs ?? clamp(msPerToken * 800 + 500, 250, 30_000),
+  };
 }

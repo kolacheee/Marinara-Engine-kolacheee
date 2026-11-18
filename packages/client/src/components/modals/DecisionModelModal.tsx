@@ -10,7 +10,19 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { AlertTriangle, Check, Download, HardDrive, Link2, Loader2, Scale, Trash2, Zap } from "lucide-react";
+import {
+  AlertTriangle,
+  Check,
+  ChevronDown,
+  Download,
+  HardDrive,
+  Languages,
+  Link2,
+  Loader2,
+  Scale,
+  Trash2,
+  Zap,
+} from "lucide-react";
 import { useTranslation as useUiTranslation } from "react-i18next";
 import {
   useDecisionSidecar,
@@ -222,17 +234,24 @@ export function DecisionModelModal() {
       toast.error(localizeUi("ui.modals.decisionmodelmodal.recheckNeeded"));
       return;
     }
+    // A GGUF repository is one file with no base model; an Open-Jev package pins one.
+    const base = model.artifacts[1]?.repoId;
     const confirmed = await showConfirmDialog({
       title: localizeUi("ui.modals.decisionmodelmodal.downloadTitle"),
-      message: localizeUi("ui.modals.decisionmodelmodal.downloadPastedBody", {
-        label: model.label,
-        base: model.artifacts[1]?.repoId ?? "",
-        size: formatBytes(model.downloadSizeBytes),
-        // The download excludes the runtime's own environment, which is several
-        // gigabytes on its own, so the total on disk is named separately.
-        disk: formatBytes(model.diskBytes),
-        licenses: model.licenses.join(", "),
-      }),
+      message: localizeUi(
+        base
+          ? "ui.modals.decisionmodelmodal.downloadPastedBody"
+          : "ui.modals.decisionmodelmodal.downloadPastedGgufBody",
+        {
+          label: model.label,
+          base: base ?? "",
+          size: formatBytes(model.downloadSizeBytes),
+          // The download excludes the runtime's own environment, which is several
+          // gigabytes on its own, so the total on disk is named separately.
+          disk: formatBytes(model.diskBytes),
+          licenses: model.licenses.join(", "),
+        },
+      ),
       confirmLabel: localizeUi("ui.modals.decisionmodelmodal.download"),
     });
     if (!confirmed) return;
@@ -249,85 +268,67 @@ export function DecisionModelModal() {
     }
   };
 
-  const row = (model: DecisionSidecarModel) => {
-    const blocked = !model.preflight.installable;
-    const chosen = selected?.id === model.id;
-    return (
-      <label
-        key={model.id}
-        className={`mari-dm-row flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-colors ${
-          blocked
-            ? "cursor-not-allowed border-[var(--border)] opacity-60"
-            : chosen
-              ? "border-[var(--marinara-chat-chrome-button-border-active)] bg-[var(--marinara-chat-chrome-highlight-bg)]"
-              : "border-[var(--border)] hover:bg-[var(--secondary)]/50"
-        }`}
-      >
-        <input
-          type="radio"
-          name="decision-model"
-          value={model.id}
-          checked={chosen}
-          disabled={blocked}
-          onChange={() => setSelectedId(model.id)}
-          className="sr-only"
-        />
-        <div
-          className={`h-4 w-4 shrink-0 rounded-full border-2 transition-colors ${
-            chosen
-              ? "border-[var(--marinara-chat-chrome-button-border-active)] bg-[var(--marinara-chat-chrome-accent)]"
-              : "border-[var(--border)]"
-          }`}
-        >
-          {chosen && (
-            <div className="flex h-full items-center justify-center">
-              <div className="h-1.5 w-1.5 rounded-full bg-white" />
-            </div>
-          )}
-        </div>
-        <div className="flex-1">
-          <div className="text-sm font-medium">{model.label}</div>
-          <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted-foreground)]/70">
-            <span className="flex items-center gap-1">
-              <Download size="0.75rem" />
-              {formatBytes(model.downloadSizeBytes)}
-            </span>
-            <span className="flex items-center gap-1">
-              <HardDrive size="0.75rem" />~{formatBytes(model.vramBytes)}{" "}
-              {localizeUi("ui.modals.decisionmodelmodal.vram")}
-            </span>
-            <span className="flex items-center gap-1">
-              <Scale size="0.75rem" />
-              {model.licenses.join(", ")}
-            </span>
-          </div>
-          {/* An entry that cannot be installed says why, in the one sentence the
-              preflight produced, rather than being hidden or left unexplained. */}
-          {model.preflight.reason && (
-            <div className="mt-1 text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">
-              {model.preflight.reason}
-            </div>
-          )}
-        </div>
-        {model.id === installedId &&
-          (needsUpdate ? (
-            <span className="flex items-center gap-1 rounded-full bg-[var(--warning)]/15 px-2 py-0.5 text-[0.625rem] font-medium text-[var(--warning)]">
-              <AlertTriangle size="0.625rem" />
-              {localizeUi("ui.modals.decisionmodelmodal.needsUpdateBadge")}
-            </span>
-          ) : needsReinstall ? (
-            <span className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.625rem] max-sm:text-[13px] font-medium text-[var(--warning)] ring-1 ring-[var(--warning)]">
-              {localizeUi("ui.modals.decisionmodelmodal.needsReinstallBadge")}
-            </span>
-          ) : (
-            <span className="mari-chrome-accent-surface flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.625rem] max-sm:text-[13px] font-medium">
-              <Check size="0.625rem" />
-              {localizeUi("ui.modals.decisionmodelmodal.installedBadge")}
-            </span>
-          ))}
-      </label>
+  /** Which memory a model is weighed against, in the words the fact line uses. */
+  const memoryWord = (memory: DecisionSidecarModel["memory"] | undefined) =>
+    localizeUi(
+      memory === "cpu"
+        ? "ui.modals.decisionmodelmodal.ram"
+        : memory === "llama"
+          ? "ui.modals.decisionmodelmodal.memoryAny"
+          : "ui.modals.decisionmodelmodal.vram",
     );
-  };
+
+  /**
+   * The chosen model's facts under the dropdown. A model this machine cannot run stays
+   * choosable, so its reason can be read, and its Install stays disabled.
+   */
+  const detail = (model: DecisionSidecarModel) => (
+    <div className="mari-dm-row rounded-xl border border-[var(--border)] p-3">
+      {model.id === installedId &&
+        (needsUpdate ? (
+          <span className="mb-2 inline-flex items-center gap-1 rounded-full bg-[var(--warning)]/15 px-2 py-0.5 text-[0.625rem] font-medium text-[var(--warning)]">
+            <AlertTriangle size="0.625rem" />
+            {localizeUi("ui.modals.decisionmodelmodal.needsUpdateBadge")}
+          </span>
+        ) : needsReinstall ? (
+          <span className="mb-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.625rem] max-sm:text-[13px] font-medium text-[var(--warning)] ring-1 ring-[var(--warning)]">
+            {localizeUi("ui.modals.decisionmodelmodal.needsReinstallBadge")}
+          </span>
+        ) : (
+          <span className="mari-chrome-accent-surface mb-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.625rem] max-sm:text-[13px] font-medium">
+            <Check size="0.625rem" />
+            {localizeUi("ui.modals.decisionmodelmodal.installedBadge")}
+          </span>
+        ))}
+      <p className="text-[0.6875rem] leading-relaxed text-[var(--muted-foreground)] max-sm:text-[13px]">
+        {model.description}
+      </p>
+      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--muted-foreground)]/70">
+        <span className="flex items-center gap-1">
+          <Download size="0.75rem" />
+          {formatBytes(model.downloadSizeBytes)}
+        </span>
+        <span className="flex items-center gap-1">
+          <HardDrive size="0.75rem" />~{formatBytes(model.vramBytes)} {memoryWord(model.memory)}
+        </span>
+        {model.languages && (
+          <span className="flex items-center gap-1">
+            <Languages size="0.75rem" />
+            {model.languages}
+          </span>
+        )}
+        <span className="flex items-center gap-1">
+          <Scale size="0.75rem" />
+          {model.licenses.join(", ")}
+        </span>
+      </div>
+      {/* An entry that cannot be installed says why, in the one sentence the
+          preflight produced, rather than being hidden or left unexplained. */}
+      {model.preflight.reason && (
+        <div className="mt-1.5 text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">{model.preflight.reason}</div>
+      )}
+    </div>
+  );
 
   const body = (
     <div className="mari-dm-body flex flex-col gap-5">
@@ -468,7 +469,40 @@ export function DecisionModelModal() {
                     </button>
                   </div>
                 )}
-                {models.map(row)}
+                {/* A dropdown, not a list of cards: there are six models, and the
+                    facts of the one chosen are what matter. */}
+                {selected && (
+                  <div className="relative">
+                    <select
+                      value={selected.id}
+                      disabled={busy}
+                      onChange={(event) => setSelectedId(event.target.value)}
+                      aria-label={localizeUi("ui.modals.decisionmodelmodal.curated")}
+                      className="mari-chrome-field h-8 w-full min-w-0 appearance-none pl-2.5 pr-8 text-xs max-md:h-11 max-sm:text-base"
+                    >
+                      {models.map((model) => (
+                        <option key={model.id} value={model.id}>
+                          {model.id === installedId
+                            ? localizeUi("ui.modals.decisionmodelmodal.optionInstalled", { model: model.label })
+                            : !model.preflight.installable
+                              ? localizeUi("ui.modals.decisionmodelmodal.optionCannotRun", { model: model.label })
+                              : model.downloaded
+                                ? localizeUi("ui.modals.decisionmodelmodal.optionDownloaded", { model: model.label })
+                                : localizeUi("ui.modals.decisionmodelmodal.optionToDownload", {
+                                    model: model.label,
+                                    size: formatBytes(model.downloadSizeBytes),
+                                  })}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown
+                      size="0.875rem"
+                      aria-hidden="true"
+                      className="mari-chrome-field-icon pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2"
+                    />
+                  </div>
+                )}
+                {selected && detail(selected)}
                 {needsReinstall && (
                   <div className="flex flex-col gap-2 rounded-xl border border-[var(--warning)] p-3">
                     <p className="text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">
@@ -502,7 +536,9 @@ export function DecisionModelModal() {
                   {localizeUi(
                     install.isPending
                       ? "ui.modals.decisionmodelmodal.installing"
-                      : "ui.modals.decisionmodelmodal.installSelected",
+                      : selected?.downloaded
+                        ? "ui.modals.decisionmodelmodal.useSelected"
+                        : "ui.modals.decisionmodelmodal.installSelected",
                   )}
                 </button>
                 {/* Pasting a repository, in the same block shape the chat installer
@@ -559,13 +595,15 @@ export function DecisionModelModal() {
                         </span>
                         <span className="flex items-center gap-1">
                           <HardDrive size="0.75rem" />~{formatBytes(inspect.data.model.vramBytes)}{" "}
-                          {localizeUi("ui.modals.decisionmodelmodal.vram")}
+                          {memoryWord(inspect.data.model.memory)}
                         </span>
-                        <span>
-                          {localizeUi("ui.modals.decisionmodelmodal.baseWeights", {
-                            base: inspect.data.model.artifacts[1]?.repoId ?? "",
-                          })}
-                        </span>
+                        {inspect.data.model.artifacts[1] && (
+                          <span>
+                            {localizeUi("ui.modals.decisionmodelmodal.baseWeights", {
+                              base: inspect.data.model.artifacts[1].repoId,
+                            })}
+                          </span>
+                        )}
                         <span>
                           {localizeUi("ui.modals.decisionmodelmodal.pastedLicenses", {
                             licenses: inspect.data.model.licenses.join(", "),
