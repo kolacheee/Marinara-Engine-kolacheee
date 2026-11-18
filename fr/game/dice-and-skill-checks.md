@@ -101,6 +101,15 @@ Si le total atteint ou dépasse le DC, le jet réussit. Deux résultats passent 
 
 Le bandeau affiche **CRITICAL SUCCESS**, **SUCCESS**, **FAILURE** ou **CRITICAL FAILURE**.
 
+### Jets de compétence dans une partie Doux
+
+Dans une partie au style narratif **Doux**, le GM demande moins de tests, et le jet lui-même fonctionne de la même façon. Voir [Le style narratif Doux](getting-started.md#the-gentle-story-style).
+
+- Le GM ne demande un test que si la compétence ou le choix de ton personnage peut changer l'issue.
+- Il ne lance jamais de dés contre quelque chose que ton personnage ne peut pas contrôler ou qui fait partie de son identité, comme un handicap, une maladie chronique, son corps ou son passé. L'histoire le présente comme une part de lui, avec les façons dont il s'y adapte déjà.
+- La bienveillance, la confiance et l'évolution des relations entre personnages viennent de ce qu'ils font ensemble, pas d'un jet.
+- Un test raté met en échec la tentative, pas le personnage : elle échoue, prend plus de temps, coûte quelque chose ou attire l'attention. Un **CRITICAL FAILURE** est une complication plus importante, pas une catastrophe.
+
 ### Avantage et désavantage
 
 Le GM peut demander un jet avec avantage (lancer deux d20 et garder le plus haut) ou avec désavantage (garder le plus bas). Le bandeau affiche le mode à côté du DC et signale le dé retenu. Si le GM demande les deux à la fois, Marinara laisse ce jet de côté au lieu de deviner : tu n'obtiens alors aucun bandeau pour lui.

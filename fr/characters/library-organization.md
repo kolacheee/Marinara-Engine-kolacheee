@@ -92,6 +92,10 @@ Le menu déroulant de tri du panneau classique propose :
 | **Newest** (plus récents) | Les créations les plus récentes d'abord. |
 | **Oldest** (plus anciens) | Les créations les plus anciennes d'abord. |
 | **Favorites** (favoris) | Les favoris d'abord, puis le reste. |
+| **Le plus de tokens** | Les fiches les plus volumineuses d'abord, selon la taille estimée affichée sur chaque ligne. Les dossiers sont triés selon le total de leurs fiches. |
+| **Le moins de tokens** | Les fiches les moins volumineuses d'abord. |
+
+Les tris par taille t'aident à trouver les fiches à alléger ou à étoffer. Le nombre est une estimation du texte propre à la fiche, pas un décompte par le tokenizer de ton modèle. Les personas, les lorebooks et les presets de prompt proposent les deux mêmes tris.
 
 Pour définir un ordre manuel, fais glisser une ligne vers le haut ou vers le bas, ou appuie sur <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> sur une ligne qui a le focus. Dans les deux cas, le tri passe sur **Manual order**.
 

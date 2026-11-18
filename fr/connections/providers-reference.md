@@ -145,7 +145,7 @@ Consulte [Fournisseurs de génération d'images et configuration](../media/image
 
 ## Decision
 
-Dans l'onglet **Décision**, les tuiles sont **TypeSafe** (adresse par défaut `https://api.typesafe.ai`), **Own decision server** (ton propre serveur de décision) et **Built-in model (decisions)**. Les services de chat qui utilisent le format de chat d'OpenAI peuvent aussi prendre des décisions, mais seulement avec un modèle qui renvoie des log-probabilités (des scores pour chaque réponse possible). Un modèle de décision répond par oui ou par non à des questions sur ton chat. Consulte [Modèles de décision](decision-models.md).
+Dans l'onglet **Décision**, les tuiles sont **TypeSafe** (adresse par défaut `https://api.typesafe.ai`), **Own decision server** (ton propre serveur de décision) et **Built-in model (decisions)**. L'onglet liste aussi **NanoGPT**, **OpenRouter** et **Google Gemini**, qui proposent leurs propres modèles de décision (voir [Via NanoGPT](decision-models.md#through-nanogpt) et [Via OpenRouter ou Google Gemini](decision-models.md#through-openrouter-or-google-gemini)). Les autres services de chat qui utilisent le format de chat d'OpenAI peuvent aussi prendre des décisions, mais seulement avec un modèle qui renvoie des log-probabilités (des scores pour chaque réponse possible). Un modèle de décision répond par oui ou par non à des questions sur ton chat. Consulte [Modèles de décision](decision-models.md).
 
 ## Audio
 

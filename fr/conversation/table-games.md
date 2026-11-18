@@ -68,9 +68,9 @@ Clique sur une de tes pièces pour la sélectionner. Les coups légaux s'affiche
 
 ## Poker
 
-La fenêtre de configuration s'intitule **Start Poker**. La table accueille de 2 à 8 joueurs. À sept, le reste est grisé.
+La fenêtre de configuration s'intitule **Start Poker**. La table accueille de 2 à 8 joueurs.
 
-- **Players** : coche les personnages à asseoir.
+- **Players** : coche les personnages à asseoir. À sept, le reste est grisé.
 - **Dealer** : **House dealer (silent)** (par défaut) distribue sans commentaire. Ou choisis un personnage pour annoncer les mains et les showdowns.
 - **Starting stack** : jetons par joueur, de 100 à 1 000 000. La valeur par défaut est **1000**.
 - **Small blind** : la grosse blind est le double. La valeur par défaut est **10**.
@@ -112,7 +112,7 @@ Terminer une partie plus tôt supprime son état et n'enregistre aucun gagnant.
 
 Ouvre **Chat Settings → Agents → Commands**, ou utilise l'étape **Automation** quand tu crées le chat. L'interrupteur principal **Commands** contrôle toutes les actions lancées par les personnages, y compris les jeux de table, les selfies et les appels. Quand il est désactivé, les personnages ne lancent rien seuls.
 
-Chaque jeu installé a son propre interrupteur, activé sauf si tu le désactives : **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** et **Rock-Paper-Scissors**. Voir [Choisir quelles Commands un personnage peut utiliser](getting-started.md#choose-which-commands-a-character-can-use).
+Chaque jeu installé a son propre interrupteur, activé sauf si tu le désactives : **UNO**, **Chess**, **Poker**, **8-Ball Pool**, **Tic-Tac-Toe** et **Rock-Paper-Scissors**. D'autres packages de jeux, comme Blackjack ou Wordle, ont un interrupteur portant le nom du jeu. Voir [Choisir quelles Commands un personnage peut utiliser](getting-started.md#choose-which-commands-a-character-can-use).
 
 Ces interrupteurs contrôlent seulement ce que font les personnages. La commande slash d'un jeu et la phrase "let's play" fonctionnent même quand son interrupteur est désactivé.
 

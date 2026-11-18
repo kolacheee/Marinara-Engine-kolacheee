@@ -35,8 +35,8 @@ Memory Recall a besoin d'un modèle qui fabrique les empreintes. Si tu ne défin
 
 Avant de commencer : il te faut un compte qui propose des embeddings. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 
-1. Ouvre **Connections** (Connexions) et modifie le compte.
-2. Repère la section **Semantic search (embeddings)** (recherche sémantique).
+1. Ouvre **Connexions** et clique sur le modèle pour ouvrir **Modifier le modèle**.
+2. Clique sur **Plus** et repère **Recherche sémantique (embeddings)**.
 3. Saisis un nom de modèle d'embeddings, par exemple `text-embedding-3-small`.
 4. Facultatif : renseigne **Embedding endpoint URL** (URL du point d'accès des embeddings) pour changer l'adresse.
 5. Facultatif : utilise le menu **Embedding provider** (fournisseur d'embeddings) pour emprunter la clé et l'adresse d'un autre compte. **Same as this provider** (comme ce fournisseur) garde celles de ce compte.

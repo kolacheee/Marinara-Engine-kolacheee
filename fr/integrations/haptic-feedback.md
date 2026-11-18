@@ -12,6 +12,8 @@ Marinara Engine ne parle pas directement à l'appareil. Il envoie ses commandes 
 
 Tant qu'Intiface Central ne tourne pas avec son serveur démarré, Marinara ne peut pas envoyer de signaux tactiles. L'agent **Haptic Feedback** doit aussi être installé. Voir la [vue d'ensemble des agents](../agents/agents-overview.md).
 
+> **Astuce :** Pas encore de jouet ? Pas de souci, tu peux en acheter un dès maintenant avec une réduction chez [Lovense](https://www.lovense.com/r/dupchb) !
+
 ## Ajouter l'agent Haptic Feedback
 
 1. Ouvre un chat en mode Conversation, Roleplay ou Game.
@@ -69,8 +71,6 @@ L'encart propose un réglage **Touch sensitivity** (sensibilité tactile) dans c
 ## Contacts involontaires
 
 L'interrupteur **Incidental contact** (contacts involontaires), dont la description indique "Tiny taps for accidental brushes and bumps.", est désactivé par défaut. Quand il est désactivé, l'IA ignore les petits contacts accidentels et n'envoie des signaux que pour un contact délibéré ou appuyé. Active-le pour recevoir aussi de légères impulsions lors des frôlements et des chocs.
-
-<a id="use-it-from-another-device"></a>
 
 ## Utiliser le retour haptique depuis un autre appareil
 

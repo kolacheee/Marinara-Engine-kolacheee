@@ -60,6 +60,65 @@ Clique sur **Open sheet** (ouvrir la fiche) à côté d'un membre dans la sectio
 
 Le narrateur lit les fiches à chaque tour et les modifie avec des commandes de fiche dans sa réponse, que Marinara applique et masque dans le message. Pour te reposer, dis-le dans ton tour, par exemple "on prend un repos long". Le narrateur note le repos, et les fiches récupèrent ce que le repos de l'ensemble de règles restaure. Tu peux aussi cliquer sur **Rest** (repos) sur une fiche.
 
+## Créer ton propre ensemble de règles
+
+Le créateur d'ensembles de règles produit un petit ensemble de règles à partir d'un formulaire : comment lancer les tests, ce que contient la fiche et ce que reçoit le narrateur. Utilise-le pour un système que Marinara ne propose pas. Un ensemble de règles que tu crées fonctionne comme un ensemble installé, en Roleplay et en Game Mode.
+
+Avant de commencer : active **Autoriser l'import d'agents personnalisés**, car le créateur enregistre l'ensemble de règles de la même manière qu'un import. Voir [Obtenir un ensemble de règles](../game/rulesets.md#get-a-ruleset).
+
+1. Dans **Réglages du chat → Ensemble de règles**, clique sur **Nouvel ensemble de règles…**.
+2. Saisis un **Nom**.
+3. Sous **Dés**, choisis comment lancer les tests (voir le tableau ci-dessous). Ce choix remplit des caractéristiques, réserves et pistes de départ, que tu peux modifier.
+4. Modifie les **Difficultés**, les **Caractéristiques**, les **Compétences** et le reste du formulaire. La plupart des sections s'expliquent en une ligne sous leur titre.
+5. Clique sur **Créer l'ensemble de règles**.
+
+Marinara enregistre l'ensemble de règles. Dans un chat sans ensemble de règles, il active aussi le nouveau. Un chat qui en a déjà un le garde avec ses fiches ; pour changer, choisis le nouveau dans la liste.
+
+Si un ensemble de règles installé utilise déjà les jets que tu as choisis, la section **Dés** le nomme. Chaque ensemble de règles correspond à une fiche distincte sur chaque personnage ; pour garder une seule fiche par personnage, joue avec cet ensemble de règles ou modifie-le au lieu d'en créer un autre.
+
+| Dés | Comment se lance un test |
+| --- | --- |
+| **d20 + modificateur** | Un d20 plus la caractéristique et la compétence, contre un score de difficulté. |
+| **Paliers de 2d6** | 2d6 plus la caractéristique : 10 ou plus est une réussite complète, 7 à 9 une réussite partielle, 6 ou moins un échec. |
+| **Réserve de dés** | Un dé par point de caractéristique et de compétence. Chaque dé qui atteint le score cible compte. Tu choisis d6 ou d10 et la cible. |
+| **Meilleur d6** | Un d6 par point, en gardant le plus élevé : 6 est une réussite complète, 4 ou 5 une réussite partielle, deux 6 une réussite critique. |
+| **Pourcentage** | Un d100. Le test réussit si le résultat est inférieur ou égal au score de la compétence. |
+| **Espoir et peur** | Deux d12 plus la caractéristique. Le dé le plus élevé indique si le résultat s'accompagne d'espoir ou de peur. |
+| **Sans dés** | Aucun dé n'est lancé. La caractéristique et la compétence sont additionnées et comparées à la difficulté. |
+
+### Modifier un ensemble de règles que tu as créé
+
+1. Active l'ensemble de règles pour un chat.
+2. Dans **Réglages du chat → Ensemble de règles**, clique sur **Modifier l'ensemble de règles**.
+3. Fais tes changements et clique sur **Enregistrer une nouvelle version**.
+
+Le chat passe à la nouvelle version et garde toutes les fiches. Renommer une caractéristique, une compétence, une réserve ou une colonne de liste conserve ce que chaque personnage y possède. Un autre chat avec le même ensemble de règles passe à la nouvelle version quand tu y cliques sur **Ajouter les fiches manquantes**.
+
+**Modifier l'ensemble de règles** apparaît pour un ensemble de règles que tu as créé ou importé depuis un fichier, quand le formulaire peut le contenir entièrement : un ensemble produit par le créateur, ou un fichier écrit à la main qui n'utilise que ce que le formulaire affiche. Il n'apparaît pas pour un ensemble de règles provenant d'un package ou d'un dépôt. Le créateur n'ouvre jamais un ensemble de règles contenant davantage, comme des règles de combat ou des commentaires, pour ne pas perdre ce qu'il n'affiche pas. Il n'apparaît aussi que dans un chat qui utilise la version la plus récente ; dans un chat sur une ancienne version, clique d'abord sur **Ajouter les fiches manquantes**.
+
+### Organiser la fiche
+
+| Dans le formulaire | Sur la fiche |
+| --- | --- |
+| L'ordre des lignes | Les caractéristiques, compétences, réserves, pistes, champs et onglets de listes s'affichent dans l'ordre du formulaire. Fais glisser une ligne par sa poignée pour la déplacer, ou sélectionne la poignée et appuie sur les flèches haut et bas. |
+| Le **Groupe** d'une caractéristique ou d'une compétence | Les caractéristiques ou compétences d'un même groupe s'affichent sous un même titre. |
+| **Rangs des compétences** | Les rangs que tu choisis pour chaque compétence sur la fiche, avec l'apport de chacun : au total d'un jet de d20 ou de 2d6, en dés pour une réserve, en points pour un pourcentage. |
+| **Jauge de pratique** | Chaque compétence entraînée affiche sa progression vers le rang suivant, de 0 à 99 %. La pratique dans l'histoire la fait monter, et un gain de rang la remet à zéro. Tu peux la corriger sur la fiche. Sous **Pas de jauge pour :**, coche un groupe pour exclure ses compétences. |
+| **Nombre**, **Barre** ou **Points** sur une réserve ou une piste | Le nombre seul, une barre de remplissage à côté ou une rangée de points remplis jusqu'à sa valeur, un point par unité. Au-delà de 20 points, une barre s'affiche. |
+| **Listes** | Chaque liste a son propre onglet, qui porte son nom sauf si tu saisis un autre nom d'onglet. Les listes avec le même nom d'onglet partagent un onglet. |
+| Les colonnes d'une liste | Chaque ligne a un nom et tes colonnes : **Texte**, **Nombre** ou **Case à cocher**. La première colonne de cases à cocher apparaît sous forme de coche à côté de chaque nom. |
+
+### Expliquer tes règles au narrateur
+
+La section **Prompts** contient ce que le narrateur reçoit sur ton ensemble de règles. **Tests** et **Tenue des fiches** affichent une valeur par défaut ; laisse l'un ou l'autre vide pour l'utiliser. Les retours à la ligne deviennent des espaces. Les noms et les prompts ne peuvent pas contenir de crochets ni de doubles accolades, car les balises et les macros du narrateur les utilisent.
+
+| Champ | À quoi il sert |
+| --- | --- |
+| **Tests** | Quand demander un test, et comment choisir la compétence et la difficulté. |
+| **Tenue des fiches** | Comment les fiches changent en cours de jeu. |
+| **Référence des règles** | Les règles maison et tout ce que le narrateur doit toujours avoir sous les yeux. |
+| **Monde (Game Mode)** | Lu une fois à la création d'une partie de Game Mode avec cet ensemble de règles, pour adapter son univers aux règles. |
+
 ## Dépannage
 
 | Symptôme | Solution |

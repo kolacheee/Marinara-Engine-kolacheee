@@ -75,8 +75,6 @@ Chaque chat garde sa propre copie des réglages d'un profil : enregistrer un pro
 
 Quand aucun autre chat n'utilise le profil, **Save** fonctionne sans rien demander. Les salons multijoueurs ne sont jamais mis à jour de cette façon.
 
-<a id="choosing-the-default-profile"></a>
-
 ## Choisir le profil par défaut
 
 L'étoile à côté du menu déroulant marque le profil utilisé automatiquement pour les nouveaux chats de ce mode. Un seul profil par mode peut être le profil par défaut. Ses étiquettes sont **Mark this profile as default for new chats in this mode**, **This profile is the default for new chats in this mode** et **Select a profile to mark it as default**. Tu peux aussi cocher **Make this the default** dans l'éditeur.
@@ -85,13 +83,11 @@ L'étoile à côté du menu déroulant marque le profil utilisé automatiquement
 
 **Export settings profile (.json)** télécharge un fichier `.marinara-settings-profile.json` que tu peux garder en sauvegarde ou partager. **Import settings profile (.json)** crée un nouveau profil à partir d'un fichier compatible et n'écrase jamais un profil existant. Les exports plus anciens restent importables. Un import qui échoue affiche **Import failed**.
 
-Les profils enregistrent des réglages, pas les secrets des fournisseurs. Un profil exporté ou importé laisse aussi de côté le webhook du miroir Discord, l'adresse DeepLX, la clé DeepL et l'adresse Intiface. Les profils que tu enregistres sur cette installation les conservent. Les fichiers exportés laissent de côté le persona et les lorebooks, car ils n'existent que sur cette installation.
+Les profils enregistrent des réglages, pas les secrets des fournisseurs. Un profil exporté ou importé laisse aussi de côté le webhook du miroir Discord, l'adresse DeepLX, la clé DeepL et l'adresse Intiface. Les profils que tu enregistres sur cette installation les conservent. Les fichiers exportés laissent de côté le persona, les lorebooks et les choix de variables de preset, car ils appartiennent à cette installation.
 
 ## Le profil Default
 
 Conversation et Roleplay ont chacun un profil **Default** (par défaut) intégré. L'appliquer remet les réglages pilotés par les profils aux valeurs par défaut de Marinara pour ce mode. Il ne peut être ni renommé, ni écrasé, ni supprimé. Les contrôles désactivés indiquent **Cannot save into the Default profile**, **Cannot rename the Default profile** et **Cannot delete the Default profile**.
-
-<a id="favorite-window-layouts"></a>
 
 ## Dispositions de fenêtres favorites
 
@@ -104,7 +100,7 @@ Quand un nouveau chat utilise un profil par défaut qui a une disposition enregi
 Un profil enregistre la façon dont le chat dialogue avec le modèle :
 
 - La connexion.
-- Le preset de prompt (appelé source du prompt en Conversation) et ses [variables de preset](../prompts/preset-variables.md).
+- Le preset de prompt (appelé source du prompt en Conversation), avec les choix que tu as faits pour ses [variables de preset](../prompts/preset-variables.md). Appliquer le profil donne ces choix au chat. Un profil enregistré avant qu'il puisse les contenir laisse au chat ses propres choix.
 - Les agents et les outils.
 - La traduction, Memory Recall et Advanced Parameters.
 - La disposition des fenêtres et des boutons : positions, tailles, épinglages, verrouillages, outils rangés dans Chat Settings ou détachés, fenêtres de contrôles ouvertes, et positions des boutons sur ordinateur et téléphone. Les profils sans disposition enregistrée, comme **Default**, laissent la disposition du chat telle quelle.
@@ -119,7 +115,7 @@ Un profil peut aussi contenir des **choix de départ** : un persona, des loreboo
 - **Save current chat settings into this profile** conserve le persona, les lorebooks et l'arrière-plan propres au profil. Un profil sans arrière-plan prend celui du chat quand tu enregistres dans ce profil.
 - La mise à jour des autres chats ne change jamais leur persona, leurs lorebooks ni leur arrière-plan.
 
-Un profil ne remplace pas le contenu qui appartient au chat : personnages, sprites, résumé, tags et prompt de scène. Il ne contient pas non plus d'historique de conversation ni d'état en cours, comme les variables de macro, les personnages que tu as désactivés ou un salon multijoueur.
+Un profil ne remplace pas le contenu qui appartient au chat : personnages, sprites, résumé, tags, prompt de scène et **Notes de l'auteur**. Il ne contient pas non plus d'historique de conversation ni d'état en cours, comme les variables de macro, les personnages que tu as désactivés ou un salon multijoueur. Un profil enregistré dans une ancienne version peut encore contenir des **Notes de l'auteur**, mais son application conserve celles du chat.
 
 ### Ce que copie Save and update
 
@@ -132,13 +128,14 @@ Un profil ne remplace pas le contenu qui appartient au chat : personnages, sprit
 - Les réglages de mémoire et de résumé.
 - La traduction.
 - La disposition des fenêtres.
+- Les choix de variables de preset, uniquement dans les chats qui utilisent le même preset de prompt que le profil.
 
 Tout le reste demeure tel que chaque chat l'a réglé :
 
 - Sa connexion, son preset de prompt et son prompt personnalisé.
 - Son histoire et ses personnages.
 - Ses lorebooks et son arrière-plan.
-- Ses notes et sa progression.
+- Ses **Notes de l'auteur** et sa progression.
 - Les commandes Roleplay que seul son narrateur peut utiliser.
 - Le fait que Noodle puisse ou non utiliser ses messages.
 

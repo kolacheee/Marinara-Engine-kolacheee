@@ -7,7 +7,7 @@ Le tutoriel est une visite guidée qui se lance la première fois que tu ouvres 
 1. Ouvre **Settings → General → Confirmations & Help** (Paramètres → Général → Confirmations et aide).
 2. Sous **Walkthroughs** (guides), clique sur **Replay the welcome tour** (relancer la visite d'accueil).
 
-Tu peux aussi cliquer sur **Replay tutorial** (revoir le tutoriel) dans le widget **Learn the engine** (découvrir l'application) sur l'accueil. La visite reprend depuis la première étape.
+Tu peux aussi ouvrir **Tout voir** dans le widget **À essayer** sur l'accueil et cliquer sur **Replay tutorial** (revoir le tutoriel). La visite reprend depuis la première étape.
 
 **Walkthroughs** comporte deux autres boutons. **Replay the computer walkthrough** (ou tablet, ou phone) relance le court guide correspondant au type d'appareil que tu utilises, et **Show chat mode tips again** (réafficher les conseils des modes de chat) fait réapparaître les conseils de chaque mode de chat. Voir [Visites guidées pour chaque appareil](#walkthroughs-for-each-device).
 

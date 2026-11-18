@@ -158,11 +158,11 @@ La taille de l'image vient du réglage de taille **Portraits**, dans les réglag
 
 L'onglet **Voice** (voix) définit la voix du personnage quand le Text to Speech (synthèse vocale) le lit à voix haute.
 
-- **Voice**. La voix de ce personnage. Toute modification est enregistrée aussitôt, sans passer par **Save**. C'est le même réglage que la ligne de ce personnage dans **Connections → Text to Speech** (Connexions → Synthèse vocale). Laisse le champ vide pour utiliser la voix par défaut. Si une fiche au nom correspondant a une voix, par exemple l'original d'une copie AU (univers alternatif), le champ vide affiche le nom de cette voix, car cette fiche l'utilise aussi.
+- **Voice**. La voix de ce personnage. Toute modification est enregistrée aussitôt, sans passer par **Save**. C'est le même réglage que la ligne de ce personnage dans les réglages de la tâche **Voix** dans **Connexions**. Laisse le champ vide pour utiliser la voix par défaut. Si une fiche au nom correspondant a une voix, par exemple l'original d'une copie AU (univers alternatif), le champ vide affiche le nom de cette voix, car cette fiche l'utilise aussi.
 - **Preview** (écouter). Joue une courte phrase avec cette voix. La phrase dit le nom du personnage, ou le **Phonetic name** (nom phonétique) s'il est défini.
 - **Phonetic name**. Une orthographe facultative, utilisée uniquement pour corriger la prononciation. Ce champ fait partie de la fiche : clique donc sur **Save** pour le conserver.
 
-Si le Text to Speech est désactivé, ou si tous les personnages partagent une seule voix, une courte note remplace le champ **Voice**. Avec une voix commune, la note propose **Use a voice per character** (utiliser une voix par personnage). **Open Text to Speech settings** (ouvrir les réglages de synthèse vocale) ouvre le panneau Connections. Voir [Configuration du Text to Speech (TTS)](../media/tts-setup.md).
+Si le Text to Speech est désactivé, ou si tous les personnages partagent une seule voix, une courte note remplace le champ **Voice**. Avec une voix commune, la note propose **Use a voice per character** (utiliser une voix par personnage). **Open Text to Speech settings** (ouvrir les réglages de synthèse vocale) ouvre les réglages de la tâche **Voix** dans **Connexions**. Voir [Configuration du Text to Speech (TTS)](../media/tts-setup.md).
 
 ## Onglet Advanced
 
@@ -204,7 +204,7 @@ Pour supprimer une alternative, clique sur sa corbeille, confirme avec **Delete*
 
 ## Historique des versions
 
-Tant que l'interrupteur **Automatic versioning** est activé, chaque enregistrement peut ajouter un instantané dans **Version history**, sur l'onglet **Metadata**. Jusque-là, le panneau affiche `Previous card states will appear here after the next edit.` Un compteur indique le nombre d'instantanés enregistrés.
+Tant que l'interrupteur **Automatic versioning** est activé, chaque enregistrement peut ajouter un instantané dans **Version history**, sur l'onglet **Metadata**. Jusque-là, le panneau affiche `Previous card states will appear here after the next edit.` Un compteur indique le nombre d'instantanés enregistrés. Mettre à jour le personnage à partir d'une fiche plus récente enregistre toujours un instantané au préalable, même si l'interrupteur est désactivé. Voir [Mettre à jour un personnage que tu as déjà](import-export.md#update-a-character-you-already-have).
 
 Pour comparer une version enregistrée avec ta fiche actuelle :
 

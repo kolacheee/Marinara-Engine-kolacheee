@@ -69,8 +69,6 @@ Certains ensembles à réserves gardent l'initiative comme un seul nombre valabl
 
 Un ensemble de règles qui lance des dés à symboles narratifs, comme un système de type Genesys, les utilise aussi pour combattre. Une attaque lance tes dés contre les dés de difficulté de la cible, les symboles s'annulent comme lors d'un test et ce qui reste décide si elle porte. L'ensemble de règles indique ce que les symboles restants permettent d'obtenir : le GM n'a donc jamais à en décider.
 
-<a id="contests"></a>
-
 ## Confrontations
 
 Un ensemble de règles peut permettre à n'importe qui dans un combat de lancer une confrontation : un jet contre un adversaire. Tu peux saisir quelqu'un, le renverser ou le repousser, ou te libérer d'une prise. Les deux camps lancent les dés et ajoutent leur propre nombre, le total le plus élevé l'emporte, et le menu affiche tes chances de gagner avant que tu choisisses.
@@ -91,8 +89,6 @@ Certaines capacités répondent à l'action d'un autre combattant au lieu d'êtr
 et que tu disposes d'une réponse pour ce moment. Après un coup, le journal indique ce que l'attaque a obtenu et contre quelle valeur, pour que tu voies si une réponse comme Shield la transformerait en échec. Si tu la prends, le même jet est vérifié de nouveau et le journal indique s'il porte toujours.
 
 Les adversaires peuvent aussi répondre, avec leur propre parade. Un contre peut arrêter la capacité d'un adversaire avant qu'elle ait lieu, quelle que soit sa cible, tant que l'adversaire est à portée du contre. Un ensemble de règles peut préciser qu'il ne répond qu'à certains types de capacités, comme les sorts. Ce que coûtait la capacité arrêtée est quand même dépensé, et rien ne peut répondre à un contre.
-
-<a id="on-a-battlefield"></a>
 
 ## Sur un champ de bataille
 

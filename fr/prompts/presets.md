@@ -21,8 +21,6 @@ Depuis **Chat Settings** (réglages du chat) :
 
 Si le preset a des variables, la fenêtre **Configure Preset Variables** (configurer les variables de preset) s'ouvre. Voir [Variables de preset](preset-variables.md). Passer à un autre preset efface les choix de variables faits auparavant.
 
-<a id="create-a-preset"></a>
-
 ## Créer un preset
 
 1. Ouvre **Library → Presets** (Bibliothèque → Presets). La bibliothèque se trouve à droite.
@@ -54,7 +52,7 @@ Les scripts regex ont leur propre page, [Bibliothèque → Scripts regex](../ext
 Le panneau comporte quatre onglets : **Prompts**, **Regex**, **Outils** et **Profiles** (profils). Chaque onglet présente la même rangée de boutons en haut et un champ de recherche. Dans l'onglet **Prompts**, utilise **Créer un preset** pour en créer un, **Importer un preset** pour charger un fichier `.json`, ou **Sélectionner des presets** pour en exporter ou en supprimer plusieurs d'un coup ; **Select all presets** (sélectionner tous les presets) coche tous les presets affichés par la recherche. L'onglet **Regex** contient tes scripts regex ; voir [Scripts regex](../extending/regex-scripts.md#manage-your-scripts). L'onglet **Outils** contient tes outils personnalisés ; voir [Outils personnalisés](../extending/custom-tools.md). L'onglet **Profiles** contient tes profils de réglages du chat ; voir [Profils de réglages](../chats/settings-profiles.md#the-profiles-tab).
 
 - **Search presets** filtre la liste.
-- Le menu de tri propose **Manual order** (ordre manuel), **A-Z**, **Z-A**, **Newest** et **Oldest**. Avec **Manual order**, fais glisser une ligne, ou appuie sur <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> sur une ligne sélectionnée. Sur un écran tactile, appuie longuement sur une ligne pour la saisir.
+- Le menu de tri propose **Ordre manuel**, **A-Z**, **Z-A**, **Plus récents**, **Plus anciens**, **Le plus de tokens** et **Le moins de tokens**. La taille compte le texte propre des sections activées, les instructions qu'un preset envoie toujours. Les sections de marqueur, comme le personnage, le lorebook et l'historique du chat, sont remplies pour chaque chat et ne sont pas comptées. Chaque ligne affiche l'estimation. Avec **Ordre manuel**, fais glisser une ligne, ou appuie sur <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> sur une ligne sélectionnée. Sur un écran tactile, appuie longuement sur une ligne pour la saisir.
 - **New Folder** (nouveau dossier) regroupe des presets. Fais glisser un preset sur un dossier, et double-clique ou double-tape sur un dossier pour le renommer.
 
 Chaque ligne affiche le nom, le format d'encapsulation, le nombre de sections et l'auteur. Un badge **DEFAULT** signale le preset par défaut, marqué d'une étoile. Clique sur une ligne pour l'ouvrir.
@@ -84,7 +82,29 @@ Deux cartes en lecture seule affichent le nombre de **Sections** et de **Groups*
 - **Conversation Mode** est un champ de texte pour le prompt Conversation de ce preset. Laisse-le vide pour utiliser le prompt intégré.
 - **Roleplay Mode** n'est pas modifiable ici. Le Roleplay utilise le prompt assemblé à partir de tes **Sections**.
 - **Game Mode** est un champ de texte pour le prompt Game de ce preset. Laisse-le vide pour utiliser le prompt intégré.
-- **Réglages de l'histoire du jeu** définit un style d'histoire, un niveau de violence et des limites de contenu pour Game Mode. Active **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset** : choisir ce preset pour une partie définit alors son style et son niveau de violence et ajoute ces limites à celles de la partie. Voir [Contenu et style de l'histoire](../game/getting-started.md#story-style-violence-and-content-boundaries).
+- **Réglages de l'histoire du jeu** apporte un style d'histoire, un niveau de violence et des limites de contenu à Game Mode. Voir [Réglages de l'histoire du jeu](#game-story-settings).
+
+#### Réglages de l'histoire du jeu
+
+Un preset peut apporter un style d'histoire, un niveau de violence et des limites de contenu à Game Mode, pour que tu n'aies pas à les définir pour chaque partie. Voir [Style de l'histoire, violence et limites de contenu](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Dans l'onglet **Prompts**, sous **Réglages de l'histoire du jeu**, active **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset**.
+2. Choisis un **Style de l'histoire** et un niveau de **Violence**. **Suivre la classification** garde la violence de chaque partie à la valeur par défaut de sa classification.
+3. Facultatif : écris des **Limites de contenu**, une par ligne.
+4. Clique sur **Enregistrer**.
+
+Quand tu choisis le preset pour une partie, dans l'assistant de configuration ou dans **Réglages du chat → Preset de prompt**, la partie prend le style d'histoire et la violence du preset. Les limites du preset s'ajoutent à celles que la partie a déjà : aucune limite propre à la partie n'est donc retirée. Les modifications ultérieures du preset ne changent pas les parties qui l'ont déjà choisi. Le réglage est conservé quand tu dupliques, exportes ou importes le preset.
+
+#### Réglages de l'histoire du jeu
+
+Un preset peut apporter un style d'histoire, un niveau de violence et des limites de contenu à Game Mode, pour que tu n'aies pas à les définir pour chaque partie. Voir [Style de l'histoire, violence et limites de contenu](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Dans l'onglet **Prompts**, sous **Réglages de l'histoire du jeu**, active **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset**.
+2. Choisis un **Style de l'histoire** et un niveau de **Violence**. **Suivre la classification** garde la violence de chaque partie à la valeur par défaut de sa classification.
+3. Facultatif : écris des **Limites de contenu**, une par ligne.
+4. Clique sur **Enregistrer**.
+
+Quand tu choisis le preset pour une partie, dans l'assistant de configuration ou dans **Réglages du chat → Preset de prompt**, la partie prend le style d'histoire et la violence du preset. Les limites du preset s'ajoutent à celles que la partie a déjà : aucune limite propre à la partie n'est donc retirée. Les modifications ultérieures du preset ne changent pas les parties qui l'ont déjà choisi. Le réglage est conservé quand tu dupliques, exportes ou importes le preset.
 
 Le **Marinara's Universal Preset** intégré fournit le texte du prompt, mais aucun paramètre de génération. Ses anciens réglages enregistrés d'échantillonnage, de raisonnement, de mise en forme et de tokens sont ignorés : ce sont les réglages de ton compte, les remplacements du chat et les valeurs par défaut de l'application qui s'appliquent. Crée une copie modifiable pour le personnaliser.
 
@@ -152,8 +172,6 @@ Chaque section a un réglage **Position** dans son éditeur.
 - **Ordered (in sequence)** place la section là où elle se trouve dans la liste. C'est le choix habituel.
 - **Depth (from end of chat)** la place un certain nombre de messages avant la fin du chat, selon le nombre **Depth** (profondeur). Une profondeur de 0 la place après le dernier message. Sers-t'en pour les rappels que le modèle doit voir près des messages les plus récents.
 
-<a id="wrap-formats"></a>
-
 ## Formats d'encapsulation
 
 Le réglage **Wrap Format** de l'onglet **Overview** détermine la façon dont chaque section est encapsulée.
@@ -167,8 +185,6 @@ Le réglage **Wrap Format** de l'onglet **Overview** détermine la façon dont c
 XML convient à la plupart des modèles. N'essaie les autres que si un modèle répond mieux sans balises.
 
 Pour envoyer un seul **Prompt Block** sans sa balise ni son titre, déplie-le et active **Send without wrapper** (envoyer sans encapsulation). La balise d'un groupe peut quand même l'entourer : retire le bloc de son groupe pour l'envoyer sans aucune encapsulation. Les marqueurs gardent toujours leur encapsulation, et l'interrupteur est masqué quand le format est **NONE**.
-
-<a id="conversation-and-game-chats"></a>
 
 ## Les chats Conversation et Game
 
@@ -185,9 +201,7 @@ Sous le menu déroulant, un badge indique d'où vient le prompt.
 
 Le champ de texte montre le prompt utilisé. Modifie-le pour créer une copie locale au chat. Si ton texte correspond exactement au preset ou au prompt par défaut, Marinara considère qu'il n'est pas personnalisé. Tant qu'une modification personnalisée existe, une icône de réinitialisation apparaît (infobulle **Reset to default prompt**).
 
-Les chats Game ajoutent davantage de contrôles. **GM prompt style** (style de prompt du GM) ne remplace que le prompt Game, et une modification locale au chat l'emporte toujours. **Extra instructions** (instructions supplémentaires) ajoute du texte au prompt Game, jusqu'à 2 000 caractères, par exemple "Write in the style of Terry Pratchett." **Consignes de classification**, **Style de l'histoire**, **Violence** et **Limites de contenu** sont les réglages de contenu de la partie ; voir [Contenu et style de l'histoire](../game/getting-started.md#change-them-during-a-game).
-
-<a id="decision-blocks-and-prompt-caching"></a>
+Les chats Game ajoutent davantage de contrôles. **Style de l'histoire**, **Violence**, **Limites de contenu** et **Consignes de classification** définissent ce que l'histoire de la partie peut contenir. Voir [Les modifier en cours de partie](../game/getting-started.md#change-them-during-a-game). Deux autres contrôles façonnent le prompt. **Style de prompt du GM** ne remplace que le prompt Game, et une modification locale au chat l'emporte toujours. **Instructions supplémentaires** ajoute du texte au prompt Game, jusqu'à 2 000 caractères, par exemple "Écris dans le style de Terry Pratchett."
 
 ## Blocs de décision et cache de prompts
 

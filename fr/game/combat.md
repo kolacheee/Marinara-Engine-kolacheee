@@ -45,13 +45,9 @@ Si le plateau affiche **Resolving…**, patiente un instant. **Restart** (recomm
 
 Qui agit à quel moment dépend de **Turn order** (ordre des tours). Consulte [Ordre des tours](#turn-order). Les plateaux faits à la main et les règles de terrain se trouvent dans [Combats tactiques et terrain](#tactical-battles-and-terrain).
 
-<a id="battles-in-an-mrpg-game"></a>
-
 ## Batailles dans une partie MRPG
 
 Dans une partie utilisant les classes MRPG, chaque membre de l'équipe combat avec sa classe active : ses caractéristiques, ses compétences et l'équipement de sa fiche (voir [Classes MRPG](mrpg-classes.md)). Les adversaires combattent selon leur rang : sbire, standard, élite ou boss. Un panneau à côté du combat indique qui agit ensuite, la classe, le niveau, la ligne et les ressources de chaque combattant, puis ce que l'équipe a gagné à la fin.
-
-<a id="turns-skills-and-resources"></a>
 
 ### Tours, compétences et ressources
 
@@ -60,8 +56,6 @@ Dans une partie utilisant les classes MRPG, chaque membre de l'équipe combat av
 - **Défendre.** **Defend** augmente la Défense de moitié jusqu'au prochain tour du combattant et rend davantage de Stamina.
 - **Munitions et éléments.** Un Marksman charge un type de munitions, et un Channeler canalise un élément, depuis le panneau à côté du combat. Changer l'un ou l'autre est gratuit. Si tu ne choisis rien, l'IA sélectionne le meilleur pour la cible.
 
-<a id="hitting-and-damage"></a>
-
 ### Toucher et infliger des dégâts
 
 - **Chances de toucher.** Elles augmentent avec la Compétence et la Chance de l'attaquant, et diminuent avec la Vitesse et la Chance de la cible. Elles ne descendent jamais sous 25 pour cent.
@@ -69,21 +63,15 @@ Dans une partie utilisant les classes MRPG, chaque membre de l'équipe combat av
 - **Dégâts.** Une attaque avec une arme inflige la Force plus la puissance de l'attaque, moins la Défense de la cible. Un sort, ou un coup porté avec un bâton, une baguette ou un focus, utilise plutôt la Magie contre la Résistance. La puissance augmente un peu avec le niveau, comme le ferait un meilleur équipement.
 - **Types de dégâts.** Chaque coup possède un type : tranchant, perforant ou contondant pour les armes, un élément (feu, glace, foudre, vent, bois, terre, eau ou métal), ou lumière ou ténèbres. Un ennemi peut être vulnérable à un type (moitié de dégâts en plus), y résister (les dégâts sont réduits de moitié), y être immunisé ou l'absorber. Une vulnérabilité ou une résistance s'affiche sur l'ennemi une fois qu'un coup l'a révélée, et l'équipe s'en souvient pour tous les ennemis de ce type. Les vulnérabilités élémentaires des ennemis suivent le cycle des cinq phases, où chaque élément l'emporte sur le suivant : le bois fend la terre, la terre endigue l'eau, l'eau éteint le feu, le feu fait fondre le métal et le métal coupe le bois.
 
-<a id="rows"></a>
-
 ### Lignes
 
 Une bataille Turn-Based possède une première et une seconde ligne de chaque côté. Un coup de mêlée porté sur la seconde ligne inflige moitié moins de dégâts, dans les deux sens, tandis que les attaques à distance et les sorts infligent tous leurs dégâts à l'une comme à l'autre. Quand personne ne se tient sur la première ligne d'un camp, sa seconde ligne devient la première. Chaque classe a une ligne par défaut, et tu peux changer celle d'un personnage dans l'onglet **Status** (statut) de sa fiche. Les batailles Tactical n'ont pas de lignes : les positions sur le plateau déterminent qui peut atteindre qui.
-
-<a id="taunts-yielding-and-taming"></a>
 
 ### Provocations, reddition et apprivoisement
 
 - **Provoke.** La compétence Provoke d'un Sentinel force tous les ennemis à cibler le Sentinel pendant 2 tours. Sur un plateau, un ennemi qui ne peut pas l'atteindre s'en approche autant que possible et se prépare à la place.
 - **Reddition.** Un ennemi intelligent en mauvaise posture peut se rendre ou fuir. Quand les seuls ennemis restants se sont rendus, le combat propose **Spare them** (les épargner) ou **Finish them** (les achever). Dans les deux cas, l'équipe reçoit leur butin et leur expérience. Un ennemi qui transporte un trésor et prend la fuite l'emporte avec lui.
 - **Apprivoisement.** Un Tracker peut apprivoiser une bête sauvage à moins de 30 pour cent de ses HP. Elle quitte le combat et devient un compagnon, conservé même si le combat est ensuite perdu.
-
-<a id="after-the-fight"></a>
 
 ### Après le combat
 
@@ -114,8 +102,6 @@ Pour désactiver les QTE (jeu avec un lecteur d'écran ou sans limite de temps),
 
 Sur un téléphone, les boutons d'action restent collés en bas de l'écran. Les panneaux qui ne tiennent pas passent dans un tiroir qui glisse depuis le bas, doté de quatre onglets : **Party** (les membres de l'équipe et leur vie), **Boss Mechanics** (les règles spéciales du combat), **Dialogue** (les répliques prononcées par les combattants pendant le combat) et **Combat Log** (le compte rendu round par round). Touche un onglet pour ouvrir son tiroir. Pour le fermer, touche en dehors du tiroir ou touche son bouton de fermeture.
 
-<a id="how-combat-math-works"></a>
-
 ## Comment les combats se calculent
 
 Les règles de cette section s'appliquent aux parties **Legacy**, ainsi qu'aux parties dont l'ensemble de règles prête sa fiche aux combats de Marinara. Une partie utilisant les classes **MRPG**, comme toute nouvelle partie, combat plutôt selon les règles de [Batailles dans une partie MRPG](#battles-in-an-mrpg-game).
@@ -132,8 +118,6 @@ Chaque round est réglé par des calculs de dés fixes, pas par l'IA. Le combat 
 4. Un coup critique tombe sur un 20 naturel, ou quand l'attaquant dépasse le défenseur de 10 ou plus.
 
 **Dégâts.** Quand un coup porte, les dégâts de base viennent de la caractéristique d'Attaque de l'attaquant et augmentent avec le niveau. Des d6 supplémentaires s'y ajoutent, et les combattants de plus haut niveau en lancent davantage. Un coup critique multiplie le total par 1,5. La Défense du défenseur retire ensuite de ces dégâts jusqu'à 40 pour cent de sa propre valeur.
-
-<a id="difficulty-scaling"></a>
 
 ### L'ajustement selon la difficulté
 
@@ -177,8 +161,6 @@ Ce qui tombe dépend de ton univers. Une partie avec un kit d'univers fait tombe
 
 ## Référence : les combats tactiques
 
-<a id="tactical-battles-and-terrain"></a>
-
 ### Combats tactiques et terrain
 
 Il n'y a aucun réglage de champ de bataille à remplir à la création d'une partie. Chaque combat reçoit son propre plateau, généré à partir d'une nouvelle graine et de la description que le GM fournit pour la scène. Le GM fournit l'environnement, la formation et une courte description du terrain, qui peut demander des zones de terrain et des obstacles près du centre ou d'un bord. Marinara crée les cases et les positions de départ exactes. Le champ de bataille accepté est enregistré : une actualisation restaure donc ce plateau.
@@ -210,8 +192,6 @@ Les unités qui disposent d'une capacité établie de vol ou de téléportation 
 
 Ces deux modes spéciaux utilisent le budget de déplacement actuel et la distance en ligne droite entre cases (sans diagonale). Ils conservent les bonus de défense et d'esquive du terrain d'arrivée et ignorent la hauteur. L'altitude d'une unité volante, les plafonds, ainsi que les coûts et les exigences de visibilité propres aux sorts ne sont pas représentés. L'invocation ne fait pas encore partie du combat propre à Marinara.
 
-<a id="turn-order"></a>
-
 ### Ordre des tours
 
 Une bataille Tactical se joue tour par tour de l'une de ces deux façons :
@@ -220,8 +200,6 @@ Une bataille Tactical se joue tour par tour de l'une de ces deux façons :
 - **Your whole party, then the enemies** : chaque unité de l'équipe peut agir, puis la phase ennemie se joue. Les parties VN utilisent ce mode.
 
 Pour le changer, ouvre **Chat Settings**, déplie **Combat Style** et choisis un **Turn order**. Ce réglage apparaît tant que le **Battle system** est sur Tactical, sauf si l'ensemble de règles de la partie gère ses propres combats. Le changement s'applique à partir de la bataille suivante. Une bataille en cours garde son ordre.
-
-<a id="sight-cover-and-height"></a>
 
 ### Ligne de vue, couvert et hauteur
 

@@ -45,6 +45,10 @@ Il y en a 24, répartis en quatre catégories : **Milestone**, **Community**, **
 - **Collection** compte tout ce que ta bibliothèque contient de ce type, y compris les éléments importés et téléchargés. Pour **Hoarder**, le personnage Professor Mari intégré ne compte jamais.
 - Pour les succès de la communauté, il suffit d'ouvrir le lien. Tu n'as pas besoin de t'inscrire sur l'autre site.
 
+## Les succès Explorateur
+
+Terminer toutes les tâches d'un parcours **À essayer** débloque le succès de ce parcours, dans la catégorie **Explorateur**. Il y en a un par parcours : **Tout chaud sorti du four** pour Les bases, puis **Toute une troupe**, **L'œil du photographe**, **Toujours en ligne**, **L'envers du décor**, **Gardien des légendes**, **Le scénario me protège**, **À toi de jouer**, **À l'oreille des prompts**, **Architecte d'intérieur** et **La totale**. Dans la nouvelle disposition, il y a aussi **Collectionneur d'onglets**, **Chaque chose à sa place**, **Chasseur d'orages** et **Sur son trente-et-un**. Les tâches passées ne comptent pas : coche plutôt une tâche si tu l'as faite. Voir [Premiers pas](welcome.md#things-to-try).
+
 La visite **Les bases de l'IA** et chaque groupe de **Pour aller plus loin** ont aussi leur succès : **Sans les petites roues** pour Les bases de l'IA, puis **Lu et approuvé** (Conversation), **Dans la peau du rôle** (Roleplay), **Avocat du règlement** (Game Mode), **Tourneur de boutons** (Tous les modes), **As des fiches** (Personnages et fiches), **Mordu des notes** (Astuces de lorebook), **Magicien des macros** (Astuces de prompts et de macros), **Gardien des secrets** (Astuces de messages), **Tireur de ficelles** (Agents et connexions), **Son et lumière** (Voix, images et musique) et **Sous le capot** (Thèmes et extensions). Terminer tous les guides approfondis de tous les groupes débloque **Le grand plongeon**.
 
 ## Les succès des agents
@@ -52,8 +56,6 @@ La visite **Les bases de l'IA** et chaque groupe de **Pour aller plus loin** ont
 Les agents installés peuvent ajouter leurs propres succès. Ils apparaissent dans la même fenêtre, après les succès intégrés, sous un titre tel que **From Noodle** (de Noodle). Ils suivent les mêmes règles, et un agent peut afficher ses propres illustrations de badges.
 
 Si tu supprimes un agent, sa section disparaît et tes déblocages sont conservés. Si tu le réinstalles, ils réapparaissent comme débloqués. Le compteur en haut inclut les agents que tu as installés.
-
-<a id="turn-achievements-on-or-off"></a>
 
 ## Activer ou désactiver les succès
 

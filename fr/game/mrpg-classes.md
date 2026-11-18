@@ -9,8 +9,6 @@ Deux types de parties n'utilisent pas les classes MRPG :
 
 Pour savoir comment se déroule un combat avec les classes MRPG, voir [Batailles dans une partie MRPG](combat.md#battles-in-an-mrpg-game).
 
-<a id="how-it-works"></a>
-
 ## Fonctionnement
 
 - Chaque personnage s'entraîne dans deux **arbres** parmi huit : un **arbre principal** que tu choisis et un **arbre frère** ouvert par son tempérament.
@@ -18,8 +16,6 @@ Pour savoir comment se déroule un combat avec les classes MRPG, voir [Batailles
 - Les combats remportés rapportent de l'expérience. Les caractéristiques d'un personnage viennent de sa **classe active** et augmentent quand cette classe gagne des niveaux.
 - Au niveau de classe 10, une classe peut être promue en classe avancée, puis en classe de maître au niveau 20. Les niveaux s'arrêtent à 30.
 - Hors combat, un personnage peut passer à n'importe quelle classe qu'il a débloquée et conserver jusqu'à quatre compétences d'autres classes dans lesquelles il s'est entraîné.
-
-<a id="the-eight-trees"></a>
 
 ## Les huit arbres
 
@@ -35,8 +31,6 @@ Pour savoir comment se déroule un combat avec les classes MRPG, voir [Batailles
 | **Herald** | Seconde | Meneurs de combat qui donnent des ordres et chantent des airs qui renforcent l'équipe. | Coordinated, Disciplined |
 
 Une équipe composée d'un mélange d'arbres est plus efficace. Les coups de mêlée portés sur la seconde ligne infligent moitié moins de dégâts : les arbres de seconde ligne comptent donc sur la première pour tenir le front (voir [Lignes](combat.md#rows)).
-
-<a id="classes-in-each-tree"></a>
 
 ### Classes de chaque arbre
 
@@ -55,8 +49,6 @@ Chaque arbre possède sept classes. La classe de base est promue au niveau de cl
 
 L'onglet **Classes** de la fiche du personnage décrit chaque classe et liste ses compétences avec le niveau de classe auquel chacune s'apprend.
 
-<a id="choose-a-characters-trees"></a>
-
 ## Choisir les arbres d'un personnage
 
 **Arbre principal.** Choisis-le avant la partie, dans la section **Game Mode** de l'onglet **Stats** (caractéristiques) d'une fiche de personnage ou de persona de la bibliothèque (voir [Choix MRPG sur une fiche](../characters/colors-and-stats.md#mrpg-picks-on-a-card)). Laisse-le sur **Auto** (automatique) pour qu'il soit déduit de la description du personnage et, dans la partie, de sa classe et de ses capacités aussi. Un personnage dont la fiche ne nomme aucun arbre commence comme Blade. Tant qu'un personnage n'a pas gagné sa première expérience, tu peux aussi le modifier dans la partie, dans l'onglet **Classes** de sa fiche, sous **Main tree** (arbre principal).
@@ -66,8 +58,6 @@ L'onglet **Classes** de la fiche du personnage décrit chaque classe et liste se
 **Arbre frère.** Quand la partie crée la fiche de jeu d'un personnage, le Game Master déduit son tempérament de sa Description et de sa personnalité : sa façon d'aborder un combat. Ce tempérament ouvre l'arbre frère du tableau ci-dessus. Rédige la Description en le gardant à l'esprit si tu veux un arbre frère précis. La fiche affiche le tempérament à côté de l'arbre frère, par exemple "from Cautious". L'histoire peut faire évoluer le tempérament d'un personnage par la suite, mais son arbre frère reste celui avec lequel il a commencé.
 
 Un personnage dont le tempérament ouvre son propre arbre principal, par exemple un Reckless Blade, est **Pure** : il s'entraîne dans un seul arbre, dont la branche réservée aux personnages Pure lui est ouverte.
-
-<a id="what-the-stats-mean"></a>
 
 ## Signification des caractéristiques
 
@@ -89,8 +79,6 @@ Deux ressources servent à payer les compétences :
 
 Les mêmes caractéristiques servent aux jets de compétence hors combat. Voir [Jets de compétence](#skill-checks).
 
-<a id="levels-and-experience"></a>
-
 ## Niveaux et expérience
 
 **Expérience.** Un combat remporté rapporte de l'expérience pour chaque ennemi vaincu par l'équipe, y compris ceux qui se sont rendus ou ont fui. La moitié est répartie également entre tous les participants, et l'autre selon la contribution de chacun : dégâts, soins et soutien. Les ennemis sous le niveau d'un personnage rapportent moins, ceux au-dessus rapportent davantage, et un personnage sous le niveau moyen de l'équipe gagne 50 pour cent d'expérience en plus. Un combat perdu ou fui ne rapporte rien.
@@ -105,15 +93,11 @@ Une classe tout juste adoptée commence donc avec les caractéristiques d'un niv
 
 Les taux de progression sont masqués. Quand **Debug** (débogage) est activé, l'onglet **Status** (statut) affiche la probabilité exacte d'augmentation de chaque caractéristique.
 
-<a id="switch-classes-and-carry-skills"></a>
-
 ## Changer de classe et conserver des compétences
 
 Le changement de classe se fait hors combat, dans l'onglet **Classes**. Choisis une classe pour voir ses compétences et ce que le changement laisserait de côté, puis sélectionne **Take up** (adopter), pour une classe jamais entraînée, ou **Switch to** (passer à), pour une classe déjà entraînée, au niveau de classe qu'elle avait atteint.
 
 Un personnage utilise uniquement les compétences de sa classe active, plus jusqu'à quatre compétences **conservées** issues d'autres classes dans lesquelles il s'est entraîné. Choisis-les dans l'onglet **Skills** (compétences), sous **Carry from other classes** (conserver depuis d'autres classes). Une compétence conservée fonctionne avec les propres caractéristiques du personnage. Certaines compétences appartiennent à tout un arbre, comme Cover d'un Guard, et chaque classe de cet arbre les garde sans occuper d'emplacement. Si un changement de classe doit retirer une compétence que tu utilisais, la fiche te prévient d'abord pour que tu puisses la conserver.
-
-<a id="the-character-sheet"></a>
 
 ## La fiche du personnage
 
@@ -130,13 +114,9 @@ L'arme détermine les caractéristiques d'une attaque : un bâton, une baguette 
 
 **Mort permanente.** Quand tu actives **Permadeath** (mort permanente), une option désactivée par défaut à l'étape **World** (monde) de l'assistant, un membre de l'équipe qui tombe au combat et n'est pas sauvé avant la fin disparaît définitivement. Quand cette option est désactivée, les personnages à terre se relèvent après le combat.
 
-<a id="skill-checks"></a>
-
 ## Jets de compétence
 
 Les jets hors combat utilisent les caractéristiques MRPG du personnage, celles que lui donne sa classe active. Chaque compétence s'appuie sur une caractéristique, par exemple Stealth sur la Vitesse ou Persuasion sur la Chance. Voir [Jets de dés et jets de compétence](dice-and-skill-checks.md#how-the-result-is-decided) pour la liste complète et le bonus accordé par chaque caractéristique.
-
-<a id="new-party-members-and-shared-games"></a>
 
 ## Nouveaux membres de l'équipe et parties partagées
 
@@ -149,8 +129,6 @@ Les jets hors combat utilisent les caractéristiques MRPG du personnage, celles 
 - **Un invité qui revient.** Le personnage d'un invité reste dans la partie après son départ, avec son niveau, son équipement et ses bêtes apprivoisées. En l'absence de son joueur, le personnage ne participe pas aux combats, ne gagne aucune expérience et reste en dehors des scènes. Quand l'invité revient, il reprend le même personnage au niveau où il l'avait laissé.
 
 Les jets de compétence de chaque joueur utilisent les caractéristiques de son propre personnage.
-
-<a id="move-a-legacy-game-to-mrpg"></a>
 
 ## Faire passer une partie Legacy à MRPG
 
@@ -171,8 +149,6 @@ Quand tu confirmes avec **Upgrade the party** (mettre l'équipe à niveau) :
 > **Avertissement :** la mise à niveau est irréversible. Une partie passée aux classes MRPG ne peut pas revenir aux fiches Legacy.
 
 La mise à niveau n'est pas proposée pendant un combat. Termine d'abord le combat. Une partie jouée avec un ensemble de règles ne peut pas être mise à niveau : elle conserve les fiches de son ensemble de règles.
-
-<a id="related-guides"></a>
 
 ## Guides associés
 

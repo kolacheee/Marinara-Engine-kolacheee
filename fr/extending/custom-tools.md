@@ -25,7 +25,7 @@ Pour un premier essai, choisis **Static Result** (résultat fixe) : il n'a besoi
 Règles pour les noms et les descriptions :
 
 - Le nom compte de 1 à 100 caractères. La description compte de 1 à 500 caractères.
-- Deux outils ne peuvent pas porter le même nom, et un outil ne peut pas utiliser un nom intégré comme `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search` ou `update_about_me`. Un conflit affiche un message comme `"your_name" is a reserved built-in tool name.`
+- Deux outils ne peuvent pas porter le même nom, et un outil ne peut pas utiliser un nom intégré comme `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search`, `web_fetch` ou `update_about_me`. Un conflit affiche un message comme `"your_name" is a reserved built-in tool name.`
 - Si tu quittes l'éditeur avec des modifications non enregistrées, une bannière propose **Keep editing** (continuer à modifier), **Discard** (abandonner) ou **Save & close** (enregistrer et fermer).
 
 ## Gérer tes outils
@@ -38,8 +38,6 @@ Sur la page **Custom tools**, chaque outil de la liste affiche son nom, son type
 - **Select**, au-dessus de la liste, te permet de choisir plusieurs outils, puis de les **Export** ou de les **Delete** depuis la barre sous la liste.
 
 Dans la disposition classique, l'en-tête de **Functions** comporte **Create function**, **Import functions from ZIP or JSON** et **Export functions to ZIP**, et chaque ligne propose **Edit function** et **Delete Function**.
-
-<a id="add-parameters"></a>
 
 ## Ajouter des paramètres
 
@@ -54,8 +52,6 @@ Les paramètres sont les valeurs d'entrée que l'IA envoie quand elle appelle to
 Ajoute d'autres lignes avec **Add Parameter**, ou supprime une ligne avec son bouton moins. Une ligne dont le nom est vide est écartée à l'enregistrement.
 
 Si l'IA ne semble jamais appeler un outil importé, ses paramètres sont peut-être invalides : l'application ignore alors l'outil sans te prévenir. Supprime les paramètres et ajoute-les de nouveau à la main.
-
-<a id="choose-an-execution-type"></a>
 
 ## Choisir un type d'exécution
 
@@ -154,6 +150,8 @@ Créer un outil ne suffit pas à ce que l'IA s'en serve. Tu dois aussi activer l
 4. Vérifie que ça marche : pose à l'IA une question à laquelle ton outil répond, comme "What are your store hours?" pour l'exemple `store_hours`. La réponse devrait utiliser le texte de l'outil.
 
 Quand **Enable Tool Use** est activé et qu'aucun outil n'est ajouté en dessous, le chat peut utiliser tous les outils activés globalement qu'il prend en charge : les outils intégrés, plus chaque outil personnalisé dont l'interrupteur est activé dans **Library → Custom tools**. Les chats Game exigent aussi **Let the GM search lore** (laisser le GM rechercher dans le lore) pour `search_lorebook`.
+
+> **Note :** Certains outils intégrés restent désactivés tant que tu ne les coches pas, même avec **Activer l'utilisation d'outils** activé. C'est le cas de `web_fetch`, car il laisse l'IA choisir l'adresse web à lire. Les outils Spotify fonctionnent de la même façon.
 
 Pour limiter un chat à une sélection :
 

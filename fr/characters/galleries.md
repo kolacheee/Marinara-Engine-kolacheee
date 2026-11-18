@@ -1,6 +1,6 @@
 # Galeries de personnages et de personas
 
-La **Galerie**, dans l'onglet **Images** des éditeurs de personnage et de persona, conserve des images et des vidéos rattachées à un personnage ou à un persona : elles restent même si tu supprimes des chats. Sers-t'en pour les planches de référence, les variantes de tenue et les packs d'images importés. Tu peux aussi marquer une image de la galerie comme emoji personnalisé, sticker ou arrière-plan qui suit le personnage dans chaque chat.
+La **Galerie**, dans l'onglet **Images** des éditeurs de personnage et de persona, conserve des images et des vidéos rattachées à un personnage ou à un persona : elles restent même si tu supprimes des chats. Sers-t'en pour les planches de référence, les variantes de tenue et les packs d'images importés. Tu peux aussi créer de nouvelles images avec l'IA, et marquer une image de la galerie comme emoji personnalisé, sticker ou arrière-plan qui suit le personnage dans chaque chat.
 
 ## Trouver la galerie
 
@@ -28,6 +28,39 @@ Clique sur une image pour la voir en plus grand. Chaque vignette a une commande 
 3. Attends la fin du téléversement.
 
 Les formats pris en charge sont MP4, WebM et MOV. Les vidéos les plus récentes sont listées en premier. Pour savoir quelles vidéos de scène et quels extraits apparaissent pour quel personnage, voir [Quelles vidéos sont listées](#which-videos-are-listed).
+
+## Créer des images avec l'IA
+
+**Créer avec l'IA**, dans la galerie, produit de nouvelles images pour ce personnage ou ce persona avec ta connexion de génération d'images. Choisis ce que tu veux créer dans **Type** :
+
+| Type                | Ce que tu obtiens |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Fiche de personnage** | Une planche de référence, enregistrée de la même façon que depuis la section **Fiche de personnage**. |
+| **Arrière-plan**      | Une image large d'un lieu, créée à partir du scénario de la fiche. Elle est enregistrée dans la galerie et marquée comme arrière-plan de chat. |
+| **Planche de stickers**   | Une image contenant plusieurs stickers, découpée en une image par sticker. |
+| **Planche d'emojis**     | La même chose, sous forme de petits emojis de visage. |
+
+Avant de commencer : ajoute une connexion de génération d'images.
+
+1. Ouvre **Images → Galerie** et clique sur **Créer avec l'IA**.
+2. Choisis un **Type**, et modifie le prompt si tu veux une autre apparence ou un autre lieu.
+3. Pour une planche de stickers ou d'emojis, liste les noms dans **Stickers à dessiner** ou **Emojis à dessiner**, séparés par des virgules. Une planche peut en contenir jusqu'à 16.
+4. Clique sur **Générer**.
+5. Clique sur **Enregistrer comme arrière-plan**, **Enregistrer les stickers** ou **Enregistrer les emojis**, ou sur **Enregistrer comme fiche de personnage**.
+
+### Corriger le découpage d'une planche
+
+Après la génération d'une planche de stickers ou d'emojis, chaque sticker est repéré par son contour, son arrière-plan vert est supprimé et il apparaît dans sa propre vignette avec son nom. Les stickers enregistrés mesurent au plus 512 sur 512 pixels, et les emojis au plus 256 sur 256 ; chacun est marqué avec son nom.
+
+- Clique sur une vignette pour la garder ou l'ignorer. Les vignettes ignorées ne sont pas enregistrées.
+- Modifie le nom sous une vignette pour la renommer.
+- Clique sur **Redécouper avec un cadre** sur une vignette pour placer un cadre sur la planche entière. Fais glisser le cadre, tire ses coins ou dessine un nouveau cadre autour du sticker, puis clique sur **Utiliser ce cadre**.
+- Clique sur **Ajouter un sticker** ou **Ajouter un emoji** pour découper un élément qui a été oublié.
+- Clique sur **Redécouper** pour recommencer le découpage et annuler tes cadres.
+
+### Écrire toi-même tout le prompt
+
+Le prompt envoyé au modèle d'images est construit à partir des champs de la boîte de dialogue. Pour le modifier en entier, par exemple pour demander des stickers de choses que le personnage aime et pas seulement du personnage, clique sur **Modifier le prompt complet**. Il est envoyé exactement tel que tu l'écris. Les changements dans les autres champs ne sont ajoutés que lorsque tu cliques sur **Reconstruire**, ce qui remplace aussi tes modifications. Clique sur le bouton de fermeture à côté de **Reconstruire** pour revenir au prompt construit.
 
 ## Marquer une image de la galerie comme emoji ou sticker personnalisé
 
@@ -65,6 +98,17 @@ Le bouton affiche alors **Background:** (arrière-plan) suivi des lieux. Clique 
 Les images peintes dans un chat peuvent être déplacées ici depuis la galerie du chat avec le bouton en forme de personne. Voir [La galerie du chat](../chats/chat-gallery.md#per-image-actions).
 
 L'export au format **Marinara Native** conserve chaque étiquette (emoji, sticker et arrière-plan) avec la galerie.
+
+## Décrire les images
+
+Toute image de galerie peut avoir une courte description de ce qu'elle représente. Les chats Conversation utilisent les descriptions des emojis et stickers marqués pour choisir lesquels proposer (voir [Décrire les emojis et les stickers](../conversation/emoji-stickers-gifs.md#describe-emojis-and-stickers)). Une description est enregistrée avec l'image et l'accompagne dans un export **Marinara Native**.
+
+- Pour en écrire une, clique sur le bouton de tag dans le coin supérieur gauche de l'image et choisis **Ajouter une description**, ou **Modifier la description** pour la changer.
+- Pour les faire écrire par l'IA, clique sur **Sélectionner des images**, choisis les images, puis clique sur **Décrire avec l'IA**. Le modèle **Lecture d'images** regarde chacune d'elles et rédige une courte description. Si certaines en ont déjà une, choisis de décrire seulement celles qui n'en ont pas, ou de toutes les décrire à nouveau.
+
+Avant de commencer : les descriptions par l'IA nécessitent un modèle capable de lire les images. Marinara utilise le modèle **Lecture d'images** si tu en définis un sous **Behind the scenes** (en coulisses) dans les réglages de connexion, et sinon le modèle de tes agents. Jusqu'à 8 images sont envoyées à la fois : une grande sélection prend donc un moment.
+
+La galerie propre à un chat propose le même bouton **Décrire avec l'IA** en mode sélection.
 
 <a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
 

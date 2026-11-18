@@ -25,7 +25,7 @@ Les sections visibles dépendent du mode du chat. La section **Impersonate** est
 - **Chat Name** (nom du chat) : le nom affiché dans ta liste de chats. Clique dessus pour le renommer. Il n'est jamais envoyé au modèle.
 - **Chat Branches** (branches du chat) : change de branche, renomme, exporte et importe des branches. Voir [Branches de chat](branches.md).
 - **Connection** (connexion) : le modèle qui répond dans ce chat. Voir plus bas.
-- **Prompt Preset** (preset de prompt) : la structure enregistrée du prompt (le texte que Marinara envoie à l'IA) de ce chat.
+- **Prompt Preset** (preset de prompt) : la structure enregistrée du prompt (le texte que Marinara envoie à l'IA) de ce chat. Dans une partie, cette section contient aussi le style de l'histoire, la violence, les limites de contenu et les consignes de classification. Voir [Les modifier en cours de partie](../game/getting-started.md#change-them-during-a-game).
 - **Advanced Parameters** (paramètres avancés) : remplace pour ce chat des réglages de génération comme la température. Voir [Paramètres de génération](../prompts/generation-parameters.md).
 - **Persona** : le personnage que tu incarnes. Voir [Choisir ton persona dans un chat](../characters/choosing-your-persona.md). (Conversation, Roleplay.)
 - **Characters** (personnages) : les personnages du chat. (Conversation, Roleplay.)
@@ -78,8 +78,6 @@ Les noms utilisent des lettres, des chiffres et des tirets bas, commencent par u
 
 Si tu as beaucoup de variables, clique sur **Search and edit all in the State Editor** (tout chercher et modifier dans le State Editor). Il liste toutes les variables pour que tu puisses chercher, modifier, en coller plusieurs en JSON et relire les changements avant d'enregistrer. Voir [Le State Editor](../roleplay/hud-and-trackers.md#the-state-editor). Pour les autres macros entre doubles accolades, voir [Macros de prompt](../prompts/macros.md).
 
-<a id="settings-profiles"></a>
-
 ## Profils de réglages
 
 Un profil de réglages est un lot enregistré de réglages de chat que tu peux appliquer à d'autres chats. La barre de profil se trouve en haut du panneau et n'apparaît pas en Game. L'enregistrement, l'application, l'import, l'export et le choix d'un profil par défaut sont décrits dans [Profils de réglages](settings-profiles.md).
@@ -107,8 +105,6 @@ Ces boutons se trouvent dans la barre de titre.
 
 Quand le Tracker Panel n'est pas affiché, les trackers sur ordinateur utilisent la [fenêtre Trackers](../roleplay/hud-and-trackers.md#the-trackers-window). Si la place manque à côté de tes messages, elle commence sous forme de petit bouton **Trackers**. Utilise le dé pour afficher à nouveau le Tracker Panel.
 
-<a id="popping-a-section-out-into-its-own-window"></a>
-
 ## Détacher une section dans sa propre fenêtre
 
 Détache une section pour lui donner sa propre fenêtre.
@@ -121,15 +117,11 @@ Détache une section pour lui donner sa propre fenêtre.
 
 Sur téléphone, détacher une section ferme Chat Settings et ajoute la section au menu à trois points **Chat tools** (outils du chat). Appuie sur les points, puis sur l'icône ronde de la section. Appuie sur **Put back in Chat Settings** pour la remettre à sa place.
 
-<a id="the-phones-chat-tools-menu"></a>
-
 ## Le menu Chat tools du téléphone
 
 Le bouton déplaçable à trois points regroupe les outils que tu as sortis de Chat Settings. Appuie dessus pour déployer des boutons ronds à icône, puis appuie sur un outil. Appuie à nouveau sur les points pour les replier. Les boutons des trackers, le bouton de carte de Game et Character Profiles restent séparés.
 
 Fais glisser le bouton à trois points pour déplacer le menu. Ouvre-le et utilise le cadenas en haut pour le fixer en place. Tant qu'il est déverrouillé, fais glisser un outil vers le haut ou le bas pour changer son ordre, ou donne-lui le focus et utilise les flèches. Le verrouillage empêche à la fois le déplacement et le changement d'ordre. Le menu suit le style des widgets de ton chat.
-
-<a id="control-windows-and-their-buttons"></a>
 
 ## Fenêtres de contrôles et leurs boutons
 
@@ -144,8 +136,6 @@ Fais glisser un bouton pour le déplacer. Les boutons voisins s'alignent pendant
 ## Chaque chat garde sa disposition de fenêtres
 
 Chaque chat mémorise les tailles et positions des fenêtres, les épinglages et verrouillages, les sections détachées et les positions des boutons. Les positions du téléphone ainsi que l'ordre et le verrouillage de Chat tools sont enregistrés séparément des positions de l'ordinateur. Un [profil de réglages](settings-profiles.md) peut enregistrer une disposition pour d'autres chats.
-
-<a id="choosing-a-layout-for-new-chats"></a>
 
 ## Choisir une disposition pour les nouveaux chats
 

@@ -15,7 +15,7 @@ Si ça n'a pas marché : si aucun modèle n'est défini pour le chat, la répons
 
 ### Send on Enter
 
-Ce réglage se trouve dans **Settings → Chatting → Message Box** (Paramètres → Chat → Zone de message). Il y a un interrupteur par mode de chat.
+Ce réglage se trouve dans **Settings → Chatting → Message Box** (Paramètres → Chat → Zone de message). Il y a un interrupteur par mode de chat, enregistré sur l'appareil où tu le règles : un téléphone et un ordinateur peuvent donc avoir des réglages différents.
 
 | Mode de chat | Par défaut | Quand il est désactivé |
 | --- | --- | --- |

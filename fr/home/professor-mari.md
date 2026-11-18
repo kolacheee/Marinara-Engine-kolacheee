@@ -11,7 +11,7 @@ Professor Mari est l'assistante intégrée de l'écran d'accueil. Elle explique 
 
 Elle s'ouvre dans son propre onglet. Tu peux aussi la joindre depuis n'importe quel écran : appuie sur <kbd>Ctrl</kbd>+<kbd>K</kbd>, saisis ta question et choisis **Ask Prof. Mari** (demander à Prof. Mari), appuie sur <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> sur un Mac) pour ouvrir sa fenêtre contextuelle, ou touche le titre dans la barre supérieure sur un téléphone. Son en-tête affiche **Ready to help** quand elle est disponible et **Working on it...** pendant qu'elle travaille.
 
-Écris ton message en langage courant et appuie sur <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> ajoute une nouvelle ligne. Si tu désactives **Enter sends to Professor Mari** (Enter envoie à Professor Mari) dans ses réglages, <kbd>Enter</kbd> ajoute une nouvelle ligne et <kbd>Ctrl</kbd>+<kbd>Enter</kbd> envoie. Ton premier message débloque le succès **Hello World**.
+Écris ton message en langage courant et appuie sur <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> ajoute une nouvelle ligne. Si tu désactives **Enter sends to Professor Mari** (Enter envoie à Professor Mari) dans ses réglages, <kbd>Enter</kbd> ajoute une nouvelle ligne et <kbd>Ctrl</kbd>+<kbd>Enter</kbd> ou le bouton Envoyer envoie. L'interrupteur est enregistré par appareil : tu peux donc le désactiver sur ton téléphone et le garder activé sur ton ordinateur. Ton premier message débloque le succès **Hello World**.
 
 Tous ses réglages se trouvent dans **Settings → General → Professor Mari → Open** (Paramètres → Général → Professor Mari → ouvrir), ou derrière l'engrenage de Search. Sur ordinateur, les curseurs **Height** (hauteur) et **Width** (largeur) sous **Professor Mari window** (fenêtre de Professor Mari) changent la taille de sa fenêtre. Sur téléphone, sa fenêtre occupe tout l'écran.
 
@@ -39,7 +39,7 @@ Elle lit un élément avant de le modifier, et elle pose des questions quand ta 
 - Créer ou modifier un thème, un agent, un preset de prompt ou un brouillon de Personal Extension. Un brouillon reste désactivé tant que tu n'as pas lu son code et ne l'as pas approuvé dans **Library → Extensions** (Bibliothèque → Extensions).
 - Modifier une seule section d'un preset sur place, au lieu de remplacer le preset entier.
 - Comparer les agents à télécharger et te dire lesquels correspondent à ton objectif. Pour les installer, elle t'oriente vers **Library → Agents** (Bibliothèque → Agents). Voir la [Référence des agents téléchargeables](../agents/built-in-agents.md).
-- Générer ou attribuer des images, comme des avatars, des sprites, des arrière-plans et les images d'un thème, et les recadrer, rogner, redimensionner ou en retirer un fond uni. Il te faut d'abord un compte de génération d'images. Elle n'en crée pas à ta place. Pour les illustrations d'un thème, voir [Demander à Professor Mari de créer les illustrations](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
+- Générer ou attribuer des images, comme des avatars, des sprites, des arrière-plans et les images d'un thème, et les recadrer, rogner, redimensionner ou en retirer un fond uni. Il te faut d'abord un compte de génération d'images. Elle n'en crée pas à ta place. Pour les illustrations d'un thème, voir [Demander à Professor Mari de créer les illustrations](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art). Clique sur une image qu'elle a créée pour l'ouvrir en taille réelle, lire son prompt, la télécharger, ou modifier le prompt et la régénérer. La nouvelle image remplace l'ancienne dans sa réponse.
 - Consulter les pages publiques des wikis Fandom quand tu te documentes sur un personnage ou un univers.
 
 ### Commencer par une pastille
@@ -136,7 +136,7 @@ Un lien est envoyé une seule fois, avec le message dans lequel tu l'ajoutes. En
 
 ### Commandes avec /
 
-Saisis `/` au début d'une ligne pour lister ses commandes. Continue d'écrire pour filtrer, puis appuie sur <kbd>Enter</kbd>. La liste affiche aussi tes Skills et tes souvenirs. Choisir l'un d'eux le lie, comme avec `@`.
+Saisis `/` au début d'une ligne ou après un espace pour lister ses commandes : un même message peut ainsi en utiliser plusieurs. Continue d'écrire pour filtrer, puis appuie sur <kbd>Enter</kbd>. La liste affiche aussi tes Skills et tes souvenirs. Choisir l'un d'eux le lie, comme avec `@`.
 
 | Commande | Ce qu'elle fait |
 | --- | --- |
@@ -233,7 +233,7 @@ Quand une demande échoue, le chat conserve la raison et affiche **Retry** (rée
 
 ## Lire la FAQ
 
-Clique sur **Read FAQ** (lire la FAQ) dans le widget **Learn the engine** (découvrir l'application) de l'accueil, ou sur le marque-page **FAQ** dans la disposition classique, pour ouvrir **Professor Mari's FAQ** (la FAQ de Professor Mari). C'est une liste fixe, rédigée à l'avance, pas le chat avec l'IA : elle ne connaît donc pas ta configuration. Saisis du texte dans **Search FAQ** (rechercher dans la FAQ) pour filtrer. Chaque question porte un tag de catégorie, par exemple **Setup**, **Connections** ou **Game Mode**. Touche une question pour lire la réponse.
+Ouvre **Tout voir** dans le widget **À essayer** de l'accueil et clique sur **Read FAQ** (lire la FAQ), ou sur le marque-page **FAQ** dans la disposition classique, pour ouvrir **Professor Mari's FAQ** (la FAQ de Professor Mari). C'est une liste fixe, rédigée à l'avance, pas le chat avec l'IA : elle ne connaît donc pas ta configuration. Saisis du texte dans **Search FAQ** (rechercher dans la FAQ) pour filtrer. Chaque question porte un tag de catégorie, par exemple **Setup**, **Connections** ou **Game Mode**. Touche une question pour lire la réponse.
 
 ## Limites et sécurité
 

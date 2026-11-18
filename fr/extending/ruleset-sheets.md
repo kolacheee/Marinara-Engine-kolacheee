@@ -45,6 +45,10 @@ Une compétence ou sauvegarde peut porter un `cap`, une référence de valeur qu
 
 Le `max` d'une piste ordinaire peut être une référence de valeur plutôt qu'un nombre, pour qu'une valeur du personnage fixe sa longueur : `"max": { "field": "willpower_rating" }`. Son `min` et son `default` restent des nombres. Une piste de blessures à niveaux nommés a un `max` égal à son nombre de niveaux ; une piste à cases numérotées est aussi longue que son propre `max` (voir Cases numérotées ci-dessous). `alwaysShow: true` affiche une piste dans le bloc de fiche du Game Master même à sa valeur par défaut, pour une valeur qui compte à chaque tour ; sans lui, une piste à sa valeur par défaut est omise, car trois sauvegardes contre la mort à zéro ne disent rien. Ces trois éléments relèvent de Capability API 1.37 pour un ensemble en package.
 
+`sheet.progress` (Capability API 1.829) donne à chaque compétence entraînée une jauge de pratique : une progression de 0 à 99 vers son prochain rang. `{}` l'active, et `except` liste les sections de compétences qui ne gardent pas de pratique, comme un savoir acheté plutôt qu'appris par l'usage. Le Game Master la fait évoluer avec `[sheet: op="practice" skill="Skill" by="5"]`, ou `to="N"` pour la fixer, et le joueur peut la corriger sur la fiche. Elle s'arrête à 99, et seule une compétence entraînée sous le rang maximal peut en recevoir. Un changement de rang avec `op="advance"` remet la compétence à 0, tandis qu'écrire à nouveau le même rang la conserve. La pratique est enregistrée avec le message, comme une piste : un swipe ou une régénération la ramène donc en arrière. Le bloc de fiche du Game Master l'affiche après la compétence : `Smithing +2 (60%)`. Un rang modifié à la main sur la fiche conserve sa pratique ; corrige-la là aussi. Utilise-la pour les systèmes où l'on apprend par l'usage, mais où le gain de rang vient toujours d'ailleurs : une fiche LitRPG dont le Système annonce les rangs, ou les coches d'expérience de RuneQuest.
+
+Une réserve vivante ou une piste ordinaire peut définir `"display": "bar"` pour afficher une barre de remplissage sur sa ligne dans la fiche, à côté de son nombre, pour quelque chose que le joueur lit d'un coup d'œil, comme la santé ou le stress. `"dots"` affiche plutôt une rangée de points, un par unité jusqu'au maximum, remplis jusqu'à sa valeur, pour un score compté en points comme la faim ou l'humanité. Une échelle qui descend sous 0 ou dépasse 20 s'affiche comme une barre, car les points ne peuvent pas compter en dessous de rien et une rangée aussi longue ne se lit pas d'un coup d'œil. `"counter"`, ou l'omission de ce réglage, n'affiche que le nombre. Une piste de blessures dessine ses propres cases et l'ignore. Les réserves d'une fiche d'équipe l'acceptent aussi. Cela relève de Capability API 1.828 pour un ensemble en package.
+
 ## États vivants : une forme, une posture, une lumière
 
 Un champ enum est choisi à la création du personnage et le reste, et un état (condition) est seulement actif ou inactif. Un **état vivant** (live state) est une valeur parmi un ensemble fermé qui change en jeu : la forme d'un métamorphe, une posture de combat, la clarté d'une lanterne.
@@ -89,8 +93,6 @@ Un champ enum est choisi à la création du personnage et le reste, et un état 
 - Une couche peut retirer d'un champ une valeur pour laquelle une table a une ligne. Cette ligne n'est alors jamais lue tant que la couche est active.
 
 Les états vivants, `enumTable` et une étape de repos qui nomme un `state` relèvent de Capability API 1.42 pour un ensemble en package.
-
-<a id="wound-tracks-health-that-is-a-track-not-a-number"></a>
 
 ## Pistes de blessures : une santé marquée sur une piste
 
@@ -208,8 +210,6 @@ Le résultat indique ce que la fiche a ajouté (`adjust="-2"` dans le registre, 
 ## Repos
 
 Un repos liste des restaurations et des éléments à effacer. Chaque étape nomme une cible (`pool`, `poolGroup`, `listPools`, `track` ou `state`) et la fixe (`"to": "max"`, `"to": "min"` ou un nombre) ou la modifie (`"by": { "const": 1 }` ou `"by": { "fractionOfMax": 0.5 }`). Une étape visant une piste de blessures peut seulement la soigner : son `by` est donc négatif ; voir plus haut. Une étape visant un état vivant le fixe seulement, à `"default"` ou à l'une de ses valeurs. Une étape `poolGroup` avec un `fractionOfMax` modifie chaque réserve du groupe de sa propre fraction ; ajoute `"shared": true` (Capability API 1.77) pour calculer plutôt la fraction sur le maximum de tout le groupe et la répartir entre les réserves du groupe dans l'ordre où la fiche les liste, chacune jusqu'à ce qui lui manque. Le repos long de 5e, "half of the character's total number of" dés de vie gardés dans une réserve par dé, s'écrit `{ "poolGroup": "hit_dice", "by": { "fractionOfMax": 0.5, "round": "down", "min": 1 }, "shared": true }`.
-
-<a id="game-master-text"></a>
 
 ## Texte du Game Master
 

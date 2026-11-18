@@ -2,8 +2,6 @@
 
 Cette page explique comment lire les logs du serveur Marinara Engine et écrire des lignes utiles. Elle complète la [section Logging de CONTRIBUTING.md](../../CONTRIBUTING.md#logging), sans la remplacer. Le logger Pino partagé, l'objet erreur en premier argument, les spécificateurs de format et la table des quatre niveaux restent applicables.
 
-<a id="what-every-line-carries"></a>
-
 ## Contenu de chaque ligne
 
 Toutes les lignes serveur viennent d'une instance Pino : `logger` dans `packages/server/src/lib/logger.ts`. Fastify utilise cette instance via `loggerInstance` ; `req.log`, `reply.log` et `app.log` en sont donc des enfants. Ils partagent les sérialiseurs et suivent les rechargements à chaud de `LOG_LEVEL` par l'observateur d'environnement.
@@ -15,8 +13,6 @@ Toutes les lignes serveur viennent d'une instance Pino : `logger` dans `packages
 | `bootId` | chaque ligne | 8 caractères hexadécimaux renouvelés à chaque démarrage. Distingue deux exécutions dans un même fichier. |
 | `requestId` | chaque ligne causée par une requête | Même valeur que l'en-tête de réponse `x-request-id`. Présent sur `req.log` et sur le `logger` partagé dans les services. |
 | `route` | après analyse du corps | Motif de route reconnu, par exemple `/api/chats/:id`. Jamais l'URL brute. |
-
-<a id="request-ids"></a>
 
 ### Identifiants de requête
 
@@ -30,8 +26,6 @@ L'identifiant est stocké dans un contexte `AsyncLocalStorage` (`lib/log-context
 
 Le contexte suit tout ce qui démarre dans la requête, y compris minuteurs, écouteurs et processus enfants. Pour un travail qui survit à la requête, enveloppe son démarrage dans `runWithRootLogContext({}, fn)`, afin que ses futures lignes ne gardent pas l'identifiant initial. Le processus auxiliaire local le fait pour llama-server et MLX ; les auxiliaires Decision et Utility démarrent de même, pour qu'un processus partagé par de futures requêtes ne porte pas l'identifiant du premier appelant. Tout autre travail durable lancé depuis un gestionnaire de route garde son `requestId` jusqu'à l'application du même enveloppement.
 
-<a id="request-lines"></a>
-
 ### Lignes de requête
 
 `RequestLogController` reprend le `LogController` par défaut de Fastify avec ces changements :
@@ -42,9 +36,7 @@ Le contexte suit tout ce qui démarre dans la requête, y compris minuteurs, éc
 
 `LOG_DISABLE_REQUEST_LOGGING` fonctionne comme avant et désactive aussi la ligne d'abandon.
 
-Dans `pnpm dev`, pino-pretty masque `hostname` (son défaut) et `bootId`. La sortie JSON de production garde les deux.
-
-<a id="startup-timeline"></a>
+Un terminal reçoit des lignes pino-pretty : `pnpm dev`, ainsi qu'un serveur de production dont la sortie standard est un terminal (les lanceurs). La sortie de production envoyée ailleurs est du JSON, un objet par ligne. `LOG_FORMAT=pretty|json` remplace ce choix, et le lanceur Termux définit `pretty` parce que sa sortie atteint le terminal via `tee`. pino-pretty masque `hostname` (son défaut) et `bootId` ; la sortie JSON garde les deux.
 
 ## Chronologie du démarrage
 
@@ -60,8 +52,6 @@ const db = await startup.phase("storage.open", () => getDB());
 - Dès que le serveur écoute, `index.ts` écrit une ligne info `[startup] Ready in N ms` avec `event: "startup.ready"`, le nombre de phases et les cinq étapes ayant les plus grands `selfMs`.
 
 Les phases n'ajoutent pas `stage` au contexte de log. Les services lancés pendant une phase gardent des minuteurs, qui porteraient sinon cette étape pendant toute la vie du processus.
-
-<a id="one-line-per-failure"></a>
 
 ## Une ligne par échec
 
@@ -81,8 +71,6 @@ Un échec doit produire exactement une ligne, écrite par le code qui décide de
 
 - **Garder la cause.** Enveloppe avec `new Error("Could not save chat", { cause: err })`. Les sérialiseurs `err` et `error` ajoutent message et pile de la cause (`caused by: ...`). Un Error journalisé comme `{ error }` est aussi sérialisé, plus affiché comme `{}`.
 
-<a id="repeating-failures"></a>
-
 ## Échecs répétés
 
 Interrogations périodiques, contrôles de santé et hooks de tour peuvent échouer pareil toutes les quelques secondes. Utilise `logRateLimited` de `lib/log-rate-limit.ts` :
@@ -92,8 +80,6 @@ logRateLimited("warn", "autonomous-scheduler:poll", err, "[autonomous-scheduler]
 ```
 
 La première occurrence d'une clé est écrite. Les suivantes dans la fenêtre (60 s par défaut) sont comptées, et la prochaine ligne porte `suppressedRepeats`. Mets dans la clé l'élément qui échoue, par exemple l'identifiant du package ou du chat, pour qu'un élément défaillant n'en masque pas un autre.
-
-<a id="prompt-and-model-text"></a>
 
 ## Texte des prompts et modèles
 
@@ -109,11 +95,22 @@ logger.debug({ err }, "[game/scene-wrap] Unparsed LLM response: %s", raw.slice(0
 
 Le réglage de débogage de l'interface fonctionne toujours via `logDebugOverride`. C'est le moyen prévu pour voir les prompts quand `LOG_LEVEL` masque debug.
 
-<a id="checks"></a>
+Affiche le texte des prompts tel quel, avec `%s`. Pour une valeur structurée (un tableau de messages, un corps de requête fournisseur, une réponse analysée), passe `debugJson(value)` à `%s`, pas à `%j` ni à `JSON.stringify(value)`. Il affiche du JSON indenté dont les retours à la ligne dans les chaînes sont de vrais retours à la ligne : un prompt sur plusieurs lignes reste donc lisible, et le rendu n'a lieu que si la ligne est affichée. Un replacer qui masque des données se passe en deuxième argument, comme avec `JSON.stringify`. Une vue de débogage dans l'application affiche le même texte avec `readableJson` de `@marinara-engine/shared`. La régression `debug-log-line-breaks` couvre ce comportement et le choix du format.
+
+Les médias intégrés n'arrivent jamais entiers dans le log. `debugJson` remplace chaque contenu base64 par un marqueur comme `[image/png base64, ~1.2 MB: iVBORw0KGgoAAAA...ElFTkSuQmCC]` : son type, sa taille et ses 16 premiers et derniers caractères. Cela couvre les URL `data:` (chaînes entières ou à l'intérieur du texte) et les champs `data` bruts des parties média Anthropic et Google, même quand le base64 s'étend sur plusieurs lignes. Le sérialiseur `msg` fait de même pour les URL `data:` dans les lignes `%s` et `%j` ordinaires ; un champ `data` brut n'est raccourci que par `debugJson`. Seule la copie affichée change ; la valeur passée n'est jamais modifiée. `LOG_INLINE_MEDIA=full` dans `.env` affiche à nouveau les contenus entiers. La régression `log-inline-media` couvre ce comportement.
+
+## Console intégrée
+
+Paramètres → Avancé → **Ouvrir la console** affiche les lignes récentes du serveur dans l'application, pour les installations dont le terminal est inaccessible (NAS, VPS, Docker, Termux).
+
+- `lib/log-buffer.ts` garde les 1 500 dernières lignes en mémoire, soit au plus environ 4 millions de caractères, avec chaque message et chaque bloc de champs coupés à 16 000 caractères. Rien n'est écrit sur le disque, et un redémarrage vide le tout.
+- `logger.ts` y copie chaque ligne sérialisée via `hooks.streamWrite` de Pino : le tampon contient donc ce que le terminal ou le fichier de log a reçu, au même `LOG_LEVEL`. Les lignes qui ne passent pas par Pino, comme la ligne `injected env` de dotenv ou la sortie brute d'un processus enfant, n'y figurent pas.
+- `GET /api/admin/logs?afterId=` renvoie les lignes après `afterId`, ainsi que `latestId`, `truncated` (des lignes ont été retirées avant cette lecture) et le `logLevel` du serveur. Cet accès est protégé par `requirePrivilegedAccess` et utilise `no-store`. Sa route utilise `logLevel: "silent"`, pour que les interrogations de la console elle-même n'y apparaissent jamais.
+- Les règles de cette page s'appliquent ici aussi : tout ce que tu journalises à warn ou error est ce qu'un administrateur distant lit dans l'application ; garde donc les prompts et les corps fournisseur à debug.
 
 ## Vérifications
 
-Les régressions `logging-request-trail`, `logging-failure-lines` et `logging-startup-timeline` couvrent cette page :
+Les régressions `logging-request-trail`, `logging-failure-lines` et `logging-startup-timeline` couvrent cette page, et `server-console-logs` couvre la console intégrée :
 
 ```sh
 node scripts/run-regressions.mjs --filter logging-

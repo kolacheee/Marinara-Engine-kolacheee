@@ -5,7 +5,7 @@ Trouve ton symptôme, puis applique la solution. La plupart des problèmes dispa
 ## Les premiers réflexes
 
 1. Force le rafraîchissement de la page : <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> sous Windows ou Linux, <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> sur un Mac.
-2. Regarde la console du serveur (la fenêtre de terminal qui fait tourner Marinara) et cherche les lignes d'erreur en rouge. Elles désignent en général le vrai problème.
+2. Regarde la console du serveur (la fenêtre de terminal qui fait tourner Marinara) et cherche les lignes d'erreur en rouge. Elles désignent en général le vrai problème. Si le serveur tourne ailleurs (un NAS, un VPS, Docker), ouvre **Paramètres → Avancé → Ouvrir la console** pour lire les mêmes lignes dans l'application.
 3. Pour demander de l'aide, active d'abord le **Debug mode** (mode débogage). Voir [Obtenir de l'aide](#get-more-help).
 
 <a id="my-character-does-not-reply"></a>
@@ -88,6 +88,7 @@ Les erreurs de génération s'affichent sous forme de notification en bas de l'�
 | Le modèle indique qu'un paramètre est obligatoire | Active l'interrupteur de ce paramètre. |
 | **This model's chat template needs user and assistant messages to take turns** | Certains modèles locaux, comme les modèles basés sur Mistral servis par llama.cpp, ont besoin de messages qui alternent. Marinara fusionne les messages consécutifs et réessaie une fois. Si le problème persiste, règle **Post-Processing Messages** (post-traitement des messages) sur **Single User Message** (un seul message utilisateur) dans **Chat Settings → Advanced Parameters**, ou sers le modèle avec un gabarit de chat (chat template) moins strict. |
 | **The AI returned an empty response. Try sending your message again.** | Renvoie ton message. Si ça se répète, essaie un autre modèle ou un autre compte. |
+| **The model declined this request** | Le modèle a refusé d'écrire cette réponse. En Game Mode, voir [Le modèle refuse un tour](game/getting-started.md#the-model-declines-a-turn). Ailleurs, réessaie, puis essaie un autre modèle, preset ou fiche de personnage. |
 | **A generation is already in progress for this chat** | Une réponse est encore en cours de streaming, c'est-à-dire d'affichage au fil de l'écriture. Attends, ou clique sur **Stop** (arrêter), puis réessaie. |
 | **No connections are marked for the random pool** | Le routage aléatoire est activé, mais aucun compte n'est dans le pool. Ajoutes-en un, ou désactive le routage aléatoire. |
 | Chaque message échoue avec une erreur réseau, et ton ordinateur n'accède à Internet que par un proxy | Indique ce proxy à Marinara. Voir [Proxy HTTP sortant](CONFIGURATION.md#outbound-http-proxy). |
@@ -139,7 +140,7 @@ Marinara bloque les retours en arrière évidents. Le lanceur saute une mise à 
 
 Si tu as fait une mise à jour, puis es revenu à une ancienne version, restaure la sauvegarde que tu as faite avant la mise à jour. Voir [Revenir à une ancienne version](UPGRADING.md#downgrading-to-an-older-version). Les détails techniques suivent.
 
-Tes données sont désormais au format de stockage 10. Les formats 8, 9 et 10 ajoutent les réglages des avatars 3D (MMD, puis GLB et FBX) et les liens de compte des connexions, que les anciennes builds ne peuvent pas lire sans risque. Si tes données ont atteint le format 8 ou un format plus récent, restaure une sauvegarde complète faite avant cette mise à niveau pour utiliser une ancienne build. La commande ci-dessous ne convertit que les anciennes organisations des fichiers de chat. Ne change pas le numéro de format à la main. Voir [Revenir à une ancienne version](UPGRADING.md#downgrading-to-an-older-version).
+Tes données sont désormais au format de stockage 11. Les formats 8, 9 et 10 ajoutent les réglages des avatars 3D (MMD, puis GLB et FBX) et les liens de compte des connexions, et le format 11 stocke les personas sous forme de fiches de personnage. Les anciennes builds ne peuvent pas les lire sans risque. Le format 11 conserve les fichiers de persona d'origine sous forme de copies `.pre-v11` dans `storage/tables/personas/`. Si tes données ont atteint le format 8 ou un format plus récent, restaure une sauvegarde complète faite avant cette mise à niveau pour utiliser une ancienne build. La commande ci-dessous ne convertit que les anciennes organisations des fichiers de chat. Ne change pas le numéro de format à la main. Voir [Revenir à une ancienne version](UPGRADING.md#downgrading-to-an-older-version).
 
 Pour des données antérieures au format 8, convertis l'organisation des fichiers de chat :
 

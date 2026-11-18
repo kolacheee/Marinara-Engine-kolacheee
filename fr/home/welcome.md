@@ -38,8 +38,6 @@ L'accueil s'affiche quand aucun chat n'est ouvert. En haut se trouvent un messag
 
 Dans la disposition classique (désactivée sous **Settings → Appearance → Theme → New layout** (Paramètres → Apparence → Thème → Nouvelle disposition)), l'accueil ressemble plutôt à un navigateur web, avec des onglets, une barre de recherche et des marque-pages pour **Discord**, **Support**, **Credits**, **Documentation**, **Tutorial**, **FAQ**, **Achievements** et **Widgets**.
 
-<a id="choose-a-chat-mode"></a>
-
 ## Choisir un mode de chat
 
 Tu choisis un mode quand tu lances un chat.
@@ -47,8 +45,6 @@ Tu choisis un mode quand tu lances un chat.
 - **Conversation** : un simple chat avec l'IA, présenté comme une messagerie. Voir [Mode Conversation : premiers pas](../conversation/getting-started.md).
 - **Roleplay** : une histoire avec un ou plusieurs personnages. L'application suit la scène, comme le lieu et l'heure. Voir [Mode Roleplay : premiers pas](../roleplay/getting-started.md).
 - **Game** : un jeu solo. L'IA joue le Game Master (le maître du jeu), qui raconte l'histoire. Tu as des compagnons de route (ton équipe), des jets de dés, des cartes et des quêtes. Voir [Game Mode : premiers pas](../game/getting-started.md).
-
-<a id="home-widgets"></a>
 
 ## Les widgets de l'accueil
 
@@ -68,7 +64,7 @@ Professor Mari peut te créer un widget personnel si tu le lui demandes. Les age
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari** (demander à Professor Mari) ouvre son chat. | Oui |
 | **Recent chats** (chats récents) | Tes derniers chats. Clique sur l'un d'eux pour le rouvrir. Quand il est vide : **Your chats will show here**. | Oui |
-| **Learn the engine** (découvrir l'application) | Des liens vers **Documentation**, **Replay tutorial** (revoir le tutoriel) et **Read FAQ** (lire la FAQ). | Oui |
+| **À essayer** | Les trois prochaines petites choses à essayer, une fonctionnalité à la fois. Quand tu les as toutes essayées ou que tu désactives les conseils, le widget affiche à la place **Documentation**, **Revoir le tutoriel** et **Lire la FAQ**. Voir [À essayer](#things-to-try). | Oui |
 | **What's New** (nouveautés) | **See what's new** (voir les nouveautés) et **Read release notes** (lire les notes de version). | Oui |
 | **Community** (communauté) | Des liens vers **Discord**, **Support** et **Credits**. | Oui |
 | **Character Library** (bibliothèque de personnages) | Une nouvelle sélection de tes personnages chaque jour. | Non |
@@ -76,6 +72,18 @@ Professor Mari peut te créer un widget personnel si tu le lui demandes. Les age
 | **Character of the Day** (personnage du jour) | Un personnage de ta bibliothèque, avec **Start a chat** (lancer un chat) et **View character** (voir le personnage). | Non |
 | **Clock & calendar** (horloge et calendrier) | La date et l'heure du jour. | Non |
 | **Achievements** | Tes derniers succès et ceux qui sont les plus proches. Le réglage Achievements doit être activé. | Non |
+
+## À essayer
+
+Le widget **À essayer** te propose les trois prochaines fonctionnalités à essayer. Chaque tâche s'appuie sur la précédente : une image de galerie devient un sticker, puis tu envoies ce sticker dans un chat.
+
+- Clique sur une tâche pour ouvrir l'endroit correspondant dans l'application. S'il n'y en a pas, son guide s'ouvre.
+- Clique sur la coche pour la marquer comme terminée, ou sur la croix pour la passer. Une tâche passée ne réapparaît jamais.
+- La plupart des tâches se cochent toutes seules quand Marinara voit que tu les as faites, par exemple un chat dans ce mode ou une étiquette de sticker. Coche les autres toi-même.
+- **Tout voir** liste toutes les tâches par parcours, avec **Me montrer**. Les tâches d'un parcours apparaissent quand celles dont elles dépendent sont terminées. Les parcours sous **Uniquement dans cette disposition** couvrent les fonctionnalités de la nouvelle disposition.
+- Terminer un parcours débloque son succès **Explorateur**.
+
+Le widget suit le réglage **Conseils sur les fonctionnalités** dans **Paramètres > Général > Confirmations et aide**. Quand les conseils sont désactivés, il affiche les liens vers les guides. La progression est enregistrée dans ce navigateur.
 
 ### Les bases de l'IA et Pour aller plus loin
 
@@ -89,7 +97,7 @@ Chaque étape ouvre son guide au passage utile, mis en évidence, avec une carte
 ## Où trouver de l'aide
 
 - Pose tes questions à Professor Mari sur l'écran d'accueil.
-- Clique sur **Read FAQ** dans le widget **Learn the engine** pour des réponses rapides.
+- Ouvre **Tout voir** dans le widget **À essayer**, puis **Lire la FAQ**, pour des réponses rapides.
 - Clique sur **Docs** dans la barre supérieure pour ouvrir les guides intégrés.
 - Clique sur **Discord** dans le widget **Community** pour rejoindre la communauté, ou sur **Support** pour soutenir le projet.
 

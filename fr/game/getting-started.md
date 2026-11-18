@@ -58,8 +58,9 @@ Avec l'agent **Hierarchical Maps** téléchargé (désormais appelé World Maps,
 | Tone | Heroic | Choix multiple. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** ou **Brutal**. Plus le niveau est élevé, plus les combats sont difficiles : des ennemis plus nombreux et plus puissants dans une partie MRPG (voir [Batailles dans une partie MRPG](combat.md#battles-in-an-mrpg-game)), et des ennemis qui frappent plus fort dans une partie Legacy (voir [L'ajustement selon la difficulté](combat.md#difficulty-scaling)). |
 | Classification du contenu (contenu sexuel) | SFW | **SFW** ou **NSFW**. Cela détermine uniquement le contenu sexuel. NSFW autorise les scènes explicites, il ne les impose pas. |
-| Style de l'histoire | Standard | **Standard** ou **Doux**. Voir [Contenu et style de l'histoire](#content-and-story-style). |
-| Violence | Grave (Explicite avec NSFW) | **Légère**, **Grave** ou **Explicite**. |
+| Style de l'histoire | Standard | **Doux** propose un GM moins stressant. Voir [Style de l'histoire, violence et limites de contenu](#story-style-violence-and-content-boundaries). |
+| Violence | Grave (SFW) ou Explicite (NSFW) | **Légère**, **Grave** ou **Explicite**. Réglée indépendamment de la classification du contenu. |
+| Limites de contenu | Aucune | Les sujets que le GM exclut de l'histoire. |
 | Language | English | Tout le texte en jeu est écrit dans cette langue. |
 | Game Master Mode | Standalone GM | **Character GM** prend une de tes fiches de personnage comme GM. |
 | Scene effects model | Built-in model | Seulement une fois que tu l'as téléchargé. D'ici là, le choix par défaut est **Skip - use inline tags from GM**. |
@@ -71,25 +72,46 @@ Avec l'agent **Hierarchical Maps** téléchargé (désormais appelé World Maps,
 | Start Muted | Off | Démarre la partie avec tout le son coupé. |
 | Game Presentation | Standard | Voir plus bas. |
 
-### Contenu et style de l'histoire
+### Style de l'histoire, violence et limites de contenu
 
-L'étape **Monde** propose ces réglages pour définir ce que l'histoire peut contenir. Dans une partie en cours, ils se trouvent tous dans **Réglages du chat → Preset de prompt**.
+L'étape **Monde** propose quatre réglages qui décident de ce que l'histoire peut contenir et de son intensité. Ils sont regroupés sous **Classification du contenu (contenu sexuel)**. Tu peux tous les modifier après le début de la partie, sauf la classification du contenu. Voir [Les modifier en cours de partie](#change-them-during-a-game).
 
-- **Classification du contenu (contenu sexuel)** : **SFW** garde la romance et l'affection et élude les scènes de sexe. **NSFW** permet de les décrire explicitement. Cela ne détermine ni la violence ni le ton.
-- **Modifier les consignes de classification**, sous la classification, affiche le texte que le Game Master reçoit comme règles de contenu du jeu. Modifie-le selon ta partie ; **Rétablir les valeurs par défaut** restaure le texte par défaut de la classification. Un texte inchangé suit les valeurs par défaut, pour que les améliorations ultérieures profitent à ta partie. Dans une partie en cours, ce réglage s'appelle **Consignes de classification**.
-- **Style de l'histoire** : **Standard** maintient des enjeux élevés : les erreurs et la malchance ont de vraies conséquences. **Doux** convient aux histoires moins stressantes : des revers sans punition ni traumatisme, moins de jets pour ce que ton personnage ne contrôle pas, et une place pour le réconfort et la récupération.
-- **Violence** : **Légère**, **Grave** ou **Explicite**, indépendamment de la classification du contenu. Si tu ne fais pas de choix, elle vaut **Grave** pour SFW et **Explicite** pour NSFW.
-- **Limites de contenu** : les sujets que le Game Master exclut de l'histoire, un par ligne, comme `harm to animals`. Ce sont des limites absolues quels que soient le style ou la classification, et tes propres consignes de classification ne peuvent pas les supprimer. Comme l'histoire est écrite par une IA, il est impossible de garantir qu'un sujet indiqué n'apparaîtra jamais.
+| Réglage | Ce qu'il détermine |
+| --- | --- |
+| **Classification du contenu (contenu sexuel)** | **SFW** : romance et affection, et les scènes de sexe sont éludées. **NSFW** : les scènes de sexe peuvent être décrites explicitement. Cela ne détermine rien d'autre. |
+| **Style de l'histoire** | **Standard** : les erreurs et la malchance ont de vraies conséquences. **Doux** : de vrais défis, mais les revers ne dégénèrent pas en punition ou en traumatisme. |
+| **Violence** | **Légère**, **Grave** ou **Explicite** : la façon dont la violence est montrée. Elle commence à **Grave** pour SFW et **Explicite** pour NSFW, ce que chaque classification a toujours signifié. |
+| **Limites de contenu** | Les sujets que tu ne veux jamais dans l'histoire, un par ligne, comme `harm to animals`. |
 
-Un preset de prompt peut aussi porter ces réglages : dans son onglet **Prompts**, utilise **Réglages de l'histoire du jeu** avec **Appliquer les réglages de l'histoire aux jeux qui utilisent ce preset**. Sa violence peut aussi valoir **Suivre la classification**. Choisir ce preset pour une partie définit son style et sa violence et ajoute ses limites de contenu à celles de la partie. Une scène lancée depuis une partie suit sa classification, ses consignes, sa violence, son style et ses limites de contenu.
+#### Le style d'histoire Doux
 
-<a id="choose-rules"></a>
+Choisis **Doux** si tu veux profiter de l'histoire et de ses personnages sans que le GM punisse chaque faux pas. Avec **Doux** :
+
+- Les revers coûtent du temps, de la face, des ressources ou un détour. Le GM n'y répond pas par une blessure, une humiliation, la perte d'un être cher ou un traumatisme vers lequel tu n'as pas orienté l'histoire.
+- Le GM ne demande un test de compétence que si la compétence ou le choix de ton personnage compte. Il ne lance jamais de dés contre ce que ton personnage ne contrôle pas, comme un handicap, un trouble, son corps ou ses origines. Voir [Tests de compétence dans une partie Doux](dice-and-skill-checks.md#skill-checks-in-a-gentle-game).
+- Le monde est conçu avec chaleur : les arcs naissent autant des espoirs et des relations que des blessures, et les rebondissements te surprennent au lieu de te trahir.
+
+**Doux** remplace seulement les instructions intégrées du GM. Si tu as écrit ton propre **Prompt du GM**, le GM garde ton texte. Le combat, les dégâts et le réglage de difficulté fonctionnent de la même façon dans les deux styles.
+
+#### Limites de contenu
+
+Écris un sujet par ligne, jusqu'à 40 sujets et 2 000 caractères au total. Tout ce qui dépasse l'une ou l'autre limite est ignoré. Le GM traite chaque sujet comme une limite absolue, au-dessus de la classification, du ton, de la personnalité des personnages et de l'intrigue. Il ne les évoque pas, ne les utilise pas comme menace, rebondissement ou passé, et n'y fait pas allusion. Si tu en évoques un toi-même, le GM reste bref et passe à autre chose. Les limites fonctionnent dans les deux styles d'histoire et les deux classifications, et tes propres consignes de classification ne peuvent pas les supprimer.
+
+> **Note :** L'histoire est écrite par un modèle d'IA : Marinara ne peut donc pas garantir qu'un sujet indiqué n'apparaîtra jamais. Si l'un d'eux se glisse dans la réponse, génère un swipe ou modifie-la.
+
+#### Modifier les consignes de classification
+
+Sous les boutons de classification, déplie **Modifier les consignes de classification** pour voir le texte que reçoit le GM pour la classification, la violence et le style d'histoire choisis. Modifie-le pour définir tes propres règles de contenu pour cette partie, ou clique sur **Rétablir les valeurs par défaut** pour revenir au texte intégré. Tant que tu le laisses inchangé, il suit la classification, la violence et le style que tu choisis.
+
+#### Les modifier en cours de partie
+
+Ouvre **Réglages du chat → Preset de prompt**. Pour une partie, cette section contient aussi **Style de l'histoire**, **Violence**, **Limites de contenu** et **Consignes de classification**. Les changements s'appliquent dès le prochain tour. La classification du contenu elle-même est fixée à la création de la partie.
+
+Un preset de prompt peut aussi contenir un style d'histoire, un niveau de violence et des limites, pour les réutiliser dans chaque partie. Voir [Réglages de l'histoire du jeu](../prompts/presets.md#game-story-settings).
 
 ### Choisir les règles
 
 **Rules** n'apparaît que pour une nouvelle partie, et seulement si au moins un ensemble de règles est installé. **Marinara's own rules** (règles propres à Marinara) est le choix par défaut : les tests intégrés au d20 et la fiche à six attributs. Un ensemble de règles comme **5e (SRD 5.1)** les remplace par les tests et la fiche de personnage propres à un système de jeu de rôle sur table, et peut aussi résoudre les combats selon ses propres règles. L'assistant montre ce que couvre chaque ensemble de règles. Le choix est fixé une fois la partie créée. Voir [Jouer avec un ensemble de règles](rulesets.md).
-
-<a id="the-gm-intro-message"></a>
 
 ### Le message d'introduction du GM
 
@@ -123,8 +145,6 @@ Le bouton en forme de bulle, à côté du bouton de pièces jointes (infobulle *
 
 Le mode actif affiche **On** dans le menu. Clique de nouveau sur la même entrée pour le désactiver.
 
-<a id="the-games-controls"></a>
-
 ## Les contrôles du jeu
 
 Sur ordinateur, les contrôles s'ouvrent avec les boutons près du coin supérieur droit du chat. Sur téléphone, ils se trouvent dans le menu à trois points déplaçable **Chat tools** (outils du chat).
@@ -142,8 +162,6 @@ Choisis un outil pour l'ouvrir dans une fenêtre déplaçable sur ordinateur, ou
 Tu peux aussi garder un contrôle dans **Chat Settings**. Ouvre la fenêtre du contrôle et choisis **Put back in Chat Settings** (remettre dans Chat Settings). Il y apparaît alors comme une section repliable, et son bouton de détachement en refait une fenêtre. Chaque partie enregistre ton choix. **Reset View** (réinitialiser la vue) rétablit la disposition de départ.
 
 **Character Profiles** (profils des personnages) reste en dehors de Chat tools, sur ordinateur comme sur téléphone. Fais glisser son bouton en forme de portrait où tu veux, puis ouvre-le pour choisir un membre de l'équipe et consulter ou modifier sa feuille de personnage. Sur téléphone, **Map** (carte) a aussi son propre bouton déplaçable. Les deux suivent le style de widget de ton chat, enregistrent leur position pour cette partie et peuvent être verrouillés depuis leur fenêtre ouverte.
-
-<a id="choosing-a-model"></a>
 
 ## Choisir un modèle
 
@@ -163,8 +181,6 @@ Game Mode fait trois types de requêtes à l'IA :
 1. **La génération du monde.** Une seule fois, quand tu cliques sur **Start Game**. Une grosse requête qui renvoie la présentation du monde, la carte de départ, les PNJ, les feuilles de l'équipe et les widgets.
 2. **Les tours de jeu.** Chaque message construit un nouveau prompt avec l'état courant. Le GM narre et met à jour le monde. C'est le moteur, et non le modèle, qui fait les calculs des rounds de combat : les résultats restent justes.
 3. **Les résumés de session.** Quand tu termines une session, le GM écrit un récapitulatif et des notes de continuité. Quand tu démarres la suivante, il écrit un court message de transition. Les sessions plus anciennes sont compressées en résumés, pour que les longues campagnes tiennent dans le modèle.
-
-<a id="optional-tool-planning-and-lore-searches"></a>
 
 ## Planification facultative des outils et recherches dans le lore
 
@@ -189,8 +205,6 @@ Les agents sont des aides IA facultatives qui tournent aux côtés du GM. Ils fo
 
 ## Dépannage
 
-<a id="world-generation-fails-with-a-json-or-422-error"></a>
-
 ### La génération du monde échoue avec une erreur JSON ou 422
 
 Le modèle n'a probablement pas réussi à produire l'intégralité du JSON. Essaie ceci, dans l'ordre.
@@ -203,7 +217,15 @@ Si un appel a presque abouti, Marinara propose une fenêtre **Repair JSON** (ré
 
 ### Le GM narre gaiement alors que tu as choisi un ton sombre
 
-Certains modèles restent enjoués. Ajoute une consigne claire dans le champ de préférences de l'assistant, par exemple "garde une narration sombre, n'adoucis pas les échecs". Ou passe à un modèle dont la voix par défaut colle au ton.
+Vérifie que le **Style de l'histoire** de la partie est **Standard** : **Doux** garde volontairement des revers légers (voir [Le style d'histoire Doux](#the-gentle-story-style)). Certains modèles restent enjoués. Ajoute une consigne claire dans le champ de préférences de l'assistant, par exemple "garde une narration sombre, n'adoucis pas les échecs". Ou passe à un modèle dont la voix par défaut colle au ton.
+
+### Le modèle refuse un tour
+
+Une notification indique **Le modèle a refusé cette demande** quand le modèle refuse d'écrire le tour. Certains modèles refusent à cause de certaines formulations dans les consignes de classification d'une partie, un preset ou une fiche de personnage. Essaie dans cet ordre :
+
+1. Relance le tour. Certains refus sont ponctuels.
+2. Si tu as modifié les consignes de classification, ouvre **Réglages du chat → Preset de prompt** et rétablis le texte intégré de **Consignes de classification**.
+3. Essaie un autre modèle pour cette partie.
 
 ## Où trouver chaque sujet
 
@@ -222,8 +244,6 @@ Certains modèles restent enjoués. Ajoute une consigne claire dans le champ de 
 
 Les sections ci-dessous décrivent les parties **Overworld**, qui ne sont pas encore disponibles. Ne les lis que si ton serveur les a activées.
 
-<a id="vn-or-overworld"></a>
-
 ### VN ou Overworld
 
 Une nouvelle partie se joue dans l'un de deux modes de jeu, choisi à la première étape et conservé pour toutes ses sessions :
@@ -232,8 +252,6 @@ Une nouvelle partie se joue dans l'un de deux modes de jeu, choisi à la premiè
 - **VN** : Game Mode tel qu'il a toujours été, raconté comme un roman visuel, scène par scène, avec la carte de scène et les combats, et sans kit d'univers, monde, carte du monde, villes ni cartes de donjon.
 
 Overworld est verrouillé tant que la personne qui exploite le serveur ne définit pas `MARINARA_OVERWORLD_GAMES`. Tant qu'il est verrouillé, son encart est grisé avec la note "Overworld games, with a setting kit and a generated world, are not ready yet. New games start as VN games." Toute nouvelle partie est alors une partie VN, et les choix de kit d'univers et de monde n'apparaissent pas. Une partie créée avant l'existence de ce choix continue de se jouer comme avant : avec un monde, c'est une partie Overworld ; sans monde, une partie VN.
-
-<a id="choosing-a-setting-kit"></a>
 
 ### Choisir un kit d'univers
 
@@ -247,8 +265,6 @@ Il y a huit kits : high fantasy, wuxia et xianxia, époque moderne, moderne surn
 - **Download this kit** (télécharger ce kit) enregistre un fichier `.worldkit.json` à partager. **Import a kit file** (importer un fichier de kit) en relit un.
 
 La partie garde le kit avec lequel elle a été créée, et un fichier de configuration partagé l'inclut. Une Experience peut fournir son propre pack de carte (un kit, des cartes toutes prêtes et des tuiles). Avec cette Experience activée, la configuration affiche son kit comme déjà défini et, si elle fournit des cartes, une **Map** à choisir. Désactiver l'Experience te rend tes choix.
-
-<a id="making-a-world"></a>
 
 ### Créer un monde
 
