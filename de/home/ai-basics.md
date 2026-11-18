@@ -34,7 +34,7 @@ Marinara kann mehrere Arten von Modellen nutzen:
 | Art | Was sie macht | Nötig? |
 | --- | --- | --- |
 | **Chat-Modell** | Schreibt die Antworten. | Ja, eines reicht für den Anfang. |
-| **Decision-Modell** | Beantwortet kleine Ja-Nein-Fragen wie „Spielt die Szene jetzt an einem anderen Ort?“. | Optional. |
+| **Decision-Modell** | Beantwortet kleine Fragen zum Chat: mit Ja oder Nein, mit einer von wenigen Optionen oder mit einer Mengenangabe. Manche können auch Bilder ansehen. | Optional. |
 | **Embedding-Modell** | Verwandelt Text in Zahlen, die seine Bedeutung abbilden. So kann Marinara Weltwissen und Erinnerungen nach Bedeutung finden. Es schreibt selbst keinen Text. | Optional. Ein kleines ist eingebaut. |
 | **Bilder lesen** | Ein Modell, das ein Bild ansehen und beschreiben kann. | Optional. |
 | **Bild, Video und Stimme** | Eigene Dienste, die Bilder, Clips und Sprache erzeugen. Ein Chat-Modell kann das nicht. | Optional. |
