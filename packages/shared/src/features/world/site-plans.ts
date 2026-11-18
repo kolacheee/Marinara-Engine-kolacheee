@@ -3664,6 +3664,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // A hidden door that leads past the held room, quick and unseen if the party finds it (panel round 46: one
   // way round is a line to follow, not a choice).
   let secretWay: { x: number; y: number } | null = null;
+  // A locked door past the held room, its key in another room (panel round 47: a choice with a price).
+  let sideLock: { x: number; y: number; region: number } | null = null;
   // From where the party comes onto the floor to the way on there is the main way, and the holders keep a room
   // on it; where no second way misses the main way's rooms, a door is opened to make one, so a careful party
   // can go round (a door between two spaces either side of it, or two doors through a space between).
@@ -3836,6 +3838,29 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         secretWay = doorAt;
         return true;
       };
+      // A door straight past the held room, locked, between a space before it and one past it.
+      const lockedOne = (r: number) => {
+        const lone = new Set([r]);
+        const fromStart = reach(start, lone);
+        const fromTarget = reach(target, lone);
+        const usable = (n: number) =>
+          live(n) && !lockedNode(n) && !hiddenNode(n) && !isPassage(n) && n !== r && n !== start;
+        const one = shuffle(
+          edges.filter(
+            (edge) =>
+              !opened.has(edge) &&
+              usable(edge.a) &&
+              usable(edge.b) &&
+              ((fromStart.has(edge.a) && fromTarget.has(edge.b)) || (fromStart.has(edge.b) && fromTarget.has(edge.a))),
+          ),
+        )[0];
+        if (!one) return false;
+        opened.add(one);
+        const doorAt = one.cells[Math.floor(one.cells.length / 2)]!;
+        ground[cell(doorAt.x, doorAt.y)] = "floor";
+        sideLock = { ...doorAt, region: fromTarget.has(one.a) ? one.a : one.b };
+        return true;
+      };
       for (const r of order)
         if (roundOne(r)) {
           postRegion = r;
@@ -3868,6 +3893,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         }
         // Where there is no second way round, a hidden door is the third choice, past fighting or going round.
         if (!planAvoid && !secretWay && random() < 0.85) secretOne(postRegion);
+        // And now and then a locked door past it as well, its key to be fetched from elsewhere.
+        if (random() < 0.6) lockedOne(postRegion);
       }
     }
   }
@@ -4056,6 +4083,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   if (entry) props[cell(entrance.x, entrance.y)] = DUNGEON_EXIT_PROP;
   for (const at of secrets) props[cell(at.x, at.y)] = DUNGEON_SECRET_DOOR_PROP;
+  const sideLockRoom = sideLock ? roomOfRegion.get((sideLock as { region: number }).region) : undefined;
+  if (sideLock && sideLockRoom === undefined) sideLock = null;
+  if (sideLock) props[cell((sideLock as { x: number }).x, (sideLock as { y: number }).y)] = SITE_LOCK_PROP;
   // A priest's hole is shut behind hidden doors: the ways into its well drawn as wall, walked through.
   for (const [n, region] of regions.entries()) {
     if (region.kind !== "stair" || region.room?.name !== "Priest's hole") continue;
@@ -4110,6 +4140,28 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           queue.push(n);
         }
     for (let c = 0; c < size; c++) if (ground[c] === "rock" && !outside[c]) ground[c] = "wall";
+  }
+  // Above, a hole of a cell or three shut in the walls is no ward or light well, only a notch: wall (panel
+  // rounds 40-47: a one-cell green notch in a keep's upper floor).
+  if (level.depth > 0 && !level.inset) {
+    const seen = new Uint8Array(size);
+    for (let c = 0; c < size; c++) {
+      if (seen[c] || ground[c] !== "rock") continue;
+      const part = [c];
+      seen[c] = 1;
+      let edge = false;
+      for (let head = 0; head < part.length; head++) {
+        const at0 = part[head]!;
+        const x = at0 % mapW;
+        if (x === 0 || x === mapW - 1 || at0 < mapW || at0 >= size - mapW) edge = true;
+        for (const n of around(at0))
+          if (!seen[n] && ground[n] === "rock") {
+            seen[n] = 1;
+            part.push(n);
+          }
+      }
+      if (!edge && part.length <= 3) for (const n of part) ground[n] = "wall";
+    }
   }
   // Flooded: water across the rooms' middles, never cutting a room off from its door.
   if (level.flooded)
@@ -4274,6 +4326,28 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const choices = keepers ?? open;
     locks.push({ x: door.x, y: door.y, room: door.room, key: choices[Math.floor(random() * choices.length)]! });
     keyRooms.push(rooms[locks[locks.length - 1]!.key]!);
+  }
+  // The side door's key in a room off the main way, never the held room's (the price is the walk to fetch it).
+  // Not into a room that keeps another lock's key: that key stays reached however the floor is walked.
+  if (sideLock && sideLockRoom !== undefined && locks.some((lock) => lock.key === sideLockRoom)) {
+    props[cell((sideLock as { x: number }).x, (sideLock as { y: number }).y)] = -1;
+    sideLock = null;
+  }
+  if (sideLock && sideLockRoom !== undefined) {
+    const away = open.filter((n) => !info[n]?.post && n !== sideLockRoom && !info[n]?.heart);
+    const fetch = away.filter((n) => info[n]?.quiet || !locks.some((lock) => lock.key === n));
+    const choices = fetch.length ? fetch : away;
+    if (choices.length) {
+      const door = sideLock as { x: number; y: number };
+      locks.push({ x: door.x, y: door.y, room: sideLockRoom, key: choices[Math.floor(random() * choices.length)]! });
+      keyRooms.push(rooms[locks[locks.length - 1]!.key]!);
+      // Never where it, with water or the other locks, shuts a key away.
+      if (!reachable()) {
+        locks.pop();
+        keyRooms.pop();
+        props[cell(door.x, door.y)] = -1;
+      }
+    } else props[cell((sideLock as { x: number }).x, (sideLock as { y: number }).y)] = -1;
   }
   // Furniture against each room's back wall (the one facing its door), then rubble in ruined rooms;
   // never closing a way.

@@ -713,7 +713,7 @@ export function DungeonMapView({
             ] as const) {
               if (at(x + dx, y + dy) !== "floor") continue;
               const [ox, oy] = [(x + dx) * T, (y + dy) * T];
-              ctx.fillStyle = "rgba(225, 212, 178, 0.45)";
+              ctx.fillStyle = "rgba(236, 224, 190, 0.55)";
               for (let k = 0; k < 7; k++) {
                 const a = (k / 6) * (Math.PI / 2);
                 const r = T - 4;
@@ -729,7 +729,7 @@ export function DungeonMapView({
                     : dy > 0
                       ? oy + Math.round((1 - Math.cos(a)) * 3)
                       : oy + T - 1 - Math.round((1 - Math.cos(a)) * 3);
-                ctx.fillRect(px, py, 1, 1);
+                ctx.fillRect(px, py, 2, 2);
               }
             }
             continue;
@@ -998,9 +998,12 @@ export function DungeonMapView({
           if (run.length > 1) runs.push(run);
           return runs;
         };
+        // Only where it leaves the main way, fading out: a hint to scout, not the answer drawn whole (panel
+        // round 47: the whole line read as a solved route and a debug trace).
+        const HINT = 6;
         const ways = [
-          { runs: lines(kept?.quietWay ?? []), dash: [5, 5] },
-          { runs: lines(kept?.quietWayLong ?? []), dash: [1, 4] },
+          { runs: lines(kept?.quietWay ?? []).slice(0, 1), dash: [5, 5] },
+          { runs: lines(kept?.quietWayLong ?? []).slice(0, 1), dash: [1, 4] },
         ];
         ctx.save();
         ctx.lineCap = "round";
@@ -1014,11 +1017,15 @@ export function DungeonMapView({
             ctx.strokeStyle = colour;
             ctx.setLineDash(dash);
             for (const line of runs) {
-              ctx.beginPath();
-              line.forEach(({ x, y }, k) =>
-                k ? ctx.lineTo(x * T + T / 2, y * T + T / 2) : ctx.moveTo(x * T + T / 2, y * T + T / 2),
-              );
-              ctx.stroke();
+              const hint = line.slice(0, HINT + 1);
+              hint.slice(1).forEach(({ x, y }, k) => {
+                ctx.globalAlpha = 1 - k / HINT;
+                ctx.beginPath();
+                ctx.moveTo(hint[k]!.x * T + T / 2, hint[k]!.y * T + T / 2);
+                ctx.lineTo(x * T + T / 2, y * T + T / 2);
+                ctx.stroke();
+              });
+              ctx.globalAlpha = 1;
             }
           }
         ctx.restore();
@@ -1051,6 +1058,16 @@ export function DungeonMapView({
               const [bx, by] = [rx - dx, ry - dy];
               if (bx < 0 || by < 0 || bx >= cells.width || by >= cells.height) continue;
               if (!raisedSet.has(by * cells.width + bx)) continue;
+              // Not the foot of the steps at the rail's ends (panel round 47).
+              if (
+                [
+                  [1, 0],
+                  [-1, 0],
+                  [0, 1],
+                  [0, -1],
+                ].some(([ex, ey]) => raisedSet.has((ny + ey!) * cells.width + nx + ex!))
+              )
+                continue;
               ctx.save();
               ctx.beginPath();
               ctx.rect(nx * T, ny * T, T, T);
