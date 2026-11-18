@@ -4717,6 +4717,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       for (let y = box.y; y < box.y + box.h; y++)
         for (let x = box.x; x < box.x + box.w; x++)
           if (props[cell(x, y)] === SEAT || props[cell(x, y)] === ALTAR) dais = { x, y };
+      // A nave's altar is beyond it in the choir: its gallery goes at the west end, by the way in (panel round
+      // 35: a gallery across the nave's crossing end cut the church in two).
+      if (siteBaseName(name) === "Nave" && dais.x === box.x + box.w / 2 && dais.y === box.y + box.h / 2)
+        dais = { x: 2 * dais.x - entrance.x, y: 2 * dais.y - entrance.y };
       // Each side as (walk cell, rail cell) at position b along it, the wall behind the walk.
       const sides = (["N", "S", "W", "E"] as const).map((side) => {
         const along = side === "N" || side === "S" ? box.w : box.h;

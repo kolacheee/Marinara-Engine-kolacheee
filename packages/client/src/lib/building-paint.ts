@@ -1083,7 +1083,7 @@ export function paintBuildingGallery(ctx: Ctx, x: number, y: number, along: "x" 
   if (step)
     for (let k = 0; k < 4; k++) {
       // Treads going down to the hall floor, each a shade darker.
-      const c = ["#b07a44", "#94643a", "#7a5030", "#603e24"][k]!;
+      const c = ["#d6a060", "#b8844a", "#966a3a", "#74502c"][k]!;
       if (along === "x") {
         px(ctx, c, x, y + k * 4, T, 3);
         px(ctx, "#2a170c", x, y + k * 4 + 3, T, 1);

@@ -965,24 +965,72 @@ export function DungeonMapView({
         }
       }
       // What the holders can see, while the party sneaks (owner 2026-11-18, "Add verticality and sightlines";
-      // hidden otherwise): a warm wash over each cell in a guard's view, fading with distance, its edge traced.
-      if (sneaking && cells)
+      // hidden otherwise): a fan from each guard along its facing, fading with distance, cut off where walls
+      // block it (panel round 35: per-cell washes read as a debug flood fill). Under a gallery's rail is a
+      // blind strip its watchers cannot see down into. A chevron at a guard's feet shows which way it looks.
+      if (sneaking && cells) {
+        const railAt = (x: number, y: number) =>
+          x >= 0 && y >= 0 && x < cells.width && y < cells.height && cells.props[y * cells.width + x] === 44;
         for (const guard of guards) {
           if (!guard.face || inFog(guard.x, guard.y)) continue;
-          const seen = dungeonSightCells(cells, guard, guard.face, guard.raised ? 9 : 7);
-          const inView = new Set(seen.map(({ x, y }) => y * cells.width + x));
-          for (const { x, y } of seen) {
-            if (inFog(x, y)) continue;
-            const d = Math.hypot(x - guard.x, y - guard.y);
-            ctx.fillStyle = `rgba(255, 140, 64, ${Math.max(0.1, 0.34 - d * 0.025).toFixed(3)})`;
-            ctx.fillRect(x * T, y * T, T, T);
-            ctx.fillStyle = "rgba(255, 200, 110, 0.85)";
-            if (!inView.has(y * cells.width + x - 1)) ctx.fillRect(x * T, y * T, 1, T);
-            if (!inView.has(y * cells.width + x + 1)) ctx.fillRect(x * T + T - 1, y * T, 1, T);
-            if (!inView.has((y - 1) * cells.width + x)) ctx.fillRect(x * T, y * T, T, 1);
-            if (!inView.has((y + 1) * cells.width + x)) ctx.fillRect(x * T, y * T + T - 1, T, 1);
-          }
+          const range = guard.raised ? 10 : 6;
+          const seen = dungeonSightCells(cells, guard, guard.face, range).filter(
+            ({ x, y }) =>
+              !inFog(x, y) &&
+              !(
+                guard.raised &&
+                [
+                  [1, 0],
+                  [-1, 0],
+                  [0, 1],
+                  [0, -1],
+                ].some(([dx, dy]) => railAt(x + dx!, y + dy!))
+              ),
+          );
+          if (!seen.length) continue;
+          const [gx, gy] = [(guard.x + 0.5) * T, (guard.y + 0.5) * T];
+          const angle = Math.atan2(guard.face.y, guard.face.x);
+          const spread = 0.88;
+          const reach = (range + 0.5) * T;
+          ctx.save();
+          ctx.beginPath();
+          for (const { x, y } of seen) ctx.rect(x * T, y * T, T, T);
+          ctx.clip();
+          const fan = () => {
+            ctx.beginPath();
+            ctx.moveTo(gx, gy);
+            ctx.arc(gx, gy, reach, angle - spread, angle + spread);
+            ctx.closePath();
+          };
+          const light = ctx.createRadialGradient(gx, gy, T * 0.5, gx, gy, reach);
+          light.addColorStop(0, "rgba(255, 150, 70, 0.26)");
+          light.addColorStop(1, "rgba(255, 150, 70, 0.03)");
+          ctx.fillStyle = light;
+          fan();
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255, 196, 110, 0.75)";
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([4, 3]);
+          fan();
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.restore();
+          // Which way it looks: a small chevron just in front of the guard.
+          const [cx, cy] = [gx + Math.cos(angle) * T * 0.75, gy + Math.sin(angle) * T * 0.75];
+          const tip = (r: number, a: number) => [cx + Math.cos(a) * r, cy + Math.sin(a) * r] as const;
+          ctx.beginPath();
+          ctx.moveTo(...tip(4, angle));
+          ctx.lineTo(...tip(4, angle + 2.4));
+          ctx.lineTo(...tip(1.5, angle + Math.PI));
+          ctx.lineTo(...tip(4, angle - 2.4));
+          ctx.closePath();
+          ctx.fillStyle = "#ffcf7a";
+          ctx.strokeStyle = "rgba(20, 10, 4, 0.85)";
+          ctx.lineWidth = 1;
+          ctx.fill();
+          ctx.stroke();
         }
+      }
       // A patrol's beat: a line of footfalls along the walk it keeps, a bar at each end where it turns,
       // outlined so it reads on stone and rugs alike (panel round 26: too faint).
       for (const guard of guards) {
