@@ -1254,8 +1254,19 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
       const opened = new Set(
         ring.filter((n) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my) <= 1),
       );
+      // A second way in, one cell wide, on the chamber's far side from its mouth: a crawl through the
+      // fallen rock (lair panel 5, all five: one throat, no flank, nothing to scout).
+      {
+        const gapTo = (n: number) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my);
+        const crawl = ring
+          .filter((n) => (steps[n] ?? -1) >= 0 && !opened.has(n) && gapTo(n) >= 6)
+          .sort((p, q) => gapTo(q) - gapTo(p) || p - q)[0];
+        if (crawl !== undefined) opened.add(crawl);
+      }
       const near1 = (m: number, n: number) =>
-        Math.abs((m % made.width) - (n % made.width)) + Math.abs(Math.floor(m / made.width) - Math.floor(n / made.width)) <= 1;
+        Math.abs((m % made.width) - (n % made.width)) +
+          Math.abs(Math.floor(m / made.width) - Math.floor(n / made.width)) <=
+        1;
       // The wall thickened outward here and there, so it reads as the cave's own rock and not a ruled line (lair
       // panel 3: a one-cell straight wall read as a debug line).
       const ringSet = new Set(ring);
@@ -1305,7 +1316,9 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
   // The great chamber is the maker's alone: the cave's odds and ends (crates, barrels, a lamp) are cleared
   // from it, the way in and out kept (lair panel 1: an ordinary cave room with a heap in it).
   const keep = new Set([at(made.entrance.x, made.entrance.y), ...(kept.down ? [at(kept.down.x, kept.down.y)] : [])]);
-  const cleared = new Set(cells.filter((c) => made.props[c] !== -1 && made.props[c] !== DUNGEON_EXIT_PROP && !keep.has(c)));
+  const cleared = new Set(
+    cells.filter((c) => made.props[c] !== -1 && made.props[c] !== DUNGEON_EXIT_PROP && !keep.has(c)),
+  );
   const props = [...walledProps].map((char, i) => (cleared.has(i) ? "-" : char)).join("");
   const open = cells.filter(
     (c) => made.ground[c] === "floor" && (made.props[c] === -1 || cleared.has(c)) && !keep.has(c),
@@ -1321,7 +1334,8 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
     width: made.width,
     cells: open,
     doors,
-    walls: (c) => near(c).some((n) => n < 0 || n >= made.ground.length || made.ground[n] === "wall" || made.ground[n] === "rock"),
+    walls: (c) =>
+      near(c).some((n) => n < 0 || n >= made.ground.length || made.ground[n] === "wall" || made.ground[n] === "rock"),
     seed: `${made.seed}:lair`,
   });
   let ground = walledGround;

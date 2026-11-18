@@ -503,6 +503,40 @@ export function DungeonMapView({
         for (let y = 0; y < cells.height; y++)
           for (let x = 0; x < cells.width; x++) if (at(x, y) === "wall") insetWallCell(x, y);
       shadeWallFeet(ctx);
+      // A planned building's lair floor is dug, not built (lair panel 5, all five: the lair floors read as
+      // masonry, not cut from rock): beaten earth and broken rock over the flags everywhere but the great
+      // chamber, which keeps its laid floor as the creature's hall; the solid round it the dark of the deep
+      // rock. Under the furniture and figures, over the tiles.
+      if (kept?.lairKind && kept.lairFeature?.length && kept.roomInfo) {
+        const hash = (a: number, b: number) => ((a * 73856093) ^ (b * 19349663)) >>> 0;
+        const heartAt = kept.roomInfo.findIndex((info) => info?.heart);
+        const hall = heartAt >= 0 ? cells.rooms[heartAt] : undefined;
+        const inHall = (x: number, y: number) =>
+          !!hall && [hall, ...(hall.parts ?? [])].some((b) => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h);
+        for (let y = 0; y < cells.height; y++)
+          for (let x = 0; x < cells.width; x++) {
+            const g = cells.ground[y * cells.width + x];
+            const [ox, oy] = [x * T, y * T];
+            if (g === "rock") {
+              ctx.fillStyle = "rgba(26, 22, 18, 0.88)";
+              ctx.fillRect(ox, oy, T, T);
+              const h = hash(x * 3 + 1, y * 7 + 2);
+              if (h % 3 === 0) {
+                ctx.fillStyle = "rgba(70, 62, 52, 0.5)";
+                ctx.fillRect(ox + (h % 12), oy + ((h >> 4) % 12), 3, 2);
+              }
+              continue;
+            }
+            if (g !== "floor" || inHall(x, y)) continue;
+            ctx.fillStyle = "rgba(58, 46, 34, 0.6)";
+            ctx.fillRect(ox, oy, T, T);
+            for (let n = 0; n < 3; n++) {
+              const h = hash(x * 9 + n * 5, y * 11 - n);
+              ctx.fillStyle = n === 0 ? "rgba(120, 106, 86, 0.45)" : "rgba(24, 18, 12, 0.35)";
+              ctx.fillRect(ox + (h % 13), oy + ((h >> 5) % 13), 2 + (n === 0 ? 1 : 0), 2);
+            }
+          }
+      }
       // A rug in the quiet rooms people live in, under their furniture (panel 2026-11-17).
       if (building)
         cells.rooms.forEach((room, n) => {
@@ -1298,7 +1332,11 @@ export function DungeonMapView({
           glow.addColorStop(1, colour.replace(/[\d.]+\)$/, "0)"));
           ctx.fillStyle = glow;
           for (const { x, y } of dungeonRoomCells(chamber))
-            if (!inFog(x, y) && cells.ground[y * cells.width + x] !== "wall" && cells.ground[y * cells.width + x] !== "rock")
+            if (
+              !inFog(x, y) &&
+              cells.ground[y * cells.width + x] !== "wall" &&
+              cells.ground[y * cells.width + x] !== "rock"
+            )
               ctx.fillRect(x * T, y * T, T, T);
           // A breach's floor scorched round the rift, a dragon's round its heap.
           if (lairKind === "breach" || lairKind === "hoard")
@@ -1655,13 +1693,30 @@ export function DungeonMapView({
           px(4, 0, T - 8, 1, "#f0d27a");
           px(4, T - 1, T - 8, 1, "#d9b25a");
         } else if (lairKind === "den") {
-          // A timber prop under a cracked roof: an upright, its head beam, stone already fallen at its foot.
-          px(8, 2, 3, 13, "rgba(10, 6, 4, 0.7)");
-          px(7, 1, 3, 13, "#7a5530");
-          px(8, 1, 1, 13, "#9c7244");
-          px(3, 1, 11, 2, "#5e3f22");
-          px(2, 12, 3, 2, "#8e8574");
-          px(12, 13, 3, 2, "#a49a88");
+          // A timber prop under a cracked roof: a stout upright braced both ways under its head beam, the
+          // roof's crack drawn above it and stone already fallen at its foot (lair panel 5: a small T read as
+          // a torch).
+          px(9, 2, 4, 14, "rgba(10, 6, 4, 0.7)");
+          px(7, 1, 4, 14, "#7a5530");
+          px(8, 1, 1, 14, "#a07648");
+          px(0, 0, T, 3, "#5e3f22");
+          px(0, 0, T, 1, "#8a6238");
+          for (let k = 0; k < 4; k++) {
+            px(3 + k, 3 + k, 1, 1, "#6a4a28");
+            px(T - 4 - k, 3 + k, 1, 1, "#6a4a28");
+          }
+          px(1, 12, 4, 3, "#8e8574");
+          px(12, 13, 3, 3, "#a49a88");
+          px(4, 15, 2, 1, "#b0a796");
+          ctx.strokeStyle = "rgba(14, 10, 8, 0.85)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(ox - 6, oy - 2);
+          ctx.lineTo(ox + 2, oy - 5);
+          ctx.lineTo(ox + 9, oy - 1);
+          ctx.lineTo(ox + 15, oy - 6);
+          ctx.lineTo(ox + 22, oy - 3);
+          ctx.stroke();
         } else if (lairKind === "breach") {
           // The rift anchor: a black obelisk, its runes lit by the rift.
           // Pale stone against the dark rift, so it reads (lair panel 5 check: a black stone vanished on it).
@@ -1685,6 +1740,9 @@ export function DungeonMapView({
           px(5, 1, 1, 2, "#7a828a");
           px(11, 1, 1, 2, "#7a828a");
           px(8, 1, 1, 3, "#9aa2aa");
+          // Water spilling white through the gate's foot, so it reads as a gate and not a crate (lair panel 5).
+          px(3, 14, 10, 2, "rgba(200, 235, 240, 0.7)");
+          px(5, 16, 7, 1, "rgba(200, 235, 240, 0.45)");
         } else if (lairKind === "hive") {
           // The egg cluster: pale eggs heaped in the comb, each catching the light at its crown.
           for (const [ex, ey] of [

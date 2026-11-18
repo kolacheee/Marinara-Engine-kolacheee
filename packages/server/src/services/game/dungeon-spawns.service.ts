@@ -401,7 +401,9 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     // A lair's throat is held at its side nearest the great chamber, the pair standing across the way in
     // (lair panel 4: servants stood in corners and the chamber was reached unopposed).
     const heartRoom = area.throat
-      ? here.map.rooms[here.map.roomInfo ? here.map.roomInfo.findIndex((info) => info?.heart) : (here.map.lairRoom ?? -1)]
+      ? here.map.rooms[
+          here.map.roomInfo ? here.map.roomInfo.findIndex((info) => info?.heart) : (here.map.lairRoom ?? -1)
+        ]
       : undefined;
     const throat = heartRoom
       ? dungeonRoomCells(room)
@@ -413,8 +415,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
             return gap(p) - gap(q);
           })[0]
       : undefined;
-    const middle =
-      throat ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
+    const middle = throat ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&

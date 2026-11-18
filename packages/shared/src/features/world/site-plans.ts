@@ -5632,43 +5632,43 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
               [1, 1, 1], // the ones who came down and stayed
             ]
           : level.lair
-        ? [
-            [BONES, SKULLS, CHAINS, BONES], // what it dragged down here
-            [BONES, COBWEB, BONES, SWORD], // someone who came for the hoard
-            [SKULLS, CHAINS, BONES, COBWEB], // what its servants keep
-          ]
-        : plan.template === "crypt"
-          ? [
-              [1, 4, 3, 1, 4], // robbers caught by the spikes at the chest
-              [0, 1, 1, 3], // a tomb broken open, its dead dragged out
-            ]
-          : /cell|gaol|oubliette/iu.test(base)
             ? [
-                [CHAINS, BONES, BUCKET, HAY, TIPPED], // a prisoner left to die
-                [CHAINS, TIPPED, SWORD, BUCKET], // a breakout
+                [BONES, SKULLS, CHAINS, BONES], // what it dragged down here
+                [BONES, COBWEB, BONES, SWORD], // someone who came for the hoard
+                [SKULLS, CHAINS, BONES, COBWEB], // what its servants keep
               ]
-            : /guard|barracks|armoury|gate|watch|interrogation|wall walk/iu.test(base)
+            : plan.template === "crypt"
               ? [
-                  [BONES, SWORD, TIPPED, JUG, BONES], // a fight lost
-                  [TIPPED, SWORD, SWORD, CHEST, BONES], // a last stand by the chest
-                  [STOOL, JUG, JUG, TIPPED, CHEST], // dice and drink, left mid-game
+                  [1, 4, 3, 1, 4], // robbers caught by the spikes at the chest
+                  [0, 1, 1, 3], // a tomb broken open, its dead dragged out
                 ]
-              : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
+              : /cell|gaol|oubliette/iu.test(base)
                 ? [
-                    [BARREL, CRATE, TIPPED, BONES, JARS], // broken into, the stores spilt
-                    [CRATE, CRATE, JARS, COBWEB, HAY], // rats' nest
-                    camp,
+                    [CHAINS, BONES, BUCKET, HAY, TIPPED], // a prisoner left to die
+                    [CHAINS, TIPPED, SWORD, BUCKET], // a breakout
                   ]
-                : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
+                : /guard|barracks|armoury|gate|watch|interrogation|wall walk/iu.test(base)
                   ? [
-                      [TIPPED, JUG, TIPPED, BONES, STOOL], // a meal left in a hurry
-                      [JUG, JUG, TIPPED, BARREL, STOOL], // a feast that ended badly
+                      [BONES, SWORD, TIPPED, JUG, BONES], // a fight lost
+                      [TIPPED, SWORD, SWORD, CHEST, BONES], // a last stand by the chest
+                      [STOOL, JUG, JUG, TIPPED, CHEST], // dice and drink, left mid-game
                     ]
-                  : [
-                      [CHEST, TIPPED, JUG, SWORD, CHEST], // ransacked
-                      [BONES, COBWEB, TIPPED, JARS], // someone who never left
-                      camp,
-                    ];
+                  : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
+                    ? [
+                        [BARREL, CRATE, TIPPED, BONES, JARS], // broken into, the stores spilt
+                        [CRATE, CRATE, JARS, COBWEB, HAY], // rats' nest
+                        camp,
+                      ]
+                    : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
+                      ? [
+                          [TIPPED, JUG, TIPPED, BONES, STOOL], // a meal left in a hurry
+                          [JUG, JUG, TIPPED, BARREL, STOOL], // a feast that ended badly
+                        ]
+                      : [
+                          [CHEST, TIPPED, JUG, SWORD, CHEST], // ransacked
+                          [BONES, COBWEB, TIPPED, JARS], // someone who never left
+                          camp,
+                        ];
       const scene = stories[Math.floor(random() * stories.length)]!;
       const steps: Array<[number, number]> = shuffle([
         [1, 0],
@@ -5905,16 +5905,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
                 [SKULLS, SKULLS],
               ]
             : level.depth < 0
-            ? [
-                [CRATE, BARREL],
-                [BARREL, CRATE],
-                [CRATE, CRATE],
-              ]
-            : [
-                [TIPPED, STOOL],
-                [CRATE, BARREL],
-                [T, STOOL],
-              ];
+              ? [
+                  [CRATE, BARREL],
+                  [BARREL, CRATE],
+                  [CRATE, CRATE],
+                ]
+              : [
+                  [TIPPED, STOOL],
+                  [CRATE, BARREL],
+                  [T, STOOL],
+                ];
       const spots: Array<[number, number]> = [
         [box.x + Math.floor(box.w / 3), box.y + Math.floor(box.h / 3)],
         [box.x + Math.floor((2 * box.w) / 3), box.y + Math.floor((2 * box.h) / 3)],
@@ -6191,6 +6191,47 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       for (const b of [box, ...(box.parts ?? [])])
         for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) all.push(cell(x, y));
       const inRoom = new Set(all);
+      // A second way in, hidden: a door in the chamber's wall from another room, as far from its own door
+      // as the walls allow, found only by searching (lair panel 5, all five: one throat, no other way in).
+      {
+        const own = [...doorCells].filter((d) => around(d).some((m) => inRoom.has(m)));
+        const far = (c: number) =>
+          Math.min(
+            ...own.map(
+              (d) => Math.abs((d % mapW) - (c % mapW)) + Math.abs(Math.floor(d / mapW) - Math.floor(c / mapW)),
+            ),
+            99,
+          );
+        let best = -1;
+        for (const c of all)
+          for (const step of [1, -1, mapW, -mapW]) {
+            const w = c + step;
+            const beyond = w + step;
+            if (inRoom.has(w) || ground[w] !== "wall" || ground[c] !== "floor" || props[c] !== -1) continue;
+            if (beyond < 0 || beyond >= ground.length || inRoom.has(beyond) || ground[beyond] !== "floor") continue;
+            if (Math.abs((beyond % mapW) - (c % mapW)) > 2 || props[beyond] !== -1 || linked.has(beyond)) continue;
+            if (best < 0 || far(w) > far(best)) best = w;
+          }
+        if (best >= 0 && far(best) >= 4) {
+          ground[best] = "floor";
+          props[best] = DUNGEON_SECRET_DOOR_PROP;
+        }
+      }
+      // The vampire's brood lie on biers down the middle of its hall: cover to fight round between the piers
+      // (lair panel 5: a bare grid of piers, nowhere to stand behind).
+      if (level.lair === "haven" && box.w >= 9 && box.h >= 7) {
+        const midY = box.y + Math.floor(box.h / 2);
+        for (const fx of [0.3, 0.5, 0.7]) {
+          const x = box.x + Math.round((box.w - 1) * fx);
+          for (const y of [midY, midY + 1, midY - 1]) {
+            const c = cell(x, y);
+            if (ground[c] !== "floor" || props[c] !== -1 || linked.has(c) || doorCells.has(c)) continue;
+            props[c] = TOMB;
+            if (reachable()) break;
+            props[c] = -1;
+          }
+        }
+      }
       const doors = [...doorCells].filter((d) => around(d).some((m) => inRoom.has(m)));
       const open = all.filter(
         (c) =>

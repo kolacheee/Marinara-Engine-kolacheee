@@ -240,7 +240,8 @@ export function dungeonLairFeature(input: {
         (p, q) => fromDoor(q) - fromDoor(p) || fromMid(p) - fromMid(q),
       );
       const heart = middle[Math.floor(random() * Math.min(3, middle.length))]!;
-      return near(heart, Math.max(4, Math.round(cells.length * 0.3))).filter((c) => !input.walls(c) || random() < 0.3);
+      // Never against a wall: a heap cut flat by the wall read as cropped (lair panels 3-5, hoard-keep).
+      return near(heart, Math.max(4, Math.round(cells.length * 0.3))).filter((c) => !input.walls(c));
     }
     case "sanctum": {
       // A ring, every other cell a stone, round the middle.
@@ -264,7 +265,8 @@ export function dungeonLairFeature(input: {
       const nest = new Set(far !== undefined ? near(far, Math.max(4, Math.round(cells.length * 0.14))) : []);
       // Strewn bones keep near the nest (lair panel 2: bones over the whole chamber read as litter).
       const byNest = (c: number) =>
-        far !== undefined && Math.hypot(xy(c)[0] - xy(far)[0], xy(c)[1] - xy(far)[1]) <= Math.max(4, Math.sqrt(cells.length) * 0.6);
+        far !== undefined &&
+        Math.hypot(xy(c)[0] - xy(far)[0], xy(c)[1] - xy(far)[1]) <= Math.max(4, Math.sqrt(cells.length) * 0.6);
       return cells.filter(
         (c) => nest.has(c) || (byNest(c) && (input.walls(c) ? random() < 0.4 : random() < 0.12) && fromDoor(c) > 1),
       );
@@ -303,7 +305,10 @@ export function dungeonLairFeature(input: {
       const byWall = (c: number) =>
         input.walls(c) || [c - 1, c + 1, c - width, c + width].some((n) => inSet.has(n) && input.walls(n));
       return cells.filter(
-        (c) => byWall(c) && fromDoor(c) > 1 && (input.walls(c) || (Math.floor(xy(c)[0] / 3) + Math.floor(xy(c)[1] / 3)) % 4 !== 0),
+        (c) =>
+          byWall(c) &&
+          fromDoor(c) > 1 &&
+          (input.walls(c) || (Math.floor(xy(c)[0] / 3) + Math.floor(xy(c)[1] / 3)) % 4 !== 0),
       );
     }
   }
@@ -557,15 +562,28 @@ export function dungeonLairActionFor(
 
 /** The one thing in each great chamber the party can break mid-fight (owner 2026-11-18, after lair panel 3):
  *  breaking it stops the lair action it feeds. It never acts, and it falls when its maker does. */
-export const DUNGEON_LAIR_ANCHORS: Readonly<Record<DungeonLairKind, { name: string; stops: string; breaks: string }>> = {
-  hoard: { name: "Fire Vent", stops: "lair-dragonfire-vents", breaks: "the vent is choked with rubble" },
-  sanctum: { name: "Ward Stone", stops: "lair-death-ward", breaks: "the ward stone cracks and its light goes out" },
-  haven: { name: "Master's Coffin", stops: "lair-blood-tithe", breaks: "the coffin splinters and the grave earth spills" },
-  den: { name: "Cracked Roof Prop", stops: "lair-den-roof", breaks: "the loose stone comes down at once, harmlessly" },
-  breach: { name: "Rift Anchor", stops: "lair-something-comes", breaks: "the anchor stone shatters and the rift narrows" },
-  drowned: { name: "Sluice Gate", stops: "lair-surge", breaks: "the sluice jams open and the surge drains away" },
-  hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
-};
+export const DUNGEON_LAIR_ANCHORS: Readonly<Record<DungeonLairKind, { name: string; stops: string; breaks: string }>> =
+  {
+    hoard: { name: "Fire Vent", stops: "lair-dragonfire-vents", breaks: "the vent is choked with rubble" },
+    sanctum: { name: "Ward Stone", stops: "lair-death-ward", breaks: "the ward stone cracks and its light goes out" },
+    haven: {
+      name: "Master's Coffin",
+      stops: "lair-blood-tithe",
+      breaks: "the coffin splinters and the grave earth spills",
+    },
+    den: {
+      name: "Cracked Roof Prop",
+      stops: "lair-den-roof",
+      breaks: "the loose stone comes down at once, harmlessly",
+    },
+    breach: {
+      name: "Rift Anchor",
+      stops: "lair-something-comes",
+      breaks: "the anchor stone shatters and the rift narrows",
+    },
+    drowned: { name: "Sluice Gate", stops: "lair-surge", breaks: "the sluice jams open and the surge drains away" },
+    hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
+  };
 
 /** Where a lair's breakable thing stands among its feature's cells, so the map can show it (lair panel 4:
  *  "show it in the scene" had nothing on the map to point at): the vampire's middle coffin, the ward stone
@@ -584,6 +602,8 @@ export function dungeonLairAnchorCell(
   );
   // The comb rings its bowl, so the eggs sit on its inner face, nearest the middle (lair panel 5 check: on
   // the far edge they were outside the bowl).
+  // The den's prop stands in the nest's ring, not out at a stray bone (lair panel 5: in a stream).
+  if (kind === "den") return sorted[Math.floor(sorted.length * 0.35)];
   return kind === "haven" || kind === "sanctum" || kind === "hive" ? sorted[0] : sorted[sorted.length - 1];
 }
 
@@ -619,12 +639,17 @@ export const DUNGEON_LAIR_BOARD: Readonly<Record<DungeonLairKind, string>> = {
 
 /** How each lair's chamber is told in a fight: its own voice, not one line for all (lair panel 2). */
 const DUNGEON_LAIR_NARRATION: Readonly<Record<DungeonLairKind, string>> = {
-  hoard: "Narrate the cavern as part of the dragon: the heap shifting when it moves, heat breathing from the vents before they burn.",
-  sanctum: "Narrate the sanctum as the lich's will made stone: the circle's light tightening, the walls whispering names before the dead answer.",
-  haven: "Narrate the haven as its master's household: candles guttering, the mist leaning toward the living, the bats a sound before they are a sight.",
+  hoard:
+    "Narrate the cavern as part of the dragon: the heap shifting when it moves, heat breathing from the vents before they burn.",
+  sanctum:
+    "Narrate the sanctum as the lich's will made stone: the circle's light tightening, the walls whispering names before the dead answer.",
+  haven:
+    "Narrate the haven as its master's household: candles guttering, the mist leaning toward the living, the bats a sound before they are a sight.",
   den: "Narrate the den as the beast's ground: the smell, the bones underfoot, the roof grumbling before it sheds stone.",
-  breach: "Narrate the breach as a wound in the world: the rift's heat and pull, something moving in the light before it comes through.",
-  drowned: "Narrate the drowned hall as rising cold water: the surge drawing back before it breaks, things brushing legs in the murk.",
+  breach:
+    "Narrate the breach as a wound in the world: the rift's heat and pull, something moving in the light before it comes through.",
+  drowned:
+    "Narrate the drowned hall as rising cold water: the surge drawing back before it breaks, things brushing legs in the murk.",
   hive: "Narrate the hive as one body: the hum rising before the swarm, resin creeping, the brood stirring in the comb.",
 };
 
