@@ -25,7 +25,7 @@ Para uma primeira tentativa, escolha **Static Result** (resultado estático): el
 Regras para nomes e descrições:
 
 - O nome tem de 1 a 100 caracteres. A descrição tem de 1 a 500 caracteres.
-- Duas ferramentas não podem ter o mesmo nome, e uma ferramenta não pode usar um nome integrado, como `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search` ou `update_about_me`. Um conflito mostra uma mensagem como `"your_name" is a reserved built-in tool name.`
+- Duas ferramentas não podem ter o mesmo nome, e uma ferramenta não pode usar um nome integrado, como `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search`, `web_fetch` ou `update_about_me`. Um conflito mostra uma mensagem como `"your_name" is a reserved built-in tool name.`
 - Se você sair do editor com alterações não salvas, uma faixa oferece **Keep editing** (continuar editando), **Discard** (descartar) ou **Save & close** (salvar e fechar).
 
 ## Gerenciar suas ferramentas
@@ -154,6 +154,8 @@ Criar uma ferramenta não faz a IA usá-la. Você também precisa ativar o uso d
 4. Confira se funciona: pergunte à IA algo que a sua ferramenta responde, como "What are your store hours?" no exemplo de `store_hours`. A resposta deve usar o texto da ferramenta.
 
 Com **Enable Tool Use** ativado e nada adicionado abaixo dele, o chat pode usar todas as ferramentas ativadas globalmente que sejam compatíveis com ele: as ferramentas integradas e cada ferramenta personalizada cujo botão liga/desliga está ativado em **Biblioteca → Ferramentas personalizadas**. Os chats de Game também precisam de **Let the GM search lore** (permitir que o GM busque lore) para `search_lorebook`.
+
+> **Observação:** Algumas ferramentas integradas ficam desativadas até você marcá-las, mesmo com **Enable Tool Use** ativado. `web_fetch` é uma delas, porque permite que a IA escolha qual endereço web ler. As ferramentas do Spotify funcionam da mesma forma.
 
 Para limitar um chat a um conjunto escolhido:
 

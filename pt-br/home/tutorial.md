@@ -7,7 +7,7 @@ O tutorial é um tour guiado que começa na primeira vez que você abre Marinara
 1. Abra **Settings → General → Confirmations & Help** (Configurações → Geral → Confirmações e ajuda).
 2. Em **Walkthroughs** (tutoriais), clique em **Replay the welcome tour** (repetir o tour de boas-vindas).
 
-Você também pode clicar em **Replay tutorial** (repetir o tutorial) no widget **Learn the engine** (conhecer o Engine) na tela inicial. O tour recomeça da primeira etapa.
+Você também pode abrir **See all** (ver tudo) no widget **Things to try** (coisas para experimentar) na tela inicial e clicar em **Replay tutorial** (repetir o tutorial). O tour recomeça da primeira etapa.
 
 **Walkthroughs** tem mais dois botões. **Replay the computer walkthrough** (repetir o tutorial de computador, ou de tablet ou celular) repete o tour curto para o tipo de dispositivo que você está usando, e **Show chat mode tips again** (mostrar novamente as dicas dos modos de chat) traz de volta as dicas de cada modo de chat. Veja [Tutoriais para cada dispositivo](#walkthroughs-for-each-device).
 

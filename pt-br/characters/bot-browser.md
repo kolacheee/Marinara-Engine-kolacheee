@@ -11,6 +11,8 @@ O card de personagem é um arquivo que guarda o nome, a personalidade, a saudaç
 
 O Card Browser ocupa toda a área de conteúdo, com o título **Browse character cards online**. Para sair, clique na seta para trás, no canto superior esquerdo.
 
+O botão **Download** no painel **Lorebooks** abre o mesmo navegador, mas nos lorebooks disponíveis para download. Veja [Baixar um lorebook do Chub](../lorebooks/import-export.md#download-a-lorebook-from-chub).
+
 Se você fechar e abrir de novo, a última busca, os filtros e o personagem selecionado continuam lá. Recarregar o aplicativo zera tudo isso.
 
 ## Escolha uma fonte
@@ -100,6 +102,12 @@ Antes de começar: para conversar com o personagem, você vai precisar de uma co
 8. Abra **Characters** (ou **Personas**) para encontrá-lo.
 
 Se não funcionou: leia a mensagem de erro no aviso que aparece na tela. Em **JannyAI**, um bloqueio da Cloudflare é a causa mais comum (veja Solução de problemas, abaixo).
+
+### Atualizar um personagem que você já tem
+
+Se o card que você importa já está na sua biblioteca (baixado antes da mesma página, ou com o mesmo nome e criador), a importação pausa em **Already in your library** (já está na biblioteca). Escolha **Update "Name"** (atualizar "Nome") para atualizar a sua cópia no próprio lugar, **Add as a new character** (adicionar como novo personagem) para manter os dois, ou **Skip this card** (pular este card). Para vincular o card a um personagem que chegou por outro caminho, clique em **Update a character you already have…** (atualizar um personagem que você já tem…) na janela **Import Card** e escolha o personagem na lista. Veja [Atualizar um personagem que você já tem](import-export.md#update-a-character-you-already-have).
+
+Para procurar uma versão mais nova de um card que você baixou aqui, abra o personagem, clique em **⋯** ao lado de **Save** (salvar) e escolha **Check for update** (procurar atualização). O Card Browser abre nesse card.
 
 ### Download as PNG
 

@@ -5,7 +5,7 @@ Encontre o seu sintoma e siga a solução. A maioria dos problemas some depois q
 ## Primeiras tentativas
 
 1. Recarregue a página de forma forçada: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> no Windows ou no Linux, <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> no Mac.
-2. Olhe o console do servidor (a janela de terminal que roda Marinara) e procure linhas de erro em vermelho. Elas costumam apontar o problema de verdade.
+2. Olhe o console do servidor (a janela de terminal que roda Marinara) e procure linhas de erro em vermelho. Elas costumam apontar o problema de verdade. Se o servidor roda em outro lugar (um NAS, um VPS, Docker), abra **Settings → Advanced → Open Console** (Configurações → Avançado → Abrir o console) para ler as mesmas linhas no aplicativo.
 3. Para pedir ajuda, ative antes o **Debug mode** (modo de depuração). Veja [Onde buscar mais ajuda](#get-more-help).
 
 <a id="my-character-does-not-reply"></a>
@@ -88,6 +88,7 @@ Os erros de geração aparecem como um aviso na parte de baixo da tela. Ele most
 | O modelo diz que um parâmetro é obrigatório | Ligue o botão liga/desliga desse parâmetro. |
 | **This model's chat template needs user and assistant messages to take turns** | Alguns modelos locais, como os modelos baseados no Mistral no llama.cpp, precisam de mensagens alternadas. Marinara junta as mensagens seguidas e tenta mais uma vez. Se o erro continuar, defina **Post-Processing Messages** (pós-processamento de mensagens) como **Single User Message** (uma única mensagem do usuário) em **Chat Settings → Advanced Parameters**, ou sirva o modelo com um template de chat menos rígido. |
 | **The AI returned an empty response. Try sending your message again.** | Envie de novo. Se continuar acontecendo, teste outro modelo ou outra conta. |
+| **The model declined this request** | O modelo se recusou a escrever esta resposta. No Game Mode, veja [O modelo recusa um turno](game/getting-started.md#the-model-declines-a-turn). Nos outros modos, tente de novo e depois teste outro modelo, preset ou card de personagem. |
 | **A generation is already in progress for this chat** | Uma resposta ainda está em streaming. Espere ou clique em **Stop** (parar) e depois tente de novo. |
 | **No connections are marked for the random pool** | O roteamento aleatório está ligado, mas nenhuma conta está no conjunto aleatório. Adicione uma ou desligue o roteamento aleatório. |
 | Toda mensagem falha com um erro de rede, e o seu computador só chega à internet por um proxy | Informe o proxy a Marinara. Veja [Proxy HTTP de saída](CONFIGURATION.md#outbound-http-proxy). |

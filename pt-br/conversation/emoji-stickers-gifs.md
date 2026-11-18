@@ -17,7 +17,7 @@ Uma aba **Tools** também aparece quando outras ferramentas de entrada estão at
 
 Um emoji personalizado é uma imagem pequena que você envia uma vez e usa em qualquer chat de Conversation. Em uma mensagem que você escreve, ele é um atalho: o nome entre dois-pontos, como `:kekw:`.
 
-1. Vá para **Emoji** e depois para a aba de estrela **Custom emojis**.
+1. Abra o painel, vá para **Emoji** e depois para a aba de estrela **Custom emojis**.
 2. Clique em **Upload** e escolha um ou mais arquivos de imagem.
 3. Na janela **Name this emoji**, digite um nome e clique em **Add**.
 
@@ -94,15 +94,45 @@ O botão de tag agora mostra o nome. Os mesmos limites de tamanho valem, e uma i
 
 O Marinara diz ao personagem que responde quais emojis e stickers personalizados ele pode usar. Para mudar como ele escolhe, clique na engrenagem **Selection preferences** no topo da aba **Custom emojis** ou **Stickers**. As duas abrem a mesma configuração, salva por chat.
 
-- **Semantic** (padrão): oferece os que melhor combinam com a conversa recente. Ela usa um modelo pequeno no seu próprio computador. Se isso não está disponível, escolhe ao acaso.
+- **Semantic** (padrão): oferece os que melhor combinam com a conversa recente. Ela usa um modelo pequeno no seu próprio computador. Se isso não está disponível, escolhe ao acaso. Quando um personagem responde, os emojis e stickers dele e os compartilhados são classificados juntos, e os dele vencem quando a diferença é pequena.
 - **Random**: oferece um conjunto aleatório a cada resposta.
-- **Tool-call**: um modelo escolhe os adequados a cada resposta. Escolha um modelo em **Select a model...**. Se nenhum está definido ou se ele falha, usa o semântico. É ignorada quando vários personagens respondem em uma rodada de grupo.
+- **Tool-call**: um modelo escolhe os adequados a cada resposta. Escolha um modelo em **Select a model…**. Se nenhum está definido ou se ele falha, usa o semântico. É ignorada quando vários personagens respondem em uma rodada de grupo.
 
 **Max offered (each)** é quantos nomes de emojis e quantos nomes de stickers são oferecidos por turno. O padrão é 20, de 1 a 100.
 
+Se um personagem escrever o nome de um sticker como se fosse um emoji, como `:hug:` em vez de `sticker:hug:`, a resposta mostra o sticker. Isso só acontece quando nenhum emoji personalizado tem esse nome.
+
+### Descreva emojis e stickers
+
+Uma descrição diz o que um emoji ou sticker mostra e a sensação que transmite, por exemplo "gato espiando por cima de um travesseiro; tímido, envergonhado". Ela ajuda quando o nome não diz o que a imagem significa.
+
+- Para escrever uma, clique em **Edit** na aba **Custom emojis** ou **Stickers** e depois no pequeno botão de descrição no canto de um bloco. Para uma imagem marcada na galeria, clique no botão de tag dela e escolha **Add description** (adicionar descrição).
+- Para a IA escrevê-las, clique em **Edit** e depois em **Describe with AI** (descrever com IA). O modelo de **Image reading** (leitura de imagens) olha cada imagem e escreve uma descrição curta. Se algumas já tiverem descrição, escolha **Describe only the … without** (descrever apenas os que não têm) ou **Describe all … again** (descrever todos novamente).
+
+Antes de começar: as descrições por IA precisam de um modelo que leia imagens. Marinara usa o modelo de **Image reading** se você definiu um em **Behind the scenes** (nos bastidores) nas configurações de conexão; caso contrário, usa o modelo dos agentes.
+
+Duas configurações em **Selection preferences** usam as descrições:
+
+- **Use descriptions** (usar descrições; ativada por padrão): classifica pela descrição e pelo nome ao escolher quais oferecer, em **Semantic** e **Tool-call**. Não acrescenta nada ao prompt.
+- **Show descriptions to the model** (mostrar descrições ao modelo; desativada por padrão): também lista a descrição de cada item oferecido ao lado do nome, para o modelo saber o que significa. Acrescenta cerca de 1.000 a 1.800 tokens de entrada por resposta com o padrão de 20 oferecidos.
+
+Descrições usadas apenas para escolher quais itens oferecer não ensinam ao modelo o que um nome significa. Se um nome disser o contrário da sensação que transmite, como um `:fine:` sarcástico, ative **Show descriptions to the model** ou **Show them to the model** (mostrar ao modelo).
+
+### Mostre ao modelo
+
+Normalmente, o modelo vê apenas os nomes dos seus emojis e stickers personalizados. Se o modelo do chat lê imagens, **Show them to the model**, no mesmo painel, também envia imagens para ele saber como cada um é. Isso ajuda mais com nomes que não descrevem a imagem.
+
+- **Off** (desativado; padrão): só os nomes.
+- **Last message** (última mensagem): mostra os emojis e stickers personalizados da mensagem mais recente.
+- **Recent** (recentes): mostra os das últimas mensagens. **Messages to look at** (mensagens a examinar) define quantas, de 2 a 20. O padrão é 6.
+
+**Offered ones on the sheet** (itens oferecidos na folha) acrescenta às imagens essa quantidade de emojis e essa quantidade de stickers oferecidos, de 0 a 30. O padrão é 6. Uma folha comporta até 30 emojis e 12 stickers; os do chat vêm primeiro, então os oferecidos preenchem o espaço restante.
+
+O modelo recebe uma imagem de emojis numerados e uma de stickers numerados a cada resposta, com os nomes exatos em texto. Isso custa tokens de entrada extras a cada resposta (tokens são os pequenos pedaços de texto e imagem pelos quais um serviço cobra), cerca de 1.000 com os valores padrão. Não tem efeito quando o modelo do chat não lê imagens ou **Image captioning** (descrição de imagens) está ativada. Se o modelo recusar imagens, Marinara envia apenas os nomes.
+
 ## As reações usam só os seus emojis personalizados principais
 
-Você pode reagir a uma mensagem com um emoji personalizado, mas só com os emojis que enviou na aba **Custom emojis**. Emojis marcados pela galeria, stickers e GIFs não estão disponíveis como reações. Veja [Reaja e receba notificações](getting-started.md#react-and-get-notified).
+Você pode reagir a uma mensagem com um emoji personalizado, mas só com os emojis que enviou na aba **Custom emojis**. Emojis marcados pela galeria, stickers e GIFs não estão disponíveis como reações. Quando um personagem reage com o nome de um sticker, a reação mostra esse sticker. Veja [Reaja e receba notificações](getting-started.md#react-and-get-notified).
 
 ## Guias relacionados
 

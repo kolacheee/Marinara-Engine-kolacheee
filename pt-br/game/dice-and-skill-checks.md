@@ -101,6 +101,15 @@ Se o total alcançar ou superar a DC, o teste tem sucesso. Duas rolagens passam 
 
 A faixa mostra **CRITICAL SUCCESS**, **SUCCESS**, **FAILURE** ou **CRITICAL FAILURE**.
 
+### Testes de perícia em uma partida Gentle
+
+Em uma partida com o estilo de história **Gentle** (suave), o GM pede menos testes, e a rolagem em si funciona do mesmo jeito. Veja [O estilo de história Gentle](getting-started.md#the-gentle-story-style).
+
+- O GM só pede um teste quando a própria perícia ou escolha do seu personagem pode mudar o resultado.
+- Ele nunca rola contra algo que o personagem não pode controlar ou que faz parte de quem ele é, como uma deficiência, uma condição crônica, o corpo ou a história de vida dele. A história mostra isso como parte dele, com as formas pelas quais ele já se adapta.
+- A gentileza, a confiança e o crescimento entre personagens vêm do que eles fazem juntos, não de uma rolagem.
+- Um teste que falha prejudica a tentativa, não o personagem: ela falha, demora mais, custa algo ou chama atenção. Uma **CRITICAL FAILURE** é uma complicação maior, não uma catástrofe.
+
 ### Vantagem e desvantagem
 
 O GM pode pedir um teste com vantagem (rolar dois d20 e ficar com o maior) ou com desvantagem (ficar com o menor). A faixa mostra o modo ao lado da DC e marca o dado usado. Se o GM pedir as duas coisas ao mesmo tempo, Marinara deixa esse teste como está em vez de adivinhar, então nenhuma faixa aparece para ele.

@@ -52,7 +52,7 @@ Os scripts de regex têm uma página própria, [Biblioteca → Scripts de regex]
 O painel tem quatro abas: **Prompts**, **Regexes**, **Ferramentas** e **Perfis**. Cada aba tem a mesma fileira de botões no topo e um campo de busca. Na aba **Prompts**, use **Criar preset** para criar um preset, **Importar preset** para carregar um arquivo `.json` ou **Selecionar presets** para exportar ou excluir vários de uma vez; **Selecionar todos os presets** marca todos os presets que a busca mostra. A aba **Regexes** guarda os scripts de regex; veja [Scripts de regex](../extending/regex-scripts.md#manage-your-scripts). A aba **Ferramentas** guarda as ferramentas personalizadas; veja [Ferramentas personalizadas](../extending/custom-tools.md). A aba **Perfis** guarda os perfis de configurações de chat; veja [Perfis de configurações](../chats/settings-profiles.md#the-profiles-tab).
 
 - **Search presets** (buscar presets) filtra a lista.
-- O menu de ordenação oferece **Manual order** (ordem manual), **A-Z**, **Z-A**, **Newest** e **Oldest**. Com **Manual order**, arraste uma linha, ou pressione <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> em uma linha selecionada. Em uma tela sensível ao toque, mantenha uma linha pressionada para pegá-la.
+- O menu de ordenação oferece **Manual order** (ordem manual), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens** (mais tokens) e **Fewest tokens** (menos tokens). O tamanho conta o texto próprio das seções ativadas, as instruções que um preset sempre envia. As seções de marcador, como personagem, lorebook e histórico do chat, são preenchidas por chat e não entram na contagem. Cada linha mostra a estimativa. Com **Manual order**, arraste uma linha, ou pressione <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> em uma linha selecionada. Em uma tela sensível ao toque, mantenha uma linha pressionada para pegá-la.
 - **New Folder** (nova pasta) agrupa os presets. Arraste um preset para uma pasta, e dê um duplo clique ou um toque duplo em uma pasta para renomeá-la.
 
 Cada linha mostra o nome, o formato de envelopamento, a quantidade de seções e o autor. O selo **DEFAULT** marca o preset padrão marcado com estrela. Clique em uma linha para abri-la.
@@ -82,7 +82,29 @@ Dois cartões somente leitura mostram as contagens de **Sections** e **Groups**.
 - **Conversation Mode** é uma caixa de texto para o prompt de Conversation deste preset. Deixe vazia para usar o prompt integrado.
 - **Roleplay Mode** não é editável aqui. O Roleplay usa o prompt montado a partir das suas **Sections**.
 - **Game Mode** é uma caixa de texto para o prompt de Game deste preset. Deixe vazia para usar o prompt integrado.
-- **Configurações da história do jogo** define um estilo de história, violência e limites de conteúdo para o Game Mode. Ative **Levar as configurações da história para jogos que usam este preset**: escolher o preset para um jogo passa a definir o estilo e a violência dele e acrescenta esses limites aos do próprio jogo. Veja [Conteúdo e estilo da história](../game/getting-started.md#story-style-violence-and-content-boundaries).
+- **Configurações da história do jogo** leva um estilo de história, violência e limites de conteúdo ao Game Mode. Veja [Configurações da história do jogo](#game-story-settings).
+
+#### Configurações da história do jogo
+
+Um preset pode levar um estilo de história, um nível de violência e limites de conteúdo ao Game Mode, para você não precisar defini-los em cada jogo. Veja [Estilo da história, violência e limites de conteúdo](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Na aba **Prompts**, em **Configurações da história do jogo**, ative **Levar as configurações da história para jogos que usam este preset**.
+2. Escolha um **Estilo da história** e um nível de **Violência**. **Seguir a classificação** mantém a violência de cada jogo no padrão da classificação dele.
+3. Opcional: escreva **Limites de conteúdo**, um por linha.
+4. Clique em **Save**.
+
+Quando você escolhe o preset para um jogo, no assistente de configuração ou em **Configurações do chat → Preset de prompt**, o jogo recebe o estilo da história e a violência do preset. Os limites do preset são acrescentados aos que o jogo já tem, então nenhum limite do próprio jogo é removido. Edições posteriores no preset não mudam os jogos que já o escolheram. A configuração é mantida quando você duplica, exporta ou importa o preset.
+
+#### Configurações da história do jogo
+
+Um preset pode levar um estilo de história, um nível de violência e limites de conteúdo ao Game Mode, para você não precisar defini-los em cada jogo. Veja [Estilo da história, violência e limites de conteúdo](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Na aba **Prompts**, em **Configurações da história do jogo**, ative **Levar as configurações da história para jogos que usam este preset**.
+2. Escolha um **Estilo da história** e um nível de **Violência**. **Seguir a classificação** mantém a violência de cada jogo no padrão da classificação dele.
+3. Opcional: escreva **Limites de conteúdo**, um por linha.
+4. Clique em **Save**.
+
+Quando você escolhe o preset para um jogo, no assistente de configuração ou em **Configurações do chat → Preset de prompt**, o jogo recebe o estilo da história e a violência do preset. Os limites do preset são acrescentados aos que o jogo já tem, então nenhum limite do próprio jogo é removido. Edições posteriores no preset não mudam os jogos que já o escolheram. A configuração é mantida quando você duplica, exporta ou importa o preset.
 
 O **Marinara's Universal Preset** integrado fornece o texto do prompt, mas nenhum parâmetro de geração. As configurações antigas de amostragem, raciocínio, formatação e tokens salvas nele são ignoradas, e no lugar delas valem as configurações da sua conta, as substituições do chat e os padrões do aplicativo. Crie uma cópia editável para personalizá-lo.
 
@@ -179,7 +201,7 @@ Abaixo do menu suspenso, um selo mostra de onde vem o prompt.
 
 A caixa de texto mostra o prompt em uso. Edite-a para criar uma cópia local deste chat. Se o seu texto for idêntico ao do preset ou ao padrão, Marinara o considera não personalizado. Enquanto existe uma edição personalizada, aparece um ícone de redefinir (dica **Reset to default prompt**).
 
-Os chats de Game acrescentam mais controles. **GM prompt style** (estilo de prompt do GM) substitui só o prompt de Game, e uma edição local do chat ainda prevalece. **Extra instructions** (instruções extras) acrescenta texto ao prompt de Game, até 2000 caracteres, como "Write in the style of Terry Pratchett." **Diretrizes de classificação**, **Estilo da história**, **Violência** e **Limites de conteúdo** são as configurações de conteúdo do jogo; veja [Conteúdo e estilo da história](../game/getting-started.md#change-them-during-a-game).
+Os chats de Game acrescentam mais controles. **Estilo da história**, **Violência**, **Limites de conteúdo** e **Diretrizes de classificação** definem o que a história do jogo pode conter. Veja [Alterar durante um jogo](../game/getting-started.md#change-them-during-a-game). Mais dois controles moldam o prompt. **GM prompt style** (estilo de prompt do GM) substitui só o prompt de Game, e uma edição local do chat ainda prevalece. **Extra instructions** (instruções extras) acrescenta texto ao prompt de Game, até 2000 caracteres, como "Write in the style of Terry Pratchett."
 
 ## Blocos de decisão e cache de prompts
 

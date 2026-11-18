@@ -146,7 +146,7 @@ Veja [Provedores de geração de imagens e configuração](../media/image-provid
 
 ## Decisão
 
-Na aba **Decisão**, os botões são **TypeSafe** (endereço padrão `https://api.typesafe.ai`), **Own decision server** e **Built-in model (decisions)**. Os serviços de chat que usam o formato de chat da OpenAI também podem fazer decisões, mas só com um modelo que retorne log-probabilidades (pontuações para cada resposta possível). Um modelo de decisão responde a perguntas de sim ou não sobre o seu chat. Veja [Modelos de decisão](decision-models.md).
+Na aba **Decisão**, os botões são **TypeSafe** (endereço padrão `https://api.typesafe.ai`), **Own decision server** e **Built-in model (decisions)**. A aba também lista **NanoGPT**, **OpenRouter** e **Google Gemini**, que têm modelos de decisão próprios (veja [Pelo NanoGPT](decision-models.md#through-nanogpt) e [Pelo OpenRouter ou Google Gemini](decision-models.md#through-openrouter-or-google-gemini)). Outros serviços de chat que usam o formato de chat da OpenAI também podem fazer decisões, mas só com um modelo que retorne log-probabilidades (pontuações para cada resposta possível). Um modelo de decisão responde a perguntas de sim ou não sobre o seu chat. Veja [Modelos de decisão](decision-models.md).
 
 <a id="audio"></a>
 
@@ -189,7 +189,7 @@ Ative o áudio gerado em cada Game, ou ative **Sound effects** (efeitos sonoros)
 
 ## Embeddings
 
-Os embeddings transformam texto em listas de números para que Marinara encontre textos relacionados. Eles são a base da busca semântica dos lorebooks e do Memory Recall. A maioria dos serviços de chat permite definir um modelo de embedding e, se quiser, uma **Embedding endpoint URL** (URL do endpoint de embedding) em **Semantic search (embeddings)** (busca semântica por embeddings), no editor do modelo.
+Os embeddings transformam texto em listas de números para que Marinara encontre textos relacionados. Eles são a base da busca semântica dos lorebooks e do Memory Recall. A maioria dos serviços de chat permite definir um modelo de embedding e, se quiser, uma **Embedding endpoint URL** (URL do endpoint de embedding) em **More** (mais) → **Semantic search (embeddings)** (busca semântica por embeddings), na janela **Edit model** do modelo.
 
 **Anthropic**, **Claude (Subscription)**, **OpenAI (ChatGPT)** e **Grok CLI (Subscription)** não geram embeddings. Nesses casos, use o menu suspenso **Embedding provider** (provedor de embeddings) para emprestar outra conta, como uma compatível com OpenAI, **Google Gemini** ou o **Built-in model** (modelo embutido).
 

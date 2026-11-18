@@ -57,9 +57,10 @@ Com o agente **Hierarchical Maps** baixado (agora chamado World Maps, veja [Worl
 | Genre | Fantasy | Várias opções permitidas, mais as suas próprias. Um kit de cenário escolhido antes define o próprio gênero. |
 | Tone | Heroic | Várias opções permitidas. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** ou **Brutal**. Níveis mais altos tornam as lutas mais difíceis: mais inimigos, e mais fortes, numa partida MRPG (veja [Batalhas numa partida MRPG](combat.md#battles-in-an-mrpg-game)); inimigos que batem mais forte numa partida Legacy (veja [Ajuste pela dificuldade](combat.md#difficulty-scaling)). |
-| Classificação de conteúdo (conteúdo sexual) | SFW | **SFW** ou **NSFW**. Decide apenas o conteúdo sexual. NSFW permite cenas explícitas, mas não as obriga. |
-| Estilo da história | Padrão | **Padrão** ou **Suave**. Veja [Conteúdo e estilo da história](#content-and-story-style). |
-| Violência | Grave (Gráfica com NSFW) | **Leve**, **Grave** ou **Gráfica**. |
+| Classificação de conteúdo (conteúdo sexual) | SFW | **SFW** ou **NSFW**. Abrange apenas o conteúdo sexual. NSFW permite esse conteúdo, mas não o obriga. |
+| Estilo da história | Padrão | **Suave** é um GM menos tenso. Veja [Estilo da história, violência e limites de conteúdo](#story-style-violence-and-content-boundaries). |
+| Violência | Grave (SFW) ou Gráfica (NSFW) | **Leve**, **Grave** ou **Gráfica**. Definida separadamente da classificação de conteúdo. |
+| Limites de conteúdo | Nenhum | Assuntos que o GM mantém fora da história. |
 | Language | English | Todo o texto dentro do jogo é escrito nesse idioma. |
 | Game Master Mode | Standalone GM | **Character GM** usa um dos seus cards de personagem como GM. |
 | Scene effects model | Built-in model | Só depois que você o baixa. Até lá, o padrão é **Skip - use inline tags from GM**. |
@@ -71,17 +72,42 @@ Com o agente **Hierarchical Maps** baixado (agora chamado World Maps, veja [Worl
 | Start Muted | Off | Começa o jogo com todo o áudio no mudo. |
 | Game Presentation | Standard | Veja abaixo. |
 
-### Conteúdo e estilo da história
+### Estilo da história, violência e limites de conteúdo
 
-A etapa **Mundo** tem estas configurações para o que a história pode conter. Em um jogo em andamento, todas ficam em **Configurações do chat → Preset de prompt**.
+A etapa **Mundo** tem quatro configurações que decidem o que a história pode conter e o peso das consequências. Elas ficam juntas em **Classificação de conteúdo (conteúdo sexual)**. Você pode mudar todas, exceto a classificação de conteúdo, depois que o jogo começa. Veja [Alterar durante um jogo](#change-them-during-a-game).
 
-- **Classificação de conteúdo (conteúdo sexual)**: **SFW** mantém romance e afeto e encerra as cenas de sexo antes de descrevê-las. **NSFW** permite que sejam escritas explicitamente. Isso não diz nada sobre violência ou tom.
-- **Editar diretrizes de classificação**, abaixo da classificação, mostra o texto que o Game Master recebe como regras de conteúdo do jogo. Altere-o para se adequar ao seu jogo; **Redefinir para o padrão** restaura o padrão da classificação. O texto não alterado acompanha o padrão, então melhorias futuras chegam ao seu jogo. Em um jogo em andamento, a opção é **Diretrizes de classificação**.
-- **Estilo da história**: **Padrão** mantém os riscos elevados, então erros e azar trazem consequências reais. **Suave** é para histórias menos tensas: contratempos sem punição ou trauma, menos rolagens para coisas que o seu personagem não pode controlar e espaço para conforto e recuperação.
-- **Violência**: **Leve**, **Grave** ou **Gráfica**, definida separadamente da classificação de conteúdo. Se você não escolher uma, será **Grave** para SFW e **Gráfica** para NSFW.
-- **Limites de conteúdo**: assuntos que o Game Master mantém fora da história, um por linha, como `harm to animals`. São limites absolutos em qualquer estilo ou classificação, e as suas próprias diretrizes de classificação não podem removê-los. Como a história é escrita por IA, não há garantia de que um assunto listado nunca apareça.
+| Configuração | O que decide |
+| --- | --- |
+| **Classificação de conteúdo (conteúdo sexual)** | **SFW**: romance e afeto, e as cenas de sexo terminam antes de serem descritas. **NSFW**: cenas de sexo podem ser escritas explicitamente. Não decide mais nada. |
+| **Estilo da história** | **Padrão**: erros e azar trazem consequências reais. **Suave**: desafios reais, mas os contratempos não chegam a punições ou traumas. |
+| **Violência** | **Leve**, **Grave** ou **Gráfica**: como a violência é mostrada. Começa em **Grave** para SFW e **Gráfica** para NSFW, que é o que cada classificação sempre significou. |
+| **Limites de conteúdo** | Assuntos que você nunca quer na história, um por linha, como `harm to animals`. |
 
-Um preset de prompt também pode incluir essas configurações: na aba **Prompts** do preset, em **Configurações da história do jogo**, com **Levar as configurações da história para jogos que usam este preset**. A violência dele também pode ser **Seguir a classificação**. Escolher esse preset para um jogo define o estilo e a violência dele e adiciona os limites aos que o jogo já tem. Uma cena iniciada a partir de um jogo segue a classificação, as diretrizes, a violência, o estilo e os limites do jogo.
+#### O estilo de história Suave
+
+Escolha **Suave** se quiser aproveitar a história e os personagens sem o GM punir cada deslize. Com **Suave**:
+
+- Os contratempos custam tempo, reputação, recursos ou um desvio. O GM não responde a eles com ferimentos, humilhação, a perda de alguém importante para você ou um trauma para o qual você não conduziu a história.
+- O GM só pede um teste de perícia quando a própria perícia ou escolha do personagem importa. Ele nunca rola contra algo que o personagem não pode controlar, como uma deficiência, uma condição, o corpo ou a origem dele. Veja [Testes de perícia em um jogo Suave](dice-and-skill-checks.md#skill-checks-in-a-gentle-game).
+- O mundo é planejado com acolhimento: os arcos nascem tanto de esperanças e relações quanto de feridas, e as reviravoltas surpreendem você em vez de traí-lo.
+
+**Suave** substitui apenas as instruções integradas do GM. Se você escreveu o seu próprio **GM Prompt**, o GM mantém o seu texto. Combate, dano e a configuração de dificuldade funcionam da mesma forma nos dois estilos.
+
+#### Limites de conteúdo
+
+Escreva um assunto por linha, até 40 assuntos e 2.000 caracteres no total. Tudo que ultrapassar qualquer um desses limites fica de fora. O GM trata cada assunto como um limite absoluto, acima da classificação, do tom, da personalidade de qualquer personagem e do enredo. Ele não menciona esses assuntos, não os usa como ameaça, reviravolta ou história de origem, nem faz alusão a eles. Se você mesmo mencionar um, o GM é breve e segue em frente. Os limites funcionam nos dois estilos de história e nas duas classificações, e as suas próprias diretrizes de classificação não podem removê-los.
+
+> **Nota:** A história é escrita por um modelo de IA, então Marinara não pode garantir que um assunto listado nunca apareça. Se algum aparecer, dê swipe ou edite a resposta.
+
+#### Edite as diretrizes de classificação
+
+Abaixo dos botões de classificação, expanda **Editar diretrizes de classificação** para ver o texto que o GM recebe para a classificação, a violência e o estilo de história escolhidos. Edite-o para definir as suas próprias regras de conteúdo para este jogo ou clique em **Redefinir para o padrão** para voltar ao texto integrado. Enquanto você não o altera, ele acompanha a classificação, a violência e o estilo escolhidos.
+
+#### Alterar durante um jogo
+
+Abra **Configurações do chat → Preset de prompt**. Em um jogo, essa seção também tem **Estilo da história**, **Violência**, **Limites de conteúdo** e **Diretrizes de classificação**. As mudanças valem a partir do próximo turno. A classificação de conteúdo em si fica fixa depois que o jogo é criado.
+
+Um preset de prompt também pode incluir um estilo de história, um nível de violência e limites, para você reutilizá-los em todos os jogos. Veja [Configurações da história do jogo](../prompts/presets.md#game-story-settings).
 
 <a id="choose-rules"></a>
 
@@ -203,7 +229,15 @@ Se a chamada quase deu certo, Marinara oferece a janela **Repair JSON**, com a s
 
 ### O GM narra de forma alegre mesmo com o tom sombrio que você escolheu
 
-Alguns modelos continuam animados. Acrescente uma instrução clara no campo de preferências do assistente, como "mantenha a narração sombria, não suavize os fracassos". Ou troque por um modelo cuja voz padrão combine com o tom.
+Confira se o **Estilo da história** do jogo está em **Padrão**: **Suave** mantém os contratempos leves de propósito (veja [O estilo de história Suave](#the-gentle-story-style)). Alguns modelos continuam animados. Acrescente uma instrução clara no campo de preferências do assistente, como "mantenha a narração sombria, não suavize os fracassos". Ou troque por um modelo cuja voz padrão combine com o tom.
+
+### O modelo recusa um turno
+
+Um aviso diz **O modelo recusou esta solicitação** quando o modelo se recusou a escrever o turno. Alguns modelos recusam por causa de certas formulações nas diretrizes de classificação de um jogo, em um preset ou em um card de personagem. Tente nesta ordem:
+
+1. Tente o turno de novo. Algumas recusas acontecem uma vez só.
+2. Se você editou as diretrizes de classificação, abra **Configurações do chat → Preset de prompt** e restaure **Diretrizes de classificação** para o texto integrado.
+3. Experimente outro modelo para este jogo.
 
 ## Onde fica cada assunto
 

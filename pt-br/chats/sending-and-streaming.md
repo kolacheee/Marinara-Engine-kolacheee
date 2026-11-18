@@ -15,7 +15,7 @@ Se não funcionou: sem um modelo definido para o chat, a resposta falha na hora,
 
 ### Send on Enter
 
-Ele fica em **Configurações → Conversando → Caixa de mensagem**. Há um botão liga/desliga para cada modo de chat.
+Ele fica em **Configurações → Conversando → Caixa de mensagem**. Há um botão liga/desliga para cada modo de chat, salvo no dispositivo em que você o define, então o celular e o computador podem ter configurações diferentes.
 
 | Modo de chat | Padrão | Quando está desligado |
 | --- | --- | --- |

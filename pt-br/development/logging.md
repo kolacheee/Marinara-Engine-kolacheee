@@ -42,7 +42,7 @@ O contexto acompanha tudo iniciado na solicitação, incluindo temporizadores, l
 
 `LOG_DISABLE_REQUEST_LOGGING` funciona como antes e desliga também a linha de cancelamento.
 
-Em `pnpm dev`, pino-pretty oculta `hostname` (seu padrão) e `bootId`. O JSON de produção mantém ambos.
+Um terminal recebe linhas do pino-pretty: `pnpm dev` e um servidor de produção cujo stdout é um terminal (os inicializadores). A saída de produção enviada para outro destino é JSON, um objeto por linha. `LOG_FORMAT=pretty|json` substitui essa escolha, e o inicializador do Termux define `pretty` porque a saída chega ao terminal por `tee`. pino-pretty oculta `hostname` (seu padrão) e `bootId`; a saída JSON mantém ambos.
 
 <a id="startup-timeline"></a>
 
@@ -109,11 +109,24 @@ logger.debug({ err }, "[game/scene-wrap] Unparsed LLM response: %s", raw.slice(0
 
 O ajuste de debug da interface continua funcionando por `logDebugOverride`. Esse é o caminho previsto para ver prompts quando `LOG_LEVEL` oculta debug.
 
+Imprima o texto do prompt como está, com `%s`. Para um valor estruturado (um array de mensagens, um corpo de requisição de provedor, uma resposta analisada), passe `debugJson(value)` para `%s`, não `%j` nem `JSON.stringify(value)`. Ele imprime JSON indentado cujas quebras de linha dentro de strings são quebras reais, para que um prompt com várias linhas continue legível, e só renderiza quando a linha é impressa. Uma função replacer que oculta dados vai no segundo argumento, como em `JSON.stringify`. Uma visualização de debug dentro do aplicativo imprime o mesmo texto com `readableJson` de `@marinara-engine/shared`. A regressão `debug-log-line-breaks` cobre isso e a escolha do formato.
+
+Mídia embutida nunca chega inteira ao log. `debugJson` substitui cada conteúdo em base64 por um marcador como `[image/png base64, ~1.2 MB: iVBORw0KGgoAAAA...ElFTkSuQmCC]`: o tipo, o tamanho e os primeiros e últimos 16 caracteres. Isso cobre URLs `data:` (strings inteiras ou dentro de texto) e os campos `data` isolados das partes de mídia da Anthropic e do Google, inclusive quando o base64 está dividido em várias linhas. O serializador `msg` faz o mesmo para URLs `data:` em linhas simples de `%s` e `%j`; um campo `data` isolado só é abreviado por `debugJson`. Só a cópia impressa muda; o valor recebido nunca é editado. `LOG_INLINE_MEDIA=full` no `.env` volta a imprimir o conteúdo inteiro. A regressão `log-inline-media` cobre isso.
+
+## Console dentro do aplicativo
+
+Settings → Advanced → **Open Console** (abrir console) mostra linhas recentes do servidor no aplicativo, para instalações cujo terminal está fora de alcance (um NAS, um VPS, Docker, Termux).
+
+- `lib/log-buffer.ts` mantém as últimas 1.500 linhas em memória, no máximo cerca de 4 milhões de caracteres, com cada mensagem e cada bloco de campos cortado em 16 mil caracteres. Nada é escrito em disco, e reiniciar esvazia o buffer.
+- `logger.ts` copia cada linha serializada para ele por `hooks.streamWrite` do Pino, então o buffer contém o que o terminal ou arquivo de log recebeu, no mesmo `LOG_LEVEL`. Linhas que não passam pelo Pino, como a linha `injected env` do dotenv ou a saída bruta de um processo filho, não estão nele.
+- `GET /api/admin/logs?afterId=` retorna as linhas depois de `afterId`, mais `latestId`, `truncated` (linhas foram descartadas antes desta leitura) e o `logLevel` do servidor. Fica atrás de `requirePrivilegedAccess` e é `no-store`. Roda com `logLevel: "silent"` na rota, então as consultas periódicas do próprio console nunca aparecem nele.
+- As regras desta página também importam aqui: tudo que você registra em warn ou error é o que um administrador remoto lê no aplicativo, então mantenha prompts e corpos de provedor em debug.
+
 <a id="checks"></a>
 
 ## Verificações
 
-As regressões `logging-request-trail`, `logging-failure-lines` e `logging-startup-timeline` cobrem esta página:
+As regressões `logging-request-trail`, `logging-failure-lines` e `logging-startup-timeline` cobrem esta página, e `server-console-logs` cobre o console dentro do aplicativo:
 
 ```sh
 node scripts/run-regressions.mjs --filter logging-

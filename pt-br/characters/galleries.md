@@ -1,6 +1,6 @@
 # Galerias de personagem e de persona
 
-A **Galeria**, parte da aba **Imagens** dos editores de personagem e de persona, guarda imagens e vídeos vinculados a um personagem ou a uma persona, e eles continuam lá mesmo se você excluir chats. Use a aba para fichas de referência, variações de roupa e pacotes de imagens importados. Você também pode marcar uma imagem da galeria como emoji personalizado, sticker (figurinha) ou plano de fundo que acompanha o personagem em todos os chats.
+A **Galeria**, parte da aba **Imagens** dos editores de personagem e de persona, guarda imagens e vídeos vinculados a um personagem ou a uma persona, e eles continuam lá mesmo se você excluir chats. Use a aba para fichas de referência, variações de roupa e pacotes de imagens importados. Você também pode criar novas imagens com IA e marcar uma imagem da galeria como emoji personalizado, sticker (figurinha) ou plano de fundo que acompanha o personagem em todos os chats.
 
 ## Encontre a Galeria
 
@@ -28,6 +28,39 @@ Clique em uma imagem para vê-la maior. Cada miniatura tem um controle de downlo
 3. Espere o upload terminar.
 
 Os tipos compatíveis são MP4, WebM e MOV. Os vídeos mais recentes aparecem primeiro. Para ver quais vídeos de cena e trechos aparecem para cada personagem, veja [Quais vídeos aparecem na lista](#which-videos-are-listed).
+
+## Criar imagens com IA
+
+**Criar com IA** na Galeria cria novas imagens para este personagem ou esta persona com a sua conexão de geração de imagens. Escolha o que criar em **Tipo**:
+
+| Tipo | O que você recebe |
+| --- | --- |
+| **Ficha de personagem** | Uma ficha de referência, salva do mesmo jeito que na seção **Ficha de personagem**. |
+| **Plano de fundo** | Uma imagem larga de um lugar, a partir do cenário do card. Ela é salva na Galeria e marcada como plano de fundo do chat. |
+| **Folha de figurinhas** | Uma imagem com vários stickers, recortada em uma imagem por sticker. |
+| **Folha de emojis** | O mesmo, como pequenos emojis de rosto. |
+
+Antes de começar: adicione uma conexão de geração de imagens.
+
+1. Abra **Imagens → Galeria** e clique em **Criar com IA**.
+2. Escolha um **Tipo** e edite o prompt se quiser outro visual ou lugar.
+3. Para uma folha de stickers ou emojis, liste os nomes em **Figurinhas a desenhar** ou **Emojis a desenhar**, separados por vírgulas. Cabem até 16 em uma folha.
+4. Clique em **Gerar**.
+5. Clique em **Salvar como plano de fundo**, **Salvar figurinhas** ou **Salvar emojis**, ou em **Salvar como ficha de personagem**.
+
+### Corrigir o recorte de uma folha
+
+Depois que uma folha de stickers ou emojis é gerada, cada sticker é encontrado pelo contorno, o fundo verde é removido e ele aparece em uma miniatura própria com o nome. Os stickers salvos têm no máximo 512 por 512 pixels e os emojis, no máximo 256 por 256, e cada um recebe uma tag com o nome.
+
+- Clique em uma miniatura para mantê-la ou pulá-la. As miniaturas puladas não são salvas.
+- Edite o nome abaixo de uma miniatura para renomeá-la.
+- Clique em **Recortar de novo com uma caixa** em uma miniatura para colocar uma caixa na folha inteira. Arraste a caixa, puxe os cantos ou desenhe uma nova caixa ao redor do sticker, e clique em **Usar esta caixa**.
+- Clique em **Adicionar figurinha** ou **Adicionar emoji** para recortar um que não foi encontrado.
+- Clique em **Recortar de novo** para recomeçar o recorte e desfazer as suas caixas.
+
+### Escrever o prompt inteiro por conta própria
+
+O prompt enviado ao modelo de imagem é montado a partir dos campos da caixa de diálogo. Para mudar tudo, por exemplo para pedir stickers de coisas de que o personagem gosta e não só do personagem, clique em **Editar prompt completo**. Ele é enviado exatamente como você escreve. Mudanças nos outros campos só entram quando você clica em **Recriar**, que também substitui as suas edições. Clique no botão de fechar ao lado de **Recriar** para voltar ao prompt montado.
 
 ## Marcar uma imagem da galeria como emoji ou sticker personalizado
 
@@ -65,6 +98,17 @@ O botão passa a mostrar **Plano de fundo:** com os lugares. Clique nele para **
 As imagens criadas em um chat podem ser movidas para cá a partir da Galeria do chat com o botão de pessoa. Veja [A galeria do chat](../chats/chat-gallery.md#per-image-actions).
 
 Exportar como **Marinara Native** mantém todas as marcações (emoji, sticker e plano de fundo) junto com a galeria.
+
+## Descrever imagens
+
+Qualquer imagem da galeria pode ter uma descrição curta do que mostra. Os chats de Conversation usam as descrições dos emojis e stickers marcados para escolher quais oferecer (veja [Descrever emojis e stickers](../conversation/emoji-stickers-gifs.md#describe-emojis-and-stickers)). A descrição fica salva com a imagem e acompanha uma exportação **Marinara Native**.
+
+- Para escrever uma, clique no botão de tag no canto superior esquerdo da imagem e escolha **Adicionar descrição**, ou **Editar descrição** para alterá-la.
+- Para a IA escrever as descrições, clique em **Selecionar imagens**, escolha as imagens e clique em **Descrever com IA**. O modelo de **Leitura de imagens** examina cada uma e escreve uma descrição curta. Se algumas já tiverem descrição, escolha descrever só as que estão sem descrição ou todas de novo.
+
+Antes de começar: as descrições por IA precisam de um modelo que leia imagens. Marinara usa o modelo de **Leitura de imagens** se você definir um em **Nos bastidores** nas configurações da conexão; caso contrário, usa o modelo dos agentes. São enviadas até 8 imagens por vez, então uma seleção grande demora um pouco.
+
+A galeria do próprio chat tem o mesmo **Descrever com IA** no modo de seleção.
 
 <a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
 

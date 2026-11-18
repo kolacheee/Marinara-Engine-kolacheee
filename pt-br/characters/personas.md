@@ -40,7 +40,7 @@ O painel clássico **Personas** mostra as mesmas pastas e a mesma ordem em uma l
 | **Import** (importar) | Abre a janela **Import Persona**. |
 | **Select** (selecionar) | Liga o modo de seleção para excluir e exportar em massa. |
 | Caixa de busca | Texto de exemplo **Search personas/tags** (buscar personas/tags). Procura no nome, na descrição, no comentário e nas tags. Para buscas por tag, veja [Busca](library-organization.md#search). |
-| Menu suspenso de ordenação | **Manual order** (ordem manual), **A-Z**, **Z-A**, **Newest**, **Oldest** ou **Tokens** (tamanho estimado do prompt). |
+| Menu suspenso de ordenação | **Manual order** (ordem manual), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens** (mais tokens) ou **Fewest tokens** (menos tokens), com o tamanho estimado também mostrado em cada linha. |
 | **New Folder** (nova pasta) | Cria uma pasta. |
 | **Tags** | Expande a lista de tags para filtrar. |
 

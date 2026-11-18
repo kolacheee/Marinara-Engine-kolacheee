@@ -92,6 +92,10 @@ O menu suspenso de ordenação do painel clássico tem:
 | **Newest** | Os criados mais recentemente primeiro. |
 | **Oldest** | Os criados há mais tempo primeiro. |
 | **Favorites** | Favoritos primeiro, depois o resto. |
+| **Most tokens** (mais tokens) | Cards maiores primeiro, pelo tamanho estimado mostrado em cada linha. As pastas são ordenadas pelo total dos cards delas. |
+| **Fewest tokens** (menos tokens) | Cards menores primeiro. |
+
+As ordenações por tamanho ajudam a encontrar cards para enxugar ou desenvolver. A contagem é uma estimativa do texto do próprio card, não uma contagem feita pelo tokenizador do seu modelo. Personas, lorebooks e presets de prompt oferecem as mesmas duas ordenações.
 
 Para definir uma ordem manual, arraste uma linha para cima ou para baixo, ou pressione <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> em uma linha com foco. Qualquer um dos dois muda a ordenação para **Manual order**.
 

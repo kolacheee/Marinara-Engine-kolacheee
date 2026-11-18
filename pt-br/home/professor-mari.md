@@ -11,7 +11,7 @@ Professor Mari é a assistente integrada da tela inicial. Ela explica o aplicati
 
 Ela abre em uma aba própria. Você também chega até ela de qualquer tela: pressione <kbd>Ctrl</kbd>+<kbd>K</kbd>, digite a sua pergunta e escolha **Ask Prof. Mari**, pressione <kbd>Ctrl</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> no Mac) para abrir a janela pop-up dela ou, no celular, toque no título na barra superior. O cabeçalho dela mostra **Ready to help** quando ela está parada e **Working on it...** enquanto ela trabalha.
 
-Digite a sua mensagem em linguagem comum e pressione <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> quebra a linha. Se você desligar **Enter sends to Professor Mari** (Enter envia para a Professor Mari) nas configurações dela, <kbd>Enter</kbd> quebra a linha e <kbd>Ctrl</kbd>+<kbd>Enter</kbd> envia. A sua primeira mensagem desbloqueia a conquista **Hello World**.
+Digite a sua mensagem em linguagem comum e pressione <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> quebra a linha. Se você desligar **Enter sends to Professor Mari** (Enter envia para a Professor Mari) nas configurações dela, <kbd>Enter</kbd> quebra a linha e <kbd>Ctrl</kbd>+<kbd>Enter</kbd> ou o botão Send envia. O botão liga/desliga fica salvo por dispositivo, então você pode desligá-lo no celular e mantê-lo ligado no computador. A sua primeira mensagem desbloqueia a conquista **Hello World**.
 
 Todas as configurações dela ficam em **Settings → General → Professor Mari → Open** (Configurações → Geral → Professor Mari → Abrir), ou na engrenagem da busca. No computador, os controles deslizantes **Height** (altura) e **Width** (largura), em **Professor Mari window** (janela da Professor Mari), mudam o tamanho da janela dela. No celular, a janela dela ocupa a tela inteira.
 
@@ -39,7 +39,7 @@ Ela lê um item antes de editá-lo e pergunta quando o seu pedido está vago.
 - Criar ou editar um tema, um agente, um preset de prompt ou um rascunho de Personal Extension. O rascunho fica desativado até você ler o código dele e aprová-lo em **Library → Extensions** (Biblioteca → Extensões).
 - Editar uma seção de um preset no próprio lugar, em vez de substituir o preset inteiro.
 - Comparar os agentes disponíveis para download e dizer quais combinam com o seu objetivo. Ela encaminha você para **Library → Agents** (Biblioteca → Agentes) para instalá-los. Veja [Referência dos agentes para download](../agents/built-in-agents.md).
-- Gerar ou atribuir imagens, como avatares, sprites, planos de fundo e imagens de um tema, além de recortar, aparar, redimensionar ou remover um fundo de cor uniforme delas. Antes, você precisa de uma conta de geração de imagens. Ela não cria essa conta. Para a arte de temas, veja [Peça à Professor Mari para criar a arte](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
+- Gerar ou atribuir imagens, como avatares, sprites, planos de fundo e imagens de um tema, além de recortar, aparar, redimensionar ou remover um fundo de cor uniforme delas. Antes, você precisa de uma conta de geração de imagens. Ela não cria essa conta. Para a arte de temas, veja [Peça à Professor Mari para criar a arte](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art). Clique em uma imagem que ela criou para abri-la em tamanho completo, ler o prompt usado, baixá-la ou editar o prompt e gerá-la novamente. A nova imagem substitui a antiga na resposta dela.
 - Consultar páginas públicas de wikis do Fandom quando você pesquisa um personagem ou um mundo.
 
 ### Comece com uma sugestão
@@ -136,7 +136,7 @@ Um vínculo é enviado uma única vez, com a mensagem em que você o adiciona. D
 
 ### Comandos com /
 
-Digite `/` no início de uma linha para listar os comandos dela. Continue digitando para filtrar e pressione <kbd>Enter</kbd>. A lista também mostra as suas Skills e Memories. Escolher um desses itens o vincula, igual ao `@`.
+Digite `/` no início de uma linha ou depois de um espaço para listar os comandos dela, assim uma mensagem pode usar vários. Continue digitando para filtrar e pressione <kbd>Enter</kbd>. A lista também mostra as suas Skills e Memories. Escolher um desses itens o vincula, igual ao `@`.
 
 | Comando | O que faz |
 | --- | --- |
@@ -233,7 +233,7 @@ Quando um pedido falha, o chat guarda o motivo e mostra **Retry** (tentar novame
 
 ## Ler o FAQ
 
-Clique em **Read FAQ** (ler o FAQ) no widget **Learn the engine** (conhecer o Engine) na tela inicial (ou no favorito **FAQ** no layout clássico) para abrir o **Professor Mari's FAQ** (FAQ da Professor Mari). É uma lista fixa já escrita, não o chat com a IA, então ela não conhece a sua configuração. Digite em **Search FAQ** (buscar no FAQ) para filtrar. Cada pergunta tem uma tag de categoria, como **Setup**, **Connections** ou **Game Mode**. Toque em uma pergunta para ler a resposta.
+Abra **See all** (ver tudo) no widget **Things to try** (coisas para experimentar) na tela inicial e clique em **Read FAQ** (ler o FAQ) (ou no favorito **FAQ** no layout clássico) para abrir o **Professor Mari's FAQ** (FAQ da Professor Mari). É uma lista fixa já escrita, não o chat com a IA, então ela não conhece a sua configuração. Digite em **Search FAQ** (buscar no FAQ) para filtrar. Cada pergunta tem uma tag de categoria, como **Setup**, **Connections** ou **Game Mode**. Toque em uma pergunta para ler a resposta.
 
 ## Limites e segurança
 

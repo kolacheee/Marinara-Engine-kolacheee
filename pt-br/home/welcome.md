@@ -68,7 +68,7 @@ A Professor Mari pode criar um widget pessoal para você, se você pedir. Os age
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari** (falar com a Professor Mari) abre o chat dela. | Sim |
 | **Recent chats** (chats recentes) | Os seus chats mais recentes. Clique em um para reabri-lo. Vazio: **Your chats will show here** (os seus chats vão aparecer aqui). | Sim |
-| **Learn the engine** (conhecer o Engine) | Links para **Documentation**, **Replay tutorial** (repetir o tutorial) e **Read FAQ** (ler o FAQ). | Sim |
+| **Things to try** (Coisas para experimentar) | As próximas três pequenas tarefas para experimentar, um recurso por vez. Quando você experimenta todas ou desativa as dicas, mostra **Documentation**, **Replay tutorial** (repetir o tutorial) e **Read FAQ** (ler o FAQ). Veja [Coisas para experimentar](#things-to-try). | Sim |
 | **What's New** (novidades) | **See what's new** (ver as novidades) e **Read release notes** (ler as notas de versão). | Sim |
 | **Community** (comunidade) | Links para **Discord**, **Support** e **Credits**. | Sim |
 | **Character Library** (biblioteca de personagens) | Uma seleção nova dos seus personagens a cada dia. | Não |
@@ -76,6 +76,18 @@ A Professor Mari pode criar um widget pessoal para você, se você pedir. Os age
 | **Character of the Day** (personagem do dia) | Um personagem da sua biblioteca, com **Start a chat** (começar um chat) e **View character** (ver o personagem). | Não |
 | **Clock & calendar** (relógio e calendário) | A data e a hora de hoje. | Não |
 | **Achievements** (conquistas) | As suas conquistas mais recentes e as mais perto de sair. Precisa da configuração Achievements ativada. | Não |
+
+## Coisas para experimentar
+
+O widget **Things to try** sugere os próximos três recursos para experimentar. Cada tarefa parte da anterior: uma imagem da galeria vira um adesivo, e o adesivo é enviado em um chat.
+
+- Clique em uma tarefa para abrir o lugar correspondente no aplicativo. Se ela não tiver um lugar, o guia dela se abre.
+- Clique na marca de seleção para concluí-la ou no X para pulá-la. Uma tarefa pulada nunca aparece de novo.
+- A maioria das tarefas se marca automaticamente quando Marinara vê que você as fez, como um chat naquele modo ou uma etiqueta de adesivo. Marque as outras por conta própria.
+- **See all** (ver tudo) lista todas as tarefas por trilha, com **Show me** (mostre-me). As tarefas de uma trilha aparecem quando aquelas das quais dependem estão concluídas. As trilhas em **Only in this layout** (só neste layout) cobrem recursos do novo layout.
+- Concluir uma trilha desbloqueia a conquista **Explorer** (Explorador) dela.
+
+O widget segue **Feature tips** (Dicas de recursos) em **Settings > General > Confirmations & Help** (Configurações > Geral > Confirmações e ajuda). Com as dicas desativadas, ele mostra os links dos guias. O progresso fica salvo neste navegador.
 
 ### Noções básicas de IA e Aprofundamentos
 
@@ -89,7 +101,7 @@ Cada item abre o guia no trecho relevante, em destaque, com um cartão abaixo qu
 ## Onde buscar ajuda
 
 - Pergunte à Professor Mari na tela inicial.
-- Clique em **Read FAQ** no widget **Learn the engine** para respostas rápidas.
+- Abra **See all** no widget **Things to try** e depois **Read FAQ** para respostas rápidas.
 - Clique em **Docs** na barra superior para ler os guias dentro do aplicativo.
 - Clique em **Discord** no widget **Community** para falar com a comunidade, ou em **Support** para apoiar o projeto.
 

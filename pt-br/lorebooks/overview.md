@@ -67,9 +67,22 @@ A aba também tem estes botões liga/desliga.
 
 O painel **Semantic search (embeddings)**, abaixo dos botões liga/desliga, é tratado em [Busca semântica para lorebooks](semantic-search.md).
 
+## Dar uma imagem a um lorebook
+
+A imagem aparece na página **Lorebooks** (na tabela e nos cartões da galeria) e nos seletores de lorebook.
+
+1. Abra o lorebook e clique em **Book settings** (configurações do livro). **Picture** (imagem) fica ao lado de **Enabled**.
+2. Clique em **Upload** (enviar) ou **Replace** (substituir) e escolha um arquivo, ou clique em **Generate with AI** (gerar com IA) para criar uma capa com a sua conexão de geração de imagens. **Generate with AI** aparece depois que você configura uma.
+3. Clique em **Adjust crop** (ajustar o recorte) ou na imagem pequena. Arraste o quadrado sobre a imagem para escolher a parte que aparece e arraste os cantos para mudar o tamanho dele.
+4. Clique em **Save** (salvar).
+
+Uma imagem nova começa sem recorte. Para tirar a imagem, abra **Adjust crop** e clique em **Remove** (remover).
+
+No layout clássico, a imagem fica na seção **Image** (imagem) no topo da aba **Overview** do lorebook, com os mesmos botões.
+
 ## A página Lorebooks
 
-Abra **Library → Lorebooks**. No topo ficam **Import** (importar, veja [Importar e exportar lorebooks](import-export.md)) e **New lorebook** (novo lorebook). Abaixo deles:
+Abra **Library → Lorebooks**. No topo ficam **Browse online** (navegar on-line: lorebooks que você pode baixar do Chub, veja [Importar e exportar lorebooks](import-export.md#download-a-lorebook-from-chub)), **Import** (importar, veja [Importar e exportar lorebooks](import-export.md)) e **New lorebook** (novo lorebook). Abaixo deles:
 
 - **All kinds** (todos os tipos) limita a lista aos lorebooks **Global**, **World**, **Character**, **NPC** ou **Spellbook**.
 - **List** (lista) e **Gallery** (galeria) alternam entre uma tabela e cartões com imagens.
@@ -86,7 +99,9 @@ Clique em um lorebook para abri-lo.
 
 ## No layout clássico: o painel Lorebooks
 
-O painel clássico mostra as mesmas pastas e a mesma ordem em uma lista. No topo do painel, três botões de ícone mostram o nome quando você passa o mouse sobre eles.
+O painel clássico mostra as mesmas pastas e a mesma ordem em uma lista. No topo do painel, **Download** (baixar) abre o Card Browser nos lorebooks disponíveis para download, e **Open Library** (abrir biblioteca) abre a biblioteca de lorebooks, uma página inteira com os seus lorebooks, suas imagens, descrições e contagens de entradas. Clique em um lorebook ali para vê-lo maior; **Edit Lorebook** (editar lorebook) abre o editor, e **Active** (ativo) liga ou desliga o lorebook para todos os chats.
+
+Abaixo deles, três botões de ícone mostram o nome quando você passa o mouse sobre eles.
 
 - **New** abre a janela **Create Lorebook**.
 - **Import** (importar) abre a janela **Import Lorebook** (importar lorebook). Veja [Importar e exportar lorebooks](import-export.md).
@@ -96,7 +111,7 @@ Abaixo dos botões:
 
 - **Search lorebooks** (buscar lorebooks) filtra por nome, descrição, nomes de personagem ou persona vinculados e tags. `tag:name` também funciona aqui.
 - **Tags**, ao lado da caixa de busca, mostra só os lorebooks com todas as tags que você escolher, ou **Untagged** (sem tags). Veja [Tags](../characters/library-organization.md#tags).
-- **Sort order** (ordem de exibição) oferece **Manual order**, **A-Z**, **Z-A**, **Newest**, **Oldest** e **Token Budget**. Com **Manual order** (ordem manual), arraste os lorebooks para o lugar, ou use <kbd>Alt</kbd>+<kbd>Up</kbd> e <kbd>Alt</kbd>+<kbd>Down</kbd>.
+- **Sort order** (ordem de exibição) oferece **Manual order**, **A-Z**, **Z-A**, **Newest**, **Oldest**, **Most tokens** (mais tokens) e **Fewest tokens** (menos tokens). As ordenações por tamanho usam o tamanho estimado de todas as entradas de um lorebook, inclusive as desativadas, que também aparece em cada linha. Com **Manual order** (ordem manual), arraste os lorebooks para o lugar, ou use <kbd>Alt</kbd>+<kbd>Up</kbd> e <kbd>Alt</kbd>+<kbd>Down</kbd>.
 - **New Folder** (nova pasta) cria uma pasta de biblioteca. Arraste um lorebook para cima dela. No celular, segure o lorebook e depois arraste. Essas pastas são diferentes das pastas de entradas dentro de um lorebook.
 
 Cada linha tem os botões **Copy** (duplica o lorebook) e **Delete** (excluir). Eles aparecem quando você passa o mouse sobre a linha e ficam sempre visíveis no celular. Um lorebook desativado mostra o selo **OFF**. Clique na imagem para enviar uma ou substituí-la.

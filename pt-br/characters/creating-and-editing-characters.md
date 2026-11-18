@@ -158,11 +158,11 @@ O tamanho da imagem vem do tamanho de imagem **Portraits**, nas configurações 
 
 A aba **Voice** define como o personagem soa quando o Text to Speech lê as falas dele em voz alta.
 
-- **Voice**. A voz deste personagem. Uma mudança é salva na hora, sem **Save**. É a mesma configuração da linha deste personagem em **Connections → Text to Speech** (Conexões → Text to Speech). Deixe em branco para usar a voz padrão. Quando um card com nome correspondente tem uma voz, como o original de uma cópia AU, o campo vazio mostra o nome dessa voz, porque este card também a usa.
+- **Voice**. A voz deste personagem. Uma mudança é salva na hora, sem **Save**. É a mesma configuração da linha deste personagem nas configurações da tarefa **Voice** em **Connections** (Conexões). Deixe em branco para usar a voz padrão. Quando um card com nome correspondente tem uma voz, como o original de uma cópia AU, o campo vazio mostra o nome dessa voz, porque este card também a usa.
 - **Preview** (ouvir). Toca uma frase curta com essa voz. A frase diz o nome do personagem, ou o **Phonetic name**, quando houver um definido.
 - **Phonetic name**. Uma grafia opcional, usada apenas para corrigir a pronúncia. Ele faz parte do card, então clique em **Save** para mantê-lo.
 
-Se o Text to Speech estiver desligado, ou se todos os personagens compartilharem uma única voz, uma observação curta substitui o campo **Voice**. Com uma única voz compartilhada, a observação oferece **Use a voice per character** (usar uma voz por personagem). **Open Text to Speech settings** (abrir as configurações de Text to Speech) abre Connections. Veja [Configuração de Text to Speech (TTS)](../media/tts-setup.md).
+Se o Text to Speech estiver desligado, ou se todos os personagens compartilharem uma única voz, uma observação curta substitui o campo **Voice**. Com uma única voz compartilhada, a observação oferece **Use a voice per character** (usar uma voz por personagem). **Open Text to Speech settings** (abrir as configurações de Text to Speech) abre as configurações da tarefa **Voice** em **Connections**. Veja [Configuração de Text to Speech (TTS)](../media/tts-setup.md).
 
 ## A aba Advanced
 
@@ -204,7 +204,7 @@ Para remover uma alternativa, clique no botão de lixeira dela, confirme com **D
 
 ## Histórico de versões
 
-Enquanto **Automatic versioning** estiver ativado, cada salvamento pode acrescentar um instantâneo ao painel **Version history** da aba **Metadata**. Até lá, o painel mostra `Previous card states will appear here after the next edit.` Um contador mostra quantos instantâneos estão salvos.
+Enquanto **Automatic versioning** estiver ativado, cada salvamento pode acrescentar um instantâneo ao painel **Version history** da aba **Metadata**. Até lá, o painel mostra `Previous card states will appear here after the next edit.` Um contador mostra quantos instantâneos estão salvos. Atualizar o personagem a partir de um card mais novo sempre salva um instantâneo antes, mesmo com o botão desligado. Veja [Atualizar um personagem que você já tem](import-export.md#update-a-character-you-already-have).
 
 Para comparar uma versão salva com o card atual:
 

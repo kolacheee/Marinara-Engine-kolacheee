@@ -42,6 +42,8 @@ Cada parâmetro numérico tem uma caixa de valor e um botão de envio (veja abai
 - Com o botão de envio ligado, **Off** pede ao serviço que desligue o raciocínio, quando se sabe que o modelo aceita isso. Alguns modelos não conseguem desligar o raciocínio e ainda podem devolver raciocínio. Escolha um modelo sem raciocínio quando o raciocínio não puder aparecer.
 - Com o botão de envio desligado, nenhuma preferência de raciocínio é enviada, e o serviço usa o próprio padrão.
 
+MiniMax M3.1 Flash no NanoGPT sempre raciocina. Ele oferece de **Low** a **Max**. O NanoGPT usa **Max** quando não recebe um esforço, e Marinara envia **Low** para um **Off** salvo anteriormente.
+
 **Verbosity** (verbosidade) define o tamanho e o nível de detalhe das respostas: **None**, **Low**, **Medium** ou **High**. Só alguns modelos usam essa configuração.
 
 ## Dicas de ajuste
@@ -156,7 +158,9 @@ A linha **Effective** ao lado de um parâmetro mostra o valor que prevalece e de
 
 ## Parâmetros para agentes
 
-As chamadas dos agentes usam os **Chat defaults** salvos na conta em que eles rodam: a conta do próprio agente, ou a do chat quando o agente não tem uma. Os botões de envio e os limites dos modelos valem como em uma resposta do chat. Os presets e os **Advanced Parameters** de um chat não mudam as chamadas dos agentes, exceto pela regra de temperatura abaixo.
+As chamadas dos agentes usam os **Chat defaults** salvos na conta em que eles rodam: a conta do próprio agente, ou a do chat quando o agente não tem uma. Os botões de envio e os limites dos modelos valem como em uma resposta do chat. As regras abaixo explicam quando os agentes usam os **Advanced Parameters** de um chat.
+
+Em Roleplay, o **Reasoning Effort** de um chat e o botão de envio dele também valem para o **Prompt Model** (modelo de prompt) do Illustrator. Ilustrações automáticas, comandos do narrador e ilustrações manuais usam essa configuração do chat quando você a define. O modelo de reserva usa o próprio esforço salvo quando tem um.
 
 - **Enviados aos agentes:** Temperature, Top P, Top K, Frequency, Presence, Reasoning Effort, Verbosity, Service Tier, Custom Parameters, cabeçalhos personalizados e os parâmetros extras que você acrescenta em **Settings** (Configurações), depois **Advanced** (avançado), depois **Parameters** (como Top A ou uma seed). Um parâmetro com o botão de envio desligado não é enviado.
 - **Não enviados aos agentes:** Max Output Tokens, sequências de parada, prefills, Thinking Tags e outras configurações de formato do prompt. Cada agente mantém o próprio **Max Output Tokens**.
