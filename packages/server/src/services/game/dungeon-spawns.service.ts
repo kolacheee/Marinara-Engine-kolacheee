@@ -412,14 +412,19 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       ];
     }
     // The chief looks to the door; a door's holders look back across the room, the way the party comes.
+    // Panel round 39: a sight cone aimed at a blank wall reads as a mistake, so a holder with another door
+    // in the room watches that door, the one the party comes in by.
+    const entry = door && held && Math.abs(door.x - held.x) + Math.abs(door.y - held.y) > 2 ? door : undefined;
     const face =
       area.role === "heart" && door
         ? stepToward(at, door)
-        : held && (at.x !== centre.x || at.y !== centre.y)
-          ? stepToward(at, centre)
-          : held
-            ? stepToward(held, at)
-            : stepToward(at, door ?? centre);
+        : entry
+          ? stepToward(at, entry)
+          : held && (at.x !== centre.x || at.y !== centre.y)
+            ? stepToward(at, centre)
+            : held
+              ? stepToward(held, at)
+              : stepToward(at, door ?? centre);
     return [
       {
         ...at,

@@ -733,12 +733,24 @@ function paintBuildingDressing(
       return;
     }
     case 22: {
-      // A manger with hay.
-      px(ctx, ink, x + 1, y + 5, 14, 9);
-      px(ctx, wood[0]!, x + 2, y + 6, 12, 7);
-      px(ctx, "#c8b060", x + 3, y + 6, 10, 3);
-      px(ctx, "#e0cc78", x + 4, y + 6, 3, 1);
-      px(ctx, wood[2]!, x + 2, y + 10, 12, 1);
+      // A horse stall: plank partitions either side, a hay rack and trough at its head, loose straw on the floor.
+      px(ctx, "#b89a50", x + 3, y + 7, 3, 1);
+      px(ctx, "#a88a44", x + 9, y + 11, 4, 1);
+      px(ctx, "#b89a50", x + 6, y + 13, 2, 1);
+      for (const sx of [0, 14]) {
+        px(ctx, ink, x + sx, y, 2, T);
+        px(ctx, wood[1]!, x + sx, y, 1, T);
+        px(ctx, wood[2]!, x + sx, y + 5, 2, 1);
+        px(ctx, wood[2]!, x + sx, y + 10, 2, 1);
+      }
+      px(ctx, ink, x + 2, y + 1, 12, 5);
+      px(ctx, wood[0]!, x + 3, y + 2, 10, 3);
+      px(ctx, "#d8c070", x + 4, y + 1, 8, 2);
+      px(ctx, "#f0dc88", x + 5, y + 1, 2, 1);
+      px(ctx, "#f0dc88", x + 9, y + 1, 2, 1);
+      px(ctx, "#c8b060", x + 3, y + 5, 2, 1);
+      px(ctx, "#c8b060", x + 10, y + 5, 3, 1);
+      px(ctx, "#8a8a92", x + 7, y + 6, 2, 1);
       return;
     }
     case 23: {

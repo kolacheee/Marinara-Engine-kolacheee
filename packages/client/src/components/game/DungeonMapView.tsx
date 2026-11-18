@@ -949,7 +949,8 @@ export function DungeonMapView({
       // The way round the held room: a scuffed trail of pale footprints through the rooms left to nobody,
       // so the party can see there is a way past (panel round 30: the quiet way not visible on the map).
       for (const [k, { x, y }] of (kept?.quietWay ?? []).entries()) {
-        if (inFog(x, y) || k % 3 === 2) continue;
+        // Every third cell only, a trail of scuffs rather than a line (panel round 39: overlays noisy).
+        if (inFog(x, y) || k % 3 !== 1) continue;
         const cx = x * T + T / 2;
         const cy = y * T + T / 2;
         for (const [dx, dy] of [
@@ -1113,17 +1114,16 @@ export function DungeonMapView({
         const dot = (x: number, y: number, w: number, h: number) => {
           ctx.fillStyle = "rgba(16, 10, 12, 0.7)";
           ctx.fillRect(x - 1, y - 1, w + 2, h + 2);
-          ctx.fillStyle = "#e8503e";
+          ctx.fillStyle = "#c8453a";
           ctx.fillRect(x, y, w, h);
         };
         for (const [k, { x, y }] of guard.beat.entries()) {
           const cx = x * T + T / 2;
           const cy = y * T + T / 2;
+          // The ends where it turns, and a footfall every other cell between (panel round 39: a line of bright
+          // squares read as debug dots).
           if (k === 0 || k === guard.beat.length - 1) dot(cx - 4, cy - 1, 8, 3);
-          else {
-            dot(cx - 5, cy + (k % 2 ? -3 : 1), 3, 3);
-            dot(cx + 2, cy + (k % 2 ? 1 : -3), 3, 3);
-          }
+          else if (k % 2 === 0) dot(cx + (k % 4 ? -4 : 1), cy - 1, 3, 3);
         }
       }
       // The held post on the main way keeps a light burning beside it: a standing torch and its pool.
@@ -1166,7 +1166,7 @@ export function DungeonMapView({
           }
         // The guards who carry a locked room's key: a gold key over them (panel round 31: who holds it).
         if (guard.key) {
-          const [kx, ky] = [guard.x * T + T - 6, guard.y * T - 10];
+          const [kx, ky] = [guard.x * T + (guard.asleep ? -8 : T - 6), guard.y * T - 10];
           ctx.fillStyle = "rgba(16, 10, 6, 0.8)";
           ctx.fillRect(kx - 1, ky - 1, 6, 6);
           ctx.fillRect(kx + 1, ky + 3, 3, 8);
