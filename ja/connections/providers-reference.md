@@ -146,7 +146,7 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI、Googleの画像と動画�
 
 ## Decision
 
-**Decision**(判定)タブのタイルは、**TypeSafe**(デフォルトのアドレスは`https://api.typesafe.ai`)、**Own decision server**(自分の判定サーバー)、**Built-in model (decisions)**(判定用の内蔵モデル)です。OpenAIのチャット形式を使うチャットサービスも判定に使えますが、対数確率(考えられる各回答のスコア)を返すモデルに限られます。Decisionモデルは、チャットについてのはい・いいえの質問に答えます。[Decisionモデル](decision-models.md)を参照してください。
+**Decision**(判定)タブのタイルは、**TypeSafe**(デフォルトのアドレスは`https://api.typesafe.ai`)、**Own decision server**(自分の判定サーバー)、**Built-in model (decisions)**(判定用の内蔵モデル)です。このタブには、独自のDecisionモデルを持つ**NanoGPT**、**OpenRouter**、**Google Gemini**も並びます([NanoGPT経由](decision-models.md#through-nanogpt)と[OpenRouterまたはGoogle Gemini経由](decision-models.md#through-openrouter-or-google-gemini)を参照)。OpenAIのチャット形式を使うほかのチャットサービスも判定に使えますが、対数確率(考えられる各回答のスコア)を返すモデルに限られます。Decisionモデルは、チャットについてのはい・いいえの質問に答えます。[Decisionモデル](decision-models.md)を参照してください。
 
 ## Audio
 
@@ -189,7 +189,7 @@ Marinaraがデフォルトで使う読み上げ用のアカウントを選ぶに
 
 ## 埋め込み
 
-埋め込みは、テキストを数値の並びに変換し、Marinaraが関連するテキストを見つけられるようにする仕組みです。ロアブックのセマンティック検索とMemory Recallを支えています。ほとんどのチャットサービスでは、モデルエディターの**Semantic search (embeddings)**(埋め込みによるセマンティック検索)で、埋め込みモデルと、任意の**Embedding endpoint URL**(埋め込みエンドポイントのURL)を設定できます。
+埋め込みは、テキストを数値の並びに変換し、Marinaraが関連するテキストを見つけられるようにする仕組みです。ロアブックのセマンティック検索とMemory Recallを支えています。ほとんどのチャットサービスでは、モデルの**Edit model**(モデルの編集)ウィンドウの**More**(その他) → **Semantic search (embeddings)**(埋め込みによるセマンティック検索)で、埋め込みモデルと、任意の**Embedding endpoint URL**(埋め込みエンドポイントのURL)を設定できます。
 
 **Anthropic**、**Claude (Subscription)**、**OpenAI (ChatGPT)**、**Grok CLI (Subscription)**は埋め込みを作れません。これらを使う場合は、**Embedding provider**(埋め込み用のプロバイダー)ドロップダウンで、OpenAI互換のアカウント、**Google Gemini**、**Built-in model**(内蔵モデル)など、ほかのアカウントを借ります。
 

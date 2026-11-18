@@ -7,7 +7,7 @@
 1. **Settings → General → Confirmations & Help**(設定 → 一般 → 確認とヘルプ)を開きます。
 2. **Walkthroughs**(ウォークスルー)にある**Replay the welcome tour**(ようこそツアーをもう一度表示)をクリックします。
 
-ホームの**Learn the engine**(エンジンを学ぶ)ウィジェットにある**Replay tutorial**(チュートリアルをもう一度)をクリックすることもできます。ツアーが最初のステップからもう一度始まります。
+ホームの**Things to try**(試してみよう)ウィジェットで**See all**(すべて見る)を開き、**Replay tutorial**(チュートリアルをもう一度)をクリックすることもできます。ツアーが最初のステップからもう一度始まります。
 
 **Walkthroughs**には、ほかにも2つのボタンがあります。**Replay the computer walkthrough**(コンピューターのウォークスルーをもう一度表示)(端末によってはタブレットまたはスマートフォン)では、今使っている端末の種類に合わせた短いツアーをもう一度見られます。**Show chat mode tips again**(チャットモードのヒントをもう一度表示)では、各チャットモードのヒントが再び表示されるようになります。[端末ごとのウォークスルー](#walkthroughs-for-each-device)を参照してください。
 

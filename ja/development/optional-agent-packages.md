@@ -94,6 +94,9 @@ globalThis.__MARINARA_HOST__ = {
 | `modules` | ライブラリーのモジュール。bare specifier(パスを含まないモジュール名)をキーにします(後述)。 |
 | `queryClient` | Engineが描画に使う唯一のReact Queryの`QueryClient`。 |
 | `components.Modal` | Engineの`Modal`。重なり順、Escapeキー、戻るボタンの処理を含みます。 |
+| `components.Switch`, `components.Checkbox` | Capability API 1.830以降で使えるEngine共通のスイッチとチェックボックスです。パッケージの見た目をホストに合わせられます。 |
+| `components.Spinner` | Capability API 1.830以降で使えるEngine共通の読み込み中のリングです。`label`を渡さない限りスクリーンリーダーには認識されず、渡すとステータス領域になります。 |
+| `components.showConfirmDialog` | Capability API 1.830以降で使えるEngineの確認ダイアログです。`services.dialogs.showConfirmDialog`と同じ関数です。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts`モジュール。 |
 | `api` | `lib/api-client.ts`モジュール(`api`、`ApiError`、`getApiErrorMessage`、...)。 |
 

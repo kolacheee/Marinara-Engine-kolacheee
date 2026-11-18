@@ -40,7 +40,7 @@ Charactersページと同じツールを使えます。カードの**⋯**メニ
 | **Import**(インポート) | **Import Persona**(ペルソナのインポート)ウィンドウを開きます。 |
 | **Select**(選択) | 一括削除と一括エクスポートのための選択モードをオンにします。 |
 | 検索ボックス | プレースホルダーは**Search personas/tags**(ペルソナ/タグを検索)です。名前、説明、コメント、タグに一致するものを探します。タグでの検索については[検索](library-organization.md#search)を参照してください。 |
-| 並べ替えのドロップダウン | **Manual order**(手動の順番)、**A-Z**、**Z-A**、**Newest**、**Oldest**、**Tokens**(プロンプトの推定サイズ)のいずれかです。 |
+| 並べ替えのドロップダウン | **Manual order**(手動の順番)、**A-Z**、**Z-A**、**Newest**、**Oldest**、**Most tokens**(トークンが多い順)、**Fewest tokens**(トークンが少ない順)(推定サイズで、各行にも表示されます)のいずれかです。 |
 | **New Folder**(新しいフォルダー) | フォルダーを作成します。 |
 | **Tags**(タグ) | 絞り込み用のタグ一覧を展開します。 |
 
@@ -77,12 +77,12 @@ Charactersページと同じツールを使えます。カードの**⋯**メニ
 - **Copy**(コピー)付きの**Persona ID**。
 - アバターの切り抜き。
 - **Name**と**Creator**。
+- **Other names**(別名)。ペルソナが使う愛称、フルネーム、称号です。Roleplayのチャットでは、これらにも名前の色を付けられます。[メッセージ内の名前に色を付ける](choosing-your-persona.md#color-your-name-in-messages)を参照してください。
 - **Phonetic name**(読み仮名)。音声合成が自分の名前を読み上げるときにだけ使われます。
 - **Title / Comment**。短いラベルです。
 - **Version**。デフォルトは`1.0`で、**Automatic versioning**(自動バージョン管理)のスイッチがあります。
 - **Tags**。
 - **Creator Notes**。AIには送られません。
-- **Other names**(別名)。ペルソナが使う愛称、フルネーム、称号です。Roleplayのチャットでは、これらにも名前の色を付けられます。[メッセージ内の名前に色を付ける](choosing-your-persona.md#color-your-name-in-messages)を参照してください。
 
 ### Cardタブ
 

@@ -2,8 +2,6 @@
 
 このページではMarinara Engineのサーバーログの読み方と、役立つログの書き方を説明します。[CONTRIBUTING.mdのLogging節](../../CONTRIBUTING.md#logging)を補足するもので、置き換えません。共有Pinoロガー、エラーオブジェクトを先頭に渡す呼び出し、書式指定子、4段階のレベル表は引き続き適用されます。
 
-<a id="what-every-line-carries"></a>
-
 ## 各行の情報
 
 すべてのサーバーログは`packages/server/src/lib/logger.ts`の`logger`という1つのPinoインスタンスから出ます。Fastifyも`loggerInstance`で同じものを使い、`req.log`、`reply.log`、`app.log`はその子です。シリアライザーを共有し、環境監視による`LOG_LEVEL`のホットリロードにも追従します。
@@ -15,8 +13,6 @@
 | `bootId` | 全行 | プロセス起動ごとに新しい8桁の16進文字。同じログファイルの別の実行を区別します。 |
 | `requestId` | リクエスト由来の全行 | 応答ヘッダー`x-request-id`と同じ値。`req.log`だけでなく、サービス内の共有`logger`にも付きます。 |
 | `route` | 本文解析後の行 | 一致したルートパターン。例は`/api/chats/:id`。生のURLは入りません。 |
-
-<a id="request-ids"></a>
 
 ### リクエストID
 
@@ -30,21 +26,17 @@ IDは`AsyncLocalStorage`コンテキスト(`lib/log-context.ts`)に保存し、P
 
 コンテキストはリクエスト内で開始するタイマー、リスナー、子プロセスなどすべてに引き継がれます。リクエストより長く生きる処理の開始は`runWithRootLogContext({}, fn)`で包み、後の行に開始元のIDを残さないようにします。ローカルサイドカーはllama-serverとMLX、DecisionサイドカーとUtilityサイドカーも自分のプロセスに同じ方法を使います。後のリクエストと共有する起動に、最初の呼び出し元のIDが付いたままにはしません。ルートハンドラーが開始したその他の長寿命タイマーやポーラーは、同様に包むまでそのルートの`requestId`を保持します。
 
-<a id="request-lines"></a>
-
 ### リクエストのログ行
 
 `RequestLogController`はFastify既定の`LogController`に次の変更を加えたものです。
 
-- ID名は`requestId`です。Fastify既定の`reqId`を使う保存済み検索やフィルターは、新しい名前へ変更が必要です。
+- ID名は`requestId`です。Fastify既定の名前は`reqId`なので、`reqId`を使う保存済み検索やフィルターは、新しい名前へ変更が必要です。
 - `incoming request`と`Route ... not found`ではクエリー文字列を除きます。トークンや検索文が含まれる可能性があるためです。入力行はほかの`req`フィールド(`method`、`version`、`host`、`remoteAddress`、`remotePort`)を残し、`route`を加えます。
 - クライアントが途中で切断すると、infoで`Client aborted request`を1行記録します。Fastifyはここで何も記録していませんでした。
 
 `LOG_DISABLE_REQUEST_LOGGING`は従来どおり動き、中断行も無効にします。
 
-`pnpm dev`ではpino-prettyが既定の`hostname`と`bootId`を隠します。本番のJSON出力は両方を保持します。
-
-<a id="startup-timeline"></a>
+ターミナルにはpino-pretty形式の行を出力します。`pnpm dev`と、標準出力がターミナルになっている本番サーバー(ランチャー)が該当します。本番環境でそれ以外の場所に出す場合は、1行に1つのJSONオブジェクトを出力します。`LOG_FORMAT=pretty|json`でこの選択を上書きできます。Termuxランチャーは`tee`を通してターミナルに出力するため、`pretty`を設定します。pino-prettyは`hostname`(デフォルトの動作)と`bootId`を隠し、JSON出力は両方を保持します。
 
 ## 起動の時系列
 
@@ -60,8 +52,6 @@ const db = await startup.phase("storage.open", () => getDB());
 - 待ち受け開始後、`index.ts`は`[startup] Ready in N ms`をinfoで1行記録し、`event: "startup.ready"`、フェーズ数、`selfMs`の大きい上位5段階を含めます。
 
 フェーズはログコンテキストに`stage`を加えません。フェーズ中に始まるサービスはタイマーを保持するため、加えるとプロセス終了までその段階名が残ってしまいます。
-
-<a id="one-line-per-failure"></a>
 
 ## 失敗1件につき1行
 
@@ -81,8 +71,6 @@ const db = await startup.phase("storage.open", () => getDB());
 
 - **原因を保持します。**`new Error("Could not save chat", { cause: err })`で包みます。`err`と`error`のシリアライザーが原因のメッセージとスタックを追記します(`caused by: ...`)。`{ error }`で記録したErrorもシリアライズされ、`{}`とは表示されなくなります。
 
-<a id="repeating-failures"></a>
-
 ## 繰り返す失敗
 
 ポーラー、状態確認、ターンごとのフックは数秒ごとに同じ失敗を起こすことがあります。`lib/log-rate-limit.ts`の`logRateLimited`を使います。
@@ -92,8 +80,6 @@ logRateLimited("warn", "autonomous-scheduler:poll", err, "[autonomous-scheduler]
 ```
 
 キーごとの初回を記録し、時間枠内(既定60秒)の後続は数えて、次の行に`suppressedRepeats`を付けます。キーにはパッケージIDやチャットIDなど失敗対象を含め、1つの不具合が別の不具合を隠さないようにします。
-
-<a id="prompt-and-model-text"></a>
 
 ## プロンプトとモデルの本文
 
@@ -109,11 +95,22 @@ logger.debug({ err }, "[game/scene-wrap] Unparsed LLM response: %s", raw.slice(0
 
 UIのデバッグ切り替えは`logDebugOverride`経由で引き続き機能します。`LOG_LEVEL`でdebugを隠していてもプロンプトを確認するための仕組みです。
 
-<a id="checks"></a>
+プロンプトの文章は`%s`でそのまま出力してください。構造化された値(メッセージの配列、プロバイダーへのリクエスト本文、解析済みの返信)は、`%j`や`JSON.stringify(value)`ではなく、`debugJson(value)`を`%s`に渡します。インデント付きのJSONを出力し、文字列内の改行も実際の改行になるため、複数行のプロンプトを読みやすく保てます。また、その行を出力するときだけ描画します。情報を伏せるreplacerは、`JSON.stringify`と同じく第2引数に渡します。アプリ内のデバッグ表示は、`@marinara-engine/shared`の`readableJson`で同じ文章を出力します。`debug-log-line-breaks`回帰テストが、この動作と形式の選択を検証します。
+
+インラインメディアが丸ごとログに出ることはありません。`debugJson`は各base64ペイロードを、`[image/png base64, ~1.2 MB: iVBORw0KGgoAAAA...ElFTkSuQmCC]`のようなマーカーに置き換えます。種類、サイズ、先頭と末尾の16文字です。`data:` URL(文字列全体でも文章内でも)と、AnthropicやGoogleのメディアパートの単独の`data`フィールドが対象で、base64が複数行に折り返されていても対応します。`msg`シリアライザーも、通常の`%s`や`%j`の行にある`data:` URLに同じ処理をします。単独の`data`フィールドを短くするのは`debugJson`だけです。変わるのは出力用のコピーだけで、渡された値は一切編集しません。`.env`に`LOG_INLINE_MEDIA=full`を設定すると、ペイロードを再び丸ごと出力します。`log-inline-media`回帰テストが検証します。
+
+## アプリ内コンソール
+
+ターミナルにアクセスしにくい環境(NAS、VPS、Docker、Termux)では、Settings → Advanced → **Open Console**(コンソールを開く)で、最近のサーバーログをアプリ内に表示できます。
+
+- `lib/log-buffer.ts`は最新1,500行、最大約400万文字をメモリー上に保持し、各メッセージと各フィールドのブロックを16,000文字で切り詰めます。ディスクには何も書き込まず、再起動すると空になります。
+- `logger.ts`はPinoの`hooks.streamWrite`を通して、シリアライズされたすべての行をそこへコピーします。そのため、バッファーにはターミナルやログファイルと同じ内容が、同じ`LOG_LEVEL`で入ります。dotenvの`injected env`行や子プロセスの生の出力など、Pinoを通らない行は入りません。
+- `GET /api/admin/logs?afterId=`は、`afterId`より後の行と、`latestId`、`truncated`(今回の読み取りより前に行が破棄されたか)、サーバーの`logLevel`を返します。`requirePrivilegedAccess`で保護され、`no-store`です。ルートの`logLevel: "silent"`で動くため、コンソール自身のポーリングがログに表示されることはありません。
+- このページのルールはここにも適用されます。warnやerrorで記録した内容は、リモートの管理者がアプリ内で読む内容になるため、プロンプトやプロバイダーの本文はdebugにとどめてください。
 
 ## 検証
 
-このページの内容は`logging-request-trail`、`logging-failure-lines`、`logging-startup-timeline`の回帰テストで確認します。
+このページの内容は`logging-request-trail`、`logging-failure-lines`、`logging-startup-timeline`の回帰テストで確認し、アプリ内コンソールは`server-console-logs`で確認します。
 
 ```sh
 node scripts/run-regressions.mjs --filter logging-

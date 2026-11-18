@@ -152,11 +152,11 @@ Character Editorは、チャット領域を全画面の作業スペースに置�
 
 **Voice**タブでは、Text to Speechで読み上げるときのキャラクターの声を設定します。
 
-- **Voice**(声)。このキャラクターの声です。変更は**Save**を押さなくてもすぐに保存されます。**Connections → Text to Speech**(接続 → 音声合成)にあるこのキャラクターの行と同じ設定です。空欄のままにすると、デフォルトの声を使います。名前が一致するカード(AU版のコピー元など)に声が設定されている場合は、このカードもその声を使うため、空欄にはその声の名前が表示されます。
+- **Voice**(声)。このキャラクターの声です。変更は**Save**を押さなくてもすぐに保存されます。**Connections**(接続)にある**Voice**の役割の設定で、このキャラクターの行に指定するものと同じ設定です。空欄のままにすると、デフォルトの声を使います。名前が一致するカード(AU版のコピー元など)に声が設定されている場合は、このカードもその声を使うため、空欄にはその声の名前が表示されます。
 - **Preview**(試聴)。その声で短い文を読み上げます。文にはキャラクターの名前が入り、**Phonetic name**(読み仮名)を設定している場合はそちらが読まれます。
 - **Phonetic name**。発音を直すためだけに使う、任意の表記です。カードの一部なので、残すには**Save**をクリックしてください。
 
-Text to Speechがオフのとき、またはすべてのキャラクターが1つの声を共有しているときは、**Voice**欄の代わりに短い案内が表示されます。1つの声を共有している場合は、案内に**Use a voice per character**(キャラクターごとの声を使う)が表示されます。**Open Text to Speech settings**(音声合成の設定を開く)を押すとConnectionsが開きます。[Text to Speech (TTS)の設定](../media/tts-setup.md)を参照してください。
+Text to Speechがオフのとき、またはすべてのキャラクターが1つの声を共有しているときは、**Voice**欄の代わりに短い案内が表示されます。1つの声を共有している場合は、案内に**Use a voice per character**(キャラクターごとの声を使う)が表示されます。**Open Text to Speech settings**(音声合成の設定を開く)を押すと、**Connections**(接続)の**Voice**の役割の設定が開きます。[Text to Speech (TTS)の設定](../media/tts-setup.md)を参照してください。
 
 ## Advancedタブ
 
@@ -194,7 +194,7 @@ Text to Speechがオフのとき、またはすべてのキャラクターが1�
 
 ## バージョン履歴
 
-**Automatic versioning**がオンのあいだは、保存のたびに**Metadata**タブの**Version history**(バージョン履歴)へスナップショットが追加されることがあります。それまでは、`Previous card states will appear here after the next edit.`と表示されます。保存されているスナップショットの数はカウンターでわかります。
+**Automatic versioning**がオンのあいだは、保存のたびに**Metadata**タブの**Version history**(バージョン履歴)へスナップショットが追加されることがあります。それまでは、`Previous card states will appear here after the next edit.`と表示されます。保存されているスナップショットの数はカウンターでわかります。新しいカードからキャラクターを更新するときは、スイッチがオフでも、必ず先にスナップショットが保存されます。[既存のキャラクターを更新する](import-export.md#update-a-character-you-already-have)を参照してください。
 
 保存済みのバージョンを現在のカードと見比べる手順は次のとおりです。
 

@@ -12,6 +12,8 @@ Marinara Engineがデバイスと直接やり取りすることはありませ�
 
 Intiface Centralが起動していて、そのサーバーも起動していなければ、Marinaraはタッチの合図を送れません。**Haptic Feedback**エージェントのインストールも必要です。[エージェント: チャットを支えるAIヘルパー](../agents/agents-overview.md)を参照してください。
 
+> **ヒント:** まだおもちゃがなくても大丈夫です。[Lovense](https://www.lovense.com/r/dupchb)で割引価格で購入できます!
+
 ## Haptic Feedbackエージェントを追加する
 
 1. Conversation、Roleplay、Gameのいずれかのチャットを開きます。
@@ -69,8 +71,6 @@ ws://192.168.1.50:12345
 ## 偶発的な接触
 
 **Incidental contact**(偶発的な接触)のトグルは、説明が「Tiny taps for accidental brushes and bumps.」で、デフォルトでオフです。オフのとき、AIは小さな不意の接触を無視し、意図的な接触や強い接触にだけ合図を送ります。かすめたりぶつかったりした程度の接触でも軽いタップを送らせたい場合は、オンにします。
-
-<a id="use-it-from-another-device"></a>
 
 ## 別のデバイスから使う
 

@@ -5,7 +5,7 @@
 ## 最初に試すこと
 
 1. ページをハードリフレッシュします。WindowsやLinuxでは<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>、Macでは<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>を押します。
-2. サーバーコンソール(Marinaraを動かしているターミナルウィンドウ)に赤いエラー行が出ていないか確認します。たいていは、その行に本当の原因が書かれています。
+2. サーバーコンソール(Marinaraを動かしているターミナルウィンドウ)に赤いエラー行が出ていないか確認します。たいていは、その行に本当の原因が書かれています。サーバーが別の場所(NAS、VPS、Docker)で動いている場合は、**Settings → Advanced → Open Console**(設定 → 詳細設定 → コンソールを開く)を開くと、同じ行をアプリ内で読めます。
 3. 助けを求めるときは、先に**Debug mode**(デバッグモード)をオンにしてください。[さらに助けを求める](#get-more-help)を参照してください。
 
 ## キャラクターが返信しない
@@ -84,6 +84,7 @@ CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 | モデルがパラメーターを必須だと言う | そのパラメーターのスイッチをオンにします。 |
 | **This model's chat template needs user and assistant messages to take turns** | llama.cppで動かすMistral系のモデルなど、一部のローカルモデルでは、メッセージが交互に並んでいる必要があります。Marinaraは連続したメッセージをまとめて、1回だけ再試行します。それでも続く場合は、**Chat Settings → Advanced Parameters**で**Post-Processing Messages**(メッセージの後処理)を**Single User Message**(1つのユーザーメッセージ)に設定するか、制約の緩いチャットテンプレートでモデルを動かしてください。 |
 | **The AI returned an empty response. Try sending your message again.** | もう一度送ってください。繰り返し起きる場合は、別のモデルかアカウントを試します。 |
+| **The model declined this request** | モデルがこの返信の作成を拒否しました。Game Modeでは、[モデルがターンを拒否する](game/getting-started.md#the-model-declines-a-turn)を参照してください。それ以外では、再試行してから、別のモデル、プリセット、キャラクターカードを試してください。 |
 | **A generation is already in progress for this chat** | 返信がまだストリーミング中です。待つか、**Stop**(停止)をクリックしてから、もう一度試します。 |
 | **No connections are marked for the random pool** | ランダム振り分けがオンなのに、プールにアカウントが1つもありません。アカウントを追加するか、ランダム振り分けをオフにしてください。 |
 | どのメッセージもネットワークエラーで失敗し、コンピューターがプロキシ経由でしかインターネットに出られない | Marinaraにプロキシを設定してください。[外向きのHTTPプロキシ](CONFIGURATION.md#outbound-http-proxy)を参照してください。 |
@@ -127,7 +128,7 @@ Marinaraは明らかなダウングレードをブロックします。ランチ
 
 アップデートしてから古いバージョンに戻した場合は、アップデート前に作ったバックアップを復元してください。[古いバージョンへダウングレードする](UPGRADING.md#downgrading-to-an-older-version)を参照してください。以下は技術的な詳細です。
 
-現在のデータはストレージ形式10です。形式8、9、10では、古いビルドが安全に読めない3Dアバターの設定(MMD、続いてGLBとFBX)と、接続のアカウントへの関連付けが追加されています。データが形式8以降に達している場合、古いビルドを使うには、そのアップグレードより前に作った完全なバックアップを復元してください。下のコマンドは、古いチャットファイルの配置を変換するだけです。形式番号を手作業で変更しないでください。[古いバージョンへダウングレードする](UPGRADING.md#downgrading-to-an-older-version)を参照してください。
+現在のデータはストレージ形式11です。形式8、9、10では3Dアバターの設定(MMD、続いてGLBとFBX)と接続のアカウントへの関連付けが追加され、形式11ではペルソナがキャラクターカードとして保存されます。古いビルドはこれらを安全に読み込めません。形式11では、元のペルソナファイルが`storage/tables/personas/`に`.pre-v11`のコピーとして残ります。データが形式8以降に達している場合、古いビルドを使うには、そのアップグレードより前に作った完全なバックアップを復元してください。下のコマンドは、古いチャットファイルの配置を変換するだけです。形式番号を手作業で変更しないでください。[古いバージョンへダウングレードする](UPGRADING.md#downgrading-to-an-older-version)を参照してください。
 
 形式8より前のデータでは、チャットファイルの配置を変換します。
 

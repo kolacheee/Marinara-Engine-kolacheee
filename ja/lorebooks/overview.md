@@ -67,9 +67,22 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 スイッチの下にある**Semantic search (embeddings)**(埋め込みによるセマンティック検索)パネルについては、[ロアブックのセマンティック検索](semantic-search.md)で説明しています。
 
+## ロアブックに画像を付ける
+
+画像は**Lorebooks**(ロアブック)ページの表やギャラリーのタイルと、ロアブックの選択画面に表示されます。
+
+1. ロアブックを開き、**Book settings**(ロアブックの設定)をクリックします。**Picture**(画像)は**Enabled**(有効)の隣にあります。
+2. **Upload**(アップロード)(または**Replace**(置き換え))をクリックしてファイルを選ぶか、**Generate with AI**(AIで生成)をクリックして画像生成の接続で表紙を作ります。**Generate with AI**は、画像生成の接続を設定すると表示されます。
+3. **Adjust crop**(切り抜きを調整)(または小さな画像)をクリックします。画像の上の正方形をドラッグして表示する部分を選び、角をドラッグしてサイズを変えます。
+4. **Save**(保存)をクリックします。
+
+新しい画像は、最初は切り抜かれていません。画像を外すには、**Adjust crop**を開き、**Remove**(削除)をクリックします。
+
+クラシックレイアウトでは、画像はロアブックの**Overview**(概要)タブ上部の**Image**(画像)セクションにあり、同じボタンを使えます。
+
 ## Lorebooksページ
 
-**Library → Lorebooks**(ライブラリー → ロアブック)を開きます。上部には**Import**(インポート)([ロアブックのインポートとエクスポート](import-export.md)を参照)と**New lorebook**(新しいロアブック)があります。その下には、次の項目があります。
+**Library → Lorebooks**(ライブラリー → ロアブック)を開きます。上部には**Browse online**(オンラインで探す)(Chubからダウンロードできるロアブックです。[ロアブックのインポートとエクスポート](import-export.md#download-a-lorebook-from-chub)を参照)、**Import**(インポート)([ロアブックのインポートとエクスポート](import-export.md)を参照)と**New lorebook**(新しいロアブック)があります。その下には、次の項目があります。
 
 - **All kinds**(すべての種類)では、一覧を**Global**(グローバル)、**World**(世界)、**Character**(キャラクター)、**NPC**、**Spellbook**(呪文書)のロアブックに絞り込めます。
 - **List**(一覧)と**Gallery**(ギャラリー)で、表と画像タイルの表示を切り替えます。
@@ -86,7 +99,9 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 ## クラシックレイアウト: Lorebooksパネル
 
-クラシックパネルでは、同じフォルダーと順番が一覧で表示されます。パネルの上部には3つのアイコンボタンがあり、カーソルを重ねると名前が表示されます。
+クラシックパネルでは、同じフォルダーと順番が一覧で表示されます。パネル上部の**Download**(ダウンロード)はCard Browserでダウンロードできるロアブックを表示し、**Open Library**(ライブラリーを開く)は、ロアブックの画像、説明、エントリー数を全画面で表示するLorebook Libraryを開きます。そこでロアブックをクリックすると拡大表示され、**Edit Lorebook**(ロアブックを編集)でエディターが開き、**Active**(有効)ですべてのチャットに対するオンとオフを切り替えられます。
+
+その下には3つのアイコンボタンがあり、カーソルを重ねると名前が表示されます。
 
 - **New**(新規)は、**Create Lorebook**(ロアブックの作成)ウィンドウを開きます。
 - **Import**(インポート)は、**Import Lorebook**(ロアブックのインポート)ウィンドウを開きます。[ロアブックのインポートとエクスポート](import-export.md)を参照してください。
@@ -96,7 +111,7 @@ Eldoria is a rainy port city ruled by a council of nine merchants.
 
 - **Search lorebooks**(ロアブックの検索)では、名前、説明、リンクしたキャラクターやペルソナの名前、タグで絞り込みます。ここでも`tag:name`を使えます。
 - 検索欄の横の**Tags**(タグ)では、選んだタグをすべて持つロアブックだけ、または**Untagged**(タグなし)だけを表示できます。[タグ](../characters/library-organization.md#tags)を参照してください。
-- **Sort order**(並び順)には、**Manual order**(手動の順番)、**A-Z**、**Z-A**、**Newest**、**Oldest**、**Token Budget**があります。**Manual order**では、ロアブックをドラッグして並べるか、<kbd>Alt</kbd>+<kbd>Up</kbd>と<kbd>Alt</kbd>+<kbd>Down</kbd>を使います。
+- **Sort order**(並び順)には、**Manual order**(手動の順番)、**A-Z**、**Z-A**、**Newest**、**Oldest**、**Most tokens**(トークンが多い順)、**Fewest tokens**(トークンが少ない順)があります。サイズ順の並べ替えには、無効なものも含めたロアブックの全エントリーの推定サイズを使い、この値は各行にも表示されます。**Manual order**では、ロアブックをドラッグして並べるか、<kbd>Alt</kbd>+<kbd>Up</kbd>と<kbd>Alt</kbd>+<kbd>Down</kbd>を使います。
 - **New Folder**(新しいフォルダー)は、ライブラリー用のフォルダーを作ります。ロアブックをそこへドラッグします。スマートフォンでは、ロアブックを長押ししてからドラッグします。このフォルダーは、ロアブックの中にあるエントリー用のフォルダーとは別物です。
 
 各行には、ロアブックを複製する**Copy**(複製)と、**Delete**(削除)のボタンがあります。ボタンは行にカーソルを重ねると表示され、モバイルでは常に表示されます。オフになっているロアブックには**OFF**バッジが付きます。画像をクリックすると、画像のアップロードや差し替えができます。

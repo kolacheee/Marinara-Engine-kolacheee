@@ -16,7 +16,9 @@ Decisionモデルとは、「Does the latest message move the scene to a new pla
    - **None (decisions off)**(なし、判定オフ)がデフォルトです。何も問い合わせず、エージェントエディターの起動質問欄は無効のままです。
    - **Built-in model**(内蔵モデル)には、Marinaraが自分のコンピューター上で動かすモデルが並びます。**Built-in model**、**Built-in model (utility)**(補助用の内蔵モデル)、**Built-in model (decisions)**(判定用の内蔵モデル)です。情報はコンピューターの外に出ません。
    - **Connections**には、判定に回答できる自分のアカウントが並びます。ホスト型のサービスか、すでに動かしているサーバー上のチャットモデルです。
-4. テストするには、行にある**Decision settings**(判定の設定)の歯車をクリックし、**Test**(テスト)をクリックします。このボタンは内蔵モデルの項目に表示されます。TypeSafeまたはOpenRouterのアカウントでは、そのモデルの**Edit model**(モデルの編集)を開き、**Test provider**(プロバイダーをテスト)をクリックします。**Own decision server**(自分の判定サーバー)のアカウントでは、アカウントの**⋯**メニューにある**Test**を使います。
+
+   左側のアカウントをクリックすると、そのモデルを参照できます。NanoGPT、OpenRouter、Google Geminiのアカウントでは、先に**Decision models**(判断モデル)の下に独自の判定モデルが並び、その下の**Chat models**(チャットモデル)にチャットモデルが並びます。Google Geminiのチャットモデルは判定に回答できないため、そのアカウントには判定モデルだけが並びます。以前選んだ判定モデルは**Starred**(星付き)の上に表示され、その下にアカウント名が付きます。
+4. テストするには、行にある**Decision settings**(判定の設定)の歯車をクリックし、**Test**(テスト)をクリックします。このボタンは内蔵モデルの項目に表示されます。TypeSafe、OpenRouter、NanoGPT、Google Geminiの判定モデルでは、そのモデルの**Edit model**(モデルの編集)を開き、**Test provider**(プロバイダーをテスト)をクリックします。**Own decision server**(自分の判定サーバー)のアカウントでは、アカウントの**⋯**メニューにある**Test**を使います。
 
 テストに成功すると、「はい」の確率と、回答にかかった時間が表示されます。自分のコンピューター上のモデルでは、対数確率が利用できたかと、モデルが直接回答するかも表示されます。対数確率とは、モデルが書く可能性のある各単語について、モデルがどれだけ確信しているかを表す数値です。テストでは固定のサンプルを送り、自分のチャットは送りません。
 
@@ -24,13 +26,11 @@ Decisionモデルとは、「Does the latest message move the scene to a new pla
 
 今は回答できない項目も、理由とともにグレー表示でリストに残ります。**None**を選ぶと、起動質問や判定文を削除せずに判定をオフにできます。
 
-<a id="which-one-to-pick"></a>
-
 ### 選択の目安
 
 - **内蔵モデルですでに動かしているモデル。** 追加の費用はかかりません。内蔵モデルを使っているほとんどの人に最適です。
 - **自分のサーバー上のチャットモデル**(Ollama、LM Studio、llama.cpp、またはほかのOpenAI互換サーバー)。追加の費用はかかりません。モデルをMarinaraの外で動かしている場合に向いており、同じモデルを二重に読み込まずに済みます。
-- **ホスト型のDecisionアカウント**(TypeSafeまたはOpenRouterのキー)。リクエストごとに課金され、1ターンで複数回のリクエストが発生することがあります。スマートフォンや、ローカルモデルを動かさないコンピューターに向いています。
+- **ホスト型の判定モデル**(TypeSafe、OpenRouter、NanoGPT、Google Gemini)。リクエストごとに課金され、1ターンで複数回のリクエストが発生することがあります。NanoGPTのサブスクリプションには一部の判定モデルが含まれ、OpenRouterには無料のものもあります。スマートフォンや、ローカルモデルを動かさないコンピューターに向いています。
 - **Built-in decision model**(内蔵の判定モデル)。別途ディスク容量とGPUメモリーを使います。Linux x86-64と対応するNVIDIA GPUが必要です。チャットモデルと並行して、別の判定モデルを動かしたい場合に使います。
 
 すでにローカルモデルを動かしているなら、まずそれを試し、自分のチャットのターンでテストしてください。判定文の表現は結果を大きく左右します。[判定文の書き方](../prompts/conditional-prompts.md#writing-statements)を参照してください。
@@ -63,8 +63,6 @@ Marinaraはモデルにはい・いいえの質問を1つ送り、1トークン�
 
 汎用チャットモデルのはい・いいえの確率もしきい値に使えますが、判定専用モデルのように校正する訓練は受けていません。対数確率を返さないランタイムは、単純な1か0で回答します。しきい値は自分のチャットで調整してください。
 
-<a id="on-a-server-you-already-run"></a>
-
 ### 稼働中のサーバーでの利用
 
 チャットモデルをOllama、LM Studio、llama.cpp、またはほかのOpenAI互換サーバーで動かしているなら、Marinaraが2つ目のコピーを読み込まなくても、そのモデルが判定に回答できます。
@@ -77,14 +75,12 @@ Marinaraはモデルにはい・いいえの質問を1つ送り、1トークン�
 
 問い合わせ方は内蔵モデルと同じで、判定文ごとにはい・いいえの1語を求めます。サーバーが同時にいくつのリクエストを処理できるかMarinaraには分からないため、判定文は1つずつ送ります。アカウントの**Thinking**(推論)は常に**Auto**です。別のコンピューター上のサーバーには`PROVIDER_LOCAL_URLS_ENABLED`が必要です。[ローカルモデルやセルフホストモデルへの接続](local-self-hosted.md)を参照してください。
 
-<a id="set-up-a-decision-account"></a>
-
 ## Decisionアカウントの設定
 
 ホスト型のDecisionアカウントは、選択した最近のメッセージと判定文をサービスに送信し、料金が発生することがあります。Smart応答順では[キャラクター一覧](#what-the-model-sees)も送信します。
 
 1. **Library → Connections**(ライブラリー → 接続)を開き、**Add connection**(接続を追加)をクリックします。
-2. **Decision**(判断)タブで、**TypeSafe**または**Own decision server**(独自の判断サーバー)をクリックします。OpenRouterの場合は、**Text**(テキスト)タブで**OpenRouter**をクリックして接続し、モデルの**⋯**メニューにある**Use this key for decisions**(このキーをDecisionに使用)を使います。
+2. **Decision**(判断)タブで、**TypeSafe**または**Own decision server**(独自の判断サーバー)をクリックします。NanoGPTの場合は[NanoGPT経由](#through-nanogpt)を参照してください。OpenRouterまたはGoogle Geminiの場合は[OpenRouterまたはGoogle Gemini経由](#through-openrouter-or-google-gemini)を参照してください。
 3. **API key**(APIキー)を入力します。**Own decision server**の場合は**Server address**(サーバーのアドレス)を入力します。**Connect**(接続)をクリックします。ウィンドウが閉じ、Connectionsページに新しいアカウントが表示されます。
 4. **Defaults**(用途)ボックスの**Decision**をクリックし、新しいモデルを選びます。
 5. テストするには、Connectionsページでモデルをクリックして**Edit model**(モデルの編集)を開き、**Provider tests**(プロバイダーのテスト)カードの**Test provider**(プロバイダーをテスト)をクリックします。**Own decision server**のモデルには、そこに**Test provider**ボタンがありません。代わりにアカウントの**⋯**をクリックし、**Edit account**(アカウントを編集)を選んで、**Test account**(アカウントをテスト)をクリックします。
@@ -97,18 +93,43 @@ Decisionモデルには、次の欄があります。パネルでモデルをク
 
 | 欄 | 内容 |
 | --- | --- |
-| **Decision source**(判定のソース) | **TypeSafe**、**OpenRouter**、**Custom System One endpoint**(カスタムSystem Oneエンドポイント)、**OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**(OpenAI互換チャットモデル)のいずれかです。モデルを作成した時点で固定されます。 |
+| **Decision source**(判定のソース) | **TypeSafe**、**OpenRouter**、**NanoGPT**、**Google Gemini**、**Custom System One endpoint**(カスタムSystem Oneエンドポイント)、**OpenAI-compatible chat model (Ollama, LM Studio, llama.cpp)**(OpenAI互換チャットモデル)のいずれかです。モデルを作成した時点で固定されます。 |
 | **API key source**(APIキーの取得元) | **Enter a separate key (optional for local servers)**(別のキーを入力、ローカルサーバーでは任意)か、ほかのアカウントの**Use key from …**(…のキーを使用)です。リンクしたキーは、後からのキーの変更に追従します。カスタムSystem OneモデルやOpenAI互換モデルがカスタムチャットアカウントのキーを借りられるのは、両方のアドレスのスキーム、ホスト、ポートが同じ場合だけです。 |
-| **Recent-message token budget**(最近のメッセージのトークン予算) | 送信するチャットの推定トークン数です。1から30,000まで。デフォルトは、TypeSafeとOpenRouterで30,000、カスタムサーバーで3,500です。Marinaraは古いメッセージから除外し、続いて最新メッセージの最も古い部分を切り詰めます。拒否されたリクエストや予算を超えたリクエストは、回答なしになります。 |
-| **Time limit (seconds)**(制限時間、秒) | チャット中に、判定文ごとに回答を待つ時間です。0.5から30まで。デフォルトは1.5、OpenAI互換チャットモデルでは4です。[制限時間](#time-limits)を参照してください。 |
+| **Recent-message token budget**(最近のメッセージのトークン予算) | 送信するチャットの推定トークン数です。1から30,000まで。デフォルトは、TypeSafe、OpenRouter、NanoGPT、Google Geminiで30,000、カスタムサーバーで3,500です。NanoGPT、OpenRouter、Google Geminiのアカウントの判定モデルで入力上限がこれより小さい場合は、代わりにその上限の4分の3になります。Marinaraは古いメッセージから除外し、続いて最新メッセージの最も古い部分を切り詰めます。拒否されたリクエストや予算を超えたリクエストは、回答なしになります。 |
+| **Time limit (seconds)**(制限時間、秒) | チャット中に、判定文ごとに回答を待つ時間です。0.5から30まで。デフォルトは1.5、NanoGPTとOpenAI互換チャットモデルでは4です。[制限時間](#time-limits)を参照してください。 |
+| **Custom Request Headers**(カスタムリクエストヘッダー) | 判定リクエストごとに送る追加のヘッダーを、`{"x-billing-mode": "paygo"}`のようなJSONオブジェクトで指定します。キー用ではなく、認証ヘッダーは拒否されます。 |
 
 TypeSafeは`https://api.typesafe.ai`に送信します。**Base URL**(ベースURL)は、TypeSafeのAPIを動かしている別のサーバーのアドレスに置き換えられます。アドレスには`/v1/systemone`を含めません。その場合もTypeSafeのキーが必要で、キーはそのサーバーに送信されます。**Custom System One endpoint**には、Open-Jevや[Strands decider](#run-strands-decider-yourself)など、自分で動かしているSystem Oneサーバーを指定できます。アドレスは`/v1/systemone`を含めずに入力します。OllamaなどのチャットモデルサーバーはSystem Oneに対応していません。その場合は**OpenAI-compatible chat model**を使ってください。
+
+### NanoGPT経由
+
+NanoGPTにはJev Latestなどの独自の判定モデルがあり、NanoGPTのキーを使ってDecisions APIで回答します。一部はNanoGPTのサブスクリプションに含まれ、それ以外は残高から課金されます。
+
+1. 通常どおりNanoGPTを接続します。**Add**(追加)の**Decision**(判断)の種類のチップにも表示されます。
+2. **Found in NanoGPT — use it for:**(NanoGPTで利用可能 — 用途:)で**Decision**にチェックを入れます。Marinaraはプランに含まれる判定モデルを選び、Jev Latestを優先します。
+3. 別のモデルを選ぶには、NanoGPTアカウントの**⋯**、**Add model**(モデルを追加)、**Decision**タブの順にクリックします。判定モデルだけが並びます。サブスクリプションに含まれるものには**Plan**のピルが付きます。1つ選んで**Test decision**(判定をテスト)をクリックします。
+
+判定モデルはチャットできないため、すべてのチャットモデルの一覧から除かれます。
+
+デフォルトでは、リクエストにサブスクリプションと残高のどちらを使うかはNanoGPTが決めます。常に残高を使うには、判定モデルの**Edit model**(モデルの編集)を開き、**Custom Request Headers**(カスタムリクエストヘッダー)に`{"x-billing-mode": "paygo"}`を入力してください。
+
+### OpenRouterまたはGoogle Gemini経由
+
+OpenRouterとGoogle Geminiのアカウントにも独自の判定モデルが並び、Marinaraはそのアカウントのキーを使ってサービスの判定APIに問い合わせます。OpenRouterには多くのモデルがあり、無料のもの(名前の末尾が`:free`)もあります。Google Geminiには**Gemini Decision 1**の1つがあります。
+
+1. 通常どおりOpenRouterまたはGoogle Geminiを接続します。
+2. **Jobs**(用途)ボックスの**Behind the scenes**(裏方の処理)にある**Decision**(判断)行をクリックし、左側のアカウントをクリックします。**Decision models**(判断モデル)からモデルを選びます。
+3. テストするには、そのモデルの**Edit model**(モデルの編集)を開き、**Test provider**(プロバイダーをテスト)をクリックします。
+
+OpenRouterアカウントでは、その下の**Chat models**(チャットモデル)に対数確率を返すチャットモデルも並び、それらも使えます。Google Geminiアカウントで選べるのは判定モデルだけです。
+
+このバージョンより前に追加したアカウントでは、保存されたモデル一覧が判定モデルの登場前のものなので、最初は**Decision models**が表示されないことがあります。選択画面の更新ボタンをクリックするか、待ってください。Marinaraは保存されたモデル一覧を1日1回更新します。
+
+**Add**(追加)で作った単独の**OpenRouter**判定アカウントも引き続き使えます。自身のキーで同じAPIに問い合わせます。
 
 ホスト型サービスの中には、ときどき回答が1.5秒より遅くなるものがあり、判定が不規則に壊れているように見えます。数回テストし、最も遅い回答より長い制限時間に設定してください。プリセットの判定や、返信前に動くエージェントの起動質問など、返信前に問い合わせる判定文は、それぞれ最大でその時間だけ返信を遅らせることがあります。
 
 判定にキーを使っているアカウントを削除すると、警告が表示されます。その後はDecisionアカウントのリンクをやり直す必要があり、それまで判定は回答なしになります。インポートした接続ファイルにはAPIキーも借用元アカウントへのリンクも含まれないため、手動で復元してください。
-
-<a id="where-marinara-uses-it"></a>
 
 ## Marinaraでの用途
 
@@ -121,8 +142,6 @@ TypeSafeは`https://api.typesafe.ai`に送信します。**Base URL**(ベースU
 - [Advanced Memory Recall](../agents/memory.md#optional-decision-model)は、Roleplayのシーン境界と記憶の選択に、専用のDecisionモデルを使えます。そのチャットのAdvanced Memory設定で**Use Decision model**(判断モデルを使用)をオンにしてください。回答がない場合、失敗した判定は通常の記憶の呼び出しまたはシーン確認に戻ります。要約には引き続き補助モデルを使います。
 
 起動質問はエージェントを実行するかどうかを決め、プロンプト内の判定文は、実行中のそのエージェントに何を伝えるかを決めます。はい・いいえの条件には`{{#if decision:"..."}}`を、複数の回答からの選択には`{{#if decision_choice:"..." == "..."}}`を使います。
-
-<a id="what-the-model-sees"></a>
 
 ## モデルが受け取る情報
 
@@ -143,27 +162,24 @@ TypeSafeは`https://api.typesafe.ai`に送信します。**Base URL**(ベースU
 
 **Advanced Memory**は、チャットごとの専用Decisionモデルを使い、直近5件のルールは適用されません。シーン確認は、関連する履歴の範囲を読み取ります。記憶の呼び出しでは、最近の会話のテキストと、候補に絞り込んだ過去の要約を最大24件送ります(**Maximum recalled scenes**(想起するシーンの最大数)のほうが大きい場合はそれ以上)。続いて、キャラクターのアクセス権を確認したうえで、モデルが選んだシーンの元のメッセージを送ります。ホスト型サービスはこれらのテキストを受け取り、複数のバッチに分けて受け取ることもあります。記憶の呼び出しの各段階には、通常、モデルの速さに合わせて10～25秒が割り当てられます。両段階は1回の返信につき合わせて40秒を共有するため、1つの段階の時間が10秒未満になることもあります。時間内に回答が得られなかった記憶は、通常の記憶の呼び出しに戻ります。[任意のDecisionモデル](../agents/memory.md#optional-decision-model)を参照してください。
 
-<a id="thresholds"></a>
-
 ## しきい値
 
 確率はモデル間で比較できません。同じ例でも、あるモデルでは0.99、別のモデルでは0.2になることがあります。はい・いいえのデフォルトのしきい値は、モデルによって異なります。
 
 - **内蔵モデル、またはOpenAI互換チャットモデルのアカウント:** 0.5
-- **TypeSafe、OpenRouter、またはCustom System Oneのアカウント:** 0.5
+- **TypeSafe、OpenRouter、NanoGPT、Google Gemini、またはCustom System Oneのアカウント:** 0.5
 - **Built-in decision model:** モデルマニフェストの推奨値。Open-Jev 2Bと9Bでは0.1
 
 エージェントの**Run when probability is at least**(実行に必要な最小確率)は、この値を上書きします。保存した値が異なると、エディターはモデルの推奨値に戻すことを提案します。モデルを切り替えるたびに確認してください。プロンプトの判定文とロアブックのDecision欄はモデルのデフォルトを使い、エージェントのしきい値を変えてもこれらは変わりません。
 
 Custom System Oneのアカウントの背後で自分で動かしているOpen-Jevも0.5を使います。Marinaraは任意のカスタムエンドポイントを校正できないためです。そのため、0.5未満の肯定的な結果をいいえと読むなど、内蔵のOpen-Jevとは結果が異なることがあります。
 
-<a id="time-limits"></a>
-
 ## 制限時間
 
 時間内に届かない判定は回答なしとなり、生成は機能ごとのフォールバックで続行します([Marinaraでの用途](#where-marinara-uses-it)を参照)。制限時間はすべて判定文単位です。複数の判定文を含むリクエストでは、判定文ごとに制限時間が与えられ、Choiceの回答候補もそれぞれ1つの判定文と数えます。ローカルモデルは一度に少数のリクエストしか処理しないため、判定文は順番を待ちます。各判定文の時間は、モデルがその処理を始めた時点から計測します。
 
-- **TypeSafe、OpenRouter、またはCustom System Oneのアカウント:** 1.5秒、または設定した**Time limit**(制限時間)
+- **TypeSafe、OpenRouter、Google Gemini、またはCustom System Oneのアカウント:** 1.5秒、または設定した**Time limit**(制限時間)。測定時には、OpenRouterとGoogle Geminiは0.2から0.5秒で回答しました。
+- **NanoGPTの判定モデル:** 4秒、または設定した**Time limit**。測定時には0.4から2.5秒で回答しました。
 - **OpenAI互換チャットモデルのアカウント:** 4秒、または設定した**Time limit**。先に推論する必要があるモデルには、少なくとも20秒が与えられます。
 - **内蔵モデル:** 4秒。先に推論する必要があるモデルには20秒が与えられます。
 - **Built-in decision model:** 最初の判定文は4秒。以降の判定文には、それぞれモデルの測定時間が与えられます。Open-Jev 2Bでは0.35秒、Open-Jev 9Bでは0.8秒です。リポジトリーからインストールしたモデルは、判定文ごとに4秒です。
@@ -186,11 +202,10 @@ Custom System Oneのアカウントの背後で自分で動かしているOpen-J
 - 同意、コンテンツ警告、安全上の指示を判定の条件にしないでください。
 - 起動質問だけで実行するエージェントには、**Bypass the question after this many messages**(指定メッセージ数の後で質問を省略)を設定してください。そうすれば、「いいえ」と答え続けるモデルによって、エージェントが永久に止められることはありません。
 
-<a id="troubleshooting"></a>
-
 ## トラブルシューティング
 
 - **テストが失敗する。** メッセージに理由が表示されます。キーが拒否された、サービスがリクエストを制限している、内蔵モデルが動いていない、判定モデルがインストールされていない、モデルがはい・いいえで答えなかった、時間切れになった、のいずれかです。
+- **選択画面でアカウントにDecision modelsが表示されない。** 保存されたモデル一覧が、その判定モデルより古いものです。選択画面でアカウント名の横にある更新ボタンをクリックしてください。
 - **サーバーにそのエンドポイントがないと表示される。** Decisionのソースがサーバーに合っていません。Ollama、LM Studioなどのチャットモデルサーバーには**OpenAI-compatible chat model**(OpenAI互換チャットモデル)が必要です。**Custom System One endpoint**(カスタムSystem Oneエンドポイント)は、Open-JevなどのSystem Oneサーバー専用です。
 - **回答が制限時間を超えた、または判定がときどきしか動かない。** サービスの回答が、ときどき**Time limit**(制限時間)より遅くなっています。数回テストし、最も遅い回答より長い制限時間に上げてください。
 - **起動質問があるエージェントが毎ターン動く。** Decisionモデルが設定されていないか回答していないため、質問がない場合と同じようにエージェントが動いています。テストを実行してください。
@@ -199,8 +214,6 @@ Custom System Oneのアカウントの背後で自分で動かしているOpen-J
 - **アクティブなキャラクターの自動化がCharacter Trackerに従う。** モデルがすべてのキャラクターについて回答しなかったか、先に推論するモデルで**Also gate agents that run before the reply**(返信前に実行するエージェントも判定)がオフになっているか、出演者が多すぎて、名前だけでもモデルの入力に収まりません。
 
 生成中の判定スコアと出力を見るには、Debug Modeをオンにするか、ログレベルをdebugにします。[ログレベル](../CONFIGURATION.md#logging-levels)を参照してください。返信を生成せずに自分の判定文をテストするには、**Peek Prompt → Decision diagnostics → Test decisions**(Peek Prompt → Decision診断 → 判断をテスト)を開きます。明示的なテストは選択したモデルを呼び出すため、ホスト型サービスでは料金が発生することがあります。[判定文のテスト](../chats/peek-prompt.md#testing-decision-statements)を参照してください。
-
-<a id="let-marinara-install-a-decision-model"></a>
 
 ## Marinaraによる判定モデルのインストール
 
@@ -229,8 +242,6 @@ Open-JevモデルにはLinux **x86-64**、コンピュート能力7.5以降のNV
 - **Reinstall**(再インストール)は、インストール済みのモデルのファイルやランタイムが見つからないか古くなっていて、モデルを起動できないときに表示されます。多くはアップデートの後です。モデルには**Needs reinstall**と表示され、**Decision**の行には**Not set up**と表示されます。再インストールしても、すでにダウンロードされていて壊れていないファイルは残るため、通常はランタイムのPythonパッケージだけがもう一度ダウンロードされます。
 
 起動直後のモデルの最初の回答は遅いため、Marinaraは読み込み中にウォームアップ用の質問を1つ送ります。これに失敗してもモデルは起動し、最初の実際の質問でその遅延が発生します。長いチャットで判定文が多いターンほど時間がかかります。長いチャットでは、Open-Jev 2Bは判定文1つあたり約0.25秒かかります。
-
-<a id="run-strands-decider-yourself"></a>
 
 ### Strands deciderのセルフホスト
 

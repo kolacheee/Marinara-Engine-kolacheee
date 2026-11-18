@@ -38,8 +38,6 @@ Marinaraには、テーマを変えても場所が変わらない2つの部分�
 
 クラシックレイアウト(**Settings → Appearance → Theme → New layout**(設定 → 外観 → テーマ → 新しいレイアウト)でオフにできます)では、ホーム画面がWebブラウザーのような見た目になり、タブ、検索バー、**Discord**、**Support**、**Credits**、**Documentation**、**Tutorial**、**FAQ**、**Achievements**、**Widgets**のブックマークが表示されます。
 
-<a id="choose-a-chat-mode"></a>
-
 ## チャットモードを選ぶ
 
 モードは、チャットを始めるときに選びます。
@@ -47,8 +45,6 @@ Marinaraには、テーマを変えても場所が変わらない2つの部分�
 - **Conversation**: メッセージアプリのような見た目の、シンプルなAIチャットです。[Conversationモード: はじめに](../conversation/getting-started.md)を参照してください。
 - **Roleplay**: 1人以上のキャラクターと進める物語です。場所や時間など、シーンの状態をアプリが追跡します。[Roleplayモード: はじめに](../roleplay/getting-started.md)を参照してください。
 - **Game**: 1人用のゲームです。AIが、物語を語るゲームマスターを務めます。仲間のグループ(パーティー)、ダイスロール、マップ、クエストが登場します。[Game Mode: はじめに](../game/getting-started.md)を参照してください。
-
-<a id="home-widgets"></a>
 
 ## ホームのウィジェット
 
@@ -68,7 +64,7 @@ Professor Mariに頼めば、個人用のウィジェットを作ってもらえ
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari**(Professor Mariに質問)で、Professor Mariとのチャットが開きます。 | はい |
 | **Recent chats**(最近のチャット) | 最近のチャットです。クリックすると開き直せます。空のときは**Your chats will show here**と表示されます。 | はい |
-| **Learn the engine**(エンジンを学ぶ) | **Documentation**、**Replay tutorial**、**Read FAQ**へのリンクです。 | はい |
+| **Things to try**(試してみよう) | 次に試せる小さなタスクを、1つの機能につき1件、3件表示します。すべて試した後やヒントをオフにした場合は、代わりに**Documentation**、**Replay tutorial**、**Read FAQ**を表示します。[試してみよう](#things-to-try)を参照してください。 | はい |
 | **What's New**(新機能) | **See what's new**と**Read release notes**です。 | はい |
 | **Community**(コミュニティ) | **Discord**、**Support**、**Credits**へのリンクです。 | はい |
 | **Character Library**(キャラクターライブラリー) | 自分のキャラクターから、毎日新しく選んだものを表示します。 | いいえ |
@@ -76,6 +72,18 @@ Professor Mariに頼めば、個人用のウィジェットを作ってもらえ
 | **Character of the Day**(今日のキャラクター) | ライブラリーから選んだキャラクター1人を、**Start a chat**と**View character**とともに表示します。 | いいえ |
 | **Clock & calendar**(時計とカレンダー) | 今日の日付と時刻です。 | いいえ |
 | **Achievements**(実績) | 最近獲得した実績と、獲得に最も近い実績です。Achievementsの設定がオンである必要があります。 | いいえ |
+
+## 試してみよう
+
+**Things to try**(試してみよう)ウィジェットは、次に試す機能を3つ提案します。各タスクは前のタスクを土台にしています。たとえば、ギャラリーの画像をスタンプにして、そのスタンプをチャットで送ります。
+
+- タスクをクリックすると、アプリ内の該当する場所が開きます。該当する場所がない場合は、ガイドが開きます。
+- チェックをクリックすると完了になり、バツをクリックするとスキップできます。スキップしたタスクは、再び表示されません。
+- 多くのタスクは、そのモードのチャットやスタンプのラベルなどから、完了したことをMarinaraが検出すると自動でチェックが付きます。それ以外は自分でチェックしてください。
+- **See all**(すべて表示)では、すべてのタスクがコース別に並び、**Show me**(案内する)が表示されます。コースのタスクは、前提となるタスクが終わると表示されます。**Only in this layout**(このレイアウトのみ)のコースは、新しいレイアウトの機能を扱います。
+- コースを終えると、そのコースの**Explorer**(探検家)の実績が解除されます。
+
+ウィジェットは、**Settings > General > Confirmations & Help**(設定 > 一般 > 確認とヘルプ)の**Feature tips**(機能のヒント)に従います。ヒントがオフのときは、ガイドへのリンクを表示します。進捗は、このブラウザーに保存されます。
 
 ### AIの基礎と深掘り
 
@@ -89,7 +97,7 @@ Professor Mariに頼めば、個人用のウィジェットを作ってもらえ
 ## 困ったときの相談先
 
 - ホーム画面でProfessor Mariに聞く。
-- **Learn the engine**(エンジンを学ぶ)ウィジェットの**Read FAQ**(FAQを読む)をクリックして、手早く答えを見る。
+- **Things to try**(試してみよう)ウィジェットの**See all**(すべて表示)を開き、**Read FAQ**(FAQを読む)で手早く答えを見る。
 - 上部バーの**Docs**(ドキュメント)をクリックして、アプリ内のガイドを読む。
 - **Community**(コミュニティ)ウィジェットの**Discord**をクリックしてコミュニティに参加する。プロジェクトを支援するときは**Support**をクリックする。
 

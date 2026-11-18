@@ -4,8 +4,6 @@
 
 AIのアカウント、キャラクター、チャットのオプションは、アプリの中で設定します。AIのアカウントを追加する方法は[AIプロバイダーへの接続](connections/connecting-to-a-provider.md)を参照してください。
 
-<a id="edit-the-env-file"></a>
-
 ## .envファイルを編集する
 
 Marinaraは初回起動時に空の`.env`を作成します。各行は`KEY=value`の形です。`#`で始まる行はコメントです。
@@ -29,8 +27,6 @@ BASIC_AUTH_PASS=correct-horse-battery-staple
 
 サーバーは、どの方法で起動しても`.env`を読み込みます。ランチャー(`start.bat`、`start.sh`、`start-termux.sh`)は、さらにほかのデバイスから接続できるように`HOST=0.0.0.0`を設定し、サーバーの準備ができたらブラウザーを開きます。`AUTO_OPEN_BROWSER=false`にすると、ブラウザーは開きません。`pnpm start`だけで起動した場合は、`HOST`を設定しないかぎり、サーバーはこのコンピューターからの接続だけを待ち受けます。
 
-<a id="restart-or-hot-reload"></a>
-
 ## 再起動とホットリロード
 
 Marinaraは実行中も`.env`を監視しています。ほとんどの設定は、再起動しなくてもほぼすぐに反映されます。変更のたびに、ログに`[env-watcher]`の行が出ます。監視を開始できない場合、サーバーは30秒ごとにファイルを確認し、そのことをログに出力します。
@@ -50,8 +46,6 @@ Marinaraは実行中も`.env`を監視しています。ほとんどの設定は
 `AUTO_UPDATE_ENABLED`はサーバーの起動前にランチャーが読み込むため、変更は次回の起動から反映され、ログに警告は出ません。
 
 アクセス制御の設定と秘密の値(`BASIC_AUTH_USER`、`BASIC_AUTH_PASS`、`IP_ALLOWLIST`、`ADMIN_SECRET`、`CSRF_TRUSTED_ORIGINS`)には、再起動は必要ありません。
-
-<a id="access-control"></a>
 
 ## アクセス制御
 
@@ -107,8 +101,6 @@ openssl rand -hex 32
 
 Marinaraはデータをそのままの形のJSONファイルとして保存するため、バックアップをコピーしたり、中身を読んだりできます。各フォルダーの中身については[Marinaraがデータを保存する場所](data/where-data-is-stored.md)を参照してください。
 
-<a id="logging-levels"></a>
-
 ## ログレベル
 
 `LOG_LEVEL`は、サーバーがどこまで詳しく出力するかを決めます。選んだレベルより下の内容は表示しません。
@@ -125,6 +117,7 @@ Marinaraはデータをそのままの形のJSONファイルとして保存す�
 | `LOG_LEVEL` | `warn` | 上のレベル。 |
 | `LOG_PRESET` | `default` | `prompt-connections`は、`debug`と同じプロンプトとモデルの詳細を表示しつつ、`GET /api/chats`のような定型のリクエストの行を隠します。 |
 | `LOG_DISABLE_REQUEST_LOGGING` | `false` | `true`にすると、定型のリクエストの行を隠し、レベルはそのままにします。変更には再起動が必要です。 |
+| `LOG_INLINE_MEDIA` | `short` | `short`は、デバッグ出力内の画像やその他のbase64ファイルを、種類とサイズを示す短いマーカーで表示します。`full`は内容をすべて出力するため、プロンプト1つで数MBになることがあります。 |
 | `LOG_FORMAT` | 自動 | `pretty`は、どこでも読みやすい行で出力します。たとえば`docker logs`で**Debug mode**(デバッグモード)のプロンプトを読むときに使います。`json`は、1行に1つのJSONオブジェクトを出力します。変更には再起動が必要です。 |
 
 ターミナルでは、サーバーは読みやすい行で出力します。Dockerのログなどそれ以外の場所では、本番用のサーバーはJSONの行を出力します。Termuxのランチャーは読みやすい行を指定します。ブラウザー側のログは別の仕組みで、`LOG_LEVEL`では制御しません。
@@ -193,13 +186,9 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 ローカルモデルやセルフホストモデルに接続する方法は[ローカルモデルやセルフホストモデルへの接続](connections/local-self-hosted.md)を参照してください。
 
-<a id="feature-switches"></a>
-
 ## 機能スイッチ
 
 失敗したプロバイダー呼び出しの再試行(**Settings → Advanced → Timeouts & Retries**(設定 → 詳細設定 → タイムアウトと再試行))や、ロアブックのグループの選択を固定する動作(**Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック))などは、Settingsのスイッチです。すべてデフォルトでオフです。いくつかには、設定するとスイッチより優先される環境変数があります。[機能スイッチ](configuration/features.md)を参照してください。
-
-<a id="marinara-notices"></a>
 
 ## Marinaraのお知らせ
 
@@ -218,8 +207,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 フォークは、`MARINARA_NOTICES_URL`を自分のファイルに向けられます。
 
 お知らせのサーバーを探すとき、そして[外向きのプロキシ](#outbound-http-proxy)がオンの場合はそのプロキシを探すときにも、Marinaraはhostsファイルを読み、DNSサーバーに直接問い合わせます。`.local`の名前や、ドメインを含まない短い名前(`localhost`を除く)など、自分のローカルネットワークの中でしか通じない名前は使えません。Termuxでは、`$PREFIX/etc/resolv.conf`に書かれたDNSサーバーを使います。このファイルを編集しないかぎり、Googleの`8.8.8.8`と`8.8.4.4`です。
-
-<a id="optional-multiplayer"></a>
 
 ## オプションのマルチプレイヤー
 
@@ -261,8 +248,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 インポートするたびに、まずそのエージェントが要求する機能を表示します。権限は明示的に承認する必要があります。同梱された関数やツールの選択はインポートされず、生成されたCSSは無害化され、結果の動作は承認済みの機能と照らし合わせて検査されます。この設定をオフにすると、インポートしたエージェントは止まります。Marinaraの中で作ったエージェントと公式パッケージには影響しません。
 
-<a id="custom-agent-repositories"></a>
-
 ### カスタムエージェントのリポジトリー
 
 リポジトリーのプロンプトやツールは検証されていないため、リポジトリーはデフォルトでオフです。`ENABLE_CUSTOM_AGENT_REPOS=true`を設定し、**Allow custom Agent imports**(カスタムエージェントのインポートを許可)をオンにしてから、**Library → Agents → Custom Sources**(ライブラリー → エージェント → カスタムソース)を開いて、公開されているGitHubリポジトリーをプレビューします。ソースの追加にも、その後の変更の適用にも、確認が必要です。同期は手動で、Marinaraがバックグラウンドでリポジトリーをクローンしたり、確認しに行ったりすることはありません。受け付けるのは、リポジトリーのルートを指すGitHubのURLだけです。
@@ -292,8 +277,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 同期すると、プレビューに表示された、リポジトリーが管理するプロンプト、設定、ツールの値が、リモートの値に置き換わります。アカウントとアートワークの選択はローカルのまま残ります。上流からエージェントが消えた場合、そのエージェントは通常のローカルのエージェントとして残り、リポジトリーとの関連付けだけが外れます。ソースを削除したときも同じで、そのルールセットはインストールされたまま残ります。
 
 カスタムエージェントは、Context Sources(コンテキストソース)で**Previous output**(前回の出力)をオンにすると、自身の直近の成功した出力を読み取ることもできます。**JSON context output**(JSON形式のコンテキスト出力)では、`{"text":"main prompt content","agent-context":"private continuation context"}`を返します。メインプロンプトに入るのは`text`だけです。**Hide output as spoilers**(出力をスポイラーとして隠す)を使うと、保存済みの出力は折りたたまれたままになります。再生成では置き換えられるターンが除外され、削除済みのメッセージや非アクティブなスワイプはコンテキストに使われません。
-
-<a id="external-extensions"></a>
 
 ### 外部拡張機能(External Extensions)
 
@@ -357,8 +340,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `SEEDANCE_VIDEO_POLL_INTERVAL_MS` | `10000` | Seedanceの処理を確認する間隔。 |
 | `VIDEO_REFERENCE_PUBLIC_BASE_URL` | 空 | このサーバーの公開HTTPSアドレス。参照画像をURLから取得する必要があるサービスに使います。 |
 
-<a id="lorebooks"></a>
-
 ### ロアブック
 
 どちらもデフォルトでオフで、`.env`を変更した後の次の生成から適用されます。`LOREBOOK_STABLE_GROUP_WINNERS`を設定すると、**Settings → Advanced → Lorebooks**(設定 → 詳細設定 → ロアブック)の**Stable lorebook picks**(ロアブックの選択を固定)スイッチより優先されます。設定しない場合は、スイッチで決まります。[機能スイッチ](configuration/features.md)を参照してください。
@@ -369,8 +350,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | 有効化されたエントリーの全文を、最新のアシスタントまたはナレーターのメッセージにだけ保存します。古いメッセージには、エントリーのID、キー、スコアが残ります。大きなロアブックを使うチャットがかなり小さくなります。新しいメッセージを削除した場合、再び最新になったメッセージのActive Contextとエージェントの再試行では、そのエントリーの現在の本文を表示します。 |
 
 `scripts/compact-lorebook-scans.mjs`は、以前のチャットにも同じ規則を適用します。先にサーバーを停止してください。`--apply`を渡さないかぎり試行(ドライラン)だけを行い、書き込む前に両方のメッセージテーブルをバックアップします。
-
-<a id="robustness"></a>
 
 ### 堅牢性
 
@@ -402,8 +381,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `SIDECAR_RUNTIME_INSTALL_ENABLED` | `false`(Windowsのランチャーは`true`に設定します) | ループバックからの場合に、管理者用のヘッダーなしで**Built-in model**(内蔵モデル)のランタイムをインストールできるようにします。 |
 
 **Built-in model**については[内蔵モデルのセットアップ](connections/local-model.md)を参照してください。
-
-<a id="outbound-http-proxy"></a>
 
 ### 外向きのHTTPプロキシ
 

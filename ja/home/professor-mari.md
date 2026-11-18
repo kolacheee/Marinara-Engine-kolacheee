@@ -11,7 +11,7 @@ Professor Mariは、ホーム画面に組み込まれたアシスタントです
 
 Professor Mariは専用のタブで開きます。どの画面からでも呼び出せます。<kbd>Ctrl</kbd>+<kbd>K</kbd>を押して質問を入力し、**Ask Prof. Mari**を選びます。<kbd>Ctrl</kbd>+<kbd>J</kbd>(Macでは<kbd>⌘</kbd>+<kbd>J</kbd>)でポップアップウィンドウを開くこともできます。スマートフォンでは上部バーのタイトルをタップします。ヘッダーには、待機中は**Ready to help**、作業中は**Working on it...**と表示されます。
 
-メッセージはふだんの言葉で入力し、<kbd>Enter</kbd>を押します。<kbd>Shift</kbd>+<kbd>Enter</kbd>で改行します。Professor Mariの設定で**Enter sends to Professor Mari**(EnterでProfessor Mariに送信)をオフにすると、<kbd>Enter</kbd>で改行し、<kbd>Ctrl</kbd>+<kbd>Enter</kbd>で送信します。最初のメッセージを送ると、**Hello World**の実績が解除されます。
+メッセージはふだんの言葉で入力し、<kbd>Enter</kbd>を押します。<kbd>Shift</kbd>+<kbd>Enter</kbd>で改行します。Professor Mariの設定で**Enter sends to Professor Mari**(EnterでProfessor Mariに送信)をオフにすると、<kbd>Enter</kbd>で改行し、<kbd>Ctrl</kbd>+<kbd>Enter</kbd>か送信ボタンで送信します。このトグルはデバイスごとに保存されるので、スマートフォンではオフにし、コンピューターではオンのままにできます。最初のメッセージを送ると、**Hello World**の実績が解除されます。
 
 Professor Mariの設定はすべて、**Settings → General → Professor Mari → Open**(設定 → 一般 → Professor Mari → 開く)にあります。Searchの歯車アイコンからも開けます。コンピューターでは、**Professor Mari window**(Professor Mariのウィンドウ)の下にある**Height**(高さ)と**Width**(幅)のスライダーで、ウィンドウの大きさを変えられます。スマートフォンでは、ウィンドウが画面いっぱいに広がります。
 
@@ -39,7 +39,7 @@ Professor Mariは、編集する前に対象を読み込みます。依頼が曖
 - テーマ、エージェント、プロンプトプリセット、Personal Extensionの下書きの作成と編集。下書きは、コードを読んで**Library → Extensions**(ライブラリー → 拡張機能)で承認するまでオフのままです。
 - プリセット全体を置き換えずに、プリセットの1つのセクションだけをその場で編集。
 - ダウンロードできるエージェントの比較と、目的に合うものの提案。インストールするときは、**Library → Agents**(ライブラリー → エージェント)へ案内します。[ダウンロードできるエージェント一覧](../agents/built-in-agents.md)を参照してください。
-- アバター、スプライト、背景、テーマの画像などを作成したり割り当てたりし、切り抜き、余白のトリミング、サイズ変更、単色の背景の除去を行います。先に画像生成のアカウントが必要です。Professor Mariがアカウントを作ることはありません。テーマの画像については、[Professor Mariに画像を作ってもらう](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)を参照してください。
+- アバター、スプライト、背景、テーマの画像などを作成したり割り当てたりし、切り抜き、余白のトリミング、サイズ変更、単色の背景の除去を行います。先に画像生成のアカウントが必要です。Professor Mariがアカウントを作ることはありません。テーマの画像については、[Professor Mariに画像を作ってもらう](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)を参照してください。Professor Mariが作った画像をクリックすると、原寸で開いてプロンプトを読んだり、ダウンロードしたり、プロンプトを編集して再生成したりできます。新しい画像は、返信内の古い画像を置き換えます。
 - キャラクターや世界観を調べるときの、公開されているFandomのwikiページの参照。
 
 ### チップから始める
@@ -136,7 +136,7 @@ Professor Mariがキャラクター、ペルソナ、ロアブック、プリセ
 
 ### /でコマンドを使う
 
-行の先頭で`/`を入力すると、Professor Mariのコマンドが一覧表示されます。入力を続けて絞り込み、<kbd>Enter</kbd>を押します。一覧には、自分のSkillsとMemoriesも表示されます。どちらかを選ぶと、`@`と同じようにリンクされます。
+行の先頭かスペースの後に`/`を入力すると、Professor Mariのコマンドが一覧表示されるので、1つのメッセージで複数使えます。入力を続けて絞り込み、<kbd>Enter</kbd>を押します。一覧には、自分のSkillsとMemoriesも表示されます。どちらかを選ぶと、`@`と同じようにリンクされます。
 
 | コマンド | 内容 |
 | --- | --- |
@@ -233,7 +233,7 @@ Professor Mariのヘッダーにある**Context**(コンテキスト)を開く�
 
 ## FAQを読む
 
-ホームの**Learn the engine**(エンジンを学ぶ)ウィジェットにある**Read FAQ**(FAQを読む)(クラシックレイアウトでは**FAQ**ブックマークも使えます)をクリックすると、**Professor Mari's FAQ**が開きます。これはあらかじめ書かれた固定の一覧で、AIのチャットではないので、自分の設定の中身は把握していません。**Search FAQ**(FAQを検索)に入力すると絞り込めます。それぞれの質問には、**Setup**、**Connections**、**Game Mode**のようなカテゴリータグが付いています。質問をタップすると回答を読めます。
+ホームの**Things to try**(試してみよう)ウィジェットで**See all**(すべて見る)を開き、**Read FAQ**(FAQを読む)(クラシックレイアウトでは**FAQ**ブックマークも使えます)をクリックすると、**Professor Mari's FAQ**が開きます。これはあらかじめ書かれた固定の一覧で、AIのチャットではないので、自分の設定の中身は把握していません。**Search FAQ**(FAQを検索)に入力すると絞り込めます。それぞれの質問には、**Setup**、**Connections**、**Game Mode**のようなカテゴリータグが付いています。質問をタップすると回答を読めます。
 
 ## 制限と安全のために
 

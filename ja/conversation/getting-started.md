@@ -29,8 +29,6 @@ Conversationモードは、メッセンジャー風のチャットモードで�
 
 これらは後から**Chat Settings → Autonomous Messaging**で変更できます。キャラクターのメッセージが多すぎる場合は、そこで**Autonomous Messages**をオフにするか、自分の在席状況を**Do Not Disturb**に設定してください。
 
-<a id="choose-which-commands-a-character-can-use"></a>
-
 ## キャラクターが使えるCommandsの選択
 
 Commandsは、キャラクターが自分で決めて行う操作です。自分で入力する必要はありません。セットアップの後、**Chat Settings → Agents → Commands**を開いてください。マスターの**Commands**スイッチがすべての系統を制御します。オフのときは、どの系統も動きません。
@@ -57,10 +55,9 @@ Commandsは、キャラクターが自分で決めて行う操作です。自分
 | **8-Ball Pool** | ビリヤードのラックを組む。 | 8-Ball Pool |
 | **Tic-Tac-Toe** | 三目並べの勝負を受ける。 | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | 勝負を受ける。 | Rock-Paper-Scissors |
+| そのほかのゲーム(ゲーム名で表示) | そのゲームを始める、または誘いを受ける。 | BlackjackやWordleなど、そのゲーム |
 
 **Influence**と**Notes**については、[ConversationをRoleplayやGameにつなぐ](../chats/connected-chats.md)を参照してください。右端の列は、**Library → Agents**からインストールするエージェントの名前です。
-
-<a id="your-presence-status"></a>
 
 ## 在席ステータス
 
@@ -76,8 +73,6 @@ Commandsは、キャラクターが自分で決めて行う操作です。自分
 **Active**のまま10分間何も操作しないと、Marinaraは**Idle**にし、戻ってくると再び**Active**にします。ステータスを自分で選んだ場合、この自動切り替えは、もう一度**Active**を選ぶまで止まります。**Idle**ではチェックインは止まりません。
 
 ピルの隣にはステータスの入力欄があり、空のときは「What's up?」と表示されます。キャラクターに伝わるように、現在の活動を入力します(120文字まで)。最近の入力は**Recent status**の下に表示されるので、再利用できます。
-
-<a id="react-and-get-notified"></a>
 
 ## リアクションと通知
 
