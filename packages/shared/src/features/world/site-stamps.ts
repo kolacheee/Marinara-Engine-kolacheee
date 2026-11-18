@@ -16,6 +16,9 @@ export interface SiteStamp {
   ry: readonly [number, number];
   /** The widest and deepest room it is drawn for (the plan looks thin past it). */
   max?: readonly [number, number];
+  /** Widened both sides alike: the columns [from, to) on the left, their mirror on the right, so the middle
+   * (a tomb, an altar) stays in the middle of the room however wide it is. */
+  mirror?: true;
 }
 
 /**
@@ -76,11 +79,13 @@ const st = (
   rx: [number, number],
   ry: [number, number],
   max?: [number, number],
+  mirror?: true,
 ): SiteStamp => ({
   rows,
   rx,
   ry,
   ...(max ? { max } : {}),
+  ...(mirror ? { mirror } : {}),
 });
 
 const GREAT_HALL: SiteStamp[] = [
@@ -170,9 +175,20 @@ const PLANS: Record<string, SiteStamp[]> = {
     st(["2.0.2", ".....", "7.0.7", ".....", "7.0.7", "....."], [2, 3], [2, 4]),
     st(["2...2", ".7.7.", ".0.0.", ".7.7.", "....."], [2, 3], [1, 4]),
   ],
-  // The founder's tomb: the one tomb on its platform among a ring of piers, torches at the corners.
-  // One tomb between its pillars, the space round it widened, never a row of founders (panel round 23).
-  "Founder's tomb": [st(["2.....2", ".7...7.", "...0...", ".......", ".7...7."], [2, 3], [3, 4])],
+  // The founder's tomb: the one tomb in the middle of a ring of piers, its grave goods against the back wall
+  // behind it, a robber dead at its foot, and an aisle of piers and torches up to it from the door; widened
+  // both sides alike so the tomb stays in the middle (panel round 29: the tomb pushed into a corner, the
+  // room bare).
+  "Founder's tomb": [
+    st(
+      ["2..3.3..2", ".7.....7.", "....0....", ".7.1...7.", ".........", ".2.....2.", ".7.....7."],
+      [2, 3],
+      [4, 7],
+      undefined,
+      true,
+    ),
+    st(["2.....2", ".7...7.", "...0...", ".......", ".7...7."], [2, 3], [3, 5], undefined, true),
+  ],
   // An ossuary: skulls in the walls, bones heaped in the corners.
   Ossuary: [st(["NNNNN", "N...N", "n...n", "....."], [2, 3], [1, 3])],
   // A chapel below ground: the altar and its torches, a skeleton at prayer.
@@ -238,7 +254,18 @@ export function siteStampStretch(stamp: SiteStamp, across: number, deep: number)
     for (let k = to; k < length; k++) out.push([k, false]);
     return out;
   };
-  const cols = grow(w0, across, stamp.rx);
+  const mirrored = (want: number, [from, to]: readonly [number, number]) => {
+    const extra = want - w0;
+    const left = Math.floor(extra / 2);
+    const out: Array<[number, boolean]> = [];
+    for (let k = 0; k < to; k++) out.push([k, false]);
+    for (let k = 0; k < left; k++) out.push([from + (k % (to - from)), true]);
+    for (let k = to; k < w0 - to; k++) out.push([k, false]);
+    for (let k = 0; k < extra - left; k++) out.push([w0 - to + (k % (to - from)), true]);
+    for (let k = w0 - to; k < w0; k++) out.push([k, false]);
+    return out;
+  };
+  const cols = stamp.mirror && stamp.rx[1] * 2 <= w0 ? mirrored(across, stamp.rx) : grow(w0, across, stamp.rx);
   const rows = grow(h0, deep, stamp.ry);
   // A one-off piece (the high seat, the hearth, the altar) is never repeated by the stretch.
   return rows.map(([r, rr]) =>

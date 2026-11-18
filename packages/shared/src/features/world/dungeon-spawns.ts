@@ -657,8 +657,20 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
       };
     }
     // A lone sentry, a pair or a squad of three, not always two (panel 2026-11-17).
-    const holders = () =>
-      fitted(setting, level_, group(site.holder, "standard", level_, 1 + Math.floor(random() * 3)), "normal");
+    // A squad of three is led now and then by one of the family's elites, a sergeant over two (panel round
+    // 29: every group of guards alike).
+    const holders = () => {
+      const count = 1 + Math.floor(random() * 3);
+      const lead = count === 3 && marinaraEnemyFamily(site.holder)?.tiers.includes("elite") && random() < 0.5;
+      return fitted(
+        setting,
+        level_,
+        lead
+          ? [...group(site.holder, "elite", level_, 1), ...group(site.holder, "standard", level_, 2)]
+          : group(site.holder, "standard", level_, count),
+        "normal",
+      );
+    };
     // Guards by what the room is for (gamer panel 2026-11-17): the gate and the gatehouse always held, a
     // barracks full, a stairwell mostly clear (a way up or down is not always a fight), a tower or the wall
     // walk now and then.
@@ -746,7 +758,7 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
 
 /** The long walks a patrol keeps. */
 const PATROL_WALKS =
-  /^(Wall walk|Screens passage|Cloister walk|Cloister|Gallery|Long gallery|Ambulatory|Catacomb|Burial hall|Undercroft)$/u;
+  /^(Wall walk|Screens passage|Cloister walk|Gallery|Long gallery|Ambulatory|Catacomb|Burial hall|Undercroft)$/u;
 
 /**
  * The way across a floor and the way round it (owner 2026-11-17, "Routes and guard posts"): the shortest way

@@ -279,12 +279,16 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     // A patrol walks its walk's middle line end to end; where it is now goes by the day and the walk.
     if (area.patrol) {
       const long = room.w >= room.h;
-      const line = dungeonRoomCells(room)
-        .filter(({ x, y }) => dungeonWalkable(cells, x, y))
-        .filter(
-          ({ x, y }) => (long ? y : x) === (long ? room.y + Math.floor(room.h / 2) : room.x + Math.floor(room.w / 2)),
-        )
-        .sort((p, q) => (long ? p.x - q.x : p.y - q.y));
+      // Along the middle of a narrow walk; in a wide room, close along a wall, off the rug in its middle
+      // (panel round 29: beats crossing a gallery's rug), on whichever line runs clearest.
+      const across = long ? room.h : room.w;
+      const at0 = long ? room.y : room.x;
+      const tries = across >= 5 ? [at0 + 1, at0 + across - 2] : [at0 + Math.floor(across / 2)];
+      const lineOn = (k: number) =>
+        dungeonRoomCells(room)
+          .filter(({ x, y }) => dungeonWalkable(cells, x, y) && (long ? y : x) === k)
+          .sort((p, q) => (long ? p.x - q.x : p.y - q.y));
+      const line = tries.map(lineOn).sort((p, q) => q.length - p.length)[0]!;
       if (line.length >= 3) {
         const step = (today * 7 + area.area * 3) % (2 * line.length - 2);
         const at = line[step < line.length ? step : 2 * line.length - 2 - step]!;

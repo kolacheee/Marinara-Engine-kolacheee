@@ -1582,7 +1582,8 @@ function siteFrameOf(plan: SitePlan) {
     // either side and across the front; the ward open in the middle; the gate passage through the front
     // range between two gate towers; a round tower at each corner.
     // The ward is the castle's middle, nearly half of it (gamer panel 2026-11-17): the donjon a third.
-    const nb = Math.max(8, Math.round(H * 0.34));
+    // The back range a little under a third (panel round 29: the ward too small for the castle round it).
+    const nb = Math.max(7, Math.round(H * 0.3));
     put(full, cellsOf({ x: L, y: T + nb, w: W, h: 1 }), 0);
     const yb = T + nb + 1;
     const side = W >= 32 ? 5 : 4;
@@ -1628,7 +1629,7 @@ function siteFrameOf(plan: SitePlan) {
         // The donjon's own wall: two thick, nothing grows in it.
         // The donjon stands forward of the range into the ward, the biggest block in the castle (history
         // panel round 23: a keep smaller than its hall is no keep).
-        const ext = Math.max(0, Math.min(4, Math.floor((B - front - yb) / 3)));
+        const ext = Math.max(0, Math.min(3, Math.floor((B - front - yb) / 4)));
         const nd = nb + ext;
         donjonRect = { x: donjon.x, y: T, w: donjon.w, h: nd };
         put(full, cellsOf({ x: donjon.x, y: T + nb, w: donjon.w, h: ext }));
@@ -2446,6 +2447,32 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (way) lay(way);
       }
     }
+    // A crypt's galleries close a loop or two, a short cut through the rock between two of them far apart
+    // along the galleries, so there is more than one way round (panel round 29: single paths).
+    if (kind === "crypt" && corridor >= 0)
+      for (let loops = 0, tries = 0; loops < 1 + Math.floor(plan.wealth / 2) && tries < 80; tries++) {
+        const lane: number[] = [];
+        for (let c = 0; c < size; c++) if (at[c] === corridor) lane.push(c);
+        const a = lane[Math.floor(random() * lane.length)]!;
+        const b = lane[Math.floor(random() * lane.length)]!;
+        const span = Math.abs((a % mapW) - (b % mapW)) + Math.abs(Math.floor(a / mapW) - Math.floor(b / mapW));
+        if (span < 5 || span > 14) continue;
+        const along = new Int32Array(size).fill(-1);
+        along[a] = 0;
+        const queue = [a];
+        for (let head = 0; head < queue.length && along[b]! < 0; head++)
+          for (const n of around(queue[head]!))
+            if (along[n]! < 0 && at[n] === corridor) {
+              along[n] = along[queue[head]!]! + 1;
+              queue.push(n);
+            }
+        if (along[b]! >= 0 && along[b]! < span * 2.5) continue;
+        const from = around(a).filter((n) => free(n) && !hold[n]);
+        const way = from.length ? route(from, (c) => around(c).includes(b)) : null;
+        if (!way || way.length > span + 6) continue;
+        lay(way);
+        loops++;
+      }
   }
 
   // ── The rooms, grown ──
@@ -2499,7 +2526,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   };
   // A castle's cells are cells, two by three off the gallery, not chambers (panel 2026-11-17).
   const cellLike = (r: SitePlanRoom) => rock && kind === "keep" && /^(Cell|Oubliette)\b/u.test(r.name);
-  for (const r of planned) add(r, cellLike(r) ? 10 : Math.round(weight(r) * scale));
+  // In rock a chamber starts big enough to stay a chamber once its walls are cut: a vault grown to a dozen
+  // cells came out a two-wide sliver and was merged away (round 29: Upper burials kept 128 of 176 rooms).
+  for (const r of planned) add(r, cellLike(r) ? 10 : Math.max(rock ? 36 : 0, Math.round(weight(r) * scale)));
   planned = [];
   // The hidden room: small, deep, against an outer wall, behind a hidden door, with something worth it.
   // Never in a crypt: its walls are a tile pack's, with no hidden door drawn in them.
@@ -2546,6 +2575,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (!mask[n]) byOutside[c] = 1;
     }
   }
+  // In rock a chamber's seed a course of rock off its gallery, the gallery two cells off.
+  const byPass2 = new Uint8Array(size);
+  for (let c = 0; c < size; c++) if (byPass[c]) for (const n of around(c)) if (mask[n] && at[n]! < 0) byPass2[n] = 1;
+  const apart = (g: number, c: number) => around(c).every((n) => at[n]! < 0 || at[n] === g);
   const nearEdge = new Uint8Array(size);
   for (let c = 0; c < size; c++) if (byOutside[c]) for (const n of around(c)) nearEdge[n] = 1;
   // Near a tower or a gate tower, whose only way in it would take (seed 4 keep: a corner tower walled up
@@ -2605,7 +2638,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           if (!hall && !r.heart && zoneOf(c) === 1) s += 1.5;
           if (r.name === "Gatehouse" && !byPass[c]) s += 6;
         }
-        if (rock && !byPass[c]) s += 30;
+        if (rock && !byPass2[c]) s += 30;
+        if (rock && !apart(g, c)) s += 40;
         if (kind === "manor" && level.depth === 0 && frame.serviceSide && !(entry && SITE_ENTRY_ROOMS.has(r.name))) {
           const service = SITE_SERVICE_ROOMS.has(siteBaseName(r.name));
           if (service !== ((x < frame.cx ? 1 : 2) === frame.serviceSide)) s += 25;
@@ -2653,7 +2687,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   // In rock a chamber is cut where there is rock to cut, whatever band it lies in (panel 2026-11-17: a castle's
   // dungeons came out as five rooms in a field of rock).
-  const takes = (g: number, c: number) => free(c) && (rock || zoneOf(c) === regions[g]!.zone);
+  // In rock a chamber keeps a course of rock between it and every other space, so cutting the walls never
+  // eats it down to a sliver merged away (round 29: Upper burials kept 128 of the 176 rooms planned).
+  const takes = (g: number, c: number) => free(c) && (rock ? apart(g, c) : zoneOf(c) === regions[g]!.zone);
   {
     const done = new Set<number>();
     for (let guard = 0; guard < 20000; guard++) {
@@ -3113,6 +3149,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     // Three wide counts too when it runs four times as long: a 13x3 dining room is a corridor (round 21).
     if (!main || Math.min(main.w, main.h) > 3 || (Math.min(main.w, main.h) === 3 && Math.max(main.w, main.h) < 12))
       continue;
+    // In rock a narrow vault cut between galleries is a vault still, a row of burial niches, and keeps its
+    // name rather than vanish into its neighbour (round 29: crypts' planned vaults lost).
+    if (rock && Math.min(main.w, main.h) >= 2 && cells.length >= 10) continue;
     const between = new Map<number, number[]>();
     for (const c of cells)
       for (const d of [1, -1, mapW, -mapW]) {
@@ -3378,43 +3417,56 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   // A space the tree never reached gets a passage cut to the nearest one it did, through the wall or the
   // rock (a crypt's chambers apart from its galleries); failing that it is walled up.
-  for (const [n] of [...regions.entries()].sort(
-    (p, q) => (cellsBy.get(q[0])?.length ?? 0) - (cellsBy.get(p[0])?.length ?? 0),
-  )) {
-    if (!alive(n) || inTree.has(n) || hiddenNode(n)) continue;
-    const from = (cellsBy.get(n) ?? []).filter((c) => ground[c] === "floor");
-    const back = new Int32Array(size).fill(-2);
-    const queue: number[] = [];
-    for (const c of from) {
-      back[c] = -1;
-      queue.push(c);
-    }
-    let found = -1;
-    for (let head = 0; head < queue.length && found < 0; head++) {
-      const c = queue[head]!;
-      for (const m of around(c)) {
-        if (back[m] !== -2) continue;
-        if (ground[m] === "floor" && at[m]! >= 0 && inTree.has(at[m]!) && !hiddenNode(at[m]!) && !lockedNode(at[m]!)) {
-          back[m] = c;
-          found = m;
-          break;
-        }
-        // Through one course of wall outside the plan with the plan again beyond it (a tower through the
-        // curtain it stands on; a kitchen through the line between the back range and the ward, its only
-        // neighbours locked: round 25 keep 1), never further out.
-        const beyond = m + (m - c);
-        const curtain =
-          !mask[m] && mask[c] === 1 && beyond >= 0 && beyond < size && !!mask[beyond] && ground[m] === "wall";
-        if ((!mask[m] && !curtain) || hold[m] || ground[m] === "floor") continue;
-        back[m] = c;
-        queue.push(m);
+  // Over again while any is reached, so a space boxed in by another that was itself cut off gets its turn
+  // once that one joins (round 29: a crypt's burial hall walled up inside its own gallery's loop).
+  for (let reached = true; reached;) {
+    reached = false;
+    for (const [n] of [...regions.entries()].sort(
+      (p, q) => (cellsBy.get(q[0])?.length ?? 0) - (cellsBy.get(p[0])?.length ?? 0),
+    )) {
+      if (!alive(n) || inTree.has(n) || hiddenNode(n)) continue;
+      const from = (cellsBy.get(n) ?? []).filter((c) => ground[c] === "floor");
+      const back = new Int32Array(size).fill(-2);
+      const queue: number[] = [];
+      for (const c of from) {
+        back[c] = -1;
+        queue.push(c);
       }
+      let found = -1;
+      for (let head = 0; head < queue.length && found < 0; head++) {
+        const c = queue[head]!;
+        for (const m of around(c)) {
+          if (back[m] !== -2) continue;
+          if (
+            ground[m] === "floor" &&
+            at[m]! >= 0 &&
+            inTree.has(at[m]!) &&
+            !hiddenNode(at[m]!) &&
+            !lockedNode(at[m]!)
+          ) {
+            back[m] = c;
+            found = m;
+            break;
+          }
+          // Through one course of wall outside the plan with the plan again beyond it (a tower through the
+          // curtain it stands on; a kitchen through the line between the back range and the ward, its only
+          // neighbours locked: round 25 keep 1), never further out.
+          const beyond = m + (m - c);
+          const curtain =
+            !mask[m] && mask[c] === 1 && beyond >= 0 && beyond < size && !!mask[beyond] && ground[m] === "wall";
+          // A passage already cut (floor of no space's) is followed on to whatever it reached.
+          if ((!mask[m] && !curtain) || hold[m] || (ground[m] === "floor" && at[m]! >= 0)) continue;
+          back[m] = c;
+          queue.push(m);
+        }
+      }
+      if (found < 0) continue;
+      const via = at[found]!;
+      for (let c = back[found]!; c >= 0 && back[c] !== -1; c = back[c]!) ground[c] = "floor";
+      inTree.add(n);
+      depth[n] = depth[via]! + 1;
+      reached = true;
     }
-    if (found < 0) continue;
-    const via = at[found]!;
-    for (let c = back[found]!; c >= 0 && back[c] !== -1; c = back[c]!) ground[c] = "floor";
-    inTree.add(n);
-    depth[n] = depth[via]! + 1;
   }
   // What is still cut off is walled up; a planned room it held goes to a made-up room's space.
   for (const [n] of regions.entries()) {
