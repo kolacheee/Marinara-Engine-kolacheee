@@ -123,6 +123,19 @@ Illustrator 也会绘制背景。在 **Chat Settings → Agents**(聊天设置 �
 
 这三个选项默认都关闭。见 [Illustrator 生成的背景](scene-backgrounds.md)。
 
+## 用判定模型检查图片
+
+使用内置的[能读取图片的判定模型](../connections/decision-models.md#features-that-look-at-pictures)（Liquid d1、Valen 或 Winnow）时，Illustrator 卡片会提供另外三项设置。默认全部关闭；没有这样的模型时，控件会变灰，并显示 ⓘ。
+
+- **Picture check**(图片检查) 会查看每张新图片、天气版本和自拍，检查是否画出了要求的内容。自拍还会与角色头像比较。**Make another if it doesn't match**(不符合要求时再生成一张) 会在不符合时重画一次。**Always make two, keep the better**(始终生成两张，保留较好的一张) 会画两张并保留更好的一张。每多画一张，就多一次图像生成。
+- **Also check**(额外检查)（在 **Picture check** 下）可以添加自己的检查项，每行一项，最多 6 项，例如 `Kaelen has short red hair`。不允许出现在图片里的内容，用 `not:` 开头，例如 `not: The picture has writing or a watermark`。
+- **Skip a picture the newest one already shows**(最新图片已展示的内容不再绘制) 会把聊天里最新的图片与即将绘制的内容比较，跳过重复内容。你主动要求的图片始终会生成。
+- **Reuse a library background that looks like the place**(复用图库中看起来符合该地点的背景) 会显示资料库里符合新地点的背景，不再绘制新图。见[复用已有图片](scene-backgrounds.md#reusing-pictures-you-already-have)。
+
+在 Conversation 聊天里，自拍用的 **Picture check** 位于 Illustrator 卡片上。
+
+无法执行的检查算作通过，所以图片会被保留。
+
 ## NovelAI 上的多角色场景
 
 当 Illustrator 的图像模型是 NovelAI 的 V4、V4.5 或 V5 模型时，写提示词的模型会为每个可见角色加一段角色描述。每段描述包含该角色的外观、表情、姿势，以及在画面中的大致位置。Marinara 会把这些描述与场景的角色列表核对，丢掉无法匹配的，再把其余描述作为 NovelAI 原生角色提示词，和主提示词一起发送。这样可以避免不同角色的发型、服装和其他特征混在一起。通过 **Illustrate** 生成的图片，以及角色用 `[illustrate]` 命令生成的图片，也会得到同样的描述。

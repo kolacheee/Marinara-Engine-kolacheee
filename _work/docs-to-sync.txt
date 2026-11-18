@@ -1,8 +1,0 @@
-agents/custom-agents.md
-characters/sprites.md
-connections/decision-models.md
-lorebooks/entries.md
-media/illustrator-agent.md
-media/scene-backgrounds.md
-prompts/conditional-prompts.md
-prompts/macros.md

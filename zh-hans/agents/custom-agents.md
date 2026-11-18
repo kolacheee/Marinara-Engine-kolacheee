@@ -180,8 +180,9 @@ Marinara 把 `editedText` 换进回复里。`changes` 里的说明会显示为�
 
 1. 打开这个自定义智能体。
 2. 输入最多 500 个字符的 **Question**(问题)。其中可以使用 `{{user}}` 和 `{{char}}` 宏。
-3. 把 **Run when probability is at least**(运行所需的最低概率) 设为这个智能体的阈值。“是”的概率达到这个值时智能体才运行，所以值越高，跳过的次数越多。编辑器会为你的模型给出推荐值：本地聊天模型和 Decision 账号为 0.5，内置 Open-Jev 模型为 0.1。切换模型之后，用自己的聊天核对一下。见[阈值](../connections/decision-models.md#thresholds)。
-4. 可选：设置 **Bypass the question after this many messages without a successful run**(连续指定消息数未成功运行后跳过问题)。经过这么多条消息后，问题就会被跳过，这样一个一直回答“否”的模型就无法让智能体永远沉默。关键词和频率仍然适用。
+3. 把 **Run when probability is at least**(运行所需的最低概率) 设为这个智能体的阈值。“是”的概率达到这个值时智能体才运行，所以值越高，跳过的次数越多。编辑器会为你的模型给出推荐值：本地聊天模型和 Decision 账号为 0.5，大多数内置判定模型为 0.3 或 0.5，内置 Open-Jev 模型为 0.1。切换模型之后，用自己的聊天核对一下。见[阈值](../connections/decision-models.md#thresholds)。
+4. 可选：在 **Show the decision model**(向决策模型展示) 下，选择供问题查看的 **Pictures**(图片)（最新 1 到 3 张）或 **Clips**(视频片段)，并通过 **Ask only when a picture or clip is in**(仅在以下消息中有图片或视频片段时询问) 指定最近几条消息。需要能读取这些内容的内置判定模型（Liquid d1、Valen 或 Winnow，视频片段则需要 Valen 完整版），否则控件会变灰。设定消息范围后，如果其中没有图片或视频片段，这一回合就会跳过智能体。每张图片或每段视频都会让问题回答得更慢。见[图片和视频片段](../connections/decision-models.md#pictures-and-clips)。
+5. 可选：设置 **Bypass the question after this many messages without a successful run**(连续指定消息数未成功运行后跳过问题)。经过这么多条消息后，问题就会被跳过，这样一个一直回答“否”的模型就无法让智能体永远沉默。关键词和频率仍然适用。
 
 把问题写成关于最新消息的陈述，例如 `The latest message moves the scene to a new place.`，小模型回答它比回答 `Did the scene change?` 更可靠。见[编写陈述](../prompts/conditional-prompts.md#writing-statements)。
 

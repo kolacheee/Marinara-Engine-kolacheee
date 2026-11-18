@@ -1,6 +1,6 @@
 {
   "language": "zh-hans",
-  "sourceCommit": "61b9a81e6",
+  "sourceCommit": "90db382afbab6444f2286638442184c05030870a",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -54,8 +54,8 @@
     },
     {
       "path": "agents/custom-agents.md",
-      "sha256": "76de63215887d4b630bd6688f7c87e39134b00fb0e40c3a71c9431818e075d25",
-      "bytes": 18448
+      "sha256": "59913b1baa720712128b0bae6293c4f2f17a150c72e448987d88d25effeb6f37",
+      "bytes": 19195
     },
     {
       "path": "agents/hierarchical-maps.md",
@@ -164,8 +164,8 @@
     },
     {
       "path": "characters/sprites.md",
-      "sha256": "b9106cb099f5ca27e729ca56d9f88e76b8cc9ce7a17c86a84b89895ed2d86b5e",
-      "bytes": 14823
+      "sha256": "c018fce543f4817287d48fd5bb9e0327d5cda4158ce81a940a7bd7368f8d0c3a",
+      "bytes": 15272
     },
     {
       "path": "chats/branches.md",
@@ -244,8 +244,8 @@
     },
     {
       "path": "connections/decision-models.md",
-      "sha256": "82e991ad41fa6e678eff13f301649e764b04c4d3967925de83f46844f52eb4b8",
-      "bytes": 30482
+      "sha256": "1ebfb5a9bfda7fcc60f32b8624eda1f68bf234e1270b34636200bddec816015b",
+      "bytes": 40682
     },
     {
       "path": "connections/local-model.md",
@@ -644,8 +644,8 @@
     },
     {
       "path": "lorebooks/entries.md",
-      "sha256": "9064b0042ffb6654c0ee4c316fcf13eeff9962c89da86c2ed6119fddea0a841c",
-      "bytes": 19714
+      "sha256": "bed35e19d559493c3d297980867281c23abf5b21a8dc21c0fcd62d6039c8054b",
+      "bytes": 20730
     },
     {
       "path": "lorebooks/import-export.md",
@@ -684,8 +684,8 @@
     },
     {
       "path": "media/illustrator-agent.md",
-      "sha256": "f0e613a3d1934d65230da8468abe00b8ca01d2d6ec722b6af37acfe69f1fab7f",
-      "bytes": 14431
+      "sha256": "2b071f3f23b97f3c48f000e6e05dab6be34eca75d28c580d08cfd495e621f7e2",
+      "bytes": 16096
     },
     {
       "path": "media/image-providers.md",
@@ -699,8 +699,8 @@
     },
     {
       "path": "media/scene-backgrounds.md",
-      "sha256": "767b2fd4d3201bfc4673d213de9d5a1122d8ebf5ee3f328f44f1f03cc3e4b809",
-      "bytes": 9842
+      "sha256": "0e3a9be8a926a818957b5b4bebd4046625e4649268350b37b335bafa3a66c2ad",
+      "bytes": 10348
     },
     {
       "path": "media/scene-video.md",
@@ -719,8 +719,8 @@
     },
     {
       "path": "prompts/conditional-prompts.md",
-      "sha256": "44900f8c9ae038cfd83b5d62e940e2123070cbee1d99b185c46174883f4bf78b",
-      "bytes": 19743
+      "sha256": "a67c9a4adcc246ca91e581c90c4d0ce7f7d1dcd7f840067bdbc0b1577241052b",
+      "bytes": 21216
     },
     {
       "path": "prompts/generation-parameters.md",
@@ -729,8 +729,8 @@
     },
     {
       "path": "prompts/macros.md",
-      "sha256": "2f974f59a278ba46e282d071f6a1e0e7ab314c71bff26be956088abf0323c1b8",
-      "bytes": 23694
+      "sha256": "6115ee32b2e5a3608b3cabb5aa0db209d5350a04ef28b4a33a96ccfb21a0e262",
+      "bytes": 23944
     },
     {
       "path": "prompts/preset-variables.md",

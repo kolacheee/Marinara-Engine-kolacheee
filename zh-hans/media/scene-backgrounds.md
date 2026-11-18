@@ -42,6 +42,8 @@ Illustrator 按 **Image Run Interval**(图片运行间隔) 检查场景，默认
 
 匹配时不区分大小写、重音符号和“'s”，最具体的名称优先于 `bedroom.png` 这类泛称。找到匹配图片就会显示（如果有符合故事天气的版本，就显示那个版本），不会重新绘制。只有没有匹配图片的地点才会生成新图。
 
+如果按名称找不到匹配项，而你在 Illustrator 卡片上开启了 **Reuse a library background that looks like the place**(复用图库中看起来符合该地点的背景)，[能读取图片的判定模型](../connections/decision-models.md#features-that-look-at-pictures) 就会查看资料库里最多 4 张与地点名称含有相同单词的图片，并显示符合地点的一张。只有全部不符合时才绘制新图。这项设置默认关闭，没有这样的模型时会变灰。
+
 要确保某个地点一直使用同一张图片，可以用地点名命名文件（如用 `kitchen.png` 对应“Kitchen”），或添加至少包含两个单词的标签，例如 `smith house kitchen`（见[为背景添加标签](../appearance/chat-backgrounds.md#tag-a-background)）。`kitchen` 或 `night` 这种只有一个单词的标签在这里会被忽略，因为它们通常描述的是图片的样子。
 
 ## 背景的天气版本

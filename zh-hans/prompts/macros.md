@@ -283,6 +283,7 @@ Outlet 宏可以用在 Conversation、Roleplay 或 Game Mode 的提示词小节�
 - `sticky:3 cooldown:5` 让是保持 3 回合，然后休息 5 回合。见 [Sticky 与 Cooldown](conditional-prompts.md#sticky-and-cooldown)。
 - `until:"..."` 或 `while:"..."` 只要第二条陈述允许，就一直保持是。见 [Until 与 While](conditional-prompts.md#until-and-while)。
 - `every:3` 只每 3 回合询问一次陈述。见[每隔几回合检查](conditional-prompts.md#checking-every-few-turns)。
+- `pictures:1`、`clips:1` 和 `media_within:3` 让支持读取这些内容的内置模型查看聊天里最新的图片和视频片段，并等到有这些内容时才询问。见[图片和视频片段](conditional-prompts.md#pictures-and-clips)。
 - `priority:high` 或 `priority:low` 决定哪些陈述进入提示词计划。见[优先级](conditional-prompts.md#priority)和[限制与成本](conditional-prompts.md#limits-and-cost)。
 
 ## 常见错误
