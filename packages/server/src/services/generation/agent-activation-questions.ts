@@ -8,6 +8,7 @@ import { normalizeAgentActivationScanDepth } from "../../routes/generate/agent-a
 import type { NoulQuestion } from "../decision/system-one.client.js";
 import { countMessagesSinceAgentRun } from "./agent-cadence.js";
 import { logRateLimited } from "../../lib/log-rate-limit.js";
+import { attachDecisionMedia, type DecisionMediaRef } from "../decision/decision-media.js";
 
 export interface ActivationQuestionCandidate {
   agentId: string;
@@ -20,6 +21,8 @@ export interface DecisionMessage {
   role?: string | null;
   name?: string;
   content?: unknown;
+  /** Pictures and clips on the message, for a decision model that reads them. Never serialized. */
+  media?: DecisionMediaRef[];
 }
 
 /** A missing run or removed anchor is stale: bootstrap the agent instead of gating it forever. */
@@ -50,7 +53,8 @@ export function activationQuestionSettings(settings: Record<string, unknown>) {
 
 /** Fit serialized state, including role/name wrappers. Keep the newest message's suffix. */
 export function buildDecisionState(messages: DecisionMessage[], depth: number, maxStateTokens: number) {
-  const recent_messages = messages.slice(-depth).map((message) => ({
+  const window = messages.slice(-depth);
+  const recent_messages = window.map((message) => ({
     role: message.role ?? "user",
     ...(message.name ? { name: message.name } : {}),
     content: typeof message.content === "string" ? message.content : "",
@@ -70,7 +74,12 @@ export function buildDecisionState(messages: DecisionMessage[], depth: number, m
       newest.content = sliceTextToTokenBudget(original, budget, true);
     }
   }
-  return state;
+  // The media of the messages that made it into the scene, in the chat's order. A model
+  // that reads them takes the newest few; every other backend never sees them.
+  return attachDecisionMedia(
+    state,
+    window.slice(window.length - recent_messages.length).flatMap((message) => message.media ?? []),
+  );
 }
 
 export async function evaluateActivationQuestions(args: {

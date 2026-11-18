@@ -93,6 +93,10 @@ const LOADABLE_NAMES = /^(?:LICENSE[\w.-]*|NOTICE[\w.-]*|\.gitattributes)$/u;
  */
 export function isLoadableArtifactFile(path: string): boolean {
   if (path === "package/checkpoint/head.pt") return true;
+  // Valen's full release: ONNX graphs and their external weights, read by ONNX Runtime
+  // as data. Only in the package's own `onnx/` folder, and only the curated entries
+  // install with that runtime; a pasted repository cannot choose it.
+  if (/^onnx\/[A-Za-z0-9._-]+\.(?:onnx|data)$/u.test(path)) return true;
   const name = path.slice(path.lastIndexOf("/") + 1);
   if (LOADABLE_NAMES.test(name)) return true;
   const dot = name.lastIndexOf(".");

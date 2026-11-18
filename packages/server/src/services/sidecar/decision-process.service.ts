@@ -32,6 +32,7 @@ import { localModelManager, type LocalModelPlacement } from "./local-model-manag
 import { decisionServerInstall, type DecisionServerInstall } from "./decision-server-runtimes.js";
 import { DecisionSystemOneShim, type DecisionShimMode } from "./decision-systemone-shim.js";
 import { createServer } from "node:net";
+import { availableParallelism } from "node:os";
 
 const LOG_PATH = join(getDataDir(), "sidecar-runtime", "decision", "server.log");
 /** Loading 4.5 GB of weights and building the LoRA takes a while on a cold cache. */
@@ -373,7 +374,7 @@ class DecisionProcessService {
     for (const [index, onGpu] of plans.entries()) {
       if (stopped()) return null;
       const port = await allocateLoopbackPort();
-      const launch = ggufLaunch(model, modelPath, install, port, onGpu);
+      const launch = ggufLaunch(model, modelPath, install, port, onGpu, decisionProjectorFilePath(model));
       mkdirSync(join(LOG_PATH, ".."), { recursive: true });
       const log = createWriteStream(LOG_PATH, { flags: "a" });
       log.write(
@@ -614,6 +615,27 @@ export function decisionModelFilePath(model: SidecarDecisionModelInfo): string |
   }
 }
 
+/** The vision projector a downloaded model loads beside its weights, when it has one here. */
+export function decisionProjectorFilePath(model: SidecarDecisionModelInfo): string | null {
+  if (!model.projectorFile || !model.artifacts[0]) return null;
+  const snapshot = artifactSnapshotPath(model.artifacts[0]);
+  try {
+    const path = assertInsideDir(snapshot, join(snapshot, model.projectorFile));
+    return existsSync(path) ? path : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Threads for Valen's full release: all but one of the processor's, so Marinara itself
+ * stays responsive while a clip is read, and at most 8, past which ONNX Runtime gained
+ * nothing in its authors' measurements on these graphs.
+ */
+function valenOnnxThreads(): number {
+  return Math.max(1, Math.min(8, availableParallelism() - 1));
+}
+
 async function allocateLoopbackPort(): Promise<number> {
   return new Promise((resolvePort, reject) => {
     const server = createServer();
@@ -653,22 +675,49 @@ async function waitForHealth(baseUrl: string, alive: () => boolean, timeoutMs: n
  *   readout (the state is the shared start of every question) and off for native
  *   decision models, which llama.cpp itself recommends.
  * - Valen: its authors' command, processor only, the whole request in one batch.
- * - Winnow: its authors' direct-decision command for the E4B text profile.
+ * - Winnow: its authors' direct-decision command for the E4B profile.
+ * - Valen's full release: Valen's SDK on Marinara's own Node, with the FFmpeg pair.
+ *
+ * A model with a vision projector downloaded gets it with `--mmproj`, so it reads the
+ * pictures Marinara sends; without one it reads text, as before.
  */
 export function ggufLaunch(
   model: SidecarDecisionModelInfo,
   modelPath: string,
-  install: Pick<DecisionServerInstall, "variant" | "directory">,
+  install: Pick<DecisionServerInstall, "variant" | "directory" | "script" | "ffmpeg" | "ffprobe">,
   port: number,
   onGpu: boolean,
+  projectorPath: string | null = null,
 ): { args: string[]; env: NodeJS.ProcessEnv; shim: DecisionShimMode | null } {
   const ctx = String(model.maxLengthTokens);
   const common = ["--host", "127.0.0.1", "--port", String(port)];
+  const vision = projectorPath ? ["--mmproj", projectorPath] : [];
+  if (model.runtime === "valen_onnx") {
+    if (!install.script) throw new Error("Valen's full release has no server script.");
+    return {
+      args: [
+        install.script,
+        "--model",
+        join(modelPath, ".."),
+        "--port",
+        String(port),
+        "--variant",
+        "q8-mlp",
+        "--threads",
+        String(valenOnnxThreads()),
+        ...(install.ffmpeg ? ["--ffmpeg", install.ffmpeg] : []),
+        ...(install.ffprobe ? ["--ffprobe", install.ffprobe] : []),
+      ],
+      env: {},
+      shim: null,
+    };
+  }
   if (model.runtime === "valen_gguf") {
     return {
       args: [
         "-m",
         modelPath,
+        ...vision,
         "--load-mode",
         "none",
         "--device",
@@ -730,7 +779,8 @@ export function ggufLaunch(
         "--no-warmup",
         "--cache-ram",
         "0",
-        "--no-mmproj",
+        // Its authors' vision preset when the projector is here, their text preset when not.
+        ...(projectorPath ? vision : ["--no-mmproj"]),
         "--spec-type",
         "none",
       ],
@@ -754,7 +804,18 @@ export function ggufLaunch(
       shim: null,
     };
   }
-  const args = ["-m", modelPath, ...common, "--ctx-size", ctx, "--parallel", "1", "-ngl", onGpu ? "999" : "0"];
+  const args = [
+    "-m",
+    modelPath,
+    ...vision,
+    ...common,
+    "--ctx-size",
+    ctx,
+    "--parallel",
+    "1",
+    "-ngl",
+    onGpu ? "999" : "0",
+  ];
   if (!onGpu) args.push("--device", "none");
   if (model.runtime === "llama_systemone") {
     // Native decision models read the whole prompt in one batch for some types (laya, clef, d3).

@@ -15,9 +15,11 @@ import {
   Check,
   ChevronDown,
   Download,
+  Eye,
   HardDrive,
   Languages,
   Link2,
+  ListChecks,
   Loader2,
   Scale,
   Trash2,
@@ -278,6 +280,40 @@ export function DecisionModelModal() {
           : "ui.modals.decisionmodelmodal.vram",
     );
 
+  /** What a model answers and what it reads, in two short lines. */
+  const capabilities = (model: { questionTypes?: string[]; inputs?: string[]; extraInputs?: string[] }) => {
+    const list = (kind: "questionType" | "input", values: string[] | undefined) =>
+      (values ?? []).map((value) => localizeUi(`ui.modals.decisionmodelmodal.${kind}.${value}`)).join(", ");
+    const answers = list("questionType", model.questionTypes);
+    const reads = list("input", model.inputs);
+    const elsewhere = list("input", model.extraInputs);
+    if (!answers && !reads) return null;
+    return (
+      <div className="mt-2 flex flex-col gap-1 text-xs text-[var(--muted-foreground)] max-sm:text-[13px]">
+        {answers && (
+          <span className="flex items-start gap-1.5">
+            <ListChecks size="0.75rem" className="mt-0.5 shrink-0" />
+            {localizeUi("ui.modals.decisionmodelmodal.answers", { types: answers })}
+          </span>
+        )}
+        {reads && (
+          <span className="flex items-start gap-1.5">
+            <Eye size="0.75rem" className="mt-0.5 shrink-0" />
+            <span>
+              {localizeUi("ui.modals.decisionmodelmodal.reads", { inputs: reads })}
+              {elsewhere && (
+                <span className="text-[var(--muted-foreground)]/70">
+                  {" · "}
+                  {localizeUi("ui.modals.decisionmodelmodal.readsElsewhere", { inputs: elsewhere })}
+                </span>
+              )}
+            </span>
+          </span>
+        )}
+      </div>
+    );
+  };
+
   /**
    * The chosen model's facts under the dropdown. A model this machine cannot run stays
    * choosable, so its reason can be read, and its Install stays disabled.
@@ -303,6 +339,7 @@ export function DecisionModelModal() {
       <p className="text-[0.6875rem] leading-relaxed text-[var(--muted-foreground)] max-sm:text-[13px]">
         {model.description}
       </p>
+      {capabilities(model)}
       <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--muted-foreground)]/70">
         <span className="flex items-center gap-1">
           <Download size="0.75rem" />
@@ -588,6 +625,7 @@ export function DecisionModelModal() {
                   {inspect.data?.model && inspect.data.preflight && (
                     <div className="mt-2 rounded-lg border border-[var(--border)] p-2.5">
                       <div className="text-xs font-medium">{inspect.data.model.label}</div>
+                      {capabilities(inspect.data.model)}
                       <div className="mt-1 flex flex-wrap items-center gap-3 text-[0.625rem] max-sm:text-[13px] text-[var(--muted-foreground)]/70">
                         <span className="flex items-center gap-1">
                           <Download size="0.75rem" />

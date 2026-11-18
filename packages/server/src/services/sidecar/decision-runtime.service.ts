@@ -473,6 +473,9 @@ export class DecisionRuntimeService {
       // names: JevK5 2B and 4B share one snapshot, and the 2B's receipt says nothing
       // about whether the 4B ever downloaded.
       if (model.modelFile && artifact === model.artifacts[0] && !(model.modelFile in expected)) return false;
+      // The same for the vision projector: a model installed before it was added to the
+      // download is not whole until it arrives.
+      if (model.projectorFile && artifact === model.artifacts[0] && !(model.projectorFile in expected)) return false;
       try {
         return Object.entries(expected).every(([relative, size]) => {
           try {

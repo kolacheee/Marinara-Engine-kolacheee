@@ -13,7 +13,8 @@
  *   token for token, so the numbers match the authors' own llama.cpp path.
  * - `text-state` (Valen): Valen's server accepts a state that is text or a chat-message
  *   list, and refuses any other object. Marinara's state is an object, so it is sent as
- *   its JSON text, which is also what llama.cpp's own server does with an object.
+ *   its JSON text, which is also what llama.cpp's own server does with an object. A
+ *   state that carries pictures already arrives as a chat-message list and passes as is.
  *
  * It listens on loopback only, on a port the system picks, and forwards only to the
  * one server it was made for.
@@ -35,7 +36,17 @@ const chatTemplate = (system: string, user: string) =>
 /** A letter outside the returned top-k sits at least this far below the last one. */
 const MISSING_MARGIN = 2.0;
 const TOP_K = 40;
-const MAX_BODY_BYTES = 4 * 1024 * 1024;
+/** Room for three scaled pictures beside a long scene. */
+const MAX_BODY_BYTES = 16 * 1024 * 1024;
+
+function isMessageState(state: unknown): boolean {
+  return (
+    !!state &&
+    typeof state === "object" &&
+    Array.isArray((state as { messages?: unknown }).messages) &&
+    Object.keys(state).length === 1
+  );
+}
 
 /**
  * `json.dumps(value, ensure_ascii=False)` as Python writes it: a space after every
@@ -283,7 +294,11 @@ export class DecisionSystemOneShim {
       if (this.mode.kind === "text-state") {
         const forwarded = {
           ...body,
-          state: typeof body.state === "string" ? body.state : JSON.stringify(body.state ?? null),
+          // A chat-message state (one carrying pictures) is already Valen's own shape.
+          state:
+            typeof body.state === "string" || isMessageState(body.state)
+              ? body.state
+              : JSON.stringify(body.state ?? null),
         };
         const upstream = await fetch(`${this.upstream}/v1/systemone`, {
           method: "POST",

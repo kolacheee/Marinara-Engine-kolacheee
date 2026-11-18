@@ -233,3 +233,24 @@ export function pickGgufFile(
   }
   return candidates.length === 1 ? candidates[0]! : null;
 }
+
+/**
+ * The vision projector a repository publishes beside its weights, when it has one.
+ *
+ * Read by name (`mmproj`, `vision`, `projector`), as llama.cpp's own tooling does. With
+ * several, the 8-bit one is preferred, then 16-bit, then the first: the projector is
+ * small next to the weights and reads pictures as well at 8 bits.
+ */
+export function pickProjectorFile(files: Array<{ path: string; size: number }>): { path: string; size: number } | null {
+  const candidates = files.filter((file) => {
+    const name = file.path.slice(file.path.lastIndexOf("/") + 1);
+    return (
+      name.toLowerCase().endsWith(".gguf") &&
+      /mmproj|vision|projector/iu.test(name) &&
+      !/-\d{5}-of-\d{5}/iu.test(name) &&
+      file.size > 0
+    );
+  });
+  for (const wanted of [/q8_0/iu, /f16/iu]) for (const file of candidates) if (wanted.test(file.path)) return file;
+  return candidates[0] ?? null;
+}

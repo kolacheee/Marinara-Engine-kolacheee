@@ -469,6 +469,7 @@ import { createCustomStickersStorage } from "../services/storage/custom-stickers
 import { createCharacterGalleryStorage } from "../services/storage/character-gallery.storage.js";
 import { createPersonaGalleryStorage } from "../services/storage/persona-gallery.storage.js";
 import { createGalleryStorage } from "../services/storage/gallery.storage.js";
+import { decisionMediaForMessage } from "../services/decision/decision-media.js";
 import { resolveGalleryImagePath } from "../services/image/gallery-image-path.js";
 import { isSentSelfieAttachment } from "../services/generation/prompt-attachments.js";
 import { createAppSettingsStorage } from "../services/storage/app-settings.storage.js";
@@ -2160,6 +2161,16 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
         ? scopedMessages.filter((message: any) => !isMessageHiddenFromAI(message))
         : scopedMessages;
       let lorebookKeeperMessages = chatMessages;
+      // Pictures and clips in the chat, for a built-in decision model that reads them.
+      // References only: nothing is read unless such a model is the one answering.
+      const decisionMediaGallery = createGalleryStorage(app.db);
+      const decisionMediaContext = {
+        chatId: input.chatId,
+        galleryImagePath: async (galleryId: string) => {
+          const image = await decisionMediaGallery.getById(galleryId, input.chatId);
+          return image ? resolveGalleryImagePath(image) : null;
+        },
+      };
       let regenMsg: any;
       let regenerateUserMessage: SimpleMessage | null = null;
       let regenerateUserSourceMessage: SimpleMessage | null = null;
@@ -3716,6 +3727,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 ? personaName
                 : (historyMacroProfilesById.get(message.characterId)?.name ?? "Narrator"),
             content: typeof message.content === "string" ? message.content : "",
+            media: decisionMediaForMessage(message, decisionMediaContext),
           }));
         // Sticky and cooldown (#6582): the chat's statement timers, moved on to this turn
         // once the turn is known below, and saved whenever they change.
@@ -6794,6 +6806,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               candidates,
               messages: messages.map((message) => ({
                 ...message,
+                media: decisionMediaForMessage(message as { extra?: unknown }, decisionMediaContext),
                 name:
                   message.role === "user"
                     ? personaName

@@ -18,6 +18,11 @@ export interface DecisionSidecarModel {
   runtime?: string;
   /** Plain words for the languages it was checked on, when known. */
   languages?: string | null;
+  /** System One question types it answers: noul, choice, score, bbox. */
+  questionTypes?: string[];
+  /** What it reads here (text, image, video), and what its other release adds. */
+  inputs?: string[];
+  extraInputs?: string[];
   licenses: string[];
   downloaded: boolean;
   preflight: {
@@ -126,6 +131,9 @@ export function useInspectDecisionRepo() {
           vramBytes: number;
           memory?: "nvidia" | "cpu" | "llama";
           licenses: string[];
+          questionTypes?: string[];
+          inputs?: string[];
+          extraInputs?: string[];
           artifacts: Array<{ repoId: string; revision: string }>;
         };
         preflight?: DecisionSidecarModel["preflight"];

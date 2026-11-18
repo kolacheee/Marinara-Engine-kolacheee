@@ -28,7 +28,12 @@ import {
   type SidecarDecisionModelInfo,
 } from "@marinara-engine/shared";
 import { hubRevisionUrl, isLoadableArtifactFile, listHubFiles, type HubFile } from "./decision-hub.js";
-import { LLAMA_SYSTEMONE_DECISION_TYPES, pickGgufFile, readRemoteGgufHeader } from "./decision-gguf.js";
+import {
+  LLAMA_SYSTEMONE_DECISION_TYPES,
+  pickGgufFile,
+  pickProjectorFile,
+  readRemoteGgufHeader,
+} from "./decision-gguf.js";
 import { DECISION_SERVER_RUNTIMES } from "./decision-server-runtimes.js";
 
 export type ByoRefusal =
@@ -244,6 +249,9 @@ async function inspectGgufRepo(
   }
 
   const extras = licenceFiles(files);
+  // Its vision projector too, when it publishes one, so it reads the chat's pictures.
+  const projector = pickProjectorFile(files);
+  if (projector) extras.push(projector);
   const paths = [chosen.path, ...extras.map((file) => file.path)];
   if (paths.some((path) => !isLoadableArtifactFile(path))) return { refusal: "unsupported_files" };
   const downloadSizeBytes = chosen.size + extras.reduce((sum, file) => sum + file.size, 0);
@@ -254,7 +262,9 @@ async function inspectGgufRepo(
     model: {
       id: `byo:${repoId}@${revision.slice(0, 12)}:${name}`,
       label: `${repoId} (${name.replace(/\.gguf$/iu, "")})`,
-      description: `Pasted repository. Declares ${declares}. Installs ${name} only.`,
+      description: projector
+        ? `Pasted repository. Declares ${declares}. Installs ${name} and its vision projector.`
+        : `Pasted repository. Declares ${declares}. Installs ${name} only.`,
       runtime,
       artifacts: [{ repoId, revision, paths }],
       modelFile: chosen.path,
@@ -263,11 +273,14 @@ async function inspectGgufRepo(
       diskBytes: downloadSizeBytes + 200_000_000,
       // The weights plus a context's working memory. An estimate; the launch-time
       // recheck is the backstop.
-      vramBytes: Math.round(chosen.size * 1.1 + 600_000_000),
+      vramBytes: Math.round(chosen.size * 1.1 + (projector?.size ?? 0) + 600_000_000),
       licenses: [license],
       languages: "Not checked by Marinara",
       thirdParty: true,
       ...defaults,
+      ...(projector
+        ? { projectorFile: projector.path, inputs: [...new Set([...(defaults.inputs ?? ["text"]), "image" as const])] }
+        : {}),
     },
   };
 }

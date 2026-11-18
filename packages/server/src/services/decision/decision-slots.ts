@@ -17,6 +17,8 @@ import {
   findDecisionModel,
   normalizeDecisionThinking,
   type DecisionCalibration,
+  type DecisionInputKind,
+  type DecisionRuntimeKind,
   type DecisionSidecarSettings,
   type SidecarDecisionModelInfo,
   type DecisionLocalSlot,
@@ -84,6 +86,12 @@ export interface ResolvedDecisionSlot {
    * limit is for answering it, not for waiting behind the others.
    */
   serverSlots: number;
+  /** For Marinara's own decision model: which runtime serves it, and so how media are sent. */
+  runtime?: DecisionRuntimeKind;
+  /** What it reads. Chat pictures and clips go only to a model whose list names them. */
+  inputs?: DecisionInputKind[];
+  /** Extra time a request gets for each picture and each clip it carries. */
+  mediaMs?: { image: number; video: number };
 }
 
 export type DecisionSlotFailure = { slot: DecisionLocalSlot; reason: DecisionUnavailableReason; detail?: string };
@@ -284,6 +292,8 @@ export async function resolveDecisionSlot(
         protocol: "system_one",
         calibration: model.calibration,
         ...decisionTiming(model),
+        runtime: model.runtime,
+        inputs: model.inputs ?? ["text"],
         maxLengthTokens: model.maxLengthTokens,
         // A purpose-built decision model never reasons: it scores candidates in one
         // forward pass and has no text to think in.
@@ -365,12 +375,31 @@ export function setDecisionSlotThinking(slot: DecisionLocalSlot, thinking: Decis
  * the first answer reads the whole scene, up to the model's input limit; later ones
  * reuse most of it from the prompt cache.
  */
-export function decisionTiming(model: SidecarDecisionModelInfo): { perQuestionMs?: number; firstAnswerMs?: number } {
+export function decisionTiming(model: SidecarDecisionModelInfo): {
+  perQuestionMs?: number;
+  firstAnswerMs?: number;
+  mediaMs?: { image: number; video: number };
+} {
   if (model.runtime === "open_jev_torch") return model.perQuestionMs ? { perQuestionMs: model.perQuestionMs } : {};
   const msPerToken = decisionProcessService.measuredMsPerToken();
-  if (msPerToken === null) return model.perQuestionMs ? { perQuestionMs: model.perQuestionMs } : {};
+  const reads = model.inputs ?? [];
   const clamp = (value: number, low: number, high: number) => Math.round(Math.min(high, Math.max(low, value)));
+  // A picture scaled to 512 px read as about 550 tokens on d1 and 180 on Valen; a clip's
+  // four frames about 460 on Valen, plus decoding. Generous on both, as the first
+  // answer is: a gate that times out reads as "no".
+  const mediaMs =
+    reads.includes("image") || reads.includes("video")
+      ? msPerToken === null
+        ? { image: 30_000, video: 60_000 }
+        : {
+            image: clamp(msPerToken * 700 * 1.5 + 2_000, 4_000, 120_000),
+            video: clamp(msPerToken * 1_200 * 1.5 + 5_000, 8_000, 180_000),
+          }
+      : undefined;
+  if (msPerToken === null)
+    return { ...(model.perQuestionMs ? { perQuestionMs: model.perQuestionMs } : {}), ...(mediaMs ? { mediaMs } : {}) };
   return {
+    ...(mediaMs ? { mediaMs } : {}),
     firstAnswerMs: clamp(msPerToken * model.maxLengthTokens * 1.25 + 2_000, DECISION_TIMEOUT_MS.sidecar, 180_000),
     // A model with recurrent layers (JevK5, d1) rewinds its cache to the last saved
     // checkpoint rather than to the exact end of the scene, so each further question

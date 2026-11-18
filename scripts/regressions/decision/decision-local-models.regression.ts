@@ -181,12 +181,29 @@ for (const model of SIDECAR_DECISION_MODELS) {
       Object.values(DECISION_ARTIFACT_RUNTIMES).includes(model.runtime),
       `${model.id} names a runtime nothing can install it with`,
     );
-  else {
+  else if (model.runtime === "valen_onnx") {
+    // Valen's full release loads its package folder, marked by its own manifest, and
+    // only the processor files: never the CUDA or full-precision ones.
+    assert.equal(model.modelFile, "valen_onnx.json");
+    const paths = model.artifacts[0]?.paths ?? [];
+    assert.ok(paths.includes("valen_onnx.json") && paths.includes("onnx/decision-q8-mlp.onnx.data"));
+    assert.ok(!paths.some((path) => /cuda|backbone\.onnx\.data|^onnx\/decision\.onnx$/u.test(path)));
+    assert.equal(model.memory, "cpu");
+    assert.deepEqual(model.inputs, ["text", "image", "video"], `${model.id} reads video`);
+  } else {
     // A GGUF entry loads one file, and that file must be one the download fetches.
     assert.ok(isSafeModelFilePath(model.modelFile), `${model.id} must name a safe .gguf to load`);
     assert.ok(model.artifacts[0]?.paths?.includes(model.modelFile!), `${model.id} must download the file it loads`);
     assert.ok(model.memory, `${model.id} must say which memory it is weighed against`);
+    // A model that reads pictures downloads the projector that lets it.
+    if (model.inputs?.includes("image")) {
+      assert.ok(isSafeModelFilePath(model.projectorFile), `${model.id} reads pictures, so it needs a projector`);
+      assert.ok(model.artifacts[0]?.paths?.includes(model.projectorFile!), `${model.id} must download its projector`);
+    }
   }
+  // Every entry says what it answers and reads, for the picker's details.
+  assert.ok(model.questionTypes?.includes("noul"), `${model.id} must list its question types`);
+  assert.ok(model.inputs?.includes("text"), `${model.id} must list what it reads`);
   assert.ok(
     model.artifacts.every((a) => /^[0-9a-f]{40}$/u.test(a.revision)),
     `${model.id} must pin exact commits`,

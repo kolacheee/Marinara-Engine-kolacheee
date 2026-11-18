@@ -12,6 +12,11 @@
  * - `valen_gguf` and `winnow_cuda` are their authors' own patched llama.cpp builds,
  *   published for one platform each.
  *
+ * The fifth, `valen_onnx`, is not a llama.cpp server: it is Valen's own SDK on the Node
+ * that runs Marinara (`assets/decision/valen-onnx-server.mjs`), and what it installs is
+ * FFmpeg for reading video, from the same pinned static builds the `ffmpeg-static`
+ * package uses. An FFmpeg and ffprobe already on the PATH are used instead.
+ *
  * Every archive is pinned by size and sha256 and checked before it is unpacked, the
  * same rule as the chat runtime's manifest. A build that is not listed for this
  * machine is not offered: the preflight turns that into a refusal before anything
@@ -32,8 +37,12 @@ import {
   writeFileSync,
 } from "node:fs";
 import { rm } from "node:fs/promises";
-import { join, relative } from "node:path";
+import { delimiter, join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
+import { createGunzip } from "node:zlib";
+import { createReadStream, createWriteStream } from "node:fs";
+import { pipeline } from "node:stream/promises";
 import type { DecisionRuntimeKind, SidecarDownloadProgress } from "@marinara-engine/shared";
 import { logger } from "../../lib/logger.js";
 import { getDataDir } from "../../utils/data-dir.js";
@@ -220,6 +229,96 @@ export interface DecisionServerInstall {
   directory: string;
   variant: string;
   gpu: boolean;
+  /** For `valen_onnx`: the script Node runs, and the FFmpeg pair that reads video. */
+  script?: string;
+  ffmpeg?: string;
+  ffprobe?: string;
+}
+
+/**
+ * FFmpeg for Valen's full release, by platform. The `ffmpeg-static` project's release
+ * `b6.1.1` (FFmpeg 6.1.1); each file is gzip-compressed, and its size and sha256 were
+ * read from the release files themselves on 2026-11-18.
+ */
+const FFMPEG_TAG = "b6.1.1";
+const FFMPEG_BUILDS: Record<string, Record<"ffmpeg" | "ffprobe", { size: number; sha256: string }>> = {
+  "linux-x64": {
+    ffmpeg: { size: 29_354_986, sha256: "bfe8a8fc511530457b528c48d77b5737527b504a3797a9bc4866aeca69c2dffa" },
+    ffprobe: { size: 29_276_839, sha256: "25d9b6ccb05e3d9de9e04e31e2506d8dd7f9f0418981965ac6df12e8d3afd067" },
+  },
+  "linux-arm64": {
+    ffmpeg: { size: 25_568_691, sha256: "754a678672298bc68156adff58aa7385a592c2b30b1d0ae8750c45c915c4bac0" },
+    ffprobe: { size: 25_493_573, sha256: "2ab6aba60ee84412dff9188720703376cb4e7aaf7e0b5e43aa8249f2acae5bf8" },
+  },
+  "darwin-arm64": {
+    ffmpeg: { size: 19_246_198, sha256: "8923876afa8db5585022d7860ec7e589af192f441c56793971276d450ed3bbfa" },
+    ffprobe: { size: 19_207_077, sha256: "d986a8ec7b030899fe66a8a288ed809a3543338705a3ce178cfb85869c5d80be" },
+  },
+  "win32-x64": {
+    ffmpeg: { size: 29_581_307, sha256: "8883a3dffbd0a16cf4ef95206ea05283f78908dbfb118f73c83f4951dcc06d77" },
+    ffprobe: { size: 29_521_644, sha256: "f309e6223ad89d2fe54bccd420a7709b66fd27540674e92309578ed491a43c8d" },
+  },
+};
+
+/** The script that serves Valen's full release; next to the compiled code in both src and dist. */
+export const VALEN_ONNX_SCRIPT = fileURLToPath(new URL("../../assets/decision/valen-onnx-server.mjs", import.meta.url));
+
+const exeName = (name: string) => (process.platform === "win32" ? `${name}.exe` : name);
+
+function ffmpegBuild() {
+  return FFMPEG_BUILDS[`${process.platform}-${process.arch}`] ?? null;
+}
+
+function ffmpegDir(): string {
+  return join(SERVERS_DIR, `ffmpeg-${FFMPEG_TAG}-${process.platform}-${process.arch}`);
+}
+
+/** An FFmpeg and ffprobe pair on the PATH, when both are there. */
+function ffmpegOnPath(): { ffmpeg: string; ffprobe: string } | null {
+  const find = (name: string) => {
+    for (const entry of (process.env.PATH ?? "").split(delimiter).filter(Boolean)) {
+      const candidate = join(entry, exeName(name));
+      try {
+        if (statSync(candidate).isFile()) return candidate;
+      } catch {
+        // Not in this folder.
+      }
+    }
+    return null;
+  };
+  const ffmpeg = find("ffmpeg");
+  const ffprobe = find("ffprobe");
+  return ffmpeg && ffprobe ? { ffmpeg, ffprobe } : null;
+}
+
+/** The pinned FFmpeg pair, when it is installed and its stamp matches the pin. */
+function pinnedFfmpeg(): { ffmpeg: string; ffprobe: string } | null {
+  const build = ffmpegBuild();
+  if (!build) return null;
+  const dir = ffmpegDir();
+  try {
+    const stamp = JSON.parse(readFileSync(join(dir, STAMP_NAME), "utf-8")) as { sha256?: string };
+    if (stamp.sha256 !== build.ffmpeg.sha256) return null;
+  } catch {
+    return null;
+  }
+  const ffmpeg = join(dir, exeName("ffmpeg"));
+  const ffprobe = join(dir, exeName("ffprobe"));
+  return existsSync(ffmpeg) && existsSync(ffprobe) ? { ffmpeg, ffprobe } : null;
+}
+
+/** Valen's full release, ready to run, or null while FFmpeg is missing. */
+function valenOnnxInstall(): DecisionServerInstall | null {
+  const ffmpeg = pinnedFfmpeg() ?? ffmpegOnPath();
+  if (!ffmpeg) return null;
+  return {
+    executable: process.execPath,
+    directory: join(VALEN_ONNX_SCRIPT, ".."),
+    variant: `onnx-cpu-${process.platform}-${process.arch}`,
+    gpu: false,
+    script: VALEN_ONNX_SCRIPT,
+    ...ffmpeg,
+  };
 }
 
 /** The installed build for a pinned runtime, or null when it is not here and whole. */
@@ -245,6 +344,7 @@ function pinnedInstall(runtime: PinnedRuntime): DecisionServerInstall | null {
  * exactly as the utility and embedding slots do.
  */
 export function decisionServerInstall(runtime: DecisionRuntimeKind): DecisionServerInstall | null {
+  if (runtime === "valen_onnx") return valenOnnxInstall();
   if (runtime === "llama_letters") {
     const current = sidecarRuntimeService.getCurrentInstall();
     if (!current?.serverPath) return null;
@@ -261,12 +361,17 @@ export function decisionServerInstall(runtime: DecisionRuntimeKind): DecisionSer
 /** Is there a build of this runtime for this machine at all? */
 export function hasDecisionServerBuild(runtime: DecisionRuntimeKind): boolean {
   if (runtime === "llama_letters") return true;
+  if (runtime === "valen_onnx") return ffmpegBuild() !== null || ffmpegOnPath() !== null;
   return decisionServerAsset(runtime) !== null;
 }
 
 /** Download size of what installing this runtime still needs, for the confirm dialog. */
 export function decisionServerDownloadBytes(runtime: DecisionRuntimeKind): number {
   if (decisionServerInstall(runtime)) return 0;
+  if (runtime === "valen_onnx") {
+    const build = ffmpegBuild();
+    return build ? build.ffmpeg.size + build.ffprobe.size : 0;
+  }
   return decisionServerAsset(runtime)?.size ?? 0;
 }
 
@@ -315,6 +420,14 @@ class DecisionServerRuntimeService {
   ): Promise<DecisionServerInstall> {
     const existing = decisionServerInstall(runtime);
     if (existing) return existing;
+    if (runtime === "valen_onnx") {
+      let promise = this.installing.get("valen_onnx");
+      if (!promise) {
+        promise = this.installFfmpeg(onProgress).finally(() => this.installing.delete("valen_onnx"));
+        this.installing.set("valen_onnx", promise);
+      }
+      return promise;
+    }
     if (runtime === "llama_letters") {
       await sidecarRuntimeService.ensureInstalled(onProgress);
       const installed = decisionServerInstall(runtime);
@@ -381,6 +494,62 @@ class DecisionServerRuntimeService {
     }
     const installed = pinnedInstall(runtime);
     if (!installed) throw new Error("The decision model's server did not install.");
+    return installed;
+  }
+
+  /**
+   * The pinned FFmpeg pair Valen's full release reads video with. Each file is checked
+   * against its digest before it is unpacked, and the folder is swapped in whole.
+   */
+  private async installFfmpeg(
+    onProgress?: (progress: SidecarDownloadProgress) => void,
+  ): Promise<DecisionServerInstall> {
+    const build = ffmpegBuild();
+    if (!build) throw new Error("There is no FFmpeg build for this computer. Install FFmpeg and ffprobe on the PATH.");
+    mkdirSync(SERVERS_DIR, { recursive: true });
+    const scratch = mkdtempSync(join(SERVERS_DIR, `ffmpeg-${FFMPEG_TAG}.extract-`));
+    try {
+      for (const name of ["ffmpeg", "ffprobe"] as const) {
+        const file = `${name}-${process.platform}-${process.arch}.gz`;
+        const archive = join(scratch, file);
+        await retry(
+          async () => {
+            const abort = new AbortController();
+            this.abort = abort;
+            try {
+              await downloadFileWithProgress({
+                url: `https://github.com/eugeneware/ffmpeg-static/releases/download/${FFMPEG_TAG}/${file}`,
+                destPath: archive,
+                signal: abort.signal,
+                expectedBytes: build[name].size,
+                expectedSha256: build[name].sha256,
+                progress: { phase: "runtime", label: file },
+                onProgress,
+              });
+            } finally {
+              if (this.abort === abort) this.abort = null;
+            }
+          },
+          { retries: 2, baseDelayMs: 500, shouldRetry: (error) => !isAbortError(error) },
+        );
+        const target = join(scratch, exeName(name));
+        await pipeline(createReadStream(archive), createGunzip(), createWriteStream(target));
+        rmSync(archive, { force: true });
+        if (process.platform !== "win32") chmodSync(target, 0o755);
+      }
+      writeFileSync(
+        join(scratch, STAMP_NAME),
+        JSON.stringify({ sha256: build.ffmpeg.sha256, installedAt: new Date().toISOString() }),
+      );
+      const finalDir = ffmpegDir();
+      rmSync(finalDir, { recursive: true, force: true });
+      renameSync(scratch, finalDir);
+      logger.info("[decision-runtime] Installed FFmpeg %s for Valen's full release", FFMPEG_TAG);
+    } finally {
+      if (existsSync(scratch)) rmSync(scratch, { recursive: true, force: true });
+    }
+    const installed = valenOnnxInstall();
+    if (!installed) throw new Error("FFmpeg did not install.");
     return installed;
   }
 
