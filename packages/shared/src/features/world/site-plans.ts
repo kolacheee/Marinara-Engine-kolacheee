@@ -736,6 +736,8 @@ export interface SiteLevelMap {
   traps: SiteLevelTrap[];
   /** The way round the held room, cell by cell, through the rooms left to nobody. */
   quietWay?: Array<{ x: number; y: number }>;
+  /** A second way round, longer than the first and quiet, where the floor has one (panel round 44). */
+  quietWayLong?: Array<{ x: number; y: number }>;
   /** Loose boards or rubble on the way round, which give a sneaking party away. */
   creaks?: Array<{ x: number; y: number }>;
   /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
@@ -3654,6 +3656,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   // ── The quiet way (owner 2026-11-17, "Routes and guard posts") ──
   let postRegion = -1;
+  // The rooms of the way round as the plan laid it, which the second way round keeps out of (panel round 44).
+  let planAvoid: Set<number> | null = null;
   let wayTargetRegion = -1;
   // From where the party comes onto the floor to the way on there is the main way, and the holders keep a room
   // on it; where no second way misses the main way's rooms, a door is opened to make one, so a careful party
@@ -3703,12 +3707,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       // One room on the main way the holders can keep with a way round it is enough: the first that has one
       // already, else the first a door or a short passage can give one.
       const order = [...inner];
-      const roundOne = (r: number) => {
-        const lone = new Set([r]);
+      const roundOne = (r: number, avoid = new Set<number>()) => {
+        const lone = new Set([r, ...avoid]);
         if (reach(start, lone).has(target)) return true;
         const fromStart = reach(start, lone);
         const fromTarget = reach(target, lone);
-        const usable = (n: number) => live(n) && !lockedNode(n) && n !== r;
+        const usable = (n: number) => live(n) && !lockedNode(n) && n !== r && !avoid.has(n);
         const one = edges
           .filter(
             (edge) =>
@@ -3735,14 +3739,17 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         let goal = -1;
         for (let head = 0; head < queue.length; head++) {
           const c = queue[head]!;
-          if (costTo[c]! > 6) continue;
+          if (costTo[c]! > (avoid.size ? 9 : 6)) continue;
           if (ground[c] === "floor" && at[c]! >= 0 && fromTarget.has(at[c]!)) {
             goal = c;
             break;
           }
           for (const m of around(c)) {
             const open =
-              ground[m] === "floor" && at[m] !== r && !(at[m]! >= 0 && (hiddenNode(at[m]!) || lockedNode(at[m]!)));
+              ground[m] === "floor" &&
+              at[m] !== r &&
+              !avoid.has(at[m]!) &&
+              !(at[m]! >= 0 && (hiddenNode(at[m]!) || lockedNode(at[m]!)));
             const cut = ground[m] === "wall" && mask[m] && !hold[m] && !touchesR(m);
             if (!open && !cut) continue;
             const next = costTo[c]! + (cut ? 1 : 0);
@@ -3763,6 +3770,22 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           wayTargetRegion = target;
           break;
         }
+      // A second way round through other rooms than the first, by a door or a short passage where the plan has
+      // none (panel round 44: one way round is a line to follow, not a choice).
+      if (postRegion >= 0) {
+        near.clear();
+        for (const edge of opened) {
+          near.set(edge.a, [...(near.get(edge.a) ?? []), edge.b]);
+          near.set(edge.b, [...(near.get(edge.b) ?? []), edge.a]);
+        }
+        const first = reach(start, new Set([postRegion]));
+        if (first.has(target)) {
+          const avoid = new Set<number>();
+          for (let m = first.get(target)!; m >= 0 && m !== start; m = first.get(m)!)
+            if (owner.get(m) && !owner.get(m)!.heart && m !== target) avoid.add(m);
+          if (avoid.size && roundOne(postRegion, avoid)) planAvoid = avoid;
+        }
+      }
     }
   }
 
@@ -4033,7 +4056,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // The way round the holders' post, once laid: from the way in to the way on without entering the post.
   const wayTo =
     wayTargetRegion >= 0 ? (cellsBy.get(wayTargetRegion) ?? []).find((c) => ground[c] === "floor") : undefined;
-  const round = (trace = false) => {
+  const round = (trace = false, shut?: Set<number>) => {
     if (postRegion < 0 || wayTo === undefined) return null;
     const begin = cell(entrance.x, entrance.y);
     const prev = new Int32Array(ground.length).fill(-2);
@@ -4051,7 +4074,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           (n === c + 1 && x === mapW - 1)
         )
           continue;
-        if (ground[n] !== "floor" || at[n] === postRegion) continue;
+        if (ground[n] !== "floor" || at[n] === postRegion || shut?.has(at[n]!)) continue;
         if (props[n] !== -1 && props[n] !== DUNGEON_EXIT_PROP && props[n] !== DUNGEON_PORTCULLIS_PROP) continue;
         prev[n] = c;
         queue.push(n);
@@ -4104,11 +4127,26 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           seen[i] ||
           (props[i] !== -1 && props[i] !== DUNGEON_EXIT_PROP && props[i] !== DUNGEON_PORTCULLIS_PROP),
       ) &&
-      // Nothing set down blocks the way round the holders' post.
-      (!keepRound || round() !== null)
+      // Nothing set down blocks the way round the holders' post, nor the second way where there is one.
+      (!keepRound || round() !== null) &&
+      (!keepSecond || round(false, firstShut) !== null)
     );
   };
   const keepRound = round() !== null;
+  // The rooms of the first way round as laid, so the second can be kept clear of furniture (panel round 44).
+  const ownedOn = (path: number[] | null) =>
+    new Set<number>(
+      (path ?? [])
+        .map((c) => at[c]!)
+        .filter((n) => n >= 0 && n !== postRegion && n !== start && n !== wayTargetRegion && roomOfRegion.has(n)),
+    );
+  const firstShut =
+    [
+      ownedOn(keepRound ? round(true) : null),
+      planAvoid ?? new Set<number>(),
+      ownedOn(keepRound && planAvoid ? round(true, planAvoid) : null),
+    ].find((shut) => shut.size > 0 && round(false, shut) !== null) ?? new Set<number>();
+  const keepSecond = keepRound && firstShut.size > 0;
   // Water that cuts a room off is drained.
   if (level.flooded && !reachable())
     for (let i = 0; i < ground.length; i++) if (ground[i] === "liquid") ground[i] = "floor";
@@ -5031,12 +5069,59 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   map.entrance = entrance;
   // The rooms the way round goes through, left to nobody.
-  const quietPath = keepRound ? round(true) : null;
+  // Where there are two ways round, each keeps out of the other's rooms.
+  const secondTry = keepSecond ? round(true, firstShut) : null;
+  const quietPath = keepRound ? ((secondTry ? round(true, ownedOn(secondTry)) : null) ?? round(true)) : null;
   if (quietPath)
     for (const c of quietPath) {
       const k = roomOfRegion.get(at[c]!);
       // Not the room it starts from (the gate stays held) nor the one it makes for.
       if (k === undefined || [postRegion, start, wayTargetRegion].includes(at[c]!) || info[k]!.heart) continue;
+      info[k] = { ...info[k]!, quiet: true };
+    }
+  // A second way round (panel round 44: the way round is one line with one price, not a choice): through
+  // other rooms than the first, where the floor has them. The shorter of the two has the loose boards on it,
+  // so going round is quick and noisy one way, long and quiet the other.
+  const firstRooms = new Set(
+    (quietPath ?? [])
+      .filter((c) => {
+        const k = roomOfRegion.get(at[c]!);
+        return k !== undefined && info[k]!.quiet;
+      })
+      .map((c) => at[c]!),
+  );
+  // Shut all the first way's rooms, else all but one of them, so the second way goes through at least one
+  // room of its own.
+  let secondPath: number[] | null = null;
+  if (secondTry) secondPath = secondTry;
+  if (!secondPath && quietPath && firstRooms.size)
+    for (const shut of [firstRooms, ...[...firstRooms].map((n) => new Set([...firstRooms].filter((m) => m !== n)))]) {
+      const path = shut.size ? round(true, shut) : null;
+      const own = (path ?? []).some((c) => {
+        const k = roomOfRegion.get(at[c]!);
+        return (
+          k !== undefined &&
+          !firstRooms.has(at[c]!) &&
+          ![postRegion, start, wayTargetRegion].includes(at[c]!) &&
+          !info[k]!.heart &&
+          regions[at[c]!]!.kind === "room"
+        );
+      });
+      if (path && own) {
+        secondPath = path;
+        break;
+      }
+    }
+  const secondRooms = new Set<number>();
+  if (secondPath)
+    for (const c of secondPath) {
+      const k = roomOfRegion.get(at[c]!);
+      if (k === undefined || [postRegion, start, wayTargetRegion].includes(at[c]!) || info[k]!.heart) continue;
+      if (!firstRooms.has(at[c]!)) secondRooms.add(at[c]!);
+    }
+  if (secondPath && secondRooms.size)
+    for (const n of secondRooms) {
+      const k = roomOfRegion.get(n)!;
       info[k] = { ...info[k]!, quiet: true };
     }
   // Something for taking the quiet way (panel round 26): a cache left in its farthest room, against a wall.
@@ -5065,19 +5150,25 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (each.post) info[k] = { name: each.name, use: each.use, ...(each.heart ? { heart: true as const } : {}) };
   // The way round as the party will see it: its cells from where it leaves the main way to where it rejoins,
   // through the quiet rooms and the doors between them (panel round 30: the way round not visible).
-  const quietWay = quietPath
-    ? quietPath
-        .filter((c) => {
-          if (ground[c] === "wall") return false;
-          const k = at[c]! >= 0 ? roomOfRegion.get(at[c]!) : undefined;
-          return k === undefined ? at[c]! < 0 || regions[at[c]!]!.kind !== "room" : !!info[k]!.quiet;
-        })
-        .map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) }))
-    : [];
+  const shown = (path: number[] | null) =>
+    path
+      ? path
+          .filter((c) => {
+            if (ground[c] === "wall") return false;
+            const k = at[c]! >= 0 ? roomOfRegion.get(at[c]!) : undefined;
+            return k === undefined ? at[c]! < 0 || regions[at[c]!]!.kind !== "room" : !!info[k]!.quiet;
+          })
+          .map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) }))
+      : [];
+  const firstWay = shown(quietPath);
+  const otherWay = secondRooms.size ? shown(secondPath) : [];
+  // The shorter way is the one with the loose boards; the party sees both.
+  const [quietWay, quietWayLong] =
+    otherWay.length >= 3 && otherWay.length < firstWay.length ? [otherWay, firstWay] : [firstWay, otherWay];
   // The way round at a price on some floors (owner 2026-11-18, "Vary each floor's set-up"; panel round 38: the way
   // round cost nothing): a stretch of loose boards, or rubble below ground, part way along it.
   const creaks: Array<{ x: number; y: number }> = [];
-  if (quietWay.length >= 8 && random() < 0.45) {
+  if (quietWay.length >= 8 && (quietWayLong.length >= 3 || random() < 0.45)) {
     const clear = (p: { x: number; y: number }) => {
       const c = cell(p.x, p.y);
       return (
@@ -5098,6 +5189,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     locks,
     traps,
     ...(quietWay.length >= 3 ? { quietWay } : {}),
+    ...(quietWay.length >= 3 && quietWayLong.length >= 3 ? { quietWayLong } : {}),
     ...(creaks.length >= 2 ? { creaks } : {}),
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
@@ -5197,6 +5289,7 @@ export function gameDungeonPlannedMap(input: {
     entrance: laid.map.entrance,
     at,
     ...(laid.quietWay ? { quietWay: laid.quietWay } : {}),
+    ...(laid.quietWayLong ? { quietWayLong: laid.quietWayLong } : {}),
     ...(laid.gallery ? { gallery: laid.gallery } : {}),
     ...(laid.creaks ? { creaks: laid.creaks } : {}),
     roomInfo: laid.rooms.map((room) => ({

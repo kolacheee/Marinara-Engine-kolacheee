@@ -982,37 +982,45 @@ export function DungeonMapView({
       // party can see there is a way past (panel round 30: not visible; round 32: bold footprints read as a
       // debug overlay; rounds 39-41: scattered scuffs read as stray dots, asked for one continuous path).
       {
-        const way = kept?.quietWay ?? [];
-        const runs: Array<Array<{ x: number; y: number }>> = [];
-        let run: Array<{ x: number; y: number }> = [];
-        for (const step of way) {
-          const last = run[run.length - 1];
-          if (inFog(step.x, step.y) || (last && Math.abs(last.x - step.x) + Math.abs(last.y - step.y) !== 1)) {
-            if (run.length > 1) runs.push(run);
-            run = inFog(step.x, step.y) ? [] : [step];
-            continue;
+        // The second, longer way round (panel round 44) is dotted, the first dashed.
+        const lines = (way: Array<{ x: number; y: number }>) => {
+          const runs: Array<Array<{ x: number; y: number }>> = [];
+          let run: Array<{ x: number; y: number }> = [];
+          for (const step of way) {
+            const last = run[run.length - 1];
+            if (inFog(step.x, step.y) || (last && Math.abs(last.x - step.x) + Math.abs(last.y - step.y) !== 1)) {
+              if (run.length > 1) runs.push(run);
+              run = inFog(step.x, step.y) ? [] : [step];
+              continue;
+            }
+            run.push(step);
           }
-          run.push(step);
-        }
-        if (run.length > 1) runs.push(run);
+          if (run.length > 1) runs.push(run);
+          return runs;
+        };
+        const ways = [
+          { runs: lines(kept?.quietWay ?? []), dash: [5, 5] },
+          { runs: lines(kept?.quietWayLong ?? []), dash: [1, 4] },
+        ];
         ctx.save();
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
-        for (const [width, colour, dash] of [
-          [4, "rgba(8, 10, 18, 0.35)", [] as number[]],
-          [2, "rgba(170, 214, 255, 0.8)", [5, 5]],
-        ] as const) {
-          ctx.lineWidth = width;
-          ctx.strokeStyle = colour;
-          ctx.setLineDash(dash);
-          for (const line of runs) {
-            ctx.beginPath();
-            line.forEach(({ x, y }, k) =>
-              k ? ctx.lineTo(x * T + T / 2, y * T + T / 2) : ctx.moveTo(x * T + T / 2, y * T + T / 2),
-            );
-            ctx.stroke();
+        for (const { runs, dash: own } of ways)
+          for (const [width, colour, dash] of [
+            [4, "rgba(8, 10, 18, 0.35)", [] as number[]],
+            [2, "rgba(170, 214, 255, 0.8)", own],
+          ] as const) {
+            ctx.lineWidth = width;
+            ctx.strokeStyle = colour;
+            ctx.setLineDash(dash);
+            for (const line of runs) {
+              ctx.beginPath();
+              line.forEach(({ x, y }, k) =>
+                k ? ctx.lineTo(x * T + T / 2, y * T + T / 2) : ctx.moveTo(x * T + T / 2, y * T + T / 2),
+              );
+              ctx.stroke();
+            }
           }
-        }
         ctx.restore();
       }
       // What the holders can see, while the party sneaks (owner 2026-11-18, "Add verticality and sightlines";

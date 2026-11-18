@@ -892,6 +892,11 @@ export const gameDungeonMapSchema = z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(600)
       .optional(),
+    /** A second, longer way round through other rooms, where the floor has one (panel round 44). */
+    quietWayLong: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(600)
+      .optional(),
     /** Loose boards or rubble on the way round that give a sneaking party away (owner 2026-11-18). */
     creaks: z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
@@ -1419,8 +1424,12 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
                   return area ? `area ${area}` : "a passage";
                 }),
               ),
-            ].join(", ")}: anyone sneaking over them makes a stealth check or is heard by the nearest holders.`
-          : ""
+            ].join(", ")}: anyone sneaking over them makes a stealth check or is heard by the nearest holders.${
+              map.quietWayLong?.length ? " A second, longer way round has no loose boards: slower, but silent." : ""
+            }`
+          : map.quietWayLong?.length
+            ? " There are two ways round the held room, a short one and a longer one through other rooms."
+            : ""
       }${
         map.traps?.some((trap) => trap.found)
           ? ` Traps the party found (shown on the map, walked round): ${map.traps
