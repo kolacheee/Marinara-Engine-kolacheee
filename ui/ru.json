@@ -11448,6 +11448,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "Настройка {{value1}}",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veo принимает 4, 6 или 8 секунд. Референсы зацикленных видео персонажа используют аватар как первый и последний кадр и длятся 8 секунд.",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "Параметры видео по умолчанию",
+  "ui.decision.visionRequired": "Нужна модель решений, которая распознает изображения. Выберите Liquid d1, Valen или Winnow в разделе Подключения › На этом устройстве › Встроенная модель (решения).",
   "ui.decision.visionRequiredLabel": "Почему недоступно",
   "ui.diagnostics.accessWarningBanner.review": "Проверить доступ",
   "ui.diagnostics.accessWarningBanner.title": "Другие могут открыть Marinara без пароля",
