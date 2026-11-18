@@ -121,6 +121,19 @@ Illustrator también pinta fondos. En la tarjeta de Illustrator en **Chat Settin
 
 Las tres opciones están desactivadas de forma predeterminada. Consulta [Fondos creados por Illustrator](scene-backgrounds.md).
 
+## Comprobar imágenes con un modelo de decisión
+
+Con un [modelo de decisión integrado que lee imágenes](../connections/decision-models.md#features-that-look-at-pictures) (Liquid d1, Valen o Winnow), la tarjeta de Illustrator ofrece otros tres ajustes. Todos están desactivados de forma predeterminada y, sin un modelo así, aparecen en gris con un ⓘ.
+
+- **Picture check** (Comprobación de imágenes) examina cada imagen nueva, versión del clima y selfie, y comprueba que muestre lo que se pidió. Una selfie también se compara con el avatar del personaje. **Make another if it doesn't match** (Crear otra si no coincide) dibuja una vez más si no coincide. **Always make two, keep the better** (Crear siempre dos y conservar la mejor) dibuja dos y conserva la mejor. Cada imagen adicional es otra generación de imágenes.
+- **Also check** (Comprobar también), debajo de **Picture check**, añade tus propias comprobaciones, una por línea, hasta 6, como `Kaelen has short red hair`. Empieza una línea con `not:` para algo que la imagen no deba mostrar, como `not: The picture has writing or a watermark`.
+- **Skip a picture the newest one already shows** (Omitir una imagen si la más reciente ya la muestra) compara la imagen más reciente del chat con lo que se va a dibujar y omite las repeticiones. Las imágenes que pides siempre se crean.
+- **Reuse a library background that looks like the place** (Reutilizar un fondo de la biblioteca que se parezca al lugar) muestra un fondo de la biblioteca que coincida con un lugar nuevo en vez de dibujar uno. Consulta [Reutilizar imágenes que ya tienes](scene-backgrounds.md#reusing-pictures-you-already-have).
+
+En un chat de Conversation, **Picture check** está en la tarjeta de Illustrator para las selfies.
+
+Una comprobación que no puede ejecutarse cuenta como aprobada, así que se conserva la imagen.
+
 ## Varios personajes en NovelAI
 
 Cuando el modelo de imagen del Illustrator es un modelo V4, V4.5 o V5 de NovelAI, el modelo que escribe el prompt añade una descripción de personaje por cada personaje visible. Cada descripción incluye la apariencia, la expresión, la pose y la posición aproximada de ese personaje en el encuadre. Marinara compara las descripciones con la lista de personajes de la escena, quita las que no puede asociar y envía las demás a NovelAI como prompts de personaje nativos junto al prompt principal. Esto evita que el pelo, la ropa y otros rasgos se mezclen entre personajes. Las imágenes de **Illustrate** y del comando `[illustrate]` de un personaje reciben las mismas descripciones.

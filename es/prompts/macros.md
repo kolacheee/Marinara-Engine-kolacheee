@@ -283,6 +283,7 @@ Una condición también puede consultar a tu Decision model (modelo de decisión
 - `sticky:3 cooldown:5` conserva un sí durante tres turnos y luego lo deja descansar cinco. Consulta [Sticky y cooldown](conditional-prompts.md#sticky-and-cooldown).
 - `until:"..."` o `while:"..."` conserva un sí mientras lo permita una segunda declaración. Consulta [Until y while](conditional-prompts.md#until-and-while).
 - `every:3` consulta una declaración solo cada tres turnos. Consulta [Comprobar cada varios turnos](conditional-prompts.md#checking-every-few-turns).
+- `pictures:1`, `clips:1` y `media_within:3` permiten que un modelo integrado que los lea examine las imágenes y los clips más recientes del chat, y espere a que haya uno. Consulta [Imágenes y clips](conditional-prompts.md#pictures-and-clips).
 - `priority:high` o `priority:low` elige qué declaraciones caben en un plan de prompt. Consulta [Prioridad](conditional-prompts.md#priority) y [Límites y costo](conditional-prompts.md#limits-and-cost).
 
 ## Errores comunes

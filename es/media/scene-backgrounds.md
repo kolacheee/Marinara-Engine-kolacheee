@@ -42,6 +42,8 @@ Antes de dibujar un lugar nuevo, Illustrator busca una imagen que ya tengas, en 
 
 No importan las mayúsculas, los acentos ni "'s", y el nombre más específico tiene prioridad sobre un simple `bedroom.png`. Si alguna coincide, se muestra (con el clima de la historia, cuando existe esa versión) y no se dibuja nada. Solo un lugar sin coincidencias recibe una imagen nueva.
 
+Si nada coincide por nombre y activaste **Reuse a library background that looks like the place** (Reutilizar un fondo de la biblioteca que se parezca al lugar) en la tarjeta de Illustrator, un [modelo de decisión que lee imágenes](../connections/decision-models.md#features-that-look-at-pictures) examina hasta 4 imágenes de la biblioteca que compartan una palabra con el lugar y muestra una que coincida. Solo se dibuja una nueva cuando ninguna coincide. Está desactivado de forma predeterminada y aparece en gris sin un modelo así.
+
 Para asegurarte de que un lugar conserve su imagen, ponle al archivo el nombre del lugar (`kitchen.png` para "Kitchen") o asígnale una etiqueta de dos o más palabras, como `smith house kitchen` (consulta [Etiquetar un fondo](../appearance/chat-backgrounds.md#tag-a-background)). Las etiquetas de una sola palabra como `kitchen` o `night` se ignoran aquí, porque suelen describir el aspecto de una imagen.
 
 ## Versiones de fondos según el clima
