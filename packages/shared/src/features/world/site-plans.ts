@@ -4085,11 +4085,22 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // never closing a way.
   const doorCells = new Set(doors.flatMap((door) => (door ? [cell(door.x, door.y)] : [])));
   // A scene or two a floor, a few things together that tell what happened here (gamer panel 2026-11-17).
+  // The room on a floor whose corner has fallen in, now and then: not the heart, a stair or a hidden room.
+  const fallen = (() => {
+    const fit = [...roomOf].filter(
+      ([room, n]) =>
+        room.use !== "open" &&
+        !room.heart &&
+        !hiddenRooms.has(n) &&
+        !SITE_STAIR_ROOMS.has(siteBaseName(room.name)) &&
+        rooms[n]!.w * rooms[n]!.h >= 30,
+    );
+    return fit.length && random() < 0.6 ? fit[Math.floor(random() * fit.length)]![1] : -1;
+  })();
   const scenes = new Set(
     [...roomOf]
       .filter(
         ([room, n]) =>
-          plan.template !== "crypt" &&
           room.use !== "open" &&
           !room.heart &&
           !hiddenRooms.has(n) &&
@@ -4436,33 +4447,41 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       // Several stories for each kind of room, and bigger heaps, so no two floors tell the same one (panel
       // 2026-11-17).
       const camp = [PALLET, BUCKET, JUG, WOODPILE, STOOL]; // someone camped here
-      const stories = /cell|gaol|oubliette/iu.test(base)
-        ? [
-            [CHAINS, BONES, BUCKET, HAY, TIPPED], // a prisoner left to die
-            [CHAINS, TIPPED, SWORD, BUCKET], // a breakout
-          ]
-        : /guard|barracks|armoury|gate|watch|interrogation|wall walk/iu.test(base)
+      // A crypt tells its own, in its own pieces: robbers caught by a trap at the chest they came for, a tomb
+      // broken open and its dead dragged out (owner 2026-11-18, "Build play content next").
+      const stories =
+        plan.template === "crypt"
           ? [
-              [BONES, SWORD, TIPPED, JUG, BONES], // a fight lost
-              [TIPPED, SWORD, SWORD, CHEST, BONES], // a last stand by the chest
-              [STOOL, JUG, JUG, TIPPED, CHEST], // dice and drink, left mid-game
+              [1, 4, 3, 1, 4], // robbers caught by the spikes at the chest
+              [0, 1, 1, 3], // a tomb broken open, its dead dragged out
             ]
-          : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
+          : /cell|gaol|oubliette/iu.test(base)
             ? [
-                [BARREL, CRATE, TIPPED, BONES, JARS], // broken into, the stores spilt
-                [CRATE, CRATE, JARS, COBWEB, HAY], // rats' nest
-                camp,
+                [CHAINS, BONES, BUCKET, HAY, TIPPED], // a prisoner left to die
+                [CHAINS, TIPPED, SWORD, BUCKET], // a breakout
               ]
-            : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
+            : /guard|barracks|armoury|gate|watch|interrogation|wall walk/iu.test(base)
               ? [
-                  [TIPPED, JUG, TIPPED, BONES, STOOL], // a meal left in a hurry
-                  [JUG, JUG, TIPPED, BARREL, STOOL], // a feast that ended badly
+                  [BONES, SWORD, TIPPED, JUG, BONES], // a fight lost
+                  [TIPPED, SWORD, SWORD, CHEST, BONES], // a last stand by the chest
+                  [STOOL, JUG, JUG, TIPPED, CHEST], // dice and drink, left mid-game
                 ]
-              : [
-                  [CHEST, TIPPED, JUG, SWORD, CHEST], // ransacked
-                  [BONES, COBWEB, TIPPED, JARS], // someone who never left
-                  camp,
-                ];
+              : /store|cellar|pantry|larder|granary|buttery|cold|wine|lumber|dairy/iu.test(base)
+                ? [
+                    [BARREL, CRATE, TIPPED, BONES, JARS], // broken into, the stores spilt
+                    [CRATE, CRATE, JARS, COBWEB, HAY], // rats' nest
+                    camp,
+                  ]
+                : /hall|dining|refectory|kitchen|scullery|servants/iu.test(base)
+                  ? [
+                      [TIPPED, JUG, TIPPED, BONES, STOOL], // a meal left in a hurry
+                      [JUG, JUG, TIPPED, BARREL, STOOL], // a feast that ended badly
+                    ]
+                  : [
+                      [CHEST, TIPPED, JUG, SWORD, CHEST], // ransacked
+                      [BONES, COBWEB, TIPPED, JARS], // someone who never left
+                      camp,
+                    ];
       const scene = stories[Math.floor(random() * stories.length)]!;
       const steps: Array<[number, number]> = shuffle([
         [1, 0],
@@ -4501,6 +4520,17 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     if (room.ruined)
       for (let k = 0; k < Math.ceil((area.w * area.h) / 6); k++)
         put(SITE_RUBBLE_PROP, area.x + Math.floor(random() * area.w), area.y + Math.floor(random() * area.h));
+    // A fall of the vault or ceiling in one corner of a room a floor, heaped where it came down: something
+    // to climb round or hide behind (owner 2026-11-18, "Build play content next"). A crypt's pack has no
+    // rubble; its fall is told by its scenes.
+    if (fallen === n && plan.template !== "crypt") {
+      const [cx0, cy0] = corners[Math.floor(random() * corners.length)]!;
+      const heap = everywhere()
+        .sort((p, q) => Math.abs(p[0] - cx0) + Math.abs(p[1] - cy0) - (Math.abs(q[0] - cx0) + Math.abs(q[1] - cy0)))
+        .slice(0, 8);
+      let laid = 0;
+      for (const [x, y] of heap) if (laid < 4 && !near(x, y) && put(SITE_RUBBLE_PROP, x, y)) laid++;
+    }
   }
   // The way to a crypt's heart is lit: torches either side of the passage for the last cells to its door,
   // so the founder's tomb is a place arrived at (panel round 24: no climax).
@@ -4568,6 +4598,69 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       traps.push({ x, y, dc: 10 + plan.wealth * 2 + Math.floor(random() * 4) - level.depth });
     }
   }
+  // Cover (owner 2026-11-18, "Build play content next"): a big room whose middle is bare gets two or three
+  // islands of cover with clear ways between them, so a fight there has something to move round (panel
+  // rounds 30-32: undercrofts and burial halls a sea of empty floor). Never in a house's rooms, whose
+  // panel asks were for less clutter, nor the castle's ward, which has its carts.
+  if (plan.template !== "manor")
+    for (const [k, box] of rooms.entries()) {
+      const use = info[k]?.use;
+      if (!box || use === "open" || SITE_STAIR_ROOMS.has(siteBaseName(info[k]?.name ?? ""))) continue;
+      if (box.w < 8 || box.h < 6) continue;
+      const inner = (x: number, y: number) =>
+        x >= box.x + 2 && x < box.x + box.w - 2 && y >= box.y + 2 && y < box.y + box.h - 2;
+      let busy = 0;
+      for (let y = box.y; y < box.y + box.h; y++)
+        for (let x = box.x; x < box.x + box.w; x++)
+          if (inner(x, y) && props[cell(x, y)] !== -1 && props[cell(x, y)] !== undefined) busy++;
+      const middle = (box.w - 4) * (box.h - 4);
+      if (busy > middle / 12) continue;
+      const pieces: Array<[number, number]> =
+        plan.template === "crypt"
+          ? [
+              [0, 1],
+              [7, 1],
+              [0, 7],
+            ]
+          : level.depth < 0
+            ? [
+                [CRATE, BARREL],
+                [BARREL, CRATE],
+                [CRATE, CRATE],
+              ]
+            : [
+                [TIPPED, STOOL],
+                [CRATE, BARREL],
+                [T, STOOL],
+              ];
+      const spots: Array<[number, number]> = [
+        [box.x + Math.floor(box.w / 3), box.y + Math.floor(box.h / 3)],
+        [box.x + Math.floor((2 * box.w) / 3), box.y + Math.floor((2 * box.h) / 3)],
+        [box.x + Math.floor((2 * box.w) / 3), box.y + Math.floor(box.h / 3)],
+      ];
+      for (const [n, [x, y]] of spots.slice(0, box.w * box.h >= 80 ? 3 : 2).entries()) {
+        const [a1, a2] = pieces[n % pieces.length]!;
+        const flat = random() < 0.5;
+        const pair = [cell(x, y), flat ? cell(x + 1, y) : cell(x, y + 1)];
+        if (
+          pair.some(
+            (c) =>
+              ground[c] !== "floor" ||
+              props[c] !== -1 ||
+              linked.has(c) ||
+              doorCells.has(c) ||
+              traps.some((trap) => cell(trap.x, trap.y) === c),
+          )
+        )
+          continue;
+        props[pair[0]!] = a1;
+        props[pair[1]!] = a2;
+        if (!reachable()) {
+          props[pair[0]!] = -1;
+          props[pair[1]!] = -1;
+        }
+      }
+    }
   // The heart's hoard (panel round 30: the payoff not where the fight is): what the holders keep, two or three
   // chests together against the wall farthest from the door, behind whoever holds the room.
   {

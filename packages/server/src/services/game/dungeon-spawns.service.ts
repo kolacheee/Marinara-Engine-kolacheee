@@ -262,6 +262,8 @@ export interface DungeonGuardMark {
   post?: boolean;
   /** A patrol's beat: the walk it keeps, end to end; the figure stands somewhere along it. */
   beat?: Array<{ x: number; y: number }>;
+  /** These guards carry the key to a locked room on the floor (panel round 31: who holds the key). */
+  key?: boolean;
 }
 
 /** The holders' posts as the party sees them on the map (owner 2026-11-13): every guard post and the heart
@@ -276,6 +278,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     );
     if (!foes.length) return [];
     const room = here.map.rooms[area.area - 1]!;
+    const key = here.map.locks?.some((lock) => lock.key === area.area - 1) ? { key: true } : {};
     // A patrol walks its walk's middle line end to end; where it is now goes by the day and the walk.
     if (area.patrol) {
       const long = room.w >= room.h;
@@ -292,7 +295,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       if (line.length >= 3) {
         const step = (today * 7 + area.area * 3) % (2 * line.length - 2);
         const at = line[step < line.length ? step : 2 * line.length - 2 - step]!;
-        return [{ ...at, area: area.area, count: foes.length, heart: false, beat: line }];
+        return [{ ...at, area: area.area, count: foes.length, heart: false, beat: line, ...key }];
       }
     }
     // The room's middle, or the walkable cell nearest it; a cell clear of props (an urn, a lamp, the stairs)
@@ -350,7 +353,9 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       }
     }
     const post = !!here.map.roomInfo?.[area.area - 1]?.post;
-    return [{ ...at, area: area.area, count: foes.length, heart: area.role === "heart", ...(post ? { post } : {}) }];
+    return [
+      { ...at, area: area.area, count: foes.length, heart: area.role === "heart", ...(post ? { post } : {}), ...key },
+    ];
   });
 }
 

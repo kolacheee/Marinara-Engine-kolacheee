@@ -1213,6 +1213,7 @@ export function useDungeonMap(chatId: string, turnKey: string | null, enabled: b
           post?: boolean;
           /** A patrol's beat, end to end. */
           beat?: Array<{ x: number; y: number }>;
+          key?: boolean;
         }>;
       }>(`/game/${chatId}/map`),
     enabled: enabled && !!chatId,

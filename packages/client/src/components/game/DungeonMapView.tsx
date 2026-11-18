@@ -929,6 +929,21 @@ export function DungeonMapView({
         if (guard.count > 2) paintGuard(ctx, guard.x * T - 1, guard.y * T - 8, false);
         if (guard.count > 1) paintGuard(ctx, guard.x * T + 7, guard.y * T - 5, false);
         paintGuard(ctx, guard.x * T + (guard.count > 1 ? -3 : 1), guard.y * T - 3, guard.heart);
+        // The guards who carry a locked room's key: a gold key over them (panel round 31: who holds it).
+        if (guard.key) {
+          const [kx, ky] = [guard.x * T + T - 6, guard.y * T - 10];
+          ctx.fillStyle = "rgba(16, 10, 6, 0.8)";
+          ctx.fillRect(kx - 1, ky - 1, 6, 6);
+          ctx.fillRect(kx + 1, ky + 3, 3, 8);
+          ctx.fillStyle = "#f2c14e";
+          ctx.fillRect(kx, ky, 4, 4);
+          ctx.fillStyle = "rgba(16, 10, 6, 0.8)";
+          ctx.fillRect(kx + 1, ky + 1, 2, 2);
+          ctx.fillStyle = "#f2c14e";
+          ctx.fillRect(kx + 2, ky + 4, 1, 6);
+          ctx.fillRect(kx + 3, ky + 7, 1, 1);
+          ctx.fillRect(kx + 3, ky + 9, 1, 1);
+        }
       }
       ctx.fillStyle = "rgba(5, 6, 10, 0.88)";
       for (const room of fogged)
