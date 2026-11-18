@@ -1234,6 +1234,7 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   "Bell loft": [[CRATE, "corner", 2]],
   "Clock room": [[SHELF, "wall", 2]],
   Undercroft: [
+    [TOMB, "center", 2],
     [SKULLS, "wall", "reps"],
     [CRATE, "corner", 2],
     [BARREL, "corner"],
@@ -3886,8 +3887,34 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     roomOfRegion.set(n, k);
     doors.push(door && n !== court ? { ...door, room: k, locked: !!room.locked && n !== start } : null);
     opens.push(side);
-    // A great room's pillars: two rows of them down a big one, clear of its doors and links.
-    if (SITE_HALL_ROOMS.has(room.name) && plan.template !== "manor" && r.w >= 7 && r.h >= 7) {
+    // A great room's pillars: two rows of them down a big one, clear of its doors and links. Below ground a
+    // vault is carried on piers in bays every third cell both ways, not two arcades round an empty middle
+    // (panel rounds 39-40: undercrofts and cellaria a dark void).
+    const vaultedBelow =
+      level.depth < 0 &&
+      plan.template !== "crypt" &&
+      Math.min(r.w, r.h) >= 5 &&
+      Math.max(r.w, r.h) >= 8 &&
+      /undercroft|cellarium|vault|cistern|cellar/iu.test(room.name);
+    if (vaultedBelow) {
+      const vertical = r.h > r.w;
+      const short = vertical ? r.w : r.h;
+      for (let off = 2; off <= short - 3; off += 3)
+        for (let along = 2; along < (vertical ? r.h : r.w) - 2; along += 3) {
+          const [x, y] = vertical ? [r.x + off, r.y + along] : [r.x + along, r.y + off];
+          if (links.some((link) => link.x === x && link.y === y)) continue;
+          if (
+            [
+              [x - 1, y],
+              [x + 1, y],
+              [x, y - 1],
+              [x, y + 1],
+            ].some(([dx, dy]) => ground[cell(dx!, dy!)] === "floor" && !inside(r, dx!, dy!))
+          )
+            continue;
+          props[cell(x, y)] = COLUMN;
+        }
+    } else if (SITE_HALL_ROOMS.has(room.name) && plan.template !== "manor" && r.w >= 7 && r.h >= 7) {
       const doorway = (x: number, y: number) =>
         [
           [x - 1, y],
@@ -4588,6 +4615,58 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           }
         break;
       }
+    }
+  // Loculi and arcosola (panel rounds 39-40: crypts are boxes stamped in rock): a crypt's burial rooms below
+  // ground have their dead laid in niches cut back into the rock round their walls, every other cell along
+  // a wall that has rock behind it, a skeleton on its shelf or now and then a sarcophagus under an arch, so
+  // a chamber's outline is cut and ragged as a dug vault is, not a ruled box.
+  if (plan.template === "crypt" && level.depth < 0)
+    for (const [k, room] of rooms.entries()) {
+      const name = info[k]?.name ?? "";
+      if (!room || !/burial|vault|crypt|tomb|ossuar|charnel|columbar|catacomb|founder/iu.test(name)) continue;
+      const parts = (room.parts ??= []);
+      const bones = /ossuar|charnel/iu.test(name);
+      let cut = 0;
+      const most = Math.min(bones ? 6 : 10, 24 - parts.length);
+      const inRoom = (x: number, y: number) => [room, ...parts].some((b) => inside(b, x, y));
+      for (const [dx, dy] of [
+        [0, -1],
+        [0, 1],
+        [-1, 0],
+        [1, 0],
+      ] as const) {
+        const along = dy !== 0;
+        const span = along ? room.w : room.h;
+        const offset = Math.floor(random() * 2);
+        for (let i = 1 + offset; i < span - 1 && cut < most; i += 2) {
+          const [fx, fy] = along
+            ? [room.x + i, dy < 0 ? room.y : room.y + room.h - 1]
+            : [dx < 0 ? room.x : room.x + room.w - 1, room.y + i];
+          const [nx, ny] = [fx + dx, fy + dy];
+          if (nx < 1 || ny < 1 || nx >= mapW - 1 || ny >= mapH - 1) continue;
+          const f = cell(fx, fy);
+          const n = cell(nx, ny);
+          if (ground[f] !== "floor" || !inRoom(fx, fy) || doorCells.has(f) || linked.has(f)) continue;
+          if (ground[n] === "floor" || inRoom(nx, ny)) continue;
+          // Nothing else may touch the niche: only the room it opens from.
+          const lonely = [
+            [nx + dx, ny + dy],
+            [nx + dy, ny + dx],
+            [nx - dy, ny - dx],
+            [nx + dx + dy, ny + dy + dx],
+            [nx + dx - dy, ny + dy - dx],
+          ].every(([x, y]) => x! >= 0 && y! >= 0 && x! < mapW && y! < mapH && ground[cell(x!, y!)] !== "floor");
+          if (!lonely) continue;
+          ground[n] = "floor";
+          props[n] = !bones && random() < 0.3 ? 0 : 1;
+          for (let yy = ny - 1; yy <= ny + 1; yy++)
+            for (let xx = nx - 1; xx <= nx + 1; xx++)
+              if (ground[cell(xx, yy)] === "rock") ground[cell(xx, yy)] = "wall";
+          parts.push({ x: nx, y: ny, w: 1, h: 1 });
+          cut++;
+        }
+      }
+      if (!parts.length) delete room.parts;
     }
   // Each alcove holds one thing: a statue, or in a crypt a sarcophagus.
   for (const recess of alcoves.values()) {
