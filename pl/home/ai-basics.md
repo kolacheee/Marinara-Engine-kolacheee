@@ -34,7 +34,7 @@ Marinara może używać kilku rodzajów modeli:
 | Rodzaj | Co robi | Czy jest potrzebny? |
 | --- | --- | --- |
 | **Model czatu** | Pisze odpowiedzi. | Tak, na początek wystarczy jeden. |
-| **Model decyzyjny** | Odpowiada na proste pytania typu tak lub nie, na przykład "czy scena przeniosła się w nowe miejsce?". | Opcjonalny. |
+| **Model decyzyjny** | Odpowiada na proste pytania dotyczące czatu: tak lub nie, która z kilku opcji albo ile. Niektóre modele potrafią też odczytywać obrazy. | Opcjonalny. |
 | **Model embeddingów** | Zamienia tekst w liczby opisujące jego znaczenie, dzięki czemu Marinara może wyszukiwać wiedzę o świecie i wspomnienia według znaczenia. Nigdy nie pisze tekstu. | Opcjonalny. Mały model jest wbudowany. |
 | **Odczytywanie obrazów** | Model, który potrafi spojrzeć na obraz i go opisać. | Opcjonalne. |
 | **Obrazy, wideo i głos** | Osobne usługi tworzące obrazy, klipy i mowę. Model czatu tego nie potrafi. | Opcjonalne. |
