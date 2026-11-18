@@ -142,6 +142,8 @@ Eine Bedingung kann dein Decision-Modell fragen, was im Chat passiert. Das Decis
 
 Bevor du anfängst: Wähle unter **Decision model** (Entscheidungsmodell) im Panel **Connections** (Verbindungen) ein Decision-Modell aus. [Decision-Modelle](../connections/decision-models.md) erklärt, was es ist und wie du eines auswählst. Soll entschieden werden, ob ein ganzer Lorebook-Eintrag aktiviert wird, nutze stattdessen das Feld [Decision](../lorebooks/entries.md#decision-activation) des Eintrags.
 
+Es kann mit ja oder nein antworten (`decision:`) oder eine von mehreren Antworten wählen (`decision_choice:`). Ein eingebautes Modell, das Bilder lesen kann, kann auch die Bilder und Clips im Chat ansehen. Die Antwortarten mit weiteren Beispielen findest du unter [Was ein Decision-Modell beantworten kann](../connections/decision-models.md#what-a-decision-model-can-answer).
+
 Ideen: einen neuen Ort nur beschreiben, wenn die Szene gewechselt hat; Regeln für das Kampftempo nur während eines Kampfes laden; in einem Slow-Burn-Preset die Eskalation zurückhalten; oder in einem Gruppenblock nur den angesprochenen Charakter direkt antworten lassen.
 
 ### Ja oder nein: `decision:`
@@ -254,6 +256,20 @@ Enthält ein Prompt-Plan mehr Aussagen, als das Kontingent **Decision statements
 - Aussagen über dem Limit gelten als nein, die mit der niedrigsten Priorität zuerst, und Peek Prompt listet sie auf.
 - Steht eine Aussage an mehreren Stellen, gilt die höchste Priorität.
 - Die eigenen Aussagen des Prompts (Preset, Karten, Persona, Autorennotizen) werden zuerst geplant. Lorebook-Aussagen nutzen die verbleibenden Plätze, unabhängig von ihrer Priorität.
+
+### Bilder und Clips
+
+Ein eingebautes Decision-Modell, das Bilder lesen kann (Liquid d1, Valen, Winnow), kann auch die Bilder und Clips im Chat ansehen. Das tut es nur, wenn die Aussage es verlangt: `pictures:N` sendet die neuesten N Bilder (höchstens 3), `clips:1` sendet den neuesten Clip (nur mit der Vollversion von Valen). Ohne diese Zusätze wird nur der Text gesendet.
+
+```text
+{{#if decision:"The picture shows the character at the beach" pictures:1}}...{{/if}}
+{{#if decision:"The clip ends somewhere new" clips:1 media_within:2}}...{{/if}}
+```
+
+- Bilder sind Uploads, Galerie-Selfies und Illustrationen; Clips sind generierte Szenenvideos. Alle werden vorab verkleinert.
+- Jedes Bild und jeder Clip verlangsamt die Aussage. In den Modelldetails steht, wie lange eines auf deinem Rechner braucht, sobald das Modell dort einmal gelaufen ist.
+- `media_within:N` stellt die Aussage nur, wenn eine der neuesten N Nachrichten ein Bild enthält (oder mit `clips:` einen Clip). In anderen Zügen gilt sie als nein und wird nicht gestellt.
+- Aussagen, die dieselben Bilder anfordern, teilen sich eine Anfrage. Ein Modell, das nur Text liest, oder eine gehostete Decision-Verbindung bekommt nie Bilder oder Clips.
 
 Alle Zusätze lassen sich in beliebiger Reihenfolge kombinieren: `decision:"..." priority:high sticky:3 cooldown:5 every:2`.
 

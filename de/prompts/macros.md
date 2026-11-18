@@ -283,6 +283,7 @@ Eine Bedingung kann auch dein Decision-Modell zur Szene befragen, zum Beispiel `
 - `sticky:3 cooldown:5` hält ein Ja drei Züge lang und pausiert es dann für fünf. Siehe [Sticky und Cooldown](conditional-prompts.md#sticky-and-cooldown).
 - `until:"..."` oder `while:"..."` hält ein Ja so lange, wie eine zweite Aussage es zulässt. Siehe [Until und While](conditional-prompts.md#until-and-while).
 - `every:3` fragt eine Aussage nur alle drei Züge ab. Siehe [Alle paar Züge prüfen](conditional-prompts.md#checking-every-few-turns).
+- `pictures:1`, `clips:1` und `media_within:3` lassen ein eingebautes Modell, das sie lesen kann, die neuesten Bilder und Clips im Chat ansehen und auf eines warten. Siehe [Bilder und Clips](conditional-prompts.md#pictures-and-clips).
 - `priority:high` oder `priority:low` bestimmt, welche Aussagen in einen Prompt-Plan passen. Siehe [Priorität](conditional-prompts.md#priority) und [Grenzen und Kosten](conditional-prompts.md#limits-and-cost).
 
 ## Typische Fehler

@@ -123,6 +123,19 @@ Illustrator zeichnet auch Hintergründe. Auf der Illustrator-Karte unter **Chat-
 
 Alle drei sind standardmäßig aus. Siehe [Von Illustrator erstellte Hintergründe](scene-backgrounds.md).
 
+## Bilder mit einem Decision-Modell prüfen
+
+Mit einem eingebauten [Decision-Modell, das Bilder lesen kann](../connections/decision-models.md#features-that-look-at-pictures) (Liquid d1, Valen oder Winnow), bietet die Illustrator-Karte drei weitere Einstellungen. Alle sind standardmäßig aus und ohne ein solches Modell mit einem ⓘ ausgegraut.
+
+- **Picture check** sieht sich jedes neue Bild, jede Wetterversion und jedes Selfie an und prüft, ob es das Gewünschte zeigt. Ein Selfie wird auch mit dem Avatar des Charakters verglichen. **Make another if it doesn't match** zeichnet bei einem Fehlschlag noch einmal. **Always make two, keep the better** zeichnet zwei Bilder und behält das bessere. Jedes zusätzliche Bild ist eine weitere Bildgenerierung.
+- **Also check** (unter **Picture check**) ergänzt eigene Prüfungen, eine pro Zeile, höchstens 6, etwa `Kaelen has short red hair`. Beginne eine Zeile mit `not:`, wenn das Bild etwas nicht zeigen darf, etwa `not: The picture has writing or a watermark`.
+- **Skip a picture the newest one already shows** vergleicht das neueste Bild im Chat mit dem geplanten Bild und überspringt eine Wiederholung. Bilder, die du anforderst, werden immer erstellt.
+- **Reuse a library background that looks like the place** zeigt einen Bibliothekshintergrund, der zu einem neuen Ort passt, statt einen zu malen. Siehe [Vorhandene Bilder wiederverwenden](scene-backgrounds.md#reusing-pictures-you-already-have).
+
+In einem Conversation-Chat findest du **Picture check** für Selfies auf der Illustrator-Karte.
+
+Eine Prüfung, die nicht ausgeführt werden kann, gilt als bestanden; das Bild bleibt also erhalten.
+
 ## Mehrere Charaktere mit NovelAI
 
 Ist das Bildmodell des Illustrators NovelAI mit einem V4-, V4.5- oder V5-Modell, fügt das promptschreibende Modell für jeden sichtbaren Charakter eine Figurenbeschreibung hinzu. Jede Figurenbeschreibung enthält Aussehen, Gesichtsausdruck, Pose und ungefähre Position dieses Charakters im Bild. Marinara gleicht die Figurenbeschreibungen mit der Charakterliste der Szene ab, verwirft alle, die sich nicht zuordnen lassen, und schickt die übrigen als native Figuren-Prompts neben dem Haupt-Prompt an NovelAI. So vermischen sich Haare, Kleidung und andere Merkmale nicht zwischen den Charakteren. Bilder über **Illustrate** und über den Befehl `[illustrate]` eines Charakters bekommen dieselben Figurenbeschreibungen.

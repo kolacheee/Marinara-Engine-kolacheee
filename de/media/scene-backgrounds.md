@@ -42,6 +42,8 @@ Bevor Illustrator einen neuen Ort malt, sucht er in dieser Reihenfolge nach eine
 
 Groß- und Kleinschreibung, Akzente und „'s“ spielen keine Rolle, und der genaueste Name hat Vorrang vor einem einfachen `bedroom.png`. Passt ein Bild, wird es angezeigt (mit dem Wetter der Geschichte, falls diese Version existiert), und es wird nichts gemalt. Nur ein Ort ohne passenden Treffer bekommt ein neues Bild.
 
+Passt kein Name und hast du auf der Illustrator-Karte **Reuse a library background that looks like the place** eingeschaltet, sieht sich ein [Decision-Modell, das Bilder lesen kann](../connections/decision-models.md#features-that-look-at-pictures), bis zu 4 Bibliotheksbilder an, deren Namen ein Wort mit dem Ort gemeinsam haben, und zeigt ein passendes an. Erst wenn keines passt, wird ein neues gemalt. Die Option ist standardmäßig aus und ohne ein solches Modell ausgegraut.
+
 Damit ein Ort sein Bild behält, benenn die Datei nach dem Ort (`kitchen.png` für „Kitchen“) oder gib ihr ein Tag aus mindestens zwei Wörtern, etwa `smith house kitchen` (siehe [Einen Hintergrund taggen](../appearance/chat-backgrounds.md#tag-a-background)). Tags aus nur einem Wort wie `kitchen` oder `night` werden hier ignoriert, weil sie meist beschreiben, wie ein Bild aussieht.
 
 ## Wetterversionen von Hintergründen
