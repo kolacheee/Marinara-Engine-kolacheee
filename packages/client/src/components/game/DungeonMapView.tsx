@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import {
   DUNGEON_EXIT_PROP,
   DUNGEON_SECRET_DOOR_PROP,
+  dungeonRoomCells,
   dungeonRoomHas,
   dungeonWayOutId,
   dungeonSightCells,
@@ -1269,6 +1270,37 @@ export function DungeonMapView({
             }
           }
       }
+      // The great chamber's own ground: a tint over its whole floor, so it reads as the creature's place from
+      // its mouth on, not a corner of the cave (lair panel 3: the hive's bowl was the one that read).
+      if (lairKind && lairCells.length && cells) {
+        const heartIndex = kept?.lairRoom ?? kept?.roomInfo?.findIndex((info) => info?.heart) ?? -1;
+        const chamber = heartIndex >= 0 ? cells.rooms[heartIndex] : undefined;
+        const tint: Record<string, string> = {
+          hoard: "rgba(150, 90, 20, 0.16)",
+          sanctum: "rgba(90, 50, 140, 0.14)",
+          haven: "rgba(90, 20, 30, 0.14)",
+          den: "rgba(70, 40, 20, 0.2)",
+          breach: "rgba(140, 40, 10, 0.18)",
+          drowned: "rgba(20, 70, 50, 0.16)",
+          hive: "rgba(150, 100, 20, 0.16)",
+        };
+        if (chamber) {
+          ctx.fillStyle = tint[lairKind] ?? "rgba(0, 0, 0, 0.1)";
+          for (const { x, y } of dungeonRoomCells(chamber))
+            if (!inFog(x, y) && cells.ground[y * cells.width + x] !== "wall" && cells.ground[y * cells.width + x] !== "rock")
+              ctx.fillRect(x * T, y * T, T, T);
+          // A breach's floor scorched round the rift, a dragon's round its heap.
+          if (lairKind === "breach" || lairKind === "hoard")
+            for (const { x, y } of lairCells.filter((c) => !inFog(c.x, c.y))) {
+              const [cx, cy] = [(x + 0.5) * T, (y + 0.5) * T];
+              const burn = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 2.2);
+              burn.addColorStop(0, "rgba(20, 8, 4, 0.22)");
+              burn.addColorStop(1, "rgba(20, 8, 4, 0)");
+              ctx.fillStyle = burn;
+              ctx.fillRect(cx - T * 2.3, cy - T * 2.3, T * 4.6, T * 4.6);
+            }
+        }
+      }
       if (lairKind === "drowned" && lairCells.length) {
         // The deep pool: soft-edged, darkest in its middle, each cell a pool of shade that runs into the next
         // (lair panel 1: a square-edged dark overlay).
@@ -1277,8 +1309,9 @@ export function DungeonMapView({
           if (inFog(x, y)) continue;
           const [cx, cy] = [(x + 0.5) * T, (y + 0.5) * T];
           const deep = ctx.createRadialGradient(cx, cy, 1, cx, cy, T * 1.05);
-          deep.addColorStop(0, "rgba(2, 14, 26, 0.3)");
-          deep.addColorStop(1, "rgba(2, 14, 26, 0)");
+          // Murky green-black, not the cave's clear puddles (lair panel 3: the maker's pool read as any pond).
+          deep.addColorStop(0, "rgba(6, 34, 22, 0.55)");
+          deep.addColorStop(1, "rgba(6, 34, 22, 0)");
           ctx.fillStyle = deep;
           ctx.fillRect(cx - T * 1.1, cy - T * 1.1, T * 2.2, T * 2.2);
         }

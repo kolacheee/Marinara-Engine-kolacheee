@@ -5623,8 +5623,14 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       const camp = [PALLET, BUCKET, JUG, WOODPILE, STOOL]; // someone camped here
       // A crypt tells its own, in its own pieces: robbers caught by a trap at the chest they came for, a tomb
       // broken open and its dead dragged out (owner 2026-11-18, "Build play content next").
-      const stories =
-        plan.template === "crypt"
+      // A lair floor tells the creature's story, never a storeroom's (lair panel 3: crates by the rift).
+      const stories = level.lair
+        ? [
+            [BONES, SKULLS, CHAINS, TIPPED], // what it dragged down here
+            [BONES, COBWEB, BONES, SWORD], // someone who came for the hoard
+            [SKULLS, CHAINS, BONES, JARS], // what its servants keep
+          ]
+        : plan.template === "crypt"
           ? [
               [1, 4, 3, 1, 4], // robbers caught by the spikes at the chest
               [0, 1, 1, 3], // a tomb broken open, its dead dragged out

@@ -821,6 +821,8 @@ export interface MarinaraFighter {
   side: "party" | "enemy";
   /** Called up mid-fight by a creature's lair (a lair action's summon). */
   lairSummon?: true;
+  /** A lair's breakable thing (DUNGEON_LAIR_ANCHORS): the lair action it feeds, stopped when it breaks. */
+  lairAnchor?: string;
   row: "front" | "back";
   archetype?: MarinaraArchetype;
   stats: MarinaraStats;

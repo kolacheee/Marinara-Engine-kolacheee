@@ -301,9 +301,9 @@ export function playFight(
     difficulty: "normal",
     seed,
     marinara: [...party, ...foes],
+    ...(lair ? { marinaraLair: lair } : {}),
   });
   if (tap) s.marinara!.eventTap = tap;
-  if (lair) s.marinara!.lair = { ...lair, round: 0 };
   const reasons: string[] = [];
   let seen = 0;
   const collect = () => {

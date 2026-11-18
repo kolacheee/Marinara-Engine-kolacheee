@@ -1256,8 +1256,28 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
       );
       const near1 = (m: number, n: number) =>
         Math.abs((m % made.width) - (n % made.width)) + Math.abs(Math.floor(m / made.width) - Math.floor(n / made.width)) <= 1;
+      // The wall thickened outward here and there, so it reads as the cave's own rock and not a ruled line (lair
+      // panel 3: a one-cell straight wall read as a debug line).
+      const ringSet = new Set(ring);
+      const outward = (n: number) =>
+        [n - 1, n + 1, n - made.width, n + made.width].filter(
+          (m) =>
+            m >= 0 &&
+            m < made.ground.length &&
+            !inRoom.has(m) &&
+            !ringSet.has(m) &&
+            made.ground[m] === "floor" &&
+            made.props[m] === -1 &&
+            m !== at(made.entrance.x, made.entrance.y) &&
+            Math.abs((m % made.width) - (n % made.width)) <= 1 &&
+            ((m * 2654435761) >>> 0) % 5 < 2,
+        );
       const tryWalls = () => {
-        const shut = new Set(ring.filter((n) => !opened.has(n)));
+        const base = ring.filter((n) => !opened.has(n));
+        const shut = new Set(base);
+        for (const n of base)
+          for (const m of outward(n))
+            if (![m - 1, m + 1, m - made.width, m + made.width].some((k) => opened.has(k))) shut.add(m);
         const ground = made.ground.map((each, i) => (shut.has(i) ? ("wall" as const) : each));
         const reached = dungeonStepsFrom({ ...made, ground }, made.entrance);
         const lost = Array.from(steps).flatMap((st, i) => (st >= 0 && !shut.has(i) && reached[i]! < 0 ? [i] : []));

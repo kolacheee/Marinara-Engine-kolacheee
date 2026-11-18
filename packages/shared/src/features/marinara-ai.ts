@@ -273,7 +273,13 @@ export function marinaraAiCandidates(
     // A foe that yielded is the player's to spare or finish: the AI leaves it be.
     const pool = reachable(
       option,
-      marinaraTargetsFor(actor, effect, all).filter((unit) => !(unit.yielded && unit.side !== actor.side)),
+      marinaraTargetsFor(actor, effect, all).filter(
+        (unit) =>
+          !(unit.yielded && unit.side !== actor.side) &&
+          // An object (a lair's breakable feature) only takes blows: no taunt, curse or charm on it (lair sim
+          // 17 2026-11-18: Guards spent 72 turns Challenging a Ward Stone).
+          !(unit.dummy && unit.side !== actor.side && effect.kind !== "damage"),
+      ),
     );
     if (!pool.length && effect.target !== "party" && effect.target !== "self") continue;
     switch (effect.kind) {
@@ -341,6 +347,14 @@ export function marinaraAiCandidates(
               // A kill shot: the blows it would have dealt before the party brought it down anyway.
               if (target.side !== actor.side)
                 prevented += threatOf(target, Math.min(2, Math.max(1, target.hp / partyDamage)));
+              // A lair's breakable feature: about half a lair action a round, for the rounds its maker
+              // still stands (owner 2026-11-18, breakable lair features).
+              if (target.lairAnchor && target.side !== actor.side) {
+                const maker = foes
+                  .filter((foe) => !foe.dummy && foe.hp > 0)
+                  .sort((a, b) => b.maxHp - a.maxHp)[0];
+                if (maker) prevented += threatOf(maker, Math.min(3, Math.max(1, maker.hp / partyDamage))) * 0.5;
+              }
             }
           }
           // A charged skill lands a turn later.

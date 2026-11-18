@@ -36,10 +36,10 @@ for (const kind of DUNGEON_LAIR_KINDS.filter((k) => !only || k === only)) {
     if (!maker) continue;
     const row: Record<
       string,
-      { wins: number; n: number; rounds: number; lost: number; lairDmg: number; lairActs: number }
+      { wins: number; n: number; rounds: number; lost: number; lairDmg: number; lairActs: number; anchorHits: number; broke: number }
     > = {};
     for (const withLair of [false, true]) {
-      const r = (row[withLair ? "lair" : "none"] = { wins: 0, n: 0, rounds: 0, lost: 0, lairDmg: 0, lairActs: 0 });
+      const r = (row[withLair ? "lair" : "none"] = { wins: 0, n: 0, rounds: 0, lost: 0, lairDmg: 0, lairActs: 0, anchorHits: 0, broke: 0 });
       for (const name of Object.keys(REFERENCE_PARTIES))
         for (let i = 0; i < fpp; i++) {
           const boss = enemyFighter(
@@ -62,11 +62,14 @@ for (const kind of DUNGEON_LAIR_KINDS.filter((k) => !only || k === only)) {
           r.lairDmg += lair
             .filter((ev) => ev.kind === "hit" || ev.kind === "rider")
             .reduce((s, ev) => s + (ev.amount ?? 0), 0);
+          // How often the party's AI strikes the lair's breakable thing (owner 2026-11-18).
+          r.anchorHits += tap.filter((ev) => ev.kind === "hit" && String(ev.targetId ?? "").startsWith("lair-anchor")).length;
+          if (tap.some((ev) => ev.kind === "down" && String(ev.targetId ?? "").startsWith("lair-anchor"))) r.broke++;
           r.lairActs += new Set(lair.map((ev, k) => `${ev.skillId}:${k}`)).size ? lair.length : 0;
         }
     }
     const f = (r: (typeof row)[string]) =>
-      `win ${((100 * r.wins) / r.n).toFixed(0)}% rounds ${(r.rounds / r.n).toFixed(1)} lost ${((100 * r.lost) / r.n).toFixed(0)}% lairDmg/fight ${(r.lairDmg / r.n).toFixed(0)} lairEvents/fight ${(r.lairActs / r.n).toFixed(1)}`;
+      `win ${((100 * r.wins) / r.n).toFixed(0)}% rounds ${(r.rounds / r.n).toFixed(1)} lost ${((100 * r.lost) / r.n).toFixed(0)}% lairDmg/fight ${(r.lairDmg / r.n).toFixed(0)} lairEvents/fight ${(r.lairActs / r.n).toFixed(1)} anchorHits/fight ${(r.anchorHits / r.n).toFixed(1)} broken ${((100 * r.broke) / r.n).toFixed(0)}%`;
     console.log(`${kind} ${maker} L${level} | none: ${f(row.none!)} | lair: ${f(row.lair!)}`);
   }
 }

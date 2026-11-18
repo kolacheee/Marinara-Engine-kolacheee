@@ -8,7 +8,12 @@
 // ──────────────────────────────────────────────
 import { marinaraRandom, type MarinaraArchetype } from "../marinara-classes.js";
 import type { MarinaraBestiarySetting } from "../marinara-bestiary.js";
-import { registerMarinaraEnemySkills, type MarinaraEffect } from "../marinara-combat.js";
+import {
+  buildMarinaraEnemy,
+  registerMarinaraEnemySkills,
+  type MarinaraEffect,
+  type MarinaraFighter,
+} from "../marinara-combat.js";
 
 export const DUNGEON_LAIR_KINDS = ["hoard", "sanctum", "haven", "den", "breach", "drowned", "hive"] as const;
 export type DungeonLairKind = (typeof DUNGEON_LAIR_KINDS)[number];
@@ -532,9 +537,46 @@ registerMarinaraEnemySkills(
 );
 
 /** The lair action that comes next: any of its kind's actions but the one just taken, picked by `random`. */
-export function dungeonLairActionFor(kind: DungeonLairKind, last: string | undefined, random: () => number): string {
-  const ids = Object.keys(DUNGEON_LAIR_ACTIONS[kind]).filter((id) => id !== last);
+export function dungeonLairActionFor(
+  kind: DungeonLairKind,
+  last: string | undefined,
+  random: () => number,
+  broken: readonly string[] = [],
+): string {
+  const left = Object.keys(DUNGEON_LAIR_ACTIONS[kind]).filter((id) => !broken.includes(id));
+  const ids = left.length > 1 ? left.filter((id) => id !== last) : left;
   return ids[Math.min(ids.length - 1, Math.floor(random() * ids.length))]!;
+}
+
+/** The one thing in each great chamber the party can break mid-fight (owner 2026-11-18, after lair panel 3):
+ *  breaking it stops the lair action it feeds. It never acts, and it falls when its maker does. */
+export const DUNGEON_LAIR_ANCHORS: Readonly<Record<DungeonLairKind, { name: string; stops: string; breaks: string }>> = {
+  hoard: { name: "Fire Vent", stops: "lair-dragonfire-vents", breaks: "the vent is choked with rubble" },
+  sanctum: { name: "Ward Stone", stops: "lair-death-ward", breaks: "the ward stone cracks and its light goes out" },
+  haven: { name: "Master's Coffin", stops: "lair-blood-tithe", breaks: "the coffin splinters and the grave earth spills" },
+  den: { name: "Cracked Roof Prop", stops: "lair-den-roof", breaks: "the loose stone comes down at once, harmlessly" },
+  breach: { name: "Rift Anchor", stops: "lair-something-comes", breaks: "the anchor stone shatters and the rift narrows" },
+  drowned: { name: "Sluice Gate", stops: "lair-surge", breaks: "the sluice jams open and the surge drains away" },
+  hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
+};
+
+/** A lair's breakable thing as a fighter on its maker's side: it never acts, a fair share of its maker's HP. */
+export function dungeonLairAnchorFighter(kind: DungeonLairKind, maker: MarinaraFighter): MarinaraFighter {
+  const anchor = DUNGEON_LAIR_ANCHORS[kind];
+  const fighter = buildMarinaraEnemy({
+    id: `lair-anchor-${kind}`,
+    name: anchor.name,
+    archetype: "guard",
+    level: maker.level,
+    tier: "minion",
+    row: "front",
+  });
+  fighter.side = maker.side;
+  fighter.dummy = true;
+  fighter.lairAnchor = anchor.stops;
+  fighter.maxHp = Math.max(10, Math.round(maker.maxHp * 0.12));
+  fighter.hp = fighter.maxHp;
+  return fighter;
 }
 
 /** The board a fight in a lair's great chamber is laid out as (Tactical): the cavern, the vault, the hall. */

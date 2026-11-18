@@ -72,7 +72,7 @@ import {
   performMarinaraAction,
   type MarinaraDirectorState,
 } from "./marinara-director.service.js";
-import { marinaraEnemyFamily, type MarinaraFighter } from "@marinara-engine/shared";
+import { dungeonLairAnchorFighter, marinaraEnemyFamily, type MarinaraFighter } from "@marinara-engine/shared";
 
 type Unit = Combatant | TacticalUnit;
 type Action = { unitId: string; classic?: CombatPlayerAction; tactical?: Extract<TacticalAction, { unitId: string }> };
@@ -752,7 +752,7 @@ function sync(s: CombatDirectorState) {
     // What a lair calls up mid-fight joins the foes' units (Classic only; a board takes no summons).
     if (!s.tactical)
       for (const fighter of s.marinara.fighters)
-        if (fighter.lairSummon && fighter.hp > 0 && fighter.side === "enemy" && !get(s, fighter.id)) {
+        if ((fighter.lairSummon || fighter.lairAnchor) && fighter.hp > 0 && fighter.side === "enemy" && !get(s, fighter.id)) {
           const u = marinaraCombatant(fighter);
           u.tactics = assignCombatTactics(u, s.seed);
           u.skillCooldowns = {};
@@ -907,6 +907,13 @@ export function createCombatDirector(input: {
 }): CombatDirectorState {
   const party = structuredClone(input.party),
     enemies = structuredClone(input.enemies);
+  // A lair's breakable thing joins the foes as the fight starts (owner 2026-11-18): it never acts.
+  const lairMaker =
+    input.marinaraLair && input.style !== "ruleset"
+      ? input.marinara?.find((one) => one.id === input.marinaraLair!.makerId)
+      : undefined;
+  const lairAnchor = lairMaker ? dungeonLairAnchorFighter(input.marinaraLair!.kind, lairMaker) : undefined;
+  if (lairAnchor) enemies.push(marinaraCombatant(lairAnchor));
   for (const u of [...party, ...enemies]) {
     u.tactics = assignCombatTactics(u, input.seed);
     u.skillCooldowns ??= {};
@@ -961,6 +968,7 @@ export function createCombatDirector(input: {
       };
     }
   }
+  if (lairAnchor && s.morale) delete s.morale[lairAnchor.id];
   if (s.style === "tactical")
     s.tactical = createTacticalCombat(party, enemies, {
       seed: s.seed,
@@ -976,7 +984,7 @@ export function createCombatDirector(input: {
       ...(input.marinara?.length ? { narrow: MARINARA_BOARD_NARROWING } : {}),
     });
   if (input.marinara?.length && s.style !== "ruleset") {
-    s.marinara = createMarinaraDirectorState(input.marinara, s.seed);
+    s.marinara = createMarinaraDirectorState(lairAnchor ? [...input.marinara, lairAnchor] : input.marinara, s.seed);
     if (input.marinaraLair && s.marinara.fighters.some((one) => one.id === input.marinaraLair!.makerId))
       s.marinara.lair = { ...input.marinaraLair, round: 0 };
     if (input.marinaraPlace) {

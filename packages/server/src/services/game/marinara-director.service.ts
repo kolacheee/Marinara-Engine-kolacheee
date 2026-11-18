@@ -103,7 +103,15 @@ export interface MarinaraDirectorState {
   eventTap?: MarinaraEvent[];
   /** A fight in a creature's lair (owner 2026-11-18): the lair acts once a round, at the round's start, on its
    *  maker's side while its maker stands; `round` is the last round it acted in. */
-  lair?: { kind: DungeonLairKind; makerId: string; round: number; next?: string; summoned?: number };
+  lair?: {
+    kind: DungeonLairKind;
+    makerId: string;
+    round: number;
+    next?: string;
+    summoned?: number;
+    /** Lair actions stopped by breaking their anchors. */
+    broken?: string[];
+  };
 }
 
 /** How many AI reasons a fight keeps. */
@@ -693,9 +701,24 @@ export function lairActs(
   now = 0,
 ): boolean {
   const lair = state.lair;
-  if (!lair || round <= lair.round) return false;
-  lair.round = round;
+  if (!lair) return false;
   const maker = marinaraFighter(state, lair.makerId);
+  const anchors = state.fighters.filter((f) => f.lairAnchor);
+  // The lair's breakable thing falls with its maker: nothing of the lair is left to fight.
+  if ((!maker || maker.hp <= 0) && anchors.some((f) => f.hp > 0)) {
+    for (const f of anchors) f.hp = 0;
+    log("With its maker fallen, the lair goes still.", "marinara:lair", lair.makerId);
+  }
+  // Broken by the party: say so once, and the action it fed is gone from the lair (owner 2026-11-18).
+  for (const f of anchors)
+    if (f.hp <= 0 && maker && maker.hp > 0 && !(lair.broken ?? []).includes(f.lairAnchor!)) {
+      lair.broken = [...(lair.broken ?? []), f.lairAnchor!];
+      const gone = DUNGEON_LAIR_ACTIONS[lair.kind][f.lairAnchor!]?.label;
+      log(`The ${f.name} breaks${gone ? `: no more ${gone}` : ""}.`, "marinara:lair", f.id);
+      if (lair.next === f.lairAnchor) lair.next = undefined;
+    }
+  if (round <= lair.round) return false;
+  lair.round = round;
   if (!maker || maker.hp <= 0) return false;
   // A young lair (its maker under level 10) stirs every other round, an old one every round (lair sim 8-10:
   // at level 6 a lair acting every round took a deathless sorcerer's fights from a sure win to a coin flip).
@@ -707,7 +730,7 @@ export function lairActs(
   const ctx = context(state, seed, tactical);
   const foes = living(state.fighters).filter((f) => f.side !== maker.side);
   if (!foes.length) return false;
-  const id = lair.next ?? dungeonLairActionFor(lair.kind, undefined, ctx.random);
+  const id = lair.next ?? dungeonLairActionFor(lair.kind, undefined, ctx.random, lair.broken);
   const action = DUNGEON_LAIR_ACTIONS[lair.kind][id]!;
   const target = foes[Math.floor(ctx.random() * foes.length)]!;
   log(`The lair acts: ${action.label}.`, "marinara:lair", maker.id);
@@ -747,7 +770,7 @@ export function lairActs(
       tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
     );
   }
-  lair.next = dungeonLairActionFor(lair.kind, id, ctx.random);
+  lair.next = dungeonLairActionFor(lair.kind, id, ctx.random, lair.broken);
   log(`The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}.`, "marinara:lair", maker.id);
   record(state, ctx, log);
   return true;
