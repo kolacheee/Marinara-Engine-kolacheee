@@ -2,8 +2,6 @@
 
 本页介绍如何阅读 Marinara Engine 服务器日志，以及如何编写有用的日志。它补充而非替代 [CONTRIBUTING.md 的 Logging 部分](../../CONTRIBUTING.md#logging)。共享 Pino logger、错误对象作为首参、格式占位符和四级日志表仍然适用。
 
-<a id="what-every-line-carries"></a>
-
 ## 每行包含什么
 
 所有服务器日志都来自同一个 Pino 实例：`packages/server/src/lib/logger.ts` 中的 `logger`。Fastify 通过 `loggerInstance` 使用它，因此 `req.log`、`reply.log` 和 `app.log` 都是其子 logger。它们使用相同序列化器，并跟随环境监视器对 `LOG_LEVEL` 的热更新。
@@ -15,8 +13,6 @@
 | `bootId` | 每行 | 每次进程启动生成的 8 位十六进制字符，用于区分同一日志文件中的不同运行。 |
 | `requestId` | 请求引起的每行 | 与响应头 `x-request-id` 相同，同时出现在 `req.log` 和服务内部共享 `logger` 的日志中。 |
 | `route` | 正文解析后的行 | 匹配的路由模式，例如 `/api/chats/:id`，绝不保存原始 URL。 |
-
-<a id="request-ids"></a>
 
 ### 请求 ID
 
@@ -30,8 +26,6 @@ ID 保存在 `AsyncLocalStorage` 上下文（`lib/log-context.ts`）中，由 Pi
 
 上下文会跟随请求内启动的所有工作，包括计时器、监听器和子进程。对于会活得比请求更久的工作，用 `runWithRootLogContext({}, fn)` 包住其启动过程，让之后的日志不带原始请求 ID。本地辅助进程对 llama-server 和 MLX 这样处理，Decision 和 Utility 辅助进程也采用同样方式，因此被后续请求共用的进程不会一直保留首个调用者的 ID。路由处理器启动的其他长期计时器或轮询器，在采用同样包装前仍会保留该路由的 `requestId`。
 
-<a id="request-lines"></a>
-
 ### 请求日志行
 
 `RequestLogController` 是 Fastify 默认 `LogController` 的以下调整版：
@@ -42,9 +36,7 @@ ID 保存在 `AsyncLocalStorage` 上下文（`lib/log-context.ts`）中，由 Pi
 
 `LOG_DISABLE_REQUEST_LOGGING` 与以前一样工作，也会关闭中止日志行。
 
-在 `pnpm dev` 中，pino-pretty 隐藏 `hostname`（其默认行为）和 `bootId`。生产 JSON 输出保留两者。
-
-<a id="startup-timeline"></a>
+终端收到的是 pino-pretty 格式的日志行：包括 `pnpm dev`，以及 stdout 指向终端的生产服务器（启动脚本）。生产输出发往其他位置时，使用每行一个对象的 JSON。`LOG_FORMAT=pretty|json` 会覆盖这个选择；Termux 启动脚本设为 `pretty`，因为它的输出要经过 `tee` 才到终端。pino-pretty 隐藏 `hostname`(默认行为) 和 `bootId`；JSON 输出保留两者。
 
 ## 启动时间线
 
@@ -60,8 +52,6 @@ const db = await startup.phase("storage.open", () => getDB());
 - 服务器开始监听后，`index.ts` 记录一行 info：`[startup] Ready in N ms`，含 `event: "startup.ready"`、阶段总数和 `selfMs` 最大的五个步骤。
 
 阶段不向日志上下文添加 `stage`。阶段内启动的服务会保留计时器，否则这些计时器将在整个进程生命周期内携带该阶段。
-
-<a id="one-line-per-failure"></a>
 
 ## 每次失败只记一行
 
@@ -81,8 +71,6 @@ const db = await startup.phase("storage.open", () => getDB());
 
 - **保留原因。**使用 `new Error("Could not save chat", { cause: err })` 包装。`err` 和 `error` 序列化器会把原因消息与堆栈加入日志（`caused by: ...`）。以 `{ error }` 记录的 Error 也会序列化，不再显示为 `{}`。
 
-<a id="repeating-failures"></a>
-
 ## 重复失败
 
 轮询器、健康检查和每回合钩子可能每几秒发生同样的失败。使用 `lib/log-rate-limit.ts` 中的 `logRateLimited`：
@@ -92,8 +80,6 @@ logRateLimited("warn", "autonomous-scheduler:poll", err, "[autonomous-scheduler]
 ```
 
 某个键首次出现时记录；时间窗口内（默认 60 秒）的后续重复只计数，下次输出附带 `suppressedRepeats`。键中应包含失败对象，如包 ID 或聊天 ID，防止一个故障掩盖另一个。
-
-<a id="prompt-and-model-text"></a>
 
 ## 提示词与模型文本
 
@@ -109,11 +95,22 @@ logger.debug({ err }, "[game/scene-wrap] Unparsed LLM response: %s", raw.slice(0
 
 UI 调试开关仍通过 `logDebugOverride` 工作。这是在 `LOG_LEVEL` 隐藏 debug 时查看提示词的指定方式。
 
-<a id="checks"></a>
+用 `%s` 原样打印提示词文本。对于结构化值（消息数组、服务商请求正文、解析后的回复），将 `debugJson(value)` 传给 `%s`，不要用 `%j` 或 `JSON.stringify(value)`。它打印带缩进的 JSON，并把字符串里的换行显示为真正的换行，让多行提示词保持可读；只有实际打印这一行时才会渲染。用于脱敏的 replacer 放在第二个参数，与 `JSON.stringify` 一样。应用内调试视图使用 `@marinara-engine/shared` 的 `readableJson` 打印相同文本。`debug-log-line-breaks` 回归测试覆盖了这一点和格式选择。
+
+内联媒体不会完整进入日志。`debugJson` 会把每段 base64 载荷替换成类似 `[image/png base64, ~1.2 MB: iVBORw0KGgoAAAA...ElFTkSuQmCC]` 的标记：类型、大小，以及开头和末尾各 16 个字符。这涵盖 `data:` URL（整个字符串或文本中的一部分），以及 Anthropic 和 Google 媒体部分中单独的 `data` 字段，即使 base64 分成多行也一样。`msg` 序列化器会对普通 `%s` 和 `%j` 行中的 `data:` URL 做同样处理；单独的 `data` 字段则只通过 `debugJson` 缩短。只有打印出的副本改变，传入的值绝不会被编辑。在 `.env` 中设置 `LOG_INLINE_MEDIA=full`，就会重新完整打印载荷。`log-inline-media` 回归测试覆盖了这一点。
+
+## 应用内控制台
+
+Settings → Advanced → **Open Console**(设置 → 高级 → 打开控制台) 会在应用里显示最近的服务器日志行，适合不方便访问终端的安装环境（NAS、VPS、Docker、Termux）。
+
+- `lib/log-buffer.ts` 把最近 1,500 行保留在内存里，最多约 400 万个字符，每条消息和每个字段块截断到 16,000 个字符。不写入磁盘，重启后清空。
+- `logger.ts` 通过 Pino 的 `hooks.streamWrite` 将每条序列化后的日志复制进去，因此缓冲区保存的是终端或日志文件收到的内容，遵循相同的 `LOG_LEVEL`。绕过 Pino 的行不在其中，例如 dotenv 的 `injected env` 行，或子进程的原始输出。
+- `GET /api/admin/logs?afterId=` 返回 `afterId` 之后的行，以及 `latestId`、`truncated`（本次读取之前已有行被丢弃）和服务器的 `logLevel`。它受 `requirePrivilegedAccess` 保护，并设为 `no-store`。路由使用 `logLevel: "silent"`，所以控制台自身的轮询不会出现在里面。
+- 本页规则在这里同样重要：用 warn 或 error 记录的内容，就是远程管理员在应用里读到的内容，所以提示词和服务商正文要保持在 debug。
 
 ## 检查
 
-回归测试 `logging-request-trail`、`logging-failure-lines` 和 `logging-startup-timeline` 覆盖本页：
+回归测试 `logging-request-trail`、`logging-failure-lines` 和 `logging-startup-timeline` 覆盖本页，`server-console-logs` 则覆盖应用内控制台：
 
 ```sh
 node scripts/run-regressions.mjs --filter logging-

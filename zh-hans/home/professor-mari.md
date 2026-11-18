@@ -11,7 +11,7 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用、帮你�
 
 她会在自己的标签页里打开。在任何界面也都能找到她：按 <kbd>Ctrl</kbd>+<kbd>K</kbd>，输入问题并选择 **Ask Prof. Mari**，按 <kbd>Ctrl</kbd>+<kbd>J</kbd>(Mac 上是 <kbd>⌘</kbd>+<kbd>J</kbd>) 打开她的弹出窗口，或者在手机上点击顶栏里的标题。她空闲时，标题栏显示 **Ready to help**(随时待命)，干活时显示 **Working on it...**。
 
-用日常语言写好消息，按 <kbd>Enter</kbd> 发送。<kbd>Shift</kbd>+<kbd>Enter</kbd> 换行。如果在她的设置里关掉 **Enter sends to Professor Mari**(按 Enter 发送给 Professor Mari)，<kbd>Enter</kbd> 就变成换行，按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 才发送。你的第一条消息会解锁 **Hello World** 成就。
+用日常语言写好消息，按 <kbd>Enter</kbd> 发送。<kbd>Shift</kbd>+<kbd>Enter</kbd> 换行。如果在她的设置里关掉 **Enter sends to Professor Mari**(按 Enter 发送给 Professor Mari)，<kbd>Enter</kbd> 就变成换行，按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 或点击发送按钮才发送。这个开关按设备保存，所以可以在手机上关闭，在电脑上保持开启。你的第一条消息会解锁 **Hello World** 成就。
 
 她的所有设置都在 **Settings → General → Professor Mari → Open**(设置 → 常规 → Professor Mari → 打开) 里，也可以点 Search 里的齿轮图标。在电脑上，**Professor Mari window**(Professor Mari 窗口) 下的 **Height**(高度) 和 **Width**(宽度) 滑块可以调整她窗口的大小。在手机上，她的窗口会占满屏幕。
 
@@ -39,7 +39,7 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用、帮你�
 - 创建或编辑主题、智能体、提示词预设或 Personal Extension(个人扩展) 草稿。在你读过草稿的代码并在 **Library → Extensions**(资料库 → 扩展) 里批准之前，它一直处于关闭状态。
 - 就地编辑预设的某一部分，而不必替换整份预设。
 - 对比各个可下载的智能体，告诉你哪些适合你的目标。她会让你去 **Library → Agents**(资料库 → 智能体) 安装它们。见[可下载智能体参考](../agents/built-in-agents.md)。
-- 生成或指定图像，比如头像、立绘、背景和主题里的图片，还能裁剪、修边、调整大小或去除纯色背景。你需要先有一个图像生成账号，她不会替你创建。主题图片见[让 Professor Mari 制作图片](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)。
+- 生成或指定图像，比如头像、立绘、背景和主题里的图片，还能裁剪、修边、调整大小或去除纯色背景。你需要先有一个图像生成账号，她不会替你创建。主题图片见[让 Professor Mari 制作图片](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art)。点击她生成的图片，可以查看原尺寸、阅读所用的提示词、下载图片，或者修改提示词后重新生成。新图片会替换她回复里的旧图片。
 - 你研究某个角色或世界观时，查阅公开的 Fandom wiki 页面。
 
 ### 从小标签开始
@@ -136,7 +136,7 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用、帮你�
 
 ### 用 / 输入命令
 
-在一行的开头输入 `/`，会列出她的命令。继续输入可以筛选，然后按 <kbd>Enter</kbd>。列表里也会显示你的 Skills 和 Memories。选中其中一个，就会像 `@` 一样把它链接进来。
+在一行的开头或空格后输入 `/`，会列出她的命令，这样一条消息就能使用多个命令。继续输入可以筛选，然后按 <kbd>Enter</kbd>。列表里也会显示你的 Skills 和 Memories。选中其中一个，就会像 `@` 一样把它链接进来。
 
 | 命令 | 作用 |
 | --- | --- |
@@ -233,7 +233,7 @@ Skill 是一份简短的说明文档，用来改变她处理某一类请求的�
 
 ## 阅读 FAQ
 
-点击主页上 **Learn the engine**(了解引擎) 小组件里的 **Read FAQ**(查看常见问题)（或经典布局中的 **FAQ** 书签），即可打开 **Professor Mari's FAQ**(Professor Mari 的常见问题)。这是一份写好的固定清单，不是 AI 聊天，所以它不了解你的配置。在 **Search FAQ**(搜索常见问题) 里输入文字可以筛选。每个问题都带一个分类标签，比如 **Setup**、**Connections** 或 **Game Mode**。点一下问题就能看答案。
+打开主页上 **Things to try**(试试这些) 小组件里的 **See all**(查看全部)，再点击 **Read FAQ**(查看常见问题)（或经典布局中的 **FAQ** 书签），即可打开 **Professor Mari's FAQ**(Professor Mari 的常见问题)。这是一份写好的固定清单，不是 AI 聊天，所以它不了解你的配置。在 **Search FAQ**(搜索常见问题) 里输入文字可以筛选。每个问题都带一个分类标签，比如 **Setup**、**Connections** 或 **Game Mode**。点一下问题就能看答案。
 
 ## 限制和安全
 

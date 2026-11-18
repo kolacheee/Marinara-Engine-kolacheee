@@ -145,7 +145,7 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI 和 Google 的图像和视�
 
 ## Decision
 
-**Decision** 选项卡上的按钮有 **TypeSafe**(默认地址 `https://api.typesafe.ai`)、**Own decision server**(自有判定服务器) 和 **Built-in model (decisions)**(内置模型，判定)。使用 OpenAI 聊天格式的聊天服务也能做判定，但只限返回对数概率（每个可能答案的分数）的模型。Decision 模型回答关于你聊天的是或否问题。见 [Decision 模型](decision-models.md)。
+**Decision** 选项卡上的按钮有 **TypeSafe**(默认地址 `https://api.typesafe.ai`)、**Own decision server**(自有判定服务器) 和 **Built-in model (decisions)**(内置模型，判定)。这个选项卡还列出了 **NanoGPT**、**OpenRouter** 和 **Google Gemini**，它们也有各自的判定模型（见[通过 NanoGPT](decision-models.md#through-nanogpt)和[通过 OpenRouter 或 Google Gemini](decision-models.md#through-openrouter-or-google-gemini)）。其他使用 OpenAI 聊天格式的聊天服务也能做判定，但只限返回对数概率（每个可能答案的分数）的模型。Decision 模型回答关于你聊天的是或否问题。见 [Decision 模型](decision-models.md)。
 
 ## 音频
 
@@ -184,7 +184,7 @@ OpenAI、OpenRouter、xAI、NanoGPT、Arli AI、Z.AI 和 Google 的图像和视�
 
 ## 嵌入
 
-嵌入把文本转成一串串数字，让 Marinara 能找出相关的文本。世界书的语义搜索和 Memory Recall(记忆功能) 都靠它驱动。大多数聊天服务都允许你在模型编辑器的 **Semantic search (embeddings)**(语义搜索与嵌入) 下设置嵌入模型，以及可选的 **Embedding endpoint URL**(嵌入端点 URL)。
+嵌入把文本转成一串串数字，让 Marinara 能找出相关的文本。世界书的语义搜索和 Memory Recall(记忆功能) 都靠它驱动。大多数聊天服务都允许你在模型的 **Edit model** 窗口中，通过 **More**(更多) → **Semantic search (embeddings)**(语义搜索与嵌入) 设置嵌入模型，以及可选的 **Embedding endpoint URL**(嵌入端点 URL)。
 
 **Anthropic**、**Claude (Subscription)**、**OpenAI (ChatGPT)** 和 **Grok CLI (Subscription)** 无法生成嵌入。遇到这几家，就用 **Embedding provider**(嵌入服务商) 下拉菜单借用另一个账号，比如某个 OpenAI 兼容账号、**Google Gemini** 或 **Built-in model**(内置模型)。
 

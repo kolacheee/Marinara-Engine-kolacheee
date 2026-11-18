@@ -5,7 +5,7 @@
 ## 先试这几步
 
 1. 强制刷新页面：Windows 或 Linux 上按 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>，Mac 上按 <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>。
-2. 看服务器控制台（运行 Marinara 的那个终端窗口）里有没有红色报错行。这些行通常会点明真正的问题。
+2. 看服务器控制台（运行 Marinara 的那个终端窗口）里有没有红色报错行。这些行通常会点明真正的问题。如果服务器运行在别处（NAS、VPS、Docker），打开 **Settings → Advanced → Open Console**(设置 → 高级 → 打开控制台)，就能在应用里读到同样的内容。
 3. 要求助的话，先打开 **Debug mode**(调试模式)。见[获取更多帮助](#get-more-help)。
 
 <a id="my-character-does-not-reply"></a>
@@ -88,6 +88,7 @@ CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 | 模型说某个参数是必需的 | 把那个参数的开关打开。 |
 | **This model's chat template needs user and assistant messages to take turns** | 有些本地模型，比如在 llama.cpp 上运行的 Mistral 系模型，需要消息轮流交替。Marinara 会合并连续的消息并重试一次。如果问题依旧，在 **Chat Settings → Advanced Parameters** 里把 **Post-Processing Messages**(消息后处理) 设为 **Single User Message**(单条用户消息)，或者改用没那么严格的聊天模板来运行模型。 |
 | **The AI returned an empty response. Try sending your message again.** | 重新发送。如果反复出现，换一个模型或账号试试。 |
+| **The model declined this request** | 模型拒绝撰写这条回复。在 Game Mode 中，见[模型拒绝生成回合](game/getting-started.md#the-model-declines-a-turn)。其他模式下先重试，再尝试换一个模型、预设或角色卡。 |
 | **A generation is already in progress for this chat** | 还有一条回复正在流式输出。等它结束，或者点击 **Stop**(停止)，然后再试。 |
 | **No connections are marked for the random pool** | 开启了随机路由，但随机池里没有任何账号。添加一个，或者关掉随机路由。 |
 | 每条消息都以网络错误失败，而你的电脑只能通过代理上网 | 把这个代理告诉 Marinara。见[出站 HTTP 代理](CONFIGURATION.md#outbound-http-proxy)。 |

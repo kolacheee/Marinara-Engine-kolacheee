@@ -228,7 +228,7 @@
 
 ### 6.3 仍在使用的复杂度热点
 
-当前仍在使用的最大模块是 `server/routes/game.routes.ts`、`client/components/game/GameSurface.tsx`、`client/components/chat/ChatSettingsDrawer.tsx`、`server/routes/generate.routes.ts` 和 `client/components/panels/SettingsPanel.tsx`。它们不是删除对象。只在相关功能本来就要改动时，才继续把路由处理函数、领域服务、面板分区和纯辅助函数一块块抽出来。单独开一个“全面拆分”的 PR，只会制造大量改动，却拿不出可靠的行为验证。
+当前仍在使用的最大模块是 `server/routes/game.routes.ts`、`client/components/game/GameSurface.tsx`、`client/features/chat-settings/ChatSettingsDrawer.tsx`、`server/routes/generate.routes.ts` 和 `client/components/panels/SettingsPanel.tsx`。它们不是删除对象。只在相关功能本来就要改动时，才继续把路由处理函数、领域服务、面板分区和纯辅助函数一块块抽出来。单独开一个“全面拆分”的 PR，只会制造大量改动，却拿不出可靠的行为验证。Chat Settings Drawer 是个例外：它正按照[面板拆分计划](../../.github/plans/chat-settings-drawer-split.md)，每个 PR 拆出一个分区。
 
 ## 7. 有意排除在清理范围之外的内容
 

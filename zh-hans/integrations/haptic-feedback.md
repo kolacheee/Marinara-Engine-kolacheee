@@ -12,6 +12,8 @@ Marinara Engine 不直接和设备通信，而是把命令发给一个免费的�
 
 如果 Intiface Central 没运行，或者服务器没启动，Marinara 就发不出触碰指令。另外还需要先安装 **Haptic Feedback** 智能体。见[智能体概览](../agents/agents-overview.md)。
 
+> **提示：** 还没有玩具？可以现在通过 [Lovense](https://www.lovense.com/r/dupchb) 享受折扣，入手一个。
+
 ## 添加 Haptic Feedback 智能体
 
 1. 打开一个 Conversation、Roleplay 或 Game 聊天。
@@ -69,8 +71,6 @@ ws://192.168.1.50:12345
 ## 无意触碰
 
 **Incidental contact**(无意触碰) 开关（“Tiny taps for accidental brushes and bumps.”）默认是关的。关闭时，AI 会忽略轻微的无意触碰，只为刻意的或有力度的接触发出指令。想让轻蹭和碰撞也带来轻微震动，就把它开启。
-
-<a id="use-it-from-another-device"></a>
 
 ## 在另一台设备上使用
 

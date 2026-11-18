@@ -158,11 +158,11 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 **Voice** 选项卡设置 Text to Speech(语音合成) 朗读这个角色时的声音。
 
-- **Voice**。这个角色用的声音。改动会立刻保存，不需要点 **Save**。它和 **Connections → Text to Speech**(连接 → 语音合成) 里这个角色那一行是同一项设置。留空则使用默认声音。如果某张名字匹配的角色卡设置了声音（比如某个 AU 副本对应的原版卡），这个字段留空时会显示那个声音，因为这张卡也会用它。
+- **Voice**。这个角色用的声音。改动会立刻保存，不需要点 **Save**。它和 **Connections**(连接) 的 **Voice** 工作设置里这个角色那一行是同一项设置。留空则使用默认声音。如果某张名字匹配的角色卡设置了声音（比如某个 AU 副本对应的原版卡），这个字段留空时会显示那个声音，因为这张卡也会用它。
 - **Preview**(试听)。用这个声音播放一句简短的台词。台词会说出角色的名字，设置了 **Phonetic name**(读音名) 的话就改用它。
 - **Phonetic name**。可选的拼写，只用来纠正发音。它属于角色卡本身，所以要点击 **Save** 才能保留。
 
-如果 Text to Speech 没有开启，或者所有角色共用一个声音，**Voice** 字段的位置会换成一段简短的说明。所有角色共用一个声音时，说明里会提供 **Use a voice per character**(为每个角色单独配声)。**Open Text to Speech settings**(打开语音合成设置) 会打开 Connections。参见 [Text to Speech (TTS) 设置](../media/tts-setup.md)。
+如果 Text to Speech 没有开启，或者所有角色共用一个声音，**Voice** 字段的位置会换成一段简短的说明。所有角色共用一个声音时，说明里会提供 **Use a voice per character**(为每个角色单独配声)。**Open Text to Speech settings**(打开语音合成设置) 会打开 **Connections** 里的 **Voice** 工作设置。参见 [Text to Speech (TTS) 设置](../media/tts-setup.md)。
 
 ## Advanced 选项卡
 
@@ -204,7 +204,7 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 ## 版本历史
 
-**Automatic versioning** 开着时，每次保存都可能往 **Metadata** 选项卡上的 **Version history** 里加一份快照。在那之前，面板上写着 `Previous card states will appear here after the next edit.` 旁边有个计数，显示已经保存了多少份快照。
+**Automatic versioning** 开着时，每次保存都可能往 **Metadata** 选项卡上的 **Version history** 里加一份快照。在那之前，面板上写着 `Previous card states will appear here after the next edit.` 旁边有个计数，显示已经保存了多少份快照。用新版角色卡更新角色时，即使这个开关关闭，也总会先保存快照。见[更新已有角色](import-export.md#update-a-character-you-already-have)。
 
 把某个已保存的版本和当前角色卡对比：
 

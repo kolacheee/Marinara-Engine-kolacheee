@@ -4,8 +4,6 @@
 
 AI 账号、角色和聊天选项都在应用里设置。要添加 AI 账号，见[连接 AI 服务商](connections/connecting-to-a-provider.md)。
 
-<a id="edit-the-env-file"></a>
-
 ## 编辑 .env 文件
 
 Marinara 首次启动时会建好一个空的 `.env`。每行写成 `KEY=value`。以 `#` 开头的行是注释。
@@ -29,8 +27,6 @@ BASIC_AUTH_PASS=correct-horse-battery-staple
 
 无论用什么方式启动，服务器都会读取 `.env`。启动脚本（`start.bat`、`start.sh`、`start-termux.sh`）还会设置 `HOST=0.0.0.0`，让其他设备能连上来，并在服务器就绪后打开浏览器。`AUTO_OPEN_BROWSER=false` 可以关掉自动打开浏览器。如果只用 `pnpm start`，除非你设置了 `HOST`，服务器只监听这台电脑。
 
-<a id="restart-or-hot-reload"></a>
-
 ## 重启还是热重载
 
 Marinara 运行期间会监视 `.env`。大部分设置几乎立即生效，无需重启。每次变更，日志里都会出现一行 `[env-watcher]`。如果监视无法启动，服务器会改为每 30 秒检查一次文件，并在日志里说明。
@@ -50,8 +46,6 @@ Marinara 运行期间会监视 `.env`。大部分设置几乎立即生效，无�
 启动脚本会在服务器启动前读取 `AUTO_UPDATE_ENABLED`，所以改动从下次启动起生效，日志不会对此发出提醒。
 
 访问控制设置和机密（`BASIC_AUTH_USER`、`BASIC_AUTH_PASS`、`IP_ALLOWLIST`、`ADMIN_SECRET`、`CSRF_TRUSTED_ORIGINS`）不需要重启。
-
-<a id="access-control"></a>
 
 ## 访问控制
 
@@ -107,8 +101,6 @@ openssl rand -hex 32
 
 Marinara 把数据保存为普通的 JSON 文件，所以备份可以直接复制和查看。每个文件夹装了什么，见[数据保存在哪里](data/where-data-is-stored.md)。
 
-<a id="logging-levels"></a>
-
 ## 日志级别
 
 `LOG_LEVEL` 决定服务器打印多少内容。低于所选级别的内容一律不显示。
@@ -125,6 +117,7 @@ Marinara 把数据保存为普通的 JSON 文件，所以备份可以直接复�
 | `LOG_LEVEL` | `warn` | 上面所说的级别。 |
 | `LOG_PRESET` | `default` | `prompt-connections` 显示的提示词和模型细节与 `debug` 相同，但会隐藏 `GET /api/chats` 这类常规请求行。 |
 | `LOG_DISABLE_REQUEST_LOGGING` | `false` | `true` 会隐藏常规请求行，同时保留你设的级别。需要重启。 |
+| `LOG_INLINE_MEDIA` | `short` | `short` 将调试输出里的图片和其他 base64 文件打印为带类型和大小的简短标记。`full` 会完整打印，每份提示词可能达到数 MB。 |
 | `LOG_FORMAT` | 自动 | `pretty` 在任何地方都打印便于阅读的行，例如要在 `docker logs` 里读 **Debug mode**(调试模式) 的提示词时。`json` 每行打印一个 JSON 对象。需要重启。 |
 
 在终端里，服务器打印便于阅读的行。在其他地方，比如 Docker 日志里，生产环境的服务器打印 JSON 行。Termux 启动脚本会要求打印便于阅读的行。浏览器端的日志是独立的，不受 `LOG_LEVEL` 控制。
@@ -193,13 +186,9 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 
 要连接本地或自建模型，见[连接本地或自托管模型](connections/local-self-hosted.md)。
 
-<a id="feature-switches"></a>
-
 ## 功能开关
 
 重试失败的服务商调用（**Settings → Advanced → Timeouts & Retries**）、固定世界书组选择（**Settings → Advanced → Lorebooks**(设置 → 高级 → 世界书)）等可选的服务器行为，都可以在 Settings(设置) 里通过开关控制。它们默认全部关闭。少数开关有对应的环境变量，设置了变量时，变量优先于开关。见[功能开关](configuration/features.md)。
-
-<a id="marinara-notices"></a>
 
 ## Marinara 通知
 
@@ -218,8 +207,6 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 为了找到通知服务器，以及开启[出站代理](#outbound-http-proxy)时的那个代理，Marinara 会读取 hosts 文件，并直接向 DNS 服务器查询。只有你的本地网络才能识别的名称都不能用，例如 `.local` 名称，以及除 `localhost` 外不带域名的单段名称。在 Termux 上，DNS 服务器就是 `$PREFIX/etc/resolv.conf` 里列出的那些：除非你修改这个文件，否则就是 Google 的 `8.8.8.8` 和 `8.8.4.4`。
-
-<a id="optional-multiplayer"></a>
 
 ## 可选多人模式
 
@@ -261,8 +248,6 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 
 每次导入都会先展示该智能体请求的能力。权限需要明确批准。打包的函数和工具选择不会导入，生成的 CSS 会经过净化，执行结果的动作也会和已批准的能力逐一核对。关掉这道开关，导入的智能体就会停止运行。在 Marinara 里创建的智能体和官方包不受影响。
 
-<a id="custom-agent-repositories"></a>
-
 ### 自定义智能体仓库
 
 仓库默认关闭，因为其中的提示词和工具未经审核。设置 `ENABLE_CUSTOM_AGENT_REPOS=true`，打开 **Allow custom Agent imports**，然后打开 **Library → Agents → Custom Sources**(资料库 → 智能体 → 自定义来源) 预览一个公开的 GitHub 仓库。添加来源和之后应用变更都需要确认。同步是手动的，Marinara 绝不会在后台克隆或轮询仓库。只接受 GitHub 仓库根地址。
@@ -292,8 +277,6 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 同步时，远程的提示词、设置和工具值会替换预览中显示的那些由仓库管理的值。你的账号和图片选择保留在本地。如果某个智能体在上游消失，它会作为普通的本地智能体保留下来，只失去仓库关联。删除来源也是一样，它提供的规则集仍保持安装。
 
 自定义智能体还可以在 Context Sources(上下文来源) 下打开 **Previous output**(上次输出)，读取自己最近一次成功的输出。使用 **JSON context output**(JSON 上下文输出) 时，返回 `{"text":"main prompt content","agent-context":"private continuation context"}`。只有 `text` 会进入主提示词。**Hide output as spoilers**(将输出折叠为剧透) 会让已保存的输出保持折叠。重新生成会排除被替换的轮次，已删除的消息和未选中的备选回复都不能提供上下文。
-
-<a id="external-extensions"></a>
 
 ### 外部扩展
 
@@ -357,8 +340,6 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 | `SEEDANCE_VIDEO_POLL_INTERVAL_MS` | `10000` | 多久查询一次 Seedance 任务。 |
 | `VIDEO_REFERENCE_PUBLIC_BASE_URL` | 空 | 本服务器的公网 HTTPS 地址，供必须按 URL 拉取参考图的服务使用。 |
 
-<a id="lorebooks"></a>
-
 ### 世界书
 
 两项设置默认关闭，在 `.env` 变更后的下一次生成生效。设置了 `LOREBOOK_STABLE_GROUP_WINNERS` 时，它优先于 **Settings → Advanced → Lorebooks** 中的 **Stable lorebook picks**(固定世界书选择) 开关。否则由开关决定。见[功能开关](configuration/features.md)。
@@ -369,8 +350,6 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | 只在最新的助手或旁白消息上保存激活条目的完整文本。旧消息保留条目 ID、关键词和评分。这能让带大型世界书的聊天小得多。如果删除了较新的消息，Active Context 和智能体重试会为再次成为最新的那条消息显示条目当前的文本。 |
 
 `scripts/compact-lorebook-scans.mjs` 会把同样的规则应用到较早的聊天。先停止服务器。不传入 `--apply` 时它只是试运行，写入前会备份两个消息表。
-
-<a id="robustness"></a>
 
 ### 稳健性
 
@@ -402,8 +381,6 @@ Fork 可以让 `MARINARA_NOTICES_URL` 指向自己的文件。
 | `SIDECAR_RUNTIME_INSTALL_ENABLED` | `false`(Windows 启动脚本会设为 `true`) | 允许 **Built-in model**(内置模型) 运行时在环回访问下不带管理员请求头安装。 |
 
 **Built-in model** 的用法见[内置模型设置](connections/local-model.md)。
-
-<a id="outbound-http-proxy"></a>
 
 ### 出站 HTTP 代理
 

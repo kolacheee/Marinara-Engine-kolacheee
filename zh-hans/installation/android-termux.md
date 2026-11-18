@@ -70,7 +70,7 @@ cd Marinara-Engine
 
 ## 更新 Marinara
 
-每次运行 `./start-termux.sh`，启动脚本都会去 GitHub 查有没有新版本，有就先更新再启动。想不更新直接启动，就加上 `--skip-update`。更多选项和 APK 的更新步骤见[升级 Marinara Engine](../UPGRADING.md#android-termux)。
+每次运行 `./start-termux.sh`，启动脚本都会去 GitHub 查有没有新版本，有就先更新再启动。想不更新直接启动，就加上 `--skip-update`。使用测试分支时，例如 UI 改版的试玩分支，启动脚本会跟随 GitHub 上的该分支。如果远端分支被重写，只要你没有自己的提交，本地副本就会自动跟上新版。更多选项和 APK 的更新步骤见[升级 Marinara Engine](../UPGRADING.md#android-termux)。
 
 更新时，启动脚本还会从本地 pnpm 缓存里清掉没用到的包，免得旧版本越堆越多、占掉好几个 GB 的存储空间。这个清理不会碰你的聊天和设置。
 

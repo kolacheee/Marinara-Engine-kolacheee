@@ -67,9 +67,22 @@ Token 是模型用来计数的文本小片段，在英文中大约相当于四�
 
 开关下方的 **Semantic search (embeddings)**(语义搜索与嵌入) 面板在[世界书的语义搜索](semantic-search.md)里介绍。
 
+## 给世界书添加图片
+
+图片会显示在 **Lorebooks** 页面（表格和图库图块）以及世界书选择器里。
+
+1. 打开世界书，点击 **Book settings**(世界书设置)。**Picture**(图片) 位于 **Enabled** 旁边。
+2. 点击 **Upload**(上传)（或 **Replace**(替换)）选择文件，或者点击 **Generate with AI**(用 AI 生成)，通过图像生成连接制作封面。配置好图像生成连接后，才会显示 **Generate with AI**。
+3. 点击 **Adjust crop**(调整裁剪)（或小图片）。拖动图片上的方框来选择显示范围，拖动四角可调整大小。
+4. 点击 **Save**(保存)。
+
+新图片默认不裁剪。要移除图片，打开 **Adjust crop**，点击 **Remove**(移除)。
+
+在经典布局里，图片位于世界书 **Overview** 选项卡顶部的 **Image**(图片) 区域，按钮相同。
+
 ## Lorebooks 页面
 
-打开 **Library → Lorebooks**(资料库 → 世界书)。顶部有 **Import**(导入)（见[导入和导出世界书](import-export.md)）和 **New lorebook**(新建世界书)。下方还有：
+打开 **Library → Lorebooks**(资料库 → 世界书)。顶部有 **Browse online**(在线浏览)（可从 Chub 下载的世界书，见[导入和导出世界书](import-export.md#download-a-lorebook-from-chub)）、**Import**(导入)（见[导入和导出世界书](import-export.md)）和 **New lorebook**(新建世界书)。下方还有：
 
 - **All kinds**(所有类型) 可以把列表限定为 **Global**(全局)、**World**(世界)、**Character**(角色)、**NPC** 或 **Spellbook**(法术书) 世界书。
 - **List**(列表) 和 **Gallery**(图库) 用来在表格和图片卡片之间切换。
@@ -86,7 +99,9 @@ Token 是模型用来计数的文本小片段，在英文中大约相当于四�
 
 ## 经典布局中的 Lorebooks 面板
 
-经典面板以列表形式显示相同的文件夹和排序。面板顶部有三个图标按钮，鼠标悬停时会显示名称。
+经典面板以列表形式显示相同的文件夹和排序。面板顶部的 **Download**(下载) 会打开 Card Browser，显示可下载的世界书；**Open Library**(打开资料库) 会打开 Lorebook Library(世界书库)，在整页中显示世界书的图片、描述和条目数量。在那里点击一本世界书可以放大查看；**Edit Lorebook**(编辑世界书) 打开编辑器，**Active**(启用) 则为所有聊天开启或关闭这本世界书。
+
+它们下方有三个图标按钮，鼠标悬停时会显示名称。
 
 - **New** 打开 **Create Lorebook** 窗口。
 - **Import**(导入) 打开 **Import Lorebook**(导入世界书) 窗口。见[导入与导出世界书](import-export.md)。
@@ -96,7 +111,7 @@ Token 是模型用来计数的文本小片段，在英文中大约相当于四�
 
 - **Search lorebooks**(搜索世界书) 按名称、描述、关联的角色或用户角色名称以及标签筛选。这里也支持 `tag:name`。
 - 搜索框旁的 **Tags**(标签) 只显示带有全部所选标签的世界书，也可以选 **Untagged**(无标签)。见[标签](../characters/library-organization.md#tags)。
-- **Sort order**(排序方式) 提供 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest**、**Oldest** 和 **Token Budget**。选 **Manual order** 时，把世界书拖到想要的位置，或者用 <kbd>Alt</kbd>+<kbd>Up</kbd> 和 <kbd>Alt</kbd>+<kbd>Down</kbd>。
+- **Sort order**(排序方式) 提供 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest**、**Oldest**、**Most tokens**(Token 最多) 和 **Fewest tokens**(Token 最少)。按大小排序使用的是世界书所有条目的估算总量，包含已禁用的条目，每一行也会显示这个数值。选 **Manual order** 时，把世界书拖到想要的位置，或者用 <kbd>Alt</kbd>+<kbd>Up</kbd> 和 <kbd>Alt</kbd>+<kbd>Down</kbd>。
 - **New Folder**(新建文件夹) 会建立一个库文件夹。把世界书拖到上面即可。在手机上，按住世界书，再拖动。这些文件夹和世界书内部的条目文件夹是两回事。
 
 每一行都有 **Copy**(复制，复制出这本世界书的副本) 和 **Delete**(删除) 按钮。鼠标悬停在该行时它们才出现，在手机上则一直可见。已关闭的世界书会显示 **OFF** 标记。点击图片可以上传或替换图片。

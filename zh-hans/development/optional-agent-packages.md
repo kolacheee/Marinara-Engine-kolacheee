@@ -71,13 +71,14 @@ globalThis.__MARINARA_HOST__ = {
 | `modules` | 库模块，以裸模块说明符为键（见下文）。 |
 | `queryClient` | Engine 渲染时使用的那一个 React Query `QueryClient`。 |
 | `components.Modal` | Engine 的 `Modal`，带有它的覆盖层顺序、Escape 键和返回键处理。 |
+| `components.Switch`, `components.Checkbox` | 从 Capability API 1.830 起，Engine 的共享开关和复选框，让包与宿主的外观保持一致。 |
+| `components.Spinner` | 从 Capability API 1.830 起，Engine 的共享加载圆环。默认对屏幕阅读器隐藏；传入 `label` 后，它会成为状态区域。 |
+| `components.showConfirmDialog` | 从 Capability API 1.830 起，Engine 的确认弹窗，与 `services.dialogs.showConfirmDialog` 是同一个函数。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 模块。 |
 | `api` | `lib/api-client.ts` 模块（`api`、`ApiError`、`getApiErrorMessage` 等）。 |
 
 包只有先检查过某个成员，才会读取它，例如 `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`。
-
 下载图片时，使用 `shouldUseIosImageShare()` 遵循图库的平台策略。在 iPhone 上，先在用户执行保存手势之前用 `prepareImageSave(url, filename)` 准备图片，再从该手势直接调用 `savePreparedImageToDevice(prepared)`。取消分享时不会显示错误；分享失败也不会改用 WebKit 下载预览。其他平台使用 `downloadUrlToDevice`。即使 Engine 服务器在 Docker 中运行，这些函数也会把图片保存到客户端设备。
-
 命名空间只增不减：新成员会随一个 Capability API 次版本号一起加入，需要它的包就要求这个次版本号。为命名空间构建的包要求引入它的那个 Capability API 版本，所以旧版 Engine 永远不会安装它们，而是保留已有的版本。如果某个成员仍然缺失，包也绝不会回退到自己打包的有状态 Engine 服务副本：`ui` 和 `chat` store 会变成从不写入的只读副本，其他所有成员则提示该功能需要更新版本的 Marinara Engine。
 
 **宿主模块。** `modules[specifier]` 是完整的模块命名空间，库有 `default` 时也包括它。客户端契约中的 `MARINARA_HOST_MODULE_IMPORTS` 把每个公开槽位映射到它导入的依赖。大多数槽位映射到同名依赖。稳定的 `framer-motion` 槽位映射到 `framer-motion-v13`（精确指定 Motion 13.5.1 的 npm 别名），可选的 `motion/react` 槽位则映射到 Engine 的主要依赖 `framer-motion` 14。包工具在导出清单和 TypeScript 路径中都使用这个映射；公开槽位名称不一定是实际依赖的名称。这些说明符是 `react`、`react/jsx-runtime`、`react-dom`、`react-dom/client`、`@tanstack/react-query`、`zustand`、`zustand/middleware`、`sonner`、`zod`、`i18next`、`react-i18next`、`framer-motion`、`motion/react`、`tailwind-merge` 和 `clsx`。包构建会把这些说明符解析为读取命名空间的垫片（shim），所以包用 Engine 唯一的那份 React 渲染，并共享它的 React Query 缓存和 toast 提示。
@@ -1433,7 +1434,6 @@ Engine 用 `view="widget"` 挂载包的客户端元素。除常见的 `packageId
 ### 包音频
 
 从 Capability API **1.381** 起，`__MARINARA_HOST__.services.audio` 提供由 Engine 管理的播放和素材选择。在包清单中声明该次版本，并随包一同更新 Engine。语音仍使用 `services.tts`，音乐和音效使用 `services.audio`。从 1.381 起，`services.tts.ttsService.speakSequence(requests, id?, options?)` 接受 `options.audioConnectionId`，将选中的语音连接应用到每个片段，同时保留各请求的声音。不设置时使用常规默认值；传入 `""` 可明确使用旧 TTS 设置。
-
 未知、已删除、被隔离或不属于语音的 `audioConnectionId` 会被忽略，并执行正常的语音解析：先使用已保存的语音选择，再尝试默认/回退连接，最后使用旧设置。如果已保存的语音选择本身不可用，就会拒绝播放，而不会借用另一个连接。要求使用特定连接的包应在播放前验证保存的 ID。
 
 - `createPlayer()` 返回独立的播放器，具有 `unlock()`、`playMusic(tag, assets?)`、`stopMusic(immediate?)`、`playSfx(tag, assets?, loopCount?)`、`setVolumes({ music, sfx })`、`setMuted(boolean)` 和 `dispose()`。音量范围是 0 到 1。`assets` 是以标签为键的记录，条目格式为 `{ path: string, url?: string }`；路径使用现有的 Game 素材服务器，`url` 则可指向包自己的素材。播放复用 Engine 的交叉淡化、自动播放重试和音效池。开始播放音频时，在用户操作中直接调用 `unlock()`；浏览器的自动播放规则仍然适用。
@@ -1447,7 +1447,7 @@ Engine 用 `view="widget"` 挂载包的客户端元素。除常见的 `packageId
 
 如果服务端包把 Engine 服务的副本打进自己的包里，就会运行第二个实例，并维护独立的状态：独立的 Intiface 连接、连接准入、聊天元数据队列和服务注册表。Capability API 1.341 新增了能直接使用 Engine 当前运行实例的 `api.runtime` 成员，还允许服务端包直接使用 Engine 的一些库，不必自行打包。所有新成员在 `CapabilityRuntimeHost` 中都是可选的，使用前要检查是否存在。
 
-- `runtime.services.get(key)` 返回某个包通过 `api.registerService` 注册的服务；服务不存在或共享房间正在生成时，返回 `null`。它读取 Engine 自己的注册表，因此每个包都能看到同一个服务。`agent-runtime:` 和 `mari-actions:` 键始终返回 `null`；这些键只有 Engine 自己读取。以 `hostOnly` 注册的服务（Capability API 1.388）也会对所有包返回 `null`，包括注册它的包。
+- `runtime.services.get(key)` 返回某个包通过 `api.registerService` 注册的服务；服务不存在或共享房间正在生成时，返回 `null`。它读取 Engine 自己的注册表，因此每个包都能看到同一个服务。`agent-runtime:` 和 `mari-actions:` 键始终返回 `null`；这些键只有 Engine 自己读取。以 `hostOnly` 注册的服务（Capability API 1.388）也会对所有包返回 null，包括注册它的包。
 - `runtime.commands.parse(content)`、`strip(content)` 和 `instructions()` 使用 Engine 的语法和所有包注册的标签读取 Conversation 命令。
 - `runtime.logger.isLevelEnabled(level)` 表示 Engine 的日志器当前是否会记录该级别。
 - `runtime.persistence.patchChatMetadata(chatId, patch, { touchUpdatedAt })` 使用 Engine 的队列修补元数据，每个聊天只有一个队列，与 Engine 自己的写入方共享，并保留共享房间保护和写入序号。补丁中的键会替换对应的键，其他键全部保留。`patch` 也可以是接收当前元数据的函数。在同一聊天的 `withChatLock` 内调用时，会在该锁内执行。与 `updateChatMetadata` 一样，它会拒绝新增对 Global Gallery 中已不存在图片的引用。

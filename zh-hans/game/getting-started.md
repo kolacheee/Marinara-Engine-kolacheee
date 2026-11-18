@@ -58,8 +58,9 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 | Tone | Heroic | 可多选。 |
 | Difficulty | Normal | **Casual**、**Normal**、**Hard** 或 **Brutal**。设置越高，战斗越难：MRPG 游戏会出现更多、更强的敌人（见 [MRPG 游戏中的战斗](combat.md#battles-in-an-mrpg-game)），Legacy 游戏中的敌人则会打得更重（见[难度缩放](combat.md#difficulty-scaling)）。 |
 | 内容分级（性内容） | SFW | **SFW** 或 **NSFW**。它只决定性内容。NSFW 允许露骨场景，不会强制出现。 |
-| 故事风格 | 标准 | **Standard**(标准) 或 **Gentle**(温和)。见[内容与故事风格](#content-and-story-style)。 |
-| 暴力程度 | 严重（NSFW 下为血腥） | **Mild**(轻度)、**Serious**(严重) 或 **Graphic**(血腥)。 |
+| 故事风格 | 标准 | **Gentle**(温和) 让 GM 带来压力较低的体验。见[故事风格、暴力程度与内容边界](#story-style-violence-and-content-boundaries)。 |
+| 暴力程度 | 严重（SFW）或血腥（NSFW） | **Mild**(轻度)、**Serious**(严重) 或 **Graphic**(血腥)。与内容分级独立设置。 |
+| 内容边界 | 无 | GM 会从故事中排除的主题。 |
 | Language | English | 游戏内所有文字都用这个语言书写。 |
 | Game Master Mode | Standalone GM | **Character GM** 用你的某张角色卡当 GM。 |
 | Scene effects model | Built-in model | 下载之后才是。在那之前，默认是 **Skip - use inline tags from GM**。 |
@@ -71,25 +72,46 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 | Start Muted | Off | 开局时所有音频静音。 |
 | Game Presentation | Standard | 见下文。 |
 
-### 内容与故事风格
+### 故事风格、暴力程度与内容边界
 
-**World** 步骤提供以下设置，用来决定故事可以包含什么。游戏开始后，它们都位于 **Chat Settings → Prompt Preset**(聊天设置 → 提示词预设)。
+**World** 步骤有四项设置，决定故事可以包含什么，以及带来多大冲击。它们集中在 **Content Rating (sexual content)**(内容分级（性内容）) 下。游戏开始后，除内容分级之外都能修改。见[游戏中修改这些设置](#change-them-during-a-game)。
 
-- **Content Rating (sexual content)**(内容分级（性内容）)：**SFW** 保留浪漫和亲昵，性爱场景则淡出略过。**NSFW** 允许明确描写这些场景。它不决定暴力程度或基调。
-- 分级下方的 **Edit rating guidelines**(编辑分级准则) 显示发送给游戏主持人的游戏内容规则。可以按游戏需要修改；**Reset to default**(重置为默认值) 恢复该分级的默认准则。不改动文字就会跟随默认值，后续改进也会应用到游戏中。游戏开始后，这项设置叫 **Rating guidelines**(分级准则)。
-- **Story style**(故事风格)：**Standard** 保持紧张感，失误和坏运气会带来切实后果。**Gentle** 适合压力较低的故事：挫折不会演变成惩罚或创伤，减少为角色无法控制的事情掷骰，并留出安慰和恢复的空间。
-- **Violence**(暴力程度)：**Mild**、**Serious** 或 **Graphic**，与内容分级独立。没有主动选择时，SFW 默认为 **Serious**，NSFW 默认为 **Graphic**。
-- **Content boundaries**(内容边界)：要求游戏主持人排除的主题，每行一个，例如 `harm to animals`。无论采用什么风格或分级，这些都是硬性限制，自定义分级准则也无法取消。由于故事由 AI 编写，无法保证列出的主题绝不会出现。
+| 设置项 | 决定的内容 |
+| --- | --- |
+| **Content Rating (sexual content)** | **SFW**：保留浪漫和亲昵，性爱场景淡出略过。**NSFW**：允许明确描写性爱场景。它不决定其他内容。 |
+| **Story style**(故事风格) | **Standard**(标准)：失误和坏运气会带来切实后果。**Gentle**：有真正的挑战，但挫折不会升级为惩罚或创伤。 |
+| **Violence**(暴力程度) | **Mild**、**Serious** 或 **Graphic**：决定如何描写暴力。SFW 初始为 **Serious**，NSFW 初始为 **Graphic**，这也是两个分级一直以来的含义。 |
+| **Content boundaries**(内容边界) | 绝不想在故事中出现的主题，每行一个，例如 `harm to animals`。 |
 
-提示词预设也可以携带这些设置：在预设的 **Prompts**(提示词) 选项卡中，找到 **Game story settings**(游戏故事设置)，开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)。其中的暴力程度还可以选 **Follow rating**(遵循分级)。为游戏选用该预设后，会设置其故事风格和暴力程度，并将预设的内容边界加入游戏自身的边界。从游戏开启的场景会遵循游戏的分级、准则、暴力程度、风格和边界。
+#### Gentle 故事风格
 
-<a id="choose-rules"></a>
+想享受故事和角色，又不想让 GM 惩罚每个小失误，就选择 **Gentle**。采用 **Gentle** 时：
+
+- 挫折的代价是时间、面子、资源或绕路。GM 不会因此让角色受伤、受辱、失去在意的人，或遭受你没有主动引向的创伤。
+- 只有角色自身的技能或选择会影响结果时，GM 才要求技能检定。它绝不会针对角色无法控制的事情掷骰，例如残障、身体状况、身体或背景。见[温和游戏中的技能检定](dice-and-skill-checks.md#skill-checks-in-a-gentle-game)。
+- 世界的规划带着暖意：故事线既源于伤痛，也源于希望和关系；转折带来惊喜，而不是背叛。
+
+**Gentle** 只替换内置 GM 指令。如果写了自己的 **GM Prompt**，GM 会保留你的文本。两种风格中的战斗、伤害和难度设置都照常运作。
+
+#### 内容边界
+
+每行写一个主题，最多 40 个主题，总计 2,000 个字符。超出任一上限的内容都会被忽略。GM 把每项都视为硬性限制，优先于分级、基调、任何角色的性格和情节。它不会提起这些主题，不会拿来作为威胁、转折或背景故事，也不会暗示。如果你主动提起，GM 会简短带过。两种故事风格和两个分级都遵守边界，自定义分级准则也无法取消它们。
+
+> **注意：** 故事由 AI 模型编写，因此 Marinara 无法保证列出的主题绝不会出现。如果出现了，切换备选回复或编辑回复。
+
+#### 编辑分级准则
+
+在分级按钮下展开 **Edit rating guidelines**(编辑分级准则)，即可看到针对所选分级、暴力程度和故事风格发送给 GM 的文本。编辑它，为这局游戏制定自己的内容规则；或点击 **Reset to default**(重置为默认值)，恢复内置文本。只要不改动文本，它就会跟随所选的分级、暴力程度和风格。
+
+#### 游戏中修改这些设置
+
+打开 **Chat Settings → Prompt Preset**(聊天设置 → 提示词预设)。在游戏中，这个分区还包含 **Story style**、**Violence**、**Content boundaries** 和 **Rating guidelines**(分级准则)。改动从下一回合起生效。内容分级本身在游戏创建后就固定了。
+
+提示词预设也能携带故事风格、暴力程度和边界，方便在每局游戏中复用。见[游戏故事设置](../prompts/presets.md#game-story-settings)。
 
 ### 选择规则
 
 **Rules** 只在新游戏中、且至少安装了一个规则集时出现。默认选项是 **Marinara's own rules**(Marinara 自身规则)：内置的 d20 检定和六属性人物卡。规则集（例如 **5e (SRD 5.1)**）会用桌面系统自身的检定和人物卡替换它们，也可能按自身规则进行战斗。向导会显示每个规则集涵盖的内容。游戏创建后，这个选择就固定了。见[使用规则集游玩](rulesets.md)。
-
-<a id="the-gm-intro-message"></a>
 
 ### GM 开场消息
 
@@ -123,8 +145,6 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 
 当前生效的模式会在菜单里显示 **On**。再点一次同一个菜单项就能关掉它。
 
-<a id="the-games-controls"></a>
-
 ## 游戏控件
 
 在电脑上，控件从聊天右上角附近的按钮打开。在手机上，它们在可移动的 **Chat tools**(聊天工具) 三点菜单里。
@@ -142,8 +162,6 @@ Game Mode 是三种聊天模式之一（Conversation(对话模式)、Roleplay(�
 也可以把某个控件留在 **Chat Settings** 里。打开控件的窗口，选择 **Put back in Chat Settings**(放回聊天设置)。它会作为可展开区域出现在那里，用它的弹出按钮可以再变回窗口。每局游戏都会保存你的选择。**Reset View**(重置视图) 会恢复初始布局。
 
 **Character Profiles**(角色资料) 在电脑和手机上都留在 Chat tools 之外。把它的头像按钮拖到你想要的位置，然后打开它，选择一位队伍成员，查看或编辑其人物卡。在手机上，**Map**(地图) 也有自己的可移动按钮。两者都跟随你的聊天小组件样式，为这局游戏保存位置，并且可以在打开的窗口里锁定。
-
-<a id="choosing-a-model"></a>
 
 ## 怎么选模型
 
@@ -163,8 +181,6 @@ Game Mode 会发起三种 AI 请求：
 1. **世界生成。** 点击 **Start Game** 时只跑一次。这是一次大请求，返回世界总览、初始地图、NPC、队伍人物卡和小组件。
 2. **游戏回合。** 每条消息都会带上当前状态重新组一份提示词。GM 负责叙述并更新世界。战斗回合的数值由引擎而不是模型计算，所以结果保持公平。
 3. **会话摘要。** 结束一个会话时，GM 会写一份回顾和连贯性备注。开始下一个会话时，它会写一小段承接消息。更早的会话会被压缩成摘要，这样长战役也能装进模型。
-
-<a id="optional-tool-planning-and-lore-searches"></a>
 
 ## 可选的工具规划与世界设定搜索
 
@@ -189,8 +205,6 @@ Claude 和 Grok 订阅账号不支持原生工具调用。相关控件会说明�
 
 ## 故障排查
 
-<a id="world-generation-fails-with-a-json-or-422-error"></a>
-
 ### 世界生成报 JSON 错误或 422 错误
 
 最可能的原因是模型没能产出完整的 JSON。按顺序试试下面几步。
@@ -203,7 +217,15 @@ Claude 和 Grok 订阅账号不支持原生工具调用。相关控件会说明�
 
 ### 明明选了黑暗基调，GM 却讲得很欢快
 
-有些模型总是保持乐观。在向导的偏好栏里写一条明确的指令，比如“叙述保持阴郁，失败不要美化”。或者换一个默认口吻贴合这个基调的模型。
+检查游戏的 **Story style** 是否为 **Standard**：**Gentle** 本来就会减轻挫折（见 [Gentle 故事风格](#the-gentle-story-style)）。有些模型总是保持乐观。在向导的偏好栏里写一条明确的指令，比如“叙述保持阴郁，失败不要美化”。或者换一个默认口吻贴合这个基调的模型。
+
+### 模型拒绝一个回合
+
+模型拒绝撰写回合时，会弹出 **The model declined this request**。有些模型会因游戏分级准则、预设或角色卡中的某些措辞而拒绝。依次尝试：
+
+1. 重试这个回合。有些拒绝只发生一次。
+2. 如果编辑过分级准则，打开 **Chat Settings → Prompt Preset**，将 **Rating guidelines** 重置为内置文本。
+3. 为这局游戏换一个模型。
 
 ## 各个专题在哪
 
@@ -222,8 +244,6 @@ Claude 和 Grok 订阅账号不支持原生工具调用。相关控件会说明�
 
 下面几节介绍 **Overworld** 游戏，它目前还不可用。只有你的服务器开启了它时才需要看。
 
-<a id="vn-or-overworld"></a>
-
 ### VN 还是 Overworld
 
 新游戏以两种玩法之一进行，在第一步选定，并在这局游戏的所有会话中保持不变：
@@ -232,8 +252,6 @@ Claude 和 Grok 订阅账号不支持原生工具调用。相关控件会说明�
 - **VN** 是 Game Mode 一直以来的玩法，像视觉小说一样讲述故事：一个场景接一个场景地进行，有场景地图和战斗，没有设定包、世界、大地图、城镇或地下城地图。
 
 除非服务器所有者设置了 `MARINARA_OVERWORLD_GAMES`，否则 Overworld 处于锁定状态。锁定时，它的卡片是灰色的，并附有说明“Overworld games, with a setting kit and a generated world, are not ready yet. New games start as VN games.”这时每个新游戏都是 VN 游戏，设定包和世界选项也不会出现。在有这个选项之前创建的游戏会照原样继续：有世界的是 Overworld 游戏，没有世界的是 VN 游戏。
-
-<a id="choosing-a-setting-kit"></a>
 
 ### 选择设定包
 
@@ -247,8 +265,6 @@ Claude 和 Grok 订阅账号不支持原生工具调用。相关控件会说明�
 - **Download this kit**(下载这个设定包) 会保存一个 `.worldkit.json` 文件以便分享。**Import a kit file**(导入设定包文件) 则把文件读回来。
 
 游戏会保留创建时的设定包，共享的设置文件也带着它。Experience 可以自带地图包（一个设定包、现成的地图和图块）。开启那个 Experience 后，设置界面会把它的设定包显示为已设定；如果它带有地图，还会提供可供挑选的 **Map**。关闭这个 Experience，你自己的选择就会回来。
-
-<a id="making-a-world"></a>
 
 ### 创建世界
 

@@ -25,7 +25,7 @@
 - **Chat Name**(聊天名称)：聊天列表里显示的名字。点击即可改名。它永远不会发给模型。
 - **Chat Branches**(聊天分支)：切换、改名、导出和导入分支。见[聊天分支](branches.md)。
 - **Connection**(连接)：这个聊天由哪个模型回复。见下文。
-- **Prompt Preset**(提示词预设)：这个聊天保存的提示词结构。
+- **Prompt Preset**(提示词预设)：这个聊天保存的提示词结构。在游戏中，这里还包含故事风格、暴力程度、内容边界和分级准则。见[游戏中修改这些设置](../game/getting-started.md#change-them-during-a-game)。
 - **Advanced Parameters**(高级参数)：为这个聊天覆盖温度之类的生成设置。见[生成参数](../prompts/generation-parameters.md)。
 - **Persona**(用户角色)：你扮演谁。见[在聊天里选择用户角色](../characters/choosing-your-persona.md)。（Conversation 和 Roleplay）
 - **Characters**(角色)：聊天里的角色。（Conversation 和 Roleplay）
@@ -78,8 +78,6 @@ Conversation 聊天还有 Autonomous Messaging(自主消息，角色会先给你
 
 变量很多时，点击 **Search and edit all in the State Editor**(在 State Editor 中搜索并编辑全部)。它会列出所有变量，你可以搜索、编辑、以 JSON 一次粘贴许多变量，并在保存前查看改动。见 [State Editor](../roleplay/hud-and-trackers.md#the-state-editor)。其他双大括号宏见[提示词宏](../prompts/macros.md)。
 
-<a id="settings-profiles"></a>
-
 ## 设置方案
 
 设置方案就是一组保存下来的聊天设置，可以套用到别的聊天上。方案栏位于面板最上方，Game 中不显示。保存、套用、导入、导出和指定默认方案，见[设置方案](settings-profiles.md)。
@@ -107,8 +105,6 @@ Conversation 聊天还有 Autonomous Messaging(自主消息，角色会先给你
 
 Tracker Panel 没有显示时，电脑上的追踪器改用 [Trackers 窗口](../roleplay/hud-and-trackers.md#the-trackers-window)。消息旁空间不足时，它最初会显示为一个小小的 **Trackers**(追踪器) 按钮。用骰子按钮可以重新显示 Tracker Panel。
 
-<a id="popping-a-section-out-into-its-own-window"></a>
-
 ## 把区域弹出为独立窗口
 
 把一个区域弹出，就能让它拥有自己的窗口。
@@ -121,15 +117,11 @@ Tracker Panel 没有显示时，电脑上的追踪器改用 [Trackers 窗口](..
 
 手机上，弹出区域会关闭 Chat Settings，并把它加入三点 **Chat tools**(聊天工具) 菜单。先点击三点按钮，再点击该区域的圆形图标。点击 **Put back in Chat Settings** 可以把它放回。
 
-<a id="the-phones-chat-tools-menu"></a>
-
 ## 手机上的 Chat tools 菜单
 
 可移动的三点按钮收纳着你从 Chat Settings 移出的工具。点击它会展开一列圆形图标按钮，再点击某个工具即可打开。再次点击三点按钮就会收起。追踪器按钮、Game 的 Map(地图) 按钮和 Character Profiles(角色资料) 仍单独显示。
 
 拖动三点按钮可以移动整个菜单。打开菜单后，用顶部的锁可以把它固定在原位。未锁定时，上下拖动工具即可调整顺序，也可以让它获得焦点后按方向键。锁定后既不能移动，也不能调整顺序。菜单会沿用你的聊天组件样式。
-
-<a id="control-windows-and-their-buttons"></a>
 
 ## 控制窗口及其按钮
 
@@ -144,8 +136,6 @@ Tracker Panel 没有显示时，电脑上的追踪器改用 [Trackers 窗口](..
 ## 每个聊天单独保存窗口布局
 
 每个聊天都会记住窗口大小和位置、固定与锁定状态、弹出的区域以及按钮位置。手机上的位置，以及 Chat tools 菜单的顺序和锁定状态，与电脑上的位置分开保存。[设置方案](settings-profiles.md)可以保存布局，供其他聊天使用。
-
-<a id="choosing-a-layout-for-new-chats"></a>
 
 ## 为新聊天选择布局
 

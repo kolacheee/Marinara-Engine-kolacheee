@@ -38,8 +38,6 @@ Marinara 有两个固定区域，无论使用什么主题，它们的位置都�
 
 在经典布局中（在 **Settings → Appearance → Theme → New layout**(设置 → 外观 → 主题 → 新布局) 下关闭新布局），主页看起来像网页浏览器，有标签页、搜索栏，以及 **Discord**、**Support**(支持)、**Credits**(致谢)、**Documentation**(文档)、**Tutorial**(教程)、**FAQ**(常见问题)、**Achievements**(成就) 和 **Widgets** 书签。
 
-<a id="choose-a-chat-mode"></a>
-
 ## 选择聊天模式
 
 新建聊天时选择一种模式。
@@ -47,8 +45,6 @@ Marinara 有两个固定区域，无论使用什么主题，它们的位置都�
 - **Conversation**：普通的 AI 聊天，界面像即时通讯软件。见 [Conversation 模式：入门](../conversation/getting-started.md)。
 - **Roleplay**：和一个或多个角色一起展开的故事。应用会追踪场景，比如地点和时间。见 [Roleplay 模式：入门](../roleplay/getting-started.md)。
 - **Game**：单人游戏。AI 担任讲故事的游戏主持人（Game Master）。你会有一队同伴（队伍）、掷骰、地图和任务。见 [Game Mode：入门](../game/getting-started.md)。
-
-<a id="home-widgets"></a>
 
 ## 主页小组件
 
@@ -68,7 +64,7 @@ Marinara 有两个固定区域，无论使用什么主题，它们的位置都�
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari**(问问 Professor Mari) 会打开她的聊天。 | 是 |
 | **Recent chats**(最近聊天) | 你最近的聊天。点击某个聊天即可重新打开。为空时显示 **Your chats will show here**(你的聊天会显示在这里)。 | 是 |
-| **Learn the engine**(了解引擎) | 链接到 **Documentation**、**Replay tutorial**(重看教程) 和 **Read FAQ**(查看常见问题)。 | 是 |
+| **Things to try**(试试这些) | 接下来可以尝试的三个小任务，每个介绍一项功能。全部试过或关闭提示后，改为显示 **Documentation**、**Replay tutorial**(重看教程) 和 **Read FAQ**(查看常见问题)。见[试试这些](#things-to-try)。 | 是 |
 | **What's New**(新功能) | **See what's new**(查看新功能) 和 **Read release notes**(查看发行说明)。 | 是 |
 | **Community**(社区) | 链接到 **Discord**、**Support** 和 **Credits**。 | 是 |
 | **Character Library**(角色库) | 每天从你的角色里挑选一批新的展示。 | 否 |
@@ -76,6 +72,18 @@ Marinara 有两个固定区域，无论使用什么主题，它们的位置都�
 | **Character of the Day**(今日角色) | 从你的角色库里选出的一个角色，带有 **Start a chat**(开始聊天) 和 **View character**(查看角色)。 | 否 |
 | **Clock & calendar**(时钟与日历) | 今天的日期和时间。 | 否 |
 | **Achievements** | 你最近获得的成就和最接近完成的成就。需要开启成就设置。 | 否 |
+
+## 试试这些
+
+**Things to try** 小组件会推荐接下来可以尝试的三项功能。任务前后衔接：先把图库图片变成贴纸，再把贴纸发到聊天里。
+
+- 点击任务，打开应用中对应的位置。没有对应位置的任务会打开指南。
+- 点击勾号标记完成，或点击叉号跳过。跳过的任务不会再出现。
+- 大多数任务会在 Marinara 检测到完成时自动勾选，例如已有对应模式的聊天，或已经设置贴纸标签。其余任务手动勾选。
+- **See all**(查看全部) 按路线列出所有任务，并提供 **Show me**(带我看看)。前置任务完成后，才会显示路线中的后续任务。**Only in this layout**(仅限此布局) 下的路线介绍新布局的功能。
+- 完成一条路线，即可解锁对应的 **Explorer**(探索者) 成就。
+
+小组件遵循 **Settings > General > Confirmations & Help**(设置 > 常规 > 确认与帮助) 中的 **Feature tips**(功能提示) 设置。关闭提示时，显示指南链接。进度保存在这个浏览器里。
 
 ### AI 入门与深入探索
 
@@ -89,7 +97,7 @@ Marinara 有两个固定区域，无论使用什么主题，它们的位置都�
 ## 到哪里求助
 
 - 在主页上问 Professor Mari。
-- 点击 **Learn the engine**(了解引擎) 小组件里的 **Read FAQ**(查看常见问题)，查看速查答案。
+- 打开 **Things to try** 小组件里的 **See all**，再打开 **Read FAQ**，查看速查答案。
 - 点击顶栏里的 **Docs**，阅读应用内指南。
 - 点击 **Community**(社区) 小组件里的 **Discord** 进入社区，或者点击 **Support** 支持这个项目。
 

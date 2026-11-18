@@ -15,7 +15,7 @@
 
 ### Send on Enter
 
-它在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 里。每种聊天模式各有一个开关。
+它在 **Settings → Chatting → Message Box**(设置 → 聊天中 → 消息输入框) 里。每种聊天模式各有一个开关，保存在设置它的设备上，所以手机和电脑可以不同。
 
 | 聊天模式 | 默认 | 关闭时 |
 | --- | --- | --- |

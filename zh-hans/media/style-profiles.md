@@ -119,6 +119,12 @@ Marinara 会从三个地方挑选风格方案，越具体的选择优先级越�
 
 **Local image defaults** 部分只对 AUTOMATIC1111 / SD Web UI、ComfyUI 和 NovelAI 出现。其余服务一律回落到全局 **Default style**。要给单个模型指定风格方案，打开该图像模型，展开 **Local image defaults**，在风格方案列表里选一个方案。保持 **Use global default** 就是跟随全局选择。当 Marinara 能从模型名猜出合适的方案时，会显示一个“Use ...”按钮，点一下即可套用。
 
+## Professor Mari 生成的图片
+
+Professor Mari 自己撰写图像提示词，所以她的 `mari images` 命令会把提示词按原样发给图像模型，不添加风格方案、分图像类型标签或连接的提示词前缀。让她使用你的风格，她就会加上 `--style`，应用上面选定的方案（先用图像模型自己的，再用全局 **Default style**）；也可以用 `--style <name>` 指定某个方案。她能列出你的方案，并在选择前完整阅读其中一个。
+
+她生成的每张图片都会记录原始提示词、使用的方案（如果有）和实际发出的提示词，所以她能告诉你风格改了什么。
+
 ## 相关指南
 
 - [图像生成服务商与设置](image-providers.md)

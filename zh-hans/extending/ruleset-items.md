@@ -22,8 +22,6 @@
 
 护甲、武器、药水、装备、弹药和钱都是物品。可选的 `items` 块声明规则集中每件物品所用的词汇，`holds: "items"` 的目录则列出物品本身。两者都需要 Capability API 1.49；该块中管理 Game Master 自创物品的 `rarityCaps` 和 `propose` 需要 1.51；读取角色所持物品的值（`itemStat`）需要 1.52；物品在穿戴或携带时对检定的作用，以及该块的 `bonus` 上限，需要 1.53；物品对穿戴者的要求及其改变的属性需要 1.54；武器的 `attack` 需要 1.55；物品在战斗中的作用需要 1.56；武器射出什么、装填多少需要 1.57；武器的模式、副手攻击、下限和命中时施加的状态需要 1.58；在战斗中使用物品的效果及其储存的充能需要 1.59；恢复池的使用需要 1.60；休息时恢复充能，或用尽时会损坏的物品需要 1.61；先要求检定的使用（`gate`）需要 1.62；战利品表和生物的战利品需要 1.63；掉落钱币的战利品项，或移除钱币的层需要 1.64；市场、物品的 `sold` 地点和 `service` 需要 1.65；集市日（钱袋、`buyBack`、卖家的 `stock`、`limited` 数量，或不指定地点的 `sold`）需要 1.69；在手持武器上触发的附加效果（`weapons`）需要 1.70；初始装备（`startingGear`）需要 1.78；有风险的物品、赝品或不诚实的卖家需要 1.79；市场的 `unsold`(或层的 `items`) 需要 1.813。
 
-<a id="the-items-block"></a>
-
 ## 物品块
 
 该块放在文件顶层的 `items` 中。下面是 Ember Roads 的物品块，略有删减：
@@ -105,8 +103,6 @@
 - `freeform`：玩家手动输入的物品会成为什么。`"plain"`(默认) 将它保留为没有规则的物品，与现在一样。`"refuse"` 只允许规则集的物品。
 - `lootTables`(Capability API 1.63)：可选，最多 24 个。打赢的战斗中的生物，以及 Game Master 的 `[loot:]` 会掉落什么（见下文“战利品”）。
 
-<a id="an-item"></a>
-
 ## 一件物品
 
 物品目录不声明 `feeds`：
@@ -150,8 +146,6 @@
 
 物品不携带 `mechanics`：它的作用写在自己的 `item` 块中。
 
-<a id="what-reads-items"></a>
-
 ## 什么会读取物品
 
 以上所有内容都会在导入规则集时检查，物品目录也随规则集一起提供。游戏中，Game Mode 的物品栏会读取它们：
@@ -175,8 +169,6 @@
 
 在 Turn-Based 或 Tactical 战斗中，每件带 `use` 的物品都按其描述生效，没有它的物品不会提供（见下文“Turn-Based 与 Tactical 战斗中的物品”）。无论 `native` 如何设置：人物卡都能读取你的物品（见下文）；在规则集战斗中，手持的武器就是一次攻击，射出从背包中取出的东西；物品在穿戴或携带时的作用在规则集战斗中也会计入（见下文“战斗中的护甲与穿戴效果”）；带 `use` 的物品在战斗中和战斗外都按其自身规则使用（见下文“在战斗中使用物品”和“在战斗外使用物品”）；你的 `currencies` 就是队伍的钱（见下文“金钱”）。
 
-<a id="items-on-the-sheet"></a>
-
 ## 人物卡上的物品
 
 值引用可以用 `itemStat` 读取角色持有的物品（Capability API 1.52）。Ember Roads 把旅人所穿护甲的 guard 加到其 Guard 上，也就是打击必须超过的数值：
@@ -199,8 +191,6 @@
 物品会在游玩中变化，因此 `itemStat` 受与实时读取相同的规则约束：池或轨道的 `max`、熟练加值、`binding.max`、`carry` 的数字，以及目录的缩放列或缩放都不能读取它，经由派生值也不行。其他任何读取数字的地方都可以：派生值、检定的 `adjust`、技能的 `cap`、战斗的防御、吸收或先攻。
 
 角色的物品就是其自己背包里的物品。玩家的角色卡（聊天设定为玩家扮演的那张，否则为第一张）读取玩家的背包，其他每张角色卡读取各自的背包。只有规则集的物品才计入，因为普通物品没有可读取的数值。屏幕上的人物卡、检定、Game Master 的人物卡块，以及开始时的战斗，都读取每个角色当时持有的东西。在游戏之外，即人物卡编辑器或导入审核中，没有人持有任何东西，`itemStat` 读取其 `default`。
-
-<a id="checks-outside-a-fight"></a>
 
 ## 战斗外的检定
 
@@ -255,13 +245,12 @@ Ember Roads 的牛皮护手能让无力的手握得像赶牲口的人一样牢�
 
 Gravewatch 在骰池上展示了同样的做法：已绑定的 Dawn bell 为 Ward 加一颗骰子，Rattled 则从 Soothe 和 Barter 中减去一颗。
 
-<a id="typed-defenses-from-conditions-levels-items-and-sheet-rows"></a>
-
 ## 来自状态、等级、物品和人物卡行的分类防御
 
 `combat.conditions[]` 和 `combat.levels[]` 可以给予 `resist`、`vulnerable`、`immune`(各 1–30 项) 和 `conditionImmunities`(1–40 个状态 ID)。它们在状态持续期间或等级阈值达到时生效。新获得的状态免疫会结束已经生效的该状态，并防止再次施加它。免疫优先于抗性；抗性与易伤相互抵消。多重抗性从不会让伤害减半两次。
 
-`resist` 和 `immune` 使用生物的写法：一个伤害词，或 `{ "type": "bludgeoning", "except": ["magical"] }`。打击上任何被指定的标签都会绕过该项。`vulnerable` 仍是普通的伤害词。同样的例外写法也适用于物品的 `worn` 和 `carried` 效果。在 `items.tags` 中声明例外标签，并把它们放在武器或法术的性质上。例如，Stoneskin 是这样一个状态映射：
+`resist` 和 `immune` 使用生物的写法：一个伤害词，或 `{ "type": "bludgeoning",
+"except": ["magical"] }`。打击上任何被指定的标签都会绕过该项。`vulnerable` 仍是普通的伤害词。同样的例外写法也适用于物品的 `worn` 和 `carried` 效果。在 `items.tags` 中声明例外标签，并把它们放在武器或法术的性质上。例如，Stoneskin 是这样一个状态映射：
 
 ```json
 {
@@ -283,8 +272,6 @@ Armor of invulnerability 在其 `worn` 效果中使用同样的 `resist` 数组�
 ```
 
 每一行都提供以逗号分隔的词，去掉首尾空格并不区分大小写匹配；空词会被跳过。添加一行 `"fire"` 会增加火焰抗性；删除它会移除这个来源。抗性和免疫词可以包含 `except`，例如 `"bludgeoning except magical silvered"`。易伤和状态免疫是普通的词。人物卡文本中未知的已声明伤害词会被忽略，未知的状态 ID 也一样；用于状态免疫的枚举列在导入时只能声明状态 ID。人物卡、战斗和 Game Master 的摘要都包含这些防御及其例外。
-
-<a id="weapons-in-a-fight"></a>
 
 ## 战斗中的武器
 
@@ -313,8 +300,6 @@ Armor of invulnerability 在其 `worn` 效果中使用同样的 `resist` 数组�
 
 武器详情和 Game Master 看到的那一行会说明它的作用：`attack (Action): Brawn to hit, 1d6 + Brawn cut, reach 2 paces, range 10 to 20 paces`；Ember Roads 的野猪矛会带 `1d8 with a hand free`，Gravewatch 的铁锹旁会有 `at 6`。
 
-<a id="ammunition-and-reloading"></a>
-
 ### 弹药与装填
 
 武器可以射出某种东西，也可以自己保留已装填的数量（Capability API 1.57）。Ember Roads 的猎弓射箭，Gravewatch 的守夜手枪装一颗弹丸，从守望者的弹丸和火药中装填：
@@ -332,8 +317,6 @@ Armor of invulnerability 在其 `worn` 效果中使用同样的 `resist` 数组�
 - `clip`：武器自身保留的已装填数量。`max` 是它能装多少，可以直接写下，或从物品的某个数字数值读取；`reload` 是装填一次消耗的额度。攻击消耗已装填的弹药，而不是从背包取，只有装填量足够一次攻击时才会提供该武器。战斗菜单上的 **Reload**(装填) 选项消耗 `reload` 并将其装满：有 `ammo` 时从背包取（背包剩余较少时就取剩下的全部），没有时直接装满。数量保存在武器的物品栏那一叠上，因此在一场战斗中打空的手枪，下一场仍是空的。从未开过火的武器是已装填的；玩家把它倒入有多件同类武器的一叠时也一样，因为装填数属于单件武器。弹匣里的弹药在战斗后不会捡回，因此 `recover` 适用于没有弹匣的武器。
 
 战斗射出、装填和捡回的东西，会在每一步执行时写入物品栏，与队伍的生命值一样，冒险日志也会记下用掉了什么。如果某一步对应的那一叠已经不在，或数量少于战斗所预计的，这一步会被拒绝，就像战斗找不到已消耗的物品时一样。战斗日志记录每次射击、装填和捡回（“Hunting bow: 2 left to shoot.”、“Ada loads 1 into Watch pistol: 1 of 1 loaded.”），物品详情和 Game Master 看到的那一行会说明武器射出什么、装了多少：`ammunition Arrow (1 an attack, 50% picked up after a won fight)` 和 `holds 1, reload (Act)`。
-
-<a id="modes-a-second-weapon-a-floor-and-conditions-on-a-hit"></a>
 
 ### 模式、第二把武器、下限和命中时的状态
 
@@ -384,8 +367,6 @@ Armor of invulnerability 在其 `worn` 效果中使用同样的 `resist` 数组�
 
 武器详情和 Game Master 看到的那一行会说明全部内容：`modes Volley (2 shots, -2 to hit, up to 2 targets)`、`off hand (Quick)`、`at least 1 on a hit before resistance`、`+3d6 slashing against Dragon` 和 `Marked for 2 rounds when a hit deals 2 or more`。
 
-<a id="armor-and-worn-effects-in-a-fight"></a>
-
 ## 战斗中的护甲与穿戴效果
 
 物品在穿戴或携带时的作用也可以改变战斗（Capability API 1.56），作用于其持有者，与其状态和等级并列。两者都使用战斗所读取的那部分状态内容：
@@ -411,8 +392,6 @@ Gravewatch 受诅咒的寡妇戒指让每次攻击少一颗骰子，已绑定的
 与检定一样，战斗对每件物品只读取一次，并以那一叠的名称标注（日志中掷骰旁和防御上的 “Widow's ring”）；未满足要求时的 `otherwise` 在战斗中同样计入，因此对穿戴者过重的护甲会降低速度。物品详情和 Game Master 看到的那一行会说明全部内容（“While worn: -1 on attacks”、“worn: +1 on checks (Ward), immune to Rattled”）。增加防御或吸收的护甲，是用 `itemStat` 读取的物品数值（见“人物卡上的物品”），就像 Ember Roads 的 Guard 读取所穿的外套一样。
 
 **硬度。** 在先攻是会被攻击改变的数字时，`combat.pool.hardness` 是战斗者的硬度，在战斗开始时从其人物卡读取（通过 `itemStat` 读取其护甲的硬度），生物则给出自己的 `hardness`。骰子数低于硬度的消耗型打击虽然命中，却没有任何效果：攻击者的数字仍会回到基准值，日志会说明（“Ada's Grave spade lands on the warden with 5 dice, below a hardness of 6, and does nothing.”），菜单也不会为它预测伤害。只有带消耗型方式的规则集才能使用它，以人物卡编写的生物从人物卡获取它。
-
-<a id="using-items-in-a-fight"></a>
 
 ## 在战斗中使用物品
 
@@ -463,8 +442,6 @@ Gravewatch 受诅咒的寡妇戒指让每次攻击少一颗骰子，已绑定的
 
 战斗用掉的物品和剩余的充能，会像武器的射击一样在每一步执行时写入物品栏，冒险日志也会记下用掉了什么。战斗日志记录每次使用（“Poultice: 1 of 2 left.”、“Dawn bell: 2 of 3 left.”）。Engine 扮演的队伍成员只对受伤的人使用治疗，也没有人会用物品打击走开的人。物品详情和 Game Master 看到的那一行会说明使用效果：“Use (Action): heals 1d4 + 1, range 0 paces, used up” 和 `use (Act): Steel 7 save negates it, Rattled, 1 of 3 charges`，详情还会显示剩余充能。Game Master 用 `like=` 你的某件物品自创的物品，会像那件物品一样使用，充能等一应俱全。
 
-<a id="items-in-turn-based-and-tactical-battles"></a>
-
 ## Turn-Based 与 Tactical 战斗中的物品
 
 不自行结算战斗的规则集，会把战斗交给 Game Mode 自己的 Turn-Based 和 Tactical 战斗；在那里，战斗开始时会询问模型物品栏中的物品有什么作用。你的物品不靠猜测：每件带 `use` 的物品都按其描述、以 Engine 自己的数值生效，只有不属于你的物品才会请 Game Master 猜测（`native: false` 时一件也不会）。
@@ -480,8 +457,6 @@ Gravewatch 受诅咒的寡妇戒指让每次攻击少一颗骰子，已绑定的
 - 没有 `use` 的物品不会在这些战斗中提供，没有 `amount` 的治疗也一样。
 
 Engine 自行计算每件物品的效果，因此画面发送的内容永远决定不了你的物品做什么。
-
-<a id="loot"></a>
 
 ## 战利品
 
@@ -512,8 +487,6 @@ Engine 自行计算每件物品的效果，因此画面发送的内容永远决�
 - 掉落的东西像添加一样进入共享视图，先问玩家的背包，没有人能携带的东西会被留下。Game Master 收到的战后摘要会说明掉落了什么、已经放进背包，冒险日志也会记录，并显示通知。
 - Game Master 在故事中用 `[loot: table="grave_goods" who="Ada"]` 掷表（`who=` 指定某个角色的背包），与其物品栏标签一样以回合开始时为基准，因此重新生成的回复只掉落一次。每件掉落的物品都按添加来答复，它的指令会列出你的表。
 
-<a id="money"></a>
-
 ## 金钱
 
 你的 `currencies` 就是队伍的钱。钱币是背包里的物品，每种钱币和其他物品一样成一叠，以其 `label` 命名：
@@ -523,8 +496,6 @@ Engine 自行计算每件物品的效果，因此画面发送的内容永远决�
 - 物品栏各叠物品上方有一行，显示视图中每个体系的钱币，以及它们折合该体系最小钱币的价值。Game Master 会在每个背包旁看到这一价值（`Coin worth 432 pennies`，空钱袋则为 `no coins`，玩家的背包即使是空的也会列出），并在物品旁看到物品的 `cost`(`costs 3 shillings`)。
 - Game Master 用 `[inventory: action="pay" amount="3 shillings" who="Ada"]` 付款，用 `action="earn"` 收款。`amount` 是数量加钱币，钱币用 ID 或标签指定，单数复数均可，不区分大小写（`1 penny`、`12 pennies`）。付款从一个背包中支出（不带 `who=` 时为玩家的背包），且只使用该钱币自己的体系：先付能用上的最大面额钱币，再把剩下的、足以付清余款的最小钱币破开，找零以该体系较小的钱币返还，面额从大到小。答复会说明付了什么、找回什么：从只有一枚 crown 的钱袋中付 3 shillings，就是 `Paid with crowns ×1; shillings ×2 back.`。背包付不起的付款会被拒绝（`cannot-afford`），你没有的钱币（`unknown-coin`），以及在没有货币的规则集中的任何付款（`no-currencies`）也一样。收款就是添加该钱币，放进 `who` 的背包，或按携带规则分配。冒险日志会列出支出和收入，并显示通知。它的指令会列出你的钱币，只有带钱币的规则集才有这些指令。
 - 购买就是先付款再添加；在有市场的规则集中，则是 `buy`(见下文)。没有商店画面。
-
-<a id="starting-gear"></a>
 
 ## 初始装备
 
@@ -563,8 +534,6 @@ Engine 自行计算每件物品的效果，因此画面发送的内容永远决�
 - `fits` 读取不含实时状态的人物卡，与携带相同。它只影响列表的排序。
 - 领取要么全部完成，要么完全不做：对其持有者过重的装备会整体被拒绝，对话框会说明它的重量与持有者还能携带的重量。被层移出游戏的物品会被省略并点名，其中所有物品都被移出的列表也一样；被层移除的钱币，会以剩下的同等价值的最大钱币支付，对话框也会这样显示。什么都不剩的装备会被拒绝，因此它永远不会被白白标记为已领取。服务永远不会从列表中提供。
 - 导入会检查每件物品（在内联目录中；独立文件中的目录会在领取装备时检查）、钱币、普通物品和 `fits` 引用，拒绝服务，并拒绝需要的叠数超过背包一次所能容纳数量的数量。
-
-<a id="markets"></a>
 
 ## 市场
 
@@ -661,8 +630,6 @@ Capability API 1.79 允许物品有风险或是赝品，也允许卖家不诚实
 - **穿戴或携带**：赝品在角色人物卡上产生的是它真正的作用（其 `worn` 或 `carried` 效果及其数值）。只要某次物品栏变动之后，人物卡显示出它所冒充的物品不会给出的数字或检定加值，它就会被识破，冒险日志和画面都会说明它原本是什么。只有战斗才会读取的差异（抗性）不会识破它，只改动人物卡、直到下一次物品栏变动之前也不会。在战斗中，穿戴的赝品武器仍会像它所冒充的武器一样攻击。
 - 在单人信任模式下，Peek Prompt 会显示 Game Master 的视角，包括真相。
 
-<a id="spotting-fakes"></a>
-
 ### 识破赝品
 
 Capability API 1.802 让角色能通过自己进行的检定，或在任何人付款之前察觉，识破赝品的真面目。Engine 不认识任何检定名称：检定由规则集编写。
@@ -705,8 +672,6 @@ Capability API 1.802 让角色能通过自己进行的检定，或在任何人�
 - **购买前察觉**：如果一次购买会从不诚实卖家处买到赝品，队伍中的其他每位成员都会计算自己能对物品和卖家做的每项检定，但不掷骰：取 `items.passiveBase`（默认为 10）加上自己的检定数值，有优势再加 5，有劣势则减 5。第一个达到某项难度的角色就会察觉：不支付任何费用，购买回复会带上 `reason="held"`，并说明谁察觉到了什么。系统会要求 GM 将其演绎为这位同伴以角色身份提醒买家，除非这位同伴的性格会如此，否则不要当面指责卖家，并让买家自行决定。不会向玩家透露其他任何信息。当天再次向该卖家提出同样的购买请求，就会正常成交。`items.warnBy: "roll"` 则改为掷这些检定。
 - **识破赝品**：`items.revealsFakes` 列出角色可以对物品施用的识破赝品的方式（法术、仪式），每项包含 `id`、`label`；如果只能识破部分赝品，还需指定这些赝品带有的 `tags`，或通过引用直接指定赝品本身（`items`，只能是赝品）。直接指定赝品可以避免在它们身上加上泄露身份的标签：一瓶带有“poison”标签的毒药药水，与它所冒充的治疗药水并列时，就会暴露。`[inventory: action="inspect" item="Potion of Healing" who="Mira" with="Identify"]` 指定其中一种方式：如果它能识破某件赝品，就会说出其真实身份；如果某件赝品的 `foolsReveal` 列出了这种方式，就会显示为它所冒充的物品；对于它无法识破的赝品或真品，则不会显出任何信息（如果这种方式能识破所有赝品，则显示“真品”，否则显示“无法确定”）。这不消耗尝试次数；施用它需要付出什么代价，与任何法术一样，都由 GM 处理。
 - 使用上述任何功能的规则集都需要 Capability API 1.802。以下情况会在安装时被拒绝：在非赝品上设置赝品的 `tells` 或 `foolsReveal`；`carries` 或 `revealsFakes` 指定了不属于该规则集的物品（对于 `items`，还必须是赝品）；以及 `foolsReveal` 中的 ID 未在 `revealsFakes` 中列出。
-
-<a id="using-items-outside-a-fight"></a>
 
 ## 在战斗外使用物品
 

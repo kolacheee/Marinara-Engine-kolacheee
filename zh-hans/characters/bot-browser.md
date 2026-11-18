@@ -11,6 +11,8 @@
 
 Card Browser 会占满整个内容区，标题是 **Browse character cards online**(在线浏览角色卡)。想离开，点击左上角的返回箭头。
 
+**Lorebooks**(世界书) 面板里的 **Download** 按钮也会打开这个浏览器，不过显示的是可下载的世界书。见[从 Chub 下载世界书](../lorebooks/import-export.md#download-a-lorebook-from-chub)。
+
 关掉再打开，上次的搜索、筛选条件和选中的角色都还在。重新加载应用会把它们清空。
 
 ## 选择来源
@@ -100,6 +102,12 @@ PlotLight 会限制应用向它发请求的速度。太快的话，Marinara 会�
 8. 打开 **Characters** 或 **Personas** 找到它。
 
 如果没有成功：看看提示消息里的错误信息。对 **JannyAI** 来说，最常见的原因是 Cloudflare 拦截（见下面的故障排查）。
+
+### 更新已有角色
+
+如果导入的角色卡已经在角色库里（之前从同一页面下载过，或名称和创作者相同），导入会停在 **Already in your library**(库中已存在)。选择 **Update "Name"**(更新“Name”) 就地更新现有角色，**Add as a new character**(添加为新角色) 保留两份，或 **Skip this card**(跳过此角色卡)。要把角色卡关联到通过其他途径获取的角色，点击 **Import Card** 窗口里的 **Update a character you already have…**(更新已有角色…)，再从列表里选择。见[更新已有角色](import-export.md#update-a-character-you-already-have)。
+
+要检查从这里下载的角色卡有没有新版，打开角色，点击 **Save**(保存) 旁边的 **⋯**，选择 **Check for update**(检查更新)。Card Browser 会打开这张角色卡。
 
 ### Download as PNG
 

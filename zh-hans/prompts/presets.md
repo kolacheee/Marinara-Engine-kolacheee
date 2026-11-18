@@ -52,7 +52,7 @@
 面板有四个选项卡：**Prompts**(提示词)、**Regexes**(正则)、**Tools**(工具) 和 **Profiles**(设置方案)。各选项卡顶部都有同样的一排按钮和搜索框。在 **Prompts** 选项卡中，用 **Create preset** 新建预设，用 **Import preset** 加载 `.json` 文件，或用 **Select presets** 一次导出或删除多个预设；**Select all presets**(选择全部预设) 会勾选搜索结果中的所有预设。**Regexes** 选项卡存放正则脚本，见[正则脚本](../extending/regex-scripts.md#manage-your-scripts)。**Tools** 选项卡存放自定义工具，见[自定义工具](../extending/custom-tools.md)。**Profiles** 选项卡存放聊天设置方案，见[设置方案](../chats/settings-profiles.md#the-profiles-tab)。
 
 - **Search presets**(搜索预设) 用来筛选列表。
-- 排序菜单的选项有 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest** 和 **Oldest**。选 **Manual order** 时，可以拖动一行，或者在获得焦点的行上按 <kbd>Alt</kbd>+<kbd>Up</kbd> 或 <kbd>Alt</kbd>+<kbd>Down</kbd>。在触屏上，长按一行就能把它拿起来。
+- 排序菜单的选项有 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest**、**Oldest**、**Most tokens**(Token 最多) 和 **Fewest tokens**(Token 最少)。大小统计的是已启用小节自身的文本，也就是预设每次都会发送的指令。角色、世界书和聊天记录等标记小节按聊天填入，不计在内。每行都会显示估算值。选 **Manual order** 时，可以拖动一行，或者在获得焦点的行上按 <kbd>Alt</kbd>+<kbd>Up</kbd> 或 <kbd>Alt</kbd>+<kbd>Down</kbd>。在触屏上，长按一行就能把它拿起来。
 - **New Folder**(新建文件夹) 用来给预设分组。把预设拖到文件夹上就能移进去，双击文件夹或在触屏上连点两下可以给它改名。
 
 每一行显示名称、包装格式、小节数量和作者。加了星标的默认预设会带一个 **DEFAULT** 标记。点击一行就能打开它。
@@ -82,7 +82,29 @@
 - **Conversation Mode**(对话模式) 是一个文本框，用来写这个预设的 Conversation 提示词。留空就用内置提示词。
 - **Roleplay Mode**(角色扮演模式) 在这里不能编辑。Roleplay 用的是你的 **Sections** 组装出来的提示词。
 - **Game Mode**(游戏模式) 是一个文本框，用来写这个预设的 Game 提示词。留空就用内置提示词。
-- **Game story settings**(游戏故事设置) 为 Game Mode 设置故事风格、暴力程度和内容边界。开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)：为游戏选择这个预设时，就会设置它的风格和暴力程度，并把这些边界添加到游戏已有的边界中。见[内容与故事风格](../game/getting-started.md#story-style-violence-and-content-boundaries)。
+- **Game story settings**(游戏故事设置) 为 Game Mode 带入故事风格、暴力程度和内容边界。见[游戏故事设置](#game-story-settings)。
+
+#### 游戏故事设置
+
+预设可以把故事风格、暴力程度和内容边界带入 Game Mode，不必每局游戏都重新设置。见[故事风格、暴力程度与内容边界](../game/getting-started.md#story-style-violence-and-content-boundaries)。
+
+1. 在 **Prompts** 选项卡的 **Game story settings** 下，开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)。
+2. 选择 **Story style**(故事风格) 和 **Violence**(暴力程度)。**Follow rating**(遵循分级) 让每局游戏的暴力程度保持为其分级的默认值。
+3. 可选：填写 **Content boundaries**(内容边界)，每行一项。
+4. 点击 **Save**。
+
+在设置向导或 **Chat Settings → Prompt Preset**(聊天设置 → 提示词预设) 里为游戏选择这个预设时，游戏会采用预设的故事风格和暴力程度。预设的边界会加入游戏已有的边界，所以游戏自身的边界不会被移除。之后编辑预设，不会改变已经选用它的游戏。复制、导出或导入预设时，这项设置都会保留。
+
+#### 游戏故事设置
+
+预设可以把故事风格、暴力程度和内容边界带入 Game Mode，不必每局游戏都重新设置。见[故事风格、暴力程度与内容边界](../game/getting-started.md#story-style-violence-and-content-boundaries)。
+
+1. 在 **Prompts** 选项卡的 **Game story settings** 下，开启 **Bring story settings to games that use this preset**(将故事设置带入使用此预设的游戏)。
+2. 选择 **Story style**(故事风格) 和 **Violence**(暴力程度)。**Follow rating**(遵循分级) 让每局游戏的暴力程度保持为其分级的默认值。
+3. 可选：填写 **Content boundaries**(内容边界)，每行一项。
+4. 点击 **Save**。
+
+在设置向导或 **Chat Settings → Prompt Preset**(聊天设置 → 提示词预设) 里为游戏选择这个预设时，游戏会采用预设的故事风格和暴力程度。预设的边界会加入游戏已有的边界，所以游戏自身的边界不会被移除。之后编辑预设，不会改变已经选用它的游戏。复制、导出或导入预设时，这项设置都会保留。
 
 内置的 **Marinara's Universal Preset**(Marinara 通用预设) 只提供提示词文字，不提供生成参数。它旧版保存的采样、推理、格式和 Token 设置会被忽略，改用你的账号设置、聊天覆盖值和应用默认值。要自定义它，就创建一份可编辑的副本。
 
@@ -179,7 +201,7 @@ XML 适合大多数模型。只有某个模型在没有标签时回答得更好�
 
 文本框里显示正在使用的提示词。编辑它，就会生成一份只属于这个聊天的副本。如果你写的内容和预设或默认值完全一样，Marinara 就当作没有自定义。存在自定义修改时，会出现一个重置图标（提示文字是 **Reset to default prompt**(重置为默认提示词)）。
 
-Game 聊天还有更多控件。**GM prompt style**(GM 提示词风格) 只替换 Game 提示词，而聊天本地的修改仍然优先。**Extra instructions**(额外指令) 会把文字追加到 Game 提示词里，上限 2000 个字符，比如“Write in the style of Terry Pratchett.”**Rating guidelines**(分级准则)、**Story style**(故事风格)、**Violence**(暴力程度) 和 **Content boundaries**(内容边界) 是游戏的内容设置；见[内容与故事风格](../game/getting-started.md#change-them-during-a-game)。
+Game 聊天还有更多控件。**Story style**、**Violence**、**Content boundaries** 和 **Rating guidelines**(分级准则) 决定游戏故事可以包含什么。见[游戏中修改这些设置](../game/getting-started.md#change-them-during-a-game)。另外两项用于调整提示词。**GM prompt style**(GM 提示词风格) 只替换 Game 提示词，而聊天本地的修改仍然优先。**Extra instructions**(额外指令) 会把文字追加到 Game 提示词里，上限 2000 个字符，比如“Write in the style of Terry Pratchett.”
 
 ## 判定块与提示词缓存
 

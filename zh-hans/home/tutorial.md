@@ -7,7 +7,7 @@
 1. 打开 **Settings → General → Confirmations & Help**(设置 → 常规 → 确认提示与帮助)。
 2. 在 **Walkthroughs**(操作指引) 下，点击 **Replay the welcome tour**(重看欢迎导览)。
 
-也可以点击主页上 **Learn the engine**(了解引擎) 小组件里的 **Replay tutorial**(重看教程)。教程会从第一步重新开始。
+也可以打开主页上 **Things to try**(试试这些) 小组件里的 **See all**(查看全部)，再点击 **Replay tutorial**(重看教程)。教程会从第一步重新开始。
 
 **Walkthroughs** 还有两个按钮。**Replay the computer walkthrough**(重看电脑操作指引)（或平板、手机）会重看当前设备类型的简短操作指引，**Show chat mode tips again**(再次显示聊天模式提示) 会重新显示各聊天模式的提示。见[各类设备的操作指引](#walkthroughs-for-each-device)。
 

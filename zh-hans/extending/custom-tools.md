@@ -25,7 +25,7 @@
 名称和说明的规则：
 
 - 名称为 1 到 100 个字符，说明为 1 到 500 个字符。
-- 两个工具不能重名，工具也不能使用内置名称，例如 `roll_dice`、`update_game_state`、`set_expression`、`trigger_event`、`search_lorebook`、`web_search` 或 `update_about_me`。名称冲突时会显示类似 `"your_name" is a reserved built-in tool name.` 的消息。
+- 两个工具不能重名，工具也不能使用内置名称，例如 `roll_dice`、`update_game_state`、`set_expression`、`trigger_event`、`search_lorebook`、`web_search`、`web_fetch` 或 `update_about_me`。名称冲突时会显示类似 `"your_name" is a reserved built-in tool name.` 的消息。
 - 如果你带着未保存的改动离开编辑器，会出现一条横幅，提供 **Keep editing**(继续编辑)、**Discard**(放弃) 或 **Save & close**(保存并关闭)。
 
 ## 管理工具
@@ -37,9 +37,7 @@
 - 工具上的 **⋯** 菜单（也可以右键点击工具）包含 **Export**(导出)、**Select**(选择) 和 **Delete**(删除)。
 - 列表上方的 **Select** 可以选择多个工具，然后在列表下方的操作栏中 **Export** 或 **Delete**。
 
-在经典布局中，**Functions** 标题栏有 **Create function**(创建函数)、**Import tools from ZIP or JSON**(从 ZIP 或 JSON 导入函数) 和 **Export tools to ZIP**(导出函数为 ZIP)，每行有 **Edit function**(编辑函数) 和 **Delete Function**(删除函数)。
-
-<a id="add-parameters"></a>
+在经典布局中，**Functions** 标题栏有 **Create function**(创建函数)、**Import functions from ZIP or JSON**(从 ZIP 或 JSON 导入函数) 和 **Export functions to ZIP**(导出函数为 ZIP)，每行有 **Edit function**(编辑函数) 和 **Delete Function**(删除函数)。
 
 ## 添加参数
 
@@ -54,8 +52,6 @@
 用 **Add Parameter** 再加几行，或者用某行的减号按钮删掉这一行。名称为空的行会在保存时被丢弃。
 
 如果 AI 似乎从不调用某个导入的工具，可能是它的参数不合法，这时应用会跳过该工具，而且不会告诉你。删掉这些参数，再手动重新添加。
-
-<a id="choose-an-execution-type"></a>
 
 ## 选择执行类型
 
@@ -154,6 +150,8 @@ AI 以 `x` 为 2、`y` 为 3 调用它时，工具返回的和为 5。如果脚�
 4. 检查是否生效：问 AI 一个你的工具能回答的问题，比如针对 `store_hours` 示例问“你们的营业时间是几点？”，回复里应该会用上工具的文字。
 
 开启 **Enable Tool Use** 且下方没有添加任何工具时，聊天可以使用所有全局启用、且它支持的工具：内置工具，加上每个在 **Library → Custom tools** 中开关已开启的自定义工具。Game 聊天要使用 `search_lorebook`，还需要开启 **Let the GM search lore**(允许 GM 搜索世界设定)。
+
+> **注意：** 即使开启 **Enable Tool Use**，少数内置工具也要手动勾选才会启用。`web_fetch` 就是其中之一，因为它允许 AI 选择要读取的网址。Spotify 工具也一样。
 
 要把聊天限定在一组选定的工具：
 
