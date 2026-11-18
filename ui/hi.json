@@ -11448,6 +11448,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "{{value1}} सेटअप",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veo 4, 6 या 8 सेकंड स्वीकार करता है। कैरेक्टर लूप रेफ़रेंस अवतार को पहले और आखिरी फ़्रेम के रूप में इस्तेमाल करते हैं और 8 सेकंड पर चलते हैं।",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "वीडियो की डिफ़ॉल्ट सेटिंग",
+  "ui.decision.visionRequired": "तस्वीरें समझने वाला डिसीजन मॉडल चाहिए। कनेक्शन → इस डिवाइस पर → बिल्ट-इन मॉडल (डिसीजन) में Liquid d1, Valen या Winnow चुनें।",
   "ui.decision.visionRequiredLabel": "यह उपलब्ध क्यों नहीं है",
   "ui.diagnostics.accessWarningBanner.review": "ऐक्सेस का रिव्यू करें",
   "ui.diagnostics.accessWarningBanner.title": "दूसरे लोग बिना पासवर्ड Marinara खोल सकते हैं",
