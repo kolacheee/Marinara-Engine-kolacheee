@@ -180,13 +180,7 @@ const PLANS: Record<string, SiteStamp[]> = {
   // both sides alike so the tomb stays in the middle (panel round 29: the tomb pushed into a corner, the
   // room bare).
   "Founder's tomb": [
-    st(
-      ["2..3.3..2", ".7.....7.", "....0....", ".7.1...7.", ".........", ".2.....2.", ".7.....7."],
-      [2, 3],
-      [4, 7],
-      undefined,
-      true,
-    ),
+    st(["2..3.3..2", ".7.....7.", "....0....", ".7.1...7.", ".2.....2.", ".7.....7."], [2, 3], [4, 6], undefined, true),
     st(["2.....2", ".7...7.", "...0...", ".......", ".7...7."], [2, 3], [3, 5], undefined, true),
   ],
   // An ossuary: skulls in the walls, bones heaped in the corners.
