@@ -534,7 +534,10 @@ export function DecisionModelModal() {
             {isDefault ? localizeUi("connections.decision.label") : localizeUi("connections.device.usedBy.none")}
           </FactRow>
           <FactRow label={localizeUi("connections.builtinEmbedding.runsOn")}>
-            {data.devices.length > 1 ? (
+            {/* A processor-only model ignores the card, so it names the processor, not a card. */}
+            {shown?.memory === "cpu" ? (
+              <span className="block">{localizeUi("connections.builtinEmbedding.device.cpu")}</span>
+            ) : data.devices.length > 1 ? (
               <select
                 value={String(data.cudaDevice)}
                 disabled={busy}
