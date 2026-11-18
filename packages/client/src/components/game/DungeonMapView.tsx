@@ -1369,18 +1369,34 @@ export function DungeonMapView({
           [1, -1],
           [-1, 1],
         ].filter(([dx, dy]) => hasF(x + dx!, y + dy!)).length;
-      const mound = (least: number, shades: readonly [string, string, string, string, string]) => {
+      // Where a mound may lie: open floor round it, never over a wall, a chest or a coffin (lair panel 2: the
+      // hoard drew over its keep's chests and north wall).
+      const lairArea = new Path2D();
+      if (cells && shownLair.length) {
+        const [ax0, ax1] = [Math.min(...shownLair.map((c) => c.x)) - 1, Math.max(...shownLair.map((c) => c.x)) + 1];
+        const [ay0, ay1] = [Math.min(...shownLair.map((c) => c.y)) - 1, Math.max(...shownLair.map((c) => c.y)) + 1];
+        for (let y = Math.max(0, ay0); y <= Math.min(cells.height - 1, ay1); y++)
+          for (let x = Math.max(0, ax0); x <= Math.min(cells.width - 1, ax1); x++) {
+            const ground = cells.ground[y * cells.width + x];
+            if (hasF(x, y) || (ground !== "wall" && ground !== "rock" && cells.props[y * cells.width + x]! < 0))
+              lairArea.rect(x * T, y * T, T, T);
+          }
+      }
+      const mound = (least: number, shades: readonly [string, string, string, string, string]): Path2D => {
         const body = shownLair.filter(({ x, y }) => depth(x, y) >= least);
         const disc = (r: number, dx: number, dy: number, only: number, jitter: boolean) => {
-          ctx.beginPath();
+          const path = new Path2D();
           for (const { x, y } of body) {
             if (depth(x, y) < only) continue;
             const j = jitter ? (hash(x, y) % 4) / 25 : 0;
             const [cx, cy] = [(x + 0.5) * T + dx, (y + 0.5) * T + dy];
-            ctx.moveTo(cx + (r + j) * T, cy);
-            ctx.arc(cx, cy, (r + j) * T, 0, Math.PI * 2);
+            path.moveTo(cx + (r + j) * T, cy);
+            path.arc(cx, cy, (r + j) * T, 0, Math.PI * 2);
           }
+          return path;
         };
+        ctx.save();
+        ctx.clip(lairArea);
         for (const [r, fill, only, dx, dy, jitter] of [
           [0.8, "rgba(8, 5, 2, 0.55)", 0, 1, 3, true],
           [0.76, shades[0], 0, 0, 0, true],
@@ -1390,11 +1406,11 @@ export function DungeonMapView({
           [0.62, shades[4], 8, -1, -3, false],
         ] as const) {
           ctx.fillStyle = fill;
-          disc(r, dx, dy, only, jitter);
-          ctx.fill();
+          ctx.fill(disc(r, dx, dy, only, jitter));
         }
+        ctx.restore();
         // The whole mound's outline, for a texture clipped to it.
-        disc(0.68, 0, 0, 0, true);
+        return disc(0.68, 0, 0, 0, true);
       };
       if (lairKind === "hoard" && shownLair.length) mound(3, ["#5e3f0c", "#a27418", "#bf8f26", "#d3a836", "#e2bc4c"]);
       if (lairKind === "den" && shownLair.length)
@@ -1403,9 +1419,10 @@ export function DungeonMapView({
       if (lairKind === "hive" && shownLair.length) {
         // The comb: a waxy crust over the walls, its six-sided cells pressed into it on one grid so they run on
         // unbroken, a few capped pale with brood.
-        mound(2, ["#4e3008", "#8a5a12", "#a46e18", "#b98222", "#c8922c"]);
+        const comb = mound(2, ["#4e3008", "#8a5a12", "#a46e18", "#b98222", "#c8922c"]);
         ctx.save();
-        ctx.clip();
+        ctx.clip(lairArea);
+        ctx.clip(comb);
         const hx = T * 0.26;
         const hh = hx * Math.sqrt(3);
         const [x0, x1] = [Math.min(...shownLair.map((c) => c.x)) - 1, Math.max(...shownLair.map((c) => c.x)) + 2];

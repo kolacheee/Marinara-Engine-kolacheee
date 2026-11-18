@@ -1452,6 +1452,94 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [T, "center", 1],
   ],
   Gallery: [[STATUE, "wall", "reps"]],
+  // A creature's lair floor (owner 2026-11-18): dressed as what the creature keeps, never a storeroom's
+  // crates and barrels (lair panel 2: a breach and a hoard cavern full of crates read as a cellar).
+  "Hoard cavern": [
+    [CHEST, "corner", 2],
+    [STATUE, "corner"],
+    [SKULLS, "corner"],
+  ],
+  "Treasure cleft": [
+    [CHEST, "wall", "reps"],
+    [STATUE, "corner"],
+  ],
+  "Bone midden": [
+    [BONES, "scatter", "reps"],
+    [SKULLS, "corner", 2],
+  ],
+  "Smoke vent": [
+    [BONES, "corner"],
+    [COBWEB, "corner"],
+  ],
+  // Pillars to fight round and hide behind (lair panel 2: a coffin hall a bare field).
+  "Coffin hall": [
+    [COLUMN, "pillar", 6],
+    [FIRE, "corner", 2],
+  ],
+  "Earth vault": [
+    [TOMB, "center", 1],
+    [CHEST, "corner"],
+  ],
+  "Blood larder": [
+    [CHAINS, "wall", "reps"],
+    [BUCKET, "corner"],
+    [JARS, "corner"],
+  ],
+  "Thralls' cell": [
+    [PALLET, "wall", "all"],
+    [CHAINS, "wall"],
+    [BUCKET, "corner"],
+  ],
+  "Gnawing cave": [
+    [BONES, "scatter", "reps"],
+    [SKULLS, "corner", 2],
+  ],
+  "Drinking pool": [[BONES, "corner"]],
+  "Rift chamber": [
+    [ALTAR, "back"],
+    [CHAINS, "corner", 2],
+    [SKULLS, "corner"],
+  ],
+  "Summoning circle": [
+    [ALTAR, "center", 1],
+    [FIRE, "corner", 2],
+    [SKULLS, "corner"],
+  ],
+  "Cult cell": [
+    [PALLET, "wall", "all"],
+    [FIRE, "corner"],
+  ],
+  "Sacrifice pit": [
+    [BONES, "scatter", 2],
+    [CHAINS, "wall"],
+  ],
+  "Sunken shrine": [
+    [ALTAR, "back"],
+    [STATUE, "corner", 2],
+  ],
+  "Wrack cave": [
+    [TIPPED, "scatter", 2],
+    [BONES, "corner"],
+  ],
+  "Brood chamber": [[BONES, "corner", 2]],
+  "Comb gallery": [[COBWEB, "corner", 2]],
+  "Larder of husks": [
+    [BONES, "scatter", 2],
+    [COBWEB, "corner", 2],
+  ],
+  "Egg cells": [[JARS, "scatter", "reps"]],
+  "Ward hall": [
+    [COLUMN, "pillar", "all"],
+    [STATUE, "corner", 2],
+  ],
+  "Library of the dead": [
+    [SHELF, "wall", "all"],
+    [LECTERN, "center", 1],
+  ],
+  "Phylactery vault": [
+    [ALTAR, "center", 1],
+    [CHEST, "corner"],
+  ],
   "Long gallery": [
     [STATUE, "wall", "reps"],
     [SHELF, "wall", 2],
@@ -6020,8 +6108,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       }
     }
   // The heart's hoard (panel round 30: the payoff not where the fight is): what the holders keep, two or three
-  // chests together against the wall farthest from the door, behind whoever holds the room.
-  {
+  // chests together against the wall farthest from the door, behind whoever holds the room. A lair's great
+  // chamber keeps only its own feature (lair panel 2: chests in the coffin row, under the ward ring); its
+  // treasure is in the vault off it, but for a dragon's, heaped with its gold.
+  if (!level.lair || level.lair === "hoard") {
     const k = info.findIndex((each) => each.heart);
     const box = k >= 0 ? rooms[k] : undefined;
     if (box) {

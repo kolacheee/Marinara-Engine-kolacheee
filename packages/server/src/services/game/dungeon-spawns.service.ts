@@ -410,7 +410,9 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     let best = Infinity;
     for (const { x, y } of dungeonRoomCells(room)) {
       {
-        if (!dungeonWalkable(cells, x, y)) continue;
+        // A drowned hall's maker stands in its own deep water.
+        const wet = heap && here.map.lairKind === "drowned" && feature.some((c) => c.x === x && c.y === y);
+        if (!dungeonWalkable(cells, x, y) && !wet) continue;
         const away = Math.abs(x - middle.x) + Math.abs(y - middle.y) + (clear(x, y) ? 0 : 100);
         if (away < best) [at, best] = [{ x, y }, away];
       }

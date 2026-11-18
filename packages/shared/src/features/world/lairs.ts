@@ -257,8 +257,11 @@ export function dungeonLairFeature(input: {
       // panel 1: a few strewn bones read as any cave).
       const far = [...cells].filter((c) => !input.walls(c)).sort((p, q) => fromDoor(q) - fromDoor(p))[0];
       const nest = new Set(far !== undefined ? near(far, Math.max(4, Math.round(cells.length * 0.14))) : []);
+      // Strewn bones keep near the nest (lair panel 2: bones over the whole chamber read as litter).
+      const byNest = (c: number) =>
+        far !== undefined && Math.hypot(xy(c)[0] - xy(far)[0], xy(c)[1] - xy(far)[1]) <= Math.max(4, Math.sqrt(cells.length) * 0.6);
       return cells.filter(
-        (c) => nest.has(c) || ((input.walls(c) ? random() < 0.4 : random() < 0.08) && fromDoor(c) > 1),
+        (c) => nest.has(c) || (byNest(c) && (input.walls(c) ? random() < 0.4 : random() < 0.12) && fromDoor(c) > 1),
       );
     }
     case "breach": {
@@ -286,7 +289,7 @@ export function dungeonLairFeature(input: {
         (c) =>
           !input.walls(c) &&
           fromDoor(c) > 2 &&
-          fromMid(c) < Math.max(1.5, Math.min(spanX, spanY) * 0.38 + random() * 0.6),
+          fromMid(c) < Math.max(1.5, Math.min(spanX, spanY) * 0.46 + random() * 0.6),
       );
     case "hive": {
       // Comb grown over the walls two cells deep, broken only where it thins (lair panel 1: clumps of one
@@ -347,15 +350,21 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       duration: 2,
       ranged: true,
     },
-    // The heap gives way under one of them: buried to the waist in coin for a turn.
+    // The heap gives way under one of them: hurt and buried to the waist in coin, slowed while they dig out
+    // (lair panel 2: a coin-flip stun took a whole turn away).
     "lair-sliding-gold": {
       label: "Sliding Gold",
-      kind: "status",
-      target: "enemy",
-      status: "stun",
-      chance: 0.4,
-      duration: 1,
-      ranged: true,
+      ...strike(1.2, "earth", {
+        target: "enemy",
+        scales: "strength",
+        damage: "physical",
+        applies: { status: "slow", chance: 0.7, duration: 2 },
+      }),
+    },
+    // The vents under the heap breathe with the dragon: told a round ahead, the hardest blow the lair has.
+    "lair-dragonfire-vents": {
+      label: "Dragonfire Vents",
+      ...strike(1.8, "fire", { areaPct: 0.3, applies: { status: "burn", chance: 0.4, duration: 2, power: 0.04 } }),
     },
   },
   sanctum: {
@@ -392,6 +401,16 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     // The chamber drinks for its master: it scales with what the maker hits with (a courtier is all speed
     // and blade, no spellcraft; lair sim 8: as a spell it hardly scratched).
+    "lair-bats-answer": {
+      label: "The Bats Answer",
+      summon: { name: "Blood Bat", archetype: "scout", count: 1 },
+      kind: "debuff",
+      target: "all-enemies",
+      stat: "skill",
+      pct: -0.15,
+      duration: 2,
+      ranged: true,
+    },
     "lair-blood-tithe": {
       label: "Blood Tithe",
       ...strike(1, "dark", { scales: "strength", damage: "physical", drain: 0.5 }),
@@ -415,6 +434,11 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       chance: 0.8,
       duration: 2,
       ranged: true,
+    },
+    // The den has teeth of its own: its roof sheds stone on whoever the beast drives under it.
+    "lair-den-roof": {
+      label: "The Roof Sheds Stone",
+      ...strike(1, "earth", { scales: "strength", damage: "physical" }),
     },
     "lair-known-ground": {
       label: "Its Own Ground",
@@ -524,9 +548,20 @@ export const DUNGEON_LAIR_BOARD: Readonly<Record<DungeonLairKind, string>> = {
   hive: "swamp",
 };
 
+/** How each lair's chamber is told in a fight: its own voice, not one line for all (lair panel 2). */
+const DUNGEON_LAIR_NARRATION: Readonly<Record<DungeonLairKind, string>> = {
+  hoard: "Narrate the cavern as part of the dragon: the heap shifting when it moves, heat breathing from the vents before they burn.",
+  sanctum: "Narrate the sanctum as the lich's will made stone: the circle's light tightening, the walls whispering names before the dead answer.",
+  haven: "Narrate the haven as its master's household: candles guttering, the mist leaning toward the living, the bats a sound before they are a sight.",
+  den: "Narrate the den as the beast's ground: the smell, the bones underfoot, the roof grumbling before it sheds stone.",
+  breach: "Narrate the breach as a wound in the world: the rift's heat and pull, something moving in the light before it comes through.",
+  drowned: "Narrate the drowned hall as rising cold water: the surge drawing back before it breaks, things brushing legs in the murk.",
+  hive: "Narrate the hive as one body: the hum rising before the swarm, resin creeping, the brood stirring in the comb.",
+};
+
 /** What the fight's Game Master is told of a fight in a lair's great chamber. */
 export function dungeonLairFightText(kind: DungeonLairKind): string {
   const spec = DUNGEON_LAIRS[kind];
   const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]).map((action) => action.label);
-  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.join(", ")}); narrate those as the chamber turning on the party (anything it calls up comes out of the chamber itself), and never add other lair effects.`;
+  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.join(", ")}). ${DUNGEON_LAIR_NARRATION[kind]} Foreshadow the action the log announces; anything the chamber calls up comes out of it. Add no lair effects of your own.`;
 }

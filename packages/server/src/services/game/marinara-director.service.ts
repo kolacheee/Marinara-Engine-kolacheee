@@ -699,7 +699,11 @@ export function lairActs(
   if (!maker || maker.hp <= 0) return false;
   // A young lair (its maker under level 10) stirs every other round, an old one every round (lair sim 8-10:
   // at level 6 a lair acting every round took a deathless sorcerer's fights from a sure win to a coin flip).
-  if (maker.level < 10 && round % 2 === 0) return false;
+  if (maker.level < 10 && round % 2 === 0) {
+    // Said, so the rhythm reads (lair panel 2: a silent round looked like the lair had stopped).
+    if (lair.next) log(`The lair is still this round; next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]?.label ?? "stirring"}.`, "marinara:lair", maker.id);
+    return false;
+  }
   const ctx = context(state, seed, tactical);
   const foes = living(state.fighters).filter((f) => f.side !== maker.side);
   if (!foes.length) return false;

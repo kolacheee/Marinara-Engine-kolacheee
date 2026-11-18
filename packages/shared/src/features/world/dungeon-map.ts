@@ -1227,11 +1227,66 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
   const at = (x: number, y: number) => y * made.width + x;
   const cells = dungeonRoomCells(made.rooms[lairRoom]!).map(({ x, y }) => at(x, y));
   const inRoom = new Set(cells);
+  // The chamber walled off from the open cave but for a throat of two or three cells on the side the party
+  // comes from, opened wider only where the rest of the cave would otherwise be cut off (lair panel 2: the
+  // chamber was a corner of an open cavern, no edge, no way in to hold).
+  let walledGround = kept.ground;
+  let walledProps = kept.props;
+  {
+    const ring = [
+      ...new Set(
+        cells.flatMap((c) =>
+          [c - 1, c + 1, c - made.width, c + made.width].filter(
+            (n) =>
+              n >= 0 &&
+              n < made.ground.length &&
+              !inRoom.has(n) &&
+              made.ground[n] === "floor" &&
+              Math.abs((n % made.width) - (c % made.width)) <= 1,
+          ),
+        ),
+      ),
+    ].filter((n) => n !== at(made.entrance.x, made.entrance.y) && !(kept.down && n === at(kept.down.x, kept.down.y)));
+    const byStep = [...ring].sort((p, q) => (steps[p] ?? 1e9) - (steps[q] ?? 1e9));
+    const mouth = byStep[0];
+    if (mouth !== undefined && ring.length >= 6) {
+      const [mx, my] = [mouth % made.width, Math.floor(mouth / made.width)];
+      const opened = new Set(
+        ring.filter((n) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my) <= 1),
+      );
+      const near1 = (m: number, n: number) =>
+        Math.abs((m % made.width) - (n % made.width)) + Math.abs(Math.floor(m / made.width) - Math.floor(n / made.width)) <= 1;
+      const tryWalls = () => {
+        const shut = new Set(ring.filter((n) => !opened.has(n)));
+        const ground = made.ground.map((each, i) => (shut.has(i) ? ("wall" as const) : each));
+        const reached = dungeonStepsFrom({ ...made, ground }, made.entrance);
+        const lost = Array.from(steps).flatMap((st, i) => (st >= 0 && !shut.has(i) && reached[i]! < 0 ? [i] : []));
+        return { shut, ground, lost: new Set(lost) };
+      };
+      let walled = tryWalls();
+      // A part of the cave reached only through the chamber keeps its own gap: the shut ring cell beside it
+      // nearest the way in, and its neighbours (a second way through, not the whole side left open).
+      for (let tries = 0; walled.lost.size && tries < 6; tries++) {
+        const gap = byStep.find(
+          (n) => !opened.has(n) && [n - 1, n + 1, n - made.width, n + made.width].some((m) => walled.lost.has(m)),
+        );
+        if (gap === undefined) break;
+        for (const m of ring) if (near1(m, gap)) opened.add(m);
+        walled = tryWalls();
+      }
+      if (!walled.lost.size && walled.shut.size) {
+        const { shut, ground } = walled;
+        made = { ...made, ground, props: made.props.map((each, i) => (shut.has(i) ? -1 : each)) };
+        walledGround = [...kept.ground].map((char, i) => (shut.has(i) ? GROUND_CHARS.wall : char)).join("");
+        walledProps = [...kept.props].map((char, i) => (shut.has(i) ? "-" : char)).join("");
+      }
+    }
+  }
   // The great chamber is the maker's alone: the cave's odds and ends (crates, barrels, a lamp) are cleared
   // from it, the way in and out kept (lair panel 1: an ordinary cave room with a heap in it).
   const keep = new Set([at(made.entrance.x, made.entrance.y), ...(kept.down ? [at(kept.down.x, kept.down.y)] : [])]);
   const cleared = new Set(cells.filter((c) => made.props[c] !== -1 && made.props[c] !== DUNGEON_EXIT_PROP && !keep.has(c)));
-  const props = cleared.size ? [...kept.props].map((char, i) => (cleared.has(i) ? "-" : char)).join("") : kept.props;
+  const props = [...walledProps].map((char, i) => (cleared.has(i) ? "-" : char)).join("");
   const open = cells.filter(
     (c) => made.ground[c] === "floor" && (made.props[c] === -1 || cleared.has(c)) && !keep.has(c),
   );
@@ -1249,7 +1304,7 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
     walls: (c) => near(c).some((n) => n < 0 || n >= made.ground.length || made.ground[n] === "wall" || made.ground[n] === "rock"),
     seed: `${made.seed}:lair`,
   });
-  let ground = kept.ground;
+  let ground = walledGround;
   if (kind === "drowned" && feature.length) {
     // The pool, shrunk from its edge until every cell still reaches the way in round it.
     const mx = feature.reduce((n, c) => n + (c % made.width), 0) / feature.length;
@@ -1260,13 +1315,14 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
         Math.hypot((q % made.width) - mx, Math.floor(q / made.width) - my),
     );
     feature = [];
-    for (let keep = order.length; keep >= 4; keep = Math.floor(keep * 0.7)) {
+    const before = dungeonStepsFrom(made, made.entrance);
+    for (let keep = order.length; keep >= 4; keep = Math.floor(keep * 0.8)) {
       const pool = new Set(order.slice(0, keep));
       const wet = made.ground.map((each, i) => (pool.has(i) ? ("liquid" as const) : each));
       const reached = dungeonStepsFrom({ ...made, ground: wet }, made.entrance);
-      if (!steps.every((s, i) => s < 0 || pool.has(i) || reached[i]! >= 0)) continue;
+      if (!before.every((s, i) => s < 0 || pool.has(i) || reached[i]! >= 0)) continue;
       feature = [...pool];
-      ground = [...kept.ground].map((char, i) => (pool.has(i) ? GROUND_CHARS.liquid : char)).join("");
+      ground = [...walledGround].map((char, i) => (pool.has(i) ? GROUND_CHARS.liquid : char)).join("");
       break;
     }
   }
