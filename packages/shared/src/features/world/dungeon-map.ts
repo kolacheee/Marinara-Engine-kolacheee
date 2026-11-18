@@ -902,6 +902,8 @@ export const gameDungeonMapSchema = z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(8)
       .optional(),
+    /** A hidden door that leads past the held room (panel round 46). */
+    secretWay: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
     /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */
     gallery: z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
@@ -1430,6 +1432,13 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
           : map.quietWayLong?.length
             ? " There are two ways round the held room, a short one and a longer one through other rooms."
             : ""
+      }${
+        map.secretWay
+          ? ` A hidden door ${(() => {
+              const area = dungeonAreaAt(map, map.secretWay.x, map.secretWay.y);
+              return area ? `in area ${area}` : "off a passage";
+            })()} leads past the held room, quick and unseen: a scrape on the floor is its tell, and a party that searches there (a perception check) finds it. Never name it before they do.`
+          : ""
       }${
         map.traps?.some((trap) => trap.found)
           ? ` Traps the party found (shown on the map, walked round): ${map.traps

@@ -740,6 +740,8 @@ export interface SiteLevelMap {
   quietWayLong?: Array<{ x: number; y: number }>;
   /** Loose boards or rubble on the way round, which give a sneaking party away. */
   creaks?: Array<{ x: number; y: number }>;
+  /** A hidden door that leads past the held room (panel round 46). */
+  secretWay?: { x: number; y: number };
   /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
   gallery?: Array<{ x: number; y: number }>;
 }
@@ -3659,6 +3661,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // The rooms of the way round as the plan laid it, which the second way round keeps out of (panel round 44).
   let planAvoid: Set<number> | null = null;
   let wayTargetRegion = -1;
+  // A hidden door that leads past the held room, quick and unseen if the party finds it (panel round 46: one
+  // way round is a line to follow, not a choice).
+  let secretWay: { x: number; y: number } | null = null;
   // From where the party comes onto the floor to the way on there is the main way, and the holders keep a room
   // on it; where no second way misses the main way's rooms, a door is opened to make one, so a careful party
   // can go round (a door between two spaces either side of it, or two doors through a space between).
@@ -3764,12 +3769,88 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         for (let c = goal; c >= 0; c = back[c]!) if (ground[c] === "wall") ground[c] = "floor";
         return true;
       };
+      // A hidden door through a wall between a space before the held room and one past it.
+      const secretOne = (r: number) => {
+        const lone = new Set([r]);
+        const fromStart = reach(start, lone);
+        const fromTarget = reach(target, lone);
+        const usable = (n: number) => live(n) && !lockedNode(n) && !hiddenNode(n) && n !== r && n !== start;
+        const one = shuffle(
+          edges.filter(
+            (edge) =>
+              !opened.has(edge) &&
+              edge.cells.length >= 1 &&
+              usable(edge.a) &&
+              usable(edge.b) &&
+              ((fromStart.has(edge.a) && fromTarget.has(edge.b)) || (fromStart.has(edge.b) && fromTarget.has(edge.a))),
+          ),
+        )[0];
+        if (one) {
+          opened.add(one);
+          const doorAt = one.cells[Math.floor(one.cells.length / 2)]!;
+          ground[cell(doorAt.x, doorAt.y)] = "floor";
+          secrets.push(doorAt);
+          secretWay = doorAt;
+          return true;
+        }
+        // Else a short way cut through the wall, its mouth on the near side a hidden door.
+        const touchesR = (c: number) => around(c).some((m) => at[m] === r && ground[m] === "floor");
+        const costTo = new Int32Array(size).fill(1 << 20);
+        const back = new Int32Array(size).fill(-1);
+        const queue: number[] = [];
+        for (const c of shuffle([...Array(size).keys()]))
+          if (ground[c] === "floor" && at[c]! >= 0 && at[c] !== start && fromStart.has(at[c]!) && usable(at[c]!)) {
+            costTo[c] = 0;
+            queue.push(c);
+          }
+        let goal = -1;
+        for (let head = 0; head < queue.length; head++) {
+          const c = queue[head]!;
+          if (costTo[c]! > 6) continue;
+          if (costTo[c]! > 0 && ground[c] === "floor" && at[c]! >= 0 && fromTarget.has(at[c]!) && usable(at[c]!)) {
+            goal = c;
+            break;
+          }
+          for (const m of around(c)) {
+            // Only through wall: the cut leaves one room and comes out in another.
+            const enter = ground[m] === "floor" && costTo[c]! > 0 && at[m]! >= 0 && fromTarget.has(at[m]!);
+            const cut = ground[m] === "wall" && mask[m] && !hold[m] && !touchesR(m);
+            if (!enter && !cut) continue;
+            const next = costTo[c]! + (cut ? 1 : 0);
+            if (next >= costTo[m]!) continue;
+            costTo[m] = next;
+            back[m] = c;
+            if (cut) queue.push(m);
+            else queue.splice(head + 1, 0, m);
+          }
+        }
+        if (goal < 0) return false;
+        let mouth = -1;
+        for (let c = back[goal]!; c >= 0 && ground[c] === "wall"; c = back[c]!) {
+          ground[c] = "floor";
+          mouth = c;
+        }
+        if (mouth < 0) return false;
+        const doorAt = { x: mouth % mapW, y: Math.floor(mouth / mapW) };
+        secrets.push(doorAt);
+        secretWay = doorAt;
+        return true;
+      };
       for (const r of order)
         if (roundOne(r)) {
           postRegion = r;
           wayTargetRegion = target;
           break;
         }
+      ((globalThis as any).__w2 ??= []).push(postRegion >= 0 ? "round" : order.length ? "noround" : "noorder");
+      // No way round at all: the held room still has a way past it, behind a hidden door.
+      if (postRegion < 0)
+        for (const r of order)
+          if (secretOne(r)) {
+            postRegion = r;
+            wayTargetRegion = target;
+            break;
+          }
       // A second way round through other rooms than the first, by a door or a short passage where the plan has
       // none (panel round 44: one way round is a line to follow, not a choice).
       if (postRegion >= 0) {
@@ -3785,6 +3866,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             if (owner.get(m) && !owner.get(m)!.heart && m !== target) avoid.add(m);
           if (avoid.size && roundOne(postRegion, avoid)) planAvoid = avoid;
         }
+        // Where there is no second way round, a hidden door is the third choice, past fighting or going round.
+        if (!planAvoid && !secretWay && random() < 0.85) secretOne(postRegion);
       }
     }
   }
@@ -5191,6 +5274,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     ...(quietWay.length >= 3 ? { quietWay } : {}),
     ...(quietWay.length >= 3 && quietWayLong.length >= 3 ? { quietWayLong } : {}),
     ...(creaks.length >= 2 ? { creaks } : {}),
+    ...(secretWay && postRegion >= 0 ? { secretWay } : {}),
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
 }
@@ -5292,6 +5376,7 @@ export function gameDungeonPlannedMap(input: {
     ...(laid.quietWayLong ? { quietWayLong: laid.quietWayLong } : {}),
     ...(laid.gallery ? { gallery: laid.gallery } : {}),
     ...(laid.creaks ? { creaks: laid.creaks } : {}),
+    ...(laid.secretWay ? { secretWay: laid.secretWay } : {}),
     roomInfo: laid.rooms.map((room) => ({
       name: room.name,
       use: room.use,
