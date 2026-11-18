@@ -1,9 +1,0 @@
-{
-  "ui.modals.decisionmodelmodal.progress.cancelled": "Download cancelled. What it had downloaded was deleted.",
-  "ui.modals.decisionmodelmodal.progress.minutesLeft_one": "about {{count}} min left",
-  "ui.modals.decisionmodelmodal.progress.minutesLeft_other": "about {{count}} min left",
-  "ui.modals.decisionmodelmodal.progress.model": "Downloading {{model}}: {{done}} of {{total}} ({{percent}}%)",
-  "ui.modals.decisionmodelmodal.progress.runtime": "Getting the program that runs {{model}}",
-  "ui.modals.decisionmodelmodal.progress.speed": "{{speed}}/s",
-  "ui.modals.decisionmodelmodal.progress.underMinute": "less than a minute left"
-}
