@@ -4612,7 +4612,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       let busy = 0;
       for (let y = box.y; y < box.y + box.h; y++)
         for (let x = box.x; x < box.x + box.w; x++)
-          if (inner(x, y) && props[cell(x, y)] !== -1 && props[cell(x, y)] !== undefined) busy++;
+          if (inner(x, y) && props[cell(x, y)]! >= 0 && props[cell(x, y)] !== (plan.template === "crypt" ? 7 : COLUMN))
+            busy++;
       const middle = (box.w - 4) * (box.h - 4);
       if (busy > middle / 12) continue;
       const pieces: Array<[number, number]> =
