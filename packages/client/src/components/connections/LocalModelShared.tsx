@@ -7,9 +7,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { LOCAL_MODEL_IDLE_UNLOAD_CHOICES, type LocalModelSlotId } from "@marinara-engine/shared";
 import { useLocalModels, useUpdateLocalModelSettings } from "../../hooks/use-local-models";
-import { FactRow } from "./DeviceDetail";
-
-const FIELD = "mari-chrome-field h-8 w-full max-w-[18rem] px-2 text-xs max-md:h-11 max-sm:max-w-none max-sm:text-base";
+import { DEVICE_FIELD, FactRow } from "./DeviceDetail";
 
 function choiceLabel(minutes: number, t: (key: string, values?: Record<string, unknown>) => string): string {
   if (minutes === 0) return t("connections.localModels.keepLoaded");
@@ -17,11 +15,8 @@ function choiceLabel(minutes: number, t: (key: string, values?: Record<string, u
   return t("connections.localModels.unloadAfterMinutes", { count: minutes });
 }
 
-/**
- * One setting for every built-in model, shown on each of their pages. `field` lays it out
- * like the decision model's own options (label above), `fact` like a facts-card row.
- */
-export function UnloadWhenUnusedRow({ variant = "fact" }: { variant?: "fact" | "field" }) {
+/** One setting for every built-in model, shown as a facts-card row on each of their pages. */
+export function UnloadWhenUnusedRow() {
   const { t } = useTranslation();
   const { data } = useLocalModels();
   const update = useUpdateLocalModelSettings();
@@ -29,43 +24,29 @@ export function UnloadWhenUnusedRow({ variant = "fact" }: { variant?: "fact" | "
   const value =
     update.isPending && update.variables ? update.variables.idleUnloadMinutes : data.settings.idleUnloadMinutes;
   const label = t("connections.localModels.whenUnused");
-  const select = (
-    <select
-      value={value}
-      disabled={update.isPending}
-      onChange={(event) =>
-        update.mutate(
-          { idleUnloadMinutes: Number(event.target.value) },
-          {
-            onError: (error) =>
-              toast.error(error instanceof Error ? error.message : t("connections.localModels.saveFailed")),
-          },
-        )
-      }
-      aria-label={label}
-      className={variant === "field" ? "mari-chrome-field h-11 w-full px-3 text-xs max-sm:text-base md:h-9" : FIELD}
-    >
-      {LOCAL_MODEL_IDLE_UNLOAD_CHOICES.map((minutes) => (
-        <option key={minutes} value={minutes}>
-          {choiceLabel(minutes, t)}
-        </option>
-      ))}
-    </select>
-  );
-  if (variant === "field") {
-    return (
-      <div className="flex flex-col gap-1 text-xs">
-        <span className="font-medium">{label}</span>
-        {select}
-        <span className="text-[0.625rem] text-[var(--muted-foreground)] max-sm:text-[13px]">
-          {t("connections.localModels.whenUnusedHint")}
-        </span>
-      </div>
-    );
-  }
   return (
-    <FactRow label={label} stack>
-      {select}
+    <FactRow label={label}>
+      <select
+        value={value}
+        disabled={update.isPending}
+        onChange={(event) =>
+          update.mutate(
+            { idleUnloadMinutes: Number(event.target.value) },
+            {
+              onError: (error) =>
+                toast.error(error instanceof Error ? error.message : t("connections.localModels.saveFailed")),
+            },
+          )
+        }
+        aria-label={label}
+        className={DEVICE_FIELD}
+      >
+        {LOCAL_MODEL_IDLE_UNLOAD_CHOICES.map((minutes) => (
+          <option key={minutes} value={minutes}>
+            {choiceLabel(minutes, t)}
+          </option>
+        ))}
+      </select>
       <span className="mt-1 block text-[0.6875rem] text-[var(--muted-foreground)]">
         {t("connections.localModels.whenUnusedHint")}
       </span>

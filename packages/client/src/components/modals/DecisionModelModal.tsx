@@ -11,21 +11,18 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import {
-  AlertTriangle,
-  Check,
-  ChevronDown,
   Download,
   Eye,
   Gauge,
-  HardDrive,
-  Languages,
+  HardDriveDownload,
   Link2,
   ListChecks,
-  Loader2,
-  Scale,
+  Power,
+  PowerOff,
+  RefreshCw,
   Trash2,
-  Zap,
 } from "lucide-react";
+import { DECISION_SIDECAR_CONNECTION_ID } from "@marinara-engine/shared";
 import { useTranslation as useUiTranslation } from "react-i18next";
 import {
   useDecisionSidecar,
@@ -40,11 +37,22 @@ import {
   useUpdateDecisionRuntime,
   type DecisionSidecarModel,
 } from "../../hooks/use-decision-sidecar";
+import { useDecisionOptions, useSelectDecisionModel } from "../../hooks/use-decision-model";
+import { cn } from "../../lib/utils";
+import { ProviderIcon } from "../connections/ProviderIcon";
+import {
+  DETAIL_CARD_CLASS,
+  DEVICE_FIELD,
+  DetailHero,
+  FactRow,
+  SMALL_ACTION,
+  StateWord,
+  type EngineTone,
+} from "../connections/DeviceDetail";
 import { showConfirmDialog } from "../../lib/app-dialogs";
 import { LocalModelSlotNote, UnloadWhenUnusedRow } from "../connections/LocalModelShared";
 import { useUIStore } from "../../stores/ui.store";
 import { Spinner } from "../ui/Spinner";
-import { Checkbox } from "../ui/Checkbox";
 
 function formatBytes(bytes: number): string {
   if (bytes >= 1_000_000_000) return `${(bytes / 1_000_000_000).toFixed(1)} GB`;
@@ -272,17 +280,18 @@ export function DecisionModelModal() {
     }
   };
 
-  /** Which memory a model is weighed against, in the words the fact line uses. */
-  const memoryWord = (memory: DecisionSidecarModel["memory"] | undefined) =>
+  /** How much memory a model takes, and which kind it is weighed against. */
+  const memoryLine = (model: Pick<DecisionSidecarModel, "vramBytes" | "memory">) =>
     localizeUi(
-      memory === "cpu"
-        ? "ui.modals.decisionmodelmodal.ram"
-        : memory === "llama"
-          ? "ui.modals.decisionmodelmodal.memoryAny"
-          : "ui.modals.decisionmodelmodal.vram",
+      model.memory === "cpu"
+        ? "connections.decisionDevice.memoryRam"
+        : model.memory === "llama"
+          ? "connections.decisionDevice.memoryAny"
+          : "connections.decisionDevice.memory",
+      { size: formatBytes(model.vramBytes) },
     );
 
-  /** What a model answers and what it reads, in two short lines. */
+  /** What a model answers, what it reads, and how fast it was here, in short lines. */
   const capabilities = (model: {
     questionTypes?: string[];
     inputs?: string[];
@@ -314,7 +323,7 @@ export function DecisionModelModal() {
         ].join(", ")
       : null;
     return (
-      <div className="mt-2 flex flex-col gap-1 text-xs text-[var(--muted-foreground)] max-sm:text-[13px]">
+      <div className="mt-1 flex flex-col gap-1 text-[0.6875rem] text-[var(--muted-foreground)]">
         {answers && (
           <span className="flex items-start gap-1.5">
             <ListChecks size="0.75rem" className="mt-0.5 shrink-0" />
@@ -347,408 +356,351 @@ export function DecisionModelModal() {
     );
   };
 
-  /**
-   * The chosen model's facts under the dropdown. A model this machine cannot run stays
-   * choosable, so its reason can be read, and its Install stays disabled.
-   */
-  const detail = (model: DecisionSidecarModel) => (
-    <div className="mari-dm-row rounded-xl border border-[var(--border)] p-3">
-      {model.id === installedId &&
-        (needsUpdate ? (
-          <span className="mb-2 inline-flex items-center gap-1 rounded-full bg-[var(--warning)]/15 px-2 py-0.5 text-[0.625rem] font-medium text-[var(--warning)]">
-            <AlertTriangle size="0.625rem" />
-            {localizeUi("ui.modals.decisionmodelmodal.needsUpdateBadge")}
-          </span>
-        ) : needsReinstall ? (
-          <span className="mb-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.625rem] max-sm:text-[13px] font-medium text-[var(--warning)] ring-1 ring-[var(--warning)]">
-            {localizeUi("ui.modals.decisionmodelmodal.needsReinstallBadge")}
-          </span>
-        ) : (
-          <span className="mari-chrome-accent-surface mb-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.625rem] max-sm:text-[13px] font-medium">
-            <Check size="0.625rem" />
-            {localizeUi("ui.modals.decisionmodelmodal.installedBadge")}
-          </span>
-        ))}
-      <p className="text-[0.6875rem] leading-relaxed text-[var(--muted-foreground)] max-sm:text-[13px]">
-        {model.description}
-      </p>
-      {capabilities(model)}
-      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--muted-foreground)]/70">
-        <span className="flex items-center gap-1">
-          <Download size="0.75rem" />
-          {formatBytes(model.downloadSizeBytes)}
-        </span>
-        <span className="flex items-center gap-1">
-          <HardDrive size="0.75rem" />~{formatBytes(model.vramBytes)} {memoryWord(model.memory)}
-        </span>
-        {model.languages && (
-          <span className="flex items-center gap-1">
-            <Languages size="0.75rem" />
-            {model.languages}
-          </span>
-        )}
-        <span className="flex items-center gap-1">
-          <Scale size="0.75rem" />
-          {model.licenses.join(", ")}
-        </span>
-      </div>
-      {/* An entry that cannot be installed says why, in the one sentence the
-          preflight produced, rather than being hidden or left unexplained. */}
-      {model.preflight.reason && (
-        <div className="mt-1.5 text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">{model.preflight.reason}</div>
-      )}
-    </div>
-  );
+  const decisionOptions = useDecisionOptions(true);
+  const selectDecision = useSelectDecisionModel();
+  const isDefault = decisionOptions.data?.selected === DECISION_SIDECAR_CONNECTION_ID;
+  const running = data?.process.running === true;
+  const processError = data?.process.error ?? null;
+  // The same states, in the same order, as the other models on this device.
+  const state: { tone: EngineTone; label: string } = nothingRuns
+    ? { tone: "off", label: localizeUi("ui.modals.decisionmodelmodal.notAvailable") }
+    : needsUpdate
+      ? { tone: "warn", label: localizeUi("ui.modals.decisionmodelmodal.needsUpdateBadge") }
+      : needsReinstall
+        ? { tone: "warn", label: localizeUi("ui.modals.decisionmodelmodal.needsReinstallBadge") }
+        : !hasInstall
+          ? { tone: "off", label: localizeUi("connections.device.state.notDownloaded") }
+          : !enabled
+            ? { tone: "off", label: localizeUi("connections.accounts.state.off") }
+            : processError && !running
+              ? { tone: "warn", label: localizeUi("connections.device.state.error") }
+              : running
+                ? { tone: "ok", label: localizeUi("connections.device.state.running") }
+                : { tone: "ok", label: localizeUi("connections.device.state.ready") };
+  const shown = installedId ? (models.find((model) => model.id === installedId) ?? selected) : selected;
+  const switching = !!selected && hasInstall && !customModel && selected.id !== installedId;
+  const installing = install.isPending || installRepo.isPending;
 
   const body = (
-    <div className="mari-dm-body flex flex-col gap-5">
-      <div className="flex items-center gap-3">
-        <Zap size="1rem" className="shrink-0 text-[var(--muted-foreground)]" />
-        <div className="min-w-0 flex-1">
-          <div className="text-sm font-medium">{localizeUi("ui.modals.decisionmodelmodal.title")}</div>
-          <div className="text-xs text-[var(--muted-foreground)]">
-            {[
-              nothingRuns
-                ? localizeUi("ui.modals.decisionmodelmodal.notAvailable")
-                : needsReinstall
-                  ? localizeUi("ui.modals.decisionmodelmodal.needsReinstallBadge")
-                  : hasInstall
-                    ? enabled
-                      ? localizeUi("ui.modals.decisionmodelmodal.installedBadge")
-                      : localizeUi("connections.accounts.state.off")
-                    : localizeUi("connections.device.state.notDownloaded"),
-              !hasInstall && !nothingRuns && selected ? formatBytes(selected.downloadSizeBytes) : installedLabel,
-            ]
-              .filter(Boolean)
-              .join(" · ")}
-          </div>
-        </div>
-        {data?.supported && !hasInstall && !nothingRuns && (
-          <button
-            type="button"
-            onClick={() => void handleDownload()}
-            disabled={busy || !selected?.preflight.installable}
-            className="mari-chrome-control px-3"
-          >
-            {install.isPending ? <Spinner size="sm" /> : <Download size="0.75rem" />}
-            {localizeUi("ui.modals.decisionmodelmodal.download")}
-          </button>
-        )}
-        {data?.supported && hasInstall && !enabled && (
-          <button
-            type="button"
-            onClick={() => void handleEnable(true)}
-            disabled={busy}
-            className="mari-chrome-control px-3"
-          >
-            {localizeUi("ui.modals.decisionmodelmodal.enableToggle")}
-          </button>
-        )}
-      </div>
+    <div className="flex flex-col gap-3" data-component="DecisionModelDetail">
+      <DetailHero
+        icon={<ProviderIcon provider="decision" size="lg" />}
+        title={localizeUi("ui.panels.sidecarcard.decisionSidecar")}
+      >
+        <StateWord tone={state.tone} label={state.label} />
+        <span>· {localizeUi("connections.accounts.section.device")}</span>
+      </DetailHero>
 
-      {hasInstall && <LocalModelSlotNote slot="decision" />}
-
-      {data && !data.supported ? (
-        // Greyed out, never hidden: people who read about this elsewhere need to see
-        // why it is not offered, and what does work instead.
-        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)]/50 p-3 text-xs text-[var(--muted-foreground)]">
-          {data.unsupportedReason}. {localizeUi("ui.modals.decisionmodelmodal.useLocalInstead")}
-        </div>
-      ) : (
-        <details className="group" open={needsReinstall || undefined}>
-          <summary className="cursor-pointer text-xs text-[var(--muted-foreground)]">
-            {localizeUi("ui.modals.decisionmodelmodal.options")}
-          </summary>
-          <div className="mt-3 flex flex-col gap-5">
-            {hasInstall && <UnloadWhenUnusedRow variant="field" />}
-            {/* Only with more than one card: with one there is nothing to choose. */}
-            {data && data.devices.length > 1 && (
-              <label className="flex flex-col gap-1 text-xs">
-                <span className="font-medium">{localizeUi("ui.modals.decisionmodelmodal.gpu")}</span>
-                <select
-                  value={String(data.cudaDevice)}
-                  disabled={busy}
-                  onChange={(event) => device.mutate(Number(event.target.value), { onError: report })}
-                  className="mari-chrome-field h-11 w-full px-3 text-xs max-sm:text-base md:h-9"
-                >
-                  {data.devices.map((entry) => (
-                    <option key={entry.index} value={String(entry.index)}>
-                      {localizeUi("ui.modals.decisionmodelmodal.gpuOption", {
-                        index: entry.index,
-                        name: entry.name,
-                        memory: formatBytes(entry.totalBytes),
-                      })}
-                    </option>
-                  ))}
-                </select>
-                <span className="text-[0.625rem] max-sm:text-[13px] text-[var(--muted-foreground)]">
-                  {localizeUi("ui.modals.decisionmodelmodal.gpuHelp")}
-                </span>
-              </label>
+      {data?.supported && !nothingRuns && hasInstall && (
+        <div className="flex flex-wrap gap-1.5">
+          <button type="button" onClick={() => void handleEnable(!enabled)} disabled={busy} className={SMALL_ACTION}>
+            {enable.isPending ? (
+              <Spinner size="sm" />
+            ) : enabled ? (
+              <PowerOff size="0.75rem" />
+            ) : (
+              <Power size="0.75rem" />
             )}
+            {localizeUi(enabled ? "connections.decisionDevice.turnOff" : "connections.decisionDevice.turnOn")}
+          </button>
+          {enabled && !isDefault && !needsReinstall && (
             <button
               type="button"
-              disabled={busy}
-              onClick={() => void handleEnable(!enabled)}
-              className="mari-dm-toggle flex w-full items-center justify-between gap-3 rounded-lg border border-[var(--border)] px-3 py-2.5 text-left transition-colors hover:bg-[var(--sidebar-accent)] disabled:opacity-50"
+              disabled={selectDecision.isPending}
+              onClick={() =>
+                selectDecision.mutate(DECISION_SIDECAR_CONNECTION_ID, {
+                  onSuccess: () => toast.success(localizeUi("connections.decisionDevice.nowDecision")),
+                  onError: report,
+                })
+              }
+              className={SMALL_ACTION}
             >
-              <div className="min-w-0 flex-1">
-                <div className="text-xs font-medium">{localizeUi("ui.modals.decisionmodelmodal.enableToggle")}</div>
-                <div className="mt-0.5 text-[0.625rem] max-sm:text-[13px] text-[var(--muted-foreground)]">
-                  {localizeUi(
-                    enabled ? "ui.modals.decisionmodelmodal.enabledHint" : "ui.modals.decisionmodelmodal.disabledHint",
-                  )}
-                </div>
-              </div>
-              {busy ? <Spinner size="sm" /> : enabled ? <Check size="0.875rem" /> : null}
+              {localizeUi("connections.decisionDevice.useForDecision")}
             </button>
-
-            {/* The model choice and Install only appear after the toggle is confirmed,
-                so nothing can download from a single click. */}
-            {enabled && (
-              <div className="flex flex-col gap-2">
-                <span className="text-xs font-medium text-[var(--muted-foreground)]/60">
-                  {localizeUi("ui.modals.decisionmodelmodal.curated")}
-                </span>
-                {needsUpdate && (
-                  <div className="flex items-center gap-3 rounded-xl border border-[var(--warning)]/30 bg-[var(--warning)]/10 p-3">
-                    <p className="flex-1 text-xs text-[var(--muted-foreground)]">
-                      {localizeUi("ui.modals.decisionmodelmodal.needsUpdateBody")}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        updateRuntime.mutate(undefined, {
-                          onSuccess: () => toast.success(localizeUi("ui.modals.decisionmodelmodal.updated")),
-                          onError: report,
-                        })
-                      }
-                      disabled={busy}
-                      className="mari-chrome-accent-surface flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium disabled:opacity-50"
-                    >
-                      {updateRuntime.isPending ? (
-                        <Loader2 size="0.75rem" className="animate-spin" />
-                      ) : (
-                        <Download size="0.75rem" />
-                      )}
-                      {localizeUi(
-                        updateRuntime.isPending
-                          ? "ui.modals.decisionmodelmodal.updating"
-                          : "ui.modals.decisionmodelmodal.update",
-                      )}
-                    </button>
-                  </div>
-                )}
-                {/* A dropdown, not a list of cards: there are six models, and the
-                    facts of the one chosen are what matter. */}
-                {selected && (
-                  <div className="relative">
-                    <select
-                      value={selected.id}
-                      disabled={busy}
-                      onChange={(event) => setSelectedId(event.target.value)}
-                      aria-label={localizeUi("ui.modals.decisionmodelmodal.curated")}
-                      className="mari-chrome-field h-8 w-full min-w-0 appearance-none pl-2.5 pr-8 text-xs max-md:h-11 max-sm:text-base"
-                    >
-                      {models.map((model) => (
-                        <option key={model.id} value={model.id}>
-                          {model.id === installedId
-                            ? localizeUi("ui.modals.decisionmodelmodal.optionInstalled", { model: model.label })
-                            : !model.preflight.installable
-                              ? localizeUi("ui.modals.decisionmodelmodal.optionCannotRun", { model: model.label })
-                              : model.downloaded
-                                ? localizeUi("ui.modals.decisionmodelmodal.optionDownloaded", { model: model.label })
-                                : localizeUi("ui.modals.decisionmodelmodal.optionToDownload", {
-                                    model: model.label,
-                                    size: formatBytes(model.downloadSizeBytes),
-                                  })}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      size="0.875rem"
-                      aria-hidden="true"
-                      className="mari-chrome-field-icon pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2"
-                    />
-                  </div>
-                )}
-                {selected && detail(selected)}
-                {needsReinstall && (
-                  <div className="flex flex-col gap-2 rounded-xl border border-[var(--warning)] p-3">
-                    <p className="text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">
-                      {localizeUi("ui.modals.decisionmodelmodal.needsReinstall", { label: installedLabel ?? "" })}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => void handleReinstall()}
-                      disabled={busy}
-                      className="mari-chrome-accent-surface flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors disabled:opacity-50"
-                    >
-                      {install.isPending || installRepo.isPending ? (
-                        <Spinner size="sm" />
-                      ) : (
-                        <Download size="0.875rem" />
-                      )}
-                      {localizeUi(
-                        install.isPending || installRepo.isPending
-                          ? "ui.modals.decisionmodelmodal.installing"
-                          : "ui.modals.decisionmodelmodal.reinstall",
-                      )}
-                    </button>
-                  </div>
-                )}
-                <button
-                  onClick={() => void handleInstall()}
-                  disabled={!selected || busy || !selected.preflight.installable || selected.id === installedId}
-                  className="mari-chrome-accent-surface mt-1 flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors disabled:opacity-50"
-                >
-                  {install.isPending ? <Spinner size="sm" /> : <Download size="0.875rem" />}
-                  {localizeUi(
-                    install.isPending
-                      ? "ui.modals.decisionmodelmodal.installing"
-                      : selected?.downloaded
-                        ? "ui.modals.decisionmodelmodal.useSelected"
-                        : "ui.modals.decisionmodelmodal.installSelected",
-                  )}
-                </button>
-                {/* Pasting a repository, in the same block shape the chat installer
-                    uses for its own bring-your-own section. Inspect first, always:
-                    the user sees the base weights it pulls and the total size before
-                    agreeing to any of it. */}
-                <div className="mt-2 rounded-xl border border-[var(--border)] bg-[var(--card)]/50 p-3">
-                  <div className="text-xs font-medium">{localizeUi("ui.modals.decisionmodelmodal.byoTitle")}</div>
-                  <p className="mt-1 text-[0.625rem] max-sm:text-[13px] text-[var(--muted-foreground)]">
-                    {localizeUi("ui.modals.decisionmodelmodal.byoHelp")}
-                  </p>
-                  <div className="mt-2 flex gap-2">
-                    <input
-                      value={repoInput}
-                      onChange={(event) => {
-                        setRepoInput(event.target.value);
-                        setInspectedRepo("");
-                        inspect.reset();
-                      }}
-                      placeholder={localizeUi("ui.modals.decisionmodelmodal.byoPlaceholder")}
-                      className="min-w-0 flex-1 rounded-lg bg-[var(--secondary)] px-3 py-2 text-sm max-sm:text-base ring-1 ring-[var(--border)] placeholder:text-[var(--muted-foreground)]"
-                    />
-                    <button
-                      type="button"
-                      disabled={!repoInput.trim() || inspect.isPending || busy}
-                      onClick={() => {
-                        const repo = repoInput.trim();
-                        setInspectedRepo(repo);
-                        inspect.mutate({ repoId: repo }, { onError: report });
-                      }}
-                      className="mari-chrome-control px-3"
-                    >
-                      {localizeUi(
-                        inspect.isPending
-                          ? "ui.modals.decisionmodelmodal.checking"
-                          : "ui.modals.decisionmodelmodal.check",
-                      )}
-                    </button>
-                  </div>
-                  {inspect.data?.refusal && (
-                    <p className="mt-2 text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">
-                      {localizeUi(`ui.modals.decisionmodelmodal.refusal.${inspect.data.refusal}`, {
-                        defaultValue: localizeUi("ui.modals.decisionmodelmodal.refusal.unreadable_manifest"),
-                      })}
-                    </p>
-                  )}
-                  {inspect.data?.model && inspect.data.preflight && (
-                    <div className="mt-2 rounded-lg border border-[var(--border)] p-2.5">
-                      <div className="text-xs font-medium">{inspect.data.model.label}</div>
-                      {capabilities(inspect.data.model)}
-                      <div className="mt-1 flex flex-wrap items-center gap-3 text-[0.625rem] max-sm:text-[13px] text-[var(--muted-foreground)]/70">
-                        <span className="flex items-center gap-1">
-                          <Download size="0.75rem" />
-                          {formatBytes(inspect.data.model.downloadSizeBytes)}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <HardDrive size="0.75rem" />~{formatBytes(inspect.data.model.vramBytes)}{" "}
-                          {memoryWord(inspect.data.model.memory)}
-                        </span>
-                        {inspect.data.model.artifacts[1] && (
-                          <span>
-                            {localizeUi("ui.modals.decisionmodelmodal.baseWeights", {
-                              base: inspect.data.model.artifacts[1].repoId,
-                            })}
-                          </span>
-                        )}
-                        <span>
-                          {localizeUi("ui.modals.decisionmodelmodal.pastedLicenses", {
-                            licenses: inspect.data.model.licenses.join(", "),
-                          })}
-                        </span>
-                      </div>
-                      {inspect.data.preflight.reason && (
-                        <div className="mt-1 text-[0.6875rem] max-sm:text-[13px] text-[var(--warning)]">
-                          {inspect.data.preflight.reason}
-                        </div>
-                      )}
-                      <button
-                        type="button"
-                        disabled={!inspect.data.preflight.installable || busy}
-                        onClick={() => void handleInstallRepo()}
-                        className="mari-chrome-control mt-2 w-full"
-                      >
-                        {localizeUi("ui.modals.decisionmodelmodal.installPasted")}
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {/* Off by default, because a model that only answers gates does not
-                    need to hold GPU memory from boot. */}
-                <label className="mt-2 flex items-start gap-2 text-[0.625rem] max-sm:text-[13px] text-[var(--muted-foreground)] max-sm:min-h-11 max-sm:items-center max-sm:text-[13px]">
-                  <Checkbox
-                    checked={data?.settings.startPolicy === "with_marinara"}
-                    disabled={busy}
-                    onChange={(event) =>
-                      startPolicy.mutate(event.target.checked ? "with_marinara" : "on_demand", { onError: report })
-                    }
-                    className="mt-0.5 accent-[var(--primary)]"
-                  />
-                  <span>{localizeUi("ui.modals.decisionmodelmodal.startWithMarinara")}</span>
-                </label>
-              </div>
-            )}
-            {/* Outside the enabled branch: switching the sidecar off keeps its
-                  files, and deleting them must not require switching it back on. */}
-            {hasInstall && (
-              <button
-                type="button"
-                disabled={busy}
-                onClick={async () => {
-                  if (
-                    await showConfirmDialog({
-                      title: localizeUi("ui.modals.decisionmodelmodal.removeTitle"),
-                      message: localizeUi("ui.modals.decisionmodelmodal.removeBody"),
-                      confirmLabel: localizeUi("ui.modals.decisionmodelmodal.remove"),
-                      tone: "destructive",
-                    })
-                  ) {
-                    try {
-                      await remove.mutateAsync();
-                    } catch (error) {
-                      report(error);
-                    }
-                  }
-                }}
-                className="mari-chrome-control px-3"
-              >
-                <Trash2 size="0.75rem" />
-                {localizeUi("ui.modals.decisionmodelmodal.remove")}
-              </button>
-            )}
-          </div>
-        </details>
+          )}
+          {needsUpdate && (
+            <button
+              type="button"
+              onClick={() =>
+                updateRuntime.mutate(undefined, {
+                  onSuccess: () => toast.success(localizeUi("ui.modals.decisionmodelmodal.updated")),
+                  onError: report,
+                })
+              }
+              disabled={busy}
+              className={SMALL_ACTION}
+            >
+              {updateRuntime.isPending ? <Spinner size="sm" /> : <RefreshCw size="0.75rem" />}
+              {localizeUi(
+                updateRuntime.isPending
+                  ? "ui.modals.decisionmodelmodal.updating"
+                  : "ui.modals.decisionmodelmodal.update",
+              )}
+            </button>
+          )}
+          {needsReinstall && (
+            <button type="button" onClick={() => void handleReinstall()} disabled={busy} className={SMALL_ACTION}>
+              {installing ? <Spinner size="sm" /> : <Download size="0.75rem" />}
+              {localizeUi("ui.modals.decisionmodelmodal.reinstall")}
+            </button>
+          )}
+        </div>
       )}
 
-      {nothingRuns && (
-        <button type="button" onClick={openDecisionConnection} className="mari-chrome-control px-3 max-sm:!min-h-11">
-          <Link2 size="0.75rem" />
-          {localizeUi("ui.modals.decisionmodelmodal.setUpDecisionConnection")}
+      {data && nothingRuns ? (
+        // Greyed out, never hidden: people who read about this elsewhere need to see
+        // why it is not offered, and what does work instead.
+        <div className="mari-device-warn rounded-lg border border-[var(--warning)]/30 bg-[var(--warning)]/10 p-2.5 text-[0.6875rem]">
+          <p className="text-[var(--foreground)]">
+            {data.supported
+              ? localizeUi("ui.game.gamesurfacecomponent.value1", {
+                  value1: localizeUi("ui.modals.decisionmodelmodal.notAvailable"),
+                })
+              : localizeUi("ui.game.gamesurfacecomponent.value1", { value1: data.unsupportedReason })}{" "}
+            {localizeUi("ui.modals.decisionmodelmodal.useLocalInstead")}
+          </p>
+          <button type="button" onClick={openDecisionConnection} className={cn(SMALL_ACTION, "mt-2")}>
+            <Link2 size="0.75rem" />
+            {localizeUi("ui.modals.decisionmodelmodal.setUpDecisionConnection")}
+          </button>
+        </div>
+      ) : null}
+
+      {needsUpdate && (
+        <p className="mari-device-warn rounded-lg border border-[var(--warning)]/30 bg-[var(--warning)]/10 p-2.5 text-[0.6875rem] text-[var(--foreground)]">
+          {localizeUi("ui.modals.decisionmodelmodal.needsUpdateBody")}
+        </p>
+      )}
+      {needsReinstall && (
+        <p className="mari-device-warn rounded-lg border border-[var(--warning)]/30 bg-[var(--warning)]/10 p-2.5 text-[0.6875rem] text-[var(--foreground)]">
+          {localizeUi("ui.modals.decisionmodelmodal.needsReinstall", { label: installedLabel ?? "" })}
+        </p>
+      )}
+      {processError && enabled && !running && !needsReinstall && !needsUpdate && (
+        <div
+          role="alert"
+          className="mari-device-warn rounded-lg border border-[var(--marinara-app-accent-static)]/20 bg-[var(--marinara-app-accent-static)]/5 p-2.5 text-[0.6875rem]"
+        >
+          <div className="text-[var(--muted-foreground)] [overflow-wrap:anywhere]">{processError}</div>
+        </div>
+      )}
+      {hasInstall && <LocalModelSlotNote slot="decision" />}
+
+      {data?.supported && !nothingRuns && (
+        <section className={DETAIL_CARD_CLASS}>
+          <FactRow label={localizeUi("connections.device.fact.model")}>
+            {customModel ? (
+              <span className="block">{customModel.label}</span>
+            ) : (
+              // A dropdown, like the embedding model's: the name fits on one line on a phone.
+              <select
+                value={selected?.id ?? ""}
+                disabled={busy}
+                onChange={(event) => setSelectedId(event.target.value)}
+                aria-label={localizeUi("connections.device.fact.model")}
+                className={DEVICE_FIELD}
+              >
+                {/* A model this computer cannot run stays choosable, so its reason can be read; its Download stays off. */}
+                {models.map((model) => (
+                  <option key={model.id} value={model.id}>
+                    {model.id === installedId
+                      ? model.label
+                      : !model.preflight.installable
+                        ? localizeUi("ui.modals.decisionmodelmodal.optionCannotRun", { model: model.label })
+                        : model.downloaded
+                          ? localizeUi("ui.modals.decisionmodelmodal.optionDownloaded", { model: model.label })
+                          : localizeUi("connections.builtinEmbedding.optionToDownload", {
+                              model: model.label,
+                              size: formatBytes(model.downloadSizeBytes),
+                            })}
+                  </option>
+                ))}
+              </select>
+            )}
+            {selected && (
+              <span className="mt-1 block text-[0.6875rem] text-[var(--muted-foreground)]">{selected.description}</span>
+            )}
+            {selected && capabilities(selected)}
+            {selected?.preflight.reason ? (
+              <span className="mt-1 block text-[0.6875rem] text-[var(--warning)]">{selected.preflight.reason}</span>
+            ) : selected ? (
+              <span className="mt-1 block text-[0.6875rem] text-[var(--muted-foreground)]">
+                {[selected.languages, selected.licenses.join(", ")].filter(Boolean).join(" · ")}
+              </span>
+            ) : null}
+          </FactRow>
+          {shown && <FactRow label={localizeUi("connections.device.fact.memory")}>{memoryLine(shown)}</FactRow>}
+          <FactRow label={localizeUi("connections.device.fact.usedBy")}>
+            {isDefault ? localizeUi("connections.decision.label") : localizeUi("connections.device.usedBy.none")}
+          </FactRow>
+          <FactRow label={localizeUi("connections.builtinEmbedding.runsOn")}>
+            {data.devices.length > 1 ? (
+              <select
+                value={String(data.cudaDevice)}
+                disabled={busy}
+                onChange={(event) => device.mutate(Number(event.target.value), { onError: report })}
+                aria-label={localizeUi("connections.builtinEmbedding.runsOn")}
+                className={DEVICE_FIELD}
+              >
+                {data.devices.map((entry) => (
+                  <option key={entry.index} value={String(entry.index)}>
+                    {localizeUi("ui.modals.decisionmodelmodal.gpuOption", {
+                      index: entry.index,
+                      name: entry.name,
+                      memory: formatBytes(entry.totalBytes),
+                    })}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="block">
+                {data.devices[0]?.name ?? localizeUi("connections.builtinEmbedding.device.auto")}
+              </span>
+            )}
+          </FactRow>
+          {/* Off by default, because a model that only answers gates does not need to hold memory from boot. */}
+          <FactRow label={localizeUi("connections.decisionDevice.starts")}>
+            <select
+              value={data.settings.startPolicy === "with_marinara" ? "with_marinara" : "on_demand"}
+              disabled={busy || !hasInstall}
+              onChange={(event) =>
+                startPolicy.mutate(event.target.value as "with_marinara" | "on_demand", { onError: report })
+              }
+              aria-label={localizeUi("connections.decisionDevice.starts")}
+              className={DEVICE_FIELD}
+            >
+              <option value="on_demand">{localizeUi("connections.decisionDevice.startOnDemand")}</option>
+              <option value="with_marinara">{localizeUi("connections.decisionDevice.startWithMarinara")}</option>
+            </select>
+          </FactRow>
+          {hasInstall && <UnloadWhenUnusedRow />}
+        </section>
+      )}
+
+      {/* One primary button, as on the other models: download, or download the model picked above. */}
+      {data?.supported && !nothingRuns && selected && (!hasInstall || switching) && (
+        <button
+          type="button"
+          onClick={() => void (hasInstall ? handleInstall() : handleDownload())}
+          disabled={busy || !selected.preflight.installable}
+          className="mari-chrome-control mari-chrome-control--primary w-full"
+        >
+          {installing ? <Spinner size="sm" /> : <HardDriveDownload size="0.8125rem" />}
+          {installing
+            ? localizeUi("ui.modals.decisionmodelmodal.installing")
+            : selected.downloaded
+              ? localizeUi("ui.modals.decisionmodelmodal.useSelected")
+              : localizeUi("connections.builtinEmbedding.downloadModel", {
+                  model: selected.label,
+                  size: formatBytes(selected.downloadSizeBytes),
+                })}
+        </button>
+      )}
+
+      {/* Bring your own: checked first, always, so the size and base weights are seen before agreeing. */}
+      {data?.supported && !nothingRuns && (
+        <section className={DETAIL_CARD_CLASS}>
+          <div className="text-xs font-medium">{localizeUi("ui.modals.decisionmodelmodal.byoTitle")}</div>
+          <p className="mt-1 text-[0.6875rem] text-[var(--muted-foreground)]">
+            {localizeUi("ui.modals.decisionmodelmodal.byoHelp")}
+          </p>
+          <div className="mt-2 flex gap-1.5">
+            <input
+              value={repoInput}
+              onChange={(event) => {
+                setRepoInput(event.target.value);
+                setInspectedRepo("");
+                inspect.reset();
+              }}
+              placeholder={localizeUi("ui.modals.decisionmodelmodal.byoPlaceholder")}
+              aria-label={localizeUi("ui.modals.decisionmodelmodal.byoTitle")}
+              className={cn(DEVICE_FIELD, "max-w-none flex-1")}
+            />
+            <button
+              type="button"
+              disabled={!repoInput.trim() || inspect.isPending || busy}
+              onClick={() => {
+                const repo = repoInput.trim();
+                setInspectedRepo(repo);
+                inspect.mutate({ repoId: repo }, { onError: report });
+              }}
+              className={SMALL_ACTION}
+            >
+              {localizeUi(
+                inspect.isPending ? "ui.modals.decisionmodelmodal.checking" : "ui.modals.decisionmodelmodal.check",
+              )}
+            </button>
+          </div>
+          {inspect.data?.refusal && (
+            <p className="mt-2 text-[0.6875rem] text-[var(--warning)]">
+              {localizeUi(`ui.modals.decisionmodelmodal.refusal.${inspect.data.refusal}`, {
+                defaultValue: localizeUi("ui.modals.decisionmodelmodal.refusal.unreadable_manifest"),
+              })}
+            </p>
+          )}
+          {inspect.data?.model && inspect.data.preflight && (
+            <div className="mt-2 flex flex-col gap-1">
+              <div className="text-xs font-medium">{inspect.data.model.label}</div>
+              {capabilities(inspect.data.model)}
+              <div className="text-[0.6875rem] text-[var(--muted-foreground)]">
+                {[
+                  formatBytes(inspect.data.model.downloadSizeBytes),
+                  memoryLine(inspect.data.model),
+                  // A GGUF repository has no separate base weights.
+                  ...(inspect.data.model.artifacts[1]
+                    ? [
+                        localizeUi("ui.modals.decisionmodelmodal.baseWeights", {
+                          base: inspect.data.model.artifacts[1].repoId,
+                        }),
+                      ]
+                    : []),
+                  localizeUi("ui.modals.decisionmodelmodal.pastedLicenses", {
+                    licenses: inspect.data.model.licenses.join(", "),
+                  }),
+                ].join(" · ")}
+              </div>
+              {inspect.data.preflight.reason && (
+                <div className="text-[0.6875rem] text-[var(--warning)]">{inspect.data.preflight.reason}</div>
+              )}
+              <button
+                type="button"
+                disabled={!inspect.data.preflight.installable || busy}
+                onClick={() => void handleInstallRepo()}
+                className={cn(SMALL_ACTION, "self-start")}
+              >
+                <Download size="0.75rem" />
+                {localizeUi("ui.modals.decisionmodelmodal.installPasted")}
+              </button>
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* Switching it off keeps its files, and deleting them must not require switching it back on. */}
+      {hasInstall && (
+        <button
+          type="button"
+          disabled={busy}
+          onClick={async () => {
+            if (
+              await showConfirmDialog({
+                title: localizeUi("ui.modals.decisionmodelmodal.removeTitle"),
+                message: localizeUi("ui.modals.decisionmodelmodal.removeBody"),
+                confirmLabel: localizeUi("ui.modals.decisionmodelmodal.remove"),
+                tone: "destructive",
+              })
+            ) {
+              try {
+                await remove.mutateAsync();
+              } catch (error) {
+                report(error);
+              }
+            }
+          }}
+          className={cn(SMALL_ACTION, "mari-device-remove self-start")}
+        >
+          <Trash2 size="0.75rem" />
+          {localizeUi("connections.device.removeFiles")}
         </button>
       )}
     </div>

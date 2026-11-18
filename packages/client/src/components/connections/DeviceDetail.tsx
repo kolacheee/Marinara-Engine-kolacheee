@@ -19,6 +19,7 @@ import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import {
+  BUILTIN_TTS_SOURCE,
   LOCAL_SIDECAR_CONNECTION_ID,
   getDefaultAgentPrompt,
   type SidecarQuantization,
@@ -44,6 +45,9 @@ import { JOB, JOBS, jobLabelKey } from "../../lib/connection-jobs";
 import { cn } from "../../lib/utils";
 import { DecisionModelModal } from "../modals/DecisionModelModal";
 import { BuiltinEmbeddingDetail } from "./BuiltinEmbeddingDetail";
+import { BuiltinDictationDetail } from "./BuiltinDictationDetail";
+import { BuiltinEmotionDetail, useBuiltinEmotionState } from "./BuiltinEmotionDetail";
+import { BuiltinTtsDetail, useBuiltinTtsState } from "./BuiltinTtsDetail";
 import { ModelDownloadModal } from "../modals/ModelDownloadModal";
 import { LocalModelSlotNote, UnloadWhenUnusedRow } from "./LocalModelShared";
 import { hostOf } from "../modals/create-connection/shared";
@@ -57,6 +61,8 @@ import { Spinner } from "../ui/Spinner";
 const isLite = import.meta.env.VITE_MARINARA_LITE === "true";
 
 export const SMALL_ACTION = "mari-chrome-control px-2.5";
+/** A dropdown or text field inside a facts row: the same size on every model's page. */
+export const DEVICE_FIELD = "mari-chrome-field h-8 w-full max-w-[18rem] px-2 text-xs max-md:h-11 max-sm:text-base";
 /** The facts and models card of a detail page, coloured from the Connections panel tokens. */
 export const DETAIL_CARD_CLASS =
   "mari-device-card mari-panel-gradient--connections rounded-xl bg-[linear-gradient(135deg,color-mix(in_srgb,var(--mari-panel-gradient-start)_5%,transparent),color-mix(in_srgb,var(--mari-panel-gradient-end)_5%,transparent))] p-3";
@@ -66,7 +72,7 @@ export function formatBytes(bytes: number): string {
   return `${(bytes / (1024 * 1024 * 1024)).toFixed(1)} GB`;
 }
 
-function describeSpeechRuntimeUnavailable(
+export function describeSpeechRuntimeUnavailable(
   runtime: SidecarSpeechRuntimeDiagnostics | null,
   localizeUi: TFunction,
 ): string {
@@ -152,16 +158,12 @@ export function DetailHero({
   );
 }
 
-/** `stack` puts the label above on a phone, for a dropdown that needs the whole width to show its choice. */
-export function FactRow({ label, children, stack }: { label: string; children: ReactNode; stack?: boolean }) {
+export function FactRow({ label, children }: { label: string; children: ReactNode }) {
+  // Label left on every screen size, so a page with a dropdown lines up with one without.
+  // On a phone values wrap to several lines, so the label sits on the first line, not the middle.
   return (
-    <div
-      className={cn(
-        "flex min-h-9 items-center gap-3 text-xs",
-        stack && "max-sm:flex-col max-sm:items-stretch max-sm:gap-1",
-      )}
-    >
-      <span className={cn("w-24 shrink-0 text-[var(--muted-foreground)]", stack && "max-sm:w-auto")}>{label}</span>
+    <div className="flex min-h-9 items-center gap-3 text-xs max-sm:items-baseline max-sm:py-2">
+      <span className="w-24 shrink-0 text-[var(--muted-foreground)]">{label}</span>
       <span className="min-w-0 flex-1">{children}</span>
     </div>
   );
@@ -191,6 +193,8 @@ export function useDeviceEngines(): DeviceEngine[] {
   const speechDownloading = useSidecarStore((s) => s.speechDownloadProgress?.status === "downloading");
   const { data: tts } = useTTSConfig();
   const modelFor = useJobModels((useConnections().data ?? []) as ConnectionRowData[]);
+  const builtinTts = useBuiltinTtsState();
+  const emotions = useBuiltinEmotionState();
   const whisperAvailable = setup.stt.available;
   useEffect(() => {
     if (whisperAvailable) void useSidecarStore.getState().fetchSpeechStatus();
@@ -244,13 +248,14 @@ export function useDeviceEngines(): DeviceEngine[] {
       });
     }
   }
+  // The voice model the Engine runs itself, beside the voice servers people host.
+  if (builtinTts) engines.push({ item: "builtin-tts", ...builtinTts });
   if (whisperAvailable) {
-    const dictation = t(jobLabelKey(JOB.stt));
     const first = speechModels[0]?.id;
     engines.push({
       item: "stt",
-      name: "Whisper",
-      detail: dictation,
+      name: t("connections.builtinDictation.name"),
+      detail: "Whisper",
       ...(speechDownloaded
         ? { tone: "ok" as const, state: t("connections.device.whisper.ready") }
         : speechDownloading
@@ -274,7 +279,8 @@ export function useDeviceEngines(): DeviceEngine[] {
   // A voice server the user hosts runs here; a cloud voice (ElevenLabs, OpenAI, xAI) shows on the Voice job row.
   // Local PocketTTS always has a row, so the card shows the Voice engine even when voice is off or cloud.
   const localVoice = setup.tts.setUp && !!tts?.local;
-  if (localVoice && tts.source !== "pockettts") {
+  // The built-in voice model has a row of its own above.
+  if (localVoice && tts.source !== "pockettts" && tts.source !== BUILTIN_TTS_SOURCE) {
     engines.push({
       item: "tts",
       name: t(`connections.device.ttsSource.${tts.source}`),
@@ -288,7 +294,7 @@ export function useDeviceEngines(): DeviceEngine[] {
       item: "tts",
       name: t("connections.device.ttsSource.pockettts"),
       detail: t(jobLabelKey(JOB.voice)),
-      ...(localVoice
+      ...(localVoice && tts.source === "pockettts"
         ? { tone: "ok" as const, state: t("connections.device.state.inUse") }
         : {
             tone: "off" as const,
@@ -303,6 +309,7 @@ export function useDeviceEngines(): DeviceEngine[] {
           }),
     });
   }
+  if (emotions) engines.push({ item: "emotions", ...emotions });
   return engines;
 }
 
@@ -548,7 +555,7 @@ function LocalModelDetail() {
 
       {failed && (
         <div
-          className="rounded-lg border border-[var(--marinara-app-accent-static)]/20 bg-[var(--marinara-app-accent-static)]/5 p-2.5"
+          className="mari-device-warn rounded-lg border border-[var(--marinara-app-accent-static)]/20 bg-[var(--marinara-app-accent-static)]/5 p-2.5"
           role="alert"
         >
           <div className="text-[0.6875rem] font-medium text-[var(--marinara-app-accent-static)]">
@@ -879,28 +886,47 @@ export function DeviceDetail({ item }: { item: DeviceItem }) {
     (entry) => entry.status !== "error" && entry.manifest.kind.includes("conversation-calls"),
   );
   if (item === "local-model") return isLite ? null : <LocalModelDetail />;
+  if (item === "builtin-tts") return <BuiltinTtsDetail />;
+  if (item === "emotions") return <BuiltinEmotionDetail />;
+  if (item === "stt" && callsInstalled && !isLite) return <BuiltinDictationDetail engine={engine} />;
+  const job = item === "tts" ? "voice" : "stt";
+  const inUse = engine?.tone === "ok";
+  // The same frame as the other models on this device: hero, one row of actions, then the facts card.
   return (
     <div className="flex flex-col gap-3">
       <DetailHero
         icon={<ProviderIcon provider={item} size="lg" />}
-        title={t(item === "tts" ? "connections.add.device.tts" : "connections.add.device.stt")}
+        title={engine?.name ?? t(item === "tts" ? "connections.add.device.tts" : "connections.add.device.stt")}
       >
         {engine ? (
           <StateWord tone={engine.tone} label={engine.state} />
         ) : (
           <StateWord tone="off" label={t("connections.accounts.state.off")} />
         )}
-        <span>· {engine?.detail || t("connections.accounts.section.device")}</span>
+        <span>· {t("connections.accounts.section.device")}</span>
       </DetailHero>
-      {/* The Voice and Dictation settings live in their jobs; this page keeps the engine. */}
-      <button
-        type="button"
-        onClick={() => useUIStore.getState().openModal("job-settings", { job: item === "tts" ? "voice" : "stt" })}
-        className={cn(SMALL_ACTION, "self-start")}
-      >
-        {t("connections.device.openJobSettings")}
-      </button>
-      {item === "stt" && callsInstalled && !isLite && <LocalWhisper />}
+      <div className="flex flex-wrap gap-1.5">
+        {engine?.fix && (
+          <button type="button" onClick={engine.fix.run} className={SMALL_ACTION}>
+            {engine.fix.label}
+          </button>
+        )}
+        {/* The Voice and Dictation settings live in their jobs; this page keeps the engine. */}
+        <button
+          type="button"
+          onClick={() => useUIStore.getState().openModal("job-settings", { job })}
+          className={SMALL_ACTION}
+        >
+          <Settings2 size="0.75rem" />
+          {t("connections.device.openJobSettings")}
+        </button>
+      </div>
+      <section className={DETAIL_CARD_CLASS}>
+        <FactRow label={t("connections.device.fact.model")}>{engine?.name ?? "—"}</FactRow>
+        <FactRow label={t("connections.device.fact.usedBy")}>
+          {inUse ? t(jobLabelKey(item === "tts" ? JOB.voice : JOB.stt)) : t("connections.device.usedBy.none")}
+        </FactRow>
+      </section>
     </div>
   );
 }
