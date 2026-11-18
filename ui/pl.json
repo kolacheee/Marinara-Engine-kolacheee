@@ -11451,6 +11451,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "Konfiguracja {{value1}}",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veo akceptuje 4, 6 lub 8 sekund. Referencje zapętlonych klipów postaci używają awatara jako pierwszej i ostatniej klatki i trwają 8 sekund.",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "Domyślne ustawienia wideo",
+  "ui.decision.visionRequired": "Wymaga modelu decyzyjnego, który odczytuje obrazy. Wybierz Liquid d1, Valen lub Winnow w sekcji Połączenia › Na tym urządzeniu › Model wbudowany (decyzje).",
   "ui.decision.visionRequiredLabel": "Dlaczego ta opcja jest niedostępna",
   "ui.diagnostics.accessWarningBanner.review": "Przejrzyj dostęp",
   "ui.diagnostics.accessWarningBanner.title": "Inni mogą otworzyć aplikację Marinara bez hasła",
