@@ -886,17 +886,36 @@ export function DungeonMapView({
     return canvas;
   }, [cells, drawTile, links, resolution, kept?.roomInfo, kept?.gallery]);
   const mapSize = cells ? { width: cells.width * T, height: cells.height * T } : { width: 0, height: 0 };
+  // A floor that is a small part of its map (a tower top over a castle's whole footprint) is framed on what is
+  // built, three cells round it, the rest left dark, not a few rooms adrift in a field of grass (panel rounds
+  // 40-43: the tower top "a dead stub" in a corner of the canvas).
+  const framed = useMemo(() => {
+    const whole = { x: 0, y: 0, ...mapSize };
+    if (!cells || !kept?.site) return whole;
+    let [x0, y0, x1, y1] = [cells.width, cells.height, -1, -1];
+    for (let y = 0; y < cells.height; y++)
+      for (let x = 0; x < cells.width; x++)
+        if (cells.ground[y * cells.width + x] !== "rock")
+          [x0, y0, x1, y1] = [Math.min(x0, x), Math.min(y0, y), Math.max(x1, x), Math.max(y1, y)];
+    if (x1 < 0 || (x1 - x0 + 1) * (y1 - y0 + 1) > cells.width * cells.height * 0.4) return whole;
+    const [fx0, fy0] = [Math.max(0, x0 - 3), Math.max(0, y0 - 3)];
+    const [fx1, fy1] = [Math.min(cells.width, x1 + 4), Math.min(cells.height, y1 + 4)];
+    return { x: fx0 * T, y: fy0 * T, width: (fx1 - fx0) * T, height: (fy1 - fy0) * T };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cells, kept?.site, mapSize.width, mapSize.height]);
 
   // ── The party, and the view ──
   const partyRef = useRef<Point | null>(null);
   const facingRef = useRef<CharacterFacing>("down");
   if (!walkingRef.current) partyRef.current = kept ? centreOf(kept.at) : null;
   const camera = useCallback(
-    (at: Point) => overworldCamera(at, mapSize, size, scale),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mapSize.width, mapSize.height, scale, size],
+    (at: Point) => {
+      const cam = overworldCamera({ x: at.x - framed.x, y: at.y - framed.y }, framed, size, scale);
+      return { x: cam.x + framed.x * scale, y: cam.y + framed.y * scale };
+    },
+    [framed, scale, size],
   );
-  const resting = camera(partyRef.current ?? { x: mapSize.width / 2, y: mapSize.height / 2 });
+  const resting = camera(partyRef.current ?? { x: framed.x + framed.width / 2, y: framed.y + framed.height / 2 });
 
   const standing = useMemo(
     () =>
@@ -927,7 +946,20 @@ export function DungeonMapView({
       ctx.fillRect(0, 0, width, height);
       ctx.setTransform(scale * dpr, 0, 0, scale * dpr, -cam.x * dpr, -cam.y * dpr);
       ctx.imageSmoothingEnabled = drawTile.image && resolution > scale * dpr;
-      ctx.drawImage(base, 0, 0, base.width / resolution, base.height / resolution);
+      if (framed.width === mapSize.width && framed.height === mapSize.height)
+        ctx.drawImage(base, 0, 0, base.width / resolution, base.height / resolution);
+      else
+        ctx.drawImage(
+          base,
+          framed.x * resolution,
+          framed.y * resolution,
+          framed.width * resolution,
+          framed.height * resolution,
+          framed.x,
+          framed.y,
+          framed.width,
+          framed.height,
+        );
       ctx.imageSmoothingEnabled = false;
       for (const trap of foundTraps) paintFoundTrap(ctx, trap.x * T, trap.y * T);
       const inFog = (x: number, y: number) => fogged.some((room) => dungeonRoomHas(room, x, y));
@@ -1214,7 +1246,22 @@ export function DungeonMapView({
         if (!drawn && !drawTile(ctx, "party", x, y)) paintParty(ctx, x + 1, y + 1, frame !== 1);
       }
     },
-    [base, drawTile, fogged, foundTraps, guards, resolution, scale, size.height, size.width, standing, sneaking],
+    [
+      base,
+      drawTile,
+      fogged,
+      framed,
+      mapSize.width,
+      mapSize.height,
+      foundTraps,
+      guards,
+      resolution,
+      scale,
+      size.height,
+      size.width,
+      standing,
+      sneaking,
+    ],
   );
   const drawRef = useRef(draw);
   drawRef.current = draw;
