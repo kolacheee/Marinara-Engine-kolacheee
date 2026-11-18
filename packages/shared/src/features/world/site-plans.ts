@@ -3384,15 +3384,15 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       const cutAt = (x: number, y: number) => {
         const [dx, dy] = [Math.min(x - x0, x1 - x), Math.min(y - y0, y1 - y)];
         if (shape === "cross") {
-          const [kx, ky] = [Math.floor(w / 4), Math.floor(h / 4)];
+          const [kx, ky] = [Math.floor(w / 3), Math.floor(h / 3)];
           return dx < kx && dy < ky;
         }
         if (shape === "round") {
-          const k = Math.floor(Math.min(w, h) / 3);
+          const k = Math.floor(Math.min(w, h) / 2.4);
           return dx + dy < k;
         }
         // The apse: the two corners at one end of the long way rounded off.
-        const k = Math.floor(Math.min(w, h) / 2) - 1;
+        const k = Math.floor(Math.min(w, h) / 2);
         const atEnd = tall ? (apseEnd ? y - y0 : y1 - y) : apseEnd ? x - x0 : x1 - x;
         return atEnd < k && dx + dy < k;
       };
@@ -3409,7 +3409,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         return true;
       });
       // A cut that leaves the room less than two thirds of itself is too much.
-      if (!cut.length || cut.length > cells.length / 3) continue;
+      if (!cut.length || cut.length > cells.length * 0.45) continue;
       const gone = new Set(cut);
       // And the chamber still one piece.
       const keep = cells.filter((c) => !gone.has(c) && at[c] === g && ground[c] === "floor");
@@ -4973,7 +4973,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   if (plan.template === "crypt" && level.depth < 0)
     for (const [k, room] of rooms.entries()) {
       const name = info[k]?.name ?? "";
-      if (!room || !/burial|vault|crypt|tomb|ossuar|charnel|columbar|catacomb|founder/iu.test(name)) continue;
+      if (!room || !/burial hall|wall tombs|family crypt|columbar|catacomb/iu.test(name)) continue;
       const parts = (room.parts ??= []);
       const bones = /ossuar|charnel/iu.test(name);
       let cut = 0;
@@ -5070,7 +5070,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (!reachable()) props[end] = -1;
     }
     const mid = way[Math.floor((way.length - 1) / 2)]!;
-    if (random() < 0.4 && props[mid] === -1 && way.length >= 4) {
+    if (random() < 0.75 && props[mid] === -1 && way.length >= 4) {
       props[mid] = 1;
       if (!reachable()) props[mid] = -1;
     }
