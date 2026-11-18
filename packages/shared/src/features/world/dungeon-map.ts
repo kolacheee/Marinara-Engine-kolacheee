@@ -5,6 +5,13 @@
 import type { WorldPlaceMap } from "./place-maps.js";
 import { worldMapWordsSchema, type WorldMapWords } from "./edits.js";
 import { z } from "zod";
+import {
+  DUNGEON_LAIRS,
+  DUNGEON_LAIR_FEATURE_WORDS,
+  DUNGEON_LAIR_KINDS,
+  dungeonLairFeature,
+  type DungeonLairKind,
+} from "./lairs.js";
 
 export type DungeonKind = "cave" | "dungeon" | "station";
 
@@ -919,6 +926,15 @@ export const gameDungeonMapSchema = z
       .optional(),
     /** What a floor below ground is built round (panel round 52). */
     theme: z.enum(["flooded", "fallen", "bones", "plague", "robbed"]).optional(),
+    /** A creature's lair (owner 2026-11-18), on every floor of the site: the kind its seed drew. */
+    lairKind: z.enum(DUNGEON_LAIR_KINDS).optional(),
+    /** On a carved lair floor, its great chamber (an index into `rooms`): the heart. */
+    lairRoom: z.number().int().min(0).max(39).optional(),
+    /** On the lair's own floor, what its great chamber holds: the hoard, the ward ring, the coffins... */
+    lairFeature: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(300)
+      .optional(),
     /** A hidden door that leads past the held room (panel round 46). */
     secretWay: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
     /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */
@@ -941,13 +957,14 @@ export const gameDungeonMapSchema = z
           .regex(/^[a-z]{1,12}$/u)
           .optional(),
         undead: z.literal(true).optional(),
+        lair: z.enum(DUNGEON_LAIR_KINDS).optional(),
         traps: z.literal(true).optional(),
-        level: z.number().int().min(0).max(9),
+        level: z.number().int().min(0).max(10),
         levels: z
           .array(z.object({ name: z.string().trim().min(1).max(60), depth: z.number().int().min(-9).max(9) }).strict())
           .min(1)
-          .max(10),
-        seen: z.record(z.string().regex(/^\d$/u), z.array(z.number().int().min(0).max(39)).max(40)).default({}),
+          .max(11),
+        seen: z.record(z.string().regex(/^\d{1,2}$/u), z.array(z.number().int().min(0).max(39)).max(40)).default({}),
         unlocked: z.array(z.string().max(8)).max(40).default([]),
         trapsFound: z.array(z.string().max(12)).max(80).default([]),
         trapsGone: z.array(z.string().max(12)).max(80).default([]),
@@ -1157,6 +1174,104 @@ export function dungeonFloorSeed(siteSeed: number, floor: number): number {
   return floor <= 1 ? siteSeed : (Math.imul(siteSeed ^ 0x2545f491, 0x9e3779b1) + floor * 0x6d2b79f5) >>> 0;
 }
 
+/** Steps from a map's way in to every cell it can walk to (-1 where it cannot). */
+function dungeonStepsFrom(made: DungeonMap, from: { x: number; y: number }): Int32Array {
+  const steps = new Int32Array(made.width * made.height).fill(-1);
+  const start = from.y * made.width + from.x;
+  steps[start] = 0;
+  const queue = [start];
+  for (let head = 0; head < queue.length; head++) {
+    const cell = queue[head]!;
+    const x = cell % made.width;
+    const y = (cell - x) / made.width;
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ] as const) {
+      if (!dungeonWalkable(made, x + dx, y + dy)) continue;
+      const next = (y + dy) * made.width + x + dx;
+      if (steps[next] !== -1) continue;
+      steps[next] = steps[cell]! + 1;
+      queue.push(next);
+    }
+  }
+  return steps;
+}
+
+/** A carved place's deepest floor as a creature's lair: its great chamber the biggest room in the far half
+ *  from the way in (the heart), and what it holds drawn in it, the drowned hall's pool as water. */
+function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLairKind): GameDungeonMap {
+  const steps = dungeonStepsFrom(made, made.entrance);
+  const distance = made.rooms.map((room) => {
+    let best = -1;
+    for (const { x, y } of dungeonRoomCells(room)) {
+      const at = steps[y * made.width + x]!;
+      if (at >= 0 && (best < 0 || at < best)) best = at;
+    }
+    return best;
+  });
+  const entry = made.rooms.findIndex((room) => dungeonRoomHas(room, made.entrance.x, made.entrance.y));
+  const far = Math.max(1, ...distance);
+  let lairRoom = -1;
+  made.rooms.forEach((room, index) => {
+    if (index === entry || distance[index]! < far * 0.5) return;
+    const size = dungeonRoomCells(room).length;
+    if (lairRoom < 0 || size > dungeonRoomCells(made.rooms[lairRoom]!).length) lairRoom = index;
+  });
+  if (lairRoom < 0) return kept;
+  const at = (x: number, y: number) => y * made.width + x;
+  const cells = dungeonRoomCells(made.rooms[lairRoom]!).map(({ x, y }) => at(x, y));
+  const inRoom = new Set(cells);
+  const open = cells.filter(
+    (c) => made.ground[c] === "floor" && made.props[c] === -1 && c !== at(made.entrance.x, made.entrance.y),
+  );
+  // The doors: open cells just outside the room that lead into it.
+  const doors: number[] = [];
+  for (const c of cells)
+    for (const n of [c - 1, c + 1, c - made.width, c + made.width])
+      if (n >= 0 && n < made.ground.length && !inRoom.has(n) && made.ground[n] === "floor") doors.push(n);
+  const near = (c: number) => [c - 1, c + 1, c - made.width, c + made.width];
+  let feature = dungeonLairFeature({
+    kind,
+    width: made.width,
+    cells: open,
+    doors,
+    walls: (c) => near(c).some((n) => n < 0 || n >= made.ground.length || made.ground[n] === "wall" || made.ground[n] === "rock"),
+    seed: `${made.seed}:lair`,
+  });
+  let ground = kept.ground;
+  if (kind === "drowned" && feature.length) {
+    // The pool, shrunk from its edge until every cell still reaches the way in round it.
+    const mx = feature.reduce((n, c) => n + (c % made.width), 0) / feature.length;
+    const my = feature.reduce((n, c) => n + Math.floor(c / made.width), 0) / feature.length;
+    const order = [...feature].sort(
+      (p, q) =>
+        Math.hypot((p % made.width) - mx, Math.floor(p / made.width) - my) -
+        Math.hypot((q % made.width) - mx, Math.floor(q / made.width) - my),
+    );
+    feature = [];
+    for (let keep = order.length; keep >= 4; keep = Math.floor(keep * 0.7)) {
+      const pool = new Set(order.slice(0, keep));
+      const wet = made.ground.map((each, i) => (pool.has(i) ? ("liquid" as const) : each));
+      const reached = dungeonStepsFrom({ ...made, ground: wet }, made.entrance);
+      if (!steps.every((s, i) => s < 0 || pool.has(i) || reached[i]! >= 0)) continue;
+      feature = [...pool];
+      ground = [...kept.ground].map((char, i) => (pool.has(i) ? GROUND_CHARS.liquid : char)).join("");
+      break;
+    }
+  }
+  return {
+    ...kept,
+    ground,
+    lairRoom,
+    ...(feature.length
+      ? { lairFeature: feature.map((c) => ({ x: c % made.width, y: Math.floor(c / made.width) })) }
+      : {}),
+  };
+}
+
 /**
  * One floor of a place as the game keeps it (owner 2026-11-13: separate maps per floor), the party at its
  * way in. Above the deepest, the way down stands in the area furthest from the way in, on a floor cell
@@ -1170,13 +1285,19 @@ export function gameDungeonMapForFloor(input: {
   floors: number;
   id: string;
   size?: DungeonMapSize;
+  /** A creature's lair (owner 2026-11-18): its deepest floor's great chamber holds its maker. */
+  lair?: DungeonLairKind;
 }): GameDungeonMap {
   const floor = Math.max(1, Math.min(input.floors, input.floor));
   const made = generateDungeonMap(input.setId, dungeonFloorSeed(input.siteSeed, floor), input.size ?? "medium");
-  const kept = gameDungeonMapFromDungeon(made, input.name, input.id);
-  if (input.floors <= 1) return kept;
-  const floors = { floor, floors: input.floors, siteSeed: input.siteSeed };
-  if (floor >= input.floors) return { ...kept, ...floors };
+  const kept = {
+    ...gameDungeonMapFromDungeon(made, input.name, input.id),
+    ...(input.lair ? { lairKind: input.lair } : {}),
+    ...(input.floors > 1 || input.lair ? { siteSeed: input.siteSeed } : {}),
+  };
+  const floors = input.floors > 1 ? { floor, floors: input.floors, siteSeed: input.siteSeed } : {};
+  if (floor >= input.floors)
+    return input.lair ? caveLairFloor({ ...kept, ...floors }, made, input.lair) : { ...kept, ...floors };
   // Steps from the way in, to find the furthest area and the furthest floor cell in it.
   const steps = new Int32Array(made.width * made.height).fill(-1);
   const start = made.entrance.y * made.width + made.entrance.x;
@@ -1490,7 +1611,16 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
       }`
     : "";
   const areaName = (n: number) => (n && map.roomInfo?.[n - 1] ? ` (${map.roomInfo[n - 1]!.name})` : "");
-  return `MAP: ${map.name}.${floors}${planned} ${dungeonMapWords(cells)} The party is ${where}${areaName(area)}${
+  // A creature's lair floor (owner 2026-11-18): its great chamber and what is in it.
+  const lairKind = map.lairKind ?? site?.lair;
+  const lairHeart =
+    map.lairRoom ??
+    (site?.lair && site.level === site.levels.length - 1 ? map.roomInfo?.findIndex((room) => room.heart) : undefined);
+  const lair =
+    lairKind && lairHeart !== undefined && lairHeart >= 0
+      ? ` This floor is the lair itself, ${DUNGEON_LAIRS[lairKind].label}: its great chamber is area ${lairHeart + 1}, and in it is ${DUNGEON_LAIR_FEATURE_WORDS[lairKind]}.`
+      : "";
+  return `MAP: ${map.name}.${floors}${planned}${lair} ${dungeonMapWords(cells)} The party is ${where}${areaName(area)}${
     gameDungeonOnWayDown(map) ? ", at the way down" : gameDungeonOnWayUp(map) ? ", at the way up" : ""
   }.${here.length ? ` Here now: ${here.join("; ")}.` : ""}`;
 }

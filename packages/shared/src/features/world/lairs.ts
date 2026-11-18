@@ -169,3 +169,119 @@ export function readGameDungeonLairTag(text: string): DungeonLairKind | null {
   const match = /\[site:\s*lair\s*=\s*"?([a-z]+)"?\s*\]/iu.exec(text);
   return match ? (LAIR_WORDS[match[1]!.toLowerCase()] ?? null) : null;
 }
+
+/** What a lair's great chamber has in it, by kind: the hoard's heap of gold, the sanctum's ring of ward
+ *  stones, the haven's coffins, the den's bones, the breach's rift, the drowned hall's pool, the hive's comb. */
+export const DUNGEON_LAIR_FEATURE_WORDS: Readonly<Record<DungeonLairKind, string>> = {
+  hoard: "the hoard itself, a heap of coins and plate in the middle of the cavern (cover, and it slides underfoot)",
+  sanctum: "a ring of ward stones round the middle of the chamber (whoever stands inside it is bound)",
+  haven: "coffins along the far wall, earth from its grave in them (its resting place: mist gathers there)",
+  den: "gnawed bones heaped along the walls and spread over the floor (they shift and trip)",
+  breach: "the rift, a burning crack across the chamber floor where the altar stood (it scorches and pulls)",
+  drowned: "a deep pool filling most of the hall, a rim of wet stone round it (it drags the unwary under)",
+  hive: "comb of resin crusting the walls, cells of brood in it (it seals ways and wakes the swarm)",
+};
+
+/**
+ * The cells of a lair's great chamber that hold its feature, from the chamber's open floor cells (indexes
+ * into a map `width` wide) and its doors: the hoard heaped far from the door, the sanctum's ward stones in a
+ * ring, the haven's coffins along the far wall, the den's bones by the walls, the breach's rift across the
+ * middle, the drowned hall's pool, the hive's comb on the walls. `walls` says which cells touch a wall.
+ * Pure and seeded.
+ */
+export function dungeonLairFeature(input: {
+  kind: DungeonLairKind;
+  width: number;
+  /** The chamber's open floor cells, free of props, stairs and doors. */
+  cells: readonly number[];
+  doors: readonly number[];
+  walls: (cell: number) => boolean;
+  seed: string | number;
+}): number[] {
+  const { kind, width, cells } = input;
+  if (cells.length < 6) return [];
+  const random = marinaraRandom(`${input.seed}:lair-feature:${kind}`);
+  const xy = (c: number) => [c % width, Math.floor(c / width)] as const;
+  const cx = cells.reduce((sum, c) => sum + xy(c)[0], 0) / cells.length;
+  const cy = cells.reduce((sum, c) => sum + xy(c)[1], 0) / cells.length;
+  const fromMid = (c: number) => Math.hypot(xy(c)[0] - cx, xy(c)[1] - cy);
+  const fromDoor = (c: number) =>
+    Math.min(99, ...input.doors.map((d) => Math.abs(xy(d)[0] - xy(c)[0]) + Math.abs(xy(d)[1] - xy(c)[1])));
+  const xs = cells.map((c) => xy(c)[0]);
+  const ys = cells.map((c) => xy(c)[1]);
+  const spanX = Math.max(...xs) - Math.min(...xs) + 1;
+  const spanY = Math.max(...ys) - Math.min(...ys) + 1;
+  const near = (from: number, n: number) =>
+    [...cells]
+      .sort(
+        (p, q) =>
+          Math.hypot(xy(p)[0] - xy(from)[0], xy(p)[1] - xy(from)[1]) -
+          Math.hypot(xy(q)[0] - xy(from)[0], xy(q)[1] - xy(from)[1]),
+      )
+      .slice(0, n);
+  switch (kind) {
+    case "hoard": {
+      // A heap a quarter of the floor, round the open cell farthest from the doors, off the walls.
+      // Off the walls, and better well inside the chamber (a cave's chamber runs on round corners).
+      const inSet = new Set(cells);
+      const deep = cells.filter((c) =>
+        [-1, 0, 1].every((dy) =>
+          [-1, 0, 1].every((dx) => inSet.has(c + dy * width + dx) && inSet.has(c + 2 * dy * width + 2 * dx)),
+        ),
+      );
+      const open = deep.length >= 4 ? deep : cells.filter((c) => !input.walls(c));
+      const middle = [...(open.length ? open : cells)].sort(
+        (p, q) => fromDoor(q) - fromDoor(p) || fromMid(p) - fromMid(q),
+      );
+      const heart = middle[Math.floor(random() * Math.min(3, middle.length))]!;
+      return near(heart, Math.max(4, Math.round(cells.length * 0.22))).filter((c) => !input.walls(c) || random() < 0.3);
+    }
+    case "sanctum": {
+      // A ring, every other cell a stone, round the middle.
+      const r = Math.max(1.5, Math.min(spanX, spanY) / 3);
+      return cells.filter((c) => Math.abs(fromMid(c) - r) < 0.55 && (xy(c)[0] + xy(c)[1]) % 2 === 0);
+    }
+    case "haven": {
+      // Coffins along the far wall from the doors, one cell apart.
+      const along = cells.filter((c) => input.walls(c)).sort((p, q) => fromDoor(q) - fromDoor(p));
+      const out: number[] = [];
+      for (const c of along) {
+        if (out.length >= 5) break;
+        if (out.every((o) => Math.abs(xy(o)[0] - xy(c)[0]) + Math.abs(xy(o)[1] - xy(c)[1]) >= 2)) out.push(c);
+      }
+      return out;
+    }
+    case "den":
+      // Bones heaped by the walls and strewn over the floor.
+      return cells.filter((c) => (input.walls(c) ? random() < 0.35 : random() < 0.07) && fromDoor(c) > 1);
+    case "breach": {
+      // A crack across the long way of the chamber, wandering a cell either side of the middle line.
+      const long = spanX >= spanY;
+      let drift = 0;
+      const out: number[] = [];
+      const key = (c: number) => (long ? xy(c)[0] : xy(c)[1]);
+      const across = (c: number) => (long ? xy(c)[1] - cy : xy(c)[0] - cx);
+      const steps = [...new Set(cells.map(key))].sort((a, b) => a - b).slice(1, -1);
+      for (const step of steps) {
+        if (random() < 0.35) drift += random() < 0.5 ? -1 : 1;
+        drift = Math.max(-1, Math.min(1, drift));
+        const at = cells.find((c) => key(c) === step && Math.round(across(c)) === drift);
+        if (at !== undefined && fromDoor(at) > 1) out.push(at);
+      }
+      return out;
+    }
+    case "drowned":
+      // A pool over the middle, a rim of stone kept round it to walk.
+      return cells.filter(
+        (c) =>
+          !input.walls(c) &&
+          fromDoor(c) > 2 &&
+          fromMid(c) < Math.max(1.5, Math.min(spanX, spanY) * 0.38 + random() * 0.6),
+      );
+    case "hive":
+      // Comb in clumps on the walls.
+      return cells.filter(
+        (c) => input.walls(c) && fromDoor(c) > 1 && (Math.floor(xy(c)[0] / 2) + Math.floor(xy(c)[1] / 2)) % 3 !== 0,
+      );
+  }
+}

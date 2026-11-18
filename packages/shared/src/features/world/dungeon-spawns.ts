@@ -275,6 +275,10 @@ export function gameDungeonSiteMap(input: {
   /** The game's rules can find traps (a ruleset with a skill for it): a building has them. */
   traps?: boolean;
 }): GameDungeonMap {
+  // A creature's lair is drawn from the site's seed when its maps are laid out, so its floor is part of the
+  // building from the first (owner 2026-11-18); it wakes or stays cold by the band, at the first entry.
+  const origin = dungeonSiteOrigin(input.setId, input.name);
+  const lair = dungeonLairFor(origin, input.siteSeed) ?? undefined;
   // A building (a manor, a keep, a temple, a crypt) is laid out to a plan of the whole of it.
   const template = siteTemplateForSet(input.setId);
   if (template)
@@ -283,6 +287,7 @@ export function gameDungeonSiteMap(input: {
         template,
         name: input.name,
         seed: input.siteSeed,
+        ...(lair ? { lair } : {}),
         ...(input.fate ? { fate: input.fate } : {}),
         ...(input.terrain ? { terrain: input.terrain } : {}),
       }),
@@ -290,8 +295,8 @@ export function gameDungeonSiteMap(input: {
       id: input.id,
       ...(input.traps ? { traps: true } : {}),
     });
-  const floors = dungeonSiteFloors(dungeonSiteOrigin(input.setId, input.name), input.siteSeed);
-  return gameDungeonMapForFloor({ ...input, floor: input.floor ?? 1, floors });
+  const floors = dungeonSiteFloors(origin, input.siteSeed);
+  return gameDungeonMapForFloor({ ...input, floor: input.floor ?? 1, floors, ...(lair ? { lair } : {}) });
 }
 
 /** One floor's band within its site's: two levels deeper for each floor down. */
@@ -525,7 +530,7 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
     -1,
   );
   // The heart is on the deepest floor; above it, the furthest area is where the way down is, held.
-  const heart = deepest ? furthest : -1;
+  const heart = deepest ? (map.lairRoom ?? furthest) : -1;
   const downArea = map.down ? map.rooms.findIndex((room) => dungeonRoomHas(room, map.down!.x, map.down!.y)) : -1;
   const random = marinaraRandom(`${map.seed}:areas:${site.holder}:${band.low}`);
   const levelAt = (index: number) =>
@@ -600,14 +605,12 @@ export const gameDungeonSiteStateSchema = z
   .strict();
 export type GameDungeonSiteState = z.infer<typeof gameDungeonSiteStateSchema>;
 
-/** Whether a new site is a creature's lair (owner 2026-11-18), drawn from its seed: awake where its band
+/** Whether a new site is a creature's lair (owner 2026-11-18), as its maps were laid out: awake where its band
  *  is high enough for a boss, else cold, its maker long gone. Nothing when the seed drew no lair. */
 export function dungeonSiteLairState(
-  origin: DungeonSiteOrigin,
-  seed: string | number,
+  kind: DungeonLairKind | undefined,
   band: DungeonLevelBand,
 ): Pick<GameDungeonSiteState, "lair" | "lairCold"> {
-  const kind = dungeonLairFor(origin, seed);
   if (!kind) return {};
   return band.low >= DUNGEON_LAIR_MIN_LEVEL ? { lair: kind } : { lair: kind, lairCold: true };
 }

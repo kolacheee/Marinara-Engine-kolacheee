@@ -8,6 +8,7 @@
 
 import { marinaraRandom } from "../marinara-classes.js";
 import { SITE_STAMP_LEGEND, siteStampStretch, siteStampsFor } from "./site-stamps.js";
+import { dungeonLairFeature, type DungeonLairKind } from "./lairs.js";
 import {
   DUNGEON_EXIT_PROP,
   DUNGEON_PORTCULLIS_PROP,
@@ -838,6 +839,8 @@ export interface SitePlanInput {
   terrain?: SiteTerrain;
   /** Its holders are undead: the plan grows a crypt for them (a vampire's mansion). */
   undead?: boolean;
+  /** A creature's lair (owner 2026-11-18): the plan grows its maker's floor at the bottom, cut in rock. */
+  lair?: DungeonLairKind;
 }
 
 export interface SitePlanRoom {
@@ -862,6 +865,8 @@ export interface SitePlanLevel {
   flooded?: true;
   /** What it is built round, below ground. */
   theme?: SiteTheme;
+  /** A creature's lair floor: its great chamber is the heart. */
+  lair?: DungeonLairKind;
 }
 
 export interface SitePlanLink {
@@ -975,10 +980,38 @@ export function sitePlan(input: SitePlanInput): SitePlan {
     sink += copies - 1;
   }
   levels.sort((a, b) => b.depth - a.depth);
+  // A creature's lair: its maker's floor cut in the rock under everything else (owner 2026-11-18).
+  if (input.lair) {
+    const spec = SITE_LAIR_LEVELS[input.lair];
+    const roll = marinaraRandom(`site-lair:${input.template}:${input.seed}`);
+    const rooms: SitePlanRoom[] = [];
+    for (const room of spec.rooms) {
+      const [least, most] = room.count ?? [1, 1];
+      const count = least + Math.floor(roll() * (most - least + 1));
+      for (let n = 0; n < count; n++)
+        rooms.push({
+          name: count > 1 ? `${room.name} ${n + 1}` : room.name,
+          use: room.use,
+          size: room.size,
+          zone: room.zone,
+          furniture: room.furniture,
+          ...(room.locked ? { locked: true as const } : {}),
+          ...(room.heart ? { heart: true as const } : {}),
+        });
+    }
+    levels.push({
+      id: "lair",
+      name: spec.name,
+      depth: Math.min(0, ...levels.map((level) => level.depth)) - 1,
+      rooms,
+      lair: input.lair,
+      ...(spec.theme ? { theme: spec.theme } : {}),
+    });
+  }
   // One heart: the deepest-planned one wins (a vampire's crypt over its bedroom); the others are the
   // holders' rooms.
   const hearts = levels.flatMap((level) => level.rooms.filter((room) => room.heart));
-  const heart = input.undead ? hearts.at(-1) : hearts[0];
+  const heart = input.undead || input.lair ? hearts.at(-1) : hearts[0];
   for (const room of hearts) if (room !== heart) delete room.heart;
   // A plan whose heart room was not built (a poor crypt has no founder's tomb) still gets one: the
   // biggest holders' room of the deepest level that has one, else the biggest room on the way in's level.
@@ -1055,6 +1088,72 @@ export function sitePlan(input: SitePlanInput): SitePlan {
   };
 }
 
+/** A creature's lair floor by kind (owner 2026-11-18): its great chamber, the heart, and the rooms off it. */
+const SITE_LAIR_LEVELS: Record<DungeonLairKind, { name: string; rooms: readonly RoomSpec[]; theme?: SiteTheme }> = {
+  hoard: {
+    name: "The hoard cavern",
+    rooms: [
+      { name: "Hoard cavern", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Treasure cleft", use: "store", size: 1, zone: "deep", locked: true, furniture: [CHEST, CHEST] },
+      { name: "Bone midden", use: "squat", size: 2, zone: "service", furniture: [] },
+      { name: "Smoke vent", use: "squat", size: 1, zone: "public", furniture: [] },
+    ],
+  },
+  sanctum: {
+    name: "The sanctum",
+    rooms: [
+      { name: "Sanctum", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Phylactery vault", use: "store", size: 1, zone: "deep", locked: true, furniture: [CHEST] },
+      { name: "Ward hall", use: "post", size: 2, zone: "public", furniture: [] },
+      { name: "Library of the dead", use: "squat", size: 2, zone: "private", furniture: [SHELF, SHELF] },
+    ],
+  },
+  haven: {
+    name: "The haven",
+    rooms: [
+      { name: "Coffin hall", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Earth vault", use: "store", size: 1, zone: "deep", locked: true, furniture: [CHEST] },
+      { name: "Blood larder", use: "squat", size: 2, zone: "service", furniture: [] },
+      { name: "Thralls' cell", use: "holders", size: 1, zone: "public", furniture: [BED], count: [1, 2] },
+    ],
+  },
+  den: {
+    name: "The den",
+    rooms: [
+      { name: "Den", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Gnawing cave", use: "squat", size: 2, zone: "service", furniture: [] },
+      { name: "Drinking pool", use: "quiet", size: 1, zone: "private", furniture: [] },
+    ],
+  },
+  breach: {
+    name: "The breach",
+    rooms: [
+      { name: "Rift chamber", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Summoning circle", use: "holders", size: 2, zone: "private", furniture: [] },
+      { name: "Cult cell", use: "holders", size: 1, zone: "service", furniture: [BED], count: [1, 2] },
+      { name: "Sacrifice pit", use: "squat", size: 1, zone: "deep", furniture: [] },
+    ],
+  },
+  drowned: {
+    name: "The drowned hall",
+    theme: "flooded",
+    rooms: [
+      { name: "Drowned hall", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Sunken shrine", use: "squat", size: 2, zone: "private", furniture: [] },
+      { name: "Wrack cave", use: "squat", size: 1, zone: "service", furniture: [] },
+    ],
+  },
+  hive: {
+    name: "The hive",
+    rooms: [
+      { name: "Brood chamber", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
+      { name: "Comb gallery", use: "holders", size: 2, zone: "service", furniture: [], count: [1, 2] },
+      { name: "Larder of husks", use: "squat", size: 1, zone: "private", furniture: [] },
+      { name: "Egg cells", use: "store", size: 1, zone: "deep", furniture: [] },
+    ],
+  },
+};
+
 // ── A level laid out ──
 
 export interface SiteLevelLink {
@@ -1105,6 +1204,9 @@ export interface SiteLevelMap {
   secretWay?: { x: number; y: number };
   /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
   gallery?: Array<{ x: number; y: number }>;
+  /** A creature's lair floor, and what its great chamber holds (the hoard, the ward ring...). */
+  lair?: DungeonLairKind;
+  lairFeature?: Array<{ x: number; y: number }>;
 }
 
 /** The rooms that are a level's great room: the biggest space on it. */
@@ -2949,7 +3051,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   };
   // Cut in rock: a crypt's vaults and a castle's dungeons. A crypt's chapel at the surface is built, its
   // rooms filling it as in any building, never a void left inside its walls (panel 2026-11-17).
-  const rock = (kind === "crypt" || kind === "keep") && level.depth < 0;
+  const rock = ((kind === "crypt" || kind === "keep") && level.depth < 0) || Boolean(level.lair);
   // One space on a floor is the set piece, two or three times any other (gamer panel 2026-11-17).
   // Below a crypt the set piece is one great hall, the others chambers off it (panel round 48: four near-equal boxes).
   const weight = (r: SitePlanRoom) =>
@@ -5962,6 +6064,54 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         }
     }
   }
+  // A creature's lair: its great chamber's feature (owner 2026-11-18, "Creature lairs"), the drowned hall's
+  // pool as water, the rest drawn over the floor.
+  let lairFeature: number[] = [];
+  if (level.lair) {
+    const k = info.findIndex((each) => each.heart);
+    const box = k >= 0 ? rooms[k] : undefined;
+    if (box) {
+      const all: number[] = [];
+      for (const b of [box, ...(box.parts ?? [])])
+        for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) all.push(cell(x, y));
+      const inRoom = new Set(all);
+      const doors = [...doorCells].filter((d) => around(d).some((m) => inRoom.has(m)));
+      const open = all.filter(
+        (c) =>
+          ground[c] === "floor" &&
+          props[c] === -1 &&
+          !linked.has(c) &&
+          !doorCells.has(c) &&
+          !traps.some((trap) => cell(trap.x, trap.y) === c),
+      );
+      lairFeature = dungeonLairFeature({
+        kind: level.lair,
+        width: mapW,
+        cells: open,
+        doors,
+        walls: (c) => around(c).some((m) => ground[m] === "wall" || ground[m] === "rock"),
+        seed: `${plan.seed}:${level.id}`,
+      });
+      if (level.lair === "drowned") {
+        // The pool, shrunk from its edge until every room is still reached round it.
+        const mid = lairFeature.reduce((n, c) => n + (c % mapW), 0) / Math.max(1, lairFeature.length);
+        const midY = lairFeature.reduce((n, c) => n + Math.floor(c / mapW), 0) / Math.max(1, lairFeature.length);
+        const order = [...lairFeature].sort(
+          (p, q) =>
+            Math.hypot((p % mapW) - mid, Math.floor(p / mapW) - midY) -
+            Math.hypot((q % mapW) - mid, Math.floor(q / mapW) - midY),
+        );
+        for (let keep = order.length; keep >= 4; keep = Math.floor(keep * 0.7)) {
+          for (const c of order) ground[c] = "floor";
+          for (const c of order.slice(0, keep)) ground[c] = "liquid";
+          lairFeature = order.slice(0, keep);
+          if (reachable()) break;
+          for (const c of order) ground[c] = "floor";
+          lairFeature = [];
+        }
+      }
+    }
+  }
   map.entrance = entrance;
   // The rooms the way round goes through, left to nobody.
   // Where there are two ways round, each keeps out of the other's rooms.
@@ -6092,6 +6242,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     ...(level.depth < 0 && level.theme ? { theme: level.theme } : {}),
     ...(secretWay && postRegion >= 0 ? { secretWay } : {}),
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+    ...(level.lair ? { lair: level.lair } : {}),
+    ...(lairFeature.length ? { lairFeature: lairFeature.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
 }
 
@@ -6123,6 +6275,7 @@ export function sitePlanInputFor(input: {
   terrain?: SiteTerrain;
   wealth?: 1 | 2 | 3;
   undead?: boolean;
+  lair?: DungeonLairKind;
 }): SitePlanInput {
   const words = input.name.toLowerCase();
   const random = marinaraRandom(`site-input:${input.seed}:${words}`);
@@ -6140,6 +6293,7 @@ export function sitePlanInputFor(input: {
     ...(input.fate ? { fate: input.fate } : {}),
     ...(input.terrain ? { terrain: input.terrain } : {}),
     ...(undead ? { undead: true } : {}),
+    ...(input.lair ? { lair: input.lair } : {}),
   };
 }
 
@@ -6195,6 +6349,8 @@ export function gameDungeonPlannedMap(input: {
     ...(laid.rubble ? { rubble: laid.rubble } : {}),
     ...(laid.wade ? { wade: laid.wade } : {}),
     ...(laid.tunnel ? { tunnel: laid.tunnel } : {}),
+    ...(input.plan.lair ? { lairKind: input.plan.lair } : {}),
+    ...(laid.lairFeature ? { lairFeature: laid.lairFeature } : {}),
     ...(laid.theme ? { theme: laid.theme } : {}),
     ...(laid.secretWay ? { secretWay: laid.secretWay } : {}),
     roomInfo: laid.rooms.map((room) => ({
@@ -6210,6 +6366,7 @@ export function gameDungeonPlannedMap(input: {
       ...(input.plan.fate ? { fate: input.plan.fate } : {}),
       ...(input.plan.terrain ? { terrain: input.plan.terrain } : {}),
       ...(input.plan.undead ? { undead: true as const } : {}),
+      ...(input.plan.lair ? { lair: input.plan.lair } : {}),
       ...(input.traps ? { traps: true as const } : {}),
       level,
       levels: plan.levels.map((each) => ({ name: each.name, depth: each.depth })),
@@ -6236,6 +6393,7 @@ export function sitePlanInputOf(map: GameDungeonMap): SitePlanInput | null {
     ...(site.fate ? { fate: site.fate as SiteFate } : {}),
     ...(site.terrain ? { terrain: site.terrain as SiteTerrain } : {}),
     ...(site.undead ? { undead: true } : {}),
+    ...(site.lair ? { lair: site.lair } : {}),
   };
 }
 

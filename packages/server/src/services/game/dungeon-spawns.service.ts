@@ -133,12 +133,12 @@ export function newDungeonSiteState(
       )
     : (map.floors ?? 1);
   const band = dungeonSiteBand(origin, region, floors);
-  // A creature's lair is drawn from the site's seed, the same one its floors were laid out from.
+  // A creature's lair, as its floors were laid out.
   return {
     band,
     ...(fate ? { fate } : {}),
     cleared: {},
-    ...dungeonSiteLairState(origin, map.siteSeed ?? map.seed, band),
+    ...dungeonSiteLairState(map.lairKind ?? map.site?.lair, band),
   };
 }
 

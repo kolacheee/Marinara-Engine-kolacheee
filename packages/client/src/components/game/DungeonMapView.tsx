@@ -1238,6 +1238,187 @@ export function DungeonMapView({
           ctx.fillRect(ox + dx, oy + dy, bw, 1);
         }
       }
+      // A creature's lair (owner 2026-11-18): what its great chamber holds, drawn over the floor as one
+      // mass (a heap, a pool, a crust of comb) rather than tile by tile.
+      const lairKind = kept?.lairKind;
+      const lairCells = kept?.lairFeature ?? [];
+      const inLair = new Set(lairCells.map(({ x, y }) => `${x},${y}`));
+      const hasF = (x: number, y: number) => inLair.has(`${x},${y}`);
+      const hash = (a: number, b: number) => ((a * 73856093) ^ (b * 19349663)) >>> 0;
+      /** A cell's mass, full where it joins its neighbours, its outer sides inset and rimmed. */
+      const mass = (x: number, y: number, fill: string, rim: string, inset = 2) => {
+        const [ox, oy] = [x * T, y * T];
+        const l = hasF(x - 1, y) ? 0 : inset;
+        const r = hasF(x + 1, y) ? 0 : inset;
+        const t = hasF(x, y - 1) ? 0 : inset;
+        const b = hasF(x, y + 1) ? 0 : inset;
+        ctx.fillStyle = "rgba(8, 5, 2, 0.55)";
+        ctx.fillRect(ox + l + 1, oy + t + 1, T - l - r, T - t - b);
+        ctx.fillStyle = rim;
+        ctx.fillRect(ox + l, oy + t, T - l - r, T - t - b);
+        ctx.fillStyle = fill;
+        ctx.fillRect(
+          ox + l + (l ? 1 : 0),
+          oy + t + (t ? 1 : 0),
+          T - l - r - (l ? 1 : 0) - (r ? 1 : 0),
+          T - t - b - (t ? 1 : 0) - (b ? 1 : 0),
+        );
+      };
+      if (lairKind === "sanctum" && lairCells.length >= 4) {
+        // The circle the ward stones stand on, scored into the floor and faintly lit.
+        const mx = lairCells.reduce((n, c) => n + c.x, 0) / lairCells.length;
+        const my = lairCells.reduce((n, c) => n + c.y, 0) / lairCells.length;
+        const rr = lairCells.reduce((n, c) => n + Math.hypot(c.x - mx, c.y - my), 0) / lairCells.length;
+        ctx.save();
+        ctx.strokeStyle = "rgba(170, 120, 255, 0.35)";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc((mx + 0.5) * T, (my + 0.5) * T, rr * T, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.strokeStyle = "rgba(220, 190, 255, 0.5)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.restore();
+      }
+      if (lairKind === "breach") {
+        // The rift: one crack joined cell to cell, black with fire in it, a glow round it.
+        const centre = (c: { x: number; y: number }) => [(c.x + 0.5) * T, (c.y + 0.5) * T] as const;
+        const joins: Array<[readonly [number, number], readonly [number, number]]> = [];
+        for (const c of lairCells)
+          for (const [dx, dy] of [
+            [1, 0],
+            [0, 1],
+            [1, 1],
+            [1, -1],
+          ] as const)
+            if (hasF(c.x + dx, c.y + dy)) joins.push([centre(c), centre({ x: c.x + dx, y: c.y + dy })]);
+        ctx.save();
+        ctx.lineCap = "round";
+        for (const [width, style] of [
+          [12, "rgba(255, 80, 20, 0.18)"],
+          [6, "#140604"],
+          [3, "#ff5a14"],
+          [1, "#ffd27a"],
+        ] as const) {
+          ctx.lineWidth = width;
+          ctx.strokeStyle = style;
+          ctx.beginPath();
+          for (const [a, b] of joins) {
+            ctx.moveTo(...a);
+            ctx.lineTo(...b);
+          }
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+      for (const { x, y } of lairCells) {
+        if (inFog(x, y) || !lairKind) continue;
+        const [ox, oy] = [x * T, y * T];
+        const v = hash(x, y);
+        if (lairKind === "hoard") {
+          // One heap of coin: rimmed where it meets the floor, brighter at its crown, coins glinting over it.
+          const crown = hasF(x - 1, y) && hasF(x + 1, y) && hasF(x, y - 1) && hasF(x, y + 1);
+          mass(x, y, crown ? "#c99a2c" : "#a97a1e", "#6a4810", 3);
+          for (let n = 0; n < 7; n++) {
+            const h = hash(x * 7 + n, y * 13 - n);
+            const cx = 3 + (h % (T - 6));
+            const cy = 3 + ((h >> 5) % (T - 6));
+            ctx.fillStyle = n % 3 === 0 ? "#fff3b0" : "#e9bd3c";
+            ctx.fillRect(ox + cx, oy + cy, n % 3 === 0 ? 1 : 2, n % 3 === 0 ? 1 : 2);
+          }
+          if (crown && v % 5 === 0) {
+            // A cup standing up out of the coin.
+            ctx.fillStyle = "#e8d9a0";
+            ctx.fillRect(ox + 6, oy + 4, 5, 3);
+            ctx.fillRect(ox + 8, oy + 7, 1, 3);
+            ctx.fillRect(ox + 6, oy + 10, 5, 1);
+          }
+        } else if (lairKind === "sanctum") {
+          // A ward stone: a dark standing stone with a burning violet rune, its light pooled round it.
+          const glow = ctx.createRadialGradient(ox + T / 2, oy + T / 2, 1, ox + T / 2, oy + T / 2, T);
+          glow.addColorStop(0, "rgba(170, 110, 255, 0.35)");
+          glow.addColorStop(1, "rgba(170, 110, 255, 0)");
+          ctx.fillStyle = glow;
+          ctx.fillRect(ox - T / 2, oy - T / 2, T * 2, T * 2);
+          ctx.fillStyle = "rgba(8, 6, 12, 0.7)";
+          ctx.fillRect(ox + 5, oy + 5, 7, 10);
+          ctx.fillStyle = "#3d3a46";
+          ctx.fillRect(ox + 4, oy + 3, 7, 11);
+          ctx.fillStyle = "#5a566c";
+          ctx.fillRect(ox + 4, oy + 3, 7, 2);
+          ctx.fillRect(ox + 5, oy + 2, 5, 1);
+          ctx.fillStyle = "#d9b8ff";
+          ctx.fillRect(ox + 7, oy + 6, 1, 5);
+          ctx.fillRect(ox + 6, oy + 8, 3, 1);
+        } else if (lairKind === "haven") {
+          // A coffin: broad at the shoulders, dark wood, brass at its lid; grave earth spilled by it.
+          ctx.fillStyle = "rgba(10, 4, 4, 0.7)";
+          ctx.fillRect(ox + 4, oy + 2, 10, 14);
+          const rows = [
+            [5, 3],
+            [3, 7],
+            [3, 7],
+            [3, 7],
+            [4, 5],
+            [4, 5],
+            [4, 5],
+            [5, 3],
+          ] as const;
+          rows.forEach(([lx, w], i) => {
+            ctx.fillStyle = "#2e1612";
+            ctx.fillRect(ox + lx, oy + 1 + i * 2, w + 3, 2);
+            ctx.fillStyle = "#5a2c22";
+            ctx.fillRect(ox + lx + 1, oy + 1 + i * 2, w + 1, 2);
+          });
+          ctx.fillStyle = "#c9a052";
+          ctx.fillRect(ox + 7, oy + 4, 2, 7);
+          ctx.fillRect(ox + 5, oy + 6, 6, 1);
+          ctx.fillStyle = "rgba(70, 48, 28, 0.75)";
+          ctx.fillRect(ox + 1, oy + 13, 3, 2);
+          ctx.fillRect(ox + 12, oy + 14, 3, 1);
+        } else if (lairKind === "den") {
+          // Gnawed bones: two or three lying askew, a skull now and then, on a dark stain.
+          ctx.fillStyle = "rgba(40, 20, 10, 0.35)";
+          ctx.fillRect(ox + 1, oy + 2, T - 2, T - 3);
+          const bone = (x0: number, y0: number, dx: number, dy: number, len: number) => {
+            ctx.fillStyle = "rgba(10, 8, 6, 0.6)";
+            for (let i = 0; i <= len; i++) ctx.fillRect(ox + x0 + dx * i + 1, oy + y0 + dy * i + 1, 2, 2);
+            ctx.fillStyle = "#e4d8bc";
+            for (let i = 0; i <= len; i++) ctx.fillRect(ox + x0 + dx * i, oy + y0 + dy * i, 2, 2);
+            ctx.fillRect(ox + x0 - 1, oy + y0, 2, 2);
+            ctx.fillRect(ox + x0 + dx * len + 1, oy + y0 + dy * len, 2, 2);
+          };
+          const turn = v % 4;
+          bone(2, 3 + (turn % 2), 1, turn < 2 ? 1 : 0, 6);
+          bone(8, 11 - (turn % 3), 1, turn === 3 ? -1 : 0, 4);
+          if (v % 4 === 0) {
+            ctx.fillStyle = "#ece2c8";
+            ctx.fillRect(ox + 9, oy + 3, 5, 4);
+            ctx.fillRect(ox + 10, oy + 7, 3, 1);
+            ctx.fillStyle = "#2a2218";
+            ctx.fillRect(ox + 10, oy + 4, 1, 1);
+            ctx.fillRect(ox + 12, oy + 4, 1, 1);
+          }
+        } else if (lairKind === "drowned") {
+          // Deep water: darker than the wading water, its surface still, a pale glint now and then.
+          ctx.fillStyle = "rgba(4, 18, 30, 0.5)";
+          ctx.fillRect(ox, oy, T, T);
+          if (v % 3 === 0) {
+            ctx.fillStyle = "rgba(140, 200, 220, 0.3)";
+            ctx.fillRect(ox + 3 + (v % 6), oy + 6 + (v % 5), 5, 1);
+          }
+        } else if (lairKind === "hive") {
+          // Comb: one crust of amber resin along the wall, its cells laid on the map's own grid so they run on
+          // from cell to cell, a few of them pale with brood.
+          mass(x, y, "#9a6a18", "#4e3008", 2);
+          for (let py = oy; py < oy + T; py += 4)
+            for (let px = ox + ((py / 4) % 2) * 2; px < ox + T; px += 4) {
+              const h = hash(px, py);
+              ctx.fillStyle = h % 7 === 0 ? "#efe2b0" : "#4a2a06";
+              if (px + 3 <= ox + T && py + 3 <= oy + T) ctx.fillRect(px + 1, py + 1, 2, 2);
+            }
+        }
+      }
       const stony = kept?.site?.template === "crypt" || (kept?.site?.levels[kept.site.level]?.depth ?? 0) < 0;
       for (const [k, { x, y }] of (kept?.creaks ?? []).entries()) {
         if (inFog(x, y)) continue;

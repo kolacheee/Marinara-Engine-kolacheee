@@ -12437,6 +12437,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         floor: down ? floor + 1 : floor - 1,
         floors: kept.floors,
         id: randomUUID(),
+        ...(kept.lairKind ? { lair: kept.lairKind } : {}),
       });
       map = {
         ...next,
