@@ -1678,9 +1678,12 @@ function siteFrameOf(plan: SitePlan) {
                 !within({ x: donjon.x - 1, y: T, w: donjon.w + 2, h: nd + 1 }, c % mapW, Math.floor(c / mapW)),
             );
         for (const c of cellsOf({ x: donjon.x, y: T, w: donjon.w, h: nd })) zone[c] = -2;
+        // A big donjon's walls are two thick all round, so it reads as the strong block it is (panel round 50:
+        // no donjon to be seen, the range one long roof).
+        const t = donjon.w >= 10 && nd >= 9 ? 2 : 1;
         fixed.push({
           kind: "room",
-          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nd - 2 }),
+          cells: cellsOf({ x: donjon.x + t, y: T + t, w: donjon.w - 2 * t, h: nd - 2 * t }),
           on: onGround,
           claim: (room) => room.name === "Keep store",
           room: { name: "Keep store", use: "store", size: 2, zone: "private", furniture: [CHEST, CRATE, BARREL] },
@@ -1688,7 +1691,7 @@ function siteFrameOf(plan: SitePlan) {
         // Over it, the donjon's first floor: the guard room the stair comes up into.
         fixed.push({
           kind: "room",
-          cells: cellsOf({ x: donjon.x + 1, y: T + 1, w: donjon.w - 2, h: nd - 2 }),
+          cells: cellsOf({ x: donjon.x + t, y: T + t, w: donjon.w - 2 * t, h: nd - 2 * t }),
           on: (level) => level.depth === 1 && !level.inset,
           claim: (room) => room.name === "Guard room",
           room: { name: "Guard room", use: "post", size: 2, zone: "public", furniture: [T, SHELF] },
@@ -1731,10 +1734,10 @@ function siteFrameOf(plan: SitePlan) {
         // The stair up in the donjon's corner by the hall, the back stair at the kitchen's end: the donjon
         // one room round its stair, not a store between two stairwells (panel round 20 2026-11-17).
         stairsAt = {
-          main: { x: westKeep ? donjon.x + donjon.w - 2.5 : donjon.x + 2.5, y: T + 2.5 },
+          main: { x: westKeep ? donjon.x + donjon.w - 1.5 - t : donjon.x + 1.5 + t, y: T + 1.5 + t },
           tower: { x: donjon.x - 1, y: T - 1, w: donjon.w + 2, h: nd + 2 },
-          ladder: { x: westKeep ? donjon.x + 2 : donjon.x + donjon.w - 2, y: T + nd - 2 },
-          alt: { x: westKeep ? donjon.x + 2.5 : donjon.x + donjon.w - 2.5, y: T + nd - 2.5 },
+          ladder: { x: westKeep ? donjon.x + 1 + t : donjon.x + donjon.w - 1 - t, y: T + nd - 1 - t },
+          alt: { x: westKeep ? donjon.x + 1.5 + t : donjon.x + donjon.w - 1.5 - t, y: T + nd - 1.5 - t },
           back: { x: westKeep ? R - 2 : L + 2, y: T + nb - 2 },
         };
       }
@@ -1965,11 +1968,14 @@ function siteFrameOf(plan: SitePlan) {
     const gs = ranged ? Math.min(7, room - 7, B - lo - 6) : Math.min(7, room - 3, B - lo - 2);
     if (gs >= 3) {
       const span = gs + 2;
+      // The walk two wide round a garth big enough to spare it (panel round 50: a one-wide walk is a ditch).
+      const k = gs >= 6 ? 2 : 1;
+      const garth = gs + 2 - 2 * k;
       const wx = left ? nx - 1 - span : nx + nw + 1;
       const wy = lo;
       const ring = cellsOf(
         { x: wx, y: wy, w: span, h: span },
-        (x, y) => x === wx || y === wy || x === wx + span - 1 || y === wy + span - 1,
+        (x, y) => x - wx < k || y - wy < k || wx + span - 1 - x < k || wy + span - 1 - y < k,
       );
       fixed.push({
         kind: "walk",
@@ -1979,7 +1985,7 @@ function siteFrameOf(plan: SitePlan) {
       });
       fixed.push({
         kind: "court",
-        cells: cellsOf({ x: wx + 1, y: wy + 1, w: gs, h: gs }),
+        cells: cellsOf({ x: wx + k, y: wy + k, w: garth, h: garth }),
         on: onGround,
         claim: (each) => each.use === "open",
         room: { name: SITE_COURT_NAMES.temple, use: "open", size: 3, zone: "service", furniture: [] },
@@ -2512,6 +2518,34 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         lay(way);
         loops++;
       }
+    // A crypt's galleries are not ruled lines one wide (panel rounds 48-50): where three meet the rock is
+    // cut back to a small square chamber, and here and there a stretch runs two wide.
+    if (kind === "crypt" && corridor >= 0) {
+      const lane = () => [...Array(size).keys()].filter((c) => at[c] === corridor);
+      const meets = lane().filter((c) => around(c).filter((n) => at[n] === corridor).length >= 3);
+      for (const c of shuffle(meets).slice(0, 1 + plan.wealth)) {
+        const square = [-mapW - 1, -mapW, -mapW + 1, -1, 1, mapW - 1, mapW, mapW + 1].map((d) => c + d);
+        if (square.every((n) => at[n] === corridor || (free(n) && !hold[n])))
+          lay(square.filter((n) => at[n] !== corridor));
+      }
+      for (let tries = 0, wide = 0; tries < 40 && wide < 2 + plan.wealth; tries++) {
+        const cells = lane();
+        const c = cells[Math.floor(random() * cells.length)]!;
+        for (const d of shuffle([1, mapW])) {
+          // A straight run through c along d.
+          const run = [c];
+          for (let n = c + d; at[n] === corridor && run.length < 7; n += d) run.push(n);
+          for (let n = c - d; at[n] === corridor && run.length < 7; n -= d) run.unshift(n);
+          if (run.length < 4) continue;
+          const side = (random() < 0.5 ? 1 : -1) * (d === 1 ? mapW : 1);
+          const beside = run.map((n) => n + side);
+          if (!beside.every((n) => n >= 0 && n < size && free(n) && !hold[n])) continue;
+          lay(beside);
+          wide++;
+          break;
+        }
+      }
+    }
   }
 
   // ── The rooms, grown ──
@@ -4201,8 +4235,11 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           [x, y + 1],
         ].some(([dx, dy]) => ground[cell(dx!, dy!)] === "floor" && !inside(r, dx!, dy!));
       const vertical = r.h > r.w;
+      // A church's nave has its arcades close-set, a pier every other cell, so the aisles read as aisles
+      // behind them (panel round 50: six columns adrift in a hall).
+      const step = /^nave$/iu.test(siteBaseName(room.name)) ? 2 : 3;
       for (const off of [2, (vertical ? r.w : r.h) - 3])
-        for (let along = 2; along < (vertical ? r.h : r.w) - 2; along += 3) {
+        for (let along = 2; along < (vertical ? r.h : r.w) - 2; along += step) {
           const [x, y] = vertical ? [r.x + off, r.y + along] : [r.x + along, r.y + off];
           if (links.some((link) => link.x === x && link.y === y) || doorway(x, y)) continue;
           // A stone column standing free, not a stub of wall (gamer panel 2026-11-17); a crypt's pack has

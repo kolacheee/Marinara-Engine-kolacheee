@@ -859,6 +859,34 @@ export function DungeonMapView({
         if (!open(groundAt(x - 1, y + 1)) || !open(groundAt(x + 1, y + 1))) continue;
         drawTile(ctx, "dn_door_wall", x * T, y * T, 0);
       }
+    // A doorway through a wall running down the map (floor either side, wall above and below) has no arch
+    // in the pack: drawn here as a stone frame with a heavy door standing open against it (panel round 50:
+    // chambers that open onto their galleries with no door read as gaps, nothing to hold).
+    for (let y = 1; y < cells.height - 1; y++)
+      for (let x = 1; x < cells.width - 1; x++) {
+        if (groundAt(x, y) !== "floor" || groundAt(x, y - 1) !== "wall" || groundAt(x, y + 1) !== "wall") continue;
+        if (!open(groundAt(x - 1, y)) || !open(groundAt(x + 1, y))) continue;
+        // Only a doorway one cell deep, not a passage running between two walls.
+        if (groundAt(x - 1, y - 1) === "wall" && groundAt(x - 1, y + 1) === "wall") continue;
+        if (groundAt(x + 1, y - 1) === "wall" && groundAt(x + 1, y + 1) === "wall") continue;
+        if (cells.props[y * cells.width + x] !== -1) continue;
+        const [ox, oy] = [x * T, y * T];
+        // The jambs: dressed stone at the cell's top and bottom.
+        ctx.fillStyle = "#5d574f";
+        ctx.fillRect(ox + 2, oy, T - 4, 3);
+        ctx.fillRect(ox + 2, oy + T - 3, T - 4, 3);
+        ctx.fillStyle = "#8a8277";
+        ctx.fillRect(ox + 2, oy, T - 4, 1);
+        ctx.fillRect(ox + 2, oy + T - 3, T - 4, 1);
+        // The door, open back against the frame: oak boards edge-on with iron straps.
+        ctx.fillStyle = "rgba(10, 6, 4, 0.6)";
+        ctx.fillRect(ox + 2, oy + 3, 4, T - 6);
+        ctx.fillStyle = "#6b4426";
+        ctx.fillRect(ox + 2, oy + 3, 3, T - 6);
+        ctx.fillStyle = "#3a3632";
+        ctx.fillRect(ox + 2, oy + 5, 3, 1);
+        ctx.fillRect(ox + 2, oy + T - 6, 3, 1);
+      }
     raiseTomb(ctx);
     for (let y = 0; y < cells.height; y++)
       for (let x = 0; x < cells.width; x++) {
