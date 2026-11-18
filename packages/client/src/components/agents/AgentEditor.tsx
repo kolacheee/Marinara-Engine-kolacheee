@@ -1,5 +1,5 @@
 import { ActivationQuestionFields } from "./ActivationQuestionFields";
-import { useDecisionCalibration, useHasDecisionModel } from "../../hooks/use-decision-model";
+import { useDecisionCalibration, useDecisionReadsPictures, useHasDecisionModel } from "../../hooks/use-decision-model";
 // ──────────────────────────────────────────────
 // Full-Page Agent Editor
 // Click an agent → opens this editor
@@ -793,6 +793,7 @@ export function AgentEditor() {
   );
   /** Whether any decision model is chosen, which is what enables the question fields. */
   const hasDecisionModel = useHasDecisionModel();
+  const decisionReadsPictures = useDecisionReadsPictures();
   /**
    * The selected model's operating point. A saved question keeps whatever its author
    * chose; this only supplies the starting value, because 0.5 is meaningful for a
@@ -3832,6 +3833,7 @@ export function AgentEditor() {
                 pictures={localActivationPictures}
                 clips={localActivationClips}
                 mediaWithin={localActivationMediaWithin}
+                readsPictures={decisionReadsPictures}
                 // A local model slot is a decision model too, and it owns no
                 // connection row, so this asks the server which entry is selected
                 // rather than scanning the connections list for a flag.

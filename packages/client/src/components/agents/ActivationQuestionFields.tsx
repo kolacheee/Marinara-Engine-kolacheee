@@ -6,6 +6,7 @@ import {
   MAX_DECISION_PICTURES,
 } from "@marinara-engine/shared";
 import { openAddConnection } from "../../lib/add-connection";
+import { VisionDecisionHint } from "../ui/VisionDecisionHint";
 
 export function ActivationQuestionFields({
   question,
@@ -15,6 +16,7 @@ export function ActivationQuestionFields({
   pictures,
   clips,
   mediaWithin,
+  readsPictures,
   enabled,
   onChange,
 }: {
@@ -28,6 +30,8 @@ export function ActivationQuestionFields({
   clips: number;
   /** Ask only when one of this many newest messages has a picture or clip; "" asks every time. */
   mediaWithin: number | "";
+  /** Whether the selected decision model reads pictures; the picture settings are greyed out otherwise. */
+  readsPictures: boolean;
   enabled: boolean;
   onChange: (values: {
     question?: string;
@@ -144,61 +148,65 @@ export function ActivationQuestionFields({
           {/* Off unless asked: each picture costs the model time, and most questions are
               about what was written. Only a decision model that reads pictures gets them. */}
           <div>
-            <span className="mb-1 block text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
+            {/* The ⓘ stays outside the greyed-out settings so it can still be opened. */}
+            <span className="mb-1 flex items-center gap-1 text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
               {t("agents.activation.media")}
+              {!readsPictures && <VisionDecisionHint size="0.6875rem" />}
             </span>
-            <div className="grid grid-cols-2 gap-2">
-              <select
-                aria-label={t("agents.activation.picturesLabel")}
-                value={pictures}
-                onChange={(event) => onChange({ pictures: Number(event.target.value) })}
-                className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
-              >
-                {Array.from({ length: MAX_DECISION_PICTURES + 1 }, (_, count) => (
-                  <option key={count} value={count}>
-                    {count === 0 ? t("agents.activation.noPictures") : t("agents.activation.pictures", { count })}
-                  </option>
-                ))}
-              </select>
-              <select
-                aria-label={t("agents.activation.clipsLabel")}
-                value={clips}
-                onChange={(event) => onChange({ clips: Number(event.target.value) })}
-                className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
-              >
-                {Array.from({ length: MAX_DECISION_CLIPS + 1 }, (_, count) => (
-                  <option key={count} value={count}>
-                    {count === 0 ? t("agents.activation.noClips") : t("agents.activation.clips", { count })}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {(pictures > 0 || clips > 0) && (
-              // So a picture question does not run every turn: without a picture or clip
-              // in the newest messages, the agent does not run and nothing is asked.
-              <label className="mt-2 block">
-                <span className="mb-1 block text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
-                  {t("agents.activation.mediaWithinLabel")}
-                </span>
+            <fieldset disabled={!readsPictures} className="disabled:opacity-50">
+              <div className="grid grid-cols-2 gap-2">
                 <select
-                  value={mediaWithin}
-                  onChange={(event) =>
-                    onChange({ mediaWithin: event.target.value === "" ? "" : Number(event.target.value) })
-                  }
+                  aria-label={t("agents.activation.picturesLabel")}
+                  value={pictures}
+                  onChange={(event) => onChange({ pictures: Number(event.target.value) })}
                   className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
                 >
-                  <option value="">{t("agents.activation.mediaAlways")}</option>
-                  {[...new Set([1, 2, 3, 5, 10, 20, ...(mediaWithin === "" ? [] : [mediaWithin])])]
-                    .filter((count) => count <= MAX_DECISION_MEDIA_WITHIN)
-                    .sort((a, b) => a - b)
-                    .map((count) => (
-                      <option key={count} value={count}>
-                        {t("agents.activation.mediaWithin", { count })}
-                      </option>
-                    ))}
+                  {Array.from({ length: MAX_DECISION_PICTURES + 1 }, (_, count) => (
+                    <option key={count} value={count}>
+                      {count === 0 ? t("agents.activation.noPictures") : t("agents.activation.pictures", { count })}
+                    </option>
+                  ))}
                 </select>
-              </label>
-            )}
+                <select
+                  aria-label={t("agents.activation.clipsLabel")}
+                  value={clips}
+                  onChange={(event) => onChange({ clips: Number(event.target.value) })}
+                  className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+                >
+                  {Array.from({ length: MAX_DECISION_CLIPS + 1 }, (_, count) => (
+                    <option key={count} value={count}>
+                      {count === 0 ? t("agents.activation.noClips") : t("agents.activation.clips", { count })}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {(pictures > 0 || clips > 0) && (
+                // So a picture question does not run every turn: without a picture or clip
+                // in the newest messages, the agent does not run and nothing is asked.
+                <label className="mt-2 block">
+                  <span className="mb-1 block text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
+                    {t("agents.activation.mediaWithinLabel")}
+                  </span>
+                  <select
+                    value={mediaWithin}
+                    onChange={(event) =>
+                      onChange({ mediaWithin: event.target.value === "" ? "" : Number(event.target.value) })
+                    }
+                    className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+                  >
+                    <option value="">{t("agents.activation.mediaAlways")}</option>
+                    {[...new Set([1, 2, 3, 5, 10, 20, ...(mediaWithin === "" ? [] : [mediaWithin])])]
+                      .filter((count) => count <= MAX_DECISION_MEDIA_WITHIN)
+                      .sort((a, b) => a - b)
+                      .map((count) => (
+                        <option key={count} value={count}>
+                          {t("agents.activation.mediaWithin", { count })}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              )}
+            </fieldset>
             <p className="mt-1 text-[0.625rem] text-[var(--muted-foreground)]">{t("agents.activation.mediaHelp")}</p>
           </div>
         </fieldset>

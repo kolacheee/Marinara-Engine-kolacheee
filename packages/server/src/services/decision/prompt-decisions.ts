@@ -19,6 +19,7 @@ import {
   collectDecisionQuestions,
   decisionLocalSlotForId,
   DEFAULT_CUSTOM_AGENT_ACTIVATION_SCAN_DEPTH,
+  MAX_DECISION_PICTURES,
   normalizeDecisionQuestion,
   parseChoiceOptions,
   planDecisionStatements,
@@ -719,16 +720,37 @@ export function createLorebookDecisionResolver(args: {
       entryId: request.entryId,
       key: resolveDecisionQuestionText(request.statement, args.macroContext),
     }));
+    // The same statement on several entries reads the most pictures any of them asks
+    // for, and waits for media only when every one of them does (the widest window).
+    const media = new Map<string, { pictures: number; mediaWithin?: number; always: boolean }>();
+    requests.forEach((request, index) => {
+      const key = keyed[index]!.key;
+      if (!key) return;
+      const prior = media.get(key) ?? { pictures: 0, always: false };
+      const pictures = Math.max(prior.pictures, Math.max(0, Math.min(MAX_DECISION_PICTURES, request.pictures ?? 0)));
+      const always = prior.always || !request.mediaWithin;
+      const mediaWithin = always ? undefined : Math.max(prior.mediaWithin ?? 0, request.mediaWithin ?? 0);
+      media.set(key, { pictures, always, ...(mediaWithin ? { mediaWithin } : {}) });
+    });
     const planned: PlannedDecision[] = [];
     const dropped: string[] = [];
     const seen = new Set<string>();
     for (const { key } of keyed) {
       if (!key || seen.has(key)) continue;
       seen.add(key);
+      const want = media.get(key);
       // A Decision field has no timing of its own, but the same statement held elsewhere
       // keeps its held answer here too, and takes no slot.
       const held = args.held?.("noul", key);
-      if (held || admit(key)) planned.push({ kind: "noul", key, options: [], ...(held ? { held } : {}) });
+      if (held || admit(key))
+        planned.push({
+          kind: "noul",
+          key,
+          options: [],
+          ...(want?.pictures ? { pictures: want.pictures } : {}),
+          ...(want?.mediaWithin ? { mediaWithin: want.mediaWithin } : {}),
+          ...(held ? { held } : {}),
+        });
       else dropped.push(key);
     }
     const plan: PromptDecisionPlan = { decisions: planned, dropped };

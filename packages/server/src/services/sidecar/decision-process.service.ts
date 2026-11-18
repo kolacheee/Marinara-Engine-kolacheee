@@ -429,6 +429,7 @@ class DecisionProcessService {
       this.modelId = model.id;
       this.error = null;
       let tail = "";
+      let exit: { code: number | null; signal: NodeJS.Signals | null } | null = null;
       const capture = (chunk: unknown) => {
         const text = String(chunk);
         log.write(text);
@@ -440,12 +441,15 @@ class DecisionProcessService {
         logger.warn(error, "[decision-sidecar] Could not start");
         if (this.child === child) this.error = error.message;
       });
-      child.on("close", (code) => {
+      child.on("close", (code, signal) => {
+        exit = { code, signal };
         log.end();
         if (this.child === child) {
           this.child = null;
           this.baseUrl = null;
-          this.error = `The decision model's server exited with code ${code}.`;
+          this.error = signal
+            ? `The decision model's server was stopped by ${signal}.`
+            : `The decision model's server exited with code ${code}.`;
           this.warmUpAbort?.abort();
           void this.shim?.stop();
           this.shim = null;
@@ -455,7 +459,10 @@ class DecisionProcessService {
       const serverUrl = `http://127.0.0.1:${port}`;
       const ready = await waitForHealth(serverUrl, () => this.child === child && !stopped(), READY_TIMEOUT_MS);
       if (!ready) {
-        const reason = this.child === child ? "did not finish loading in time" : "stopped while loading";
+        const reason =
+          this.child === child
+            ? "did not finish loading in time"
+            : (describeEarlyExit(model, exit) ?? "stopped while loading");
         if (this.child === child) await this.terminate();
         if (stopped()) return null;
         const lastLine = tail.trim().split(/\r?\n/u).filter(Boolean).slice(-1)[0] ?? "";
@@ -880,3 +887,23 @@ localModelManager.register({
   placement: () => decisionProcessService.placement(),
   unload: () => decisionProcessService.stop(),
 });
+
+/**
+ * Why a decision model's server died before it was ready, when the way it died says so.
+ * A crash on an illegal instruction means its build uses processor features this one
+ * lacks, which no amount of retrying fixes.
+ */
+export function describeEarlyExit(
+  model: Pick<SidecarDecisionModelInfo, "label" | "requiredCpuFlags">,
+  exit: { code: number | null; signal: NodeJS.Signals | null } | null,
+): string | null {
+  if (!exit) return null;
+  const flag = (name: string) => (name === "avx512f" ? "AVX-512" : name.toUpperCase());
+  const needs = model.requiredCpuFlags?.length
+    ? `its build needs a processor with ${model.requiredCpuFlags.map(flag).join(", ")}`
+    : "its build needs processor features this one does not have";
+  // 132 is how a shell reports SIGILL.
+  if (exit.signal === "SIGILL" || exit.code === 132) return `crashed at start (illegal instruction): ${needs}`;
+  if (exit.signal) return `crashed at start (${exit.signal})`;
+  return null;
+}

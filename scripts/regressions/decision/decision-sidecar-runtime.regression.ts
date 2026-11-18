@@ -70,7 +70,7 @@ const { serializeDecisionRuntimeManifestStamp } =
   await import("../../../packages/server/src/services/sidecar/runtime-integrity-manifest.js");
 const { artifactSnapshotPath, decisionRuntimeInstalled, decisionRuntimeService, inheritedEnv } =
   await import("../../../packages/server/src/services/sidecar/decision-runtime.service.js");
-const { decisionProcessService } =
+const { decisionProcessService, describeEarlyExit } =
   await import("../../../packages/server/src/services/sidecar/decision-process.service.js");
 const { configuredCudaIndex, preflightDecisionModel } =
   await import("../../../packages/server/src/services/sidecar/decision-preflight.js");
@@ -583,7 +583,15 @@ exec sleep 30
   // so what is left to refuse it here is the CUDA 13 libraries this machine lacks.
   const winnow = await preflightDecisionModel(catalogEntry("winnow-e4b"), { fresh: true });
   assert.equal(winnow.installable, false);
-  assert.match(winnow.reason ?? "", /libcudart\.so\.13|Could not check/u);
+  // Or for the processor: its published build uses AVX-512, which most Intel chips lack.
+  assert.match(winnow.reason ?? "", /AVX-512|libcudart\.so\.13|Could not check/u);
+  assert.deepEqual(catalogEntry("winnow-e4b").requiredCpuFlags, ["avx512f"]);
+  // A server that dies on an illegal instruction says why, not just "stopped".
+  assert.equal(
+    describeEarlyExit(catalogEntry("winnow-e4b"), { code: null, signal: "SIGILL" }),
+    "crashed at start (illegal instruction): its build needs a processor with AVX-512",
+  );
+  assert.equal(describeEarlyExit(catalogEntry("winnow-e4b"), { code: 1, signal: null }), null);
   // A card of another generation is refused for the card, which no library fixes.
   const older = { ...catalogEntry("winnow-e4b"), onlyComputeCapabilities: ["9.0"] };
   assert.match((await preflightDecisionModel(older, { fresh: true })).reason ?? "", /compute capability 9\.0/u);

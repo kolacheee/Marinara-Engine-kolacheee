@@ -80,7 +80,15 @@ export const decisionMediaKey = (want: DecisionMediaWant | undefined) => `${want
 interface AttachedMedia {
   refs: DecisionMediaRef[];
   want: DecisionMediaWant;
+  /**
+   * Pictures the decision is about rather than the chat's, sent first and always: a
+   * picture Marinara just made, or one it is choosing between. Data URLs.
+   */
+  subjects?: string[];
 }
+
+/** The most pictures a decision about given pictures carries. */
+export const MAX_DECISION_SUBJECT_PICTURES = 4;
 
 /**
  * Attach media references to a state, kept by spreads and dropped by JSON. Nothing is
@@ -98,7 +106,24 @@ export function attachDecisionMedia<T extends object>(
     Object.defineProperty(state, DECISION_MEDIA, {
       value: { refs: kept, want: wanted } satisfies AttachedMedia,
       enumerable: true,
+      configurable: true,
     });
+  return state;
+}
+
+/**
+ * Attach the pictures a decision is about, such as one Marinara just generated. They
+ * reach only a model that reads pictures, like the chat's, and never a hosted backend.
+ */
+export function attachDecisionPictures<T extends object>(state: T, pictures: string[]): T {
+  const subjects = pictures.filter((url) => url.startsWith("data:image/")).slice(0, MAX_DECISION_SUBJECT_PICTURES);
+  if (subjects.length === 0) return state;
+  const current = attachedOf(state);
+  Object.defineProperty(state, DECISION_MEDIA, {
+    value: { refs: current?.refs ?? [], want: current?.want ?? NO_DECISION_MEDIA, subjects } satisfies AttachedMedia,
+    enumerable: true,
+    configurable: true,
+  });
   return state;
 }
 
@@ -234,13 +259,20 @@ export async function loadDecisionMedia(
 ): Promise<LoadedDecisionMedia> {
   const refs = decisionMediaOf(state);
   const want = decisionMediaWantOf(state);
+  // The pictures the decision is about come first, then the chat's newest.
+  const subjects: string[] = [];
+  if (accepts?.includes("image"))
+    for (const url of attachedOf(state)?.subjects ?? []) {
+      const scaled = await scaleImage(url);
+      if (scaled) subjects.push(scaled);
+    }
   const maxImages = accepts?.includes("image") ? want.pictures : 0;
   const maxVideos = accepts?.includes("video") ? want.clips : 0;
   const wantImages = maxImages > 0;
   const wantVideos = maxVideos > 0;
   const images: string[] = [];
   const videos: string[] = [];
-  if (refs.length === 0 || (!wantImages && !wantVideos)) return { images, videos };
+  if (refs.length === 0 || (!wantImages && !wantVideos)) return { images: subjects, videos };
   for (const ref of [...refs].reverse()) {
     if (ref.kind === "image" && images.length < maxImages) {
       const raw = await ref.load().catch(() => null);
@@ -254,7 +286,7 @@ export async function loadDecisionMedia(
   }
   if (refs.length > 0 && images.length + videos.length === 0)
     logger.debug("[decision] The chat's media could not be read for the decision model");
-  return { images, videos };
+  return { images: [...subjects, ...images], videos };
 }
 
 /**

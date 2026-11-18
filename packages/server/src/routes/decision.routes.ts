@@ -455,7 +455,10 @@ export async function decisionRoutes(app: FastifyInstance) {
     // every relevant turn while looking configured.
     const slot = decisionLocalSlotForId(selected);
     const calibration = slot ? localSlotCalibration(slot) : DEFAULT_DECISION_CALIBRATION;
-    return { selected, options, calibration };
+    // Only Marinara's own decision model reads pictures; a chat model or a connection is sent text.
+    const reads: DecisionModelOptions["reads"] =
+      slot === "decision_sidecar" ? (installedDecisionModel(decisionSidecarSettings())?.inputs ?? ["text"]) : ["text"];
+    return { selected, options, calibration, reads: [...(reads ?? ["text"])] };
   });
 
   /**

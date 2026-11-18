@@ -175,7 +175,7 @@ async function ggufPlatformReason(
     const flags = await cpuFlags();
     const missing = flags ? model.requiredCpuFlags.filter((flag) => !flags.has(flag)) : [];
     if (missing.length > 0)
-      return `Requires a processor with ${missing.map((flag) => flag.toUpperCase()).join(", ")}, which this one does not have`;
+      return `Requires a processor with ${missing.map((flag) => (flag === "avx512f" ? "AVX-512" : flag.toUpperCase())).join(", ")}, which this one does not have`;
   }
   if (model.runtime === "valen_gguf") {
     const glibc = glibcVersion();

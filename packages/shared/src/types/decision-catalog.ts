@@ -514,7 +514,7 @@ export const SIDECAR_DECISION_MODELS: SidecarDecisionModelInfo[] = [
     id: "winnow-e4b",
     label: "Winnow E4B",
     description:
-      "A Gemma 4 decision model that scored 80.5% on JevBench's public set, and reads pictures. Its published runtime only runs on Linux with an NVIDIA RTX 50-series card and the CUDA 13 libraries installed, and needs about 11 GB of graphics memory.",
+      "A Gemma 4 decision model that scored 80.5% on JevBench's public set, and reads pictures. Its published runtime only runs on Linux, on a processor with AVX-512 (such as AMD Ryzen 7000 or 9000; current Intel laptop and desktop chips lack it), with an NVIDIA RTX 50-series card and the CUDA 13 libraries installed, and needs about 11 GB of graphics memory.",
     runtime: "winnow_cuda",
     artifacts: [
       {
@@ -525,8 +525,8 @@ export const SIDECAR_DECISION_MODELS: SidecarDecisionModelInfo[] = [
     ],
     modelFile: "gguf/Winnow-E4B-Q8_0.gguf",
     projectorFile: "gguf/mmproj-Winnow-E4B.gguf",
-    // The weights (8,005,449,713 bytes) and the vision projector (990,372,672).
-    downloadSizeBytes: 8_995_822_385,
+    // The weights (8,005,437,472 bytes, measured after download) and the vision projector (990,372,672).
+    downloadSizeBytes: 8_995_810_144,
     // The weights plus Winnow's runtime (57 MB download).
     diskBytes: 9_200_000_000,
     // The authors measured 8.56 GiB on an RTX 5070 Ti for 8K text decisions; the vision
@@ -539,7 +539,11 @@ export const SIDECAR_DECISION_MODELS: SidecarDecisionModelInfo[] = [
     // The published build has kernels for sm_120 (RTX 50 series) only.
     onlyComputeCapabilities: ["12.0"],
     requiredLibraries: ["libcudart.so.13", "libcublas.so.13", "libnccl.so.2"],
-    // Not measured here: no RTX 50-series card was available. The protocol's own default.
+    // The published build's CPU code uses AVX-512 throughout: on a processor without it
+    // the server dies with "Illegal instruction" before it reaches the card (seen on a
+    // Core Ultra 9 275HX with an RTX 5090, 2026-11-18).
+    requiredCpuFlags: ["avx512f"],
+    // Not measured here: no machine that can run it was available. The protocol's own default.
     calibration: { defaultThreshold: 0.5, questionShape: "text" },
     languages: "Not stated by its authors",
     questionTypes: ["noul", "choice", "score"],

@@ -470,7 +470,18 @@ import { createCharacterGalleryStorage } from "../services/storage/character-gal
 import { createPersonaGalleryStorage } from "../services/storage/persona-gallery.storage.js";
 import { createGalleryStorage } from "../services/storage/gallery.storage.js";
 import { decisionMediaForMessage, hasRecentDecisionMedia } from "../services/decision/decision-media.js";
+import {
+  generateCheckedPicture,
+  newestChatPicture,
+  newestPictureAlreadyShows,
+  normalizePictureCheckMode,
+  parsePictureCheckLines,
+  pictureDataUrl,
+  resolvePictureDecisionBackend,
+  type PictureCheckLine,
+} from "../services/decision/picture-decisions.js";
 import { resolveGalleryImagePath } from "../services/image/gallery-image-path.js";
+import { reuseLibraryBackgroundByLooking } from "../services/generation/background-reuse-by-looking.js";
 import { isSentSelfieAttachment } from "../services/generation/prompt-attachments.js";
 import { createAppSettingsStorage } from "../services/storage/app-settings.storage.js";
 import { gameTtsEmotionIndicatorsEnabled } from "../services/tts-emotion-guidance.js";
@@ -13044,9 +13055,16 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 weatherVersions: weatherVersionsEnabled,
                 galleryPins: await galleryPinsForChat(),
               });
-              const reuseFromPlan = (plan: { locationName: string }) => {
+              const reuseFromPlan = async (plan: { locationName: string }) => {
                 // No tracker location to go by: the Prompt Model's place name is matched instead.
-                const found = matchLibraryBackgroundForLocation(plan.locationName, readChatBackgroundLibrary());
+                const library = readChatBackgroundLibrary();
+                const found =
+                  matchLibraryBackgroundForLocation(plan.locationName, library) ??
+                  // Optional: no name matches, so a decision model that reads pictures looks at a
+                  // few backgrounds sharing words with the place, and reuses one that shows it.
+                  (freshMeta.illustratorReuseByLooking === true
+                    ? await reuseLibraryBackgroundByLooking(app.db, plan.locationName, library, agentSignal)
+                    : null);
                 if (!found) return null;
                 if (!weatherVersionsEnabled || !weatherForReuse) return found;
                 const weatherPlan = planChatBackgroundWeather(found, weatherForReuse);
@@ -15536,7 +15554,32 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 }
               }
 
-              if (!storyboardSuppressesForeground && shouldGenerate && imagePrompt) {
+              // Optional: skip a picture the chat's newest one already shows. Never for a picture the user asked for.
+              let alreadyShown = false;
+              if (
+                !storyboardSuppressesForeground &&
+                shouldGenerate &&
+                imagePrompt &&
+                !commandTarget &&
+                usesChatIllustratorSettings &&
+                chatMeta.illustratorSkipShownScene === true
+              ) {
+                const skipBackend = await resolvePictureDecisionBackend(app.db, agentSignal);
+                const newest = skipBackend
+                  ? await newestChatPicture(allChatMessages as Array<{ extra?: unknown }>, decisionMediaContext)
+                  : null;
+                alreadyShown =
+                  !!skipBackend &&
+                  !!newest &&
+                  (await newestPictureAlreadyShows({
+                    backend: skipBackend,
+                    picture: newest,
+                    description: imagePrompt,
+                  }));
+                if (alreadyShown) logger.info("[illustrator] Skipped: the newest picture already shows this moment");
+              }
+
+              if (!storyboardSuppressesForeground && shouldGenerate && imagePrompt && !alreadyShown) {
                 // Resolve connections: text LLM = connectionId, image gen = settings.imageConnectionId
                 const imagePositivePrompt = ((imagePromptAgent?.settings?.imagePositivePrompt as string) ?? "").trim();
                 const savedNegativePrompt = ((imagePromptAgent?.settings?.imageNegativePrompt as string) ?? "").trim();
@@ -15864,27 +15907,49 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                           : undefined;
                       fullPrompt = compiledPrompt.prompt;
 
+                      // Optional: a decision model that reads pictures checks each picture against what was
+                      // asked, and asks for another when it does not match (or always makes two and keeps
+                      // the better). Off, or without such a model, nothing is asked.
+                      const pictureCheckMode = normalizePictureCheckMode(chatMeta.pictureCheck);
+                      const pictureCheckBackend =
+                        pictureCheckMode === "off" ? null : await resolvePictureDecisionBackend(app.db, agentSignal);
+                      const pictureCheckLines: PictureCheckLine[] = [
+                        ...(imagePrompt.trim()
+                          ? [{ statement: `The picture matches this description: ${imagePrompt.trim().slice(0, 300)}` }]
+                          : []),
+                        ...parsePictureCheckLines(chatMeta.pictureCheckLines),
+                      ];
                       const imageResults = await generateIllustratorImageVariants({
                         count: chatMeta.illustratorImagesPerGeneration,
-                        generate: () =>
-                          generateImage(imgModel, imgBaseUrl, imgApiKey, imgServiceHint, {
-                            prompt: compiledPrompt.prompt,
-                            negativePrompt: finalNegativePrompt || undefined,
-                            model: imgModel,
-                            width: imgWidth,
-                            height: imgHeight,
-                            imageEndpointId: imgConnFull.imageEndpointId || undefined,
-                            comfyWorkflow: imgConnFull.comfyuiWorkflow || undefined,
-                            imageDefaults,
-                            quality: resolveConnectionImageQuality(imgConnFull),
-                            referenceImages: illustratorRefImages,
-                            ...(illustratorCharacterPrompts.length > 0
-                              ? { characterPrompts: illustratorCharacterPrompts }
-                              : {}),
-                            debugMode: input.debugMode,
-                            fallback: providerAwareImageFallback,
-                            onFallback,
-                          }),
+                        generate: async () =>
+                          (
+                            await generateCheckedPicture({
+                              mode: pictureCheckMode,
+                              backend: pictureCheckBackend,
+                              lines: pictureCheckLines,
+                              label: "Illustrator",
+                              toDataUrl: (result) => pictureDataUrl(result.base64, result.ext),
+                              generate: () =>
+                                generateImage(imgModel, imgBaseUrl, imgApiKey, imgServiceHint, {
+                                  prompt: compiledPrompt.prompt,
+                                  negativePrompt: finalNegativePrompt || undefined,
+                                  model: imgModel,
+                                  width: imgWidth,
+                                  height: imgHeight,
+                                  imageEndpointId: imgConnFull.imageEndpointId || undefined,
+                                  comfyWorkflow: imgConnFull.comfyuiWorkflow || undefined,
+                                  imageDefaults,
+                                  quality: resolveConnectionImageQuality(imgConnFull),
+                                  referenceImages: illustratorRefImages,
+                                  ...(illustratorCharacterPrompts.length > 0
+                                    ? { characterPrompts: illustratorCharacterPrompts }
+                                    : {}),
+                                  debugMode: input.debugMode,
+                                  fallback: providerAwareImageFallback,
+                                  onFallback,
+                                }),
+                            })
+                          ).result,
                         onVariantError: (error, index) =>
                           logger.warn(error, "[illustrator] Image variant %d failed", index + 1),
                       });
