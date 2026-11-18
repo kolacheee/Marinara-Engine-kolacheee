@@ -1,0 +1,18 @@
+{
+  "cycle": 7,
+  "scores": {
+    "historian": 5,
+    "level": 7,
+    "owner": 4,
+    "pixel": 5,
+    "tech": 5
+  },
+  "blocking": {
+    "historian": 2,
+    "level": 1,
+    "owner": 5,
+    "pixel": 5,
+    "tech": 4
+  },
+  "happy": false
+}
