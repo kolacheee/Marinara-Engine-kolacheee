@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import {
   DUNGEON_EXIT_PROP,
   DUNGEON_SECRET_DOOR_PROP,
+  dungeonLairAnchorCell,
   dungeonRoomCells,
   dungeonRoomHas,
   dungeonWayOutId,
@@ -1608,6 +1609,97 @@ export function DungeonMapView({
           }
         }
       }
+      // The lair's breakable thing, drawn as its own piece among the feature so the party can see what to
+      // strike (lair panel 4, all five: "show it in the scene" had nothing on the map to point at).
+      const anchor = lairKind ? dungeonLairAnchorCell(lairKind, lairCells) : undefined;
+      if (lairKind && anchor && !inFog(anchor.x, anchor.y)) {
+        const [ox, oy] = [anchor.x * T, anchor.y * T];
+        const [cx, cy] = [ox + T / 2, oy + T / 2];
+        const accent: Record<string, string> = {
+          hoard: "255, 120, 30",
+          sanctum: "255, 60, 70",
+          haven: "255, 200, 90",
+          den: "230, 200, 140",
+          breach: "255, 110, 40",
+          drowned: "120, 220, 200",
+          hive: "250, 240, 200",
+        };
+        const halo = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 1.4);
+        halo.addColorStop(0, `rgba(${accent[lairKind]}, 0.45)`);
+        halo.addColorStop(1, `rgba(${accent[lairKind]}, 0)`);
+        ctx.fillStyle = halo;
+        ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
+        const px = (x: number, y: number, w: number, h: number, colour: string) => {
+          ctx.fillStyle = colour;
+          ctx.fillRect(ox + x, oy + y, w, h);
+        };
+        if (lairKind === "hoard") {
+          // A fire vent: a black split in the rock, molten at its heart.
+          px(3, 6, 11, 5, "rgba(10, 4, 2, 0.85)");
+          px(2, 7, 13, 3, "rgba(10, 4, 2, 0.85)");
+          px(5, 8, 7, 1, "#ff8a1c");
+          px(7, 7, 3, 3, "#ffb347");
+          px(8, 8, 1, 1, "#fff0b0");
+        } else if (lairKind === "sanctum") {
+          // The ward stone that holds the ring: taller, its rune burning red.
+          px(4, 3, 9, 13, "rgba(8, 6, 12, 0.75)");
+          px(3, 1, 9, 13, "#2c2934");
+          px(3, 1, 9, 2, "#4a4658");
+          px(7, 4, 1, 7, "#ff5a64");
+          px(5, 6, 5, 1, "#ff5a64");
+          px(6, 9, 3, 1, "#ff9aa0");
+        } else if (lairKind === "haven") {
+          // The master's coffin: the same coffin, banded in gold.
+          px(3, 0, 1, T, "#d9b25a");
+          px(T - 4, 0, 1, T, "#d9b25a");
+          px(4, 0, T - 8, 1, "#f0d27a");
+          px(4, T - 1, T - 8, 1, "#d9b25a");
+        } else if (lairKind === "den") {
+          // A timber prop under a cracked roof: an upright, its head beam, stone already fallen at its foot.
+          px(8, 2, 3, 13, "rgba(10, 6, 4, 0.7)");
+          px(7, 1, 3, 13, "#7a5530");
+          px(8, 1, 1, 13, "#9c7244");
+          px(3, 1, 11, 2, "#5e3f22");
+          px(2, 12, 3, 2, "#8e8574");
+          px(12, 13, 3, 2, "#a49a88");
+        } else if (lairKind === "breach") {
+          // The rift anchor: a black obelisk, its runes lit by the rift.
+          // Pale stone against the dark rift, so it reads (lair panel 5 check: a black stone vanished on it).
+          px(6, 2, 7, 14, "rgba(10, 4, 2, 0.7)");
+          px(5, 1, 7, 14, "#6e6266");
+          px(5, 1, 2, 14, "#8e8286");
+          px(6, 0, 5, 1, "#a09498");
+          px(8, 3, 1, 2, "#ffdd66");
+          px(7, 7, 3, 1, "#ff7a2a");
+          px(8, 10, 1, 2, "#ff7a2a");
+          px(3, 14, 11, 2, "#4a4044");
+        } else if (lairKind === "drowned") {
+          // The sluice gate: planks in an iron frame, its wheel on top.
+          px(2, 4, 13, 11, "rgba(4, 10, 8, 0.7)");
+          px(2, 4, 12, 10, "#5a4630");
+          for (const y of [6, 9, 12]) px(2, y, 12, 1, "#3a2c1c");
+          px(1, 4, 1, 10, "#4c5258");
+          px(14, 4, 1, 10, "#4c5258");
+          px(6, 0, 5, 1, "#7a828a");
+          px(6, 3, 5, 1, "#7a828a");
+          px(5, 1, 1, 2, "#7a828a");
+          px(11, 1, 1, 2, "#7a828a");
+          px(8, 1, 1, 3, "#9aa2aa");
+        } else if (lairKind === "hive") {
+          // The egg cluster: pale eggs heaped in the comb, each catching the light at its crown.
+          for (const [ex, ey] of [
+            [2, 6],
+            [7, 3],
+            [10, 8],
+            [5, 10],
+          ] as const) {
+            px(ex + 1, ey + 1, 5, 6, "rgba(30, 20, 6, 0.6)");
+            px(ex, ey, 5, 6, "#e8dfc0");
+            px(ex + 1, ey - 1, 3, 1, "#e8dfc0");
+            px(ex + 1, ey + 1, 2, 2, "#fffbe8");
+          }
+        }
+      }
       const stony = kept?.site?.template === "crypt" || (kept?.site?.levels[kept.site.level]?.depth ?? 0) < 0;
       for (const [k, { x, y }] of (kept?.creaks ?? []).entries()) {
         if (inFog(x, y)) continue;
@@ -1640,42 +1732,33 @@ export function DungeonMapView({
             ctx.fillRect(ox + T - 4, oy + dy + Math.round(((T - 4 - T / 2) * tilt) / 8), 1, 1);
           }
       }
-      // A patrol's beat: a line of footfalls along the walk it keeps, a bar at each end where it turns,
-      // outlined so it reads on stone and rugs alike (panel round 26: too faint).
+      // A patrol's beat: the path its feet have worn, a trail of scuffed footprints along the walk it keeps,
+      // in the floor itself (lair panel 3 and 4, building panels: red chevrons and bars read as a debug overlay).
       for (const guard of guards) {
         if (!guard.beat || inFog(guard.x, guard.y)) continue;
-        const dot = (x: number, y: number, w: number, h: number) => {
-          ctx.fillStyle = "rgba(16, 10, 12, 0.7)";
-          ctx.fillRect(x - 1, y - 1, w + 2, h + 2);
-          ctx.fillStyle = "#c8453a";
-          ctx.fillRect(x, y, w, h);
-        };
         for (const [k, { x, y }] of guard.beat.entries()) {
-          const cx = x * T + T / 2;
-          const cy = y * T + T / 2;
-          // The ends where it turns, and a chevron every other cell between pointing along the walk (panel
-          // round 45: squares read as debris).
-          if (k === 0 || k === guard.beat.length - 1) dot(cx - 4, cy - 1, 8, 3);
-          else if (k % 2 === 0) {
-            const [a, b] = [guard.beat[k - 1]!, guard.beat[k + 1]!];
-            const angle = Math.atan2(b.y - a.y, b.x - a.x);
-            const at = (r: number, t: number) => [cx + Math.cos(angle + t) * r, cy + Math.sin(angle + t) * r] as const;
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            for (const [style, width] of [
-              ["rgba(16, 10, 12, 0.75)", 4],
-              ["#c8453a", 2],
-            ] as const) {
-              ctx.strokeStyle = style;
-              ctx.lineWidth = width;
-              ctx.beginPath();
-              ctx.moveTo(...at(4, 2.3));
-              ctx.lineTo(...at(3, 0));
-              ctx.lineTo(...at(4, -2.3));
-              ctx.stroke();
-            }
-            ctx.lineCap = "butt";
-            ctx.lineJoin = "miter";
+          if (inFog(x, y)) continue;
+          const [a, b] = [guard.beat[Math.max(0, k - 1)]!, guard.beat[Math.min(guard.beat.length - 1, k + 1)]!];
+          const angle = Math.atan2(b.y - a.y, b.x - a.x);
+          const [cx, cy] = [x * T + T / 2, y * T + T / 2];
+          // Two steps a cell, left then right of the line it walks.
+          for (const [along, side] of [
+            [-T / 4, 1],
+            [T / 4, -1],
+          ] as const) {
+            const fx = cx + Math.cos(angle) * along + Math.cos(angle + Math.PI / 2) * side * 2.5;
+            const fy = cy + Math.sin(angle) * along + Math.sin(angle + Math.PI / 2) * side * 2.5;
+            ctx.save();
+            ctx.translate(fx, fy);
+            ctx.rotate(angle);
+            ctx.fillStyle = "rgba(20, 12, 8, 0.42)";
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 2.6, 1.5, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(-3.2, 0, 1.2, 1.1, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
           }
         }
       }

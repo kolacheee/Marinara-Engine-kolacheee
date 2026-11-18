@@ -398,8 +398,23 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
           y: Math.round(feature.reduce((sum, c) => sum + c.y, 0) / feature.length),
         }
       : undefined;
+    // A lair's throat is held at its side nearest the great chamber, the pair standing across the way in
+    // (lair panel 4: servants stood in corners and the chamber was reached unopposed).
+    const heartRoom = area.throat
+      ? here.map.rooms[here.map.roomInfo ? here.map.roomInfo.findIndex((info) => info?.heart) : (here.map.lairRoom ?? -1)]
+      : undefined;
+    const throat = heartRoom
+      ? dungeonRoomCells(room)
+          .filter(({ x, y }) => dungeonWalkable(cells, x, y))
+          .sort((p, q) => {
+            const gap = (c: { x: number; y: number }) =>
+              Math.max(0, heartRoom.x - c.x, c.x - (heartRoom.x + heartRoom.w - 1)) +
+              Math.max(0, heartRoom.y - c.y, c.y - (heartRoom.y + heartRoom.h - 1));
+            return gap(p) - gap(q);
+          })[0]
+      : undefined;
     const middle =
-      heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
+      throat ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&
@@ -413,7 +428,12 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
         // A drowned hall's maker stands in its own deep water.
         const wet = heap && here.map.lairKind === "drowned" && feature.some((c) => c.x === x && c.y === y);
         if (!dungeonWalkable(cells, x, y) && !wet) continue;
-        const away = Math.abs(x - middle.x) + Math.abs(y - middle.y) + (clear(x, y) ? 0 : 100);
+        // Beside its coffins and ward stones, never standing on one (lair panel 4: the vampire read as a
+        // sixth coffin); on its heap, nest, comb or pool it may stand.
+        const onPiece =
+          (here.map.lairKind === "haven" || here.map.lairKind === "sanctum") &&
+          feature.some((c) => c.x === x && c.y === y);
+        const away = Math.abs(x - middle.x) + Math.abs(y - middle.y) + (clear(x, y) ? 0 : 100) + (onPiece ? 50 : 0);
         if (away < best) [at, best] = [{ x, y }, away];
       }
     }

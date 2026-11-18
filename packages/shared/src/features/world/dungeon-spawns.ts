@@ -104,6 +104,9 @@ export interface DungeonArea {
   asleep?: true;
   /** Its one sentry keeps watch from a gallery over the room. */
   gallery?: true;
+  /** A lair's servants hold the way into its maker's great chamber here, at the side nearest it (lair panel
+   *  4: the chamber was reached unopposed). */
+  throat?: true;
   role: DungeonAreaRole;
   level: number;
   foes: MarinaraEncounterFoe[];
@@ -476,6 +479,42 @@ function squatRoster(
   );
 }
 
+/** A woken lair's servants keep the way into the great chamber: the area the party enters it from (`into`,
+ *  where the walk is known; else the room nearest it), never the way in or the way down, is always held, at
+ *  its side nearest the chamber (lair panel 4, all five: servants stood in corners and the chamber was
+ *  reached unopposed). */
+function lairThroat(
+  areas: DungeonArea[],
+  map: GameDungeonMap,
+  site: DungeonSite,
+  setting: MarinaraBestiarySetting,
+  into?: number,
+): DungeonArea[] {
+  if (!site.lair) return areas;
+  const heart = areas.findIndex((area) => area.role === "heart");
+  const h = map.rooms[heart];
+  if (!h) return areas;
+  const gap = (r: DungeonRoom) =>
+    Math.max(0, r.x - (h.x + h.w), h.x - (r.x + r.w)) + Math.max(0, r.y - (h.y + h.h), h.y - (r.y + r.h));
+  const open = (index: number) => index !== heart && areas[index]!.role !== "entry" && !areas[index]!.wayDown;
+  const n =
+    into !== undefined && into >= 0 && open(into)
+      ? into
+      : areas
+          .map((_, index) => index)
+          .filter(open)
+          .sort((p, q) => gap(map.rooms[p]!) - gap(map.rooms[q]!) || p - q)[0];
+  if (n === undefined) return areas;
+  const { patrol: _patrol, asleep: _asleep, gallery: _gallery, ...area } = areas[n]!;
+  areas[n] = {
+    ...area,
+    role: "guard",
+    throat: true,
+    foes: fitted(setting, area.level, group(site.holder, "standard", area.level, 2), "normal"),
+  };
+  return areas;
+}
+
 /**
  * Each area of a generated map with its role and its foes. The entry (where the way in is) is always
  * empty; the area furthest in is the heart, held by the holder's strongest; areas past the halfway mark
@@ -578,7 +617,26 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
         Math.abs(distance[a.area - 1]! / far - 0.5) - Math.abs(distance[b.area - 1]! / far - 0.5) || a.area - b.area,
     )[0];
   if (quiet) quiet.role = "rest";
-  return areas;
+  if (!deepest || heart < 0) return areas;
+  // The room the walk reaches the great chamber from: the nearest step in just outside it.
+  const chamber = map.rooms[heart]!;
+  let into = -1;
+  let least = Infinity;
+  for (const { x, y } of dungeonRoomCells(chamber))
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ] as const) {
+      const [nx, ny] = [x + dx, y + dy];
+      if (dungeonRoomHas(chamber, nx, ny) || !dungeonWalkable(cells, nx, ny) || !dungeonWalkable(cells, x, y)) continue;
+      const at = steps[ny * cells.width + nx]!;
+      if (at < 0 || at >= least) continue;
+      least = at;
+      into = map.rooms.findIndex((room, index) => index !== heart && dungeonRoomHas(room, nx, ny));
+    }
+  return lairThroat(areas, map, site, setting, into);
 }
 
 // ── What the game keeps of a site ──
@@ -881,7 +939,7 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
       if (/^(Gate passage|Gatehouse)$/u.test(baseOf(n))) areas[n] = { ...area, foes: lone(n) };
       else if (/^(Guardroom|Guard room)$/u.test(baseOf(n)) && random() < 0.6) areas[n] = { ...area, asleep: true };
     }
-  return areas;
+  return lairThroat(areas, map, site, setting);
 }
 
 /** The long walks a patrol keeps. */

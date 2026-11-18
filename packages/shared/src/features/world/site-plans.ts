@@ -1485,9 +1485,10 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [BUCKET, "corner"],
     [JARS, "corner"],
   ],
+  // A few pallets and their chains, not a dormitory (lair panel 4: ten pallets in a grid read as crates).
   "Thralls' cell": [
-    [PALLET, "wall", "all"],
-    [CHAINS, "wall"],
+    [PALLET, "wall", 3],
+    [CHAINS, "wall", 2],
     [BUCKET, "corner"],
   ],
   "Gnawing cave": [

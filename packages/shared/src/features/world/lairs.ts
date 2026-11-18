@@ -113,7 +113,7 @@ export const DUNGEON_LAIRS: Readonly<Record<DungeonLairKind, DungeonLairSpec>> =
     region:
       "The water round it goes still and dark, nets come up empty or come up wrong, and people near it wake from dreams of drowning.",
     field:
-      "Its master's own water fills the hall: the pool can surge across the floor, drag a fighter under, or hide what moves in it.",
+      "Its master's own water fills the hall: the pool can surge across the floor, drag a fighter under, rise to slow the party, or give back the drowned dead to fight for it.",
   },
   hive: {
     kind: "hive",
@@ -497,6 +497,13 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       duration: 2,
       ranged: true,
     },
+    // Its fourth: what the water took, given back to fight for it (lair panel 3 and 4: three actions, all of
+    // one texture, no summon).
+    "lair-drowned-rise": {
+      label: "The Drowned Rise",
+      summon: { name: "Drowned Dead", archetype: "blade", count: 1 },
+      ...strike(1, "water", { scales: "strength", damage: "physical" }),
+    },
   },
   hive: {
     "lair-swarm": {
@@ -559,6 +566,26 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<Record<DungeonLairKind, { name: stri
   drowned: { name: "Sluice Gate", stops: "lair-surge", breaks: "the sluice jams open and the surge drains away" },
   hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
 };
+
+/** Where a lair's breakable thing stands among its feature's cells, so the map can show it (lair panel 4:
+ *  "show it in the scene" had nothing on the map to point at): the vampire's middle coffin, the ward stone
+ *  at the back of the ring, otherwise the feature's far edge (the vent behind the heap, the rift's end, the
+ *  sluice at the pool's rim, the prop at the nest's back) or the comb's inner face for the eggs. */
+export function dungeonLairAnchorCell(
+  kind: DungeonLairKind,
+  cells: ReadonlyArray<{ x: number; y: number }>,
+): { x: number; y: number } | undefined {
+  if (!cells.length) return undefined;
+  const mx = cells.reduce((sum, c) => sum + c.x, 0) / cells.length;
+  const my = cells.reduce((sum, c) => sum + c.y, 0) / cells.length;
+  const far = (c: { x: number; y: number }) => (c.x - mx) ** 2 + (c.y - my) ** 2;
+  const sorted = [...cells].sort((a, b) =>
+    kind === "sanctum" ? a.y - b.y || a.x - b.x : far(a) - far(b) || a.y - b.y || a.x - b.x,
+  );
+  // The comb rings its bowl, so the eggs sit on its inner face, nearest the middle (lair panel 5 check: on
+  // the far edge they were outside the bowl).
+  return kind === "haven" || kind === "sanctum" || kind === "hive" ? sorted[0] : sorted[sorted.length - 1];
+}
 
 /** A lair's breakable thing as a fighter on its maker's side: it never acts, a fair share of its maker's HP. */
 export function dungeonLairAnchorFighter(kind: DungeonLairKind, maker: MarinaraFighter): MarinaraFighter {
