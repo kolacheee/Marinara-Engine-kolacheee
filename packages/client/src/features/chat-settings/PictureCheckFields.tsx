@@ -4,6 +4,7 @@
 // ──────────────────────────────────────────────
 import { useEffect, useState } from "react";
 import { useTranslation as useUiTranslation } from "react-i18next";
+import { AgentSettingsToggle } from "../../components/chat/AgentSettingsControls";
 import { VisionDecisionHint } from "../../components/ui/VisionDecisionHint";
 import { useUpdateChatMetadata } from "../../hooks/use-chats";
 import { useDecisionReadsPictures } from "../../hooks/use-decision-model";
@@ -60,14 +61,14 @@ export function PictureCheckFields({
       </select>
       {illustrator && (
         <>
-          <VisionCheckbox
+          <VisionSwitch
             readsPictures={readsPictures}
             checked={skipShown}
             onChange={(checked) => updateMeta.mutate({ id: chatId, illustratorSkipShownScene: checked })}
             label={localizeUi("ui.chat.pictureCheck.skipShown")}
             help={localizeUi("ui.chat.pictureCheck.skipShownHelp")}
           />
-          <VisionCheckbox
+          <VisionSwitch
             readsPictures={readsPictures}
             checked={reuseByLooking}
             onChange={(checked) => updateMeta.mutate({ id: chatId, illustratorReuseByLooking: checked })}
@@ -102,8 +103,8 @@ export function PictureCheckFields({
   );
 }
 
-/** A checkbox greyed out without a decision model that reads pictures; one left on can still be turned off. */
-function VisionCheckbox({
+/** A switch greyed out, with an ⓘ, without a decision model that reads pictures; one left on can still be turned off. */
+function VisionSwitch({
   readsPictures,
   checked,
   onChange,
@@ -116,22 +117,16 @@ function VisionCheckbox({
   label: string;
   help: string;
 }) {
-  const unavailable = !readsPictures && !checked;
   return (
-    <label
-      className={`mt-1 flex items-start gap-2 text-[0.625rem] leading-snug text-[var(--foreground)] ${unavailable ? "opacity-50" : ""}`}
-    >
-      <input
-        type="checkbox"
-        className="mt-0.5"
-        checked={checked}
-        disabled={unavailable}
-        onChange={(e) => onChange(e.target.checked)}
+    <div className="mt-1">
+      <AgentSettingsToggle
+        label={label}
+        description={help}
+        enabled={checked}
+        onToggle={() => onChange(!checked)}
+        disabled={!readsPictures && !checked}
+        endAction={!readsPictures ? <VisionDecisionHint /> : undefined}
       />
-      <span>
-        {label}
-        <span className="block text-[var(--muted-foreground)]">{help}</span>
-      </span>
-    </label>
+    </div>
   );
 }
