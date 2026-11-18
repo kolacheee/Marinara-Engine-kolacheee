@@ -6,6 +6,7 @@ import {
   forecastTacticalAttack,
   marinaraUsable,
   hasLineOfSight,
+  type DungeonLairKind,
 } from "@marinara-engine/shared";
 import {
   type MarinaraItemPlace,
@@ -66,6 +67,7 @@ import {
   marinaraFighter,
   mirrorMarinaraUnits,
   nextMarinaraTurn,
+  lairActs,
   performMarinaraAction,
   type MarinaraDirectorState,
 } from "./marinara-director.service.js";
@@ -890,6 +892,8 @@ export function createCombatDirector(input: {
   marinara?: MarinaraFighter[];
   /** Where a Classic fight is, so Steal can name what it takes as it happens. */
   marinaraPlace?: MarinaraItemPlace;
+  /** A Classic fight in a creature's lair (owner 2026-11-18): the lair acts once a round for its maker. */
+  marinaraLair?: { kind: DungeonLairKind; makerId: string };
 }): CombatDirectorState {
   const party = structuredClone(input.party),
     enemies = structuredClone(input.enemies);
@@ -963,6 +967,8 @@ export function createCombatDirector(input: {
     });
   if (input.marinara?.length && s.style !== "ruleset") {
     s.marinara = createMarinaraDirectorState(input.marinara, s.seed);
+    if (input.marinaraLair && s.marinara.fighters.some((one) => one.id === input.marinaraLair!.makerId))
+      s.marinara.lair = { ...input.marinaraLair, round: 0 };
     if (input.marinaraPlace) {
       s.marinara.place = input.marinaraPlace;
       // The seed the fight's loot rolls with (combat-director.routes.ts), so a steal named now is what it pays.
@@ -2221,6 +2227,8 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         tickTacticalRound(s.tactical, events);
         for (const e of events) log(s, e.text, e.kind, e.actorId, undefined, e.message);
         s.tactical.round++;
+        // Classic Marinara on a board in a creature's lair: the lair acts as the new round starts.
+        if (s.marinara?.lair && lairActs(s.marinara, s.seed, true, marinaraLog(s), s.tactical.round)) sync(s);
         delete s.marinaraOwed;
         s.round++;
         s.skipParty = false;

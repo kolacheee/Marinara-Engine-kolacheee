@@ -8,6 +8,7 @@
 // ──────────────────────────────────────────────
 import { marinaraRandom } from "../marinara-classes.js";
 import type { MarinaraBestiarySetting } from "../marinara-bestiary.js";
+import { registerMarinaraEnemySkills, type MarinaraEffect } from "../marinara-combat.js";
 
 export const DUNGEON_LAIR_KINDS = ["hoard", "sanctum", "haven", "den", "breach", "drowned", "hive"] as const;
 export type DungeonLairKind = (typeof DUNGEON_LAIR_KINDS)[number];
@@ -284,4 +285,200 @@ export function dungeonLairFeature(input: {
         (c) => input.walls(c) && fromDoor(c) > 1 && (Math.floor(xy(c)[0] / 2) + Math.floor(xy(c)[1] / 2)) % 3 !== 0,
       );
   }
+}
+
+// ── Lair actions in a Classic fight (owner 2026-11-18: MRPG combat is turn-based in its own instance, so the
+// lair's field is carried into it) ──
+
+/** A lair action: what the lair does once a round, on its maker's side, while its maker stands. */
+type LairAction = MarinaraEffect & { label: string };
+
+const strike = (power: number, type: MarinaraEffect["type"], extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
+  kind: "damage",
+  target: "all-enemies",
+  scales: "magic",
+  power,
+  damage: "magic",
+  type,
+  ranged: true,
+  sureHit: true,
+  areaPct: 0.2,
+  ...extra,
+});
+
+/** Each kind's lair actions, in the order they come round, one a round (D&D's initiative count 20): the
+ *  lair's field (`field`) as things that happen in a fight. Modest beside the maker's own blows: the lair
+ *  is pressure and position, not a second boss. */
+export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Record<string, LairAction>>>> = {
+  hoard: {
+    "lair-falling-stone": {
+      label: "Falling Stone",
+      ...strike(1.5, "earth", { scales: "strength", damage: "physical" }),
+    },
+    "lair-choking-smoke": {
+      label: "Choking Smoke",
+      kind: "debuff",
+      target: "all-enemies",
+      stat: "skill",
+      pct: -0.2,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-sliding-gold": {
+      label: "Sliding Gold",
+      kind: "status",
+      target: "all-enemies",
+      status: "slow",
+      chance: 0.5,
+      duration: 2,
+      ranged: true,
+    },
+  },
+  sanctum: {
+    "lair-death-ward": {
+      label: "Death Ward",
+      ...strike(1.5, "dark", { applies: { status: "wither", chance: 0.5, duration: 2, power: 0.04 } }),
+    },
+    "lair-binding-circle": {
+      label: "Binding Circle",
+      kind: "status",
+      target: "enemy",
+      status: "entangle",
+      chance: 0.5,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-dead-answer": { label: "The Dead Answer", kind: "heal", target: "self", pctOfMax: 0.02 },
+  },
+  haven: {
+    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.3, duration: 1 },
+    "lair-living-shadow": {
+      label: "Living Shadow",
+      kind: "debuff",
+      target: "all-enemies",
+      stat: "skill",
+      pct: -0.2,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-blood-tithe": { label: "Blood Tithe", ...strike(1.5, "dark", { drain: 0.5 }) },
+  },
+  den: {
+    "lair-shifting-bones": {
+      label: "Shifting Bones",
+      kind: "status",
+      target: "all-enemies",
+      status: "slow",
+      chance: 0.5,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-driven-to-water": {
+      label: "Driven to the Pool",
+      kind: "status",
+      target: "enemy",
+      status: "soak",
+      chance: 0.8,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-known-ground": {
+      label: "Its Own Ground",
+      kind: "buff",
+      target: "self",
+      stat: "speed",
+      pct: 0.25,
+      duration: 2,
+    },
+  },
+  breach: {
+    "lair-scorching-rift": {
+      label: "Scorching Rift",
+      ...strike(1.5, "fire", { applies: { status: "burn", chance: 0.5, duration: 2, power: 0.04 } }),
+    },
+    "lair-pull-of-the-rift": {
+      label: "Pull of the Rift",
+      kind: "debuff",
+      target: "enemy",
+      stat: "speed",
+      pct: -0.3,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-something-comes": {
+      label: "Something Comes Through",
+      ...strike(2.5, "fire", { areaPct: 0.3 }),
+    },
+  },
+  drowned: {
+    "lair-surge": {
+      label: "Surge",
+      ...strike(1.5, "water", { applies: { status: "soak", chance: 0.6, duration: 2 } }),
+    },
+    "lair-drag-under": {
+      label: "Drag Under",
+      kind: "status",
+      target: "enemy",
+      status: "stun",
+      chance: 0.4,
+      duration: 1,
+      ranged: true,
+    },
+    "lair-murk": { label: "Murk", kind: "buff", target: "self", stat: "evasion", pct: 0.3, duration: 1 },
+  },
+  hive: {
+    "lair-swarm": {
+      label: "Swarm",
+      ...strike(1.2, "poison", {
+        scales: "strength",
+        damage: "physical",
+        applies: { status: "poison", chance: 0.5, duration: 2, power: 0.04 },
+      }),
+    },
+    "lair-resin-seal": {
+      label: "Resin Seal",
+      kind: "status",
+      target: "enemy",
+      status: "entangle",
+      chance: 0.7,
+      duration: 2,
+      ranged: true,
+    },
+    "lair-brood-call": {
+      label: "The Brood Answers",
+      kind: "buff",
+      target: "self",
+      stat: "damage",
+      pct: 0.2,
+      duration: 2,
+    },
+  },
+};
+
+registerMarinaraEnemySkills(
+  Object.fromEntries(Object.values(DUNGEON_LAIR_ACTIONS).flatMap((actions) => Object.entries(actions))),
+);
+
+/** The lair action a lair takes in a round (from 1): its kind's actions in turn. */
+export function dungeonLairActionFor(kind: DungeonLairKind, round: number): string {
+  const ids = Object.keys(DUNGEON_LAIR_ACTIONS[kind]);
+  return ids[(Math.max(1, round) - 1) % ids.length]!;
+}
+
+/** The board a fight in a lair's great chamber is laid out as (Tactical): the cavern, the vault, the hall. */
+export const DUNGEON_LAIR_BOARD: Readonly<Record<DungeonLairKind, string>> = {
+  hoard: "cave",
+  sanctum: "dungeon",
+  haven: "castle",
+  den: "cave",
+  breach: "volcanic",
+  drowned: "water",
+  hive: "swamp",
+};
+
+/** What the fight's Game Master is told of a fight in a lair's great chamber. */
+export function dungeonLairFightText(kind: DungeonLairKind): string {
+  const spec = DUNGEON_LAIRS[kind];
+  const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]).map((action) => action.label);
+  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (${actions.join(", ")}); narrate those as the chamber turning on the party, and never add other lair effects.`;
 }

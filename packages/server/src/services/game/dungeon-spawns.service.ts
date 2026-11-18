@@ -13,6 +13,7 @@ import {
   dungeonRosterWords,
   dungeonSiteBand,
   dungeonSiteLairState,
+  dungeonLairFightText,
   dungeonSiteFate,
   dungeonSiteFor,
   dungeonSiteOrigin,
@@ -217,7 +218,12 @@ export function dungeonCatchOnPath(
 
 /** The fight setup's instruction for a fight in a held area: these foes and no others. */
 export function dungeonFightPromptText(here: DungeonSiteHere, foes: readonly MarinaraEncounterFoe[]): string {
-  return `This fight is in ${here.map.name}, and the place decides who is fighting: ${dungeonRosterWords(foes, here.setting)}. The enemies are exactly these, each with its family id, tier and level as listed; add none, drop none, and write them as the story sees them.`;
+  const area = dungeonFoesHere(here, 0)?.area;
+  const lair =
+    here.site.lair && area?.role === "heart" && !here.state.lairCold
+      ? ` ${dungeonLairFightText(here.site.lair.kind)}`
+      : "";
+  return `This fight is in ${here.map.name}, and the place decides who is fighting: ${dungeonRosterWords(foes, here.setting)}. The enemies are exactly these, each with its family id, tier and level as listed; add none, drop none, and write them as the story sees them.${lair}`;
 }
 
 /** A fight in a dungeon area, kept on the game from its start to its end: which site and area it was. */

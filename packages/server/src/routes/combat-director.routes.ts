@@ -29,6 +29,8 @@ import {
   gameWorldBattlefields,
   worldSceneLike,
   type CombatItemEffect,
+  type DungeonLairKind,
+  DUNGEON_LAIR_BOARD,
 } from "@marinara-engine/shared";
 import {
   applyGameInventoryChangeHeld,
@@ -1415,6 +1417,8 @@ export async function combatDirectorRoutes(
         let marinara: MarinaraFightStart | null = null;
         // A fight in a dungeon area is fought by the area's own foes (dungeon spawns), never the setup's.
         let dungeonFight: { key: string; area: number } | null = null;
+        // A fight in a creature's lair's great chamber, with its maker in it: the lair acts in it.
+        let lairFight: { kind: DungeonLairKind; maker: string } | null = null;
         if (setup.marinaraClasses === true && input.style !== "ruleset" && !meta.gameRuleset) {
           const storyFight = !!(await latestStoryFight(app.db, input.chatId, meta));
           const site = storyFight
@@ -1427,6 +1431,8 @@ export async function combatDirectorRoutes(
               });
           const held = site ? dungeonFoesHere(site, gameDay(meta)) : null;
           if (site && held) dungeonFight = { key: site.key, area: held.area.area };
+          if (site?.site.lair && held?.area.role === "heart" && !site.state.lairCold)
+            lairFight = { kind: site.site.lair.kind, maker: site.site.lair.maker };
           marinara = marinaraFightStart({
             ...(held ? { placeFoes: held.foes } : {}),
             gameId: input.chatId,
@@ -1486,7 +1492,7 @@ export async function combatDirectorRoutes(
         }
         const state = createCombatDirector({
           ...input,
-          ...(environment ? { environment } : {}),
+          ...(lairFight ? { environment: DUNGEON_LAIR_BOARD[lairFight.kind] } : environment ? { environment } : {}),
           // Ammunition is no item to use in a Classic fight: it is what its Marksmen load.
           inventory: (marinara
             ? fightItems.lines.filter((line) => !marinaraOwnedAmmo([line.name, line.ownName ?? line.name]).length)
@@ -1505,6 +1511,11 @@ export async function combatDirectorRoutes(
             (input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[]),
           ...(marinara ? { marinara: marinara.fighters } : {}),
           ...(marinara ? { marinaraPlace: marinaraGameItemPlace(meta) } : {}),
+          ...(() => {
+            const maker =
+              lairFight && marinara?.fighters.find((one) => one.side !== "party" && one.familyId === lairFight!.maker);
+            return maker && lairFight ? { marinaraLair: { kind: lairFight.kind, makerId: maker.id } } : {};
+          })(),
           id: randomUUID(),
           // Who the scene caught unaware: an opponent among them checks its morale first (combat AI E1).
           surprised: input.enemies.flatMap((one) => (one.surprised ? [one.id] : [])),

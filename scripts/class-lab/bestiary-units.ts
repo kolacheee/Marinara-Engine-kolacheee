@@ -4,6 +4,7 @@
  * combat director with the Engine's own combat AI on both sides (as engine-balance.ts does), so
  * threat is measured with what plays the game.
  */
+import type { DungeonLairKind } from "../../packages/shared/src/features/world/lairs.js";
 import { pickCarries } from "./carries.js";
 import {
   commandCombatDirector,
@@ -281,6 +282,8 @@ export function playFight(
   seed: number,
   label = "",
   tap?: MarinaraEvent[],
+  /** A fight in a creature's lair: the lair acts once a round for its maker. */
+  lair?: { kind: DungeonLairKind; makerId: string },
 ): PlayedFight {
   const s = createCombatDirector({
     id: `bl${seed}`,
@@ -300,6 +303,7 @@ export function playFight(
     marinara: [...party, ...foes],
   });
   if (tap) s.marinara!.eventTap = tap;
+  if (lair) s.marinara!.lair = { ...lair, round: 0 };
   const reasons: string[] = [];
   let seen = 0;
   const collect = () => {

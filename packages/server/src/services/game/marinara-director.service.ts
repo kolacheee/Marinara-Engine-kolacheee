@@ -62,6 +62,9 @@ import {
   type MarinaraFightContext,
   type MarinaraOption,
   type RankedCombatCandidate,
+  DUNGEON_LAIR_ACTIONS,
+  dungeonLairActionFor,
+  type DungeonLairKind,
 } from "@marinara-engine/shared";
 
 // The bestiary's foe abilities join the Engine's own (marinara-bestiary.ts; the bestiary's win a clash).
@@ -95,6 +98,9 @@ export interface MarinaraDirectorState {
   /** Lab and panel harnesses only: when set, every recorded event is copied here (who did what, with
    *  which skill, for how much) so a harness can measure skills without parsing log text. */
   eventTap?: MarinaraEvent[];
+  /** A fight in a creature's lair (owner 2026-11-18): the lair acts once a round, at the round's start, on its
+   *  maker's side while its maker stands; `round` is the last round it acted in. */
+  lair?: { kind: DungeonLairKind; makerId: string; round: number };
 }
 
 /** How many AI reasons a fight keeps. */
@@ -656,6 +662,7 @@ export function nextMarinaraTurn(
     const actor = nextMarinaraActor(state.fighters);
     if (!actor) return { round: roundOf(state) };
     const round = marinaraRoundAt(actor.next);
+    if (lairActs(state, seed, tactical, log, round)) continue;
     const ctx = context(state, seed, tactical);
     const start = beginMarinaraTurn(actor, state.fighters, ctx);
     record(state, ctx, log);
@@ -667,6 +674,42 @@ export function nextMarinaraTurn(
     if (start.acts) return { actor, round };
   }
   return { round: roundOf(state) };
+}
+
+/**
+ * The lair's action, once at the start of each round while its maker stands (D&D's initiative count 20;
+ * owner 2026-11-18, "Creature lairs"): its kind's actions in turn, aimed at a fighter of the party for the
+ * ones that take one. True when it acted, so the timeline is read again.
+ */
+export function lairActs(
+  state: MarinaraDirectorState,
+  seed: number,
+  tactical: boolean,
+  log: MarinaraLog,
+  round: number,
+): boolean {
+  const lair = state.lair;
+  if (!lair || round <= lair.round) return false;
+  lair.round = round;
+  const maker = marinaraFighter(state, lair.makerId);
+  if (!maker || maker.hp <= 0) return false;
+  const id = dungeonLairActionFor(lair.kind, round);
+  const action = DUNGEON_LAIR_ACTIONS[lair.kind][id]!;
+  const ctx = context(state, seed, tactical);
+  const foes = living(state.fighters).filter((f) => f.side !== maker.side);
+  if (!foes.length) return false;
+  const target = foes[Math.floor(ctx.random() * foes.length)]!;
+  log(`The lair acts: ${action.label}.`, "marinara:lair", maker.id);
+  // On a board the chamber itself acts: an area lands on every foe wherever they stand.
+  releaseMarinaraCharge(
+    maker,
+    { skillId: `enemy:${id}`, targetId: action.target === "self" ? maker.id : target.id },
+    state.fighters,
+    ctx,
+    tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
+  );
+  record(state, ctx, log);
+  return true;
 }
 
 function roundOf(state: MarinaraDirectorState): number {
