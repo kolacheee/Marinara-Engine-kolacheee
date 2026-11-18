@@ -907,6 +907,18 @@ export const gameDungeonMapSchema = z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(400)
       .optional(),
+    /** Knee-deep water down a flooded floor's galleries (panel round 52). */
+    wade: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(1200)
+      .optional(),
+    /** A robbers' tunnel dug into a sealed room (panel round 52). */
+    tunnel: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(60)
+      .optional(),
+    /** What a floor below ground is built round (panel round 52). */
+    theme: z.enum(["flooded", "fallen", "bones", "plague", "robbed"]).optional(),
     /** A hidden door that leads past the held room (panel round 46). */
     secretWay: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
     /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */
@@ -1366,6 +1378,19 @@ export function dungeonWalkMinutes(steps: number): number {
 }
 
 /** A planned building's ways between levels, in words. */
+/** What the Game Master is told a floor below ground is built round (panel round 52). */
+const SITE_THEME_WORDS: Record<string, string> = {
+  flooded:
+    "This floor is flooded: knee-deep black water runs down its galleries (drawn on the map). Wading is slow (half speed) and loud: a sneaking party wading makes a stealth check at disadvantage, and a fight in the water is on bad footing.",
+  fallen:
+    "Part of this floor's vault has come down: a gallery is choked with fallen stone, so the way on goes round through the rooms. The heaps are difficult ground and the ceiling still groans; loud noise or a blast may bring more down.",
+  bones:
+    "Its galleries are lined with the dead, skeletons laid on shelves cut into the rock on both sides: cramped, watched by empty eyes, and a place where the restless dead could rise from the walls.",
+  plague:
+    "This floor was where the plague dead were thrown: its pit is a sump of lime and rot (drawn as standing filth), the air thick; anyone who wades in or lingers by it risks the sickness (a constitution check).",
+  robbed:
+    "Robbers have been through this floor before the party: tombs broken open, rooms ransacked, and their own tunnel dug in.",
+};
 const SITE_LINK_WORDS: Record<string, string> = {
   stairs: "the main stairs",
   servants: "the servants' stairs",
@@ -1437,6 +1462,14 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
           : map.quietWayLong?.length
             ? " There are two ways round the held room, a short one and a longer one through other rooms."
             : ""
+      }${map.theme ? ` ${SITE_THEME_WORDS[map.theme]}` : ""}${
+        map.tunnel?.length
+          ? (() => {
+              const end = map.tunnel.at(-1)!;
+              const area = dungeonAreaAt(map, end.x, end.y);
+              return ` A robbers' tunnel, low and narrow, is dug through the rock${area ? ` into area ${area}` : ""}, past its lock: whoever finds it gets in without the key.`;
+            })()
+          : ""
       }${
         map.secretWay
           ? ` A hidden door ${(() => {

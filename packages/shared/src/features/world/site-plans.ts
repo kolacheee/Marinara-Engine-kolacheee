@@ -85,6 +85,8 @@ interface LevelSpec {
   repeat?: readonly [number, number, number];
   /** What each of those floors is besides (one a flooded one, one a robbed one), none twice in a building. */
   variants?: readonly LevelVariant[];
+  /** What it is built round when no variant says otherwise. */
+  theme?: SiteTheme;
 }
 
 interface LevelVariant {
@@ -100,7 +102,14 @@ interface LevelVariant {
   flooded?: true;
   /** The share of its rooms fallen in or broken open. */
   ruined?: number;
+  /** What it is built round, below ground (panel round 52: a variant has to be a place, not a prop). */
+  theme?: SiteTheme;
 }
+
+/** What a floor below ground is built round: wading galleries, a fall that cuts a gallery, bone-lined
+ *  galleries, a plague pit, a robbers' tunnel dug through the rock into a sealed room. */
+export const SITE_THEMES = ["flooded", "fallen", "bones", "plague", "robbed"] as const;
+export type SiteTheme = (typeof SITE_THEMES)[number];
 
 interface TemplateSpec {
   id: SiteTemplateId;
@@ -358,6 +367,7 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
             name: "Cisterns",
             drop: ["Cell", "Oubliette"],
             flooded: true,
+            theme: "flooded",
             rooms: [
               { name: "Cistern", use: "squat", size: 3, zone: "deep", furniture: [] },
               { name: "Well chamber", use: "squat", size: 1, zone: "public", furniture: [] },
@@ -366,6 +376,7 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           {
             name: "Old cells",
             ruined: 0.4,
+            theme: "fallen",
             rooms: [{ name: "Cell", use: "squat", size: 1, zone: "private", furniture: [BED], count: [2, 3] }],
           },
           {
@@ -458,6 +469,7 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         id: "catacombs",
         name: "Catacombs",
         depth: -2,
+        theme: "bones",
         wealth: 3,
         chance: 0.5,
         dry: true,
@@ -534,18 +546,21 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           {
             name: "Plague burials",
             first: true,
+            theme: "plague",
             rooms: [{ name: "Plague pit", use: "squat", size: 2, zone: "deep", furniture: [1, 1, 1] }],
           },
-          { name: "Flooded burials", flooded: true },
+          { name: "Flooded burials", flooded: true, theme: "flooded" },
           {
             name: "Robbed burials",
             ruined: 0.35,
+            theme: "robbed",
             rooms: [{ name: "Robbers' tunnel", use: "squat", size: 1, zone: "deep", furniture: [1] }],
           },
-          { name: "Fallen burials", ruined: 0.5 },
+          { name: "Fallen burials", ruined: 0.5, theme: "fallen" },
           {
             name: "Bone galleries",
             first: true,
+            theme: "bones",
             rooms: [{ name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [1, 1], count: [2, 2] }],
           },
           {
@@ -597,18 +612,21 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           {
             name: "Plague burials",
             first: true,
+            theme: "plague",
             rooms: [{ name: "Plague pit", use: "squat", size: 2, zone: "deep", furniture: [1, 1, 1] }],
           },
-          { name: "Flooded burials", flooded: true },
+          { name: "Flooded burials", flooded: true, theme: "flooded" },
           {
             name: "Robbed burials",
             ruined: 0.35,
+            theme: "robbed",
             rooms: [{ name: "Robbers' tunnel", use: "squat", size: 1, zone: "deep", furniture: [1] }],
           },
-          { name: "Fallen burials", ruined: 0.5 },
+          { name: "Fallen burials", ruined: 0.5, theme: "fallen" },
           {
             name: "Bone galleries",
             first: true,
+            theme: "bones",
             rooms: [{ name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [1, 1], count: [2, 2] }],
           },
           {
@@ -842,6 +860,8 @@ export interface SitePlanLevel {
   inset?: true;
   /** Water stands in its rooms (a flood, or wet ground under a cellar). */
   flooded?: true;
+  /** What it is built round, below ground. */
+  theme?: SiteTheme;
 }
 
 export interface SitePlanLink {
@@ -949,6 +969,7 @@ export function sitePlan(input: SitePlanInput): SitePlan {
         rooms,
         ...(level.inset ? { inset: true as const } : {}),
         ...(variant?.flooded ? { flooded: true as const } : {}),
+        ...(variant?.theme ? { theme: variant.theme } : level.theme && !copy ? { theme: level.theme } : {}),
       });
     }
     sink += copies - 1;
@@ -1074,6 +1095,12 @@ export interface SiteLevelMap {
   creaks?: Array<{ x: number; y: number }>;
   /** Fallen stone over a crypt's ruined rooms, walked over (its pack has no rubble prop). */
   rubble?: Array<{ x: number; y: number }>;
+  /** Knee-deep water down a flooded floor's galleries, walked through. */
+  wade?: Array<{ x: number; y: number }>;
+  /** A robbers' tunnel dug into the sealed room. */
+  tunnel?: Array<{ x: number; y: number }>;
+  /** What the floor is built round. */
+  theme?: SiteTheme;
   /** A hidden door that leads past the held room (panel round 46). */
   secretWay?: { x: number; y: number };
   /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
@@ -4802,6 +4829,168 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // Water that cuts a room off is drained.
   if (level.flooded && !reachable())
     for (let i = 0; i < ground.length; i++) if (ground[i] === "liquid") ground[i] = "floor";
+  // ── What the floor is built round (panel round 52: a flooded or fallen floor read as the same floor with one
+  // pool or one heap on it; each must be a place of its own) ──
+  /** Fallen stone in a crypt's ruined rooms, drawn over its floor (its pack has no rubble). */
+  const rubble: number[] = [];
+  const wade: number[] = [];
+  const theme = level.depth < 0 ? level.theme : undefined;
+  let tunnel: number[] = [];
+  if (theme) {
+    const roll = marinaraRandom(`site-theme:${plan.template}:${plan.seed}:${level.id}`);
+    const roomAt = new Int32Array(ground.length).fill(-1);
+    rooms.forEach((r, n) => {
+      for (const b of [r, ...(r.parts ?? [])])
+        for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) roomAt[cell(x, y)] = n;
+    });
+    const doorAt = new Set(doors.flatMap((door) => (door ? [cell(door.x, door.y)] : [])));
+    const four = (c: number) => [c - 1, c + 1, c - mapW, c + mapW].filter((n) => n >= 0 && n < ground.length);
+    const opened = (c: number) => ground[c] === "floor" || ground[c] === "liquid";
+    const edge = (c: number) => {
+      const x = c % mapW;
+      const y = Math.floor(c / mapW);
+      return x < 2 || y < 2 || x >= mapW - 2 || y >= mapH - 2;
+    };
+    // The galleries: open cells outside every room, off the doors and the stairs.
+    const passage = [...Array(ground.length).keys()].filter(
+      (c) =>
+        ground[c] === "floor" &&
+        roomAt[c]! < 0 &&
+        !doorAt.has(c) &&
+        !linked.has(c) &&
+        props[c] === -1 &&
+        four(c).every((n) => roomAt[n]! < 0),
+    );
+    const mix = <T>(list: T[]) => {
+      for (let i = list.length - 1; i > 0; i--) {
+        const j = Math.floor(roll() * (i + 1));
+        [list[i], list[j]] = [list[j]!, list[i]!];
+      }
+      return list;
+    };
+    const wall = (c: number) => {
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const n = c + dy * mapW + dx;
+          if (n >= 0 && n < ground.length && ground[n] === "rock") ground[n] = "wall";
+        }
+    };
+    if (theme === "flooded")
+      // Knee-deep water down the galleries: walked through, slowly and loudly.
+      for (const c of passage) if (roll() < 0.8) wade.push(c);
+    if (theme === "fallen") {
+      // The vault come down across a gallery or two, the way round forced through the rooms; fallen stone
+      // spilled either side.
+      const straight = mix(
+        passage.filter((c) => {
+          const across = opened(c - 1) && opened(c + 1) && !opened(c - mapW) && !opened(c + mapW);
+          const down = opened(c - mapW) && opened(c + mapW) && !opened(c - 1) && !opened(c + 1);
+          return across || down;
+        }),
+      );
+      let falls = 0;
+      for (const c of straight) {
+        if (falls >= 1 + (plan.wealth >= 3 ? 1 : 0)) break;
+        if (ground[c] !== "floor") continue;
+        ground[c] = "wall";
+        if (!reachable()) {
+          ground[c] = "floor";
+          continue;
+        }
+        falls++;
+        const [x0, y0] = [c % mapW, Math.floor(c / mapW)];
+        for (const n of passage)
+          if (ground[n] === "floor" && Math.abs((n % mapW) - x0) + Math.abs(Math.floor(n / mapW) - y0) <= 3)
+            rubble.push(n);
+      }
+    }
+    if (theme === "bones") {
+      // The galleries lined with the dead, a skeleton on its shelf in a niche every other cell or so.
+      let cut = 0;
+      for (const c of mix([...passage])) {
+        if (cut >= 18 + 6 * plan.wealth) break;
+        if (((c % mapW) + Math.floor(c / mapW)) % 2) continue;
+        for (const n of mix(four(c))) {
+          if (ground[n] !== "wall" && ground[n] !== "rock") continue;
+          if (roomAt[n]! >= 0 || edge(n)) continue;
+          if (four(n).some((m) => m !== c && opened(m))) continue;
+          const behind = n + (n - c);
+          if (behind >= 0 && behind < ground.length && opened(behind)) continue;
+          ground[n] = "floor";
+          props[n] = 1;
+          wall(n);
+          cut++;
+          break;
+        }
+      }
+    }
+    if (theme === "plague")
+      // The pit itself: a sump of lime and filth across the middle of its room.
+      for (const [n, room] of rooms.entries()) {
+        if (!/plague pit/iu.test(info[n]?.name ?? "") || room.w < 3 || room.h < 3) continue;
+        const was: number[] = [];
+        for (let y = room.y + 1; y < room.y + room.h - 1; y++)
+          for (let x = room.x + 1; x < room.x + room.w - 1; x++)
+            if (ground[cell(x, y)] === "floor" && props[cell(x, y)] === -1 && !linked.has(cell(x, y))) {
+              ground[cell(x, y)] = "liquid";
+              was.push(cell(x, y));
+            }
+        if (!reachable()) for (const c of was) ground[c] = "floor";
+      }
+    if (theme === "robbed") {
+      // A robbers' tunnel dug through the rock from a gallery into the sealed room, past its lock.
+      // The sealed room first, else any tomb worth robbing that the holders do not keep.
+      const targets = [
+        ...[...rooms.keys()].filter((n) => doors[n]?.locked && !info[n]?.heart),
+        ...mix(
+          [...rooms.keys()].filter(
+            (n) => !doors[n]?.locked && !info[n]?.heart && !info[n]?.post && /vault|tomb/iu.test(info[n]?.name ?? ""),
+          ),
+        ),
+      ];
+      for (const target of targets) {
+        const room = rooms[target]!;
+        if (tunnel.length) break;
+        for (const start of mix([...passage])) {
+          const [sx, sy] = [start % mapW, Math.floor(start / mapW)];
+          const tx = Math.max(room.x, Math.min(room.x + room.w - 1, sx));
+          const ty = Math.max(room.y, Math.min(room.y + room.h - 1, sy));
+          const far = Math.abs(tx - sx) + Math.abs(ty - sy);
+          if (far < 4 || far > 18) continue;
+          const path: number[] = [];
+          let [x, y] = [sx, sy];
+          let ok = false;
+          for (let step = 0; step < 30; step++) {
+            const dx = Math.sign(tx - x);
+            const dy = Math.sign(ty - y);
+            // A staircase on the slant: across, then down, as a dug way runs.
+            [x, y] = (step % 2 === 0 || !dy) && dx ? [x + dx, y] : dy ? [x, y + dy] : [x + dx, y];
+            const c = cell(x, y);
+            if (roomAt[c]! === target) {
+              ok = path.length >= 3;
+              break;
+            }
+            if (opened(c) || roomAt[c]! >= 0 || edge(c)) break;
+            const prev = path.at(-1) ?? start;
+            if (four(c).some((m) => m !== prev && opened(m) && roomAt[m] !== target)) break;
+            path.push(c);
+          }
+          if (!ok) continue;
+          for (const c of path) {
+            ground[c] = "floor";
+            wall(c);
+          }
+          if (!reachable()) {
+            for (const c of path) ground[c] = "wall";
+            continue;
+          }
+          tunnel = path;
+          for (const c of path) if (roll() < 0.5) rubble.push(c);
+          break;
+        }
+      }
+    }
+  }
   // Locks: a locked room's door; its key in another room of the level that is open.
   const locks: SiteLevelLock[] = [];
   for (const door of doors) if (door?.locked) props[cell(door.x, door.y)] = SITE_LOCK_PROP;
@@ -4866,8 +5055,6 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       }
     } else props[cell((sideLock as { x: number }).x, (sideLock as { y: number }).y)] = -1;
   }
-  /** Fallen stone in a crypt's ruined rooms, drawn over its floor (its pack has no rubble). */
-  const rubble: number[] = [];
   // Furniture against each room's back wall (the one facing its door), then rubble in ruined rooms;
   // never closing a way.
   const doorCells = new Set(doors.flatMap((door) => (door ? [cell(door.x, door.y)] : [])));
@@ -5900,6 +6087,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     ...(quietWay.length >= 3 && quietWayLong.length >= 3 ? { quietWayLong } : {}),
     ...(creaks.length >= 2 ? { creaks } : {}),
     ...(rubble.length ? { rubble: rubble.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+    ...(wade.length ? { wade: wade.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+    ...(tunnel.length ? { tunnel: tunnel.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+    ...(level.depth < 0 && level.theme ? { theme: level.theme } : {}),
     ...(secretWay && postRegion >= 0 ? { secretWay } : {}),
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
@@ -6003,6 +6193,9 @@ export function gameDungeonPlannedMap(input: {
     ...(laid.gallery ? { gallery: laid.gallery } : {}),
     ...(laid.creaks ? { creaks: laid.creaks } : {}),
     ...(laid.rubble ? { rubble: laid.rubble } : {}),
+    ...(laid.wade ? { wade: laid.wade } : {}),
+    ...(laid.tunnel ? { tunnel: laid.tunnel } : {}),
+    ...(laid.theme ? { theme: laid.theme } : {}),
     ...(laid.secretWay ? { secretWay: laid.secretWay } : {}),
     roomInfo: laid.rooms.map((room) => ({
       name: room.name,

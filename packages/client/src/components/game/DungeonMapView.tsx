@@ -1182,6 +1182,37 @@ export function DungeonMapView({
       }
       // Loose boards (rubble below ground) on the way round, which give a sneaking party away (owner 2026-11-18):
       // sprung planks askew, or a scatter of loose stones.
+      // A floor's own light by what it is built round (panel round 52: each variant a place of its own): cold
+      // green-blue water, sick yellow lime, bone-white, dust.
+      const tints: Record<string, string> = {
+        flooded: "rgba(40, 110, 140, 0.16)",
+        plague: "rgba(150, 160, 40, 0.14)",
+        bones: "rgba(220, 210, 190, 0.10)",
+        fallen: "rgba(120, 90, 50, 0.14)",
+        robbed: "rgba(150, 80, 30, 0.08)",
+      };
+      const tint = kept?.theme ? tints[kept.theme] : undefined;
+      if (tint && cells) {
+        ctx.fillStyle = tint;
+        ctx.fillRect(0, 0, cells.width * T, cells.height * T);
+      }
+      // Knee-deep water down a flooded floor's galleries, waded through: a dark sheet with ripples.
+      for (const [k, { x, y }] of (kept?.wade ?? []).entries()) {
+        if (inFog(x, y)) continue;
+        const [ox, oy] = [x * T, y * T];
+        ctx.fillStyle = "rgba(24, 70, 92, 0.55)";
+        ctx.fillRect(ox, oy, T, T);
+        ctx.fillStyle = "rgba(150, 210, 230, 0.45)";
+        const r = (k * 5 + x * 3 + y * 7) % 4;
+        ctx.fillRect(ox + 2 + r, oy + 4 + (r % 2) * 6, 5, 1);
+        ctx.fillRect(ox + 8 - r, oy + 10 - (r % 2) * 4, 4, 1);
+      }
+      // A robbers' tunnel: a rough dug way, its floor darker than the dressed galleries.
+      for (const { x, y } of kept?.tunnel ?? []) {
+        if (inFog(x, y)) continue;
+        ctx.fillStyle = "rgba(30, 22, 14, 0.5)";
+        ctx.fillRect(x * T + 1, y * T + 1, T - 2, T - 2);
+      }
       // Fallen stone where a crypt's vault came down (owner 2026-11-18: varied big sites): broken blocks
       // heaped over the floor, walked over.
       for (const [k, { x, y }] of (kept?.rubble ?? []).entries()) {
