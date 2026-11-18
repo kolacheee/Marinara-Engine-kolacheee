@@ -140,6 +140,8 @@ A condition can ask your Decision model what is happening in the chat. The Decis
 
 Before you start: choose a Decision model under **Decision model** in the **Connections** panel. See [Decision Models](../connections/decision-models.md) for what it is and how to pick one. To decide whether a whole lorebook entry activates, use the entry's [Decision](../lorebooks/entries.md#decision-activation) field instead.
 
+It can answer yes or no (`decision:`) or pick one of several answers (`decision_choice:`), and a built-in model that reads pictures can also look at the chat's pictures and clips. For the kinds of answers with more examples, see [What a decision model can answer](../connections/decision-models.md#what-a-decision-model-can-answer).
+
 Ideas: describe a new place only when the scene moved, load combat pacing rules only during a fight, hold back escalation in a slow-burn preset, or make only the addressed character answer directly in a group block.
 
 ### Yes or no: `decision:`
