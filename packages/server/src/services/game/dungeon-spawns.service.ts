@@ -264,6 +264,19 @@ export interface DungeonGuardMark {
   beat?: Array<{ x: number; y: number }>;
   /** These guards carry the key to a locked room on the floor (panel round 31: who holds the key). */
   key?: boolean;
+  /** Which way the guards look (owner 2026-11-18, sightlines): a step, as {x: 0, y: 1} for south. */
+  face?: { x: number; y: number };
+  /** They stand on a gallery over the room. */
+  raised?: boolean;
+}
+
+/** The step from one cell toward another, kept to one axis unless it is plainly diagonal. */
+function stepToward(from: { x: number; y: number }, to: { x: number; y: number }): { x: number; y: number } {
+  const [dx, dy] = [to.x - from.x, to.y - from.y];
+  if (!dx && !dy) return { x: 0, y: 1 };
+  if (Math.abs(dx) > 2 * Math.abs(dy)) return { x: Math.sign(dx), y: 0 };
+  if (Math.abs(dy) > 2 * Math.abs(dx)) return { x: 0, y: Math.sign(dy) };
+  return { x: Math.sign(dx), y: Math.sign(dy) };
 }
 
 /** The holders' posts as the party sees them on the map (owner 2026-11-13): every guard post and the heart
@@ -295,7 +308,9 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       if (line.length >= 3) {
         const step = (today * 7 + area.area * 3) % (2 * line.length - 2);
         const at = line[step < line.length ? step : 2 * line.length - 2 - step]!;
-        return [{ ...at, area: area.area, count: foes.length, heart: false, beat: line, ...key }];
+        const ahead = step < line.length - 1 ? 1 : -1;
+        const face = long ? { x: ahead, y: 0 } : { x: 0, y: ahead };
+        return [{ ...at, area: area.area, count: foes.length, heart: false, beat: line, face, ...key }];
       }
     }
     // The room's middle, or the walkable cell nearest it; a cell clear of props (an urn, a lamp, the stairs)
@@ -353,8 +368,43 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       }
     }
     const post = !!here.map.roomInfo?.[area.area - 1]?.post;
+    // Where the room has a gallery, its holders stand up on it over the floor, looking out across the room.
+    const raised = (here.map.gallery ?? []).filter(
+      ({ x, y }) => inRoom(x, y) && dungeonWalkable(cells, x, y) && !onLink(x, y),
+    );
+    if (raised.length && area.role !== "heart") {
+      const mid = raised[Math.floor(raised.length / 2)]!;
+      const face = stepToward(mid, centre);
+      return [
+        {
+          ...mid,
+          area: area.area,
+          count: foes.length,
+          heart: false,
+          face,
+          raised: true,
+          ...(post ? { post } : {}),
+          ...key,
+        },
+      ];
+    }
+    // The chief looks to the door; a door's holders look back across the room, the way the party comes.
+    const face =
+      area.role === "heart" && door
+        ? stepToward(at, door)
+        : held
+          ? stepToward(held, at.x === held.x && at.y === held.y ? centre : at)
+          : stepToward(at, door ?? centre);
     return [
-      { ...at, area: area.area, count: foes.length, heart: area.role === "heart", ...(post ? { post } : {}), ...key },
+      {
+        ...at,
+        area: area.area,
+        count: foes.length,
+        heart: area.role === "heart",
+        face,
+        ...(post ? { post } : {}),
+        ...key,
+      },
     ];
   });
 }

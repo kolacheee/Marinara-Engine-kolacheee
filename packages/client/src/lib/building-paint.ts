@@ -1015,7 +1015,83 @@ function paintBuildingDressing(
       }
       return;
     }
+    case 44: {
+      // A gallery's rail (owner 2026-11-18, verticality): turned balusters under a hand rail along the
+      // gallery's edge, a square newel post where it ends, its shadow on the boards.
+      const wood = ["#2a170c", "#6a3e1e", "#9a6232", "#c88e4e"];
+      const across = !!(join.w || join.e) || !(join.n || join.s);
+      if (across) {
+        px(ctx, "#00000044", x, y + 13, 16, 2);
+        for (let bx = 1; bx < 16; bx += 3) {
+          px(ctx, wood[0]!, x + bx, y + 7, 2, 6);
+          px(ctx, wood[2]!, x + bx, y + 7, 1, 5);
+          px(ctx, wood[1]!, x + bx, y + 9, 2, 1);
+        }
+        px(ctx, wood[0]!, x, y + 4, 16, 4);
+        px(ctx, wood[2]!, x, y + 5, 16, 2);
+        px(ctx, wood[3]!, x, y + 5, 16, 1);
+        for (const [end, ex] of [
+          [join.w, 0],
+          [join.e, 12],
+        ] as const)
+          if (!end) {
+            px(ctx, wood[0]!, x + ex, y + 2, 4, 12);
+            px(ctx, wood[2]!, x + ex + 1, y + 3, 2, 10);
+            px(ctx, wood[3]!, x + ex + 1, y + 3, 2, 2);
+          }
+      } else {
+        px(ctx, "#00000044", x + 10, y, 2, 16);
+        for (let by = 1; by < 16; by += 3) {
+          px(ctx, wood[0]!, x + 8, y + by, 3, 2);
+          px(ctx, wood[1]!, x + 8, y + by, 2, 1);
+        }
+        px(ctx, wood[0]!, x + 5, y, 4, 16);
+        px(ctx, wood[2]!, x + 6, y, 2, 16);
+        px(ctx, wood[3]!, x + 6, y, 1, 16);
+        for (const [end, ey] of [
+          [join.n, 0],
+          [join.s, 12],
+        ] as const)
+          if (!end) {
+            px(ctx, wood[0]!, x + 4, y + ey, 6, 4);
+            px(ctx, wood[2]!, x + 5, y + ey, 4, 3);
+            px(ctx, wood[3]!, x + 5, y + ey, 4, 1);
+          }
+      }
+      return;
+    }
   }
+}
+
+/** A gallery's raised boards (owner 2026-11-18, verticality): planks laid along it, darker against the wall
+ *  behind; the steps up to it cut across with their nosings lit. */
+export function paintBuildingGallery(ctx: Ctx, x: number, y: number, along: "x" | "y", step: boolean, noise: Noise) {
+  // Dark stained oak, so it reads apart from a house's own plank floors.
+  px(ctx, "#24130a", x, y, T, T);
+  if (along === "x")
+    for (let k = 0; k < T; k += 4) {
+      px(ctx, "#5a321a", x, y + k, T, 3);
+      px(ctx, "#74442a", x, y + k, T, 1);
+      px(ctx, "#24130a", x + Math.floor(noise(k) * 12), y + k, 1, 3);
+    }
+  else
+    for (let k = 0; k < T; k += 4) {
+      px(ctx, "#5a321a", x + k, y, 3, T);
+      px(ctx, "#74442a", x + k, y, 1, T);
+      px(ctx, "#24130a", x + k, y + Math.floor(noise(k) * 12), 3, 1);
+    }
+  if (step)
+    for (let k = 0; k < 4; k++) {
+      // Treads going down to the hall floor, each a shade darker.
+      const c = ["#b07a44", "#94643a", "#7a5030", "#603e24"][k]!;
+      if (along === "x") {
+        px(ctx, c, x, y + k * 4, T, 3);
+        px(ctx, "#2a170c", x, y + k * 4 + 3, T, 1);
+      } else {
+        px(ctx, c, x + k * 4, y, 3, T);
+        px(ctx, "#2a170c", x + k * 4 + 3, y, 1, T);
+      }
+    }
 }
 
 /** A rug laid down the middle of a room: a border and a field. */

@@ -1214,7 +1214,13 @@ export function useDungeonMap(chatId: string, turnKey: string | null, enabled: b
           /** A patrol's beat, end to end. */
           beat?: Array<{ x: number; y: number }>;
           key?: boolean;
+          /** Which way they look, as a step. */
+          face?: { x: number; y: number };
+          /** They stand on a gallery over the room. */
+          raised?: boolean;
         }>;
+        /** The party is sneaking: the guards' sight shows (owner 2026-11-18). */
+        sneaking?: boolean;
       }>(`/game/${chatId}/map`),
     enabled: enabled && !!chatId,
     staleTime: 30_000,

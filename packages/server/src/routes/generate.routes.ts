@@ -5778,7 +5778,12 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             const toldText = gameDungeonToldText(map, told.walk, told.left);
             // The hour, for who stands on a hand-made map's spots now.
             const hour = (chatMeta.gameTime as { hour?: unknown } | undefined)?.hour;
-            const text = map ? gameDungeonMapPromptText(map, typeof hour === "number" ? hour : undefined) : "";
+            const text = map
+              ? gameDungeonMapPromptText(map, typeof hour === "number" ? hour : undefined) +
+                (chatMeta.gameDungeonSneak === true
+                  ? "\nThe party is sneaking: moving quietly, keeping out of the holders' sight. Treat it as an attempt at stealth that needs its check when a guard could notice them."
+                  : "")
+              : "";
             // The sites the story keeps closed, and how to open one.
             const locksText = promptWorld
               ? worldSiteLocksText(

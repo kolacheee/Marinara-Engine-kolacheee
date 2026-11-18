@@ -677,6 +677,17 @@ export function sitePlan(input: SitePlanInput): SitePlan {
     // floors that keeps clear of the donjon (panel 2026-11-17).
     if (input.template === "keep" && upper.depth === 1 && lower.depth === 0 && !upper.inset)
       links.push({ upper: i, lower: i + 1, kind: "wall" });
+    // A house or a castle now and then has a priest's hole: a ladder in the wall between the ground floor
+    // and the one above, behind hidden doors on both (owner 2026-11-18, "Add verticality and sightlines").
+    if (
+      (input.template === "manor" || input.template === "keep") &&
+      upper.depth === 1 &&
+      lower.depth === 0 &&
+      !upper.inset &&
+      input.fate !== "war" &&
+      random() < 0.6
+    )
+      links.push({ upper: i, lower: i + 1, kind: "hidden" });
   }
   return {
     template: input.template,
@@ -725,6 +736,8 @@ export interface SiteLevelMap {
   traps: SiteLevelTrap[];
   /** The way round the held room, cell by cell, through the rooms left to nobody. */
   quietWay?: Array<{ x: number; y: number }>;
+  /** A raised gallery over the hall: its walk and the steps up to it (the rail is a prop). */
+  gallery?: Array<{ x: number; y: number }>;
 }
 
 /** The rooms that are a level's great room: the biggest space on it. */
@@ -787,7 +800,8 @@ const BARREL = 8,
   COBWEB = 38,
   CART = 40,
   DUMMY = 41,
-  WOODPILE = 42;
+  WOODPILE = 42,
+  RAIL = 44;
 type SiteRecipe = ReadonlyArray<readonly [slot: number, role: SiteRole, count?: number | "reps" | "all"]>;
 const KITCHEN: SiteRecipe = [
   [RANGE, "back"],
@@ -2152,7 +2166,9 @@ function siteFrameOf(plan: SitePlan) {
         : link.kind === "stairs"
           ? names.main
           : link.kind === "hidden"
-            ? "Hidden stair"
+            ? kind === "crypt" || plan.levels[link.lower]!.depth < 0
+              ? "Hidden stair"
+              : "Priest's hole"
             : "Broken floor";
     const group = groups.get(key) ?? { links: [], w, h, want, name };
     group.links.push(k);
@@ -3891,6 +3907,20 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   if (entry) props[cell(entrance.x, entrance.y)] = DUNGEON_EXIT_PROP;
   for (const at of secrets) props[cell(at.x, at.y)] = DUNGEON_SECRET_DOOR_PROP;
+  // A priest's hole is shut behind hidden doors: the ways into its well drawn as wall, walked through.
+  for (const [n, region] of regions.entries()) {
+    if (region.kind !== "stair" || region.room?.name !== "Priest's hole") continue;
+    const own = new Set(cellsBy.get(n) ?? []);
+    const ways = [...new Set([...own].flatMap(around))].filter(
+      (c) => !own.has(c) && ground[c] === "floor" && props[c] === -1,
+    );
+    // Only where it is walled in with a door or two, not standing open in a room.
+    if (ways.length && ways.length <= 2)
+      for (const c of ways) {
+        props[c] = DUNGEON_SECRET_DOOR_PROP;
+        secrets.push({ x: c % mapW, y: Math.floor(c / mapW) });
+      }
+  }
   // The keep's portcullis hangs raised over the gate passage: drawn, walked under.
   if (frame.portcullisAt && level.depth === 0 && !level.inset)
     for (let k = 0; k < frame.portcullisAt.w; k++) {
@@ -4662,6 +4692,102 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         }
       }
     }
+  // A gallery over the hall (owner 2026-11-18, "Add verticality and sightlines"): a raised walk along one of
+  // its walls behind a rail, up a few steps at one end, where the holders can stand over the floor below (the
+  // minstrels' gallery over a house's screens, a castle hall's, the west gallery of a church). Its low end
+  // first, away from the dais, then a long side; never where a door opens onto it.
+  const gallery: number[] = [];
+  if (plan.template !== "crypt" && level.depth >= 0 && !level.inset)
+    for (const [k, box] of rooms.entries()) {
+      const name = info[k]?.name ?? "";
+      if (!box || !["Great hall", "Nave"].includes(siteBaseName(name))) continue;
+      if (Math.max(box.w, box.h) < 8 || Math.min(box.w, box.h) < 5) continue;
+      const inBox = (c: number) => inside(box, c % mapW, Math.floor(c / mapW));
+      const fixedProp = (c: number) =>
+        [COLUMN, SEAT, ALTAR, FONT, DUNGEON_EXIT_PROP, DUNGEON_SECRET_DOOR_PROP].includes(props[c]!);
+      const free = (c: number) =>
+        inBox(c) &&
+        ground[c] === "floor" &&
+        !fixedProp(c) &&
+        !linked.has(c) &&
+        !doorCells.has(c) &&
+        !traps.some((trap) => cell(trap.x, trap.y) === c);
+      const shut = (c: number) => around(c).every((m) => inBox(m) || ground[m] !== "floor");
+      let dais = { x: box.x + box.w / 2, y: box.y + box.h / 2 };
+      for (let y = box.y; y < box.y + box.h; y++)
+        for (let x = box.x; x < box.x + box.w; x++)
+          if (props[cell(x, y)] === SEAT || props[cell(x, y)] === ALTAR) dais = { x, y };
+      // Each side as (walk cell, rail cell) at position b along it, the wall behind the walk.
+      const sides = (["N", "S", "W", "E"] as const).map((side) => {
+        const along = side === "N" || side === "S" ? box.w : box.h;
+        const cellAt = (b: number, d: number) =>
+          side === "N"
+            ? cell(box.x + b, box.y + d)
+            : side === "S"
+              ? cell(box.x + b, box.y + box.h - 1 - d)
+              : side === "W"
+                ? cell(box.x + d, box.y + b)
+                : cell(box.x + box.w - 1 - d, box.y + b);
+        const mid = cellAt(Math.floor(along / 2), 0);
+        const far = Math.abs((mid % mapW) - dais.x) + Math.abs(Math.floor(mid / mapW) - dais.y);
+        const short = along === Math.min(box.w, box.h);
+        return { along, cellAt, score: far + (short ? 6 : 0) };
+      });
+      sides.sort((p, q) => q.score - p.score);
+      for (const { along, cellAt } of sides) {
+        // The longest run of places the walk and its rail can go.
+        const good = (b: number) =>
+          b >= 0 && b < along && free(cellAt(b, 0)) && free(cellAt(b, 1)) && shut(cellAt(b, 0)) && shut(cellAt(b, 1));
+        let [a, z] = [0, -1];
+        for (let b = 0; b < along;) {
+          if (!good(b)) {
+            b++;
+            continue;
+          }
+          let e = b;
+          while (good(e + 1)) e++;
+          if (e - b > z - a) [a, z] = [b, e];
+          b = e + 1;
+        }
+        // Ends cut short are capped with the rail where it can stand, else the walk draws back a cell for it.
+        const lo = a > 0 && !free(cellAt(a - 1, 0)) ? a + 1 : a;
+        const hi = z < along - 1 && !free(cellAt(z + 1, 0)) ? z - 1 : z;
+        if (hi - lo + 1 < 3) continue;
+        const walk: number[] = [];
+        const rail: number[] = [];
+        for (let b = lo; b <= hi; b++) walk.push(cellAt(b, 0));
+        for (let b = lo - 1; b <= hi + 1; b++) if (b >= 0 && b < along && free(cellAt(b, 1))) rail.push(cellAt(b, 1));
+        const caps: number[] = [];
+        if (lo > 0) caps.push(cellAt(lo - 1, 0));
+        if (hi < along - 1) caps.push(cellAt(hi + 1, 0));
+        if (caps.some((c) => !free(c))) continue;
+        // The steps: a cap whose far side is open floor, else the rail's end cell.
+        const open = (c: number) => ground[c] === "floor" && props[c] === -1 && !linked.has(c);
+        const stepCaps = [
+          ...(lo > 0 ? [[cellAt(lo - 1, 0), cellAt(lo - 2, 0)] as const] : []),
+          ...(hi < along - 1 ? [[cellAt(hi + 1, 0), cellAt(hi + 2, 0)] as const] : []),
+        ]
+          .filter(([, beyond]) => inBox(beyond) && open(beyond))
+          .map(([c]) => c);
+        // Else the rail cell in front of one end of the walk, onto the hall floor beyond it.
+        const railEnds = [lo, hi]
+          .filter((b) => rail.includes(cellAt(b, 1)) && inBox(cellAt(b, 2)) && open(cellAt(b, 2)))
+          .map((b) => cellAt(b, 1));
+        const stepPool = stepCaps.length ? stepCaps : railEnds;
+        if (!stepPool.length) continue;
+        const step = stepPool[Math.floor(random() * stepPool.length)]!;
+        const mine = [...walk, ...rail, ...caps];
+        // What stood there is moved off: the gallery's walk is kept clear.
+        const was = mine.map((c) => [c, props[c]!] as const);
+        for (const c of mine) props[c] = c === step || walk.includes(c) ? -1 : RAIL;
+        if (!reachable()) {
+          for (const [c, p] of was) props[c] = p;
+          continue;
+        }
+        gallery.push(...walk, step);
+        break;
+      }
+    }
   // The heart's hoard (panel round 30: the payoff not where the fight is): what the holders keep, two or three
   // chests together against the wall farthest from the door, behind whoever holds the room.
   {
@@ -4752,7 +4878,15 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         })
         .map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) }))
     : [];
-  return { map, rooms: info, links, locks, traps, ...(quietWay.length >= 3 ? { quietWay } : {}) };
+  return {
+    map,
+    rooms: info,
+    links,
+    locks,
+    traps,
+    ...(quietWay.length >= 3 ? { quietWay } : {}),
+    ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+  };
 }
 
 // ── As the game keeps it ──
@@ -4849,6 +4983,7 @@ export function gameDungeonPlannedMap(input: {
     entrance: laid.map.entrance,
     at,
     ...(laid.quietWay ? { quietWay: laid.quietWay } : {}),
+    ...(laid.gallery ? { gallery: laid.gallery } : {}),
     roomInfo: laid.rooms.map((room) => ({
       name: room.name,
       use: room.use,

@@ -69,6 +69,7 @@ export const BUILDING_DRESSING = [
   "a training dummy",
   "a woodpile",
   "a raised portcullis",
+  "a gallery rail",
 ] as const;
 
 /** A prop as one character of a kept map: "-" none, 0-9, then a-z for 10 on. */
@@ -412,6 +413,46 @@ export function dungeonWalkable(map: DungeonMap, x: number, y: number): boolean 
       map.props[i] === DUNGEON_SECRET_DOOR_PROP ||
       map.props[i] === DUNGEON_PORTCULLIS_PROP)
   );
+}
+
+/**
+ * The cells a watcher at `from`, facing `face` (a step such as {x: 0, y: 1}), can see within `range`: a cone
+ * some hundred degrees wide, every cell whose line from the watcher crosses no wall or rock (owner
+ * 2026-11-18, "Add verticality and sightlines"). Furniture does not hide a cell; a watcher on a gallery
+ * sees over it all the same.
+ */
+export function dungeonSightCells(
+  map: DungeonMap,
+  from: { x: number; y: number },
+  face: { x: number; y: number },
+  range = 7,
+): Array<{ x: number; y: number }> {
+  const out: Array<{ x: number; y: number }> = [];
+  const len = Math.hypot(face.x, face.y) || 1;
+  const [fx, fy] = [face.x / len, face.y / len];
+  const open = (x: number, y: number) =>
+    x >= 0 &&
+    y >= 0 &&
+    x < map.width &&
+    y < map.height &&
+    (map.ground[at(map, x, y)] === "floor" || map.ground[at(map, x, y)] === "liquid");
+  for (let y = from.y - range; y <= from.y + range; y++)
+    for (let x = from.x - range; x <= from.x + range; x++) {
+      const [dx, dy] = [x - from.x, y - from.y];
+      const d = Math.hypot(dx, dy);
+      if (!d || d > range + 0.5 || !open(x, y)) continue;
+      if ((dx * fx + dy * fy) / d < 0.62) continue;
+      // The line to the cell's middle, sampled finely, through open ground only.
+      let clear = true;
+      const steps = Math.ceil(d * 3);
+      for (let k = 1; k < steps && clear; k++) {
+        const sx = Math.round(from.x + (dx * k) / steps);
+        const sy = Math.round(from.y + (dy * k) / steps);
+        if ((sx !== x || sy !== y) && !open(sx, sy)) clear = false;
+      }
+      if (clear) out.push({ x, y });
+    }
+  return out;
 }
 
 /** The shortest walk between two cells, four ways, as the cells after the start; null when none. */
@@ -848,6 +889,11 @@ export const gameDungeonMapSchema = z
     quietWay: z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(600)
+      .optional(),
+    /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */
+    gallery: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(200)
       .optional(),
     /** The plan it is a level of, and what the party has done there on every level: which level this is,
      *  each level's name, the rooms seen on each, the locks opened and the traps found and gone. */

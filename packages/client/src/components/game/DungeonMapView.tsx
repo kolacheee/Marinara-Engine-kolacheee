@@ -11,6 +11,7 @@ import {
   DUNGEON_SECRET_DOOR_PROP,
   dungeonRoomHas,
   dungeonWayOutId,
+  dungeonSightCells,
   gameDungeonLinkAt,
   gameDungeonOnWayDown,
   gameDungeonOnWayOut,
@@ -27,6 +28,7 @@ import {
   type TilePack,
 } from "@marinara-engine/shared";
 import { useDungeonLeave, useDungeonMap, useDungeonStairs, useDungeonWalk } from "../../hooks/use-game";
+import { useUpdateChatMetadata } from "../../hooks/use-chats";
 import {
   overworldBaseResolution,
   overworldCamera,
@@ -48,6 +50,7 @@ import {
   paintBuildingEarth,
   paintBuildingDais,
   paintBuildingRug,
+  paintBuildingGallery,
   paintBuildingWater,
   paintFoundTrap,
   paintSiteLink,
@@ -150,6 +153,16 @@ export function DungeonMapView({
   const { data } = useDungeonMap(chatId, turnKey, true);
   const kept = data?.map ?? null;
   const guards = useMemo(() => data?.guards ?? [], [data?.guards]);
+  // Sneaking (owner 2026-11-18: the guards' sight shows only while the party sneaks), kept on the chat so
+  // the Game Master knows; shown at once while the save goes through.
+  const updateChatMetadata = useUpdateChatMetadata();
+  const [sneakShown, setSneakShown] = useState<boolean | null>(null);
+  const sneaking = sneakShown ?? !!data?.sneaking;
+  const toggleSneak = useCallback(() => {
+    const next = !sneaking;
+    setSneakShown(next);
+    updateChatMetadata.mutate({ id: chatId, gameDungeonSneak: next });
+  }, [chatId, sneaking, updateChatMetadata]);
   // Each walk writes a new record (its `at` moves); the cells, and the base canvas drawn from them, follow
   // the map's layout only.
   const layoutKey = kept
@@ -606,6 +619,69 @@ export function DungeonMapView({
               ctx.fillRect((sx + dx) * T, sy * T, T, 1);
             }
         }
+      // A gallery over the hall (owner 2026-11-18, verticality): raised boards along its wall, the rail's cells
+      // boarded too, the steps down at one end, and the shadow it throws on the floor below.
+      const galleryCells = new Set((kept?.gallery ?? []).map(({ x, y }) => y * cells.width + x));
+      if (building && galleryCells.size) {
+        const RAIL = 44;
+        const isRail = (x: number, y: number) =>
+          x >= 0 && y >= 0 && x < cells.width && y < cells.height && cells.props[y * cells.width + x] === RAIL;
+        const raisedAt = (x: number, y: number) => galleryCells.has(y * cells.width + x) || isRail(x, y);
+        const alongOf = (x: number, y: number): "x" | "y" =>
+          raisedAt(x - 1, y) || raisedAt(x + 1, y) ? (raisedAt(x, y - 1) && raisedAt(x, y + 1) ? "y" : "x") : "y";
+        for (let i = 0; i < cells.props.length; i++) {
+          const [x, y] = [i % cells.width, Math.floor(i / cells.width)];
+          if (!galleryCells.has(i) && !isRail(x, y)) continue;
+          if (
+            isRail(x, y) &&
+            ![
+              [1, 0],
+              [-1, 0],
+              [0, 1],
+              [0, -1],
+            ].some(([dx, dy]) => galleryCells.has((y + dy!) * cells.width + x + dx!))
+          )
+            continue;
+          // The steps: a gallery cell with plain floor beside it, its treads across the way down.
+          const down = [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+          ].find(([dx, dy]) => at(x + dx!, y + dy!) === "floor" && !raisedAt(x + dx!, y + dy!));
+          const step = galleryCells.has(i) && !!down;
+          paintBuildingGallery(
+            ctx,
+            x * T,
+            y * T,
+            step ? (down![1] !== 0 ? "x" : "y") : alongOf(x, y),
+            step,
+            cellNoise(x, y),
+          );
+        }
+        // Its shadow on the hall floor below the rail.
+        for (let i = 0; i < cells.props.length; i++) {
+          const [x, y] = [i % cells.width, Math.floor(i / cells.width)];
+          if (!isRail(x, y)) continue;
+          for (const [dx, dy] of [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+          ] as const) {
+            const [nx, ny] = [x + dx, y + dy];
+            if (at(nx, ny) !== "floor" || raisedAt(nx, ny)) continue;
+            const [ox, oy] = [nx * T, ny * T];
+            for (let k = 0; k < 7; k++) {
+              ctx.fillStyle = `rgba(8, 5, 3, ${0.5 - k * 0.07})`;
+              if (dx === 1) ctx.fillRect(ox + k, oy, 1, T);
+              else if (dx === -1) ctx.fillRect(ox + T - 1 - k, oy, 1, T);
+              else if (dy === 1) ctx.fillRect(ox, oy + k, T, 1);
+              else ctx.fillRect(ox, oy + T - 1 - k, T, 1);
+            }
+          }
+        }
+      }
       const wayOut = dungeonWayOutId(DUNGEON_SETS.find((each) => each.id === cells.set));
       const way = wayOut === "ladder" ? "ladder" : wayOut === "ladder_hatch" ? "hatch" : "stairs";
       for (let y = 0; y < cells.height; y++)
@@ -666,7 +742,7 @@ export function DungeonMapView({
               y + dy < cells.height &&
               cells.props[(y + dy) * cells.width + x + dx] === prop;
             const join =
-              (prop === 0 && building !== "temple") || prop === 25 || prop === 43
+              (prop === 0 && building !== "temple") || prop === 25 || prop === 43 || prop === 44
                 ? { w: same(-1, 0), e: same(1, 0), n: same(0, -1), s: same(0, 1) }
                 : undefined;
             paintBuildingProp(ctx, building, prop, x * T, y * T, join);
@@ -808,7 +884,7 @@ export function DungeonMapView({
       ctx.strokeRect(x * T + 3, y * T + 3, T - 6, T - 6);
     }
     return canvas;
-  }, [cells, drawTile, links, resolution, kept?.roomInfo]);
+  }, [cells, drawTile, links, resolution, kept?.roomInfo, kept?.gallery]);
   const mapSize = cells ? { width: cells.width * T, height: cells.height * T } : { width: 0, height: 0 };
 
   // ── The party, and the view ──
@@ -888,6 +964,25 @@ export function DungeonMapView({
           ctx.fillRect(cx + dx, cy + dy, 2, 3);
         }
       }
+      // What the holders can see, while the party sneaks (owner 2026-11-18, "Add verticality and sightlines";
+      // hidden otherwise): a warm wash over each cell in a guard's view, fading with distance, its edge traced.
+      if (sneaking && cells)
+        for (const guard of guards) {
+          if (!guard.face || inFog(guard.x, guard.y)) continue;
+          const seen = dungeonSightCells(cells, guard, guard.face, guard.raised ? 9 : 7);
+          const inView = new Set(seen.map(({ x, y }) => y * cells.width + x));
+          for (const { x, y } of seen) {
+            if (inFog(x, y)) continue;
+            const d = Math.hypot(x - guard.x, y - guard.y);
+            ctx.fillStyle = `rgba(255, 140, 64, ${Math.max(0.1, 0.34 - d * 0.025).toFixed(3)})`;
+            ctx.fillRect(x * T, y * T, T, T);
+            ctx.fillStyle = "rgba(255, 200, 110, 0.85)";
+            if (!inView.has(y * cells.width + x - 1)) ctx.fillRect(x * T, y * T, 1, T);
+            if (!inView.has(y * cells.width + x + 1)) ctx.fillRect(x * T + T - 1, y * T, 1, T);
+            if (!inView.has((y - 1) * cells.width + x)) ctx.fillRect(x * T, y * T, T, 1);
+            if (!inView.has((y + 1) * cells.width + x)) ctx.fillRect(x * T, y * T + T - 1, T, 1);
+          }
+        }
       // A patrol's beat: a line of footfalls along the walk it keeps, a bar at each end where it turns,
       // outlined so it reads on stone and rugs alike (panel round 26: too faint).
       for (const guard of guards) {
@@ -962,7 +1057,7 @@ export function DungeonMapView({
         if (!drawn && !drawTile(ctx, "party", x, y)) paintParty(ctx, x + 1, y + 1, frame !== 1);
       }
     },
-    [base, drawTile, fogged, foundTraps, guards, resolution, scale, size.height, size.width, standing],
+    [base, drawTile, fogged, foundTraps, guards, resolution, scale, size.height, size.width, standing, sneaking],
   );
   const drawRef = useRef(draw);
   drawRef.current = draw;
@@ -1200,6 +1295,21 @@ export function DungeonMapView({
               <ArrowUpToLine size={13} aria-hidden="true" />
             )}
             {t(link.level > site!.level ? "game.dungeon.goDown" : "game.dungeon.goUp", { level: linkTo.name })}
+          </button>
+        )}
+        {kept.site && guards.length > 0 && (
+          <button
+            type="button"
+            onClick={toggleSneak}
+            aria-pressed={sneaking}
+            className={`pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50 ${
+              sneaking
+                ? "border-amber-300/70 bg-amber-900/80 hover:bg-amber-900"
+                : "border-white/20 bg-black/70 hover:bg-black/85"
+            }`}
+          >
+            <Footprints size={13} aria-hidden="true" />
+            {t(sneaking ? "game.dungeon.sneaking" : "game.dungeon.sneak")}
           </button>
         )}
         {onWayOut && (

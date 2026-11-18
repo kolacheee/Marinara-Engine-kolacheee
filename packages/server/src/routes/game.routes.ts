@@ -12257,7 +12257,13 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
           replies: await dungeonSiteReplies(app.db, chat.id, meta),
         })
       : null;
-    return { map, walk: gameDungeonWalkFromMetadata(meta), guards: site ? dungeonGuardMarks(site, gameDay(meta)) : [] };
+    return {
+      map,
+      walk: gameDungeonWalkFromMetadata(meta),
+      guards: site ? dungeonGuardMarks(site, gameDay(meta)) : [],
+      // The party moving quietly (owner 2026-11-18): the guards' sight shows on the map only then.
+      sneaking: meta.gameDungeonSneak === true,
+    };
   });
 
   // POST /game/:chatId/map/walk: the party walks to a cell by the shortest way; the minutes go on the
