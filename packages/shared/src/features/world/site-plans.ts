@@ -2554,7 +2554,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // rooms filling it as in any building, never a void left inside its walls (panel 2026-11-17).
   const rock = (kind === "crypt" || kind === "keep") && level.depth < 0;
   // One space on a floor is the set piece, two or three times any other (gamer panel 2026-11-17).
-  const weight = (r: SitePlanRoom) => SITE_WANT[r.size] * (r.heart || SITE_SET_PIECES.has(r.name) ? 2.2 : 1);
+  // Below a crypt the set piece is one great hall, the others chambers off it (panel round 48: four near-equal boxes).
+  const weight = (r: SitePlanRoom) =>
+    SITE_WANT[r.size] * (r.heart || SITE_SET_PIECES.has(r.name) ? (rock && kind === "crypt" ? 3.2 : 2.2) : 1);
   const sum = planned.reduce((n, room) => n + weight(room), 0) || 1;
   const room = rock ? freeCount * 0.5 : freeCount;
   const scale = Math.max(0.6, Math.min(rock ? 1.6 : 1.35, room / (sum * (rock ? 1 : 1.15))));
@@ -3351,6 +3353,85 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         }
       }
     }
+  // A crypt's chambers cut to a shape of their own (panel round 48: identical boxes on one-wide galleries):
+  // a burial hall or catacomb a cross, an ossuary or charnel round, the founder's tomb ending in an apse.
+  // Only corners with rock all round them are cut, so no way between spaces is lost.
+  if (rock && kind === "crypt" && !level.inset)
+    for (const [g, cells] of cellsBy) {
+      const region = regions[g]!;
+      const name = region.room?.name ?? "";
+      if (g < fixedCount || region.hidden || region.kind !== "room" || !cells.length) continue;
+      const shape = region.room?.heart
+        ? "apse"
+        : /ossuar|charnel|bone pit/iu.test(name)
+          ? "round"
+          : /burial hall|catacomb|guardians|wall tombs|family crypt/iu.test(name)
+            ? "cross"
+            : random() < 0.35
+              ? "round"
+              : null;
+      if (!shape) continue;
+      const xs = cells.map((c) => c % mapW);
+      const ys = cells.map((c) => Math.floor(c / mapW));
+      const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+      const [w, h] = [x1 - x0 + 1, y1 - y0 + 1];
+      if (Math.min(w, h) < (shape === "cross" ? 7 : 5)) continue;
+      // Only a chamber that is near enough a box: an L's arm would be cut away as a corner.
+      if (cells.filter((c) => at[c] === g && ground[c] === "floor").length < 0.85 * w * h) continue;
+      // How far in from each corner a cell is, by side.
+      const tall = h >= w;
+      const apseEnd = random() < 0.5;
+      const cutAt = (x: number, y: number) => {
+        const [dx, dy] = [Math.min(x - x0, x1 - x), Math.min(y - y0, y1 - y)];
+        if (shape === "cross") {
+          const [kx, ky] = [Math.floor(w / 4), Math.floor(h / 4)];
+          return dx < kx && dy < ky;
+        }
+        if (shape === "round") {
+          const k = Math.floor(Math.min(w, h) / 3);
+          return dx + dy < k;
+        }
+        // The apse: the two corners at one end of the long way rounded off.
+        const k = Math.floor(Math.min(w, h) / 2) - 1;
+        const atEnd = tall ? (apseEnd ? y - y0 : y1 - y) : apseEnd ? x - x0 : x1 - x;
+        return atEnd < k && dx + dy < k;
+      };
+      const mine = new Set(cells);
+      const cut = cells.filter((c) => {
+        if (at[c] !== g || ground[c] !== "floor" || hold[c]) return false;
+        if (!cutAt(c % mapW, Math.floor(c / mapW))) return false;
+        // Nothing of another space within a step, diagonals too.
+        for (const d of [-1, 1, -mapW, mapW, -mapW - 1, -mapW + 1, mapW - 1, mapW + 1]) {
+          const n = c + d;
+          if (n < 0 || n >= size || mine.has(n)) continue;
+          if (ground[n] === "floor" || (at[n]! >= 0 && at[n] !== g)) return false;
+        }
+        return true;
+      });
+      // A cut that leaves the room less than two thirds of itself is too much.
+      if (!cut.length || cut.length > cells.length / 3) continue;
+      const gone = new Set(cut);
+      // And the chamber still one piece.
+      const keep = cells.filter((c) => !gone.has(c) && at[c] === g && ground[c] === "floor");
+      const keepSet = new Set(keep);
+      const seen = new Set([keep[0]!]);
+      const queue = [keep[0]!];
+      for (let head = 0; head < queue.length; head++)
+        for (const n of around(queue[head]!))
+          if (keepSet.has(n) && !seen.has(n)) {
+            seen.add(n);
+            queue.push(n);
+          }
+      if (seen.size !== keep.length) continue;
+      for (const c of cut) {
+        ground[c] = "wall";
+        at[c] = -1;
+      }
+      cellsBy.set(
+        g,
+        cells.filter((c) => !gone.has(c)),
+      );
+    }
   const shapes = new Map<number, { main: SiteRect; parts: SiteRect[] }>();
   for (const [g, cells] of cellsBy) {
     if (!cells.length) continue;
@@ -3933,6 +4014,56 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         for (const p of recess) ground[cell(p.x, p.y)] = "floor";
         for (const p of [...behind, ...flank]) if (ground[cell(p.x, p.y)] === "rock") ground[cell(p.x, p.y)] = "wall";
         alcoves.set(n, recess);
+        break;
+      }
+    }
+  }
+
+  // Side galleries (panel round 48: a crypt's galleries a maze of one-wide ways with nothing in them): a
+  // short dead-end way cut on into the rock from a gallery, a cache at its end and, where the rules find
+  // traps, a trap in it, so a side way is worth the look and the risk.
+  const spurs: number[][] = [];
+  if (rock && kind === "crypt" && !level.inset) {
+    const want = 1 + (random() < 0.5 ? 1 : 0);
+    const starts = shuffle(
+      [...Array(size).keys()].filter((c) => ground[c] === "floor" && at[c]! >= 0 && isPassage(at[c]!)),
+    );
+    for (const c of starts) {
+      if (spurs.length >= want) break;
+      if (Math.abs((c % mapW) - entrance.x) + Math.abs(Math.floor(c / mapW) - entrance.y) < 5) continue;
+      if (
+        spurs.some((spur) =>
+          spur.some(
+            (m) => Math.abs((m % mapW) - (c % mapW)) + Math.abs(Math.floor(m / mapW) - Math.floor(c / mapW)) < 6,
+          ),
+        )
+      )
+        continue;
+      for (const d of shuffle([-1, 1, -mapW, mapW])) {
+        const e = Math.abs(d) === 1 ? mapW : 1;
+        const length = 3 + Math.floor(random() * 3);
+        const way = [...Array(length).keys()].map((k) => c + d * (k + 1));
+        const solid = (m: number) =>
+          m >= 0 &&
+          m < size &&
+          (ground[m] === "wall" || ground[m] === "rock") &&
+          !hold[m] &&
+          (at[m]! < 0 || isPassage(at[m]!));
+        const x0 = c % mapW;
+        const off = (m: number) => {
+          const x = m % mapW;
+          const y = Math.floor(m / mapW);
+          return (
+            x < 1 || y < 1 || x >= mapW - 1 || y >= mapH - 1 || (Math.abs(d) === 1 && Math.abs(x - x0) > length + 1)
+          );
+        };
+        const all = [...way, way[way.length - 1]! + d];
+        if (all.some((m) => off(m) || !solid(m))) continue;
+        if (!all.every((m) => solid(m + e) && solid(m - e))) continue;
+        for (const m of way) ground[m] = "floor";
+        for (const m of [...all.flatMap((m) => [m + e, m - e]), way[way.length - 1]! + d])
+          if (ground[m] === "rock") ground[m] = "wall";
+        spurs.push(way);
         break;
       }
     }
@@ -4930,6 +5061,26 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       if (traps.some((trap) => trap.x === x && trap.y === y)) continue;
       traps.push({ x, y, dc: 10 + plan.wealth * 2 + Math.floor(random() * 4) - level.depth });
     }
+  }
+  // Each side gallery's cache at its end, a fallen robber now and then on the way to it, a trap before it.
+  for (const way of spurs) {
+    const end = way[way.length - 1]!;
+    if (props[end] === -1) {
+      props[end] = 3;
+      if (!reachable()) props[end] = -1;
+    }
+    const mid = way[Math.floor((way.length - 1) / 2)]!;
+    if (random() < 0.4 && props[mid] === -1 && way.length >= 4) {
+      props[mid] = 1;
+      if (!reachable()) props[mid] = -1;
+    }
+    const before = way[way.length - 2]!;
+    if (options.traps && props[before] === -1 && !traps.some((trap) => cell(trap.x, trap.y) === before))
+      traps.push({
+        x: before % mapW,
+        y: Math.floor(before / mapW),
+        dc: 10 + plan.wealth * 2 + Math.floor(random() * 4) - level.depth,
+      });
   }
   // Cover (owner 2026-11-18, "Build play content next"): a big room whose middle is bare gets two or three
   // islands of cover with clear ways between them, so a fight there has something to move round (panel
