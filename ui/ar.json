@@ -11460,6 +11460,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "إعداد {{value1}}",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "يقبل Veo مدة 4 أو 6 أو 8 ثوان. تستخدم مراجع حلقات الشخصيات الصورة الرمزية إطارا أول وأخيرا وتعمل لمدة 8 ثوان.",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "افتراضيات الفيديو",
+  "ui.decision.visionRequired": "يتطلب نموذج قرار يقرأ الصور. اختر Liquid d1 أو Valen أو Winnow من إعدادات النموذج المضمن للقرارات ضمن الاتصالات على هذا الجهاز (Connections → On this device → Built-in model (decisions)).",
   "ui.decision.visionRequiredLabel": "سبب عدم الإتاحة",
   "ui.diagnostics.accessWarningBanner.review": "مراجعة الوصول",
   "ui.diagnostics.accessWarningBanner.title": "يمكن للآخرين فتح Marinara دون كلمة مرور",
