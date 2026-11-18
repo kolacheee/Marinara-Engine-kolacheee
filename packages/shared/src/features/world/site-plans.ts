@@ -78,6 +78,28 @@ interface LevelSpec {
   when?: "undead" | "hill";
   /** Never on wet ground. */
   dry?: true;
+  /** Rooms only some floors have: as many as `pick` says by wealth (1-3), drawn by the seed, so a big
+   *  building is not every room there is in the same places (owner 2026-11-18). */
+  extra?: { pick: readonly [number, number, number]; rooms: readonly RoomSpec[] };
+  /** How many floors like it stand one under another, at most, by wealth (1 when omitted): below ground only. */
+  repeat?: readonly [number, number, number];
+  /** What each of those floors is besides (one a flooded one, one a robbed one), none twice in a building. */
+  variants?: readonly LevelVariant[];
+}
+
+interface LevelVariant {
+  /** Its name, for the second floor of the kind and on; the first keeps the level's own unless `first`. */
+  name: string;
+  /** May be the first floor of the kind too. */
+  first?: true;
+  /** Rooms it has besides. */
+  rooms?: readonly RoomSpec[];
+  /** Rooms of the level it does without, by name. */
+  drop?: readonly string[];
+  /** Water stands in it. */
+  flooded?: true;
+  /** The share of its rooms fallen in or broken open. */
+  ruined?: number;
 }
 
 interface TemplateSpec {
@@ -132,12 +154,24 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
             heart: true,
             furniture: [BED, CHEST, FIRE],
           },
-          { name: "Dressing room", use: "store", size: 1, zone: "private", furniture: [CHEST] },
           { name: "Bedroom", use: "holders", size: 2, zone: "private", furniture: [BED, CHEST], count: [1, 2] },
-          { name: "Guest bedroom", use: "holders", size: 2, zone: "guest", furniture: [BED], count: [1, 3] },
-          { name: "Nursery", use: "squat", size: 1, zone: "private", chance: 0.5, furniture: [BED, CHEST] },
-          { name: "Bathroom", use: "squat", size: 1, zone: "guest", wealth: 2, furniture: [CHEST] },
+          { name: "Guest bedroom", use: "holders", size: 2, zone: "guest", furniture: [BED], count: [1, 2] },
         ],
+        extra: {
+          pick: [1, 2, 3],
+          rooms: [
+            { name: "Dressing room", use: "store", size: 1, zone: "private", furniture: [CHEST] },
+            { name: "Nursery", use: "squat", size: 1, zone: "private", furniture: [BED, CHEST] },
+            { name: "Bathroom", use: "squat", size: 1, zone: "guest", wealth: 2, furniture: [CHEST] },
+            { name: "Boudoir", use: "quiet", size: 1, zone: "private", furniture: [T] },
+            { name: "Sitting room", use: "holders", size: 2, zone: "guest", furniture: [T] },
+            { name: "Governess's room", use: "squat", size: 1, zone: "private", furniture: [BED] },
+            { name: "Long gallery", use: "quiet", size: 3, zone: "public", wealth: 3, furniture: [SHELF] },
+            { name: "Sewing room", use: "squat", size: 1, zone: "guest", furniture: [T] },
+            { name: "Chaplain's room", use: "squat", size: 1, zone: "guest", furniture: [BED] },
+            { name: "Linen room", use: "store", size: 1, zone: "guest", furniture: [CHEST] },
+          ],
+        },
       },
       {
         id: "ground",
@@ -147,14 +181,25 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           { name: "Entrance hall", use: "post", size: 2, zone: "public", furniture: [T] },
           { name: "Great hall", use: "holders", size: 3, zone: "public", furniture: [T, FIRE] },
           { name: "Dining room", use: "holders", size: 2, zone: "public", furniture: [T, T] },
-          { name: "Ballroom", use: "holders", size: 3, zone: "public", wealth: 3, furniture: [] },
           { name: "Kitchen", use: "holders", size: 2, zone: "service", furniture: [FIRE, T, CHEST] },
-          { name: "Pantry", use: "store", size: 1, zone: "service", furniture: [CHEST, SHELF] },
-          { name: "Servants' hall", use: "holders", size: 2, zone: "service", furniture: [T, BED] },
-          { name: "Library", use: "quiet", size: 2, zone: "private", wealth: 2, furniture: [SHELF, SHELF, T] },
           { name: "Study", use: "quiet", size: 1, zone: "private", locked: true, furniture: [T, SHELF] },
-          { name: "Chapel", use: "quiet", size: 1, zone: "private", chance: 0.5, furniture: [T] },
         ],
+        extra: {
+          pick: [2, 3, 4],
+          rooms: [
+            { name: "Pantry", use: "store", size: 1, zone: "service", furniture: [CHEST, SHELF] },
+            { name: "Servants' hall", use: "holders", size: 2, zone: "service", furniture: [T, BED] },
+            { name: "Library", use: "quiet", size: 2, zone: "private", wealth: 2, furniture: [SHELF, SHELF, T] },
+            { name: "Chapel", use: "quiet", size: 1, zone: "private", furniture: [T] },
+            { name: "Ballroom", use: "holders", size: 3, zone: "public", wealth: 3, furniture: [] },
+            { name: "Music room", use: "holders", size: 2, zone: "private", wealth: 2, furniture: [T] },
+            { name: "Morning room", use: "holders", size: 2, zone: "private", furniture: [T] },
+            { name: "Gun room", use: "store", size: 1, zone: "service", furniture: [SHELF] },
+            { name: "Parlour", use: "holders", size: 2, zone: "public", furniture: [T, FIRE] },
+            { name: "Steward's office", use: "quiet", size: 1, zone: "service", furniture: [T, SHELF] },
+            { name: "Laundry", use: "squat", size: 1, zone: "service", furniture: [CHEST] },
+          ],
+        },
       },
       {
         id: "cellar",
@@ -164,9 +209,19 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         rooms: [
           { name: "Wine cellar", use: "squat", size: 3, zone: "service", furniture: [CHEST, CHEST, SHELF] },
           { name: "Store room", use: "squat", size: 2, zone: "service", furniture: [CHEST], count: [1, 2] },
-          { name: "Cold room", use: "store", size: 1, zone: "service", furniture: [SHELF] },
           { name: "Vault", use: "store", size: 1, zone: "deep", wealth: 2, locked: true, furniture: [CHEST, CHEST] },
         ],
+        extra: {
+          pick: [1, 1, 2],
+          rooms: [
+            { name: "Cold room", use: "store", size: 1, zone: "service", furniture: [SHELF] },
+            { name: "Coal store", use: "squat", size: 1, zone: "service", furniture: [CHEST] },
+            { name: "Beer cellar", use: "squat", size: 2, zone: "service", furniture: [CHEST, CHEST] },
+            { name: "Root cellar", use: "squat", size: 1, zone: "service", furniture: [CHEST] },
+            { name: "Lumber cellar", use: "squat", size: 2, zone: "deep", furniture: [CHEST] },
+            { name: "Well chamber", use: "squat", size: 1, zone: "deep", furniture: [] },
+          ],
+        },
       },
       {
         id: "rock-cellar",
@@ -185,9 +240,16 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         when: "undead",
         rooms: [
           { name: "Family crypt", use: "holders", size: 3, zone: "deep", heart: true, furniture: [CHEST, FIRE] },
-          { name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
           { name: "Tomb", use: "holders", size: 1, zone: "deep", furniture: [CHEST], count: [1, 2] },
         ],
+        extra: {
+          pick: [1, 1, 1],
+          rooms: [
+            { name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
+            { name: "Charnel", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
+            { name: "Burial vault", use: "holders", size: 1, zone: "deep", furniture: [CHEST] },
+          ],
+        },
       },
     ],
   },
@@ -205,10 +267,15 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         name: "Tower top",
         depth: 2,
         inset: true,
-        rooms: [
-          { name: "Watch room", use: "post", size: 2, zone: "public", furniture: [T, CHEST] },
-          { name: "Signal room", use: "squat", size: 1, zone: "private", furniture: [FIRE] },
-        ],
+        rooms: [{ name: "Watch room", use: "post", size: 2, zone: "public", furniture: [T, CHEST] }],
+        extra: {
+          pick: [1, 1, 1],
+          rooms: [
+            { name: "Signal room", use: "squat", size: 1, zone: "private", furniture: [FIRE] },
+            { name: "Lookout", use: "squat", size: 1, zone: "private", furniture: [] },
+            { name: "Beacon platform", use: "squat", size: 1, zone: "private", furniture: [FIRE] },
+          ],
+        },
       },
       {
         id: "upper",
@@ -224,10 +291,21 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
             heart: true,
             furniture: [BED, FIRE, CHEST],
           },
-          { name: "Solar", use: "holders", size: 2, zone: "private", furniture: [T, FIRE] },
           { name: "Treasury", use: "store", size: 1, zone: "private", locked: true, furniture: [CHEST, CHEST] },
-          { name: "Officers' quarters", use: "holders", size: 2, zone: "guest", furniture: [BED, BED] },
         ],
+        extra: {
+          pick: [1, 2, 3],
+          rooms: [
+            { name: "Solar", use: "holders", size: 2, zone: "private", furniture: [T, FIRE] },
+            { name: "Officers' quarters", use: "holders", size: 2, zone: "guest", furniture: [BED, BED] },
+            { name: "Muniment room", use: "quiet", size: 1, zone: "private", furniture: [SHELF] },
+            { name: "Lady's bower", use: "holders", size: 2, zone: "private", furniture: [BED] },
+            { name: "Oratory", use: "quiet", size: 1, zone: "private", furniture: [T] },
+            { name: "Wardrobe", use: "store", size: 1, zone: "guest", furniture: [CHEST] },
+            { name: "Guest chamber", use: "holders", size: 2, zone: "guest", furniture: [BED] },
+            { name: "Chaplain's room", use: "squat", size: 1, zone: "guest", furniture: [BED] },
+          ],
+        },
       },
       {
         id: "ground",
@@ -239,9 +317,20 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           { name: "Barracks", use: "holders", size: 3, zone: "service", furniture: [BED, BED, CHEST] },
           { name: "Armoury", use: "store", size: 1, zone: "service", locked: true, furniture: [SHELF, SHELF] },
           { name: "Kitchen", use: "holders", size: 2, zone: "service", furniture: [FIRE, T] },
-          { name: "Chapel", use: "quiet", size: 1, zone: "private", chance: 0.6, furniture: [T] },
-          { name: "Stables", use: "squat", size: 2, zone: "service", chance: 0.6, furniture: [CHEST] },
         ],
+        extra: {
+          pick: [1, 2, 3],
+          rooms: [
+            { name: "Chapel", use: "quiet", size: 1, zone: "private", furniture: [T] },
+            { name: "Stables", use: "squat", size: 2, zone: "service", furniture: [CHEST] },
+            { name: "Smithy", use: "squat", size: 1, zone: "service", furniture: [FIRE] },
+            { name: "Well house", use: "squat", size: 1, zone: "service", furniture: [] },
+            { name: "Bakehouse", use: "squat", size: 1, zone: "service", furniture: [FIRE] },
+            { name: "Granary", use: "store", size: 2, zone: "service", furniture: [CHEST] },
+            { name: "Kennels", use: "squat", size: 1, zone: "service", furniture: [] },
+            { name: "Brewhouse", use: "squat", size: 1, zone: "service", furniture: [CHEST] },
+          ],
+        },
       },
       {
         id: "dungeons",
@@ -251,8 +340,43 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         rooms: [
           { name: "Gaoler's room", use: "post", size: 2, zone: "public", furniture: [T, CHEST] },
           { name: "Cell", use: "squat", size: 1, zone: "deep", furniture: [BED], count: [3, 5] },
-          { name: "Interrogation room", use: "holders", size: 2, zone: "deep", furniture: [T, FIRE] },
           { name: "Oubliette", use: "squat", size: 1, zone: "deep", locked: true, furniture: [] },
+        ],
+        repeat: [1, 1, 2],
+        extra: {
+          pick: [1, 1, 2],
+          rooms: [
+            { name: "Interrogation room", use: "holders", size: 2, zone: "deep", furniture: [T, FIRE] },
+            { name: "Guardroom", use: "holders", size: 2, zone: "public", furniture: [T] },
+            { name: "Store vault", use: "store", size: 2, zone: "service", furniture: [CHEST, CHEST] },
+            { name: "Well chamber", use: "squat", size: 1, zone: "service", furniture: [] },
+            { name: "Powder store", use: "store", size: 1, zone: "deep", furniture: [CHEST] },
+          ],
+        },
+        variants: [
+          {
+            name: "Cisterns",
+            drop: ["Cell", "Oubliette"],
+            flooded: true,
+            rooms: [
+              { name: "Cistern", use: "squat", size: 3, zone: "deep", furniture: [] },
+              { name: "Well chamber", use: "squat", size: 1, zone: "public", furniture: [] },
+            ],
+          },
+          {
+            name: "Old cells",
+            ruined: 0.4,
+            rooms: [{ name: "Cell", use: "squat", size: 1, zone: "private", furniture: [BED], count: [2, 3] }],
+          },
+          {
+            name: "Sally passage",
+            drop: ["Cell", "Oubliette"],
+            rooms: [
+              { name: "Store vault", use: "store", size: 2, zone: "service", furniture: [CHEST] },
+              { name: "Powder store", use: "store", size: 1, zone: "deep", furniture: [CHEST] },
+              { name: "Postern guard", use: "holders", size: 2, zone: "deep", furniture: [T] },
+            ],
+          },
         ],
       },
     ],
@@ -273,10 +397,15 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         inset: true,
         chance: 0.7,
         wealth: 2,
-        rooms: [
-          { name: "Bell chamber", use: "squat", size: 2, zone: "public", furniture: [] },
-          { name: "Ringers' loft", use: "squat", size: 1, zone: "private", furniture: [CHEST] },
-        ],
+        rooms: [{ name: "Bell chamber", use: "squat", size: 2, zone: "public", furniture: [] }],
+        extra: {
+          pick: [1, 1, 1],
+          rooms: [
+            { name: "Ringers' loft", use: "squat", size: 1, zone: "private", furniture: [CHEST] },
+            { name: "Clock room", use: "squat", size: 1, zone: "private", furniture: [] },
+            { name: "Bell loft", use: "store", size: 1, zone: "private", furniture: [CHEST] },
+          ],
+        },
       },
       {
         id: "ground",
@@ -289,9 +418,19 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           { name: "Vestry", use: "store", size: 1, zone: "private", locked: true, furniture: [CHEST, SHELF] },
           { name: "Cloister", use: "open", size: 3, zone: "service", furniture: [] },
           { name: "Refectory", use: "holders", size: 2, zone: "service", furniture: [T, T] },
-          { name: "Monks' cells", use: "holders", size: 2, zone: "guest", furniture: [BED], count: [1, 2] },
-          { name: "Scriptorium", use: "quiet", size: 2, zone: "private", wealth: 2, furniture: [SHELF, T] },
         ],
+        extra: {
+          pick: [1, 2, 3],
+          rooms: [
+            { name: "Monks' cells", use: "holders", size: 2, zone: "guest", furniture: [BED], count: [1, 2] },
+            { name: "Scriptorium", use: "quiet", size: 2, zone: "private", wealth: 2, furniture: [SHELF, T] },
+            { name: "Chapter house", use: "holders", size: 2, zone: "private", wealth: 2, furniture: [T] },
+            { name: "Almonry", use: "store", size: 1, zone: "service", furniture: [CHEST] },
+            { name: "Lady chapel", use: "quiet", size: 1, zone: "private", furniture: [T] },
+            { name: "Sacristy", use: "store", size: 1, zone: "private", furniture: [CHEST] },
+            { name: "Library", use: "quiet", size: 2, zone: "private", wealth: 3, furniture: [SHELF, SHELF] },
+          ],
+        },
       },
       {
         id: "undercroft",
@@ -300,10 +439,40 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         dry: true,
         rooms: [
           { name: "Undercroft", use: "squat", size: 3, zone: "public", furniture: [CHEST] },
-          { name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
           { name: "Reliquary", use: "store", size: 1, zone: "deep", locked: true, furniture: [CHEST] },
+        ],
+        extra: {
+          pick: [1, 2, 2],
+          rooms: [
+            { name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
+            { name: "Burial vault", use: "holders", size: 2, zone: "deep", furniture: [CHEST], count: [1, 2] },
+            { name: "Charnel", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
+            { name: "Relic store", use: "store", size: 1, zone: "private", furniture: [CHEST] },
+            { name: "Crypt chapel", use: "quiet", size: 2, zone: "private", furniture: [T] },
+            { name: "Well chamber", use: "squat", size: 1, zone: "service", furniture: [] },
+            { name: "Store vault", use: "store", size: 2, zone: "service", furniture: [CHEST] },
+          ],
+        },
+      },
+      {
+        id: "catacombs",
+        name: "Catacombs",
+        depth: -2,
+        wealth: 3,
+        chance: 0.5,
+        dry: true,
+        rooms: [
+          { name: "Catacomb", use: "squat", size: 3, zone: "public", furniture: [SHELF] },
           { name: "Burial vault", use: "holders", size: 2, zone: "deep", furniture: [CHEST], count: [1, 2] },
         ],
+        extra: {
+          pick: [1, 1, 1],
+          rooms: [
+            { name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [SHELF] },
+            { name: "Charnel", use: "squat", size: 2, zone: "service", furniture: [SHELF] },
+            { name: "Relic store", use: "store", size: 1, zone: "deep", furniture: [CHEST] },
+          ],
+        },
       },
     ],
   },
@@ -324,8 +493,17 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           { name: "Vestibule", use: "post", size: 2, zone: "public", furniture: [2] },
           { name: "Mortuary chapel", use: "quiet", size: 3, zone: "public", furniture: [0, 2, 7] },
           { name: "Embalming room", use: "holders", size: 2, zone: "service", furniture: [0, 3] },
-          { name: "Keeper's room", use: "store", size: 1, zone: "private", furniture: [3] },
         ],
+        extra: {
+          pick: [1, 1, 2],
+          rooms: [
+            { name: "Keeper's room", use: "store", size: 1, zone: "private", furniture: [3] },
+            { name: "Mourners' room", use: "squat", size: 1, zone: "private", furniture: [3] },
+            { name: "Lamp room", use: "store", size: 1, zone: "service", furniture: [2, 3] },
+            { name: "Bier room", use: "squat", size: 1, zone: "service", furniture: [0] },
+            { name: "Priests' tombs", use: "holders", size: 1, zone: "private", furniture: [0, 0] },
+          ],
+        },
       },
       {
         id: "burials",
@@ -333,9 +511,60 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         depth: -1,
         rooms: [
           { name: "Burial hall", use: "holders", size: 3, zone: "public", furniture: [0, 0, 7] },
-          { name: "Ossuary", use: "squat", size: 2, zone: "service", furniture: [1, 1] },
-          { name: "Family vault", use: "holders", size: 1, zone: "private", furniture: [0, 3], count: [2, 3] },
+          { name: "Family vault", use: "holders", size: 1, zone: "private", furniture: [0, 3], count: [1, 2] },
           { name: "Sealed vault", use: "store", size: 1, zone: "deep", locked: true, furniture: [0, 3] },
+        ],
+        repeat: [1, 2, 2],
+        extra: {
+          pick: [1, 2, 2],
+          rooms: [
+            { name: "Ossuary", use: "squat", size: 2, zone: "service", furniture: [1, 1] },
+            { name: "Columbarium", use: "squat", size: 2, zone: "private", furniture: [1, 2] },
+            { name: "Wall tombs", use: "holders", size: 2, zone: "private", furniture: [0, 1] },
+            { name: "Charnel", use: "squat", size: 2, zone: "service", furniture: [1, 1] },
+            { name: "Children's tombs", use: "holders", size: 1, zone: "private", furniture: [0] },
+            { name: "Priests' tombs", use: "holders", size: 1, zone: "deep", furniture: [0, 0, 2] },
+            { name: "Guild vault", use: "holders", size: 1, zone: "private", furniture: [0, 3] },
+            { name: "Shrine", use: "quiet", size: 1, zone: "service", furniture: [2, 7] },
+            { name: "Embalmers' store", use: "store", size: 1, zone: "service", furniture: [3, 3] },
+            { name: "Warriors' tombs", use: "holders", size: 2, zone: "deep", furniture: [0, 0, 7] },
+          ],
+        },
+        variants: [
+          {
+            name: "Plague burials",
+            first: true,
+            rooms: [{ name: "Plague pit", use: "squat", size: 2, zone: "deep", furniture: [1, 1, 1] }],
+          },
+          { name: "Flooded burials", flooded: true },
+          {
+            name: "Robbed burials",
+            ruined: 0.35,
+            rooms: [{ name: "Robbers' tunnel", use: "squat", size: 1, zone: "deep", furniture: [1] }],
+          },
+          { name: "Fallen burials", ruined: 0.5 },
+          {
+            name: "Bone galleries",
+            first: true,
+            rooms: [{ name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [1, 1], count: [2, 2] }],
+          },
+          {
+            name: "Warriors' burials",
+            rooms: [
+              {
+                name: "Warriors' tombs",
+                use: "holders",
+                size: 2,
+                zone: "private",
+                furniture: [0, 0, 7],
+                count: [1, 2],
+              },
+            ],
+          },
+          {
+            name: "Rock tombs",
+            rooms: [{ name: "Rock tomb", use: "holders", size: 1, zone: "deep", furniture: [0], count: [2, 3] }],
+          },
         ],
       },
       {
@@ -345,8 +574,60 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
         chance: 0.6,
         rooms: [
           { name: "Catacomb", use: "squat", size: 3, zone: "public", furniture: [1, 7] },
-          { name: "Bone pit", use: "squat", size: 2, zone: "service", furniture: [1] },
-          { name: "Old vault", use: "holders", size: 1, zone: "private", furniture: [0], count: [2, 3] },
+          { name: "Old vault", use: "holders", size: 1, zone: "private", furniture: [0], count: [1, 3] },
+        ],
+        repeat: [1, 1, 2],
+        extra: {
+          pick: [1, 1, 2],
+          rooms: [
+            { name: "Bone pit", use: "squat", size: 2, zone: "service", furniture: [1] },
+            { name: "Ossuary", use: "squat", size: 2, zone: "service", furniture: [1, 1] },
+            { name: "Columbarium", use: "squat", size: 2, zone: "private", furniture: [1, 2] },
+            { name: "Wall tombs", use: "holders", size: 2, zone: "private", furniture: [0, 1] },
+            { name: "Charnel", use: "squat", size: 2, zone: "service", furniture: [1, 1] },
+            { name: "Children's tombs", use: "holders", size: 1, zone: "private", furniture: [0] },
+            { name: "Priests' tombs", use: "holders", size: 1, zone: "deep", furniture: [0, 0, 2] },
+            { name: "Guild vault", use: "holders", size: 1, zone: "private", furniture: [0, 3] },
+            { name: "Shrine", use: "quiet", size: 1, zone: "service", furniture: [2, 7] },
+            { name: "Embalmers' store", use: "store", size: 1, zone: "service", furniture: [3, 3] },
+            { name: "Warriors' tombs", use: "holders", size: 2, zone: "deep", furniture: [0, 0, 7] },
+          ],
+        },
+        variants: [
+          {
+            name: "Plague burials",
+            first: true,
+            rooms: [{ name: "Plague pit", use: "squat", size: 2, zone: "deep", furniture: [1, 1, 1] }],
+          },
+          { name: "Flooded burials", flooded: true },
+          {
+            name: "Robbed burials",
+            ruined: 0.35,
+            rooms: [{ name: "Robbers' tunnel", use: "squat", size: 1, zone: "deep", furniture: [1] }],
+          },
+          { name: "Fallen burials", ruined: 0.5 },
+          {
+            name: "Bone galleries",
+            first: true,
+            rooms: [{ name: "Ossuary", use: "squat", size: 2, zone: "deep", furniture: [1, 1], count: [2, 2] }],
+          },
+          {
+            name: "Warriors' burials",
+            rooms: [
+              {
+                name: "Warriors' tombs",
+                use: "holders",
+                size: 2,
+                zone: "private",
+                furniture: [0, 0, 7],
+                count: [1, 2],
+              },
+            ],
+          },
+          {
+            name: "Rock tombs",
+            rooms: [{ name: "Rock tomb", use: "holders", size: 1, zone: "deep", furniture: [0], count: [2, 3] }],
+          },
         ],
       },
       {
@@ -359,6 +640,15 @@ const TEMPLATES: Record<SiteTemplateId, TemplateSpec> = {
           { name: "Founder's tomb", use: "holders", size: 3, zone: "deep", heart: true, furniture: [0, 2, 3, 7] },
           { name: "Grave goods", use: "store", size: 1, zone: "private", locked: true, furniture: [3, 3] },
         ],
+        extra: {
+          pick: [0, 1, 1],
+          rooms: [
+            { name: "Consort's tomb", use: "holders", size: 2, zone: "private", furniture: [0, 2] },
+            { name: "Servants' graves", use: "squat", size: 1, zone: "service", furniture: [1, 1] },
+            { name: "Offering room", use: "quiet", size: 1, zone: "service", furniture: [2, 3] },
+            { name: "Heirs' vault", use: "holders", size: 1, zone: "private", furniture: [0, 0] },
+          ],
+        },
       },
     ],
   },
@@ -587,6 +877,21 @@ export function sitePlan(input: SitePlanInput): SitePlan {
   const width = baseW + Math.round((shape() - 0.5) * 8);
   const height = baseH + Math.round((shape() - 0.5) * 4);
   const levels: SitePlanLevel[] = [];
+  // The mix: which of a level's other rooms it has, how many floors of a kind a big site digs and what each
+  // of them is, by rolls of their own (owner 2026-11-18: a large dungeon should not be every room there is
+  // in the same places).
+  const mix = marinaraRandom(`site-mix:${input.template}:${input.seed}:${input.wealth}`);
+  const shuffled = <T>(list: readonly T[]) => {
+    const out = [...list];
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(mix() * (i + 1));
+      [out[i], out[j]] = [out[j]!, out[i]!];
+    }
+    return out;
+  };
+  const taken = new Set<string>();
+  /** Floors dug below ground so far besides the template's own, each pushing the deeper ones down. */
+  let sink = 0;
   for (const level of spec.levels) {
     if (level.wealth && input.wealth < level.wealth) continue;
     if (level.when === "undead" && !input.undead) continue;
@@ -595,31 +900,58 @@ export function sitePlan(input: SitePlanInput): SitePlan {
     // The chance is rolled even for a level that is always there, so the rolls after stay put.
     const roll = random();
     if (level.chance !== undefined && level.depth !== 0 && roll >= level.chance) continue;
-    const rooms: SitePlanRoom[] = [];
-    for (const room of level.rooms) {
-      const roll = random();
-      if (room.wealth && input.wealth < room.wealth) continue;
-      if (room.chance !== undefined && roll >= room.chance) continue;
-      const [least, most] = room.count ?? [1, 1];
-      const count = least + Math.floor(random() * (most - least + 1)) + (input.wealth === 3 && most > 1 ? 1 : 0);
-      for (let n = 0; n < Math.min(count, most + 1); n++)
-        rooms.push({
-          name: count > 1 ? `${room.name} ${n + 1}` : room.name,
-          use: room.use,
-          size: room.size,
-          zone: room.zone,
-          furniture: room.furniture,
-          ...(room.locked ? { locked: true as const } : {}),
-          ...(room.heart ? { heart: true as const } : {}),
-        });
+    const most = level.depth < 0 ? (level.repeat?.[input.wealth - 1] ?? 1) : 1;
+    const copies = 1 + Math.floor(mix() * most);
+    for (let copy = 0; copy < copies; copy++) {
+      const open = (level.variants ?? []).filter((each) => !taken.has(each.name) && (copy > 0 || each.first));
+      const variant = open.length && (copy > 0 || mix() < 0.5) ? open[Math.floor(mix() * open.length)] : undefined;
+      if (variant) taken.add(variant.name);
+      const rooms: SitePlanRoom[] = [];
+      const place = (room: RoomSpec) => {
+        const roll = random();
+        if (room.wealth && input.wealth < room.wealth) return;
+        if (room.chance !== undefined && roll >= room.chance) return;
+        const [least, most] = room.count ?? [1, 1];
+        const count = least + Math.floor(random() * (most - least + 1)) + (input.wealth === 3 && most > 1 ? 1 : 0);
+        for (let n = 0; n < Math.min(count, most + 1); n++)
+          rooms.push({
+            name: count > 1 ? `${room.name} ${n + 1}` : room.name,
+            use: room.use,
+            size: room.size,
+            zone: room.zone,
+            furniture: room.furniture,
+            ...(room.locked ? { locked: true as const } : {}),
+            ...(room.heart ? { heart: true as const } : {}),
+          });
+      };
+      for (const room of level.rooms) if (!variant?.drop?.includes(room.name)) place(room);
+      for (const room of variant?.rooms ?? []) place(room);
+      if (level.extra) {
+        const want = level.extra.pick[input.wealth - 1]! + (mix() < 0.35 ? 1 : 0);
+        const have = new Set(rooms.map((room) => siteBaseName(room.name)));
+        const pool = shuffled(
+          level.extra.rooms.filter((room) => !have.has(room.name) && (!room.wealth || input.wealth >= room.wealth)),
+        );
+        for (const room of pool.slice(0, want)) place({ ...room, chance: undefined });
+      }
+      if (variant?.ruined)
+        for (const room of rooms)
+          if (!room.heart && !room.locked && room.use !== "post" && mix() < variant.ruined) room.ruined = true;
+      levels.push({
+        id: copy ? `${level.id}-${copy + 1}` : level.id,
+        name:
+          variant && (copy > 0 || variant.first)
+            ? variant.name
+            : copy
+              ? `Lower ${level.name.toLowerCase()}`
+              : level.name,
+        depth: level.depth < 0 ? level.depth - sink - copy : level.depth,
+        rooms,
+        ...(level.inset ? { inset: true as const } : {}),
+        ...(variant?.flooded ? { flooded: true as const } : {}),
+      });
     }
-    levels.push({
-      id: level.id,
-      name: level.name,
-      depth: level.depth,
-      rooms,
-      ...(level.inset ? { inset: true as const } : {}),
-    });
+    sink += copies - 1;
   }
   levels.sort((a, b) => b.depth - a.depth);
   // One heart: the deepest-planned one wins (a vampire's crypt over its bedroom); the others are the
@@ -2463,7 +2795,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     const ends = [entryRegion, ...stairsHere].filter((n) => n >= 0);
     const points: number[] = [];
     // A castle's dungeons run out under its whole ward, not a knot of cells by the stair (panel 2026-11-17).
-    const want = (kind === "keep" ? 5 : 2) + plan.wealth;
+    // Each floor cut to its own pattern (owner 2026-11-18): a few long galleries, the usual, or a warren.
+    const cut = marinaraRandom(`site-cut:${plan.template}:${plan.seed}:${level.id}`)();
+    const want = (kind === "keep" ? 5 : 2) + plan.wealth + (cut < 0.3 ? -1 : cut > 0.7 ? 2 : 0);
     for (let tries = 0; tries < 200 && points.length < want; tries++) {
       const c = Math.floor(random() * size);
       if (
@@ -2495,7 +2829,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     // A crypt's galleries close a loop or two, a short cut through the rock between two of them far apart
     // along the galleries, so there is more than one way round (panel round 29: single paths).
     if (kind === "crypt" && corridor >= 0)
-      for (let loops = 0, tries = 0; loops < 1 + Math.floor(plan.wealth / 2) && tries < 80; tries++) {
+      for (let loops = 0, tries = 0; loops < (cut > 0.7 ? 2 : 1) + Math.floor(plan.wealth / 2) && tries < 80; tries++) {
         const lane: number[] = [];
         for (let c = 0; c < size; c++) if (at[c] === corridor) lane.push(c);
         const a = lane[Math.floor(random() * lane.length)]!;
@@ -2627,7 +2961,20 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   }
   // Seeds: the way in's room at the door, then the heart, then the biggest first, each where its zone
   // says, apart from the others, near the rooms it belongs beside.
-  const zoneAt = { public: 0.12, service: 0.45, guest: 0.55, private: 0.8, deep: 0.95 } as const;
+  // Each floor its own order (owner 2026-11-18: a big site is not the same rooms in the same places): the
+  // zones shift a little, now and then the private and the service ends trade places, and below ground a
+  // crypt's or a castle's heart may stand in the middle with rooms past it.
+  const shuffle2 = marinaraRandom(`site-order:${plan.template}:${plan.seed}:${level.id}`);
+  const shift = () => (shuffle2() - 0.5) * 0.24;
+  const swap = !(entry && kind === "manor") && !(kind === "temple" && level.depth === 0) && shuffle2() < 0.3;
+  const zoneAt = {
+    public: 0.12 + shift() * 0.5,
+    service: (swap ? 0.8 : 0.45) + shift(),
+    guest: 0.55 + shift(),
+    private: (swap ? 0.45 : 0.8) + shift(),
+    deep: 0.95 - Math.abs(shift()),
+  };
+  const heartAt = rock && shuffle2() < 0.35 ? 0.5 + shuffle2() * 0.2 : 1;
   const isMate = (p: SitePlanRoom, q: SitePlanRoom) =>
     (SITE_NEXT_TO[siteBaseName(p.name)] ?? []).includes(siteBaseName(q.name)) ||
     (SITE_NEXT_TO[siteBaseName(q.name)] ?? []).includes(siteBaseName(p.name));
@@ -2669,7 +3016,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   for (const g of order) {
     const region = regions[g]!;
     const r = region.room!;
-    const z = r.heart ? 1 : region.hidden ? 0.9 : zoneAt[r.zone];
+    const z = r.heart ? heartAt : region.hidden ? 0.9 : zoneAt[r.zone] + (shuffle2() - 0.5) * 0.16;
     let best = -1;
     let score = Infinity;
     // How much is free in any box: sums from the top left, so a window is four lookups.
