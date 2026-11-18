@@ -2,8 +2,6 @@
 
 Die Seite **Characters** (Charaktere) in der Bibliothek rechts listet jeden Charakter auf, den du erstellt oder importiert hast. Darin suchst und sortierst du, gruppierst Charaktere in Ordner, markierst Favoriten, filterst nach Tags und exportierst oder löschst mehrere Charaktere auf einmal.
 
-<a id="the-characters-page"></a>
-
 ## Die Seite „Characters“
 
 Öffne **Library → Characters** (Bibliothek → Charaktere). Die Seite zeigt deine Charaktere als Porträtkarten. Oben findest du:
@@ -19,8 +17,6 @@ Die Seite **Characters** (Charaktere) in der Bibliothek rechts listet jeden Char
 - **New folder** (Neuer Ordner, das Ordnersymbol) und **Select** (Auswählen, das Häkchen-Symbol) stehen neben dem Seitentitel.
 
 Klick auf eine Karte, um den Charakter zu öffnen. Mit ihrer Schaltfläche **Chat** (Chatten) startest du einen Chat mit diesem Charakter. Hast du viele Charaktere, klick unten auf **Load more** (Mehr laden).
-
-<a id="a-cards-actions"></a>
 
 ### Aktionen einer Karte
 
@@ -68,8 +64,6 @@ Oben im Panel hast du diese Möglichkeiten:
 
 Jede Zeile zeigt den Avatar, den Namen, optional eine Titelzeile, Ersteller und Version, bis zu 3 Tags und eine grobe Token-Schätzung. Ein kleines Stern-Abzeichen kennzeichnet einen Favoriten. Zeigst du auf eine Zeile, erscheinen **Duplicate** und **Delete**. Hast du viele Charaktere, klick unten auf **Load more**, um die nächste Seite zu laden.
 
-<a id="search"></a>
-
 ## Suche
 
 Tippe in das Suchfeld oben. Der Platzhaltertext lautet **Search characters or tag:name** (**Search characters/tags** im klassischen Layout). Einfacher Text wird ohne Rücksicht auf Groß- und Kleinschreibung mit Name, Titel, Beschreibung und Tags eines Charakters abgeglichen. Tippst du `knight`, erscheint jeder Charakter, bei dem „knight“ in einem dieser Felder steht.
@@ -96,6 +90,10 @@ Das Sortier-Dropdown des klassischen Panels bietet:
 | **Newest** | Zuletzt erstellte zuerst. |
 | **Oldest** | Zuerst erstellte zuerst. |
 | **Favorites** | Favoriten zuerst, dann der Rest. |
+| **Meiste Tokens** | Die größten Karten zuerst, nach der geschätzten Größe, die in jeder Zeile steht. Ordner werden nach der Summe ihrer Karten sortiert. |
+| **Wenigste Tokens** | Die kleinsten Karten zuerst. |
+
+Die Größensortierungen helfen dir, Karten zu finden, die du kürzen oder ausbauen möchtest. Die Zahl ist eine Schätzung des karteneigenen Texts, keine Zählung mit dem Tokenizer deines Modells. Personas, Lorebooks und Prompt-Presets bieten dieselben beiden Sortierungen.
 
 Für eine manuelle Reihenfolge ziehst du eine Zeile nach oben oder unten oder drückst auf einer fokussierten Zeile <kbd>Alt</kbd>+<kbd>Up</kbd> oder <kbd>Alt</kbd>+<kbd>Down</kbd>. Beides stellt die Sortierung auf **Manual order** um.
 
@@ -150,8 +148,6 @@ Haben deine Charaktere im klassischen Panel Tags, erscheint eine Schaltfläche *
 - **Clear** (Zurücksetzen) erscheint, sobald ein Tag-Filter aktiv ist. Klick darauf, um die Tag-Filter zu leeren.
 
 Willst du ein Tag stattdessen ausschließen, nutze `-tag:` im Suchfeld, wie unter [Suche](#search) gezeigt.
-
-<a id="export-or-delete-many-characters"></a>
 
 ## Mehrere Charaktere exportieren oder löschen (klassisches Layout)
 

@@ -2,8 +2,6 @@
 
 Professor Mari ist die eingebaute Assistentin auf dem Home-Bildschirm. Sie erklärt die App, hilft dir bei der Einrichtung und legt Charaktere, Personas, Lorebooks und Presets für dich an oder bearbeitet sie. Ihre Änderungen kannst du eine begrenzte Zeit lang über die Änderungskarte rückgängig machen (siehe [Ihre Änderungen prüfen](#reviewing-her-changes)).
 
-<a id="where-to-find-her"></a>
-
 ## Wo du sie findest
 
 1. Geh auf den Home-Bildschirm. Er erscheint, solange kein Chat geöffnet ist.
@@ -11,7 +9,7 @@ Professor Mari ist die eingebaute Assistentin auf dem Home-Bildschirm. Sie erkl�
 
 Sie öffnet sich in ihrem eigenen Tab. Du erreichst sie auch von jedem anderen Bildschirm aus: Drück <kbd>Strg</kbd>+<kbd>K</kbd>, tipp deine Frage ein und wähl **Ask Prof. Mari** (Prof. Mari fragen), drück <kbd>Strg</kbd>+<kbd>J</kbd> (<kbd>⌘</kbd>+<kbd>J</kbd> auf dem Mac) für ihr Pop-up-Fenster oder tipp auf dem Handy auf den Titel in der oberen Leiste. Ihre Kopfzeile zeigt **Ready to help**, wenn sie nichts zu tun hat, und **Working on it...**, während sie arbeitet.
 
-Tipp deine Nachricht in ganz normaler Sprache und drück <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> fügt eine neue Zeile ein. Schaltest du in ihren Einstellungen **Enter sends to Professor Mari** (Enter sendet an Professor Mari) aus, fügt <kbd>Enter</kbd> eine neue Zeile ein, und <kbd>Strg</kbd>+<kbd>Enter</kbd> sendet. Deine erste Nachricht schaltet die Errungenschaft **Hello World** frei.
+Tipp deine Nachricht in ganz normaler Sprache und drück <kbd>Enter</kbd>. <kbd>Shift</kbd>+<kbd>Enter</kbd> fügt eine neue Zeile ein. Schaltest du in ihren Einstellungen **Enter sends to Professor Mari** (Enter sendet an Professor Mari) aus, fügt <kbd>Enter</kbd> eine neue Zeile ein, und <kbd>Strg</kbd>+<kbd>Enter</kbd> oder die Senden-Schaltfläche sendet. Die Schalterstellung wird pro Gerät gespeichert, sodass du sie auf dem Handy ausschalten und am Computer eingeschaltet lassen kannst. Deine erste Nachricht schaltet die Errungenschaft **Hello World** frei.
 
 Alle ihre Einstellungen findest du unter **Settings → General → Professor Mari → Open** (Einstellungen → Allgemein → Professor Mari → Öffnen) oder über das Zahnrad in der Suche. Am Computer ändern die Schieberegler **Height** (Höhe) und **Width** (Breite) unter **Professor Mari window** (Fenster von Professor Mari) die Größe ihres Fensters. Auf dem Handy füllt ihr Fenster den Bildschirm.
 
@@ -39,7 +37,7 @@ Bevor sie ein Objekt bearbeitet, liest sie es, und bei vagen Anfragen fragt sie 
 - Ein Theme, einen Agenten, ein Prompt-Preset oder einen Entwurf für eine Personal Extension (persönliche Erweiterung) anlegen oder bearbeiten. Ein Entwurf bleibt ausgeschaltet, bis du seinen Code gelesen und ihn unter **Library → Extensions** (Bibliothek → Erweiterungen) freigegeben hast.
 - Einen einzelnen Abschnitt eines Presets an Ort und Stelle bearbeiten, statt das ganze Preset zu ersetzen.
 - Die herunterladbaren Agenten vergleichen und dir sagen, welche zu deinem Ziel passen. Zum Installieren schickt sie dich zu **Library → Agents** (Bibliothek → Agenten). Siehe [Referenz der herunterladbaren Agenten](../agents/built-in-agents.md).
-- Bilder wie Avatare, Sprites, Hintergründe und die Bilder eines Themes erzeugen oder zuweisen und sie zuschneiden, ihre Ränder entfernen, ihre Größe ändern oder einen einfarbigen Hintergrund entfernen. Dafür brauchst du vorher ein Konto für Bildgenerierung. Das legt sie nicht für dich an. Für Theme-Bilder siehe [Professor Mari um die Bilder bitten](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art).
+- Bilder wie Avatare, Sprites, Hintergründe und die Bilder eines Themes erzeugen oder zuweisen und sie zuschneiden, ihre Ränder entfernen, ihre Größe ändern oder einen einfarbigen Hintergrund entfernen. Dafür brauchst du vorher ein Konto für Bildgenerierung. Das legt sie nicht für dich an. Für Theme-Bilder siehe [Professor Mari um die Bilder bitten](../appearance/theme-author-guide.md#ask-professor-mari-to-make-the-art). Klick auf ein von ihr erzeugtes Bild, um es in voller Größe zu öffnen, den zugehörigen Prompt zu lesen, es herunterzuladen oder den Prompt zu bearbeiten und das Bild neu zu generieren. Das neue Bild ersetzt das alte in ihrer Antwort.
 - Öffentliche Fandom-Wiki-Seiten nachschlagen, wenn du zu einem Charakter oder einer Welt recherchierst.
 
 ### Mit einem Chip anfangen
@@ -59,8 +57,6 @@ Diese Stellen öffnen sie mit einem bearbeitbaren Entwurf und einem kleinen Chip
 
 Ein vollständiges Objekt bekommt sie nicht schon deshalb, weil du seinen Editor geöffnet hast.
 
-<a id="pick-an-account-for-her"></a>
-
 ## Ein Konto für sie auswählen
 
 Bevor du anfängst: Leg ein Konto für Textgenerierung an. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
@@ -70,8 +66,6 @@ Bevor du anfängst: Leg ein Konto für Textgenerierung an. Siehe [Verbindung zu 
 3. Klick auf ein Modell in der Liste, um es zu nutzen. Das Modell wird im Konto gespeichert, deshalb wechseln deine anderen Chats mit diesem Konto ebenfalls darauf. Das **Built-in model** hat keine Modellliste.
 
 Auf dem Handy tippst du auf ein Konto, um es zu nutzen, oder auf den Pfeil am Ende seiner Zeile, um zuerst seine Modelle zu sehen. Gibt es noch keine Konten, zeigt die Liste **Add a connection** (Verbindung hinzufügen).
-
-<a id="reviewing-her-changes"></a>
 
 ## Ihre Änderungen prüfen
 
@@ -132,11 +126,9 @@ Tipp `@`, um sie auf etwas in deiner Bibliothek hinzuweisen. Eine Liste öffnet 
 
 Eine Verknüpfung wird einmal gesendet, und zwar mit der Nachricht, in der du sie setzt. Danach sieht sie nur einen einzeiligen Hinweis und liest das Objekt bei Bedarf noch einmal. Eine Nachricht trägt bis zu 8 Verknüpfungen. Summieren sie sich auf mehr als etwa ein Viertel des Kontexts des Modells, höchstens 60.000 Zeichen, werden die letzten nicht gesendet. Stattdessen bekommt sie einen Hinweis und kann sie selbst lesen. Verknüpfte Objekte gelten als Information, nie als Anweisung.
 
-<a id="commands-with-"></a>
-
 ### Befehle mit /
 
-Tipp `/` am Zeilenanfang, um ihre Befehle aufzulisten. Tipp weiter, um zu filtern, und drück dann <kbd>Enter</kbd>. Die Liste zeigt auch deine Skills und Memories. Wählst du eines davon, wird es verknüpft, wie bei `@`.
+Tipp `/` am Zeilenanfang oder nach einem Leerzeichen, um ihre Befehle aufzulisten. So kannst du in einer Nachricht mehrere verwenden. Tipp weiter, um zu filtern, und drück dann <kbd>Enter</kbd>. Die Liste zeigt auch deine Skills und Memories. Wählst du eines davon, wird es verknüpft, wie bei `@`.
 
 | Befehl | Was er tut |
 | --- | --- |
@@ -149,8 +141,6 @@ Tipp `/` am Zeilenanfang, um ihre Befehle aufzulisten. Tipp weiter, um zu filter
 | `/model` | Wählt das Konto, das sie nutzt |
 | `/permissions` | Legt fest, was sie ändern darf |
 | `/approvals` | Öffnet Änderungen, die auf dich warten (nur solange eine aussteht) |
-
-<a id="sending-messages-while-she-works"></a>
 
 ## Nachrichten senden, während sie arbeitet
 
@@ -233,7 +223,7 @@ Schlägt eine Anfrage fehl, behält der Chat den Grund und zeigt **Retry** (wied
 
 ## Die FAQ lesen
 
-Klick im Widget **Learn the engine** (die Engine kennenlernen) auf Home auf **Read FAQ** (FAQ lesen) oder im klassischen Layout auf das Lesezeichen **FAQ**, um **Professor Mari's FAQ** zu öffnen. Das ist eine feste, geschriebene Liste, nicht der KI-Chat, deshalb kennt sie deine Einrichtung nicht. Tipp in **Search FAQ** (FAQ durchsuchen), um zu filtern. Jede Frage trägt ein Kategorie-Tag wie **Setup**, **Connections** oder **Game Mode**. Tipp auf eine Frage, um die Antwort zu lesen.
+Öffne im Widget **Zum Ausprobieren** auf Home **Alle ansehen** und klick auf **FAQ lesen** (oder im klassischen Layout auf das Lesezeichen **FAQ**), um **FAQ von Professor Mari** zu öffnen. Das ist eine feste, geschriebene Liste, nicht der KI-Chat, deshalb kennt sie deine Einrichtung nicht. Tipp in **Search FAQ** (FAQ durchsuchen), um zu filtern. Jede Frage trägt ein Kategorie-Tag wie **Setup**, **Connections** oder **Game Mode**. Tipp auf eine Frage, um die Antwort zu lesen.
 
 ## Grenzen und Sicherheit
 
@@ -275,8 +265,6 @@ Sie kann die Programmdateien von Marinara lesen und ändern und Befehle in einer
 - Abhängigkeits-Manifeste, Lockfiles, Launcher, Installer und CI-Workflows werden zuerst zur Freigabe vorgemerkt. Installationsskripte der Pakete bleiben abgeschaltet.
 - Befehle brechen nach kurzer Zeit von selbst ab.
 - Kann Marinara seine Shell-Sandbox unter macOS oder Linux nicht bereitstellen, sind reine Shell-Befehle und `mari code check` abgeschaltet. Die strukturierten Tools für Dateien und App-Daten kann sie weiterhin nutzen.
-
-<a id="held-changes-for-files-and-libraries"></a>
 
 ### Zurückgehaltene Änderungen an Dateien und Bibliotheken
 

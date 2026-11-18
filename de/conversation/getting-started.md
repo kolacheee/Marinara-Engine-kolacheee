@@ -29,8 +29,6 @@ Schalte **Generate Schedules** an und wähle dann im erscheinenden Feld deine Ze
 
 Du kannst das später unter **Chat Settings → Autonomous Messaging** ändern. Schreiben Charaktere zu oft, schalte dort **Autonomous Messages** aus oder setze deinen Status auf **Do Not Disturb**.
 
-<a id="choose-which-commands-a-character-can-use"></a>
-
 ## Wählen, welche Commands ein Charakter nutzen darf
 
 Commands sind Aktionen, die der Charakter selbst auszuführen beschließt. Du tippst sie nicht ein. Öffne nach der Einrichtung **Chat Settings → Agents → Commands**. Der Hauptschalter **Commands** steuert alle Familien: Ist er aus, funktioniert keine Familie.
@@ -57,10 +55,9 @@ Jede Familie hat einen eigenen Schalter. Alle sind zunächst an, außer **Videos
 | **8-Ball Pool** | Eine Partie Pool aufbauen. | 8-Ball Pool |
 | **Tic-Tac-Toe** | Eine Tic-Tac-Toe-Partie annehmen. | Tic-Tac-Toe |
 | **Rock-Paper-Scissors** | Eine Partie annehmen. | Rock-Paper-Scissors |
+| Weitere Spiele, nach dem jeweiligen Spiel benannt | Starte das Spiel oder nimm eine Einladung dazu an. | Das jeweilige Spiel, etwa Blackjack oder Wordle |
 
 Zu **Influence** und **Notes** siehe [Eine Conversation mit einem Roleplay oder Game verknüpfen](../chats/connected-chats.md). Die letzte Spalte nennt den Agenten, den du unter **Library → Agents** installierst.
-
-<a id="your-presence-status"></a>
 
 ## Dein Anwesenheitsstatus
 
@@ -76,8 +73,6 @@ Dein Anwesenheitsstatus ist eine farbige Statusanzeige unten in der Chatliste. E
 Bleibst du auf **Active** und tust 10 Minuten lang nichts, setzt Marinara dich auf **Idle** und wieder auf **Active**, wenn du zurückkehrst. Wählst du selbst einen Status, endet diese automatische Änderung, bis du wieder **Active** wählst. **Idle** stoppt keine Check-ins.
 
 Neben der Anzeige liegt das Statusfeld, das „What's up?“ zeigt, wenn es leer ist. Tippe dort deine aktuelle Tätigkeit ein (bis zu 120 Zeichen), damit Charaktere Bescheid wissen. Aktuelle Einträge erscheinen unter **Recent status**, damit du sie wiederverwenden kannst.
-
-<a id="react-and-get-notified"></a>
 
 ## Reagieren und benachrichtigt werden
 

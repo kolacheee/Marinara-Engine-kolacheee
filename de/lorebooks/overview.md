@@ -67,9 +67,22 @@ Der Tab hat außerdem diese Schalter.
 
 Das Panel **Semantic search (embeddings)** unter den Schaltern beschreibt [Semantische Suche für Lorebooks](semantic-search.md).
 
+## Einem Lorebook ein Bild geben
+
+Das Bild erscheint auf der Seite **Lorebooks** (in der Tabelle und auf den Galeriekacheln) und in der Lorebook-Auswahl.
+
+1. Öffne das Lorebook und klick auf **Book settings** (Bucheinstellungen). **Bild** steht neben **Aktiviert**.
+2. Klick auf **Hochladen** (oder **Ersetzen**) und wähle eine Datei, oder klick auf **Mit KI generieren**, um mit deiner Verbindung zur Bildgenerierung ein Titelbild zu erstellen. **Mit KI generieren** erscheint, sobald du eine solche Verbindung eingerichtet hast.
+3. Klick auf **Zuschnitt anpassen** (oder das kleine Bild). Verschiebe das Quadrat auf dem Bild, um den sichtbaren Ausschnitt zu wählen, und zieh an seinen Ecken, um die Größe zu ändern.
+4. Klick auf **Speichern**.
+
+Ein neues Bild ist anfangs nicht zugeschnitten. Um das Bild zu entfernen, öffne **Zuschnitt anpassen** und klick auf **Entfernen**.
+
+Im klassischen Layout findest du das Bild im Abschnitt **Bild** oben im Tab **Übersicht** des Lorebooks, mit denselben Schaltflächen.
+
 ## Die Lorebooks-Seite
 
-Öffne **Library → Lorebooks**. Oben findest du **Import** (Importieren; siehe [Lorebooks importieren und exportieren](import-export.md)) und **New lorebook** (neues Lorebook). Darunter:
+Öffne **Library → Lorebooks**. Oben findest du **Online suchen** (Lorebooks zum Herunterladen von Chub, siehe [Lorebooks importieren und exportieren](import-export.md#download-a-lorebook-from-chub)), **Import** (Importieren; siehe [Lorebooks importieren und exportieren](import-export.md)) und **New lorebook** (neues Lorebook). Darunter:
 
 - **All kinds** (alle Arten) beschränkt die Liste auf Lorebooks der Arten **Global**, **World**, **Character**, **NPC** oder **Spellbook**.
 - **List** (Liste) und **Gallery** (Galerie) wechseln zwischen einer Tabelle und Bildkacheln.
@@ -86,7 +99,9 @@ Klick auf ein Lorebook, um es zu öffnen.
 
 ## Im klassischen Layout: das Lorebooks-Panel
 
-Das klassische Panel zeigt dieselben Ordner und dieselbe Reihenfolge als Liste. Oben im Panel sitzen drei Symbol-Schaltflächen. Zeig mit der Maus darauf, um ihren Namen einzublenden.
+Das klassische Panel zeigt dieselben Ordner und dieselbe Reihenfolge als Liste. Oben im Panel öffnet **Herunterladen** den Card Browser mit Lorebooks zum Herunterladen. **Bibliothek öffnen** öffnet die Lorebook-Bibliothek, eine ganzseitige Ansicht deiner Lorebooks mit Bildern, Beschreibungen und Eintragszahlen. Klick dort auf ein Lorebook, um es größer zu sehen; **Lorebook bearbeiten** öffnet den Editor, und **Aktiv** schaltet das Lorebook für alle Chats ein oder aus.
+
+Darunter sitzen drei Symbol-Schaltflächen. Zeig mit der Maus darauf, um ihren Namen einzublenden.
 
 - **New** öffnet das Fenster **Create Lorebook**.
 - **Import** (Importieren) öffnet das Fenster **Import Lorebook** (Lorebook importieren). Siehe [Lorebooks importieren und exportieren](import-export.md).
@@ -96,7 +111,7 @@ Unter den Schaltflächen:
 
 - **Search lorebooks** (Lorebooks durchsuchen) filtert nach Name, Beschreibung, verknüpften Charakter- oder Persona-Namen und Tags (Schlagwörtern). `tag:name` funktioniert hier ebenfalls.
 - **Tags** neben dem Suchfeld zeigt nur Lorebooks mit allen von dir ausgewählten Tags oder **Ohne Tags**. Siehe [Tags](../characters/library-organization.md#tags).
-- **Sort order** (Sortierreihenfolge) bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest**, **Oldest** und **Token Budget**. Mit **Manual order** ziehst du die Lorebooks an ihren Platz oder nutzt <kbd>Alt</kbd>+<kbd>Pfeil nach oben</kbd> und <kbd>Alt</kbd>+<kbd>Pfeil nach unten</kbd>.
+- **Sort order** (Sortierreihenfolge) bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Meiste Tokens** und **Wenigste Tokens**. Die Größensortierungen nutzen die geschätzte Größe aller Einträge eines Lorebooks, einschließlich deaktivierter Einträge. Diese Größe steht auch in jeder Zeile. Mit **Manual order** ziehst du die Lorebooks an ihren Platz oder nutzt <kbd>Alt</kbd>+<kbd>Pfeil nach oben</kbd> und <kbd>Alt</kbd>+<kbd>Pfeil nach unten</kbd>.
 - **New Folder** (Neuer Ordner) legt einen Bibliotheksordner an. Zieh ein Lorebook darauf. Auf dem Handy hältst du das Lorebook gedrückt und ziehst es dann. Diese Ordner sind unabhängig von den Eintragsordnern innerhalb eines Lorebooks.
 
 Jede Zeile hat die Schaltflächen **Copy** (Kopieren; dupliziert das Lorebook) und **Delete** (Löschen). Sie erscheinen, wenn du mit der Maus über die Zeile fährst, und sind auf Mobilgeräten immer sichtbar. Ein ausgeschaltetes Lorebook zeigt ein **OFF**-Badge. Klick auf das Bild, um es hochzuladen oder zu ersetzen.

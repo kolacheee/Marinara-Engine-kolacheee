@@ -25,7 +25,7 @@ Für einen ersten Versuch wähle **Static Result**: Dieser Typ braucht sonst nic
 Regeln für Namen und Beschreibungen:
 
 - Der Name ist 1 bis 100 Zeichen lang, die Beschreibung 1 bis 500 Zeichen.
-- Zwei Tools dürfen nicht denselben Namen tragen, und ein Tool darf keinen eingebauten Namen wie `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search` oder `update_about_me` verwenden. Bei einer Kollision erscheint eine Meldung wie `"your_name" is a reserved built-in tool name.`
+- Zwei Tools dürfen nicht denselben Namen tragen, und ein Tool darf keinen eingebauten Namen wie `roll_dice`, `update_game_state`, `set_expression`, `trigger_event`, `search_lorebook`, `web_search`, `web_fetch` oder `update_about_me` verwenden. Bei einer Kollision erscheint eine Meldung wie `"your_name" is a reserved built-in tool name.`
 - Verlässt du den Editor mit ungespeicherten Änderungen, bietet ein Banner **Keep editing**, **Discard** oder **Save & close** an.
 
 ## Deine Tools verwalten
@@ -38,8 +38,6 @@ Auf der Seite **Custom tools** zeigt jedes Tool in der Liste seinen Namen, seine
 - Mit **Select** über der Liste kannst du mehrere Tools auswählen und sie dann über die Leiste unter der Liste **Export** oder **Delete**.
 
 Im klassischen Layout hat die Überschrift des Bereichs **Functions** die Schaltflächen **Create function**, **Import functions from ZIP or JSON** und **Export functions to ZIP**, und jede Zeile enthält **Edit function** (Funktion bearbeiten) und **Delete Function** (Funktion löschen).
-
-<a id="add-parameters"></a>
 
 ## Parameter hinzufügen
 
@@ -54,8 +52,6 @@ Parameter sind die Eingaben, die die KI beim Aufruf an dein Tool schickt. Jeder 
 Mit **Add Parameter** fügst du weitere Zeilen hinzu, mit der Minus-Schaltfläche einer Zeile entfernst du sie. Eine Zeile ohne Namen fällt beim Speichern weg.
 
 Scheint die KI ein importiertes Tool nie aufzurufen, sind seine Parameter womöglich ungültig. Die App überspringt das Tool dann, ohne dir Bescheid zu geben. Lösche die Parameter und leg sie von Hand neu an.
-
-<a id="choose-an-execution-type"></a>
 
 ## Einen Ausführungstyp wählen
 
@@ -154,6 +150,8 @@ Ein Tool zu erstellen bringt die KI noch nicht dazu, es zu nutzen. Du schaltest 
 4. Prüfe, ob es funktioniert: Frag die KI etwas, das dein Tool beantwortet, beim Beispiel `store_hours` etwa „Wie sind eure Öffnungszeiten?“. Die Antwort sollte den Text des Tools verwenden.
 
 Ist **Enable Tool Use** eingeschaltet und darunter nichts hinzugefügt, kann der Chat jedes global aktivierte Tool verwenden, das er unterstützt: die eingebauten Tools und jedes eigene Tool, dessen Schalter unter **Library → Custom tools** eingeschaltet ist. Game-Chats brauchen für `search_lorebook` zusätzlich **Let the GM search lore** (GM im Weltwissen suchen lassen).
+
+> **Hinweis:** Einige eingebaute Tools bleiben aus, bis du sie anhakst, auch wenn **Tool-Nutzung aktivieren** eingeschaltet ist. Dazu gehört `web_fetch`, weil die KI damit selbst wählen kann, welche Webadresse sie liest. Bei den Spotify-Tools ist es genauso.
 
 So begrenzt du einen Chat auf eine Auswahl:
 

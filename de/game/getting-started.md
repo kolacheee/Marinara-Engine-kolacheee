@@ -58,8 +58,9 @@ Ist der Agent **Hierarchical Maps** heruntergeladen (er heißt jetzt World Maps,
 | Tone | Heroic | Mehrfachauswahl. |
 | Difficulty | Normal | **Casual**, **Normal**, **Hard** oder **Brutal**. Höhere Stufen machen Kämpfe schwieriger: In einem MRPG-Spiel gibt es mehr und stärkere Gegner (siehe [Kämpfe in einem MRPG-Spiel](combat.md#battles-in-an-mrpg-game)), in einem Legacy-Spiel treffen Gegner härter (siehe [Skalierung nach Schwierigkeit](combat.md#difficulty-scaling)). |
 | Altersfreigabe (sexuelle Inhalte) | SFW | **SFW** oder **NSFW**. Sie entscheidet nur über sexuelle Inhalte. NSFW erlaubt explizite Szenen, erzwingt sie aber nicht. |
-| Erzählstil | Standard | **Standard** oder **Sanft**. Siehe [Inhalte und Erzählstil](#content-and-story-style). |
-| Gewalt | Ernst (Explizit bei NSFW) | **Mild**, **Ernst** oder **Explizit**. |
+| Erzählstil | Standard | **Sanft** macht den GM weniger belastend. Siehe [Erzählstil, Gewalt und inhaltliche Grenzen](#story-style-violence-and-content-boundaries). |
+| Gewalt | Ernst (SFW) oder Explizit (NSFW) | **Mild**, **Ernst** oder **Explizit**. Unabhängig von der Altersfreigabe. |
+| Inhaltliche Grenzen | Keine | Themen, die der GM aus der Geschichte heraushält. |
 | Language | English | Der gesamte Text im Spiel wird in dieser Sprache geschrieben. |
 | Game Master Mode | Standalone GM | **Character GM** nutzt eine deiner Charakterkarten als GM. |
 | Scene effects model | Built-in model | Erst, wenn du es heruntergeladen hast. Bis dahin ist der Standard **Skip - use inline tags from GM**. |
@@ -71,25 +72,46 @@ Ist der Agent **Hierarchical Maps** heruntergeladen (er heißt jetzt World Maps,
 | Start Muted | Off | Startet das Spiel mit stummgeschaltetem Audio. |
 | Game Presentation | Standard | Siehe unten. |
 
-### Inhalte und Erzählstil
+### Erzählstil, Gewalt und inhaltliche Grenzen
 
-Der Schritt **Welt** enthält diese Einstellungen dafür, was in der Geschichte vorkommen darf. In einem laufenden Spiel findest du sie alle unter **Chat-Einstellungen → Prompt-Preset**.
+Der Schritt **Welt** hat vier Einstellungen, die bestimmen, was die Geschichte enthalten darf und wie hart sie dich trifft. Sie stehen gemeinsam unter **Altersfreigabe (sexuelle Inhalte)**. Bis auf die Altersfreigabe kannst du alle auch nach Spielbeginn ändern. Siehe [Während eines Spiels ändern](#change-them-during-a-game).
 
-- **Altersfreigabe (sexuelle Inhalte)**: **SFW** erlaubt Romantik und Zuneigung und blendet bei Sexszenen aus. **NSFW** erlaubt, sie explizit zu beschreiben. Über Gewalt oder Ton sagt die Einstellung nichts aus.
-- **Altersfreigabe-Richtlinien bearbeiten** unter der Freigabe zeigt den Text, den der Game Master als Inhaltsregeln des Spiels erhält. Passe ihn an dein Spiel an; **Auf Standard zurücksetzen** stellt den Standard der Freigabe wieder her. Unveränderter Text folgt dem Standard, sodass spätere Verbesserungen dein Spiel erreichen. In einem laufenden Spiel heißt die Einstellung **Altersfreigabe-Richtlinien**.
-- **Erzählstil**: **Standard** hält die Spannung hoch, sodass Fehler und Pech spürbare Folgen haben. **Sanft** ist für weniger belastende Geschichten gedacht: Rückschläge ohne Bestrafung oder Trauma, weniger Würfe für Dinge außerhalb der Kontrolle deines Charakters und Raum für Trost und Erholung.
-- **Gewalt**: **Mild**, **Ernst** oder **Explizit**, unabhängig von der Inhaltsfreigabe. Wenn du nichts wählst, gilt bei SFW **Ernst** und bei NSFW **Explizit**.
-- **Inhaltliche Grenzen**: Themen, die der Game Master aus der Geschichte heraushält, eines pro Zeile, etwa `harm to animals`. Sie sind feste Grenzen bei jedem Stil und jeder Freigabe, und deine eigenen Freigaberichtlinien können sie nicht aufheben. Da eine KI die Geschichte schreibt, lässt sich nicht garantieren, dass ein aufgeführtes Thema niemals vorkommt.
+| Einstellung | Was sie bestimmt |
+| --- | --- |
+| **Altersfreigabe (sexuelle Inhalte)** | **SFW**: Romantik und Zuneigung; Sexszenen werden ausgeblendet. **NSFW**: Sexszenen dürfen explizit beschrieben werden. Über nichts anderes entscheidet diese Einstellung. |
+| **Erzählstil** | **Standard**: Fehler und Pech haben spürbare Folgen. **Sanft**: echte Herausforderungen, aber Rückschläge arten nicht in Bestrafung oder Trauma aus. |
+| **Gewalt** | **Mild**, **Ernst** oder **Explizit**: wie Gewalt dargestellt wird. Anfangs gilt **Ernst** bei SFW und **Explizit** bei NSFW, wie es die jeweilige Freigabe schon immer vorgesehen hat. |
+| **Inhaltliche Grenzen** | Themen, die du nie in der Geschichte haben möchtest, eines pro Zeile, etwa `harm to animals`. |
 
-Auch ein Prompt-Preset kann diese Einstellungen enthalten: im Tab **Prompts** unter **Game-Story-Einstellungen** mit **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden**. Seine Gewalteinstellung kann auch **Altersfreigabe folgen** sein. Wählst du das Preset für ein Spiel, legt es dessen Stil und Gewalt fest und ergänzt die eigenen Grenzen des Spiels. Eine aus einem Spiel gestartete Szene folgt dessen Freigabe, Richtlinien, Gewalt, Stil und Grenzen.
+#### Der Erzählstil Sanft
 
-<a id="choose-rules"></a>
+Wähl **Sanft**, wenn du die Geschichte und ihre Charaktere genießen möchtest, ohne dass der GM jeden Fehltritt bestraft. Mit **Sanft** gilt:
+
+- Rückschläge kosten Zeit, Ansehen, Ressourcen oder einen Umweg. Der GM reagiert darauf nicht mit Verletzungen, Demütigung, dem Verlust einer dir nahestehenden Person oder einem Trauma, auf das du nicht hingesteuert hast.
+- Der GM fordert nur dann eine Fertigkeitsprobe, wenn das eigene Können oder die Entscheidung deines Charakters zählt. Er würfelt nie gegen etwas, das dein Charakter nicht kontrollieren kann, etwa eine Behinderung, eine Erkrankung, seinen Körper oder seine Herkunft. Siehe [Fertigkeitsproben in einem sanften Spiel](dice-and-skill-checks.md#skill-checks-in-a-gentle-game).
+- Die Welt wird mit Wärme geplant: Handlungsbögen wachsen ebenso aus Hoffnungen und Beziehungen wie aus Verletzungen, und Wendungen überraschen dich, statt dich zu hintergehen.
+
+**Sanft** ersetzt nur die eingebauten GM-Anweisungen. Hast du einen eigenen **GM Prompt** geschrieben, behält der GM deinen Text. Kampf, Schaden und die Schwierigkeitseinstellung funktionieren in beiden Stilen gleich.
+
+#### Inhaltliche Grenzen
+
+Schreib ein Thema pro Zeile, höchstens 40 Themen und insgesamt 2.000 Zeichen. Alles jenseits einer dieser Grenzen wird weggelassen. Der GM behandelt jedes Thema als feste Grenze, die über Freigabe, Ton, der Persönlichkeit jedes Charakters und der Handlung steht. Er spricht diese Themen nicht an, nutzt sie nicht als Drohung, Wendung oder Hintergrundgeschichte und deutet sie auch nicht an. Bringst du selbst eines zur Sprache, hält der GM es kurz und geht weiter. Die Grenzen gelten in beiden Erzählstilen und bei beiden Freigaben, und deine eigenen Altersfreigabe-Richtlinien können sie nicht aufheben.
+
+> **Hinweis:** Die Geschichte wird von einem KI-Modell geschrieben. Marinara kann daher nicht garantieren, dass ein aufgeführtes Thema niemals vorkommt. Falls doch eines auftaucht, wähle per Swipe eine andere Antwort oder bearbeite sie.
+
+#### Die Altersfreigabe-Richtlinien bearbeiten
+
+Klapp unter den Freigabeschaltflächen **Altersfreigabe-Richtlinien bearbeiten** auf, um den Text zu sehen, den der GM für die gewählte Freigabe, Gewalt und den Erzählstil erhält. Bearbeite ihn, um eigene Inhaltsregeln für dieses Spiel festzulegen, oder klick auf **Auf Standard zurücksetzen**, um zum eingebauten Text zurückzukehren. Solange du ihn unverändert lässt, folgt er deiner Auswahl für Freigabe, Gewalt und Stil.
+
+#### Während eines Spiels ändern
+
+Öffne **Chat-Einstellungen → Prompt-Preset**. In einem Spiel enthält dieser Abschnitt auch **Erzählstil**, **Gewalt**, **Inhaltliche Grenzen** und **Altersfreigabe-Richtlinien**. Änderungen gelten ab dem nächsten Zug. Die Altersfreigabe selbst steht nach dem Erstellen des Spiels fest.
+
+Ein Prompt-Preset kann ebenfalls Erzählstil, Gewaltstufe und Grenzen enthalten, damit du sie in jedem Spiel wiederverwenden kannst. Siehe [Game-Story-Einstellungen](../prompts/presets.md#game-story-settings).
 
 ### Regeln auswählen
 
 **Rules** erscheint nur bei einem neuen Spiel und nur, wenn mindestens ein Regelsatz installiert ist. **Marinara's own rules** ist der Standard: die eingebauten d20-Proben und der Bogen mit sechs Attributen. Ein Regelsatz wie **5e (SRD 5.1)** ersetzt sie durch die eigenen Proben und den eigenen Charakterbogen eines Tischrollenspielsystems und kann auch Kämpfe nach seinen eigenen Regeln austragen. Der Assistent zeigt, was jeder Regelsatz abdeckt. Sobald das Spiel erstellt ist, steht die Wahl fest. Siehe [Mit einem Regelsatz spielen](rulesets.md).
-
-<a id="the-gm-intro-message"></a>
 
 ### Die Intro-Nachricht des GM
 
@@ -123,8 +145,6 @@ Die Sprechblasen-Schaltfläche neben der Schaltfläche für Dateianhänge legt f
 
 Der aktive Modus trägt im Menü die Markierung **On**. Klick denselben Eintrag noch einmal an, um ihn auszuschalten.
 
-<a id="the-games-controls"></a>
-
 ## Die Bedienelemente des Spiels
 
 Am Computer öffnen sich die Bedienelemente über Schaltflächen nahe der oberen rechten Ecke des Chats. Am Handy findest du sie im verschiebbaren Drei-Punkte-Menü **Chat tools** (Chat-Tools).
@@ -142,8 +162,6 @@ Wähl ein Tool, um es am Computer in einem verschiebbaren Fenster oder am Handy 
 Du kannst ein Bedienelement auch in **Chat Settings** behalten. Öffne sein Fenster und wähle **Put back in Chat Settings** (zurück in die Chat-Einstellungen). Es erscheint dann dort als aufklappbarer Abschnitt, und über seine Schaltfläche zum Herauslösen wird es wieder ein Fenster. Jedes Spiel speichert deine Auswahl. **Reset View** (Ansicht zurücksetzen) stellt die ursprüngliche Anordnung wieder her.
 
 **Character Profiles** (Charakterprofile) bleibt am Computer wie am Handy außerhalb von Chat tools. Zieh seine Porträt-Schaltfläche, wohin du willst, und öffne es dann, um ein Partymitglied zu wählen und seinen Charakterbogen anzusehen oder zu bearbeiten. Am Handy hat auch **Map** (Karte) eine eigene verschiebbare Schaltfläche. Beide folgen deinem Chat-Widget-Stil, speichern ihre Position für dieses Spiel und lassen sich aus ihrem geöffneten Fenster heraus sperren.
-
-<a id="choosing-a-model"></a>
 
 ## Ein Modell auswählen
 
@@ -163,8 +181,6 @@ Game Mode stellt drei Arten von KI-Anfragen:
 1. **Weltgenerierung.** Einmal, wenn du auf **Start Game** klickst. Eine große Anfrage, die den Weltüberblick, die Startkarte, NPCs, die Bögen der Party und die Widgets zurückliefert.
 2. **Spielzüge.** Jede Nachricht baut einen frischen Prompt mit dem aktuellen Zustand. Der GM erzählt und aktualisiert die Welt. Die Berechnungen der Kampfrunden übernimmt die Engine, nicht das Modell, so bleiben die Ergebnisse fair.
 3. **Sitzungszusammenfassungen.** Beendest du eine Sitzung, schreibt der GM eine Rückschau und Notizen zur Kontinuität. Startest du die nächste, schreibt er eine kurze Überleitung. Ältere Sitzungen werden zu Zusammenfassungen verdichtet, damit lange Kampagnen ins Modell passen.
-
-<a id="optional-tool-planning-and-lore-searches"></a>
 
 ## Optionale Tool-Planung und Lorebook-Suche
 
@@ -189,8 +205,6 @@ Mit **Review Agent Outputs** (Agent-Ausgaben prüfen) kannst du prüfen, was ein
 
 ## Fehlerbehebung
 
-<a id="world-generation-fails-with-a-json-or-422-error"></a>
-
 ### Die Weltgenerierung scheitert mit einem JSON- oder 422-Fehler
 
 Meistens konnte das Modell das vollständige JSON nicht liefern. Probier der Reihe nach Folgendes.
@@ -203,7 +217,15 @@ Hat ein Aufruf fast geklappt, bietet Marinara das Fenster **Repair JSON** (JSON 
 
 ### Der GM erzählt fröhlich, obwohl du einen düsteren Ton gewählt hast
 
-Manche Modelle bleiben gut gelaunt. Trag im Vorlieben-Feld des Assistenten eine klare Anweisung ein, etwa „keep narration grim, do not soften failures“. Oder wechsle auf ein Modell, dessen Grundton zum Ton passt.
+Prüf, ob der **Erzählstil** des Spiels auf **Standard** steht: **Sanft** hält Rückschläge absichtlich leicht (siehe [Der Erzählstil Sanft](#the-gentle-story-style)). Manche Modelle bleiben gut gelaunt. Trag im Vorlieben-Feld des Assistenten eine klare Anweisung ein, etwa „keep narration grim, do not soften failures“. Oder wechsle auf ein Modell, dessen Grundton zum Ton passt.
+
+### Das Modell lehnt einen Zug ab
+
+Eine Benachrichtigung meldet **Das Modell hat diese Anfrage abgelehnt**, wenn das Modell den Zug nicht schreiben wollte. Manche Modelle lehnen bestimmte Formulierungen in den Altersfreigabe-Richtlinien eines Spiels, einem Preset oder einer Charakterkarte ab. Versuch der Reihe nach:
+
+1. Versuch den Zug erneut. Manche Ablehnungen treten nur einmal auf.
+2. Falls du die Altersfreigabe-Richtlinien bearbeitet hast, öffne **Chat-Einstellungen → Prompt-Preset** und setze **Altersfreigabe-Richtlinien** auf den eingebauten Text zurück.
+3. Probier ein anderes Modell für dieses Spiel.
 
 ## Wo welches Thema steht
 
@@ -222,8 +244,6 @@ Manche Modelle bleiben gut gelaunt. Trag im Vorlieben-Feld des Assistenten eine 
 
 Die folgenden Abschnitte beschreiben **Overworld**-Spiele, die noch nicht verfügbar sind. Lies sie nur, wenn dein Server sie eingeschaltet hat.
 
-<a id="vn-or-overworld"></a>
-
 ### VN oder Overworld
 
 Ein neues Spiel läuft in einem von zwei Game Modes, die du im ersten Schritt wählst und die für alle seine Sitzungen gelten:
@@ -232,8 +252,6 @@ Ein neues Spiel läuft in einem von zwei Game Modes, die du im ersten Schritt w�
 - **VN** ist Game Mode, wie er immer war, erzählt wie eine Visual Novel: Szene für Szene, mit der Szenenkarte und Kämpfen und ohne Setting-Kit, Welt, Oberwelt, Städte oder Dungeon-Karten.
 
 Overworld ist gesperrt, solange der Server-Betreiber nicht `MARINARA_OVERWORLD_GAMES` setzt. Solange es gesperrt ist, ist seine Karte ausgegraut, mit dem Hinweis „Overworld games, with a setting kit and a generated world, are not ready yet. New games start as VN games.“ Jedes neue Spiel ist dann ein VN-Spiel, und die Auswahl für Setting-Kit und Welt erscheint nicht. Ein Spiel, das angelegt wurde, bevor es diese Wahl gab, läuft weiter wie bisher: mit einer Welt als Overworld-Spiel, ohne als VN-Spiel.
-
-<a id="choosing-a-setting-kit"></a>
 
 ### Ein Setting-Kit wählen
 
@@ -247,8 +265,6 @@ Es gibt acht Kits: High Fantasy, Wuxia und Xianxia, Gegenwart, übernatürliche 
 - **Download this kit** (dieses Kit herunterladen) speichert eine `.worldkit.json`-Datei zum Teilen. **Import a kit file** (Kit-Datei importieren) liest eine wieder ein.
 
 Das Spiel behält das Kit, mit dem es angelegt wurde, und eine geteilte Setup-Datei bringt es mit. Eine Experience kann ihr eigenes Kartenpaket mitliefern (ein Kit, fertige Karten und Tiles). Ist diese Experience an, zeigt die Einrichtung ihr Kit als festgelegt und, falls sie Karten mitliefert, eine **Map** zur Auswahl. Schaltest du die Experience aus, bekommst du deine Entscheidungen zurück.
-
-<a id="making-a-world"></a>
 
 ### Eine Welt erstellen
 

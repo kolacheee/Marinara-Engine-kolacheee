@@ -15,7 +15,7 @@ Wenn es nicht funktioniert hat: Ist für den Chat kein Modell eingestellt, schl�
 
 ### Send on Enter
 
-Du findest die Einstellung unter **Settings → Chatting → Message Box**. Pro Chat-Modus gibt es einen Schalter.
+Du findest die Einstellung unter **Settings → Chatting → Message Box**. Pro Chat-Modus gibt es einen Schalter, dessen Einstellung auf dem jeweiligen Gerät gespeichert wird. So können Handy und Computer unterschiedliche Einstellungen haben.
 
 | Chat-Modus | Standard | Wenn aus |
 | --- | --- | --- |
@@ -80,8 +80,6 @@ Damit das funktioniert, muss das Modell seine Gedanken auch zurückgeben. Manche
 ## Eine Antwort stoppen
 
 Klick auf die Stopp-Schaltfläche – das ist die Schaltfläche **Send**, solange eine Antwort streamt. Bereits hereingestreamter Text bleibt in der Regel erhalten. Ein absichtlicher Stopp zeigt nie einen Fehler.
-
-<a id="retry-without-retyping"></a>
 
 ## Erneut versuchen, ohne neu zu tippen
 

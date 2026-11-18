@@ -21,8 +21,6 @@ Ein Preset bewirkt nichts, bis ein Chat es nutzt. In einem **Roleplay**-Chat geh
 
 Hat das Preset Variablen, öffnet sich das Fenster **Configure Preset Variables** (Preset-Variablen konfigurieren). Siehe [Preset-Variablen](preset-variables.md). Wechselst du das Preset, gehen frühere Variablen-Auswahlen verloren.
 
-<a id="create-a-preset"></a>
-
 ## Ein Preset anlegen
 
 1. Öffne **Library → Presets** (Bibliothek → Presets). Die Bibliothek ist rechts.
@@ -54,7 +52,7 @@ Regex-Skripte haben ihre eigene Seite unter [Library → Regex scripts](../exten
 Das Panel hat vier Tabs: **Prompts**, **Regex-Skripte**, **Tools** und **Profiles**. Jeder Tab hat oben dieselbe Schaltflächenreihe und ein Suchfeld. Im Tab **Prompts** legst du mit **Preset erstellen** ein Preset an, lädst mit **Preset importieren** eine `.json`-Datei oder exportierst oder löschst mit **Presets auswählen** mehrere auf einmal; **Select all presets** hakt jedes Preset ab, das die Suche anzeigt. Der Tab **Regex-Skripte** enthält deine Regex-Skripte; siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts). Der Tab **Tools** enthält deine eigenen Tools; siehe [Eigene Tools](../extending/custom-tools.md). Der Tab **Profiles** enthält deine Chat-Einstellungsprofile; siehe [Einstellungsprofile](../chats/settings-profiles.md#the-profiles-tab).
 
 - **Search presets** (Presets durchsuchen) filtert die Liste.
-- Das Sortiermenü bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest** und **Oldest**. Bei **Manual order** ziehst du eine Zeile oder drückst auf einer fokussierten Zeile <kbd>Alt</kbd>+<kbd>Up</kbd> oder <kbd>Alt</kbd>+<kbd>Down</kbd>. Auf einem Touchscreen hältst du eine Zeile gedrückt, um sie aufzunehmen.
+- Das Sortiermenü bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest**, **Oldest**, **Meiste Tokens** und **Wenigste Tokens**. Die Größe zählt den eigenen Text der aktivierten Abschnitte, also die Anweisungen, die ein Preset immer sendet. Marker-Abschnitte wie Charakter, Lorebook und Chatverlauf werden pro Chat gefüllt und nicht mitgezählt. Jede Zeile zeigt die Schätzung. Bei **Manual order** ziehst du eine Zeile oder drückst auf einer fokussierten Zeile <kbd>Alt</kbd>+<kbd>Up</kbd> oder <kbd>Alt</kbd>+<kbd>Down</kbd>. Auf einem Touchscreen hältst du eine Zeile gedrückt, um sie aufzunehmen.
 - **New Folder** (Neuer Ordner) gruppiert Presets. Zieh ein Preset auf einen Ordner; ein Doppelklick oder Doppeltipp auf einen Ordner benennt ihn um.
 
 Jede Zeile zeigt Name, Wrap-Format, Anzahl der Abschnitte und Autor. Das Abzeichen **DEFAULT** kennzeichnet den mit Stern markierten Standard. Ein Klick auf eine Zeile öffnet das Preset.
@@ -84,7 +82,29 @@ Zwei schreibgeschützte Karten zeigen die Anzahl der **Sections** und **Groups**
 - **Conversation Mode** ist ein Textfeld für den Conversation-Prompt dieses Presets. Lass es leer, um den eingebauten Prompt zu nutzen.
 - **Roleplay Mode** lässt sich hier nicht bearbeiten. Roleplay nutzt den Prompt, der aus deinen **Sections** zusammengesetzt wird.
 - **Game Mode** ist ein Textfeld für den Game-Prompt dieses Presets. Lass es leer, um den eingebauten Prompt zu nutzen.
-- Unter **Game-Story-Einstellungen** legst du Erzählstil, Gewalt und inhaltliche Grenzen für Game Mode fest. Schalte **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden** ein: Wenn du das Preset für ein Spiel auswählst, legt es dessen Stil und Gewalt fest und ergänzt die eigenen Grenzen des Spiels um diese Grenzen. Siehe [Inhalte und Erzählstil](../game/getting-started.md#story-style-violence-and-content-boundaries).
+- **Game-Story-Einstellungen** übernimmt Erzählstil, Gewalt und inhaltliche Grenzen in Game Mode. Siehe [Game-Story-Einstellungen](#game-story-settings).
+
+#### Game-Story-Einstellungen
+
+Ein Preset kann Erzählstil, Gewaltstufe und inhaltliche Grenzen in Game Mode übernehmen, damit du sie nicht für jedes Spiel neu festlegen musst. Siehe [Erzählstil, Gewalt und inhaltliche Grenzen](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Schalte im Tab **Prompts** unter **Game-Story-Einstellungen** die Option **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden** ein.
+2. Wähl einen **Erzählstil** und eine **Gewalt**-Stufe. **Altersfreigabe folgen** belässt die Gewalt jedes Spiels beim Standard seiner Freigabe.
+3. Optional: Schreib **Inhaltliche Grenzen**, eine pro Zeile.
+4. Klick auf **Speichern**.
+
+Wenn du das Preset im Einrichtungsassistenten oder unter **Chat-Einstellungen → Prompt-Preset** für ein Spiel auswählst, übernimmt das Spiel dessen Erzählstil und Gewalt. Die Grenzen des Presets kommen zu den vorhandenen Grenzen des Spiels hinzu, sodass keine eigenen Grenzen des Spiels entfernt werden. Spätere Änderungen am Preset ändern keine Spiele, die es bereits ausgewählt haben. Beim Duplizieren, Exportieren oder Importieren des Presets bleibt die Einstellung erhalten.
+
+#### Game-Story-Einstellungen
+
+Ein Preset kann Erzählstil, Gewaltstufe und inhaltliche Grenzen in Game Mode übernehmen, damit du sie nicht für jedes Spiel neu festlegen musst. Siehe [Erzählstil, Gewalt und inhaltliche Grenzen](../game/getting-started.md#story-style-violence-and-content-boundaries).
+
+1. Schalte im Tab **Prompts** unter **Game-Story-Einstellungen** die Option **Story-Einstellungen in Spiele übernehmen, die dieses Preset verwenden** ein.
+2. Wähl einen **Erzählstil** und eine **Gewalt**-Stufe. **Altersfreigabe folgen** belässt die Gewalt jedes Spiels beim Standard seiner Freigabe.
+3. Optional: Schreib **Inhaltliche Grenzen**, eine pro Zeile.
+4. Klick auf **Speichern**.
+
+Wenn du das Preset im Einrichtungsassistenten oder unter **Chat-Einstellungen → Prompt-Preset** für ein Spiel auswählst, übernimmt das Spiel dessen Erzählstil und Gewalt. Die Grenzen des Presets kommen zu den vorhandenen Grenzen des Spiels hinzu, sodass keine eigenen Grenzen des Spiels entfernt werden. Spätere Änderungen am Preset ändern keine Spiele, die es bereits ausgewählt haben. Beim Duplizieren, Exportieren oder Importieren des Presets bleibt die Einstellung erhalten.
 
 Das integrierte **Marinara's Universal Preset** liefert Prompt-Text, aber keine Generierungsparameter. Seine älteren gespeicherten Einstellungen für Sampling, Reasoning, Formatierung und Tokens werden ignoriert; stattdessen gelten deine Kontoeinstellungen, Chat-Überschreibungen und die Standardwerte der App. Erstelle eine bearbeitbare Kopie, um es anzupassen.
 
@@ -152,8 +172,6 @@ Jeder Abschnitt hat in seinem Editor die Einstellung **Position**.
 - **Ordered (in sequence)** setzt den Abschnitt dorthin, wo er in der Liste steht. Das ist der Normalfall.
 - **Depth (from end of chat)** setzt ihn eine feste Anzahl Nachrichten vor das Ende des Chats; die Anzahl legt das Zahlenfeld **Depth** fest. Die Tiefe 0 setzt ihn hinter die letzte Nachricht. Nimm das für Hinweise, die das Modell nahe an den neuesten Nachrichten sehen soll.
 
-<a id="wrap-formats"></a>
-
 ## Wrap-Formate
 
 **Wrap Format** auf dem Tab **Overview** legt fest, wie jeder Abschnitt umschlossen wird.
@@ -167,8 +185,6 @@ Jeder Abschnitt hat in seinem Editor die Einstellung **Position**.
 XML passt für die meisten Modelle. Probier die anderen nur, wenn ein Modell ohne Tags besser antwortet.
 
 Soll ein einzelner **Prompt Block** ohne sein Tag oder seine Überschrift gesendet werden, klapp ihn auf und schalte **Send without wrapper** (ohne Umschließung senden) ein. Das Tag einer Gruppe kann ihn trotzdem umschließen; nimm den Block also aus seiner Gruppe, wenn er völlig ohne Umschließung gesendet werden soll. Marker behalten ihre Umschließung immer, und beim Format **NONE** ist der Schalter ausgeblendet.
-
-<a id="conversation-and-game-chats"></a>
 
 ## Conversation- und Game-Chats
 
@@ -185,9 +201,7 @@ Unter dem Dropdown-Menü zeigt ein Abzeichen, woher der Prompt stammt.
 
 Das Textfeld zeigt den Prompt, der gerade gilt. Bearbeite ihn, um eine chatlokale Kopie anzulegen. Stimmt dein Text exakt mit dem Preset oder dem Standard überein, wertet Marinara ihn nicht als Anpassung. Solange eine eigene Bearbeitung existiert, erscheint ein Symbol zum Zurücksetzen (Tooltip **Reset to default prompt**).
 
-Game-Chats haben weitere Bedienelemente. **GM prompt style** (GM-Prompt-Stil) ersetzt nur den Game-Prompt, und eine chatlokale Bearbeitung hat weiterhin Vorrang. **Extra instructions** (zusätzliche Anweisungen) ergänzt den Game-Prompt um Text, bis zu 2.000 Zeichen, etwa „Write in the style of Terry Pratchett.“ **Altersfreigabe-Richtlinien**, **Erzählstil**, **Gewalt** und **Inhaltliche Grenzen** sind die Inhaltseinstellungen des Spiels; siehe [Inhalte und Erzählstil](../game/getting-started.md#change-them-during-a-game).
-
-<a id="decision-blocks-and-prompt-caching"></a>
+Game-Chats haben weitere Bedienelemente. **Erzählstil**, **Gewalt**, **Inhaltliche Grenzen** und **Altersfreigabe-Richtlinien** legen fest, was die Geschichte des Spiels enthalten darf. Siehe [Während eines Spiels ändern](../game/getting-started.md#change-them-during-a-game). Zwei weitere prägen den Prompt. **GM prompt style** (GM-Prompt-Stil) ersetzt nur den Game-Prompt, und eine chatlokale Bearbeitung hat weiterhin Vorrang. **Extra instructions** (zusätzliche Anweisungen) ergänzt den Game-Prompt um Text, bis zu 2.000 Zeichen, etwa „Write in the style of Terry Pratchett.“
 
 ## Decision-Blöcke und Prompt-Caching
 

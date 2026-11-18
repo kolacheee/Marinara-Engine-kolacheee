@@ -4,8 +4,6 @@ In dieser Anleitung erfährst du, welche Server-Einstellungen du über Umgebungs
 
 Deine KI-Konten, Charaktere und Chat-Optionen stellst du in der App ein. Wie du ein KI-Konto hinzufügst, steht unter [Verbindung zu einem KI-Anbieter herstellen](connections/connecting-to-a-provider.md).
 
-<a id="edit-the-env-file"></a>
-
 ## Die .env-Datei bearbeiten
 
 Marinara legt beim ersten Start eine leere `.env` an. Jede Zeile hat die Form `KEY=value`. Zeilen, die mit `#` beginnen, sind Kommentare.
@@ -29,8 +27,6 @@ BASIC_AUTH_PASS=correct-horse-battery-staple
 
 Der Server liest `.env`, ganz gleich, wie du ihn startest. Die Launcher (`start.bat`, `start.sh`, `start-termux.sh`) setzen außerdem `HOST=0.0.0.0`, damit andere Geräte sich verbinden können, und öffnen deinen Browser, sobald der Server bereit ist. `AUTO_OPEN_BROWSER=false` schaltet das ab. Bei einem nackten `pnpm start` lauscht der Server nur auf diesem Rechner, solange du `HOST` nicht setzt.
 
-<a id="restart-or-hot-reload"></a>
-
 ## Neustart oder Hot Reload
 
 Marinara überwacht `.env` im laufenden Betrieb. Die meisten Einstellungen greifen fast sofort, ohne Neustart. Für jede Änderung zeigt das Log eine Zeile `[env-watcher]`. Lässt sich die Überwachung nicht starten, prüft der Server die Datei alle 30 Sekunden und vermerkt das im Log.
@@ -50,8 +46,6 @@ Die folgenden Einstellungen liest der Server nur beim Start. Eine Änderung brau
 Die Launcher lesen `AUTO_UPDATE_ENABLED`, bevor der Server startet. Eine Änderung gilt daher ab dem nächsten Start, und das Log weist nicht darauf hin.
 
 Einstellungen zur Zugriffskontrolle und Geheimnisse (`BASIC_AUTH_USER`, `BASIC_AUTH_PASS`, `IP_ALLOWLIST`, `ADMIN_SECRET`, `CSRF_TRUSTED_ORIGINS`) kommen ohne Neustart aus.
-
-<a id="access-control"></a>
 
 ## Zugriffskontrolle
 
@@ -107,8 +101,6 @@ openssl rand -hex 32
 
 Marinara legt deine Daten als einfache JSON-Dateien ab, sodass du Backups kopieren und lesen kannst. Was in welchem Ordner steckt, erklärt [Wo Marinara deine Daten speichert](data/where-data-is-stored.md).
 
-<a id="logging-levels"></a>
-
 ## Log-Stufen
 
 `LOG_LEVEL` legt fest, wie viel der Server ausgibt. Alles unterhalb der gewählten Stufe blendet er aus.
@@ -125,6 +117,7 @@ Marinara legt deine Daten als einfache JSON-Dateien ab, sodass du Backups kopier
 | `LOG_LEVEL` | `warn` | Die Stufe aus der Tabelle oben. |
 | `LOG_PRESET` | `default` | `prompt-connections` zeigt dieselben Prompt- und Modelldetails wie `debug`, blendet aber routinemäßige Anfragezeilen wie `GET /api/chats` aus. |
 | `LOG_DISABLE_REQUEST_LOGGING` | `false` | `true` blendet routinemäßige Anfragezeilen aus und behält deine Stufe. Erfordert einen Neustart. |
+| `LOG_INLINE_MEDIA` | `short` | `short` gibt Bilder und andere Base64-Dateien in der Debug-Ausgabe als kurze Markierung mit Typ und Größe aus. `full` gibt sie vollständig aus; das können mehrere MB pro Prompt sein. |
 | `LOG_FORMAT` | automatisch | `pretty` gibt überall lesbare Zeilen aus, etwa um Prompts aus dem **Debug mode** (Debug-Modus) in `docker logs` zu lesen. `json` gibt ein JSON-Objekt pro Zeile aus. Erfordert einen Neustart. |
 
 In einem Terminal gibt der Server lesbare Zeilen aus. Anderswo, etwa in Docker-Logs, gibt ein Produktionsserver JSON-Zeilen aus. Der Termux-Launcher fordert lesbare Zeilen an. Das Browser-Logging läuft getrennt davon und richtet sich nicht nach `LOG_LEVEL`.
@@ -193,13 +186,9 @@ Standardmäßig verweigern ausgehende Anfragen an KI-Dienste, Bilddienste und We
 
 Wie du ein lokales oder selbst gehostetes Modell anbindest, steht unter [Ein lokales oder selbst gehostetes Modell verbinden](connections/local-self-hosted.md).
 
-<a id="feature-switches"></a>
-
 ## Funktionsschalter
 
 Optionale Serverfunktionen, etwa das Wiederholen fehlgeschlagener Anbieteraufrufe (**Settings → Advanced → Timeouts & Retries**) oder stabile Lorebook-Gruppenauswahlen (**Settings → Advanced → Lorebooks**), sind Schalter in den Einstellungen. Alle sind standardmäßig aus. Einige haben eine Variable, die Vorrang vor dem Schalter hat, wenn sie gesetzt ist. Siehe [Funktionsschalter](configuration/features.md).
-
-<a id="marinara-notices"></a>
 
 ## Marinara-Hinweise
 
@@ -218,8 +207,6 @@ Zum Abschalten der Hinweise setze `MARINARA_NOTICES_ENABLED=false`.
 Forks können `MARINARA_NOTICES_URL` auf ihre eigene Datei zeigen lassen.
 
 Um den Server der Hinweise zu finden, und ebenso den Proxy, wenn ein [ausgehender Proxy](#outbound-http-proxy) eingeschaltet ist, liest Marinara die Hosts-Datei und fragt die DNS-Server direkt ab. Namen, die nur dein lokales Netzwerk kennt, etwa `.local`-Namen oder kurze Namen ohne Domain außer `localhost`, funktionieren nicht. In Termux stehen die DNS-Server in `$PREFIX/etc/resolv.conf`: `8.8.8.8` und `8.8.4.4` von Google, sofern du diese Datei nicht änderst.
-
-<a id="optional-multiplayer"></a>
 
 ## Optionaler Mehrspielermodus
 
@@ -260,8 +247,6 @@ Optionale offizielle Agenten installierst du in der App: **Library → Agents** 
 Externe Agent-Dateien, -Ordner und -Repositorys sind gesperrt. Um sie zu erlauben, schalte **Allow custom Agent imports** (Import eigener Agenten erlauben) unter **Settings → Advanced → Security** (Einstellungen → Erweitert → Sicherheit) ein. Dafür brauchst du keine Umgebungsvariable. Bis dahin bleiben die Import-Bedienelemente ausgegraut.
 
 Jeder Import zeigt zuerst, welche Fähigkeiten der Agent anfordert. Berechtigungen musst du ausdrücklich bestätigen. Mitgelieferte Funktionen und Tool-Auswahlen werden nicht importiert, generiertes CSS wird bereinigt, und Ergebnis-Aktionen werden gegen die freigegebenen Fähigkeiten geprüft. Schaltest du die Freigabe aus, laufen importierte Agenten nicht mehr. In Marinara erstellte Agenten und offizielle Pakete sind davon nicht betroffen.
-
-<a id="custom-agent-repositories"></a>
 
 ### Eigene Agent-Repositorys
 
@@ -355,8 +340,6 @@ Video-Konten richtest du in der App ein. Diese Einstellungen justieren nur die A
 | `SEEDANCE_VIDEO_POLL_INTERVAL_MS` | `10000` | Wie oft er einen Seedance-Auftrag abfragt. |
 | `VIDEO_REFERENCE_PUBLIC_BASE_URL` | leer | Öffentliche HTTPS-Adresse dieses Servers, für Dienste, die ein Referenzbild per URL holen müssen. |
 
-<a id="lorebooks"></a>
-
 ### Lorebooks
 
 Beide Einstellungen sind standardmäßig aus und gelten nach einer `.env`-Änderung ab der nächsten Generierung. Ist `LOREBOOK_STABLE_GROUP_WINNERS` gesetzt, hat die Variable Vorrang vor dem Schalter **Stable lorebook picks** (stabile Lorebook-Auswahl) unter **Settings → Advanced → Lorebooks**. Sonst entscheidet der Schalter. Siehe [Funktionsschalter](configuration/features.md).
@@ -367,8 +350,6 @@ Beide Einstellungen sind standardmäßig aus und gelten nach einer `.env`-Änder
 | `LOREBOOK_COMPACT_STORED_SCANS` | `false` | Speichert den vollständigen Text aktivierter Einträge nur an der neuesten Assistenten- oder Erzählernachricht. Ältere Nachrichten behalten Eintrags-IDs, Schlüssel und Scores. Macht Chats mit großen Lorebooks deutlich kleiner. Werden neuere Nachrichten gelöscht, zeigen Active Context und Agentenwiederholungen für die wieder neueste Nachricht den aktuellen Text des Eintrags. |
 
 `scripts/compact-lorebook-scans.mjs` wendet dieselbe Regel auf ältere Chats an. Stoppe zuerst den Server. Ohne `--apply` bleibt es ein Probelauf, und vor dem Schreiben sichert es beide Nachrichtentabellen.
-
-<a id="robustness"></a>
 
 ### Robustheit
 
@@ -400,8 +381,6 @@ Alle sind standardmäßig aus und behalten so das bisherige Verhalten bei. `STOR
 | `SIDECAR_RUNTIME_INSTALL_ENABLED` | `false` (der Windows-Launcher setzt `true`) | Erlaubt die Installation der Laufzeit für das **Built-in model** (eingebautes Modell) über Loopback ohne Admin-Header. |
 
 Zum **Built-in model** siehe [Eingebautes Modell einrichten](connections/local-model.md).
-
-<a id="outbound-http-proxy"></a>
 
 ### Ausgehender HTTP-Proxy
 

@@ -26,8 +26,6 @@ Ein Marinara-Export behält die meisten Details. Die anderen Typen stammen aus S
 
 Wenn es nicht funktioniert hat: Lies die rote Meldung neben der Datei. Die übrigen Dateien des Durchgangs werden trotzdem importiert.
 
-<a id="import-options"></a>
-
 ### Importoptionen
 
 | Option | Möglichkeiten |
@@ -54,7 +52,48 @@ Ein Lorebook ist eine Sammlung von Hintergrundwissen, das die KI während eines 
 
 ### Einen kompletten SillyTavern-Ordner importieren
 
-Um eine komplette SillyTavern-Installation zu übernehmen, nimm den Massenimport unter **Settings → Data → SillyTavern Import** (Einstellungen → Daten → SillyTavern-Import). Er bringt Charaktere, Chats, Presets und Lorebooks gemeinsam mit. Siehe [Aus SillyTavern importieren](../data/importing-from-sillytavern.md).
+Um eine komplette SillyTavern-Installation zu übernehmen, nimm den Massenimport in **Einstellungen** im Tab **Importe**. Er bringt Charaktere, Chats, Presets und Lorebooks gemeinsam mit. Siehe [Aus SillyTavern importieren](../data/importing-from-sillytavern.md).
+
+## Einen vorhandenen Charakter aktualisieren
+
+Wenn der Autor einer Karte eine neuere Version veröffentlicht, kannst du deine Kopie aktualisieren, statt eine zweite hinzuzufügen. Der Charakter behält seine Chats, Erinnerungen, Galerie, Sprites, seinen Ordner, Favoritenstern, seine Farben und deine eigenen Tags. Seine aktuelle Karte wird zuerst im **Versionsverlauf** gespeichert (auch bei ausgeschalteter automatischer Versionierung), damit du zurückwechseln kannst.
+
+### Über das Importfenster
+
+1. Importiere die neuere Kartendatei wie gewohnt (Schritte oben).
+2. Passt sie zu einem vorhandenen Charakter, hält der Import bei **Bereits in deiner Bibliothek** an. Marinara erkennt Karten, die von derselben Seite im Card Browser heruntergeladen wurden oder denselben Namen und Ersteller haben. Unter jeder Auswahl steht der Grund.
+3. Wähl für jede Karte eine Möglichkeit:
+   - **„Name“ aktualisieren**: diesen Charakter direkt aktualisieren (Standard).
+   - **Anderen Charakter aktualisieren…**: einen beliebigen Charakter aus einer Liste wählen. Nutze das für eine Karte, die auf einem anderen Weg kam, etwa von einer Website über SillyTavern nach Marinara, sodass Name oder Ersteller nicht mehr übereinstimmen.
+   - **Als neuen Charakter hinzufügen**: beide behalten.
+   - **Diese Karte überspringen**: die Karte auslassen.
+4. Wähle, ob du **Bild der neuen Karte verwenden** möchtest und was mit den **Notizen des Erstellers** geschieht (siehe unten).
+5. Klick auf **Weiter**. Hat die Karte ein eingebautes Lorebook, fragt der nächste Schritt wie gewohnt danach. Das verknüpfte Lorebook eines aktualisierten Charakters bekommt die neuen Einträge, statt ein zweites Mal kopiert zu werden.
+6. Das Ergebnis lautet `Updated "Name". Its old card is in Version history.`
+
+### Über den Charakter-Editor
+
+1. Öffne den Charakter und speichere zuerst alle Änderungen.
+2. Klick neben **Speichern** auf **⋯** und wähle **Aus Kartendatei aktualisieren…**.
+3. Wähl die neuere Karte (.png, .json oder .charx), prüfe die Auswahl und klick auf **Aktualisieren**.
+
+Bei einem Charakter aus dem [Card Browser](bot-browser.md) bietet dasselbe Menü **Nach Update suchen**. Es öffnet die Seite dieser Karte im Card Browser, wo du die neuere Version vergleichen und importieren kannst.
+
+### Notizen des Erstellers
+
+Die Notizen des Erstellers sind der kurze Text unter jeder Karte in **Charaktere**; manche hinterlegen dort eigenes CSS. Wähl eine Möglichkeit:
+
+| Auswahl | Was passiert |
+| --- | --- |
+| **Zusammenführen: meine behalten, Änderungen des Autors ergänzen** (Standard) | Dein Text und CSS bleiben erhalten. Vom Autor hinzugefügte Zeilen werden vor deinem ersten Style-Block eingefügt. Vom Autor entfernte Zeilen fallen weg, sofern du sie nicht geändert hast. Hast du die Notizen nie bearbeitet, werden sie einfach durch die der neuen Karte ersetzt. |
+| **Anmerkungen der Karte verwenden** | Deine Notizen werden durch die der Karte ersetzt. |
+| **Meine behalten** | Deine Notizen bleiben genau so, wie sie sind. |
+
+Bei Karten, die vor dieser Funktion importiert wurden, sind die ursprünglichen Notizen nicht gespeichert. Beim ersten Zusammenführen werden deshalb nur Zeilen ergänzt, die du noch nicht hast.
+
+### Ein Update rückgängig machen
+
+Öffne den Charakter, such im Tab **Metadaten** den **Versionsverlauf** und stelle die Version vor dem Update wieder her. Siehe [Versionsverlauf](creating-and-editing-characters.md#version-history).
 
 ## Einen Charakter exportieren
 

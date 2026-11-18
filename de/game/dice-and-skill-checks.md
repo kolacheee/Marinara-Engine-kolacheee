@@ -49,13 +49,9 @@ Wenn es nicht funktioniert hat: Text, der weder `NdM` noch ein einzelnes `dM` is
 
 Du kannst höchstens 100 Würfel auf einmal werfen, und jeder Würfel darf höchstens 1.000 Seiten haben. Ein einfacher Wurf darüber wird auf die Grenzen gekürzt, und die Karte zeigt die gekürzte Notation: Aus `500d6` wird eine `100d6`-Karte. Ein Wurf, der Würfel behält oder verwirft und die Grenzen überschreitet, etwa `101d6kh3`, wird mit einer Fehlermeldung wegen Bereichsüberschreitung abgelehnt, weil eine Kürzung ändern würde, welche Würfel behalten werden.
 
-<a id="skill-checks"></a>
-
 ## Fertigkeitsproben
 
 Eine Fertigkeitsprobe testet etwas Riskantes, etwa Anschleichen, einen Hinweis entdecken oder einen NPC (Nicht-Spieler-Charakter) überzeugen. Du startest keine selbst. Der GM fordert sie in seiner Erzählung an, und Marinara macht daraus einen animierten d20-Wurf mit einem Ergebnis-Banner. Das Banner zeigt die Fertigkeit und die Zielzahl, zum Beispiel **Stealth Check** mit **DC 15**. Jede ausgewertete Probe bekommt ein eigenes Banner, nach etwaigen wartenden Würfelkarten.
-
-<a id="how-the-result-is-decided"></a>
 
 ### Wie das Ergebnis zustande kommt
 
@@ -65,8 +61,6 @@ Die Probe wirft einen d20 und addiert zwei Modifikatoren:
 - Einen Werte-Modifikator aus dem Wert, auf den sich die Fertigkeit stützt. Welche Werte gelten, hängt wie unten beschrieben vom Spiel ab.
 
 In einem geteilten Spiel liest jede Probe die Werte des Charakters, den sie nennt.
-
-<a id="mrpg-games"></a>
 
 #### MRPG-Spiele
 
@@ -84,13 +78,9 @@ In einem Spiel mit **MRPG**-Klassen – also jedem neuen Spiel – stammt der We
 
 Die Probe addiert ein Fünftel des Anteils dieses Werts über 3, abgerundet, von -1 bis +5. Ein schwacher Wert (2 oder weniger) zieht 1 ab, ein gewöhnlicher addiert nichts, der beste Wert eines neuen Charakters etwa +1, einer auf Stufe 10 +2 und der beste auf der höchsten Stufe +5. Weil die Werte der aktiven Klasse folgen, ändern sich diese Boni ebenfalls, wenn der Charakter die Klasse wechselt.
 
-<a id="legacy-games"></a>
-
 #### Legacy-Spiele
 
 In einem **Legacy**-Spiel stammt der Modifikator aus dem Attribut auf dem Charakterbogen, das für die Fertigkeit zuständig ist. Jede Fertigkeit ist automatisch einem Attribut zugeordnet: Stealth (Heimlichkeit) nutzt Dexterity (Geschicklichkeit), Perception (Wahrnehmung) nutzt Wisdom (Weisheit), Persuasion (Überredung) nutzt Charisma. Eine Fertigkeit, die Marinara nicht kennt, nutzt Intelligence (Intelligenz).
-
-<a id="the-result"></a>
 
 #### Das Ergebnis
 
@@ -100,6 +90,15 @@ Erreicht oder übertrifft die Summe die DC, gelingt die Probe. Zwei Würfe setze
 - Eine natürliche 1 ist ein **CRITICAL FAILURE** und misslingt immer.
 
 Das Banner zeigt **CRITICAL SUCCESS**, **SUCCESS**, **FAILURE** oder **CRITICAL FAILURE**.
+
+### Fertigkeitsproben in einem sanften Spiel
+
+In einem Spiel mit dem Erzählstil **Sanft** fordert der GM weniger Proben an. Der Wurf selbst funktioniert genauso. Siehe [Der sanfte Erzählstil](getting-started.md#the-gentle-story-style).
+
+- Der GM verlangt nur dann eine Probe, wenn die eigene Fertigkeit oder Entscheidung deines Charakters den Ausgang beeinflussen kann.
+- Er würfelt nie gegen etwas, das dein Charakter nicht kontrollieren kann oder das zu ihm gehört, etwa eine Behinderung, eine chronische Erkrankung, seinen Körper oder seine Herkunft. Die Geschichte zeigt es als Teil von ihm, einschließlich der Wege, die er bereits im Umgang damit gefunden hat.
+- Freundlichkeit, Vertrauen und gemeinsame Entwicklung entstehen aus dem, was Charaktere miteinander erleben, nicht durch einen Wurf.
+- Eine misslungene Probe wirft den Versuch zurück, nicht den Charakter: Der Versuch scheitert, dauert länger, kostet etwas oder erregt Aufmerksamkeit. Ein **CRITICAL FAILURE** ist eine größere Komplikation, keine Katastrophe.
 
 ### Vorteil und Nachteil
 
@@ -111,15 +110,11 @@ Leg vor der Probe über das Würfelmenü einen `d20` in die Warteschlange. Die P
 
 Wie der GM einen Zug nach einem Wurf abschließt und was das kostet, steht unter [Wie ein gewürfelter Zug erzählt wird](#how-a-rolled-turn-is-narrated).
 
-<a id="games-that-use-a-ruleset"></a>
-
 ### Spiele mit einem Regelsatz
 
 In einem Spiel mit Regelsatz, etwa 5e (SRD 5.1), nutzen Proben die eigenen Würfel des Regelsatzes, seine Schwierigkeitsskala und seine Modifikatoren aus dem Charakterbogen, bei manchen Regelsätzen auch einen Würfelpool oder Symbolwürfel. Siehe [Proben mit einem Regelsatz](rulesets.md#checks-on-a-ruleset).
 
 ## Referenz
-
-<a id="how-a-rolled-turn-is-narrated"></a>
 
 ### Wie ein gewürfelter Zug erzählt wird
 
@@ -134,8 +129,6 @@ Fordert der GM im Text eine Probe an, wertet Marinara die Würfel aus und hat dr
 Scheitert bei **Narrate dice outcomes immediately** die zusätzliche Anfrage, behält der Zug die ausgewerteten Ergebnisse in seinem Protokoll, ohne einen geratenen oder unvollständigen Ausgang zu speichern. Ein Hinweis mit der Schaltfläche **Regenerate turn** (Zug neu generieren) bleibt am Zug, auch nach dem Neuladen. Eine Anfrage ohne tatsächliche Würfe löst die zusätzliche Anfrage nie aus.
 
 Bei einer Verbindung, die das Würfel-Tool unterstützt, kann der GM stattdessen schon während der Generierung einen echten Wurf bekommen. Die Würfelkarte erscheint, sobald das Tool antwortet, und die abgeschlossene Probe übernimmt dieses Ergebnis, ohne erneut zu würfeln.
-
-<a id="finishing-a-rolled-turn-in-one-request"></a>
 
 #### Einen gewürfelten Zug mit einer Anfrage abschließen
 
@@ -154,8 +147,6 @@ Eine Probe, die in keiner dieser Formen geschrieben ist, fällt auf das letzte V
 - In zwei Fällen kann ein Zug weiterhin mehr als eine Anfrage kosten: wenn **Enable Tool Use** (Tool-Nutzung aktivieren) an ist und das Würfel-Tool in deiner Tool-Liste steht (ein Tool-Aufruf kostet eine volle zusätzliche Runde), oder wenn ein anderer **Game tool provider** (Anbieter für Game-Tools) als **Same as narrator** (wie der Erzähler) eingestellt ist (er stellt immer eine Planungsanfrage).
 - Lässt sich etwas nicht würfeln, ersetzt ein kurzer Hinweis die Zahl, nie ein erfundener Wert. **Logs** sagt, was ausgelassen wurde.
 - Während der Zug geschrieben wird, bleiben Platzhalter und Zweigblöcke aus dem Streaming-Text heraus, sodass du nie siehst, wie sich eine Zahl ändert.
-
-<a id="symbol-dice-by-name"></a>
 
 ### Symbolwürfel nach Namen
 

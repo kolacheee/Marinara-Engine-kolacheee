@@ -2,8 +2,6 @@
 
 Diese Seite erklärt, wie du Server-Logs von Marinara Engine liest und hilfreiche Log-Zeilen schreibst. Sie ergänzt den [Logging-Abschnitt in CONTRIBUTING.md](../../CONTRIBUTING.md#logging), ersetzt ihn aber nicht. Der gemeinsame Pino-Logger, Aufrufe mit Fehlerobjekt zuerst, Formatplatzhalter und die Tabelle mit vier Log-Stufen gelten weiterhin.
 
-<a id="what-every-line-carries"></a>
-
 ## Was jede Zeile enthält
 
 Alle Serverzeilen stammen von einer Pino-Instanz: `logger` in `packages/server/src/lib/logger.ts`. Fastify nutzt sie über `loggerInstance`; `req.log`, `reply.log` und `app.log` sind daher ihre Kinder. Sie verwenden dieselben Serializer und übernehmen `LOG_LEVEL`-Hot-Reloads des Umgebungs-Watchers.
@@ -15,8 +13,6 @@ Alle Serverzeilen stammen von einer Pino-Instanz: `logger` in `packages/server/s
 | `bootId` | jeder Zeile | 8 Hexzeichen, bei jedem Prozessstart neu. Unterscheidet zwei Läufe in derselben Log-Datei. |
 | `requestId` | jeder durch eine Anfrage ausgelösten Zeile | Identisch mit dem Antwortheader `x-request-id`. Steht sowohl auf `req.log`-Zeilen als auch auf Zeilen des gemeinsamen `logger` in Diensten. |
 | `route` | Zeilen nach dem Body-Parsing | Passendes Routenmuster, etwa `/api/chats/:id`. Enthält nie die rohe URL. |
-
-<a id="request-ids"></a>
 
 ### Anfrage-IDs
 
@@ -30,8 +26,6 @@ Die ID liegt in einem `AsyncLocalStorage`-Kontext (`lib/log-context.ts`). Ein Pi
 
 Der Kontext folgt allem, was innerhalb der Anfrage startet, auch Timern, Listenern und Kindprozessen. Beginnt Arbeit, die die Anfrage überlebt, etwa ein Timer, Poller oder Kindprozess, wird dieser Start in `runWithRootLogContext({}, fn)` eingeschlossen. Spätere Zeilen tragen dann nicht die ID der auslösenden Anfrage. Der lokale Sidecar macht dies für seine llama-server- und MLX-Prozesse; Decision- und Utility-Sidecar starten ebenso, damit ein später gemeinsam genutzter Prozess nicht die ID des ersten Aufrufers behält. Andere langlebige Arbeit aus einem Routenhandler behält dessen `requestId`, bis ihr Start ebenfalls so eingeschlossen wird.
 
-<a id="request-lines"></a>
-
 ### Anfragezeilen
 
 `RequestLogController` ist Fastifys standardmäßiger `LogController` mit folgenden Änderungen:
@@ -42,9 +36,7 @@ Der Kontext folgt allem, was innerhalb der Anfrage startet, auch Timern, Listene
 
 `LOG_DISABLE_REQUEST_LOGGING` funktioniert wie bisher und deaktiviert auch die Abbruchzeile.
 
-Bei `pnpm dev` blendet pino-pretty `hostname` (seinen Standard) und `bootId` aus. Die produktive JSON-Ausgabe behält beide.
-
-<a id="startup-timeline"></a>
+Ein Terminal erhält pino-pretty-Zeilen: bei `pnpm dev` und bei einem Produktionsserver, dessen stdout ein Terminal ist (die Launcher). Produktionsausgaben an andere Ziele sind JSON, ein Objekt pro Zeile. `LOG_FORMAT=pretty|json` überschreibt diese Wahl. Der Termux-Launcher setzt `pretty`, weil seine Ausgabe über `tee` ins Terminal gelangt. pino-pretty blendet `hostname` (seinen Standard) und `bootId` aus; die JSON-Ausgabe behält beide.
 
 ## Startzeitablauf
 
@@ -60,8 +52,6 @@ const db = await startup.phase("storage.open", () => getDB());
 - Sobald der Server lauscht, schreibt `index.ts` eine info-Zeile `[startup] Ready in N ms` mit `event: "startup.ready"`, Phasenanzahl und den fünf größten `selfMs`-Werten.
 
 Phasen fügen dem Log-Kontext kein `stage` hinzu. Während einer Phase gestartete Dienste behalten Timer; diese würden die Phase sonst über die gesamte Prozesslaufzeit tragen.
-
-<a id="one-line-per-failure"></a>
 
 ## Eine Zeile pro Fehler
 
@@ -81,8 +71,6 @@ Ein Fehler soll genau eine Zeile erzeugen, geschrieben von dem Code, der über d
 
 - **Ursache erhalten.** Umschließe mit `new Error("Could not save chat", { cause: err })`. Die Serializer für `err` und `error` ergänzen Meldung und Stack der Ursache (`caused by: ...`). Auch ein als `{ error }` protokollierter Error wird serialisiert und nicht mehr als `{}` ausgegeben.
 
-<a id="repeating-failures"></a>
-
 ## Wiederkehrende Fehler
 
 Poller, Zustandsprüfungen und Hooks pro Zug können alle paar Sekunden gleich scheitern. Nutze `logRateLimited` aus `lib/log-rate-limit.ts`:
@@ -92,8 +80,6 @@ logRateLimited("warn", "autonomous-scheduler:poll", err, "[autonomous-scheduler]
 ```
 
 Das erste Auftreten eines Schlüssels wird protokolliert. Weitere im Zeitfenster (standardmäßig 60 s) werden gezählt; die nächste Zeile enthält `suppressedRepeats`. Nimm die fehlschlagende Einheit, etwa Paket- oder Chat-ID, in den Schlüssel auf, damit ein defekter Eintrag keinen anderen verdeckt.
-
-<a id="prompt-and-model-text"></a>
 
 ## Prompt- und Modelltext
 
@@ -109,11 +95,22 @@ logger.debug({ err }, "[game/scene-wrap] Unparsed LLM response: %s", raw.slice(0
 
 Der Debug-Schalter der Oberfläche funktioniert weiter über `logDebugOverride`. Das ist der vorgesehene Weg, Prompts auch dann zu sehen, wenn `LOG_LEVEL` debug ausblendet.
 
-<a id="checks"></a>
+Gib Prompt-Text mit `%s` unverändert aus. Übergib bei einem strukturierten Wert (einem Nachrichtenarray, einem Anfragebody an einen Anbieter, einer geparsten Antwort) `debugJson(value)` an `%s`, nicht `%j` oder `JSON.stringify(value)`. Es gibt eingerücktes JSON aus, dessen Zeilenumbrüche innerhalb von Strings echte Zeilenumbrüche sind. So bleibt ein mehrzeiliger Prompt lesbar, und gerendert wird erst, wenn die Zeile ausgegeben wird. Ein Replacer zum Schwärzen kommt wie bei `JSON.stringify` ins zweite Argument. Eine Debug-Ansicht in der App gibt denselben Text mit `readableJson` aus `@marinara-engine/shared` aus. Der Regressionstest `debug-log-line-breaks` deckt das und die Formatwahl ab.
+
+Inline-Medien landen nie vollständig im Log. `debugJson` ersetzt jede Base64-Nutzlast durch eine Markierung wie `[image/png base64, ~1.2 MB: iVBORw0KGgoAAAA...ElFTkSuQmCC]`: Typ, Größe sowie die ersten und letzten 16 Zeichen. Das erfasst `data:`-URLs (als ganze Strings oder innerhalb von Text) und die reinen `data`-Felder in Medienteilen von Anthropic und Google, auch bei Base64 über mehrere Zeilen. Der Serializer `msg` macht dasselbe für `data:`-URLs in einfachen `%s`- und `%j`-Zeilen; ein reines `data`-Feld wird nur durch `debugJson` gekürzt. Nur die ausgegebene Kopie ändert sich, der übergebene Wert bleibt immer unverändert. `LOG_INLINE_MEDIA=full` in `.env` gibt die Nutzlasten wieder vollständig aus. Der Regressionstest `log-inline-media` deckt das ab.
+
+## Konsole in der App
+
+Einstellungen → Erweitert → **Konsole öffnen** zeigt die letzten Serverzeilen in der App, für Installationen, deren Terminal nicht erreichbar ist (NAS, VPS, Docker, Termux).
+
+- `lib/log-buffer.ts` hält die letzten 1.500 Zeilen im Arbeitsspeicher, höchstens etwa 4 Millionen Zeichen. Jede Nachricht und jeder Feldblock wird bei 16.000 Zeichen gekürzt. Nichts wird auf die Festplatte geschrieben, und ein Neustart leert den Puffer.
+- `logger.ts` kopiert jede serialisierte Zeile über Pinos `hooks.streamWrite` hinein. Der Puffer enthält damit, was das Terminal oder die Log-Datei bekommen hat, mit demselben `LOG_LEVEL`. Zeilen, die Pino umgehen, etwa dotenv mit `injected env` oder die Rohausgabe eines Kindprozesses, fehlen darin.
+- `GET /api/admin/logs?afterId=` liefert die Zeilen nach `afterId` sowie `latestId`, `truncated` (vor diesem Lesen wurden Zeilen verworfen) und den `logLevel` des Servers. Der Endpunkt liegt hinter `requirePrivilegedAccess` und ist `no-store`. Seine Route läuft mit `logLevel: "silent"`, damit die eigenen Abfragen der Konsole nie darin auftauchen.
+- Die Regeln dieser Seite gelten auch hier: Alles, was du auf warn oder error protokollierst, liest ein entfernter Admin in der App. Lass Prompts und Anbieter-Bodys deshalb auf debug.
 
 ## Prüfungen
 
-Die Regressionen `logging-request-trail`, `logging-failure-lines` und `logging-startup-timeline` decken diese Seite ab:
+Die Regressionen `logging-request-trail`, `logging-failure-lines` und `logging-startup-timeline` decken diese Seite ab, und `server-console-logs` deckt die Konsole in der App ab:
 
 ```sh
 node scripts/run-regressions.mjs --filter logging-

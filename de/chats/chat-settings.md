@@ -25,7 +25,7 @@ Welche Abschnitte du siehst, hängt vom Chat-Modus ab. Den Abschnitt **Impersona
 - **Chat Name** (Chatname): Der Name in deiner Chatliste. Klick darauf, um ihn umzubenennen. Er wird nie an das Modell gesendet.
 - **Chat Branches** (Chat-Verzweigungen): Verzweigungen wechseln, umbenennen, exportieren und importieren. Siehe [Chat-Verzweigungen](branches.md).
 - **Connection** (Verbindung): Welches Modell in diesem Chat antwortet. Siehe unten.
-- **Prompt Preset**: Der gespeicherte Prompt-Aufbau für diesen Chat.
+- **Prompt Preset**: Der gespeicherte Prompt-Aufbau für diesen Chat. In einem Spiel enthält der Abschnitt außerdem Erzählstil, Gewalt, inhaltliche Grenzen und Altersfreigabe-Richtlinien. Siehe [Während eines Spiels ändern](../game/getting-started.md#change-them-during-a-game).
 - **Advanced Parameters** (erweiterte Parameter): Überschreibt für diesen Chat Generierungseinstellungen wie die Temperature. Siehe [Generierungsparameter](../prompts/generation-parameters.md).
 - **Persona**: Wen du spielst. Siehe [Die Persona für einen Chat auswählen](../characters/choosing-your-persona.md). (Conversation, Roleplay.)
 - **Characters** (Charaktere): Die Charaktere im Chat. (Conversation, Roleplay.)
@@ -78,8 +78,6 @@ Namen bestehen aus Buchstaben, Zahlen und Unterstrichen, beginnen mit einem Buch
 
 Bei vielen Variablen klick auf **Search and edit all in the State Editor** (alle im State Editor suchen und bearbeiten). Er listet alle Variablen auf, sodass du suchen, bearbeiten, viele auf einmal als JSON einfügen und die Änderungen vor dem Speichern prüfen kannst. Siehe [Der State Editor](../roleplay/hud-and-trackers.md#the-state-editor). Weitere Makros in doppelten geschweiften Klammern erklärt [Prompt-Makros](../prompts/macros.md).
 
-<a id="settings-profiles"></a>
-
 ## Einstellungsprofile
 
 Ein Einstellungsprofil ist ein gespeichertes Bündel von Chat-Einstellungen, das du auf andere Chats anwenden kannst. Die Profilleiste sitzt ganz oben im Panel und erscheint in Game nicht. Speichern, Anwenden, Importieren, Exportieren und das Festlegen eines Standards beschreibt [Einstellungsprofile](settings-profiles.md).
@@ -107,8 +105,6 @@ Diese Schaltflächen sitzen in der Titelleiste.
 
 Ist das Tracker Panel ausgeblendet, nutzen die Tracker am Computer das [Trackers-Fenster](../roleplay/hud-and-trackers.md#the-trackers-window). Ist neben deinen Nachrichten wenig Platz, erscheint es zunächst als kleine Schaltfläche **Trackers**. Mit dem Würfel blendest du das Tracker Panel wieder ein.
 
-<a id="popping-a-section-out-into-its-own-window"></a>
-
 ## Einen Abschnitt in einem eigenen Fenster öffnen
 
 Löse einen Abschnitt heraus, um ihm ein eigenes Fenster zu geben.
@@ -121,15 +117,11 @@ Löse einen Abschnitt heraus, um ihm ein eigenes Fenster zu geben.
 
 Am Telefon schließt das Herauslösen Chat Settings und fügt den Abschnitt zum Drei-Punkte-Menü **Chat tools** (Chat-Tools) hinzu. Tippe auf die Punkte und dann auf das runde Symbol des Abschnitts. Tippe auf **Put back in Chat Settings**, um ihn zurückzulegen.
 
-<a id="the-phones-chat-tools-menu"></a>
-
 ## Das Menü „Chat tools“ am Telefon
 
 Die verschiebbare Drei-Punkte-Schaltfläche enthält die Tools, die du aus Chat Settings herausgenommen hast. Tippe darauf, um runde Symbolschaltflächen auszuklappen, und dann auf ein Tool. Tippe erneut auf die Punkte, um sie wieder einzuklappen. Tracker-Schaltflächen, die Kartenschaltfläche in Game und Character Profiles bleiben separat.
 
 Zieh die Drei-Punkte-Schaltfläche, um das Menü zu verschieben. Öffne es und nutze das Schloss oben, um es an seinem Platz festzuhalten. Solange es entsperrt ist, ziehst du ein Tool nach oben oder unten, um die Reihenfolge zu ändern, oder du fokussierst es und nutzt die Pfeiltasten. Die Sperre verhindert sowohl Verschieben als auch Umordnen. Das Menü folgt deinem Chat-Widget-Stil.
-
-<a id="control-windows-and-their-buttons"></a>
 
 ## Steuerungsfenster und ihre Schaltflächen
 
@@ -144,8 +136,6 @@ Zieh eine Schaltfläche, um sie zu verschieben. Beim Ziehen richtet sie sich an 
 ## Jeder Chat merkt sich seine Fensteranordnung
 
 Jeder Chat merkt sich Fenstergrößen und -positionen, Anheftungen und Sperren, herausgelöste Abschnitte und Schaltflächenpositionen. Die Positionen am Telefon sowie Reihenfolge und Sperre des Menüs Chat tools werden getrennt von den Positionen am Computer gespeichert. Ein [Einstellungsprofil](settings-profiles.md) kann eine Anordnung für andere Chats speichern.
-
-<a id="choosing-a-layout-for-new-chats"></a>
 
 ## Eine Anordnung für neue Chats wählen
 

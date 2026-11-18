@@ -45,6 +45,10 @@ Es gibt 24, in vier Kategorien: **Milestone**, **Community**, **Creation** und *
 - **Collection** zählt alles dieser Art in deiner Bibliothek, auch Importiertes und Heruntergeladenes. Bei **Hoarder** zählt der mitgelieferte Charakter Professor Mari nie mit.
 - Bei den Community-Errungenschaften reicht der Besuch des Links. Auf der anderen Seite musst du dich nicht anmelden.
 
+## Entdecker-Errungenschaften
+
+Wenn du alle Aufgaben einer Tour unter **Zum Ausprobieren** erledigst, schaltest du die Errungenschaft dieser Tour in der Kategorie **Entdecker** frei. Jede Tour hat eine: **Frisch aus dem Ofen** für Grundlagen, danach **Ein ganzes Ensemble**, **Immer schön lächeln**, **Daueronline**, **Bühne frei!**, **Hüter des Wissens**, **Vom Plot beschützt**, **Auf die Würfel, fertig, los!**, **Prompt-Flüsterer**, **Schöner wohnen** und **Mit Pauken und Trompeten**. Im neuen Layout kommen **Tab-Sammler**, **Ordnung muss sein**, **Dem Sturm auf der Spur** und **Gut angezogen** dazu. Übersprungene Aufgaben zählen nicht; hake eine Aufgabe also ab, wenn du sie erledigt hast. Siehe [Erste Schritte](welcome.md#things-to-try).
+
 Auch die Tour **KI-Grundlagen** und jede Gruppe unter **Vertiefungen** haben eine eigene Errungenschaft: **Ohne Stützräder** für KI-Grundlagen, dann **Lesebestätigung** (Conversation), **Voll in der Rolle** (Roleplay), **Regelreiter** (Game), **Reglerdreher** (Alle Modi), **Kartenhai** (Charaktere und Karten), **Fußnotenfanatiker** (Lorebook-Tricks), **Makro-Magier** (Prompt- und Makro-Tricks), **Geheimnisträger** (Nachrichten-Tricks), **Puppenspieler** (Agenten und Verbindungen), **Mit Bild und Ton** (Stimme, Bilder und Musik) und **Unter der Haube** (Themes und Erweiterungen). Wenn du alle Vertiefungen in allen Gruppen abschließt, schaltest du **Völlig abgetaucht** frei.
 
 ## Errungenschaften von Agenten
@@ -52,8 +56,6 @@ Auch die Tour **KI-Grundlagen** und jede Gruppe unter **Vertiefungen** haben ein
 Installierte Agenten können eigene Errungenschaften hinzufügen. Sie erscheinen im selben Fenster nach den mitgelieferten, unter einer Überschrift wie **From Noodle** (von Noodle). Für sie gelten dieselben Regeln, und ein Agent kann eigene Abzeichenbilder zeigen.
 
 Entfernst du einen Agenten, verschwindet sein Abschnitt, und deine Freischaltungen bleiben erhalten. Installierst du ihn erneut, erscheinen sie wieder als freigeschaltet. Der Zähler oben schließt die Agenten ein, die du installiert hast.
-
-<a id="turn-achievements-on-or-off"></a>
 
 ## Errungenschaften ein- oder ausschalten
 

@@ -75,8 +75,6 @@ Jeder Chat behält seine eigene Kopie der Einstellungen eines Profils. Speichers
 
 Nutzt kein anderer Chat das Profil, funktioniert **Save** ohne Rückfrage. Räume im Mehrspielermodus werden auf diesem Weg nie aktualisiert.
 
-<a id="choosing-the-default-profile"></a>
-
 ## Das Standardprofil festlegen
 
 Der Stern neben dem Dropdown-Menü markiert das Profil, das neue Chats in diesem Modus automatisch bekommen. Pro Modus kann nur ein Profil der Standard sein. Die Beschriftungen lauten **Mark this profile as default for new chats in this mode**, **This profile is the default for new chats in this mode** und **Select a profile to mark it as default**. Du kannst auch im Builder **Make this the default** anhaken.
@@ -85,13 +83,11 @@ Der Stern neben dem Dropdown-Menü markiert das Profil, das neue Chats in diesem
 
 **Export settings profile (.json)** lädt eine Datei `.marinara-settings-profile.json` herunter, die du als Backup aufheben oder weitergeben kannst. **Import settings profile (.json)** legt aus einer passenden Datei ein neues Profil an und überschreibt nie ein vorhandenes. Auch ältere Exporte lassen sich weiterhin importieren. Schlägt ein Import fehl, erscheint **Import failed**.
 
-Profile speichern Einstellungen, keine Zugangsdaten von Anbietern. Ein exportiertes oder importiertes Profil lässt außerdem den Webhook des Discord-Mirrors, die DeepLX-Adresse, den DeepL-Key und die Intiface-Adresse weg. Profile, die du in dieser Installation speicherst, behalten sie. Exportierte Dateien enthalten weder Persona noch Lorebooks, da diese nur in dieser Installation vorhanden sind.
+Profile speichern Einstellungen, keine Zugangsdaten von Anbietern. Ein exportiertes oder importiertes Profil lässt außerdem den Webhook des Discord-Mirrors, die DeepLX-Adresse, den DeepL-Key und die Intiface-Adresse weg. Profile, die du in dieser Installation speicherst, behalten sie. Exportierte Dateien enthalten weder Persona noch Lorebooks noch die Auswahl der Preset-Variablen, da diese nur in dieser Installation vorhanden sind.
 
 ## Das Profil „Default“
 
 Conversation und Roleplay haben jeweils ein eingebautes Profil **Default**. Wendest du es an, kehren die vom Profil gesteuerten Einstellungen auf Marinaras Standardwerte für diesen Modus zurück. Es lässt sich weder umbenennen noch überschreiben oder löschen. Die deaktivierten Bedienelemente zeigen dazu **Cannot save into the Default profile**, **Cannot rename the Default profile** und **Cannot delete the Default profile**.
-
-<a id="favorite-window-layouts"></a>
 
 ## Bevorzugte Fensteranordnungen
 
@@ -119,7 +115,7 @@ Ein Profil kann auch **Startauswahlen** enthalten: eine Persona, zu aktivierende
 - **Save current chat settings into this profile** behält Persona, Lorebooks und Hintergrund des Profils bei. Ein Profil ohne Hintergrund übernimmt beim Speichern den Hintergrund des Chats.
 - Das Aktualisieren anderer Chats ändert nie deren Persona, Lorebooks oder Hintergrund.
 
-Chat-eigene Inhalte ersetzt ein Profil nicht: Charaktere, Sprites, Zusammenfassung, Tags und Szenen-Prompt. Es enthält auch keinen Chatverlauf und keinen laufenden Zustand wie Makrovariablen, die Charaktere, die du ausgeschaltet hast, oder einen Raum im Mehrspielermodus.
+Chat-eigene Inhalte ersetzt ein Profil nicht: Charaktere, Sprites, Zusammenfassung, Tags, Szenen-Prompt und **Autorennotizen**. Es enthält auch keinen Chatverlauf und keinen laufenden Zustand wie Makrovariablen, die Charaktere, die du ausgeschaltet hast, oder einen Raum im Mehrspielermodus. Ein in einer früheren Version gespeichertes Profil kann noch **Autorennotizen** enthalten, aber beim Anwenden bleiben die eigenen Notizen des Chats erhalten.
 
 ### Was Save and update kopiert
 
@@ -139,7 +135,7 @@ Alles andere behält jeder Chat so, wie er es hat:
 - Seine Verbindung, sein Prompt-Preset und sein eigener Prompt.
 - Seine Geschichte und seine Charaktere.
 - Seine Lorebooks und sein Hintergrund.
-- Seine Notizen und sein Fortschritt.
+- Seine **Autorennotizen** und sein Fortschritt.
 - Welche Roleplay-Befehle nur sein Erzähler verwenden darf.
 - Ob Noodle seine Nachrichten verwenden darf.
 

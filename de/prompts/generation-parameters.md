@@ -42,6 +42,8 @@ Jeder numerische Parameter hat ein Eingabefeld und einen Send-Schalter (siehe un
 - Ist der Send-Schalter an, fordert **Off** den Dienst auf, das Nachdenken abzuschalten, sofern das Modell das bekanntermaßen unterstützt. Manche Modelle können das Nachdenken nicht abschalten und liefern womöglich trotzdem Reasoning zurück. Soll gar nicht nachgedacht werden, nimm ein Modell ohne Denkmodus.
 - Ist der Send-Schalter aus, geht keine Reasoning-Vorgabe raus, und der Dienst nutzt seinen eigenen Standard.
 
+MiniMax M3.1 Flash auf NanoGPT denkt immer nach. Es bietet die Stufen **Niedrig** bis **Max.**. NanoGPT nutzt **Max.**, wenn es keine Vorgabe zum Denkaufwand erhält, und Marinara sendet für ein zuvor gespeichertes **Aus** die Stufe **Niedrig**.
+
 **Verbosity** legt fest, wie lang und detailliert Antworten ausfallen sollen: **None**, **Low**, **Medium** oder **High**. Nur manche Modelle werten die Einstellung aus.
 
 ## Tuning-Tipps
@@ -56,8 +58,6 @@ Jeder numerische Parameter hat ein Eingabefeld und einen Send-Schalter (siehe un
 | Ein Charakter wiederholt dieselben Formulierungen | **Frequency** oder **Presence** leicht anheben, auf einen Wert zwischen 0,3 und 0,6. |
 
 Welche Parameter für eine Nachricht gesendet wurden, zeigt **Peek Prompt**. Dort siehst du den zusammengebauten Prompt sowie Modell, Temperature, Max Tokens, Reasoning Effort und mehr.
-
-<a id="the-send-switch"></a>
 
 ## Der Send-Schalter
 
@@ -152,11 +152,11 @@ Marinara löst jeden Parameter über diese Liste auf. Spätere Punkte überschre
 
 Die Zeile **Effective** neben einem Parameter zeigt den Wert, der sich durchsetzt, und aus welcher Schicht er stammt, zum Beispiel **Effective: 16384 · this chat** oder **Effective: 4096 · output token cap**, wenn ein Limit des Kontos greift. Ein ausgeschalteter Send-Schalter erscheint als **not sent**. Dienste können trotzdem Parameter verlangen oder nicht unterstützte Werte anpassen. Custom Parameters und die Anpassung an den Kontext können die endgültige Anfrage verändern. Das Zurücksetzen der Chat-Parameter entfernt nur die Überschreibung dieses Chats (Punkt 3). Der Wert kommt dann aus den **Chat defaults** des Kontos, falls gesetzt, sonst aus dem Preset. Modusregeln und Ausgabelimits (Punkte 4 und 5) gelten danach weiterhin.
 
-<a id="parameters-for-agents"></a>
-
 ## Parameter für Agenten
 
-Agentenaufrufe nutzen die **Chat defaults**, die in dem Konto gespeichert sind, über das sie laufen: im eigenen Konto des Agenten oder im Konto des Chats, wenn der Agent keines hat. Send-Schalter und Modellgrenzen gelten wie bei einer Chat-Antwort. Presets und die **Advanced Parameters** eines Chats ändern Agentenaufrufe nicht, abgesehen von der Temperaturregel unten.
+Agentenaufrufe nutzen die **Chat defaults**, die in dem Konto gespeichert sind, über das sie laufen: im eigenen Konto des Agenten oder im Konto des Chats, wenn der Agent keines hat. Send-Schalter und Modellgrenzen gelten wie bei einer Chat-Antwort. Die folgenden Regeln erklären, wann Agenten den Bereich **Erweiterte Parameter** eines Chats nutzen.
+
+In Roleplay gelten der **Reasoning-Aufwand** eines Chats und sein Send-Schalter auch für das **Prompt-Modell** von Illustrator. Automatische Illustrationen, Erzählerbefehle und manuelle Illustrationen verwenden diese Chat-Einstellung, wenn du sie festlegst. Das Ausweichmodell nutzt seinen eigenen gespeicherten Denkaufwand, falls es einen hat.
 
 - **An Agenten gesendet:** Temperature, Top P, Top K, Frequency, Presence, Reasoning Effort, Verbosity, Service Tier, Custom Parameters, eigene Header und die zusätzlichen Parameter, die du unter **Settings** (Einstellungen), dann **Advanced** (Erweitert), dann **Parameters** hinzufügst, etwa Top A oder einen Seed. Ein Parameter mit ausgeschaltetem Send-Schalter wird nicht gesendet.
 - **Nicht an Agenten gesendet:** Max Output Tokens, Stoppsequenzen, Prefills, Thinking Tags und andere Einstellungen für das Promptformat. Jeder Agent behält seinen eigenen Wert für **Max Output Tokens**.

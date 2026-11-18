@@ -9,8 +9,6 @@ Zwei Arten von Spielen nutzen keine MRPG-Klassen:
 
 Wie ein Kampf mit MRPG-Klassen abläuft, steht unter [Kämpfe in einem MRPG-Spiel](combat.md#battles-in-an-mrpg-game).
 
-<a id="how-it-works"></a>
-
 ## So funktioniert es
 
 - Jeder Charakter trainiert in zwei von acht **Bäumen**: einem von dir gewählten **Hauptbaum** und einem **Schwesterbaum**, den sein Temperament freischaltet.
@@ -18,8 +16,6 @@ Wie ein Kampf mit MRPG-Klassen abläuft, steht unter [Kämpfe in einem MRPG-Spie
 - Gewonnene Kämpfe bringen Erfahrung. Die Werte eines Charakters stammen aus seiner **aktiven Klasse** und steigen, wenn diese Klasse Stufen gewinnt.
 - Auf Klassenstufe 10 kann eine Klasse zu einer fortgeschrittenen Klasse befördert werden, auf Klassenstufe 20 zu einer Meisterklasse. Bei Stufe 30 ist Schluss.
 - Außerhalb eines Kampfes kann ein Charakter in jede freigeschaltete Klasse wechseln und bis zu vier Fertigkeiten aus anderen Klassen mitführen, in denen er trainiert hat.
-
-<a id="the-eight-trees"></a>
 
 ## Die acht Bäume
 
@@ -35,8 +31,6 @@ Wie ein Kampf mit MRPG-Klassen abläuft, steht unter [Kämpfe in einem MRPG-Spie
 | **Herald** | Hinten | Schlachtenführer, die Befehle geben und mit Liedern die Party stärken. | Coordinated, Disciplined |
 
 Eine Party mit einer Mischung verschiedener Bäume ist am stärksten. Nahkampftreffer gegen die hintere Reihe verursachen halben Schaden. Deshalb sind die Bäume der hinteren Reihe darauf angewiesen, dass die vordere die Stellung hält (siehe [Reihen](combat.md#rows)).
-
-<a id="classes-in-each-tree"></a>
 
 ### Klassen in jedem Baum
 
@@ -55,8 +49,6 @@ Jeder Baum hat sieben Klassen. Die Basisklasse wird auf Klassenstufe 10 zu einer
 
 Der Tab **Classes** des Charakterbogens beschreibt jede Klasse und führt ihre Fertigkeiten zusammen mit der Klassenstufe auf, auf der sie erlernt werden.
 
-<a id="choose-a-characters-trees"></a>
-
 ## Die Bäume eines Charakters wählen
 
 **Hauptbaum.** Wähle ihn vor dem Spiel im Abschnitt **Game Mode** des Tabs **Stats** einer Karte für einen Bibliothekscharakter oder eine Persona aus (siehe [MRPG-Auswahl auf einer Karte](../characters/colors-and-stats.md#mrpg-picks-on-a-card)). Bleibt er auf **Auto**, wird er aus der Beschreibung des Charakters abgeleitet, im Spiel zusätzlich aus seiner Klasse und seinen Fähigkeiten. Nennt die Karte keinen Baum, beginnt der Charakter als Blade. Solange ein Charakter noch keine Erfahrung erhalten hat, kannst du ihn auch im Spiel ändern: im Tab **Classes** seines Bogens unter **Main tree** (Hauptbaum).
@@ -66,8 +58,6 @@ Der Tab **Classes** des Charakterbogens beschreibt jede Klasse und führt ihre F
 **Schwesterbaum.** Wenn das Spiel die Spielkarte eines Charakters anlegt, liest der Game Master sein Temperament aus seiner Description und Persönlichkeit: wie er an einen Kampf herangeht. Dieses Temperament schaltet den Schwesterbaum aus der Tabelle oben frei. Schreib die Description mit Blick darauf, wenn du einen bestimmten Schwesterbaum möchtest. Der Bogen zeigt das Temperament neben dem Schwesterbaum, zum Beispiel „from Cautious“. Die Geschichte kann das Temperament eines Charakters später verändern, sein Schwesterbaum bleibt jedoch der vom Spielbeginn.
 
 Ein Charakter, dessen Temperament den eigenen Hauptbaum freischaltet, etwa ein Reckless Blade, ist **Pure**: Er trainiert nur in einem Baum, dessen Pure-Linie ihm offensteht.
-
-<a id="what-the-stats-mean"></a>
 
 ## Was die Werte bedeuten
 
@@ -89,8 +79,6 @@ Zwei Ressourcen bezahlen Fertigkeiten:
 
 Dieselben Werte werden für Fertigkeitsproben außerhalb eines Kampfes verwendet. Siehe [Fertigkeitsproben](#skill-checks).
 
-<a id="levels-and-experience"></a>
-
 ## Stufen und Erfahrung
 
 **Erfahrung.** Ein gewonnener Kampf bringt Erfahrung für jeden besiegten Gegner, auch für Gegner, die sich ergeben haben oder geflohen sind. Die Hälfte wird gleichmäßig unter allen verteilt, die gekämpft haben, die andere Hälfte nach ihrem Beitrag: Schaden, Heilung und Unterstützung. Gegner unter der Stufe eines Charakters bringen weniger, Gegner darüber mehr. Ein Charakter unter der durchschnittlichen Stufe der Party erhält zusätzlich die Hälfte. Ein verlorener Kampf oder eine Flucht bringt nichts.
@@ -105,15 +93,11 @@ Das bedeutet, dass eine neu aufgenommene Klasse mit den Werten auf Klassenstufe 
 
 Wachstumsraten sind verborgen. Ist **Debug** eingeschaltet, zeigt der Tab **Status** die genaue Chance jedes Werts zu steigen.
 
-<a id="switch-classes-and-carry-skills"></a>
-
 ## Klassen wechseln und Fertigkeiten mitführen
 
 Klassen wechselst du außerhalb eines Kampfes im Tab **Classes**. Wähle eine Klasse, um ihre Fertigkeiten und alles zu sehen, was bei einem Wechsel zurückbleiben würde. Wähle dann **Take up** (aufnehmen) für eine noch nicht trainierte Klasse oder **Switch to** (wechseln zu) für eine früher trainierte Klasse auf der Klassenstufe, die sie erreicht hatte.
 
 Ein Charakter nutzt nur die Fertigkeiten seiner aktiven Klasse sowie bis zu vier **mitgeführte** Fertigkeiten aus anderen Klassen, in denen er trainiert hat. Du wählst sie im Tab **Skills** unter **Carry from other classes** (aus anderen Klassen mitführen). Eine mitgeführte Fertigkeit nutzt die eigenen Werte des Charakters. Manche Fertigkeiten gehören zu einem ganzen Baum, etwa Cover eines Guards, und jede Klasse dieses Baums behält sie ohne Platz. Würde bei einem Wechsel eine verwendete Fertigkeit wegfallen, warnt der Bogen zuerst, damit du sie mitführen kannst.
-
-<a id="the-character-sheet"></a>
 
 ## Der Charakterbogen
 
@@ -130,13 +114,9 @@ Die Waffe entscheidet, welche Werte ein Angriff nutzt: Ein Stab, Zauberstab oder
 
 **Permadeath.** Ist **Permadeath** (dauerhafter Tod) eingeschaltet – eine bei der Einrichtung im Schritt **World** (Welt) des Assistenten standardmäßig ausgeschaltete Option –, ist ein Partymitglied für immer verloren, wenn es in einem Kampf fällt und nicht vor dessen Ende gerettet wird. Ist es ausgeschaltet, stehen Gefallene nach dem Kampf wieder auf.
 
-<a id="skill-checks"></a>
-
 ## Fertigkeitsproben
 
 Proben außerhalb eines Kampfes nutzen die MRPG-Werte des Charakters, die ihm seine aktive Klasse gibt. Jede Fertigkeit stützt sich auf einen Wert, etwa Stealth auf Speed oder Persuasion auf Luck. Unter [Würfel und Fertigkeitsproben](dice-and-skill-checks.md#how-the-result-is-decided) stehen die vollständige Liste und der Bonus, den jeder Wert bringt.
-
-<a id="new-party-members-and-shared-games"></a>
 
 ## Neue Partymitglieder und geteilte Spiele
 
@@ -149,8 +129,6 @@ Proben außerhalb eines Kampfes nutzen die MRPG-Werte des Charakters, die ihm se
 - **Ein zurückkehrender Gast.** Der Charakter eines Gasts bleibt mit seiner Stufe, Ausrüstung und seinen gezähmten Tieren im Spiel, wenn der Gast geht. Solange der Spieler nicht da ist, setzt der Charakter in Kämpfen aus, sammelt keine Erfahrung und wird aus Szenen herausgehalten. Kehrt der Gast zurück, spielt er denselben Charakter auf der Stufe weiter, auf der er ihn verlassen hat.
 
 Die Fertigkeitsproben jedes Spielers lesen die Werte seines eigenen Charakters.
-
-<a id="move-a-legacy-game-to-mrpg"></a>
 
 ## Ein Legacy-Spiel auf MRPG umstellen
 
@@ -171,8 +149,6 @@ Wenn du mit **Upgrade the party** (Upgrade für die Party durchführen) bestäti
 > **Warnung:** Das Upgrade ist unumkehrbar. Ein auf MRPG-Klassen umgestelltes Spiel kann nicht zu Legacy-Bögen zurückkehren.
 
 Während eines Kampfes wird das Upgrade nicht angeboten. Beende zuerst den Kampf. Ein Spiel mit einem Regelsatz kann nicht umgestellt werden; es behält die Bögen seines Regelsatzes.
-
-<a id="related-guides"></a>
 
 ## Verwandte Anleitungen
 

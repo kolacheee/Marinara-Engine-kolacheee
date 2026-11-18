@@ -69,8 +69,6 @@ Manche Pool-Regelsätze führen die Initiative als eine Zahl, die den ganzen Kam
 
 Ein Regelsatz, der narrative Symbolwürfel verwendet, etwa ein System im Stil von Genesys, kämpft auch damit. Bei einem Angriff würfelst du deine Würfel gegen die Schwierigkeitswürfel des Ziels, die Symbole heben sich wie bei einer Probe gegenseitig auf, und was übrig bleibt, entscheidet, ob der Angriff trifft. Der Regelsatz legt fest, was übrige Symbole kaufen, deshalb wird der GM nie gefragt.
 
-<a id="contests"></a>
-
 ## Vergleichende Proben
 
 Ein Regelsatz kann jedem im Kampf eine vergleichende Probe erlauben: einen Wurf gegen einen Gegner. Du kannst jemanden packen, ihn umstoßen oder zurückstoßen oder dich aus einem Griff losreißen. Beide Seiten würfeln und addieren ihren eigenen Wert, die höhere Summe gewinnt, und das Menü zeigt deine Gewinnchance, bevor du wählst.
@@ -91,8 +89,6 @@ Manche Fähigkeiten antworten auf den Zug eines anderen Kämpfers, statt in dein
 und du für diesen Moment eine Antwort hast. Nach einem Treffer nennt das Protokoll, was der Angriff gewürfelt hat und wogegen, sodass du sehen kannst, ob eine Antwort wie Shield ihn zu einem Fehlschlag machen würde. Nimmst du sie, wird derselbe Wurf erneut geprüft, und das Protokoll sagt, ob er noch trifft.
 
 Auch Gegner können antworten, mit einer eigenen Parade. Ein Konter kann die Fähigkeit eines Gegners stoppen, bevor sie wirkt, egal auf wen sie gerichtet war, solange der Gegner in Reichweite des Konters ist. Ein Regelsatz kann festlegen, dass ein Konter nur auf bestimmte Arten von Fähigkeiten antwortet, etwa auf Zauber. Was die gestoppte Fähigkeit gekostet hat, bleibt trotzdem ausgegeben, und auf einen Konter kann nichts antworten.
-
-<a id="on-a-battlefield"></a>
 
 ## Auf einem Schlachtfeld
 

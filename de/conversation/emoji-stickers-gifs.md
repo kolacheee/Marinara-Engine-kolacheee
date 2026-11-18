@@ -94,15 +94,45 @@ Die Tag-Schaltfläche zeigt nun den Namen. Es gelten dieselben Größenlimits, u
 
 Marinara teilt dem antwortenden Charakter mit, welche eigenen Emojis und Sticker er verwenden darf. Um zu ändern, wie es sie auswählt, klicke oben im Tab **Custom emojis** oder **Stickers** auf das Zahnrad **Selection preferences**. Beide öffnen dieselbe Einstellung, die pro Chat gespeichert wird.
 
-- **Semantic** (Standard): bietet die an, die am besten zum aktuellen Gespräch passen. Es nutzt ein kleines Modell auf deinem eigenen Rechner. Ist es nicht verfügbar, wählt es zufällig aus.
+- **Semantic** (Standard): bietet die an, die am besten zum aktuellen Gespräch passen. Es nutzt ein kleines Modell auf deinem eigenen Rechner. Ist es nicht verfügbar, wählt es zufällig aus. Antwortet ein einzelner Charakter, werden seine eigenen Emojis und Sticker gemeinsam mit den geteilten bewertet; bei einem knappen Ergebnis haben seine eigenen Vorrang.
 - **Random**: bietet bei jeder Antwort eine zufällige Auswahl an.
 - **Tool-call**: Ein Modell wählt bei jeder Antwort die passenden aus. Wähle ein Modell unter **Select a model...**. Ist keines gesetzt oder schlägt es fehl, nutzt es Semantic. Es wird übersprungen, wenn in einem Gruppenzug mehrere Charaktere antworten.
 
 **Max offered (each)** legt fest, wie viele Emoji-Namen und wie viele Sticker-Namen pro Zug angeboten werden. Standard ist 20, von 1 bis 100.
 
+Schreibt ein Charakter den Namen eines Stickers wie ein Emoji, etwa `:hug:` statt `sticker:hug:`, zeigt die Antwort den Sticker. Das passiert nur, wenn kein eigenes Emoji diesen Namen hat.
+
+### Emojis und Sticker beschreiben
+
+Eine Beschreibung sagt, was ein Emoji oder Sticker zeigt und welches Gefühl er vermittelt, etwa „Katze schaut über ein Kissen; schüchtern, verlegen“. Das hilft, wenn der Name nicht verrät, was das Bild bedeutet.
+
+- Um eine zu schreiben, klick im Tab **Eigene Emojis** oder **Sticker** auf **Bearbeiten** und dann auf die kleine Beschreibungsschaltfläche in der Ecke einer Kachel. Bei einem markierten Galeriebild klickst du auf seine Tag-Schaltfläche und wählst **Beschreibung hinzufügen**.
+- Soll die KI die Beschreibungen schreiben, klick auf **Bearbeiten** und dann auf **Mit KI beschreiben**. Das Modell für **Bilder lesen** betrachtet jedes Bild und schreibt eine kurze Beschreibung. Haben manche bereits eine, wähl **Nur die … ohne Beschreibung beschreiben** (nur die ohne Beschreibung) oder **Alle … erneut beschreiben**.
+
+Bevor du anfängst: KI-Beschreibungen brauchen ein Modell, das Bilder lesen kann. Marinara nutzt das Modell für **Bilder lesen**, sofern du unter **Hinter den Kulissen** in den Verbindungseinstellungen eines festgelegt hast, andernfalls dein Agentenmodell.
+
+Zwei Einstellungen unter **Auswahleinstellungen** nutzen die Beschreibungen:
+
+- **Beschreibungen verwenden** (standardmäßig an): Berücksichtigt in **Semantisch** und **Tool-Aufruf** bei der Auswahl der angebotenen Bilder neben dem Namen auch die Beschreibung. Dem Prompt wird nichts hinzugefügt.
+- **Beschreibungen dem Modell zeigen** (standardmäßig aus): Listet neben dem Namen jedes angebotenen Bilds auch dessen Beschreibung auf, damit das Modell seine Bedeutung kennt. Bei den standardmäßig 20 angebotenen Bildern kommen ungefähr 1.000 bis 1.800 Eingabe-Tokens pro Antwort hinzu.
+
+Beschreibungen, die nur zur Auswahl der angebotenen Bilder dienen, erklären dem Modell nicht, was ein Name bedeutet. Sagt ein Name das Gegenteil des vermittelten Gefühls, etwa ein sarkastisches `:fine:`, schalte **Beschreibungen dem Modell zeigen** oder **Dem Modell zeigen** ein.
+
+### Dem Modell zeigen
+
+Normalerweise sieht das Modell nur die Namen deiner eigenen Emojis und Sticker. Kann das Chat-Modell Bilder lesen, sendet **Dem Modell zeigen** im selben Panel auch Bilder, damit es weiß, wie jedes aussieht. Das hilft vor allem bei Namen, die das Bild nicht beschreiben.
+
+- **Aus** (Standard): nur Namen.
+- **Letzte Nachricht**: zeigt die eigenen Emojis und Sticker aus der neuesten Nachricht.
+- **Zuletzt**: zeigt die aus den letzten Nachrichten. **Zu prüfende Nachrichten** legt die Anzahl fest, von 2 bis 20. Standard ist 6.
+
+**Angebotene auf der Übersicht** fügt den Bildern diese Anzahl angebotener Emojis und diese Anzahl angebotener Sticker hinzu, von 0 bis 30. Standard ist 6. Eine Übersicht fasst bis zu 30 Emojis und 12 Sticker. Die aus dem Chat kommen zuerst, die angebotenen füllen den übrigen Platz.
+
+Das Modell bekommt bei jeder Antwort ein Bild mit nummerierten Emojis und eines mit nummerierten Stickern sowie die genauen Namen als Text. Das kostet pro Antwort zusätzliche Eingabe-Tokens (Tokens sind die kleinen Text- und Bildstücke, die ein Dienst abrechnet), bei den Standardwerten ungefähr 1.000. Es hat keine Wirkung, wenn das Chat-Modell keine Bilder lesen kann oder **Bildbeschreibungen** eingeschaltet ist. Lehnt das Modell Bilder ab, sendet Marinara nur die Namen.
+
 ## Reaktionen nutzen nur deine Haupt-Emojis
 
-Du kannst auf eine Nachricht mit einem eigenen Emoji reagieren, aber nur aus den Emojis, die du im Tab **Custom emojis** hochgeladen hast. Galerie-markierte Emojis, Sticker und GIFs sind als Reaktionen nicht verfügbar. Siehe [Reagieren und benachrichtigt werden](getting-started.md#react-and-get-notified).
+Du kannst auf eine Nachricht mit einem eigenen Emoji reagieren, aber nur aus den Emojis, die du im Tab **Custom emojis** hochgeladen hast. Galerie-markierte Emojis, Sticker und GIFs sind als Reaktionen nicht verfügbar. Reagiert ein Charakter mit dem Namen eines Stickers, zeigt die Reaktion diesen Sticker. Siehe [Reagieren und benachrichtigt werden](getting-started.md#react-and-get-notified).
 
 ## Verwandte Anleitungen
 

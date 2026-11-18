@@ -146,7 +146,7 @@ Siehe [Anbieter für Bildgenerierung und Einrichtung](../media/image-providers.m
 
 ## Decision
 
-Im Tab **Entscheidung** stehen die Kacheln **TypeSafe** (Standardadresse `https://api.typesafe.ai`), **Own decision server** (eigener Decision-Server) und **Built-in model (decisions)**. Chat-Dienste, die das Chatformat von OpenAI nutzen, können ebenfalls Decisions beantworten, aber nur mit einem Modell, das Log-Wahrscheinlichkeiten liefert (Werte für jede mögliche Antwort). Ein Decision-Modell beantwortet Ja/Nein-Fragen zu deinem Chat. Siehe [Decision-Modelle](decision-models.md).
+Im Tab **Entscheidung** stehen die Kacheln **TypeSafe** (Standardadresse `https://api.typesafe.ai`), **Own decision server** (eigener Decision-Server) und **Built-in model (decisions)**. Der Tab listet außerdem **NanoGPT**, **OpenRouter** und **Google Gemini** auf, die eigene Decision-Modelle anbieten (siehe [Über NanoGPT](decision-models.md#through-nanogpt) und [Über OpenRouter oder Google Gemini](decision-models.md#through-openrouter-or-google-gemini)). Andere Chat-Dienste, die das Chatformat von OpenAI nutzen, können ebenfalls Decisions beantworten, aber nur mit einem Modell, das Log-Wahrscheinlichkeiten liefert (Werte für jede mögliche Antwort). Ein Decision-Modell beantwortet Ja/Nein-Fragen zu deinem Chat. Siehe [Decision-Modelle](decision-models.md).
 
 ## Audio
 
@@ -162,8 +162,6 @@ Unter **Voice** spricht ein Audiodienst Charakterstimmen und Erzähltext. Wähle
 Jede Quelle trägt eine Standardadresse und ein Standardmodell ein. **Default voice** (Standardstimme) ist die Stimme, die gilt, solange nichts Spezifischeres festgelegt ist, etwa eine eigene Stimme pro Charakter. **Request timeout (seconds)** legt fest, wie lange Marinara auf eine gesprochene Zeile wartet. Erhöhe den Wert bei einem langsamen Sprachserver.
 
 Um das Sprachkonto festzulegen, das Marinara standardmäßig nutzt, klick im Bereich **Defaults** (Standardwerte) auf **Voice (Text to Speech)**. Um damit Nachrichten vorlesen zu lassen, wähle es in der Karte **Text to Speech** als **Source** (Quelle). Siehe [Text to Speech (TTS) einrichten](../media/tts-setup.md) und [Eine Audioverbindung verwenden](../media/tts-setup.md#use-a-voice-model-from-an-account).
-
-<a id="music--sound-effects"></a>
 
 ## Musik und Soundeffekte
 

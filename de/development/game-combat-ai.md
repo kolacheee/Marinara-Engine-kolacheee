@@ -69,8 +69,6 @@ Cautious und Cowardly sollen unterschiedliche Ergebnisse liefern: Ein gesunder C
 
 Vermeide Synonyme mit identischer Bewertung. Cruel ist überwiegend Opportunistic, solange die Regeln kein eigenes Ziel unterstützen. Strategic sollte tatsächlicher begrenzter Planung vorbehalten bleiben, statt allgemein bessere Leistung zu bedeuten. Mut und Intelligenz müssen keine Gegenpole derselben Skala sein.
 
-<a id="assigning-profiles-role-experience-personality-then-seeded-variety"></a>
-
 ## Profilzuweisung: Rolle, Erfahrung, Persönlichkeit, dann Seed-bestimmte Vielfalt
 
 ### Vorrang
@@ -147,8 +145,6 @@ Speichere angenommene Hinweise/Herkunft zur Erklärung der Zuweisung, keine Denk
 - Das Kampfprotokoll nennt vor dem Wurf, was eine Moralprüfung ausgelöst hat, einen Temperamentwechsel und dessen Auslöser, wen ein Gang mitgeschleift hat, eine territoriale Kreatur, die ihr Gebiet hält, und die Aufgabe einer Gruppe. Eine Kreatur, die sich ergeben hat, bleibt dort auf dem Brett, wo sie aufgegeben hat.
 - In Regelsatz-Kämpfen ist der Schadenswert eines Schlags sein erwarteter Schaden im Verhältnis zur mittleren Gesundheit der Zielseite, unabhängig davon, wen er trifft, sodass die höhere Gesundheit eines Ritters einen Multiattack gegen ihn nicht weniger wert macht als denselben Schaden gegen den Zauberer. Ein Schlag, der sein Ziel zu Boden bringen würde, wird nach der eigenen Gesundheit des Ziels gewichtet, wobei es nie als gebrechlicher als drei Viertel dieses Mittelwerts gilt.
 
-<a id="mindless-an-exact-pursuit-contract"></a>
-
 ## Mindless: genauer Verfolgungsvertrag
 
 Dies ist eine gewünschte Projektregel für Beast/Monstrosity, keine Behauptung über offizielle Tabletop-Regeln oder tatsächliches Tierverhalten hinter diesen Bezeichnungen.
@@ -196,8 +192,6 @@ Nutze normalisierte Faktoren für erwarteten Schaden, Abschlusswahrscheinlichkei
 
 Dies ist ein kleiner nutzwertbasierter Ansatz: Vergleiche zulässige Aktionen mit konsistenten Skalen und variiere Prioritäten nach Persönlichkeit. Den allgemeinen Ansatz und Entscheidungsträgheit beschreibt David „Rez“ Graham in [Einführung in die Nutzwerttheorie](https://www.gameaipro.com/GameAIPro/GameAIPro_Chapter09_An_Introduction_to_Utility_Theory.pdf). Konkrete Profile, Formel, Standardwerte und Anbindungsplan hier sind Marinara-spezifische Designempfehlungen.
 
-<a id="practical-guardrails"></a>
-
 ### Praktische Leitplanken
 
 - Berechne Vorschauen aus der hypothetischen Zielposition einschließlich ihres Geländes, ohne Live-Zustand oder RNG zu verändern. Die Konterwahrscheinlichkeit muss tatsächlichen Treffer-/Überlebens-/Konterregeln entsprechen; bezeichne einen 50-%-Schuss nicht als sicheren Kill.
@@ -242,8 +236,6 @@ Vorgeschlagene Anfangsabstimmung: Normalisiere den Strategienutzen auf eine fest
 **Gefallene loslassen und Gefangene.** Ein Betroffener lässt kostenlos (`rulesetLetGoOfHeld`) von ihm gehaltene Gegner los, die am Boden sind, solange noch ein anderer Gegner aufrecht steht, außer wenn er grausam ist und das Spiel Schläge auf Gefallene erlaubt. Jemanden zu stoßen oder zu packen, den er bereits hält, ist nichts wert, ebenso ein Stoß ohne einen Ort, an den er das Ziel befördern kann, sodass ein Krokodil den Gegner in seinem Maul beißt. Der Fokus einer hungrigen Kreatur auf ihre gehaltene Beute zählt nur bei Schlägen. Ein Gefangener behält sein Feld: Es darf durchquert werden, aber man darf nicht darauf stehen bleiben, wie beim Feld eines Kampfteilnehmers am Boden; sein Token hat einen weißen Ring und eine größere Flagge.
 
 **Multiattack-Schüsse und offenes Gelände.** Der Vergleich für Schüsse aus der Ferne zählt jeden Schlag eines Multiattack so oft, wie er ausgeführt wird, und stellt den besten nutzbaren Nahkampfangriff dem besten nutzbaren Fernkampfangriff gegenüber, sodass die zwei Longbow-Schüsse eines Spähers seine zwei Shortswords überwiegen. Eine Kreatur, die größer als eine Zelle ist, wählt bei gleicher Entfernung offenes Gelände statt eines Durchgangs, durch den sie sich zwängen müsste; Schläge aus einem solchen Durchgang sind das 0.6-Fache derselben Schläge aus offenem Gelände wert (`RULESET_SQUEEZED_BLOWS`), und sobald sie eingeengt ist, sind Schläge aus offenem Gelände entsprechend mehr wert, sodass sie zum Zuschlagen heraustritt.
-
-<a id="boss-turns-controlled-by-the-gm"></a>
 
 ## Vom GM gesteuerte Boss-Züge
 
@@ -347,8 +339,6 @@ Beispielbegegnung auf derselben Karte:
 
 Ein anderer Seed kann Cowardly Bruiser und Opportunistic Marksman erzeugen und damit das Gefecht verändern. Neuladen darf das nicht. Ein späteres Auftreten desselben benannten Bosses soll etablierte Gewohnheiten bewahren, solange Geschichte oder ausdrückliche Bearbeitung sie nicht ändern.
 
-<a id="current-ordinary-ai-implementation-boundary"></a>
-
 ## Aktueller Umfang der gewöhnlichen KI-Implementierung
 
 Implementiertes Strategievokabular: Mindless, Reckless, Cautious, Opportunistic, Protective, Supportive, Disciplined, Cowardly, **Patient, Methodical und Coordinated**. Weitere Adjektive unten sind Ideen, keine verborgenen Laufzeiteinstellungen.
@@ -400,8 +390,6 @@ Auch die drei gewünschten Ergänzungen unterscheiden sich je Klasse:
 
 Diese Beschreibungen sind Abstimmungsziele. Die erste Implementierung nutzt das allgemeine unterstützte Verteidigungsverstärkungs-/-schwächungsmodell; reichere Klassenkombinationen brauchen entsprechende Fähigkeiten und Regressionsszenarien.
 
-<a id="summoning-design-extension"></a>
-
 ## Designerweiterung Summoning
 
 Beginne ohne Raster. Eine Beschwörung ist eine tatsächliche kämpfende Einheit mit stabiler Begegnungs-ID, Besitzerreferenz, Seite, Profil, Steuerung, Dauer, Ressourcenkosten und ausdrücklichem Aktivierungsbudget. Die Klasse verändert zulässige Ausstattung, das Adjektiv Prioritäten wie in Classic.
@@ -412,11 +400,7 @@ Der Regelsatz bestimmt, ob Befehle die Aktion des Besitzers verbrauchen, ob eine
 
 Besitzer-KO, Bezauberungs-/Seitenwechsel, Entlassung, Ablauf der Dauer, Gruppenniederlage und Begegnungsende brauchen jeweils ausdrückliche Aufräumregeln. Speichere Besitz und Restdauer über Neuladen/Import hinweg. Eine besiegte Beschwörung ist weder Inventargegenstand noch dauerhaftes Gruppenmitglied. Zauber-/MP-Kosten werden einmal für angenommene Erstellung abgebucht. Beschwörungsaktionen dürfen keine legendären Fenster außerhalb der Berechtigungsregeln des festgeschriebenen Boss-Modifikators erzeugen.
 
-<a id="gm-bosses-legendary-actions-and-reactions"></a>
-
 ## GM-Bosse, legendäre Aktionen und Reaktionen
-
-<a id="implemented-generic-engine-adapter"></a>
 
 ### Implementierter allgemeiner Engine-Adapter
 
@@ -504,8 +488,6 @@ Minimaler Speichervertrag: Begegnungs-ID, Revision, Aktivierungs-ID/-zeiger, bes
 UI: Zeige verbleibende legendäre Punkte, Reaktionsverfügbarkeit und angebotene Fähigkeitskosten; unterscheide Vorhersage und ausgelöste Reaktion. Zeige Unterbrechungsgrund und ob der ursprüngliche Zauber aufgelöst wird, scheitert oder neue Auswahl braucht. Mache Denken/Warten, Wiederholung/Rückfall und Abbruch barrierefrei zugänglich. Kündige aufgeladene Angriffe an, wo nötig. Behaupte niemals, der GM habe einen lokalen Rückfall gewählt. Halte interne Bewertungen/Prompts aus dem Spieleraktionsmenü heraus.
 
 Erforderliche Nachweise: richtige Gruppenzauber/-ressourcen/-gegenstände im GM-Kontext; Vorschau bei erschöpften Ressourcen; plausible, aber falsche Fireball-Vorhersage; keine Entwurfs-/Befehlslecks; keine Ausbeutung bloßer Klicks/Neuauswahl; Spieler ändert zulässige Aktion nach Vorhersage; nativer 5e-Zeitpunkt gegenüber aktivierter Hausregel; Counterspell erst nach zulässigem Zauberauslöser; schwacher Zauber passiert, tödlicher wird angefochten; keine MP/Zauberplätze/Reaktion übrig; Kosten einmal bei gescheitertem Konter; regelspezifische Erstattung des Ursprungszaubers; unzulässige Sichtbarkeit/Reichweite; mehrere Reagierende und gekonterte Konter; kein zusätzliches legendäres Fenster bei Bewegung/Folgeangriff/Reaktion; richtiger Classic-Initiativeplatz; ungültig gewordene vorgemerkte manuelle Aktion; übersprungene Tactical-Einheiten/Beschwörungsberechtigung; erschöpftes legendäres Budget; genau einmalige Auffrischung; Tod/Ergebnis während Wartezeit; doppelte Anfragen; Zeitlimit mit spätem Erfolg; Neuladen, parallele Tabs, Verzweigung/Rückspulen und Einstellungsänderungen. Ergänze nach deterministischen Routentests echtes Anbieterverhalten und repräsentative Prüfung des Mobilspieltempos.
-
-<a id="encounter-environment-agent-handoff"></a>
 
 ## Übergabe für einen Begegnungsumgebungs-Agenten
 

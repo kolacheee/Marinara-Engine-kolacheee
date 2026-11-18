@@ -38,8 +38,6 @@ Home erscheint, solange kein Chat geöffnet ist. Oben siehst du eine Begrüßung
 
 Im klassischen Layout (unter **Settings → Appearance → Theme → New layout** schaltest du das neue Layout aus) sieht Home stattdessen wie ein Webbrowser aus: mit Tabs, einer Suchleiste und Lesezeichen für **Discord**, **Support**, **Credits**, **Documentation**, **Tutorial**, **FAQ**, **Achievements** und **Widgets**.
 
-<a id="choose-a-chat-mode"></a>
-
 ## Einen Chat-Modus wählen
 
 Den Modus wählst du, wenn du einen Chat startest.
@@ -47,8 +45,6 @@ Den Modus wählst du, wenn du einen Chat startest.
 - **Conversation**: ein schlichter KI-Chat, aufgemacht wie ein Messenger. Siehe [Conversation Mode: Erste Schritte](../conversation/getting-started.md).
 - **Roleplay**: eine Geschichte mit einem oder mehreren Charakteren. Die App behält die Szene im Blick, etwa Ort und Zeit. Siehe [Roleplay Mode: Erste Schritte](../roleplay/getting-started.md).
 - **Game**: ein Einzelspieler-Spiel. Die KI übernimmt die Rolle des Game Masters, der die Geschichte erzählt. Du bekommst eine Gruppe von Gefährten (eine Party), Würfelwürfe, Karten und Quests. Siehe [Game Mode: Erste Schritte](../game/getting-started.md).
-
-<a id="home-widgets"></a>
 
 ## Home-Widgets
 
@@ -68,7 +64,7 @@ Professor Mari baut dir ein persönliches Widget, wenn du sie darum bittest. Auc
 | --- | --- | --- |
 | **Professor Mari** | **Ask Professor Mari** (Professor Mari fragen) öffnet ihren Chat. | Ja |
 | **Recent chats** (Letzte Chats) | Deine neuesten Chats. Klick auf einen, um ihn wieder zu öffnen. Ohne Chats: **Your chats will show here**. | Ja |
-| **Learn the engine** (die Engine kennenlernen) | Links zu **Documentation**, **Replay tutorial** (Tutorial wiederholen) und **Read FAQ** (FAQ lesen). | Ja |
+| **Zum Ausprobieren** | Die nächsten drei kleinen Aufgaben, jeweils zu einer Funktion. Wenn du alle ausprobiert oder die Tipps ausgeschaltet hast, stehen hier stattdessen **Dokumentation**, **Tutorial wiederholen** und **FAQ lesen**. Siehe [Zum Ausprobieren](#things-to-try). | Ja |
 | **What's New** (Neuigkeiten) | **See what's new** (Neuigkeiten ansehen) und **Read release notes** (Release Notes lesen). | Ja |
 | **Community** | Links zu **Discord**, **Support** und **Credits**. | Ja |
 | **Character Library** (Charakterbibliothek) | Jeden Tag eine neue Auswahl deiner Charaktere. | Nein |
@@ -76,6 +72,18 @@ Professor Mari baut dir ein persönliches Widget, wenn du sie darum bittest. Auc
 | **Character of the Day** (Charakter des Tages) | Ein Charakter aus deiner Bibliothek, mit **Start a chat** (Chat starten) und **View character** (Charakter ansehen). | Nein |
 | **Clock & calendar** (Uhr und Kalender) | Das heutige Datum und die Uhrzeit. | Nein |
 | **Achievements** | Deine neuesten und deine fast erreichten Errungenschaften. Die Achievements-Einstellung muss eingeschaltet sein. | Nein |
+
+## Zum Ausprobieren
+
+Das Widget **Zum Ausprobieren** schlägt dir die nächsten drei Funktionen zum Ausprobieren vor. Jede Aufgabe baut auf der vorherigen auf: Aus einem Galeriebild wird ein Sticker, den du anschließend in einem Chat verschickst.
+
+- Klick auf eine Aufgabe, um die passende Stelle in der App zu öffnen. Gibt es keine solche Stelle, öffnet sich die Anleitung.
+- Klick auf das Häkchen, um die Aufgabe als erledigt zu markieren, oder auf das Kreuz, um sie zu überspringen. Eine übersprungene Aufgabe erscheint nicht wieder.
+- Die meisten Aufgaben haken sich selbst ab, sobald Marinara erkennt, dass du sie erledigt hast, etwa durch einen Chat im jeweiligen Modus oder ein Sticker-Label. Die anderen hakst du selbst ab.
+- **Alle ansehen** listet alle Aufgaben nach Tour auf, jeweils mit **Zeig es mir**. Die Aufgaben einer Tour erscheinen, sobald die Aufgaben erledigt sind, auf denen sie aufbauen. Touren unter **Nur in diesem Layout** behandeln Funktionen des neuen Layouts.
+- Wenn du eine Tour abschließt, schaltest du ihre Errungenschaft in der Kategorie **Entdecker** frei.
+
+Das Widget richtet sich nach **Funktionstipps** unter **Einstellungen > Allgemein > Bestätigungen & Hilfe**. Bei ausgeschalteten Tipps zeigt es die Links zu den Anleitungen. Der Fortschritt wird in diesem Browser gespeichert.
 
 ### KI-Grundlagen und Vertiefungen
 
@@ -89,7 +97,7 @@ Jede Station öffnet ihre Anleitung an der passenden Stelle und hebt diese hervo
 ## Wo du Hilfe bekommst
 
 - Frag Professor Mari auf dem Home-Bildschirm.
-- Klick im Widget **Learn the engine** auf **Read FAQ** (FAQ lesen), um schnelle Antworten zu bekommen.
+- Öffne im Widget **Zum Ausprobieren** zuerst **Alle ansehen** und dann **FAQ lesen**, um schnelle Antworten zu bekommen.
 - Klick in der oberen Leiste auf **Docs**, um die Anleitungen in der App zu öffnen.
 - Klick im Widget **Community** auf **Discord**, um zur Community zu kommen, oder auf **Support**, um das Projekt zu unterstützen.
 

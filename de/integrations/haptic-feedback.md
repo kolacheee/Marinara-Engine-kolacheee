@@ -12,6 +12,8 @@ Marinara Engine spricht das Gerät nicht direkt an. Es schickt Befehle an die ko
 
 Läuft Intiface Central nicht mit gestartetem Server, kann Marinara keine Berührungsimpulse schicken. Außerdem muss der Agent **Haptic Feedback** installiert sein. Siehe [Agenten im Überblick](../agents/agents-overview.md).
 
+> **Tipp:** Noch kein Spielzeug? Kein Problem, bei [Lovense](https://www.lovense.com/r/dupchb) bekommst du jetzt eines mit Rabatt.
+
 ## Den Haptic-Feedback-Agenten hinzufügen
 
 1. Öffne einen Conversation-, Roleplay- oder Game-Chat.
@@ -69,8 +71,6 @@ Die Karte zeigt in jedem Chat-Modus das Bedienelement **Touch sensitivity** (Ber
 ## Beiläufige Berührungen
 
 Der Schalter **Incidental contact** (beiläufige Berührung) mit der Beschreibung „Tiny taps for accidental brushes and bumps.“ ist standardmäßig aus. Ist er aus, ignoriert die KI kleine, zufällige Berührungen und schickt Impulse nur bei bewusstem oder festem Kontakt. Schalte ihn an, wenn auch Streifen und Anstoßen kleine Impulse auslösen sollen.
-
-<a id="use-it-from-another-device"></a>
 
 ## Von einem anderen Gerät aus nutzen
 

@@ -1,6 +1,6 @@
 # Galerien für Charaktere und Personas
 
-Die **Galerie** im Tab **Bilder** in den Editoren für Charaktere und Personas bewahrt Bilder und Videos auf, die an einem Charakter oder einer Persona hängen. So bleiben sie erhalten, auch wenn du Chats löschst. Nutze sie für Referenzbögen, Outfit-Varianten und importierte Bildpakete. Außerdem kannst du ein Galerie-Bild als eigenes Emoji, als Sticker oder als Hintergrund markieren, der den Charakter in jeden Chat begleitet.
+Die **Galerie** im Tab **Bilder** in den Editoren für Charaktere und Personas bewahrt Bilder und Videos auf, die an einem Charakter oder einer Persona hängen. So bleiben sie erhalten, auch wenn du Chats löschst. Nutze sie für Referenzbögen, Outfit-Varianten und importierte Bildpakete. Außerdem kannst du neue Bilder mit KI erstellen und ein Galerie-Bild als eigenes Emoji, als Sticker oder als Hintergrund markieren, der den Charakter in jeden Chat begleitet.
 
 ## Die Galerie finden
 
@@ -28,6 +28,39 @@ Klick auf ein Bild, um es größer zu sehen. Jede Kachel hat ein Bedienelement z
 3. Warte, bis der Upload abgeschlossen ist.
 
 Unterstützt werden MP4, WebM und MOV. Die neuesten Videos stehen oben. Welche Szenenvideos und Clips bei welchem Charakter erscheinen, steht unter [Welche Videos aufgelistet werden](#which-videos-are-listed).
+
+## Bilder mit KI erstellen
+
+**Mit KI erstellen** in der Galerie erzeugt über deine Verbindung zur Bildgenerierung neue Bilder für diesen Charakter oder diese Persona. Wähle unter **Typ**, was entstehen soll:
+
+| Typ | Was du bekommst |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Charakterbogen** | Ein Referenzbogen, der genauso gespeichert wird wie über den Abschnitt **Charakterbogen**. |
+| **Hintergrund** | Ein breites Bild eines Ortes, ausgehend vom Szenario der Karte. Es wird in der Galerie gespeichert und als Chat-Hintergrund markiert. |
+| **Sticker-Bogen** | Ein Bild mit mehreren Stickern, das in einzelne Sticker-Bilder zerlegt wird. |
+| **Emoji-Bogen** | Dasselbe mit kleinen Gesichts-Emojis. |
+
+Bevor du anfängst: Füge eine Verbindung zur Bildgenerierung hinzu.
+
+1. Öffne **Bilder → Galerie** und klick auf **Mit KI erstellen**.
+2. Wähle einen **Typ** und bearbeite den Prompt, wenn du ein anderes Aussehen oder einen anderen Ort möchtest.
+3. Liste bei einem Sticker- oder Emoji-Bogen die Namen unter **Zu zeichnende Sticker** oder **Zu zeichnende Emojis** auf, durch Kommas getrennt. Auf einen Bogen passen bis zu 16.
+4. Klick auf **Generieren**.
+5. Klick auf **Als Hintergrund speichern**, **Sticker speichern** oder **Emojis speichern** oder auf **Als Charakterbogen speichern**.
+
+### Den Zuschnitt eines Bogens korrigieren
+
+Nach dem Generieren eines Sticker- oder Emoji-Bogens wird jeder Sticker an seinem Umriss erkannt, sein grüner Hintergrund entfernt und er erscheint als eigene Kachel mit seinem Namen. Gespeicherte Sticker sind höchstens 512 mal 512 Pixel groß, Emojis höchstens 256 mal 256. Jedes Bild wird mit seinem Namen markiert.
+
+- Klick auf eine Kachel, um sie zu behalten oder auszulassen. Ausgelassene Kacheln werden nicht gespeichert.
+- Bearbeite den Namen unter einer Kachel, um sie umzubenennen.
+- Klick auf einer Kachel auf **Mit einem Rahmen neu schneiden**, um einen Rahmen auf dem gesamten Bogen zu platzieren. Verschiebe den Rahmen, zieh an seinen Ecken oder zeichne einen neuen Rahmen um den Sticker. Klick dann auf **Diesen Rahmen verwenden**.
+- Klick auf **Sticker hinzufügen** oder **Emoji hinzufügen**, um ein übersehenes Bild auszuschneiden.
+- Klick auf **Neu zuschneiden**, um den Zuschnitt von vorn zu beginnen und deine Rahmen zu verwerfen.
+
+### Den ganzen Prompt selbst schreiben
+
+Der Prompt für das Bildmodell wird aus den Feldern im Dialogfenster zusammengestellt. Um ihn vollständig zu ändern, etwa für Sticker von Dingen, die der Charakter mag, statt nur vom Charakter selbst, klick auf **Vollständigen Prompt bearbeiten**. Er wird genau so gesendet, wie du ihn schreibst. Änderungen an den anderen Feldern werden erst übernommen, wenn du auf **Neu erstellen** klickst; dabei werden auch deine Bearbeitungen ersetzt. Klick auf die Schließen-Schaltfläche neben **Neu erstellen**, um zum zusammengestellten Prompt zurückzukehren.
 
 ## Ein Galerie-Bild als eigenes Emoji oder Sticker markieren
 
@@ -66,7 +99,16 @@ Bilder, die in einem Chat gemalt wurden, kannst du über die Schaltfläche mit d
 
 Beim Export als **Marinara Native** bleiben alle Markierungen (Emoji, Sticker und Hintergrund) in der Galerie erhalten.
 
-<a id="reuse-a-gallery-image-in-messages-and-greetings"></a>
+## Bilder beschreiben
+
+Jedes Galeriebild kann eine kurze Beschreibung seines Inhalts haben. Conversation-Chats nutzen die Beschreibungen markierter Emojis und Sticker, um auszuwählen, welche sie anbieten (siehe [Emojis und Sticker beschreiben](../conversation/emoji-stickers-gifs.md#describe-emojis-and-stickers)). Die Beschreibung wird mit dem Bild gespeichert und bei einem Export als **Marinara Native** mitgenommen.
+
+- Um selbst eine zu schreiben, klick auf die Tag-Schaltfläche oben links im Bild und wähle **Beschreibung hinzufügen** oder zum Ändern **Beschreibung bearbeiten**.
+- Soll die KI sie schreiben, klick auf **Bilder auswählen**, wähle die Bilder aus und klick dann auf **Mit KI beschreiben**. Das Modell für **Bilder lesen** sieht sich jedes Bild an und schreibt eine kurze Beschreibung. Haben einige schon eine, kannst du nur die Bilder ohne Beschreibung oder alle erneut beschreiben lassen.
+
+Bevor du anfängst: KI-Beschreibungen brauchen ein Modell, das Bilder lesen kann. Marinara nutzt das Modell für **Bilder lesen**, wenn du unter **Hinter den Kulissen** in deinen Verbindungseinstellungen eines festgelegt hast, sonst das Modell deiner Agenten. Es werden bis zu 8 Bilder auf einmal gesendet, deshalb dauert eine große Auswahl einen Moment.
+
+Auch die Galerie eines Chats hat im Auswahlmodus **Mit KI beschreiben**.
 
 ## Ein Galerie-Bild in Nachrichten und Begrüßungen wiederverwenden
 
@@ -92,8 +134,6 @@ Es funktioniert nicht:
 
 Ein vollständiger Link enthält die interne ID des Charakters, und IDs werden beim Import eines Charakters neu erzeugt. Vollständige Links brechen deshalb bei allen, mit denen du den Charakter teilst. Die Form mit `self` enthält keine ID. Sie überlebt einen Export und Import als **Marinara Native**, weil die Galerie-Bilder mit ihren Dateinamen im Export mitreisen. Exporte als **Compatible PNG Card** und **Compatible JSON** enthalten die Galerie nicht, sodass nach dem Teilen auf diesem Weg kein Galerie-Verweis funktionieren kann. Nimm **Marinara Native**, wenn ein Charakter Galerie-Bilder verwendet.
 
-<a id="save-web-images-from-greetings"></a>
-
 ### Webbilder aus Begrüßungen speichern
 
 Viele Karten zeigen in ihren Begrüßungen Bilder von anderen Websites, und solche Links können ins Leere laufen. Zeigen **First Message** oder **Alternate Greetings** Webbilder, hat **Dialogue & Greetings** die Schaltfläche **Save images locally** (Bilder lokal speichern).
@@ -105,8 +145,6 @@ Viele Karten zeigen in ihren Begrüßungen Bilder von anderen Websites, und solc
 Heruntergeladen wird erst, wenn du auf die Schaltfläche klickst. Gespeichert werden nur PNG-, JPEG-, GIF- und WebP-Bilder bis 10 MB und 40 Megapixel. Links auf deinen eigenen Rechner oder dein Heimnetz werden abgelehnt. Ein Bild, das sich nicht speichern lässt, behält seinen Weblink, und ein Hinweis nennt den Grund.
 
 **Restore web links** (Weblinks wiederherstellen) setzt die ursprünglichen Links wieder in die Begrüßungen ein. Die gespeicherten Kopien bleiben in der Galerie, bis du sie löschst. Bilder aus Lorebooks sind davon nicht erfasst.
-
-<a id="which-videos-are-listed"></a>
 
 ## Welche Videos aufgelistet werden
 

@@ -14,8 +14,6 @@ Eine Speichern-Schaltfläche gibt es nicht. Dein Spiel speichert sich beim Spiel
 
 Wie du zu einem früheren Moment zurückkehrst, steht unter [Wie das Spiel speichert](#how-your-game-saves).
 
-<a id="opening-session"></a>
-
 ## Session öffnen
 
 In **Session** (Sitzung) beendest du Sitzungen, startest neue und liest deinen Verlauf nach.
@@ -26,8 +24,6 @@ In **Session** (Sitzung) beendest du Sitzungen, startest neue und liest deinen V
 4. Es gibt zwei Tabs: **Session History** (Sitzungsverlauf) und **Journal**. Bleib für die Sitzungssteuerung auf **Session History**.
 
 Hast du dieses Fenster mit **Put back in Chat Settings** (zurück in die Chat-Einstellungen) verschoben, öffne stattdessen den Abschnitt **Session** in Chat Settings.
-
-<a id="end-a-session"></a>
 
 ## Eine Sitzung beenden
 
@@ -104,7 +100,7 @@ Game Mode legt für jede neue Kampagne eine Momentaufnahme des Setups ab, mit de
 3. Sieh dir die gespeicherten Angaben an: Abenteuer, Besetzung, Modell, Prompt, Generierungsparameter sowie Optik-, Storyboard- und Weltwerkzeug-Einstellungen.
 4. Klick auf **Copy setup** (Setup kopieren), um den Text zu kopieren, oder auf **Download setup** (Setup herunterladen), um eine Textdatei zu speichern.
 
-> **Warnung:** Der Text enthält deine langen Spielerpräferenzen und eigenen GM-Anweisungen. Lies ihn, bevor du ihn postest. Zugangsdaten, Server-URLs, API-Keys und lokale Datenbank-IDs sind nie enthalten.
+> **Warnung:** Der Text enthält deine langen Spielerpräferenzen und eigenen GM-Anweisungen. Eine heruntergeladene Datei enthält außerdem die Richtlinien zur Inhaltseinstufung des Spiels und seine inhaltlichen Grenzen. Lies ihn, bevor du ihn postest. Zugangsdaten, Server-URLs, API-Keys und lokale Datenbank-IDs sind nie enthalten.
 
 Charakterkarten, Personas, Lorebooks, Modelle und Konten werden genannt, aber nicht mitgeliefert. Wer damit spielen will, braucht also eigene Entsprechungen. Kampagnen aus der Zeit vor den Momentaufnahmen können Einstellungen, die nie gespeichert wurden, nicht wiederherstellen. **Initial Game Setup** erscheint deshalb nur, wenn eine verlässliche Momentaufnahme vorliegt.
 
@@ -118,8 +114,6 @@ Charakterkarten, Personas, Lorebooks, Modelle und Konten werden genannt, aber ni
 Die Ansicht kann **World Overview**, **Story Arc**, **Plot Twists**, **Party Arcs** und die gespeicherten **Maps**, **NPCs** und **Character Cards** zeigen. Um sie auszublenden, klick auf dieselbe Schaltfläche, die jetzt **Hide Spoilers** heißt.
 
 Um diese Notizen zu ändern, klick auf **Edit Spoilers** (Spoiler bearbeiten), bearbeite den Text und klick auf **Save Spoilers** (Spoiler speichern). Manche Felder sind JSON, ein strukturiertes Textformat. Bearbeite sie nur, wenn du das Format kennst, denn fehlerhaftes JSON lässt sich nicht speichern.
-
-<a id="editing-game-data-by-hand"></a>
 
 ## Spieldaten von Hand bearbeiten
 
@@ -146,8 +140,6 @@ Diese Regeln setzen die Prüfungen durch:
 - **World Edits** enthält deine Änderungen von Hand an der Welt, etwa umbenannte Orte oder hinzugefügte Personen. Die Welt selbst ändert sich nie.
 
 Das Fenster funktioniert wie der State Editor in Roleplay. Siehe [Der State Editor](../roleplay/hud-and-trackers.md#the-state-editor).
-
-<a id="how-your-game-saves"></a>
 
 ## Wie das Spiel speichert
 

@@ -21,6 +21,17 @@ Als Erstellungsdatum übernimmt Marinara das Datum aus der Datei.
 
 Wenn es nicht funktioniert hat: Lies den Fehler neben der Datei. Eine Datei, die kein Lorebook oder beschädigt ist, schlägt für sich allein fehl, während die anderen Dateien importiert werden.
 
+## Ein Lorebook von Chub herunterladen
+
+Lorebooks auf [Chub](https://chub.ai/lorebooks) kannst du importieren, ohne vorher eine Datei zu speichern.
+
+1. Öffne **Bibliothek → Lorebooks** und klick oben auf **Online suchen**. (Im klassischen Layout öffnest du das Panel **Lorebooks** und klickst auf **Herunterladen**.) Der Card Browser öffnet sich mit dem Titel **Lorebooks online durchsuchen**.
+2. Suche, sortiere oder filtere nach Tags und klick dann auf ein Lorebook. Seine Seite zeigt die Beschreibung und die ersten 30 Einträge. Klick auf einen Eintrag, um ihn zu lesen.
+3. Wähle unter **Importierte Tags** zwischen **Alle Tags**, **Keine Tags** und **Nur vorhandene** (nur Tags, die deine Lorebooks schon verwenden).
+4. Klick auf **Importieren**. Das Lorebook, alle seine Einträge, sein Bild und die ausgewählten Tags erscheinen auf der Seite **Lorebooks**.
+
+Chub kann Lorebooks mit Inhalten für Erwachsene nicht filtern, deshalb werden sie nie ausgeblendet. Ein Lorebook, dessen Tags NSFW enthalten, bekommt ein **NSFW**-Abzeichen. Sein Bild bleibt unscharf, solange das Kästchen **NSFW** nicht angehakt ist. Hak es an, um diese Bilder zu sehen. Lorebooks ohne ein solches Tag werden unabhängig von ihrem Inhalt nicht unscharf dargestellt.
+
 ## Nach dem Import
 
 Ein importiertes Lorebook funktioniert sofort mit Schlüsselwörtern. Nutzt du die semantische Suche, bau seine Vektoren neu auf. Siehe [Semantische Suche für Lorebooks](semantic-search.md).

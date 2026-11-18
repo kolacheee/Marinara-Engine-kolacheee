@@ -7,7 +7,7 @@ Das Tutorial ist eine geführte Tour, die startet, wenn du Marinara Engine zum e
 1. Öffne **Settings → General → Confirmations & Help** (Einstellungen → Allgemein → Bestätigungen und Hilfe).
 2. Klick unter **Walkthroughs** (Touren) auf **Replay the welcome tour** (Willkommenstour wiederholen).
 
-Du kannst auf Home auch im Widget **Learn the engine** (die Engine kennenlernen) auf **Replay tutorial** (Tutorial wiederholen) klicken. Die Tour beginnt dann wieder beim ersten Schritt.
+Du kannst auf Home auch im Widget **Zum Ausprobieren** auf **Alle ansehen** und dann auf **Tutorial wiedergeben** klicken. Die Tour beginnt dann wieder beim ersten Schritt.
 
 Unter **Walkthroughs** gibt es zwei weitere Schaltflächen. **Replay the computer walkthrough** (Computer-Tour wiederholen; beziehungsweise Tablet oder Handy) wiederholt die kurze Tour für dein aktuelles Gerät. **Show chat mode tips again** (Tipps zu Chat-Modi erneut anzeigen) bringt die Tipps der einzelnen Chat-Modi zurück. Siehe [Touren für die einzelnen Geräte](#walkthroughs-for-each-device).
 

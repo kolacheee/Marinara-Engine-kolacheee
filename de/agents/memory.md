@@ -35,8 +35,8 @@ Memory Recall braucht ein Modell, das die Fingerabdrücke erzeugt. Legst du nich
 
 Bevor du anfängst: Du brauchst ein Konto, das Embeddings anbietet. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 
-1. Öffne **Connections** (Verbindungen) und bearbeite das Konto.
-2. Such den Abschnitt **Semantic search (embeddings)**.
+1. Öffne **Verbindungen** und klick auf das Modell, um **Modell bearbeiten** zu öffnen.
+2. Klick auf **Mehr** und such **Semantische Suche (Embeddings)**.
 3. Trag den Namen eines Embedding-Modells ein, zum Beispiel `text-embedding-3-small`.
 4. Optional: Leg unter **Embedding endpoint URL** eine andere Adresse fest.
 5. Optional: Leih dir über **Embedding provider** (Embedding-Anbieter) Key und Adresse eines anderen Kontos. **Same as this provider** (wie dieser Anbieter) behält die eigenen dieses Kontos.
@@ -76,8 +76,6 @@ Die Symbolleiste hat Symbole zum Exportieren, Importieren, Neuaufbauen und Leere
 - Schwache Treffer werden übersprungen, der Abruf kann also leer ausgehen, obwohl Erinnerungen vorhanden sind. Für abgerufene Erinnerungen wird nur ein kleiner Teil des Prompts genutzt.
 - Nachdem du das Embedding-Modell gewechselt hast, passen alte Chunks nicht mehr. Bau sie neu auf.
 - Löschst du die Nachrichten eines Chats, werden auch dessen Chunks gelöscht.
-
-<a id="chat-summary-roleplay"></a>
 
 ## Chat Summary (Roleplay)
 
@@ -143,8 +141,6 @@ Das Fenster listet zuerst die Wochen auf, danach die Tage, die noch in keiner Wo
 
 Ein Tag kann ohne Zusammenfassung bleiben, etwa nachdem du einen alten Chat importiert hast. Im Fenster hat das Panel **Missing Summaries** eine Schaltfläche **Backfill**. Sie versucht es für bis zu 14 zurückliegende Tage auf einmal erneut. Wechselst du das Modell für die Zusammenfassungen, werden vorhandene Tages- oder Wocheneinträge nicht neu geschrieben.
 
-<a id="advanced-memory-recall-roleplay-and-game-mode"></a>
-
 ## Advanced Memory Recall (Roleplay und Game Mode)
 
 Advanced Memory Recall ist ein optionaler Modus, der das Live-Verlaufsfenster, Kontinuitätszusammenfassungen und alte Auszüge gemeinsam verwaltet. Er teilt den Chat in Szenen auf, fasst jede abgeschlossene Szene zusammen und ruft für jede Antwort die Szenen und genauen Nachrichten ab, auf die es ankommt. Er läuft ohne den Schalter Agents und braucht keinen herunterladbaren Agenten.
@@ -189,8 +185,6 @@ Ein fehlgeschlagener Modellaufruf behält das bisherige gültige Gedächtnis und
 
 Eine Verzweigung, die aus einem vorbereiteten Chat entsteht, etwa mit **Branch from here** (ab hier verzweigen), behält ihr Advanced Memory. Eine Verzweigung mitten in einer Szene öffnet diese Szene wieder: Ihre alte Zusammenfassung wird verworfen, und eine neue wird geschrieben, wenn die Szene endet. Ein als neue Verzweigung importierter Chat wird wie gewohnt vorbereitet.
 
-<a id="fixing-memory-problems"></a>
-
 ### Gedächtnisprobleme beheben
 
 Ist im Gedächtnis eines Chats etwas kaputt, erscheint auf der Schaltfläche **Chat Settings** ein ruhig leuchtender Punkt in deiner Akzentfarbe, und ein Hinweis nennt, bei wie vielen Szenen es Probleme gibt. Jede Gruppe von Problemen wird nur einmal gemeldet, und der Punkt bleibt, bis sie erledigt sind. Unter **Chat Settings → Memory Recall** stehen die Probleme über den Einstellungen. **Access memories for this chat** zeigt denselben Punkt.
@@ -215,8 +209,6 @@ Wurden Szenenwechsel übersehen, etwa weil eine Szene nie endete, nutze **Re-sca
 
 Advanced Memory sucht in diesen Nachrichten erneut nach Szenenwechseln und fasst die geänderten Szenen neu zusammen. Ist **Use Decision model** an, nutzt es dafür das Decision-Modell, sonst das Hilfsmodell. Szenen außerhalb des Bereichs behalten ihre Grenzen und Zusammenfassungen. Würde sich eine von dir bearbeitete Zusammenfassung ändern, hält der Durchgang an und nennt diese Szene.
 
-<a id="optional-decision-model"></a>
-
 ### Optionales Decision-Modell
 
 Ein Decision-Modell ist ein kleines Modell, das Ja-oder-Nein-Fragen beantwortet. Die Option ist standardmäßig aus und wird pro Roleplay-Chat gespeichert.
@@ -229,8 +221,6 @@ Diese Auswahl ist unabhängig vom globalen Decision-Standard.
 Das Modell findet Szenengrenzen, während der Verlauf vorbereitet wird und laufende Szenen geprüft werden. Vor einer neuen Antwort wählt es Erinnerungen in zwei Durchgängen aus. Die Einzelheiten stehen unter [Wie der Abruf per Decision-Modell funktioniert](#how-decision-recall-works).
 
 Gehostete Konten erhalten den jüngsten Gesprächstext und die vorausgewählten Rückblicke oder Nachrichten, die bewertet werden, und können pro Antwort mehrere Anfragen berechnen. Der Abruf prüft den Charakterzugriff, bevor er Kandidaten sendet.
-
-<a id="deciding-who-sees-new-messages"></a>
 
 ### Entscheiden, wer neue Nachrichten sieht
 
@@ -258,8 +248,6 @@ Ist Advanced Memory an, kann eine neue Charakterantwort mit einer Trennzeile wie
 - Ein Swipe oder ein Neugenerieren an einem Teil erzeugt nur für diese eine Nachricht eine neue Fassung. Bei einem früheren Teil behält die neue Fassung nur den Text vor der ersten Trennzeile.
 - Fortsetzen und Impersonate teilen eine Antwort nie auf.
 
-<a id="character-recollections"></a>
-
 ### Charaktererinnerungen
 
 Schalte **Character recollections** ein, damit jeder Charakter seine eigene Erinnerung an eine Szene bekommt. Die Option ist standardmäßig aus.
@@ -285,8 +273,6 @@ Bearbeiten und Ausschalten:
 
 - Öffne in **Access memories for this chat** eine Szene, um jede Charaktererinnerung zu lesen und zu bearbeiten. Eine bearbeitete wird mit **Manually edited** markiert und nie ersetzt. **Delete** nimmt sie endgültig aus den Prompts, du kannst aber eine neue eintippen.
 - Schaltest du die Einstellung aus, bleiben gespeicherte Charaktererinnerungen erhalten, landen aber nicht mehr in den Prompts. Export, Import und Verzweigungen schließen sie ein.
-
-<a id="in-game-mode"></a>
 
 ### In Game Mode
 
@@ -365,8 +351,6 @@ Um eine Szene vom Abruf auszuschließen, schalte ihren Erinnerungseintrag aus. C
 - Neue Rückblicke kennzeichnen die Sichtbarkeit der Nachrichten, beschreiben gemeinsame Ereignisse als normalen Text und verwenden `{{#if character == "Name"}}…{{/if}}` für private Abschnitte. Ändert sich die Sichtbarkeit oder der Zielcharakter eines Rückblicks, bleibt der alte Rückblick für Leser mit Teilzugriff gesperrt, bis du die Szene erneut vorbereitest (**Fix** erledigt das für jede solche Szene) oder ihre privaten Bedingungen prüfst und speicherst. Ein Charakter, der später hinzukommt, zählt nicht, es sei denn, nur ein Teil der Szene ist für ihn sichtbar. Ältere Rückblicke brauchen einmal **Fix**, nachdem ein Charakter hinzugekommen ist. Leser mit Zugriff auf jede Quellnachricht können sie weiterhin abrufen. Manuell korrigierter Text wird nie stillschweigend umgeschrieben.
 - Die Daten einer Szene gelten für alle zugewiesenen Teilnehmer gemeinsam. Wörtliche Auszüge enthalten nie vor einem Charakter verborgene Nachrichten oder Flüsternachrichten. Auch eine Zusammenfassung mit Teilen, die nur für einzelne Charaktere bestimmt sind, erhält einen Auszug, der nur zitiert, was dieser Charakter gesehen hat. Um eine Nachricht aus der Erinnerung eines Charakters herauszuhalten, verbirg sie vor ihm.
 - In einem Gruppenchat mit zusammengeführten Antworten umfasst der Abruf, woran sich mindestens ein Charakter erinnert. Eine Szene oder ein privater Teil, den nicht jeder Charakter kennt, wird gekennzeichnet, etwa mit „known only to Kaito“. Ein Auszug zitiert nur Nachrichten, die jeder sich erinnernde Charakter gesehen hat. Erinnerungen, die kein Charakter hat, etwa dem Erzähler vorbehaltene Szenen, bleiben außen vor. In Gruppenchats, in denen die Charaktere einzeln nacheinander antworten, ruft jeder Charakter nur seine eigenen Erinnerungen ab.
-
-<a id="how-decision-recall-works"></a>
 
 ### Wie der Abruf per Decision-Modell funktioniert
 

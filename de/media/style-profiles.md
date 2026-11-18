@@ -119,6 +119,12 @@ Marinara kann das Stilprofil aus drei Quellen nehmen. Die spezifischste Wahl gew
 
 Der Abschnitt **Local image defaults** erscheint nur bei AUTOMATIC1111 / SD Web UI, ComfyUI und NovelAI. Bei allen anderen Diensten greift direkt der globale **Default style**. Für ein Profil pro Modell öffnest du das Bildmodell, klappst **Local image defaults** auf und wählst in der Liste der Stilprofile ein Profil. Bleibt die Liste auf **Use global default** (globalen Standard verwenden), gilt weiterhin die globale Wahl. Kann Marinara aus dem Namen des Modells ein passendes Profil erraten, zeigt es eine Schaltfläche „Use ...“, die es mit einem Klick übernimmt.
 
+## Bilder, die Professor Mari erstellt
+
+Professor Mari schreibt ihre Bild-Prompts selbst. Ihr Befehl `mari images` schickt sie deshalb genau so an dein Bildmodell, wie sie sie geschrieben hat. Es werden weder ein Stilprofil noch Tags für einzelne Bilder oder ein Prompt-Präfix der Verbindung hinzugefügt. Bitte sie, deinen Stil zu verwenden, und sie ergänzt `--style`. Damit wird das oben gewählte Profil angewendet: zuerst das eigene Profil des Bildmodells, dann der globale **Standardstil**. Mit `--style <name>` wählt sie ein bestimmtes Profil. Sie kann deine Profile auflisten und eines vollständig lesen, bevor sie sich entscheidet.
+
+Jedes Bild, das sie erstellt, hält ihren ursprünglichen Prompt, das gegebenenfalls verwendete Profil und den genau so gesendeten Prompt fest. So kann sie dir zeigen, was ein Stil geändert hat.
+
 ## Verwandte Anleitungen
 
 - [Anbieter für Bildgenerierung und Einrichtung](image-providers.md)

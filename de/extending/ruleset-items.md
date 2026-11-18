@@ -22,8 +22,6 @@ Abschnitte auf dieser Seite:
 
 Rüstungen, Waffen, Tränke, Ausrüstung, Munition und Geld sind Gegenstände. Ein optionaler `items`-Block deklariert die Begriffe, in denen jeder Gegenstand deines Regelsatzes geschrieben ist, und ein Katalog mit `holds: "items"` listet die Gegenstände selbst auf. Beides braucht Capability API 1.49. Darüber hinaus brauchen: `rarityCaps` und `propose` des Blocks, die die vom Game Master erfundenen Gegenstände regeln, 1.51; ein Wert, der die Gegenstände eines Charakters liest (`itemStat`), 1.52; was ein Gegenstand beim Tragen oder Mitführen an Proben bewirkt, samt den `bonus`-Grenzen des Blocks, 1.53; was ein Gegenstand von seinem Träger verlangt und die Attribute, die er verändert, 1.54; der `attack` einer Waffe 1.55; was ein Gegenstand im Kampf bewirkt, 1.56; was eine Waffe verschießt und geladen hält, 1.57; die Modi einer Waffe, ihr Angriff mit der Nebenhand, ihr Mindestschaden und ihre Zustände bei einem Treffer 1.58; was die Nutzung eines Gegenstands im Kampf bewirkt, samt der Ladungen, die er hält, 1.59; eine Nutzung, die einen Pool wiederherstellt, 1.60; bei einer Rast zurückgewonnene Ladungen oder ein Gegenstand, der zerbricht, wenn er leer ist, 1.61; eine Nutzung, die zuerst eine Probe verlangt (`gate`), 1.62; Beutetabellen und die Beute einer Kreatur 1.63; eine Beutezeile, die Münzen fallen lässt, oder eine Ebene, die Münzen herausnimmt, 1.64; ein Markt, der `sold`-Ort eines Gegenstands und ein `service` 1.65; ein Markttag (eine Kasse, `buyBack`, der `stock` eines Händlers, eine `limited`-Anzahl oder ein `sold` ohne Ort) 1.69; ein Zusatzeffekt, der bei gehaltenen Waffen auslöst (`weapons`), 1.70; Startausrüstung (`startingGear`) 1.78; ein riskanter Gegenstand, eine Fälschung oder ein unehrlicher Händler 1.79; und das `unsold` eines Marktes (oder das `items` einer Ebene) 1.813.
 
-<a id="the-items-block"></a>
-
 ## Der Gegenstandsblock
 
 Der Block steht in `items` auf der obersten Ebene der Datei. Hier der Block aus Ember Roads, leicht gekürzt:
@@ -105,8 +103,6 @@ Der Block steht in `items` auf der obersten Ebene der Datei. Hier der Block aus 
 - `freeform`: Was aus einem Gegenstand wird, den der Spieler eintippt. `"plain"` (Standard) behält ihn wie bisher als Gegenstand ohne Regeln. `"refuse"` erlaubt nur Gegenstände deines Regelsatzes.
 - `lootTables` (Capability API 1.63): Optional, höchstens 24. Was die Kreaturen eines gewonnenen Kampfes und das `[loot:]` des Game Master fallen lassen (siehe unten „Beute“).
 
-<a id="an-item"></a>
-
 ## Ein Gegenstand
 
 Ein Gegenstandskatalog deklariert kein `feeds`:
@@ -150,8 +146,6 @@ Jeder Eintrag trägt ein `item` statt `rows` oder einer `creature`:
 
 Ein Gegenstand trägt kein `mechanics`: Was er bewirkt, steht in seinem `item`-Block.
 
-<a id="what-reads-items"></a>
-
 ## Was Gegenstände liest
 
 Alles oben Genannte wird beim Import des Regelsatzes geprüft, und deine Gegenstandskataloge werden mit ihm ausgeliefert. Im Spiel liest das Inventar von Game Mode sie:
@@ -175,8 +169,6 @@ Alles oben Genannte wird beim Import des Regelsatzes geprüft, und deine Gegenst
 
 In einem Turn-Based- oder Tactical-Kampf tut jeder deiner Gegenstände mit `use` dort, was dieses angibt, und einer ohne wird nicht angeboten (siehe unten „Gegenstände in Turn-Based- und Tactical-Kämpfen“). Unabhängig von `native` kann der Bogen deine Gegenstände lesen (siehe unten), eine gehaltene Waffe ist in einem Regelsatzkampf ein Angriff und verschießt, was sie aus der Tasche nimmt, was ein Gegenstand beim Tragen oder Mitführen bewirkt, zählt dort (siehe unten „Rüstung und getragene Wirkungen im Kampf“), ein Gegenstand mit `use` wird nach seinen eigenen Regeln genutzt, im Kampf und außerhalb (siehe unten „Gegenstände im Kampf nutzen“ und „Gegenstände außerhalb eines Kampfes nutzen“), und deine `currencies` sind das Geld der Gruppe (siehe unten „Geld“).
 
-<a id="items-on-the-sheet"></a>
-
 ## Gegenstände auf dem Bogen
 
 Ein Wertverweis kann mit `itemStat` (Capability API 1.52) die Gegenstände lesen, die ein Charakter besitzt. Ember Roads addiert den Guard-Wert der Rüstung, die ein Reisender trägt, zu seinem Guard, also zu dem Wert, den ein Treffer übertreffen muss:
@@ -199,8 +191,6 @@ Ein Wertverweis kann mit `itemStat` (Capability API 1.52) die Gegenstände lesen
 Gegenstände ändern sich im Spiel. `itemStat` unterliegt daher derselben Regel wie ein Live-Lesezugriff: Das `max` eines Pools oder einer Leiste, der Übungsbonus, `binding.max`, die `carry`-Zahlen und die skalierte Spalte oder Skalierung eines Katalogs können es nicht lesen, auch nicht über einen abgeleiteten Wert. Überall sonst, wo eine Zahl gelesen wird, geht es: in einem abgeleiteten Wert, im `adjust` einer Probe, im `cap` einer Fertigkeit sowie bei Verteidigung, Schadensminderung oder Initiative eines Kampfes.
 
 Die Gegenstände eines Charakters sind die in seiner eigenen Tasche. Die Karte des Spielers (die Karte mit dem Namen, unter dem im Chat gespielt wird, sonst die erste) liest die Tasche des Spielers, jede andere Karte ihre eigene. Nur die Gegenstände deines Regelsatzes zählen, weil ein einfacher Gegenstand keine Werte zum Lesen hat. Der Bogen auf dem Bildschirm, eine Probe, der Bogenblock des Game Master und ein Kampf bei seinem Beginn lesen alle, was jeder Charakter genau in diesem Moment besitzt. Außerhalb eines Spiels, im Bogeneditor oder in einer Importprüfung, besitzt niemand etwas, und `itemStat` liest seinen `default`.
-
-<a id="checks-outside-a-fight"></a>
 
 ## Proben außerhalb eines Kampfes
 
@@ -255,8 +245,6 @@ Bei einer Probe gilt:
 
 Gravewatch zeigt dasselbe bei einem Pool: Die gebundene Dawn bell fügt Ward einen Würfel hinzu, und Rattled nimmt Soothe und Barter je einen weg.
 
-<a id="typed-defenses-from-conditions-levels-items-and-sheet-rows"></a>
-
 ## Typisierte Verteidigungen aus Zuständen, Stufen, Gegenständen und Bogenzeilen
 
 `combat.conditions[]` und `combat.levels[]` können `resist`, `vulnerable`, `immune` (je 1–30 Einträge) und `conditionImmunities` (1–40 Zustands-IDs) gewähren. Sie gelten, solange der Zustand besteht oder die Schwelle der Stufe erreicht ist. Eine neu gewonnene Zustandsimmunität beendet diesen Zustand, wenn er bereits aktiv ist, und verhindert, dass er erneut auferlegt wird. Immunität hat Vorrang vor Resistenz; Resistenz und Verwundbarkeit heben sich auf. Mehrere Resistenzen halbieren den Schaden nie zweimal.
@@ -285,8 +273,6 @@ Für Merkmale aus Abstammung oder Katalog enthält `combat.sheetHides` bis zu ac
 
 Jede Zeile trägt durch Kommas getrennte Wörter bei, an den Rändern bereinigt und ohne Beachtung der Groß- und Kleinschreibung abgeglichen; leere Wörter werden übersprungen. Eine Zeile mit `"fire"` hinzuzufügen, fügt Feuerresistenz hinzu; sie zu löschen, entfernt diese Quelle. Resistenz- und Immunitätswörter dürfen `except` enthalten, wie in `"bludgeoning except magical silvered"`. Verwundbarkeiten und Zustandsimmunitäten sind einfache Wörter. Unbekannte deklarierte Schadenswörter im Bogentext werden ignoriert, ebenso unbekannte Zustands-IDs; eine Enum-Spalte für Zustandsimmunitäten darf beim Import nur Zustands-IDs deklarieren. Die Zusammenfassungen für Bogen, Kampf und Game Master enthalten diese Verteidigungen und ihre Ausnahmen.
 
-<a id="weapons-in-a-fight"></a>
-
 ## Waffen im Kampf
 
 Ein Gegenstand kann eine Waffe sein (Capability API 1.55). Sein `attack` hat die Form der [Angriffszeilen](ruleset-combat.md#combat-a-fight-your-own-rules-resolve) eines Kampfblocks, mit Werten statt Spalten, und ein [Regelsatzkampf](ruleset-combat.md#combat-a-fight-your-own-rules-resolve) bietet ihn als Angriff an, solange der Gegenstand getragen wird: in den Händen gehalten, die er belegt, und gebunden, wo er gebunden wird. Ein weggesteckter oder nur mitgeführter Gegenstand bietet nichts an, und die Angriffszeilen und die eigenen Aktionen einer Kreatur funktionieren genau wie bisher. Die Handaxt aus Ember Roads:
@@ -314,8 +300,6 @@ Die Tags einer Waffe gehen mit jedem ihrer Treffer mit. Der `resist`- oder `immu
 
 Die Details der Waffe und die Zeile für den Game Master nennen, was sie tut: `attack (Action): Brawn to hit, 1d6 + Brawn cut, reach 2 paces, range 10 to 20 paces`, mit `1d8 with a hand free` für den Eberspieß aus Ember Roads und `at 6` neben dem Spaten aus Gravewatch.
 
-<a id="ammunition-and-reloading"></a>
-
 ### Munition und Nachladen
 
 Eine Waffe kann etwas verschießen und eine eigene geladene Anzahl führen (Capability API 1.57). Der Jagdbogen aus Ember Roads verschießt Pfeile, und die Wachpistole aus Gravewatch hält eine Kugel, geladen aus dem Kugel- und Pulvervorrat des Wächters:
@@ -333,8 +317,6 @@ Eine Waffe kann etwas verschießen und eine eigene geladene Anzahl führen (Capa
 - `clip`: eine geladene Anzahl, die die Waffe selbst führt. `max` gibt an, wie viel sie fasst, ausdrücklich angegeben oder aus einem Zahlenwert des Gegenstands gelesen, und `reload` ist das Budget, das ein Nachladen verbraucht. Ein Angriff verbraucht dann das Geladene, statt aus der Tasche zu nehmen, und die Waffe wird nur angeboten, solange sie genug für einen Angriff enthält. Eine Option **Reload** (nachladen) im Kampfmenü verbraucht `reload` und füllt sie: aus der Tasche, wenn sie `ammo` hat (so viel, wie die Tasche noch enthält, falls das weniger ist), und vollständig, wenn sie keine hat. Die Anzahl wird am Inventarstapel der Waffe gespeichert; eine in einem Kampf leer geschossene Pistole ist also auch im nächsten leer. Eine Waffe, die noch niemand abgefeuert hat, ist geladen, ebenso eine, die ein Spieler in einen Stapel mit mehreren davon legt, denn eine geladene Anzahl gehört zu einer einzelnen Waffe. Die Munition eines Magazins wird nach einem Kampf nicht aufgesammelt; `recover` ist also für eine Waffe ohne Magazin gedacht.
 
 Was ein Kampf verschießt, lädt und aufsammelt, wird bei jedem Schritt ins Inventar geschrieben, so wie die Gesundheit der Gruppe, und das Journal nennt, was verbraucht wurde. Ein Schritt, dessen Stapel verschwunden ist oder weniger enthält, als der Kampf angenommen hat, wird abgelehnt, genau wie ein verbrauchter Gegenstand, den der Kampf nicht findet. Das Kampfprotokoll nennt jeden Schuss, jedes Nachladen und jedes Aufsammeln („Hunting bow: noch 2 Schuss.“, „Ada lädt 1 in Watch pistol: 1 von 1 geladen.“), und die Details des Gegenstands sowie die Zeile für den Game Master nennen, was die Waffe verschießt und fasst: `ammunition Arrow (1 an attack, 50% picked up after a won fight)` und `holds 1, reload (Act)`.
-
-<a id="modes-a-second-weapon-a-floor-and-conditions-on-a-hit"></a>
 
 ### Modi, eine zweite Waffe, eine Untergrenze und Zustände bei einem Treffer
 
@@ -365,8 +347,6 @@ Eine Waffe kann weitere Arten haben, ihren Angriff auszuführen, einen Partner i
 
 Die Details der Waffe und die Zeile für den Game Master nennen alles davon: `modes Volley (2 shots, -2 to hit, up to 2 targets)`, `off hand (Quick)`, `at least 1 on a hit before resistance`, `+3d6 slashing against Dragon` und `Marked for 2 rounds when a hit deals 2 or more`.
 
-<a id="armor-and-worn-effects-in-a-fight"></a>
-
 ## Rüstung und getragene Wirkungen im Kampf
 
 Was ein Gegenstand beim Tragen oder Mitführen bewirkt, kann auch einen Kampf verändern (Capability API 1.56), und zwar für seinen Besitzer, neben dessen Zuständen und Stufen. Beide nehmen die Teile eines Zustands auf, die ein Kampf liest:
@@ -392,8 +372,6 @@ Der verfluchte Witwenring aus Gravewatch kostet bei jedem Angriff einen Würfel,
 Ein Kampf liest jeden Gegenstand einmal, benannt nach dem Stapel („Widow's ring“ neben einem Wurf im Protokoll und bei einer Verteidigung), so wie eine Probe. Das `otherwise` einer unerfüllten Anforderung zählt auch im Kampf; eine für ihren Träger zu schwere Rüstung kann also Geschwindigkeit kosten. Die Details eines Gegenstands und die Zeile für den Game Master nennen alles davon („While worn: -1 on attacks“, „worn: +1 on checks (Ward), immune to Rattled“). Rüstung, die zu einer Verteidigung oder einer Schadensminderung addiert, ist ein Gegenstandswert, der mit `itemStat` gelesen wird (siehe „Gegenstände auf dem Bogen“), so wie Guard in Ember Roads den getragenen Mantel liest.
 
 **Härte.** Wo Initiative eine Zahl ist, die Angriffe verschieben, ist `combat.pool.hardness` die Härte eines Kämpfers, zu Kampfbeginn von seinem Bogen gelesen (die seiner Rüstung, über `itemStat`), und eine Kreatur gibt ihre eigene `hardness` an. Ein Schlag im ausgebenden Stil, dessen Würfel darunter liegen, trifft und bewirkt nichts: Die Zahl des Angreifers fällt trotzdem auf die Basis zurück, das Protokoll sagt das („Adas Grave spade trifft den Wächter mit 5 Würfeln, unter einer Härte von 6, und bewirkt nichts.“), und das Menü sagt dafür keinen Schaden voraus. Nur ein Regelsatz mit einem ausgebenden Stil darf sie haben, und eine als Bogen geschriebene Kreatur nimmt sie aus dem Bogen.
-
-<a id="using-items-in-a-fight"></a>
 
 ## Gegenstände im Kampf nutzen
 
@@ -444,8 +422,6 @@ Ein Gegenstand kann im Kampf genutzt werden (Capability API 1.59): ein auf eine 
 
 Was ein Kampf verbraucht und welche Ladungen er übrig lässt, wird bei jedem Schritt ins Inventar geschrieben, wie die Schüsse einer Waffe, und das Journal nennt, was verbraucht wurde. Das Kampfprotokoll nennt jede Nutzung („Poultice: 1 von 2 übrig.“, „Dawn bell: 2 von 3 übrig.“). Ein von der Engine gespieltes Gruppenmitglied setzt eine Heilung nur bei Verletzten ein, und niemand nutzt einen Gegenstand für einen Angriff auf jemanden, der sich entfernt. Die Details des Gegenstands und die Zeile für den Game Master nennen, was seine Nutzung bewirkt: „Use (Action): heals 1d4 + 1, range 0 paces, used up“ und `use (Act): Steel 7 save negates it, Rattled, 1 of 3 charges`, und die Details zeigen die verbleibenden Ladungen. Ein Gegenstand, den der Game Master `like=` einem deiner Gegenstände erfindet, wird wie dieser genutzt, samt Ladungen.
 
-<a id="items-in-turn-based-and-tactical-battles"></a>
-
 ## Gegenstände in Turn-Based- und Tactical-Kämpfen
 
 Ein Regelsatz, der seine Kämpfe nicht selbst auflöst, überlässt sie den eigenen Turn-Based- und Tactical-Kämpfen von Game Mode, in denen zu Kampfbeginn ein Modell gefragt wird, was die Gegenstände im Inventar bewirken. Deine Gegenstände werden nicht geraten: Jeder mit `use` tut, was dort steht, mit den eigenen Zahlen der Engine, und die Einschätzung des Game Master wird nur für Gegenstände erfragt, die nicht deine sind (und bei `native: false` für keine).
@@ -461,8 +437,6 @@ Ein Regelsatz, der seine Kämpfe nicht selbst auflöst, überlässt sie den eige
 - Ein Gegenstand ohne `use` wird in diesen Kämpfen nicht angeboten, ebenso wenig eine Heilung ohne `amount`.
 
 Die Engine berechnet die Wirkung jedes Gegenstands selbst; was der Bildschirm sendet, entscheidet also nie, was einer deiner Gegenstände bewirkt.
-
-<a id="loot"></a>
 
 ## Beute
 
@@ -493,8 +467,6 @@ Ein gewonnener Kampf lässt in jedem Game-Mode-Spiel einmal Beute fallen, direkt
 - Was fällt, kommt wie ein Hinzufügen in die gemeinsame Ansicht, wobei zuerst die Tasche des Spielers gefragt wird, und was niemand tragen kann, bleibt zurück. Die Zusammenfassung für den Game Master nennt, was gefallen ist und dass es schon in den Taschen liegt, das Journal sagt das, und eine Benachrichtigung zeigt es an.
 - Der Game Master würfelt eine Tabelle in der Geschichte mit `[loot: table="grave_goods" who="Ada"]` (`who=` für die Tasche eines einzelnen Charakters), gemessen ab dem Beginn des Zuges wie seine Inventar-Tags, sodass eine neu generierte Antwort nur einmal Beute fallen lässt. Jeder fallende Gegenstand wird wie ein Hinzufügen beantwortet, und seine Anweisungen listen deine Tabellen auf.
 
-<a id="money"></a>
-
 ## Geld
 
 Deine `currencies` sind das Geld der Gruppe. Eine Münze ist ein Gegenstand in den Taschen, ein Stapel jeder Münze wie jeder andere, benannt nach ihrem `label`:
@@ -504,8 +476,6 @@ Deine `currencies` sind das Geld der Gruppe. Eine Münze ist ein Gegenstand in d
 - Eine Zeile über den Stapeln des Inventars zeigt die sichtbaren Münzen jeder Familie und ihren Wert in der kleinsten Münze der Familie. Der Game Master sieht diesen Wert neben jeder Tasche (`Coin worth 432 pennies` oder `no coins` für einen leeren Geldbeutel, wobei die Tasche des Spielers auch dann aufgeführt wird, wenn sie nichts enthält) und die `cost` eines Gegenstands neben dem Gegenstand (`costs 3 shillings`).
 - Der Game Master bezahlt mit `[inventory: action="pay" amount="3 shillings" who="Ada"]` und wird mit `action="earn"` bezahlt. `amount` ist eine Anzahl und eine Münze, per ID oder Beschriftung, Einzahl oder Mehrzahl, ohne Beachtung der Groß- und Kleinschreibung (`1 penny`, `12 pennies`). Eine Zahlung kommt aus einer einzigen Tasche (ohne `who=` aus der des Spielers) und nur in der eigenen Familie der Münze: Zuerst gehen die größten passenden Münzen, dann wird die kleinste verbleibende Münze gewechselt, die den Restbetrag deckt, und das Wechselgeld kommt in den kleineren Münzen der Familie zurück, die größten zuerst. Die Antwort nennt, was bezahlt wurde und was zurückkam: 3 shillings aus einem Geldbeutel mit einer einzigen crown ergeben `Paid with crowns ×1; shillings ×2 back.` Eine Zahlung, die die Tasche nicht leisten kann, wird abgelehnt (`cannot-afford`), ebenso eine Münze, die du nicht hast (`unknown-coin`), und jede Zahlung in einem Regelsatz ohne Währungen (`no-currencies`). Ein Verdienst ist ein Hinzufügen dieser Münze, in die Tasche von `who` oder nach der Tragregel verteilt. Das Journal listet Ausgaben und Einnahmen auf, und eine Benachrichtigung zeigt sie an. Die Anweisungen des Game Master listen deine Münzen auf; diese Befehle erhält nur ein Regelsatz mit Münzen.
 - Kaufen ist eine Zahlung und anschließend ein Hinzufügen oder, in einem Regelsatz mit Markt, ein `buy` (siehe unten). Einen Ladenbildschirm gibt es nicht.
-
-<a id="starting-gear"></a>
 
 ## Startausrüstung
 
@@ -544,8 +514,6 @@ Deine `currencies` sind das Geld der Gruppe. Eine Münze ist ein Gegenstand in d
 - `fits` liest den Bogen ohne seinen Live-Zustand, wie das Tragen. Es bestimmt nur die Reihenfolge der Liste.
 - Das Nehmen gilt ganz oder gar nicht: Ausrüstung, die für ihren Träger zu schwer ist, wird ganz abgelehnt, und der Dialog nennt ihr Gewicht und wie viel er noch tragen kann. Ein Gegenstand, den eine Ebene aus dem Spiel nimmt, wird weggelassen und genannt, ebenso eine Liste, deren Gegenstände sie alle herausnimmt; Münzen einer Münze, die eine Ebene herausnimmt, werden in der größten verbleibenden Münze gleichen Werts ausgezahlt, und der Dialog zeigt sie so an. Ausrüstung, von der nichts übrig bleibt, wird abgelehnt, damit sie nie umsonst als genommen markiert wird. Eine Dienstleistung wird nie aus einer Liste angeboten.
 - Der Import prüft jeden Gegenstand (in einem direkt eingebetteten Katalog; ein Katalog in eigener Datei wird geprüft, wenn die Ausrüstung genommen wird), jede Münze, jeden einfachen Gegenstand und jeden `fits`-Verweis, lehnt eine Dienstleistung ab und lehnt eine Anzahl ab, die mehr Stapel bräuchte, als eine Tasche auf einmal aufnimmt.
-
-<a id="markets"></a>
 
 ## Märkte
 
@@ -642,8 +610,6 @@ Capability API 1.79 lässt einen Gegenstand riskant oder eine Fälschung sein un
 - **Getragen oder mitgeführt**: Eine Fälschung bewirkt auf dem Bogen des Charakters, was sie wirklich bewirkt (ihre `worn`- oder `carried`-Wirkungen und ihre Werte). Die erste Inventaränderung, nach der der Bogen eine Zahl zeigt oder eine Probe etwas addiert, was der Gegenstand, für den sie sich ausgibt, nicht täte, deckt sie auf, und Journal und Bildschirm sagen, was sie war. Ein Unterschied, den nur ein Kampf liest (eine Resistenz), deckt sie nicht auf, ebenso wenig eine Änderung allein am Bogen bis zur nächsten Inventaränderung. Im Kampf greift eine getragene gefälschte Waffe weiterhin als die Waffe an, für die sie sich ausgibt.
 - Im Vertrauensmodus für Einzelspieler zeigt Peek Prompt die Sicht des Game Master, einschließlich der Wahrheit.
 
-<a id="spotting-fakes"></a>
-
 ### Fälschungen erkennen
 
 Mit Capability API 1.802 kann ein Charakter eine Fälschung als solche erkennen, durch eine Probe oder dadurch, dass er sie bemerkt, bevor jemand bezahlt. Die Engine kennt keine der Proben beim Namen: Der Regelsatz legt sie fest.
@@ -686,8 +652,6 @@ Mit Capability API 1.802 kann ein Charakter eine Fälschung als solche erkennen,
 - **Bemerken vor einem Kauf**: Würde ein Kauf bei einem unehrlichen Händler eine Fälschung ergeben, wertet jedes andere Gruppenmitglied jede Probe aus, die es dazu und zum Händler ablegen kann, ohne Würfel: `items.passiveBase` (standardmäßig 10) und sein Wert, 5 mehr mit Vorteil und 5 weniger mit Nachteil. Wer zuerst eine Schwierigkeit erreicht, hat etwas bemerkt: Es wird nichts bezahlt, und der Kauf wird mit `reason="held"` beantwortet, zusammen mit der Angabe, wer was bemerkt hat. Der Game Master wird gebeten, auszuspielen, wie dieser Gefährte den Käufer in seiner Rolle warnt, ohne den Händler direkt zu beschuldigen, sofern die Persönlichkeit des Gefährten das nicht nahelegt, und den Käufer entscheiden zu lassen. Dem Spieler wird nichts Weiteres mitgeteilt. Wird derselbe Kauf bei diesem Händler an diesem Tag erneut angefragt, wird er ausgeführt. `items.warnBy: "roll"` würfelt diese Proben stattdessen.
 - **Fälschungen durchschauen**: `items.revealsFakes` listet die Methoden auf, mit denen ein Charakter Fälschungen durchschauen kann und die er auf einen Gegenstand wirken darf (einen Zauber, ein Ritual), jeweils mit einer `id`, ihrer `label` und, bei einer Methode, die nur manche Fälschungen durchschaut, deren `tags` oder den Fälschungen selbst per Verweis (`items`, wo nur Fälschungen erlaubt sind). Die Fälschungen zu nennen erspart ihnen einen verräterischen Tag: Ein Gifttrank mit dem Tag „poison“ würde sich neben dem Heiltrank verraten, für den er sich ausgibt. `[inventory: action="inspect" item="Potion of Healing" who="Mira" with="Identify"]` nennt eine solche Methode: Eine Fälschung, die sie durchschaut, wird benannt; eine, deren `foolsReveal` die Methode aufführt, erscheint als das, wofür sie sich ausgibt; und eine Fälschung, die sie nicht durchschauen kann, oder ein echter Gegenstand zeigt nichts („genuine“ bei einer Methode, die jede Fälschung durchschaut, sonst „unsure“). Das verbraucht keinen Versuch; welche Kosten das Wirken hat, liegt wie bei jedem Zauber beim Game Master.
 - Ein Regelsatz, der etwas davon nutzt, braucht Capability API 1.802. Bei der Installation werden abgelehnt: die Angaben `tells` oder `foolsReveal` einer Fälschung an einem Gegenstand, der keine Fälschung ist; ein Gegenstand unter `carries` oder `revealsFakes`, der nicht zu denen des Regelsatzes gehört (bei `items` muss es eine Fälschung sein); und eine `foolsReveal`-ID, die `revealsFakes` nicht aufführt.
-
-<a id="using-items-outside-a-fight"></a>
 
 ## Gegenstände außerhalb eines Kampfes nutzen
 

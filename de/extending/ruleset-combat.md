@@ -25,8 +25,6 @@ Abschnitte auf dieser Seite:
   - [Fenster: Den Kampf für eine Entscheidung anhalten](#windows-holding-the-fight-open)
   - [Noch nicht umgesetzt](#not-yet)
 
-<a id="battles-lending-the-sheet-to-marinaras-combat"></a>
-
 ## Kämpfe: Den Bogen Marinaras Kampfsystem bereitstellen
 
 Standardmäßig weiß ein Kampf nichts vom Bogen. Er erstellt seine Kämpfer wie bisher. Ein Charakter kann einen Kampf daher verlassen, ohne dass sich die Trefferpunkte auf seinem Bogen verändert haben.
@@ -46,8 +44,6 @@ Ein optionaler `battle`-Block ändert das in genau einer Hinsicht: Er stellt dem
 - `slots`: Optional. Laufende Pools, aus denen ein Kampf jeweils einen Platz verbraucht, mit einer `level`-Angabe von 1 bis 9: `[{ "pool": "slots_1", "level": 1 }]`. Jede Stufe und jeder Pool dürfen nur einmal vorkommen.
 - `skills`: Optional, höchstens acht. Die Bogenlisten, deren Zeilen zu Kampffertigkeiten werden. Es zählen nur Zeilen aus einem deiner Kataloge und nur dann, wenn ihr ursprünglicher Eintrag einen `mechanics`-Block hat. Eine von Hand eingegebene Zeile beschreibt keine Wirkung in Zahlen. `onlyWhen` nennt eine gesetzte boolesche Spalte, etwa für einen vorbereiteten Zauber. `alwaysWhen` nennt eine Spalte samt Wert, die eine Zeile trotzdem zulassen, etwa Zauber, die ohne Vorbereitung gewirkt werden. Das ist eine Ausnahme zu `onlyWhen` und wird ohne diese danebenstehende Angabe abgelehnt.
 
-<a id="what-is-carried-in-and-what-is-carried-out"></a>
-
 ### Was in den Kampf hinein- und aus ihm herausgetragen wird
 
 **Hinein**, für jedes Gruppenmitglied mit im Spiel vorhandenem Bogen: Der Anteil des Gesundheitspools an seinem Maximum bestimmt die Ausgangsposition auf Marinaras Gesundheitsleiste. Der Energiepool wird zu MP, jeder Platzpool zu den Plätzen seiner Stufe und die markierten Zeilen zu Fertigkeiten. Maximale Trefferpunkte, Angriff, Verteidigung, Geschwindigkeit und Stufe bleiben Marinaras eigene Zahlen. Ein Charakter mit null im Gesundheitspool beginnt am Boden, weil der Bogen das vorgibt. Ein Charakter über null beginnt nie mit weniger als einem Trefferpunkt, damit ein kleiner Anteil niemanden durch Rundung außer Gefecht setzt.
@@ -57,8 +53,6 @@ Ein optionaler `battle`-Block ändert das in genau einer Hinsicht: Er stellt dem
 **In keiner Richtung**: Angriffswürfe, Rettungswürfe, Konzentration und die Zusatzwirkung höherer Kosten. Diese Angaben stehen im `mechanics`-Block für ein echtes Kampfsystem, das sie eines Tages liest. Diese Verbindung wendet sie nicht an; ein Regelsatz sollte das auch nicht behaupten.
 
 Ein abgebrochener Kampf schreibt nichts zurück. Löschst du die Nachricht, in der er begonnen hat, oder erreicht der Kampf sein Ende nicht, bleibt der Bogen genau wie zuvor: Der Kampf hat nicht stattgefunden.
-
-<a id="how-an-entry-becomes-a-skill"></a>
 
 ### Wie aus einem Eintrag eine Fertigkeit wird
 
@@ -72,8 +66,6 @@ Der `mechanics`-Block eines Katalogeintrags wird so gelesen:
 - `buff` oder `debuff` wird zu Marinaras eigener Verstärkung oder Schwächung. Andere im Eintragstext versprochene Wirkungen, etwa das Entfernen eines Zustands auf dem Bogen, werden im Kampf nicht angewendet. Lass `mechanics` bei Einträgen weg, deren Wirkung nur außerhalb eines Kampfes sinnvoll ist.
 
 `coverage.combat` bleibt davon getrennt und behält seine Bedeutung: Setze es nur, wenn Kämpfe deinen Systemregeln folgen.
-
-<a id="combat-a-fight-your-own-rules-resolve"></a>
 
 ## Kampfregeln: Ein Kampf, den deine eigenen Regeln auflösen
 
@@ -142,8 +134,6 @@ Das ist der vollständige Ember-Roads-Block, nach dem ein Spiel mit Ember Roads 
   "concentration": { "text": "concentration", "save": "con_save", "floor": 10, "fromDamage": 0.5 }
 }
 ```
-
-<a id="every-key"></a>
 
 ### Alle Schlüssel
 
@@ -300,8 +290,6 @@ Das ist der vollständige Ember-Roads-Block, nach dem ein Spiel mit Ember Roads 
 
   Der Game Master erfährt den Wert jeder Stufe und das Budget der Gruppe, bevor er einen Kampf schreibt. Ein von ihm erfundener Kampf mit einem höheren Wert wird herabgestuft: Der erfundene Gegner mit dem höchsten Wert wird um eine Stufe herabgesetzt, und das wird wiederholt, bis der Kampf ins Budget passt; ein Kampf mit einem Boss darf den nächsthöheren Schritt erreichen. Eine Kreatur aus dem Bestiarium und eine, die aus einem früheren Kampf zurückkehrt, werden mit ihren bestehenden Werten gezählt, und ein Story-Kampf bleibt seinem Autor überlassen. Was herabgestuft wurde, steht in den Anpassungen des Kampfes.
 
-<a id="saves-against-conditions-damage-or-magic"></a>
-
 ### Rettungswürfe gegen Zustände, Schaden oder Magie
 
 Ein Modifikator mit `to: "saves"` kann `against` tragen. Es braucht mindestens eines von `conditions` (Zustands-IDs des Bogens), `damage` (Schadensarten) oder `magic: true`. Eine einzelne Übereinstimmung genügt; `saves` grenzt den Rettungswurf weiterhin zusätzlich ein (als UND). Verwende den `mode: "advantage"` des Modifikators, nicht `effects`, um Vorteil auf diese Weise einzugrenzen. Diese Modifikatoren funktionieren bei Zuständen, bei erreichten Stufen von Leisten oder abgeleiteten Werten und bei Gegenstandswirkungen. Für Rassenmerkmale leitest du einen Wert aus der Rassenwahl des Bogens ab und hängst den Modifikator an eine Stufe, die erreicht ist, wenn dieser Wert 1 ist. Beispielmodifikatoren:
@@ -326,8 +314,6 @@ Ein Modifikator mit `to: "saves"` kann `against` tragen. Es braucht mindestens e
 ```
 
 Brave verwendet `conditions: ["frightened"]`. Magic Resistance verwendet `magic: true` ohne `saves`, an einer aus dem Bogen abgeleiteten Stufe oder einer Leistenstufe einer Kreatur. Das `applies` einer Aktion zählt, auch wenn der Rettungswurf den Zustand verhindert; ihr Schaden umfasst jeden `plus`-Bestandteil. Schadensnamen werden ohne Beachtung der Groß- und Kleinschreibung abgeglichen. Magie bedeutet die Qualität `"magical"` aus 1.101: `mechanics.qualities` eines Katalogeintrags (auch ohne Schaden), `damage.qualities` einer Kreaturenaktion oder die Tags einer Gegenstandswaffe. Ein Zauber muss diese Qualität tragen; sein Name oder sein Katalog allein macht ihn nicht magisch. Ein Rettungswurf zum Beenden eines Zustands, einschließlich `saveWhenDamaged` und `saveEnds.at: "damaged"`, richtet sich nur gegen diesen Zustand. Konzentrations- und Todesrettungswürfe richten sich gegen nichts. Außerhalb eines Kampfes tragen Rettungswurfanforderungen des Game Master weder eine strukturierte Quelle noch einen Zustand; `against` passt nie auf solche Anforderungen. Bogen, Gegenstandsdetails, Kampfdetails und die Bogenzusammenfassung des Game Master zeigen diese Einschränkungen. Erfordert schemaVersion 2 und capabilityApi 1.134 oder neuer.
-
-<a id="a-fight-thrown-in-pools-dice-pool"></a>
 
 ### Ein Kampf mit Würfelpools: `dice-pool`
 
@@ -361,8 +347,6 @@ Der Schaden für jedes Ziel wird für dieses Ziel geworfen, denn was ein Treffer
 Gravewatch ist so geschrieben: Seine Wächter werfen einen Grundwert und eine Tätigkeit, absorbieren Knock-Schaden mit Sinew und Tear-Schaden überhaupt nicht, dürfen pro Zug einen Punkt Resolve ausgeben und würfeln die Initiative jede Runde neu.
 
 **Ansagen in umgekehrter Reihenfolge ist nicht umgesetzt.** Manche Systeme lassen alle ihre Aktion ansagen, bevor jemand handelt, die Langsamsten zuerst. In einem Kampf, in dem jeder Kämpfer eine Aktion wählt, sobald er an der Reihe ist, ändert eine vorherige Ansage nichts, was eine Regel liest; ein Schlüssel hätte also nichts auszudrücken.
-
-<a id="a-fight-thrown-in-symbol-dice-symbol-pool"></a>
 
 ### Ein Kampf mit Symbolwürfeln: `symbol-pool`
 
@@ -402,8 +386,6 @@ Die Engine kauft für jede Seite die Ausgaben, die für ihre vorhandenen Symbole
 
 **Was beim Game Master bleibt.** Die Kosten einer Ausgabe gehören dem Regelsatz, nicht der einzelnen Waffe. Eine Waffe mit eigenem kritischem Wert wird daher als Ausgabe geschrieben, die der ganze Regelsatz teilt; die eigene Tabelle eines kritischen Treffers würfelt der Game Master. Vorteil auf einem Rettungswurf, einer Probe oder einer vergleichenden Probe kauft nichts: Nur der Wurf eines Angriffs wird ausgegeben. Eine Aufwertung der Schwierigkeitswürfel im Kampf ist nicht umgesetzt.
 
-<a id="minimum-damage-dice"></a>
-
 ### Mindestschadenswürfel
 
 Ein Pool-Kampf kann selbst gegen starke Schadensminderung Würfel behalten, wie **Overwhelming** in Exalted:
@@ -415,8 +397,6 @@ Ein Pool-Kampf kann selbst gegen starke Schadensminderung Würfel behalten, wie 
 Das ist `combat.damage.minimum`, ein Wertverweis, der vom aktuellen Bogen des **Angreifers** gelesen wird. Nachdem statische Schadensminderung Würfel vom ersten Schadenspool eines Treffers abgezogen hat, wird der Pool auf mindestens diese Zahl angehoben. Es sind ganze Würfel, abgerundet und zwischen null und `resolution.pool.max` begrenzt, keine automatischen Erfolge: Jeder verbleibende Würfel kann scheitern. Gewürfelte Schadensminderung zieht nach dem Schadenswurf weiterhin Erfolge ab; sie verkleinert keinen Würfelpool, das Minimum schützt Erfolge also nicht vor ihr. Resistenz und Immunität gelten weiterhin. Schläge im ausgebenden Stil ignorieren das Minimum, so wie sie Waffenschaden und Schadensminderung ignorieren; Schläge im nehmenden Stil verwenden es.
 
 Eine Waffe kann das gemeinsame Minimum mit `item.attack.damage.minimum` überschreiben. Es nimmt dieselben Wertverweise auf ihren Träger an oder `{ "stat": "overwhelming" }` für einen der eigenen Zahlenwerte des Gegenstands. Auch eine deklarierte Null überschreibt das gemeinsame Minimum. Das unterscheidet sich vom bestehenden `floor` einer Waffe, das eine Schadensmenge nach der Schadensminderung garantiert. Zusätzliche Schadensbestandteile und Zusatzeffekte erhalten kein weiteres Minimum. Der Kampfdatensatz und das Protokoll zeigen das aufgelöste Minimum neben den Würfeln. Sowohl der Kampfschlüssel als auch der Waffenschlüssel brauchen in einem Paket **Capability API 1.146**, auch für Waffen in externen Katalogdateien.
-
-<a id="a-hit-that-dazes"></a>
 
 ### Ein Treffer, der benommen macht
 
@@ -432,8 +412,6 @@ Eine Waffe kann das gemeinsame Minimum mit `item.attack.damage.minimum` übersch
 `combat.daze` ist für Pool-Kämpfe gedacht. `over` liest den aktuellen Bogen des **Ziels** unmittelbar vor dem Treffer. Ein einzelner Treffer muss nach Schadensminderung, Rettungswürfen und Resistenz **echt mehr** Schaden verursachen als diese Zahl. Seine Schadensbestandteile zählen zusammen; getrennte Treffer summieren sich nie zu einer Benommenheit. Auf einer Leiste, die pro Schlag markiert, zählt ein schadender Treffer als eine Stufe. Ein Schlag, der Initiative statt Gesundheit nimmt, kann nicht benommen machen. `measure` ist derzeit nur `"damage"`.
 
 Das Ziel setzt genau seinen nächsten Zug aus. Weitere benommen machende Treffer vor diesem Zug lassen nicht noch mehr Züge aussetzen. Der ausgesetzte Zug lässt die Uhren von Zuständen und die übrige Zugbuchhaltung weiterlaufen, einschließlich Rundenwechseln und neu gewürfelter Initiative. Speichern und Neuladen des Kampfes bewahrt das anstehende Aussetzen. `condition` nennt, wenn angegeben, einen deklarierten Bogenzustand. Der Kampf markiert ihn, bis der ausgesetzte Zug vorbei ist oder der Kampf endet. Ein bereits vorhandener Zustand bleibt bestehen; Zustandsimmunität verhindert die Markierung, aber nicht das Aussetzen. `text` ist optionaler Erzähltext, keine weitere Wirkung. Das Protokoll und der Kampfkontext des Game Master halten den Treffer und das Aussetzen fest. Der Schlüssel braucht **Capability API 1.147**.
-
-<a id="the-target-chooses-the-wound-kind"></a>
 
 ### Das Ziel bestimmt die Wundart
 
@@ -453,8 +431,6 @@ Ergänze `remap` in der bestehenden Zuordnung `combat.damageKinds`; behalte ihr 
 Ein Pool-Kampf bestimmt zuerst mit seiner gewöhnlichen Zuordnung die Art des Angriffs und liest dann das `when` jeder Umordnung am **Ziel**. Eine Zahl ungleich null schaltet die Regel ein. `from` und `to` müssen beide Arten der Gesundheitswundleiste sein. Die erste passende Regel gewinnt; Umordnungen werden nicht verkettet. Höchstens 12 dürfen angegeben werden. Mit `tags` muss mindestens eines zum Angriff passen: Eine Waffe trägt bereits `item.tags`, und Katalogmechaniken und Kreaturenschaden tragen bereits `qualities`. Diese Namen stammen aus `items.tags`. Ohne `tags` kann jeder Angriff dieser Art passen. Ein neues Feld für Angriffs-Tags ist nicht nötig.
 
 Die sich ergebende Art bestimmt sowohl die **Schadensminderung** als auch die Wundmarkierungen. So kann der tödliche Treffer einer Schusswaffe gegen einen Vampir zu Schlagschaden werden und die Schadensminderung für Schlagschaden verwenden; dieselbe Schusswaffe gegen jemand anderen oder eine Klinge gegen diesen Vampir behält ihre gewöhnliche Art. Der ursprüngliche _Schadenstyp_ des Angriffs bleibt für Resistenz und Immunität unverändert. Jeder Schadensbestandteil verwendet seine eigene Art und die Tags des Angriffs. Der Kampfdatensatz und das Protokoll zeigen die ursprüngliche und die umgeordnete Art, und die Schadensvorhersage liest dieselbe Regel. Eine einfache Kreatur ohne Bogen kann einen konstanten Verweis erfüllen, aber keine Bogenwerte für diese Regeln liefern; gib ihr dafür einen Kreaturenbogen. Nur der neue Schlüssel `remap` braucht **Capability API 1.148**; ältere Zuordnungen von Schadensarten behalten ihre bisherige Kompatibilität.
-
-<a id="initiative-that-attacks-move"></a>
 
 ### Initiative, die Angriffe verschieben
 
@@ -482,8 +458,6 @@ Manche Pool-Systeme führen die Initiative den ganzen Kampf über als Zahl und l
 - **Zusammenbruch.** Eine Zahl, die auf `crash.at` oder darunter fällt, ist zusammengebrochen: Die `condition` (einer deiner eigenen Zustände, optional) wird dem Betroffenen auferlegt, und wer ihn dorthin gebracht hat, gewinnt `bonus`. Ein Fehlschlag, der seinen eigenen Urheber zusammenbrechen lässt, gibt niemandem einen Bonus. Ein zusammengebrochener Kämpfer kann nicht ausgeben. Der Zusammenbruch endet samt Zustand, wenn seine Zahl wieder über die Linie steigt, nach `recoverAfter` seiner eigenen Züge (seine Zahl kehrt zu Beginn dieses Zuges zu `base` zurück) und wenn der Kampf endet, wie auch immer er endet. Wer mit seinem Eröffnungswurf auf oder unter der Linie liegt, beginnt den Kampf zusammengebrochen. `base` muss über `crash.at` liegen, sonst würde die Rückkehr dorthin den Kämpfer erneut zusammenbrechen lassen.
 
 Das Menü zeigt für jeden Stil eine eigene Vorhersage: die Trefferchance und was ein nehmender Stil nehmen oder welchen Schaden ein ausgebender verursachen würde. Die Statusanzeige zeigt die Zahl aller Beteiligten, und das Protokoll nennt jede Änderung samt Grund: „Ada gewinnt 5 Initiative für den Zusammenbruch von Rats und steht bei 14.“ Die Auswahl der Engine wägt einen Schlag im nehmenden Stil einen Zug voraus ab: erst nehmen und dann ausgeben gegen jetzt ausgeben und danach erneut von der Basis aus.
-
-<a id="what-a-fight-reads-from-mechanics"></a>
 
 ### Was ein Kampf aus `mechanics` liest
 
@@ -532,8 +506,6 @@ Ein Eintrag mit dem neuen `kind: "rider"` ist PASSIV: Niemand wählt ihn aus, er
 
 `sources` nennt die Angriffslisten, von denen der Effekt ausgeht, und `requires` eine als wahr gewertete Spalte ihrer Zeilen. So kann ein Zusatzeffekt seine Einschränkung auf bestimmte Waffen beschreiben, ohne dass die Engine wissen muss, was eine Waffe ist. Fehlen beide Angaben, gilt jeder Treffer des Besitzers. Eine aus der Tasche gehaltene Waffe ist keine Zeile; `weapons` (Capability API 1.70) nennt daher zusätzlich die Gegenstands-Tags, bei denen der Effekt auslöst: `"weapons": { "tags": ["finesse",
 "ranged"] }` löst bei einem Treffer mit einer gehaltenen Waffe aus, die eines dieser Tags trägt, einschließlich ihres Schlags mit der Nebenhand. Wer nur `weapons` nennt, löst bei keiner Zeile aus, und wer nur Zeilen nennt, bei keiner gehaltenen Waffe. Bei `when` reicht EINE Bedingung: `advantage` ist der letztlich angewendete Vorteil des Angriffswurfs. `ally-adjacent` ist ein aufrecht stehender, handlungsfähiger Verbündeter des Angreifers, auf einem Brett höchstens eine Zelle vom Ziel entfernt und ohne Brett an beliebiger Position. `ally-adjacent-no-disadvantage` (Capability API 1.126) verlangt außerdem, dass der endgültige Wurf nach dem Aufheben von Vorteil und Nachteil nicht mit Nachteil erfolgt; das obige Beispiel verwendet es für Sneak Attack. `oncePer` ist `turn` (frisch zu Beginn jedes Zuges, damit auch ein Angriff während eines fremden Zuges einen Zusatzeffekt tragen kann) oder `round`. `amount` wächst mit den eigenen `scales` des Eintrags. `type` ist die Schadensart und verwendet standardmäßig die des Treffers.
-
-<a id="creatures-a-bestiary-a-fight-reads"></a>
 
 ### Kreaturen: Ein Bestiarium für Kämpfe
 
@@ -721,8 +693,6 @@ Danach werden beide auf ihre Stufe begrenzt:
 
 Dein eigenes Bestiarium wird niemals begrenzt. Seine Daten stammen von dir; die Engine übernimmt sie so, wie du sie geschrieben hast.
 
-<a id="positions-a-fight-on-a-board"></a>
-
 ### Positionen: Ein Kampf auf einem Brett
 
 Ein Kampf bleibt in der Vorstellung, bis dein Block den Wert einer Brettzelle angibt. Mit `distance` kann er auf einem Raster stattfinden. Dann bekommen Bewegung, Nah- und Fernkampfreichweiten, Flächen, Sichtlinien, Deckung und Angriffe auf Weggehende eine Bedeutung. Jede Zahl stammt von dir; die Engine stellt nur das Brett bereit.
@@ -856,8 +826,6 @@ Die Nachfrage ist ein FENSTER, das den gesamten Kampf anhält. Nichts anderes be
 
 **Mögliche Ablehnungen.** `out-of-reach` (außerhalb der Reichweite), `no-line-of-sight` (ein festes Hindernis steht im Weg), `unreachable` (ein Feld ist nicht bezahlbar oder kein erlaubtes Bewegungsende) und `bad-cell` (ein unerlaubter Zielpunkt für eine Fläche).
 
-<a id="what-a-fight-does-with-your-block-on-the-server"></a>
-
 ### Was der Server im Kampf mit deinem Block macht
 
 Ein Spiel mit einem Regelsatz, der `combat` deklariert, erhält einen entsprechend aufgelösten Kampf im selben gespeicherten Kampfdatensatz wie bisher:
@@ -868,15 +836,11 @@ Ein Spiel mit einem Regelsatz, der `combat` deklariert, erhält einen entspreche
 - **Dein Menü allein bestimmt die Erlaubnis.** Jeder Handelnde, Spieler wie Gegner, wählt eine ID aus demselben von deinem Block erzeugten Menü. Ein von der Engine gesteuerter Gegner verwendet ihre Taktik. Ein vom Game Master gesteuerter Gegner soll eine ID aus genau diesem Menü wählen, sieht deine Zahlen und erfährt nie vorab das Würfelergebnis.
 - **Deine Würfel.** Ein Kampf führt seinen eigenen Seed und Positionszähler. Nach dem Laden von der Festplatte setzt er damit dieselbe Würfelfolge fort.
 
-<a id="on-screen"></a>
-
 ### Auf dem Bildschirm
 
 Der Kampf läuft auf dem Kampfbildschirm in deinen Begriffen. Das Menü enthält deine Angriffe, Fähigkeiten, vergleichenden Proben und aufgeführten Standardaktionen, jeweils mit Kosten aus deinen Budgets und Pools. Angezeigt werden Zugreihenfolge, Runde, alle benannten Zustände mit verbleibenden Runden, temporäre Punkte, Konzentration und die beiden Zähler deiner Sterberegel. Das Protokoll zeigt die echte Rechnung in deinen Begriffen, etwa: "Juno greift Rust jackal mit Road axe an: 8 (5 + 3) + 3 = 11 gegen Guard 6, ein Treffer." Jede angenommene Aktion wird sofort auf den Bogen geschrieben. Neuladen mitten im Kampf ist daher exakt, und der Game Master wird anschließend angewiesen, diese Zahlen nicht erneut zu verändern.
 
 Ein Kampf mit Positionen erscheint auf dem Brett statt auf der Porträtbühne. Siehe Positionen für die Bedienung. Jede Entfernung auf dem Brett, im Menü und im Protokoll verwendet DEINE Einheit, etwa: "Juno bewegt sich für 6 Schritte auf 4, 6 und hat noch 2 Schritte übrig."
-
-<a id="contests-grabbing-shoving-breaking-free"></a>
 
 ### Vergleichende Proben: Packen, Stoßen, Losreißen
 
@@ -931,8 +895,6 @@ Manche Züge sind kein Angriff gegen eine Verteidigung, sondern eine vergleichen
 - Bei einem vom Game Master erfundenen Gegner werden die Probenwerte auf seine Stufe begrenzt, wie seine Trefferchance.
 
 Vergleichende Proben brauchen bei einem als Paket ausgelieferten Regelsatz Capability API 1.43.
-
-<a id="windows-holding-the-fight-open"></a>
 
 ### Fenster: Den Kampf für eine Entscheidung anhalten
 
@@ -1126,8 +1088,6 @@ Sein Eintrag in `combat.conditions` ist `{ "condition": "feather_falling", "fall
   "applies": [{ "condition": "feather_falling", "duration": { "rounds": 10 } }]
 }
 ```
-
-<a id="not-yet"></a>
 
 ### Noch nicht umgesetzt
 

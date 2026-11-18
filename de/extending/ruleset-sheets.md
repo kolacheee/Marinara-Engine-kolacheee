@@ -45,6 +45,10 @@ Eine Fertigkeit oder ein Rettungswurf kann ein `cap` tragen: einen Wertverweis a
 
 Das `max` einer einfachen Leiste darf statt einer Zahl ein Wertverweis sein; ein Wert des Charakters legt dann fest, wie weit sie reicht: `"max": { "field": "willpower_rating" }`. `min` und `default` bleiben Zahlen. Eine Wundleiste mit benannten Stufen hat ein `max` gleich der Anzahl ihrer Stufen; eine Leiste mit nummerierten Kästchen ist so lang wie ihr eigenes `max` (siehe unten „Nummerierte Kästchen“). `alwaysShow: true` gibt eine Leiste auch auf ihrem Standardwert im Bogenblock des Game Master aus, für einen Wert, der in jedem Zug zählt. Ohne diese Angabe wird eine Leiste auf ihrem Standardwert weggelassen, weil drei Todesrettungswürfe auf null nichts aussagen. Bei einem als Paket ausgelieferten Regelsatz brauchen diese drei Capability API 1.37.
 
+`sheet.progress` (Capability API 1.829) gibt jeder trainierten Fertigkeit eine Übungsanzeige: den Fortschritt von 0 bis 99 zum nächsten Rang. `{}` schaltet sie ein, und `except` listet die Fertigkeitsabschnitte auf, die keine Übung erfassen, etwa Wissen, das gekauft statt durch Anwendung gelernt wird. Der Game Master verändert sie mit `[sheet: op="practice" skill="Skill" by="5"]` oder setzt sie mit `to="N"`, und der Spieler kann sie auf dem Bogen korrigieren. Bei 99 ist Schluss, und nur eine trainierte Fertigkeit unterhalb des höchsten Rangs nimmt Übung an. Ein Rangwechsel mit `op="advance"` setzt die Fertigkeit auf 0 zurück; wird derselbe Rang erneut geschrieben, bleibt der Fortschritt erhalten. Übung wird wie eine Leiste mit der Nachricht gespeichert, ein Swipe oder eine Neugenerierung nimmt sie also zurück. Der Bogenblock des Game Master zeigt sie hinter der Fertigkeit: `Smithing +2 (60%)`. Ein von Hand auf dem Bogen geänderter Rang behält seine Übung; korrigiere sie dort ebenfalls. Nutze das für Systeme, in denen man durch Anwendung lernt, der Rangaufstieg aber weiterhin von anderswo kommt: ein LitRPG-Bogen, dessen System Ränge verkündet, oder die Erfahrungshäkchen von RuneQuest.
+
+Ein laufender Pool oder eine einfache Leiste kann mit `"display": "bar"` neben der Zahl einen Füllbalken in seiner Bogenzeile anzeigen, für Werte, die ein Spieler auf einen Blick erfasst, etwa Health oder Stress. `"dots"` zeigt stattdessen eine Reihe von Punkten, einen pro Punkt bis zum Maximum, ausgefüllt bis zum aktuellen Wert. Das eignet sich für in Punkten gezählte Werte wie Hunger oder Humanity. Eine Skala, die unter 0 oder über 20 reicht, erscheint als Balken, weil Punkte nicht unter null zählen können und eine so lange Reihe nicht auf einen Blick lesbar ist. `"counter"` oder das Weglassen der Angabe zeigt nur die Zahl. Eine Wundleiste zeichnet ihre eigenen Kästchen und ignoriert die Angabe. Auch die Pools eines Gruppenbogens unterstützen sie. Für einen als Paket ausgelieferten Regelsatz ist das Capability API 1.828.
+
 ## Live-Zustände: Eine Gestalt, eine Haltung, ein Licht
 
 Ein Enum-Feld wird beim Erstellen eines Charakters gewählt und bleibt dann so, und ein Zustand ist nur an oder aus. Ein **Live-Zustand** ist dagegen ein Wert aus einer geschlossenen Menge, der sich im Spiel ändert: die Gestalt eines Gestaltwandlers, eine Kampfhaltung, wie hell eine Laterne brennt.
@@ -89,8 +93,6 @@ Ein Enum-Feld wird beim Erstellen eines Charakters gewählt und bleibt dann so, 
 - Eine Ebene darf aus einem Feld einen Wert entfernen, für den eine Tabelle eine Zeile hat. Solange die Ebene aktiv ist, wird diese Zeile nie gelesen.
 
 Live-Zustände, `enumTable` und ein Rast-Schritt, der einen `state` nennt, brauchen bei einem als Paket ausgelieferten Regelsatz Capability API 1.42.
-
-<a id="wound-tracks-health-that-is-a-track-not-a-number"></a>
 
 ## Wundleisten: Gesundheit als Leiste statt als Zahl
 
@@ -208,8 +210,6 @@ Das Ergebnis nennt, was der Bogen hinzugefügt hat (`adjust="-2"` im Datensatz u
 ## Rasten
 
 Eine Rast ist eine Liste von Wiederherstellungsschritten und zu entfernenden Dingen. Jeder Schritt nennt genau ein Ziel (`pool`, `poolGroup`, `listPools`, `track` oder `state`) und setzt es entweder auf einen Wert (`"to": "max"`, `"to": "min"` oder eine Zahl) oder verändert es (`"by": { "const": 1 }` oder `"by": { "fractionOfMax": 0.5 }`). Ein Schritt für eine Wundleiste kann sie nur heilen, sein `by` ist daher negativ; siehe oben. Ein Schritt für einen Live-Zustand setzt ihn nur, und zwar auf `"default"` oder einen seiner Werte. Ein `poolGroup`-Schritt mit `fractionOfMax` verändert jeden Pool der Gruppe um seinen eigenen Anteil. Mit `"shared": true` (Capability API 1.77) wird der Anteil stattdessen aus dem Maximum der ganzen Gruppe berechnet und in der Reihenfolge, in der der Bogen die Pools auflistet, auf die Pools der Gruppe verteilt, jeder bis zu dem, was ihm fehlt. Die lange Rast in 5e, „die Hälfte der Gesamtzahl der“ Trefferwürfel des Charakters, gehalten in einem Pool pro Würfeltyp, ist `{ "poolGroup": "hit_dice", "by": { "fractionOfMax": 0.5, "round": "down", "min": 1 }, "shared": true }`.
-
-<a id="game-master-text"></a>
 
 ## Text für den Game Master
 

@@ -5,10 +5,8 @@ Such dir dein Symptom heraus und folge dann der Lösung. Die meisten Probleme ve
 ## Erste Versuche
 
 1. Lade die Seite vollständig neu, also ohne Cache: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> unter Windows oder Linux, <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> auf dem Mac.
-2. Such in der Server-Konsole (dem Terminal-Fenster, in dem Marinara läuft) nach roten Fehlerzeilen. Sie nennen meist das eigentliche Problem.
+2. Such in der Server-Konsole (dem Terminal-Fenster, in dem Marinara läuft) nach roten Fehlerzeilen. Sie nennen meist das eigentliche Problem. Läuft der Server woanders (auf einem NAS, einem VPS oder in Docker), öffne **Einstellungen → Erweitert → Konsole öffnen**, um dieselben Zeilen in der App zu lesen.
 3. Willst du um Hilfe bitten, schalte zuerst den **Debug mode** (Debug-Modus) ein. Siehe [Weitere Hilfe bekommen](#get-more-help).
-
-<a id="my-character-does-not-reply"></a>
 
 ## Mein Charakter antwortet nicht
 
@@ -75,8 +73,6 @@ Loopback, private Netzwerkadressen, Tailscale und die Docker-Bridge gelten autom
 CSRF_TRUSTED_ORIGINS=http://203.0.113.10:7831,https://chat.example.com
 ```
 
-<a id="connection-and-generation-errors"></a>
-
 ## Fehler bei Verbindung und Generierung
 
 Fehler bei der Generierung erscheinen als Toast-Meldung am unteren Bildschirmrand. Die Meldung nennt den Grund und bleibt lange genug stehen, um sie zu kopieren.
@@ -88,6 +84,7 @@ Fehler bei der Generierung erscheinen als Toast-Meldung am unteren Bildschirmran
 | Das Modell verlangt einen Parameter | Schalte den Schalter dieses Parameters ein. |
 | **This model's chat template needs user and assistant messages to take turns** | Manche lokalen Modelle, etwa Mistral-basierte Modelle unter llama.cpp, brauchen abwechselnde Nachrichten. Marinara führt aufeinanderfolgende Nachrichten zusammen und versucht es einmal erneut. Bleibt der Fehler, stell **Post-Processing Messages** (Nachbearbeitung der Nachrichten) unter **Chat Settings → Advanced Parameters** auf **Single User Message** (eine einzige Nutzernachricht) oder betreib das Modell mit einer weniger strengen Chat-Vorlage. |
 | **The AI returned an empty response. Try sending your message again.** | Schick die Nachricht noch einmal ab. Passiert das wieder, probier ein anderes Modell oder Konto. |
+| **The model declined this request** | Das Modell hat sich geweigert, diese Antwort zu schreiben. Siehe in Game Mode [Das Modell lehnt einen Zug ab](game/getting-started.md#the-model-declines-a-turn). Versuch es andernorts erneut und probier dann ein anderes Modell, Preset oder eine andere Charakterkarte. |
 | **A generation is already in progress for this chat** | Eine Antwort wird noch gestreamt. Warte oder klick auf **Stop** und versuch es dann erneut. |
 | **No connections are marked for the random pool** | Das zufällige Routing ist eingeschaltet, aber kein Konto ist im Pool. Füg eines hinzu oder schalte das zufällige Routing aus. |
 | Jede Nachricht scheitert mit einem Netzwerkfehler, und dein Computer erreicht das Internet nur über einen Proxy | Teile Marinara den Proxy mit. Siehe [Ausgehender HTTP-Proxy](CONFIGURATION.md#outbound-http-proxy). |
@@ -100,8 +97,6 @@ Probleme direkt nach einem Update, zuerst in einfachen Worten:
 - Chats oder Presets scheinen zu fehlen: Siehe [Nach einem Update fehlen scheinbar Daten](#data-seems-missing-after-an-update). Deine Daten liegen fast immer noch auf der Festplatte.
 - Chats wirken leer, nachdem du zu einer älteren Version zurückgekehrt bist: Siehe [Nach dem Wechsel zu einer älteren Version zeigen Chats keine Nachrichten](#chats-show-no-messages-after-switching-to-an-older-version).
 
-<a id="blank-stale-or-old-looking-screen"></a>
-
 ### Leerer, veralteter oder alt wirkender Bildschirm
 
 Der Server läuft, aber der Browser zeigt eine leere Seite, oder die App sieht nach einem Update alt aus. Der Browser hält eine zwischengespeicherte Kopie der Web-App fest.
@@ -110,8 +105,6 @@ Der Server läuft, aber der Browser zeigt eine leere Seite, oder die App sieht n
 2. Hilft das nicht, öffne **Settings → Advanced → Updates** und klick auf **Refresh App** (App neu laden).
 
 **Refresh App** löscht den Service Worker des Browsers (ein Hintergrundskript, das die App zwischenspeichert) und den Cache und lädt die Seite dann neu. Deine Daten bleiben unverändert, und der Server wird nicht aktualisiert. Wie du die App selbst aktualisierst, steht unter [Marinara Engine aktualisieren](UPGRADING.md).
-
-<a id="blank-page-or-javascript-served-as-html-after-an-update"></a>
 
 ### Leere Seite oder JavaScript als HTML nach einem Update
 
@@ -123,13 +116,9 @@ Ein Fehler wie „Failed to load module script“ mit dem Typ `text/html` bedeut
 
 Scheitert es weiterhin, melde die vollständige URL der fehlerhaften Datei, den HTTP-Status, den Content-Type und die erste Antwortzeile zusammen mit der Launcher-Ausgabe.
 
-<a id="data-seems-missing-after-an-update"></a>
-
 ### Nach einem Update fehlen scheinbar Daten
 
 Lösch keine Datenordner. Marinara legt die aktiven Daten in einem Ordner `storage` innerhalb seines Datenordners ab. Such nach `storage` in `packages/server/data/` und in `data/`. Der Server gibt beim Start aus, welche Ordner er ermittelt hat.
-
-<a id="chats-show-no-messages-after-switching-to-an-older-version"></a>
 
 ### Nach dem Wechsel zu einer älteren Version zeigen Chats keine Nachrichten
 
@@ -139,7 +128,7 @@ Marinara verhindert offensichtliche Downgrades. Der Launcher überspringt ein Au
 
 Hast du aktualisiert und bist dann zu einer älteren Version zurückgekehrt, stell das Backup wieder her, das du vor dem Update angelegt hast. Siehe [Downgrade auf eine ältere Version](UPGRADING.md#downgrading-to-an-older-version). Die technischen Details folgen.
 
-Deine Daten haben jetzt Speicherformat 10. Die Formate 8, 9 und 10 fügen 3D-Avatar-Einstellungen (MMD, dann GLB und FBX) und die Verknüpfung von Verbindungen mit Konten hinzu, die ältere Builds nicht sicher lesen können. Haben deine Daten Format 8 oder neuer erreicht, stell ein vollständiges Backup von vor diesem Upgrade wieder her, um einen älteren Build zu verwenden. Der folgende Befehl konvertiert nur ältere Chat-Dateilayouts. Ändere die Formatnummer nicht von Hand. Siehe [Downgrade auf eine ältere Version](UPGRADING.md#downgrading-to-an-older-version).
+Deine Daten haben jetzt Speicherformat 11. Die Formate 8, 9 und 10 fügen 3D-Avatar-Einstellungen (MMD, dann GLB und FBX) und die Verknüpfung von Verbindungen mit Konten hinzu; Format 11 speichert Personas als Charakterkarten. Ältere Builds können diese Daten nicht sicher lesen. Format 11 behält die ursprünglichen Persona-Dateien als `.pre-v11`-Kopien in `storage/tables/personas/`. Haben deine Daten Format 8 oder neuer erreicht, stell ein vollständiges Backup von vor diesem Upgrade wieder her, um einen älteren Build zu verwenden. Der folgende Befehl konvertiert nur ältere Chat-Dateilayouts. Ändere die Formatnummer nicht von Hand. Siehe [Downgrade auf eine ältere Version](UPGRADING.md#downgrading-to-an-older-version).
 
 Bei Daten unter Format 8 konvertierst du das Chat-Dateilayout so:
 
@@ -200,8 +189,6 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=1 pnpm --config.trustPolicy=off --config.confirmModu
 ```
 
 Deine Chats und Einstellungen bleiben unberührt. Lässt sich Sharp weiterhin nicht laden, läuft Marinara mit abgeschalteter Bildverarbeitung weiter. Vorhandene Vorschaubilder werden weiter angezeigt, für neue wird das Bild in voller Größe verwendet, und die Sprite-Generierung sowie die eingebaute Hintergrundentfernung stehen nicht zur Verfügung. Ersetze Sharp nicht durch eine andere Version. Heb die vollständige Fehlerausgabe für eine Meldung auf.
-
-<a id="browser-opens-before-startup-finishes"></a>
 
 ### Der Browser öffnet sich vor Abschluss des Starts
 
@@ -265,8 +252,6 @@ Das **Built-in model** (eingebautes Modell) läuft ohne API-Key auf deinem Compu
 4. **Embedding unavailable** bedeutet, dass keine Embedding-Quelle funktioniert. Richte ein Embedding-Konto ein oder lass das eingebaute Modell laden. Soll eine Quelle für jeden Chat gelten, wähl sie für die Aufgabe **Embeddings** im Kasten **Standardwerte** unter **Verbindungen** aus.
 
 Eine Erinnerung entsteht erst nach mindestens 5 neuen Nachrichten. Recall zeigt nur Erinnerungen, die eng zu deiner neuen Nachricht passen, und kann deshalb nichts liefern, obwohl Erinnerungen vorhanden sind.
-
-<a id="advanced-memory-says-scenes-need-attention"></a>
 
 ### Advanced Memory meldet Szenen mit Handlungsbedarf
 
@@ -410,8 +395,6 @@ Die App erzeugt ihre privaten localhost-Zugangsdaten und meldet sich automatisch
 
 Prüf außerdem, ob App und Termux denselben Port nutzen. Der Standard ist `7860`. Hast du die App mit einem anderen Port gebaut, setz den passenden `PORT` in der `.env` von Termux.
 
-<a id="android-localhost-opens-the-login-page-or-returns-401503"></a>
-
 ### Android-localhost öffnet die Anmeldeseite oder gibt 401/503 zurück
 
 Von der APK verwaltete Termux-Installationen schützen localhost mit einem privaten Geheimwert pro Installation, und die App meldet sich automatisch an. Erscheint die Anmeldeseite in der App, installier die [neueste APK](https://github.com/Pasta-Devs/Marinara-Engine/releases/latest/download/marinara-engine-android.apk), tipp erneut auf **Install / Start Marinara** und kehr zurück, wenn Termux fertig ist.
@@ -484,8 +467,6 @@ pnpm store prune
 
 Startet das Lite-Image auf einem Raspberry Pi 4 oder einem ähnlichen ARM-Gerät bei jeder KI-Anfrage neu, sieh dir den Exit-Code an. Exit 132 oder SIGILL (die CPU ist auf einen Befehl gestoßen, den sie nicht ausführen kann) deutet auf ein bekanntes Upstream-Problem im Node-Build des Lite-Images auf manchen ARM-Chips hin. Nutz auf diesem Gerät das reguläre Image.
 
-<a id="a-server-extension-says-no-supported-sandbox-is-available"></a>
-
 ### Eine Server-Erweiterung meldet, es gebe keine unterstützte Sandbox
 
 Server-Erweiterungen und die rohen Shell-Befehle von Professor Mari laufen nur mit macOS Seatbelt oder Linux Bubblewrap. Installier `bwrap` auf einem nativen Linux-Host und starte Marinara neu. Das offizielle Docker-Image enthält Bubblewrap, aber der Standard-Container kann dessen verschachtelte Namespaces nicht erzeugen, deshalb lässt Marinara diese Funktionen ausgeschaltet.
@@ -530,8 +511,6 @@ Ein Paket, das erneut mit einer leeren Capabilities-Liste exportiert wurde, gilt
 
 Bleibt nach dem Deaktivieren einer Erweiterung mit Zugriff auf die gesamte Seite ein Eintrag in der Werkzeugleiste, ein Overlay oder ein Listener zurück, lad Marinara neu. Das Aufräumen erfolgt nach bestem Bemühen, denn Seiten-Code kann Nebenwirkungen haben, die Marinara nicht verfolgt.
 
-<a id="multiplayer-connection-or-turn-problems"></a>
-
 ## Mehrspielerprobleme bei Verbindung oder Zügen
 
 | Symptom | Lösung |
@@ -549,8 +528,6 @@ Nenn bei der Meldung eines Verbindungsfehlers den Modus, die Plattform, die sich
 ## Die Installation als PWA unter Android Chrome scheitert hinter einer Anmeldung
 
 Verwende eine HTTPS-Adresse, melde dich an und lade nach einem Marinara-Update neu. Die App fordert ihr Manifest mit Anmeldedaten an, sodass die Anmeldung eingeschaltet bleiben kann. Ist die Installation weiterhin nicht verfügbar, prüf, ob dein Proxy `/manifest.json` als JSON ausliefert und nicht als Anmeldeseite oder Fehler.
-
-<a id="get-more-help"></a>
 
 ## Weitere Hilfe bekommen
 

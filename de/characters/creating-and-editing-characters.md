@@ -63,8 +63,6 @@ Der Tab **Bilder** bündelt alles rund um das Aussehen eines Charakters auf Bild
 
 Der Tab **Bilder** einer Persona hat dieselben Bereiche, außer **Selfie instructions**.
 
-<a id="metadata-tab"></a>
-
 ## Tab „Metadata“
 
 Der Tab **Metadata** enthält Angaben zu Identität und Organisation. Sie helfen dir, eine Karte zu sortieren, zu teilen und nachzuverfolgen. Die meisten gehen nicht an die KI.
@@ -81,8 +79,6 @@ Der Tab **Metadata** enthält Angaben zu Identität und Organisation. Sie helfen
 **Split description into fields** (Beschreibung in Felder aufteilen) ist eine Schaltfläche unter **Version**. Sie verschiebt gekennzeichneten Text (Persönlichkeit, Aussehen, Vorgeschichte, Szenario, Regeln, Beispieldialog) aus **Description** in eigene Felder. Zuerst siehst du eine kurze Zusammenfassung. Übernimmst du sie, wird die Karte als neue Version gespeichert. Die Schaltfläche ist inaktiv, solange **Description** leer ist.
 
 Das Panel **Version history** (Versionsverlauf) liegt ebenfalls auf diesem Tab. Siehe [Versionsverlauf](#version-history).
-
-<a id="card-tab"></a>
 
 ## Tab „Card“
 
@@ -112,8 +108,6 @@ Der Abschnitt **Dialogue & Greetings** legt fest, wie ein Chat beginnt und wie d
 ```
 
 Begrüßungen und Beispielnachrichten können Bilder aus der Galerie des Charakters anzeigen. Siehe [Ein Galeriebild in Nachrichten und Begrüßungen wiederverwenden](galleries.md#reuse-a-gallery-image-in-messages-and-greetings). Zeigen Begrüßungen Bilder von anderen Websites, legt **Save images locally** (Bilder lokal speichern) eine Kopie in der Galerie ab. Siehe [Webbilder aus Begrüßungen speichern](galleries.md#save-web-images-from-greetings).
-
-<a id="write-a-card-field-with-the-wand"></a>
 
 ### Ein Kartenfeld mit dem Zauberstab schreiben
 
@@ -158,11 +152,11 @@ Die Bildgröße stammt aus der Bildgröße **Portraits** in den Einstellungen zu
 
 Der Tab **Voice** (Stimme) legt fest, wie der Charakter klingt, wenn Text to Speech (Sprachausgabe) ihn vorliest.
 
-- **Voice**. Die Stimme für diesen Charakter. Eine Änderung wird sofort gespeichert, ohne **Save**. Es ist dieselbe Einstellung wie die Zeile dieses Charakters unter **Connections → Text to Speech** (Verbindungen → Sprachausgabe). Lass das Feld leer, um die Standardstimme zu verwenden. Hat eine Karte mit passendem Namen eine Stimme – etwa das Original einer AU-Kopie –, nennt das leere Feld diese Stimme, denn diese Karte verwendet sie ebenfalls.
+- **Voice**. Die Stimme für diesen Charakter. Eine Änderung wird sofort gespeichert, ohne **Save**. Es ist dieselbe Einstellung wie die Zeile dieses Charakters in den Einstellungen der Aufgabe **Stimme** unter **Verbindungen**. Lass das Feld leer, um die Standardstimme zu verwenden. Hat eine Karte mit passendem Namen eine Stimme – etwa das Original einer AU-Kopie –, nennt das leere Feld diese Stimme, denn diese Karte verwendet sie ebenfalls.
 - **Preview** (Vorschau). Spielt eine kurze Zeile mit dieser Stimme ab. Die Zeile nennt den Namen des Charakters oder, falls einer eingetragen ist, den **Phonetic name**.
 - **Phonetic name**. Eine optionale Schreibweise, die nur die Aussprache korrigiert. Sie gehört zur Karte, klick also auf **Save**, um sie zu behalten.
 
-Ist Text to Speech aus oder teilen sich alle Charaktere eine Stimme, ersetzt ein kurzer Hinweis das Feld **Voice**. Bei einer gemeinsamen Stimme bietet der Hinweis **Use a voice per character** (eigene Stimme pro Charakter verwenden) an. **Open Text to Speech settings** (Text-to-Speech-Einstellungen öffnen) öffnet Connections. Siehe [Text to Speech (TTS) einrichten](../media/tts-setup.md).
+Ist Text to Speech aus oder teilen sich alle Charaktere eine Stimme, ersetzt ein kurzer Hinweis das Feld **Voice**. Bei einer gemeinsamen Stimme bietet der Hinweis **Use a voice per character** (eigene Stimme pro Charakter verwenden) an. **Open Text to Speech settings** (Text-to-Speech-Einstellungen öffnen) öffnet die Einstellungen der Aufgabe **Stimme** unter **Verbindungen**. Siehe [Text to Speech (TTS) einrichten](../media/tts-setup.md).
 
 ## Tab „Advanced“
 
@@ -173,8 +167,6 @@ Der Tab **Advanced** enthält Prompt-Steuerungen. Für einen normalen Charakter 
 - **Depth Prompt**. Text, der in den Chatverlauf eingefügt wird. **Depth** gibt an, wie viele Nachrichten weit zurück: 0 liegt direkt hinter der neuesten Nachricht. Der Standard ist 4. **Role** ist **System**, **User** oder **Assistant**. Der Standard ist System.
 
 Der Abschnitt **Regex Scripts** enthält Suchen-und-Ersetzen-Skripte für genau diesen einen Charakter. Siehe [Regex-Skripte](../extending/regex-scripts.md).
-
-<a id="use-an-alternative-field-in-selected-chats"></a>
 
 ## Ein alternatives Feld in ausgewählten Chats verwenden
 
@@ -200,11 +192,9 @@ Regeln:
 
 Zum Entfernen einer Alternative klick auf ihren Papierkorb, bestätige mit **Delete** (Löschen) und klick dann auf **Save**. Ihre Chats verwenden danach wieder das Originalfeld. Das Originalfeld wird mit einer Alternative nie gelöscht.
 
-<a id="version-history"></a>
-
 ## Versionsverlauf
 
-Solange **Automatic versioning** an ist, kann jedes Speichern eine Momentaufnahme zu **Version history** auf dem Tab **Metadata** hinzufügen. Bis dahin steht dort `Previous card states will appear here after the next edit.` Ein Zähler zeigt, wie viele Momentaufnahmen gespeichert sind.
+Solange **Automatic versioning** an ist, kann jedes Speichern eine Momentaufnahme zu **Version history** auf dem Tab **Metadata** hinzufügen. Bis dahin steht dort `Previous card states will appear here after the next edit.` Ein Zähler zeigt, wie viele Momentaufnahmen gespeichert sind. Beim Aktualisieren des Charakters aus einer neueren Karte wird immer zuerst eine Momentaufnahme gespeichert, auch wenn der Schalter aus ist. Siehe [Einen vorhandenen Charakter aktualisieren](import-export.md#update-a-character-you-already-have).
 
 So vergleichst du eine gespeicherte Version mit deiner aktuellen Karte:
 

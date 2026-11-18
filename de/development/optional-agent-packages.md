@@ -95,14 +95,15 @@ Die Eigenschaft ist weder beschreibbar noch konfigurierbar, und der Namensraum s
 | `modules` | Bibliotheksmodule mit dem Bare Specifier als Schlüssel (siehe unten). |
 | `queryClient` | Der eine `QueryClient` von React Query, mit dem die Engine rendert. |
 | `components.Modal` | Das `Modal` der Engine, mit seiner Overlay-Reihenfolge und seiner Behandlung von Escape und Zurück-Taste. |
+| `components.Switch`, `components.Checkbox` | Ab Capability API 1.830: der gemeinsame Schalter und das Kontrollkästchen der Engine, damit ein Paket zum Aussehen des Hosts passt. |
+| `components.Spinner` | Ab Capability API 1.830: der gemeinsame Ladering der Engine. Für Screenreader ist er verborgen, sofern du kein `label` übergibst, das ihn zu einem Statusbereich macht. |
+| `components.showConfirmDialog` | Ab Capability API 1.830: der Bestätigungsdialog der Engine, dieselbe Funktion wie `services.dialogs.showConfirmDialog`. |
 | `data.emojiCatalog` | Das Modul `lib/emoji-catalog.generated.ts`. |
 | `api` | Das Modul `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
 Ein Paket liest ein Mitglied erst nach einer Prüfung, zum Beispiel
 `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`.
-
 Verwende für Bilddownloads `shouldUseIosImageShare()`, damit dieselben Plattformregeln wie in der Galerie gelten. Bereite das Bild auf dem iPhone vor der Speichergeste mit `prepareImageSave(url, filename)` vor und rufe `savePreparedImageToDevice(prepared)` direkt aus dieser Geste auf. Ein abgebrochener Teilen-Vorgang bleibt ohne Fehlermeldung; ein fehlgeschlagener Vorgang wird nicht durch eine WebKit-Downloadvorschau ersetzt. Andere Plattformen verwenden `downloadUrlToDevice`. Diese Hilfsfunktionen speichern auf dem Gerät des Clients, auch wenn der Engine-Server in Docker läuft.
-
 Der Namensraum wächst nur: Ein neues Mitglied kommt mit einer Minor-Version der Capability API, und ein Paket, das es braucht, verlangt diese Minor-Version. Pakete, die für den Namensraum gebaut sind, verlangen die Version der Capability API, die ihn eingeführt hat. Eine ältere Engine installiert sie also nie und behält die Paketversion, die sie bereits hat. Fehlt ein Mitglied trotzdem, greift das Paket nie auf eine mitgebündelte Kopie eines zustandsbehafteten Engine-Dienstes zurück: Die Stores `ui` und `chat` werden zu schreibgeschützten Kopien, die nie schreiben, und jedes andere Mitglied meldet, dass die Funktion eine neuere Version von Marinara Engine braucht.
 
 **Host-Module.** `modules[specifier]` ist ein vollständiger Modulnamensraum, einschließlich `default`, sofern die Bibliothek eines hat. `MARINARA_HOST_MODULE_IMPORTS` im Client-Vertrag ordnet jedem öffentlichen Slot die Abhängigkeit zu, die er importiert. Meist stimmen beide Namen überein. Der stabile Slot `framer-motion` ist `framer-motion-v13` zugeordnet (ein exakter npm-Alias für Motion 13.5.1), während der optionale Slot `motion/react` der primären Abhängigkeit `framer-motion` 14 der Engine zugeordnet ist. Die Paketwerkzeuge verwenden diese Zuordnung sowohl für die Exportliste als auch für die TypeScript-Pfade; öffentliche Slot-Namen müssen keine tatsächlichen Abhängigkeiten sein. Die Specifier sind `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `@tanstack/react-query`, `zustand`, `zustand/middleware`, `sonner`, `zod`, `i18next`, `react-i18next`, `framer-motion`, `motion/react`, `tailwind-merge` und `clsx`. Ein Paket-Build löst diese Specifier zu Shims auf, die den Namensraum lesen. So rendert das Paket mit dem einen React der Engine und teilt deren React-Query-Cache und Toasts.
@@ -263,11 +264,8 @@ Das Dokument hat die Form `{ "schemaVersion": 1, "verbs": [ … ] }` mit einem b
 ```
 
 Ein Verbname entspricht `[a-z][a-z0-9_]*`, umfasst höchstens 32 Zeichen und darf keines der eigenen GM-Klammertags der Engine sein. Diese Prüfung ignoriert Groß-/Kleinschreibung: Die Erinnerung schreibt `[Note:` und `[Book:` groß, der Parser erkennt sie unabhängig davon. Ein Verb `note` würde daher das Journaltag verdecken. Die reservierte Menge stammt aus allen Tags, die GM- und Party-Erinnerungen in ihren Zweigen ausgeben können, sowie aus den fünf Parsern für fertige Erzählungen: Client-Tag-Parser, Client-Erzählformatter, serverseitiger Segmenteditor, Sidecar-Szenenanalyse und Dialogumschreiber der Generierungsroute. Ihr Wortschatz ist größer als der jeder Erinnerung. Er enthält die Dialogtokens `main`, `side`, `extra`, `action`, `thought` und `whisper` sowie `qte_bonus` / `qte_result`, die nur der Erzählformatter erkennt. Gerade deshalb ist die Absicherung wichtig: Ein Verb `whisper` würde `[whisper:Tam]` vor dem Speichern aus einer Dialogzeile entfernen; diese wäre danach dauerhaft keine Dialogzeile mehr.
-
 Eine Regression sichert auch die Extraktoren ab. Jeder Parser mit einzigartigen Namen muss diese weiterhin liefern, etwa `party-chat` / `party-turn` aus dem Tag-Parser und das QTE-Paar aus dem Formatter. Verschwindet eine Quelle aus der Suche, schlägt der Build fehl, statt die reservierte Menge zu verkleinern. Auch die drei Quellen ohne einzigartige Namen werden durchsucht, um dort zuerst ergänzte Tags zu erkennen. Vollständigkeit verspricht diese Absicherung nicht: Ein Tag außerhalb der durchsuchten Dateien oder in einer vom Extraktor nicht erkannten Schreibweise könnte fehlen. Bei neuen Parsern muss die Suche daher erweitert werden. Auch gewöhnliche Wörter wie `action`, `state`, `status` und `note` sind eingebaute Tags; ihre Ablehnung beruht meist auf dieser Regel, nicht auf einem Tippfehler.
-
 `description` ist eine Zeile mit 1–200 Zeichen ohne eckige Klammern und Zeilenumbrüche, weil sie unverändert in die Verbzeile des Blocks `COMMANDS:` der Erinnerung gelangt. Als Zeilenumbrüche gelten neben CR/LF auch `U+0085`, `U+2028` und `U+2029`. Auch C0-Steuerzeichen und DEL werden abgelehnt; besonders ein Tabulator könnte den Block umformen, ohne eine Zeile zu beenden. Unverändert bedeutet hier jedoch nicht ohne Makroverarbeitung: Die gesamte Erinnerung wird vor dem Senden aufgelöst. `{{…}}` in einer Beschreibung wird daher expandiert, einschließlich schreibender Makros wie `{{setvar::…}}`. Das reicht nicht weiter als die vorhandene Berechtigung `chat-write`, kann aber versehentlich passieren. Verwende Makroklammern deshalb nur absichtlich.
-
 Ein Verb akzeptiert bis zu sechs Argumente, jeweils `{ name, type, enum?, maxLength?, optional? }`. Namen entsprechen `[a-z][a-zA-Z0-9_]*` mit höchstens 32 Zeichen, bewusst weiter als Verb-Namen ohne Großbuchstaben: Argumentnamen sind JSON-Schlüssel, keine Klammertags. Nur String-Argumente dürfen `enum` tragen: 1–16 unterschiedliche Werte. Wiederholungen bringen nichts und werden wie andere Duplikate in Verbtabellen abgelehnt. Ein String ohne Enum muss `maxLength` von 1–500 deklarieren; der begrenzte Parser hat keine eigene Längengrenze und würde sonst ganze Erzählfragmente zulassen. `enum` und `maxLength` zusammen werden abgelehnt, weil das Enum bereits begrenzt. Nutzdaten sind flaches einzeiliges JSON; ein verschachteltes `}` beendet die Tagerkennung vorzeitig. Pro Verbname und Nachricht wird nur ein Vorkommen gelesen; eine Wiederholung in derselben Erzählung wird einmal ausgeführt.
 
 Das musst du nicht in der Beschreibung wiederholen. Die Erinnerung wird aus der geparsten Tabelle erstellt: schematische Nutzdaten, Beschreibung und ein kopierbares Beispiel:
@@ -291,11 +289,9 @@ Enthält ein Zug beide Arten, erreicht die synchrone Event-Zustellung das Paket 
 Ablehnung ist bewusst asymmetrisch. Die Engine prüft nur Struktur: Argumentnamen, Typen, Enum-Werte und String-Grenzen. Bedeutung gehört dem Paket; NPC-Namen etwa können nicht schon bei Deklaration aufgezählt werden, wenn die Welt je Chat entsteht. Die Ablehnung eines Zustandsverbs durch das Paket ist deshalb nur _ein Hinweis_: Die Metadaten sind bereits gespeichert. Bei einem Ereignisverb ist sie _verbindlich_: Engine-seitig wurde nichts gespeichert; ein unbekannter Name kann tatsächlich abgelehnt werden.
 
 Der `metadataKey` eines Zustandsverbs muss nach drei Regeln zum deklarierenden Paket gehören. Er beginnt mit dessen nach Camel Case normalisierter ID (`hierarchical-maps` → `hierarchicalMaps`). Es folgt ein nicht leeres Suffix, das mit einem Großbuchstaben beginnt; dadurch kann kein Paket den Namensraum eines anderen als Präfix verwenden. Außerdem darf die normalisierte ID kein Engine-Metadaten-Namensraum sein oder diesen an einer Großbuchstabengrenze verlängern. Die Namensraumliste stammt aus allen obersten `ChatMetadata`-Schlüsseln, den Engine-Konstanten und Schlüsseln der Indexsignatur statt der Deklaration: `encounterActive`, `internalAssistant`, `imageGenConnectionId` und weitere, die die ersten beiden Quellen nicht sehen.
-
 Diese dritte Gruppe benötigt sieben Quellen, weil die Engine Metadaten in mehreren Formen liest und schreibt: das Objekt eines `patchMetadata`/`updateMetadata`-Aufrufs; das von einem Aktualisierungs-Callback _zurückgegebene_ Objekt, fast ebenso häufig; die Client-Mutation `useUpdateChatMetadata()` und ihr Prop `onMetadataChange`, die `patchMetadata` nie verwenden; direkte Client-Aufrufe `PATCH /chats/:id/metadata`, etwa für Kampf-, Szenen- und Erzählwerte der Game-Oberfläche; Zugriffe über `chatMetadata.key` und `chat.metadata.key`; Zugriffe auf Ergebnisse von `parseChatMetadata(…)`, die häufigste Form und einzige Quelle für Schlüssel wie `scenario`; schließlich die bereits manuell gepflegte Liste für Chat-Einstellungsprofile. Letztere erfasst Schlüssel, die vollständig über Funktionsgrenzen hinweg gelesen und geschrieben werden.
 
 Regressionen sichern alle Quellen und Extraktoren ab. Zwei Fälle liegen bewusst außerhalb der Suche. Ein Schreibaufruf mit Variable oder Helferergebnis, etwa `patchMetadata(id, hydratedMeta)` oder dieselbe Form an der Metadatenroute, enthält statisch nicht erkennbare Schlüssel. Davon gibt es derzeit zwanzig; die Regression fixiert diese Zahl. Ein einundzwanzigster lässt den Build bis zur manuellen Prüfung scheitern. Ein Lesezugriff _innerhalb_ eines Helfers über einen Parameter ist ebenfalls nicht statisch erfasst. So verhält sich `spatialContext`: Geschrieben vom Client des Pakets `hierarchical-maps` im Agents-Repository, gelesen hier über einen Helfer und dateilokales Parsing. Diese Lücke schließt die gepflegte Liste. Deshalb ist eine Quelle bewusst kuratiert statt abgeleitet; die Ableitung benennt ihre blinden Flecken. `persona` ist ein manuell ergänzter Mindesteintrag ohne heutige Ableitungsquelle.
-
 Die dritte Regel kann absichtlich ganze Pakete ausschließen: `conversation-calls` wird zu `conversationCalls`, und `conversationCalls` + `Enabled` ist bereits ein Engine-Schlüssel. Dieses Paket darf daher unter seiner ID keine Chat-Metadatenschlüssel besitzen. Dasselbe gilt für `noodle` und `background`; Letzteres, weil `background` selbst ein Engine-Schlüssel für Chat-Metadaten ist. Solche Pakete dürfen weiterhin schlüssellose Ereignisverben deklarieren. Schlüssel sind flach auf oberster Ebene, passend zum vorhandenen Abgleich des Pakets.
 
 Verben laufen nur für installierte, bereite Pakete mit `chat-write`. Diese Berechtigung schützt auch die Persistenz-API für Nachrichten, Chat-Metadaten, Roleplay-Ereignisse und räumliche Snapshots. `chat-read` schützt Lesezugriffe auf Chats, Nachrichten, Spielzustand und räumliche Snapshots. Dieselben Prüfungen gelten in Transaktionen und Chatsperren; Schreibrecht gewährt nicht automatisch Leserecht. Engine-eigene Persistenzaufrufe bleiben vertrauenswürdig.
@@ -453,8 +449,6 @@ Ein Paket-Server läuft nicht direkt aus `DATA_DIR/capability-packages/versions/
 - **Aufräumen beim Start.** Nach einem Absturz oder einem erzwungenen Stopp entfällt das Aufräumen einer Kopie. Bei jedem Start, bevor irgendein Paket aktiviert wird, löscht die Engine jeden Eintrag in `capability-runtime-snapshots` außer den gemeinsamen `node_modules`-Links, denn keiner davon kann vom neuen Prozess benutzt werden. Schreibgeschützte Dateien macht sie zuerst beschreibbar, was Windows verlangt, und Links folgt sie nie. Nur der Prozess, der die Schreib-Lease des Speichers hält, erreicht diesen Schritt. Eine zweite Engine, die mit demselben Datenordner gestartet wird, stoppt deshalb schon beim Öffnen des Speichers und löscht nie die Kopien einer laufenden Engine.
 - **Behaltene Versionen.** `versions/<id>` behält die aktuelle Version und `previousVersion`, die der Rollback wiederherstellt, wenn eine neue Server-Laufzeit nicht startet. Ältere Versionen und eine Version, von der ein fehlgeschlagenes Update zurückgerollt wurde, werden nach einer erfolgreichen Aktivierung oder einem erfolgreichen Update sowie beim Start gelöscht. Ein Paket, dessen Update auf einen Neustart wartet (`restart-required`) oder dessen Laufzeit noch nicht gestartet ist (`readiness: "pending"`), behält jede Version, bis es gestartet ist.
 - **Nie gelöscht:** Paketdaten (Ordner wie `DATA_DIR/long-term-memory` und die Tabellen des Pakets in `storage`), Chats, Einstellungen, `installed.json`, Update-Entscheidungen, `.install-*`-Ordner und `versions/`-Ordner von IDs, die in der Registry fehlen. Die Deinstallation entfernt weiterhin den Code des Pakets und behält seine Daten.
-
-<a id="compatibility-migration"></a>
 
 ## Kompatibilitäts-Migration
 
@@ -824,8 +818,6 @@ POST /api/game/experience/check
 
 Die Story einer Welt kann Orte unabhängig vom Datum in einer Jahreszeit festhalten (`seasons` und die Aktion `season`: siehe [Story-Skripte schreiben](../extending/writing-story-scripts.md#seasons)), und die Schlachtfelder einer Welt können mit Jahreszeiten bemalt werden (`seasons`-Zeilen und `seasonKeys`). Ein Kartenpaket mit einem von beiden braucht 1.351. Die Oberwelt liest festgehaltene Orte als `seasons` (Orts-ID zu Jahreszeit, `*` für die ganze Welt) aus `GET /api/game/:chatId/overworld`; ein erstelltes Schlachtfeld führt die Anfangsjahreszeiten seiner Tiles als `seasons`, mit Schlüsseln im Format `"x,y"`.
 
-<a id="capability-api-1355-ruleset-overlays"></a>
-
 #### Capability API 1.355: Regelsatz-Overlays
 
 Das Kartenpaket einer Experience darf die Regelsätze ihrer Spiele ergänzen, solange die Experience eingeschaltet ist: mit eigenen Kreaturen, Zuständen und Gegenständen, die nicht zum Lieferumfang des Regelsatz-Pakets gehören.
@@ -869,8 +861,6 @@ Eine handgefertigte Karte darf auch eigene Worte für den Game Master enthalten:
 ```
 
 `props` enthält einen Eintrag pro Requisitenplatz, 0 bis 7 (`null` für einen unbenannten Platz). Der Game Master erfährt dann die Karte als „Ein von Hand erstellter Ort (stoppelige Erde, Wände aus stehendem Mais), mit einem Regenwassergraben darin; darin: eine Vogelscheuche (2), ein Schrein aus Maispuppen“, statt nur zu erfahren, dass sie von Hand erstellt wurde. Beides braucht eine Experience, die 1.357 deklariert.
-
-<a id="capability-api-1359-items-that-cost-a-story-number"></a>
 
 #### Capability API 1.359: Gegenstände, die eine Story-Zahl kosten
 
@@ -1066,8 +1056,6 @@ Wissenswerte Regeln:
 
 `scenes` wird in einem Manifest abgelehnt, das eine `capabilityApi` älter als 1.66 deklariert.
 
-<a id="capability-api-1376-home-browser-fullscreen"></a>
-
 ### Capability API 1.376: Vollbild im Home-Browser
 
 Eine Ansicht vom Typ `home-browser-tab` erhält `capabilityProps.browserFullscreen`:
@@ -1077,8 +1065,6 @@ Eine Ansicht vom Typ `home-browser-tab` erhält `capabilityProps.browserFullscre
 - `enterLabel` und `exitLabel`: lokalisierte barrierefreie Beschriftungen für den Schalter.
 
 Das ist Vollbild innerhalb der App: Tabs, Adressleiste und Lesezeichen von Home werden ausgeblendet, während die Engine-Topbar verfügbar bleibt. Die Browser-Fullscreen-API wird nicht aufgerufen; eine Vollbildunterstützung des Browsers ist nicht nötig. Der Zustand ist vorübergehend und wird zurückgesetzt, sobald du das Paket oder Home verlässt. Halte auf jedem Paketbildschirm eine Schaltfläche zum Verlassen bereit und bilde `active` über `aria-pressed` ab. Prop-Änderungen müssen die Schaltfläche aktualisieren, ohne unfertige Formulare zu ersetzen. Pakete, die diese Steuerung brauchen, deklarieren Capability API 1.376 oder neuer; ältere Pakete können ihre vorhandenen Layouts behalten.
-
-<a id="capability-api-1814-cache-the-stable-part-of-a-package-prompt"></a>
 
 ### Capability API 1.814: den stabilen Teil eines Paket-Prompts zwischenspeichern
 
@@ -1104,15 +1090,11 @@ const result = await model.chatComplete([
 const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 ```
 
-<a id="capability-api-1815-choose-how-long-a-marked-prompt-stays-cached"></a>
-
 ### Capability API 1.815: festlegen, wie lange ein markierter Prompt zwischengespeichert bleibt
 
 `chatComplete` nimmt `cacheTtl: "5m" | "1h"` an: wie lange der Prompt bis zu den `cacheBreakpoint`-Nachrichten des Aufrufs (1.814) bei Anthropic zwischengespeichert bleibt. Fehlt die Option, gilt wie bisher die eigene Cache-Zeit der Verbindung. Fordere `"1h"` an, wenn dasselbe Präfix in Abständen von mehr als fünf Minuten wiederkommt, etwa der Kontext einer Geschichte, den jede Szene wiederverwendet, während der Spieler liest. Das Schreiben in den 1-Stunden-Cache kostet mehr als in den 5-Minuten-Cache; es lohnt sich also nur, wenn das Präfix innerhalb dieser Stunde erneut gelesen wird. Ein Aufruf ohne markierte Nachricht ignoriert die Option, ebenso Anbieter, die von selbst zwischenspeichern (OpenAI, Gemini, xAI, DeepSeek), und Claude (Subscription), wo die Cache-Zeit der Verbindung gilt.
 
 Ältere Engines ignorieren die Option, ein Paket kann sie also immer übergeben. Deklariere 1.815, wenn das Paket darauf angewiesen ist.
-
-<a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: animierte GIF-Bilder
 
@@ -1145,8 +1127,6 @@ const isGif = result.mimeType === "image/gif";
 ```
 
 Fang auf einer Engine mit 1.816 `code === "animation-unsupported"` ab, um stattdessen ein Standbild zu zeichnen. Deklariere 1.816 nur, wenn das Paket ohne GIFs nicht funktioniert. Eine Berechtigung ist nicht nötig.
-
-<a id="capability-api-1817-telling-a-package-that-a-chat-was-branched"></a>
 
 ### Capability API 1.817: einem Paket mitteilen, dass ein Chat verzweigt wurde
 
@@ -1182,7 +1162,6 @@ const [queryVector] = (await embeddings?.embed([query], signal, "query")) ?? [];
 ```
 
 Dies ist eine weiche Schnittstelle: Ältere Engines lassen die Methode weg. Prüfe deshalb vor dem Aufruf, ob sie existiert, und nutze eine Ausweichlösung wie im Beispiel. Deklariere 1.818 nur, wenn das Paket ohne sie nicht funktioniert. Eine Berechtigung ist nicht nötig.
-
 
 ### Capability API 1.820: ein Paket in der Agentenaktivität anzeigen
 
@@ -1229,9 +1208,6 @@ damit das Panel etwas anzeigen kann. Dies ist eine weiche Schnittstelle: Ältere
 lassen die Methode weg. Prüfe deshalb wie oben, ob sie existiert. Deklariere 1.820 nur, wenn das Paket ohne sie nicht funktioniert.
 Eine Berechtigung ist nicht nötig.
 
-
-<a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
-
 ### Capability API 1.391: Szenenzusammenfassungen von Advanced Memory und der Erinnerungsblock
 
 `persistence.listChatSummaries(chatId)` gibt außerdem `advancedMemory` zurück: die aktivierten, fertiggestellten
@@ -1267,8 +1243,6 @@ const scenes = (await api.runtime.persistence.listChatSummaries?.(chatId))?.adva
 
 Ein Paket mit `contributions.agentDetail` kann `"header": "engine"` festlegen. Die Engine zeichnet dann denselben Kopfbereich wie auf allen anderen Agentenseiten: Zurück, das Store-Banner und Logo, den Namen, den Aktiv-Schalter für den geöffneten Chat und „Paket verwalten“. Die `detail`-Ansicht erhält zwei zusätzliche Props: `engineHeader: true` und `headerSlot`, ein Element im Aktionsbereich des Kopfbereichs. Blende deinen eigenen Kopfbereich aus, wenn `engineHeader` gesetzt ist, und rendere zusätzliche Schaltflächen im Kopfbereich (zum Beispiel „Erinnerungen hinzufügen“ oder Hilfe) mit einem React-Portal oder `appendChild` in `headerSlot`. `headerSlot` ist beim ersten Rendern `null`; warte daher auf die nächste Aktualisierung der Props. Ohne das Flag behält das Paket wie bisher die ganze Seite. Deklariere Capability API 1.390, wenn du es festlegst.
 
-<a id="capability-api-1389-hide-or-show-messages-from-the-ai"></a>
-
 ### Capability API 1.389: Nachrichten vor der KI verbergen oder wieder einblenden
 
 `persistence.setMessagesHiddenFromAI(chatId, messageIds, hidden)` verbirgt Nachrichten eines Chats vor der KI
@@ -1286,8 +1260,6 @@ Die Methode braucht die Berechtigung `chat-write` und ändert die Nachricht und 
 const hidden = (await api.runtime.persistence.setMessagesHiddenFromAI?.(chatId, messageIds, true)) ?? [];
 ```
 
-<a id="capability-api-1388-a-service-only-the-engine-can-read"></a>
-
 ### Capability API 1.388: Ein Dienst, den nur die Engine lesen kann
 
 Jeder Dienst, den ein Paket registriert, kann von jedem anderen Paket über `runtime.services.get(key)` gelesen werden.
@@ -1300,8 +1272,6 @@ api.registerService("my-package:runtime", service, { hostOnly: true });
 Die eigene Dienstabfrage der Engine gibt ihn weiterhin zurück. `runtime.services.get` liefert dafür jedem Paket `null`, auch dem Besitzer.
 Beim Freigeben des Dienstes wird das Flag gelöscht, sodass der Schlüssel ohne dieses Flag erneut registriert werden kann. Eine Engine älter als
 1.388 ignoriert das Argument, der Dienst bleibt dort also lesbar. Verlass dich bei älteren Engines nicht auf `hostOnly`, um Daten geheim zu halten.
-
-<a id="capability-api-1387-read-a-chats-summaries"></a>
 
 ### Capability API 1.387: Zusammenfassungen eines Chats lesen
 
@@ -1316,8 +1286,6 @@ Für einen Chat ohne Zusammenfassungen oder einen nicht gefundenen Chat werden l
 ```ts
 const { day, week, rolling, gameSessions } = (await api.runtime.persistence.listChatSummaries?.(chatId)) ?? {};
 ```
-
-<a id="capability-api-1386-open-a-connection-and-raw-generation-for-packages"></a>
 
 ### Capability API 1.386: Verbindungen öffnen und direkte Textgenerierung für Pakete
 
@@ -1336,8 +1304,6 @@ Ein Browserpaket kann auch ohne eigenen Serverteil mit einer gespeicherten Verbi
 - `debugMode` (1.386): Übergib `debugMode` aus der Browseransicht. Ist es true oder läuft der Server mit `DEBUG_AGENTS`, protokolliert er die endgültigen Nachrichten an den Anbieter und die Antwort. Der Anfrageinhalt wird strikt geprüft; ältere Engines lehnen das Feld ab. Sende es daher nur bei true aus einem Paket, das 1.386 deklariert.
 
 Die Ereignisse sind `raw_started` (`{ runId }`), `token` (das nächste Textstück), `result` (`{ content }`, der vollständige Text), `aborted`, `error` (die Meldung), `fallback_used`, wenn stattdessen die Ausweichverbindung der Engine geantwortet hat, und `done`, immer zuletzt.
-
-<a id="capability-api-150-professor-mari-actions"></a>
 
 ### Capability API 1.50: Aktionen für Professor Mari
 
@@ -1405,8 +1371,6 @@ Diese Regeln solltest du kennen:
 - Deaktivieren oder Entfernen des Pakets blendet seine Abzeichen aus. Freischaltungen bleiben wie bei den Engine-eigenen Abzeichen erhalten und erscheinen wieder, wenn das Paket zurückkehrt.
 
 `api.registerAchievements` und `api.runtime.achievements` gibt es erst ab dieser Engine-Version. Ein Paket, das sie nutzt, deklariert daher `capabilityApi` 1.36.
-
-<a id="capability-api-135-agent-home-widgets"></a>
 
 ### Capability API 1.35: Home-Widgets für Agenten
 
@@ -1512,8 +1476,6 @@ Serverpakete können über `api.runtime.integrations` die LLM-, Bild- und Videod
 - `speech.transcribe(audio, { filename, mimeType, signal })` schickt aufgenommenes Audio an den Speech-to-Text-Server, den der Nutzer unter **Connections → Speech to Text** (Spracherkennung) eingerichtet hat, und liefert das Transkript – oder `null`, solange dieser Server ausgeschaltet ist, damit das Paket bei seiner eigenen Transkription bleibt. Dabei gelten die URL-Richtlinie des Hosts (`STT_LOCAL_URLS_ENABLED`) sowie seine Größen- und Zeitlimits, und der gespeicherte Key wird nie preisgegeben. `speech` ist optional und braucht keine neuere Capability API: Prüfe `typeof api.runtime.integrations?.speech?.transcribe === "function"` und greife bei älteren Engines auf die eigene Lösung zurück.
 
 Gemeinsame Anfrage- und Ergebnistypen exportiert `@marinara-engine/shared`. Paketabhängiger Prompt-Aufbau und Ablaufsteuerung bleiben im Paket. Rufe diese Host-Schnittstellen für Anbieterzugriffe auf, statt Engine-Dienste zu kopieren. Reine Helfer und Typen dürfen weiterhin gebündelt werden.
-
-<a id="package-audio"></a>
 
 ### Audio in Paketen
 

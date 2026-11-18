@@ -11,6 +11,8 @@ Eine Charakterkarte ist eine Datei mit Name, Persönlichkeit, Begrüßung und we
 
 Der Card Browser füllt den gesamten Inhaltsbereich aus und trägt den Titel **Browse character cards online**. Zum Verlassen klickst du oben links auf den Zurück-Pfeil.
 
+Die Schaltfläche **Herunterladen** im Panel **Lorebooks** öffnet denselben Browser stattdessen mit Lorebooks zum Herunterladen. Siehe [Ein Lorebook von Chub herunterladen](../lorebooks/import-export.md#download-a-lorebook-from-chub).
+
 Schließt du ihn und öffnest ihn erneut, sind deine letzte Suche, die Filter und der ausgewählte Charakter noch da. Ein Neuladen der App setzt sie zurück.
 
 ## Eine Quelle wählen
@@ -101,6 +103,12 @@ Bevor du anfängst: Zum Chatten mit dem Charakter brauchst du eine funktionieren
 
 Wenn es nicht funktioniert hat: Lies die Fehlermeldung in der Toast-Meldung. Bei **JannyAI** ist eine Cloudflare-Sperre die häufigste Ursache (siehe Fehlerbehebung unten).
 
+### Einen vorhandenen Charakter aktualisieren
+
+Ist die importierte Karte schon in deiner Bibliothek (früher von derselben Seite heruntergeladen oder mit demselben Namen und Ersteller), hält der Import bei **Bereits in deiner Bibliothek** an. Wähle **„Name“ aktualisieren**, um deine Kopie direkt zu aktualisieren, **Als neuen Charakter hinzufügen**, um beide zu behalten, oder **Diese Karte überspringen**. Um die Karte mit einem Charakter zu verknüpfen, der auf einem anderen Weg kam, klick im Fenster **Karte importieren** auf **Einen vorhandenen Charakter aktualisieren…** und wähle ihn aus der Liste. Siehe [Einen vorhandenen Charakter aktualisieren](import-export.md#update-a-character-you-already-have).
+
+Um nach einer neueren Version einer hier heruntergeladenen Karte zu suchen, öffne den Charakter, klick neben **Speichern** auf **⋯** und wähle **Nach Update suchen**. Der Card Browser öffnet sich bei dieser Karte.
+
 ### Download as PNG
 
 Klick in der Detailansicht auf **Download as PNG** (Als PNG herunterladen), um die Karte als normale PNG-Charakterkarte auf deinem Gerät zu speichern, ohne sie deiner Bibliothek hinzuzufügen. Während des Vorgangs zeigt die Schaltfläche **Building PNG...**. Das funktioniert bei jeder Quelle, und die Datei trägt den Namen des Charakters, etwa `Some_Character.png`. Eine PNG-Karte ist ein Bild, in dem die Charakterdaten stecken. Du kannst sie weitergeben oder in eine andere App importieren.
@@ -115,8 +123,6 @@ Klick in der Detailansicht auf **Download as PNG** (Als PNG herunterladen), um d
 | **PlotLight is busy.** | Warte die in der Meldung genannten Sekunden ab und versuch es dann erneut. |
 | **PlotLight doesn't offer this for download.** | Möglicherweise erlaubt der Ersteller keine Downloads, oder die Karte ist nicht mehr öffentlich. Prüf das über **View on PlotLight**. |
 | Eine Suche schlägt fehl oder eine Quelle funktioniert nicht mehr. | Öffentliche Seiten ändern sich oder sperren den Zugriff jederzeit. Versuch es später, oder lade die Karte von der Seite herunter und nutz den normalen Import. Siehe [Charakterkarten importieren und exportieren](import-export.md). |
-
-<a id="log-in-to-pygmalion"></a>
 
 ## Bei Pygmalion anmelden
 
