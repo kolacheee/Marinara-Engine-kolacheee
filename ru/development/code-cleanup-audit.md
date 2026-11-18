@@ -141,7 +141,7 @@
 ### 3.1 Клиент
 
 - `ChatSettingsDrawer.tsx`: неиспользуемый параметр фильтра `subject`.
-- `GameCombatUI.tsx`: неиспользуемый параметр `line` в `map`.
+- `GameCombatUI.tsx`: неиспользуемый параметр `line` в map.
 - `hooks/use-encounter.ts`: неиспользуемый `_res`; дождитесь запроса, не присваивая результат.
 
 ### 3.2 Сервер
@@ -228,7 +228,7 @@
 
 ### 6.3 Работающие точки повышенной сложности
 
-Самые большие работающие модули – это `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/components/chat/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` и `client/components/panels/SettingsPanel.tsx`. Удалять их не нужно. Продолжайте выносить отдельные обработчики маршрутов, службы предметных областей, разделы выдвижной панели и чистые вспомогательные функции – но только когда затронутую функцию и так меняют. Отдельный PR в духе "разделить все" добавил бы суеты без надежного доказательства сохранения поведения.
+Самые большие работающие модули – это `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` и `client/components/panels/SettingsPanel.tsx`. Удалять их не нужно. Продолжайте выносить отдельные обработчики маршрутов, службы предметных областей, разделы выдвижной панели и чистые вспомогательные функции – но только когда затронутую функцию и так меняют. Отдельный PR в духе "разделить все" добавил бы суеты без надежного доказательства сохранения поведения. Исключение – панель Chat Settings Drawer: ее разделяют по одному разделу за PR согласно [плану разделения панели](../../.github/plans/chat-settings-drawer-split.md).
 
 ## 7. Что сознательно исключено из очистки
 

@@ -98,13 +98,14 @@ globalThis.__MARINARA_HOST__ = {
 | `modules` | Модули библиотек с ключами по спецификатору импорта без пути (список ниже). |
 | `queryClient` | Единственный `QueryClient` из React Query, с которым рендерится Engine. |
 | `components.Modal` | `Modal` из Engine с его порядком наложения и обработкой Escape и кнопки "назад". |
+| `components.Switch`, `components.Checkbox` | Начиная с Capability API 1.830, общие переключатель и флажок Engine, чтобы пакет соответствовал оформлению приложения. |
+| `components.Spinner` | Начиная с Capability API 1.830, общее кольцо загрузки Engine. Оно скрыто от программ чтения с экрана, если не передать `label`, который превращает его в область статуса. |
+| `components.showConfirmDialog` | Начиная с Capability API 1.830, диалог подтверждения Engine; та же функция, что и `services.dialogs.showConfirmDialog`. |
 | `data.emojiCatalog` | Модуль `lib/emoji-catalog.generated.ts`. |
 | `api` | Модуль `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
 Пакет читает свойство только после проверки, например `const host = globalThis.__MARINARA_HOST__; if (host?.version === 1 && typeof host.stores?.ui?.getState === "function")`.
-
 Для загрузки изображений используйте `shouldUseIosImageShare()`, чтобы соблюдать те же правила платформы, что и галерея. На iPhone подготовьте изображение через `prepareImageSave(url, filename)` до жеста сохранения, затем вызовите `savePreparedImageToDevice(prepared)` непосредственно из этого жеста. Отмена отправки не вызывает сообщения об ошибке, а сбой не заменяется предпросмотром загрузки WebKit. На остальных платформах используется `downloadUrlToDevice`. Эти функции сохраняют изображения на устройстве клиента, даже если сервер Marinara Engine работает в Docker.
-
 Пространство имен только расширяется: новое свойство появляется вместе с новой минорной версией Capability API, и пакет, которому оно нужно, требует эту минорную версию. Пакеты, собранные под пространство имен, требуют ту версию Capability API, в которой оно появилось, поэтому более старый Engine никогда их не устанавливает и сохраняет уже установленную версию. Если свойства все же нет, пакет никогда не переходит на встроенную копию сервиса Engine с состоянием: хранилища `ui` и `chat` становятся копиями только для чтения, которые ничего не записывают, а все остальные свойства сообщают, что для этой функции нужна более новая версия Marinara Engine.
 
 **Модули хоста.** `modules[specifier]` – это полное пространство имен модуля, включая `default`, если он есть у библиотеки. `MARINARA_HOST_MODULE_IMPORTS` в клиентском контракте сопоставляет каждый публичный слот с импортируемой им зависимостью. У большинства имена совпадают. Стабильный слот `framer-motion` сопоставлен с `framer-motion-v13` (npm-псевдонимом для точной версии Motion 13.5.1), а необязательный слот `motion/react` – с основной зависимостью Engine, `framer-motion` 14. Инструменты для пакетов используют это сопоставление и для списка экспортов, и для путей TypeScript; имена публичных слотов не обязаны быть именами физических зависимостей. Спецификаторы: `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `@tanstack/react-query`, `zustand`, `zustand/middleware`, `sonner`, `zod`, `i18next`, `react-i18next`, `framer-motion`, `motion/react`, `tailwind-merge` и `clsx`. Сборка пакета сопоставляет эти спецификаторы с шимами, которые читают пространство имен, поэтому пакет рендерится единственным экземпляром React из Engine и делит с Engine кеш React Query и всплывающие уведомления.
@@ -127,7 +128,7 @@ globalThis.__MARINARA_HOST__ = {
 | --- | --- |
 | `ui` | `achievementsEnabled`, `debugMode`, `includeReasoningInExports`, `enableStreaming`, `userStatus`, `enterToSendConvo`, `conversationCallVoiceVolume`, `conversationCallVoiceMuted`, `setConversationCallVoiceVolume`, `setConversationCallVoiceMuted`, `conversationTimeZone`, `noodleNavigation`, `setNoodleNavigation`, `noodleSelectedPersonaId`, `setNoodleSelectedPersonaId`, `reviewImagePromptsBeforeSend`, `musicPlayerEnabled`, `musicPlayerSource`, `sidebarOpen`, `setSidebarOpen`, `chatBackground`, `setChatBackground`, `characterDetailId`, `lorebookDetailId`, `presetDetailId`, `connectionDetailId`, `agentDetailId`, `toolDetailId`, `personaDetailId`, `regexDetailId`, `characterLibraryOpen`, `botBrowserOpen`, `gameAssetsBrowserOpen`, `modal`, `rightPanelOpen`, `closeModal`, `closeRightPanel`, `closeBotBrowser`, `closeAllDetails` |
 | `chat` | `activeChatId`, `activeChat`, `isStreaming`, `streamingChatId`, `abortControllers`, `reset`, `pendingSpatialTransitions`, `setPendingSpatialTransition`, `clearPendingSpatialTransition`, `setPendingSpatialTransitionStatus` |
-| `agent` | `setYoutubePlay`, `reset` |
+| `agent` | `setYoutubePlay`, `setPackageActivity`, `reset` |
 | `sidecar` | `modelDownloaded`, `modelDisplayName`, `fetchStatus` |
 | `dialog` | `dialog`, `openDialog`, `closeDialog` |
 | `gallery` | `pinImage`, `pinVideo` |
