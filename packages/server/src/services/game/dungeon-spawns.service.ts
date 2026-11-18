@@ -12,6 +12,7 @@ import {
   dungeonAreas,
   dungeonRosterWords,
   dungeonSiteBand,
+  dungeonSiteLairState,
   dungeonSiteFate,
   dungeonSiteFor,
   dungeonSiteOrigin,
@@ -131,7 +132,14 @@ export function newDungeonSiteState(
         ),
       )
     : (map.floors ?? 1);
-  return { band: dungeonSiteBand(origin, region, floors), ...(fate ? { fate } : {}), cleared: {} };
+  const band = dungeonSiteBand(origin, region, floors);
+  // A creature's lair is drawn from the site's seed, the same one its floors were laid out from.
+  return {
+    band,
+    ...(fate ? { fate } : {}),
+    cleared: {},
+    ...dungeonSiteLairState(origin, map.siteSeed ?? map.seed, band),
+  };
 }
 
 /** The Game Master's replies for the band of a site the party has not been in before (the story's
@@ -170,6 +178,7 @@ export function dungeonSiteHere(input: {
     ...(state.fate ? { fate: state.fate } : {}),
     seed: map.siteSeed ?? map.seed,
     ...(map.site?.undead ? { undead: true } : {}),
+    ...(state.lair && !state.lairCold ? { lair: state.lair } : {}),
   });
   if (!site) return null;
   return { key, map, setting, site, areas: dungeonAreas(map, site, setting), state, fresh: !kept };

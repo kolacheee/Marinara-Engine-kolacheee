@@ -41,6 +41,15 @@ import {
   type SiteTerrain,
 } from "./site-plans.js";
 import type { WorldHistory } from "./history.js";
+import {
+  DUNGEON_LAIRS,
+  DUNGEON_LAIR_KINDS,
+  DUNGEON_LAIR_MIN_LEVEL,
+  dungeonLairFor,
+  dungeonLairTitle,
+  readGameDungeonLairTag,
+  type DungeonLairKind,
+} from "./lairs.js";
 
 /** What kind of place a site is, which decides who holds it. */
 export const DUNGEON_SITE_ORIGINS = [
@@ -75,6 +84,9 @@ export interface DungeonSite {
   leader?: string;
   /** Families that squat in the rest of it. */
   squatters: string[];
+  /** A creature's lair (owner 2026-11-18): one great creature, its maker, holds the deepest floor alone as
+   *  a boss, and the holders are its servants. */
+  lair?: { kind: DungeonLairKind; maker: string };
 }
 
 export type DungeonAreaRole = "entry" | "guard" | "lair" | "empty" | "rest" | "heart";
@@ -327,6 +339,9 @@ export function dungeonSiteFor(input: {
   seed: string | number;
   /** A building planned with a crypt for undead holders: the dead hold it. */
   undead?: boolean;
+  /** The site is a creature's lair (a woken one, its band high enough for a boss): its maker holds the
+   *  heart and its servants the rest. No maker of the kind lives at the band: a plain site. */
+  lair?: DungeonLairKind;
 }): DungeonSite | null {
   const origin = dungeonSiteOrigin(input.setId, input.name);
   const random = marinaraRandom(`${input.seed}:site:${input.name.toLowerCase()}`);
@@ -353,11 +368,27 @@ export function dungeonSiteFor(input: {
     ).map((family) => family.id);
   // A setting with no monsters for the place (a 1920s cave): people who hide there, smugglers and gangs.
   if (!holders.length) holders = fits(["sellsword", "cutpurse", "shooter", "brawler", "cultist"]);
-  const holder = pickLeaning(holders.slice(0, 3), random);
+  // A lair: its maker, the first of the kind that lives here and fights as a boss, and its servants.
+  const lairSpec = input.lair && input.band.high >= DUNGEON_LAIR_MIN_LEVEL ? DUNGEON_LAIRS[input.lair] : undefined;
+  const maker = lairSpec
+    ? fits(lairSpec.makers).find((id) => marinaraEnemyFamily(id)!.tiers.includes("boss"))
+    : undefined;
+  if (maker && lairSpec) {
+    // A swarm holds no post on its own: one only when nothing else serves here.
+    const servants = fits(lairSpec.servants);
+    const standing = servants.filter((id) => marinaraEnemyFamily(id)!.role !== "swarm");
+    if (servants.length) holders = standing.length ? standing : servants;
+  }
+  const holder = maker ? holders[0] : pickLeaning(holders.slice(0, 3), random);
   if (!holder) return null;
   const holderFamily = marinaraEnemyFamily(holder)!;
-  // People follow a captain: a gang's or a band's heart is its chief with their own around them.
-  const leader = holderFamily.kind === "humanoid" && holderFamily.role !== "leader" ? fits(["captain"])[0] : undefined;
+  // People follow a captain: a gang's or a band's heart is its chief with their own around them. A lair's
+  // heart is its maker's alone.
+  const leader = maker
+    ? maker
+    : holderFamily.kind === "humanoid" && holderFamily.role !== "leader"
+      ? fits(["captain"])[0]
+      : undefined;
   // Squatters: what moves into an empty hole, the place's own kind first (rats in a sewer, the dead in a
   // crypt), then vermin, beasts, oozes and plants, the rest after; within each, in the site's own order.
   const flavour = SQUATTERS[origin];
@@ -391,6 +422,7 @@ export function dungeonSiteFor(input: {
     holder,
     ...(leader ? { leader } : {}),
     squatters: chosen,
+    ...(maker && input.lair ? { lair: { kind: input.lair, maker } } : {}),
   };
 }
 
@@ -515,7 +547,9 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
     if (index === heart) {
       const top = marinaraEnemyFamily(site.leader ?? site.holder)!;
       const head = group(top.id, top.tiers.includes("boss") ? "boss" : "elite", level, 1);
-      const guard = group(site.holder, "standard", level, site.leader ? 2 : 1 + Math.floor(random() * 2));
+      const guard = site.lair
+        ? []
+        : group(site.holder, "standard", level, site.leader ? 2 : 1 + Math.floor(random() * 2));
       return { area, key, role: "heart", level, foes: fitted(setting, level, [...head, ...guard], "hard") };
     }
     const deep = distance[index]! / far >= 0.5;
@@ -557,9 +591,26 @@ export const gameDungeonSiteStateSchema = z
     /** The holders are gone for good (owner 2026-11-13): people who lost their chief, or driven out by the
      *  story. Their posts stand empty or squatters take them, and they never come back. */
     displaced: z.literal(true).optional(),
+    /** A creature's lair (owner 2026-11-18): the kind, set at the first entry when the site's seed drew one
+     *  and its band is high enough for a boss, or by the story's `[site: lair=]`. */
+    lair: z.enum(DUNGEON_LAIR_KINDS).optional(),
+    /** A cold lair: the seed drew one but the land is too tame for a boss, its maker long gone. */
+    lairCold: z.literal(true).optional(),
   })
   .strict();
 export type GameDungeonSiteState = z.infer<typeof gameDungeonSiteStateSchema>;
+
+/** Whether a new site is a creature's lair (owner 2026-11-18), drawn from its seed: awake where its band
+ *  is high enough for a boss, else cold, its maker long gone. Nothing when the seed drew no lair. */
+export function dungeonSiteLairState(
+  origin: DungeonSiteOrigin,
+  seed: string | number,
+  band: DungeonLevelBand,
+): Pick<GameDungeonSiteState, "lair" | "lairCold"> {
+  const kind = dungeonLairFor(origin, seed);
+  if (!kind) return {};
+  return band.low >= DUNGEON_LAIR_MIN_LEVEL ? { lair: kind } : { lair: kind, lairCold: true };
+}
 
 /** The key a map's site is kept under: its world place, else its name. */
 export function gameDungeonSiteKey(map: Pick<GameDungeonMap, "place" | "name">): string {
@@ -651,7 +702,9 @@ function plannedAreas(map: GameDungeonMap, site: DungeonSite, setting: MarinaraB
     if (info.heart) {
       const top = marinaraEnemyFamily(site.leader ?? site.holder)!;
       const head = group(top.id, top.tiers.includes("boss") ? "boss" : "elite", band.high, 1);
-      const guard = group(site.holder, "standard", band.high, site.leader ? 2 : 1 + Math.floor(random() * 2));
+      const guard = site.lair
+        ? []
+        : group(site.holder, "standard", band.high, site.leader ? 2 : 1 + Math.floor(random() * 2));
       return {
         area,
         key,
@@ -954,6 +1007,8 @@ function plannedRoutes(
 /** Whether a site's holders think and band together (people, cunning spirits): beaten in their heart, they
  *  scatter for good rather than breed back. Beasts, vermin and the mindless come back. */
 export function dungeonHoldersScatter(site: DungeonSite): boolean {
+  // A lair's servants served its maker: with it dead they scatter.
+  if (site.lair) return true;
   const mind = marinaraEnemyFamily(site.leader ?? site.holder)?.mind;
   return mind === "cunning" || mind === "tactical" || mind === "genius";
 }
@@ -1009,8 +1064,8 @@ export function dungeonSiteAfterWin(
 
 /** `[site: displaced]` in a reply: the story drove the holders of the map the party is on out (or they
  *  left); they never come back. */
-export function readGameDungeonSiteTags(text: string): { displaced: boolean } {
-  return { displaced: /\[site:\s*displaced\s*\]/iu.test(text) };
+export function readGameDungeonSiteTags(text: string): { displaced: boolean; lair: DungeonLairKind | null } {
+  return { displaced: /\[site:\s*displaced\s*\]/iu.test(text), lair: readGameDungeonLairTag(text) };
 }
 
 /** The area a cell is in (1-based), or 0 in a passage. */
@@ -1028,6 +1083,37 @@ export function dungeonRosterWords(foes: readonly MarinaraEncounterFoe[], settin
     counted.set(key, (counted.get(key) ?? 0) + 1);
   }
   return [...counted].map(([key, count]) => (count > 1 ? `${count}x ${key}` : key)).join(", ");
+}
+
+/** What the Game Master is told of a creature's lair: whose it is, what the land round it shows, and what
+ *  the lair does in a fight in its heart; for a cold one, only that it was one. */
+export function dungeonLairPromptLines(
+  site: DungeonSite,
+  state: Pick<GameDungeonSiteState, "lair" | "lairCold" | "leaderDead">,
+  setting: MarinaraBestiarySetting,
+): string[] {
+  if (!state.lair) return [];
+  const spec = DUNGEON_LAIRS[state.lair];
+  // No maker of the kind lives in this setting at this band: a plain site.
+  if (!state.lairCold && !site.lair) return [];
+  if (state.lairCold || !site.lair)
+    return [
+      `This place was once ${spec.label}, its maker long gone: its signs remain (the deepest floor shaped round it, old marks, what it left behind), but nothing of it lives here now.`,
+    ];
+  const family = marinaraEnemyFamily(site.lair.maker);
+  const name = (family && marinaraEnemyName(family, setting, site.band.high)) ?? site.lair.maker;
+  const title = dungeonLairTitle(site.lair.kind, setting);
+  if (state.leaderDead)
+    return [
+      `This place was ${spec.label}; its maker, the ${name}, is dead, and its servants have scattered. The land round it is slowly healing.`,
+    ];
+  return [
+    `THIS IS ${spec.label.toUpperCase()}: the heart is its maker's alone, the ${name} [${site.lair.maker}]${
+      title ? `, which here is a ${title}: write it as one` : ""
+    }, fought as a boss in its own lair; the rest of the place is held by its servants.`,
+    `The land round it: ${spec.region}`,
+    `In the heart: ${spec.field} A fight there is fought in the lair.`,
+  ];
 }
 
 const FATE_WORDS: Record<DungeonSiteFate, string> = {
@@ -1093,12 +1179,17 @@ export function dungeonSpawnPromptText(input: {
         : "nobody";
     lines.push(`- Area ${area.area}${role}${where}: ${who}.`);
   }
+  lines.push(...dungeonLairPromptLines(site, input.state, setting));
   lines.push(
     "A fight in an area is fought by that area's foes exactly as listed, with their family ids, tiers and levels; never add, swap or level them, and never spawn a creature a player asks for that is not listed. Foes in other areas are unseen until the party goes there: hint at them (sounds, tracks, smells), never reveal them outright.",
   );
   if (!input.state.displaced)
     lines.push(
       `If the story drives ${holderName} out of this place for good (they flee, make peace and leave, are bought off), write [site: displaced]; they will not come back.`,
+    );
+  if (!input.state.lair && !input.state.displaced)
+    lines.push(
+      "If the story makes this place a great creature's lair (a dragon's hoard, a lich's sanctum, a vampire's haven, a great beast's den, a fiend's breach, a drowned hall, a hive), write [site: lair=dragon] (or lich, vampire, beast, fiend, drowned, hive): its heart becomes that creature's.",
     );
   if (input.partyLevel !== undefined && input.partyLevel + 3 < site.band.low)
     lines.push(

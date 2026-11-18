@@ -11394,12 +11394,9 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             }
           }
           // `[site: displaced]`: the story drove the holders of the map the party is on out for good.
-          if (
-            savedMsg?.id &&
-            chatMode === "game" &&
-            !input.impersonate &&
-            readGameDungeonSiteTags(fullResponse).displaced
-          ) {
+          // `[site: lair=<kind>]`: the story made it a great creature's lair.
+          const siteTags = readGameDungeonSiteTags(fullResponse);
+          if (savedMsg?.id && chatMode === "game" && !input.impersonate && (siteTags.displaced || siteTags.lair)) {
             try {
               await chats.patchMetadata(
                 input.chatId,
@@ -11409,9 +11406,16 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                   const sites = gameDungeonSitesFromMetadata(stored);
                   const key = gameDungeonSiteKey(map);
                   const kept = sites[key];
-                  return kept && !kept.displaced
-                    ? { gameDungeonSites: gameDungeonSitesWith(sites, key, { ...kept, displaced: true }) }
-                    : {};
+                  if (!kept) return {};
+                  const lair = siteTags.lair && (kept.lair !== siteTags.lair || kept.lairCold) && !kept.leaderDead;
+                  const displaced = siteTags.displaced && !kept.displaced;
+                  if (!lair && !displaced) return {};
+                  const { lairCold: _cold, ...rest } = kept;
+                  const next = {
+                    ...(lair ? { ...rest, lair: siteTags.lair! } : kept),
+                    ...(displaced ? { displaced: true as const } : {}),
+                  };
+                  return { gameDungeonSites: gameDungeonSitesWith(sites, key, next) };
                 },
                 { touchUpdatedAt: false },
               );
