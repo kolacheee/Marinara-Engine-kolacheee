@@ -604,6 +604,8 @@ const DUNGEON_LAIR_NARRATION: Readonly<Record<DungeonLairKind, string>> = {
 /** What the fight's Game Master is told of a fight in a lair's great chamber. */
 export function dungeonLairFightText(kind: DungeonLairKind): string {
   const spec = DUNGEON_LAIRS[kind];
-  const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]).map((action) => action.label);
-  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.join(", ")}). ${DUNGEON_LAIR_NARRATION[kind]} Foreshadow the action the log announces; anything the chamber calls up comes out of it. Add no lair effects of your own.`;
+  const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]);
+  const anchor = DUNGEON_LAIR_ANCHORS[kind];
+  const stops = DUNGEON_LAIR_ACTIONS[kind][anchor.stops]?.label ?? "one of its actions";
+  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.map((action) => action.label).join(", ")}). The ${anchor.name} stands among the foes as something the party can strike: broken, ${anchor.breaks}, and the lair has no more ${stops}. Show it in the scene before anyone thinks to hit it. ${DUNGEON_LAIR_NARRATION[kind]} Foreshadow the action the log announces; anything the chamber calls up comes out of it. Add no lair effects of your own.`;
 }

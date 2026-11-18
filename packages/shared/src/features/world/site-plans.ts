@@ -5624,11 +5624,17 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       // A crypt tells its own, in its own pieces: robbers caught by a trap at the chest they came for, a tomb
       // broken open and its dead dragged out (owner 2026-11-18, "Build play content next").
       // A lair floor tells the creature's story, never a storeroom's (lair panel 3: crates by the rift).
-      const stories = level.lair
+      const stories =
+        level.lair && plan.template === "crypt"
+          ? [
+              [0, 1, 1], // a tomb broken open, its dead dragged out to serve
+              [1, 1, 1], // the ones who came down and stayed
+            ]
+          : level.lair
         ? [
-            [BONES, SKULLS, CHAINS, TIPPED], // what it dragged down here
+            [BONES, SKULLS, CHAINS, BONES], // what it dragged down here
             [BONES, COBWEB, BONES, SWORD], // someone who came for the hoard
-            [SKULLS, CHAINS, BONES, JARS], // what its servants keep
+            [SKULLS, CHAINS, BONES, COBWEB], // what its servants keep
           ]
         : plan.template === "crypt"
           ? [
@@ -5890,7 +5896,14 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
               [7, 1],
               [0, 7],
             ]
-          : level.depth < 0
+          : level.lair
+            ? [
+                // Cover on a lair floor is what the creature left, never a storeroom's (lair panel 4 check).
+                [SKULLS, BONES],
+                [BONES, SKULLS],
+                [SKULLS, SKULLS],
+              ]
+            : level.depth < 0
             ? [
                 [CRATE, BARREL],
                 [BARREL, CRATE],
@@ -6164,6 +6177,12 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // pool as water, the rest drawn over the floor.
   let lairFeature: number[] = [];
   if (level.lair) {
+    // What the building kept down here is long gone: the creature's leavings take the place of the stores
+    // (lair panel 3 and the panel 4 check: crates and barrels round the rift).
+    if (plan.template !== "crypt")
+      for (let c = 0; c < props.length; c++)
+        if (props[c] === CRATE || props[c] === BARREL || props[c] === TIPPED || props[c] === JARS)
+          props[c] = c % 3 === 0 ? SKULLS : BONES;
     const k = info.findIndex((each) => each.heart);
     const box = k >= 0 ? rooms[k] : undefined;
     if (box) {

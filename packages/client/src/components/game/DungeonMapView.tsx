@@ -1285,7 +1285,17 @@ export function DungeonMapView({
           hive: "rgba(150, 100, 20, 0.16)",
         };
         if (chamber) {
-          ctx.fillStyle = tint[lairKind] ?? "rgba(0, 0, 0, 0.1)";
+          // Strongest round the creature's feature and fading out toward the chamber's edge, never a hard
+          // square on open floor (lair panel 4 check: a cave's chamber is a box, and its tint read as one).
+          const mx = (lairCells.reduce((s, c) => s + c.x, 0) / lairCells.length + 0.5) * T;
+          const my = (lairCells.reduce((s, c) => s + c.y, 0) / lairCells.length + 0.5) * T;
+          const reach = Math.max(chamber.w, chamber.h) * T * 0.55;
+          const colour = tint[lairKind] ?? "rgba(0, 0, 0, 0.1)";
+          const glow = ctx.createRadialGradient(mx, my, T, mx, my, reach);
+          glow.addColorStop(0, colour);
+          glow.addColorStop(0.35, colour);
+          glow.addColorStop(1, colour.replace(/[\d.]+\)$/, "0)"));
+          ctx.fillStyle = glow;
           for (const { x, y } of dungeonRoomCells(chamber))
             if (!inFog(x, y) && cells.ground[y * cells.width + x] !== "wall" && cells.ground[y * cells.width + x] !== "rock")
               ctx.fillRect(x * T, y * T, T, T);
