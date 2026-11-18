@@ -4738,6 +4738,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         return { along, cellAt, score: far + (short ? 6 : 0) };
       });
       sides.sort((p, q) => q.score - p.score);
+      // Never across a nave's east end, which opens on the crossing (panel round 36).
+      if (siteBaseName(name) === "Nave") sides.pop();
       for (const { along, cellAt } of sides) {
         // The longest run of places the walk and its rail can go.
         const good = (b: number) =>
