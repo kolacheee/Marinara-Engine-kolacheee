@@ -743,6 +743,9 @@ export interface SiteLevelMap {
 }
 
 /** The rooms that are a level's great room: the biggest space on it. */
+/** Rooms never given a floor's set piece: ways, stairs and the rooms whose own plan is their set piece. */
+const SITE_STAMP_FREE_SET_PIECE =
+  /stair|passage|walk|corridor|gallery|cell|ward|court|cloister|garth|great hall|chapel|founder/iu;
 const SITE_HALL_ROOMS = new Set(["Great hall", "Nave", "Undercroft", "Burial hall"]);
 /** The rooms the way in opens into. */
 /** Rooms whose tables are set end to end down the middle. */
@@ -4797,6 +4800,85 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         }
       }
     }
+  // One set piece a floor (panel round 42: big rooms spread their props with nothing to anchor them, and no floor
+  // has one thing to remember it by). A church's transept arms each end in a side altar; below ground the
+  // biggest room has a flooded bay, a pool of standing water with a way round it; above ground in a castle
+  // or a church a pillar of the hall's arcade has come down in a heap of masonry.
+  {
+    const free = (c: number) =>
+      ground[c] === "floor" &&
+      props[c] === -1 &&
+      !linked.has(c) &&
+      !doorCells.has(c) &&
+      !traps.some((trap) => cell(trap.x, trap.y) === c) &&
+      around(c).every((n) => !doorCells.has(n) && !linked.has(n));
+    if (plan.template === "temple" && level.depth === 0)
+      for (const [k, room] of rooms.entries()) {
+        if (!room || siteBaseName(info[k]?.name ?? "") !== "Nave") continue;
+        for (const arm of room.parts ?? []) {
+          // An arm out to one side of the nave: its altar against its far end wall, in the middle.
+          const west = arm.x + arm.w <= room.x;
+          const east = arm.x >= room.x + room.w;
+          if (!west && !east) continue;
+          const [x, y] = [west ? arm.x : arm.x + arm.w - 1, arm.y + Math.floor(arm.h / 2)];
+          const c = cell(x, y);
+          if (!free(c)) continue;
+          props[c] = ALTAR;
+          if (!reachable()) props[c] = -1;
+        }
+      }
+    const big = rooms
+      .map((room, k) => ({ room, k, name: siteBaseName(info[k]?.name ?? "") }))
+      .filter(
+        ({ room, k, name }) =>
+          room &&
+          room.w >= 6 &&
+          room.h >= 5 &&
+          !info[k]?.heart &&
+          info[k]?.use !== "open" &&
+          info[k]?.use !== "quiet" &&
+          !SITE_STAMP_FREE_SET_PIECE.test(name),
+      )
+      .sort((a, b) => b.room.w * b.room.h - a.room.w * a.room.h);
+    if (level.depth < 0 && big.length && random() < 0.65) {
+      for (const { room } of big.slice(0, 3)) {
+        const [rx, ry] = [Math.max(1, Math.min(3, (room.w - 4) / 2)), Math.max(1, Math.min(2.5, (room.h - 4) / 2))];
+        const [cx, cy] = [
+          room.x + 2 + rx + Math.floor(random() * Math.max(1, room.w - 4 - 2 * rx)),
+          room.y + 2 + ry + Math.floor(random() * Math.max(1, room.h - 4 - 2 * ry)),
+        ];
+        const pool: number[] = [];
+        for (let y = room.y + 2; y < room.y + room.h - 2; y++)
+          for (let x = room.x + 2; x < room.x + room.w - 2; x++) {
+            const d = ((x - cx) / (rx + 0.5)) ** 2 + ((y - cy) / (ry + 0.5)) ** 2;
+            const c = cell(x, y);
+            if (d <= 1 + (random() - 0.5) * 0.5 && free(c)) pool.push(c);
+          }
+        if (pool.length < 4) continue;
+        for (const c of pool) ground[c] = "liquid";
+        if (reachable()) break;
+        for (const c of pool) ground[c] = "floor";
+      }
+    } else if (level.depth >= 0 && plan.template !== "manor" && plan.template !== "crypt" && random() < 0.6) {
+      for (const { room } of big) {
+        const piers: number[] = [];
+        for (let y = room.y; y < room.y + room.h; y++)
+          for (let x = room.x; x < room.x + room.w; x++) if (props[cell(x, y)] === COLUMN) piers.push(cell(x, y));
+        if (piers.length < 4) continue;
+        const fell = piers[Math.floor(random() * piers.length)]!;
+        props[fell] = SITE_RUBBLE_PROP;
+        const heap = around(fell).filter(free);
+        let laid = 0;
+        for (const c of heap) {
+          if (laid >= 3) break;
+          props[c] = SITE_RUBBLE_PROP;
+          if (reachable()) laid++;
+          else props[c] = -1;
+        }
+        break;
+      }
+    }
+  }
   // A gallery over the hall (owner 2026-11-18, "Add verticality and sightlines"): a raised walk along one of
   // its walls behind a rail, up a few steps at one end, where the holders can stand over the floor below (the
   // minstrels' gallery over a house's screens, a castle hall's, the west gallery of a church). Its low end
