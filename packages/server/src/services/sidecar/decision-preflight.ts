@@ -11,7 +11,8 @@
  * a machine with no GPU. This module only gathers the inputs.
  */
 import { execFile } from "node:child_process";
-import { readFile, statfs } from "node:fs/promises";
+import { access, readFile, statfs } from "node:fs/promises";
+import { delimiter, join } from "node:path";
 import { freemem, totalmem } from "node:os";
 import { promisify } from "node:util";
 import type {
@@ -120,17 +121,39 @@ function glibcVersion(): string | null {
   }
 }
 
-/** Which of these shared libraries the system linker cannot find. Null when it cannot be asked. */
+/** Whether a library is in one of the `LD_LIBRARY_PATH` folders, which the server is launched with. */
+async function onLibraryPath(name: string): Promise<boolean> {
+  for (const folder of (process.env.LD_LIBRARY_PATH ?? "").split(delimiter).filter(Boolean)) {
+    try {
+      await access(join(folder, name));
+      return true;
+    } catch {
+      // Not in this folder.
+    }
+  }
+  return false;
+}
+
+/**
+ * Which of these shared libraries neither the system linker nor `LD_LIBRARY_PATH` can
+ * find. The server is launched with Marinara's `LD_LIBRARY_PATH`, so libraries from
+ * NVIDIA's pip packages or a toolkit outside the system folders count. Null when the
+ * linker cannot be asked and none are on the path.
+ */
 async function missingLibraries(names: string[]): Promise<string[] | null> {
+  const onPath = new Set<string>();
+  for (const name of names) if (await onLibraryPath(name)) onPath.add(name);
+  const rest = names.filter((name) => !onPath.has(name));
+  if (rest.length === 0) return [];
   for (const ldconfig of ["ldconfig", "/sbin/ldconfig", "/usr/sbin/ldconfig"]) {
     try {
       const { stdout } = await execFileAsync(ldconfig, ["-p"], { timeout: 5_000, maxBuffer: 8 * 1024 * 1024 });
-      return names.filter((name) => !stdout.includes(`${name} `) && !stdout.includes(`${name}\t`));
+      return rest.filter((name) => !stdout.includes(`${name} `) && !stdout.includes(`${name}\t`));
     } catch {
       // Not on PATH under that name; try the next.
     }
   }
-  return null;
+  return onPath.size > 0 ? rest : null;
 }
 
 /**

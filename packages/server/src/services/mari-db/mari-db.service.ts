@@ -1886,6 +1886,8 @@ function normalizeAgentActionData(input: Row, existing?: Row | null): Row {
     "activationThreshold",
     "activationScanDepth",
     "activationMaxSkip",
+    "activationPictures",
+    "activationClips",
     "runInterval",
   ]) {
     if (isRecord(input.settings) && (input.settings[key] === null || input.settings[key] === "")) delete settings[key];

@@ -23,6 +23,8 @@ export interface DecisionSidecarModel {
   /** What it reads here (text, image, video), and what its other release adds. */
   inputs?: string[];
   extraInputs?: string[];
+  /** Seconds, from the speed it was timed at on this computer; null before it has run here. */
+  speed?: { sceneSeconds: number; pictureSeconds?: number; clipSeconds?: number } | null;
   licenses: string[];
   downloaded: boolean;
   preflight: {

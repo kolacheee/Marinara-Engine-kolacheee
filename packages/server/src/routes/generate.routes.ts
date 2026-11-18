@@ -469,7 +469,7 @@ import { createCustomStickersStorage } from "../services/storage/custom-stickers
 import { createCharacterGalleryStorage } from "../services/storage/character-gallery.storage.js";
 import { createPersonaGalleryStorage } from "../services/storage/persona-gallery.storage.js";
 import { createGalleryStorage } from "../services/storage/gallery.storage.js";
-import { decisionMediaForMessage } from "../services/decision/decision-media.js";
+import { decisionMediaForMessage, hasRecentDecisionMedia } from "../services/decision/decision-media.js";
 import { resolveGalleryImagePath } from "../services/image/gallery-image-path.js";
 import { isSentSelfieAttachment } from "../services/generation/prompt-attachments.js";
 import { createAppSettingsStorage } from "../services/storage/app-settings.storage.js";
@@ -6757,6 +6757,13 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
         ): Promise<Set<string>> => {
           try {
             const candidates: ActivationQuestionCandidate[] = [];
+            // References only: nothing is read until a model that looks at pictures asks.
+            const withMedia = messages.map((message) => ({
+              ...message,
+              media: decisionMediaForMessage(message as { extra?: unknown }, decisionMediaContext),
+            }));
+            // Agents whose question waits for a picture or clip that is not there: they do not run.
+            const waiting = new Set<string>();
             for (const agent of agents) {
               if (
                 builtInAgentTypes.has(agent.type) ||
@@ -6778,14 +6785,22 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 )
                   continue;
               }
+              if (
+                activation.mediaWithin &&
+                !hasRecentDecisionMedia(withMedia, activation.mediaWithin, activation.media)
+              ) {
+                waiting.add(agent.id);
+                continue;
+              }
               candidates.push({
                 agentId: agent.id,
                 question: renderAgentPromptTemplate(activation.question, agent.settings, agentContext),
                 threshold: activation.threshold,
                 scanDepth: activation.scanDepth,
+                media: activation.media,
               });
             }
-            if (candidates.length === 0 || agentSignal.aborted) return new Set();
+            if (candidates.length === 0 || agentSignal.aborted) return waiting;
             const backend = await resolveDecisionBackend(
               {
                 getLocalDefault: () => appSettings.get(DECISION_SETTINGS_KEYS.localDefault),
@@ -6797,16 +6812,15 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               },
               agentSignal,
             );
-            if (!backend) return new Set();
+            if (!backend) return waiting;
             // A model that has to reason first takes seconds, and a pre-generation or
             // parallel gate sits in front of the user's reply. Those agents run as if
             // they had no question unless the user opted into waiting for them.
-            if (!postProcessing && backend.deferPreGeneration) return new Set();
+            if (!postProcessing && backend.deferPreGeneration) return waiting;
             const evaluation = await evaluateActivationQuestions({
               candidates,
-              messages: messages.map((message) => ({
+              messages: withMedia.map((message) => ({
                 ...message,
-                media: decisionMediaForMessage(message as { extra?: unknown }, decisionMediaContext),
                 name:
                   message.role === "user"
                     ? personaName
@@ -6815,6 +6829,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               })),
               maxStateTokens: backend.maxStateTokens,
               defaultThreshold: backend.calibration.defaultThreshold,
+              ...(backend.mediaTokens ? { mediaTokens: backend.mediaTokens } : {}),
               ask: backend.ask,
             });
             for (const candidate of candidates) {
@@ -6826,7 +6841,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                   candidate.threshold,
                 );
             }
-            return evaluation.skip;
+            return new Set([...evaluation.skip, ...waiting]);
           } catch {
             logger.warn("[decision] Activation evaluation failed; leaving eligible agents enabled");
             return new Set();

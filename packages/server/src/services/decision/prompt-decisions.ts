@@ -33,6 +33,13 @@ import {
 } from "@marinara-engine/shared";
 import { logger, logDebugOverride } from "../../lib/logger.js";
 import { buildDecisionState, type DecisionMessage } from "../generation/agent-activation-questions.js";
+import {
+  clampDecisionMediaWant,
+  decisionMediaKey,
+  hasRecentDecisionMedia,
+  NO_DECISION_MEDIA,
+  type DecisionMediaWant,
+} from "./decision-media.js";
 import type { DecisionBackend } from "./decision-default.js";
 import { describeDecisionSlot } from "./decision-slots.js";
 import type { LorebookDecisionResolver } from "../lorebook/index.js";
@@ -63,6 +70,11 @@ export interface PlannedDecision {
   priority?: DecisionStatementPriority;
   /** The first `until:` or `while:` written on a `decision:` statement (#6922). */
   lasts?: DecisionLifetime;
+  /** The most `pictures:` and `clips:` written on any of its occurrences; none when unset. */
+  pictures?: number;
+  clips?: number;
+  /** The smallest `media_within:` written on any of its occurrences: asked only when a recent message has media. */
+  mediaWithin?: number;
   /** Set when sticky, cooldown or `every:` holds its answer this turn: it is not asked, and takes no slot. */
   held?: HeldDecision;
 }
@@ -278,6 +290,10 @@ export function planPromptDecisions(
           if (collected.sticky) planned.sticky = Math.max(planned.sticky ?? 0, collected.sticky);
           if (collected.cooldown) planned.cooldown = Math.max(planned.cooldown ?? 0, collected.cooldown);
           if (collected.every) planned.every = Math.min(planned.every ?? collected.every, collected.every);
+          if (collected.pictures) planned.pictures = Math.max(planned.pictures ?? 0, collected.pictures);
+          if (collected.clips) planned.clips = Math.max(planned.clips ?? 0, collected.clips);
+          if (collected.mediaWithin)
+            planned.mediaWithin = Math.min(planned.mediaWithin ?? collected.mediaWithin, collected.mediaWithin);
           if (collected.lasts && collected.kind === "noul" && !planned.lasts) {
             const conditionKey = resolveDecisionQuestionText(collected.lasts.statement, ctx);
             if (conditionKey)
@@ -451,6 +467,18 @@ export async function answerPromptDecisions(args: {
         decision.held.yes && decision.held.choice !== undefined ? decision.held.choice : DECISION_CHOICE_NONE,
       );
   }
+  // `media_within:` waits for a picture or clip: on a turn without one in the newest
+  // messages, the statement reads as no and is not asked, like a held one.
+  for (const decision of plan.decisions)
+    if (
+      !decision.held &&
+      decision.mediaWithin &&
+      !hasRecentDecisionMedia(args.messages, decision.mediaWithin, decision)
+    ) {
+      decision.held = { yes: false };
+      if (decision.kind === "noul") turn.noul.set(decision.key, { yes: false, held: true });
+      else turn.choice.set(choiceCacheKey(decision), DECISION_CHOICE_NONE);
+    }
   const pending = plan.decisions.filter((decision) =>
     decision.kind === "noul" ? !turn.noul.has(decision.key) : !turn.choice.has(choiceCacheKey(decision)),
   );
@@ -463,52 +491,76 @@ export async function answerPromptDecisions(args: {
     );
     logger.debug("[decision] Dropped decision statements: %s", plan.dropped.join(" | "));
   }
-  let requestError: string | undefined;
+  // Per statement, since statements with different pictures go in different requests.
+  const requestErrors = new Map<number, string>();
   if (backend && pending.length > 0 && (args.afterReply || !backend.deferPreGeneration)) {
-    const questions: NoulQuestion[] = pending.map((decision, index) => ({
-      id: `d${index}`,
-      instructions: decision.key,
-      ...(decision.kind === "choice"
-        ? { options: decision.options, ...(decision.criteria ? { criteria: decision.criteria } : {}) }
-        : {}),
-    }));
-    try {
-      const state = buildDecisionState(
-        args.messages,
-        DEFAULT_CUSTOM_AGENT_ACTIVATION_SCAN_DEPTH,
-        backend.maxStateTokens,
-      );
-      const result = await backend.askMixed(state, questions);
-      requestError = result.error;
-      pending.forEach((decision, index) => {
-        if (decision.kind === "noul") {
-          const p = result.answers.get(`d${index}`);
-          if (p === undefined) return;
-          const yes = p >= backend.calibration.defaultThreshold;
-          turn.noul.set(decision.key, {
-            p,
-            yes,
-            threshold: backend.calibration.defaultThreshold,
-            binary: result.binaryAnswers?.has(`d${index}`),
-          });
-          if (args.timers) {
-            recordDecisionTimer(args.timers.state, args.timers.turn, decision, { yes });
-            recordDecisionCheck(args.timers.state, args.timers.turn, decision);
-          }
-        } else {
-          const choice = result.choices.get(`d${index}`);
-          if (choice === undefined) return;
-          turn.choice.set(choiceCacheKey(decision), choice);
-          if (args.timers) {
-            if (choice !== DECISION_CHOICE_NONE)
-              recordDecisionTimer(args.timers.state, args.timers.turn, decision, { choice });
-            recordDecisionCheck(args.timers.state, args.timers.turn, decision);
+    // Statements that show the model the same pictures share one request. A model that
+    // reads text only is never sent any, so its statements all go together.
+    const groups = new Map<string, { want: DecisionMediaWant; indexes: number[] }>();
+    pending.forEach((decision, index) => {
+      const want = backend.mediaTokens
+        ? clampDecisionMediaWant({ pictures: decision.pictures, clips: decision.clips })
+        : NO_DECISION_MEDIA;
+      const key = decisionMediaKey(want);
+      const group = groups.get(key) ?? { want, indexes: [] };
+      group.indexes.push(index);
+      groups.set(key, group);
+    });
+    for (const { want, indexes } of groups.values()) {
+      // Ids keep each statement's place in the whole turn, which the report looks up.
+      const questions: NoulQuestion[] = indexes.map((index) => {
+        const decision = pending[index]!;
+        return {
+          id: `d${index}`,
+          instructions: decision.key,
+          ...(decision.kind === "choice"
+            ? { options: decision.options, ...(decision.criteria ? { criteria: decision.criteria } : {}) }
+            : {}),
+        };
+      });
+      try {
+        const state = buildDecisionState(
+          args.messages,
+          DEFAULT_CUSTOM_AGENT_ACTIVATION_SCAN_DEPTH,
+          backend.maxStateTokens,
+          {
+            want,
+            ...(backend.mediaTokens ? { tokens: backend.mediaTokens } : {}),
+          },
+        );
+        const result = await backend.askMixed(state, questions);
+        if (result.error) for (const index of indexes) requestErrors.set(index, result.error);
+        for (const index of indexes) {
+          const decision = pending[index]!;
+          if (decision.kind === "noul") {
+            const p = result.answers.get(`d${index}`);
+            if (p === undefined) continue;
+            const yes = p >= backend.calibration.defaultThreshold;
+            turn.noul.set(decision.key, {
+              p,
+              yes,
+              threshold: backend.calibration.defaultThreshold,
+              binary: result.binaryAnswers?.has(`d${index}`),
+            });
+            if (args.timers) {
+              recordDecisionTimer(args.timers.state, args.timers.turn, decision, { yes });
+              recordDecisionCheck(args.timers.state, args.timers.turn, decision);
+            }
+          } else {
+            const choice = result.choices.get(`d${index}`);
+            if (choice === undefined) continue;
+            turn.choice.set(choiceCacheKey(decision), choice);
+            if (args.timers) {
+              if (choice !== DECISION_CHOICE_NONE)
+                recordDecisionTimer(args.timers.state, args.timers.turn, decision, { choice });
+              recordDecisionCheck(args.timers.state, args.timers.turn, decision);
+            }
           }
         }
-      });
-    } catch (error) {
-      requestError = "request_failed";
-      logger.warn(error, "[decision] Prompt decision request failed; those branches read as no");
+      } catch (error) {
+        for (const index of indexes) requestErrors.set(index, "request_failed");
+        logger.warn(error, "[decision] Prompt decision request failed; those branches read as no");
+      }
     }
   }
   // until/while (#6922): a block kept on by its condition reads that condition's answer.
@@ -542,7 +594,7 @@ export async function answerPromptDecisions(args: {
               : "unanswered";
     const error =
       status === "unanswered"
-        ? (requestError ??
+        ? (requestErrors.get(index) ??
           inspection?.requests
             .slice(traceStart)
             .find((request) => request.results?.some((result) => result.id === `d${index}`))?.error)

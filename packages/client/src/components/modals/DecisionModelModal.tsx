@@ -16,6 +16,7 @@ import {
   ChevronDown,
   Download,
   Eye,
+  Gauge,
   HardDrive,
   Languages,
   Link2,
@@ -51,7 +52,8 @@ function formatBytes(bytes: number): string {
 }
 
 export function DecisionModelModal() {
-  const { t: localizeUi } = useUiTranslation();
+  const { t: localizeUi, i18n } = useUiTranslation();
+  const numberFormat = new Intl.NumberFormat(i18n.language, { maximumFractionDigits: 1 });
   const sidecar = useDecisionSidecar(true);
   const enable = useEnableDecisionSidecar();
   const install = useInstallDecisionModel();
@@ -281,13 +283,36 @@ export function DecisionModelModal() {
     );
 
   /** What a model answers and what it reads, in two short lines. */
-  const capabilities = (model: { questionTypes?: string[]; inputs?: string[]; extraInputs?: string[] }) => {
+  const capabilities = (model: {
+    questionTypes?: string[];
+    inputs?: string[];
+    extraInputs?: string[];
+    speed?: DecisionSidecarModel["speed"];
+  }) => {
     const list = (kind: "questionType" | "input", values: string[] | undefined) =>
       (values ?? []).map((value) => localizeUi(`ui.modals.decisionmodelmodal.${kind}.${value}`)).join(", ");
     const answers = list("questionType", model.questionTypes);
     const reads = list("input", model.inputs);
     const elsewhere = list("input", model.extraInputs);
     if (!answers && !reads) return null;
+    // Timed on this computer, never quoted from somewhere else: a speed measured on
+    // another machine would put people off for nothing, or promise too much.
+    const seconds = (value: number) => numberFormat.format(value);
+    const speed = model.speed
+      ? [
+          localizeUi("ui.modals.decisionmodelmodal.speed.scene", { seconds: seconds(model.speed.sceneSeconds) }),
+          ...(model.speed.pictureSeconds !== undefined
+            ? [
+                localizeUi("ui.modals.decisionmodelmodal.speed.picture", {
+                  seconds: seconds(model.speed.pictureSeconds),
+                }),
+              ]
+            : []),
+          ...(model.speed.clipSeconds !== undefined
+            ? [localizeUi("ui.modals.decisionmodelmodal.speed.clip", { seconds: seconds(model.speed.clipSeconds) })]
+            : []),
+        ].join(", ")
+      : null;
     return (
       <div className="mt-2 flex flex-col gap-1 text-xs text-[var(--muted-foreground)] max-sm:text-[13px]">
         {answers && (
@@ -308,6 +333,14 @@ export function DecisionModelModal() {
                 </span>
               )}
             </span>
+          </span>
+        )}
+        {"speed" in model && (
+          <span className="flex items-start gap-1.5">
+            <Gauge size="0.75rem" className="mt-0.5 shrink-0" />
+            {speed
+              ? localizeUi("ui.modals.decisionmodelmodal.speedLine", { parts: speed })
+              : localizeUi("ui.modals.decisionmodelmodal.speedUnknown")}
           </span>
         )}
       </div>

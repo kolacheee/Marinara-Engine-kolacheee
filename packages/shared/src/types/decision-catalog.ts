@@ -413,7 +413,7 @@ export const SIDECAR_DECISION_MODELS: SidecarDecisionModelInfo[] = [
     id: "valen-decision-1.5-2b-full",
     label: "Valen-Decision 1.5 2B (full release)",
     description:
-      "Valen's full release: reads the chat, pictures and video clips. Runs on the processor on Windows, macOS (Apple silicon) and Linux, through Valen's own software rather than PyTorch. A clip takes about 20 seconds on a 4-core processor.",
+      "Valen's full release: reads the chat, pictures and video clips. Runs on the processor on Windows, macOS (Apple silicon) and Linux, through Valen's own software rather than PyTorch.",
     runtime: "valen_onnx",
     artifacts: [
       {
@@ -466,7 +466,7 @@ export const SIDECAR_DECISION_MODELS: SidecarDecisionModelInfo[] = [
     id: "valen-decision-1.5-4b-full",
     label: "Valen-Decision 1.5 4B (full release)",
     description:
-      "The larger full release: reads the chat, pictures and video clips, more accurate than 2B and about twice as slow. Runs on the processor on Windows, macOS (Apple silicon) and Linux, and needs about 12 GB of memory.",
+      "The larger full release: reads the chat, pictures and video clips, more accurate than 2B, and slower. Runs on the processor on Windows, macOS (Apple silicon) and Linux, and needs about 12 GB of memory.",
     runtime: "valen_onnx",
     artifacts: [
       {

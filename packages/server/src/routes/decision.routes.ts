@@ -41,7 +41,8 @@ import { createConnectionsStorage } from "../services/storage/connections.storag
 import { logger } from "../lib/logger.js";
 import { requirePrivilegedAccess } from "../middleware/privileged-gate.js";
 import { DECISION_SIDECAR_RATE_LIMIT } from "../middleware/rate-limit.js";
-import { decisionProcessService } from "../services/sidecar/decision-process.service.js";
+import { decisionProcessService, measuredDecisionSpeed } from "../services/sidecar/decision-process.service.js";
+import { decisionSpeedEstimate } from "../services/decision/decision-media.js";
 import { DECISION_TIMEOUT_MS } from "@marinara-engine/shared";
 import { askNoulQuestions } from "../services/decision/system-one.client.js";
 import { whenDecisionServerFree } from "../services/decision/decision-server-queue.js";
@@ -199,6 +200,8 @@ export async function decisionRoutes(app: FastifyInstance) {
         questionTypes: model.questionTypes ?? ["noul"],
         inputs: model.inputs ?? ["text"],
         extraInputs: model.extraInputs ?? [],
+        // Only once it has run on this computer: a speed measured elsewhere misleads.
+        speed: decisionSpeedEstimate(model, measuredDecisionSpeed(model.id)),
         licenses: model.licenses,
         downloaded: decisionRuntimeService.modelDownloaded(model),
         preflight: await preflightDecisionModel(model),

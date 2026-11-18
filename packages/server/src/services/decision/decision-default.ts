@@ -25,7 +25,7 @@ import { resolveDecisionConnection, type DecisionConnectionRow } from "./decisio
 import { whenDecisionServerFree } from "./decision-server-queue.js";
 import { localModelManager } from "../sidecar/local-model-manager.js";
 import { askNoulQuestions, DECISION_CHOICE_NONE, type NoulQuestion } from "./system-one.client.js";
-import { decisionMediaTokenReserve, decisionRequestWithMedia, loadDecisionMedia } from "./decision-media.js";
+import { decisionMediaTokens, decisionRequestWithMedia, loadDecisionMedia } from "./decision-media.js";
 
 /**
  * Headroom left for the system prompt and the question when capping a state against a
@@ -64,6 +64,11 @@ export interface DecisionBackend {
    * `DECISION_UNMEASURED_STATEMENT_MS`, and a pass asks every statement rather than judge fewer on a guess.
    */
   requestMs?: (statements: number) => number;
+  /**
+   * What one picture and one clip cost this model's input, for a decision that asks to
+   * show it some. Absent for a model that reads text only, which is never sent any.
+   */
+  mediaTokens?: { picture: number; clip: number };
   ask: (state: unknown, questions: NoulQuestion[]) => Promise<Map<string, number> | null>;
   /**
    * Yes/no and Choice questions together, for prompt conditionals. A question with
@@ -243,17 +248,17 @@ export async function resolveDecisionBackend(
       // The model's own launch limit, never the main sidecar's context. Overshooting
       // it is not a truncation, it is a 422 and a failed gate on every long scene.
       const limit = resolved.maxLengthTokens ?? decisionSlotContextSize(slot);
-      const maxStateTokens = Math.max(
-        256,
-        limit - SIDECAR_STATE_HEADROOM_TOKENS - decisionMediaTokenReserve(resolved.runtime, resolved.inputs),
-      );
+      // A decision that shows the model pictures takes their room out of the scene when
+      // its state is built; one that does not keeps the whole budget.
+      const maxStateTokens = Math.max(256, limit - SIDECAR_STATE_HEADROOM_TOKENS);
+      const mediaTokens = decisionMediaTokens(resolved.runtime, resolved.inputs);
       const perQuestionMs = resolved.perQuestionMs;
       // Local and on loopback, but a model still has to run: the sidecar's limit for the
       // first answer, then its measured cost for each further one. A model with no
       // measured cost gets the full limit for every answer. Never one limit for the
       // whole group, however many statements it carries.
       const askSidecar = async (state: unknown, questions: NoulQuestion[]) => {
-        // The chat's newest pictures and clips, for a model that reads them. Loaded
+        // The chat's newest pictures and clips the decision asked for, for a model that reads them. Loaded
         // before the queue so reading files and scaling pictures never holds the model.
         const media = await loadDecisionMedia(state, resolved.inputs);
         const request = decisionRequestWithMedia(resolved.runtime, state, media);
@@ -295,6 +300,7 @@ export async function resolveDecisionBackend(
         debugMode: deps.debugMode,
         inspection: deps.inspection,
         maxStateTokens,
+        ...(mediaTokens.picture || mediaTokens.clip ? { mediaTokens } : {}),
         calibration,
         // It scores candidates in one pass and never reasons, so nothing is deferred.
         deferPreGeneration: false,

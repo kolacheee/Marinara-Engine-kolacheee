@@ -1,5 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { MAX_CUSTOM_AGENT_ACTIVATION_QUESTION_LENGTH } from "@marinara-engine/shared";
+import {
+  MAX_CUSTOM_AGENT_ACTIVATION_QUESTION_LENGTH,
+  MAX_DECISION_CLIPS,
+  MAX_DECISION_MEDIA_WITHIN,
+  MAX_DECISION_PICTURES,
+} from "@marinara-engine/shared";
 import { openAddConnection } from "../../lib/add-connection";
 
 export function ActivationQuestionFields({
@@ -7,6 +12,9 @@ export function ActivationQuestionFields({
   threshold,
   recommendedThreshold,
   maxSkip,
+  pictures,
+  clips,
+  mediaWithin,
   enabled,
   onChange,
 }: {
@@ -15,8 +23,20 @@ export function ActivationQuestionFields({
   /** What the selected decision model answers around, when one is chosen. */
   recommendedThreshold?: number;
   maxSkip: number | "";
+  /** How many of the chat's newest pictures and clips the question looks at; 0 sends text only. */
+  pictures: number;
+  clips: number;
+  /** Ask only when one of this many newest messages has a picture or clip; "" asks every time. */
+  mediaWithin: number | "";
   enabled: boolean;
-  onChange: (values: { question?: string; threshold?: number; maxSkip?: number | "" }) => void;
+  onChange: (values: {
+    question?: string;
+    threshold?: number;
+    maxSkip?: number | "";
+    pictures?: number;
+    clips?: number;
+    mediaWithin?: number | "";
+  }) => void;
 }) {
   const { t } = useTranslation();
   // The slider's domain is 0.05 to 0.95 in steps of 0.05, so a recommendation off that
@@ -120,6 +140,66 @@ export function ActivationQuestionFields({
               className="w-28 rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm tabular-nums ring-1 ring-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
             />
             <p className="mt-1 text-[0.625rem] text-[var(--muted-foreground)]">{t("agents.activation.maxSkipHelp")}</p>
+          </div>
+          {/* Off unless asked: each picture costs the model time, and most questions are
+              about what was written. Only a decision model that reads pictures gets them. */}
+          <div>
+            <span className="mb-1 block text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
+              {t("agents.activation.media")}
+            </span>
+            <div className="grid grid-cols-2 gap-2">
+              <select
+                aria-label={t("agents.activation.picturesLabel")}
+                value={pictures}
+                onChange={(event) => onChange({ pictures: Number(event.target.value) })}
+                className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+              >
+                {Array.from({ length: MAX_DECISION_PICTURES + 1 }, (_, count) => (
+                  <option key={count} value={count}>
+                    {count === 0 ? t("agents.activation.noPictures") : t("agents.activation.pictures", { count })}
+                  </option>
+                ))}
+              </select>
+              <select
+                aria-label={t("agents.activation.clipsLabel")}
+                value={clips}
+                onChange={(event) => onChange({ clips: Number(event.target.value) })}
+                className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+              >
+                {Array.from({ length: MAX_DECISION_CLIPS + 1 }, (_, count) => (
+                  <option key={count} value={count}>
+                    {count === 0 ? t("agents.activation.noClips") : t("agents.activation.clips", { count })}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {(pictures > 0 || clips > 0) && (
+              // So a picture question does not run every turn: without a picture or clip
+              // in the newest messages, the agent does not run and nothing is asked.
+              <label className="mt-2 block">
+                <span className="mb-1 block text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
+                  {t("agents.activation.mediaWithinLabel")}
+                </span>
+                <select
+                  value={mediaWithin}
+                  onChange={(event) =>
+                    onChange({ mediaWithin: event.target.value === "" ? "" : Number(event.target.value) })
+                  }
+                  className="min-h-11 w-full rounded-xl bg-[var(--secondary)] px-3 py-2.5 text-sm text-[var(--foreground)] ring-1 ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+                >
+                  <option value="">{t("agents.activation.mediaAlways")}</option>
+                  {[...new Set([1, 2, 3, 5, 10, 20, ...(mediaWithin === "" ? [] : [mediaWithin])])]
+                    .filter((count) => count <= MAX_DECISION_MEDIA_WITHIN)
+                    .sort((a, b) => a - b)
+                    .map((count) => (
+                      <option key={count} value={count}>
+                        {t("agents.activation.mediaWithin", { count })}
+                      </option>
+                    ))}
+                </select>
+              </label>
+            )}
+            <p className="mt-1 text-[0.625rem] text-[var(--muted-foreground)]">{t("agents.activation.mediaHelp")}</p>
           </div>
         </fieldset>
       )}

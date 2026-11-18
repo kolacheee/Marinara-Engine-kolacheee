@@ -245,6 +245,20 @@ When a prompt plan has more statements than the **Decision statements per turn**
 - A statement written in several places uses the highest priority.
 - The prompt's own statements (preset, cards, persona, author's notes) are planned first. Lorebook statements use the slots that are left, whatever their priority.
 
+### Pictures and clips
+
+A built-in decision model that reads pictures (Liquid d1, Valen, Winnow) can also look at the chat's pictures and clips. It only does when the statement asks: `pictures:N` sends the newest N pictures (up to 3), and `clips:1` sends the newest clip (Valen's full release only). Without them, only the text is sent.
+
+```text
+{{#if decision:"The picture shows the character at the beach" pictures:1}}...{{/if}}
+{{#if decision:"The clip ends somewhere new" clips:1 media_within:2}}...{{/if}}
+```
+
+- Pictures are uploads, gallery selfies and illustrations; clips are generated scene videos. Each is scaled down first.
+- Each picture or clip makes the statement slower. The model's details show how long one takes on your computer once it has run there.
+- `media_within:N` asks the statement only when one of the newest N messages has a picture (or a clip, with `clips:`). On other turns it reads as no and is not asked.
+- Statements that ask for the same pictures share one request. A model that reads only text, or a hosted Decision connection, is never sent any.
+
 You can combine all modifiers in any order: `decision:"..." priority:high sticky:3 cooldown:5 every:2`.
 
 ### No answer means no

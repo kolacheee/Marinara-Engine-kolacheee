@@ -7,12 +7,20 @@
  * sees them, and nothing is loaded until a backend that reads them asks. Only Marinara's
  * own decision models on loopback ever do.
  *
- * Each reference loads lazily: a gate whose model reads text pays nothing for the
- * pictures in the chat, and one that reads them loads only the newest few.
+ * Nothing is sent unless the author asked for it: a `decision:` statement with
+ * `pictures:N` or `clips:N`, or an agent whose trigger question says how many. The
+ * request then carries that many of the newest ones, and a model that cannot read them
+ * still gets the text alone. Each reference loads lazily, so a gate pays nothing for
+ * pictures it was not asked to look at.
  */
 import { readFile, stat } from "node:fs/promises";
 import { extname, join } from "node:path";
-import type { DecisionInputKind, DecisionRuntimeKind } from "@marinara-engine/shared";
+import {
+  MAX_DECISION_CLIPS,
+  MAX_DECISION_PICTURES,
+  type DecisionInputKind,
+  type DecisionRuntimeKind,
+} from "@marinara-engine/shared";
 import { logger } from "../../lib/logger.js";
 import { DATA_DIR } from "../../utils/data-dir.js";
 import { assertInsideDir } from "../../utils/security.js";
@@ -30,14 +38,14 @@ export interface DecisionMediaRef {
 const DECISION_MEDIA = Symbol.for("marinara.decision.media");
 
 /**
- * How much media one request carries, newest first. A picture is scaled so its longer
+ * The most media one request may carry, newest first. A picture is scaled so its longer
  * side is at most `imageEdge`: on Liquid d1 a full 1280 px picture cost 5,400 tokens and
  * 170 s on a 4-core processor, the same picture at 512 px 550 tokens and 17 s, with the
  * same answers. One clip, because Valen reads a clip as several pictures.
  */
 export const DECISION_MEDIA_LIMITS = {
-  images: 3,
-  videos: 1,
+  images: MAX_DECISION_PICTURES,
+  videos: MAX_DECISION_CLIPS,
   imageEdge: 512,
   /** Valen's SDK refuses an inline clip over 64 MiB; scene clips are a few megabytes. */
   videoBytes: 48 * 1024 * 1024,
@@ -45,16 +53,83 @@ export const DECISION_MEDIA_LIMITS = {
   imageBytes: 24 * 1024 * 1024,
 } as const;
 
-/** Attach media references to a state, kept by spreads and dropped by JSON. */
-export function attachDecisionMedia<T extends object>(state: T, refs: DecisionMediaRef[]): T {
-  if (refs.length > 0) Object.defineProperty(state, DECISION_MEDIA, { value: refs, enumerable: true });
+/** How many of the newest pictures and clips a request asks for. Zero of each by default. */
+export interface DecisionMediaWant {
+  pictures: number;
+  clips: number;
+}
+
+export const NO_DECISION_MEDIA: DecisionMediaWant = { pictures: 0, clips: 0 };
+
+/** Within the limits, so an imported or hand-edited setting can never ask for more. */
+export function clampDecisionMediaWant(want: Partial<DecisionMediaWant> | undefined): DecisionMediaWant {
+  const clamp = (value: unknown, max: number) =>
+    typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.min(max, Math.floor(value))) : 0;
+  return {
+    pictures: clamp(want?.pictures, DECISION_MEDIA_LIMITS.images),
+    clips: clamp(want?.clips, DECISION_MEDIA_LIMITS.videos),
+  };
+}
+
+export const wantsDecisionMedia = (want: DecisionMediaWant | undefined) =>
+  !!want && (want.pictures > 0 || want.clips > 0);
+
+/** Groups requests: statements that want the same media share one request. */
+export const decisionMediaKey = (want: DecisionMediaWant | undefined) => `${want?.pictures ?? 0}:${want?.clips ?? 0}`;
+
+interface AttachedMedia {
+  refs: DecisionMediaRef[];
+  want: DecisionMediaWant;
+}
+
+/**
+ * Attach media references to a state, kept by spreads and dropped by JSON. Nothing is
+ * attached when the request asks for no media, so a state built without asking never
+ * carries any.
+ */
+export function attachDecisionMedia<T extends object>(
+  state: T,
+  refs: DecisionMediaRef[],
+  want: DecisionMediaWant = NO_DECISION_MEDIA,
+): T {
+  const wanted = clampDecisionMediaWant(want);
+  const kept = refs.filter((ref) => (ref.kind === "image" ? wanted.pictures > 0 : wanted.clips > 0));
+  if (kept.length > 0)
+    Object.defineProperty(state, DECISION_MEDIA, {
+      value: { refs: kept, want: wanted } satisfies AttachedMedia,
+      enumerable: true,
+    });
   return state;
 }
 
+function attachedOf(state: unknown): AttachedMedia | null {
+  if (!state || typeof state !== "object") return null;
+  const attached = (state as Record<symbol, unknown>)[DECISION_MEDIA] as AttachedMedia | undefined;
+  return attached && Array.isArray(attached.refs) ? attached : null;
+}
+
+/**
+ * Whether one of the newest `within` messages carries a picture or clip of the kind the
+ * decision looks at (any kind when it asks for neither). A decision that waits for one
+ * is not asked on a turn without, so a picture check does not run every turn.
+ */
+export function hasRecentDecisionMedia(
+  messages: ReadonlyArray<{ media?: DecisionMediaRef[] }>,
+  within: number,
+  want: Partial<DecisionMediaWant> | undefined,
+): boolean {
+  const pictures = (want?.pictures ?? 0) > 0;
+  const clips = (want?.clips ?? 0) > 0;
+  const counts = (ref: DecisionMediaRef) => (!pictures && !clips) || (ref.kind === "image" ? pictures : clips);
+  return messages.slice(-Math.max(1, within)).some((message) => (message.media ?? []).some(counts));
+}
+
 export function decisionMediaOf(state: unknown): DecisionMediaRef[] {
-  if (!state || typeof state !== "object") return [];
-  const refs = (state as Record<symbol, unknown>)[DECISION_MEDIA];
-  return Array.isArray(refs) ? (refs as DecisionMediaRef[]) : [];
+  return attachedOf(state)?.refs ?? [];
+}
+
+export function decisionMediaWantOf(state: unknown): DecisionMediaWant {
+  return attachedOf(state)?.want ?? NO_DECISION_MEDIA;
 }
 
 const SCENE_VIDEOS_DIR = join(DATA_DIR, "game-scene-videos");
@@ -149,34 +224,33 @@ export interface LoadedDecisionMedia {
 }
 
 /**
- * Load the newest media a model reads, within the limits, oldest first in the result so
- * they keep the chat's order. Anything that fails to load is left out; a gate never
- * fails because a picture went missing.
+ * Load the newest media the request asked for and the model reads, oldest first in the
+ * result so they keep the chat's order. Anything that fails to load is left out; a gate
+ * never fails because a picture went missing.
  */
 export async function loadDecisionMedia(
   state: unknown,
   accepts: readonly DecisionInputKind[] | undefined,
 ): Promise<LoadedDecisionMedia> {
   const refs = decisionMediaOf(state);
-  const wantImages = accepts?.includes("image") ?? false;
-  const wantVideos = accepts?.includes("video") ?? false;
+  const want = decisionMediaWantOf(state);
+  const maxImages = accepts?.includes("image") ? want.pictures : 0;
+  const maxVideos = accepts?.includes("video") ? want.clips : 0;
+  const wantImages = maxImages > 0;
+  const wantVideos = maxVideos > 0;
   const images: string[] = [];
   const videos: string[] = [];
   if (refs.length === 0 || (!wantImages && !wantVideos)) return { images, videos };
   for (const ref of [...refs].reverse()) {
-    if (ref.kind === "image" && wantImages && images.length < DECISION_MEDIA_LIMITS.images) {
+    if (ref.kind === "image" && images.length < maxImages) {
       const raw = await ref.load().catch(() => null);
       const scaled = raw ? await scaleImage(raw) : null;
       if (scaled) images.unshift(scaled);
-    } else if (ref.kind === "video" && wantVideos && videos.length < DECISION_MEDIA_LIMITS.videos) {
+    } else if (ref.kind === "video" && videos.length < maxVideos) {
       const clip = await ref.load().catch(() => null);
       if (clip) videos.unshift(clip);
     }
-    if (
-      (!wantImages || images.length >= DECISION_MEDIA_LIMITS.images) &&
-      (!wantVideos || videos.length >= DECISION_MEDIA_LIMITS.videos)
-    )
-      break;
+    if (images.length >= maxImages && videos.length >= maxVideos) break;
   }
   if (refs.length > 0 && images.length + videos.length === 0)
     logger.debug("[decision] The chat's media could not be read for the decision model");
@@ -220,17 +294,44 @@ export function decisionRequestWithMedia(
 }
 
 /**
- * Room to leave in a model's input for the media a request may carry, so a long scene
- * plus its pictures never runs past the model's limit (which is an error, not a cut).
- * Per picture at 512 px: about 550 tokens on Liquid d1 and 180 on Valen, measured
- * 2026-11-18; Winnow's is not measured, so it gets d1's. A Valen clip read 460.
+ * What one picture and one clip cost in a model's input, in tokens, so a scene that
+ * carries them leaves room for them and never runs past the model's limit (which is an
+ * error, not a cut). At 512 px: about 550 tokens a picture on Liquid d1 and 180 on
+ * Valen, measured 2026-11-18; Winnow's is not measured, so it gets d1's. A Valen clip
+ * read 460. Generous on each. Zero for what the model does not read.
  */
-export function decisionMediaTokenReserve(
+export function decisionMediaTokens(
   runtime: DecisionRuntimeKind | undefined,
   inputs: readonly DecisionInputKind[] | undefined,
-): number {
+): { picture: number; clip: number } {
   const valen = runtime === "valen_gguf" || runtime === "valen_onnx";
-  const image = inputs?.includes("image") ? (valen ? 250 : 650) * DECISION_MEDIA_LIMITS.images : 0;
-  const video = inputs?.includes("video") ? 700 * DECISION_MEDIA_LIMITS.videos : 0;
-  return image + video;
+  return {
+    picture: inputs?.includes("image") ? (valen ? 250 : 650) : 0,
+    clip: inputs?.includes("video") ? 700 : 0,
+  };
+}
+
+/** The scene length the panel quotes a reading time for: a few turns of roleplay. */
+export const DECISION_SPEED_SCENE_TOKENS = 2_000;
+
+/**
+ * How long a model takes here, in seconds, from the reading speed it was timed at on
+ * this computer: a scene of a few turns, and, for a model that reads them, one picture
+ * and one clip. Estimates from the same token costs the request limits use.
+ */
+export function decisionSpeedEstimate(
+  model: { runtime?: DecisionRuntimeKind; inputs?: readonly DecisionInputKind[] },
+  msPerToken: number | null,
+): { sceneSeconds: number; pictureSeconds?: number; clipSeconds?: number } | null {
+  if (msPerToken === null || !(msPerToken > 0)) return null;
+  const valen = model.runtime === "valen_gguf" || model.runtime === "valen_onnx";
+  const seconds = (ms: number) => Math.max(0.1, Math.round(ms / 100) / 10);
+  return {
+    sceneSeconds: seconds(msPerToken * DECISION_SPEED_SCENE_TOKENS),
+    // Reading a picture also runs its vision encoder: on d1 a 512 px picture (550 tokens)
+    // took about 1.5 times its tokens' reading time, measured 2026-11-18.
+    ...(model.inputs?.includes("image") ? { pictureSeconds: seconds(msPerToken * (valen ? 180 : 550) * 1.5) } : {}),
+    // Four frames, plus decoding them.
+    ...(model.inputs?.includes("video") ? { clipSeconds: seconds(msPerToken * 460 * 1.5 + 1_000) } : {}),
+  };
 }

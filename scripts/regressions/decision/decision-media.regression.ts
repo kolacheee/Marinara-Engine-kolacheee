@@ -10,11 +10,14 @@ import assert from "node:assert/strict";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { SIDECAR_DECISION_MODELS, sanitizeCustomDecisionModel } from "../../../packages/shared/src/index.js";
+import { collectDecisionQuestions } from "../../../packages/shared/src/utils/macro-engine.js";
 import { buildDecisionState } from "../../../packages/server/src/services/generation/agent-activation-questions.js";
 import {
   decisionMediaOf,
-  decisionMediaTokenReserve,
+  decisionMediaTokens,
   decisionRequestWithMedia,
+  decisionSpeedEstimate,
+  hasRecentDecisionMedia,
   loadDecisionMedia,
   type DecisionMediaRef,
 } from "../../../packages/server/src/services/decision/decision-media.js";
@@ -27,16 +30,15 @@ const PIXEL =
 const image = (label: string): DecisionMediaRef => ({ kind: "image", load: async () => `${PIXEL}#${label}` });
 const clip: DecisionMediaRef = { kind: "video", load: async () => "data:video/mp4;base64,AAAA" };
 
+const chat = [
+  { role: "user", content: "old ".repeat(400), media: [image("old")] },
+  { role: "assistant", content: "Here you go.", media: [clip] },
+  { role: "user", content: "Look!", media: [image("new")] },
+];
+// Nothing rides along unless the decision asks for it.
+assert.equal(decisionMediaOf(buildDecisionState(chat, 3, 60)).length, 0, "no media by default");
 // Only the messages that fit the scene bring their media, in the chat's order.
-const state = buildDecisionState(
-  [
-    { role: "user", content: "old ".repeat(400), media: [image("old")] },
-    { role: "assistant", content: "Here you go.", media: [clip] },
-    { role: "user", content: "Look!", media: [image("new")] },
-  ],
-  3,
-  60,
-);
+const state = buildDecisionState(chat, 3, 60, { want: { pictures: 3, clips: 1 } });
 assert.equal((state as { recent_messages: unknown[] }).recent_messages.length, 2, "the long old message is cut");
 assert.deepEqual(
   decisionMediaOf(state).map((ref) => ref.kind),
@@ -56,11 +58,52 @@ const counted: DecisionMediaRef = {
     return PIXEL;
   },
 };
-const textOnly = buildDecisionState([{ role: "user", content: "hi", media: [counted] }], 1, 500);
+const textOnly = buildDecisionState([{ role: "user", content: "hi", media: [counted] }], 1, 500, {
+  want: { pictures: 1, clips: 0 },
+});
 assert.deepEqual(await loadDecisionMedia(textOnly, ["text"]), { images: [], videos: [] });
 assert.equal(loads, 0, "nothing is read for a model that cannot see it");
 const loaded = await loadDecisionMedia(state, ["text", "image"]);
 assert.equal(loaded.videos.length, 0);
+// Only as many as asked for, newest first.
+const onePicture = buildDecisionState(chat, 3, 500, { want: { pictures: 1, clips: 0 } });
+assert.deepEqual(
+  decisionMediaOf(onePicture).map((ref) => ref.kind),
+  ["image", "image"],
+  "clips are not attached when none are asked for",
+);
+assert.ok((await loadDecisionMedia(onePicture, ["text", "image", "video"])).images.length <= 1);
+// Leaves room for the pictures it carries.
+const roomy = buildDecisionState([{ role: "user", content: "word ".repeat(2000) }], 1, 1500);
+const tight = buildDecisionState([{ role: "user", content: "word ".repeat(2000) }], 1, 1500, {
+  want: { pictures: 1, clips: 0 },
+  tokens: { picture: 650, clip: 0 },
+});
+assert.ok(JSON.stringify(tight).length < JSON.stringify(roomy).length, "a picture's room comes out of the scene");
+
+// media_within: asked only when a recent message has the kind of media it looks at.
+assert.equal(hasRecentDecisionMedia(chat, 1, { pictures: 1 }), true);
+assert.equal(hasRecentDecisionMedia(chat, 1, { clips: 1 }), false, "the newest message has no clip");
+assert.equal(hasRecentDecisionMedia(chat, 2, { clips: 1 }), true);
+assert.equal(hasRecentDecisionMedia([{ media: [] }, {}], 5, undefined), false);
+const [statement] = collectDecisionQuestions(
+  '{{#if decision:"The picture shows the sea" pictures:2 clips:1 media_within:3}}x{{/if}}',
+);
+assert.equal(statement?.pictures, 2);
+assert.equal(statement?.clips, 1);
+assert.equal(statement?.mediaWithin, 3);
+assert.equal(
+  collectDecisionQuestions('{{#if decision:"q" pictures:9 clips:4}}x{{/if}}')[0]?.pictures,
+  3,
+  "capped at the most one request carries",
+);
+
+// Speed is quoted only from a speed timed on this computer.
+assert.equal(decisionSpeedEstimate({ runtime: "valen_onnx", inputs: ["text", "image", "video"] }, null), null);
+const speed = decisionSpeedEstimate({ runtime: "llama_systemone", inputs: ["text", "image"] }, 10);
+assert.equal(speed?.sceneSeconds, 20);
+assert.equal(speed?.pictureSeconds, 8.3);
+assert.equal(speed?.clipSeconds, undefined);
 // Scaled through sharp where it loads; where it cannot, the picture is left out, never sent raw.
 assert.ok(loaded.images.every((url) => url.startsWith("data:image/jpeg;base64,")));
 
@@ -85,8 +128,12 @@ assert.deepEqual(
 );
 assert.deepEqual(decisionRequestWithMedia("llama_letters", plain, media), { state: plain }, "JevK5 reads text only");
 assert.deepEqual(decisionRequestWithMedia("valen_gguf", plain, { images: [], videos: [] }), { state: plain });
-assert.ok(decisionMediaTokenReserve("valen_onnx", ["text", "image", "video"]) > 0);
-assert.equal(decisionMediaTokenReserve("llama_letters", ["text"]), 0, "a text model keeps its whole input");
+assert.ok(decisionMediaTokens("valen_onnx", ["text", "image", "video"]).clip > 0);
+assert.deepEqual(
+  decisionMediaTokens("llama_letters", ["text"]),
+  { picture: 0, clip: 0 },
+  "a text model keeps its whole input",
+);
 
 // The pictures reach the server beside the state, and the inspector shows their size, not their bytes.
 let received: Record<string, unknown> | null = null;

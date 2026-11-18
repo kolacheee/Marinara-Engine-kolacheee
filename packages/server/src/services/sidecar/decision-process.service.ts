@@ -12,7 +12,7 @@
  * line answers both questions with no race.
  */
 import { spawn, type ChildProcess } from "node:child_process";
-import { createWriteStream, existsSync, mkdirSync } from "node:fs";
+import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { SidecarDecisionModelInfo } from "@marinara-engine/shared";
 import { runWithRootLogContext } from "../../lib/log-context.js";
@@ -64,6 +64,44 @@ export interface DecisionProcessStatus {
   modelId: string | null;
   error: string | null;
   pid: number | null;
+}
+
+/**
+ * Each model's reading speed as last timed on this computer, kept on disk so the panel
+ * can say how long a picture or a clip takes here, rather than quote a speed measured
+ * somewhere else. A model never started here has none, and the panel then says nothing.
+ */
+const SPEED_FILE = () => join(getDataDir(), "sidecar-runtime", "decision", "measured-speed.json");
+let speeds: Record<string, number> | null = null;
+
+function loadSpeeds(): Record<string, number> {
+  if (speeds) return speeds;
+  try {
+    const raw = JSON.parse(readFileSync(SPEED_FILE(), "utf8")) as unknown;
+    speeds = {};
+    if (raw && typeof raw === "object")
+      for (const [id, value] of Object.entries(raw))
+        if (typeof value === "number" && Number.isFinite(value) && value > 0) speeds[id] = value;
+  } catch {
+    speeds = {};
+  }
+  return speeds;
+}
+
+function rememberDecisionSpeed(modelId: string, msPerToken: number): void {
+  const all = loadSpeeds();
+  all[modelId] = Math.round(msPerToken * 1000) / 1000;
+  try {
+    mkdirSync(join(getDataDir(), "sidecar-runtime", "decision"), { recursive: true });
+    writeFileSync(SPEED_FILE(), JSON.stringify(all));
+  } catch (error) {
+    logger.debug(error, "[decision-sidecar] Could not save the measured speed");
+  }
+}
+
+/** Milliseconds per token of scene this model last read here, or null if it never ran here. */
+export function measuredDecisionSpeed(modelId: string): number | null {
+  return loadSpeeds()[modelId] ?? null;
 }
 
 class DecisionProcessService {
@@ -476,7 +514,10 @@ class DecisionProcessService {
     if (!failed && !signal.aborted && model.runtime !== "open_jev_torch") {
       const started = Date.now();
       const second = await this.warmUp(baseUrl, model, signal, MEASURE_STATE);
-      if (!second) this.msPerToken = (Date.now() - started) / MEASURE_STATE_TOKENS;
+      if (!second) {
+        this.msPerToken = (Date.now() - started) / MEASURE_STATE_TOKENS;
+        rememberDecisionSpeed(model.id, this.msPerToken);
+      }
     }
     return failed;
   }
