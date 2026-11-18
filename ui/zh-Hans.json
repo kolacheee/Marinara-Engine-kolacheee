@@ -11524,6 +11524,7 @@
   "ui.connections.videogenerationdefaultspanel.value1Setup": "{{value1}} 设置",
   "ui.connections.videogenerationdefaultspanel.veoAccepts46Or8SecondsCharacterLoop": "Veo 接受 4、6 或 8 秒。角色循环参考会将头像同时用作首帧和尾帧，并以 8 秒运行。",
   "ui.connections.videogenerationdefaultspanel.videoDefaults": "视频默认值",
+  "ui.decision.visionRequired": "需要能读取图片的决策模型。在“连接 › 在此设备上 › 内置模型（决策）”中选择 Liquid d1、Valen 或 Winnow。",
   "ui.decision.visionRequiredLabel": "为何不可用",
   "ui.diagnostics.accessWarningBanner.review": "查看访问权限",
   "ui.diagnostics.accessWarningBanner.title": "其他人可以免密码打开 Marinara",
