@@ -7,7 +7,7 @@
 1. **Settings → General → Confirmations & Help** (सेटिंग्स → जनरल → पुष्टि और मदद) खोलें।
 2. **Walkthroughs** (वॉकथ्रू) के नीचे **Replay the welcome tour** (स्वागत टूर दोबारा चलाएँ) पर क्लिक करें।
 
-आप Home के **Learn the engine** (इंजन सीखें) विजेट में **Replay tutorial** (ट्यूटोरियल दोबारा चलाएँ) पर भी क्लिक कर सकते हैं। टूर पहले स्टेप से फिर शुरू हो जाता है।
+आप Home के **Things to try** (आज़माने वाली चीज़ें) विजेट में **See all** (सभी देखें) खोलकर **Replay tutorial** (ट्यूटोरियल दोबारा चलाएँ) पर भी क्लिक कर सकते हैं। टूर पहले स्टेप से फिर शुरू हो जाता है।
 
 **Walkthroughs** में दो और बटन हैं। **Replay the computer walkthrough** (या tablet या phone) आपके मौजूदा डिवाइस के लिए छोटा टूर दोबारा चलाता है, और **Show chat mode tips again** हर चैट मोड की टिप फिर से दिखाता है। [हर डिवाइस के लिए वॉकथ्रू](#walkthroughs-for-each-device) देखें।
 

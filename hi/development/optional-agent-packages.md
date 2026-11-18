@@ -93,6 +93,9 @@ globalThis.__MARINARA_HOST__ = {
 | `modules` | लाइब्रेरी मॉड्यूल, बेयर स्पेसिफ़ायर के हिसाब से (नीचे देखें) |
 | `queryClient` | वही एक React Query `QueryClient` जिसके साथ Engine रेंडर करता है |
 | `components.Modal` | Engine का `Modal`, उसके ओवरले क्रम, Escape और बैक बटन की हैंडलिंग के साथ |
+| `components.Switch`, `components.Checkbox` | Capability API 1.830 से, Engine के साझा स्विच और चेकबॉक्स, ताकि पैकेज का रूप होस्ट से मेल खाए। |
+| `components.Spinner` | Capability API 1.830 से, Engine का साझा लोडिंग रिंग। स्क्रीन रीडर से यह छिपा रहता है, जब तक आप `label` न दें, जिससे यह स्टेटस रीजन बन जाता है। |
+| `components.showConfirmDialog` | Capability API 1.830 से, Engine का पुष्टि डायलॉग, वही फ़ंक्शन जो `services.dialogs.showConfirmDialog` है। |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` मॉड्यूल |
 | `api` | `lib/api-client.ts` मॉड्यूल (`api`, `ApiError`, `getApiErrorMessage`, ...) |
 

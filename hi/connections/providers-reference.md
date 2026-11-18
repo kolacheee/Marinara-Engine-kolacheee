@@ -145,7 +145,7 @@ OpenAI, OpenRouter, xAI, NanoGPT, Arli AI, Z.AI और Google के इमे�
 
 ## Decision
 
-**Decision** टैब पर ये टाइलें हैं: **TypeSafe** (डिफ़ॉल्ट पता `https://api.typesafe.ai`), **Own decision server** (अपना निर्णय सर्वर) और **Built-in model (decisions)**। OpenAI चैट फ़ॉर्मैट इस्तेमाल करने वाली चैट सेवाएँ भी निर्णयों के जवाब दे सकती हैं, लेकिन सिर्फ़ ऐसे मॉडल के साथ जो लॉग-प्रोबेबिलिटी (हर संभव जवाब के स्कोर) लौटाता है। निर्णय मॉडल आपकी चैट के बारे में हाँ या नहीं वाले सवालों के जवाब देता है। [निर्णय मॉडल](decision-models.md) देखें।
+**Decision** टैब पर ये टाइलें हैं: **TypeSafe** (डिफ़ॉल्ट पता `https://api.typesafe.ai`), **Own decision server** (अपना निर्णय सर्वर) और **Built-in model (decisions)**। इस टैब में **NanoGPT**, **OpenRouter** और **Google Gemini** भी हैं, जिनके अपने निर्णय मॉडल हैं ([NanoGPT के ज़रिए](decision-models.md#through-nanogpt) और [OpenRouter या Google Gemini के ज़रिए](decision-models.md#through-openrouter-or-google-gemini) देखें)। OpenAI चैट फ़ॉर्मैट इस्तेमाल करने वाली दूसरी चैट सेवाएँ भी निर्णयों के जवाब दे सकती हैं, लेकिन सिर्फ़ ऐसे मॉडल के साथ जो लॉग-प्रोबेबिलिटी (हर संभव जवाब के स्कोर) लौटाता है। निर्णय मॉडल आपकी चैट के बारे में हाँ या नहीं वाले सवालों के जवाब देता है। [निर्णय मॉडल](decision-models.md) देखें।
 
 ## Audio
 
