@@ -283,6 +283,7 @@ Outlet मैक्रो का इस्तेमाल Conversation, Roleplay
 - `sticky:3 cooldown:5` हाँ को तीन टर्न तक बनाए रखता है, फिर पाँच टर्न तक उसे रोककर रखता है। देखें [Sticky और cooldown](conditional-prompts.md#sticky-and-cooldown)।
 - `until:"..."` या `while:"..."` हाँ को तब तक बनाए रखता है जब तक कोई दूसरा कथन इजाज़त दे। देखें [Until और while](conditional-prompts.md#until-and-while)।
 - `every:3` किसी कथन को सिर्फ़ हर तीन टर्न पर पूछता है। देखें [कुछ टर्न बाद जाँचना](conditional-prompts.md#checking-every-few-turns)।
+- `pictures:1`, `clips:1` और `media_within:3` इन्हें पढ़ने वाले बिल्ट-इन मॉडल को चैट की सबसे नई तस्वीरें और क्लिप देखने और उनके आने का इंतज़ार करने देते हैं। देखें [तस्वीरें और क्लिप](conditional-prompts.md#pictures-and-clips)।
 - `priority:high` या `priority:low` तय करता है कि प्रॉम्प्ट योजना में कौन से कथन समाएँगे। देखें [प्राथमिकता](conditional-prompts.md#priority) और [सीमाएँ और लागत](conditional-prompts.md#limits-and-cost)।
 
 ## आम गलतियाँ
