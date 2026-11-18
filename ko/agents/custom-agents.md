@@ -180,8 +180,9 @@ Marinara는 `editedText`를 답변에 갈아 끼웁니다. `changes`에 담긴 �
 
 1. 사용자 지정 에이전트를 여세요.
 2. 최대 500자의 **Question**(질문)을 입력하세요. 여기에서도 `{{user}}`와 `{{char}}` 매크로를 쓸 수 있습니다.
-3. **Run when probability is at least**(실행할 최소 확률)를 이 에이전트의 임계값으로 설정하세요. "예"일 확률이 이 값 이상이면 에이전트가 실행되므로, 값이 높을수록 더 자주 건너뜁니다. 편집기는 모델에 맞는 권장값을 보여 줍니다. 로컬 채팅 모델과 Decision 계정은 0.5, 내장 Open-Jev 모델은 0.1입니다. 모델을 바꾼 뒤에는 직접 쓰는 채팅으로 확인하세요. [임계값](../connections/decision-models.md#thresholds)을 참고하세요.
-4. 선택 사항: **Bypass the question after this many messages without a successful run**(성공적인 실행 없이 이 수만큼 메시지가 지나면 질문 건너뛰기)을 설정하세요. 그만큼 메시지가 지나면 질문을 건너뛰므로, 계속 "아니요"라고 답하는 모델 때문에 에이전트가 영영 실행되지 않는 일을 막을 수 있습니다. 키워드와 주기는 계속 적용됩니다.
+3. **Run when probability is at least**(실행할 최소 확률)를 이 에이전트의 임계값으로 설정하세요. "예"일 확률이 이 값 이상이면 에이전트가 실행되므로, 값이 높을수록 더 자주 건너뜁니다. 편집기는 모델에 맞는 권장값을 보여 줍니다. 로컬 채팅 모델과 Decision 계정은 0.5, 대부분의 내장 Decision 모델은 0.3 또는 0.5, 내장 Open-Jev 모델은 0.1입니다. 모델을 바꾼 뒤에는 직접 쓰는 채팅으로 확인하세요. [임계값](../connections/decision-models.md#thresholds)을 참고하세요.
+4. 선택 사항: **Show the decision model**(결정 모델에 보여줄 항목) 아래에서 질문에 보여 줄 **Pictures**(이미지)로 최신 1~3장을 고르거나 **Clips**(클립)를 고르고, **Ask only when a picture or clip is in**(이미지나 클립이 있을 때만 질문할 메시지 범위)으로 그림이나 클립을 확인할 최근 메시지 범위를 정하세요. 이를 읽을 수 있는 내장 Decision 모델(Liquid d1, Valen 또는 Winnow, 클립은 Valen 정식 버전)이 필요하며, 없으면 회색으로 비활성화됩니다. 메시지 범위를 설정하면 그 안에 그림이나 클립이 없는 턴에는 에이전트를 건너뜁니다. 그림이나 클립마다 질문에 답하는 시간이 늘어납니다. [그림과 클립](../connections/decision-models.md#pictures-and-clips)을 참고하세요.
+5. 선택 사항: **Bypass the question after this many messages without a successful run**(성공적인 실행 없이 이 수만큼 메시지가 지나면 질문 건너뛰기)을 설정하세요. 그만큼 메시지가 지나면 질문을 건너뛰므로, 계속 "아니요"라고 답하는 모델 때문에 에이전트가 영영 실행되지 않는 일을 막을 수 있습니다. 키워드와 주기는 계속 적용됩니다.
 
 질문은 최신 메시지에 관한 진술로 작성하세요. 예를 들면 `The latest message moves the scene to a new place.`입니다. 작은 모델은 `Did the scene change?`보다 이 문장에 더 안정적으로 답했습니다. [판정문 작성하기](../prompts/conditional-prompts.md#writing-statements)를 참고하세요.
 

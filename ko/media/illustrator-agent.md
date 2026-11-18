@@ -123,6 +123,19 @@ Illustrator는 배경도 그립니다. **Chat Settings → Agents**(채팅 설�
 
 세 가지 모두 기본값은 꺼짐입니다. [Illustrator가 만드는 배경](scene-backgrounds.md)을 참고하세요.
 
+## Decision 모델로 그림 검사하기
+
+[그림을 읽는 내장 Decision 모델](../connections/decision-models.md#features-that-look-at-pictures)(Liquid d1, Valen 또는 Winnow)을 쓰면 Illustrator 카드에 설정이 세 가지 더 표시됩니다. 모두 기본적으로 꺼져 있으며, 이런 모델이 없으면 회색으로 비활성화되고 ⓘ가 표시됩니다.
+
+- **Picture check**(이미지 확인)는 새 그림, 날씨 버전, 셀카마다 요청한 내용이 그려졌는지 확인합니다. 셀카는 캐릭터의 아바타와도 비교합니다. **Make another if it doesn't match**(일치하지 않으면 다시 생성)는 맞지 않으면 한 번 더 그립니다. **Always make two, keep the better**(항상 2개를 만들고 더 나은 이미지 유지)는 두 장을 그려 더 나은 그림을 남깁니다. 그림을 추가할 때마다 이미지 생성이 한 번 더 필요합니다.
+- **Also check**(추가 확인 사항)(**Picture check** 아래)는 `Kaelen has short red hair`처럼 직접 정한 검사 조건을 한 줄에 하나씩 최대 6개까지 추가합니다. 그림에 나오면 안 되는 내용은 `not: The picture has writing or a watermark`처럼 줄 앞에 `not:`을 붙이세요.
+- **Skip a picture the newest one already shows**(최신 이미지에 이미 나온 내용은 생성 건너뛰기)는 채팅의 최신 그림과 곧 그릴 내용을 비교해 중복된 그림은 건너뜁니다. 직접 요청한 그림은 항상 만듭니다.
+- **Reuse a library background that looks like the place**(장소와 비슷한 라이브러리 배경 재사용)는 새 장소에 맞는 라이브러리 배경을 보여 주고 새로 그리지 않습니다. [이미 가진 그림 재사용하기](scene-backgrounds.md#reusing-pictures-you-already-have)를 참고하세요.
+
+Conversation 채팅에서는 셀카용 **Picture check**가 Illustrator 카드에 있습니다.
+
+실행할 수 없는 검사는 통과로 처리하므로 그림은 유지됩니다.
+
 ## NovelAI의 여러 캐릭터 장면
 
 Illustrator의 이미지 모델이 V4, V4.5 또는 V5 모델을 쓰는 NovelAI이면, 프롬프트 작성 모델이 보이는 캐릭터마다 캐릭터별 설명을 하나씩 추가합니다. 각 설명에는 그 캐릭터의 외모, 표정, 자세, 화면 안의 대략적인 위치가 담깁니다. Marinara는 설명을 장면의 캐릭터 목록과 대조해 일치하지 않는 설명은 버리고, 나머지를 메인 프롬프트와 함께 NovelAI 고유의 캐릭터 프롬프트로 보냅니다. 이렇게 하면 머리카락, 옷 등의 특징이 캐릭터끼리 섞이지 않습니다. **Illustrate**로 만든 이미지와 캐릭터의 `[illustrate]` 명령으로 만든 이미지에도 같은 설명이 붙습니다.

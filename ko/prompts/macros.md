@@ -283,6 +283,7 @@ Outlet 매크로는 Conversation, Roleplay, Game 모드의 프롬프트 섹션�
 - `sticky:3 cooldown:5`는 예를 3턴 동안 유지한 뒤 5턴 동안 쉽니다. [Sticky와 Cooldown](conditional-prompts.md#sticky-and-cooldown)을 참고하세요.
 - `until:"..."`이나 `while:"..."`은 두 번째 문장이 허용하는 동안 예를 유지합니다. [Until과 While](conditional-prompts.md#until-and-while)을 참고하세요.
 - `every:3`은 3턴마다 한 번만 문장을 묻습니다. [몇 턴마다 확인하기](conditional-prompts.md#checking-every-few-turns)를 참고하세요.
+- `pictures:1`, `clips:1`, `media_within:3`은 그림과 클립을 읽는 내장 모델이 채팅의 최신 그림과 클립을 보고, 그림이나 클립이 나올 때까지 기다리게 합니다. [그림과 클립](conditional-prompts.md#pictures-and-clips)을 참고하세요.
 - `priority:high`나 `priority:low`는 프롬프트 계획에 들어갈 문장을 고릅니다. [우선순위](conditional-prompts.md#priority)와 [제한과 비용](conditional-prompts.md#limits-and-cost)을 참고하세요.
 
 ## 자주 하는 실수

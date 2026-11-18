@@ -42,6 +42,8 @@ Illustrator는 새 장소를 그리기 전에 이미 가진 그림을 다음 순
 
 대소문자, 악센트, "'s"는 구분하지 않으며, 단순한 `bedroom.png`보다 가장 구체적인 이름을 우선합니다. 맞는 그림이 있으면 그 그림을 표시하고(이야기의 날씨에 맞는 버전이 있으면 그 버전으로) 새로 그리지 않습니다. 맞는 그림이 없는 장소에만 새 그림을 만듭니다.
 
+이름이 맞는 그림이 없고 Illustrator 카드에서 **Reuse a library background that looks like the place**(장소와 비슷한 라이브러리 배경 재사용)를 켰다면, [그림을 읽는 Decision 모델](../connections/decision-models.md#features-that-look-at-pictures)이 장소와 같은 단어가 들어간 라이브러리 그림을 최대 4장까지 살펴보고 맞는 그림을 보여 줍니다. 맞는 그림이 하나도 없을 때만 새로 그립니다. 기본적으로 꺼져 있으며, 이런 모델이 없으면 회색으로 비활성화됩니다.
+
 한 장소에 같은 그림이 계속 쓰이게 하려면 장소를 따라 파일 이름을 짓거나("Kitchen"이라면 `kitchen.png`), `smith house kitchen`처럼 두 단어 이상으로 된 태그를 붙이세요([배경에 태그 달기](../appearance/chat-backgrounds.md#tag-a-background) 참고). `kitchen`이나 `night`처럼 한 단어로 된 태그는 보통 그림의 모습을 설명하므로 여기서는 무시됩니다.
 
 ## 날씨별 배경

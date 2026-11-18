@@ -153,6 +153,15 @@
 - Decision 활성화는 채팅 턴에만 적용됩니다. Game 설정과 에이전트가 스스로 실행하는 스캔에서는 Decision 항목을 아니요로 읽습니다.
 - 항목 내용 안의 `{{#if decision:"..."}}`는 다릅니다. 이미 활성화된 항목의 글을 줄입니다.
 
+### Decision 모델에 그림 보여 주기
+
+그림을 읽는 내장 Decision 모델(Liquid d1, Valen 또는 Winnow)을 쓰면 `The newest picture shows a dragon`처럼 채팅의 그림에 관한 판정문을 쓸 수 있습니다. **Decision** 필드 아래의 **Show the decision model**(결정 모델에 보여줄 항목)에는 목록이 두 개 있습니다.
+
+- **Pictures**(이미지): **No pictures**(이미지 없음, 기본값) 또는 채팅의 최신 그림 1~3장입니다. 그림마다 판정에 걸리는 시간이 늘어납니다.
+- **Ask only when a picture is in**(이미지가 있을 때만 질문할 메시지 범위): **Any message (ask every time)**(모든 메시지(매번 질문)) 또는 최근 메시지 1~20개입니다. 그 안에 그림이 없으면 판정문을 아니요로 읽고 묻지 않습니다.
+
+그림을 읽는 모델이 없으면 이 항목들은 회색으로 비활성화되고 ⓘ에 이유가 표시되며, 판정문에는 텍스트만 전달됩니다. 여러 항목이 같은 판정문을 쓰면 그중 가장 많은 수의 그림을 요청한 항목에 맞춰 한 번만 묻습니다. [Decision 모델이 답할 수 있는 질문](../connections/decision-models.md#pictures-and-clips)을 참고하세요.
+
 ## 그룹, 필터와 기타 옵션
 
 펼친 드로어에는 필드가 더 있습니다.
