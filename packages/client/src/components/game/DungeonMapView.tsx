@@ -960,7 +960,8 @@ export function DungeonMapView({
           // spoiled the route and hid the furniture).
           ctx.fillStyle = "rgba(20, 16, 12, 0.3)";
           ctx.fillRect(cx + dx - 1, cy + dy - 1, 4, 5);
-          ctx.fillStyle = "rgba(236, 226, 196, 0.6)";
+          // Pale blue, apart from the guards' orange and red (panel round 37: lost among the fans and beats).
+          ctx.fillStyle = "rgba(170, 214, 255, 0.75)";
           ctx.fillRect(cx + dx, cy + dy, 2, 3);
         }
       }
@@ -971,10 +972,48 @@ export function DungeonMapView({
       if (sneaking && cells) {
         const railAt = (x: number, y: number) =>
           x >= 0 && y >= 0 && x < cells.width && y < cells.height && cells.props[y * cells.width + x] === 44;
+        // The blind strip under a gallery's rail, hatched, where its watchers cannot see down (panel round 37:
+        // not marked).
+        const raisedSet = new Set((kept?.gallery ?? []).map(({ x, y }) => y * cells.width + x));
+        if (raisedSet.size)
+          for (let i = 0; i < cells.props.length; i++) {
+            if (cells.props[i] !== 44) continue;
+            const [rx, ry] = [i % cells.width, Math.floor(i / cells.width)];
+            for (const [dx, dy] of [
+              [1, 0],
+              [-1, 0],
+              [0, 1],
+              [0, -1],
+            ] as const) {
+              const [nx, ny] = [rx + dx, ry + dy];
+              const n = ny * cells.width + nx;
+              if (nx < 0 || ny < 0 || nx >= cells.width || ny >= cells.height || inFog(nx, ny)) continue;
+              if (cells.ground[n] !== "floor" || raisedSet.has(n) || cells.props[n] === 44) continue;
+              ctx.save();
+              ctx.beginPath();
+              ctx.rect(nx * T, ny * T, T, T);
+              ctx.clip();
+              ctx.fillStyle = "rgba(10, 14, 30, 0.35)";
+              ctx.fillRect(nx * T, ny * T, T, T);
+              ctx.strokeStyle = "rgba(170, 214, 255, 0.55)";
+              ctx.lineWidth = 1;
+              for (let k = -T; k < T; k += 4) {
+                ctx.beginPath();
+                ctx.moveTo(nx * T + k, ny * T + T);
+                ctx.lineTo(nx * T + k + T, ny * T);
+                ctx.stroke();
+              }
+              ctx.restore();
+            }
+          }
         for (const guard of guards) {
           if (!guard.face || inFog(guard.x, guard.y)) continue;
           const range = guard.raised ? 10 : 6;
-          const seen = dungeonSightCells(cells, guard, guard.face, range).filter(
+          // Columns and piers stand in the way of sight as walls do (panel round 37).
+          const pillar = buildingStyleOf(cells.set) ? 16 : 7;
+          const blocks = (x: number, y: number) =>
+            (x !== guard.x || y !== guard.y) && cells.props[y * cells.width + x] === pillar;
+          const seen = dungeonSightCells(cells, guard, guard.face, range, blocks).filter(
             ({ x, y }) =>
               !inFog(x, y) &&
               !(
@@ -1003,12 +1042,14 @@ export function DungeonMapView({
             ctx.closePath();
           };
           const light = ctx.createRadialGradient(gx, gy, T * 0.5, gx, gy, reach);
-          light.addColorStop(0, "rgba(255, 150, 70, 0.26)");
-          light.addColorStop(1, "rgba(255, 150, 70, 0.03)");
+          // A gallery's watcher in a paler gold, to tell the long look from above apart.
+          const tint = guard.raised ? "255, 226, 130" : "255, 150, 70";
+          light.addColorStop(0, `rgba(${tint}, 0.26)`);
+          light.addColorStop(1, `rgba(${tint}, 0.03)`);
           ctx.fillStyle = light;
           fan();
           ctx.fill();
-          ctx.strokeStyle = "rgba(255, 196, 110, 0.75)";
+          ctx.strokeStyle = guard.raised ? "rgba(255, 236, 160, 0.9)" : "rgba(255, 196, 110, 0.75)";
           ctx.lineWidth = 1.5;
           ctx.setLineDash([4, 3]);
           fan();

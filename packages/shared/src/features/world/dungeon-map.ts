@@ -426,6 +426,8 @@ export function dungeonSightCells(
   from: { x: number; y: number },
   face: { x: number; y: number },
   range = 7,
+  /** Cells that stand in the way though they are not wall (a column, a pier). */
+  blocks?: (x: number, y: number) => boolean,
 ): Array<{ x: number; y: number }> {
   const out: Array<{ x: number; y: number }> = [];
   const len = Math.hypot(face.x, face.y) || 1;
@@ -448,7 +450,7 @@ export function dungeonSightCells(
       for (let k = 1; k < steps && clear; k++) {
         const sx = Math.round(from.x + (dx * k) / steps);
         const sy = Math.round(from.y + (dy * k) / steps);
-        if ((sx !== x || sy !== y) && !open(sx, sy)) clear = false;
+        if ((sx !== x || sy !== y) && (!open(sx, sy) || blocks?.(sx, sy))) clear = false;
       }
       if (clear) out.push({ x, y });
     }
