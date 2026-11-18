@@ -283,6 +283,7 @@
 - `sticky:3 cooldown:5` сохраняет ответ да на три сообщения, а затем делает паузу на пять. См. [Sticky и cooldown](conditional-prompts.md#sticky-and-cooldown).
 - `until:"..."` или `while:"..."` сохраняет ответ да, пока это позволяет второе утверждение. См. [Until и while](conditional-prompts.md#until-and-while).
 - `every:3` спрашивает утверждение только раз в три сообщения. См. [Проверка через несколько сообщений](conditional-prompts.md#checking-every-few-turns).
+- `pictures:1`, `clips:1` и `media_within:3` позволяют встроенной модели, которая их читает, просматривать последние изображения и клипы чата и ждать их появления. См. [Изображения и клипы](conditional-prompts.md#pictures-and-clips).
 - `priority:high` или `priority:low` выбирает, какие утверждения поместятся в план промпта. См. [Приоритет](conditional-prompts.md#priority) и [Ограничения и стоимость](conditional-prompts.md#limits-and-cost).
 
 ## Частые ошибки
