@@ -197,6 +197,8 @@ Marinara가 값을 채워 넣을 자리마다 워크플로에 다음 문자열�
 
 서비스마다 **Prompt prefix**(프롬프트 접두사)와 **Negative prefix**(네거티브 접두사) 입력란도 있습니다. 여기에 넣은 글은 이 모델에서 보내는 모든 프롬프트 앞에 붙습니다. AUTOMATIC1111 / Forge와 ComfyUI에는 **Clip skip**(클립 건너뛰기) 입력란이 있습니다. AUTOMATIC1111 / Forge에는 **Restore faces**(얼굴 복원) 토글이 추가로 있습니다. ComfyUI에는 참조 이미지가 없을 때 1x1 플레이스홀더를 업로드하는 토글이 추가로 있으며, 이 토글은 참조 플레이스홀더를 쓰는 사용자 지정 워크플로에서만 의미가 있습니다. NovelAI에는 **Guidance rescale**(가이던스 리스케일)과 **UC preset**(UC 프리셋)이 추가로 있습니다.
 
+NovelAI에는 **Background dataset for backgrounds** 설정도 있으며, 기본값은 꺼짐입니다. 켜면 V4.5와 V5 모델에서 배경 그림(캐릭터와 페르소나 Gallery 배경, 채팅과 Illustrator 장면 배경, 채팅 갤러리의 장소 그림, 게임 배경)의 프롬프트 앞에 NovelAI의 `background dataset` 태그가 붙습니다. NovelAI의 배경 데이터셋은 사진에 가까운 그림을 만드는 경향이 있으므로, 배경을 애니메이션풍 채팅에 맞추려면 꺼 두세요.
+
 ## 투명 배경
 
 스프라이트와 스티커 또는 이모지 시트는 배경이 투명할 때 가장 보기 좋습니다. 각 이미지 모델에는 투명 배경을 그릴 수 있는지 지정하는 **Transparent backgrounds**(투명 배경) 설정이 있습니다.

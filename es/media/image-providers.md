@@ -195,6 +195,8 @@ Cada servicio tiene un campo **Seed** (Semilla). -1 mantiene cada imagen aleator
 
 Cada servicio también tiene los campos **Prompt prefix** y **Negative prefix**. El texto que pongas ahí se añade al principio de cada prompt de este modelo. AUTOMATIC1111 / Forge y ComfyUI tienen un campo **Clip skip**. AUTOMATIC1111 / Forge añade un interruptor **Restore faces**. ComfyUI añade un interruptor para subir un marcador de posición de 1x1 cuando no se proporciona ninguna imagen de referencia, que solo importa para flujos de trabajo personalizados con marcadores de posición de referencia. NovelAI añade **Guidance rescale** y **UC preset**.
 
+NovelAI también tiene el ajuste **Background dataset for backgrounds** (Conjunto de datos de fondos para los fondos), desactivado de forma predeterminada. Cuando está activado, las imágenes de fondo (los fondos de la Gallery de personajes y personas, los fondos de escena del chat y del Illustrator, las imágenes de ubicaciones de la galería del chat y los fondos del juego) llevan al principio la etiqueta `background dataset` de NovelAI en los modelos V4.5 y V5. El conjunto de datos de fondos de NovelAI tiende al estilo fotográfico, así que deja el ajuste desactivado si quieres que tus fondos combinen con un chat de estilo anime.
+
 ## Fondos transparentes
 
 Los sprites y las hojas de stickers o emojis se ven mejor con un fondo transparente. Cada modelo de imágenes tiene un ajuste **Transparent backgrounds** (Fondos transparentes) que indica si puede dibujarlo:

@@ -14228,6 +14228,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "Valeurs par défaut des images locales",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "Préfixe négatif",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "Planification du bruit",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "Jeu de données de décors pour les arrière-plans",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "Ajoute le tag \"background dataset\" de NovelAI au début des prompts d'arrière-plan (galerie, chat, Illustrator et jeu) avec les modèles V4.5 et V5. Ce jeu de données privilégie un rendu photographique, qui peut donc ne pas s'accorder avec un chat de style anime.",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "Configuration de la génération NovelAI",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "Aperçu de la plaque de style NovelAI",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "Plaque de style NovelAI V4.5",

@@ -14225,6 +14225,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "ローカル画像のデフォルト",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "ネガティブの接頭辞",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "ノイズスケジュール",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "背景に背景用データセットを使う",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "V4.5とV5モデルで、背景画像(ギャラリー、チャット、Illustrator、ゲームの背景)のプロンプトの先頭にNovelAIの「background dataset」タグを付けます。このデータセットは写真風の描写に寄るため、アニメ調のチャットには合わないことがあります。",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "NovelAIの生成設定",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "NovelAIのスタイルプレートのプレビュー",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "NovelAI V4.5のスタイルプレート",

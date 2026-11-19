@@ -14225,6 +14225,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "लोकल इमेज डिफ़ॉल्ट",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "नेगेटिव प्रीफ़िक्स",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "नॉइज़ शेड्यूल",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "बैकग्राउंड के लिए बैकग्राउंड डेटासेट",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "V4.5 और V5 मॉडल पर बैकग्राउंड की तस्वीरें (गैलरी, चैट, Illustrator और गेम के बैकग्राउंड) बनाते समय शुरुआत में NovelAI का \"background dataset\" टैग जोड़ता है। इस डेटासेट से तस्वीरें ज़्यादा फ़ोटो जैसी बनती हैं, इसलिए वे ऐनिमे स्टाइल वाली चैट से मेल न खाएँ।",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "NovelAI जेनरेशन सेटअप",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "NovelAI स्टाइल प्लेट प्रीव्यू",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "NovelAI V4.5 स्टाइल प्लेट",

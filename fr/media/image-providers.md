@@ -197,6 +197,8 @@ Chaque service a un champ **Seed** (graine aléatoire). La valeur -1 garde chaqu
 
 Chaque service a aussi les champs **Prompt prefix** (préfixe de prompt) et **Negative prefix** (préfixe négatif). Le texte saisi là est ajouté au début de chaque prompt de ce modèle. AUTOMATIC1111 / Forge et ComfyUI ont un champ **Clip skip**. AUTOMATIC1111 / Forge ajoute un interrupteur **Restore faces**. ComfyUI ajoute un interrupteur qui téléverse une image de remplacement de 1x1 quand aucune image de référence n'est fournie, ce qui ne compte que pour les workflows personnalisés contenant des placeholders d'image de référence. NovelAI ajoute **Guidance rescale** et **UC preset**.
 
+NovelAI propose aussi le réglage **Background dataset for backgrounds** (jeu de données d'arrière-plans pour les arrière-plans), désactivé par défaut. Quand il est activé, les images d'arrière-plan (arrière-plans des galeries des personnages et des personas, arrière-plans de scène du chat et d'Illustrator, images de lieux de la galerie du chat et arrière-plans de jeu) commencent par le tag `background dataset` de NovelAI sur les modèles V4.5 et V5. Le jeu de données d'arrière-plans de NovelAI tend vers un rendu photographique : laisse donc ce réglage désactivé si tes arrière-plans doivent correspondre à un chat de style anime.
+
 ## Arrière-plans transparents
 
 Les sprites et les planches de stickers ou d'emojis rendent mieux sur un arrière-plan transparent. Chaque modèle d'image a un réglage **Transparent backgrounds** (fonds transparents) qui indique s'il peut en dessiner un :

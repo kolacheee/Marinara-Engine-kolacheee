@@ -1,6 +1,6 @@
 {
   "language": "fr",
-  "sourceCommit": "4635f7cac8ec84f51e812778a1153bb31cdc0654",
+  "sourceCommit": "9156b2945030e976e11c95e0063a9b275ed29417",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -689,8 +689,8 @@
     },
     {
       "path": "media/image-providers.md",
-      "sha256": "41f17300f88b667d666a435f618e2ddf8b437916972308f7096cf505942c43b5",
-      "bytes": 24071
+      "sha256": "c0c63232933c8688ddda6627aa91abe5ec036ec8627eab286905c8ede6138eea",
+      "bytes": 24728
     },
     {
       "path": "media/music.md",

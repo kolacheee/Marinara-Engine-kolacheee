@@ -197,6 +197,8 @@ Jeder Dienst hat ein Feld **Seed**. Mit -1 bleibt jedes Bild zufällig. Jede and
 
 Jeder Dienst hat außerdem die Felder **Prompt prefix** und **Negative prefix**. Text darin wird jedem Prompt dieses Modells vorangestellt. AUTOMATIC1111 / Forge und ComfyUI haben ein Feld **Clip skip**. AUTOMATIC1111 / Forge ergänzt den Schalter **Restore faces**. ComfyUI ergänzt einen Schalter, der einen 1x1-Platzhalter hochlädt, wenn kein Referenzbild mitkommt. Er spielt nur bei eigenen Workflows mit Referenz-Platzhaltern eine Rolle. NovelAI ergänzt **Guidance rescale** und **UC preset**.
 
+NovelAI hat außerdem die Einstellung **Background dataset for backgrounds**, die standardmäßig aus ist. Wenn du sie einschaltest, wird bei V4.5- und V5-Modellen für Hintergrundbilder (Hintergründe in Charakter- und Persona-Galerien, Szenenhintergründe für Chats und Illustrator, Ortsbilder in der Chat-Galerie und Game-Hintergründe) der NovelAI-Tag `background dataset` vorangestellt. NovelAIs Hintergrunddatensatz liefert eher fotografische Bilder. Lass die Einstellung deshalb aus, wenn deine Hintergründe zu einem Chat im Anime-Stil passen sollen.
+
 ## Transparente Hintergründe
 
 Sprites sowie Sticker- und Emoji-Bögen sehen mit einem transparenten Hintergrund am besten aus. Jedes Bildmodell hat eine Einstellung **Transparent backgrounds** (Transparente Hintergründe), die angibt, ob es einen solchen Hintergrund erzeugen kann:

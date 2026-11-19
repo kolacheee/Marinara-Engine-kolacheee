@@ -197,6 +197,8 @@ Każda usługa ma pole **Seed** (ziarno). Wartość -1 sprawia, że każdy obraz
 
 Każda usługa ma też pola **Prompt prefix** i **Negative prefix**. Wpisany tam tekst trafia na początek każdego promptu w tym modelu. AUTOMATIC1111 / Forge i ComfyUI mają pole **Clip skip**. AUTOMATIC1111 / Forge dokłada przełącznik **Restore faces**. ComfyUI dokłada przełącznik, który wgrywa obrazek zastępczy 1x1, gdy nie podano obrazu referencyjnego. Ma on znaczenie tylko przy własnych workflow ze znacznikami obrazów referencyjnych. NovelAI dokłada pola **Guidance rescale** i **UC preset**.
 
+NovelAI ma też ustawienie **Background dataset for backgrounds** (zbiór danych tła do generowania teł), domyślnie wyłączone. Gdy jest włączone, w modelach V4.5 i V5 prompty obrazów tła (teł w galeriach postaci i person, teł scen w czacie i tworzonych przez agenta Illustrator, obrazów lokacji w galerii czatu oraz teł gry) zaczynają się od tagu NovelAI `background dataset`. Zbiór danych tła NovelAI sprzyja stylowi fotograficznemu, więc zostaw to ustawienie wyłączone, jeśli tła mają pasować do czatu w stylu anime.
+
 ## Przezroczyste tła
 
 Sprite'y oraz arkusze naklejek lub emoji wyglądają najlepiej z przezroczystym tłem. Każdy model obrazów ma ustawienie **Transparent backgrounds** (Przezroczyste tła), które określa, czy potrafi takie tło narysować:

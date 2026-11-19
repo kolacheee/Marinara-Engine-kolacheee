@@ -14228,6 +14228,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "Lokalne ustawienia domyślne obrazów",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "Prefiks negatywny",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "Harmonogram szumu",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "Zbiór danych teł do generowania tła",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "Rozpoczyna generowanie teł (do galerii, czatu, przez agenta Illustrator i do gry) od tagu \"background dataset\" w modelach NovelAI V4.5 i V5. Ten zbiór danych sprzyja stylowi fotograficznemu, więc może nie pasować do czatu w stylu anime.",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "Konfiguracja generowania NovelAI",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "Podgląd płytki stylu NovelAI",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "Płytka stylu NovelAI V4.5",

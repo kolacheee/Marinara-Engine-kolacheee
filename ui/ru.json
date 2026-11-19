@@ -14225,6 +14225,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "Локальные параметры изображений по умолчанию",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "Негативный префикс",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "Расписание шума",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "Набор данных для фоновых изображений",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "Добавляет тег NovelAI \"background dataset\" в начало промптов фоновых изображений (для галереи, чата, Illustrator и игры) на моделях V4.5 и V5. Этот набор данных дает более фотографичный результат, который может не сочетаться с чатом в стиле аниме.",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "Настройка генерации NovelAI",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "Предпросмотр стилевой пластины NovelAI",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "Стилевая пластина NovelAI V4.5",

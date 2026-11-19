@@ -14301,6 +14301,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "本地图像默认值",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "负面提示词前缀",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "噪声调度",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "背景图使用背景数据集",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "使用 V4.5 和 V5 模型生成背景图（图库、聊天、插画师和游戏背景）时，在提示词开头添加 NovelAI 的“background dataset”标签。该数据集偏向摄影风格，可能与动漫风格的聊天不搭。",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "NovelAI 生成设置",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "NovelAI 风格参考板预览",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "NovelAI V4.5 风格参考板",

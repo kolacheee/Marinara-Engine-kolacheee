@@ -14332,6 +14332,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "로컬 이미지 기본값",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "네거티브 접두사",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "노이즈 스케줄",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "배경에 배경 데이터셋 사용",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "V4.5 및 V5 모델에서 배경 이미지(갤러리, 채팅, Illustrator 및 게임 배경)를 생성할 때 NovelAI의 \"background dataset\" 태그를 앞에 붙입니다. 이 데이터셋은 사진에 가까운 스타일이라 애니메이션 스타일의 채팅과 어울리지 않을 수 있습니다.",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "NovelAI 생성 설정",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "NovelAI 스타일 플레이트 미리보기",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "NovelAI V4.5 스타일 플레이트",

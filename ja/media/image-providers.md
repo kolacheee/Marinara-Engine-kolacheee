@@ -197,6 +197,8 @@ Marinaraに値を入れてほしい位置に、ワークフロー内で次のテ
 
 どのサービスにも**Prompt prefix**と**Negative prefix**の欄もあります。ここに入れたテキストは、このモデルで送るすべてのプロンプトの先頭に追加されます。AUTOMATIC1111 / ForgeとComfyUIには**Clip skip**欄があります。AUTOMATIC1111 / Forgeにはさらに**Restore faces**トグルがあります。ComfyUIには、参照画像がないときに1x1のプレースホルダー画像をアップロードするトグルがあります。これは、参照画像のプレースホルダーを含むカスタムワークフローでだけ意味を持ちます。NovelAIには**Guidance rescale**と**UC preset**があります。
 
+NovelAIには、デフォルトでオフの**Background dataset for backgrounds**(背景に背景データセットを使う)もあります。オンにすると、V4.5とV5のモデルでは、背景画像(キャラクターやペルソナのGalleryの背景、チャットやIllustratorのシーン背景、チャットのギャラリーの場所の画像、ゲームの背景)のプロンプトの先頭に、NovelAIの`background dataset`タグが追加されます。NovelAIの背景データセットは写真風の画像になりやすいため、アニメ調のチャットに背景を合わせたい場合は、オフのままにしてください。
+
 ## 透過背景
 
 スプライトやステッカー、絵文字のシートは、背景が透明な状態がいちばんきれいです。各画像モデルには、透明な背景を描けるかどうかを指定する**Transparent backgrounds**(透過背景)設定があります。

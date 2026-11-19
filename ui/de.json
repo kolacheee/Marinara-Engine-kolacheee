@@ -14225,6 +14225,8 @@
   "ui.connections.imagegenerationdefaultspanel.localImageDefaults": "Lokale Bild-Standardwerte",
   "ui.connections.imagegenerationdefaultspanel.negativePrefix": "Negatives Präfix",
   "ui.connections.imagegenerationdefaultspanel.noiseSchedule": "Rauschplan",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDataset": "Hintergrunddatensatz für Hintergrundbilder",
+  "ui.connections.imagegenerationdefaultspanel.novelaiBackgroundDatasetHelp": "Stellt bei V4.5- und V5-Modellen das NovelAI-Tag „background dataset“ an den Anfang der Prompts für Hintergrundbilder (Galerie, Chat, Illustrator und Game-Hintergründe). Dieser Datensatz erzeugt eher fotografische Bilder, die daher möglicherweise nicht zu einem Chat im Anime-Stil passen.",
   "ui.connections.imagegenerationdefaultspanel.novelaiGenerationSetup": "Einrichtung der NovelAI-Generierung",
   "ui.connections.imagegenerationdefaultspanel.novelaiStylePlatePreview": "Vorschau der NovelAI-Stilvorlage",
   "ui.connections.imagegenerationdefaultspanel.novelaiV45StylePlate": "NovelAI-V4.5-Stilvorlage",
