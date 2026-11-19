@@ -1223,6 +1223,8 @@ export function useDungeonMap(chatId: string, turnKey: string | null, enabled: b
         }>;
         /** The party is sneaking: the guards' sight shows (owner 2026-11-18). */
         sneaking?: boolean;
+        /** A creature's lair whose maker is gone (cold, or killed): drawn abandoned (lair panel 11). */
+        lairGone?: boolean;
       }>(`/game/${chatId}/map`),
     enabled: enabled && !!chatId,
     staleTime: 30_000,

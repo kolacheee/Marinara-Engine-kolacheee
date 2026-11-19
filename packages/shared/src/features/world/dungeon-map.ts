@@ -1547,10 +1547,49 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
       break;
     }
   }
+  // A few stalagmites stand in the chamber, clear of its feature, its walls and its ways in: cover to fight
+  // round and break a line of sight (lair panel 11, all five: a cave chamber was bare floor).
+  let pillared = props;
+  {
+    const inFeature = new Set(feature);
+    const wallish = (c: number) =>
+      near(c).some((n) => n < 0 || n >= made.ground.length || ground[n] !== GROUND_CHARS.floor || inFeature.has(n));
+    const doorNear = (c: number) =>
+      doors.some(
+        (d) => Math.abs((d % made.width) - (c % made.width)) + Math.abs(Math.floor(d / made.width) - Math.floor(c / made.width)) <= 2,
+      );
+    const fx = feature.length ? feature.reduce((n, c) => n + (c % made.width), 0) / feature.length : 0;
+    const fy = feature.length ? feature.reduce((n, c) => n + Math.floor(c / made.width), 0) / feature.length : 0;
+    const chars0 = [...props];
+    const candidates = open
+      .filter((c) => !inFeature.has(c) && !wallish(c) && !doorNear(c) && ground[c] === GROUND_CHARS.floor && chars0[c] === "-")
+      .filter((c) => !near(c).some((n) => wallish(n)))
+      .sort(
+        (p, q) =>
+          Math.hypot((q % made.width) - fx, Math.floor(q / made.width) - fy) -
+            Math.hypot((p % made.width) - fx, Math.floor(p / made.width) - fy) || p - q,
+      );
+    const placed: number[] = [];
+    const chars = [...props];
+    const base = dungeonStepsFrom({ ...made, ground: [...ground].map((ch) => GROUND_OF[ch] ?? "rock"), props: chars.map(dungeonPropOfChar) }, made.entrance);
+    for (const c of candidates) {
+      if (placed.length >= Math.min(4, Math.floor(cells.length / 30))) break;
+      if (placed.some((q) => Math.abs((q % made.width) - (c % made.width)) + Math.abs(Math.floor(q / made.width) - Math.floor(c / made.width)) < 4))
+        continue;
+      chars[c] = "0";
+      const reached = dungeonStepsFrom(
+        { ...made, ground: [...ground].map((ch) => GROUND_OF[ch] ?? "rock"), props: chars.map(dungeonPropOfChar) },
+        made.entrance,
+      );
+      if (base.every((st, i) => st < 0 || i === c || reached[i]! >= 0)) placed.push(c);
+      else chars[c] = "-";
+    }
+    pillared = chars.join("");
+  }
   return {
     ...kept,
     ground,
-    props,
+    props: pillared,
     lairRoom,
     ...(lairCrawl ? { lairCrawl } : {}),
     ...(feature.length

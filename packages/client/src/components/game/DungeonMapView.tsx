@@ -1799,6 +1799,38 @@ export function DungeonMapView({
           }
         }
       }
+      // The haven's grave mist lying low over its hall, thickest by the coffins (lair panel 11: the mist is
+      // the vampire's identity and showed nowhere on the map).
+      if (lairKind === "haven" && lairCells.length && cells && kept) {
+        const heartIndex = kept.lairRoom ?? kept.roomInfo?.findIndex((info) => info?.heart) ?? -1;
+        const hall = heartIndex >= 0 ? cells.rooms[heartIndex] : undefined;
+        if (hall) {
+          const coffins = new Set(lairCells.map(({ x, y }) => `${x},${y}`));
+          // Kept inside the hall's walls, and low: a haze over the floor, not a whiteout (lair panel 12 check).
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(hall.x * T, hall.y * T, hall.w * T, hall.h * T);
+          ctx.clip();
+          for (const { x, y } of dungeonRoomCells(hall)) {
+            if (inFog(x, y) || cells.ground[y * cells.width + x] !== "floor") continue;
+            const h = hash(x * 41 + 5, y * 29 + 11);
+            const byCoffin = [-1, 0, 1].some((dy) => [-1, 0, 1].some((dx) => coffins.has(`${x + dx},${y + dy}`)));
+            if (!byCoffin && h % 4 !== 0) continue;
+            const [mx, my] = [x * T + 2 + (h % 12), y * T + 4 + ((h >> 4) % 8)];
+            const wisp = ctx.createRadialGradient(mx, my, 1, mx, my, byCoffin ? 20 : 14);
+            wisp.addColorStop(0, `rgba(205, 210, 225, ${byCoffin ? 0.22 : 0.1})`);
+            wisp.addColorStop(1, "rgba(205, 210, 225, 0)");
+            ctx.fillStyle = wisp;
+            ctx.save();
+            ctx.translate(mx, my);
+            ctx.scale(1.8, 0.7);
+            ctx.translate(-mx, -my);
+            ctx.fillRect(mx - 20, my - 20, 40, 40);
+            ctx.restore();
+          }
+          ctx.restore();
+        }
+      }
       // A cave lair's crawl: a squeeze through fallen rock into the great chamber, the boulders heaped either
       // side of a dark one-cell slot and spilled onto the floor beyond (lair panel 6: the crawl was unreadable).
       const crawl = kept?.lairCrawl;
@@ -2265,7 +2297,7 @@ export function DungeonMapView({
       }
       // The lair's breakable thing, drawn as its own piece among the feature so the party can see what to
       // strike (lair panel 4, all five: "show it in the scene" had nothing on the map to point at).
-      const anchor = lairKind ? dungeonLairAnchorCell(lairKind, lairCells) : undefined;
+      const anchor = lairKind && !data?.lairGone ? dungeonLairAnchorCell(lairKind, lairCells) : undefined;
       if (lairKind && anchor && !inFog(anchor.x, anchor.y)) {
         const [ox, oy] = [anchor.x * T, anchor.y * T];
         const [cx, cy] = [ox + T / 2, oy + T / 2];
@@ -2452,22 +2484,88 @@ export function DungeonMapView({
           px(3, 14, 10, 2, "rgba(200, 235, 240, 0.7)");
           px(5, 16, 7, 1, "rgba(200, 235, 240, 0.45)");
         } else if (lairKind === "hive") {
-          // The egg cluster: pale eggs heaped in the comb, each catching the light at its crown.
-          for (const [ex, ey] of [
-            [2, 6],
-            [7, 3],
-            [10, 8],
-            [5, 10],
+          // The egg cluster: a clutch of fat leathery eggs in a slick of amber jelly, each shaded down one side
+          // and glossed at its crown, spilling past its cell (lair panel 11: "pale crystals, not eggs").
+          ctx.fillStyle = "rgba(170, 110, 20, 0.55)";
+          ctx.beginPath();
+          ctx.ellipse(ox + T / 2, oy + T / 2 + 2, T * 0.95, T * 0.7, 0, 0, Math.PI * 2);
+          ctx.fill();
+          for (const [ex, ey, rx, ry] of [
+            [-1, 4, 4, 5],
+            [6, 0, 4.5, 5.5],
+            [13, 5, 4, 5],
+            [3, 10, 4.5, 5],
+            [11, 12, 4, 4.5],
           ] as const) {
-            // Rimmed dark and veined, so they read as eggs and not as a lamp (lair panel 10).
-            px(ex, ey, 7, 8, "rgba(30, 20, 6, 0.85)");
-            px(ex + 1, ey - 1, 5, 1, "rgba(30, 20, 6, 0.85)");
-            px(ex + 1, ey, 5, 7, "#d8cba0");
-            px(ex + 2, ey - 1, 3, 1, "#d8cba0");
-            px(ex + 2, ey + 1, 2, 2, "#f4ecd0");
-            px(ex + 4, ey + 3, 1, 3, "#9a7a3a");
-            px(ex + 3, ey + 5, 1, 1, "#9a7a3a");
+            const [cx, cy] = [ox + ex + 2, oy + ey + 2];
+            ctx.fillStyle = "rgba(40, 24, 6, 0.8)";
+            ctx.beginPath();
+            ctx.ellipse(cx + 1, cy + 1, rx + 1, ry + 1, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#d9c48e";
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#a8884a";
+            ctx.beginPath();
+            ctx.ellipse(cx + rx * 0.35, cy + ry * 0.2, rx * 0.6, ry * 0.75, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#c06a5a";
+            ctx.fillRect(cx - 1, cy - 1, 1, 3);
+            ctx.fillStyle = "#fff6dc";
+            ctx.fillRect(cx - rx * 0.5, cy - ry * 0.6, 2, 2);
           }
+        }
+      }
+      // A lair whose maker is gone (cold, or killed) drawn abandoned (lair panel 11: "a cold lair looks the
+      // same as a live one"): its feature greyed under dust and cobweb, its light out, and the find it left
+      // (lairs.ts DUNGEON_LAIR_LEAVINGS) a small open chest glinting at the feature's middle.
+      if (lairKind && lairCells.length && data?.lairGone) {
+        for (const { x, y } of lairCells) {
+          if (inFog(x, y)) continue;
+          ctx.fillStyle = "rgba(58, 56, 54, 0.72)";
+          ctx.fillRect(x * T, y * T, T, T);
+          const h = hash(x * 19 + 1, y * 23 + 5);
+          ctx.fillStyle = "rgba(200, 196, 186, 0.35)";
+          for (let k = 0; k < 4; k++) ctx.fillRect(x * T + ((h >> (k * 3)) % 15), y * T + ((h >> (k * 3 + 5)) % 15), 1, 1);
+          if (h % 4 === 0) {
+            ctx.strokeStyle = "rgba(220, 220, 220, 0.4)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(x * T, y * T);
+            ctx.lineTo(x * T + 10, y * T + 10);
+            ctx.moveTo(x * T + 10, y * T);
+            ctx.lineTo(x * T, y * T + 10);
+            ctx.moveTo(x * T + 5, y * T);
+            ctx.lineTo(x * T + 5, y * T + 10);
+            ctx.stroke();
+          }
+        }
+        const held = new Set(guards.map((g) => `${g.x},${g.y}`));
+        const mid = [...lairCells.filter((c) => !held.has(`${c.x},${c.y}`) && !held.has(`${c.x - 1},${c.y}`))].sort((p, q) => {
+          const mx = lairCells.reduce((sum, c) => sum + c.x, 0) / lairCells.length;
+          const my = lairCells.reduce((sum, c) => sum + c.y, 0) / lairCells.length;
+          return Math.hypot(p.x - mx, p.y - my) - Math.hypot(q.x - mx, q.y - my);
+        })[0];
+        if (mid && !inFog(mid.x, mid.y)) {
+          const [ox, oy] = [mid.x * T, mid.y * T];
+          const shine = ctx.createRadialGradient(ox + 8, oy + 8, 1, ox + 8, oy + 8, 12);
+          shine.addColorStop(0, "rgba(255, 230, 150, 0.5)");
+          shine.addColorStop(1, "rgba(255, 230, 150, 0)");
+          ctx.fillStyle = shine;
+          ctx.fillRect(ox - 4, oy - 4, T + 8, T + 8);
+          ctx.fillStyle = "rgba(10, 6, 4, 0.7)";
+          ctx.fillRect(ox + 3, oy + 7, 12, 8);
+          ctx.fillStyle = "#6a4a28";
+          ctx.fillRect(ox + 2, oy + 6, 12, 8);
+          ctx.fillStyle = "#3a2814";
+          ctx.fillRect(ox + 2, oy + 2, 12, 4);
+          ctx.fillStyle = "#c9a040";
+          ctx.fillRect(ox + 2, oy + 9, 12, 1);
+          ctx.fillRect(ox + 7, oy + 8, 2, 3);
+          ctx.fillStyle = "#ffe08a";
+          ctx.fillRect(ox + 4, oy + 6, 2, 1);
+          ctx.fillRect(ox + 9, oy + 6, 3, 1);
         }
       }
       const stony = kept?.site?.template === "crypt" || (kept?.site?.levels[kept.site.level]?.depth ?? 0) < 0;
@@ -2618,6 +2716,7 @@ export function DungeonMapView({
       size.width,
       standing,
       sneaking,
+      data?.lairGone,
     ],
   );
   const drawRef = useRef(draw);

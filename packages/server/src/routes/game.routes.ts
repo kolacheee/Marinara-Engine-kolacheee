@@ -12263,6 +12263,8 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       guards: site ? dungeonGuardMarks(site, gameDay(meta)) : [],
       // The party moving quietly (owner 2026-11-18): the guards' sight shows on the map only then.
       sneaking: meta.gameDungeonSneak === true,
+      // A lair whose maker is gone, long ago or by the party's hand, is drawn abandoned (lair panel 11).
+      ...(site?.state.lair && (site.state.lairCold || site.state.leaderDead) ? { lairGone: true } : {}),
     };
   });
 

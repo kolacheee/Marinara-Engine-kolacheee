@@ -50,7 +50,7 @@ export const DUNGEON_LAIRS: Readonly<Record<DungeonLairKind, DungeonLairSpec>> =
     region:
       "Within a day's walk the land knows it: scorched ridges and bones of cattle, herds gone thin, no birdsong near the mouth, villages paying tribute or hiding.",
     field:
-      "The hoard's heap is cover and the cavern's roof is cracked: the dragon's lair can bring stone down on a group, choke the air with smoke and heat, or send the gold sliding underfoot.",
+      "The hoard's heap is cover and the cavern's roof is cracked: the dragon's lair can bring stone down on a group, choke the air with smoke heavy with the dragon's dread, or send the gold sliding underfoot.",
   },
   sanctum: {
     kind: "sanctum",
@@ -356,12 +356,15 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       label: "Falling Stone",
       ...strike(1.5, "earth", { scales: "strength", damage: "physical" }),
     },
+    // The smoke carries the dragon's dread: eyes stream and hearts fail, aim and blows both weaker (lair
+    // panel 11, all five: "a dragon with no fear").
     "lair-choking-smoke": {
-      label: "Choking Smoke",
+      label: "Smoke and Dread",
       kind: "debuff",
       target: "all-enemies",
       stat: "skill",
       pct: -0.2,
+      alsoMods: [{ stat: "damage", pct: -0.15 }],
       duration: 2,
       ranged: true,
     },
@@ -388,7 +391,8 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     "lair-death-ward": {
       label: "Death Ward",
       // Softer since the ward stone no longer stops it (lair sim 23: the sanctum at 67% wins).
-      ...strike(0.8, "dark", { applies: { status: "wither", chance: 0.3, duration: 2, power: 0.04 } }),
+      // The ward turns life away: what it touches heals by half (lair panel 11: "a lich with no healing cut").
+      ...strike(0.8, "dark", { applies: { status: "wound", chance: 0.5, duration: 2 } }),
     },
     // The circle closes on whoever stands in it: the front of the party, nearest the master.
     "lair-binding-circle": {
