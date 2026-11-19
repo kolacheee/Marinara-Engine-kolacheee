@@ -8,6 +8,10 @@ import { z } from "zod";
 import {
   DUNGEON_LAIRS,
   DUNGEON_LAIR_FEATURE_WORDS,
+  DUNGEON_LAIR_DEEDS,
+  DUNGEON_LAIR_ACTIONS,
+  dungeonLairDeedDone,
+  dungeonLairDeedRoom,
   DUNGEON_LAIR_KINDS,
   dungeonLairFeature,
   type DungeonLairKind,
@@ -1202,6 +1206,62 @@ function dungeonStepsFrom(made: DungeonMap, from: { x: number; y: number }): Int
   return steps;
 }
 
+/** The signs on the way to a lair's great chamber (lair panel 9: "the approach has no payoff"): the last
+ *  stretch of the walk from the way in to the chamber's mouth, nearest first, each cell with how far along
+ *  the stretch it lies (0 at the mouth, 1 at its far end), so the signs can thin out away from the chamber. */
+export function gameDungeonLairTrail(map: GameDungeonMap): Array<{ x: number; y: number; t: number }> {
+  if (!map.lairKind || !map.lairFeature?.length) return [];
+  const heart = map.lairRoom ?? map.roomInfo?.findIndex((room) => room?.heart) ?? -1;
+  const chamber = heart >= 0 ? map.rooms[heart] : undefined;
+  if (!chamber) return [];
+  const made = dungeonFromGameDungeonMap(map);
+  delete made.blocked;
+  const steps = dungeonStepsFrom(made, map.entrance);
+  let mouth = -1;
+  for (const { x, y } of dungeonRoomCells(chamber))
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ] as const) {
+      const [nx, ny] = [x + dx, y + dy];
+      if (dungeonRoomHas(chamber, nx, ny) || !dungeonWalkable(made, nx, ny)) continue;
+      if (map.lairCrawl && map.lairCrawl.x === nx && map.lairCrawl.y === ny) continue;
+      const i = ny * map.width + nx;
+      if (steps[i]! < 0) continue;
+      if (mouth < 0 || steps[i]! < steps[mouth]!) mouth = i;
+    }
+  if (mouth < 0) return [];
+  const path = [mouth];
+  for (let cell = mouth; steps[cell]! > 0; ) {
+    const x = cell % map.width;
+    const y = (cell - x) / map.width;
+    const back = [
+      [x + 1, y],
+      [x - 1, y],
+      [x, y + 1],
+      [x, y - 1],
+    ]
+      .filter(([nx, ny]) => nx! >= 0 && ny! >= 0 && nx! < map.width && ny! < map.height)
+      .map(([nx, ny]) => ny! * map.width + nx!)
+      .find((n) => steps[n] === steps[cell]! - 1);
+    if (back === undefined) break;
+    path.push(back);
+    cell = back;
+  }
+  // The stretch: from just outside the mouth (its guards stand there) out to about two fifths of the walk.
+  const reach = Math.max(4, Math.min(18, Math.floor(path.length * 0.4)));
+  return path
+    .slice(1, reach + 1)
+    .filter((cell) => !dungeonRoomHas(chamber, cell % map.width, Math.floor(cell / map.width)))
+    .map((cell, n, all) => ({
+      x: cell % map.width,
+      y: Math.floor(cell / map.width),
+      t: all.length > 1 ? n / (all.length - 1) : 0,
+    }));
+}
+
 /** A carved place's deepest floor as a creature's lair: its great chamber the biggest room in the far half
  *  from the way in (the heart), and what it holds drawn in it, the drowned hall's pool as water. */
 function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLairKind): GameDungeonMap {
@@ -1845,7 +1905,20 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
     (site?.lair && site.level === site.levels.length - 1 ? map.roomInfo?.findIndex((room) => room.heart) : undefined);
   const lair =
     lairKind && lairHeart !== undefined && lairHeart >= 0
-      ? ` This floor is the lair itself, ${DUNGEON_LAIRS[lairKind].label}: its great chamber is area ${lairHeart + 1}, and in it is ${DUNGEON_LAIR_FEATURE_WORDS[lairKind]}.`
+      ? ` This floor is the lair itself, ${DUNGEON_LAIRS[lairKind].label}: its great chamber is area ${lairHeart + 1}, and in it is ${DUNGEON_LAIR_FEATURE_WORDS[lairKind]}.${
+          map.lairCrawl
+            ? " A crawl shored with old timber leads into the chamber from the side, away from its guarded mouth: a quiet way in for a party that finds it."
+            : ""
+        }${(() => {
+          const deed = DUNGEON_LAIR_DEEDS[lairKind];
+          const room = map.roomInfo?.findIndex((info) => dungeonLairDeedRoom(lairKind, info?.name)) ?? -1;
+          if (room < 0) return "";
+          const done = dungeonLairDeedDone(lairKind, map);
+          const label = DUNGEON_LAIR_ACTIONS[lairKind][deed.stops]?.label ?? "one of its lair's actions";
+          return done
+            ? ` The party has been in area ${room + 1} (${deed.room}) and did it: they ${deed.deed}, and the lair will have no ${label} when they face its maker.`
+            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker: the Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.`;
+        })()}`
       : "";
   return `MAP: ${map.name}.${floors}${planned}${lair} ${dungeonMapWords(cells)} The party is ${where}${areaName(area)}${
     gameDungeonOnWayDown(map) ? ", at the way down" : gameDungeonOnWayUp(map) ? ", at the way up" : ""

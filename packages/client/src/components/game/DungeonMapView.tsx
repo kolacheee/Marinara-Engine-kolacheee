@@ -10,6 +10,9 @@ import {
   DUNGEON_EXIT_PROP,
   DUNGEON_SECRET_DOOR_PROP,
   dungeonLairAnchorCell,
+  dungeonLairDeedDone,
+  gameDungeonLairTrail,
+  DUNGEON_LAIR_DEEDS,
   dungeonRoomCells,
   dungeonRoomHas,
   dungeonWayOutId,
@@ -1336,6 +1339,12 @@ export function DungeonMapView({
             )[0];
           if (!spot || inFog(spot.x, spot.y)) return;
           const [ox, oy] = [spot.x * T, spot.y * T];
+          // Drawn a third larger than its two cells (lair panel 9: the eggs, the shrine and the weed were too
+          // small to name).
+          ctx.save();
+          ctx.translate(ox + T, oy + T);
+          ctx.scale(1.35, 1.35);
+          ctx.translate(-(ox + T), -(oy + T));
           const px = (x: number, y: number, w: number, h: number, colour: string) => {
             ctx.fillStyle = colour;
             ctx.fillRect(ox + x, oy + y, w, h);
@@ -1566,13 +1575,151 @@ export function DungeonMapView({
               px(2 + (h % 26), 4 + ((h >> 5) % 24), 3, 2, n % 4 ? "#e0b236" : "#fff3b8");
             }
           }
+          ctx.restore();
+          // The room with something to do in it before the fight (lairs.ts DUNGEON_LAIR_DEEDS): a building's
+          // rooms are dark until the party has been in, so it is shown done, its set piece smashed, toppled
+          // or burnt out under a soot scar, with a dull red ember where the lair's power was.
+          if (DUNGEON_LAIR_DEEDS[lairKind].room === name && dungeonLairDeedDone(lairKind, kept)) {
+            const [cx, cy] = [ox + T, oy + T];
+            const scar = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 1.3);
+            scar.addColorStop(0, "rgba(12, 8, 6, 0.55)");
+            scar.addColorStop(1, "rgba(12, 8, 6, 0)");
+            ctx.fillStyle = scar;
+            ctx.fillRect(cx - T * 1.4, cy - T * 1.4, T * 2.8, T * 2.8);
+            ctx.strokeStyle = "rgba(8, 6, 4, 0.9)";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            for (const [a, b, c, d] of [
+              [-12, -11, 10, 12],
+              [11, -12, -10, 11],
+              [-14, 2, 13, -1],
+            ] as const) {
+              ctx.moveTo(cx + a, cy + b);
+              ctx.lineTo(cx + c, cy + d);
+            }
+            ctx.stroke();
+            for (const [dx, dy] of [
+              [-9, 7],
+              [7, -8],
+              [10, 9],
+              [-6, -10],
+              [2, 12],
+            ] as const) {
+              ctx.fillStyle = "#6e6458";
+              ctx.fillRect(cx + dx, cy + dy, 3, 2);
+            }
+            ctx.fillStyle = "#9a2a1a";
+            ctx.fillRect(cx - 1, cy - 1, 3, 3);
+            ctx.fillStyle = "#ff7a2a";
+            ctx.fillRect(cx, cy, 1, 1);
+          }
         });
+      }
+      // The signs on the way in (lair panel 9: "the approach has no payoff"): the last stretch of the walk to
+      // the great chamber marked by what lives there, thick at its mouth and thinning out away from it.
+      if (lairKind && kept && cells) {
+        for (const { x, y, t } of gameDungeonLairTrail(kept)) {
+          if (inFog(x, y)) continue;
+          const [ox, oy] = [x * T, y * T];
+          const h = hash(x * 31 + 7, y * 17 + 3);
+          // Every cell near the mouth, about one in three at the stretch's far end.
+          if (h % 100 >= 100 - t * 65) continue;
+          const sx = 2 + (h % 9);
+          const sy = 2 + ((h >> 4) % 9);
+          const dot = (dx: number, dy: number, w: number, hh: number, colour: string) => {
+            ctx.fillStyle = colour;
+            ctx.fillRect(ox + dx, oy + dy, w, hh);
+          };
+          if (lairKind === "hoard") {
+            // Scorch on the floor where the dragon breathed, a coin dropped from its belly here and there.
+            const burn = ctx.createRadialGradient(ox + sx + 3, oy + sy + 3, 1, ox + sx + 3, oy + sy + 3, 12);
+            burn.addColorStop(0, "rgba(18, 8, 4, 0.72)");
+            burn.addColorStop(1, "rgba(18, 8, 4, 0)");
+            ctx.fillStyle = burn;
+            ctx.fillRect(ox - 4, oy - 4, T + 8, T + 8);
+            if (h % 2 === 0) {
+              dot(sx + 5, sy + 1, 3, 2, "#e0b236");
+              dot(sx + 5, sy + 1, 1, 1, "#fff3b8");
+              dot(sx, sy + 7, 2, 2, "#c99a2a");
+            }
+            // Claw scores, three together.
+            if (h % 4 === 1)
+              for (let k = 0; k < 3; k++) dot(sx + k * 2, sy + 6 - k, 1, 4, "rgba(14, 8, 4, 0.75)");
+          } else if (lairKind === "den") {
+            // Gnawed bones and the dark smear of something dragged in.
+            dot(0, 7 + (h % 3), T, 2, "rgba(40, 18, 10, 0.32)");
+            if (h % 2 === 0) {
+              dot(sx, sy + 2, 6, 1, "#ddd2b8");
+              dot(sx - 1, sy + 1, 2, 3, "#ddd2b8");
+              dot(sx + 5, sy + 1, 2, 3, "#ddd2b8");
+            } else dot(sx + 2, sy + 3, 2, 2, "#cfc3a6");
+          } else if (lairKind === "drowned") {
+            // Wet tracks and weed dragged out of the water.
+            ctx.fillStyle = "rgba(20, 60, 55, 0.45)";
+            ctx.beginPath();
+            ctx.ellipse(ox + sx + 2, oy + sy + 2, 3, 2, 0, 0, Math.PI * 2);
+            ctx.ellipse(ox + sx + 6, oy + sy + 6, 3, 2, 0, 0, Math.PI * 2);
+            ctx.fill();
+            if (h % 3 === 0) for (let k = 0; k < 5; k++) dot(sx + k, sy + 4 + (k % 2), 1, 1, "#3f7a4a");
+          } else if (lairKind === "hive") {
+            // The comb creeping out of its bowl: amber cells crusting the floor.
+            for (let k = 0; k < 3 - Math.floor(t * 2); k++) {
+              const [cx, cy] = [sx + (k % 2) * 4, sy + k * 3];
+              dot(cx, cy, 4, 3, "rgba(40, 24, 6, 0.6)");
+              dot(cx, cy, 3, 2, "#c9922a");
+              dot(cx + 1, cy, 1, 1, "#f2c25a");
+            }
+          } else if (lairKind === "sanctum") {
+            // Grave chalk and guttered candles: a violet sigil scratched on the floor.
+            ctx.strokeStyle = "rgba(170, 120, 255, 0.55)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(ox + 8, oy + 8, 4, 0, Math.PI * 2);
+            ctx.moveTo(ox + 8, oy + 3);
+            ctx.lineTo(ox + 8, oy + 13);
+            ctx.stroke();
+            if (h % 2 === 0) {
+              dot(sx, sy, 2, 3, "#e8e0c8");
+              dot(sx, sy - 1, 2, 1, "#ffcf6a");
+            }
+          } else if (lairKind === "haven") {
+            // Blood: drops, and a smear where someone was carried in.
+            dot(sx, sy, 2, 2, "#6e0f16");
+            dot(sx + 4, sy + 3, 1, 1, "#8a1a20");
+            if (h % 3 === 0) dot(sx - 1, sy + 5, 7, 2, "rgba(90, 10, 18, 0.55)");
+          } else if (lairKind === "breach") {
+            // The ground split by the rift's heat, embers in the cracks.
+            ctx.strokeStyle = "rgba(20, 8, 4, 0.8)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(ox + sx, oy + sy);
+            ctx.lineTo(ox + sx + 3, oy + sy + 4);
+            ctx.lineTo(ox + sx + 1, oy + sy + 7);
+            ctx.lineTo(ox + sx + 5, oy + sy + 10);
+            ctx.stroke();
+            dot(sx + 2, sy + 4, 1, 1, "#ff7a2a");
+            if (h % 2 === 0) dot(sx + 4, sy + 9, 1, 1, "#ffb347");
+          }
+        }
       }
       // A cave lair's crawl: a squeeze through fallen rock into the great chamber, the boulders heaped either
       // side of a dark one-cell slot and spilled onto the floor beyond (lair panel 6: the crawl was unreadable).
       const crawl = kept?.lairCrawl;
       if (lairKind && crawl && cells && !inFog(crawl.x, crawl.y)) {
         const [ox, oy] = [crawl.x * T, crawl.y * T];
+        // Shored with old timber, so it reads as a way through and not a rock fall (lair panel 9: "nothing
+        // says it is passable").
+        ctx.fillStyle = "rgba(10, 6, 4, 0.7)";
+        ctx.fillRect(ox + 1, oy + 1, 3, T - 1);
+        ctx.fillRect(ox + T - 3, oy + 1, 3, T - 1);
+        ctx.fillStyle = "#7a5530";
+        ctx.fillRect(ox, oy, 3, T);
+        ctx.fillRect(ox + T - 3, oy, 3, T);
+        ctx.fillRect(ox - 1, oy - 1, T + 2, 3);
+        ctx.fillStyle = "#a07648";
+        ctx.fillRect(ox, oy, 1, T);
+        ctx.fillRect(ox + T - 3, oy, 1, T);
+        ctx.fillRect(ox - 1, oy - 1, T + 2, 1);
         ctx.fillStyle = "rgba(8, 6, 4, 0.55)";
         ctx.fillRect(ox + 3, oy + 3, T - 6, T - 6);
         for (let dy = -1; dy <= 1; dy++)
@@ -2097,13 +2244,40 @@ export function DungeonMapView({
           px(7, 7, 3, 3, "#ffb347");
           px(8, 8, 1, 1, "#fff0b0");
         } else if (lairKind === "sanctum") {
-          // The ward stone that holds the ring: taller, its rune burning red.
-          px(4, 3, 9, 13, "rgba(8, 6, 12, 0.75)");
-          px(3, 1, 9, 13, "#2c2934");
-          px(3, 1, 9, 2, "#4a4658");
-          px(7, 4, 1, 7, "#ff5a64");
-          px(5, 6, 5, 1, "#ff5a64");
-          px(6, 9, 3, 1, "#ff9aa0");
+          // The ward stone that holds the ring: the odd one out (lair panel 9, all five: "one of the twelve
+          // with brackets"). A pale menhir half again as tall as its dark siblings, split down its face by
+          // a crack burning red-white, its light pooled red, not violet.
+          const red = ctx.createRadialGradient(ox + T / 2, oy + T / 2, 1, ox + T / 2, oy + T / 2, T * 1.4);
+          red.addColorStop(0, "rgba(255, 70, 70, 0.55)");
+          red.addColorStop(1, "rgba(255, 70, 70, 0)");
+          ctx.fillStyle = red;
+          ctx.fillRect(ox - T, oy - T, T * 3, T * 3);
+          px(1, -4, 14, 20, "rgba(14, 6, 8, 0.6)");
+          px(4, 14, 10, 3, "rgba(10, 4, 6, 0.75)");
+          px(3, -5, 10, 20, "#a39a9e");
+          px(4, -6, 8, 1, "#bdb4b8");
+          px(5, -7, 6, 1, "#cfc7ca");
+          px(3, -5, 2, 20, "#c4bcbf");
+          px(11, -5, 2, 20, "#7a7176");
+          // The crack, molten at its heart.
+          for (const [cx, cy, w] of [
+            [8, -5, 1],
+            [7, -3, 2],
+            [6, -1, 2],
+            [7, 1, 2],
+            [8, 3, 2],
+            [7, 5, 2],
+            [6, 7, 2],
+            [7, 9, 1],
+            [8, 11, 1],
+          ] as const) {
+            px(cx - 1, cy, w + 2, 2, "#8a1018");
+            px(cx, cy, w, 2, "#ff4a52");
+          }
+          px(7, -1, 1, 6, "#ffe0d8");
+          // Chips of it at its foot.
+          px(1, 14, 2, 2, "#a39a9e");
+          px(13, 13, 2, 1, "#a39a9e");
         } else if (lairKind === "haven") {
           // The master's coffin: the same coffin, banded in gold.
           px(3, 0, 1, T, "#d9b25a");

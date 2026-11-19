@@ -908,7 +908,8 @@ export function createCombatDirector(input: {
   /** Where a Classic fight is, so Steal can name what it takes as it happens. */
   marinaraPlace?: MarinaraItemPlace;
   /** A Classic fight in a creature's lair (owner 2026-11-18): the lair acts once a round for its maker. */
-  marinaraLair?: { kind: DungeonLairKind; makerId: string };
+  /** `undone`: lair actions the party took away before the fight (a lair's deed room, lairs.ts). */
+  marinaraLair?: { kind: DungeonLairKind; makerId: string; undone?: string[] };
 }): CombatDirectorState {
   const party = structuredClone(input.party),
     enemies = structuredClone(input.enemies);
@@ -991,7 +992,12 @@ export function createCombatDirector(input: {
   if (input.marinara?.length && s.style !== "ruleset") {
     s.marinara = createMarinaraDirectorState(lairAnchor ? [...input.marinara, lairAnchor] : input.marinara, s.seed);
     if (input.marinaraLair && s.marinara.fighters.some((one) => one.id === input.marinaraLair!.makerId))
-      s.marinara.lair = { ...input.marinaraLair, round: 0 };
+      s.marinara.lair = {
+        kind: input.marinaraLair.kind,
+        makerId: input.marinaraLair.makerId,
+        round: 0,
+        ...(input.marinaraLair.undone?.length ? { broken: [...input.marinaraLair.undone] } : {}),
+      };
     if (input.marinaraPlace) {
       s.marinara.place = input.marinaraPlace;
       // The seed the fight's loot rolls with (combat-director.routes.ts), so a steal named now is what it pays.

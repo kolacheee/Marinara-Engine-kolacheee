@@ -43,6 +43,7 @@ import {
 import type { WorldHistory } from "./history.js";
 import {
   DUNGEON_LAIRS,
+  DUNGEON_LAIR_LEAVINGS,
   DUNGEON_LAIR_KINDS,
   DUNGEON_LAIR_MIN_LEVEL,
   dungeonLairFor,
@@ -1161,7 +1162,7 @@ export function dungeonLairPromptLines(
   if (!state.lairCold && !site.lair) return [];
   if (state.lairCold || !site.lair)
     return [
-      `This place was once ${spec.label}, its maker long gone: its signs remain (the deepest floor shaped round it, old marks, what it left behind), but nothing of it lives here now.`,
+      `This place was once ${spec.label}, its maker long gone: its signs remain (the deepest floor shaped round it, old marks, what it left behind), but nothing of it lives here now. In the heart, for a party that searches it, lies ${DUNGEON_LAIR_LEAVINGS[state.lair]}: give it when they look, so the long walk down pays.`,
     ];
   const family = marinaraEnemyFamily(site.lair.maker);
   const name = (family && marinaraEnemyName(family, setting, site.band.high)) ?? site.lair.maker;

@@ -367,13 +367,15 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     // The heap gives way under one of them: hurt and buried to the waist in coin, slowed while they dig out
     // (lair panel 2: a coin-flip stun took a whole turn away).
+    // The heap slides and carries one off its feet down toward the dragon (lair panel 9: every hoard action
+    // was a stat hit; nothing moved anyone the way the rift's pull does).
     "lair-sliding-gold": {
       label: "Sliding Gold",
       ...strike(1.2, "earth", {
         target: "enemy",
         scales: "strength",
         damage: "physical",
-        applies: { status: "slow", chance: 0.7, duration: 2 },
+        applies: { status: "drawn", chance: 0.8, duration: 2 },
       }),
     },
     // The vents under the heap breathe with the dragon: told a round ahead, the hardest blow the lair has.
@@ -430,7 +432,8 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     "lair-blood-tithe": {
       label: "Blood Tithe",
-      ...strike(1, "dark", { scales: "strength", damage: "physical", drain: 0.5 }),
+      // A third of the blood back, not half (lair panel 9: at level 16 the haven won two fights in three).
+      ...strike(1, "dark", { scales: "strength", damage: "physical", drain: 0.3 }),
     },
   },
   den: {
@@ -712,8 +715,61 @@ const DUNGEON_LAIR_NARRATION: Readonly<Record<DungeonLairKind, string>> = {
   hive: "Narrate the hive as one body: the hum rising before the swarm, resin creeping, the brood stirring in the comb.",
 };
 
+/** What a cold lair's long-gone maker left in its great chamber (lair panel 9: "a cold lair gives only
+ *  signs", and players stop looking): one find worth the walk, and a hint of where the maker went. */
+export const DUNGEON_LAIR_LEAVINGS: Readonly<Record<DungeonLairKind, string>> = {
+  hoard:
+    "a scorched coin cache the dragon missed when it moved its hoard (a fair purse of old coin and one gem), and a claw-scored trail of dropped coin toward the surface",
+  sanctum:
+    "the cracked shell of a phylactery, emptied: worth a scholar's fee as it is, and the runes on it name where its master carried the rest",
+  haven:
+    "a coffin of grave earth left behind, a signet ring of the old house in it, and a coach's wheel ruts leading out to where its master went",
+  den: "the beast's old kills picked clean, a traveller's pack among them with something still worth having in it, and claw marks going out",
+  breach:
+    "a cooled shard of the rift's stone, still warm to the hand and worth much to the right buyer, and the cult's ash-smeared tally of what came through",
+  drowned:
+    "a drowned offering-box in the dried pool, its coin green but good, and the tide-marks of where the water and its master went",
+  hive: "old honey-wax sealed in the comb, a healer's prize, and the husk of the queen's last moult, too small for the queen that left",
+};
+
+/** One thing the party can do in a room off a built lair's great chamber before the fight (lair panel 9:
+ *  "nothing in a lair is playable outside the fight"): the room, the deed done there, and the lair action
+ *  it takes out of the fight to come. The Engine counts it done once the party has been in the room. */
+export const DUNGEON_LAIR_DEEDS: Readonly<
+  Record<DungeonLairKind, { room: string; deed: string; stops: string }>
+> = {
+  hoard: { room: "Smoke vent", deed: "choke the smoke vent with rubble", stops: "lair-choking-smoke" },
+  sanctum: { room: "Phylactery vault", deed: "smash the soul-vessels in the phylactery vault", stops: "lair-death-ward" },
+  haven: { room: "Thralls' cell", deed: "free the thralls from their cell", stops: "lair-thralls-gaze" },
+  den: { room: "Drinking pool", deed: "foul the beast's drinking pool", stops: "lair-driven-to-water" },
+  breach: { room: "Sacrifice pit", deed: "douse the coals of the sacrifice pit", stops: "lair-scorching-rift" },
+  drowned: { room: "Sunken shrine", deed: "cast down the sunken shrine's idol", stops: "lair-drowned-rise" },
+  hive: { room: "Larder of husks", deed: "burn the larder of husks", stops: "lair-swarm" },
+};
+
+/** The lair action a party's deed before the fight has already taken away, if it went into the deed's
+ *  room on the lair's own level. */
+export function dungeonLairDeedDone(
+  kind: DungeonLairKind,
+  map: {
+    roomInfo?: ReadonlyArray<{ name: string } | null | undefined>;
+    site?: { level: number; seen: Readonly<Record<string, readonly number[]>> };
+  },
+): string | undefined {
+  const deed = DUNGEON_LAIR_DEEDS[kind];
+  const seen = map.site?.seen[String(map.site.level)] ?? [];
+  return map.roomInfo?.some((info, index) => dungeonLairDeedRoom(kind, info?.name) && seen.includes(index))
+    ? deed.stops
+    : undefined;
+}
+
+/** Whether a room (by its name, a number after it or not) is its lair's deed room. */
+export function dungeonLairDeedRoom(kind: DungeonLairKind, name: string | undefined): boolean {
+  return !!name && name.replace(/ \d+$/u, "") === DUNGEON_LAIR_DEEDS[kind].room;
+}
+
 /** What the fight's Game Master is told of a fight in a lair's great chamber. */
-export function dungeonLairFightText(kind: DungeonLairKind): string {
+export function dungeonLairFightText(kind: DungeonLairKind, undone?: string): string {
   const spec = DUNGEON_LAIRS[kind];
   const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]);
   const anchor = DUNGEON_LAIR_ANCHORS[kind];
@@ -722,5 +778,9 @@ export function dungeonLairFightText(kind: DungeonLairKind): string {
       .map((id) => DUNGEON_LAIR_ACTIONS[kind][id]?.label)
       .filter(Boolean)
       .join(" and ") || "one of its actions";
-  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.map((action) => action.label).join(", ")}). The ${anchor.name} stands among the foes as something the party can strike: broken, ${anchor.breaks}, and the lair has no more ${stops}. Show it in the scene before anyone thinks to hit it. ${DUNGEON_LAIR_NARRATION[kind]} Foreshadow the action the log announces; anything the chamber calls up comes out of it. Add no lair effects of your own.`;
+  return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.map((action) => action.label).join(", ")}). The ${anchor.name} stands among the foes as something the party can strike: broken, ${anchor.breaks}, and the lair has no more ${stops}. Show it in the scene before anyone thinks to hit it.${
+    undone && DUNGEON_LAIR_ACTIONS[kind][undone]
+      ? ` Before the fight the party went to ${DUNGEON_LAIR_DEEDS[kind].deed}: the lair has no ${DUNGEON_LAIR_ACTIONS[kind][undone]!.label} in this fight, and its absence shows.`
+      : ""
+  } ${DUNGEON_LAIR_NARRATION[kind]} Foreshadow the action the log announces; anything the chamber calls up comes out of it. Add no lair effects of your own.`;
 }

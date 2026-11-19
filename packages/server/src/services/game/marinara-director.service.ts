@@ -793,8 +793,9 @@ export function lairActs(
   const id = lair.next ?? dungeonLairActionFor(lair.kind, undefined, ctx.random, lair.broken);
   const action = DUNGEON_LAIR_ACTIONS[lair.kind][id]!;
   // A pull drags one from the back (in Classic), never one already in the front.
+  const pulls = action.status === "drawn" || action.applies?.status === "drawn";
   const pool =
-    action.status === "drawn" && !tactical ? foes.filter((f) => marinaraRowOf(f, state.fighters) === "back") : foes;
+    pulls && !tactical ? foes.filter((f) => marinaraRowOf(f, state.fighters) === "back") : foes;
   const from = pool.length ? pool : foes;
   const target = from[Math.floor(ctx.random() * from.length)]!;
   log(`The lair acts: ${action.label}.`, "marinara:lair", maker.id);

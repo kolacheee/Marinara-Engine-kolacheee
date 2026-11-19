@@ -31,6 +31,7 @@ import {
   type CombatItemEffect,
   type DungeonLairKind,
   DUNGEON_LAIR_BOARD,
+  dungeonLairDeedDone,
 } from "@marinara-engine/shared";
 import {
   applyGameInventoryChangeHeld,
@@ -1418,7 +1419,7 @@ export async function combatDirectorRoutes(
         // A fight in a dungeon area is fought by the area's own foes (dungeon spawns), never the setup's.
         let dungeonFight: { key: string; area: number } | null = null;
         // A fight in a creature's lair's great chamber, with its maker in it: the lair acts in it.
-        let lairFight: { kind: DungeonLairKind; maker: string } | null = null;
+        let lairFight: { kind: DungeonLairKind; maker: string; undone?: string } | null = null;
         if (setup.marinaraClasses === true && input.style !== "ruleset" && !meta.gameRuleset) {
           const storyFight = !!(await latestStoryFight(app.db, input.chatId, meta));
           const site = storyFight
@@ -1432,7 +1433,14 @@ export async function combatDirectorRoutes(
           const held = site ? dungeonFoesHere(site, gameDay(meta)) : null;
           if (site && held) dungeonFight = { key: site.key, area: held.area.area };
           if (site?.site.lair && held?.area.role === "heart" && !site.state.lairCold)
-            lairFight = { kind: site.site.lair.kind, maker: site.site.lair.maker };
+            lairFight = {
+              kind: site.site.lair.kind,
+              maker: site.site.lair.maker,
+              ...(() => {
+                const undone = dungeonLairDeedDone(site.site.lair.kind, site.map);
+                return undone ? { undone } : {};
+              })(),
+            };
           marinara = marinaraFightStart({
             ...(held ? { placeFoes: held.foes } : {}),
             gameId: input.chatId,
@@ -1514,7 +1522,15 @@ export async function combatDirectorRoutes(
           ...(() => {
             const maker =
               lairFight && marinara?.fighters.find((one) => one.side !== "party" && one.familyId === lairFight!.maker);
-            return maker && lairFight ? { marinaraLair: { kind: lairFight.kind, makerId: maker.id } } : {};
+            return maker && lairFight
+              ? {
+                  marinaraLair: {
+                    kind: lairFight.kind,
+                    makerId: maker.id,
+                    ...(lairFight.undone ? { undone: [lairFight.undone] } : {}),
+                  },
+                }
+              : {};
           })(),
           id: randomUUID(),
           // Who the scene caught unaware: an opponent among them checks its morale first (combat AI E1).

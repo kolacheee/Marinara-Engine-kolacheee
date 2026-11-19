@@ -14,6 +14,7 @@ import {
   dungeonRosterWords,
   dungeonSiteBand,
   dungeonSiteLairState,
+  dungeonLairDeedDone,
   dungeonLairFightText,
   dungeonSiteFate,
   dungeonSiteFor,
@@ -222,7 +223,7 @@ export function dungeonFightPromptText(here: DungeonSiteHere, foes: readonly Mar
   const area = dungeonFoesHere(here, 0)?.area;
   const lair =
     here.site.lair && area?.role === "heart" && !here.state.lairCold
-      ? ` ${dungeonLairFightText(here.site.lair.kind)}`
+      ? ` ${dungeonLairFightText(here.site.lair.kind, dungeonLairDeedDone(here.site.lair.kind, here.map))}`
       : "";
   return `This fight is in ${here.map.name}, and the place decides who is fighting: ${dungeonRosterWords(foes, here.setting)}. The enemies are exactly these, each with its family id, tier and level as listed; add none, drop none, and write them as the story sees them.${lair}`;
 }
