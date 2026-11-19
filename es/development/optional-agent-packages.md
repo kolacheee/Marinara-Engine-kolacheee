@@ -95,7 +95,10 @@ La propiedad no se puede sobrescribir ni reconfigurar, y el espacio de nombres y
 | `components.Modal`  | El `Modal` del Engine, con su orden de superposiciones y su manejo de Escape y del botón Atrás.                                                                                                            |
 | `components.Switch`, `components.Checkbox` | Desde la API de capacidades 1.830, el interruptor y la casilla compartidos del Engine, para que un paquete coincida con el aspecto del host. |
 | `components.Spinner` | Desde la API de capacidades 1.830, el anillo de carga compartido del Engine. Se oculta a los lectores de pantalla salvo que pases un `label`, que lo convierte en una región de estado. |
+| `components.Tabs` | Desde la API de capacidades 1.832, la barra de pestañas compartida del Engine. `variant="pill"` es la barra segmentada para cambiar de vista; `variant="underline"` son pestañas de texto para secciones dentro de una hoja o un cuadro de diálogo. Las teclas de flecha, Inicio y Fin permiten moverse entre pestañas. |
+| `components.SearchInput` | Desde la API de capacidades 1.832, el campo de búsqueda del Engine. Pasa `value`, `onChange` y un `label` para lectores de pantalla. Tiene un botón para borrar, y Escape borra primero el texto. `resultCount` muestra "4 found", `busy` muestra un indicador de carga, `size="compact"` cabe en barras de herramientas densas, y `slashShortcut` permite enfocar el campo con "/". |
 | `components.showConfirmDialog` | Desde la API de capacidades 1.830, el cuadro de diálogo de confirmación del Engine, la misma función que `services.dialogs.showConfirmDialog`. |
+| `components.Select` | Desde la API de capacidades 1.831, el desplegable del Engine: pasa `value` (una cadena o `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` y un `label`; opcionalmente, `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` y `buttonRef`. Abre un panel emergente en computadora y una hoja en teléfonos, con búsqueda a partir de ocho opciones. Úsalo en lugar de un `<select>` nativo. |
 | `data.emojiCatalog` | El módulo `lib/emoji-catalog.generated.ts`.                                                                                                                                                                |
 | `api`               | El módulo `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...).                                                                                                                              |
 
@@ -1224,6 +1227,34 @@ donde se aplica el tiempo de caché de la conexión.
 
 Los Engines anteriores ignoran la opción, así que un paquete siempre puede pasarla. Declara 1.815 cuando el paquete dependa de ella.
 
+### Capability API 1.834: sprites guardados y la regla del arte
+
+`api.runtime.sprites` lee los sprites guardados de un personaje o una persona, para que un paquete use el arte que el usuario ya tiene antes de dibujar arte nuevo. No necesita ningún permiso. Los Engines anteriores lo omiten, así que comprueba que exista.
+
+- `list(ownerId)`: cada sprite guardado como `{ handle, kind, name, label, folder, url, mimeType }`. `kind` es `"expression"` (un rostro) o `"full-body"`. `folder` es la carpeta de sprites donde está archivado, a la que los usuarios suelen poner el nombre de un atuendo. Los sprites SVG se omiten, ya que ningún modelo de imágenes los lee.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: la regla del arte, en este orden.
+  1. `selected`: el identificador de un sprite guardado que eligió el usuario, como la imagen de un atuendo equipado. Tiene prioridad mientras exista: `{ source: "selected", sprite }`.
+  2. Un sprite guardado que ya muestra lo solicitado: `{ source: "library", sprite, match }`. La expresión (o la pose, para cuerpo completo) debe coincidir por nombre, y el atuendo por el nombre de la carpeta o una parte del nombre (`happy_winter_coat`, consulta [Variantes de nombre](../characters/sprites.md#name-variants)). Sin expresión, coincide la imagen en reposo del atuendo (neutral, idle, default). El rostro correcto con otro atuendo no es una coincidencia.
+  3. Sprites guardados a partir de los cuales dibujarlo: `{ source: "reference", references }`, hasta `maxReferences` (de 1 a 4, 4 de forma predeterminada), los mejores primero: las imágenes del propio atuendo, la expresión con otro atuendo, luego el rostro en reposo y el cuerpo completo en reposo. Léelos con `read` y pásalos como `referenceImages` a `integrations.images.generate`.
+  4. `{ source: "none" }`: dibuja a partir de la descripción del personaje.
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }`, o null cuando el sprite ya no existe. `transparent` indica que la imagen ya tiene un fondo transparente, así que consérvala tal como está: no la pases por la eliminación de fondo.
+
+El arte que el propio paquete conserva para una elección explícita, como los atuendos de Otome Hearth o la ropa de temporada de Life Sim, tiene prioridad sobre todo esto y no necesita ninguna llamada. Una vista del cliente obtiene la misma respuesta de `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 ### Capability API 1.816: imágenes GIF animadas
 
 `images.generate` acepta `animation: { frameCount?, frameDurationMs? }` en la solicitud y entonces devuelve un único GIF en bucle: `mimeType: "image/gif"`, `ext: "gif"`, que `images.save` guarda como un archivo `.gif`. `{}` usa los valores predeterminados del Engine, 9 fotogramas de 200 ms. El Engine limita `frameCount` al intervalo de 2 a 12 y `frameDurationMs` al de 20 a 2000 en pasos de 10, y elige por sí mismo el tamaño del fotograma: el fotograma válido más pequeño con la forma de `width` y `height`, como 816x816 para un cuadrado o 608x1088 para 9:16. Doce fotogramas de ese tamaño se mantienen por debajo de los 8.294.400 píxeles que documenta OpenAI.
@@ -1335,6 +1366,22 @@ también cuenta como actividad, así que el panel no muestra "No agent activity 
 para que el panel tenga algo que mostrar. Es una interfaz flexible: los Engines anteriores
 no incluyen el método, así que comprueba que exista, como arriba. Declara 1.820 solo cuando el paquete no pueda funcionar sin él.
 No se necesita ningún permiso.
+
+### Capability API 1.833: enumerar las instantáneas de World State de un chat
+
+`persistence.getGameState(chatId)` devuelve solo el World State confirmado más reciente. `persistence.listGameStates(chatId)`
+devuelve la instantánea confirmada del swipe activo de cada mensaje, en el orden de los mensajes, cada una con la misma estructura de registro que
+`getGameState`. Un paquete puede leer la fecha dentro de la historia que el rastreador guardó para cualquier mensaje en lugar de pedirle a un modelo que
+la encuentre en el texto.
+
+Se omiten los mensajes sin instantánea confirmada, las instantáneas guardadas para un swipe que el usuario no ha conservado, las instantáneas cuyo mensaje se
+borró y las instantáneas no vinculadas a un mensaje, así que la última entrada puede diferir de `getGameState`. Necesita
+el permiso `chat-read`, como `getGameState`, y es de solo lectura. Es una interfaz flexible: los Engines anteriores no incluyen el método,
+así que comprueba que exista, como arriba. Declara 1.833 solo cuando el paquete no pueda funcionar sin él.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 ### Capability API 1.391: resúmenes de escena de Advanced Memory y el bloque de memoria
 

@@ -197,6 +197,18 @@ Jeder Dienst hat ein Feld **Seed**. Mit -1 bleibt jedes Bild zufällig. Jede and
 
 Jeder Dienst hat außerdem die Felder **Prompt prefix** und **Negative prefix**. Text darin wird jedem Prompt dieses Modells vorangestellt. AUTOMATIC1111 / Forge und ComfyUI haben ein Feld **Clip skip**. AUTOMATIC1111 / Forge ergänzt den Schalter **Restore faces**. ComfyUI ergänzt einen Schalter, der einen 1x1-Platzhalter hochlädt, wenn kein Referenzbild mitkommt. Er spielt nur bei eigenen Workflows mit Referenz-Platzhaltern eine Rolle. NovelAI ergänzt **Guidance rescale** und **UC preset**.
 
+## Transparente Hintergründe
+
+Sprites sowie Sticker- und Emoji-Bögen sehen mit einem transparenten Hintergrund am besten aus. Jedes Bildmodell hat eine Einstellung **Transparent backgrounds** (Transparente Hintergründe), die angibt, ob es einen solchen Hintergrund erzeugen kann:
+
+- **Automatic** (Automatisch) ist die Standardeinstellung und nutzt Marinaras Wissen über das Modell. Für GPT Image 1, 1.5, 2.5 und 2.6 bei OpenAI, OpenRouter oder ChatGPT (Codex login) wird **Automatic (supported)** (Automatisch (unterstützt)) angezeigt, für alle anderen Modelle einschließlich GPT Image 2 **Automatic (not supported)** (Automatisch (nicht unterstützt)).
+- **Supported** (Unterstützt): Das Modell oder der Workflow liefert Bilder mit einem wirklich transparenten Hintergrund, etwa ein ComfyUI-Workflow, der den Hintergrund vor dem Speichern entfernt.
+- **Not supported** (Nicht unterstützt): Es wird immer die einfarbige Fläche verwendet, die Marinara entfernt, selbst wenn das Modell mehr könnte.
+
+Wenn das Modell transparente Bilder erzeugt, wird für Sprites und Bögen ein transparenter Hintergrund angefordert und das Ergebnis genau wie gezeichnet beibehalten. Andernfalls wird das Modell um einen einfarbigen grünen, magentafarbenen oder cyanfarbenen Hintergrund gebeten, den Marinara entfernt. Unabhängig von der Einstellung wird ein Bild, das bereits transparent zurückkommt, nie erneut bereinigt. Liefert ein Modell mit Transparenzunterstützung ein Bild mit undurchsichtigem Hintergrund, bleibt es unverändert und wird bei der Sprite-Prüfung markiert. Dort entfernt **Apply cleanup** (Bereinigung anwenden) den Hintergrund.
+
+Ein OpenAI-kompatibler Server, der eine eigene Option für Transparenz braucht, kann sie über **Custom Parameters** erhalten, zum Beispiel `"background": "transparent"`.
+
 ## Referenzbilder je nach Dienst
 
 Ein Referenzbild ist ein vorhandenes Bild, das du zusammen mit dem Prompt schickst. So behält das neue Bild etwa das Gesicht eines Charakters oder einen Kunststil bei.

@@ -228,7 +228,7 @@ Eine Zusammenführung würde sich lohnen, aber ein Paar komplett zu verschmelzen
 
 ### 6.3 Aktive Komplexitäts-Brennpunkte
 
-Die größten aktiven Module sind `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` und `client/components/panels/SettingsPanel.tsx`. Löschkandidaten sind sie nicht. Weiterhin gilt: eng begrenzte Routen-Handler, Domänen-Services, Panel-Abschnitte und reine Hilfsfunktionen nur dann herauslösen, wenn die betroffene Funktion ohnehin gerade geändert wird. Ein eigener PR nach dem Motto „alles aufteilen“ brächte viel Bewegung ohne verlässlichen Verhaltensnachweis. Eine Ausnahme ist der Chat Settings Drawer: Er wird nach dem [Plan zur Aufteilung des Drawers](../../.github/plans/chat-settings-drawer-split.md) aufgeteilt, mit einem Abschnitt pro PR.
+Die größten aktiven Module sind `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` und `client/components/panels/SettingsPanel.tsx`. Löschkandidaten sind sie nicht. Weiterhin gilt: eng begrenzte Routen-Handler, Domänen-Services, Panel-Abschnitte und reine Hilfsfunktionen nur dann herauslösen, wenn die betroffene Funktion ohnehin gerade geändert wird. Ein eigener PR nach dem Motto „alles aufteilen“ brächte viel Bewegung ohne verlässlichen Verhaltensnachweis. Eine Ausnahme war der Chat Settings Drawer: Er wurde mit einem Abschnitt pro PR aufgeteilt (#9119), und die Regeln für seinen Ordner stehen in `packages/client/.instructions.md` § Chat Settings.
 
 ## 7. Bewusst von der Bereinigung ausgenommen
 

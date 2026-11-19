@@ -228,7 +228,7 @@
 
 ### 6.3 Работающие точки повышенной сложности
 
-Самые большие работающие модули – это `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` и `client/components/panels/SettingsPanel.tsx`. Удалять их не нужно. Продолжайте выносить отдельные обработчики маршрутов, службы предметных областей, разделы выдвижной панели и чистые вспомогательные функции – но только когда затронутую функцию и так меняют. Отдельный PR в духе "разделить все" добавил бы суеты без надежного доказательства сохранения поведения. Исключение – панель Chat Settings Drawer: ее разделяют по одному разделу за PR согласно [плану разделения панели](../../.github/plans/chat-settings-drawer-split.md).
+Самые большие работающие модули – это `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` и `client/components/panels/SettingsPanel.tsx`. Удалять их не нужно. Продолжайте выносить отдельные обработчики маршрутов, службы предметных областей, разделы выдвижной панели и чистые вспомогательные функции – но только когда затронутую функцию и так меняют. Отдельный PR в духе "разделить все" добавил бы суеты без надежного доказательства сохранения поведения. Исключением была панель Chat Settings Drawer: ее разделили по одному разделу за PR (#9119), а правила для ее папки находятся в `packages/client/.instructions.md` § Chat Settings.
 
 ## 7. Что сознательно исключено из очистки
 

@@ -95,7 +95,10 @@ globalThis.__MARINARA_HOST__ = {
 | `components.Modal` | Engine का `Modal`, उसके ओवरले क्रम, Escape और बैक बटन की हैंडलिंग के साथ |
 | `components.Switch`, `components.Checkbox` | Capability API 1.830 से, Engine के साझा स्विच और चेकबॉक्स, ताकि पैकेज का रूप होस्ट से मेल खाए। |
 | `components.Spinner` | Capability API 1.830 से, Engine का साझा लोडिंग रिंग। स्क्रीन रीडर से यह छिपा रहता है, जब तक आप `label` न दें, जिससे यह स्टेटस रीजन बन जाता है। |
+| `components.Tabs` | Capability API 1.832 से, Engine का साझा टैब बार। `variant="pill"` व्यू बदलने के लिए खंडों में बँटा ट्रैक है; `variant="underline"` शीट या डायलॉग के अंदर के सेक्शन के लिए टेक्स्ट टैब हैं। ऐरो कुंजियाँ, Home और End टैब के बीच ले जाते हैं। |
+| `components.SearchInput` | Capability API 1.832 से, Engine की सर्च फ़ील्ड। `value`, `onChange` और स्क्रीन रीडर के लिए `label` दें। इसमें साफ़ करने का बटन होता है, और Escape पहले टेक्स्ट साफ़ करता है। `resultCount` से "4 found" दिखता है, `busy` से स्पिनर दिखता है, `size="compact"` भरे हुए टूलबार में फ़िट होता है, और `slashShortcut` से "/" दबाकर फ़ील्ड पर फ़ोकस किया जा सकता है। |
 | `components.showConfirmDialog` | Capability API 1.830 से, Engine का पुष्टि डायलॉग, वही फ़ंक्शन जो `services.dialogs.showConfirmDialog` है। |
+| `components.Select` | Capability API 1.831 से, Engine का ड्रॉपडाउन: `value` (स्ट्रिंग या `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` और `label` दें; चाहें तो `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` और `buttonRef` भी दें। यह डेस्कटॉप पर पॉपओवर और फ़ोन पर शीट खोलता है, और आठ या ज़्यादा विकल्प होने पर सर्च मिलता है। नेटिव `<select>` की जगह इसे इस्तेमाल करें। |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` मॉड्यूल |
 | `api` | `lib/api-client.ts` मॉड्यूल (`api`, `ApiError`, `getApiErrorMessage`, ...) |
 
@@ -1105,6 +1108,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 पुराने Engine इस विकल्प को अनदेखा करते हैं, इसलिए पैकेज इसे हमेशा दे सकता है। जब पैकेज इस पर निर्भर हो, तब 1.815 घोषित करें।
 
+### Capability API 1.834: सेव किए गए स्प्राइट और आर्टवर्क का नियम
+
+`api.runtime.sprites` कैरेक्टर या पर्सोना के सेव किए गए स्प्राइट पढ़ता है, ताकि नई आर्ट बनाने से पहले पैकेज यूज़र की मौजूदा आर्ट इस्तेमाल करे। इसके लिए कोई परमिशन नहीं चाहिए। पुराने Engine में यह नहीं होता, इसलिए इसकी मौजूदगी जाँचें।
+
+- `list(ownerId)`: हर सेव किया गया स्प्राइट `{ handle, kind, name, label, folder, url, mimeType }` के रूप में। `kind` या तो `"expression"` (चेहरा) होता है या `"full-body"`। `folder` वह स्प्राइट फ़ोल्डर है जिसमें यह रखा है, जिसे यूज़र अक्सर किसी पोशाक का नाम देते हैं। SVG स्प्राइट छोड़ दिए जाते हैं, क्योंकि कोई इमेज मॉडल उन्हें नहीं पढ़ता।
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: आर्टवर्क का नियम, इस क्रम में।
+  1. `selected`: यूज़र के चुने हुए सेव किए गए स्प्राइट का हैंडल, जैसे पहनी हुई पोशाक की तस्वीर। जब तक वह मौजूद है, वही चुना जाता है: `{ source: "selected", sprite }`।
+  2. सेव किया गया स्प्राइट जो पहले से माँगी गई चीज़ दिखाता है: `{ source: "library", sprite, match }`। एक्सप्रेशन (या पूरे शरीर के लिए पोज़) का नाम मेल खाना चाहिए, और पोशाक का फ़ोल्डर के नाम या नाम के किसी हिस्से से मेल खाना चाहिए (`happy_winter_coat`, [नाम के अलग-अलग रूप](../characters/sprites.md#name-variants) देखें)। एक्सप्रेशन न दिया हो, तो पोशाक की सामान्य तस्वीर (neutral, idle, default) मेल खाती है। दूसरी पोशाक में सही चेहरा मेल नहीं माना जाता।
+  3. तस्वीर बनाने के लिए सेव किए गए स्प्राइट: `{ source: "reference", references }`, ज़्यादा से ज़्यादा `maxReferences` (1 से 4, डिफ़ॉल्ट 4), सबसे अच्छे पहले: पोशाक की अपनी तस्वीरें, दूसरी पोशाक में वही एक्सप्रेशन, फिर सामान्य चेहरा और सामान्य पूरे शरीर की तस्वीर। इन्हें `read` से पढ़ें और `integrations.images.generate` को `referenceImages` के रूप में दें।
+  4. `{ source: "none" }`: कैरेक्टर के विवरण से तस्वीर बनाएँ।
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }`, या स्प्राइट हट चुका हो तो null। `transparent` बताता है कि तस्वीर का बैकग्राउंड पहले से पारदर्शी है, इसलिए उसे जैसा है, वैसा ही रखें: बैकग्राउंड हटाने के लिए न भेजें।
+
+किसी साफ़ तौर पर चुने गए विकल्प के लिए पैकेज खुद जो आर्ट रखता है, जैसे Otome Hearth की पोशाकें या Life Sim के मौसमी कपड़े, वह इस सब से पहले आती है और उसके लिए कोई कॉल नहीं चाहिए। क्लाइंट व्यू को यही जवाब `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat` से मिलता है।
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 <a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: एनिमेटेड GIF इमेज
@@ -1198,6 +1229,22 @@ try {
 ```
 
 Engine कभी अपने आप संकेत साफ़ नहीं करता, आपका `activity` एलिमेंट अनमाउंट होने पर भी नहीं (पैनल बंद रहने पर आइकन सबसे ज़्यादा काम आता है): इसे साफ़ करना आपकी ज़िम्मेदारी है, और रीलोड या `reset()` सब साफ़ कर देता है। चैट बदलने पर यह बना रहता है। व्यस्त या अलर्ट देने वाला पैकेज भी एक्टिविटी माना जाता है, इसलिए पैनल "No agent activity yet" नहीं दिखाता; संकेत के साथ `activity` कार्ड जोड़ें ताकि पैनल में दिखाने को कुछ हो। यह सॉफ़्ट इंटरफ़ेस है: पुराने Engine में यह मेथड नहीं होता, इसलिए ऊपर की तरह इसका होना जाँचें। पैकेज इसके बिना काम न कर सके, तभी 1.820 घोषित करें। कोई परमिशन नहीं चाहिए।
+
+### Capability API 1.833: चैट के World State स्नैपशॉट की लिस्ट पाना
+
+`persistence.getGameState(chatId)` सिर्फ़ सबसे नया कमिट किया गया World State लौटाता है। `persistence.listGameStates(chatId)`
+हर संदेश के सक्रिय स्वाइप का कमिट किया गया स्नैपशॉट, संदेशों के क्रम में लौटाता है। हर रिकॉर्ड का आकार
+`getGameState` जैसा ही होता है। पैकेज किसी भी संदेश के लिए ट्रैकर की सेव की गई कहानी की तारीख पढ़ सकता है,
+बजाय किसी मॉडल से उसे टेक्स्ट में ढूँढ़ने को कहने के।
+
+जिस संदेश का कोई कमिट किया गया स्नैपशॉट न हो, जिस स्वाइप को यूज़र ने नहीं रखा उसके लिए सेव किया गया स्नैपशॉट, जिस स्नैपशॉट का संदेश
+डिलीट हो चुका हो और जो स्नैपशॉट किसी संदेश से जुड़ा न हो, वे छोड़ दिए जाते हैं। इसलिए आखिरी एंट्री `getGameState` से अलग हो सकती है। इसके लिए
+`getGameState` की तरह `chat-read` परमिशन चाहिए, और यह सिर्फ़ पढ़ने के लिए है। यह सॉफ़्ट इंटरफ़ेस है: पुराने Engine में यह मेथड
+नहीं होता, इसलिए ऊपर की तरह इसकी मौजूदगी जाँचें। 1.833 तभी घोषित करें, जब पैकेज इसके बिना काम न कर सके।
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

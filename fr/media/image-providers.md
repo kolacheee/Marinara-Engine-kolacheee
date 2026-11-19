@@ -197,6 +197,18 @@ Chaque service a un champ **Seed** (graine aléatoire). La valeur -1 garde chaqu
 
 Chaque service a aussi les champs **Prompt prefix** (préfixe de prompt) et **Negative prefix** (préfixe négatif). Le texte saisi là est ajouté au début de chaque prompt de ce modèle. AUTOMATIC1111 / Forge et ComfyUI ont un champ **Clip skip**. AUTOMATIC1111 / Forge ajoute un interrupteur **Restore faces**. ComfyUI ajoute un interrupteur qui téléverse une image de remplacement de 1x1 quand aucune image de référence n'est fournie, ce qui ne compte que pour les workflows personnalisés contenant des placeholders d'image de référence. NovelAI ajoute **Guidance rescale** et **UC preset**.
 
+## Arrière-plans transparents
+
+Les sprites et les planches de stickers ou d'emojis rendent mieux sur un arrière-plan transparent. Chaque modèle d'image a un réglage **Transparent backgrounds** (fonds transparents) qui indique s'il peut en dessiner un :
+
+- **Automatic** (automatique) (par défaut) utilise ce que Marinara sait du modèle. Il affiche **Automatic (supported)** (automatique (pris en charge)) pour GPT Image 1, 1.5, 2.5 et 2.6 sur OpenAI, OpenRouter ou ChatGPT (Codex login), et **Automatic (not supported)** (automatique (non pris en charge)) pour tous les autres, y compris GPT Image 2.
+- **Supported** (pris en charge) : le modèle ou le workflow renvoie des images avec un véritable arrière-plan transparent, par exemple un workflow ComfyUI qui supprime l'arrière-plan avant l'enregistrement.
+- **Not supported** (non pris en charge) : utilise toujours la couleur unie que Marinara retire, même avec un modèle qui pourrait faire mieux.
+
+Quand le modèle dessine des images transparentes, les sprites et les planches lui demandent ce type de fond et conservent le résultat exactement tel qu'il a été dessiné. Sinon, le modèle reçoit la consigne de dessiner un fond uni vert, magenta ou cyan, que Marinara retire. Quel que soit le réglage, une image reçue avec un fond transparent n'est jamais nettoyée à nouveau. Une image renvoyée sur fond uni par un modèle qui prend en charge la transparence est laissée telle quelle et signalée à l'étape de vérification des sprites, où **Apply cleanup** (appliquer le nettoyage) permet de supprimer ce fond.
+
+Un serveur compatible avec OpenAI qui a besoin de sa propre option de transparence peut la recevoir via **Custom parameters** (paramètres personnalisés), par exemple `"background": "transparent"`.
+
 ## La prise en charge des images de référence varie selon le service
 
 Une image de référence est une image existante que tu envoies avec ton prompt, pour que la nouvelle image garde le visage d'un personnage ou un style graphique.

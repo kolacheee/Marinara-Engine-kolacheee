@@ -197,6 +197,18 @@ Todo serviço tem um campo **Seed**. O valor -1 mantém cada imagem aleatória. 
 
 Cada serviço também tem os campos **Prompt prefix** e **Negative prefix**. O texto colocado ali entra na frente de todo prompt deste modelo. AUTOMATIC1111 / Forge e ComfyUI têm um campo **Clip skip**. AUTOMATIC1111 / Forge acrescenta um botão liga/desliga **Restore faces**. ComfyUI acrescenta um botão liga/desliga para fazer upload de uma imagem de preenchimento 1x1 quando nenhuma imagem de referência é fornecida, o que só importa em fluxos de trabalho personalizados com marcadores de referência. NovelAI acrescenta **Guidance rescale** e **UC preset**.
 
+## Fundos transparentes
+
+Sprites e folhas de stickers ou emojis ficam melhores com fundo transparente. Cada modelo de imagem tem uma configuração **Transparent backgrounds** (fundos transparentes) que indica se ele consegue desenhar assim:
+
+- **Automatic** (automático, o padrão) usa o que Marinara sabe sobre o modelo. Mostra **Automatic (supported)** (automático: com suporte) para GPT Image 1, 1.5, 2.5 e 2.6 no OpenAI, OpenRouter ou ChatGPT (Codex login), e **Automatic (not supported)** (automático: sem suporte) para todos os outros, incluindo GPT Image 2.
+- **Supported** (com suporte): o modelo ou fluxo de trabalho retorna imagens com fundo realmente transparente, por exemplo um fluxo de trabalho do ComfyUI que remove o fundo antes de salvar.
+- **Not supported** (sem suporte): sempre usa a cor uniforme que Marinara remove, mesmo em um modelo que poderia fazer melhor.
+
+Quando o modelo desenha imagens transparentes, a geração de sprites e folhas pede esse tipo de imagem e mantém o resultado exatamente como foi desenhado. Caso contrário, o modelo recebe o pedido de um fundo liso verde, magenta ou ciano, e Marinara o remove. Seja qual for a configuração, uma imagem que chega transparente nunca passa pela limpeza de novo. Uma imagem que um modelo com suporte retorna com fundo sólido é mantida como foi desenhada e marcada na etapa de revisão dos sprites, onde **Apply cleanup** (aplicar a limpeza) remove o fundo.
+
+Um servidor compatível com OpenAI que precisa de uma opção própria para transparência pode recebê-la em **Custom parameters** (parâmetros personalizados), por exemplo `"background": "transparent"`.
+
 ## O suporte a imagens de referência varia conforme o serviço
 
 Uma imagem de referência é uma figura já existente que você envia junto com o prompt, para que a nova imagem mantenha o rosto de um personagem ou um estilo de arte.

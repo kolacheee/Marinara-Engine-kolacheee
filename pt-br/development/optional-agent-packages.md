@@ -96,7 +96,10 @@ A propriedade não é gravável nem configurável, e o namespace e os objetos `s
 | `components.Modal` | O `Modal` do Engine, com a ordem de sobreposição e o tratamento da tecla Escape e do botão de voltar. |
 | `components.Switch`, `components.Checkbox` | A partir da Capability API 1.830, o botão liga/desliga e a caixa de seleção compartilhados do Engine, para que um pacote siga o visual do host. |
 | `components.Spinner` | A partir da Capability API 1.830, o anel de carregamento compartilhado do Engine. Fica oculto para leitores de tela, a menos que você passe um `label`, que o transforma em uma região de status. |
+| `components.Tabs` | A partir da Capability API 1.832, a barra de abas compartilhada do Engine. `variant="pill"` é a faixa segmentada para alternar entre visualizações; `variant="underline"` são abas de texto para seções dentro de um painel ou caixa de diálogo. As teclas de seta, Home e End alternam entre as abas. |
+| `components.SearchInput` | A partir da Capability API 1.832, o campo de busca do Engine. Passe `value`, `onChange` e um `label` para leitores de tela. Tem um botão para limpar, e Escape limpa o texto primeiro. `resultCount` mostra "4 found", `busy` mostra um indicador de carregamento, `size="compact"` cabe em barras de ferramentas com muitos controles, e `slashShortcut` permite que "/" coloque o foco no campo. |
 | `components.showConfirmDialog` | A partir da Capability API 1.830, a caixa de diálogo de confirmação do Engine, a mesma função de `services.dialogs.showConfirmDialog`. |
+| `components.Select` | A partir da Capability API 1.831, o menu suspenso do Engine: passe `value` (uma string ou `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` e um `label`; são opcionais `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` e `buttonRef`. Abre uma janela flutuante no computador e um painel no celular, com busca a partir de oito opções. Use no lugar de um `<select>` nativo. |
 | `data.emojiCatalog` | O módulo `lib/emoji-catalog.generated.ts`. |
 | `api` | O módulo `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
@@ -1098,6 +1101,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 Engines mais antigos ignoram a opção, então um pacote sempre pode passá-la. Declare 1.815 quando o pacote depender dela.
 
+### Capability API 1.834: sprites salvos e a regra de escolha da arte
+
+`api.runtime.sprites` lê os sprites salvos de um personagem ou de uma persona, para que um pacote use a arte que o usuário já tem antes de desenhar uma nova. Não exige nenhuma permissão. Engines mais antigos não incluem esse recurso, então verifique se ele existe.
+
+- `list(ownerId)`: cada sprite salvo como `{ handle, kind, name, label, folder, url, mimeType }`. `kind` é `"expression"` (um rosto) ou `"full-body"`. `folder` é a pasta de sprites em que ele está, que os usuários costumam nomear de acordo com uma roupa. Sprites SVG ficam de fora, porque nenhum modelo de imagem os lê.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: a regra de escolha da arte, nesta ordem.
+  1. `selected`: o identificador de um sprite salvo que o usuário escolheu, como a imagem de uma roupa equipada. Ele tem prioridade enquanto existir: `{ source: "selected", sprite }`.
+  2. Um sprite salvo que já mostra o que foi pedido: `{ source: "library", sprite, match }`. A expressão (ou pose, para corpo inteiro) precisa corresponder pelo nome, e a roupa, pelo nome da pasta ou por uma parte do nome (`happy_winter_coat`, veja [variantes de nome](../characters/sprites.md#name-variants)). Sem expressão, a imagem em repouso da roupa (neutral, idle, default) corresponde. O rosto certo com outra roupa não corresponde.
+  3. Sprites salvos para usar como base do desenho: `{ source: "reference", references }`, até `maxReferences` (1 a 4, padrão 4), com os melhores primeiro: as imagens da própria roupa, a expressão com outra roupa, depois o rosto em repouso e o corpo inteiro em repouso. Leia-os com `read` e passe-os como `referenceImages` para `integrations.images.generate`.
+  4. `{ source: "none" }`: desenhe a partir da descrição do personagem.
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }`, ou null quando o sprite não existe mais. `transparent` indica que a imagem já tem fundo transparente, então mantenha-a como está: não a envie para remoção de fundo.
+
+A arte que o próprio pacote mantém para uma escolha explícita, como as roupas do Otome Hearth ou as roupas sazonais do Life Sim, tem prioridade sobre tudo isso e não exige nenhuma chamada. Uma visualização do cliente obtém a mesma resposta com `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 <a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: imagens GIF animadas
@@ -1191,6 +1222,16 @@ try {
 ```
 
 O Engine nunca limpa um sinal por conta própria, nem mesmo quando o elemento `activity` é desmontado (o ícone é mais importante quando o painel está fechado): a responsabilidade de limpá-lo é sua, e recarregar ou chamar `reset()` limpa tudo. Trocar de chat mantém o sinal. Um pacote ocupado ou com alerta também conta como atividade, então o painel não mostra "No agent activity yet"; combine o sinal com um cartão `activity` para o painel ter algo a mostrar. É uma integração opcional: versões mais antigas do Engine não têm o método, então verifique se ele existe, como acima. Declare 1.820 apenas quando o pacote não puder funcionar sem ele. Nenhuma permissão é necessária.
+
+### Capability API 1.833: listar os snapshots de World State de um chat
+
+`persistence.getGameState(chatId)` retorna apenas o World State confirmado mais recente. `persistence.listGameStates(chatId)` retorna o snapshot confirmado do swipe ativo de cada mensagem, na ordem das mensagens, cada um no mesmo formato de registro de `getGameState`. Um pacote pode ler a data dentro da história que o tracker salvou para qualquer mensagem em vez de pedir a um modelo que a encontre no texto.
+
+Uma mensagem sem snapshot confirmado, um snapshot salvo para um swipe que o usuário não manteve, um snapshot cuja mensagem foi excluída e um snapshot sem vínculo com uma mensagem ficam de fora, então a última entrada pode ser diferente de `getGameState`. Exige a permissão `chat-read`, como `getGameState`, e é somente leitura. É uma integração opcional: Engines mais antigos não incluem o método, então verifique se ele existe, como acima. Declare 1.833 apenas quando o pacote não puder funcionar sem ele.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

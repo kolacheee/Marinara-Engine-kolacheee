@@ -100,7 +100,10 @@ globalThis.__MARINARA_HOST__ = {
 | `components.Modal` | `Modal` из Engine с его порядком наложения и обработкой Escape и кнопки "назад". |
 | `components.Switch`, `components.Checkbox` | Начиная с Capability API 1.830, общие переключатель и флажок Engine, чтобы пакет соответствовал оформлению приложения. |
 | `components.Spinner` | Начиная с Capability API 1.830, общее кольцо загрузки Engine. Оно скрыто от программ чтения с экрана, если не передать `label`, который превращает его в область статуса. |
+| `components.Tabs` | Начиная с Capability API 1.832, общая панель вкладок Engine. `variant="pill"` – сегментированная панель для переключения представлений; `variant="underline"` – текстовые вкладки для разделов внутри выдвижной панели или диалога. Клавиши со стрелками, Home и End переключают вкладки. |
+| `components.SearchInput` | Начиная с Capability API 1.832, поле поиска Engine. Передайте `value`, `onChange` и `label` для программы чтения с экрана. В поле есть кнопка очистки, а Escape сначала очищает текст. `resultCount` показывает "Найдено: 4", `busy` показывает индикатор загрузки, `size="compact"` подходит для плотных панелей инструментов, а `slashShortcut` позволяет перевести фокус в поле клавишей "/". |
 | `components.showConfirmDialog` | Начиная с Capability API 1.830, диалог подтверждения Engine; та же функция, что и `services.dialogs.showConfirmDialog`. |
+| `components.Select` | Начиная с Capability API 1.831, раскрывающийся список Engine: передайте `value` (строку или `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` и `label`; необязательные параметры: `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` и `buttonRef`. На компьютере он открывает всплывающую панель, а на телефонах – выдвижную; при восьми и более вариантах появляется поиск. Используйте его вместо нативного `<select>`. |
 | `data.emojiCatalog` | Модуль `lib/emoji-catalog.generated.ts`. |
 | `api` | Модуль `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
@@ -1113,6 +1116,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 Старые версии Engine игнорируют этот параметр, поэтому пакет может передавать его всегда. Объявите 1.815, если пакет на него полагается.
 
+### Capability API 1.834: сохраненные спрайты и правило выбора изображений
+
+`api.runtime.sprites` читает сохраненные спрайты персонажа или персоны, чтобы пакет использовал уже имеющиеся у пользователя изображения, прежде чем рисовать новые. Разрешений не нужно. В старых версиях Engine этого интерфейса нет, поэтому проверяйте его наличие.
+
+- `list(ownerId)`: все сохраненные спрайты в виде `{ handle, kind, name, label, folder, url, mimeType }`. `kind` – это `"expression"` (лицо) или `"full-body"`. `folder` – папка, в которой хранится спрайт; пользователи часто называют ее по одежде. Спрайты SVG пропускаются, поскольку ни одна модель изображений их не читает.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: правило выбора изображений в следующем порядке.
+  1. `selected`: дескриптор сохраненного спрайта, выбранного пользователем, например изображения надетой одежды. Пока спрайт существует, он имеет приоритет: `{ source: "selected", sprite }`.
+  2. Сохраненный спрайт, который уже изображает запрошенное: `{ source: "library", sprite, match }`. Выражение лица (или поза для спрайта во весь рост) должно совпадать по названию, а одежда – по названию папки или дополнительному слову в названии (`happy_winter_coat`, см. [названия вариантов](../characters/sprites.md#name-variants)). Если выражение лица не указано, подходит изображение в этой одежде в спокойном состоянии (neutral, idle, default). Нужное лицо в другой одежде не считается совпадением.
+  3. Сохраненные спрайты, по которым можно нарисовать новое изображение: `{ source: "reference", references }`, не более `maxReferences` (от 1 до 4, по умолчанию 4), начиная с наиболее подходящих: изображения в нужной одежде, нужное выражение лица в другой одежде, затем лицо и фигура во весь рост в спокойном состоянии. Прочитайте их через `read` и передайте как `referenceImages` в `integrations.images.generate`.
+  4. `{ source: "none" }`: нарисовать по описанию персонажа.
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }` или null, если спрайта больше нет. `transparent` означает, что у изображения уже есть прозрачный фон, поэтому сохраните его как есть: не отправляйте его на удаление фона.
+
+Изображения, которые сам пакет хранит для явно выбранного варианта, например наряды Otome Hearth или сезонная одежда Life Sim, имеют приоритет над всем перечисленным и не требуют вызова. Клиентское представление получает тот же ответ через `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 <a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: анимированные изображения GIF
@@ -1228,6 +1259,22 @@ Engine никогда не сбрасывает сигнал самостоят�
 чтобы панели было что показать. Это мягкий интерфейс: в более старых версиях Engine
 метода нет, поэтому проверьте его наличие, как в примере выше. Объявляйте 1.820 только тогда, когда пакет не может работать без этого метода.
 Разрешений не нужно.
+
+### Capability API 1.833: получение списка снимков World State чата
+
+`persistence.getGameState(chatId)` возвращает только последнее зафиксированное состояние World State. `persistence.listGameStates(chatId)`
+возвращает зафиксированный снимок активного свайпа каждого сообщения в порядке сообщений; формат каждой записи такой же, как у
+`getGameState`. Пакет может прочитать дату внутри истории, которую трекер сохранил для любого сообщения, вместо того чтобы просить модель
+найти ее в тексте.
+
+Сообщения без зафиксированного снимка, снимки свайпов, которые пользователь не оставил, снимки удаленных сообщений
+и снимки, не привязанные к сообщению, пропускаются, поэтому последняя запись может отличаться от `getGameState`. Нужно
+разрешение `chat-read`, как для `getGameState`; метод только читает данные. Это мягкий интерфейс: в старых версиях Engine метода
+нет, поэтому проверяйте его наличие, как в примере выше. Объявляйте 1.833 только тогда, когда пакет не может работать без него.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

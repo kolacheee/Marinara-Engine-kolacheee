@@ -96,7 +96,10 @@ Ta właściwość nie jest zapisywalna ani konfigurowalna, a przestrzeń nazw or
 | `components.Modal` | `Modal` silnika, z jego kolejnością nakładek oraz obsługą klawisza Escape i przycisku Wstecz. |
 | `components.Switch`, `components.Checkbox` | Od Capability API 1.830: wspólny przełącznik i pole wyboru silnika, dzięki którym pakiet pasuje do wyglądu hosta. |
 | `components.Spinner` | Od Capability API 1.830: wspólny pierścień ładowania silnika. Jest ukryty przed czytnikami ekranu, chyba że przekażesz `label`, co nadaje mu rolę obszaru statusu. |
+| `components.Tabs` | Od Capability API 1.832: wspólny pasek zakładek silnika. `variant="pill"` to pasek z segmentami do przełączania widoków; `variant="underline"` to tekstowe zakładki sekcji wewnątrz panelu lub okna. Klawisze strzałek, Home i End przełączają między zakładkami. |
+| `components.SearchInput` | Od Capability API 1.832: pole wyszukiwania silnika. Przekaż `value`, `onChange` i `label` dla czytnika ekranu. Ma przycisk czyszczenia, a klawisz Escape najpierw usuwa tekst. `resultCount` pokazuje "4 found", `busy` pokazuje wskaźnik ładowania, `size="compact"` pasuje do ciasnych pasków narzędzi, a `slashShortcut` pozwala przenieść fokus do pola klawiszem "/". |
 | `components.showConfirmDialog` | Od Capability API 1.830: okno potwierdzenia silnika, ta sama funkcja co `services.dialogs.showConfirmDialog`. |
+| `components.Select` | Od Capability API 1.831: lista rozwijana silnika. Przekaż `value` (ciąg lub `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` i `label`; opcjonalnie `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` i `buttonRef`. Na komputerze otwiera okno podręczne, a na telefonie panel; od ośmiu opcji udostępnia wyszukiwanie. Używaj jej zamiast natywnego `<select>`. |
 | `data.emojiCatalog` | Moduł `lib/emoji-catalog.generated.ts`. |
 | `api` | Moduł `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
@@ -1086,6 +1089,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 Starsze wersje silnika ignorują tę opcję, więc pakiet może ją zawsze przekazywać. Zadeklaruj wersję 1.815, gdy pakiet na niej polega.
 
+### Capability API 1.834: zapisane sprite'y i zasada wyboru grafiki
+
+`api.runtime.sprites` odczytuje zapisane sprite'y postaci lub persony, żeby pakiet korzystał z grafiki, którą użytkownik już ma, zanim narysuje nową. Nie wymaga uprawnień. Starsze wersje silnika nie udostępniają tego API, więc sprawdź, czy istnieje.
+
+- `list(ownerId)`: każdy zapisany sprite jako `{ handle, kind, name, label, folder, url, mimeType }`. `kind` to `"expression"` (twarz) albo `"full-body"`. `folder` to folder sprite'ów, w którym go zapisano; użytkownicy często nazywają go od stroju. Sprite'y SVG są pomijane, bo żaden model obrazów ich nie odczytuje.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: zasada wyboru grafiki, w tej kolejności.
+  1. `selected`: uchwyt zapisanego sprite'a wybranego przez użytkownika, na przykład obrazu założonego stroju. Ma pierwszeństwo, dopóki istnieje: `{ source: "selected", sprite }`.
+  2. Zapisany sprite, który już przedstawia to, czego dotyczy żądanie: `{ source: "library", sprite, match }`. Wyraz twarzy (lub poza przy całej sylwetce) musi pasować nazwą, a strój nazwą folderu albo słowem w nazwie (`happy_winter_coat`, zobacz [warianty nazw](../characters/sprites.md#name-variants)). Bez wyrazu twarzy pasuje obraz w spoczynku dla danego stroju (neutralny, bezczynny, domyślny). Właściwa twarz w innym stroju nie jest dopasowaniem.
+  3. Zapisane sprite'y, na podstawie których można narysować obraz: `{ source: "reference", references }`, do `maxReferences` (od 1 do 4, domyślnie 4), od najlepszych: obrazy danego stroju, wyraz twarzy w innym stroju, potem twarz w spoczynku i cała sylwetka w spoczynku. Odczytaj je przez `read` i przekaż jako `referenceImages` do `integrations.images.generate`.
+  4. `{ source: "none" }`: narysuj na podstawie opisu postaci.
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }` albo null, gdy sprite już nie istnieje. `transparent` mówi, że obraz już ma przezroczyste tło, więc zachowaj go bez zmian: nie przepuszczaj go przez usuwanie tła.
+
+Grafika przechowywana przez sam pakiet dla konkretnego wyboru, na przykład strojów Otome Hearth lub sezonowej odzieży Life Sim, ma pierwszeństwo przed tym wszystkim i nie wymaga wywołania. Widok klienta otrzymuje tę samą odpowiedź z `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 ### Capability API 1.816: animowane obrazy GIF
 
 `images.generate` przyjmuje w żądaniu `animation: { frameCount?, frameDurationMs? }` i wtedy zwraca jeden zapętlony GIF: `mimeType: "image/gif"`, `ext: "gif"`, który `images.save` zapisuje jako plik `.gif`. `{}` oznacza wartości domyślne Engine, czyli 9 klatek po 200 ms. Engine ogranicza `frameCount` do zakresu od 2 do 12, a `frameDurationMs` do zakresu od 20 do 2000 z krokiem 10, i sam wybiera rozmiar klatki: najmniejszą prawidłową klatkę o kształcie wyznaczonym przez `width` i `height`, na przykład 816x816 dla kwadratu albo 608x1088 dla proporcji 9:16. Dwanaście klatek tego rozmiaru ma łącznie mniej niż udokumentowane przez OpenAI 8 294 400 pikseli.
@@ -1181,6 +1212,22 @@ try {
 ```
 
 Aplikacja nigdy sama nie usuwa sygnału, nawet po odmontowaniu elementu `activity` (ikona jest najważniejsza, gdy panel jest zamknięty): to ty odpowiadasz za jego wyczyszczenie, a odświeżenie lub `reset()` czyści wszystko. Zmiana czatu go pozostawia. Pakiet zajęty lub zgłaszający uwagę też liczy się jako aktywność, więc panel nie pokazuje "Brak aktywności agentów"; połącz sygnał z kartą `activity`, żeby panel miał co wyświetlić. To miękki interfejs: starsze wersje aplikacji nie mają tej metody, więc sprawdź jej istnienie jak wyżej. Zadeklaruj 1.820 tylko wtedy, gdy pakiet nie może bez niej działać. Nie wymaga uprawnienia.
+
+### Capability API 1.833: lista migawek World State czatu
+
+`persistence.getGameState(chatId)` zwraca tylko najnowszy zatwierdzony stan World State. `persistence.listGameStates(chatId)`
+zwraca zatwierdzoną migawkę aktywnego swipe'a każdej wiadomości, w kolejności wiadomości, każdą w takim samym formacie rekordu jak
+`getGameState`. Pakiet może odczytać datę w świecie opowieści zapisaną przez tracker dla dowolnej wiadomości, zamiast prosić model,
+żeby znalazł ją w tekście.
+
+Wiadomość bez zatwierdzonej migawki, migawka zapisana dla swipe'a, którego użytkownik nie zachował, migawka, której wiadomość
+usunięto, oraz migawka niepowiązana z wiadomością są pomijane, więc ostatni wpis może się różnić od `getGameState`. Metoda wymaga
+uprawnienia `chat-read`, tak jak `getGameState`, i służy tylko do odczytu. To miękki interfejs: starsze wersje silnika nie mają tej metody,
+więc sprawdź jej istnienie jak wyżej. Zadeklaruj 1.833 tylko wtedy, gdy pakiet nie może bez niej działać.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 ### Capability API 1.391: podsumowania scen funkcji Advanced Memory i blok pamięci
 

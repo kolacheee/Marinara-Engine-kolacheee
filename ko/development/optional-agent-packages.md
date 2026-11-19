@@ -96,7 +96,10 @@ globalThis.__MARINARA_HOST__ = {
 | `components.Modal` | 오버레이 순서, Escape 키와 뒤로 가기 버튼 처리를 갖춘 Engine의 `Modal`입니다. |
 | `components.Switch`, `components.Checkbox` | Capability API 1.830부터 제공되는 Engine의 공용 스위치와 체크박스로, 패키지의 모양을 호스트와 맞출 수 있습니다. |
 | `components.Spinner` | Capability API 1.830부터 제공되는 Engine의 공용 로딩 표시입니다. `label`을 전달하지 않으면 화면 읽기 프로그램에 숨겨지며, 전달하면 상태 영역이 됩니다. |
+| `components.Tabs` | Capability API 1.832부터 제공되는 Engine의 공용 탭 바입니다. `variant="pill"`은 뷰를 전환하는 분할형 막대이고, `variant="underline"`은 시트나 대화 상자 안의 섹션에 쓰는 텍스트 탭입니다. 화살표 키, Home, End로 탭 사이를 이동합니다. |
+| `components.SearchInput` | Capability API 1.832부터 제공되는 Engine의 검색 입력란입니다. `value`, `onChange`와 화면 읽기 프로그램용 `label`을 전달하세요. 지우기 버튼이 있으며, Escape는 먼저 텍스트를 지웁니다. `resultCount`는 "4 found"를 표시하고, `busy`는 로딩 표시를 보여 주며, `size="compact"`는 공간이 좁은 도구 모음에 맞고, `slashShortcut`은 "/"로 입력란에 포커스를 맞출 수 있게 합니다. |
 | `components.showConfirmDialog` | Capability API 1.830부터 제공되는 Engine의 확인 대화 상자이며, `services.dialogs.showConfirmDialog`와 같은 함수입니다. |
+| `components.Select` | Capability API 1.831부터 제공되는 Engine의 드롭다운입니다. `value`(문자열 또는 `null`), `options`(`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)`와 `label`을 전달하세요. 선택 사항은 `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable`, `buttonRef`입니다. 데스크톱에서는 팝오버, 휴대폰에서는 시트로 열리며, 옵션이 8개 이상이면 검색을 제공합니다. 네이티브 `<select>` 대신 사용하세요. |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 모듈입니다. |
 | `api` | `lib/api-client.ts` 모듈(`api`, `ApiError`, `getApiErrorMessage`, ...)입니다. |
 
@@ -1100,6 +1103,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 이전 Engine은 이 옵션을 무시하므로 패키지는 언제든 이 옵션을 넘길 수 있습니다. 패키지가 이 옵션에 의존한다면 1.815를 선언하세요.
 
+### Capability API 1.834: 저장된 스프라이트와 그림 선택 규칙
+
+`api.runtime.sprites`는 캐릭터나 페르소나의 저장된 스프라이트를 읽으므로, 패키지가 새 그림을 그리기 전에 사용자가 이미 가진 그림을 사용할 수 있습니다. 권한은 필요 없습니다. 이전 Engine에는 없으므로 존재하는지 확인하세요.
+
+- `list(ownerId)`: 저장된 모든 스프라이트를 `{ handle, kind, name, label, folder, url, mimeType }` 형태로 반환합니다. `kind`는 `"expression"`(얼굴) 또는 `"full-body"`입니다. `folder`는 스프라이트가 들어 있는 스프라이트 폴더이며, 사용자는 흔히 옷차림에 따라 폴더 이름을 짓습니다. SVG 스프라이트는 읽을 수 있는 이미지 모델이 없으므로 제외합니다.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: 다음 순서로 그림 선택 규칙을 적용합니다.
+  1. `selected`: 사용자가 고른 저장된 스프라이트의 핸들입니다. 예를 들어 착용한 의상의 그림입니다. 해당 스프라이트가 존재하는 동안 우선합니다. `{ source: "selected", sprite }`를 반환합니다.
+  2. 요청한 모습이 이미 담긴 저장된 스프라이트입니다. `{ source: "library", sprite, match }`를 반환합니다. 표정(전신이면 포즈)은 이름이 일치해야 하고, 옷차림은 폴더 이름이나 이름의 구성 요소가 일치해야 합니다(`happy_winter_coat`, [이름 변형](../characters/sprites.md#name-variants) 참고). 표정이 없으면 해당 옷차림의 기본 그림(neutral, idle, default)이 일치하는 것으로 봅니다. 표정이 맞아도 다른 옷차림이면 일치하지 않습니다.
+  3. 그림을 그릴 때 참조할 저장된 스프라이트입니다. `{ source: "reference", references }`를 반환하며, `maxReferences`(1~4, 기본값 4)개까지 적합한 순서로 나열합니다. 해당 옷차림의 그림, 다른 옷차림의 해당 표정, 기본 표정과 기본 전신 그림 순서입니다. `read`로 읽고 `integrations.images.generate`에 `referenceImages`로 전달하세요.
+  4. `{ source: "none" }`: 캐릭터 설명을 바탕으로 그립니다.
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }`를 반환하며, 스프라이트가 사라졌으면 null을 반환합니다. `transparent`는 그림의 배경이 이미 투명하다는 뜻이므로 그대로 유지하세요. 배경 제거를 적용하지 마세요.
+
+Otome Hearth 의상이나 Life Sim 계절별 의상처럼 명시적인 선택을 위해 패키지가 자체 보관하는 그림은 이 모든 것보다 우선하며 호출도 필요 없습니다. 클라이언트 뷰는 `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`로 같은 답을 얻습니다.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 <a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: 애니메이션 GIF 이미지
@@ -1193,6 +1224,22 @@ try {
 ```
 
 Engine은 신호를 스스로 지우지 않으며, `activity` 요소가 마운트 해제되어도 지우지 않습니다(아이콘은 패널이 닫혀 있을 때 가장 중요합니다). 신호 해제는 패키지가 맡습니다. 새로고침이나 `reset()`은 모든 신호를 지우며 채팅 전환은 그대로 둡니다. 작업 중이거나 알림을 보내는 패키지도 활동으로 간주하므로 패널에 "No agent activity yet"이 표시되지 않습니다. 패널에 보여 줄 내용이 있도록 신호와 `activity` 카드를 함께 사용하세요. 소프트 인터페이스이므로 이전 Engine에는 메서드가 없습니다. 위 예제처럼 존재하는지 확인하세요. 이 메서드 없이는 패키지가 작동할 수 없을 때만 1.820을 선언하세요. 권한은 필요 없습니다.
+
+### Capability API 1.833: 채팅의 World State 스냅샷 나열하기
+
+`persistence.getGameState(chatId)`는 가장 최근에 커밋된 World State만 반환합니다. `persistence.listGameStates(chatId)`는
+각 메시지의 활성 스와이프에 커밋된 스냅샷을 메시지 순서대로 반환하며, 각 레코드의 형태는
+`getGameState`와 같습니다. 패키지는 모델에게 텍스트에서 날짜를 찾도록 요청하는 대신,
+어떤 메시지에서든 트래커가 저장한 이야기 속 날짜를 읽을 수 있습니다.
+
+커밋된 스냅샷이 없는 메시지, 사용자가 유지하지 않은 스와이프에 저장된 스냅샷, 메시지가 삭제된 스냅샷,
+메시지에 연결되지 않은 스냅샷은 제외하므로 마지막 항목은 `getGameState`와 다를 수 있습니다.
+`getGameState`처럼 `chat-read` 권한이 필요하며 읽기 전용입니다. 소프트 인터페이스이므로 이전 Engine에는
+메서드가 없습니다. 위 예제처럼 존재하는지 확인하세요. 이 메서드 없이는 패키지가 작동할 수 없을 때만 1.833을 선언하세요.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

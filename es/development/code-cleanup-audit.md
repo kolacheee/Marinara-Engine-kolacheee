@@ -228,7 +228,7 @@ Hay valor real en la consolidación, pero fusionar cualquiera de los dos pares p
 
 ### 6.3 Puntos calientes de complejidad activa
 
-Los módulos activos más grandes son `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` y `client/components/panels/SettingsPanel.tsx`. No son candidatos a eliminar. Sigue extrayendo manejadores de ruta acotados, servicios de dominio, secciones de panel y ayudantes puros solo cuando la funcionalidad afectada ya se esté cambiando. Un PR aislado de “dividir todo” añadiría ruido sin una prueba de comportamiento fiable. El panel Chat Settings Drawer es la excepción: se está dividiendo una sección por PR según [el plan de división del panel](../../.github/plans/chat-settings-drawer-split.md).
+Los módulos activos más grandes son `server/routes/game.routes.ts`, `client/components/game/GameSurface.tsx`, `client/features/chat-settings/ChatSettingsDrawer.tsx`, `server/routes/generate.routes.ts` y `client/components/panels/SettingsPanel.tsx`. No son candidatos a eliminar. Sigue extrayendo manejadores de ruta acotados, servicios de dominio, secciones de panel y ayudantes puros solo cuando la funcionalidad afectada ya se esté cambiando. Un PR aislado de “dividir todo” añadiría ruido sin una prueba de comportamiento fiable. El panel Chat Settings Drawer fue la excepción: se dividió una sección por PR (#9119), y las reglas de su carpeta están en `packages/client/.instructions.md` § Chat Settings.
 
 ## 7. Elementos excluidos deliberadamente de la limpieza
 

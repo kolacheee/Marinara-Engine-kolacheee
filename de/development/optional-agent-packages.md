@@ -97,7 +97,10 @@ Die Eigenschaft ist weder beschreibbar noch konfigurierbar, und der Namensraum s
 | `components.Modal` | Das `Modal` der Engine, mit seiner Overlay-Reihenfolge und seiner Behandlung von Escape und Zurück-Taste. |
 | `components.Switch`, `components.Checkbox` | Ab Capability API 1.830: der gemeinsame Schalter und das Kontrollkästchen der Engine, damit ein Paket zum Aussehen des Hosts passt. |
 | `components.Spinner` | Ab Capability API 1.830: der gemeinsame Ladering der Engine. Für Screenreader ist er verborgen, sofern du kein `label` übergibst, das ihn zu einem Statusbereich macht. |
+| `components.Tabs` | Ab Capability API 1.832: die gemeinsame Tab-Leiste der Engine. `variant="pill"` ist eine segmentierte Leiste zum Wechseln der Ansicht; `variant="underline"` bietet Text-Tabs für Abschnitte innerhalb eines Sheets oder Dialogfensters. Mit den Pfeiltasten, Pos1 und Ende wechselst du zwischen Tabs. |
+| `components.SearchInput` | Ab Capability API 1.832: das Suchfeld der Engine. Übergib `value`, `onChange` und ein `label` für Screenreader. Es hat eine Schaltfläche zum Leeren; Escape löscht zuerst den Text. `resultCount` zeigt „4 found“ an, `busy` einen Ladering. `size="compact"` passt in dicht belegte Werkzeugleisten, und mit `slashShortcut` fokussiert „/“ das Feld. |
 | `components.showConfirmDialog` | Ab Capability API 1.830: der Bestätigungsdialog der Engine, dieselbe Funktion wie `services.dialogs.showConfirmDialog`. |
+| `components.Select` | Ab Capability API 1.831: die Dropdown-Auswahl der Engine. Übergib `value` (einen String oder `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` und ein `label`; optional sind `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` und `buttonRef`. Auf dem Desktop öffnet sie ein Popover, auf Smartphones ein Sheet, ab acht Optionen mit Suche. Verwende sie anstelle eines nativen `<select>`. |
 | `data.emojiCatalog` | Das Modul `lib/emoji-catalog.generated.ts`. |
 | `api` | Das Modul `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...). |
 
@@ -1096,6 +1099,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 Ältere Engines ignorieren die Option, ein Paket kann sie also immer übergeben. Deklariere 1.815, wenn das Paket darauf angewiesen ist.
 
+### Capability API 1.834: gespeicherte Sprites und die Regel zur Bildauswahl
+
+`api.runtime.sprites` liest die gespeicherten Sprites eines Charakters oder einer Persona, damit ein Paket vorhandene Bilder des Nutzers verwendet, bevor es neue zeichnet. Dafür ist keine Berechtigung nötig. Ältere Engines bieten die API nicht an; prüfe deshalb, ob sie vorhanden ist.
+
+- `list(ownerId)`: jedes gespeicherte Sprite als `{ handle, kind, name, label, folder, url, mimeType }`. `kind` ist `"expression"` (ein Gesicht) oder `"full-body"`. `folder` ist der Sprite-Ordner, in dem es abgelegt ist; Nutzer benennen ihn oft nach einem Outfit. SVG-Sprites werden ausgelassen, da kein Bildmodell sie lesen kann.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: die Regel zur Bildauswahl, in dieser Reihenfolge.
+  1. `selected`: das Handle eines gespeicherten Sprites, das der Nutzer ausgewählt hat, etwa das Bild eines angelegten Outfits. Solange es existiert, hat es Vorrang: `{ source: "selected", sprite }`.
+  2. Ein gespeichertes Sprite, das bereits das Gewünschte zeigt: `{ source: "library", sprite, match }`. Der Gesichtsausdruck (bei Ganzkörperbildern die Pose) muss über den Namen übereinstimmen, das Outfit über den Ordnernamen oder einen Namensbestandteil (`happy_winter_coat`, siehe [Namensvarianten](../characters/sprites.md#name-variants)). Ohne Gesichtsausdruck passt das Ruhebild des Outfits (neutral, idle, default). Das richtige Gesicht in einem anderen Outfit gilt nicht als Treffer.
+  3. Gespeicherte Sprites als Vorlage zum Zeichnen: `{ source: "reference", references }`, bis zu `maxReferences` (1 bis 4, standardmäßig 4), die besten zuerst: die Bilder des Outfits, der Gesichtsausdruck in einem anderen Outfit, dann das ruhende Gesicht und die ruhende Ganzkörperansicht. Lies sie mit `read` und übergib sie als `referenceImages` an `integrations.images.generate`.
+  4. `{ source: "none" }`: anhand der Charakterbeschreibung zeichnen.
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }`, oder null, wenn das Sprite nicht mehr vorhanden ist. `transparent` gibt an, dass das Bild bereits einen transparenten Hintergrund hat. Lass es deshalb unverändert und schicke es nicht durch die Hintergrundentfernung.
+
+Bilder, die das Paket selbst für eine ausdrückliche Auswahl vorhält, etwa Outfits in Otome Hearth oder saisonale Kleidung in Life Sim, haben vor all dem Vorrang und brauchen keinen Aufruf. Eine Client-Ansicht erhält dieselbe Antwort über `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 ### Capability API 1.816: animierte GIF-Bilder
 
 `images.generate` nimmt in der Anfrage `animation: { frameCount?, frameDurationMs? }` an und liefert dann ein einzelnes GIF in Endlosschleife: `mimeType: "image/gif"`, `ext: "gif"`, das `images.save` als `.gif`-Datei speichert. `{}` nutzt die Standardwerte der Engine, 9 Frames zu je 200 ms. Die Engine begrenzt `frameCount` auf 2 bis 12 und `frameDurationMs` auf 20 bis 2.000 in Schritten von 10 und wählt die Frame-Größe selbst: den kleinsten gültigen Frame im Format, das `width` und `height` vorgeben, etwa 816x816 für ein Quadrat oder 608x1088 für 9:16. Zwölf Frames dieser Größe bleiben unter den von OpenAI dokumentierten 8.294.400 Pixeln.
@@ -1207,6 +1238,22 @@ Paket zählt ebenfalls als Aktivität, sodass das Panel „No agent activity yet
 damit das Panel etwas anzeigen kann. Dies ist eine weiche Schnittstelle: Ältere Engines
 lassen die Methode weg. Prüfe deshalb wie oben, ob sie existiert. Deklariere 1.820 nur, wenn das Paket ohne sie nicht funktioniert.
 Eine Berechtigung ist nicht nötig.
+
+### Capability API 1.833: World-State-Snapshots eines Chats auflisten
+
+`persistence.getGameState(chatId)` liefert nur den neuesten festgeschriebenen World State. `persistence.listGameStates(chatId)`
+liefert den festgeschriebenen Snapshot des aktiven Swipes jeder Nachricht in Nachrichtenreihenfolge, jeweils im selben Record-Format wie
+`getGameState`. Ein Paket kann so für jede Nachricht das Datum innerhalb der Geschichte lesen, das der Tracker gespeichert hat,
+statt ein Modell danach im Text suchen zu lassen.
+
+Ausgelassen werden Nachrichten ohne festgeschriebenen Snapshot, Snapshots eines Swipes, den der Nutzer nicht behalten hat,
+Snapshots gelöschter Nachrichten und Snapshots ohne Nachrichtenzuordnung. Deshalb kann der letzte Eintrag von `getGameState` abweichen.
+Wie `getGameState` braucht die Methode die Berechtigung `chat-read` und liest nur Daten. Die Schnittstelle ist optional: Ältere Engines bieten die Methode
+nicht an; prüfe deshalb wie oben, ob sie vorhanden ist. Deklariere 1.833 nur, wenn das Paket ohne sie nicht funktioniert.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 ### Capability API 1.391: Szenenzusammenfassungen von Advanced Memory und der Erinnerungsblock
 

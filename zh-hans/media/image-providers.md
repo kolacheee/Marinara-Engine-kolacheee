@@ -197,6 +197,18 @@ SwarmUI 可以把 ComfyUI 任务分配到自己的队列中处理。没有账号
 
 每个服务还有 **Prompt prefix**(提示词前缀) 和 **Negative prefix**(负面前缀) 两个字段。写在这里的文字会加在这个模型每一条提示词的最前面。AUTOMATIC1111 / Forge 和 ComfyUI 都有 **Clip skip** 字段。AUTOMATIC1111 / Forge 另有一个 **Restore faces** 开关。ComfyUI 另有一个开关，用于在没有提供参考图时上传一张 1x1 占位图，它只对带参考图占位符的自定义工作流有意义。NovelAI 另有 **Guidance rescale** 和 **UC preset**。
 
+## 透明背景
+
+立绘、贴纸表和表情表使用透明背景时效果最好。每个图像模型都有一项 **Transparent backgrounds**(透明背景) 设置，用来指定它是否能生成透明背景图片：
+
+- **Automatic**(自动)（默认值）使用 Marinara 已知的模型信息。对于 OpenAI、OpenRouter 或 ChatGPT (Codex login) 上的 GPT Image 1、1.5、2.5 和 2.6，会显示 **Automatic (supported)**(自动（支持）)；其他模型（包括 GPT Image 2）则显示 **Automatic (not supported)**(自动（不支持）)。
+- **Supported**(支持)：模型或工作流会返回真正带透明背景的图片，例如在保存前去除背景的 ComfyUI 工作流。
+- **Not supported**(不支持)：始终使用由 Marinara 去除的纯色背景，即使模型本来能生成更好的透明背景。
+
+模型能生成透明背景图片时，生成立绘和整张表都会要求它使用透明背景，并原样保留结果。否则，会要求模型使用纯绿色、洋红或青色背景，再由 Marinara 去掉。无论怎么设置，返回的图片如果已经透明，就不会再次清理。支持透明背景的模型如果返回了纯色背景图片，应用会保留原图，并在立绘检查步骤中标记出来，点击 **Apply cleanup**(应用清理) 即可去掉背景。
+
+如果兼容 OpenAI 的服务器需要专用的透明背景选项，可以通过 **Custom Parameters** 传入，例如 `"background": "transparent"`。
+
 ## 参考图支持因服务而异
 
 参考图就是随提示词一起发过去的一张现成图片，能让新图保持角色的长相或某种画风。

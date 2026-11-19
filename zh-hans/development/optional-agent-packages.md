@@ -73,7 +73,10 @@ globalThis.__MARINARA_HOST__ = {
 | `components.Modal` | Engine 的 `Modal`，带有它的覆盖层顺序、Escape 键和返回键处理。 |
 | `components.Switch`, `components.Checkbox` | 从 Capability API 1.830 起，Engine 的共享开关和复选框，让包与宿主的外观保持一致。 |
 | `components.Spinner` | 从 Capability API 1.830 起，Engine 的共享加载圆环。默认对屏幕阅读器隐藏；传入 `label` 后，它会成为状态区域。 |
+| `components.Tabs` | 从 Capability API 1.832 起，Engine 的共享选项卡栏。`variant="pill"` 是用于切换视图的分段式选项卡；`variant="underline"` 是用于面板或对话框内各区域的文字选项卡。方向键、Home 和 End 可在选项卡之间移动。 |
+| `components.SearchInput` | 从 Capability API 1.832 起，Engine 的搜索框。传入 `value`、`onChange` 和供屏幕阅读器使用的 `label`。它带有清空按钮，Escape 会先清空文字。`resultCount` 显示“4 found”，`busy` 显示加载圆环，`size="compact"` 适合紧凑的工具栏，`slashShortcut` 允许按“/”让输入框获得焦点。 |
 | `components.showConfirmDialog` | 从 Capability API 1.830 起，Engine 的确认弹窗，与 `services.dialogs.showConfirmDialog` 是同一个函数。 |
+| `components.Select` | 从 Capability API 1.831 起，Engine 的下拉选择器：传入 `value`（字符串或 `null`）、`options`（`{ value, label, description?, icon?, group?, disabledReason? }`）、`onChange(next)` 和 `label`；可选参数有 `placeholder`、`disabled`、`id`、`title`、`aria-describedby`、`className`、`searchable` 和 `buttonRef`。桌面上打开弹出框，手机上打开面板；选项达到八个时提供搜索。用它代替原生 `<select>`。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts` 模块。 |
 | `api` | `lib/api-client.ts` 模块（`api`、`ApiError`、`getApiErrorMessage` 等）。 |
 
@@ -1075,6 +1078,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 <a id="capability-api-1816-animated-gif-images"></a>
 
+### Capability API 1.834：已保存的立绘与图片选用规则
+
+`api.runtime.sprites` 读取角色或用户角色已保存的立绘，让包先使用用户已有的图片，再考虑生成新图。不需要权限。旧版 Engine 没有它，因此要先检查是否存在。
+
+- `list(ownerId)`：返回所有已保存的立绘，每张的格式为 `{ handle, kind, name, label, folder, url, mimeType }`。`kind` 为 `"expression"`（面部表情）或 `"full-body"`。`folder` 是立绘所在的文件夹，用户常按服装命名。SVG 立绘不会列出，因为图像模型都无法读取它们。
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`：按以下顺序选用图片。
+  1. `selected`：用户选中的已保存立绘句柄，例如已装备服装的图片。只要它还存在，就优先使用：`{ source: "selected", sprite }`。
+  2. 已经符合要求的已保存立绘：`{ source: "library", sprite, match }`。表情（全身图则是姿势）必须按名称匹配，服装则按文件夹名或名称中的部分匹配（`happy_winter_coat`，见[名称变体](../characters/sprites.md#name-variants)）。未指定表情时，匹配该服装的静息图（neutral、idle、default）。表情正确但服装不同的图片不算匹配。
+  3. 可用作绘图参考的已保存立绘：`{ source: "reference", references }`，最多 `maxReferences` 张（1 到 4，默认 4），按适合程度排序：该服装的图片、其他服装下的指定表情，再到静息表情图和静息全身图。用 `read` 读取，并作为 `referenceImages` 传给 `integrations.images.generate`。
+  4. `{ source: "none" }`：根据角色描述绘图。
+- `read(ownerId, handle)`：返回 `{ base64, mimeType, transparent }`，立绘已不存在时返回 null。`transparent` 表示图片已有透明背景，应保留原样，不要再去除背景。
+
+包自己为明确选项保存的图片，例如 Otome Hearth 的服装或 Life Sim 的季节服装，优先于以上所有规则，无需调用接口。客户端视图可通过 `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat` 得到相同结果。
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 ### Capability API 1.816：动态 GIF 图像
 
 `images.generate` 的请求可以带上 `animation: { frameCount?, frameDurationMs? }`，这时它会返回一个循环播放的 GIF：`mimeType: "image/gif"`、`ext: "gif"`，`images.save` 会把它存成 `.gif` 文件。`{}` 使用 Engine 的默认值，即 9 帧、每帧 200 ms。Engine 会把 `frameCount` 限制在 2 到 12 之间，把 `frameDurationMs` 限制在 20 到 2000 之间、步长为 10，并自行选择帧尺寸：取与 `width` 和 `height` 宽高比一致的最小有效帧，例如正方形是 816x816，9:16 是 608x1088。这种尺寸的 12 帧合计仍低于 OpenAI 文档写明的 8,294,400 像素。
@@ -1166,6 +1197,16 @@ try {
 ```
 
 Engine 绝不会自行清除信号，即使 `activity` 元素已卸载也一样（面板关闭时，图标反而最有用）：你负责清除它，重新加载或调用 `reset()` 会清除全部信号。切换聊天不会清除。忙碌或发出提醒的包也算有活动，因此面板不会显示“No agent activity yet”；把信号与 `activity` 卡片搭配使用，让面板有内容可显示。这是软接口：旧 Engine 没有这个方法，因此如上例所示，先检查它是否存在。只有包离不开它时才声明 1.820。不需要权限。
+
+### Capability API 1.833：列出聊天的 World State 快照
+
+`persistence.getGameState(chatId)` 只返回最新提交的 World State。`persistence.listGameStates(chatId)` 按消息顺序返回每条消息当前备选回复已提交的快照，每条记录的格式与 `getGameState` 相同。包可以读取追踪器为任意消息保存的故事内日期，无需让模型从文本中查找。
+
+没有已提交快照的消息、为用户未保留的备选回复保存的快照、所属消息已被删除的快照，以及未关联消息的快照，都不会列出，因此最后一条记录可能与 `getGameState` 不同。它需要 `chat-read` 权限，与 `getGameState` 相同，而且是只读的。这是软接口：旧版 Engine 没有这个方法，因此如上例所示，先检查它是否存在。只有包离不开它时才声明 1.833。
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

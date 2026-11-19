@@ -96,7 +96,10 @@ globalThis.__MARINARA_HOST__ = {
 | `components.Modal` | Engineの`Modal`。重なり順、Escapeキー、戻るボタンの処理を含みます。 |
 | `components.Switch`, `components.Checkbox` | Capability API 1.830以降で使えるEngine共通のスイッチとチェックボックスです。パッケージの見た目をホストに合わせられます。 |
 | `components.Spinner` | Capability API 1.830以降で使えるEngine共通の読み込み中のリングです。`label`を渡さない限りスクリーンリーダーには認識されず、渡すとステータス領域になります。 |
+| `components.Tabs` | Capability API 1.832以降で使えるEngine共通のタブバーです。`variant="pill"`はビューを切り替えるための区切られた切り替えバー、`variant="underline"`はシートやダイアログ内のセクション用のテキストタブです。矢印キー、Homeキー、Endキーでタブ間を移動します。 |
+| `components.SearchInput` | Capability API 1.832以降で使えるEngineの検索欄です。`value`、`onChange`、スクリーンリーダー用の`label`を渡してください。クリアボタンがあり、Escapeキーはまずテキストを消去します。`resultCount`は「4 found」を表示し、`busy`はスピナーを表示します。`size="compact"`は項目の多いツールバーに収まるサイズにし、`slashShortcut`は「/」キーでこの欄にフォーカスできるようにします。 |
 | `components.showConfirmDialog` | Capability API 1.830以降で使えるEngineの確認ダイアログです。`services.dialogs.showConfirmDialog`と同じ関数です。 |
+| `components.Select` | Capability API 1.831以降で使えるEngineのドロップダウンです。`value`(文字列または`null`)、`options`(`{ value, label, description?, icon?, group?, disabledReason? }`)、`onChange(next)`、`label`を渡してください。`placeholder`、`disabled`、`id`、`title`、`aria-describedby`、`className`、`searchable`、`buttonRef`は任意です。デスクトップではポップオーバー、スマートフォンではシートを開き、選択肢が8件以上あると検索できます。ネイティブの`<select>`の代わりに使ってください。 |
 | `data.emojiCatalog` | `lib/emoji-catalog.generated.ts`モジュール。 |
 | `api` | `lib/api-client.ts`モジュール(`api`、`ApiError`、`getApiErrorMessage`、...)。 |
 
@@ -1097,6 +1100,34 @@ const cacheRead = result.usage?.cachedPromptTokens ?? 0;
 
 古いEngineはこのオプションを無視するため、パッケージはいつでも渡せます。このオプションに依存するパッケージは、1.815を宣言してください。
 
+### Capability API 1.834: 保存済みスプライトと画像選択のルール
+
+`api.runtime.sprites`はキャラクターやペルソナの保存済みスプライトを読み取ります。パッケージは新しい画像を描く前に、ユーザーがすでに持っている画像を使えます。権限は不要です。古いEngineにはないため、存在を確認してください。
+
+- `list(ownerId)`: すべての保存済みスプライトを`{ handle, kind, name, label, folder, url, mimeType }`として返します。`kind`は`"expression"`(顔)または`"full-body"`です。`folder`はスプライトが入っているフォルダーで、ユーザーはよく衣装の名前を付けます。SVGスプライトは、読み取れる画像モデルがないため除外されます。
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })`: 次の順序で画像選択のルールを適用します。
+  1. `selected`: 装備中の衣装の画像など、ユーザーが選んだ保存済みスプライトのハンドルです。そのスプライトが存在する限り優先されます。`{ source: "selected", sprite }`。
+  2. 要求された内容がすでに描かれている保存済みスプライトです。`{ source: "library", sprite, match }`。表情(全身の場合はポーズ)は名前で一致する必要があり、衣装はフォルダー名か名前の一部分で一致する必要があります(`happy_winter_coat`。[名前のバリエーション](../characters/sprites.md#name-variants)を参照)。表情の指定がない場合は、その衣装の通常の画像(neutral、idle、default)が一致します。表情が合っていても、別の衣装なら一致とはみなしません。
+  3. 描くときの参照元にする保存済みスプライトです。`{ source: "reference", references }`。最大`maxReferences`枚(1から4、デフォルトは4)を、適したものから順に返します。その衣装の画像、別の衣装で同じ表情の画像、通常の顔、通常の全身の順です。`read`で読み取り、`integrations.images.generate`に`referenceImages`として渡してください。
+  4. `{ source: "none" }`: キャラクターの説明から描きます。
+- `read(ownerId, handle)`: `{ base64, mimeType, transparent }`を返します。スプライトがなくなっている場合はnullを返します。`transparent`は画像の背景がすでに透明であることを示します。そのまま保ち、背景除去には通さないでください。
+
+Otome Hearthの衣装やLife Simの季節の服装など、明示的な選択用にパッケージ自身が保持する画像は、このすべてよりも優先され、呼び出しは不要です。クライアントのビューでは、`GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`で同じ結果を取得できます。
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 <a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816: アニメーションGIF画像
@@ -1190,6 +1221,16 @@ try {
 ```
 
 Engineが自分で通知を消去することはなく、`activity`要素がアンマウントされても消えません(アイコンが特に役立つのはパネルを閉じているときです)。消去はパッケージ側が担当します。再読み込みまたは`reset()`ではすべて消去されます。チャットを切り替えても残ります。処理中または確認が必要なパッケージも動作状況として数えるため、パネルは「No agent activity yet」を表示しません。パネルに表示するものがあるよう、通知と`activity`カードを組み合わせてください。これはソフトなインターフェースです。古いEngineにはこのメソッドがないため、上の例のように存在を確認してください。1.820を宣言するのは、この機能なしではパッケージが動作しない場合だけにしてください。権限は不要です。
+
+### Capability API 1.833: チャットのWorld Stateスナップショットの一覧取得
+
+`persistence.getGameState(chatId)`は、確定済みの最新のWorld Stateだけを返します。`persistence.listGameStates(chatId)`は、各メッセージのアクティブなスワイプに対応する確定済みスナップショットを、メッセージ順に返します。各レコードの構造は`getGameState`と同じです。パッケージは、モデルにテキストから日付を探させる代わりに、任意のメッセージについてトラッカーが保存した物語内の日付を読み取れます。
+
+確定済みスナップショットのないメッセージ、ユーザーが残していないスワイプ用のスナップショット、メッセージが削除されたスナップショット、メッセージに紐付いていないスナップショットは除外されるため、最後のエントリーが`getGameState`と異なる場合があります。`getGameState`と同じく`chat-read`権限が必要で、読み取り専用です。これはソフトなインターフェースです。古いEngineにはこのメソッドがないため、上の例のように存在を確認してください。1.833を宣言するのは、この機能なしではパッケージが動作しない場合だけにしてください。
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 <a id="capability-api-1391-advanced-memory-scene-summaries-and-the-memory-block"></a>
 

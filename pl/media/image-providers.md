@@ -197,6 +197,18 @@ Każda usługa ma pole **Seed** (ziarno). Wartość -1 sprawia, że każdy obraz
 
 Każda usługa ma też pola **Prompt prefix** i **Negative prefix**. Wpisany tam tekst trafia na początek każdego promptu w tym modelu. AUTOMATIC1111 / Forge i ComfyUI mają pole **Clip skip**. AUTOMATIC1111 / Forge dokłada przełącznik **Restore faces**. ComfyUI dokłada przełącznik, który wgrywa obrazek zastępczy 1x1, gdy nie podano obrazu referencyjnego. Ma on znaczenie tylko przy własnych workflow ze znacznikami obrazów referencyjnych. NovelAI dokłada pola **Guidance rescale** i **UC preset**.
 
+## Przezroczyste tła
+
+Sprite'y oraz arkusze naklejek lub emoji wyglądają najlepiej z przezroczystym tłem. Każdy model obrazów ma ustawienie **Transparent backgrounds** (Przezroczyste tła), które określa, czy potrafi takie tło narysować:
+
+- **Automatic** (Automatycznie), ustawienie domyślne, korzysta z tego, co Marinara wie o modelu. Pokazuje **Automatic (supported)** (Automatycznie (obsługiwane)) dla GPT Image 1, 1.5, 2.5 i 2.6 w usługach OpenAI, OpenRouter lub ChatGPT (Codex login), a **Automatic (not supported)** (Automatycznie (nieobsługiwane)) dla wszystkich pozostałych modeli, w tym GPT Image 2.
+- **Supported** (Obsługiwane): model lub workflow zwraca obrazy z prawdziwym przezroczystym tłem, na przykład workflow ComfyUI, który usuwa tło przed zapisem.
+- **Not supported** (Nieobsługiwane): zawsze używaj jednolitego koloru, który Marinara usuwa, nawet w przypadku modelu, który potrafi więcej.
+
+Gdy model rysuje obrazy z przezroczystym tłem, żądania sprite'ów i arkuszy proszą o takie tło, a wynik jest zachowywany dokładnie tak, jak go narysowano. W przeciwnym razie model dostaje prośbę o jednolite zielone, magentowe albo cyjanowe tło, które Marinara usuwa. Niezależnie od ustawienia obraz zwrócony z przezroczystym tłem nigdy nie jest czyszczony ponownie. Obraz z jednolitym tłem zwrócony przez model obsługujący przezroczystość zostaje bez zmian i jest oznaczany na etapie przeglądania sprite'ów, gdzie przycisk **Apply cleanup** (Zastosuj czyszczenie) usuwa tło.
+
+Serwer zgodny z OpenAI, który wymaga własnej opcji przezroczystości, może ją otrzymać przez **Custom parameters** (Własne parametry), na przykład `"background": "transparent"`.
+
 ## Obsługa obrazów referencyjnych zależy od usługi
 
 Obraz referencyjny to gotowy obrazek wysyłany razem z promptem, dzięki któremu nowy obraz zachowuje twarz postaci albo styl graficzny.

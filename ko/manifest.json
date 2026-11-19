@@ -1,6 +1,6 @@
 {
   "language": "ko",
-  "sourceCommit": "586b4a304e963b7337f5f91e3126e28aece165e5",
+  "sourceCommit": "6543284a57ec4a4451cf21613bd1505f44735410",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -139,8 +139,8 @@
     },
     {
       "path": "characters/galleries.md",
-      "sha256": "a8e118e1d22f8ea3ddd93c1a2f5a4ccb5973b9a104840bc0b4a653d2ed8cf525",
-      "bytes": 16645
+      "sha256": "17f846496d5bdc03d856f1124208012c00cc1845d740d81098c70fca54e40845",
+      "bytes": 16953
     },
     {
       "path": "characters/import-export.md",
@@ -164,8 +164,8 @@
     },
     {
       "path": "characters/sprites.md",
-      "sha256": "1018bea8ed9ac61b8ff0156ac79c14a3bc173e808d47e860d43f861f62bbfd35",
-      "bytes": 19895
+      "sha256": "326e21fb7e807e33d000140c7fe1e5b8a42b68ec7173ece76291bf8be1e9c1ad",
+      "bytes": 21021
     },
     {
       "path": "chats/branches.md",
@@ -354,8 +354,8 @@
     },
     {
       "path": "development/code-cleanup-audit.md",
-      "sha256": "9c609533d5629c51ea00453b3fe5b15f56ba39b31f7bef9680524ba0cbf82716",
-      "bytes": 29522
+      "sha256": "1d7d093c55c3b7dd715ea44f1305ee70b3d6eff6312999909d12fcd4398069fb",
+      "bytes": 29534
     },
     {
       "path": "development/file-storage.md",
@@ -414,8 +414,8 @@
     },
     {
       "path": "development/optional-agent-packages.md",
-      "sha256": "e5dae376842a9f74662df9bdc7c640501ec2d24fa79395cdb1f1f31f895f2712",
-      "bytes": 200060
+      "sha256": "b314258fd9ac5ec9450b71e892b324f810d0ea21c352f77e6e82fceb7e3a05dd",
+      "bytes": 206184
     },
     {
       "path": "development/personal-extensions.md",
@@ -689,8 +689,8 @@
     },
     {
       "path": "media/image-providers.md",
-      "sha256": "8eeb566cc0f71138578919a73c45557b707c75e3526107e158db32063eca56ec",
-      "bytes": 23771
+      "sha256": "3cef5f2af5984af53c401313cf2f283495508e25fce73cefc2d73cc4afd6f286",
+      "bytes": 25639
     },
     {
       "path": "media/music.md",

@@ -96,7 +96,10 @@ La propriété n'est ni accessible en écriture ni configurable, et l'espace de 
 | `components.Modal`  | Le `Modal` du moteur, avec son ordre de superposition et sa gestion d'Échap et du bouton Retour.                                                                                        |
 | `components.Switch`, `components.Checkbox` | Depuis Capability API 1.830, l'interrupteur et la case à cocher partagés du moteur, pour qu'un package reprenne l'apparence de l'hôte. |
 | `components.Spinner` | Depuis Capability API 1.830, l'anneau de chargement partagé du moteur. Il est masqué aux lecteurs d'écran, sauf si tu fournis un `label`, qui en fait une zone de statut. |
+| `components.Tabs` | Depuis Capability API 1.832, la barre d'onglets partagée du moteur. `variant="pill"` est la barre segmentée qui permet de changer de vue ; `variant="underline"` affiche des onglets textuels pour les sections d'un panneau ou d'une boîte de dialogue. Les touches fléchées, Début et Fin permettent de passer d'un onglet à l'autre. |
+| `components.SearchInput` | Depuis Capability API 1.832, le champ de recherche du moteur. Transmets `value`, `onChange` et un `label` pour les lecteurs d'écran. Il comporte un bouton pour effacer le texte, et Échap commence par effacer le texte. `resultCount` affiche "4 résultats", `busy` affiche un indicateur de chargement, `size="compact"` convient aux barres d'outils denses, et `slashShortcut` permet de donner le focus au champ avec "/". |
 | `components.showConfirmDialog` | Depuis Capability API 1.830, la boîte de dialogue de confirmation du moteur, la même fonction que `services.dialogs.showConfirmDialog`. |
+| `components.Select` | Depuis Capability API 1.831, le menu déroulant du moteur : transmets `value` (une chaîne ou `null`), `options` (`{ value, label, description?, icon?, group?, disabledReason? }`), `onChange(next)` et un `label` ; les propriétés `placeholder`, `disabled`, `id`, `title`, `aria-describedby`, `className`, `searchable` et `buttonRef` sont facultatives. Il ouvre une fenêtre contextuelle sur ordinateur et un panneau sur téléphone, avec une recherche à partir de huit options. Utilise-le à la place d'un `<select>` natif. |
 | `data.emojiCatalog` | Le module `lib/emoji-catalog.generated.ts`.                                                                                                                                             |
 | `api`               | Le module `lib/api-client.ts` (`api`, `ApiError`, `getApiErrorMessage`, ...).                                                                                                           |
 
@@ -1302,6 +1305,34 @@ dans l'heure. Un appel sans message marqué ignore l'option, tout comme les four
 Les anciens moteurs ignorent l'option : un package peut donc toujours la transmettre. Déclare 1.815 quand le package en
 dépend.
 
+### Capability API 1.834 : sprites enregistrés et règle de choix des images
+
+`api.runtime.sprites` lit les sprites enregistrés d'un personnage ou d'un persona, pour qu'un package utilise les images que l'utilisateur possède déjà avant d'en dessiner de nouvelles. Aucune permission n'est nécessaire. Les anciens moteurs ne proposent pas cette API : vérifie donc sa présence.
+
+- `list(ownerId)` : tous les sprites enregistrés sous la forme `{ handle, kind, name, label, folder, url, mimeType }`. `kind` vaut `"expression"` (un visage) ou `"full-body"`. `folder` est le dossier de sprites dans lequel il est rangé, que les utilisateurs nomment souvent d'après une tenue. Les sprites SVG sont exclus, car aucun modèle d'image ne les lit.
+- `resolve(ownerId, { kind, expression?, outfit?, selected?, maxReferences? })` : la règle de choix des images, dans cet ordre.
+  1. `selected` : l'identifiant d'un sprite enregistré choisi par l'utilisateur, par exemple l'image d'une tenue équipée. Il est prioritaire tant qu'il existe : `{ source: "selected", sprite }`.
+  2. Un sprite enregistré qui représente déjà la demande : `{ source: "library", sprite, match }`. L'expression (ou la pose, pour le corps entier) doit correspondre par son nom, et la tenue par le nom du dossier ou une partie du nom (`happy_winter_coat`, voir [variantes de nom](../characters/sprites.md#name-variants)). Sans expression, l'image au repos de la tenue (neutre, au repos, par défaut) convient. Le bon visage dans une autre tenue ne convient pas.
+  3. Des sprites enregistrés à partir desquels dessiner : `{ source: "reference", references }`, jusqu'à `maxReferences` (1 à 4, 4 par défaut), les meilleurs d'abord : les images de la tenue elle-même, l'expression dans une autre tenue, puis le visage au repos et le corps entier au repos. Lis-les avec `read` et transmets-les comme `referenceImages` à `integrations.images.generate`.
+  4. `{ source: "none" }` : dessiner à partir de la description du personnage.
+- `read(ownerId, handle)` : `{ base64, mimeType, transparent }`, ou null quand le sprite n'existe plus. `transparent` indique que l'image a déjà un arrière-plan transparent : garde-la telle quelle, sans la soumettre à la suppression d'arrière-plan.
+
+Les images que le package conserve lui-même pour un choix explicite, comme les tenues d'Otome Hearth ou les vêtements saisonniers de Life Sim, passent avant tout cela et ne nécessitent aucun appel. Une vue cliente obtient la même réponse via `GET /api/sprites/:ownerId/match?kind=expression&expression=happy&outfit=winter%20coat`.
+
+```ts
+const sprites = context.api.runtime.sprites;
+const pick = sprites ? await sprites.resolve(characterId, { kind: "full-body", expression: "wave", outfit }) : null;
+if (pick?.source === "selected" || pick?.source === "library") return pick.sprite.url;
+const references =
+  pick?.source === "reference"
+    ? (await Promise.all(pick.references.map((entry) => sprites!.read(characterId, entry.handle))))
+        .filter((picture) => picture !== null)
+        .map((picture) => picture.base64)
+    : [];
+// Generate with `referenceImages: references`, and ask for a see-through picture only on a connection that draws
+// one (its Transparent backgrounds setting).
+```
+
 <a id="capability-api-1816-animated-gif-images"></a>
 
 ### Capability API 1.816 : images GIF animées
@@ -1420,6 +1451,22 @@ signalant une alerte compte aussi comme une activité : le panneau n'affiche don
 pour que le panneau ait quelque chose à afficher. C'est une interface souple : les anciens moteurs
 n'ont pas cette méthode, donc vérifie qu'elle existe, comme ci-dessus. Ne déclare 1.820 que si le package ne peut pas fonctionner sans elle.
 Aucune permission n'est nécessaire.
+
+### Capability API 1.833 : lister les instantanés de World State d'un chat
+
+`persistence.getGameState(chatId)` renvoie seulement le dernier World State validé. `persistence.listGameStates(chatId)`
+renvoie l'instantané validé du swipe actif de chaque message, dans l'ordre des messages, chacun sous la même forme d'enregistrement que
+`getGameState`. Un package peut lire la date dans l'histoire que le tracker a enregistrée pour n'importe quel message au lieu de demander à un modèle de
+la retrouver dans le texte.
+
+Un message sans instantané validé, un instantané enregistré pour un swipe que l'utilisateur n'a pas conservé, un instantané dont le message a été
+supprimé et un instantané sans lien avec un message sont exclus : la dernière entrée peut donc différer de `getGameState`. Cette méthode nécessite
+la permission `chat-read`, comme `getGameState`, et fonctionne en lecture seule. C'est une interface souple : les anciens moteurs n'ont pas cette méthode,
+donc vérifie qu'elle existe, comme ci-dessus. Ne déclare 1.833 que si le package ne peut pas fonctionner sans elle.
+
+```ts
+const states = (await api.runtime.persistence.listGameStates?.(chatId)) ?? [];
+```
 
 ### Capability API 1.391 : résumés de scène d'Advanced Memory et bloc de mémoire
 
