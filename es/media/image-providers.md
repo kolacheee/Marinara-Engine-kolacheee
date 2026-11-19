@@ -199,11 +199,13 @@ Cada servicio también tiene los campos **Prompt prefix** y **Negative prefix**.
 
 Los sprites y las hojas de stickers o emojis se ven mejor con un fondo transparente. Cada modelo de imágenes tiene un ajuste **Transparent backgrounds** (Fondos transparentes) que indica si puede dibujarlo:
 
-- **Automatic** (Automático), el valor predeterminado, usa lo que Marinara sabe del modelo. Muestra **Automatic (supported)** (Automático (compatible)) para GPT Image 1, 1.5, 2.5 y 2.6 en OpenAI, OpenRouter o ChatGPT (Codex login), y **Automatic (not supported)** (Automático (no compatible)) para todos los demás, incluido GPT Image 2.
+- **Automatic** (Automático), el valor predeterminado, usa lo que Marinara sabe del modelo. Muestra **Automatic (supported)** (Automático (compatible)) para GPT Image 1, 1.5, 2.5 y 2.6 en OpenAI, OpenRouter o ChatGPT (Codex login), y para NovelAI V5 (Full o Curated) en el propio servicio de NovelAI. Muestra **Automatic (not supported)** (Automático (no compatible)) para todos los demás, incluido GPT Image 2.
 - **Supported** (Compatible): el modelo o flujo de trabajo devuelve imágenes con un fondo realmente transparente, por ejemplo un flujo de ComfyUI que quita el fondo antes de guardar.
 - **Not supported** (No compatible): usa siempre el color plano que Marinara elimina, incluso en un modelo que podría hacerlo mejor.
 
 Cuando el modelo dibuja imágenes transparentes, los sprites y las hojas le piden una y conservan el resultado exactamente como se dibujó. De lo contrario, se le pide al modelo un fondo plano verde, magenta o cian, y Marinara lo quita. Sea cual sea el ajuste, una imagen que llega transparente nunca se vuelve a limpiar. Una imagen que un modelo compatible devuelve con fondo sólido se deja tal como se dibujó y se marca en el paso de revisión de sprites, donde **Apply cleanup** (Aplicar la limpieza) lo quita.
+
+A NovelAI se le pide con sus propias etiquetas, `transparent background, alpha transparency`, y sin el respaldo de color plano, que un modelo basado en etiquetas interpretaría como algo que debe pintar.
 
 Un servidor compatible con OpenAI que necesite su propia opción de transparencia puede recibirla desde **Custom Parameters** (Parámetros personalizados), por ejemplo `"background": "transparent"`.
 

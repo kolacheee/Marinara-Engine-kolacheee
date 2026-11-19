@@ -201,11 +201,13 @@ Jeder Dienst hat außerdem die Felder **Prompt prefix** und **Negative prefix**.
 
 Sprites sowie Sticker- und Emoji-Bögen sehen mit einem transparenten Hintergrund am besten aus. Jedes Bildmodell hat eine Einstellung **Transparent backgrounds** (Transparente Hintergründe), die angibt, ob es einen solchen Hintergrund erzeugen kann:
 
-- **Automatic** (Automatisch) ist die Standardeinstellung und nutzt Marinaras Wissen über das Modell. Für GPT Image 1, 1.5, 2.5 und 2.6 bei OpenAI, OpenRouter oder ChatGPT (Codex login) wird **Automatic (supported)** (Automatisch (unterstützt)) angezeigt, für alle anderen Modelle einschließlich GPT Image 2 **Automatic (not supported)** (Automatisch (nicht unterstützt)).
+- **Automatisch** ist die Standardeinstellung und nutzt Marinaras Wissen über das Modell. Für GPT Image 1, 1.5, 2.5 und 2.6 bei OpenAI, OpenRouter oder ChatGPT (Codex login) sowie für NovelAI V5 (Full oder Curated) beim eigenen Dienst von NovelAI wird **Automatisch (unterstützt)** angezeigt. Für alle anderen Modelle einschließlich GPT Image 2 wird **Automatisch (nicht unterstützt)** angezeigt.
 - **Supported** (Unterstützt): Das Modell oder der Workflow liefert Bilder mit einem wirklich transparenten Hintergrund, etwa ein ComfyUI-Workflow, der den Hintergrund vor dem Speichern entfernt.
 - **Not supported** (Nicht unterstützt): Es wird immer die einfarbige Fläche verwendet, die Marinara entfernt, selbst wenn das Modell mehr könnte.
 
 Wenn das Modell transparente Bilder erzeugt, wird für Sprites und Bögen ein transparenter Hintergrund angefordert und das Ergebnis genau wie gezeichnet beibehalten. Andernfalls wird das Modell um einen einfarbigen grünen, magentafarbenen oder cyanfarbenen Hintergrund gebeten, den Marinara entfernt. Unabhängig von der Einstellung wird ein Bild, das bereits transparent zurückkommt, nie erneut bereinigt. Liefert ein Modell mit Transparenzunterstützung ein Bild mit undurchsichtigem Hintergrund, bleibt es unverändert und wird bei der Sprite-Prüfung markiert. Dort entfernt **Apply cleanup** (Bereinigung anwenden) den Hintergrund.
+
+NovelAI erhält dafür seine eigenen Tags, `transparent background, alpha transparency`, ohne die Ersatzanweisung für einen einfarbigen Hintergrund. Ein Modell, das Tags verwendet, würde diese als etwas verstehen, das es zeichnen soll.
 
 Ein OpenAI-kompatibler Server, der eine eigene Option für Transparenz braucht, kann sie über **Custom Parameters** erhalten, zum Beispiel `"background": "transparent"`.
 

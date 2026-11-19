@@ -201,11 +201,13 @@ Cada serviço também tem os campos **Prompt prefix** e **Negative prefix**. O t
 
 Sprites e folhas de stickers ou emojis ficam melhores com fundo transparente. Cada modelo de imagem tem uma configuração **Transparent backgrounds** (fundos transparentes) que indica se ele consegue desenhar assim:
 
-- **Automatic** (automático, o padrão) usa o que Marinara sabe sobre o modelo. Mostra **Automatic (supported)** (automático: com suporte) para GPT Image 1, 1.5, 2.5 e 2.6 no OpenAI, OpenRouter ou ChatGPT (Codex login), e **Automatic (not supported)** (automático: sem suporte) para todos os outros, incluindo GPT Image 2.
+- **Automatic** (automático, o padrão) usa o que Marinara sabe sobre o modelo. Mostra **Automatic (supported)** (automático: com suporte) para GPT Image 1, 1.5, 2.5 e 2.6 no OpenAI, OpenRouter ou ChatGPT (Codex login), e para NovelAI V5 (Full ou Curated) no serviço da própria NovelAI. Mostra **Automatic (not supported)** (automático: sem suporte) para todos os outros, incluindo GPT Image 2.
 - **Supported** (com suporte): o modelo ou fluxo de trabalho retorna imagens com fundo realmente transparente, por exemplo um fluxo de trabalho do ComfyUI que remove o fundo antes de salvar.
 - **Not supported** (sem suporte): sempre usa a cor uniforme que Marinara remove, mesmo em um modelo que poderia fazer melhor.
 
 Quando o modelo desenha imagens transparentes, a geração de sprites e folhas pede esse tipo de imagem e mantém o resultado exatamente como foi desenhado. Caso contrário, o modelo recebe o pedido de um fundo liso verde, magenta ou ciano, e Marinara o remove. Seja qual for a configuração, uma imagem que chega transparente nunca passa pela limpeza de novo. Uma imagem que um modelo com suporte retorna com fundo sólido é mantida como foi desenhada e marcada na etapa de revisão dos sprites, onde **Apply cleanup** (aplicar a limpeza) remove o fundo.
+
+A requisição à NovelAI usa as tags próprias dela, `transparent background, alpha transparency`, sem a alternativa de fundo de cor uniforme, que um modelo baseado em tags interpretaria como algo para pintar.
 
 Um servidor compatível com OpenAI que precisa de uma opção própria para transparência pode recebê-la em **Custom parameters** (parâmetros personalizados), por exemplo `"background": "transparent"`.
 

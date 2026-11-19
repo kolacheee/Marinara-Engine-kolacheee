@@ -201,11 +201,13 @@ Chaque service a aussi les champs **Prompt prefix** (préfixe de prompt) et **Ne
 
 Les sprites et les planches de stickers ou d'emojis rendent mieux sur un arrière-plan transparent. Chaque modèle d'image a un réglage **Transparent backgrounds** (fonds transparents) qui indique s'il peut en dessiner un :
 
-- **Automatic** (automatique) (par défaut) utilise ce que Marinara sait du modèle. Il affiche **Automatic (supported)** (automatique (pris en charge)) pour GPT Image 1, 1.5, 2.5 et 2.6 sur OpenAI, OpenRouter ou ChatGPT (Codex login), et **Automatic (not supported)** (automatique (non pris en charge)) pour tous les autres, y compris GPT Image 2.
+- **Automatique** (par défaut) utilise ce que Marinara sait du modèle. Il affiche **Automatique (pris en charge)** pour GPT Image 1, 1.5, 2.5 et 2.6 sur OpenAI, OpenRouter ou ChatGPT (Codex login), ainsi que pour NovelAI V5 (Full ou Curated) sur le service de NovelAI lui-même. Il affiche **Automatique (non pris en charge)** pour tous les autres, y compris GPT Image 2.
 - **Supported** (pris en charge) : le modèle ou le workflow renvoie des images avec un véritable arrière-plan transparent, par exemple un workflow ComfyUI qui supprime l'arrière-plan avant l'enregistrement.
 - **Not supported** (non pris en charge) : utilise toujours la couleur unie que Marinara retire, même avec un modèle qui pourrait faire mieux.
 
 Quand le modèle dessine des images transparentes, les sprites et les planches lui demandent ce type de fond et conservent le résultat exactement tel qu'il a été dessiné. Sinon, le modèle reçoit la consigne de dessiner un fond uni vert, magenta ou cyan, que Marinara retire. Quel que soit le réglage, une image reçue avec un fond transparent n'est jamais nettoyée à nouveau. Une image renvoyée sur fond uni par un modèle qui prend en charge la transparence est laissée telle quelle et signalée à l'étape de vérification des sprites, où **Apply cleanup** (appliquer le nettoyage) permet de supprimer ce fond.
+
+Marinara envoie à NovelAI ses propres tags, `transparent background, alpha transparency`, sans la consigne de fond uni utilisée en dernier recours, qu'un modèle à tags interpréterait comme un élément à peindre.
 
 Un serveur compatible avec OpenAI qui a besoin de sa propre option de transparence peut la recevoir via **Custom parameters** (paramètres personnalisés), par exemple `"background": "transparent"`.
 

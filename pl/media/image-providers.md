@@ -201,11 +201,13 @@ Każda usługa ma też pola **Prompt prefix** i **Negative prefix**. Wpisany tam
 
 Sprite'y oraz arkusze naklejek lub emoji wyglądają najlepiej z przezroczystym tłem. Każdy model obrazów ma ustawienie **Transparent backgrounds** (Przezroczyste tła), które określa, czy potrafi takie tło narysować:
 
-- **Automatic** (Automatycznie), ustawienie domyślne, korzysta z tego, co Marinara wie o modelu. Pokazuje **Automatic (supported)** (Automatycznie (obsługiwane)) dla GPT Image 1, 1.5, 2.5 i 2.6 w usługach OpenAI, OpenRouter lub ChatGPT (Codex login), a **Automatic (not supported)** (Automatycznie (nieobsługiwane)) dla wszystkich pozostałych modeli, w tym GPT Image 2.
+- **Automatic** (Automatycznie), ustawienie domyślne, korzysta z tego, co Marinara wie o modelu. Pokazuje **Automatic (supported)** (Automatycznie (obsługiwane)) dla GPT Image 1, 1.5, 2.5 i 2.6 w usługach OpenAI, OpenRouter lub ChatGPT (Codex login), a także dla NovelAI V5 (Full lub Curated) we własnej usłudze NovelAI. Pokazuje **Automatic (not supported)** (Automatycznie (nieobsługiwane)) dla wszystkich pozostałych modeli, w tym GPT Image 2.
 - **Supported** (Obsługiwane): model lub workflow zwraca obrazy z prawdziwym przezroczystym tłem, na przykład workflow ComfyUI, który usuwa tło przed zapisem.
 - **Not supported** (Nieobsługiwane): zawsze używaj jednolitego koloru, który Marinara usuwa, nawet w przypadku modelu, który potrafi więcej.
 
 Gdy model rysuje obrazy z przezroczystym tłem, żądania sprite'ów i arkuszy proszą o takie tło, a wynik jest zachowywany dokładnie tak, jak go narysowano. W przeciwnym razie model dostaje prośbę o jednolite zielone, magentowe albo cyjanowe tło, które Marinara usuwa. Niezależnie od ustawienia obraz zwrócony z przezroczystym tłem nigdy nie jest czyszczony ponownie. Obraz z jednolitym tłem zwrócony przez model obsługujący przezroczystość zostaje bez zmian i jest oznaczany na etapie przeglądania sprite'ów, gdzie przycisk **Apply cleanup** (Zastosuj czyszczenie) usuwa tło.
+
+Do NovelAI trafiają jego własne tagi, `transparent background, alpha transparency`, bez zastępczej instrukcji o jednolitym kolorze tła, którą model oparty na tagach odczytałby jako coś do namalowania.
 
 Serwer zgodny z OpenAI, który wymaga własnej opcji przezroczystości, może ją otrzymać przez **Custom parameters** (Własne parametry), na przykład `"background": "transparent"`.
 
