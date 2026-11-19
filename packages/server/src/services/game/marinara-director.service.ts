@@ -116,6 +116,8 @@ export interface MarinaraDirectorState {
     broken?: string[];
     /** Its maker has fallen and the lair has gone still (said once). */
     stilled?: boolean;
+    /** The hive's resin has sealed the chamber's ways out: nobody flees before this round has passed. */
+    sealedUntil?: number;
   };
 }
 
@@ -809,6 +811,16 @@ export function lairActs(
       state.fighters,
       ctx,
       tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
+    );
+  }
+  // The resin closes the mouth and the crawl behind the party: no running until it is cut through
+  // (lair panel 7: the lair should act on the place once, not only on the fighters).
+  if (DUNGEON_LAIR_ACTIONS[lair.kind][id]?.seals) {
+    lair.sealedUntil = round + DUNGEON_LAIR_ACTIONS[lair.kind][id]!.seals!;
+    log(
+      `Resin seals the ways out of the chamber: no one can flee until round ${lair.sealedUntil + 1}.`,
+      "marinara:lair",
+      maker.id,
     );
   }
   lair.next = dungeonLairActionFor(lair.kind, id, ctx.random, lair.broken);

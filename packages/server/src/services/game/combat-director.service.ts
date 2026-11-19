@@ -752,7 +752,12 @@ function sync(s: CombatDirectorState) {
     // What a lair calls up mid-fight joins the foes' units (Classic only; a board takes no summons).
     if (!s.tactical)
       for (const fighter of s.marinara.fighters)
-        if ((fighter.lairSummon || fighter.lairAnchor) && fighter.hp > 0 && fighter.side === "enemy" && !get(s, fighter.id)) {
+        if (
+          (fighter.lairSummon || fighter.lairAnchor) &&
+          fighter.hp > 0 &&
+          fighter.side === "enemy" &&
+          !get(s, fighter.id)
+        ) {
           const u = marinaraCombatant(fighter);
           u.tactics = assignCombatTactics(u, s.seed);
           u.skillCooldowns = {};
@@ -2494,6 +2499,12 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
   if ((command.type === "classic" || command.type === "tactical") && command.type !== s.style)
     throw new Error("Action does not match this combat mode.");
   if (command.type === "flee") {
+    // A lair's resin over the ways out (the hive's Resin Seal): nobody leaves until it gives.
+    const lair = s.marinara?.lair;
+    const sealed = lair?.sealedUntil;
+    const makerUp = (lair && s.marinara ? (marinaraFighter(s.marinara, lair.makerId)?.hp ?? 0) : 0) > 0;
+    if (sealed !== undefined && s.round <= sealed && makerUp)
+      throw new Error(`The ways out are sealed with resin until round ${sealed + 1}.`);
     s.outcome = "flee";
     sync(s);
     return;

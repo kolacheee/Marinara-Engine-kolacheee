@@ -8,6 +8,7 @@ import {
   dungeonWalkable,
   dungeonRoomCells,
   dungeonRoomHas,
+  DUNGEON_SECRET_DOOR_PROP,
   dungeonAreaNumberAt,
   dungeonAreas,
   dungeonRosterWords,
@@ -405,15 +406,62 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
           here.map.roomInfo ? here.map.roomInfo.findIndex((info) => info?.heart) : (here.map.lairRoom ?? -1)
         ]
       : undefined;
+    // Measured by the walk from the chamber out through its mouth, the crawl shut, so the pair stands across
+    // the real way in and the crawl stays the quiet road round them (lair panel 7: the pair stood by the
+    // nearest wall, not at the mouth).
     const throat = heartRoom
-      ? dungeonRoomCells(room)
-          .filter(({ x, y }) => dungeonWalkable(cells, x, y))
-          .sort((p, q) => {
-            const gap = (c: { x: number; y: number }) =>
-              Math.max(0, heartRoom.x - c.x, c.x - (heartRoom.x + heartRoom.w - 1)) +
-              Math.max(0, heartRoom.y - c.y, c.y - (heartRoom.y + heartRoom.h - 1));
-            return gap(p) - gap(q);
-          })[0]
+      ? (() => {
+          const crawl = here.map.lairCrawl;
+          const walk = new Int32Array(cells.width * cells.height).fill(-1);
+          const queue: number[] = [];
+          for (const { x, y } of dungeonRoomCells(heartRoom))
+            if (dungeonWalkable(cells, x, y)) {
+              walk[y * cells.width + x] = 0;
+              queue.push(y * cells.width + x);
+            }
+          for (let head = 0; head < queue.length; head++) {
+            const c = queue[head]!;
+            const [cx, cy] = [c % cells.width, Math.floor(c / cells.width)];
+            for (const [dx, dy] of [
+              [1, 0],
+              [-1, 0],
+              [0, 1],
+              [0, -1],
+            ] as const) {
+              const [nx, ny] = [cx + dx, cy + dy];
+              if (
+                !dungeonWalkable(cells, nx, ny) ||
+                (crawl && crawl.x === nx && crawl.y === ny) ||
+                cells.props[ny * cells.width + nx] === DUNGEON_SECRET_DOOR_PROP
+              )
+                continue;
+              const n = ny * cells.width + nx;
+              if (walk[n] !== -1) continue;
+              walk[n] = walk[c]! + 1;
+              queue.push(n);
+            }
+          }
+          const gap = (c: { x: number; y: number }) =>
+            Math.max(0, heartRoom.x - c.x, c.x - (heartRoom.x + heartRoom.w - 1)) +
+            Math.max(0, heartRoom.y - c.y, c.y - (heartRoom.y + heartRoom.h - 1));
+          const steps = (c: { x: number; y: number }) => {
+            const w = walk[c.y * cells.width + c.x]!;
+            return w < 0 ? 1e6 + gap(c) : w;
+          };
+          // The mouth itself: the open cells one step out of the chamber, the crawl aside; the one nearest
+          // this area's own room when there are several. Else this room's cell nearest the chamber by the walk.
+          const mouth: Array<{ x: number; y: number }> = [];
+          for (let y = 0; y < cells.height; y++)
+            for (let x = 0; x < cells.width; x++)
+              if (walk[y * cells.width + x] === 1 && !dungeonRoomHas(heartRoom, x, y)) mouth.push({ x, y });
+          const toRoom = (c: { x: number; y: number }) =>
+            Math.max(0, room.x - c.x, c.x - (room.x + room.w - 1)) +
+            Math.max(0, room.y - c.y, c.y - (room.y + room.h - 1));
+          if (mouth.length) return mouth.sort((p, q) => toRoom(p) - toRoom(q) || p.y - q.y || p.x - q.x)[0];
+          return dungeonRoomCells(room)
+            .filter(({ x, y }) => dungeonWalkable(cells, x, y) && !(crawl && crawl.x === x && crawl.y === y))
+            .sort((p, q) => steps(p) - steps(q))[0];
+        })()
       : undefined;
     const middle = throat ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);

@@ -1630,14 +1630,35 @@ export function DungeonMapView({
         if (lairKind === "hoard") {
           // One heap of coin: rimmed where it meets the floor, brighter at its crown, coins glinting over it.
           const crown = hasF(x - 1, y) && hasF(x + 1, y) && hasF(x, y - 1) && hasF(x, y + 1);
-          for (let n = 0; n < 4; n++) {
+          // Coins as coins: little rimmed discs lying every way, a few on edge, so the heap reads as money and
+          // not a lump (lair panel 7: "gum-drops").
+          for (let n = 0; n < 7; n++) {
             const h = hash(x * 7 + n, y * 13 - n);
-            const cx = 3 + (h % (T - 6));
-            const cy = 3 + ((h >> 5) % (T - 6));
-            ctx.fillStyle = n % 3 === 0 ? "#fff3b0" : "#e9bd3c";
-            ctx.fillRect(ox + cx, oy + cy, n % 3 === 0 ? 1 : 2, n % 3 === 0 ? 1 : 2);
+            const cx = 2 + (h % (T - 6));
+            const cy = 2 + ((h >> 5) % (T - 5));
+            if ((h >> 9) % 4 === 0) {
+              ctx.fillStyle = "#6a4608";
+              ctx.fillRect(ox + cx, oy + cy, 1, 3);
+              ctx.fillStyle = "#f6d46a";
+              ctx.fillRect(ox + cx + 1, oy + cy, 1, 3);
+              continue;
+            }
+            ctx.fillStyle = "#6a4608";
+            ctx.fillRect(ox + cx, oy + cy + 1, 4, 2);
+            ctx.fillStyle = (h >> 11) % 2 ? "#f2c94a" : "#e0b236";
+            ctx.fillRect(ox + cx, oy + cy, 4, 2);
+            ctx.fillStyle = "#fff3b8";
+            ctx.fillRect(ox + cx + 1, oy + cy, 1, 1);
           }
-          if (crown && v % 5 === 0) {
+          if (v % 4 === 1) {
+            // A loose gem.
+            const [gx, gy] = [3 + (v % 9), 4 + ((v >> 4) % 8)];
+            ctx.fillStyle = v % 3 === 0 ? "#2f5fd0" : v % 3 === 1 ? "#c8283a" : "#2a9a5a";
+            ctx.fillRect(ox + gx, oy + gy, 3, 3);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
+            ctx.fillRect(ox + gx, oy + gy, 1, 1);
+          }
+          if (crown && v % 3 === 0) {
             // A cup standing up out of the coin.
             ctx.fillStyle = "#e8d9a0";
             ctx.fillRect(ox + 6, oy + 4, 5, 3);
@@ -1770,6 +1791,37 @@ export function DungeonMapView({
           ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
           ctx.restore();
         } else ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
+        // One mark for every lair's breakable thing, the same in each lair: a ring of four corner brackets in
+        // its accent, so the party learns "this can be struck" once (lair panel 7: the sluice read as a barrel,
+        // the vent as a slit).
+        {
+          const [bx, by, b] = [ox - 2, oy - 2, T + 4];
+          const arm = 4;
+          ctx.fillStyle = "rgba(10, 6, 4, 0.7)";
+          for (const [px, py, w, h] of [
+            [bx + 1, by + 1, arm, 1],
+            [bx + 1, by + 1, 1, arm],
+            [bx + b - arm + 1, by + 1, arm, 1],
+            [bx + b, by + 1, 1, arm],
+            [bx + 1, by + b, arm, 1],
+            [bx + 1, by + b - arm + 1, 1, arm],
+            [bx + b - arm + 1, by + b, arm, 1],
+            [bx + b, by + b - arm + 1, 1, arm],
+          ] as const)
+            ctx.fillRect(px, py, w, h);
+          ctx.fillStyle = `rgba(${accent[lairKind]}, 0.95)`;
+          for (const [px, py, w, h] of [
+            [bx, by, arm, 1],
+            [bx, by, 1, arm],
+            [bx + b - arm, by, arm, 1],
+            [bx + b - 1, by, 1, arm],
+            [bx, by + b - 1, arm, 1],
+            [bx, by + b - arm, 1, arm],
+            [bx + b - arm, by + b - 1, arm, 1],
+            [bx + b - 1, by + b - arm, 1, arm],
+          ] as const)
+            ctx.fillRect(px, py, w, h);
+        }
         const px = (x: number, y: number, w: number, h: number, colour: string) => {
           ctx.fillStyle = colour;
           ctx.fillRect(ox + x, oy + y, w, h);

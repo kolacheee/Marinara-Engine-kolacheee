@@ -631,6 +631,8 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
     ] as const) {
       const [nx, ny] = [x + dx, y + dy];
       if (dungeonRoomHas(chamber, nx, ny) || !dungeonWalkable(cells, nx, ny) || !dungeonWalkable(cells, x, y)) continue;
+      // Never the crawl: the throat is held at the mouth, the crawl left as the quiet way round.
+      if (map.lairCrawl && map.lairCrawl.x === nx && map.lairCrawl.y === ny) continue;
       const at = steps[ny * cells.width + nx]!;
       if (at < 0 || at >= least) continue;
       least = at;

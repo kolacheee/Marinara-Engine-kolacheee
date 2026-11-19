@@ -326,7 +326,12 @@ export interface DungeonLairSummon {
 }
 
 /** A lair action: what the lair does once a round, on its maker's side, while its maker stands. */
-type LairAction = MarinaraEffect & { label: string; summon?: DungeonLairSummon };
+type LairAction = MarinaraEffect & {
+  label: string;
+  summon?: DungeonLairSummon;
+  /** Seals the chamber's ways out for this many rounds: nobody flees (the hive's resin). */
+  seals?: number;
+};
 
 const strike = (power: number, type: MarinaraEffect["type"], extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
   kind: "damage",
@@ -522,8 +527,11 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
         applies: { status: "poison", chance: 0.5, duration: 2, power: 0.04 },
       }),
     },
+    // It also seals the chamber's ways out for 2 rounds: the party can't flee (lair panel 7: one action per
+    // lair that acts on the place).
     "lair-resin-seal": {
       label: "Resin Seal",
+      seals: 2,
       kind: "status",
       target: "enemy",
       status: "entangle",
@@ -546,7 +554,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
 registerMarinaraEnemySkills(
   Object.fromEntries(
     Object.values(DUNGEON_LAIR_ACTIONS).flatMap((actions) =>
-      Object.entries(actions).map(([id, { summon: _summon, ...action }]) => [id, action]),
+      Object.entries(actions).map(([id, { summon: _summon, seals: _seals, ...action }]) => [id, action]),
     ),
   ),
 );
