@@ -935,6 +935,8 @@ export const gameDungeonMapSchema = z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(300)
       .optional(),
+    /** On a cave lair floor, the one-cell crawl through fallen rock into the great chamber (lair panel 5). */
+    lairCrawl: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
     /** A hidden door that leads past the held room (panel round 46). */
     secretWay: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
     /** A raised gallery over a hall: its walk and the steps up to it (owner 2026-11-18). */
@@ -1231,6 +1233,7 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
   // comes from, opened wider only where the rest of the cave would otherwise be cut off (lair panel 2: the
   // chamber was a corner of an open cavern, no edge, no way in to hold).
   let walledGround = kept.ground;
+  let lairCrawl: { x: number; y: number } | undefined;
   let walledProps = kept.props;
   {
     const ring = [
@@ -1254,15 +1257,6 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
       const opened = new Set(
         ring.filter((n) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my) <= 1),
       );
-      // A second way in, one cell wide, on the chamber's far side from its mouth: a crawl through the
-      // fallen rock (lair panel 5, all five: one throat, no flank, nothing to scout).
-      {
-        const gapTo = (n: number) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my);
-        const crawl = ring
-          .filter((n) => (steps[n] ?? -1) >= 0 && !opened.has(n) && gapTo(n) >= 6)
-          .sort((p, q) => gapTo(q) - gapTo(p) || p - q)[0];
-        if (crawl !== undefined) opened.add(crawl);
-      }
       const near1 = (m: number, n: number) =>
         Math.abs((m % made.width) - (n % made.width)) +
           Math.abs(Math.floor(m / made.width) - Math.floor(n / made.width)) <=
@@ -1283,18 +1277,128 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
             Math.abs((m % made.width) - (n % made.width)) <= 1 &&
             ((m * 2654435761) >>> 0) % 5 < 2,
         );
+      const filled = new Set<number>();
       const tryWalls = () => {
         const base = ring.filter((n) => !opened.has(n));
-        const shut = new Set(base);
-        for (const n of base)
-          for (const m of outward(n))
-            if (![m - 1, m + 1, m - made.width, m + made.width].some((k) => opened.has(k))) shut.add(m);
-        const ground = made.ground.map((each, i) => (shut.has(i) ? ("wall" as const) : each));
-        const reached = dungeonStepsFrom({ ...made, ground }, made.entrance);
-        const lost = Array.from(steps).flatMap((st, i) => (st >= 0 && !shut.has(i) && reached[i]! < 0 ? [i] : []));
-        return { shut, ground, lost: new Set(lost) };
+        const wall = (thick: boolean) => {
+          const shut = new Set([...base, ...filled]);
+          if (thick)
+            for (const n of base)
+              for (const m of outward(n))
+                if (![m - 1, m + 1, m - made.width, m + made.width].some((k) => opened.has(k))) shut.add(m);
+          const ground = made.ground.map((each, i) => (shut.has(i) ? ("wall" as const) : each));
+          const reached = dungeonStepsFrom({ ...made, ground }, made.entrance);
+          const lost = Array.from(steps).flatMap((st, i) => (st >= 0 && !shut.has(i) && reached[i]! < 0 ? [i] : []));
+          return { shut, ground, lost: new Set(lost) };
+        };
+        // The thickened rock only where it cuts no way through the cave (lair panel 6: it walled off the
+        // chamber's own mouth).
+        const thick = wall(true);
+        if (!thick.lost.size) return thick;
+        const thin = wall(false);
+        return thin.lost.size < thick.lost.size ? thin : thick;
       };
       let walled = tryWalls();
+      // A part of the cave reached only through the chamber gets a tunnel of its own round the chamber, through
+      // the rock and never beside the chamber, so the chamber keeps one mouth and its crawl (lair panel 6: the
+      // den, drowned and hive chambers had three and four gaps, no arena to hold).
+      const tunnelled = new Set<number>();
+      for (let tries = 0; walled.lost.size && tries < 6; tries++) {
+        const near = new Set<number>();
+        for (const c of cells)
+          for (let dy = -1; dy <= 1; dy++)
+            for (let dx = -1; dx <= 1; dx++) {
+              const x = (c % made.width) + dx;
+              const y = Math.floor(c / made.width) + dy;
+              if (x >= 0 && y >= 0 && x < made.width && y < made.height) near.add(at(x, y));
+            }
+        const from = new Int32Array(made.ground.length).fill(-2);
+        const queue: number[] = [];
+        for (const n of walled.lost) {
+          from[n] = -1;
+          queue.push(n);
+        }
+        let hit = -1;
+        for (let head = 0; head < queue.length && hit < 0; head++) {
+          const c = queue[head]!;
+          const [cx, cy] = [c % made.width, Math.floor(c / made.width)];
+          for (const [dx, dy] of [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+          ] as const) {
+            const [x, y] = [cx + dx, cy + dy];
+            if (x < 1 || y < 1 || x >= made.width - 1 || y >= made.height - 1) continue;
+            const n = at(x, y);
+            if (
+              from[n] !== -2 ||
+              near.has(n) ||
+              walled.shut.has(n) ||
+              walled.ground[n] === "liquid" ||
+              made.props[n] === DUNGEON_EXIT_PROP ||
+              n === at(made.entrance.x, made.entrance.y)
+            )
+              continue;
+            from[n] = c;
+            if (walled.ground[n] === "floor" && (steps[n] ?? -1) >= 0 && !walled.lost.has(n)) {
+              hit = n;
+              break;
+            }
+            queue.push(n);
+          }
+        }
+        if (hit < 0) break;
+        for (let c = from[hit]!; c >= 0 && !walled.lost.has(c); c = from[c]!) tunnelled.add(c);
+        made = {
+          ...made,
+          ground: made.ground.map((each, i) => (tunnelled.has(i) ? ("floor" as const) : each)),
+          props: made.props.map((each, i) => (tunnelled.has(i) ? -1 : each)),
+        };
+        walled = tryWalls();
+      }
+      // A small pocket the tunnel cannot reach without breaking the chamber's wall is filled with fallen rock.
+      if (walled.lost.size) {
+        const keepCells = new Set([
+          at(made.entrance.x, made.entrance.y),
+          ...(kept.down ? [at(kept.down.x, kept.down.y)] : []),
+        ]);
+        const seen = new Set<number>();
+        for (const start of walled.lost) {
+          if (seen.has(start)) continue;
+          const part = [start];
+          seen.add(start);
+          for (let head = 0; head < part.length; head++)
+            for (const n of [part[head]! - 1, part[head]! + 1, part[head]! - made.width, part[head]! + made.width])
+              if (walled.lost.has(n) && !seen.has(n)) {
+                seen.add(n);
+                part.push(n);
+              }
+          if (part.length <= 16 && !part.some((c) => keepCells.has(c))) for (const c of part) filled.add(c);
+        }
+        if (filled.size) walled = tryWalls();
+      }
+      if (tunnelled.size) {
+        const rim = new Set<number>();
+        for (const c of tunnelled)
+          for (const n of [
+            c - 1,
+            c + 1,
+            c - made.width,
+            c + made.width,
+            c - made.width - 1,
+            c - made.width + 1,
+            c + made.width - 1,
+            c + made.width + 1,
+          ])
+            if (n >= 0 && n < made.ground.length && made.ground[n] === "rock") rim.add(n);
+        made = { ...made, ground: made.ground.map((each, i) => (rim.has(i) ? ("wall" as const) : each)) };
+        walledGround = [...walledGround]
+          .map((char, i) => (tunnelled.has(i) ? GROUND_CHARS.floor : rim.has(i) ? GROUND_CHARS.wall : char))
+          .join("");
+        walledProps = [...walledProps].map((char, i) => (tunnelled.has(i) ? "-" : char)).join("");
+        walled = tryWalls();
+      }
       // A part of the cave reached only through the chamber keeps its own gap: the shut ring cell beside it
       // nearest the way in, and its neighbours (a second way through, not the whole side left open).
       for (let tries = 0; walled.lost.size && tries < 6; tries++) {
@@ -1306,10 +1410,33 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
         walled = tryWalls();
       }
       if (!walled.lost.size && walled.shut.size) {
+        // A second way in, one cell wide, on the chamber's far side from its mouth: a crawl through the fallen
+        // rock (lair panel 5, all five: one throat, no flank, nothing to scout). Chosen once the cave is whole
+        // without it, so the party never needs it to get anywhere (lair panel 6: the crawl was the only road
+        // to the cave beyond).
+        {
+          const reached = dungeonStepsFrom({ ...made, ground: walled.ground }, made.entrance);
+          const gapTo = (n: number) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my);
+          const crawl = ring
+            .filter(
+              (n) =>
+                walled.shut.has(n) &&
+                gapTo(n) >= 6 &&
+                [n - 1, n + 1, n - made.width, n + made.width].some(
+                  (m) => !inRoom.has(m) && !walled.shut.has(m) && (reached[m] ?? -1) >= 0,
+                ),
+            )
+            .sort((p, q) => gapTo(q) - gapTo(p) || p - q)[0];
+          if (crawl !== undefined) {
+            walled.shut.delete(crawl);
+            walled.ground = walled.ground.map((each, i) => (i === crawl ? ("floor" as const) : each));
+            lairCrawl = { x: crawl % made.width, y: Math.floor(crawl / made.width) };
+          }
+        }
         const { shut, ground } = walled;
         made = { ...made, ground, props: made.props.map((each, i) => (shut.has(i) ? -1 : each)) };
-        walledGround = [...kept.ground].map((char, i) => (shut.has(i) ? GROUND_CHARS.wall : char)).join("");
-        walledProps = [...kept.props].map((char, i) => (shut.has(i) ? "-" : char)).join("");
+        walledGround = [...walledGround].map((char, i) => (shut.has(i) ? GROUND_CHARS.wall : char)).join("");
+        walledProps = [...walledProps].map((char, i) => (shut.has(i) ? "-" : char)).join("");
       }
     }
   }
@@ -1365,6 +1492,7 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
     ground,
     props,
     lairRoom,
+    ...(lairCrawl ? { lairCrawl } : {}),
     ...(feature.length
       ? { lairFeature: feature.map((c) => ({ x: c % made.width, y: Math.floor(c / made.width) })) }
       : {}),

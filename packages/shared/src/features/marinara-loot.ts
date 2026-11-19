@@ -86,7 +86,12 @@ export function marinaraVictoryLoot(input: {
   // A party that ran beat no one: it keeps only what it stole.
   const beaten = input.stealOnly
     ? []
-    : [...input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.hp <= 0 && !fighter.dummy), ...away];
+    : [
+        ...input.fighters.filter(
+          (fighter) => fighter.side === "enemy" && fighter.hp <= 0 && (!fighter.dummy || fighter.lairBroken),
+        ),
+        ...away,
+      ];
   const robbed = [...input.fighters, ...away].filter(
     (fighter) => fighter.side === "enemy" && fighter.stolenBy && !fighter.dummy,
   );
@@ -100,6 +105,10 @@ export function marinaraVictoryLoot(input: {
         tier: marinaraTierForLevel(partyLevel),
         foes: beaten.map((fighter) => {
           const family = fighter.familyId ? marinaraEnemyFamily(fighter.familyId) : undefined;
+          // A lair's broken thing (lair panel 6: breaking it paid nothing): what the vent, the ward stone or
+          // the coffin kept, as an elite's find, no purse.
+          if (fighter.lairBroken)
+            return { rank: "elite" as MarinaraFoeRank, tier: marinaraTierForLevel(fighter.level), carriesCoin: false };
           return {
             rank: (fighter.tier ?? "standard") as MarinaraFoeRank,
             tier: marinaraTierForLevel(fighter.level),

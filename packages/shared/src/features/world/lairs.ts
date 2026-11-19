@@ -399,7 +399,8 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
   },
   haven: {
-    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.3, duration: 1 },
+    // The mist hides its lord: hard to find until it acts again (lair panel 6: +30% evasion was no hiding).
+    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.5, duration: 1 },
     "lair-thralls-gaze": {
       label: "Thrall's Gaze",
       kind: "status",
@@ -464,12 +465,14 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       label: "Scorching Rift",
       ...strike(1.5, "fire", { applies: { status: "burn", chance: 0.5, duration: 2, power: 0.04 } }),
     },
+    // The rift drags one of them out from behind the others, into the front where the maker's blows land in
+    // full (lair panel 6: a speed cut named a pull and moved no one).
     "lair-pull-of-the-rift": {
       label: "Pull of the Rift",
-      kind: "debuff",
+      kind: "status",
       target: "enemy",
-      stat: "speed",
-      pct: -0.3,
+      status: "drawn",
+      chance: 0.85,
       duration: 2,
       ranged: true,
     },
@@ -562,28 +565,51 @@ export function dungeonLairActionFor(
 
 /** The one thing in each great chamber the party can break mid-fight (owner 2026-11-18, after lair panel 3):
  *  breaking it stops the lair action it feeds. It never acts, and it falls when its maker does. */
-export const DUNGEON_LAIR_ANCHORS: Readonly<Record<DungeonLairKind, { name: string; stops: string; breaks: string }>> =
-  {
-    hoard: { name: "Fire Vent", stops: "lair-dragonfire-vents", breaks: "the vent is choked with rubble" },
-    sanctum: { name: "Ward Stone", stops: "lair-death-ward", breaks: "the ward stone cracks and its light goes out" },
-    haven: {
-      name: "Master's Coffin",
-      stops: "lair-blood-tithe",
-      breaks: "the coffin splinters and the grave earth spills",
-    },
-    den: {
-      name: "Cracked Roof Prop",
-      stops: "lair-den-roof",
-      breaks: "the loose stone comes down at once, harmlessly",
-    },
-    breach: {
-      name: "Rift Anchor",
-      stops: "lair-something-comes",
-      breaks: "the anchor stone shatters and the rift narrows",
-    },
-    drowned: { name: "Sluice Gate", stops: "lair-surge", breaks: "the sluice jams open and the surge drains away" },
-    hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
-  };
+export const DUNGEON_LAIR_ANCHORS: Readonly<
+  Record<
+    DungeonLairKind,
+    {
+      name: string;
+      stops: string;
+      breaks: string;
+      /** What breaking it does to its maker at once: a share of its max HP lost, and a status for a turn. */
+      onBreak?: { makerHpPct: number; status?: "stun" };
+    }
+  >
+> = {
+  hoard: { name: "Fire Vent", stops: "lair-dragonfire-vents", breaks: "the vent is choked with rubble" },
+  // The stone that keeps the dead answering (lair panel 6: it guarded Death Ward, the weakest thing the
+  // sanctum does, and nobody would spend a turn on it).
+  sanctum: {
+    name: "Ward Stone",
+    stops: "lair-dead-answer",
+    breaks: "the ward stone cracks, its light goes out, and the dead stop answering",
+  },
+  haven: {
+    name: "Master's Coffin",
+    stops: "lair-blood-tithe",
+    breaks: "the coffin splinters and the grave earth spills",
+  },
+  // Knocked out, the prop brings the loose roof down on whatever stands under it: the beast's own nest
+  // (lair panel 6: breaking it bought one power-1 action and nothing more).
+  den: {
+    name: "Cracked Roof Prop",
+    stops: "lair-den-roof",
+    breaks: "the loose roof comes down at once, onto the beast in its nest",
+    onBreak: { makerHpPct: 0.08, status: "stun" },
+  },
+  breach: {
+    name: "Rift Anchor",
+    stops: "lair-something-comes",
+    breaks: "the anchor stone shatters and the rift narrows",
+  },
+  drowned: {
+    name: "Sluice Gate",
+    stops: "lair-surge",
+    breaks: "the sluice gate is wrenched open and the pool runs out through it, with no more surge behind it",
+  },
+  hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
+};
 
 /** Where a lair's breakable thing stands among its feature's cells, so the map can show it (lair panel 4:
  *  "show it in the scene" had nothing on the map to point at): the vampire's middle coffin, the ward stone

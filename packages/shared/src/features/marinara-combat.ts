@@ -116,7 +116,9 @@ export type MarinaraStatusId =
   | "confuse"
   | "doom"
   | "slow"
-  | "regen";
+  | "regen"
+  /** Drawn: pulled out of the back row, it fights in the front while it lasts (a lair's Pull of the Rift). */
+  | "drawn";
 
 export interface MarinaraEffect {
   kind:
@@ -601,6 +603,7 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "stun",
   "confuse",
   "slow",
+  "drawn",
 ]);
 
 // ── Passives ──
@@ -823,6 +826,8 @@ export interface MarinaraFighter {
   lairSummon?: true;
   /** A lair's breakable thing (DUNGEON_LAIR_ANCHORS): the lair action it feeds, stopped when it breaks. */
   lairAnchor?: string;
+  /** A lair's breakable thing the party broke while its maker stood: what it held drops with the loot. */
+  lairBroken?: true;
   row: "front" | "back";
   archetype?: MarinaraArchetype;
   stats: MarinaraStats;
@@ -1557,7 +1562,7 @@ export function marinaraWarderReaches(
  * is the front (Alyssa 2026-11-01), for every rule — melee damage, front-row hooks, sweeps, reach.
  */
 export function marinaraRowOf(unit: MarinaraFighter, all: readonly MarinaraFighter[]): MarinaraFighter["row"] {
-  if (unit.row === "front") return "front";
+  if (unit.row === "front" || unit.statuses.some((s) => s.status === "drawn")) return "front";
   return all.some((u) => u.side === unit.side && u.hp > 0 && u.row === "front") ? "back" : "front";
 }
 
@@ -2270,7 +2275,7 @@ export function marinaraStruck(
   if (effect.target === "party") return pool;
   if (effect.target === "all-enemies") return pool;
   if (effect.target === "front-row") {
-    const front = pool.filter((unit) => unit.row === "front");
+    const front = pool.filter((unit) => unit.row === "front" || unit.statuses.some((st) => st.status === "drawn"));
     return front.length ? front : pool;
   }
   return picked.filter((unit) => pool.includes(unit)).slice(0, 1);

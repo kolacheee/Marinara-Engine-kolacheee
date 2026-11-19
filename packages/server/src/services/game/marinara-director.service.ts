@@ -37,6 +37,8 @@ import {
   marinaraStatusImmune,
   marinaraUsable,
   marinaraStandsFront,
+  marinaraShrugsOff,
+  marinaraRowOf,
   nextMarinaraActor,
   performMarinaraOption,
   marinaraChargeIsArea,
@@ -66,6 +68,7 @@ import {
   type MarinaraOption,
   type RankedCombatCandidate,
   DUNGEON_LAIR_ACTIONS,
+  DUNGEON_LAIR_ANCHORS,
   dungeonLairActionFor,
   type DungeonLairKind,
 } from "@marinara-engine/shared";
@@ -111,6 +114,8 @@ export interface MarinaraDirectorState {
     summoned?: number;
     /** Lair actions stopped by breaking their anchors. */
     broken?: string[];
+    /** Its maker has fallen and the lair has gone still (said once). */
+    stilled?: boolean;
   };
 }
 
@@ -338,6 +343,7 @@ const STATUS_WORDS: Record<string, string> = {
   rend: "is rent (damage dealt -15%)",
   windswept: "is windswept (easier to hit)",
   sear: "is seared (damage taken +10%)",
+  drawn: "is drawn forward (fights in the front row)",
 };
 
 /** One line of the log for one event, in plain words. */
@@ -705,16 +711,44 @@ export function lairActs(
   const maker = marinaraFighter(state, lair.makerId);
   const anchors = state.fighters.filter((f) => f.lairAnchor);
   // The lair's breakable thing falls with its maker: nothing of the lair is left to fight.
-  if ((!maker || maker.hp <= 0) && anchors.some((f) => f.hp > 0)) {
+  // What the chamber called up goes back into it, and the maker's servants lose their nerve (lair panel 6:
+  // the scatter was the payoff beat and the log never said it).
+  if ((!maker || maker.hp <= 0) && !lair.stilled) {
+    lair.stilled = true;
     for (const f of anchors) f.hp = 0;
-    log("With its maker fallen, the lair goes still.", "marinara:lair", lair.makerId);
+    const called = living(state.fighters).filter((f) => f.lairSummon);
+    for (const f of called) f.hp = 0;
+    const servants = living(state.fighters).filter((f) => f.side === (maker?.side ?? "enemy") && !f.dummy);
+    log(
+      `With its maker fallen, the lair goes still${called.length ? " and what it called up crumbles back into it" : ""}.${servants.length ? " Its servants falter; the ones that live through this will scatter." : " Whatever served it here will scatter."}`,
+      "marinara:lair",
+      lair.makerId,
+    );
   }
   // Broken by the party: say so once, and the action it fed is gone from the lair (owner 2026-11-18).
   for (const f of anchors)
     if (f.hp <= 0 && maker && maker.hp > 0 && !(lair.broken ?? []).includes(f.lairAnchor!)) {
       lair.broken = [...(lair.broken ?? []), f.lairAnchor!];
+      f.lairBroken = true;
       const gone = DUNGEON_LAIR_ACTIONS[lair.kind][f.lairAnchor!]?.label;
-      log(`The ${f.name} breaks${gone ? `: no more ${gone}` : ""}.`, "marinara:lair", f.id);
+      log(
+        `The ${f.name} breaks${gone ? `: no more ${gone}` : ""}. Something in the wreck is worth taking after.`,
+        "marinara:lair",
+        f.id,
+      );
+      // What the break does to its maker at once (the den's roof down on the beast).
+      const hurt = DUNGEON_LAIR_ANCHORS[lair.kind].onBreak;
+      if (hurt) {
+        const lost = Math.min(maker.hp - 1, Math.max(1, Math.round(maker.maxHp * hurt.makerHpPct)));
+        if (lost > 0) maker.hp -= lost;
+        const stunned = hurt.status && !marinaraShrugsOff(maker, hurt.status);
+        if (stunned) maker.statuses.push({ status: hurt.status!, turns: 1 });
+        log(
+          `It comes down on ${maker.name}: ${lost} damage${stunned ? ", and it is stunned" : ""}.`,
+          "marinara:lair",
+          maker.id,
+        );
+      }
       if (lair.next === f.lairAnchor) lair.next = undefined;
     }
   if (round <= lair.round) return false;
@@ -724,7 +758,12 @@ export function lairActs(
   // at level 6 a lair acting every round took a deathless sorcerer's fights from a sure win to a coin flip).
   if (maker.level < 10 && round % 2 === 0) {
     // Said, so the rhythm reads (lair panel 2: a silent round looked like the lair had stopped).
-    if (lair.next) log(`The lair is still this round; next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]?.label ?? "stirring"}.`, "marinara:lair", maker.id);
+    if (lair.next)
+      log(
+        `The lair is still this round; next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]?.label ?? "stirring"}.`,
+        "marinara:lair",
+        maker.id,
+      );
     return false;
   }
   const ctx = context(state, seed, tactical);
@@ -732,13 +771,15 @@ export function lairActs(
   if (!foes.length) return false;
   const id = lair.next ?? dungeonLairActionFor(lair.kind, undefined, ctx.random, lair.broken);
   const action = DUNGEON_LAIR_ACTIONS[lair.kind][id]!;
-  const target = foes[Math.floor(ctx.random() * foes.length)]!;
+  // A pull drags one from the back (in Classic), never one already in the front.
+  const pool =
+    action.status === "drawn" && !tactical ? foes.filter((f) => marinaraRowOf(f, state.fighters) === "back") : foes;
+  const from = pool.length ? pool : foes;
+  const target = from[Math.floor(ctx.random() * from.length)]!;
   log(`The lair acts: ${action.label}.`, "marinara:lair", maker.id);
   // What it calls up joins its maker's side (Classic only: a board has no free square to put it on).
   const summon = action.summon;
-  const standing = summon
-    ? living(state.fighters).filter((f) => f.lairSummon && f.side === maker.side).length
-    : 0;
+  const standing = summon ? living(state.fighters).filter((f) => f.lairSummon && f.side === maker.side).length : 0;
   // At most `count` standing at once and twice that in a fight: the lair calls up a few, not an endless
   // stream the party must cut through to reach the maker (lair sim 7: re-raised bones took every blow).
   const room = summon ? Math.min(summon.count - standing, summon.count * 2 - (lair.summoned ?? 0)) : 0;
@@ -771,7 +812,11 @@ export function lairActs(
     );
   }
   lair.next = dungeonLairActionFor(lair.kind, id, ctx.random, lair.broken);
-  log(`The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}.`, "marinara:lair", maker.id);
+  log(
+    `The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}.`,
+    "marinara:lair",
+    maker.id,
+  );
   record(state, ctx, log);
   return true;
 }

@@ -1305,6 +1305,36 @@ export function DungeonMapView({
             }
           }
       }
+      // A cave lair's crawl: a squeeze through fallen rock into the great chamber, the boulders heaped either
+      // side of a dark one-cell slot and spilled onto the floor beyond (lair panel 6: the crawl was unreadable).
+      const crawl = kept?.lairCrawl;
+      if (lairKind && crawl && cells && !inFog(crawl.x, crawl.y)) {
+        const [ox, oy] = [crawl.x * T, crawl.y * T];
+        ctx.fillStyle = "rgba(8, 6, 4, 0.55)";
+        ctx.fillRect(ox + 3, oy + 3, T - 6, T - 6);
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++) {
+            const [x, y] = [crawl.x + dx, crawl.y + dy];
+            if (x < 0 || y < 0 || x >= cells.width || y >= cells.height || inFog(x, y)) continue;
+            const ground = cells.ground[y * cells.width + x];
+            const centre = dx === 0 && dy === 0;
+            for (let n = 0; n < (centre ? 4 : 5); n++) {
+              const h = hash(x * 13 + n * 7, y * 11 - n * 3);
+              if (!centre && ground === "floor" && h % 3 !== 0) continue;
+              const size = 2 + (h % 4);
+              const px = x * T + 1 + ((h >> 3) % (T - size - 1));
+              const py = y * T + 1 + ((h >> 7) % (T - size - 1));
+              // The slot itself kept clear down its middle: rubble only at its edges.
+              if (centre && px + size > ox + T * 0.3 && px < ox + T * 0.7) continue;
+              ctx.fillStyle = "rgba(10, 8, 6, 0.6)";
+              ctx.fillRect(px + 1, py + 1, size, size);
+              ctx.fillStyle = h % 2 ? "#8a7d6a" : "#a29580";
+              ctx.fillRect(px, py, size, size);
+              ctx.fillStyle = "rgba(255, 245, 225, 0.3)";
+              ctx.fillRect(px, py, size, 1);
+            }
+          }
+      }
       // The great chamber's own ground: a tint over its whole floor, so it reads as the creature's place from
       // its mouth on, not a corner of the cave (lair panel 3: the hive's bowl was the one that read).
       if (lairKind && lairCells.length && cells) {
@@ -1350,24 +1380,81 @@ export function DungeonMapView({
             }
         }
       }
-      if (lairKind === "drowned" && lairCells.length) {
-        // The deep pool: soft-edged, darkest in its middle, each cell a pool of shade that runs into the next
-        // (lair panel 1: a square-edged dark overlay).
-        ctx.save();
+      if (lairKind === "drowned" && lairCells.length && cells) {
+        // The deep pool as water: murky green-black over each cell, never past a wall, with ripples on its face
+        // and a wet lip where it meets the floor (lair panel 6: a soft gradient read as a fog stain and ran
+        // over the walls).
         for (const { x, y } of lairCells) {
-          if (inFog(x, y)) continue;
-          const [cx, cy] = [(x + 0.5) * T, (y + 0.5) * T];
-          const deep = ctx.createRadialGradient(cx, cy, 1, cx, cy, T * 1.05);
-          // Murky green-black, not the cave's clear puddles (lair panel 3: the maker's pool read as any pond).
-          deep.addColorStop(0, "rgba(6, 34, 22, 0.55)");
-          deep.addColorStop(1, "rgba(6, 34, 22, 0)");
-          ctx.fillStyle = deep;
-          ctx.fillRect(cx - T * 1.1, cy - T * 1.1, T * 2.2, T * 2.2);
+          const ground = cells.ground[y * cells.width + x];
+          if (inFog(x, y) || ground === "wall" || ground === "rock") continue;
+          const [ox, oy] = [x * T, y * T];
+          ctx.fillStyle = "rgba(8, 38, 30, 0.78)";
+          ctx.fillRect(ox, oy, T, T);
+          const edges = [
+            [0, -1],
+            [0, 1],
+            [-1, 0],
+            [1, 0],
+          ] as const;
+          const deep = edges.every(([dx, dy]) => hasF(x + dx, y + dy));
+          if (deep) {
+            ctx.fillStyle = "rgba(2, 16, 12, 0.35)";
+            ctx.fillRect(ox, oy, T, T);
+          }
+          const h = hash(x + 3, y + 9);
+          ctx.fillStyle = "rgba(150, 210, 180, 0.35)";
+          ctx.fillRect(ox + 2 + (h % 6), oy + 3 + ((h >> 3) % 4), 4 + ((h >> 6) % 3), 1);
+          ctx.fillRect(ox + 1 + ((h >> 9) % 7), oy + 9 + ((h >> 12) % 3), 3, 1);
+          for (const [dx, dy] of edges) {
+            if (hasF(x + dx, y + dy)) continue;
+            ctx.fillStyle = "rgba(170, 220, 190, 0.5)";
+            if (dy === -1) ctx.fillRect(ox, oy, T, 1);
+            else if (dy === 1) ctx.fillRect(ox, oy + T - 1, T, 1);
+            else if (dx === -1) ctx.fillRect(ox, oy, 1, T);
+            else ctx.fillRect(ox + T - 1, oy, 1, T);
+            ctx.fillStyle = "rgba(20, 30, 24, 0.45)";
+            if (dy === -1) ctx.fillRect(ox, oy + 1, T, 2);
+            else if (dy === 1) ctx.fillRect(ox, oy + T - 3, T, 2);
+            else if (dx === -1) ctx.fillRect(ox + 1, oy, 2, T);
+            else ctx.fillRect(ox + T - 3, oy, 2, T);
+          }
         }
-        ctx.restore();
       }
-      if (lairKind === "haven" && lairCells.length) {
-        // Grave mist pooled over the coffins and drifting out across the hall, pale and low.
+      if (lairKind === "haven" && lairCells.length && cells) {
+        // Grave mist pooled over the coffins and drifting out across the hall, pale and low, kept inside the
+        // hall's own floor (lair panel 6: it spilled through the wall into the rock).
+        const heartIndex = kept?.lairRoom ?? kept?.roomInfo?.findIndex((info) => info?.heart) ?? -1;
+        const hall = heartIndex >= 0 ? cells.rooms[heartIndex] : undefined;
+        ctx.save();
+        if (hall) {
+          const clip = new Path2D();
+          for (const { x, y } of dungeonRoomCells(hall))
+            if (cells.ground[y * cells.width + x] === "floor") clip.rect(x * T, y * T, T, T);
+          ctx.clip(clip);
+          // The brood's biers: each slab under a blood-red pall with a gold hem and a candle at its head, so
+          // a bier reads as a bier and not as one more pier (lair panel 6: cover and coffin looked the same).
+          for (const { x, y } of dungeonRoomCells(hall)) {
+            if (cells.props[y * cells.width + x] !== 26 || hasF(x, y) || inFog(x, y)) continue;
+            const [ox, oy] = [x * T, y * T];
+            ctx.fillStyle = "rgba(8, 4, 4, 0.5)";
+            ctx.fillRect(ox + 2, oy + 4, T - 3, T - 5);
+            ctx.fillStyle = "#6e1420";
+            ctx.fillRect(ox + 1, oy + 3, T - 3, T - 6);
+            ctx.fillStyle = "#8f2230";
+            ctx.fillRect(ox + 2, oy + 3, T - 5, 2);
+            ctx.fillStyle = "#c9a24a";
+            ctx.fillRect(ox + 1, oy + T - 4, T - 3, 1);
+            ctx.fillRect(ox + 1, oy + 3, 1, T - 6);
+            ctx.fillRect(ox + T - 3, oy + 3, 1, T - 6);
+            // The shape under the pall.
+            ctx.fillStyle = "rgba(20, 4, 8, 0.45)";
+            ctx.fillRect(ox + 4, oy + 6, T - 9, 3);
+            ctx.fillStyle = "#e9d8b0";
+            ctx.fillRect(ox + T / 2 - 1, oy + 1, 2, 2);
+            ctx.fillStyle = "rgba(255, 210, 120, 0.9)";
+            ctx.fillRect(ox + T / 2 - 1, oy, 2, 1);
+          }
+        }
         for (const [k, { x, y }] of lairCells.entries()) {
           if (inFog(x, y)) continue;
           const [cx, cy] = [(x + 0.5 + ((k % 3) - 1) * 0.6) * T, (y + 0.8) * T];
@@ -1377,6 +1464,7 @@ export function DungeonMapView({
           ctx.fillStyle = mist;
           ctx.fillRect(cx - T * 2.7, cy - T * 2.7, T * 5.4, T * 5.4);
         }
+        ctx.restore();
       }
       if (lairKind === "sanctum" && lairCells.length >= 4) {
         // The circle the ward stones stand on, scored into the floor and faintly lit.
@@ -1666,7 +1754,22 @@ export function DungeonMapView({
         halo.addColorStop(0, `rgba(${accent[lairKind]}, 0.45)`);
         halo.addColorStop(1, `rgba(${accent[lairKind]}, 0)`);
         ctx.fillStyle = halo;
-        ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
+        // Only over open ground: never through a wall into the rock (lair panel 6: the coffin's glow leaked).
+        if (cells) {
+          ctx.save();
+          const clip = new Path2D();
+          const [ax, ay] = [Math.floor(cx / T), Math.floor(cy / T)];
+          for (let dy = -2; dy <= 2; dy++)
+            for (let dx = -2; dx <= 2; dx++) {
+              const [gx, gy] = [ax + dx, ay + dy];
+              if (gx < 0 || gy < 0 || gx >= cells.width || gy >= cells.height) continue;
+              const g = cells.ground[gy * cells.width + gx];
+              if (g !== "wall" && g !== "rock") clip.rect(gx * T, gy * T, T, T);
+            }
+          ctx.clip(clip);
+          ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
+          ctx.restore();
+        } else ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
         const px = (x: number, y: number, w: number, h: number, colour: string) => {
           ctx.fillStyle = colour;
           ctx.fillRect(ox + x, oy + y, w, h);
