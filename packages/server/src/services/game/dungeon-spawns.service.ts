@@ -16,6 +16,7 @@ import {
   dungeonSiteLairState,
   dungeonLairDeedDone,
   dungeonLairFightText,
+  dungeonLairAnchorCell,
   dungeonSiteFate,
   dungeonSiteFor,
   dungeonSiteOrigin,
@@ -393,13 +394,30 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
         : undefined;
     // A lair's maker keeps its own feature: on its hoard, among its coffins, at the rift's lip, at the pool's
     // edge (lair panel 1, 2026-11-18: makers stood in another room or far from what makes the lair).
-    const feature = area.role === "heart" ? (here.map.lairFeature ?? []).filter(({ x, y }) => inRoom(x, y)) : [];
-    const heap = feature.length
+    // A lair whose maker is gone is held by the place's ordinary holders, who keep off the old heap: they
+    // stand watch inside the chamber's mouth (lair panel 12: a chief on the cold heap read as the dragon).
+    const gone = !!here.state.lair && (!!here.state.lairCold || !!here.state.leaderDead);
+    const feature =
+      area.role === "heart" && !gone ? (here.map.lairFeature ?? []).filter(({ x, y }) => inRoom(x, y)) : [];
+    const centroid = feature.length
       ? {
           x: Math.round(feature.reduce((sum, c) => sum + c.x, 0) / feature.length),
           y: Math.round(feature.reduce((sum, c) => sum + c.y, 0) / feature.length),
         }
       : undefined;
+    // The vampire stands out on its hall's floor two steps before its own coffin, not in the coffin row
+    // (lair panel 12: it read as clipped into the wall); the others stand on their feature's middle.
+    const own =
+      centroid && here.map.lairKind === "haven" && here.site.lair
+        ? dungeonLairAnchorCell(here.site.lair.kind, feature)
+        : undefined;
+    const heap = own
+      ? { x: own.x + 2 * Math.sign(centre.x - own.x), y: own.y + 2 * Math.sign(centre.y - own.y) }
+      : centroid;
+    const coldWatch =
+      gone && here.state.lairCold && area.role === "heart" && door
+        ? { x: door.x + Math.sign(centre.x - door.x), y: door.y + Math.sign(centre.y - door.y) }
+        : undefined;
     // A lair's throat is held at its side nearest the great chamber, the pair standing across the way in
     // (lair panel 4: servants stood in corners and the chamber was reached unopposed).
     const heartRoom = area.throat
@@ -464,7 +482,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
             .sort((p, q) => steps(p) - steps(q))[0];
         })()
       : undefined;
-    const middle = throat ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
+    const middle = throat ?? coldWatch ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&

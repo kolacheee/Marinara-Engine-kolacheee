@@ -1265,6 +1265,134 @@ export function gameDungeonLairTrail(map: GameDungeonMap): Array<{ x: number; y:
 /** A carved place's deepest floor as a creature's lair: its great chamber the biggest room in the far half
  *  from the way in (the heart), and what it holds drawn in it, the drowned hall's pool as water. */
 function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLairKind): GameDungeonMap {
+  const grown = caveLairGrown(made);
+  return caveLairCarved(
+    grown === made
+      ? kept
+      : { ...kept, ground: grown.ground.map((g) => GROUND_CHARS[g]).join(""), rooms: grown.rooms },
+    grown,
+    kind,
+  );
+}
+
+/** The great chamber widened out of the rock round it, where nothing else stands, to at least eleven by
+ *  nine, carved as an oval so it reads as a hollow and not a box (lair panel 12, all five: the chamber was
+ *  a corner pocket of a great cave, too small for a dragon). The chamber picked the way caveLairCarved
+ *  picks it. */
+function caveLairGrown(made: DungeonMap): DungeonMap {
+  const steps = dungeonStepsFrom(made, made.entrance);
+  const distance = made.rooms.map((room) => {
+    let best = -1;
+    for (const { x, y } of dungeonRoomCells(room)) {
+      const at = steps[y * made.width + x]!;
+      if (at >= 0 && (best < 0 || at < best)) best = at;
+    }
+    return best;
+  });
+  const entry = made.rooms.findIndex((room) => dungeonRoomHas(room, made.entrance.x, made.entrance.y));
+  const far = Math.max(1, ...distance);
+  const openFloor = (room: DungeonRoom) =>
+    dungeonRoomCells(room).filter(({ x, y }) => made.ground[y * made.width + x] === "floor").length;
+  let pick = -1;
+  made.rooms.forEach((room, index) => {
+    if (index === entry || distance[index]! < far * 0.5) return;
+    if (pick < 0 || openFloor(room) > openFloor(made.rooms[pick]!)) pick = index;
+  });
+  if (pick < 0) return made;
+  const room = { ...made.rooms[pick]! };
+  const clearOf = (r: DungeonRoom) =>
+    r.x >= 2 &&
+    r.y >= 2 &&
+    r.x + r.w <= made.width - 2 &&
+    r.y + r.h <= made.height - 2 &&
+    others.every(
+      (other, index) =>
+        index === pick ||
+        other.x >= r.x + r.w + 1 ||
+        other.x + other.w + 1 <= r.x ||
+        other.y >= r.y + r.h + 1 ||
+        other.y + other.h + 1 <= r.y,
+    ) &&
+    !(made.entrance.x >= r.x && made.entrance.x < r.x + r.w && made.entrance.y >= r.y && made.entrance.y < r.y + r.h);
+  // A neighbour in the way gives up its facing edge, while it keeps at least three by three (lair panel 12
+  // check: a chamber in a cave's corner had rooms on its open sides and could not grow at all).
+  const others = made.rooms.map((each) => ({ ...each }));
+  const overlaps = (a: DungeonRoom, b: DungeonRoom) =>
+    a.x < b.x + b.w + 1 && b.x < a.x + a.w + 1 && a.y < b.y + b.h + 1 && b.y < a.y + a.h + 1;
+  const yielded = (next: DungeonRoom): DungeonRoom[] | null => {
+    if (next.x < 1 || next.y < 1 || next.x + next.w > made.width - 1 || next.y + next.h > made.height - 1) return null;
+    const { x: ex, y: ey } = made.entrance;
+    if (ex >= next.x && ex < next.x + next.w && ey >= next.y && ey < next.y + next.h) return null;
+    const out = others.map((each) => ({ ...each }));
+    for (const [index, other] of out.entries()) {
+      if (index === pick || !overlaps(next, other)) continue;
+      if (other.x >= room.x + room.w) {
+        const cut = next.x + next.w + 1 - other.x;
+        other.x += cut;
+        other.w -= cut;
+      } else if (other.x + other.w <= room.x) other.w -= other.x + other.w + 1 - next.x;
+      else if (other.y >= room.y + room.h) {
+        const cut = next.y + next.h + 1 - other.y;
+        other.y += cut;
+        other.h -= cut;
+      } else if (other.y + other.h <= room.y) other.h -= other.y + other.h + 1 - next.y;
+      else return null;
+      if (other.w < 3 || other.h < 3 || overlaps(next, other)) return null;
+      if (ex >= other.x && ex < other.x + other.w && ey >= other.y && ey < other.y + other.h) continue;
+      const wasIn = (made.rooms[index]!.x <= ex && ex < made.rooms[index]!.x + made.rooms[index]!.w &&
+        made.rooms[index]!.y <= ey && ey < made.rooms[index]!.y + made.rooms[index]!.h);
+      if (wasIn) return null;
+    }
+    return out;
+  };
+  for (let tries = 0; tries < 24 && (room.w < 11 || room.h < 9); tries++) {
+    const options: DungeonRoom[] = [];
+    if (room.w < 11) options.push({ ...room, x: room.x - 1, w: room.w + 1 }, { ...room, w: room.w + 1 });
+    if (room.h < 9) options.push({ ...room, y: room.y - 1, h: room.h + 1 }, { ...room, h: room.h + 1 });
+    const next = options.find(clearOf);
+    if (next) {
+      Object.assign(room, next);
+      continue;
+    }
+    let moved = false;
+    for (const option of options) {
+      const trimmed = yielded(option);
+      if (!trimmed) continue;
+      trimmed.forEach((each, index) => Object.assign(others[index]!, each));
+      Object.assign(room, option);
+      moved = true;
+      break;
+    }
+    if (!moved) break;
+  }
+  const was = made.rooms[pick]!;
+  if (room.w === was.w && room.h === was.h) return made;
+  const ground = [...made.ground];
+  const [cx, cy] = [room.x + (room.w - 1) / 2, room.y + (room.h - 1) / 2];
+  for (const { x, y } of dungeonRoomCells(room)) {
+    const i = y * made.width + x;
+    const inside = ((x - cx) / (room.w / 2)) ** 2 + ((y - cy) / (room.h / 2)) ** 2 <= 1;
+    if (inside && (ground[i] === "rock" || ground[i] === "wall") && made.props[i] === -1) ground[i] = "floor";
+  }
+  // The old room's walls carved off, a rock lining left round the new hollow where it meets the dark.
+  for (const { x, y } of dungeonRoomCells(room)) {
+    const i = y * made.width + x;
+    if (ground[i] !== "floor") continue;
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ] as const) {
+      const n = (y + dy) * made.width + x + dx;
+      if (ground[n] === "rock" && !dungeonRoomHas(room, x + dx, y + dy)) ground[n] = "wall";
+    }
+  }
+  const rooms = others.map((each, index) => (index === pick ? room : each));
+  return { ...made, ground, rooms };
+}
+
+function caveLairCarved(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLairKind): GameDungeonMap {
   const steps = dungeonStepsFrom(made, made.entrance);
   const distance = made.rooms.map((room) => {
     let best = -1;

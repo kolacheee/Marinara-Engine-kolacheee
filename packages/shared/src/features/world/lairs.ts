@@ -241,7 +241,9 @@ export function dungeonLairFeature(input: {
       );
       const heart = middle[Math.floor(random() * Math.min(3, middle.length))]!;
       // Never against a wall: a heap cut flat by the wall read as cropped (lair panels 3-5, hoard-keep).
-      return near(heart, Math.max(4, Math.round(cells.length * 0.3))).filter((c) => !input.walls(c));
+      // At most twenty cells, so a wide chamber leaves floor to fight round the heap (lair panel 12 check:
+      // the widened cave chamber was all heap).
+      return near(heart, Math.max(4, Math.min(20, Math.round(cells.length * 0.3)))).filter((c) => !input.walls(c));
     }
     case "sanctum": {
       // A ring, every other cell a stone, round the middle.

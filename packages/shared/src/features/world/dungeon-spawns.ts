@@ -611,13 +611,20 @@ export function dungeonAreas(map: GameDungeonMap, site: DungeonSite, setting: Ma
     }
     const deep = distance[index]! / far >= 0.5;
     if (deep && random() < 0.75) {
-      const foes = fitted(
-        setting,
+      const size = 2 + Math.floor(random() * 2);
+      // Not every post a pair at the ready (lair panel 12, all five: identical pairs spaced round a cave read
+      // as a spawn grid): by a hash of the place and the room, which leaves the draws above as they were,
+      // some are a lone sentry, some sleep at their post, some walk it.
+      const kind = (Math.imul((map.seed ^ (index * 0x9e3779b1)) >>> 0, 0x85ebca6b) >>> 0) % 6;
+      const foes = fitted(setting, level, group(site.holder, "standard", level, kind <= 1 ? 1 : size), "normal");
+      return {
+        area,
+        key,
+        role: "guard",
         level,
-        group(site.holder, "standard", level, 2 + Math.floor(random() * 2)),
-        "normal",
-      );
-      return { area, key, role: "guard", level, foes };
+        foes,
+        ...(kind === 2 ? { asleep: true as const } : kind === 3 ? { patrol: true as const } : {}),
+      };
     }
     if (random() < 0.5) return { area, key, role: "lair", level, foes: squatRoster(site, setting, level, random) };
     return { area, key, role: "empty", level, foes: [] };
