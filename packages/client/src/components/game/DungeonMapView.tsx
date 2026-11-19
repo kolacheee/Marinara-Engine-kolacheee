@@ -11,6 +11,7 @@ import {
   DUNGEON_SECRET_DOOR_PROP,
   dungeonLairAnchorCell,
   dungeonLairDeedDone,
+  gameDungeonLairDoor,
   gameDungeonLairTrail,
   DUNGEON_LAIR_DEEDS,
   dungeonRoomCells,
@@ -1725,6 +1726,48 @@ export function DungeonMapView({
           }
         });
       }
+      // A carved chamber's doorway drawn as one: a worn stone sill across the mouth and a standing stone at each
+      // shoulder, so the way in reads as a door in the rock (lair panel 16, all five: the cave mouth did not
+      // read as a doorway).
+      const door = kept && cells ? gameDungeonLairDoor(kept) : undefined;
+      if (door && cells && !door.cells.every(({ x, y }) => inFog(x, y))) {
+        const { dx, dy } = door;
+        for (const { x, y } of door.cells) {
+          const [ox, oy] = [x * T, y * T];
+          // The sill on the chamber side of the cell.
+          const [sx, sy, sw, sh] =
+            dx === 1 ? [ox + T - 4, oy, 4, T] : dx === -1 ? [ox, oy, 4, T] : dy === 1 ? [ox, oy + T - 4, T, 4] : [ox, oy, T, 4];
+          ctx.fillStyle = "rgba(10, 8, 6, 0.55)";
+          ctx.fillRect(sx + (dx ? 0 : 0), sy + (dy ? 1 : 0), sw, sh);
+          ctx.fillStyle = "#7a7064";
+          ctx.fillRect(sx, sy, sw - (dx ? 1 : 0), sh - (dy ? 1 : 0));
+          ctx.fillStyle = "#a09484";
+          if (dx) ctx.fillRect(sx, sy, 1, sh);
+          else ctx.fillRect(sx, sy, sw, 1);
+        }
+        // The shoulders: the cells either side of the mouth, across the way in.
+        const [px, py] = [dy, dx];
+        const ends = [...door.cells].sort((a, b) => a.x * px + a.y * py - (b.x * px + b.y * py));
+        for (const [cell, side] of [
+          [ends[0]!, -1],
+          [ends[ends.length - 1]!, 1],
+        ] as const) {
+          const [x, y] = [cell.x + side * px, cell.y + side * py];
+          if (x < 0 || y < 0 || x >= cells.width || y >= cells.height || inFog(x, y)) continue;
+          const g = cells.ground[y * cells.width + x];
+          if (g !== "wall" && g !== "rock") continue;
+          const [ox, oy] = [x * T, y * T];
+          ctx.fillStyle = "rgba(6, 4, 2, 0.6)";
+          ctx.fillRect(ox + 3, oy + 3, T - 4, T - 3);
+          ctx.fillStyle = "#6a6256";
+          ctx.fillRect(ox + 2, oy + 1, T - 5, T - 3);
+          ctx.fillStyle = "#968a78";
+          ctx.fillRect(ox + 2, oy + 1, T - 5, 2);
+          ctx.fillRect(ox + 2, oy + 1, 2, T - 3);
+          ctx.fillStyle = "#3e382e";
+          ctx.fillRect(ox + T - 5, oy + 3, 2, T - 6);
+        }
+      }
       // The signs on the way in (lair panel 9: "the approach has no payoff"): the last stretch of the walk to
       // the great chamber marked by what lives there, thick at its mouth and thinning out away from it.
       if (lairKind && kept && cells) {
@@ -2424,37 +2467,38 @@ export function DungeonMapView({
           // (lair panel 13: five identical coffins, the master's ambiguous).
           px(4, 2, T - 8, T - 4, "#6a0e18");
           px(5, 3, T - 10, 1, "#9a1c28");
-          px(7, 5, 2, 6, "#f0d27a");
-          px(5, 7, 6, 2, "#f0d27a");
+          // A gold crown on the lid, not the brood's cross (lair panel 16: the same cross on every coffin).
+          px(5, 8, 6, 2, "#f0d27a");
+          px(5, 5, 1, 3, "#f0d27a");
+          px(7, 4, 2, 4, "#f0d27a");
+          px(10, 5, 1, 3, "#f0d27a");
           px(3, 0, 1, T, "#d9b25a");
           px(T - 4, 0, 1, T, "#d9b25a");
           px(4, 0, T - 8, 1, "#f0d27a");
           px(4, T - 1, T - 8, 1, "#d9b25a");
         } else if (lairKind === "den") {
-          // A timber prop under a cracked roof: a stout upright braced both ways under its head beam, the
-          // roof's crack drawn above it and stone already fallen at its foot (lair panel 5: a small T read as
-          // a torch).
-          px(9, 2, 4, 14, "rgba(10, 6, 4, 0.7)");
-          px(7, 1, 4, 14, "#7a5530");
-          px(8, 1, 1, 14, "#a07648");
-          px(0, 0, T, 3, "#5e3f22");
-          px(0, 0, T, 1, "#8a6238");
-          for (let k = 0; k < 4; k++) {
-            px(3 + k, 3 + k, 1, 1, "#6a4a28");
-            px(T - 4 - k, 3 + k, 1, 1, "#6a4a28");
-          }
-          px(1, 12, 4, 3, "#8e8574");
-          px(12, 13, 3, 3, "#a49a88");
-          px(4, 15, 2, 1, "#b0a796");
-          ctx.strokeStyle = "rgba(14, 10, 8, 0.85)";
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(ox - 6, oy - 2);
-          ctx.lineTo(ox + 2, oy - 5);
-          ctx.lineTo(ox + 9, oy - 1);
-          ctx.lineTo(ox + 15, oy - 6);
-          ctx.lineTo(ox + 22, oy - 3);
-          ctx.stroke();
+          // A cracked roof slab hanging over the nest on one splintered stone pier, scree already fallen at its
+          // foot (lair panel 16: the timber T read as a gallows and matched the mine-frame decor).
+          px(2, 1, T - 3, 5, "rgba(10, 8, 6, 0.6)");
+          px(1, 0, T - 2, 5, "#7e7466");
+          px(1, 0, T - 2, 1, "#a39886");
+          px(2, 4, T - 4, 1, "#5a5246");
+          // The slab's crack, jagged across it.
+          px(4, 1, 1, 2, "#1a140e");
+          px(5, 2, 2, 1, "#1a140e");
+          px(7, 3, 1, 2, "#1a140e");
+          px(8, 1, 2, 1, "#1a140e");
+          px(10, 2, 1, 2, "#1a140e");
+          // The pier: rough stone, split down its face.
+          px(6, 5, 5, 9, "rgba(10, 8, 6, 0.6)");
+          px(5, 5, 5, 9, "#6c6458");
+          px(5, 5, 1, 9, "#8e8576");
+          px(7, 6, 1, 5, "#2a2218");
+          // Scree at its foot.
+          px(1, 13, 3, 2, "#8e8574");
+          px(11, 12, 3, 3, "#a49a88");
+          px(10, 14, 2, 1, "#b0a796");
+          px(3, 11, 2, 1, "#9a907e");
         } else if (lairKind === "breach") {
           // The rift anchor: a black obelisk, its runes lit by the rift.
           // Pale stone against the dark rift, so it reads (lair panel 5 check: a black stone vanished on it).

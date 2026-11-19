@@ -772,6 +772,15 @@ export function lairActs(
           maker.id,
         );
       }
+      if (hurt?.cleanse?.length) {
+        let lifted = 0;
+        for (const p of living(state.fighters).filter((p) => p.side !== maker.side)) {
+          const before = p.statuses.length;
+          p.statuses = p.statuses.filter((st) => !hurt.cleanse!.includes(st.status));
+          lifted += before - p.statuses.length;
+        }
+        if (lifted) log(`The fire on the party gutters out.`, "marinara:lair", f.id);
+      }
       if (hurt?.makerMod) {
         const { stat, pct, turns } = hurt.makerMod;
         maker.mods.push({ stat, pct, turns, source: `lair-break:${lair.kind}` });

@@ -80,7 +80,7 @@ export const DUNGEON_LAIRS: Readonly<Record<DungeonLairKind, DungeonLairSpec>> =
     region:
       "Near it people go missing a few at a time, the pale ones who come back will not say where they were, rats and bats are bold, and nobody goes out after dark.",
     field:
-      "Mist pours along the floor, the shadows answer its master and its thralls know every door: the haven can hide its lord in mist, set the shadows on the party or drink from the living for it.",
+      "Mist pours along the floor, the shadows answer its master and its thralls know every door: the haven can blind the living with its mist, set the shadows on the party or drink from the living for it.",
   },
   den: {
     kind: "den",
@@ -645,6 +645,8 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
         makerHpPct?: number;
         status?: "stun";
         makerMod?: { stat: "damage" | "resistance" | "defense"; pct: number; turns: number };
+        /** Statuses the break lifts off the whole party. */
+        cleanse?: readonly string[];
       };
     }
   >
@@ -676,7 +678,7 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     name: "Master's Coffin",
     stops: "lair-blood-tithe",
     also: "lair-grave-mist",
-    breaks: "the coffin splinters, the grave earth spills, and its master has no mist to hide in",
+    breaks: "the coffin splinters, the grave earth spills, the mist thins to nothing and the blood stops flowing to its master",
     backlash: "a shriek of grave-cold from the splintered coffin tears at the party",
     onBreak: { makerMod: { stat: "defense", pct: -0.2, turns: 3 } },
   },
@@ -689,21 +691,23 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     also: "lair-shifting-bones",
     breaks: "the loose roof comes down at once, onto the beast in its nest",
     backlash: "stone and dust come down on everyone in the den",
-    onBreak: { makerHpPct: 0.05, status: "stun" },
+    // No stun (lair panel 16: two actions, a hit and a stun left the den with nothing).
+    onBreak: { makerHpPct: 0.05 },
   },
   breach: {
     name: "Rift Anchor",
     stops: "lair-something-comes",
     also: "lair-pull-of-the-rift",
-    breaks: "the anchor stone shatters, the rift narrows, and it no longer pulls",
+    breaks: "the anchor stone shatters: the rift no longer pulls, nothing more comes through it, and the fire it set on the party gutters out",
     backlash: "the shattered anchor throws burning shards across the chamber",
-    onBreak: { makerHpPct: 0.06, status: "stun" },
+    // Its burn and sear on the party go out with it (lair panel 16: it left both fire actions running).
+    onBreak: { makerHpPct: 0.06, status: "stun", cleanse: ["burn", "sear"] },
   },
   drowned: {
     name: "Sluice Gate",
     stops: "lair-surge",
     also: "lair-rising-water",
-    breaks: "the sluice gate is wrenched open and the pool runs out through it: no more surge, no more rising water",
+    breaks: "the sluice gate is wrenched open and the pool drops to the old waterline: no more surge, no more rising water, though what lies in the deep still drags",
     backlash: "the pool's rush through the open gate knocks the party about",
     onBreak: { makerMod: { stat: "resistance", pct: -0.2, turns: 3 } },
   },
@@ -729,8 +733,12 @@ export function dungeonLairAnchorCell(
   const mx = cells.reduce((sum, c) => sum + c.x, 0) / cells.length;
   const my = cells.reduce((sum, c) => sum + c.y, 0) / cells.length;
   const far = (c: { x: number; y: number }) => (c.x - mx) ** 2 + (c.y - my) ** 2;
+  // The ward stone stands at the top of the ring, in line with its middle, not at a corner of it (lair panel 16:
+  // at the top-left it read as part of the wall).
   const sorted = [...cells].sort((a, b) =>
-    kind === "sanctum" ? a.y - b.y || a.x - b.x : far(a) - far(b) || a.y - b.y || a.x - b.x,
+    kind === "sanctum"
+      ? a.y - b.y || Math.abs(a.x - mx) - Math.abs(b.x - mx) || a.x - b.x
+      : far(a) - far(b) || a.y - b.y || a.x - b.x,
   );
   // The comb rings its bowl, so the eggs sit on its inner face, nearest the middle (lair panel 5 check: on
   // the far edge they were outside the bowl).

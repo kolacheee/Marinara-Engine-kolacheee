@@ -514,7 +514,8 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
         // Beside its coffins and ward stones, never standing on one (lair panel 4: the vampire read as a
         // sixth coffin); on its heap, nest, comb or pool it may stand.
         const onPiece =
-          (here.map.lairKind === "haven" || here.map.lairKind === "sanctum") &&
+          // The fiend stands at the rift's lip, not in it (lair panel 16: its glow washed out the maker).
+          (here.map.lairKind === "haven" || here.map.lairKind === "sanctum" || here.map.lairKind === "breach") &&
           feature.some((c) => c.x === x && c.y === y);
         const away = Math.abs(x - middle.x) + Math.abs(y - middle.y) + (clear(x, y) ? 0 : 100) + (onPiece ? 50 : 0);
         if (away < best) [at, best] = [{ x, y }, away];

@@ -1209,6 +1209,46 @@ function dungeonStepsFrom(made: DungeonMap, from: { x: number; y: number }): Int
 /** The signs on the way to a lair's great chamber (lair panel 9: "the approach has no payoff"): the last
  *  stretch of the walk from the way in to the chamber's mouth, nearest first, each cell with how far along
  *  the stretch it lies (0 at the mouth, 1 at its far end), so the signs can thin out away from the chamber. */
+/** A carved lair's chamber doorway, for the map to draw as a threshold: the open cells of its mouth and the
+ *  way in through them (lair panel 16, all five: the two-cell mouth still did not read as a doorway). */
+export function gameDungeonLairDoor(
+  map: GameDungeonMap,
+): { cells: Array<{ x: number; y: number }>; dx: number; dy: number } | undefined {
+  if (!map.lairKind || !map.lairFeature?.length || map.roomInfo) return undefined;
+  const chamber = map.lairRoom !== undefined ? map.rooms[map.lairRoom] : undefined;
+  if (!chamber) return undefined;
+  const made = dungeonFromGameDungeonMap(map);
+  delete made.blocked;
+  const steps = dungeonStepsFrom(made, map.entrance);
+  let best: { x: number; y: number; dx: number; dy: number } | undefined;
+  for (const { x, y } of dungeonRoomCells(chamber))
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ] as const) {
+      const [nx, ny] = [x + dx, y + dy];
+      if (dungeonRoomHas(chamber, nx, ny) || !dungeonWalkable(made, nx, ny)) continue;
+      if (map.lairCrawl && map.lairCrawl.x === nx && map.lairCrawl.y === ny) continue;
+      const i = ny * map.width + nx;
+      if (steps[i]! < 0) continue;
+      if (!best || steps[i]! < steps[best.y * map.width + best.x]!) best = { x: nx, y: ny, dx: -dx, dy: -dy };
+    }
+  if (!best) return undefined;
+  const cells = [{ x: best.x, y: best.y }];
+  for (const side of [1, -1]) {
+    const [sx, sy] = [best.x + side * best.dy, best.y + side * best.dx];
+    if (
+      dungeonWalkable(made, sx, sy) &&
+      !dungeonRoomHas(chamber, sx, sy) &&
+      dungeonRoomHas(chamber, sx + best.dx, sy + best.dy)
+    )
+      cells.push({ x: sx, y: sy });
+  }
+  return { cells, dx: best.dx, dy: best.dy };
+}
+
 export function gameDungeonLairTrail(map: GameDungeonMap): Array<{ x: number; y: number; t: number }> {
   if (!map.lairKind || !map.lairFeature?.length) return [];
   const heart = map.lairRoom ?? map.roomInfo?.findIndex((room) => room?.heart) ?? -1;
