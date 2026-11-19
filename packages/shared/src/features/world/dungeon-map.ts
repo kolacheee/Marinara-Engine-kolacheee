@@ -1451,9 +1451,14 @@ function caveLairCarved(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLai
     const mouth = byStep[0];
     if (mouth !== undefined && ring.length >= 6) {
       const [mx, my] = [mouth % made.width, Math.floor(mouth / made.width)];
-      const opened = new Set(
-        ring.filter((n) => Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my) <= 1),
-      );
+      // A mouth two cells wide, not three: a doorway in the rock, with its shoulders built up either side
+      // (lair panel 15, all five: the cave chamber had no neck, no threshold to hold or to plan round).
+      const second = ring
+        .filter((n) => n !== mouth && Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my) === 1)
+        .sort((p, q) => (steps[p] ?? 1e9) - (steps[q] ?? 1e9))[0];
+      const opened = new Set(second === undefined ? [mouth] : [mouth, second]);
+      const shoulder = (n: number) =>
+        Math.abs((n % made.width) - mx) + Math.abs(Math.floor(n / made.width) - my) <= 3;
       const near1 = (m: number, n: number) =>
         Math.abs((m % made.width) - (n % made.width)) +
           Math.abs(Math.floor(m / made.width) - Math.floor(n / made.width)) <=
@@ -1472,7 +1477,7 @@ function caveLairCarved(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLai
             made.props[m] === -1 &&
             m !== at(made.entrance.x, made.entrance.y) &&
             Math.abs((m % made.width) - (n % made.width)) <= 1 &&
-            ((m * 2654435761) >>> 0) % 5 < 2,
+            (((m * 2654435761) >>> 0) % 5 < 2 || shoulder(n)),
         );
       const filled = new Set<number>();
       const tryWalls = () => {
@@ -2116,7 +2121,7 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
             : "";
           return done
             ? ` The party has been in area ${room + 1} (${deed.room}) and did it: they ${deed.deed}, and the lair will have no ${label} when they face its maker.${back}`
-            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker (one of its servants keeps the room): the Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.${back}`;
+            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker. One of its servants keeps the room, and any way past it serves: a fight, a quiet kill, slipping by, a bribe or a lie, a key taken from another servant, a lock picked, a spell; and the deed itself can be done the room's own way (rubble, fire, water, a lever) as the party thinks of it. Narrate the way they chose. The Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.${back}`;
         })()}`
       : "";
   return `MAP: ${map.name}.${floors}${planned}${lair} ${dungeonMapWords(cells)} The party is ${where}${areaName(area)}${

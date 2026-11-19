@@ -425,7 +425,17 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
   },
   haven: {
     // The mist hides its lord: hard to find until it acts again (lair panel 6: +30% evasion was no hiding).
-    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.4, duration: 1 },
+    // It blinds the living too: the party can hardly see to strike (lair panel 15: a self-buff round was a
+    // round the party just waited out).
+    "lair-grave-mist": {
+      label: "Grave Mist",
+      kind: "debuff",
+      target: "all-enemies",
+      stat: "skill",
+      pct: -0.15,
+      duration: 1,
+      ranged: true,
+    },
     "lair-thralls-gaze": {
       label: "Thrall's Gaze",
       kind: "status",
@@ -449,8 +459,9 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     "lair-blood-tithe": {
       label: "Blood Tithe",
-      // A third of the blood back, not half (lair panel 9: at level 16 the haven won two fights in three).
-      ...strike(1, "dark", { scales: "strength", damage: "physical", drain: 0.3 }),
+      // A fifth of the blood back (lair panel 9: at half, the haven won two fights in three at level 16; lair sim
+      // 29: a third, with the mist now blinding the party, took the L16 win rate 20 points under no lair).
+      ...strike(1, "dark", { scales: "strength", damage: "physical", drain: 0.2 }),
     },
   },
   den: {
@@ -643,9 +654,12 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
   hoard: {
     name: "Fire Vent",
     stops: "lair-dragonfire-vents",
+    // The vent's heat is what cracks the roof: choked, no more stone falls (lair panel 15: one stop in four).
+    also: "lair-falling-stone",
     breaks: "the vent is choked with rubble and the fire in the dragon banks low",
     backlash: "the vent's last breath of fire bursts out over the party",
-    onBreak: { makerMod: { stat: "resistance", pct: -0.2, turns: 3 } },
+    // The fire banked hurts it too (lair panel 15: the vent paid least of all seven for its cost).
+    onBreak: { makerHpPct: 0.05, makerMod: { stat: "resistance", pct: -0.2, turns: 3 } },
   },
   // The stone that keeps the dead answering and the circle closed (lair panel 6: it guarded Death Ward, the
   // weakest thing the sanctum does).
@@ -671,9 +685,11 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
   den: {
     name: "Cracked Roof Prop",
     stops: "lair-den-roof",
+    // Down on the nest, the bones it shifts are buried (lair panel 15: one stop in four).
+    also: "lair-shifting-bones",
     breaks: "the loose roof comes down at once, onto the beast in its nest",
     backlash: "stone and dust come down on everyone in the den",
-    onBreak: { makerHpPct: 0.08, status: "stun" },
+    onBreak: { makerHpPct: 0.05, status: "stun" },
   },
   breach: {
     name: "Rift Anchor",
@@ -681,7 +697,7 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     also: "lair-pull-of-the-rift",
     breaks: "the anchor stone shatters, the rift narrows, and it no longer pulls",
     backlash: "the shattered anchor throws burning shards across the chamber",
-    onBreak: { makerHpPct: 0.06 },
+    onBreak: { makerHpPct: 0.06, status: "stun" },
   },
   drowned: {
     name: "Sluice Gate",

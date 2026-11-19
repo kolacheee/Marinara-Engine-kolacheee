@@ -792,6 +792,19 @@ export function DungeonMapView({
               ctx.lineTo(x * T + 6, y * T + 9);
               ctx.lineTo(x * T + 11, y * T + 13);
               ctx.stroke();
+              // Cold air and a thread of light through the crack, falling on the floor either side, so the
+              // back way reads at a glance (lair panel 15, four of five: a hairline crack was missed).
+              {
+                const [gx, gy] = [x * T + T / 2, y * T + T / 2];
+                const draught = ctx.createRadialGradient(gx, gy, 1, gx, gy, T * 1.6);
+                draught.addColorStop(0, "rgba(210, 230, 255, 0.42)");
+                draught.addColorStop(1, "rgba(210, 230, 255, 0)");
+                ctx.fillStyle = draught;
+                ctx.fillRect(gx - T * 1.6, gy - T * 1.6, T * 3.2, T * 3.2);
+                ctx.fillStyle = "rgba(240, 248, 255, 0.85)";
+                ctx.fillRect(x * T + 6, y * T + 5, 1, 3);
+                ctx.fillRect(x * T + 8, y * T + 10, 1, 2);
+              }
               for (const [dx, dy] of [
                 [0, 1],
                 [0, -1],
@@ -2308,8 +2321,9 @@ export function DungeonMapView({
           drowned: "120, 220, 200",
           hive: "250, 240, 200",
         };
-        const halo = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 1.4);
-        halo.addColorStop(0, `rgba(${accent[lairKind]}, 0.45)`);
+        // Louder than before (lair panel 15: features were found only by their brackets).
+        const halo = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 2);
+        halo.addColorStop(0, `rgba(${accent[lairKind]}, 0.6)`);
         halo.addColorStop(1, `rgba(${accent[lairKind]}, 0)`);
         ctx.fillStyle = halo;
         // Only over open ground: never through a wall into the rock (lair panel 6: the coffin's glow leaked).
@@ -2325,15 +2339,15 @@ export function DungeonMapView({
               if (g !== "wall" && g !== "rock") clip.rect(gx * T, gy * T, T, T);
             }
           ctx.clip(clip);
-          ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
+          ctx.fillRect(cx - T * 2, cy - T * 2, T * 4, T * 4);
           ctx.restore();
-        } else ctx.fillRect(cx - T * 1.5, cy - T * 1.5, T * 3, T * 3);
+        } else ctx.fillRect(cx - T * 2, cy - T * 2, T * 4, T * 4);
         // One mark for every lair's breakable thing, the same in each lair: a ring of four corner brackets in
         // its accent, so the party learns "this can be struck" once (lair panel 7: the sluice read as a barrel,
         // the vent as a slit).
         {
-          const [bx, by, b] = [ox - 2, oy - 2, T + 4];
-          const arm = 4;
+          const [bx, by, b] = [ox - 4, oy - 4, T + 8];
+          const arm = 6;
           ctx.fillStyle = "rgba(10, 6, 4, 0.7)";
           for (const [px, py, w, h] of [
             [bx + 1, by + 1, arm, 1],

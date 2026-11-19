@@ -416,10 +416,23 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
     const heap = own
       ? { x: own.x + back * Math.sign(centre.x - own.x), y: own.y + back * Math.sign(centre.y - own.y) }
       : centroid;
-    const coldWatch =
-      gone && here.state.lairCold && area.role === "heart" && door
-        ? { x: door.x + Math.sign(centre.x - door.x), y: door.y + Math.sign(centre.y - door.y) }
-        : undefined;
+    // Outside the old chamber's mouth, not in it (lair panel 15, all five: holders inside read as a maker's
+    // guard left behind). A cave chamber has no door listed: its mouth is the open cell just outside it nearest
+    // the way in.
+    const coldWatch = (() => {
+      if (!(gone && here.state.lairCold && area.role === "heart")) return undefined;
+      if (door) return { x: door.x - Math.sign(centre.x - door.x), y: door.y - Math.sign(centre.y - door.y) };
+      const out: Array<{ x: number; y: number }> = [];
+      for (const { x, y } of dungeonRoomCells(room))
+        for (const [dx, dy] of [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+        ] as const)
+          if (!inRoom(x + dx, y + dy) && dungeonWalkable(cells, x + dx, y + dy)) out.push({ x: x + dx, y: y + dy });
+      return out.sort((p, q) => fromWay(p) - fromWay(q))[0];
+    })();
     // A lair's throat is held at its side nearest the great chamber, the pair standing across the way in
     // (lair panel 4: servants stood in corners and the chamber was reached unopposed).
     const heartRoom = area.throat
@@ -484,7 +497,7 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
             .sort((p, q) => steps(p) - steps(q))[0];
         })()
       : undefined;
-    const middle = throat ?? coldWatch ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
+    const middle = coldWatch ?? throat ?? heap ?? (here.map.roomInfo ? (watch ?? guarding ?? centre) : (stair ?? farDoor ?? centre));
     const onLink = (x: number, y: number) => !!here.map.links?.some((link) => link.x === x && link.y === y);
     const clear = (x: number, y: number) =>
       cells.props[y * cells.width + x] === -1 &&
