@@ -730,18 +730,27 @@ export function lairActs(
   // Broken by the party: say so once, and the action it fed is gone from the lair (owner 2026-11-18).
   for (const f of anchors)
     if (f.hp <= 0 && maker && maker.hp > 0 && !(lair.broken ?? []).includes(f.lairAnchor!)) {
-      lair.broken = [...(lair.broken ?? []), f.lairAnchor!];
       f.lairBroken = true;
-      const gone = DUNGEON_LAIR_ACTIONS[lair.kind][f.lairAnchor!]?.label;
+      const spec = DUNGEON_LAIR_ANCHORS[lair.kind];
+      const ids = [f.lairAnchor!, ...(spec.also ? [spec.also] : [])];
+      lair.broken = [...new Set([...(lair.broken ?? []), ...ids])];
+      const gone = ids.map((id) => DUNGEON_LAIR_ACTIONS[lair.kind][id]?.label).filter(Boolean);
       log(
-        `The ${f.name} breaks${gone ? `: no more ${gone}` : ""}. Something in the wreck is worth taking after.`,
+        `The ${f.name} breaks${gone.length ? `: no more ${gone.join(" and ")}` : ""}. Something in the wreck is worth taking after.`,
         "marinara:lair",
         f.id,
       );
-      // What the break does to its maker at once (the den's roof down on the beast).
-      const hurt = DUNGEON_LAIR_ANCHORS[lair.kind].onBreak;
-      if (hurt) {
-        const lost = Math.min(maker.hp - 1, Math.max(1, Math.round(maker.maxHp * hurt.makerHpPct)));
+      // The hive's resin goes soft with its eggs: whatever it sealed opens.
+      if (ids.some((id) => DUNGEON_LAIR_ACTIONS[lair.kind][id]?.seals) && lair.sealedUntil !== undefined) {
+        lair.sealedUntil = undefined;
+        log("The resin over the ways out goes soft and gives.", "marinara:lair", f.id);
+      }
+      // What the break does to its maker at once (the den's roof down on the beast, the dragon's fire banked).
+      const hurt = spec.onBreak;
+      if (hurt?.makerHpPct || hurt?.status) {
+        const lost = hurt.makerHpPct
+          ? Math.min(maker.hp - 1, Math.max(1, Math.round(maker.maxHp * hurt.makerHpPct)))
+          : 0;
         if (lost > 0) maker.hp -= lost;
         const stunned = hurt.status && !marinaraShrugsOff(maker, hurt.status);
         if (stunned) maker.statuses.push({ status: hurt.status!, turns: 1 });
@@ -751,7 +760,17 @@ export function lairActs(
           maker.id,
         );
       }
-      if (lair.next === f.lairAnchor) lair.next = undefined;
+      if (hurt?.makerMod) {
+        const { stat, pct, turns } = hurt.makerMod;
+        maker.mods.push({ stat, pct, turns, source: `lair-break:${lair.kind}` });
+        const what = stat === "damage" ? "damage" : stat === "resistance" ? "Resistance" : "Defense";
+        log(
+          `${maker.name} is shaken: ${what} ${Math.round(pct * 100)}% for ${turns} turns.`,
+          "marinara:lair",
+          maker.id,
+        );
+      }
+      if (lair.next && ids.includes(lair.next)) lair.next = undefined;
     }
   if (round <= lair.round) return false;
   lair.round = round;

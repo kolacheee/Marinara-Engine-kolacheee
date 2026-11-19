@@ -385,7 +385,8 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
   sanctum: {
     "lair-death-ward": {
       label: "Death Ward",
-      ...strike(1, "dark", { applies: { status: "wither", chance: 0.4, duration: 2, power: 0.04 } }),
+      // Softer since the ward stone no longer stops it (lair sim 23: the sanctum at 67% wins).
+      ...strike(0.8, "dark", { applies: { status: "wither", chance: 0.3, duration: 2, power: 0.04 } }),
     },
     // The circle closes on whoever stands in it: the front of the party, nearest the master.
     "lair-binding-circle": {
@@ -405,7 +406,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
   },
   haven: {
     // The mist hides its lord: hard to find until it acts again (lair panel 6: +30% evasion was no hiding).
-    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.5, duration: 1 },
+    "lair-grave-mist": { label: "Grave Mist", kind: "buff", target: "self", stat: "evasion", pct: 0.4, duration: 1 },
     "lair-thralls-gaze": {
       label: "Thrall's Gaze",
       kind: "status",
@@ -580,23 +581,39 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
       name: string;
       stops: string;
       breaks: string;
-      /** What breaking it does to its maker at once: a share of its max HP lost, and a status for a turn. */
-      onBreak?: { makerHpPct: number; status?: "stun" };
+      /** A second action it feeds, gone with it too (lair panel 8: one action was too thin a trade). */
+      also?: string;
+      /** What breaking it does to its maker at once: a share of its max HP lost, a status for a turn, or a
+       *  stat down for some of its turns. */
+      onBreak?: {
+        makerHpPct?: number;
+        status?: "stun";
+        makerMod?: { stat: "damage" | "resistance" | "defense"; pct: number; turns: number };
+      };
     }
   >
 > = {
-  hoard: { name: "Fire Vent", stops: "lair-dragonfire-vents", breaks: "the vent is choked with rubble" },
-  // The stone that keeps the dead answering (lair panel 6: it guarded Death Ward, the weakest thing the
-  // sanctum does, and nobody would spend a turn on it).
+  // Every one of them takes two things from the lair, or one and something of its maker (lair panel 8:
+  // all five asked that a break compete with hitting the boss).
+  hoard: {
+    name: "Fire Vent",
+    stops: "lair-dragonfire-vents",
+    breaks: "the vent is choked with rubble and the fire in the dragon banks low",
+    onBreak: { makerMod: { stat: "resistance", pct: -0.2, turns: 3 } },
+  },
+  // The stone that keeps the dead answering and the circle closed (lair panel 6: it guarded Death Ward, the
+  // weakest thing the sanctum does).
   sanctum: {
     name: "Ward Stone",
     stops: "lair-dead-answer",
-    breaks: "the ward stone cracks, its light goes out, and the dead stop answering",
+    also: "lair-binding-circle",
+    breaks: "the ward stone cracks, its light goes out, the circle opens and the dead stop answering",
   },
   haven: {
     name: "Master's Coffin",
     stops: "lair-blood-tithe",
-    breaks: "the coffin splinters and the grave earth spills",
+    also: "lair-grave-mist",
+    breaks: "the coffin splinters, the grave earth spills, and its master has no mist to hide in",
   },
   // Knocked out, the prop brings the loose roof down on whatever stands under it: the beast's own nest
   // (lair panel 6: breaking it bought one power-1 action and nothing more).
@@ -609,14 +626,22 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
   breach: {
     name: "Rift Anchor",
     stops: "lair-something-comes",
-    breaks: "the anchor stone shatters and the rift narrows",
+    also: "lair-pull-of-the-rift",
+    breaks: "the anchor stone shatters, the rift narrows, and it no longer pulls",
   },
   drowned: {
     name: "Sluice Gate",
     stops: "lair-surge",
-    breaks: "the sluice gate is wrenched open and the pool runs out through it, with no more surge behind it",
+    also: "lair-rising-water",
+    breaks: "the sluice gate is wrenched open and the pool runs out through it: no more surge, no more rising water",
   },
-  hive: { name: "Egg Cluster", stops: "lair-brood-call", breaks: "the eggs burst and the brood is gone" },
+  hive: {
+    name: "Egg Cluster",
+    stops: "lair-brood-call",
+    also: "lair-resin-seal",
+    breaks: "the eggs burst, the brood is gone, the resin goes soft and the queen's fury falters",
+    onBreak: { makerMod: { stat: "damage", pct: -0.2, turns: 3 } },
+  },
 };
 
 /** Where a lair's breakable thing stands among its feature's cells, so the map can show it (lair panel 4:
@@ -655,7 +680,7 @@ export function dungeonLairAnchorFighter(kind: DungeonLairKind, maker: MarinaraF
   fighter.side = maker.side;
   fighter.dummy = true;
   fighter.lairAnchor = anchor.stops;
-  fighter.maxHp = Math.max(10, Math.round(maker.maxHp * 0.12));
+  fighter.maxHp = Math.max(10, Math.round(maker.maxHp * 0.14));
   fighter.hp = fighter.maxHp;
   return fighter;
 }
@@ -692,6 +717,10 @@ export function dungeonLairFightText(kind: DungeonLairKind): string {
   const spec = DUNGEON_LAIRS[kind];
   const actions = Object.values(DUNGEON_LAIR_ACTIONS[kind]);
   const anchor = DUNGEON_LAIR_ANCHORS[kind];
-  const stops = DUNGEON_LAIR_ACTIONS[kind][anchor.stops]?.label ?? "one of its actions";
+  const stops =
+    [anchor.stops, ...(anchor.also ? [anchor.also] : [])]
+      .map((id) => DUNGEON_LAIR_ACTIONS[kind][id]?.label)
+      .filter(Boolean)
+      .join(" and ") || "one of its actions";
   return `This fight is in ${spec.label}, its maker's own great chamber: ${spec.field} The Engine plays the lair itself, once a round while its maker stands (every other round while its maker is under level 10), and the log tells the party a round ahead what the chamber does next (${actions.map((action) => action.label).join(", ")}). The ${anchor.name} stands among the foes as something the party can strike: broken, ${anchor.breaks}, and the lair has no more ${stops}. Show it in the scene before anyone thinks to hit it. ${DUNGEON_LAIR_NARRATION[kind]} Foreshadow the action the log announces; anything the chamber calls up comes out of it. Add no lair effects of your own.`;
 }

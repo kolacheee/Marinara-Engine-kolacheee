@@ -1305,6 +1305,269 @@ export function DungeonMapView({
             }
           }
       }
+      // The rooms off a lair's great chamber each tell one thing at a glance: a set piece in a clear 2x2 of
+      // floor near the room's middle (lair panel 7 and 8, all five: the side rooms were the same crates and
+      // chains everywhere).
+      if (lairKind && cells && kept?.roomInfo) {
+        const free = (x: number, y: number) =>
+          x >= 0 &&
+          y >= 0 &&
+          x < cells.width &&
+          y < cells.height &&
+          cells.ground[y * cells.width + x] === "floor" &&
+          cells.props[y * cells.width + x] === -1 &&
+          !hasF(x, y);
+        kept.roomInfo.forEach((info, index) => {
+          if (!info || info.heart) return;
+          const room = cells.rooms[index];
+          if (!room) return;
+          const [mx, my] = [room.x + room.w / 2 - 1, room.y + room.h / 2 - 1];
+          const spot = dungeonRoomCells(room)
+            .filter(
+              ({ x, y }) =>
+                free(x, y) &&
+                free(x + 1, y) &&
+                free(x, y + 1) &&
+                free(x + 1, y + 1) &&
+                dungeonRoomHas(room, x + 1, y + 1),
+            )
+            .sort(
+              (p, q) => Math.hypot(p.x - mx, p.y - my) - Math.hypot(q.x - mx, q.y - my) || p.y - q.y || p.x - q.x,
+            )[0];
+          if (!spot || inFog(spot.x, spot.y)) return;
+          const [ox, oy] = [spot.x * T, spot.y * T];
+          const px = (x: number, y: number, w: number, h: number, colour: string) => {
+            ctx.fillStyle = colour;
+            ctx.fillRect(ox + x, oy + y, w, h);
+          };
+          const glow = (x: number, y: number, r: number, colour: string) => {
+            const g = ctx.createRadialGradient(ox + x, oy + y, 1, ox + x, oy + y, r);
+            g.addColorStop(0, colour);
+            g.addColorStop(1, colour.replace(/[\d.]+\)$/, "0)"));
+            ctx.fillStyle = g;
+            ctx.fillRect(ox + x - r, oy + y - r, r * 2, r * 2);
+          };
+          const bone = (x: number, y: number, w: number) => {
+            px(x, y + 1, w, 1, "#d8ccb0");
+            px(x - 1, y, 2, 3, "#ece2c8");
+            px(x + w - 1, y, 2, 3, "#ece2c8");
+          };
+          const skull = (x: number, y: number) => {
+            px(x, y, 5, 4, "#ece2c8");
+            px(x + 1, y + 4, 3, 1, "#d8ccb0");
+            px(x + 1, y + 1, 1, 1, "#2a2018");
+            px(x + 3, y + 1, 1, 1, "#2a2018");
+          };
+          const candle = (x: number, y: number) => {
+            glow(x + 1, y, 6, "rgba(255, 190, 90, 0.35)");
+            px(x, y + 1, 2, 4, "#e8dcc0");
+            px(x, y - 1, 2, 2, "#ffcf5a");
+          };
+          const ring = (r: number, colour: string, width = 1) => {
+            ctx.save();
+            ctx.strokeStyle = colour;
+            ctx.lineWidth = width;
+            ctx.beginPath();
+            ctx.arc(ox + T, oy + T, r, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+          };
+          const name = info.name.replace(/ \d+$/u, "");
+          if (name === "Bone midden" || name === "Gnawing cave") {
+            // Picked bones heaped high, a skull on top; the den's gnawing floor dark with old blood.
+            if (name === "Gnawing cave") glow(16, 18, 14, "rgba(70, 10, 10, 0.45)");
+            ctx.fillStyle = "rgba(10, 8, 6, 0.45)";
+            ctx.beginPath();
+            ctx.ellipse(ox + 16, oy + 20, 13, 8, 0, 0, Math.PI * 2);
+            ctx.fill();
+            for (let n = 0; n < 9; n++) {
+              const h = hash(spot.x * 5 + n, spot.y * 3 + n * 7);
+              bone(4 + (h % 20), 10 + ((h >> 4) % 13), 4 + ((h >> 8) % 4));
+            }
+            // A ribcage.
+            for (let k = 0; k < 4; k++) px(9 + k * 3, 14, 1, 6, "#e2d6ba");
+            px(8, 13, 12, 1, "#d0c4a6");
+            skull(19, 8);
+          } else if (name === "Smoke vent") {
+            // A soot-black crack breathing heat, the floor round it scorched.
+            glow(16, 16, 16, "rgba(20, 14, 10, 0.6)");
+            glow(16, 16, 7, "rgba(255, 110, 30, 0.5)");
+            for (const [x, y, w] of [
+              [6, 13, 6],
+              [11, 15, 7],
+              [17, 17, 6],
+              [22, 19, 4],
+            ] as const) {
+              px(x, y, w, 2, "#120a06");
+              px(x + 1, y, w - 2, 1, "#ff8a2a");
+            }
+            px(13, 6, 2, 2, "rgba(120, 110, 100, 0.5)");
+            px(17, 3, 3, 3, "rgba(120, 110, 100, 0.35)");
+          } else if (name === "Phylactery vault") {
+            // On a stone plinth, the jar that holds the lich's soul, glowing sickly green.
+            glow(16, 13, 13, "rgba(120, 255, 160, 0.4)");
+            px(9, 20, 14, 6, "#4a4652");
+            px(9, 20, 14, 1, "#6c6878");
+            px(11, 26, 10, 2, "#2c2a32");
+            px(13, 9, 6, 11, "#2e6a48");
+            px(14, 10, 4, 9, "#7affb0");
+            px(13, 7, 6, 2, "#8a7a5a");
+            px(15, 12, 1, 4, "#e8fff0");
+          } else if (name === "Ward hall" || name === "Summoning circle") {
+            // A circle cut into the floor and lit: violet wards, or a summoning ring red with old blood.
+            const summon = name === "Summoning circle";
+            const colour = summon ? "rgba(220, 40, 40, 0.75)" : "rgba(170, 120, 255, 0.75)";
+            glow(16, 16, 15, summon ? "rgba(200, 30, 30, 0.25)" : "rgba(150, 100, 255, 0.22)");
+            ring(13, colour, 2);
+            ring(9, colour);
+            ctx.save();
+            ctx.strokeStyle = colour;
+            ctx.beginPath();
+            for (let k = 0; k <= 5; k++) {
+              const a = -Math.PI / 2 + (k * 4 * Math.PI) / 5;
+              const [x, y] = [ox + T + Math.cos(a) * 9, oy + T + Math.sin(a) * 9];
+              if (k) ctx.lineTo(x, y);
+              else ctx.moveTo(x, y);
+            }
+            ctx.stroke();
+            ctx.restore();
+            if (summon)
+              for (const [x, y] of [
+                [2, 14],
+                [28, 14],
+                [15, 1],
+                [15, 27],
+              ] as const)
+                candle(x, y);
+          } else if (name === "Library of the dead") {
+            // Torn pages and an open book on the floor by a guttering candle.
+            px(8, 14, 16, 9, "#3a2a1a");
+            px(9, 15, 6, 7, "#e6dcc0");
+            px(17, 15, 6, 7, "#e6dcc0");
+            px(15, 14, 2, 9, "#2a1c10");
+            for (let k = 0; k < 3; k++) {
+              px(10, 16 + k * 2, 4, 1, "#7a6a52");
+              px(18, 16 + k * 2, 4, 1, "#7a6a52");
+            }
+            for (const [x, y] of [
+              [3, 6],
+              [24, 25],
+              [26, 7],
+            ] as const)
+              px(x, y, 4, 3, "#d4c8aa");
+            candle(4, 22);
+          } else if (name === "Earth vault") {
+            // The vampire's own grave soil, heaped in a box, a spade stood in it.
+            px(5, 12, 22, 14, "#3a2416");
+            px(6, 11, 20, 12, "#5a3a22");
+            px(8, 9, 16, 6, "#6a4a2c");
+            px(20, 2, 2, 12, "#7a5a38");
+            px(18, 1, 6, 2, "#9a9aa0");
+          } else if (name === "Blood larder") {
+            // A stone basin brimming dark, drips on the floor round it.
+            px(6, 12, 20, 12, "#55505a");
+            px(7, 13, 18, 9, "#3a0810");
+            px(9, 15, 8, 2, "#8a1020");
+            for (const [x, y] of [
+              [3, 26],
+              [27, 8],
+              [24, 27],
+              [4, 6],
+            ] as const)
+              px(x, y, 2, 2, "#6a0a14");
+          } else if (name === "Thralls' cell") {
+            // A thrall slumped against the wall in chains, still alive.
+            px(13, 3, 1, 9, "#5a5a62");
+            px(19, 3, 1, 9, "#5a5a62");
+            px(11, 12, 10, 12, "#7a6a5a");
+            px(13, 8, 6, 5, "#d8c0a8");
+            px(12, 11, 3, 2, "#9a9aa0");
+            px(18, 11, 3, 2, "#9a9aa0");
+            px(9, 24, 14, 3, "rgba(10, 6, 4, 0.5)");
+          } else if (name === "Cult cell") {
+            // Bedrolls laid in a row, all their heads toward the breach.
+            for (let k = 0; k < 3; k++) {
+              px(4 + k * 9, 6, 7, 20, "#5a2a22");
+              px(4 + k * 9, 6, 7, 5, "#c8b490");
+              px(5 + k * 9, 12, 5, 13, "#7a3a2c");
+            }
+            candle(14, 28);
+          } else if (name === "Sacrifice pit") {
+            // A dark pit, its lip stained red.
+            ctx.fillStyle = "#4a0a0e";
+            ctx.beginPath();
+            ctx.ellipse(ox + 16, oy + 16, 13, 10, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#050302";
+            ctx.beginPath();
+            ctx.ellipse(ox + 16, oy + 17, 10, 7, 0, 0, Math.PI * 2);
+            ctx.fill();
+            skull(20, 4);
+          } else if (name === "Sunken shrine") {
+            // A drowned idol standing in its own puddle, weed hanging from it.
+            glow(16, 22, 13, "rgba(40, 120, 100, 0.4)");
+            px(11, 6, 10, 18, "#5a6a62");
+            px(12, 7, 8, 5, "#7a8a82");
+            px(13, 8, 2, 2, "#1a2420");
+            px(17, 8, 2, 2, "#1a2420");
+            for (const x of [11, 15, 19]) px(x, 12, 2, 10, "#2a6a3a");
+          } else if (name === "Wrack cave" || name === "Drinking pool") {
+            // Weed and shells thrown up by the water, or the beast's paw prints down to the pool.
+            if (name === "Drinking pool")
+              for (let k = 0; k < 5; k++) {
+                const [x, y] = [4 + k * 5, 26 - k * 5];
+                px(x, y, 3, 3, "rgba(30, 20, 14, 0.7)");
+                px(x - 1, y - 2, 1, 1, "rgba(30, 20, 14, 0.7)");
+                px(x + 1, y - 2, 1, 1, "rgba(30, 20, 14, 0.7)");
+                px(x + 3, y - 1, 1, 1, "rgba(30, 20, 14, 0.7)");
+              }
+            else {
+              for (let n = 0; n < 7; n++) {
+                const h = hash(spot.x + n * 11, spot.y - n * 5);
+                px(3 + (h % 24), 4 + ((h >> 4) % 22), 6, 2, "#2a5a32");
+              }
+              for (const [x, y] of [
+                [8, 20],
+                [20, 9],
+                [24, 22],
+              ] as const)
+                px(x, y, 3, 2, "#e8d8c0");
+            }
+          } else if (name === "Egg cells" || name === "Comb gallery") {
+            // A clutch of pale eggs in a waxy cup, or comb crusting the floor.
+            ctx.fillStyle = "#8a5a12";
+            ctx.beginPath();
+            ctx.ellipse(ox + 16, oy + 18, 12, 9, 0, 0, Math.PI * 2);
+            ctx.fill();
+            if (name === "Egg cells")
+              for (const [x, y] of [
+                [10, 13],
+                [16, 11],
+                [21, 14],
+                [13, 18],
+                [19, 19],
+              ] as const) {
+                glow(x + 2, y + 3, 5, "rgba(255, 245, 210, 0.35)");
+                px(x, y, 5, 6, "#f0e6c4");
+                px(x + 1, y, 2, 2, "#fffbe8");
+              }
+            else for (let k = 0; k < 6; k++) px(7 + (k % 3) * 6, 13 + Math.floor(k / 3) * 6, 5, 4, "#c8922c");
+          } else if (name === "Larder of husks") {
+            // Prey wrapped in resin and hung to keep.
+            for (const x of [6, 14, 22]) {
+              px(x, 3, 1, 4, "#c8922c");
+              px(x - 2, 7, 5, 18, "#c9b48a");
+              px(x - 1, 8, 3, 15, "#a8946a");
+            }
+          } else if (name === "Treasure cleft") {
+            // Coin spilt out of the cleft's chests across its floor.
+            for (let n = 0; n < 14; n++) {
+              const h = hash(spot.x * 3 + n, spot.y * 7 + n * 13);
+              px(2 + (h % 26), 4 + ((h >> 5) % 24), 3, 2, n % 4 ? "#e0b236" : "#fff3b8");
+            }
+          }
+        });
+      }
       // A cave lair's crawl: a squeeze through fallen rock into the great chamber, the boulders heaped either
       // side of a dark one-cell slot and spilled onto the floor beyond (lair panel 6: the crawl was unreadable).
       const crawl = kept?.lairCrawl;
