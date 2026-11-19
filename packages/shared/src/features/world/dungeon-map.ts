@@ -1265,7 +1265,7 @@ export function gameDungeonLairTrail(map: GameDungeonMap): Array<{ x: number; y:
 /** A carved place's deepest floor as a creature's lair: its great chamber the biggest room in the far half
  *  from the way in (the heart), and what it holds drawn in it, the drowned hall's pool as water. */
 function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLairKind): GameDungeonMap {
-  const grown = caveLairGrown(made);
+  const grown = caveLairGrown(made, kind !== "drowned" && kind !== "den");
   return caveLairCarved(
     grown === made
       ? kept
@@ -1279,7 +1279,7 @@ function caveLairFloor(kept: GameDungeonMap, made: DungeonMap, kind: DungeonLair
  *  nine, carved as an oval so it reads as a hollow and not a box (lair panel 12, all five: the chamber was
  *  a corner pocket of a great cave, too small for a dragon). The chamber picked the way caveLairCarved
  *  picks it. */
-function caveLairGrown(made: DungeonMap): DungeonMap {
+function caveLairGrown(made: DungeonMap, dry = false): DungeonMap {
   const steps = dungeonStepsFrom(made, made.entrance);
   const distance = made.rooms.map((room) => {
     let best = -1;
@@ -1366,13 +1366,22 @@ function caveLairGrown(made: DungeonMap): DungeonMap {
     if (!moved) break;
   }
   const was = made.rooms[pick]!;
-  if (room.w === was.w && room.h === was.h) return made;
+  if (room.w === was.w && room.h === was.h) {
+    // Not grown, still dried (lair panel 13: the hive's pool across a chamber that could not grow).
+    const wet = dungeonRoomCells(room).filter(({ x, y }) => made.ground[y * made.width + x] === "liquid");
+    if (!dry || !wet.length) return made;
+    const ground = [...made.ground];
+    for (const { x, y } of wet) ground[y * made.width + x] = "floor";
+    return { ...made, ground };
+  }
   const ground = [...made.ground];
   const [cx, cy] = [room.x + (room.w - 1) / 2, room.y + (room.h - 1) / 2];
   for (const { x, y } of dungeonRoomCells(room)) {
     const i = y * made.width + x;
     const inside = ((x - cx) / (room.w / 2)) ** 2 + ((y - cy) / (room.h / 2)) ** 2 <= 1;
     if (inside && (ground[i] === "rock" || ground[i] === "wall") && made.props[i] === -1) ground[i] = "floor";
+    // A dry lair's hollow keeps no cave pool across it (lair panel 13: water cut the hive's comb in a band).
+    if (dry && ground[i] === "liquid") ground[i] = "floor";
   }
   // The old room's walls carved off, a rock lining left round the new hollow where it meets the dark.
   for (const { x, y } of dungeonRoomCells(room)) {

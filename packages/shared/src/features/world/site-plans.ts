@@ -3152,7 +3152,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
   // One space on a floor is the set piece, two or three times any other (gamer panel 2026-11-17).
   // Below a crypt the set piece is one great hall, the others chambers off it (panel round 48: four near-equal boxes).
   const weight = (r: SitePlanRoom) =>
-    SITE_WANT[r.size] * (r.heart || SITE_SET_PIECES.has(r.name) ? (rock && kind === "crypt" ? 3.2 : 2.2) : 1);
+    SITE_WANT[r.size] *
+    // A lair's great chamber is the heart of its floor, the rooms off it small (lair panel 13: the hoard
+    // keep's chamber a closet beside a bigger side room).
+    (level.lair && r.heart ? 3.6 : r.heart || SITE_SET_PIECES.has(r.name) ? (rock && kind === "crypt" ? 3.2 : 2.2) : 1);
   const sum = planned.reduce((n, room) => n + weight(room), 0) || 1;
   const room = rock ? freeCount * 0.5 : freeCount;
   const scale = Math.max(0.6, Math.min(rock ? 1.6 : 1.35, room / (sum * (rock ? 1 : 1.15))));
@@ -5991,7 +5994,10 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
           !SITE_STAMP_FREE_SET_PIECE.test(name),
       )
       .sort((a, b) => b.room.w * b.room.h - a.room.w * a.room.h);
-    if (level.depth < 0 && big.length && random() < 0.65) {
+    // A breach, a hive or a sanctum has no standing water of its own (lair panel 13: a cross-shaped pool in a
+    // fiend's breach read as the wrong element).
+    const dryLair = !!level.lair && level.lair !== "drowned" && level.lair !== "den";
+    if (level.depth < 0 && big.length && !dryLair && random() < 0.65) {
       for (const { room } of big.slice(0, 3)) {
         const [rx, ry] = [Math.max(1, Math.min(3, (room.w - 4) / 2)), Math.max(1, Math.min(2.5, (room.h - 4) / 2))];
         const [cx, cy] = [

@@ -411,6 +411,17 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       summon: { name: "Risen Bones", archetype: "blade", count: 1 },
       ...strike(1, "dark"),
     },
+    // Its fourth: the voice that reads the names of the dead reads theirs too (lair panel 13: a ward stone
+    // and the vault's deed together left the sanctum with nothing to do).
+    "lair-names-read": {
+      label: "The Names Are Read",
+      kind: "status",
+      target: "all-enemies",
+      status: "wither",
+      chance: 0.4,
+      duration: 2,
+      ranged: true,
+    },
   },
   haven: {
     // The mist hides its lord: hard to find until it acts again (lair panel 6: +30% evasion was no hiding).
@@ -496,6 +507,17 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       summon: { name: "Rift-Spawn", archetype: "blade", count: 1 },
       ...strike(2, "fire", { areaPct: 0.3 }),
     },
+    // Its fourth: burning stone falls out of the rift onto the front (lair panel 13: anchor and pit together
+    // left the breach with nothing).
+    "lair-brimstone": {
+      label: "Brimstone Falls",
+      ...strike(1.1, "fire", {
+        target: "front-row",
+        scales: "strength",
+        damage: "physical",
+        applies: { status: "sear", chance: 0.4, duration: 2 },
+      }),
+    },
   },
   drowned: {
     "lair-surge": {
@@ -557,6 +579,17 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
       stat: "damage",
       pct: 0.2,
       duration: 2,
+    },
+    // Its fourth: the hive's drone lulls one of them where they stand (lair panel 13: eggs and larder together
+    // left the hive with nothing).
+    "lair-drone": {
+      label: "The Lulling Drone",
+      kind: "status",
+      target: "enemy",
+      status: "sleep",
+      chance: 0.35,
+      duration: 1,
+      ranged: true,
     },
   },
 };

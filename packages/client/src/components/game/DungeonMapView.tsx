@@ -1927,7 +1927,9 @@ export function DungeonMapView({
           const ground = cells.ground[y * cells.width + x];
           if (inFog(x, y) || ground === "wall" || ground === "rock") continue;
           const [ox, oy] = [x * T, y * T];
-          ctx.fillStyle = "rgba(8, 38, 30, 0.78)";
+          // Near-opaque so the water tile's own pattern can't show through as a checkerboard, a deep blue-green
+          // rather than moss (lair panel 13: "a checkerboard of two greens", "green, not blue").
+          ctx.fillStyle = "rgb(10, 34, 46)";
           ctx.fillRect(ox, oy, T, T);
           const edges = [
             [0, -1],
@@ -1935,18 +1937,14 @@ export function DungeonMapView({
             [-1, 0],
             [1, 0],
           ] as const;
-          const deep = edges.every(([dx, dy]) => hasF(x + dx, y + dy));
-          if (deep) {
-            ctx.fillStyle = "rgba(2, 16, 12, 0.35)";
-            ctx.fillRect(ox, oy, T, T);
-          }
+          // One even depth: a darker middle cell by cell read as a checkerboard (lair panel 13).
           const h = hash(x + 3, y + 9);
-          ctx.fillStyle = "rgba(150, 210, 180, 0.35)";
+          ctx.fillStyle = "rgba(150, 200, 220, 0.35)";
           ctx.fillRect(ox + 2 + (h % 6), oy + 3 + ((h >> 3) % 4), 4 + ((h >> 6) % 3), 1);
           ctx.fillRect(ox + 1 + ((h >> 9) % 7), oy + 9 + ((h >> 12) % 3), 3, 1);
           for (const [dx, dy] of edges) {
             if (hasF(x + dx, y + dy)) continue;
-            ctx.fillStyle = "rgba(170, 220, 190, 0.5)";
+            ctx.fillStyle = "rgba(170, 210, 225, 0.5)";
             if (dy === -1) ctx.fillRect(ox, oy, T, 1);
             else if (dy === 1) ctx.fillRect(ox, oy + T - 1, T, 1);
             else if (dx === -1) ctx.fillRect(ox, oy, 1, T);
@@ -2192,7 +2190,8 @@ export function DungeonMapView({
           if (v % 4 === 1) {
             // A loose gem.
             const [gx, gy] = [3 + (v % 9), 4 + ((v >> 4) % 8)];
-            ctx.fillStyle = v % 3 === 0 ? "#2f5fd0" : v % 3 === 1 ? "#c8283a" : "#2a9a5a";
+            // Red and green only: a blue one read as the party's marker (lair panel 13).
+            ctx.fillStyle = v % 2 === 0 ? "#c8283a" : "#2a9a5a";
             ctx.fillRect(ox + gx, oy + gy, 3, 3);
             ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
             ctx.fillRect(ox + gx, oy + gy, 1, 1);
@@ -2408,7 +2407,12 @@ export function DungeonMapView({
           px(1, 14, 2, 2, "#a39a9e");
           px(13, 13, 2, 1, "#a39a9e");
         } else if (lairKind === "haven") {
-          // The master's coffin: the same coffin, banded in gold.
+          // The master's coffin: the same coffin with a blood-red lid and a gold sigil on it, banded in gold
+          // (lair panel 13: five identical coffins, the master's ambiguous).
+          px(4, 2, T - 8, T - 4, "#6a0e18");
+          px(5, 3, T - 10, 1, "#9a1c28");
+          px(7, 5, 2, 6, "#f0d27a");
+          px(5, 7, 6, 2, "#f0d27a");
           px(3, 0, 1, T, "#d9b25a");
           px(T - 4, 0, 1, T, "#d9b25a");
           px(4, 0, T - 8, 1, "#f0d27a");

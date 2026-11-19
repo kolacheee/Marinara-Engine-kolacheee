@@ -407,12 +407,14 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
       : undefined;
     // The vampire stands out on its hall's floor two steps before its own coffin, not in the coffin row
     // (lair panel 12: it read as clipped into the wall); the others stand on their feature's middle.
+    // The hive's queen keeps by her eggs, a step off them (lair panel 13: she stood mid-floor, the eggs far off).
     const own =
-      centroid && here.map.lairKind === "haven" && here.site.lair
+      centroid && (here.map.lairKind === "haven" || here.map.lairKind === "hive") && here.site.lair
         ? dungeonLairAnchorCell(here.site.lair.kind, feature)
         : undefined;
+    const back = here.map.lairKind === "hive" ? 1 : 2;
     const heap = own
-      ? { x: own.x + 2 * Math.sign(centre.x - own.x), y: own.y + 2 * Math.sign(centre.y - own.y) }
+      ? { x: own.x + back * Math.sign(centre.x - own.x), y: own.y + back * Math.sign(centre.y - own.y) }
       : centroid;
     const coldWatch =
       gone && here.state.lairCold && area.role === "heart" && door
@@ -545,7 +547,8 @@ export function dungeonGuardMarks(here: DungeonSiteHere, today: number): Dungeon
         ...at,
         area: area.area,
         count: foes.length,
-        heart: area.role === "heart",
+        // A cold lair's holders are no maker: no crown on them (lair panel 13: a crowned holder read as the dragon).
+        heart: area.role === "heart" && !(here.state.lair && here.state.lairCold),
         ...(area.asleep ? { asleep: true } : { face }),
         ...(post ? { post } : {}),
         ...key,
