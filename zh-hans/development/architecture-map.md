@@ -56,7 +56,7 @@ React 19 加 Vite PWA，目前有好几百个源文件。
 当前顶层结构：
 
 - `App.tsx`、`main.tsx`：应用启动、React Query、PWA、全局副作用。
-- `components/layout`：应用外壳、侧边栏、顶栏、窗口渲染器。
+- `components/layout`：应用外壳、侧边栏（聊天或某个面板）、顶栏、窗口渲染器。
 - `components/ui`：可复用的 UI 基础组件。
 - `components/chat`：通用聊天、conversation、roleplay、场景、立绘、遭遇战 UI 混在一起。
 - `components/game`：Game Mode 的主界面和各个面板。

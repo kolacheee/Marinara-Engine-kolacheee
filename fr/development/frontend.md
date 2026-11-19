@@ -10,31 +10,34 @@ Le client se trouve dans `packages/client`. Il dialogue avec un serveur d'API Fa
 
 ## Architecture de l'application
 
-### Disposition en trois colonnes
+### Disposition générale
 
-L'interface reprend une disposition en trois colonnes inspirée de Discord, gérée par `components/layout/AppShell.tsx` :
+`components/layout/AppShell.tsx` dispose la barre du haut, le panneau central et une seule barre latérale. La barre latérale affiche Chats ou un panneau, jamais les deux. Elle est ancrée à droite par défaut, ou à gauche lorsque `sidebarSide` vaut `"left"` :
 
 ```
-+-------------+-----------------------------+--------------+
-|  Left       |         Center              |  Right       |
-|  Sidebar    |                             |  Panel       |
-|             |  Chat area or Editor        |              |
-|  Chat list  |  (lazy-loaded)              |  Characters  |
-|  Folders    |                             |  Lorebooks   |
-|  Mode tabs  |  ChatConversationSurface    |  Presets     |
-|             |  ChatRoleplaySurface        |  Connections |
-|             |  GameSurface                |  Agents      |
-|             |  CharacterEditor            |  Personas    |
-|             |  LorebookEditor             |  Settings    |
-|             |  PresetEditor               |  Browser     |
-|             |  ...other editors           |              |
-+-------------+-----------------------------+--------------+
++-----------------------------------+----------------+
+|  Center                           |  Sidebar       |
+|                                   |                |
+|  Chat area or Editor              |  Chats         |
+|  (lazy-loaded)                    |  (chat list,   |
+|                                   |  folders,      |
+|  ChatConversationSurface          |  mode tabs)    |
+|  ChatRoleplaySurface              |                |
+|  GameSurface                      |  or a panel:   |
+|  CharacterEditor                  |  Characters    |
+|  LorebookEditor                   |  Personas      |
+|  PresetEditor                     |  Lorebooks     |
+|  ...other editors                 |  Presets, ...  |
++-----------------------------------+----------------+
 ```
 
-- Barre latérale gauche (`components/layout/ChatSidebar.tsx`) : la liste des chats, organisée par dossiers et filtrable par mode (Conversation, Roleplay, Game).
+- Barre latérale (`[data-component="SidebarSlot"]` dans `AppShell.tsx`) : un seul emplacement sur ordinateur. Son conteneur coulissant (`SidebarSlotPanel`) contient deux couches superposées. `ChatSidebarPanel` affiche `components/layout/ChatSidebar.tsx`, la liste des chats avec les dossiers et les onglets de mode (Conversation, Roleplay, Game). Il est toujours monté sur ordinateur, car les compteurs de messages non lus et les bulles de notification sont chargés depuis ce composant. `RightPanelDesktop` affiche `components/layout/RightPanel.tsx` et se monte à la première ouverture d'un panneau. La couche masquée est `invisible`, `inert` et `aria-hidden`. Le passage de Chats à un panneau est instantané, tandis que l'ouverture ou la fermeture de la barre latérale se fait par coulissement.
+- Largeur : un séparateur sur le bord intérieur de la barre latérale (aria-label "Resize sidebar") définit la largeur partagée, de `SHARED_SIDEBAR_WIDTH_MIN` (280) à `SHARED_SIDEBAR_WIDTH_MAX` (480). Lis-la avec `selectSharedSidebarWidth` ; le store maintient `sidebarWidth` et `rightPanelWidth` à la même valeur.
+- Côté : avec `sidebarSide: "left"`, l'emplacement reçoit la propriété CSS `order: -1`. Il garde sa place dans l'arbre React, donc changer de côté ne remonte jamais un panneau. `--mari-chat-ui-inset-left` / `--mari-chat-ui-inset-right`, le décalage du Panneau des trackers ancré et les marges intérieures des fenêtres `Modal` non modales suivent le côté choisi.
+- Téléphones et tablettes : lorsque `isMobileShellViewport()` vaut true (`MOBILE_SHELL_MEDIA_QUERY`, ou une fenêtre trop étroite pour la disposition ancrée), la barre latérale est un panneau plein écran qui arrive de la droite, rendu sous forme de `ChatSidebarPanel` ou de `RightPanelMobile`. `sidebarSide` ne s'y applique pas.
 - Panneau central : soit la surface du chat actif, soit un éditeur plein écran (personnage, lorebook, preset, etc.). Un seul s'affiche à la fois. Les éditeurs remplacent la zone de chat.
-- Panneau de droite (`components/layout/RightPanel.tsx`) : un explorateur de ressources et les réglages, que la barre du haut affiche ou masque. Une fois monté, un panneau reste dans le DOM (masqué en CSS) pour conserver sa position de défilement et son état local.
-- Barre du haut (`components/layout/TopBar.tsx`) : les boutons d'accès rapide à chaque panneau de droite.
+- Panneaux (`components/layout/RightPanel.tsx`) : dirige `rightPanel` vers un composant de panneau et garde les panneaux visités montés. Voir [Système de panneaux](#panel-system-componentspanels).
+- Barre du haut (`components/layout/TopBar.tsx`) : Accueil et les informations du chat d'un côté. Du côté de la barre latérale, `[data-tour="panel-buttons"]` contient d'abord le bouton Chats (`[data-tour="sidebar-toggle"]`), puis un bouton par panneau. Avec `sidebarSide: "left"`, la barre s'inverse (`flex-row-reverse`) : les boutons des panneaux se placent à gauche et Accueil tout à droite. Sur téléphone et tablette, Chats reste à côté d'Accueil ; sur téléphone, Chats et les boutons des panneaux passent dans le menu **Plus**.
 
 ### Navigation
 
@@ -48,8 +51,11 @@ La navigation est pilotée par l'état. Il n'y a pas de routeur d'URL. Le store 
 | Ouvrir l'éditeur de connexion | `connectionDetailId` | `openConnectionDetail(id)`                         |
 | Ouvrir l'éditeur d'agent | `agentDetailId`      | `openAgentDetail(id)`                              |
 | Ouvrir l'éditeur de persona | `personaDetailId`    | `openPersonaDetail(id)`                            |
-| Changer de panneau de droite | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| Afficher un panneau | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| Afficher Chats | `sidebarOpen`        | `toggleSidebar()` / `setSidebarOpen(open)`        |
 | Ouvrir une fenêtre | `modal`              | `openModal(type, props?)`                          |
+
+Chats et les panneaux partagent la barre latérale ; ils s'excluent donc mutuellement sur toutes les tailles d'écran. `openRightPanel` et `toggleRightPanel` ferment Chats, tandis que `toggleSidebar` et `setSidebarOpen(true)` ferment le panneau. `setSidebarOpen(false)` laisse un panneau ouvert tel quel. `selectSidebarShown` vaut false lorsqu'un panneau est ouvert : si un ancien état contient les deux indicateurs à true, le panneau s'affiche, et l'état persisté transforme une telle paire enregistrée pour ne garder que le panneau.
 
 ### Découpage du code
 
@@ -76,6 +82,7 @@ Le seul store persisté (dans localStorage, via le middleware `persist` de Zusta
 - Son : `convoNotificationSound` et `rpNotificationSound`.
 - Comportement : `confirmBeforeDelete`, `enterToSendRP`, `enterToSendConvo`, `weatherEffects` et `guideGenerations`.
 - Navigation : `rightPanel`, `rightPanelOpen`, `sidebarOpen`, `settingsTab`, tous les champs `*DetailId` et `modal`.
+- Disposition de la barre latérale : `sidebarSide` (`"right"` ou `"left"`, `"right"` par défaut, synchronisé entre les appareils et réinitialisé à `"right"` par `resetAppearanceSettings`), et `sidebarWidth` / `rightPanelWidth` (maintenus à la même valeur ; lis-les avec `selectSharedSidebarWidth`).
 
 Les thèmes personnalisés synchronisés ne sont pas stockés dans `ui.store.ts`. React Query les récupère depuis le serveur, et ils sont répliqués sur tous les appareils reliés à la même instance Marinara.
 
@@ -319,14 +326,14 @@ Le schéma commun à toutes les fenêtres : elles acceptent `{ open, onClose }`,
 
 ### Système de panneaux (`components/panels/`)
 
-Les panneaux de droite présentent des listes de ressources avec recherche, tri et filtrage. Quand tu cliques sur une ressource, son éditeur complet s'ouvre dans le panneau central.
+Les panneaux s'ouvrent dans la barre latérale à la place de Chats et présentent des listes de ressources avec recherche, tri et filtrage. Quand tu cliques sur une ressource, son éditeur complet s'ouvre dans le panneau central.
 
 Les panneaux sont enregistrés à deux endroits dans `RightPanel.tsx` :
 
 1. `PANEL_CONFIG` : le titre, l'icône et la couleur du dégradé.
 2. `RIGHT_PANELS` (dans `right-panel-panels.ts`) : la table des composants.
 
-Les panneaux conservent leur état grâce à un Set `mountedPanels` stocké dans un `useState` à l'intérieur de `RightPanel`. Il recense les panneaux déjà visités. Une fois monté, un panneau reste dans le DOM (masqué par `display: none` ou `aria-hidden`) pour conserver son état.
+Les panneaux conservent leur état grâce à un Set `mountedPanels` stocké dans un `useState` à l'intérieur de `RightPanel`. Il recense les panneaux déjà visités. Une fois monté, un panneau reste dans le DOM (masqué par `display: none` ou `aria-hidden`) pour conserver son état. Le Set appartient à un montage de `RightPanel` : un remontage, comme la réouverture du panneau sur téléphone, commence donc avec le seul panneau courant.
 
 ### Primitives d'interface (`components/ui/`)
 
@@ -343,6 +350,8 @@ Les panneaux conservent leur état grâce à un Set `mountedPanels` stocké dans
 Tous les composants d'interface fonctionnent avec des props contrôlées (value et onChange) et un rendu en portail pour les surimpressions.
 
 **Les panneaux de bibliothèque utilisent `LibraryToolbar`.** Les panneaux Characters, Personas, Lorebooks, Agents et les onglets du panneau Presets affichent leurs contrôles supérieurs par son intermédiaire : une ligne de bibliothèque facultative (un bouton pleine largeur, ou la paire Download / Open Library), les actions créer / importer / exporter / sélectionner, la recherche avec le menu de tri partagé, New Folder, puis les filtres du panneau sous forme de `children`. Les lignes sont des props typées, pas des emplacements : un nouveau panneau de bibliothèque reçoit donc le même balisage plutôt qu'une copie qui diverge. Ajoute une prop à ce composant au lieu de construire manuellement une barre d'outils dans un panneau.
+
+`LibraryToolbar.tsx` exporte aussi `SegmentedButtons`, un long bouton `.mari-chrome-segmented` séparé par `|`. Il affiche la paire Télécharger / Ouvrir la bibliothèque et les onglets **Prompts** / **Regex** / **Outils** / **Profils** du panneau Presets, pour que la ligne supérieure de chaque panneau ait la même hauteur. Passer `groupLabel` fait de cette ligne un ensemble d'onglets avec `role="group"`, et `pressed` définit le `aria-pressed` de chaque onglet. `.mari-chrome-segmented` utilise `flex-shrink: 0`, pour que le conteneur de défilement flex à hauteur fixe d'un panneau (comme dans Personnages) ne puisse pas comprimer la ligne.
 
 ## Client d'API (`lib/api-client.ts`)
 
@@ -364,6 +373,30 @@ import { api, ApiError } from "@/lib/api-client";
 | `api.streamEvents(path, body)` | `POST /api{path}`   | Générateur asynchrone SSE (tous les types d'événement) |
 
 En cas d'erreur, une exception `ApiError` est levée ; elle porte les propriétés `status` et `message`.
+
+## Sélecteurs et menus déroulants
+
+Chaque contrôle de choix d'une valeur ouvre la même fenêtre de sélection partagée. Toute modification de la conception des sélecteurs (surface, style des lignes, largeur) doit se faire dans les composants partagés ci-dessous, jamais dans une fonctionnalité. N'utilise pas de `<select>` natif et ne dessine pas de liste dans ton propre panneau contextuel : l'application n'en utilise plus.
+
+| Couche | Fichier | Responsabilité |
+| --- | --- | --- |
+| Fenêtre | `components/ui/PickerWindow.tsx` | La surface. Sur ordinateur, c'est un panneau contextuel à côté de son champ, aussi large que ses lignes l'exigent (au moins la largeur du champ, au plus 352 px ou la largeur du champ s'il est plus large). Sur téléphone, c'est un panneau qui s'ouvre depuis le bas (une `Modal`) ; à l'intérieur d'une `Modal`, il reste un panneau contextuel pour éviter d'empiler deux panneaux. Échap, Retour, un clic à l'extérieur et le défilement du champ hors de la zone visible le ferment. |
+| Lignes | `components/ui/PickerParts.tsx` | `PickRow` (une ligne : illustration, titre, seconde ligne pouvant se répartir sur deux lignes, badge, coche ou case à cocher), `PickerSearch`, en-têtes de dossiers et `usePickerKeyboard` (touches fléchées, Entrée). |
+| Liste | `components/ui/PickerFolderList.tsx` | Le corps : champ de recherche, lignes regroupées par dossiers de bibliothèque ou par `group`, sélection simple ou multiple, "Tout ajouter" par dossier. |
+| Champs | `components/ui/Select.tsx` | `Select` : une valeur dans une liste fixe, en remplacement d'un `<select>` natif. Un déclencheur de type combobox, une recherche à partir de `SELECT_SEARCH_MIN` options, les touches fléchées et la sélection par saisie sur le champ fermé. |
+| | `components/ui/PickerField.tsx` | `PickerField` (un élément avec une ligne Aucun et des dossiers), `PickerListField` / `PickerListWindow` (plusieurs éléments ; les choix sont listés sous le champ avec des boutons de suppression) et `useFieldWindow` (état d'ouverture et retour du focus au champ à la fermeture). |
+| | `components/ui/LibraryPickers.tsx`, `components/characters/CharacterSelect.tsx` | Les champs de preset, de lorebook, de personnage et de persona construits à partir des composants ci-dessus. |
+
+Comment ajouter un sélecteur :
+
+- **Une valeur dans une liste :** `Select`. Donne-lui un `label` : il nomme le champ et sert de titre à la fenêtre.
+- **Un élément de bibliothèque** (avec dossiers, illustration et ligne Aucun) : `PickerField`, ou le champ correspondant dans `LibraryPickers.tsx`.
+- **Plusieurs éléments :** `PickerListField`. Échap et les clics à l'extérieur ferment la fenêtre ; la sélection ne la ferme pas.
+- **Autre chose qu'un champ** (un bouton qui ouvre un choix court, comme "Relier à une Conversation") : `useFieldWindow` pour l'état d'ouverture et le focus, `PickerWindow` ancré au bouton, et `PickerFolderList` ou des `PickRow` à l'intérieur.
+
+Le sélecteur de connexion et de modèle n'utilise pas encore le sélecteur partagé (`ConnectionSelect` / `ModelPicker`, avec sa propre fenêtre). Les autres contrôles ayant leurs propres surfaces ne sont pas des sélecteurs : galeries d'icônes (`StatIconPicker`), saisie automatique des tags, menus contextuels et menus d'actions.
+
+**Tests.** Un déclencheur `Select` a `role="combobox"`, sa valeur sélectionnée dans `data-value`, et sa fenêtre est un `dialog` nommé par le libellé du champ. Les lignes portent `data-pick-row` ; la ligne sélectionnée d'une sélection simple a `aria-current="true"`, les lignes d'une sélection multiple ont `aria-pressed`. `e2e/select-field.ts` contient `chooseOption` et `pickerLabels`, qui remplacent le `selectOption` de Playwright sur les anciens sélecteurs natifs.
 
 ## Système de styles
 

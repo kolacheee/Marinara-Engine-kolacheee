@@ -83,6 +83,7 @@ Utilise le sélecteur **Trigger Response** pour choisir un intervenant. Sur ordi
 
 - **Add Turn To Prompt** (ajouter le tour au prompt) est activé par défaut. Il ajoute une courte instruction qui indique quel personnage doit répondre.
 - **Name Prefix History** (préfixer l'historique par les noms ; Roleplay uniquement) est désactivé par défaut. Il change la façon dont les messages passés sont étiquetés avec le nom de leur auteur. Laisse-le désactivé, sauf si un personnage confond sans arrêt qui a dit quoi.
+- **Others' Public Faces** (faces publiques des autres ; Roleplay uniquement) est désactivé par défaut. Chaque personnage ne reçoit que sa propre fiche et ne connaît donc les autres qu'à travers le chat. Active ce réglage pour ajouter le texte **Public Face** (face publique) des autres personnages actifs au tour de chaque personnage : ce que toute personne présente dans la scène pourrait savoir d'eux, sans leurs secrets. Les personnages dont la face publique est vide et les personnages inactifs sont exclus. Pour en écrire une, voir [Onglet Card](../characters/creating-and-editing-characters.md#card-tab).
 
 ### Scenario Override (Roleplay)
 
@@ -102,6 +103,7 @@ Active **Character Exchanges** (échanges entre personnages) dans **Chat Setting
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | Activé |
 | **Name Prefix History** | Roleplay, Individual | Désactivé |
+| **Others' Public Faces** | Roleplay, Individual | Désactivé |
 | **Scenario Override** | Roleplay | Vide |
 | **Character Exchanges** | Conversation, Autonomous Messaging | Désactivé |
 

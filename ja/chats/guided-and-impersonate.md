@@ -71,6 +71,7 @@ Impersonateは、次の自分のメッセージを、ペルソナの口調でモ
 | **Preset** | impersonateの返信にだけ使うプロンプトプリセットです。デフォルトは**Use chat default**です。[プリセット](../prompts/presets.md)を参照してください。 |
 | **Connection** | impersonateの返信に使うモデルです。より安価なモデルや速いモデルなどを選べます。デフォルトは**Use chat default**です。**Random**も選べます。[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。 |
 | **Skip agents** | impersonateの実行中は、エージェント(トラッカー、ロアブックの振り分けなどの補助機能)を省略します。impersonateが速くなり、世界の状態も変わりません。デフォルトではオフです。[エージェント](../agents/agents-overview.md)を参照してください。 |
+| **Send Public Faces**(公開情報を送信) | Roleplayチャットでは、**Public Face**(公開情報)があるキャラクターは、名前とPublic Faceだけの形でimpersonateのプロンプトに入ります。そのため、こちらの返信では知り得る情報だけを使います。これは、そのカードが送るほかのすべての内容を置き換えます。対象はDescription、Personality、Backstory、Appearance、Scenario、System Prompt、会話例、RPG属性、Post-History Instructions、Depth Promptです。Public Faceが空のキャラクターは、カード全体を保持します。impersonateのプリセットやプロンプトテンプレートに置いた`{{description}}`などのマクロは、引き続き指定された内容を送ります。**Regenerate**(再生成)は、メッセージを書いたときの設定を保持します。デフォルトはオフです。[Cardタブ](../characters/creating-and-editing-characters.md#card-tab)を参照してください。 |
 | **Use CYOA as direction** | CYOA(choose your own adventure、選択肢で進む形式)の選択肢をクリックしたときに、それを投稿する代わりに、impersonateの指示として使います。デフォルトではオフです。**Settings → Chatting → Message Box**(設定 → チャットの動作 → メッセージ入力欄)で**Add CYOA choices to the message box instead of sending them**(CYOAの選択肢を送信せずメッセージ入力欄に追加する)がオンの場合、クリックしても文章がメッセージ欄に追加されるだけで、この設定は効果がありません。 |
 
 ### 1つのチャットにプロンプトを設定する

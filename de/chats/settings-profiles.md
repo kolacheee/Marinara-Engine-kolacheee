@@ -112,7 +112,7 @@ Ein Profil kann auch **Startauswahlen** enthalten: eine Persona, zu aktivierende
 - Wendest du das Profil an, werden die Auswahlen in den Chat kopiert. Lässt das Profil eine davon leer, behält der Chat seine eigene.
 - Die übrigen Einstellungen im Profil ersetzen weiterhin die Einstellungen des Chats.
 - Die Auswahlen bleiben nicht verknüpft. Eine spätere Änderung im Chat bleibt in diesem Chat.
-- **Save current chat settings into this profile** behält Persona, Lorebooks und Hintergrund des Profils bei. Ein Profil ohne Hintergrund übernimmt beim Speichern den Hintergrund des Chats.
+- **Save current chat settings into this profile** ersetzt die Lorebooks des Profils durch diejenigen, die dem Chat über **Lorebook hinzufügen** oder durch Anwenden eines Profils hinzugefügt wurden. Ein Lorebook, das Lorebook Keeper für den Chat angelegt hat, wird nicht gespeichert. Wurden keine Lorebooks hinzugefügt, enthält das Profil nach dem Speichern keine. Persona und Hintergrund des Profils bleiben erhalten. Ein Profil ohne Hintergrund übernimmt beim Speichern den Hintergrund des Chats.
 - Das Aktualisieren anderer Chats ändert nie deren Persona, Lorebooks oder Hintergrund.
 
 Chat-eigene Inhalte ersetzt ein Profil nicht: Charaktere, Sprites, Zusammenfassung, Tags, Szenen-Prompt und **Autorennotizen**. Es enthält auch keinen Chatverlauf und keinen laufenden Zustand wie Makrovariablen, die Charaktere, die du ausgeschaltet hast, oder einen Raum im Mehrspielermodus. Ein in einer früheren Version gespeichertes Profil kann noch **Autorennotizen** enthalten, aber beim Anwenden bleiben die eigenen Notizen des Chats erhalten.

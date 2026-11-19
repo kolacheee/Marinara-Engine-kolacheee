@@ -53,6 +53,8 @@ O seletor **Prompt Mode** (que aparece como **Prompt** no cartão) define o esti
 
 A aparência final também depende do seu perfil de estilo. Veja [Perfis de estilo de imagem](style-profiles.md).
 
+Para desenhar uma imagem em outro estilo sem mudar a escolha do chat, digite `/illustrate template=` e o nome do estilo, como `/illustrate template="Comic Page"`. Veja [Referência de comandos de barra](../chats/slash-commands.md#illustrate-and-make-artifacts).
+
 ## Escolha o modelo do prompt
 
 O **Prompt Model** é o modelo de texto que escreve o prompt de imagem. Ele não desenha. Escolha-o na lista **Prompt Model** do cartão. O padrão é **Main chat model** (modelo principal do chat), que reaproveita o modelo do seu chat. Escolha outro modelo de texto se quiser que outro modelo escreva os prompts.
@@ -73,6 +75,15 @@ Duas configurações do cartão ajudam os personagens a manter a mesma aparênci
 Com essa opção ativada, um card ou uma persona com **Image Appearance Override** (aparência alternativa para imagens) ativado envia essa alternativa no lugar do texto de **Appearance** (aparência). Use quando **Appearance** foi escrito para o narrador, mas não funciona bem para um modelo de imagem. Mantenha a descrição completa em **Appearance** e coloque uma versão mais curta, em forma de tags, na alternativa. Com a alternativa desativada ou vazia, os prompts de imagem usam **Appearance**. O narrador sempre vê o **Appearance** completo. O botão liga/desliga fica abaixo de **Appearance** nos editores de personagem e de persona.
 
 **Send Avatar References** (enviar avatares como referência) envia ao serviço de imagens os avatares de personagens e personas, ou os sprites deles, como imagens de referência, para que o modelo possa copiar um rosto ou uma roupa. Nem todo serviço aceita essas imagens. Em um chat de Roleplay, é uma lista como **Attach Card Appearance**. Com vídeos incluídos, um clipe cujo **First frame** (primeiro quadro) é **Prompt only** começa com o avatar ou o sprite do personagem, e a opção aparece como **Prompt only (avatar from Send Avatar References)**.
+
+Com **Enviar referências de avatar** ativado para imagens, **Reference pictures go to** (destino das imagens de referência) escolhe quem as recebe:
+
+- **Automático** (padrão): o modelo de imagem, quando a conexão dele aceita imagens de referência; caso contrário, o redator de prompts.
+- **Image model** (modelo de imagem): só o modelo de imagem. Uma conexão que não aceita as imagens não recebe nenhuma.
+- **Prompt writer** (redator de prompts): só o redator de prompts do Illustrator, que olha as imagens e descreve o que vê no prompt de imagem.
+- **Ambos**: o modelo de imagem e o redator de prompts.
+
+O redator de prompts é uma alternativa para modelos de imagem que descartam as imagens de referência, como o NovelAI V5. Ele precisa de um modelo que leia imagens. Se o redator as recusar, a requisição é enviada de novo sem as imagens, e esse redator não recebe nenhuma até o servidor reiniciar. Um redator cuja conexão esteja marcada como incapaz de ler imagens não recebe nenhuma. Enviar imagens ao redator custa tokens a cada execução. São enviadas até quatro imagens: as dos cards nomeados em `[illustrate: characters="…"]` ou, se não houver, as dos personagens ativos e da persona do chat. **What to carry over from the pictures** (o que aproveitar das imagens) diz o que o redator copia, como só a aparência e não o estilo da arte. Um chat de Roleplay pode definir o próprio **Reference pictures go to** em **Enviar referências de avatar**.
 
 ## Controle a frequência das imagens
 

@@ -8,7 +8,7 @@ MarinaraはAIに送るテキストを組み立てるときに、`{{tag}}`を1つ
 
 マクロは次の場所で入力できます。
 
-- **Character Editor**(キャラクターエディター)のキャラクターの各欄: Description、Personality、Backstory、Appearance、Scenario、Example Dialogue、System Prompt、Post-History Instructions、そして**Depth Prompt**。
+- **Character Editor**(キャラクターエディター)のキャラクターの各欄: Description、Personality、Backstory、Appearance、Scenario、Public Face、Example Dialogue、System Prompt、Post-History Instructions、そして**Depth Prompt**。
 - **Persona Editor**(ペルソナエディター)のペルソナの各欄(カードの同じ欄)。
 - ロアブックのエントリーのDescription欄とContent欄。
 - **Preset Editor**(プリセットエディター)のプロンプトプリセットのセクション。
@@ -35,12 +35,13 @@ MarinaraはAIに送るテキストを組み立てるときに、`{{tag}}`を1つ
 | `{{charNamePhonetic}}` | キャラクターのPhonetic name。空のときは`{{char}}`と同じです。 |
 | `{{characters}}` | 無効にしたキャラクターも含め、チャット内のすべてのキャラクターをカンマ区切りで並べます。このマクロが追加するのは名前だけで、無効なキャラクターのカードをプロンプトに追加することはありません。 |
 | `{{group}}` | グループチャットで有効なキャラクターのうち、今返事をしているキャラクターを除いた全員。ペルソナはこの一覧に入りません。 |
-| `{{persona}}` | ペルソナのDescription、Personality、Backstory、Appearance、Scenarioを改行でつないだもの。 |
+| `{{persona}}` | ペルソナのDescription、Personality、Backstory、Appearance、Scenarioを改行でつないだもの。Public Faceは含みません。 |
 | `{{personaDescription}}` | ペルソナのDescription欄。 |
 | `{{personaPersonality}}` | ペルソナのPersonality欄。 |
 | `{{personaBackstory}}` | ペルソナのBackstory欄。 |
 | `{{personaAppearance}}` | ペルソナのAppearance欄。 |
 | `{{personaScenario}}` | ペルソナのScenario欄。 |
+| `{{personaPublicFace}}` | ペルソナのPublic Face欄。ほかの登場人物がペルソナについて知り得る情報。 |
 
 次のマクロは、現在のキャラクターのカードから内容を読み取ります。
 
@@ -51,6 +52,7 @@ MarinaraはAIに送るテキストを組み立てるときに、`{{tag}}`を1つ
 | `{{backstory}}` | Backstory |
 | `{{appearance}}` | Appearance |
 | `{{scenario}}` | Scenario |
+| `{{publicFace}}` | Public Face |
 | `{{example}}` | Example Dialogue |
 | `{{charSysInfo}}` | System Prompt |
 | `{{charPostHistory}}` | Post-History Instructions |

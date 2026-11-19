@@ -10,31 +10,34 @@ Der Client liegt in `packages/client`. Er spricht über REST und Server-Sent Eve
 
 ## Architektur der Anwendung
 
-### Drei-Spalten-Layout
+### Layout der App-Hülle
 
-Die Oberfläche folgt einem an Discord angelehnten Drei-Spalten-Aufbau, gesteuert von `components/layout/AppShell.tsx`:
+`components/layout/AppShell.tsx` ordnet die obere Leiste, die mittlere Spalte und eine Seitenleiste an. Die Seitenleiste zeigt Chats oder ein Panel, nie beides. Standardmäßig dockt sie rechts an, bei `sidebarSide` gleich `"left"` links:
 
 ```
-+-------------+-----------------------------+--------------+
-|  Left       |         Center              |  Right       |
-|  Sidebar    |                             |  Panel       |
-|             |  Chat area or Editor        |              |
-|  Chat list  |  (lazy-loaded)              |  Characters  |
-|  Folders    |                             |  Lorebooks   |
-|  Mode tabs  |  ChatConversationSurface    |  Presets     |
-|             |  ChatRoleplaySurface        |  Connections |
-|             |  GameSurface                |  Agents      |
-|             |  CharacterEditor            |  Personas    |
-|             |  LorebookEditor             |  Settings    |
-|             |  PresetEditor               |  Browser     |
-|             |  ...other editors           |              |
-+-------------+-----------------------------+--------------+
++-----------------------------------+----------------+
+|  Center                           |  Sidebar       |
+|                                   |                |
+|  Chat area or Editor              |  Chats         |
+|  (lazy-loaded)                    |  (chat list,   |
+|                                   |  folders,      |
+|  ChatConversationSurface          |  mode tabs)    |
+|  ChatRoleplaySurface              |                |
+|  GameSurface                      |  or a panel:   |
+|  CharacterEditor                  |  Characters    |
+|  LorebookEditor                   |  Personas      |
+|  PresetEditor                     |  Lorebooks     |
+|  ...other editors                 |  Presets, ...  |
++-----------------------------------+----------------+
 ```
 
-- Linke Seitenleiste (`components/layout/ChatSidebar.tsx`): die Chatliste, nach Ordnern gegliedert und nach Modus filterbar (Conversation, Roleplay, Game).
+- Seitenleiste (`[data-component="SidebarSlot"]` in `AppShell.tsx`): ein Platz auf dem Desktop. Innerhalb ihrer verschiebbaren Hülle (`SidebarSlotPanel`) liegen zwei Ebenen übereinander. `ChatSidebarPanel` rendert `components/layout/ChatSidebar.tsx`, die Chatliste mit Ordnern und den Modus-Tabs (Conversation, Roleplay, Game). Auf dem Desktop bleibt sie immer eingehängt, weil die Zähler ungelesener Nachrichten und die Benachrichtigungsblasen darüber geladen werden. `RightPanelDesktop` rendert `components/layout/RightPanel.tsx` und wird beim ersten Öffnen eines Panels eingehängt. Die verborgene Ebene ist `invisible`, `inert` und `aria-hidden`. Der Wechsel zwischen Chats und einem Panel erfolgt sofort; beim Öffnen oder Schließen gleitet die Seitenleiste hinein oder hinaus.
+- Breite: Ein Trennelement an der inneren Kante der Seitenleiste (aria-label „Resize sidebar“) legt die gemeinsame Breite fest, von `SHARED_SIDEBAR_WIDTH_MIN` (280) bis `SHARED_SIDEBAR_WIDTH_MAX` (480). Lies sie mit `selectSharedSidebarWidth`; der Store hält `sidebarWidth` und `rightPanelWidth` gleich.
+- Seite: Bei `sidebarSide: "left"` erhält der Platz die CSS-Eigenschaft `order: -1`. Er behält seine Position im React-Baum, sodass ein Seitenwechsel nie ein Panel neu einhängt. `--mari-chat-ui-inset-left` / `--mari-chat-ui-inset-right`, der Versatz des angedockten Tracker Panels und die Einrückungen eines nichtmodalen `Modal` folgen der Seite.
+- Smartphones und Tablets: Wenn `isMobileShellViewport()` wahr ist (`MOBILE_SHELL_MEDIA_QUERY` oder ein für das angedockte Layout zu schmales Fenster), erscheint die Seitenleiste als bildschirmfüllendes Fenster von rechts, gerendert als `ChatSidebarPanel` oder `RightPanelMobile`. `sidebarSide` gilt dort nicht.
 - Mittlere Spalte: entweder die aktive Chat-Fläche oder ein vollflächiger Editor (Charakter, Lorebook, Preset und so weiter). Sichtbar ist immer nur eines davon. Editoren ersetzen den Chatbereich.
-- Rechtes Panel (`components/layout/RightPanel.tsx`): ein Ressourcen-Browser samt Einstellungen, umschaltbar über die obere Leiste. Einmal eingehängt, bleibt ein Panel im DOM (per CSS versteckt) und behält so Scrollposition und lokalen Zustand.
-- Obere Leiste (`components/layout/TopBar.tsx`): Schaltflächen zum schnellen Wechsel zwischen den rechten Panels.
+- Panels (`components/layout/RightPanel.tsx`): ordnet `rightPanel` einer Panel-Komponente zu und lässt bereits besuchte Panels eingehängt. Siehe [Panel-System](#panel-system-componentspanels).
+- Obere Leiste (`components/layout/TopBar.tsx`): Startseite und Chat-Informationen auf einer Seite. Auf der Seite der Seitenleiste enthält `[data-tour="panel-buttons"]` zuerst die Schaltfläche Chats (`[data-tour="sidebar-toggle"]`), dann je eine Schaltfläche pro Panel. Bei `sidebarSide: "left"` wird die Leiste gespiegelt (`flex-row-reverse`): Die Panel-Schaltflächen stehen links und Startseite ganz rechts. Auf Smartphones und Tablets bleibt Chats neben Startseite; auf Smartphones wandern Chats und die Panel-Schaltflächen ins Menü **Mehr**.
 
 ### Navigation
 
@@ -48,8 +51,11 @@ Die Navigation läuft über den Zustand, nicht über URLs – einen Router gibt 
 | Verbindungs-Editor öffnen | `connectionDetailId` | `openConnectionDetail(id)`                         |
 | Agent-Editor öffnen     | `agentDetailId`      | `openAgentDetail(id)`                              |
 | Persona-Editor öffnen   | `personaDetailId`    | `openPersonaDetail(id)`                            |
-| Rechtes Panel wechseln  | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| Ein Panel anzeigen | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| Chats anzeigen | `sidebarOpen`        | `toggleSidebar()` / `setSidebarOpen(open)`        |
 | Fenster öffnen          | `modal`              | `openModal(type, props?)`                          |
+
+Chats und die Panels teilen sich die Seitenleiste, schließen sich also auf jeder Bildschirmgröße gegenseitig aus. `openRightPanel` und `toggleRightPanel` schließen Chats; `toggleSidebar` und `setSidebarOpen(true)` schließen das Panel. `setSidebarOpen(false)` lässt ein geöffnetes Panel unberührt. `selectSidebarShown` ist falsch, solange ein Panel geöffnet ist. Deshalb wird bei einem veralteten Zustand, in dem beide Flags wahr sind, das Panel angezeigt; beim Persistieren wird ein solches gespeichertes Paar auf das Panel allein reduziert.
 
 ### Code-Splitting
 
@@ -76,6 +82,7 @@ Der einzige persistierte Store (localStorage über die Zustand-`persist`-Middlew
 - Ton: `convoNotificationSound` und `rpNotificationSound`.
 - Verhalten: `confirmBeforeDelete`, `enterToSendRP`, `enterToSendConvo`, `weatherEffects` und `guideGenerations`.
 - Navigation: `rightPanel`, `rightPanelOpen`, `sidebarOpen`, `settingsTab`, sämtliche `*DetailId`-Felder und `modal`.
+- Seitenleistenlayout: `sidebarSide` (`"right"` oder `"left"`, Standard `"right"`, geräteübergreifend synchronisiert und durch `resetAppearanceSettings` auf `"right"` zurückgesetzt) sowie `sidebarWidth` / `rightPanelWidth` (werden gleich gehalten; lies sie mit `selectSharedSidebarWidth`).
 
 Synchronisierte eigene Themes liegen nicht in `ui.store.ts`. Sie kommen per React Query vom Server und werden auf alle Geräte gespiegelt, die mit derselben Marinara-Instanz verbunden sind.
 
@@ -319,14 +326,14 @@ Muster für Fenster: Alle nehmen `{ open, onClose }` entgegen, betten ihren Inha
 
 ### Panel-System (`components/panels/`)
 
-Die Panels am rechten Rand zeigen Ressourcenlisten mit Suche, Sortierung und Filtern. Ein Klick auf eine Ressource öffnet ihren vollflächigen Editor in der mittleren Spalte.
+Panels öffnen sich anstelle von Chats in der Seitenleiste und zeigen Ressourcenlisten mit Suche, Sortierung und Filtern. Ein Klick auf eine Ressource öffnet ihren vollflächigen Editor in der mittleren Spalte.
 
 Panels werden in `RightPanel.tsx` an zwei Stellen registriert:
 
 1. `PANEL_CONFIG`: Titel, Symbol und Verlaufsfarbe.
 2. `RIGHT_PANELS` (in `right-panel-panels.ts`): die Komponenten-Zuordnung.
 
-Panels behalten ihren Zustand über ein `mountedPanels`-Set, das in einem `useState` innerhalb von `RightPanel` liegt. Es hält fest, welche Panels bereits geöffnet waren. Einmal eingehängt, bleibt ein Panel im DOM (versteckt über `display: none` oder `aria-hidden`) und behält damit seinen Zustand.
+Panels behalten ihren Zustand über ein `mountedPanels`-Set, das in einem `useState` innerhalb von `RightPanel` liegt. Es hält fest, welche Panels bereits geöffnet waren. Einmal eingehängt, bleibt ein Panel im DOM (versteckt über `display: none` oder `aria-hidden`) und behält damit seinen Zustand. Das Set gehört zu einer einzelnen Einhängung von `RightPanel`. Wird es erneut eingehängt, etwa beim erneuten Öffnen des Fensters auf dem Smartphone, beginnt es nur mit dem aktuellen Panel.
 
 ### UI-Bausteine (`components/ui/`)
 
@@ -343,6 +350,8 @@ Panels behalten ihren Zustand über ein `mountedPanels`-Set, das in einem `useSt
 Alle UI-Komponenten arbeiten mit kontrollierten Props (value plus onChange) und rendern Overlays über Portale.
 
 **Bibliothekspanels verwenden `LibraryToolbar`.** Die Panels für Charaktere, Personas, Lorebooks und Agenten sowie die Tabs des Presets-Panels rendern ihre oberen Bedienelemente darüber: eine optionale Bibliothekszeile (eine Schaltfläche über die volle Breite oder das Paar Herunterladen / Bibliothek öffnen), Erstellen / Importieren / Exportieren / Auswählen, Suche mit dem gemeinsamen Sortiermenü, Neuer Ordner und dann die Panelfilter als `children`. Die Zeilen sind typisierte Props, keine Slots. So erhält ein neues Bibliothekspanel dasselbe Markup statt einer Kopie, die auseinanderläuft. Ergänze dort eine Prop, statt im Panel eine eigene Werkzeugleiste zu bauen.
+
+`LibraryToolbar.tsx` exportiert außerdem `SegmentedButtons`, eine lange Schaltfläche mit `.mari-chrome-segmented`, unterteilt durch `|`. Sie stellt das Paar Herunterladen / Bibliothek öffnen und die Tabs **Prompts** / **Regex-Skripte** / **Tools** / **Profile** des Presets-Panels dar, damit die oberste Zeile jedes Panels dieselbe Höhe hat. Mit `groupLabel` wird die Zeile zu einer Tab-Gruppe mit `role="group"`; `pressed` setzt das `aria-pressed` jedes Tabs. `.mari-chrome-segmented` hat `flex-shrink: 0`, sodass der eigene Flex-Scrollbereich eines Panels mit fester Höhe (wie bei Charakteren) die Zeile nicht zusammendrücken kann.
 
 ## API-Client (`lib/api-client.ts`)
 
@@ -364,6 +373,30 @@ import { api, ApiError } from "@/lib/api-client";
 | `api.streamEvents(path, body)` | `POST /api{path}`   | Asynchroner SSE-Generator (alle Ereignistypen) |
 
 Fehler werfen `ApiError` – dieses Objekt trägt die Eigenschaften `status` und `message`.
+
+## Auswahlfelder und Dropdown-Menüs
+
+Jedes Bedienelement zur Auswahl eines Werts öffnet dasselbe gemeinsame Auswahlfenster. Eine Designänderung an Auswahlen (Oberfläche, Zeilenstil, Breite) gehört in die unten aufgeführten gemeinsamen Komponenten, nie in eine einzelne Funktion. Verwende weder ein natives `<select>` noch eine selbst gezeichnete Liste in einem eigenen Popover: Beides gibt es in der App nicht mehr.
+
+| Ebene | Datei | Zuständigkeit |
+| --- | --- | --- |
+| Fenster | `components/ui/PickerWindow.tsx` | Die Oberfläche. Auf dem Desktop ist sie ein Popover neben dem Feld, so breit wie für die Zeilen nötig (mindestens so breit wie das Feld, höchstens 352 px oder bei einem breiteren Feld dessen Breite). Auf dem Smartphone ist sie ein von unten eingeblendetes Fenster (ein `Modal`); innerhalb eines `Modal` bleibt sie ein Popover, damit nie zwei solche Fenster übereinanderliegen. Escape, Zurück, ein Klick außerhalb oder das Herausscrollen des Felds aus dem sichtbaren Bereich schließen sie. |
+| Zeilen | `components/ui/PickerParts.tsx` | `PickRow` (eine Zeile: Bild, Titel, eine auf zwei Zeilen umbrechende zweite Textzeile, Badge, Häkchen oder Kontrollkästchen), `PickerSearch`, Ordnerüberschriften und `usePickerKeyboard` (Pfeiltasten, Enter). |
+| Liste | `components/ui/PickerFolderList.tsx` | Der Inhalt: Suchfeld, nach Bibliotheksordnern oder `group` gruppierte Zeilen, Einfach- oder Mehrfachauswahl, „Alle hinzufügen“ pro Ordner. |
+| Felder | `components/ui/Select.tsx` | `Select`: ein Wert aus einer festen Liste, der Ersatz für ein natives `<select>`. Ein Combobox-Auslöser, Suche ab `SELECT_SEARCH_MIN` Optionen, Pfeiltasten und Auswahl durch Tippen im geschlossenen Feld. |
+| | `components/ui/PickerField.tsx` | `PickerField` (ein Eintrag mit einer Zeile „Keine“ und Ordnern), `PickerListField` / `PickerListWindow` (mehrere Einträge; die Auswahl wird unter dem Feld mit Schaltflächen zum Entfernen aufgelistet) und `useFieldWindow` (Öffnungszustand und Fokus zurück auf das Feld beim Schließen). |
+| | `components/ui/LibraryPickers.tsx`, `components/characters/CharacterSelect.tsx` | Die aus den obigen Komponenten aufgebauten Felder für Presets, Lorebooks, Charaktere und Personas. |
+
+So fügst du eine Auswahl hinzu:
+
+- **Ein Wert aus einer Liste:** `Select`. Gib ein `label` an: Es benennt das Feld und gibt dem Fenster seinen Titel.
+- **Ein Bibliothekseintrag** (mit Ordnern, Bildern, einer Zeile „Keine“): `PickerField` oder das passende Feld in `LibraryPickers.tsx`.
+- **Mehrere Einträge:** `PickerListField`. Escape und Klicks außerhalb schließen das Fenster; eine Auswahl lässt es offen.
+- **Etwas, das kein Feld ist** (eine Schaltfläche, die eine kurze Auswahl öffnet, etwa „Mit Unterhaltung verknüpfen“): `useFieldWindow` für Öffnungszustand und Fokus, ein an der Schaltfläche verankertes `PickerWindow` und darin `PickerFolderList` oder `PickRow`s.
+
+Noch nicht auf die gemeinsame Auswahl umgestellt: die Verbindungs- und Modellauswahl (`ConnectionSelect` / `ModelPicker`, mit eigenem Fenster). Andere Bedienelemente mit eigenen Oberflächen sind keine Auswahlen: Symbolgalerien (`StatIconPicker`), Tag-Autovervollständigung, Kontext- und Aktionsmenüs.
+
+**Tests.** Ein `Select`-Auslöser hat `role="combobox"`, seinen ausgewählten Wert in `data-value` und ein Fenster mit der Rolle `dialog`, das nach dem Feldlabel benannt ist. Zeilen tragen `data-pick-row`; die gewählte Zeile einer Einfachauswahl hat `aria-current="true"`, Zeilen einer Mehrfachauswahl haben `aria-pressed`. `e2e/select-field.ts` enthält `chooseOption` und `pickerLabels`, die Playwrights `selectOption` für die alten nativen Select-Felder ersetzen.
 
 ## Styling-System
 

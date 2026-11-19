@@ -56,7 +56,7 @@ React 19와 Vite PWA를 씁니다. 현재 소스 파일이 수백 개 있습니�
 현재 최상위 구성:
 
 - `App.tsx`, `main.tsx`: 앱 부트스트랩, React Query, PWA, 전역 이펙트.
-- `components/layout`: 앱 셸, 사이드바, 상단 바, 창 렌더러.
+- `components/layout`: 앱 셸, 사이드바(Chats(채팅) 또는 패널), 상단 바, 창 렌더러.
 - `components/ui`: 재사용 가능한 UI 기본 요소.
 - `components/chat`: 공통 채팅, conversation, roleplay, 장면, 스프라이트, 인카운터 UI가 섞여 있습니다.
 - `components/game`: Game Mode 화면과 패널.

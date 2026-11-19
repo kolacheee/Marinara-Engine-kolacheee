@@ -8,7 +8,7 @@ Cuando Marinara arma el texto que envía a la IA, cambia cada `{{tag}}` por su v
 
 Puedes escribir macros en estos lugares:
 
-- Campos de personaje en el **Character Editor** (Editor de personaje): Description, Personality, Backstory, Appearance, Scenario, Example Dialogue, System Prompt, Post-History Instructions y el **Depth Prompt**.
+- Campos de personaje en el **Character Editor** (Editor de personaje): Description, Personality, Backstory, Appearance, Scenario, Public Face, Example Dialogue, System Prompt, Post-History Instructions y el **Depth Prompt**.
 - Campos de persona en el **Persona Editor** (Editor de persona) (los mismos campos de la tarjeta).
 - Los campos Description y Content de las entradas de lorebook (libro de trasfondo).
 - Secciones del preset de prompt en el **Preset Editor** (Editor de presets).
@@ -35,12 +35,13 @@ Estas macros traen los nombres y los campos de la tarjeta de la persona que habl
 | `{{charNamePhonetic}}` | El nombre Phonetic del personaje, o `{{char}}` cuando está vacío. |
 | `{{characters}}` | Todos los personajes del chat, incluidos los inactivos, unidos por comas. Esta macro solo agrega nombres; no agrega al prompt las tarjetas de personajes inactivos. |
 | `{{group}}` | Todos los demás personajes activos del chat grupal, excluyendo al que responde en ese momento. La persona no forma parte de esta lista de personajes. |
-| `{{persona}}` | Los campos Description, Personality, Backstory, Appearance y Scenario de tu persona, unidos por saltos de línea. |
+| `{{persona}}` | Los campos Description, Personality, Backstory, Appearance y Scenario de tu persona, unidos por saltos de línea. No se incluye Public Face. |
 | `{{personaDescription}}` | El campo Description de tu persona. |
 | `{{personaPersonality}}` | El campo Personality de tu persona. |
 | `{{personaBackstory}}` | El campo Backstory de tu persona. |
 | `{{personaAppearance}}` | El campo Appearance de tu persona. |
 | `{{personaScenario}}` | El campo Scenario de tu persona. |
+| `{{personaPublicFace}}` | El campo Public Face de tu persona: lo que los demás podrían saber de ti. |
 
 Las macros de campos de personaje leen la tarjeta de personaje actual:
 
@@ -51,6 +52,7 @@ Las macros de campos de personaje leen la tarjeta de personaje actual:
 | `{{backstory}}` | Backstory |
 | `{{appearance}}` | Appearance |
 | `{{scenario}}` | Scenario |
+| `{{publicFace}}` | Public Face |
 | `{{example}}` | Example Dialogue |
 | `{{charSysInfo}}` | System Prompt |
 | `{{charPostHistory}}` | Post-History Instructions |

@@ -6,7 +6,7 @@ Roleplay(角色扮演) 是用来讲故事的聊天模式。它会在消息背后
 
 ## 开始一段角色扮演
 
-开始之前：在应用右侧的 **Connections**(连接) 面板里添加一个账号。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
+开始之前：在 **Connections**(连接) 面板里添加一个账号。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
 
 1. 打开聊天列表（点击右上角的 **Library**(资料库)，再点击侧边栏顶部的 **Chats**(聊天)），然后点击 **Roleplay** 选项卡。
 2. 点击聊天列表顶部的 **New**(新建)。

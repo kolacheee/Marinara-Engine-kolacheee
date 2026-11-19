@@ -6,7 +6,7 @@ Escolha o Roleplay para uma cena de história. Escolha o [Conversation](../conve
 
 ## Começar um roleplay
 
-Antes de começar: adicione uma conta no painel **Connections** (Conexões), no lado direito do aplicativo. Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md).
+Antes de começar: adicione uma conta no painel **Connections** (Conexões). Veja [Conectando a um provedor de IA](../connections/connecting-to-a-provider.md).
 
 1. Abra os seus chats (**Biblioteca** no canto superior direito, depois **Chats** no topo da barra lateral) e clique na aba **Roleplay**.
 2. Clique em **Novo** no topo da lista de chats.

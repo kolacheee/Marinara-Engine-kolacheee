@@ -77,15 +77,49 @@ Ein natives Profil behält den Code von Personal Extensions, aber nicht den Akti
 2. Lass unter der Schaltfläche **Tag imported** (als importiert markieren) und **Tag source** (Quelle markieren) angehakt, damit die importierten Charaktere, Personas, Lorebooks, Presets und Chats die Tags **Imported** und **Backup** erhalten. Entferne die Häkchen, um alles genau so wiederherzustellen, wie es war.
 3. Klick auf **Import Profile (JSON/ZIP)**.
 4. Wähle `marinara-profile.json`, `marinara-profile.zip` oder eine Backup-`.zip`. Die Schaltfläche zeigt **Scanning Profile...**.
-5. Lies den Dialog **Import Profile**. Er listet die gefundenen Daten auf und warnt, dass du den Import nicht rückgängig machen kannst.
-6. Klick auf **Import** oder zum Abbrechen auf **Cancel**. Die Schaltfläche zeigt **Importing Profile...**, danach folgt ein Fortschrittsbalken. Nach Abschluss bestätigt eine Meldung den Import.
+5. Lies den Dialog **Profil importieren**. Er listet die gefundenen Daten auf. Bereits in Marinara vorhandene Elemente werden durch die Versionen aus der Datei ersetzt, sofern du nicht [nur Fehlendes hinzufügst](#only-add-whats-missing).
+6. Klick auf **Importieren** oder zum Abbrechen auf **Abbrechen**. Die Schaltfläche zeigt **Profil wird importiert…**. Marinara speichert zuerst eine Sicherheitskopie deiner Daten, danach folgt ein Fortschrittsbalken. Nach Abschluss bestätigt eine Meldung den Import.
 
 Wenn es nicht funktioniert:
 
 - Außer unter `localhost`, `127.0.0.1` oder `[::1]` ist für den Profilimport HTTPS erforderlich. Die Fehlermeldung lautet „Profile import requires HTTPS outside local development.“ Öffne Marinara über eine HTTPS-Adresse.
 - Fehlen Mediendateien in einer `.zip`, wird der Import trotzdem abgeschlossen. Eine Warnung listet die fehlenden Dateien auf; den Rest importiert Marinara.
+- Ist die Festplatte für die Sicherheitskopie zu voll, wird nichts importiert. Die Fehlermeldung beginnt mit „Nothing was imported, because a safety copy could not be saved first.“ Gib ungefähr so viel Platz frei, wie ein vollständiges Backup benötigt, und importiere erneut.
 
 Importierst du dasselbe Profil zweimal, aktualisiert Marinara die vorhandenen Elemente, statt Kopien anzulegen. Profile aus sehr alten Versionen können Duplikate erzeugen.
+
+### Nur Fehlendes hinzufügen
+
+Um etwas Gelöschtes zurückzuholen, ohne seitdem vorgenommene Änderungen zu verlieren, schalte **Keep my current versions, only add what's missing** über **Profil importieren (JSON/ZIP)** ein und importiere dann wie oben beschrieben. Alle bereits in Marinara vorhandenen Elemente und Dateien bleiben unverändert; nur Fehlendes wird hinzugefügt. Dazu gehört alles, was du seit dem Speichern der Datei gelöscht hast, etwa einzelne Nachrichten oder Lorebook-Einträge, nicht nur das Element, das du zurückhaben wolltest. Das Langzeitgedächtnis zählt als ein Element: Hat Marinara bereits Erinnerungen darin, werden die aus der Datei nicht hinzugefügt.
+
+Da nichts ersetzt wird, speichert Marinara keine Sicherheitskopie, und **Undo Last Import** macht weiterhin den Import davor rückgängig.
+
+Profile aus sehr alten Versionen unterstützen dies nicht: Sie fügen ihre Elemente immer neben deinen hinzu. Der Dialog **Profil importieren** weist darauf hin.
+
+### Einen Import rückgängig machen
+
+Vor jedem Import, der Elemente ersetzt, speichert Marinara eine vollständige Kopie deiner Daten im Ordner `backups/` innerhalb des Datenordners. Der Dateiname beginnt mit `marinara-before-import-`, gefolgt von Datum und Uhrzeit. Nach Abschluss des Imports wird die Kopie des vorherigen Imports gelöscht, sodass nur die neueste erhalten bleibt.
+
+1. Öffne **Einstellungen → Daten → Backup & Wiederherstellung**.
+2. Klick auf **Undo Last Import**. Die Zeile darunter zeigt, wann die Sicherheitskopie gespeichert wurde.
+3. Klick im Dialog zur Bestätigung auf **Undo Last Import**.
+
+Beim Rückgängigmachen werden deine Versionen der Elemente und Dateien wiederhergestellt, die der letzte Import ersetzt hat. Hast du eines dieser Elemente nach dem Import geändert, geht diese Änderung verloren. Alles andere bleibt unverändert, einschließlich der Elemente, die der Import hinzugefügt hat. Du kannst einen Import einmal rückgängig machen; danach wird die Sicherheitskopie gelöscht.
+
+Was der Import aus Sicherheitsgründen ausgeschaltet hat, wird beim Rückgängigmachen nicht wieder eingeschaltet. Schalte Folgendes von Hand wieder ein:
+
+- dein aktives Theme;
+- Personal Extensions (prüfe sie erneut unter **Einstellungen → Add-ons**);
+- eigene Tools, die ein Skript oder einen Webhook ausführen;
+- Erinnerungen von Professor Mari.
+
+Hat der Import den API-Key einer Verbindung gelöscht, gib ihn erneut ein (siehe [Keys erneut eingeben](#enter-your-keys-again)). War die Verbindung als Standard oder Fallback gesetzt, lege sie wieder dafür fest.
+
+Verzweigte Chats, die der Import ersetzt hat, bleiben vom ursprünglichen Chat getrennt. Der Import hat diese Verknüpfung bereits entfernt, und sie lässt sich beim Rückgängigmachen nicht wiederherstellen.
+
+Profile aus sehr alten Versionen fügen nur Elemente hinzu. Deshalb speichert Marinara für sie keine Sicherheitskopie, und es gibt nichts rückgängig zu machen.
+
+Die Sicherheitskopie braucht so viel Platz wie ein vollständiges Backup. Um diesen Platz freizugeben, ohne den Import rückgängig zu machen, klick unter **Einstellungen → Daten → Backup & Wiederherstellung** auf **Delete Safety Copy** und bestätige. Deine Daten bleiben unverändert, aber du kannst diesen Import dann nicht mehr rückgängig machen. Wurde ein Import unterbrochen, kann **Delete Safety Copy** allein erscheinen. Die Kopie lässt sich dann nicht zum Rückgängigmachen nutzen, aber du kannst sie weiterhin löschen.
 
 <a id="enter-your-keys-again"></a>
 

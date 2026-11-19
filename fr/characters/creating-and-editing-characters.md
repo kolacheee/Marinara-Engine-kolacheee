@@ -71,7 +71,7 @@ L'onglet **Metadata** (métadonnées) rassemble les informations d'identité et 
 
 - **Character ID**. En lecture seule. Il apparaît après l'enregistrement de la fiche. Clique sur **Copy** (copier) pour le copier.
 - **Name**. Le nom affiché. Dans les prompts, le texte que Marinara envoie à l'IA, il correspond à `{{char}}` : un espace réservé que Marinara remplace par le nom du personnage.
-- **Other names** (autres noms). Surnoms, noms complets ou titres que le personnage porte aussi, par exemple `Clark Kent, Kal-El, Mr. Kent`. Sépare les noms par des virgules, puis appuie sur <kbd>Enter</kbd> ou clique sur **Add** (ajouter). Les chats Roleplay peuvent les afficher dans la couleur du nom. Voir [Couleurs du personnage](colors-and-stats.md#the-three-colors).
+- **Other names** (autres noms). Surnoms, noms complets ou titres que le personnage porte aussi, par exemple `Clark Kent, Kal-El, Mr. Kent`. Sépare les noms par des virgules, puis appuie sur <kbd>Enter</kbd> ou clique sur **Add** (ajouter). Les chats Roleplay peuvent les afficher dans la couleur du nom, et Character Tracker relie à la fiche un personnage qu'il suit sous l'un de ces noms. Voir [Couleurs du personnage](colors-and-stats.md#the-three-colors).
 - **Creator**. La personne qui a créé la fiche, pour la créditer lors du partage.
 - **Version**. Un numéro de version que tu choisis, par exemple `1.0`. L'interrupteur **Automatic versioning** (gestion automatique des versions), juste à côté, conserve les versions précédentes et augmente ce numéro quand la fiche change. L'historique des versions n'enregistre d'instantanés que si cet interrupteur est activé.
 - **Talkativeness**. Un curseur de 0 à 100 pour cent. Il règle la fréquence à laquelle ce personnage prend la parole dans les chats de groupe. La valeur par défaut est 50 pour cent.
@@ -96,6 +96,9 @@ L'onglet **Card** est l'espace principal de rédaction. Les liens en haut permet
 | **Backstory** (passé) | Le passé, les origines, les relations importantes. | Oui |
 | **Appearance** (apparence) | Le physique, les vêtements, les détails visuels. Sert aussi à préremplir un prompt d'avatar IA. | Oui |
 | **Scenario** (scénario) | Le cadre par défaut des nouveaux chats avec ce personnage. | Oui |
+| **Public Face** (face publique) | La fiche sans ses parties privées. | Seulement là où une macro ou un réglage le demande |
+
+**Public Face** décrit ce que les autres personnages pourraient voir ou savoir du personnage : apparence, manière d'être, rôle, réputation et relations qui ne sont pas secrètes. N'y mets ni secrets, ni pensées intérieures, ni passé privé, ni instructions sur la façon de jouer le personnage. Ce texte n'est jamais envoyé avec la fiche de ce personnage. Un prompt ne le lit que là où tu places la macro `{{publicFace}}`, ou `{{personaPublicFace}}` pour ton persona. Voir [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). Dans un chat de groupe Roleplay en mode Individual, **Others' Public Faces** (faces publiques des autres) l'envoie lors des tours des autres personnages. Voir [Autres réglages Individual](../chats/group-chats.md#more-individual-settings). Un agent dont la source **Personnages** ou **Persona** est réglée sur **Public Face** le lit à la place de la fiche. Voir [Autres réglages](../agents/custom-agents.md#other-settings). Avec **Send Public Faces** (envoyer les faces publiques) activé, Impersonate en Roleplay le lit à la place de la fiche. Voir [Les réglages d'Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
 L'interrupteur **Image Appearance Override** (apparence propre aux images) se trouve sous **Appearance** et est désactivé par défaut. Active-le pour afficher un second champ destiné à de courts tags d'image, comme le mot déclencheur d'un LoRA (un mot qui active un style d'image personnalisé). S'il est activé et que le champ est rempli, les prompts d'image utilisent ces tags tels quels, **Appearance** servant de contexte. Le prompt d'avatar IA est aussi prérempli à partir de ce champ. Le narrateur reçoit toujours le texte complet du champ **Appearance**.
 
@@ -117,13 +120,13 @@ Les salutations et les messages d'exemple peuvent afficher des images de la Gall
 
 ### Écrire un champ de la fiche avec la baguette
 
-**Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Example Dialogue**, **First Message** et chaque **Alternate Greeting** possèdent un bouton avec une simple icône de baguette au-dessus du champ. Son infobulle indique le champ qu'il écrit.
+**Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** et chaque **Alternate Greeting** possèdent un bouton avec une simple icône de baguette au-dessus du champ. Son infobulle indique le champ qu'il écrit.
 
 Avant de commencer : configure une connexion texte fonctionnelle. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 
 1. Écris dans le champ les idées que tu veux conserver, par exemple `smart, scientist, handsome`, ou laisse-le vide.
 2. Remplis les autres champs de la fiche que l'IA doit utiliser comme référence. Tu n'as pas besoin d'enregistrer d'abord.
-3. Clique sur la baguette du champ. Marinara demande 100–300 mots pour ce champ, en prenant ton texte comme point de départ. Example Dialogue demande des exemples d'échanges. **First Message** et chaque **Alternate Greeting** demandent un seul message d'ouverture qui te laisse libre de ta réponse.
+3. Clique sur la baguette du champ. Marinara demande 100–300 mots pour ce champ, en prenant ton texte comme point de départ. Example Dialogue demande des exemples d'échanges. **First Message** et chaque **Alternate Greeting** demandent un seul message d'ouverture qui te laisse libre de ta réponse. **Public Face** n'a pas de plage de longueur : sa baguette réécrit le reste de la fiche sans ses parties privées, donc sa longueur dépend de ta fiche.
 4. Modifie le résultat, puis clique sur **Save**.
 
 La baguette utilise ta connexion texte par défaut pour les agents ou, s'il n'y en a pas, ta connexion texte par défaut. Une connexion de secours configurée pour les agents s'applique toujours.
@@ -178,7 +181,7 @@ La section **Regex Scripts** contient les scripts de recherche-remplacement de c
 
 ## Utiliser un champ alternatif dans certains chats
 
-Un champ alternatif donne au même personnage une autre description, apparence, histoire ou autre détail dans les chats choisis, tandis que partout ailleurs l'original reste en place. Chacun des sept champs de la fiche possède **Add Alternative Field** (ajouter un champ alternatif) en dessous.
+Un champ alternatif donne au même personnage une autre description, apparence, histoire ou autre détail dans les chats choisis, tandis que partout ailleurs l'original reste en place. Chacun des huit champs de la fiche possède **Add Alternative Field** (ajouter un champ alternatif) en dessous.
 
 1. Clique sur **Add Alternative Field** sous le champ à varier. Marinara copie le texte du champ dans une nouvelle alternative.
 2. Facultatif : clique sur son titre, par exemple **Backstory alternative 1** (alternative 1 du passé), et saisis un nom comme `Young`. Un nom compte au plus 60 caractères. Laisse le nom vide pour garder le titre numéroté.

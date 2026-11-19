@@ -56,7 +56,7 @@ React 19 y Vite PWA. Actualmente contiene varios cientos de archivos de código 
 Forma actual de nivel superior:
 
 - `App.tsx`, `main.tsx`: arranque de la app, React Query, PWA, efectos globales.
-- `components/layout`: capa de la app, barras laterales, barra superior, renderizador de ventanas.
+- `components/layout`: capa de la app, la barra lateral (Chats o un panel), barra superior, renderizador de ventanas.
 - `components/ui`: primitivos de UI reutilizables.
 - `components/chat`: UI mixta de chat común, Conversation, Roleplay, escena, sprite y encuentros.
 - `components/game`: superficie y paneles de Game Mode.

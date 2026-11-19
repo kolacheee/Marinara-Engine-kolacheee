@@ -68,7 +68,7 @@ Roleplay에서는 범위 뒤에 캐릭터 이름을 붙이면 그 캐릭터에�
 | `/roll` | 주사위를 굴리고 결과를 게시합니다. 별칭은 `/r`, `/dice`입니다. 형식은 `/roll [dice (optional)]`입니다. |
 | `/random` | 모델에게 뜻밖의 사건을 넣도록 요청합니다. 별칭은 `/rand`, `/event`입니다. |
 | `/scene` | 대화에서 갈라져 나오는 Roleplay 장면을 시작합니다. 별칭은 `/rp`입니다. 형식은 `/scene [description (optional)]`입니다. |
-| `/illustrate` | Roleplay 전용입니다. 갤러리 이미지를 생성합니다. Illustrator 에이전트가 필요합니다. 별칭은 `/ill`입니다. 형식은 `/illustrate [range=N-M] [prompt]`입니다. |
+| `/illustrate` | Roleplay 전용입니다. 갤러리 이미지를 생성합니다. Illustrator 에이전트가 필요합니다. 별칭은 `/ill`입니다. 형식은 `/illustrate [range=N-M] [template=name] [prompt]`입니다. |
 | `/html` | Roleplay 전용입니다. 최근 답변 끝에 `a spellbook page` 같은 이야기 속 아티팩트를 하나 만듭니다. 형식은 `/html [what you want]`입니다. |
 | `/video` | Roleplay 전용입니다. 최근 답변이나 직접 설명한 내용으로 짧은 클립을 만들어 그 답변 아래에 둡니다. Illustrator의 **First frame**(첫 프레임) 설정을 따릅니다. Illustrator가 필요합니다. 형식은 `/video [description]`입니다. |
 | `/impersonate` | 페르소나를 대신해 답변을 씁니다. 별칭은 `/imp`입니다. 형식은 `/impersonate [direction (optional)]`입니다. |
@@ -111,7 +111,16 @@ Roleplay에서는 범위 뒤에 캐릭터 이름을 붙이면 그 캐릭터에�
 
 ### 일러스트와 아티팩트 만들기
 
-`/illustrate range=12`는 12번 메시지를 그림으로 만듭니다. `/illustrate range=12-18`은 12번부터 18번까지의 메시지를 Illustrator에 보냅니다. `/goto`와 같은 메시지 번호를 오름차순으로 쓰며, 최대 200개까지입니다. 숨긴 메시지는 제외됩니다. 이미지는 범위에서 마지막으로 보이는 메시지에 첨부됩니다. Advanced Memory를 켜 두면 이전 메시지도 계속 쓸 수 있습니다. `range=`가 없으면 명령어는 현재 장면을 대상으로 합니다. 직접 입력한 프롬프트는 적은 그대로 사용됩니다.
+`/illustrate range=12`는 12번 메시지를 그림으로 만듭니다. `/illustrate range=12-18`은 12번부터 18번까지의 메시지를 Illustrator에 보냅니다. `/goto`와 같은 메시지 번호를 오름차순으로 쓰며, 최대 200개까지입니다. 숨긴 메시지는 제외됩니다. 이미지는 범위에서 마지막으로 보이는 메시지에 첨부됩니다. Advanced Memory를 켜 두면 이전 메시지도 계속 쓸 수 있습니다. `range=`가 없으면 명령어는 현재 장면을 대상으로 합니다. `template=`가 없으면 직접 입력한 프롬프트는 적은 그대로 사용됩니다.
+
+`template=`는 Illustrator의 **Prompt Mode**(프롬프트 모드) 선택기에 있는 다른 스타일로 그림 한 장을 그립니다. 채팅 자체의 **Prompt Mode**는 유지됩니다. 선택기에 표시된 스타일 이름을 입력하세요. 대소문자는 구분하지 않습니다. 공백, `-`, `_`는 같은 것으로 취급하며, 공백이 있는 이름은 따옴표로 감싸세요. `template=default`는 **Illustration**입니다.
+
+```text
+/illustrate template=comic-page
+/illustrate range=17 template="Comic Page" Aster holds the gate open and looks back
+```
+
+`template=`를 쓰면 입력한 텍스트는 프롬프트 작성기에 무엇을 그릴지 알려 줍니다. 최대 2,000자까지 입력할 수 있으며, 스타일은 여전히 모드가 정합니다. **Attach Card Appearance**(카드 외형 첨부)와 **Send Avatar References**(아바타 참조 전송)는 Gallery의 **Illustrate** 버튼과 같은 방식으로 작동합니다. `range=`와 `template=`는 텍스트 앞에 두세요. 둘의 순서는 상관없습니다. 어느 스타일과도 일치하지 않는 이름을 입력하면 쓸 수 있는 스타일 목록이 표시됩니다. 이름이 같은 스타일이 두 개라면 메시지의 괄호 안에 표시된 ID를 입력하세요.
 
 `/html a terminal readout`은 에이전트가 필요 없으며, **HTML Artifacts**(HTML 아티팩트)가 켜져 있든 꺼져 있든 동작합니다. **Roleplay Commands**(Roleplay 명령) 아래에서 **HTML Artifacts**를 켜 두면 내레이터도 `[html: prompt="..."]`로 같은 것을 요청할 수 있습니다. [요청형 아티팩트](../roleplay/getting-started.md#artifacts-on-demand)를 참고하세요.
 

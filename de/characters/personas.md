@@ -96,9 +96,10 @@ Der Tab **Card** enthält die Felder, die dich der KI beschreiben. Jedes zeigt e
 | **Backstory** | Vorgeschichte, Herkunft, Beziehungen. | Ja |
 | **Appearance** | Aussehen, Kleidung, visuelle Details. | Ja |
 | **Scenario** | Deine Standardsituation in Roleplays. | Ja |
+| **Public Face** | Die Karte ohne ihre privaten Teile. | Nur über `{{personaPublicFace}}` oder die auf **Public Face** gesetzte Quelle **Persona** eines Agenten |
 | **Example Dialogue** (Beispieldialog) | Beispielgespräche. Trenne sie mit `<START>`. Verwende `{{user}}` für deine Persona und `{{char}}` für den anderen Charakter. | Ja |
 
-**Image Appearance Override** (eigene Aussehensbeschreibung für Bilder) unter **Appearance** funktioniert wie bei Charakteren. Siehe [Tab „Card“](creating-and-editing-characters.md#card-tab). Die Textfelder unterstützen Makros.
+**Image Appearance Override** (eigene Aussehensbeschreibung für Bilder) unter **Appearance** und **Public Face** funktionieren wie bei Charakteren. Siehe [Tab „Card“](creating-and-editing-characters.md#card-tab). Die Textfelder unterstützen Makros.
 
 Diese Funktionen arbeiten wie bei Charakteren, nur mit der Persona als Gegenstand:
 

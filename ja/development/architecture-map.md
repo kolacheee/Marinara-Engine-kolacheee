@@ -56,7 +56,7 @@ React 19とVite PWAです。現時点でソースファイルは数百ありま�
 現在のトップレベルの構成:
 
 - `App.tsx`、`main.tsx`: アプリのブートストラップ、React Query、PWA、グローバルな副作用。
-- `components/layout`: アプリのシェル、サイドバー、トップバー、ウィンドウのレンダラー。
+- `components/layout`: アプリのシェル、サイドバー(チャットまたはパネル)、トップバー、ウィンドウのレンダラー。
 - `components/ui`: 再利用できるUIプリミティブ。
 - `components/chat`: 共通のチャット、conversation、roleplay、シーン、スプライト、エンカウントのUIが混在しています。
 - `components/game`: Game Modeの画面とパネル。

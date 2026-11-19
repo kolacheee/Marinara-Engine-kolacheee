@@ -56,7 +56,7 @@ React 19 und Vite-PWA. Aktuell sind es mehrere hundert Quelldateien.
 Aktueller Aufbau der obersten Ebene:
 
 - `App.tsx`, `main.tsx`: App-Bootstrap, React Query, PWA, globale Effekte.
-- `components/layout`: App-Hülle, Seitenleisten, obere Leiste, Modal-Renderer.
+- `components/layout`: App-Hülle, die Seitenleiste (Chats oder ein Panel), obere Leiste, Modal-Renderer.
 - `components/ui`: wiederverwendbare UI-Bausteine.
 - `components/chat`: gemischt – allgemeine Chat-, Conversation-, Roleplay-, Szenen-, Sprite- und Begegnungs-UI.
 - `components/game`: Oberfläche und Panels des Game Mode.

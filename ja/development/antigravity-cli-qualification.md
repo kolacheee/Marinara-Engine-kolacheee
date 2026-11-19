@@ -1,24 +1,26 @@
 # Antigravity CLIのサブスクリプション連携に必要な条件の確認
 
-これは[#8143](https://github.com/Pasta-Devs/Marinara-Engine/issues/8143)に関する開発者向けの調査メモで、確認日は2026-10-23です。Marinara EngineにはAntigravityのサブスクリプション接続が**実装されていません**。Engineのテキスト生成リクエスト中に、ライフサイクルフックを含むCLIのツールやグローバルなカスタマイズが実行されることを防ぐ、サポートされた検証可能な方法がまだ必要です。
+これは[#8143](https://github.com/Pasta-Devs/Marinara-Engine/issues/8143)に関する開発者向けの調査メモで、2026-10-23に初めて確認し、2026-11-19に公式の`agy` 1.5.11と1.5.12のWindowsリリースで再確認しました。Marinara EngineにはAntigravityのサブスクリプション接続が**実装されていません**。このissueも対応予定なしとして閉じられたままです。カスタムエージェントの除外設定によって今回テストしたフックは抑止されましたが、グローバルに検出されたプラグインのMCPサブプロセスは、どちらのリリースでも起動しました。実行分離の条件を満たすことは、まだ確認できていません。
 
 ## 確認済みの公式インターフェース
 
-公式CLIの`agy`は、保存済みのアカウント認証情報によるログインと、対話画面を使わないテキスト生成に対応しています。文書化されたプロトコルには`init`、`step_update`、`result`イベントがあり、ストリーミング入力ではJSON形式のユーザーメッセージをstdinに渡します。`agy models`は利用可能なモデルを列挙し、文書内の例には`gemini-4-argon-high`と`gemini-4-argon-medium`があります。アカウントで利用できるモデルは、これらの例から推測せず、インストール済みのCLIから取得する必要があります。`--print-timeout 0`は完了まで待機し、`--disable-slash-commands`はprintモードでのコマンド展開を無効にします。[ヘッドレスモード](https://www.antigravity.google/docs/cli/headless/)と[CLIフラグのリファレンス](https://www.antigravity.google/docs/cli/reference/)を参照してください。
+公式CLIの`agy`は、保存済みのアカウント認証情報によるログインと、対話画面を使わないテキスト生成に対応しています。文書化されたプロトコルには`init`、`step_update`、`result`イベントがあり、ストリーミング入力ではJSON形式のユーザーメッセージをstdinに渡します。Windowsでの再確認では、`agy models`に`gemini-4-neon-high`が表示され、既存のGoogle AI Proのログインを使い、このモデルへの時間制限付きリクエストが成功しました。アカウントで利用できるモデルは、この例から推測せず、インストール済みのCLIから取得する必要があります。`--print-timeout 0`は完了まで待機し、`--disable-slash-commands`はprintモードでのコマンド展開を無効にします。[ヘッドレスモード](https://antigravity.google/docs/cli/headless/)と[CLIフラグのリファレンス](https://antigravity.google/docs/cli/reference/)を参照してください。
 
-CLIのアカウントログインは、OSの認証情報ストアを使用します。別途用意されたGemini APIキーモードには`modelProvider: "gemini"`と`GEMINI_API_KEY`が必要です。サブスクリプションアダプターが、この課金経路を黙って選択してはいけません。Python SDKで文書化されているプログラムからの認証方法は、Gemini APIキー、Vertex/Google Cloudの認証情報、ローカルモデルです。これらの方法は、SDKによる代替実装で個人向けサブスクリプション認証が使えることを示すものではありません。[認証](https://www.antigravity.google/docs/install/#programmatic-authentication)と[SDKの概要](https://www.antigravity.google/docs/sdk/overview/)を参照してください。
+CLIのアカウントログインは、OSの認証情報ストアを使用します。別途用意されたGemini APIキーモードには`modelProvider: "gemini"`と`GEMINI_API_KEY`が必要です。サブスクリプションアダプターが、この課金経路を黙って選択してはいけません。Python SDKで文書化されているプログラムからの認証方法は、Gemini APIキー、Vertex/Google Cloudの認証情報、ローカルモデルです。これらの方法は、SDKによる代替実装で個人向けサブスクリプション認証が使えることを示すものではありません。[認証](https://antigravity.google/docs/install/#programmatic-authentication)と[SDKの概要](https://antigravity.google/docs/sdk/overview/)を参照してください。
 
-## 実行分離に関する保証の不足
+## 現時点の実行分離の結果
 
-公式のカスタムエージェント定義には、ツール、MCP、カスタマイズの制御が用意されています。変更履歴には`inheritCustomizations`、`inheritMcp`、`excludeDefaultComponents`も記載されています。ただし、`excludeDefaultComponents: true`の告知では、モデル呼び出し後のフックを保持することが明記されています。したがって、このオプションだけでは、テキスト生成リクエストが実行可能なフックをすべて除外することを証明できません。[カスタムサブエージェント](https://www.antigravity.google/docs/subagents/)と[CLIの変更履歴](https://www.antigravity.google/docs/changelog)を参照してください。
+公式のカスタムエージェント定義には、ツール、MCP、カスタマイズの制御が用意されています。プラグインガイドでは、`inheritCustomizations`はスキル、ルール、フックの継承を、`inheritMcp`はワークスペースのMCPサーバーの継承を制御すると説明されています。過去の`excludeDefaultComponents: true`の告知では、モデル呼び出し後のフックが保持されるため、このフラグだけでは分離を確認できません。以下の設定の組み合わせでは、1.5.11でテスト用に用意したフックが抑止されましたが、すべてのMCPサブプロセスの起動を防ぐことはできませんでした。[カスタムサブエージェント](https://antigravity.google/docs/subagents/)、[プラグインの作成](https://antigravity.google/docs/build-plugins/)、[CLIの変更履歴](https://antigravity.google/docs/changelog)を参照してください。
 
-フックは、ワークスペース、グローバルな`~/.gemini/config/hooks.json`、インストール済みプラグインから読み込まれる場合があります。対象には、セッション、モデル呼び出し、ツール、停止のイベントが含まれます。現在の設定ドキュメントと[公式の設定スキーマ](https://antigravity.google/schemas/v1/settings.json)には、`settings.json`の`hooks`項目は読み込まれないと明記されています。そこに空の項目を書いても、実際のフックの読み込み元は無効になりません。[フック](https://www.antigravity.google/docs/hooks)と[CLI設定](https://www.antigravity.google/docs/settings?tab=cli)を参照してください。
+フックは、ワークスペース、グローバルな`~/.gemini/config/hooks.json`、インストール済みプラグインから読み込まれる場合があります。対象には、セッション、モデル呼び出し、ツール、停止のイベントが含まれます。現在の設定ドキュメントと[公式の設定スキーマ](https://antigravity.google/schemas/v1/settings.json)には、`settings.json`の`hooks`項目は読み込まれないと明記されています。そこに空の項目を書いても、実際のフックの読み込み元は無効になりません。[フック](https://antigravity.google/docs/hooks)と[CLI設定](https://antigravity.google/docs/settings?tab=cli)を参照してください。
 
-文書化されたCLIフラグや設定には、リクエスト単位でフックを無効にするオプションや、アカウント認証を保持したまま設定やプロファイルを分離するディレクトリーの指定がありません。読み取り専用の`/hooks`一覧は有用な証拠ですが、そのドキュメントは、後続のモデル呼び出しがフックのない固定構成を使うことまでは保証していません。ディレクトリーの変更、空の`tools`リスト、ツールを使わないよう求める指示、起動後の中断では、実行分離の証明として不十分です。
+インストール済みの1.5.11のヘルプでは、`--settings`はインラインまたはファイルで渡す、セッション内だけの`settings.json`キーの上書きとして説明されています。これにより、永続的な設定を書き換えずに、ワークスペースの信頼設定と権限設定を一時的に変更できます。ただし、別の設定プロファイルを確立するものではありません。`--settings '{"hooks":{}}'`は`unknown setting "hooks"`を表示し、コード1で終了します。インストール済みのヘルプには、フックを無効にするオプションも、認証済みの分離したプロファイルを使うオプションもありませんでした。
+
+現在の設定ドキュメントでは、`/hooks`でフックの追加、編集、オン/オフの切り替えができ、変更は設定ファイルに保存されると説明されています。今回の再確認では、ヘッドレス実行の`-p "/hooks" --output-format json`が構造化された一覧を返しました。一覧や保存済みの切り替え設定は、後続の呼び出しが実行可能なカスタマイズを除外することを保証しません。ディレクトリーの変更、空の`tools`リスト、ツールを使わないよう求める指示、起動後の中断では、実行分離の証明として不十分です。
 
 サードパーティーの連携報告は、調査の手がかりです。無作用のツール、エージェントの解決ログ、カスタマイズの継承に関する主張は、Engineが依存する保証にする前に、公式リリースで再現する必要があります。
 
-## リリースのローカル調査
+## 2026年10月のリリース調査
 
 [公式インストーラー](https://antigravity.google/cli/install.sh)と[Darwin ARM64リリースマニフェスト](https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/darwin_arm64.json)を、インストーラーを実行せずに調べました。マニフェストが選択したのは、[バージョン付きの`agy` 1.4.6 Darwin ARM64アーカイブ](https://storage.googleapis.com/antigravity-public/antigravity-cli/1.4.6-4884751325200384/darwin-arm/cli_mac_arm64.tar.gz)と、次のアーカイブSHA-512です。
 
@@ -30,6 +32,81 @@ CLIのアカウントログインは、OSの認証情報ストアを使用しま
 
 この調査では、CLIのインストールや認証、認証情報の確認、モデル呼び出し、ログイン済みアカウントのモデル列挙、フック実行のテストは**行っていません**。公開されているフラグ一覧を裏付けるものであり、分離が不可能だと証明したり、サブスクリプション経由の生成を検証したりするものではありません。
 
+## 2026年11月のWindows調査
+
+インストール済みの`agy`は1.5.11と表示されました。そのSHA-512は[公式のWindows AMD64マニフェスト](https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/windows_amd64.json)で確認したチェックサムと一致しましたが、その時点のマニフェスト応答は保存していませんでした。随時更新されるマニフェストは、その後1.5.12に進みました。レビュー中に、[バージョン付きの1.5.11 Windows実行ファイル](https://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.11-6132547114106880/windows-x64/cli_windows_x64.exe)を別途ダウンロードし、実行せずにハッシュを計算しました。234,827,416バイトのファイルのSHA-512は、インストール済み実行ファイルの次の値と一致しました。
+
+```text
+7de2a90b3a351c5c1d089b50a773d4fc455062870fa62fc4d50ee2779d7b9f1b630a7025c31163671f6c82ae0426aeda838f98f67270a50fdd2c7de2f2d7eb3f
+```
+
+テストは、この作業専用の一時ワークスペースで、次の`.agents/agents/me-isolation-probe.md`のフロントマターを使って行いました。
+
+```yaml
+name: me-isolation-probe
+description: Harmless execution-isolation qualification fixture.
+mainAgent: true
+subagent: false
+tools: []
+inheritCustomizations: false
+inheritMcp: false
+excludeDefaultComponents: true
+commandExecutionPolicy: off
+```
+
+公式の[カスタムエージェントのフロントマターリファレンス](https://antigravity.google/docs/subagents/)には、`mainAgent`、`subagent`、`tools`、`commandExecutionPolicy`が記載されています。継承と除外の制御は、前述のプラグインガイドと変更履歴に記載されています。テスト用の構成は組み合わせとして検証したもので、エージェントの選択に成功したことは、各フィールドが個別に適用されたことを示すものではありません。
+
+生成には`--settings <session-settings-json> --agent me-isolation-probe --model gemini-4-neon-high --disable-slash-commands --print-timeout 40s --output-format stream-json -p <prompt>`を使い、別途サブプロセスに55秒の制限を設けました。インラインのJSON設定では、一時ワークスペースを信頼し、デフォルトのエージェントモードを選び、カスタムのステータス/タイトルスクリプトを無効にして、以下に記載する権限モードを選びました。権限確認は省略していません。
+
+設定オブジェクトの形は次のとおりです。`<temporary-workspace>`を調査用ディレクトリーに置き換え、`toolPermission`を各行の権限モードに設定しました。
+
+```json
+{
+  "trustedWorkspaces": ["<temporary-workspace>"],
+  "agentMode": "",
+  "toolPermission": "strict",
+  "statusLine": { "enabled": false },
+  "title": { "enabled": false }
+}
+```
+
+調査用サブプロセスの環境から、APIキーとADCを切り替える環境変数を取り除きました。認証情報の抽出やコピーは行っていません。
+
+テスト用フックは、`SessionStart`、`PreInvocation`、`PostInvocation`、`Stop`のイベント名を、それぞれ別の検出用ファイルに追記しました。ローカルのPython製MCPテスト用プログラムは、stdio経由で`initialize`と`tools/list`に応答する前に、起動マーカーを追記しました。ワークスペースのMCP設定には`.agents/mcp_config.json`を使いました。プラグインには`plugin.json`、`hooks.json`、`mcp_config.json`を含め、[カスタマイズの検出](https://antigravity.google/docs/customization-discovery/)の説明どおり、`.agents/plugins.json`または`~/.gemini/config/plugins.json`にある`entries`マニフェスト経由で検出させました。フック、MCP、ファイル読み取りの対照実験では、同じテスト用構成とセッション設定を保ちながら`--agent`を省略しました。存在しない名前の調査では、代わりに、有効な`--agent me-isolation-probe`と解決できないエージェント名を比較しました。
+
+| 調査 | 対照 | カスタムエージェント |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
+| ワークスペースとグローバルのフック、ワークスペースで検出されたプラグインのフック(`strict`権限) | 各ソースで4つすべてのイベントがマーカーを書き込みました | フックのマーカーはありませんでした |
+| ワークスペースのMCPと、ワークスペースで検出されたプラグインのMCP(`strict`権限) | 両方のサブプロセスが起動マーカーを書き込みました | どちらの起動マーカーも現れませんでした |
+| グローバルに検出されたプラグインのフック(`request-review`権限) | 4つすべてのイベントがマーカーを書き込みました | フックのマーカーはありませんでした |
+| グローバルに検出されたプラグインのMCP(`request-review`権限) | サブプロセスが起動マーカーを書き込みました | サブプロセスは依然として起動マーカーを書き込みました |
+| 予測できないテスト用の値に対する明示的な`view_file`リクエスト(`request-review`権限) | テスト用の値を返しました | `FILE_UNAVAILABLE`を返し、テスト用の値は返しませんでした |
+| 存在しない`--agent`名(`strict`権限) | `--agent me-isolation-probe`で生成が完了しました | 無効な名前では、エラー結果、使用量ゼロ、フック/MCPマーカーなしで終了コード1になりました |
+
+グローバルに検出されたプラグインのMCPの結果は、`strict`権限で、呼び出しごとに新しい起動マーカーのパスを使って2回再現しました。両方のカスタムエージェントのリクエストが終了コード0で終了し、両方のサブプロセスがマーカーを書き込みました。先に行った対照実験の書き込みが遅れても、これらの新しいパスを対象にはできません。生成された返信はMCPツールを使っていませんでしたが、実行分離を妨げる問題として、これがまだ観測されています。
+
+ファイル読み取りのプロンプトは`Use view_file to read <fixture-path> and reply with its exact contents. Do not guess.`で、一時的なテスト用ファイルの絶対パスを代入しました。カスタムエージェントのMarkdown本文には、ファイルを読めない場合は`FILE_UNAVAILABLE`と返すよう指示しました。
+
+調査中に公式マニフェストが更新されたため、インストール済みのCLIを置き換えずに、[1.5.12 Windows実行ファイル](https://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.12-5281398513336320/windows-x64/cli_windows_x64.exe)を、この作業専用の調査ディレクトリーにダウンロードしました。保存した次のマニフェスト応答とSHA-512を照合しました。
+
+```json
+{
+  "version": "1.5.12",
+  "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.5.12-5281398513336320/windows-x64/cli_windows_x64.exe",
+  "sha512": "64603ba45b2783587edc62fd9effa9228091593b440ed54368e098bb5fb3ee034bada58c4125e3c0e509ed460b327e454dc99971d04d47c7aee417f00f56d801"
+}
+```
+
+グローバルに検出されたプラグインとファイル読み取りについて、同じ既存のログインと`request-review`権限を使い、1.5.12で対照/カスタムエージェントの組み合わせを再テストしました。対照ではプラグインのすべてのフックイベントが実行され、MCPサブプロセスが起動し、テスト用の値が返りました。カスタムエージェントは`FILE_UNAVAILABLE`を返し、それらのフックを抑止しましたが、MCPサブプロセスは依然として起動しました。どちらの生成リクエストも終了コード0で終了しました。表のほかの行は1.5.11でのみテストしました。
+
+ストリームの`init.agent`は選択されたカスタムエージェントを示し、1.5.11で行った別のプロンプトでは、そのエージェントのMarkdown本文にだけ定義したマーカーが返りました。ただし、`init.tools`は対照とカスタムエージェントで同じ内蔵ツールを列挙し、`run_command`と`view_file`も含まれていました。この一覧だけでは実際のツールアクセスについて結論が出ないものとして扱ってください。ファイル読み取りの調査で確認できるのは、1つのツールで観測された動作です。ほかのツールの条件確認はまだ必要です。
+
+グローバルなテスト用ファイルは、それまで存在しなかったフック/マニフェストのパスにだけ、排他的なファイル作成で作成し、後片付けでは内容を確認してから削除しました。グローバルな一時ファイルは両方とも削除され、CLIの永続的な設定のハッシュは調査前と一致しました。CLIの通常の会話状態は残りました。調査によって既存のグローバル設定を置き換えることはありませんでした。
+
+調査では認証情報の内容を確認しておらず、認証は公式CLI内に留めました。
+
+これらのWindows実機での結果は、サブスクリプション認証による生成を確認し、当初のフックに関する懸念の範囲を絞るものです。アダプターの条件を満たすものではありません。グローバルに検出されたプラグインのMCPは依然として起動します。グローバルな単独のMCPサーバー、継承されたスキル/ルール/サブエージェント、操作を実行できるすべてのツール、キャンセル、長時間出力がない場合の動作、Linux/macOS実機での実行は未検証です。CLIの変更履歴にある新しいプラグインポリシーやサンドボックスの修正も、通常の個人向けサブスクリプションのリクエストが、実行可能なカスタマイズをすべて除外することを示すものではありません。
+
 ## アダプターの提供前に必要な証拠
 
 1. リクエストが実行する可能性が生じる前に、グローバルとワークスペースのフック、プラグイン、スキル、ルール、サブエージェント、MCPサーバー、操作を実行できるツールを除外する、サポートされた方法を確立してください。通常のアカウントログインは公式CLI内に留め、トークンを抽出したりコピーしたりしないでください。
@@ -38,4 +115,4 @@ CLIのアカウントログインは、OSの認証情報ストアを使用しま
 4. サブプロセスの入出力制限、非公開の一時ファイルとその削除、キャンセル、非ゼロ終了コードと結果エラーの処理を追加し、活動を考慮したタイムアウトをテストしてください。表示テキストのない長い思考も対象です。アカウント固有のモデルは公式コマンドで取得し、選択したモデルと対応する推論強度を保持してください。
 5. 既存の接続/プロバイダーの契約を再利用してください。Claude SDKの`settingSources: []`などのオプションはプロバイダー固有であり、`agy`に転用できるフラグではありません。実際の認証、サブスクリプション課金、実機プラットフォームで未検証の点は明示してください。
 
-実行境界が確認されるまでは#8143を未解決のままとし、ランタイムのプロバイダー項目を追加してはいけません。
+1.5.11と1.5.12のWindowsでの結果は、これらの確認事項の一部を満たしていますが、サブプロセスの起動を防げない問題は再現可能なまま残っています。#8143は対応予定なしとして閉じられたままです。今回の再確認はissueを再開するものでも、ランタイムの作業を許可するものでもありません。メンテナーの判断と条件確認の完了なしに、ランタイムのプロバイダー項目を追加してはいけません。

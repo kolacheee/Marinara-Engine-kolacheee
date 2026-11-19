@@ -69,7 +69,7 @@ Der Tab **Metadata** enthält Angaben zu Identität und Organisation. Sie helfen
 
 - **Character ID**. Schreibgeschützt. Sie erscheint, sobald die Karte gespeichert ist. Mit **Copy** kopierst du sie.
 - **Name**. Der angezeigte Name. In Prompts steht er als `{{char}}`, ein Platzhalter, den Marinara durch den Namen des Charakters ersetzt.
-- **Other names** (Weitere Namen). Spitznamen, vollständige Namen oder Titel, unter denen der Charakter auch bekannt ist, etwa `Clark Kent, Kal-El, Mr. Kent`. Trenn mehrere Namen mit Kommas und drück <kbd>Enter</kbd> oder klick auf **Add**. In Roleplay-Chats können sie in der Namensfarbe erscheinen. Siehe [Charakterfarben](colors-and-stats.md#the-three-colors).
+- **Other names** (Weitere Namen). Spitznamen, vollständige Namen oder Titel, unter denen der Charakter auch bekannt ist, etwa `Clark Kent, Kal-El, Mr. Kent`. Trenn mehrere Namen mit Kommas und drück <kbd>Enter</kbd> oder klick auf **Add**. In Roleplay-Chats können sie in der Namensfarbe erscheinen, und der Character Tracker verknüpft einen Charakter, den er unter einem dieser Namen verfolgt, mit der Karte. Siehe [Charakterfarben](colors-and-stats.md#the-three-colors).
 - **Creator**. Wer die Karte erstellt hat – für die Namensnennung, wenn du sie teilst.
 - **Version**. Eine Versionsnummer, die du selbst festlegst, etwa `1.0`. Der Schalter **Automatic versioning** (automatische Versionierung) daneben behält frühere Versionen und erhöht diese Nummer, wenn sich die Karte ändert. Der Versionsverlauf speichert nur Momentaufnahmen, solange dieser Schalter an ist.
 - **Talkativeness**. Ein Schieberegler von 0 bis 100 Prozent. Er legt fest, wie oft dieser Charakter in Gruppenchats spricht. Der Standard sind 50 Prozent.
@@ -92,6 +92,9 @@ Der Tab **Card** ist der zentrale Schreibbereich. Über die Sprunglinks oben err
 | **Backstory** | Vorgeschichte, Herkunft, wichtige Beziehungen. | Ja |
 | **Appearance** | Aussehen, Kleidung, optische Details. Dient außerdem als Grundlage für einen KI-Avatar-Prompt. | Ja |
 | **Scenario** | Der Standardrahmen für neue Chats mit diesem Charakter. | Ja |
+| **Public Face** | Die Karte ohne ihre privaten Teile. | Nur dort, wo ein Makro oder eine Einstellung sie anfordert |
+
+**Public Face** enthält das, was die anderen Charaktere über den Charakter sehen oder wissen könnten: Aussehen, Auftreten, Rolle, Ruf und Beziehungen, die kein Geheimnis sind. Lass Geheimnisse, innere Gedanken, private Vorgeschichte und Anweisungen zum Spielen des Charakters weg. Das Feld wird nie als Teil der Karte dieses Charakters gesendet. Ein Prompt liest es nur dort, wo du das Makro `{{publicFace}}` platzierst, oder `{{personaPublicFace}}` für deine Persona. Siehe [Prompt-Makros](../prompts/macros.md#identity-character-and-persona-macros). In einem Roleplay-Gruppenchat im Modus Individual sendet **Others' Public Faces** es bei den Zügen der anderen Charaktere mit. Siehe [Weitere Einstellungen für Individual](../chats/group-chats.md#more-individual-settings). Ein Agent, dessen Quelle **Charaktere** oder **Persona** auf **Public Face** steht, liest es anstelle der Karte. Siehe [Weitere Einstellungen](../agents/custom-agents.md#other-settings). Ist **Send Public Faces** eingeschaltet, liest Impersonate in Roleplay es anstelle der Karte. Siehe [Die Impersonate-Einstellungen](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
 **Image Appearance Override** (eigene Aussehensbeschreibung für Bilder) liegt unter **Appearance** und ist standardmäßig aus. Schalte den Schalter ein, um ein zweites Feld für kurze Bild-Tags einzublenden, etwa ein LoRA-Triggerwort (ein Schlüsselwort, das einen eigenen Bildstil einschaltet). Ist er an und das Feld ausgefüllt, verwenden Bild-Prompts diese Tags genau so, wie sie dastehen, und **Appearance** dient als Hintergrund. Auch ein KI-Avatar-Prompt wird dann daraus vorbefüllt. Der Erzähler sieht immer den vollständigen Text aus **Appearance**.
 
@@ -111,13 +114,13 @@ Begrüßungen und Beispielnachrichten können Bilder aus der Galerie des Charakt
 
 ### Ein Kartenfeld mit dem Zauberstab schreiben
 
-Über **Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Example Dialogue**, **First Message** und jedem **Alternate Greeting** sitzt eine Zauberstab-Schaltfläche, die nur ein Symbol zeigt. Ihr Tooltip nennt das Feld, das sie schreibt.
+Über **Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** und jedem **Alternate Greeting** sitzt eine Zauberstab-Schaltfläche, die nur ein Symbol zeigt. Ihr Tooltip nennt das Feld, das sie schreibt.
 
 Bevor du anfängst: Richte eine funktionierende Textverbindung ein. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 
 1. Schreib Ideen, die erhalten bleiben sollen, in das Feld, etwa `smart, scientist, handsome`, oder lass es leer.
 2. Füll andere Kartenfelder aus, die die KI als Referenz nutzen soll. Du musst vorher nicht speichern.
-3. Klick auf den Zauberstab des Felds. Marinara fordert 100–300 Wörter für dieses Feld an und nimmt deinen Text als Ausgangsdetails. Example Dialogue fordert Beispielwechsel an. **First Message** und jedes **Alternate Greeting** fordern eine Eröffnungsnachricht an, die deine Antwort offenlässt.
+3. Klick auf den Zauberstab des Felds. Marinara fordert 100–300 Wörter für dieses Feld an und nimmt deinen Text als Ausgangsdetails. Example Dialogue fordert Beispielwechsel an. **First Message** und jedes **Alternate Greeting** fordern eine Eröffnungsnachricht an, die deine Antwort offenlässt. Für **Public Face** gibt es keine Wortvorgabe: Der Zauberstab formuliert den Rest der Karte ohne die privaten Teile neu. Die Länge richtet sich deshalb nach deiner Karte.
 4. Bearbeite das Ergebnis und klick dann auf **Save**.
 
 Der Zauberstab verwendet deine Standard-Textverbindung für Agenten oder, falls es keine gibt, deine Standard-Textverbindung. Eine eingerichtete Ausweichverbindung für Agenten gilt weiterhin.
@@ -170,7 +173,7 @@ Der Abschnitt **Regex Scripts** enthält Suchen-und-Ersetzen-Skripte für genau 
 
 ## Ein alternatives Feld in ausgewählten Chats verwenden
 
-Ein alternatives Feld gibt demselben Charakter in ausgewählten Chats eine andere Beschreibung, ein anderes Aussehen, eine andere Vorgeschichte oder ein anderes Detail, während alle übrigen Chats beim Original bleiben. Unter jedem der sieben Kartenfelder steht **Add Alternative Field** (alternatives Feld hinzufügen).
+Ein alternatives Feld gibt demselben Charakter in ausgewählten Chats eine andere Beschreibung, ein anderes Aussehen, eine andere Vorgeschichte oder ein anderes Detail, während alle übrigen Chats beim Original bleiben. Unter jedem der acht Kartenfelder steht **Add Alternative Field** (alternatives Feld hinzufügen).
 
 1. Klick unter dem Feld, das du abwandeln willst, auf **Add Alternative Field**. Marinara kopiert den Text des Felds in eine neue Alternative.
 2. Optional: Klick auf ihren Titel, etwa **Backstory alternative 1** (Hintergrundgeschichte – Alternative 1), und gib einen Namen wie `Young` ein. Namen dürfen bis zu 60 Zeichen lang sein. Lässt du den Namen leer, bleibt der nummerierte Titel.

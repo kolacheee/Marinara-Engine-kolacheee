@@ -83,6 +83,7 @@ Roleplay के **Individual** मोड में **Smart** या **Manual** �
 
 - **Add Turn To Prompt** डिफ़ॉल्ट रूप से चालू रहता है। यह एक छोटा निर्देश जोड़ता है, जिसमें बताया जाता है कि किस कैरेक्टर को जवाब देना है।
 - **Name Prefix History** (सिर्फ़ Roleplay) डिफ़ॉल्ट रूप से बंद रहता है। यह बदलता है कि पुराने संदेशों पर बोलने वालों के नाम कैसे लगाए जाते हैं। इसे बंद ही रहने दें, जब तक कोई कैरेक्टर बार-बार यह गड़बड़ न करे कि किसने क्या कहा।
+- **Others' Public Faces** (दूसरों की सार्वजनिक पहचान, सिर्फ़ Roleplay) डिफ़ॉल्ट रूप से बंद रहता है। हर कैरेक्टर को सिर्फ़ अपना कार्ड मिलता है, इसलिए उसे दूसरों की जानकारी सिर्फ़ चैट से मिलती है। इसे चालू करने पर हर कैरेक्टर के टर्न में बाकी सक्रिय कैरेक्टर का **Public Face** (सार्वजनिक पहचान) टेक्स्ट जुड़ता है: वह जानकारी जो सीन में कोई भी उनके बारे में जान सकता है, उनके राज़ के बिना। जिन कैरेक्टर की Public Face खाली है और जो कैरेक्टर निष्क्रिय हैं, वे शामिल नहीं होते। इसे लिखने के लिए [कार्ड टैब](../characters/creating-and-editing-characters.md#card-tab) देखें।
 
 ### Scenario Override (Roleplay)
 
@@ -102,6 +103,7 @@ Roleplay के **Individual** मोड में **Smart** या **Manual** �
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | चालू |
 | **Name Prefix History** | Roleplay, Individual | बंद |
+| **Others' Public Faces** | Roleplay, Individual | बंद |
 | **Scenario Override** | Roleplay | खाली |
 | **Character Exchanges** | Conversation, Autonomous Messaging | बंद |
 

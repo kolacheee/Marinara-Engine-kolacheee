@@ -6,7 +6,7 @@ Nimm Roleplay für eine Szene aus einer Geschichte. Nimm [Conversation](../conve
 
 ## Eine Rollenspielrunde starten
 
-Bevor du anfängst: Leg im Panel **Connections** (Verbindungen) rechts in der App ein Konto an. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
+Bevor du anfängst: Leg im Panel **Connections** (Verbindungen) ein Konto an. Siehe [Verbindung zu einem KI-Anbieter herstellen](../connections/connecting-to-a-provider.md).
 
 1. Öffne deine Chats (**Bibliothek** oben rechts, dann **Chats** oben in der Seitenleiste) und klick auf den Tab **Roleplay**.
 2. Klick oben in der Chatliste auf **Neu**.

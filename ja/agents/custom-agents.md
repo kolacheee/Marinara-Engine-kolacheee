@@ -102,6 +102,8 @@ Post-Processingのエージェントには、**Turn Data Access**(ターンデ�
 
 これで、それらのメッセージにキーワードが現れたときだけ、エージェントが動きます。欄を空にすると、このフィルターは無効になります。周期と、設定した起動質問は引き続き適用されます。
 
+ダウンロードできるエージェントにも同じセクションがあります。[Activation Keywordsと起動質問](built-in-agents.md#activation-keywords-and-questions)を参照してください。
+
 ## ツールの追加
 
 エージェントはツールを呼び出せます。ツールとは、AIが実行して何かを取得したり変更したりし、その結果を読み取る関数のことです。function calling(関数呼び出し)とも呼ばれます。
@@ -128,6 +130,7 @@ Post-Processingのエージェントには、**Turn Data Access**(ターンデ�
 - **Model override**(モデルの上書き): このエージェントだけ別のモデルを使います。たとえば、より安価なモデルです。空のままにすると、チャットのモデルを使います。エージェントは、その接続に保存された生成パラメーターを送信します。[エージェントのパラメーター](../prompts/generation-parameters.md#parameters-for-agents)を参照してください。
 - **Agent Budget**(エージェントの予算): **Context Size**(コンテキストサイズ)は、エージェントが読む直近のメッセージ数です(デフォルトは5)。**Max Output Tokens**(最大出力トークン)は、出力用に確保する枠です(デフォルトは4096、範囲は128から32768まで)。
 - **Add as Prompt Section**(プロンプトセクションとして追加): エージェントの最新の出力を、プロンプトプリセットに配置できるセクションとして使えるようにします。
+- **Context Sources**(コンテキストのソース): 指示のほかにエージェントが読む内容です。**Characters**(キャラクター)と**Persona**(ペルソナ)には、それぞれ**Off**(オフ)、**Full card**(カード全体)、**Public Face**(公開情報)の3つの選択肢があります。**Public Face**では、名前とカードの**Public Face**欄だけを送ります。その欄が空なら、名前だけを送ります。記入方法は[Cardタブ](../characters/creating-and-editing-characters.md#card-tab)を参照してください。複数のエージェントが1つのリクエストを共有する場合、各ソースには、その中で最も広い範囲の選択が使われます。範囲が広い順に**Full card**、**Public Face**、**Off**です。
 
 **Prompt Template**では、`{{user}}`や`{{char}}`などのマクロが使えます。[マクロ](../prompts/macros.md)を参照してください。
 
@@ -192,7 +195,7 @@ Marinaraは`editedText`を返信と差し替えます。`changes`のメモは、
 - 時間切れ、モデルが使えない、無効な回答のいずれかの場合、エージェントは通常どおり動きます。制限時間は、モデルの種類と、モデルが先に考える必要があるかどうかで変わります。[制限時間](../connections/decision-models.md#time-limits)を参照してください。
 - 起動質問または判定文を持つエージェントをインポートすると、Decisionモデルのガイドへのリンクが付いた通知が表示されます。Decisionモデルがない場合、エージェントはキーワードと**Trigger Cadence**(起動頻度)が許すたびに動き、プロンプトの判定文は「いいえ」として扱われます。
 
-起動質問は、カスタムエージェントだけに適用されます。内蔵のIllustratorには、新しい場所と天候を確認する専用の固定チェックがあります。[Decisionモデルによる確認](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)を参照してください。
+起動質問は、[Activation Keywordsと起動質問](built-in-agents.md#activation-keywords-and-questions)に挙げたものを除き、ダウンロードできるエージェントでも同じように動作します。内蔵のIllustratorにも、新しい場所と天候を確認する専用の固定チェックがあります。[Decisionモデルによる確認](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)を参照してください。
 
 ## エージェントのプロンプト内の判定文
 

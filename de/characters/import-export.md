@@ -41,6 +41,8 @@ Wenn es nicht funktioniert hat: Lies die rote Meldung neben der Datei. Die übri
 
 Importierte Objekte behalten ihren eigenen Namen und ihre eigene Beschreibung. Um alles zu finden, was du importiert hast, wähl im Filter **Tags** neben der Suche **Imported**. Jedes Importfenster der Bibliothek (Characters, Personas, Lorebooks, Presets) und der Chat-Import haben dieselben beiden Kästchen unter **Import tags**. Der [Bot Browser](bot-browser.md) verwendet den Namen der Website als Quelle, zum Beispiel **Chub**.
 
+Das Datum **Erstellt** eines importierten Charakters gibt an, wann die Karte erstellt wurde: Es stammt aus der Karte, falls dort eines gespeichert ist, andernfalls aus dem Datum der Datei auf deinem Rechner. **Aktualisiert** gibt an, wann du sie importiert hast. Aktualisierst du einen Charakter aus einer neueren Karte, bleibt sein Datum **Erstellt** erhalten. Die Sortierung nach **Neueste** oder **Älteste** richtet sich nach **Erstellt**.
+
 Regex-Skripte sind kleine Regeln, die Text ersetzen. Bleib bei **Character only**, solange du die Regeln nicht überall haben willst. Karten für Erzähler, Welten oder mehrere Charaktere bleiben beim Aufteilen unverändert.
 
 ### Karten mit eingebautem Lorebook

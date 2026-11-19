@@ -69,7 +69,7 @@ La pestaña **Metadata** contiene los detalles de identidad y organización. Te 
 
 - **Character ID**. Solo lectura. Aparece después de guardar la tarjeta. Haz clic en **Copy** (Copiar) para copiarlo.
 - **Name**. El nombre mostrado. Es `{{char}}` en los prompts (las instrucciones enviadas a la IA), un marcador de posición que Marinara reemplaza por el nombre del personaje.
-- **Other names** (Otros nombres). Apodos, nombres completos o títulos por los que también se conoce al personaje, como `Clark Kent, Kal-El, Mr. Kent`. Escribe varios separados por comas y pulsa <kbd>Enter</kbd> o haz clic en **Add** (Añadir). Los chats de Roleplay pueden mostrarlos con el color del nombre. Consulta [Colores del personaje](colors-and-stats.md#the-three-colors).
+- **Other names** (Otros nombres). Apodos, nombres completos o títulos por los que también se conoce al personaje, como `Clark Kent, Kal-El, Mr. Kent`. Escribe varios separados por comas y pulsa <kbd>Enter</kbd> o haz clic en **Add** (Añadir). Los chats de Roleplay pueden mostrarlos con el color del nombre, y Character Tracker vincula a la tarjeta un personaje al que sigue bajo uno de estos nombres. Consulta [Colores del personaje](colors-and-stats.md#the-three-colors).
 - **Creator**. Quién creó la tarjeta, para dar crédito cuando la compartes.
 - **Version**. Un número de versión que tú defines, como `1.0`. El interruptor **Automatic versioning** (Control de versiones automático) que está al lado conserva las versiones anteriores y sube este número cuando la tarjeta cambia. El historial de versiones solo guarda instantáneas mientras este interruptor está activado.
 - **Talkativeness**. Un control deslizante del 0 al 100 por ciento. Define con qué frecuencia habla este personaje en los chats grupales. El valor predeterminado es 50 por ciento.
@@ -92,6 +92,9 @@ La pestaña **Card** es el espacio principal de escritura. Los enlaces de la par
 | **Backstory** | Historia, origen, relaciones importantes. | Sí |
 | **Appearance** | Aspecto, ropa, detalles visuales. También sirve de base para un prompt de avatar de IA. | Sí |
 | **Scenario** | El entorno predeterminado para los nuevos chats con este personaje. | Sí |
+| **Public Face** (Faceta pública) | La tarjeta sin sus partes privadas. | Solo donde lo pide una macro o un ajuste |
+
+**Public Face** es lo que el resto del elenco podría ver o saber del personaje: apariencia, maneras, papel, reputación y relaciones que no sean secretas. Deja fuera los secretos, los pensamientos íntimos, la historia privada y las instrucciones sobre cómo interpretar al personaje. Nunca se envía como parte de la tarjeta de este personaje. Un prompt lo lee solo donde colocas la macro `{{publicFace}}`, o `{{personaPublicFace}}` para tu persona. Consulta [Macros de prompt](../prompts/macros.md#identity-character-and-persona-macros). En un chat grupal de Roleplay en modo Individual, **Others' Public Faces** (Facetas públicas de los demás) lo envía a los turnos de los otros personajes. Consulta [Más ajustes de Individual](../chats/group-chats.md#more-individual-settings). Un agente cuya fuente **Characters** (Personajes) o **Persona** esté en **Public Face** lo lee en lugar de la tarjeta. Consulta [Otros ajustes](../agents/custom-agents.md#other-settings). Con **Send Public Faces** (Enviar facetas públicas) activado, Impersonate en Roleplay lo lee en lugar de la tarjeta. Consulta [Los ajustes de Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
 **Image Appearance Override** (Apariencia alternativa para imágenes) está debajo de **Appearance** y está desactivado de forma predeterminada. Actívalo para mostrar un segundo cuadro para etiquetas de imagen breves, como la palabra de activación de una LoRA (una palabra clave que activa un estilo de imagen personalizado). Mientras está activado y tiene texto, los prompts de imagen usan esas etiquetas tal como están escritas, y **Appearance** se mantiene como contexto de fondo. El prompt de avatar de IA también parte de ellas. El narrador siempre ve el texto completo de **Appearance**.
 
@@ -111,13 +114,13 @@ Los saludos y los mensajes de ejemplo pueden mostrar imágenes de la Gallery del
 
 ### Escribir un campo de la tarjeta con la varita
 
-**Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Example Dialogue**, **First Message** y cada **Alternate Greeting** tienen encima del campo un botón de varita que solo muestra el icono. Su descripción emergente indica el campo que escribe.
+**Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** y cada **Alternate Greeting** tienen encima del campo un botón de varita que solo muestra el icono. Su descripción emergente indica el campo que escribe.
 
 Antes de empezar: configura una conexión de texto que funcione. Consulta [Conectarse a un proveedor de IA](../connections/connecting-to-a-provider.md).
 
 1. Escribe en el campo las ideas que quieras conservar, como `smart, scientist, handsome`, o déjalo vacío.
 2. Completa los demás campos de la tarjeta que quieras que la IA use como referencia. No necesitas guardar primero.
-3. Haz clic en la varita del campo. Marinara pide entre 100 y 300 palabras para ese campo, usando tu texto como detalles de partida. Example Dialogue pide intercambios de ejemplo. **First Message** y cada **Alternate Greeting** piden un mensaje de apertura que deja tu respuesta en tus manos.
+3. Haz clic en la varita del campo. Marinara pide entre 100 y 300 palabras para ese campo, usando tu texto como detalles de partida. Example Dialogue pide intercambios de ejemplo. **First Message** y cada **Alternate Greeting** piden un mensaje de apertura que deja tu respuesta en tus manos. **Public Face** no tiene un rango de palabras: su varita reescribe el resto de la tarjeta sin las partes privadas, así que la longitud depende de tu tarjeta.
 4. Edita el resultado y luego haz clic en **Save**.
 
 La varita usa tu conexión de texto predeterminada para agentes o, si no hay ninguna, tu conexión de texto predeterminada. Una conexión de respaldo de agentes configurada sigue aplicándose.
@@ -170,7 +173,7 @@ La sección **Regex Scripts** contiene scripts de buscar y reemplazar para este 
 
 ## Usar un campo alternativo en chats seleccionados
 
-Un campo alternativo da al mismo personaje otra descripción, apariencia, historia u otro detalle en los chats que elijas, mientras todos los demás conservan el original. Cada uno de los siete campos de la tarjeta tiene **Add Alternative Field** (Añadir campo alternativo) debajo.
+Un campo alternativo da al mismo personaje otra descripción, apariencia, historia u otro detalle en los chats que elijas, mientras todos los demás conservan el original. Cada uno de los ocho campos de la tarjeta tiene **Add Alternative Field** (Añadir campo alternativo) debajo.
 
 1. Haz clic en **Add Alternative Field** debajo del campo que quieras variar. Marinara copia el texto del campo en una nueva alternativa.
 2. Opcional: haz clic en su título, como **Backstory alternative 1** (Alternativa 1 de Trasfondo), y escribe un nombre como `Young`. Los nombres admiten hasta 60 caracteres. Deja el nombre vacío para conservar el título numerado.

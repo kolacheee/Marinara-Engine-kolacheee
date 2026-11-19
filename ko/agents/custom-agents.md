@@ -102,6 +102,8 @@ Post-Processing 에이전트에는 **Turn Data Access**(턴 데이터 접근) �
 
 그러면 해당 메시지에 키워드가 나타날 때만 에이전트가 실행됩니다. 입력란을 비우면 필터가 꺼집니다. 주기와 활성화 질문은 계속 적용됩니다.
 
+다운로드 가능한 에이전트에도 같은 섹션이 있습니다. [활성화 키워드와 질문](built-in-agents.md#activation-keywords-and-questions)을 참고하세요.
+
 ## 도구 연결하기
 
 에이전트는 도구를 호출할 수 있습니다. 도구는 AI가 무언가를 가져오거나 바꾸기 위해 실행한 뒤 그 결과를 다시 읽는 함수입니다. 이 방식을 function calling이라고도 합니다.
@@ -128,6 +130,7 @@ Post-Processing 에이전트에는 **Turn Data Access**(턴 데이터 접근) �
 - **Model override**(연결 재정의): 이 에이전트에 다른 모델을 씁니다. 예를 들어 더 저렴한 모델을 쓸 수 있습니다. 비워 두면 채팅의 모델을 씁니다. 에이전트는 해당 연결에 저장된 생성 파라미터를 전송합니다. [에이전트용 파라미터](../prompts/generation-parameters.md#parameters-for-agents)를 참고하세요.
 - **Agent Budget**(에이전트 예산): **Context Size**(컨텍스트 크기)는 에이전트가 읽는 최근 메시지 개수입니다(기본값 5). **Max Output Tokens**(최대 출력 토큰)는 출력에 확보하는 여유입니다(기본값 4096, 128에서 32768까지).
 - **Add as Prompt Section**(프롬프트 섹션으로 추가): 에이전트의 최신 출력을 프롬프트 프리셋에 배치할 수 있는 섹션으로 제공합니다.
+- **Context Sources**(컨텍스트 소스): 에이전트가 지시사항 외에 읽는 내용입니다. **Characters**(캐릭터)와 **Persona**(페르소나)에는 각각 **Off**, **Full card**, **Public Face**의 세 가지 선택지가 있습니다. **Public Face**는 이름과 카드의 **Public Face** 필드만 보냅니다. 필드가 비어 있으면 이름만 보냅니다. 작성 방법은 [Card 탭](../characters/creating-and-editing-characters.md#card-tab)을 참고하세요. 여러 에이전트가 요청 하나를 공유하면 각 소스에는 그중 가장 넓은 범위의 선택이 적용됩니다. **Full card**, **Public Face**, **Off** 순입니다.
 
 `{{user}}`, `{{char}}` 같은 매크로는 **Prompt Template**에서 동작합니다. [매크로](../prompts/macros.md)를 참고하세요.
 
@@ -194,7 +197,7 @@ Marinara는 `editedText`를 답변에 갈아 끼웁니다. `changes`에 담긴 �
 - 시간 초과, 사용할 수 없는 모델, 잘못된 답이 있으면 에이전트는 평소대로 실행됩니다. 시간 제한은 모델 유형과 모델이 먼저 추론해야 하는지에 따라 다릅니다. [시간 제한](../connections/decision-models.md#time-limits)을 참고하세요.
 - 활성화 질문이나 판정문이 있는 에이전트를 가져오면 Decision 모델 가이드로 연결되는 알림이 표시됩니다. Decision 모델이 없으면 에이전트는 키워드와 **Trigger Cadence**(실행 주기)가 허용할 때마다 실행되고, 프롬프트 판정문은 아니요로 읽힙니다.
 
-활성화 질문은 사용자 지정 에이전트에만 적용됩니다. 내장 Illustrator에는 새 장소와 날씨를 확인하는 고정 검사가 따로 있습니다. [Decision 모델 검사](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)를 참고하세요.
+활성화 질문은 [활성화 키워드와 질문](built-in-agents.md#activation-keywords-and-questions)에 나열된 예외를 빼면 다운로드 가능한 에이전트에서도 같은 방식으로 작동합니다. 내장 Illustrator에는 새 장소와 날씨를 확인하는 자체 고정 검사도 있습니다. [Decision 모델 검사](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model)를 참고하세요.
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

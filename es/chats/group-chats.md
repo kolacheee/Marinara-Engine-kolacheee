@@ -83,6 +83,7 @@ Usa el selector **Trigger Response** para elegir a un hablante. En una computado
 
 - **Add Turn To Prompt** (Añadir el turno al prompt) está activado de forma predeterminada. Agrega una breve instrucción que nombra qué personaje debe responder.
 - **Name Prefix History** (solo en Roleplay) está desactivado de forma predeterminada. Cambia cómo se etiquetan los mensajes anteriores con los nombres de los hablantes. Déjalo desactivado a menos que un personaje siga confundiendo quién dijo qué.
+- **Others' Public Faces** (Facetas públicas de los demás; solo en Roleplay) está desactivado de forma predeterminada. Cada personaje recibe solo su propia tarjeta de personaje, así que conoce a los demás únicamente por el chat. Actívalo para agregar el texto **Public Face** (Faceta pública) de los demás personajes activos al turno de cada personaje: lo que cualquiera en la escena podría saber de ellos, sin sus secretos. Se omiten los personajes con Public Face vacío y los personajes inactivos. Para escribir uno, consulta [Pestaña Card](../characters/creating-and-editing-characters.md#card-tab).
 
 ### Scenario Override (Roleplay)
 
@@ -102,6 +103,7 @@ Activa **Character Exchanges** (Intercambios entre personajes) en **Chat Setting
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | Activado |
 | **Name Prefix History** | Roleplay, Individual | Desactivado |
+| **Others' Public Faces** | Roleplay, Individual | Desactivado |
 | **Scenario Override** | Roleplay | Vacío |
 | **Character Exchanges** | Conversation, Autonomous Messaging | Desactivado |
 

@@ -41,6 +41,8 @@ Si no funcionó: lee el mensaje rojo junto al archivo. Los demás archivos del l
 
 Los elementos importados conservan su propio nombre y descripción. Para encontrar todo lo que importaste, elige **Imported** en el filtro **Tags** (Etiquetas) junto a la búsqueda. Todas las ventanas de importación de la Library (Characters, Personas, Lorebooks y Presets) y la importación de chats tienen las mismas dos casillas **Import tags**. El [Card Browser](bot-browser.md) usa el nombre del sitio como origen, por ejemplo **Chub**.
 
+La fecha **Created** (Creado) de un personaje importado indica cuándo se creó la tarjeta: la fecha guardada en ella, si tiene una; de lo contrario, la fecha del archivo en tu computadora. **Updated** (Actualizado) indica cuándo la importaste. Actualizar un personaje desde una tarjeta más reciente conserva su fecha **Created**. Ordenar por **Newest** (Más recientes) u **Oldest** (Más antiguos) usa **Created**.
+
 Los scripts de regex son pequeñas reglas de reemplazo de texto. Mantén **Character only** a menos que quieras las reglas en todas partes. La división deja tal cual las tarjetas de narrador, de mundo y de varios personajes.
 
 ### Tarjetas con un lorebook integrado

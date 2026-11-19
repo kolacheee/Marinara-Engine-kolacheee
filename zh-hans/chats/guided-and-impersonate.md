@@ -71,6 +71,7 @@ Impersonate 让模型用你的用户角色的口吻写出你的下一条消息�
 | **Preset**(预设) | 只用于 impersonate 回复的提示词预设。默认：**Use chat default**(使用聊天默认值)。见[预设](../prompts/presets.md)。 |
 | **Connection**(连接) | 用于 impersonate 回复的模型，比如更便宜或更快的模型。默认：**Use chat default**。也可以选 **Random**(随机)。见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。 |
 | **Skip agents**(跳过智能体) | 在 impersonate 期间跳过智能体（追踪器、世界书路由之类的辅助程序）。这样它会更快，也不会改动世界状态。默认关闭。见[智能体](../agents/agents-overview.md)。 |
+| **Send Public Faces**(发送公开形象) | 在 Roleplay 聊天中，填写了 **Public Face**(公开形象) 的角色会只以名字和 Public Face 出现在代写提示词里，让代写的回复只知道你可能知道的事。这会替代角色卡发送的其他所有内容：Description、Personality、Backstory、Appearance、Scenario、System Prompt、对话示例、RPG 属性、Post-History Instructions 和 Depth Prompt。Public Face 为空的角色仍会发送完整角色卡。代写预设或提示词模板中放入的宏，例如 `{{description}}`，仍会发送各自指定的内容。**Regenerate**(重新生成) 会保留撰写该消息时的设置。默认关闭。见 [Card 选项卡](../characters/creating-and-editing-characters.md#card-tab)。 |
 | **Use CYOA as direction**(把 CYOA 选项当作方向说明) | 点击一个 CYOA(自选冒险) 选项时，把它当作 impersonate 的方向说明，而不是直接发出去。默认关闭。如果在 **Settings → Chatting → Message Box** 里开启了 **Add CYOA choices to the message box instead of sending them**(把 CYOA 选项加入消息框而不是直接发送)，点击只会把文字加进你的消息框，这个设置也就不起作用。 |
 
 ### 为单个聊天设置提示词

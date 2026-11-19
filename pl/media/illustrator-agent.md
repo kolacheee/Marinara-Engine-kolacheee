@@ -53,6 +53,8 @@ Lista **Prompt Mode** (na karcie z etykietą **Prompt**) ustala styl graficzny k
 
 Ostateczny wygląd zależy też od profilu stylu. Zobacz [Profile stylu obrazów](style-profiles.md).
 
+Żeby narysować jeden obraz w innym stylu bez zmieniania wyboru czatu, wpisz `/illustrate template=` i nazwę stylu, na przykład `/illustrate template="Comic Page"`. Zobacz [Komendy slash](../chats/slash-commands.md#illustrate-and-make-artifacts).
+
 ## Wybór modelu promptu
 
 **Prompt Model** to model tekstowy, który pisze prompt obrazu. Nie rysuje. Wybierz go z listy **Prompt Model** na karcie. Domyślna wartość to **Main chat model** (główny model czatu), czyli ponowne użycie modelu twojego czatu. Wybierz inny model tekstowy, jeśli prompty ma pisać inny model.
@@ -73,6 +75,15 @@ Dwa ustawienia na karcie pomagają zachować ten sam wygląd postaci na kolejnyc
 Gdy to ustawienie jest włączone, karta lub persona z włączonym **Image Appearance Override** (osobny opis wyglądu do obrazów) wysyła ten osobny opis zamiast tekstu z **Appearance** (wygląd). Przydaje się to, gdy **Appearance** jest napisane dla narratora, ale model obrazów źle je odczytuje. Zostaw pełny opis w **Appearance**, a w osobnym opisie wpisz krótszą wersję w formie tagów. Gdy osobny opis jest wyłączony lub pusty, prompty obrazów korzystają z **Appearance**. Narrator zawsze widzi pełne **Appearance**. Przełącznik znajduje się pod polem **Appearance** w edytorach postaci i persony.
 
 **Send Avatar References** (wysyłanie awatarów jako referencji) wysyła do usługi obrazów awatary postaci i persony albo ich sprite'y jako obrazy referencyjne, żeby model mógł odwzorować twarz lub strój. Nie każda usługa je przyjmuje. W czacie Roleplay jest to lista, tak jak **Attach Card Appearance**. Gdy uwzględnisz filmy, klip, którego **First frame** (pierwsza klatka) ma wartość **Prompt only**, zaczyna się od awatara lub sprite'a postaci, a ta opcja ma wtedy nazwę **Prompt only (avatar from Send Avatar References)**.
+
+Gdy opcja **Wysyłaj referencje awatarów** jest włączona dla obrazów, ustawienie **Reference pictures go to** (odbiorcy obrazów referencyjnych) określa, kto je otrzyma:
+
+- **Automatic** (automatycznie, domyślnie): model obrazów, gdy jego połączenie przyjmuje obrazy referencyjne, a w przeciwnym razie model piszący prompt.
+- **Image model** (model obrazów): tylko model obrazów. Połączenie, które ich nie przyjmuje, nie dostaje żadnych.
+- **Prompt writer** (model piszący prompt): tylko model piszący prompt agenta Illustrator, który ogląda je i opisuje w prompcie obrazu to, co widzi.
+- **Both** (oba): model obrazów i model piszący prompt.
+
+Model piszący prompt pozwala obejść ograniczenia modeli obrazów, które pomijają obrazy referencyjne, takich jak NovelAI V5. Musi to być model odczytujący obrazy. Jeśli odmówi ich przyjęcia, jego żądanie jest wysyłane ponownie bez obrazów i do restartu serwera ten model nie dostaje żadnych. Model piszący prompt, którego połączenie jest oznaczone jako nieodczytujące obrazów, nie dostaje żadnych. Wysyłanie mu obrazów kosztuje tokeny przy każdym uruchomieniu. Wysyłane są najwyżej cztery obrazy: z kart wskazanych w `[illustrate: characters="…"]` albo, jeśli ich nie wskazano, z aktywnych postaci i persony czatu. **What to carry over from the pictures** (co przenosić z obrazów) określa, co model piszący prompt ma kopiować, na przykład tylko wygląd, bez stylu graficznego. Czat Roleplay może ustawić własną wartość **Reference pictures go to** pod opcją **Wysyłaj referencje awatarów**.
 
 ## Częstotliwość rysowania
 

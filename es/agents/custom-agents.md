@@ -102,6 +102,8 @@ De forma predeterminada, un agente se ejecuta con su cadencia normal (la frecuen
 
 Entonces el agente solo se ejecuta cuando una palabra clave aparece en esos mensajes. Deja el cuadro vacío para desactivar el filtro. La cadencia y cualquier pregunta de activación siguen aplicándose.
 
+Los agentes descargables tienen la misma sección. Consulta [Palabras clave y preguntas de activación](built-in-agents.md#activation-keywords-and-questions).
+
 ## Adjuntar herramientas
 
 Un agente puede llamar a herramientas: funciones que la IA ejecuta para obtener o cambiar algo, y cuyo resultado luego lee. Esto también se llama function calling.
@@ -128,6 +130,7 @@ Cuando alguien añade el agente a un chat, un menú desplegable **Prompt Mode** 
 - **Model override** (Modelo alternativo): usa un modelo distinto para este agente, por ejemplo uno más barato. Déjalo vacío para usar el modelo del chat. El agente envía los parámetros de generación guardados en esa conexión. Consulta [Parámetros para agentes](../prompts/generation-parameters.md#parameters-for-agents).
 - **Agent Budget**: **Context Size** es cuántos mensajes recientes lee el agente (5 de forma predeterminada). **Max Output Tokens** es el espacio de salida reservado (4096 de forma predeterminada, de 128 a 32768).
 - **Add as Prompt Section**: expone la salida más reciente del agente como una sección que puedes colocar en un preset (ajuste guardado) de prompt.
+- **Context Sources** (Fuentes de contexto): lo que lee el agente además de sus instrucciones. **Characters** (Personajes) y **Persona** tienen tres opciones cada una: **Off** (Desactivado), **Full card** (Tarjeta completa) o **Public Face** (Faceta pública). **Public Face** envía solo el nombre y el campo **Public Face** de la tarjeta. Si ese campo está vacío, solo se envía el nombre. Para escribir uno, consulta [Pestaña Card](../characters/creating-and-editing-characters.md#card-tab). Cuando varios agentes comparten una solicitud, cada fuente usa la opción más amplia entre ellos: **Full card**, luego **Public Face** y luego **Off**.
 
 Las macros como `{{user}}` y `{{char}}` funcionan en **Prompt Template**. Consulta [Macros](../prompts/macros.md).
 
@@ -194,7 +197,7 @@ Cómo se ejecuta:
 - Un tiempo de espera agotado, un modelo no disponible o una respuesta inválida permiten que el agente se ejecute normalmente. El límite de tiempo depende del tipo de modelo y de si el modelo tiene que razonar primero. Consulta [Límites de tiempo](../connections/decision-models.md#time-limits).
 - Los agentes importados con una pregunta de activación o declaraciones de decisión muestran un aviso que enlaza a la guía de modelos de decisión. Sin un Decision model, el agente se ejecuta siempre que lo permitan las palabras clave y **Trigger Cadence**, y las declaraciones del prompt se interpretan como no.
 
-Las preguntas de activación solo se aplican a agentes personalizados. El agente integrado Illustrator tiene sus propias comprobaciones fijas para lugares nuevos y el clima; consulta [Comprobaciones del modelo de decisión](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
+Las preguntas de activación funcionan igual para los agentes descargables, excepto los que figuran en [Palabras clave y preguntas de activación](built-in-agents.md#activation-keywords-and-questions). El agente integrado Illustrator también tiene sus propias comprobaciones fijas para lugares nuevos y el clima; consulta [Comprobaciones del modelo de decisión](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

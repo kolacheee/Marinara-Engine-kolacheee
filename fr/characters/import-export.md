@@ -43,6 +43,8 @@ Si ça n'a pas marché : lis le message rouge à côté du fichier. Les autres f
 
 Les éléments importés conservent leur propre nom et leur propre description. Pour retrouver tout ce que tu as importé, choisis **Imported** dans le filtre **Tags** à côté de la recherche. Toutes les fenêtres d'import de la bibliothèque (Characters, Personas, Lorebooks, Presets) et celle d'import de chat ont les deux mêmes cases **Import tags**. Le [Bot Browser](bot-browser.md) utilise le nom du site comme origine, par exemple **Chub**.
 
+La date **Créé** d'un personnage importé correspond à la création de sa fiche : la date enregistrée dans la fiche si elle en a une, sinon celle du fichier sur ton ordinateur. **Mis à jour** correspond au moment de l'import. Mettre à jour un personnage depuis une fiche plus récente conserve sa date **Créé**. Le tri **Plus récents** ou **Plus anciens** utilise **Créé**.
+
 Les scripts regex sont de petites règles de remplacement de texte. Garde **Character only**, sauf si tu veux ces règles partout. La répartition ne touche pas aux fiches de narrateur, d'univers ou à plusieurs personnages.
 
 ### Fiches avec un lorebook intégré

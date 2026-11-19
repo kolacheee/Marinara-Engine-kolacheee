@@ -77,15 +77,49 @@ Um perfil nativo mantém o código de Personal Extension, mas não mantém o est
 2. Abaixo do botão, deixe **Tag de importado** e **Tag de origem** marcadas para adicionar as tags **Imported** e **Backup** aos personagens, personas, lorebooks, presets e chats que ele traz. Desmarque-as para restaurar tudo exatamente como estava.
 3. Clique em **Importar perfil (JSON/ZIP)**.
 4. Escolha `marinara-profile.json`, `marinara-profile.zip` ou um `.zip` de backup. O botão mostra **Scanning Profile...**.
-5. Leia a janela **Import Profile**. Ela lista o que o Marinara encontrou e avisa o que a importação não consegue desfazer.
-6. Clique em **Import**, ou em **Cancel** para parar. O botão mostra **Importing Profile...** e uma barra de progresso aparece. Quando a importação termina, uma mensagem diz que o perfil foi importado.
+5. Leia a janela **Importar perfil**. Ela lista o que o Marinara encontrou. Os itens que já estão no Marinara são substituídos pelas versões do arquivo, a menos que você [adicione só o que falta](#only-add-whats-missing).
+6. Clique em **Importar**, ou em **Cancelar** para parar. O botão mostra **Importando o perfil...**. Marinara primeiro salva uma cópia de segurança dos seus dados, depois uma barra de progresso aparece. Quando a importação termina, uma mensagem diz que o perfil foi importado.
 
 Se não funcionou:
 
 - A menos que você abra o Marinara em `localhost`, `127.0.0.1` ou `[::1]`, a importação de perfil precisa de HTTPS. O erro é "Profile import requires HTTPS outside local development." Abra o Marinara por um endereço HTTPS.
 - Se faltarem alguns arquivos de mídia no `.zip`, a importação termina mesmo assim. Um aviso lista o que falta, e o Marinara importa o resto.
+- Se o disco estiver cheio demais para a cópia de segurança, nada é importado. O erro começa com "Nothing was imported, because a safety copy could not be saved first." Libere aproximadamente o espaço que um backup completo ocupa e importe de novo.
 
 Se você importar o mesmo perfil duas vezes, o Marinara atualiza os seus itens e não os copia. Perfis de versões muito antigas podem gerar duplicatas.
+
+### Adicionar só o que falta
+
+Para recuperar algo que você excluiu sem perder as mudanças feitas desde então, ative **Keep my current versions, only add what's missing** (manter minhas versões atuais e adicionar só o que falta) acima de **Importar perfil (JSON/ZIP)** e importe como descrito acima. Todo item e arquivo que já está no Marinara fica como está, e só o que falta é adicionado. Isso inclui tudo o que você excluiu desde que o arquivo foi salvo, como mensagens individuais ou entradas de lorebook, não apenas o item que queria recuperar. A memória de longo prazo conta como um único item: se Marinara já tiver alguma, a do arquivo não é adicionada.
+
+Nada é substituído, então Marinara não salva uma cópia de segurança, e **Undo Last Import** (desfazer a última importação) ainda desfaz a importação anterior a esta.
+
+Perfis de versões muito antigas não podem fazer isso: eles sempre adicionam os itens ao lado dos seus, e a janela **Importar perfil** avisa isso.
+
+### Desfazer uma importação
+
+Antes de cada importação que substitui itens, Marinara salva uma cópia completa dos seus dados na pasta `backups/` da pasta de dados, em um arquivo cujo nome começa com `marinara-before-import-` seguido da data e da hora. Quando a importação termina, a cópia da importação anterior é excluída, para manter só a mais recente.
+
+1. Abra **Configurações → Dados → Backup e restauração**.
+2. Clique em **Undo Last Import**. A linha abaixo mostra quando a cópia de segurança foi salva.
+3. Clique em **Undo Last Import** na janela para confirmar.
+
+Desfazer restaura as suas versões dos itens e arquivos que a última importação substituiu. Se você mudou um desses itens depois da importação, essa mudança é perdida. Todo o resto fica como está, inclusive os itens que a importação adicionou. Você pode desfazer uma importação uma vez; depois disso, a cópia de segurança é excluída.
+
+Desfazer não reativa o que a importação desativou por segurança. Ative estes itens de novo manualmente:
+
+- o seu tema ativo;
+- Personal Extensions (revise-as de novo em **Configurações → Complementos**);
+- ferramentas personalizadas que executam um script ou webhook;
+- memórias da Professor Mari.
+
+Se a importação limpou a chave de API de uma conexão, informe a chave de novo (veja [Informe as suas chaves de novo](#enter-your-keys-again)). Defina-a de novo como conexão padrão ou de reserva, se ela era uma delas.
+
+Os chats ramificados que a importação substituiu continuam desvinculados do chat de origem. A importação já removeu esse vínculo, e desfazer não consegue restaurá-lo.
+
+Perfis de versões muito antigas só adicionam itens, então Marinara não salva uma cópia de segurança para eles e não há nada para desfazer.
+
+A cópia de segurança ocupa o mesmo espaço que um backup completo. Para liberar esse espaço sem desfazer a importação, clique em **Delete Safety Copy** (excluir a cópia de segurança) em **Configurações → Dados → Backup e restauração** e confirme. Os seus dados ficam como estão, mas você não pode mais desfazer essa importação. Se uma importação foi interrompida, **Delete Safety Copy** pode aparecer sozinho; nesse caso, a cópia não pode ser usada para desfazer, mas você ainda pode excluí-la.
 
 <a id="enter-your-keys-again"></a>
 

@@ -8,7 +8,7 @@ Marinara는 AI에 보낼 텍스트를 만들 때 각 `{{tag}}`를 현재 값으�
 
 다음 위치에서 매크로를 입력할 수 있습니다.
 
-- **Character Editor**(캐릭터 편집기)의 캐릭터 필드: Description, Personality, Backstory, Appearance, Scenario, Example Dialogue, System Prompt, Post-History Instructions, 그리고 **Depth Prompt**(깊이 주입 프롬프트).
+- **Character Editor**(캐릭터 편집기)의 캐릭터 필드: Description, Personality, Backstory, Appearance, Scenario, Public Face, Example Dialogue, System Prompt, Post-History Instructions, 그리고 **Depth Prompt**(깊이 주입 프롬프트).
 - **Persona Editor**(페르소나 편집기)의 페르소나 필드(카드 필드가 같습니다).
 - 로어북 항목의 Description 및 Content 필드.
 - **Preset Editor**(프리셋 편집기)의 프롬프트 프리셋 섹션.
@@ -35,12 +35,13 @@ Marinara는 AI에 보낼 텍스트를 만들 때 각 `{{tag}}`를 현재 값으�
 | `{{charNamePhonetic}}` | 캐릭터의 Phonetic 이름. 비어 있으면 `{{char}}`입니다. |
 | `{{characters}}` | 비활성화한 캐릭터를 포함해 채팅에 있는 모든 캐릭터를 쉼표로 이어 붙입니다. 이 매크로는 이름만 추가하며, 비활성화한 캐릭터 카드를 프롬프트에 추가하지 않습니다. |
 | `{{group}}` | 그룹 채팅에서 지금 응답 중인 캐릭터를 뺀 나머지 활성 캐릭터 전부. 페르소나는 이 캐릭터 명단에 포함되지 않습니다. |
-| `{{persona}}` | 페르소나의 Description, Personality, Backstory, Appearance, Scenario를 줄바꿈으로 이어 붙입니다. |
+| `{{persona}}` | 페르소나의 Description, Personality, Backstory, Appearance, Scenario를 줄바꿈으로 이어 붙입니다. Public Face는 포함하지 않습니다. |
 | `{{personaDescription}}` | 페르소나의 Description 필드. |
 | `{{personaPersonality}}` | 페르소나의 Personality 필드. |
 | `{{personaBackstory}}` | 페르소나의 Backstory 필드. |
 | `{{personaAppearance}}` | 페르소나의 Appearance 필드. |
 | `{{personaScenario}}` | 페르소나의 Scenario 필드. |
+| `{{personaPublicFace}}` | 페르소나의 Public Face 필드. 다른 사람이 나에 대해 알 수 있는 내용입니다. |
 
 다음 캐릭터 필드 매크로는 현재 캐릭터의 카드를 읽습니다.
 
@@ -51,6 +52,7 @@ Marinara는 AI에 보낼 텍스트를 만들 때 각 `{{tag}}`를 현재 값으�
 | `{{backstory}}` | Backstory |
 | `{{appearance}}` | Appearance |
 | `{{scenario}}` | Scenario |
+| `{{publicFace}}` | Public Face |
 | `{{example}}` | Example Dialogue |
 | `{{charSysInfo}}` | System Prompt |
 | `{{charPostHistory}}` | Post-History Instructions |

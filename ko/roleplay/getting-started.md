@@ -6,7 +6,7 @@ Roleplay(롤플레이)는 이야기를 위한 채팅 모드입니다. 메시지 
 
 ## 롤플레이 시작하기
 
-시작하기 전에: 앱 오른쪽의 **Connections**(연결) 패널에서 계정을 추가하세요. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
+시작하기 전에: **Connections**(연결) 패널에서 계정을 추가하세요. [AI 제공자에 연결하기](../connections/connecting-to-a-provider.md)를 참고하세요.
 
 1. 채팅 목록을 열고(오른쪽 위의 **Library**(라이브러리), 그다음 사이드바 위쪽의 **Chats**(채팅)) **Roleplay**(롤플레이) 탭을 클릭하세요.
 2. 채팅 목록 위쪽의 **New**를 클릭하세요.

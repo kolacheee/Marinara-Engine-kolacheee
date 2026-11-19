@@ -56,7 +56,7 @@ React 19 और Vite PWA। अभी इसमें कई सौ सोर्
 अभी का ऊपरी ढाँचा:
 
 - `App.tsx`, `main.tsx`: ऐप का बूटस्ट्रैप, React Query, PWA, ग्लोबल इफ़ेक्ट।
-- `components/layout`: ऐप शेल, साइडबार, टॉप बार, विंडो रेंडरर।
+- `components/layout`: ऐप शेल, साइडबार (चैट या एक पैनल), टॉप बार, विंडो रेंडरर।
 - `components/ui`: दोबारा इस्तेमाल होने वाले UI प्रिमिटिव।
 - `components/chat`: आम चैट, Conversation, Roleplay, सीन, स्प्राइट और एनकाउंटर का मिला-जुला UI।
 - `components/game`: Game Mode की सतह और पैनल।

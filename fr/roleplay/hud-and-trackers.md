@@ -73,6 +73,8 @@ Les agents trackers écrasent les valeurs du HUD après chaque tour. Le mode ver
 
 Pour déverrouiller, clique de nouveau sur le même bouton (**Unlock field**). Pour quitter le mode verrouillage, clique de nouveau sur l'interrupteur du haut (**Exit lock mode**). Le mode verrouillage est partagé par tout le HUD : l'activer dans un tracker fait apparaître les boutons de verrouillage partout.
 
+Quand une personne que le tracker gardait comme personnage secondaire reçoit sa propre fiche de personnage dans le chat, l'exécution suivante du tracker transfère son entrée vers la fiche, avec ses verrouillages et ses champs masqués. La fiche garde son propre portrait. Un nom plus court est relié à la fiche si elle le liste sous **Autres noms**, et le tracker continue d'afficher le nom utilisé dans l'histoire.
+
 ## Relancer un tracker
 
 Pour mettre à jour un tracker tout de suite au lieu d'attendre le message suivant, clique sur le bouton en forme de flèche circulaire à l'intérieur. Il relance seulement ce tracker sur le dernier tour. L'infobulle nomme le tracker, par exemple **Re-run world state tracker only**.

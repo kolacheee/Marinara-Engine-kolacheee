@@ -10,31 +10,34 @@ Marinara Engine은 Conversation(대화), Roleplay(롤플레이), Game(게임) �
 
 ## 앱 아키텍처
 
-### 3열 레이아웃
+### 셸 레이아웃
 
-UI는 Discord에서 착안한 3열 구성이며 `components/layout/AppShell.tsx`가 관리합니다.
+`components/layout/AppShell.tsx`는 상단 막대, 가운데 영역, 사이드바 하나를 배치합니다. 사이드바는 Chats(채팅) 또는 패널 하나를 보여 주며 둘을 동시에 보여 주지 않습니다. 기본적으로 오른쪽에 고정되고, `sidebarSide`가 `"left"`이면 왼쪽에 고정됩니다.
 
 ```
-+-------------+-----------------------------+--------------+
-|  Left       |         Center              |  Right       |
-|  Sidebar    |                             |  Panel       |
-|             |  Chat area or Editor        |              |
-|  Chat list  |  (lazy-loaded)              |  Characters  |
-|  Folders    |                             |  Lorebooks   |
-|  Mode tabs  |  ChatConversationSurface    |  Presets     |
-|             |  ChatRoleplaySurface        |  Connections |
-|             |  GameSurface                |  Agents      |
-|             |  CharacterEditor            |  Personas    |
-|             |  LorebookEditor             |  Settings    |
-|             |  PresetEditor               |  Browser     |
-|             |  ...other editors           |              |
-+-------------+-----------------------------+--------------+
++-----------------------------------+----------------+
+|  Center                           |  Sidebar       |
+|                                   |                |
+|  Chat area or Editor              |  Chats         |
+|  (lazy-loaded)                    |  (chat list,   |
+|                                   |  folders,      |
+|  ChatConversationSurface          |  mode tabs)    |
+|  ChatRoleplaySurface              |                |
+|  GameSurface                      |  or a panel:   |
+|  CharacterEditor                  |  Characters    |
+|  LorebookEditor                   |  Personas      |
+|  PresetEditor                     |  Lorebooks     |
+|  ...other editors                 |  Presets, ...  |
++-----------------------------------+----------------+
 ```
 
-- 왼쪽 사이드바(`components/layout/ChatSidebar.tsx`): 채팅 목록입니다. 폴더로 묶이고 모드(Conversation, Roleplay, Game)로 걸러 볼 수 있습니다.
+- 사이드바(`AppShell.tsx`의 `[data-component="SidebarSlot"]`): 데스크톱에서는 슬롯 하나입니다. 슬라이딩 래퍼(`SidebarSlotPanel`) 안에는 두 레이어가 겹쳐 있습니다. `ChatSidebarPanel`은 폴더와 모드 탭(Conversation, Roleplay, Game)을 갖춘 채팅 목록인 `components/layout/ChatSidebar.tsx`를 렌더링합니다. 읽지 않은 메시지 수와 알림 말풍선을 여기에서 불러오므로 데스크톱에서는 항상 마운트되어 있습니다. `RightPanelDesktop`은 `components/layout/RightPanel.tsx`를 렌더링하며 패널을 처음 열 때 마운트됩니다. 숨겨진 레이어는 `invisible`, `inert`, `aria-hidden` 상태입니다. Chats와 패널 사이의 전환은 즉시 이루어지고, 사이드바를 열거나 닫을 때는 슬라이딩합니다.
+- 너비: 사이드바 안쪽 가장자리의 구분선 하나(aria-label "Resize sidebar")로 `SHARED_SIDEBAR_WIDTH_MIN`(280)부터 `SHARED_SIDEBAR_WIDTH_MAX`(480)까지 공유 너비를 설정합니다. `selectSharedSidebarWidth`로 읽으세요. 스토어는 `sidebarWidth`와 `rightPanelWidth`를 같게 유지합니다.
+- 위치: `sidebarSide: "left"`이면 슬롯에 CSS `order: -1`이 적용됩니다. React 트리에서 위치를 유지하므로 좌우를 바꿔도 패널이 다시 마운트되지 않습니다. `--mari-chat-ui-inset-left` / `--mari-chat-ui-inset-right`, 고정된 Tracker Panel의 오프셋, 비모달 `Modal`의 안쪽 여백도 위치를 따릅니다.
+- 휴대전화와 태블릿: `isMobileShellViewport()`가 true이면(`MOBILE_SHELL_MEDIA_QUERY`에 해당하거나 창이 고정 레이아웃에 비해 너무 좁으면) 사이드바는 오른쪽에서 열리는 전체 화면 시트이며, `ChatSidebarPanel` 또는 `RightPanelMobile`로 렌더링됩니다. 여기에는 `sidebarSide`가 적용되지 않습니다.
 - 가운데 영역: 현재 채팅 화면이거나 전체 화면 편집기(캐릭터, 로어북, 프리셋 등)입니다. 한 번에 하나만 보이며, 편집기를 열면 채팅 영역을 대신합니다.
-- 오른쪽 패널(`components/layout/RightPanel.tsx`): 리소스 목록과 설정을 보여 주며 상단 막대에서 켜고 끕니다. 한 번 마운트된 패널은 스크롤 위치와 로컬 상태를 유지하기 위해 CSS로 숨긴 채 DOM에 남습니다.
-- 상단 막대(`components/layout/TopBar.tsx`): 오른쪽 패널을 빠르게 전환하는 버튼입니다.
+- 패널(`components/layout/RightPanel.tsx`): `rightPanel`을 패널 컴포넌트로 연결하고 열어 본 패널의 마운트를 유지합니다. [패널 시스템](#panel-system-componentspanels)을 참고하세요.
+- 상단 막대(`components/layout/TopBar.tsx`): 한쪽에는 Home(홈)과 채팅 정보가 있습니다. 사이드바 쪽의 `[data-tour="panel-buttons"]`에는 Chats 버튼(`[data-tour="sidebar-toggle"]`)이 먼저 오고, 그 뒤에 각 패널의 버튼이 있습니다. `sidebarSide: "left"`이면 막대가 좌우 반전되어(`flex-row-reverse`) 패널 버튼은 왼쪽에, Home은 맨 오른쪽에 놓입니다. 휴대전화와 태블릿에서는 Chats가 Home 옆에 유지되며, 휴대전화에서는 Chats와 패널 버튼이 **More**(더보기) 메뉴로 이동합니다.
 
 ### 화면 이동
 
@@ -48,8 +51,11 @@ UI는 Discord에서 착안한 3열 구성이며 `components/layout/AppShell.tsx`
 | 연결 편집기 열기 | `connectionDetailId` | `openConnectionDetail(id)` |
 | 에이전트 편집기 열기 | `agentDetailId` | `openAgentDetail(id)` |
 | 페르소나 편집기 열기 | `personaDetailId` | `openPersonaDetail(id)` |
-| 오른쪽 패널 전환 | `rightPanel` | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| 패널 표시 | `rightPanel` | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| Chats 표시 | `sidebarOpen` | `toggleSidebar()` / `setSidebarOpen(open)` |
 | 창 열기 | `modal` | `openModal(type, props?)` |
+
+Chats와 패널은 사이드바를 공유하므로 모든 화면 크기에서 둘 중 하나만 표시됩니다. `openRightPanel`과 `toggleRightPanel`은 Chats를 닫고, `toggleSidebar`와 `setSidebarOpen(true)`는 패널을 닫습니다. `setSidebarOpen(false)`는 열려 있는 패널에 영향을 주지 않습니다. 패널이 열려 있으면 `selectSidebarShown`은 false이므로, 오래된 상태에서 두 플래그가 모두 true여도 패널을 표시하며, 영구 저장 상태는 이렇게 저장된 쌍을 패널만 열리는 상태로 바꿉니다.
 
 ### 코드 분할
 
@@ -76,6 +82,7 @@ UI는 Discord에서 착안한 3열 구성이며 `components/layout/AppShell.tsx`
 - 소리: `convoNotificationSound`, `rpNotificationSound`.
 - 동작: `confirmBeforeDelete`, `enterToSendRP`, `enterToSendConvo`, `weatherEffects`, `guideGenerations`.
 - 화면 이동: `rightPanel`, `rightPanelOpen`, `sidebarOpen`, `settingsTab`, `*DetailId` 필드 전부, `modal`.
+- 사이드바 레이아웃: `sidebarSide`(`"right"` 또는 `"left"`, 기본값은 `"right"`, 기기 간 동기화되며 `resetAppearanceSettings`가 `"right"`로 초기화), `sidebarWidth` / `rightPanelWidth`(같게 유지하며 `selectSharedSidebarWidth`로 읽음).
 
 동기화되는 사용자 지정 테마는 `ui.store.ts`에 저장하지 않습니다. React Query로 서버에서 받아 오며, 같은 Marinara 인스턴스에 연결된 기기끼리 공유됩니다.
 
@@ -319,14 +326,14 @@ AI 게임 마스터(GM) 화면입니다. chat 폴더가 아니라 `components/ga
 
 ### 패널 시스템(`components/panels/`)
 
-오른쪽 패널은 검색, 정렬, 필터를 갖춘 리소스 목록을 보여 줍니다. 리소스를 클릭하면 가운데 영역에 해당 편집기가 열립니다.
+패널은 사이드바에서 Chats를 대신해 열리며 검색, 정렬, 필터를 갖춘 리소스 목록을 보여 줍니다. 리소스를 클릭하면 가운데 영역에 해당 편집기가 열립니다.
 
 패널은 `RightPanel.tsx`의 두 곳에 등록합니다.
 
 1. `PANEL_CONFIG`: 제목, 아이콘, 그라데이션 색.
 2. `RIGHT_PANELS`(`right-panel-panels.ts`): 컴포넌트 맵.
 
-패널은 `RightPanel` 안의 `useState`에 둔 `mountedPanels` Set으로 상태를 유지합니다. 이 Set은 열어 본 패널을 기록합니다. 한 번 마운트된 패널은 상태를 유지하도록 DOM에 남고 `display: none`이나 `aria-hidden`으로 숨깁니다.
+패널은 `RightPanel` 안의 `useState`에 둔 `mountedPanels` Set으로 상태를 유지합니다. 이 Set은 열어 본 패널을 기록합니다. 한 번 마운트된 패널은 상태를 유지하도록 DOM에 남고 `display: none`이나 `aria-hidden`으로 숨깁니다. 이 Set은 `RightPanel`의 한 번의 마운트에 속하므로, 휴대전화 시트가 다시 열리는 것처럼 재마운트되면 현재 패널만 포함한 상태로 시작합니다.
 
 ### UI 기본 요소(`components/ui/`)
 
@@ -343,6 +350,8 @@ AI 게임 마스터(GM) 화면입니다. chat 폴더가 아니라 `components/ga
 모든 UI 컴포넌트는 제어 방식 props(value와 onChange)를 쓰고, 오버레이는 포털로 렌더링합니다.
 
 **라이브러리 패널은 `LibraryToolbar`를 사용합니다.** Characters, Personas, Lorebooks, Agents와 Presets 패널의 탭은 이 컴포넌트로 상단 컨트롤을 렌더링합니다. 선택적인 라이브러리 행(전체 너비 버튼 하나 또는 Download / Open Library 쌍), 만들기 / 가져오기 / 내보내기 / 선택, 공통 정렬 메뉴가 있는 검색, New Folder, 그리고 `children`으로 전달하는 패널 필터 순서입니다. 행은 슬롯이 아닌 타입이 지정된 props이므로, 새 라이브러리 패널도 제각각 달라지는 복사본 대신 같은 마크업을 사용합니다. 패널 안에서 도구 모음을 직접 만들지 말고 이 컴포넌트에 prop을 추가하세요.
+
+`LibraryToolbar.tsx`는 `|`로 나뉜 하나의 긴 `.mari-chrome-segmented` 버튼인 `SegmentedButtons`도 내보냅니다. Download(다운로드) / Open Library(라이브러리 열기) 쌍과 Presets 패널의 **Prompts**(프롬프트) / **Regexes**(정규식) / **Tools**(도구) / **Profiles**(프로필) 탭을 그리므로, 모든 패널의 상단 행 높이가 같습니다. `groupLabel`을 전달하면 행이 탭으로 이루어진 `role="group"`이 되고, `pressed`는 각 탭의 `aria-pressed`를 설정합니다. `.mari-chrome-segmented`에는 `flex-shrink: 0`이 있어 Characters처럼 패널 자체의 높이가 고정된 flex 스크롤 영역도 행을 압축할 수 없습니다.
 
 ## API 클라이언트(`lib/api-client.ts`)
 
@@ -364,6 +373,30 @@ import { api, ApiError } from "@/lib/api-client";
 | `api.streamEvents(path, body)` | `POST /api{path}` | SSE 비동기 제너레이터(모든 이벤트 종류) |
 
 오류는 `ApiError`로 던지며, 여기에는 `status`와 `message` 속성이 담깁니다.
+
+## 선택기와 드롭다운
+
+모든 "값 고르기" 컨트롤은 하나의 공유 선택 창을 엽니다. 선택기의 디자인(표면, 행 스타일, 너비)을 바꿀 때는 개별 기능이 아닌 아래 공유 컴포넌트에서 수정하세요. 네이티브 `<select>`를 쓰거나 직접 만든 팝오버에 목록을 그리지 마세요. 앱에는 둘 다 더 이상 남아 있지 않습니다.
+
+| 계층 | 파일 | 담당 범위 |
+| --- | --- | --- |
+| 창 | `components/ui/PickerWindow.tsx` | 표면입니다. 데스크톱에서는 필드 옆의 팝오버이며, 행에 필요한 만큼의 너비를 갖습니다(최소 필드 너비, 최대 352px이며 필드가 더 넓으면 필드 너비). 휴대전화에서는 하단 시트(`Modal`)입니다. `Modal` 안에서는 시트 두 개가 겹치지 않도록 팝오버를 유지합니다. Escape, 뒤로 가기, 바깥쪽 클릭, 스크롤로 필드가 화면 밖으로 벗어나는 동작으로 닫힙니다. |
+| 행 | `components/ui/PickerParts.tsx` | `PickRow`(이미지, 제목, 최대 두 줄로 줄바꿈되는 두 번째 줄, 배지, 체크 표시 또는 체크박스로 이루어진 행 하나), `PickerSearch`, 폴더 머리글, `usePickerKeyboard`(방향키, Enter)입니다. |
+| 목록 | `components/ui/PickerFolderList.tsx` | 본문입니다. 검색 상자, 라이브러리 폴더 또는 `group`별로 묶인 행, 단일 또는 다중 선택, 폴더별 "Add all"(모두 추가)입니다. |
+| 필드 | `components/ui/Select.tsx` | `Select`: 고정 목록에서 값 하나를 고르며, 네이티브 `<select>`를 대체합니다. 콤보박스 트리거, 옵션이 `SELECT_SEARCH_MIN`개 이상일 때 검색, 닫힌 필드에서 방향키와 입력에 따른 빠른 탐색을 제공합니다. |
+| | `components/ui/PickerField.tsx` | `PickerField`(None(없음) 행과 폴더를 갖춘 단일 항목), `PickerListField` / `PickerListWindow`(여러 항목이며 선택한 항목은 제거 버튼과 함께 필드 아래에 나열됨), `useFieldWindow`(열림 상태와 닫을 때 필드로 포커스 복귀)입니다. |
+| | `components/ui/LibraryPickers.tsx`, `components/characters/CharacterSelect.tsx` | 위 컴포넌트로 만든 프리셋, 로어북, 캐릭터, 페르소나 필드입니다. |
+
+선택기 추가 방법:
+
+- **목록에서 값 하나:** `Select`를 사용하세요. 필드 이름과 창 제목이 되는 `label`을 지정하세요.
+- **라이브러리 항목 하나**(폴더, 이미지, None 행 포함): `PickerField` 또는 `LibraryPickers.tsx`의 해당 필드를 사용하세요.
+- **여러 항목:** `PickerListField`를 사용하세요. Escape와 바깥쪽 클릭은 창을 닫지만, 선택할 때는 닫히지 않습니다.
+- **필드가 아닌 컨트롤**("Link to Conversation"(대화 연결)처럼 짧은 선택 목록을 여는 버튼): 열림 상태와 포커스에는 `useFieldWindow`를 사용하고, 버튼에 연결된 `PickerWindow` 안에 `PickerFolderList` 또는 `PickRow`들을 배치하세요.
+
+아직 공유 선택기를 사용하지 않는 것은 연결 및 모델 선택기(`ConnectionSelect` / `ModelPicker`, 자체 창 사용)입니다. 자체 표면을 갖춘 다른 컨트롤인 아이콘 갤러리(`StatIconPicker`), 태그 자동 완성, 컨텍스트 및 작업 메뉴는 선택기가 아닙니다.
+
+**테스트.** `Select` 트리거에는 `role="combobox"`가 있으며 선택한 값은 `data-value`에, 창은 필드의 레이블로 이름이 지정된 `dialog`에 담깁니다. 행에는 `data-pick-row`가 있고, 단일 선택에서 선택한 행에는 `aria-current="true"`가, 다중 선택의 행에는 `aria-pressed`가 있습니다. `e2e/select-field.ts`의 `chooseOption`과 `pickerLabels`는 기존 네이티브 select에서 쓰던 Playwright의 `selectOption`을 대체합니다.
 
 ## 스타일 시스템
 

@@ -8,7 +8,7 @@ Wenn Marinara den Text zusammenstellt, den es an die KI schickt, tauscht es jede
 
 An diesen Stellen kannst du Makros eintippen:
 
-- In den Charakterfeldern im **Character Editor** (Charakter-Editor): Description, Personality, Backstory, Appearance, Scenario, Example Dialogue, System Prompt, Post-History Instructions und **Depth Prompt**.
+- In den Charakterfeldern im **Character Editor** (Charakter-Editor): Description, Personality, Backstory, Appearance, Scenario, Public Face, Example Dialogue, System Prompt, Post-History Instructions und **Depth Prompt**.
 - In den Persona-Feldern im **Persona Editor** (Persona-Editor) – dieselben Kartenfelder.
 - In den Feldern Description und Content eines Lorebook-Eintrags.
 - In den Prompt-Preset-Abschnitten im **Preset Editor** (Preset-Editor).
@@ -35,12 +35,13 @@ Diese Makros ziehen Namen und Kartenfelder der sprechenden Person und des antwor
 | `{{charNamePhonetic}}` | Den Phonetic name des Charakters, oder `{{char}}`, wenn er leer ist. |
 | `{{characters}}` | Alle Charaktere im Chat, einschließlich inaktiver Charaktere, durch Kommas getrennt. Dieses Makro fügt nur Namen hinzu; Karten inaktiver Charaktere kommen dadurch nicht in den Prompt. |
 | `{{group}}` | Alle anderen aktiven Charaktere im Gruppenchat, ohne den gerade Antwortenden. Die Persona gehört nicht zu dieser Charakterliste. |
-| `{{persona}}` | Description, Personality, Backstory, Appearance und Scenario deiner Persona, durch Zeilenumbrüche getrennt. |
+| `{{persona}}` | Description, Personality, Backstory, Appearance und Scenario deiner Persona, durch Zeilenumbrüche getrennt. Public Face ist nicht enthalten. |
 | `{{personaDescription}}` | Das Feld Description deiner Persona. |
 | `{{personaPersonality}}` | Das Feld Personality deiner Persona. |
 | `{{personaBackstory}}` | Das Feld Backstory deiner Persona. |
 | `{{personaAppearance}}` | Das Feld Appearance deiner Persona. |
 | `{{personaScenario}}` | Das Feld Scenario deiner Persona. |
+| `{{personaPublicFace}}` | Das Feld Public Face deiner Persona: was andere über dich wissen könnten. |
 
 Die Charakterfeld-Makros lesen die Karte des aktuellen Charakters aus:
 
@@ -51,6 +52,7 @@ Die Charakterfeld-Makros lesen die Karte des aktuellen Charakters aus:
 | `{{backstory}}` | Backstory |
 | `{{appearance}}` | Appearance |
 | `{{scenario}}` | Scenario |
+| `{{publicFace}}` | Public Face |
 | `{{example}}` | Example Dialogue |
 | `{{charSysInfo}}` | System Prompt |
 | `{{charPostHistory}}` | Post-History Instructions |

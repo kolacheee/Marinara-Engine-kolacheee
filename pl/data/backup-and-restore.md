@@ -75,15 +75,49 @@ Profil natywny zachowuje kod Personal Extension, lecz nie zachowuje informacji o
 2. Pod przyciskiem pozostaw zaznaczone **Oznacz jako zaimportowane** i **Tag źródła**, aby dodawać tagi **Zaimportowane** i **Backup** do importowanych postaci, person, lorebooków, presetów i czatów. Odznacz je, żeby przywrócić wszystko dokładnie tak, jak było.
 3. Kliknij **Importuj profil (JSON/ZIP)**.
 4. Wybierz `marinara-profile.json`, `marinara-profile.zip` albo plik `.zip` z kopią zapasową. Przycisk wyświetli **Scanning Profile...** (sprawdzanie profilu).
-5. Przeczytaj treść okna **Import Profile**. Pokazuje znalezione dane i ostrzega, że importu nie da się cofnąć.
-6. Kliknij **Import** (import), aby kontynuować, albo **Cancel** (anulowanie), aby przerwać. Przycisk wyświetli **Importing Profile...** (importowanie profilu), a następnie pojawi się pasek postępu. Po zakończeniu zobaczysz potwierdzenie importu.
+5. Przeczytaj treść okna **Importuj profil**. Pokazuje dane znalezione przez aplikację Marinara. Elementy już obecne w aplikacji Marinara są zastępowane wersjami z pliku, chyba że wybierzesz [dodawanie tylko brakujących elementów](#only-add-whats-missing).
+6. Kliknij **Importuj**, albo **Anuluj**, aby przerwać. Przycisk wyświetli **Importowanie profilu...**. Marinara najpierw zapisuje kopię zabezpieczającą twoich danych, a potem pojawia się pasek postępu. Po zakończeniu zobaczysz potwierdzenie importu.
 
 Jeśli operacja się nie powiedzie:
 
 - Poza adresami `localhost`, `127.0.0.1` i `[::1]` import profilu wymaga HTTPS. Komunikat błędu brzmi "Profile import requires HTTPS outside local development." Otwórz aplikację Marinara Engine przez adres HTTPS.
 - Jeśli w pliku `.zip` brakuje części multimediów, import i tak się kończy. Ostrzeżenie zawiera listę brakujących plików, a Marinara importuje pozostałe dane.
+- Jeśli na dysku brakuje miejsca na kopię zabezpieczającą, nic nie jest importowane. Komunikat błędu zaczyna się od "Nothing was imported, because a safety copy could not be saved first." Zwolnij mniej więcej tyle miejsca, ile zajmuje pełna kopia zapasowa, i ponów import.
 
 Jeśli zaimportujesz ten sam profil dwukrotnie, Marinara zaktualizuje istniejące elementy zamiast je powielać. Profile z dużo starszych wersji mogą jednak utworzyć duplikaty.
+
+### Dodawanie tylko brakujących elementów
+
+Żeby odzyskać coś usuniętego bez utraty późniejszych zmian, włącz **Keep my current versions, only add what's missing** (zachowaj moje bieżące wersje, dodaj tylko brakujące elementy) nad przyciskiem **Importuj profil (JSON/ZIP)**, a potem wykonaj import jak powyżej. Każdy element i plik już obecny w aplikacji Marinara pozostaje bez zmian, a dodawane jest tylko to, czego w niej brakuje. Obejmuje to wszystko, co usunięto od zapisania pliku, na przykład pojedyncze wiadomości lub wpisy lorebooków, a nie tylko element, który chcesz odzyskać. Pamięć długoterminowa liczy się jako jeden element: jeśli Marinara już jakąś ma, pamięć z pliku nie jest dodawana.
+
+Nic nie jest zastępowane, więc Marinara nie zapisuje kopii zabezpieczającej, a **Undo Last Import** (cofnięcie ostatniego importu) nadal cofa import poprzedzający ten.
+
+Profile z dużo starszych wersji nie obsługują tej opcji: zawsze dodają swoje elementy obok twoich, o czym informuje okno **Importuj profil**.
+
+### Cofanie importu
+
+Przed każdym importem zastępującym elementy Marinara zapisuje pełną kopię twoich danych w folderze `backups/` w folderze danych, w pliku, którego nazwa zaczyna się od `marinara-before-import-`, po czym następuje data i godzina. Po zakończeniu importu kopia z poprzedniego importu jest usuwana, więc zostaje tylko najnowsza.
+
+1. Otwórz **Ustawienia → Dane → Kopie zapasowe i przywracanie**.
+2. Kliknij **Undo Last Import**. Wiersz pod przyciskiem pokazuje, kiedy zapisano kopię zabezpieczającą.
+3. Kliknij **Undo Last Import** w oknie, aby potwierdzić.
+
+Cofnięcie przywraca twoje wersje elementów i plików zastąpionych przez ostatni import. Jeśli po imporcie zmienisz któryś z tych elementów, ta zmiana zostanie utracona. Wszystko inne pozostaje bez zmian, w tym elementy dodane przez import. Import można cofnąć raz, po czym kopia zabezpieczająca jest usuwana.
+
+Cofnięcie nie włącza ponownie tego, co import wyłączył ze względów bezpieczeństwa. Włącz ręcznie ponownie:
+
+- swój aktywny motyw;
+- rozszerzenia osobiste (przejrzyj je ponownie w **Ustawienia → Dodatki**);
+- własne narzędzia uruchamiające skrypt lub webhook;
+- wspomnienia asystentki Professor Mari.
+
+Jeśli import wyczyścił klucz API połączenia, wpisz go ponownie (zobacz [Ponowne wpisanie kluczy](#enter-your-keys-again)). Ustaw to połączenie ponownie jako domyślne lub zapasowe, jeśli wcześniej nim było.
+
+Gałęzie czatów zastąpione przez import pozostają odłączone od czatu, z którego powstały. Import już usunął to powiązanie i cofnięcie nie może go przywrócić.
+
+Profile z dużo starszych wersji tylko dodają elementy, więc Marinara nie zapisuje dla nich kopii zabezpieczającej i nie ma czego cofnąć.
+
+Kopia zabezpieczająca zajmuje tyle samo miejsca co pełna kopia zapasowa. Żeby zwolnić to miejsce bez cofania importu, kliknij **Delete Safety Copy** (usunięcie kopii zabezpieczającej) w **Ustawienia → Dane → Kopie zapasowe i przywracanie**, a potem potwierdź. Twoje dane pozostaną bez zmian, ale nie będzie już można cofnąć tego importu. Jeśli import został przerwany, przycisk **Delete Safety Copy** może pojawić się sam; takiej kopii nie można użyć do cofnięcia importu, ale nadal można ją usunąć.
 
 ## Ponowne wpisanie kluczy
 

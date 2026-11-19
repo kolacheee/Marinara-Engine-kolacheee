@@ -53,6 +53,8 @@ Game Mode에는 **Prompt Mode**(프롬프트 모드)나 **Prompt Model**(프롬�
 
 최종 결과물의 느낌은 스타일 프로필에도 좌우됩니다. [이미지 스타일 프로필](style-profiles.md)을 참고하세요.
 
+채팅의 선택을 바꾸지 않고 다른 스타일로 그림 한 장을 그리려면 `/illustrate template=` 뒤에 스타일 이름을 입력하세요. 예를 들면 `/illustrate template="Comic Page"`입니다. [슬래시 명령어](../chats/slash-commands.md#illustrate-and-make-artifacts)를 참고하세요.
+
 ## 프롬프트 모델 고르기
 
 **Prompt Model**은 이미지 프롬프트를 쓰는 텍스트 모델입니다. 그림을 그리지는 않습니다. 카드의 **Prompt Model** 목록에서 고르세요. 기본값은 **Main chat model**이며, 채팅의 모델을 그대로 씁니다. 다른 모델에 프롬프트 작성을 맡기고 싶다면 다른 텍스트 모델을 고르세요.
@@ -73,6 +75,15 @@ Game Mode에는 **Prompt Mode**(프롬프트 모드)나 **Prompt Model**(프롬�
 이 설정이 켜져 있으면 **Image Appearance Override**(이미지 외모 재정의)를 켠 카드나 페르소나는 **Appearance**(모양) 텍스트 대신 그 재정의 텍스트를 보냅니다. **Appearance**가 내레이터용으로 쓰여 있어 이미지 모델이 읽기 어려울 때 사용하세요. 전체 설명은 **Appearance**에 두고, 재정의에는 더 짧은 태그 형식을 넣으세요. 재정의를 끄거나 비워 두면 이미지 프롬프트는 **Appearance**를 사용합니다. 내레이터는 항상 **Appearance** 전체를 봅니다. 이 스위치는 캐릭터 편집기와 페르소나 편집기의 **Appearance** 아래에 있습니다.
 
 **Send Avatar References**(아바타 참조 전송)는 캐릭터와 페르소나의 아바타나 스프라이트를 참조 이미지로 이미지 서비스에 보내, 모델이 얼굴이나 복장을 따라 그릴 수 있게 합니다. 참조 이미지를 받지 않는 서비스도 있습니다. Roleplay 채팅에서는 **Attach Card Appearance**와 같은 목록입니다. 동영상을 포함하면 **First frame**(첫 프레임)이 **Prompt only**인 클립은 캐릭터의 아바타나 스프라이트에서 시작하며, 선택지는 **Prompt only (avatar from Send Avatar References)**로 표시됩니다.
+
+이미지에 **Send Avatar References**를 켜면 **Reference pictures go to**에서 참조 이미지를 보낼 대상을 고릅니다.
+
+- **Automatic**(자동)(기본값): 이미지 모델의 연결이 참조 이미지를 받으면 이미지 모델에 보내고, 아니면 프롬프트 작성기에 보냅니다.
+- **Image model**: 이미지 모델에만 보냅니다. 참조 이미지를 받지 못하는 연결에는 보내지 않습니다.
+- **Prompt writer**: Illustrator의 프롬프트 작성기에만 보냅니다. 작성기는 이미지를 보고 그 내용을 이미지 프롬프트에 설명합니다.
+- **Both**: 이미지 모델과 프롬프트 작성기에 보냅니다.
+
+NovelAI V5처럼 참조 이미지를 무시하는 이미지 모델에는 프롬프트 작성기를 거치는 방법을 쓸 수 있습니다. 이미지를 읽는 작성기 모델이 필요합니다. 작성기가 이미지를 거부하면 이미지 없이 요청을 다시 보내며, 서버를 다시 시작할 때까지 해당 작성기에는 이미지를 보내지 않습니다. 연결에 이미지를 읽지 않는다고 표시된 작성기에도 보내지 않습니다. 작성기에 이미지를 보내면 실행할 때마다 토큰이 듭니다. 이미지는 최대 4장까지 보냅니다. `[illustrate: characters="…"]`에 지정된 카드의 이미지를 보내고, 지정하지 않으면 채팅의 활성 캐릭터와 페르소나 이미지를 보냅니다. **What to carry over from the pictures**는 그림체를 빼고 외형만 가져오는 식으로 작성기가 복사할 내용을 정합니다. Roleplay 채팅에서는 **Send Avatar References** 아래에서 채팅 자체의 **Reference pictures go to**를 설정할 수 있습니다.
 
 ## 그리는 빈도 조절하기
 

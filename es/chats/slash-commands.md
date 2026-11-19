@@ -68,7 +68,7 @@ Escribe entre comillas los nombres que contienen espacios. Las formas anteriores
 | `/roll` | Tira dados y publica el resultado. También `/r`, `/dice`. Formato: `/roll [dice (optional)]`. |
 | `/random` | Pide al modelo que añada un evento sorpresa. También `/rand`, `/event`. |
 | `/scene` | Inicia una escena de Roleplay que se ramifica a partir de la conversación. También `/rp`. Formato: `/scene [description (optional)]`. |
-| `/illustrate` | Solo en Roleplay. Genera una imagen de galería. Necesita el agente Illustrator. También `/ill`. Formato: `/illustrate [range=N-M] [prompt]`. |
+| `/illustrate` | Solo en Roleplay. Genera una imagen de galería. Necesita el agente Illustrator. También `/ill`. Formato: `/illustrate [range=N-M] [template=name] [prompt]`. |
 | `/html` | Solo en Roleplay. Crea un artefacto dentro del mundo, como `a spellbook page`, al final de la respuesta más reciente. Formato: `/html [what you want]`. |
 | `/video` | Solo en Roleplay. Crea un clip corto de la respuesta más reciente, o de tu descripción, debajo de esa respuesta. Sigue el ajuste **First frame** (Primer fotograma) de Illustrator. Necesita Illustrator. Formato: `/video [description]`. |
 | `/impersonate` | Escribe una respuesta como tu persona. También `/imp`. Formato: `/impersonate [direction (optional)]`. |
@@ -111,7 +111,16 @@ Con un nombre y sin expresión, enumera las expresiones de ese personaje. Necesi
 
 ### Ilustrar y crear artefactos
 
-`/illustrate range=12` ilustra el mensaje 12. `/illustrate range=12-18` envía los mensajes del 12 al 18 al Illustrator. Usa los mismos números de mensaje que `/goto`, en orden ascendente y con un máximo de 200 mensajes. Los mensajes ocultos quedan fuera. La imagen se adjunta al último mensaje visible del rango. Los mensajes anteriores siguen disponibles con Advanced Memory activado. Sin `range=`, el comando trabaja sobre la escena actual. Un prompt que escribas se usa tal como está.
+`/illustrate range=12` ilustra el mensaje 12. `/illustrate range=12-18` envía los mensajes del 12 al 18 al Illustrator. Usa los mismos números de mensaje que `/goto`, en orden ascendente y con un máximo de 200 mensajes. Los mensajes ocultos quedan fuera. La imagen se adjunta al último mensaje visible del rango. Los mensajes anteriores siguen disponibles con Advanced Memory activado. Sin `range=`, el comando trabaja sobre la escena actual. Sin `template=`, un prompt que escribas se usa tal como está.
+
+`template=` dibuja una imagen con otro estilo del selector **Prompt Mode** (Modo de prompt) de Illustrator. El chat conserva su propio **Prompt Mode**. Escribe el nombre del estilo tal como aparece en el selector, con cualquier combinación de mayúsculas y minúsculas. Los espacios, `-` y `_` cuentan como lo mismo, y un nombre con espacios va entre comillas. `template=default` es **Illustration** (Ilustración).
+
+```text
+/illustrate template=comic-page
+/illustrate range=17 template="Comic Page" Aster holds the gate open and looks back
+```
+
+Con `template=`, el texto que escribes le indica al escritor de prompts qué mostrar, hasta 2.000 caracteres, y el estilo sigue viniendo del modo. **Attach Card Appearance** (Adjuntar la apariencia de la tarjeta) y **Send Avatar References** (Enviar referencias de avatar) funcionan igual que para el botón **Illustrate** (Ilustrar) de Gallery. Pon `range=` y `template=` antes de tu texto, en cualquier orden. Un nombre que no coincida con ningún estilo muestra una lista de los que puedes usar. Si dos estilos comparten un nombre, escribe el ID que el mensaje muestra entre paréntesis.
 
 `/html a terminal readout` no necesita ningún agente y funciona tanto si **HTML Artifacts** (Artefactos HTML) está activado como si no. El narrador puede pedir lo mismo con `[html: prompt="..."]` cuando **HTML Artifacts** está activado en **Roleplay Commands** (Comandos de Roleplay). Consulta [Artefactos bajo demanda](../roleplay/getting-started.md#artifacts-on-demand).
 

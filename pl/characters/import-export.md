@@ -41,6 +41,8 @@ Jeśli to nie zadziałało: przeczytaj czerwony komunikat obok pliku. Pozostałe
 
 Zaimportowane elementy zachowują swoją nazwę i opis. Aby znaleźć wszystko, co zaimportowano, wybierz **Zaimportowane** w filtrze **Tagi** obok wyszukiwarki. Każde okno importu w bibliotece (postaci, person, lorebooków i presetów) oraz import czatu mają te same dwa pola wyboru w sekcji **Tagi importu**. [Przeglądarka kart](bot-browser.md) używa nazwy witryny jako źródła, na przykład **Chub**.
 
+Data **Utworzono** zaimportowanej postaci oznacza datę powstania karty: datę zapisaną w karcie, jeśli ją podano, a w przeciwnym razie datę pliku na twoim komputerze. **Zaktualizowano** to data importu. Aktualizacja postaci z nowszej karty zachowuje jej datę **Utworzono**. Sortowanie według **Najnowsze** lub **Najstarsze** używa daty **Utworzono**.
+
 Skrypty regex to małe reguły zamiany tekstu. Zostaw **Character only**, chyba że reguły mają działać wszędzie. Podział nie zmienia kart narratora, kart świata ani kart z wieloma postaciami.
 
 ### Karty z wbudowanym lorebookiem

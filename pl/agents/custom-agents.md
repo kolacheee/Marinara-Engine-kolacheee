@@ -102,6 +102,8 @@ Domyślnie agent działa w swoim zwykłym rytmie (czyli tak często, jak zwykle 
 
 Agent uruchamia się wtedy tylko, gdy w tych wiadomościach pojawi się słowo kluczowe. Zostaw pole puste, żeby wyłączyć filtr. Częstotliwość i ewentualne pytanie aktywacyjne nadal obowiązują.
 
+Agenci do pobrania mają tę samą sekcję. Zobacz [Słowa kluczowe aktywacji i pytania](built-in-agents.md#activation-keywords-and-questions).
+
 ## Podłączanie narzędzi
 
 Agent może wywoływać narzędzia: funkcje, które AI uruchamia, żeby coś pobrać lub zmienić, a potem odczytuje ich wynik. Nazywa się to też wywoływaniem funkcji (function calling).
@@ -128,6 +130,7 @@ Gdy ktoś doda agenta do czatu, lista rozwijana **Prompt Mode** (tryb promptu) p
 - **Model override** (zastąpienie modelu): używa dla tego agenta innego modelu, na przykład tańszego. Zostaw puste, żeby agent korzystał z modelu czatu. Agent wysyła parametry generowania zapisane w tym połączeniu. Zobacz [Parametry agentów](../prompts/generation-parameters.md#parameters-for-agents).
 - **Agent Budget** (budżet agenta): **Context Size** (rozmiar kontekstu) to liczba ostatnich wiadomości, które agent czyta (domyślnie 5). **Max Output Tokens** (maksymalna liczba tokenów wyniku) to miejsce zarezerwowane na wynik (domyślnie 4096, od 128 do 32768).
 - **Add as Prompt Section** (dodanie jako sekcji promptu): udostępnia najnowszy wynik agenta jako sekcję, którą da się umieścić w presecie promptu.
+- **Źródła kontekstu**: to, co agent czyta poza swoimi instrukcjami. **Postacie** i **Persona** mają po trzy opcje: **Wyłączone**, **Full card** (pełna karta) lub **Public Face** (publiczny wizerunek). **Public Face** wysyła tylko imię i pole **Public Face** z karty. Jeśli pole jest puste, wysyłane jest tylko imię. Jak je napisać, opisuje [Zakładka Card](../characters/creating-and-editing-characters.md#card-tab). Gdy kilku agentów współdzieli jedno żądanie, każde źródło używa najszerszego wybranego przez nich zakresu: najpierw **Full card**, potem **Public Face**, a na końcu **Wyłączone**.
 
 W **Prompt Template** działają makra, takie jak `{{user}}` i `{{char}}`. Zobacz [Makra](../prompts/macros.md).
 
@@ -194,7 +197,7 @@ Jak to działa:
 - Przekroczenie czasu, niedostępny model lub nieprawidłowa odpowiedź pozwalają agentowi działać normalnie. Limit czasu zależy od rodzaju modelu i od tego, czy model musi najpierw rozumować. Zobacz [Limity czasu](../connections/decision-models.md#time-limits).
 - Zaimportowani agenci z pytaniem aktywacyjnym lub stwierdzeniami decyzyjnymi pokazują informację z linkiem do przewodnika o modelach decyzyjnych. Bez modelu decyzyjnego agent uruchamia się zawsze, gdy pozwalają na to słowa kluczowe i **Trigger Cadence** (częstotliwość uruchamiania), a stwierdzenia w prompcie są odczytywane jako nie.
 
-Pytania aktywacyjne dotyczą wyłącznie własnych agentów. Wbudowany agent Illustrator ma własne, stałe sprawdzenia nowych miejsc i pogody. Zobacz [Sprawdzanie modelem decyzyjnym](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
+Pytania aktywacyjne działają tak samo dla agentów do pobrania, z wyjątkiem wymienionych w sekcji [Słowa kluczowe aktywacji i pytania](built-in-agents.md#activation-keywords-and-questions). Wbudowany agent Illustrator ma też własne, stałe sprawdzenia nowych miejsc i pogody. Zobacz [Sprawdzanie modelem decyzyjnym](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

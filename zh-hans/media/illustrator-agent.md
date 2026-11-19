@@ -53,6 +53,8 @@ Game Mode 没有 **Prompt Mode**(提示词模式) 和 **Prompt Model**(提示词
 
 成图的最终观感还取决于你的风格方案。见[图像风格方案](style-profiles.md)。
 
+想只为一张图换个画风，同时保留聊天原来的选择，输入 `/illustrate template=` 和画风名称，例如 `/illustrate template="Comic Page"`。见[斜杠命令](../chats/slash-commands.md#illustrate-and-make-artifacts)。
+
 ## 选择提示词模型
 
 **Prompt Model** 是负责写图像提示词的文本模型，它不画图。在卡片上的 **Prompt Model** 列表里选。默认是 **Main chat model**(聊天主模型)，也就是沿用聊天的模型。想让另一个模型来写提示词，就另选一个文本模型。
@@ -73,6 +75,15 @@ Game Mode 没有 **Prompt Mode**(提示词模式) 和 **Prompt Model**(提示词
 开启后，如果角色卡或用户角色打开了 **Image Appearance Override**(图像专用外貌)，发送的就是这段覆盖文字，而不是它的 **Appearance**(外观) 文字。当 **Appearance** 是为旁白写的、图像模型却读不顺时，就用它：把完整描述留在 **Appearance** 里，再在覆盖里填一段更短的标签式描述。覆盖关闭或留空时，图像提示词使用 **Appearance**。旁白始终能看到完整的 **Appearance**。这个开关在角色编辑器和用户角色编辑器的 **Appearance** 下方。
 
 **Send Avatar References**(发送头像参考图) 会把角色和用户角色的头像或立绘作为参考图发给图像服务，让模型照着画出同一张脸或同一身衣服。不是每个服务都接受参考图。在 Roleplay 聊天里，它和 **Attach Card Appearance** 一样是一个列表。包含视频时，**First frame**(首帧) 为 **Prompt only** 的短片会从角色的头像或立绘开始，这个选项也会显示为 **Prompt only (avatar from Send Avatar References)**。
+
+为图片开启 **Send Avatar References** 后，**Reference pictures go to**(参考图发送给) 决定谁会收到参考图：
+
+- **Automatic**(自动)（默认）：图像模型的连接接受参考图时发给图像模型，否则发给写提示词的模型。
+- **Image model**(图像模型)：只发给图像模型。连接不接受参考图时，就不发送。
+- **Prompt writer**(提示词撰写模型)：只发给 Illustrator 写提示词的模型，由它查看图片，再把看到的内容写进图像提示词。
+- **Both**(两者)：图像模型和写提示词的模型都会收到。
+
+遇到 NovelAI V5 这类会丢弃参考图的图像模型，可以通过写提示词的模型来利用参考图。这需要写提示词的模型能读取图片。如果它拒绝图片，请求会去掉图片后重发，并且在服务器重启前都不再向它发送图片。连接标记为不支持读图的撰写模型也不会收到图片。每次运行时，向撰写模型发送图片都会消耗 Token。最多发送四张图：优先采用 `[illustrate: characters="…"]` 点名的角色卡，否则采用聊天中的活跃角色和用户角色。**What to carry over from the pictures**(从图片中保留哪些内容) 指定撰写模型要复制什么，例如只复制外貌、不复制画风。Roleplay 聊天可以在 **Send Avatar References** 下单独设置 **Reference pictures go to**。
 
 ## 控制出图频率
 

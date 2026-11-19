@@ -6,7 +6,7 @@ Roleplayは物語のためのチャットモードです。メッセージの背
 
 ## ロールプレイの始め方
 
-始める前に: アプリの右側にある**Connections**(接続)パネルでアカウントを追加してください。[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。
+始める前に: **Connections**(接続)パネルでアカウントを追加してください。[AIプロバイダーへの接続](../connections/connecting-to-a-provider.md)を参照してください。
 
 1. チャットを開き(右上の**Library**(ライブラリー)、次にサイドバー上部の**Chats**(チャット))、**Roleplay**タブをクリックします。
 2. チャット一覧の上部にある**New**(新規)をクリックします。

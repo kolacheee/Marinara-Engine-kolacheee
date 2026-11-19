@@ -10,31 +10,34 @@ Marinara Engine एक AI चैट ऐप है जिसमें Conversatio
 
 ## ऐप का आर्किटेक्चर
 
-### तीन-कॉलम लेआउट
+### शेल लेआउट
 
-UI का डिज़ाइन Discord जैसा तीन-कॉलम वाला है, जिसे `components/layout/AppShell.tsx` संभालता है:
+`components/layout/AppShell.tsx` ऊपर की पट्टी, बीच के हिस्से और एक साइडबार का लेआउट बनाता है। साइडबार में चैट या एक पैनल दिखता है, दोनों कभी साथ नहीं दिखते। डिफ़ॉल्ट रूप से यह दाईं तरफ़ डॉक होता है, या `sidebarSide` के `"left"` होने पर बाईं तरफ़:
 
 ```
-+-------------+-----------------------------+--------------+
-|  Left       |         Center              |  Right       |
-|  Sidebar    |                             |  Panel       |
-|             |  Chat area or Editor        |              |
-|  Chat list  |  (lazy-loaded)              |  Characters  |
-|  Folders    |                             |  Lorebooks   |
-|  Mode tabs  |  ChatConversationSurface    |  Presets     |
-|             |  ChatRoleplaySurface        |  Connections |
-|             |  GameSurface                |  Agents      |
-|             |  CharacterEditor            |  Personas    |
-|             |  LorebookEditor             |  Settings    |
-|             |  PresetEditor               |  Browser     |
-|             |  ...other editors           |              |
-+-------------+-----------------------------+--------------+
++-----------------------------------+----------------+
+|  Center                           |  Sidebar       |
+|                                   |                |
+|  Chat area or Editor              |  Chats         |
+|  (lazy-loaded)                    |  (chat list,   |
+|                                   |  folders,      |
+|  ChatConversationSurface          |  mode tabs)    |
+|  ChatRoleplaySurface              |                |
+|  GameSurface                      |  or a panel:   |
+|  CharacterEditor                  |  Characters    |
+|  LorebookEditor                   |  Personas      |
+|  PresetEditor                     |  Lorebooks     |
+|  ...other editors                 |  Presets, ...  |
++-----------------------------------+----------------+
 ```
 
-- बाईं साइडबार (`components/layout/ChatSidebar.tsx`): चैट की लिस्ट, फ़ोल्डर के हिसाब से बँटी हुई और मोड (Conversation, Roleplay, Game) से फ़िल्टर होने वाली।
+- साइडबार (`AppShell.tsx` में `[data-component="SidebarSlot"]`): डेस्कटॉप पर एक स्लॉट। इसके स्लाइड होने वाले रैपर (`SidebarSlotPanel`) के अंदर दो परतें एक के ऊपर एक रहती हैं। `ChatSidebarPanel`, `components/layout/ChatSidebar.tsx` रेंडर करता है, जिसमें फ़ोल्डर और मोड टैब (Conversation, Roleplay, Game) वाली चैट लिस्ट होती है। यह डेस्कटॉप पर हमेशा माउंट रहता है, क्योंकि अनपढ़े संदेशों की गिनती और नोटिफ़िकेशन बबल इससे लोड होते हैं। `RightPanelDesktop`, `components/layout/RightPanel.tsx` रेंडर करता है और पहली बार कोई पैनल खुलने पर माउंट होता है। छिपी परत `invisible`, `inert` और `aria-hidden` होती है। चैट और पैनल के बीच बदलाव तुरंत होता है, और साइडबार खुलते या बंद होते समय स्लाइड होता है।
+- चौड़ाई: साइडबार के अंदरूनी किनारे पर एक सेपरेटर (aria-label "Resize sidebar") साझा चौड़ाई सेट करता है, `SHARED_SIDEBAR_WIDTH_MIN` (280) से `SHARED_SIDEBAR_WIDTH_MAX` (480) तक। इसे `selectSharedSidebarWidth` से पढ़ें; स्टोर `sidebarWidth` और `rightPanelWidth` बराबर रखता है।
+- तरफ़: `sidebarSide: "left"` होने पर स्लॉट को CSS `order: -1` मिलता है। React ट्री में इसकी जगह वही रहती है, इसलिए तरफ़ बदलने से पैनल कभी दोबारा माउंट नहीं होता। `--mari-chat-ui-inset-left` / `--mari-chat-ui-inset-right`, डॉक किए गए Tracker Panel का ऑफ़सेट और मॉडलैस `Modal` के इनसेट उसी तरफ़ के हिसाब से बदलते हैं।
+- फ़ोन और टैबलेट: जब `isMobileShellViewport()` सही हो (`MOBILE_SHELL_MEDIA_QUERY`, या डॉक किए गए लेआउट के लिए विंडो बहुत सँकरी हो), तो साइडबार दाईं तरफ़ से आने वाली पूरी स्क्रीन की शीट होता है, जो `ChatSidebarPanel` या `RightPanelMobile` के रूप में रेंडर होता है। वहाँ `sidebarSide` लागू नहीं होता।
 - बीच का हिस्सा: या तो चालू चैट सरफ़ेस, या कोई पूरा एडिटर (कैरेक्टर, लोरबुक, प्रीसेट वगैरह)। एक बार में सिर्फ़ एक ही दिखता है। एडिटर चैट एरिया की जगह ले लेते हैं।
-- दायाँ पैनल (`components/layout/RightPanel.tsx`): रिसोर्स ब्राउज़र और सेटिंग्स, जिन्हें ऊपर की पट्टी से टॉगल किया जाता है। एक बार पैनल माउंट हो जाने पर वह DOM में बना रहता है (CSS से छिपा हुआ), ताकि उसकी स्क्रॉल पोज़िशन और लोकल स्टेट बची रहे।
-- ऊपर की पट्टी (`components/layout/TopBar.tsx`): हर दाएँ पैनल के लिए क्विक-स्विच बटन।
+- पैनल (`components/layout/RightPanel.tsx`): `rightPanel` को पैनल कंपोनेंट पर भेजता है और पहले खोले गए पैनल माउंट रखता है। [पैनल सिस्टम](#panel-system-componentspanels) देखें।
+- ऊपर की पट्टी (`components/layout/TopBar.tsx`): एक तरफ़ होम और चैट की जानकारी। साइडबार वाली तरफ़, `[data-tour="panel-buttons"]` में पहले चैट बटन (`[data-tour="sidebar-toggle"]`) होता है, फिर हर पैनल के लिए एक बटन। `sidebarSide: "left"` होने पर पट्टी उलट जाती है (`flex-row-reverse`): पैनल बटन बाईं तरफ़ और होम सबसे दाईं तरफ़ होता है। फ़ोन और टैबलेट पर चैट, होम के बगल में रहता है, और फ़ोन पर चैट और पैनल बटन **ज़्यादा** मेन्यू में चले जाते हैं।
 
 ### नेविगेशन
 
@@ -48,8 +51,11 @@ UI का डिज़ाइन Discord जैसा तीन-कॉलम व�
 | कनेक्शन एडिटर खोलना    | `connectionDetailId` | `openConnectionDetail(id)`                         |
 | एजेंट एडिटर खोलना      | `agentDetailId`      | `openAgentDetail(id)`                              |
 | पर्सोना एडिटर खोलना    | `personaDetailId`    | `openPersonaDetail(id)`                            |
-| दायाँ पैनल बदलना       | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| पैनल दिखाना       | `rightPanel`         | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| चैट दिखाना | `sidebarOpen` | `toggleSidebar()` / `setSidebarOpen(open)` |
 | विंडो खोलना            | `modal`              | `openModal(type, props?)`                          |
+
+चैट और पैनल एक ही साइडबार इस्तेमाल करते हैं, इसलिए हर स्क्रीन साइज़ पर दोनों में से सिर्फ़ एक दिखता है। `openRightPanel` और `toggleRightPanel` चैट को बंद करते हैं, और `toggleSidebar` तथा `setSidebarOpen(true)` पैनल को बंद करते हैं। `setSidebarOpen(false)` खुले पैनल को नहीं बदलता। पैनल खुला होने पर `selectSidebarShown` false होता है, इसलिए किसी पुरानी स्थिति में दोनों फ़्लैग true हों तो पैनल दिखता है, और सेव की गई स्थिति ऐसी जोड़ी को सिर्फ़ पैनल में बदल देती है।
 
 ### कोड स्प्लिटिंग
 
@@ -76,6 +82,7 @@ UI और रनटाइम स्टेट के लिए क्लाइं
 - ध्वनि: `convoNotificationSound` और `rpNotificationSound`।
 - व्यवहार: `confirmBeforeDelete`, `enterToSendRP`, `enterToSendConvo`, `weatherEffects`, और `guideGenerations`।
 - नेविगेशन: `rightPanel`, `rightPanelOpen`, `sidebarOpen`, `settingsTab`, सारे `*DetailId` फ़ील्ड, और `modal`।
+- साइडबार लेआउट: `sidebarSide` (`"right"` या `"left"`, डिफ़ॉल्ट `"right"`, डिवाइस के बीच सिंक होता है और `resetAppearanceSettings` इसे फिर `"right"` पर सेट करता है), और `sidebarWidth` / `rightPanelWidth` (बराबर रखे जाते हैं; इन्हें `selectSharedSidebarWidth` से पढ़ें)।
 
 सिंक होने वाली कस्टम थीम `ui.store.ts` में नहीं रखी जातीं। वे React Query के ज़रिए सर्वर से आती हैं और एक ही Marinara इंस्टेंस से जुड़े सभी डिवाइस पर एक जैसी दिखती हैं।
 
@@ -319,14 +326,14 @@ AI Game Master वाला सरफ़ेस। यह चैट फ़ोल�
 
 ### पैनल सिस्टम (`components/panels/`)
 
-दाईं तरफ़ के पैनल रिसोर्स की लिस्ट दिखाते हैं, जिनमें सर्च, सॉर्ट और फ़िल्टर होते हैं। किसी रिसोर्स पर क्लिक करने से उसका पूरा एडिटर बीच वाले हिस्से में खुल जाता है।
+पैनल साइडबार में चैट की जगह खुलते हैं और रिसोर्स की लिस्ट दिखाते हैं, जिनमें सर्च, सॉर्ट और फ़िल्टर होते हैं। किसी रिसोर्स पर क्लिक करने से उसका पूरा एडिटर बीच वाले हिस्से में खुल जाता है।
 
 पैनल `RightPanel.tsx` में दो जगह रजिस्टर होते हैं:
 
 1. `PANEL_CONFIG`: शीर्षक, आइकन और ग्रेडिएंट रंग।
 2. `RIGHT_PANELS` (`right-panel-panels.ts` में): कंपोनेंट मैप।
 
-पैनल `RightPanel` के अंदर `useState` में रखे `mountedPanels` Set से अपनी स्टेट बनाए रखते हैं। यह याद रखता है कि कौन-से पैनल खुल चुके हैं। एक बार माउंट होने पर पैनल DOM में बना रहता है (`display: none` या `aria-hidden` से छिपा हुआ), ताकि उसकी स्टेट बची रहे।
+पैनल `RightPanel` के अंदर `useState` में रखे `mountedPanels` Set से अपनी स्टेट बनाए रखते हैं। यह याद रखता है कि कौन-से पैनल खुल चुके हैं। एक बार माउंट होने पर पैनल DOM में बना रहता है (`display: none` या `aria-hidden` से छिपा हुआ), ताकि उसकी स्टेट बची रहे। यह Set एक `RightPanel` माउंट का होता है, इसलिए दोबारा माउंट होने पर, जैसे फ़ोन की शीट फिर खुलने पर, शुरुआत में सिर्फ़ मौजूदा पैनल रहता है।
 
 ### UI प्रिमिटिव (`components/ui/`)
 
@@ -343,6 +350,8 @@ AI Game Master वाला सरफ़ेस। यह चैट फ़ोल�
 सारे UI कंपोनेंट कंट्रोल्ड प्रॉप (value और onChange) इस्तेमाल करते हैं और ओवरले के लिए पोर्टल रेंडरिंग।
 
 **लाइब्रेरी पैनल `LibraryToolbar` इस्तेमाल करते हैं।** Characters, Personas, Lorebooks, Agents और Presets पैनल के टैब अपने ऊपरी कंट्रोल इसी से रेंडर करते हैं: वैकल्पिक लाइब्रेरी पंक्ति (पूरी चौड़ाई का एक बटन, या Download / Open Library की जोड़ी), बनाना / इंपोर्ट / एक्सपोर्ट / चुनना, साझा सॉर्ट मेन्यू के साथ सर्च, New Folder, फिर `children` के रूप में पैनल फ़िल्टर। पंक्तियाँ टाइप वाले props हैं, स्लॉट नहीं, इसलिए नए लाइब्रेरी पैनल को वही मार्कअप मिलता है, ऐसी कॉपी नहीं जो बाद में अलग हो जाए। पैनल में हाथ से टूलबार बनाने की जगह वहाँ prop जोड़ें।
+
+`LibraryToolbar.tsx`, `SegmentedButtons` भी एक्सपोर्ट करता है, जो `|` से बँटा एक लंबा `.mari-chrome-segmented` बटन है। यह डाउनलोड करें / लाइब्रेरी खोलें की जोड़ी और प्रीसेट पैनल के **प्रॉम्प्ट** / **रेजेक्स** / **टूल** / **प्रोफ़ाइल** टैब बनाता है, ताकि हर पैनल की ऊपरी पंक्ति की ऊँचाई एक जैसी रहे। `groupLabel` देने पर पंक्ति टैब का `role="group"` बन जाती है, और `pressed` हर टैब का `aria-pressed` सेट करता है। `.mari-chrome-segmented` में `flex-shrink: 0` है, इसलिए पैनल का अपना तय ऊँचाई वाला फ़्लेक्स स्क्रॉलर (जैसे कैरेक्टर में) पंक्ति को सिकोड़ नहीं सकता।
 
 ## API क्लाइंट (`lib/api-client.ts`)
 
@@ -364,6 +373,30 @@ import { api, ApiError } from "@/lib/api-client";
 | `api.streamEvents(path, body)` | `POST /api{path}`   | SSE async जेनरेटर (सारे इवेंट टाइप)   |
 
 गड़बड़ी होने पर `ApiError` थ्रो होता है, जिसमें `status` और `message` प्रॉपर्टी रहती हैं।
+
+## पिकर और ड्रॉपडाउन
+
+हर "वैल्यू चुनें" कंट्रोल एक ही साझा पिकर विंडो खोलता है। पिकर के डिज़ाइन में बदलाव (सरफ़ेस, पंक्ति का स्टाइल, चौड़ाई) नीचे के साझा कंपोनेंट में होना चाहिए, किसी फ़ीचर में कभी नहीं। नेटिव `<select>` इस्तेमाल न करें और अपना पॉपओवर बनाकर उसमें लिस्ट न दिखाएँ: ऐप में अब दोनों में से कोई नहीं बचा है।
+
+| परत | फ़ाइल | क्या सँभालती है |
+| --- | --- | --- |
+| विंडो | `components/ui/PickerWindow.tsx` | सरफ़ेस। डेस्कटॉप पर यह अपनी फ़ील्ड के पास एक पॉपओवर होता है, जिसकी चौड़ाई पंक्तियों की ज़रूरत के हिसाब से होती है (कम से कम फ़ील्ड जितनी, ज़्यादा से ज़्यादा 352 px या फ़ील्ड उससे चौड़ी हो तो फ़ील्ड जितनी)। फ़ोन पर यह नीचे से खुलने वाली शीट (`Modal`) होता है; `Modal` के अंदर यह पॉपओवर ही रहता है ताकि दो शीट एक के ऊपर एक न खुलें। Escape, Back, बाहर क्लिक करने और फ़ील्ड के स्क्रॉल होकर नज़र से बाहर जाने पर यह बंद हो जाता है। |
+| पंक्तियाँ | `components/ui/PickerParts.tsx` | `PickRow` (एक पंक्ति: इमेज, टाइटल, दूसरी लाइन जो दो लाइनों में फैल सकती है, बैज, चेक या चेकबॉक्स), `PickerSearch`, फ़ोल्डर हेडर और `usePickerKeyboard` (तीर वाली कुंजियाँ, Enter)। |
+| लिस्ट | `components/ui/PickerFolderList.tsx` | बॉडी: सर्च बॉक्स, लाइब्रेरी फ़ोल्डर या `group` के हिसाब से बँटी पंक्तियाँ, एक या कई आइटम चुनना, हर फ़ोल्डर के लिए "सभी जोड़ें"। |
+| फ़ील्ड | `components/ui/Select.tsx` | `Select`: तय लिस्ट से एक वैल्यू, नेटिव `<select>` की जगह। कॉम्बोबॉक्स ट्रिगर, `SELECT_SEARCH_MIN` विकल्पों से सर्च, तीर वाली कुंजियाँ और बंद फ़ील्ड पर टाइप करके चुनाव। |
+| | `components/ui/PickerField.tsx` | `PickerField` (कोई नहीं वाली पंक्ति और फ़ोल्डर के साथ एक आइटम), `PickerListField` / `PickerListWindow` (कई आइटम; चुने हुए आइटम फ़ील्ड के नीचे हटाने के बटन के साथ दिखते हैं) और `useFieldWindow` (खुली स्थिति और बंद होने पर फ़ील्ड पर वापस फ़ोकस)। |
+| | `components/ui/LibraryPickers.tsx`, `components/characters/CharacterSelect.tsx` | ऊपर के कंपोनेंट से बनी प्रीसेट, लोरबुक, कैरेक्टर और पर्सोना फ़ील्ड। |
+
+पिकर कैसे जोड़ें:
+
+- **लिस्ट से एक वैल्यू:** `Select`। इसे `label` दें: इससे फ़ील्ड का नाम और विंडो का टाइटल बनता है।
+- **लाइब्रेरी का एक आइटम** (फ़ोल्डर, इमेज, कोई नहीं वाली पंक्ति के साथ): `PickerField`, या `LibraryPickers.tsx` में उससे मेल खाने वाली फ़ील्ड।
+- **कई आइटम:** `PickerListField`। Escape और बाहर क्लिक करने से विंडो बंद होती है; चुनने से नहीं।
+- **कुछ ऐसा जो फ़ील्ड नहीं है** (छोटा चुनाव खोलने वाला बटन, जैसे "Conversation से जोड़ें"): खुली स्थिति और फ़ोकस के लिए `useFieldWindow`, बटन से जुड़ा `PickerWindow`, और अंदर `PickerFolderList` या `PickRow`।
+
+अभी साझा पिकर पर नहीं हैं: कनेक्शन और मॉडल पिकर (`ConnectionSelect` / `ModelPicker`, जिसकी अपनी विंडो है)। अपने सरफ़ेस वाले दूसरे कंट्रोल पिकर नहीं हैं: आइकन गैलरी (`StatIconPicker`), टैग ऑटोकंप्लीट, कॉन्टेक्स्ट और ऐक्शन मेन्यू।
+
+**टेस्टिंग।** `Select` ट्रिगर में `role="combobox"` और चुनी गई वैल्यू `data-value` में होती है, और इसकी विंडो एक `dialog` है जिसका नाम फ़ील्ड के लेबल से आता है। पंक्तियों में `data-pick-row` होता है; एक आइटम के चुनाव में चुनी पंक्ति पर `aria-current="true"` होता है, कई आइटम के चुनाव में पंक्तियों पर `aria-pressed` होता है। `e2e/select-field.ts` में `chooseOption` और `pickerLabels` हैं, जो पुराने नेटिव select पर Playwright के `selectOption` की जगह लेते हैं।
 
 ## स्टाइलिंग सिस्टम
 

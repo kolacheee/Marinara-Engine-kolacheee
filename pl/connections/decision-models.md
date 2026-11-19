@@ -92,7 +92,7 @@ Jev i Open-Jev to różne modele. Jev to hostowany model firmy TypeSafe, dostęp
 
 W systemie Android (Termux) jako **Built-in decision model** (wbudowany model decyzyjny) dostępne są tylko JevK5 i Liquid d1, a procesor telefonu może być dla nich zbyt wolny. Praktycznym wyborem jest konto hostowane, na przykład Jev przez usługę OpenRouter. Zobacz [Konfiguracja połączenia Decision](#set-up-a-decision-account).
 
-Presety, karty i agentów pisz z myślą o "modelu decyzyjnym", nigdy jako "wymaga Jev". Stwierdzenie żądające obrazów nadal działa z modelem odczytującym tylko tekst: otrzymuje on sam tekst. Z każdym modelem używają tej samej składni stwierdzeń, ale różne modele mogą dawać różne odpowiedzi. Przy imporcie treści korzystającej z decyzji, w tym niestandardowych agentów i instalacji oficjalnych agentów, Marinara pokazuje informację z linkiem do tego przewodnika. Przywrócenie całego profilu z pliku ZIP jej nie pokazuje.
+Presety, karty i agentów pisz z myślą o "modelu decyzyjnym", nigdy jako "wymaga Jev". Stwierdzenie żądające obrazów nadal działa z modelem odczytującym tylko tekst: otrzymuje on sam tekst. Z każdym modelem używają tej samej składni stwierdzeń, ale różne modele mogą dawać różne odpowiedzi. Przy imporcie treści korzystającej z decyzji, w tym niestandardowych agentów i instalacji z Agent Organizer, Marinara pokazuje informację z linkiem do tego przewodnika. Przywrócenie całego profilu z pliku ZIP jej nie pokazuje.
 
 ## Używanie modelu wbudowanego
 

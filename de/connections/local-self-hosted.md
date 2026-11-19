@@ -91,6 +91,12 @@ Dasselbe Modell kann auch Entscheidungsfragen beantworten, etwa Aktivierungsprü
 
 Verarbeitet dein Server eine andere Anzahl von Anfragen gleichzeitig (zum Beispiel über `OLLAMA_NUM_PARALLEL` in Ollama oder die Einstellung für parallele Anfragen in LM Studio oder KoboldCpp), öffne **Edit account** (Konto bearbeiten) → **More options** (Weitere Optionen) und setze **Parallel requests** (parallele Anfragen) auf dieselbe Zahl. Bei zwei oder mehr lassen Tracker und Aufgaben im Hintergrund einen Platz für die Antwort frei. Bei 1 läuft alles strikt nacheinander. Eine Antwort muss dann unter Umständen warten, bis ein laufender Tracker fertig ist.
 
+## Anfragen kommen in Aufgabenreihenfolge dran
+
+Über eine Custom-Verbindung zu einem Server auf deinem eigenen Rechner oder in deinem Heimnetzwerk schickt Marinara zwei Anfragen gleichzeitig, in dieser Aufgabenreihenfolge: zuerst Agenten, die vor der Antwort laufen, dann die Antwort, dann Agenten, die parallel dazu oder danach laufen, und schließlich alles andere. Einer der beiden Plätze bleibt für die Antwort frei. So muss die Antwort nie auf einen Tracker oder einen Helfer für Erinnerungen warten.
+
+Verarbeitet dein Server eine andere Anzahl von Anfragen gleichzeitig (zum Beispiel über `OLLAMA_NUM_PARALLEL` in Ollama oder die Einstellung für parallele Anfragen in LM Studio oder KoboldCpp), öffne **Konto bearbeiten** → **Weitere Optionen** und setze **Parallele Anfragen** auf dieselbe Zahl. Bei zwei oder mehr lassen Tracker und Aufgaben im Hintergrund einen Platz für die Antwort frei. Bei 1 läuft alles strikt nacheinander. Eine Antwort muss dann unter Umständen warten, bis ein laufender Tracker fertig ist.
+
 ## Der Schalter Treat as local/custom endpoint
 
 In **Edit model** sitzt unter **Local / custom endpoint** ein Schalter namens **Treat as local/custom endpoint** (als lokalen/eigenen Endpunkt behandeln). Er ist standardmäßig aus. Er erscheint nur bei älteren Modellen, die an kein Konto gebunden sind. Bei Modellen, die du jetzt hinzufügst, erscheint er nie.

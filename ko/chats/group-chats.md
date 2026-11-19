@@ -83,6 +83,7 @@ Roleplay의 **Individual** 모드에서 순서가 **Smart**나 **Manual**이면 
 
 - **Add Turn To Prompt**(턴을 프롬프트에 추가)는 기본값이 켜짐입니다. 답변할 캐릭터를 지정하는 짧은 지시를 추가합니다.
 - **Name Prefix History**(이름 접두사 기록)는 Roleplay 전용이며 기본값이 꺼짐입니다. 지난 메시지에 발언자 이름을 붙이는 방식을 바꿉니다. 캐릭터가 누가 무슨 말을 했는지 계속 헷갈리는 경우가 아니면 꺼 두세요.
+- **Others' Public Faces**(Roleplay 전용)는 기본값이 꺼짐입니다. 각 캐릭터는 자신의 카드만 받으므로 다른 캐릭터에 대해서는 채팅으로만 알게 됩니다. 이 설정을 켜면 다른 활성 캐릭터의 **Public Face** 텍스트가 각 캐릭터의 턴에 추가됩니다. 비밀은 빼고 장면 속 누구나 알 수 있는 내용만 보냅니다. Public Face가 비어 있는 캐릭터와 비활성 캐릭터는 제외됩니다. 작성 방법은 [Card 탭](../characters/creating-and-editing-characters.md#card-tab)을 참고하세요.
 
 ### Scenario Override(Roleplay)
 
@@ -102,6 +103,7 @@ Roleplay의 **Individual** 모드에서 순서가 **Smart**나 **Manual**이면 
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | 켜짐 |
 | **Name Prefix History** | Roleplay, Individual | 꺼짐 |
+| **Others' Public Faces** | Roleplay, Individual | 꺼짐 |
 | **Scenario Override** | Roleplay | 비어 있음 |
 | **Character Exchanges** | Conversation, Autonomous Messaging | 꺼짐 |
 

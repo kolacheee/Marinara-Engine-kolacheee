@@ -16,6 +16,12 @@ Odstęp uruchamiania sprawia, że agent działa raz na kilka wiadomości użytko
 
 W trybie Roleplay odstęp uruchamiania agenta Illustrator ustawia się osobno dla każdego czatu, na karcie tego agenta w panelu **Chat Settings**. Wartość z jego konfiguracji jest domyślna dla czatów, które nie mają własnej. Agent Illustrator przyjmuje też wartość **0**: wtedy nigdy nie uruchamia się automatycznie i pozostaje dostępny w działaniach galerii.
 
+### Słowa kluczowe aktywacji i pytania
+
+Większość agentów działających w potoku ma tę samą sekcję **Słowa kluczowe aktywacji** co [własni agenci](custom-agents.md#activation-keywords). Wypełnij ją, żeby pomijać agenta w turach, w których nie ma nic do zrobienia. Na przykład wpisz agentowi Prose Guardian te same słowa co na jego liście **Zakazane słowa** i ustaw **Głębokość skanowania** na 1: będzie wtedy działać tylko wtedy, gdy któreś z nich pojawi się w nowej odpowiedzi. Słowa kluczowe pasują do dowolnego fragmentu słowa, bez rozróżniania wielkości liter, więc `voss` pasuje też do `Vossberg`; kosztuje to tylko dodatkowe uruchomienie. Zamiast tego [pytanie aktywacyjne](custom-agents.md#activation-questions) może uzależnić uruchomienie od odpowiedzi tak lub nie udzielonej przez model decyzyjny.
+
+Zostaw sekcję pustą, a agent będzie działać jak dotąd. Tracker, który pomija turę, zachowuje ostatni stan do kolejnego uruchomienia. Storyboard, Illustrator, Knowledge Retrieval i Knowledge Router mają własne reguły aktywacji i nie pokazują tej sekcji.
+
 <a id="apps"></a>
 
 ## Aplikacje

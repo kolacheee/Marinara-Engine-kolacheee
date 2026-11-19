@@ -8,7 +8,7 @@ Marinara 组装要发给 AI 的文字时，会把每个 `{{tag}}` 换成它当�
 
 可以在以下这些地方写宏：
 
-- **Character Editor**(角色编辑器) 里的角色字段：Description、Personality、Backstory、Appearance、Scenario、Example Dialogue、System Prompt、Post-History Instructions，以及 **Depth Prompt**。
+- **Character Editor**(角色编辑器) 里的角色字段：Description、Personality、Backstory、Appearance、Scenario、Public Face(公开形象)、Example Dialogue、System Prompt、Post-History Instructions，以及 **Depth Prompt**。
 - **Persona Editor**(用户角色编辑器) 里的用户角色字段（和角色卡上同名的那几个字段）。
 - 世界书条目的 Description 和 Content 输入框。
 - **Preset Editor**(预设编辑器) 里的提示词预设小节。
@@ -35,12 +35,13 @@ Marinara 组装要发给 AI 的文字时，会把每个 `{{tag}}` 换成它当�
 | `{{charNamePhonetic}}` | 角色的 Phonetic 名称；留空时等同 `{{char}}`。 |
 | `{{characters}}` | 聊天里的所有角色，包括禁用的角色，用逗号连接。这个宏只添加名称，不会把禁用角色的角色卡加入提示词。 |
 | `{{group}}` | 群聊里除当前回复者之外的所有启用角色。用户角色不算在这份角色名单里。 |
-| `{{persona}}` | 用户角色的 Description、Personality、Backstory、Appearance 和 Scenario，用换行连接。 |
+| `{{persona}}` | 用户角色的 Description、Personality、Backstory、Appearance 和 Scenario，用换行连接。不包含 Public Face。 |
 | `{{personaDescription}}` | 用户角色的 Description 字段。 |
 | `{{personaPersonality}}` | 用户角色的 Personality 字段。 |
 | `{{personaBackstory}}` | 用户角色的 Backstory 字段。 |
 | `{{personaAppearance}}` | 用户角色的 Appearance 字段。 |
 | `{{personaScenario}}` | 用户角色的 Scenario 字段。 |
+| `{{personaPublicFace}}` | 用户角色的 Public Face 字段：其他人可能知道的关于你的信息。 |
 
 下面这组宏读取的是当前角色的角色卡：
 
@@ -51,6 +52,7 @@ Marinara 组装要发给 AI 的文字时，会把每个 `{{tag}}` 换成它当�
 | `{{backstory}}` | Backstory |
 | `{{appearance}}` | Appearance |
 | `{{scenario}}` | Scenario |
+| `{{publicFace}}` | Public Face |
 | `{{example}}` | Example Dialogue |
 | `{{charSysInfo}}` | System Prompt |
 | `{{charPostHistory}}` | Post-History Instructions |

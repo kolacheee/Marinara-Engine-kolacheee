@@ -10,31 +10,34 @@ Marinara Engine 是一个 AI 聊天应用，提供 Conversation(对话模式)、
 
 ## 应用架构
 
-### 三栏布局
+### 外壳布局
 
-界面采用 Discord 风格的三栏设计，由 `components/layout/AppShell.tsx` 管理：
+`components/layout/AppShell.tsx` 负责顶栏、中间区域和一个侧边栏的布局。侧边栏显示聊天或某个面板，两者不会同时出现。默认停靠在右侧，`sidebarSide` 为 `"left"` 时则停靠在左侧：
 
 ```
-+-------------+-----------------------------+--------------+
-|  Left       |         Center              |  Right       |
-|  Sidebar    |                             |  Panel       |
-|             |  Chat area or Editor        |              |
-|  Chat list  |  (lazy-loaded)              |  Characters  |
-|  Folders    |                             |  Lorebooks   |
-|  Mode tabs  |  ChatConversationSurface    |  Presets     |
-|             |  ChatRoleplaySurface        |  Connections |
-|             |  GameSurface                |  Agents      |
-|             |  CharacterEditor            |  Personas    |
-|             |  LorebookEditor             |  Settings    |
-|             |  PresetEditor               |  Browser     |
-|             |  ...other editors           |              |
-+-------------+-----------------------------+--------------+
++-----------------------------------+----------------+
+|  Center                           |  Sidebar       |
+|                                   |                |
+|  Chat area or Editor              |  Chats         |
+|  (lazy-loaded)                    |  (chat list,   |
+|                                   |  folders,      |
+|  ChatConversationSurface          |  mode tabs)    |
+|  ChatRoleplaySurface              |                |
+|  GameSurface                      |  or a panel:   |
+|  CharacterEditor                  |  Characters    |
+|  LorebookEditor                   |  Personas      |
+|  PresetEditor                     |  Lorebooks     |
+|  ...other editors                 |  Presets, ...  |
++-----------------------------------+----------------+
 ```
 
-- 左侧边栏（`components/layout/ChatSidebar.tsx`）：聊天列表，按文件夹组织，可按模式（Conversation、Roleplay、Game）筛选。
+- 侧边栏（`AppShell.tsx` 中的 `[data-component="SidebarSlot"]`）：桌面端只有一个插槽。它的滑动容器（`SidebarSlotPanel`）内有两个叠放的层。`ChatSidebarPanel` 渲染 `components/layout/ChatSidebar.tsx`，即带文件夹和模式选项卡（Conversation、Roleplay、Game）的聊天列表。桌面端始终挂载它，因为未读计数和通知气泡由它加载。`RightPanelDesktop` 渲染 `components/layout/RightPanel.tsx`，首次打开面板时才挂载。隐藏的层带有 `invisible`、`inert` 和 `aria-hidden`。聊天和面板之间的切换即时完成，侧边栏的打开和关闭则有滑动动画。
+- 宽度：侧边栏内侧边缘的分隔条（aria-label 为“Resize sidebar”）设置共用宽度，范围从 `SHARED_SIDEBAR_WIDTH_MIN`(280) 到 `SHARED_SIDEBAR_WIDTH_MAX`(480)。用 `selectSharedSidebarWidth` 读取；store 会保持 `sidebarWidth` 和 `rightPanelWidth` 相等。
+- 停靠侧：设为 `sidebarSide: "left"` 时，插槽会获得 CSS `order: -1`。它在 React 树中的位置不变，因此切换左右侧不会重新挂载面板。`--mari-chat-ui-inset-left` / `--mari-chat-ui-inset-right`、停靠的追踪器面板偏移量，以及非模态 `Modal` 的内缩边距，都会随停靠侧调整。
+- 手机和平板：当 `isMobileShellViewport()` 为 true 时（满足 `MOBILE_SHELL_MEDIA_QUERY`，或窗口窄到无法容纳停靠布局），侧边栏是从右侧滑入的全屏浮层，以 `ChatSidebarPanel` 或 `RightPanelMobile` 渲染。这里不应用 `sidebarSide`。
 - 中间区域：要么是当前聊天界面，要么是某个完整编辑器（角色、世界书、预设等）。同一时刻只显示一个，编辑器会顶掉聊天区域。
-- 右侧面板（`components/layout/RightPanel.tsx`）：资源浏览器和设置，从顶栏切换。面板一旦挂载就留在 DOM 里（用 CSS 隐藏），以保住滚动位置和本地状态。
-- 顶栏（`components/layout/TopBar.tsx`）：每个右侧面板的快速切换按钮。
+- 面板（`components/layout/RightPanel.tsx`）：将 `rightPanel` 路由到面板组件，并保持访问过的面板处于挂载状态。见[面板系统](#panel-system-componentspanels)。
+- 顶栏（`components/layout/TopBar.tsx`）：主页和聊天信息在一侧。在侧边栏所在的另一侧，`[data-tour="panel-buttons"]` 先放聊天按钮（`[data-tour="sidebar-toggle"]`），再放各个面板的按钮。设为 `sidebarSide: "left"` 时，顶栏镜像排列（`flex-row-reverse`）：面板按钮在左侧，主页在最右侧。在手机和平板上，聊天按钮始终在主页旁边；在手机上，聊天和面板按钮会移入**更多**菜单。
 
 ### 导航
 
@@ -48,8 +51,11 @@ Marinara Engine 是一个 AI 聊天应用，提供 Conversation(对话模式)、
 | 打开连接编辑器 | `connectionDetailId` | `openConnectionDetail(id)` |
 | 打开智能体编辑器 | `agentDetailId` | `openAgentDetail(id)` |
 | 打开用户角色编辑器 | `personaDetailId` | `openPersonaDetail(id)` |
-| 切换右侧面板 | `rightPanel` | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| 显示面板 | `rightPanel` | `openRightPanel(name)` / `toggleRightPanel(name)` |
+| 显示聊天 | `sidebarOpen` | `toggleSidebar()` / `setSidebarOpen(open)` |
 | 打开窗口 | `modal` | `openModal(type, props?)` |
+
+聊天和面板共用侧边栏，因此在所有屏幕尺寸下都互斥。`openRightPanel` 和 `toggleRightPanel` 会关闭聊天列表，`toggleSidebar` 和 `setSidebarOpen(true)` 会关闭面板。`setSidebarOpen(false)` 不影响已打开的面板。面板打开时，`selectSidebarShown` 为 false，因此即使残留状态中两个标志都为 true，也只渲染面板；持久化状态还会将这样保存的标志组合修正为只打开面板。
 
 ### 代码分割
 
@@ -76,6 +82,7 @@ Marinara Engine 是一个 AI 聊天应用，提供 Conversation(对话模式)、
 - 声音：`convoNotificationSound` 和 `rpNotificationSound`。
 - 行为：`confirmBeforeDelete`、`enterToSendRP`、`enterToSendConvo`、`weatherEffects` 和 `guideGenerations`。
 - 导航：`rightPanel`、`rightPanelOpen`、`sidebarOpen`、`settingsTab`、全部 `*DetailId` 字段和 `modal`。
+- 侧边栏布局：`sidebarSide`（`"right"` 或 `"left"`，默认为 `"right"`，跨设备同步，`resetAppearanceSettings` 会将它重置为 `"right"`），以及 `sidebarWidth` / `rightPanelWidth`（保持相等；用 `selectSharedSidebarWidth` 读取）。
 
 同步的自定义主题不存在 `ui.store.ts` 里，而是通过 React Query 从服务器拉取，并在连到同一个 Marinara 实例的各台设备之间镜像。
 
@@ -319,14 +326,14 @@ AI 游戏主持人（GM）界面。它不在 chat 文件夹里，而是位于 `c
 
 ### 面板系统（`components/panels/`）
 
-右侧面板展示资源列表，支持搜索、排序和筛选。点击某个资源，会在中间区域打开它的完整编辑器。
+面板在侧边栏中取代聊天列表，展示资源列表，支持搜索、排序和筛选。点击某个资源，会在中间区域打开它的完整编辑器。
 
 面板要在 `RightPanel.tsx` 里两个地方注册：
 
 1. `PANEL_CONFIG`：标题、图标和渐变色。
 2. `RIGHT_PANELS`（位于 `right-panel-panels.ts`）：组件映射表。
 
-面板通过 `RightPanel` 内部一个 `useState` 中保存的 `mountedPanels` Set 保留状态。它记录访问过哪些面板。面板挂载后会留在 DOM 里，用 `display: none` 或 `aria-hidden` 隐藏，以保留状态。
+面板通过 `RightPanel` 内部一个 `useState` 中保存的 `mountedPanels` Set 保留状态。它记录访问过哪些面板。面板挂载后会留在 DOM 里，用 `display: none` 或 `aria-hidden` 隐藏，以保留状态。这个 Set 只属于某一次 `RightPanel` 挂载，因此重新挂载时（例如再次打开手机上的浮层），最初只包含当前面板。
 
 ### UI 基础组件（`components/ui/`）
 
@@ -343,6 +350,8 @@ AI 游戏主持人（GM）界面。它不在 chat 文件夹里，而是位于 `c
 所有 UI 组件都使用受控属性（value 加 onChange），浮层一律用 portal 渲染。
 
 **库面板使用 `LibraryToolbar`。** Characters、Personas、Lorebooks、Agents 和 Presets 面板的选项卡都通过它渲染顶部控件：可选的资料库行（一个占满整行的按钮，或 Download / Open Library 两个按钮）、创建 / 导入 / 导出 / 选择、带共用排序菜单的搜索框、New Folder，最后是作为 `children` 传入的面板筛选控件。各行通过有类型的 props 定义，而不是插槽，这样新库面板会使用同样的标记结构，不会因复制后各自修改而产生偏差。需要扩展时，在这里添加 prop，不要在面板里手写工具栏。
+
+`LibraryToolbar.tsx` 还导出 `SegmentedButtons`，这是一个用 `|` 分隔的长条 `.mari-chrome-segmented` 按钮。它渲染下载 / 打开资料库两个按钮，以及 Presets 面板的**提示词** / **正则脚本** / **工具** / **方案**选项卡，让每个面板的顶行高度一致。传入 `groupLabel` 会让该行成为一个带 `role="group"` 的选项卡组，`pressed` 则设置各个选项卡的 `aria-pressed`。`.mari-chrome-segmented` 设有 `flex-shrink: 0`，因此面板自身固定高度的 flex 滚动容器（如 Characters 中的容器）不会压缩这一行。
 
 ## API 客户端（`lib/api-client.ts`）
 
@@ -364,6 +373,30 @@ import { api, ApiError } from "@/lib/api-client";
 | `api.streamEvents(path, body)` | `POST /api{path}` | SSE 异步生成器（全部事件类型） |
 
 出错时抛出 `ApiError`，它带有 `status` 和 `message` 属性。
+
+## 选择器和下拉框
+
+所有“选择一个值”的控件都会打开同一种共用选择器窗口。选择器的设计改动（界面、行样式、宽度）应放在下面的共用组件中，不要放在某个功能里。不要使用原生 `<select>`，也不要自己在弹出框中绘制列表：应用中已经没有这两种做法了。
+
+| 层级 | 文件 | 负责内容 |
+| --- | --- | --- |
+| 窗口 | `components/ui/PickerWindow.tsx` | 选择器界面。桌面端是在字段旁边的弹出框，宽度按行内容所需决定（至少与字段等宽，最大为 352 px；字段更宽时则以字段宽度为上限）。手机端是底部浮层（一个 `Modal`）；在 `Modal` 内部仍使用弹出框，避免两层浮层叠放。按 Escape、返回、点击外部，或字段滚动出可视范围时，都会关闭它。 |
+| 行 | `components/ui/PickerParts.tsx` | `PickRow`（单行：图片、标题、最多可换成两行的副文本、徽章、勾选标记或复选框）、`PickerSearch`、文件夹标题和 `usePickerKeyboard`（方向键、Enter）。 |
+| 列表 | `components/ui/PickerFolderList.tsx` | 主体：搜索框、按资料库文件夹或 `group` 分组的行、单选或多选，以及每个文件夹的“全部添加”。 |
+| 字段 | `components/ui/Select.tsx` | `Select`：从固定列表中选择一个值，用来替代原生 `<select>`。提供 combobox 触发控件，选项数量达到 `SELECT_SEARCH_MIN` 时提供搜索，字段未展开时支持方向键和键入匹配。 |
+| | `components/ui/PickerField.tsx` | `PickerField`（选择一项，带“无”选项行和文件夹）、`PickerListField` / `PickerListWindow`（选择多项；已选项列在字段下方，附带移除按钮），以及 `useFieldWindow`（控制打开状态，关闭时将焦点移回字段）。 |
+| | `components/ui/LibraryPickers.tsx`, `components/characters/CharacterSelect.tsx` | 用上述组件构建的预设、世界书、角色和用户角色字段。 |
+
+如何添加选择器：
+
+- **从列表中选择一个值：**使用 `Select`。为它提供 `label`，作为字段名称和窗口标题。
+- **选择一个资料库条目**（带文件夹、图片和“无”选项行）：使用 `PickerField`，或 `LibraryPickers.tsx` 中对应的字段。
+- **选择多项：**使用 `PickerListField`。按 Escape 和点击外部会关闭窗口，选择条目不会。
+- **不是字段的控件**（打开简短选项列表的按钮，例如“关联到对话”）：用 `useFieldWindow` 管理打开状态和焦点，将 `PickerWindow` 锚定到按钮，在里面放 `PickerFolderList` 或若干 `PickRow`。
+
+尚未使用共用选择器的有：连接和模型选择器（`ConnectionSelect` / `ModelPicker`，使用自己的窗口）。其他拥有独立界面的控件不属于选择器：图标库（`StatIconPicker`）、标签自动补全、上下文菜单和操作菜单。
+
+**测试。** `Select` 触发控件带有 `role="combobox"`，选中值保存在 `data-value` 中；其窗口是一个 `dialog`，名称取自字段标签。行带有 `data-pick-row`；单选中选中的行带有 `aria-current="true"`，多选的行带有 `aria-pressed`。`e2e/select-field.ts` 提供 `chooseOption` 和 `pickerLabels`，用来替代旧原生下拉框上使用的 Playwright `selectOption`。
 
 ## 样式系统
 

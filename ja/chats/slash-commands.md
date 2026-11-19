@@ -68,7 +68,7 @@ Roleplayでは、範囲のあとにキャラクター名を付けると、その
 | `/roll` | ダイスを振って結果を投稿します。別名は`/r`、`/dice`です。書式は`/roll [dice (optional)]`です。 |
 | `/random` | 予想外の出来事を加えるよう、モデルに頼みます。別名は`/rand`、`/event`です。 |
 | `/scene` | Conversationから分岐するRoleplayのシーンを始めます。別名は`/rp`です。書式は`/scene [description (optional)]`です。 |
-| `/illustrate` | Roleplay専用です。ギャラリーの画像を生成します。Illustratorエージェントが必要です。別名は`/ill`です。書式は`/illustrate [range=N-M] [prompt]`です。 |
+| `/illustrate` | Roleplay専用です。ギャラリーの画像を生成します。Illustratorエージェントが必要です。別名は`/ill`です。書式は`/illustrate [range=N-M] [template=name] [prompt]`です。 |
 | `/html` | Roleplay専用です。最新の返信の末尾に、`a spellbook page`のような作中世界のアーティファクトを1つ作ります。書式は`/html [what you want]`です。 |
 | `/video` | Roleplay専用です。最新の返信、または指定した内容の短いクリップを、その返信の下に作ります。Illustratorの**First frame**(開始フレーム)設定に従います。Illustratorが必要です。書式は`/video [description]`です。 |
 | `/impersonate` | 自分のペルソナとして返信を書きます。別名は`/imp`です。書式は`/impersonate [direction (optional)]`です。 |
@@ -111,7 +111,16 @@ Roleplayでは、範囲のあとにキャラクター名を付けると、その
 
 ### イラストとアーティファクトを作る
 
-`/illustrate range=12`は、メッセージ12を描きます。`/illustrate range=12-18`は、メッセージ12から18をIllustratorに送ります。`/goto`と同じメッセージ番号を昇順で使い、最大200件まで指定できます。隠したメッセージは除外されます。画像は、範囲内で最後に表示されているメッセージに添付されます。Advanced Memoryがオンでも、以前のメッセージを引き続き使えます。`range=`を付けない場合、コマンドは現在のシーンを対象にします。入力したプロンプトは、書いたとおりに使われます。
+`/illustrate range=12`は、メッセージ12を描きます。`/illustrate range=12-18`は、メッセージ12から18をIllustratorに送ります。`/goto`と同じメッセージ番号を昇順で使い、最大200件まで指定できます。隠したメッセージは除外されます。画像は、範囲内で最後に表示されているメッセージに添付されます。Advanced Memoryがオンでも、以前のメッセージを引き続き使えます。`range=`を付けない場合、コマンドは現在のシーンを対象にします。`template=`を付けない場合、入力したプロンプトは、書いたとおりに使われます。
+
+`template=`を使うと、Illustratorの**Prompt Mode**(プロンプトモード)の選択メニューにある別のスタイルで、画像を1枚描きます。チャット自身の**Prompt Mode**はそのままです。選択メニューに表示されているスタイル名を入力してください。大文字と小文字は区別されません。スペース、`-`、`_`は同じものとして扱われ、スペースを含む名前は引用符で囲みます。`template=default`は**Illustration**(イラスト)です。
+
+```text
+/illustrate template=comic-page
+/illustrate range=17 template="Comic Page" Aster holds the gate open and looks back
+```
+
+`template=`を付けると、入力したテキストは、何を描くかをプロンプト作成機能に伝える指示になります。最大2,000文字まで指定でき、スタイルは引き続きモードで決まります。**Attach Card Appearance**(カードの外見を添付)と**Send Avatar References**(アバターの参照を送信)は、Galleryの**Illustrate**(イラストを描く)ボタンと同じように動作します。`range=`と`template=`はテキストの前に置いてください。この2つの順番はどちらでも構いません。どのスタイルにも一致しない名前を指定すると、使えるスタイルが一覧表示されます。2つのスタイルが同じ名前の場合は、メッセージの括弧内に表示されたIDを入力してください。
 
 `/html a terminal readout`はエージェントが不要で、**HTML Artifacts**(HTMLアーティファクト)がオンでもオフでも動作します。**Roleplay Commands**(Roleplayコマンド)で**HTML Artifacts**がオンの場合は、ナレーターも`[html: prompt="..."]`で同じものを依頼できます。[オンデマンドのアーティファクト](../roleplay/getting-started.md#artifacts-on-demand)を参照してください。
 

@@ -16,6 +16,12 @@
 
 Roleplayでは、Illustratorの実行間隔をチャットごとに、**Chat Settings**にあるIllustratorのカードで設定します。Illustratorのセットアップで指定した値は、個別の値を持たないチャットでのデフォルトになります。Illustratorでは**0**も指定できます。この場合、自動では動かず、Galleryの操作では引き続き使えます。
 
+### Activation Keywordsと起動質問
+
+ほとんどのパイプラインエージェントには、[カスタムエージェント](custom-agents.md#activation-keywords)と同じ**Activation Keywords**(起動キーワード)セクションがあります。何もすることがないターンでエージェントをスキップするには、この欄に入力してください。たとえば、Prose Guardianに**Banned Words**(禁止語)リストと同じ語を指定し、**Scan Depth**(スキャン深度)を1にすると、新しい返信にそのいずれかが含まれる場合だけ動きます。キーワードは大文字と小文字を区別せず、単語の途中にも一致するため、`voss`は`Vossberg`にも一致します。その場合も、実行が1回増えるだけです。代わりに[起動質問](custom-agents.md#activation-questions)を使うと、Decisionモデルへの「はい」か「いいえ」で答える質問で、実行するかどうかを決められます。
+
+このセクションを空のままにすると、エージェントはこれまでどおり動きます。ターンをスキップしたトラッカーは、次に動くまで最後の状態を保ちます。Storyboard、Illustrator、Knowledge Retrieval、Knowledge Routerには独自の起動ルールがあり、このセクションは表示されません。
+
 <a id="apps"></a>
 
 ## アプリ

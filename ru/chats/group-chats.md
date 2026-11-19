@@ -83,6 +83,7 @@
 
 - **Add Turn To Prompt** по умолчанию включен. Он добавляет короткую инструкцию с именем персонажа, который должен ответить.
 - **Name Prefix History** (только Roleplay) по умолчанию выключен. Он меняет то, как прошлые сообщения подписываются именами говорящих. Оставьте его выключенным, если только персонаж не путает постоянно, кто что сказал.
+- **Others' Public Faces** (общедоступные сведения об остальных; только Roleplay) по умолчанию выключено. Каждый персонаж получает только свою карточку, поэтому знает об остальных лишь из чата. Включите эту настройку, чтобы при каждом ответе персонажа добавлять текст **Public Face** других активных персонажей: то, что о них может знать любой участник сцены, без их секретов. Персонажи с пустым полем Public Face и неактивные персонажи не включаются. Как заполнить это поле, см. [Вкладка Card](../characters/creating-and-editing-characters.md#card-tab).
 
 ### Scenario Override (Roleplay)
 
@@ -102,6 +103,7 @@
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | включено |
 | **Name Prefix History** | Roleplay, Individual | выключено |
+| **Others' Public Faces** | Roleplay, Individual | выключено |
 | **Scenario Override** | Roleplay | пусто |
 | **Character Exchanges** | Conversation, Autonomous Messaging | выключено |
 

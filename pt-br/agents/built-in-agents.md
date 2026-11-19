@@ -16,6 +16,12 @@ Um intervalo de execução faz o agente rodar uma vez a cada tantas mensagens do
 
 No Roleplay, o intervalo de execução do Illustrator é definido por chat, no card dele em **Chat Settings**. O valor da configuração do agente é o padrão para os chats que não têm um valor próprio. Illustrator também aceita **0**: ele nunca roda automaticamente e continua disponível nas ações da Gallery.
 
+### Palavras-chave de ativação e perguntas
+
+A maioria dos agentes do pipeline tem a mesma seção **Palavras-chave de ativação** dos [agentes personalizados](custom-agents.md#activation-keywords). Preencha-a para pular o agente nos turnos em que ele não tem nada a fazer. Por exemplo, dê ao Prose Guardian as mesmas palavras da lista **Palavras proibidas** e defina **Profundidade de análise** como 1: assim, ele só roda quando uma delas aparece na nova resposta. As palavras-chave correspondem a qualquer parte de uma palavra, sem diferenciar maiúsculas de minúsculas, então `voss` também corresponde a `Vossberg`; isso só custa uma execução extra. Uma [pergunta de ativação](custom-agents.md#activation-questions) pode, em vez disso, condicionar a execução a uma pergunta de sim ou não ao seu modelo de decisão.
+
+Deixe a seção vazia e o agente roda como antes. Um tracker que pula um turno mantém o último estado até rodar de novo. Storyboard, Illustrator, Knowledge Retrieval e Knowledge Router têm suas próprias regras de ativação e não mostram essa seção.
+
 ## Apps
 
 Os Apps têm uma aba própria na **Home**. Você usa cada um de forma independente, em vez de adicioná-lo a um chat. Cada um pede para reiniciar depois da instalação.

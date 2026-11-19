@@ -92,7 +92,7 @@ Jev et Open-Jev sont des modèles différents. Jev est le modèle hébergé de T
 
 Sur Android (Termux), seuls JevK5 et Liquid d1 sont proposés comme **Built-in decision model** (modèle de décision intégré), et le processeur d'un téléphone peut être trop lent pour eux. Un compte hébergé est le choix pratique, par exemple Jev via OpenRouter. Consulte [Configurer un compte de décision](#set-up-a-decision-account).
 
-Écris les presets, les fiches et les agents pour "un modèle de décision", jamais avec "nécessite Jev". Un énoncé qui demande des images fonctionne quand même avec un modèle qui ne lit que le texte : il reçoit uniquement le texte. Ils utilisent la même syntaxe d'énoncés avec n'importe quel modèle, mais les modèles peuvent donner des réponses différentes. Quand tu importes du contenu qui utilise des décisions, y compris des agents personnalisés et des installations d'agents officiels, Marinara affiche un avis avec un lien vers ce guide. La restauration d'un profil complet depuis un ZIP ne l'affiche pas.
+Écris les presets, les fiches et les agents pour "un modèle de décision", jamais avec "nécessite Jev". Un énoncé qui demande des images fonctionne quand même avec un modèle qui ne lit que le texte : il reçoit uniquement le texte. Ils utilisent la même syntaxe d'énoncés avec n'importe quel modèle, mais les modèles peuvent donner des réponses différentes. Quand tu importes du contenu qui utilise des décisions, y compris des agents personnalisés et des installations depuis Agent Organizer, Marinara affiche un avis avec un lien vers ce guide. La restauration d'un profil complet depuis un ZIP ne l'affiche pas.
 
 ## Utiliser le modèle intégré
 

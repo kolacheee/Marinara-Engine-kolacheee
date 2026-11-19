@@ -71,7 +71,7 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 - **Character ID**。只读，角色卡保存之后才会显示。点击 **Copy**(复制) 可以复制它。
 - **Name**(名字)。显示用的名字。在提示词里它是 `{{char}}`，这是一个占位符，Marinara 会把它替换成角色的名字。
-- **Other names**(其他名字)。角色还会用到的昵称、全名或头衔，例如 `Clark Kent, Kal-El, Mr. Kent`。输入多个名字时用逗号分隔，然后按 <kbd>Enter</kbd> 或点击 **Add**(添加)。在 Roleplay 聊天中，这些名字也可以显示为名字颜色。见[角色颜色](colors-and-stats.md#the-three-colors)。
+- **Other names**(其他名字)。角色还会用到的昵称、全名或头衔，例如 `Clark Kent, Kal-El, Mr. Kent`。输入多个名字时用逗号分隔，然后按 <kbd>Enter</kbd> 或点击 **Add**(添加)。在 Roleplay 聊天中，这些名字也可以显示为名字颜色；Character Tracker 以其中某个名字追踪角色时，还会把角色关联到这张卡片。见[角色颜色](colors-and-stats.md#the-three-colors)。
 - **Creator**(作者)。角色卡的作者，分享时用来署名。
 - **Version**(版本)。自己设定的版本号，比如 `1.0`。旁边的 **Automatic versioning**(自动版本管理) 开关会在角色卡改动时保留之前的版本，并调高这个数字。只有这个开关开着时，版本历史才会保存快照。
 - **Talkativeness**(发言频率)。0 到 100% 的滑块，决定这个角色在群聊里发言的频繁程度。默认是 50%。
@@ -96,6 +96,9 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 | **Backstory**(背景故事) | 经历、出身、重要的人际关系。 | 是 |
 | **Appearance**(外观) | 外貌、衣着、视觉细节。也会作为 AI 头像提示词的起点。 | 是 |
 | **Scenario**(场景设定) | 和这个角色开新聊天时的默认设定。 | 是 |
+| **Public Face**(公开形象) | 去掉私密内容的角色卡。 | 仅在宏或设置要求时 |
+
+**Public Face** 是其他角色能看到或知道的信息：外貌、举止、身份、名声，以及不是秘密的人际关系。不要写入秘密、内心想法、私人经历或如何扮演角色的指令。它从不随该角色的角色卡一起发送。提示词只会在你放入 `{{publicFace}}` 宏的位置读取它；用户角色则用 `{{personaPublicFace}}`。见[提示词宏](../prompts/macros.md#identity-character-and-persona-macros)。在 Individual 模式的 Roleplay 群聊里，**Others' Public Faces**(其他角色的公开形象) 会把它发送到其他角色的回合。见[更多 Individual 设置](../chats/group-chats.md#more-individual-settings)。智能体的 **Characters**(角色) 或 **Persona**(人设) 来源设为 **Public Face** 时，就会读取它来代替角色卡。见[其他设置](../agents/custom-agents.md#other-settings)。开启 **Send Public Faces**(发送公开形象) 后，Roleplay 中的 Impersonate 也会读取它来代替角色卡。见 [Impersonate 设置](../chats/guided-and-impersonate.md#the-impersonate-settings)。
 
 **Image Appearance Override**(图像专用外貌) 位于 **Appearance** 下方，默认关闭。打开后会显示第二个输入框，用来填写简短的图像标签，例如 LoRA 触发词（一个能开启自定义图像风格的关键词）。开关打开且输入框有内容时，图像提示词会原样使用这些标签，**Appearance** 则作为背景信息保留。AI 头像提示词也会以它为起点。旁白始终会看到 **Appearance** 的完整内容。
 
@@ -117,13 +120,13 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 ### 用魔杖撰写角色卡字段
 
-**Summary**、**Description**、**Personality**、**Backstory**、**Appearance**、**Scenario**、**Example Dialogue**、**First Message** 和每个 **Alternate Greeting** 的上方都有一个只显示魔杖图标的按钮。它的悬停提示会写明它生成哪个字段。
+**Summary**、**Description**、**Personality**、**Backstory**、**Appearance**、**Scenario**、**Public Face**、**Example Dialogue**、**First Message** 和每个 **Alternate Greeting** 的上方都有一个只显示魔杖图标的按钮。它的悬停提示会写明它生成哪个字段。
 
 开始之前：先配置好一个可用的文本连接。参见[连接 AI 服务商](../connections/connecting-to-a-provider.md)。
 
 1. 在字段里写下想保留的想法，例如 `smart, scientist, handsome`，也可以留空。
 2. 填好希望 AI 参考的其他角色卡字段。不必先保存。
-3. 点击该字段的魔杖。Marinara 会以你的文字为起点，为这个字段请求 100–300 个单词的内容。Example Dialogue 请求的是示例对话。**First Message** 和每个 **Alternate Greeting** 请求的是一条开场消息，不替你决定怎么回应。
+3. 点击该字段的魔杖。Marinara 会以你的文字为起点，为这个字段请求 100–300 个单词的内容。Example Dialogue 请求的是示例对话。**First Message** 和每个 **Alternate Greeting** 请求的是一条开场消息，不替你决定怎么回应。**Public Face** 没有字数范围：它的魔杖会改写角色卡的其他内容，去掉私密部分，因此长度取决于角色卡。
 4. 编辑结果，然后点击 **Save**。
 
 魔杖使用你的默认智能体文本连接；没有的话，就用默认文本连接。配置好的智能体备用连接仍然适用。
@@ -178,7 +181,7 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 
 ## 在选定聊天中使用替代字段
 
-替代字段能让同一个角色在选定的聊天里使用不同的描述、外观、背景故事或其他细节，其他聊天则继续使用原样。七个角色卡字段下方各有 **Add Alternative Field**(添加替代字段)。
+替代字段能让同一个角色在选定的聊天里使用不同的描述、外观、背景故事或其他细节，其他聊天则继续使用原样。八个角色卡字段下方各有 **Add Alternative Field**(添加替代字段)。
 
 1. 在想调整的字段下方点击 **Add Alternative Field**。Marinara 会把这个字段的文字复制到新建的替代字段里。
 2. 可选：点击它的标题，例如 **Backstory alternative 1**(背景故事的第 1 个替代版本)，输入一个名字，例如 `Young`。名字最多 60 个字符。名字留空则保留带编号的标题。

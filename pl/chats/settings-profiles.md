@@ -112,7 +112,7 @@ Profil może też przechowywać **wybory początkowe**: personę, lorebooki do w
 - Zastosowanie profilu kopiuje te wybory do czatu. Jeśli któryś z nich jest w profilu pusty, czat zachowuje własny.
 - Pozostałe ustawienia profilu nadal zastępują ustawienia czatu.
 - Wybory nie pozostają powiązane. Późniejsza zmiana w czacie zostaje tylko w tym czacie.
-- **Save current chat settings into this profile** zachowuje personę, lorebooki i tło zapisane w samym profilu. Profil bez tła przejmuje tło czatu, gdy zapisujesz do niego ustawienia.
+- **Zapisz bieżące ustawienia czatu w tym profilu** zastępuje lorebooki profilu tymi dodanymi do czatu przyciskiem **Dodaj lorebook** lub przez zastosowanie profilu. Lorebook utworzony dla czatu przez agenta Lorebook Keeper nie jest zapisywany. Jeśli nie dodano żadnych lorebooków, profil nie ma ich po zapisie. Profil zachowuje własną personę i tło. Profil bez tła przejmuje tło czatu, gdy zapisujesz do niego ustawienia.
 - Aktualizacja innych czatów nigdy nie zmienia ich persony, lorebooków ani tła.
 
 Profil nie zastępuje treści należących do czatu: postaci, sprite'ów, podsumowania, tagów, promptu sceny ani **Notatek autora**. Nie zawiera też historii rozmowy ani bieżącego stanu, takiego jak zmienne makr, postacie wyłączone przez ciebie czy pokój gry wieloosobowej. Profil zapisany we wcześniejszej wersji może nadal zawierać **Notatki autora**, ale zastosowanie go zachowuje własne notatki czatu.

@@ -102,6 +102,8 @@ Por padrão, um agente roda na cadência normal dele (a frequência com que ele 
 
 A partir daí, o agente só roda quando uma palavra-chave aparece nessas mensagens. Deixe a caixa vazia para desativar o filtro. A cadência e qualquer pergunta de ativação continuam valendo.
 
+Os agentes disponíveis para download têm a mesma seção. Veja [Palavras-chave de ativação e perguntas](built-in-agents.md#activation-keywords-and-questions).
+
 ## Como anexar ferramentas
 
 Um agente pode chamar ferramentas: funções que a IA executa para buscar ou alterar alguma coisa e cujo resultado ela lê em seguida. Isso também se chama function calling.
@@ -128,6 +130,7 @@ Quando alguém adiciona o agente a um chat, um menu suspenso **Prompt Mode** lis
 - **Model override**: usa um modelo diferente para este agente, por exemplo um mais barato. Deixe vazio para usar o modelo do chat. O agente envia os parâmetros de geração salvos nessa conexão. Veja [Parâmetros para agentes](../prompts/generation-parameters.md#parameters-for-agents).
 - **Agent Budget**: **Context Size** é quantas mensagens recentes o agente lê (padrão 5). **Max Output Tokens** é o espaço de saída reservado (padrão 4096, de 128 a 32768).
 - **Add as Prompt Section**: expõe a última saída do agente como uma seção que você pode posicionar em um preset de prompt.
+- **Fontes de contexto**: o que o agente lê além das instruções. **Personagens** e **Persona** têm três opções cada: **Desativado**, **Full card** (card completo) ou **Public Face** (face pública). **Public Face** envia só o nome e o campo **Public Face** do card. Se esse campo estiver vazio, só o nome é enviado. Para escrever um, veja [A aba Card](../characters/creating-and-editing-characters.md#card-tab). Quando vários agentes compartilham uma requisição, cada fonte usa a opção mais abrangente entre eles: **Full card**, depois **Public Face**, depois **Desativado**.
 
 Macros como `{{user}}` e `{{char}}` funcionam no **Prompt Template**. Veja [Macros](../prompts/macros.md).
 
@@ -194,7 +197,7 @@ Como funciona:
 - Tempo esgotado, modelo indisponível ou resposta inválida deixam o agente rodar normalmente. O tempo limite depende do tipo de modelo e de o modelo precisar pensar antes. Veja [Tempos limite](../connections/decision-models.md#time-limits).
 - Agentes importados com pergunta de ativação ou declarações de decisão mostram um aviso com link para o guia de modelos de decisão. Sem modelo de decisão, o agente roda sempre que as palavras-chave e a **Trigger Cadence** permitirem, e as declarações no prompt valem não.
 
-As perguntas de ativação valem só para agentes personalizados. O Illustrator integrado tem suas próprias verificações fixas de novos lugares e clima; veja [Verificações com modelo de decisão](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
+As perguntas de ativação funcionam do mesmo jeito para os agentes disponíveis para download, exceto os listados em [Palavras-chave de ativação e perguntas](built-in-agents.md#activation-keywords-and-questions). O Illustrator integrado também tem suas próprias verificações fixas de novos lugares e clima; veja [Verificações com modelo de decisão](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 <a id="decision-statements-in-the-agents-prompt"></a>
 

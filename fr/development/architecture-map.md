@@ -56,7 +56,7 @@ React 19 et Vite PWA (application web installable). Ce package compte aujourd'hu
 Structure actuelle de premier niveau :
 
 - `App.tsx`, `main.tsx` : amorçage de l'application, React Query, PWA, effets globaux.
-- `components/layout` : coquille de l'application, barres latérales, barre supérieure, rendu des fenêtres.
+- `components/layout` : coquille de l'application, barre latérale (Chats ou un panneau), barre supérieure, rendu des fenêtres.
 - `components/ui` : primitives d'interface réutilisables.
 - `components/chat` : mélange d'interface de chat commune, Conversation, Roleplay, scène, sprite et rencontre.
 - `components/game` : surface et panneaux de Game Mode.

@@ -102,6 +102,8 @@ Standardmäßig läuft ein Agent in seinem normalen Takt (der Takt bestimmt, wie
 
 Der Agent läuft dann nur, wenn in diesen Nachrichten ein Schlüsselwort vorkommt. Lass das Feld leer, um den Filter auszuschalten. Takt und eine eventuelle Aktivierungsfrage gelten weiterhin.
 
+Herunterladbare Agenten haben denselben Abschnitt. Siehe [Aktivierungs-Schlüsselwörter und Fragen](built-in-agents.md#activation-keywords-and-questions).
+
 ## Tools anhängen
 
 Ein Agent kann Tools aufrufen: Funktionen, die die KI ausführt, um etwas abzurufen oder zu ändern, und deren Ergebnis sie anschließend zurückliest. Das nennt sich auch Function Calling.
@@ -128,6 +130,7 @@ Fügt jemand den Agenten einem Chat hinzu, listet ein Dropdown-Menü **Prompt Mo
 - **Model override** (Modell überschreiben): Nutze für diesen Agenten ein anderes Modell, zum Beispiel ein günstigeres. Bleibt das Feld leer, nutzt er das Modell des Chats. Der Agent sendet die auf dieser Verbindung gespeicherten Generierungsparameter. Siehe [Parameter für Agenten](../prompts/generation-parameters.md#parameters-for-agents).
 - **Agent Budget** (Agent-Budget): **Context Size** gibt an, wie viele der letzten Nachrichten der Agent liest (Standard 5). **Max Output Tokens** ist der für die Ausgabe reservierte Platz (Standard 4.096, von 128 bis 32.768).
 - **Add as Prompt Section** (Als Prompt-Abschnitt hinzufügen): stellt die jüngste Ausgabe des Agenten als Abschnitt bereit, den du in ein Prompt-Preset einfügen kannst.
+- **Kontextquellen**: was der Agent neben seinen Anweisungen liest. **Charaktere** und **Persona** bieten jeweils drei Möglichkeiten: **Aus**, **Full card** oder **Public Face**. **Public Face** sendet nur den Namen und das Feld **Public Face** der Karte. Ist dieses Feld leer, wird nur der Name gesendet. Wie du es ausfüllst, steht unter [Tab „Card“](../characters/creating-and-editing-characters.md#card-tab). Teilen sich mehrere Agenten eine Anfrage, wird für jede Quelle die umfangreichste ihrer Einstellungen genutzt: zuerst **Full card**, dann **Public Face**, dann **Aus**.
 
 Makros wie `{{user}}` und `{{char}}` funktionieren in der **Prompt Template**. Siehe [Makros](../prompts/macros.md).
 
@@ -194,7 +197,7 @@ So läuft es ab:
 - Bei Zeitüberschreitung, nicht verfügbarem Modell oder ungültiger Antwort läuft der Agent normal. Das Zeitlimit hängt vom Modelltyp ab und davon, ob das Modell zuerst nachdenken muss. Siehe [Zeitlimits](../connections/decision-models.md#time-limits).
 - Importierte Agenten mit einer Aktivierungsfrage oder Decision-Aussagen zeigen einen Hinweis mit Link zur Anleitung für Decision-Modelle. Ohne Decision-Modell läuft der Agent, sobald Schlüsselwörter und **Trigger Cadence** (Ausführungstakt) es erlauben, und Aussagen im Prompt gelten als nein.
 
-Aktivierungsfragen gelten nur für eigene Agenten. Der eingebaute Illustrator prüft neue Orte und Wetter nach eigenen, festen Regeln. Siehe [Prüfungen durch ein Decision-Modell](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
+Aktivierungsfragen funktionieren bei herunterladbaren Agenten genauso, mit Ausnahme der unter [Aktivierungs-Schlüsselwörter und Fragen](built-in-agents.md#activation-keywords-and-questions) genannten Agenten. Der eingebaute Illustrator hat außerdem eigene feste Prüfungen für neue Orte und Wetter. Siehe [Prüfungen durch ein Decision-Modell](../media/scene-backgrounds.md#check-every-reply-with-a-decision-model).
 
 ## Decision-Bedingungen im Agenten-Prompt
 

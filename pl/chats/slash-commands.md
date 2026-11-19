@@ -68,7 +68,7 @@ Komenda `/remind` przyjmuje czas z jednostką `h` (godziny), `m` (minuty) lub `s
 | `/roll` | Rzuca kośćmi i wysyła wynik. Także `/r`, `/dice`. Format: `/roll [dice (optional)]`. |
 | `/random` | Prosi model o dodanie niespodziewanego wydarzenia. Także `/rand`, `/event`. |
 | `/scene` | Zaczyna scenę Roleplay, która odgałęzia się od rozmowy. Także `/rp`. Format: `/scene [description (optional)]`. |
-| `/illustrate` | Tylko Roleplay. Generuje obraz do galerii. Wymaga agenta Illustrator. Także `/ill`. Format: `/illustrate [range=N-M] [prompt]`. |
+| `/illustrate` | Tylko Roleplay. Generuje obraz do galerii. Wymaga agenta Illustrator. Także `/ill`. Format: `/illustrate [range=N-M] [template=name] [prompt]`. |
 | `/html` | Tylko Roleplay. Tworzy jeden artefakt ze świata opowieści, na przykład `a spellbook page`, na końcu najnowszej odpowiedzi. Format: `/html [what you want]`. |
 | `/video` | Tylko Roleplay. Tworzy krótki klip z najnowszej odpowiedzi lub na podstawie twojego opisu i umieszcza go pod tą odpowiedzią. Korzysta z ustawienia **First frame** (pierwsza klatka) agenta Illustrator. Wymaga agenta Illustrator. Format: `/video [description]`. |
 | `/impersonate` | Pisze odpowiedź w imieniu twojej persony. Także `/imp`. Format: `/impersonate [direction (optional)]`. |
@@ -111,7 +111,16 @@ Z imieniem, ale bez wyrazu twarzy, komenda wypisuje wyrazy twarzy tej postaci. W
 
 ### Ilustracje i artefakty
 
-Komenda `/illustrate range=12` ilustruje wiadomość 12. `/illustrate range=12-18` wysyła do agenta Illustrator wiadomości od 12 do 18. Używaj tych samych numerów wiadomości co w `/goto`, w kolejności rosnącej, maksymalnie 200 wiadomości. Ukryte wiadomości są pomijane. Obraz zostaje dołączony do ostatniej widocznej wiadomości w zakresie. Wcześniejsze wiadomości pozostają dostępne przy włączonej funkcji Advanced Memory. Bez `range=` komenda działa na bieżącej scenie. Wpisany prompt jest używany dosłownie.
+Komenda `/illustrate range=12` ilustruje wiadomość 12. `/illustrate range=12-18` wysyła do agenta Illustrator wiadomości od 12 do 18. Używaj tych samych numerów wiadomości co w `/goto`, w kolejności rosnącej, maksymalnie 200 wiadomości. Ukryte wiadomości są pomijane. Obraz zostaje dołączony do ostatniej widocznej wiadomości w zakresie. Wcześniejsze wiadomości pozostają dostępne przy włączonej funkcji Advanced Memory. Bez `range=` komenda działa na bieżącej scenie. Bez `template=` wpisany prompt jest używany dosłownie.
+
+`template=` rysuje jeden obraz w innym stylu z selektora **Tryb promptu** agenta Illustrator. Czat zachowuje własny **Tryb promptu**. Wpisz nazwę stylu tak, jak pokazuje ją selektor, bez względu na wielkość liter. Spacje, `-` i `_` są traktowane tak samo, a nazwę ze spacjami ujmij w cudzysłów. `template=default` oznacza **Illustration** (ilustracja).
+
+```text
+/illustrate template=comic-page
+/illustrate range=17 template="Comic Page" Aster holds the gate open and looks back
+```
+
+Przy `template=` wpisany tekst, do 2 000 znaków, mówi modelowi piszącemu prompt, co pokazać, a styl nadal wynika z trybu. **Dołączaj wygląd z karty** i **Wysyłaj referencje awatarów** działają tak samo jak przy przycisku **Ilustruj** w galerii. Umieść `range=` i `template=` przed tekstem, w dowolnej kolejności. Nazwa, która nie pasuje do żadnego stylu, wyświetla listę dostępnych stylów. Jeśli dwa style mają tę samą nazwę, wpisz identyfikator pokazany w komunikacie w nawiasach.
 
 `/html a terminal readout` nie wymaga agenta i działa niezależnie od tego, czy opcja **HTML Artifacts** (artefakty HTML) jest włączona. Narrator może poprosić o to samo znacznikiem `[html: prompt="..."]`, gdy opcja **HTML Artifacts** jest włączona w sekcji **Roleplay Commands** (komendy Roleplay). Zobacz [Artefakty na żądanie](../roleplay/getting-started.md#artifacts-on-demand).
 

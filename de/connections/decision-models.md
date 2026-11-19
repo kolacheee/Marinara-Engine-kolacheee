@@ -92,7 +92,7 @@ Jev und Open-Jev sind unterschiedliche Modelle. Jev ist das gehostete Modell von
 
 Unter Android (Termux) werden nur JevK5 und Liquid d1 als **Built-in decision model** angeboten, und der Prozessor eines Handys kann dafür zu langsam sein. Praktisch ist dort ein gehostetes Konto, etwa Jev über OpenRouter. Siehe [Ein Decision-Konto einrichten](#set-up-a-decision-account).
 
-Schreib Presets, Karten und Agenten für „ein Decision-Modell“, niemals mit „benötigt Jev“. Eine Aussage, die Bilder anfordert, funktioniert auch mit einem Modell, das nur Text liest: Es bekommt allein den Text. Sie verwenden mit jedem Modell dieselbe Aussage-Syntax, aber Modelle können unterschiedlich antworten. Importierst du Inhalte, die Decisions nutzen, auch eigene Agenten und Installationen offizieller Agenten, zeigt Marinara einen Hinweis mit einem Link hierher. Beim Wiederherstellen eines vollständigen Profil-ZIP erscheint er nicht.
+Schreib Presets, Karten und Agenten für „ein Decision-Modell“, niemals mit „benötigt Jev“. Eine Aussage, die Bilder anfordert, funktioniert auch mit einem Modell, das nur Text liest: Es bekommt allein den Text. Sie verwenden mit jedem Modell dieselbe Aussage-Syntax, aber Modelle können unterschiedlich antworten. Importierst du Inhalte, die Decisions nutzen, auch eigene Agenten und Installationen über Agent Organizer, zeigt Marinara einen Hinweis mit einem Link hierher. Beim Wiederherstellen eines vollständigen Profil-ZIP erscheint er nicht.
 
 ## Das eingebaute Modell verwenden
 

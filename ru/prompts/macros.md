@@ -8,7 +8,7 @@
 
 Писать макросы можно в этих местах:
 
-- Поля персонажа в панели **Character Editor** (редактор персонажа): Description, Personality, Backstory, Appearance, Scenario, Example Dialogue, System Prompt, Post-History Instructions и поле **Depth Prompt**.
+- Поля персонажа в панели **Character Editor** (редактор персонажа): Description, Personality, Backstory, Appearance, Scenario, Public Face, Example Dialogue, System Prompt, Post-History Instructions и поле **Depth Prompt**.
 - Поля персоны в панели **Persona Editor** (редактор персоны) – те же поля карточки.
 - Поля Description и Content в записи лорбука.
 - Разделы промпта в панели **Preset Editor** (редактор пресетов).
@@ -35,12 +35,13 @@
 | `{{charNamePhonetic}}` | Поле Phonetic name у персонажа, а если оно пустое – `{{char}}`. |
 | `{{characters}}` | Все персонажи чата, включая неактивных, через запятую. Этот макрос добавляет только имена; он не добавляет в промпт карточки неактивных персонажей. |
 | `{{group}}` | Все остальные активные персонажи группового чата, кроме того, кто отвечает сейчас. Персона в этот список персонажей не входит. |
-| `{{persona}}` | Поля Description, Personality, Backstory, Appearance и Scenario вашей персоны, каждое с новой строки. |
+| `{{persona}}` | Поля Description, Personality, Backstory, Appearance и Scenario вашей персоны, каждое с новой строки. Public Face не включается. |
 | `{{personaDescription}}` | Поле Description вашей персоны. |
 | `{{personaPersonality}}` | Поле Personality вашей персоны. |
 | `{{personaBackstory}}` | Поле Backstory вашей персоны. |
 | `{{personaAppearance}}` | Поле Appearance вашей персоны. |
 | `{{personaScenario}}` | Поле Scenario вашей персоны. |
+| `{{personaPublicFace}}` | Поле Public Face вашей персоны: то, что другие могут знать о вас. |
 
 Макросы полей персонажа читают карточку текущего персонажа:
 
@@ -51,6 +52,7 @@
 | `{{backstory}}` | Backstory |
 | `{{appearance}}` | Appearance |
 | `{{scenario}}` | Scenario |
+| `{{publicFace}}` | Public Face |
 | `{{example}}` | Example Dialogue |
 | `{{charSysInfo}}` | System Prompt |
 | `{{charPostHistory}}` | Post-History Instructions |

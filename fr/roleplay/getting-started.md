@@ -6,7 +6,7 @@ Choisis Roleplay pour une scène d'histoire. Choisis [Conversation](../conversat
 
 ## Lancer un roleplay
 
-Avant de commencer : ajoute un compte dans le panneau **Connections** (Connexions), sur le côté droit de l'application. Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
+Avant de commencer : ajoute un compte dans le panneau **Connections** (Connexions). Voir [Se connecter à un fournisseur d'IA](../connections/connecting-to-a-provider.md).
 
 1. Ouvre tes chats (**Bibliothèque** en haut à droite, puis **Chats** en haut de la barre latérale) et clique sur l'onglet **Roleplay**.
 2. Clique sur **Nouveau** en haut de la liste des chats.

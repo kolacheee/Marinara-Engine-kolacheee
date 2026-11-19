@@ -83,6 +83,7 @@
 
 - **Add Turn To Prompt**(把当前回合写进提示词) 默认开启。它会加一句简短的指令，点明这一轮该由哪个角色回复。
 - **Name Prefix History**(历史消息加姓名前缀，仅 Roleplay) 默认关闭。它会改变历史消息标注发言人名字的方式。除非某个角色总是搞混谁说了什么，否则保持关闭。
+- **Others' Public Faces**(其他角色的公开形象)（仅 Roleplay）默认关闭。每个角色只会收到自己的角色卡，因此只能通过聊天了解其他角色。开启后，每个角色的回合都会加入其他活跃角色的 **Public Face**(公开形象) 文本：场景里任何人都可能知道的信息，不包含秘密。Public Face 为空的角色和未激活的角色都不会加入。填写方法见 [Card 选项卡](../characters/creating-and-editing-characters.md#card-tab)。
 
 ### Scenario Override(Roleplay)
 
@@ -102,6 +103,7 @@
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | 开启 |
 | **Name Prefix History** | Roleplay，Individual | 关闭 |
+| **Others' Public Faces** | Roleplay，Individual | 关闭 |
 | **Scenario Override** | Roleplay | 空 |
 | **Character Exchanges** | Conversation，Autonomous Messaging | 关闭 |
 

@@ -69,7 +69,7 @@ Zakładka **Metadata** zbiera dane o tożsamości karty i jej porządkowaniu. Po
 
 - **Character ID**. Wartość tylko do odczytu. Pojawia się po zapisaniu karty. Kliknij **Copy** (kopiowanie), żeby ją skopiować.
 - **Name**. Wyświetlana nazwa. W promptach to `{{char}}`, symbol zastępczy, który Marinara zamienia na nazwę postaci.
-- **Other names** (inne nazwy). Przezwiska, pełne imiona i nazwiska lub tytuły, których używa postać, np. `Clark Kent, Kal-El, Mr. Kent`. Wpisz je po przecinku i naciśnij <kbd>Enter</kbd> albo kliknij **Add** (dodaj). W czatach Roleplay mogą przybierać kolor imienia. Zobacz [Kolory postaci](colors-and-stats.md#the-three-colors).
+- **Other names** (inne nazwy). Przezwiska, pełne imiona i nazwiska lub tytuły, których używa postać, np. `Clark Kent, Kal-El, Mr. Kent`. Wpisz je po przecinku i naciśnij <kbd>Enter</kbd> albo kliknij **Add** (dodaj). W czatach Roleplay mogą przybierać kolor imienia, a Character Tracker łączy postać śledzoną pod jednym z tych imion z jej kartą. Zobacz [Kolory postaci](colors-and-stats.md#the-three-colors).
 - **Creator**. Osoba, która stworzyła kartę, podawana jako autor przy udostępnianiu.
 - **Version**. Numer wersji, który ustawiasz samodzielnie, na przykład `1.0`. Przełącznik **Automatic versioning** (automatyczne wersjonowanie) obok niego zachowuje wcześniejsze wersje i podnosi ten numer, gdy karta się zmienia. Historia wersji zapisuje migawki tylko wtedy, gdy ten przełącznik jest włączony.
 - **Talkativeness**. Suwak od 0 do 100 procent. Decyduje o tym, jak często ta postać odzywa się na czatach grupowych. Domyślnie 50 procent.
@@ -92,6 +92,9 @@ Zakładka **Card** to główne miejsce pisania. Odnośniki u góry przeskakują 
 | **Backstory** | Historia, pochodzenie, ważne relacje. | Tak |
 | **Appearance** | Wygląd, ubiór, szczegóły wizualne. Służy też jako zalążek promptu do awatara AI. | Tak |
 | **Scenario** | Domyślna sytuacja wyjściowa nowych czatów z tą postacią. | Tak |
+| **Public Face** (publiczny wizerunek) | Karta bez prywatnych informacji. | Tylko tam, gdzie wymaga tego makro lub ustawienie |
+
+**Public Face** to to, co reszta obsady mogłaby zobaczyć lub wiedzieć o postaci: wygląd, sposób bycia, rola, reputacja i relacje, które nie są tajemnicą. Pomiń sekrety, wewnętrzne myśli, prywatną historię i instrukcje odgrywania postaci. To pole nigdy nie jest wysyłane jako część karty tej postaci. Prompt czyta je tylko tam, gdzie umieścisz makro `{{publicFace}}` albo `{{personaPublicFace}}` dla swojej persony. Zobacz [Makra promptów](../prompts/macros.md#identity-character-and-persona-macros). W czacie grupowym w trybie Roleplay z opcją Individual ustawienie **Others' Public Faces** (publiczne wizerunki innych postaci) wysyła je w turach pozostałych postaci. Zobacz [Więcej ustawień trybu Individual](../chats/group-chats.md#more-individual-settings). Agent, którego źródło **Postacie** lub **Persona** jest ustawione na **Public Face**, czyta je zamiast karty. Zobacz [Inne ustawienia](../agents/custom-agents.md#other-settings). Przy włączonym **Send Public Faces** (wysyłanie publicznych wizerunków) funkcja Impersonate w trybie Roleplay czyta je zamiast karty. Zobacz [Ustawienia Impersonate](../chats/guided-and-impersonate.md#the-impersonate-settings).
 
 Przełącznik **Image Appearance Override** (osobny opis wyglądu do obrazów) znajduje się pod polem **Appearance** i domyślnie jest wyłączony. Włącz go, żeby pokazać drugie pole na krótkie tagi obrazu, na przykład słowo wyzwalające LoRA (słowo kluczowe, które włącza własny styl obrazu). Gdy przełącznik jest włączony, a pole wypełnione, prompty obrazów używają tych tagów dokładnie w zapisanej formie, a treść **Appearance** zostaje jako kontekst w tle. Z tego pola wypełnia się też wstępnie prompt awatara AI. Narrator zawsze widzi pełny tekst z **Appearance**.
 
@@ -111,13 +114,13 @@ Powitania i przykładowe wiadomości mogą pokazywać obrazy z galerii postaci. 
 
 ### Generowanie pola karty różdżką
 
-Nad polami **Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Example Dialogue**, **First Message** i każdym **Alternate Greeting** znajduje się przycisk z samą ikoną różdżki. Jego podpowiedź podaje nazwę pola, które wypełnia.
+Nad polami **Summary**, **Description**, **Personality**, **Backstory**, **Appearance**, **Scenario**, **Public Face**, **Example Dialogue**, **First Message** i każdym **Alternate Greeting** znajduje się przycisk z samą ikoną różdżki. Jego podpowiedź podaje nazwę pola, które wypełnia.
 
 Zanim zaczniesz: skonfiguruj działające połączenie tekstowe. Zobacz [Łączenie z dostawcą AI](../connections/connecting-to-a-provider.md).
 
 1. Wpisz w polu pomysły, które chcesz zachować, na przykład `smart, scientist, handsome`, albo zostaw je puste.
 2. Uzupełnij inne pola karty, które AI ma wykorzystać jako punkt odniesienia. Nie musisz najpierw zapisywać.
-3. Kliknij różdżkę danego pola. Marinara prosi o 100–300 słów dla tego pola, traktując twój tekst jako punkt wyjścia. Dla pola Example Dialogue prosi o przykładowe wymiany zdań. **First Message** i każde **Alternate Greeting** proszą o jedną wiadomość otwierającą, która zostawia ci miejsce na odpowiedź.
+3. Kliknij różdżkę danego pola. Marinara prosi o 100–300 słów dla tego pola, traktując twój tekst jako punkt wyjścia. Dla pola Example Dialogue prosi o przykładowe wymiany zdań. **First Message** i każde **Alternate Greeting** proszą o jedną wiadomość otwierającą, która zostawia ci miejsce na odpowiedź. Pole **Public Face** nie ma zakresu liczby słów: jego różdżka przepisuje resztę karty bez prywatnych informacji, więc długość zależy od twojej karty.
 4. Popraw wynik, a potem kliknij **Save**.
 
 Różdżka używa domyślnego połączenia tekstowego agentów, a jeśli go nie ma, domyślnego połączenia tekstowego. Skonfigurowane zapasowe połączenie agentów nadal obowiązuje.
@@ -170,7 +173,7 @@ Sekcja **Regex Scripts** zbiera skrypty typu znajdź i zamień, działające tyl
 
 ## Alternatywne pola w wybranych czatach
 
-Alternatywne pole nadaje tej samej postaci inny opis, wygląd, historię lub inny szczegół w wybranych czatach, a wszystkie pozostałe czaty zachowują oryginał. Pod każdym z siedmiu pól karty jest przycisk **Add Alternative Field** (dodaj alternatywne pole).
+Alternatywne pole nadaje tej samej postaci inny opis, wygląd, historię lub inny szczegół w wybranych czatach, a wszystkie pozostałe czaty zachowują oryginał. Pod każdym z ośmiu pól karty jest przycisk **Add Alternative Field** (dodaj alternatywne pole).
 
 1. Kliknij **Add Alternative Field** pod polem, które chcesz zmienić. Marinara kopiuje tekst pola do nowego wariantu.
 2. Opcjonalnie: kliknij jego tytuł, na przykład **Backstory alternative 1** (Historia postaci – alternatywa 1), i wpisz nazwę, na przykład `Young`. Nazwa może mieć najwyżej 60 znaków. Zostaw nazwę pustą, żeby zachować numerowany tytuł.

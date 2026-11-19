@@ -92,7 +92,7 @@ Jev y Open-Jev son modelos distintos. Jev es el modelo alojado de TypeSafe, disp
 
 En Android (Termux), solo se ofrecen JevK5 y Liquid d1 como **Built-in decision model** (modelo de decisión integrado), y el procesador de un teléfono puede ser demasiado lento para ellos. Una cuenta alojada es la opción práctica, por ejemplo Jev mediante OpenRouter. Consulta [Configurar una cuenta Decision](#set-up-a-decision-account).
 
-Escribe los presets (ajustes guardados), las tarjetas y los agentes para "un modelo de decisión", nunca como "requiere Jev". Una declaración que pide imágenes sigue funcionando con un modelo que solo lee texto: recibe únicamente el texto. Usan la misma sintaxis de declaraciones con cualquier modelo, pero los modelos pueden dar respuestas distintas. Cuando importas contenido que usa decisiones, incluidos agentes personalizados e instalaciones de agentes oficiales, Marinara muestra un aviso con un enlace a esta guía. Restaurar un ZIP de perfil completo no lo muestra.
+Escribe los presets (ajustes guardados), las tarjetas y los agentes para "un modelo de decisión", nunca como "requiere Jev". Una declaración que pide imágenes sigue funcionando con un modelo que solo lee texto: recibe únicamente el texto. Usan la misma sintaxis de declaraciones con cualquier modelo, pero los modelos pueden dar respuestas distintas. Cuando importas contenido que usa decisiones, incluidos agentes personalizados e instalaciones de Agent Organizer, Marinara muestra un aviso con un enlace a esta guía. Restaurar un ZIP de perfil completo no lo muestra.
 
 ## Usar el modelo integrado
 

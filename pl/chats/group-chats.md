@@ -83,6 +83,7 @@ Użyj selektora **Trigger Response**, aby wybrać mówiącego. Na komputerze to 
 
 - **Add Turn To Prompt** (dodanie tury do promptu) jest domyślnie włączone. Dodaje krótką instrukcję z imieniem postaci, która ma odpowiedzieć.
 - **Name Prefix History** (prefiksy imion w historii, tylko Roleplay) jest domyślnie wyłączone. Zmienia sposób oznaczania wcześniejszych wiadomości imionami mówiących. Zostaw je wyłączone, chyba że któraś postać ciągle myli, kto co powiedział.
+- **Others' Public Faces** (publiczne wizerunki innych postaci, tylko Roleplay) jest domyślnie wyłączone. Każda postać dostaje tylko własną kartę, więc zna pozostałe wyłącznie z czatu. Włącz tę opcję, żeby do tury każdej postaci dodawać tekst **Public Face** (publiczny wizerunek) pozostałych aktywnych postaci: to, co każdy w scenie mógłby o nich wiedzieć, bez ich sekretów. Postacie z pustym polem Public Face i postacie nieaktywne są pomijane. Jak je napisać, opisuje [Zakładka Card](../characters/creating-and-editing-characters.md#card-tab).
 
 ### **Scenario Override** (Roleplay)
 
@@ -102,6 +103,7 @@ Włącz **Character Exchanges** (rozmowy między postaciami) w **Chat Settings �
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | włączone |
 | **Name Prefix History** | Roleplay, Individual | wyłączone |
+| **Others' Public Faces** | Roleplay, Individual | wyłączone |
 | **Scenario Override** | Roleplay | puste |
 | **Character Exchanges** | Conversation, Autonomous Messaging | wyłączone |
 

@@ -53,6 +53,8 @@ Die Auswahl **Prompt Mode** (auf der Karte heißt sie **Prompt**) legt den Kunst
 
 Wie das fertige Bild aussieht, hängt außerdem von deinem Stilprofil ab. Siehe [Bild-Stilprofile](style-profiles.md).
 
+Um ein einzelnes Bild in einem anderen Stil zu zeichnen, ohne die Auswahl des Chats zu ändern, tipp `/illustrate template=` und den Namen des Stils ein, etwa `/illustrate template="Comic Page"`. Siehe [Slash-Befehle](../chats/slash-commands.md#illustrate-and-make-artifacts).
+
 ## Das Prompt-Modell wählen
 
 Das **Prompt Model** ist das Textmodell, das den Bild-Prompt schreibt. Es zeichnet nicht. Wähle es in der Liste **Prompt Model** auf der Karte. Standard ist **Main chat model**: Damit wird das Modell deines Chats mitgenutzt. Soll ein anderes Modell die Prompts schreiben, wähle ein anderes Textmodell.
@@ -73,6 +75,15 @@ Zwei Einstellungen auf der Karte sorgen dafür, dass Charaktere auf allen Bilder
 Ist die Einstellung an, schickt eine Karte oder Persona mit eingeschaltetem **Image Appearance Override** (eigene Aussehensbeschreibung für Bilder) diesen Text statt ihres Texts unter **Appearance** (Aussehen). Nutze das, wenn **Appearance** für den Erzähler geschrieben ist, ein Bildmodell den Text aber schlecht umsetzt. Lass die vollständige Beschreibung in **Appearance** und schreib eine kürzere Fassung im Tag-Stil in das zusätzliche Feld. Ist der Schalter aus oder das Feld leer, verwenden Bild-Prompts **Appearance**. Der Erzähler sieht immer den vollständigen Text aus **Appearance**. Der Schalter steht unter **Appearance** im Charakter- und Persona-Editor.
 
 **Send Avatar References** (Avatar-Referenzen senden) schickt die Avatare von Charakteren und Personas oder deren Sprites als Referenzbilder an den Bilddienst, damit das Modell ein Gesicht oder Outfit übernehmen kann. Nicht jeder Dienst akzeptiert sie. In einem Roleplay-Chat ist es eine Liste wie **Attach Card Appearance**. Sind Videos eingeschlossen, beginnt ein Clip, dessen **First frame** (Startbild) auf **Prompt only** steht, mit dem Avatar oder Sprite des Charakters, und die Option heißt dann **Prompt only (avatar from Send Avatar References)**.
+
+Ist **Avatar-Referenzen senden** für Bilder eingeschaltet, bestimmt **Reference pictures go to**, wer sie erhält:
+
+- **Automatisch** (Standard): das Bildmodell, wenn seine Verbindung Referenzbilder annimmt, andernfalls der Prompt-Schreiber.
+- **Image model**: nur das Bildmodell. Eine Verbindung, die sie nicht annehmen kann, erhält keine.
+- **Prompt writer**: nur der Prompt-Schreiber von Illustrator, der sie betrachtet und im Bild-Prompt beschreibt, was er sieht.
+- **Both**: das Bildmodell und der Prompt-Schreiber.
+
+Der Prompt-Schreiber hilft bei Bildmodellen, die Referenzbilder verwerfen, etwa NovelAI V5. Dafür braucht der Schreiber ein Modell, das Bilder lesen kann. Lehnt der Schreiber sie ab, wird seine Anfrage ohne die Bilder erneut gesendet. Bis zum Neustart des Servers erhält dieser Schreiber dann keine Bilder mehr. Ein Schreiber, dessen Verbindung als nicht bildfähig markiert ist, erhält keine. Bilder an den Schreiber zu senden kostet bei jedem Durchlauf Tokens. Es werden bis zu vier Bilder gesendet: die in `[illustrate: characters="…"]` genannten Karten, andernfalls die aktiven Charaktere und die Persona des Chats. **What to carry over from the pictures** legt fest, was der Schreiber übernimmt, etwa nur das Aussehen und nicht den Zeichenstil. Ein Roleplay-Chat kann unter **Avatar-Referenzen senden** eine eigene Einstellung für **Reference pictures go to** festlegen.
 
 ## Festlegen, wie oft er zeichnet
 

@@ -83,6 +83,7 @@ Roleplayの**Individual**モードで順序が**Smart**または**Manual**の場
 
 - **Add Turn To Prompt**は、デフォルトでオンです。どのキャラクターが返信するかを示す短い指示を追加します。
 - **Name Prefix History**(Roleplayのみ)は、デフォルトでオフです。過去のメッセージに発言者名を付ける方法を変えます。誰が何を言ったかをキャラクターが取り違え続ける場合以外は、オフのままにしてください。
+- **Others' Public Faces**(ほかのキャラクターの公開情報、Roleplayのみ)は、デフォルトでオフです。各キャラクターには自分のキャラクターカードだけが渡されるため、ほかのキャラクターについてはチャットからしか知ることができません。これをオンにすると、ほかの有効なキャラクターの**Public Face**(公開情報)のテキストが各キャラクターのターンに追加されます。秘密を含めず、その場にいる誰もが知り得る情報を伝えます。Public Faceが空のキャラクターと無効なキャラクターは除外されます。記入方法は[Cardタブ](../characters/creating-and-editing-characters.md#card-tab)を参照してください。
 
 ### Scenario Override(Roleplay)
 
@@ -102,6 +103,7 @@ Roleplayの**Individual**モードで順序が**Smart**または**Manual**の場
 | **Response Order** | Individual | Sequential |
 | **Add Turn To Prompt** | Individual | オン |
 | **Name Prefix History** | Roleplay、Individual | オフ |
+| **Others' Public Faces** | Roleplay、Individual | オフ |
 | **Scenario Override** | Roleplay | 空 |
 | **Character Exchanges** | Conversation、Autonomous Messaging | オフ |
 
