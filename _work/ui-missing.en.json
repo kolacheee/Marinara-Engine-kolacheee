@@ -1,4 +1,6 @@
 {
   "connections.builtinEmbedding.aboutQwen": "Best results. Reads long texts (about 3,000 words). {{dimensions}} dimensions, {{license}} license.",
-  "connections.builtinEmbedding.languagesMany": "More than 100, including Japanese, Chinese, Korean, German, Spanish and Russian"
+  "connections.builtinEmbedding.languagesAllEngine": "More than 100, including every language Marinara speaks: {{languages}}",
+  "connections.builtinEmbedding.languagesSomeEngine": "More than 100, including {{languages}}. Not covered: {{missing}}",
+  "connections.builtinEmbedding.languagesUnnamed": "More than 100. Its makers don't say which, so Marinara's languages aren't confirmed"
 }
