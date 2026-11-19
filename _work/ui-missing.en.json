@@ -1,0 +1,4 @@
+{
+  "connections.builtinEmbedding.aboutQwen": "Best results. Reads long texts (about 3,000 words). {{dimensions}} dimensions, {{license}} license.",
+  "connections.builtinEmbedding.languagesMany": "More than 100, including Japanese, Chinese, Korean, German, Spanish and Russian"
+}
