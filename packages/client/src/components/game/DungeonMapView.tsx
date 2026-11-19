@@ -771,6 +771,46 @@ export function DungeonMapView({
                 ctx.fillRect(px, py, 2, 2);
               }
             }
+            // On a lair's own floor the second way into the great chamber is old and failing: the wall
+            // cracked through round it and its stone spilt on the floor, so a party can plan a flank (lair
+            // panel 10, four of five: the hidden way into a built lair was invisible).
+            if (kept?.lairKind && kept.lairFeature?.length) {
+              ctx.strokeStyle = "rgba(12, 8, 6, 0.95)";
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.moveTo(x * T + 3, y * T + 1);
+              ctx.lineTo(x * T + 8, y * T + 5);
+              ctx.lineTo(x * T + 5, y * T + 9);
+              ctx.lineTo(x * T + 10, y * T + 13);
+              ctx.lineTo(x * T + 8, y * T + T);
+              ctx.stroke();
+              ctx.strokeStyle = "rgba(255, 236, 200, 0.35)";
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(x * T + 4, y * T + 1);
+              ctx.lineTo(x * T + 9, y * T + 5);
+              ctx.lineTo(x * T + 6, y * T + 9);
+              ctx.lineTo(x * T + 11, y * T + 13);
+              ctx.stroke();
+              for (const [dx, dy] of [
+                [0, 1],
+                [0, -1],
+                [1, 0],
+                [-1, 0],
+              ] as const) {
+                if (at(x + dx, y + dy) !== "floor") continue;
+                for (let k = 0; k < 5; k++) {
+                  const h = ((x + dx) * 73856093) ^ ((y + dy) * 19349663 + k * 83492791);
+                  const size = 2 + (Math.abs(h) % 3);
+                  const px = (x + dx) * T + 2 + (Math.abs(h >> 3) % (T - 5));
+                  const py = (y + dy) * T + 2 + (Math.abs(h >> 7) % (T - 5));
+                  ctx.fillStyle = "rgba(10, 8, 6, 0.6)";
+                  ctx.fillRect(px + 1, py + 1, size, size);
+                  ctx.fillStyle = k % 2 ? "#8a7d6a" : "#a29580";
+                  ctx.fillRect(px, py, size, size);
+                }
+              }
+            }
             continue;
           }
           if (building) {
@@ -1578,40 +1618,97 @@ export function DungeonMapView({
           ctx.restore();
           // The room with something to do in it before the fight (lairs.ts DUNGEON_LAIR_DEEDS): a building's
           // rooms are dark until the party has been in, so it is shown done, its set piece smashed, toppled
-          // or burnt out under a soot scar, with a dull red ember where the lair's power was.
+          // or burnt out, each in its own way, over a faint soot scar.
           if (DUNGEON_LAIR_DEEDS[lairKind].room === name && dungeonLairDeedDone(lairKind, kept)) {
             const [cx, cy] = [ox + T, oy + T];
             const scar = ctx.createRadialGradient(cx, cy, 2, cx, cy, T * 1.3);
-            scar.addColorStop(0, "rgba(12, 8, 6, 0.55)");
+            scar.addColorStop(0, "rgba(12, 8, 6, 0.35)");
             scar.addColorStop(1, "rgba(12, 8, 6, 0)");
             ctx.fillStyle = scar;
             ctx.fillRect(cx - T * 1.4, cy - T * 1.4, T * 2.8, T * 2.8);
-            ctx.strokeStyle = "rgba(8, 6, 4, 0.9)";
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            for (const [a, b, c, d] of [
-              [-12, -11, 10, 12],
-              [11, -12, -10, 11],
-              [-14, 2, 13, -1],
-            ] as const) {
-              ctx.moveTo(cx + a, cy + b);
-              ctx.lineTo(cx + c, cy + d);
+            // What the deed left, its own for each creature (lair panel 10: one soot glyph for every deed
+            // read as "something burnt", not "I freed the thralls").
+            const dot = (dx: number, dy: number, w: number, hh: number, colour: string) => {
+              ctx.fillStyle = colour;
+              ctx.fillRect(cx + dx, cy + dy, w, hh);
+            };
+            if (lairKind === "sanctum") {
+              // The soul-vessels shattered: green glass strewn, its light gone out.
+              for (const [dx, dy, w] of [
+                [-10, -6, 3],
+                [-4, 4, 2],
+                [6, -9, 3],
+                [9, 5, 2],
+                [-8, 9, 2],
+                [2, -2, 4],
+                [12, -1, 2],
+              ] as const) {
+                dot(dx, dy, w, 2, "#2f7a4a");
+                dot(dx, dy, 1, 1, "#b8ffd0");
+              }
+            } else if (lairKind === "haven") {
+              // The thralls gone: shackles hanging open on their chains, the cell door off its hinge.
+              for (const [dx, dy] of [
+                [-11, -4],
+                [6, -4],
+              ] as const) {
+                dot(dx, dy, 1, 7, "#6a6e74");
+                dot(dx - 2, dy + 7, 5, 1, "#9aa0a6");
+                dot(dx - 2, dy + 8, 1, 2, "#9aa0a6");
+                dot(dx + 3, dy + 8, 1, 2, "#9aa0a6");
+              }
+              dot(-6, 9, 12, 3, "#5a3f24");
+              dot(-6, 9, 12, 1, "#7a5a36");
+            } else if (lairKind === "hoard") {
+              // The vent choked: a heap of broken stone over its crack, a last thread of smoke.
+              for (const [dx, dy, w] of [
+                [-8, -2, 5],
+                [-3, -5, 6],
+                [3, -1, 5],
+                [-5, 3, 6],
+                [1, 4, 5],
+              ] as const) {
+                dot(dx + 1, dy + 1, w, 4, "rgba(10, 8, 6, 0.6)");
+                dot(dx, dy, w, 4, "#8a7d6a");
+                dot(dx, dy, w, 1, "#a29580");
+              }
+              dot(0, -10, 1, 4, "rgba(200, 200, 200, 0.5)");
+            } else if (lairKind === "den") {
+              // The pool fouled: a dark spreading stain, a carcass slumped in it.
+              ctx.fillStyle = "rgba(40, 46, 20, 0.6)";
+              ctx.beginPath();
+              ctx.ellipse(cx, cy, 13, 9, 0, 0, Math.PI * 2);
+              ctx.fill();
+              dot(-6, -2, 11, 4, "#6a4a30");
+              dot(-6, -2, 11, 1, "#8a6a48");
+              dot(4, -1, 2, 2, "#ddd2b8");
+            } else if (lairKind === "breach") {
+              // The coals doused: grey ash and steam where the pit burnt.
+              ctx.fillStyle = "rgba(150, 146, 140, 0.55)";
+              ctx.beginPath();
+              ctx.ellipse(cx, cy, 11, 8, 0, 0, Math.PI * 2);
+              ctx.fill();
+              for (const dx of [-5, 1, 6]) dot(dx, -14, 1, 6, "rgba(230, 230, 236, 0.45)");
+            } else if (lairKind === "drowned") {
+              // The idol cast down: lying on its side, its head broken off.
+              dot(-10, 2, 16, 6, "rgba(6, 12, 10, 0.6)");
+              dot(-11, 1, 15, 5, "#6e7a72");
+              dot(-11, 1, 15, 1, "#8e9a92");
+              dot(7, 3, 4, 4, "#6e7a72");
+            } else if (lairKind === "hive") {
+              // The husks burnt: a black heap, embers in it.
+              ctx.fillStyle = "rgba(14, 10, 6, 0.85)";
+              ctx.beginPath();
+              ctx.ellipse(cx, cy + 2, 11, 7, 0, 0, Math.PI * 2);
+              ctx.fill();
+              for (const [dx, dy] of [
+                [-5, 1],
+                [3, 4],
+                [6, -1],
+                [-1, -2],
+              ] as const)
+                dot(dx, dy, 1, 1, "#ff8a2a");
             }
-            ctx.stroke();
-            for (const [dx, dy] of [
-              [-9, 7],
-              [7, -8],
-              [10, 9],
-              [-6, -10],
-              [2, 12],
-            ] as const) {
-              ctx.fillStyle = "#6e6458";
-              ctx.fillRect(cx + dx, cy + dy, 3, 2);
-            }
-            ctx.fillStyle = "#9a2a1a";
-            ctx.fillRect(cx - 1, cy - 1, 3, 3);
-            ctx.fillStyle = "#ff7a2a";
-            ctx.fillRect(cx, cy, 1, 1);
           }
         });
       }
@@ -2321,6 +2418,25 @@ export function DungeonMapView({
           px(8, 10, 1, 2, "#ff7a2a");
           px(3, 14, 11, 2, "#4a4044");
         } else if (lairKind === "drowned") {
+          // A stone-lipped channel leading off from the gate, away from the pool, where the water would
+          // run if the gate were wrenched open (lair panel 10: "a crate beside a pool, no channel").
+          {
+            const fx = lairCells.reduce((sum, c) => sum + c.x, 0) / lairCells.length;
+            const fy = lairCells.reduce((sum, c) => sum + c.y, 0) / lairCells.length;
+            const [ax, ay] = [ox / T - fx, oy / T - fy];
+            const [dx, dy] = Math.abs(ax) >= Math.abs(ay) ? [Math.sign(ax) || 1, 0] : [0, Math.sign(ay) || 1];
+            for (let k = 1; k <= 2; k++) {
+              const [cx, cy] = [ox + dx * T * k, oy + dy * T * k];
+              const [w, h] = dx ? [T, 8] : [8, T];
+              const [lx, ly] = dx ? [cx, cy + 4] : [cx + 4, cy];
+              ctx.fillStyle = "#6e6a62";
+              ctx.fillRect(lx - (dx ? 0 : 2), ly - (dx ? 2 : 0), w + (dx ? 0 : 4), h + (dx ? 4 : 0));
+              ctx.fillStyle = "#1c3a3a";
+              ctx.fillRect(lx, ly, w, h);
+              ctx.fillStyle = "rgba(160, 210, 215, 0.35)";
+              ctx.fillRect(lx + (dx ? 2 : 3), ly + (dx ? 3 : 2), dx ? w - 4 : 1, dx ? 1 : h - 4);
+            }
+          }
           // The sluice gate: planks in an iron frame, its wheel on top.
           px(2, 4, 13, 11, "rgba(4, 10, 8, 0.7)");
           px(2, 4, 12, 10, "#5a4630");
@@ -2343,10 +2459,14 @@ export function DungeonMapView({
             [10, 8],
             [5, 10],
           ] as const) {
-            px(ex + 1, ey + 1, 5, 6, "rgba(30, 20, 6, 0.6)");
-            px(ex, ey, 5, 6, "#e8dfc0");
-            px(ex + 1, ey - 1, 3, 1, "#e8dfc0");
-            px(ex + 1, ey + 1, 2, 2, "#fffbe8");
+            // Rimmed dark and veined, so they read as eggs and not as a lamp (lair panel 10).
+            px(ex, ey, 7, 8, "rgba(30, 20, 6, 0.85)");
+            px(ex + 1, ey - 1, 5, 1, "rgba(30, 20, 6, 0.85)");
+            px(ex + 1, ey, 5, 7, "#d8cba0");
+            px(ex + 2, ey - 1, 3, 1, "#d8cba0");
+            px(ex + 2, ey + 1, 2, 2, "#f4ecd0");
+            px(ex + 4, ey + 3, 1, 3, "#9a7a3a");
+            px(ex + 3, ey + 5, 1, 1, "#9a7a3a");
           }
         }
       }

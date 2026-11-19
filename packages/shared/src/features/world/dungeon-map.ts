@@ -1917,7 +1917,7 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
           const label = DUNGEON_LAIR_ACTIONS[lairKind][deed.stops]?.label ?? "one of its lair's actions";
           return done
             ? ` The party has been in area ${room + 1} (${deed.room}) and did it: they ${deed.deed}, and the lair will have no ${label} when they face its maker.`
-            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker: the Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.`;
+            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker (one of its servants keeps the room): the Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.`;
         })()}`
       : "";
   return `MAP: ${map.name}.${floors}${planned}${lair} ${dungeonMapWords(cells)} The party is ${where}${areaName(area)}${

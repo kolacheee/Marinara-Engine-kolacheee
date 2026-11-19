@@ -1454,11 +1454,16 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
   Gallery: [[STATUE, "wall", "reps"]],
   // A creature's lair floor (owner 2026-11-18): dressed as what the creature keeps, never a storeroom's
   // crates and barrels (lair panel 2: a breach and a hoard cavern full of crates read as a cellar).
+  // Each great chamber wider than a room carried on a few rough piers, cover to fight round (lair panel 10:
+  // "spans without supports", nowhere to break a line of sight). The sanctum's ring stays open.
   "Hoard cavern": [
+    [COLUMN, "pillar", 4],
     [CHEST, "corner", 2],
     [STATUE, "corner"],
     [SKULLS, "corner"],
   ],
+  "Drowned hall": [[COLUMN, "pillar", 4]],
+  Den: [[COLUMN, "pillar", 3]],
   "Treasure cleft": [
     [CHEST, "wall", "reps"],
     [STATUE, "corner"],
@@ -1522,7 +1527,10 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [TIPPED, "scatter", 2],
     [BONES, "corner"],
   ],
-  "Brood chamber": [[BONES, "corner", 2]],
+  "Brood chamber": [
+    [COLUMN, "pillar", 4],
+    [BONES, "corner", 2],
+  ],
   "Comb gallery": [[COBWEB, "corner", 2]],
   "Larder of husks": [
     [BONES, "scatter", 2],

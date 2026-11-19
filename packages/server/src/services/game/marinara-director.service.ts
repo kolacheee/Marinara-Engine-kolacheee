@@ -844,8 +844,15 @@ export function lairActs(
     );
   }
   lair.next = dungeonLairActionFor(lair.kind, id, ctx.random, lair.broken);
+  // Which standing feature would stop it, so breaking one is a plan and not a guess (lair panel 10).
+  const anchor = DUNGEON_LAIR_ANCHORS[lair.kind];
+  const stoppable =
+    (anchor.stops === lair.next || anchor.also === lair.next) &&
+    living(state.fighters).some((f) => f.lairAnchor === anchor.stops);
   log(
-    `The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}.`,
+    `The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}${
+      stoppable ? ` (breaking the ${anchor.name} would stop it)` : ""
+    }.`,
     "marinara:lair",
     maker.id,
   );

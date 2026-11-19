@@ -43,6 +43,7 @@ import {
 import type { WorldHistory } from "./history.js";
 import {
   DUNGEON_LAIRS,
+  dungeonLairDeedRoom,
   DUNGEON_LAIR_LEAVINGS,
   DUNGEON_LAIR_KINDS,
   DUNGEON_LAIR_MIN_LEVEL,
@@ -513,6 +514,17 @@ function lairThroat(
     throat: true,
     foes: fitted(setting, area.level, group(site.holder, "standard", area.level, 2), "normal"),
   };
+  // The deed room is kept (lair panel 10: "a visit alone removes a lair action, nothing at stake"): one
+  // servant set over it, alone, so the deed costs a fight, or a quiet kill, before the party can do it.
+  const deed = map.roomInfo?.findIndex((info) => dungeonLairDeedRoom(site.lair!.kind, info?.name)) ?? -1;
+  if (deed >= 0 && deed !== n && open(deed) && areas[deed]) {
+    const { patrol: _p, asleep: _a, gallery: _g, ...kept } = areas[deed]!;
+    areas[deed] = {
+      ...kept,
+      role: "guard",
+      foes: fitted(setting, kept.level, group(site.holder, "standard", kept.level, 1), "normal"),
+    };
+  }
   return areas;
 }
 
