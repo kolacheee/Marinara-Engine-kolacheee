@@ -2185,7 +2185,6 @@
   "connections.builtinEmbedding.memoryUpTo": "काम करते समय {{max}} तक",
   "connections.builtinEmbedding.name": "बिल्ट-इन मॉडल (एम्बेडिंग)",
   "connections.builtinEmbedding.needsRuntime": "यह बिल्ट-इन मॉडल के साथ इंस्टॉल होने वाले llama.cpp प्रोग्राम पर चलता है। एक बार बिल्ट-इन मॉडल डाउनलोड करके यहाँ लौटें।",
-  "connections.builtinEmbedding.notDownloadedSize": "अभी डाउनलोड नहीं हुआ ({{size}})।",
   "connections.builtinEmbedding.nowEmbeddings": "एम्बेडिंग अब बिल्ट-इन एम्बेडिंग मॉडल इस्तेमाल करती हैं।",
   "connections.builtinEmbedding.openBuiltInModel": "बिल्ट-इन मॉडल खोलें",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

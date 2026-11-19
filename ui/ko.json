@@ -2217,7 +2217,6 @@
   "connections.builtinEmbedding.memoryUpTo": "실행 중 최대 {{max}}",
   "connections.builtinEmbedding.name": "내장 모델(임베딩)",
   "connections.builtinEmbedding.needsRuntime": "내장 모델이 설치하는 llama.cpp 프로그램에서 실행됩니다. 내장 모델을 한 번 다운로드한 후 여기로 돌아오세요.",
-  "connections.builtinEmbedding.notDownloadedSize": "아직 다운로드되지 않음({{size}}).",
   "connections.builtinEmbedding.nowEmbeddings": "이제 임베딩에 내장 임베딩 모델을 사용합니다.",
   "connections.builtinEmbedding.openBuiltInModel": "내장 모델 열기",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

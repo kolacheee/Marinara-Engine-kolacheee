@@ -2188,7 +2188,6 @@
   "connections.builtinEmbedding.memoryUpTo": "Jusqu'à {{max}} pendant son fonctionnement",
   "connections.builtinEmbedding.name": "Modèle intégré (embeddings)",
   "connections.builtinEmbedding.needsRuntime": "Il utilise le programme llama.cpp installé par le modèle intégré. Télécharge le modèle intégré une fois, puis reviens ici.",
-  "connections.builtinEmbedding.notDownloadedSize": "Pas encore téléchargé ({{size}}).",
   "connections.builtinEmbedding.nowEmbeddings": "Les embeddings utilisent maintenant le modèle d'embedding intégré.",
   "connections.builtinEmbedding.openBuiltInModel": "Ouvrir le modèle intégré",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

@@ -2197,7 +2197,6 @@
   "connections.builtinEmbedding.memoryUpTo": "حتى {{max}} أثناء العمل",
   "connections.builtinEmbedding.name": "النموذج المدمج (التضمينات)",
   "connections.builtinEmbedding.needsRuntime": "يعمل باستخدام برنامج llama.cpp الذي يثبته النموذج المدمج. نزل النموذج المدمج مرة واحدة، ثم عد إلى هنا.",
-  "connections.builtinEmbedding.notDownloadedSize": "لم ينزل بعد ({{size}}).",
   "connections.builtinEmbedding.nowEmbeddings": "تستخدم التضمينات الآن نموذج التضمين المدمج.",
   "connections.builtinEmbedding.openBuiltInModel": "فتح النموذج المدمج",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

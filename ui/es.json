@@ -2185,7 +2185,6 @@
   "connections.builtinEmbedding.memoryUpTo": "Hasta {{max}} mientras funciona",
   "connections.builtinEmbedding.name": "Modelo integrado (embeddings)",
   "connections.builtinEmbedding.needsRuntime": "Se ejecuta con el programa llama.cpp que instala el modelo integrado. Descarga el modelo integrado una vez y vuelve aquí.",
-  "connections.builtinEmbedding.notDownloadedSize": "Aún no se descargó ({{size}}).",
   "connections.builtinEmbedding.nowEmbeddings": "Los embeddings ahora usan el modelo de embeddings integrado.",
   "connections.builtinEmbedding.openBuiltInModel": "Abrir el modelo integrado",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

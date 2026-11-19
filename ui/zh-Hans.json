@@ -2188,7 +2188,6 @@
   "connections.builtinEmbedding.memoryUpTo": "运行时最多 {{max}}",
   "connections.builtinEmbedding.name": "内置模型（嵌入）",
   "connections.builtinEmbedding.needsRuntime": "需要内置模型安装的 llama.cpp 程序才能运行。先下载一次内置模型，再回到这里。",
-  "connections.builtinEmbedding.notDownloadedSize": "尚未下载（{{size}}）。",
   "connections.builtinEmbedding.nowEmbeddings": "嵌入现在使用内置嵌入模型。",
   "connections.builtinEmbedding.openBuiltInModel": "打开内置模型",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

@@ -2185,7 +2185,6 @@
   "connections.builtinEmbedding.memoryUpTo": "動作中は最大{{max}}",
   "connections.builtinEmbedding.name": "内蔵モデル(埋め込み)",
   "connections.builtinEmbedding.needsRuntime": "内蔵モデルと一緒にインストールされるllama.cppで動作します。一度内蔵モデルをダウンロードしてから、ここに戻ってください。",
-  "connections.builtinEmbedding.notDownloadedSize": "まだダウンロードされていません({{size}})。",
   "connections.builtinEmbedding.nowEmbeddings": "埋め込みに内蔵の埋め込みモデルを使うようになりました。",
   "connections.builtinEmbedding.openBuiltInModel": "内蔵モデルを開く",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

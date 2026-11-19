@@ -2185,7 +2185,6 @@
   "connections.builtinEmbedding.memoryUpTo": "Até {{max}} durante o uso",
   "connections.builtinEmbedding.name": "Modelo embutido (embeddings)",
   "connections.builtinEmbedding.needsRuntime": "Ele usa o programa llama.cpp instalado pelo modelo embutido. Baixe o modelo embutido uma vez e volte aqui.",
-  "connections.builtinEmbedding.notDownloadedSize": "Ainda não baixado ({{size}}).",
   "connections.builtinEmbedding.nowEmbeddings": "Os embeddings agora usam o modelo de embeddings embutido.",
   "connections.builtinEmbedding.openBuiltInModel": "Abrir o modelo embutido",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",

@@ -2185,7 +2185,6 @@
   "connections.builtinEmbedding.memoryUpTo": "До {{max}} во время работы",
   "connections.builtinEmbedding.name": "Встроенная модель (эмбеддинги)",
   "connections.builtinEmbedding.needsRuntime": "Работает через программу llama.cpp, которая устанавливается вместе со встроенной моделью. Сначала скачайте встроенную модель, затем вернитесь сюда.",
-  "connections.builtinEmbedding.notDownloadedSize": "Еще не скачано ({{size}}).",
   "connections.builtinEmbedding.nowEmbeddings": "Для эмбеддингов теперь используется встроенная модель эмбеддингов.",
   "connections.builtinEmbedding.openBuiltInModel": "Открыть встроенную модель",
   "connections.builtinEmbedding.optionToDownload": "{{model}} · {{size}}",
