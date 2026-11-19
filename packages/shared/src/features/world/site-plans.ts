@@ -8,7 +8,7 @@
 
 import { marinaraRandom } from "../marinara-classes.js";
 import { SITE_STAMP_LEGEND, siteStampStretch, siteStampsFor } from "./site-stamps.js";
-import { dungeonLairFeature, type DungeonLairKind } from "./lairs.js";
+import { dungeonLairDeedRoom, dungeonLairFeature, type DungeonLairKind } from "./lairs.js";
 import {
   DUNGEON_EXIT_PROP,
   DUNGEON_PORTCULLIS_PROP,
@@ -1096,7 +1096,7 @@ const SITE_LAIR_LEVELS: Record<DungeonLairKind, { name: string; rooms: readonly 
       { name: "Hoard cavern", use: "holders", size: 3, zone: "deep", heart: true, furniture: [] },
       { name: "Treasure cleft", use: "store", size: 1, zone: "deep", locked: true, furniture: [CHEST, CHEST] },
       { name: "Bone midden", use: "squat", size: 2, zone: "service", furniture: [] },
-      { name: "Smoke vent", use: "squat", size: 1, zone: "public", furniture: [] },
+      { name: "Smoke flue", use: "squat", size: 1, zone: "public", furniture: [] },
     ],
   },
   sanctum: {
@@ -1472,7 +1472,7 @@ const SITE_RECIPES: Record<string, SiteRecipe> = {
     [BONES, "scatter", "reps"],
     [SKULLS, "corner", 2],
   ],
-  "Smoke vent": [
+  "Smoke flue": [
     [BONES, "corner"],
     [COBWEB, "corner"],
   ],
@@ -6216,7 +6216,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             ),
             99,
           );
+        // Through the deed room where its wall meets the chamber's: the deed's room is the back way in, so
+        // the quiet side route and the loud front door are one choice (lair panel 14, all five: one way in).
+        const deedCells = new Set<number>();
+        rooms.forEach((r, n) => {
+          if (!r || !dungeonLairDeedRoom(level.lair!, info[n]?.name)) return;
+          for (const b of [r, ...(r.parts ?? [])])
+            for (let y = b.y; y < b.y + b.h; y++) for (let x = b.x; x < b.x + b.w; x++) deedCells.add(cell(x, y));
+        });
         let best = -1;
+        let bestDeed = false;
         for (const c of all)
           for (const step of [1, -1, mapW, -mapW]) {
             const w = c + step;
@@ -6224,9 +6233,13 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
             if (inRoom.has(w) || ground[w] !== "wall" || ground[c] !== "floor" || props[c] !== -1) continue;
             if (beyond < 0 || beyond >= ground.length || inRoom.has(beyond) || ground[beyond] !== "floor") continue;
             if (Math.abs((beyond % mapW) - (c % mapW)) > 2 || props[beyond] !== -1 || linked.has(beyond)) continue;
-            if (best < 0 || far(w) > far(best)) best = w;
+            const deed = deedCells.has(beyond) && far(w) >= 3;
+            if (best < 0 || (deed && !bestDeed) || (deed === bestDeed && far(w) > far(best))) {
+              best = w;
+              bestDeed = deed;
+            }
           }
-        if (best >= 0 && far(best) >= 4) {
+        if (best >= 0 && far(best) >= (bestDeed ? 3 : 4)) {
           ground[best] = "floor";
           props[best] = DUNGEON_SECRET_DOOR_PROP;
         }

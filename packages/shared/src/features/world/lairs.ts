@@ -627,6 +627,9 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
       also?: string;
       /** What breaking it does to its maker at once: a share of its max HP lost, a status for a turn, or a
        *  stat down for some of its turns. */
+      /** What the break costs the party: it bursts over them all, a share of each one's max HP (never a
+       *  kill), told in its own words (lair panel 13-14, all five: breaking it was free and always right). */
+      backlash: string;
       onBreak?: {
         makerHpPct?: number;
         status?: "stun";
@@ -641,6 +644,7 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     name: "Fire Vent",
     stops: "lair-dragonfire-vents",
     breaks: "the vent is choked with rubble and the fire in the dragon banks low",
+    backlash: "the vent's last breath of fire bursts out over the party",
     onBreak: { makerMod: { stat: "resistance", pct: -0.2, turns: 3 } },
   },
   // The stone that keeps the dead answering and the circle closed (lair panel 6: it guarded Death Ward, the
@@ -650,12 +654,17 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     stops: "lair-dead-answer",
     also: "lair-binding-circle",
     breaks: "the ward stone cracks, its light goes out, the circle opens and the dead stop answering",
+    backlash: "the death held in the stone breaks loose through the living",
+    // Its master's spells falter with the ward (lair panel 14: four features gave no bonus, three did).
+    onBreak: { makerMod: { stat: "damage", pct: -0.15, turns: 3 } },
   },
   haven: {
     name: "Master's Coffin",
     stops: "lair-blood-tithe",
     also: "lair-grave-mist",
     breaks: "the coffin splinters, the grave earth spills, and its master has no mist to hide in",
+    backlash: "a shriek of grave-cold from the splintered coffin tears at the party",
+    onBreak: { makerMod: { stat: "defense", pct: -0.2, turns: 3 } },
   },
   // Knocked out, the prop brings the loose roof down on whatever stands under it: the beast's own nest
   // (lair panel 6: breaking it bought one power-1 action and nothing more).
@@ -663,6 +672,7 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     name: "Cracked Roof Prop",
     stops: "lair-den-roof",
     breaks: "the loose roof comes down at once, onto the beast in its nest",
+    backlash: "stone and dust come down on everyone in the den",
     onBreak: { makerHpPct: 0.08, status: "stun" },
   },
   breach: {
@@ -670,18 +680,23 @@ export const DUNGEON_LAIR_ANCHORS: Readonly<
     stops: "lair-something-comes",
     also: "lair-pull-of-the-rift",
     breaks: "the anchor stone shatters, the rift narrows, and it no longer pulls",
+    backlash: "the shattered anchor throws burning shards across the chamber",
+    onBreak: { makerHpPct: 0.06 },
   },
   drowned: {
     name: "Sluice Gate",
     stops: "lair-surge",
     also: "lair-rising-water",
     breaks: "the sluice gate is wrenched open and the pool runs out through it: no more surge, no more rising water",
+    backlash: "the pool's rush through the open gate knocks the party about",
+    onBreak: { makerMod: { stat: "resistance", pct: -0.2, turns: 3 } },
   },
   hive: {
     name: "Egg Cluster",
     stops: "lair-brood-call",
     also: "lair-resin-seal",
     breaks: "the eggs burst, the brood is gone, the resin goes soft and the queen's fury falters",
+    backlash: "the bursting eggs spray stinging ichor over the party",
     onBreak: { makerMod: { stat: "damage", pct: -0.2, turns: 3 } },
   },
 };
@@ -707,6 +722,9 @@ export function dungeonLairAnchorCell(
   if (kind === "den") return sorted[Math.floor(sorted.length * 0.35)];
   return kind === "haven" || kind === "sanctum" || kind === "hive" ? sorted[0] : sorted[sorted.length - 1];
 }
+
+/** What breaking a lair's feature costs each of the party: this share of their max HP, never the last of it. */
+export const DUNGEON_LAIR_BACKLASH_PCT = 0.06;
 
 /** A lair's breakable thing as a fighter on its maker's side: it never acts, a fair share of its maker's HP. */
 export function dungeonLairAnchorFighter(kind: DungeonLairKind, maker: MarinaraFighter): MarinaraFighter {
@@ -777,7 +795,7 @@ export const DUNGEON_LAIR_LEAVINGS: Readonly<Record<DungeonLairKind, string>> = 
 export const DUNGEON_LAIR_DEEDS: Readonly<
   Record<DungeonLairKind, { room: string; deed: string; stops: string }>
 > = {
-  hoard: { room: "Smoke vent", deed: "choke the smoke vent with rubble", stops: "lair-choking-smoke" },
+  hoard: { room: "Smoke flue", deed: "choke the smoke flue with rubble", stops: "lair-choking-smoke" },
   sanctum: { room: "Phylactery vault", deed: "smash the soul-vessels in the phylactery vault", stops: "lair-death-ward" },
   haven: { room: "Thralls' cell", deed: "free the thralls from their cell", stops: "lair-thralls-gaze" },
   den: { room: "Drinking pool", deed: "foul the beast's drinking pool", stops: "lair-driven-to-water" },

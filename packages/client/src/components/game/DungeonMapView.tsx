@@ -1437,7 +1437,7 @@ export function DungeonMapView({
             for (let k = 0; k < 4; k++) px(9 + k * 3, 14, 1, 6, "#e2d6ba");
             px(8, 13, 12, 1, "#d0c4a6");
             skull(19, 8);
-          } else if (name === "Smoke vent") {
+          } else if (name === "Smoke flue") {
             // A soot-black crack breathing heat, the floor round it scorched.
             glow(16, 16, 16, "rgba(20, 14, 10, 0.6)");
             glow(16, 16, 7, "rgba(255, 110, 30, 0.5)");
@@ -1968,23 +1968,22 @@ export function DungeonMapView({
           for (const { x, y } of dungeonRoomCells(hall))
             if (cells.ground[y * cells.width + x] === "floor") clip.rect(x * T, y * T, T, T);
           ctx.clip(clip);
-          // The brood's biers: each slab under a blood-red pall with a gold hem and a candle at its head, so
-          // a bier reads as a bier and not as one more pier (lair panel 6: cover and coffin looked the same).
+          // The brood's biers: each slab of grey stone under a dust-grey shroud with a candle at its head, so a
+          // bier reads as a bier and not as one more pier (lair panel 6), and never as the master's red coffin
+          // (lair panel 14: red palls mid-hall read as the feature).
           for (const { x, y } of dungeonRoomCells(hall)) {
             if (cells.props[y * cells.width + x] !== 26 || hasF(x, y) || inFog(x, y)) continue;
             const [ox, oy] = [x * T, y * T];
             ctx.fillStyle = "rgba(8, 4, 4, 0.5)";
             ctx.fillRect(ox + 2, oy + 4, T - 3, T - 5);
-            ctx.fillStyle = "#6e1420";
+            ctx.fillStyle = "#5c5a58";
             ctx.fillRect(ox + 1, oy + 3, T - 3, T - 6);
-            ctx.fillStyle = "#8f2230";
+            ctx.fillStyle = "#8e8a84";
             ctx.fillRect(ox + 2, oy + 3, T - 5, 2);
-            ctx.fillStyle = "#c9a24a";
+            ctx.fillStyle = "#3e3c3a";
             ctx.fillRect(ox + 1, oy + T - 4, T - 3, 1);
-            ctx.fillRect(ox + 1, oy + 3, 1, T - 6);
-            ctx.fillRect(ox + T - 3, oy + 3, 1, T - 6);
             // The shape under the pall.
-            ctx.fillStyle = "rgba(20, 4, 8, 0.45)";
+            ctx.fillStyle = "rgba(20, 16, 14, 0.4)";
             ctx.fillRect(ox + 4, oy + 6, T - 9, 3);
             ctx.fillStyle = "#e9d8b0";
             ctx.fillRect(ox + T / 2 - 1, oy + 1, 2, 2);

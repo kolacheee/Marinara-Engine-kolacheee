@@ -69,6 +69,7 @@ import {
   type RankedCombatCandidate,
   DUNGEON_LAIR_ACTIONS,
   DUNGEON_LAIR_ANCHORS,
+  DUNGEON_LAIR_BACKLASH_PCT,
   dungeonLairActionFor,
   type DungeonLairKind,
 } from "@marinara-engine/shared";
@@ -744,6 +745,17 @@ export function lairActs(
       if (ids.some((id) => DUNGEON_LAIR_ACTIONS[lair.kind][id]?.seals) && lair.sealedUntil !== undefined) {
         lair.sealedUntil = undefined;
         log("The resin over the ways out goes soft and gives.", "marinara:lair", f.id);
+      }
+      // What it costs: the break bursts over the whole party, never the last of anyone's HP (lair panel 14).
+      {
+        const hit = living(state.fighters).filter((p) => p.side !== maker.side && !p.dummy);
+        for (const p of hit) p.hp = Math.max(1, p.hp - Math.max(1, Math.round(p.maxHp * DUNGEON_LAIR_BACKLASH_PCT)));
+        if (hit.length)
+          log(
+            `As it goes, ${spec.backlash}: ${Math.round(DUNGEON_LAIR_BACKLASH_PCT * 100)}% of everyone's HP.`,
+            "marinara:lair",
+            f.id,
+          );
       }
       // What the break does to its maker at once (the den's roof down on the beast, the dragon's fire banked).
       const hurt = spec.onBreak;

@@ -2091,9 +2091,32 @@ export function gameDungeonMapPromptText(map: GameDungeonMap, hour?: number): st
           if (room < 0) return "";
           const done = dungeonLairDeedDone(lairKind, map);
           const label = DUNGEON_LAIR_ACTIONS[lairKind][deed.stops]?.label ?? "one of its lair's actions";
+          // The deed room's back way: a cracked wall from it into the chamber (lair panel 14: one way in).
+          const deedBox = cells.rooms[room];
+          const heartBox = cells.rooms[lairHeart];
+          const backWay =
+            deedBox && heartBox
+              ? cells.props.some((prop, i) => {
+                  if (prop !== DUNGEON_SECRET_DOOR_PROP) return false;
+                  const [x, y] = [i % cells.width, Math.floor(i / cells.width)];
+                  const near = [
+                    [x + 1, y],
+                    [x - 1, y],
+                    [x, y + 1],
+                    [x, y - 1],
+                  ] as const;
+                  return (
+                    near.some(([nx, ny]) => dungeonRoomHas(deedBox, nx, ny)) &&
+                    near.some(([nx, ny]) => dungeonRoomHas(heartBox, nx, ny))
+                  );
+                })
+              : false;
+          const back = backWay
+            ? ` A cracked wall in that room gives onto the great chamber: a party that does the deed quietly can go on through it and come at the maker from behind its guarded mouth.`
+            : "";
           return done
-            ? ` The party has been in area ${room + 1} (${deed.room}) and did it: they ${deed.deed}, and the lair will have no ${label} when they face its maker.`
-            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker (one of its servants keeps the room): the Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.`;
+            ? ` The party has been in area ${room + 1} (${deed.room}) and did it: they ${deed.deed}, and the lair will have no ${label} when they face its maker.${back}`
+            : ` In area ${room + 1} (${deed.room}) the party can ${deed.deed} before they face the maker (one of its servants keeps the room): the Engine counts it done when they go in, and the lair then has no ${label} in that fight. Let the room show it.${back}`;
         })()}`
       : "";
   return `MAP: ${map.name}.${floors}${planned}${lair} ${dungeonMapWords(cells)} The party is ${where}${areaName(area)}${
