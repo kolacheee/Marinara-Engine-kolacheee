@@ -2492,7 +2492,8 @@ function siteFrameOf(plan: SitePlan) {
     fixed.push({
       kind: "hall",
       cells: cellsOf({ x: nx, y: T, w: nw, h: H - nh }),
-      on: (level) => level.depth < 0,
+      // Not on a lair's floor, which is dug in rock to a shape of its own (owner 2026-11-20).
+      on: (level) => level.depth < 0 && !level.lair,
       claim: (room) => SITE_HALL_ROOMS.has(room.name),
       room: { name: "Undercroft", use: "squat", size: 3, zone: "public", furniture: [CHEST] },
     });
@@ -2713,10 +2714,18 @@ function siteFrameOf(plan: SitePlan) {
     string,
     { links: number[]; w: number; h: number; want: { x: number; y: number }; name: string }
   >();
+  // The ways down into a lair's floor under a house or a church come down anywhere over it, each its own,
+  // seeded apart from the building's other stairs (owner 2026-11-20: lair floors that differed only in
+  // props had their stairs, and so their galleries, in the same places every time).
+  const lairWay = marinaraRandom(`site-lair-way:${plan.template}:${plan.seed}`);
+  const intoLair = (link: SitePlan["links"][number]) =>
+    kind !== "keep" && kind !== "crypt" && !!plan.levels[link.lower]!.lair;
   for (const [k, link] of plan.links.entries()) {
     if (link.kind === "wall") continue;
     const ladder = !!plan.levels[link.upper]!.inset || !!plan.levels[link.lower]!.inset;
-    const key = ladder
+    const key = intoLair(link)
+      ? `lair${k}`
+      : ladder
       ? `ladder${k}`
       : link.kind === "servants"
         ? "back"
@@ -2727,7 +2736,9 @@ function siteFrameOf(plan: SitePlan) {
             : `main${link.upper % 2}`
           : `${link.kind}${k}`;
     const flip = link.upper % 2 === 1;
-    const want = ladder
+    const want = intoLair(link)
+      ? { x: L + 3 + lairWay() * (W - 6), y: T + 3 + lairWay() * (H - 6) }
+      : ladder
       ? (stairsAt?.ladder ?? { x: inset.x + inset.w / 2, y: inset.y + inset.h / 2 })
       : link.kind === "servants"
         ? backAt
@@ -2890,7 +2901,9 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     for (const c of cells) at[c] = id;
   }
   const fixedCount = regions.length;
-  const zoneOf = (c: number) => (level.inset ? 0 : frame.zone[c]!);
+  // A lair's floor dug to its own shape (frame.maskOf) has none of the building's parts above it.
+  const dug = !!level.lair && kind !== "keep" && kind !== "crypt";
+  const zoneOf = (c: number) => (level.inset || dug ? 0 : frame.zone[c]!);
   const free = (c: number) => mask[c] === 1 && at[c] === -1 && zoneOf(c) !== -2;
 
   // ── Corridors: wandering, from stairwell to stairwell or on to the far wing; a crypt's galleries ──
@@ -3205,7 +3218,36 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     private: (swap ? 0.45 : 0.8) + shift(),
     deep: 0.95 - Math.abs(shift()),
   };
-  const heartAt = rock && shuffle2() < 0.35 ? 0.5 + shuffle2() * 0.2 : 1;
+  // A lair's great chamber anywhere from the middle of its floor to the far end, not always at the end
+  // (owner 2026-11-20: seeds that differ only in props).
+  const heartAt = level.lair
+    ? 0.45 + shuffle2() * 0.55
+    : rock && shuffle2() < 0.35
+      ? 0.5 + shuffle2() * 0.2
+      : 1;
+  // Below ground, a lumpy seeded field over the floor that pulls each chamber's seed one way or another, so
+  // two floors with their stairs in the same places still lay their chambers out differently (owner
+  // 2026-11-20). Coarse cells of random height, smoothed between.
+  const lumpAt = (() => {
+    if (!rock) return () => 0;
+    const pull = level.lair ? 2.4 : 1.2;
+    const step = 6;
+    const gw = Math.ceil(mapW / step) + 2;
+    const gh = Math.ceil(mapH / step) + 2;
+    const grid = Array.from({ length: gw * gh }, () => shuffle2());
+    return (c: number) => {
+      const x = (c % mapW) / step;
+      const y = Math.floor(c / mapW) / step;
+      const ix = Math.floor(x);
+      const iy = Math.floor(y);
+      const fx = x - ix;
+      const fy = y - iy;
+      const g = (a: number, b: number) => grid[b * gw + a]!;
+      const top = g(ix, iy) * (1 - fx) + g(ix + 1, iy) * fx;
+      const bottom = g(ix, iy + 1) * (1 - fx) + g(ix + 1, iy + 1) * fx;
+      return pull * (top * (1 - fy) + bottom * fy);
+    };
+  })();
   const isMate = (p: SitePlanRoom, q: SitePlanRoom) =>
     (SITE_NEXT_TO[siteBaseName(p.name)] ?? []).includes(siteBaseName(q.name)) ||
     (SITE_NEXT_TO[siteBaseName(q.name)] ?? []).includes(siteBaseName(p.name));
@@ -3280,7 +3322,7 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
         if (!free(c) || hold[c]) continue;
         const x = c % mapW;
         const y = (c - x) / mapW;
-        let s = 3 * Math.abs(Math.max(0, dist[c]!) / maxDist - z);
+        let s = 3 * Math.abs(Math.max(0, dist[c]!) / maxDist - z) + lumpAt(c);
         for (const o of others) {
           const d = Math.abs(o.x - x) + Math.abs(o.y - y);
           if (d < o.rr) s += 8 * (1 - d / o.rr);

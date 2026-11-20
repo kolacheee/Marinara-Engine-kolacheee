@@ -672,6 +672,14 @@ export function generateDungeonMap(setId: string, seed: number, size: DungeonMap
     ground = caveGround(width, height, random);
     keepLargest(ground, width, height);
     rooms = caveRooms(ground, width, height);
+    // The way in at a seeded area along the cave's edge, not always its top left (owner 2026-11-20: the
+    // lair chamber, the far end from the way in, landed on the east edge in every cave).
+    const edge = rooms
+      .map((room, index) => ({ room, index }))
+      .filter(({ room }) => room.x <= 1 || room.y <= 1 || room.x + room.w >= width - 1 || room.y + room.h >= height - 1);
+    const pool = edge.length ? edge : rooms.map((room, index) => ({ room, index }));
+    const first = pool[Math.floor(random() * pool.length)]?.index ?? 0;
+    rooms = [...rooms.slice(first), ...rooms.slice(0, first)];
   } else {
     ground = Array.from({ length: width * height }, () => "rock" as DungeonGround);
     const count = Math.round((width * height) / (set.kind === "station" ? 110 : 90));
