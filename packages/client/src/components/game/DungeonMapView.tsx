@@ -2147,16 +2147,10 @@ export function DungeonMapView({
             burn.addColorStop(0, "rgba(18, 8, 4, 0.72)");
             burn.addColorStop(1, "rgba(18, 8, 4, 0)");
             ctx.fillStyle = burn;
-            // On the floor only, never up the walls beside it.
-            ctx.save();
-            const floorNear = new Path2D();
-            for (let v = y - 1; v <= y + 1; v++)
-              for (let u = x - 1; u <= x + 1; u++)
-                if (u >= 0 && v >= 0 && u < cells.width && v < cells.height && cells.ground[v * cells.width + u] === "floor")
-                  floorNear.rect(u * T, v * T, T, T);
-            ctx.clip(floorNear);
-            ctx.fillRect(ox - 4, oy - 4, T + 8, T + 8);
-            ctx.restore();
+            // The floor's outline above keeps it off the walls; a clip to whole floor cells left square edges
+            // where the floor runs into a cut corner or a doorway. The whole circle of the gradient: a cell-sized
+            // square cut its edge straight.
+            ctx.fillRect(ox + sx + 3 - 12, oy + sy + 3 - 12, 24, 24);
             if (h % 2 === 0) {
               dot(sx + 5, sy + 1, 3, 2, "#e0b236");
               dot(sx + 5, sy + 1, 1, 1, "#fff3b8");
