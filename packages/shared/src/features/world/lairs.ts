@@ -333,7 +333,38 @@ type LairAction = MarinaraEffect & {
   summon?: DungeonLairSummon;
   /** Seals the chamber's ways out for this many rounds: nobody flees (the hive's resin). */
   seals?: number;
+  /** What it does to the ground of a board fight, and lasts (owner 2026-11-20, "board-changing lair
+   *  actions"): stone left as cover, water spreading, mist hiding the maker, resin walling a fighter in. */
+  board?: DungeonLairBoardChange;
 };
+
+/** How a lair action changes a Tactical board, and lasts (see DUNGEON_LAIR_BOARD_CHANGES). */
+export type DungeonLairBoardChange = "rubble" | "flood" | "mist" | "resin";
+
+/** What each change does, as the log and the GM tell it. */
+export const DUNGEON_LAIR_BOARD_CHANGES: Readonly<Record<DungeonLairBoardChange, string>> = {
+  rubble: "the stone it brings down stays where it fell, cover for either side (in Classic: the party's back row shelters in it)",
+  flood: "the water spreads over the floor beside it, ground no one can stand on",
+  mist: "mist closes round its maker for a round: nothing sees through it, only a blade beside the maker finds it",
+  resin: "resin hardens in the squares round the one it seals, walling them in for a round",
+};
+
+/** The rounds a mist or resin wall stands on a board: through the round after the one it came in. */
+export const DUNGEON_LAIR_BOARD_ROUNDS = 1;
+
+/** The most squares one rubble fall leaves, and one flood takes. */
+export const DUNGEON_LAIR_RUBBLE_CELLS = 3;
+export const DUNGEON_LAIR_FLOOD_CELLS = 8;
+
+/** The cover a Classic party's back row finds in fallen stone: defense, for this many turns. */
+export const DUNGEON_LAIR_RUBBLE_COVER = { pct: 0.2, turns: 2 } as const;
+
+/** Whether a lair action is told on a board by the squares it will land on, a round ahead (owner 2026-11-20):
+ *  a blow on all of the party or its front, so a fighter can step off the marked ground. A spell on the air
+ *  (smoke, a voice, a drone) reaches everyone wherever they stand. */
+export function dungeonLairTelegraphed(action: { kind: string; target: string } | undefined): boolean {
+  return !!action && action.kind === "damage" && (action.target === "all-enemies" || action.target === "front-row");
+}
 
 const strike = (power: number, type: MarinaraEffect["type"], extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
   kind: "damage",
@@ -356,6 +387,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
   hoard: {
     "lair-falling-stone": {
       label: "Falling Stone",
+      board: "rubble",
       ...strike(1.5, "earth", { scales: "strength", damage: "physical" }),
     },
     // The smoke carries the dragon's dread: eyes stream and hearts fail, aim and blows both weaker (lair
@@ -429,6 +461,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     // round the party just waited out).
     "lair-grave-mist": {
       label: "Grave Mist",
+      board: "mist",
       kind: "debuff",
       target: "all-enemies",
       stat: "skill",
@@ -486,6 +519,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     // The den has teeth of its own: its roof sheds stone on whoever the beast drives under it.
     "lair-den-roof": {
       label: "The Roof Sheds Stone",
+      board: "rubble",
       ...strike(1, "earth", { scales: "strength", damage: "physical" }),
     },
     "lair-known-ground": {
@@ -546,6 +580,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     },
     "lair-rising-water": {
       label: "Rising Water",
+      board: "flood",
       kind: "debuff",
       target: "all-enemies",
       stat: "speed",
@@ -575,6 +610,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
     "lair-resin-seal": {
       label: "Resin Seal",
       seals: 2,
+      board: "resin",
       kind: "status",
       target: "enemy",
       status: "entangle",
@@ -608,7 +644,7 @@ export const DUNGEON_LAIR_ACTIONS: Readonly<Record<DungeonLairKind, Readonly<Rec
 registerMarinaraEnemySkills(
   Object.fromEntries(
     Object.values(DUNGEON_LAIR_ACTIONS).flatMap((actions) =>
-      Object.entries(actions).map(([id, { summon: _summon, seals: _seals, ...action }]) => [id, action]),
+      Object.entries(actions).map(([id, { summon: _summon, seals: _seals, board: _board, ...action }]) => [id, action]),
     ),
   ),
 );

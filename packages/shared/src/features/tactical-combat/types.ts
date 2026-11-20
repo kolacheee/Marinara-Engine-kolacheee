@@ -209,6 +209,11 @@ export interface TacticalGrid {
    *  cavern, a round tower, a ruin). Their tile is a wall, so nothing moves into or sees through them,
    *  as off the board's edge; they are drawn as nothing and never change. Absent on a box. */
   outside?: boolean[][];
+  /** What a creature's lair has raised on the board (owner 2026-11-20), by "x,y", for drawing: its mist
+   *  and resin over the squares its walls (`walls`) close. Only a fight in a lair sets it. */
+  marks?: Record<string, "mist" | "resin">;
+  /** The squares, by "x,y", a creature's lair has told its next blow will land on (owner 2026-11-20). */
+  strikes?: string[];
 }
 
 /** What lies on one cell over its terrain (1.318). */

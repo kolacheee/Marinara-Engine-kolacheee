@@ -71,7 +71,15 @@ import {
   DUNGEON_LAIR_ANCHORS,
   DUNGEON_LAIR_BACKLASH_PCT,
   dungeonLairActionFor,
+  dungeonLairTelegraphed,
+  DUNGEON_LAIR_BOARD_ROUNDS,
+  DUNGEON_LAIR_FLOOD_CELLS,
+  DUNGEON_LAIR_RUBBLE_CELLS,
+  DUNGEON_LAIR_RUBBLE_COVER,
+  TERRAIN_DATA,
+  type DungeonLairBoardChange,
   type DungeonLairKind,
+  type TacticalGrid,
 } from "@marinara-engine/shared";
 
 // The bestiary's foe abilities join the Engine's own (marinara-bestiary.ts; the bestiary's win a clash).
@@ -119,6 +127,10 @@ export interface MarinaraDirectorState {
     stilled?: boolean;
     /** The hive's resin has sealed the chamber's ways out: nobody flees before this round has passed. */
     sealedUntil?: number;
+    /** On a board: the squares (by "x,y") its next blow is told to land on, a round ahead (owner 2026-11-20). */
+    marked?: string[];
+    /** On a board: the walls of mist and resin it has raised, each gone once its round has passed. */
+    walls?: Array<{ cells: string[]; bit: 1 | 2; mark: "mist" | "resin"; until: number }>;
   };
 }
 
@@ -708,6 +720,8 @@ export function lairActs(
   log: MarinaraLog,
   round: number,
   now = 0,
+  /** A board fight's ground and who stands where: the lair marks it, floods it, walls it. */
+  board?: LairBoard,
 ): boolean {
   const lair = state.lair;
   if (!lair) return false;
@@ -718,6 +732,7 @@ export function lairActs(
   // the scatter was the payoff beat and the log never said it).
   if ((!maker || maker.hp <= 0) && !lair.stilled) {
     lair.stilled = true;
+    if (board) clearLairBoard(lair, board, true);
     for (const f of anchors) f.hp = 0;
     const called = living(state.fighters).filter((f) => f.lairSummon);
     for (const f of called) f.hp = 0;
@@ -791,11 +806,16 @@ export function lairActs(
           maker.id,
         );
       }
-      if (lair.next && ids.includes(lair.next)) lair.next = undefined;
+      if (lair.next && ids.includes(lair.next)) {
+        lair.next = undefined;
+        if (board) unmark(lair, board);
+      }
     }
   if (round <= lair.round) return false;
   lair.round = round;
   if (!maker || maker.hp <= 0) return false;
+  // Mist and resin raised last round give way as this one starts.
+  if (board) clearLairBoard(lair, board, false, round);
   // A young lair (its maker under level 10) stirs every other round, an old one every round (lair sim 8-10:
   // at level 6 a lair acting every round took a deathless sorcerer's fights from a sure win to a coin flip).
   if (maker.level < 10 && round % 2 === 0) {
@@ -820,6 +840,19 @@ export function lairActs(
   const from = pool.length ? pool : foes;
   const target = from[Math.floor(ctx.random() * from.length)]!;
   log(`The lair acts: ${action.label}.`, "marinara:lair", maker.id);
+  // On a board a blow told a round ahead lands on the squares it marked, on whoever still stands there
+  // (owner 2026-11-20): one who stepped off is spared. Unmarked (its first act), it lands on them all.
+  const told = tactical && board && dungeonLairTelegraphed(action);
+  const struck = told
+    ? lair.marked
+      ? foes.filter((f) => {
+          const at = board!.units.find((u) => u.id === f.id);
+          return at && lair.marked!.includes(`${at.x},${at.y}`);
+        })
+      : foes
+    : undefined;
+  const landed = told ? [...(lair.marked ?? [])] : [];
+  if (told) unmark(lair, board!);
   // What it calls up joins its maker's side (Classic only: a board has no free square to put it on).
   const summon = action.summon;
   const standing = summon ? living(state.fighters).filter((f) => f.lairSummon && f.side === maker.side).length : 0;
@@ -844,15 +877,51 @@ export function lairActs(
       state.fighters.push(fighter);
       log(`${summon.name} comes out of the chamber.`, "marinara:lair", fighter.id);
     }
+  } else if (struck && !struck.length) {
+    log(
+      `${action.label} comes down on empty ground: no one stood where it was told.`,
+      "marinara:lair",
+      maker.id,
+    );
   } else {
-    // On a board the chamber itself acts: an area lands on every foe wherever they stand.
+    // On a board the chamber itself acts: an area lands on every foe on its marked ground, or wherever they stand.
     releaseMarinaraCharge(
       maker,
-      { skillId: `enemy:${id}`, targetId: action.target === "self" ? maker.id : target.id },
+      { skillId: `enemy:${id}`, targetId: action.target === "self" ? maker.id : (struck?.[0] ?? target).id },
       state.fighters,
       ctx,
-      tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
+      struck ? struck.map((f) => f.id) : tactical && action.target === "all-enemies" ? foes.map((f) => f.id) : undefined,
     );
+  }
+  // What it leaves on the ground (owner 2026-11-20): on a board the squares change; in Classic the stone
+  // gives the party's back row cover.
+  if (action.board === "rubble" && !tactical) {
+    const sheltered = living(state.fighters).filter(
+      (f) => f.side !== maker.side && !f.dummy && marinaraRowOf(f, state.fighters) === "back",
+    );
+    for (const f of sheltered)
+      f.mods.push({
+        stat: "defense",
+        pct: DUNGEON_LAIR_RUBBLE_COVER.pct,
+        turns: DUNGEON_LAIR_RUBBLE_COVER.turns,
+        source: `lair-rubble:${lair.kind}`,
+      });
+    if (sheltered.length)
+      log(
+        `The fallen stone gives cover: ${sheltered.map((f) => f.name).join(", ")} shelter behind it (Defense +${Math.round(DUNGEON_LAIR_RUBBLE_COVER.pct * 100)}% for ${DUNGEON_LAIR_RUBBLE_COVER.turns} turns).`,
+        "marinara:lair",
+        maker.id,
+      );
+  }
+  if (action.board && tactical && board) {
+    const text = changeLairBoard(lair, board, action.board, {
+      maker: maker.id,
+      target: target.id,
+      landed,
+      round,
+      random: ctx.random,
+    });
+    if (text) log(text, "marinara:lair", maker.id);
   }
   // The resin closes the mouth and the crawl behind the party: no running until it is cut through
   // (lair panel 7: the lair should act on the place once, not only on the fighters).
@@ -865,6 +934,11 @@ export function lairActs(
     );
   }
   lair.next = dungeonLairActionFor(lair.kind, id, ctx.random, lair.broken);
+  // On a board the next blow shows where it will land: the squares under the party and beside them glow.
+  const marking =
+    tactical && board && dungeonLairTelegraphed(DUNGEON_LAIR_ACTIONS[lair.kind][lair.next])
+      ? markLairBlow(lair, board, DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.target, maker.id)
+      : 0;
   // Which standing feature would stop it, so breaking one is a plan and not a guess (lair panel 10).
   const anchor = DUNGEON_LAIR_ANCHORS[lair.kind];
   const stoppable =
@@ -873,12 +947,217 @@ export function lairActs(
   log(
     `The lair stirs: next it will be ${DUNGEON_LAIR_ACTIONS[lair.kind][lair.next]!.label}${
       stoppable ? ` (breaking the ${anchor.name} would stop it)` : ""
-    }.`,
+    }${marking ? `; the ground glows where it will land (${marking} squares): step off it` : ""}.`,
     "marinara:lair",
     maker.id,
   );
   record(state, ctx, log);
   return true;
+}
+
+/** A board fight's ground and who stands where, as a lair changes it (TacticalCombatState fits). */
+export interface LairBoard {
+  grid: TacticalGrid;
+  units: ReadonlyArray<{ id: string; name?: string; x: number; y: number; hp: number; side: string }>;
+}
+
+type LairState = NonNullable<MarinaraDirectorState["lair"]>;
+const cellKey = (x: number, y: number) => `${x},${y}`;
+const NEXT_TO = [
+  [1, 0],
+  [-1, 0],
+  [0, 1],
+  [0, -1],
+] as const;
+
+/** Takes everything a lair has marked or walled off the board once its maker is down. */
+export function stillLairBoard(state: MarinaraDirectorState, board: LairBoard): void {
+  const lair = state.lair;
+  if (!lair || (!lair.marked && !lair.walls?.length)) return;
+  const maker = marinaraFighter(state, lair.makerId);
+  if (maker && maker.hp > 0) return;
+  clearLairBoard(lair, board, true);
+}
+
+/** Takes the marks of a blow off the board. */
+function unmark(lair: LairState, board: LairBoard): void {
+  delete board.grid.strikes;
+  lair.marked = undefined;
+}
+
+/** Takes down the mist and resin whose round has passed (all of them, and every mark, when `all`). */
+function clearLairBoard(lair: LairState, board: LairBoard, all: boolean, round = Infinity): void {
+  const grid = board.grid;
+  lair.walls = (lair.walls ?? []).filter((wall) => {
+    if (!all && wall.until >= round) return true;
+    for (const key of wall.cells) {
+      const left = (grid.walls?.[key] ?? 0) & ~wall.bit;
+      if (grid.walls) {
+        if (left) grid.walls[key] = left;
+        else delete grid.walls[key];
+      }
+      if (grid.marks?.[key] === wall.mark) delete grid.marks[key];
+    }
+    return false;
+  });
+  if (all) unmark(lair, board);
+}
+
+/** Marks the squares a lair's next blow lands on: under each of the party and beside them (for a blow on the
+ *  front, the two of them nearest its maker). Returns how many. */
+function markLairBlow(lair: LairState, board: LairBoard, target: string, makerId: string): number {
+  const grid = board.grid;
+  const maker = board.units.find((u) => u.id === makerId);
+  let party = board.units.filter((u) => u.hp > 0 && maker && u.side !== maker.side);
+  if (target === "front-row" && maker)
+    party = [...party]
+      .sort((a, b) => Math.abs(a.x - maker.x) + Math.abs(a.y - maker.y) - (Math.abs(b.x - maker.x) + Math.abs(b.y - maker.y)))
+      .slice(0, 2);
+  const cells = new Set<string>();
+  for (const u of party)
+    for (const [dx, dy] of [[0, 0], ...NEXT_TO]) {
+      const x = u.x + dx!;
+      const y = u.y + dy!;
+      if (x < 0 || y < 0 || x >= grid.width || y >= grid.height || grid.outside?.[y]?.[x]) continue;
+      if (TERRAIN_DATA[grid.tiles[y]![x]!]?.impassable) continue;
+      cells.add(cellKey(x, y));
+    }
+  lair.marked = [...cells];
+  grid.strikes = [...cells];
+  return cells.size;
+}
+
+/** Whether every one standing could still walk to every other with these squares closed. */
+function stillJoined(board: LairBoard, closed: ReadonlySet<string>): boolean {
+  const grid = board.grid;
+  const standing = board.units.filter((u) => u.hp > 0);
+  if (standing.length < 2) return true;
+  const open = (x: number, y: number) =>
+    x >= 0 &&
+    y >= 0 &&
+    x < grid.width &&
+    y < grid.height &&
+    !closed.has(cellKey(x, y)) &&
+    !TERRAIN_DATA[grid.tiles[y]![x]!]?.impassable &&
+    ((grid.walls?.[cellKey(x, y)] ?? 0) & 1) === 0;
+  const seen = new Set([cellKey(standing[0]!.x, standing[0]!.y)]);
+  const queue: Array<[number, number]> = [[standing[0]!.x, standing[0]!.y]];
+  while (queue.length) {
+    const [x, y] = queue.shift()!;
+    for (const [dx, dy] of NEXT_TO) {
+      const key = cellKey(x + dx, y + dy);
+      if (seen.has(key) || !open(x + dx, y + dy)) continue;
+      seen.add(key);
+      queue.push([x + dx, y + dy]);
+    }
+  }
+  return standing.every((u) => seen.has(cellKey(u.x, u.y)));
+}
+
+/**
+ * What a lair action leaves on a board (owner 2026-11-20, "board-changing lair actions"): fallen stone as
+ * ruins where its blow landed (cover for either side, for the rest of the fight), the pool spreading over
+ * the floor beside it, mist round its maker and resin round the one it sealed (for a round). Nothing is ever
+ * put under a fighter, and the floor never splits so that someone can't be reached. Returns what the log
+ * says, or nothing when the ground had no room for it.
+ */
+function changeLairBoard(
+  lair: LairState,
+  board: LairBoard,
+  change: DungeonLairBoardChange,
+  at: { maker: string; target: string; landed: readonly string[]; round: number; random: () => number },
+): string | undefined {
+  const grid = board.grid;
+  const taken = new Set(board.units.filter((u) => u.hp > 0).map((u) => cellKey(u.x, u.y)));
+  const plain = (x: number, y: number) =>
+    x >= 0 &&
+    y >= 0 &&
+    x < grid.width &&
+    y < grid.height &&
+    !grid.outside?.[y]?.[x] &&
+    grid.tiles[y]![x] === "plains" &&
+    !taken.has(cellKey(x, y)) &&
+    !grid.walls?.[cellKey(x, y)];
+  const shuffled = <T>(list: T[]) => {
+    for (let i = list.length - 1; i > 0; i--) {
+      const j = Math.floor(at.random() * (i + 1));
+      [list[i], list[j]] = [list[j]!, list[i]!];
+    }
+    return list;
+  };
+  const parse = (key: string) => key.split(",").map(Number) as [number, number];
+  if (change === "rubble") {
+    // Where it landed; on its first, unmarked fall, round whoever it struck.
+    const near = at.landed.length
+      ? at.landed
+      : board.units
+          .filter((u) => u.hp > 0 && u.id !== at.maker && board.units.find((m) => m.id === at.maker)?.side !== u.side)
+          .flatMap((u) => NEXT_TO.map(([dx, dy]) => cellKey(u.x + dx, u.y + dy)));
+    const put: string[] = [];
+    for (const key of shuffled([...new Set(near)])) {
+      if (put.length >= DUNGEON_LAIR_RUBBLE_CELLS) break;
+      const [x, y] = parse(key);
+      if (!plain(x, y)) continue;
+      grid.tiles[y]![x] = "ruin";
+      put.push(key);
+    }
+    return put.length ? `Fallen stone lies where it struck (${put.length} squares): cover now, for either side.` : undefined;
+  }
+  if (change === "flood") {
+    const shore = new Set<string>();
+    for (let y = 0; y < grid.height; y++)
+      for (let x = 0; x < grid.width; x++)
+        if (grid.tiles[y]![x] === "water")
+          for (const [dx, dy] of NEXT_TO) if (plain(x + dx, y + dy)) shore.add(cellKey(x + dx, y + dy));
+    const closed = new Set<string>();
+    for (const key of shuffled([...shore])) {
+      if (closed.size >= DUNGEON_LAIR_FLOOD_CELLS) break;
+      closed.add(key);
+      if (!stillJoined(board, closed)) closed.delete(key);
+    }
+    for (const key of closed) {
+      const [x, y] = parse(key);
+      grid.tiles[y]![x] = "water";
+    }
+    return closed.size ? `The water spreads over the floor (${closed.size} squares): no one stands there now.` : undefined;
+  }
+  const wall = (cells: string[], bit: 1 | 2, mark: "mist" | "resin") => {
+    if (!cells.length) return;
+    grid.walls ??= {};
+    grid.marks ??= {};
+    for (const key of cells) {
+      grid.walls[key] = (grid.walls[key] ?? 0) | bit;
+      grid.marks[key] = mark;
+    }
+    (lair.walls ??= []).push({ cells, bit, mark, until: at.round + DUNGEON_LAIR_BOARD_ROUNDS });
+  };
+  if (change === "mist") {
+    // Round its maker: past the mist nothing sees it, so only a fighter beside it can strike it.
+    const maker = board.units.find((u) => u.id === at.maker);
+    if (!maker) return undefined;
+    const cells: string[] = [];
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        const x = maker.x + dx;
+        const y = maker.y + dy;
+        if ((dx || dy) && x >= 0 && y >= 0 && x < grid.width && y < grid.height && !grid.outside?.[y]?.[x])
+          if (!TERRAIN_DATA[grid.tiles[y]![x]!]?.blocksSight) cells.push(cellKey(x, y));
+      }
+    wall(cells, 2, "mist");
+    return cells.length ? "Mist closes round the maker: only a fighter beside it can find it this round." : undefined;
+  }
+  // Resin round the one it sealed: the open squares beside them harden, so they stay where they stand.
+  const one = board.units.find((u) => u.id === at.target);
+  if (!one) return undefined;
+  const closed = new Set<string>();
+  for (const [dx, dy] of NEXT_TO) {
+    const key = cellKey(one.x + dx, one.y + dy);
+    if (!plain(one.x + dx, one.y + dy)) continue;
+    closed.add(key);
+    if (!stillJoined(board, closed)) closed.delete(key);
+  }
+  wall([...closed], 1, "resin");
+  return closed.size ? `Resin hardens round ${one.name ?? "them"}: ${closed.size} open squares beside them walled for a round.` : undefined;
 }
 
 function roundOf(state: MarinaraDirectorState): number {

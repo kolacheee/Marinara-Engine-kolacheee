@@ -68,6 +68,7 @@ import {
   mirrorMarinaraUnits,
   nextMarinaraTurn,
   lairActs,
+  stillLairBoard,
   marinaraCombatant,
   performMarinaraAction,
   type MarinaraDirectorState,
@@ -692,7 +693,49 @@ export function marinaraBoardTurn(
     keepMarinaraReasons(s.marinara!, tu.id, s.round, reasons.ranking);
     logMarinaraReasons(s, tu.id, reasons.ranking);
   }
-  return keepingDistance(s, tu, action) ?? action;
+  return offLairMarks(s, tu, keepingDistance(s, tu, action) ?? action);
+}
+
+/**
+ * A lair's next blow is marked on the board a round ahead (owner 2026-11-20): one of the party who would end
+ * its turn on the marked ground takes the same action from the nearest square off it, when one in its move
+ * lets the action stand. Its maker's side doesn't care.
+ */
+function offLairMarks(
+  s: CombatDirectorState,
+  tu: TacticalUnit,
+  action: Extract<TacticalAction, { unitId: string }>,
+): Extract<TacticalAction, { unitId: string }> {
+  const lair = s.marinara?.lair;
+  const t = s.tactical;
+  if (!lair?.marked?.length || !t || tu.hasMoved) return action;
+  const maker = marinaraFighter(s.marinara!, lair.makerId);
+  const me = marinaraFighter(s.marinara!, tu.id);
+  if (!maker || !me || me.side === maker.side) return action;
+  const marked = new Set(lair.marked);
+  const here = { x: tu.x, y: tu.y };
+  const meant = "to" in action && action.to ? action.to : here;
+  if (!marked.has(`${meant.x},${meant.y}`)) return action;
+  const tiles = [here, ...getMovementRange(t, tu.id)]
+    .filter((at) => !marked.has(`${at.x},${at.y}`))
+    .sort(
+      (a, b) =>
+        Math.abs(a.x - meant.x) + Math.abs(a.y - meant.y) - (Math.abs(b.x - meant.x) + Math.abs(b.y - meant.y)),
+    );
+  for (const at of tiles) {
+    const still = at.x === tu.x && at.y === tu.y;
+    const { to: _to, ...rest } = action as typeof action & { to?: TacticalCoord };
+    const moved = (
+      action.type === "move" ? (still ? { type: "wait", unitId: tu.id } : { ...action, to: at }) : still ? rest : { ...rest, to: at }
+    ) as Extract<TacticalAction, { unitId: string }>;
+    if (validateTacticalUnitAction(t, tu, moved)) continue;
+    const text = `AI: ${tu.name} steps off the ground the lair has marked and acts from there.`;
+    const m = s.marinara!;
+    m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
+    log(s, text, MARINARA_REASONING_KIND, tu.id, "ai");
+    return moved;
+  }
+  return action;
 }
 
 /**
@@ -737,6 +780,8 @@ function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number
 }
 function sync(s: CombatDirectorState) {
   if (s.marinara) {
+    // A lair whose maker has fallen takes its marks, mist and resin off the board at once.
+    if (s.tactical && s.marinara.lair) stillLairBoard(s.marinara, s.tactical);
     // A beast a Tracker tamed leaves the fight at once, the keeper's companion now (Alyssa 2026-11-01).
     for (const fighter of s.marinara.fighters.filter((one) => one.tamedBy && one.hp > 0)) {
       const u = get(s, fighter.id);
@@ -2257,7 +2302,8 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         for (const e of events) log(s, e.text, e.kind, e.actorId, undefined, e.message);
         s.tactical.round++;
         // Classic Marinara on a board in a creature's lair: the lair acts as the new round starts.
-        if (s.marinara?.lair && lairActs(s.marinara, s.seed, true, marinaraLog(s), s.tactical.round)) sync(s);
+        if (s.marinara?.lair && lairActs(s.marinara, s.seed, true, marinaraLog(s), s.tactical.round, 0, s.tactical))
+          sync(s);
         delete s.marinaraOwed;
         s.round++;
         s.skipParty = false;

@@ -13,7 +13,18 @@ import {
   DUNGEON_LAIR_KINDS,
   DUNGEON_LAIR_ACTIONS,
 } from "../../packages/shared/src/features/world/lairs.js";
-import { enemyFighter, playFight, referenceParty, REFERENCE_PARTIES, seedOf, REASON_LOG } from "./bestiary-units.js";
+import {
+  enemyFighter,
+  playFight,
+  referenceParty,
+  REFERENCE_PARTIES,
+  seedOf,
+  REASON_LOG,
+  BOARD_TALLY,
+  SIM_BOARD,
+  LAIR_BOARD,
+} from "./bestiary-units.js";
+import { DUNGEON_LAIR_BOARD } from "../../packages/shared/src/features/world/lairs.js";
 
 const fpp = Number(process.argv[2] ?? "2");
 const LEVELS = [6, 10, 16];
@@ -27,6 +38,8 @@ if (process.env.LAIR_DROP) {
 }
 console.log("reasons log:", REASON_LOG);
 for (const kind of DUNGEON_LAIR_KINDS.filter((k) => !only || k === only)) {
+  SIM_BOARD.env = DUNGEON_LAIR_BOARD[kind];
+  for (const key of Object.keys(BOARD_TALLY)) delete BOARD_TALLY[key];
   const lairIds = new Set(Object.keys(DUNGEON_LAIR_ACTIONS[kind]).map((id) => `enemy:${id}`));
   for (const level of LEVELS) {
     const maker = DUNGEON_LAIRS[kind].makers.find((id) => {
@@ -71,5 +84,7 @@ for (const kind of DUNGEON_LAIR_KINDS.filter((k) => !only || k === only)) {
     const f = (r: (typeof row)[string]) =>
       `win ${((100 * r.wins) / r.n).toFixed(0)}% rounds ${(r.rounds / r.n).toFixed(1)} lost ${((100 * r.lost) / r.n).toFixed(0)}% lairDmg/fight ${(r.lairDmg / r.n).toFixed(0)} lairEvents/fight ${(r.lairActs / r.n).toFixed(1)} anchorHits/fight ${(r.anchorHits / r.n).toFixed(1)} broken ${((100 * r.broke) / r.n).toFixed(0)}%`;
     console.log(`${kind} ${maker} L${level} | none: ${f(row.none!)} | lair: ${f(row.lair!)}`);
+    if (LAIR_BOARD) console.log(`  board: ${JSON.stringify(BOARD_TALLY)}`);
+    for (const key of Object.keys(BOARD_TALLY)) delete BOARD_TALLY[key];
   }
 }

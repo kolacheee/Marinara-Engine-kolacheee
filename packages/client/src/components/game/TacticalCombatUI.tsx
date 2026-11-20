@@ -1567,6 +1567,35 @@ export function TacticalCombatUI({
                         {icon}
                       </span>
                     )}
+                    {/* What a creature's lair has marked (owner 2026-11-20): where its next blow lands, its mist,
+                        its resin. */}
+                    {liveState.grid.marks?.[`${x},${y}`] === "mist" && (
+                      <span
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 40% 45%, rgba(226,232,240,0.85) 0%, rgba(203,213,225,0.7) 55%, rgba(148,163,184,0.5) 100%)",
+                        }}
+                      />
+                    )}
+                    {liveState.grid.marks?.[`${x},${y}`] === "resin" && (
+                      <span
+                        className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-amber-900/80"
+                        style={{
+                          background:
+                            "repeating-linear-gradient(135deg, rgba(217,119,6,0.85) 0 4px, rgba(146,64,14,0.85) 4px 8px)",
+                        }}
+                      />
+                    )}
+                    {liveState.grid.strikes?.includes(`${x},${y}`) && (
+                      <span
+                        className="pointer-events-none absolute inset-0 ring-2 ring-inset ring-orange-400/90"
+                        style={{
+                          background: "radial-gradient(circle, rgba(251,146,60,0.55) 0%, rgba(220,38,38,0.35) 70%)",
+                          animation: "tc-move-range 1.2s ease-in-out infinite",
+                        }}
+                      />
+                    )}
                     {inMove && !isStaged && (
                       <span
                         className="pointer-events-none absolute inset-0 bg-[var(--primary)]/40 ring-1 ring-inset ring-[var(--primary)]/60"

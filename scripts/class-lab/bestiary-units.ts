@@ -4,13 +4,24 @@
  * combat director with the Engine's own combat AI on both sides (as engine-balance.ts does), so
  * threat is measured with what plays the game.
  */
-import type { DungeonLairKind } from "../../packages/shared/src/features/world/lairs.js";
+import { DUNGEON_LAIR_BOARD, type DungeonLairKind } from "../../packages/shared/src/features/world/lairs.js";
+import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
 import { pickCarries } from "./carries.js";
 import {
   commandCombatDirector,
   createCombatDirector,
 } from "../../packages/server/src/services/game/combat-director.service.js";
-import { MARINARA_REASONING_KIND } from "../../packages/server/src/services/game/combat-director.service.js";
+import {
+  MARINARA_REASONING_KIND,
+  marinaraBoardTurn,
+} from "../../packages/server/src/services/game/combat-director.service.js";
+
+/** LAIR_BOARD=1: lair fights on the Tactical board (owner 2026-11-20, board-changing lair actions); what the
+ *  lair did to the ground is counted here from the log. */
+export const LAIR_BOARD = !!process.env.LAIR_BOARD;
+export const BOARD_TALLY: Record<string, number> = {};
+/** The board a fight without a lair is fought on, so its baseline is the same ground. */
+export const SIM_BOARD: { env?: string } = {};
 import {
   marinaraAiAction,
   marinaraCombatant,
@@ -296,7 +307,13 @@ export function playFight(
         : undefined;
       return marinaraCombatant(f, hints ? { aiHints: hints } : {});
     }),
-    style: "classic",
+    style: LAIR_BOARD ? "tactical" : "classic",
+    ...(LAIR_BOARD
+      ? {
+          environment: lair ? DUNGEON_LAIR_BOARD[lair.kind] : SIM_BOARD.env,
+          battlefield: { size: "medium" } as never,
+        }
+      : {}),
     gm: false,
     difficulty: "normal",
     seed,
@@ -319,6 +336,17 @@ export function playFight(
       commandCombatDirector(s, { type: "mercy", choice: "spare" });
       continue;
     }
+    if (s.tactical) {
+      if (s.stage === "action" && s.actorId) {
+        const unit = s.tactical.units.find((u) => u.id === s.actorId) as TacticalUnit;
+        commandCombatDirector(s, { type: "tactical", action: marinaraBoardTurn(s, unit) as never }, "ai");
+      } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
+      else if (s.stage === "select") {
+        const next = s.tactical.units.find((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
+        commandCombatDirector(s, next ? { type: "begin", unitId: next.id } : { type: "continue" });
+      } else commandCombatDirector(s, { type: "continue" });
+      continue;
+    }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
       const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false, undefined, (ranking) => {
@@ -331,6 +359,25 @@ export function playFight(
     else commandCombatDirector(s, { type: "continue" });
   }
   collect();
+  if (s.tactical)
+    for (const entry of s.log) {
+      const tag = /empty ground/.test(entry.text)
+        ? "missed all"
+        : /^Fallen stone/.test(entry.text)
+          ? "rubble"
+          : /water spreads/.test(entry.text)
+            ? "flood"
+            : /^Mist closes/.test(entry.text)
+              ? "mist"
+              : /^Resin hardens/.test(entry.text)
+                ? "resin"
+                : /steps off the ground/.test(entry.text)
+                  ? "AI stepped off"
+                  : /ground glows/.test(entry.text)
+                    ? "marked"
+                    : undefined;
+      if (tag) BOARD_TALLY[tag] = (BOARD_TALLY[tag] ?? 0) + 1;
+    }
   const max = s.party.reduce((sum, u) => sum + u.maxHp, 0);
   const left = s.party.reduce((sum, u) => sum + Math.max(0, u.hp), 0);
   const victory = s.outcome === "victory";
