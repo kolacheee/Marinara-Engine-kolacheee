@@ -1,0 +1,7 @@
+{
+  "generationParameters.model.followsMain": "This chat has no model of its own, so it uses your Main model, {{model}}. The settings below are the ones that model uses.",
+  "generationParameters.model.shuffle": "Shuffle: every setting is shown.",
+  "generationParameters.unused.fieldNote": "Not sent to this model",
+  "generationParameters.unused.hide": "Hide unsupported parameters",
+  "generationParameters.unused.show": "Show unsupported parameters"
+}
