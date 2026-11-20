@@ -882,10 +882,20 @@ export function paintDungeonFloor(ctx: Ctx, set: string, x: number, y: number, n
 }
 
 /** A wall cell: its top, and its face where a floor lies below. */
-export function paintDungeonWall(ctx: Ctx, set: string, x: number, y: number, faceBelow: boolean, noise: Noise) {
+export function paintDungeonWall(
+  ctx: Ctx,
+  set: string,
+  x: number,
+  y: number,
+  faceBelow: boolean,
+  noise: Noise,
+  /** Only the top's own stone, no edge along the cell: for walls drawn round a smoothed outline. */
+  bare = false,
+) {
   const look = LOOKS[set]!;
   const [top, edge, face, faceDark, line] = look.walls;
   px(ctx, top, x, y, T, T);
+  if (bare) return;
   if (!faceBelow) {
     px(ctx, edge, x, y, T, 1);
     if (look.wall === "rock" || look.wall === "ice") px(ctx, edge, x + Math.floor(noise(1) * 10), y + 5, 4, 1);

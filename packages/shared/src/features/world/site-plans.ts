@@ -19,6 +19,7 @@ import {
   type DungeonRoom,
   type GameDungeonMap,
   dungeonCutCorners,
+  dungeonShapeRoom,
 } from "./dungeon-map.js";
 
 /** The kinds of place built to a plan. Caves, mines, sewers, ruins and stations keep their carved maps. */
@@ -1208,6 +1209,9 @@ export interface SiteLevelMap {
   /** A creature's lair floor, and what its great chamber holds (the hoard, the ward ring...). */
   lair?: DungeonLairKind;
   lairFeature?: Array<{ x: number; y: number }>;
+  /** Cells walled to make a chamber round, and to make one eight-sided: drawn as one curve, one slope. */
+  curves?: Array<{ x: number; y: number }>;
+  slopes?: Array<{ x: number; y: number }>;
 }
 
 /** The rooms that are a level's great room: the biggest space on it. */
@@ -4392,6 +4396,39 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       secrets.push(doorAt);
     }
   }
+  // ── Round and eight-sided chambers (owner 2026-11-20) ──
+  // A creature's great chamber is most often round, as if worn out of the rock; now and then a room of the
+  // house is laid eight-sided or round, a chapter house, a tower's chamber. Only a room laid as one square
+  // block, six cells or more each way; the walled cells are kept so the view draws them as one slope or curve.
+  const curves: number[] = [];
+  const slopes: number[] = [];
+  {
+    const shapeRandom = marinaraRandom(`site-shape:${plan.template}:${plan.seed}:${level.id}`);
+    regions.forEach((region, id) => {
+      if (region.kind !== "room" || region.hidden) return;
+      const heart = !!region.room?.heart;
+      if (shapeRandom() >= (heart && level.lair ? 0.85 : heart ? 0.4 : 0.22)) return;
+      let [x0, y0, x1, y1, count] = [mapW, mapH, -1, -1, 0];
+      for (let c = 0; c < size; c++) {
+        if (at[c] !== id) continue;
+        const [x, y] = [c % mapW, Math.floor(c / mapW)];
+        [x0, y0, x1, y1] = [Math.min(x0, x), Math.min(y0, y), Math.max(x1, x), Math.max(y1, y)];
+        count++;
+      }
+      const [w, h] = [x1 - x0 + 1, y1 - y0 + 1];
+      if (count !== w * h || Math.min(w, h) < 6) return;
+      const round = shapeRandom() < (level.lair ? 0.65 : 0.35);
+      const walled = dungeonShapeRoom(
+        ground,
+        mapW,
+        mapH,
+        { x: x0, y: y0, w, h },
+        round ? "round" : "octagon",
+        (i) => hold[i]! > 0 || i === doorIn,
+      );
+      (round ? curves : slopes).push(...walled);
+    });
+  }
   // ── Corners taken off (owner 2026-11-20, "add diagonal walls and curved walls") ──
   // A room's or a hall's inside corners walled across, so the view draws them as a diagonal or a curve;
   // never in a court, a walk, a passage or a stairwell, never on a link or the cell inside the door.
@@ -6481,6 +6518,8 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
     ...(gallery.length ? { gallery: gallery.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
     ...(level.lair ? { lair: level.lair } : {}),
     ...(lairFeature.length ? { lairFeature: lairFeature.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+    ...(curves.length ? { curves: curves.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
+    ...(slopes.length ? { slopes: slopes.map((c) => ({ x: c % mapW, y: Math.floor(c / mapW) })) } : {}),
   };
 }
 
@@ -6588,6 +6627,8 @@ export function gameDungeonPlannedMap(input: {
     ...(laid.tunnel ? { tunnel: laid.tunnel } : {}),
     ...(input.plan.lair ? { lairKind: input.plan.lair } : {}),
     ...(laid.lairFeature ? { lairFeature: laid.lairFeature } : {}),
+    ...(laid.curves ? { curves: laid.curves } : {}),
+    ...(laid.slopes ? { slopes: laid.slopes } : {}),
     ...(laid.theme ? { theme: laid.theme } : {}),
     ...(laid.secretWay ? { secretWay: laid.secretWay } : {}),
     roomInfo: laid.rooms.map((room) => ({

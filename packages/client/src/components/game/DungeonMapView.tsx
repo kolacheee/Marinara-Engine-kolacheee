@@ -61,6 +61,7 @@ import {
   paintFoundTrap,
   paintSiteLink,
 } from "../../lib/building-paint";
+import { smoothOutline, traceOutline } from "./wall-outline";
 import {
   dungeonPaintsSet,
   paintDungeonFloor,
@@ -235,6 +236,8 @@ export function DungeonMapView({
     const siteDepth = kept?.site ? (kept.site.levels[kept.site.level]?.depth ?? -1) : null;
     const outdoors = siteDepth !== null && siteDepth >= 0;
     const buried = siteDepth !== null && siteDepth < 0;
+    // A floor laid out by plan (a building's, a crypt's named rooms) has walls built, not worn from rock.
+    const planned = siteDepth !== null || Boolean(cells.roomNames);
     // A crypt's founder lies on a raised platform: three by three of stone under the tomb nearest the
     // middle of the heart (gamer panel 2026-11-17: the tomb was a lone coffin in an empty room).
     const raiseTomb = (ctx: CanvasRenderingContext2D) => {
@@ -296,132 +299,264 @@ export function DungeonMapView({
           if (solid(x + 1, y)) edge(px + T + right, py, px + T + right - depth, py, depth, T);
         }
     };
-    // Diagonal and curved walls (owner 2026-11-20, "so everything doesn't have to feel so blocky"): a wall
-    // cell with floor on two sides that meet is drawn cut across toward them, a straight diagonal on a built
-    // floor and a curve where the place is cut from rock (a cave, a crypt, anything below ground). Two such
-    // cells either side of a walled room corner (dungeonCutCorners) share one long diagonal or one wide
-    // curve. Only how it looks: a fighter still can't stand there. `floorInto` lays the floor of the cell
-    // (fx, fy) into the wall cell (x, y), already clipped to the cut.
-    const softCorners = (round: boolean, floorInto: (x: number, y: number, fx: number, fy: number) => void) => {
+    // Diagonal and curved walls (owner 2026-11-20: "so everything doesn't have to feel so blocky", then
+    // "implement curved and diagonal walls properly"). The open ground's outline is traced from the grid and
+    // smoothed (wall-outline.ts): a stair of single steps becomes one straight diagonal, and where the place
+    // is cut from rock every corner is rounded. Round each slope or curve the walls are drawn again from that
+    // outline: the wall's top, then the floor up to the line, then the wall's face standing on it, column by
+    // column, so the face runs down a diagonal and round a curve as one wall rather than a cell-shaped patch.
+    // Only how it looks: a fighter still can't stand where a wall cell is.
+    //   full: every corner rounded, the rock's edge too where the rock is a void (caves, carved dungeons);
+    //   carved: only the cut corners (dungeonCutCorners), curved, on a building's floors below ground;
+    //   built: only the cut corners, straight diagonals, on a building's floors at and above the ground.
+    type SoftPainters = {
+      /** A wall's top over the whole cell (x, y). */
+      top: (x: number, y: number) => void;
+      /** A wall's face over the whole cell (x, y), drawn into `c` at the cell's place on the map. */
+      face: (c: CanvasRenderingContext2D, x: number, y: number) => void;
+      /** The floor of the open cell (fx, fy) laid over the cell (x, y). */
+      floor: (x: number, y: number, fx: number, fy: number) => void;
+      /** Clear the rock's void and round its edge too. */
+      rockVoid?: boolean;
+    };
+    const softWalls = (mode: "full" | "carved" | "built", paint: SoftPainters) => {
       const gAt = (x: number, y: number) =>
         x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
-      const floorAt = (x: number, y: number) => gAt(x, y) === "floor";
+      const openAt = (x: number, y: number) => gAt(x, y) === "floor" || gAt(x, y) === "liquid";
       const solidAt = (x: number, y: number) => gAt(x, y) === "wall" || gAt(x, y) === "rock";
-      // On a built floor only a corner cut against a thick wall (dungeonCutCorners), never the end of a thin
-      // wall at a doorway or where two rooms' walls meet (owner's samples 2026-11-20: notches and diamonds).
-      const thickBehind = (x: number, y: number, sx: number, sy: number) =>
-        round || (solidAt(x - sx, y - sy) && solidAt(x - 2 * sx, y) && solidAt(x, y - 2 * sy));
-      const pieceDir = (x: number, y: number, sx: number, sy: number) =>
+      // On a building's floors only a corner cut against a thick wall (dungeonCutCorners), never the end of
+      // a thin wall at a doorway or where two rooms' walls meet (owner's samples 2026-11-20: notches).
+      const thick = (x: number, y: number, sx: number, sy: number) =>
         gAt(x, y) === "wall" &&
-        floorAt(x + sx, y) &&
-        floorAt(x, y + sy) &&
+        solidAt(x - sx, y - sy) &&
         solidAt(x - sx, y) &&
         solidAt(x, y - sy) &&
-        thickBehind(x, y, sx, sy);
-      const edgeColour = building && !buried ? "rgba(20, 16, 12, 0.85)" : "rgba(14, 12, 10, 0.8)";
-      const lipColour = building && !buried ? "rgba(200, 186, 160, 0.35)" : "rgba(180, 170, 150, 0.3)";
-      const lines = (draw: () => void) => {
-        for (const [colour, width] of [
-          [edgeColour, 2],
-          [lipColour, 1],
-        ] as const) {
-          ctx.strokeStyle = colour;
-          ctx.lineWidth = width;
-          ctx.beginPath();
-          draw();
-          ctx.stroke();
-        }
-      };
-      for (const [sx, sy] of [
-        [1, 1],
-        [-1, 1],
-        [1, -1],
-        [-1, -1],
-      ] as const)
-        for (let y = 0; y < cells.height; y++)
-          for (let x = 0; x < cells.width; x++) {
-            // A run of steps under one slope starts at its far end along the top: walk it down.
-            if (!pieceDir(x, y, sx, sy) || pieceDir(x + sx, y - sy, sx, sy)) continue;
-            const chain: Array<[number, number]> = [];
-            while (pieceDir(x - sx * chain.length, y + sy * chain.length, sx, sy) && chain.length < 40)
-              chain.push([x - sx * chain.length, y + sy * chain.length]);
-            const n = chain.length;
-            // The walled block's corner cell, and the corner of it away from the floor.
-            const cx0 = x - sx * (n - 1);
-            const cy0 = y;
-            const ox = sx > 0 ? cx0 * T : (cx0 + 1) * T;
-            const oy = sy > 0 ? cy0 * T : (cy0 + 1) * T;
-            const P = (u: number, v: number) => [ox + sx * u * T, oy + sy * v * T] as const;
-            const [fx, fy] = [chain[0]![0] + sx, chain[0]![1] + sy];
-            // A lone step with floor past it on a third side is a wall's tip standing into the floor: rounded
-            // over (a disc of wall), not scooped out.
-            if (round && n === 1 && (floorAt(x + sx, y - sy) || floorAt(x - sx, y + sy))) {
-              const [wx, wy] = P(0, 0);
-              ctx.save();
-              ctx.beginPath();
-              ctx.rect(x * T, y * T, T, T);
-              ctx.arc(wx, wy, T, 0, Math.PI * 2);
-              ctx.clip("evenodd");
-              floorInto(x, y, fx, fy);
-              ctx.restore();
-              ctx.save();
-              ctx.beginPath();
-              ctx.rect(x * T, y * T, T, T);
-              ctx.clip();
-              lines(() => ctx.arc(wx, wy, T, 0, Math.PI * 2));
-              ctx.restore();
-              continue;
-            }
-            if (round && n <= 3) {
-              // One curve under the whole corner: the floor inside a circle n cells round from the room.
-              const [ccx, ccy] = P(n, n);
-              const r = n * T;
-              const block: Array<[number, number]> = [];
-              for (let i = 0; i < n; i++)
-                for (let j = 0; i + j < n; j++) {
-                  const [bx, by] = [cx0 + sx * i, cy0 + sy * j];
-                  if (gAt(bx, by) === "wall") block.push([bx, by]);
-                }
-              for (const [bx, by] of block) {
-                ctx.save();
-                ctx.beginPath();
-                ctx.rect(bx * T, by * T, T, T);
-                ctx.clip();
-                ctx.beginPath();
-                ctx.arc(ccx, ccy, r, 0, Math.PI * 2);
-                ctx.clip();
-                floorInto(bx, by, fx, fy);
-                ctx.restore();
-              }
-              ctx.save();
-              ctx.beginPath();
-              for (const [bx, by] of block) ctx.rect(bx * T, by * T, T, T);
-              ctx.clip();
-              lines(() => ctx.arc(ccx, ccy, r, 0, Math.PI * 2));
-              ctx.restore();
-              continue;
-            }
-            // A straight diagonal down the whole run: each step cut across toward the floor.
-            for (const [px, py] of chain) {
-              const qx = sx > 0 ? px * T : (px + 1) * T;
-              const qy = sy > 0 ? py * T : (py + 1) * T;
-              ctx.save();
-              ctx.beginPath();
-              ctx.moveTo(qx + sx * T, qy);
-              ctx.lineTo(qx + sx * T, qy + sy * T);
-              ctx.lineTo(qx, qy + sy * T);
-              ctx.closePath();
-              ctx.clip();
-              floorInto(px, py, px + sx, py + sy);
-              ctx.restore();
-            }
-            const [ax, ay] = P(n, 0);
-            const [bx, by] = P(0, n);
-            lines(() => {
-              ctx.moveTo(ax, ay);
-              ctx.lineTo(bx, by);
-            });
+        solidAt(x - 2 * sx, y) &&
+        solidAt(x, y - 2 * sy);
+      // A chamber the plan made round or eight-sided: its walled cells are cut across whatever stands
+      // behind them, and a round one's corners rounded.
+      const curved = new Set((kept?.curves ?? []).map((c) => c.y * cells.width + c.x));
+      const sloped = new Set((kept?.slopes ?? []).map((c) => c.y * cells.width + c.x));
+      const nearCurve = (p: { x: number; y: number }) =>
+        [
+          [0, 0],
+          [-1, 0],
+          [0, -1],
+          [-1, -1],
+        ].some(([dx, dy]) => curved.has((p.y + dy!) * cells.width + p.x + dx!));
+      const loops = traceOutline(openAt, cells.width, cells.height).map((loop) =>
+        mode === "full"
+          ? smoothOutline(loop, { round: "all", radius: 1.25, cutRadius: 0.4 })
+          : smoothOutline(loop, {
+              cut: (w, sx, sy) => {
+                const i = w.y * cells.width + w.x;
+                return curved.has(i) || sloped.has(i) || thick(w.x, w.y, sx, sy);
+              },
+              round: mode === "carved" ? "cuts" : "none",
+              radius: 4,
+              roundAt: (p) => (curved.size && nearCurve(p) ? 2 : 0),
+            }),
+      );
+      const rockLoops = paint.rockVoid
+        ? traceOutline((x, y) => gAt(x, y) !== "rock", cells.width, cells.height).map((loop) =>
+            smoothOutline(loop, { round: "all", radius: 1.25 }),
+          )
+        : [];
+      type Seg = { ax: number; ay: number; bx: number; by: number };
+      const segsOf = (list: Array<Array<{ x: number; y: number }>>) => {
+        const all: Seg[] = [];
+        for (const loop of list)
+          for (let i = 0; i < loop.length; i++) {
+            const a = loop[i]!;
+            const b = loop[(i + 1) % loop.length]!;
+            all.push({ ax: a.x * T, ay: a.y * T, bx: b.x * T, by: b.y * T });
           }
+        return all;
+      };
+      const segs = segsOf(loops);
+      const rockSegs = segsOf(rockLoops);
+      const slanted = (s: Seg) => Math.abs(s.bx - s.ax) > 1e-6 && Math.abs(s.by - s.ay) > 1e-6;
+      // The cells a slope or a curve runs through, and those its face stands in above it.
+      const zoneOf = (list: Seg[], faces: boolean) => {
+        const zone = new Set<number>();
+        for (const s of list) {
+          if (!slanted(s)) continue;
+          const up = faces && s.bx > s.ax ? T : 0;
+          const x0 = Math.floor(Math.min(s.ax, s.bx) / T - 1e-6);
+          const x1 = Math.floor(Math.max(s.ax, s.bx) / T + 1e-6);
+          const y0 = Math.floor((Math.min(s.ay, s.by) - up) / T - 1e-6);
+          const y1 = Math.floor(Math.max(s.ay, s.by) / T + 1e-6);
+          for (let y = Math.max(0, y0); y <= Math.min(cells.height - 1, y1); y++)
+            for (let x = Math.max(0, x0); x <= Math.min(cells.width - 1, x1); x++) zone.add(y * cells.width + x);
+        }
+        return zone;
+      };
+      // Where every corner is rounded the whole floor is drawn round its outline; elsewhere only round
+      // each cut corner, so a building's thin walls and posts stay as they are laid.
+      const everywhere = mode === "full";
+      const zone = everywhere
+        ? new Set(Array.from({ length: cells.width * cells.height }, (_, i) => i))
+        : zoneOf(segs, true);
+      const rockZone = everywhere ? zone : zoneOf(rockSegs, false);
+      if (!zone.size && !rockZone.size) return;
+      const cellsOf = (set: Set<number>, keep: (x: number, y: number) => boolean) =>
+        [...set].map((i) => [i % cells.width, Math.floor(i / cells.width)] as const).filter(([x, y]) => keep(x, y));
+      const pathOf = (list: Array<Array<{ x: number; y: number }>>, outside = false) => {
+        const path = new Path2D();
+        if (outside) path.rect(-T, -T, (cells.width + 2) * T, (cells.height + 2) * T);
+        for (const loop of list) {
+          loop.forEach((pt, i) => (i ? path.lineTo(pt.x * T, pt.y * T) : path.moveTo(pt.x * T, pt.y * T)));
+          path.closePath();
+        }
+        return path;
+      };
+      const open = pathOf(loops);
+      const closed = pathOf(loops, true);
+      const clipCells = (list: ReadonlyArray<readonly [number, number]>) => {
+        const path = new Path2D();
+        for (const [x, y] of list) path.rect(x * T, y * T, T, T);
+        ctx.clip(path);
+      };
+      const nearestOpen = (x: number, y: number): [number, number] | null => {
+        for (const [dx, dy] of [
+          [0, 1],
+          [0, -1],
+          [1, 0],
+          [-1, 0],
+          [1, 1],
+          [-1, 1],
+          [1, -1],
+          [-1, -1],
+        ] as const)
+          if (gAt(x + dx, y + dy) === "floor") return [x + dx, y + dy];
+        for (const [dx, dy] of [
+          [0, 1],
+          [0, -1],
+          [1, 0],
+          [-1, 0],
+        ] as const)
+          if (openAt(x + dx, y + dy)) return [x + dx, y + dy];
+        return null;
+      };
+      const both = new Set([...zone, ...rockZone]);
+      const closedCells = cellsOf(both, (x, y) => !openAt(x, y));
+      // The walls' tops, and the rock's void with its edge rounded.
+      if (paint.rockVoid) {
+        ctx.save();
+        clipCells(closedCells);
+        for (const [x, y] of closedCells) ctx.clearRect(x * T, y * T, T, T);
+        ctx.clip(pathOf(rockLoops));
+        for (const [x, y] of closedCells) paint.top(x, y);
+        ctx.restore();
+      } else for (const [x, y] of closedCells) if (gAt(x, y) === "wall") paint.top(x, y);
+      // The floor laid up to the line where it grows into a wall's cell.
+      const zoneClosed = cellsOf(zone, (x, y) => !openAt(x, y));
+      for (const [x, y] of zoneClosed) {
+        const from = nearestOpen(x, y);
+        if (!from) continue;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x * T, y * T, T, T);
+        ctx.clip();
+        ctx.clip(open);
+        paint.floor(x, y, from[0], from[1]);
+        ctx.restore();
+      }
+      // The wall's top where a rounded corner takes in a corner of the floor.
+      const zoneOpen = cellsOf(zone, (x, y) => openAt(x, y));
+      if (zoneOpen.length) {
+        ctx.save();
+        clipCells(zoneOpen);
+        ctx.clip(closed, "evenodd");
+        for (const [x, y] of zoneOpen) paint.top(x, y);
+        ctx.restore();
+      }
+      // The faces: every stretch of the outline with the floor below it shows the wall's face above it, a
+      // cell tall, copied a column at a time from the face of the wall cell it stands under, so the face
+      // follows a slope or a curve with its courses unbroken.
+      const faces = new Map<number, HTMLCanvasElement>();
+      const faceCell = (x: number, y: number) => {
+        const key = y * cells.width + x;
+        let made = faces.get(key);
+        if (!made) {
+          made = document.createElement("canvas");
+          made.width = Math.ceil(T * resolution);
+          made.height = Math.ceil(T * resolution);
+          const c = made.getContext("2d")!;
+          c.scale(resolution, resolution);
+          c.translate(-x * T, -y * T);
+          paint.face(c, x, y);
+          faces.set(key, made);
+        }
+        return made;
+      };
+      const zoneCells = cellsOf(both, () => true);
+      if (zoneCells.length) {
+        ctx.save();
+        if (!everywhere) clipCells(zoneCells);
+        ctx.clip(closed, "evenodd");
+        if (paint.rockVoid) ctx.clip(pathOf(rockLoops));
+        const step = 1 / resolution;
+        for (const s of segs) {
+          if (s.bx <= s.ax + 1e-6) continue;
+          for (let x = Math.floor(s.ax * resolution) / resolution; x < s.bx; x += step) {
+            const mx = x + step / 2;
+            if (mx < s.ax || mx > s.bx) continue;
+            const y = Math.round((s.ay + ((mx - s.ax) * (s.by - s.ay)) / (s.bx - s.ax)) * resolution) / resolution;
+            const cx = Math.min(cells.width - 1, Math.max(0, Math.floor(mx / T)));
+            const cy = Math.min(cells.height - 1, Math.max(0, Math.ceil(y / T - 1e-6) - 1));
+            if (!both.has(cy * cells.width + cx) && !(cy > 0 && both.has((cy - 1) * cells.width + cx))) continue;
+            ctx.drawImage(faceCell(cx, cy), Math.round((x - cx * T) * resolution), 0, 1, T * resolution, x, y - T, step, T);
+          }
+        }
+        ctx.restore();
+      }
+      // The line round the floor: a pale rim along the wall's top and a dark hairline where it meets the
+      // floor or the void (none at a face's foot: the face has its own), and a soft shadow on the floor at
+      // the wall's foot. Where only the cut corners are drawn, only along their slopes and curves.
+      const rimColour = building && !buried ? "rgba(200, 186, 160, 0.45)" : "rgba(120, 107, 91, 0.95)";
+      const lineColour = building && !buried ? "rgba(20, 16, 12, 0.85)" : "rgba(29, 27, 24, 0.95)";
+      const stroke = (list: Seg[], pick: (s: Seg) => boolean, colour: string, width: number) => {
+        ctx.strokeStyle = colour;
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        for (const s of list)
+          if ((everywhere || slanted(s)) && pick(s)) {
+            ctx.moveTo(s.ax, s.ay);
+            ctx.lineTo(s.bx, s.by);
+          }
+        ctx.stroke();
+      };
+      const faceUp = (s: Seg) => s.bx > s.ax + 1e-6 && Math.abs(s.by - s.ay) < (s.bx - s.ax) * 1.5;
+      if (zoneCells.length) {
+        ctx.save();
+        if (!everywhere) clipCells(zoneCells);
+        ctx.save();
+        ctx.clip(open);
+        // At a wall's foot: every wall but one standing below the floor.
+        const lit = (s: Seg) => (s.bx - s.ax) / Math.hypot(s.bx - s.ax, s.by - s.ay) > -0.5;
+        stroke(segs, lit, "rgba(0, 0, 0, 0.13)", 7);
+        stroke(segs, lit, "rgba(0, 0, 0, 0.15)", 3.5);
+        ctx.restore();
+        ctx.save();
+        ctx.clip(closed, "evenodd");
+        stroke(segs, (s) => !faceUp(s), rimColour, 2.2);
+        ctx.restore();
+        stroke(segs, (s) => !faceUp(s), lineColour, 0.7);
+        ctx.restore();
+      }
+      if (rockSegs.length) {
+        ctx.save();
+        if (!everywhere) clipCells(cellsOf(rockZone, (x, y) => !openAt(x, y)));
+        ctx.save();
+        ctx.clip(pathOf(rockLoops));
+        stroke(rockSegs, () => true, rimColour, 2.2);
+        ctx.restore();
+        stroke(rockSegs, () => true, lineColour, 0.8);
+        ctx.restore();
+      }
     };
     if (coded) {
       const at = (x: number, y: number) =>
@@ -633,7 +768,7 @@ export function DungeonMapView({
       if (building)
         for (let y = 0; y < cells.height; y++)
           for (let x = 0; x < cells.width; x++) if (at(x, y) === "wall") insetWallCell(x, y);
-      shadeWallFeet(ctx);
+      if (building || planned) shadeWallFeet(ctx);
       // A planned building's lair floor is dug, not built (lair panel 5, all five: the lair floors read as
       // masonry, not cut from rock): beaten earth and broken rock over the flags everywhere but the great
       // chamber, which keeps its laid floor as the creature's hall; the solid round it the dark of the deep
@@ -668,7 +803,22 @@ export function DungeonMapView({
             }
           }
       }
-      softCorners(!building || buried, (x, y, fx, fy) => {
+      softWalls(building || planned ? (buried ? "carved" : "built") : "full", {
+        top: (x, y) => {
+          if (!building) return paintDungeonWall(ctx, cells.set, x * T, y * T, false, cellNoise(x, y), true);
+          let deep = true;
+          for (let dy = -1; dy <= 1 && deep; dy++)
+            for (let dx = -1; dx <= 1; dx++) {
+              const near = at(x + dx, y + dy);
+              if (near === "floor" || near === "liquid") deep = false;
+            }
+          paintBuildingWall(ctx, building, x * T, y * T, false, cellNoise(x, y), deep);
+        },
+        face: (c, x, y) =>
+          building
+            ? paintBuildingWall(c, building, x * T, y * T, true, cellNoise(x, y))
+            : paintDungeonWall(c, cells.set, x * T, y * T, true, cellNoise(x, y)),
+        floor: (x, y, fx, fy) => {
         if (building) {
           ctx.translate((x - fx) * T, (y - fy) * T);
           paintBuildingFloorCell(fx, fy);
@@ -686,6 +836,8 @@ export function DungeonMapView({
             ctx.fillRect(x * T, y * T, T, T);
           }
         }
+      },
+        rockVoid: !building && !planned && !buried && !outdoors,
       });
       // A rug in the quiet rooms people live in, under their furniture (panel 2026-11-17).
       if (building)
@@ -1085,9 +1237,29 @@ export function DungeonMapView({
           if (piece >= 0) drawTile.edge(ctx, "dn_liquid", piece, x * T, y * T, cellNoise(x, y)(71));
         }
     }
-    shadeWallFeet(ctx);
-    softCorners(true, (x, y, fx, fy) => {
-      if (!drawTile(ctx, "dn_floor", x * T, y * T, cellNoise(fx, fy)(5))) plain(PLAIN.floor, x * T, y * T);
+    // A place cut from rock has its walls' feet shaded round the smoothed outline instead (softWalls).
+    if (building || planned) shadeWallFeet(ctx);
+    softWalls(building || planned ? (buried ? "carved" : "built") : "full", {
+      top: (x, y) => {
+        const pick = cellNoise(x, y)(5);
+        // The top's middle piece, no rim: the rim is drawn round the smoothed outline.
+        if (buried || cells.roomNames) {
+          if (drawTile(ctx, "dn_wall", x * T, y * T, pick)) return;
+        } else if (drawPatternCell(ctx, "dn_wall_top", 3, 3, x, y, pick)) return;
+        if (!drawTile(ctx, "dn_wall", x * T, y * T, pick)) plain(PLAIN.wall, x * T, y * T);
+      },
+      face: (c, x, y) => {
+        const pick = cellNoise(x, y)(5);
+        if (drawPatternCell(c, "dn_wall_face", x % 6, 1, x, y, pick)) return;
+        if (!drawTile(c, "dn_wall", x * T, y * T, pick)) {
+          c.fillStyle = PLAIN.wall;
+          c.fillRect(x * T, y * T, T, T);
+        }
+      },
+      floor: (x, y, fx, fy) => {
+        if (!drawTile(ctx, "dn_floor", x * T, y * T, cellNoise(fx, fy)(5))) plain(PLAIN.floor, x * T, y * T);
+      },
+      rockVoid: !building && !planned && !outdoors && !buried,
     });
     // A doorway through a wall's face (walls with their faces either side, floor in front and behind) gets
     // the pack's door, an arch two cells tall standing in the wall.
@@ -2105,13 +2277,13 @@ export function DungeonMapView({
           glow.addColorStop(0.35, colour);
           glow.addColorStop(1, colour.replace(/[\d.]+\)$/, "0)"));
           ctx.fillStyle = glow;
-          for (const { x, y } of dungeonRoomCells(chamber))
-            if (
-              !inFog(x, y) &&
-              cells.ground[y * cells.width + x] !== "wall" &&
-              cells.ground[y * cells.width + x] !== "rock"
-            )
-              ctx.fillRect(x * T, y * T, T, T);
+          // Every open cell the glow reaches, in the chamber or not: its corners are rounded off now, so the
+          // tint stopping at the chamber's square drew a hard line across open floor (2026-11-20).
+          const r = Math.ceil(reach / T) + 1;
+          const [gx, gy] = [Math.floor(mx / T), Math.floor(my / T)];
+          for (let y = Math.max(0, gy - r); y <= Math.min(cells.height - 1, gy + r); y++)
+            for (let x = Math.max(0, gx - r); x <= Math.min(cells.width - 1, gx + r); x++)
+              if (!inFog(x, y) && cells.ground[y * cells.width + x] !== "rock") ctx.fillRect(x * T, y * T, T, T);
           // A breach's floor scorched round the rift, a dragon's round its heap.
           if (lairKind === "breach" || lairKind === "hoard")
             for (const { x, y } of lairCells.filter((c) => !inFog(c.x, c.y))) {

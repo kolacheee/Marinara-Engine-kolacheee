@@ -520,6 +520,47 @@ function carveCorridor(
   random: () => number,
 ) {
   const horizontalFirst = random() < 0.5;
+  // A narrow way often runs on the slant (owner 2026-11-20, "diagonal passages"): a stair of single steps
+  // the view draws as one diagonal, as far as the two ends lie apart both ways, then straight on.
+  if (!wide && random() < 0.5) {
+    const sx = Math.sign(b.x - a.x);
+    const sy = Math.sign(b.y - a.y);
+    const slant = Math.min(Math.abs(b.x - a.x), Math.abs(b.y - a.y));
+    let [x, y] = [a.x, a.y];
+    const dig = () => (ground[y * width + x] = "floor");
+    const straight = () => {
+      while (x !== b.x || y !== b.y) {
+        if (x !== b.x) x += sx;
+        else y += sy;
+        dig();
+      }
+    };
+    dig();
+    const slantFirst = random() < 0.5;
+    if (!slantFirst) {
+      // Straight first, as far as leaves a slant to finish on.
+      const rest = Math.abs(b.x - a.x) - slant || -(Math.abs(b.y - a.y) - slant);
+      for (let n = 0; n < Math.abs(rest); n++) {
+        if (rest > 0) x += sx;
+        else y += sy;
+        dig();
+      }
+    }
+    for (let n = 0; n < slant && (x !== b.x || y !== b.y); n++) {
+      if (horizontalFirst) {
+        x += sx;
+        dig();
+        y += sy;
+      } else {
+        y += sy;
+        dig();
+        x += sx;
+      }
+      dig();
+    }
+    straight();
+    return;
+  }
   const line = (x0: number, y0: number, x1: number, y1: number) => {
     const dx = Math.sign(x1 - x0);
     const dy = Math.sign(y1 - y0);
@@ -715,6 +756,62 @@ export function dungeonCutCorners(
   return cut;
 }
 
+/**
+ * A rectangular room given a shape (owner 2026-11-20: "round and octagonal chambers"): its corners walled
+ * off on the diagonal, k cells deep (an octagon), or every cell outside the ellipse it holds walled (round).
+ * A doorway into it keeps a way straight in from the door, and the floor stays one area; else nothing is
+ * walled. Returns the cells walled.
+ */
+export function dungeonShapeRoom(
+  ground: DungeonGround[],
+  width: number,
+  height: number,
+  room: { x: number; y: number; w: number; h: number },
+  shape: "octagon" | "round",
+  keep: (i: number) => boolean = () => false,
+): number[] {
+  const { x: rx, y: ry, w, h } = room;
+  if (Math.min(w, h) < 5) return [];
+  const inRoom = (x: number, y: number) => x >= rx && y >= ry && x < rx + w && y < ry + h;
+  const open = (x: number, y: number) =>
+    x >= 0 && y >= 0 && x < width && y < height && (ground[y * width + x] === "floor" || ground[y * width + x] === "liquid");
+  for (let y = ry; y < ry + h; y++) for (let x = rx; x < rx + w; x++) if (!open(x, y)) return [];
+  const walled = new Set<number>();
+  const k = Math.min(4, Math.max(1, Math.floor(Math.min(w, h) / 3)));
+  const [cx, cy] = [rx + (w - 1) / 2, ry + (h - 1) / 2];
+  for (let y = ry; y < ry + h; y++)
+    for (let x = rx; x < rx + w; x++) {
+      const [i, j] = [Math.min(x - rx, rx + w - 1 - x), Math.min(y - ry, ry + h - 1 - y)];
+      const out =
+        shape === "octagon"
+          ? i + j < k
+          : ((x - cx) / (w / 2 + 0.05)) ** 2 + ((y - cy) / (h / 2 + 0.05)) ** 2 > 1 && i + j < Math.ceil(Math.min(w, h) / 2);
+      if (out) walled.add(y * width + x);
+    }
+  // A doorway into the room: the room's edge cell inside it, and the cells straight in from it.
+  for (let y = ry; y < ry + h; y++)
+    for (let x = rx; x < rx + w; x++)
+      for (const [dx, dy] of [
+        [0, -1],
+        [0, 1],
+        [-1, 0],
+        [1, 0],
+      ] as const) {
+        if (inRoom(x + dx, y + dy) || !open(x + dx, y + dy)) continue;
+        for (let [px, py] = [x, y]; inRoom(px, py) && walled.has(py * width + px); px -= dx, py -= dy)
+          walled.delete(py * width + px);
+      }
+  for (const i of walled) if (keep(i)) return [];
+  const ids = [...walled];
+  const was = ids.map((i) => ground[i]!);
+  for (const i of ids) ground[i] = "wall";
+  if (!floorConnected(ground, width)) {
+    ids.forEach((i, n) => (ground[i] = was[n]!));
+    return [];
+  }
+  return ids;
+}
+
 /** Whether every floor cell is one area, four ways. */
 function floorConnected(ground: DungeonGround[], width: number): boolean {
   const first = ground.indexOf("floor");
@@ -761,7 +858,7 @@ export function generateDungeonMap(setId: string, seed: number, size: DungeonMap
     rooms =
       set.kind === "station"
         ? placeRooms(width, height, count, 4, 8, random)
-        : placeRooms(width, height, count, 3, 7, random);
+        : placeRooms(width, height, count, 3, 10, random);
     rooms.sort((a, b) => a.y - b.y || a.x - b.x);
     for (const room of rooms) carveRoom(ground, width, room);
     // Each room joined to the nearest already joined, so all are reachable.
@@ -776,7 +873,10 @@ export function generateDungeonMap(setId: string, seed: number, size: DungeonMap
       }
       carveCorridor(ground, width, here, centre(nearest), set.kind === "station", random);
     }
-    // Rooms with their corners taken off, drawn as diagonals or curves (owner 2026-11-20).
+    // Round and eight-sided chambers (owner 2026-11-20), then the other rooms' corners taken off.
+    for (const room of rooms)
+      if (Math.min(room.w, room.h) >= 5 && random() < (Math.min(room.w, room.h) >= 6 ? 0.6 : 0.35))
+        dungeonShapeRoom(ground, width, height, room, random() < 0.5 ? "round" : "octagon");
     dungeonCutCorners(ground, width, height, random);
   }
   // Liquid: a pool inside some rooms, never on their edge, so a room stays walkable round it.
@@ -1023,6 +1123,16 @@ export const gameDungeonMapSchema = z
     lairFeature: z
       .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
       .max(300)
+      .optional(),
+    /** Cells walled to make a chamber round, and to make one eight-sided (owner 2026-11-20): the view draws
+     *  them as one curve, one slope. */
+    curves: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(600)
+      .optional(),
+    slopes: z
+      .array(z.object({ x: z.number().int(), y: z.number().int() }).strict())
+      .max(600)
       .optional(),
     /** On a cave lair floor, the one-cell crawl through fallen rock into the great chamber (lair panel 5). */
     lairCrawl: z.object({ x: z.number().int(), y: z.number().int() }).strict().optional(),
