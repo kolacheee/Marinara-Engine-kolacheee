@@ -238,6 +238,8 @@ export function DungeonMapView({
   const floorPathRef = useRef<Path2D | null>(null);
   /** The floor and, a cell above it, the walls' faces behind it: where a heap in front of a wall may lie. */
   const frontPathRef = useRef<Path2D | null>(null);
+  /** Props that stand taller than their cell, each drawn alone, so a figure north of one walks behind it. */
+  const tallPropsRef = useRef<Array<{ x: number; y: number; canvas: HTMLCanvasElement }>>([]);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const walkingRef = useRef(false);
   const [walking, setWalking] = useState(false);
@@ -260,6 +262,23 @@ export function DungeonMapView({
     if (!ctx) return canvas;
     ctx.scale(resolution, resolution);
     ctx.imageSmoothingEnabled = false;
+    // A prop drawn alone as well, a cell either side and two above its own: kept when any of it stands above
+    // its cell, to be set down again over a figure standing behind it (art overhaul plan, stage E2).
+    const tall: Array<{ x: number; y: number; canvas: HTMLCanvasElement }> = [];
+    tallPropsRef.current = tall;
+    const keepTall = (x: number, y: number, paint: (c: CanvasRenderingContext2D) => void) => {
+      const made = document.createElement("canvas");
+      made.width = 3 * T * resolution;
+      made.height = 3 * T * resolution;
+      const c = made.getContext("2d");
+      if (!c) return;
+      c.imageSmoothingEnabled = false;
+      c.scale(resolution, resolution);
+      c.translate(-(x - 1) * T, -(y - 2) * T);
+      paint(c);
+      const above = c.getImageData(0, 0, made.width, 2 * T * resolution).data;
+      for (let i = 3; i < above.length; i += 4) if (above[i]! > 0) return void tall.push({ x, y, canvas: made });
+    };
     // A building gone bad with no pack of its own: drawn as a building, walls, hall, rooms and furniture.
     const building = buildingStyleOf(cells.set);
     const coded = !drawTile.image && (building !== null || dungeonPaintsSet(cells.set));
@@ -1279,11 +1298,15 @@ export function DungeonMapView({
                 ? { w: same(-1, 0), e: same(1, 0), n: same(0, -1), s: same(0, 1) }
                 : undefined;
             paintBuildingProp(ctx, building, prop, x * T, y * T, join);
+            keepTall(x, y, (c) => paintBuildingProp(c, building, prop, x * T, y * T, join));
           } else if (prop === DUNGEON_EXIT_PROP) {
             // The way: out on the first floor, up on the floors below it, and down where the floor goes on.
             const isDown = links.down?.x === x && links.down?.y === y;
             paintDungeonWay(ctx, way, isDown ? "down" : links.floor > 1 ? "up" : "out", x * T, y * T);
-          } else paintDungeonProp(ctx, cells.set, prop, x * T, y * T);
+          } else {
+            paintDungeonProp(ctx, cells.set, prop, x * T, y * T);
+            keepTall(x, y, (c) => paintDungeonProp(c, cells.set, prop, x * T, y * T));
+          }
         }
       // A warm pool of light round each hearth, range and brazier (casual panel 2026-11-17).
       if (building)
@@ -1455,7 +1478,8 @@ export function DungeonMapView({
       for (let x = 0; x < cells.width; x++) {
         const prop = cells.props[y * cells.width + x]!;
         if (prop < 0) continue;
-        if (!drawTile(ctx, `dn_prop${prop}`, x * T, y * T)) {
+        if (drawTile(ctx, `dn_prop${prop}`, x * T, y * T)) keepTall(x, y, (c) => drawTile(c, `dn_prop${prop}`, x * T, y * T));
+        else {
           ctx.fillStyle = PLAIN.prop;
           if (prop === DUNGEON_EXIT_PROP) {
             ctx.fillRect(x * T + 3, y * T + 3, T - 6, T - 6);
@@ -1554,11 +1578,22 @@ export function DungeonMapView({
       ctx.imageSmoothingEnabled = false;
       for (const trap of foundTraps) paintFoundTrap(ctx, trap.x * T, trap.y * T);
       const inFog = (x: number, y: number) => fogged.some((room) => dungeonRoomHas(room, x, y));
+      // A figure standing behind a tall prop (a row or two north of it) is hidden by the prop's top, set
+      // down again over the figure (art overhaul plan, stage E2).
+      const over = (fx: number, fy: number) => {
+        for (const prop of tallPropsRef.current)
+          if (prop.y > fy && prop.y <= fy + 2 && Math.abs(prop.x - fx) <= 1 && !inFog(prop.x, prop.y))
+            ctx.drawImage(prop.canvas, (prop.x - 1) * T, (prop.y - 2) * T, 3 * T, 3 * T);
+      };
       // On a map made by hand, someone at each spot in use at the hour (map editor Phase 3).
       for (const { at, person } of standing) {
-        if (drawTile.character(ctx, { person: person.id }, at.x * T, at.y * T)) continue;
+        if (drawTile.character(ctx, { person: person.id }, at.x * T, at.y * T)) {
+          over(at.x, at.y);
+          continue;
+        }
         const pick = ([...person.id].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7) % 100) / 100;
         if (!drawTile(ctx, "folk", at.x * T, at.y * T - 4, pick)) paintParty(ctx, at.x * T + 1, at.y * T - 3, false);
+        over(at.x, at.y);
       }
       // The holders' posts (dungeon spawns): who stands guard where, the heart's chief crowned.
       // A post of more than one shows a second figure a step behind the first.
@@ -3193,6 +3228,7 @@ export function DungeonMapView({
         if (guard.count > 2) paintGuard(ctx, guard.x * T - 1, guard.y * T - 8, false);
         if (guard.count > 1) paintGuard(ctx, guard.x * T + 7, guard.y * T - 5, false);
         paintGuard(ctx, guard.x * T + (guard.count > 1 ? -3 : 1), guard.y * T - 3, guard.heart);
+        over(guard.x, guard.y);
         // Asleep, off watch (owner 2026-11-18, "Authored guard set-ups"): a drift of z's over them.
         if (guard.asleep)
           for (const [k, [zx, zy, zs]] of (
@@ -3241,6 +3277,7 @@ export function DungeonMapView({
         );
         const [x, y] = [Math.round(party.x) - 8, Math.round(party.y) - 14];
         if (!drawn && !drawTile(ctx, "party", x, y)) paintParty(ctx, x + 1, y + 1, frame !== 1);
+        over(Math.floor(party.x / T), Math.floor(party.y / T));
       }
     },
     [
