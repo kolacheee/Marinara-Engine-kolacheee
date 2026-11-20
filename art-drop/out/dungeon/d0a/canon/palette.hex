@@ -1,0 +1,538 @@
+; D0a Part A / explicit material values / sRGB, CIELAB L* D65
+; Roles belong to colours, never to a fixed step number across materials.
+; Mass L*5-15 uses void-mass and must be <=75% of the actual wall-top L*.
+; Tops L*18-30; faces L*25-40; floors L*35-55 with total span <=15.
+; Listed floor steps only. If a role is absent, borrow a compatible ramp.
+; Outlines use step 1 of the object ramp, with >=10 L* gap from the floor.
+; Body L*30-70 AND >=10 L* from its actual floor. Not every pairing works.
+; Glints are small highlights, never broad bodies, floors or faces.
+; Reference-only steps above 85 retain exact master anchors; do not use in scene art.
+; Top-left edges at most one step lighter than adjacent object shade.
+; Focal colours require >=15 L* above their actual floor and L*<=85.
+; Gameplay and feature ramps are entity-only; found traps need a striped rim.
+; Hoard heap body steps 3-4; loose loot steps 5-6. Dress with hoard-bronze.
+; Hive dressing uses hive-resin. Ember material is muted relative to the rift.
+; Material caps: surfaces 32 / props 48. The complete atlas is exempt.
+
+; keep
+; limestone / face:2  body:2,3,4  floor:2,3  glint:5,6
+#252a36 limestone-1 L*=17
+#4e535a limestone-2 L*=35
+#74766f limestone-3 L*=49
+#989f9d limestone-4 L*=65
+#b8b5a3 limestone-5 L*=73
+#d2c1a5 limestone-6 L*=79
+
+; wood-oak / top:2  face:2  body:3,4,5  floor:3,4  glint:6
+#282337 wood-oak-1 L*=15
+#553d2b wood-oak-2 L*=28
+#825b39 wood-oak-3 L*=42
+#91643b wood-oak-4 L*=46
+#b69057 wood-oak-5 L*=62
+#d8b77c wood-oak-6 L*=76
+
+; iron / top:2  face:2,3  body:3,4,5  glint:6
+#192330 iron-1 L*=13
+#313d4c iron-2 L*=25
+#535e68 iron-3 L*=39
+#7b858a iron-4 L*=55
+#a3acaa iron-5 L*=70
+#c2c7ba iron-6 L*=80
+
+
+; temple
+; sandstone / top:1  face:2  body:2,3,4  floor:2,3  glint:5,6
+#352937 sandstone-1 L*=18
+#63504b sandstone-2 L*=36
+#8e7057 sandstone-3 L*=50
+#aa895f sandstone-4 L*=59
+#c5a777 sandstone-5 L*=70
+#e1c593 sandstone-6 L*=81
+
+; marble / top:1  face:2  body:2,3  floor:2,3  glint:4,5  reference-only:6
+#303246 marble-1 L*=21
+#555e70 marble-2 L*=40
+#717f8c marble-3 L*=52
+#b0bab9 marble-4 L*=75
+#d1d3c9 marble-5 L*=84
+#ddd7ca marble-6 L*=86
+
+; brass / face:2  body:2,3,4  glint:5,6
+#30263d brass-1 L*=17
+#655038 brass-2 L*=36
+#96803f brass-3 L*=54
+#b79d4f brass-4 L*=66
+#cab269 brass-5 L*=73
+#e2cc94 brass-6 L*=83
+
+
+; manor
+; plaster / top:1  body:2,3  floor:2,3  glint:4,5  reference-only:6
+#333044 plaster-1 L*=21
+#605d65 plaster-2 L*=40
+#83817a plaster-3 L*=54
+#b3ab97 plaster-4 L*=70
+#d2c1a5 plaster-5 L*=79
+#ddd7ca plaster-6 L*=86
+
+; timber / top:2  face:3  body:3,4,5  glint:6
+#252032 timber-1 L*=14
+#493233 timber-2 L*=23
+#6b3e2b timber-3 L*=31
+#93613d timber-4 L*=46
+#b38453 timber-5 L*=59
+#d1ab70 timber-6 L*=72
+
+; parquet / top:2  face:2  body:3,4,5  floor:3,4  glint:6
+#2e2438 parquet-1 L*=16
+#553d2b parquet-2 L*=28
+#825b39 parquet-3 L*=42
+#a07748 parquet-4 L*=53
+#b69057 parquet-5 L*=62
+#d1af7b parquet-6 L*=73
+
+; textiles-russet / top:2  face:2,3  body:3,4,5  glint:6
+#302336 textiles-russet-1 L*=16
+#5a3546 textiles-russet-2 L*=27
+#844c50 textiles-russet-3 L*=39
+#a86a59 textiles-russet-4 L*=51
+#c89473 textiles-russet-5 L*=66
+#dbb89b textiles-russet-6 L*=77
+
+; textiles-teal / face:2  body:2,3,4  glint:5,6
+#182e3e textiles-teal-1 L*=18
+#294f59 textiles-teal-2 L*=31
+#427579 textiles-teal-3 L*=46
+#63958d textiles-teal-4 L*=58
+#94b9a4 textiles-teal-5 L*=72
+#c0ceae textiles-teal-6 L*=81
+
+; textiles-sage / top:1,2  face:2  body:3,4  glint:5,6
+#223542 textiles-sage-1 L*=21
+#354937 textiles-sage-2 L*=29
+#64745c textiles-sage-3 L*=47
+#99ae80 textiles-sage-4 L*=68
+#bdc5a3 textiles-sage-5 L*=78
+#d4d2b5 textiles-sage-6 L*=84
+
+
+; crypt
+; dark-masonry / top:3  face:3,4  body:4,5,6  floor:4,5
+#171924 dark-masonry-1 L*=9
+#292b3b dark-masonry-2 L*=18
+#3f4252 dark-masonry-3 L*=28
+#575a64 dark-masonry-4 L*=38
+#737770 dark-masonry-5 L*=50
+#939485 dark-masonry-6 L*=61
+
+; bone / top:1  body:2,3  glint:4,5,6
+#303142 bone-1 L*=21
+#5e6166 bone-2 L*=41
+#8b8e86 bone-3 L*=59
+#b7b49b bone-4 L*=73
+#d0c6a8 bone-5 L*=80
+#ded2b6 bone-6 L*=84
+
+; lichen / top:1,2  face:2  body:3,4,5  glint:6
+#23323a lichen-1 L*=20
+#354937 lichen-2 L*=29
+#576e49 lichen-3 L*=44
+#7e925d lichen-4 L*=58
+#99ae80 lichen-5 L*=68
+#c3c99d lichen-6 L*=80
+
+
+; cave_rock
+; grey-brown-rock / top:2  face:2  body:3,4,5  floor:3,4  glint:6
+#292737 grey-brown-rock-1 L*=16
+#48414a grey-brown-rock-2 L*=29
+#6b605a grey-brown-rock-3 L*=42
+#898070 grey-brown-rock-4 L*=54
+#a99c80 grey-brown-rock-5 L*=65
+#c3b294 grey-brown-rock-6 L*=73
+
+; mud / top:2  face:3,4  body:3,4,5,6  floor:4,5
+#252132 mud-1 L*=14
+#403038 mud-2 L*=22
+#584338 mud-3 L*=30
+#70593e mud-4 L*=39
+#8b714c mud-5 L*=49
+#aa8f65 mud-6 L*=61
+
+; fungus / top:2  face:2  body:3,4  glint:5,6
+#32263f fungus-1 L*=18
+#573d61 fungus-2 L*=30
+#805775 fungus-3 L*=42
+#aa7e87 fungus-4 L*=57
+#cca69b fungus-5 L*=71
+#dfc7b1 fungus-6 L*=82
+
+
+; cave_ice
+; blue-ice / top:1  face:2  body:2,3  floor:2,3  glint:4,5,6
+#202d50 blue-ice-1 L*=19
+#465e83 blue-ice-2 L*=39
+#5e829e blue-ice-3 L*=53
+#85b4c4 blue-ice-4 L*=71
+#abd0d4 blue-ice-5 L*=81
+#c5d7d5 blue-ice-6 L*=85
+
+; frost / top:1  body:2,3  floor:2,3  glint:4,5,6
+#2d3c53 frost-1 L*=25
+#49617c frost-2 L*=40
+#6c8297 frost-3 L*=53
+#aec5ce frost-4 L*=78
+#bcccd1 frost-5 L*=81
+#d0d5ce frost-6 L*=85
+
+; snowdrift / top:1  body:2,3  floor:2,3  glint:4,5,6
+#343a54 snowdrift-1 L*=25
+#56647e snowdrift-2 L*=42
+#768297 snowdrift-3 L*=54
+#b7c4cc snowdrift-4 L*=78
+#c4d0d1 snowdrift-5 L*=83
+#d6d3cb snowdrift-6 L*=85
+
+
+; cave_crystal
+; dark-rock / top:2,3  face:3,4  body:4,5,6  floor:4,5
+#201c32 dark-rock-1 L*=12
+#352c46 dark-rock-2 L*=20
+#4c405c dark-rock-3 L*=29
+#635671 dark-rock-4 L*=39
+#81738b dark-rock-5 L*=50
+#a294a2 dark-rock-6 L*=63
+
+; violet-crystal / top:2  face:2  body:3,4  glint:5,6
+#2a204a violet-crystal-1 L*=16
+#4c3c77 violet-crystal-2 L*=30
+#7658a4 violet-crystal-3 L*=44
+#9b80c4 violet-crystal-4 L*=58
+#b7a3da violet-crystal-5 L*=70
+#d5c6e3 violet-crystal-6 L*=82
+
+
+; cave_lava
+; basalt / top:3  face:4  body:4,5,6  floor:5,6
+#181723 basalt-1 L*=8
+#292632 basalt-2 L*=16
+#3c3641 basalt-3 L*=24
+#514950 basalt-4 L*=32
+#68615f basalt-5 L*=42
+#82796c basalt-6 L*=51
+
+; embers / top:2  face:2,3  body:3,4,5  glint:6
+#2d192b embers-1 L*=12
+#63303b embers-2 L*=27
+#98433c embers-3 L*=40
+#bc6048 embers-4 L*=51
+#cf824f embers-5 L*=61
+#e7b17b embers-6 L*=76
+
+; ash / face:2  body:2,3,4,5  floor:3  glint:6
+#282733 ash-1 L*=16
+#494650 ash-2 L*=30
+#6c686e ash-3 L*=45
+#928e8a ash-4 L*=59
+#b0aaa0 ash-5 L*=70
+#c8c0af ash-6 L*=78
+
+
+; dungeon_sewer
+; brick / top:2  face:2,3  body:3,4,5  floor:3,4  glint:6
+#302131 brick-1 L*=15
+#59323b brick-2 L*=26
+#804a43 brick-3 L*=38
+#a16950 brick-4 L*=50
+#bd8d67 brick-5 L*=62
+#d8b28a brick-6 L*=75
+
+; slime / top:1  face:2  body:2,3,4  glint:5,6
+#23332f slime-1 L*=20
+#3b5141 slime-2 L*=32
+#657b3f slime-3 L*=49
+#94a448 slime-4 L*=64
+#b9bf65 slime-5 L*=75
+#d4cf98 slime-6 L*=82
+
+; sewer-water / top:1,2  face:2  body:3,4,5  floor:3,4  glint:6
+#192f39 sewer-water-1 L*=18
+#2e4851 sewer-water-2 L*=29
+#426560 sewer-water-3 L*=40
+#668570 sewer-water-4 L*=53
+#94a78a sewer-water-5 L*=66
+#bac2a2 sewer-water-6 L*=77
+
+
+; station_corridor
+; station-panels / face:2  body:2,3,4  floor:3  glint:5,6
+#202c40 station-panels-1 L*=18
+#3a4b61 station-panels-2 L*=31
+#5c7081 station-panels-3 L*=46
+#81959f station-panels-4 L*=60
+#a7b6b8 station-panels-5 L*=73
+#c8cebf station-panels-6 L*=82
+
+; hazard-paint / top:1  face:2  body:2,3,4  glint:5,6
+#342e40 hazard-paint-1 L*=20
+#66573e hazard-paint-2 L*=38
+#958047 hazard-paint-3 L*=54
+#b49c5e hazard-paint-4 L*=65
+#c9b87f hazard-paint-5 L*=75
+#dbcdac hazard-paint-6 L*=83
+
+
+; station_lab
+; clean-tile / top:1  body:2,3  floor:2,3  glint:4,5  reference-only:6
+#2c3b4c clean-tile-1 L*=24
+#4e6576 clean-tile-2 L*=42
+#70858f clean-tile-3 L*=54
+#b2c5c5 clean-tile-4 L*=78
+#c2d0ca clean-tile-5 L*=82
+#ddd7ca clean-tile-6 L*=86
+
+; tank-glass / top:1  face:2  body:2,3,4  glint:5,6
+#1c304c tank-glass-1 L*=20
+#30556e tank-glass-2 L*=34
+#4c8295 tank-glass-3 L*=51
+#7cabb6 tank-glass-4 L*=67
+#a5c8c9 tank-glass-5 L*=78
+#c5d5cf tank-glass-6 L*=84
+
+; spills / top:1  face:2  body:2,3,4  glint:5,6
+#283341 spills-1 L*=21
+#38564f spills-2 L*=34
+#527d61 spills-3 L*=49
+#83a171 spills-4 L*=63
+#adc19a spills-5 L*=76
+#cad0ac spills-6 L*=82
+
+
+; station_engine
+; soot / top:3  face:3,4  body:4,5,6  floor:4,5
+#151a24 soot-1 L*=9
+#232a33 soot-2 L*=17
+#343d43 soot-3 L*=25
+#4c5556 soot-4 L*=35
+#656c65 soot-5 L*=45
+#83887a soot-6 L*=56
+
+; oil / top:3  face:3,4  body:4,5,6  floor:4,5
+#191827 oil-1 L*=9
+#27263e oil-2 L*=16
+#393a56 oil-3 L*=25
+#515a71 oil-4 L*=38
+#6e818a oil-5 L*=53
+#9aa4a1 oil-6 L*=67
+
+; pipes / face:2  body:2,3,4  glint:5,6
+#202d3a pipes-1 L*=18
+#3c525e pipes-2 L*=34
+#667e86 pipes-3 L*=51
+#8ba3a7 pipes-4 L*=65
+#b3c1bd pipes-5 L*=77
+#d3d1bd pipes-6 L*=84
+
+
+; station_hydro
+; planters / face:2  body:2,3,4,5  floor:3  glint:6
+#342539 planters-1 L*=17
+#62414c planters-2 L*=32
+#8c5c54 planters-3 L*=44
+#ae815f planters-4 L*=58
+#c5a279 planters-5 L*=69
+#dbc29e planters-6 L*=80
+
+; overgrowth / top:1,2  face:2  body:3,4,5  glint:6
+#1f3139 overgrowth-1 L*=19
+#354937 overgrowth-2 L*=29
+#546e48 overgrowth-3 L*=44
+#7b925e overgrowth-4 L*=58
+#99ae80 overgrowth-5 L*=68
+#b8bd89 overgrowth-6 L*=75
+
+; leaks / top:1  face:2  body:2,3,4  glint:5,6
+#203247 leaks-1 L*=20
+#395467 leaks-2 L*=34
+#597d87 leaks-3 L*=50
+#80a3a2 leaks-4 L*=64
+#a6bfb2 leaks-5 L*=75
+#cad0b6 leaks-6 L*=82
+
+
+; building-yard
+; yard-grass / top:1  face:2  body:2,3,4,5  floor:3,4  glint:6
+#273440 yard-grass-1 L*=21
+#3e523d yard-grass-2 L*=33
+#60762f yard-grass-3 L*=47
+#798934 yard-grass-4 L*=54
+#99ae80 yard-grass-5 L*=68
+#c0bf90 yard-grass-6 L*=76
+
+; yard-path / top:1  face:2  body:2,3,4,5  floor:3,4  glint:6
+#302d40 yard-path-1 L*=20
+#5a4e3c yard-path-2 L*=34
+#73644d yard-path-3 L*=43
+#8d7958 yard-path-4 L*=52
+#b49b71 yard-path-5 L*=65
+#d2b68b yard-path-6 L*=75
+
+; yard-cobble / top:1  face:2  body:2,3,4,5  floor:3,4  glint:6
+#292e3c yard-cobble-1 L*=19
+#454f56 yard-cobble-2 L*=33
+#60655c yard-cobble-3 L*=42
+#898065 yard-cobble-4 L*=54
+#aaa48e yard-cobble-5 L*=67
+#cbc0a6 yard-cobble-6 L*=78
+
+; roof-slate / face:2  body:2,3,4  glint:5,6
+#202b41 roof-slate-1 L*=18
+#3b4a64 roof-slate-2 L*=31
+#596e84 roof-slate-3 L*=46
+#80969f roof-slate-4 L*=61
+#a8b9bb roof-slate-5 L*=74
+#c9ccbf roof-slate-6 L*=81
+
+
+; lair-dressing
+; hoard-bronze / top:2  face:2  body:3,4,5  glint:6
+#30253b hoard-bronze-1 L*=17
+#594134 hoard-bronze-2 L*=30
+#84603d hoard-bronze-3 L*=44
+#a6804c hoard-bronze-4 L*=56
+#bf9f69 hoard-bronze-5 L*=67
+#d3b994 hoard-bronze-6 L*=76
+
+; haven-wine / top:2  face:2,3  body:3,4,5  glint:6
+#2f203f haven-wine-1 L*=15
+#54314d haven-wine-2 L*=26
+#79526b haven-wine-3 L*=40
+#9e7894 haven-wine-4 L*=55
+#b69bb2 haven-wine-5 L*=67
+#d1bdc8 haven-wine-6 L*=79
+
+; drowned-kelp / top:1  face:2  body:2,3,4  glint:5,6
+#203339 drowned-kelp-1 L*=20
+#335448 drowned-kelp-2 L*=33
+#4f7b5c drowned-kelp-3 L*=48
+#7b9c74 drowned-kelp-4 L*=61
+#a4ba91 drowned-kelp-5 L*=73
+#c8cca9 drowned-kelp-6 L*=81
+
+; sanctum-cloth / face:2  body:2,3,4  glint:5,6
+#2c2644 sanctum-cloth-1 L*=17
+#4e4568 sanctum-cloth-2 L*=32
+#706488 sanctum-cloth-3 L*=45
+#958bac sanctum-cloth-4 L*=60
+#b6aac5 sanctum-cloth-5 L*=71
+#d2c9da sanctum-cloth-6 L*=82
+
+; breach-stone / face:2  body:2,3,4,5  glint:6
+#312836 breach-stone-1 L*=18
+#5a454b breach-stone-2 L*=32
+#836054 breach-stone-3 L*=44
+#a77e68 breach-stone-4 L*=56
+#c39f85 breach-stone-5 L*=68
+#d8bea6 breach-stone-6 L*=79
+
+; hive-resin / top:1  face:2  body:2,3,4  glint:5,6
+#29333c hive-resin-1 L*=21
+#49523c hive-resin-2 L*=34
+#707c46 hive-resin-3 L*=50
+#98a05e hive-resin-4 L*=64
+#b4b780 hive-resin-5 L*=73
+#cecca2 hive-resin-6 L*=81
+
+
+; gameplay-only
+; foe-red / focal:6
+#301728 foe-red-1 L*=12
+#652a40 foe-red-2 L*=26
+#a43036 foe-red-3 L*=38
+#db414f foe-red-4 L*=51
+#ed7b80 foe-red-5 L*=65
+#f4b5b6 foe-red-6 L*=79
+
+; loot-gold / focal:5,6
+#30273d loot-gold-1 L*=18
+#65501e loot-gold-2 L*=35
+#9b790b loot-gold-3 L*=53
+#c09b19 loot-gold-4 L*=66
+#ddb641 loot-gold-5 L*=76
+#f0d075 loot-gold-6 L*=84
+
+; found-trap / focal:5,6
+#322338 found-trap-1 L*=16
+#70451e found-trap-2 L*=34
+#ac6a0e found-trap-3 L*=51
+#db921a found-trap-4 L*=66
+#eeb341 found-trap-5 L*=77
+#f4cc7e found-trap-6 L*=84
+
+
+; feature-only
+; lair-hoard / focal:6
+#30203a lair-hoard-1 L*=15
+#643e2d lair-hoard-2 L*=30
+#92582b lair-hoard-3 L*=43
+#b67b3f lair-hoard-4 L*=57
+#cd995c lair-hoard-5 L*=67
+#e1bb8a lair-hoard-6 L*=78
+
+; lair-haven / focal:6
+#311a40 lair-haven-1 L*=14
+#62284f lair-haven-2 L*=26
+#963966 lair-haven-3 L*=39
+#c15b9b lair-haven-4 L*=53
+#dc89c0 lair-haven-5 L*=67
+#edbadc lair-haven-6 L*=81
+
+; lair-drowned / focal:5,6
+#172f38 lair-drowned-1 L*=18
+#1d554d lair-drowned-2 L*=32
+#237d63 lair-drowned-3 L*=47
+#449f78 lair-drowned-4 L*=59
+#7cbd95 lair-drowned-5 L*=71
+#b7d6b8 lair-drowned-6 L*=83
+
+; lair-sanctum / focal:6
+#251b48 lair-sanctum-1 L*=14
+#4d2b7c lair-sanctum-2 L*=26
+#783eb2 lair-sanctum-3 L*=39
+#9e6bd1 lair-sanctum-4 L*=54
+#b99ae6 lair-sanctum-5 L*=69
+#d4c8eb lair-sanctum-6 L*=83
+
+; lair-breach / focal:5,6
+#321b30 lair-breach-1 L*=14
+#713332 lair-breach-2 L*=30
+#af481b lair-breach-3 L*=44
+#e36d2a lair-breach-4 L*=59
+#f29958 lair-breach-5 L*=71
+#f7c19a lair-breach-6 L*=82
+
+; lair-den / focal:5,6
+#2e293f lair-den-1 L*=18
+#5e5747 lair-den-2 L*=37
+#8b815d lair-den-3 L*=54
+#b0a374 lair-den-4 L*=67
+#c7bb8c lair-den-5 L*=76
+#ddd0b0 lair-den-6 L*=84
+
+; lair-hive / focal:5,6
+#25312b lair-hive-1 L*=19
+#485c2c lair-hive-2 L*=36
+#75851e lair-hive-3 L*=53
+#a4ac3e lair-hive-4 L*=68
+#bdbe68 lair-hive-5 L*=75
+#d8cd96 lair-hive-6 L*=82
+
+
+; shared-space
+; void-mass / mass:1,2
+#101522 void-mass-1 L*=7
+#18202b void-mass-2 L*=12
+#212c37 void-mass-3 L*=17
+#303e48 void-mass-4 L*=25
+#42535a void-mass-5 L*=34
+#586b6d void-mass-6 L*=44
