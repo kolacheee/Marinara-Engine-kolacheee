@@ -211,6 +211,10 @@ export function DungeonMapView({
   const stairsMutation = useDungeonStairs();
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  /** The floor's smoothed outline as the map was last drawn, so marks laid on the floor stay inside it. */
+  const floorPathRef = useRef<Path2D | null>(null);
+  /** The floor and, a cell above it, the walls' faces behind it: where a heap in front of a wall may lie. */
+  const frontPathRef = useRef<Path2D | null>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const walkingRef = useRef(false);
   const [walking, setWalking] = useState(false);
@@ -324,6 +328,8 @@ export function DungeonMapView({
       /** The wall's top is the same stone as what lies behind it: no line between them. */
       seamless?: boolean;
     };
+    floorPathRef.current = null;
+    frontPathRef.current = null;
     const softWalls = (mode: "full" | "carved" | "built", paint: SoftPainters) => {
       const gAt = (x: number, y: number) =>
         x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
@@ -405,6 +411,10 @@ export function DungeonMapView({
         return path;
       };
       const open = pathOf();
+      floorPathRef.current = open;
+      const front = new Path2D(open);
+      front.addPath(pathOf(false, -T));
+      frontPathRef.current = front;
       const closed = pathOf(true);
       const raised = pathOf(false, -T);
       const zoneCells = cellsOf(zone, () => true);
@@ -2114,8 +2124,13 @@ export function DungeonMapView({
       // The signs on the way in (lair panel 9: "the approach has no payoff"): the last stretch of the walk to
       // the great chamber marked by what lives there, thick at its mouth and thinning out away from it.
       if (lairKind && kept && cells) {
+        // On the floor as drawn (inside its rounded corners), never over a wall or a thing standing there
+        // (owner 2026-11-20: the marks lay over the decorations).
+        ctx.save();
+        if (floorPathRef.current) ctx.clip(floorPathRef.current);
         for (const { x, y, t } of gameDungeonLairTrail(kept)) {
           if (inFog(x, y)) continue;
+          if (cells.props[y * cells.width + x] !== -1) continue;
           const [ox, oy] = [x * T, y * T];
           const h = hash(x * 31 + 7, y * 17 + 3);
           // Every cell near the mouth, about one in three at the stretch's far end.
@@ -2206,6 +2221,7 @@ export function DungeonMapView({
             if (h % 2 === 0) dot(sx + 4, sy + 9, 1, 1, "#ffb347");
           }
         }
+        ctx.restore();
       }
       // The haven's grave mist lying low over its hall, thickest by the coffins (lair panel 11: the mist is
       // the vampire's identity and showed nowhere on the map).
@@ -2312,10 +2328,12 @@ export function DungeonMapView({
           // tint stopping at the chamber's square drew a hard line across open floor (2026-11-20).
           const r = Math.ceil(reach / T) + 1;
           const [gx, gy] = [Math.floor(mx / T), Math.floor(my / T)];
+          ctx.save();
+          if (floorPathRef.current) ctx.clip(floorPathRef.current);
           for (let y = Math.max(0, gy - r); y <= Math.min(cells.height - 1, gy + r); y++)
             for (let x = Math.max(0, gx - r); x <= Math.min(cells.width - 1, gx + r); x++)
-              if (!inFog(x, y) && (cells.ground[y * cells.width + x] === "floor" || cells.ground[y * cells.width + x] === "liquid"))
-                ctx.fillRect(x * T, y * T, T, T);
+              if (!inFog(x, y) && cells.ground[y * cells.width + x] !== "rock") ctx.fillRect(x * T, y * T, T, T);
+          ctx.restore();
           // A breach's floor scorched round the rift, a dragon's round its heap.
           if (lairKind === "breach" || lairKind === "hoard")
             for (const { x, y } of lairCells.filter((c) => !inFog(c.x, c.y))) {
@@ -2493,7 +2511,13 @@ export function DungeonMapView({
         for (let y = Math.max(0, ay0); y <= Math.min(cells.height - 1, ay1); y++)
           for (let x = Math.max(0, ax0); x <= Math.min(cells.width - 1, ax1); x++) {
             const ground = cells.ground[y * cells.width + x];
-            if (hasF(x, y) || (ground !== "wall" && ground !== "rock" && cells.props[y * cells.width + x]! < 0))
+            // A wall's cell too where its face stands behind the heap (owner 2026-11-20: the wall was drawn
+            // over the hoard's edge); the floor's outline and the faces above it limit it below.
+            if (
+              hasF(x, y) ||
+              ((frontPathRef.current ? true : ground !== "rock" && ground !== "wall") &&
+                cells.props[y * cells.width + x]! < 0)
+            )
               lairArea.rect(x * T, y * T, T, T);
           }
       }
@@ -2512,6 +2536,8 @@ export function DungeonMapView({
         };
         ctx.save();
         ctx.clip(lairArea);
+        // On the floor as drawn and over the faces of the walls behind it, never over a wall in front of it.
+        if (frontPathRef.current) ctx.clip(frontPathRef.current);
         for (const [r, fill, only, dx, dy, jitter] of [
           [0.8, "rgba(8, 5, 2, 0.55)", 0, 1, 3, true],
           [0.76, shades[0], 0, 0, 0, true],
@@ -2537,6 +2563,8 @@ export function DungeonMapView({
         const comb = mound(2, ["#4e3008", "#8a5a12", "#a46e18", "#b98222", "#c8922c"]);
         ctx.save();
         ctx.clip(lairArea);
+        // On the floor as drawn and over the faces of the walls behind it, never over a wall in front of it.
+        if (frontPathRef.current) ctx.clip(frontPathRef.current);
         ctx.clip(comb);
         const hx = T * 0.26;
         const hh = hx * Math.sqrt(3);
