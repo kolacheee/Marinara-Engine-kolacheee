@@ -1,6 +1,6 @@
 {
   "language": "de",
-  "sourceCommit": "23426021ff882839b09d262e834a0852541a0cb9",
+  "sourceCommit": "7e60cd4da219097f678c09be32e4829d8d72e87f",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -724,8 +724,8 @@
     },
     {
       "path": "prompts/generation-parameters.md",
-      "sha256": "6e01b159d2a0f2a11e493a569e35b8fbb41bc76ae6ffce405a4f4af3ec72aa57",
-      "bytes": 21036
+      "sha256": "ba97bc7e044a7dabc936686bd7c8664f29a66da4f28faf44f35792d86f2532cb",
+      "bytes": 21674
     },
     {
       "path": "prompts/macros.md",

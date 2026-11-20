@@ -172,7 +172,9 @@ Roleplay에서는 채팅의 **Reasoning Effort**와 전송 스위치가 Illustra
 
 ## 일부 파라미터를 무시하는 모델도 있습니다
 
-모든 모델이 모든 파라미터를 받아들이지는 않습니다. 어떤 모델이 설정을 무시하거나 거부한다는 사실을 Marinara가 알고 있으면 그 설정을 요청에서 빼고 컨트롤도 숨깁니다. 그래서 **Advanced Parameters**와 계정의 **Chat defaults**에는 모델이 실제로 받는 설정만 표시됩니다. temperature 같은 샘플링 설정을 거부하는 추론 모델에서 흔한 일입니다. 예를 들어 Gemini 4 Argon, Carbon, Hydrogen, Neon과 Gemini 3.6부터 3.8까지의 Flash는 **Temperature**, **Top P**, **Top K**, **Frequency**, **Presence**를 받지 않습니다. 모델 목록이 내장된 제공자에서 Marinara가 모르는 모델을 쓰면 **Max Output Tokens**와 Custom Parameters만 전송됩니다.
+모든 모델이 모든 파라미터를 받아들이지는 않습니다. 어떤 모델이 설정을 무시하거나 거부한다는 사실을 Marinara가 알고 있으면 그 설정을 요청에서 빼고 컨트롤도 숨깁니다. 그래서 **Advanced Parameters**와 계정의 **Chat defaults**에는 모델이 실제로 받는 설정만 표시됩니다. temperature 같은 샘플링 설정을 거부하는 추론 모델에서 흔한 일입니다. 예를 들어 Gemini 3와 Gemini 4 모델은 **Temperature**, **Top P**, **Top K**, **Frequency**, **Presence**를 받지 않습니다. 모델 목록이 내장된 제공자에서 Marinara가 모르는 모델을 쓰면 **Max Output Tokens**와 Custom Parameters만 전송됩니다.
+
+모델 자체가 받아들이는 설정이라도 서비스에서 차단할 수 있습니다. OpenRouter는 각 모델이 받아들이는 설정을 알려 주고, Marinara는 나머지를 숨깁니다. 다른 서비스는 요청을 거부할 때만 이를 알려 줍니다. 거부 사유에 이런 설정 중 하나가 명시되면 Marinara는 그 설정을 빼고 메시지를 다시 보내 답변을 받을 수 있게 합니다. 그때부터 해당 서비스와 모델에는 그 설정을 보내지 않습니다. 해당 컨트롤도 다른 컨트롤처럼 숨겨집니다. Marinara는 이를 30일 동안 기억합니다. Custom Parameters에 직접 추가한 설정은 항상 작성한 그대로 전송됩니다.
 
 숨겨진 컨트롤도 보려면 **지원되지 않는 파라미터 표시**를 클릭하세요. 각 컨트롤에는 **이 모델로 전송되지 않음**이 표시되며, 이 모델이 답하는 동안에는 값을 바꿔도 아무 효과가 없습니다.
 

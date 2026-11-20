@@ -172,7 +172,9 @@ Marinara 按下面的顺序确定每个参数。后面的项会覆盖前面的�
 
 ## 有些模型会忽略部分参数
 
-不是每个模型都接受每个参数。Marinara 知道某个模型会忽略或拒绝某项设置时，就把这项从请求里去掉，并隐藏对应控件。因此，**Advanced Parameters** 和账号的 **Chat defaults** 只显示模型实际接收的设置。这在推理模型上很常见，它们会拒绝 temperature 之类的采样设置。例如，Gemini 4 Argon、Carbon、Hydrogen 和 Neon，以及 Gemini 3.6 到 3.8 Flash，都不接受 **Temperature**、**Top P**、**Top K**、**Frequency** 或 **Presence**。如果服务商内置了模型列表，而 Marinara 不认识所选模型，就只会向它发送 **Max Output Tokens** 和 Custom Parameters。
+不是每个模型都接受每个参数。Marinara 知道某个模型会忽略或拒绝某项设置时，就把这项从请求里去掉，并隐藏对应控件。因此，**Advanced Parameters** 和账号的 **Chat defaults** 只显示模型实际接收的设置。这在推理模型上很常见，它们会拒绝 temperature 之类的采样设置。例如，Gemini 3 和 Gemini 4 模型都不接受 **Temperature**、**Top P**、**Top K**、**Frequency** 或 **Presence**。如果服务商内置了模型列表，而 Marinara 不认识所选模型，就只会向它发送 **Max Output Tokens** 和 Custom Parameters。
+
+有些服务也会屏蔽某项设置，即使模型本身接受它。OpenRouter 会列出每个模型接受的设置，Marinara 会隐藏其余设置。其他服务则只在拒绝请求时才告知这一点。如果拒绝原因中提到了这些设置中的某一项，Marinara 会去掉它并重新发送消息，让回复仍能正常到达，此后也不再向这个服务的这个模型发送该设置。它的控件会和其他不受支持的控件一样隐藏。Marinara 会记住这一点，持续 30 天。你在 Custom Parameters 中自行添加的设置始终会按原样发送。
 
 点击 **显示不支持的参数**，仍然可以查看隐藏的控件。每个控件都会标注 **不发送给此模型**，只要还是这个模型作答，修改就不会生效。
 
