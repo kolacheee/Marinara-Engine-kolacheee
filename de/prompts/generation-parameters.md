@@ -20,7 +20,7 @@ So überschreibst du Parameter für einen einzelnen Chat:
 4. Such den Parameter, zum Beispiel **Temperature**, und gib einen neuen Wert ein.
 5. Prüf den kleinen Schalter neben seinem Namen. Ist er aus, schalte ihn ein. Ein Parameter mit ausgeschaltetem Schalter wird nicht gesendet, deine Änderung bewirkt dann also nichts. Bei **Temperature** ist der Schalter anfangs aus (siehe [Der Send-Schalter](#the-send-switch)).
 
-Dort steht ein Hinweis: „Change generation settings for this chat only. Leave these alone unless you know what they do.“ **Advanced Parameters** gibt es in Conversation-, Roleplay- und Game-Chats.
+Das **?** neben der Abschnittsüberschrift erklärt es: Änderungen gelten nur für diesen Chat. Die Zeile **Effective** unter jedem Parameter zeigt den Wert, der sich durchsetzt (siehe [Wie Standardwerte aufeinander aufbauen und sich überschreiben](#how-defaults-layer-and-override)). Zusätzliche Parameter wie Top A fügst du unter **Settings**, dann **Advanced**, dann **Parameters** hinzu. Einstellungen, die das Modell des Chats nicht verwendet, werden ausgeblendet (siehe [Manche Modelle ignorieren manche Parameter](#some-models-ignore-some-parameters)). **Advanced Parameters** gibt es in Conversation-, Roleplay- und Game-Chats.
 
 ## Jeder Parameter in einfachen Worten
 
@@ -168,7 +168,17 @@ Installierte Agentenpakete folgen denselben Kontowerten. Ein Wert, den das Konto
 
 ## Manche Modelle ignorieren manche Parameter
 
-Nicht jedes Modell akzeptiert jeden Parameter. Weiß Marinara, dass ein Modell eine Einstellung ablehnt, lässt es sie aus der Anfrage heraus. Das Bedienelement bleibt sichtbar, eine Änderung daran bewirkt aber nichts. Häufig ist das bei Reasoning-Modellen, die Sampling-Einstellungen wie Temperature verweigern. Bei einem Auto-Routing-Modell, bei dem jedes Mal ein anderes Modell antworten kann, verhalten sich Parameter womöglich von Zug zu Zug unterschiedlich. Leg dich auf ein Modell fest, damit das Verhalten stabil bleibt.
+Nicht jedes Modell akzeptiert jeden Parameter. Weiß Marinara, dass ein Modell eine Einstellung ignoriert oder ablehnt, lässt es sie aus der Anfrage heraus und blendet ihr Bedienelement aus. So zeigen **Advanced Parameters** und **Chat defaults** eines Kontos nur, was das Modell tatsächlich erhält. Häufig ist das bei Reasoning-Modellen, die Sampling-Einstellungen wie Temperature verweigern. Beispielsweise akzeptieren Gemini 4 Argon, Carbon, Hydrogen und Neon sowie Gemini 3.6 bis 3.8 Flash weder **Temperature** noch **Top P**, **Top K**, **Frequency** oder **Presence**. Ein Modell, das Marinara nicht kennt, erhält bei einem Anbieter mit eingebauter Modellliste nur **Max Output Tokens** und Custom Parameters.
+
+Klick auf **Nicht unterstützte Parameter anzeigen**, um die ausgeblendeten Bedienelemente trotzdem zu sehen. Bei jedem steht **Wird nicht an dieses Modell gesendet**. Solange dieses Modell antwortet, bewirken Änderungen daran nichts.
+
+Die Liste richtet sich nach dem Modell, das im Chat antworten wird:
+
+- Ein Chat mit eigenem Modell verwendet dieses Modell. Das gilt auch für ein Modell, das du nur für diesen Chat aus der Modellliste des Kontos auswählst.
+- Ein Chat ohne eigenes Modell antwortet mit deinem Main-Modell. Er zeigt deshalb dessen Einstellungen an, und Advanced Parameters weist darauf hin („Dieser Chat hat kein eigenes Modell und verwendet deshalb dein Main-Modell…“).
+- Ein Chat mit **Shuffle** zeigt alle Einstellungen, weil jede Antwort von einem anderen Modell kommen kann. Jedes Modell ignoriert die Einstellungen, die es nicht verwendet.
+
+Bei einem Auto-Routing-Modell, bei dem jedes Mal ein anderes Modell antworten kann, verhalten sich Parameter womöglich von Zug zu Zug unterschiedlich. Leg dich auf ein Modell fest, damit das Verhalten stabil bleibt.
 
 ## Verwandte Anleitungen
 

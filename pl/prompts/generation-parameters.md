@@ -20,7 +20,7 @@ Aby nadpisać parametry dla jednego czatu:
 4. Znajdź parametr, na przykład **Temperature**, i wpisz nową wartość.
 5. Sprawdź mały przełącznik obok jego nazwy. Jeśli jest wyłączony, włącz go. Parametr z wyłączonym przełącznikiem nie jest wysyłany, więc twoja zmiana nic nie da. **Temperature** zaczyna z wyłączonym przełącznikiem (zobacz [Przełącznik Send](#the-send-switch)).
 
-Pojawia się informacja: "Change generation settings for this chat only. Leave these alone unless you know what they do." Sekcja **Advanced Parameters** jest dostępna w czatach w trybach Conversation, Roleplay i Game.
+Znak **?** obok tytułu sekcji wyjaśnia, że zmiany dotyczą tylko tego czatu, a wiersz **Effective** pod każdym parametrem pokazuje wartość, która ostatecznie obowiązuje (zobacz [Jak wartości domyślne nakładają się i nadpisują](#how-defaults-layer-and-override)). Dodatkowe parametry, takie jak Top A, dodasz w **Settings**, potem **Advanced**, potem **Parameters**. Ustawienia, których model czatu nie używa, są ukryte (zobacz [Część modeli ignoruje część parametrów](#some-models-ignore-some-parameters)). Sekcja **Advanced Parameters** jest dostępna w czatach w trybach Conversation, Roleplay i Game.
 
 ## Każdy parametr prostym językiem
 
@@ -168,7 +168,17 @@ Zainstalowane pakiety agentów korzystają z tych samych wartości konta. Warto�
 
 ## Część modeli ignoruje część parametrów
 
-Nie każdy model przyjmuje każdy parametr. Gdy Marinara wie, że model odrzuca dane ustawienie, pomija je w żądaniu. Kontrolka nadal jest widoczna, ale jej zmiana nic nie daje. Zdarza się to często przy modelach rozumujących, które odrzucają ustawienia próbkowania, takie jak temperatura. Przy modelu z automatycznym routingiem, który za każdym razem zmienia model udzielający odpowiedzi, parametry mogą zachowywać się inaczej z tury na turę. Wybierz jeden stały model, żeby zachowanie było stabilne.
+Nie każdy model przyjmuje każdy parametr. Gdy Marinara wie, że model ignoruje lub odrzuca dane ustawienie, pomija je w żądaniu i ukrywa jego kontrolkę. Dzięki temu **Advanced Parameters** i sekcja **Chat defaults** konta pokazują tylko to, co model rzeczywiście otrzymuje. Zdarza się to często przy modelach rozumujących, które odrzucają ustawienia próbkowania, takie jak temperatura. Na przykład Gemini 4 Argon, Carbon, Hydrogen i Neon oraz Gemini 3.6–3.8 Flash nie przyjmują **Temperature**, **Top P**, **Top K**, **Frequency** ani **Presence**. Model nieznany Marinara u dostawcy z wbudowaną listą modeli otrzymuje tylko **Max Output Tokens** i Custom Parameters.
+
+Kliknij **Pokaż nieobsługiwane parametry**, żeby mimo to zobaczyć ukryte kontrolki. Każda ma opis **Nie jest wysyłany do tego modelu**, a jej zmiana nic nie daje, dopóki odpowiada ten model.
+
+Lista zależy od modelu, który odpowie w czacie:
+
+- Czat z własnym modelem używa tego modelu, również wtedy, gdy wybierzesz go z listy modeli konta tylko dla tego czatu.
+- Czat bez własnego modelu odpowiada za pomocą twojego modelu Main, więc pokazuje ustawienia Main. Advanced Parameters informuje o tym („Ten czat nie ma własnego modelu, więc korzysta z twojego modelu Main…”).
+- Czat ustawiony na **Shuffle** pokazuje wszystkie ustawienia, bo każda odpowiedź może pochodzić od innego modelu. Każdy model ignoruje ustawienia, których nie używa.
+
+Przy modelu z automatycznym routingiem, który za każdym razem zmienia model udzielający odpowiedzi, parametry mogą zachowywać się inaczej z tury na turę. Wybierz jeden stały model, żeby zachowanie było stabilne.
 
 ## Powiązane przewodniki
 

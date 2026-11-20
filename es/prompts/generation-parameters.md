@@ -20,7 +20,7 @@ Para sustituir los parámetros de un chat:
 4. Busca el parámetro, por ejemplo **Temperature**, y escribe un valor nuevo.
 5. Revisa el pequeño interruptor junto a su nombre. Si está desactivado, actívalo. Un parámetro con el interruptor desactivado no se envía, así que tu cambio no hace nada. **Temperature** empieza con su interruptor desactivado (consulta [El interruptor de envío](#the-send-switch)).
 
-Verás una nota: "Change generation settings for this chat only. Leave these alone unless you know what they do." (Cambia los ajustes de generación solo para este chat. No los toques salvo que sepas lo que hacen.) **Advanced Parameters** está disponible en los chats de Conversation, Roleplay y Game.
+El **?** junto al título de la sección lo explica: los cambios se aplican solo a este chat, la línea **Effective** bajo cada parámetro muestra el valor que tiene prioridad (consulta [Cómo se superponen y se sustituyen los valores predeterminados](#how-defaults-layer-and-override)), y los parámetros adicionales como Top A se añaden en **Settings**, luego **Advanced** y después **Parameters**. Los ajustes que el modelo del chat no usa están ocultos (consulta [Algunos modelos ignoran algunos parámetros](#some-models-ignore-some-parameters)). **Advanced Parameters** está disponible en los chats de Conversation, Roleplay y Game.
 
 ## Cada parámetro en lenguaje claro
 
@@ -168,7 +168,17 @@ Los paquetes de agentes instalados siguen los mismos valores de la cuenta. Un va
 
 ## Algunos modelos ignoran algunos parámetros
 
-No todos los modelos aceptan todos los parámetros. Cuando Marinara sabe que un modelo rechaza un ajuste, lo deja fuera de la solicitud. El control sigue apareciendo, pero cambiarlo no tiene efecto. Esto es común con los modelos de razonamiento, que rechazan ajustes de muestreo como la temperatura. Con un modelo de enrutamiento automático que cambia qué modelo responde cada vez, los parámetros pueden comportarse de forma distinta de un turno a otro. Fija un solo modelo para mantener un comportamiento estable.
+No todos los modelos aceptan todos los parámetros. Cuando Marinara sabe que un modelo ignora o rechaza un ajuste, lo deja fuera de la solicitud y oculta su control, de modo que **Advanced Parameters** y **Chat defaults** de una cuenta solo muestran lo que el modelo realmente recibe. Esto es común con los modelos de razonamiento, que rechazan ajustes de muestreo como la temperatura. Por ejemplo, Gemini 4 Argon, Carbon, Hydrogen y Neon, y Gemini 3.6 a 3.8 Flash, no aceptan **Temperature**, **Top P**, **Top K**, **Frequency** ni **Presence**. Un modelo que Marinara no conoce, en un proveedor con una lista de modelos integrada, solo recibe **Max Output Tokens** y Custom Parameters.
+
+Haz clic en **Mostrar parámetros no compatibles** para ver los controles ocultos de todos modos. Cada uno indica **No se envía a este modelo**, y cambiarlo no tiene efecto mientras responda este modelo.
+
+La lista depende del modelo que responderá al chat:
+
+- Un chat con su propio modelo usa ese modelo, incluido uno elegido de la lista de modelos de la cuenta solo para ese chat.
+- Un chat sin modelo propio responde con tu modelo Principal, así que muestra los ajustes de Principal, y Advanced Parameters lo indica («Este chat no tiene un modelo propio, así que usa tu modelo Principal…»).
+- Un chat configurado en **Aleatorio** muestra todos los ajustes, porque cada respuesta puede venir de un modelo distinto. Cada modelo ignora los ajustes que no usa.
+
+Con un modelo de enrutamiento automático que cambia qué modelo responde cada vez, los parámetros pueden comportarse de forma distinta de un turno a otro. Fija un solo modelo para mantener un comportamiento estable.
 
 ## Guías relacionadas
 

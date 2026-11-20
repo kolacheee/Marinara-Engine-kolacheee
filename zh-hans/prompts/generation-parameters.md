@@ -20,7 +20,7 @@
 4. 找到要改的参数，比如 **Temperature**，输入新值。
 5. 看看参数名旁边的小开关。如果它是关闭的，就把它打开。开关关闭的参数不会发送，你的修改也就不起作用。**Temperature** 的开关初始是关闭的（见 [Send 开关](#the-send-switch)）。
 
-你会看到一条说明：“Change generation settings for this chat only. Leave these alone unless you know what they do.”**Advanced Parameters** 在 Conversation(对话模式)、Roleplay(角色扮演) 和 Game(游戏模式) 聊天里都有。
+章节标题旁的 **?** 会说明：修改只对当前聊天生效，每个参数下方的 **Effective** 行显示最终采用的值（见 [默认值如何叠加和覆盖](#how-defaults-layer-and-override)），Top A 等额外参数则在 **Settings**、**Advanced**、**Parameters** 中依次打开后添加。聊天模型不使用的设置会隐藏（见 [有些模型会忽略部分参数](#some-models-ignore-some-parameters)）。**Advanced Parameters** 在 Conversation(对话模式)、Roleplay(角色扮演) 和 Game(游戏模式) 聊天里都有。
 
 ## 每个参数的大白话解释
 
@@ -172,7 +172,17 @@ Marinara 按下面的顺序确定每个参数。后面的项会覆盖前面的�
 
 ## 有些模型会忽略部分参数
 
-不是每个模型都接受每个参数。Marinara 知道某个模型会拒绝某项设置时，就把这项从请求里去掉。控件照样显示，但改了也没有效果。这在推理模型上很常见，它们会拒绝 temperature 之类的采样设置。如果用的是每次都可能换模型作答的自动路由模型，参数表现可能一轮一轮地变。固定用一个模型，行为才稳定。
+不是每个模型都接受每个参数。Marinara 知道某个模型会忽略或拒绝某项设置时，就把这项从请求里去掉，并隐藏对应控件。因此，**Advanced Parameters** 和账号的 **Chat defaults** 只显示模型实际接收的设置。这在推理模型上很常见，它们会拒绝 temperature 之类的采样设置。例如，Gemini 4 Argon、Carbon、Hydrogen 和 Neon，以及 Gemini 3.6 到 3.8 Flash，都不接受 **Temperature**、**Top P**、**Top K**、**Frequency** 或 **Presence**。如果服务商内置了模型列表，而 Marinara 不认识所选模型，就只会向它发送 **Max Output Tokens** 和 Custom Parameters。
+
+点击 **显示不支持的参数**，仍然可以查看隐藏的控件。每个控件都会标注 **不发送给此模型**，只要还是这个模型作答，修改就不会生效。
+
+列表取决于将要在聊天中作答的模型：
+
+- 有自己模型的聊天会使用该模型，包括从账号的模型列表中仅为此聊天选择的模型。
+- 没有自己模型的聊天会使用你的主模型作答，因此显示主模型的设置，Advanced Parameters 也会说明这一点（“此聊天没有自己的模型，因此使用你的主模型…”）。
+- 设为 **随机** 的聊天会显示所有设置，因为每条回复都可能来自不同的模型。各模型会忽略自己不使用的设置。
+
+如果用的是每次都可能换模型作答的自动路由模型，参数表现可能一轮一轮地变。固定用一个模型，行为才稳定。
 
 ## 相关指南
 

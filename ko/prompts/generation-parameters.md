@@ -20,7 +20,7 @@
 4. **Temperature** 같은 파라미터를 찾아 새 값을 입력하세요.
 5. 이름 옆의 작은 스위치를 확인하세요. 꺼져 있으면 켜세요. 스위치가 꺼진 파라미터는 전송되지 않으므로 값을 바꿔도 아무 효과가 없습니다. **Temperature**는 스위치가 꺼진 상태로 시작합니다([전송 스위치](#the-send-switch) 참고).
 
-"Change generation settings for this chat only. Leave these alone unless you know what they do."라는 안내 문구가 보입니다. **Advanced Parameters**는 Conversation(대화), Roleplay(롤플레이), Game(게임) 채팅에서 쓸 수 있습니다.
+섹션 제목 옆의 **?**에서 설명을 볼 수 있습니다. 변경 사항은 이 채팅에만 적용되고, 각 파라미터 아래의 **Effective** 줄은 최종적으로 적용되는 값을 보여 줍니다([기본값이 겹치고 덮어써지는 방식](#how-defaults-layer-and-override) 참고). Top A 같은 추가 파라미터는 **Settings**, **Advanced**, **Parameters** 순서로 열어 추가하세요. 채팅 모델이 사용하지 않는 설정은 숨겨집니다([일부 파라미터를 무시하는 모델도 있습니다](#some-models-ignore-some-parameters) 참고). **Advanced Parameters**는 Conversation(대화), Roleplay(롤플레이), Game(게임) 채팅에서 쓸 수 있습니다.
 
 ## 파라미터별 쉬운 설명
 
@@ -172,7 +172,17 @@ Roleplay에서는 채팅의 **Reasoning Effort**와 전송 스위치가 Illustra
 
 ## 일부 파라미터를 무시하는 모델도 있습니다
 
-모든 모델이 모든 파라미터를 받아들이지는 않습니다. 어떤 모델이 설정을 거부한다는 사실을 Marinara가 알고 있으면 그 설정을 요청에서 뺍니다. 컨트롤은 그대로 보이지만, 값을 바꿔도 아무 효과가 없습니다. temperature 같은 샘플링 설정을 거부하는 추론 모델에서 흔한 일입니다. 매번 답하는 모델이 바뀌는 자동 라우팅 모델을 쓰면 파라미터가 턴마다 다르게 동작할 수 있습니다. 동작을 일정하게 유지하려면 모델 하나를 고정하세요.
+모든 모델이 모든 파라미터를 받아들이지는 않습니다. 어떤 모델이 설정을 무시하거나 거부한다는 사실을 Marinara가 알고 있으면 그 설정을 요청에서 빼고 컨트롤도 숨깁니다. 그래서 **Advanced Parameters**와 계정의 **Chat defaults**에는 모델이 실제로 받는 설정만 표시됩니다. temperature 같은 샘플링 설정을 거부하는 추론 모델에서 흔한 일입니다. 예를 들어 Gemini 4 Argon, Carbon, Hydrogen, Neon과 Gemini 3.6부터 3.8까지의 Flash는 **Temperature**, **Top P**, **Top K**, **Frequency**, **Presence**를 받지 않습니다. 모델 목록이 내장된 제공자에서 Marinara가 모르는 모델을 쓰면 **Max Output Tokens**와 Custom Parameters만 전송됩니다.
+
+숨겨진 컨트롤도 보려면 **지원되지 않는 파라미터 표시**를 클릭하세요. 각 컨트롤에는 **이 모델로 전송되지 않음**이 표시되며, 이 모델이 답하는 동안에는 값을 바꿔도 아무 효과가 없습니다.
+
+목록은 채팅에서 답할 모델에 따라 달라집니다.
+
+- 자체 모델이 있는 채팅은 그 모델을 사용합니다. 계정의 모델 목록에서 이 채팅에만 쓰도록 고른 모델도 포함됩니다.
+- 자체 모델이 없는 채팅은 Main 모델로 답하므로 Main의 설정을 표시합니다. Advanced Parameters에도 이 사실이 안내됩니다("이 채팅에는 자체 모델이 없으므로 Main 모델인…").
+- **Shuffle**로 설정된 채팅은 답변마다 다른 모델이 응답할 수 있으므로 모든 설정을 표시합니다. 각 모델은 자신이 사용하지 않는 설정을 무시합니다.
+
+매번 답하는 모델이 바뀌는 자동 라우팅 모델을 쓰면 파라미터가 턴마다 다르게 동작할 수 있습니다. 동작을 일정하게 유지하려면 모델 하나를 고정하세요.
 
 ## 관련 가이드
 

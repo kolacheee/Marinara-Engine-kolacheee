@@ -20,7 +20,7 @@ Pour remplacer les paramètres d'un chat :
 4. Repère le paramètre, par exemple **Temperature**, et saisis une nouvelle valeur.
 5. Vérifie le petit interrupteur à côté de son nom. S'il est désactivé, active-le. Un paramètre dont l'interrupteur est désactivé n'est pas envoyé : ta modification ne sert alors à rien. L'interrupteur de **Temperature** démarre désactivé (voir [L'interrupteur Send](#the-send-switch)).
 
-Une note s'affiche : "Change generation settings for this chat only. Leave these alone unless you know what they do." **Advanced Parameters** existe dans les chats Conversation, Roleplay et Game.
+Le **?** à côté du titre de la section l’explique : les modifications s’appliquent uniquement à ce chat, la ligne **Effective** sous chaque paramètre indique la valeur qui l’emporte (voir [Comment les valeurs par défaut se superposent et se remplacent](#how-defaults-layer-and-override)), et les paramètres supplémentaires comme Top A s’ajoutent dans **Settings**, puis **Advanced**, puis **Parameters**. Les réglages que le modèle du chat n’utilise pas sont masqués (voir [Certains modèles ignorent certains paramètres](#some-models-ignore-some-parameters)). **Advanced Parameters** existe dans les chats Conversation, Roleplay et Game.
 
 ## Chaque paramètre en langage clair
 
@@ -172,7 +172,17 @@ Les packages d'agents installés suivent les mêmes valeurs du compte. Une valeu
 
 ## Certains modèles ignorent certains paramètres
 
-Tous les modèles n'acceptent pas tous les paramètres. Quand Marinara sait qu'un modèle rejette un réglage, il l'omet de la requête. Le contrôle reste affiché, mais le modifier n'a aucun effet. C'est fréquent avec les modèles de raisonnement, qui refusent les réglages d'échantillonnage comme la température. Avec un modèle à routage automatique, qui change de modèle répondant à chaque fois, les paramètres peuvent réagir différemment d'un tour à l'autre. Épingle un seul modèle pour garder un comportement stable.
+Tous les modèles n’acceptent pas tous les paramètres. Quand Marinara sait qu’un modèle ignore ou rejette un réglage, il l’omet de la requête et masque son contrôle. Ainsi, **Advanced Parameters** et la section **Chat defaults** d’un compte n’affichent que ce que le modèle reçoit réellement. C’est fréquent avec les modèles de raisonnement, qui refusent les réglages d’échantillonnage comme la température. Par exemple, Gemini 4 Argon, Carbon, Hydrogen et Neon, ainsi que Gemini 3.6 à 3.8 Flash, n’acceptent ni **Temperature**, ni **Top P**, ni **Top K**, ni **Frequency**, ni **Presence**. Un modèle inconnu de Marinara chez un fournisseur doté d’une liste de modèles intégrée ne reçoit que **Max Output Tokens** et Custom Parameters.
+
+Clique sur **Afficher les paramètres non pris en charge** pour voir quand même les contrôles masqués. Chacun porte la mention **Non envoyé à ce modèle**, et le modifier n’a aucun effet tant que ce modèle répond.
+
+La liste dépend du modèle qui répondra au chat :
+
+- Un chat avec son propre modèle utilise ce modèle, y compris un modèle choisi dans la liste du compte pour ce chat uniquement.
+- Un chat sans modèle propre répond avec ton modèle Main : il affiche donc les réglages de Main, et Advanced Parameters le précise (« Ce chat n’a pas de modèle propre, il utilise donc ton modèle Main… »).
+- Un chat réglé sur **Shuffle** affiche tous les réglages, car chaque réponse peut provenir d’un modèle différent. Chaque modèle ignore les réglages qu’il n’utilise pas.
+
+Avec un modèle à routage automatique, qui change de modèle répondant à chaque fois, les paramètres peuvent réagir différemment d’un tour à l’autre. Épingle un seul modèle pour garder un comportement stable.
 
 ## Guides associés
 
