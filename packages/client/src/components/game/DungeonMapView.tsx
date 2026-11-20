@@ -77,6 +77,28 @@ type Point = { x: number; y: number };
 const WALK_MS_PER_CELL = 70;
 /** Rooms laid with a rug, and its colour. */
 /** The furnishings a dais is raised under: the high seat and the altar (site-plans' slots). */
+/** A lair floor's walls as rough rock over the dressed courses (lair panel 1: ashlar walls round a dragon's
+ *  cavern read as a cellar). */
+function paintLairRock(ctx: CanvasRenderingContext2D, x: number, y: number) {
+  const hash = (a: number, b: number) => ((a * 73856093) ^ (b * 19349663)) >>> 0;
+  const [ox, oy] = [x * T, y * T];
+  const v = hash(x + 11, y + 5);
+  ctx.fillStyle = "rgba(46, 40, 34, 0.72)";
+  ctx.fillRect(ox, oy, T, T);
+  for (let n = 0; n < 4; n++) {
+    const h = hash(x * 5 + n, y * 3 - n * 7);
+    const [lx, ly, lw, lh] = [h % 9, (h >> 4) % 9, 4 + ((h >> 8) % 5), 3 + ((h >> 11) % 4)];
+    ctx.fillStyle = n % 2 ? "rgba(98, 88, 74, 0.55)" : "rgba(70, 62, 52, 0.6)";
+    ctx.fillRect(ox + lx, oy + ly, lw, lh);
+    ctx.fillStyle = "rgba(150, 138, 118, 0.3)";
+    ctx.fillRect(ox + lx, oy + ly, lw, 1);
+  }
+  if (v % 5 === 0) {
+    ctx.fillStyle = "rgba(12, 10, 8, 0.6)";
+    ctx.fillRect(ox + (v % 10), oy + 2 + (v % 7), 1, 5);
+  }
+}
+
 const DAIS_SEAT = 13;
 /** How much of a building wall's cell is laid with the floor beside it, at its sides and at its top. */
 const WALL_INSET = 5;
@@ -379,15 +401,16 @@ export function DungeonMapView({
       const slanted = (s: Seg) => Math.abs(s.bx - s.ax) > 1e-6 && Math.abs(s.by - s.ay) > 1e-6;
       // Where every corner is rounded the whole floor is drawn round its outline; elsewhere only round
       // each slope and curve and a cell about them, so a building's thin walls and posts stay as laid.
-      const everywhere = mode === "full";
+      // Below ground too (carved): the wall is the band along the floor and the earth behind it, so the
+      // mass round a round or eight-sided chamber is not left in steps where the zone round its curve ends
+      // (owner 2026-11-20: the rift chamber's stepped wall).
+      const everywhere = mode !== "built";
       const zone = new Set<number>();
       if (everywhere) for (let i = 0; i < cells.width * cells.height; i++) zone.add(i);
       else
         for (const s of segs) {
           if (!slanted(s)) continue;
-          // Below ground the wall ring round a shaped room is rock too: taken in, so no step of the old
-          // ring is left standing behind the curve.
-          const reach = mode === "carved" ? 2 : 1;
+          const reach = 1;
           const up = s.bx > s.ax ? (reach + 1) * T : reach * T;
           const x0 = Math.floor(Math.min(s.ax, s.bx) / T - 1e-6) - reach;
           const x1 = Math.floor(Math.max(s.ax, s.bx) / T + 1e-6) + reach;
@@ -443,6 +466,19 @@ export function DungeonMapView({
           [-1, 0],
         ] as const)
           if (openAt(x + dx, y + dy)) return [x + dx, y + dy];
+        // A wide rounded corner reaches more than a cell into the wall: the nearest floor a little further off
+        // (else that piece of the corner was left as wall, in steps).
+        for (let r = 2; r <= 4; r++) {
+          let best: [number, number] | null = null;
+          let bestD = Infinity;
+          for (let dy = -r; dy <= r; dy++)
+            for (let dx = -r; dx <= r; dx++) {
+              if (Math.max(Math.abs(dx), Math.abs(dy)) !== r || gAt(x + dx, y + dy) !== "floor") continue;
+              const d = dx * dx + dy * dy;
+              if (d < bestD) [best, bestD] = [[x + dx, y + dy], d];
+            }
+          if (best) return best;
+        }
         return null;
       };
       const rimColour = building && !buried ? "rgba(200, 186, 160, 0.45)" : "rgba(120, 107, 91, 0.95)";
@@ -470,7 +506,7 @@ export function DungeonMapView({
       // The wall itself: one band of even thickness all along the floor's outline, and a cell taller above
       // the floor (where its face stands), its top laid with the wall's own stone and a dark line round it.
       // A slope or a curve gets the same wall as a straight run, not the cells it happened to fall in.
-      const band = everywhere ? T * 0.55 : T;
+      const band = mode === "full" ? T * 0.55 : T;
       const layer = (draw: (c: CanvasRenderingContext2D) => void) => {
         const made = document.createElement("canvas");
         made.width = canvas.width;
@@ -789,7 +825,7 @@ export function DungeonMapView({
       if (building)
         for (let y = 0; y < cells.height; y++)
           for (let x = 0; x < cells.width; x++) if (at(x, y) === "wall") insetWallCell(x, y);
-      if (building || planned) shadeWallFeet(ctx);
+      if ((building || planned) && !buried) shadeWallFeet(ctx);
       // A planned building's lair floor is dug, not built (lair panel 5, all five: the lair floors read as
       // masonry, not cut from rock): beaten earth and broken rock over the flags everywhere but the great
       // chamber, which keeps its laid floor as the creature's hall; the solid round it the dark of the deep
@@ -824,14 +860,19 @@ export function DungeonMapView({
             }
           }
       }
+      const lairRock = Boolean(kept?.lairKind && kept.lairFeature?.length && kept.roomInfo);
       softWalls(building || planned ? (buried ? "carved" : "built") : "full", {
-        top: (c, x, y) =>
-          building
-            ? paintBuildingWall(c, building, x * T, y * T, false, cellNoise(x, y), false)
-            : paintDungeonWall(c, cells.set, x * T, y * T, false, cellNoise(x, y), true),
+        top: (c, x, y) => {
+          if (building) paintBuildingWall(c, building, x * T, y * T, false, cellNoise(x, y), false);
+          else paintDungeonWall(c, cells.set, x * T, y * T, false, cellNoise(x, y), true);
+          if (lairRock) paintLairRock(c, x, y);
+        },
         far: (x, y) => {
           if (!building) return paintDungeonWall(ctx, cells.set, x * T, y * T, false, cellNoise(x, y));
           if (!buried) return paintBuildingWall(ctx, building, x * T, y * T, false, cellNoise(x, y), true);
+          // As the rock cells are drawn, on nothing: the earth is not opaque, and the wall's masonry under
+          // it showed through as a pale ghost of the old stepped wall.
+          ctx.clearRect(x * T, y * T, T, T);
           paintBuildingEarth(ctx, x * T, y * T, cellNoise(x, y));
           // A lair floor's deep rock, as dark as the rock round it.
           if (kept?.lairKind && kept.lairFeature?.length && kept.roomInfo) {
@@ -839,10 +880,11 @@ export function DungeonMapView({
             ctx.fillRect(x * T, y * T, T, T);
           }
         },
-        face: (c, x, y) =>
-          building
-            ? paintBuildingWall(c, building, x * T, y * T, true, cellNoise(x, y))
-            : paintDungeonWall(c, cells.set, x * T, y * T, true, cellNoise(x, y)),
+        face: (c, x, y) => {
+          if (building) paintBuildingWall(c, building, x * T, y * T, true, cellNoise(x, y));
+          else paintDungeonWall(c, cells.set, x * T, y * T, true, cellNoise(x, y));
+          if (lairRock) paintLairRock(c, x, y);
+        },
         floor: (x, y, fx, fy) => {
         if (building) {
           ctx.translate((x - fx) * T, (y - fy) * T);
@@ -871,7 +913,11 @@ export function DungeonMapView({
           const colour = RUG_ROOMS[name];
           if (!colour || room.w < 5 || room.h < 5) return;
           const m = Math.min(room.w, room.h) >= 9 ? 2 : 1;
+          // Inside the floor as drawn: a round room's corners are cut off.
+          ctx.save();
+          if (floorPathRef.current) ctx.clip(floorPathRef.current);
           paintBuildingRug(ctx, (room.x + m) * T, (room.y + m) * T, (room.w - 2 * m) * T, (room.h - 2 * m) * T, colour);
+          ctx.restore();
         });
       // A dais at the high end of a hall, under its high seat or altar: two cells deep along the wall the seat
       // stands against, the room's width less a cell each end (gamer panel 2026-11-17).
@@ -890,9 +936,21 @@ export function DungeonMapView({
               if (gaps[side] > 1) continue;
               const across = side === "N" || side === "S";
               if ((across ? room.w : room.h) < 5 || (across ? room.h : room.w) < 6) continue;
-              const [dx, dy, dw, dh] = across
+              let [dx, dy, dw, dh] = across
                 ? [room.x + 1, side === "N" ? room.y : room.y + room.h - 2, room.w - 2, 2]
                 : [side === "W" ? room.x : room.x + room.w - 2, room.y + 1, 2, room.h - 2];
+              // In a round or eight-sided room the dais stops where the floor still runs its full depth, not
+              // out across the cut corners into the wall (owner 2026-11-20: the rift chamber's stepped wall).
+              const deep = (k: number) =>
+                [0, 1].every((d) =>
+                  across ? at(dx + k, dy + d) === "floor" : at(dx + d, dy + k) === "floor",
+                );
+              let [lo, hi] = [0, (across ? dw : dh) - 1];
+              while (lo <= hi && !deep(lo)) lo++;
+              while (hi >= lo && !deep(hi)) hi--;
+              if (hi - lo + 1 < 3) continue;
+              if (across) [dx, dw] = [dx + lo, hi - lo + 1];
+              else [dy, dh] = [dy + lo, hi - lo + 1];
               const front = ({ N: "S", S: "N", W: "E", E: "W" } as const)[side];
               paintBuildingDais(ctx, dx * T, dy * T, dw * T, dh * T, front, building !== "manor");
               onDais.add(y * cells.width + x);
@@ -1263,7 +1321,7 @@ export function DungeonMapView({
         }
     }
     // A place cut from rock has its walls' feet shaded round the smoothed outline instead (softWalls).
-    if (building || planned) shadeWallFeet(ctx);
+    if ((building || planned) && !buried) shadeWallFeet(ctx);
     softWalls(building || planned ? (buried ? "carved" : "built") : "full", {
       top: (c, x, y) => {
         const pick = cellNoise(x, y)(5);
@@ -1693,26 +1751,13 @@ export function DungeonMapView({
       const hash = (a: number, b: number) => ((a * 73856093) ^ (b * 19349663)) >>> 0;
       // A planned building's lair floor is dug, not built: its walls rough rock over the dressed courses (lair
       // panel 1: ashlar walls round a dragon's cavern read as a cellar).
-      if (lairKind && lairCells.length && kept?.roomInfo && cells) {
+      // Where the walls were drawn round the smoothed floor the rough rock went on with them (softWalls), on
+      // the even band and not cell by cell (owner 2026-11-20: a stepped wall round the rift chamber).
+      if (lairKind && lairCells.length && kept?.roomInfo && cells && !floorPathRef.current) {
         for (let y = 0; y < cells.height; y++)
           for (let x = 0; x < cells.width; x++) {
             if (cells.ground[y * cells.width + x] !== "wall" || inFog(x, y)) continue;
-            const [ox, oy] = [x * T, y * T];
-            const v = hash(x + 11, y + 5);
-            ctx.fillStyle = "rgba(46, 40, 34, 0.72)";
-            ctx.fillRect(ox, oy, T, T);
-            for (let n = 0; n < 4; n++) {
-              const h = hash(x * 5 + n, y * 3 - n * 7);
-              const [lx, ly, lw, lh] = [h % 9, (h >> 4) % 9, 4 + ((h >> 8) % 5), 3 + ((h >> 11) % 4)];
-              ctx.fillStyle = n % 2 ? "rgba(98, 88, 74, 0.55)" : "rgba(70, 62, 52, 0.6)";
-              ctx.fillRect(ox + lx, oy + ly, lw, lh);
-              ctx.fillStyle = "rgba(150, 138, 118, 0.3)";
-              ctx.fillRect(ox + lx, oy + ly, lw, 1);
-            }
-            if (v % 5 === 0) {
-              ctx.fillStyle = "rgba(12, 10, 8, 0.6)";
-              ctx.fillRect(ox + (v % 10), oy + 2 + (v % 7), 1, 5);
-            }
+            paintLairRock(ctx, x, y);
           }
       }
       // The rooms off a lair's great chamber each tell one thing at a glance: a set piece in a clear 2x2 of
@@ -2756,7 +2801,9 @@ export function DungeonMapView({
               const g = cells.ground[gy * cells.width + gx];
               if (g !== "wall" && g !== "rock") clip.rect(gx * T, gy * T, T, T);
             }
-          ctx.clip(clip);
+          // The floor as drawn where the walls are smoothed: whole floor cells cut the glow off straight where
+          // a curve lays floor into a wall's cell.
+          ctx.clip(floorPathRef.current ?? clip);
           ctx.fillRect(cx - T * 2, cy - T * 2, T * 4, T * 4);
           ctx.restore();
         } else ctx.fillRect(cx - T * 2, cy - T * 2, T * 4, T * 4);
