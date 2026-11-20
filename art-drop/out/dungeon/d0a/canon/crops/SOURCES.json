@@ -1,0 +1,198 @@
+[
+  {
+    "file": "crops/wall.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      316,
+      490,
+      460,
+      586
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "ad609c5c373dda4844995ce1d1df652c1c3b4f5921d10f545dbbf525da437e3e"
+  },
+  {
+    "file": "crops/floor.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      600,
+      288,
+      792,
+      432
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "e60e82804efbe4ec21dfb5a42a40fc8772453d5568c75d573a5a086e096a151b"
+  },
+  {
+    "file": "crops/wood-prop.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      968,
+      302,
+      1064,
+      398
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "93408581bdc85a2b2b0a79118e6e3ad98c6b5171928b758e25dc1be9ef7e50d8"
+  },
+  {
+    "file": "crops/stone-prop.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      696,
+      32,
+      888,
+      224
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "a83c071782f8e621bf7f775284d0a675f76b458c045def39f1bf3c814ba50fa5"
+  },
+  {
+    "file": "crops/outline-detail.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      974,
+      312,
+      1022,
+      360
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "d7ee1ec8c4e84c93fe8f8e4bb5fabf634ce21e37c97defb9e9f8c0bc7a2afe44"
+  },
+  {
+    "file": "crops/rug.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      216,
+      324,
+      408,
+      468
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "c3bf4bf4fa9c6594b74e81dc15e9a4f36eb68fd12baebe227fcc35c4a4d1b008"
+  },
+  {
+    "file": "crops/mass-edge.png",
+    "source": "art-drop/dungeon/reference/master-interiors-mock.png",
+    "box": [
+      440,
+      440,
+      584,
+      536
+    ],
+    "kind": "master reference; unchanged pixels",
+    "rgba_sha256": "5d174f3bb75bc9d4dc1fcbe09876738c6276275aee6930f67ba2ed59ddae504f"
+  },
+  {
+    "file": "crops/overworld-grass.png",
+    "source": "art-drop/dungeon/reference/overworld-grass-0.png",
+    "box": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "kind": "summer reference; unchanged pixels",
+    "rgba_sha256": "74a56df18317d296603419285eaf8c88f70c92fa008bf9c121a1daba5453ad04"
+  },
+  {
+    "file": "crops/overworld-path.png",
+    "source": "art-drop/dungeon/reference/overworld-path_joined-0.png",
+    "box": [
+      0,
+      0,
+      192,
+      1104
+    ],
+    "kind": "summer reference; unchanged pixels",
+    "rgba_sha256": "cc1d863886b59d20d32854bea8cec977e2bf4e02bc8b932b56635cb0fe3b9945"
+  },
+  {
+    "file": "crops/overworld-cobble.png",
+    "source": "art-drop/dungeon/reference/overworld-street-0.png",
+    "box": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "kind": "summer reference; unchanged pixels",
+    "rgba_sha256": "90f0d9bf86090bd32562e1ccf8466c2d62b0b1c0186dcd057104ae981ed765df"
+  },
+  {
+    "file": "crops/dont-soft-hoard.png",
+    "source": "art-drop/dungeon/reference/current/hoard-keep.png",
+    "box": [
+      140,
+      1030,
+      332,
+      1222
+    ],
+    "kind": "DON'T; current renderer at 64 px/cell; unchanged pixels",
+    "rgba_sha256": "c9f5718e70553d9a41f537bcc1e979c9dc143d5e90ae284b31ac7aa554daf62f"
+  },
+  {
+    "file": "crops/dont-vector-rift.png",
+    "source": "art-drop/dungeon/reference/current/breach-temple.png",
+    "box": [
+      430,
+      812,
+      622,
+      1004
+    ],
+    "kind": "DON'T; current renderer at 64 px/cell; unchanged pixels",
+    "rgba_sha256": "e4704d93c8a7f68e74d7d5a9059ada87ef3948f22e0a7b19d500402015ead25a"
+  },
+  {
+    "file": "crops/dont-brown-bars.png",
+    "source": "art-drop/dungeon/reference/current/manor-ground.png",
+    "box": [
+      915,
+      666,
+      1107,
+      858
+    ],
+    "kind": "DON'T; current renderer at 64 px/cell; unchanged pixels",
+    "rgba_sha256": "0f85706d8f6130fced54bc14a8f69678d4391a81c46722518c440cbf0986fa36"
+  },
+  {
+    "file": "crops/dont-checker-floor.png",
+    "source": "art-drop/dungeon/reference/current/manor-ground.png",
+    "box": [
+      1380,
+      1210,
+      1572,
+      1402
+    ],
+    "kind": "DON'T; current renderer at 64 px/cell; unchanged pixels",
+    "rgba_sha256": "77acb0bb911c02fd9dedd055de5bfd5353c0c3b33f67a64948bd7b382ec5398e"
+  },
+  {
+    "file": "crops/dont-grey-mass.png",
+    "source": "art-drop/dungeon/reference/current/sanctum-crypt.png",
+    "box": [
+      960,
+      30,
+      1152,
+      222
+    ],
+    "kind": "DON'T; current renderer at 64 px/cell; unchanged pixels",
+    "rgba_sha256": "9fb050142a404b89f3cc0907aaf7808246d12bcc099161fc0fc073b719dd82bd"
+  },
+  {
+    "file": "crops/party-source.png",
+    "source": "packages/server/src/assets/overworld-tiles/fantasy.json",
+    "entry": "tiles.party[0]",
+    "native_size": [
+      16,
+      16
+    ],
+    "placement": [
+      16,
+      28
+    ],
+    "backing": "#6b605a",
+    "method": "tilePackPixels alphabet; native source-over on opaque backing",
+    "exception": "Legacy party and foe style/scale. Original shadow pixels are composited, not repainted."
+  }
+]

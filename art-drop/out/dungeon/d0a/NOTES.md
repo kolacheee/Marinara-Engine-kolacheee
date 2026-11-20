@@ -1,3 +1,60 @@
+# D0a Part B: critic 3 redraw
+
+Redrew `keep`, `temple`, `cave_rock` and `building-yard` at native 48 × 48 pixels. Stone wear now connects across mineral areas and fractures; turf has unequal growth patches with smaller blade clusters along their edges. Replaced every occurrence in `canon/style-guide.png`. The door, table and crate scale panels and the crate lighting example use a labelled L*30.34 display backing. These panels make no dungeon-floor pairing claim; the printed floor rule and the passing chest/column pairings remain intact.
+
+`check_style_guide.py --reviews` passes for 20 authored PNGs and 16 source samples. Checks cover binary alpha, transparent RGB, palette membership, colour caps, 48 px dimensions, floor values and texture clusters. The four redraws use 3–4 colours, contain no component smaller than three pixels and have no repeated connected component of three or more pixels. The maximum floor-value span across all fourteen studies is 12.969 L*. All 33 files marked passing by critic 3 retain their original hashes. This includes `STYLE.md`, the props and source crops. Part A is unchanged. No `operator-B.md` was present.
+
+Regenerated the B review sheets in `art-drop/review-d0a/` and inspected native, 2x/3x nearest-neighbour, greyscale and quarter-size greyscale views. `B-validation.json` records the pixel checks; `B-critic3-preservation.json` records file hashes and repeated-component checks. The drawing recipe is `tools/redraw_critic3.py`. Visual review and the prose pass were my own; independent critic and owner acceptance remain pending. All edits stayed under `art-drop/`. No commit, push or branch change was made.
+
+# D0a Part B: critic 2 redraw
+
+Redrew the ten failed material studies at native 48 × 48 pixels and replaced every placement in `canon/style-guide.png`. Stone has finer wear and branching fractures; the plank has a smaller knot; oil forms one dragged deposit; plant growth follows the ceramic seam. Grass uses small, low-contrast blade clusters. No `operator-B.md` was present. All 27 files marked passing by critic 2 retain their original hashes, including the props, STYLE.md and source crops. Part A is unchanged.
+
+Regenerated the B review sheets and inspected the changed art at 1x, 2x and 3x nearest-neighbour, in greyscale and as quarter-size greyscale squints beside native sources. The surface studies pass alpha, palette, size, colour-cap and cluster checks. They use 2–5 colours each; the maximum floor-value span across all fourteen studies is 12.969 L*. No texture component is smaller than three pixels. Review files and reports remain in `art-drop/review-d0a/`.
+
+The guide remains unfinished because its wood pairing has conflicting requirements. The unchanged oak body planes include L*42.04 and L*46.25; no floor in L*35–55 can sit at least 10 L* from both. The validator now counts every present body pigment instead of selecting oak step 5, and correctly reports failure for the crate, table and door. Chest and column floor pairings are repaired. I asked the operator to choose between a labelled L*30.34 display backing and recolouring the passing wood planes. `B-proposed-display-backing.png` shows the first option; it has not been applied to the deliverable.
+
+The prose pass and visual review were my own. Independent critic acceptance is pending. No files outside `art-drop/` were changed. No commit, push or branch change was made.
+
+# D0a Part B: critic 1 redraw
+
+Redrew all 18 files listed as failed in `art-drop/review-d0a/critic-B-1.json`: the five props, twelve material studies and their placements in `canon/style-guide.png`. No `operator-B.md` was present. The canon remains 48 px per cell. Passing files, including `STYLE.md`, both station-panel studies, all source crops and Part A's palette, remain unchanged.
+
+The crate has recessed planks and thick bracing with one shared face edge. The chest has a raised curved lid, a visible side, shaped gold bands and an inset lock. The column has bevelled mouldings, recessed flutes and connected chips. The door has individual stone bevels, a deeper recess and smaller iron hardware. The table has regular two-row edge steps, board thickness and trestle joints. Material studies use connected strata, fractures, grain and wear; grass and hydroponic growth follow larger connected masses. These drawings use native integer coordinates in `tools/draw_style_samples.py` and `tools/draw_material_studies.py`.
+
+`tools/check_style_guide.py --reviews` passes. Authored art has binary alpha, zero RGB under transparency, no off-palette or black pixels, and dimensions divisible by 48. Props use 6–16 colours each and 26 combined; material studies use 2–4 each. Floor clusters contain at least three pixels, floor values stay within L*35–55, and the largest span is 12.969 L*. Added checks find no 2×2 blocks in the props' darkest body-ramp colours and confirm the crate diagonal and table's two-row silhouette runs. All 16 source entries still match their documented extracts or native party composite.
+
+Regenerated the `art-drop/review-d0a/B-*.png` sheets and `B-validation.json`. I inspected the redrawn art at 1x, 2x and 3x nearest-neighbour, in greyscale and as a quarter-size greyscale squint. The prop comparisons include the native master crate, table, doorway and stonework; the yard comparison uses the summer grass. Cleanup joined diagonal texture fragments and removed dark corner blocks. This was my own visual review; another critic round and owner acceptance remain pending.
+
+This section is the only change to earlier parts' deliverables. All scratch images, comparisons and reports remain under `art-drop/review-d0a/`. No files outside `art-drop/` were changed, and no commit, push or branch change was made. The prose pass and newcomer read were my own.
+
+# D0a Part B
+
+Completed 2026-11-20 on `art/dungeon-maps-2026-11-20`. Canon version D0a-B.1 uses **48 × 48 px cells** for this and all later parts. I drew at that resolution, so the owner's larger-cell option was not needed. Part A's palette, tools and summer reference images remain unchanged. The only earlier deliverable edited is this running log, as requested.
+
+`canon/style-guide.png` is 1728 × 3072. It contains all 61 labelled six-step ramps, the crate/chest/column outline examples, upper-left lighting, a scale chart, 14 material studies, the greyscale value ladder, gameplay colours and five do/don't pairs. `canon/STYLE.md` records the cell decision and drawing rules. `canon/props/` contains reusable crate and chest sprites at 48 × 48, door and column sprites at 48 × 96, and a table at 96 × 96. `canon/swatches/` contains fourteen 48 × 48 material studies; these do not replace Part C's proofs or production patterns.
+
+The drawings use explicit integer-coordinate rectangles, polygons and pencil strokes in `tools/draw_style_samples.py`. Each wood grain, stone chip, crystal facet and wear cluster has chosen coordinates. No image generation, reduction, spatial filtering, noise or texture scattering was used. All art placements on the guide are 1:1. Enlargements and the quarter-size squint exist only under `art-drop/review-d0a/`, with nearest-neighbour sampling. Labels use a bitmap font. The neutral greyscale diagram is an annotation outside the material palette.
+
+`canon/crops/` contains the six required master crops (wall, floor, wood prop, stone prop, outline detail, rug), one extra master mass-edge crop, the three summer crops and five current-map don't examples. Master crops come directly from `master-interiors-mock.png`. Current-map crops retain their original 64 px cell scale. The summer crops copy the existing `reference/overworld-*.png` pixels exactly. Coordinates, paths and pixel hashes are in `canon/crops/SOURCES.json`.
+
+The party sample comes from the local game's `overworld-tiles/fantasy.json`, `tiles.party[0]`. `DungeonMapView.tsx` calls `drawTile("party")` when its animated character draw is unavailable. I decoded the original 16 × 16 sprite with the shared tile-pack alphabet and placed it 1:1 on an opaque 48 × 48 backing. Its source shadow is composited on that backing; its foreground pixels are unchanged. The guide marks party and foe sprites as legacy style/scale exceptions. Reference crops and this character sample retain source colours and are excluded from authored-art palette checks.
+
+`tools/check_style_guide.py --reviews` passes the final files. The five props use 6–14 colours each and 24 combined, below the 48-colour cap. Material studies use 2–4 colours each, below the 32-colour cap. All 36 new PNG deliverables have dimensions divisible by 48, binary alpha and zero RGB under transparency. Authored art has zero off-palette or opaque-black pixels. All 15 extracted source regions match their source pixels; the sixteenth source entry, the party, matches its native opaque composite. The atlas check masks only documented source inserts and the neutral value strip.
+
+Every material study passes a four-neighbour component check: no same-colour texture component contains fewer than three pixels. Floors remain within L*35–55; the widest span is 10.503 L*. Against the scale-chart floor at L*41.579, main prop bodies differ by 16.524–23.308 L*, and outlines by 23.680–26.469 L*. These measurements describe the demonstrated floor pairing; later scenes must check their own pairings.
+
+Self-review covered the guide, all props, all material studies and all source samples at 1x, 2x and 3x nearest-neighbour, in greyscale and in the quarter-size greyscale squint, beside 1x master crops. I redrew sparse material samples, replaced disconnected diagonal texture fragments with connected strokes, and joined four ice-shoulder fragments to their neighbouring ridges. The crate's brace, chest lid and lock, door arch, table legs and column flutes remain distinct at native scale. The squint preserves the prop silhouettes and value steps. Curve runs, outline corners and material finish were reviewed visually; the script does not claim to automate that judgment. Owner acceptance and independent panel review remain pending.
+
+Review sheets and the machine-readable result are `art-drop/review-d0a/B-*.png` and `B-validation.json`. Complete guide views and section panels cover the whole sheet. The prose pass covered STYLE.md and this new log section; the newcomer read was my own. No files outside `art-drop/` were changed. No commit, push or branch change was made.
+
+Reproduce the art, crops and checks from the checkout root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 art-drop/out/dungeon/d0a/tools/build_style_guide.py
+PYTHONDONTWRITEBYTECODE=1 python3 art-drop/out/dungeon/d0a/tools/check_style_guide.py --reviews
+```
+
 # D0a Part A
 
 Rebuilt Part A on 2026-11-20 to address all six points in `art-drop/review-d0a/operator-A.md`. This replaces the earlier palette submission and its fixed step-to-role assignments. Changed only `canon/palette.hex`, `canon/palette.json`, `canon/palette.png`, the palette builder and validator, and this log. The summer reference crops remain unchanged. Part B still chooses the canon cell size; the 48-pixel palette chips do not decide it.
