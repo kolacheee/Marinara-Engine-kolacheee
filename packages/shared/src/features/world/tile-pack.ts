@@ -215,6 +215,28 @@ export const imageTilePackSchema = z
               y: z.number().int().min(0).max(TILE_PACK_IMAGE_SHEET_PX),
               w: span.optional(),
               h: span.optional(),
+              /** Drawn as one surface laid across the whole area (a floor, a rug) instead of cell by cell. */
+              pattern: z.boolean().optional(),
+              /** The pixel in the art that stands on the cell's foot point, when the art is bigger than a cell. */
+              anchor: z
+                .object({ x: z.number().int().min(0).max(512), y: z.number().int().min(0).max(512) })
+                .strict()
+                .optional(),
+              /** How many cells the thing covers on the ground (a bed is 1 by 2). */
+              footprint: z
+                .object({ w: z.number().int().min(1).max(4), h: z.number().int().min(1).max(4) })
+                .strict()
+                .optional(),
+              /** Which footprint row sorts it among people (0 is the top row; the bottom row by default). */
+              sortRow: z.number().int().min(0).max(3).optional(),
+              /** How a wall or edge piece joins its neighbours. */
+              joins: z.enum(["none", "run", "corner", "end", "tee", "cross"]).optional(),
+              /** Hung on a wall face rather than stood on the floor. */
+              wallHung: z.boolean().optional(),
+              /** The tile this is the broken or ruined state of. */
+              ruinedOf: z.string().max(40).optional(),
+              /** The named palette ramp the art was drawn in, for art checks. */
+              ramp: z.string().max(40).optional(),
             })
             .strict(),
         )

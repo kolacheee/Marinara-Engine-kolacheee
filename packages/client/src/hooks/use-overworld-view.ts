@@ -315,7 +315,11 @@ export function useOverworldAtlas(
       variants?.length ? variants[Math.min(variants.length - 1, Math.floor(pick * variants.length))]! : null;
     if (image) {
       const size = image.tileSize;
+      // Ground laid as one surface: the built-in list, and any tile the pack marks as a pattern.
       const patterns = new Set<string>(WORLD_PATTERN_TILE_IDS);
+      for (const [key, variants] of Object.entries(image.tiles)) {
+        if (variants.some((each) => each.pattern)) patterns.add(key.split("@")[0]!);
+      }
       const draw = ((ctx, id, x, y, pick = 0, box) => {
         const variants = seasonal(ready?.tiles, id) ?? seasonal(ready?.tiles, fallbackOf(id) ?? "");
         // Ground drawn as a pattern: its cell for this position (x and y are whole cells in units here).
