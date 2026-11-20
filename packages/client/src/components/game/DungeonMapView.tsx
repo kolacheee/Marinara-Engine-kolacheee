@@ -36,7 +36,6 @@ import {
 import { useDungeonLeave, useDungeonMap, useDungeonStairs, useDungeonWalk } from "../../hooks/use-game";
 import { useUpdateChatMetadata } from "../../hooks/use-chats";
 import {
-  overworldBaseResolution,
   overworldCamera,
   useOverworldAtlas,
   useTilePackLibrary,
@@ -99,6 +98,8 @@ function paintLairRock(ctx: CanvasRenderingContext2D, x: number, y: number) {
   }
 }
 
+/** Canvas pixels per unit for the map: its art is 48 px a cell, 16 units. */
+const MAP_ART_SCALE = 3;
 const DAIS_SEAT = 13;
 /** How much of a building wall's cell is laid with the floor beside it, at its sides and at its top. */
 const WALL_INSET = 5;
@@ -240,11 +241,16 @@ export function DungeonMapView({
   const [size, setSize] = useState({ width: 0, height: 0 });
   const walkingRef = useRef(false);
   const [walking, setWalking] = useState(false);
-  const scale = Math.max(2, Math.min(4, Math.floor(Math.min(size.width / 360, size.height / 260))));
+  // Whole screen pixels for every art pixel (art overhaul plan, stage E): the map's art is 48 px a cell, 3 to a
+  // unit, so a unit takes 3, 6 or 9 device pixels and nothing is ever resampled. 1x is the smallest.
+  const dprNow = typeof window === "undefined" ? 1 : window.devicePixelRatio || 1;
+  const wanted = Math.max(2, Math.min(4, Math.floor(Math.min(size.width / 360, size.height / 260))));
+  const scale = (3 * Math.max(1, Math.round((wanted * dprNow) / 3 + 0.2))) / dprNow;
 
   // ── The map, drawn once: ground, the liquid's edges, then the props from the back row to the front ──
-  const shownAt = scale * (typeof window === "undefined" ? 1 : window.devicePixelRatio || 1);
-  const resolution = cells ? overworldBaseResolution(drawTile, cells.width * T * cells.height * T, shownAt) : 1;
+  // The map is built at the art's own size, 3 canvas pixels to a unit (the largest map, 64 by 64 cells, is
+  // 9.4 megapixels, inside a phone's canvas allowance).
+  const resolution = cells ? MAP_ART_SCALE : 1;
   const base = useMemo(() => {
     const canvas = document.createElement("canvas");
     if (!cells || drawTile.loading) return canvas;
@@ -253,7 +259,7 @@ export function DungeonMapView({
     const ctx = canvas.getContext("2d");
     if (!ctx) return canvas;
     ctx.scale(resolution, resolution);
-    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = false;
     // A building gone bad with no pack of its own: drawn as a building, walls, hall, rooms and furniture.
     const building = buildingStyleOf(cells.set);
     const coded = !drawTile.image && (building !== null || dungeonPaintsSet(cells.set));
@@ -433,13 +439,59 @@ export function DungeonMapView({
         }
         return path;
       };
-      const open = pathOf();
+      // Crisp pixels (art overhaul plan, stage E): an outline is laid on whole art pixels, as runs of a pixel's
+      // height where the smoothed path covers at least half a pixel, so no clip or band edge is ever blended.
+      const layer = (draw: (c: CanvasRenderingContext2D) => void) => {
+        const made = document.createElement("canvas");
+        made.width = canvas.width;
+        made.height = canvas.height;
+        const c = made.getContext("2d")!;
+        c.scale(resolution, resolution);
+        draw(c);
+        return made;
+      };
+      const hard = (made: HTMLCanvasElement, colour?: [number, number, number]) => {
+        const c = made.getContext("2d")!;
+        const image = c.getImageData(0, 0, made.width, made.height);
+        const d = image.data;
+        for (let i = 3; i < d.length; i += 4) {
+          const on = d[i]! >= 128;
+          d[i] = on ? 255 : 0;
+          if (on && colour) [d[i - 3], d[i - 2], d[i - 1]] = colour;
+        }
+        c.putImageData(image, 0, 0);
+        return made;
+      };
+      const pixelPath = (fill: (c: CanvasRenderingContext2D) => void) => {
+        const made = layer(fill);
+        const d = made.getContext("2d")!.getImageData(0, 0, made.width, made.height).data;
+        const path = new Path2D();
+        const px = 1 / resolution;
+        for (let y = 0; y < made.height; y++) {
+          let run = -1;
+          for (let x = 0; x <= made.width; x++) {
+            const on = x < made.width && d[(y * made.width + x) * 4 + 3]! >= 128;
+            if (on && run < 0) run = x;
+            else if (!on && run >= 0) {
+              path.rect(run * px, y * px, (x - run) * px, px);
+              run = -1;
+            }
+          }
+        }
+        return path;
+      };
+      const smooth = pathOf();
+      const smoothRaised = pathOf(false, -T);
+      const open = pixelPath((c) => c.fill(smooth));
       floorPathRef.current = open;
+      const raisedCrisp = pixelPath((c) => c.fill(smoothRaised));
       const front = new Path2D(open);
-      front.addPath(pathOf(false, -T));
+      front.addPath(raisedCrisp);
       frontPathRef.current = front;
-      const closed = pathOf(true);
-      const raised = pathOf(false, -T);
+      const closed = new Path2D();
+      closed.rect(-T, -T, (cells.width + 2) * T, (cells.height + 2) * T);
+      closed.addPath(open);
+      const raised = smoothRaised;
       const zoneCells = cellsOf(zone, () => true);
       const clipZone = (c: CanvasRenderingContext2D) => {
         if (everywhere) return;
@@ -507,15 +559,6 @@ export function DungeonMapView({
       // the floor (where its face stands), its top laid with the wall's own stone and a dark line round it.
       // A slope or a curve gets the same wall as a straight run, not the cells it happened to fall in.
       const band = mode === "full" ? T * 0.55 : T;
-      const layer = (draw: (c: CanvasRenderingContext2D) => void) => {
-        const made = document.createElement("canvas");
-        made.width = canvas.width;
-        made.height = canvas.height;
-        const c = made.getContext("2d")!;
-        c.scale(resolution, resolution);
-        draw(c);
-        return made;
-      };
       const shape = (c: CanvasRenderingContext2D, width: number, colour: string) => {
         c.fillStyle = colour;
         c.strokeStyle = colour;
@@ -525,17 +568,17 @@ export function DungeonMapView({
         c.lineCap = "round";
         c.lineWidth = width * 2;
         c.fill(raised);
-        c.stroke(open);
+        c.stroke(smooth);
         c.stroke(raised);
       };
-      const mask = layer((c) => shape(c, band, "#000"));
+      const mask = hard(layer((c) => shape(c, band, "#000")));
       const tops = layer((c) => {
         for (const [x, y] of zoneCells) paint.top(c, x, y);
         c.setTransform(1, 0, 0, 1, 0, 0);
         c.globalCompositeOperation = "destination-in";
         c.drawImage(mask, 0, 0);
       });
-      const edge = paint.seamless ? null : layer((c) => shape(c, band + 0.8, lineColour));
+      const edge = paint.seamless ? null : hard(layer((c) => shape(c, band + 0.8, lineColour)));
       ctx.save();
       clipZone(ctx);
       ctx.clip(closed, "evenodd");
@@ -583,18 +626,34 @@ export function DungeonMapView({
       // The line round the floor: a pale rim along the wall's top and a dark hairline where it meets the
       // floor or the void (none at a face's foot: the face has its own), and a soft shadow on the floor at
       // the wall's foot. Where only the cut corners are drawn, only along their slopes and curves.
+      // Drawn on whole art pixels: the stroke laid on its own layer, made hard-edged, then set down at the
+      // colour's own strength (no blended edge, art overhaul plan stage E).
       const stroke = (list: Seg[], pick: (s: Seg) => boolean, colour: string, width: number) => {
-        ctx.strokeStyle = colour;
-        ctx.lineWidth = width;
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        ctx.beginPath();
-        for (const s of list)
-          if ((everywhere || slanted(s)) && pick(s)) {
-            ctx.moveTo(s.ax, s.ay);
-            ctx.lineTo(s.bx, s.by);
-          }
-        ctx.stroke();
+        const [r, g, b, a] = (colour.match(/[\d.]+/g) ?? ["0", "0", "0", "1"]).map(Number) as [
+          number,
+          number,
+          number,
+          number,
+        ];
+        const line = hard(
+          layer((c) => {
+            c.strokeStyle = `rgb(${r}, ${g}, ${b})`;
+            c.lineWidth = Math.max(1, Math.round(width * resolution)) / resolution;
+            c.lineCap = "round";
+            c.lineJoin = "round";
+            c.beginPath();
+            for (const s of list)
+              if ((everywhere || slanted(s)) && pick(s)) {
+                c.moveTo(s.ax, s.ay);
+                c.lineTo(s.bx, s.by);
+              }
+            c.stroke();
+          }),
+        );
+        ctx.save();
+        ctx.globalAlpha = a ?? 1;
+        ctx.drawImage(line, 0, 0, cells.width * T, cells.height * T);
+        ctx.restore();
       };
       const faceUp = (s: Seg) => s.bx > s.ax + 1e-6 && Math.abs(s.by - s.ay) < (s.bx - s.ax) * 1.5;
       if (zoneCells.length) {
@@ -1476,8 +1535,8 @@ export function DungeonMapView({
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.fillStyle = "#05060a";
       ctx.fillRect(0, 0, width, height);
-      ctx.setTransform(scale * dpr, 0, 0, scale * dpr, -cam.x * dpr, -cam.y * dpr);
-      ctx.imageSmoothingEnabled = drawTile.image && resolution > scale * dpr;
+      ctx.setTransform(scale * dpr, 0, 0, scale * dpr, -Math.round(cam.x * dpr), -Math.round(cam.y * dpr));
+      ctx.imageSmoothingEnabled = false;
       if (framed.width === mapSize.width && framed.height === mapSize.height)
         ctx.drawImage(base, 0, 0, base.width / resolution, base.height / resolution);
       else
