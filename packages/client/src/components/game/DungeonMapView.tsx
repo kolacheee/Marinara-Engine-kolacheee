@@ -245,14 +245,16 @@ export function DungeonMapView({
   const [walking, setWalking] = useState(false);
   // Whole screen pixels for every art pixel (art overhaul plan, stage E): the map's art is 48 px a cell, 3 to a
   // unit, so a unit takes 3, 6 or 9 device pixels and nothing is ever resampled. 1x is the smallest.
+  // A pack drawn at a bigger cell (64 px is 4 to a unit) builds the map at its own size instead.
+  const artScale = drawTile.image ? Math.max(1, Math.min(6, Math.round(drawTile.resolution ?? MAP_ART_SCALE))) : MAP_ART_SCALE;
   const dprNow = typeof window === "undefined" ? 1 : window.devicePixelRatio || 1;
   const wanted = Math.max(2, Math.min(4, Math.floor(Math.min(size.width / 360, size.height / 260))));
-  const scale = (3 * Math.max(1, Math.round((wanted * dprNow) / 3 + 0.2))) / dprNow;
+  const scale = (artScale * Math.max(1, Math.round((wanted * dprNow) / artScale + 0.2))) / dprNow;
 
   // ── The map, drawn once: ground, the liquid's edges, then the props from the back row to the front ──
   // The map is built at the art's own size, 3 canvas pixels to a unit (the largest map, 64 by 64 cells, is
   // 9.4 megapixels, inside a phone's canvas allowance).
-  const resolution = cells ? MAP_ART_SCALE : 1;
+  const resolution = cells ? artScale : 1;
   const base = useMemo(() => {
     const canvas = document.createElement("canvas");
     if (!cells || drawTile.loading) return canvas;
