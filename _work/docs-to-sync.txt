@@ -1,4 +1,0 @@
-chats/messages.md
-chats/sending-and-streaming.md
-chats/slash-commands.md
-settings/settings-overview.md

@@ -124,7 +124,7 @@ Le son se joue sur chaque appareil connecté à ce serveur. Tu peux l'écouter, 
 | **Guide swipes/regens with chat input** | Editing & Swipes | Utilise ton brouillon comme consigne quand tu régénères. |
 | **Always show swipe menu in Conversation** / **in Roleplay** | Editing & Swipes | Garde les flèches de swipe visibles au lieu de les afficher seulement au survol. |
 
-La section **Responses** a **Type out replies as they arrive (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Add a new line before /continue text** (activé par défaut) et **Messages per page**. Voir [Envoyer des messages et le streaming](../chats/sending-and-streaming.md). **Thinking** a **Show Thinking In Messages** et **Don't Collapse Thinking**. Pour les actions sur les messages, voir [Actions sur les messages](../chats/messages.md).
+La section **Responses** a **Type out replies as they arrive (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Ajouter une nouvelle ligne avant le texte de Continuer à écrire** (activé par défaut) et **Messages per page**. Voir [Envoyer des messages et le streaming](../chats/sending-and-streaming.md). **Thinking** a **Show Thinking In Messages** et **Don't Collapse Thinking**. Pour les actions sur les messages, voir [Actions sur les messages](../chats/messages.md).
 
 ### Text Formatting
 

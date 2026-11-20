@@ -1,6 +1,0 @@
-{
-  "ui.overhaul.messagebuttons.allOnMessage": "Every button sits on the message. ⋯ keeps only the extras, such as Peek prompt.",
-  "settings.controls.continueAddsNewline.label": "Add a new line before Continue text",
-  "settings.controls.continueAddsNewline.help": "When on, Continue (or /continue) starts the appended text after a blank line. Turn it off to continue directly from the final character of the last AI message.",
-  "settings.search.continueAddsNewline.description": "Start Continue (or /continue) text after a blank line."
-}

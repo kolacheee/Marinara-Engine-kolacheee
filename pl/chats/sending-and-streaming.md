@@ -85,7 +85,7 @@ Kliknij przycisk zatrzymania – w czasie streamingu odpowiedzi jest nim przycis
 
 Jeśli ostatnia wiadomość jest twoja, a odpowiedź AI nie nadeszła, zostaw pole wpisywania puste i kliknij **Send** (albo naciśnij <kbd>Enter</kbd>). Marinara uruchamia nową odpowiedź i nie dubluje wiadomości. W trybie Conversation przycisk pokazuje wtedy okrągłą strzałkę. Jeśli w polu jest szkic, **Send** wysyła zamiast tego szkic.
 
-W trybie Roleplay **Send** przy pustym polu uruchamia zupełnie nową odpowiedź także już po odpowiedzi AI. Nie dopisuje niczego do poprzedniej odpowiedzi. Aby przedłużyć poprzednią odpowiedź, użyj `/continue`. Zobacz [Działania na wiadomości](messages.md).
+W trybie Roleplay **Send** przy pustym polu uruchamia zupełnie nową odpowiedź także już po odpowiedzi AI. Nie dopisuje niczego do poprzedniej odpowiedzi. Aby przedłużyć poprzednią odpowiedź, użyj **Pisz dalej** w jej menu **⋯** lub `/continue`. Zobacz [Działania na wiadomości](messages.md).
 
 ## Kiedy pojawia się błąd generowania
 

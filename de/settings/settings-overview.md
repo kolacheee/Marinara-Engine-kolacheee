@@ -124,7 +124,7 @@ Der Ton spielt auf jedem Gerät, das mit diesem Server verbunden ist. Du kannst 
 | **Guide swipes/regens with chat input** | Editing & Swipes | Nutzt deinen Entwurf als Vorgabe, wenn du neu generierst. |
 | **Always show swipe menu in Conversation** / **in Roleplay** | Editing & Swipes | Lässt die Swipe-Pfeile sichtbar, statt sie nur beim Darüberfahren anzuzeigen. |
 
-Der Abschnitt **Responses** hat **Type out replies as they arrive (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Add a new line before /continue text** (standardmäßig an) und **Messages per page**. Siehe [Nachrichten senden und streamen](../chats/sending-and-streaming.md). **Thinking** hat **Show Thinking In Messages** und **Don't Collapse Thinking**. Zu den Nachrichtenaktionen siehe [Nachrichtenaktionen](../chats/messages.md).
+Der Abschnitt **Responses** hat **Type out replies as they arrive (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Vor dem Text von Weiterschreiben eine neue Zeile einfügen** (standardmäßig an) und **Messages per page**. Siehe [Nachrichten senden und streamen](../chats/sending-and-streaming.md). **Thinking** hat **Show Thinking In Messages** und **Don't Collapse Thinking**. Zu den Nachrichtenaktionen siehe [Nachrichtenaktionen](../chats/messages.md).
 
 ### Text Formatting
 

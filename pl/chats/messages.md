@@ -95,18 +95,22 @@ Te trzy działania wyglądają podobnie, ale robią co innego.
 | Działanie | Wynik |
 | --- | --- |
 | **Regenerate** | Nowy swipe. Oryginał zostaje zachowany. Na ekranie dotykowym aplikacja najpierw pyta "Regenerate this message as a new swipe?". Gdy wskazówka jest przygotowana, przycisk nosi nazwę **Regenerate (guided)**. |
-| `/continue` | Dalszy tekst w tej samej wiadomości, bez nowego swipe'a. |
+| **Pisz dalej** (lub `/continue`) | Dalszy tekst w tej samej wiadomości, bez nowego swipe'a. |
 | **Send** (wysłanie) przy pustym polu | Świeża odpowiedź. |
 
 ### Kontynuowanie odpowiedzi
 
-Wpisz `/continue` (albo `/cont`) w polu wpisywania i wyślij. Model podejmuje wątek tam, gdzie urwała się jego ostatnia odpowiedź.
+Otwórz **⋯** przy ostatniej odpowiedzi AI i wybierz **Pisz dalej** (na telefonie lub tablecie przytrzymaj wiadomość). Model podejmuje wątek tam, gdzie urwała się jego ostatnia odpowiedź, a nowy tekst pojawia się stopniowo w tej samej wiadomości, w oglądanym swipe'ie. Pisz dalej pojawia się tylko przy ostatniej wiadomości czatu, jeśli jest ona odpowiedzią AI.
+
+Aby Pisz dalej było widoczne przy wiadomości, wybierz je w **Ustawienia → Czatowanie → Przyciski wiadomości**. Przycisk znajduje się pod wiadomością, obok **Wygeneruj ponownie**.
+
+Możesz też wpisać `/continue` (albo `/cont`) w polu wpisywania i wysłać:
 
 ```text
 /continue
 ```
 
-Marinara wstawia pustą linię przed nowym tekstem. Aby doklejać go wprost do ostatniego znaku, wyłącz **Ustawienia → Czatowanie → Odpowiedzi → Dodawaj nowy wiersz przed tekstem /continue**.
+Marinara wstawia pustą linię przed nowym tekstem. Aby doklejać go wprost do ostatniego znaku, wyłącz **Ustawienia → Czatowanie → Odpowiedzi → Dodawaj nowy wiersz przed tekstem Pisz dalej**.
 
 ### Ponowna próba przy pustym polu
 

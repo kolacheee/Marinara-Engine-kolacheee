@@ -124,7 +124,7 @@ Dźwięk odtwarza się na każdym urządzeniu połączonym z tym serwerem. Da si
 | **Guide swipes/regens with chat input** (steruj swipe'ami i ponownym generowaniem polem czatu) | Edycja i swipe'y | Używa twojego szkicu jako wskazówki przy ponownym generowaniu. |
 | **Zawsze pokazuj menu swipe'ów w trybie Conversation** / **w trybie Roleplay** | Edycja i swipe'y | Strzałki swipe'ów są zawsze widoczne, a nie tylko po najechaniu kursorem. |
 
-Sekcja **Odpowiedzi** zawiera **Wyświetlaj odpowiedzi w miarę ich napływania (strumieniowanie)**, **Szybkość strumieniowania**, **Przycinaj niedokończone zakończenia modelu**, **Dodawaj nowy wiersz przed tekstem /continue** (domyślnie włączone) i **Wiadomości na stronę**. Zobacz [Wysyłanie wiadomości i streaming](../chats/sending-and-streaming.md). Sekcja **Myślenie** zawiera **Pokazuj myślenie w wiadomościach** i **Nie zwijaj myślenia**. O działaniach na wiadomościach przeczytasz w [Działania na wiadomości: edycja, usuwanie, swipe'y, ponowne generowanie](../chats/messages.md).
+Sekcja **Odpowiedzi** zawiera **Wyświetlaj odpowiedzi w miarę ich napływania (strumieniowanie)**, **Szybkość strumieniowania**, **Przycinaj niedokończone zakończenia modelu**, **Dodawaj nowy wiersz przed tekstem Pisz dalej** (domyślnie włączone) i **Wiadomości na stronę**. Zobacz [Wysyłanie wiadomości i streaming](../chats/sending-and-streaming.md). Sekcja **Myślenie** zawiera **Pokazuj myślenie w wiadomościach** i **Nie zwijaj myślenia**. O działaniach na wiadomościach przeczytasz w [Działania na wiadomości: edycja, usuwanie, swipe'y, ponowne generowanie](../chats/messages.md).
 
 ### Formatowanie tekstu
 

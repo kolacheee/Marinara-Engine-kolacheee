@@ -87,7 +87,7 @@ Clique sur le bouton d'arrêt, c'est-à-dire le bouton **Send** pendant le strea
 
 Si le dernier message est le tien et que l'IA n'a jamais répondu, laisse la zone de saisie vide et clique sur **Send** (ou appuie sur <kbd>Enter</kbd>). Marinara lance une nouvelle réponse sans ajouter de message en double. En mode Conversation, le bouton affiche une flèche circulaire dans cet état. Si la zone contient un brouillon, **Send** envoie plutôt ce brouillon.
 
-En Roleplay, un **Send** à vide lance aussi une réponse toute neuve après que l'IA a déjà répondu. Il ne rallonge pas la réponse précédente. Pour prolonger la réponse précédente, utilise `/continue`. Voir [Actions sur un message](messages.md).
+En Roleplay, un **Send** à vide lance aussi une réponse toute neuve après que l'IA a déjà répondu. Il ne rallonge pas la réponse précédente. Pour prolonger la réponse précédente, utilise **Continuer à écrire** dans son menu **⋯**, ou `/continue`. Voir [Actions sur un message](messages.md).
 
 ## Quand une erreur de génération apparaît
 

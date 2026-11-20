@@ -124,7 +124,7 @@ Marinara नोटिफ़िकेशन के लिए एक बिल्�
 | **Guide swipes/regens with chat input** | Editing & Swipes | दोबारा जेनरेट करते समय आपके ड्राफ़्ट को दिशा की तरह इस्तेमाल करती है। |
 | **Always show swipe menu in Conversation** / **in Roleplay** | Editing & Swipes | स्वाइप ऐरो को सिर्फ़ होवर करने पर दिखाने के बजाय हमेशा दिखाती है। |
 
-**Responses** सेक्शन में **Type out replies as they arrive (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Add a new line before /continue text** (डिफ़ॉल्ट रूप से चालू) और **Messages per page** हैं। [संदेश भेजना और स्ट्रीमिंग](../chats/sending-and-streaming.md) देखें। **Thinking** में **Show Thinking In Messages** और **Don't Collapse Thinking** हैं। संदेश की क्रियाओं के लिए [संदेश की क्रियाएँ: एडिट, डिलीट, स्वाइप, दोबारा जेनरेट](../chats/messages.md) देखें।
+**Responses** सेक्शन में **Type out replies as they arrive (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **आगे लिखें के टेक्स्ट से पहले नई लाइन जोड़ें** (डिफ़ॉल्ट रूप से चालू) और **Messages per page** हैं। [संदेश भेजना और स्ट्रीमिंग](../chats/sending-and-streaming.md) देखें। **Thinking** में **Show Thinking In Messages** और **Don't Collapse Thinking** हैं। संदेश की क्रियाओं के लिए [संदेश की क्रियाएँ: एडिट, डिलीट, स्वाइप, दोबारा जेनरेट](../chats/messages.md) देखें।
 
 ### Text Formatting
 

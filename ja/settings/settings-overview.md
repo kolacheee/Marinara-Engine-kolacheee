@@ -124,7 +124,7 @@ Marinaraは、通知に標準の音を鳴らします。自分の音を使うに
 | **Guide swipes/regens with chat input** | Editing & Swipes | 再生成のときに、入力欄の下書きを指示として使います。 |
 | **Always show swipe menu in Conversation** / **in Roleplay** | Editing & Swipes | マウスカーソルを重ねたときだけでなく、スワイプの矢印を常に表示します。 |
 
-**Responses**セクションには、**Type out replies as they arrive (streaming)**、**Streaming speed**、**Trim incomplete sentences from the response**、**Add a new line before /continue text**(デフォルトでオン)、**Messages per page**があります。[メッセージの送信とストリーミング](../chats/sending-and-streaming.md)を参照してください。**Thinking**には、**Show Thinking In Messages**と**Don't Collapse Thinking**があります。メッセージの操作については、[メッセージの操作](../chats/messages.md)を参照してください。
+**Responses**セクションには、**Type out replies as they arrive (streaming)**、**Streaming speed**、**Trim incomplete sentences from the response**、**「続きを書く」のテキストの前に改行を入れる**(デフォルトでオン)、**Messages per page**があります。[メッセージの送信とストリーミング](../chats/sending-and-streaming.md)を参照してください。**Thinking**には、**Show Thinking In Messages**と**Don't Collapse Thinking**があります。メッセージの操作については、[メッセージの操作](../chats/messages.md)を参照してください。
 
 ### Text Formatting
 

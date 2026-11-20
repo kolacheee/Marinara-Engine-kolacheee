@@ -124,7 +124,7 @@ Marinara 为通知播放内置提示音。想使用你自己的声音：
 | **Guide swipes/regens with chat input** | Editing & Swipes | 重新生成时，把你的草稿用作方向指引。 |
 | **Always show swipe menu in Conversation**(在对话模式中始终显示备选回复菜单) / **in Roleplay**(在角色扮演中始终显示备选回复菜单) | Editing & Swipes | 始终显示备选回复箭头，而不是仅在鼠标悬停时显示。 |
 
-**Responses** 部分包含 **Type out replies as they arrive (streaming)**(收到回复时逐字显示（流式输出）)、**Streaming speed**(流式速度)、**Trim incomplete sentences from the response**(裁掉回复中不完整的句子)、**Add a new line before /continue text**(在 /continue 文本前添加新行)（默认开启）和 **Messages per page**(每页消息数)。参见[发送消息与流式输出](../chats/sending-and-streaming.md)。**Thinking** 包含 **Show Thinking In Messages**(在消息中显示思考过程) 和 **Don't Collapse Thinking**(不折叠思考过程)。消息操作请参见[消息操作](../chats/messages.md)。
+**Responses** 部分包含 **Type out replies as they arrive (streaming)**(收到回复时逐字显示（流式输出）)、**Streaming speed**(流式速度)、**Trim incomplete sentences from the response**(裁掉回复中不完整的句子)、**在续写文本前添加新行**（默认开启）和 **Messages per page**(每页消息数)。参见[发送消息与流式输出](../chats/sending-and-streaming.md)。**Thinking** 包含 **Show Thinking In Messages**(在消息中显示思考过程) 和 **Don't Collapse Thinking**(不折叠思考过程)。消息操作请参见[消息操作](../chats/messages.md)。
 
 ### Text Formatting
 

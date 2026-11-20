@@ -124,7 +124,7 @@ Marinara는 알림에 기본 내장 소리를 재생합니다. 직접 고른 소
 | **Guide swipes/regens with chat input**(채팅 입력으로 스와이프/재생성 안내) | 편집 및 스와이프 | 재생성할 때 입력해 둔 초안을 지침으로 씁니다. |
 | **Always show swipe menu in Conversation**(대화에서 스와이프 메뉴 항상 표시) / **in Roleplay**(롤플레이에서 스와이프 메뉴 항상 표시) | 편집 및 스와이프 | 마우스를 올릴 때만 스와이프 화살표를 표시하는 대신 항상 표시합니다. |
 
-**Responses** 섹션에는 **Type out replies as they arrive (streaming)**(답장이 도착하는 대로 표시, 스트리밍), **Streaming speed**(스트리밍 속도), **Trim incomplete sentences from the response**(응답에서 완성되지 않은 문장 제거), **Add a new line before /continue text**(/continue 텍스트 앞에 새 줄 추가)(기본값은 켜짐), **Messages per page**(한 번에 표시할 메시지 수)가 있습니다. [메시지 보내기와 스트리밍](../chats/sending-and-streaming.md)을 참고하세요. **Thinking**에는 **Show Thinking In Messages**(메시지에 추론 표시)와 **Don't Collapse Thinking**(생각 접지 않기)가 있습니다. 메시지 조작은 [메시지 조작](../chats/messages.md)을 참고하세요.
+**Responses** 섹션에는 **Type out replies as they arrive (streaming)**(답장이 도착하는 대로 표시, 스트리밍), **Streaming speed**(스트리밍 속도), **Trim incomplete sentences from the response**(응답에서 완성되지 않은 문장 제거), **이어 쓰기 텍스트 앞에 새 줄 추가**(기본값은 켜짐), **Messages per page**(한 번에 표시할 메시지 수)가 있습니다. [메시지 보내기와 스트리밍](../chats/sending-and-streaming.md)을 참고하세요. **Thinking**에는 **Show Thinking In Messages**(메시지에 추론 표시)와 **Don't Collapse Thinking**(생각 접지 않기)가 있습니다. 메시지 조작은 [메시지 조작](../chats/messages.md)을 참고하세요.
 
 ### Text Formatting
 

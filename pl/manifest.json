@@ -1,6 +1,6 @@
 {
   "language": "pl",
-  "sourceCommit": "7e60cd4da219097f678c09be32e4829d8d72e87f",
+  "sourceCommit": "9d9ff9dae6b99bd03356441a058ac178fcc55e6e",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -209,8 +209,8 @@
     },
     {
       "path": "chats/messages.md",
-      "sha256": "4d1fa6f8fde632d153f94293238cb645fd852f2791eaa14b44fb2c2959ab4d1b",
-      "bytes": 12973
+      "sha256": "d407e6f9a43ec078c3d069b2274e68bd3bb3e00ad4aa393823219ef169504136",
+      "bytes": 13506
     },
     {
       "path": "chats/peek-prompt.md",
@@ -219,8 +219,8 @@
     },
     {
       "path": "chats/sending-and-streaming.md",
-      "sha256": "3321768e4c117d21c8b972551e47f6e8dc1ab5c98d66d174b752d54da8f118d5",
-      "bytes": 8167
+      "sha256": "96179e1b1dc95f43516771964924031a752b094134ebd7b712e6c179cfd3eadb",
+      "bytes": 8205
     },
     {
       "path": "chats/settings-profiles.md",
@@ -229,8 +229,8 @@
     },
     {
       "path": "chats/slash-commands.md",
-      "sha256": "6b90f4033ec381bbb938a0970c1c8dcc09777b5e6fc71885f1e10f42a1a422e5",
-      "bytes": 12053
+      "sha256": "08348cae961084260ea6ef3fcda0fe24025830f1bde1340c27852fae4d597d27",
+      "bytes": 12054
     },
     {
       "path": "configuration/features.md",
@@ -784,8 +784,8 @@
     },
     {
       "path": "settings/settings-overview.md",
-      "sha256": "020125dd231e563b43de89e34e683b8610fa3d1fda0428b36440161e0b97cf0a",
-      "bytes": 20183
+      "sha256": "491395ff868db21ccef3d83aa0c4fcb95719e3b801a9dfb04bba9730e9ea9931",
+      "bytes": 20184
     }
   ]
 }

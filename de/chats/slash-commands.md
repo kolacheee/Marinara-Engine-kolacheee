@@ -29,7 +29,7 @@ Diese Befehle funktionieren in Conversation und Roleplay.
 | --- | --- |
 | `/help` | Listet alle Slash-Befehle auf. |
 | `/send` | Postet eine Nachricht im Namen deiner Persona, ohne eine Antwort anzufordern. Makros werden eingesetzt, wie bei **Send**. Format: `/send [message]`. |
-| `/continue` | Hängt weiteren Text an die letzte KI-Antwort an, ohne neue Nachricht. Auch `/cont`. **Settings → Chatting → Responses → Add a new line before /continue text** legt fest, ob der Text nach einer Leerzeile beginnt oder direkt an der Abbruchstelle. |
+| `/continue` | Hängt weiteren Text an die letzte KI-Antwort an, ohne neue Nachricht. Auch `/cont`. **Einstellungen → Chatten → Antworten → Vor dem Text von Weiterschreiben eine neue Zeile einfügen** legt fest, ob der Text nach einer Leerzeile beginnt oder direkt an der Abbruchstelle. |
 | `/goto` | Scrollt den Chat zu einer Nachrichtennummer. Auch `/jump`, `/scroll`. Format: `/goto [number]`. |
 | `/hide` | Verbirgt Nachrichten in kommenden Zügen vor dem Modell. Format: `/hide [range] [name (optional)]`. |
 | `/unhide` | Holt global verborgene Nachrichten zurück. Format: `/unhide [range]`. |

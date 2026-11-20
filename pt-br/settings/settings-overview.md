@@ -124,7 +124,7 @@ O som toca em todos os dispositivos conectados a este servidor. Você pode ouvir
 | **Guide swipes/regens with chat input** | Edição e swipes | Usa o seu rascunho como direção quando você regenera. |
 | **Sempre mostrar o menu de swipes no Conversation** / **no Roleplay** | Edição e swipes | Mantém as setas de swipe visíveis, em vez de mostrá-las só ao passar o mouse. |
 
-A seção **Responses** tem **Exibir as respostas aos poucos conforme chegam (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Add a new line before /continue text** (ativado por padrão) e **Messages per page**. Veja [Enviar mensagens e streaming](../chats/sending-and-streaming.md). **Raciocínio** tem **Mostrar o raciocínio nas mensagens** e **Não recolher o raciocínio**. Para as ações de mensagem, veja [Ações de mensagem](../chats/messages.md).
+A seção **Responses** tem **Exibir as respostas aos poucos conforme chegam (streaming)**, **Streaming speed**, **Trim incomplete sentences from the response**, **Adicionar uma nova linha antes do texto de Continuar escrevendo** (ativado por padrão) e **Messages per page**. Veja [Enviar mensagens e streaming](../chats/sending-and-streaming.md). **Raciocínio** tem **Mostrar o raciocínio nas mensagens** e **Não recolher o raciocínio**. Para as ações de mensagem, veja [Ações de mensagem](../chats/messages.md).
 
 ### Formatação de texto
 

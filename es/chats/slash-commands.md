@@ -29,7 +29,7 @@ Funcionan en Conversation y Roleplay.
 | --- | --- |
 | `/help` | Enumera todos los comandos slash. |
 | `/send` | Publica un mensaje como tu persona sin pedir una respuesta. Las macros se sustituyen, como con **Send**. Formato: `/send [message]`. |
-| `/continue` | Añade más texto a la última respuesta de la IA, sin un mensaje nuevo. También `/cont`. **Settings → Chatting → Responses → Add a new line before /continue text** (Configuración → Chateando → Respuestas → Añadir una línea nueva antes del texto de /continue) define si el texto empieza después de una línea en blanco o en el punto de corte. |
+| `/continue` | Añade más texto a la última respuesta de la IA, sin un mensaje nuevo. También `/cont`. **Configuración → Chateando → Respuestas → Añadir una línea nueva antes del texto de Seguir escribiendo** define si el texto empieza después de una línea en blanco o en el punto de corte. |
 | `/goto` | Desplaza el chat hasta un número de mensaje. También `/jump`, `/scroll`. Formato: `/goto [number]`. |
 | `/hide` | Oculta mensajes al modelo en los turnos siguientes. Formato: `/hide [range] [name (optional)]`. |
 | `/unhide` | Vuelve a mostrar los mensajes ocultos globalmente. Formato: `/unhide [range]`. |

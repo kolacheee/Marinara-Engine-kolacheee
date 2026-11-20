@@ -95,18 +95,22 @@ Estas tres acciones se parecen y hacen cosas distintas.
 | Acción | Resultado |
 | --- | --- |
 | **Regenerate** | Un nuevo swipe. El original se conserva. En una pantalla táctil, la app primero pregunta "Regenerate this message as a new swipe?" (¿Regenerar este mensaje como un nuevo swipe?). Con una dirección guiada preparada, el botón dice **Regenerate (guided)**. |
-| `/continue` | Más texto en el mismo mensaje, sin un nuevo swipe. |
+| **Seguir escribiendo** (o `/continue`) | Más texto en el mismo mensaje, sin un nuevo swipe. |
 | **Send** (Enviar) vacío | Una respuesta nueva. |
 
 ### Continuar una respuesta
 
-Escribe `/continue` (o `/cont`) en la caja de entrada y envíalo. El modelo retoma donde se detuvo su última respuesta.
+Abre **⋯** en la última respuesta de la IA y elige **Seguir escribiendo** (en un teléfono o tablet, mantén pulsado el mensaje). El modelo retoma donde se detuvo su última respuesta y el texto nuevo aparece poco a poco en el mismo mensaje, en el swipe que estás viendo. Seguir escribiendo solo aparece en el último mensaje del chat, cuando es una respuesta de la IA.
+
+Para dejar Seguir escribiendo en el mensaje, selecciónalo en **Configuración → Chateando → Botones de mensajes**. Queda debajo del mensaje, junto a **Regenerar**.
+
+También puedes escribir `/continue` (o `/cont`) en la caja de entrada y enviarlo:
 
 ```text
 /continue
 ```
 
-Marinara añade una línea en blanco antes del texto nuevo. Para adjuntarlo directamente al último carácter, desactiva **Settings → Chatting → Responses → Add a new line before /continue text** (Configuración → Chateando → Respuestas → Añadir una línea nueva antes del texto de /continue).
+Marinara añade una línea en blanco antes del texto nuevo. Para adjuntarlo directamente al último carácter, desactiva **Configuración → Chateando → Respuestas → Añadir una línea nueva antes del texto de Seguir escribiendo**.
 
 ### Reintentar con un Send vacío
 

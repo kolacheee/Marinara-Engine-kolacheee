@@ -85,7 +85,7 @@ Haz clic en el botón de detener, que es el botón **Send** mientras una respues
 
 Si el último mensaje es tuyo y la IA nunca respondió, deja vacío el cuadro de entrada y haz clic en **Send** (o pulsa <kbd>Enter</kbd>). Marinara empieza una respuesta nueva y no añade ningún mensaje duplicado. En Conversation, el botón muestra una flecha circular en este estado. Si el cuadro tiene un borrador, **Send** envía el borrador en su lugar.
 
-En Roleplay, un **Send** vacío también empieza una respuesta completamente nueva después de que la IA ya respondió. No se suma a la respuesta anterior. Para extender la respuesta anterior, usa `/continue`. Consulta [Acciones de mensaje](messages.md).
+En Roleplay, un **Send** vacío también empieza una respuesta completamente nueva después de que la IA ya respondió. No se suma a la respuesta anterior. Para extender la respuesta anterior, usa **Seguir escribiendo** en su menú **⋯**, o `/continue`. Consulta [Acciones de mensaje](messages.md).
 
 ## Cuando aparece un error de generación
 

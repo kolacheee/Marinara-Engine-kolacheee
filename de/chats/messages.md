@@ -95,18 +95,22 @@ Diese drei sehen ähnlich aus, tun aber Unterschiedliches.
 | Aktion | Ergebnis |
 | --- | --- |
 | **Regenerate** | Ein neuer Swipe. Das Original bleibt erhalten. Auf einem Touchscreen fragt die App zuerst „Regenerate this message as a new swipe?“. Ist eine Vorgabe aktiv, heißt die Schaltfläche **Regenerate (guided)**. |
-| `/continue` | Mehr Text in derselben Nachricht, ohne neuen Swipe. |
+| **Weiterschreiben** (oder `/continue`) | Mehr Text in derselben Nachricht, ohne neuen Swipe. |
 | Leeres **Send** (Senden) | Eine frische Antwort. |
 
 ### Eine Antwort fortsetzen
 
-Tipp `/continue` (oder `/cont`) ins Eingabefeld und schick es ab. Das Modell macht dort weiter, wo seine letzte Antwort aufgehört hat.
+Öffne **⋯** an der letzten KI-Antwort und wähle **Weiterschreiben** (halte auf einem Handy oder Tablet die Nachricht gedrückt). Das Modell macht dort weiter, wo seine letzte Antwort aufgehört hat. Der neue Text wird in dieselbe Nachricht gestreamt, in den Swipe, den du gerade ansiehst. Weiterschreiben erscheint nur an der letzten Nachricht des Chats, wenn sie eine KI-Antwort ist.
+
+Damit Weiterschreiben direkt an der Nachricht bleibt, wähle es unter **Einstellungen → Chatten → Nachrichtenschaltflächen** aus. Die Schaltfläche sitzt unter der Nachricht neben **Neu generieren**.
+
+Du kannst auch `/continue` (oder `/cont`) ins Eingabefeld tippen und abschicken:
 
 ```text
 /continue
 ```
 
-Marinara setzt eine Leerzeile vor den neuen Text. Soll er direkt am letzten Zeichen ansetzen, schalte **Settings → Chatting → Responses → Add a new line before /continue text** aus.
+Marinara setzt eine Leerzeile vor den neuen Text. Soll er direkt am letzten Zeichen ansetzen, schalte **Einstellungen → Chatten → Antworten → Vor dem Text von Weiterschreiben eine neue Zeile einfügen** aus.
 
 ### Mit leerem Send erneut versuchen
 

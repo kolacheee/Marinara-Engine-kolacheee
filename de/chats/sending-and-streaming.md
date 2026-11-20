@@ -85,7 +85,7 @@ Klick auf die Stopp-Schaltfläche – das ist die Schaltfläche **Send**, solang
 
 Ist die letzte Nachricht von dir und hat die KI nie geantwortet, lass das Eingabefeld leer und klick auf **Send** (oder drück <kbd>Enter</kbd>). Marinara startet eine neue Antwort und legt keine doppelte Nachricht an. In Conversation zeigt die Schaltfläche in diesem Zustand einen kreisförmigen Pfeil. Steht ein Entwurf im Feld, schickt **Send** stattdessen den Entwurf ab.
 
-In Roleplay startet ein leeres **Send** auch dann eine komplett neue Antwort, wenn die KI schon geantwortet hat. Es ergänzt die vorherige Antwort nicht. Um die vorherige Antwort zu verlängern, nimm `/continue`. Siehe [Aktionen für Nachrichten](messages.md).
+In Roleplay startet ein leeres **Send** auch dann eine komplett neue Antwort, wenn die KI schon geantwortet hat. Es ergänzt die vorherige Antwort nicht. Um die vorherige Antwort zu verlängern, nimm **Weiterschreiben** im **⋯**-Menü der Antwort oder `/continue`. Siehe [Aktionen für Nachrichten](messages.md).
 
 ## Wenn ein Fehler bei der Generierung erscheint
 
