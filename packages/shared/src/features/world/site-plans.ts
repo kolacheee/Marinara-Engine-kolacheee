@@ -18,6 +18,7 @@ import {
   type DungeonMap,
   type DungeonRoom,
   type GameDungeonMap,
+  dungeonCutCorners,
 } from "./dungeon-map.js";
 
 /** The kinds of place built to a plan. Caves, mines, sewers, ruins and stations keep their carved maps. */
@@ -4391,6 +4392,16 @@ export function siteLevelMap(plan: SitePlan, index: number, options: { traps?: b
       secrets.push(doorAt);
     }
   }
+  // ── Corners taken off (owner 2026-11-20, "add diagonal walls and curved walls") ──
+  // A room's or a hall's inside corners walled across, so the view draws them as a diagonal or a curve;
+  // never in a court, a walk, a passage or a stairwell, never on a link or the cell inside the door.
+  dungeonCutCorners(
+    ground,
+    mapW,
+    mapH,
+    marinaraRandom(`site-corners:${plan.template}:${plan.seed}:${level.id}`),
+    (i) => hold[i]! > 0 || i === doorIn || at[i]! < 0 || !["room", "hall"].includes(regions[at[i]!]!.kind),
+  );
   // ── The quiet way (owner 2026-11-17, "Routes and guard posts") ──
   let postRegion = -1;
   // The rooms of the way round as the plan laid it, which the second way round keeps out of (panel round 44).

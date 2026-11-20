@@ -640,6 +640,81 @@ function caveRooms(ground: DungeonGround[], width: number, height: number): Dung
   return rooms;
 }
 
+/**
+ * Takes the square corners off a floor's rooms (owner 2026-11-20, "add diagonal walls and curved walls so
+ * everything doesn't have to feel so blocky"): an inside corner, a floor cell with wall on two sides that meet,
+ * is walled over, and in a room long enough each way the two cells beside it too, so the map view draws the
+ * wall across the corner as a diagonal or a curve. Never a cell `keep` names (a door, a stair, the way in),
+ * never one that would cut the floor in two. Returns the cells walled.
+ */
+export function dungeonCutCorners(
+  ground: DungeonGround[],
+  width: number,
+  height: number,
+  random: () => number,
+  keep: (i: number) => boolean = () => false,
+  chance = 0.75,
+): number[] {
+  const open = (x: number, y: number) =>
+    x >= 0 && y >= 0 && x < width && y < height && ground[y * width + x] === "floor";
+  const solid = (x: number, y: number) =>
+    x < 0 || y < 0 || x >= width || y >= height || ground[y * width + x] === "wall" || ground[y * width + x] === "rock";
+  // How far the floor runs from (x, y) along (dx, dy) with solid ground all along its far side (-ox, -oy).
+  const run = (x: number, y: number, dx: number, dy: number, ox: number, oy: number) => {
+    let n = 0;
+    while (n < 8 && open(x + dx * n, y + dy * n) && solid(x + dx * n - ox, y + dy * n - oy)) n++;
+    return n;
+  };
+  const cut: number[] = [];
+  const corners: Array<[number, number, number, number]> = [];
+  for (let y = 1; y < height - 1; y++)
+    for (let x = 1; x < width - 1; x++)
+      for (const [sx, sy] of [
+        [1, 1],
+        [-1, 1],
+        [1, -1],
+        [-1, -1],
+      ] as const)
+        // An inside corner: solid behind it both ways and across the corner, floor inward three ways.
+        if (
+          open(x, y) &&
+          solid(x - sx, y) &&
+          solid(x, y - sy) &&
+          solid(x - sx, y - sy) &&
+          open(x + sx, y) &&
+          open(x, y + sy) &&
+          open(x + sx, y + sy) &&
+          open(x + 2 * sx, y + 2 * sy)
+        )
+          corners.push([x, y, sx, sy]);
+  for (const [x, y, sx, sy] of corners) {
+    if (random() >= chance) continue;
+    const along = run(x, y, sx, 0, 0, sy);
+    const down = run(x, y, 0, sy, sx, 0);
+    if (along < 4 || down < 4) continue;
+    // A big room's corner goes two or three cells each way, a staircase of walled cells under one diagonal.
+    const k = along >= 10 && down >= 10 ? 3 : along >= 7 && down >= 7 ? 2 : 1;
+    const cells: Array<[number, number]> = [];
+    for (let i = 0; i < k; i++) for (let j = 0; i + j < k; j++) cells.push([x + sx * i, y + sy * j]);
+    // Only against a wall two cells thick or more (an outer wall, rock): two rooms' corners cut either side of
+    // one thin wall read as a notch, not a diagonal (owner's samples 2026-11-20).
+    let thick = true;
+    for (let i = 0; i < k && thick; i++) if (!solid(x + sx * i, y - 2 * sy) || !solid(x - 2 * sx, y + sy * i)) thick = false;
+    if (!thick || !solid(x - 2 * sx, y - 2 * sy)) continue;
+    // The floor stays open just past the cut, so the diagonal has room in front of it.
+    if (!open(x + sx * k, y + sy * k) || !open(x + sx * (k - 1) + sx, y) || !open(x, y + sy * k)) continue;
+    const ids = cells.map(([cx, cy]) => cy * width + cx);
+    if (ids.some((i) => keep(i) || ground[i] !== "floor")) continue;
+    for (const i of ids) ground[i] = "wall";
+    if (!floorConnected(ground, width)) {
+      for (const i of ids) ground[i] = "floor";
+      continue;
+    }
+    cut.push(...ids);
+  }
+  return cut;
+}
+
 /** Whether every floor cell is one area, four ways. */
 function floorConnected(ground: DungeonGround[], width: number): boolean {
   const first = ground.indexOf("floor");
@@ -701,6 +776,8 @@ export function generateDungeonMap(setId: string, seed: number, size: DungeonMap
       }
       carveCorridor(ground, width, here, centre(nearest), set.kind === "station", random);
     }
+    // Rooms with their corners taken off, drawn as diagonals or curves (owner 2026-11-20).
+    dungeonCutCorners(ground, width, height, random);
   }
   // Liquid: a pool inside some rooms, never on their edge, so a room stays walkable round it.
   for (const room of rooms) {

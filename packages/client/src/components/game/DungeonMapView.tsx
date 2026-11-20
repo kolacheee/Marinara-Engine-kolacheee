@@ -296,6 +296,133 @@ export function DungeonMapView({
           if (solid(x + 1, y)) edge(px + T + right, py, px + T + right - depth, py, depth, T);
         }
     };
+    // Diagonal and curved walls (owner 2026-11-20, "so everything doesn't have to feel so blocky"): a wall
+    // cell with floor on two sides that meet is drawn cut across toward them, a straight diagonal on a built
+    // floor and a curve where the place is cut from rock (a cave, a crypt, anything below ground). Two such
+    // cells either side of a walled room corner (dungeonCutCorners) share one long diagonal or one wide
+    // curve. Only how it looks: a fighter still can't stand there. `floorInto` lays the floor of the cell
+    // (fx, fy) into the wall cell (x, y), already clipped to the cut.
+    const softCorners = (round: boolean, floorInto: (x: number, y: number, fx: number, fy: number) => void) => {
+      const gAt = (x: number, y: number) =>
+        x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
+      const floorAt = (x: number, y: number) => gAt(x, y) === "floor";
+      const solidAt = (x: number, y: number) => gAt(x, y) === "wall" || gAt(x, y) === "rock";
+      // On a built floor only a corner cut against a thick wall (dungeonCutCorners), never the end of a thin
+      // wall at a doorway or where two rooms' walls meet (owner's samples 2026-11-20: notches and diamonds).
+      const thickBehind = (x: number, y: number, sx: number, sy: number) =>
+        round || (solidAt(x - sx, y - sy) && solidAt(x - 2 * sx, y) && solidAt(x, y - 2 * sy));
+      const pieceDir = (x: number, y: number, sx: number, sy: number) =>
+        gAt(x, y) === "wall" &&
+        floorAt(x + sx, y) &&
+        floorAt(x, y + sy) &&
+        solidAt(x - sx, y) &&
+        solidAt(x, y - sy) &&
+        thickBehind(x, y, sx, sy);
+      const edgeColour = building && !buried ? "rgba(20, 16, 12, 0.85)" : "rgba(14, 12, 10, 0.8)";
+      const lipColour = building && !buried ? "rgba(200, 186, 160, 0.35)" : "rgba(180, 170, 150, 0.3)";
+      const lines = (draw: () => void) => {
+        for (const [colour, width] of [
+          [edgeColour, 2],
+          [lipColour, 1],
+        ] as const) {
+          ctx.strokeStyle = colour;
+          ctx.lineWidth = width;
+          ctx.beginPath();
+          draw();
+          ctx.stroke();
+        }
+      };
+      for (const [sx, sy] of [
+        [1, 1],
+        [-1, 1],
+        [1, -1],
+        [-1, -1],
+      ] as const)
+        for (let y = 0; y < cells.height; y++)
+          for (let x = 0; x < cells.width; x++) {
+            // A run of steps under one slope starts at its far end along the top: walk it down.
+            if (!pieceDir(x, y, sx, sy) || pieceDir(x + sx, y - sy, sx, sy)) continue;
+            const chain: Array<[number, number]> = [];
+            while (pieceDir(x - sx * chain.length, y + sy * chain.length, sx, sy) && chain.length < 40)
+              chain.push([x - sx * chain.length, y + sy * chain.length]);
+            const n = chain.length;
+            // The walled block's corner cell, and the corner of it away from the floor.
+            const cx0 = x - sx * (n - 1);
+            const cy0 = y;
+            const ox = sx > 0 ? cx0 * T : (cx0 + 1) * T;
+            const oy = sy > 0 ? cy0 * T : (cy0 + 1) * T;
+            const P = (u: number, v: number) => [ox + sx * u * T, oy + sy * v * T] as const;
+            const [fx, fy] = [chain[0]![0] + sx, chain[0]![1] + sy];
+            // A lone step with floor past it on a third side is a wall's tip standing into the floor: rounded
+            // over (a disc of wall), not scooped out.
+            if (round && n === 1 && (floorAt(x + sx, y - sy) || floorAt(x - sx, y + sy))) {
+              const [wx, wy] = P(0, 0);
+              ctx.save();
+              ctx.beginPath();
+              ctx.rect(x * T, y * T, T, T);
+              ctx.arc(wx, wy, T, 0, Math.PI * 2);
+              ctx.clip("evenodd");
+              floorInto(x, y, fx, fy);
+              ctx.restore();
+              ctx.save();
+              ctx.beginPath();
+              ctx.rect(x * T, y * T, T, T);
+              ctx.clip();
+              lines(() => ctx.arc(wx, wy, T, 0, Math.PI * 2));
+              ctx.restore();
+              continue;
+            }
+            if (round && n <= 3) {
+              // One curve under the whole corner: the floor inside a circle n cells round from the room.
+              const [ccx, ccy] = P(n, n);
+              const r = n * T;
+              const block: Array<[number, number]> = [];
+              for (let i = 0; i < n; i++)
+                for (let j = 0; i + j < n; j++) {
+                  const [bx, by] = [cx0 + sx * i, cy0 + sy * j];
+                  if (gAt(bx, by) === "wall") block.push([bx, by]);
+                }
+              for (const [bx, by] of block) {
+                ctx.save();
+                ctx.beginPath();
+                ctx.rect(bx * T, by * T, T, T);
+                ctx.clip();
+                ctx.beginPath();
+                ctx.arc(ccx, ccy, r, 0, Math.PI * 2);
+                ctx.clip();
+                floorInto(bx, by, fx, fy);
+                ctx.restore();
+              }
+              ctx.save();
+              ctx.beginPath();
+              for (const [bx, by] of block) ctx.rect(bx * T, by * T, T, T);
+              ctx.clip();
+              lines(() => ctx.arc(ccx, ccy, r, 0, Math.PI * 2));
+              ctx.restore();
+              continue;
+            }
+            // A straight diagonal down the whole run: each step cut across toward the floor.
+            for (const [px, py] of chain) {
+              const qx = sx > 0 ? px * T : (px + 1) * T;
+              const qy = sy > 0 ? py * T : (py + 1) * T;
+              ctx.save();
+              ctx.beginPath();
+              ctx.moveTo(qx + sx * T, qy);
+              ctx.lineTo(qx + sx * T, qy + sy * T);
+              ctx.lineTo(qx, qy + sy * T);
+              ctx.closePath();
+              ctx.clip();
+              floorInto(px, py, px + sx, py + sy);
+              ctx.restore();
+            }
+            const [ax, ay] = P(n, 0);
+            const [bx, by] = P(0, n);
+            lines(() => {
+              ctx.moveTo(ax, ay);
+              ctx.lineTo(bx, by);
+            });
+          }
+    };
     if (coded) {
       const at = (x: number, y: number) =>
         x < 0 || y < 0 || x >= cells.width || y >= cells.height ? "rock" : cells.ground[y * cells.width + x];
@@ -541,6 +668,25 @@ export function DungeonMapView({
             }
           }
       }
+      softCorners(!building || buried, (x, y, fx, fy) => {
+        if (building) {
+          ctx.translate((x - fx) * T, (y - fy) * T);
+          paintBuildingFloorCell(fx, fy);
+          ctx.translate((fx - x) * T, (fy - y) * T);
+        } else paintDungeonFloor(ctx, cells.set, x * T, y * T, cellNoise(fx, fy), Boolean(cells.roomNames) && isHall(fx, fy));
+        // A lair floor's dug earth over the flags, as the floor beside it has.
+        if (kept?.lairKind && kept.lairFeature?.length && kept.roomInfo) {
+          const heartAt = kept.roomInfo.findIndex((info) => info?.heart);
+          const hall = heartAt >= 0 ? cells.rooms[heartAt] : undefined;
+          const inHall =
+            !!hall &&
+            [hall, ...(hall.parts ?? [])].some((b) => fx >= b.x && fx < b.x + b.w && fy >= b.y && fy < b.y + b.h);
+          if (!inHall) {
+            ctx.fillStyle = "rgba(58, 46, 34, 0.6)";
+            ctx.fillRect(x * T, y * T, T, T);
+          }
+        }
+      });
       // A rug in the quiet rooms people live in, under their furniture (panel 2026-11-17).
       if (building)
         cells.rooms.forEach((room, n) => {
@@ -940,6 +1086,9 @@ export function DungeonMapView({
         }
     }
     shadeWallFeet(ctx);
+    softCorners(true, (x, y, fx, fy) => {
+      if (!drawTile(ctx, "dn_floor", x * T, y * T, cellNoise(fx, fy)(5))) plain(PLAIN.floor, x * T, y * T);
+    });
     // A doorway through a wall's face (walls with their faces either side, floor in front and behind) gets
     // the pack's door, an arch two cells tall standing in the wall.
     const groundAt = (x: number, y: number) =>
