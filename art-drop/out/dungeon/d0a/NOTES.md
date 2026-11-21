@@ -1,3 +1,120 @@
+# D0a Part C: critic 23 redraw
+
+2026-11-21: repaired all nine files listed by critic 23. The rock and crystal walls have connected planes, branching fractures and chipped ledges. Removed the enclosed lozenges and repeated interior marks. Yard cobbles continue across the vertical wrap, with a shaped turf return across the horizontal wrap. Cave floors, props and the angular crystal inclusion are unchanged.
+
+Canon delta authorized by critic 23: refreshed the rock and crystal studies and only their two style-guide inserts. All 73 protected files match their starting hashes. The yard wall, palette and 48 px cell size are unchanged. Repairs use explicit native pixel coordinates; the existing image-tool studies supplied visual references. No fractional-grid readings, spatial reduction or filters enter the deliverables.
+
+`tools/check_critic23_redraw.py` and the palette check pass. All 14 proofs pass alpha, palette, colour caps, value ladder, baseline and exact-grey checks. Surface/prop counts peak at 12/12; floor contrast peaks at 14.592 L*. Every floor has zero one- or two-pixel colour components. Surface lone pixels are 0% for every look except the unchanged station_engine (0.03376%) and station_hydro (0.14950%). Per-tile measurements and preservation checks are in `art-drop/review-d0a/C23-redraw-validation.json`.
+
+Regenerated current `C-*.png` sheets and all 14 floor repeats. Viewed proofs and repaired studies at 1x, 2x and 3x nearest-neighbour, in greyscale and quarter-size grey squints; checked master comparisons and both yard wrap directions. Self-review found no remaining blocker; independent critic and owner acceptance are pending. No commit, push or branch change.
+
+# D0a Part C: critic 22 redraw
+
+2026-11-21: repaired the five failed proof pairs: cave_rock, cave_ice, cave_crystal, cave_lava and yard. Rock walls have smaller strata and connected clefts; ice has unequal facets, branching fractures and frost deposits; crystal has embedded prisms and an exposed mineral bed; basalt has fractured planes, ember seams and a finite channel with broken banks. Open mud contours replace the rimmed token. The yard uses the supplied native turf and cobble geometry, with worn path edges.
+
+All proofs remain 144 × 144 at the unchanged 48 px canon. Cave surfaces and the path use explicit native coordinates in `tools/redraw_critic22.py`; turf and cobbles use one source pixel per art pixel from the existing overworld crops. Palette mapping and the explicit strokes in `tools/c22_pixel_cleanup.py` finish the edges. No generated-source read-back, spatial reduction, random texture or filters enter the art. This follows the current prompt's pixel-pencil option; the archived operator's fractional-grid method conflicts with that prompt.
+
+Canon delta, authorized by critic 22: rebuilt `canon/swatches/{cave_rock,cave_ice,cave_crystal,cave_lava,building-yard}.png` and only their five `style-guide.png` inserts. All 139 protected files match their starting hashes. The nine passing proof pairs, every prop, ice floor, yard wall, palette and cell-size definition remain unchanged.
+
+`tools/check_critic22_redraw.py` and the palette check pass. Maximum surface/prop counts are 12/12; floor contrast peaks at 14.592 L*. Minimum main-body/outline gaps are 10.816/17.886 L*. Every floor has zero one- or two-pixel colour components. Alpha, own-look palette membership, dimensions, baselines and exact greyscale copies pass. Surface lone-pixel percentages (no same-colour four-neighbour, props excluded):
+
+| Look | Lone pixels |
+| --- | ---: |
+| keep | 0% |
+| temple | 0% |
+| manor | 0% |
+| crypt | 0% |
+| cave_rock | 0% |
+| cave_ice | 0% |
+| cave_crystal | 0% |
+| cave_lava | 0% |
+| dungeon_sewer | 0% |
+| station_corridor | 0% |
+| station_lab | 0% |
+| station_engine | 0.03376% |
+| station_hydro | 0.14950% |
+| yard | 0% |
+
+Refreshed current `C-*.png` reviews and all fourteen `proof-3x3repeat-<look>.png` files under `art-drop/review-d0a/`. Viewed saved proofs and studies at 1x, 2x and 3x nearest-neighbour, greyscale and quarter-size grey squints; compared with the master stone crop at equal art-pixel scale and checked floor repeats. `C22-redraw-validation.json` includes complete-proof percentages and preservation results; `C22-final-<look>.png` holds the final views. Historical critic/source snapshots remain evidence. This is self-review; independent critic and owner acceptance remain pending. All writes stayed under `art-drop/`; no commit, push or branch change.
+
+# D0a Part C: critic 21 redraw
+
+2026-11-21: redrew the nine failed proof pairs at native 144 × 144, using explicit pixel coordinates in `tools/redraw_critic21.py`. Replaced the fractional-grid imports with authored slab wear, marble veins, cave ledges, mineral facets, ember clefts and floor cracks. Ice and lava floor features terminate inside the pattern. Sewer damp is localized; yard turf and cobbles have shaped material edges. The repaired art contains no generated-source pixels, scale changes, filters or random texture.
+
+Canon change: rebuilt `canon/swatches/{cave_rock,cave_ice,cave_crystal,cave_lava,building-yard}.png` and only their five `style-guide.png` inserts. The 48 px cell and palette remain unchanged. All 129 protected files match their starting hashes. Manor, stations, props and passing studies remain unchanged. Keep, temple, crypt and sewer retain their accepted wall pixels. This repair uses the current request's native pixel-pencil option; the older operator allowance for fractional read-back does not meet that rule.
+
+`tools/check_critic21_redraw.py` passes all fourteen proof pairs, the five replacement studies and the guide's authored pixels. Surface/prop colour counts peak at 12/12; floor contrast peaks at 14.592 L*. Minimum body/outline gaps are 10.816/17.886 L*. Alpha, palette, cell sizes, baselines and exact grey copies pass. Every floor has zero one- or two-pixel components. Surface lone-pixel percentages, excluding props:
+
+| Look | Lone pixels |
+| --- | ---: |
+| keep | 0% |
+| temple | 0% |
+| manor | 0% |
+| crypt | 0% |
+| cave_rock | 0% |
+| cave_ice | 0% |
+| cave_crystal | 0% |
+| cave_lava | 0% |
+| dungeon_sewer | 0% |
+| station_corridor | 0% |
+| station_lab | 0% |
+| station_engine | 0.03376% |
+| station_hydro | 0.14950% |
+| yard | 0% |
+
+Regenerated current `C-*.png` proof, floor-repeat, canon and guide views, plus all fourteen `proof-3x3repeat-<look>.png` images. Viewed the proofs and changed studies at 1x, 2x and 3x nearest-neighbour, in grey and quarter-size grey squints, with master comparisons at equal art-pixel scale. Results are in `art-drop/review-d0a/C21-redraw-validation.json`. Historical critic/source snapshots remain review evidence. This is self-review; independent critic and owner acceptance remain pending.
+
+Palette validation passes. The old Part B checker stops on obsolete crate geometry; the C3 canon checker flags small components in the frozen station_engine and station_hydro studies. Those accepted files remain unchanged. The repair checker separately verifies the changed studies, exact guide inserts and guide preservation outside them. The note received prose lint and my own newcomer read. All writes stayed under `art-drop/`; no commit, push or branch change.
+
+# D0a Part C
+
+2026-11-21, operator round 4 / C21. Replaced the four cave and yard proof pairs, and the keep, temple, crypt and sewer floors. All fourteen colour proofs and greyscale copies remain 144 × 144 at the existing 48 px canon. The five accepted building/sewer walls, four station pairs and every prop are preserved. Refreshed the five failed cave/yard studies and their style-guide inserts as authorized by critic 20 and the operator. Canon delta: those study images only; palette and cell size remain D0a-C.2.
+
+Used the built-in image tool for nineteen fresh sources: three variants each for cave_rock, cave_ice, cave_crystal, cave_lava and yard, plus four floor sources. Exact prompts and source PNGs are in `art-drop/review-d0a/C21-prompts.json` and `C21-sources/`. Selected variants have distinct rock masses and ledges, ice rims, embedded crystal facets, ember-lit basalt clefts, and stone courses. The floor sources supply worn flagstones, branched marble veins, damp brick, rocks and fissures. The yard uses native 48 × 48 crops from the supplied overworld grass at (48,96) and street at (64,72), palette-mapped one pixel to one pixel. Its path and walls come from yard-2.
+
+Followed the operator's Round 3 tolerant block read-back, retained by Round 4. Detected a common square-grid pitch from edge histograms in both axes; each block supplies its dominant colour cluster within ±8 RGB. These are estimated grids, not exact integer 2×2 source grids. Palette locking removes source shading. Whole-pixel crops and shifts fit the bands; missing margins continue adjacent planes. Cleanup merges one- and two-pixel fragments, removes unwanted rock-floor blotches, restores the baseline and cell joints, and closes the lava channel inside the proof period. Code adds no texture, random marks, spatial resampling, gradients or filters. Nearest-neighbour scale changes occur only in review images.
+
+| Selected source | Detected pitch, image px | Blocks with at least 75% dominant-cluster coverage |
+| --- | ---: | ---: |
+| cave_rock-3 | 8.74 | 91.05% |
+| cave_ice-1 | 8.70 | 93.24% |
+| cave_crystal-2 | 8.70 | 92.39% |
+| cave_lava-2 | 8.04 | 90.76% |
+| yard-2 | 9.80 | 92.88% |
+| keep-floor | 11.52 | 94.26% |
+| temple-floor | 11.76 | 90.51% |
+| crypt-floor | 10.48 | 92.66% |
+| dungeon_sewer-floor | 9.12 | 90.40% |
+
+Changed nine `proof/<look>.png` / `-grey.png` pairs, `canon/swatches/{cave_rock,cave_ice,cave_crystal,cave_lava,building-yard}.png`, and `canon/style-guide.png`. Added `tools/read_c21.py`, `assemble_c21.py`, `finish_c21.py` and `review_c21.py`. Sources, intermediate layers, cleanup coordinates, registrations and validation reports stay in `art-drop/review-d0a/`. The earlier `proof/UNRESOLVED.md` remains a historical pre-redraw record; this entry describes the current files.
+
+Saved-pixel validation passes for all fourteen proofs and five refreshed studies: binary alpha, zero RGB under transparency, active own-look palette membership, non-black outlines, dimensions, colour caps, exact greyscale copies, one-pixel face baselines, value ordering, floor clusters and local prop separation. Maximum surface/prop counts are 12/12, below the 32/48 caps. Floor contrast peaks at 14.59 L*. Minimum main-body and outline gaps are 10.82 and 14.55 L*. Every visible floor has zero one- or two-pixel colour components. Palette validation also passes.
+
+Lone pixels have no same-colour four-neighbour. Surface measurements exclude the separate prop; complete-proof measurements include it. Every floor has 0.00000% lone pixels.
+
+| Look | Surface lone pixels | Complete proof lone pixels | Floor contrast L* |
+| --- | ---: | ---: | ---: |
+| keep | 0.00000% | 0.06752% | 14.18 |
+| temple | 0.00000% | 0.00000% | 12.73 |
+| manor | 0.00000% | 0.02894% | 11.06 |
+| crypt | 0.00000% | 0.00482% | 11.20 |
+| cave_rock | 0.00000% | 0.37616% | 9.80 |
+| cave_ice | 0.00000% | 0.06752% | 14.59 |
+| cave_crystal | 0.00000% | 0.25077% | 11.72 |
+| cave_lava | 0.00000% | 0.11574% | 9.58 |
+| dungeon_sewer | 0.00000% | 0.00482% | 12.16 |
+| station_corridor | 0.00000% | 0.00000% | 8.42 |
+| station_lab | 0.00000% | 0.21219% | 12.65 |
+| station_engine | 0.03376% | 0.18326% | 14.49 |
+| station_hydro | 0.14950% | 0.37616% | 6.63 |
+| yard | 0.00000% | 0.00482% | 12.14 |
+
+Viewed every saved proof at 1x, 2x and 3x nearest-neighbour, in greyscale and as a quarter-size greyscale squint. Viewed the five replacement studies and guide inserts at the same review scales. Compared against the master with our 2x art beside its stored 1x pixels. Reviewed all fourteen `proof-3x3repeat-<look>.png` floor diagnostics. These repeat the proof strips; they are not the later 6×6 production patterns. No duplicate source feature was stamped inside a proof strip.
+
+Current review sheets are `C-<look>-review.png`, `C-<look>-grey.png`, `C-op2-<look>.png` and `C-contact-*.png`; larger review groups are `C21-all-3x-*`, `C21-repeat-*` and `C21-studies.png`. `C21-validation.json` records the checks. All 60 frozen files retain their starting hashes; the four edited building/sewer proof pairs retain their original wall rows. The entire manor pair is frozen. A guide comparison found 7,894 changed pixels, all inside the five authorized inserts.
+
+This was the drawing agent's self-review; owner acceptance remains pending. The log received the prose lint and a self-read. No commit, push or branch change. Project writes stayed under `art-drop/`.
+
 # D0a Part C: critic 19 redraw
 
 2026-11-21: redrew all ten failed natural-look proof pairs at native 144 × 144. Refreshed the nine failed studies, their style-guide inserts and the keep DO sample. The four station pairs, props, shadows, palette, STYLE.md and passing studies remain unchanged; 126 files match their starting hashes.
