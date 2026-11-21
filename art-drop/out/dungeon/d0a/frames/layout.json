@@ -1,0 +1,6523 @@
+{
+  "hoard-keep": {
+    "size": [
+      1440,
+      1104
+    ],
+    "cell_size": 48,
+    "objects": [
+      {
+        "item": "door-locked",
+        "source": [
+          512,
+          320
+        ],
+        "centre": [
+          384,
+          240
+        ],
+        "bounds": [
+          356,
+          205,
+          413,
+          275
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          512,
+          432
+        ],
+        "centre": [
+          384,
+          324
+        ],
+        "bounds": [
+          356,
+          289,
+          413,
+          359
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          896,
+          432
+        ],
+        "centre": [
+          672,
+          324
+        ],
+        "bounds": [
+          644,
+          289,
+          701,
+          359
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1536,
+          496
+        ],
+        "centre": [
+          1152,
+          372
+        ],
+        "bounds": [
+          1124,
+          321,
+          1181,
+          396
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "column",
+        "source": [
+          1088,
+          188
+        ],
+        "centre": [
+          816,
+          141
+        ],
+        "bounds": [
+          792,
+          69,
+          840,
+          165
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          832,
+          252
+        ],
+        "centre": [
+          624,
+          189
+        ],
+        "bounds": [
+          600,
+          117,
+          648,
+          213
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "chest",
+        "source": [
+          960,
+          264
+        ],
+        "centre": [
+          720,
+          198
+        ],
+        "bounds": [
+          696,
+          174,
+          744,
+          222
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "chest",
+        "source": [
+          1472,
+          264
+        ],
+        "centre": [
+          1104,
+          198
+        ],
+        "bounds": [
+          1080,
+          174,
+          1128,
+          222
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "party",
+        "source": [
+          448,
+          300
+        ],
+        "centre": [
+          336,
+          225
+        ],
+        "bounds": [
+          312,
+          201,
+          360,
+          249
+        ],
+        "group": "reference",
+        "source_item": "party"
+      },
+      {
+        "item": "foe",
+        "source": [
+          768,
+          310
+        ],
+        "centre": [
+          576,
+          232
+        ],
+        "bounds": [
+          552,
+          208,
+          600,
+          256
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "column",
+        "source": [
+          960,
+          316
+        ],
+        "centre": [
+          720,
+          237
+        ],
+        "bounds": [
+          696,
+          165,
+          744,
+          261
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          448,
+          320
+        ],
+        "centre": [
+          336,
+          240
+        ],
+        "bounds": [
+          312,
+          216,
+          360,
+          264
+        ],
+        "group": "reference",
+        "source_item": "stairs-down"
+      },
+      {
+        "item": "chest",
+        "source": [
+          832,
+          328
+        ],
+        "centre": [
+          624,
+          246
+        ],
+        "bounds": [
+          600,
+          222,
+          648,
+          270
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "column",
+        "source": [
+          1024,
+          328
+        ],
+        "centre": [
+          768,
+          246
+        ],
+        "bounds": [
+          744,
+          174,
+          792,
+          270
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          1216,
+          328
+        ],
+        "centre": [
+          912,
+          246
+        ],
+        "bounds": [
+          888,
+          174,
+          936,
+          270
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          1408,
+          328
+        ],
+        "centre": [
+          1056,
+          246
+        ],
+        "bounds": [
+          1032,
+          174,
+          1080,
+          270
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "bones",
+        "source": [
+          384,
+          384
+        ],
+        "centre": [
+          288,
+          288
+        ],
+        "bounds": [
+          264,
+          264,
+          312,
+          312
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "stairs-up",
+        "source": [
+          1664,
+          448
+        ],
+        "centre": [
+          1248,
+          336
+        ],
+        "bounds": [
+          1224,
+          312,
+          1272,
+          360
+        ],
+        "group": "reference",
+        "source_item": "stairs-up"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1216,
+          448
+        ],
+        "centre": [
+          912,
+          336
+        ],
+        "bounds": [
+          888,
+          312,
+          936,
+          360
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1152,
+          448
+        ],
+        "centre": [
+          864,
+          336
+        ],
+        "bounds": [
+          840,
+          312,
+          888,
+          360
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1344,
+          448
+        ],
+        "centre": [
+          1008,
+          336
+        ],
+        "bounds": [
+          984,
+          312,
+          1032,
+          360
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1344,
+          512
+        ],
+        "centre": [
+          1008,
+          384
+        ],
+        "bounds": [
+          984,
+          360,
+          1032,
+          408
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "column",
+        "source": [
+          1024,
+          520
+        ],
+        "centre": [
+          768,
+          390
+        ],
+        "bounds": [
+          744,
+          318,
+          792,
+          414
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          1216,
+          520
+        ],
+        "centre": [
+          912,
+          390
+        ],
+        "bounds": [
+          888,
+          318,
+          936,
+          414
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          1408,
+          520
+        ],
+        "centre": [
+          1056,
+          390
+        ],
+        "bounds": [
+          1032,
+          318,
+          1080,
+          414
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "trap-found",
+        "source": [
+          768,
+          576
+        ],
+        "centre": [
+          576,
+          432
+        ],
+        "bounds": [
+          552,
+          408,
+          600,
+          456
+        ],
+        "group": "required state addition",
+        "source_item": "trap-found"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1344,
+          640
+        ],
+        "centre": [
+          1008,
+          480
+        ],
+        "bounds": [
+          984,
+          456,
+          1032,
+          504
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "hearth",
+        "source": [
+          672,
+          672
+        ],
+        "centre": [
+          504,
+          504
+        ],
+        "bounds": [
+          456,
+          432,
+          552,
+          528
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1280,
+          704
+        ],
+        "centre": [
+          960,
+          528
+        ],
+        "bounds": [
+          936,
+          504,
+          984,
+          552
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1344,
+          704
+        ],
+        "centre": [
+          1008,
+          528
+        ],
+        "bounds": [
+          984,
+          504,
+          1032,
+          552
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "column",
+        "source": [
+          1024,
+          712
+        ],
+        "centre": [
+          768,
+          534
+        ],
+        "bounds": [
+          744,
+          462,
+          792,
+          558
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          1216,
+          712
+        ],
+        "centre": [
+          912,
+          534
+        ],
+        "bounds": [
+          888,
+          462,
+          936,
+          558
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "chest-open",
+        "source": [
+          768,
+          736
+        ],
+        "centre": [
+          576,
+          552
+        ],
+        "bounds": [
+          552,
+          528,
+          600,
+          576
+        ],
+        "group": "required state addition",
+        "source_item": "chest-open"
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1024,
+          768
+        ],
+        "centre": [
+          768,
+          576
+        ],
+        "bounds": [
+          744,
+          552,
+          792,
+          600
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1408,
+          768
+        ],
+        "centre": [
+          1056,
+          576
+        ],
+        "bounds": [
+          1032,
+          552,
+          1080,
+          600
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "rubble",
+        "source": [
+          576,
+          768
+        ],
+        "centre": [
+          432,
+          576
+        ],
+        "bounds": [
+          408,
+          552,
+          456,
+          600
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "chest",
+        "source": [
+          960,
+          776
+        ],
+        "centre": [
+          720,
+          582
+        ],
+        "bounds": [
+          696,
+          558,
+          744,
+          606
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "chest",
+        "source": [
+          1472,
+          776
+        ],
+        "centre": [
+          1104,
+          582
+        ],
+        "bounds": [
+          1080,
+          558,
+          1128,
+          606
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "foe",
+        "source": [
+          704,
+          822
+        ],
+        "centre": [
+          528,
+          616
+        ],
+        "bounds": [
+          504,
+          592,
+          552,
+          640
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "rubble",
+        "source": [
+          576,
+          832
+        ],
+        "centre": [
+          432,
+          624
+        ],
+        "bounds": [
+          408,
+          600,
+          456,
+          648
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "bones",
+        "source": [
+          704,
+          896
+        ],
+        "centre": [
+          528,
+          672
+        ],
+        "bounds": [
+          504,
+          648,
+          552,
+          696
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          640,
+          896
+        ],
+        "centre": [
+          480,
+          672
+        ],
+        "bounds": [
+          456,
+          648,
+          504,
+          696
+        ],
+        "group": "reference",
+        "variant": 6
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          576,
+          896
+        ],
+        "centre": [
+          432,
+          672
+        ],
+        "bounds": [
+          408,
+          648,
+          456,
+          696
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "bones",
+        "source": [
+          832,
+          960
+        ],
+        "centre": [
+          624,
+          720
+        ],
+        "bounds": [
+          600,
+          696,
+          648,
+          744
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "rubble",
+        "source": [
+          704,
+          960
+        ],
+        "centre": [
+          528,
+          720
+        ],
+        "bounds": [
+          504,
+          696,
+          552,
+          744
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "door-secret",
+        "source": [
+          864,
+          960
+        ],
+        "centre": [
+          648,
+          720
+        ],
+        "bounds": [
+          620,
+          685,
+          677,
+          755
+        ],
+        "group": "required state addition",
+        "orientation": "east-west"
+      },
+      {
+        "item": "foe",
+        "source": [
+          320,
+          1216
+        ],
+        "centre": [
+          240,
+          912
+        ],
+        "bounds": [
+          216,
+          888,
+          264,
+          936
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      }
+    ],
+    "feature": [
+      336,
+      960
+    ],
+    "broken_inset": [
+      1224,
+      936,
+      1416,
+      1080
+    ]
+  },
+  "breach-temple": {
+    "size": [
+      1488,
+      1152
+    ],
+    "cell_size": 48,
+    "objects": [
+      {
+        "item": "door-open",
+        "source": [
+          704,
+          248
+        ],
+        "centre": [
+          528,
+          186
+        ],
+        "bounds": [
+          500,
+          151,
+          557,
+          221
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          640,
+          456
+        ],
+        "centre": [
+          480,
+          342
+        ],
+        "bounds": [
+          452,
+          291,
+          509,
+          366
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          896,
+          456
+        ],
+        "centre": [
+          672,
+          342
+        ],
+        "bounds": [
+          644,
+          291,
+          701,
+          366
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1536,
+          312
+        ],
+        "centre": [
+          1152,
+          234
+        ],
+        "bounds": [
+          1124,
+          199,
+          1181,
+          269
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-locked",
+        "source": [
+          1600,
+          456
+        ],
+        "centre": [
+          1200,
+          342
+        ],
+        "bounds": [
+          1172,
+          291,
+          1229,
+          366
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1472,
+          568
+        ],
+        "centre": [
+          1104,
+          426
+        ],
+        "bounds": [
+          1076,
+          391,
+          1133,
+          461
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1216,
+          696
+        ],
+        "centre": [
+          912,
+          522
+        ],
+        "bounds": [
+          884,
+          471,
+          941,
+          546
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "altar",
+        "source": [
+          832,
+          200
+        ],
+        "centre": [
+          624,
+          150
+        ],
+        "bounds": [
+          600,
+          126,
+          648,
+          174
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "altar",
+        "source": [
+          896,
+          200
+        ],
+        "centre": [
+          672,
+          150
+        ],
+        "bounds": [
+          648,
+          126,
+          696,
+          174
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "altar",
+        "source": [
+          960,
+          200
+        ],
+        "centre": [
+          720,
+          150
+        ],
+        "bounds": [
+          696,
+          126,
+          744,
+          174
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "candles",
+        "source": [
+          1408,
+          200
+        ],
+        "centre": [
+          1056,
+          150
+        ],
+        "bounds": [
+          1032,
+          126,
+          1080,
+          174
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "party",
+        "source": [
+          1664,
+          246
+        ],
+        "centre": [
+          1248,
+          184
+        ],
+        "bounds": [
+          1224,
+          160,
+          1272,
+          208
+        ],
+        "group": "reference",
+        "source_item": "party"
+      },
+      {
+        "item": "stairs-up",
+        "source": [
+          640,
+          264
+        ],
+        "centre": [
+          480,
+          198
+        ],
+        "bounds": [
+          456,
+          174,
+          504,
+          222
+        ],
+        "group": "reference",
+        "source_item": "stairs-up"
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          1664,
+          264
+        ],
+        "centre": [
+          1248,
+          198
+        ],
+        "bounds": [
+          1224,
+          174,
+          1272,
+          222
+        ],
+        "group": "reference",
+        "source_item": "stairs-down"
+      },
+      {
+        "item": "altar",
+        "source": [
+          1088,
+          264
+        ],
+        "centre": [
+          816,
+          198
+        ],
+        "bounds": [
+          792,
+          174,
+          840,
+          222
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          896,
+          264
+        ],
+        "centre": [
+          672,
+          198
+        ],
+        "bounds": [
+          648,
+          174,
+          696,
+          222
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "bones",
+        "source": [
+          960,
+          264
+        ],
+        "centre": [
+          720,
+          198
+        ],
+        "bounds": [
+          696,
+          174,
+          744,
+          222
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "bed",
+        "source": [
+          752,
+          296
+        ],
+        "centre": [
+          564,
+          222
+        ],
+        "bounds": [
+          540,
+          150,
+          588,
+          246
+        ],
+        "group": "reference",
+        "source_item": "bed"
+      },
+      {
+        "item": "bed",
+        "source": [
+          800,
+          296
+        ],
+        "centre": [
+          600,
+          222
+        ],
+        "bounds": [
+          576,
+          150,
+          624,
+          246
+        ],
+        "group": "reference",
+        "source_item": "bed"
+      },
+      {
+        "item": "bed",
+        "source": [
+          848,
+          296
+        ],
+        "centre": [
+          636,
+          222
+        ],
+        "bounds": [
+          612,
+          150,
+          660,
+          246
+        ],
+        "group": "reference",
+        "source_item": "bed"
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          896,
+          328
+        ],
+        "centre": [
+          672,
+          246
+        ],
+        "bounds": [
+          648,
+          222,
+          696,
+          270
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "chest",
+        "source": [
+          1088,
+          328
+        ],
+        "centre": [
+          816,
+          246
+        ],
+        "bounds": [
+          792,
+          222,
+          840,
+          270
+        ],
+        "group": "required state addition",
+        "source_item": "chest"
+      },
+      {
+        "item": "altar",
+        "source": [
+          832,
+          392
+        ],
+        "centre": [
+          624,
+          294
+        ],
+        "bounds": [
+          600,
+          270,
+          648,
+          318
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "altar",
+        "source": [
+          1024,
+          392
+        ],
+        "centre": [
+          768,
+          294
+        ],
+        "bounds": [
+          744,
+          270,
+          792,
+          318
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "chest-open",
+        "source": [
+          768,
+          392
+        ],
+        "centre": [
+          576,
+          294
+        ],
+        "bounds": [
+          552,
+          270,
+          600,
+          318
+        ],
+        "group": "required state addition",
+        "source_item": "chest-open"
+      },
+      {
+        "item": "book",
+        "source": [
+          1344,
+          520
+        ],
+        "centre": [
+          1008,
+          390
+        ],
+        "bounds": [
+          984,
+          366,
+          1032,
+          414
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "trap-found",
+        "source": [
+          1728,
+          520
+        ],
+        "centre": [
+          1296,
+          390
+        ],
+        "bounds": [
+          1272,
+          366,
+          1320,
+          414
+        ],
+        "group": "required state addition",
+        "source_item": "trap-found"
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          320,
+          584
+        ],
+        "centre": [
+          240,
+          438
+        ],
+        "bounds": [
+          216,
+          414,
+          264,
+          462
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "foe",
+        "source": [
+          1600,
+          640
+        ],
+        "centre": [
+          1200,
+          480
+        ],
+        "bounds": [
+          1176,
+          456,
+          1224,
+          504
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1024,
+          648
+        ],
+        "centre": [
+          768,
+          486
+        ],
+        "bounds": [
+          744,
+          462,
+          792,
+          510
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "foe",
+        "source": [
+          1280,
+          704
+        ],
+        "centre": [
+          960,
+          528
+        ],
+        "bounds": [
+          936,
+          504,
+          984,
+          552
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          128,
+          776
+        ],
+        "centre": [
+          96,
+          582
+        ],
+        "bounds": [
+          72,
+          558,
+          120,
+          606
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          448,
+          776
+        ],
+        "centre": [
+          336,
+          582
+        ],
+        "bounds": [
+          312,
+          558,
+          360,
+          606
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          832,
+          776
+        ],
+        "centre": [
+          624,
+          582
+        ],
+        "bounds": [
+          600,
+          558,
+          648,
+          606
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "bones",
+        "source": [
+          512,
+          776
+        ],
+        "centre": [
+          384,
+          582
+        ],
+        "bounds": [
+          360,
+          558,
+          408,
+          606
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "bones",
+        "source": [
+          1792,
+          776
+        ],
+        "centre": [
+          1344,
+          582
+        ],
+        "bounds": [
+          1320,
+          558,
+          1368,
+          606
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          832,
+          840
+        ],
+        "centre": [
+          624,
+          630
+        ],
+        "bounds": [
+          600,
+          606,
+          648,
+          654
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1280,
+          840
+        ],
+        "centre": [
+          960,
+          630
+        ],
+        "bounds": [
+          936,
+          606,
+          984,
+          654
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "bones",
+        "source": [
+          1792,
+          840
+        ],
+        "centre": [
+          1344,
+          630
+        ],
+        "bounds": [
+          1320,
+          606,
+          1368,
+          654
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "bones",
+        "source": [
+          1856,
+          840
+        ],
+        "centre": [
+          1392,
+          630
+        ],
+        "bounds": [
+          1368,
+          606,
+          1416,
+          654
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "candles",
+        "source": [
+          1408,
+          840
+        ],
+        "centre": [
+          1056,
+          630
+        ],
+        "bounds": [
+          1032,
+          606,
+          1080,
+          654
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          1600,
+          904
+        ],
+        "centre": [
+          1200,
+          678
+        ],
+        "bounds": [
+          1176,
+          654,
+          1224,
+          702
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1792,
+          904
+        ],
+        "centre": [
+          1344,
+          678
+        ],
+        "bounds": [
+          1320,
+          654,
+          1368,
+          702
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "book",
+        "source": [
+          128,
+          904
+        ],
+        "centre": [
+          96,
+          678
+        ],
+        "bounds": [
+          72,
+          654,
+          120,
+          702
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "rubble",
+        "source": [
+          1728,
+          904
+        ],
+        "centre": [
+          1296,
+          678
+        ],
+        "bounds": [
+          1272,
+          654,
+          1320,
+          702
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "foe",
+        "source": [
+          640,
+          960
+        ],
+        "centre": [
+          480,
+          720
+        ],
+        "bounds": [
+          456,
+          696,
+          504,
+          744
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          896,
+          1096
+        ],
+        "centre": [
+          672,
+          822
+        ],
+        "bounds": [
+          648,
+          798,
+          696,
+          846
+        ],
+        "group": "reference",
+        "variant": 6
+      },
+      {
+        "item": "bones",
+        "source": [
+          832,
+          1096
+        ],
+        "centre": [
+          624,
+          822
+        ],
+        "bounds": [
+          600,
+          798,
+          648,
+          846
+        ],
+        "group": "reference",
+        "variant": 6
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          192,
+          1160
+        ],
+        "centre": [
+          144,
+          870
+        ],
+        "bounds": [
+          120,
+          846,
+          168,
+          894
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          256,
+          1224
+        ],
+        "centre": [
+          192,
+          918
+        ],
+        "bounds": [
+          168,
+          894,
+          216,
+          942
+        ],
+        "group": "reference",
+        "variant": 7
+      },
+      {
+        "item": "crypt-study",
+        "source": [
+          1024,
+          1224
+        ],
+        "centre": [
+          768,
+          918
+        ],
+        "bounds": [
+          744,
+          894,
+          792,
+          942
+        ],
+        "group": "reference",
+        "variant": 8
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          384,
+          1352
+        ],
+        "centre": [
+          288,
+          1014
+        ],
+        "bounds": [
+          264,
+          990,
+          312,
+          1038
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      }
+    ],
+    "feature": [
+      816,
+      625
+    ],
+    "broken_inset": [
+      1272,
+      984,
+      1464,
+      1128
+    ]
+  },
+  "sanctum-crypt": {
+    "size": [
+      1632,
+      1056
+    ],
+    "cell_size": 48,
+    "objects": [
+      {
+        "item": "door-open",
+        "source": [
+          1280,
+          256
+        ],
+        "centre": [
+          960,
+          192
+        ],
+        "bounds": [
+          932,
+          157,
+          989,
+          227
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1472,
+          256
+        ],
+        "centre": [
+          1104,
+          192
+        ],
+        "bounds": [
+          1076,
+          157,
+          1133,
+          227
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1280,
+          512
+        ],
+        "centre": [
+          960,
+          384
+        ],
+        "bounds": [
+          932,
+          349,
+          989,
+          419
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1408,
+          576
+        ],
+        "centre": [
+          1056,
+          432
+        ],
+        "bounds": [
+          1028,
+          397,
+          1085,
+          467
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-locked",
+        "source": [
+          1728,
+          576
+        ],
+        "centre": [
+          1296,
+          432
+        ],
+        "bounds": [
+          1268,
+          397,
+          1325,
+          467
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1600,
+          832
+        ],
+        "centre": [
+          1200,
+          624
+        ],
+        "bounds": [
+          1172,
+          573,
+          1229,
+          648
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "coffin",
+        "source": [
+          1792,
+          200
+        ],
+        "centre": [
+          1344,
+          150
+        ],
+        "bounds": [
+          1320,
+          78,
+          1368,
+          174
+        ],
+        "group": "reference",
+        "source_item": "coffin"
+      },
+      {
+        "item": "stairs-up",
+        "source": [
+          1344,
+          264
+        ],
+        "centre": [
+          1008,
+          198
+        ],
+        "bounds": [
+          984,
+          174,
+          1032,
+          222
+        ],
+        "group": "reference",
+        "source_item": "stairs-up"
+      },
+      {
+        "item": "candles",
+        "source": [
+          768,
+          264
+        ],
+        "centre": [
+          576,
+          198
+        ],
+        "bounds": [
+          552,
+          174,
+          600,
+          222
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "candles",
+        "source": [
+          896,
+          264
+        ],
+        "centre": [
+          672,
+          198
+        ],
+        "bounds": [
+          648,
+          174,
+          696,
+          222
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "candles",
+        "source": [
+          1024,
+          264
+        ],
+        "centre": [
+          768,
+          198
+        ],
+        "bounds": [
+          744,
+          174,
+          792,
+          222
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "foe",
+        "source": [
+          1600,
+          304
+        ],
+        "centre": [
+          1200,
+          228
+        ],
+        "bounds": [
+          1176,
+          204,
+          1224,
+          252
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "book",
+        "source": [
+          928,
+          368
+        ],
+        "centre": [
+          696,
+          276
+        ],
+        "bounds": [
+          672,
+          252,
+          720,
+          300
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1728,
+          392
+        ],
+        "centre": [
+          1296,
+          294
+        ],
+        "bounds": [
+          1272,
+          270,
+          1320,
+          318
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "bones",
+        "source": [
+          1792,
+          392
+        ],
+        "centre": [
+          1344,
+          294
+        ],
+        "bounds": [
+          1320,
+          270,
+          1368,
+          318
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "candles",
+        "source": [
+          704,
+          392
+        ],
+        "centre": [
+          528,
+          294
+        ],
+        "bounds": [
+          504,
+          270,
+          552,
+          318
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "coffin",
+        "source": [
+          1728,
+          456
+        ],
+        "centre": [
+          1296,
+          342
+        ],
+        "bounds": [
+          1272,
+          270,
+          1320,
+          366
+        ],
+        "group": "reference",
+        "source_item": "coffin"
+      },
+      {
+        "item": "foe",
+        "source": [
+          728,
+          488
+        ],
+        "centre": [
+          546,
+          366
+        ],
+        "bounds": [
+          522,
+          342,
+          570,
+          390
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          688,
+          504
+        ],
+        "centre": [
+          516,
+          378
+        ],
+        "bounds": [
+          492,
+          354,
+          540,
+          402
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "chest",
+        "source": [
+          1152,
+          520
+        ],
+        "centre": [
+          864,
+          390
+        ],
+        "bounds": [
+          840,
+          366,
+          888,
+          414
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "candles",
+        "source": [
+          832,
+          520
+        ],
+        "centre": [
+          624,
+          390
+        ],
+        "bounds": [
+          600,
+          366,
+          648,
+          414
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "candles",
+        "source": [
+          960,
+          520
+        ],
+        "centre": [
+          720,
+          390
+        ],
+        "bounds": [
+          696,
+          366,
+          744,
+          414
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "chest-open",
+        "source": [
+          1088,
+          520
+        ],
+        "centre": [
+          816,
+          390
+        ],
+        "bounds": [
+          792,
+          366,
+          840,
+          414
+        ],
+        "group": "required state addition",
+        "source_item": "chest-open"
+      },
+      {
+        "item": "altar",
+        "source": [
+          960,
+          640
+        ],
+        "centre": [
+          720,
+          480
+        ],
+        "bounds": [
+          696,
+          456,
+          744,
+          504
+        ],
+        "group": "reference",
+        "source_item": "temple-study"
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          1920,
+          648
+        ],
+        "centre": [
+          1440,
+          486
+        ],
+        "bounds": [
+          1416,
+          462,
+          1464,
+          510
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "foe",
+        "source": [
+          1792,
+          688
+        ],
+        "centre": [
+          1344,
+          516
+        ],
+        "bounds": [
+          1320,
+          492,
+          1368,
+          540
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "party",
+        "source": [
+          1344,
+          690
+        ],
+        "centre": [
+          1008,
+          518
+        ],
+        "bounds": [
+          984,
+          494,
+          1032,
+          542
+        ],
+        "group": "reference",
+        "source_item": "party"
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          1344,
+          712
+        ],
+        "centre": [
+          1008,
+          534
+        ],
+        "bounds": [
+          984,
+          510,
+          1032,
+          558
+        ],
+        "group": "reference",
+        "source_item": "stairs-down"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1664,
+          712
+        ],
+        "centre": [
+          1248,
+          534
+        ],
+        "bounds": [
+          1224,
+          510,
+          1272,
+          558
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "trap-found",
+        "source": [
+          1408,
+          712
+        ],
+        "centre": [
+          1056,
+          534
+        ],
+        "bounds": [
+          1032,
+          510,
+          1080,
+          558
+        ],
+        "group": "required state addition",
+        "source_item": "trap-found"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1664,
+          776
+        ],
+        "centre": [
+          1248,
+          582
+        ],
+        "bounds": [
+          1224,
+          558,
+          1272,
+          606
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "chest",
+        "source": [
+          1216,
+          776
+        ],
+        "centre": [
+          912,
+          582
+        ],
+        "bounds": [
+          888,
+          558,
+          936,
+          606
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "foe",
+        "source": [
+          576,
+          832
+        ],
+        "centre": [
+          432,
+          624
+        ],
+        "bounds": [
+          408,
+          600,
+          456,
+          648
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "coffin",
+        "source": [
+          448,
+          840
+        ],
+        "centre": [
+          336,
+          630
+        ],
+        "bounds": [
+          312,
+          558,
+          360,
+          654
+        ],
+        "group": "reference",
+        "source_item": "coffin"
+      },
+      {
+        "item": "coffin",
+        "source": [
+          704,
+          840
+        ],
+        "centre": [
+          528,
+          630
+        ],
+        "bounds": [
+          504,
+          558,
+          552,
+          654
+        ],
+        "group": "reference",
+        "source_item": "coffin"
+      },
+      {
+        "item": "bones",
+        "source": [
+          1728,
+          840
+        ],
+        "centre": [
+          1296,
+          630
+        ],
+        "bounds": [
+          1272,
+          606,
+          1320,
+          654
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "column",
+        "source": [
+          768,
+          840
+        ],
+        "centre": [
+          576,
+          630
+        ],
+        "bounds": [
+          552,
+          558,
+          600,
+          654
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "bones",
+        "source": [
+          448,
+          904
+        ],
+        "centre": [
+          336,
+          678
+        ],
+        "bounds": [
+          312,
+          654,
+          360,
+          702
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "coffin",
+        "source": [
+          192,
+          968
+        ],
+        "centre": [
+          144,
+          726
+        ],
+        "bounds": [
+          120,
+          654,
+          168,
+          750
+        ],
+        "group": "reference",
+        "source_item": "coffin"
+      },
+      {
+        "item": "column",
+        "source": [
+          704,
+          1032
+        ],
+        "centre": [
+          528,
+          774
+        ],
+        "bounds": [
+          504,
+          702,
+          552,
+          798
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "bones",
+        "source": [
+          704,
+          1096
+        ],
+        "centre": [
+          528,
+          822
+        ],
+        "bounds": [
+          504,
+          798,
+          552,
+          846
+        ],
+        "group": "reference",
+        "variant": 6
+      },
+      {
+        "item": "chest",
+        "source": [
+          1216,
+          1160
+        ],
+        "centre": [
+          912,
+          870
+        ],
+        "bounds": [
+          888,
+          846,
+          936,
+          894
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      }
+    ],
+    "feature": [
+      432,
+      336
+    ],
+    "broken_inset": [
+      1416,
+      888,
+      1608,
+      1032
+    ]
+  },
+  "cave_rock-plain-21": {
+    "size": [
+      1968,
+      1392
+    ],
+    "cell_size": 48,
+    "objects": [
+      {
+        "item": "mine-support",
+        "source": [
+          1188,
+          168
+        ],
+        "centre": [
+          939,
+          174
+        ],
+        "bounds": [
+          915,
+          102,
+          963,
+          198
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1252,
+          168
+        ],
+        "centre": [
+          987,
+          174
+        ],
+        "bounds": [
+          959,
+          123,
+          1016,
+          198
+        ],
+        "group": "required state addition",
+        "orientation": "north-south"
+      },
+      {
+        "item": "mine-support",
+        "source": [
+          1252,
+          296
+        ],
+        "centre": [
+          987,
+          270
+        ],
+        "bounds": [
+          963,
+          198,
+          1011,
+          294
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "stalagmite",
+        "source": [
+          1316,
+          296
+        ],
+        "centre": [
+          1035,
+          270
+        ],
+        "bounds": [
+          1011,
+          246,
+          1059,
+          294
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "mine-support",
+        "source": [
+          548,
+          360
+        ],
+        "centre": [
+          459,
+          318
+        ],
+        "bounds": [
+          435,
+          246,
+          483,
+          342
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "rubble",
+        "source": [
+          1316,
+          360
+        ],
+        "centre": [
+          1035,
+          318
+        ],
+        "bounds": [
+          1011,
+          294,
+          1059,
+          342
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "stalagmite",
+        "source": [
+          292,
+          424
+        ],
+        "centre": [
+          267,
+          366
+        ],
+        "bounds": [
+          243,
+          342,
+          291,
+          390
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "stalagmite",
+        "source": [
+          2148,
+          424
+        ],
+        "centre": [
+          1659,
+          366
+        ],
+        "bounds": [
+          1635,
+          342,
+          1683,
+          390
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "boulder",
+        "source": [
+          2212,
+          424
+        ],
+        "centre": [
+          1707,
+          366
+        ],
+        "bounds": [
+          1683,
+          342,
+          1731,
+          390
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "boulder",
+        "source": [
+          1764,
+          488
+        ],
+        "centre": [
+          1371,
+          414
+        ],
+        "bounds": [
+          1347,
+          390,
+          1395,
+          438
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "foe",
+        "source": [
+          736,
+          512
+        ],
+        "centre": [
+          600,
+          432
+        ],
+        "bounds": [
+          576,
+          408,
+          624,
+          456
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          768,
+          524
+        ],
+        "centre": [
+          624,
+          441
+        ],
+        "bounds": [
+          600,
+          417,
+          648,
+          465
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          724,
+          536
+        ],
+        "centre": [
+          591,
+          450
+        ],
+        "bounds": [
+          567,
+          426,
+          615,
+          474
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "mine-support",
+        "source": [
+          1828,
+          552
+        ],
+        "centre": [
+          1419,
+          462
+        ],
+        "bounds": [
+          1395,
+          390,
+          1443,
+          486
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "boulder",
+        "source": [
+          1956,
+          552
+        ],
+        "centre": [
+          1515,
+          462
+        ],
+        "bounds": [
+          1491,
+          438,
+          1539,
+          486
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "rubble",
+        "source": [
+          1636,
+          616
+        ],
+        "centre": [
+          1275,
+          510
+        ],
+        "bounds": [
+          1251,
+          486,
+          1299,
+          534
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "party",
+        "source": [
+          1764,
+          656
+        ],
+        "centre": [
+          1371,
+          540
+        ],
+        "bounds": [
+          1347,
+          516,
+          1395,
+          564
+        ],
+        "group": "reference",
+        "source_item": "party"
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          1764,
+          672
+        ],
+        "centre": [
+          1371,
+          552
+        ],
+        "bounds": [
+          1331,
+          524,
+          1411,
+          577
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "rubble",
+        "source": [
+          1188,
+          680
+        ],
+        "centre": [
+          939,
+          558
+        ],
+        "bounds": [
+          915,
+          534,
+          963,
+          582
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "trap-found",
+        "source": [
+          1636,
+          680
+        ],
+        "centre": [
+          1275,
+          558
+        ],
+        "bounds": [
+          1251,
+          534,
+          1299,
+          582
+        ],
+        "group": "required state addition",
+        "source_item": "trap-found"
+      },
+      {
+        "item": "chest",
+        "source": [
+          1888,
+          680
+        ],
+        "centre": [
+          1464,
+          558
+        ],
+        "bounds": [
+          1440,
+          534,
+          1488,
+          582
+        ],
+        "group": "required state addition",
+        "source_item": "chest"
+      },
+      {
+        "item": "stalagmite",
+        "source": [
+          1764,
+          744
+        ],
+        "centre": [
+          1371,
+          606
+        ],
+        "bounds": [
+          1347,
+          582,
+          1395,
+          630
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "rubble",
+        "source": [
+          2020,
+          744
+        ],
+        "centre": [
+          1563,
+          606
+        ],
+        "bounds": [
+          1539,
+          582,
+          1587,
+          630
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "cave_rock-study",
+        "source": [
+          740,
+          744
+        ],
+        "centre": [
+          603,
+          606
+        ],
+        "bounds": [
+          579,
+          582,
+          627,
+          630
+        ],
+        "group": "reference",
+        "source_item": "cave_rock-study"
+      },
+      {
+        "item": "bones",
+        "source": [
+          2084,
+          744
+        ],
+        "centre": [
+          1611,
+          606
+        ],
+        "bounds": [
+          1587,
+          582,
+          1635,
+          630
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "chest-open",
+        "source": [
+          1892,
+          744
+        ],
+        "centre": [
+          1467,
+          606
+        ],
+        "bounds": [
+          1443,
+          582,
+          1491,
+          630
+        ],
+        "group": "required state addition",
+        "source_item": "chest-open"
+      },
+      {
+        "item": "foe",
+        "source": [
+          508,
+          764
+        ],
+        "centre": [
+          429,
+          621
+        ],
+        "bounds": [
+          405,
+          597,
+          453,
+          645
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          472,
+          788
+        ],
+        "centre": [
+          402,
+          639
+        ],
+        "bounds": [
+          378,
+          615,
+          426,
+          663
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "boulder",
+        "source": [
+          2212,
+          1000
+        ],
+        "centre": [
+          1707,
+          798
+        ],
+        "bounds": [
+          1683,
+          774,
+          1731,
+          822
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "rubble",
+        "source": [
+          1572,
+          1064
+        ],
+        "centre": [
+          1227,
+          846
+        ],
+        "bounds": [
+          1203,
+          822,
+          1251,
+          870
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "boulder",
+        "source": [
+          1700,
+          1128
+        ],
+        "centre": [
+          1323,
+          894
+        ],
+        "bounds": [
+          1299,
+          870,
+          1347,
+          918
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "cave_rock-study",
+        "source": [
+          2276,
+          1128
+        ],
+        "centre": [
+          1755,
+          894
+        ],
+        "bounds": [
+          1731,
+          870,
+          1779,
+          918
+        ],
+        "group": "reference",
+        "source_item": "cave_rock-study"
+      },
+      {
+        "item": "mine-support",
+        "source": [
+          2276,
+          1192
+        ],
+        "centre": [
+          1755,
+          942
+        ],
+        "bounds": [
+          1731,
+          870,
+          1779,
+          966
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "stalagmite",
+        "source": [
+          484,
+          1256
+        ],
+        "centre": [
+          411,
+          990
+        ],
+        "bounds": [
+          387,
+          966,
+          435,
+          1014
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "bones",
+        "source": [
+          228,
+          1256
+        ],
+        "centre": [
+          219,
+          990
+        ],
+        "bounds": [
+          195,
+          966,
+          243,
+          1014
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "cave_rock-study",
+        "source": [
+          420,
+          1320
+        ],
+        "centre": [
+          363,
+          1038
+        ],
+        "bounds": [
+          339,
+          1014,
+          387,
+          1062
+        ],
+        "group": "reference",
+        "source_item": "cave_rock-study"
+      },
+      {
+        "item": "foe",
+        "source": [
+          1312,
+          1344
+        ],
+        "centre": [
+          1032,
+          1056
+        ],
+        "bounds": [
+          1008,
+          1032,
+          1056,
+          1080
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "door-locked",
+        "source": [
+          2208,
+          1352
+        ],
+        "centre": [
+          1704,
+          1062
+        ],
+        "bounds": [
+          1676,
+          1011,
+          1733,
+          1086
+        ],
+        "group": "required state addition",
+        "orientation": "north-south"
+      },
+      {
+        "item": "foe",
+        "source": [
+          1344,
+          1360
+        ],
+        "centre": [
+          1056,
+          1068
+        ],
+        "bounds": [
+          1032,
+          1044,
+          1080,
+          1092
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          1300,
+          1368
+        ],
+        "centre": [
+          1023,
+          1074
+        ],
+        "bounds": [
+          999,
+          1050,
+          1047,
+          1098
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          484,
+          1436
+        ],
+        "centre": [
+          411,
+          1125
+        ],
+        "bounds": [
+          387,
+          1101,
+          435,
+          1149
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "cave_rock-study",
+        "source": [
+          1252,
+          1512
+        ],
+        "centre": [
+          987,
+          1182
+        ],
+        "bounds": [
+          963,
+          1158,
+          1011,
+          1206
+        ],
+        "group": "reference",
+        "source_item": "cave_rock-study"
+      }
+    ],
+    "feature": null,
+    "broken_inset": null
+  },
+  "manor-ground": {
+    "size": [
+      1968,
+      1248
+    ],
+    "cell_size": 48,
+    "objects": [
+      {
+        "item": "door-open",
+        "source": [
+          736,
+          368
+        ],
+        "centre": [
+          552,
+          276
+        ],
+        "bounds": [
+          524,
+          225,
+          581,
+          300
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          928,
+          368
+        ],
+        "centre": [
+          696,
+          276
+        ],
+        "bounds": [
+          668,
+          225,
+          725,
+          300
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          640,
+          576
+        ],
+        "centre": [
+          480,
+          432
+        ],
+        "bounds": [
+          452,
+          381,
+          509,
+          456
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          768,
+          576
+        ],
+        "centre": [
+          576,
+          432
+        ],
+        "bounds": [
+          548,
+          381,
+          605,
+          456
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          960,
+          576
+        ],
+        "centre": [
+          720,
+          432
+        ],
+        "bounds": [
+          692,
+          381,
+          749,
+          456
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1408,
+          448
+        ],
+        "centre": [
+          1056,
+          336
+        ],
+        "bounds": [
+          1028,
+          301,
+          1085,
+          371
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1472,
+          624
+        ],
+        "centre": [
+          1104,
+          468
+        ],
+        "bounds": [
+          1076,
+          433,
+          1133,
+          503
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1504,
+          304
+        ],
+        "centre": [
+          1128,
+          228
+        ],
+        "bounds": [
+          1100,
+          177,
+          1157,
+          252
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1984,
+          560
+        ],
+        "centre": [
+          1488,
+          420
+        ],
+        "bounds": [
+          1460,
+          385,
+          1517,
+          455
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1856,
+          704
+        ],
+        "centre": [
+          1392,
+          528
+        ],
+        "bounds": [
+          1364,
+          477,
+          1421,
+          552
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          2048,
+          704
+        ],
+        "centre": [
+          1536,
+          528
+        ],
+        "bounds": [
+          1508,
+          477,
+          1565,
+          552
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1792,
+          816
+        ],
+        "centre": [
+          1344,
+          612
+        ],
+        "bounds": [
+          1316,
+          577,
+          1373,
+          647
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-locked",
+        "source": [
+          704,
+          904
+        ],
+        "centre": [
+          528,
+          678
+        ],
+        "bounds": [
+          500,
+          627,
+          557,
+          702
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          384,
+          640
+        ],
+        "centre": [
+          288,
+          480
+        ],
+        "bounds": [
+          260,
+          445,
+          317,
+          515
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          384,
+          904
+        ],
+        "centre": [
+          288,
+          678
+        ],
+        "bounds": [
+          260,
+          643,
+          317,
+          713
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          896,
+          904
+        ],
+        "centre": [
+          672,
+          678
+        ],
+        "bounds": [
+          644,
+          627,
+          701,
+          702
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1280,
+          944
+        ],
+        "centre": [
+          960,
+          708
+        ],
+        "bounds": [
+          932,
+          673,
+          989,
+          743
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1664,
+          1072
+        ],
+        "centre": [
+          1248,
+          804
+        ],
+        "bounds": [
+          1220,
+          769,
+          1277,
+          839
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1536,
+          1160
+        ],
+        "centre": [
+          1152,
+          870
+        ],
+        "bounds": [
+          1124,
+          819,
+          1181,
+          894
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1984,
+          1160
+        ],
+        "centre": [
+          1488,
+          870
+        ],
+        "bounds": [
+          1460,
+          819,
+          1517,
+          894
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1792,
+          1224
+        ],
+        "centre": [
+          1344,
+          918
+        ],
+        "bounds": [
+          1316,
+          867,
+          1373,
+          942
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1728,
+          1264
+        ],
+        "centre": [
+          1296,
+          948
+        ],
+        "bounds": [
+          1268,
+          897,
+          1325,
+          972
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1280,
+          1328
+        ],
+        "centre": [
+          960,
+          996
+        ],
+        "bounds": [
+          932,
+          961,
+          989,
+          1031
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "door-open",
+        "source": [
+          1344,
+          1472
+        ],
+        "centre": [
+          1008,
+          1104
+        ],
+        "bounds": [
+          980,
+          1053,
+          1037,
+          1128
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "column",
+        "source": [
+          640,
+          252
+        ],
+        "centre": [
+          480,
+          189
+        ],
+        "bounds": [
+          456,
+          117,
+          504,
+          213
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          448,
+          264
+        ],
+        "centre": [
+          336,
+          198
+        ],
+        "bounds": [
+          288,
+          126,
+          384,
+          222
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          1216,
+          264
+        ],
+        "centre": [
+          912,
+          198
+        ],
+        "bounds": [
+          864,
+          126,
+          960,
+          222
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          2176,
+          264
+        ],
+        "centre": [
+          1632,
+          198
+        ],
+        "bounds": [
+          1584,
+          126,
+          1680,
+          222
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "bookshelf",
+        "source": [
+          1088,
+          264
+        ],
+        "centre": [
+          816,
+          198
+        ],
+        "bounds": [
+          792,
+          126,
+          840,
+          222
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "bookshelf",
+        "source": [
+          1344,
+          264
+        ],
+        "centre": [
+          1008,
+          198
+        ],
+        "bounds": [
+          984,
+          126,
+          1032,
+          222
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "crate",
+        "source": [
+          2048,
+          264
+        ],
+        "centre": [
+          1536,
+          198
+        ],
+        "bounds": [
+          1512,
+          174,
+          1560,
+          222
+        ],
+        "group": "reference",
+        "source_item": "crate"
+      },
+      {
+        "item": "foe",
+        "source": [
+          1344,
+          308
+        ],
+        "centre": [
+          1008,
+          231
+        ],
+        "bounds": [
+          984,
+          207,
+          1032,
+          255
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "book",
+        "source": [
+          256,
+          328
+        ],
+        "centre": [
+          192,
+          246
+        ],
+        "bounds": [
+          168,
+          222,
+          216,
+          270
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "table-short",
+        "source": [
+          1088,
+          328
+        ],
+        "centre": [
+          816,
+          246
+        ],
+        "bounds": [
+          768,
+          222,
+          864,
+          270
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "table-short",
+        "source": [
+          1216,
+          328
+        ],
+        "centre": [
+          912,
+          246
+        ],
+        "bounds": [
+          864,
+          222,
+          960,
+          270
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "chair",
+        "source": [
+          320,
+          328
+        ],
+        "centre": [
+          240,
+          246
+        ],
+        "bounds": [
+          216,
+          222,
+          264,
+          270
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "chair",
+        "source": [
+          448,
+          328
+        ],
+        "centre": [
+          336,
+          246
+        ],
+        "bounds": [
+          312,
+          222,
+          360,
+          270
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "chair",
+        "source": [
+          1728,
+          328
+        ],
+        "centre": [
+          1296,
+          246
+        ],
+        "bounds": [
+          1272,
+          222,
+          1320,
+          270
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "basin",
+        "source": [
+          2176,
+          328
+        ],
+        "centre": [
+          1632,
+          246
+        ],
+        "bounds": [
+          1605,
+          218,
+          1659,
+          270
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "trap-found",
+        "source": [
+          1536,
+          328
+        ],
+        "centre": [
+          1152,
+          246
+        ],
+        "bounds": [
+          1128,
+          222,
+          1176,
+          270
+        ],
+        "group": "required state addition",
+        "source_item": "trap-found"
+      },
+      {
+        "item": "column",
+        "source": [
+          640,
+          380
+        ],
+        "centre": [
+          480,
+          285
+        ],
+        "bounds": [
+          456,
+          213,
+          504,
+          309
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          832,
+          384
+        ],
+        "centre": [
+          624,
+          288
+        ],
+        "bounds": [
+          600,
+          264,
+          648,
+          312
+        ],
+        "group": "reference",
+        "source_item": "stairs-down"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          1912,
+          456
+        ],
+        "centre": [
+          1434,
+          342
+        ],
+        "bounds": [
+          1408,
+          310,
+          1460,
+          366
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "table-vertical",
+        "source": [
+          1792,
+          456
+        ],
+        "centre": [
+          1344,
+          342
+        ],
+        "bounds": [
+          1320,
+          174,
+          1368,
+          366
+        ],
+        "group": "reference",
+        "source_item": "table-vertical"
+      },
+      {
+        "item": "basin",
+        "source": [
+          2176,
+          456
+        ],
+        "centre": [
+          1632,
+          342
+        ],
+        "bounds": [
+          1605,
+          314,
+          1659,
+          366
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          1912,
+          520
+        ],
+        "centre": [
+          1434,
+          390
+        ],
+        "bounds": [
+          1408,
+          358,
+          1460,
+          414
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "chair",
+        "source": [
+          1728,
+          584
+        ],
+        "centre": [
+          1296,
+          438
+        ],
+        "bounds": [
+          1272,
+          414,
+          1320,
+          462
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "rubble",
+        "source": [
+          2112,
+          584
+        ],
+        "centre": [
+          1584,
+          438
+        ],
+        "bounds": [
+          1560,
+          414,
+          1608,
+          462
+        ],
+        "group": "reference",
+        "variant": 0
+      },
+      {
+        "item": "column",
+        "source": [
+          1216,
+          636
+        ],
+        "centre": [
+          912,
+          477
+        ],
+        "bounds": [
+          888,
+          405,
+          936,
+          501
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          1152,
+          648
+        ],
+        "centre": [
+          864,
+          486
+        ],
+        "bounds": [
+          816,
+          414,
+          912,
+          510
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "chair",
+        "source": [
+          1024,
+          648
+        ],
+        "centre": [
+          768,
+          486
+        ],
+        "bounds": [
+          744,
+          462,
+          792,
+          510
+        ],
+        "group": "reference",
+        "variant": 4
+      },
+      {
+        "item": "chair",
+        "source": [
+          1088,
+          648
+        ],
+        "centre": [
+          816,
+          486
+        ],
+        "bounds": [
+          792,
+          462,
+          840,
+          510
+        ],
+        "group": "reference",
+        "variant": 5
+      },
+      {
+        "item": "crate",
+        "source": [
+          2368,
+          648
+        ],
+        "centre": [
+          1776,
+          486
+        ],
+        "bounds": [
+          1752,
+          462,
+          1800,
+          510
+        ],
+        "group": "reference",
+        "source_item": "crate"
+      },
+      {
+        "item": "rubble",
+        "source": [
+          2112,
+          648
+        ],
+        "centre": [
+          1584,
+          486
+        ],
+        "bounds": [
+          1560,
+          462,
+          1608,
+          510
+        ],
+        "group": "reference",
+        "variant": 1
+      },
+      {
+        "item": "rubble",
+        "source": [
+          2176,
+          648
+        ],
+        "centre": [
+          1632,
+          486
+        ],
+        "bounds": [
+          1608,
+          462,
+          1656,
+          510
+        ],
+        "group": "reference",
+        "variant": 2
+      },
+      {
+        "item": "rubble",
+        "source": [
+          2240,
+          648
+        ],
+        "centre": [
+          1680,
+          486
+        ],
+        "bounds": [
+          1656,
+          462,
+          1704,
+          510
+        ],
+        "group": "reference",
+        "variant": 3
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          384,
+          704
+        ],
+        "centre": [
+          288,
+          528
+        ],
+        "bounds": [
+          264,
+          504,
+          312,
+          552
+        ],
+        "group": "reference",
+        "source_item": "stairs-down"
+      },
+      {
+        "item": "stairs-up",
+        "source": [
+          448,
+          704
+        ],
+        "centre": [
+          336,
+          528
+        ],
+        "bounds": [
+          312,
+          504,
+          360,
+          552
+        ],
+        "group": "reference",
+        "source_item": "stairs-up"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          640,
+          712
+        ],
+        "centre": [
+          480,
+          534
+        ],
+        "bounds": [
+          432,
+          462,
+          528,
+          558
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "table-short",
+        "source": [
+          704,
+          712
+        ],
+        "centre": [
+          528,
+          534
+        ],
+        "bounds": [
+          480,
+          510,
+          576,
+          558
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "table-short",
+        "source": [
+          1024,
+          712
+        ],
+        "centre": [
+          768,
+          534
+        ],
+        "bounds": [
+          720,
+          510,
+          816,
+          558
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "book",
+        "source": [
+          2176,
+          776
+        ],
+        "centre": [
+          1632,
+          582
+        ],
+        "bounds": [
+          1608,
+          558,
+          1656,
+          606
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "cabinet",
+        "source": [
+          640,
+          776
+        ],
+        "centre": [
+          480,
+          582
+        ],
+        "bounds": [
+          456,
+          510,
+          504,
+          606
+        ],
+        "group": "reference",
+        "source_item": "cabinet"
+      },
+      {
+        "item": "cabinet",
+        "source": [
+          1216,
+          776
+        ],
+        "centre": [
+          912,
+          582
+        ],
+        "bounds": [
+          888,
+          510,
+          936,
+          606
+        ],
+        "group": "reference",
+        "source_item": "cabinet"
+      },
+      {
+        "item": "chair",
+        "source": [
+          960,
+          776
+        ],
+        "centre": [
+          720,
+          582
+        ],
+        "bounds": [
+          696,
+          558,
+          744,
+          606
+        ],
+        "group": "reference",
+        "variant": 6
+      },
+      {
+        "item": "chair",
+        "source": [
+          1024,
+          776
+        ],
+        "centre": [
+          768,
+          582
+        ],
+        "bounds": [
+          744,
+          558,
+          792,
+          606
+        ],
+        "group": "reference",
+        "variant": 7
+      },
+      {
+        "item": "chair",
+        "source": [
+          1088,
+          776
+        ],
+        "centre": [
+          816,
+          582
+        ],
+        "bounds": [
+          792,
+          558,
+          840,
+          606
+        ],
+        "group": "reference",
+        "variant": 8
+      },
+      {
+        "item": "crate",
+        "source": [
+          1984,
+          776
+        ],
+        "centre": [
+          1488,
+          582
+        ],
+        "bounds": [
+          1464,
+          558,
+          1512,
+          606
+        ],
+        "group": "reference",
+        "source_item": "crate"
+      },
+      {
+        "item": "bed",
+        "source": [
+          1472,
+          776
+        ],
+        "centre": [
+          1104,
+          582
+        ],
+        "bounds": [
+          1083,
+          549,
+          1125,
+          615
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "bed",
+        "source": [
+          1536,
+          776
+        ],
+        "centre": [
+          1152,
+          582
+        ],
+        "bounds": [
+          1131,
+          549,
+          1173,
+          615
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "bed",
+        "source": [
+          1600,
+          776
+        ],
+        "centre": [
+          1200,
+          582
+        ],
+        "bounds": [
+          1179,
+          549,
+          1221,
+          615
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "book",
+        "source": [
+          640,
+          840
+        ],
+        "centre": [
+          480,
+          630
+        ],
+        "bounds": [
+          456,
+          606,
+          504,
+          654
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "book",
+        "source": [
+          1216,
+          840
+        ],
+        "centre": [
+          912,
+          630
+        ],
+        "bounds": [
+          888,
+          606,
+          936,
+          654
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          2368,
+          904
+        ],
+        "centre": [
+          1776,
+          678
+        ],
+        "bounds": [
+          1728,
+          606,
+          1824,
+          702
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "basin",
+        "source": [
+          2048,
+          904
+        ],
+        "centre": [
+          1536,
+          678
+        ],
+        "bounds": [
+          1509,
+          650,
+          1563,
+          702
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "basin",
+        "source": [
+          2176,
+          904
+        ],
+        "centre": [
+          1632,
+          678
+        ],
+        "bounds": [
+          1605,
+          650,
+          1659,
+          702
+        ],
+        "group": "reference"
+      },
+      {
+        "item": "cabinet",
+        "source": [
+          320,
+          968
+        ],
+        "centre": [
+          240,
+          726
+        ],
+        "bounds": [
+          216,
+          654,
+          264,
+          750
+        ],
+        "group": "reference",
+        "source_item": "cabinet"
+      },
+      {
+        "item": "chair",
+        "source": [
+          704,
+          968
+        ],
+        "centre": [
+          528,
+          726
+        ],
+        "bounds": [
+          504,
+          702,
+          552,
+          750
+        ],
+        "group": "reference",
+        "variant": 9
+      },
+      {
+        "item": "chair",
+        "source": [
+          768,
+          968
+        ],
+        "centre": [
+          576,
+          726
+        ],
+        "bounds": [
+          552,
+          702,
+          600,
+          750
+        ],
+        "group": "reference",
+        "variant": 10
+      },
+      {
+        "item": "chair",
+        "source": [
+          832,
+          968
+        ],
+        "centre": [
+          624,
+          726
+        ],
+        "bounds": [
+          600,
+          702,
+          648,
+          750
+        ],
+        "group": "reference",
+        "variant": 11
+      },
+      {
+        "item": "chair",
+        "source": [
+          896,
+          968
+        ],
+        "centre": [
+          672,
+          726
+        ],
+        "bounds": [
+          648,
+          702,
+          696,
+          750
+        ],
+        "group": "reference",
+        "variant": 12
+      },
+      {
+        "item": "chair",
+        "source": [
+          960,
+          968
+        ],
+        "centre": [
+          720,
+          726
+        ],
+        "bounds": [
+          696,
+          702,
+          744,
+          750
+        ],
+        "group": "reference",
+        "variant": 13
+      },
+      {
+        "item": "chair",
+        "source": [
+          1024,
+          968
+        ],
+        "centre": [
+          768,
+          726
+        ],
+        "bounds": [
+          744,
+          702,
+          792,
+          750
+        ],
+        "group": "reference",
+        "variant": 14
+      },
+      {
+        "item": "chair",
+        "source": [
+          1088,
+          968
+        ],
+        "centre": [
+          816,
+          726
+        ],
+        "bounds": [
+          792,
+          702,
+          840,
+          750
+        ],
+        "group": "reference",
+        "variant": 15
+      },
+      {
+        "item": "stairs-up",
+        "source": [
+          1792,
+          1024
+        ],
+        "centre": [
+          1344,
+          768
+        ],
+        "bounds": [
+          1320,
+          744,
+          1368,
+          792
+        ],
+        "group": "reference",
+        "source_item": "stairs-up"
+      },
+      {
+        "item": "bookshelf",
+        "source": [
+          1472,
+          1032
+        ],
+        "centre": [
+          1104,
+          774
+        ],
+        "bounds": [
+          1080,
+          702,
+          1128,
+          798
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "bookshelf",
+        "source": [
+          1600,
+          1032
+        ],
+        "centre": [
+          1200,
+          774
+        ],
+        "bounds": [
+          1176,
+          702,
+          1224,
+          798
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "table-long",
+        "source": [
+          896,
+          1032
+        ],
+        "centre": [
+          672,
+          774
+        ],
+        "bounds": [
+          528,
+          750,
+          816,
+          798
+        ],
+        "group": "reference",
+        "source_item": "table-long"
+      },
+      {
+        "item": "foe",
+        "source": [
+          664,
+          1060
+        ],
+        "centre": [
+          498,
+          795
+        ],
+        "bounds": [
+          474,
+          771,
+          522,
+          819
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "foe",
+        "source": [
+          624,
+          1072
+        ],
+        "centre": [
+          468,
+          804
+        ],
+        "bounds": [
+          444,
+          780,
+          492,
+          828
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "bookshelf",
+        "source": [
+          256,
+          1096
+        ],
+        "centre": [
+          192,
+          822
+        ],
+        "bounds": [
+          168,
+          750,
+          216,
+          846
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "chair",
+        "source": [
+          512,
+          1096
+        ],
+        "centre": [
+          384,
+          822
+        ],
+        "bounds": [
+          360,
+          798,
+          408,
+          846
+        ],
+        "group": "reference",
+        "variant": 16
+      },
+      {
+        "item": "chair",
+        "source": [
+          704,
+          1096
+        ],
+        "centre": [
+          528,
+          822
+        ],
+        "bounds": [
+          504,
+          798,
+          552,
+          846
+        ],
+        "group": "reference",
+        "variant": 17
+      },
+      {
+        "item": "chair",
+        "source": [
+          768,
+          1096
+        ],
+        "centre": [
+          576,
+          822
+        ],
+        "bounds": [
+          552,
+          798,
+          600,
+          846
+        ],
+        "group": "reference",
+        "variant": 18
+      },
+      {
+        "item": "chair",
+        "source": [
+          832,
+          1096
+        ],
+        "centre": [
+          624,
+          822
+        ],
+        "bounds": [
+          600,
+          798,
+          648,
+          846
+        ],
+        "group": "reference",
+        "variant": 19
+      },
+      {
+        "item": "chair",
+        "source": [
+          896,
+          1096
+        ],
+        "centre": [
+          672,
+          822
+        ],
+        "bounds": [
+          648,
+          798,
+          696,
+          846
+        ],
+        "group": "reference",
+        "variant": 20
+      },
+      {
+        "item": "chair",
+        "source": [
+          960,
+          1096
+        ],
+        "centre": [
+          720,
+          822
+        ],
+        "bounds": [
+          696,
+          798,
+          744,
+          846
+        ],
+        "group": "reference",
+        "variant": 21
+      },
+      {
+        "item": "chair",
+        "source": [
+          1024,
+          1096
+        ],
+        "centre": [
+          768,
+          822
+        ],
+        "bounds": [
+          744,
+          798,
+          792,
+          846
+        ],
+        "group": "reference",
+        "variant": 22
+      },
+      {
+        "item": "chair",
+        "source": [
+          1088,
+          1096
+        ],
+        "centre": [
+          816,
+          822
+        ],
+        "bounds": [
+          792,
+          798,
+          840,
+          846
+        ],
+        "group": "reference",
+        "variant": 23
+      },
+      {
+        "item": "crate",
+        "source": [
+          2368,
+          1096
+        ],
+        "centre": [
+          1776,
+          822
+        ],
+        "bounds": [
+          1752,
+          798,
+          1800,
+          846
+        ],
+        "group": "reference",
+        "source_item": "crate"
+      },
+      {
+        "item": "table-vertical",
+        "source": [
+          576,
+          1128
+        ],
+        "centre": [
+          432,
+          846
+        ],
+        "bounds": [
+          408,
+          678,
+          456,
+          870
+        ],
+        "group": "reference",
+        "source_item": "table-vertical"
+      },
+      {
+        "item": "book",
+        "source": [
+          1728,
+          1160
+        ],
+        "centre": [
+          1296,
+          870
+        ],
+        "bounds": [
+          1272,
+          846,
+          1320,
+          894
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "hearth",
+        "source": [
+          256,
+          1160
+        ],
+        "centre": [
+          192,
+          870
+        ],
+        "bounds": [
+          144,
+          798,
+          240,
+          894
+        ],
+        "group": "reference",
+        "source_item": "hearth"
+      },
+      {
+        "item": "table-short",
+        "source": [
+          320,
+          1160
+        ],
+        "centre": [
+          240,
+          870
+        ],
+        "bounds": [
+          192,
+          846,
+          288,
+          894
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "column",
+        "source": [
+          1408,
+          1212
+        ],
+        "centre": [
+          1056,
+          909
+        ],
+        "bounds": [
+          1032,
+          837,
+          1080,
+          933
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "column",
+        "source": [
+          1664,
+          1212
+        ],
+        "centre": [
+          1248,
+          909
+        ],
+        "bounds": [
+          1224,
+          837,
+          1272,
+          933
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "chair",
+        "source": [
+          512,
+          1224
+        ],
+        "centre": [
+          384,
+          918
+        ],
+        "bounds": [
+          360,
+          894,
+          408,
+          942
+        ],
+        "group": "reference",
+        "variant": 24
+      },
+      {
+        "item": "chair",
+        "source": [
+          704,
+          1224
+        ],
+        "centre": [
+          528,
+          918
+        ],
+        "bounds": [
+          504,
+          894,
+          552,
+          942
+        ],
+        "group": "reference",
+        "variant": 25
+      },
+      {
+        "item": "chair",
+        "source": [
+          768,
+          1224
+        ],
+        "centre": [
+          576,
+          918
+        ],
+        "bounds": [
+          552,
+          894,
+          600,
+          942
+        ],
+        "group": "reference",
+        "variant": 26
+      },
+      {
+        "item": "chair",
+        "source": [
+          832,
+          1224
+        ],
+        "centre": [
+          624,
+          918
+        ],
+        "bounds": [
+          600,
+          894,
+          648,
+          942
+        ],
+        "group": "reference",
+        "variant": 27
+      },
+      {
+        "item": "chair",
+        "source": [
+          896,
+          1224
+        ],
+        "centre": [
+          672,
+          918
+        ],
+        "bounds": [
+          648,
+          894,
+          696,
+          942
+        ],
+        "group": "reference",
+        "variant": 28
+      },
+      {
+        "item": "chair",
+        "source": [
+          960,
+          1224
+        ],
+        "centre": [
+          720,
+          918
+        ],
+        "bounds": [
+          696,
+          894,
+          744,
+          942
+        ],
+        "group": "reference",
+        "variant": 29
+      },
+      {
+        "item": "chair",
+        "source": [
+          1024,
+          1224
+        ],
+        "centre": [
+          768,
+          918
+        ],
+        "bounds": [
+          744,
+          894,
+          792,
+          942
+        ],
+        "group": "reference",
+        "variant": 30
+      },
+      {
+        "item": "chair",
+        "source": [
+          1088,
+          1224
+        ],
+        "centre": [
+          816,
+          918
+        ],
+        "bounds": [
+          792,
+          894,
+          840,
+          942
+        ],
+        "group": "reference",
+        "variant": 31
+      },
+      {
+        "item": "chest",
+        "source": [
+          1920,
+          1224
+        ],
+        "centre": [
+          1440,
+          918
+        ],
+        "bounds": [
+          1416,
+          894,
+          1464,
+          942
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "book",
+        "source": [
+          1920,
+          1288
+        ],
+        "centre": [
+          1440,
+          966
+        ],
+        "bounds": [
+          1416,
+          942,
+          1464,
+          990
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "table-long",
+        "source": [
+          896,
+          1288
+        ],
+        "centre": [
+          672,
+          966
+        ],
+        "bounds": [
+          528,
+          942,
+          816,
+          990
+        ],
+        "group": "reference",
+        "source_item": "table-long"
+      },
+      {
+        "item": "chest",
+        "source": [
+          1856,
+          1288
+        ],
+        "centre": [
+          1392,
+          966
+        ],
+        "bounds": [
+          1368,
+          942,
+          1416,
+          990
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "column",
+        "source": [
+          512,
+          1340
+        ],
+        "centre": [
+          384,
+          1005
+        ],
+        "bounds": [
+          360,
+          933,
+          408,
+          1029
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "chair",
+        "source": [
+          704,
+          1352
+        ],
+        "centre": [
+          528,
+          1014
+        ],
+        "bounds": [
+          504,
+          990,
+          552,
+          1038
+        ],
+        "group": "reference",
+        "variant": 32
+      },
+      {
+        "item": "chair",
+        "source": [
+          768,
+          1352
+        ],
+        "centre": [
+          576,
+          1014
+        ],
+        "bounds": [
+          552,
+          990,
+          600,
+          1038
+        ],
+        "group": "reference",
+        "variant": 33
+      },
+      {
+        "item": "chair",
+        "source": [
+          832,
+          1352
+        ],
+        "centre": [
+          624,
+          1014
+        ],
+        "bounds": [
+          600,
+          990,
+          648,
+          1038
+        ],
+        "group": "reference",
+        "variant": 34
+      },
+      {
+        "item": "chair",
+        "source": [
+          896,
+          1352
+        ],
+        "centre": [
+          672,
+          1014
+        ],
+        "bounds": [
+          648,
+          990,
+          696,
+          1038
+        ],
+        "group": "reference",
+        "variant": 35
+      },
+      {
+        "item": "chair",
+        "source": [
+          960,
+          1352
+        ],
+        "centre": [
+          720,
+          1014
+        ],
+        "bounds": [
+          696,
+          990,
+          744,
+          1038
+        ],
+        "group": "reference",
+        "variant": 36
+      },
+      {
+        "item": "chair",
+        "source": [
+          1024,
+          1352
+        ],
+        "centre": [
+          768,
+          1014
+        ],
+        "bounds": [
+          744,
+          990,
+          792,
+          1038
+        ],
+        "group": "reference",
+        "variant": 37
+      },
+      {
+        "item": "chair",
+        "source": [
+          1088,
+          1352
+        ],
+        "centre": [
+          816,
+          1014
+        ],
+        "bounds": [
+          792,
+          990,
+          840,
+          1038
+        ],
+        "group": "reference",
+        "variant": 38
+      },
+      {
+        "item": "chest-open",
+        "source": [
+          1216,
+          1352
+        ],
+        "centre": [
+          912,
+          1014
+        ],
+        "bounds": [
+          888,
+          990,
+          936,
+          1038
+        ],
+        "group": "reference",
+        "source_item": "chest-open"
+      },
+      {
+        "item": "column",
+        "source": [
+          384,
+          1404
+        ],
+        "centre": [
+          288,
+          1053
+        ],
+        "bounds": [
+          264,
+          981,
+          312,
+          1077
+        ],
+        "group": "reference",
+        "source_item": "column"
+      },
+      {
+        "item": "book",
+        "source": [
+          1664,
+          1416
+        ],
+        "centre": [
+          1248,
+          1062
+        ],
+        "bounds": [
+          1224,
+          1038,
+          1272,
+          1086
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          1984,
+          1416
+        ],
+        "centre": [
+          1488,
+          1062
+        ],
+        "bounds": [
+          1464,
+          1038,
+          1512,
+          1086
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "weapon-rack",
+        "source": [
+          2112,
+          1416
+        ],
+        "centre": [
+          1584,
+          1062
+        ],
+        "bounds": [
+          1560,
+          1038,
+          1608,
+          1086
+        ],
+        "group": "reference",
+        "source_item": "weapon-rack"
+      },
+      {
+        "item": "party",
+        "source": [
+          1344,
+          1448
+        ],
+        "centre": [
+          1008,
+          1086
+        ],
+        "bounds": [
+          984,
+          1062,
+          1032,
+          1110
+        ],
+        "group": "reference",
+        "source_item": "party"
+      }
+    ],
+    "feature": null,
+    "broken_inset": null
+  },
+  "station_lab": {
+    "size": [
+      960,
+      768
+    ],
+    "cell_size": 48,
+    "objects": [
+      {
+        "item": "airlock-open",
+        "source": [
+          608,
+          416
+        ],
+        "centre": [
+          456,
+          312
+        ],
+        "bounds": [
+          428,
+          277,
+          485,
+          347
+        ],
+        "group": "reference",
+        "orientation": "east-west"
+      },
+      {
+        "item": "airlock-locked",
+        "source": [
+          864,
+          544
+        ],
+        "centre": [
+          648,
+          408
+        ],
+        "bounds": [
+          620,
+          357,
+          677,
+          432
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "airlock-open",
+        "source": [
+          480,
+          544
+        ],
+        "centre": [
+          360,
+          408
+        ],
+        "bounds": [
+          332,
+          357,
+          389,
+          432
+        ],
+        "group": "reference",
+        "orientation": "north-south"
+      },
+      {
+        "item": "station_lab-study",
+        "source": [
+          736,
+          232
+        ],
+        "centre": [
+          552,
+          174
+        ],
+        "bounds": [
+          528,
+          150,
+          576,
+          198
+        ],
+        "group": "reference",
+        "source_item": "station_lab-study"
+      },
+      {
+        "item": "station_lab-study",
+        "source": [
+          880,
+          232
+        ],
+        "centre": [
+          660,
+          174
+        ],
+        "bounds": [
+          636,
+          150,
+          684,
+          198
+        ],
+        "group": "reference",
+        "source_item": "station_lab-study"
+      },
+      {
+        "item": "station_lab-study",
+        "source": [
+          1024,
+          232
+        ],
+        "centre": [
+          768,
+          174
+        ],
+        "bounds": [
+          744,
+          150,
+          792,
+          198
+        ],
+        "group": "reference",
+        "source_item": "station_lab-study"
+      },
+      {
+        "item": "lab-table",
+        "source": [
+          256,
+          280
+        ],
+        "centre": [
+          192,
+          210
+        ],
+        "bounds": [
+          144,
+          186,
+          240,
+          234
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "lab-table",
+        "source": [
+          384,
+          280
+        ],
+        "centre": [
+          288,
+          210
+        ],
+        "bounds": [
+          240,
+          186,
+          336,
+          234
+        ],
+        "group": "reference",
+        "source_item": "table-short"
+      },
+      {
+        "item": "book",
+        "source": [
+          288,
+          280
+        ],
+        "centre": [
+          216,
+          210
+        ],
+        "bounds": [
+          192,
+          186,
+          240,
+          234
+        ],
+        "group": "reference",
+        "source_item": "book"
+      },
+      {
+        "item": "foe",
+        "source": [
+          992,
+          360
+        ],
+        "centre": [
+          744,
+          270
+        ],
+        "bounds": [
+          720,
+          246,
+          768,
+          294
+        ],
+        "group": "reference",
+        "source_item": "foe"
+      },
+      {
+        "item": "lab-chair",
+        "source": [
+          256,
+          360
+        ],
+        "centre": [
+          192,
+          270
+        ],
+        "bounds": [
+          168,
+          246,
+          216,
+          294
+        ],
+        "group": "reference",
+        "source_item": "chair"
+      },
+      {
+        "item": "lab-chair",
+        "source": [
+          384,
+          360
+        ],
+        "centre": [
+          288,
+          270
+        ],
+        "bounds": [
+          264,
+          246,
+          312,
+          294
+        ],
+        "group": "reference",
+        "source_item": "chair"
+      },
+      {
+        "item": "lab-shelf",
+        "source": [
+          1088,
+          440
+        ],
+        "centre": [
+          816,
+          330
+        ],
+        "bounds": [
+          792,
+          258,
+          840,
+          354
+        ],
+        "group": "reference",
+        "source_item": "cabinet"
+      },
+      {
+        "item": "trap-found",
+        "source": [
+          736,
+          440
+        ],
+        "centre": [
+          552,
+          330
+        ],
+        "bounds": [
+          528,
+          306,
+          576,
+          354
+        ],
+        "group": "reference",
+        "source_item": "trap-found"
+      },
+      {
+        "item": "station_corridor-study",
+        "source": [
+          1056,
+          656
+        ],
+        "centre": [
+          792,
+          492
+        ],
+        "bounds": [
+          768,
+          468,
+          816,
+          516
+        ],
+        "group": "reference",
+        "source_item": "station_corridor-study"
+      },
+      {
+        "item": "lab-shelf",
+        "source": [
+          192,
+          656
+        ],
+        "centre": [
+          144,
+          492
+        ],
+        "bounds": [
+          120,
+          420,
+          168,
+          516
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "lab-shelf",
+        "source": [
+          320,
+          656
+        ],
+        "centre": [
+          240,
+          492
+        ],
+        "bounds": [
+          216,
+          420,
+          264,
+          516
+        ],
+        "group": "reference",
+        "source_item": "bookshelf"
+      },
+      {
+        "item": "stairs-down",
+        "source": [
+          1088,
+          704
+        ],
+        "centre": [
+          816,
+          528
+        ],
+        "bounds": [
+          792,
+          504,
+          840,
+          552
+        ],
+        "group": "reference",
+        "source_item": "stairs-down"
+      },
+      {
+        "item": "station_corridor-study",
+        "source": [
+          672,
+          704
+        ],
+        "centre": [
+          504,
+          528
+        ],
+        "bounds": [
+          480,
+          504,
+          528,
+          552
+        ],
+        "group": "reference",
+        "source_item": "station_corridor-study"
+      },
+      {
+        "item": "chest",
+        "source": [
+          800,
+          704
+        ],
+        "centre": [
+          600,
+          528
+        ],
+        "bounds": [
+          576,
+          504,
+          624,
+          552
+        ],
+        "group": "reference",
+        "source_item": "chest"
+      },
+      {
+        "item": "chest-open",
+        "source": [
+          512,
+          704
+        ],
+        "centre": [
+          384,
+          528
+        ],
+        "bounds": [
+          360,
+          504,
+          408,
+          552
+        ],
+        "group": "reference",
+        "source_item": "chest-open"
+      },
+      {
+        "item": "lab-chair",
+        "source": [
+          384,
+          744
+        ],
+        "centre": [
+          288,
+          558
+        ],
+        "bounds": [
+          264,
+          534,
+          312,
+          582
+        ],
+        "group": "reference",
+        "source_item": "chair"
+      },
+      {
+        "item": "stairs-up",
+        "source": [
+          192,
+          824
+        ],
+        "centre": [
+          144,
+          618
+        ],
+        "bounds": [
+          120,
+          594,
+          168,
+          642
+        ],
+        "group": "reference",
+        "source_item": "stairs-up"
+      },
+      {
+        "item": "party",
+        "source": [
+          256,
+          824
+        ],
+        "centre": [
+          192,
+          618
+        ],
+        "bounds": [
+          168,
+          594,
+          216,
+          642
+        ],
+        "group": "reference",
+        "source_item": "party"
+      }
+    ],
+    "feature": null,
+    "broken_inset": null
+  }
+}

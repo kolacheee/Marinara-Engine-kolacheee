@@ -79,13 +79,23 @@ GROUPS['manor'].append('textiles-sage')
 
 # Exact 24-colour median-cut anchors, curated into the named material families.
 ANCHORS = {
- 'wood-oak': ['#553d2b', '#825b39', '#91643b', '#b69057'],
+ 'wood-oak': ['#553d2b', '#825b39', '#b69057'],
  'timber': ['#6b3e2b'],
  'plaster': ['#d2c1a5', '#ddd7ca'],
  'limestone': ['#989f9d'],
  'overgrowth': ['#354937', '#99ae80'],
  'textiles-sage': ['#354937', '#99ae80'],
 }
+# C.2 owner repair: explicit replacements and excluded pale reference steps.
+for _name, _steps in {
+ 'wood-oak':{4:'#966a40'}, 'limestone':{5:'#b4b29e'},
+ 'frost':{4:'#8ca7b5',5:'#abc1c8'}, 'snowdrift':{4:'#94a8b8',5:'#b2c3c9'},
+ 'clean-tile':{4:'#a7b9bb'}, 'tank-glass':{5:'#a2c4c5'},
+ 'textiles-sage':{5:'#b9c19f'}, 'void-mass':{2:'#1c222e',3:'#26303a'}
+}.items():
+    for _step, _colour in _steps.items(): RAMPS[_name][_step-1] = _colour
+REFERENCE_ONLY = {'marble':[6], 'clean-tile':[6], 'bone':[6], 'blue-ice':[6]}
+
 # Only these materials are intended as broad floors. Choose a subset for each sheet.
 FLOOR_RAMPS = 'limestone wood-oak sandstone marble plaster parquet dark-masonry grey-brown-rock mud blue-ice frost snowdrift dark-rock basalt ash brick sewer-water station-panels clean-tile soot oil planters yard-grass yard-path yard-cobble'.split()
 
@@ -136,7 +146,9 @@ def roles(name):
         floor.pop(0)
     result['floor'] = floor
     result['glint'] = [i+1 for i,l in enumerate(values) if 70 < l <= 85]
-    result['reference-only'] = [i+1 for i,l in enumerate(values) if l > 85]
+    result['reference-only'] = REFERENCE_ONLY.get(name, [i+1 for i,l in enumerate(values) if l > 85])
+    for role in ('top','face','body','floor','glint'):
+        result[role] = [i for i in result[role] if i not in result['reference-only']]
     return result
 
 
@@ -165,7 +177,7 @@ def build():
         '; Outlines use step 1 of the object ramp, with >=10 L* gap from the floor.',
         '; Body L*30-70 AND >=10 L* from its actual floor. Not every pairing works.',
         '; Glints are small highlights, never broad bodies, floors or faces.',
-        '; Reference-only steps above 85 retain exact master anchors; do not use in scene art.',
+        '; Reference-only pale steps retain source colours; excluded from all scene art.',
         '; Top-left edges at most one step lighter than adjacent object shade.',
         '; Focal colours require >=15 L* above their actual floor and L*<=85.',
         '; Gameplay and feature ramps are entity-only; found traps need a striped rim.',
@@ -185,7 +197,7 @@ def build():
     text(draw, (48,24), f'D0a / PALETTE CANON / {len(RAMPS)} MATERIAL AND ENTITY RAMPS', ACCENT)
     text(draw, (48,48), 'Native 48 px chips / bitmap labels / six authored colours per ramp / values vary by material.')
     text(draw, (48,68), 'OUTLINE = own ramp step 1. BODY = L*30-70 with >=10 gap to floor. FLOOR = listed steps, total span <=15 L*.')
-    text(draw, (48,88), 'GLINT = small highlight only. MASTER ANCHORS ABOVE L*85 = reference-only, excluded from scene roles.')
+    text(draw, (48,88), 'GLINT = small highlight only. REFERENCE-ONLY pale steps are excluded from scene roles; see palette.hex.')
     text(draw, (48,108), 'Gameplay / feature ramps: reserved entities only. Focal colour >=15 L* above floor. Found traps also need a striped rim.')
     bands = [('MASS / VOID','5-15','void-mass',1), ('WALL TOP','18-30','void-mass',3),
              ('WALL FACE','25-40','dark-masonry',2), ('FLOOR','35-55','grey-brown-rock',2),

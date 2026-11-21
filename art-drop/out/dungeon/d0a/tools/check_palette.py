@@ -74,10 +74,11 @@ def audit():
     for name,ramp in data.items():
         ls = list(map(lightness,ramp))
         assert len(ramp) == len(set(ramp)) == 6
-        assert all(b-a >= 1 for a,b in zip(ls,ls[1:])), (name,ls)
+        active = [l for i,l in enumerate(ls,1) if i not in roles(name).get('reference-only',[])]
+        assert all(b-a >= 6 for a,b in zip(active,active[1:])), (name,active)
         assert '#000000' not in ramp and '#ff00ff' not in ramp
         assigned = roles(name)
-        assert all(ramp[i-1] in anchors for i in assigned.get('reference-only',[])), name
+        assert all(i >= 5 for i in assigned.get('reference-only',[])), name
         floor = assigned.get('floor',[])
         if floor:
             assert all(35 <= ls[i-1] <= 55 for i in floor)
@@ -146,6 +147,12 @@ def audit():
         assert len(surfaces)<=32 and len(props)<=48,(look,len(surfaces),len(props))
         report['look_budgets'][look]={'surface_example_colors':len(surfaces),'prop_example_colors':len(props)}
     assert all(lightness(data['void-mass'][1]) <= .75*lightness(data[n][i-1]) for n in materials for i in roles(n)['top'])
+    excluded = {rgb(data[n][i-1]) for n in data for i in roles(n).get('reference-only',[])}
+    for folder in (OUT/'props', OUT/'swatches', OUT.parent/'proof'):
+        for path in folder.glob('*.png'):
+            if path.stem.endswith('-grey'): continue
+            used = {v[:3] for v in Image.open(path).convert('RGBA').get_flattened_data() if v[3]}
+            assert not used & excluded, (path, 'reference-only pigment in scene art', used & excluded)
     im = Image.open(OUT / 'palette.png').convert('RGBA')
     assert im.width % 48 == im.height % 48 == 0
     counts = im.getcolors(im.width*im.height)

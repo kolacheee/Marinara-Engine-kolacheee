@@ -1,10 +1,10 @@
 # D0a style canon
 
-Version D0a-B.1, 2026-11-20. **The canon cell is 48 × 48 pixels.** All later parts use this size. Draw directly at that resolution; the larger-cell option is not needed for these drawings. Owner acceptance and the eventual canon freeze remain pending.
+Version D0a-C.2, 2026-11-20. **The canon cell is 48 × 48 pixels.** All later parts use this size. Draw directly at that resolution; the larger-cell option is not needed for these drawings. Owner acceptance and the eventual canon freeze remain pending.
 
-[style-guide.png](style-guide.png) contains all 61 labelled ramps, outline examples, lighting, the scale chart, 14 material studies, the greyscale value ladder, reserved hues and five do/don't comparisons. [palette.hex](palette.hex) defines the exact colours and their permitted roles. Each ramp has six steps with cool darks and warmer lights. The pale steps marked reference-only stay out of scene art.
+[style-guide.png](style-guide.png) contains all 61 labelled ramps, outline examples, lighting, the scale chart, 14 material studies, the greyscale value ladder, reserved hues and five do/don't comparisons. [palette.hex](palette.hex) defines the exact colours and their permitted roles. Each ramp has six steps with cool darks and warmer lights. Active adjacent steps are at least 6 L* apart. Marble 6, clean-tile 6, bone 6 and blue-ice 6 are reference-only and stay out of scene art.
 
-Use the master PNG's high three-quarter view, visible top planes, narrow side faces, joinery and material detail. Author every art pixel at 1:1. Use explicit strokes and clusters, without spatial reduction, filters, gradients, glow, random speckle or soft alpha. Art alpha is 0/255; transparent RGB is zero. Surface sheets allow 32 colours and prop sheets 48. The complete reference atlas combines all materials and is not a production sheet.
+Use an orthographic high three-quarter view: a top plane and front face, parallel verticals, no side faces and no converging edges. Match the master PNG's art-pixel scale, joinery and material detail. The master is stored at 2×: one art pixel is one registered 2×2 source block. Author every art pixel at 1:1. Use explicit strokes and clusters, without spatial reduction, filters, gradients, glow, random speckle or soft alpha. Art alpha is 0/255; transparent RGB is zero. Surface sheets allow 32 colours and prop sheets 48. The complete reference atlas combines all materials and is not a production sheet.
 
 Outlines are one pixel in the darkest colour of each object's own ramp, never black. The upper-left outline can rise one step. Keep corners single-width and curved edges in even, monotonic runs. Light comes from the upper left; edge highlights rise at most one step. Cast shadows belong on a separate single-colour layer composited once at 35%, with no stacking. Floor texture has no outline. Place clusters of at least three pixels; do not repeat a distinctive crack, stain or grain feature within a pattern. Built floor joints follow the 48 px grid.
 
@@ -23,7 +23,7 @@ The scale chart uses the game's real `party[0]` sprite from `packages/server/src
 
 The neutral greyscale strip is a value diagram, outside the material palette. Compare finished scenes at 1x, 2x and 3x nearest-neighbour, in greyscale and as a quarter-size nearest-neighbour greyscale squint. Only review images may be enlarged or reduced. The squint must separate floor, wall, door, loot and feature.
 
-Each look has a native 48 × 48 material study in `swatches/`. These establish colour and texture; Part C supplies the larger wall/floor/prop proofs and production patterns. The ramp families are:
+Each look has a native 48 × 48 material study in `swatches/`. These cutaways show wall finish, floor material and characteristic trim. Their full value range is not a floor pairing. Part C supplies the larger wall/floor/prop proofs; production patterns follow later. The ramp families are:
 
 | Look | Ramps |
 | --- | --- |
