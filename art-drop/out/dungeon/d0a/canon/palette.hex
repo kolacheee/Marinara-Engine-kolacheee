@@ -6,7 +6,7 @@
 ; Outlines use step 1 of the object ramp, with >=10 L* gap from the floor.
 ; Body L*30-70 AND >=10 L* from its actual floor. Not every pairing works.
 ; Glints are small highlights, never broad bodies, floors or faces.
-; Reference-only steps above 85 retain exact master anchors; do not use in scene art.
+; Reference-only pale steps retain source colours; excluded from all scene art.
 ; Top-left edges at most one step lighter than adjacent object shade.
 ; Focal colours require >=15 L* above their actual floor and L*<=85.
 ; Gameplay and feature ramps are entity-only; found traps need a striped rim.
@@ -20,14 +20,14 @@
 #4e535a limestone-2 L*=35
 #74766f limestone-3 L*=49
 #989f9d limestone-4 L*=65
-#b8b5a3 limestone-5 L*=73
+#b4b29e limestone-5 L*=72
 #d2c1a5 limestone-6 L*=79
 
 ; wood-oak / top:2  face:2  body:3,4,5  floor:3,4  glint:6
 #282337 wood-oak-1 L*=15
 #553d2b wood-oak-2 L*=28
 #825b39 wood-oak-3 L*=42
-#91643b wood-oak-4 L*=46
+#966a40 wood-oak-4 L*=48
 #b69057 wood-oak-5 L*=62
 #d8b77c wood-oak-6 L*=76
 
@@ -112,7 +112,7 @@
 #354937 textiles-sage-2 L*=29
 #64745c textiles-sage-3 L*=47
 #99ae80 textiles-sage-4 L*=68
-#bdc5a3 textiles-sage-5 L*=78
+#b9c19f textiles-sage-5 L*=77
 #d4d2b5 textiles-sage-6 L*=84
 
 
@@ -125,7 +125,7 @@
 #737770 dark-masonry-5 L*=50
 #939485 dark-masonry-6 L*=61
 
-; bone / top:1  body:2,3  glint:4,5,6
+; bone / top:1  body:2,3  glint:4,5  reference-only:6
 #303142 bone-1 L*=21
 #5e6166 bone-2 L*=41
 #8b8e86 bone-3 L*=59
@@ -169,7 +169,7 @@
 
 
 ; cave_ice
-; blue-ice / top:1  face:2  body:2,3  floor:2,3  glint:4,5,6
+; blue-ice / top:1  face:2  body:2,3  floor:2,3  glint:4,5  reference-only:6
 #202d50 blue-ice-1 L*=19
 #465e83 blue-ice-2 L*=39
 #5e829e blue-ice-3 L*=53
@@ -177,20 +177,20 @@
 #abd0d4 blue-ice-5 L*=81
 #c5d7d5 blue-ice-6 L*=85
 
-; frost / top:1  body:2,3  floor:2,3  glint:4,5,6
+; frost / top:1  body:2,3,4  floor:2,3  glint:5,6
 #2d3c53 frost-1 L*=25
 #49617c frost-2 L*=40
 #6c8297 frost-3 L*=53
-#aec5ce frost-4 L*=78
-#bcccd1 frost-5 L*=81
+#8ca7b5 frost-4 L*=67
+#abc1c8 frost-5 L*=77
 #d0d5ce frost-6 L*=85
 
-; snowdrift / top:1  body:2,3  floor:2,3  glint:4,5,6
+; snowdrift / top:1  body:2,3,4  floor:2,3  glint:5,6
 #343a54 snowdrift-1 L*=25
 #56647e snowdrift-2 L*=42
 #768297 snowdrift-3 L*=54
-#b7c4cc snowdrift-4 L*=78
-#c4d0d1 snowdrift-5 L*=83
+#94a8b8 snowdrift-4 L*=68
+#b2c3c9 snowdrift-5 L*=78
 #d6d3cb snowdrift-6 L*=85
 
 
@@ -287,7 +287,7 @@
 #2c3b4c clean-tile-1 L*=24
 #4e6576 clean-tile-2 L*=42
 #70858f clean-tile-3 L*=54
-#b2c5c5 clean-tile-4 L*=78
+#a7b9bb clean-tile-4 L*=74
 #c2d0ca clean-tile-5 L*=82
 #ddd7ca clean-tile-6 L*=86
 
@@ -296,7 +296,7 @@
 #30556e tank-glass-2 L*=34
 #4c8295 tank-glass-3 L*=51
 #7cabb6 tank-glass-4 L*=67
-#a5c8c9 tank-glass-5 L*=78
+#a2c4c5 tank-glass-5 L*=77
 #c5d5cf tank-glass-6 L*=84
 
 ; spills / top:1  face:2  body:2,3,4  glint:5,6
@@ -531,8 +531,8 @@
 ; shared-space
 ; void-mass / mass:1,2
 #101522 void-mass-1 L*=7
-#18202b void-mass-2 L*=12
-#212c37 void-mass-3 L*=17
+#1c222e void-mass-2 L*=13
+#26303a void-mass-3 L*=19
 #303e48 void-mass-4 L*=25
 #42535a void-mass-5 L*=34
 #586b6d void-mass-6 L*=44
